@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: March 31, 2026 (rev 11) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 2, 2026 (rev 12) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -11,7 +11,7 @@
 - **248+ data points** across 20 signal categories, monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
-- **Human-AI partnership model** — AI monitors and recommends, human executives approve and decide.
+- **Executive authority preserved** — No playbook activates without executive authorization. AI monitors continuously, scores signals, and recommends the right playbook. The executive decision is the same decision — it just arrives in seconds rather than 30 days. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
 - **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×" and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time most Fortune 1000 organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Execution OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster." The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
 - **Microsoft Ecosystem positioning** — Execution OS is positioned as "The strategic command layer *above* Microsoft's agentic stack." It does NOT replace Azure AI, Teams, Copilot Studio, Entra, or Power Platform — it orchestrates them. This is a key GTM message: every Microsoft enterprise customer is an immediately addressable prospect with no rip-and-replace required. The full architecture diagram lives at `/ecosystem`.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
@@ -644,7 +644,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `EcosystemsHub.tsx` | `/ecosystems` | All-7-ecosystem hub page. Linked from Homepage Microsoft section "View All 7 Enterprise Ecosystems →" button and StandardNav. Child ecosystem pages: `/ecosystem` (Microsoft), `/ecosystem/google`, `/ecosystem/salesforce`, `/ecosystem/aws`, `/ecosystem/sap`, `/ecosystem/servicenow`, `/ecosystem/workday`. |
 | `WhyExecutionOS.tsx` | `/why-execution-os` | Competitive analysis page. Full breakdown: Copilot vs ServiceNow vs Palantir vs Everbridge vs GRC — positioned on a 2×2 grid (Speed vs Depth, Predict vs React). Closes with Microsoft positioning ("every enterprise already owns the engine — Execution OS is the transmission"). **Route conflict fix (March 2026):** A shadow route at this path previously served the old `WhyExecuteIQ` component — that shadow route was removed from App.tsx. The legacy page lives at `/why-execution-os-legacy`. Linked from: StandardNav Evidence dropdown (featured), HomepageNav. |
 | `ExecutiveBrief.tsx` | `/executive-brief` | Shareable one-pager for board and C-suite prospects. Concise value prop, key metrics (3,600×, 12 min, 170 playbooks), IDEA Framework summary, and Microsoft positioning. Linked from: StandardNav Experience dropdown and Evidence dropdown. |
-| `RequestAccess.tsx` | `/request-access` | Magic link intake form. Fields: name, email, company, title. On submit: saves token to `magic_link_tokens` DB table, sends Resend email (`pilot@vaughnmartin.com` → fallback `onboarding@resend.dev`), logs admin URL to console. Always returns `{ ok: true, emailSent: bool }` — never fails on the user side. Paired with `/magic-login?token=<token>` which validates, creates user + session, redirects to `/mission-control`. |
+| `RequestAccess.tsx` | `/request-access` | Magic link intake form. Fields: name, email, company, title. On submit: (1) enrolls prospect in `stakeholder_contacts` for system + all existing orgs via `enrollProspectForAlerts()` — fires at form SUBMIT time, not link click; (2) saves token to `magic_link_tokens` DB table; (3) sends branded magic link email (`pilot@vaughnmartin.com` → fallback `onboarding@resend.dev`). Always returns `{ ok: true, emailSent: bool }` — never fails on the user side. Paired with `/api/auth/magic-link/verify?token=<token>` which: validates token (marks used, single-use only), creates user + session, fires `sendWelcomeTriggerDemo(email, firstName)` fire-and-forget (guaranteed "AI Competitive Disruption" trigger alert email, 94% confidence, bypasses RSS pipeline), then redirects to `/mission-control`. |
 | `IndustryDemosHub.tsx` | `/industry-demos` | Hub page for all 4 industry scenario demos. Linked from: HomepageNav Experience, StandardNav Experience dropdown. |
 | `FinancialRansomwareDemo.tsx` | `/industry-demo/financial-ransomware` | Financial services ransomware response scenario (600+ lines). Real-time incident timeline, 7 IDEA-phase tasks, CFO/CTO/CISO stakeholder map, $47M exposure model. |
 | `PharmaceuticalRecallDemo.tsx` | `/industry-demo/pharmaceutical-recall` | Pharma recall scenario. FDA timeline, 170K-unit scope, cross-functional war room, regulatory communication tracks. |
@@ -864,6 +864,8 @@ await deployConfig({
 12. **All mutations that call protected POST endpoints must handle 401 in `onError`.** Check `error?.message?.startsWith('401')` and redirect to `/api/login` with a brief toast warning. Without this, unauthenticated users see a generic "failed" error with no path to signing in. See Section 7 mutation pattern for the full template.
 13. **Domain is `vaughnmartin.com`.** All user-visible URLs, email senders, and copy must reference `vaughnmartin.com`. The server 301-redirects `executeiq.io` → `vaughnmartin.com`. Do NOT use the old domain in any new code or copy.
 14. **Before deploying: run BOTH local builds and commit `dist/`.** The deployment build step is a no-op (`sh -c ":"`). The deployment platform serves exactly what is in git. Run: (1) `npx vite build` to update `dist/public/`, and (2) `npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config` to update `dist/index.js`. If you skip this, production will serve stale UI and/or stale server code.
+15. **"Human-AI partnership" is RETIRED copy.** Never write this phrase on any page, card, slide, or tooltip. The approved replacement patterns are: "AI monitors, executives authorize" | "Executive authority preserved" | "AI monitors. Executives decide. Execution pre-staged." | "No playbook activates without executive approval." The distinction matters: we are not selling AI augmentation — we are selling the elimination of the 30-day mobilization cycle. The human decision is the same; the preparation that surrounds it is pre-staged.
+16. **Homepage IDEA card copy is canonical — do not paraphrase.** The four IDEA narrative cards set the emotional tone of the product. Their content (especially the "while others are still in their first meeting" / "already executing" framing) must not be shortened, reworded, or replaced with feature-list bullets during any refactor.
 
 ---
 
@@ -893,7 +895,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-*This file documents the state of the codebase as of March 2026. Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
+*This file documents the state of the codebase as of April 2026 (rev 12). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
 
 ---
 
@@ -1249,4 +1251,72 @@ Detections stored in `trigger_detections` with `status: 'notified'` have had the
 - March 30: 8 detections fired (74–90% confidence) — heavy news day (tariffs, M&A, regulatory, geopolitical)
 - March 31: 0 detections — quieter news day; signals didn't reach 3-keyword density in any pattern
 - This is **correct behavior** — the system is news-driven, not a synthetic heartbeat
+
+---
+
+## 31. Welcome Trigger Demo Email (April 2026)
+
+Every new magic link user receives a guaranteed "AI Competitive Disruption" trigger alert email on first token activation — regardless of whether the live RSS pipeline has fired anything. This is a deliberate product decision: new users need to see the alert experience immediately to understand the platform value.
+
+### Service File
+`server/services/magicLinkService.ts` — exports `sendWelcomeTriggerDemo(email: string, firstName: string)`
+
+### What it sends
+A fully-branded trigger alert email indistinguishable from a live alert:
+- **Trigger:** AI Competitive Disruption
+- **Confidence:** 94%
+- **Source:** CNBC Business News
+- **Matched keywords:** 5 (AI disruption, market displacement, competitive advantage, technology acceleration, enterprise adoption)
+- **Two action buttons:** "Activate Response Protocol" (→ /mission-control) + "Review Playbook" (→ /playbook-library)
+- **Sender order:** `pilot@vaughnmartin.com` first → `onboarding@resend.dev` fallback
+
+### When it fires
+- Triggered in `server/routes.ts` at `GET /api/auth/magic-link/verify`
+- Called fire-and-forget **after** token verification and session creation succeed
+- Token is single-use (marked used before the welcome email fires) — so the welcome email fires exactly once per prospect
+
+### Email routing note
+- `pilot@vaughnmartin.com` — verified on vaughnmartin.com domain, works in production for any recipient
+- `onboarding@resend.dev` — restricted to `martybrunke@gmail.com` in Resend's dev/test mode; only use in production context
+
+### What it replaces
+It does NOT replace any live pipeline alert. It supplements the pipeline for users who request access before any real trigger fires, ensuring Day 1 value delivery without depending on news timing.
+
+---
+
+## 32. Messaging Guidelines — Locked Copy Rules (April 2026)
+
+The following copy conventions are founder-locked. Any agent or developer who touches marketing pages, investor slides, or product UI must follow these rules without deviation.
+
+### Retired phrases (never use)
+| Retired | Replace with |
+|---|---|
+| "Human-AI partnership" | "AI monitors, executives authorize" |
+| "Human-AI collaboration" | "Executive authority preserved" |
+| "AI augments executives" | "AI eliminates the mobilization cycle" |
+| "Speed advantage" | "3,600× Execution Head Start" |
+| "72 hours" (as baseline) | "30 days" |
+| "340×" | "3,600×" |
+| "20–50 hours getting organized" | "30 days to mobilize" |
+| "16 signal categories" | "9 strategic domains, 221 triggers" |
+| "Strategic Execution Platform" (repeated) | Use once at introduction only |
+
+### Approved narrative patterns
+- "While others mobilize, you're already executing."
+- "By the time the first alignment call would have been scheduled, you're already executing."
+- "AI monitors. Executives decide. Execution pre-staged."
+- "No playbook activates without executive approval."
+- "The bottleneck is never the technology. It's the mobilization cycle."
+- "30 days compressed to 12 minutes."
+- "3,600× Execution Head Start — not a speed advantage. A structural advantage."
+
+### Pages where the thesis must be present
+Homepage · Investor pages · Founder Story · Investor Presentation · ExecutiveBrief · WhyExecutionOS · MarketingLanding
+
+### IDEA card copy (Homepage.tsx) — do not paraphrase
+The four IDEA cards tell the product's emotional story. Their current copy is canonical:
+- **IDENTIFY:** "Nothing is improvised. Everything is pre-staged."
+- **DETECT:** "While others are still in their first email thread, the system has already matched the trigger to the playbook — before your leadership team finishes their first email."
+- **EXECUTE:** "By the time the first alignment call would have been scheduled, you're already executing."
+- **ADVANCE:** "Each execution makes the next response faster, sharper, and more decisive."
 
