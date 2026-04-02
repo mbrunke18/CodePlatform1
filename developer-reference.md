@@ -109,8 +109,15 @@ All navy `<section>` blocks on `Homepage.tsx` use three layers for visual depth:
 │   ├── schema.ts                ← Drizzle schema — single source of truth for all types
 │   └── intelligence-signals.ts  ← 248+ signal data points across 20 signal categories
 ├── dist/                        ← Pre-built production bundle (committed to repo)
-├── replit.md                    ← Project memory / architecture notes
-└── developer-reference.md       ← This file
+├── docs/
+│   ├── demos/                   ← Demo scripts, training guides, user guide
+│   ├── deploy/                  ← Deployment, AWS, auth hardening, WebSocket notes
+│   ├── dev/                     ← Design system, navigation, integration architecture
+│   ├── product/                 ← Audits, roadmaps, platform inventory, phase plans
+│   │   └── analysis/            ← Concept vs product, ITPE framework, enhancement roadmap
+│   └── sales/                   ← Pitch decks, pilot briefs, qualification criteria
+├── replit.md                    ← Project memory / architecture notes (root — Replit reads this)
+└── developer-reference.md       ← This file (root — primary dev reference)
 ```
 
 ---
