@@ -604,7 +604,7 @@ export async function evaluateAndPersistSignals(
         (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
       );
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-      let contactEmails = recipientContacts.map(c => c.email!).filter(Boolean);
+      let contactEmails = [...new Set(recipientContacts.map(c => c.email!).filter(Boolean))];
 
       // Admin fallback — if no stakeholder contacts are registered, always alert pilot
       const ADMIN_FALLBACK = 'pilot@vaughnmartin.com';
