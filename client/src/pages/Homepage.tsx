@@ -764,8 +764,8 @@ function ThreeLayerChainSection() {
               { num: "2", label: "Build Playbooks", desc: "The exact execution response for each identified situation, pre-staged" },
               { num: "3", label: "Define Triggers", desc: "The specific data points and signal conditions unique to each situation" },
               { num: "4", label: "Set Thresholds", desc: "The precise conditions that — when met — activate the entire response" },
-            ].map((step, i) => (
-              <>
+            ].flatMap((step, i) => {
+              const stepEl = (
                 <div key={step.num} style={{ display: "flex", flexDirection: "column" as const, gap: 6, padding: "0 8px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <div style={{
@@ -779,11 +779,12 @@ function ThreeLayerChainSection() {
                   </div>
                   <span style={{ ...DM, fontSize: 11, color: MUTED_DARK, lineHeight: 1.5, paddingLeft: 30 }}>{step.desc}</span>
                 </div>
-                {i < 3 && (
-                  <div key={`sep-${i}`} style={{ textAlign: "center" as const, color: TEAL, fontSize: 14, fontWeight: 700, opacity: 0.6 }}>→</div>
-                )}
-              </>
-            ))}
+              );
+              if (i < 3) {
+                return [stepEl, <div key={`sep-${i}`} style={{ textAlign: "center" as const, color: TEAL, fontSize: 14, fontWeight: 700, opacity: 0.6 }}>→</div>];
+              }
+              return [stepEl];
+            })}
           </div>
         </div>
 

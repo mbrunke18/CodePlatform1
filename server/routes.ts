@@ -8838,6 +8838,46 @@ Respond ONLY as JSON with this exact structure:
     }
   }
 
+  // ── Situation Intents ──────────────────────────────────────────────────────
+  // Per-trigger strategic intent, decision brief, primary data points,
+  // sensitivity calibration, and situation-specific stakeholder routing.
+
+  app.get('/api/situation-intents', requireAuth, async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'No organization' });
+      const intents = await storage.getSituationIntents(orgId);
+      res.json(intents);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.get('/api/situation-intents/:triggerId', requireAuth, async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'No organization' });
+      const intent = await storage.getSituationIntent(orgId, req.params.triggerId);
+      if (!intent) return res.status(404).json({ error: 'Not found' });
+      res.json(intent);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.post('/api/situation-intents', requireAuth, async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'No organization' });
+      const data = { ...req.body, organizationId: orgId, isConfigured: true };
+      const intent = await storage.upsertSituationIntent(data);
+      res.json(intent);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.delete('/api/situation-intents/:id', requireAuth, async (req: any, res) => {
+    try {
+      await storage.deleteSituationIntent(Number(req.params.id));
+      res.json({ success: true });
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
   // Schedule weekly digest: runs every Monday at startup + 7-day rolling interval
   function scheduleWeeklyDigest() {
     const now = new Date();

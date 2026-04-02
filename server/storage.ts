@@ -128,6 +128,9 @@ import {
   type ActivationOutcome,
   type RoleAvailabilityFlag,
   type SignalMonitoringConfig,
+  situationIntents,
+  type SituationIntent,
+  type InsertSituationIntent,
 } from "@shared/schema";
 
 // Infer types from table schemas where needed
@@ -413,6 +416,12 @@ export interface IStorage {
   // Investor leads
   createInvestorLead(lead: { name: string; email: string; company: string; role: string; pageAccessed: string }): Promise<any>;
   getInvestorLeads(): Promise<any[]>;
+
+  // Situation Intents
+  getSituationIntents(organizationId: string): Promise<SituationIntent[]>;
+  getSituationIntent(organizationId: string, triggerId: string): Promise<SituationIntent | undefined>;
+  upsertSituationIntent(data: InsertSituationIntent): Promise<SituationIntent>;
+  deleteSituationIntent(id: number): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -3240,6 +3249,38 @@ export class DatabaseStorage implements IStorage {
 
   async getInvestorLeads(): Promise<any[]> {
     return await db.select().from(investorLeads).orderBy(desc(investorLeads.createdAt));
+  }
+
+  async getSituationIntents(organizationId: string): Promise<SituationIntent[]> {
+    return await db.select().from(situationIntents)
+      .where(eq(situationIntents.organizationId, organizationId))
+      .orderBy(desc(situationIntents.updatedAt));
+  }
+
+  async getSituationIntent(organizationId: string, triggerId: string): Promise<SituationIntent | undefined> {
+    const [row] = await db.select().from(situationIntents)
+      .where(and(
+        eq(situationIntents.organizationId, organizationId),
+        eq(situationIntents.triggerId, triggerId)
+      ));
+    return row;
+  }
+
+  async upsertSituationIntent(data: InsertSituationIntent): Promise<SituationIntent> {
+    const existing = await this.getSituationIntent(data.organizationId, data.triggerId);
+    if (existing) {
+      const [updated] = await db.update(situationIntents)
+        .set({ ...data, updatedAt: new Date() })
+        .where(eq(situationIntents.id, existing.id))
+        .returning();
+      return updated;
+    }
+    const [created] = await db.insert(situationIntents).values(data).returning();
+    return created;
+  }
+
+  async deleteSituationIntent(id: number): Promise<void> {
+    await db.delete(situationIntents).where(eq(situationIntents.id, id));
   }
 }
 

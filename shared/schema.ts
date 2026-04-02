@@ -6511,3 +6511,40 @@ export const signalActivityLog = pgTable('signal_activity_log', {
 export const insertSignalActivityLogSchema = createInsertSchema(signalActivityLog).omit({ id: true, createdAt: true });
 export type InsertSignalActivityLog = z.infer<typeof insertSignalActivityLogSchema>;
 export type SignalActivityLog = typeof signalActivityLog.$inferSelect;
+
+// ─── Situation Intent ─────────────────────────────────────────────────────────
+// Captures per-trigger strategic intent, decision brief requirements,
+// primary data point priorities, and situation-specific stakeholder routing.
+export const situationIntents = pgTable('situation_intents', {
+  id: serial('id').primaryKey(),
+  organizationId: varchar('organization_id', { length: 255 }).notNull(),
+  triggerId: varchar('trigger_id', { length: 255 }).notNull(),
+  triggerName: varchar('trigger_name', { length: 255 }).notNull(),
+  triggerDomain: varchar('trigger_domain', { length: 100 }),
+  // Strategic intent
+  protectedOutcome: text('protected_outcome'),
+  businessImpact: varchar('business_impact', { length: 50 }),
+  // 'revenue' | 'market_share' | 'margin' | 'compliance' | 'reputation' | 'operations' | 'customer' | 'talent'
+  urgencyLevel: varchar('urgency_level', { length: 20 }).default('high'),
+  // 'critical' | 'high' | 'medium'
+  // Decision brief — what the exec needs to see at authorization
+  briefRequirements: text('brief_requirements').array().default([]),
+  // Primary data points — which 3 matter most for this specific org/trigger
+  primaryDataPoints: text('primary_data_points').array().default([]),
+  primaryDataPointLabels: text('primary_data_point_labels').array().default([]),
+  // Threshold sensitivity calibration
+  sensitivityLevel: varchar('sensitivity_level', { length: 20 }).default('standard'),
+  // 'low' | 'standard' | 'high' | 'critical'
+  // Situation-specific stakeholder notifications
+  situationStakeholders: jsonb('situation_stakeholders').default([]),
+  // [{name, role, email, notifyOn: 'detection'|'activation'|'both'}]
+  // Free-form context notes
+  contextNotes: text('context_notes'),
+  isConfigured: boolean('is_configured').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const insertSituationIntentSchema = createInsertSchema(situationIntents).omit({ id: true, createdAt: true, updatedAt: true });
+export type InsertSituationIntent = z.infer<typeof insertSituationIntentSchema>;
+export type SituationIntent = typeof situationIntents.$inferSelect;

@@ -209,6 +209,8 @@ const MyPlaybooksPage = lazy(() => import("./pages/identify/MyPlaybooksPage"));
 const IdentifyWizardPage = lazy(() => import("./pages/identify/WizardPage"));
 const IdentifySLAPage = lazy(() => import("./pages/identify/SLAPage"));
 const IdentifyMetricsPage = lazy(() => import("./pages/identify/MetricsPage"));
+const SituationIntentsHub = lazy(() => import("./pages/SituationIntentsHub"));
+const SituationIntentWizard = lazy(() => import("./pages/SituationIntentWizard"));
 
 const DetectDashboardPage = lazy(() => import("./pages/detect/DashboardPage"));
 const DetectAlertsPage = lazy(() => import("./pages/detect/AlertsPage"));
@@ -355,6 +357,8 @@ function Router() {
         <Route path="/identify/metrics" component={IdentifyMetricsPage} />
         <Route path="/identify/playbook-library" component={PlaybookLibraryV2} />
         <Route path="/identify/playbook-command/:id" component={PlaybookCommand} />
+        <Route path="/identify/situation-intents" component={SituationIntentsHub} />
+        <Route path="/identify/situation-intent/new" component={SituationIntentWizard} />
 
         {/* DETECT Phase */}
         <Route path="/detect/dashboard" component={DetectDashboardPage} />

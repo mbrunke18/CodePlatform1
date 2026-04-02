@@ -147,6 +147,12 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     queryKey: ['/api/executive-triggers'],
   });
 
+  const { data: situationIntents = [] } = useQuery<any[]>({
+    queryKey: ['/api/situation-intents'],
+    enabled: isAuthenticated,
+  });
+  const configuredIntentIds = new Set((situationIntents as any[]).map((i: any) => i.triggerId));
+
   const toggleMutation = useMutation({
     mutationFn: ({ id, isActive }: { id: string; isActive: boolean }) =>
       apiRequest('PUT', `/api/executive-triggers/${id}`, { isActive }),
@@ -730,6 +736,22 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             style={{ background: '#E8E4DC', color: '#9CA3AF' }}
                           >
                             Sign In to Activate Playbooks
+                          </button>
+                        )}
+
+                        {/* Configure Intent button */}
+                        {isAuthenticated && (
+                          <button
+                            onClick={() => setLocation(`/identify/situation-intent/new?triggerId=${selectedTrigger.id}&triggerName=${encodeURIComponent(selectedTrigger.name)}&triggerDomain=${encodeURIComponent(selectedTrigger.domain || selectedTrigger.category || '')}`)}
+                            className="mt-2 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity rounded-lg"
+                            style={{
+                              background: configuredIntentIds.has(selectedTrigger.id) ? `${TEAL}12` : 'rgba(0,0,0,0.04)',
+                              border: configuredIntentIds.has(selectedTrigger.id) ? `1px solid ${TEAL}40` : '1px solid #E8E4DC',
+                              color: configuredIntentIds.has(selectedTrigger.id) ? TEAL : '#6B7280',
+                            }}
+                          >
+                            <Target className="w-4 h-4" />
+                            {configuredIntentIds.has(selectedTrigger.id) ? 'Edit Situation Intent ✓' : 'Configure Situation Intent'}
                           </button>
                         )}
                       </section>

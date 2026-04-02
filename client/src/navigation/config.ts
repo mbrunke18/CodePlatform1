@@ -57,6 +57,13 @@ export const navigationConfig: NavigationConfig = {
           path: '/identify/metrics',
           icon: '🎯',
           description: 'Define KPIs and success criteria for playbooks'
+        },
+        {
+          id: 'situation-intents',
+          label: 'Situation Intents',
+          path: '/identify/situation-intents',
+          icon: '🎯',
+          description: 'Per-trigger strategic intent, decision brief, and stakeholder routing'
         }
       ]
     },

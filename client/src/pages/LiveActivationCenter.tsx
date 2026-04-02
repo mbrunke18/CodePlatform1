@@ -27,7 +27,7 @@ import {
   TrendingUp,
   Trophy
 } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { io, Socket } from 'socket.io-client';
 import { BrandStamp } from "@/components/BrandStamp";
 import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
@@ -280,12 +280,21 @@ export default function LiveActivationCenter() {
 
   const activePlaybook = DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook);
 
+  const [, setLocation] = useLocation();
+
   const { data: orgData } = useQuery({
     queryKey: ['/api/organizations'],
     retry: false,
     staleTime: 60000,
   });
   const organizationId = (orgData as any)?.[0]?.id || null;
+
+  const { data: situationIntents = [] } = useQuery<any[]>({
+    queryKey: ['/api/situation-intents'],
+    retry: false,
+    staleTime: 30000,
+  });
+  const configuredIntentCount = Array.isArray(situationIntents) ? situationIntents.length : 0;
 
   const { data: integrationStatus } = useQuery({
     queryKey: ['/api/activation/integrations-status', organizationId],
@@ -592,6 +601,49 @@ export default function LiveActivationCenter() {
                   </Card>
                 );
               })}
+            </div>
+
+            {/* Situation Intent Context Panel */}
+            <div style={{
+              background: configuredIntentCount > 0 ? 'rgba(43,138,110,0.06)' : 'rgba(201,168,76,0.06)',
+              border: configuredIntentCount > 0 ? '1px solid rgba(43,138,110,0.25)' : '1px solid rgba(201,168,76,0.25)',
+              borderRadius: 12, padding: '16px 20px',
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{
+                  width: 36, height: 36, borderRadius: 8,
+                  background: configuredIntentCount > 0 ? 'rgba(43,138,110,0.15)' : 'rgba(201,168,76,0.15)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                }}>
+                  <Target size={16} color={configuredIntentCount > 0 ? '#2B8A6E' : '#C9A84C'} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#0A0F2E', marginBottom: 2 }}>
+                    {configuredIntentCount > 0
+                      ? `${configuredIntentCount} Situation Intent${configuredIntentCount !== 1 ? 's' : ''} Configured`
+                      : 'Situation Intents Not Configured'}
+                  </div>
+                  <div style={{ fontSize: 11, color: '#6B7280' }}>
+                    {configuredIntentCount > 0
+                      ? 'Decision context, primary indicators, and stakeholder routing are pre-staged for these triggers.'
+                      : 'Configure situation intents to pre-stage decision context for the authorizing executive.'}
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => setLocation('/identify/situation-intents')}
+                style={{
+                  flexShrink: 0, padding: '8px 16px',
+                  background: configuredIntentCount > 0 ? 'rgba(43,138,110,0.1)' : '#C9A84C',
+                  border: configuredIntentCount > 0 ? '1px solid rgba(43,138,110,0.3)' : 'none',
+                  borderRadius: 6, fontSize: 12, fontWeight: 700,
+                  color: configuredIntentCount > 0 ? '#2B8A6E' : '#0A0F2E',
+                  cursor: 'pointer',
+                }}
+              >
+                {configuredIntentCount > 0 ? 'View Intents' : 'Configure Now'}
+              </button>
             </div>
 
             <div className="flex items-center justify-center gap-4 pt-8">
