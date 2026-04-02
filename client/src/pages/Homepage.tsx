@@ -2151,6 +2151,31 @@ function PersonalizedROISection() {
             </div>
           </div>
         </div>
+
+        {/* $250M Decision Tax research strip */}
+        <div style={{ marginTop: 48, padding: "24px 32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: `3px solid ${GOLD}`, display: "flex", alignItems: "flex-start", gap: 20 }}>
+          <div style={{ flexShrink: 0, marginTop: 2 }}>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: `${GOLD}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 16 }}>🔬</span>
+            </div>
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>McKinsey Research — Decision Tax Benchmark</div>
+            <div style={{ fontSize: 15, color: "#fff", fontWeight: 600, lineHeight: 1.5, marginBottom: 6 }}>
+              58% of executive decision time is used ineffectively — costing the average Fortune 500 an estimated{" "}
+              <span style={{ color: GOLD }}>$250M annually</span> before a trigger ever fires.
+            </div>
+            <div style={{ fontSize: 12, color: MUTED_DARK, lineHeight: 1.6 }}>
+              Execution OS does not improve the executive decision lens — it bypasses the high-pressure decision moment entirely.
+              The 12-minute window is a <strong style={{ color: "#fff" }}>cognitive preservation strategy</strong>: pre-staged context eliminates the mobilization bottleneck so the right decision is made by the right person with the right information — in the first twelve minutes.
+            </div>
+          </div>
+          <div style={{ flexShrink: 0, textAlign: "right" }}>
+            <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>$250M</div>
+            <div style={{ fontSize: 10, color: MUTED_DARK, marginTop: 4 }}>annual decision tax</div>
+            <div style={{ fontSize: 9, color: MUTED_DARK, marginTop: 2, letterSpacing: "0.05em" }}>Fortune 500 avg · McKinsey</div>
+          </div>
+        </div>
       </div>
     </section>
   );

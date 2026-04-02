@@ -71,7 +71,15 @@ interface SituationStakeholder {
   role: string;
   email: string;
   notifyOn: "detection" | "activation" | "both";
+  decisionOrientation: "financial" | "operational" | "risk" | "growth" | "";
 }
+
+const DECISION_ORIENTATIONS = [
+  { value: "financial", label: "Financial", icon: "💰", desc: "Brief leads with revenue, margin, and dollar exposure" },
+  { value: "operational", label: "Operational", icon: "⚙️", desc: "Brief leads with process, system, and team disruption" },
+  { value: "risk", label: "Risk", icon: "🛡️", desc: "Brief leads with compliance, regulatory, and reputational exposure" },
+  { value: "growth", label: "Growth", icon: "📈", desc: "Brief leads with market position, competitive, and strategic impact" },
+] as const;
 
 interface FormState {
   triggerId: string;
@@ -97,7 +105,7 @@ export default function SituationIntentWizard() {
   const [dpCategoryFilter, setDpCategoryFilter] = useState("all");
   const [newBriefItem, setNewBriefItem] = useState("");
   const [newStakeholder, setNewStakeholder] = useState<SituationStakeholder>({
-    name: "", role: "", email: "", notifyOn: "both"
+    name: "", role: "", email: "", notifyOn: "both", decisionOrientation: ""
   });
 
   const params = new URLSearchParams(window.location.search);
@@ -224,7 +232,7 @@ export default function SituationIntentWizard() {
       ...prev,
       situationStakeholders: [...prev.situationStakeholders, { ...newStakeholder }]
     }));
-    setNewStakeholder({ name: "", role: "", email: "", notifyOn: "both" });
+    setNewStakeholder({ name: "", role: "", email: "", notifyOn: "both", decisionOrientation: "" });
   };
 
   const canProceed = () => {
@@ -694,26 +702,36 @@ export default function SituationIntentWizard() {
                   </div>
                 )}
 
-                {form.situationStakeholders.map((s, i) => (
-                  <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, padding: "14px 16px", marginBottom: 10, display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: "50%", background: `${NAVY}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Users size={16} color={NAVY} />
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{s.name}</div>
-                      <div style={{ fontSize: 11, color: MUTED }}>{s.role} · {s.email}</div>
-                      <div style={{ fontSize: 10, color: TEAL, marginTop: 2, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                        Notify on: {s.notifyOn}
+                {form.situationStakeholders.map((s, i) => {
+                  const orient = DECISION_ORIENTATIONS.find(o => o.value === s.decisionOrientation);
+                  return (
+                    <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, padding: "14px 16px", marginBottom: 10, display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: `${NAVY}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <Users size={16} color={NAVY} />
                       </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{s.name}</div>
+                        <div style={{ fontSize: 11, color: MUTED }}>{s.role} · {s.email}</div>
+                        <div style={{ display: "flex", gap: 8, marginTop: 4, flexWrap: "wrap" }}>
+                          <span style={{ fontSize: 10, color: TEAL, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                            Notify: {s.notifyOn}
+                          </span>
+                          {orient && (
+                            <span style={{ fontSize: 10, background: `${TEAL}12`, color: TEAL, fontWeight: 700, padding: "1px 7px", borderRadius: 4, letterSpacing: "0.06em" }}>
+                              {orient.icon} {orient.label} lens
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => setForm(prev => ({ ...prev, situationStakeholders: prev.situationStakeholders.filter((_, idx) => idx !== i) }))}
+                        style={{ background: "none", border: "none", cursor: "pointer" }}
+                      >
+                        <Trash2 size={14} color={MUTED} />
+                      </button>
                     </div>
-                    <button
-                      onClick={() => setForm(prev => ({ ...prev, situationStakeholders: prev.situationStakeholders.filter((_, idx) => idx !== i) }))}
-                      style={{ background: "none", border: "none", cursor: "pointer" }}
-                    >
-                      <Trash2 size={14} color={MUTED} />
-                    </button>
-                  </div>
-                ))}
+                  );
+                })}
 
                 <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, padding: 16 }}>
                   <div style={{ display: "grid", gap: 10, marginBottom: 12 }}>
@@ -747,6 +765,37 @@ export default function SituationIntentWizard() {
                       <option value="both">On both events</option>
                     </select>
                   </div>
+
+                  {/* Decision Orientation */}
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 8, letterSpacing: "0.05em" }}>
+                      DECISION ORIENTATION <span style={{ color: MUTED, fontWeight: 400, fontSize: 10 }}>— how does this executive process information under pressure?</span>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                      {DECISION_ORIENTATIONS.map(o => {
+                        const selected = newStakeholder.decisionOrientation === o.value;
+                        return (
+                          <button
+                            key={o.value}
+                            type="button"
+                            onClick={() => setNewStakeholder(prev => ({ ...prev, decisionOrientation: selected ? "" : o.value as any }))}
+                            style={{
+                              padding: "8px 10px", border: `1px solid ${selected ? TEAL : BORDER}`,
+                              borderRadius: 6, background: selected ? `${TEAL}10` : "#fff",
+                              cursor: "pointer", textAlign: "left", display: "flex", alignItems: "center", gap: 6,
+                            }}
+                          >
+                            <span style={{ fontSize: 14 }}>{o.icon}</span>
+                            <div>
+                              <div style={{ fontSize: 11, fontWeight: 700, color: selected ? TEAL : NAVY }}>{o.label}</div>
+                              <div style={{ fontSize: 9, color: MUTED, lineHeight: 1.3 }}>{o.desc}</div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
                   <button
                     onClick={addStakeholder}
                     style={{ width: "100%", padding: "10px", background: NAVY, border: "none", borderRadius: 6, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
@@ -866,12 +915,20 @@ export default function SituationIntentWizard() {
                   Situation-Specific Stakeholders ({form.situationStakeholders.length})
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                  {form.situationStakeholders.map((s, i) => (
-                    <div key={i} style={{ background: `${NAVY}05`, border: `1px solid ${BORDER}`, borderRadius: 8, padding: "10px 14px" }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{s.name}</div>
-                      <div style={{ fontSize: 11, color: MUTED }}>{s.role} · Notify on {s.notifyOn}</div>
-                    </div>
-                  ))}
+                  {form.situationStakeholders.map((s, i) => {
+                    const orient = DECISION_ORIENTATIONS.find(o => o.value === s.decisionOrientation);
+                    return (
+                      <div key={i} style={{ background: `${NAVY}05`, border: `1px solid ${BORDER}`, borderRadius: 8, padding: "10px 14px" }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{s.name}</div>
+                        <div style={{ fontSize: 11, color: MUTED }}>{s.role} · Notify on {s.notifyOn}</div>
+                        {orient && (
+                          <div style={{ fontSize: 10, color: TEAL, fontWeight: 600, marginTop: 3 }}>
+                            {orient.icon} {orient.label} decision lens
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}

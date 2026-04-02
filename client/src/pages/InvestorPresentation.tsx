@@ -123,6 +123,7 @@ function InvestorPresentation() {
             {[
               { value: 'Weeks–Months', label: 'Typical mobilization time', sub: 'Signal to first coordinated action' },
               { value: '30%', label: 'Strategic value lost', sub: 'McKinsey research' },
+              { value: '$250M', label: 'Annual decision tax per Fortune 500', sub: '58% of exec time used ineffectively · McKinsey' },
               { value: '82%', label: 'Boards require crisis preparedness', sub: 'Post-2020 governance mandate' },
               { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
                         ].map((s, i) => (
