@@ -875,6 +875,17 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
             triggerDomains: [], // empty = receives all domain alerts
           });
           console.log(`✅ [Magic Link] Auto-enrolled ${email} as stakeholder contact for org ${userOrgs[0].id}`);
+
+          // Immediately run a signal scan for this new org so the user receives
+          // a live trigger alert email — demonstrating the platform in real-time.
+          const orgId = userOrgs[0].id;
+          import('./services/LiveSignalIngestionService.js').then(({ liveSignalIngestionService }) => {
+            liveSignalIngestionService.runIngestionCycle(orgId).then(result => {
+              console.log(`📡 [Magic Link] Welcome scan for ${email}: ${result.detections} detection(s) — alert sent`);
+            }).catch(err => {
+              console.warn(`⚠ [Magic Link] Welcome scan failed for ${email}:`, err.message);
+            });
+          });
         } catch (scErr: any) {
           console.error('[Magic Link] Stakeholder contact auto-enroll failed:', scErr.message);
         }
