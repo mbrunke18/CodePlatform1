@@ -17,13 +17,6 @@ export const navigationConfig: NavigationConfig = {
           description: 'Browse all 170 pre-built playbooks across 9 domains'
         },
         {
-          id: 'templates',
-          label: 'Scenario Templates',
-          path: '/identify/templates',
-          icon: '📋',
-          description: 'Pre-configured templates by industry and threat type'
-        },
-        {
           id: 'my-playbooks',
           label: 'My Playbooks',
           path: '/identify/my-playbooks',
@@ -31,11 +24,25 @@ export const navigationConfig: NavigationConfig = {
           description: 'Your customized playbooks ready for activation'
         },
         {
+          id: 'situation-intents',
+          label: 'Situation Intents',
+          path: '/identify/situation-intents',
+          icon: '🗂️',
+          description: 'The Install — define what you\'re protecting, the executive decision brief, and stakeholder routing per trigger'
+        },
+        {
           id: 'wizard',
           label: 'Create Playbook',
           path: '/identify/wizard',
           icon: '➕',
           description: 'Build a new playbook from scratch or template'
+        },
+        {
+          id: 'templates',
+          label: 'Scenario Templates',
+          path: '/identify/templates',
+          icon: '📋',
+          description: 'Pre-configured templates by industry and threat type'
         },
         {
           id: 'strategic-recorder',
@@ -55,15 +62,8 @@ export const navigationConfig: NavigationConfig = {
           id: 'metrics',
           label: 'Success Metrics',
           path: '/identify/metrics',
-          icon: '🎯',
+          icon: '📊',
           description: 'Define KPIs and success criteria for playbooks'
-        },
-        {
-          id: 'situation-intents',
-          label: 'Situation Intents',
-          path: '/identify/situation-intents',
-          icon: '🎯',
-          description: 'Per-trigger strategic intent, decision brief, and stakeholder routing'
         }
       ]
     },
@@ -80,6 +80,13 @@ export const navigationConfig: NavigationConfig = {
           path: '/detect/dashboard',
           icon: '📊',
           description: 'Real-time view of all monitored signals'
+        },
+        {
+          id: 'triggers-management',
+          label: 'AI Trigger Monitoring',
+          path: '/triggers-management',
+          icon: '⚡',
+          description: '221 triggers — configure thresholds, situation intents, and notification routing'
         },
         {
           id: 'alerts',

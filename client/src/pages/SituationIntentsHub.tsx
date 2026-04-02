@@ -86,7 +86,7 @@ export default function SituationIntentsHub() {
               style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 22px", background: GOLD, border: "none", borderRadius: 8, fontSize: 14, fontWeight: 700, color: NAVY, cursor: "pointer" }}
             >
               <Plus size={16} />
-              Configure Situation
+              New Situation Intent
             </button>
           </div>
 
