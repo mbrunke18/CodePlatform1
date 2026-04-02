@@ -639,10 +639,11 @@ export default function MissionControl() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
               {[
+                { label: 'Situation Intents', href: '/identify/situation-intents', gold: true },
                 { label: 'Playbook Library', href: '/playbooks', gold: false },
                 { label: 'Trigger Intelligence', href: '/triggers-management', gold: false },
                 { label: 'Signal Intelligence', href: '/signal-intelligence', gold: false },
-                { label: 'Board Readiness', href: '/board-readiness', gold: true },
+                { label: 'Board Readiness', href: '/board-readiness', gold: false },
                 { label: 'Execution History', href: '/execution-history', gold: false },
                 { label: 'Settings', href: '/settings', gold: false },
               ].map(({ label, href, gold }) => (

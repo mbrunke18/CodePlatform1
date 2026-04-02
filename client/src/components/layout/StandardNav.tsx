@@ -140,6 +140,7 @@ export default function StandardNav() {
       heading: "Inside the Platform",
       links: [
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "NOC-style executive hub — live alerts, domain board, activation", featured: true },
+        { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of the IDEA cycle", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Public NOC wall display — live triggers, domain status, signal ticker", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "Situations Hub", path: "/situations-hub", icon: Shield, description: "All 9 domains — readiness, drills & live coordination" },
