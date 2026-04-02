@@ -38676,7 +38676,7 @@ import crypto3 from "crypto";
 import { eq as eq10 } from "drizzle-orm";
 var NAVY2 = "#0A0F2E";
 var GOLD2 = "#C9A84C";
-var TRIAL_HOURS = 24;
+var TRIAL_HOURS = 48;
 var resend = new Resend4(process.env.RESEND_API_KEY);
 function generateToken2() {
   return crypto3.randomBytes(48).toString("hex");
@@ -38700,14 +38700,14 @@ function buildTrialEmailHtml(data, activationUrl) {
         <tr>
           <td style="background:${NAVY2};padding:28px 40px;">
             <div style="color:${GOLD2};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
-            <div style="color:#ffffff;font-size:20px;font-weight:700;">Your 24-Hour Trial Access Is Ready</div>
+            <div style="color:#ffffff;font-size:20px;font-weight:700;">Your 48-Hour Trial Access Is Ready</div>
           </td>
         </tr>
         <tr>
           <td style="padding:36px 40px;">
             <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${data.firstName},</p>
             <p style="margin:0 0 24px;color:#374151;font-size:15px;line-height:1.6;">
-              You now have full access to the Execution OS platform for the next <strong>24 hours</strong>. 
+              You now have full access to the Execution OS platform for the next <strong>48 hours</strong>. 
               Explore the complete platform \u2014 live trigger detection, 170 pre-staged playbooks, 
               Mission Control, and the full IDEA Framework in action.
             </p>
@@ -38757,7 +38757,7 @@ async function createTrialSession(data) {
     const { error } = await resend.emails.send({
       from: "Execution OS <onboarding@resend.dev>",
       to: data.email,
-      subject: `Your 24-Hour Trial Access to Execution OS`,
+      subject: `Your 48-Hour Trial Access to Execution OS`,
       html: buildTrialEmailHtml({ firstName: data.firstName, company: data.company }, activationUrl)
     });
     if (!error) emailSent = true;

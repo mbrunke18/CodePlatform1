@@ -395,6 +395,37 @@ export default function MissionControl() {
             ))}
           </div>
 
+          {/* ── CONFIGURE YOUR OS ──────────────────────────────────────────── */}
+          <div style={{ marginBottom: 18 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>CONFIGURE YOUR OS</span>
+              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+              {[
+                { label: 'Situation Intents', desc: 'Define what you\'re watching for — the starting point', href: '/identify/situation-intents', gold: true, icon: '🎯' },
+                { label: 'Trigger Configuration', desc: 'Set signal thresholds & monitoring rules', href: '/triggers-management', gold: false, icon: '⚡' },
+                { label: 'Stakeholder Registry', desc: 'Map who gets notified when triggers fire', href: '/stakeholders', gold: false, icon: '👥' },
+                { label: 'Playbook Library', desc: '170 pre-staged playbooks ready to deploy', href: '/playbooks', gold: false, icon: '📚' },
+              ].map(({ label, desc, href, gold, icon }) => (
+                <a key={href} href={href} style={{
+                  display: 'block', textDecoration: 'none',
+                  background: gold ? 'rgba(201,168,76,0.1)' : 'rgba(255,255,255,0.03)',
+                  border: `1px solid ${gold ? 'rgba(201,168,76,0.4)' : 'rgba(255,255,255,0.07)'}`,
+                  borderRadius: 8, padding: '12px 14px',
+                  transition: 'all 0.15s',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
+                    <span style={{ fontSize: 14 }}>{icon}</span>
+                    <span style={{ color: gold ? GOLD : 'rgba(255,255,255,0.8)', fontWeight: 700, fontSize: 12 }}>{label}</span>
+                    {gold && <span style={{ marginLeft: 'auto', background: GOLD, color: NAVY, fontSize: 8, fontWeight: 800, padding: '1px 6px', borderRadius: 3, letterSpacing: '0.08em' }}>START HERE</span>}
+                  </div>
+                  <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, lineHeight: 1.4 }}>{desc}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
           {/* ── RESEARCH CONSENSUS INDICATOR ──────────────────────────────── */}
           <div style={{ background: 'rgba(43,138,110,0.03)', border: '1px solid rgba(43,138,110,0.1)', borderRadius: 8, padding: '9px 18px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' as const }}>
             <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', flexShrink: 0 }}>RESEARCH CONSENSUS</span>
