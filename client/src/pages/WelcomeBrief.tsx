@@ -91,6 +91,7 @@ export default function WelcomeBrief() {
   const { data, isLoading } = useQuery<any>({ queryKey: ['/api/org/welcome-brief'] });
 
   useEffect(() => {
+    markWelcomeBriefSeen();
     const t1 = setTimeout(() => setHeroVisible(true), 100);
     const t2 = setTimeout(() => setStatsVisible(true), 500);
     const t3 = setTimeout(() => setContentVisible(true), 900);
