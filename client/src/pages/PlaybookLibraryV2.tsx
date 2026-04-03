@@ -600,6 +600,41 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
           <div className="grid md:grid-cols-3 gap-4">
             {sortedFiltered.map((playbook) => {
               const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
+              const isLocked = !isAuthenticated && !SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
+
+              // LOCKED CARD — guests cannot see content of the 167 gated playbooks
+              if (isLocked) {
+                return (
+                  <Card key={playbook.id} className="border-[#E8E4DC] flex flex-col" style={{ background: "#FAFAF9" }}>
+                    <div className="p-5 flex flex-col flex-1">
+                      <div className="flex items-center gap-2 mb-4">
+                        <Lock className="h-3 w-3" style={{ color: "#C9A84C" }} />
+                        <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pilot Access Required</span>
+                      </div>
+                      <div className="flex-1 flex flex-col items-center justify-center py-4 text-center">
+                        <div style={{ width: 40, height: 40, borderRadius: "50%", background: "rgba(10,15,46,0.06)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                          <Lock className="h-5 w-5" style={{ color: "#9CA3AF" }} />
+                        </div>
+                        <p style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 4 }}>Full Playbook Access</p>
+                        <p style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.5, marginBottom: 4 }}>Domain: <span style={{ color: "#6B7280", fontWeight: 600 }}>{playbook.domain}</span></p>
+                        <p style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.5 }}>This playbook is available to pilot and enterprise customers.</p>
+                      </div>
+                      <div className="pt-3 border-t" style={{ borderColor: "#E8E4DC" }}>
+                        <Button
+                          size="sm"
+                          className="w-full font-bold uppercase tracking-wider"
+                          style={{ background: "#0A0F2E", color: "white", fontSize: 10, height: "auto", padding: "6px 12px" }}
+                          onClick={() => setLocation("/request-access")}
+                        >
+                          Request Pilot Access
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              }
+
+              // FULL CARD — 3 sample playbooks (guests) or all playbooks (authenticated)
               return (
               <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5 flex flex-col flex-1">
@@ -611,15 +646,10 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                           <Check className="h-3 w-3 text-[#2B8A6E]" />
                           <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Enterprise Tier</span>
                         </>
-                      ) : SAMPLE_PLAYBOOK_NAMES.has(playbook.name) ? (
+                      ) : (
                         <>
                           <Eye className="h-3 w-3 text-[#2B8A6E]" />
                           <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Free Sample</span>
-                        </>
-                      ) : (
-                        <>
-                          <Lock className="h-3 w-3 text-[#C9A84C]" />
-                          <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Execution Ready</span>
                         </>
                       )}
                     </div>
@@ -691,27 +721,20 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       )}
                       <Button
                         size="sm"
-                        style={{
-                          background: "#0A0F2E",
-                          color: "white", fontSize: 10, padding: "4px 12px", height: "auto"
-                        }}
+                        style={{ background: "#0A0F2E", color: "white", fontSize: 10, padding: "4px 12px", height: "auto" }}
                         className="font-bold uppercase tracking-wider"
                         onClick={() => {
                           if (isAuthenticated) {
                             setLocation(`/playbook-customize/${playbook.id}`);
-                          } else if (SAMPLE_PLAYBOOK_NAMES.has(playbook.name)) {
-                            setLocation(`/playbook-library/${playbook.id}`);
                           } else {
-                            setLocation("/request-access");
+                            setLocation(`/playbook-library/${playbook.id}`);
                           }
                         }}
                       >
                         {isAuthenticated ? (
                           <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
-                        ) : SAMPLE_PLAYBOOK_NAMES.has(playbook.name) ? (
-                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
                         ) : (
-                          <span>Get Access</span>
+                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
                         )}
                       </Button>
                     </div>
