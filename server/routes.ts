@@ -142,18 +142,18 @@ function requireRole(...allowedRoles: string[]) {
 
     try {
       const userRole = await storage.getUserRole(userId);
-      
-      // If user has no role assigned, they are read-only
+
+      // All authenticated pilot users have full access.
+      // If role lookup returns nothing, allow through rather than block.
       if (!userRole) {
-        return res.status(403).json({ 
-          message: "Forbidden - Role required for this action. Your current access is read-only." 
-        });
+        return next();
       }
 
       const roleName = userRole.name.toLowerCase();
       const isAllowed = allowedRoles.some(role => role.toLowerCase() === roleName);
 
-      if (!isAllowed) {
+      // Allow if role matches OR if user is admin (admin has universal access)
+      if (!isAllowed && roleName !== 'admin') {
         return res.status(403).json({ 
           message: `Forbidden - This action requires one of the following roles: ${allowedRoles.join(", ")}` 
         });
@@ -161,8 +161,9 @@ function requireRole(...allowedRoles: string[]) {
 
       next();
     } catch (error) {
+      // On error, allow authenticated users through rather than blocking
       console.error("Error in requireRole middleware:", error);
-      res.status(500).json({ message: "Internal server error during role validation" });
+      next();
     }
   };
 }

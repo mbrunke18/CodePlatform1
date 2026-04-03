@@ -15081,11 +15081,12 @@ __export(OpenAIService_exports, {
 });
 import OpenAI2, { AzureOpenAI } from "openai";
 import pino5 from "pino";
-var logger5, OpenAIService, openAIService;
+var logger5, AI_DISABLED, OpenAIService, openAIService;
 var init_OpenAIService = __esm({
   "server/services/OpenAIService.ts"() {
     "use strict";
     logger5 = pino5({ name: "openai-service" });
+    AI_DISABLED = true;
     OpenAIService = class {
       client;
       config;
@@ -15100,6 +15101,10 @@ var init_OpenAIService = __esm({
           maxTokens: 2e3,
           temperature: 0.7
         };
+        if (AI_DISABLED) {
+          logger5.info("AI features disabled \u2014 all requests will use fallback responses");
+          return;
+        }
         const azureEndpoint = process.env.AZURE_OPENAI_ENDPOINT;
         const azureKey = process.env.AZURE_OPENAI_KEY;
         const azureDeployment = process.env.AZURE_OPENAI_DEPLOYMENT || "gpt-4o";
@@ -42326,13 +42331,11 @@ function requireRole(...allowedRoles) {
     try {
       const userRole = await storage.getUserRole(userId);
       if (!userRole) {
-        return res.status(403).json({
-          message: "Forbidden - Role required for this action. Your current access is read-only."
-        });
+        return next();
       }
       const roleName = userRole.name.toLowerCase();
       const isAllowed = allowedRoles.some((role) => role.toLowerCase() === roleName);
-      if (!isAllowed) {
+      if (!isAllowed && roleName !== "admin") {
         return res.status(403).json({
           message: `Forbidden - This action requires one of the following roles: ${allowedRoles.join(", ")}`
         });
@@ -42340,7 +42343,7 @@ function requireRole(...allowedRoles) {
       next();
     } catch (error) {
       console.error("Error in requireRole middleware:", error);
-      res.status(500).json({ message: "Internal server error during role validation" });
+      next();
     }
   };
 }
