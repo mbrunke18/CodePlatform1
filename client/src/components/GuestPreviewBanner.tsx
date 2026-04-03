@@ -40,7 +40,7 @@ export function GuestPreviewBanner() {
           <Clock size={14} color={GOLD} style={{ flexShrink: 0 }} />
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
             <strong style={{ color: GOLD, fontWeight: 700 }}>Your 48-hour trial has ended.</strong>
-            {' '}Ready to go deeper? Apply for the Pilot Program — or request extended access if you need more time.
+            {' '}Ready to activate your organization? Request pilot access — or reach out if you need more time to explore.
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>

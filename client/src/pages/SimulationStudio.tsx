@@ -209,6 +209,25 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                   )}
                 </div>
               )}
+
+              {result && (
+                <div style={{ marginTop: 20, padding: '16px 20px', background: NAVY, borderTop: `3px solid ${GOLD}` }}>
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 6 }}>
+                    Want these 170 playbooks armed and ready before the trigger fires?
+                  </p>
+                  <a
+                    href="/request-access"
+                    style={{
+                      display: 'inline-block', background: GOLD, color: NAVY,
+                      padding: '9px 22px', fontSize: 10, fontWeight: 800,
+                      textTransform: 'uppercase' as const, letterSpacing: '0.15em',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Request Pilot Access →
+                  </a>
+                </div>
+              )}
             </div>
 
             {/* Right: History + How it works */}

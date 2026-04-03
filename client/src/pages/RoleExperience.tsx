@@ -1515,7 +1515,7 @@ export default function RoleExperience() {
         return (
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Shield className="h-3 w-3 mr-1" /> HUMAN-AI PARTNERSHIP</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Shield className="h-3 w-3 mr-1" /> AI MONITORS — EXECUTIVES AUTHORIZE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{role.name.split(' ')[0]} Makes the Call</h2>
               <p className="text-gray-800">AI recommends. The executive decides. Always.</p>
             </div>
@@ -1562,7 +1562,7 @@ export default function RoleExperience() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
               className="text-center text-sm text-gray-800 mt-6"
             >
-              Every activation requires human approval. Execution OS accelerates the process — humans retain full decision authority.
+              No playbook activates without executive sign-off. Execution OS pre-stages the preparation — the decision remains human.
             </motion.p>
           </div>
         );
@@ -1789,14 +1789,14 @@ export default function RoleExperience() {
             >
               <p className="text-gray-800">Every execution makes the next one faster, smarter, and more effective.</p>
               <div className="flex items-center justify-center gap-4">
-                <Link href="/onboarding">
-                  <Button variant="outline" className="border-white/20 text-gray-900 hover:bg-white/10">
+                <Link href="/role-selector">
+                  <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/5">
                     <ArrowLeft className="h-4 w-4 mr-2" /> Try Another Role
                   </Button>
                 </Link>
-                <Link href="/onboarding">
-                  <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">
-                    <Rocket className="h-4 w-4 mr-2" /> Start Your Pilot
+                <Link href="/request-access">
+                  <Button className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold">
+                    <Rocket className="h-4 w-4 mr-2" /> Request Pilot Access
                   </Button>
                 </Link>
               </div>
