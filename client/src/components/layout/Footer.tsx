@@ -75,6 +75,7 @@ export default function Footer() {
         { label: "Request Access", path: "/request-access" },
         { label: "Investors", path: "/investors" },
         { label: "Contact", path: "/contact" },
+        { label: "Terms of Service", path: "/terms" },
       ]
     },
   ];

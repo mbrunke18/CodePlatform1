@@ -33554,6 +33554,7 @@ init_storage();
 init_EnterpriseJobService();
 init_WebSocketService();
 import { createServer } from "http";
+import rateLimit from "express-rate-limit";
 
 // server/services/DemoOrchestrationService.ts
 init_WebSocketService();
@@ -42939,6 +42940,63 @@ async function seedFlagshipPlaybooks() {
 }
 async function registerRoutes(app2, existingServer) {
   await setupAuth(app2);
+  const publicApiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1e3,
+    // 15 minutes
+    max: 60,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Too many requests. Please try again later." },
+    skip: (req) => !!req.isAuthenticated?.()
+  });
+  const playbookLibraryLimiter = rateLimit({
+    windowMs: 15 * 60 * 1e3,
+    max: 30,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Rate limit exceeded on playbook library. Authenticated access has no limits." },
+    skip: (req) => !!req.isAuthenticated?.()
+  });
+  app2.use("/api/playbook-library", playbookLibraryLimiter);
+  app2.use("/api/playbooks/metadata", publicApiLimiter);
+  app2.use("/api/playbooks/templates", publicApiLimiter);
+  const NOINDEX_PREFIXES = [
+    "/dashboard",
+    "/mission-control",
+    "/playbook-activation",
+    "/triggers-management",
+    "/signal-intelligence",
+    "/signal-configuration",
+    "/command-tower",
+    "/simulation-studio",
+    "/strategic-recorder",
+    "/roi-dashboard",
+    "/executive-summary",
+    "/workspace",
+    "/board-readiness",
+    "/welcome-brief",
+    "/onboarding",
+    "/settings",
+    "/organization-setup",
+    "/audit-logging",
+    "/investor-resources",
+    "/investor-presentation",
+    "/board-briefings",
+    "/demo-access",
+    "/magic-login",
+    "/admin",
+    "/try-demo",
+    "/begin",
+    "/start",
+    "/test-drive"
+  ];
+  app2.use((req, res, next) => {
+    const path3 = req.path;
+    if (NOINDEX_PREFIXES.some((prefix) => path3 === prefix || path3.startsWith(prefix + "/"))) {
+      res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    }
+    next();
+  });
   app2.use("/api", conditionalAuth);
   app2.use("/api/intelligence", intelligence_routes_default);
   app2.use("/api/pilot", pilot_routes_default);
@@ -50070,7 +50128,7 @@ import { count as count8, eq as eq48, sql as sql20 } from "drizzle-orm";
 import pino17 from "pino";
 import pinoHttp from "pino-http";
 import helmet from "helmet";
-import rateLimit from "express-rate-limit";
+import rateLimit2 from "express-rate-limit";
 
 // server/middleware/rawBodyParser.ts
 function rawBodyParser(req, res, next) {
@@ -50217,7 +50275,7 @@ app.use(
     crossOriginResourcePolicy: { policy: "cross-origin" }
   })
 );
-var apiLimiter = rateLimit({
+var apiLimiter = rateLimit2({
   windowMs: 15 * 60 * 1e3,
   // 15 minutes
   max: 1e3,
@@ -50229,7 +50287,7 @@ var apiLimiter = rateLimit({
     return req.path === "/health" || req.path === "/_health";
   }
 });
-var authLimiter = rateLimit({
+var authLimiter = rateLimit2({
   windowMs: 15 * 60 * 1e3,
   // 15 minutes
   max: 20,

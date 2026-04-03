@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import rateLimit from "express-rate-limit";
 import { storage } from "./storage";
 import { enterpriseJobService } from "./services/EnterpriseJobService";
 import { wsService } from "./services/WebSocketService";
@@ -753,6 +754,49 @@ async function seedFlagshipPlaybooks() {
 export async function registerRoutes(app: Express, existingServer?: Server): Promise<Server> {
   // Setup authentication with Replit OIDC
   await setupAuth(app);
+
+  // Rate limiters — protect public endpoints from AI scrapers and bulk enumeration
+  const publicApiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 60,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Too many requests. Please try again later." },
+    skip: (req) => !!req.isAuthenticated?.(),
+  });
+
+  const playbookLibraryLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 30,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Rate limit exceeded on playbook library. Authenticated access has no limits." },
+    skip: (req) => !!req.isAuthenticated?.(),
+  });
+
+  app.use('/api/playbook-library', playbookLibraryLimiter);
+  app.use('/api/playbooks/metadata', publicApiLimiter);
+  app.use('/api/playbooks/templates', publicApiLimiter);
+
+  // X-Robots-Tag: noindex for authenticated platform pages and demo flows
+  // Prevents indexing of platform internals by search engines and AI crawlers
+  const NOINDEX_PREFIXES = [
+    '/dashboard', '/mission-control', '/playbook-activation', '/triggers-management',
+    '/signal-intelligence', '/signal-configuration', '/command-tower',
+    '/simulation-studio', '/strategic-recorder', '/roi-dashboard',
+    '/executive-summary', '/workspace', '/board-readiness', '/welcome-brief',
+    '/onboarding', '/settings', '/organization-setup', '/audit-logging',
+    '/investor-resources', '/investor-presentation', '/board-briefings',
+    '/demo-access', '/magic-login', '/admin',
+    '/try-demo', '/begin', '/start', '/test-drive',
+  ];
+  app.use((req: any, res, next) => {
+    const path = req.path;
+    if (NOINDEX_PREFIXES.some(prefix => path === prefix || path.startsWith(prefix + '/'))) {
+      res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    }
+    next();
+  });
 
   // Apply conditional authentication to all API routes
   // Public routes are defined in authConfig.ts and skip auth

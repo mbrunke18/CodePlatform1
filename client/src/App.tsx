@@ -58,6 +58,7 @@ const PlaybookLibraryV2 = lazy(() => import("./pages/PlaybookLibraryV2"));
 const PlaybookDetail = lazy(() => import("./pages/PlaybookDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Pricing = lazy(() => import("./pages/Pricing"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Investors = lazy(() => import("./pages/Investors"));
 const InvestorLanding = lazy(() => import("./pages/InvestorLanding"));
 const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
@@ -455,6 +456,7 @@ function Router() {
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/idea-framework" component={IDEAFramework} />
         <Route path="/pricing" component={Pricing} />
+        <Route path="/terms" component={TermsOfService} />
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         <Route path="/pilot-program" component={PilotProgram} />

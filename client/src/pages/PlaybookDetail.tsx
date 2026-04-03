@@ -486,11 +486,35 @@ export default function PlaybookDetail() {
                                     <span style={{ fontSize: 13, color: NAVY }}>{phase.objective}</span>
                                   </div>
 
-                                  {phase.tasks.map((task: any, ti: number) => (
-                                    <RoleTaskCard key={ti} task={task} index={ti} />
-                                  ))}
+                                  {isSampleView ? (
+                                    <>
+                                      {phase.tasks.slice(0, 1).map((task: any, ti: number) => (
+                                        <RoleTaskCard key={ti} task={task} index={ti} />
+                                      ))}
+                                      {phase.tasks.length > 1 && (
+                                        <div style={{ border: `1px solid ${GOLD}`, background: "rgba(201,168,76,0.04)", padding: "20px 24px", marginTop: 12, textAlign: "center" }}>
+                                          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>
+                                            {phase.tasks.length - 1} more task{phase.tasks.length > 2 ? "s" : ""} in this phase
+                                          </div>
+                                          <div style={{ fontSize: 13, color: MUTED, marginBottom: 16, lineHeight: 1.6 }}>
+                                            Task sequences, decision rights mapping, stakeholder sequencing, and decision gates are available to pilot participants.
+                                          </div>
+                                          <button
+                                            onClick={() => login()}
+                                            style={{ background: NAVY, color: "#fff", border: "none", padding: "10px 24px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", cursor: "pointer" }}
+                                          >
+                                            Sign In to View Full Sequence
+                                          </button>
+                                        </div>
+                                      )}
+                                    </>
+                                  ) : (
+                                    phase.tasks.map((task: any, ti: number) => (
+                                      <RoleTaskCard key={ti} task={task} index={ti} />
+                                    ))
+                                  )}
 
-                                  {phase.restrictions && phase.restrictions.length > 0 && (
+                                  {!isSampleView && phase.restrictions && phase.restrictions.length > 0 && (
                                     <div style={{ border: `1px solid #FCA5A5`, background: "#FFF5F5", padding: 16, marginTop: 16 }}>
                                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                                         <AlertCircle size={13} color="#EF4444" />
@@ -504,7 +528,7 @@ export default function PlaybookDetail() {
                                     </div>
                                   )}
 
-                                  <DecisionGateBlock gate={phase.decisionGate} />
+                                  {!isSampleView && <DecisionGateBlock gate={phase.decisionGate} />}
                                 </div>
                               )}
                             </div>
