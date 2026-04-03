@@ -1,8 +1,8 @@
 import type { Express } from "express";
 import { db } from "../db";
-import { users } from "@shared/schema";
-import { eq, desc } from "drizzle-orm";
-import { requireAuth, getUserId } from "./helpers";
+import { users, customTriggers } from "@shared/schema";
+import { eq, desc, and } from "drizzle-orm";
+import { requireAuth, requireOrgAccess, getUserId, getOrgIdForUser } from "./helpers";
 
 export async function registerDynamicStrategyRoutes(app: Express): Promise<void> {
 
@@ -284,6 +284,80 @@ export async function registerDynamicStrategyRoutes(app: Express): Promise<void>
       });
     } catch (error: any) {
       console.error('Error generating demo data:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // ===== DYNAMIC STRATEGY CUSTOM TRIGGERS =====
+  app.get('/api/dynamic-strategy/triggers', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const triggers = await db.select().from(customTriggers)
+        .where(eq(customTriggers.organizationId, orgId))
+        .orderBy(desc(customTriggers.createdAt));
+      res.json(triggers);
+    } catch (error: any) {
+      console.error('Error fetching dynamic-strategy triggers:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.post('/api/dynamic-strategy/triggers', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const userId = getUserId(req);
+      const { name, description, category, conditionField, conditionOperator, conditionValue, conditionUnit, severity, isActive, recommendedPlaybooks } = req.body;
+      if (!name || !category || !conditionField || !conditionOperator) {
+        return res.status(400).json({ error: 'name, category, conditionField, and conditionOperator are required' });
+      }
+      const [created] = await db.insert(customTriggers).values({
+        organizationId: orgId,
+        createdBy: userId as string,
+        name, description: description || null,
+        category, conditionField, conditionOperator,
+        conditionValue: conditionValue ? String(conditionValue) : null,
+        conditionUnit: conditionUnit || null,
+        severity: severity || 'medium',
+        isActive: isActive !== false,
+        recommendedPlaybooks: recommendedPlaybooks || [],
+      }).returning();
+      res.status(201).json(created);
+    } catch (error: any) {
+      console.error('Error creating dynamic-strategy trigger:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.patch('/api/dynamic-strategy/triggers/:id', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { id } = req.params;
+      const updates: Record<string, any> = {};
+      const allowed = ['name', 'description', 'isActive', 'severity', 'conditionValue', 'conditionOperator', 'recommendedPlaybooks'];
+      for (const key of allowed) {
+        if (req.body[key] !== undefined) updates[key] = req.body[key];
+      }
+      updates.updatedAt = new Date();
+      const [updated] = await db.update(customTriggers).set(updates)
+        .where(and(eq(customTriggers.id, id), eq(customTriggers.organizationId, orgId))).returning();
+      if (!updated) return res.status(404).json({ error: 'Trigger not found' });
+      res.json(updated);
+    } catch (error: any) {
+      console.error('Error updating dynamic-strategy trigger:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  app.delete('/api/dynamic-strategy/triggers/:id', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { id } = req.params;
+      const [deleted] = await db.delete(customTriggers)
+        .where(and(eq(customTriggers.id, id), eq(customTriggers.organizationId, orgId))).returning();
+      if (!deleted) return res.status(404).json({ error: 'Trigger not found' });
+      res.json({ success: true });
+    } catch (error: any) {
+      console.error('Error deleting dynamic-strategy trigger:', error);
       res.status(500).json({ error: error.message });
     }
   });

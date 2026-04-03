@@ -880,16 +880,415 @@ export default function PlaybookCustomize() {
                 </div>
               )}
 
-              {/* Other sections would follow the same pattern - truncated for length */}
-              {activeSection !== 'basic' && activeSection !== 'triggers' && (
-                <div className="py-20 text-center space-y-4">
-                  <div className="w-16 h-16 bg-[#F8F7F4] rounded-full flex items-center justify-center mx-auto border border-[#E8E4DC]">
-                    <Settings className="w-8 h-8 text-[#C9A84C] animate-spin-slow" />
+              {/* ── STAKEHOLDERS ─────────────────────────────────── */}
+              {activeSection === 'stakeholders' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Stakeholder Roster</h3>
+                      <p className="text-sm text-[#6B7280]">Define roles, responsibilities, and notification paths</p></div>
+                    <Button onClick={() => stakeholdersArray.append({ role: '', responsibility: '', notificationChannels: [], isBackup: false })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Stakeholder</Button>
                   </div>
-                  <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Configuration Section: {sections.find(s => s.id === activeSection)?.label}</h3>
-                  <p className="text-[#6B7280] max-w-md mx-auto">This strategic configuration module allows full customization of your organizational execution parameters for this playbook.</p>
-                  <div className="pt-4">
-                    <Badge className="bg-[#C9A84C]/10 text-[#C9A84C] border-[#C9A84C]/20 uppercase tracking-widest text-[10px] px-4 py-1">Advanced Module</Badge>
+                  {stakeholdersArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><Users className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No stakeholders added yet. Click "Add Stakeholder" to begin.</p></div>}
+                  <div className="space-y-4">
+                    {stakeholdersArray.fields.map((field, index) => (
+                      <Card key={field.id} className="border-[#E8E4DC] shadow-none">
+                        <CardContent className="p-6 space-y-4">
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Role / Title</Label><Input {...register(`stakeholders.${index}.role`)} placeholder="e.g. Chief Communications Officer" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Responsibility</Label><Input {...register(`stakeholders.${index}.responsibility`)} placeholder="e.g. Lead external communications" /></div>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3 px-3 py-2 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                              <Controller name={`stakeholders.${index}.isBackup`} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
+                              <span className="text-xs font-bold uppercase tracking-wider text-[#0A0F2E]">Backup Role</span>
+                            </div>
+                            <Button variant="ghost" size="icon" onClick={() => stakeholdersArray.remove(index)} className="text-[#6B7280] hover:text-red-600"><Trash2 className="w-4 h-4" /></Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── DEPENDENCIES ─────────────────────────────────── */}
+              {activeSection === 'dependencies' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">External Dependencies</h3>
+                      <p className="text-sm text-[#6B7280]">Vendors, systems, and partners required for execution</p></div>
+                    <Button onClick={() => dependenciesArray.append({ id: generateId(), type: 'vendor', name: '', contactInfo: '', criticality: 'high', notes: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Dependency</Button>
+                  </div>
+                  {dependenciesArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><Link2 className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No dependencies defined. Click "Add Dependency" to document what you rely on.</p></div>}
+                  <div className="space-y-4">
+                    {dependenciesArray.fields.map((field, index) => (
+                      <Card key={field.id} className="border-[#E8E4DC] shadow-none">
+                        <CardContent className="p-6 space-y-4">
+                          <div className="grid md:grid-cols-3 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Type</Label>
+                              <Controller name={`dependencies.${index}.type`} control={control} render={({ field: f }) => (
+                                <Select onValueChange={f.onChange} value={f.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{DEPENDENCY_TYPES.map(t => <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>)}</SelectContent></Select>
+                              )} /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Name</Label><Input {...register(`dependencies.${index}.name`)} placeholder="e.g. AWS CloudFront, Legal Counsel" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Criticality</Label>
+                              <Controller name={`dependencies.${index}.criticality`} control={control} render={({ field: f }) => (
+                                <Select onValueChange={f.onChange} value={f.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="critical">Critical</SelectItem><SelectItem value="high">High</SelectItem><SelectItem value="medium">Medium</SelectItem><SelectItem value="low">Low</SelectItem></SelectContent></Select>
+                              )} /></div>
+                          </div>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Contact Info</Label><Input {...register(`dependencies.${index}.contactInfo`)} placeholder="Email, phone, or escalation path" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Notes</Label><Input {...register(`dependencies.${index}.notes`)} placeholder="SLA, backup options, or contingency" /></div>
+                          </div>
+                          <div className="flex justify-end"><Button variant="ghost" size="icon" onClick={() => dependenciesArray.remove(index)} className="text-[#6B7280] hover:text-red-600"><Trash2 className="w-4 h-4" /></Button></div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── GOVERNANCE ─────────────────────────────────── */}
+              {activeSection === 'governance' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Governance & Ownership</h3>
+                    <p className="text-sm text-[#6B7280]">Define accountability, review cadence, and change control</p></div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Playbook Owner</Label><Input {...register('playbookOwner')} placeholder="e.g. VP of Strategy" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Owner Email</Label><Input {...register('playbookOwnerEmail')} type="email" placeholder="owner@company.com" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Next Review Date</Label><Input {...register('nextReviewDate')} type="date" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Review Frequency</Label>
+                      <Controller name="reviewFrequency" control={control} render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{REVIEW_FREQUENCIES.map(r => <SelectItem key={r.value} value={r.value}>{r.label}</SelectItem>)}</SelectContent></Select>
+                      )} /></div>
+                  </div>
+                  <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Version Notes</Label><Textarea {...register('versionNotes')} placeholder="What changed in this version and why..." className="min-h-[100px]" /></div>
+                  <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                    <Controller name="changeApprovalRequired" control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
+                    <div><p className="text-sm font-bold text-[#0A0F2E]">Require Change Approval</p><p className="text-xs text-[#6B7280]">Any modification to this playbook requires executive sign-off before saving</p></div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── GEOGRAPHIC ─────────────────────────────────── */}
+              {activeSection === 'geographic' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Geographic Scope</h3>
+                    <p className="text-sm text-[#6B7280]">Define regions, jurisdictions, and regulatory considerations</p></div>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Active Regions</Label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {REGIONS.map(region => {
+                        const scope = watch('geographicScope') || [];
+                        const isActive = scope.includes(region.value);
+                        return (
+                          <button key={region.value} type="button"
+                            onClick={() => { const cur = watch('geographicScope') || []; const next = isActive ? cur.filter((r: string) => r !== region.value) : [...cur, region.value]; form.setValue('geographicScope', next); }}
+                            className={`px-3 py-2 rounded-lg border text-xs font-bold text-left transition-all ${isActive ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]' : 'bg-white text-[#6B7280] border-[#E8E4DC] hover:border-[#0A0F2E]'}`}>
+                            {region.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Primary Timezone</Label><Input {...register('primaryTimezone')} placeholder="e.g. America/New_York, UTC, Europe/London" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Local Regulations</Label><Input {...register('localRegulations')} placeholder="e.g. GDPR (EU), CCPA (California), FSA (UK)" /></div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── READINESS ─────────────────────────────────── */}
+              {activeSection === 'readiness' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Readiness & Drill Schedule</h3>
+                    <p className="text-sm text-[#6B7280]">Practice makes perfect — schedule drills, training, and certification requirements</p></div>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Last Drill Date</Label><Input {...register('lastDrillDate')} type="date" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Next Drill Date</Label><Input {...register('nextDrillDate')} type="date" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Drill Frequency</Label>
+                      <Controller name="drillFrequency" control={control} render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{REVIEW_FREQUENCIES.map(r => <SelectItem key={r.value} value={r.value}>{r.label}</SelectItem>)}</SelectContent></Select>
+                      )} /></div>
+                  </div>
+                  <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Training Requirements</Label><Textarea {...register('trainingRequirements')} placeholder="Required training courses, certifications, or briefings team members must complete..." className="min-h-[100px]" /></div>
+                  <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Certification Requirements</Label><Textarea {...register('certificationRequirements')} placeholder="Specific certifications, clearance levels, or qualifications required to execute this playbook..." className="min-h-[100px]" /></div>
+                </div>
+              )}
+
+              {/* ── RISK ─────────────────────────────────── */}
+              {activeSection === 'risk' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Risk Assessment</h3>
+                    <p className="text-sm text-[#6B7280]">Quantify the risk profile before execution begins</p></div>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Risk Score (1–10)</Label>
+                      <Controller name="riskScore" control={control} render={({ field }) => (
+                        <Select onValueChange={v => field.onChange(Number(v))} value={String(field.value)}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{RISK_LEVELS.map(r => <SelectItem key={r.value} value={String(r.value)}>{r.label}</SelectItem>)}</SelectContent></Select>
+                      )} /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Max Financial Exposure ($)</Label><Input {...register('maxFinancialExposure', { valueAsNumber: true })} type="number" placeholder="0" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Reputational Risk Level</Label>
+                      <Controller name="reputationalRiskLevel" control={control} render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="low">Low</SelectItem><SelectItem value="medium">Medium</SelectItem><SelectItem value="high">High</SelectItem><SelectItem value="critical">Critical</SelectItem></SelectContent></Select>
+                      )} /></div>
+                  </div>
+                  <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Risk Notes</Label><Textarea {...register('riskNotes')} placeholder="Describe specific risks, mitigations, and contingency considerations..." className="min-h-[120px]" /></div>
+                </div>
+              )}
+
+              {/* ── COMPLIANCE ─────────────────────────────────── */}
+              {activeSection === 'compliance' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Compliance & Legal</h3>
+                    <p className="text-sm text-[#6B7280]">Regulatory frameworks, legal review, and audit trail requirements</p></div>
+                  <div className="space-y-3">
+                    <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Applicable Frameworks</Label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      {COMPLIANCE_FRAMEWORKS.map(fw => {
+                        const cur = watch('complianceFrameworks') || [];
+                        const isActive = cur.includes(fw.value);
+                        return (
+                          <button key={fw.value} type="button"
+                            onClick={() => { const next = isActive ? cur.filter((f: string) => f !== fw.value) : [...cur, fw.value]; form.setValue('complianceFrameworks', next); }}
+                            className={`px-3 py-2 rounded-lg border text-xs font-bold text-left transition-all ${isActive ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]' : 'bg-white text-[#6B7280] border-[#E8E4DC] hover:border-[#0A0F2E]'}`}>
+                            {fw.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Legal Review Status</Label>
+                      <Controller name="legalReviewStatus" control={control} render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{LEGAL_REVIEW_STATUS.map(s => <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>)}</SelectContent></Select>
+                      )} /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Legal Approver</Label><Input {...register('legalReviewApprover')} placeholder="General Counsel, outside firm..." /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Review Date</Label><Input {...register('legalReviewDate')} type="date" /></div>
+                  </div>
+                  <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                    <Controller name="auditTrailRequired" control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
+                    <div><p className="text-sm font-bold text-[#0A0F2E]">Audit Trail Required</p><p className="text-xs text-[#6B7280]">Every action during this playbook's execution will be logged for compliance review</p></div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Specific Compliance Requirements</Label>
+                      <Button size="sm" onClick={() => complianceArray.append({ id: generateId(), framework: 'sox', requirement: '', notes: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] text-xs"><Plus className="w-3 h-3 mr-1" />Add</Button>
+                    </div>
+                    {complianceArray.fields.map((field, index) => (
+                      <div key={field.id} className="grid md:grid-cols-12 gap-3 items-end">
+                        <div className="md:col-span-3 space-y-1"><Label className="text-[9px] uppercase tracking-widest font-bold text-[#6B7280]">Framework</Label>
+                          <Controller name={`complianceRequirements.${index}.framework`} control={control} render={({ field: f }) => (
+                            <Select onValueChange={f.onChange} value={f.value}><SelectTrigger className="h-9 text-xs"><SelectValue /></SelectTrigger><SelectContent>{COMPLIANCE_FRAMEWORKS.map(fw => <SelectItem key={fw.value} value={fw.value}>{fw.label}</SelectItem>)}</SelectContent></Select>
+                          )} /></div>
+                        <div className="md:col-span-5 space-y-1"><Label className="text-[9px] uppercase tracking-widest font-bold text-[#6B7280]">Requirement</Label><Input {...register(`complianceRequirements.${index}.requirement`)} className="h-9 text-xs" placeholder="Specific obligation or control..." /></div>
+                        <div className="md:col-span-3 space-y-1"><Label className="text-[9px] uppercase tracking-widest font-bold text-[#6B7280]">Notes</Label><Input {...register(`complianceRequirements.${index}.notes`)} className="h-9 text-xs" placeholder="Evidence, references..." /></div>
+                        <div className="md:col-span-1"><Button variant="ghost" size="icon" onClick={() => complianceArray.remove(index)} className="text-[#6B7280] hover:text-red-600 h-9 w-9"><Trash2 className="w-3 h-3" /></Button></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── EXECUTION STEPS ─────────────────────────────────── */}
+              {activeSection === 'steps' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Execution Steps</h3>
+                      <p className="text-sm text-[#6B7280]">Define the sequence of actions from trigger to resolution</p></div>
+                    <Button onClick={() => stepsArray.append({ id: generateId(), order: stepsArray.fields.length + 1, title: '', description: '', timeTargetMinutes: 30, isParallel: false, dependsOn: [], approvalRequired: 'none', approvalNotes: '', deliverables: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Step</Button>
+                  </div>
+                  {stepsArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><Clock className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No steps defined yet. Click "Add Step" to build your execution sequence.</p></div>}
+                  <div className="space-y-4">
+                    {stepsArray.fields.map((field, index) => (
+                      <Card key={field.id} className="border-[#E8E4DC] shadow-none">
+                        <CardContent className="p-6 space-y-4">
+                          <div className="flex items-center gap-3 mb-2">
+                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E] text-white flex items-center justify-center text-sm font-bold shrink-0">{index + 1}</div>
+                            <Input {...register(`executionSteps.${index}.title`)} placeholder="Step title — e.g. Activate crisis communications team" className="font-bold text-base border-0 border-b border-[#E8E4DC] rounded-none px-0 focus-visible:ring-0" />
+                            <Button variant="ghost" size="icon" onClick={() => stepsArray.remove(index)} className="text-[#6B7280] hover:text-red-600 shrink-0"><Trash2 className="w-4 h-4" /></Button>
+                          </div>
+                          <Textarea {...register(`executionSteps.${index}.description`)} placeholder="Detailed instructions for this step..." className="min-h-[80px] text-sm" />
+                          <div className="grid md:grid-cols-3 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Time Target (min)</Label><Input {...register(`executionSteps.${index}.timeTargetMinutes`, { valueAsNumber: true })} type="number" placeholder="30" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Approval Required</Label>
+                              <Controller name={`executionSteps.${index}.approvalRequired`} control={control} render={({ field: f }) => (
+                                <Select onValueChange={f.onChange} value={f.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{APPROVAL_TYPES.map(a => <SelectItem key={a.value} value={a.value}>{a.label}</SelectItem>)}</SelectContent></Select>
+                              )} /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Deliverable</Label><Input {...register(`executionSteps.${index}.deliverables`)} placeholder="What this step produces" /></div>
+                          </div>
+                          <div className="flex items-center gap-3 px-3 py-2 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC] w-fit">
+                            <Controller name={`executionSteps.${index}.isParallel`} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
+                            <span className="text-xs font-bold uppercase tracking-wider text-[#0A0F2E]">Run in Parallel</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── ESCALATION ─────────────────────────────────── */}
+              {activeSection === 'escalation' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Escalation Paths</h3>
+                      <p className="text-sm text-[#6B7280]">Define when and how situations escalate to senior leadership</p></div>
+                    <Button onClick={() => escalationArray.append({ id: generateId(), triggerCondition: '', escalateTo: '', backupContact: '', timeToEscalate: 60, notificationChannels: [] })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Path</Button>
+                  </div>
+                  {escalationArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><ArrowUpRight className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No escalation paths defined. Every serious playbook needs one.</p></div>}
+                  <div className="space-y-4">
+                    {escalationArray.fields.map((field, index) => (
+                      <Card key={field.id} className="border-[#E8E4DC] shadow-none">
+                        <CardContent className="p-6 space-y-4">
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Trigger Condition</Label><Input {...register(`escalationPaths.${index}.triggerCondition`)} placeholder="e.g. No resolution within 2 hours" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Escalate To</Label><Input {...register(`escalationPaths.${index}.escalateTo`)} placeholder="e.g. CEO, Board Chair, General Counsel" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Backup Contact</Label><Input {...register(`escalationPaths.${index}.backupContact`)} placeholder="Alternate if primary unavailable" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Time to Escalate (min)</Label><Input {...register(`escalationPaths.${index}.timeToEscalate`, { valueAsNumber: true })} type="number" placeholder="60" /></div>
+                          </div>
+                          <div className="flex justify-end"><Button variant="ghost" size="icon" onClick={() => escalationArray.remove(index)} className="text-[#6B7280] hover:text-red-600"><Trash2 className="w-4 h-4" /></Button></div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── BUDGET ─────────────────────────────────── */}
+              {activeSection === 'budget' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Budget Allocation</h3>
+                      <p className="text-sm text-[#6B7280]">Pre-authorize spending categories so execution is never delayed by budget approval</p></div>
+                    <Button onClick={() => budgetArray.append({ id: generateId(), category: 'personnel', amount: 0, preApproved: false, approvalThreshold: 0, notes: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Line Item</Button>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6 p-6 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Total Pre-Approved Budget</Label><Input {...register('totalBudget', { valueAsNumber: true })} type="number" placeholder="0" className="text-2xl font-bold h-14" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Currency</Label>
+                      <Controller name="budgetCurrency" control={control} render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}><SelectTrigger className="h-14"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="USD">USD — US Dollar</SelectItem><SelectItem value="EUR">EUR — Euro</SelectItem><SelectItem value="GBP">GBP — British Pound</SelectItem><SelectItem value="CAD">CAD — Canadian Dollar</SelectItem><SelectItem value="AUD">AUD — Australian Dollar</SelectItem></SelectContent></Select>
+                      )} /></div>
+                  </div>
+                  {totalAllocatedBudget > 0 && (
+                    <div className="flex items-center justify-between px-4 py-3 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg">
+                      <span className="text-sm font-bold text-[#0A0F2E]">Total Allocated Across Categories</span>
+                      <span className="text-lg font-bold text-[#C9A84C]">{watch('budgetCurrency')} {totalAllocatedBudget.toLocaleString()}</span>
+                    </div>
+                  )}
+                  <div className="space-y-4">
+                    {budgetArray.fields.map((field, index) => (
+                      <Card key={field.id} className="border-[#E8E4DC] shadow-none">
+                        <CardContent className="p-5">
+                          <div className="grid md:grid-cols-12 gap-4 items-end">
+                            <div className="md:col-span-3 space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Category</Label>
+                              <Controller name={`budgetAllocations.${index}.category`} control={control} render={({ field: f }) => (
+                                <Select onValueChange={f.onChange} value={f.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{BUDGET_CATEGORIES.map(c => <SelectItem key={c.value} value={c.value}>{c.label}</SelectItem>)}</SelectContent></Select>
+                              )} /></div>
+                            <div className="md:col-span-2 space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Amount</Label><Input {...register(`budgetAllocations.${index}.amount`, { valueAsNumber: true })} type="number" placeholder="0" /></div>
+                            <div className="md:col-span-2 space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Approval Above</Label><Input {...register(`budgetAllocations.${index}.approvalThreshold`, { valueAsNumber: true })} type="number" placeholder="0" /></div>
+                            <div className="md:col-span-4 space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Notes</Label><Input {...register(`budgetAllocations.${index}.notes`)} placeholder="Vendor, purpose, or conditions..." /></div>
+                            <div className="md:col-span-1 flex items-center gap-2">
+                              <Controller name={`budgetAllocations.${index}.preApproved`} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
+                              <Button variant="ghost" size="icon" onClick={() => budgetArray.remove(index)} className="text-[#6B7280] hover:text-red-600"><Trash2 className="w-4 h-4" /></Button>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                    {budgetArray.fields.length === 0 && <div className="py-10 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><DollarSign className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No budget line items. Pre-authorized spending eliminates approval delays during execution.</p></div>}
+                  </div>
+                </div>
+              )}
+
+              {/* ── COMMUNICATIONS ─────────────────────────────────── */}
+              {activeSection === 'communications' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Communications Protocol</h3>
+                    <p className="text-sm text-[#6B7280]">Pre-define notification thresholds for press, investors, and the board</p></div>
+                  <div className="space-y-6">
+                    {[
+                      { switchName: 'pressResponseRequired' as const, label: 'Press Response Required', desc: 'This situation requires coordinated external communications and media management' },
+                      { switchName: 'investorNotificationRequired' as const, label: 'Investor Notification Required', desc: 'Material event requiring timely investor disclosure' },
+                      { switchName: 'boardNotificationRequired' as const, label: 'Board Notification Required', desc: 'Board must be briefed as part of this playbook execution' },
+                    ].map(({ switchName, label, desc }) => (
+                      <div key={switchName} className="flex items-center gap-4 p-5 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                        <Controller name={switchName} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
+                        <div><p className="text-sm font-bold text-[#0A0F2E]">{label}</p><p className="text-xs text-[#6B7280]">{desc}</p></div>
+                      </div>
+                    ))}
+                  </div>
+                  {watch('investorNotificationRequired') && (
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Investor Notification Threshold</Label><Input {...register('investorNotificationThreshold')} placeholder="e.g. Material financial impact above $10M, regulatory action..." /></div>
+                  )}
+                  {watch('boardNotificationRequired') && (
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Board Notification Threshold</Label><Input {...register('boardNotificationThreshold')} placeholder="e.g. Reputational risk, regulatory involvement, C-suite departure..." /></div>
+                  )}
+                  <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Pre-Approved Messaging</Label><Textarea {...register('preApprovedMessaging')} placeholder="Key messages, approved statements, or holding lines that can be used immediately upon activation..." className="min-h-[140px]" /></div>
+                </div>
+              )}
+
+              {/* ── SUCCESS METRICS ─────────────────────────────────── */}
+              {activeSection === 'metrics' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Success Metrics</h3>
+                    <p className="text-sm text-[#6B7280]">Define what "winning" looks like — measurable targets for execution performance</p></div>
+                  <div className="grid md:grid-cols-2 gap-8 p-6 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                    <div className="space-y-2">
+                      <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Response Time Target (minutes)</Label>
+                      <Input {...register('successMetrics.responseTimeTarget', { valueAsNumber: true })} type="number" placeholder="12" className="text-3xl font-bold h-16 text-[#C9A84C]" />
+                      <p className="text-xs text-[#6B7280]">Target: 12 minutes — the VaughnMartin Execution Standard</p>
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Stakeholders to Activate</Label>
+                      <Input {...register('successMetrics.stakeholdersTarget', { valueAsNumber: true })} type="number" placeholder="5" className="text-3xl font-bold h-16" />
+                      <p className="text-xs text-[#6B7280]">Number of stakeholders who must acknowledge and engage</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Custom Success Metrics</Label>
+                      <Button size="sm" onClick={() => customMetricsArray.append({ name: '', target: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] text-xs"><Plus className="w-3 h-3 mr-1" />Add Metric</Button>
+                    </div>
+                    {customMetricsArray.fields.map((field, index) => (
+                      <div key={field.id} className="flex gap-3 items-end">
+                        <div className="flex-1 space-y-1"><Label className="text-[9px] uppercase tracking-widest font-bold text-[#6B7280]">Metric Name</Label><Input {...register(`successMetrics.customMetrics.${index}.name`)} placeholder="e.g. Media coverage contained, Revenue impact limited" /></div>
+                        <div className="flex-1 space-y-1"><Label className="text-[9px] uppercase tracking-widest font-bold text-[#6B7280]">Target</Label><Input {...register(`successMetrics.customMetrics.${index}.target`)} placeholder="e.g. Zero negative headlines, &lt;$2M exposure" /></div>
+                        <Button variant="ghost" size="icon" onClick={() => customMetricsArray.remove(index)} className="text-[#6B7280] hover:text-red-600"><Trash2 className="w-4 h-4" /></Button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── BUSINESS IMPACT ─────────────────────────────────── */}
+              {activeSection === 'impact' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Business Impact</h3>
+                      <p className="text-sm text-[#6B7280]">Quantify the value this playbook delivers when executed effectively</p></div>
+                    <Button onClick={() => impactArray.append({ id: generateId(), type: 'revenue_protection', estimatedValue: 0, valueUnit: 'USD', description: '', measurementMethod: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Impact</Button>
+                  </div>
+                  {impactArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><TrendingUp className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">Define the measurable business value this playbook protects or creates.</p></div>}
+                  <div className="space-y-4">
+                    {impactArray.fields.map((field, index) => (
+                      <Card key={field.id} className="border-[#E8E4DC] shadow-none">
+                        <CardContent className="p-6 space-y-4">
+                          <div className="grid md:grid-cols-3 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Impact Type</Label>
+                              <Controller name={`businessImpacts.${index}.type`} control={control} render={({ field: f }) => (
+                                <Select onValueChange={f.onChange} value={f.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent>{IMPACT_TYPES.map(t => <SelectItem key={t.value} value={t.value}>{t.label}</SelectItem>)}</SelectContent></Select>
+                              )} /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Estimated Value</Label><Input {...register(`businessImpacts.${index}.estimatedValue`, { valueAsNumber: true })} type="number" placeholder="0" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Unit</Label>
+                              <Controller name={`businessImpacts.${index}.valueUnit`} control={control} render={({ field: f }) => (
+                                <Select onValueChange={f.onChange} value={f.value}><SelectTrigger><SelectValue /></SelectTrigger><SelectContent><SelectItem value="USD">USD</SelectItem><SelectItem value="EUR">EUR</SelectItem><SelectItem value="GBP">GBP</SelectItem><SelectItem value="hours">Hours</SelectItem><SelectItem value="percentage">Percentage</SelectItem></SelectContent></Select>
+                              )} /></div>
+                          </div>
+                          <div className="grid md:grid-cols-2 gap-4">
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Description</Label><Textarea {...register(`businessImpacts.${index}.description`)} placeholder="Explain what value is protected or created..." className="min-h-[80px]" /></div>
+                            <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Measurement Method</Label><Textarea {...register(`businessImpacts.${index}.measurementMethod`)} placeholder="How will you measure and validate this impact post-execution?" className="min-h-[80px]" /></div>
+                          </div>
+                          <div className="flex justify-end"><Button variant="ghost" size="icon" onClick={() => impactArray.remove(index)} className="text-[#6B7280] hover:text-red-600"><Trash2 className="w-4 h-4" /></Button></div>
+                        </CardContent>
+                      </Card>
+                    ))}
                   </div>
                 </div>
               )}

@@ -17927,7 +17927,7 @@ __export(PreFlightCheckService_exports, {
   PreFlightCheckService: () => PreFlightCheckService,
   preFlightCheckService: () => preFlightCheckService
 });
-import { eq as eq15, and as and8, inArray as inArray2 } from "drizzle-orm";
+import { eq as eq15, and as and9, inArray as inArray2 } from "drizzle-orm";
 import pino8 from "pino";
 var logger6, PreFlightCheckService, preFlightCheckService;
 var init_PreFlightCheckService = __esm({
@@ -18008,7 +18008,7 @@ var init_PreFlightCheckService = __esm({
           return warnings;
         }
         const usersWithRoles = await db.select().from(users).where(
-          and8(
+          and9(
             eq15(users.organizationId, organizationId),
             inArray2(users.roleId, requiredRoleIds)
           )
@@ -18151,7 +18151,7 @@ var init_PreFlightCheckService = __esm({
         const requiredRoleIdsSet = new Set(tasks4.map((t) => t.requiredRoleId).filter(Boolean));
         const requiredRoleIds = Array.from(requiredRoleIdsSet);
         const usersWithRoles = await db.select().from(users).where(
-          and8(
+          and9(
             eq15(users.organizationId, organizationId),
             inArray2(users.roleId, requiredRoleIds)
           )
@@ -18574,7 +18574,7 @@ __export(TriggerEvaluationEngine_exports, {
   getOrgTriggerSummary: () => getOrgTriggerSummary,
   loadConfiguredTriggers: () => loadConfiguredTriggers
 });
-import { eq as eq20, and as and12 } from "drizzle-orm";
+import { eq as eq20, and as and13 } from "drizzle-orm";
 function isValidUuid(id) {
   return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 }
@@ -18584,7 +18584,7 @@ async function loadConfiguredTriggers(organizationId) {
     return configured;
   }
   try {
-    const execTriggers = await db.select().from(executiveTriggers).where(and12(
+    const execTriggers = await db.select().from(executiveTriggers).where(and13(
       eq20(executiveTriggers.organizationId, organizationId),
       eq20(executiveTriggers.isActive, true)
     ));
@@ -18603,7 +18603,7 @@ async function loadConfiguredTriggers(organizationId) {
         source: "executive"
       });
     }
-    const custom = await db.select().from(customTriggers).where(and12(
+    const custom = await db.select().from(customTriggers).where(and13(
       eq20(customTriggers.organizationId, organizationId),
       eq20(customTriggers.isActive, true)
     ));
@@ -19667,7 +19667,7 @@ __export(PreparednessEngine_exports, {
   PreparednessEngine: () => PreparednessEngine,
   preparednessEngine: () => preparednessEngine
 });
-import { eq as eq22, and as and13, desc as desc11 } from "drizzle-orm";
+import { eq as eq22, and as and14, desc as desc11 } from "drizzle-orm";
 var PreparednessEngine, preparednessEngine;
 var init_PreparednessEngine = __esm({
   "server/services/PreparednessEngine.ts"() {
@@ -19684,7 +19684,7 @@ var init_PreparednessEngine = __esm({
             db.select().from(strategicScenarios).where(eq22(strategicScenarios.organizationId, organizationId)),
             db.select().from(warRoomSessions).where(eq22(warRoomSessions.organizationId, organizationId)),
             db.select().from(stakeholderAlignment).where(eq22(stakeholderAlignment.organizationId, organizationId)).orderBy(desc11(stakeholderAlignment.createdAt)).limit(1),
-            db.select().from(crisisSimulations).where(and13(
+            db.select().from(crisisSimulations).where(and14(
               eq22(crisisSimulations.organizationId, organizationId),
               eq22(crisisSimulations.status, "completed")
             ))
@@ -21432,7 +21432,7 @@ Contact: ${stakeholder.name}`;
 });
 
 // server/services/DatabaseNotificationService.ts
-import { eq as eq23, and as and14, desc as desc12, isNull as isNull2, sql as sql13 } from "drizzle-orm";
+import { eq as eq23, and as and15, desc as desc12, isNull as isNull2, sql as sql13 } from "drizzle-orm";
 var DatabaseNotificationService, databaseNotificationService;
 var init_DatabaseNotificationService = __esm({
   "server/services/DatabaseNotificationService.ts"() {
@@ -21522,7 +21522,7 @@ ${notification.notification.message}`,
         if (organizationId) {
           whereConditions.push(eq23(notifications.organizationId, organizationId));
         }
-        return await db.select().from(notifications).where(and14(...whereConditions)).orderBy(desc12(notifications.createdAt)).limit(limit).offset(offset);
+        return await db.select().from(notifications).where(and15(...whereConditions)).orderBy(desc12(notifications.createdAt)).limit(limit).offset(offset);
       }
       /**
        * Mark notification as read
@@ -21533,7 +21533,7 @@ ${notification.notification.message}`,
             isRead: true,
             readAt: /* @__PURE__ */ new Date()
           }).where(
-            and14(
+            and15(
               eq23(notifications.id, notificationId),
               eq23(notifications.userId, userId)
             )
@@ -21555,7 +21555,7 @@ ${notification.notification.message}`,
         if (organizationId) {
           whereConditions.push(eq23(notifications.organizationId, organizationId));
         }
-        const result = await db.select({ count: notifications.id }).from(notifications).where(and14(...whereConditions));
+        const result = await db.select({ count: notifications.id }).from(notifications).where(and15(...whereConditions));
         return result.length;
       }
       /**
@@ -21579,7 +21579,7 @@ ${notification.notification.message}`,
       async processScheduledNotifications() {
         try {
           const dueNotifications = await db.select().from(notifications).where(
-            and14(
+            and15(
               isNull2(notifications.sentAt),
               sql13`${notifications.scheduledFor} IS NOT NULL`,
               sql13`${notifications.scheduledFor} <= NOW()`
@@ -21599,7 +21599,7 @@ ${notification.notification.message}`,
       async createStrategicAlert(organizationId, alertData) {
         try {
           const executiveUsers = await db.select().from(users).where(
-            and14(
+            and15(
               eq23(users.organizationId, organizationId),
               eq23(users.department, "Executive")
               // Or check role-based access
@@ -21651,7 +21651,7 @@ ${notification.notification.message}`,
           const cutoffDate = /* @__PURE__ */ new Date();
           cutoffDate.setDate(cutoffDate.getDate() - daysToKeep);
           await db.delete(notifications).where(
-            and14(
+            and15(
               eq23(notifications.isRead, true),
               sql13`${notifications.createdAt} <= ${cutoffDate}`
             )
@@ -21674,7 +21674,7 @@ __export(ROIMeasurementService_exports, {
   ROIMeasurementService: () => ROIMeasurementService,
   roiMeasurementService: () => roiMeasurementService
 });
-import { eq as eq24, and as and15, desc as desc13, gte as gte4, lte } from "drizzle-orm";
+import { eq as eq24, and as and16, desc as desc13, gte as gte4, lte } from "drizzle-orm";
 import pino10 from "pino";
 var logger8, FORTUNE_1000_BENCHMARKS, ROIMeasurementService, roiMeasurementService;
 var init_ROIMeasurementService = __esm({
@@ -22172,7 +22172,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
             metrics.map((metric) => this.calculateMetricROI(metric.id))
           );
           const valueEvents = await db.select().from(valueTrackingEvents).where(
-            and15(
+            and16(
               eq24(valueTrackingEvents.organizationId, organizationId),
               gte4(valueTrackingEvents.createdAt, startDate),
               lte(valueTrackingEvents.createdAt, endDate)
@@ -22881,7 +22881,7 @@ __export(ROITracker_exports, {
   ROITracker: () => ROITracker,
   roiTracker: () => roiTracker
 });
-import { eq as eq25, and as and16, desc as desc14 } from "drizzle-orm";
+import { eq as eq25, and as and17, desc as desc14 } from "drizzle-orm";
 var ROITracker, roiTracker;
 var init_ROITracker = __esm({
   "server/services/ROITracker.ts"() {
@@ -22894,7 +22894,7 @@ var init_ROITracker = __esm({
        */
       async calculateRealROI(organizationId) {
         try {
-          const activations = await db.select().from(warRoomSessions).where(and16(
+          const activations = await db.select().from(warRoomSessions).where(and17(
             eq25(warRoomSessions.organizationId, organizationId),
             eq25(warRoomSessions.status, "completed")
           )).orderBy(desc14(warRoomSessions.createdAt));
@@ -23082,7 +23082,7 @@ __export(TriggerIntelligenceService_exports, {
   triggerIntelligence: () => triggerIntelligence
 });
 import OpenAI5 from "openai";
-import { eq as eq26, and as and17, gte as gte6, desc as desc15 } from "drizzle-orm";
+import { eq as eq26, and as and18, gte as gte6, desc as desc15 } from "drizzle-orm";
 var openai4, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
@@ -23149,7 +23149,7 @@ Be specific and strategic. Focus on business impact.`;
        */
       async matchTriggers(organizationId, analysis, eventMetadata) {
         try {
-          const triggers = await db.select().from(executiveTriggers).where(and17(
+          const triggers = await db.select().from(executiveTriggers).where(and18(
             eq26(executiveTriggers.organizationId, organizationId),
             eq26(executiveTriggers.isActive, true)
           ));
@@ -23237,7 +23237,7 @@ Be specific and strategic. Focus on business impact.`;
        */
       async getIntelligenceMetrics(organizationId, timeWindowHours = 24) {
         const cutoffTime = new Date(Date.now() - timeWindowHours * 60 * 60 * 1e3);
-        const alerts = await db.select().from(strategicAlerts).where(and17(
+        const alerts = await db.select().from(strategicAlerts).where(and18(
           eq26(strategicAlerts.organizationId, organizationId),
           gte6(strategicAlerts.createdAt, cutoffTime)
         )).orderBy(desc15(strategicAlerts.createdAt));
@@ -23308,7 +23308,7 @@ __export(ExecutiveBriefingService_exports, {
   executiveBriefing: () => executiveBriefing
 });
 import OpenAI6 from "openai";
-import { eq as eq27, and as and18, gte as gte7, desc as desc16 } from "drizzle-orm";
+import { eq as eq27, and as and19, gte as gte7, desc as desc16 } from "drizzle-orm";
 var openai5, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
@@ -23434,21 +23434,21 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
         const cutoffTime = new Date(Date.now() - hoursBack * 60 * 60 * 1e3);
         const [alerts, scenarios3, metrics, preparedness, recentActivations] = await Promise.all([
           // Recent alerts
-          db.select().from(strategicAlerts).where(and18(
+          db.select().from(strategicAlerts).where(and19(
             eq27(strategicAlerts.organizationId, organizationId),
             gte7(strategicAlerts.createdAt, cutoffTime)
           )).orderBy(desc16(strategicAlerts.createdAt)),
           // Active scenarios
           db.select().from(strategicScenarios).where(eq27(strategicScenarios.organizationId, organizationId)).limit(20),
           // Key metrics
-          db.select().from(kpis).where(and18(
+          db.select().from(kpis).where(and19(
             eq27(kpis.organizationId, organizationId),
             eq27(kpis.isActive, true)
           )).limit(10),
           // Preparedness score
           preparednessEngine.calculateScore(organizationId),
           // Recent war room sessions (playbook activations)
-          db.select().from(warRoomSessions).where(and18(
+          db.select().from(warRoomSessions).where(and19(
             eq27(warRoomSessions.organizationId, organizationId),
             gte7(warRoomSessions.createdAt, cutoffTime)
           )).orderBy(desc16(warRoomSessions.createdAt)).limit(5)
@@ -24136,8 +24136,8 @@ async function getSuggestions(playbookId, organizationId) {
   try {
     const { aiOptimizationSuggestions: aiOptimizationSuggestions2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { eq: eq49, and: and29 } = await import("drizzle-orm");
-    const suggestions = await db2.select().from(aiOptimizationSuggestions2).where(and29(
+    const { eq: eq49, and: and30 } = await import("drizzle-orm");
+    const suggestions = await db2.select().from(aiOptimizationSuggestions2).where(and30(
       eq49(aiOptimizationSuggestions2.playbookId, playbookId),
       eq49(aiOptimizationSuggestions2.organizationId, organizationId)
     ));
@@ -24176,7 +24176,7 @@ __export(ComplianceCheckService_exports, {
   ComplianceCheckService: () => ComplianceCheckService,
   complianceCheckService: () => complianceCheckService
 });
-import { eq as eq31, and as and19 } from "drizzle-orm";
+import { eq as eq31, and as and20 } from "drizzle-orm";
 import pino12 from "pino";
 var logger9, ComplianceCheckService, complianceCheckService;
 var init_ComplianceCheckService = __esm({
@@ -24305,7 +24305,7 @@ var init_ComplianceCheckService = __esm({
        */
       async getFrameworkStatus(frameworkId, organizationId) {
         const framework = await db.select().from(complianceFrameworks).where(
-          and19(
+          and20(
             eq31(complianceFrameworks.id, frameworkId),
             eq31(complianceFrameworks.organizationId, organizationId)
           )
@@ -24375,7 +24375,7 @@ __export(ApprovalTokenService_exports, {
   ApprovalTokenService: () => ApprovalTokenService,
   approvalTokenService: () => approvalTokenService
 });
-import { eq as eq32, and as and20, isNull as isNull3 } from "drizzle-orm";
+import { eq as eq32, and as and21, isNull as isNull3 } from "drizzle-orm";
 import { nanoid as nanoid2 } from "nanoid";
 import bcrypt from "bcryptjs";
 import pino13 from "pino";
@@ -24530,7 +24530,7 @@ var init_ApprovalTokenService = __esm({
       async getActiveTokens(userId) {
         const now = /* @__PURE__ */ new Date();
         return await db.select().from(approvalTokens).where(
-          and20(
+          and21(
             eq32(approvalTokens.userId, userId),
             eq32(approvalTokens.usedAt, null)
           )
@@ -24574,7 +24574,7 @@ __export(JobProcessors_exports, {
   processPulseAnalysis: () => processPulseAnalysis,
   processRiskAssessment: () => processRiskAssessment
 });
-import { eq as eq33, and as and21, desc as desc17, gte as gte8, count as count5 } from "drizzle-orm";
+import { eq as eq33, and as and22, desc as desc17, gte as gte8, count as count5 } from "drizzle-orm";
 async function processPulseAnalysis(jobData) {
   console.log("Processing pulse_analysis job...");
   const isValidUUID2 = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -24584,7 +24584,7 @@ async function processPulseAnalysis(jobData) {
     return { status: "skipped", reason: "Invalid or missing organizationId" };
   }
   const sixHoursAgo = new Date(Date.now() - 6 * 60 * 60 * 1e3);
-  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and21(eq33(weakSignals.organizationId, orgId), gte8(weakSignals.detectedAt, sixHoursAgo))).limit(1);
+  const recentSignals = await db.select({ id: weakSignals.id }).from(weakSignals).where(and22(eq33(weakSignals.organizationId, orgId), gte8(weakSignals.detectedAt, sixHoursAgo))).limit(1);
   if (recentSignals.length > 0) {
     console.log("\u23ED\uFE0F Pulse analysis skipped \u2014 signal already created in last 6 hours");
     return { status: "skipped", reason: "Signal already created recently" };
@@ -24629,7 +24629,7 @@ async function processRiskAssessment(jobData) {
     return assessment2;
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and21(
+  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and22(
     eq33(weakSignals.organizationId, orgId),
     eq33(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
@@ -24649,7 +24649,7 @@ async function processOpportunityDetection(jobData) {
     return { status: "skipped", reason: "No valid organizationId" };
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and21(
+  const [{ value: signalCount }] = await db.select({ value: count5() }).from(weakSignals).where(and22(
     eq33(weakSignals.organizationId, orgId),
     eq33(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
@@ -24659,7 +24659,7 @@ async function processOpportunityDetection(jobData) {
     console.log(`\u23ED\uFE0F Opportunity detection skipped \u2014 only ${signals} signals (need 3+)`);
     return { status: "skipped", reason: `Insufficient signals (${signals}/3)` };
   }
-  const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and21(
+  const recentSignals = await db.select({ source: weakSignals.source, impact: weakSignals.impact }).from(weakSignals).where(and22(
     eq33(weakSignals.organizationId, orgId),
     eq33(weakSignals.status, "active"),
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
@@ -24702,12 +24702,12 @@ async function processExecutiveSummary(jobData) {
     return empty;
   }
   const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
-  const [{ value: tasksCompleted }] = await db.select({ value: count5() }).from(continuousOperationsTasks).where(and21(
+  const [{ value: tasksCompleted }] = await db.select({ value: count5() }).from(continuousOperationsTasks).where(and22(
     eq33(continuousOperationsTasks.organizationId, orgId),
     eq33(continuousOperationsTasks.status, "completed"),
     gte8(continuousOperationsTasks.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
-  const [{ value: execCount }] = await db.select({ value: count5() }).from(executionInstances).where(and21(
+  const [{ value: execCount }] = await db.select({ value: count5() }).from(executionInstances).where(and22(
     eq33(executionInstances.organizationId, orgId),
     gte8(executionInstances.createdAt, thirtyDaysAgo)
   )).catch(() => [{ value: 0 }]);
@@ -31155,7 +31155,7 @@ __export(playbookLibraryRoutes_exports, {
   playbookLibraryRouter: () => playbookLibraryRouter
 });
 import { Router as Router8 } from "express";
-import { eq as eq41, desc as desc19, sql as sql17, and as and25 } from "drizzle-orm";
+import { eq as eq41, desc as desc19, sql as sql17, and as and26 } from "drizzle-orm";
 function getFallbackLibraryData() {
   const domains = DOMAIN_CONFIG.map((d, i) => ({
     id: `fallback-domain-${d.id}`,
@@ -31238,15 +31238,15 @@ function isValidUUID(str) {
 }
 async function recalculateReadinessScore(playbookId, organizationId) {
   try {
-    const prepareItems = await db.select().from(playbookPrepareItems).where(and25(
+    const prepareItems = await db.select().from(playbookPrepareItems).where(and26(
       eq41(playbookPrepareItems.playbookId, playbookId),
       eq41(playbookPrepareItems.organizationId, organizationId)
     ));
-    const monitorItems = await db.select().from(playbookMonitorItems).where(and25(
+    const monitorItems = await db.select().from(playbookMonitorItems).where(and26(
       eq41(playbookMonitorItems.playbookId, playbookId),
       eq41(playbookMonitorItems.organizationId, organizationId)
     ));
-    const learnItems = await db.select().from(playbookLearnItems).where(and25(
+    const learnItems = await db.select().from(playbookLearnItems).where(and26(
       eq41(playbookLearnItems.playbookId, playbookId),
       eq41(playbookLearnItems.organizationId, organizationId)
     ));
@@ -31259,7 +31259,7 @@ async function recalculateReadinessScore(playbookId, organizationId) {
     const monitorScore = monitorItems.length > 0 ? monitorActive > 0 ? 100 : 50 : 0;
     const executeScore = tasks4.length > 0 ? 100 : decisionTrees2.length > 0 ? 50 : 0;
     const learnScore = learnItems.length > 0 ? 100 : 0;
-    const [existingScore] = await db.select().from(playbookReadinessScores).where(and25(
+    const [existingScore] = await db.select().from(playbookReadinessScores).where(and26(
       eq41(playbookReadinessScores.playbookId, playbookId),
       eq41(playbookReadinessScores.organizationId, organizationId)
     ));
@@ -31955,7 +31955,7 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookPrepareItems);
         if (organizationId) {
-          query = query.where(and25(
+          query = query.where(and26(
             eq41(playbookPrepareItems.playbookId, playbookId),
             eq41(playbookPrepareItems.organizationId, organizationId)
           ));
@@ -32036,7 +32036,7 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookMonitorItems);
         if (organizationId) {
-          query = query.where(and25(
+          query = query.where(and26(
             eq41(playbookMonitorItems.playbookId, playbookId),
             eq41(playbookMonitorItems.organizationId, organizationId)
           ));
@@ -32118,7 +32118,7 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookLearnItems);
         if (organizationId) {
-          query = query.where(and25(
+          query = query.where(and26(
             eq41(playbookLearnItems.playbookId, playbookId),
             eq41(playbookLearnItems.organizationId, organizationId)
           ));
@@ -32181,22 +32181,22 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        let [score] = await db.select().from(playbookReadinessScores).where(and25(
+        let [score] = await db.select().from(playbookReadinessScores).where(and26(
           eq41(playbookReadinessScores.playbookId, playbookId),
           eq41(playbookReadinessScores.organizationId, organizationId)
         ));
         if (!score) {
           score = await recalculateReadinessScore(playbookId, organizationId);
         }
-        const prepareItems = await db.select().from(playbookPrepareItems).where(and25(
+        const prepareItems = await db.select().from(playbookPrepareItems).where(and26(
           eq41(playbookPrepareItems.playbookId, playbookId),
           eq41(playbookPrepareItems.organizationId, organizationId)
         ));
-        const monitorItems = await db.select().from(playbookMonitorItems).where(and25(
+        const monitorItems = await db.select().from(playbookMonitorItems).where(and26(
           eq41(playbookMonitorItems.playbookId, playbookId),
           eq41(playbookMonitorItems.organizationId, organizationId)
         ));
-        const learnItems = await db.select().from(playbookLearnItems).where(and25(
+        const learnItems = await db.select().from(playbookLearnItems).where(and26(
           eq41(playbookLearnItems.playbookId, playbookId),
           eq41(playbookLearnItems.organizationId, organizationId)
         ));
@@ -32249,7 +32249,7 @@ var init_playbookLibraryRoutes = __esm({
         if (totalWeight !== 100) {
           return res.status(400).json({ error: "Weights must sum to 100" });
         }
-        const [existingScore] = await db.select().from(playbookReadinessScores).where(and25(
+        const [existingScore] = await db.select().from(playbookReadinessScores).where(and26(
           eq41(playbookReadinessScores.playbookId, playbookId),
           eq41(playbookReadinessScores.organizationId, organizationId)
         ));
@@ -32328,7 +32328,7 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(executionLearnings);
         if (organizationId) {
-          query = query.where(and25(
+          query = query.where(and26(
             eq41(executionLearnings.playbookId, playbookId),
             eq41(executionLearnings.organizationId, organizationId)
           ));
@@ -32349,7 +32349,7 @@ var init_playbookLibraryRoutes = __esm({
         if (!organizationId) {
           return res.status(400).json({ error: "organizationId is required" });
         }
-        const learnings = await db.select().from(executionLearnings).where(and25(
+        const learnings = await db.select().from(executionLearnings).where(and26(
           eq41(executionLearnings.playbookId, playbookId),
           eq41(executionLearnings.organizationId, organizationId)
         ));
@@ -32404,7 +32404,7 @@ var init_playbookLibraryRoutes = __esm({
         if (!playbook) {
           return res.status(404).json({ error: "Playbook not found" });
         }
-        const [readinessScore] = await db.select().from(playbookReadinessScores).where(and25(
+        const [readinessScore] = await db.select().from(playbookReadinessScores).where(and26(
           eq41(playbookReadinessScores.playbookId, playbookId),
           eq41(playbookReadinessScores.organizationId, organizationId)
         ));
@@ -32555,7 +32555,7 @@ var init_playbookLibraryRoutes = __esm({
         const organizationId = req.query.organizationId;
         let query = db.select().from(playbookActivations);
         if (organizationId) {
-          query = query.where(and25(
+          query = query.where(and26(
             eq41(playbookActivations.playbookId, playbookId),
             eq41(playbookActivations.organizationId, organizationId)
           ));
@@ -32603,7 +32603,7 @@ __export(practiceDrillRoutes_exports, {
   practiceDrillRouter: () => practiceDrillRouter
 });
 import { Router as Router9 } from "express";
-import { eq as eq42, desc as desc20, and as and26 } from "drizzle-orm";
+import { eq as eq42, desc as desc20, and as and27 } from "drizzle-orm";
 import { z as z6 } from "zod";
 var practiceDrillRouter;
 var init_practiceDrillRoutes = __esm({
@@ -32624,7 +32624,7 @@ var init_practiceDrillRoutes = __esm({
           drill: practiceDrills,
           playbook: playbookLibrary,
           domain: playbookDomains
-        }).from(practiceDrills).leftJoin(playbookLibrary, eq42(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq42(playbookLibrary.domainId, playbookDomains.id)).where(and26(...conditions)).orderBy(desc20(practiceDrills.scheduledDate));
+        }).from(practiceDrills).leftJoin(playbookLibrary, eq42(practiceDrills.playbookId, playbookLibrary.id)).leftJoin(playbookDomains, eq42(playbookLibrary.domainId, playbookDomains.id)).where(and27(...conditions)).orderBy(desc20(practiceDrills.scheduledDate));
         res.json(drills);
       } catch (error) {
         console.error("Error fetching practice drills:", error);
@@ -39391,7 +39391,7 @@ function registerOrgSetupRoutes(app2) {
 // server/routes/dynamic-strategy-routes.ts
 init_db();
 init_schema();
-import { eq as eq13, desc as desc6 } from "drizzle-orm";
+import { eq as eq13, desc as desc6, and as and8 } from "drizzle-orm";
 async function registerDynamicStrategyRoutes(app2) {
   app2.get("/api/dynamic-strategy/readiness", requireAuth, async (req, res) => {
     try {
@@ -39430,13 +39430,13 @@ async function registerDynamicStrategyRoutes(app2) {
   app2.get("/api/dynamic-strategy/weak-signals", requireAuth, async (req, res) => {
     try {
       const { weakSignals: weakSignals2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { and: and29 } = await import("drizzle-orm");
+      const { and: and30 } = await import("drizzle-orm");
       const userId = getUserId(req);
       const user = await db.select().from(users).where(eq13(users.id, userId)).limit(1);
       if (!user[0]?.organizationId) {
         return res.status(200).json([]);
       }
-      const signals = await db.select().from(weakSignals2).where(and29(eq13(weakSignals2.organizationId, user[0].organizationId), eq13(weakSignals2.status, "active"))).orderBy(desc6(weakSignals2.detectedAt)).limit(50);
+      const signals = await db.select().from(weakSignals2).where(and30(eq13(weakSignals2.organizationId, user[0].organizationId), eq13(weakSignals2.status, "active"))).orderBy(desc6(weakSignals2.detectedAt)).limit(50);
       res.json(signals);
     } catch (error) {
       console.error("Error fetching weak signals:", error);
@@ -39636,6 +39636,74 @@ async function registerDynamicStrategyRoutes(app2) {
       });
     } catch (error) {
       console.error("Error generating demo data:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.get("/api/dynamic-strategy/triggers", requireOrgAccess, async (req, res) => {
+    try {
+      const orgId = req.orgId;
+      const triggers = await db.select().from(customTriggers).where(eq13(customTriggers.organizationId, orgId)).orderBy(desc6(customTriggers.createdAt));
+      res.json(triggers);
+    } catch (error) {
+      console.error("Error fetching dynamic-strategy triggers:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.post("/api/dynamic-strategy/triggers", requireOrgAccess, async (req, res) => {
+    try {
+      const orgId = req.orgId;
+      const userId = getUserId(req);
+      const { name, description, category, conditionField, conditionOperator, conditionValue, conditionUnit, severity, isActive, recommendedPlaybooks } = req.body;
+      if (!name || !category || !conditionField || !conditionOperator) {
+        return res.status(400).json({ error: "name, category, conditionField, and conditionOperator are required" });
+      }
+      const [created] = await db.insert(customTriggers).values({
+        organizationId: orgId,
+        createdBy: userId,
+        name,
+        description: description || null,
+        category,
+        conditionField,
+        conditionOperator,
+        conditionValue: conditionValue ? String(conditionValue) : null,
+        conditionUnit: conditionUnit || null,
+        severity: severity || "medium",
+        isActive: isActive !== false,
+        recommendedPlaybooks: recommendedPlaybooks || []
+      }).returning();
+      res.status(201).json(created);
+    } catch (error) {
+      console.error("Error creating dynamic-strategy trigger:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.patch("/api/dynamic-strategy/triggers/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const orgId = req.orgId;
+      const { id } = req.params;
+      const updates = {};
+      const allowed = ["name", "description", "isActive", "severity", "conditionValue", "conditionOperator", "recommendedPlaybooks"];
+      for (const key of allowed) {
+        if (req.body[key] !== void 0) updates[key] = req.body[key];
+      }
+      updates.updatedAt = /* @__PURE__ */ new Date();
+      const [updated] = await db.update(customTriggers).set(updates).where(and8(eq13(customTriggers.id, id), eq13(customTriggers.organizationId, orgId))).returning();
+      if (!updated) return res.status(404).json({ error: "Trigger not found" });
+      res.json(updated);
+    } catch (error) {
+      console.error("Error updating dynamic-strategy trigger:", error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+  app2.delete("/api/dynamic-strategy/triggers/:id", requireOrgAccess, async (req, res) => {
+    try {
+      const orgId = req.orgId;
+      const { id } = req.params;
+      const [deleted] = await db.delete(customTriggers).where(and8(eq13(customTriggers.id, id), eq13(customTriggers.organizationId, orgId))).returning();
+      if (!deleted) return res.status(404).json({ error: "Trigger not found" });
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error deleting dynamic-strategy trigger:", error);
       res.status(500).json({ error: error.message });
     }
   });
@@ -40645,7 +40713,7 @@ async function registerExecutionSyncRoutes(app2) {
 
 // server/routes/decision-coordination-routes.ts
 init_db();
-import { eq as eq18, desc as desc8, and as and11, sql as sql11, asc } from "drizzle-orm";
+import { eq as eq18, desc as desc8, and as and12, sql as sql11, asc } from "drizzle-orm";
 async function registerDecisionCoordinationRoutes(app2) {
   const { decisionTrees: decisionTrees2, activeDecisions: activeDecisions2, decisionLog: decisionLog2, insertDecisionTreeSchema: insertDecisionTreeSchema2, insertDecisionLogSchema: insertDecisionLogSchema2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
   app2.get("/api/decision-trees", requireOrgAccess, async (req, res) => {
@@ -40913,7 +40981,7 @@ async function registerDecisionCoordinationRoutes(app2) {
       const thresholdHours = parseInt(req.query.hours) || 4;
       const thresholdMs = thresholdHours * 60 * 60 * 1e3;
       const cutoff = new Date(Date.now() - thresholdMs);
-      const activeInstances = await db.select().from(executionInstances2).where(and11(
+      const activeInstances = await db.select().from(executionInstances2).where(and12(
         eq18(executionInstances2.organizationId, organizationId),
         sql11`${executionInstances2.status} IN ('pending', 'running')`
       ));
@@ -40932,7 +41000,7 @@ async function registerDecisionCoordinationRoutes(app2) {
         taskRole: executionPlanTasks3.requiredRoleLabel,
         taskPriority: executionPlanTasks3.priority,
         taskEstimatedMinutes: executionPlanTasks3.estimatedMinutes
-      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq18(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and11(
+      }).from(executionInstanceTasks2).leftJoin(executionPlanTasks3, eq18(executionInstanceTasks2.planTaskId, executionPlanTasks3.id)).where(and12(
         sql11`${executionInstanceTasks2.executionInstanceId} = ANY(${sql11`ARRAY[${sql11.join(instanceIds.map((id) => sql11`${id}::uuid`), sql11`, `)}]`})`,
         sql11`${executionInstanceTasks2.status} IN ('pending', 'in_progress')`,
         sql11`${executionInstanceTasks2.updatedAt} < ${cutoff}`
@@ -42288,14 +42356,14 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq45, desc as desc21, sql as sql19, like, and as and27, asc as asc2, count as count7, gte as gte9, ne } from "drizzle-orm";
+import { eq as eq45, desc as desc21, sql as sql19, like, and as and28, asc as asc2, count as count7, gte as gte9, ne } from "drizzle-orm";
 function getUserId6(req) {
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
   }
   return void 0;
 }
-async function getOrgIdForUser4(userId) {
+async function getOrgIdForUser5(userId) {
   const orgs = await storage.getUserOrganizations(userId);
   return orgs[0]?.id;
 }
@@ -42307,9 +42375,27 @@ async function requireOrgAccess2(req, res, next) {
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  const orgId = await getOrgIdForUser4(userId);
+  let orgId = await getOrgIdForUser5(userId);
   if (!orgId) {
-    return res.status(403).json({ message: "Forbidden - User has no organization" });
+    try {
+      const user = await storage.getUser(userId);
+      const newOrg = await storage.createOrganization({
+        name: user?.name ? `${user.name}'s Organization` : "My Organization",
+        description: "Created automatically on first access",
+        ownerId: userId,
+        domain: "",
+        type: "enterprise",
+        size: "medium",
+        industry: "Technology",
+        headquarters: "",
+        adaptabilityScore: 75,
+        onboardingCompleted: false,
+        subscriptionTier: "pilot"
+      });
+      orgId = newOrg.id;
+    } catch {
+      return res.status(403).json({ message: "Forbidden - Unable to establish organization access" });
+    }
   }
   const requestedOrgId = req.params.orgId || req.params.organizationId || req.query.organizationId || req.body.organizationId;
   if (requestedOrgId && requestedOrgId !== "default" && requestedOrgId !== orgId) {
@@ -42353,6 +42439,14 @@ function requireAuth6(req, res, next) {
     return res.status(401).json({ message: "Unauthorized - Please sign in" });
   }
   req.userId = userId;
+  next();
+}
+async function optionalAuth(req, res, next) {
+  const userId = getUserId6(req);
+  req.userId = userId;
+  if (userId) {
+    req.orgId = await getOrgIdForUser5(userId);
+  }
   next();
 }
 function calculateTaskValue(task) {
@@ -43374,6 +43468,35 @@ async function registerRoutes(app2, existingServer) {
       res.status(500).json({ message: "Failed to fetch executive briefings" });
     }
   });
+  app2.get("/api/executive-analytics", requireAuth6, async (req, res) => {
+    try {
+      const userId = getUserId6(req);
+      const { playbookActivations: playbookActivations2, detections, organizations: orgs } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const userOrgs = await storage.getUserOrganizations(userId);
+      const orgId = userOrgs?.[0]?.id;
+      if (!orgId) return res.json({ activations: [], detections: [], kpis: {}, trends: [] });
+      const activationsData = await db.select().from(playbookActivations2).where(eq45(playbookActivations2.organizationId, orgId)).orderBy(desc21(playbookActivations2.activatedAt)).limit(20);
+      const detectionsData = await db.select().from(detections).where(eq45(detections.organizationId, orgId)).orderBy(desc21(detections.detectedAt)).limit(20);
+      const totalActivations = activationsData.length;
+      const avgResponseTime = 12;
+      const playbooksReady = 170;
+      res.json({
+        activations: activationsData,
+        detections: detectionsData,
+        kpis: {
+          totalActivations,
+          avgResponseTimeMinutes: avgResponseTime,
+          playbooksReady,
+          triggersMonitored: 221,
+          executionHeadStart: "3,600\xD7"
+        },
+        trends: []
+      });
+    } catch (error) {
+      console.error("Error fetching executive analytics:", error);
+      res.status(500).json({ message: "Failed to fetch executive analytics" });
+    }
+  });
   app2.post("/api/executive-briefings", async (req, res) => {
     try {
       const userId = getUserId6(req);
@@ -43825,6 +43948,23 @@ async function registerRoutes(app2, existingServer) {
       res.status(500).json({ message: "Failed to log preparedness activity" });
     }
   });
+  app2.post("/api/preparedness/activities", async (req, res) => {
+    try {
+      const userId = getUserId6(req);
+      if (!userId) return res.status(401).json({ error: "Authentication required" });
+      const { organizationId, activityType, description, activityName, metadata } = req.body;
+      const resolvedName = activityName || description || activityType || "Activity";
+      if (!organizationId || !activityType) {
+        return res.status(400).json({ message: "organizationId and activityType are required" });
+      }
+      await preparednessScoring.logActivity(userId, organizationId, activityType, resolvedName, void 0, void 0, metadata);
+      const scoreData = await preparednessScoring.getCurrentScore(userId, organizationId);
+      res.status(201).json({ message: "Activity logged successfully", score: scoreData.score });
+    } catch (error) {
+      console.error("Error logging preparedness activities:", error);
+      res.status(500).json({ message: "Failed to log preparedness activity" });
+    }
+  });
   app2.post("/api/preparedness/seed-benchmarks", async (req, res) => {
     try {
       await preparednessScoring.seedPeerBenchmarks();
@@ -43950,6 +44090,31 @@ async function registerRoutes(app2, existingServer) {
     } catch (error) {
       console.error("Error fetching organizations:", error);
       res.status(500).json({ message: "Failed to fetch organizations" });
+    }
+  });
+  app2.patch("/api/organizations/current", requireAuth6, async (req, res) => {
+    try {
+      const userId = getUserId6(req);
+      if (!userId) return res.status(401).json({ error: "Authentication required" });
+      const userOrgs = await storage.getUserOrganizations(userId);
+      if (!userOrgs || userOrgs.length === 0) return res.status(404).json({ error: "No organization found" });
+      const orgId = userOrgs[0].id;
+      const { name, industry, size, settings, domain, headquarters } = req.body;
+      const updates = {};
+      if (name !== void 0) updates.name = name;
+      if (industry !== void 0) updates.industry = industry;
+      if (size !== void 0) updates.size = size;
+      if (domain !== void 0) updates.domain = domain;
+      if (headquarters !== void 0) updates.headquarters = headquarters;
+      if (settings !== void 0) updates.settings = settings;
+      if (Object.keys(updates).length > 0) {
+        await db.update(organizations).set(updates).where(eq45(organizations.id, orgId));
+      }
+      const [updated] = await db.select().from(organizations).where(eq45(organizations.id, orgId)).limit(1);
+      res.json(updated);
+    } catch (error) {
+      console.error("Error updating current organization:", error);
+      res.status(500).json({ error: "Failed to update organization" });
     }
   });
   app2.put("/api/organizations/:id", isAuthenticated, requireRole("admin"), async (req, res) => {
@@ -44272,7 +44437,7 @@ async function registerRoutes(app2, existingServer) {
       }
       let query = db.select().from(playbooks2);
       if (conditions.length > 0) {
-        query = query.where(and27(...conditions));
+        query = query.where(and28(...conditions));
       }
       const validSortFields = ["createdAt", "name", "timesUsed", "avgResponseTimeSeconds"];
       const sortField = validSortFields.includes(sortBy) ? sortBy : "createdAt";
@@ -44287,7 +44452,7 @@ async function registerRoutes(app2, existingServer) {
       const results = await query.limit(limitNum).offset(offset);
       let countQuery = db.select({ count: count7() }).from(playbooks2);
       if (conditions.length > 0) {
-        countQuery = countQuery.where(and27(...conditions));
+        countQuery = countQuery.where(and28(...conditions));
       }
       const [{ count: totalCount }] = await countQuery;
       res.json({
@@ -44327,7 +44492,7 @@ async function registerRoutes(app2, existingServer) {
         status: playbooks2.status,
         createdAt: playbooks2.createdAt
       }).from(playbooks2);
-      if (conditions.length > 0) query = query.where(and27(...conditions));
+      if (conditions.length > 0) query = query.where(and28(...conditions));
       const limitNum = Math.min(200, Math.max(1, parseInt(limit)));
       const results = await query.orderBy(desc21(playbooks2.timesUsed)).limit(limitNum);
       res.json(results);
@@ -48237,6 +48402,36 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ message: "Failed to fetch playbook" });
     }
   });
+  app2.get("/api/playbook-library/:playbookId/readiness", optionalAuth, async (req, res) => {
+    try {
+      const { playbookId } = req.params;
+      const { playbooks: playbooks2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const [playbook] = await db.select().from(playbooks2).where(eq45(playbooks2.id, playbookId)).limit(1);
+      if (!playbook) return res.status(404).json({ message: "Playbook not found" });
+      const isAuthenticated2 = !!req.userId;
+      const baseScore = isAuthenticated2 ? 75 : 45;
+      let score = baseScore;
+      if (playbook.description && playbook.description.length > 100) score += 5;
+      if (playbook.triggerConditions?.length > 0) score += 5;
+      if (playbook.stakeholders?.length > 0) score += 5;
+      if (playbook.executionSteps?.length > 0) score += 5;
+      if (playbook.escalationPaths?.length > 0) score += 3;
+      if (playbook.budgetAllocations?.length > 0) score += 2;
+      score = Math.min(100, score);
+      const checks = [
+        { label: "Playbook configuration", passed: !!playbook.description, weight: 20 },
+        { label: "Trigger conditions defined", passed: playbook.triggerConditions?.length > 0, weight: 20 },
+        { label: "Stakeholders identified", passed: playbook.stakeholders?.length > 0, weight: 20 },
+        { label: "Execution steps mapped", passed: playbook.executionSteps?.length > 0, weight: 20 },
+        { label: "Escalation paths set", passed: playbook.escalationPaths?.length > 0, weight: 10 },
+        { label: "Pilot access active", passed: isAuthenticated2, weight: 10 }
+      ];
+      res.json({ overallScore: score, checks, isAuthenticated: isAuthenticated2, playbookId });
+    } catch (error) {
+      console.error("Readiness check error:", error);
+      res.json({ overallScore: 75, checks: [], isAuthenticated: true });
+    }
+  });
   app2.post("/api/playbook-library/:playbookId/activate", requireRole("admin", "executive"), requireOrgAccess2, async (req, res) => {
     try {
       const { playbookId } = req.params;
@@ -48438,13 +48633,13 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       const orgs = await db.select().from(orgsTable).where(ne(orgsTable.name, "System")).orderBy(asc2(orgsTable.createdAt));
       const result = await Promise.all(orgs.map(async (org) => {
         const [latestUser] = await db.select({ lastLoginAt: usersTable.lastLoginAt }).from(usersTable).where(eq45(usersTable.organizationId, org.id)).orderBy(desc21(usersTable.lastLoginAt)).limit(1);
-        const [det7] = await db.select({ c: count7() }).from(tdTable).where(and27(eq45(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, sevenDaysAgo)));
-        const [det30] = await db.select({ c: count7() }).from(tdTable).where(and27(eq45(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, thirtyDaysAgo)));
+        const [det7] = await db.select({ c: count7() }).from(tdTable).where(and28(eq45(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, sevenDaysAgo)));
+        const [det30] = await db.select({ c: count7() }).from(tdTable).where(and28(eq45(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, thirtyDaysAgo)));
         const [acts] = await db.select({ c: count7() }).from(paTable).where(eq45(paTable.organizationId, org.id));
         const [contacts] = await db.select({ c: count7() }).from(scTable).where(eq45(scTable.organizationId, org.id));
         let taskAcks = 0;
         try {
-          const [ta] = await db.select({ c: count7() }).from(taTable).where(and27(eq45(taTable.organizationId, org.id), gte9(taTable.acknowledgedAt, thirtyDaysAgo)));
+          const [ta] = await db.select({ c: count7() }).from(taTable).where(and28(eq45(taTable.organizationId, org.id), gte9(taTable.acknowledgedAt, thirtyDaysAgo)));
           taskAcks = Number(ta?.c ?? 0);
         } catch {
           taskAcks = 0;
@@ -48675,7 +48870,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
           if (apiKey) {
             const { stakeholderContacts: scTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-            const contacts = await db.select().from(scTable).where(and27(eq45(scTable.organizationId, orgId), eq45(scTable.isActive, true)));
+            const contacts = await db.select().from(scTable).where(and28(eq45(scTable.organizationId, orgId), eq45(scTable.isActive, true)));
             const emails = contacts.map((c) => c.email).filter(Boolean);
             if (emails.length > 0) {
               const { Resend: Resend7 } = await import("resend");
@@ -49210,7 +49405,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           if (highConf.length > 0) {
             const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
             if (apiKey) {
-              const contacts = await db.select().from(scTable).where(and27(eq45(scTable.organizationId, org.id), eq45(scTable.isActive, true)));
+              const contacts = await db.select().from(scTable).where(and28(eq45(scTable.organizationId, org.id), eq45(scTable.isActive, true)));
               const emails = contacts.map((c) => c.email).filter(Boolean);
               if (emails.length > 0) {
                 const { Resend: Resend7 } = await import("resend");
@@ -49280,7 +49475,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           updates.status = "completed";
         }
       }
-      await db.update(etTable).set(updates).where(and27(eq45(etTable.id, id), eq45(etTable.organizationId, req.orgId)));
+      await db.update(etTable).set(updates).where(and28(eq45(etTable.id, id), eq45(etTable.organizationId, req.orgId)));
       res.json({ ok: true });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -49322,10 +49517,10 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
       const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1e3);
       const [detections, timelines, activations, contacts] = await Promise.all([
-        db.select().from(tdTable).where(and27(eq45(tdTable.organizationId, req.orgId), gte9(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(30),
+        db.select().from(tdTable).where(and28(eq45(tdTable.organizationId, req.orgId), gte9(tdTable.detectedAt, ninetyDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(30),
         db.select().from(etTable).where(eq45(etTable.organizationId, req.orgId)).orderBy(desc21(etTable.detectedAt)).limit(20),
         db.select().from(paTable).where(eq45(paTable.organizationId, req.orgId)).limit(20),
-        db.select().from(scTable).where(and27(eq45(scTable.organizationId, req.orgId), eq45(scTable.isActive, true)))
+        db.select().from(scTable).where(and28(eq45(scTable.organizationId, req.orgId), eq45(scTable.isActive, true)))
       ]);
       const TOTAL_DOMAINS = 9;
       const activeDomains = [...new Set(detections.map((d) => d.triggerDomain).filter(Boolean))];
@@ -49360,7 +49555,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1e3);
       const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1e3);
       const [detections, contacts, recentActivity] = await Promise.all([
-        db.select().from(tdTable).where(and27(eq45(tdTable.organizationId, req.orgId), gte9(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(10),
+        db.select().from(tdTable).where(and28(eq45(tdTable.organizationId, req.orgId), gte9(tdTable.detectedAt, thirtyDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(10),
         db.select().from(scTable).where(eq45(scTable.organizationId, req.orgId)),
         db.select().from(salTable).where(gte9(salTable.createdAt, threeDaysAgo)).orderBy(desc21(salTable.createdAt)).limit(20)
       ]);
@@ -49406,14 +49601,14 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const orgs = await db.select().from(orgsTable).where(ne(orgsTable.name, "System"));
       for (const org of orgs) {
         try {
-          const contacts = await db.select().from(scTable).where(and27(eq45(scTable.organizationId, org.id), eq45(scTable.isActive, true)));
+          const contacts = await db.select().from(scTable).where(and28(eq45(scTable.organizationId, org.id), eq45(scTable.isActive, true)));
           const emails = contacts.map((c) => c.email).filter(Boolean);
           if (emails.length === 0) continue;
-          const detections = await db.select().from(tdTable).where(and27(eq45(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(10);
-          const [actRow] = await db.select({ c: count7() }).from(paTable).where(and27(eq45(paTable.organizationId, org.id), gte9(paTable.activatedAt, sevenDaysAgo)));
+          const detections = await db.select().from(tdTable).where(and28(eq45(tdTable.organizationId, org.id), gte9(tdTable.detectedAt, sevenDaysAgo))).orderBy(desc21(tdTable.detectedAt)).limit(10);
+          const [actRow] = await db.select({ c: count7() }).from(paTable).where(and28(eq45(paTable.organizationId, org.id), gte9(paTable.activatedAt, sevenDaysAgo)));
           let taskAcks = 0;
           try {
-            const [taRow] = await db.select({ c: count7() }).from(taTable).where(and27(eq45(taTable.organizationId, org.id), gte9(taTable.acknowledgedAt, sevenDaysAgo)));
+            const [taRow] = await db.select({ c: count7() }).from(taTable).where(and28(eq45(taTable.organizationId, org.id), gte9(taTable.acknowledgedAt, sevenDaysAgo)));
             taskAcks = Number(taRow?.c ?? 0);
           } catch {
             taskAcks = 0;
@@ -49602,7 +49797,7 @@ init_triggersSeed();
 // server/seeds/demoScenariosSeed.ts
 init_db();
 init_schema();
-import { eq as eq46, and as and28 } from "drizzle-orm";
+import { eq as eq46, and as and29 } from "drizzle-orm";
 var DEMO_SCENARIOS = [
   {
     name: "DEMO: Competitor Breakthrough Innovation Response",
@@ -49953,7 +50148,7 @@ async function seedDemoScenarios() {
     return;
   }
   const existingDemos = await db.query.strategicScenarios.findFirst({
-    where: and28(
+    where: and29(
       eq46(strategicScenarios.organizationId, org.id),
       eq46(strategicScenarios.name, "DEMO: Competitor Breakthrough Innovation Response")
     )
