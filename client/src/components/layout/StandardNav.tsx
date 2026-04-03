@@ -337,6 +337,7 @@ export default function StandardNav() {
             {megaColHeading("Inside the Platform")}
             {[
               { path: '/mission-control', icon: Compass, label: 'Mission Control', sub: 'Your interactive operations center — configure, detect, activate', featured: true },
+              { path: '/onboarding-guide', icon: BookOpen, label: 'Onboarding Guide', sub: 'New to Execution OS? Start here — platform map & first 30 days', featured: true },
               { path: '/identify/situation-intents', icon: Target, label: 'Situation Intents', sub: 'Define what your org is watching for — start here', featured: true },
               { path: '/workspace', icon: Layers, label: 'Workspace', sub: 'Execute across all 4 IDEA phases' },
               { path: '/situations-hub', icon: Shield, label: '9-Domain Coverage Board', sub: 'Exposure & readiness across all 9 strategic domains' },
