@@ -289,16 +289,16 @@ export default function OneClickDemo() {
               
               <div className="flex gap-2">
                 {demoState === 'running' && (
-                  <Button variant="outline" size="sm" onClick={pauseDemo} className="border-white/20 text-white hover:bg-white/10" data-testid="button-pause-demo">
+                  <Button variant="outline" size="sm" onClick={pauseDemo} className="bg-transparent border-white/20 text-white hover:bg-white/10" data-testid="button-pause-demo">
                     <Pause className="h-4 w-4" />
                   </Button>
                 )}
                 {demoState === 'paused' && (
-                  <Button variant="outline" size="sm" onClick={resumeDemo} className="border-white/20 text-white hover:bg-white/10" data-testid="button-resume-demo">
+                  <Button variant="outline" size="sm" onClick={resumeDemo} className="bg-transparent border-white/20 text-white hover:bg-white/10" data-testid="button-resume-demo">
                     <Play className="h-4 w-4" />
                   </Button>
                 )}
-                <Button variant="outline" size="sm" onClick={resetDemo} className="border-white/20 text-white hover:bg-white/10" data-testid="button-reset-demo">
+                <Button variant="outline" size="sm" onClick={resetDemo} className="bg-transparent border-white/20 text-white hover:bg-white/10" data-testid="button-reset-demo">
                   <RotateCcw className="h-4 w-4" />
                 </Button>
                 <Button variant="ghost" size="sm" onClick={resetDemo} className="text-white hover:bg-white/10" data-testid="button-close-demo">

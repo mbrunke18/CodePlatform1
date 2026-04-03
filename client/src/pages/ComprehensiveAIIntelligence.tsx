@@ -382,7 +382,7 @@ export default function ComprehensiveAIIntelligence() {
                 )}
                 Generate Intelligence
               </Button>
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+              <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
                 <Download className="w-4 h-4 mr-2" />
                 Export Reports
               </Button>
@@ -769,7 +769,7 @@ export default function ComprehensiveAIIntelligence() {
                   <CardContent className="p-6 relative z-10">
                     <h3 className="font-bold text-lg mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Schedule Reports</h3>
                     <p className="text-white/70 text-sm mb-4">Automate intelligence delivery to key stakeholders on a regular basis.</p>
-                    <Button variant="outline" className="w-full border-white/30 text-white hover:bg-white/10">
+                    <Button variant="outline" className="bg-transparent w-full border-white/30 text-white hover:bg-white/10">
                       <Settings className="h-4 w-4 mr-2" />
                       Configure Scheduler
                     </Button>

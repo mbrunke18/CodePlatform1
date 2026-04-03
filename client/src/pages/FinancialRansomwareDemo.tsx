@@ -353,7 +353,7 @@ export default function FinancialRansomwareDemo() {
             </div>
 
             <div className="flex justify-center gap-4 flex-wrap">
-              <Button size="lg" variant="outline" onClick={handleRestart} className="text-white border-white/20 hover:bg-white/10" data-testid="button-restart-demo">
+              <Button size="lg" variant="outline" onClick={handleRestart} className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-restart-demo">
                 <RotateCcw className="w-5 h-5 mr-2" />Restart Demo
               </Button>
               <Link href="/request-access">

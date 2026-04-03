@@ -304,7 +304,7 @@ export default function SpaceXLaunchDemo() {
             />
 
             <div className="flex justify-center gap-4">
-              <Button onClick={resetDemo} variant="outline" style={{ borderColor: "rgba(240,237,228,0.3)", color: IVORY }} data-testid="button-replay">
+              <Button onClick={resetDemo} variant="outline" style={{ background: "transparent", borderColor: "rgba(240,237,228,0.3)", color: IVORY }} data-testid="button-replay">
                 Replay Demo
               </Button>
               <Link href="/industry-demos">

@@ -344,7 +344,7 @@ export default function LuxuryCrisisDemo() {
               </div>
 
               <div className="flex gap-4 justify-center flex-wrap mb-6">
-                <Button size="lg" onClick={() => setCurrentAct('intro')} variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-restart-demo">
+                <Button size="lg" onClick={() => setCurrentAct('intro')} variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-restart-demo">
                   Restart Demo
                 </Button>
                 <Link href="/request-access">

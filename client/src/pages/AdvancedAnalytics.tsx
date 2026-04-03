@@ -308,7 +308,7 @@ export default function AdvancedAnalytics() {
             </div>
             <div className="relative z-10 flex items-center gap-4">
               <Link to="/">
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Dashboard
                 </Button>

@@ -349,11 +349,11 @@ export default function LVMHMarketEntryDemo() {
                 </Button>
               </Link>
               <div className="flex gap-3">
-                <Button size="sm" onClick={resetDemo} variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-replay">
+                <Button size="sm" onClick={resetDemo} variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-replay">
                   Replay Demo
                 </Button>
                 <Link href="/industry-demos">
-                  <Button size="sm" variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-all-demos">
+                  <Button size="sm" variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-all-demos">
                     View All Demos
                   </Button>
                 </Link>

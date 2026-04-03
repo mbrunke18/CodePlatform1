@@ -379,13 +379,13 @@ export default function RetailFoodSafetyDemo() {
                     size="sm"
                     variant="outline"
                     onClick={resetDemo}
-                    className="text-white border-white/20 hover:bg-white/10"
+                    className="bg-transparent text-white border-white/20 hover:bg-white/10"
                     data-testid="button-replay-demo"
                   >
                     Replay Demo
                   </Button>
                   <Link href="/industry-demos">
-                    <Button size="sm" variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-view-all-demos">
+                    <Button size="sm" variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-view-all-demos">
                       View All Demos
                     </Button>
                   </Link>

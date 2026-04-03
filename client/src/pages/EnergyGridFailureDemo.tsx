@@ -182,7 +182,7 @@ export default function EnergyGridFailureDemo() {
                   variant="outline"
                   size="sm"
                   onClick={() => (window.location.href = "/industry-demos")}
-                  className="gap-2 text-white border-white/20 hover:bg-white/10"
+                  className="bg-transparent gap-2 text-white border-white/20 hover:bg-white/10"
                   data-testid="button-back-to-hub"
                 >
                   <ArrowLeft className="h-4 w-4" />
@@ -407,7 +407,7 @@ export default function EnergyGridFailureDemo() {
                   size="sm"
                   onClick={() => goToAct("intro")}
                   variant="outline"
-                  className="gap-2 text-white border-white/20 hover:bg-white/10"
+                  className="bg-transparent gap-2 text-white border-white/20 hover:bg-white/10"
                   data-testid="button-replay-demo"
                 >
                   Replay Demo
@@ -416,7 +416,7 @@ export default function EnergyGridFailureDemo() {
                   size="sm"
                   variant="outline"
                   onClick={() => (window.location.href = "/industry-demos")}
-                  className="gap-2 text-white border-white/20 hover:bg-white/10"
+                  className="bg-transparent gap-2 text-white border-white/20 hover:bg-white/10"
                   data-testid="button-view-all-demos"
                 >
                   View All Demos

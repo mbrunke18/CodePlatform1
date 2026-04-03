@@ -372,7 +372,7 @@ export default function ManufacturingSupplierDemo() {
               </div>
 
               <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Button size="lg" onClick={resetDemo} variant="outline" className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10" data-testid="button-replay-demo">
+                <Button size="lg" onClick={resetDemo} variant="outline" className="bg-transparent border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10" data-testid="button-replay-demo">
                   Replay Demo
                 </Button>
                 <Link href="/request-access">
