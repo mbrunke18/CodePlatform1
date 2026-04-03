@@ -720,40 +720,19 @@ export default function TryDemo() {
                 ))}
               </div>
 
-              {/* Industry Demos Section */}
-              <div className="pt-12 border-t border-[#E8E4DC]">
-                <div className="text-center mb-10">
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
-                    <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Industry Deep Dives</span>
-                    <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
+              {/* Industry Proof Cases Banner */}
+              <div className="pt-10 border-t border-[#E8E4DC]">
+                <div style={{ background: "#0A0F2E", border: "1px solid rgba(201,168,76,0.2)", borderLeft: "3px solid #C9A84C", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" as const }}>
+                  <div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 6 }}>Industry Proof Cases</div>
+                    <p style={{ fontSize: 14, fontWeight: 600, color: "#FFFFFF", margin: 0, lineHeight: 1.4 }}>LVMH · Toyota · LoanDepot · SpaceX · SHEIN — 8 real scenarios, real stakes.</p>
+                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", margin: "4px 0 0" }}>Offense and defense. Market entry to crisis response.</p>
                   </div>
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
-                    Explore Role-Specific Environments
-                  </h2>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {INDUSTRY_DEMOS.map((demo) => (
-                    <Link key={demo.id} href={demo.route}>
-                      <div className="group border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-all cursor-pointer">
-                        <div className="flex items-center justify-between mb-4">
-                          <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <demo.icon className="h-4 w-4 text-white" />
-                          </div>
-                          <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: demo.type === 'offensive' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", color: demo.type === 'offensive' ? "#2B8A6E" : "#C9A84C", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
-                            {demo.type}
-                          </div>
-                        </div>
-                        <h4 className="font-bold text-slate-900 mb-1">{demo.title}</h4>
-                        <div className="text-xs text-slate-500 mb-3">{demo.organization} · {demo.industry}</div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-[#0A0F2E]">{demo.impact}</span>
-                          <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-[#0A0F2E] transition-colors" />
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+                  <Link href="/industry-demos">
+                    <button style={{ fontSize: 12, fontWeight: 700, color: "#0A0F2E", background: "#C9A84C", border: "none", padding: "10px 20px", cursor: "pointer", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
+                      Explore All Scenarios →
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -1415,78 +1394,6 @@ export default function TryDemo() {
                               <RefreshCw className="mr-2 h-4 w-4" />
                               Try Another Scenario
                             </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      {/* Industry Deep-Dive Demos */}
-                      <Card className="bg-white border-gray-200">
-                        <CardHeader className="pb-4">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2" style={CG}>
-                                <Building2 className="h-5 w-5 text-[#C9A84C]" />
-                                Explore Industry Deep-Dives
-                              </CardTitle>
-                              <CardDescription className="text-slate-600">
-                                See Execution OS in action across 9 industries with real company scenarios
-                              </CardDescription>
-                            </div>
-                            <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-[#C9A84C] hover:bg-[#DFC178]">
-                              9 Demos
-                            </Badge>
-                          </div>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="mb-4">
-                            <div className="flex gap-2 mb-3">
-                              <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E] bg-[#2B8A6E]/10">
-                                <Target className="h-3 w-3 mr-1" />
-                                Offensive (3)
-                              </Badge>
-                              <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C] bg-[#C9A84C]/10">
-                                <Shield className="h-3 w-3 mr-1" />
-                                Defensive (6)
-                              </Badge>
-                            </div>
-                          </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                            {INDUSTRY_DEMOS.map((demo) => {
-                              const IconComponent = demo.icon;
-                              return (
-                                <button
-                                  key={demo.id}
-                                  onClick={() => {
-                                    setLocation(demo.route);
-                                    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-                                  }}
-                                  className={`p-3 rounded-lg border transition-all hover:scale-[1.02] text-left group ${demo.bgColor} ${
-                                    demo.type === 'offensive' 
-                                      ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]' 
-                                      : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]'
-                                  }`}
-                                >
-                                  <div className="flex items-center gap-2 mb-1">
-                                    <IconComponent className={`h-4 w-4 ${demo.iconColor}`} />
-                                    <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">{demo.industry}</span>
-                                  </div>
-                                  <p className="text-xs font-semibold text-[#0A0F2E] truncate">{demo.title}</p>
-                                  <div className="flex items-center justify-between mt-1">
-                                    <span className="text-[10px] text-slate-600 font-medium">{demo.organization}</span>
-                                    <span className={`text-[10px] font-bold ${demo.type === 'offensive' ? 'text-[#2B8A6E]' : 'text-[#0A0F2E]'}`}>
-                                      {demo.impact}
-                                    </span>
-                                  </div>
-                                  <div className="mt-2 flex items-center gap-1 text-[#2B8A6E] opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <span className="text-[10px] font-bold">Explore</span>
-                                    <ExternalLink className="h-2.5 w-2.5" />
-                                  </div>
-                                </button>
-                              );
-                            })}
-                          </div>
-                          <div className="mt-4 pt-4 border-t border-[#E8E4DC] text-center">
-                            <p className="text-xs text-slate-500 font-medium">Click any scenario above to explore the full demo</p>
                           </div>
                         </CardContent>
                       </Card>
