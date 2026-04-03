@@ -60,3 +60,9 @@ id = "vxlcRyvoBcIsCwNS7GwoB"
 uri = "file://attached_assets/execution-os-video-production-package-UPDATED.docx"
 type = "word_document"
 title = "Execution OS — Updated Video Production Package (.docx)"
+
+[[outputs]]
+id = "elc4Es1I5rSNCq5Y1gUje"
+uri = "file://financials/VaughnMartin_Financial_Projections_18-24mo.md"
+type = "text"
+title = "VaughnMartin — 24-Month Financial Projections"
