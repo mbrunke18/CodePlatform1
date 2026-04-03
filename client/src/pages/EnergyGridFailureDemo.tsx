@@ -39,7 +39,7 @@ export default function EnergyGridFailureDemo() {
             size="sm"
             onClick={() => goToAct(act.id)}
             data-testid={`button-act-${act.id}`}
-            className={currentAct === act.id ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]" : "text-white/60 border-white/20 hover:bg-white/10"}
+            className={currentAct === act.id ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]" : "bg-transparent text-white border-white/20 hover:bg-white/10 hover:text-white"}
           >
             {act.label}
           </Button>
