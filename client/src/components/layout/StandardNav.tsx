@@ -74,6 +74,7 @@ const SEARCH_ITEMS = [
   { label: 'Shadow Strategy Simulator', path: '/simulation-studio', category: 'Demo', icon: FlaskConical },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
+  { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
   { label: 'Request a Pilot', path: '/request-access', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'Why Execution OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },

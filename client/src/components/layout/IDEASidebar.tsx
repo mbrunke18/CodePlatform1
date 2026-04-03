@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'wouter';
-import { ChevronDown, ChevronRight, Menu, X, LogOut, User, Home, Moon, Sun } from 'lucide-react';
+import { ChevronDown, ChevronRight, Menu, X, LogOut, User, Home, Moon, Sun, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navigationConfig } from '@/navigation/config';
 import { NavigationPhase } from '@/navigation/types';
@@ -156,10 +156,18 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         <div className="flex items-center gap-2">
           <Link 
             href="/"
-            className="flex-1 flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
           >
             <Home className="h-4 w-4" />
             <span>Home</span>
+          </Link>
+          <Link
+            href="/onboarding-guide"
+            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
+            title="Onboarding Guide"
+          >
+            <BookOpen className="h-4 w-4" />
+            <span>Guide</span>
           </Link>
           <Button
             variant="ghost"
