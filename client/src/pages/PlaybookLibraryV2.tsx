@@ -434,52 +434,22 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       {!embedded && (
         <div style={{ background: "white", borderBottom: `1px solid #E8E4DC` }}>
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
-            <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-12">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
-                  <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
-                </div>
-                <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
-                  A Playbook for Every<br />
-                  <em className="italic" style={{ color: "#C9A84C" }}>Strategic Scenario</em>
-                </h1>
-                <p style={{ color: "#6B7280" }} className="text-base max-w-lg">
-                  Built from 20+ years of Fortune 500 transformation. Filter by domain, urgency, or trigger type.
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10 }}>
-                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
-                  <span style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace' }}>
-                    Aligned with WEF AI Transformation Framework · Focus Area 4: Predictive, AI-Powered Strategic Planning
-                  </span>
-                </div>
-              </div>
-                  <div className="flex flex-wrap gap-2 max-w-sm">
-                {["All Domains", "Financial", "Competitive", "Regulatory", "Crisis", "M&A"].map((chip, i) => {
-                  const id = ["all","financial","competitive","regulatory","crisis","ma"][i];
-                  const isActive = activeDomain === id;
-                  return (
-                    <button
-                      key={chip}
-                      onClick={() => setActiveDomain(id)}
-                      style={{
-                        padding: "6px 14px",
-                        fontSize: 10,
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                          border: `1px solid ${isActive ? "#C9A84C" : "#E8E4DC"}`,
-                        color: isActive ? "#FFFFFF" : "#0A0F2E",
-                        background: isActive ? "#0A0F2E" : "transparent",
-                        transition: "all 0.2s"
-                      }}
-                      className="hover:border-[#C9A84C]"
-                    >
-                      {chip}
-                    </button>
-                  );
-                })}
-              </div>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
+              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Playbooks · 9 Domains</span>
+            </div>
+            <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
+              A Playbook for Every{" "}
+              <em className="italic" style={{ color: "#C9A84C" }}>Strategic Scenario</em>
+            </h1>
+            <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-2">
+              Built from 20+ years of Fortune 500 transformation. Use the filters on the left to narrow by domain, pillar, or urgency.
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
+              <span style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace' }}>
+                Aligned with WEF AI Transformation Framework · Focus Area 4: Predictive, AI-Powered Strategic Planning
+              </span>
             </div>
           </div>
         </div>
@@ -634,22 +604,23 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 );
               }
 
-              // FULL CARD — 3 sample playbooks (guests) or all playbooks (authenticated)
+              // FULL CARD — 3 sample playbooks always marked as Free Sample; 167 others show Pilot tier
+              const cardIsSample = SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
               return (
-              <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
+              <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${cardIsSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={cardIsSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5 flex flex-col flex-1">
                   {/* Header: tier label + urgency badge */}
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      {isAuthenticated ? (
-                        <>
-                          <Check className="h-3 w-3 text-[#2B8A6E]" />
-                          <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Enterprise Tier</span>
-                        </>
-                      ) : (
+                      {cardIsSample ? (
                         <>
                           <Eye className="h-3 w-3 text-[#2B8A6E]" />
                           <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Free Sample</span>
+                        </>
+                      ) : (
+                        <>
+                          <Check className="h-3 w-3 text-[#C9A84C]" />
+                          <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Pilot Exclusive</span>
                         </>
                       )}
                     </div>
@@ -711,9 +682,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[90px]">{playbook.domain}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      {isAuthenticated && (
+                      {isAuthenticated && !cardIsSample && (
                         <button
-                          onClick={() => setLocation(`/playbooks/${playbook.id}/preview`)}
+                          onClick={() => setLocation(`/playbook-library/${playbook.id}`)}
                           style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textDecoration: "underline", background: "none", border: "none", cursor: "pointer" }}
                         >
                           Preview
@@ -721,20 +692,30 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       )}
                       <Button
                         size="sm"
-                        style={{ background: "#0A0F2E", color: "white", fontSize: 10, padding: "4px 12px", height: "auto" }}
+                        style={{
+                          background: cardIsSample ? "#2B8A6E" : "#0A0F2E",
+                          color: "white",
+                          fontSize: 10,
+                          padding: "4px 12px",
+                          height: "auto"
+                        }}
                         className="font-bold uppercase tracking-wider"
                         onClick={() => {
-                          if (isAuthenticated) {
+                          if (cardIsSample) {
+                            setLocation(`/playbook-library/${playbook.id}`);
+                          } else if (isAuthenticated) {
                             setLocation(`/playbook-customize/${playbook.id}`);
                           } else {
-                            setLocation(`/playbook-library/${playbook.id}`);
+                            setLocation(`/request-access`);
                           }
                         }}
                       >
-                        {isAuthenticated ? (
+                        {cardIsSample ? (
+                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
+                        ) : isAuthenticated ? (
                           <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
                         ) : (
-                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
+                          <><Lock className="mr-1 h-3 w-3" /><span>Pilot Access</span></>
                         )}
                       </Button>
                     </div>
