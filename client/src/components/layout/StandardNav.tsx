@@ -312,7 +312,7 @@ export default function StandardNav() {
         </div>
 
         {/* Two-column body */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', maxHeight: 'calc(100vh - 120px)', overflowY: 'auto' }}>
           {/* Left: The Model + Core Capabilities */}
           <div style={{ padding: '12px 12px 12px 16px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
             {megaColHeading("The Operating Model")}
