@@ -871,7 +871,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <div className="mt-6 flex justify-end">
-              <Button onClick={next} disabled={!userPlaybook.name.trim()} className="bg-gradient-to-r from-[#2B8A6E] to-[#141B45] text-gray-900 px-8">
+              <Button onClick={next} disabled={!userPlaybook.name.trim()} className="bg-gradient-to-r from-[#2B8A6E] to-[#141B45] text-white px-8">
                 Next: Configure Triggers <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1159,7 +1159,7 @@ export default function IndustryExperience() {
                   </motion.div>
                   <span className="text-red-400 font-semibold">{industry.signal.severity} SIGNAL</span>
                 </div>
-                <Badge className="bg-red-500 text-gray-900">{industry.signal.severity}</Badge>
+                <Badge className="bg-red-500 text-white">{industry.signal.severity}</Badge>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{industry.signal.name}</h3>

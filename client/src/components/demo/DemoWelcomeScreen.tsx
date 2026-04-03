@@ -181,7 +181,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
             </Button>
             <Button 
               onClick={onStartDemo}
-              className="bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-gray-900 font-semibold px-8 py-6 text-lg"
+              className="bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-white font-semibold px-8 py-6 text-lg"
               data-testid="welcome-start-demo-btn"
             >
               <Rocket className="h-5 w-5 mr-2" />

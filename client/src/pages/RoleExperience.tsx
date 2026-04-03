@@ -946,7 +946,7 @@ export default function RoleExperience() {
           </div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
             className="text-center">
-            <Button onClick={next} size="lg" className="bg-gradient-to-r from-green-600 to-[#2B8A6E] text-gray-900 px-10 py-6 text-lg">
+            <Button onClick={next} size="lg" className="bg-gradient-to-r from-green-600 to-[#2B8A6E] text-white px-10 py-6 text-lg">
               <Rocket className="h-5 w-5 mr-2" /> Launch Execution
             </Button>
           </motion.div>
@@ -1149,7 +1149,7 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <div className="mt-6 flex justify-end">
-              <Button onClick={next} disabled={!userPlaybook.name.trim()} className="bg-gradient-to-r from-[#2B8A6E] to-[#141B45] text-gray-900 px-8">
+              <Button onClick={next} disabled={!userPlaybook.name.trim()} className="bg-gradient-to-r from-[#2B8A6E] to-[#141B45] text-white px-8">
                 Next: Configure Triggers <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1227,7 +1227,7 @@ export default function RoleExperience() {
               <Button variant="outline" onClick={prev} className="border-white/20 text-gray-900">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back
               </Button>
-              <Button onClick={next} disabled={enabledTriggers.length === 0} className="bg-gradient-to-r from-amber-600 to-orange-600 text-gray-900 px-8">
+              <Button onClick={next} disabled={enabledTriggers.length === 0} className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8">
                 Next: Connect Data <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1314,7 +1314,7 @@ export default function RoleExperience() {
               <Button variant="outline" onClick={prev} className="border-white/20 text-gray-900">
                 <ArrowLeft className="h-4 w-4 mr-2" /> Back
               </Button>
-              <Button onClick={next} disabled={connectedSources.length === 0} className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-gray-900 px-8">
+              <Button onClick={next} disabled={connectedSources.length === 0} className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-white px-8">
                 Next: Customize <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             </div>
@@ -1418,7 +1418,7 @@ export default function RoleExperience() {
                   </motion.div>
                   <span className="text-red-400 font-semibold">{role.signal.severity} SIGNAL</span>
                 </div>
-                <Badge className="bg-red-500 text-gray-900">{role.signal.severity}</Badge>
+                <Badge className="bg-red-500 text-white">{role.signal.severity}</Badge>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{role.signal.name}</h3>

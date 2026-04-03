@@ -563,7 +563,7 @@ export default function QuickDemoPage() {
                         <p className="font-medium">Chaos. Confusion. Costly delays.</p>
                       </div>
                       <Button
-                        className="w-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#256B56] hover:to-[#3BAF8A] text-gray-900 font-semibold py-6"
+                        className="w-full bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A] hover:from-[#256B56] hover:to-[#3BAF8A] text-white font-semibold py-6"
                         onClick={moveToPrepared}
                       >
                         <Sparkles className="mr-2 h-5 w-5" />
@@ -582,7 +582,7 @@ export default function QuickDemoPage() {
           <>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-gray-900`}>
+                <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
                   {selectedScenario.name}
                 </Badge>
                 <span className="text-sm text-muted-foreground">
@@ -812,7 +812,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">
                             Execution OS captures what worked and suggests playbook improvements for next time.
                           </p>
-                          <Button className="w-full bg-amber-600 hover:bg-amber-700 text-gray-900" onClick={completeAdvance}>
+                          <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" onClick={completeAdvance}>
                             <Sparkles className="mr-2 h-4 w-4" />
                             Generate Insights
                           </Button>
@@ -877,7 +877,7 @@ export default function QuickDemoPage() {
 
                       <div className="space-y-3">
                         <Button
-                          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-gray-900 py-6 text-lg font-semibold"
+                          className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white py-6 text-lg font-semibold"
                           onClick={() => {
                             setLocation('/try-demo');
                             window.scrollTo({ top: 0, left: 0, behavior: 'instant' });

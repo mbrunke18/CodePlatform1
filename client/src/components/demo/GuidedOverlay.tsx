@@ -376,7 +376,7 @@ export default function GuidedOverlay() {
             <CardContent className="p-8 overflow-y-auto max-h-[90vh]">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#0A0F2E] to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Settings className="h-8 w-8 text-gray-900" />
+                  <Settings className="h-8 w-8 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   {currentSceneData.title}
@@ -391,7 +391,7 @@ export default function GuidedOverlay() {
                   <Button
                     key={option.id}
                     onClick={() => makeDecision(option.id)}
-                    className="bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-gray-900 p-4 h-auto text-left justify-start transition-all duration-300 transform hover:scale-105"
+                    className="bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-white p-4 h-auto text-left justify-start transition-all duration-300 transform hover:scale-105"
                     data-testid={`decision-option-${option.id}`}
                   >
                     <div className="space-y-1.5 w-full">

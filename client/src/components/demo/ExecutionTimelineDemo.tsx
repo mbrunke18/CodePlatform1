@@ -148,18 +148,18 @@ export default function ExecutionTimelineDemo({
             <div className={`bg-gradient-to-r ${getPhaseColor(phase.name)} p-4`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-gray-900 font-bold">
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold">
                     {phaseIdx + 1}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">{phase.name}</h3>
-                    <p className="text-gray-900/80 text-sm">{phase.timeWindow}</p>
+                    <h3 className="text-xl font-bold text-white">{phase.name}</h3>
+                    <p className="text-white/80 text-sm">{phase.timeWindow}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-gray-900 font-semibold">{phase.tasks.length} Tasks</div>
+                  <div className="text-white font-semibold">{phase.tasks.length} Tasks</div>
                   {'dependsOn' in phase && phase.dependsOn && (
-                    <div className="text-gray-900/70 text-xs flex items-center gap-1">
+                    <div className="text-white/70 text-xs flex items-center gap-1">
                       <ArrowRight className="h-3 w-3" />
                       Depends on {phase.dependsOn}
                     </div>

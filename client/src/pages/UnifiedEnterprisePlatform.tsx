@@ -589,7 +589,7 @@ export default function UnifiedEnterprisePlatform() {
               </div>
 
               {/* Executive Performance Dashboard */}
-              <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-gray-900">
+              <Card className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <TrendingUp className="h-6 w-6" />
@@ -634,7 +634,7 @@ export default function UnifiedEnterprisePlatform() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <Button className="w-full bg-red-600 hover:bg-red-700 text-gray-900">
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
                       <AlertTriangle className="h-4 w-4 mr-2" />
                       Execute Playbook
                     </Button>
@@ -1785,7 +1785,7 @@ export default function UnifiedEnterprisePlatform() {
 
             <TabsContent value="c-suite-copilot" className="flex-1 overflow-y-auto p-3 space-y-3" data-testid="copilot-content">
               {/* Executive Co-pilot Header */}
-              <Card className="bg-gradient-to-r from-[#0A0F2E] to-pink-600 text-gray-900">
+              <Card className="bg-gradient-to-r from-[#0A0F2E] to-pink-600 text-white">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-xl">
                     <Command className="h-6 w-6" />

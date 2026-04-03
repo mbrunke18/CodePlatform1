@@ -163,7 +163,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
         <Button
           onClick={runAnalysis}
           disabled={isLoading}
-          className="w-full bg-[#2B8A6E] hover:bg-[#2B8A6E] text-gray-900"
+          className="w-full bg-[#2B8A6E] hover:bg-[#2B8A6E] text-white"
           data-testid="button-run-analysis"
         >
           {isLoading ? (

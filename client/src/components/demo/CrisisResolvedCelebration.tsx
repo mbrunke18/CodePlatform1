@@ -33,14 +33,14 @@ export function CrisisResolvedCelebration() {
             <div className="relative">
               <div className="absolute inset-0 bg-[#2B8A6E] rounded-full blur-2xl opacity-50 animate-pulse"></div>
               <div className="relative w-24 h-24 bg-[#2B8A6E] rounded-full flex items-center justify-center">
-                <CheckCircle className="h-16 w-16 text-gray-900" strokeWidth={3} />
+                <CheckCircle className="h-16 w-16 text-white" strokeWidth={3} />
               </div>
             </div>
           </div>
 
           {/* Main Message */}
           <div className="space-y-2">
-            <h2 className="text-4xl font-bold text-gray-900">
+            <h2 className="text-4xl font-bold text-[#0A0F2E]">
               Crisis Resolved!
             </h2>
             <p className="text-xl text-[#2B8A6E]">
@@ -52,19 +52,19 @@ export function CrisisResolvedCelebration() {
           <div className="grid grid-cols-3 gap-4 py-6 border-y border-[#2B8A6E]/30">
             <div className="space-y-2">
               <Zap className="h-8 w-8 text-amber-400 mx-auto" />
-              <div className="text-3xl font-bold text-gray-900">12min</div>
+              <div className="text-3xl font-bold text-[#0A0F2E]">12min</div>
               <div className="text-sm text-[#2B8A6E]">Response Time</div>
             </div>
             
             <div className="space-y-2 border-x border-[#2B8A6E]/30">
               <Trophy className="h-8 w-8 text-amber-400 mx-auto" />
-              <div className="text-3xl font-bold text-gray-900">$12M</div>
+              <div className="text-3xl font-bold text-[#0A0F2E]">$12M</div>
               <div className="text-sm text-[#2B8A6E]">Value Protected</div>
             </div>
             
             <div className="space-y-2">
               <TrendingUp className="h-8 w-8 text-amber-400 mx-auto" />
-              <div className="text-3xl font-bold text-gray-900">71hrs</div>
+              <div className="text-3xl font-bold text-[#0A0F2E]">71hrs</div>
               <div className="text-sm text-[#2B8A6E]">Time Saved</div>
             </div>
           </div>

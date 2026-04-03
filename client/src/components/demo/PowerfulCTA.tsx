@@ -61,7 +61,7 @@ export function PowerfulCTA() {
           <div className="flex items-center gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-[#2B8A6E] hover:bg-[#256B56] text-gray-900 font-bold px-8 py-6 text-lg shadow-lg hover:shadow-[#2B8A6E]/50 transition-all duration-200"
+              className="bg-[#2B8A6E] hover:bg-[#256B56] text-white font-bold px-8 py-6 text-lg shadow-lg hover:shadow-[#2B8A6E]/50 transition-all duration-200"
               data-testid="cta-schedule-workshop"
             >
               <Calendar className="h-5 w-5 mr-2" />
@@ -72,7 +72,7 @@ export function PowerfulCTA() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-[#2B8A6E] text-[#0A0F2E] hover:bg-[#0A0F2E]/50 px-8 py-6 text-lg"
+              className="border-[#2B8A6E] text-[#0A0F2E] hover:bg-[#0A0F2E]/50 hover:text-white px-8 py-6 text-lg"
               data-testid="cta-contact-sales"
             >
               Contact Executive Sales

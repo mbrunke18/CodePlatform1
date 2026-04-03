@@ -54,7 +54,7 @@ export default function CreateScenarioButton({
         onClick={() => setIsWizardOpen(true)}
         variant={variant}
         size={size}
-        className={`bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-gray-900 ${className}`}
+        className={`bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-white ${className}`}
         data-testid="button-create-scenario"
       >
         <Rocket className="w-4 h-4 mr-2" />

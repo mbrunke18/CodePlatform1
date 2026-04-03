@@ -841,7 +841,7 @@ function DemoLiveActivation() {
               <div className="flex justify-center gap-6">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-gray-900 text-2xl px-12 py-8"
+                  className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-white text-2xl px-12 py-8"
                   data-testid="button-new-demo"
                   onClick={resetDemo}
                 >

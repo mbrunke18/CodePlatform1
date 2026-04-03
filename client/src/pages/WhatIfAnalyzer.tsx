@@ -1416,7 +1416,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                   <ImpactIcon className={`h-7 w-7 ${impactConfig.iconColor}`} />
                 </div>
                 <div className="flex-1">
-                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-teal-600'} text-gray-900`}>
+                  <Badge className={`mb-2 ${impactLevel === 'high' ? 'bg-red-600' : impactLevel === 'moderate' ? 'bg-amber-600' : 'bg-teal-600'} text-white`}>
                     {impactConfig.label} — Score: {analysisResult.impactScore}/100
                   </Badge>
                   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">

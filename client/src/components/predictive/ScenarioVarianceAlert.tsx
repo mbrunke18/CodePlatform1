@@ -170,10 +170,10 @@ export default function ScenarioVarianceAlert({
               <CardTitle className="text-lg flex items-center gap-2">
                 Scenario Variance Alerts
                 {criticalCount > 0 && (
-                  <Badge className="bg-red-500 text-gray-900">{criticalCount} Critical</Badge>
+                  <Badge className="bg-red-500 text-white">{criticalCount} Critical</Badge>
                 )}
                 {warningCount > 0 && (
-                  <Badge className="bg-amber-500 text-gray-900">{warningCount} Warning</Badge>
+                  <Badge className="bg-amber-500 text-white">{warningCount} Warning</Badge>
                 )}
               </CardTitle>
               <p className="text-xs text-gray-800 dark:text-slate-300">
@@ -271,7 +271,7 @@ export default function ScenarioVarianceAlert({
                       {alert.severity === 'critical' && !alert.escalatedTo && (
                         <Button 
                           size="sm"
-                          className="bg-red-600 hover:bg-red-700 text-gray-900"
+                          className="bg-red-600 hover:bg-red-700 text-white"
                           onClick={() => handleEscalate(alert)}
                           data-testid={`button-escalate-${alert.id}`}
                         >

@@ -270,7 +270,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
 
           {/* CTA */}
           <Button 
-            className="w-full bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-gray-900 font-semibold"
+            className="w-full bg-gradient-to-r from-[#0A0F2E] to-teal-600 hover:from-[#0A0F2E] hover:to-teal-700 text-white font-semibold"
             data-testid="roi-schedule-demo-btn"
           >
             Schedule Custom ROI Analysis
