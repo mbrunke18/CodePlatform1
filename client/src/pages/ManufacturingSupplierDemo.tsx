@@ -375,7 +375,7 @@ export default function ManufacturingSupplierDemo() {
                 <Button size="lg" onClick={resetDemo} variant="outline" className="border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10" data-testid="button-replay-demo">
                   Replay Demo
                 </Button>
-                <Link href="/pilot-program">
+                <Link href="/request-access">
                   <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
                     Schedule a Pilot Conversation <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>

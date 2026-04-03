@@ -368,20 +368,28 @@ export default function RetailFoodSafetyDemo() {
                 </div>
               </div>
 
-              <div className="mt-8 text-center space-x-4">
-                <Button
-                  variant="outline"
-                  onClick={resetDemo}
-                  className="text-white border-white/20 hover:bg-white/10"
-                  data-testid="button-replay-demo"
-                >
-                  Replay Demo
-                </Button>
-                <Link href="/industry-demos">
-                  <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-view-all-demos">
-                    View All Industry Demos
+              <div className="mt-8 flex flex-col items-center gap-4">
+                <Link href="/request-access">
+                  <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10" data-testid="button-request-access">
+                    Join the Pilot Program
                   </Button>
                 </Link>
+                <div className="flex gap-3">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={resetDemo}
+                    className="text-white border-white/20 hover:bg-white/10"
+                    data-testid="button-replay-demo"
+                  >
+                    Replay Demo
+                  </Button>
+                  <Link href="/industry-demos">
+                    <Button size="sm" variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-view-all-demos">
+                      View All Demos
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </Card>
           </div>

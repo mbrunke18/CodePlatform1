@@ -342,15 +342,22 @@ export default function LVMHMarketEntryDemo() {
               </div>
             </div>
 
-            <div className="flex justify-center gap-4">
-              <Button onClick={resetDemo} variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-replay">
-                Replay Demo
-              </Button>
-              <Link href="/industry-demos">
-                <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-all-demos">
-                  View All Industry Demos
+            <div className="flex flex-col items-center gap-4">
+              <Link href="/request-access">
+                <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10" data-testid="button-request-access">
+                  Join the Pilot Program
                 </Button>
               </Link>
+              <div className="flex gap-3">
+                <Button size="sm" onClick={resetDemo} variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-replay">
+                  Replay Demo
+                </Button>
+                <Link href="/industry-demos">
+                  <Button size="sm" variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-all-demos">
+                    View All Demos
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}

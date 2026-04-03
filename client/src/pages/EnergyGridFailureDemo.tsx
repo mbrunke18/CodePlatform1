@@ -393,24 +393,33 @@ export default function EnergyGridFailureDemo() {
               </div>
             </Card>
 
-            <div className="text-center space-y-4">
+            <div className="flex flex-col items-center gap-4">
               <Button
                 size="lg"
-                onClick={() => goToAct("intro")}
-                variant="outline"
-                className="gap-2 text-white border-white/20 hover:bg-white/10"
-                data-testid="button-replay-demo"
+                onClick={() => (window.location.href = "/request-access")}
+                className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10"
+                data-testid="button-request-access"
               >
-                Replay Demo
+                Join the Pilot Program
               </Button>
-              <div>
+              <div className="flex gap-3">
                 <Button
-                  variant="default"
+                  size="sm"
+                  onClick={() => goToAct("intro")}
+                  variant="outline"
+                  className="gap-2 text-white border-white/20 hover:bg-white/10"
+                  data-testid="button-replay-demo"
+                >
+                  Replay Demo
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
                   onClick={() => (window.location.href = "/industry-demos")}
-                  className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
+                  className="gap-2 text-white border-white/20 hover:bg-white/10"
                   data-testid="button-view-all-demos"
                 >
-                  View All Industry Demos
+                  View All Demos
                 </Button>
               </div>
             </div>

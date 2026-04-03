@@ -891,7 +891,7 @@ export default function TryDemo() {
                   {/* Action buttons */}
                   <div className="mt-4 flex gap-3">
                     {!showChaosComplete && (
-                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#141B45] hover:text-white hover:border-[#141B45]">
+                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-white border-white/20 hover:bg-white/10 hover:text-white">
                         Skip to Solution
                         <ChevronRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -948,11 +948,11 @@ export default function TryDemo() {
                   <Badge className={`bg-gradient-to-r ${selectedScenario.color} text-white`}>
                     {selectedScenario.name}
                   </Badge>
-                  <span className="text-sm text-gray-800">
+                  <span className="text-sm" style={{ color: 'rgba(255,255,255,0.55)' }}>
                     {formatCurrency(selectedScenario.dealValue)} at stake
                   </span>
                 </div>
-                <Button variant="ghost" size="sm" onClick={resetDemo} className="text-gray-800 hover:text-white">
+                <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.45)' }} className="hover:text-white hover:bg-white/10">
                   <RefreshCw className="h-4 w-4 mr-1" />
                   Try Another Scenario
                 </Button>
@@ -1400,7 +1400,7 @@ export default function TryDemo() {
                             <Button 
                               className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] py-6 text-lg font-bold"
                               onClick={() => {
-                                setLocation('/pilot-demo');
+                                setLocation('/request-access');
                                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                               }}
                             >

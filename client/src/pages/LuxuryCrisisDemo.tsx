@@ -347,7 +347,7 @@ export default function LuxuryCrisisDemo() {
                 <Button size="lg" onClick={() => setCurrentAct('intro')} variant="outline" className="text-white border-white/20 hover:bg-white/10" data-testid="button-restart-demo">
                   Restart Demo
                 </Button>
-                <Link href="/pilot-program">
+                <Link href="/request-access">
                   <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
                     Schedule a Pilot Conversation <ArrowRight className="h-5 w-5 ml-2" />
                   </Button>

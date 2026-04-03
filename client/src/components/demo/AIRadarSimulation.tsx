@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { AlertTriangle, TrendingDown, Activity } from 'lucide-react';
 import { aiDataStreams } from '@shared/luxury-demo-data';
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
 
 interface DataStream {
   id: string;
@@ -22,27 +26,24 @@ interface AIRadarSimulationProps {
   autoStart?: boolean;
 }
 
-export default function AIRadarSimulation({ 
+export default function AIRadarSimulation({
   title = "AI Intelligence Monitoring",
   subtitle = "Real-time crisis detection across data streams",
   dataStreams: customDataStreams,
   playbookId = "#044",
   playbookName = "Revenue Shortfall - Asia Pacific",
-  onTriggerFired, 
-  autoStart = false 
+  onTriggerFired,
+  autoStart = false,
 }: AIRadarSimulationProps) {
   const [confidence, setConfidence] = useState(65);
   const [isMonitoring, setIsMonitoring] = useState(false);
   const [triggered, setTriggered] = useState(false);
-  
-  // Use custom data streams if provided, otherwise fall back to default luxury demo data
+
   const initialStreams = customDataStreams || aiDataStreams;
   const [streams, setStreams] = useState(initialStreams.map(s => ({ ...s, confidence: 65 })));
 
   useEffect(() => {
-    if (autoStart) {
-      setIsMonitoring(true);
-    }
+    if (autoStart) setIsMonitoring(true);
   }, [autoStart]);
 
   useEffect(() => {
@@ -51,22 +52,16 @@ export default function AIRadarSimulation({
     const interval = setInterval(() => {
       setConfidence(prev => {
         const next = Math.min(prev + Math.random() * 3, 95);
-        
-        // Fire trigger at 88%
         if (next >= 88 && !triggered) {
           setTriggered(true);
-          setTimeout(() => {
-            onTriggerFired?.();
-          }, 500);
+          setTimeout(() => { onTriggerFired?.(); }, 500);
         }
-        
         return next;
       });
 
-      // Update stream statuses
       setStreams(prev => prev.map(stream => ({
         ...stream,
-        confidence: Math.min(stream.confidence + Math.random() * 5, 95)
+        confidence: Math.min(stream.confidence + Math.random() * 5, 95),
       })));
     }, 800);
 
@@ -74,9 +69,9 @@ export default function AIRadarSimulation({
   }, [isMonitoring, triggered, onTriggerFired]);
 
   const getConfidenceColor = (conf: number) => {
-    if (conf >= 85) return 'text-red-700 dark:text-red-400';
-    if (conf >= 70) return 'text-yellow-600 dark:text-yellow-400';
-    return 'text-[#2B8A6E] dark:text-green-400';
+    if (conf >= 85) return '#ef4444';
+    if (conf >= 70) return GOLD;
+    return TEAL_LT;
   };
 
   const getStreamStatus = (conf: number) => {
@@ -86,98 +81,145 @@ export default function AIRadarSimulation({
   };
 
   return (
-    <div className="space-y-6">
-      <div className="text-center mb-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
-        <p className="text-xl text-[#0A0F2E]">{subtitle}</p>
+    <div className="space-y-5">
+      <div className="text-center mb-2">
+        <h2 style={{ fontSize: 26, fontWeight: 700, color: '#FFFFFF', marginBottom: 6 }}>{title}</h2>
+        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>{subtitle}</p>
       </div>
 
       {/* Main Confidence Meter */}
-      <Card className={`p-6 bg-white border-[#0A0F2E]/30 ${triggered ? 'border-red-500 border-2 animate-pulse' : ''}`}>
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <Activity className={`h-5 w-5 ${isMonitoring ? 'animate-pulse text-green-500' : 'text-[#0A0F2E]'}`} />
-            <h3 className="font-semibold text-gray-900">AI Trigger Monitoring</h3>
+      <div
+        style={{
+          borderRadius: 10,
+          border: triggered ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.12)',
+          background: triggered ? 'rgba(239,68,68,0.08)' : 'rgba(255,255,255,0.04)',
+          padding: '20px 22px',
+          transition: 'border-color 0.3s, background 0.3s',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Activity style={{ width: 16, height: 16, color: isMonitoring ? TEAL_LT : 'rgba(255,255,255,0.4)' }}
+              className={isMonitoring ? 'animate-pulse' : ''} />
+            <span style={{ fontWeight: 600, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
+              AI Trigger Monitoring
+            </span>
           </div>
-          <Badge variant={triggered ? 'destructive' : isMonitoring ? 'default' : 'outline'} data-testid="badge-monitoring">
+          <Badge
+            variant={triggered ? 'destructive' : isMonitoring ? 'default' : 'outline'}
+            data-testid="badge-monitoring"
+            style={isMonitoring && !triggered ? { background: TEAL, color: '#fff', border: 'none' } : {}}
+          >
             {triggered ? '🚨 TRIGGERED' : isMonitoring ? '● Live' : '○ Inactive'}
           </Badge>
         </div>
 
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Trigger Confidence</span>
-            <span className={`text-2xl font-bold ${getConfidenceColor(confidence)}`} data-testid="text-confidence">
+        <div className="space-y-3">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)' }}>Trigger Confidence</span>
+            <span style={{ fontSize: 24, fontWeight: 700, color: getConfidenceColor(confidence) }}
+              data-testid="text-confidence">
               {confidence.toFixed(1)}%
             </span>
           </div>
-          
+
           <Progress value={confidence} className="h-3" data-testid="progress-confidence" />
-          
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>Threshold: 85%</span>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>Threshold: 85%</span>
             {triggered && (
-              <span className="text-red-700 dark:text-red-400 font-semibold flex items-center gap-1">
-                <AlertTriangle className="h-3 w-3" />
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#ef4444', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <AlertTriangle style={{ width: 12, height: 12 }} />
                 THRESHOLD EXCEEDED
               </span>
             )}
           </div>
         </div>
-      </Card>
+      </div>
 
       {/* Trigger Alert */}
       {triggered && (
-        <Card className="p-6 bg-red-950/50 border-red-500 border-2 animate-pulse" data-testid="card-trigger-alert">
-          <div className="flex items-start gap-4">
-            <div className="p-2 bg-red-500 rounded-full">
-              <AlertTriangle className="h-6 w-6 text-gray-900" />
+        <div
+          style={{
+            borderRadius: 10,
+            border: '2px solid #ef4444',
+            background: 'rgba(239,68,68,0.1)',
+            padding: '20px 22px',
+            animation: 'pulse 2s infinite',
+          }}
+          data-testid="card-trigger-alert"
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+            <div style={{ padding: 8, background: '#ef4444', borderRadius: '50%', flexShrink: 0 }}>
+              <AlertTriangle style={{ width: 20, height: 20, color: '#fff' }} />
             </div>
-            <div className="flex-1">
-              <h4 className="font-bold text-lg mb-1 text-gray-900">Playbook {playbookId} Recommended</h4>
-              <p className="text-sm text-red-700 mb-3">
-                {playbookName}
-              </p>
-              <div className="bg-white p-3 rounded border border-red-800/30">
-                <p className="text-xs font-mono text-red-700">
-                  <TrendingDown className="inline h-3 w-3 mr-1" />
+            <div style={{ flex: 1 }}>
+              <h4 style={{ fontWeight: 700, fontSize: 16, color: '#FFFFFF', marginBottom: 4 }}>
+                Playbook {playbookId} Recommended
+              </h4>
+              <p style={{ fontSize: 13, color: '#f87171', marginBottom: 10 }}>{playbookName}</p>
+              <div style={{
+                background: 'rgba(239,68,68,0.12)',
+                border: '1px solid rgba(239,68,68,0.3)',
+                borderRadius: 6,
+                padding: '8px 12px',
+              }}>
+                <p style={{ fontSize: 11, fontFamily: 'monospace', color: '#fca5a5' }}>
+                  <TrendingDown style={{ display: 'inline', width: 12, height: 12, marginRight: 4 }} />
                   Confidence: {confidence.toFixed(1)}% | Playbook activation recommended
                 </p>
               </div>
             </div>
           </div>
-        </Card>
+        </div>
       )}
 
       {/* Data Streams */}
-      <Card className="p-6">
-        <h4 className="font-semibold mb-4">Intelligence Data Streams</h4>
+      <div style={{
+        borderRadius: 10,
+        border: '1px solid rgba(255,255,255,0.10)',
+        background: 'rgba(255,255,255,0.03)',
+        padding: '20px 22px',
+      }}>
+        <h4 style={{ fontWeight: 600, fontSize: 13, color: 'rgba(255,255,255,0.55)',
+          textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 14 }}>
+          Intelligence Data Streams
+        </h4>
         <div className="space-y-3">
           {streams.map(stream => (
-            <div key={stream.id} className="flex items-center justify-between">
-              <div className="flex items-center gap-2 flex-1">
-                <div className={`w-2 h-2 rounded-full ${
-                  getStreamStatus(stream.confidence) === 'critical' ? 'bg-red-500 animate-pulse' :
-                  getStreamStatus(stream.confidence) === 'warning' ? 'bg-yellow-500' :
-                  'bg-green-500'
-                }`} />
-                <span className="text-sm">{stream.name}</span>
+            <div key={stream.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1 }}>
+                <div style={{
+                  width: 8, height: 8, borderRadius: '50%',
+                  background: getStreamStatus(stream.confidence) === 'critical' ? '#ef4444'
+                    : getStreamStatus(stream.confidence) === 'warning' ? GOLD
+                    : TEAL_LT,
+                  flexShrink: 0,
+                }} className={getStreamStatus(stream.confidence) === 'critical' ? 'animate-pulse' : ''} />
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>{stream.name}</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Progress value={stream.confidence} className="w-20 h-2" />
-                <span className={`text-xs font-mono w-12 text-right ${getConfidenceColor(stream.confidence)}`}>
+                <span style={{ fontSize: 11, fontFamily: 'monospace', width: 40, textAlign: 'right',
+                  color: getConfidenceColor(stream.confidence) }}>
                   {stream.confidence.toFixed(0)}%
                 </span>
               </div>
             </div>
           ))}
         </div>
-      </Card>
+      </div>
 
       {!isMonitoring && (
         <button
           onClick={() => setIsMonitoring(true)}
-          className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90"
+          style={{
+            width: '100%', padding: '12px 0',
+            background: GOLD, color: NAVY,
+            borderRadius: 8, fontWeight: 700, fontSize: 14,
+            border: 'none', cursor: 'pointer',
+          }}
+          className="hover:opacity-90 transition-opacity"
           data-testid="button-start-monitoring"
         >
           Start AI Monitoring Simulation
