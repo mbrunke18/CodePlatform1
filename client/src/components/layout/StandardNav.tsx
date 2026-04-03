@@ -351,20 +351,6 @@ export default function StandardNav() {
               { path: '/crisis-communications', icon: MessageSquare, label: 'Crisis Communications', sub: '5 audience-specific messages in 18 seconds' },
               { path: '/financial-exposure', icon: DollarSign, label: 'Financial Exposure Estimator', sub: 'Instant dollar-range exposure when a trigger fires' },
             ].map(l => megaItem(l))}
-            <div style={{ marginTop: 10, paddingTop: 10, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
-              <div
-                onClick={() => navigateTo('/onboarding-guide')}
-                style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 8, padding: '9px 12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, transition: 'all 0.12s' }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'linear-gradient(135deg,rgba(201,168,76,0.22),rgba(43,138,110,0.14))'; el.style.borderColor = 'rgba(201,168,76,0.55)'; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))'; el.style.borderColor = 'rgba(201,168,76,0.3)'; }}
-              >
-                <BookOpen style={{ width: 14, height: 14, color: GOLD, flexShrink: 0 }} />
-                <div>
-                  <p style={{ fontSize: 10.5, fontWeight: 700, color: NAVY, margin: 0 }}>New to Execution OS?</p>
-                  <p style={{ fontSize: 9.5, color: '#6B7280', margin: 0 }}>Open the Onboarding Guide →</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </DropdownMenuContent>
@@ -662,6 +648,16 @@ export default function StandardNav() {
             {renderExperienceDropdown()}
             {renderEvidenceDropdown()}
             {renderInvestorsDropdown()}
+            <button
+              onClick={() => navigateTo('/onboarding-guide')}
+              className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-150 flex items-center gap-1.5"
+              style={{ color: GOLD, background: 'transparent' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+            >
+              <BookOpen className="h-3.5 w-3.5" />
+              Guide
+            </button>
           </div>
 
           {/* Right: CTAs */}
