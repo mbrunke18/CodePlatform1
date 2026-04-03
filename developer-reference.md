@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: April 2, 2026 (rev 12) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 3, 2026 (rev 13) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -522,7 +522,9 @@ toast({ title: 'Error', description: 'Something went wrong.', variant: 'destruct
 
 - **170 active playbooks** in 9 domains (seeded to DB on startup)
 - **4 compound playbooks** (IDs 181–184): cross-domain crisis scenarios
+- **23 enriched playbooks** with full `enrichedPhases` content (4 phases each, role-specific tasks, decision gates, restrictions). 14 original flagship set + 9 added April 2026 via migration script `server/scripts/fill-empty-playbooks.ts`: AI Competitive Disruption, Data Breach, CEO Sudden Departure, Financial Services Compliance Breach, SLA Mass Breach, Competitive Acquisition, AI Data Privacy Breach, Third-Party Data Breach, Compound Cyber+Regulatory.
 - **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full content with an upsell CTA. All 167 others display a locked state routing to `/pilot-program`. Authenticated users see all 170 with Deploy/Preview actions. The public/locked logic lives in `PlaybookDetail.tsx` and `PlaybookLibraryV2.tsx` — never change the free sample set without founder approval.
+- **Public-facing copy (locked):** Bottom CTA on sample playbooks reads: "You just read one of 3 public playbooks. 167 exclusive ones are already protecting your competitors." The 167 refers to locked pilot-only playbooks specifically — not 170 minus 1.
 
 ### Domain Names (exact DB strings — use these for filtering)
 ```
@@ -657,6 +659,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `PharmaceuticalRecallDemo.tsx` | `/industry-demo/pharmaceutical-recall` | Pharma recall scenario. FDA timeline, 170K-unit scope, cross-functional war room, regulatory communication tracks. |
 | `ManufacturingSupplierDemo.tsx` | `/industry-demo/manufacturing-supplier` | Manufacturing supply disruption scenario. 14 downstream facilities, $2.3M/day exposure, alternate supplier routing. |
 | `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
+| `PlaybookDetail.tsx` | `/playbook/:id` | Full playbook view. Three tabs: Overview, Performance (auth-gated), Edit Tasks (auth-gated, only shown when `enrichedPhases` exist). Edit Tasks tab: phase accordion editor for name/objective, role task groups (add/remove/rename/edit items), decision gate (title/criteria/escalation), and restrictions. Saves via `PATCH /api/playbook-library/:id/customize` with `{ customizations: { enrichedPhases } }`. Amber dot on tab label = unsaved changes. `useEffect` syncs `editedPhases` from `playbook.enrichedPhases` on load. Helper callbacks: `updatePhase`, `updateTask`, `updateTaskItem`, `addTaskItem`, `removeTaskItem`, `addTaskGroup`, `removeTaskGroup`, `updateCriteria`, `addCriteria`, `removeCriteria`, `updateRestriction`, `addRestriction`, `removeRestriction`. |
 
 ---
 
@@ -873,6 +876,8 @@ await deployConfig({
 14. **Before deploying: run BOTH local builds and commit `dist/`.** The deployment build step is a no-op (`sh -c ":"`). The deployment platform serves exactly what is in git. Run: (1) `npx vite build` to update `dist/public/`, and (2) `npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config` to update `dist/index.js`. If you skip this, production will serve stale UI and/or stale server code.
 15. **"Human-AI partnership" is RETIRED copy.** Never write this phrase on any page, card, slide, or tooltip. The approved replacement patterns are: "AI monitors, executives authorize" | "Executive authority preserved" | "AI monitors. Executives decide. Execution pre-staged." | "No playbook activates without executive approval." The distinction matters: we are not selling AI augmentation — we are selling the elimination of the 30-day mobilization cycle. The human decision is the same; the preparation that surrounds it is pre-staged.
 16. **Homepage IDEA card copy is canonical — do not paraphrase.** The four IDEA narrative cards set the emotional tone of the product. Their content (especially the "while others are still in their first meeting" / "already executing" framing) must not be shortened, reworded, or replaced with feature-list bullets during any refactor.
+17. **`PlaybookAnalogySection` on Homepage is a locked narrative section.** Do not remove it. It sits between `ContrastMomentSection` and `IDEASection` in the render order. It maps the elite coach/NFL operating model (Game Planning → Reading the Field → Play Call → Film Study) directly to IDENTIFY → DETECT → EXECUTE → ADVANCE. The pull quote ("60–80 strategic decisions per 3-hour game. Under 40 seconds each.") is the founder's core product origin story — treat it as locked copy. Matching compact panel exists on the IDEA Framework page (`/how-it-works-idea`) after the phase strip.
+18. **Deployment cache issue — always rebuild before publishing.** The Replit deployment serves the compiled `dist/` directory. If a code change is made but `npm run build` is not re-run before publishing, the old compiled bundle will be deployed. Always run `npm run build` and confirm success before clicking Publish. This is especially critical for copy-only changes which can otherwise appear to "not take effect" in production.
 
 ---
 

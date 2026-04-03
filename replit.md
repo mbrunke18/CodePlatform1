@@ -44,7 +44,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **IDEA Framework:** Full Trigger → Playbook IDEA Chain for detecting triggers and recommending playbooks.
 - **Task Management:** Task Acknowledgment & Audit Trail with action buttons.
 - **Reporting & Analytics:** Execution History Dashboard with KPIs and activation logs.
-- **Flagship Playbooks:** 14 enriched playbooks with expert content, task owners, time targets, and decision gates.
+- **Flagship Playbooks:** 23 enriched playbooks with expert content, task owners, time targets, and decision gates. (14 original + 9 added April 2026: AI Competitive Disruption, Data Breach, CEO Sudden Departure, Financial Services Compliance Breach, SLA Mass Breach, Competitive Acquisition, AI Data Privacy Breach, Third-Party Data Breach, Compound Cyber+Regulatory — all with 4 phases, role-specific tasks, decision gates, restrictions.)
 - **Configuration Wizards:** Trigger Configuration Wizard for setting up situations and playbook mapping.
 - **Key Differentiators:** Execution ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Data Consistency:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×, labeled "3,600× Execution Head Start"), number of playbooks (170), signals, data points (248+), and triggers (221).
@@ -64,6 +64,9 @@ VaughnMartin's Execution OS is a Strategic Execution platform designed for Fortu
 - **Day One Welcome Brief:** Full-screen first-login experience at `/welcome-brief`. localStorage gate (shown once). Shows triggers armed, signals scanned 72h, historical detections, "what you would have seen" panel.
 - **Live Signal Activity Feed:** `signal_activity_log` DB table buffers scan events (scanning, threshold_not_met, trigger_fired). `LiveSignalFeed` component on Command Tower shows real-time evaluation work. `SignalEvaluationService` logs one "scanning" entry per batch + up to 2 "threshold_not_met" entries for partial matches + "trigger_fired" on detection.
 - **5 New APIs:** `GET /api/org/execution-timelines`, `PATCH /api/org/execution-timelines/:id/advance`, `GET /api/org/execution-dividend`, `GET /api/org/board-readiness`, `GET /api/org/welcome-brief`, `GET /api/signal-activity-log`.
+- **PlaybookDetail Task Editor:** Authenticated users have an "Edit Tasks" tab on every playbook detail page. Full phase accordion editor: rename phase name/objective, add/remove role task groups, edit task items inline, update decision gate title/criteria/escalation, add/remove restrictions. Saves via `PATCH /api/playbook-library/:id/customize` → `enrichedPhases` column. Amber dot indicator signals unsaved changes. State syncs from `playbook.enrichedPhases` on load.
+- **Coaching / NFL Analogy Sections:** Two placements anchor the operating model metaphor. (1) Homepage `PlaybookAnalogySection` — inserted between `ContrastMomentSection` and `IDEASection` — 4-column grid mapping elite coach cycle (Game Planning → Reading the Field → Play Call → Film Study) to IDENTIFY/DETECT/EXECUTE/ADVANCE, with pull quote "60–80 strategic decisions per 3-hour game. Under 40 seconds each." (2) IDEA Framework page — compact analogy panel after the phase strip, before deep-dives, with authority closer: "AI monitors. Executives authorize. Execution pre-staged."
+- **Playbook Public Access Copy:** Bottom CTA on sample playbooks reads: "You just read one of 3 public playbooks. 167 exclusive ones are already protecting your competitors." Sidebar reads: "167 exclusive playbooks are waiting for your team." The 167 refers specifically to the locked pilot-only playbooks, not 170-1.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
