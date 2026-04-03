@@ -277,26 +277,8 @@ function PageLoader() {
 }
 
 function OnboardingGuard({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, needsOnboarding, isLoading } = useAuth();
-  const [location, setLocation] = useLocation();
-  const hasRedirected = useRef(false);
-
-  useEffect(() => {
-    if (isLoading) return;
-
-    if (isAuthenticated && needsOnboarding && location !== "/onboarding" && !hasRedirected.current) {
-      hasRedirected.current = true;
-      setLocation("/onboarding");
-      return;
-    }
-    if (location === "/onboarding") {
-      hasRedirected.current = true;
-      return;
-    }
-  }, [isAuthenticated, needsOnboarding, isLoading, location, setLocation]);
-
+  const { isLoading } = useAuth();
   if (isLoading) return <PageLoader />;
-  
   return <>{children}</>;
 }
 

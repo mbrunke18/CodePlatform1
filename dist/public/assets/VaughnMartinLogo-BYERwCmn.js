@@ -1,0 +1,1 @@
+import{j as i,ab as c}from"./index-C444WdTy.js";const u=({width:o,height:a=48,variant:n="full",className:t="",color:r="dark"})=>{const l=r==="light"?"white":"navy",s=n==="icon-only"?"icon-only":"full";return i.jsx(c,{width:o,height:a,variant:s,color:l,className:t})};export{u as V};
