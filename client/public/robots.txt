@@ -9,6 +9,8 @@ Allow: /how-it-works
 Allow: /platform-overview
 Allow: /request-access
 Allow: /pilot-program
+Allow: /prospect-brief
+Allow: /prospect-demo
 Allow: /contact
 Allow: /growth
 Allow: /terms

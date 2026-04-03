@@ -62,6 +62,8 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Investors = lazy(() => import("./pages/Investors"));
 const InvestorLanding = lazy(() => import("./pages/InvestorLanding"));
 const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
+const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
+const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
 const WhyExecutionOS = lazy(() => import("./pages/WhyExecutionOS"));
 const ExecutiveDashboard = lazy(() => import("./pages/ExecutiveDashboard"));
 
@@ -460,6 +462,8 @@ function Router() {
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         <Route path="/pilot-program" component={PilotProgram} />
+        <Route path="/prospect-brief" component={ProspectBrief} />
+        <Route path="/prospect-demo" component={ProspectDemo} />
         <Route path="/pilot-onboarding" component={PilotOnboarding} />
         <Route path="/growth" component={Growth} />
         <Route path="/vs-consulting" component={VsConsulting} />

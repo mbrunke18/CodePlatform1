@@ -767,7 +767,29 @@ export default function PilotProgram() {
             <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
               Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#C9A84C]">pilot@vaughnmartin.com</span>
             </p>
-            <p className="text-sm text-gray-500 mt-3">
+
+            {/* Sales prep tools */}
+            <div className="mt-8 pt-8 border-t border-[#E8E4DC] flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="text-center">
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Preparing for a leadership meeting?</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <button
+                    onClick={() => setLocation('/prospect-demo')}
+                    className="px-5 py-2.5 border border-[#C9A84C] text-[#0A0F2E] text-xs font-bold uppercase tracking-wider bg-transparent cursor-pointer hover:bg-[#C9A84C] transition-colors"
+                  >
+                    Run Personalized Demo →
+                  </button>
+                  <button
+                    onClick={() => setLocation('/prospect-brief')}
+                    className="px-5 py-2.5 border border-[#0A0F2E] text-[#0A0F2E] text-xs font-bold uppercase tracking-wider bg-transparent cursor-pointer hover:bg-[#0A0F2E] hover:text-white transition-colors"
+                  >
+                    Generate Executive Brief →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-sm text-gray-500 mt-4">
               Want platform access without a pilot commitment?{" "}
               <button
                 onClick={() => setLocation('/request-access')}
