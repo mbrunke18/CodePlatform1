@@ -19,7 +19,7 @@ export default function APIPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Key className="w-5 h-5 text-poise-gold" />
+                <Key className="w-5 h-5 text-[#C9A84C]" />
                 API Keys
               </CardTitle>
             </CardHeader>
@@ -39,7 +39,7 @@ export default function APIPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-poise-teal" />
+                <BookOpen className="w-5 h-5 text-[#2B8A6E]" />
                 API Documentation
               </CardTitle>
             </CardHeader>

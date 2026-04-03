@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/useAuth';
-import { ExecuteIQLogo } from '@/components/ExecuteIQLogo';
+import { VaughnMartinLogo } from '@/components/VaughnMartinLogo';
 
 interface ProviderStatus {
   provider: string;
@@ -323,7 +323,7 @@ export default function CommandLanding() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, cursor: 'pointer' }} onClick={() => setLocation('/')}>
-              <ExecuteIQLogo height={38} color="white" variant="full" />
+              <VaughnMartinLogo height={38} color="light" variant="full" />
             </div>
             <div style={{ width: 1, height: 24, background: 'rgba(240,237,228,0.1)' }} />
             <div

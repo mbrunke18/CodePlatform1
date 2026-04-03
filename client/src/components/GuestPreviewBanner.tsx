@@ -45,7 +45,7 @@ export function GuestPreviewBanner() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <a
-            href="/pilot-program"
+            href="/request-access"
             style={{
               fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
               letterSpacing: '0.1em', textTransform: 'uppercase' as const,
@@ -105,7 +105,7 @@ export function GuestPreviewBanner() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <a
-            href="/pilot-program"
+            href="/request-access"
             style={{
               fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
               letterSpacing: '0.1em', textTransform: 'uppercase' as const,

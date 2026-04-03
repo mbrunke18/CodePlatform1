@@ -131,7 +131,7 @@ export default function ExecutiveBrief() {
             </p>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Link href="/pilot-program">
+              <Link href="/request-access">
                 <Button style={{ background: GOLD, color: NAVY, fontWeight: 700 }} size="lg">
                   Schedule a Conversation <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -370,7 +370,7 @@ export default function ExecutiveBrief() {
                     </div>
                   ))}
                 </div>
-                <Link href="/pilot-program">
+                <Link href="/request-access">
                   <Button style={{ background: NAVY, color: "#fff", fontWeight: 700 }}>
                     View Full Pilot Program Details <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -417,7 +417,7 @@ export default function ExecutiveBrief() {
                   </div>
                 </div>
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <Link href="/pilot-program">
+                  <Link href="/request-access">
                     <Button style={{ background: GOLD, color: NAVY, fontWeight: 700 }} size="lg">
                       Schedule a Conversation <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -460,7 +460,7 @@ export default function ExecutiveBrief() {
             <div style={{ fontSize: 11, color: "#9CA3AF" }}>
               © VaughnMartin · Confidential — For Internal Circulation Only · vaughnmartin.com
             </div>
-            <Link href="/pilot-program">
+            <Link href="/request-access">
               <span style={{ fontSize: 12, color: GOLD, fontWeight: 600, cursor: "pointer" }}>Schedule a Conversation →</span>
             </Link>
           </div>

@@ -41,7 +41,7 @@ export default function RetailFoodSafetyDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen" style={{ background: "#0A0F2E" }}>
+    <div style={{ minHeight: "100vh", background: "#0A0F2E" }}>
       <DemoNavHeader title="Retail Food Safety Demo" showBackButton={true} />
 
       {/* Act Navigation */}

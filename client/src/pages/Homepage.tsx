@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { Link, useLocation } from "wouter";
-import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import ExecutionOSMicrosoftDiagram from "@/components/ExecutionOSMicrosoftDiagram";
 
@@ -122,7 +122,7 @@ function HomepageNav() {
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <ExecuteIQLogo variant="full" height={130} color="navy" />
+            <VaughnMartinLogo variant="full" height={130} color="dark" />
           </Link>
 
           {/* Desktop nav — hidden below 768px via CSS */}
@@ -145,7 +145,7 @@ function HomepageNav() {
                 Request Access
               </Link>
               <Link
-                href="/pilot-program"
+                href="/request-access"
                 onClick={() => trackCTA("nav")}
                 style={{
                   ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
@@ -207,7 +207,7 @@ function HomepageNav() {
             Request Access →
           </Link>
           <Link
-            href="/pilot-program"
+            href="/request-access"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
             style={{
               ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
@@ -303,7 +303,7 @@ function HeroSection() {
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, marginTop: 40 }}>
             <Link
-              href="/pilot-program"
+              href="/request-access"
               onClick={() => trackCTA("hero")}
               style={{
                 ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
@@ -1513,7 +1513,7 @@ function CTASection() {
           </p>
           <div>
             <Link
-              href="/pilot-program"
+              href="/request-access"
               onClick={() => trackCTA("cta_section")}
               className="hp-cta-btn"
               style={{
@@ -1556,7 +1556,7 @@ function HomepageFooter() {
           {/* Brand */}
           <div style={{ flex: "0 0 280px" }}>
             <div style={{ marginBottom: 16 }}>
-              <ExecuteIQLogo variant="full" height={80} color="white" />
+              <VaughnMartinLogo variant="full" height={80} color="light" />
             </div>
             <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
             <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
@@ -1569,7 +1569,7 @@ function HomepageFooter() {
               { label: "How It Works",   href: "/how-it-works" },
               { label: "Playbooks",      href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
-              { label: "Request a Pilot", href: "/pilot-program" },
+              { label: "Request a Pilot", href: "/request-access" },
               { label: "Request Access", href: "/request-access" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
@@ -2146,7 +2146,7 @@ function PersonalizedROISection() {
               </div>
             </div>
             <div style={{ textAlign: "center", paddingTop: 8 }}>
-              <a href="/pilot-program" onClick={() => trackCTA('roi-calculator')} style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "11px 28px", background: GOLD, color: NAVY, textDecoration: "none" }}>
+              <a href="/request-access" onClick={() => trackCTA('roi-calculator')} style={{ display: "inline-block", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "11px 28px", background: GOLD, color: NAVY, textDecoration: "none" }}>
                 Build My Custom ROI Case →
               </a>
             </div>
@@ -2355,7 +2355,7 @@ function ShadowSimulatorSection() {
               <p style={{ fontSize: 13, color: MUTED_DARK, marginBottom: 16 }}>
                 See how Execution OS would mobilize your entire organization in 12 minutes.
               </p>
-              <a href="/pilot-program" style={{ display: "inline-block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "12px 32px", background: GOLD, color: NAVY, textDecoration: "none" }}>
+              <a href="/request-access" style={{ display: "inline-block", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "12px 32px", background: GOLD, color: NAVY, textDecoration: "none" }}>
                 Request a Pilot →
               </a>
             </div>
@@ -2664,7 +2664,7 @@ function CommandCenterShowcaseSection() {
               Full command center access — including live war room, performance analytics, and ROI tracking — is provisioned for executive pilot teams.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center" }}>
-              <Link href="/pilot-program" onClick={() => trackCTA("showcase-pilot")} style={{ background: GOLD, color: NAVY, ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "14px 32px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
+              <Link href="/request-access" onClick={() => trackCTA("showcase-pilot")} style={{ background: GOLD, color: NAVY, ...DM, fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "14px 32px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>
                 Request Executive Access →
               </Link>
               <Link href="/12-minute-experience" style={{ border: "1px solid rgba(240,237,228,0.2)", color: "rgba(240,237,228,0.65)", ...DM, fontSize: 13, padding: "14px 28px", borderRadius: 6, textDecoration: "none", display: "inline-block", transition: "all 0.2s" }}>

@@ -213,7 +213,7 @@ export default function GetStarted() {
                 </div>
               ))}
               <button
-                onClick={() => setLocation("/pilot-program")}
+                onClick={() => setLocation("/request-access")}
                 style={{
                   marginTop: 28, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13,
                   padding: "12px 28px", border: "none", cursor: "pointer",
@@ -256,7 +256,7 @@ export default function GetStarted() {
               <ArrowRight size={16} />
             </button>
             <button
-              onClick={() => setLocation("/pilot-program")}
+              onClick={() => setLocation("/request-access")}
               style={{
                 background: "transparent", color: NAVY, fontWeight: 600, fontSize: 15,
                 padding: "16px 40px", border: `1px solid ${BORDER}`, cursor: "pointer",

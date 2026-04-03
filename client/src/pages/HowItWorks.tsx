@@ -78,7 +78,7 @@ export default function HowItWorks() {
             From your first login to a fully coordinated enterprise response in 12 minutes. This is exactly how the platform works — the setup, the 170 playbooks, how customization works, and how ongoing value builds over time.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <Link href="/pilot-program">
+            <Link href="/request-access">
               <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "none" }}>
                 Request Pilot Access
               </Button>
@@ -682,7 +682,7 @@ export default function HowItWorks() {
             Stop improvising. Start executing. The infrastructure is ready — with 170 playbooks, AI signal monitoring, and execution already staged before the moment arrives.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/pilot-program">
+            <Link href="/request-access">
               <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "none" }}>
                 Request Pilot Access
               </Button>

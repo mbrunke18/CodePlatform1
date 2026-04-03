@@ -1229,7 +1229,7 @@ export default function PlaybookDetail() {
                     </p>
                     <Button
                       style={{ width: "100%", background: GOLD, color: NAVY, height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 10 }}
-                      onClick={() => setLocation("/pilot-program")}
+                      onClick={() => setLocation("/request-access")}
                     >
                       <Zap className="h-4 w-4 mr-2" />
                       Request Pilot
@@ -1405,14 +1405,14 @@ export default function PlaybookDetail() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     style={{ background: GOLD, color: NAVY, height: 56, paddingLeft: 36, paddingRight: 36, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", borderRadius: 0 }}
-                    onClick={() => setLocation("/pilot-program")}
+                    onClick={() => setLocation("/request-access")}
                   >
                     <Zap className="h-4 w-4 mr-2" />
                     Request Pilot — Full Access
                   </Button>
                   <Button
                     style={{ background: "transparent", color: "#fff", height: 56, paddingLeft: 36, paddingRight: 36, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", borderRadius: 0, border: "1.5px solid rgba(255,255,255,0.25)" }}
-                    onClick={() => setLocation("/pilot-program")}
+                    onClick={() => setLocation("/request-access")}
                   >
                     Request Enterprise Pilot
                     <ArrowRight className="h-4 w-4 ml-2" />

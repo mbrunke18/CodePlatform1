@@ -120,7 +120,7 @@ export default function InvestorLanding() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                onClick={() => setLocation("/pilot-program")}
+                onClick={() => setLocation("/request-access")}
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-request-pilot"
               >
@@ -1117,7 +1117,7 @@ export default function InvestorLanding() {
             <div className="flex flex-wrap gap-4 justify-center mb-8">
               <Button
                 size="lg"
-                onClick={() => setLocation("/pilot-program")}
+                onClick={() => setLocation("/request-access")}
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-cta-schedule"
               >

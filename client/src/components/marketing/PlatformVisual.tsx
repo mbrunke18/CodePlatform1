@@ -161,7 +161,7 @@ export default function PlatformVisual() {
           custom={0}
         >
           <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-3">
-            72 Hours <span className="text-poise-teal">→</span> 12 Minutes
+            30 Days <span className="text-poise-teal">→</span> 12 Minutes
           </h2>
           <p className="text-xl text-poise-teal font-medium">
             The Execution Infrastructure Powered by AI

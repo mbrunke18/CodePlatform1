@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { AlertTriangle, Zap, CheckCircle2, Clock, Activity, ChevronRight, ArrowRight } from "lucide-react";
-import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -164,7 +164,7 @@ export default function ProspectDemo() {
         }} />
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 540 }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <ExecuteIQLogo height={80} variant="full" color="white" />
+            <VaughnMartinLogo height={80} variant="full" color="light" />
           </div>
 
           <div style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(201,168,76,0.3)`, padding: "40px 40px 36px" }}>
@@ -237,7 +237,7 @@ export default function ProspectDemo() {
 
         {/* Header bar */}
         <div style={{ position: "relative", zIndex: 1, borderBottom: `1px solid rgba(201,168,76,0.2)`, padding: "16px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <ExecuteIQLogo height={56} variant="full" color="white" />
+          <VaughnMartinLogo height={56} variant="full" color="light" />
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#EF4444", animation: "pulse 1.5s infinite" }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
@@ -340,7 +340,7 @@ export default function ProspectDemo() {
 
       {/* Header */}
       <div style={{ position: "relative", zIndex: 1, borderBottom: `1px solid rgba(201,168,76,0.2)`, padding: "16px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <ExecuteIQLogo height={56} variant="full" color="white" />
+        <VaughnMartinLogo height={56} variant="full" color="light" />
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div style={{ textAlign: "right" }}>
             <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Execution Clock</div>
@@ -438,7 +438,7 @@ export default function ProspectDemo() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <button
-                  onClick={() => setLocation("/pilot-program")}
+                  onClick={() => setLocation("/request-access")}
                   style={{ padding: "14px", background: GOLD, color: NAVY, border: "none", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                 >
                   <ArrowRight size={14} />

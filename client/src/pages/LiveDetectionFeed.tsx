@@ -255,7 +255,7 @@ export default function LiveDetectionFeed() {
               <a href="/request-access" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
                 Request Pilot Access
               </a>
-              <a href="/pilot-program" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
+              <a href="/platform-overview" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
                 Learn More
               </a>
             </div>

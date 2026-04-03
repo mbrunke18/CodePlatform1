@@ -340,7 +340,7 @@ export default function WhyExecutionOS() {
             </div>
 
             <div className="flex justify-center gap-4 flex-wrap">
-              <Link href="/pilot-program">
+              <Link href="/request-access">
                 <Button size="lg" style={{ background: NAVY, color: "#fff", fontWeight: 700, padding: "0 36px" }}>
                   Schedule a Pilot Conversation <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

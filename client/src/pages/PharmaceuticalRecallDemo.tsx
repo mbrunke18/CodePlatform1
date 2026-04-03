@@ -59,7 +59,7 @@ export default function PharmaceuticalRecallDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen" style={{ background: NAVY }}>
+    <div style={{ minHeight: "100vh", background: NAVY }}>
       <DemoNavHeader title="Pharmaceutical Recall — Class I Response" showBackButton={true} />
 
       {/* Act Navigation */}

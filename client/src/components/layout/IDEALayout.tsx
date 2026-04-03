@@ -69,7 +69,7 @@ function AccessGate() {
             Get 48-Hour Trial Access <ArrowRight size={14} />
           </button>
           <button
-            onClick={() => setLocation('/pilot-program')}
+            onClick={() => setLocation('/request-access')}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               background: 'transparent', color: TEAL,

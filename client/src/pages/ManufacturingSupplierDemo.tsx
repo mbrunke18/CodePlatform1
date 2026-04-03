@@ -71,7 +71,7 @@ export default function ManufacturingSupplierDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen" style={{ background: NAVY }}>
+    <div style={{ minHeight: "100vh", background: NAVY }}>
       <DemoNavHeader title="Manufacturing Supply Chain Crisis — Supplier Failure Response" showBackButton={true} />
 
       {/* Act Navigation */}

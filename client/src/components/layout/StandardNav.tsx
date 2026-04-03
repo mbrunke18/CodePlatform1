@@ -74,7 +74,7 @@ const SEARCH_ITEMS = [
   { label: 'Shadow Strategy Simulator', path: '/simulation-studio', category: 'Demo', icon: FlaskConical },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
-  { label: 'Request a Pilot', path: '/pilot-program', category: 'Action', icon: Target },
+  { label: 'Request a Pilot', path: '/request-access', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'Why Execution OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
@@ -451,7 +451,7 @@ export default function StandardNav() {
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
-                onClick={() => navigateTo('/pilot-program')}
+                onClick={() => navigateTo('/request-access')}
                 style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 8, padding: '10px 14px', cursor: 'pointer', transition: 'all 0.12s' }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement;
@@ -598,7 +598,7 @@ export default function StandardNav() {
               {/* Bottom CTA */}
               <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
                 <div
-                  onClick={() => navigateTo('/pilot-program')}
+                  onClick={() => navigateTo('/request-access')}
                   style={{ background: NAVY, borderRadius: 8, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
@@ -687,7 +687,7 @@ export default function StandardNav() {
                   Request Access
                 </Button>
                 <Button
-                  onClick={() => navigateTo("/pilot-program")}
+                  onClick={() => navigateTo("/request-access")}
                   className="h-9 px-3 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: 'none' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
@@ -757,7 +757,7 @@ export default function StandardNav() {
                   Request Access
                 </Button>
                 <Button
-                  onClick={() => navigateTo("/pilot-program")}
+                  onClick={() => navigateTo("/request-access")}
                   className="h-9 px-4 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: 'none' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
@@ -839,7 +839,7 @@ export default function StandardNav() {
                       Request Access
                     </Button>
                     <Button
-                      onClick={() => navigateTo("/pilot-program")}
+                      onClick={() => navigateTo("/request-access")}
                       className="flex-1 justify-center h-10 text-sm font-bold"
                       style={{ background: GOLD, color: NAVY }}
                       data-testid="nav-mobile-request-pilot"
@@ -861,7 +861,7 @@ export default function StandardNav() {
                     Request Access
                   </Button>
                   <Button
-                    onClick={() => navigateTo("/pilot-program")}
+                    onClick={() => navigateTo("/request-access")}
                     className="w-full justify-center h-11 text-sm font-bold"
                     style={{ background: GOLD, color: NAVY }}
                     data-testid="nav-mobile-request-pilot"

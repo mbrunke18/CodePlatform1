@@ -49,7 +49,7 @@ export default function EnergyGridFailureDemo() {
   };
 
   return (
-    <div className="page-background min-h-screen" style={{ background: "#0A0F2E" }}>
+    <div style={{ minHeight: "100vh", background: "#0A0F2E" }}>
       <DemoNavHeader title="Energy Grid Crisis Demo" showBackButton={true} />
       <div className="container mx-auto px-4 py-12 pt-24 max-w-6xl text-white">
         {/* Header */}

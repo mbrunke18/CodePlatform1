@@ -67,7 +67,7 @@ export default function SLAPage() {
               <CardContent>
                 <p className="text-muted-foreground mb-3">{sla.description}</p>
                 <div className="flex items-center gap-2 text-sm">
-                  <TrendingUp className="w-4 h-4 text-poise-gold" />
+                  <TrendingUp className="w-4 h-4 text-[#C9A84C]" />
                   <span className="text-muted-foreground">{sla.benchmark}</span>
                 </div>
               </CardContent>
@@ -78,7 +78,7 @@ export default function SLAPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-poise-gold" />
+              <Zap className="w-5 h-5 text-[#C9A84C]" />
               Total Execution Time: 12 Minutes
             </CardTitle>
           </CardHeader>
@@ -91,11 +91,11 @@ export default function SLAPage() {
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center p-4 bg-muted/50 rounded-lg">
-                <div className="text-3xl font-bold text-poise-gold">10x</div>
+                <div className="text-3xl font-bold text-[#C9A84C]">10x</div>
                 <div className="text-sm text-muted-foreground">Faster than industry</div>
               </div>
               <div className="text-center p-4 bg-muted/50 rounded-lg">
-                <div className="text-3xl font-bold text-poise-teal">98</div>
+                <div className="text-3xl font-bold text-[#2B8A6E]">98</div>
                 <div className="text-sm text-muted-foreground">Days saved annually</div>
               </div>
               <div className="text-center p-4 bg-muted/50 rounded-lg">

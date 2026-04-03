@@ -2237,7 +2237,7 @@ export default function SandboxDemo() {
             }} data-testid="button-try-again">
               Try Another Scenario
             </Button>
-            <Button onClick={() => setLocation('/pilot-program')} data-testid="button-pilot-programs">
+            <Button onClick={() => setLocation('/request-access')} data-testid="button-pilot-programs">
               View Pilot Program
             </Button>
           </div>

@@ -391,7 +391,7 @@ export default function FounderStory() {
           <p style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#fff", lineHeight: 1.3, marginBottom: 32 }}>
             Ready to close the coordination gap?
           </p>
-          <Link href="/pilot-program">
+          <Link href="/request-access">
             <button style={{ background: GOLD, color: NAVY, border: "none", padding: "18px 40px", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer" }}>
               Request Pilot Access
             </button>

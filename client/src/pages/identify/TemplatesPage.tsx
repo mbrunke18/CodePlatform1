@@ -29,7 +29,7 @@ export default function TemplatesPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {templates.map((template) => (
-            <Card key={template.name} className="hover:border-poise-gold/50 transition-colors cursor-pointer">
+            <Card key={template.name} className="hover:border-[#C9A84C]/50/50 transition-colors cursor-pointer">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-lg ${template.color} flex items-center justify-center`}>

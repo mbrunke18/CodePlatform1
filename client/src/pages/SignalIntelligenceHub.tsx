@@ -418,7 +418,7 @@ export default function SignalIntelligenceHub() {
                 Sign In
               </Button>
               <Button 
-                onClick={() => setLocation('/pilot-program')}
+                onClick={() => setLocation('/request-access')}
                 style={{ background: "#C9A84C", color: "#0A0F2E" }}
               >
                 Request Pilot Access

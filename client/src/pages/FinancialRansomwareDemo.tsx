@@ -74,7 +74,7 @@ export default function FinancialRansomwareDemo() {
   const handleRestart = () => setCurrentAct("introduction");
 
   return (
-    <div className="page-background min-h-screen" style={{ background: NAVY }}>
+    <div style={{ minHeight: "100vh", background: NAVY }}>
       <DemoNavHeader title="Financial Services Ransomware Response" showBackButton={true} />
 
       {/* Progress Indicator */}

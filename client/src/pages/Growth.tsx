@@ -784,7 +784,7 @@ export default function Growth() {
             10 founding partner slots available. Includes custom playbook development, white-glove onboarding, and full ROI documentation.
           </p>
           <Button
-            onClick={() => setLocation("/pilot-program")}
+            onClick={() => setLocation("/request-access")}
             style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
           >
             Apply for Founding Partner Pilot <ArrowRight className="ml-2 h-4 w-4" />

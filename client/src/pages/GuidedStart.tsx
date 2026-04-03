@@ -262,7 +262,7 @@ export default function GuidedStart() {
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
             ← Homepage
           </a>
-          <a href="/pilot-program" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+          <a href="/request-access" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
             Request Access →
           </a>
         </div>

@@ -702,7 +702,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                           } else if (SAMPLE_PLAYBOOK_NAMES.has(playbook.name)) {
                             setLocation(`/playbook-library/${playbook.id}`);
                           } else {
-                            setLocation("/pilot-program");
+                            setLocation("/request-access");
                           }
                         }}
                       >

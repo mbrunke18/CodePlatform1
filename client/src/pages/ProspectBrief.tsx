@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Printer, ChevronRight, Zap, Shield, TrendingUp, Eye, Activity, BarChart3, ArrowLeft } from "lucide-react";
-import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -106,7 +106,7 @@ export default function ProspectBrief() {
       <div style={{ minHeight: "100vh", background: OFF, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px" }}>
         <div style={{ width: "100%", maxWidth: 560 }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <ExecuteIQLogo height={72} variant="full" color="navy" />
+            <VaughnMartinLogo height={72} variant="full" color="dark" />
           </div>
 
           <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `4px solid ${GOLD}`, padding: "40px 40px 36px" }}>
@@ -230,7 +230,7 @@ export default function ProspectBrief() {
         {/* PAGE 1 HEADER */}
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", paddingBottom: 24, borderBottom: `2px solid ${NAVY}`, marginBottom: 32 }}>
           <div>
-            <ExecuteIQLogo height={64} variant="full" color="navy" />
+            <VaughnMartinLogo height={64} variant="full" color="dark" />
           </div>
           <div style={{ textAlign: "right" }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Executive Briefing</div>

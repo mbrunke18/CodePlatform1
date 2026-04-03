@@ -24,7 +24,7 @@ import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import PageLayout from '@/components/layout/PageLayout';
-import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import CreateScenarioButton from "@/components/scenario/CreateScenarioButton";
 import InteractiveROICalculator from "@/components/demo/InteractiveROICalculator";
 import { SubBrandLabel } from "@/components/SubBrandLabel";
@@ -37,7 +37,7 @@ export default function MarketingLanding() {
       title: "Execution OS - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
       description: "Your competitor just launched. Your board meeting is in 3 days. Execution OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "Execution OS - When Your Competitor Moves, Will You Be Ready?",
-      ogDescription: "The category-defining Strategic Execution Operating System. Limited Q1 2026 pilot: 10 Fortune 1000 design partners. Identify → Detect → Execute → Advance.",
+      ogDescription: "The category-defining Strategic Execution Operating System. Active Fortune 1000 pilot program. Identify → Detect → Execute → Advance.",
     });
   }, []);
 
@@ -52,7 +52,7 @@ export default function MarketingLanding() {
           {/* Execution OS Logo */}
           <div className="mb-12 flex justify-center">
             <div className="inline-block px-8 py-6 rounded-none border border-white/10 backdrop-blur-md bg-white/5">
-              <ExecuteIQLogo width={320} variant="full" color="white" showTagline={true} />
+              <VaughnMartinLogo height={60} variant="full" color="light" />
             </div>
           </div>
           {/* High-Stakes Competitive Scenario */}

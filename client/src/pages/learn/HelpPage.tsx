@@ -67,7 +67,7 @@ export default function HelpPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Mail className="w-5 h-5 text-poise-gold" />
+              <Mail className="w-5 h-5 text-[#C9A84C]" />
               Contact Support
             </CardTitle>
           </CardHeader>
