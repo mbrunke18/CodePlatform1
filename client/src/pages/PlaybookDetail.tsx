@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { useParams, Link, useLocation } from 'wouter';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -42,6 +42,12 @@ import {
   ChevronDown,
   ChevronRight,
   AlertCircle,
+  Pencil,
+  Plus,
+  Trash2,
+  Save,
+  X,
+  GripVertical,
 } from 'lucide-react';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
@@ -137,6 +143,16 @@ function DecisionGateBlock({ gate }: { gate: any }) {
   );
 }
 
+// ── Task Editor Types ─────────────────────────────────────────────────────────
+interface EditableTaskGroup { role: string; items: string[]; }
+interface EditableDecisionGate { title: string; criteria: string[]; escalation: string; }
+interface EditablePhase {
+  id: string; name: string; timeWindow: string; objective: string;
+  tasks: EditableTaskGroup[];
+  decisionGate: EditableDecisionGate;
+  restrictions: string[];
+}
+
 export default function PlaybookDetail() {
   const { id } = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
@@ -144,6 +160,11 @@ export default function PlaybookDetail() {
   const [expandedPhase, setExpandedPhase] = useState<string | null>('phase-1');
   const { toast } = useToast();
   const { isAuthenticated, login, user } = useAuth();
+
+  // Task editor state
+  const [editedPhases, setEditedPhases] = useState<EditablePhase[]>([]);
+  const [editorExpandedPhase, setEditorExpandedPhase] = useState<string | null>(null);
+  const [hasUnsaved, setHasUnsaved] = useState(false);
 
   const { data: organizationsRaw } = useQuery<any[]>({
     queryKey: ['/api/organizations'],
@@ -261,6 +282,170 @@ export default function PlaybookDetail() {
     },
   });
 
+  // Sync enrichedPhases into the editor when playbook data loads
+  useEffect(() => {
+    if (playbook?.enrichedPhases && Array.isArray(playbook.enrichedPhases)) {
+      setEditedPhases(JSON.parse(JSON.stringify(playbook.enrichedPhases)));
+      setHasUnsaved(false);
+      setEditorExpandedPhase(playbook.enrichedPhases[0]?.id || null);
+    }
+  }, [playbook?.id, playbook?.enrichedPhases]);
+
+  const savePhasesMutation = useMutation({
+    mutationFn: async (phases: EditablePhase[]) => {
+      const res = await apiRequest('PATCH', `/api/playbook-library/${playbookUuid}/customize`, {
+        organizationId: organizationId || 'demo-org',
+        customizations: { enrichedPhases: phases },
+      });
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', id] });
+      setHasUnsaved(false);
+      toast({ title: 'Playbook updated', description: 'Phase tasks and decision gates saved.' });
+    },
+    onError: (error: any) => {
+      toast({ title: 'Save failed', description: error.message || 'Could not save changes.', variant: 'destructive' });
+    },
+  });
+
+  // Phase editor helpers
+  const updatePhase = useCallback((phaseIdx: number, updates: Partial<EditablePhase>) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      next[phaseIdx] = { ...next[phaseIdx], ...updates };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const updateTask = useCallback((phaseIdx: number, taskIdx: number, updates: Partial<EditableTaskGroup>) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const tasks = [...next[phaseIdx].tasks];
+      tasks[taskIdx] = { ...tasks[taskIdx], ...updates };
+      next[phaseIdx] = { ...next[phaseIdx], tasks };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const updateTaskItem = useCallback((phaseIdx: number, taskIdx: number, itemIdx: number, value: string) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const tasks = [...next[phaseIdx].tasks];
+      const items = [...tasks[taskIdx].items];
+      items[itemIdx] = value;
+      tasks[taskIdx] = { ...tasks[taskIdx], items };
+      next[phaseIdx] = { ...next[phaseIdx], tasks };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const addTaskItem = useCallback((phaseIdx: number, taskIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const tasks = [...next[phaseIdx].tasks];
+      tasks[taskIdx] = { ...tasks[taskIdx], items: [...tasks[taskIdx].items, ''] };
+      next[phaseIdx] = { ...next[phaseIdx], tasks };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const removeTaskItem = useCallback((phaseIdx: number, taskIdx: number, itemIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const tasks = [...next[phaseIdx].tasks];
+      const items = tasks[taskIdx].items.filter((_, i) => i !== itemIdx);
+      tasks[taskIdx] = { ...tasks[taskIdx], items };
+      next[phaseIdx] = { ...next[phaseIdx], tasks };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const addTaskGroup = useCallback((phaseIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      next[phaseIdx] = { ...next[phaseIdx], tasks: [...next[phaseIdx].tasks, { role: 'New Role', items: [''] }] };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const removeTaskGroup = useCallback((phaseIdx: number, taskIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      next[phaseIdx] = { ...next[phaseIdx], tasks: next[phaseIdx].tasks.filter((_, i) => i !== taskIdx) };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const updateCriteria = useCallback((phaseIdx: number, criteriaIdx: number, value: string) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const gate = { ...next[phaseIdx].decisionGate };
+      const criteria = [...gate.criteria];
+      criteria[criteriaIdx] = value;
+      gate.criteria = criteria;
+      next[phaseIdx] = { ...next[phaseIdx], decisionGate: gate };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const addCriteria = useCallback((phaseIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const gate = { ...next[phaseIdx].decisionGate, criteria: [...next[phaseIdx].decisionGate.criteria, ''] };
+      next[phaseIdx] = { ...next[phaseIdx], decisionGate: gate };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const removeCriteria = useCallback((phaseIdx: number, criteriaIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const gate = { ...next[phaseIdx].decisionGate, criteria: next[phaseIdx].decisionGate.criteria.filter((_, i) => i !== criteriaIdx) };
+      next[phaseIdx] = { ...next[phaseIdx], decisionGate: gate };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const updateRestriction = useCallback((phaseIdx: number, restrictIdx: number, value: string) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      const restrictions = [...next[phaseIdx].restrictions];
+      restrictions[restrictIdx] = value;
+      next[phaseIdx] = { ...next[phaseIdx], restrictions };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const addRestriction = useCallback((phaseIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      next[phaseIdx] = { ...next[phaseIdx], restrictions: [...next[phaseIdx].restrictions, ''] };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
+  const removeRestriction = useCallback((phaseIdx: number, restrictIdx: number) => {
+    setEditedPhases(prev => {
+      const next = [...prev];
+      next[phaseIdx] = { ...next[phaseIdx], restrictions: next[phaseIdx].restrictions.filter((_, i) => i !== restrictIdx) };
+      return next;
+    });
+    setHasUnsaved(true);
+  }, []);
+
   const overallScore = readiness?.overallScore ?? 0;
   const canActivate = overallScore >= 50;
 
@@ -373,6 +558,16 @@ export default function PlaybookDetail() {
                       className="data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#6B7280]"
                     >
                       Performance
+                    </TabsTrigger>
+                  )}
+                  {isAuthenticated && phases.length > 0 && (
+                    <TabsTrigger
+                      value="edit-tasks"
+                      className="data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#6B7280]"
+                    >
+                      <Pencil className="h-3.5 w-3.5 mr-2" />
+                      Edit Tasks
+                      {hasUnsaved && <span className="ml-2 w-2 h-2 rounded-full bg-amber-500 inline-block" />}
                     </TabsTrigger>
                   )}
                 </TabsList>
@@ -758,6 +953,265 @@ export default function PlaybookDetail() {
                     </div>
                   )}
                 </TabsContent>
+
+                {/* ── Edit Tasks Tab ─────────────────────────────────────────── */}
+                <TabsContent value="edit-tasks" className="mt-0">
+                  <div className="space-y-4">
+                    {/* Header + Save */}
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "20px 28px", background: NAVY, border: `1px solid ${GOLD}` }}>
+                      <div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Phase & Task Editor</div>
+                        <div style={{ fontSize: 13, color: OFF, opacity: 0.8 }}>Add, edit, or remove tasks, decision gate criteria, and restrictions per phase.</div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        {hasUnsaved && (
+                          <span style={{ fontSize: 11, color: "#F59E0B", fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
+                            <span className="w-2 h-2 rounded-full bg-amber-500 inline-block" />
+                            Unsaved changes
+                          </span>
+                        )}
+                        <Button
+                          onClick={() => savePhasesMutation.mutate(editedPhases)}
+                          disabled={savePhasesMutation.isPending || !hasUnsaved}
+                          style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", height: 40 }}
+                        >
+                          <Save className="h-3.5 w-3.5 mr-2" />
+                          {savePhasesMutation.isPending ? 'Saving…' : 'Save All Changes'}
+                        </Button>
+                      </div>
+                    </div>
+
+                    {/* Phase accordions */}
+                    {editedPhases.map((phase, phaseIdx) => {
+                      const isOpen = editorExpandedPhase === phase.id;
+                      return (
+                        <div key={phase.id} style={{ border: `1px solid ${BORDER}`, background: "#fff" }}>
+                          {/* Phase header */}
+                          <button
+                            onClick={() => setEditorExpandedPhase(isOpen ? null : phase.id)}
+                            style={{ width: "100%", padding: "18px 24px", display: "flex", alignItems: "center", gap: 14, background: isOpen ? NAVY : "#fff", border: "none", cursor: "pointer", textAlign: "left", transition: "background 0.15s" }}
+                          >
+                            <div style={{ width: 28, height: 28, borderRadius: "50%", background: isOpen ? GOLD : OFF, border: `1px solid ${isOpen ? GOLD : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                              <span style={{ fontSize: 10, fontWeight: 700, color: isOpen ? NAVY : MUTED }}>{phaseIdx + 1}</span>
+                            </div>
+                            <div style={{ flex: 1 }}>
+                              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: isOpen ? GOLD : MUTED, marginBottom: 2 }}>{phase.timeWindow}</div>
+                              <div style={{ fontSize: 14, fontWeight: 700, color: isOpen ? "#fff" : NAVY }}>{phase.name}</div>
+                            </div>
+                            {isOpen ? <ChevronDown size={15} color={GOLD} /> : <ChevronRight size={15} color={MUTED} />}
+                          </button>
+
+                          {isOpen && (
+                            <div style={{ padding: "24px 28px", background: "#FAFAF8", borderTop: `1px solid ${BORDER}` }}>
+
+                              {/* Phase metadata */}
+                              <div className="space-y-3 mb-6">
+                                <div>
+                                  <label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, display: "block", marginBottom: 6 }}>Phase Name</label>
+                                  <input
+                                    type="text"
+                                    value={phase.name}
+                                    onChange={e => updatePhase(phaseIdx, { name: e.target.value })}
+                                    style={{ width: "100%", border: `1px solid ${BORDER}`, padding: "8px 12px", fontSize: 13, fontWeight: 600, color: NAVY, background: "#fff", outline: "none" }}
+                                  />
+                                </div>
+                                <div>
+                                  <label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED, display: "block", marginBottom: 6 }}>Objective</label>
+                                  <textarea
+                                    value={phase.objective}
+                                    onChange={e => updatePhase(phaseIdx, { objective: e.target.value })}
+                                    rows={2}
+                                    style={{ width: "100%", border: `1px solid ${BORDER}`, padding: "8px 12px", fontSize: 13, color: NAVY, background: "#fff", outline: "none", resize: "vertical", lineHeight: 1.5 }}
+                                  />
+                                </div>
+                              </div>
+
+                              {/* Tasks by role */}
+                              <div style={{ marginBottom: 24 }}>
+                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY }}>Role Task Groups</span>
+                                  <button
+                                    onClick={() => addTaskGroup(phaseIdx)}
+                                    style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 700, color: TEAL, textTransform: "uppercase", letterSpacing: "0.08em", background: "none", border: `1px solid ${TEAL}`, padding: "4px 10px", cursor: "pointer" }}
+                                  >
+                                    <Plus size={11} /> Add Role Group
+                                  </button>
+                                </div>
+
+                                {phase.tasks.map((taskGroup, taskIdx) => (
+                                  <div key={taskIdx} style={{ border: `1px solid ${BORDER}`, background: "#fff", marginBottom: 10 }}>
+                                    {/* Role header */}
+                                    <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", borderBottom: `1px solid ${BORDER}`, background: "#F8F7F4" }}>
+                                      <GripVertical size={13} color={MUTED} />
+                                      <input
+                                        type="text"
+                                        value={taskGroup.role}
+                                        onChange={e => updateTask(phaseIdx, taskIdx, { role: e.target.value })}
+                                        style={{ flex: 1, border: "none", background: "transparent", fontSize: 12, fontWeight: 700, color: NAVY, outline: "none", letterSpacing: "0.02em" }}
+                                        placeholder="Role (e.g. CEO, CISO, CMO)"
+                                      />
+                                      <button
+                                        onClick={() => removeTaskGroup(phaseIdx, taskIdx)}
+                                        style={{ color: "#EF4444", background: "none", border: "none", cursor: "pointer", padding: 2, flexShrink: 0, display: "flex" }}
+                                        title="Remove role group"
+                                      >
+                                        <Trash2 size={13} />
+                                      </button>
+                                    </div>
+
+                                    {/* Task items */}
+                                    <div style={{ padding: "10px 14px" }}>
+                                      {taskGroup.items.map((item, itemIdx) => (
+                                        <div key={itemIdx} style={{ display: "flex", alignItems: "flex-start", gap: 8, marginBottom: 6 }}>
+                                          <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 8 }} />
+                                          <textarea
+                                            value={item}
+                                            onChange={e => updateTaskItem(phaseIdx, taskIdx, itemIdx, e.target.value)}
+                                            rows={2}
+                                            style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "6px 10px", fontSize: 12, color: "#374151", lineHeight: 1.5, outline: "none", resize: "vertical", background: "#fff" }}
+                                            placeholder="Task description…"
+                                          />
+                                          <button
+                                            onClick={() => removeTaskItem(phaseIdx, taskIdx, itemIdx)}
+                                            style={{ color: "#9CA3AF", background: "none", border: "none", cursor: "pointer", padding: 2, flexShrink: 0, marginTop: 4, display: "flex" }}
+                                            title="Remove task"
+                                          >
+                                            <X size={13} />
+                                          </button>
+                                        </div>
+                                      ))}
+                                      <button
+                                        onClick={() => addTaskItem(phaseIdx, taskIdx)}
+                                        style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 10, fontWeight: 600, color: TEAL, background: "none", border: "none", cursor: "pointer", marginTop: 6, padding: "2px 0" }}
+                                      >
+                                        <Plus size={11} /> Add task
+                                      </button>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Decision Gate */}
+                              <div style={{ border: `1px solid ${GOLD}`, background: `${GOLD}05`, padding: 20, marginBottom: 16 }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+                                  <CheckCircle2 size={13} color={GOLD} />
+                                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Decision Gate</span>
+                                </div>
+
+                                <div className="space-y-3">
+                                  <div>
+                                    <label style={{ fontSize: 10, fontWeight: 600, color: MUTED, display: "block", marginBottom: 4 }}>Gate Question / Title</label>
+                                    <input
+                                      type="text"
+                                      value={phase.decisionGate?.title || ''}
+                                      onChange={e => {
+                                        const gate = { ...phase.decisionGate, title: e.target.value };
+                                        updatePhase(phaseIdx, { decisionGate: gate });
+                                      }}
+                                      style={{ width: "100%", border: `1px solid ${BORDER}`, padding: "7px 11px", fontSize: 13, color: NAVY, fontWeight: 600, background: "#fff", outline: "none" }}
+                                    />
+                                  </div>
+
+                                  <div>
+                                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+                                      <label style={{ fontSize: 10, fontWeight: 600, color: MUTED }}>Gate Criteria</label>
+                                      <button
+                                        onClick={() => addCriteria(phaseIdx)}
+                                        style={{ fontSize: 10, fontWeight: 600, color: TEAL, background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
+                                      >
+                                        <Plus size={11} /> Add criterion
+                                      </button>
+                                    </div>
+                                    {(phase.decisionGate?.criteria || []).map((criterion: string, cIdx: number) => (
+                                      <div key={cIdx} style={{ display: "flex", gap: 7, marginBottom: 5 }}>
+                                        <div style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 9 }} />
+                                        <input
+                                          type="text"
+                                          value={criterion}
+                                          onChange={e => updateCriteria(phaseIdx, cIdx, e.target.value)}
+                                          style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "6px 10px", fontSize: 12, color: NAVY, background: "#fff", outline: "none" }}
+                                        />
+                                        <button
+                                          onClick={() => removeCriteria(phaseIdx, cIdx)}
+                                          style={{ color: "#9CA3AF", background: "none", border: "none", cursor: "pointer", padding: 2, display: "flex", alignItems: "center" }}
+                                        >
+                                          <X size={13} />
+                                        </button>
+                                      </div>
+                                    ))}
+                                  </div>
+
+                                  <div>
+                                    <label style={{ fontSize: 10, fontWeight: 600, color: MUTED, display: "block", marginBottom: 4 }}>Escalation Protocol</label>
+                                    <textarea
+                                      value={phase.decisionGate?.escalation || ''}
+                                      onChange={e => {
+                                        const gate = { ...phase.decisionGate, escalation: e.target.value };
+                                        updatePhase(phaseIdx, { decisionGate: gate });
+                                      }}
+                                      rows={2}
+                                      style={{ width: "100%", border: `1px solid ${BORDER}`, padding: "7px 11px", fontSize: 12, color: "#374151", lineHeight: 1.5, background: "#fff", outline: "none", resize: "vertical" }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Restrictions */}
+                              <div style={{ border: `1px solid #FCA5A5`, background: "#FFF5F5", padding: 20 }}>
+                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                    <AlertCircle size={13} color="#EF4444" />
+                                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#EF4444" }}>What Does NOT Happen This Phase</span>
+                                  </div>
+                                  <button
+                                    onClick={() => addRestriction(phaseIdx)}
+                                    style={{ fontSize: 10, fontWeight: 600, color: "#DC2626", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
+                                  >
+                                    <Plus size={11} /> Add restriction
+                                  </button>
+                                </div>
+                                {phase.restrictions.map((restriction, rIdx) => (
+                                  <div key={rIdx} style={{ display: "flex", gap: 7, marginBottom: 5 }}>
+                                    <span style={{ fontSize: 12, color: "#7F1D1D", flexShrink: 0, marginTop: 7 }}>—</span>
+                                    <input
+                                      type="text"
+                                      value={restriction}
+                                      onChange={e => updateRestriction(phaseIdx, rIdx, e.target.value)}
+                                      style={{ flex: 1, border: `1px solid #FCA5A5`, padding: "6px 10px", fontSize: 12, color: "#7F1D1D", background: "#fff", outline: "none" }}
+                                    />
+                                    <button
+                                      onClick={() => removeRestriction(phaseIdx, rIdx)}
+                                      style={{ color: "#9CA3AF", background: "none", border: "none", cursor: "pointer", padding: 2, display: "flex", alignItems: "center" }}
+                                    >
+                                      <X size={13} />
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+
+                    {/* Bottom Save */}
+                    {hasUnsaved && (
+                      <div style={{ padding: "16px 20px", background: "#FFFBEB", border: `1px solid #F59E0B`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <span style={{ fontSize: 12, color: "#92400E", fontWeight: 600 }}>You have unsaved changes.</span>
+                        <Button
+                          onClick={() => savePhasesMutation.mutate(editedPhases)}
+                          disabled={savePhasesMutation.isPending}
+                          style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", height: 38 }}
+                        >
+                          <Save className="h-3.5 w-3.5 mr-2" />
+                          {savePhasesMutation.isPending ? 'Saving…' : 'Save Changes'}
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </TabsContent>
+
               </Tabs>
             </div>
 

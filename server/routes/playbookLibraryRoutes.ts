@@ -804,6 +804,9 @@ playbookLibraryRouter.patch('/:playbookId/customize', async (req, res) => {
     if (customizations.outcomeMetrics !== undefined) {
       updateData.outcomeMetrics = customizations.outcomeMetrics;
     }
+    if (customizations.enrichedPhases !== undefined) {
+      updateData.enrichedPhases = customizations.enrichedPhases;
+    }
 
     updateData.updatedAt = new Date();
 
