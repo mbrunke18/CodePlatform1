@@ -2679,6 +2679,139 @@ function CommandCenterShowcaseSection() {
   );
 }
 
+// ─── Playbook Analogy Section ─────────────────────────────────────────────────
+function PlaybookAnalogySection() {
+  const steps = [
+    {
+      phase: "IDENTIFY",
+      color: TEAL,
+      sport: "Game Planning",
+      sportIcon: "🏈",
+      sportDesc: "Coaches catalog every situation they may face. Before the season begins, before any opponent is studied.",
+      execDesc: "Executives define every strategic trigger across 9 domains — competitive, regulatory, operational, financial. All 170 playbooks are pre-built before the trigger fires.",
+    },
+    {
+      phase: "DETECT",
+      color: GOLD,
+      sport: "Reading the Field",
+      sportIcon: "📡",
+      sportDesc: "During the game, the offense reads the defense formation. Data points align. The situation is now — not hypothetical.",
+      execDesc: "248+ live data points monitored continuously. When signals align at sufficient confidence, the trigger surfaces in seconds. AI reads the field, the executive reads the brief.",
+    },
+    {
+      phase: "EXECUTE",
+      color: NAVY,
+      sport: "The Play Call",
+      sportIcon: "⚡",
+      sportDesc: "Under 40 seconds. The coach calls the play. Everyone already knows their assignment. No committee. The preparation did the work.",
+      execDesc: "Executive authorizes in seconds. 12 minutes later, the full organizational response is coordinated. Every role, every task, every owner — pre-defined in the playbook.",
+    },
+    {
+      phase: "ADVANCE",
+      color: TEAL_LIGHT,
+      sport: "Film Study",
+      sportIcon: "📊",
+      sportDesc: "After the game, coaches study every play. What worked. What failed. What to refine. Every decision becomes institutional knowledge.",
+      execDesc: "Post-Activation Debrief scores every execution — speed, coverage, task completion. Each outcome sharpens the next response. The organization gets faster over time.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "#fff", padding: "112px 0 96px", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, position: "relative", overflow: "hidden" }}>
+      {/* Faint field yard-line texture */}
+      <div style={{
+        position: "absolute", inset: 0, pointerEvents: "none",
+        backgroundImage: `repeating-linear-gradient(90deg, rgba(43,138,110,0.04) 0px, rgba(43,138,110,0.04) 1px, transparent 1px, transparent 80px)`,
+      }} />
+
+      <div style={{ ...CONTAINER, position: "relative", zIndex: 1 }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 72 }}>
+            <SectionLabel>THE OPERATING MODEL</SectionLabel>
+            <h2 style={{ ...GEO, fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: NAVY, lineHeight: 1.15, maxWidth: 860, margin: "0 auto 28px" }}>
+              Elite teams don't react.<br />
+              <span style={{ color: TEAL }}>They execute pre-staged plays.</span>
+            </h2>
+            <p style={{ ...DM, fontSize: 18, color: MUTED_LIGHT, maxWidth: 680, margin: "0 auto 48px", lineHeight: 1.75 }}>
+              In elite sports, coaches prepare for every situation before the game begins. When that situation arrives, the decision takes under 40 seconds. Execution is immediate. 60 to 80 strategic decisions per game — each one already prepared, pre-assigned, and ready to deploy.
+            </p>
+
+            {/* Stat pull */}
+            <div style={{ display: "flex", justifyContent: "center", gap: 0, marginBottom: 72 }}>
+              <div style={{ borderLeft: `4px solid ${TEAL}`, paddingLeft: 28, textAlign: "left", maxWidth: 460 }}>
+                <div style={{ ...GEO, fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 8 }}>
+                  "60–80 strategic decisions per 3-hour game.<br />
+                  <span style={{ color: TEAL }}>Under 40 seconds each.</span>"
+                </div>
+                <div style={{ ...DM, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: MUTED_LIGHT }}>
+                  Elite NFL &amp; College Football Coaching Model
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* 4-column mapping */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, marginBottom: 56 }}>
+          {steps.map((step, i) => (
+            <Reveal key={step.phase} delay={i * 0.08}>
+              <div style={{ background: "#FAFAF8", border: `1px solid ${BORDER}`, borderTop: `4px solid ${step.color}`, padding: "32px 28px", height: "100%" }}>
+                {/* Phase badge */}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: step.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <span style={{ fontSize: 15 }}>{step.sportIcon}</span>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: step.color }}>{step.phase}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{step.sport}</div>
+                  </div>
+                </div>
+
+                {/* Sport description */}
+                <div style={{ marginBottom: 20, paddingBottom: 20, borderBottom: `1px solid ${BORDER}` }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: MUTED_LIGHT, marginBottom: 8 }}>Coaching Model</div>
+                  <p style={{ ...DM, fontSize: 13, color: "#374151", lineHeight: 1.65, margin: 0 }}>{step.sportDesc}</p>
+                </div>
+
+                {/* Exec description */}
+                <div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: step.color, marginBottom: 8 }}>Execution OS</div>
+                  <p style={{ ...DM, fontSize: 13, color: NAVY, lineHeight: 1.65, margin: 0, fontWeight: 500 }}>{step.execDesc}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Connector bar */}
+        <Reveal delay={0.3}>
+          <div style={{ background: NAVY, padding: "32px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
+            <div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>The Organizational Playbook</div>
+              <div style={{ ...GEO, fontSize: 22, color: "#fff", fontWeight: 600, lineHeight: 1.3 }}>
+                The same model elite coaches built over decades —<br />
+                <span style={{ color: GOLD }}>now running inside Fortune 1000 enterprises.</span>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+              {[
+                { n: "170", label: "Pre-Staged Playbooks" },
+                { n: "12 min", label: "Decision to Execution" },
+                { n: "3,600×", label: "Execution Head Start" },
+              ].map(stat => (
+                <div key={stat.n} style={{ textAlign: "center" }}>
+                  <div style={{ ...GEO, fontSize: 26, fontWeight: 700, color: GOLD }}>{stat.n}</div>
+                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: MUTED_DARK }}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Homepage() {
   useScrollDepth();
@@ -2692,6 +2825,7 @@ export default function Homepage() {
       <MissingLayerSection />
       <McKinseyValidationSection />
       <ContrastMomentSection />
+      <PlaybookAnalogySection />
       <IDEASection />
       <ThreeLayerChainSection />
       <PlatformPreviewSection />

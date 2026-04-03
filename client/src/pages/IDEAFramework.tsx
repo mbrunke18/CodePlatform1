@@ -217,6 +217,52 @@ export default function IDEAFramework() {
           </div>
         </section>
 
+        {/* ── Coaching Model Analogy ─────────────────────────────────────── */}
+        <section style={{ background: "#F8F7F4", padding: "72px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: TEAL, marginBottom: 12 }}>The Operating Model Origin</div>
+              <h2 style={{ fontFamily: "Georgia, serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+                Built on the same model elite coaches use to win.
+              </h2>
+              <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 600, margin: "0 auto", lineHeight: 1.75 }}>
+                Elite NFL and college programs make 60–80 strategic decisions per 3-hour game — each one under 40 seconds. The preparation happens before the game begins. The IDEA Framework brings the same operating model to the enterprise.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "#E8E4DC", border: "1px solid #E8E4DC" }}>
+              {[
+                { phase: "IDENTIFY", sport: "Pre-Season Game Planning", icon: "🏈", sportLine: "Coaches define every situation before the season begins.", execLine: "170 playbooks across 9 domains — pre-built before the trigger fires.", color: TEAL },
+                { phase: "DETECT", sport: "Reading the Defense", icon: "📡", sportLine: "Live reads of the field. Data points line up. The situation is confirmed.", execLine: "248+ signals monitored continuously. Trigger surfaces in seconds.", color: GOLD },
+                { phase: "EXECUTE", sport: "The Play Call", icon: "⚡", sportLine: "Under 40 seconds. Everyone already knows their role. No committee needed.", execLine: "Executive authorizes. 12 minutes to full organizational execution.", color: NAVY },
+                { phase: "ADVANCE", sport: "Film Study", icon: "📊", sportLine: "After the game: what worked, what failed, what to refine next time.", execLine: "Post-Activation Debrief. Every execution sharpens the next.", color: TEAL_LT },
+              ].map(item => (
+                <div key={item.phase} style={{ background: "#fff", padding: "28px 24px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    <span style={{ fontSize: 20 }}>{item.icon}</span>
+                    <div>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: item.color }}>{item.phase}</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginTop: 1 }}>{item.sport}</div>
+                    </div>
+                  </div>
+                  <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, marginBottom: 12 }}>{item.sportLine}</p>
+                  <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 12 }}>
+                    <p style={{ fontSize: 12, color: NAVY, fontWeight: 600, lineHeight: 1.6 }}>{item.execLine}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ marginTop: 32, padding: "20px 28px", background: NAVY, display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, flexShrink: 0 }}>Executive Authority</div>
+              <p style={{ fontSize: 14, color: "#C8D4E8", lineHeight: 1.6, margin: 0, flex: 1 }}>
+                In both models, the coach — the executive — makes every call. The preparation eliminates the mobilization delay. The authority remains with the human who holds it.
+                <strong style={{ color: GOLD }}> AI monitors. Executives authorize. Execution pre-staged.</strong>
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Phase Deep-Dives */}
         {phases.map((phase, i) => {
           const Icon = phase.icon;

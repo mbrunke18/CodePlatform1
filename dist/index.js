@@ -31912,6 +31912,9 @@ var init_playbookLibraryRoutes = __esm({
         if (customizations.outcomeMetrics !== void 0) {
           updateData.outcomeMetrics = customizations.outcomeMetrics;
         }
+        if (customizations.enrichedPhases !== void 0) {
+          updateData.enrichedPhases = customizations.enrichedPhases;
+        }
         updateData.updatedAt = /* @__PURE__ */ new Date();
         const [updated] = await db.update(playbookLibrary).set(updateData).where(eq41(playbookLibrary.id, playbookId)).returning();
         res.json(updated);
