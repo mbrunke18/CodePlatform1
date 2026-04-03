@@ -624,7 +624,7 @@ export default function KeynoteDemo() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-[#0A0F2E]/5 text-[#0A0F2E] border border-[#0A0F2E]/10 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
             <Shield className="h-4 w-4" />
-            HUMAN-AI PARTNERSHIP
+            AI MONITORS — EXECUTIVES AUTHORIZE
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>AI Recommends. You Decide.</h2>
           <p className="text-xl text-[#6B7280]">The executive retains full decision authority. Always.</p>

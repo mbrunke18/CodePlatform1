@@ -1256,7 +1256,7 @@ export default function IndustryExperience() {
         return (
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Shield className="h-3 w-3 mr-1" /> HUMAN-AI PARTNERSHIP</Badge>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Shield className="h-3 w-3 mr-1" /> AI MONITORS — EXECUTIVES AUTHORIZE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Leadership Makes the Call</h2>
               <p className="text-gray-800 dark:text-slate-200">AI recommends. The executive decides. Always.</p>
             </div>
