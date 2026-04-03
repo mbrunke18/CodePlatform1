@@ -1222,7 +1222,7 @@ export default function PlaybookDetail() {
                   <div>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Free Sample Preview</div>
                     <div style={{ ...CG, fontSize: 15, fontWeight: 600, color: NAVY, marginBottom: 8, lineHeight: 1.4 }}>
-                      167 more playbooks are waiting for your team
+                      167 exclusive playbooks are waiting for your team
                     </div>
                     <p style={{ fontSize: 12, color: MUTED, marginBottom: 24, lineHeight: 1.6 }}>
                       Access the full library, activate playbooks in real-time, and run practice drills with your executive team.
@@ -1395,8 +1395,8 @@ export default function PlaybookDetail() {
                   VaughnMartin · Execution OS
                 </div>
                 <div style={{ ...CG, fontSize: "clamp(28px,4vw,40px)", fontWeight: 600, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
-                  You just read one playbook.<br />
-                  <em style={{ color: GOLD }}>167 more are protecting your competitors.</em>
+                  You just read one of 3 public playbooks.<br />
+                  <em style={{ color: GOLD }}>167 exclusive ones are already protecting your competitors.</em>
                 </div>
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
                   Every playbook in the Execution OS library is built from 20+ years of Fortune 500 transformation.
