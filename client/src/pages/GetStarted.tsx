@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { updatePageMetadata } from '@/lib/seo';
-import { ExecuteIQLogo } from '@/components/ExecuteIQLogo';
+import { VaughnMartinLogo } from '@/components/VaughnMartinLogo';
 import PageLayout from '@/components/layout/PageLayout';
 import {
   ArrowRight, CheckCircle, BookOpen, Radar, Zap, BarChart3,

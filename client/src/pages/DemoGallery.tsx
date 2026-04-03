@@ -338,7 +338,7 @@ export default function DemoGallery() {
                 </Link>
               </div>
               <p className="text-sm text-[#6B7280] mt-4">
-                Q1 2026 Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
+                Founding Partner Program • 90-day validation • $75K (100% credited to Year 1)
               </p>
             </CardContent>
           </Card>

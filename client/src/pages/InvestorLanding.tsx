@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { useLocation } from "wouter";
 import PageLayout from '@/components/layout/PageLayout';
-import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 const productArchitectureImg = "/images/product-architecture.png";
 const futurePositioningImg = "/images/future-positioning.png";
 import { 
@@ -81,7 +81,7 @@ export default function InvestorLanding() {
           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <div className="mb-8 flex justify-center">
               <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm bg-[#0A0F2E]/30">
-                <ExecuteIQLogo width={280} variant="full" color="white" showTagline={true} />
+                <VaughnMartinLogo color="light" height={48} variant="full" />
               </div>
             </div>
             <Badge className="mb-6 bg-[#C9A84C] text-[#0A0F2E] border-0 text-sm px-4 py-1.5" data-testid="badge-category">

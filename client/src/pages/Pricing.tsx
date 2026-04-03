@@ -17,7 +17,7 @@ export default function Pricing() {
   useEffect(() => {
     updatePageMetadata({
       title: "Enterprise Pricing - Execution OS | Strategic Execution Operating System",
-      description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) available Q1 2026.",
+      description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) — limited to 5 design partners.",
       ogTitle: "Execution OS Enterprise Pricing - Built for Fortune 1000",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
@@ -50,7 +50,7 @@ export default function Pricing() {
           <div className="text-center mb-12">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#2B8A6E", flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>Q1 2026 Founding Partner Program</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>Founding Partner Program</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 16 }}>
               Join Our Founding Partners

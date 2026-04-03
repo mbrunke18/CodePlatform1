@@ -29,7 +29,7 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
-import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 const pilotPhases = [
   {
@@ -186,7 +186,7 @@ const roiCalculator = [
   },
   {
     metric: 'Response Time',
-    baseline: '72+ hours to full coordination',
+    baseline: '30 days to full coordination',
     withExecutionOS: '12 minutes to full coordination',
     calculation: 'Revenue protected by faster response',
     value: '$500K-$2M per major event'
@@ -250,7 +250,7 @@ export default function PilotProgram() {
         <section className="py-16 px-6 bg-[#0A0F2E]">
           <div className="max-w-6xl mx-auto text-center">
             <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm mb-6">
-              <ExecuteIQLogo width={240} variant="full" color="white" showTagline={true} />
+              <VaughnMartinLogo color="light" height={44} variant="full" />
             </div>
             <Badge className="mb-6 bg-[#2B8A6E] text-white border-[#2B8A6E]/30" data-testid="badge-pilot">
               Fortune 1000 Design Partner Program
@@ -291,11 +291,12 @@ export default function PilotProgram() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
-                className="bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45] border-2 border-[#C9A84C]/30"
-                onClick={() => setLocation('/contact')}
+                className="font-bold"
+                style={{ background: '#C9A84C', color: '#0A0F2E' }}
+                onClick={() => setLocation('/request-access')}
                 data-testid="button-apply-pilot"
               >
-                <Rocket className="w-5 h-5 mr-2 text-[#C9A84C]" />
+                <Rocket className="w-5 h-5 mr-2" />
                 Apply for Pilot Program
               </Button>
               <Button 
@@ -741,13 +742,13 @@ export default function PilotProgram() {
               Ready to Validate Strategic Execution?
             </h2>
             <p className="text-lg text-gray-800 dark:text-slate-300 mb-8">
-              Limited to 5 design partners in Q1 2026. Priority given to organizations with recent strategic event pain.
+              Limited to 5 design partners. Priority given to Fortune 1000 organizations with recent strategic event pain.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button 
                 size="lg" 
                 className="bg-[#2B8A6E] hover:bg-[#3BAF8A]"
-                onClick={() => setLocation('/contact')}
+                onClick={() => setLocation('/request-access')}
                 data-testid="button-cta-apply"
               >
                 <Rocket className="w-5 h-5 mr-2" />
