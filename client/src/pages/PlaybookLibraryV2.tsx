@@ -604,23 +604,22 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 );
               }
 
-              // FULL CARD — 3 sample playbooks always marked as Free Sample; 167 others show Pilot tier
-              const cardIsSample = SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
+              // FULL CARD — 3 sample playbooks for guests (isSample=true), or all 170 for authenticated users
               return (
-              <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${cardIsSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={cardIsSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
+              <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5 flex flex-col flex-1">
                   {/* Header: tier label + urgency badge */}
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      {cardIsSample ? (
+                      {isSample ? (
                         <>
                           <Eye className="h-3 w-3 text-[#2B8A6E]" />
                           <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Free Sample</span>
                         </>
                       ) : (
                         <>
-                          <Check className="h-3 w-3 text-[#C9A84C]" />
-                          <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Pilot Exclusive</span>
+                          <Check className="h-3 w-3 text-[#2B8A6E]" />
+                          <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Enterprise Tier</span>
                         </>
                       )}
                     </div>
@@ -682,7 +681,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[90px]">{playbook.domain}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      {isAuthenticated && !cardIsSample && (
+                      {isAuthenticated && (
                         <button
                           onClick={() => setLocation(`/playbook-library/${playbook.id}`)}
                           style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textDecoration: "underline", background: "none", border: "none", cursor: "pointer" }}
@@ -692,30 +691,20 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       )}
                       <Button
                         size="sm"
-                        style={{
-                          background: cardIsSample ? "#2B8A6E" : "#0A0F2E",
-                          color: "white",
-                          fontSize: 10,
-                          padding: "4px 12px",
-                          height: "auto"
-                        }}
+                        style={{ background: "#0A0F2E", color: "white", fontSize: 10, padding: "4px 12px", height: "auto" }}
                         className="font-bold uppercase tracking-wider"
                         onClick={() => {
-                          if (cardIsSample) {
-                            setLocation(`/playbook-library/${playbook.id}`);
-                          } else if (isAuthenticated) {
+                          if (isAuthenticated) {
                             setLocation(`/playbook-customize/${playbook.id}`);
                           } else {
-                            setLocation(`/request-access`);
+                            setLocation(`/playbook-library/${playbook.id}`);
                           }
                         }}
                       >
-                        {cardIsSample ? (
-                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
-                        ) : isAuthenticated ? (
+                        {isAuthenticated ? (
                           <><span>Deploy</span><ChevronRight className="ml-1 h-3 w-3" /></>
                         ) : (
-                          <><Lock className="mr-1 h-3 w-3" /><span>Pilot Access</span></>
+                          <><Eye className="mr-1 h-3 w-3" /><span>View Sample</span></>
                         )}
                       </Button>
                     </div>
