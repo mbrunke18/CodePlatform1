@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: April 3, 2026 (rev 13) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 3, 2026 (rev 14) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -137,7 +137,11 @@ The onboarding wizard provides two escape hatches:
 Both call `completeOnboardingMutation` → POST `/api/onboarding/complete` → invalidates `/api/auth/user` cache so `needsOnboarding` becomes `false` and the guard stops firing.
 
 ### Role-Based Access
-`requireRole('admin', 'executive', 'strategist')` is applied to all write routes. Users with no role get read-only access.
+`requireRole('admin', 'executive', 'strategist')` is applied to all write routes. Users with no role get read-only access (403 on write operations).
+
+**Default role assignment (April 2026):** New users are automatically assigned the `Admin` role on first login via `upsertUser` in `server/storage.ts`. This prevents new pilot customers from hitting 403 errors when deploying playbooks. All existing users were backfilled with Admin in April 2026.
+
+**Critical DB note:** The `roles` table schema includes a `description` column that was missing from the production database until April 3, 2026. If the DB is ever re-created from scratch, run `npm run db:push` immediately after — a missing `description` column causes `requireRole` to throw a 500 on every protected route. Do NOT assume the schema is in sync; always verify with `SELECT column_name FROM information_schema.columns WHERE table_name = 'roles'`.
 
 ### Frontend Auth Hook
 ```tsx
@@ -523,7 +527,7 @@ toast({ title: 'Error', description: 'Something went wrong.', variant: 'destruct
 - **170 active playbooks** in 9 domains (seeded to DB on startup)
 - **4 compound playbooks** (IDs 181–184): cross-domain crisis scenarios
 - **23 enriched playbooks** with full `enrichedPhases` content (4 phases each, role-specific tasks, decision gates, restrictions). 14 original flagship set + 9 added April 2026 via migration script `server/scripts/fill-empty-playbooks.ts`: AI Competitive Disruption, Data Breach, CEO Sudden Departure, Financial Services Compliance Breach, SLA Mass Breach, Competitive Acquisition, AI Data Privacy Breach, Third-Party Data Breach, Compound Cyber+Regulatory.
-- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full content with an upsell CTA. All 167 others display a locked state routing to `/pilot-program`. Authenticated users see all 170 with Deploy/Preview actions. The public/locked logic lives in `PlaybookDetail.tsx` and `PlaybookLibraryV2.tsx` — never change the free sample set without founder approval.
+- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full card content with an upsell CTA ("View Sample" button → `/playbook-library/:id`). All 167 others render as locked cards showing only domain name + "Pilot Access Required" label + "Request Pilot Access" button → `/request-access`. Authenticated users see all 170 with "Deploy" button → `/playbook-customize/:id`. The public/locked logic lives in `PlaybookDetail.tsx` (`isSampleView` flag) and `PlaybookLibraryV2.tsx` (`isLocked` flag) — never change the free sample set without founder approval. The `SAMPLE_PLAYBOOK_NAMES` Set must be identical in both files.
 - **Public-facing copy (locked):** Bottom CTA on sample playbooks reads: "You just read one of 3 public playbooks. 167 exclusive ones are already protecting your competitors." The 167 refers to locked pilot-only playbooks specifically — not 170 minus 1.
 
 ### Domain Names (exact DB strings — use these for filtering)
@@ -1013,6 +1017,8 @@ Three new features wired into the playbook execution flow, backed by GPT-4o.
 - Returns: `{ situationFraming, missionObjective, criticalRoles, topRisks, successIndicators, commanderNote }`
 - Auth-gated: returns 401 if unauthenticated
 - Falls back to a static template if OpenAI is unavailable (never shows an error state)
+
+**OpenAI quota warning:** The platform uses a Replit-managed AI integration (`AI_INTEGRATIONS_OPENAI_API_KEY`). This key has a usage budget that resets periodically. When exhausted, AI brief generation and compound threat analysis fall back gracefully — no visible error, but AI content is replaced with static templates. The background compound threat auto-analysis (every 4 hours) consumes this budget silently. Before any sales demo where AI briefs will be shown live, verify the budget is not exhausted. Check Replit account billing settings to top up if needed.
 
 **Frontend query key:** `['/api/playbooks', playbookId, 'execution-brief', triggerId]`
 
