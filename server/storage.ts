@@ -431,9 +431,17 @@ export class DatabaseStorage implements IStorage {
   }
 
   async upsertUser(userData: UpsertUser): Promise<User> {
+    // Find the Admin role to assign by default so new users can deploy playbooks
+    const adminRole = await db
+      .select({ id: roles.id })
+      .from(roles)
+      .where(eq(roles.name, 'Admin'))
+      .limit(1);
+    const defaultRoleId = adminRole[0]?.id ?? null;
+
     const [user] = await db
       .insert(users)
-      .values(userData)
+      .values({ ...userData, roleId: userData.roleId ?? defaultRoleId })
       .onConflictDoUpdate({
         target: users.id,
         set: {

@@ -9367,7 +9367,9 @@ var init_storage = __esm({
         return user;
       }
       async upsertUser(userData) {
-        const [user] = await db.insert(users).values(userData).onConflictDoUpdate({
+        const adminRole = await db.select({ id: roles.id }).from(roles).where(eq(roles.name, "Admin")).limit(1);
+        const defaultRoleId = adminRole[0]?.id ?? null;
+        const [user] = await db.insert(users).values({ ...userData, roleId: userData.roleId ?? defaultRoleId }).onConflictDoUpdate({
           target: users.id,
           set: {
             ...userData,
