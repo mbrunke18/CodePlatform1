@@ -5,8 +5,11 @@ import { nlqService } from './nlq-service';
 
 const logger = pino({ name: 'proactive-ai-radar' });
 
-// Initialize OpenAI client
-const openai = new OpenAI({
+// AI_DISABLED: mirrors the kill switch in OpenAIService. Set to false to re-enable.
+const AI_DISABLED = true;
+
+// Initialize OpenAI client (only used when AI_DISABLED = false)
+const openai = AI_DISABLED ? null as unknown as OpenAI : new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 

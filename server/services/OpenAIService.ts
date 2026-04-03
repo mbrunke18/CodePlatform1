@@ -3,6 +3,10 @@ import pino from 'pino';
 
 const logger = pino({ name: 'openai-service' });
 
+// AI_DISABLED: set to true to prevent all OpenAI/Azure API calls and use fallback responses only.
+// Change to false to re-enable when a valid API key is available.
+const AI_DISABLED = true;
+
 interface OpenAIServiceConfig {
   maxRetries: number;
   retryDelay: number;
@@ -31,6 +35,11 @@ export class OpenAIService {
       maxTokens: 2000,
       temperature: 0.7
     };
+
+    if (AI_DISABLED) {
+      logger.info('AI features disabled — all requests will use fallback responses');
+      return;
+    }
 
     const azureEndpoint = process.env.AZURE_OPENAI_ENDPOINT;
     const azureKey = process.env.AZURE_OPENAI_KEY;
