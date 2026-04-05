@@ -78,7 +78,7 @@ import {
   strategicRecordings,
   executiveTriggers,
 } from "@shared/schema";
-import { eq, desc, sql, like, and, asc, count, gte, ne } from 'drizzle-orm';
+import { eq, desc, sql, like, and, asc, count, gte, ne, inArray, or } from 'drizzle-orm';
 import { db } from './db';
 
 // Helper function to get authenticated user ID from session
@@ -2942,6 +2942,104 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     } catch (error) {
       console.error("Error copying template:", error);
       res.status(500).json({ message: "Failed to copy template", error: error instanceof Error ? error.message : 'Unknown error' });
+    }
+  });
+
+  // ── Playbook Pre-Armed Signals ───────────────────────────────────────────
+  // Returns the system-level executive triggers already watching this playbook
+  // based on domain alignment + any triggers that explicitly name this playbook.
+
+  app.get('/api/playbooks/:id/pre-armed-signals', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+
+      // Domain → trigger category mapping (9 domains × trigger categories)
+      const DOMAIN_CATEGORY_MAP: Record<string, string[]> = {
+        'AI Governance':           ['ai_governance', 'technology', 'cyber'],
+        'Brand & Reputation':      ['media', 'customer', 'behavior'],
+        'Financial Strategy':      ['financial', 'economic'],
+        'Market Dynamics':         ['competitive', 'market', 'behavior'],
+        'Market Opportunities':    ['market', 'competitive', 'innovation', 'economic', 'geopolitical', 'partnership'],
+        'Operational Excellence':  ['supplychain', 'execution', 'operational'],
+        'Regulatory & Compliance': ['regulatory', 'esg', 'cyber'],
+        'Talent & Leadership':     ['talent', 'execution'],
+        'Technology & Innovation': ['technology', 'cyber', 'innovation', 'ai_governance'],
+      };
+
+      // 1. Look up the playbook's domain
+      let domainName: string | null = null;
+      let playbookName: string | null = null;
+
+      const [libPlaybook] = await db
+        .select({ domainName: playbookDomains.name, playbookName: playbookLibrary.name })
+        .from(playbookLibrary)
+        .leftJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
+        .where(eq(playbookLibrary.id, id))
+        .limit(1);
+
+      if (libPlaybook) {
+        domainName = libPlaybook.domainName;
+        playbookName = libPlaybook.playbookName;
+      } else {
+        // Org playbook — check strategic_scenarios
+        const { strategicScenarios } = await import('@shared/schema');
+        const [orgPlaybook] = await db.select().from(strategicScenarios).where(eq(strategicScenarios.id, id)).limit(1);
+        if (orgPlaybook) playbookName = orgPlaybook.name;
+      }
+
+      // 2. Get categories to search
+      const categories = domainName ? (DOMAIN_CATEGORY_MAP[domainName] ?? []) : [];
+
+      // 3. Query triggers: domain-aligned + explicitly named
+      let triggers: any[] = [];
+      if (categories.length > 0) {
+        triggers = await db
+          .select()
+          .from(executiveTriggers)
+          .where(and(
+            eq(executiveTriggers.isActive, true),
+            inArray(executiveTriggers.category, categories)
+          ))
+          .orderBy(desc(executiveTriggers.lastTriggeredAt), executiveTriggers.name)
+          .limit(30);
+      }
+
+      // 4. Mark any that explicitly reference this playbook by name or UUID
+      const result = triggers.map(t => {
+        const refs: string[] = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
+        const directlyMapped = playbookName
+          ? refs.some(r => r === playbookName || r === id)
+          : refs.includes(id);
+        return {
+          id: t.id,
+          name: t.name,
+          category: t.category,
+          severity: t.severity,
+          triggerType: t.triggerType,
+          currentStatus: t.currentStatus,
+          lastTriggeredAt: t.lastTriggeredAt,
+          triggerCount: t.triggerCount,
+          directlyMapped,
+        };
+      });
+
+      // Surface directly-mapped ones first
+      result.sort((a, b) => {
+        if (a.directlyMapped && !b.directlyMapped) return -1;
+        if (!a.directlyMapped && b.directlyMapped) return 1;
+        return (b.triggerCount ?? 0) - (a.triggerCount ?? 0);
+      });
+
+      res.json({
+        domainName,
+        playbookName,
+        totalWatching: result.length,
+        directlyMapped: result.filter(t => t.directlyMapped).length,
+        triggers: result,
+      });
+    } catch (error) {
+      console.error('Error fetching pre-armed signals:', error);
+      res.status(500).json({ message: 'Failed to fetch pre-armed signals' });
     }
   });
 

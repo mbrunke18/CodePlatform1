@@ -42452,7 +42452,7 @@ function getNextDrillDate() {
 // server/routes.ts
 init_schema();
 init_db();
-import { eq as eq45, desc as desc21, sql as sql19, like, and as and28, asc as asc2, count as count7, gte as gte9, ne } from "drizzle-orm";
+import { eq as eq45, desc as desc21, sql as sql19, like, and as and28, asc as asc2, count as count7, gte as gte9, ne, inArray as inArray4 } from "drizzle-orm";
 function getUserId6(req) {
   if (req.isAuthenticated() && req.user?.claims?.sub) {
     return req.user.claims.sub;
@@ -44896,6 +44896,71 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     } catch (error) {
       console.error("Error copying template:", error);
       res.status(500).json({ message: "Failed to copy template", error: error instanceof Error ? error.message : "Unknown error" });
+    }
+  });
+  app2.get("/api/playbooks/:id/pre-armed-signals", async (req, res) => {
+    try {
+      const { id } = req.params;
+      const DOMAIN_CATEGORY_MAP = {
+        "AI Governance": ["ai_governance", "technology", "cyber"],
+        "Brand & Reputation": ["media", "customer", "behavior"],
+        "Financial Strategy": ["financial", "economic"],
+        "Market Dynamics": ["competitive", "market", "behavior"],
+        "Market Opportunities": ["market", "competitive", "innovation", "economic", "geopolitical", "partnership"],
+        "Operational Excellence": ["supplychain", "execution", "operational"],
+        "Regulatory & Compliance": ["regulatory", "esg", "cyber"],
+        "Talent & Leadership": ["talent", "execution"],
+        "Technology & Innovation": ["technology", "cyber", "innovation", "ai_governance"]
+      };
+      let domainName = null;
+      let playbookName = null;
+      const [libPlaybook] = await db.select({ domainName: playbookDomains.name, playbookName: playbookLibrary.name }).from(playbookLibrary).leftJoin(playbookDomains, eq45(playbookLibrary.domainId, playbookDomains.id)).where(eq45(playbookLibrary.id, id)).limit(1);
+      if (libPlaybook) {
+        domainName = libPlaybook.domainName;
+        playbookName = libPlaybook.playbookName;
+      } else {
+        const { strategicScenarios: strategicScenarios2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const [orgPlaybook] = await db.select().from(strategicScenarios2).where(eq45(strategicScenarios2.id, id)).limit(1);
+        if (orgPlaybook) playbookName = orgPlaybook.name;
+      }
+      const categories = domainName ? DOMAIN_CATEGORY_MAP[domainName] ?? [] : [];
+      let triggers = [];
+      if (categories.length > 0) {
+        triggers = await db.select().from(executiveTriggers).where(and28(
+          eq45(executiveTriggers.isActive, true),
+          inArray4(executiveTriggers.category, categories)
+        )).orderBy(desc21(executiveTriggers.lastTriggeredAt), executiveTriggers.name).limit(30);
+      }
+      const result = triggers.map((t) => {
+        const refs = Array.isArray(t.recommendedPlaybooks) ? t.recommendedPlaybooks : [];
+        const directlyMapped = playbookName ? refs.some((r) => r === playbookName || r === id) : refs.includes(id);
+        return {
+          id: t.id,
+          name: t.name,
+          category: t.category,
+          severity: t.severity,
+          triggerType: t.triggerType,
+          currentStatus: t.currentStatus,
+          lastTriggeredAt: t.lastTriggeredAt,
+          triggerCount: t.triggerCount,
+          directlyMapped
+        };
+      });
+      result.sort((a, b) => {
+        if (a.directlyMapped && !b.directlyMapped) return -1;
+        if (!a.directlyMapped && b.directlyMapped) return 1;
+        return (b.triggerCount ?? 0) - (a.triggerCount ?? 0);
+      });
+      res.json({
+        domainName,
+        playbookName,
+        totalWatching: result.length,
+        directlyMapped: result.filter((t) => t.directlyMapped).length,
+        triggers: result
+      });
+    } catch (error) {
+      console.error("Error fetching pre-armed signals:", error);
+      res.status(500).json({ message: "Failed to fetch pre-armed signals" });
     }
   });
   app2.get("/api/playbooks/:id/trigger-groups", async (req, res) => {

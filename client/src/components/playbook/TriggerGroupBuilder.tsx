@@ -462,51 +462,263 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
   );
 }
 
+// ─── Pre-Armed Signal card (read-only) ───────────────────────────────────────
+
+const CATEGORY_LABELS: Record<string, string> = {
+  competitive: "Competitive", market: "Market", financial: "Financial",
+  regulatory: "Regulatory", supplychain: "Supply Chain", customer: "Customer",
+  talent: "Talent", technology: "Technology", cyber: "Cybersecurity",
+  media: "Media", geopolitical: "Geopolitical", economic: "Economic",
+  partnership: "Partnership", execution: "Execution", behavior: "Customer Behavior",
+  innovation: "Innovation", esg: "ESG", operational: "Operational",
+  ai_governance: "AI Governance", brand_reputation: "Brand & Reputation",
+};
+
+const SEVERITY_COLORS: Record<string, string> = {
+  low: "#6B7280", medium: "#F59E0B", high: "#EF4444", critical: "#7C3AED",
+};
+
+interface PreArmedSignal {
+  id: string;
+  name: string;
+  category: string;
+  severity: string;
+  triggerType: string;
+  currentStatus: string;
+  lastTriggeredAt: string | null;
+  triggerCount: number;
+  directlyMapped: boolean;
+}
+
+interface PreArmedData {
+  domainName: string;
+  playbookName: string;
+  totalWatching: number;
+  directlyMapped: number;
+  triggers: PreArmedSignal[];
+}
+
+function PreArmedSignalCard({ signal }: { signal: PreArmedSignal }) {
+  const sevColor = SEVERITY_COLORS[signal.severity] ?? "#6B7280";
+  const hasActivity = signal.triggerCount > 0;
+  const lastFired = signal.lastTriggeredAt
+    ? new Date(signal.lastTriggeredAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+    : null;
+
+  return (
+    <div style={{
+      border: `1px solid ${signal.directlyMapped ? GOLD + "60" : "#E5E7EB"}`,
+      borderTop: `3px solid ${signal.directlyMapped ? GOLD : sevColor}`,
+      borderRadius: 6, padding: "14px 16px", background: signal.directlyMapped ? `${GOLD}04` : "white",
+    }}>
+      {signal.directlyMapped && (
+        <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 8 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            ⬡ Directly Mapped
+          </span>
+        </div>
+      )}
+      <p style={{ fontSize: 12, fontWeight: 700, color: NAVY, lineHeight: 1.4, marginBottom: 10 }}>
+        {signal.name}
+      </p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+          <span style={{
+            fontSize: 10, fontWeight: 600, color: "#6B7280",
+            background: "#F3F4F6", padding: "2px 6px", borderRadius: 3,
+          }}>
+            {CATEGORY_LABELS[signal.category] ?? signal.category}
+          </span>
+          <span style={{
+            fontSize: 10, fontWeight: 700, color: sevColor,
+            background: `${sevColor}12`, padding: "2px 6px", borderRadius: 3,
+          }}>
+            {signal.severity}
+          </span>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+          <div style={{
+            width: 7, height: 7, borderRadius: "50%",
+            background: hasActivity ? "#10B981" : "#D1D5DB",
+          }} />
+          <span style={{ fontSize: 10, color: "#9CA3AF" }}>
+            {hasActivity ? (lastFired ? `Last fired ${lastFired}` : `${signal.triggerCount}× fired`) : "Monitoring"}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main export ──────────────────────────────────────────────────────────────
+
 export default function TriggerGroupManager({ playbookId }: { playbookId: string }) {
   const [builderOpen, setBuilderOpen] = useState(false);
   const [editing, setEditing] = useState<TriggerGroup | null>(null);
+  const [showAllPreArmed, setShowAllPreArmed] = useState(false);
 
-  const { data: groups = [], isLoading } = useQuery<TriggerGroup[]>({
+  const { data: groups = [], isLoading: groupsLoading } = useQuery<TriggerGroup[]>({
     queryKey: [`/api/playbooks/${playbookId}/trigger-groups`],
+  });
+
+  const { data: preArmed, isLoading: preArmedLoading } = useQuery<PreArmedData>({
+    queryKey: [`/api/playbooks/${playbookId}/pre-armed-signals`],
   });
 
   const openEdit = (g: TriggerGroup) => { setEditing(g); setBuilderOpen(true); };
   const openNew = () => { setEditing(null); setBuilderOpen(true); };
 
+  const visiblePreArmed = showAllPreArmed
+    ? (preArmed?.triggers ?? [])
+    : (preArmed?.triggers ?? []).slice(0, 9);
+
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 28 }}>
+
+      {/* ── Hero Status Banner ────────────────────────────────────────────── */}
+      <div style={{
+        background: `linear-gradient(135deg, ${NAVY} 0%, #1a2f6e 100%)`,
+        borderRadius: 8, padding: "24px 32px", marginBottom: 36,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        flexWrap: "wrap", gap: 20,
+      }}>
         <div>
-          <h3 style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 6 }}>Detect — Trigger Groups</h3>
-          <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 600, lineHeight: 1.6 }}>
-            Define the signal groups that activate this playbook. Each trigger group combines multiple monitored data points — when enough valid signals fire, execution begins.
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981", boxShadow: "0 0 0 3px #10B98130" }} />
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#10B981", textTransform: "uppercase", letterSpacing: "0.12em" }}>
+              Live Monitoring Active
+            </span>
+          </div>
+          <p style={{ fontSize: 24, fontWeight: 700, color: "white", marginBottom: 4 }}>
+            {preArmedLoading ? "—" : preArmed?.totalWatching ?? 0} signals watching this playbook
+          </p>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)" }}>
+            {preArmed?.domainName ? `${preArmed.domainName} domain` : "All domains"} ·{" "}
+            {preArmed?.directlyMapped ?? 0} directly mapped ·{" "}
+            {groups.length} custom trigger group{groups.length !== 1 ? "s" : ""}
           </p>
         </div>
-        <Button onClick={openNew} style={{ background: GOLD, color: "white", border: "none", fontWeight: 700, whiteSpace: "nowrap", flexShrink: 0 }}>
-          <Plus size={15} style={{ marginRight: 6 }} />
-          New Trigger Group
-        </Button>
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          {[
+            { label: "System Signals", value: preArmed?.totalWatching ?? 0, color: TEAL },
+            { label: "Direct Maps", value: preArmed?.directlyMapped ?? 0, color: GOLD },
+            { label: "Custom Groups", value: groups.length, color: "#A78BFA" },
+          ].map(stat => (
+            <div key={stat.label} style={{ textAlign: "center", padding: "10px 20px", background: "rgba(255,255,255,0.07)", borderRadius: 8 }}>
+              <p style={{ fontSize: 22, fontWeight: 700, color: stat.color, marginBottom: 2 }}>{stat.value}</p>
+              <p style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {isLoading ? (
-        <div style={{ padding: 40, textAlign: "center", color: "#9CA3AF", fontSize: 14 }}>Loading trigger groups...</div>
-      ) : groups.length === 0 ? (
-        <div style={{ padding: "48px 32px", textAlign: "center", border: `2px dashed ${GOLD}40`, borderRadius: 8 }}>
-          <Zap size={32} color={`${GOLD}80`} style={{ marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 8 }}>No trigger groups yet</p>
-          <p style={{ fontSize: 13, color: "#9CA3AF", marginBottom: 20, maxWidth: 420, margin: "0 auto 20px" }}>
-            Define the conditions that activate this playbook. Group multiple data points, set individual thresholds, and mark mandatory signals.
-          </p>
-          <Button onClick={openNew} style={{ background: GOLD, color: "white", border: "none", fontWeight: 700 }}>
+      {/* ── Section 1: Pre-Armed Signals ─────────────────────────────────── */}
+      <div style={{ marginBottom: 40 }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+              <div style={{ width: 28, height: 2, background: TEAL }} />
+              <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                Pre-Armed — System Signals
+              </span>
+            </div>
+            <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 560 }}>
+              These signals were active the moment this playbook was created. Execution OS monitors them continuously — no setup required.
+            </p>
+          </div>
+          <span style={{
+            fontSize: 11, fontWeight: 600, color: "#6B7280",
+            background: "#F3F4F6", padding: "4px 10px", borderRadius: 20,
+          }}>
+            Read-only
+          </span>
+        </div>
+
+        {preArmedLoading ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+            {[...Array(6)].map((_, i) => (
+              <div key={i} style={{ height: 90, background: "#F9F8F5", borderRadius: 6, animation: "pulse 1.5s infinite" }} />
+            ))}
+          </div>
+        ) : visiblePreArmed.length === 0 ? (
+          <div style={{ padding: "24px", border: "1px dashed #E5E7EB", borderRadius: 6, textAlign: "center" }}>
+            <p style={{ fontSize: 13, color: "#9CA3AF" }}>No pre-armed signals found for this playbook domain.</p>
+          </div>
+        ) : (
+          <>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+              {visiblePreArmed.map(signal => (
+                <PreArmedSignalCard key={signal.id} signal={signal} />
+              ))}
+            </div>
+            {(preArmed?.triggers.length ?? 0) > 9 && (
+              <button
+                onClick={() => setShowAllPreArmed(v => !v)}
+                style={{
+                  display: "block", width: "100%", marginTop: 12, padding: "10px",
+                  border: `1px solid #E5E7EB`, borderRadius: 6, background: "#F9F8F5",
+                  fontSize: 12, fontWeight: 600, color: "#6B7280", cursor: "pointer",
+                  textAlign: "center",
+                }}
+              >
+                {showAllPreArmed
+                  ? "Show fewer signals"
+                  : `Show all ${preArmed?.triggers.length} signals →`}
+              </button>
+            )}
+          </>
+        )}
+      </div>
+
+      {/* ── Divider ───────────────────────────────────────────────────────── */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 36 }}>
+        <div style={{ flex: 1, height: 1, background: "#E8E4DC" }} />
+        <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.1em", whiteSpace: "nowrap" }}>
+          Your Precision Trigger Groups
+        </span>
+        <div style={{ flex: 1, height: 1, background: "#E8E4DC" }} />
+      </div>
+
+      {/* ── Section 2: Custom Trigger Groups ─────────────────────────────── */}
+      <div>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+              <div style={{ width: 28, height: 2, background: GOLD }} />
+              <span style={{ fontSize: 11, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                Custom — Your Trigger Groups
+              </span>
+            </div>
+            <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 560 }}>
+              Layer precise, composite conditions on top of system monitoring. Define exact thresholds, mandatory signals, and group logic tailored to your organization.
+            </p>
+          </div>
+          <Button onClick={openNew} style={{ background: GOLD, color: "white", border: "none", fontWeight: 700, whiteSpace: "nowrap", flexShrink: 0 }}>
             <Plus size={15} style={{ marginRight: 6 }} />
-            Create First Trigger Group
+            New Trigger Group
           </Button>
         </div>
-      ) : (
-        <div>
-          {groups.map(g => <TriggerGroupCard key={g.id} group={g} playbookId={playbookId} onEdit={openEdit} />)}
-        </div>
-      )}
+
+        {groupsLoading ? (
+          <div style={{ padding: 32, textAlign: "center", color: "#9CA3AF", fontSize: 14 }}>Loading...</div>
+        ) : groups.length === 0 ? (
+          <div style={{ padding: "36px 32px", textAlign: "center", border: `2px dashed ${GOLD}30`, borderRadius: 8, background: `${GOLD}03` }}>
+            <Zap size={28} color={`${GOLD}60`} style={{ display: "block", margin: "0 auto 10px" }} />
+            <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 6 }}>No custom trigger groups yet</p>
+            <p style={{ fontSize: 12, color: "#9CA3AF", marginBottom: 18, maxWidth: 380, margin: "0 auto 18px" }}>
+              The system signals above are already watching. Add a custom group to define precise composite conditions with mandatory flags and group thresholds.
+            </p>
+            <Button onClick={openNew} style={{ background: GOLD, color: "white", border: "none", fontWeight: 700 }}>
+              <Plus size={14} style={{ marginRight: 6 }} />
+              Create First Trigger Group
+            </Button>
+          </div>
+        ) : (
+          <div>
+            {groups.map(g => <TriggerGroupCard key={g.id} group={g} playbookId={playbookId} onEdit={openEdit} />)}
+          </div>
+        )}
+      </div>
 
       <BuilderDialog
         open={builderOpen}
