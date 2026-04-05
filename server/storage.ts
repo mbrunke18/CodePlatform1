@@ -181,7 +181,9 @@ export interface IStorage {
   getTriggerSignals(scenarioId: string): Promise<TriggerSignal[]>;
   createPlaybookTriggerAssociation(association: InsertPlaybookTriggerAssociation): Promise<PlaybookTriggerAssociation>;
   createPlaybookTriggerAssociations(associations: InsertPlaybookTriggerAssociation[]): Promise<PlaybookTriggerAssociation[]>;
-  
+  getPlaybookTriggerGroups(playbookId: string, orgId: string): Promise<(ExecutiveTrigger & { associationId: string })[]>;
+  deletePlaybookTriggerGroup(triggerId: string, playbookId: string): Promise<void>;
+
   // Task operations
   createTask(task: InsertTask): Promise<Task>;
   getTasksByScenario(scenarioId: string): Promise<Task[]>;
@@ -319,7 +321,9 @@ export interface IStorage {
   // Playbook-Trigger Association operations
   createPlaybookTriggerAssociation(association: InsertPlaybookTriggerAssociation): Promise<PlaybookTriggerAssociation>;
   getPlaybookTriggerAssociations(triggerId?: string, playbookId?: string): Promise<PlaybookTriggerAssociation[]>;
-  
+  getPlaybookTriggerGroups(playbookId: string, orgId: string): Promise<(ExecutiveTrigger & { associationId: string })[]>;
+  deletePlaybookTriggerGroup(triggerId: string, playbookId: string): Promise<void>;
+
   getCustomDataPointCategories(organizationId: string): Promise<string[]>;
   
   // Playbook Telemetry operations
@@ -1681,6 +1685,37 @@ export class DatabaseStorage implements IStorage {
       .select()
       .from(playbookTriggerAssociations)
       .orderBy(desc(playbookTriggerAssociations.createdAt));
+  }
+
+  async getPlaybookTriggerGroups(playbookId: string, orgId: string): Promise<(ExecutiveTrigger & { associationId: string })[]> {
+    const assocs = await db
+      .select()
+      .from(playbookTriggerAssociations)
+      .where(and(
+        eq(playbookTriggerAssociations.playbookId, playbookId),
+        eq(playbookTriggerAssociations.isActive, true)
+      ));
+    if (!assocs.length) return [];
+    const triggerIds = assocs.map(a => a.triggerId);
+    const triggers = await db
+      .select()
+      .from(executiveTriggers)
+      .where(and(
+        inArray(executiveTriggers.id, triggerIds),
+        eq(executiveTriggers.organizationId, orgId)
+      ));
+    return triggers.map(t => ({
+      ...t,
+      associationId: assocs.find(a => a.triggerId === t.id)?.id ?? '',
+    }));
+  }
+
+  async deletePlaybookTriggerGroup(triggerId: string, playbookId: string): Promise<void> {
+    await db.delete(playbookTriggerAssociations).where(and(
+      eq(playbookTriggerAssociations.triggerId, triggerId),
+      eq(playbookTriggerAssociations.playbookId, playbookId)
+    ));
+    await db.delete(executiveTriggers).where(eq(executiveTriggers.id, triggerId));
   }
 
   // Custom Data Points operations

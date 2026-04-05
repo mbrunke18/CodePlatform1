@@ -2945,6 +2945,90 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     }
   });
 
+  // ── Playbook Trigger Groups ──────────────────────────────────────────────
+
+  app.get('/api/playbooks/:id/trigger-groups', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const org = await storage.getOrganizationByUserId(req.user?.id);
+      if (!org) return res.status(404).json({ message: 'Organization not found' });
+      const groups = await storage.getPlaybookTriggerGroups(id, org.id);
+      res.json(groups);
+    } catch (error) {
+      console.error('Error fetching trigger groups:', error);
+      res.status(500).json({ message: 'Failed to fetch trigger groups' });
+    }
+  });
+
+  app.post('/api/playbooks/:id/trigger-groups', async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const org = await storage.getOrganizationByUserId(req.user?.id);
+      if (!org) return res.status(404).json({ message: 'Organization not found' });
+      const { name, description, dataPoints, minimumRequired, severity } = req.body;
+      if (!name || !dataPoints || !Array.isArray(dataPoints) || dataPoints.length === 0) {
+        return res.status(400).json({ message: 'name and at least one dataPoint are required' });
+      }
+      const trigger = await storage.createExecutiveTrigger({
+        organizationId: org.id,
+        name,
+        description: description ?? '',
+        triggerType: 'composite',
+        category: dataPoints[0]?.category ?? 'custom',
+        conditions: { type: 'trigger_group', dataPoints, minimumRequired: minimumRequired ?? 1 },
+        severity: severity ?? 'medium',
+        recommendedPlaybooks: [id],
+        createdBy: req.user?.id,
+      } as any);
+      await storage.createPlaybookTriggerAssociation({
+        triggerId: trigger.id,
+        playbookId: id,
+        isActive: true,
+        createdBy: req.user?.id,
+      } as any);
+      res.status(201).json(trigger);
+    } catch (error) {
+      console.error('Error creating trigger group:', error);
+      res.status(500).json({ message: 'Failed to create trigger group' });
+    }
+  });
+
+  app.patch('/api/playbooks/:id/trigger-groups/:groupId', async (req: any, res) => {
+    try {
+      const { groupId } = req.params;
+      const { name, description, dataPoints, minimumRequired, severity } = req.body;
+      const updates: any = {};
+      if (name !== undefined) updates.name = name;
+      if (description !== undefined) updates.description = description;
+      if (severity !== undefined) updates.severity = severity;
+      if (dataPoints !== undefined || minimumRequired !== undefined) {
+        const existing = await storage.getExecutiveTriggerById(groupId);
+        const existingConditions: any = existing?.conditions ?? {};
+        updates.conditions = {
+          ...existingConditions,
+          dataPoints: dataPoints ?? existingConditions.dataPoints,
+          minimumRequired: minimumRequired ?? existingConditions.minimumRequired,
+        };
+      }
+      const updated = await storage.updateExecutiveTrigger(groupId, updates);
+      res.json(updated);
+    } catch (error) {
+      console.error('Error updating trigger group:', error);
+      res.status(500).json({ message: 'Failed to update trigger group' });
+    }
+  });
+
+  app.delete('/api/playbooks/:id/trigger-groups/:groupId', async (req: any, res) => {
+    try {
+      const { id, groupId } = req.params;
+      await storage.deletePlaybookTriggerGroup(groupId, id);
+      res.json({ success: true });
+    } catch (error) {
+      console.error('Error deleting trigger group:', error);
+      res.status(500).json({ message: 'Failed to delete trigger group' });
+    }
+  });
+
   // PATCH update playbook
   app.patch('/api/playbooks/:id', async (req: any, res) => {
     try {

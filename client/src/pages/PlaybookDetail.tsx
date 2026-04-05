@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import TriggerGroupManager from '@/components/playbook/TriggerGroupBuilder';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { useParams, Link, useLocation } from 'wouter';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -568,6 +569,15 @@ export default function PlaybookDetail() {
                       <Pencil className="h-3.5 w-3.5 mr-2" />
                       Edit Tasks
                       {hasUnsaved && <span className="ml-2 w-2 h-2 rounded-full bg-amber-500 inline-block" />}
+                    </TabsTrigger>
+                  )}
+                  {isAuthenticated && (
+                    <TabsTrigger
+                      value="detect"
+                      className="data-[state=active]:border-b-2 data-[state=active]:border-[#C9A84C] data-[state=active]:text-[#0A0F2E] rounded-none bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-widest text-[#6B7280]"
+                    >
+                      <Zap className="h-3.5 w-3.5 mr-2" />
+                      Detect
                     </TabsTrigger>
                   )}
                 </TabsList>
@@ -1210,6 +1220,10 @@ export default function PlaybookDetail() {
                       </div>
                     )}
                   </div>
+                </TabsContent>
+
+                <TabsContent value="detect" className="mt-0">
+                  {playbookUuid && <TriggerGroupManager playbookId={playbookUuid} />}
                 </TabsContent>
 
               </Tabs>
