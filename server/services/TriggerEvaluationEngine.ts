@@ -30,6 +30,25 @@ interface TriggerCondition {
   logic?: string;
 }
 
+// ─── Composite trigger group (created via DETECT tab on playbooks) ─────────────
+
+interface TriggerGroupDataPoint {
+  id: string;
+  name: string;
+  category: string;
+  categoryName: string;
+  unit: string;
+  operator: string;
+  value: number;
+  mandatory: boolean;
+}
+
+interface TriggerGroupConditions {
+  type: 'trigger_group';
+  dataPoints: TriggerGroupDataPoint[];
+  minimumRequired: number;
+}
+
 interface ConfiguredTrigger {
   id: string;
   name: string;
@@ -319,6 +338,106 @@ function scoreSignalAgainstConfiguredTrigger(
   };
 }
 
+// ─── Evaluate a signal against a composite trigger group ─────────────────────
+//
+// A composite trigger group has multiple data points, each with its own threshold.
+// The group fires when:
+//   1. ALL mandatory data points find evidence in the signal.
+//   2. Total valid data points (mandatory + optional) >= minimumRequired.
+//
+// Each data point is matched using:
+//   - Keywords extracted from the data point's name (substantive words only)
+//   - Category-level keywords from FIELD_KEYWORDS (domain signals)
+//   - Operator-directional words from OPERATOR_SIGNAL_WORDS
+//
+function scoreSignalAgainstTriggerGroup(
+  signal: AnalyzedSignal,
+  groupConditions: TriggerGroupConditions
+): ScoringResult {
+  const text = (signal.description + ' ' + signal.signalType + ' ' + signal.category).toLowerCase();
+  const matchedTerms: string[] = [];
+  const dataPointLabels: string[] = [];
+
+  const { minimumRequired, dataPoints } = groupConditions;
+
+  let validMandatory = 0;
+  let validOptional = 0;
+  const mandatoryTotal = dataPoints.filter(p => p.mandatory).length;
+
+  for (const dp of dataPoints) {
+    // ── Build keyword evidence from the data point ─────────────────────────
+    // 1. Name-derived keywords: split name into substantive words (length > 3)
+    const nameKeywords = dp.name
+      .toLowerCase()
+      .split(/[\s,\/\-\(\)]+/)
+      .filter(w => w.length > 3 && !['that', 'with', 'from', 'this', 'have', 'been', 'will'].includes(w));
+
+    // 2. Category-level field keywords (reuse existing FIELD_KEYWORDS map)
+    const catKeywords = (FIELD_KEYWORDS[dp.category] || FIELD_KEYWORDS[dp.id] || []).map((k: string) => k.toLowerCase());
+
+    // 3. Operator directional words
+    const opWords = (OPERATOR_SIGNAL_WORDS[dp.operator] || []).map((k: string) => k.toLowerCase());
+
+    // ── Match against signal text ──────────────────────────────────────────
+    const nameMatches = nameKeywords.filter(kw => text.includes(kw));
+    const catMatches  = catKeywords.filter(kw => text.includes(kw));
+    const opMatches   = opWords.filter(kw => text.includes(kw));
+
+    // A data point is "valid" if:
+    //  - at least 1 name keyword matches, OR
+    //  - at least 2 category keywords match (domain-level evidence)
+    const isValid = nameMatches.length >= 1 || catMatches.length >= 2;
+
+    if (isValid) {
+      const evidence = [...nameMatches.slice(0, 2), ...catMatches.slice(0, 1), ...opMatches.slice(0, 1)];
+      matchedTerms.push(...evidence);
+      dataPointLabels.push(
+        `${dp.name}${dp.mandatory ? ' [MANDATORY]' : ''}: "${evidence.slice(0, 2).join('", "')}"`
+      );
+      if (dp.mandatory) validMandatory++;
+      else validOptional++;
+    }
+  }
+
+  // ── Gate checks ───────────────────────────────────────────────────────────
+  const allMandatoryMet   = validMandatory === mandatoryTotal;
+  const totalValid        = validMandatory + validOptional;
+  const groupThresholdMet = totalValid >= minimumRequired;
+  const allConditionsMet  = allMandatoryMet && groupThresholdMet;
+
+  // ── Confidence score ──────────────────────────────────────────────────────
+  let score = 0;
+  if (allConditionsMet) {
+    // Ratio of matched data points drives the base score (45–80)
+    const matchRatio = totalValid / Math.max(dataPoints.length, 1);
+    score = 45 + Math.round(matchRatio * 35);
+
+    // Signal quality boosts (same as standard path)
+    if (signal.impact === 'critical')    score += 12;
+    else if (signal.impact === 'high')   score += 7;
+    else if (signal.impact === 'medium') score += 3;
+
+    score += Math.max(0, (signal.confidence - 50) * 0.25);
+
+    if (
+      signal.source.includes('SEC')    ||
+      signal.source.includes('Reuters') ||
+      signal.source.includes('Bloomberg')
+    ) score += 8;
+
+    score = Math.min(Math.round(score), 95);
+  }
+
+  return {
+    score,
+    matchedTerms: [...new Set(matchedTerms)],
+    conditionsMet:    totalValid,
+    totalConditions:  minimumRequired,
+    dataPoints:       dataPointLabels,
+    allConditionsMet,
+  };
+}
+
 // ─── Build a DetectedTrigger from a configured trigger + score ────────────────
 
 function buildDetection(
@@ -401,32 +520,70 @@ export async function evaluateSignalsWithOrgTriggers(
     const signalDetections: DetectedTrigger[] = [];
 
     for (const trigger of configuredTriggers) {
-      const result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
+      // ── Route: composite trigger group vs. standard condition ────────────
+      const rawConditions = trigger.conditions as any;
+      const isCompositeGroup =
+        rawConditions &&
+        typeof rawConditions === 'object' &&
+        !Array.isArray(rawConditions) &&
+        rawConditions.type === 'trigger_group' &&
+        Array.isArray(rawConditions.dataPoints) &&
+        rawConditions.dataPoints.length > 0;
 
-      // Zero score = AND gate failed (not all conditions met) or no field matches → skip
-      if (result.score === 0) {
-        if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+      let result: ScoringResult;
+
+      if (isCompositeGroup) {
+        // ── Composite trigger group path (DETECT tab) ─────────────────────
+        result = scoreSignalAgainstTriggerGroup(signal, rawConditions as TriggerGroupConditions);
+
+        if (result.score === 0) {
+          if (result.conditionsMet > 0) {
+            console.log(
+              `[TriggerEvaluationEngine] ✗ "${trigger.name}" — group threshold not met: ` +
+              `${result.conditionsMet}/${result.totalConditions} data points valid`
+            );
+          }
+          continue;
+        }
+
+        // Composite groups use a fixed 60% confidence floor (customer-designed triggers
+        // get more benefit of the doubt than the global keyword patterns)
+        const requiredConfidence = 60;
+        if (result.score >= requiredConfidence) {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
           console.log(
-            `[TriggerEvaluationEngine] ✗ "${trigger.name}" — AND gate failed: ` +
-            `${result.conditionsMet}/${result.totalConditions} conditions met — will not fire`
+            `[TriggerEvaluationEngine] ✓ COMPOSITE "${trigger.name}" fired at ${result.score}% — ` +
+            `${result.conditionsMet}/${result.totalConditions} required data points valid — ` +
+            `data points: [${result.dataPoints.join(' | ')}]`
           );
         }
-        continue;
-      }
+      } else {
+        // ── Standard condition path (field/operator/value) ────────────────
+        result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
 
-      // The confidence floor is set by the customer's configured alertThreshold
-      const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
+        if (result.score === 0) {
+          if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+            console.log(
+              `[TriggerEvaluationEngine] ✗ "${trigger.name}" — AND gate failed: ` +
+              `${result.conditionsMet}/${result.totalConditions} conditions met — will not fire`
+            );
+          }
+          continue;
+        }
 
-      if (result.score >= requiredConfidence) {
-        const detection = buildDetection(trigger, signal, result);
-        signalDetections.push(detection);
+        const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
 
-        console.log(
-          `[TriggerEvaluationEngine] ✓ "${trigger.name}" fired at ${result.score}% ` +
-          `(threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") — ` +
-          `ALL ${result.totalConditions} condition(s) met — ` +
-          `data points: [${result.dataPoints.join(' | ')}]`
-        );
+        if (result.score >= requiredConfidence) {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
+          console.log(
+            `[TriggerEvaluationEngine] ✓ "${trigger.name}" fired at ${result.score}% ` +
+            `(threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") — ` +
+            `ALL ${result.totalConditions} condition(s) met — ` +
+            `data points: [${result.dataPoints.join(' | ')}]`
+          );
+        }
       }
     }
 

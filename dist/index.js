@@ -18707,6 +18707,56 @@ function scoreSignalAgainstConfiguredTrigger(signal, trigger) {
     allConditionsMet
   };
 }
+function scoreSignalAgainstTriggerGroup(signal, groupConditions) {
+  const text3 = (signal.description + " " + signal.signalType + " " + signal.category).toLowerCase();
+  const matchedTerms = [];
+  const dataPointLabels = [];
+  const { minimumRequired, dataPoints } = groupConditions;
+  let validMandatory = 0;
+  let validOptional = 0;
+  const mandatoryTotal = dataPoints.filter((p) => p.mandatory).length;
+  for (const dp of dataPoints) {
+    const nameKeywords = dp.name.toLowerCase().split(/[\s,\/\-\(\)]+/).filter((w) => w.length > 3 && !["that", "with", "from", "this", "have", "been", "will"].includes(w));
+    const catKeywords = (FIELD_KEYWORDS[dp.category] || FIELD_KEYWORDS[dp.id] || []).map((k) => k.toLowerCase());
+    const opWords = (OPERATOR_SIGNAL_WORDS[dp.operator] || []).map((k) => k.toLowerCase());
+    const nameMatches = nameKeywords.filter((kw) => text3.includes(kw));
+    const catMatches = catKeywords.filter((kw) => text3.includes(kw));
+    const opMatches = opWords.filter((kw) => text3.includes(kw));
+    const isValid = nameMatches.length >= 1 || catMatches.length >= 2;
+    if (isValid) {
+      const evidence2 = [...nameMatches.slice(0, 2), ...catMatches.slice(0, 1), ...opMatches.slice(0, 1)];
+      matchedTerms.push(...evidence2);
+      dataPointLabels.push(
+        `${dp.name}${dp.mandatory ? " [MANDATORY]" : ""}: "${evidence2.slice(0, 2).join('", "')}"`
+      );
+      if (dp.mandatory) validMandatory++;
+      else validOptional++;
+    }
+  }
+  const allMandatoryMet = validMandatory === mandatoryTotal;
+  const totalValid = validMandatory + validOptional;
+  const groupThresholdMet = totalValid >= minimumRequired;
+  const allConditionsMet = allMandatoryMet && groupThresholdMet;
+  let score = 0;
+  if (allConditionsMet) {
+    const matchRatio = totalValid / Math.max(dataPoints.length, 1);
+    score = 45 + Math.round(matchRatio * 35);
+    if (signal.impact === "critical") score += 12;
+    else if (signal.impact === "high") score += 7;
+    else if (signal.impact === "medium") score += 3;
+    score += Math.max(0, (signal.confidence - 50) * 0.25);
+    if (signal.source.includes("SEC") || signal.source.includes("Reuters") || signal.source.includes("Bloomberg")) score += 8;
+    score = Math.min(Math.round(score), 95);
+  }
+  return {
+    score,
+    matchedTerms: [...new Set(matchedTerms)],
+    conditionsMet: totalValid,
+    totalConditions: minimumRequired,
+    dataPoints: dataPointLabels,
+    allConditionsMet
+  };
+}
 function buildDetection(trigger, signal, result) {
   const [primaryPlaybook, ...alternates] = trigger.recommendedPlaybooks;
   return {
@@ -18756,22 +18806,45 @@ async function evaluateSignalsWithOrgTriggers(signals, organizationId) {
   for (const signal of signals) {
     const signalDetections = [];
     for (const trigger of configuredTriggers) {
-      const result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
-      if (result.score === 0) {
-        if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+      const rawConditions = trigger.conditions;
+      const isCompositeGroup = rawConditions && typeof rawConditions === "object" && !Array.isArray(rawConditions) && rawConditions.type === "trigger_group" && Array.isArray(rawConditions.dataPoints) && rawConditions.dataPoints.length > 0;
+      let result;
+      if (isCompositeGroup) {
+        result = scoreSignalAgainstTriggerGroup(signal, rawConditions);
+        if (result.score === 0) {
+          if (result.conditionsMet > 0) {
+            console.log(
+              `[TriggerEvaluationEngine] \u2717 "${trigger.name}" \u2014 group threshold not met: ${result.conditionsMet}/${result.totalConditions} data points valid`
+            );
+          }
+          continue;
+        }
+        const requiredConfidence = 60;
+        if (result.score >= requiredConfidence) {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
           console.log(
-            `[TriggerEvaluationEngine] \u2717 "${trigger.name}" \u2014 AND gate failed: ${result.conditionsMet}/${result.totalConditions} conditions met \u2014 will not fire`
+            `[TriggerEvaluationEngine] \u2713 COMPOSITE "${trigger.name}" fired at ${result.score}% \u2014 ${result.conditionsMet}/${result.totalConditions} required data points valid \u2014 data points: [${result.dataPoints.join(" | ")}]`
           );
         }
-        continue;
-      }
-      const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
-      if (result.score >= requiredConfidence) {
-        const detection = buildDetection(trigger, signal, result);
-        signalDetections.push(detection);
-        console.log(
-          `[TriggerEvaluationEngine] \u2713 "${trigger.name}" fired at ${result.score}% (threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") \u2014 ALL ${result.totalConditions} condition(s) met \u2014 data points: [${result.dataPoints.join(" | ")}]`
-        );
+      } else {
+        result = scoreSignalAgainstConfiguredTrigger(signal, trigger);
+        if (result.score === 0) {
+          if (result.conditionsMet > 0 && result.conditionsMet < result.totalConditions) {
+            console.log(
+              `[TriggerEvaluationEngine] \u2717 "${trigger.name}" \u2014 AND gate failed: ${result.conditionsMet}/${result.totalConditions} conditions met \u2014 will not fire`
+            );
+          }
+          continue;
+        }
+        const requiredConfidence = THRESHOLD_CONFIDENCE_FLOOR[trigger.alertThreshold] ?? 72;
+        if (result.score >= requiredConfidence) {
+          const detection = buildDetection(trigger, signal, result);
+          signalDetections.push(detection);
+          console.log(
+            `[TriggerEvaluationEngine] \u2713 "${trigger.name}" fired at ${result.score}% (threshold: ${requiredConfidence}% for "${trigger.alertThreshold}") \u2014 ALL ${result.totalConditions} condition(s) met \u2014 data points: [${result.dataPoints.join(" | ")}]`
+          );
+        }
       }
     }
     const top2 = signalDetections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
