@@ -62,7 +62,6 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Investors = lazy(() => import("./pages/Investors"));
 const InvestorLanding = lazy(() => import("./pages/InvestorLanding"));
 const ExecutiveBrief = lazy(() => import("./pages/ExecutiveBrief"));
-const ExecutiveDepartureBrief = lazy(() => import("./pages/ExecutiveDepartureBrief"));
 const ProspectBrief = lazy(() => import("./pages/ProspectBrief"));
 const ProspectDemo = lazy(() => import("./pages/ProspectDemo"));
 const WhyExecutionOS = lazy(() => import("./pages/WhyExecutionOS"));
@@ -510,7 +509,6 @@ function Router() {
         {renderRedirects(["/sandbox-demo", "/sandbox", "/pilot-demo"], "/try-demo")}
         <Route path="/12-minute-experience" component={TwelveMinuteTestDrive} />
         <Route path="/test-drive" component={TwelveMinuteTestDrive} />
-        <Route path="/executive-departure" component={ExecutiveDepartureBrief} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
         <Route path="/readiness-assessment" component={ReadinessAssessment} />
         {renderRoutes(["/video", "/cinematic", "/sizzle", "/2-minute", "/spots", "/30-second", "/brand-films"], VideoLanding)}
