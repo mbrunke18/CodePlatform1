@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, Link, useLocation } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import PageLayout from "@/components/layout/PageLayout";
-import ExecutionStageGuide from "@/components/ExecutionStageGuide";
+import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";

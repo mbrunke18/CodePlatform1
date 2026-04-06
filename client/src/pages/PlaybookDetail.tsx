@@ -53,7 +53,7 @@ import {
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layout/PageLayout';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { useAuth } from '@/hooks/useAuth';
 import { PhaseProgressBar } from '@/components/playbook/PhaseProgressBar';
 import { PreparePhaseView } from '@/components/playbook/PreparePhaseView';

@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
-import ExecutionStageGuide from "@/components/ExecutionStageGuide";
+import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";

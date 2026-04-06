@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRef } from 'react';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { Shield, Zap, Clock, Users, BookOpen, TrendingUp, CheckCircle, AlertTriangle, Printer, Link, Award } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 

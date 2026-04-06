@@ -17,7 +17,7 @@ import {
   Activity
 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 

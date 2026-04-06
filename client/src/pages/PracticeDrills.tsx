@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

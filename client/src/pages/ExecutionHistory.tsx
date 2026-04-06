@@ -8,7 +8,7 @@ import {
   CheckCircle2, XCircle, BarChart3, Zap, ArrowLeft,
 } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
-import ExecutionStageGuide from "@/components/ExecutionStageGuide";
+import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 
 const NAVY   = "#0A0F2E";
 const GOLD   = "#C9A84C";

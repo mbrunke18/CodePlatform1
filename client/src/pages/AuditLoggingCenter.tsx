@@ -91,7 +91,7 @@ interface ComplianceReport {
 }
 
 import PageLayout from '@/components/layout/PageLayout';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 
 export default function AuditLoggingCenter({ embedded }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState('dashboard');

@@ -119,7 +119,9 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
   if (variant === 'banner') {
     return (
       <div style={{
-        background: NAVY, borderBottom: `1px solid rgba(201,168,76,0.2)`,
+        background: '#0D1640',
+        borderTop: `1px solid rgba(201,168,76,0.35)`,
+        borderBottom: `1px solid rgba(201,168,76,0.35)`,
         padding: '14px 32px',
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>

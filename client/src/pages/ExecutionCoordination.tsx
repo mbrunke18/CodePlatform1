@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PageLayout from '@/components/layout/PageLayout';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { 
   Play, Clock, CheckCircle, Users, Target, Zap, 
   ArrowRight, Circle, AlertCircle, Pause, RotateCcw

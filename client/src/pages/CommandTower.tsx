@@ -4,7 +4,7 @@ import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { updatePageMetadata } from '@/lib/seo';
 import { LiveSignalFeed } from '@/components/LiveSignalFeed';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import {
   Radio,
   Shield,

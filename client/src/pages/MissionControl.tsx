@@ -9,7 +9,7 @@ import PulseMap from '@/components/mission/PulseMap';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 import { ExecutionClock } from '@/components/ExecutionClock';
 import { ExecutionDividend } from '@/components/ExecutionDividend';
-import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import {
   Radio, Shield, AlertTriangle, Zap, Clock, Activity, Target,
   TrendingUp, ArrowRight, CheckCircle2, Circle, RefreshCw,
