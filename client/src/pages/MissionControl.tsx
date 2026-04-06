@@ -426,6 +426,26 @@ export default function MissionControl() {
             </div>
           </div>
 
+          {/* ── EXECUTIVE SCENARIO SUITE CALLOUT ─────────────────────────── */}
+          <a href="/executive-scenarios" style={{ display: 'flex', alignItems: 'center', gap: 20, textDecoration: 'none', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)', borderLeft: '3px solid rgba(43,138,110,0.7)', borderRadius: 8, padding: '14px 20px', marginBottom: 18, transition: 'all 0.15s' }}
+            onMouseOver={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(43,138,110,0.10)'; }}
+            onMouseOut={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(43,138,110,0.06)'; }}
+          >
+            <span style={{ fontSize: 22, flexShrink: 0 }}>🎯</span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(43,138,110,0.9)' }}>Executive Scenario Suite</span>
+                <span style={{ fontSize: 9, fontWeight: 800, background: 'rgba(43,138,110,0.25)', color: 'rgba(43,138,110,0.9)', padding: '1px 7px', borderRadius: 3, letterSpacing: '0.1em' }}>AUTHENTICATED</span>
+              </div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.38)', lineHeight: 1.45 }}>
+                Walk through your industry scenario — full IDEA chain, real playbooks, 12-minute execution data. Technology · Financial Services · Manufacturing · Healthcare.
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(43,138,110,0.8)', fontSize: 11, fontWeight: 700, flexShrink: 0 }}>
+              Begin <ChevronRight size={13} />
+            </div>
+          </a>
+
           {/* ── SIGNAL COVERAGE ──────────────────────────────────────────── */}
           <div style={{ marginBottom: 18 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>

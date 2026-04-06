@@ -173,6 +173,7 @@ export default function StandardNav() {
     {
       heading: "Go Deeper",
       links: [
+        { label: "Executive Scenario Suite", path: "/executive-scenarios", icon: Target, description: "Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare", featured: true },
         { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive" },
         { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
