@@ -510,7 +510,7 @@ export default function SituationIntentWizard() {
               Which data points are your strongest early warnings?
             </h2>
             <p style={{ fontSize: 15, color: MUTED, marginBottom: 12, lineHeight: 1.6 }}>
-              From the 248 monitored data points, select up to 5 that are the most critical early indicators 
+              From the 248+ monitored data points, select up to 5 that are the most critical early indicators 
               for <strong style={{ color: NAVY }}>{form.triggerName}</strong> specifically at your organization. 
               These will be highlighted in the decision brief and weighted in signal detection.
             </p>

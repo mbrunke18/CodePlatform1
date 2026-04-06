@@ -49,7 +49,7 @@ const roles = [
     color: TEAL,
     sees: [
       { label: 'Command Center', detail: 'Live view of who owns what task, what is overdue, where bottlenecks are forming, and playbook progress across all active workstreams — without a single status meeting.' },
-      { label: 'Live Activation Center', detail: 'Step-by-step playbook execution in real time. Stakeholder acknowledgment tracking, task completion rate, and the live 3,600× speed multiplier as execution progresses.' },
+      { label: 'Live Activation Center', detail: 'Step-by-step playbook execution in real time. Stakeholder acknowledgment tracking, task completion rate, and the live 3,600× Execution Head Start as execution progresses.' },
       { label: 'Mission Control', detail: 'Strategic overview of all active and completed scenarios — coordination timeline, escalation history, and workstream health at a glance.' },
     ],
     owns: [

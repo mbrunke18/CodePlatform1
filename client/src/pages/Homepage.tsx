@@ -819,7 +819,7 @@ function ThreeLayerChainSection() {
             </div>
             <div style={{ ...DM, fontSize: 17, fontWeight: 700, color: "#fff" }}>Detection</div>
             <div style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65 }}>
-              AI monitors 248 data points across 16 signal categories every 15 minutes — surfacing strategic shifts before they're visible to the organization.
+              AI monitors 248+ data points across 16 signal categories every 15 minutes — surfacing strategic shifts before they're visible to the organization.
             </div>
             <div style={{ ...DM, fontSize: 11, color: TEAL, lineHeight: 1.55, fontStyle: "italic", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 12, marginTop: 2 }}>
               Competitive moves. Regulatory signals. Financial triggers. Operational anomalies.
