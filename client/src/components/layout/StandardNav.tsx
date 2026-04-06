@@ -133,7 +133,7 @@ export default function StandardNav() {
       links: [
         { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged playbooks across 9 strategic domains" },
         { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
-        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "16 signal categories — monitored every 15 minutes" },
+        { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
       ],
     },
@@ -327,7 +327,7 @@ export default function StandardNav() {
             {[
               { path: '/playbooks', icon: ClipboardList, label: 'Playbook Library', sub: '170 pre-staged playbooks across 9 strategic domains', featured: true },
               { path: '/triggers-management', icon: Zap, label: 'AI Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
-              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '16 signal categories — monitored every 15 minutes' },
+              { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
             ].map(l => megaItem(l))}
           </div>
@@ -1005,8 +1005,7 @@ export default function StandardNav() {
                   <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
                 </div>
                 <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>221 Triggers Armed</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>16 Signal Categories</span>
+                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>221 Triggers Active</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Radio style={{ width: 8, height: 8, color: 'rgba(201,168,76,0.45)' }} />

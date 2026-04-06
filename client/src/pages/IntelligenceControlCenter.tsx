@@ -67,7 +67,7 @@ export default function IntelligenceControlCenter() {
   useEffect(() => {
     updatePageMetadata({
       title: "Intelligence Control Center - VaughnMartin Execution OS",
-      description: "Monitor 248+ data points across 16 signal categories. AI-powered pattern detection, trigger management, and strategic intelligence.",
+      description: "Monitor 248+ data points across 9 strategic domains. AI-powered pattern detection, trigger management, and strategic intelligence.",
       ogTitle: "Intelligence Control Center",
       ogDescription: "Real-time strategic intelligence with AI-powered pattern detection and 12-minute response coordination.",
     });
@@ -95,8 +95,8 @@ export default function IntelligenceControlCenter() {
       id: 'signal-hub', title: 'Signal Intelligence',
       description: 'Configure triggers and monitor data points',
       path: '/signal-intelligence', icon: Radio, accentColor: TEAL, badge: '248+ DATA POINTS',
-      stat: '248+ Points', statSub: '16 signal categories',
-      features: ['16 Signal Categories', '248+ Data Points', 'Custom Triggers', 'Alert Management'],
+      stat: '248+ Points', statSub: '9 strategic domains',
+      features: ['9 Strategic Domains', '248+ Data Points', 'Custom Triggers', 'Alert Management'],
       anim: 'icc-tile-2',
     },
     {

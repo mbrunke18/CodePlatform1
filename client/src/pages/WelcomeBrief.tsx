@@ -248,6 +248,52 @@ export default function WelcomeBrief() {
           )}
         </div>
 
+        {/* ── 30-DAY ACTIVATION ARC ── */}
+        <div style={{
+          background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: `3px solid ${GOLD}`,
+          borderRadius: 8, padding: '28px 28px 24px', marginBottom: 24,
+          opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.15s',
+        }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: GOLD, marginBottom: 20 }}>Your First 30 Days — Activation Arc</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
+            {[
+              {
+                day: 'Day 1',
+                title: 'Platform Armed',
+                desc: '221 triggers active. 248+ signals scanning. Your organization is already being monitored.',
+                color: TEAL,
+              },
+              {
+                day: 'Week 1',
+                title: 'First Alert',
+                desc: 'Your first trigger fires. Review the detection, validate your configuration, acknowledge the brief.',
+                color: GOLD,
+              },
+              {
+                day: 'Week 2',
+                title: 'Shadow Simulation',
+                desc: 'Run a dry-run through your top 3 strategic scenarios. Board-ready confidence scores generated.',
+                color: '#8B5CF6',
+              },
+              {
+                day: 'Day 30',
+                title: 'Execution Benchmark',
+                desc: '30-day debrief: activation count, response time vs. industry baseline, institutional memory built.',
+                color: '#F59E0B',
+              },
+            ].map(({ day, title, desc, color }, i) => (
+              <div key={day} style={{ position: 'relative', paddingLeft: 16, borderLeft: `2px solid ${color}30` }}>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color, marginBottom: 4 }}>{day}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{title}</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.38)', lineHeight: 1.6 }}>{desc}</div>
+                {i < 3 && (
+                  <div style={{ position: 'absolute', right: -12, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.15)', fontSize: 16, display: 'none' }}>→</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ── WHAT HAPPENS NEXT ── */}
         <div style={{
           background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '28px 28px 24px', marginBottom: 48,

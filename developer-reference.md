@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: April 6, 2026 (rev 17) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 6, 2026 (rev 18) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1481,4 +1481,32 @@ The section shows the full execution console mockup: IDEA phase bar, task assign
 
 ### CredibilitySection — Current State
 Contains real research citations only: McKinsey 2025 coordination cost data, MIT Sloan execution gap research, WEF × Accenture March 2026 findings. No testimonials or "name withheld" placeholder quotes. If adding a testimonial in the future, it must be a real, verifiable customer quote with a real name and company.
+
+---
+
+## 35. Platform Corrections & Feature Additions — April 6, 2026
+
+### Metric Standardization (T001)
+**RETIRED: "16 signal categories"** — this phrase has been fully purged from all user-facing files. It was a legacy internal count that confused users. Replacement rule:
+- User-facing context → **"9 strategic domains"**
+- Navigation descriptions / signal config pages → **"221 triggers — monitored every 15 minutes"**
+- Never show "16" or "20" to users in any context
+
+Files corrected: `IntelligenceHub.tsx`, `IntelligenceControlCenter.tsx`, `ThreatsPage.tsx`, `FounderStory.tsx`, `GuidedStart.tsx`, `Growth.tsx`, `WorkspaceHub.tsx`, `SignalIntelligenceHub.tsx`, `StandardNav.tsx`
+
+**RETIRED: 72-hour velocity multiplier** — `demo-data.ts` `velocityMultiplier` was `367` (computed from 72 hours vs 11.8 minutes). Now correctly set to `3600` (30-day mobilization baseline / 12-minute response). The 72-hour framing is retired. The correct comparison is always 30 days vs. 12 minutes.
+
+### Compound Execution Flywheel (T002)
+Added visible flywheel "Compound Execution Advantage" callout to:
+- **Homepage.tsx** `IDEASection` — horizontal 4-cell strip (A→I→D→E) inserted between IDEA cards and the "Experience in real time" link. Shows the feedback loop: ADVANCE → IDENTIFY → DETECT → EXECUTE, with per-phase improvement metrics.
+- **IDEAFramework.tsx** — dedicated "Compounding Advantage" section (ivory background) inserted between the Coaching/NFL analogy section and the Governing Principle (navy) section. Same 4-column grid, prose explanation of the flywheel.
+
+### Shadow Simulator Board Governance Framing (T003)
+`SimulationStudio.tsx` hero subtitle expanded to include board governance context. Three use-case tags added beneath the subtitle:
+- Executive Use — Test scenarios before authorization
+- Board Governance — Thrive score as board confidence instrument  
+- Audit Trail — Every simulation logged — full decision record
+
+### 30-Day Pilot Onboarding Arc (T004)
+`WelcomeBrief.tsx` — new "Your First 30 Days — Activation Arc" section inserted between the detection panel and the "What Happens Next" infrastructure grid. Shows 4 milestones: Day 1 Platform Armed → Week 1 First Alert → Week 2 Shadow Simulation → Day 30 Execution Benchmark. Left gold border, metric-dense, matches existing dark-mode panel style.
 

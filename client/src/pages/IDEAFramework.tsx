@@ -434,6 +434,47 @@ export default function IDEAFramework() {
           </div>
         </section>
 
+        {/* Compound Execution Flywheel */}
+        <section style={{ background: "#F8F7F4" }} className="py-16 px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <div className="w-6 h-0.5" style={{ background: GOLD }} />
+                <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>
+                  The Compounding Advantage
+                </span>
+                <div className="w-6 h-0.5" style={{ background: GOLD }} />
+              </div>
+              <h2 className="font-serif text-3xl md:text-4xl font-semibold leading-snug" style={{ color: NAVY }}>
+                Every activation makes the next one faster.
+              </h2>
+              <p className="mt-4 text-base leading-relaxed max-w-2xl mx-auto" style={{ color: MUTED }}>
+                The IDEA loop is not linear — it's a flywheel. ADVANCE feeds IDENTIFY with institutional memory. IDENTIFY feeds DETECT with sharper pattern libraries. DETECT feeds EXECUTE with faster trigger matching. Each cycle compresses the next response.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border rounded-sm overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
+              {[
+                { phase: "ADVANCE", color: GOLD, arrow: true, body: "AI generates the post-activation debrief. Playbooks self-update. Every execution writes institutional memory forward.", metric: "↑ Institutional IQ" },
+                { phase: "IDENTIFY", color: TEAL, arrow: true, body: "Updated playbooks sharpen positioning. The next trigger finds a better-staged, more precisely scoped response.", metric: "↑ Pre-staged precision" },
+                { phase: "DETECT", color: GOLD, arrow: true, body: "Signal pattern library grows with each activation. False positives fall. Trigger confidence scores rise.", metric: "↑ Detection accuracy" },
+                { phase: "EXECUTE", color: TEAL, arrow: false, body: "Faster matching, cleaner role distribution, earlier clock start. The 12-minute window tightens with each cycle.", metric: "↓ Mobilization time" },
+              ].map(({ phase, color, arrow, body, metric }) => (
+                <div key={phase} className="p-6 border-r last:border-r-0 relative bg-white" style={{ borderColor: "#E8E4DC", borderTop: `3px solid ${color}` }}>
+                  {arrow && (
+                    <div className="absolute -right-3 top-1/2 -translate-y-1/2 z-10 text-lg font-bold" style={{ color: GOLD }}>→</div>
+                  )}
+                  <div className="text-xs font-black tracking-widest uppercase mb-3" style={{ color }}>{phase}</div>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: "#555" }}>{body}</p>
+                  <div className="text-xs font-bold" style={{ color }}>{metric}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-xs mt-6 italic" style={{ color: MUTED }}>
+              The loop closes back to ADVANCE — organizational execution intelligence compounds with every activation.
+            </p>
+          </div>
+        </section>
+
         {/* Governing Principle — Executive Authority */}
         <section style={{ background: NAVY }} className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">

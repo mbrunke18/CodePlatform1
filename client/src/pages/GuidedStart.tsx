@@ -140,7 +140,7 @@ const SCENARIOS: Scenario[] = [
 ];
 
 const BASE_DETECT_STEPS = [
-  { label: 'Scanning 248+ data points across 16 signal categories', duration: 1600 },
+  { label: 'Scanning 248+ data points across 9 strategic domains', duration: 1600 },
   { label: 'Signal threshold breach confirmed', duration: 1200 },
   { label: 'Cross-referencing 221 executive trigger conditions', duration: 1400 },
   { label: 'TRIGGER DETECTED', duration: 1100, highlight: true },

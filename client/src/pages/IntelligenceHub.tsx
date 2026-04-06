@@ -73,7 +73,7 @@ export default function IntelligenceHub() {
                 Intelligence <em style={{ color: GOLD, fontStyle: 'italic' }}>Hub</em>
               </h1>
               <p className="text-white/60 max-w-xl">
-                248+ data points. 16 signal categories. Real-time AI pattern detection. 15-minute monitoring cycles.
+                248+ data points. 9 strategic domains. Real-time AI pattern detection. 15-minute monitoring cycles.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-wrap">
@@ -193,7 +193,7 @@ export default function IntelligenceHub() {
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
                   <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Signal Intelligence Dashboard</h1><Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge></div>
-                  <p className="text-[#6B7280] mt-1">248+ data points monitored across 16 signal categories</p>
+                  <p className="text-[#6B7280] mt-1">248+ data points monitored across 9 strategic domains</p>
                 </div>
                 <div className="flex gap-3">
                   <Link href="/signal-intelligence"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Signal Hub</Button></Link>

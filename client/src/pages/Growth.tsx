@@ -62,7 +62,7 @@ const TIERS = [
       { label: "Decision rights mapping", value: true },
       { label: "Role assignment", value: true },
       { label: "Real-time dashboard", value: true },
-      { label: "Signal detection", value: "Full 16 signal categories" },
+      { label: "Signal detection", value: "Full 9 strategic domains" },
       { label: "AI recommendations", value: "Basic IDEA agents" },
       { label: "Custom playbooks", value: "Up to 5" },
       { label: "Integrations", value: "Slack + Email" },
@@ -136,7 +136,7 @@ const FAQS = [
   },
   {
     q: "What exactly changes between tiers?",
-    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 playbooks across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 playbooks across 5 domains with proactive detection across all 16 signal categories. Orchestrated is the full operating model — 170 playbooks, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
+    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 playbooks across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 playbooks across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 170 playbooks, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
   },
   {
     q: "How does the ROI math work at these price points?",
@@ -410,7 +410,7 @@ export default function Growth() {
               {
                 from: "Ready", to: "Responsive", arrow: "→", color: GOLD,
                 gain: "Early warning replaces reactive response",
-                detail: "You move from handling situations to detecting them 48–72 hours before they become crises. Full 16-signal-category monitoring activates. AI recommendations start shaping your response before you've called a meeting. The difference between ready and responsive is the difference between response and prevention.",
+                detail: "You move from handling situations to detecting them before they become crises. Full 9-strategic-domain monitoring activates. AI recommendations start shaping your response before you've called a meeting. The difference between ready and responsive is the difference between response and prevention.",
                 jump: "$75K → $150K/yr",
               },
               {

@@ -367,7 +367,7 @@ export const demoDecisionVelocity = {
     valueCreated: 18600000, // $18.6M
     vs_industryStandard: {
       timeReduction: 98.4, // percentage
-      velocityMultiplier: 367 // 72 hours / 11.8 minutes
+      velocityMultiplier: 3600 // 30-day mobilization baseline (43,200 min) / 11.8 min ≈ 3,600×
     }
   },
   lastQuarter: {

@@ -93,7 +93,21 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                   Shadow Strategy <em style={{ color: GOLD }}>Simulator</em>
                 </div>
                 <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
-                  Validate your response before committing resources — AI scores your Survive and Thrive probability across every relevant playbook.
+                  Validate your response before committing resources. AI scores your Survive and Thrive probability across every relevant playbook — giving the board a pre-approved confidence benchmark before a single dollar moves.
+                </div>
+                <div style={{ display: 'flex', gap: 20, marginTop: 14, flexWrap: 'wrap' }}>
+                  {[
+                    { label: 'Executive Use', desc: 'Test scenarios before authorization' },
+                    { label: 'Board Governance', desc: 'Thrive score as board confidence instrument' },
+                    { label: 'Audit Trail', desc: 'Every simulation logged — full decision record' },
+                  ].map(({ label, desc }) => (
+                    <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, flexShrink: 0 }} />
+                      <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)' }}>
+                        <span style={{ fontWeight: 700, color: 'rgba(240,237,228,0.75)' }}>{label}</span> — {desc}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>

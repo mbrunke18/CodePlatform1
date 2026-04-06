@@ -685,6 +685,45 @@ function IDEASection() {
           ))}
         </div>
 
+        {/* Flywheel — Compound Execution Advantage */}
+        <Reveal delay={0.2}>
+          <div style={{
+            maxWidth: 900, margin: "56px auto 0", padding: "32px 40px",
+            background: "linear-gradient(135deg, rgba(10,15,46,0.04) 0%, rgba(43,138,110,0.06) 100%)",
+            border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, borderRadius: 4,
+          }}>
+            <div style={{ textAlign: "center", marginBottom: 24 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: TEAL, marginBottom: 6 }}>The Compound Execution Advantage</div>
+              <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: "#0A0F2E" }}>Every activation makes the next one faster.</div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, position: "relative" }}>
+              {[
+                { letter: "A", step: "ADVANCE", desc: "AI writes the debrief. What worked, what to stage differently." },
+                { letter: "I", step: "IDENTIFY", desc: "Playbooks update automatically. Next trigger, better positioned." },
+                { letter: "D", step: "DETECT", desc: "Pattern library sharpens. Signals matched faster, fewer false reads." },
+                { letter: "E", step: "EXECUTE", desc: "Response time compresses. The 12-minute clock starts earlier." },
+              ].map((item, i) => (
+                <div key={item.letter} style={{
+                  padding: "20px 20px", borderRight: i < 3 ? `1px dashed ${BORDER}` : "none",
+                  position: "relative", textAlign: "center",
+                }}>
+                  {i < 3 && (
+                    <div style={{ position: "absolute", right: -10, top: "50%", transform: "translateY(-50%)", fontSize: 16, color: GOLD, fontWeight: 700, zIndex: 1 }}>→</div>
+                  )}
+                  <div style={{ ...GEO, fontSize: 20, fontWeight: 800, color: i % 2 === 0 ? GOLD : TEAL, marginBottom: 4 }}>{item.letter}</div>
+                  <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: "#0A0F2E", textTransform: "uppercase", marginBottom: 8 }}>{item.step}</div>
+                  <div style={{ ...DM, fontSize: 12, color: "#666", lineHeight: 1.6 }}>{item.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: "center", marginTop: 20, paddingTop: 16, borderTop: `1px solid ${BORDER}` }}>
+              <span style={{ ...DM, fontSize: 12, color: "#888", fontStyle: "italic" }}>
+                The loop closes back to ADVANCE — each execution cycle compounds organizational intelligence.
+              </span>
+            </div>
+          </div>
+        </Reveal>
+
         {/* Natural transition → demo */}
         <div style={{ textAlign: "center", paddingTop: 48, paddingBottom: 0 }}>
           <Link href="/12-minute-experience" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: TEAL, fontSize: 13, fontWeight: 700, borderBottom: `2px solid ${TEAL}`, paddingBottom: 3, textDecoration: "none" }}>
