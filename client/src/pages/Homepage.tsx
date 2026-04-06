@@ -2823,18 +2823,12 @@ export default function Homepage() {
       <HeroSection />
       <ProblemSection />
       <ExecutionGapSection />
-      <ExecutionStageGuide variant="section" />
       <MissingLayerSection />
-      <McKinseyValidationSection />
       <ContrastMomentSection />
-      <PlaybookAnalogySection />
       <IDEASection />
-      <ThreeLayerChainSection />
       <PlatformPreviewSection />
-      <PreFlightGovernanceSection />
       <MicrosoftEcosystemBanner />
       <CredibilitySection />
-      <PersonalizedROISection />
       <SimulatorCTASection />
       <CTASection />
       <HomepageFooter />

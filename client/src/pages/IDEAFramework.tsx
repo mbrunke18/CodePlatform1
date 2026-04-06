@@ -371,6 +371,69 @@ export default function IDEAFramework() {
           );
         })}
 
+        {/* NFL Coaching Analogy */}
+        <section style={{ background: OFF, borderTop: `3px solid ${GOLD}` }} className="py-16 px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="w-6 h-0.5" style={{ background: GOLD }} />
+              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: GOLD }}>The Operating Model — In Plain Language</span>
+              <div className="w-6 h-0.5" style={{ background: GOLD }} />
+            </div>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-2 leading-snug" style={{ color: NAVY }}>
+              Think of It Like NFL Coaching.
+            </h2>
+            <p className="text-center text-sm mb-10 max-w-2xl mx-auto leading-relaxed" style={{ color: MUTED }}>
+              Great coaches don't improvise under pressure — they call the play they already built. The IDEA Framework works the same way.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                {
+                  phase: "IDENTIFY",
+                  sport: "Game Planning",
+                  icon: "🏈",
+                  sportDesc: "Before the season, coaches catalog every situation they may face. Plays are built before any opponent is studied.",
+                  execDesc: "Executives define every strategic trigger across 9 domains. All 170 playbooks are pre-built before any trigger fires.",
+                  color: TEAL,
+                },
+                {
+                  phase: "DETECT",
+                  sport: "Reading the Field",
+                  icon: "📡",
+                  sportDesc: "The offense reads the defense formation in real time. Data points align. The situation is now — not hypothetical.",
+                  execDesc: "248+ live data points monitored continuously. When signals align, the trigger surfaces in seconds — AI reads the field.",
+                  color: GOLD,
+                },
+                {
+                  phase: "EXECUTE",
+                  sport: "The Play Call",
+                  icon: "⚡",
+                  sportDesc: "Under 40 seconds. The coach calls the play. Everyone knows their assignment. No committee. Preparation did the work.",
+                  execDesc: "Executive authorizes. 12 minutes later, the full organizational response is coordinated. Every role already pre-defined.",
+                  color: NAVY,
+                },
+                {
+                  phase: "ADVANCE",
+                  sport: "Film Study",
+                  icon: "📊",
+                  sportDesc: "After every game, coaches review what worked and update the playbook. The system learns and improves continuously.",
+                  execDesc: "Every execution feeds the intelligence loop. The system strengthens with each activation — permanently.",
+                  color: TEAL,
+                },
+              ].map(({ phase, sport, icon, sportDesc, execDesc, color }) => (
+                <div key={phase} className="border bg-white p-5" style={{ borderTop: `3px solid ${color}`, borderColor: BORDER }}>
+                  <div className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color }}>{phase}</div>
+                  <div className="text-lg mb-3">{icon} <span className="font-semibold text-sm" style={{ color: NAVY }}>{sport}</span></div>
+                  <div className="text-xs leading-relaxed mb-3 pb-3" style={{ color: MUTED, borderBottom: `1px solid ${BORDER}` }}>{sportDesc}</div>
+                  <div className="text-xs leading-relaxed font-medium" style={{ color: NAVY }}>{execDesc}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-center text-xs mt-8 italic" style={{ color: MUTED }}>
+              The preparation compresses the mobilization cycle. The decision remains human. No playbook activates without executive sign-off.
+            </p>
+          </div>
+        </section>
+
         {/* Governing Principle — Executive Authority */}
         <section style={{ background: NAVY }} className="py-16 px-6">
           <div className="max-w-4xl mx-auto text-center">
