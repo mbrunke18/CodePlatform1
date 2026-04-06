@@ -50,6 +50,7 @@ import {
 } from 'lucide-react';
 import { BrandStamp } from "@/components/BrandStamp";
 import { SiSlack, SiJira, SiSalesforce, SiNotion } from 'react-icons/si';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 
 const NAVY = "#0A0F2E";
 const NAVY_MID = "#141B45";
@@ -1167,6 +1168,9 @@ export default function TryDemo() {
                             </p>
                           </div>
                         </div>
+
+                        {/* Execution stage reference */}
+                        <ExecutionStageGuide variant="compact" />
 
                         {/* Timer */}
                         <div className="mb-4 p-4 bg-gradient-to-r from-[#2B8A6E]/20 to-[#3BAF8A]/20 border border-[#2B8A6E]/30 rounded-lg text-center">

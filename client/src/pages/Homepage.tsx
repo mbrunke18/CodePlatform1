@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
+import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { Link, useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
@@ -2822,6 +2823,7 @@ export default function Homepage() {
       <HeroSection />
       <ProblemSection />
       <ExecutionGapSection />
+      <ExecutionStageGuide variant="section" />
       <MissingLayerSection />
       <McKinseyValidationSection />
       <ContrastMomentSection />

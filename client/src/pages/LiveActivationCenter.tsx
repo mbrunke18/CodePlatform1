@@ -31,6 +31,7 @@ import { Link, useLocation } from 'wouter';
 import { io, Socket } from 'socket.io-client';
 import { BrandStamp } from "@/components/BrandStamp";
 import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import type { RoleOverlay, IndustryOverlay } from '@/data/activationPersonalization';
 import PageLayout from '@/components/layout/PageLayout';
 import { GovernanceReadinessCheck } from '@/components/execution/GovernanceReadinessCheck';
@@ -692,6 +693,7 @@ export default function LiveActivationCenter() {
 
   return (
     <PageLayout>
+      <ExecutionStageGuide variant="banner" />
       <div className="min-h-screen bg-[#0A0F2E] p-6 lg:p-10 font-sans selection:bg-[#C9A84C] selection:text-[#0A0F2E]">
         <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
           
@@ -857,12 +859,25 @@ export default function LiveActivationCenter() {
                         </div>
                       </div>
                     </div>
-                    {t.status === 'in_progress' && (
-                      <div className="flex items-center gap-2 text-[#C9A84C]">
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                        <span className="text-[10px] font-bold uppercase tracking-widest">Processing</span>
-                      </div>
-                    )}
+                    <div className="flex flex-col items-end gap-1">
+                      {t.status === 'in_progress' && (
+                        <div className="flex items-center gap-2 text-[#C9A84C]">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span className="text-[10px] font-bold uppercase tracking-widest">In Progress</span>
+                        </div>
+                      )}
+                      {t.status === 'completed' && (
+                        <span className="text-[10px] font-bold text-[#2B8A6E] uppercase tracking-widest">Complete</span>
+                      )}
+                      {t.status === 'pending' && (
+                        <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest">Staged</span>
+                      )}
+                      <span className="text-[9px] text-white/25 text-right" style={{ maxWidth: 140, lineHeight: 1.3 }}>
+                        {t.status === 'pending' && 'Assigned — awaiting action'}
+                        {t.status === 'in_progress' && 'Work actively underway'}
+                        {t.status === 'completed' && 'Deliverable confirmed'}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>

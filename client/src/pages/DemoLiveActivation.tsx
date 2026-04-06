@@ -1,4 +1,5 @@
 import DemoNavHeader from '@/components/demo/DemoNavHeader';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { useState, useEffect, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -432,6 +433,7 @@ function DemoLiveActivation() {
     <div className="page-background min-h-screen bg-[#F8F7F4] text-gray-900">
       <DemoNavHeader title="Execution OS Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
+      <ExecutionStageGuide variant="compact" />
       {/* Confetti Celebration */}
       {showConfetti && (
         <Confetti
