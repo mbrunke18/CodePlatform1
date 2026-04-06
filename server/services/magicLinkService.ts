@@ -291,7 +291,7 @@ export async function sendWelcomeTriggerDemo(email: string, firstName: string): 
             </tr>
             <tr>
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">Technology &amp; Digital</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">Technology &amp; Innovation</td>
             </tr>
             <tr>
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
@@ -328,7 +328,7 @@ export async function sendWelcomeTriggerDemo(email: string, firstName: string): 
             </div>
             <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
               <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
-              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">AI Competitive Disruption — Technology &amp; Digital domain · 94% confidence</div>
+              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">AI Competitive Disruption — Technology &amp; Innovation domain · 94% confidence</div>
             </div>
           </div>
           <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
