@@ -55,6 +55,7 @@ export default function Footer() {
       title: "Experience",
       links: [
         { label: "Try Demo", path: "/try-demo" },
+        { label: "Executive Departure Brief", path: "/executive-departure" },
         { label: "Shadow Simulator", path: "/simulation-studio" },
         { label: "Strategic Recorder", path: "/strategic-recorder" },
         { label: "Readiness Assessment", path: "/readiness-assessment" },

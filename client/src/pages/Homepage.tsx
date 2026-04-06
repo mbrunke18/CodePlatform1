@@ -1125,6 +1125,19 @@ function HomepageFooter() {
             ))}
           </div>
 
+          {/* Demos */}
+          <div style={{ flex: 1 }}>
+            <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>DEMOS</div>
+            {[
+              { label: "12-Minute Test Drive",      href: "/12-minute-experience" },
+              { label: "Executive Departure Brief", href: "/executive-departure" },
+              { label: "Shadow Simulator",          href: "/simulation-studio" },
+              { label: "ROI Calculator",            href: "/roi-calculator" },
+            ].map(l => (
+              <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
+            ))}
+          </div>
+
           {/* Company */}
           <div style={{ flex: 1 }}>
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>COMPANY</div>
