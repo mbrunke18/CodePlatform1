@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: April 6, 2026 (rev 15) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 6, 2026 (rev 16) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -880,7 +880,7 @@ await deployConfig({
 14. **Before deploying: run BOTH local builds and commit `dist/`.** The deployment build step is a no-op (`sh -c ":"`). The deployment platform serves exactly what is in git. Run: (1) `npx vite build` to update `dist/public/`, and (2) `npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:vite --external:@vitejs/plugin-react --external:../vite.config` to update `dist/index.js`. If you skip this, production will serve stale UI and/or stale server code.
 15. **"Human-AI partnership" is RETIRED copy.** Never write this phrase on any page, card, slide, or tooltip. The approved replacement patterns are: "AI monitors, executives authorize" | "Executive authority preserved" | "AI monitors. Executives decide. Execution pre-staged." | "No playbook activates without executive approval." The distinction matters: we are not selling AI augmentation — we are selling the elimination of the 30-day mobilization cycle. The human decision is the same; the preparation that surrounds it is pre-staged.
 16. **Homepage IDEA card copy is canonical — do not paraphrase.** The four IDEA narrative cards set the emotional tone of the product. Their content (especially the "while others are still in their first meeting" / "already executing" framing) must not be shortened, reworded, or replaced with feature-list bullets during any refactor.
-17. **`PlaybookAnalogySection` on Homepage is a locked narrative section.** Do not remove it. It sits between `ContrastMomentSection` and `IDEASection` in the render order. It maps the elite coach/NFL operating model (Game Planning → Reading the Field → Play Call → Film Study) directly to IDENTIFY → DETECT → EXECUTE → ADVANCE. The pull quote ("60–80 strategic decisions per 3-hour game. Under 40 seconds each.") is the founder's core product origin story — treat it as locked copy. Matching compact panel exists on the IDEA Framework page (`/how-it-works-idea`) after the phase strip.
+17. **NFL / Coaching Analogy lives on IDEAFramework.tsx ONLY — not on the Homepage.** The `PlaybookAnalogySection` (4-card analogy: Game Planning → Reading the Field → Play Call → Film Study, mapped to IDENTIFY → DETECT → EXECUTE → ADVANCE) was moved from the Homepage to `client/src/pages/IDEAFramework.tsx` during the April 2026 Homepage restructure. It sits before the Governing Principle section on the IDEA Framework page (`/how-it-works-idea`). The pull quote ("60–80 strategic decisions per 3-hour game. Under 40 seconds each.") is the founder's core product origin story — treat the copy as locked. Do NOT add it back to Homepage.
 18. **Deployment cache issue — always rebuild before publishing.** The Replit deployment serves the compiled `dist/` directory. If a code change is made but `npm run build` is not re-run before publishing, the old compiled bundle will be deployed. Always run `npm run build` and confirm success before clicking Publish. This is especially critical for copy-only changes which can otherwise appear to "not take effect" in production.
 
 ---
@@ -1420,4 +1420,52 @@ Inside `LiveActivationCenter.tsx`, task status badges display a two-line label u
 - `completed` status → "Complete / Deliverable confirmed"
 
 This ensures the badge language on live task cards maps exactly to the stage definitions visible in the guide above it.
+
+---
+
+## 34. Homepage Restructure — April 2026
+
+`client/src/pages/Homepage.tsx` was restructured from 17 sections (~2,853 lines) down to 11 sections to eliminate dead code, fix runtime errors, and sharpen the narrative focus.
+
+### Current Section Render Order (11 content sections + nav/footer — canonical)
+
+The 11 count refers to substantive content sections (HeroSection through SimulatorCTASection). Total render items including nav, banner, CTA wrapper, and footer = 15.
+
+| # | Section / Component | Notes |
+|---|---|---|
+| 1 | `HomepageNav` | Sticky top nav |
+| 2 | `GuestPreviewBanner` | Non-auth users only |
+| 3 | `HeroSection` | "12-Minute Execution" — primary CTA |
+| 4 | `ProblemSection` | "The Real Problem Isn't Strategy" |
+| 5 | `ExecutionGapSection` | The 30-day mobilization failure |
+| 6 | `ExecutionStageGuide variant="section"` | Six lifecycle stages |
+| 7 | `MissingLayerSection` | "The Missing Layer" — what competitors miss |
+| 8 | `ContrastMomentSection` | Before/After contrast moment |
+| 9 | `IDEASection` | Four IDEA phase narrative cards |
+| 10 | `PlatformPreviewSection` | Execution console mockup (no SignalTimelineBar) |
+| 11 | `MicrosoftEcosystemBanner` | "Every enterprise has Microsoft's AI stack…" |
+| 12 | `CredibilitySection` | Research citations — McKinsey, MIT, WEF (no testimonials) |
+| 13 | `SimulatorCTASection` | Shadow Strategy Simulator CTA |
+| 14 | `CTASection` | Final "Request Pilot" CTA |
+| 15 | `HomepageFooter` | Full footer |
+
+### What Was Removed (and Where It Went)
+
+| Removed from Homepage | New Location | Reason |
+|---|---|---|
+| `PlaybookAnalogySection` (NFL 4-card analogy) | `IDEAFramework.tsx` (before Governing Principle) | Narrative depth belongs with the IDEA deep-dive page, not the homepage pitch |
+| `McKinseyResearchSection` (65%/1%/$4.4T stat cards) | `InvestorResources.tsx` (before CTA) | Investor-grade research belongs in investor materials |
+| `ExecutionROISection` (revenue bracket ROI calculator) | `ROICalculator.tsx` | Interactive calculator belongs on its dedicated page |
+| `SignalTimelineBar` (animated signal flow bar) | Deleted entirely | Orphaned component — its definition was deleted but a reference in `PlatformPreviewSection` survived, causing a runtime crash. Reference removed April 6, 2026. |
+| Fake COO testimonial ("Fortune 200 Manufacturing Company · Name withheld") | Deleted | Placeholder testimonial removed from `CredibilitySection`; real research citations remain |
+
+### Component Constants — Prefix Convention
+- `InvestorResources.tsx` — McKinsey section constants use `IR_` prefix (e.g. `IR_HEADLINE`, `IR_STAT_CARDS`)
+- `ROICalculator.tsx` — ROI section constants use `RC_` prefix (e.g. `RC_BRACKETS`, `RC_FMT`); formatter helper is `rcFmt()`
+
+### PlatformPreviewSection — Current State (post-cleanup)
+The section shows the full execution console mockup: IDEA phase bar, task assignment cards, and stakeholder notification tracker. `SignalTimelineBar` was the animated horizontal signal timeline that previously sat above the console — it is gone and must not be re-added without first defining the component.
+
+### CredibilitySection — Current State
+Contains real research citations only: McKinsey 2025 coordination cost data, MIT Sloan execution gap research, WEF × Accenture March 2026 findings. No testimonials or "name withheld" placeholder quotes. If adding a testimonial in the future, it must be a real, verifiable customer quote with a real name and company.
 
