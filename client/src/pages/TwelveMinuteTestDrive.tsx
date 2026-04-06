@@ -134,22 +134,22 @@ export default function TwelveMinuteTestDrive() {
       const dispatchAt = parseTime(t.time);
       const confirmAt  = dispatchAt + 28; // 28s after dispatch = confirmed receipt
 
-      // Step 1: dispatch — fires once only
+      // Step 1: notified — alert sent to role, fires once only
       if (elapsed >= dispatchAt && !loggedDispatchRef.current.has(i)) {
         loggedDispatchRef.current.add(i);
         setTaskStatuses(prev => ({ ...prev, [i]: 'active' }));
         setLiveEvents(prev => [
-          { time: fmtSecs(elapsed), text: `📤 [${t.role}] Task dispatched — ${t.action.slice(0, 58)}…` },
+          { time: fmtSecs(elapsed), text: `📤 [${t.role}] Notified — task alert sent to role` },
           ...prev,
         ].slice(0, 20));
       }
 
-      // Step 2: confirmed receipt — fires once only
+      // Step 2: acknowledged — role confirmed receipt, fires once only (not task completion)
       if (elapsed >= confirmAt && !loggedConfirmRef.current.has(i)) {
         loggedConfirmRef.current.add(i);
         setTaskStatuses(prev => ({ ...prev, [i]: 'done' }));
         setLiveEvents(prev => [
-          { time: fmtSecs(elapsed), text: `✅ [${t.role}] Confirmed receipt` },
+          { time: fmtSecs(elapsed), text: `✅ [${t.role}] Acknowledged receipt — task in progress` },
           ...prev,
         ].slice(0, 20));
       }
@@ -368,21 +368,26 @@ export default function TwelveMinuteTestDrive() {
             </div>
 
             {/* Status legend */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 20, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Task Status:</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 10, height: 10, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>Queued</span>
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 8 }}>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Notification Status:</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
+                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>Queued — not yet sent</span>
+                </div>
+                <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.2)' }} />
+                  <span style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>Notified — alert sent to role</span>
+                </div>
+                <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7, color: '#fff', fontWeight: 700 }}>✓</div>
+                  <span style={{ fontSize: 11, color: TEAL_LT, fontWeight: 600 }}>Acknowledged — role confirmed receipt</span>
+                </div>
               </div>
-              <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 10, height: 10, borderRadius: '50%', border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.2)' }} />
-                <span style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>Dispatched — role alerted</span>
-              </div>
-              <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <div style={{ width: 10, height: 10, borderRadius: '50%', background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7, color: '#fff', fontWeight: 700 }}>✓</div>
-                <span style={{ fontSize: 11, color: TEAL_LT, fontWeight: 600 }}>Confirmed — receipt acknowledged</span>
+              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic', paddingLeft: 4 }}>
+                These badges track notification and acknowledgment only — not whether the task work itself has been completed. Work completion is tracked in the full platform.
               </div>
             </div>
 
@@ -427,13 +432,13 @@ export default function TwelveMinuteTestDrive() {
                               <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? '#fff' : GOLD, letterSpacing: '0.05em' }}>{t.role}</span>
                               {/* Status badge */}
                               {isDone && (
-                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 7px', background: 'rgba(255,255,255,0.2)', color: '#fff', borderRadius: 2 }}>CONFIRMED ✓</span>
+                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(255,255,255,0.22)', color: '#fff', borderRadius: 2 }}>ACKNOWLEDGED ✓</span>
                               )}
                               {isActive && (
-                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 7px', background: 'rgba(201,168,76,0.15)', color: GOLD, border: `1px solid ${GOLD}`, borderRadius: 2 }}>DISPATCHED</span>
+                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.15)', color: GOLD, border: `1px solid ${GOLD}`, borderRadius: 2 }}>NOTIFIED</span>
                               )}
                               {isPending && (
-                                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 7px', background: '#F3F4F6', color: '#9CA3AF', borderRadius: 2 }}>QUEUED</span>
+                                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF', borderRadius: 2 }}>QUEUED</span>
                               )}
                             </div>
                             <div style={{ fontSize: 13, color: isDone ? '#fff' : NAVY, fontWeight: isDone ? 600 : 500, lineHeight: 1.4 }}>{t.action}</div>
