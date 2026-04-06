@@ -849,27 +849,23 @@ export default function CommandTower() {
               { label: 'Command Center', href: '/command-center', color: 'rgba(255,255,255,0.6)' },
               { label: 'Signal Intelligence', href: '/signal-intelligence', color: 'rgba(255,255,255,0.6)' },
             ].map(({ label, href, color }) => (
-              <Link key={href} href={href}>
-                <a style={{
-                  display: 'flex', alignItems: 'center', gap: 5,
-                  background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: 6, padding: '6px 12px',
-                  color, fontSize: 11, fontWeight: 600,
-                  textDecoration: 'none', transition: 'all 0.14s',
-                }}>
-                  {label} <ArrowRight size={10} />
-                </a>
+              <Link key={href} href={href} style={{
+                display: 'flex', alignItems: 'center', gap: 5,
+                background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
+                borderRadius: 6, padding: '6px 12px',
+                color, fontSize: 11, fontWeight: 600,
+                textDecoration: 'none', transition: 'all 0.14s',
+              }}>
+                {label} <ArrowRight size={10} />
               </Link>
             ))}
-            <Link href="/request-access">
-              <a style={{
-                display: 'flex', alignItems: 'center', gap: 5,
-                background: GOLD, borderRadius: 6, padding: '6px 14px',
-                color: NAVY, fontSize: 11, fontWeight: 800,
-                textDecoration: 'none', letterSpacing: '0.04em',
-              }}>
-                Get Full Access <ArrowRight size={10} />
-              </a>
+            <Link href="/request-access" style={{
+              display: 'flex', alignItems: 'center', gap: 5,
+              background: GOLD, borderRadius: 6, padding: '6px 14px',
+              color: NAVY, fontSize: 11, fontWeight: 800,
+              textDecoration: 'none', letterSpacing: '0.04em',
+            }}>
+              Get Full Access <ArrowRight size={10} />
             </Link>
           </div>
         </div>
