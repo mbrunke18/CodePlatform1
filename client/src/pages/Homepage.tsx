@@ -984,21 +984,6 @@ function CredibilitySection() {
           {/* Divider */}
           <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.08)", margin: "0 auto 48px" }} />
 
-          {/* Client testimonial */}
-          <div style={{ maxWidth: 760, margin: "0 auto 56px", padding: "32px 40px", background: "rgba(201,168,76,0.04)", borderLeft: "3px solid rgba(201,168,76,0.4)" }}>
-            <div style={{ ...GEO, fontSize: 44, color: GOLD, opacity: 0.25, lineHeight: 0.8, marginBottom: 8, userSelect: "none" as const }}>"</div>
-            <p style={{ ...GEO, fontSize: "clamp(16px,1.8vw,20px)", fontStyle: "italic", color: "#fff", lineHeight: 1.7, marginBottom: 20 }}>
-              A major supplier filed for bankruptcy on a Wednesday morning. By Wednesday afternoon, we had alternative suppliers engaged, procurement re-routed, and operations continuity confirmed. Two years ago, that would have been a week of crisis meetings before we took a single coordinated action.
-            </p>
-            <footer>
-              <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: GOLD }}>Chief Operating Officer</div>
-              <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4 }}>Fortune 200 Manufacturing Company &nbsp;·&nbsp; Name withheld at their request</div>
-            </footer>
-          </div>
-
-          {/* Divider */}
-          <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.08)", margin: "0 auto 48px" }} />
-
           {/* Founder story */}
           <div style={{ textAlign: "center" }}>
             <p style={{ ...DM, fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.45)", marginBottom: 24, letterSpacing: "0.02em" }}>
