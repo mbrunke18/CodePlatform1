@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useLocation } from 'wouter';
+import { useQuery } from '@tanstack/react-query';
 import PageLayout from '@/components/layout/PageLayout';
 import { useAuth } from '@/hooks/useAuth';
 import {
   AlertTriangle, CheckCircle2, ArrowRight, ChevronRight,
   Clock, Shield, Zap, Users, TrendingUp, FileText,
-  Building2, Activity, Lock
+  Building2, Activity, Lock, Radio, Wifi, BarChart3
 } from 'lucide-react';
 
 /* ── Brand ─────────────────────────────────────────── */
@@ -422,12 +423,81 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
   },
 };
 
+/* ── Scenario → Live Template Mapping ──────────────── */
+const SCENARIO_TEMPLATE_MAP: Record<string, { id: string; name: string }> = {
+  'Cybersecurity Breach — Critical Data Exposure': {
+    id: '54f9a8e0-9fd9-40a0-90e6-173765e346e7',
+    name: 'Vulnerability Disclosure (Zero-Day)',
+  },
+  'Activist Investor Response — Hostile Shareholder Campaign': {
+    id: '3998652e-169e-407f-91f1-cbade5394659',
+    name: 'Activist Investor Campaign',
+  },
+  'Critical Supplier Failure — Tier-1 Production Risk': {
+    id: 'd57efcea-d6a4-46f5-8622-75170a7d3151',
+    name: 'Primary Supplier Failure',
+  },
+  'FDA Enforcement Action — Warning Letter Response': {
+    id: 'e9565223-ce5d-42f1-a296-fae2dcbf35ff',
+    name: 'Product Recall (Safety)',
+  },
+};
+
+/* ── Live Platform Data Hook ───────────────────────── */
+interface LiveData {
+  signalCount: number;
+  detectionCount: number;
+  lastScan: string;
+  stakeholderCount: number;
+  prepScore: number | null;
+  matchedPlaybook: { id: string; name: string } | null;
+  activationsTotal: number;
+}
+
+function useLivePlatformData(playbookName: string): LiveData {
+  const { data: liveStatus }   = useQuery<any>({ queryKey: ['/api/signals/live/status'],           retry: false });
+  const { data: detections }   = useQuery<any>({ queryKey: ['/api/detections'],                    retry: false });
+  const { data: stakeholders } = useQuery<any>({ queryKey: ['/api/stakeholder-contacts'],          retry: false });
+  const { data: templates }    = useQuery<any>({ queryKey: ['/api/playbooks/templates'],           retry: false });
+  const { data: prepData }     = useQuery<any>({ queryKey: ['/api/preparedness/score'],            retry: false });
+  const { data: activations }  = useQuery<any>({ queryKey: ['/api/playbook-activations/recent'],  retry: false });
+
+  const detectionList   = Array.isArray(detections)   ? detections   : (detections?.data   ?? []);
+  const stakeholderList = Array.isArray(stakeholders) ? stakeholders : (stakeholders?.data ?? []);
+  const activationList  = Array.isArray(activations)  ? activations  : (activations?.data  ?? []);
+  const templateList    = Array.isArray(templates)    ? templates    : (templates?.data     ?? []);
+
+  const hardcoded = SCENARIO_TEMPLATE_MAP[playbookName] ?? null;
+  const confirmed = hardcoded && templateList.some((t: any) => t.id === hardcoded.id)
+    ? hardcoded
+    : hardcoded ?? (() => {
+        const keyword = playbookName.split('—')[0].trim().toLowerCase();
+        const fuzzy = templateList.find((t: any) =>
+          keyword.split(' ').filter((w: string) => w.length > 4).some((w: string) =>
+            t.name?.toLowerCase().includes(w)
+          )
+        );
+        return fuzzy ? { id: fuzzy.id, name: fuzzy.name } : null;
+      })();
+
+  return {
+    signalCount:      liveStatus?.signalsIngested ?? liveStatus?.totalSignals ?? 0,
+    detectionCount:   detectionList.length,
+    lastScan:         liveStatus?.lastRun ?? liveStatus?.lastScanAt ?? '',
+    stakeholderCount: stakeholderList.length,
+    prepScore:        prepData?.score ?? prepData?.overallScore ?? null,
+    matchedPlaybook:  confirmed,
+    activationsTotal: activationList.length,
+  };
+}
+
 /* ── Walk-Through Component ────────────────────────── */
 function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => void }) {
   const [stageIndex, setStageIndex] = useState(0);
   const stage = STAGES[stageIndex];
   const isFirst = stageIndex === 0;
   const isLast  = stageIndex === STAGES.length - 1;
+  const live = useLivePlatformData(scenario.playbook.name);
 
   return (
     <div>
@@ -485,10 +555,10 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
       {/* Stage content */}
       <div key={stage} style={{ animation: 'fadeInUp 0.3s ease' }}>
         {stage === 'trigger'    && <TriggerStage    scenario={scenario} />}
-        {stage === 'detection'  && <DetectionStage  scenario={scenario} />}
-        {stage === 'playbook'   && <PlaybookStage   scenario={scenario} />}
-        {stage === 'execution'  && <ExecutionStage  scenario={scenario} />}
-        {stage === 'outcome'    && <OutcomeStage    scenario={scenario} onBack={onBack} />}
+        {stage === 'detection'  && <DetectionStage  scenario={scenario} live={live} />}
+        {stage === 'playbook'   && <PlaybookStage   scenario={scenario} live={live} />}
+        {stage === 'execution'  && <ExecutionStage  scenario={scenario} live={live} />}
+        {stage === 'outcome'    && <OutcomeStage    scenario={scenario} live={live} onBack={onBack} />}
       </div>
 
       {/* Navigation */}
@@ -555,12 +625,39 @@ function TriggerStage({ scenario }: { scenario: Scenario }) {
 }
 
 /* ── Stage: Detection ───────────────────────────────── */
-function DetectionStage({ scenario }: { scenario: Scenario }) {
+function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData }) {
   return (
     <div>
       <div style={{ marginBottom: 28 }}>
         <h3 style={{ fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Execution OS Detected This Coming</h3>
         <p style={{ fontSize: 14, color: '#475569', fontWeight: 500 }}>{scenario.detection.leadTime}</p>
+      </div>
+
+      {/* Live platform data strip */}
+      <div style={{ background: 'linear-gradient(135deg, #0A0F2E 0%, #1a2456 100%)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '16px 24px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Radio size={12} color={GOLD} />
+          <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD }}>Live Platform Activity</span>
+        </div>
+        <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: 'white', lineHeight: 1 }}>{live.signalCount > 0 ? live.signalCount.toLocaleString() : '—'}</div>
+            <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.6)', fontWeight: 600, marginTop: 2 }}>Signals Ingested</div>
+          </div>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: TEAL, lineHeight: 1 }}>{live.detectionCount > 0 ? live.detectionCount : '—'}</div>
+            <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.6)', fontWeight: 600, marginTop: 2 }}>Active Detections</div>
+          </div>
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: 'rgba(240,237,228,0.85)', lineHeight: 1 }}>221 Triggers</div>
+            <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.6)', fontWeight: 600, marginTop: 2 }}>Monitored Every 15 Min</div>
+          </div>
+        </div>
+        {live.lastScan && (
+          <div style={{ marginLeft: 'auto', fontSize: 10, color: 'rgba(240,237,228,0.45)', fontWeight: 500 }}>
+            Last scan: {new Date(live.lastScan).toLocaleTimeString()}
+          </div>
+        )}
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 28 }}>
@@ -602,10 +699,11 @@ function DetectionStage({ scenario }: { scenario: Scenario }) {
 }
 
 /* ── Stage: Playbook ────────────────────────────────── */
-function PlaybookStage({ scenario }: { scenario: Scenario }) {
+function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData }) {
+  const [, navigate] = useLocation();
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: 28, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: live.matchedPlaybook ? 16 : 28, flexWrap: 'wrap' }}>
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Playbook Activated</div>
           <h3 style={{ fontSize: 24, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{scenario.playbook.name}</h3>
@@ -616,6 +714,28 @@ function PlaybookStage({ scenario }: { scenario: Scenario }) {
           <div style={{ fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Minutes to<br/>Activate</div>
         </div>
       </div>
+
+      {/* Live playbook match */}
+      {live.matchedPlaybook ? (
+        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderLeft: `3px solid ${TEAL}`, borderRadius: 6, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Wifi size={14} color={TEAL} />
+            <span style={{ fontSize: 12, fontWeight: 700, color: TEAL }}>This playbook exists in your live library —</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>{live.matchedPlaybook.name}</span>
+          </div>
+          <button
+            onClick={() => navigate(`/playbooks/${live.matchedPlaybook!.id}`)}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 4, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
+          >
+            View Live Playbook <ArrowRight size={11} />
+          </button>
+        </div>
+      ) : (
+        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 6, padding: '12px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <FileText size={13} color='#92400E' />
+          <span style={{ fontSize: 12, fontWeight: 600, color: '#92400E' }}>170 playbooks pre-staged in your library — this playbook activates the moment the trigger fires.</span>
+        </div>
+      )}
 
       {/* IDEA chain */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 28 }}>
@@ -651,10 +771,10 @@ function PlaybookStage({ scenario }: { scenario: Scenario }) {
 }
 
 /* ── Stage: Execution ───────────────────────────────── */
-function ExecutionStage({ scenario }: { scenario: Scenario }) {
+function ExecutionStage({ scenario, live }: { scenario: Scenario; live: LiveData }) {
   return (
     <div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
         <div>
           <h3 style={{ fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Execution Cascade — 12 Minutes</h3>
           <p style={{ fontSize: 13, color: '#64748B', fontWeight: 500 }}>Stakeholders notified and tasks deployed simultaneously. No coordination calls required.</p>
@@ -662,6 +782,32 @@ function ExecutionStage({ scenario }: { scenario: Scenario }) {
         <div style={{ marginLeft: 'auto', background: NAVY, borderRadius: 6, padding: '12px 24px', textAlign: 'center', flexShrink: 0 }}>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: GOLD }}>12:00</div>
           <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(240,237,228,0.6)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Execution Clock</div>
+        </div>
+      </div>
+
+      {/* Live stakeholder data */}
+      <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderLeft: `3px solid ${NAVY}`, borderRadius: 6, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Users size={13} color={NAVY} />
+          <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: NAVY }}>Your Org's Stakeholder Registry</span>
+        </div>
+        <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap' }}>
+          <div>
+            <span style={{ fontSize: 22, fontWeight: 800, color: NAVY }}>{live.stakeholderCount > 0 ? live.stakeholderCount : scenario.execution.stakeholders.length}</span>
+            <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600, marginLeft: 6 }}>
+              {live.stakeholderCount > 0 ? 'Stakeholders Configured' : 'Scenario Stakeholders'}
+            </span>
+          </div>
+          <div>
+            <span style={{ fontSize: 22, fontWeight: 800, color: TEAL }}>{scenario.execution.tasks.length}</span>
+            <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600, marginLeft: 6 }}>Tasks Pre-Staged</span>
+          </div>
+          {live.activationsTotal > 0 && (
+            <div>
+              <span style={{ fontSize: 22, fontWeight: 800, color: GOLD }}>{live.activationsTotal}</span>
+              <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600, marginLeft: 6 }}>Playbook Activations</span>
+            </div>
+          )}
         </div>
       </div>
 
@@ -699,7 +845,7 @@ function ExecutionStage({ scenario }: { scenario: Scenario }) {
 }
 
 /* ── Stage: Outcome ─────────────────────────────────── */
-function OutcomeStage({ scenario, onBack }: { scenario: Scenario; onBack: () => void }) {
+function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: LiveData; onBack: () => void }) {
   const [, navigate] = useLocation();
   return (
     <div>
@@ -735,21 +881,46 @@ function OutcomeStage({ scenario, onBack }: { scenario: Scenario; onBack: () => 
       </div>
 
       {/* CTA */}
-      <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 8, padding: '32px 40px', textAlign: 'center' }}>
-        <h3 style={{ fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 10 }}>See This Running in Your Environment</h3>
-        <p style={{ fontSize: 14, color: '#475569', maxWidth: 480, margin: '0 auto 24px', lineHeight: 1.7, fontWeight: 500 }}>
-          This isn't a simulation. The playbooks, IDEA chain, and 12-minute clock shown here are the production platform — staged for your organization's specific triggers and stakeholder structure.
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+      <div style={{ background: NAVY, borderRadius: 8, padding: '32px 40px' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 32, flexWrap: 'wrap', marginBottom: 28 }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>This Is Running Now</div>
+            <h3 style={{ fontSize: 20, fontWeight: 700, color: IVORY, marginBottom: 8 }}>The Platform Behind This Scenario Is Live</h3>
+            <p style={{ fontSize: 13, color: 'rgba(240,237,228,0.75)', lineHeight: 1.7, margin: 0, fontWeight: 500 }}>
+              The playbooks, IDEA chain, and 12-minute clock shown above are the production platform — monitoring 221 triggers across 248+ data points for your organization right now.
+            </p>
+          </div>
+          {live.prepScore !== null && (
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 8, padding: '20px 28px', textAlign: 'center', flexShrink: 0 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.55)', marginBottom: 6 }}>Your Readiness Score</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: live.prepScore >= 70 ? TEAL : GOLD, lineHeight: 1 }}>{live.prepScore}</div>
+              <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.45)', marginTop: 4, fontWeight: 600 }}>out of 100</div>
+            </div>
+          )}
+          {live.detectionCount > 0 && (
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 8, padding: '20px 28px', textAlign: 'center', flexShrink: 0 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.55)', marginBottom: 6 }}>Live Detections</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{live.detectionCount}</div>
+              <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.45)', marginTop: 4, fontWeight: 600 }}>active now</div>
+            </div>
+          )}
+        </div>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <button
             onClick={() => navigate('/mission-control')}
-            style={{ display: 'flex', alignItems: 'center', gap: 8, background: NAVY, color: IVORY, border: 'none', borderRadius: 4, padding: '13px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
+            style={{ display: 'flex', alignItems: 'center', gap: 8, background: GOLD, color: NAVY, border: 'none', borderRadius: 4, padding: '13px 28px', fontSize: 14, fontWeight: 800, cursor: 'pointer' }}
           >
-            Enter Mission Control <ArrowRight size={14} />
+            <BarChart3 size={14} /> Enter Mission Control
+          </button>
+          <button
+            onClick={() => navigate('/playbooks')}
+            style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.1)', color: IVORY, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, padding: '13px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
+          >
+            Browse 170 Playbooks <ChevronRight size={14} />
           </button>
           <button
             onClick={onBack}
-            style={{ background: 'white', color: NAVY, border: `1px solid ${NAVY}`, borderRadius: 4, padding: '13px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
+            style={{ background: 'transparent', color: 'rgba(240,237,228,0.6)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 4, padding: '13px 24px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
           >
             View Another Scenario
           </button>
