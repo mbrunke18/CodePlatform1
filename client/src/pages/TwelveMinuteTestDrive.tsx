@@ -367,6 +367,25 @@ export default function TwelveMinuteTestDrive() {
               <div style={{ height: '100%', background: GOLD, width: `${Math.min(100, pct)}%`, transition: 'width 1s linear' }} />
             </div>
 
+            {/* Status legend */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 20, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Task Status:</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div style={{ width: 10, height: 10, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>Queued</span>
+              </div>
+              <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div style={{ width: 10, height: 10, borderRadius: '50%', border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.2)' }} />
+                <span style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>Dispatched — role alerted</span>
+              </div>
+              <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div style={{ width: 10, height: 10, borderRadius: '50%', background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7, color: '#fff', fontWeight: 700 }}>✓</div>
+                <span style={{ fontSize: 11, color: TEAL_LT, fontWeight: 600 }}>Confirmed — receipt acknowledged</span>
+              </div>
+            </div>
+
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
               {/* Tasks */}
               <div>
