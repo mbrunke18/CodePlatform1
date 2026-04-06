@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: April 3, 2026 (rev 14) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 6, 2026 (rev 15) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1337,4 +1337,87 @@ The four IDEA cards tell the product's emotional story. Their current copy is ca
 - **DETECT:** "While others are still in their first email thread, the system has already matched the trigger to the playbook — before your leadership team finishes their first email."
 - **EXECUTE:** "By the time the first alignment call would have been scheduled, you're already executing."
 - **ADVANCE:** "Each execution makes the next response faster, sharper, and more decisive."
+
+---
+
+## 33. ExecutionStageGuide — Platform-Wide Lifecycle Reference (April 2026)
+
+### What It Is
+`client/src/components/ExecutionStageGuide.tsx` is a shared component that defines and displays the six execution lifecycle stages. It is a **core product feature** — not a demo artifact or help widget. Every authenticated user and every prospect who touches the platform sees the same lifecycle model in context wherever they're working.
+
+### The Six Stages (canonical — do not change labels or definitions)
+| # | Stage | Definition |
+|---|---|---|
+| 1 | **Triggered** | Signal threshold crossed — playbook auto-deployed |
+| 2 | **Staged** | Tasks created, roles assigned — work units exist |
+| 3 | **Notified** | Stakeholders alerted via Teams, email, and SMS |
+| 4 | **Acknowledged** | Role-holder confirmed receipt — **12-minute clock ends here** |
+| 5 | **In Progress** | Actual work actively underway |
+| 6 | **Complete** | Deliverable confirmed and verified |
+
+Stages 1–4 (Triggered through Acknowledged) are the mobilization cycle — this is what collapses from 30 days to 12 minutes. Stages 5–6 are execution proper.
+
+### Three Variants
+
+| Variant | Where Used | Visual Style |
+|---|---|---|
+| `section` | Homepage (standalone full section) | Ivory background, gold-bordered stages 1–4, teal divider line at 12-min mark, gray stages 5–6 |
+| `banner` | Dark-background pages (Mission Control, Command Tower) | Dark navy horizontal strip, small compact stage pills |
+| `compact` | Light-background authenticated pages | Ivory grid card with all 6 stages in a responsive grid |
+
+### Usage
+```tsx
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
+
+// Full section on homepage (ivory bg, standalone)
+<ExecutionStageGuide variant="section" />
+
+// Dark strip on dark-background pages
+<ExecutionStageGuide variant="banner" />
+
+// Compact grid on light-background authenticated pages
+<ExecutionStageGuide variant="compact" />
+```
+
+### Complete Deployment Map (April 2026)
+
+**Public / Marketing:**
+- `Homepage.tsx` — `section` variant, between ExecutionGapSection and MissingLayerSection
+
+**Demo Pages (17 total):**
+- `TryDemo.tsx` — `compact` inside execute phase
+- `DemoLiveActivation.tsx` — `compact` at top
+- `LiveActivationCenter.tsx` — `banner` at top + stage label on every task card badge
+- `LuxuryCrisisDemo`, `FinancialRansomwareDemo`, `ManufacturingSupplierDemo`, `PharmaceuticalRecallDemo`, `RetailFoodSafetyDemo`, `LVMHMarketEntryDemo`, `SHEINTrendDemo`, `SpaceXLaunchDemo` — `banner` variant (DemoNavHeader pages)
+- `EnergyGridFailureDemo`, `CustomerDemo`, `InvestorDemo`, `DealRiskDemo`, `PilotDemo`, `SandboxDemo` — `compact` variant (PageLayout pages)
+
+**Authenticated Product Pages (13 total):**
+- `MissionControl.tsx` — `banner` (above main content, inside dark navy wrapper)
+- `CommandTower.tsx` — `banner` (above main content, fullscreen dark)
+- `TaskManagement.tsx` — `compact` (between dark header and task list)
+- `PlaybookActivationConsole.tsx` — `compact` (above execution container)
+- `ExecutionCoordination.tsx` — `compact` (above container)
+- `ExecutionHistory.tsx` — `compact` (between dark header and KPI cards)
+- `PlaybookDetail.tsx` — `compact` (above playbook content)
+- `LiveDrillExecution.tsx` — `compact` (above drill interface)
+- `ActivationOutcome.tsx` — `compact` (between dark header and debrief content)
+- `PracticeDrills.tsx` — `compact` (as first element in drills page)
+- `AuditLoggingCenter.tsx` — `compact` (above audit log header)
+- `WorkspaceExecute.tsx` — `compact` (above breadcrumb nav)
+- `BoardReadiness.tsx` — `compact` wrapped in `no-print` div (excluded from PDF export)
+
+### Variant Selection Rules
+- **Dark navy full-screen pages** (no PageLayout, `background: NAVY`) → `banner`
+- **Dark navy inside PageLayout** (PageLayout + inner dark wrapper) → `banner`
+- **Light background pages** (PageLayout or standalone with `#F8F7F4`/`#F8F9FC`) → `compact`
+- **Homepage standalone section** → `section`
+- **Print-export pages** → wrap `compact` in `className="no-print"` so it is excluded from PDF
+
+### Task Status Labels (LiveActivationCenter)
+Inside `LiveActivationCenter.tsx`, task status badges display a two-line label using the stage vocabulary:
+- `staged` status → "Staged / Assigned—awaiting action"
+- `in_progress` status → "In Progress / Work actively underway"
+- `completed` status → "Complete / Deliverable confirmed"
+
+This ensures the badge language on live task cards maps exactly to the stage definitions visible in the guide above it.
 

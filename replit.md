@@ -69,6 +69,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Coaching / NFL Analogy Sections:** Two sections on the Homepage and IDEA Framework page using an NFL coaching analogy to explain the operating model.
 - **SimulationStudio CTA:** Contextual gold CTA appears after scenario analysis, directing to `/request-access`.
 - **GuestPreviewBanner:** Shows on every page for non-authenticated users with appropriate CTAs.
+- **ExecutionStageGuide:** Shared component (`client/src/components/ExecutionStageGuide.tsx`) defining all 6 execution lifecycle stages: Triggered → Staged → Notified → Acknowledged (12-min clock ends here) → In Progress → Complete. Three variants: `section` (full homepage section, ivory bg), `banner` (dark navy strip for dark-background pages), `compact` (light ivory grid for light-background pages). Deployed across the entire platform — homepage, all 17 demo pages, and all 13 authenticated product pages where execution stages appear. This is a core product feature, not a demo artifact.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o
