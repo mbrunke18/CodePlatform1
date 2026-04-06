@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +19,9 @@ import {
   TrendingUp,
   Crown,
   Rocket,
-  Play
+  Play,
+  ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import { BrandStamp } from "@/components/BrandStamp";
 
@@ -185,7 +188,54 @@ const categoryBadge = (cat: string) => {
   return 'bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20';
 };
 
+// ─── Demo recommendation engine ──────────────────────────────────────────────
+
+type ConcernType = "offense" | "defense" | null;
+type RoleType = "ceo" | "cfo" | "cto" | "coo" | "gc" | null;
+type IndustryType = "luxury" | "fast-fashion" | "aerospace" | "financial" | "pharma" | "manufacturing" | "retail" | "energy" | "other" | null;
+
+const CONCERN_TO_DEMOS: Record<string, string[]> = {
+  offense: ["lvmh-market-entry", "shein-trend", "spacex-launch"],
+  defense: ["financial-ransomware", "pharma-recall", "manufacturing-supplier", "retail-contamination", "energy-grid"],
+};
+
+const INDUSTRY_PRIMARY: Record<string, string> = {
+  "luxury":        "lvmh-market-entry",
+  "fast-fashion":  "shein-trend",
+  "aerospace":     "spacex-launch",
+  "financial":     "financial-ransomware",
+  "pharma":        "pharma-recall",
+  "manufacturing": "manufacturing-supplier",
+  "retail":        "retail-contamination",
+  "energy":        "energy-grid",
+  "other":         "lvmh-market-entry",
+};
+
+const ROLE_FRAMING: Record<string, string> = {
+  ceo:  "Showing this through the lens of executive decision authority and response time.",
+  cfo:  "Showing this through the lens of financial exposure and value protection.",
+  cto:  "Showing this through the lens of technology response and system resilience.",
+  coo:  "Showing this through the lens of operational continuity and execution speed.",
+  gc:   "Showing this through the lens of regulatory exposure and legal risk management.",
+};
+
+function getRecommendedDemo(concern: ConcernType, industry: IndustryType): IndustryDemo | null {
+  if (!concern || !industry) return null;
+  const id = INDUSTRY_PRIMARY[industry] ?? (concern === "offense" ? "lvmh-market-entry" : "financial-ransomware");
+  const pool = CONCERN_TO_DEMOS[concern] ?? [];
+  const bestId = pool.includes(id) ? id : pool[0];
+  return industryDemos.find(d => d.id === bestId) ?? null;
+}
+
 export default function IndustryDemosHub() {
+  const [concern, setConcern] = useState<ConcernType>(null);
+  const [industry, setIndustry] = useState<IndustryType>(null);
+  const [role, setRole] = useState<RoleType>(null);
+  const [selectorCollapsed, setSelectorCollapsed] = useState(false);
+
+  const recommended = getRecommendedDemo(concern, industry);
+  const roleFraming = role ? ROLE_FRAMING[role] : null;
+
   const offensiveDemos = industryDemos.filter(d => d.type === "OFFENSE");
   const defensiveDemos = industryDemos.filter(d => d.type === "DEFENSE");
 
@@ -347,6 +397,189 @@ export default function IndustryDemosHub() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* ─── Guided Demo Selector ──────────────────────────────────────── */}
+        <div style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "28px 24px" }}>
+
+            {/* Header row */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: selectorCollapsed ? 0 : 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <Sparkles style={{ width: 15, height: 15, color: "#C9A84C" }} />
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#0A0F2E", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>
+                  Find Your Scenario
+                </span>
+                {recommended && (
+                  <span style={{ fontSize: 10, fontWeight: 700, color: "#2B8A6E", background: "rgba(43,138,110,0.1)", padding: "2px 8px", borderRadius: 10 }}>
+                    Recommendation ready
+                  </span>
+                )}
+              </div>
+              <button
+                onClick={() => setSelectorCollapsed(v => !v)}
+                style={{ fontSize: 11, color: "#9CA3AF", background: "none", border: "none", cursor: "pointer", fontWeight: 600 }}
+              >
+                {selectorCollapsed ? "Show selector ↓" : "Hide ↑"}
+              </button>
+            </div>
+
+            {!selectorCollapsed && (
+              <div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: recommended ? 20 : 0 }}>
+
+                  {/* Q1 — What's your priority? */}
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 10 }}>
+                      1 — Your immediate priority
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
+                      {[
+                        { key: "offense", label: "Capture a strategic opportunity", sub: "Market entry, trends, launches", icon: "⚡" },
+                        { key: "defense", label: "Contain or prevent a crisis",     sub: "Ransomware, recalls, failures", icon: "🛡" },
+                      ].map(opt => (
+                        <button
+                          key={opt.key}
+                          onClick={() => { setConcern(opt.key as ConcernType); setIndustry(null); }}
+                          style={{
+                            display: "flex", alignItems: "flex-start", gap: 10, textAlign: "left" as const,
+                            padding: "12px 14px", borderRadius: 6, cursor: "pointer",
+                            border: concern === opt.key ? "2px solid #0A0F2E" : "2px solid #E5E7EB",
+                            background: concern === opt.key ? "#0A0F2E" : "white",
+                            transition: "all 0.15s",
+                          }}
+                        >
+                          <span style={{ fontSize: 16, flexShrink: 0 }}>{opt.icon}</span>
+                          <div>
+                            <div style={{ fontSize: 12, fontWeight: 700, color: concern === opt.key ? "#F0EDE4" : "#0A0F2E", marginBottom: 2 }}>{opt.label}</div>
+                            <div style={{ fontSize: 10, color: concern === opt.key ? "rgba(240,237,228,0.5)" : "#9CA3AF" }}>{opt.sub}</div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Q2 — Your industry */}
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 10 }}>
+                      2 — Closest to your industry
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                      {(concern === "offense"
+                        ? [
+                            { key: "luxury",       label: "Luxury & Retail" },
+                            { key: "fast-fashion", label: "Fast Fashion / Consumer" },
+                            { key: "aerospace",    label: "Aerospace & Tech" },
+                            { key: "other",        label: "Other industry" },
+                          ]
+                        : [
+                            { key: "financial",    label: "Financial Services" },
+                            { key: "pharma",       label: "Pharma & Healthcare" },
+                            { key: "manufacturing",label: "Manufacturing" },
+                            { key: "retail",       label: "Retail & Consumer" },
+                            { key: "energy",       label: "Energy & Utilities" },
+                            { key: "other",        label: "Other industry" },
+                          ]
+                      ).map(opt => (
+                        <button
+                          key={opt.key}
+                          onClick={() => setIndustry(opt.key as IndustryType)}
+                          disabled={!concern}
+                          style={{
+                            padding: "8px 12px", borderRadius: 6, cursor: concern ? "pointer" : "not-allowed",
+                            border: industry === opt.key ? "2px solid #C9A84C" : "2px solid #E5E7EB",
+                            background: industry === opt.key ? "rgba(201,168,76,0.08)" : concern ? "white" : "#F9F8F5",
+                            fontSize: 12, fontWeight: industry === opt.key ? 700 : 500,
+                            color: industry === opt.key ? "#0A0F2E" : concern ? "#374151" : "#9CA3AF",
+                            textAlign: "left" as const, transition: "all 0.15s",
+                          }}
+                        >
+                          {industry === opt.key && <span style={{ marginRight: 6 }}>✓</span>}
+                          {opt.label}
+                        </button>
+                      ))}
+                      {!concern && (
+                        <p style={{ fontSize: 10, color: "#9CA3AF", fontStyle: "italic", marginTop: 2 }}>Answer question 1 first</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Q3 — Your role */}
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" as const, letterSpacing: "0.12em", marginBottom: 10 }}>
+                      3 — Your role
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                      {[
+                        { key: "ceo", label: "CEO / Board Chair" },
+                        { key: "cfo", label: "CFO / Finance Leader" },
+                        { key: "cto", label: "CTO / CISO" },
+                        { key: "coo", label: "COO / Operations" },
+                        { key: "gc",  label: "General Counsel" },
+                      ].map(opt => (
+                        <button
+                          key={opt.key}
+                          onClick={() => setRole(opt.key as RoleType)}
+                          style={{
+                            padding: "8px 12px", borderRadius: 6, cursor: "pointer",
+                            border: role === opt.key ? "2px solid #2B8A6E" : "2px solid #E5E7EB",
+                            background: role === opt.key ? "rgba(43,138,110,0.07)" : "white",
+                            fontSize: 12, fontWeight: role === opt.key ? 700 : 500,
+                            color: role === opt.key ? "#0A0F2E" : "#374151",
+                            textAlign: "left" as const, transition: "all 0.15s",
+                          }}
+                        >
+                          {role === opt.key && <span style={{ marginRight: 6 }}>✓</span>}
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recommendation card */}
+                {recommended && (
+                  <div style={{
+                    background: "#0A0F2E", borderRadius: 8, padding: "20px 24px",
+                    border: "1px solid rgba(201,168,76,0.3)", borderLeft: "4px solid #C9A84C",
+                    display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap" as const,
+                  }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                      <div style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)", padding: "10px 14px", borderRadius: 6, flexShrink: 0 }}>
+                        <Sparkles style={{ width: 18, height: 18, color: "#C9A84C" }} />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 9, fontWeight: 700, color: "#C9A84C", letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 4 }}>
+                          Your Recommended Scenario
+                        </div>
+                        <div style={{ fontSize: 17, fontWeight: 700, color: "#F0EDE4", marginBottom: 4, fontFamily: "'Cormorant Garamond', serif" }}>
+                          {recommended.title} — {recommended.industry}
+                        </div>
+                        <div style={{ fontSize: 12, color: "rgba(240,237,228,0.5)", marginBottom: roleFraming ? 6 : 0 }}>
+                          {recommended.scenario} · {recommended.timeSaved}
+                        </div>
+                        {roleFraming && (
+                          <div style={{ fontSize: 11, color: "rgba(201,168,76,0.7)", fontStyle: "italic" }}>{roleFraming}</div>
+                        )}
+                      </div>
+                    </div>
+                    <Link href={`/industry-experience/${recommended.id}`}>
+                      <button style={{
+                        display: "flex", alignItems: "center", gap: 8,
+                        background: "#C9A84C", color: "#0A0F2E",
+                        border: "none", borderRadius: 6, padding: "12px 22px",
+                        fontWeight: 800, fontSize: 12, cursor: "pointer",
+                        letterSpacing: "0.08em", textTransform: "uppercase" as const,
+                        whiteSpace: "nowrap" as const,
+                      }}>
+                        Enter This Scenario <ChevronRight style={{ width: 14, height: 14 }} />
+                      </button>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

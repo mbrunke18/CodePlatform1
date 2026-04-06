@@ -144,29 +144,40 @@ export function GuestPreviewBanner() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <Lock size={14} color={GOLD} style={{ flexShrink: 0 }} />
         <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
-          <strong style={{ color: '#fff', fontWeight: 700 }}>You are viewing a limited preview.</strong>
-          {' '}Full access is available to approved organizations — or request a 48-hour trial to explore the complete platform.
+          <strong style={{ color: '#fff', fontWeight: 700 }}>See 30 days compressed to 12 minutes.</strong>
+          {' '}Live execution — no signup required.
         </span>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         <a
-          href="/trial-access"
+          href="/try-demo"
           style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
-            letterSpacing: '0.1em', textTransform: 'uppercase' as const,
+            letterSpacing: '0.08em', textTransform: 'uppercase' as const,
             padding: '7px 18px', background: GOLD, color: NAVY,
             textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
           }}
         >
-          Get 48-Hour Access
+          Take the 12-Minute Test Drive →
         </a>
-        <button
-          onClick={() => login()}
+        <a
+          href="/request-access"
           style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: 'transparent',
             border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
+            textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
+          }}
+        >
+          Request Access
+        </a>
+        <button
+          onClick={() => login()}
+          style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
+            padding: '5px 12px', background: 'transparent',
+            border: 'none', color: 'rgba(255,255,255,0.35)',
             borderRadius: 4, cursor: 'pointer', whiteSpace: 'nowrap' as const,
           }}
         >

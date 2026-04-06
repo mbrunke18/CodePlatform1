@@ -423,6 +423,35 @@ export default function MissionControl() {
             </div>
           </div>
 
+          {/* ── SIGNAL COVERAGE ──────────────────────────────────────────── */}
+          <div style={{ marginBottom: 18 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>SIGNAL COVERAGE — TOP PLAYBOOK AREAS</span>
+              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+              <a href="/playbooks" style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.08em', flexShrink: 0 }}>View All Playbooks →</a>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+              {[
+                { domain: 'Market Opportunities',    signals: 82,  color: '#2B8A6E', href: '/playbooks', desc: 'Competitive, market & innovation signals' },
+                { domain: 'Market Dynamics',          signals: 51,  color: '#C9A84C', href: '/playbooks', desc: 'Competitive moves & market shifts' },
+                { domain: 'Regulatory & Compliance', signals: 38,  color: '#A78BFA', href: '/playbooks', desc: 'Regulatory, ESG & cyber signals' },
+                { domain: 'Technology & Innovation', signals: 34,  color: '#38BDF8', href: '/playbooks', desc: 'Technology & innovation indicators' },
+              ].map(({ domain, signals, color, href, desc }) => (
+                <a key={domain} href={href} style={{ display: 'block', textDecoration: 'none', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: `3px solid ${color}`, borderRadius: 8, padding: '12px 14px', transition: 'all 0.15s' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 0 2px rgba(16,185,129,0.2)' }} />
+                      <span style={{ fontSize: 9, color: '#10B981', fontWeight: 700, letterSpacing: '0.1em' }}>LIVE</span>
+                    </div>
+                    <span style={{ fontSize: 18, fontWeight: 800, color, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{signals}</span>
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.75)', marginBottom: 3, lineHeight: 1.3 }}>{domain}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', lineHeight: 1.4 }}>{desc}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
           {/* ── RESEARCH CONSENSUS INDICATOR ──────────────────────────────── */}
           <div style={{ background: 'rgba(43,138,110,0.03)', border: '1px solid rgba(43,138,110,0.1)', borderRadius: 8, padding: '9px 18px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' as const }}>
             <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', flexShrink: 0 }}>RESEARCH CONSENSUS</span>
