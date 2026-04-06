@@ -161,6 +161,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Authenticated NOC home — live alerts, domain status board, execution log'
         },
         {
+          id: 'executive-scenarios',
+          label: 'Executive Scenario Suite',
+          path: '/executive-scenarios',
+          icon: '🎯',
+          description: 'Industry + role walk-throughs — full IDEA chain with real playbooks'
+        },
+        {
           id: 'shadow-simulator',
           label: 'Shadow Simulator',
           path: '/simulation-studio',
