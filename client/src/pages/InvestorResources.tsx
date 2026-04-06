@@ -26,10 +26,190 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import PageLayout from '@/components/layout/PageLayout';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updatePageMetadata } from "@/lib/seo";
 import { BrandStamp } from "@/components/BrandStamp";
 import InvestorGate from "@/components/InvestorGate";
+
+// ── McKinsey Research Validation ─────────────────────────────────────────────
+const IR_NAVY = "#0A0F2E";
+const IR_GOLD = "#C9A84C";
+const IR_TEAL = "#2B8A6E";
+const IR_IVORY = "#F0EDE4";
+const IR_MUTED = "rgba(240,237,228,0.45)";
+const IR_GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+const IR_DM: React.CSSProperties = { fontFamily: "'DM Sans', system-ui, sans-serif" };
+const IR_MONO: React.CSSProperties = { fontFamily: "'DM Mono','Geist Mono','Fira Code',monospace" };
+const IR_CONTAINER: React.CSSProperties = { maxWidth: 1160, margin: "0 auto", padding: "0 32px" };
+
+function McKinseyResearchSection() {
+  const stats = [
+    { pct: "65%", headline: "Still Piloting", sub: "Not yet scaling AI across the enterprise", bridge: "Execution OS closes this gap — 12-minute activation vs. months of mobilization", color: IR_GOLD, bg: "rgba(201,168,76,0.07)", border: "rgba(201,168,76,0.22)" },
+    { pct: "1%", headline: "Fully Mature", sub: "Leaders — not employees — are the bottleneck", bridge: "221 executive triggers arm decision-makers so they stop being the constraint", color: IR_TEAL, bg: "rgba(43,138,110,0.07)", border: "rgba(43,138,110,0.22)" },
+    { pct: "$4.4T", headline: "AI Productivity Potential", sub: "Locked inside enterprises that can't activate it", bridge: "The coordination layer — not the AI model — is what unlocks this value", color: "#3BAF8A", bg: "rgba(59,175,138,0.07)", border: "rgba(59,175,138,0.22)" },
+  ];
+  return (
+    <section style={{ background: "#060B1E", padding: "100px 0 80px", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: -120, right: -60, width: 600, height: 500, background: "radial-gradient(ellipse,rgba(201,168,76,0.07) 0%,transparent 65%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: -80, left: -60, width: 500, height: 400, background: "radial-gradient(ellipse,rgba(43,138,110,0.06) 0%,transparent 65%)", pointerEvents: "none" }} />
+      <div style={IR_CONTAINER}>
+        {/* Attribution pill */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 20, padding: "5px 16px" }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
+            <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.5)", textTransform: "uppercase" as const }}>
+              McKinsey &amp; Company · Enterprise Architecture Synthesis 2025–2026
+            </span>
+          </div>
+        </div>
+        {/* Headline */}
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <h2 style={{ ...IR_GEO, fontSize: "clamp(30px,4.5vw,54px)", fontWeight: 700, color: IR_IVORY, lineHeight: 1.12, marginBottom: 16 }}>
+            McKinsey Named the Gap.<br /><span style={{ color: IR_GOLD }}>We Built the Infrastructure.</span>
+          </h2>
+          <p style={{ ...IR_DM, fontSize: "clamp(15px,1.6vw,18px)", color: IR_MUTED, maxWidth: 620, margin: "0 auto", lineHeight: 1.65 }}>
+            McKinsey's 2025 enterprise architecture synthesis identifies an "orchestration layer · coordination fabric · shared source of truth" sitting at the center of every enterprise AI stack. They named the absence. We built the thing.
+          </p>
+        </div>
+        {/* Stat cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginBottom: 48 }}>
+          {stats.map(({ pct, headline, sub, bridge, color, bg, border }) => (
+            <div key={pct} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 14, padding: "30px 26px" }}>
+              <div style={{ ...IR_MONO, fontSize: 48, fontWeight: 700, color, lineHeight: 1, marginBottom: 10 }}>{pct}</div>
+              <div style={{ ...IR_GEO, fontSize: 18, fontWeight: 700, color: IR_IVORY, marginBottom: 6 }}>{headline}</div>
+              <div style={{ ...IR_DM, fontSize: 13, color: IR_MUTED, marginBottom: 18, lineHeight: 1.55 }}>{sub}</div>
+              <div style={{ borderTop: `1px solid ${border}`, paddingTop: 14 }}>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <span style={{ color, fontSize: 12, marginTop: 1, flexShrink: 0 }}>→</span>
+                  <span style={{ ...IR_DM, fontSize: 12, color, lineHeight: 1.5 }}>{bridge}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Architecture callout */}
+        <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)", borderRadius: 14, padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const, marginBottom: 32 }}>
+          <div style={{ flex: 1, minWidth: 260 }}>
+            <div style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: IR_GOLD, textTransform: "uppercase" as const, marginBottom: 8 }}>The Agentic Mesh Layer</div>
+            <div style={{ ...IR_GEO, fontSize: 22, fontWeight: 700, color: IR_IVORY, marginBottom: 8 }}>
+              "Orchestration layer · coordination fabric · shared source of truth"
+            </div>
+            <div style={{ ...IR_DM, fontSize: 13, color: IR_MUTED, lineHeight: 1.6 }}>
+              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Execution OS is the product that sits there: 170 pre-staged playbooks reading across all five organizational pillars simultaneously.
+            </div>
+          </div>
+        </div>
+        {/* MGI Nov 2025 */}
+        <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, overflow: "hidden" as const, marginBottom: 40 }}>
+          <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_TEAL, display: "inline-block", flexShrink: 0 }} />
+            <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
+              McKinsey Global Institute · Skill Partnerships in the Age of AI · November 2025
+            </span>
+          </div>
+          <div style={{ padding: "28px 28px 0" }}>
+            <div style={{ display: "flex", gap: 0, marginBottom: 24, borderBottom: "1px solid rgba(255,255,255,0.05)", paddingBottom: 24 }}>
+              {[
+                { pct: "$2.9T", label: "Economic value at stake by 2030", accent: IR_GOLD },
+                { pct: "90%", label: "Of enterprises have invested in AI", accent: IR_TEAL },
+                { pct: "<40%", label: "Report measurable returns", accent: IR_TEAL },
+                { pct: "77%", label: "Of that value comes from AI agents", accent: IR_TEAL },
+              ].map(({ pct, label, accent }, i) => (
+                <div key={pct} style={{ flex: 1, paddingRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.06)" : "none", paddingLeft: i > 0 ? 20 : 0 }}>
+                  <div style={{ ...IR_MONO, fontSize: i === 0 ? 30 : 26, fontWeight: 700, color: accent, lineHeight: 1, marginBottom: 6 }}>{pct}</div>
+                  <div style={{ ...IR_DM, fontSize: 11, color: IR_MUTED, lineHeight: 1.4 }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ padding: "0 28px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 8, padding: "16px 18px" }}>
+                <p style={{ ...IR_GEO, fontSize: 15, fontWeight: 600, color: IR_IVORY, lineHeight: 1.55, marginBottom: 8, fontStyle: "italic" as const }}>
+                  "The bottleneck is never the technology. It is always the speed of organizational redesign."
+                </p>
+                <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", letterSpacing: "0.04em" }}>McKinsey Global Institute — November 2025</p>
+              </div>
+              <blockquote style={{ borderLeft: `2px solid ${IR_TEAL}`, paddingLeft: 16, margin: 0 }}>
+                <p style={{ ...IR_GEO, fontSize: 14, fontWeight: 600, color: IR_IVORY, lineHeight: 1.5, marginBottom: 8, fontStyle: "italic" as const }}>
+                  "The CEO who delegates AI to IT will lose this decade to the one who does not."
+                </p>
+                <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", marginBottom: 10 }}>McKinsey Global Institute — November 2025</p>
+                <p style={{ ...IR_DM, fontSize: 12, color: IR_TEAL, lineHeight: 1.55 }}>
+                  Execution OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 playbooks deploy the response. The CEO doesn't become an operator. They become the signal.
+                </p>
+              </blockquote>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
+              {[
+                { sector: "Global Tech", result: "7–12% projected revenue lift", detail: "AI agents handled lead scoring — sales specialists redirected 30–50% of time to negotiation" },
+                { sector: "Global Pharma", result: "60% faster · 50% fewer errors", detail: "Clinical reporting redesigned — time to first human-reviewed draft fell nearly 60%" },
+                { sector: "Large Utility", result: "40% AI-resolved · 50% cost cut · +6 NPS", detail: "7 million annual calls — 40% fully resolved without human involvement" },
+              ].map(({ sector, result, detail }) => (
+                <div key={sector} style={{ background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.12)", borderRadius: 8, padding: "12px 14px" }}>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
+                    <span style={{ ...IR_MONO, fontSize: 10, fontWeight: 700, color: IR_TEAL, textTransform: "uppercase" as const, letterSpacing: "0.12em" }}>{sector}</span>
+                    <span style={{ ...IR_MONO, fontSize: 11, color: IR_IVORY, fontWeight: 600 }}>{result}</span>
+                  </div>
+                  <p style={{ ...IR_DM, fontSize: 11, color: IR_MUTED, lineHeight: 1.5, margin: 0 }}>{detail}</p>
+                </div>
+              ))}
+              <p style={{ ...IR_DM, fontSize: 10, color: "rgba(240,237,228,0.2)", marginTop: 2 }}>Pattern across all three: the CEO owned the redesign. Not IT. Not a task force.</p>
+            </div>
+          </div>
+        </div>
+        {/* WEF × Accenture */}
+        <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, overflow: "hidden" as const, marginBottom: 32 }}>
+          <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
+            <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
+              World Economic Forum × Accenture · Organizational Transformation in the Age of AI · March 2026
+            </span>
+          </div>
+          <div style={{ padding: "28px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 8, padding: "20px 20px" }}>
+                <p style={{ ...IR_GEO, fontSize: 16, fontWeight: 600, color: IR_IVORY, lineHeight: 1.6, marginBottom: 10, fontStyle: "italic" as const }}>
+                  "Those that do not risk falling behind — not because AI fails them, but because organizational change does."
+                </p>
+                <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", letterSpacing: "0.04em" }}>World Economic Forum × Accenture — March 2026</p>
+              </div>
+              <blockquote style={{ borderLeft: `2px solid ${IR_GOLD}`, paddingLeft: 16, margin: 0 }}>
+                <p style={{ ...IR_GEO, fontSize: 13, fontWeight: 600, color: IR_IVORY, lineHeight: 1.55, marginBottom: 6, fontStyle: "italic" as const }}>
+                  "Not whether AI works — but how organizations must re-architect their workflows, operating models and decision rights."
+                </p>
+                <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)" }}>WEF · Core thesis · March 2026</p>
+              </blockquote>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 12 }}>
+              <div style={{ ...IR_MONO, fontSize: 10, color: IR_GOLD, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 2 }}>WEF AI Transformation Framework</div>
+              {[
+                { n: "Focus 1", label: "Real-time, individualized CX", active: false },
+                { n: "Focus 2", label: "Efficient and resilient operations", active: false },
+                { n: "Focus 3", label: "Accelerated R&D and breakthrough innovation", active: false },
+                { n: "Focus 4", label: "Predictive, AI-powered strategic planning", active: true },
+                { n: "Focus 5", label: "Data-driven talent & workforce planning", active: false },
+              ].map(({ n, label, active }) => (
+                <div key={n} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 6, background: active ? "rgba(201,168,76,0.08)" : "transparent", border: active ? "1px solid rgba(201,168,76,0.2)" : "1px solid rgba(255,255,255,0.04)" }}>
+                  <span style={{ ...IR_MONO, fontSize: 9, color: active ? IR_GOLD : "rgba(240,237,228,0.2)", fontWeight: 700, flexShrink: 0 }}>{n}</span>
+                  <span style={{ ...IR_DM, fontSize: 11, color: active ? IR_IVORY : "rgba(240,237,228,0.25)", fontWeight: active ? 600 : 400 }}>{label}</span>
+                  {active && <span style={{ marginLeft: "auto", background: IR_GOLD, color: IR_NAVY, fontSize: 8, fontWeight: 800, padding: "2px 7px", borderRadius: 3, letterSpacing: "0.08em", flexShrink: 0 }}>EXECUTION OS</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* Source attribution */}
+        <div style={{ textAlign: "center" }}>
+          <span style={{ ...IR_MONO, fontSize: 10, color: "rgba(240,237,228,0.2)", letterSpacing: "0.1em" }}>
+            Sources: McKinsey &amp; Company — Enterprise Architecture Synthesis, 2025–2026 · McKinsey Global Institute — "Skill Partnerships in the Age of AI," November 2025 · World Economic Forum × Accenture — "Organizational Transformation in the Age of AI," March 2026
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function InvestorResources() {
   useEffect(() => {
@@ -615,6 +795,8 @@ export default function InvestorResources() {
           </div>
         </div>
       </section>
+
+      <McKinseyResearchSection />
 
       {/* CTA */}
       <section className="py-24 px-6 text-white relative overflow-hidden" style={{ background: NAVY }}>

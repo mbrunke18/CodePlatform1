@@ -49,10 +49,10 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Configuration Wizards:** Trigger Configuration Wizard for setting up situations and playbook mapping.
 - **Key Differentiators:** Execution ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Data Consistency:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×), number of playbooks (170), signals, data points (248+), and triggers (221).
-- **Personalized ROI Calculator:** Homepage section calculating annual value, exec time saved, and revenue protected.
+- **Personalized ROI Calculator:** Interactive calculator on `/roi-calculator` (`ROICalculator.tsx`) with revenue brackets, exec population, scenario frequency, and live output (annual value, exec time saved, revenue protected, 3,600× head start). `ExecutionROISection` component with `RC_` prefixed constants. McKinsey $250M Decision Tax strip included.
 - **12-Minute Test Drive:** A public 4-step sequential experience simulating execution.
 - **Playbook Public Access Model:** 3 playbooks are fully public. All 167 others require authentication.
-- **McKinsey Research Citations:** Integration of key statistics and findings from two McKinsey reports for platform credentialing and investor materials.
+- **McKinsey Research Citations:** Full `McKinseyResearchSection` added to `InvestorResources.tsx` (before CTA). Covers McKinsey Enterprise Architecture Synthesis 2025–2026, MGI November 2025, and WEF × Accenture March 2026. Uses `IR_` prefixed local constants. Headline: "McKinsey Named the Gap. We Built the Infrastructure."
 - **Live Signal Detection:** Real RSS ingestion from 8 sources every 15 minutes. `SignalEvaluationService` scores signals against 16 trigger patterns.
 - **Command Tower:** Full-screen executive display page (`/command-tower`) with live trigger detections, system pulse stats, execution log, and real-time updates.
 - **Dual Evaluation Engine:** `SignalEvaluationService` runs configured + default engines in parallel, tracking source.
@@ -66,7 +66,7 @@ VaughnMartin's Execution OS is a Strategic Execution platform for Fortune 1000 c
 - **Live Signal Activity Feed:** `signal_activity_log` DB table buffers scan events; `LiveSignalFeed` component shows real-time evaluation work.
 - **New APIs:** `GET /api/org/execution-timelines`, `PATCH /api/org/execution-timelines/:id/advance`, `GET /api/org/execution-dividend`, `GET /api/org/board-readiness`, `GET /api/org/welcome-brief`, `GET /api/signal-activity-log`.
 - **PlaybookDetail Task Editor:** Authenticated users have an "Edit Tasks" tab on playbook detail pages for customizing phases, tasks, and decision gates.
-- **Coaching / NFL Analogy Sections:** Two sections on the Homepage and IDEA Framework page using an NFL coaching analogy to explain the operating model.
+- **Coaching / NFL Analogy Section:** 4-card analogy section on the IDEA Framework page (`IDEAFramework.tsx`) before the Governing Principle section. Removed from Homepage in the Homepage restructure.
 - **SimulationStudio CTA:** Contextual gold CTA appears after scenario analysis, directing to `/request-access`.
 - **GuestPreviewBanner:** Shows on every page for non-authenticated users with appropriate CTAs.
 - **ExecutionStageGuide:** Shared component (`client/src/components/ExecutionStageGuide.tsx`) defining all 6 execution lifecycle stages: Triggered → Staged → Notified → Acknowledged (12-min clock ends here) → In Progress → Complete. Three variants: `section` (full homepage section, ivory bg), `banner` (dark navy strip for dark-background pages), `compact` (light ivory grid for light-background pages). Deployed across the entire platform — homepage, all 17 demo pages, and all 13 authenticated product pages where execution stages appear. This is a core product feature, not a demo artifact.
