@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import PageLayout from '@/components/layout/PageLayout';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { DealRiskCommandCenter } from '@/components/DealRiskCommandCenter';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import {
@@ -152,6 +153,7 @@ export default function DealRiskDemo() {
     <PageLayout>
       
       <main className="max-w-7xl mx-auto px-6 py-12 text-white">
+        <ExecutionStageGuide variant="compact" />
         <div className="text-center mb-10">
           <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]">
             Interactive Demo

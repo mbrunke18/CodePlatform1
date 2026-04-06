@@ -9,6 +9,7 @@ import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
 import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
 import ROIComparison from "@/components/demo/ROIComparison";
 import DemoNavHeader from "@/components/demo/DemoNavHeader";
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { manufacturingDemoData } from "@shared/manufacturing-demo-data";
 
 const NAVY = "#0A0F2E";
@@ -98,6 +99,7 @@ export default function ManufacturingSupplierDemo() {
         </div>
       </div>
 
+      <ExecutionStageGuide variant="banner" />
       <div className="container mx-auto px-6 py-12 text-white">
 
         {/* ── INTRO ACT ──────────────────────────────────── */}

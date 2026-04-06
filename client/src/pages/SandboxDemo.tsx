@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import PageLayout from '@/components/layout/PageLayout';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { useLocation } from "wouter";
 import { BrandStamp } from "@/components/BrandStamp";
 import { 
@@ -2275,6 +2276,7 @@ export default function SandboxDemo() {
     <PageLayout>
 
       <div className="py-12 px-6">
+        <ExecutionStageGuide variant="compact" />
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-center mb-12 overflow-x-auto pb-4">
             {steps.map((step, index) => {

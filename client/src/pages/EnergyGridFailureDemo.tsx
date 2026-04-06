@@ -9,6 +9,7 @@ import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
 import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
 import ROIComparison from "@/components/demo/ROIComparison";
 import DemoNavHeader from "@/components/demo/DemoNavHeader";
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { energyDemoData } from "@shared/energy-demo-data";
 
 type DemoAct = "intro" | "detection" | "coordination" | "outcome";
@@ -52,6 +53,7 @@ export default function EnergyGridFailureDemo() {
     <div style={{ minHeight: "100vh", background: "#0A0F2E" }}>
       <DemoNavHeader title="Energy Grid Crisis Demo" showBackButton={true} />
       <div className="container mx-auto px-4 py-12 pt-24 max-w-6xl text-white">
+        <ExecutionStageGuide variant="compact" />
         {/* Header */}
         <div className="text-center mb-8">
           <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]" data-testid="badge-demo-type">

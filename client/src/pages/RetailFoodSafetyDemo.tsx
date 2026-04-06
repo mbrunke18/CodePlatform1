@@ -9,6 +9,7 @@ import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
 import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
 import ROIComparison from "@/components/demo/ROIComparison";
 import DemoNavHeader from "@/components/demo/DemoNavHeader";
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { retailDemoData } from "@shared/retail-demo-data";
 
 type DemoAct = "intro" | "detection" | "coordination" | "outcome";
@@ -73,6 +74,7 @@ export default function RetailFoodSafetyDemo() {
       </div>
 
       {/* Main Content */}
+      <ExecutionStageGuide variant="banner" />
       <div className="container mx-auto px-6 py-12 text-white">
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (

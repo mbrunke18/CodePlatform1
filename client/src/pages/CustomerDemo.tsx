@@ -36,6 +36,7 @@ import {
 } from 'lucide-react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import { BrandStamp } from "@/components/BrandStamp";
@@ -320,6 +321,7 @@ export default function CustomerDemo() {
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
       
       <main className="flex-1 py-8">
+        <ExecutionStageGuide variant="compact" />
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6">
             <BrandStamp variant="dual" size="md" className="mb-8" />

@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import PageLayout from '@/components/layout/PageLayout';
+import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { PageHero } from "@/components/layout/PageHero";
 import {
   ArrowRight,
@@ -297,6 +298,7 @@ export default function PilotDemo() {
         size="md"
       />
       <main className="container mx-auto px-4 py-12">
+        <ExecutionStageGuide variant="compact" />
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center mb-8">
             <div className="flex items-center gap-2">
