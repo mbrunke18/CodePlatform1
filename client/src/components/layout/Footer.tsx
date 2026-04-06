@@ -70,7 +70,7 @@ export default function Footer() {
         { label: "Platform Overview", path: "/platform-overview" },
         { label: "Founder's Story", path: "/founder-story" },
         { label: "Integrations", path: "/integrations" },
-        { label: "Microsoft Ecosystem", path: "/ecosystem" },
+        { label: "Microsoft Ecosystem", path: "/ecosystems" },
         { label: "Request Pilot", path: "/pilot-program" },
         { label: "Request Access", path: "/request-access" },
         { label: "Investors", path: "/investors" },
