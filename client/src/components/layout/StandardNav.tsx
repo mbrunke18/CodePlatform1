@@ -502,6 +502,7 @@ export default function StandardNav() {
       },
     ];
     const deeperDemos = [
+      { path: '/executive-scenarios', icon: Target, label: 'Executive Scenario Suite', sub: 'Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare.' },
       { path: '/simulation-studio', icon: FlaskConical, label: 'Shadow Strategy Simulator', sub: 'The hardest to replicate. AI dry-runs any scenario and scores Survive vs. Thrive before a trigger fires.' },
       { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
       { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right playbook in 60 seconds' },
