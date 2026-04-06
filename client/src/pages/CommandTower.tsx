@@ -4,6 +4,7 @@ import { Link } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { updatePageMetadata } from '@/lib/seo';
 import { LiveSignalFeed } from '@/components/LiveSignalFeed';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import {
   Radio,
   Shield,
@@ -455,6 +456,8 @@ export default function CommandTower() {
         borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
+
+      <ExecutionStageGuide variant="banner" />
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1400, margin: '0 auto', padding: '0 28px' }}>
 

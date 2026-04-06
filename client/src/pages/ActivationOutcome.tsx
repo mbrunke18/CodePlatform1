@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams, Link, useLocation } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import PageLayout from "@/components/layout/PageLayout";
+import ExecutionStageGuide from "@/components/ExecutionStageGuide";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -141,6 +142,7 @@ export default function ActivationOutcome() {
           </div>
         </div>
 
+        <ExecutionStageGuide variant="compact" />
         <div className="container mx-auto px-6 py-8 max-w-4xl">
           {isLoading ? (
             <div style={{ textAlign: "center", padding: 60, color: MUTED }}>Loading debrief data...</div>

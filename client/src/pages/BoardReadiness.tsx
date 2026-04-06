@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useRef } from 'react';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import { Shield, Zap, Clock, Users, BookOpen, TrendingUp, CheckCircle, AlertTriangle, Printer, Link, Award } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -118,6 +119,10 @@ export default function BoardReadiness() {
             <Printer size={13} /> Print / Export PDF
           </button>
         </div>
+      </div>
+
+      <div className="no-print">
+        <ExecutionStageGuide variant="compact" />
       </div>
 
       {/* Main content */}

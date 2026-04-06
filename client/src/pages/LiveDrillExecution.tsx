@@ -17,6 +17,7 @@ import {
   Activity
 } from 'lucide-react';
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 
@@ -167,6 +168,7 @@ export default function LiveDrillExecution() {
 
   return (
     <PageLayout>
+      <ExecutionStageGuide variant="compact" />
       <div className="p-6 space-y-6" data-testid="live-drill-execution-page">
         {/* Header with countdown */}
         <div className="flex items-center justify-between">

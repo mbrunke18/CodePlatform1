@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -201,6 +202,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   return (
     <PageLayout embedded={embedded}>
       <div className="p-8 space-y-8 bg-[#F8F7F4] min-h-screen" data-testid="practice-drills-page">
+        <ExecutionStageGuide variant="compact" />
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import { 
   Play, Clock, CheckCircle, Users, Target, Zap, 
   ArrowRight, Circle, AlertCircle, Pause, RotateCcw
@@ -181,7 +182,7 @@ export default function ExecutionCoordination() {
 
   return (
     <PageLayout>
-      
+      <ExecutionStageGuide variant="compact" />
       <div className="container mx-auto px-4 py-20">
         {/* Header */}
         <div className="mb-8">

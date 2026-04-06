@@ -8,6 +8,7 @@ import {
   CheckCircle2, XCircle, BarChart3, Zap, ArrowLeft,
 } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import ExecutionStageGuide from "@/components/ExecutionStageGuide";
 
 const NAVY   = "#0A0F2E";
 const GOLD   = "#C9A84C";
@@ -147,6 +148,7 @@ export default function ExecutionHistory() {
           </div>
         </div>
 
+        <ExecutionStageGuide variant="compact" />
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 32px" }}>
           {isLoading ? (
             <div style={{ textAlign: "center", padding: "80px 0", color: MUTED }}>

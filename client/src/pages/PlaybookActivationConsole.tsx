@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -884,6 +885,7 @@ export default function PlaybookActivationConsole() {
   return (
     <PageLayout>
       <div style={{ background: OFF, minHeight: "100vh" }}>
+        <ExecutionStageGuide variant="compact" />
         <div className="container mx-auto p-6 space-y-6">
           {/* Header */}
           <div className="flex items-center justify-between">

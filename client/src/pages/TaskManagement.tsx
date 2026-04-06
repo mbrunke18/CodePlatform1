@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
+import ExecutionStageGuide from "@/components/ExecutionStageGuide";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
@@ -393,6 +394,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
         </div>
       </div>
       
+      <ExecutionStageGuide variant="compact" />
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-6">
           <div className="flex items-center gap-2 text-sm text-[#0A0F2E]">

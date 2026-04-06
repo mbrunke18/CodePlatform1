@@ -53,6 +53,7 @@ import {
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import { useAuth } from '@/hooks/useAuth';
 import { PhaseProgressBar } from '@/components/playbook/PhaseProgressBar';
 import { PreparePhaseView } from '@/components/playbook/PreparePhaseView';
@@ -486,6 +487,7 @@ export default function PlaybookDetail() {
 
   return (
     <PageLayout>
+      <ExecutionStageGuide variant="compact" />
       <div style={{ background: OFF, minHeight: "100vh" }}>
         <div className="container mx-auto px-6 py-12 space-y-8" data-testid="playbook-detail-page">
           <div className="flex items-center justify-between">

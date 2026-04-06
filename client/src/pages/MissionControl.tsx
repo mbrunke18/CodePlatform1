@@ -9,6 +9,7 @@ import PulseMap from '@/components/mission/PulseMap';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
 import { ExecutionClock } from '@/components/ExecutionClock';
 import { ExecutionDividend } from '@/components/ExecutionDividend';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 import {
   Radio, Shield, AlertTriangle, Zap, Clock, Activity, Target,
   TrendingUp, ArrowRight, CheckCircle2, Circle, RefreshCw,
@@ -322,6 +323,8 @@ export default function MissionControl() {
         {/* Glow orbs */}
         <div style={{ position: 'absolute', top: -200, right: -100, width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: -200, left: -100, width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+        <ExecutionStageGuide variant="banner" />
 
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1500, margin: '0 auto', padding: '0 32px' }}>
 

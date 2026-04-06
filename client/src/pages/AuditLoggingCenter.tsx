@@ -91,6 +91,7 @@ interface ComplianceReport {
 }
 
 import PageLayout from '@/components/layout/PageLayout';
+import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 
 export default function AuditLoggingCenter({ embedded }: { embedded?: boolean }) {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -177,7 +178,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
   return (
     <PageLayout embedded={embedded}>
       <div className="flex-1 page-background overflow-y-auto p-8 space-y-8">
-        
+        <ExecutionStageGuide variant="compact" />
         {/* Audit Logging Header */}
         <div className="flex items-center justify-between">
           <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
