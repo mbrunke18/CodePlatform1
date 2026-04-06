@@ -720,11 +720,6 @@ function PlatformPreviewSection() {
           </div>
         </Reveal>
 
-        {/* Signal-to-Execution animated timeline */}
-        <Reveal delay={0.1}>
-          <SignalTimelineBar />
-        </Reveal>
-
         {/* Console mockup */}
         <Reveal>
           <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 12, overflow: "hidden", boxShadow: "0 32px 80px rgba(10,15,46,0.22)", border: "1px solid rgba(10,15,46,0.1)" }}>
