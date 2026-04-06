@@ -75,18 +75,19 @@ export default function ExecutiveDepartureBrief() {
 
   useEffect(() => {
     if (timerRunning) {
+      // 40ms per tick → 443 ticks ≈ 17.7 real seconds to reach 7:23
       timerRef.current = setInterval(() => {
         setTimerSeconds(s => {
           if (s >= 443) {
             clearInterval(timerRef.current!);
             setTimerRunning(false);
             setPhase('complete');
-            setTimeout(() => outcomeRef.current?.scrollIntoView({ behavior: 'smooth' }), 400);
+            setTimeout(() => outcomeRef.current?.scrollIntoView({ behavior: 'smooth' }), 600);
             return 443;
           }
           return s + 1;
         });
-      }, 16);
+      }, 40);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [timerRunning]);
@@ -96,15 +97,27 @@ export default function ExecutiveDepartureBrief() {
   function handleActivate() {
     if (activating || phase !== 'situation') return;
     setActivating(true);
-    setTimeout(() => activationRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
-    setTimeout(() => setTimerRunning(true), 600);
-    STAKEHOLDERS.forEach((s, i) => {
-      setTimeout(() => setVisibleStakeholders(prev => [...prev, i]), s.delay + 600);
+
+    // 1. Render activated content immediately
+    setPhase('activated');
+
+    // 2. Scroll once content has rendered (400ms grace)
+    setTimeout(() => activationRef.current?.scrollIntoView({ behavior: 'smooth' }), 400);
+
+    // 3. Timer starts 1 second after click — gives user a moment to orient
+    setTimeout(() => setTimerRunning(true), 1000);
+
+    // 4. Stakeholder cascade: 1 every 1.5s, starting at 2s
+    //    All 7 appear by ~11s
+    STAKEHOLDERS.forEach((_, i) => {
+      setTimeout(() => setVisibleStakeholders(prev => [...prev, i]), 2000 + i * 1500);
     });
+
+    // 5. Tasks deploy starting at 12s, 1 every 800ms
+    //    All 7 tasks visible by ~17s — right as timer finishes
     TASKS.forEach((_, i) => {
-      setTimeout(() => setVisibleTasks(prev => [...prev, i]), 3800 + i * 350);
+      setTimeout(() => setVisibleTasks(prev => [...prev, i]), 12000 + i * 800);
     });
-    setTimeout(() => setPhase('activated'), 500);
   }
 
   return (
