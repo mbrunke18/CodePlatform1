@@ -1507,6 +1507,19 @@ Added visible flywheel "Compound Execution Advantage" callout to:
 - Board Governance — Thrive score as board confidence instrument  
 - Audit Trail — Every simulation logged — full decision record
 
+### Executive Departure Brief — Boardroom Demo Page
+`/executive-departure` — `client/src/pages/ExecutiveDepartureBrief.tsx` — fully public, no auth required, no StandardNav. A single-URL boardroom sales instrument. Structure:
+1. Cold open: "It's 6:47 AM. Your CFO just resigned." — incoming messages grid, chaos cards
+2. Signal detection mock: War Room Pulse Map with Leadership node firing red, 94% confidence detection card
+3. Playbook match: C-Suite Continuity Response — CFO Departure
+4. Interactive ACTIVATE PLAYBOOK button — clicking starts the full cascade animation
+5. Live execution timer (fast-forwards to 7:23 in ~7 real seconds)
+6. Stakeholder cascade: 7 stakeholders notified in animated sequence
+7. Task deployment: 7 pre-staged tasks appearing simultaneously
+8. Outcome comparison table (before/after) + ROI strip ($23M avg cost, $9–14M protected, $250K investment)
+9. The close: "You know someone on your executive team will leave" + Request Executive Pilot CTA
+Designed to be sent as a URL to a board chair before a pitch meeting. No login required.
+
 ### 30-Day Pilot Onboarding Arc (T004)
 `WelcomeBrief.tsx` — new "Your First 30 Days — Activation Arc" section inserted between the detection panel and the "What Happens Next" infrastructure grid. Shows 4 milestones: Day 1 Platform Armed → Week 1 First Alert → Week 2 Shadow Simulation → Day 30 Execution Benchmark. Left gold border, metric-dense, matches existing dark-mode panel style.
 
