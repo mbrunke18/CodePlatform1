@@ -121,21 +121,37 @@ export default function TwelveMinuteTestDrive() {
   const [taskStatuses, setTaskStatuses] = useState<Record<number, 'pending' | 'active' | 'done'>>({});
   const [liveEvents, setLiveEvents] = useState<{ time: string; text: string }[]>([]);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const loggedDispatchRef = useRef<Set<number>>(new Set());
+  const loggedConfirmRef = useRef<Set<number>>(new Set());
   const scenario = SCENARIOS.find(s => s.id === selectedId);
   const tasks = selectedId ? (SCENARIO_TASKS[selectedId] || []) : [];
   const TOTAL = 12 * 60;
 
-  // Advance tasks based on elapsed time
+  // Advance tasks based on elapsed time — each task logs exactly once for dispatch, once for confirm
   useEffect(() => {
     if (!running || step !== 3) return;
     tasks.forEach((t, i) => {
-      const target = parseTime(t.time);
-      if (elapsed >= target && taskStatuses[i] !== 'done') {
-        setTaskStatuses(prev => ({ ...prev, [i]: elapsed >= target + 5 ? 'done' : 'active' }));
-        if (elapsed >= target) {
-          const at = fmtSecs(elapsed);
-          setLiveEvents(prev => [{ time: at, text: `[${t.role}] ✓ ${t.action.slice(0, 65)}…` }, ...prev].slice(0, 20));
-        }
+      const dispatchAt = parseTime(t.time);
+      const confirmAt  = dispatchAt + 28; // 28s after dispatch = confirmed receipt
+
+      // Step 1: dispatch — fires once only
+      if (elapsed >= dispatchAt && !loggedDispatchRef.current.has(i)) {
+        loggedDispatchRef.current.add(i);
+        setTaskStatuses(prev => ({ ...prev, [i]: 'active' }));
+        setLiveEvents(prev => [
+          { time: fmtSecs(elapsed), text: `📤 [${t.role}] Task dispatched — ${t.action.slice(0, 58)}…` },
+          ...prev,
+        ].slice(0, 20));
+      }
+
+      // Step 2: confirmed receipt — fires once only
+      if (elapsed >= confirmAt && !loggedConfirmRef.current.has(i)) {
+        loggedConfirmRef.current.add(i);
+        setTaskStatuses(prev => ({ ...prev, [i]: 'done' }));
+        setLiveEvents(prev => [
+          { time: fmtSecs(elapsed), text: `✅ [${t.role}] Confirmed receipt` },
+          ...prev,
+        ].slice(0, 20));
       }
     });
     if (elapsed >= TOTAL) {
@@ -146,10 +162,16 @@ export default function TwelveMinuteTestDrive() {
   }, [elapsed, running]);
 
   const startWarRoom = () => {
+    loggedDispatchRef.current = new Set();
+    loggedConfirmRef.current  = new Set();
+    setTaskStatuses({});
     setRunning(true);
     setElapsed(0);
     timerRef.current = setInterval(() => setElapsed(prev => prev + 1), 1000);
-    setLiveEvents([{ time: '0:00', text: '⚡ Execution protocol activated — 12-minute response clock started' }, { time: '0:00', text: `🔒 War room secured — ${tasks.length} tasks queued for execution` }]);
+    setLiveEvents([
+      { time: '0:00', text: `🔒 War room secured — ${tasks.length} tasks queued for execution` },
+      { time: '0:00', text: '⚡ Execution protocol activated — 12-minute response clock started' },
+    ]);
   };
 
   useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
@@ -358,28 +380,47 @@ export default function TwelveMinuteTestDrive() {
                     {tasks.filter(t => t.phase === phase).map((t, gi) => {
                       const globalIdx = tasks.indexOf(t);
                       const st = taskStatuses[globalIdx] || 'pending';
+                      const isDone    = st === 'done';
+                      const isActive  = st === 'active';
+                      const isPending = st === 'pending';
                       return (
                         <div key={gi} style={{
                           display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8,
-                          background: st === 'done' ? 'rgba(43,138,110,0.05)' : st === 'active' ? 'rgba(201,168,76,0.05)' : '#fff',
-                          border: `1px solid ${st === 'done' ? TEAL : st === 'active' ? GOLD : BORDER}`,
-                          borderLeft: `3px solid ${st === 'done' ? TEAL : st === 'active' ? GOLD : BORDER}`,
+                          background: isDone ? TEAL : isActive ? 'rgba(201,168,76,0.08)' : '#fff',
+                          border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`,
+                          borderLeft: `4px solid ${isDone ? '#1a6b52' : isActive ? GOLD : '#D1D5DB'}`,
                           transition: 'all 0.4s ease',
+                          opacity: isPending ? 0.7 : 1,
                         }}>
+                          {/* Status icon */}
                           <div style={{ flexShrink: 0, marginTop: 2 }}>
-                            {st === 'done' ? (
-                              <div style={{ width: 18, height: 18, borderRadius: '50%', background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#fff', fontWeight: 700 }}>✓</div>
-                            ) : st === 'active' ? (
-                              <div style={{ width: 18, height: 18, borderRadius: '50%', border: `2px solid ${GOLD}`, animation: 'pulse 1.2s ease-in-out infinite' }} />
+                            {isDone ? (
+                              <div style={{ width: 20, height: 20, borderRadius: '50%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: TEAL, fontWeight: 800 }}>✓</div>
+                            ) : isActive ? (
+                              <div style={{ width: 20, height: 20, borderRadius: '50%', border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'pulse 1.2s ease-in-out infinite' }} />
                             ) : (
-                              <div style={{ width: 18, height: 18, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
+                              <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
                             )}
                           </div>
-                          <div style={{ flex: 1 }}>
-                            <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, marginBottom: 3, letterSpacing: '0.05em' }}>{t.role}</div>
-                            <div style={{ fontSize: 13, color: NAVY, fontWeight: 500, lineHeight: 1.4 }}>{t.action}</div>
+                          {/* Content */}
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                              <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? '#fff' : GOLD, letterSpacing: '0.05em' }}>{t.role}</span>
+                              {/* Status badge */}
+                              {isDone && (
+                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 7px', background: 'rgba(255,255,255,0.2)', color: '#fff', borderRadius: 2 }}>CONFIRMED ✓</span>
+                              )}
+                              {isActive && (
+                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '2px 7px', background: 'rgba(201,168,76,0.15)', color: GOLD, border: `1px solid ${GOLD}`, borderRadius: 2 }}>DISPATCHED</span>
+                              )}
+                              {isPending && (
+                                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 7px', background: '#F3F4F6', color: '#9CA3AF', borderRadius: 2 }}>QUEUED</span>
+                              )}
+                            </div>
+                            <div style={{ fontSize: 13, color: isDone ? '#fff' : NAVY, fontWeight: isDone ? 600 : 500, lineHeight: 1.4 }}>{t.action}</div>
                           </div>
-                          <div style={{ fontSize: 10, color: MUTED, flexShrink: 0 }}>{t.time}</div>
+                          {/* Time target */}
+                          <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.6)' : MUTED, flexShrink: 0, marginTop: 2 }}>{t.time}</div>
                         </div>
                       );
                     })}
@@ -393,12 +434,18 @@ export default function TwelveMinuteTestDrive() {
                   {running ? '● LIVE FEED' : '○ FEED PAUSED'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
-                  {liveEvents.map((e, i) => (
-                    <div key={i} style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', borderLeft: '2px solid rgba(201,168,76,0.3)', paddingLeft: 10, lineHeight: 1.5 }}>
-                      <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>
-                      {e.text}
-                    </div>
-                  ))}
+                  {liveEvents.map((e, i) => {
+                    const isConfirmed = e.text.startsWith('✅');
+                    const isDispatched = e.text.startsWith('📤');
+                    const borderColor = isConfirmed ? TEAL : isDispatched ? GOLD : 'rgba(255,255,255,0.2)';
+                    const textColor   = isConfirmed ? '#6EE7B7' : 'rgba(255,255,255,0.8)';
+                    return (
+                      <div key={i} style={{ fontSize: 11, color: textColor, borderLeft: `2px solid ${borderColor}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>
+                        {e.text}
+                      </div>
+                    );
+                  })}
                   {liveEvents.length === 0 && (
                     <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>
                   )}
