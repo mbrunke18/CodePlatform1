@@ -1,5 +1,5 @@
 # VaughnMartin Execution OS — Developer Reference
-*Last updated: April 6, 2026 (rev 16) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 6, 2026 (rev 17) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -8,10 +8,23 @@
 **Execution OS** by VaughnMartin is a Strategic Execution platform for Fortune 1000 companies. It automates project creation, task assignment, document staging, and budget allocation within 12 minutes of a strategic trigger firing.
 
 - **170 active playbooks** across 9 domains
-- **248+ data points** across 20 signal categories, monitored in 15-minute cycles
+- **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
 - **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
-- **Executive authority preserved** — No playbook activates without executive authorization. AI monitors continuously, scores signals, and recommends the right playbook. The executive decision is the same decision — it just arrives in seconds rather than 30 days. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
+- **Executive authority preserved** — No playbook activates without executive authorization. AI monitors, scores signals, and recommends the right playbook. Executives decide. The decision is the same; the mobilization cycle surrounding it is compressed from 30 days to 12 minutes. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
+
+**Signal Vocabulary — Three Different Numbers, Three Different Layers (do not conflate):**
+
+| Number | What It Is | Where It Lives | User-Facing? |
+|---|---|---|---|
+| **20** | Raw data category groups in `shared/intelligence-signals.ts` | Internal data file | No — never show this to users |
+| **16** | Pattern matchers in `SignalEvaluationService.evaluateSignal()` | Internal service | No — implementation detail only |
+| **9** | Strategic domains in the playbook library | Product taxonomy | **Yes — canonical user-facing metric** |
+| **221** | Total triggers in the DB | Product data | **Yes — canonical user-facing metric** |
+| **248+** | Total data points across all 20 raw categories | Canonical count | **Yes — always with "+" suffix** |
+
+The retired phrase "16 signal categories" was a previous UI label shown to users. It has been replaced everywhere with "9 strategic domains, 221 triggers." Never write "16 signal categories" in any user-facing copy. The internal counts (20 categories, 16 patterns) are technical implementation details that belong only in code comments and this document.
+
 - **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×" and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time most Fortune 1000 organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Execution OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster." The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
 - **Microsoft Ecosystem positioning** — Execution OS is positioned as "The strategic command layer *above* Microsoft's agentic stack." It does NOT replace Azure AI, Teams, Copilot Studio, Entra, or Power Platform — it orchestrates them. This is a key GTM message: every Microsoft enterprise customer is an immediately addressable prospect with no rip-and-replace required. The full architecture diagram lives at `/ecosystem`.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
@@ -1029,7 +1042,7 @@ Three new features wired into the playbook execution flow, backed by GPT-4o.
 **What it does:** Replaces the old plain success message when `executionStatus === 'completed'`. Automatically surfaces a full debrief — no navigation required.
 
 **Sections rendered:**
-- **Hero banner:** Trophy icon, "Playbook Executed Successfully", speed multiplier (e.g. 360x vs. 72-hr standard), ROI dollar value pill (time saved × $40/min Fortune 1000 rate, formatted as $XK or $X.XM)
+- **Hero banner:** Trophy icon, "Playbook Executed Successfully", speed multiplier (e.g. 3,600× vs. 30-day mobilization baseline), ROI dollar value pill (time saved × $40/min Fortune 1000 rate, formatted as $XK or $X.XM)
 - **3 CTAs:** "Proceed to ADVANCE" (→ `/workspace?tab=advance`), "View ROI Dashboard" (→ `/roi-dashboard`), "Outcome Report" (→ `/activation-outcome/:id`)
 - **ADVANCE Debrief Strip:** 4 metric cards — Performance Score (0–100), Time Preserved (hours), Tasks Completed (X/Y with %), Decision Velocity (Nx multiplier)
 - **AI Recommendation:** Single actionable sentence based on score tier (Exceptional ≥90 / Strong ≥75 / On Track ≥60 / Needs Review <60), with link to ADVANCE workspace
