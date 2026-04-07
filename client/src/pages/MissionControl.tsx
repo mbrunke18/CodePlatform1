@@ -41,9 +41,11 @@ interface Activation {
   playbookName: string;
   domainName: string;
   activationReason?: string;
+  situationSummary?: string;
   activatedAt: string;
   completedAt?: string;
   successRating?: number;
+  playbookImprovements?: Array<{ area: string; suggestion: string }>;
 }
 
 interface LiveStatus {
@@ -122,6 +124,158 @@ function useClock(): string {
     return () => clearInterval(id);
   }, []);
   return time;
+}
+
+// ─── Execution Intelligence Trend Panel ──────────────────────────────────────
+function ExecutionIntelligenceTrend({ activations }: { activations: Activation[] }) {
+  const sorted = [...activations]
+    .filter(a => a.successRating != null)
+    .sort((a, b) => new Date(a.activatedAt).getTime() - new Date(b.activatedAt).getTime());
+
+  const hasData = sorted.length > 0;
+  const scores = sorted.map(a => a.successRating as number);
+  const avgScore = hasData ? Math.round(scores.reduce((s, n) => s + n, 0) / scores.length) : null;
+  const latest = sorted[sorted.length - 1];
+  const latestScore = latest?.successRating ?? null;
+  const trend = scores.length >= 2 ? latestScore! - scores[0] : null;
+  const improvements = latest?.playbookImprovements ?? [];
+  const maxScore = Math.max(...scores, 60);
+
+  const barColor = (score: number) => {
+    if (score >= 85) return TEAL;
+    if (score >= 70) return '#5BB89B';
+    if (score >= 55) return GOLD;
+    return '#E8A94B';
+  };
+
+  return (
+    <div style={{
+      background: 'linear-gradient(135deg, rgba(43,138,110,0.06) 0%, rgba(10,15,46,0.6) 100%)',
+      border: '1px solid rgba(43,138,110,0.22)',
+      borderLeft: `3px solid ${TEAL}`,
+      borderRadius: 10, padding: '20px 24px', marginBottom: 18,
+    }}>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <TrendingUp size={13} color={TEAL} />
+          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>
+            EXECUTION INTELLIGENCE TREND
+          </span>
+        </div>
+        {hasData && trend !== null && (
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 5,
+            background: trend > 0 ? 'rgba(43,138,110,0.15)' : 'rgba(201,168,76,0.12)',
+            border: `1px solid ${trend > 0 ? 'rgba(43,138,110,0.3)' : 'rgba(201,168,76,0.25)'}`,
+            borderRadius: 20, padding: '3px 10px',
+          }}>
+            <span style={{ fontSize: 10, fontWeight: 800, color: trend > 0 ? TEAL : GOLD }}>
+              {trend > 0 ? `+${trend}` : trend} pts
+            </span>
+            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', fontWeight: 600 }}>
+              {trend > 0 ? 'compounding ↑' : 'stabilizing'}
+            </span>
+          </div>
+        )}
+      </div>
+
+      {hasData ? (
+        <div style={{ display: 'grid', gridTemplateColumns: '140px 1fr 220px', gap: 24, alignItems: 'center' }}>
+          {/* Left — EQS Score */}
+          <div>
+            <div style={{ marginBottom: 4 }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 700, color: avgScore! >= 80 ? TEAL : GOLD, lineHeight: 1 }}>
+                {avgScore}
+              </span>
+              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)', fontWeight: 600, marginLeft: 4 }}>/100</span>
+            </div>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 8 }}>
+              AVG EXECUTION QUALITY
+            </div>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', lineHeight: 1.5 }}>
+              {sorted.length} activation{sorted.length !== 1 ? 's' : ''} captured<br />
+              Each cycle feeds the next
+            </div>
+          </div>
+
+          {/* Center — Sparkline */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 64, marginBottom: 8 }}>
+              {sorted.map((a, i) => {
+                const score = a.successRating as number;
+                const height = Math.max(8, Math.round((score / maxScore) * 60));
+                return (
+                  <div key={a.id} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+                    <div
+                      title={`Cycle ${i + 1}: ${score}/100`}
+                      style={{
+                        width: '100%', height,
+                        background: barColor(score),
+                        borderRadius: 3,
+                        opacity: i === sorted.length - 1 ? 1 : 0.55 + (i / sorted.length) * 0.4,
+                        transition: 'all 0.3s',
+                        cursor: 'default',
+                      }}
+                    />
+                  </div>
+                );
+              })}
+              {sorted.length < 6 && Array.from({ length: 6 - sorted.length }).map((_, i) => (
+                <div key={`empty-${i}`} style={{ flex: 1, height: 8, background: 'rgba(255,255,255,0.05)', borderRadius: 3 }} />
+              ))}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.2)', fontWeight: 600 }}>Cycle 1</span>
+              <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.2)', fontWeight: 600 }}>
+                {sorted.length < 6 ? `${6 - sorted.length} cycles to full baseline` : 'Baseline established'}
+              </span>
+              <span style={{ fontSize: 9, color: TEAL, fontWeight: 700 }}>Latest</span>
+            </div>
+          </div>
+
+          {/* Right — Institutional Memory */}
+          <div style={{ borderLeft: '1px solid rgba(255,255,255,0.07)', paddingLeft: 20 }}>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.25)', marginBottom: 10 }}>
+              ENCODED FROM LAST CYCLE
+            </div>
+            {improvements.length > 0 ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+                {improvements.slice(0, 3).map(({ area, suggestion }, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 8 }}>
+                    <div style={{ width: 4, height: 4, borderRadius: '50%', background: TEAL, flexShrink: 0, marginTop: 5 }} />
+                    <div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.6)', marginBottom: 1 }}>{area}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', lineHeight: 1.4 }}>{suggestion}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', lineHeight: 1.5 }}>
+                Learning captured after first activation completes
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        /* Empty state */
+        <div style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '8px 0' }}>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.5)', marginBottom: 4 }}>
+              Decision quality compounds with every activation
+            </div>
+            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', lineHeight: 1.6, maxWidth: 500 }}>
+              Each time a playbook activates, execution quality is scored, improvements are encoded, and the next response starts from a better place. Activate your first playbook to begin the intelligence loop.
+            </div>
+          </div>
+          <a href="/playbooks" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', color: TEAL, border: '1px solid rgba(43,138,110,0.3)', borderRadius: 6, padding: '9px 16px', fontSize: 11, fontWeight: 700, textDecoration: 'none' }}>
+            Browse Playbooks <ChevronRight size={11} />
+          </a>
+        </div>
+      )}
+    </div>
+  );
 }
 
 // ─── Pulse Orb ───────────────────────────────────────────────────────────────
@@ -474,6 +628,9 @@ export default function MissionControl() {
               ))}
             </div>
           </div>
+
+          {/* ── EXECUTION INTELLIGENCE TREND ─────────────────────────────── */}
+          <ExecutionIntelligenceTrend activations={activations} />
 
           {/* ── RESEARCH CONSENSUS INDICATOR ──────────────────────────────── */}
           <div style={{ background: 'rgba(43,138,110,0.03)', border: '1px solid rgba(43,138,110,0.1)', borderRadius: 8, padding: '9px 18px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' as const }}>
