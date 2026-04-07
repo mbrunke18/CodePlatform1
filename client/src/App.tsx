@@ -152,6 +152,7 @@ const LivingPlaybooks = lazy(() => import("./pages/LivingPlaybooks"));
 const ContinuousModePage = lazy(() => import("./pages/ContinuousModePage"));
 const PlaybookReadinessAudit = lazy(() => import("./pages/PlaybookReadinessAudit"));
 const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
+const PlatformCapabilities = lazy(() => import("./pages/PlatformCapabilities"));
 const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
@@ -565,6 +566,7 @@ function Router() {
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
         {renderRedirects(["/executive-simulation", "/simulation-demo"], "/try-demo")}
         <Route path="/platform-overview" component={PlatformOverview} />
+        <Route path="/capabilities" component={PlatformCapabilities} />
         {renderRedirects(["/product-tour", "/video-tour"], "/try-demo")}
         {renderRoutes(["/investor-presentation", "/pitch-deck"], InvestorPresentation)}
         {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/try-demo")}

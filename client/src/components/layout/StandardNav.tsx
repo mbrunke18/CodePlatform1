@@ -196,6 +196,7 @@ export default function StandardNav() {
 
   const investorsLinks: NavLink[] = [
     { label: "Investor Resources", path: "/investor-resources", icon: FileText, description: "Full materials — frameworks, thesis & deck", featured: true },
+    { label: "Platform Capabilities", path: "/capabilities", icon: Layers, description: "Every capability across the full decision lifecycle" },
     { label: "Investment Thesis", path: "/investors", icon: TrendingUp, description: "Market opportunity, research validation & ROI case" },
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor presentation" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive-ready board reporting" },
@@ -442,6 +443,7 @@ export default function StandardNav() {
             {megaColHeading("Investor Materials")}
             {[
               { path: '/investor-resources', icon: FileText, label: 'Investor Resources', sub: 'Full materials — frameworks, thesis & deck', featured: true },
+              { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — product depth for buyers & investors' },
               { path: '/investors', icon: TrendingUp, label: 'Investment Thesis', sub: 'Market opportunity, research validation & ROI case' },
               { path: '/pitch-deck', icon: Presentation, label: 'Pitch Deck', sub: 'Pre-seed investor presentation' },
             ].map(l => megaItem(l))}
@@ -503,6 +505,7 @@ export default function StandardNav() {
     ];
     const deeperDemos = [
       { path: '/executive-scenarios', icon: Target, label: 'Executive Scenario Suite', sub: 'Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare.' },
+      { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — preparation, activation, coordination, and learning.' },
       { path: '/simulation-studio', icon: FlaskConical, label: 'Shadow Strategy Simulator', sub: 'The hardest to replicate. AI dry-runs any scenario and scores Survive vs. Thrive before a trigger fires.' },
       { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
       { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right playbook in 60 seconds' },

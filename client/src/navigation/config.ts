@@ -168,6 +168,13 @@ export const navigationConfig: NavigationConfig = {
           description: 'Industry + role walk-throughs — full IDEA chain with real playbooks'
         },
         {
+          id: 'platform-capabilities',
+          label: 'Platform Capabilities',
+          path: '/capabilities',
+          icon: '🗂️',
+          description: 'Every capability across the full decision lifecycle — preparation, activation, coordination, learning'
+        },
+        {
           id: 'shadow-simulator',
           label: 'Shadow Simulator',
           path: '/simulation-studio',
