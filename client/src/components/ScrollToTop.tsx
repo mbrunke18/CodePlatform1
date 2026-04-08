@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useRef } from "react";
 import { useLocation } from "wouter";
 
-export function scrollToTop() {
+function resetAllScrollContainers() {
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
@@ -9,27 +9,33 @@ export function scrollToTop() {
   const root = document.getElementById('root');
   if (root) root.scrollTop = 0;
 
-  document.querySelectorAll('[data-scroll-container], main, .overflow-auto, .overflow-y-auto, .min-h-screen').forEach(el => {
+  document.querySelectorAll(
+    '[data-scroll-main], [data-scroll-container], main, .overflow-auto, .overflow-y-auto'
+  ).forEach(el => {
     if (el instanceof HTMLElement) {
       el.scrollTop = 0;
     }
   });
+}
+
+export function scrollToTop() {
+  resetAllScrollContainers();
 
   requestAnimationFrame(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    resetAllScrollContainers();
   });
 
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }, 50);
+  // Catch pages that scroll in their own useEffect (fires ~after mount)
+  const t1 = setTimeout(resetAllScrollContainers, 80);
+  const t2 = setTimeout(resetAllScrollContainers, 200);
+  const t3 = setTimeout(resetAllScrollContainers, 400);
 
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 150);
+  // Return cleanup so callers can cancel if needed
+  return () => {
+    clearTimeout(t1);
+    clearTimeout(t2);
+    clearTimeout(t3);
+  };
 }
 
 export function ScrollToTop() {
@@ -38,8 +44,9 @@ export function ScrollToTop() {
 
   useEffect(() => {
     if (prevLocation.current !== location) {
-      scrollToTop();
       prevLocation.current = location;
+      const cleanup = scrollToTop();
+      return cleanup;
     }
   }, [location]);
 
