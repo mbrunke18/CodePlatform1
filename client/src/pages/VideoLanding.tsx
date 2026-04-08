@@ -8,11 +8,9 @@ import { ArrowLeft, Clock, Play, Users, Zap, ArrowRight } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import PageLayout from '@/components/layout/PageLayout';
 import CinematicHero from "@/components/marketing/CinematicHero";
-import SizzleReel from "@/components/marketing/SizzleReel";
 import ThirtySecondSpot from "@/components/marketing/ThirtySecondSpot";
 
 function getInitialTab(loc: string): string {
-  if (loc === "/sizzle" || loc === "/2-minute") return "2-minute";
   if (loc === "/spots" || loc === "/30-second") return "30-second";
   return "90-second";
 }
@@ -53,7 +51,7 @@ export default function VideoLanding() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Executive Resources</span>
             </div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: '#F0EDE4', marginBottom: 10, lineHeight: 1.1 }} data-testid="heading-video-hub">
-              Brand Films & <em style={{ color: '#C9A84C' }}>Sizzle Reels</em>
+              Brand Films & <em style={{ color: '#C9A84C' }}>30-Second Spots</em>
             </div>
             <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
               Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Readiness OS.
@@ -63,7 +61,7 @@ export default function VideoLanding() {
 
         <div className="max-w-7xl mx-auto px-6 py-12">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full max-w-2xl grid-cols-3 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
+            <TabsList className="grid w-full max-w-lg grid-cols-2 bg-white border border-[#E8E4DC] p-1 rounded-none mb-12" data-testid="video-tabs">
               <TabsTrigger 
                 value="90-second" 
                 className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
@@ -71,14 +69,6 @@ export default function VideoLanding() {
               >
                 <Clock className="h-3 w-3 mr-2" />
                 90 Seconds
-              </TabsTrigger>
-              <TabsTrigger 
-                value="2-minute" 
-                className="rounded-none data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-[#C9A84C] data-[state=active]:shadow-none font-bold uppercase text-[9px] tracking-widest py-3 text-[#6B7280]"
-                data-testid="tab-2-minute"
-              >
-                <Clock className="h-3 w-3 mr-2" />
-                2 Minutes
               </TabsTrigger>
               <TabsTrigger 
                 value="30-second" 
@@ -104,23 +94,6 @@ export default function VideoLanding() {
               </div>
               <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-xl">
                 <CinematicHero />
-              </div>
-            </TabsContent>
-
-            <TabsContent value="2-minute" className="mt-0">
-              <div className="mb-8">
-                <div className="flex items-center gap-3 mb-2">
-                  <Badge className="bg-[#C9A84C] text-[#0A0F2E] rounded-none uppercase text-[9px] font-bold tracking-widest px-3 py-1 border-0">Extended</Badge>
-                  <h2 className="text-2xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-2-minute">
-                    "Prepared to Execute" - 2 Minute Sizzle Reel
-                  </h2>
-                </div>
-                <p className="text-[#6B7280] text-sm uppercase tracking-widest font-bold">
-                  Purpose: Conference sessions · investor presentations · sales meetings · website
-                </p>
-              </div>
-              <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-xl">
-                <SizzleReel />
               </div>
             </TabsContent>
 
@@ -158,7 +131,7 @@ export default function VideoLanding() {
                 <div className="space-y-4">
                   <div className="h-1 w-12 bg-[#0A0F2E]" />
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-3">
-                    Version 3: "360X Faster"
+                    Version 3: "3,600× Execution Head Start"
                   </h3>
                   <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
                     <ThirtySecondSpot version="360x-faster" />

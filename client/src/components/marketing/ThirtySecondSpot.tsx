@@ -503,7 +503,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
       case "first-mover":
         return "The First Mover";
       case "360x-faster":
-        return "360X Faster";
+        return "3,600× Execution Head Start";
       default:
         return "Offense, Defense, Special Teams";
     }

@@ -515,7 +515,8 @@ function Router() {
         <Route path="/executive-scenarios" component={ExecutiveScenarioSuite} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
         <Route path="/readiness-assessment" component={ReadinessAssessment} />
-        {renderRoutes(["/video", "/cinematic", "/sizzle", "/2-minute", "/spots", "/30-second", "/brand-films"], VideoLanding)}
+        {renderRoutes(["/video", "/cinematic", "/spots", "/30-second", "/brand-films"], VideoLanding)}
+        {renderRedirects(["/sizzle", "/2-minute"], "/12-minute-experience")}
 
         {/* Integration Hub */}
         <Route path="/integration-hub" component={IntegrationHub} />

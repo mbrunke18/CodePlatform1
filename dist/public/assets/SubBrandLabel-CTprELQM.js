@@ -1,1 +1,0 @@
-import{j as s}from"./index-B3C86coA.js";import{V as o}from"./VaughnMartinLogo-Cno5q7Xm.js";const r=["Playbook™","Signal™","Compass™","Retrospect™"];function c({name:n,size:a=14,className:i=""}){return s.jsxs("span",{className:`inline-flex items-center gap-1 ${i}`,children:[s.jsx(o,{variant:"icon-only",height:a}),n]})}function l(n){return r.includes(n)}export{c as S,l as i};

@@ -1,7 +1,9 @@
 # VaughnMartin — Readiness OS
 
 ## Overview
-VaughnMartin's Readiness OS is a command infrastructure platform designed for Fortune 1000 companies. Its primary goal is to automate project creation, task assignment, document staging, and budget allocation to achieve a 12-minute response time to strategic triggers. The platform incorporates 170 strategic readiness playbooks across 9 domains within its proprietary IDEA Framework™. It operates on a model where AI monitors, executives authorize, and execution is pre-staged, enabling rapid and approved actions. The vision is to become "The Readiness Infrastructure Enterprises Are Missing," empowering enterprises to be "Fearless."
+VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000. Its primary goal is to automate project creation, task assignment, document staging, and budget allocation to achieve a 12-minute response time to strategic triggers. The platform incorporates 170 strategic readiness playbooks across 9 domains within its proprietary IDEA Framework™. It operates on a model where AI monitors, executives authorize, and execution is pre-staged, enabling rapid and approved actions. The vision is to become "The Readiness Infrastructure Enterprises Are Missing," empowering enterprises to be "Fearless."
+
+**Canonical product descriptor:** "VaughnMartin builds Readiness OS — coordination infrastructure for the Fortune 1000."
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -9,6 +11,7 @@ VaughnMartin's Readiness OS is a command infrastructure platform designed for Fo
 - **PRODUCT THESIS ARC (LOCKED):** Preparation → Readiness → Fearless. "Any organization can be ready and prepared to respond to any situation they would expect to encounter or have encountered." The canonical tagline is: **"The response is ready before the trigger fires."** The emotional endpoint of the platform is fearlessness — not speed. Speed is the evidence; readiness is the promise; fearless is the outcome. This arc must be present on the Homepage hero, Investor pages, WelcomeBrief, TwelveMinuteTestDrive debrief, and FounderStory. Every enterprise that prepares for every situation it'll face is no longer afraid of strategic triggers — it's fearless.
 - **LOCKED MESSAGING — NEVER CHANGE:** The 3,600× metric is NOT a generic "speed advantage." The real-world comparison is weeks to months (30 days conservative baseline) vs. 12 minutes. In a Fortune 1000, when a strategic trigger fires, the enterprise spends weeks just to MOBILIZE — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Readiness OS compresses that entire cycle to 12 minutes. The correct label is always "3,600× Execution Head Start" — never "speed advantage," never "faster." The correct framing is "30 days compressed to 12 minutes." Comparison table entries must NEVER show "0" — use: "Automatic — continuous monitoring," "Pre-staged before the trigger fires," "Pre-staged — 170 playbooks ready," "Automated at trigger point," or "12 minutes after trigger detection." Every instance of this metric on the platform must reflect this framing. The old "340×," "360×," and "72 hours" framing is RETIRED.
 - **MICROSOFT FRAMING (LOCKED):** "Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the operating model layer above the Microsoft investment — not a replacement, an orchestrator.
+- **HBR INTEGRATION (Feb 2026):** Harvard Business Review research shows AI intensifies work without an operating model (+47% task scope, +32% multitasking, blurred roles). HBR cards use red accent (#dc2626). Deployed across 8 touchpoints: Homepage, Validation.tsx, SizzleReel (retired), Research.tsx, and 3 investor pages.
 - Valued prioritization approach with phase-by-phase implementation
 - Maintain core product vision: AI monitors, executives authorize, execution pre-staged. The phrase "human-AI partnership" is RETIRED from all UI/UX copy — replace with "AI monitors, executives authorize" or "Executive authority preserved." No playbook activates without executive sign-off. The preparation compresses the mobilization cycle; the decision remains human.
 - Executive professional language required across UI/UX
@@ -17,15 +20,49 @@ VaughnMartin's Readiness OS is a command infrastructure platform designed for Fo
 - Desktop-first layout; mobile adjustments only if non-disruptive
 - Homepage dark sections use `NAVY_BG="#132558"` (not `NAVY="#0A0F2E"`) for large `<section>` backgrounds — lighter so it reads as genuine navy blue rather than near-black. All other files use `NAVY` only. Dark sections layer a gold grid (`rgba(201,168,76,0.09)`, 1px, 48px) and large radial gradient orbs (teal + gold, 600–1000px, opacity 0.11–0.22) for visual depth.
 
+## Retired Terms — NEVER USE in UI
+The following terms have been permanently retired from all customer-facing copy:
+- `"72 hours"` as a mobilization baseline (legitimate uses only: regulatory windows, incident timelines, "before Readiness OS" comparison columns)
+- `"340×"` or `"340x"` — retired speed metric
+- `"360×"` or `"360x"` or `"360X"` — retired speed metric (internal-only prop `version="360x-faster"` on ThirtySecondSpot is acceptable as a code identifier, not display text)
+- `"Agentic Execution"` — replaced with "AI-Coordinated Execution"
+- `"Agentic Execution Layer"` — fully retired
+- `"Execution Operating System"` — product is "Readiness OS"
+- `"Strategic Execution Operating System"` — retired category name
+- `"Execution Infrastructure"` as a standalone descriptor — replaced with "coordination infrastructure"
+- `"Human-AI partnership"` — replaced with "AI monitors, executives authorize"
+- `"Prepared to Execute."` as a tagline — replaced with "The response is ready before the trigger fires."
+
+## Canonical Metrics (use these exact values everywhere)
+- Response time: **12 minutes**
+- Execution head start: **3,600× Execution Head Start**
+- Baseline comparison: **30 days compressed to 12 minutes**
+- Playbooks: **170**
+- Domains: **9**
+- Triggers: **221**
+- Data points: **248+**
+- Fortune 1000 strategic spend: **$847B**
+- Strategic initiative failure rate: **83%**
+
+## Brand Colors
+- `NAVY="#0A0F2E"` — primary dark (all files except Homepage sections)
+- `NAVY_BG="#132558"` — Homepage large section backgrounds only
+- `GOLD="#C9A84C"`
+- `TEAL="#2B8A6E"`
+- `IVORY="#F0EDE4"`
+
 ## System Architecture
 
 **UI/UX Decisions:**
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
 - **Branding:** Consistent VaughnMartin and Readiness OS branding with a circular seal logo.
-- **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`).
+- **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`). StandardNav Experience dropdown is hardcoded in `renderExperienceDropdown()` — edit `deeperDemos`/`primaryDemos` arrays to change it.
 - **Layout:** All pages are wrapped by a `PageLayout` component.
 - **Homepage:** Focuses on 12-minute execution, IDEA Framework, and research-backed validation with a specific section order.
+
+**Critical Import Rules:**
+- `ExecutionStageGuide` is a NAMED export — always `import { ExecutionStageGuide } from '@/components/ExecutionStageGuide'`
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion.
@@ -49,7 +86,7 @@ VaughnMartin's Readiness OS is a command infrastructure platform designed for Fo
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Data Consistency:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×), number of playbooks (170), and triggers (221).
 - **Personalized ROI Calculator:** Interactive calculator on `/roi-calculator`.
-- **12-Minute Test Drive:** A public 4-step sequential experience simulating execution.
+- **12-Minute Test Drive:** A public 4-step sequential experience simulating execution at `/12-minute-experience`. Primary destination for prospects — replaces the retired SizzleReel as the "send before a call" asset.
 - **Playbook Public Access Model:** 3 playbooks are fully public, others require authentication.
 - **McKinsey Research Citations:** Integrated `McKinseyResearchSection` on investor pages.
 - **Live Signal Detection:** Real RSS ingestion from 8 sources every 15 minutes, with `SignalEvaluationService` scoring against 16 trigger patterns.
@@ -65,7 +102,15 @@ VaughnMartin's Readiness OS is a command infrastructure platform designed for Fo
 - **Executive Scenario Suite:** Authenticated deep walk-through at `/executive-scenarios` with industry and role selectors.
 - **Platform Capabilities Page:** `/capabilities` details the full decision lifecycle for product users and investors.
 - **ExecutionStageGuide:** Shared component defining all 6 execution lifecycle stages, deployed across the platform.
+- **Brand Films Page (`/video`, `/brand-films`, `/cinematic`):** Two-tab layout — 90-Second CinematicHero and 30-Second ThirtySecondSpot (3 versions). Routes `/sizzle` and `/2-minute` redirect to `/12-minute-experience`.
+- **ThirtySecondSpot:** Three versions — `offense-defense`, `first-mover`, `360x-faster` (internal prop identifier only; display label is "3,600× Execution Head Start").
 - Playbooks are consistently referred to as "Readiness Playbooks" across the UI.
+
+**Retired Components:**
+- `SizzleReel.tsx` — permanently deleted. Was a 2-minute animated brand film. Superseded by the 12-Minute Test Drive (interactive) and ThirtySecondSpot (quick pitch). File removed from codebase April 2026.
+
+**Pages not in footer (keep files, just not linked):**
+- `/execution-coordination`, `/enterprise-metrics`, `/ai-radar`, `/intelligence-hub`, `/decision-velocity`
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI
