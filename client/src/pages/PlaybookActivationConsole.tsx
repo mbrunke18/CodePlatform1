@@ -974,7 +974,7 @@ export default function PlaybookActivationConsole() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED }}>Decision Velocity</span>
               </div>
               <div style={{ ...CG, fontSize:40, fontWeight:600, color: NAVY, lineHeight:1 }} data-testid="text-velocity-multiplier">
-                {elapsedMinutes > 0 ? `${(industryStandard / elapsedMinutes).toFixed(0)}x` : '360x+'}
+                {elapsedMinutes > 0 ? `${(industryStandard / elapsedMinutes).toFixed(0)}x` : '3,600×'}
               </div>
               <div style={{ fontSize:10, fontWeight:600, letterSpacing:"0.1em", textTransform:"uppercase", color: MUTED, marginTop:8 }}>
                 3,600× Execution Head Start

@@ -148,7 +148,7 @@ export default function OnboardingGuide() {
               </div>
               <div>
                 <div style={{ fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: "2.5px", textTransform: "uppercase" as const }}>VaughnMartin</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "1px" }}>Execution Operating System</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "1px" }}>Readiness OS</div>
               </div>
             </div>
             <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, color: "#fff", margin: "0 0 12px", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
@@ -318,7 +318,7 @@ export default function OnboardingGuide() {
         <Section id="playbooks">
           <SectionHeader
             label="05 — Playbook Library"
-            title="170 Pre-Built Execution Playbooks"
+            title="170 Pre-Built Readiness Playbooks"
             subtitle="Every playbook contains 4 structured phases, role-specific task assignments, decision gates, escalation protocols, and expert content — pre-built before the trigger fires."
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>

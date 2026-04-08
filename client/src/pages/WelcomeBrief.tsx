@@ -303,7 +303,7 @@ export default function WelcomeBrief() {
           background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '28px 28px 24px', marginBottom: 48,
           opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.2s',
         }}>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 20 }}>Your Execution Infrastructure — Live Now</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 20 }}>Your Readiness Infrastructure — Live Now</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
             {[
               { icon: Shield, label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
