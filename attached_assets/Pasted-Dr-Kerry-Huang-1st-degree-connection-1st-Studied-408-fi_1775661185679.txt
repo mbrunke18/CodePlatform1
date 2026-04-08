@@ -1,0 +1,118 @@
+Dr. Kerry Huang 
+1st degree connection
+· 1st
+Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)
+Apr 1
+Dr. Kerry Huang sent the following message at 1:40 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   1:40 PM
+Martin, your perspective on coordination as the missing layer between AI and execution really resonated with me. I’ve been exploring similar ideas through my 6-ER thinking around orchestration and decision flow. Would be great to connect and exchange perspectives on this.
+
+Monday
+Martin Brunke sent the following message at 9:22 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   9:22 AM
+Kerry, really glad it resonated. The convergence between your 6-ER orchestration thinking and what I built on the execution side is exactly the kind of intersection worth exploring properly.
+
+Would welcome any opportunity to speak when your schedule allows. I am in the US so happy to work around the time difference.
+
+Dr. Kerry Huang sent the following message at 9:27 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   9:27 AM
+Martin, really appreciate that—and I agree, this intersection between coordination and decision orchestration is where a lot of real leverage sits.
+
+Your point reinforces something I’ve been reflecting on as well: execution is less about capability, and more about how decisions are connected and aligned across the system.
+
+I’d be glad to continue the conversation asynchronously here as a start. In the meantime, I recently shared a post featuring my Forbes article that expands on this thinking—would value your perspective:
+https://www.linkedin.com/posts/dr-k-atlas_awacourage-supplychain-leadership-activity-7446909714195664897-qpun?utm_source=share&utm_medium=member_ios&rcm=ACoAAA1vZCkBMZjVs0gFGL6qGzj12ULvXqiO1o8
+
+View Dr. Kerry Huang’s  graphic link
+Dr. Kerry HuangDr. Kerry Huang
+   • 1stPremium • 1st
+Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)
+2d •  2 days ago • Visible to anyone on or off LinkedIn
+This week, AwaCourage spoke to me in Japanese 🇯🇵
+
+My Forbes article was just translated and published by Forbes Japan.
+
+And that signal told me something I hadn’t fully seen before.
+
+The challenges we face in supply chains are not local — they are structural, global, and shared.
+
+Across industries and countries, we continue to see the same pattern:
+Technology investment alone does not create competitive advantage.
+
+From studying 408 firms across manufacturing industries, one insight stands out — and it is uncomfortable for most boardrooms:
+
+Technology adoption alone has zero statistical relationship with supply chain collaboration improvement.
+
+Zero. Not weak. Not marginal. Zero.
+
+The business case most companies present to their boards simply does not exist in the data.
+
+Technology doesn’t build a moat.
+Capability and governance do.
+
+The real gap is not digital — it is organizational.
+
+Lidl spent seven years and nearly $580 million on a world-class SAP system.
+They walked away from it in 2018.
+
+Siemens Amberg built one of the world’s most advanced smart factories —
+not by installing technology first,
+but by ensuring operators had real decision rights before the system arrived.
+
+Same investment category. Opposite results.
+
+It was who owned the decision before it arrived.
+
+Companies don’t fail because they lack systems.
+They fail because they outsource judgment before building it.
+
+This is where I believe a new kind of leadership is required — what I call AwaCourage.
+
+“Awareness without AwaCourage is merely a well-lit prison cell.”
+
+Because in the end,
+AI will scale decisions —
+but only organizations can build the capability to make them right.
+
+Thank you to Forbes Japan for bringing this conversation to Japanese readers.
+
+The problem has no borders. The conversation shouldn’t either.
+
+Three thinkers whose conversations have sharpened how I see this problem:
+Richard Goyette Grant Oliff Oscar Chavarria 
+Grateful for the ongoing exchange.
+
+Where in your organization does the decision live — and who actually owns it when the system fails?
+
+🔗 Links in the first comment. 👇
+
+hashtag#AwaCourage hashtag#SupplyChain hashtag#Leadership hashtag#DigitalTransformation hashtag#Governance hashtag#ForbesBusinessCouncil
+…more
+Activate to view larger image,
+graphical user interface, application
+Activate to view larger image,
+Today
+Martin Brunke sent the following message at 10:39 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   10:39 AM
+Dr. Huang, 
+
+Your framing in the DM lands exactly right. Execution is less about capability and more about how decisions are connected and aligned across the system. That is the premise behind everything I built.
+
+I read the Forbes article. The Siemens versus Lidl contrast is the sharpest version of the capability-first argument I have seen anywhere. And the 408-firm finding is the sentence that matters most. Zero statistical link between technology deployment and improved collaboration. That is exactly why most AI investments are producing activity not outcomes.
+
+Your capability-first audit question is where our work converges most directly. If the platform disappeared tomorrow could your organization still make and own the high-stakes decisions it supposedly enables? What I built requires the organization to answer yes before the platform ever activates. Decision rights mapped. Ownership defined. Response architecture built. All during a period of low pressure and full information before any trigger fires. The platform then deploys what the organization already decided. It accelerates decisions your people already know how to make. That is the Siemens model made operational.
+
+The missing middle layer you describe in the article is what the preparation phase builds and captures. And every time a playbook deploys the debrief encodes what worked back into better preparation for next time. The capability compounds. The moat deepens.
+
+Your research provides the most rigorous academic foundation for what I built that I have come across.
+
+Dr. Kerry Huang sent the following messages at 10:53 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   10:53 AM
+Martin, “the capability compounds, the moat deepens” is the formulation that matters most to me here, because it names something the 408-firm data kept pointing at without landing on: the organizations where capability held longest weren’t just better prepared, they had built a feedback mechanism that made each deployment more accurate than the last. The debrief encoding what worked back into preparation isn’t just a quality improvement loop — it’s the mechanism by which the moat becomes genuinely harder to replicate, because the competitor can buy the platform but can’t buy the accumulated decision logic embedded in the preparation phase.
+
+What I’m still working out is the failure mode at the seam between preparation and deployment. In your system — where decision rights, ownership, and response architecture are all established during low pressure before any trigger fires — what’s the earliest signal that the preparation phase didn’t actually transfer when real pressure arrived? Not that the playbook failed, but that the organization reverted to improvising rather than deploying what it had already decided.
