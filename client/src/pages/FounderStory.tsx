@@ -199,7 +199,7 @@ export default function FounderStory() {
           {/* IV */}
           <RomanDivider num="IV" />
           <Body>
-            I built Command OS because I could not stop seeing the gap.
+            I built Readiness OS because I could not stop seeing the gap.
           </Body>
           <Body>
             I was not an outsider who spotted a market opportunity. I was inside these organizations for twenty years watching the same failure repeat. Role after role. Company after company. I knew what the solution looked like because I had watched the version of it work in real time under conditions that would embarrass most enterprise response timelines.
@@ -265,7 +265,7 @@ export default function FounderStory() {
             "The answer was never more intelligence. It was better infrastructure for acting on what you already know."
           </PullQuote>
           <Body>
-            Command OS uses AI — GPT-4o across five surfaces — not to generate strategy but to compress coordination. Compound Threat Intelligence detects cross-domain patterns before either domain crosses its threshold alone. The Shadow Strategy Simulator runs a dry-run before commitment. The Strategic Recorder converts institutional knowledge directly into executable playbooks. AI doing the work it should be doing — closing the coordination gap, not widening it.
+            Readiness OS uses AI — GPT-4o across five surfaces — not to generate strategy but to compress coordination. Compound Threat Intelligence detects cross-domain patterns before either domain crosses its threshold alone. The Shadow Strategy Simulator runs a dry-run before commitment. The Strategic Recorder converts institutional knowledge directly into executable playbooks. AI doing the work it should be doing — closing the coordination gap, not widening it.
           </Body>
 
           {/* VI */}
@@ -292,7 +292,7 @@ export default function FounderStory() {
             "The team that prepared walks in fearless."
           </PullQuote>
           <Body>
-            That is what Command OS is for. Not to make enterprises smarter. Not to make them faster in isolation. To make them the kind of organization that walks into every strategic event having already done the work. Having already built the coordination infrastructure. Having already answered the question.
+            That is what Readiness OS is for. Not to make enterprises smarter. Not to make them faster in isolation. To make them the kind of organization that walks into every strategic event having already done the work. Having already built the coordination infrastructure. Having already answered the question.
           </Body>
           <Body style={{ fontWeight: 600, color: NAVY }}>
             What coordination capability do we have? What playbooks are staged? What signals are we watching? What happens when they fire?
@@ -307,7 +307,7 @@ export default function FounderStory() {
             VaughnMartin exists because of a name. My father's name was Vaughn. The company carries it because this work carries his standard: do it right, do it completely, and do not accept that things have to stay broken simply because they have always been broken.
           </Body>
           <Body>
-            Command OS is the product built around that name. Not because it is technically impressive — though it is. Not because the market is large — though it is. Because it is the answer to a problem I could not stop seeing, a problem I knew was solvable, and a problem I finally stopped waiting for someone else to solve.
+            Readiness OS is the product built around that name. Not because it is technically impressive — though it is. Not because the market is large — though it is. Because it is the answer to a problem I could not stop seeing, a problem I knew was solvable, and a problem I finally stopped waiting for someone else to solve.
           </Body>
           <Body>
             I have worked inside some of the most sophisticated organizations in American business. I have watched them fail at coordination in ways that would end a football program in a single season. Watched the seventy-two hours happen again and again, carrying the knowledge that forty seconds was enough when the infrastructure was right.
@@ -346,7 +346,7 @@ export default function FounderStory() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 64 }}>
             {[
-              { label: "90 SECONDS", title: "Quick Intro", desc: "The 30-day problem, the football insight, and why Command OS exists.", type: "intro" as const, cta: "Watch Now" },
+              { label: "90 SECONDS", title: "Quick Intro", desc: "The 30-day problem, the football insight, and why Readiness OS exists.", type: "intro" as const, cta: "Watch Now" },
               { label: "3:30 MINUTES", title: "The Full Story", desc: "The complete narrative: Fortune 500 experience, the IDEA framework, and the vision.", type: "full" as const, cta: "Watch Full Story" },
             ].map(({ label, title, desc, type, cta }) => (
               <div key={type} style={{ background: "#fff", border: `1px solid ${BORDER}`, overflow: "hidden" }}>

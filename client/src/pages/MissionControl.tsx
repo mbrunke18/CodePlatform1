@@ -401,7 +401,7 @@ export default function MissionControl() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'Mission Control — Command OS | VaughnMartin',
+      title: 'Mission Control — Readiness OS | VaughnMartin',
       description: 'Single-pane executive NOC for strategic execution. Live trigger detections, domain monitoring, playbook activation.',
     });
   }, []);
@@ -668,7 +668,7 @@ export default function MissionControl() {
               </div>
             </div>
             <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
-              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, marginBottom: 2 }}>Command OS puts you in the</div>
+              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, marginBottom: 2 }}>Readiness OS puts you in the</div>
               <div style={{ color: TEAL, fontWeight: 800, fontSize: 14 }}>1% Mature</div>
               <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9 }}>12-min activation · 170 pre-staged playbooks</div>
             </div>

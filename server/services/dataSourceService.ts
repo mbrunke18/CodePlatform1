@@ -435,7 +435,7 @@ export class DataSourceService {
   }
   
   /**
-   * Transform external data to Command OS format
+   * Transform external data to Readiness OS format
    * This is where we handle different data structures from various sources
    */
   transformData(rawData: any, transformFunction: string): any {

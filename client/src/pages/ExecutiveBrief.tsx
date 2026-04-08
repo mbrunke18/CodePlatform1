@@ -54,7 +54,7 @@ const proofNumbers = [
 ];
 
 const pilotIncludes = [
-  "Full Command OS platform access for up to 25 users",
+  "Full Readiness OS platform access for up to 25 users",
   "5 customizable playbooks from the 170 library",
   "Live signal monitoring across 3 intelligence categories",
   "Microsoft Teams + Jira/Asana integration",
@@ -76,9 +76,9 @@ export default function ExecutiveBrief() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Brief — Command OS by VaughnMartin",
-      description: "A shareable executive summary of the Command OS thesis, proof numbers, ROI case, and pilot program. Built for Fortune 1000 board-level conversations.",
-      ogTitle: "Executive Brief — VaughnMartin Command OS",
+      title: "Executive Brief — Readiness OS by VaughnMartin",
+      description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and pilot program. Built for Fortune 1000 board-level conversations.",
+      ogTitle: "Executive Brief — VaughnMartin Readiness OS",
       ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic execution platform built for Fortune 1000 enterprises.",
     });
   }, []);
@@ -92,9 +92,9 @@ export default function ExecutiveBrief() {
 
   function handleForwardToBoard() {
     const url = window.location.href;
-    const subject = encodeURIComponent("Strategic Briefing: VaughnMartin Command OS — 3,600× Execution Head Start");
+    const subject = encodeURIComponent("Strategic Briefing: VaughnMartin Readiness OS — 3,600× Execution Head Start");
     const body = encodeURIComponent(
-      `Hi,\n\nSharing this for board consideration.\n\nVaughnMartin's Command OS compresses the 30-day enterprise mobilization cycle to 12 minutes — a 3,600× execution head start over traditional operating models.\n\nThe full executive brief is here: ${url}\n\nKey headline: 170 pre-staged playbooks, continuous AI monitoring across 248+ signals, and full war-room coordination in under 12 minutes after a trigger fires.\n\nHappy to discuss at your convenience.`
+      `Hi,\n\nSharing this for board consideration.\n\nVaughnMartin's Readiness OS compresses the 30-day enterprise mobilization cycle to 12 minutes — a 3,600× execution head start over traditional operating models.\n\nThe full executive brief is here: ${url}\n\nKey headline: 170 pre-staged playbooks, continuous AI monitoring across 248+ signals, and full war-room coordination in under 12 minutes after a trigger fires.\n\nHappy to discuss at your convenience.`
     );
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   }
@@ -178,7 +178,7 @@ export default function ExecutiveBrief() {
                   Faster spreadsheets. Smarter summaries. Better notes from the same slow meetings. The 30-day mobilization cycle — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — remained completely untouched.
                 </p>
                 <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginTop: 12 }}>
-                  Command OS doesn't bolt intelligence onto that model. It replaces it. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
+                  Readiness OS doesn't bolt intelligence onto that model. It replaces it. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -235,13 +235,13 @@ export default function ExecutiveBrief() {
                   30 days compressed<br />to <em style={{ color: GOLD }}>12 minutes.</em>
                 </h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.8 }}>
-                  This is not a speed advantage. It is a structural change in how enterprises mobilize. In a Fortune 1000, when a strategic trigger fires, the organization spends weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Command OS compresses that entire cycle to 12 minutes.
+                  This is not a speed advantage. It is a structural change in how enterprises mobilize. In a Fortune 1000, when a strategic trigger fires, the organization spends weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Readiness OS compresses that entire cycle to 12 minutes.
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
                   { label: "Traditional enterprise mobilization", value: "30 days", color: "#EF4444", sub: "Conservative baseline — before any execution begins" },
-                  { label: "Command OS trigger to coordination", value: "12 min", color: TEAL, sub: "Full stakeholder cascade, tasks assigned, roles live" },
+                  { label: "Readiness OS trigger to coordination", value: "12 min", color: TEAL, sub: "Full stakeholder cascade, tasks assigned, roles live" },
                   { label: "Execution head start", value: "3,600×", color: GOLD, sub: "Not faster — a different category of response" },
                 ].map(({ label, value, color, sub }) => (
                   <div key={label} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "16px 20px", background: "rgba(255,255,255,0.04)" }}>
@@ -268,7 +268,7 @@ export default function ExecutiveBrief() {
                   <tr style={{ borderBottom: "2px solid #E8E4DC" }}>
                     <th style={{ padding: "12px 16px", textAlign: "left", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, width: "25%" }}>Category</th>
                     <th style={{ padding: "12px 16px", textAlign: "left", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#6B7280", width: "37.5%" }}>Traditional Enterprise Model</th>
-                    <th style={{ padding: "12px 16px", textAlign: "left", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, width: "37.5%" }}>Command OS</th>
+                    <th style={{ padding: "12px 16px", textAlign: "left", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, width: "37.5%" }}>Readiness OS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -323,12 +323,12 @@ export default function ExecutiveBrief() {
                   "Every enterprise has Microsoft's AI stack. None have the operating model to use it."
                 </h3>
                 <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8 }}>
-                  Command OS is not a replacement for Copilot, Azure OpenAI, or Teams. It is the operating model layer that sits above your existing Microsoft investment. Your AI tools detect and summarize. Command OS deploys your people — the coordination infrastructure that makes detection actionable.
+                  Readiness OS is not a replacement for Copilot, Azure OpenAI, or Teams. It is the operating model layer that sits above your existing Microsoft investment. Your AI tools detect and summarize. Readiness OS deploys your people — the coordination infrastructure that makes detection actionable.
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {[
-                  { layer: "Command OS", role: "Operating model — coordinates humans at trigger speed", yours: false },
+                  { layer: "Readiness OS", role: "Operating model — coordinates humans at trigger speed", yours: false },
                   { layer: "Microsoft Copilot", role: "AI assistance — summaries, drafts, search", yours: true },
                   { layer: "Azure OpenAI", role: "Foundation model infrastructure", yours: true },
                   { layer: "Microsoft Teams", role: "Communication and collaboration", yours: true },
@@ -336,7 +336,7 @@ export default function ExecutiveBrief() {
                   <div key={layer} style={{ border: `1px solid ${yours ? "#E8E4DC" : GOLD}`, padding: "12px 16px", background: yours ? "#F8F7F4" : "rgba(201,168,76,0.04)" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                       <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{layer}</span>
-                      {!yours && <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Command OS</span>}
+                      {!yours && <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Readiness OS</span>}
                       {yours && <span style={{ fontSize: 10, color: "#9CA3AF" }}>Already invested</span>}
                     </div>
                     <div style={{ fontSize: 11, color: "#6B7280" }}>{role}</div>
@@ -360,7 +360,7 @@ export default function ExecutiveBrief() {
                   90-Day Pilot.<br />$75,000 flat. 100% credits to enterprise contract.
                 </h3>
                 <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
-                  A structured 90-day engagement to prove Command OS' 12-minute coordination claim with live activations in your environment. Measurable outcomes. Clear conversion path.
+                  A structured 90-day engagement to prove Readiness OS' 12-minute coordination claim with live activations in your environment. Measurable outcomes. Clear conversion path.
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
                   {["Phase 0 (Wks 1–2): Readiness & setup", "Phase 1 (Wks 3–6): Dry runs & training", "Phase 2 (Wks 7–10): Live activation", "Phase 3 (Wks 11–12): Executive readout & expansion plan"].map(phase => (

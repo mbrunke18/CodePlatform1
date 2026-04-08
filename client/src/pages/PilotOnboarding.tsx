@@ -106,7 +106,7 @@ const roles = [
     color: '#2B8A9E',
     sees: [
       { label: 'Integration Hub', detail: 'Live status of all enterprise connections — Microsoft 365, Teams, Azure OpenAI, Salesforce, ServiceNow, and 6 additional ecosystems. Connection health, data flow direction, and authentication status in one view.' },
-      { label: 'Microsoft Ecosystem Architecture', detail: 'The three-layer model: Command OS sits above your Microsoft investment as an orchestration layer — not inside it. No new data stores. No new agents on endpoints. Authentication runs through Microsoft Entra you already license.' },
+      { label: 'Microsoft Ecosystem Architecture', detail: 'The three-layer model: Readiness OS sits above your Microsoft investment as an orchestration layer — not inside it. No new data stores. No new agents on endpoints. Authentication runs through Microsoft Entra you already license.' },
       { label: 'Settings & Security Configuration', detail: 'Role-based access control, audit logging, and organization-level configuration. Every action on the platform is logged with user, timestamp, and decision context.' },
     ],
     owns: [
@@ -116,7 +116,7 @@ const roles = [
       'Architecture documentation for any future compliance or procurement review',
     ],
     success: 'Clean integration running for the full 90-day pilot with zero security incidents. Complete audit log available for any compliance review. Architecture documentation produced that can be handed to a procurement or vendor management team for full enterprise rollout.',
-    note: 'Command OS does not replace your Microsoft stack — it orchestrates it. Every enterprise already has Microsoft\'s AI investment. None have the operating model to use it. This is that operating model layer.',
+    note: 'Readiness OS does not replace your Microsoft stack — it orchestrates it. Every enterprise already has Microsoft\'s AI investment. None have the operating model to use it. This is that operating model layer.',
     pages: [
       { label: 'Integration Hub', href: '/integrations' },
       { label: 'Microsoft Ecosystem', href: '/ecosystem' },
@@ -223,7 +223,7 @@ export default function PilotOnboarding() {
             </div>
             <h1 style={{ fontSize: 42, fontWeight: 700, color: '#F0EDE4', margin: '0 0 16px', lineHeight: 1.15, fontFamily: "'Inter', sans-serif" }}>
               Your First 90 Days<br />
-              <span style={{ color: GOLD }}>Inside Command OS</span>
+              <span style={{ color: GOLD }}>Inside Readiness OS</span>
             </h1>
             <p style={{ fontSize: 17, color: 'rgba(240,237,228,0.65)', maxWidth: 620, margin: '0 0 40px', lineHeight: 1.65, fontFamily: "'Inter', sans-serif" }}>
               This guide is built for your pilot team — not a generic walkthrough.

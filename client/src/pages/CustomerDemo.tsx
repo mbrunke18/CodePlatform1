@@ -79,7 +79,7 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/20",
     time: 30,
-    description: "Command OS comes with 170 playbooks across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
+    description: "Readiness OS comes with 170 playbooks across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
     roleWins: [
       { role: "CISO", benefit: "Cyber playbooks with ISO 27001, SOC2, NIST pre-loaded" },
       { role: "CFO", benefit: "Pre-approved budgets already staged for each scenario" },
@@ -110,7 +110,7 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#0A0F2E]/20",
     time: 50,
-    description: "Command OS's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right playbook. You stay in control—AI recommends, you decide.",
+    description: "Readiness OS's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right playbook. You stay in control—AI recommends, you decide.",
     roleWins: [
       { role: "Chief Strategy Officer", benefit: "Competitive moves flagged before they hit the news" },
       { role: "VP Supply Chain", benefit: "Supplier issues detected before they become crises" },
@@ -134,7 +134,7 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/20",
     time: 75,
-    description: "Command OS forecasts which triggers are most likely to fire in the next 30, 60, and 90 days. Run what-if scenarios to see how your organization would respond. Get your team aligned BEFORE the crisis—not during it.",
+    description: "Readiness OS forecasts which triggers are most likely to fire in the next 30, 60, and 90 days. Run what-if scenarios to see how your organization would respond. Get your team aligned BEFORE the crisis—not during it.",
     roleWins: [
       { role: "CEO", benefit: "Board-ready forecasts of strategic risks and opportunities" },
       { role: "CFO", benefit: "Budget impact modeling across multiple scenarios" },
@@ -158,14 +158,14 @@ const IDEA_STORY = [
     id: 5,
     beat: "EXECUTE",
     title: "One Click. 12 Minutes. Everyone Aligned.",
-    subtitle: "Command OS handles the coordination so you handle the crisis",
+    subtitle: "Readiness OS handles the coordination so you handle the crisis",
     phase: "EXECUTE",
     phaseColor: "bg-[#C9A84C]",
     icon: Zap,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/20",
     time: 120,
-    description: "When you activate a playbook, Command OS instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
+    description: "When you activate a playbook, Readiness OS instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
     roleWins: [
       { role: "CEO", benefit: "Board notification happens automatically at thresholds" },
       { role: "COO", benefit: "See all 47 stakeholders acknowledge in real-time" },
@@ -196,7 +196,7 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/20",
     time: 160,
-    description: "After each execution, Command OS captures what worked, what didn't, and suggests improvements. This knowledge stays with your organization—not in the head of the executive who might leave. Your playbooks get better every time.",
+    description: "After each execution, Readiness OS captures what worked, what didn't, and suggests improvements. This knowledge stays with your organization—not in the head of the executive who might leave. Your playbooks get better every time.",
     roleWins: [
       { role: "CEO", benefit: "Institutional knowledge survives leadership changes" },
       { role: "COO", benefit: "Process improvements captured automatically" },

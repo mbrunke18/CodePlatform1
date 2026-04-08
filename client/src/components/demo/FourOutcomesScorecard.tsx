@@ -268,7 +268,7 @@ export default function FourOutcomesScorecard({
 
           <div className="pt-4 border-t border-[#E8E4DC] dark:border-[#0A0F2E]/50 space-y-3">
             <p className="text-sm text-muted-foreground">
-              Command OS augments human execution by eliminating coordination friction while keeping humans in full control. 
+              Readiness OS augments human execution by eliminating coordination friction while keeping humans in full control. 
               This activation demonstrated high trust through transparent stakeholder engagement, human oversight of all 
               critical decisions, and the ability to override system recommendations when needed.
             </p>
@@ -302,7 +302,7 @@ export default function FourOutcomesScorecard({
             
             <div className="space-y-2 opacity-60">
               <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Industry Average (Without Command OS)</span>
+                <span>Industry Average (Without Readiness OS)</span>
                 <span>45/100</span>
               </div>
               <Progress value={45} className="h-2" />
@@ -326,7 +326,7 @@ export default function FourOutcomesScorecard({
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] dark:text-green-400 mt-0.5 flex-shrink-0" />
                 <p className="text-sm">
-                  Command OS users score <span className="font-bold text-primary">107% higher</span> than organizations using traditional coordination methods
+                  Readiness OS users score <span className="font-bold text-primary">107% higher</span> than organizations using traditional coordination methods
                 </p>
               </div>
               <div className="flex items-start gap-2">
@@ -410,7 +410,7 @@ export default function FourOutcomesScorecard({
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
               MIT Technology Review research with 600+ CIOs shows AI adoption delivers 22% efficiency gains 
-              and 17% innovation velocity increases. Organizations with strong governance (like Command OS' 
+              and 17% innovation velocity increases. Organizations with strong governance (like Readiness OS' 
               human-in-the-loop model) achieve 14.3% better ROI and 24% lower compliance risk.
             </p>
             <Button 
@@ -441,7 +441,7 @@ export default function FourOutcomesScorecard({
             <p className="text-xs text-muted-foreground leading-relaxed">
               Salesforce research shows companies winning today aren't those with the best plans, but those 
               who execute fastest. The timeline from idea to execution has collapsed from years to months. 
-              Command OS collapses it from months to minutes.
+              Readiness OS collapses it from months to minutes.
             </p>
             <Button 
               variant="link" 

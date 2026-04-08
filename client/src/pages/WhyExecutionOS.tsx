@@ -33,7 +33,7 @@ const competitors: Competitor[] = [
     whatTheyDo: "Microsoft bolted AI onto the existing operating model. Copilot makes meetings faster to document. It generates better analysis, better summaries, smarter search. It is genuinely excellent at what it does — and 75%+ of Fortune 1000 enterprises have already deployed it.",
     whereTheyStop: "When a strategic trigger fires — a ransomware attack, a supply disruption, a regulatory deadline — Copilot has no answer to: Who needs to be in the room? Who owns which task? Which lawyer do we call first? It summarizes the chaos faster. It does not replace the chaos. The 30-day mobilization cycle is completely intact.",
     theGap: "Every Fortune 1000 already has Microsoft's AI stack. Their response times haven't reflected a 3,600× improvement because the operating model underneath Copilot hasn't changed. Intelligence without coordination is expensive analysis sitting in a meeting room.",
-    oneLiner: "You've already bought the engine. Command OS is the transmission.",
+    oneLiner: "You've already bought the engine. Readiness OS is the transmission.",
     isComplementary: true,
   },
   {
@@ -42,8 +42,8 @@ const competitors: Competitor[] = [
     claim: "The platform for digital transformation — enterprise workflow automation across IT, HR, security, and operations.",
     whatTheyDo: "ServiceNow is extraordinary at digitizing known, repeatable, internally-documented processes. IT service management, employee workflows, change management — if the process is defined and stable, ServiceNow executes it efficiently and at scale.",
     whereTheyStop: "ServiceNow requires 6–18 months of custom implementation for every new use case. When a supply chain collapses, a competitor acquires a key customer, or an activist investor takes a position — there is no pre-staged ServiceNow response. The workflow must be built manually, under pressure, which takes the same 30 days the old model took — just with better ticketing.",
-    theGap: "ServiceNow automates execution of known processes. Command OS orchestrates mobilization for unexpected strategic events. These are genuinely different problems. ServiceNow manages your work after someone decides what work to do. Command OS decides what work starts and who starts it the moment a trigger fires.",
-    oneLiner: "ServiceNow manages your work. Command OS deploys your people.",
+    theGap: "ServiceNow automates execution of known processes. Readiness OS orchestrates mobilization for unexpected strategic events. These are genuinely different problems. ServiceNow manages your work after someone decides what work to do. Readiness OS decides what work starts and who starts it the moment a trigger fires.",
+    oneLiner: "ServiceNow manages your work. Readiness OS deploys your people.",
     isComplementary: true,
   },
   {
@@ -52,8 +52,8 @@ const competitors: Competitor[] = [
     claim: "AI-powered decision-making for enterprise and government — ontology-based data integration with AI agents on top.",
     whatTheyDo: "Palantir is architecturally sophisticated and genuinely impressive, particularly in defense, intelligence, and manufacturing. AIP allows enterprises to build AI agents on top of their data with ontology-based reasoning. For organizations with significant data science teams, it provides deep intelligence capability.",
     whereTheyStop: "Palantir tells you what is happening with extraordinary sophistication. It does not then automatically assign tasks, notify your General Counsel, route your CISO to the right response protocol, or activate a pre-staged playbook. The gap from intelligence to coordinated human execution remains entirely manual. Deployment typically takes 6–24 months and requires dedicated data engineers.",
-    theGap: "Palantir can feed signals into Command OS. They are complementary, not competing. Palantir is data infrastructure; Command OS is execution infrastructure. The honest message: Palantir will tell you what's happening with unmatched depth. Command OS ensures what's happening gets acted on in 12 minutes.",
-    oneLiner: "Palantir tells you. Command OS deploys you.",
+    theGap: "Palantir can feed signals into Readiness OS. They are complementary, not competing. Palantir is data infrastructure; Readiness OS is execution infrastructure. The honest message: Palantir will tell you what's happening with unmatched depth. Readiness OS ensures what's happening gets acted on in 12 minutes.",
+    oneLiner: "Palantir tells you. Readiness OS deploys you.",
     isComplementary: true,
   },
   {
@@ -62,8 +62,8 @@ const competitors: Competitor[] = [
     claim: "Reach the right people with the right message at the right time during a critical event.",
     whatTheyDo: "Everbridge is the market leader in mass notification ($400M+ revenue, publicly traded). When something happens, Everbridge sends alerts — to employees, customers, and executives — through SMS, email, voice, and app. It is a mature, well-executed communication routing engine.",
     whereTheyStop: "Notification is not coordination. Everbridge tells people something happened. It does not assign them tasks. It does not activate a pre-staged playbook. It does not connect the alert to a timeline, a decision gate, a war room, or an accountability system. After the alert goes out, you're back to the same phone tree, the same emergency meeting, and the same 30-day mobilization cycle — just with better message delivery.",
-    theGap: "Every Everbridge customer has already accepted that crisis coordination is a problem worth paying for. They bought half the solution. The market leader in alerting has $400M in revenue and the response time problem is completely unsolved. That is the market signal that Command OS addresses.",
-    oneLiner: "Everbridge tells your people. Command OS deploys them.",
+    theGap: "Every Everbridge customer has already accepted that crisis coordination is a problem worth paying for. They bought half the solution. The market leader in alerting has $400M in revenue and the response time problem is completely unsolved. That is the market signal that Readiness OS addresses.",
+    oneLiner: "Everbridge tells your people. Readiness OS deploys them.",
   },
   {
     name: "Archer / GRC Platforms",
@@ -71,8 +71,8 @@ const competitors: Competitor[] = [
     claim: "Know your risks, document your controls, and demonstrate compliance to regulators and boards.",
     whatTheyDo: "GRC platforms — Archer, OneTrust, LogicGate, and others — are documentation and audit trail systems. They record what risks exist, what controls are in place, and generate reports for regulators. For audit, compliance, and governance functions, they are genuinely valuable.",
     whereTheyStop: "GRC platforms are retrospective by design. They document what happened and whether controls existed. When a trigger fires — a ransomware attack, a product recall, a regulatory inquiry — your GRC platform generates a record of your controls. It does not mobilize your response. The CISO, GC, and CFO still need to be called. The playbook still needs to be found. Coordination still takes 30 days.",
-    theGap: "Fortune 1000 organizations spend hundreds of thousands annually on GRC platforms to prove they have a plan. Command OS is what actually executes the plan when it matters. GRC satisfies auditors. Command OS protects the business.",
-    oneLiner: "Your GRC platform proves you had a plan. Command OS proves the plan worked — in 12 minutes.",
+    theGap: "Fortune 1000 organizations spend hundreds of thousands annually on GRC platforms to prove they have a plan. Readiness OS is what actually executes the plan when it matters. GRC satisfies auditors. Readiness OS protects the business.",
+    oneLiner: "Your GRC platform proves you had a plan. Readiness OS proves the plan worked — in 12 minutes.",
   },
   {
     name: "Noggin / Veoci / Resolver",
@@ -89,8 +89,8 @@ const competitors: Competitor[] = [
     claim: "Plan, track, and deliver work across your organization. Manage projects, tasks, and team collaboration at scale.",
     whatTheyDo: "These are where work gets recorded after someone has decided what work to do. They are task and project tracking systems — genuinely excellent at their core function, and used by 94% of Fortune 500 companies in some capacity.",
     whereTheyStop: "These tools do not detect triggers. They do not activate playbooks. They do not coordinate stakeholders. They are execution recording systems, not execution coordination systems. When a supply chain collapses, your Jira board has no response — because no one has created the tickets yet.",
-    theGap: "Command OS integrates with all of them. When Command OS activates a playbook, it pushes tasks directly into your existing Jira or Asana. These tools are the destination for the work Command OS initiates — not a competitor.",
-    oneLiner: "Jira tracks tasks after someone creates them. Command OS creates the right tasks and fires them in 12 minutes — before anyone has had a meeting.",
+    theGap: "Readiness OS integrates with all of them. When Readiness OS activates a playbook, it pushes tasks directly into your existing Jira or Asana. These tools are the destination for the work Readiness OS initiates — not a competitor.",
+    oneLiner: "Jira tracks tasks after someone creates them. Readiness OS creates the right tasks and fires them in 12 minutes — before anyone has had a meeting.",
     isComplementary: true,
   },
   {
@@ -99,8 +99,8 @@ const competitors: Competitor[] = [
     claim: "AI-powered strategy and transformation platforms — proprietary models, deep data science, and transformation programs backed by top-tier consulting expertise.",
     whatTheyDo: "These consulting firms have built digital products — McKinsey Quantum Black, BCG X, Bain's digital ventures — that combine proprietary AI with multi-year transformation engagements. For organizations with the budget and patience, they deliver sophisticated strategic analysis.",
     whereTheyStop: "These are consulting-led digital products. The product is often inseparable from the consulting relationship. Implementation is measured in years. Cost is measured in millions. And when a supply chain collapses at 2 AM on a Sunday, McKinsey Quantum Black does not automatically notify your CPO and alternative suppliers. It has a partner who will analyze the situation next week.",
-    theGap: "McKinsey will analyze your execution gap after the crisis. Command OS closes it before the crisis arrives — continuously, automatically, at a fraction of the cost. $75K pilot vs. $3M+ consulting engagement is not the same conversation. Command OS runs 24/7, not episodically.",
-    oneLiner: "McKinsey analyzes your execution gap after the crisis. Command OS closes it before.",
+    theGap: "McKinsey will analyze your execution gap after the crisis. Readiness OS closes it before the crisis arrives — continuously, automatically, at a fraction of the cost. $75K pilot vs. $3M+ consulting engagement is not the same conversation. Readiness OS runs 24/7, not episodically.",
+    oneLiner: "McKinsey analyzes your execution gap after the crisis. Readiness OS closes it before.",
   },
 ];
 
@@ -108,7 +108,7 @@ const fiveReasons = [
   {
     icon: BookOpen,
     title: "Pre-staged beats reactive — every time",
-    body: "Every competitor reacts to triggers. Command OS is already staged before the trigger fires. 170 playbooks across 9 domains. 221 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
+    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 170 playbooks across 9 domains. 221 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
     metric: "170 playbooks pre-staged",
   },
   {
@@ -120,19 +120,19 @@ const fiveReasons = [
   {
     icon: Zap,
     title: "The operating model layer no one else provides",
-    body: "Microsoft sells intelligence. ServiceNow sells process automation. Palantir sells data integration. Everbridge sells notification. None of them sell the operating model that sits above all of these and coordinates humans at AI speed. Command OS is that layer — and it works with every tool your organization already has.",
+    body: "Microsoft sells intelligence. ServiceNow sells process automation. Palantir sells data integration. Everbridge sells notification. None of them sell the operating model that sits above all of these and coordinates humans at AI speed. Readiness OS is that layer — and it works with every tool your organization already has.",
     metric: "Works with your existing stack",
   },
   {
     icon: Shield,
     title: "Human authority is preserved — AI handles orchestration",
-    body: "Every board's fear about AI is loss of control. Command OS is explicitly built on the principle that humans decide and AI deploys. Your executives retain all decision authority. The AI monitors, recommends, and coordinates — but no activation happens without executive approval. This is not a limitation; it is the design.",
+    body: "Every board's fear about AI is loss of control. Readiness OS is explicitly built on the principle that humans decide and AI deploys. Your executives retain all decision authority. The AI monitors, recommends, and coordinates — but no activation happens without executive approval. This is not a limitation; it is the design.",
     metric: "Executive authority preserved",
   },
   {
     icon: Target,
     title: "The pilot eliminates risk",
-    body: "$75K flat. 90 days. 100% credited to the enterprise contract. At least one live activation with a measured 12-minute response, or the data shows why not. No competitor offers this because no competitor is confident enough in their outcome to structure an engagement this way. Command OS does.",
+    body: "$75K flat. 90 days. 100% credited to the enterprise contract. At least one live activation with a measured 12-minute response, or the data shows why not. No competitor offers this because no competitor is confident enough in their outcome to structure an engagement this way. Readiness OS does.",
     metric: "$75K pilot · 100% credited",
   },
 ];
@@ -142,9 +142,9 @@ export default function WhyExecutionOS() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Why Command OS — The Competitive Landscape | VaughnMartin",
-      description: "Why Command OS wins against Microsoft Copilot, ServiceNow, Palantir, Everbridge, and every other enterprise platform. The operating model layer no one else provides.",
-      ogTitle: "Why Command OS? Honest Competitive Analysis",
+      title: "Why Readiness OS — The Competitive Landscape | VaughnMartin",
+      description: "Why Readiness OS wins against Microsoft Copilot, ServiceNow, Palantir, Everbridge, and every other enterprise platform. The operating model layer no one else provides.",
+      ogTitle: "Why Readiness OS? Honest Competitive Analysis",
       ogDescription: "Every competitor solves an adjacent problem. None solve the 30-day mobilization gap. Here's why — category by category.",
     });
   }, []);
@@ -201,7 +201,7 @@ export default function WhyExecutionOS() {
               For 40 years, the enterprise bought tools that made the <em>inputs</em> to coordination better. Nobody built the coordination itself into the infrastructure.
             </h2>
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8 }}>
-              Better data. Better analysis. Better summaries. Better notifications. Better task tracking. The gap between "we know this is happening" and "every relevant person has their task, is accountable, and is executing" remained entirely human-dependent, meeting-dependent, and slow. That gap is 30 days. Command OS is the first platform that closes it — not by making the inputs faster, but by replacing the coordination model itself.
+              Better data. Better analysis. Better summaries. Better notifications. Better task tracking. The gap between "we know this is happening" and "every relevant person has their task, is accountable, and is executing" remained entirely human-dependent, meeting-dependent, and slow. That gap is 30 days. Readiness OS is the first platform that closes it — not by making the inputs faster, but by replacing the coordination model itself.
             </p>
           </div>
         </section>
@@ -264,7 +264,7 @@ export default function WhyExecutionOS() {
                             <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.7 }}>{c.whereTheyStop}</p>
                           </div>
                           <div style={{ padding: "16px", background: "rgba(201,168,76,0.04)", border: `1px solid ${GOLD}` }}>
-                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>The Command OS advantage</div>
+                            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>The Readiness OS advantage</div>
                             <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.7 }}>{c.theGap}</p>
                           </div>
                         </div>
@@ -287,7 +287,7 @@ export default function WhyExecutionOS() {
             <div style={{ textAlign: "center", marginBottom: 52 }}>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>The Unified Win</p>
               <h2 style={{ ...CG, fontSize: "clamp(30px,4vw,48px)", fontWeight: 700, color: "#fff", marginBottom: 12 }}>
-                5 reasons Command OS<br />wins every comparison
+                5 reasons Readiness OS<br />wins every comparison
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)" }}>These are not marketing claims. They are structural advantages that no competitor can replicate without rebuilding from scratch.</p>
             </div>
@@ -318,10 +318,10 @@ export default function WhyExecutionOS() {
           <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>The competitive position in one sentence</p>
             <blockquote style={{ ...CG, fontSize: "clamp(22px,3vw,34px)", fontWeight: 700, color: NAVY, lineHeight: 1.3, fontStyle: "italic", marginBottom: 24, borderLeft: `4px solid ${GOLD}`, paddingLeft: 24, textAlign: "left" }}>
-              "Every enterprise has tools that tell them what's happening. None have the infrastructure that deploys their people when it does. That is Command OS."
+              "Every enterprise has tools that tell them what's happening. None have the infrastructure that deploys their people when it does. That is Readiness OS."
             </blockquote>
             <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, maxWidth: 640, margin: "0 auto 40px" }}>
-              In the next 12 months, your organization will face at least 3–5 strategic triggers requiring cross-domain coordination. For each one, you currently spend weeks mobilizing before execution begins. Command OS pre-stages the response to each one before it fires. The question is not whether you can afford Command OS. The question is how many of those events you can afford to handle the old way.
+              In the next 12 months, your organization will face at least 3–5 strategic triggers requiring cross-domain coordination. For each one, you currently spend weeks mobilizing before execution begins. Readiness OS pre-stages the response to each one before it fires. The question is not whether you can afford Readiness OS. The question is how many of those events you can afford to handle the old way.
             </p>
 
             {/* Proof bar */}

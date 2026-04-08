@@ -170,9 +170,9 @@ function InvestorPresentation() {
         <p className="text-[#6B7280] text-base mb-8 text-center max-w-2xl">McKinsey's 2025–2026 enterprise architecture synthesis identifies an "orchestration layer · coordination fabric · shared source of truth" at the center of every enterprise AI stack — and leaves it unnamed.</p>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-8">
           {[
-            { value: '65%', label: 'Still piloting AI', sub: 'Not yet scaling across the enterprise — the activation gap Command OS closes', color: 'border-[#C9A84C]/40 bg-[#C9A84C]/5' },
+            { value: '65%', label: 'Still piloting AI', sub: 'Not yet scaling across the enterprise — the activation gap Readiness OS closes', color: 'border-[#C9A84C]/40 bg-[#C9A84C]/5' },
             { value: '1%', label: 'Fully mature', sub: 'Leaders — not employees — are the bottleneck. 221 executive triggers solve this.', color: 'border-[#2B8A6E]/40 bg-[#2B8A6E]/5' },
-            { value: '$4.4T', label: 'AI productivity potential', sub: 'Locked behind the missing coordination layer — the layer Command OS provides', color: 'border-[#0A0F2E]/20 bg-[#0A0F2E]/5' },
+            { value: '$4.4T', label: 'AI productivity potential', sub: 'Locked behind the missing coordination layer — the layer Readiness OS provides', color: 'border-[#0A0F2E]/20 bg-[#0A0F2E]/5' },
           ].map((s, i) => (
             <div key={i} className={`border ${s.color} rounded-xl p-6 text-center`}>
               <div className="text-4xl font-black text-[#0A0F2E] mb-2">{s.value}</div>
@@ -185,11 +185,11 @@ function InvestorPresentation() {
           <div>
             <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">The Agentic Mesh Layer — McKinsey's term for what we built</div>
             <div className="text-white font-semibold text-lg">"Orchestration layer · coordination fabric · shared source of truth"</div>
-            <div className="text-white/50 text-sm mt-1">McKinsey drew the architecture diagram with this box in the middle. Command OS is the product that fills it.</div>
+            <div className="text-white/50 text-sm mt-1">McKinsey drew the architecture diagram with this box in the middle. Readiness OS is the product that fills it.</div>
           </div>
           <div className="text-right shrink-0">
             <div className="text-[#C9A84C] font-black text-2xl">VAUGHNMARTIN</div>
-            <div className="text-white/40 text-xs">Command OS</div>
+            <div className="text-white/40 text-xs">Readiness OS</div>
           </div>
         </div>
         {/* MGI Nov 2025 second report */}
@@ -247,7 +247,7 @@ function InvestorPresentation() {
               org: "McKinsey & Company",
               report: "Enterprise Architecture Synthesis · 2025–2026",
               quote: "\"Orchestration layer · coordination fabric · shared source of truth\" — the box at the center of every enterprise AI architecture, left unnamed.",
-              bridge: "Command OS is the product that fills it.",
+              bridge: "Readiness OS is the product that fills it.",
               color: "border-[#C9A84C]/40 bg-[#C9A84C]/5",
               dot: "bg-[#C9A84C]",
             },
@@ -263,7 +263,7 @@ function InvestorPresentation() {
               org: "World Economic Forum × Accenture",
               report: "Organizational Transformation in the Age of AI · March 2026",
               quote: "\"Those that do not risk falling behind — not because AI fails them, but because organizational change does.\"",
-              bridge: "Command OS is the operating model layer AI requires.",
+              bridge: "Readiness OS is the operating model layer AI requires.",
               color: "border-[#0A0F2E]/20 bg-[#0A0F2E]/5",
               dot: "bg-[#0A0F2E]",
             },
@@ -284,11 +284,11 @@ function InvestorPresentation() {
         <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-5 flex items-center gap-6">
           <div className="flex-1">
             <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">The Unified Thesis</div>
-            <div className="text-white font-semibold text-base leading-snug">The constraint is never the AI. It is always the operating model. Command OS is the infrastructure that closes that gap.</div>
+            <div className="text-white font-semibold text-base leading-snug">The constraint is never the AI. It is always the operating model. Readiness OS is the infrastructure that closes that gap.</div>
           </div>
           <div className="text-right shrink-0">
             <div className="text-[#C9A84C] font-black text-xl">VAUGHNMARTIN</div>
-            <div className="text-white/40 text-xs">Command OS · 3,600× Head Start</div>
+            <div className="text-white/40 text-xs">Readiness OS · 3,600× Head Start</div>
           </div>
         </div>
       </div>
@@ -298,7 +298,7 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">The Solution</p>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-12 text-center">
-          Command OS: The IDEA Framework™
+          Readiness OS: The IDEA Framework™
         </h2>
         <div className="grid md:grid-cols-4 gap-6 max-w-5xl w-full mb-8">
           {[
@@ -336,7 +336,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full">
           <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-xl p-8 shadow-sm">
             <h3 className="text-xl font-bold text-[#0A0F2E] mb-6 flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5" /> Without Command OS
+              <AlertTriangle className="w-5 h-5" /> Without Readiness OS
             </h3>
             <div className="space-y-4">
               {['T+0: Signal detected by random employee', 'T+4h: Escalated via email chain', 'T+12h: Leadership aware', 'T+24h: War room assembled', 'T+48h: Response plan drafted', 'T+72h: First coordinated action'].map((t, i) => (
@@ -352,7 +352,7 @@ function InvestorPresentation() {
           </div>
           <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-xl p-8 shadow-sm">
             <h3 className="text-xl font-bold text-[#2B8A6E] mb-6 flex items-center gap-2">
-              <Zap className="w-5 h-5" /> With Command OS
+              <Zap className="w-5 h-5" /> With Readiness OS
             </h3>
             <div className="space-y-4">
               {['T+0: AI detects signal automatically', 'T+2m: Playbook matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, playbook refined'].map((t, i) => (
@@ -487,7 +487,7 @@ function InvestorPresentation() {
             </div>
           </div>
           <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold text-[#2B8A6E] mb-2 uppercase tracking-tight">The Command OS Model</h3>
+            <h3 className="text-xl font-bold text-[#2B8A6E] mb-2 uppercase tracking-tight">The Readiness OS Model</h3>
             <p className="text-[#2B8A6E]/60 text-xs font-bold uppercase mb-4 tracking-widest">Detect → Activate → Coordinate → Execute → Advance</p>
             <div className="space-y-3">
               {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
@@ -536,7 +536,7 @@ function InvestorPresentation() {
             </div>
           ))}
           <div className="bg-[#0A0F2E] border-2 border-[#C9A84C] rounded-xl p-4 text-white shadow-xl">
-            <div className="text-[#C9A84C] font-bold text-sm mb-1">Command OS</div>
+            <div className="text-[#C9A84C] font-bold text-sm mb-1">Readiness OS</div>
             <div className="text-white/60 text-[10px] font-bold uppercase tracking-wider mb-3">Strategic Execution Platform</div>
             <div className="text-xs space-y-1">
               {['AI signal detection', 'Pre-built playbooks', 'Automated coordination', 'Learning & refinement'].map((f, i) => (
@@ -653,7 +653,7 @@ function InvestorPresentation() {
           </div>
           <div className="text-center p-6 bg-[#0A0F2E]/40 border border-[#2B8A6E]/40 rounded-xl">
             <Layers className="w-8 h-8 text-[#2B8A6E] mx-auto mb-3" />
-            <div className="text-[#2B8A6E] font-bold mb-1">Command OS</div>
+            <div className="text-[#2B8A6E] font-bold mb-1">Readiness OS</div>
             <div className="text-[#0A0F2E] text-sm">Activate playbooks, coordinate roles, track execution</div>
           </div>
           <div className="text-center p-6 bg-white border border-[#C9A84C]/30 rounded-xl">
@@ -879,7 +879,7 @@ function InvestorPresentation() {
           <Zap className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6 max-w-4xl">
-          The strategic Command OS Fortune 1000 is missing.
+          The strategic Readiness OS Fortune 1000 is missing.
         </h2>
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
           {[
@@ -895,7 +895,7 @@ function InvestorPresentation() {
           ))}
         </div>
         <p className="text-xl text-[#0A0F2E] max-w-2xl mb-10 italic">
-          "Every consultancy is writing about this problem. Command OS has the product."
+          "Every consultancy is writing about this problem. Readiness OS has the product."
         </p>
         <div className="flex items-center gap-4 text-[#0A0F2E]">
           <Mail className="w-5 h-5 text-[#2B8A6E]" />

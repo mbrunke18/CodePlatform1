@@ -142,7 +142,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               <Link to="/">
                 <Button variant="ghost" size="sm" className="p-0 h-auto font-medium hover:text-[#0A0F2E] bg-transparent">
                   <Home className="h-4 w-4 mr-1" />
-                  Command OS
+                  Readiness OS
                 </Button>
               </Link>
               <span>/</span>

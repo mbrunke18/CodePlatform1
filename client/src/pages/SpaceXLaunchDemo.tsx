@@ -124,7 +124,7 @@ export default function SpaceXLaunchDemo() {
                     <p style={{ color: "rgba(240,237,228,0.7)", lineHeight: 1.6, fontSize: 13 }}>
                       SpaceX already moves faster than traditional aerospace — but even SpaceX faces coordination bottlenecks.
                       When a favorable orbital window opens, coordinating 1,847 stakeholders traditionally takes <strong style={{ color: IVORY }}>5-7 days</strong>.
-                      Command OS compresses it to <strong style={{ color: GOLD }}>12 minutes</strong> — enabling SpaceX to capture time-sensitive launch opportunities competitors cannot match.
+                      Readiness OS compresses it to <strong style={{ color: GOLD }}>12 minutes</strong> — enabling SpaceX to capture time-sensitive launch opportunities competitors cannot match.
                     </p>
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function SpaceXLaunchDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p style={{ fontSize: 15, color: "rgba(240,237,228,0.7)", marginBottom: 24, lineHeight: 1.6 }}>
-                Command OS coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across
+                Readiness OS coordinates all 1,847 stakeholders in 12 minutes. Elon's decision triggers instant alignment across
                 34 executives, 813 operations teams, and 1,000 external partners (FAA, Space Force, Range Control).
               </p>
 
@@ -295,7 +295,7 @@ export default function SpaceXLaunchDemo() {
                     Join the Pilot Program
                   </Button>
                 </Link>
-                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.4)", marginTop: 10 }}>Deploy Command OS across your organization</p>
+                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.4)", marginTop: 10 }}>Deploy Readiness OS across your organization</p>
               </div>
             </div>
 

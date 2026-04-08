@@ -193,7 +193,7 @@ router.post('/test-notification', async (req, res) => {
     await notificationManager.sendScenarioAlert(
       scenarioType || 'test',
       severity || 'medium',
-      message || 'Test notification from Command OS',
+      message || 'Test notification from Readiness OS',
       { source: 'api-test', timestamp: new Date().toISOString() }
     );
 

@@ -311,7 +311,7 @@ export default function PeerReviewReport() {
         {/* Header */}
         <div style={{ background: NAVY, padding: "40px 0" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 40px" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>VaughnMartin · Command OS</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>VaughnMartin · Readiness OS</div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: "white", margin: "0 0 8px" }}>Peer Review Findings Report</h1>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 15, margin: 0 }}>Independent Product Evaluation — {total} submission{total !== 1 ? "s" : ""}</p>
           </div>
@@ -393,11 +393,11 @@ export default function PeerReviewReport() {
 
           {/* Qualitative sections */}
           {[
-            { key: "q6", label: "Q6 — In Their Own Words: What Does Command OS Do?" },
+            { key: "q6", label: "Q6 — In Their Own Words: What Does Readiness OS Do?" },
             { key: "q7", label: "Q7 — What Would Make the 12-Minute Claim More Credible?" },
             { key: "q15", label: "Q15 — Most Significant Gap / Weakness" },
             { key: "q18", label: "Q18 — Founder Advice: Most Important Thing to Fix Before Go-to-Market" },
-            { key: "q22", label: "Q22 — Strongest Competitive Argument Against Command OS" },
+            { key: "q22", label: "Q22 — Strongest Competitive Argument Against Readiness OS" },
             { key: "q27", label: "Q27 — What the Founder Should Do in the Next 30 Days" },
             { key: "q28", label: "Q28 — Additional Feedback for the Founder" },
             { key: "q1", label: "Q1 — What Causes the Strategic Response Gap?" },

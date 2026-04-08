@@ -117,7 +117,7 @@ export function Validation({ progress }: SceneProps) {
             >
               <div className="text-[#0A0F2E] font-bold text-sm mb-2">{q.firm}</div>
               <p className="text-gray-800 text-xs italic leading-relaxed">"{q.quote}"</p>
-              <div className="mt-2 text-[#2B8A6E] text-xs">→ Command OS delivers this</div>
+              <div className="mt-2 text-[#2B8A6E] text-xs">→ Readiness OS delivers this</div>
             </motion.div>
           ))}
         </div>
@@ -128,13 +128,13 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 2.5 }}
           className="text-sm text-gray-700 text-center mt-6"
         >
-          <span className="text-[#0A0F2E] font-semibold">15 firms. 17 reports.</span> Every one points at the gap Command OS fills.
+          <span className="text-[#0A0F2E] font-semibold">15 firms. 17 reports.</span> Every one points at the gap Readiness OS fills.
         </motion.p>
       </div>
 
       <NarrationBox
         headline="17 Reports. One Conclusion."
-        description="17 independent reports from 15 firms—McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, and more—all confirm enterprises need execution infrastructure. 95% of CSOs say AI will reshape priorities, but only 16% are acting. Command OS built the missing layer."
+        description="17 independent reports from 15 firms—McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, and more—all confirm enterprises need execution infrastructure. 95% of CSOs say AI will reshape priorities, but only 16% are acting. Readiness OS built the missing layer."
         delay={0.5}
       />
     </div>

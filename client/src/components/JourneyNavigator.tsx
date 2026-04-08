@@ -39,7 +39,7 @@ const journeyPhases: JourneyPhase[] = [
     number: 1,
     name: 'Discovery',
     subtitle: 'Explore & Evaluate',
-    description: 'Experience Command OS through demos, calculate ROI, and define pilot scope',
+    description: 'Experience Readiness OS through demos, calculate ROI, and define pilot scope',
     timeline: 'Week 1-2',
     workspace: 'Demo Gallery',
     workspacePath: '/try-demo',
@@ -131,7 +131,7 @@ const journeyPhases: JourneyPhase[] = [
     subtitle: 'Ongoing Excellence',
     description: 'Expand coverage, track organizational maturity, and realize strategic ROI',
     timeline: 'Ongoing',
-    workspace: 'Command OS One™',
+    workspace: 'Readiness OS One™',
     workspacePath: '/mission-control',
     icon: BarChart3,
     color: 'text-[#C9A84C]',
@@ -163,7 +163,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
                   <Compass className="h-5 w-5 text-poise-teal" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white">Command OS North Star™</h3>
+                  <h3 className="font-semibold text-slate-900 dark:text-white">Readiness OS North Star™</h3>
                   <p className="text-sm text-gray-600">Phase {current.number} of {totalPhases}</p>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Command OS North Star™ Journey</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Readiness OS North Star™ Journey</h2>
           <p className="text-gray-600 dark:text-slate-300">Your path from discovery to continuous strategic excellence</p>
         </div>
         <div className="text-right">

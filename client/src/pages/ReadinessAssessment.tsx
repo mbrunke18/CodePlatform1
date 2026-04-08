@@ -647,7 +647,7 @@ export default function ReadinessAssessment() {
                   {[
                     { label: companyName || "Your Score", value: result.score, color: domainConfig.bg },
                     { label: "Fortune 500 Average", value: selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48, color: "bg-[#6B7280]" },
-                    { label: "Command OS Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-[#2B8A6E]" },
+                    { label: "Readiness OS Clients", value: selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75, color: "bg-[#2B8A6E]" },
                   ].map((row) => (
                     <div key={row.label}>
                       <div className="flex items-center justify-between text-sm mb-1.5">
@@ -663,7 +663,7 @@ export default function ReadinessAssessment() {
                     </div>
                   ))}
                   <p className="text-[#2B8A6E] font-medium pt-2 border-t border-[#E8E4DC] dark:border-white/10">
-                    Command OS clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
+                    Readiness OS clients score {Math.round((((selectedDomain === "offense" ? 84 : selectedDomain === "defense" ? 78 : 75) / (selectedDomain === "offense" ? 62 : selectedDomain === "defense" ? 54 : 48)) - 1) * 100)}% higher than Fortune 500 average
                   </p>
                 </CardContent>
               </Card>
@@ -704,7 +704,7 @@ export default function ReadinessAssessment() {
               <div className="mb-8">
                 <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Layers className={`h-5 w-5 ${domainConfig.textLight}`} />
-                  How Command OS Closes These Gaps
+                  How Readiness OS Closes These Gaps
                 </h2>
                 <Card className={`bg-white dark:bg-white/5 border ${domainConfig.border} overflow-hidden`}>
                   <CardContent className="p-6">

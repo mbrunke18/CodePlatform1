@@ -123,7 +123,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     <text x="920" y="148" textAnchor="middle" fontSize="10" fill={GOLD}
       fontFamily="'DM Sans', Arial, sans-serif">"Activist investor takes 8% stake"</text>
     <text x="920" y="163" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.6)"
-      fontFamily="'DM Sans', Arial, sans-serif">Command OS detects. Playbook activates.</text>
+      fontFamily="'DM Sans', Arial, sans-serif">Readiness OS detects. Playbook activates.</text>
 
     {/* Single clean arrow */}
     <path d="M 920 174 L 920 214" stroke={TEAL} strokeWidth="3.5" fill="none" markerEnd="url(#egArrowT)" />

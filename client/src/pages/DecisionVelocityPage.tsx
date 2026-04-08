@@ -68,7 +68,7 @@ export default function DecisionVelocityPage() {
             </CardHeader>
             <CardContent className="p-10 pt-4 relative z-10 space-y-8">
               <p className="text-white/80 text-lg leading-relaxed max-w-4xl">
-                Command OS provides the <strong className="text-white font-black">execution infrastructure</strong> that McKinsey, IBM, Bain, and BCG all say is missing—governance, decision rights, and coordination systems built <em className="italic">before</em> the moment hits.
+                Readiness OS provides the <strong className="text-white font-black">execution infrastructure</strong> that McKinsey, IBM, Bain, and BCG all say is missing—governance, decision rights, and coordination systems built <em className="italic">before</em> the moment hits.
               </p>
               
               <div className="grid md:grid-cols-3 gap-8">
@@ -107,7 +107,7 @@ export default function DecisionVelocityPage() {
                 <div className="text-[10px] font-bold text-[#0A0F2E] tracking-[0.2em] uppercase mb-2">The Strategic MOAT</div>
                 <p className="text-[#6B7280] leading-relaxed">
                   Companies like Microsoft and Amazon built execution infrastructure over 5+ years. 
-                  Command OS gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—170 playbooks, pre-defined governance, and a compressed 12-minute execution cycle.
+                  Readiness OS gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—170 playbooks, pre-defined governance, and a compressed 12-minute execution cycle.
                 </p>
               </div>
             </CardContent>
@@ -128,10 +128,10 @@ export default function DecisionVelocityPage() {
                 </CardHeader>
                   <p className="text-[#0A0F2E] text-lg leading-relaxed">
                     <strong>Decision Velocity</strong> measures how fast your organization moves from <em className="italic">strategic signal</em> to <em className="italic">execution completion</em>. 
-                    While competitors coordinate through email chains and emergency meetings, Command OS practitioners execute in minutes.
+                    While competitors coordinate through email chains and emergency meetings, Readiness OS practitioners execute in minutes.
                   </p>
                   <p className="text-[#6B7280] leading-relaxed">
-                    After 10 strategic events, an Command OS-powered organization is <strong className="text-[#0A0F2E]">50 days ahead</strong> of the competition—the difference between a category leader and a market follower.
+                    After 10 strategic events, an Readiness OS-powered organization is <strong className="text-[#0A0F2E]">50 days ahead</strong> of the competition—the difference between a category leader and a market follower.
                   </p>
               </div>
               <div className="p-10 md:w-1/3 bg-[#F8F7F4] flex flex-col justify-center">
@@ -139,7 +139,7 @@ export default function DecisionVelocityPage() {
                 <div className="space-y-6">
                   <div>
                     <div style={CG} className="text-4xl font-bold text-[#0A0F2E]">12m</div>
-                    <div className="text-[9px] font-bold uppercase tracking-widest text-[#2B8A6E]">Command OS Velocity</div>
+                    <div className="text-[9px] font-bold uppercase tracking-widest text-[#2B8A6E]">Readiness OS Velocity</div>
                   </div>
                   <div className="w-full h-px bg-[#E8E4DC]" />
                   <div>

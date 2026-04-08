@@ -71,7 +71,7 @@ class DynamicStrategySimulator {
   start() {
     if (this.isRunning) return;
     
-    console.log('🚀 Command OS Dynamic Strategy Simulator: STARTING');
+    console.log('🚀 Readiness OS Dynamic Strategy Simulator: STARTING');
     this.isRunning = true;
     this.startRealTimeUpdates();
     this.initializeOracle();
@@ -79,7 +79,7 @@ class DynamicStrategySimulator {
   }
 
   stop() {
-    console.log('⏸️ Command OS Dynamic Strategy Simulator: STOPPING');
+    console.log('⏸️ Readiness OS Dynamic Strategy Simulator: STOPPING');
     this.isRunning = false;
     
     if (this.realTimeInterval) clearInterval(this.realTimeInterval);
@@ -169,7 +169,7 @@ class DynamicStrategySimulator {
   }
 
   private alertPattern(pattern: OraclePattern) {
-    console.log(`🔮 Command OS Oracle: ${pattern.type} detected (${pattern.confidence}% confidence)`);
+    console.log(`🔮 Readiness OS Oracle: ${pattern.type} detected (${pattern.confidence}% confidence)`);
     
     this.logActivity({
       eventType: 'oracle_pattern_detected',

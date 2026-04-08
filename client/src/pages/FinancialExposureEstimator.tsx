@@ -247,12 +247,12 @@ export default function FinancialExposureEstimator() {
                     })}
                   </div>
 
-                  {/* Command OS impact */}
+                  {/* Readiness OS impact */}
                   <div style={{ background: `${TEAL}08`, border: `1px solid ${TEAL}25`, borderLeft: `4px solid ${TEAL}`, padding: '24px 28px' }}>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>With Command OS — Exposure Reduction</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>With Readiness OS — Exposure Reduction</div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 20 }}>
                       <div>
-                        <div style={{ fontSize: 10, color: '#9CA3AF', marginBottom: 4 }}>Estimated exposure with Command OS</div>
+                        <div style={{ fontSize: 10, color: '#9CA3AF', marginBottom: 4 }}>Estimated exposure with Readiness OS</div>
                         <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{fmt(estimate.withOSLow)} – {fmt(estimate.withOSHigh)}</div>
                       </div>
                       <div>

@@ -19006,7 +19006,7 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
     <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
       <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
         <div style="background:#132558;padding:32px 36px;">
-          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Live Detection Alert</div>
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Live Detection Alert</div>
           <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
         </div>
         <div style="padding:32px 36px;">
@@ -19073,15 +19073,15 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-          <div style="color:#999;font-size:11px;text-align:center;">Command OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
-          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
         </div>
       </div>
     </div>
   `;
   const fromAddresses = [
-    "Command OS <onboarding@resend.dev>",
-    "Command OS <pilot@vaughnmartin.com>"
+    "Readiness OS <onboarding@resend.dev>",
+    "Readiness OS <pilot@vaughnmartin.com>"
   ];
   for (const recipientEmail of emails) {
     const token = Buffer.from(recipientEmail).toString("base64url");
@@ -19118,7 +19118,7 @@ async function sendDetectionSlack(detection, signal) {
     blocks: [
       {
         type: "header",
-        text: { type: "plain_text", text: "\u{1F534} Command OS: Strategic Trigger Detected" }
+        text: { type: "plain_text", text: "\u{1F534} Readiness OS: Strategic Trigger Detected" }
       },
       {
         type: "section",
@@ -21436,7 +21436,7 @@ var init_NotificationManager = __esm({
       async sendNotification(stakeholder, message, severity, metadata) {
         const channel = stakeholder.preferredChannel;
         const severityIcon = this.getSeverityIcon(severity);
-        const formattedMessage = `${severityIcon} Command OS Alert
+        const formattedMessage = `${severityIcon} Readiness OS Alert
 
 ${message}
 
@@ -23888,8 +23888,8 @@ var init_NotificationService = __esm({
           }
           const htmlContent = this.renderEmailTemplate(notification);
           const fromAddresses = [
-            "Command OS <onboarding@resend.dev>",
-            "Command OS <noreply@vaughnmartin.com>"
+            "Readiness OS <onboarding@resend.dev>",
+            "Readiness OS <noreply@vaughnmartin.com>"
           ];
           let sent = false;
           for (const from of fromAddresses) {
@@ -24079,7 +24079,7 @@ ${notification.message}`
       <body>
         <div class="container">
           <div class="header">
-            <h1>\u{1F6A8} Command OS Alert</h1>
+            <h1>\u{1F6A8} Readiness OS Alert</h1>
             <div class="priority-badge">${notification.priority?.toUpperCase() || "HIGH"} PRIORITY</div>
           </div>
           <div class="content">
@@ -24102,7 +24102,7 @@ ${notification.message}`
             </center>
           </div>
           <div class="footer">
-            <p><strong>VaughnMartin Command OS</strong></p>
+            <p><strong>VaughnMartin Readiness OS</strong></p>
             <p>This is an automated alert. Please acknowledge immediately.</p>
           </div>
         </div>
@@ -25884,7 +25884,7 @@ var init_dataSourceService = __esm({
         ];
       }
       /**
-       * Transform external data to Command OS format
+       * Transform external data to Readiness OS format
        * This is where we handle different data structures from various sources
        */
       transformData(rawData, transformFunction) {
@@ -26470,7 +26470,7 @@ var init_integrations = __esm({
         await notificationManager.sendScenarioAlert(
           scenarioType || "test",
           severity || "medium",
-          message || "Test notification from Command OS",
+          message || "Test notification from Readiness OS",
           { source: "api-test", timestamp: (/* @__PURE__ */ new Date()).toISOString() }
         );
         res.json({ message: "Test notification sent successfully" });
@@ -32812,7 +32812,7 @@ var init_practiceDrillRoutes = __esm({
           organizationId: drillDetails.organizationId,
           playbookId: drillDetails.playbookId,
           targetExecutionTime: 12,
-          // Command OS standard: 12-minute coordinated response
+          // Readiness OS standard: 12-minute coordinated response
           ...performanceData
         };
         console.log("[COMPLETE DRILL] Performance payload before validation:", JSON.stringify(performancePayload, null, 2));
@@ -33109,7 +33109,7 @@ async function seedTriggers() {
     console.log("   \u{1F4E6} Creating demo system user for trigger seeding...");
     const [newUser] = await db.insert(users).values({
       email: DEMO_USER_EMAIL,
-      firstName: "Command OS",
+      firstName: "Readiness OS",
       lastName: "System",
       accessLevel: "admin"
     }).returning();
@@ -33121,7 +33121,7 @@ async function seedTriggers() {
     console.log("   \u{1F4E6} Creating demo organization for trigger seeding...");
     const [newOrg] = await db.insert(organizations).values({
       name: DEMO_ORG_NAME,
-      description: "Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for VaughnMartin Command OS.",
+      description: "Leading cloud-native enterprise platform company focused on strategic execution and operational excellence. Demo organization for VaughnMartin Readiness OS.",
       ownerId: user.id,
       industry: "Technology",
       size: 5e3,
@@ -33406,10 +33406,10 @@ var init_swagger = __esm({
       definition: {
         openapi: "3.0.0",
         info: {
-          title: "VaughnMartin Command OS API",
+          title: "VaughnMartin Readiness OS API",
           version: "2.0.0",
           description: `
-        Command OS is a comprehensive Strategic Execution Platform that enables organizations to:
+        Readiness OS is a comprehensive Strategic Execution Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates
@@ -35198,7 +35198,7 @@ function generateEmailHTML(trigger, playbook, executionId) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VaughnMartin Command OS - Playbook Activated</title>
+  <title>VaughnMartin Readiness OS - Playbook Activated</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f8fafc;">
   <table role="presentation" style="width: 100%; border-collapse: collapse;">
@@ -35390,7 +35390,7 @@ router2.post("/apply", async (req, res) => {
       try {
         const resend2 = new Resend(resendKey);
         await resend2.emails.send({
-          from: "Command OS <onboarding@resend.dev>",
+          from: "Readiness OS <onboarding@resend.dev>",
           replyTo: "pilot@vaughnmartin.com",
           to: "pilot@vaughnmartin.com",
           subject: `New Pilot Application \u2014 ${data.company} (${data.firstName} ${data.lastName})`,
@@ -35521,7 +35521,7 @@ var JiraAdapter = class {
       const issueData = {
         fields: {
           project: { key: projectKey },
-          summary: `[Command OS] ${payload.title}`,
+          summary: `[Readiness OS] ${payload.title}`,
           issuetype: { name: "Task" },
           description: {
             type: "doc",
@@ -35702,7 +35702,7 @@ var SalesforceAdapter = class {
     }
     try {
       const taskData = {
-        Subject: `[Command OS] ${payload.title}`,
+        Subject: `[Readiness OS] ${payload.title}`,
         Description: payload.description,
         Priority: this.mapPriority(payload.priority),
         Status: "Not Started",
@@ -35832,7 +35832,7 @@ var ServiceNowAdapter = class {
       const baseUrl = this.getBaseUrl(instanceUrl);
       const tableName = config.config.tableName || "incident";
       const body = {
-        short_description: `[Command OS] ${payload.title}`,
+        short_description: `[Readiness OS] ${payload.title}`,
         description: payload.description,
         priority: this.mapPriority(payload.priority),
         ...payload.metadata
@@ -35990,7 +35990,7 @@ var LiveIntegrationDispatcher = class {
 Phase: ${task.phase}
 Owner: ${task.owner}
 
-Auto-created by Command OS during playbook activation.`,
+Auto-created by Readiness OS during playbook activation.`,
             phase: task.phase,
             owner: task.owner
           };
@@ -36005,7 +36005,7 @@ Auto-created by Command OS during playbook activation.`,
           title: `\u{1F680} VaughnMartin Playbook Activated: ${playbookName}`,
           message: `*Playbook activated at ${(/* @__PURE__ */ new Date()).toLocaleTimeString()}*
 
-Command OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`,
+Readiness OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`,
           blocks: [
             {
               type: "header",
@@ -36017,7 +36017,7 @@ Command OS is coordinating response across ${stakeholders.length} stakeholders a
                 type: "mrkdwn",
                 text: `*Playbook activated at ${(/* @__PURE__ */ new Date()).toLocaleTimeString()}*
 
-Command OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`
+Readiness OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks4.length} tasks.`
               }
             },
             { type: "divider" },
@@ -36035,7 +36035,7 @@ ${stakeholderList}` }
             {
               type: "context",
               elements: [
-                { type: "mrkdwn", text: "\u26A1 Powered by VaughnMartin Command OS | Response coordinated in <12 minutes" }
+                { type: "mrkdwn", text: "\u26A1 Powered by VaughnMartin Readiness OS | Response coordinated in <12 minutes" }
               ]
             }
           ]
@@ -36525,7 +36525,7 @@ var DealRiskExecutionOrchestrator = class {
       {
         timestamp: this.formatTime(new Date(startTime.getTime() + 800)),
         action: "Logged execution in Command Center",
-        system: "Command OS",
+        system: "Readiness OS",
         status: "completed",
         duration: 200
       }
@@ -37179,10 +37179,10 @@ Return ONLY raw JSON (no markdown, no code fences):
     {"time": "0:05", "description": "Acknowledged and tasks assigned"},
     {"time": "0:08", "description": "Coordinated execution underway"},
     {"time": "0:11", "description": "Aligned and executing"},
-    {"time": "Final", "description": "Outcome with Command OS"}
+    {"time": "Final", "description": "Outcome with Readiness OS"}
   ],
   "cost_without": "$XM - actual cost/loss/opportunity missed",
-  "cost_with": "$XK - estimated cost with Command OS",
+  "cost_with": "$XK - estimated cost with Readiness OS",
   "comparison_metrics": {
     "time_to_coordination": {"reality": "extracted timeline", "execution_os": "12 minutes"},
     "stakeholder_alignment": {"reality": "description", "execution_os": "Parallel in minutes"},
@@ -37360,11 +37360,11 @@ router4.post("/simulate", async (req, res) => {
           await sendgrid.client.send({
             to: email,
             from: sendgrid.fromEmail,
-            subject: `[Command OS] URGENT: ${playbook.name || "Incident Response"} \u2014 Action Required`,
+            subject: `[Readiness OS] URGENT: ${playbook.name || "Incident Response"} \u2014 Action Required`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
                 <div style="text-align: center; margin-bottom: 24px;">
-                  <h1 style="color: #14b8a6; margin: 0;">Command OS Alert</h1>
+                  <h1 style="color: #14b8a6; margin: 0;">Readiness OS Alert</h1>
                   <p style="color: #94a3b8; margin-top: 8px;">Strategic Execution Platform</p>
                 </div>
                 <div style="background: #1e293b; padding: 24px; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 24px;">
@@ -37375,7 +37375,7 @@ router4.post("/simulate", async (req, res) => {
                 <div style="text-align: center; margin: 24px 0;">
                   <a href="${ackUrl}" style="background: #14b8a6; color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">Acknowledge & Accept Assignment</a>
                 </div>
-                <p style="color: #64748b; font-size: 12px; text-align: center; margin-top: 24px;">This is a live simulation from Command OS. Your response updates the dashboard in real-time.</p>
+                <p style="color: #64748b; font-size: 12px; text-align: center; margin-top: 24px;">This is a live simulation from Readiness OS. Your response updates the dashboard in real-time.</p>
               </div>
             `
           });
@@ -37476,12 +37476,12 @@ router4.get("/simulate/acknowledge", (req, res) => {
   }
   res.send(`
     <html>
-    <head><title>Command OS - Acknowledged</title></head>
+    <head><title>Readiness OS - Acknowledged</title></head>
     <body style="background: #0f172a; color: white; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
       <div style="text-align: center; max-width: 500px; padding: 40px;">
         <div style="font-size: 64px; margin-bottom: 16px;">\u2713</div>
         <h1 style="color: #14b8a6;">Assignment Acknowledged</h1>
-        <p style="color: #94a3b8;">Your acknowledgment has been recorded. The Command OS dashboard has been updated in real-time.</p>
+        <p style="color: #94a3b8;">Your acknowledgment has been recorded. The Readiness OS dashboard has been updated in real-time.</p>
         <p style="color: #64748b; font-size: 14px; margin-top: 24px;">You can close this window and return to the simulation.</p>
       </div>
     </body>
@@ -37534,7 +37534,7 @@ router4.post("/assess", async (req, res) => {
       }
       if (answers.playbookLocation === "We don't have one") {
         gaps.push("No documented market entry playbook");
-        recommendations2.push("Use Command OS's 58 Offense playbooks to build your market entry protocols");
+        recommendations2.push("Use Readiness OS's 58 Offense playbooks to build your market entry protocols");
       } else if (answers.playbookLocation) {
         score += 15;
         if (["Confluence/SharePoint", "Spreadsheets"].includes(answers.playbookLocation)) {
@@ -37580,7 +37580,7 @@ router4.post("/assess", async (req, res) => {
       }
       if (answers.playbookLocation === "We don't have one" || answers.playbookLocation === "Don't have one") {
         gaps.push("No documented response playbook exists");
-        recommendations2.push("Use Command OS's 56 Defense playbooks to build your crisis response protocols");
+        recommendations2.push("Use Readiness OS's 56 Defense playbooks to build your crisis response protocols");
       } else if (answers.playbookLocation) {
         score += 20;
         if (["Confluence/SharePoint", "Spreadsheets", "Confluence", "SharePoint", "Google Doc"].includes(answers.playbookLocation)) {
@@ -37609,7 +37609,7 @@ router4.post("/assess", async (req, res) => {
         gaps.push("RACI matrices exist for some but not all scenarios");
       } else {
         gaps.push("No pre-defined RACI matrices for transformation scenarios");
-        recommendations2.push("Build RACI matrices for your top transformation scenarios using Command OS templates");
+        recommendations2.push("Build RACI matrices for your top transformation scenarios using Readiness OS templates");
       }
       if (answers.resourceAuthority && answers.resourceAuthority.length > 3 && !answers.resourceAuthority.toLowerCase().includes("steering committee")) {
         score += 20;
@@ -37619,7 +37619,7 @@ router4.post("/assess", async (req, res) => {
       }
       if (answers.playbookLocation === "We don't have one") {
         gaps.push("No documented transformation playbook");
-        recommendations2.push("Use Command OS's 52 Special Teams playbooks for transformation initiatives");
+        recommendations2.push("Use Readiness OS's 52 Special Teams playbooks for transformation initiatives");
       } else if (answers.playbookLocation) {
         score += 15;
         if (["Confluence/SharePoint", "Spreadsheets"].includes(answers.playbookLocation)) {
@@ -37960,7 +37960,7 @@ var LiveActivationService = class {
         elapsedSeconds: elapsed
       });
     };
-    addLog("activation-started", "Command OS", "Platform", `Playbook "${state.playbookName}" activated \u2014 coordinating ${state.stakeholders.length} stakeholders across ${state.tasks.length} tasks`);
+    addLog("activation-started", "Readiness OS", "Platform", `Playbook "${state.playbookName}" activated \u2014 coordinating ${state.stakeholders.length} stakeholders across ${state.tasks.length} tasks`);
     emitCallback("phase-change", { activationId, phase: "activation-started", timestamp: now.toISOString() });
     const t0 = setTimeout(() => {
       state.stakeholders.forEach((s) => {
@@ -37974,7 +37974,7 @@ var LiveActivationService = class {
           responseTimeSeconds: null
         });
       });
-      addLog("notifications-sent", "Command OS", "Platform", `Notifications dispatched to all ${state.stakeholders.length} stakeholders`);
+      addLog("notifications-sent", "Readiness OS", "Platform", `Notifications dispatched to all ${state.stakeholders.length} stakeholders`);
       emitCallback("phase-change", { activationId, phase: "immediate", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
       updateMetrics();
     }, 500);
@@ -38026,7 +38026,7 @@ var LiveActivationService = class {
       if (phaseTasks.length === 0) return;
       const phaseTimer = setTimeout(() => {
         emitCallback("phase-change", { activationId, phase: phaseName, timestamp: (/* @__PURE__ */ new Date()).toISOString() });
-        addLog("phase-started", "Command OS", "Platform", `Phase "${phaseName}" initiated`);
+        addLog("phase-started", "Readiness OS", "Platform", `Phase "${phaseName}" initiated`);
       }, startDelayMs);
       timers.push(phaseTimer);
       phaseTasks.forEach((task, i) => {
@@ -38109,7 +38109,7 @@ var LiveActivationService = class {
       state.metrics.tasksCompleted = state.metrics.totalTasks;
       const totalTimeSeconds = Math.round((Date.now() - startTime) / 1e3);
       state.metrics.elapsedSeconds = totalTimeSeconds;
-      addLog("activation-complete", "Command OS", "Platform", `Playbook "${state.playbookName}" execution complete \u2014 ${state.metrics.totalStakeholders} stakeholders coordinated, ${state.metrics.totalTasks} tasks completed in ${totalTimeSeconds}s (simulating 12-minute coordination)`);
+      addLog("activation-complete", "Readiness OS", "Platform", `Playbook "${state.playbookName}" execution complete \u2014 ${state.metrics.totalStakeholders} stakeholders coordinated, ${state.metrics.totalTasks} tasks completed in ${totalTimeSeconds}s (simulating 12-minute coordination)`);
       emitCallback("metrics-update", {
         activationId,
         coordinationPercent: 100,
@@ -38201,7 +38201,7 @@ async function sendTeamsNotification(card) {
   }
 }
 async function notifyTeamsPlaybookActivation(params) {
-  const { playbookName, organizationName, triggeredBy = "Command OS", triggerContext, appUrl = "https://vaughnmartin.com" } = params;
+  const { playbookName, organizationName, triggeredBy = "Readiness OS", triggerContext, appUrl = "https://vaughnmartin.com" } = params;
   const now = (/* @__PURE__ */ new Date()).toLocaleString("en-US", {
     weekday: "short",
     month: "short",
@@ -38216,7 +38216,7 @@ async function notifyTeamsPlaybookActivation(params) {
     themeColor: "C9A84C",
     sections: [
       {
-        activityTitle: "**Command OS \u2014 War Room Open**",
+        activityTitle: "**Readiness OS \u2014 War Room Open**",
         activitySubtitle: `Activated: ${now}`,
         facts: [
           { name: "Playbook", value: playbookName },
@@ -38318,8 +38318,8 @@ function registerActivationRoutes(app2) {
       const deadline = new Date(Date.now() + 12 * 60 * 1e3);
       notifyTeamsPlaybookActivation({
         playbookName,
-        organizationName: "Command OS",
-        triggeredBy: "Command OS Platform",
+        organizationName: "Readiness OS",
+        triggeredBy: "Readiness OS Platform",
         appUrl
       }).catch(() => {
       });
@@ -38338,7 +38338,7 @@ function registerActivationRoutes(app2) {
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
               <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
                 <div style="background:#132558;padding:32px 36px;">
-                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Playbook Activated</div>
+                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Playbook Activated</div>
                   <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Response Initiated</div>
                 </div>
                 <div style="padding:32px 36px;">
@@ -38368,13 +38368,13 @@ function registerActivationRoutes(app2) {
                   </div>
                 </div>
                 <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                  <div style="color:#999;font-size:11px;text-align:center;">This notification was generated automatically by Command OS when a playbook was activated. No human reviewed it before it reached you.</div>
+                  <div style="color:#999;font-size:11px;text-align:center;">This notification was generated automatically by Readiness OS when a playbook was activated. No human reviewed it before it reached you.</div>
                 </div>
               </div>
             </div>
           `;
           await resend2.emails.send({
-            from: "Command OS <pilot@vaughnmartin.com>",
+            from: "Readiness OS <pilot@vaughnmartin.com>",
             replyTo: "pilot@vaughnmartin.com",
             to: emails,
             subject: `\u{1F680} Playbook Activated: ${playbookName} \u2014 12-Minute Execution Clock Running`,
@@ -38531,7 +38531,7 @@ function buildExpiredPage(reason) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Access \u2014 VaughnMartin Command OS</title>
+  <title>Access \u2014 VaughnMartin Readiness OS</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -38610,7 +38610,7 @@ function buildExpiredPage(reason) {
 </head>
 <body>
   <div class="card">
-    <div class="eyebrow">VaughnMartin \xB7 Command OS</div>
+    <div class="eyebrow">VaughnMartin \xB7 Readiness OS</div>
     <div class="seal">VM</div>
     <h1>${reason === "expired" ? "Access Window Closed" : "Access Denied"}</h1>
     <p>${message}<br />${sub}</p>
@@ -38721,7 +38721,7 @@ var ADMIN_EMAIL = "pilot@vaughnmartin.com";
 function buildAdminNotificationHtml(data, magicUrl) {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>New Access Request \u2014 Command OS</title></head>
+<head><meta charset="UTF-8" /><title>New Access Request \u2014 Readiness OS</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
@@ -38764,7 +38764,7 @@ function buildAdminNotificationHtml(data, magicUrl) {
         </tr>
         <tr>
           <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
-            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin \xB7 Command OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
+            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin \xB7 Readiness OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
           </td>
         </tr>
       </table>
@@ -38779,7 +38779,7 @@ function buildEmailHtml(firstName, magicUrl) {
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Executive Access \u2014 Command OS</title>
+<title>Your Executive Access \u2014 Readiness OS</title>
 </head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
@@ -38790,7 +38790,7 @@ function buildEmailHtml(firstName, magicUrl) {
         <tr>
           <td style="background:${NAVY};padding:36px 48px 28px;">
             <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
-            <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Command OS</div>
+            <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
             <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Execution Platform</div>
           </td>
         </tr>
@@ -38800,7 +38800,7 @@ function buildEmailHtml(firstName, magicUrl) {
           <td style="padding:48px 48px 36px;">
             <p style="margin:0 0 8px;color:${NAVY};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
             <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
-              Your access to <strong>Command OS</strong> is ready. This link gives you a full executive view of the platform \u2014 playbooks, trigger intelligence, and the 12-minute execution model.
+              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform \u2014 playbooks, trigger intelligence, and the 12-minute execution model.
             </p>
 
             <!-- CTA Button -->
@@ -38844,7 +38844,7 @@ function buildEmailHtml(firstName, magicUrl) {
         <tr>
           <td style="background:#F9FAFB;padding:24px 48px;border-top:1px solid #E5E7EB;">
             <p style="margin:0;color:#9CA3AF;font-size:12px;line-height:1.6;">
-              VaughnMartin \xB7 Command OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a><br/>
+              VaughnMartin \xB7 Readiness OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a><br/>
               Questions? Reply to this email or contact <a href="mailto:pilot@vaughnmartin.com" style="color:#9CA3AF;">pilot@vaughnmartin.com</a>
             </p>
           </td>
@@ -38886,8 +38886,8 @@ ${"\u2500".repeat(70)}`);
   }
   const resend2 = new Resend3(apiKey);
   const fromAddresses = [
-    "Command OS <onboarding@resend.dev>",
-    "Command OS <pilot@vaughnmartin.com>"
+    "Readiness OS <onboarding@resend.dev>",
+    "Readiness OS <pilot@vaughnmartin.com>"
   ];
   let emailSent = false;
   for (const from of fromAddresses) {
@@ -38896,7 +38896,7 @@ ${"\u2500".repeat(70)}`);
         from,
         replyTo: ADMIN_EMAIL,
         to: data.email,
-        subject: `Your Executive Access to Command OS, ${data.firstName}`,
+        subject: `Your Executive Access to Readiness OS, ${data.firstName}`,
         html: buildEmailHtml(data.firstName, magicUrl)
       });
       if (emailError) {
@@ -38915,7 +38915,7 @@ ${"\u2500".repeat(70)}`);
   }
   try {
     const { data: adminData, error: adminError } = await resend2.emails.send({
-      from: "Command OS <onboarding@resend.dev>",
+      from: "Readiness OS <onboarding@resend.dev>",
       replyTo: data.email,
       to: ADMIN_EMAIL,
       subject: `New Access Request \u2014 ${data.firstName} ${data.lastName} \xB7 ${data.company}`,
@@ -38941,7 +38941,7 @@ async function sendWelcomeTriggerDemo(email, firstName) {
     <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
       <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
         <div style="background:#132558;padding:32px 36px;">
-          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Live Detection Alert</div>
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Live Detection Alert</div>
           <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
         </div>
         <div style="padding:32px 36px;">
@@ -39004,16 +39004,16 @@ async function sendWelcomeTriggerDemo(email, firstName) {
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-          <div style="color:#999;font-size:11px;text-align:center;">Command OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
-          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
         </div>
       </div>
     </div>
   `;
   const resend2 = new Resend3(apiKey);
   const fromAddresses = [
-    "Command OS <pilot@vaughnmartin.com>",
-    "Command OS <onboarding@resend.dev>"
+    "Readiness OS <pilot@vaughnmartin.com>",
+    "Readiness OS <onboarding@resend.dev>"
   ];
   for (const from of fromAddresses) {
     try {
@@ -39079,7 +39079,7 @@ function getBaseUrl2() {
 function buildTrialEmailHtml(data, activationUrl) {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Your 24-Hour Trial Access \u2014 Command OS</title></head>
+<head><meta charset="UTF-8" /><title>Your 24-Hour Trial Access \u2014 Readiness OS</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
@@ -39094,7 +39094,7 @@ function buildTrialEmailHtml(data, activationUrl) {
           <td style="padding:36px 40px;">
             <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${data.firstName},</p>
             <p style="margin:0 0 24px;color:#374151;font-size:15px;line-height:1.6;">
-              You now have full access to the Command OS platform for the next <strong>48 hours</strong>. 
+              You now have full access to the Readiness OS platform for the next <strong>48 hours</strong>. 
               Explore the complete platform \u2014 live trigger detection, 170 pre-staged playbooks, 
               Mission Control, and the full IDEA Framework in action.
             </p>
@@ -39142,9 +39142,9 @@ async function createTrialSession(data) {
   let emailSent = false;
   try {
     const { error } = await resend.emails.send({
-      from: "Command OS <onboarding@resend.dev>",
+      from: "Readiness OS <onboarding@resend.dev>",
       to: data.email,
-      subject: `Your 48-Hour Trial Access to Command OS`,
+      subject: `Your 48-Hour Trial Access to Readiness OS`,
       html: buildTrialEmailHtml({ firstName: data.firstName, company: data.company }, activationUrl)
     });
     if (!error) emailSent = true;
@@ -43397,13 +43397,13 @@ async function registerRoutes(app2, existingServer) {
       console.log(`\u{1F4ED} Unsubscribed: ${email}`);
       return res.send(`
         <html>
-          <head><title>Unsubscribed \u2014 Command OS</title></head>
+          <head><title>Unsubscribed \u2014 Readiness OS</title></head>
           <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;">
             <div style="max-width:480px;background:#fff;border-radius:8px;border:1px solid #e8e4dc;padding:48px 40px;text-align:center;">
               <div style="width:48px;height:48px;background:#2B8A6E15;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B8A6E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Command OS</div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Readiness OS</div>
               <h1 style="font-size:22px;font-weight:700;color:#0A0F2E;margin:0 0 12px;">You've been unsubscribed</h1>
               <p style="font-size:14px;color:#666;line-height:1.6;margin:0 0 24px;">
                 <strong>${email}</strong> will no longer receive trigger alerts, compound threat notifications, or weekly digests.
@@ -48524,9 +48524,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
             </div>
             <div style="background:#ffffff;border-radius:0 0 8px 8px;overflow:hidden;border:1px solid #e8e4dc;border-top:none;">
               <div style="background:#132558;padding:32px 36px;">
-                <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Live Detection Alert</div>
+                <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Live Detection Alert</div>
                 <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
-                <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:6px;">Hello ${recipientName} \u2014 Command OS is now monitoring on your behalf.</div>
+                <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:6px;">Hello ${recipientName} \u2014 Readiness OS is now monitoring on your behalf.</div>
               </div>
               <div style="padding:32px 36px;">
                 <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
@@ -48586,16 +48586,16 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
                 </div>
               </div>
               <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                <div style="color:#999;font-size:11px;text-align:center;">Command OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
-                <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+                <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+                <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
               </div>
             </div>
           </div>
         </div>
       `;
       const fromAddresses = [
-        "Command OS <onboarding@resend.dev>",
-        "Command OS <pilot@vaughnmartin.com>"
+        "Readiness OS <onboarding@resend.dev>",
+        "Readiness OS <pilot@vaughnmartin.com>"
       ];
       let sent = false;
       for (const from of fromAddresses) {
@@ -49304,7 +49304,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
                   <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
                     <div style="background:#132558;padding:32px 36px;">
-                      <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Compound Threat Intelligence</div>
+                      <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Compound Threat Intelligence</div>
                       <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div>
                       <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">AI synthesis identified compound risk patterns across ${activeDomains.length} active monitoring domains.</div>
                     </div>
@@ -49327,7 +49327,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                     </div>
                     <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
                       <div style="color:#999;font-size:11px;text-align:center;">Compound Threat Intelligence monitors cross-domain signal combinations. Human executive review required before any action is taken.</div>
-                      <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+                      <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
                     </div>
                   </div>
                 </div>`;
@@ -49335,7 +49335,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 const token = Buffer.from(contact.email).toString("base64url");
                 const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
                 await resend2.emails.send({
-                  from: "Command OS <pilot@vaughnmartin.com>",
+                  from: "Readiness OS <pilot@vaughnmartin.com>",
                   replyTo: "pilot@vaughnmartin.com",
                   to: [contact.email],
                   subject: `\u26A0\uFE0F ${highConf.length} Compound Threat${highConf.length > 1 ? "s" : ""} Detected \u2014 Cross-Domain Risk Analysis`,
@@ -49619,7 +49619,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
 
 SCENARIO: "${scenarioText}"
 
-Available playbooks from the Command OS library (170 total across 9 domains):
+Available playbooks from the Readiness OS library (170 total across 9 domains):
 ${playbooks2.map((p) => `- ${p.name} (${p.domain})`).slice(0, 40).join("\n")}
 
 Respond ONLY as JSON with this structure:
@@ -49629,7 +49629,7 @@ Respond ONLY as JSON with this structure:
   "activatedPlaybooks": ["Playbook Name 1", "Playbook Name 2", "Playbook Name 3"],
   "aiAnalysis": "3-sentence executive-level analysis of why this scenario is a strategic risk and what separates organizations that thrive from those that merely survive",
   "urgencyLevel": "critical|high|medium",
-  "timeToRespond": "e.g. 12 minutes with Command OS vs 72 hours without"
+  "timeToRespond": "e.g. 12 minutes with Readiness OS vs 72 hours without"
 }`;
       const raw = await openAIService2.analyzeText(prompt);
       let result = {
@@ -49638,7 +49638,7 @@ Respond ONLY as JSON with this structure:
         activatedPlaybooks: ["Strategic Response Protocol", "Crisis Communications Playbook", "Executive Coordination Framework"],
         aiAnalysis: "This scenario requires immediate cross-functional coordination across multiple stakeholder groups. Organizations with pre-staged playbooks respond 340x faster than those without structured execution frameworks. The difference between surviving and thriving is measured in minutes, not days.",
         urgencyLevel: "high",
-        timeToRespond: "12 minutes with Command OS vs 72 hours without"
+        timeToRespond: "12 minutes with Readiness OS vs 72 hours without"
       };
       try {
         const jsonMatch = raw.match(/\{[\s\S]*\}/);
@@ -49651,7 +49651,7 @@ Respond ONLY as JSON with this structure:
         activatedPlaybooks: result.activatedPlaybooks || [],
         aiAnalysis: result.aiAnalysis || "",
         urgencyLevel: result.urgencyLevel || "high",
-        timeToRespond: result.timeToRespond || "12 minutes with Command OS vs 72 hours without"
+        timeToRespond: result.timeToRespond || "12 minutes with Readiness OS vs 72 hours without"
       });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -49827,12 +49827,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 const resend2 = new Resend7(apiKey);
                 const platformUrl = process.env.APP_URL || "https://vaughnmartin.com";
                 const threatRows = highConf.map((t) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains || []).join(", ")}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis || "").substring(0, 240)}${(t.aiHypothesis || "").length > 240 ? "\u2026" : ""}</td></tr>`).join("");
-                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center \u2192</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div></div></div></div>`;
+                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? "s" : ""} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center \u2192</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook \u2192</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div></div></div></div>`;
                 for (const contact of contacts) {
                   const token = Buffer.from(contact.email).toString("base64url");
                   const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
                   await resend2.emails.send({
-                    from: "Command OS <pilot@vaughnmartin.com>",
+                    from: "Readiness OS <pilot@vaughnmartin.com>",
                     replyTo: "pilot@vaughnmartin.com",
                     to: [contact.email],
                     subject: `\u26A0\uFE0F Scheduled Scan: ${highConf.length} Compound Threat${highConf.length > 1 ? "s" : ""} Detected`,
@@ -50042,7 +50042,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
               <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
                 <div style="background:#132558;padding:32px 36px;">
-                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS \xB7 Weekly Pilot Digest</div>
+                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Weekly Pilot Digest</div>
                   <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Week of ${weekLabel}</div>
                   <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">${org.name} \u2014 Strategic Execution Summary</div>
                 </div>
@@ -50081,8 +50081,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                   </div>
                 </div>
                 <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                  <div style="color:#999;font-size:11px;text-align:center;">Command OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
-                  <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+                  <div style="color:#999;font-size:11px;text-align:center;">Readiness OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
+                  <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
                 </div>
               </div>
             </div>`;
@@ -50094,7 +50094,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             const token = Buffer.from(contact.email).toString("base64url");
             const personalizedHtml = html.replace("__UNSUBSCRIBE_URL__", `${platformUrl}/api/unsubscribe?t=${token}`);
             await resend2.emails.send({
-              from: "Command OS <pilot@vaughnmartin.com>",
+              from: "Readiness OS <pilot@vaughnmartin.com>",
               replyTo: "pilot@vaughnmartin.com",
               to: [contact.email],
               subject,
@@ -50829,12 +50829,12 @@ app.get("/health", (_req, res) => {
   res.status(200).json({ status: "ok", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
 });
 app.get("/api/health", (_req, res) => {
-  res.status(200).json({ status: "ok", app: "Command OS", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
+  res.status(200).json({ status: "ok", app: "Readiness OS", timestamp: (/* @__PURE__ */ new Date()).toISOString() });
 });
 app.get("/api/health-check", (_req, res) => {
   res.status(200).json({
     status: "ok",
-    app: "Command OS",
+    app: "Readiness OS",
     seeded: seedingComplete,
     timestamp: (/* @__PURE__ */ new Date()).toISOString()
   });
@@ -51006,7 +51006,7 @@ server.listen(
     log5("serving on port " + port);
     logger13.info(
       { port, env: app.get("env") },
-      "Command OS server listening - health checks active from startup"
+      "Readiness OS server listening - health checks active from startup"
     );
   }
 );

@@ -170,8 +170,8 @@ export default function ExecutiveDashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Executive Dashboard | VaughnMartin Command OS",
-      description: "Unified strategic command center for Command OS.",
+      title: "Executive Dashboard | VaughnMartin Readiness OS",
+      description: "Unified strategic command center for Readiness OS.",
     });
   }, []);
 

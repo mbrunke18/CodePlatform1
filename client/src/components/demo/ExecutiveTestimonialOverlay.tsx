@@ -42,7 +42,7 @@ export function ExecutiveTestimonialOverlay() {
               <Quote className="h-8 w-8 text-gray-800" />
               <h2 className="text-2xl font-bold text-gray-800">The Cost of Unpreparedness</h2>
             </div>
-            <p className="text-gray-800 text-sm">Illustrative Scenario: Before vs After Command OS Methodology (Sample Data)</p>
+            <p className="text-gray-800 text-sm">Illustrative Scenario: Before vs After Readiness OS Methodology (Sample Data)</p>
           </div>
 
           {/* Testimonial Content */}
@@ -85,7 +85,7 @@ export function ExecutiveTestimonialOverlay() {
                   </div>
                   <div className="flex-1 space-y-4">
                     <p className="text-sm text-[#2B8A6E] font-semibold uppercase tracking-wide">
-                      With Command OS Methodology
+                      With Readiness OS Methodology
                     </p>
                     <blockquote className="text-xl text-[#2B8A6E] leading-relaxed">
                       Execution infrastructure approach: Pre-built playbooks with governance pre-defined. 
@@ -117,7 +117,7 @@ export function ExecutiveTestimonialOverlay() {
               {phase === 'before' ? (
                 <span className="text-red-300">The question isn't IF a crisis will hit—it's whether you'll be prepared.</span>
               ) : (
-                <span className="text-[#2B8A6E] font-semibold">Command OS turns strategic preparation into your competitive advantage.</span>
+                <span className="text-[#2B8A6E] font-semibold">Readiness OS turns strategic preparation into your competitive advantage.</span>
               )}
             </p>
           </div>

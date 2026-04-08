@@ -6,10 +6,10 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'VaughnMartin Command OS API',
+      title: 'VaughnMartin Readiness OS API',
       version: '2.0.0',
       description: `
-        Command OS is a comprehensive Strategic Execution Platform that enables organizations to:
+        Readiness OS is a comprehensive Strategic Execution Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates

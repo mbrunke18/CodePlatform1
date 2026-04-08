@@ -431,7 +431,7 @@ function DemoLiveActivation() {
 
   return (
     <div className="page-background min-h-screen bg-[#F8F7F4] text-gray-900">
-      <DemoNavHeader title="Command OS Live Activation Demo" showBackButton={true} />
+      <DemoNavHeader title="Readiness OS Live Activation Demo" showBackButton={true} />
       <div className="pt-20 p-8">
       <ExecutionStageGuide variant="compact" />
       {/* Confetti Celebration */}
@@ -450,7 +450,7 @@ function DemoLiveActivation() {
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-5xl font-bold mb-2 text-[#0A0F2E]" data-testid="demo-title">
-              Command OS Live Activation Demo
+              Readiness OS Live Activation Demo
             </h1>
             <div className="flex items-center gap-3 mb-2">
               <Badge className="bg-[#2B8A6E] text-white px-4 py-2 text-sm border-none" data-testid="badge-human-in-loop">
@@ -586,7 +586,7 @@ function DemoLiveActivation() {
                   ✨ Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
-                  Notice: Command OS is coordinating stakeholders, but humans are making all decisions.
+                  Notice: Readiness OS is coordinating stakeholders, but humans are making all decisions.
                 </p>
                 <ul className="space-y-1 text-sm text-slate-700 dark:text-slate-300">
                   <li className="flex items-center gap-2">
@@ -767,18 +767,18 @@ function DemoLiveActivation() {
                 </Card>
               </div>
 
-              {/* The Command OS Advantage - Before/After */}
+              {/* The Readiness OS Advantage - Before/After */}
               <Card className=" border-[#C9A84C]/50 mb-12">
                 <CardHeader>
                   <CardTitle className="text-4xl text-center text-[#C9A84C]">
-                    The Command OS Advantage
+                    The Readiness OS Advantage
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    {/* Without Command OS */}
+                    {/* Without Readiness OS */}
                     <div className="text-center p-6 bg-red-900/30 rounded-lg border-2 border-red-500/50">
-                      <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT Command OS</div>
+                      <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT Readiness OS</div>
                       <div className="text-7xl font-bold text-red-400 mb-3" data-testid="text-without-vexor">
                         48-72h
                       </div>
@@ -791,9 +791,9 @@ function DemoLiveActivation() {
                       <ArrowRight className="h-24 w-24 text-[#2B8A6E] animate-pulse" />
                     </div>
 
-                    {/* With Command OS */}
+                    {/* With Readiness OS */}
                     <div className="text-center p-6 bg-[#2B8A6E]/20 rounded-lg border-2 border-[#2B8A6E]/30">
-                      <div className="text-lg text-[#2B8A6E]/80 mb-3 font-semibold">WITH Command OS</div>
+                      <div className="text-lg text-[#2B8A6E]/80 mb-3 font-semibold">WITH Readiness OS</div>
                       <div className="text-7xl font-bold text-[#2B8A6E] mb-3 animate-pulse" data-testid="text-with-vexor">
                         {finalMetrics.coordinationTime}
                       </div>
@@ -1129,7 +1129,7 @@ function DemoLiveActivation() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <div className="text-sm text-gray-800 dark:text-slate-200 mb-2">WITHOUT Command OS</div>
+                <div className="text-sm text-gray-800 dark:text-slate-200 mb-2">WITHOUT Readiness OS</div>
                 <div className="flex items-center gap-2">
                   <AlertCircle className="h-6 w-6 text-red-400" />
                   <div className="text-3xl font-bold text-red-400">48-72h</div>
@@ -1140,7 +1140,7 @@ function DemoLiveActivation() {
               </div>
 
               <div className="border-t border-gray-200 pt-4">
-                <div className="text-sm text-gray-800 dark:text-slate-200 mb-2">WITH Command OS</div>
+                <div className="text-sm text-gray-800 dark:text-slate-200 mb-2">WITH Readiness OS</div>
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-6 w-6 text-[#2B8A6E]" />
                   <div className="text-3xl font-bold text-[#2B8A6E]">~12min</div>

@@ -34,7 +34,7 @@ const data: EcosystemPageData = {
   step1Body: "S/4HANA, Oracle Cloud ERP, Ariba, and SuccessFactors run every financial, supply chain, and HR transaction in the enterprise. Transactional systems don't convene executives or stage crisis responses — that gap remains.",
   step1Color: "#0070B8",
   integrationsHeading: "Five ERP integrations. One execution system.",
-  ctaHeading: "Activate Command OS on your SAP / Oracle stack.",
+  ctaHeading: "Activate Readiness OS on your SAP / Oracle stack.",
   ctaBody: "We deploy alongside your existing ERP environment. No rip-and-replace. The strategic command layer your transactional systems were never designed to provide.",
 };
 

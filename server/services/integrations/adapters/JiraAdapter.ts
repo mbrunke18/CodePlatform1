@@ -37,7 +37,7 @@ export class JiraAdapter implements IntegrationAdapter {
       const issueData = {
         fields: {
           project: { key: projectKey },
-          summary: `[Command OS] ${payload.title}`,
+          summary: `[Readiness OS] ${payload.title}`,
           issuetype: { name: 'Task' },
           description: {
             type: 'doc', version: 1,

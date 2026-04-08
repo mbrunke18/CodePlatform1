@@ -307,7 +307,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/command-center">
-              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Command OS One™</span>
+              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Readiness OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
             <span className="text-[#2B8A6E] font-bold uppercase tracking-wider">IDENTIFY</span>

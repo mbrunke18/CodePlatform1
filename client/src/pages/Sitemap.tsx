@@ -142,10 +142,10 @@ export default function Sitemap() {
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C' }}>Platform Directory</span>
           </div>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: '#F0EDE4', marginBottom: 10, lineHeight: 1.1 }}>
-            Command OS <em style={{ color: '#C9A84C' }}>Sitemap</em>
+            Readiness OS <em style={{ color: '#C9A84C' }}>Sitemap</em>
           </div>
           <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
-            Complete directory of all pages, features, and demos available in Command OS.
+            Complete directory of all pages, features, and demos available in Readiness OS.
           </div>
         </div>
       </div>

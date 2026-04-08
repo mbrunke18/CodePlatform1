@@ -623,7 +623,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
               </span>
             </div>
             <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 560 }}>
-              These signals were active the moment this playbook was created. Command OS monitors them continuously — no setup required.
+              These signals were active the moment this playbook was created. Readiness OS monitors them continuously — no setup required.
             </p>
           </div>
           <span style={{

@@ -130,7 +130,7 @@ export default function ExecutionOSVideo() {
                     <span className="text-xl font-bold text-[#D4AF37]">EIQ</span>
                   </div>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">Command OS</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Readiness OS</h2>
                 <p className="text-gray-900/60">Strategic Execution Platform</p>
               </motion.div>
               

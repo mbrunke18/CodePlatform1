@@ -66,7 +66,7 @@ export default function EnergyGridFailureDemo() {
             {energyDemoData.crisis.subtitle}
           </p>
           <p className="text-sm text-white/60 max-w-3xl mx-auto">
-            Experience how Command OS prevents catastrophic infrastructure failure through live execution in 12 minutes —
+            Experience how Readiness OS prevents catastrophic infrastructure failure through live execution in 12 minutes —
             transforming a potential 3-5 day blackout affecting 8.2M customers into controlled 3-hour stabilization.
           </p>
         </div>
@@ -254,7 +254,7 @@ export default function EnergyGridFailureDemo() {
                 3-Hour Coordinated Response Across 2,500 Stakeholders
               </h2>
               <p className="text-lg text-white/80 mb-4">
-                Watch Command OS orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
+                Watch Readiness OS orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
                 and 2,500 field personnel—executing load shedding and emergency repairs in parallel.
               </p>
               <div className="bg-white/5 p-4 rounded border border-white/10 grid md:grid-cols-3 gap-4">
@@ -370,7 +370,7 @@ export default function EnergyGridFailureDemo() {
             />
 
             <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
-              <h3 className="text-2xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Command OS Difference</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-semibold text-[#C9A84C] mb-2">❌ Traditional Coordination</h4>
@@ -383,7 +383,7 @@ export default function EnergyGridFailureDemo() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-[#2B8A6E] mb-2">✓ Command OS Coordination</h4>
+                  <h4 className="font-semibold text-[#2B8A6E] mb-2">✓ Readiness OS Coordination</h4>
                   <ul className="text-sm text-white/60 space-y-1">
                     <li>• 3-hour coordinated response across 2,500 stakeholders</li>
                     <li>• Controlled load shedding prevents cascading failures</li>

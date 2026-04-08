@@ -47,7 +47,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'cc-welcome',
         title: 'Welcome to Command Center',
-        description: 'When a strategic trigger hits, organizations typically waste 20-50 hours getting organized. Command OS compresses that to 12 minutes. AI handles detection and coordination. You make the decisions. This is where championship-speed execution happens.',
+        description: 'When a strategic trigger hits, organizations typically waste 20-50 hours getting organized. Readiness OS compresses that to 12 minutes. AI handles detection and coordination. You make the decisions. This is where championship-speed execution happens.',
         phase: 'EXECUTE'
       },
       {

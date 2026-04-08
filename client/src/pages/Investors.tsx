@@ -153,14 +153,14 @@ const milestones = [
 ];
 
 const researchCitations = [
-  { id: 1, source: "McKinsey & Company", title: "Enterprise Architecture Synthesis", year: "2025–2026", finding: "65% of enterprises still piloting AI — only 1% fully mature. Leaders, not employees, are the bottleneck. $4.4T AI productivity potential locked behind a missing coordination layer: the 'orchestration layer · coordination fabric · shared source of truth' Command OS provides." },
+  { id: 1, source: "McKinsey & Company", title: "Enterprise Architecture Synthesis", year: "2025–2026", finding: "65% of enterprises still piloting AI — only 1% fully mature. Leaders, not employees, are the bottleneck. $4.4T AI productivity potential locked behind a missing coordination layer: the 'orchestration layer · coordination fabric · shared source of truth' Readiness OS provides." },
   { id: 2, source: "IBM/Ponemon Institute", title: "Cost of a Data Breach Report", year: "2024", finding: "Global average breach cost: $4.88M; AI/automation saves 98 days in breach lifecycle" },
   { id: 3, source: "PagerDuty", title: "State of Digital Operations", year: "2024", finding: "Distributed response management teams respond 3.5x faster than centralized teams" },
   { id: 4, source: "Bain & Company", title: "Digital Transformation Study", year: "2024", finding: "70-88% of digital transformations fail to meet their original objectives" },
   { id: 5, source: "Fortune/NYU Stern", title: "M&A Analysis (40,000 deals)", year: "2024", finding: "70-75% of M&A deals fail to deliver expected value" },
   { id: 6, source: "Taylor & Francis", title: "Global Transformation Research", year: "2024", finding: "$2.3 trillion wasted globally on failed digital transformation programs" },
   { id: 7, source: "Business Continuity Institute", title: "Resilience Report", year: "2024", finding: "75% of organizations activated strategic response plans in past 12 months" },
-  { id: 8, source: "Gartner", title: "AI Technology Stack", year: "2026", finding: "Nine layers of enterprise AI investment mapped — from infrastructure to solutions — with no operating model layer identified to orchestrate execution. That gap is the market Command OS serves." },
+  { id: 8, source: "Gartner", title: "AI Technology Stack", year: "2026", finding: "Nine layers of enterprise AI investment mapped — from infrastructure to solutions — with no operating model layer identified to orchestrate execution. That gap is the market Readiness OS serves." },
 ];
 
 function PlatformArchitectureDiagram() {
@@ -299,7 +299,7 @@ function FuturePositioningDiagram() {
             Tomorrow — The AI Operating Layer
           </div>
           <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">Strategic Intelligence Platform</h3>
-          <p className="text-sm text-[#6B7280] font-medium mb-4">As AI agents proliferate, enterprises need coordination infrastructure — the missing layer between AI capability and enterprise execution. Command OS is that layer.</p>
+          <p className="text-sm text-[#6B7280] font-medium mb-4">As AI agents proliferate, enterprises need coordination infrastructure — the missing layer between AI capability and enterprise execution. Readiness OS is that layer.</p>
           <ul className="space-y-2">
             {[
               "Coordination infrastructure — not another AI capability tool",
@@ -363,7 +363,7 @@ export default function Investors() {
               <span className="text-[#C9A84C]"> Fortune 1000</span>
             </h1>
             <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">
-              Command OS transforms how enterprises respond to strategic events — in 12 minutes you're in full execution mode while competitors spend 30 days just figuring out who needs to be in the room, what work is needed, and what plan to put together.
+              Readiness OS transforms how enterprises respond to strategic events — in 12 minutes you're in full execution mode while competitors spend 30 days just figuring out who needs to be in the room, what work is needed, and what plan to put together.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">
@@ -410,7 +410,7 @@ export default function Investors() {
                 </p>
 
                 <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, fontWeight: 600, marginBottom: 40 }}>
-                  VaughnMartin rebuilt how work flows from first principles. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. This is a new category — and Command OS is the first system built for the AI-native enterprise.
+                  VaughnMartin rebuilt how work flows from first principles. Pre-staged playbooks replace real-time coordination. Pattern detection replaces committee deliberation. This is a new category — and Readiness OS is the first system built for the AI-native enterprise.
                 </p>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
@@ -428,7 +428,7 @@ export default function Investors() {
                 </div>
 
                 <div style={{ marginTop: 36, paddingTop: 32, borderTop: '1px solid rgba(201,168,76,0.15)', display: 'flex', alignItems: 'center', gap: 20 }}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.02em', flexShrink: 0 }}>Command OS</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontWeight: 600, color: '#C9A84C', letterSpacing: '0.02em', flexShrink: 0 }}>Readiness OS</div>
                   <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.2)' }} />
                   <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.04em' }}>The new operating model for AI-native enterprises.</div>
                 </div>
@@ -453,7 +453,7 @@ export default function Investors() {
                   Every Microsoft enterprise customer<br />is an <em style={{ color: '#C9A84C' }}>immediately addressable</em> prospect.
                 </h2>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 680, lineHeight: 1.7, marginBottom: 36, fontWeight: 500 }}>
-                  Command OS deploys <em>above</em> the Microsoft stack — not alongside it, not in competition with it.
+                  Readiness OS deploys <em>above</em> the Microsoft stack — not alongside it, not in competition with it.
                   It orchestrates Azure AI, Teams, Copilot Studio, Entra, and M365 inside a single 12-minute response motion.
                   No rip-and-replace. No migration. No change management. This is the fastest enterprise sales motion in the category.
                 </p>
@@ -462,7 +462,7 @@ export default function Investors() {
                   {[
                     { name: 'Azure AI', color: '#0078D4', detail: 'GPT-4o + 4 IDEA agents' },
                     { name: 'Microsoft Teams', color: '#6264A7', detail: 'War room + notifications' },
-                    { name: 'Copilot Studio', color: '#5BA3E8', detail: 'Custom Command OS agent' },
+                    { name: 'Copilot Studio', color: '#5BA3E8', detail: 'Custom Readiness OS agent' },
                     { name: 'Microsoft Entra', color: '#107C10', detail: 'RBAC + identity governance' },
                     { name: 'Power Platform', color: '#742774', detail: 'Workflow automation' },
                   ].map(({ name, color, detail }) => (
@@ -532,9 +532,9 @@ export default function Investors() {
               </div>
               <div className="grid grid-cols-3 divide-x divide-white/10">
                 {[
-                  { stat: "65%", label: "Still Piloting", sub: "Not yet scaling AI across the enterprise — Command OS closes this gap", color: "text-[#C9A84C]" },
+                  { stat: "65%", label: "Still Piloting", sub: "Not yet scaling AI across the enterprise — Readiness OS closes this gap", color: "text-[#C9A84C]" },
                   { stat: "1%", label: "Fully Mature", sub: "Leaders — not employees — are the bottleneck. 221 executive triggers solve this.", color: "text-[#2B8A6E]" },
-                  { stat: "$4.4T", label: "AI Productivity Potential", sub: "Locked behind the missing coordination layer — the layer Command OS provides", color: "text-[#3BAF8A]" },
+                  { stat: "$4.4T", label: "AI Productivity Potential", sub: "Locked behind the missing coordination layer — the layer Readiness OS provides", color: "text-[#3BAF8A]" },
                 ].map((s) => (
                   <div key={s.stat} className="px-8 py-6">
                     <div className={`text-4xl font-black mb-1 ${s.color}`}>{s.stat}</div>
@@ -574,7 +574,7 @@ export default function Investors() {
             <div className="text-center mb-8">
               <p className="text-xs font-bold tracking-widest uppercase text-[#C9A84C] mb-3">THE ARCHITECTURE</p>
               <h2 className="text-2xl font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">30 Days to Still Be Planning. 12 Minutes to Live Execution.</h2>
-              <p className="text-[#6B7280] text-sm font-medium max-w-2xl mx-auto">Traditional enterprises spend 30 days just getting the right people in the room — roles unassigned, tasks undefined, communications not sent. Command OS delivers a fully deployed organization in 12 minutes. Execution is already underway before competitors have scheduled their first call.</p>
+              <p className="text-[#6B7280] text-sm font-medium max-w-2xl mx-auto">Traditional enterprises spend 30 days just getting the right people in the room — roles unassigned, tasks undefined, communications not sent. Readiness OS delivers a fully deployed organization in 12 minutes. Execution is already underway before competitors have scheduled their first call.</p>
             </div>
             <ExecutionGapDiagram className="rounded-2xl shadow-sm border border-[#E8E4DC]" />
           </motion.div>
@@ -609,7 +609,7 @@ export default function Investors() {
                       <p className="text-[#6B7280] text-xs font-medium mt-1">{scenario.traditional.cost}</p>
                     </div>
                     <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-lg p-3">
-                      <p className="text-[#2B8A6E]/60 text-[10px] font-bold uppercase tracking-wider mb-1">Command OS</p>
+                      <p className="text-[#2B8A6E]/60 text-[10px] font-bold uppercase tracking-wider mb-1">Readiness OS</p>
                       <p className="text-[#2B8A6E] font-bold text-lg">{scenario.execution.time}</p>
                       <p className="text-[#2B8A6E]/60 text-xs font-medium mt-1">{scenario.execution.value}</p>
                     </div>
@@ -799,7 +799,7 @@ export default function Investors() {
               ))}
             </div>
             <p className="text-center text-[#0A0F2E]/30 text-xs mt-6">
-              All statistics sourced from publicly available industry research. Command OS internal metrics (12-minute activation) based on platform capabilities.
+              All statistics sourced from publicly available industry research. Readiness OS internal metrics (12-minute activation) based on platform capabilities.
             </p>
           </motion.div>
           

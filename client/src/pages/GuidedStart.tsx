@@ -272,7 +272,7 @@ export default function GuidedStart() {
           <div style={{ textAlign: 'center', marginBottom: 52 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD }} />
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>VaughnMartin · Command OS</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>VaughnMartin · Readiness OS</span>
             </div>
             <h1 style={{ ...CG, fontSize: 'clamp(30px,5vw,54px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: 14 }}>
               One trigger. One playbook.<br />

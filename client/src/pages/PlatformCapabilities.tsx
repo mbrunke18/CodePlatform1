@@ -110,7 +110,7 @@ const PHASES = [
       },
       {
         title: 'Microsoft Ecosystem Integration',
-        detail: 'Microsoft Teams, Azure OpenAI, Copilot Studio, and Microsoft Entra. Command OS sits above the Microsoft investment as the operating model layer — not a replacement, an orchestrator. Every enterprise already has Microsoft\'s AI stack. This is the operating model to use it.',
+        detail: 'Microsoft Teams, Azure OpenAI, Copilot Studio, and Microsoft Entra. Readiness OS sits above the Microsoft investment as the operating model layer — not a replacement, an orchestrator. Every enterprise already has Microsoft\'s AI stack. This is the operating model to use it.',
       },
       {
         title: 'Command Tower — Full-Screen Executive NOC',
@@ -191,8 +191,8 @@ const PLATFORM_CAPABILITIES = [
 export default function PlatformCapabilities() {
   useEffect(() => {
     updatePageMetadata({
-      title: 'Platform Capabilities — Command OS | VaughnMartin',
-      description: 'The full decision intelligence lifecycle: preparation, activation, coordination, and compounding learning. Every capability that Command OS delivers.',
+      title: 'Platform Capabilities — Readiness OS | VaughnMartin',
+      description: 'The full decision intelligence lifecycle: preparation, activation, coordination, and compounding learning. Every capability that Readiness OS delivers.',
     });
   }, []);
 
@@ -212,7 +212,7 @@ export default function PlatformCapabilities() {
             The Entire Decision Lifecycle.<br />Not One Moment of It.
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(240,237,228,0.65)', lineHeight: 1.8, maxWidth: 660, fontWeight: 400, marginBottom: 32 }}>
-            Command OS does not help organizations respond faster. It helps them prepare better, decide with higher confidence, execute with greater precision, and compound organizational intelligence over time — so every response is faster, sharper, and more likely to succeed than the last one.
+            Readiness OS does not help organizations respond faster. It helps them prepare better, decide with higher confidence, execute with greater precision, and compound organizational intelligence over time — so every response is faster, sharper, and more likely to succeed than the last one.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {[
@@ -322,7 +322,7 @@ export default function PlatformCapabilities() {
             fontSize: 28, fontWeight: 400, color: IVORY,
             lineHeight: 1.65, margin: '0 0 28px', fontStyle: 'italic',
           }}>
-            "Most tools address one moment. Command OS addresses the entire decision lifecycle — from signal detection through decision preparation through activated execution through institutional learning — and every cycle through that lifecycle makes the organization more capable of handling the next one."
+            "Most tools address one moment. Readiness OS addresses the entire decision lifecycle — from signal detection through decision preparation through activated execution through institutional learning — and every cycle through that lifecycle makes the organization more capable of handling the next one."
           </blockquote>
           <p style={{ fontSize: 13, color: 'rgba(240,237,228,0.5)', fontWeight: 600, marginBottom: 36 }}>
             That is not a coordination tool. That is not an execution tool.<br />

@@ -2100,7 +2100,7 @@ playbookLibraryRouter.post('/:playbookId/activate', async (req, res) => {
       .where(eq(playbookTaskSequences.playbookId, playbookId))
       .orderBy(playbookTaskSequences.sequence);
 
-    // Create execution phases based on Command OS methodology
+    // Create execution phases based on Readiness OS methodology
     const phases = [
       { name: 'Immediate Response', phase: 'immediate' as const, startMin: 0, endMin: 2, sequence: 1 },
       { name: 'Secondary Actions', phase: 'secondary' as const, startMin: 2, endMin: 5, sequence: 2 },

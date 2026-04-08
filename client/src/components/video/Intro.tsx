@@ -125,7 +125,7 @@ export function Intro({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Trigger-to-Execution Orchestration"
-        description="17 independent reports confirm: enterprises need execution infrastructure. Command OS coordinates 50-200+ stakeholders from trigger to full execution in 12 minutes—across 9 strategic domains."
+        description="17 independent reports confirm: enterprises need execution infrastructure. Readiness OS coordinates 50-200+ stakeholders from trigger to full execution in 12 minutes—across 9 strategic domains."
         delay={0.5}
       />
     </div>

@@ -133,7 +133,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3 }}
               className="text-lg text-gray-800 mb-6"
             >
-              Command OS: 170 playbooks for offense, defense, and special teams.
+              Readiness OS: 170 playbooks for offense, defense, and special teams.
             </motion.p>
             
             <motion.div
@@ -280,7 +280,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               <ArrowRight className="h-8 w-8 text-[#2B8A6E]" />
               <div className="text-center">
                 <div className="text-4xl font-bold text-[#2B8A6E]">12 min</div>
-                <div className="text-sm text-[#2B8A6E]">With Command OS</div>
+                <div className="text-sm text-[#2B8A6E]">With Readiness OS</div>
               </div>
             </motion.div>
           </div>
@@ -400,7 +400,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.5 }}
               className="text-lg text-gray-800 mt-4"
             >
-              Command OS.
+              Readiness OS.
             </motion.p>
           </div>
         </Scene>

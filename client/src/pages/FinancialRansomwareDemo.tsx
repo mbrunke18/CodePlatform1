@@ -145,7 +145,7 @@ export default function FinancialRansomwareDemo() {
                     The Detection–Coordination Gap
                   </h3>
                   <p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.7, fontSize: 14 }}>
-                    Your AI and SOC team can detect a ransomware attack in <strong style={{ color: GOLD }}>minutes</strong>. But coordinating your CEO, CISO, CFO, General Counsel, CTO, Federal Reserve liaison, SEC disclosure team, and card network contacts takes <strong style={{ color: GOLD }}>weeks of emergency meetings, email chains, and phone trees</strong> — while the clock on your regulatory deadlines is already running. In that window, a contained $1M incident becomes a $27M regulatory and reputational disaster. Command OS closes that gap. Every stakeholder notified. Every task assigned. Every regulatory deadline pre-staged. In 12 minutes.
+                    Your AI and SOC team can detect a ransomware attack in <strong style={{ color: GOLD }}>minutes</strong>. But coordinating your CEO, CISO, CFO, General Counsel, CTO, Federal Reserve liaison, SEC disclosure team, and card network contacts takes <strong style={{ color: GOLD }}>weeks of emergency meetings, email chains, and phone trees</strong> — while the clock on your regulatory deadlines is already running. In that window, a contained $1M incident becomes a $27M regulatory and reputational disaster. Readiness OS closes that gap. Every stakeholder notified. Every task assigned. Every regulatory deadline pre-staged. In 12 minutes.
                   </p>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export default function FinancialRansomwareDemo() {
                   </div>
                 ))}
               </div>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 8 }}>Without Command OS, meeting these deadlines requires a coordination sprint most organizations aren't built for.</p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 8 }}>Without Readiness OS, meeting these deadlines requires a coordination sprint most organizations aren't built for.</p>
             </div>
 
             {/* Stakeholder Cascade */}
@@ -252,7 +252,7 @@ export default function FinancialRansomwareDemo() {
                 Begin Crisis Simulation
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects, Command OS coordinates</p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects, Readiness OS coordinates</p>
             </div>
           </div>
         )}
@@ -290,7 +290,7 @@ export default function FinancialRansomwareDemo() {
           <div className="max-w-6xl mx-auto space-y-8 text-white">
             <div className="text-center mb-8">
               <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Crisis Contained</h2>
-              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)" }}>Traditional approach vs. Command OS — live execution in 12 minutes</p>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)" }}>Traditional approach vs. Readiness OS — live execution in 12 minutes</p>
             </div>
             <ROIComparison
               traditional={financialDemoData.roiComparison.traditional}
@@ -334,10 +334,10 @@ export default function FinancialRansomwareDemo() {
             {/* The execution gap insight */}
             <Card className="bg-white/5 border-[#C9A84C]/50 border-2 p-8">
               <h3 style={{ ...CG, fontSize: 20, fontWeight: 700, color: "#fff", textAlign: "center", marginBottom: 12 }}>
-                The Command OS Difference for Financial Services
+                The Readiness OS Difference for Financial Services
               </h3>
               <p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.75, fontSize: 14, textAlign: "center", maxWidth: 560, margin: "0 auto" }}>
-                Your AI detected the ransomware in milliseconds. But without Command OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, board, and regulators — while meeting SEC, Federal Reserve, OCC, and card network deadlines simultaneously — takes weeks of emergency calls. In that window, a $1M incident becomes a $27M regulatory and reputational disaster. Command OS turns instant detection into live execution in 12 minutes. Every role assigned. Every regulator pre-staged. Every deadline already in the task queue.
+                Your AI detected the ransomware in milliseconds. But without Readiness OS, coordinating your CEO, CISO, CTO, CFO, legal counsel, board, and regulators — while meeting SEC, Federal Reserve, OCC, and card network deadlines simultaneously — takes weeks of emergency calls. In that window, a $1M incident becomes a $27M regulatory and reputational disaster. Readiness OS turns instant detection into live execution in 12 minutes. Every role assigned. Every regulator pre-staged. Every deadline already in the task queue.
               </p>
             </Card>
 
@@ -348,7 +348,7 @@ export default function FinancialRansomwareDemo() {
                 <div>
                   <p style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 4 }}>Already invested in Microsoft Copilot or Azure OpenAI?</p>
                   <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
-                    Every financial institution has Microsoft's AI stack. None have the operating model to execute with it. Command OS is the coordination layer that sits above your existing Microsoft investment — not a replacement, an orchestrator. Your AI detects. Command OS deploys your people.
+                    Every financial institution has Microsoft's AI stack. None have the operating model to execute with it. Readiness OS is the coordination layer that sits above your existing Microsoft investment — not a replacement, an orchestrator. Your AI detects. Readiness OS deploys your people.
                   </p>
                 </div>
               </div>

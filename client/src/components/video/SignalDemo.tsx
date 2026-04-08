@@ -44,13 +44,13 @@ export function SignalDemo({ progress }: SceneProps) {
         >
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#D4AF37]" />
-            <span className="text-gray-800 text-sm">Without Command OS:</span>
+            <span className="text-gray-800 text-sm">Without Readiness OS:</span>
             <span className="text-red-400 font-bold">Days to notice</span>
           </div>
           <div className="w-px h-6 bg-gray-100" />
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-[#00A8A8]" />
-            <span className="text-gray-800 text-sm">With Command OS:</span>
+            <span className="text-gray-800 text-sm">With Readiness OS:</span>
             <span className="text-[#00A8A8] font-bold">Real-time detection</span>
           </div>
         </motion.div>

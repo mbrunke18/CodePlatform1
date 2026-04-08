@@ -118,7 +118,7 @@ function FeatureRow({ title, description, icon: Icon, path, color = NAVY }: { ti
 
 export default function OnboardingGuide() {
   useEffect(() => {
-    document.title = "Executive Onboarding Guide — VaughnMartin Command OS";
+    document.title = "Executive Onboarding Guide — VaughnMartin Readiness OS";
   }, []);
 
   return (
@@ -155,7 +155,7 @@ export default function OnboardingGuide() {
               Executive Onboarding Guide
             </h1>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.55)", margin: "0 0 40px", maxWidth: 520, lineHeight: 1.6 }}>
-              Everything you need to understand, activate, and operate your Command OS from day one.
+              Everything you need to understand, activate, and operate your Readiness OS from day one.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
               {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["170", "Pre-Built Playbooks"], ["221", "Live Triggers"]].map(([v, l]) => (
@@ -173,7 +173,7 @@ export default function OnboardingGuide() {
           <SectionHeader
             label="01 — Platform Overview"
             title="What You Now Have Access To"
-            subtitle="Command OS is not a reporting tool or a dashboard. It is the operating infrastructure that compresses your mobilization cycle from 30 days to 12 minutes — before a strategic trigger fires, not after."
+            subtitle="Readiness OS is not a reporting tool or a dashboard. It is the operating infrastructure that compresses your mobilization cycle from 30 days to 12 minutes — before a strategic trigger fires, not after."
           />
           <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 10, padding: 32, marginBottom: 24 }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
@@ -394,7 +394,7 @@ export default function OnboardingGuide() {
           <SectionHeader
             label="07 — Demos & Simulations"
             title="Shareable Interactive Experiences"
-            subtitle="These pages require no login. Share them with board members, stakeholders, or team members to demonstrate Command OS before they have platform access."
+            subtitle="These pages require no login. Share them with board members, stakeholders, or team members to demonstrate Readiness OS before they have platform access."
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
             {[
@@ -421,7 +421,7 @@ export default function OnboardingGuide() {
           <SectionHeader
             label="08 — Pilot Roadmap"
             title="Recommended First 30 Days"
-            subtitle="A suggested schedule for getting maximum value from your Command OS pilot."
+            subtitle="A suggested schedule for getting maximum value from your Readiness OS pilot."
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
@@ -495,7 +495,7 @@ export default function OnboardingGuide() {
         {/* Footer */}
         <div style={{ borderTop: "1px solid #E5E7EB", paddingTop: 32, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <div style={{ fontSize: 13, fontWeight: 800, color: NAVY }}>VaughnMartin Command OS</div>
+            <div style={{ fontSize: 13, fontWeight: 800, color: NAVY }}>VaughnMartin Readiness OS</div>
             <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>Executive Onboarding Guide · pilot@vaughnmartin.com</div>
           </div>
           <div style={{ fontSize: 11, color: "#9CA3AF", textAlign: "right" as const }}>

@@ -156,7 +156,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <CardHeader>
             <CardTitle className="text-2xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Value Distribution by Strategy Type</CardTitle>
             <CardDescription>
-              How Command OS creates value across 8 strategic domains
+              How Readiness OS creates value across 8 strategic domains
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -232,7 +232,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <TabsList className="mb-6 bg-white dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
             <TabsTrigger value="all" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-all-scenarios">All Playbooks</TabsTrigger>
             <TabsTrigger value="top5" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-top-5">Top 5 by Value</TabsTrigger>
-            <TabsTrigger value="comparison" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-comparison">Traditional vs Command OS</TabsTrigger>
+            <TabsTrigger value="comparison" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-comparison">Traditional vs Readiness OS</TabsTrigger>
           </TabsList>
 
           <TabsContent value="all">
@@ -365,9 +365,9 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <TabsContent value="comparison">
             <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
               <CardHeader>
-                <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Approach vs. Command OS: Side-by-Side Comparison</CardTitle>
+                <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Approach vs. Readiness OS: Side-by-Side Comparison</CardTitle>
                 <CardDescription>
-                  See how Command OS' execution infrastructure delivers superior outcomes
+                  See how Readiness OS' execution infrastructure delivers superior outcomes
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -404,10 +404,10 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                     </div>
                   </div>
 
-                  {/* Command OS Approach */}
+                  {/* Readiness OS Approach */}
                   <div className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 rounded-lg p-6 border-2 border-[#2B8A6E]/30">
                     <h3 className="text-xl font-bold text-[#2B8A6E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                      ✅ Command OS
+                      ✅ Readiness OS
                     </h3>
                     <div className="space-y-4">
                       <div>

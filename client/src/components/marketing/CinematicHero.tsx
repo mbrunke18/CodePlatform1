@@ -365,7 +365,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <span className="text-lg text-gray-800">Command OS is the</span>
+                  <span className="text-lg text-gray-800">Readiness OS is the</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
@@ -460,7 +460,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   </motion.div>
                   <div className="text-center">
                     <div className="text-4xl md:text-6xl font-bold text-[#2B8A6E]">12 min</div>
-                    <div className="text-sm text-[#2B8A6E] mt-1">With Command OS</div>
+                    <div className="text-sm text-[#2B8A6E] mt-1">With Readiness OS</div>
                   </div>
                 </motion.div>
 
@@ -537,7 +537,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   transition={{ duration: 0.8, type: "spring" }}
                   className="mb-6"
                 >
-                  <span className="text-7xl md:text-9xl font-bold text-gray-900">Command OS</span>
+                  <span className="text-7xl md:text-9xl font-bold text-gray-900">Readiness OS</span>
                 </motion.div>
                 
                 <motion.div

@@ -125,10 +125,10 @@ const phases = [
 export default function IDEAFramework() {
   useEffect(() => {
     updatePageMetadata({
-      title: "The IDEA Framework — Command OS by VaughnMartin",
+      title: "The IDEA Framework — Readiness OS by VaughnMartin",
       description:
         "IDENTIFY triggers. DETECT signals. EXECUTE playbooks. ADVANCE the organization. The IDEA Framework is the operating model that powers 12-minute strategic execution.",
-      ogTitle: "The IDEA Framework — VaughnMartin Command OS",
+      ogTitle: "The IDEA Framework — VaughnMartin Readiness OS",
       ogDescription:
         "The operating model that turns AI signal detection into 12-minute organizational execution. AI monitors, scores, and recommends. Executives authorize. The decision was already pre-staged.",
     });

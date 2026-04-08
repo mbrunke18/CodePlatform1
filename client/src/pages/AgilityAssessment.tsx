@@ -198,7 +198,7 @@ export default function AgilityAssessment() {
                   </div>
                   <div className="bg-[#2B8A6E]/10 rounded-lg p-6 border border-[#2B8A6E]/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-[#0A0F2E] mb-2">+{revenueImpact.potentialGrowth}%</div>
-                    <p className="text-[#0A0F2E] dark:text-[#C9A84C] text-sm">Potential Additional Growth with Command OS</p>
+                    <p className="text-[#0A0F2E] dark:text-[#C9A84C] text-sm">Potential Additional Growth with Readiness OS</p>
                   </div>
                   <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-[#C9A84C] mb-2">10.3%</div>
@@ -218,7 +218,7 @@ export default function AgilityAssessment() {
                           Based on the 2025 BAI Report, organizations at your level see approximately <span className="text-[#C9A84C] font-semibold">{revenueImpact.currentGrowth}% revenue per employee growth</span>.
                         </p>
                         <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
-                          With Command OS, you could close the gap to top performers and capture an additional <span className="text-[#2B8A6E] font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
+                          With Readiness OS, you could close the gap to top performers and capture an additional <span className="text-[#2B8A6E] font-semibold">{revenueImpact.potentialGrowth}% growth potential</span>.
                         </p>
                       </div>
                     ) : (
@@ -230,7 +230,7 @@ export default function AgilityAssessment() {
                           However, there's still room to reach the <span className="text-[#2B8A6E] font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
                         <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
-                          Command OS can help you close the remaining gap with <span className="text-[#2B8A6E] font-semibold">pre-staged playbooks and 12-minute execution</span>.
+                          Readiness OS can help you close the remaining gap with <span className="text-[#2B8A6E] font-semibold">pre-staged playbooks and 12-minute execution</span>.
                         </p>
                       </div>
                     )}

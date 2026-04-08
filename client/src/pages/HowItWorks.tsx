@@ -72,7 +72,7 @@ export default function HowItWorks() {
         <div className="max-w-6xl mx-auto w-full" style={{ position: "relative", zIndex: 1 }}>
           <SectionLabel text="Your Complete Execution Roadmap" color={GOLD_LIGHT} />
           <h1 style={{ ...CG, fontSize: "clamp(40px, 5vw, 68px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 24, maxWidth: 800 }}>
-            How Command OS Works — Start to Value
+            How Readiness OS Works — Start to Value
           </h1>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.72)", maxWidth: 640, lineHeight: 1.7, marginBottom: 48, fontWeight: 500 }}>
             From your first login to a fully coordinated enterprise response in 12 minutes. This is exactly how the platform works — the setup, the 170 playbooks, how customization works, and how ongoing value builds over time.
@@ -117,7 +117,7 @@ export default function HowItWorks() {
               How 12 Minutes Actually Happens
             </h2>
             <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
-              Every step the traditional enterprise spends weeks negotiating — context analysis, role assignment, task orchestration, communications — Command OS delivers automatically, end to end, into the tools your teams already use.
+              Every step the traditional enterprise spends weeks negotiating — context analysis, role assignment, task orchestration, communications — Readiness OS delivers automatically, end to end, into the tools your teams already use.
             </p>
           </div>
           <ExecutionProcessDiagram className="rounded-xl shadow-sm border border-[#E8E4DC]" />
@@ -520,7 +520,7 @@ export default function HowItWorks() {
               The Platform Works While You Execute
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 580, lineHeight: 1.7, fontWeight: 500 }}>
-              Command OS includes four layers of intelligence that prevent the coordination failures Fortune 1000 enterprises experience every day — silently running in the background so your team stays on course.
+              Readiness OS includes four layers of intelligence that prevent the coordination failures Fortune 1000 enterprises experience every day — silently running in the background so your team stays on course.
             </p>
           </div>
 

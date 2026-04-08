@@ -7,8 +7,8 @@
 // ----- EXECUTION OS BRAND CONSTANTS -----
 
 export const EXECUTION_OS_BRAND = {
-  name: 'Command OS',
-  fullName: 'VaughnMartin - Command OS',
+  name: 'Readiness OS',
+  fullName: 'VaughnMartin - Readiness OS',
   tagline: 'Orchestration as a System.',
   extendedTagline: 'Detect Early. Execute Precisely. Advance Strategy.',
   alternateTaglines: [
@@ -27,7 +27,7 @@ export const EXECUTION_OS_BRAND = {
     detect: { name: 'VaughnMartin Signal™', description: 'AI-powered signal monitoring and detection' },
     execute: { name: 'VaughnMartin Compass™', description: 'Coordinated response and execution' },
     advance: { name: 'VaughnMartin Retrospect™', description: 'Institutional learning and improvement' },
-    executive: { name: 'Command OS One™', description: 'Single-pane executive view' }
+    executive: { name: 'Readiness OS One™', description: 'Single-pane executive view' }
   }
 } as const;
 
@@ -339,7 +339,7 @@ export const TIMING_BENCHMARKS = {
     activationUnit: 'minutes',
     fullExecutionTime: 90,
     fullExecutionUnit: 'minutes',
-    description: 'Command OS enables 12-minute playbook activation and 90-minute coordinated execution',
+    description: 'Readiness OS enables 12-minute playbook activation and 90-minute coordinated execution',
     // Backward compatibility
     decisionTime: 12,
     decisionUnit: 'minutes',

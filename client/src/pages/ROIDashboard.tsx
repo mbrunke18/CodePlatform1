@@ -153,7 +153,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
               <div className="p-6 border border-[#E8E4DC]">
                 <h3 className="text-sm font-bold mb-4" style={{ color: NAVY }}>Response Time Comparison</h3>
                 <Bar label="Industry Average (30-day mobilization)" value={benchMin} max={benchMin} color="#EF4444" suffix="min" />
-                <Bar label="Command OS Average" value={responseMin || 12} max={benchMin} color={TEAL} suffix="min" />
+                <Bar label="Readiness OS Average" value={responseMin || 12} max={benchMin} color={TEAL} suffix="min" />
                 <div className="mt-4 px-4 py-3 border-l-2" style={{ borderColor: GOLD, background: 'rgba(201,168,76,0.06)' }}>
                   <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Time Saved Per Event</p>
                   <p className="text-xl font-black" style={{ color: NAVY }}>{(saved / 60).toFixed(1)} hours</p>
@@ -186,7 +186,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 <div>
                   <p className="text-[9px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: GOLD }}>Board Summary</p>
                   <p style={{ ...CG, fontSize: '1.2rem', fontWeight: 600, color: NAVY }}>
-                    Command OS {improvement > 0 ? `accelerated strategic response by ${improvement}%` : 'is monitoring your strategic landscape'} —
+                    Readiness OS {improvement > 0 ? `accelerated strategic response by ${improvement}%` : 'is monitoring your strategic landscape'} —
                     preserving an estimated <span style={{ color: GOLD }}>${valueM > 0 ? valueM + 'M' : '—'}</span> in potential revenue leakage
                     across {s.activationCount ?? 0} activation{s.activationCount !== 1 ? 's' : ''} this period.
                   </p>
@@ -216,7 +216,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
             <div className="p-8 mb-8" style={{ background: NAVY }}>
               <p className="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-4">Executive Headline</p>
               <p style={{ ...CG, fontSize: '1.5rem', fontWeight: 600, color: '#fff', lineHeight: 1.4 }}>
-                "Command OS prevented an estimated{' '}
+                "Readiness OS prevented an estimated{' '}
                 <span style={{ color: GOLD }}>${valueM > 0 ? valueM + 'M' : '—'}</span>{' '}
                 in potential revenue leakage this quarter by accelerating strategic response times by{' '}
                 <span style={{ color: GOLD }}>{improvement}%</span> versus industry benchmarks."

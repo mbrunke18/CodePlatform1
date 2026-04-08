@@ -77,7 +77,7 @@ const SEARCH_ITEMS = [
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
   { label: 'Request a Pilot', path: '/request-access', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
-  { label: 'Why Command OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },
+  { label: 'Why Readiness OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
   { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
 ];
@@ -125,7 +125,7 @@ export default function StandardNav() {
         { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
-        { label: "Why Command OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
+        { label: "Why Readiness OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
     },
     {
@@ -184,9 +184,9 @@ export default function StandardNav() {
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
-    { label: "Why Command OS?", path: "/why-execution-os", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
+    { label: "Why Readiness OS?", path: "/why-execution-os", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
     { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "Board-ready one-pager — thesis, 3,600× metric, ROI case", featured: true },
-    { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Command OS" },
+    { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
     { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
     { label: "Pricing & Plans", path: "/growth", icon: TrendingUp, description: "Accessible entry — full platform, grow as you scale", featured: true },
@@ -200,7 +200,7 @@ export default function StandardNav() {
     { label: "Investment Thesis", path: "/investors", icon: TrendingUp, description: "Market opportunity, research validation & ROI case" },
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor presentation" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive-ready board reporting" },
-    { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Command OS" },
+    { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Readiness OS" },
   ];
 
   const isHomePage = location === "/" || location === "/home";
@@ -303,7 +303,7 @@ export default function StandardNav() {
             </div>
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
             <div>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Command OS</p>
+              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Readiness OS</p>
               <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Playbooks. 12 minutes.</p>
             </div>
           </div>
@@ -322,7 +322,7 @@ export default function StandardNav() {
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
               { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
               { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Identify · Detect · Execute · Advance' },
-              { path: '/why-execution-os', icon: Shield, label: 'Why Command OS', sub: 'The 30-day mobilization gap — and how we close it' },
+              { path: '/why-execution-os', icon: Shield, label: 'Why Readiness OS', sub: 'The 30-day mobilization gap — and how we close it' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
             {megaColHeading("Core Capabilities")}
@@ -385,11 +385,11 @@ export default function StandardNav() {
         {/* Two columns */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
           <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
-            {megaColHeading("The Case for Command OS")}
+            {megaColHeading("The Case for Readiness OS")}
             {[
-              { path: '/why-execution-os', icon: Scale, label: 'Why Command OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
+              { path: '/why-execution-os', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
-              { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Command OS' },
+              { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
               { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
             ].map(l => megaItem(l))}
           </div>
@@ -433,7 +433,7 @@ export default function StandardNav() {
         <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
             <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
-            <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Command Infrastructure Enterprises Are Missing</p>
+            <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Readiness Infrastructure Enterprises Are Missing</p>
           </div>
         </div>
 
@@ -452,7 +452,7 @@ export default function StandardNav() {
             {megaColHeading("Board & Founder")}
             {[
               { path: '/board-briefings', icon: FileText, label: 'Board Briefings', sub: 'Executive-ready board reporting' },
-              { path: '/founder-story', icon: Video, label: "Founder's Story", sub: 'The vision behind Command OS', featured: true },
+              { path: '/founder-story', icon: Video, label: "Founder's Story", sub: 'The vision behind Readiness OS', featured: true },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
@@ -470,7 +470,7 @@ export default function StandardNav() {
                 }}
               >
                 <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Request a Pilot</p>
-                <p style={{ fontSize: 10.5, color: '#374151', margin: 0, lineHeight: 1.4 }}>Deploy Command OS inside your portfolio company →</p>
+                <p style={{ fontSize: 10.5, color: '#374151', margin: 0, lineHeight: 1.4 }}>Deploy Readiness OS inside your portfolio company →</p>
               </div>
             </div>
           </div>
@@ -535,7 +535,7 @@ export default function StandardNav() {
               </div>
               <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
               <div>
-                <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Command OS</p>
+                <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Readiness OS</p>
                 <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>12 minutes to execution</p>
               </div>
             </div>
@@ -611,7 +611,7 @@ export default function StandardNav() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
                 >
                   <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 3px' }}>Ready to Run It Inside Your Org?</p>
-                  <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Deploy Command OS for your team in 30 days →</p>
+                  <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Deploy Readiness OS for your team in 30 days →</p>
                 </div>
               </div>
             </div>

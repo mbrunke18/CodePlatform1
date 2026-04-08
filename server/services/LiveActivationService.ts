@@ -322,7 +322,7 @@ class LiveActivationService {
       });
     };
 
-    addLog('activation-started', 'Command OS', 'Platform', `Playbook "${state.playbookName}" activated — coordinating ${state.stakeholders.length} stakeholders across ${state.tasks.length} tasks`);
+    addLog('activation-started', 'Readiness OS', 'Platform', `Playbook "${state.playbookName}" activated — coordinating ${state.stakeholders.length} stakeholders across ${state.tasks.length} tasks`);
     emitCallback('phase-change', { activationId, phase: 'activation-started', timestamp: now.toISOString() });
 
     const t0 = setTimeout(() => {
@@ -337,7 +337,7 @@ class LiveActivationService {
           responseTimeSeconds: null,
         });
       });
-      addLog('notifications-sent', 'Command OS', 'Platform', `Notifications dispatched to all ${state.stakeholders.length} stakeholders`);
+      addLog('notifications-sent', 'Readiness OS', 'Platform', `Notifications dispatched to all ${state.stakeholders.length} stakeholders`);
       emitCallback('phase-change', { activationId, phase: 'immediate', timestamp: new Date().toISOString() });
       updateMetrics();
     }, 500);
@@ -402,7 +402,7 @@ class LiveActivationService {
 
       const phaseTimer = setTimeout(() => {
         emitCallback('phase-change', { activationId, phase: phaseName, timestamp: new Date().toISOString() });
-        addLog('phase-started', 'Command OS', 'Platform', `Phase "${phaseName}" initiated`);
+        addLog('phase-started', 'Readiness OS', 'Platform', `Phase "${phaseName}" initiated`);
       }, startDelayMs);
       timers.push(phaseTimer);
 
@@ -494,7 +494,7 @@ class LiveActivationService {
       const totalTimeSeconds = Math.round((Date.now() - startTime) / 1000);
       state.metrics.elapsedSeconds = totalTimeSeconds;
 
-      addLog('activation-complete', 'Command OS', 'Platform', `Playbook "${state.playbookName}" execution complete — ${state.metrics.totalStakeholders} stakeholders coordinated, ${state.metrics.totalTasks} tasks completed in ${totalTimeSeconds}s (simulating 12-minute coordination)`);
+      addLog('activation-complete', 'Readiness OS', 'Platform', `Playbook "${state.playbookName}" execution complete — ${state.metrics.totalStakeholders} stakeholders coordinated, ${state.metrics.totalTasks} tasks completed in ${totalTimeSeconds}s (simulating 12-minute coordination)`);
 
       emitCallback('metrics-update', {
         activationId,

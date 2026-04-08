@@ -33,7 +33,7 @@ const phaseDetails = [
     id: 'discovery',
     title: 'Phase 1: Discovery & Evaluation',
     duration: 'Week 1-2',
-    objective: 'Experience Command OS and secure executive sponsorship',
+    objective: 'Experience Readiness OS and secure executive sponsorship',
     activities: [
       { name: 'Explore Demo Gallery', path: '/demo-gallery', description: 'Interactive demos for prospects, executives, and investors' },
       { name: 'Calculate Your ROI', path: '/roi-calculator', description: 'Quantify potential value with industry benchmarks' },
@@ -122,7 +122,7 @@ const phaseDetails = [
     duration: 'Ongoing',
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
-      { name: 'Command OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
+      { name: 'Readiness OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
       { name: 'Expand Playbook Coverage', path: '/identify/playbooks', description: 'Add playbooks for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/future-readiness', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/execution-history', description: 'Regular strategic health checks' }

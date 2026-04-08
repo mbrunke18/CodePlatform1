@@ -34,7 +34,7 @@ const data: EcosystemPageData = {
   step1Body: "Bedrock, SageMaker, EventBridge, and Step Functions form a powerful cloud-native foundation — compute, AI models, and event routing your enterprise already runs on. Executives still coordinate by email.",
   step1Color: "#FF9900",
   integrationsHeading: "Five AWS integrations. One execution system.",
-  ctaHeading: "Activate Command OS on your AWS stack.",
+  ctaHeading: "Activate Readiness OS on your AWS stack.",
   ctaBody: "We deploy inside your existing AWS environment. No migration. No new infrastructure to manage. The strategic command layer your cloud is missing.",
 };
 

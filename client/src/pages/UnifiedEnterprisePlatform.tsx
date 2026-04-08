@@ -184,7 +184,7 @@ export default function UnifiedEnterprisePlatform() {
                 <LayoutDashboard className="h-10 w-10 text-[#C9A84C]" />
                 <div>
                   <h1 className="text-2xl font-bold" data-testid="platform-title">
-                    Command OS Executive Command Center
+                    Readiness OS Executive Command Center
                   </h1>
                   <p className="text-white/80">Where Strategy Meets Velocity™ - 12-Minute Execution Platform</p>
                 </div>

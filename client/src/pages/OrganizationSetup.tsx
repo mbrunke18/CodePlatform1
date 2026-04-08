@@ -441,7 +441,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                 <div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "32px", color: "#fff" }} data-testid="org-setup-title">Organization <em style={{ fontStyle: "italic", color: "#DFC178" }}>Setup</em></h1>
                   <p className="text-white/60 mt-1">Configure YOUR team structure, stakeholders, and approval workflows</p>
-                  <p className="text-white/40 mt-1 text-sm">Command OS will use these settings to coordinate execution across your organization</p>
+                  <p className="text-white/40 mt-1 text-sm">Readiness OS will use these settings to coordinate execution across your organization</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -766,7 +766,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-[#0A0F2E]">Communication Channels</h2>
-                  <p className="text-sm text-[#6B7280]">Configure how Command OS will notify stakeholders during activations</p>
+                  <p className="text-sm text-[#6B7280]">Configure how Readiness OS will notify stakeholders during activations</p>
                 </div>
                 <Button onClick={() => setIsChannelDialogOpen(true)} data-testid="button-add-channel">
                   <Plus className="h-4 w-4 mr-2" />

@@ -14,7 +14,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     viewBox="0 0 1600 1440"
     xmlns="http://www.w3.org/2000/svg"
     className={`w-full ${className}`}
-    aria-label="Command OS: From Strategic Trigger to Live Execution in 12 Minutes"
+    aria-label="Readiness OS: From Strategic Trigger to Live Execution in 12 Minutes"
   >
     <defs>
       <linearGradient id="epNavy" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -49,7 +49,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     </text>
     <text x="800" y="82" textAnchor="middle" fontSize="14" fill={TEAL}
       fontFamily="'DM Sans', Arial, sans-serif">
-      Every step that the traditional enterprise spends weeks negotiating — Command OS delivers automatically.
+      Every step that the traditional enterprise spends weeks negotiating — Readiness OS delivers automatically.
     </text>
 
     {/* ══════════════════════════════════════════════════════
@@ -220,7 +220,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     </text>
     <text x="800" y="858" textAnchor="middle" fontSize="18" fontWeight="700" fill={TEAL}
       fontFamily="'Cormorant Garamond', Georgia, serif">
-      Command OS delivers in 12 minutes — from trigger to live organizational execution
+      Readiness OS delivers in 12 minutes — from trigger to live organizational execution
     </text>
 
     {/* Arrow down */}
@@ -296,7 +296,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     </text>
     <text x="800" y="1430" textAnchor="middle" fontSize="11" fill="rgba(255,255,255,0.8)"
       fontFamily="'DM Sans', Arial, sans-serif">
-      Command OS is that system — embedded in yours.
+      Readiness OS is that system — embedded in yours.
     </text>
   </svg>
 );

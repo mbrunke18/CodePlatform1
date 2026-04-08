@@ -117,7 +117,7 @@ export default function ProspectBrief() {
               Generate a Prospect-Specific Executive Brief
             </h1>
             <p style={{ fontSize: 13, color: MUTED, textAlign: "center", marginBottom: 32, lineHeight: 1.6 }}>
-              A printable 2-page document showing exactly how Command OS would deploy for this organization — specific playbooks, triggers, and ROI.
+              A printable 2-page document showing exactly how Readiness OS would deploy for this organization — specific playbooks, triggers, and ROI.
             </p>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
@@ -256,7 +256,7 @@ export default function ProspectBrief() {
           )}
           <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.8, margin: 0 }}>
             Fortune 1000 organizations spend an average of <strong>30 days</strong> just to mobilize when a strategic trigger fires — identifying stakeholders, aligning on a response, getting into the room. That coordination delay is not a talent problem. It is a structural problem built into the operating model.
-            Command OS eliminates it. The decision is the same. The mobilization cycle is pre-staged. Response begins in <strong>12 minutes</strong>.
+            Readiness OS eliminates it. The decision is the same. The mobilization cycle is pre-staged. Response begins in <strong>12 minutes</strong>.
           </p>
         </div>
 
@@ -404,7 +404,7 @@ export default function ProspectBrief() {
           <div style={{ fontSize: 10, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>Microsoft Ecosystem Fit</div>
           <p style={{ fontSize: 13, color: NAVY, lineHeight: 1.7, margin: 0 }}>
             <strong>{form.company} already owns Microsoft's AI stack.</strong> Azure AI, Copilot Studio, Teams, Entra — the infrastructure investment is made.
-            Command OS is the operating model layer above it. Not a replacement. An orchestrator that makes the Microsoft investment immediately executable at a strategic level.
+            Readiness OS is the operating model layer above it. Not a replacement. An orchestrator that makes the Microsoft investment immediately executable at a strategic level.
           </p>
         </div>
 

@@ -197,7 +197,7 @@ export class DealRiskExecutionOrchestrator {
       {
         timestamp: this.formatTime(new Date(startTime.getTime() + 800)),
         action: 'Logged execution in Command Center',
-        system: 'Command OS',
+        system: 'Readiness OS',
         status: 'completed',
         duration: 200,
       },

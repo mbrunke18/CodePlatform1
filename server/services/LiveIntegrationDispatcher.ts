@@ -89,7 +89,7 @@ export class LiveIntegrationDispatcher {
         for (const task of tasksToCreate) {
           const payload: StandardTaskPayload = {
             title: task.name,
-            description: `Playbook: ${playbookName}\nPhase: ${task.phase}\nOwner: ${task.owner}\n\nAuto-created by Command OS during playbook activation.`,
+            description: `Playbook: ${playbookName}\nPhase: ${task.phase}\nOwner: ${task.owner}\n\nAuto-created by Readiness OS during playbook activation.`,
             phase: task.phase,
             owner: task.owner
           };
@@ -103,7 +103,7 @@ export class LiveIntegrationDispatcher {
 
         const payload: StandardNotificationPayload = {
           title: `🚀 VaughnMartin Playbook Activated: ${playbookName}`,
-          message: `*Playbook activated at ${new Date().toLocaleTimeString()}*\n\nCommand OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks.length} tasks.`,
+          message: `*Playbook activated at ${new Date().toLocaleTimeString()}*\n\nReadiness OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks.length} tasks.`,
           blocks: [
             {
               type: 'header',
@@ -113,7 +113,7 @@ export class LiveIntegrationDispatcher {
               type: 'section',
               text: {
                 type: 'mrkdwn',
-                text: `*Playbook activated at ${new Date().toLocaleTimeString()}*\n\nCommand OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks.length} tasks.`,
+                text: `*Playbook activated at ${new Date().toLocaleTimeString()}*\n\nReadiness OS is coordinating response across ${stakeholders.length} stakeholders and ${tasks.length} tasks.`,
               },
             },
             { type: 'divider' },
@@ -129,7 +129,7 @@ export class LiveIntegrationDispatcher {
             {
               type: 'context',
               elements: [
-                { type: 'mrkdwn', text: '⚡ Powered by VaughnMartin Command OS | Response coordinated in <12 minutes' },
+                { type: 'mrkdwn', text: '⚡ Powered by VaughnMartin Readiness OS | Response coordinated in <12 minutes' },
               ],
             },
           ]

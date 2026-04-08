@@ -34,9 +34,9 @@ export default function MarketingLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Command OS - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. Command OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
-      ogTitle: "Command OS - When Your Competitor Moves, Will You Be Ready?",
+      title: "Readiness OS - Strategic Execution Operating System | Transform Strategy into 12-Minute Execution",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      ogTitle: "Readiness OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Execution Operating System. Active Fortune 1000 pilot program. Identify → Detect → Execute → Advance.",
     });
   }, []);
@@ -49,7 +49,7 @@ export default function MarketingLanding() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyMDEsMTY4LDc2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-30"></div>
         
         <div className="max-w-7xl mx-auto text-center relative z-10">
-          {/* Command OS Logo */}
+          {/* Readiness OS Logo */}
           <div className="mb-12 flex justify-center">
             <div className="inline-block px-8 py-6 rounded-none border border-white/10 backdrop-blur-md bg-white/5">
               <VaughnMartinLogo height={60} variant="full" color="light" />
@@ -79,7 +79,7 @@ export default function MarketingLanding() {
                 By then, you'll have lost market share.
               </p>
               <p className="text-xl md:text-2xl text-white uppercase tracking-[0.15em] font-bold">
-                Unless you have Command OS.
+                Unless you have Readiness OS.
               </p>
             </div>
           </div>
@@ -124,10 +124,10 @@ export default function MarketingLanding() {
               While Others Mobilize, You're Already Executing.
             </h2>
             <p className="text-xl md:text-2xl text-[#6B7280] mb-8 leading-relaxed font-light">
-              When a strategic trigger fires — a competitor launches, a regulation shifts, a market window opens — enterprises typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">spend 30 days just getting organized</span>. Command OS compresses that entire mobilization cycle to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
+              When a strategic trigger fires — a competitor launches, a regulation shifts, a market window opens — enterprises typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">spend 30 days just getting organized</span>. Readiness OS compresses that entire mobilization cycle to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
-              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Command OS deploys the matched playbook: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
+              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched playbook: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
               We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>
@@ -149,12 +149,12 @@ export default function MarketingLanding() {
             </div>
           </div>
 
-          {/* Command OS Product Suite */}
+          {/* Readiness OS Product Suite */}
           <Card className="max-w-6xl mx-auto bg-[#F8F7F4] border-[#E8E4DC] rounded-none shadow-sm">
             <CardContent className="p-10">
               <div className="text-center mb-12">
                 <h3 className="font-serif text-3xl text-[#0A0F2E] mb-3">
-                  The Command OS Product Suite
+                  The Readiness OS Product Suite
                 </h3>
                 <p className="text-[#C9A84C] text-[10px] uppercase tracking-[0.2em] font-bold">
                   Four integrated modules powered by the IDEA Framework™
@@ -192,7 +192,7 @@ export default function MarketingLanding() {
               </div>
               <div className="text-center mt-10">
                 <p className="text-[#6B7280] text-[10px] font-bold uppercase tracking-[0.3em]">
-                  Plus <span className="text-[#C9A84C] font-bold">Command OS One™</span> — Single-pane executive overview
+                  Plus <span className="text-[#C9A84C] font-bold">Readiness OS One™</span> — Single-pane executive overview
                 </p>
               </div>
             </CardContent>
@@ -340,7 +340,7 @@ export default function MarketingLanding() {
       {/* Footer */}
       <footer className="py-12 px-6 bg-[#0A0F2E] border-t border-white/10 text-center">
         <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.3em]">
-          Command OS — Strategic Execution Operating System by VaughnMartin
+          Readiness OS — Strategic Execution Operating System by VaughnMartin
         </p>
       </footer>
     </PageLayout>

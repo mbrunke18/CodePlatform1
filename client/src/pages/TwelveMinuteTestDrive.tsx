@@ -244,7 +244,7 @@ export default function TwelveMinuteTestDrive() {
                 <em style={{ fontStyle: 'italic', color: GOLD }}>Experience 12-Minute Execution.</em>
               </h1>
               <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 560, margin: '0 auto' }}>
-                Pick a real-world scenario your organization could face. We'll show you exactly how Command OS mobilizes your entire leadership team in under 12 minutes.
+                Pick a real-world scenario your organization could face. We'll show you exactly how Readiness OS mobilizes your entire leadership team in under 12 minutes.
               </p>
             </div>
 
@@ -309,12 +309,12 @@ export default function TwelveMinuteTestDrive() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
                 {/* Survive/Thrive Scores */}
                 <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.25)', borderTop: `3px solid ${TEAL}` }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Survive Score (Without Command OS)</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Survive Score (Without Readiness OS)</div>
                   <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.surviveScore ?? 61}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — current readiness estimate</div>
                 </div>
                 <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Thrive Score (With Command OS)</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Thrive Score (With Readiness OS)</div>
                   <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.thriveScore ?? 34}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — with 12-minute execution</div>
                 </div>
@@ -522,7 +522,7 @@ export default function TwelveMinuteTestDrive() {
             <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 40 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>What You Just Experienced</div>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>
-                In this test drive, Command OS coordinated {tasks.length} cross-functional tasks across {Array.from(new Set(tasks.map(t => t.role))).length} leadership roles — in sequence, with context, and with zero navigation. In a real activation, this same sequence deploys across your actual organization, notifying real stakeholders, assigning real tasks, and generating real documentation. The result: your organization moves from detection to coordinated response in under 12 minutes.
+                In this test drive, Readiness OS coordinated {tasks.length} cross-functional tasks across {Array.from(new Set(tasks.map(t => t.role))).length} leadership roles — in sequence, with context, and with zero navigation. In a real activation, this same sequence deploys across your actual organization, notifying real stakeholders, assigning real tasks, and generating real documentation. The result: your organization moves from detection to coordinated response in under 12 minutes.
               </p>
             </div>
 

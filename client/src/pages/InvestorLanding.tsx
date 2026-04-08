@@ -97,7 +97,7 @@ export default function InvestorLanding() {
             </p>
             
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-4xl mx-auto" data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Command OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Command OS customers are already deep into coordinated response — in 12 minutes.
+              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Readiness OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Readiness OS customers are already deep into coordinated response — in 12 minutes.
             </p>
 
             {/* VaughnMartin Thesis Block */}
@@ -162,7 +162,7 @@ export default function InvestorLanding() {
               Three Enterprise Problems Worth $847B
             </h2>
             <p className="text-xl text-[#0A0F2E] max-w-4xl mx-auto">
-              Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Command OS.
+              Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Readiness OS.
             </p>
           </div>
 
@@ -248,7 +248,7 @@ export default function InvestorLanding() {
 
             <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl px-6 py-4 text-center">
               <p className="text-[#0A0F2E]">
-                <span className="text-[#0A0F2E] font-semibold">Command OS at $250K-$750K/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
+                <span className="text-[#0A0F2E] font-semibold">Readiness OS at $250K-$750K/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
               </p>
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function InvestorLanding() {
                 The Agentic Execution Layer
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
-                Agents don't just generate answers — they coordinate enterprises. Command OS is the missing orchestration layer between strategy and operational systems.
+                Agents don't just generate answers — they coordinate enterprises. Readiness OS is the missing orchestration layer between strategy and operational systems.
               </p>
             </div>
 
@@ -278,7 +278,7 @@ export default function InvestorLanding() {
               <div className="text-center text-[#6B7280]">→</div>
               <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#2B8A6E]/20 border-2 border-[#C9A84C]/50 rounded-xl p-4 text-center">
                 <div className="text-xs text-[#C9A84C] font-semibold mb-1">Agentic Execution Layer</div>
-                <div className="text-sm font-bold text-[#0A0F2E]">Command OS</div>
+                <div className="text-sm font-bold text-[#0A0F2E]">Readiness OS</div>
               </div>
               <div className="text-center text-[#6B7280]">→</div>
               <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-4 text-center">
@@ -338,7 +338,7 @@ export default function InvestorLanding() {
                 8 Flagship Reports. One Conclusion.
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto mb-6">
-                The world's top consulting and technology firms independently confirm the market Command OS addresses
+                The world's top consulting and technology firms independently confirm the market Readiness OS addresses
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
@@ -359,7 +359,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Command OS is built for the C-suite</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS is built for the C-suite</p>
                 </CardContent>
               </Card>
 
@@ -374,7 +374,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"The smarter enterprise requires new operating models"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Command OS IS that operating model</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS IS that operating model</p>
                 </CardContent>
               </Card>
 
@@ -404,7 +404,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"Rise of sovereign, agentic, and physical AI"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Command OS orchestrates agentic AI with human oversight</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS orchestrates agentic AI with human oversight</p>
                 </CardContent>
               </Card>
 
@@ -419,7 +419,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"Organizations scaling AI into outcomes"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Command OS delivers measurable execution outcomes</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS delivers measurable execution outcomes</p>
                 </CardContent>
               </Card>
 
@@ -434,7 +434,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"Readiness requires people, process, culture, governance"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Command OS provides all four</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS provides all four</p>
                 </CardContent>
               </Card>
 
@@ -464,7 +464,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"Reinventing platform strategy for agentic AI"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Command OS is that platform</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS is that platform</p>
                 </CardContent>
               </Card>
             </div>
@@ -485,7 +485,7 @@ export default function InvestorLanding() {
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">
               <img
                 src={productArchitectureImg}
-                alt="Command OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
+                alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />
@@ -631,7 +631,7 @@ export default function InvestorLanding() {
                 12 Guides. 9 Firms. One Conclusion.
               </h2>
               <p className="text-lg text-[#0A0F2E] max-w-3xl mx-auto mb-6">
-                The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap Command OS fills.
+                The entire agentic AI landscape — from McKinsey to AWS to WEF — published in the last 6-8 months, all pointing at the same gap Readiness OS fills.
               </p>
               <div className="flex items-center justify-center gap-8 mb-8">
                 <div className="text-center">
@@ -722,7 +722,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 rounded-lg text-center">
-              <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Command OS built the product.</p>
+              <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Readiness OS built the product.</p>
               <p className="text-[#0A0F2E] text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
@@ -750,7 +750,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#0A0F2E] mb-4">
-                    Competitors offer point solutions (BI tools, project management, chatbots). Command OS integrates entire strategic execution workflow—massive switching costs once embedded.
+                    Competitors offer point solutions (BI tools, project management, chatbots). Readiness OS integrates entire strategic execution workflow—massive switching costs once embedded.
                   </p>
                   <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-ecosystem-advantage">
                     Advantage: 18-24 month integration lead vs. competitors
@@ -804,7 +804,7 @@ export default function InvestorLanding() {
                     First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-category-advantage">
-                    Advantage: Brand moat—"Command OS" becomes verb for strategic execution
+                    Advantage: Brand moat—"Readiness OS" becomes verb for strategic execution
                   </div>
                 </CardContent>
               </Card>
@@ -826,7 +826,7 @@ export default function InvestorLanding() {
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">
               <img
                 src={futurePositioningImg}
-                alt="Command OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
+                alt="Readiness OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
                 className="w-full h-auto"
                 loading="lazy"
               />
@@ -1109,7 +1109,7 @@ export default function InvestorLanding() {
               Let's Build This Together
             </h2>
             <p className="text-xl mb-4 text-white/80" data-testid="text-cta-description">
-              Command OS is defining the Strategic Execution Operating System category — a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              Readiness OS is defining the Strategic Execution Operating System category — a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <p className="text-base mb-10 text-white/60">
               Schedule a conversation with the VaughnMartin founding team to review our full investment deck, pipeline metrics, and strategic roadmap.

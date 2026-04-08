@@ -307,14 +307,14 @@ export function SplitScreenComparison() {
             </div>
           </div>
 
-          {/* Command OS SIDE - POWER */}
+          {/* Readiness OS SIDE - POWER */}
           <div className="p-6 bg-gradient-to-br  ">
             <div className="space-y-4">
               {/* Header */}
               <div className="flex items-center justify-between">
                 <div>
                   <Badge variant="outline" className="bg-[#0A0F2E]/20 text-[#DFC178] border-[#2B8A6E]/50">
-                    Command OS Response
+                    Readiness OS Response
                   </Badge>
                   <h3 className="text-lg font-bold text-[#0A0F2E] mt-2">{data.mState}</h3>
                 </div>

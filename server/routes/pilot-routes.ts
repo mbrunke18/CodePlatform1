@@ -121,7 +121,7 @@ function generateEmailHTML(trigger: typeof TRIGGER_SCENARIOS[string], playbook: 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VaughnMartin Command OS - Playbook Activated</title>
+  <title>VaughnMartin Readiness OS - Playbook Activated</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f8fafc;">
   <table role="presentation" style="width: 100%; border-collapse: collapse;">
@@ -322,7 +322,7 @@ router.post('/apply', async (req, res) => {
       try {
         const resend = new Resend(resendKey);
         await resend.emails.send({
-          from: 'Command OS <onboarding@resend.dev>',
+          from: 'Readiness OS <onboarding@resend.dev>',
           replyTo: 'pilot@vaughnmartin.com',
           to: 'pilot@vaughnmartin.com',
           subject: `New Pilot Application — ${data.company} (${data.firstName} ${data.lastName})`,

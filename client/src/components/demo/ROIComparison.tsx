@@ -31,7 +31,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
     <div className="space-y-4">
       <div className="grid md:grid-cols-2 gap-4">
 
-        {/* Traditional — Without Command OS */}
+        {/* Traditional — Without Readiness OS */}
         <div
           style={{
             border: "1px solid rgba(239,68,68,0.35)",
@@ -101,7 +101,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
           </div>
         </div>
 
-        {/* Command OS — With Command OS */}
+        {/* Readiness OS — With Readiness OS */}
         <div
           style={{
             border: `1px solid rgba(43,138,110,0.4)`,

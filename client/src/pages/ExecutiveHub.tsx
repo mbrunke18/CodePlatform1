@@ -330,7 +330,7 @@ export default function ExecutiveHub() {
                 <CardContent className="p-8">
                   <p className="text-[9px] font-black uppercase tracking-[0.4em] mb-4" style={{ color: 'rgba(201,168,76,0.6)' }}>Board-Ready Headline</p>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.35rem', fontWeight: 600, color: '#fff', lineHeight: 1.5 }}>
-                    "Command OS delivered a <span style={{ color: GOLD }}>78% target-met rate</span> across{' '}
+                    "Readiness OS delivered a <span style={{ color: GOLD }}>78% target-met rate</span> across{' '}
                     <span style={{ color: GOLD }}>47 activations</span> this period, with an average response time of{' '}
                     <span style={{ color: GOLD }}>11.4 minutes</span> — a <span style={{ color: GOLD }}>3,600× Execution Head Start</span>{' '}
                     over the industry baseline. No strategic trigger went unaddressed."

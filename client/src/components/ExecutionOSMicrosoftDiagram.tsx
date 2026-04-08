@@ -1,6 +1,6 @@
 /**
  * ExecutionOSMicrosoftDiagram
- * Architecture diagram showing Command OS as the strategic command layer
+ * Architecture diagram showing Readiness OS as the strategic command layer
  * sitting above and orchestrating the Microsoft Full Stack AI Ecosystem.
  */
 
@@ -124,7 +124,7 @@ export default function ExecutionOSMicrosoftDiagram() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       style={{ maxWidth: W, display: "block", margin: "0 auto", fontFamily: "inherit" }}
-      aria-label="Command OS positioned above the Microsoft Full Stack AI Ecosystem"
+      aria-label="Readiness OS positioned above the Microsoft Full Stack AI Ecosystem"
     >
       <defs>
         {/* Background gradient */}
@@ -382,11 +382,11 @@ export default function ExecutionOSMicrosoftDiagram() {
         MICROSOFT STACK
       </text>
 
-      {/* ── "Command OS orchestrates" annotation ── */}
+      {/* ── "Readiness OS orchestrates" annotation ── */}
       <text x={W / 2} y={H - 18} textAnchor="middle"
         fill={IVORY} fontSize={10} opacity={0.3}
         fontFamily="'DM Mono',monospace" letterSpacing={1}>
-        Command OS orchestrates the Microsoft agentic stack — it doesn't replace it. Human executives retain all decision authority.
+        Readiness OS orchestrates the Microsoft agentic stack — it doesn't replace it. Human executives retain all decision authority.
       </text>
 
       {/* ── Gold top border line ── */}

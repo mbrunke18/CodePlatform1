@@ -359,7 +359,7 @@ export default function ExecutiveSimulationDemo() {
                 Welcome to Your Day as CSO
               </CardTitle>
               <CardDescription className="text-lg text-[#6B7280] dark:text-[#C9A84C]/60">
-                Experience Command OS from the perspective of a Fortune 500 executive
+                Experience Readiness OS from the perspective of a Fortune 500 executive
               </CardDescription>
             </CardHeader>
             
@@ -426,7 +426,7 @@ export default function ExecutiveSimulationDemo() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span>See how Command OS compresses 30-day mobilization cycles to 12 minutes</span>
+                    <span>See how Readiness OS compresses 30-day mobilization cycles to 12 minutes</span>
                   </li>
                 </ul>
               </div>
@@ -466,7 +466,7 @@ export default function ExecutiveSimulationDemo() {
                 Response Successfully Coordinated
               </CardTitle>
               <CardDescription className="text-lg text-[#6B7280] dark:text-[#C9A84C]/60">
-                You just experienced the power of Command OS
+                You just experienced the power of Readiness OS
               </CardDescription>
             </CardHeader>
             
@@ -490,7 +490,7 @@ export default function ExecutiveSimulationDemo() {
               </div>
 
               <div className="bg-[#0A0F2E] rounded-xl p-6 border border-[#C9A84C]/10">
-                <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional vs Command OS Response</h3>
+                <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional vs Readiness OS Response</h3>
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
@@ -503,7 +503,7 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-white/80">With Command OS</span>
+                      <span className="text-white/80">With Readiness OS</span>
                       <span className="text-[#2B8A6E]">{formatTime(elapsedTime)}</span>
                     </div>
                     <div className="h-3 bg-white/5 rounded-full overflow-hidden">
@@ -523,7 +523,7 @@ export default function ExecutiveSimulationDemo() {
                     <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">1</span>
                     </div>
-                    <span>Command OS detected competitor acquisition via Reuters and SEC filing monitoring</span>
+                    <span>Readiness OS detected competitor acquisition via Reuters and SEC filing monitoring</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -605,7 +605,7 @@ export default function ExecutiveSimulationDemo() {
                 <div className="bg-[#2B8A6E]/10 rounded-lg p-4 border border-[#2B8A6E]/20">
                   <p className="text-[#2B8A6E] font-medium flex items-center gap-2">
                     <Zap className="w-4 h-4 text-[#C9A84C]" />
-                    Command OS Recommendation: Activate "Competitor M&A Response" playbook immediately
+                    Readiness OS Recommendation: Activate "Competitor M&A Response" playbook immediately
                   </p>
                 </div>
               </CardContent>
@@ -884,7 +884,7 @@ export default function ExecutiveSimulationDemo() {
                   <div className="bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10 border border-[#C9A84C]/20 dark:border-[#C9A84C]/20 rounded-lg p-4">
                     <p className="text-[#0A0F2E] dark:text-[#C9A84C] flex items-center gap-2">
                       <Zap className="w-5 h-5" />
-                      <strong>Command OS Recommendation:</strong> Based on the detected signal, the following playbook is recommended
+                      <strong>Readiness OS Recommendation:</strong> Based on the detected signal, the following playbook is recommended
                     </p>
                   </div>
                   

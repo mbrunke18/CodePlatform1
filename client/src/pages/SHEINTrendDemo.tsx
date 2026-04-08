@@ -123,7 +123,7 @@ export default function SHEINTrendDemo() {
                     <p style={{ color: "rgba(240,237,228,0.7)", lineHeight: 1.6, fontSize: 13 }}>
                       SHEIN's AI detected the Cottage Core trend instantly. But coordinating 5,847 stakeholders (180 designers,
                       5,000 suppliers, logistics, marketing) traditionally takes <strong style={{ color: IVORY }}>48-72 hours</strong> — enough time for
-                      Zara and H&M to respond. In fast fashion, first-mover captures 65% of revenue. Command OS compresses coordination
+                      Zara and H&M to respond. In fast fashion, first-mover captures 65% of revenue. Readiness OS compresses coordination
                       to <strong style={{ color: GOLD }}>12 minutes</strong>, enabling 7-day launch before competitors detect the trend.
                     </p>
                   </div>
@@ -217,7 +217,7 @@ export default function SHEINTrendDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p style={{ fontSize: 15, color: "rgba(240,237,228,0.7)", marginBottom: 24, lineHeight: 1.6 }}>
-                Command OS coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers,
+                Readiness OS coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers,
                 production coordinators, 5,000 suppliers, and marketing teams — enabling 7-day launch before Zara/H&M respond.
               </p>
 
@@ -295,7 +295,7 @@ export default function SHEINTrendDemo() {
                     Join the Pilot Program
                   </Button>
                 </Link>
-                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.4)", marginTop: 10 }}>Deploy Command OS across your organization</p>
+                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.4)", marginTop: 10 }}>Deploy Readiness OS across your organization</p>
               </div>
             </div>
 

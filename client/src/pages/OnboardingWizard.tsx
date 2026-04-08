@@ -221,7 +221,7 @@ export default function OnboardingWizard() {
           <div>
             <SectionLabel num="01" text="Organization Profile" />
             <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Tell us about your organization</h2>
-            <p style={{ fontSize: 14, color: MUTED, marginBottom: 40 }}>This configures your Command OS workspace and personalizes your implementation plan.</p>
+            <p style={{ fontSize: 14, color: MUTED, marginBottom: 40 }}>This configures your Readiness OS workspace and personalizes your implementation plan.</p>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 32 }}>
               <Field label="Company Name">
@@ -459,7 +459,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
         "Signal monitoring configuration & data mapping",
         "Custom trigger thresholds per your environment",
       ],
-      outcome: "Command OS is watching your environment in real-time.",
+      outcome: "Readiness OS is watching your environment in real-time.",
     },
     {
       num: "03", label: "Activation", timing: "Week 3–4 · Go-live", color: "#fff", doing: "Your team activates",
@@ -481,7 +481,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
 
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
           <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
-          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Welcome to Command OS</span>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Welcome to Readiness OS</span>
         </div>
 
         <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,62px)", color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
@@ -489,7 +489,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
           <em style={{ fontStyle: "italic", color: GOLD_LT }}>2–4 weeks.</em>
         </h1>
         <p style={{ fontSize: 16, fontWeight: 400, color: "rgba(255,255,255,0.55)", maxWidth: 580, marginBottom: 64, lineHeight: 1.8 }}>
-          Command OS requires real configuration — your org structure, decision rights, and enterprise integrations. That's why it works in 12 minutes when it matters. Here's your path to live.
+          Readiness OS requires real configuration — your org structure, decision rights, and enterprise integrations. That's why it works in 12 minutes when it matters. Here's your path to live.
         </p>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 1, background: "rgba(255,255,255,0.06)", marginBottom: 64 }}>
@@ -552,7 +552,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
 function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) {
   const MILESTONES = [
     { week: "Within 24 hours", title: "Implementation kickoff", desc: "Your VaughnMartin implementation team will contact you to schedule your integration sessions and review your IDEA Framework configuration.", icon: Mail, color: GOLD, status: "next" },
-    { week: "Week 1–2", title: "Enterprise integration", desc: "Connect Command OS to your Salesforce, ServiceNow, Jira, Slack, and other enterprise systems. Signal monitoring goes live.", icon: Zap, color: TEAL, status: "upcoming" },
+    { week: "Week 1–2", title: "Enterprise integration", desc: "Connect Readiness OS to your Salesforce, ServiceNow, Jira, Slack, and other enterprise systems. Signal monitoring goes live.", icon: Zap, color: TEAL, status: "upcoming" },
     { week: "Week 3–4", title: "First drill & go-live", desc: "Run your first simulated playbook activation with your team. Readiness audit. Executive sign-off. You're live.", icon: TrendingUp, color: NAVY, status: "upcoming" },
   ];
 

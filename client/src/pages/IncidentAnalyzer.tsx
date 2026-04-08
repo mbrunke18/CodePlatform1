@@ -292,7 +292,7 @@ export default function IncidentAnalyzer() {
     doc.rect(0, 0, 210, 297, "F");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(28);
-    doc.text("Command OS", 105, 50, { align: "center" });
+    doc.text("Readiness OS", 105, 50, { align: "center" });
     doc.setFontSize(14);
     doc.setTextColor(201, 168, 76); // #C9A84C
     doc.text("Strategic Analysis Report", 105, 65, { align: "center" });
@@ -366,7 +366,7 @@ export default function IncidentAnalyzer() {
 
       autoTable(doc, {
         startY: 35,
-        head: [["Phase", "Your Reality", "With Command OS"]],
+        head: [["Phase", "Your Reality", "With Readiness OS"]],
         body: comparisonData.map((row: any) => [
           row.phase || row.label || "",
           row.without || row.yourReality || "",
@@ -405,7 +405,7 @@ export default function IncidentAnalyzer() {
       doc.text(`Status: ${simulationData.status || "Completed"}`, 20, 50);
     }
 
-    doc.save("Command OS-Strategic-Report.pdf");
+    doc.save("Readiness OS-Strategic-Report.pdf");
   };
 
   const generateBoardPDF = () => {
@@ -414,7 +414,7 @@ export default function IncidentAnalyzer() {
     doc.rect(0, 0, 210, 297, "F");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(28);
-    doc.text("Command OS", 105, 50, { align: "center" });
+    doc.text("Readiness OS", 105, 50, { align: "center" });
     doc.setFontSize(16);
     doc.setTextColor(201, 168, 76); // #C9A84C
     doc.text("Board Briefing Deck", 105, 65, { align: "center" });
@@ -500,7 +500,7 @@ export default function IncidentAnalyzer() {
       roiY += 8;
     });
 
-    doc.save("Command OS-Board-Briefing.pdf");
+    doc.save("Readiness OS-Board-Briefing.pdf");
   };
 
   const stakeholders = simulationData?.stakeholders || editablePlaybook?.raciMatrix || playbook?.raciMatrix || [];
@@ -535,7 +535,7 @@ export default function IncidentAnalyzer() {
                 Strategic Analyzer
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                See How Command OS Would Have<br className="hidden md:block" /> Transformed Your Outcome
+                See How Readiness OS Would Have<br className="hidden md:block" /> Transformed Your Outcome
               </h1>
               <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
                 Describe any strategic situation your company faced and watch our AI analyze it, generate a custom playbook, and simulate full execution in under 12 minutes.
@@ -653,7 +653,7 @@ export default function IncidentAnalyzer() {
                 Strategic Analyzer
               </Badge>
               <h1 className="text-4xl font-bold text-[#0A0F2E] mb-3">
-                See How Command OS Transforms Execution
+                See How Readiness OS Transforms Execution
               </h1>
               <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
                 Describe any strategic situation. A crisis you faced. An opportunity you missed. A transformation that stalled.
@@ -988,7 +988,7 @@ export default function IncidentAnalyzer() {
                           <tr className="bg-[#F8F7F4]">
                             <th className="px-4 py-3 text-left text-xs font-semibold text-[#6B7280] uppercase">Metric</th>
                             <th className="px-4 py-3 text-left text-xs font-semibold text-red-400 uppercase">Without</th>
-                            <th className="px-4 py-3 text-left text-xs font-semibold text-[#2B8A6E] uppercase">With Command OS</th>
+                            <th className="px-4 py-3 text-left text-xs font-semibold text-[#2B8A6E] uppercase">With Readiness OS</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1020,7 +1020,7 @@ export default function IncidentAnalyzer() {
                               Your Reality
                             </th>
                             <th className="bg-[#2B8A6E]/20 px-4 py-3 text-left text-xs font-semibold text-[#2B8A6E] uppercase w-[37.5%]">
-                              With Command OS
+                              With Readiness OS
                             </th>
                           </tr>
                         </thead>
@@ -1528,7 +1528,7 @@ export default function IncidentAnalyzer() {
               McKinsey, BCG, Bain, Deloitte, PwC, and 10 more firms all published 2025-2026 guides confirming the execution infrastructure gap.
             </p>
             <p className="text-[#6B7280] text-sm">
-              Command OS is that infrastructure -- ready to deploy today.
+              Readiness OS is that infrastructure -- ready to deploy today.
             </p>
           </div>
         </div>

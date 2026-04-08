@@ -110,7 +110,7 @@ export default function EcosystemDiagram({
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       style={{ maxWidth: W, display: "block", margin: "0 auto", fontFamily: "inherit" }}
-      aria-label={`Command OS positioned above the ${ecoName}`}
+      aria-label={`Readiness OS positioned above the ${ecoName}`}
     >
       <defs>
         <linearGradient id={`bgGrad-${ecoName}`} x1="0" y1="0" x2="0" y2="1">
@@ -323,7 +323,7 @@ export default function EcosystemDiagram({
       <text x={W / 2} y={H - 18} textAnchor="middle"
         fill={IVORY} fontSize={10} opacity={0.3}
         fontFamily="'DM Mono',monospace" letterSpacing={1}>
-        Command OS orchestrates the {ecoName} — it doesn't replace it. Human executives retain all decision authority.
+        Readiness OS orchestrates the {ecoName} — it doesn't replace it. Human executives retain all decision authority.
       </text>
 
       <line x1={0} y1={0} x2={W} y2={0} stroke={GOLD} strokeWidth={2.5} opacity={0.6} />

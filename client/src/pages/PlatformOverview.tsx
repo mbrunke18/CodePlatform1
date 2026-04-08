@@ -102,10 +102,10 @@ const components = [
 export default function PlatformOverview() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Platform Overview — Command OS by VaughnMartin",
+      title: "Platform Overview — Readiness OS by VaughnMartin",
       description:
-        "From signal detection to coordinated organizational response in 12 minutes. Every component of the Command OS, in one unified platform built for Fortune 1000 speed.",
-      ogTitle: "Platform Overview — VaughnMartin Command OS",
+        "From signal detection to coordinated organizational response in 12 minutes. Every component of the Readiness OS, in one unified platform built for Fortune 1000 speed.",
+      ogTitle: "Platform Overview — VaughnMartin Readiness OS",
       ogDescription:
         "Signal detected at 0:00. Organization coordinated by 12:00. The complete execution infrastructure layer for Fortune 1000 companies.",
     });
@@ -119,7 +119,7 @@ export default function PlatformOverview() {
           <div className="max-w-5xl mx-auto">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Command OS · Platform Architecture</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Readiness OS · Platform Architecture</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end gap-8">
               <div className="flex-1">

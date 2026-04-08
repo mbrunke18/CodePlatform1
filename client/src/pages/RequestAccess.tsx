@@ -65,7 +65,7 @@ export default function RequestAccess() {
             <span style={{ color: GOLD }}> in 12 minutes.</span>
           </h2>
           <p className="text-sm leading-relaxed mb-10" style={{ color: "rgba(255,255,255,0.6)" }}>
-            Enterprise work was designed for a world without AI. Command OS rebuilds how decisions move — 170 pre-staged playbooks, continuous signal monitoring, 3,600× execution head start.
+            Enterprise work was designed for a world without AI. Readiness OS rebuilds how decisions move — 170 pre-staged playbooks, continuous signal monitoring, 3,600× execution head start.
           </p>
 
           <div className="space-y-4">

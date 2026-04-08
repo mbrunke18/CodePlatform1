@@ -42,7 +42,7 @@ interface FeedItem {
 const STAGES = [
   { id: 'opening', label: 'The Problem' },
   { id: 'cost', label: 'Cost of Inaction' },
-  { id: 'introducing', label: 'Command OS' },
+  { id: 'introducing', label: 'Readiness OS' },
   { id: 'signal', label: 'Signal Detection' },
   { id: 'analysis', label: 'AI Analysis' },
   { id: 'playbook', label: 'Playbook Match' },
@@ -297,7 +297,7 @@ export default function KeynoteDemo() {
           className="text-8xl font-bold text-white mb-4 tracking-tight relative z-10"
           style={CG}
         >
-          Command OS
+          Readiness OS
         </motion.h1>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -880,7 +880,7 @@ export default function KeynoteDemo() {
             >
               <h3 className="text-xl font-bold text-[#C9A84C] mb-6 flex items-center gap-3" style={CG}>
                 <CheckCircle2 className="h-6 w-6" />
-                Command OS Powered
+                Readiness OS Powered
               </h3>
               <div className="space-y-4">
                 {[

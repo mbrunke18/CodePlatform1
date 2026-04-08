@@ -318,7 +318,7 @@ export default function TriggerConfigurationWizard({
             {editTrigger ? 'Edit Trigger' : 'Create Custom Trigger'}
           </DialogTitle>
           <DialogDescription>
-            Define YOUR monitoring conditions - Command OS AI will monitor 24/7 and alert you when triggers fire
+            Define YOUR monitoring conditions - Readiness OS AI will monitor 24/7 and alert you when triggers fire
           </DialogDescription>
         </DialogHeader>
         
@@ -638,7 +638,7 @@ export default function TriggerConfigurationWizard({
                       <Smartphone className="h-5 w-5 text-green-500" />
                       <div>
                         <p className="font-medium">In-App Notifications</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">Show alerts in the Command OS platform</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">Show alerts in the Readiness OS platform</p>
                       </div>
                     </div>
                     <Switch 

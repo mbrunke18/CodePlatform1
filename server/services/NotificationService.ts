@@ -141,8 +141,8 @@ class NotificationService {
 
       // Use Resend's verified domain first; fall back to branded domain once DNS is configured
       const fromAddresses = [
-        'Command OS <onboarding@resend.dev>',
-        'Command OS <noreply@vaughnmartin.com>',
+        'Readiness OS <onboarding@resend.dev>',
+        'Readiness OS <noreply@vaughnmartin.com>',
       ];
       let sent = false;
       for (const from of fromAddresses) {
@@ -340,7 +340,7 @@ class NotificationService {
       <body>
         <div class="container">
           <div class="header">
-            <h1>🚨 Command OS Alert</h1>
+            <h1>🚨 Readiness OS Alert</h1>
             <div class="priority-badge">${notification.priority?.toUpperCase() || 'HIGH'} PRIORITY</div>
           </div>
           <div class="content">
@@ -363,7 +363,7 @@ class NotificationService {
             </center>
           </div>
           <div class="footer">
-            <p><strong>VaughnMartin Command OS</strong></p>
+            <p><strong>VaughnMartin Readiness OS</strong></p>
             <p>This is an automated alert. Please acknowledge immediately.</p>
           </div>
         </div>

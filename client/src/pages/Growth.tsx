@@ -167,9 +167,9 @@ export default function Growth() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Pricing & Plans — Command OS | VaughnMartin",
-      description: "Capability-based pricing for Command OS. Ready ($75K/yr), Responsive ($150K/yr), Orchestrated ($250K/yr), Enterprise (custom). Unlimited users at every tier. One activation pays for the year.",
-      ogTitle: "Command OS Pricing — Built on Deployment Scope, Not Headcount",
+      title: "Pricing & Plans — Readiness OS | VaughnMartin",
+      description: "Capability-based pricing for Readiness OS. Ready ($75K/yr), Responsive ($150K/yr), Orchestrated ($250K/yr), Enterprise (custom). Unlimited users at every tier. One activation pays for the year.",
+      ogTitle: "Readiness OS Pricing — Built on Deployment Scope, Not Headcount",
       ogDescription: "Four tiers of coordination infrastructure. Unlimited users at every tier. The same platform Fortune 1000 companies use — with a structured entry path. One situation handled pays for the year.",
     });
   }, []);
@@ -525,7 +525,7 @@ export default function Growth() {
               ))}
             </div>
             <div style={{ background: "#fff", border: `2px solid ${TEAL}`, borderRadius: 12, padding: "28px 24px" }}>
-              <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Command OS</p>
+              <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Readiness OS</p>
               {[
                 "Price per capability tier",
                 "Unlimited users — always",
@@ -638,7 +638,7 @@ export default function Growth() {
             </div>
           </div>
 
-          {/* Bridge to Command OS */}
+          {/* Bridge to Readiness OS */}
           <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
             {[
               { tier: "Ready", price: "$75K/yr", replace: "One consulting engagement", roi: "7–70×" },
@@ -682,7 +682,7 @@ export default function Growth() {
             {/* Header */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", background: NAVY, padding: "14px 28px", gap: 16 }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Scenario</span>
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Without Command OS</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Without Readiness OS</span>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)", textAlign: "right" as const }}>Value Protected</span>
             </div>
 
@@ -703,7 +703,7 @@ export default function Growth() {
             {/* Conclusion bar */}
             <div style={{ background: `rgba(43,138,110,0.06)`, borderTop: `2px solid rgba(43,138,110,0.2)`, padding: "20px 28px" }}>
               <p style={{ fontSize: 14, fontWeight: 700, color: "#374151", margin: 0, textAlign: "center" as const }}>
-                If Command OS helps you handle <em style={{ fontStyle: "italic", color: TEAL }}>one</em> of these situations well,
+                If Readiness OS helps you handle <em style={{ fontStyle: "italic", color: TEAL }}>one</em> of these situations well,
                 it pays for itself <strong style={{ color: NAVY }}>10–100×.</strong>
               </p>
             </div>

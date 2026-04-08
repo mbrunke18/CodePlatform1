@@ -94,7 +94,7 @@ export default function EcosystemsHub() {
           fontSize: 10, letterSpacing: "0.22em", color: GOLD,
           textTransform: "uppercase", opacity: 0.8,
         }}>
-          Command OS — The operating model layer above every enterprise stack
+          Readiness OS — The operating model layer above every enterprise stack
         </div>
       </section>
 
@@ -229,7 +229,7 @@ export default function EcosystemsHub() {
         </div>
       </section>
 
-      {/* How Command OS fits */}
+      {/* How Readiness OS fits */}
       <section style={{ background: "#fff", padding: "64px 24px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
           <div style={{
@@ -315,7 +315,7 @@ export default function EcosystemsHub() {
           fontSize: 15, color: "rgba(240,237,228,0.55)",
           maxWidth: 520, margin: "0 auto 36px",
         }}>
-          Command OS deploys inside your existing enterprise environment — Microsoft, Google, Salesforce, AWS, SAP, ServiceNow, or Workday. We don't compete with your stack. We make it execute.
+          Readiness OS deploys inside your existing enterprise environment — Microsoft, Google, Salesforce, AWS, SAP, ServiceNow, or Workday. We don't compete with your stack. We make it execute.
         </p>
         <button
           onClick={() => setLocation("/request-access")}

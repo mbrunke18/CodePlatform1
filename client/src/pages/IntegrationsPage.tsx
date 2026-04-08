@@ -181,11 +181,11 @@ export default function IntegrationsPage() {
             </div>
             <div className="max-w-3xl">
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
-                Command OS <em style={{ fontStyle: "italic", color: "#DFC178" }}>Orchestration</em>
+                Readiness OS <em style={{ fontStyle: "italic", color: "#DFC178" }}>Orchestration</em>
               </h1>
               <p className="text-white/60 text-xl leading-relaxed max-w-2xl">
-                Command OS doesn't replace your workflow tools — it coordinates them. When a playbook 
-                activates, Command OS tells each system exactly what to do.
+                Readiness OS doesn't replace your workflow tools — it coordinates them. When a playbook 
+                activates, Readiness OS tells each system exactly what to do.
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function IntegrationsPage() {
               <div className="w-14 h-14 mb-6 bg-[#0A0F2E]/5 rounded-none flex items-center justify-center">
                 <Zap className="w-7 h-7 text-[#0A0F2E]" />
               </div>
-              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Command OS Orchestrates</h3>
+              <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Readiness OS Orchestrates</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">Strategic playbooks trigger coordinated actions across your entire enterprise stack.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
@@ -206,14 +206,14 @@ export default function IntegrationsPage() {
                 <Database className="w-7 h-7 text-[#C9A84C]" />
               </div>
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Tools Execute</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Command OS.</p>
+              <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Readiness OS.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
               <div className="w-14 h-14 mb-6 bg-[#2B8A6E]/5 rounded-none flex items-center justify-center">
                 <CheckCircle2 className="w-7 h-7 text-[#2B8A6E]" />
               </div>
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Everything Syncs</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">Bi-directional updates keep Command OS and your tools in perfect strategic alignment.</p>
+              <p className="text-sm text-[#6B7280] leading-relaxed">Bi-directional updates keep Readiness OS and your tools in perfect strategic alignment.</p>
             </Card>
           </div>
 
@@ -447,7 +447,7 @@ export default function IntegrationsPage() {
             <DialogHeader>
               <DialogTitle>Connect {selectedIntegration?.name}</DialogTitle>
               <DialogDescription>
-                Enter your credentials to connect {selectedIntegration?.name} to Command OS.
+                Enter your credentials to connect {selectedIntegration?.name} to Readiness OS.
               </DialogDescription>
             </DialogHeader>
 

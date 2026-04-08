@@ -134,7 +134,7 @@ export default function RetailFoodSafetyDemo() {
                       Walmart's AI supply chain saved $20M+ in transportation costs. Their QA testing detected the salmonella 
                       immediately. But coordinating 5,000 stakeholders across 847 stores, 12,847 customers, FDA, CDC, and 
                       23 state health departments took <strong>7 days</strong>. In that gap, 50+ people were hospitalized. 
-                      This demo shows how Command OS compresses that 7-day coordination into <strong>1 hour</strong>, ensuring 
+                      This demo shows how Readiness OS compresses that 7-day coordination into <strong>1 hour</strong>, ensuring 
                       zero customers consume contaminated product after detection.
                     </p>
                   </div>
@@ -345,7 +345,7 @@ export default function RetailFoodSafetyDemo() {
               />
 
               <div className="mt-8 p-6 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg">
-                <h3 className="font-bold text-white mb-4 text-center text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Command OS Difference</h3>
+                <h3 className="font-bold text-white mb-4 text-center text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="font-semibold text-[#C9A84C] mb-3">Traditional Crisis Response</h4>

@@ -147,12 +147,12 @@ interface SimulationEvent {
 }
 
 const EVENT_EXPLANATIONS: Record<string, string> = {
-  trigger: "Command OS detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
+  trigger: "Readiness OS detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
   ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured playbook rules.",
   stakeholder: "Notifications are being sent through your selected channels (Slack, email, SMS) to the right people automatically.",
   decision: "A decision point has been reached. In production, executives receive mobile alerts with pre-staged options to choose from.",
   task: "Tasks are being assigned to team members with clear instructions, deadlines, and dependencies already mapped out.",
-  escalation: "The escalation path you configured is now active. If responses aren't received in time, Command OS will automatically escalate.",
+  escalation: "The escalation path you configured is now active. If responses aren't received in time, Readiness OS will automatically escalate.",
   complete: "The coordinated response is complete. All stakeholders were aligned, tasks assigned, and decisions made in record time."
 };
 
@@ -1169,7 +1169,7 @@ export default function SandboxDemo() {
                 <Plug className="h-5 w-5 text-[#C9A84C]" />
                 Enterprise Integrations
               </CardTitle>
-              <CardDescription>Connect Command OS to your existing tools for seamless execution</CardDescription>
+              <CardDescription>Connect Readiness OS to your existing tools for seamless execution</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-2 gap-4">
@@ -1207,7 +1207,7 @@ export default function SandboxDemo() {
               </div>
               <div className="mt-6 p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg">
                 <p className="text-sm text-[#0A0F2E] dark:text-[#0A0F2E]">
-                  <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, Command OS will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
+                  <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, Readiness OS will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
                 </p>
               </div>
             </CardContent>
@@ -1252,7 +1252,7 @@ export default function SandboxDemo() {
               ))}
               <div className="p-4 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg">
                 <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
-                  <strong>Automated Tracking:</strong> Command OS will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
+                  <strong>Automated Tracking:</strong> Readiness OS will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
                 </p>
               </div>
             </CardContent>
@@ -1559,7 +1559,7 @@ export default function SandboxDemo() {
               <Network className="h-5 w-5 text-[#2B8A6E]" />
               Signal Sources
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Where should Command OS monitor for signals?</CardDescription>
+            <CardDescription className="text-slate-500 font-medium">Where should Readiness OS monitor for signals?</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-2 gap-3">
@@ -1848,7 +1848,7 @@ export default function SandboxDemo() {
           </div>
           <div className="mt-6 p-5 bg-[#0A0F2E] rounded-xl border border-[#0A0F2E]">
             <p className="text-xs text-[#C9A84C] leading-relaxed font-medium">
-              <strong className="text-white">Dynamic Routing:</strong> Command OS automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
+              <strong className="text-white">Dynamic Routing:</strong> Readiness OS automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
             </p>
           </div>
         </CardContent>
@@ -2228,7 +2228,7 @@ export default function SandboxDemo() {
 
         <div className="text-center">
           <p className="text-gray-800 dark:text-slate-300 mb-4">
-            Ready to see Command OS with your real scenarios?
+            Ready to see Readiness OS with your real scenarios?
           </p>
           <div className="flex justify-center gap-4">
             <Button variant="outline" onClick={() => {

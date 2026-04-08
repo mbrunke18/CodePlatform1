@@ -491,8 +491,8 @@ export default function ExecutionCoordination() {
                   Industry Comparison
                 </h3>
                 <p className="text-[#6B7280] leading-relaxed">
-                  Without Command OS, this coordinated response would take <span className="font-bold text-[#DC2626]">weeks to mobilize + months to fully execute</span>. 
-                  With Command OS, you're on track to complete in <span className="font-bold text-[#2B8A6E]">~45 minutes total</span>.
+                  Without Readiness OS, this coordinated response would take <span className="font-bold text-[#DC2626]">weeks to mobilize + months to fully execute</span>. 
+                  With Readiness OS, you're on track to complete in <span className="font-bold text-[#2B8A6E]">~45 minutes total</span>.
                 </p>
               </div>
             </div>

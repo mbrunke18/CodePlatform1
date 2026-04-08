@@ -17,7 +17,7 @@ function buildExpiredPage(reason: 'expired' | 'invalid'): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Access — VaughnMartin Command OS</title>
+  <title>Access — VaughnMartin Readiness OS</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -96,7 +96,7 @@ function buildExpiredPage(reason: 'expired' | 'invalid'): string {
 </head>
 <body>
   <div class="card">
-    <div class="eyebrow">VaughnMartin · Command OS</div>
+    <div class="eyebrow">VaughnMartin · Readiness OS</div>
     <div class="seal">VM</div>
     <h1>${reason === 'expired' ? 'Access Window Closed' : 'Access Denied'}</h1>
     <p>${message}<br />${sub}</p>

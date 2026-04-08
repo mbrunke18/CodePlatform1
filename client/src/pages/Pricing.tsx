@@ -16,9 +16,9 @@ export default function Pricing() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Enterprise Pricing - Command OS | Strategic Execution Operating System",
+      title: "Enterprise Pricing - Readiness OS | Strategic Execution Operating System",
       description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Pilot Program ($75K, 100% credited to Year 1) — limited to 5 design partners.",
-      ogTitle: "Command OS Enterprise Pricing - Built for Fortune 1000",
+      ogTitle: "Readiness OS Enterprise Pricing - Built for Fortune 1000",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
   }, []);
@@ -39,7 +39,7 @@ export default function Pricing() {
             Transparent, value-based pricing for enterprise decision velocity
           </p>
           <p className="text-lg text-[#6B7280] max-w-3xl mx-auto">
-            Command OS is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver a 3,600× Execution Head Start — compressing 30 days of mobilization to 12 minutes — and preserve millions in revenue.
+            Readiness OS is purpose-built for large enterprises executing complex strategic decisions. Our pricing reflects the platform's ability to deliver a 3,600× Execution Head Start — compressing 30 days of mobilization to 12 minutes — and preserve millions in revenue.
           </p>
         </div>
       </section>

@@ -172,7 +172,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Strategic Dashboard | VaughnMartin Command OS",
+      title: "Strategic Dashboard | VaughnMartin Readiness OS",
       description: "Real-time visibility into strategic execution, AI-driven intelligence, and organizational readiness.",
     });
   }, []);

@@ -25,10 +25,10 @@ export default function GartnerStackDiagram() {
         </span>
       </div>
       <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600, color: NAVY, textAlign: "center", marginBottom: 20 }}>
-        Where Command OS Sits
+        Where Readiness OS Sits
       </h4>
 
-      {/* The 10th Layer — Command OS */}
+      {/* The 10th Layer — Readiness OS */}
       <div style={{
         background: NAVY,
         border: `2px solid ${GOLD}`,
@@ -47,7 +47,7 @@ export default function GartnerStackDiagram() {
                 EXECUTION OPERATING MODEL
               </div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>
-                VaughnMartin Command OS · Trigger → Playbook → 12-minute response
+                VaughnMartin Readiness OS · Trigger → Playbook → 12-minute response
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function GartnerStackDiagram() {
           Adapted from Gartner AI Technology Stack, 2026. © Gartner, Inc.
         </span>
         <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-          Command OS completes the stack
+          Readiness OS completes the stack
         </span>
       </div>
     </div>

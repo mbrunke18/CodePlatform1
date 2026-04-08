@@ -306,7 +306,7 @@ export default function PeerReview() {
       <div style={{ background: NAVY, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center" }}>
         <div style={{ maxWidth: 480 }}>
           <div style={{ width: 64, height: 64, borderRadius: "50%", background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 28 }}>✓</div>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>VaughnMartin · Command OS</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>VaughnMartin · Readiness OS</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 600, color: "white", marginBottom: 16 }}>Thank You</h1>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginBottom: 32 }}>
             Your candid assessment is one of the most valuable inputs a founder can receive.
@@ -328,7 +328,7 @@ export default function PeerReview() {
       <div style={{ background: NAVY, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
           <a href="/" style={{ textDecoration: "none" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>VaughnMartin · Command OS</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>VaughnMartin · Readiness OS</div>
           </a>
           <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 2 }}>Independent Peer Review & Assessment</div>
         </div>
@@ -435,11 +435,11 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Product Clarity & Value Proposition</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>Does the product make sense? Is the value real?</p>
             </div>
-            <QBlock num="Q5" question="After your review of Command OS, how clearly did you understand what the product actually does?">
+            <QBlock num="Q5" question="After your review of Readiness OS, how clearly did you understand what the product actually does?">
               <ScaleInput value={q5Scale} onChange={setQ5Scale} labels={["Not at all clear", "Completely clear"]} />
               <FollowUp label="What was the most confusing or unclear aspect?" value={q5Text} onChange={setQ5Text} />
             </QBlock>
-            <QBlock num="Q6" question="In your own words, what does Command OS do?" note="Write this as if explaining it to a peer who has not seen it.">
+            <QBlock num="Q6" question="In your own words, what does Readiness OS do?" note="Write this as if explaining it to a peer who has not seen it.">
               <TextArea value={q6Text} onChange={setQ6Text} rows={5} placeholder="Your description..." />
             </QBlock>
             <QBlock num="Q7" question="How credible is the core claim that an organization can go from strategic trigger to coordinated execution in 12 minutes?"
@@ -451,7 +451,7 @@ export default function PeerReview() {
               <ScaleInput value={q8Scale} onChange={setQ8Scale} labels={["Not compelling", "Highly compelling"]} />
               <FollowUp label="What would make this value proposition more compelling?" value={q8Text} onChange={setQ8Text} />
             </QBlock>
-            <QBlock num="Q9" question="Which of the following best describes how you see Command OS after your review?" note="Select all that apply.">
+            <QBlock num="Q9" question="Which of the following best describes how you see Readiness OS after your review?" note="Select all that apply.">
               <CheckboxGroup options={Q9_OPTIONS} selected={q9Selections} onChange={setQ9Selections} />
               <FollowUp label="Other / additional context" value={q9Text} onChange={setQ9Text} />
             </QBlock>
@@ -466,23 +466,23 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Market Viability</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>Is there a real market? Will organizations actually buy this?</p>
             </div>
-            <QBlock num="Q10" question="Do you believe there is a genuine market need for a product like Command OS?">
+            <QBlock num="Q10" question="Do you believe there is a genuine market need for a product like Readiness OS?">
               <ScaleInput value={q10Scale} onChange={setQ10Scale} labels={["Definitely not", "Definitely yes"]} />
               <FollowUp label="What is the basis for your view?" value={q10Text} onChange={setQ10Text} />
             </QBlock>
-            <QBlock num="Q11" question="Who in an organization would most likely be the person to champion a purchase of Command OS?" note="Select the single most likely buyer.">
+            <QBlock num="Q11" question="Who in an organization would most likely be the person to champion a purchase of Readiness OS?" note="Select the single most likely buyer.">
               <RadioGroup options={Q11_OPTIONS} selected={q11Selection} onChange={setQ11Selection} />
               <FollowUp label="Who would be the most likely blocker of a purchase?" value={q11Text} onChange={setQ11Text} />
             </QBlock>
-            <QBlock num="Q12" question="What would most likely prevent an organization from purchasing Command OS?" note="Select all that apply.">
+            <QBlock num="Q12" question="What would most likely prevent an organization from purchasing Readiness OS?" note="Select all that apply.">
               <CheckboxGroup options={Q12_OPTIONS} selected={q12Selections} onChange={setQ12Selections} />
               <FollowUp label="Other barriers" value={q12Text} onChange={setQ12Text} />
             </QBlock>
-            <QBlock num="Q13" question="At what price point would a 90-day pilot of Command OS represent good value to an enterprise organization?">
+            <QBlock num="Q13" question="At what price point would a 90-day pilot of Readiness OS represent good value to an enterprise organization?">
               <RadioGroup options={Q13_OPTIONS} selected={q13Selection} onChange={setQ13Selection} />
               <FollowUp label="What would need to be true for the pilot to be worth that investment?" value={q13Text} onChange={setQ13Text} />
             </QBlock>
-            <QBlock num="Q14" question="Which industries or organizational types would most immediately benefit from Command OS?" note="Set H (High), M (Medium), or L (Low) priority for each.">
+            <QBlock num="Q14" question="Which industries or organizational types would most immediately benefit from Readiness OS?" note="Set H (High), M (Medium), or L (Low) priority for each.">
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {q14Rankings.map((row, i) => (
                   <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr auto auto", gap: 12, alignItems: "center", padding: "10px 14px", background: "white", border: `1px solid ${BORDER}`, borderRadius: 4 }}>
@@ -516,7 +516,7 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Product Gaps & Improvement Areas</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>What is missing? What would make this better? Diplomatic answers are less useful here than honest ones.</p>
             </div>
-            <QBlock num="Q15" question="What is the single most significant gap or weakness you identified in Command OS?">
+            <QBlock num="Q15" question="What is the single most significant gap or weakness you identified in Readiness OS?">
               <TextArea value={q15Text} onChange={setQ15Text} rows={4} />
             </QBlock>
             <QBlock num="Q16" question="Rate the following product dimensions as you experienced them." note="1 = Poor, 5 = Excellent">
@@ -550,7 +550,7 @@ export default function PeerReview() {
             <QBlock num="Q18" question="If you were advising the founder on the single most important thing to fix or build before going to market, what would it be?">
               <TextArea value={q18Text} onChange={setQ18Text} rows={4} />
             </QBlock>
-            <QBlock num="Q19" question="Are there existing tools or platforms in your organization that Command OS would need to displace or integrate with to be adopted?">
+            <QBlock num="Q19" question="Are there existing tools or platforms in your organization that Readiness OS would need to displace or integrate with to be adopted?">
               <TextArea value={q19Text} onChange={setQ19Text} rows={3} />
             </QBlock>
           </div>
@@ -564,15 +564,15 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Competitive Landscape</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>How does this compare to what already exists?</p>
             </div>
-            <QBlock num="Q20" question="Are you aware of any existing product or platform that does what Command OS does — specifically pre-staged, AI-activated strategic execution playbooks that deploy across an organization in minutes?">
+            <QBlock num="Q20" question="Are you aware of any existing product or platform that does what Readiness OS does — specifically pre-staged, AI-activated strategic execution playbooks that deploy across an organization in minutes?">
               <RadioGroup options={Q20_OPTIONS} selected={q20Selection} onChange={setQ20Selection} />
               <FollowUp label="If yes, what product(s) come closest and why?" value={q20Text} onChange={setQ20Text} />
             </QBlock>
-            <QBlock num="Q21" question="How does Command OS compare to the tools your organization currently uses to manage strategic response situations?">
+            <QBlock num="Q21" question="How does Readiness OS compare to the tools your organization currently uses to manage strategic response situations?">
               <ScaleInput value={q21Scale} onChange={setQ21Scale} labels={["Much worse", "Much better"]} />
               <FollowUp label="What are the most meaningful differences — positive or negative?" value={q21Text} onChange={setQ21Text} />
             </QBlock>
-            <QBlock num="Q22" question="What is the strongest competitive argument against Command OS — the reason a well-informed buyer might choose to do nothing or use an alternative?">
+            <QBlock num="Q22" question="What is the strongest competitive argument against Readiness OS — the reason a well-informed buyer might choose to do nothing or use an alternative?">
               <TextArea value={q22Text} onChange={setQ22Text} rows={4} />
             </QBlock>
           </div>
@@ -586,18 +586,18 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Overall Verdict</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>Bottom line — would you buy it, recommend it, or walk away? Please be direct.</p>
             </div>
-            <QBlock num="Q23" question="Overall, how would you rate Command OS as a product?">
+            <QBlock num="Q23" question="Overall, how would you rate Readiness OS as a product?">
               <ScaleInput value={q23Scale} onChange={setQ23Scale} labels={["Poor", "Excellent"]} />
             </QBlock>
             <QBlock num="Q24" question="If you were the decision-maker at your organization, what would you do?">
               <RadioGroup options={Q24_OPTIONS} selected={q24Selection} onChange={setQ24Selection} />
               <FollowUp label="What would need to change to move you to the next category up?" value={q24Text} onChange={setQ24Text} />
             </QBlock>
-            <QBlock num="Q25" question="Do you believe Command OS is a viable commercial product in the real world?">
+            <QBlock num="Q25" question="Do you believe Readiness OS is a viable commercial product in the real world?">
               <ScaleInput value={q25Scale} onChange={setQ25Scale} labels={["Definitely not", "Definitely yes"]} />
               <FollowUp label="What is the basis for your view?" value={q25Text} onChange={setQ25Text} />
             </QBlock>
-            <QBlock num="Q26" question="Would you refer Command OS to a peer or colleague in a relevant role?">
+            <QBlock num="Q26" question="Would you refer Readiness OS to a peer or colleague in a relevant role?">
               <RadioGroup options={Q26_OPTIONS} selected={q26Selection} onChange={setQ26Selection} />
             </QBlock>
             <QBlock num="Q27" question="What is the one thing the founder could do in the next 30 days that would most increase your confidence in this product and company?">

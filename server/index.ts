@@ -80,13 +80,13 @@ app.get("/health", (_req, res) => {
 });
 
 app.get("/api/health", (_req, res) => {
-  res.status(200).json({ status: "ok", app: "Command OS", timestamp: new Date().toISOString() });
+  res.status(200).json({ status: "ok", app: "Readiness OS", timestamp: new Date().toISOString() });
 });
 
 app.get("/api/health-check", (_req, res) => {
   res.status(200).json({ 
     status: "ok", 
-    app: "Command OS", 
+    app: "Readiness OS", 
     seeded: seedingComplete,
     timestamp: new Date().toISOString() 
   });
@@ -324,7 +324,7 @@ server.listen(
     log("serving on port " + port);
     logger.info(
       { port, env: app.get("env") },
-      "Command OS server listening - health checks active from startup",
+      "Readiness OS server listening - health checks active from startup",
     );
   }
 );

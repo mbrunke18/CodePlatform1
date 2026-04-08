@@ -294,7 +294,7 @@ async function sendDetectionEmail(
     <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
       <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
         <div style="background:#132558;padding:32px 36px;">
-          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Live Detection Alert</div>
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Live Detection Alert</div>
           <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
         </div>
         <div style="padding:32px 36px;">
@@ -361,8 +361,8 @@ async function sendDetectionEmail(
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-          <div style="color:#999;font-size:11px;text-align:center;">Command OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
-          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
         </div>
       </div>
     </div>
@@ -370,8 +370,8 @@ async function sendDetectionEmail(
 
   // Try reliable sender first (Resend's own verified domain), fall back to branded domain
   const fromAddresses = [
-    'Command OS <onboarding@resend.dev>',
-    'Command OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
+    'Readiness OS <pilot@vaughnmartin.com>',
   ];
 
   for (const recipientEmail of emails) {
@@ -411,7 +411,7 @@ async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSi
     blocks: [
       {
         type: 'header',
-        text: { type: 'plain_text', text: '🔴 Command OS: Strategic Trigger Detected' },
+        text: { type: 'plain_text', text: '🔴 Readiness OS: Strategic Trigger Detected' },
       },
       {
         type: 'section',

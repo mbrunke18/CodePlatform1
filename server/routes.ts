@@ -866,13 +866,13 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       console.log(`📭 Unsubscribed: ${email}`);
       return res.send(`
         <html>
-          <head><title>Unsubscribed — Command OS</title></head>
+          <head><title>Unsubscribed — Readiness OS</title></head>
           <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;">
             <div style="max-width:480px;background:#fff;border-radius:8px;border:1px solid #e8e4dc;padding:48px 40px;text-align:center;">
               <div style="width:48px;height:48px;background:#2B8A6E15;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2B8A6E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Command OS</div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px;">Readiness OS</div>
               <h1 style="font-size:22px;font-weight:700;color:#0A0F2E;margin:0 0 12px;">You've been unsubscribed</h1>
               <p style="font-size:14px;color:#666;line-height:1.6;margin:0 0 24px;">
                 <strong>${email}</strong> will no longer receive trigger alerts, compound threat notifications, or weekly digests.
@@ -3931,7 +3931,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
 
   // === AI-POWERED ENTERPRISE INTELLIGENCE ENDPOINTS ===
 
-  // Signal-to-Action Intelligence Feed - The core value demonstration of Command OS
+  // Signal-to-Action Intelligence Feed - The core value demonstration of Readiness OS
   app.get('/api/pulse/intelligence-feed', async (req: any, res) => {
     try {
       const { SIGNAL_CATEGORIES } = await import('@shared/intelligence-signals');
@@ -7476,9 +7476,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
             </div>
             <div style="background:#ffffff;border-radius:0 0 8px 8px;overflow:hidden;border:1px solid #e8e4dc;border-top:none;">
               <div style="background:#132558;padding:32px 36px;">
-                <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Live Detection Alert</div>
+                <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Live Detection Alert</div>
                 <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
-                <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:6px;">Hello ${recipientName} — Command OS is now monitoring on your behalf.</div>
+                <div style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:6px;">Hello ${recipientName} — Readiness OS is now monitoring on your behalf.</div>
               </div>
               <div style="padding:32px 36px;">
                 <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
@@ -7538,8 +7538,8 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
                 </div>
               </div>
               <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                <div style="color:#999;font-size:11px;text-align:center;">Command OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
-                <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+                <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
+                <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
               </div>
             </div>
           </div>
@@ -7547,8 +7547,8 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       `;
 
       const fromAddresses = [
-        'Command OS <onboarding@resend.dev>',
-        'Command OS <pilot@vaughnmartin.com>',
+        'Readiness OS <onboarding@resend.dev>',
+        'Readiness OS <pilot@vaughnmartin.com>',
       ];
 
       let sent = false;
@@ -8444,7 +8444,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
                   <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
                     <div style="background:#132558;padding:32px 36px;">
-                      <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Compound Threat Intelligence</div>
+                      <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Compound Threat Intelligence</div>
                       <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length > 1 ? 's' : ''} Detected</div>
                       <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">AI synthesis identified compound risk patterns across ${activeDomains.length} active monitoring domains.</div>
                     </div>
@@ -8467,7 +8467,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                     </div>
                     <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
                       <div style="color:#999;font-size:11px;text-align:center;">Compound Threat Intelligence monitors cross-domain signal combinations. Human executive review required before any action is taken.</div>
-                      <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+                      <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
                     </div>
                   </div>
                 </div>`;
@@ -8475,7 +8475,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                 const token = Buffer.from(contact.email).toString('base64url');
                 const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
                 await resend.emails.send({
-                  from: 'Command OS <pilot@vaughnmartin.com>',
+                  from: 'Readiness OS <pilot@vaughnmartin.com>',
                   replyTo: 'pilot@vaughnmartin.com',
                   to: [contact.email],
                   subject: `⚠️ ${highConf.length} Compound Threat${highConf.length > 1 ? 's' : ''} Detected — Cross-Domain Risk Analysis`,
@@ -8798,7 +8798,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
 
 SCENARIO: "${scenarioText}"
 
-Available playbooks from the Command OS library (170 total across 9 domains):
+Available playbooks from the Readiness OS library (170 total across 9 domains):
 ${playbooks.map((p: any) => `- ${p.name} (${p.domain})`).slice(0, 40).join('\n')}
 
 Respond ONLY as JSON with this structure:
@@ -8808,7 +8808,7 @@ Respond ONLY as JSON with this structure:
   "activatedPlaybooks": ["Playbook Name 1", "Playbook Name 2", "Playbook Name 3"],
   "aiAnalysis": "3-sentence executive-level analysis of why this scenario is a strategic risk and what separates organizations that thrive from those that merely survive",
   "urgencyLevel": "critical|high|medium",
-  "timeToRespond": "e.g. 12 minutes with Command OS vs 72 hours without"
+  "timeToRespond": "e.g. 12 minutes with Readiness OS vs 72 hours without"
 }`;
 
       const raw = await openAIService.analyzeText(prompt);
@@ -8818,7 +8818,7 @@ Respond ONLY as JSON with this structure:
         activatedPlaybooks: ['Strategic Response Protocol', 'Crisis Communications Playbook', 'Executive Coordination Framework'],
         aiAnalysis: 'This scenario requires immediate cross-functional coordination across multiple stakeholder groups. Organizations with pre-staged playbooks respond 340x faster than those without structured execution frameworks. The difference between surviving and thriving is measured in minutes, not days.',
         urgencyLevel: 'high',
-        timeToRespond: '12 minutes with Command OS vs 72 hours without'
+        timeToRespond: '12 minutes with Readiness OS vs 72 hours without'
       };
       try {
         const jsonMatch = raw.match(/\{[\s\S]*\}/);
@@ -8831,7 +8831,7 @@ Respond ONLY as JSON with this structure:
         activatedPlaybooks: result.activatedPlaybooks || [],
         aiAnalysis: result.aiAnalysis || '',
         urgencyLevel: result.urgencyLevel || 'high',
-        timeToRespond: result.timeToRespond || '12 minutes with Command OS vs 72 hours without',
+        timeToRespond: result.timeToRespond || '12 minutes with Readiness OS vs 72 hours without',
       });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
@@ -8943,12 +8943,12 @@ Respond ONLY as JSON with this exact structure:
                 const resend = new Resend(apiKey);
                 const platformUrl = process.env.APP_URL || 'https://vaughnmartin.com';
                 const threatRows = highConf.map((t: any) => `<tr><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:14px;font-weight:600;">${t.threatType}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">${(t.domains||[]).join(', ')}</td><td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#C9A84C;font-size:13px;font-weight:700;text-align:right;">${t.confidence}%</td></tr><tr><td colspan="3" style="padding:6px 0 12px;font-size:13px;color:#444;line-height:1.5;">${(t.aiHypothesis||'').substring(0,240)}${(t.aiHypothesis||'').length>240?'…':''}</td></tr>`).join('');
-                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length>1?'s':''} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center →</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook →</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div></div></div></div>`;
+                const html = `<div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;"><div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;"><div style="background:#132558;padding:32px 36px;"><div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Scheduled Compound Threat Scan</div><div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">${highConf.length} Cross-Domain Threat${highConf.length>1?'s':''} Detected</div><div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">Automated 4-hour scan identified compound risk patterns across ${activeDomains.length} domains.</div></div><div style="padding:32px 36px;"><table style="width:100%;border-collapse:collapse;margin-bottom:28px;"><tr style="border-bottom:2px solid #0A0F2E;"><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Threat Type</th><th style="padding:8px 0;text-align:left;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Domains</th><th style="padding:8px 0;text-align:right;font-size:11px;color:#0A0F2E;letter-spacing:1px;text-transform:uppercase;">Confidence</th></tr>${threatRows}</table><div style="text-align:center;"><a href="${platformUrl}/command-center" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-right:12px;">Review in Command Center →</a><a href="${platformUrl}/playbooks" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Pre-Stage a Playbook →</a></div></div><div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;"><div style="color:#999;font-size:11px;text-align:center;">This is an automated scan. Human executive review is required before any action.</div><div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div></div></div></div>`;
                 for (const contact of contacts) {
                   const token = Buffer.from(contact.email!).toString('base64url');
                   const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
                   await resend.emails.send({
-                    from: 'Command OS <pilot@vaughnmartin.com>',
+                    from: 'Readiness OS <pilot@vaughnmartin.com>',
                     replyTo: 'pilot@vaughnmartin.com',
                     to: [contact.email!],
                     subject: `⚠️ Scheduled Scan: ${highConf.length} Compound Threat${highConf.length>1?'s':''} Detected`,
@@ -9206,7 +9206,7 @@ Respond ONLY as JSON with this exact structure:
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
               <div style="max-width:620px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
                 <div style="background:#132558;padding:32px 36px;">
-                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Weekly Pilot Digest</div>
+                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Weekly Pilot Digest</div>
                   <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Week of ${weekLabel}</div>
                   <div style="color:rgba(255,255,255,0.55);font-size:14px;margin-top:8px;">${org.name} — Strategic Execution Summary</div>
                 </div>
@@ -9245,8 +9245,8 @@ Respond ONLY as JSON with this exact structure:
                   </div>
                 </div>
                 <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                  <div style="color:#999;font-size:11px;text-align:center;">Command OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
-                  <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+                  <div style="color:#999;font-size:11px;text-align:center;">Readiness OS monitors 248+ signals across 9 domains, 24/7. This digest is sent every Monday. No action required if the week was quiet.</div>
+                  <div style="text-align:center;margin-top:10px;"><a href="__UNSUBSCRIBE_URL__" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
                 </div>
               </div>
             </div>`;
@@ -9261,7 +9261,7 @@ Respond ONLY as JSON with this exact structure:
             const token = Buffer.from(contact.email).toString('base64url');
             const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
             await resend.emails.send({
-              from: 'Command OS <pilot@vaughnmartin.com>',
+              from: 'Readiness OS <pilot@vaughnmartin.com>',
               replyTo: 'pilot@vaughnmartin.com',
               to: [contact.email],
               subject,

@@ -66,7 +66,7 @@ export default function IntelligenceControlCenter() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Intelligence Control Center - VaughnMartin Command OS",
+      title: "Intelligence Control Center - VaughnMartin Readiness OS",
       description: "Monitor 248+ data points across 9 strategic domains. AI-powered pattern detection, trigger management, and strategic intelligence.",
       ogTitle: "Intelligence Control Center",
       ogDescription: "Real-time strategic intelligence with AI-powered pattern detection and 12-minute response coordination.",

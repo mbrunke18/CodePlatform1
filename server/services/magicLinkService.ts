@@ -29,7 +29,7 @@ function buildAdminNotificationHtml(data: {
 }, magicUrl: string): string {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>New Access Request — Command OS</title></head>
+<head><meta charset="UTF-8" /><title>New Access Request — Readiness OS</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
@@ -72,7 +72,7 @@ function buildAdminNotificationHtml(data: {
         </tr>
         <tr>
           <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
-            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin · Command OS · <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
+            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin · Readiness OS · <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
           </td>
         </tr>
       </table>
@@ -88,7 +88,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Executive Access — Command OS</title>
+<title>Your Executive Access — Readiness OS</title>
 </head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
@@ -99,7 +99,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
         <tr>
           <td style="background:${NAVY};padding:36px 48px 28px;">
             <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
-            <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Command OS</div>
+            <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
             <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Execution Platform</div>
           </td>
         </tr>
@@ -109,7 +109,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
           <td style="padding:48px 48px 36px;">
             <p style="margin:0 0 8px;color:${NAVY};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
             <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
-              Your access to <strong>Command OS</strong> is ready. This link gives you a full executive view of the platform — playbooks, trigger intelligence, and the 12-minute execution model.
+              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform — playbooks, trigger intelligence, and the 12-minute execution model.
             </p>
 
             <!-- CTA Button -->
@@ -153,7 +153,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
         <tr>
           <td style="background:#F9FAFB;padding:24px 48px;border-top:1px solid #E5E7EB;">
             <p style="margin:0;color:#9CA3AF;font-size:12px;line-height:1.6;">
-              VaughnMartin · Command OS · <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a><br/>
+              VaughnMartin · Readiness OS · <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a><br/>
               Questions? Reply to this email or contact <a href="mailto:pilot@vaughnmartin.com" style="color:#9CA3AF;">pilot@vaughnmartin.com</a>
             </p>
           </td>
@@ -214,8 +214,8 @@ export async function createAndSendMagicLink(data: {
   // to pass SPF/DKIM. Only use pilot@vaughnmartin.com once the domain is
   // verified inside the Resend dashboard (SPF + DKIM DNS records added).
   const fromAddresses = [
-    'Command OS <onboarding@resend.dev>',
-    'Command OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
+    'Readiness OS <pilot@vaughnmartin.com>',
   ];
 
   let emailSent = false;
@@ -225,7 +225,7 @@ export async function createAndSendMagicLink(data: {
         from,
         replyTo: ADMIN_EMAIL,
         to: data.email,
-        subject: `Your Executive Access to Command OS, ${data.firstName}`,
+        subject: `Your Executive Access to Readiness OS, ${data.firstName}`,
         html: buildEmailHtml(data.firstName, magicUrl),
       });
 
@@ -249,7 +249,7 @@ export async function createAndSendMagicLink(data: {
   // ── Send admin notification to pilot ─────────────────────────────────────
   try {
     const { data: adminData, error: adminError } = await resend.emails.send({
-      from: 'Command OS <onboarding@resend.dev>',
+      from: 'Readiness OS <onboarding@resend.dev>',
       replyTo: data.email,
       to: ADMIN_EMAIL,
       subject: `New Access Request — ${data.firstName} ${data.lastName} · ${data.company}`,
@@ -280,7 +280,7 @@ export async function sendWelcomeTriggerDemo(email: string, firstName: string): 
     <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
       <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
         <div style="background:#132558;padding:32px 36px;">
-          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Live Detection Alert</div>
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS · Live Detection Alert</div>
           <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
         </div>
         <div style="padding:32px 36px;">
@@ -343,8 +343,8 @@ export async function sendWelcomeTriggerDemo(email: string, firstName: string): 
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-          <div style="color:#999;font-size:11px;text-align:center;">Command OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
-          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Command OS alerts</a></div>
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically — no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
         </div>
       </div>
     </div>
@@ -353,8 +353,8 @@ export async function sendWelcomeTriggerDemo(email: string, firstName: string): 
   const resend = new Resend(apiKey);
   // Try pilot@vaughnmartin.com first — verified domain, reliable for external recipients
   const fromAddresses = [
-    'Command OS <pilot@vaughnmartin.com>',
-    'Command OS <onboarding@resend.dev>',
+    'Readiness OS <pilot@vaughnmartin.com>',
+    'Readiness OS <onboarding@resend.dev>',
   ];
 
   for (const from of fromAddresses) {

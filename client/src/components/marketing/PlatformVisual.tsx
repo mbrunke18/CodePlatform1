@@ -458,7 +458,7 @@ export default function PlatformVisual() {
           custom={17}
         >
           <p className="text-2xl font-bold text-slate-900 dark:text-white">
-            Command OS: The Command Infrastructure Enterprises Are Missing
+            Readiness OS: The Readiness Infrastructure Enterprises Are Missing
           </p>
           <a
             href="https://www.vaughnmartin.com"

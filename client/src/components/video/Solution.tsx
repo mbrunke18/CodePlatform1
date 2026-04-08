@@ -59,7 +59,7 @@ export function Solution({ progress }: SceneProps) {
         </motion.p>
 
         <TextPunch 
-          text="Command OS" 
+          text="Readiness OS" 
           size="2xl" 
           delay={0.5}
           className="text-gray-900 mb-4"
@@ -124,7 +124,7 @@ export function Solution({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Trigger-to-Execution Orchestration"
-        description="Command OS provides the coordination infrastructure enterprises are missing—governance, decision rights, and stakeholder orchestration built by design, not by default. 170 playbooks across 9 domains, including compound disruption scenarios."
+        description="Readiness OS provides the coordination infrastructure enterprises are missing—governance, decision rights, and stakeholder orchestration built by design, not by default. 170 playbooks across 9 domains, including compound disruption scenarios."
         delay={0.5}
       />
     </div>

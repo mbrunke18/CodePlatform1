@@ -234,7 +234,7 @@ function CompoundDisruptionSection() {
       </div>
       <div className="p-6 bg-white">
         <p className="text-sm mb-5" style={{ color: "#6B7280" }}>
-          When disruptions cascade across domains, Command OS activates multi-domain playbooks simultaneously. Click any scenario to explore the full response.
+          When disruptions cascade across domains, Readiness OS activates multi-domain playbooks simultaneously. Click any scenario to explore the full response.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {compoundScenarios.map((item, i) => {

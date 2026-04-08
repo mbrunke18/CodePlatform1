@@ -206,7 +206,7 @@ practiceDrillRouter.post('/:drillId/complete', async (req, res) => {
       drillId,
       organizationId: drillDetails.organizationId,
       playbookId: drillDetails.playbookId,
-      targetExecutionTime: 12, // Command OS standard: 12-minute coordinated response
+      targetExecutionTime: 12, // Readiness OS standard: 12-minute coordinated response
       ...performanceData,
     };
 

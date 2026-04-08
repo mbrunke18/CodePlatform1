@@ -33,7 +33,7 @@ export class SalesforceAdapter implements IntegrationAdapter {
 
     try {
       const taskData = {
-        Subject: `[Command OS] ${payload.title}`,
+        Subject: `[Readiness OS] ${payload.title}`,
         Description: payload.description,
         Priority: this.mapPriority(payload.priority),
         Status: 'Not Started',

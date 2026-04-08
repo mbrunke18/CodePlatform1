@@ -172,7 +172,7 @@ export default function ProspectDemo() {
               Personalized Executive Demo
             </div>
             <h1 style={{ fontSize: 26, fontWeight: 700, color: "#fff", textAlign: "center", marginBottom: 8, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.3 }}>
-              Experience Command OS for Your Organization
+              Experience Readiness OS for Your Organization
             </h1>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", textAlign: "center", marginBottom: 36, lineHeight: 1.6 }}>
               Enter your company and strategic domain. We'll show you a live trigger detection and execution response — built around your world.
@@ -390,7 +390,7 @@ export default function ProspectDemo() {
             <div style={{ marginTop: 24, padding: "20px", background: "rgba(201,168,76,0.06)", border: `1px solid rgba(201,168,76,0.2)` }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>vs. Traditional Response</div>
               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
-                Without Command OS, {displayName} would still be scheduling the first alignment call.
+                Without Readiness OS, {displayName} would still be scheduling the first alignment call.
                 The mobilization cycle alone typically runs <strong style={{ color: "#fff" }}>30 days</strong>. This clock has been running for <strong style={{ color: GOLD }}>{clockDisplay}</strong>.
               </div>
             </div>

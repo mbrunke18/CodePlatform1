@@ -617,7 +617,7 @@ function TriggerStage({ scenario }: { scenario: Scenario }) {
 
       <div style={{ background: `${scenario.color}10`, border: `1px solid ${scenario.color}30`, borderLeft: `4px solid ${scenario.color}`, borderRadius: 4, padding: '20px 24px', marginTop: 28 }}>
         <p style={{ fontSize: 14, color: '#1E293B', lineHeight: 1.7, margin: 0, fontWeight: 600 }}>
-          Without pre-staged execution, every decision is being made for the first time, under pressure, by people who haven't rehearsed this scenario. Command OS changes the constraint.
+          Without pre-staged execution, every decision is being made for the first time, under pressure, by people who haven't rehearsed this scenario. Readiness OS changes the constraint.
         </p>
       </div>
     </div>
@@ -629,7 +629,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
   return (
     <div>
       <div style={{ marginBottom: 28 }}>
-        <h3 style={{ fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Command OS Detected This Coming</h3>
+        <h3 style={{ fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 8 }}>Readiness OS Detected This Coming</h3>
         <p style={{ fontSize: 14, color: '#475569', fontWeight: 500 }}>{scenario.detection.leadTime}</p>
       </div>
 
@@ -857,7 +857,7 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
       {/* Before / After table */}
       <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid #E2E8F0', marginBottom: 28 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
-          {['Outcome', 'Without Command OS', 'With Command OS'].map((h, i) => (
+          {['Outcome', 'Without Readiness OS', 'With Readiness OS'].map((h, i) => (
             <div key={h} style={{ padding: '12px 20px', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: i === 2 ? TEAL : '#64748B' }}>{h}</div>
           ))}
         </div>
@@ -985,7 +985,7 @@ export default function ExecutiveScenarioSuite() {
             <em style={{ color: TEAL }}>See Your Scenario.</em>
           </h1>
           <p style={{ fontSize: 16, color: '#475569', maxWidth: 620, lineHeight: 1.75, fontWeight: 500 }}>
-            Each walk-through uses real Command OS playbooks, the full IDEA chain, and authentic 12-minute execution data — staged for the specific trigger your organization faces.
+            Each walk-through uses real Readiness OS playbooks, the full IDEA chain, and authentic 12-minute execution data — staged for the specific trigger your organization faces.
           </p>
         </div>
 

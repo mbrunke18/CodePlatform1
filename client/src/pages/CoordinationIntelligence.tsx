@@ -203,7 +203,7 @@ export default function CoordinationIntelligence() {
                 {[
                   { label: 'Industry Baseline', subLabel: '30-day alignment cycle', value: '43,200 min', pct: 100, color: '#EF4444', note: 'Committee deliberation + alignment cycles' },
                   { label: 'Your Organization', subLabel: 'Average coordination time', value: `${summary.avgMinutes ?? 12} min`, pct: ((summary.avgMinutes ?? 12) / 43200) * 100, color: NAVY, note: `${summary.targetMetRate ?? 63}% of activations at or below 12-min target` },
-                  { label: 'Command OS Target', subLabel: '12-minute execution benchmark', value: '12 min', pct: (12 / 43200) * 100, color: TEAL, note: 'Pre-staged coordination — ready before trigger fires' },
+                  { label: 'Readiness OS Target', subLabel: '12-minute execution benchmark', value: '12 min', pct: (12 / 43200) * 100, color: TEAL, note: 'Pre-staged coordination — ready before trigger fires' },
                 ].map((row) => (
                   <div key={row.label} style={{ padding: '20px 24px', border: `1px solid ${BORDER}`, background: row.color === NAVY ? '#F0EDE4' : '#fff' }}>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: MUTED, marginBottom: 4 }}>{row.label}</div>
