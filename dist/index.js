@@ -17732,7 +17732,7 @@ var init_FileExportService = __esm({
   <Name>${this.escapeXml(metadata.projectName)}</Name>
   <Title>${this.escapeXml(metadata.projectName)}</Title>
   <Subject>${this.escapeXml(metadata.description)}</Subject>
-  <Author>M Strategic Execution Platform</Author>
+  <Author>M Strategic Readiness Platform</Author>
   <CreationDate>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</CreationDate>
   <LastSaved>${this.formatMsProjectDate(/* @__PURE__ */ new Date())}</LastSaved>
   <ScheduleFromStart>1</ScheduleFromStart>
@@ -27610,8 +27610,8 @@ async function seedPipelineData() {
       {
         organizationId: orgId,
         reportType: "competitive_intelligence",
-        title: "Competitive Landscape: Strategic Execution Platform Category",
-        executiveSummary: "Three new entrants have emerged in the strategic execution platform space, but none combine real-time signal detection with pre-built playbook activation. Our 12-minute execution target remains a unique differentiator. Key competitor Palantir is pivoting toward operational execution but lacks the playbook framework.",
+        title: "Competitive Landscape: Strategic Readiness Platform Category",
+        executiveSummary: "Three new entrants have emerged in the strategic readiness platform space, but none combine real-time signal detection with pre-built playbook activation. Our 12-minute execution target remains a unique differentiator. Key competitor Palantir is pivoting toward operational execution but lacks the playbook framework.",
         findings: [
           { finding: "Palantir AIP expanding into operational execution workflows", impact: "high", confidence: 0.87 },
           { finding: "McKinsey launching Lilli-powered execution advisory service", impact: "medium", confidence: 0.82 },
@@ -27662,7 +27662,7 @@ async function seedPipelineData() {
         organizationId: orgId,
         reportType: "technology_trends",
         title: "Technology Trends Report: Agentic AI & Autonomous Execution Systems",
-        executiveSummary: "Agentic AI capabilities are reaching enterprise-grade maturity, enabling autonomous multi-step workflow execution with human-in-the-loop oversight. This trend directly impacts the strategic execution platform category, creating opportunities for AI-driven playbook automation while raising governance considerations.",
+        executiveSummary: "Agentic AI capabilities are reaching enterprise-grade maturity, enabling autonomous multi-step workflow execution with human-in-the-loop oversight. This trend directly impacts the strategic readiness platform category, creating opportunities for AI-driven playbook automation while raising governance considerations.",
         findings: [
           { finding: "Agentic AI frameworks achieving 94% task completion rates in controlled enterprise environments", impact: "high", confidence: 0.86 },
           { finding: "Multi-agent orchestration reducing complex workflow execution time by 67%", impact: "high", confidence: 0.83 },
@@ -27693,7 +27693,7 @@ async function seedPipelineData() {
         organizationId: orgId,
         scenarioId,
         decisionType: "strategic_pivot",
-        decisionDescription: "Pivoted product positioning from general-purpose analytics to strategic execution platform following competitive analysis showing white space in the market.",
+        decisionDescription: "Pivoted product positioning from general-purpose analytics to strategic readiness platform following competitive analysis showing white space in the market.",
         decisionMaker: primaryUserId,
         decisionContext: { market_conditions: "Crowded analytics market", trigger: "Competitive intelligence report", urgency: "high" },
         chosenOption: { option: "Full strategic pivot to execution platform", timeline: "90 days", investment: "$2.4M" },
@@ -33409,7 +33409,7 @@ var init_swagger = __esm({
           title: "VaughnMartin Readiness OS API",
           version: "2.0.0",
           description: `
-        Readiness OS is a comprehensive Strategic Execution Platform that enables organizations to:
+        Readiness OS is a comprehensive Strategic Readiness Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates
@@ -35213,7 +35213,7 @@ function generateEmailHTML(trigger, playbook, executionId) {
                 <tr>
                   <td>
                     <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">VaughnMartin</h1>
-                    <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Execution Platform</p>
+                    <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Readiness Platform</p>
                   </td>
                   <td align="right">
                     <span style="display: inline-block; background-color: #ef4444; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase;">
@@ -37365,7 +37365,7 @@ router4.post("/simulate", async (req, res) => {
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
                 <div style="text-align: center; margin-bottom: 24px;">
                   <h1 style="color: #14b8a6; margin: 0;">Readiness OS Alert</h1>
-                  <p style="color: #94a3b8; margin-top: 8px;">Strategic Execution Platform</p>
+                  <p style="color: #94a3b8; margin-top: 8px;">Strategic Readiness Platform</p>
                 </div>
                 <div style="background: #1e293b; padding: 24px; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 24px;">
                   <h2 style="color: #f87171; margin-top: 0;">Playbook Activated: ${playbook.name || "Incident Response"}</h2>
@@ -38791,7 +38791,7 @@ function buildEmailHtml(firstName, magicUrl) {
           <td style="background:${NAVY};padding:36px 48px 28px;">
             <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
             <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
-            <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Execution Platform</div>
+            <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Readiness Platform</div>
           </td>
         </tr>
 
@@ -45956,7 +45956,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
             { label: "Key Buyers", value: "CSOs, Chief Strategy Officers, COOs" }
           ],
           aiAnalysis: {
-            summary: "Healthcare enterprises are dramatically increasing AI strategy budgets. 14 Fortune 500 healthcare companies have issued RFPs for strategic execution platforms in the last 30 days. This represents a new market entry opportunity with $890M TAM.",
+            summary: "Healthcare enterprises are dramatically increasing AI strategy budgets. 14 Fortune 500 healthcare companies have issued RFPs for strategic readiness platforms in the last 30 days. This represents a new market entry opportunity with $890M TAM.",
             confidence: 0.89,
             riskLevel: "opportunity",
             timeToImpact: "RFP window closes in 6-8 weeks",

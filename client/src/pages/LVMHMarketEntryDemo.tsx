@@ -118,7 +118,7 @@ export default function LVMHMarketEntryDemo() {
                 <div className="flex items-start gap-4">
                   <Target className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Strategic Execution, Not Crisis Response</h3>
+                    <h3 className="font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Strategic Readiness, Not Crisis Response</h3>
                     <p className="text-white/80 leading-relaxed">
                       This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
                       a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 

@@ -89,7 +89,7 @@ export default function InvestorLanding() {
             </Badge>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto text-white" data-testid="heading-hero">
-              The Salesforce Moment for Strategic Execution
+              The Salesforce Moment for Strategic Readiness
             </h1>
             
             <p className="text-2xl md:text-3xl text-[#C9A84C] font-semibold mb-6" data-testid="text-tagline">
@@ -801,7 +801,7 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#0A0F2E] mb-4">
-                    First mover defining "Strategic Execution Operating System" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
+                    First mover defining "Strategic Readiness Platform" category (like Salesforce for CRM). Category creators capture 76% of market value (Gartner research).
                   </p>
                   <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-category-advantage">
                     Advantage: Brand moat—"Readiness OS" becomes verb for strategic execution
@@ -1109,7 +1109,7 @@ export default function InvestorLanding() {
               Let's Build This Together
             </h2>
             <p className="text-xl mb-4 text-white/80" data-testid="text-cta-description">
-              Readiness OS is defining the Strategic Execution Operating System category — a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              Readiness OS is defining the Strategic Readiness Platform category — a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <p className="text-base mb-10 text-white/60">
               Schedule a conversation with the VaughnMartin founding team to review our full investment deck, pipeline metrics, and strategic roadmap.
@@ -1146,7 +1146,7 @@ export default function InvestorLanding() {
               </Button>
             </div>
             <p className="text-sm text-white/40">
-              VaughnMartin · Strategic Execution Operating System · <span className="text-[#C9A84C]">info@vaughnmartin.com</span>
+              VaughnMartin · Strategic Readiness Platform · <span className="text-[#C9A84C]">info@vaughnmartin.com</span>
             </p>
           </div>
         </section>

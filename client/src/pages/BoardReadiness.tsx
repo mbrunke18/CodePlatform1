@@ -178,7 +178,7 @@ export default function BoardReadiness() {
 
           {/* Execution Dividend */}
           <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, padding: 24, display: 'flex', flexDirection: 'column' }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 20 }}>Execution Dividend</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 20 }}>Readiness Dividend</div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid #F0EDE4' }}>
                 <div style={{ fontSize: 11, color: '#999', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6 }}>Estimated Value Created</div>

@@ -451,7 +451,7 @@ export class FileExportService {
   <Name>${this.escapeXml(metadata.projectName)}</Name>
   <Title>${this.escapeXml(metadata.projectName)}</Title>
   <Subject>${this.escapeXml(metadata.description)}</Subject>
-  <Author>M Strategic Execution Platform</Author>
+  <Author>M Strategic Readiness Platform</Author>
   <CreationDate>${this.formatMsProjectDate(new Date())}</CreationDate>
   <LastSaved>${this.formatMsProjectDate(new Date())}</LastSaved>
   <ScheduleFromStart>1</ScheduleFromStart>

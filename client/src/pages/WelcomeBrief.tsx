@@ -158,10 +158,14 @@ export default function WelcomeBrief() {
           </div>
 
           {/* Headline */}
-          <h1 style={{ fontSize: 'clamp(30px, 5.5vw, 52px)', fontWeight: 800, color: '#fff', margin: '0 0 20px', lineHeight: 1.1, letterSpacing: '-0.5px' }}>
-            Your Execution Infrastructure<br />
+          <h1 style={{ fontSize: 'clamp(30px, 5.5vw, 52px)', fontWeight: 800, color: '#fff', margin: '0 0 16px', lineHeight: 1.1, letterSpacing: '-0.5px' }}>
+            Your Readiness Infrastructure<br />
             <span style={{ color: GOLD }}>Was Already Working</span>
           </h1>
+
+          <p style={{ fontSize: 'clamp(13px, 1.6vw, 15px)', fontStyle: 'italic', color: GOLD, maxWidth: 480, margin: '0 auto 12px', lineHeight: 1.5, fontWeight: 500 }}>
+            The response is ready before the trigger fires.
+          </p>
 
           <p style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 560, margin: '0 auto 28px', lineHeight: 1.65 }}>
             We didn't wait for you to log in. While your account was being configured, Readiness OS was monitoring
@@ -305,7 +309,7 @@ export default function WelcomeBrief() {
               { icon: Shield, label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
               { icon: Zap, label: 'Real-Time Alerts', desc: 'Email notifications to enrolled stakeholders within minutes of a trigger firing at ≥72% confidence.', color: TEAL },
               { icon: Clock, label: '12-Minute Activation', desc: '170 playbooks are pre-staged. Response begins before competitors know the trigger fired.', color: '#8B5CF6' },
-              { icon: TrendingUp, label: 'Execution Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: '#F59E0B' },
+              { icon: TrendingUp, label: 'Readiness Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: '#F59E0B' },
             ].map(({ icon: Icon, label, desc, color }, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <div style={{ width: 36, height: 36, borderRadius: 8, background: `${color}15`, border: `1px solid ${color}25`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

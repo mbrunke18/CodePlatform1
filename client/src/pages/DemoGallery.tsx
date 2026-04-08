@@ -319,7 +319,7 @@ export default function DemoGallery() {
           {/* CTA - Unified Conversion Funnel: Try Demo + Start Pilot */}
           <Card className="bg-white border border-[#E8E4DC]">
             <CardContent className="p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4 text-[#0A0F2E]">Ready to Transform Your Strategic Execution?</h3>
+              <h3 className="text-2xl font-bold mb-4 text-[#0A0F2E]">Ready to Transform Your Strategic Readiness?</h3>
               <p className="text-gray-800 mb-6 max-w-xl mx-auto">
                 Join Fortune 1000 companies achieving live execution in 12 minutes — roles assigned, tasks staged, teams already moving
               </p>

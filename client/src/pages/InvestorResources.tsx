@@ -214,10 +214,10 @@ function McKinseyResearchSection() {
 export default function InvestorResources() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Investor Resources | Readiness OS — Strategic Execution Platform",
+      title: "Investor Resources | Readiness OS — Strategic Readiness Platform",
       description: "Investment overview for Readiness OS, the enterprise readiness infrastructure platform. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
       ogTitle: "Invest in Readiness OS - Category-Defining Opportunity",
-      ogDescription: "Transform 30-day alignment cycles into 12-minute execution. First-mover in Strategic Execution Operating System (SEOS) category.",
+      ogDescription: "Transform 30-day alignment cycles into 12-minute execution. First-mover in Strategic Readiness Platform (SEOS) category.",
     });
   }, []);
 
@@ -246,11 +246,15 @@ export default function InvestorResources() {
           </h1>
           
           <p className="text-xl md:text-2xl text-[#DFC178] mb-4 max-w-3xl mx-auto font-medium">
-            Strategic Execution Operating System (SEOS)
+            The response is ready before the trigger fires.
           </p>
           
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            What Salesforce did for customer relationships, Readiness OS does for strategic execution.
+          <p className="text-lg text-white/80 mb-3 max-w-2xl mx-auto">
+            Prepare for every situation you'll face. AI monitors. Executives authorize. 30 days compressed to 12 minutes.
+          </p>
+
+          <p className="text-base text-white/50 mb-8 max-w-xl mx-auto italic">
+            That's how enterprises become fearless — and why Readiness OS is the infrastructure they've been missing.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">

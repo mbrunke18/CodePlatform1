@@ -717,7 +717,7 @@ function DemoLiveActivation() {
                       🎉 All Stakeholders Coordinated!
                     </h1>
                     <p className="text-3xl text-[#2B8A6E]/80">
-                      Strategic Execution Complete
+                      Strategic Response Complete
                     </p>
                   </div>
                   <Sparkles className="h-24 w-24 text-[#2B8A6E] animate-pulse" />

@@ -65,7 +65,7 @@ const SEARCH_ITEMS = [
   { label: 'Workforce Intelligence', path: '/workforce-intelligence', category: 'Advance', icon: Users },
   { label: 'Strategic Innovation Pipeline', path: '/strategic-innovation', category: 'Advance', icon: Lightbulb },
   { label: 'Board Readiness Snapshot', path: '/board-readiness', category: 'Advance', icon: ClipboardList },
-  { label: 'Execution Dividend', path: '/mission-control', category: 'Advance', icon: TrendingUp },
+  { label: 'Readiness Dividend', path: '/mission-control', category: 'Advance', icon: TrendingUp },
   { label: 'Command Tower', path: '/command-tower', category: 'Execute', icon: Radio },
   { label: 'Live Signal Activity Feed', path: '/command-tower', category: 'Execute', icon: Activity },
   { label: 'Execution Clock', path: '/mission-control', category: 'Execute', icon: Activity },

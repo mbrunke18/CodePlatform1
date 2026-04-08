@@ -262,7 +262,7 @@ export const navigationConfig: NavigationConfig = {
         },
         {
           id: 'roi-dashboard',
-          label: 'Execution ROI Dashboard',
+          label: 'Readiness ROI Dashboard',
           path: '/roi-dashboard',
           icon: '💰',
           description: 'Board-ready value preserved metrics & response time ROI'

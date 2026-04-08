@@ -125,7 +125,7 @@ export default function PlatformOverview() {
               <div className="flex-1">
                 <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
                   The Complete<br />
-                  <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Execution Infrastructure</em>
+                  <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Readiness Infrastructure</em>
                 </h1>
                 <p className="text-lg text-[#6B7280] max-w-xl leading-relaxed">
                   Every component needed to move from strategic trigger to coordinated organizational response — in under 12 minutes.

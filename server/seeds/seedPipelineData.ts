@@ -267,8 +267,8 @@ export async function seedPipelineData() {
       {
         organizationId: orgId,
         reportType: "competitive_intelligence",
-        title: "Competitive Landscape: Strategic Execution Platform Category",
-        executiveSummary: "Three new entrants have emerged in the strategic execution platform space, but none combine real-time signal detection with pre-built playbook activation. Our 12-minute execution target remains a unique differentiator. Key competitor Palantir is pivoting toward operational execution but lacks the playbook framework.",
+        title: "Competitive Landscape: Strategic Readiness Platform Category",
+        executiveSummary: "Three new entrants have emerged in the strategic readiness platform space, but none combine real-time signal detection with pre-built playbook activation. Our 12-minute execution target remains a unique differentiator. Key competitor Palantir is pivoting toward operational execution but lacks the playbook framework.",
         findings: [
           { finding: "Palantir AIP expanding into operational execution workflows", impact: "high", confidence: 0.87 },
           { finding: "McKinsey launching Lilli-powered execution advisory service", impact: "medium", confidence: 0.82 },
@@ -319,7 +319,7 @@ export async function seedPipelineData() {
         organizationId: orgId,
         reportType: "technology_trends",
         title: "Technology Trends Report: Agentic AI & Autonomous Execution Systems",
-        executiveSummary: "Agentic AI capabilities are reaching enterprise-grade maturity, enabling autonomous multi-step workflow execution with human-in-the-loop oversight. This trend directly impacts the strategic execution platform category, creating opportunities for AI-driven playbook automation while raising governance considerations.",
+        executiveSummary: "Agentic AI capabilities are reaching enterprise-grade maturity, enabling autonomous multi-step workflow execution with human-in-the-loop oversight. This trend directly impacts the strategic readiness platform category, creating opportunities for AI-driven playbook automation while raising governance considerations.",
         findings: [
           { finding: "Agentic AI frameworks achieving 94% task completion rates in controlled enterprise environments", impact: "high", confidence: 0.86 },
           { finding: "Multi-agent orchestration reducing complex workflow execution time by 67%", impact: "high", confidence: 0.83 },
@@ -355,7 +355,7 @@ export async function seedPipelineData() {
         organizationId: orgId,
         scenarioId: scenarioId,
         decisionType: "strategic_pivot",
-        decisionDescription: "Pivoted product positioning from general-purpose analytics to strategic execution platform following competitive analysis showing white space in the market.",
+        decisionDescription: "Pivoted product positioning from general-purpose analytics to strategic readiness platform following competitive analysis showing white space in the market.",
         decisionMaker: primaryUserId,
         decisionContext: { market_conditions: "Crowded analytics market", trigger: "Competitive intelligence report", urgency: "high" },
         chosenOption: { option: "Full strategic pivot to execution platform", timeline: "90 days", investment: "$2.4M" },

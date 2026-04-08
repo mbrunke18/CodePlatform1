@@ -651,7 +651,7 @@ router.post('/simulate', async (req, res) => {
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
                 <div style="text-align: center; margin-bottom: 24px;">
                   <h1 style="color: #14b8a6; margin: 0;">Readiness OS Alert</h1>
-                  <p style="color: #94a3b8; margin-top: 8px;">Strategic Execution Platform</p>
+                  <p style="color: #94a3b8; margin-top: 8px;">Strategic Readiness Platform</p>
                 </div>
                 <div style="background: #1e293b; padding: 24px; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 24px;">
                   <h2 style="color: #f87171; margin-top: 0;">Playbook Activated: ${playbook.name || 'Incident Response'}</h2>

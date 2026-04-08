@@ -129,7 +129,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
               Readiness OS One™
             </h1>
             <p className="text-xs text-gray-600 dark:text-slate-400 font-medium">
-              Strategic Execution Platform
+              Strategic Readiness Platform
             </p>
           </div>
         </Link>

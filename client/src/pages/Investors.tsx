@@ -274,7 +274,7 @@ function FuturePositioningDiagram() {
             <CheckCircle className="w-3 h-3" />
             Today — Selling Pain Relief
           </div>
-          <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">Execution Infrastructure</h3>
+          <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">Readiness Infrastructure</h3>
           <p className="text-sm text-[#6B7280] font-medium mb-4">Immediate ROI: enterprises stop losing $36M+ on slow strategic response. The platform pays for itself on the first activation.</p>
           <ul className="space-y-2">
             {[
@@ -324,7 +324,7 @@ function FuturePositioningDiagram() {
             { label: "Platform Built", sub: "170 playbooks, IDEA Framework", color: NAVY },
             { label: "Pilot Contracts", sub: "Design partners, real use cases", color: NAVY },
             { label: "Data Network Effect", sub: "Every activation improves the system", color: TEAL },
-            { label: "Category Leader", sub: "Strategic Execution Platform standard", color: GOLD },
+            { label: "Category Leader", sub: "Strategic Readiness Platform standard", color: GOLD },
           ].map((stage, i) => (
             <div key={i} className="flex items-center flex-1">
               <div className="flex-1">
@@ -359,7 +359,7 @@ export default function Investors() {
               <div className="h-[1px] w-7 bg-[#C9A84C]" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              The Strategic Execution Platform for
+              The Strategic Readiness Platform for
               <span className="text-[#C9A84C]"> Fortune 1000</span>
             </h1>
             <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">

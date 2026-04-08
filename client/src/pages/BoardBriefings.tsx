@@ -75,7 +75,7 @@ const demoBriefings = [
 const demoBoardReports = [
   {
     id: 'rpt-001',
-    title: 'FY2025 Annual Board Report — Strategic Execution Review',
+    title: 'FY2025 Annual Board Report — Strategic Readiness Review',
     reportType: 'Annual Review',
     reportingPeriod: 'FY2025',
     approvedBy: 'Board of Directors',

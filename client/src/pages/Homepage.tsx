@@ -298,12 +298,16 @@ function HeroSection() {
             <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Your organization is still taking 30 days to respond.</span>
           </h1>
 
-          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.4 }}>
-            Readiness OS closes that gap — in 12 minutes.
+          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 680, margin: "0 auto 8px", lineHeight: 1.4 }}>
+            The response is ready before the trigger fires.
           </p>
 
-          <p style={{ ...DM, fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.38)", maxWidth: 520, margin: "0 auto 20px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
-            Coordination infrastructure for the Fortune 1000 &nbsp;·&nbsp; AI monitors &nbsp;·&nbsp; Executives authorize
+          <p style={{ ...DM, fontSize: 15, fontWeight: 400, color: "rgba(255,255,255,0.52)", maxWidth: 580, margin: "0 auto 16px", lineHeight: 1.6 }}>
+            Prepare for every situation. AI monitors. Executives authorize. 30 days compressed to 12 minutes.
+          </p>
+
+          <p style={{ ...DM, fontSize: 11, fontWeight: 700, color: "rgba(201,168,76,0.7)", maxWidth: 520, margin: "0 auto 20px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            Readiness OS &nbsp;·&nbsp; Coordination infrastructure for the Fortune 1000 &nbsp;·&nbsp; Enterprises become fearless
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, marginTop: 40 }}>

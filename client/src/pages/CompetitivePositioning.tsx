@@ -97,7 +97,7 @@ const categoryComparison = [
     textColor: MUTED,
   },
   {
-    category: "Strategic Execution Platform",
+    category: "Strategic Readiness Platform",
     vendors: "Readiness OS (Category of One)",
     does: "Detects strategic triggers, fires the right playbook, creates projects, assigns tasks by role, allocates budget, mobilizes stakeholders — all within 12 minutes",
     doesNot: "The only platform that bridges signal detection to coordinated organizational execution",
@@ -147,7 +147,7 @@ export default function CompetitivePositioning() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Competitive Positioning - Readiness OS | Strategic Execution Platform",
+      title: "Competitive Positioning - Readiness OS | Strategic Readiness Platform",
       description: "See how Readiness OS creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
       ogTitle: "Readiness OS vs. Crisis Tools vs. PM Tools | Category of One",
       ogDescription: "Readiness OS isn't competing with Everbridge or Jira. Readiness OS owns the strategic execution layer between them.",
@@ -168,7 +168,7 @@ export default function CompetitivePositioning() {
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
             </div>
             <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,60px)", lineHeight: 1.05, color: "#fff", marginBottom: 20 }}>
-              The Strategic Execution Layer<br />
+              The Strategic Readiness Layer<br />
               <em style={{ fontStyle: "italic", color: "#DFC178" }}>Category of One</em>
             </h1>
             <p style={{ fontSize: 20, color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto 12px" }}>
@@ -190,7 +190,7 @@ export default function CompetitivePositioning() {
               <div style={{ flex: 1, minWidth: 180, border: `2px solid ${GOLD}`, padding: "20px 24px", background: `rgba(201,168,76,0.08)`, position: "relative" }}>
                 <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", padding: "3px 12px", textTransform: "uppercase" }}>Category of One</div>
                 <Zap className="w-5 h-5 mb-3" style={{ color: GOLD }} />
-                <div style={{ fontWeight: 700, color: "#fff", fontSize: 15, marginBottom: 4 }}>Strategic Execution</div>
+                <div style={{ fontWeight: 700, color: "#fff", fontSize: 15, marginBottom: 4 }}>Strategic Readiness</div>
                 <div style={{ fontSize: 10, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Readiness OS</div>
               </div>
               <div style={{ flex: 1, minWidth: 180, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "20px 24px", borderLeft: "none" }}>

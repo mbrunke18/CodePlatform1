@@ -45,7 +45,7 @@ const TOUR_SCENES: Scene[] = [
     type: 'cinematic',
     duration: 6000,
     title: 'Readiness OS',
-    subtitle: 'Strategic Execution Operating System',
+    subtitle: 'Strategic Readiness Platform',
     narration: 'Welcome to Readiness OS — the operating system that transforms how Fortune 1000 companies execute strategy.',
     visual: 'solution'
   },
@@ -159,7 +159,7 @@ const TOUR_SCENES: Scene[] = [
     id: 'cta',
     type: 'cta',
     duration: 10000,
-    title: 'Ready to Transform Your Strategic Execution?',
+    title: 'Ready to Transform Your Strategic Readiness?',
     narration: 'Request a custom demo configured with your industry, competitive landscape, and strategic priorities.',
     visual: 'cta'
   }

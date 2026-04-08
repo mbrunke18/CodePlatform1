@@ -20,7 +20,7 @@ const roles = [
     ),
     color: GOLD,
     sees: [
-      { label: 'Execution Intelligence Dashboard', detail: 'Real-time coordination velocity, active trigger count, and how your organization\'s speed compares to the 30-day industry baseline — expressed as the 3,600× head start.' },
+      { label: 'Readiness Intelligence Dashboard', detail: 'Real-time coordination velocity, active trigger count, and how your organization\'s speed compares to the 30-day industry baseline — expressed as the 3,600× head start.' },
       { label: 'Coordination Intelligence', detail: 'Historical activation records with timestamps proving the 12-minute standard. Board-ready AI narrative generated on demand from live activation data.' },
       { label: 'Execution History', detail: 'KPI trends across the 90-day pilot — activations completed, time-to-coordination, and the compounding ROI as more triggers are handled through the platform.' },
     ],
@@ -31,7 +31,7 @@ const roles = [
     ],
     success: 'At least 3 live activations with documented coordination time under 12 minutes. AI-generated board brief produced from real activation data. ROI case quantified and ready for the next board cycle.',
     pages: [
-      { label: 'Execution Intelligence', href: '/coordination-intelligence' },
+      { label: 'Readiness Intelligence', href: '/coordination-intelligence' },
       { label: 'Execution History', href: '/execution-history' },
       { label: 'Dashboard', href: '/dashboard' },
     ],

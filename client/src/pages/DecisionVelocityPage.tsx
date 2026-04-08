@@ -46,7 +46,7 @@ export default function DecisionVelocityPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-12 space-y-12 pb-20">
-          {/* Execution Infrastructure Foundation */}
+          {/* Readiness Infrastructure Foundation */}
           <Card className="bg-[#0A0F2E] border-none rounded-none shadow-xl overflow-hidden relative">
             <div style={{ 
               position: "absolute", 
@@ -60,7 +60,7 @@ export default function DecisionVelocityPage() {
             <CardHeader className="p-10 pb-4 relative z-10">
               <CardTitle style={CG} className="text-3xl text-white flex items-center gap-4 mb-2">
                 <Target className="h-8 w-8 text-[#C9A84C]" />
-                The Foundation: Execution Infrastructure
+                The Foundation: Readiness Infrastructure
               </CardTitle>
               <CardDescription className="text-[#DFC178] text-lg font-medium italic">
                 Built on what 15 major firms say enterprises are missing

@@ -537,7 +537,7 @@ function InvestorPresentation() {
           ))}
           <div className="bg-[#0A0F2E] border-2 border-[#C9A84C] rounded-xl p-4 text-white shadow-xl">
             <div className="text-[#C9A84C] font-bold text-sm mb-1">Readiness OS</div>
-            <div className="text-white/60 text-[10px] font-bold uppercase tracking-wider mb-3">Strategic Execution Platform</div>
+            <div className="text-white/60 text-[10px] font-bold uppercase tracking-wider mb-3">Strategic Readiness Platform</div>
             <div className="text-xs space-y-1">
               {['AI signal detection', 'Pre-built playbooks', 'Automated coordination', 'Learning & refinement'].map((f, i) => (
                 <div key={i} className="text-[#C9A84C] font-bold">✓ {f}</div>

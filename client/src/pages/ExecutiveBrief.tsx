@@ -79,7 +79,7 @@ export default function ExecutiveBrief() {
       title: "Executive Brief — Readiness OS by VaughnMartin",
       description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and pilot program. Built for Fortune 1000 board-level conversations.",
       ogTitle: "Executive Brief — VaughnMartin Readiness OS",
-      ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic execution platform built for Fortune 1000 enterprises.",
+      ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic readiness platform built for Fortune 1000 enterprises.",
     });
   }, []);
 
@@ -118,7 +118,7 @@ export default function ExecutiveBrief() {
 
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Strategic Execution Platform · Fortune 1000</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Strategic Readiness Platform · Fortune 1000</span>
             </div>
 
             <h1 style={{ ...CG, fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>

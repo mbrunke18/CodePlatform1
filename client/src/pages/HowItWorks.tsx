@@ -459,7 +459,7 @@ export default function HowItWorks() {
               {
                 icon: RefreshCw,
                 color: TEAL,
-                title: "Execution Intelligence Score",
+                title: "Readiness Intelligence Score",
                 desc: "A normalized 0–100 maturity score based on activation frequency, ADVANCE closure rate, and trigger depth. Three levels: Emerging, Developing, Operating. Tracks your org's progression over time."
               },
               {

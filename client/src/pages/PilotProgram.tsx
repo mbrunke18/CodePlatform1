@@ -235,9 +235,9 @@ export default function PilotProgram() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "90-Day Pilot Program - Readiness OS | Strategic Execution Platform",
+      title: "90-Day Pilot Program - Readiness OS | Strategic Readiness Platform",
       description: "Validate Readiness OS' 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
-      ogTitle: "Readiness OS Pilot Program | 90 Days to Transform Strategic Execution",
+      ogTitle: "Readiness OS Pilot Program | 90 Days to Transform Strategic Readiness",
       ogDescription: "Fortune 1000 pilot program with ROI measurement, live activation, and clear conversion path.",
     });
   }, []);
@@ -739,7 +739,7 @@ export default function PilotProgram() {
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-4">We Make Enterprises Fearless.</p>
             <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-cta">
-              Ready to Validate Strategic Execution?
+              Ready to Validate Strategic Readiness?
             </h2>
             <p className="text-lg text-gray-800 dark:text-slate-300 mb-8">
               Limited to 5 design partners. Priority given to Fortune 1000 organizations with recent strategic event pain.

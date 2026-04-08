@@ -192,7 +192,7 @@ export default function KeynoteDemo() {
           className="text-7xl font-bold text-[#0A0F2E] mb-6 tracking-tight"
           style={CG}
         >
-          Strategic Execution Is <span className="text-[#C9A84C]">Broken</span>
+          Strategic Readiness Is <span className="text-[#C9A84C]">Broken</span>
         </motion.h1>
         <motion.div
           initial={{ opacity: 0 }}
@@ -306,7 +306,7 @@ export default function KeynoteDemo() {
           className="flex items-center gap-3 mb-8 relative z-10"
         >
           <div className="h-px w-16 bg-[#C9A84C]" />
-          <span className="text-2xl text-[#C9A84C] font-light tracking-widest uppercase">Strategic Execution Platform</span>
+          <span className="text-2xl text-[#C9A84C] font-light tracking-widest uppercase">Strategic Readiness Platform</span>
           <div className="h-px w-16 bg-[#C9A84C]" />
         </motion.div>
         <motion.p

@@ -4403,7 +4403,7 @@ export const insertDemoLeadSchema = createInsertSchema(demoLeads).pick({
 });
 
 // ============================================================================
-// CUSTOMER CONFIGURATION - User-defined settings for M Strategic Execution Platform
+// CUSTOMER CONFIGURATION - User-defined settings for M Strategic Readiness Platform
 // ============================================================================
 
 // Departments - Organization structure for stakeholder assignment
@@ -6250,7 +6250,7 @@ export const insertCompoundThreatAlertSchema = createInsertSchema(compoundThreat
 export type InsertCompoundThreatAlert = z.infer<typeof insertCompoundThreatAlertSchema>;
 export type CompoundThreatAlert = typeof compoundThreatAlerts.$inferSelect;
 
-// ROI Snapshots (Execution ROI Dashboard)
+// ROI Snapshots (Readiness ROI Dashboard)
 export const roiSnapshots = pgTable('roi_snapshots', {
   id: uuid('id').primaryKey().defaultRandom(),
   organizationId: uuid('organization_id').notNull().references(() => organizations.id),

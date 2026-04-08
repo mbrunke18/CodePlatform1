@@ -240,7 +240,7 @@ export default function CrisisDetail() {
                   {crisis.title}
                 </h1>
                 <p className="text-[#DFC178] text-lg italic max-w-2xl font-medium">
-                  {organization?.name || 'Organization'} • Strategic Execution Protocol
+                  {organization?.name || 'Organization'} • Strategic Response Protocol
                 </p>
                 <div className="flex items-center gap-6 text-[10px] font-bold tracking-[0.15em] uppercase text-white/40">
                   <div className="flex items-center gap-2">

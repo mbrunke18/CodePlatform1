@@ -223,7 +223,7 @@ export default function WhyExecutionOS() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>The Agentic Layer</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#fff", marginBottom: 16 }}>
-              Agentic Execution Infrastructure
+              Agentic Readiness Infrastructure
             </h2>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
               Readiness OS isn't another tool in the stack. It's the agentic execution layer — where AI agents coordinate enterprise-wide response in real time.

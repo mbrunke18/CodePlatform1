@@ -136,7 +136,7 @@ function generateEmailHTML(trigger: typeof TRIGGER_SCENARIOS[string], playbook: 
                 <tr>
                   <td>
                     <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700;">VaughnMartin</h1>
-                    <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Execution Platform</p>
+                    <p style="margin: 8px 0 0; color: #94a3b8; font-size: 14px;">Strategic Readiness Platform</p>
                   </td>
                   <td align="right">
                     <span style="display: inline-block; background-color: #ef4444; color: white; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase;">

@@ -279,7 +279,7 @@ export default function OnboardingGuide() {
                 ))}
               </div>
               <div style={{ flex: 1, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 6, padding: 14 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "1px", marginBottom: 10 }}>Execution Dividend</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "1px", marginBottom: 10 }}>Readiness Dividend</div>
                 <div style={{ fontSize: 22, fontWeight: 900, color: TEAL }}>$2.4M</div>
                 <div style={{ fontSize: 10, color: "#6B7280", marginTop: 4 }}>Value preserved vs. 30-day baseline</div>
               </div>
@@ -376,7 +376,7 @@ export default function OnboardingGuide() {
               description="Strategic scenario modeling. Input any threat, select industry, and receive Survive vs. Thrive scores with recommended playbooks and recommended actions." />
             <FeatureRow icon={FileText} color={RED} title="Board Readiness Snapshot" path="/board-readiness"
               description="Print-ready board report with domain coverage ring, readiness score, Execution Dividend, and recent detections. Export as PDF in one click." />
-            <FeatureRow icon={TrendingUp} color={TEAL} title="Execution Dividend" path="/mission-control"
+            <FeatureRow icon={TrendingUp} color={TEAL} title="Readiness Dividend" path="/mission-control"
               description="Real-time ROI counter showing value preserved vs. a 30-day manual response baseline. Formula: trigger count × hours saved × $500/hr executive time." />
             <FeatureRow icon={Users} color={NAVY} title="Stakeholder Registry" path="/stakeholders"
               description="Contact directory for rapid mobilization. Role-matched notification routing ensures the right people are reached at trigger activation." />

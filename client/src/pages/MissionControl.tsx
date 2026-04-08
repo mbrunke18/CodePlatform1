@@ -495,7 +495,7 @@ export default function MissionControl() {
                   <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 3, letterSpacing: '0.12em' }}>EXECUTION OS</span>
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, marginTop: 1 }}>
-                  Welcome back, {firstName} · Strategic Execution Intelligence
+                  Welcome back, {firstName} · Strategic Readiness Intelligence
                 </div>
               </div>
             </div>

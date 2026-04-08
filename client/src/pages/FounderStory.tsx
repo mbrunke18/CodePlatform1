@@ -191,7 +191,7 @@ export default function FounderStory() {
               <div style={{ display: "inline-flex", alignItems: "center", gap: 14, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", padding: "14px 28px" }}>
                 <span style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 16, fontWeight: 600, color: GOLD_LIGHT, letterSpacing: "0.04em" }}>VaughnMartin</span>
                 <span style={{ width: 1, height: 16, background: "rgba(201,168,76,0.3)" }} />
-                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)" }}>The Execution Infrastructure Enterprises Were Missing</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)" }}>The Readiness Infrastructure Enterprises Are Missing</span>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ const options: swaggerJsdoc.Options = {
       title: 'VaughnMartin Readiness OS API',
       version: '2.0.0',
       description: `
-        Readiness OS is a comprehensive Strategic Execution Platform that enables organizations to:
+        Readiness OS is a comprehensive Strategic Readiness Platform that enables organizations to:
         
         - **Strategic Planning**: Manage complex scenarios and strategic initiatives
         - **Crisis Response**: Execute automated crisis response protocols with 15+ templates

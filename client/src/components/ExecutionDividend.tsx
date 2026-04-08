@@ -47,7 +47,7 @@ export function ExecutionDividend({ compact = false }: { compact?: boolean }) {
           <TrendingUp size={20} color={TEAL} />
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: '#999', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>Execution Dividend</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#999', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 2 }}>Readiness Dividend</div>
           <div style={{ fontSize: 22, fontWeight: 800, color: TEAL }}>
             {hasData
               ? <AnimatedCount target={d.totalValueCreated} prefix="$" duration={2000} />
@@ -72,7 +72,7 @@ export function ExecutionDividend({ compact = false }: { compact?: boolean }) {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: 12 }}>
           <TrendingUp size={18} color={GOLD} />
-          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: GOLD }}>Execution Dividend</span>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: GOLD }}>Readiness Dividend</span>
         </div>
         <div style={{ position: 'relative', marginTop: 10 }}>
           <div style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 800, color: '#fff', letterSpacing: '-1px', lineHeight: 1 }}>

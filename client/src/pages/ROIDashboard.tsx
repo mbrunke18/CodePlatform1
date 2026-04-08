@@ -84,7 +84,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                   <ChevronRight className="w-3 h-3" style={{ color: GOLD }} />
                   <span className="text-[8px] font-black uppercase tracking-[0.3em]" style={{ color: TEAL }}>Value Intelligence</span>
                 </div>
-                <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.8rem', color: NAVY, lineHeight: 1 }}>Execution ROI Dashboard</h1>
+                <h1 style={{ ...CG, fontWeight: 700, fontSize: '1.8rem', color: NAVY, lineHeight: 1 }}>Readiness ROI Dashboard</h1>
                 <p className="text-xs text-gray-400 mt-0.5">Quantified value of faster strategic response</p>
               </div>
             </div>
@@ -203,7 +203,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <p className="text-[9px] font-black uppercase tracking-[0.3em] mb-1" style={{ color: GOLD }}>Board Presentation</p>
-                <h2 style={{ ...CG, fontSize: '1.6rem', fontWeight: 700, color: NAVY }}>Strategic Execution Report</h2>
+                <h2 style={{ ...CG, fontSize: '1.6rem', fontWeight: 700, color: NAVY }}>Strategic Readiness Report</h2>
                 <p className="text-xs text-gray-400">{format(new Date(), 'MMMM yyyy')}</p>
               </div>
               <Button onClick={() => window.print()}

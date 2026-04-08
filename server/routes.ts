@@ -4026,7 +4026,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
             { label: 'Key Buyers', value: 'CSOs, Chief Strategy Officers, COOs' }
           ],
           aiAnalysis: {
-            summary: 'Healthcare enterprises are dramatically increasing AI strategy budgets. 14 Fortune 500 healthcare companies have issued RFPs for strategic execution platforms in the last 30 days. This represents a new market entry opportunity with $890M TAM.',
+            summary: 'Healthcare enterprises are dramatically increasing AI strategy budgets. 14 Fortune 500 healthcare companies have issued RFPs for strategic readiness platforms in the last 30 days. This represents a new market entry opportunity with $890M TAM.',
             confidence: 0.89,
             riskLevel: 'opportunity',
             timeToImpact: 'RFP window closes in 6-8 weeks',

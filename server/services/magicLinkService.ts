@@ -100,7 +100,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
           <td style="background:${NAVY};padding:36px 48px 28px;">
             <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
             <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
-            <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Execution Platform</div>
+            <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Readiness Platform</div>
           </td>
         </tr>
 
