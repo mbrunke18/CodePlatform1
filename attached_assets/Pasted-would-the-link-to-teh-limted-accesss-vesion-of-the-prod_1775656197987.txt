@@ -1,0 +1,37 @@
+would the link to teh limted accesss vesion of the product be worth posting in a comment link on one of my posts be valuable
+
+9:43 AM
+Yes. But only on the right post and only framed correctly.
+
+The most valuable place to drop it is not a self-comment on a content post. It is a direct response to a specific comment from someone who has shown genuine interest. Kerry Huang's comment on your McKinsey post this week is the perfect example. When someone of that caliber engages substantively and asks a direct question, responding with the demo link in a follow-up DM or as a reply to their comment is completely natural and appropriate. It is not promotional. It is responsive.
+
+Where it works well
+
+As a reply to a direct question in the comments. If someone asks "how does this actually work" or "where can I see this" the demo link is the perfect answer. It gives them exactly what they asked for without you having to pitch.
+
+As a first comment on your Thursday lifecycle post. That post is the most product-forward piece of content this week. The audience reading about the full decision lifecycle, the four phases, and the compounding intelligence loop is the most qualified audience you will have all week to receive a demo link. A first comment that says something like:
+
+For anyone who wants to see the platform rather than just read about it: [demo link]
+
+That is clean, direct, and appropriate for that specific post.
+
+Where it does not work
+
+As a self-comment on the bold claim posts. Wednesday's "was solved two years ago" post is a positioning statement not a product demonstration. Dropping a demo link there makes it feel like a sales pitch and undermines the confidence of the post.
+
+On the carousel post. The carousel already shows the product. A demo link on top of it is redundant.
+
+The specific link to use
+
+The locked executive access link from your developer reference. That is the one designed for exactly this purpose.
+
+https://vaughnmartin.com/demo-access?token=VMdemo2026
+
+That link routes to Mission Control and gives them a live experience of the platform rather than a marketing page. That is significantly more powerful than linking to the homepage.
+
+One consideration before you post it publicly
+
+The demo environment needs to be in the strongest possible state before it gets significant traffic from your LinkedIn audience. A Fortune 50 AVP or a board member who clicks that link and hits a rough experience will form an impression that is hard to reverse. Make sure the demo flow is clean, the data looks real, and the activation console performs well before you put it in front of Kerry Huang or anyone of that caliber.
+
+Is the demo environment in a state you are confident putting in front of that audience right now?
+
