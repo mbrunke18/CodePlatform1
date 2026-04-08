@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaughnMartin — Readiness OS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy: #0A0F2E;
+    --navy-bg: #132558;
+    --gold: #C9A84C;
+    --gold-lt: #DFC178;
+    --teal: #2B8A6E;
+    --teal-lt: #3BAF8A;
+    --ivory: #F0EEE4;
+    --off: #F8F7F4;
+    --red-alert: #E84545;
+    --muted: #6B7280;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: 'Barlow Condensed', sans-serif;
+    overflow: hidden;
+    width: 1920px;
+    height: 1080px;
+  }
+
+  .scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+  }
+  .scene.active { opacity: 1; pointer-events: auto; }
+
+  .bg-grid {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+  }
+  .bg-noise {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(43,138,110,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.04) 0%, transparent 50%);
+    z-index: 0;
+  }
+
+  @keyframes scanline { 0% { top: -2px; } 100% { top: 100%; } }
+  .scanline {
+    position: fixed; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(43,138,110,0.3), transparent);
+    z-index: 1; animation: scanline 4s linear infinite; pointer-events: none;
+  }
+
+  .progress-bar {
+    position: fixed; bottom: 0; left: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    z-index: 100; transition: width 0.6s ease;
+  }
+
+  .scene-header {
+    position: absolute; top: 60px; left: 80px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--teal); opacity: 0;
+  }
+
+  /* ===== SCENE 1: HOOK ===== */
+  .hook-text { text-align: center; z-index: 2; }
+  .hook-text .line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 700; letter-spacing: 1px;
+    opacity: 0; transform: translateY(40px); color: var(--ivory);
+  }
+  .hook-text .line.gold { color: var(--gold); }
+  .hook-text .line.teal { color: var(--teal-lt); }
+  .hook-text .line.sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px; font-weight: 300; letter-spacing: 4px;
+    text-transform: uppercase; margin-top: 30px; color: rgba(240,238,228,0.5);
+  }
+
+  /* ===== SCENE 2: PROBLEM ===== */
+  .problem-container { display: flex; flex-direction: column; align-items: center; gap: 40px; z-index: 2; }
+  .problem-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600;
+    color: var(--gold); opacity: 0;
+  }
+  .chaos-items { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; max-width: 1200px; }
+  .chaos-item {
+    background: rgba(232, 69, 69, 0.08); border: 1px solid rgba(232, 69, 69, 0.25);
+    border-radius: 12px; padding: 20px 28px; font-size: 20px; font-weight: 400;
+    letter-spacing: 1px; opacity: 0; transform: scale(0.8);
+  }
+  .cost-label { opacity: 0; font-size: 28px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--red-alert); margin-top: 30px; }
+
+  /* ===== SCENE 3: THESIS ARC ===== */
+  .thesis-container { display: flex; flex-direction: column; align-items: center; gap: 50px; z-index: 2; }
+  .thesis-step {
+    display: flex; align-items: center; gap: 40px; opacity: 0; transform: translateY(30px);
+  }
+  .thesis-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 700;
+    color: var(--gold); line-height: 1; min-width: 80px; text-align: center;
+  }
+  .thesis-content {}
+  .thesis-label {
+    font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: var(--ivory);
+  }
+  .thesis-desc {
+    font-size: 22px; font-weight: 300; letter-spacing: 1px;
+    color: rgba(240,238,228,0.6); margin-top: 6px; max-width: 700px;
+  }
+  .thesis-arrow {
+    font-size: 36px; color: var(--teal); opacity: 0; margin: -10px 0;
+    text-align: center;
+  }
+
+  /* ===== SCENE 4: SIGNAL DETECTION ===== */
+  .signal-container { position: relative; width: 100%; height: 100%; z-index: 2; }
+  .signal-hub {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 220px; height: 220px; border-radius: 50%;
+    background: radial-gradient(circle, var(--teal) 0%, rgba(43,138,110,0.2) 60%, transparent 100%);
+    display: flex; align-items: center; justify-content: center; flex-direction: column; opacity: 0;
+  }
+  .signal-hub .label { font-size: 14px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--ivory); }
+  .signal-hub .count { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 700; color: var(--gold); }
+  .signal-hub .sub { font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,238,228,0.6); }
+  @keyframes ripple { 0% { transform: translate(-50%,-50%) scale(1); opacity: 0.4; } 100% { transform: translate(-50%,-50%) scale(2.5); opacity: 0; } }
+  .signal-hub .ripple {
+    position: absolute; width: 220px; height: 220px; border-radius: 50%;
+    border: 1px solid var(--teal); top: 50%; left: 50%;
+    animation: ripple 2s ease-out infinite;
+  }
+  .signal-hub .ripple:nth-child(2) { animation-delay: 0.6s; }
+  .signal-hub .ripple:nth-child(3) { animation-delay: 1.2s; }
+
+  .signal-node {
+    position: absolute; padding: 12px 20px; background: rgba(10, 15, 46, 0.9);
+    border: 1px solid rgba(43,138,110,0.4); border-radius: 8px;
+    font-size: 15px; font-weight: 400; letter-spacing: 1px; opacity: 0; transform: scale(0); white-space: nowrap;
+  }
+  .signal-node::before {
+    content: ''; position: absolute; width: 8px; height: 8px;
+    background: var(--teal); border-radius: 50%; left: -4px; top: 50%;
+    transform: translateY(-50%); box-shadow: 0 0 12px var(--teal);
+  }
+  .signal-node.firing { border-color: var(--gold); }
+  .signal-node.firing::before { background: var(--gold); box-shadow: 0 0 16px var(--gold); }
+
+  .domain-strip {
+    position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 20px; opacity: 0;
+  }
+  .domain-pill {
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px; padding: 8px 20px; font-size: 14px; font-weight: 500;
+    letter-spacing: 1px; color: var(--gold-lt);
+  }
+
+  /* ===== SCENE 5: PLAYBOOK ===== */
+  .playbook-container { display: flex; flex-direction: column; align-items: center; gap: 40px; z-index: 2; }
+  .playbook-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; }
+  .playbook-card {
+    background: rgba(20,27,69,0.8); border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px; padding: 22px 26px; opacity: 0; transform: translateY(20px);
+    position: relative; overflow: hidden;
+  }
+  .playbook-card .domain { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+  .playbook-card .name { font-size: 19px; font-weight: 500; color: var(--ivory); }
+  .playbook-card .status { font-size: 13px; font-weight: 400; color: rgba(240,238,228,0.4); margin-top: 8px; letter-spacing: 1px; }
+  .playbook-card.activated { border-color: var(--gold); box-shadow: 0 0 30px rgba(201,168,76,0.15); }
+  .playbook-card.activated .status { color: var(--gold); }
+  .playbook-card.activated::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+  }
+  .playbook-stat { text-align: center; opacity: 0; }
+  .playbook-stat .num { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .playbook-stat .desc { font-size: 20px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,238,228,0.6); }
+
+  .authority-bar {
+    display: flex; align-items: center; gap: 16px; opacity: 0;
+    background: rgba(43,138,110,0.1); border: 1px solid rgba(43,138,110,0.3);
+    border-radius: 10px; padding: 16px 32px; margin-top: 10px;
+  }
+  .authority-bar .shield { font-size: 28px; }
+  .authority-bar .text { font-size: 18px; font-weight: 500; letter-spacing: 1px; color: var(--teal-lt); }
+
+  /* ===== SCENE 6: COMPRESSION ===== */
+  .compression-container { display: flex; flex-direction: column; align-items: center; gap: 50px; z-index: 2; }
+  .versus { display: flex; align-items: center; gap: 60px; }
+  .versus-side { text-align: center; opacity: 0; }
+  .versus-side .time { font-family: 'Cormorant Garamond', serif; font-size: 96px; font-weight: 700; line-height: 1; }
+  .versus-side .time.old { color: var(--red-alert); }
+  .versus-side .time.new { color: var(--teal); }
+  .versus-side .unit { font-size: 24px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,238,228,0.5); }
+  .versus-side .clarify { font-size: 16px; font-weight: 300; letter-spacing: 1px; color: rgba(240,238,228,0.35); margin-top: 6px; }
+  .versus-divider { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--gold); opacity: 0; }
+  .compression-result { text-align: center; opacity: 0; }
+  .compression-result .multiplier { font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .compression-result .label { font-size: 22px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--ivory); margin-top: 10px; }
+  .compression-result .sublabel { font-size: 16px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,238,228,0.4); margin-top: 6px; }
+
+  /* ===== SCENE 7: LIFECYCLE ===== */
+  .lifecycle-container { display: flex; flex-direction: column; align-items: center; gap: 40px; z-index: 2; }
+  .lifecycle-title { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--ivory); opacity: 0; }
+  .lifecycle-stages { display: flex; gap: 0; align-items: stretch; }
+  .lifecycle-stage {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px 28px; min-width: 180px; opacity: 0; transform: translateY(20px);
+    border-right: 1px solid rgba(240,238,228,0.1);
+  }
+  .lifecycle-stage:last-child { border-right: none; }
+  .lifecycle-stage .num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 700; color: var(--gold); }
+  .lifecycle-stage .name { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ivory); margin-top: 4px; }
+  .lifecycle-stage .desc { font-size: 13px; font-weight: 300; color: rgba(240,238,228,0.5); margin-top: 4px; text-align: center; max-width: 160px; }
+  .lifecycle-stage.mobilization { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.2); }
+  .lifecycle-stage.execution-proper { background: rgba(43,138,110,0.06); }
+  .lifecycle-bracket {
+    display: flex; flex-direction: column; align-items: center; opacity: 0; margin-top: 10px;
+  }
+  .bracket-line { display: flex; align-items: center; gap: 12px; }
+  .bracket-label { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+  .bracket-label.gold { color: var(--gold); }
+  .bracket-label.teal { color: var(--teal-lt); }
+  .bracket-time { font-size: 14px; font-weight: 300; color: rgba(240,238,228,0.5); }
+
+  /* ===== SCENE 8: CLOSE ===== */
+  .close-container { display: flex; flex-direction: column; align-items: center; gap: 24px; z-index: 2; }
+  .close-logo { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 700; color: var(--ivory); opacity: 0; letter-spacing: 2px; }
+  .close-product { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 600; letter-spacing: 6px; text-transform: uppercase; color: var(--teal); opacity: 0; }
+  .close-tagline { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; font-style: italic; color: var(--gold); opacity: 0; margin-top: 20px; }
+  .close-thesis {
+    display: flex; gap: 20px; align-items: center; opacity: 0; margin-top: 10px;
+  }
+  .close-thesis .word { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,238,228,0.6); }
+  .close-thesis .arrow { color: var(--gold); font-size: 18px; }
+  .close-cta { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,238,228,0.4); opacity: 0; margin-top: 10px; }
+
+  /* ===== CONTROLS ===== */
+  .controls { position: fixed; bottom: 30px; right: 40px; z-index: 100; display: flex; gap: 12px; }
+  .controls button {
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    padding: 10px 24px; border-radius: 6px; cursor: pointer; transition: all 0.3s;
+  }
+  .controls button:hover { background: rgba(201,168,76,0.25); border-color: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-noise"></div>
+<div class="scanline"></div>
+<div class="progress-bar" id="progress"></div>
+
+<!-- SCENE 1: HOOK -->
+<div class="scene active" id="scene1">
+  <div class="hook-text">
+    <div class="line" id="h1">Everyone talks about detecting signals.</div>
+    <div class="line" id="h2">Designing intentional responses.</div>
+    <div class="line" id="h3">Being ready before disruption hits.</div>
+    <div class="line gold" id="h4" style="margin-top:30px;">We built the system that does it.</div>
+    <div class="line teal" id="h5" style="margin-top:10px; font-size:52px;">The response is ready before the trigger fires.</div>
+  </div>
+</div>
+
+<!-- SCENE 2: THE PROBLEM -->
+<div class="scene" id="scene2">
+  <div class="scene-header" id="s2h">The 30-Day Mobilization Problem</div>
+  <div class="problem-container">
+    <div class="problem-title" id="pt">How Fortune 1000 companies actually respond to disruption</div>
+    <div class="chaos-items">
+      <div class="chaos-item">Emails about emails</div>
+      <div class="chaos-item">30 days just to mobilize</div>
+      <div class="chaos-item">Slide decks instead of action</div>
+      <div class="chaos-item">Decision rights nobody can find</div>
+      <div class="chaos-item">Stakeholder alignment theater</div>
+      <div class="chaos-item">The decision is fine. The preparation surrounding it isn't.</div>
+    </div>
+    <div class="cost-label" id="cl">The bottleneck is never the technology. It's the mobilization cycle.</div>
+  </div>
+</div>
+
+<!-- SCENE 3: THESIS ARC -->
+<div class="scene" id="scene3">
+  <div class="scene-header" id="s3h">The Product Thesis</div>
+  <div class="thesis-container">
+    <div class="thesis-step" id="t1">
+      <div class="thesis-num">I</div>
+      <div class="thesis-content">
+        <div class="thesis-label">Preparation</div>
+        <div class="thesis-desc">Decision rights mapped. Ownership defined. Response architecture built during low pressure — before any trigger fires.</div>
+      </div>
+    </div>
+    <div class="thesis-arrow" id="ta1">↓</div>
+    <div class="thesis-step" id="t2">
+      <div class="thesis-num">II</div>
+      <div class="thesis-content">
+        <div class="thesis-label">Readiness</div>
+        <div class="thesis-desc">170 playbooks pre-staged. 221 triggers monitored. 12-minute deployment ready.</div>
+      </div>
+    </div>
+    <div class="thesis-arrow" id="ta2">↓</div>
+    <div class="thesis-step" id="t3">
+      <div class="thesis-num">III</div>
+      <div class="thesis-content">
+        <div class="thesis-label" style="color:var(--gold);">Fearless</div>
+        <div class="thesis-desc">Every enterprise that prepares for every situation it'll face is no longer afraid of strategic triggers.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 4: SIGNAL DETECTION -->
+<div class="scene" id="scene4">
+  <div class="scene-header" id="s4h">Readiness OS — 9 Strategic Domains · 221 Triggers · 248+ Data Points</div>
+  <div class="signal-container">
+    <div class="signal-hub" id="hub">
+      <div class="ripple"></div>
+      <div class="ripple"></div>
+      <div class="ripple"></div>
+      <div class="label">Monitoring</div>
+      <div class="count" id="dc">0</div>
+      <div class="sub">Data Points</div>
+    </div>
+    <div class="signal-node" style="top:14%;left:10%;">Market Disruption</div>
+    <div class="signal-node" style="top:22%;left:72%;">Regulatory Change</div>
+    <div class="signal-node" style="top:50%;left:6%;">Supply Chain Stress</div>
+    <div class="signal-node" style="top:72%;left:68%;">Competitive Threat</div>
+    <div class="signal-node" style="top:38%;left:82%;">Technology Shift</div>
+    <div class="signal-node" style="top:78%;left:28%;">Talent Exodus</div>
+    <div class="signal-node" style="top:10%;left:44%;">Financial Variance</div>
+    <div class="signal-node" style="top:60%;left:44%;">AI Governance Risk</div>
+    <div class="signal-node" style="top:85%;left:55%;">Brand & Reputation</div>
+    <div class="domain-strip" id="dstrip">
+      <div class="domain-pill">9 Strategic Domains</div>
+      <div class="domain-pill">221 Executive Triggers</div>
+      <div class="domain-pill">15-Minute Monitoring Cycles</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 5: PLAYBOOK ACTIVATION -->
+<div class="scene" id="scene5">
+  <div class="scene-header" id="s5h">Readiness OS — Pre-Staged Playbook Activation</div>
+  <div class="playbook-container">
+    <div class="playbook-stat" id="ps">
+      <div class="num">170</div>
+      <div class="desc">Pre-Staged Readiness Playbooks Across 9 Domains</div>
+    </div>
+    <div class="playbook-grid">
+      <div class="playbook-card">
+        <div class="domain">Financial Strategy</div>
+        <div class="name">Capital Reallocation Sprint</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Regulatory & Compliance</div>
+        <div class="name">SEC Investigation Response</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Technology & Innovation</div>
+        <div class="name">Platform Migration Sequence</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Market Dynamics</div>
+        <div class="name">Aggressive Pricing Disruption</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Talent & Leadership</div>
+        <div class="name">CEO Sudden Departure</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">AI Governance</div>
+        <div class="name">AI Competitive Disruption</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Brand & Reputation</div>
+        <div class="name">Reputational Crisis Containment</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Operational Excellence</div>
+        <div class="name">Supply Chain Dual-Source</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+      <div class="playbook-card">
+        <div class="domain">Market Opportunities</div>
+        <div class="name">New Market Entry Protocol</div>
+        <div class="status">PRE-STAGED</div>
+      </div>
+    </div>
+    <div class="authority-bar" id="auth-bar">
+      <div class="shield">🛡</div>
+      <div class="text">AI monitors. Executives decide. Execution pre-staged.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 6: COMPRESSION -->
+<div class="scene" id="scene6">
+  <div class="scene-header" id="s6h">The Execution Head Start</div>
+  <div class="compression-container">
+    <div class="versus">
+      <div class="versus-side" id="vo">
+        <div class="time old">30</div>
+        <div class="unit">Day Mobilization</div>
+        <div class="clarify">Just to figure out who's in the room</div>
+      </div>
+      <div class="versus-divider" id="va">→</div>
+      <div class="versus-side" id="vn">
+        <div class="time new">12</div>
+        <div class="unit">Minute Activation</div>
+        <div class="clarify">Tasks assigned. Roles notified. Acknowledged.</div>
+      </div>
+    </div>
+    <div class="compression-result" id="cr">
+      <div class="multiplier">3,600×</div>
+      <div class="label">Execution Head Start</div>
+      <div class="sublabel">Not a speed advantage. A structural advantage.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 7: LIFECYCLE -->
+<div class="scene" id="scene7">
+  <div class="scene-header" id="s7h">What Collapses From 30 Days to 12 Minutes</div>
+  <div class="lifecycle-container">
+    <div class="lifecycle-title" id="lt">The Six Execution Stages</div>
+    <div class="lifecycle-stages">
+      <div class="lifecycle-stage mobilization"><div class="num">1</div><div class="name">Triggered</div><div class="desc">Signal threshold crossed</div></div>
+      <div class="lifecycle-stage mobilization"><div class="num">2</div><div class="name">Staged</div><div class="desc">Tasks created, roles assigned</div></div>
+      <div class="lifecycle-stage mobilization"><div class="num">3</div><div class="name">Notified</div><div class="desc">Stakeholders alerted</div></div>
+      <div class="lifecycle-stage mobilization"><div class="num">4</div><div class="name">Acknowledged</div><div class="desc">Role-holders confirmed</div></div>
+      <div class="lifecycle-stage execution-proper"><div class="num">5</div><div class="name">In Progress</div><div class="desc">Work actively underway</div></div>
+      <div class="lifecycle-stage execution-proper"><div class="num">6</div><div class="name">Complete</div><div class="desc">Deliverable confirmed</div></div>
+    </div>
+    <div class="lifecycle-bracket" id="lb">
+      <div class="bracket-line">
+        <span class="bracket-label gold">Stages 1–4: The Mobilization Cycle</span>
+        <span class="bracket-time">← This is what collapses to 12 minutes</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCENE 8: CLOSE -->
+<div class="scene" id="scene8">
+  <div class="close-container">
+    <div class="close-logo" id="clogo">VaughnMartin</div>
+    <div class="close-product" id="cprod">Readiness OS</div>
+    <div class="close-tagline" id="ctag">We Make Enterprises Fearless.</div>
+    <div class="close-thesis" id="cthesis">
+      <span class="word">Preparation</span><span class="arrow">→</span>
+      <span class="word">Readiness</span><span class="arrow">→</span>
+      <span class="word" style="color:var(--gold);">Fearless</span>
+    </div>
+    <div class="close-cta" id="ccta">The Operating Model Layer Above Your Entire Tech Stack</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button onclick="startDemo()">▶ PLAY</button>
+  <button onclick="resetDemo()">↺ RESET</button>
+</div>
+
+<script>
+const scenes = ['scene1','scene2','scene3','scene4','scene5','scene6','scene7','scene8'];
+let running = false, timeouts = [];
+
+function clearAll() { timeouts.forEach(t => clearTimeout(t)); timeouts = []; }
+function wait(ms) { return new Promise(r => { const t = setTimeout(r, ms); timeouts.push(t); }); }
+function show(el, delay=0, dur=600) {
+  return new Promise(r => {
+    const t = setTimeout(() => {
+      if (typeof el === 'string') el = document.getElementById(el);
+      if (!el) { r(); return; }
+      el.style.transition = `opacity ${dur}ms ease, transform ${dur}ms ease`;
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0) scale(1)';
+      r();
+    }, delay);
+    timeouts.push(t);
+  });
+}
+
+function goScene(idx) {
+  scenes.forEach((s,i) => document.getElementById(s).classList.toggle('active', i === idx));
+  document.getElementById('progress').style.width = ((idx+1)/scenes.length*100)+'%';
+}
+
+async function s1() {
+  goScene(0);
+  await wait(400);
+  await show('h1'); await wait(800);
+  await show('h2'); await wait(800);
+  await show('h3'); await wait(1000);
+  await show('h4'); await wait(800);
+  await show('h5');
+  await wait(2500);
+}
+
+async function s2() {
+  goScene(1);
+  await show('s2h', 200);
+  await show('pt', 400);
+  const items = document.querySelectorAll('.chaos-item');
+  for (const item of items) { await show(item, 300); await wait(400); }
+  await show('cl', 400);
+  await wait(2500);
+}
+
+async function s3() {
+  goScene(2);
+  await show('s3h', 200);
+  await show('t1', 500); await wait(800);
+  await show('ta1', 0); await wait(400);
+  await show('t2', 0); await wait(800);
+  await show('ta2', 0); await wait(400);
+  await show('t3', 0);
+  await wait(3000);
+}
+
+async function s4() {
+  goScene(3);
+  await show('s4h', 200);
+  await show('hub', 400);
+  const counter = document.getElementById('dc');
+  let c = 0;
+  const ci = setInterval(() => { c += 3; if (c > 248) { c = 248; clearInterval(ci); } counter.textContent = c; }, 20);
+  timeouts.push(ci);
+  const nodes = document.querySelectorAll('.signal-node');
+  for (const n of nodes) { await wait(300); n.style.transition = 'opacity 0.4s ease, transform 0.4s ease'; n.style.opacity = '1'; n.style.transform = 'scale(1)'; }
+  await wait(600);
+  [0,2,5,7].forEach(async (i,idx) => { await wait(idx*300); nodes[i].classList.add('firing'); });
+  await wait(800);
+  await show('dstrip');
+  await wait(2500);
+}
+
+async function s5() {
+  goScene(4);
+  await show('s5h', 200);
+  await show('ps', 400);
+  const cards = document.querySelectorAll('.playbook-card');
+  for (const c of cards) { await show(c, 150); await wait(180); }
+  await wait(500);
+  for (const idx of [0,3,5,8]) { await wait(300); cards[idx].classList.add('activated'); cards[idx].querySelector('.status').textContent = '● ACTIVATED'; }
+  await wait(600);
+  await show('auth-bar');
+  await wait(2500);
+}
+
+async function s6() {
+  goScene(5);
+  await show('s6h', 200);
+  await show('vo', 600); await wait(800);
+  await show('va'); await wait(400);
+  await show('vn'); await wait(1200);
+  await show('cr');
+  await wait(3000);
+}
+
+async function s7() {
+  goScene(6);
+  await show('s7h', 200);
+  await show('lt', 400);
+  const stages = document.querySelectorAll('.lifecycle-stage');
+  for (const s of stages) { await show(s, 250); await wait(300); }
+  await wait(600);
+  await show('lb');
+  await wait(3000);
+}
+
+async function s8() {
+  goScene(7);
+  await show('clogo', 400); await wait(600);
+  await show('cprod'); await wait(600);
+  await show('ctag'); await wait(600);
+  await show('cthesis'); await wait(400);
+  await show('ccta');
+}
+
+async function startDemo() {
+  if (running) return;
+  running = true;
+  resetVisuals();
+  await s1(); await s2(); await s3(); await s4(); await s5(); await s6(); await s7(); await s8();
+  running = false;
+}
+
+function resetVisuals() {
+  document.querySelectorAll('.line,.chaos-item,.signal-node,.playbook-card,.playbook-stat,.problem-title,.cost-label,.scene-header,.versus-side,.versus-divider,.compression-result,.close-logo,.close-product,.close-tagline,.close-thesis,.close-cta,.thesis-step,.thesis-arrow,.domain-strip,.authority-bar,.lifecycle-title,.lifecycle-stage,.lifecycle-bracket').forEach(el => {
+    el.style.opacity = '0'; el.style.transform = '';
+  });
+  document.querySelectorAll('.signal-node').forEach(n => { n.classList.remove('firing'); n.style.transform = 'scale(0)'; });
+  document.querySelectorAll('.playbook-card').forEach(c => {
+    c.classList.remove('activated'); c.style.transform = 'translateY(20px)';
+    const s = c.querySelector('.status'); if (s) s.textContent = 'PRE-STAGED';
+  });
+  document.querySelectorAll('.lifecycle-stage').forEach(s => { s.style.transform = 'translateY(20px)'; });
+  document.querySelectorAll('.thesis-step').forEach(s => { s.style.transform = 'translateY(30px)'; });
+  document.getElementById('dc').textContent = '0';
+  document.getElementById('hub').style.opacity = '0';
+}
+
+function resetDemo() { clearAll(); running = false; resetVisuals(); goScene(0); }
+</script>
+</body>
+</html>
