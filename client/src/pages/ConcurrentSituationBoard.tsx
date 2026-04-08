@@ -289,8 +289,16 @@ export default function ConcurrentSituationBoard() {
 
             {/* ─── Situation Cards ─── */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>Active Situations — Sorted by Financial Exposure</div>
-              {[...situations].sort((a, b) => b.exposureValue - a.exposureValue).map((sit, idx) => {
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>
+                {priorityOverride ? 'Active Situations — Priority #1 First, then by Financial Exposure' : 'Active Situations — Sorted by Financial Exposure'}
+              </div>
+              {[...situations].sort((a, b) => {
+                if (priorityOverride) {
+                  if (a.id === priorityOverride) return -1;
+                  if (b.id === priorityOverride) return 1;
+                }
+                return b.exposureValue - a.exposureValue;
+              }).map((sit, idx) => {
                 const isPriority = priorityOverride === sit.id || (!priorityOverride && idx === 0);
                 const sc = severityColor(sit.severity);
                 const hasConflict = sit.conflictsWith.length > 0;
@@ -350,7 +358,7 @@ export default function ConcurrentSituationBoard() {
                             Set Priority #1
                           </Button>
                         )}
-                        <Link href={`/playbook-activation/${sit.id}/playbook`}>
+                        <Link href="/execute/war-room">
                           <Button size="sm" style={{ background: NAVY, color: '#fff', border: 'none', borderRadius: 0, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                             War Room <ArrowRight style={{ width: 12, height: 12, marginLeft: 4 }} />
                           </Button>
