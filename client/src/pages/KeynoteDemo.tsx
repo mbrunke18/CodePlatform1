@@ -201,16 +201,16 @@ export default function KeynoteDemo() {
           className="grid grid-cols-3 gap-12 mt-12 max-w-5xl"
         >
           <div className="text-center">
-            <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={72} suffix="+" /></div>
-            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Hours for critical signals</div>
+            <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={30} /></div>
+            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Days to mobilize a response</div>
           </div>
           <div className="text-center">
-            <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={67} suffix="%" /></div>
-            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Execution Failure Rate</div>
+            <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={83} suffix="%" /></div>
+            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Strategic initiatives fail</div>
           </div>
           <div className="text-center">
-            <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={23} suffix="%" /></div>
-            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Executive Time Wasted</div>
+            <div className="text-6xl font-bold text-[#C9A84C] mb-3" style={CG}><CountUp end={847} prefix="$" suffix="B" /></div>
+            <div className="text-sm font-bold text-[#6B7280] uppercase tracking-widest">Spent annually — mostly mobilizing</div>
           </div>
         </motion.div>
         <motion.p
@@ -244,7 +244,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-2xl text-[#0A0F2E] mb-16 max-w-3xl font-medium"
         >
-          Annual cost of failed strategic execution across Fortune 1000 companies
+          Annual cost of strategic unreadiness across Fortune 1000 companies
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -253,7 +253,7 @@ export default function KeynoteDemo() {
           className="grid grid-cols-4 gap-8 max-w-6xl"
         >
           {[
-            { icon: Clock, value: '3-5 days', label: 'Response time to threats', color: 'text-[#0A0F2E]', bg: 'bg-white' },
+            { icon: Clock, value: '30 days', label: 'Mobilization time — before response even begins', color: 'text-[#0A0F2E]', bg: 'bg-white' },
             { icon: Users, value: '30+', label: 'Stakeholders per event', color: 'text-[#0A0F2E]', bg: 'bg-white' },
             { icon: FileText, value: '47', label: 'Documents manually created', color: 'text-[#C9A84C]', bg: 'bg-white' },
             { icon: DollarSign, value: '$2.4M', label: 'Daily delay cost', color: 'text-[#2B8A6E]', bg: 'bg-white' },
@@ -855,8 +855,8 @@ export default function KeynoteDemo() {
               </h3>
               <div className="space-y-4">
                 {[
-                  { metric: 'Response Time', value: '72+ hours', detail: 'Signals buried in email chains' },
-                  { metric: 'Stakeholder Alignment', value: '3-5 days', detail: 'Manual coordination via meetings' },
+                  { metric: 'Time to Mobilize', value: '30 days', detail: 'Figuring out who needs to be in the room' },
+                  { metric: 'Stakeholder Alignment', value: '1-2 weeks', detail: 'Manual coordination via meetings' },
                   { metric: 'Document Preparation', value: '2 weeks', detail: 'Created from scratch each time' },
                   { metric: 'Budget Approval', value: '5-10 days', detail: 'Multi-layer approval process' },
                   { metric: 'Full Execution', value: '30-90 days', detail: 'If it happens at all' },

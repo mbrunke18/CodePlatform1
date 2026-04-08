@@ -93,7 +93,7 @@ export default function InvestorLanding() {
             </h1>
             
             <p className="text-2xl md:text-3xl text-[#C9A84C] font-semibold mb-6" data-testid="text-tagline">
-              The Agentic Execution Layer for Fortune 1000
+              The response is ready before the trigger fires.
             </p>
             
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-4xl mx-auto" data-testid="text-description">
@@ -176,8 +176,8 @@ export default function InvestorLanding() {
                     </div>
                     <span className="text-xs font-semibold text-[#0A0F2E] uppercase tracking-wider">Problem 1</span>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Execution Gap</h3>
-                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">Weeks to mobilize — before execution even begins</p>
+                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Readiness Gap</h3>
+                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">Weeks to mobilize — before the response even begins</p>
                   <p className="text-xs text-[#0A0F2E] font-medium">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
                 </div>
                 <div className="border-t border-[#E8E4DC] pt-4">
@@ -254,7 +254,7 @@ export default function InvestorLanding() {
           </div>
         </section>
 
-        {/* Agentic Execution Layer */}
+        {/* Operating Model Layer */}
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -263,10 +263,10 @@ export default function InvestorLanding() {
                 Architectural Thesis
               </Badge>
               <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
-                The Agentic Execution Layer
+                The Operating Model Layer
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto">
-                Agents don't just generate answers — they coordinate enterprises. Readiness OS is the missing orchestration layer between strategy and operational systems.
+                Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the coordination infrastructure that sits between strategy and execution — and activates in 12 minutes.
               </p>
             </div>
 
@@ -277,7 +277,7 @@ export default function InvestorLanding() {
               </div>
               <div className="text-center text-[#6B7280]">→</div>
               <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#2B8A6E]/20 border-2 border-[#C9A84C]/50 rounded-xl p-4 text-center">
-                <div className="text-xs text-[#C9A84C] font-semibold mb-1">Agentic Execution Layer</div>
+                <div className="text-xs text-[#C9A84C] font-semibold mb-1">Readiness Infrastructure Layer</div>
                 <div className="text-sm font-bold text-[#0A0F2E]">Readiness OS</div>
               </div>
               <div className="text-center text-[#6B7280]">→</div>

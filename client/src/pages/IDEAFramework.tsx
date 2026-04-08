@@ -489,7 +489,7 @@ export default function IDEAFramework() {
               AI accelerates. Humans decide.
             </h2>
             <p className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-              The IDEA Framework is not workflow automation. It is an agentic execution layer — AI agents coordinate the enterprise response in real time, and executives make every strategic call.
+              The IDEA Framework is not workflow automation. It is a readiness coordination layer — AI agents prepare and stage the enterprise response before the trigger fires, and executives make every strategic call.
             </p>
             {/* Live IDEA Phase Confidence Scores */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">

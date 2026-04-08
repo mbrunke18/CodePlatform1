@@ -162,7 +162,7 @@ export default function PlaybookManagement() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
-                Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Execution Playbooks</em>
+                Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Readiness Playbooks</em>
               </h1>
               <p className="text-white/60 mt-1 max-w-2xl">
                 Create, customize, and manage your organization's strategic playbooks

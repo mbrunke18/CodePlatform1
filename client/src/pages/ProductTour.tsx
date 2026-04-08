@@ -46,7 +46,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'Readiness OS',
     subtitle: 'Strategic Readiness Platform',
-    narration: 'Welcome to Readiness OS — the operating system that transforms how Fortune 1000 companies execute strategy.',
+    narration: 'Welcome to Readiness OS — the coordination infrastructure that prepares Fortune 1000 companies for any strategic situation they\'ll face.',
     visual: 'solution'
   },
   {
@@ -54,8 +54,8 @@ const TOUR_SCENES: Scene[] = [
     type: 'cinematic',
     duration: 7000,
     title: 'The Problem',
-    subtitle: 'Strategic execution is broken',
-    narration: 'Today, critical market signals take 72+ hours to reach decision-makers. Competitive threats go undetected until revenue is lost.',
+    subtitle: 'Strategic readiness is missing',
+    narration: 'Today, enterprises spend 30 days just mobilizing before the response even begins. Competitive threats go undetected until revenue is already lost.',
     visual: 'problem'
   },
   {
@@ -270,8 +270,8 @@ export default function ProductTour() {
           <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
             <Clock className="w-12 h-12 text-[#C9A84C]" />
           </div>
-          <p className="text-2xl font-bold text-[#0A0F2E]">72+ Hours</p>
-          <p className="text-[#0A0F2E] font-medium">Signal to Decision</p>
+          <p className="text-2xl font-bold text-[#0A0F2E]">30 Days</p>
+          <p className="text-[#0A0F2E] font-medium">To Mobilize a Response</p>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

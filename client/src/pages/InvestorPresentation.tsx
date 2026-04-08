@@ -640,10 +640,10 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">Platform Vision</p>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4 text-center">
-          The Agentic Execution Layer
+          The Operating Model Layer
         </h2>
         <p className="text-lg text-[#0A0F2E] max-w-3xl text-center mb-10">
-          AI agents are getting faster. Human coordination isn't. We sit in the middle.
+          Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the coordination infrastructure that sits between strategy and action.
         </p>
         <div className="grid grid-cols-3 gap-6 max-w-4xl w-full mb-10">
           <div className="text-center p-6 bg-white border border-[#0A0F2E]/30 rounded-xl">
@@ -654,7 +654,7 @@ function InvestorPresentation() {
           <div className="text-center p-6 bg-[#0A0F2E]/40 border border-[#2B8A6E]/40 rounded-xl">
             <Layers className="w-8 h-8 text-[#2B8A6E] mx-auto mb-3" />
             <div className="text-[#2B8A6E] font-bold mb-1">Readiness OS</div>
-            <div className="text-[#0A0F2E] text-sm">Activate playbooks, coordinate roles, track execution</div>
+            <div className="text-[#0A0F2E] text-sm">Pre-stage responses before the trigger fires. Activate in 12 minutes.</div>
           </div>
           <div className="text-center p-6 bg-white border border-[#C9A84C]/30 rounded-xl">
             <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-3" />
@@ -677,7 +677,7 @@ function InvestorPresentation() {
         </div>
         <div className="bg-gradient-to-r rounded-xl p-5 border border-[#2B8A6E]/20 max-w-4xl w-full text-center">
           <p className="text-[#0A0F2E] text-sm italic">
-            "Execution infrastructure for humans" → <span className="text-[#2B8A6E] font-semibold not-italic">Execution infrastructure for the agentic enterprise</span>
+            "Readiness infrastructure for humans" → <span className="text-[#2B8A6E] font-semibold not-italic">The operating model for the AI-era enterprise</span>
           </p>
           <p className="text-[#6B7280] text-xs mt-2">New category. No direct competitor.</p>
         </div>

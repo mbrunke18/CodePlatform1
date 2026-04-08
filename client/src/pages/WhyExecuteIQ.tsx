@@ -214,7 +214,7 @@ export default function WhyExecutionOS() {
       </section>
 
 
-      {/* Section: The Agentic Execution Layer */}
+      {/* Section: The Readiness Coordination Layer */}
       <section style={{ background: "#0A0F2E", padding: "80px 48px" }}>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -226,7 +226,7 @@ export default function WhyExecutionOS() {
               Agentic Readiness Infrastructure
             </h2>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              Readiness OS isn't another tool in the stack. It's the agentic execution layer — where AI agents coordinate enterprise-wide response in real time.
+              Readiness OS isn't another tool in the stack. It's the readiness coordination layer — where AI prepares and stages the enterprise response before the trigger fires, and executives authorize every action.
             </p>
           </div>
 

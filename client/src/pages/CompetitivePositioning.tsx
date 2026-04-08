@@ -260,7 +260,7 @@ export default function CompetitivePositioning() {
                     ))}
                   </div>
                   <div style={{ marginTop: 8, padding: "12px 16px", background: "#FEF2F2", border: "1px solid #FCA5A5" }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "#DC2626" }}>72+ hours of coordination lag = $60K–$2M in lost value</span>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#DC2626" }}>30 days of mobilization lag = $136K/hour delayed in lost value (IBM)</span>
                   </div>
                 </div>
 
