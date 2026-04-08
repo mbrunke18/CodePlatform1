@@ -11,7 +11,7 @@ export default function ApprovalSuccess() {
   const executionId = params.get('execution');
 
   useEffect(() => {
-    document.title = 'Approval Successful — Execution OS by VaughnMartin';
+    document.title = 'Approval Successful — Command OS by VaughnMartin';
   }, []);
 
   return (

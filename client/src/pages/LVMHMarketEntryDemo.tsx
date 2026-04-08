@@ -123,7 +123,7 @@ export default function LVMHMarketEntryDemo() {
                       This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
                       a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 
                       Givenchy, Celine, Loewe, Loro Piana, Rimowa, Berluti, Kenzo) across 15 cities traditionally takes 
-                      <strong> 6-9 months</strong>. Execution OS compresses coordination to <strong>12 minutes</strong>, enabling 
+                      <strong> 6-9 months</strong>. Command OS compresses coordination to <strong>12 minutes</strong>, enabling 
                       simultaneous launch during Golden Week while competitors are still planning.
                     </p>
                   </div>
@@ -158,7 +158,7 @@ export default function LVMHMarketEntryDemo() {
                   <Play className="w-5 h-5 mr-2" />
                   Begin Opportunity Simulation
                 </Button>
-                <p className="text-sm text-white/40 mt-3">Experience how Execution OS enables strategic velocity</p>
+                <p className="text-sm text-white/40 mt-3">Experience how Command OS enables strategic velocity</p>
               </div>
             </Card>
           </div>
@@ -223,7 +223,7 @@ export default function LVMHMarketEntryDemo() {
                 Act 3: 12-Minute Coordinated Execution
               </h2>
               <p className="text-lg text-white/80 mb-6">
-                Execution OS coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
+                Command OS coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
                 28 executives, 347 operational specialists, and 892 external partners—enabling simultaneous 10-brand launch.
               </p>
 
@@ -313,7 +313,7 @@ export default function LVMHMarketEntryDemo() {
             />
 
             <div className="bg-white/5 p-8 rounded-lg border-2 border-[#DFC178] mb-8">
-              <h3 className="text-xl font-bold mb-4 text-white text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Execution OS Difference</h3>
+              <h3 className="text-xl font-bold mb-4 text-white text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Command OS Difference</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-semibold text-[#C9A84C] mb-3 flex items-center gap-2">
@@ -331,7 +331,7 @@ export default function LVMHMarketEntryDemo() {
                 <div>
                   <h4 className="font-semibold text-[#2B8A6E] mb-3 flex items-center gap-2">
                     <span className="w-2 h-2 bg-[#2B8A6E] rounded-full" />
-                    Execution OS Coordinated Move
+                    Command OS Coordinated Move
                   </h4>
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• 12-minute alignment across 1,267 stakeholders</li>

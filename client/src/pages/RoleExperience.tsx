@@ -91,7 +91,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'IT systems access provisioning initiated', tool: 'Okta + ServiceNow', status: 'Complete', time: '3:00' },
       { task: 'Regulatory compliance checklist activated', tool: 'ServiceNow', status: 'Complete', time: '4:00' },
       { task: 'Media holding statement distributed', tool: 'Email + PR Wire', status: 'Complete', time: '5:00' },
-      { task: '45 stakeholders coordinated, war room live', tool: 'Execution OS', status: 'Complete', time: '11:47' },
+      { task: '45 stakeholders coordinated, war room live', tool: 'Command OS', status: 'Complete', time: '11:47' },
     ],
     outcomes: [
       { metric: 'Time to Full Coordination', before: '3-5 days', after: '11 minutes 47 seconds' },
@@ -147,7 +147,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Backup integrity verified', tool: 'AWS S3 + Veeam', status: 'Complete', time: '3:30' },
       { task: 'Legal review of notification requirements', tool: 'Microsoft Teams', status: 'Complete', time: '4:00' },
       { task: 'Customer communication drafted', tool: 'Google Workspace', status: 'Complete', time: '6:00' },
-      { task: '30 stakeholders coordinated, recovery initiated', tool: 'Execution OS', status: 'Complete', time: '11:47' },
+      { task: '30 stakeholders coordinated, recovery initiated', tool: 'Command OS', status: 'Complete', time: '11:47' },
     ],
     outcomes: [
       { metric: 'Time to Containment', before: '8+ hours', after: '45 seconds' },
@@ -203,7 +203,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Analyst briefing scheduled', tool: 'Microsoft Teams', status: 'Complete', time: '4:00' },
       { task: 'Product roadmap acceleration memo drafted', tool: 'Jira + Confluence', status: 'Complete', time: '5:00' },
       { task: 'Pricing response proposal submitted for approval', tool: 'Google Workspace', status: 'Complete', time: '7:00' },
-      { task: '28 stakeholders aligned, counter-strategy live', tool: 'Execution OS', status: 'Complete', time: '11:22' },
+      { task: '28 stakeholders aligned, counter-strategy live', tool: 'Command OS', status: 'Complete', time: '11:22' },
     ],
     outcomes: [
       { metric: 'Time to Market Response', before: '21 days', after: '3 days' },
@@ -259,7 +259,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'ESG reporting template configured', tool: 'Workday + SAP', status: 'Complete', time: '4:30' },
       { task: 'Investor relations FAQ prepared', tool: 'Google Workspace', status: 'Complete', time: '6:00' },
       { task: 'Cross-functional compliance team assembled', tool: 'Slack', status: 'Complete', time: '8:00' },
-      { task: '22 stakeholders coordinated, compliance program live', tool: 'Execution OS', status: 'Complete', time: '10:34' },
+      { task: '22 stakeholders coordinated, compliance program live', tool: 'Command OS', status: 'Complete', time: '10:34' },
     ],
     outcomes: [
       { metric: 'Time to Compliance Program Launch', before: '5 weeks', after: '10 minutes 34 seconds' },
@@ -315,7 +315,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Tier 1 account managers notified with talking points', tool: 'Salesforce + Slack', status: 'Complete', time: '3:00' },
       { task: 'Manual workarounds deployed for 6 non-DR services', tool: 'Jira + Confluence', status: 'Complete', time: '5:00' },
       { task: 'SLA credit tracking initiated', tool: 'ServiceNow', status: 'Complete', time: '7:00' },
-      { task: '24 stakeholders coordinated, response fully active', tool: 'Execution OS', status: 'Complete', time: '11:12' },
+      { task: '24 stakeholders coordinated, response fully active', tool: 'Command OS', status: 'Complete', time: '11:12' },
     ],
     outcomes: [
       { metric: 'Time to Failover', before: '2-4 hours', after: '45 seconds' },
@@ -371,7 +371,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Training program enrollment opened', tool: 'Workday Learning', status: 'Complete', time: '5:00' },
       { task: 'Infrastructure provisioning requests submitted', tool: 'AWS + Terraform', status: 'Complete', time: '6:00' },
       { task: 'Recruiting pipeline activated for AI roles', tool: 'Workday + LinkedIn', status: 'Complete', time: '8:00' },
-      { task: '35 stakeholders coordinated, program fully launched', tool: 'Execution OS', status: 'Complete', time: '11:33' },
+      { task: '35 stakeholders coordinated, program fully launched', tool: 'Command OS', status: 'Complete', time: '11:33' },
     ],
     outcomes: [
       { metric: 'Time to Program Launch', before: '3-4 months', after: '11 minutes 33 seconds' },
@@ -427,7 +427,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Integration buddy program initiated', tool: 'Slack', status: 'Complete', time: '3:30' },
       { task: 'Culture alignment workshops scheduled', tool: 'Microsoft Teams', status: 'Complete', time: '5:00' },
       { task: 'Updated career path framework published', tool: 'Workday', status: 'Complete', time: '7:00' },
-      { task: '32 stakeholders coordinated, integration program live', tool: 'Execution OS', status: 'Complete', time: '10:48' },
+      { task: '32 stakeholders coordinated, integration program live', tool: 'Command OS', status: 'Complete', time: '10:48' },
     ],
     outcomes: [
       { metric: 'Time to Culture Intervention', before: '6 weeks', after: '24 hours' },
@@ -483,7 +483,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Privacy compliance audit triggered', tool: 'ServiceNow', status: 'Complete', time: '5:00' },
       { task: 'Phase 1 Sales + Marketing integration started', tool: 'Jira', status: 'Complete', time: '6:30' },
       { task: 'Executive dashboard with data quality metrics configured', tool: 'Snowflake + Collibra', status: 'Complete', time: '8:00' },
-      { task: '28 stakeholders coordinated, Customer 360 program live', tool: 'Execution OS', status: 'Complete', time: '11:15' },
+      { task: '28 stakeholders coordinated, Customer 360 program live', tool: 'Command OS', status: 'Complete', time: '11:15' },
     ],
     outcomes: [
       { metric: 'Time to Program Launch', before: '2 months', after: '11 minutes 15 seconds' },
@@ -539,7 +539,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Board legal brief drafted', tool: 'Google Workspace', status: 'Complete', time: '5:00' },
       { task: 'Cross-functional compliance committee formed', tool: 'Microsoft Teams', status: 'Complete', time: '6:30' },
       { task: 'Training program for AI product teams launched', tool: 'Workday Learning', status: 'Complete', time: '8:00' },
-      { task: '26 stakeholders coordinated, compliance program live', tool: 'Execution OS', status: 'Complete', time: '10:22' },
+      { task: '26 stakeholders coordinated, compliance program live', tool: 'Command OS', status: 'Complete', time: '10:22' },
     ],
     outcomes: [
       { metric: 'Time to Compliance Launch', before: '6 weeks', after: '10 minutes 22 seconds' },
@@ -595,7 +595,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Cybersecurity documentation package assembled', tool: 'ServiceNow', status: 'Complete', time: '4:30' },
       { task: 'Examination room prepared with secure document access', tool: 'Microsoft Teams', status: 'Complete', time: '6:00' },
       { task: 'Mock examination walkthrough completed', tool: 'Zoom', status: 'Complete', time: '8:00' },
-      { task: '20 stakeholders coordinated, audit-ready in 47 hours', tool: 'Execution OS', status: 'Complete', time: '10:15' },
+      { task: '20 stakeholders coordinated, audit-ready in 47 hours', tool: 'Command OS', status: 'Complete', time: '10:15' },
     ],
     outcomes: [
       { metric: 'Time to Audit Readiness', before: '10+ days', after: '47 hours (within 48-hour deadline)' },
@@ -653,7 +653,7 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Technology infrastructure requirements scoped for APAC', tool: 'AWS + Jira', status: 'Complete', time: '5:30' },
       { task: 'Customer pipeline development started with 22 target accounts', tool: 'Salesforce', status: 'Complete', time: '7:00' },
       { task: 'Board presentation with recommendation prepared', tool: 'Google Workspace', status: 'Complete', time: '9:00' },
-      { task: '38 stakeholders coordinated, APAC entry program live', tool: 'Execution OS', status: 'Complete', time: '11:45' },
+      { task: '38 stakeholders coordinated, APAC entry program live', tool: 'Command OS', status: 'Complete', time: '11:45' },
     ],
     outcomes: [
       { metric: 'Time to Market Entry Launch', before: '3 months', after: '11 minutes 45 seconds' },
@@ -709,11 +709,11 @@ const ROLES: Record<string, RoleData> = {
       { task: 'Competitive displacement analysis generated', tool: 'Gong + Crayon', status: 'Complete', time: '4:30' },
       { task: 'Executive business review scheduled with full C-suite attendance', tool: 'Microsoft Teams', status: 'Complete', time: '6:00' },
       { task: 'Customer success plan updated with weekly touchpoints', tool: 'Gainsight', status: 'Complete', time: '7:30' },
-      { task: '22 stakeholders coordinated, retention campaign live', tool: 'Execution OS', status: 'Complete', time: '10:55' },
+      { task: '22 stakeholders coordinated, retention campaign live', tool: 'Command OS', status: 'Complete', time: '10:55' },
     ],
     outcomes: [
       { metric: 'Time to Intervention', before: '2-3 weeks', after: '10 minutes 55 seconds' },
-      { metric: 'Customer Save Rate', before: '62%', after: '94% with Execution OS intervention' },
+      { metric: 'Customer Save Rate', before: '62%', after: '94% with Command OS intervention' },
       { metric: 'Revenue Protected', before: '$4.2M at risk', after: '$4.2M retained + $800K expansion identified' },
       { metric: 'Cascade Impact', before: '3 industry accounts stabilized', after: 'Same messaging deployed' },
     ],
@@ -1000,7 +1000,7 @@ export default function RoleExperience() {
                   </div>
                   <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.15)', textAlign: 'center' }}>→</div>
                   <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 8 }}>
-                    <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Execution OS</p>
+                    <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Command OS</p>
                     <p style={{ fontSize: 22, fontWeight: 800, color: '#4ade80', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
                     <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>full execution underway</p>
                   </div>
@@ -1562,7 +1562,7 @@ export default function RoleExperience() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
               className="text-center text-sm text-gray-800 mt-6"
             >
-              No playbook activates without executive sign-off. Execution OS pre-stages the preparation — the decision remains human.
+              No playbook activates without executive sign-off. Command OS pre-stages the preparation — the decision remains human.
             </motion.p>
           </div>
         );
@@ -1677,7 +1677,7 @@ export default function RoleExperience() {
               <div className="p-6 space-y-4">
                 {[
                   { name: role.stakeholders[0]?.name || 'Team Lead', role: role.stakeholders[0]?.role || 'Director', msg: `Team is assembled. All ${userPlaybook.tasks + customTasks.length} tasks distributed and acknowledged. Execution is on track.`, time: '2 min ago', color: 'border-[#2B8A6E]/30' },
-                  { name: 'Execution OS AI', role: 'AI Assistant', msg: `Status update: ${Math.floor(userPlaybook.stakeholders * 0.8)} of ${userPlaybook.stakeholders} stakeholders have acknowledged. ${allExecutionTasks.length} tasks in progress. No blockers detected. Estimated completion: under 12 minutes.`, time: '1 min ago', color: 'border-[#C9A84C]/30' },
+                  { name: 'Command OS AI', role: 'AI Assistant', msg: `Status update: ${Math.floor(userPlaybook.stakeholders * 0.8)} of ${userPlaybook.stakeholders} stakeholders have acknowledged. ${allExecutionTasks.length} tasks in progress. No blockers detected. Estimated completion: under 12 minutes.`, time: '1 min ago', color: 'border-[#C9A84C]/30' },
                   { name: role.stakeholders[1]?.name || 'Executive', role: role.stakeholders[1]?.role || 'VP', msg: `Confirmed all systems are operational on our end. ${userPlaybook.budget} budget allocation is active and tracking. Ready to support any escalations.`, time: '30 sec ago', color: 'border-[#0A0F2E]/30' },
                 ].map((msg, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.3 }}
@@ -1704,7 +1704,7 @@ export default function RoleExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E] rounded-none font-bold uppercase tracking-widest"><Award className="h-3 w-3 mr-1" /> RESULTS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Mission Complete</h2>
-              <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s results using Execution OS vs. traditional approach</p>
+              <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s results using Command OS vs. traditional approach</p>
             </div>
             <div className="space-y-4 mb-8">
               {role.outcomes.map((outcome, i) => (
@@ -1714,11 +1714,11 @@ export default function RoleExperience() {
                   <div className="grid grid-cols-3 gap-4 items-center">
                     <div className="text-[#0A0F2E] font-semibold">{outcome.metric}</div>
                     <div className="text-center">
-                      <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-1 opacity-70">Without Execution OS</div>
+                      <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-1 opacity-70">Without Command OS</div>
                       <div className="text-lg font-bold text-red-400">{outcome.before}</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-xs text-[#2B8A6E] uppercase tracking-wider mb-1 opacity-70">With Execution OS</div>
+                      <div className="text-xs text-[#2B8A6E] uppercase tracking-wider mb-1 opacity-70">With Command OS</div>
                       <div className="text-lg font-bold text-[#2B8A6E]">{outcome.after}</div>
                     </div>
                   </div>

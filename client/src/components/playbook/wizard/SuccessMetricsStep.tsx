@@ -55,7 +55,7 @@ export default function SuccessMetricsStep({ data, onChange }: SuccessMetricsSte
               data-testid="input-response-speed"
             />
             <p className="text-xs text-muted-foreground">
-              Execution OS standard: 12 minutes to live execution — roles assigned, tasks staged, teams moving
+              Command OS standard: 12 minutes to live execution — roles assigned, tasks staged, teams moving
             </p>
           </div>
 

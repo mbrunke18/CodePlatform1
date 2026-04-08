@@ -85,7 +85,7 @@ export default function SLAPage() {
           <CardContent>
             <p className="text-muted-foreground mb-4">
               The traditional enterprise spends weeks just getting the right people in the room.
-              Execution OS delivers a fully deployed organization — roles assigned, tasks staged,
+              Command OS delivers a fully deployed organization — roles assigned, tasks staged,
               communications sent — in 12 minutes. Execution is already underway while competitors
               are still scheduling their kickoff call.
             </p>

@@ -82,7 +82,7 @@ const differentiators = [
     stat: "$2M",
     unit: "Per Event",
     label: "Value at Stake",
-    description: "The average Fortune 1000 company loses $60K–$2M in coordination lag per major strategic event. Execution OS eliminates that gap entirely.",
+    description: "The average Fortune 1000 company loses $60K–$2M in coordination lag per major strategic event. Command OS eliminates that gap entirely.",
     color: GOLD,
   },
 ];
@@ -97,8 +97,8 @@ const categoryComparison = [
     textColor: MUTED,
   },
   {
-    category: "Strategic Execution OS",
-    vendors: "Execution OS (Category of One)",
+    category: "Strategic Execution Platform",
+    vendors: "Command OS (Category of One)",
     does: "Detects strategic triggers, fires the right playbook, creates projects, assigns tasks by role, allocates budget, mobilizes stakeholders — all within 12 minutes",
     doesNot: "The only platform that bridges signal detection to coordinated organizational execution",
     color: NAVY,
@@ -119,7 +119,7 @@ const useCases = [
   {
     trigger: "Competitor launches new product",
     without: "Weeks just to assemble the right team and align stakeholders — execution hasn't started",
-    with: "Execution OS detects the launch, fires the Competitive Response playbook, creates 24 tasks across Product, Marketing, Sales, and Legal within 12 minutes",
+    with: "Command OS detects the launch, fires the Competitive Response playbook, creates 24 tasks across Product, Marketing, Sales, and Legal within 12 minutes",
     icon: Target,
   },
   {
@@ -147,10 +147,10 @@ export default function CompetitivePositioning() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Competitive Positioning - Execution OS | Strategic Execution OS",
-      description: "See how Execution OS creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
-      ogTitle: "Execution OS vs. Crisis Tools vs. PM Tools | Category of One",
-      ogDescription: "Execution OS isn't competing with Everbridge or Jira. Execution OS owns the strategic execution layer between them.",
+      title: "Competitive Positioning - Command OS | Strategic Execution Platform",
+      description: "See how Command OS creates a new category between crisis notification tools (Everbridge, OnSolve) and project management (Jira, Asana). The execution layer Fortune 1000 companies need.",
+      ogTitle: "Command OS vs. Crisis Tools vs. PM Tools | Category of One",
+      ogDescription: "Command OS isn't competing with Everbridge or Jira. Command OS owns the strategic execution layer between them.",
     });
   }, []);
 
@@ -172,7 +172,7 @@ export default function CompetitivePositioning() {
               <em style={{ fontStyle: "italic", color: "#DFC178" }}>Category of One</em>
             </h1>
             <p style={{ fontSize: 20, color: "rgba(255,255,255,0.7)", maxWidth: 680, margin: "0 auto 12px" }}>
-              Crisis tools notify. PM tools track. Execution OS executes.
+              Crisis tools notify. PM tools track. Command OS executes.
             </p>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto 40px" }}>
               We're not competing with Everbridge or Jira — we own the{" "}
@@ -191,7 +191,7 @@ export default function CompetitivePositioning() {
                 <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", padding: "3px 12px", textTransform: "uppercase" }}>Category of One</div>
                 <Zap className="w-5 h-5 mb-3" style={{ color: GOLD }} />
                 <div style={{ fontWeight: 700, color: "#fff", fontSize: 15, marginBottom: 4 }}>Strategic Execution</div>
-                <div style={{ fontSize: 10, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Execution OS</div>
+                <div style={{ fontSize: 10, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Command OS</div>
               </div>
               <div style={{ flex: 1, minWidth: 180, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "20px 24px", borderLeft: "none" }}>
                 <Settings className="w-5 h-5 mb-3" style={{ color: "rgba(255,255,255,0.3)" }} />
@@ -226,7 +226,7 @@ export default function CompetitivePositioning() {
               </h2>
               <p style={{ fontSize: 18, color: MUTED, maxWidth: 600, margin: "0 auto" }}>
                 When a strategic event hits, organizations spend 20–50 hours getting organized. 
-                That's $60K–$2M in lost value per major event. Execution OS eliminates that gap entirely.
+                That's $60K–$2M in lost value per major event. Command OS eliminates that gap entirely.
               </p>
             </div>
 
@@ -234,7 +234,7 @@ export default function CompetitivePositioning() {
               <div className="grid md:grid-cols-2">
                 {/* Without */}
                 <div style={{ padding: "48px 40px", borderRight: `1px solid ${BORDER}` }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 24 }}>Without Execution OS</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 24 }}>Without Command OS</div>
                   <div className="flex flex-col gap-0">
                     {[
                       { label: "Alert Received", time: "T+0h", note: "Leadership alerted via email" },
@@ -266,7 +266,7 @@ export default function CompetitivePositioning() {
 
                 {/* With */}
                 <div style={{ padding: "48px 40px", background: "rgba(43,138,110,0.02)" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: TEAL, marginBottom: 24 }}>With Execution OS</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: TEAL, marginBottom: 24 }}>With Command OS</div>
                   <div className="flex flex-col gap-0">
                     {[
                       { label: "Signal Detected", time: "T+0m", note: "AI monitors 500+ data sources 24/7" },
@@ -387,7 +387,7 @@ export default function CompetitivePositioning() {
                   Capability
                 </div>
                 {[
-                  { label: "Execution OS", highlight: true },
+                  { label: "Command OS", highlight: true },
                   { label: "Crisis Tools", highlight: false },
                   { label: "PM Tools", highlight: false },
                 ].map((col, i) => (
@@ -450,7 +450,7 @@ export default function CompetitivePositioning() {
                 The Four Unfair Advantages
               </h2>
               <p style={{ fontSize: 17, color: MUTED, maxWidth: 520, margin: "0 auto" }}>
-                Built into the infrastructure of Execution OS — impossible to replicate by adding a feature to Jira or Everbridge.
+                Built into the infrastructure of Command OS — impossible to replicate by adding a feature to Jira or Everbridge.
               </p>
             </div>
 
@@ -489,7 +489,7 @@ export default function CompetitivePositioning() {
                 Side-by-Side: The Same Event, Two Outcomes
               </h2>
               <p style={{ fontSize: 17, color: MUTED, maxWidth: 540, margin: "0 auto" }}>
-                The difference between Execution OS and everything else isn't theoretical. It shows up in every strategic event.
+                The difference between Command OS and everything else isn't theoretical. It shows up in every strategic event.
               </p>
             </div>
 
@@ -502,11 +502,11 @@ export default function CompetitivePositioning() {
                   </div>
                   <div className="grid md:grid-cols-2">
                     <div style={{ padding: "28px 32px", borderRight: `1px solid ${BORDER}` }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 12 }}>Without Execution OS</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 12 }}>Without Command OS</div>
                       <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.65 }}>{uc.without}</p>
                     </div>
                     <div style={{ padding: "28px 32px", background: "rgba(43,138,110,0.03)" }}>
-                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 12 }}>With Execution OS</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 12 }}>With Command OS</div>
                       <p style={{ fontSize: 14, color: "#1F2937", lineHeight: 1.65 }}>{uc.with}</p>
                     </div>
                   </div>
@@ -530,7 +530,7 @@ export default function CompetitivePositioning() {
                   170 Playbooks No One Else Has
                 </h2>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 32 }}>
-                  Every playbook in Execution OS took years to develop — built from real Fortune 1000 strategic events, refined by operating executives, and continuously improved through outcome data.
+                  Every playbook in Command OS took years to develop — built from real Fortune 1000 strategic events, refined by operating executives, and continuously improved through outcome data.
                 </p>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40 }}>
                   You can't buy this institutional knowledge off the shelf. You can't build it in a year. And no PM tool or crisis notification vendor has it — because they're solving a different problem.

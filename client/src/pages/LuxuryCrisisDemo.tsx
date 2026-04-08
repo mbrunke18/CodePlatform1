@@ -118,7 +118,7 @@ export default function LuxuryCrisisDemo() {
                 {crisisScenario.subtitle}
               </p>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginTop: 8 }}>
-                Experience how Execution OS transforms AI detection into coordinated execution — turning a {crisisScenario.financialImpact} crisis into a strategic advantage in 12 minutes.
+                Experience how Command OS transforms AI detection into coordinated execution — turning a {crisisScenario.financialImpact} crisis into a strategic advantage in 12 minutes.
               </p>
             </div>
 
@@ -223,7 +223,7 @@ export default function LuxuryCrisisDemo() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Execution OS 12-Minute Stakeholder Cascade</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Command OS 12-Minute Stakeholder Cascade</span>
               </div>
               <div className="space-y-1.5">
                 {luxuryStakeholderCascade.map(({ step, action, stakeholder, highlight, complete }) => (
@@ -246,7 +246,7 @@ export default function LuxuryCrisisDemo() {
                 <PlayCircle className="h-5 w-5" />
                 Begin Crisis Simulation
               </Button>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects, Execution OS coordinates your Maisons and VIP clients simultaneously</p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects, Command OS coordinates your Maisons and VIP clients simultaneously</p>
             </div>
           </div>
         )}
@@ -321,7 +321,7 @@ export default function LuxuryCrisisDemo() {
               <Award className="h-16 w-16 mx-auto mb-6" style={{ color: TEAL }} />
               <h2 style={{ ...CG, fontSize: 36, fontWeight: 700, color: "#fff", marginBottom: 10 }}>Demo Complete</h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 560, margin: "0 auto 32px" }}>
-                You've just experienced how Execution OS turns the gap between AI detection and human execution — from weeks of coordination chaos to 12 minutes of orchestrated brand protection.
+                You've just experienced how Command OS turns the gap between AI detection and human execution — from weeks of coordination chaos to 12 minutes of orchestrated brand protection.
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-10">
@@ -341,7 +341,7 @@ export default function LuxuryCrisisDemo() {
               <div className="p-6 border-2 border-[#C9A84C]/50 mb-8 text-left" style={{ background: "rgba(201,168,76,0.05)" }}>
                 <p style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>The Strategic Insight for Luxury</p>
                 <p style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.75 }}>
-                  Luxury brands are spending billions on AI for threat detection and social monitoring. But without Execution OS, they're still losing the critical first 12 minutes to coordination chaos — manual phone trees, unclear accountability, and delayed VIP client communication that cannot be undone. Execution OS is the missing piece: the operating model layer that turns detection into coordinated protection, before the narrative escapes.
+                  Luxury brands are spending billions on AI for threat detection and social monitoring. But without Command OS, they're still losing the critical first 12 minutes to coordination chaos — manual phone trees, unclear accountability, and delayed VIP client communication that cannot be undone. Command OS is the missing piece: the operating model layer that turns detection into coordinated protection, before the narrative escapes.
                 </p>
               </div>
 

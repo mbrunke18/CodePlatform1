@@ -1,5 +1,5 @@
 /**
- * Demo Data System for Execution OS
+ * Demo Data System for Command OS
  * 
  * Provides realistic sample data to populate empty states and demonstrate
  * platform capabilities across all pages. All metrics are based on actual

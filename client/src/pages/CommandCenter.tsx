@@ -402,7 +402,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 Command <em style={{ fontStyle: "italic", color: GOLD }}>Center</em>
               </h1>
               <p className="text-base text-gray-600 leading-relaxed mb-6">
-                When a trigger fires, Execution OS coordinates your full response — tasks, teams, documents, budgets — in 12 minutes. Not days.
+                When a trigger fires, Command OS coordinates your full response — tasks, teams, documents, budgets — in 12 minutes. Not days.
               </p>
               <OnboardingTrigger pageId="command-center" autoStart={true} />
             </div>

@@ -187,7 +187,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-[10px]">
-                  Before Execution OS
+                  Before Command OS
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-[#C9A84C]/5 rounded-none border border-[#C9A84C]/10">
@@ -207,7 +207,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
               
               <div>
                 <h3 className="text-lg font-bold text-[#6B7280] mb-4 uppercase tracking-widest text-[10px]">
-                  With Execution OS
+                  With Command OS
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center p-3 bg-[#2B8A6E]/5 rounded-none border border-[#2B8A6E]/10">

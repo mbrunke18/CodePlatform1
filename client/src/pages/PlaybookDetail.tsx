@@ -1408,14 +1408,14 @@ export default function PlaybookDetail() {
             <div style={{ background: NAVY, padding: "64px 48px", marginTop: 0 }}>
               <div className="max-w-3xl mx-auto text-center">
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
-                  VaughnMartin · Execution OS
+                  VaughnMartin · Command OS
                 </div>
                 <div style={{ ...CG, fontSize: "clamp(28px,4vw,40px)", fontWeight: 600, color: "#fff", lineHeight: 1.15, marginBottom: 16 }}>
                   You just read one of 3 public playbooks.<br />
                   <em style={{ color: GOLD }}>167 exclusive ones are already protecting your competitors.</em>
                 </div>
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
-                  Every playbook in the Execution OS library is built from 20+ years of Fortune 500 transformation.
+                  Every playbook in the Command OS library is built from 20+ years of Fortune 500 transformation.
                   Your team can be execution-ready in 12 minutes — not 12 weeks.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -53,9 +53,9 @@ const pilotPhases = [
     duration: 'Weeks 3-6',
     color: 'bg-[#0A0F2E]',
     activities: [
-      'Conduct 2-3 tabletop exercises with Execution OS',
+      'Conduct 2-3 tabletop exercises with Command OS',
       'Measure activation time (target: <12 min)',
-      'Train response team leads on Execution OS workflow',
+      'Train response team leads on Command OS workflow',
       'Refine playbooks based on dry run feedback',
       'Establish KPI tracking dashboard'
     ],
@@ -99,7 +99,7 @@ const pilotInclusions = [
     category: 'Platform Access',
     icon: Layers,
     items: [
-      'Full Execution OS platform access for pilot team (up to 25 users)',
+      'Full Command OS platform access for pilot team (up to 25 users)',
       '5 customizable playbooks from 170 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
@@ -235,9 +235,9 @@ export default function PilotProgram() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "90-Day Pilot Program - Execution OS | Strategic Execution OS",
-      description: "Validate Execution OS' 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
-      ogTitle: "Execution OS Pilot Program | 90 Days to Transform Strategic Execution",
+      title: "90-Day Pilot Program - Command OS | Strategic Execution Platform",
+      description: "Validate Command OS' 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
+      ogTitle: "Command OS Pilot Program | 90 Days to Transform Strategic Execution",
       ogDescription: "Fortune 1000 pilot program with ROI measurement, live activation, and clear conversion path.",
     });
   }, []);
@@ -260,7 +260,7 @@ export default function PilotProgram() {
               <span className="block text-[#C9A84C] mt-2">Validate Before You Commit</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-              Prove Execution OS' 12-minute coordination claim with real activations in your environment. 
+              Prove Command OS' 12-minute coordination claim with real activations in your environment. 
               Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
@@ -387,7 +387,7 @@ export default function PilotProgram() {
                 What's Included
               </h2>
               <p className="text-lg text-gray-800 dark:text-slate-300">
-                Everything you need to validate Execution OS in your environment
+                Everything you need to validate Command OS in your environment
               </p>
             </div>
 
@@ -473,8 +473,8 @@ export default function PilotProgram() {
                   <thead>
                     <tr className="border-b border-white/10">
                       <th className="text-left p-4 font-semibold text-white">Value Metric</th>
-                      <th className="text-left p-4 font-semibold text-red-400">Before Execution OS</th>
-                      <th className="text-left p-4 font-semibold text-[#3BAF8A]">With Execution OS</th>
+                      <th className="text-left p-4 font-semibold text-red-400">Before Command OS</th>
+                      <th className="text-left p-4 font-semibold text-[#3BAF8A]">With Command OS</th>
                       <th className="text-left p-4 font-semibold text-white/70">Calculation</th>
                       <th className="text-right p-4 font-semibold text-[#C9A84C]">Value Captured</th>
                     </tr>
@@ -655,10 +655,10 @@ export default function PilotProgram() {
             <div className="text-center mb-12">
               <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-3">A Question Every Pilot Candidate Asks</p>
               <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4">
-                "We already have Microsoft Copilot. Why Execution OS?"
+                "We already have Microsoft Copilot. Why Command OS?"
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                Every Fortune 1000 has Microsoft's AI stack. None have the operating model to execute with it. Execution OS is not a replacement — it is the coordination layer that makes your existing investment actionable.
+                Every Fortune 1000 has Microsoft's AI stack. None have the operating model to execute with it. Command OS is not a replacement — it is the coordination layer that makes your existing investment actionable.
               </p>
             </div>
 
@@ -686,9 +686,9 @@ export default function PilotProgram() {
                 </div>
               </div>
 
-              {/* What Execution OS adds */}
+              {/* What Command OS adds */}
               <div className="bg-[#0A0F2E] border border-[#0A0F2E] p-6">
-                <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-4">Execution OS Adds</div>
+                <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-4">Command OS Adds</div>
                 <div className="space-y-3">
                   {[
                     "Pre-staged playbooks — 170 across 9 domains, ready before any trigger fires",
@@ -705,17 +705,17 @@ export default function PilotProgram() {
                 </div>
                 <div className="mt-6 p-3 border border-[#C9A84C]/30 bg-[#C9A84C]/5">
                   <p className="text-xs font-semibold text-[#C9A84C]">The operating model layer</p>
-                  <p className="text-xs text-white/70 mt-1 leading-relaxed">Execution OS sits above your Microsoft investment — not beside it, not replacing it. Copilot detects and summarizes. Execution OS deploys your people at the speed of detection.</p>
+                  <p className="text-xs text-white/70 mt-1 leading-relaxed">Command OS sits above your Microsoft investment — not beside it, not replacing it. Copilot detects and summarizes. Command OS deploys your people at the speed of detection.</p>
                 </div>
               </div>
             </div>
 
             {/* Stack diagram */}
             <div className="bg-white border border-[#E8E4DC] p-6">
-              <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-5 text-center">Enterprise Stack — Where Execution OS Fits</div>
+              <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-5 text-center">Enterprise Stack — Where Command OS Fits</div>
               <div className="space-y-2 max-w-2xl mx-auto">
                 {[
-                  { layer: "Execution OS", role: "Operating Model — coordinates humans at the speed of AI detection", highlight: true },
+                  { layer: "Command OS", role: "Operating Model — coordinates humans at the speed of AI detection", highlight: true },
                   { layer: "Microsoft Copilot & Azure OpenAI", role: "AI Intelligence — detects, summarizes, analyzes", highlight: false },
                   { layer: "Microsoft Teams & Outlook", role: "Communication Infrastructure — how people connect", highlight: false },
                   { layer: "Jira / Asana / ServiceNow", role: "Work Management — where tasks are tracked", highlight: false },
@@ -725,7 +725,7 @@ export default function PilotProgram() {
                     <div className={`w-2 h-2 rounded-full flex-shrink-0 ${highlight ? "bg-[#C9A84C]" : "bg-gray-300"}`} />
                     <div className={`text-sm font-semibold min-w-[240px] ${highlight ? "text-[#C9A84C]" : "text-[#0A0F2E]"}`}>{layer}</div>
                     <div className={`text-xs ${highlight ? "text-white/70" : "text-gray-500"}`}>{role}</div>
-                    {highlight && <span className="ml-auto text-[10px] font-bold tracking-wider uppercase text-[#C9A84C] whitespace-nowrap">← Execution OS</span>}
+                    {highlight && <span className="ml-auto text-[10px] font-bold tracking-wider uppercase text-[#C9A84C] whitespace-nowrap">← Command OS</span>}
                     {!highlight && <span className="ml-auto text-[10px] text-gray-400 whitespace-nowrap">Already invested</span>}
                   </div>
                 ))}

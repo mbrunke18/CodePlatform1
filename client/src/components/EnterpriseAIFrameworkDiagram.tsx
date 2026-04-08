@@ -73,7 +73,7 @@ export default function EnterpriseAIFrameworkDiagram() {
           fontSize: 10, fontWeight: 600, letterSpacing: "2px",
           textTransform: "uppercase", color: TEAL2, marginBottom: 6,
         }}>
-          Where Execution OS Fits in the Enterprise AI Stack
+          Where Command OS Fits in the Enterprise AI Stack
         </div>
         <div style={{
           fontFamily: "'Cormorant Garamond', serif",
@@ -160,7 +160,7 @@ export default function EnterpriseAIFrameworkDiagram() {
         </div>
       </div>
 
-      {/* Execution OS */}
+      {/* Command OS */}
       <div style={{ display: "flex", marginTop: 2, marginBottom: 16 }}>
         <VerticalLabel text="Coordination Layer" />
         <div style={{ flex: 1, background: NAVY, border: `1.5px solid ${GOLD}`, borderRadius: 9, padding: "16px 20px", position: "relative", overflow: "hidden" }}>
@@ -169,7 +169,7 @@ export default function EnterpriseAIFrameworkDiagram() {
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 20, fontWeight: 700, color: GOLD, letterSpacing: 1, marginBottom: 3,
           }}>
-            Execution OS &nbsp;by VaughnMartin
+            Command OS &nbsp;by VaughnMartin
           </div>
           <div style={{
             fontFamily: "'Barlow', sans-serif",
@@ -243,7 +243,7 @@ export default function EnterpriseAIFrameworkDiagram() {
           <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
             <div style={{ width: 11, height: 11, background: NAVY, border: `1px solid ${GOLD}`, borderRadius: 3, flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontSize: 10, color: "#3d3d3a", lineHeight: 1.5, fontFamily: "'Barlow', sans-serif" }}>
-              <strong style={{ color: NAVY, fontWeight: 500 }}>Execution OS by VaughnMartin</strong> — the missing coordination layer. Ensures those decisions compress from 30-day mobilization cycles into 12-minute coordinated action — a 3,600× Execution Head Start.
+              <strong style={{ color: NAVY, fontWeight: 500 }}>Command OS by VaughnMartin</strong> — the missing coordination layer. Ensures those decisions compress from 30-day mobilization cycles into 12-minute coordinated action — a 3,600× Execution Head Start.
             </p>
           </div>
         </div>
@@ -257,7 +257,7 @@ export default function EnterpriseAIFrameworkDiagram() {
             fontStyle: "italic", color: NAVY, lineHeight: 1.6,
             fontSize: 11, fontFamily: "'Barlow', sans-serif",
           }}>
-            "A well-designed operating model tells you <strong>what</strong> to decide and <strong>who</strong> decides it. Execution OS is what makes those decisions move — compressing the 30-day mobilization cycle into <strong>12 minutes of coordinated action</strong>. That is the 3,600× Execution Head Start."
+            "A well-designed operating model tells you <strong>what</strong> to decide and <strong>who</strong> decides it. Command OS is what makes those decisions move — compressing the 30-day mobilization cycle into <strong>12 minutes of coordinated action</strong>. That is the 3,600× Execution Head Start."
           </p>
         </div>
       </div>
@@ -269,7 +269,7 @@ export default function EnterpriseAIFrameworkDiagram() {
         fontSize: 10, color: NAVY, opacity: 0.3,
         letterSpacing: "1px", textTransform: "uppercase",
       }}>
-        VaughnMartin &nbsp;·&nbsp; Execution OS &nbsp;·&nbsp; We Make Enterprises Fearless.
+        VaughnMartin &nbsp;·&nbsp; Command OS &nbsp;·&nbsp; We Make Enterprises Fearless.
       </div>
     </div>
   );

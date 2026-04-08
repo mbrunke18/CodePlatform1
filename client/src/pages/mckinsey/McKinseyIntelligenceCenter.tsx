@@ -407,10 +407,10 @@ export default function McKinseyIntelligenceCenter() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Zap className="h-5 w-5 text-primary" />
-            Transform with Execution OS + McKinsey
+            Transform with Command OS + McKinsey
           </CardTitle>
           <CardDescription>
-            Combine McKinsey's research-backed framework with Execution OS' 12-minute execution velocity to achieve sustainable transformation
+            Combine McKinsey's research-backed framework with Command OS' 12-minute execution velocity to achieve sustainable transformation
           </CardDescription>
         </CardHeader>
         <CardContent>

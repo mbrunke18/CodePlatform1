@@ -43,7 +43,7 @@ function AccessGate() {
           Sign In to Access This Page
         </h2>
         <p style={{ color: '#6B7280', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 28px' }}>
-          This section of the platform requires authentication. Sign in to your account, or request a 48-hour trial to explore the full Execution OS.
+          This section of the platform requires authentication. Sign in to your account, or request a 48-hour trial to explore the full Command OS.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <button

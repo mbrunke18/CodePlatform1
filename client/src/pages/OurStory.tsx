@@ -126,7 +126,7 @@ export default function OurStory() {
                 He taught me that preparation isn't about knowing what will happen — it's about being ready when it does. That philosophy shaped how I coached. It shaped how I ran transformation programs inside Fortune 500 companies. And it's the foundation of every playbook in this system.
               </p>
               <p style={{ fontSize: 15, lineHeight: 1.9, color: "#6B7280" }}>
-                I built Execution OS because I spent five years on the football sideline and twenty years in Fortune 500 boardrooms — and I couldn't unsee the gap between how two groups of equally talented people handled the exact same problem.
+                I built Command OS because I spent five years on the football sideline and twenty years in Fortune 500 boardrooms — and I couldn't unsee the gap between how two groups of equally talented people handled the exact same problem.
               </p>
             </div>
             <div style={{ background: "#0A0F2E", padding: "48px 40px" }}>
@@ -225,7 +225,7 @@ export default function OurStory() {
             </p>
           </TimelineChapter>
 
-          <PullQuote author="The Execution OS Philosophy">
+          <PullQuote author="The Command OS Philosophy">
             Why do Fortune 1000 enterprises take 30 days for decisions that championship teams make in 40 seconds?
           </PullQuote>
 
@@ -275,7 +275,7 @@ export default function OurStory() {
           </TimelineChapter>
 
           {/* Chapter 4 */}
-          <TimelineChapter number="Chapter 4" title="Execution OS Was Born" color="navy">
+          <TimelineChapter number="Chapter 4" title="Command OS Was Born" color="navy">
             <p>
               We translated 20 years of experience into the execution infrastructure 
               Fortune 1000 executives have been missing:
@@ -301,7 +301,7 @@ export default function OurStory() {
           {/* Chapter 5 */}
           <TimelineChapter number="Chapter 5" title="Built on Proven Methodology" color="gold">
             <p>
-              Execution OS isn't theoretical. It's built on <strong>Dynamic Strategy</strong>—the methodology 
+              Command OS isn't theoretical. It's built on <strong>Dynamic Strategy</strong>—the methodology 
               trusted by the world's most demanding organizations.
             </p>
 

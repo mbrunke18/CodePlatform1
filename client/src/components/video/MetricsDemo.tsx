@@ -49,7 +49,7 @@ export function MetricsDemo({ progress }: SceneProps) {
           <ArrowRight className="w-8 h-8 text-[#D4AF37]" />
           <div className="text-center">
             <p className="text-[#D4AF37] text-4xl font-bold">Minutes</p>
-            <p className="text-gray-600 text-sm">With Execution OS</p>
+            <p className="text-gray-600 text-sm">With Command OS</p>
           </div>
         </motion.div>
 

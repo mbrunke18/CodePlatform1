@@ -77,7 +77,7 @@ export async function notifyTeamsPlaybookActivation(params: {
   triggerContext?: string;
   appUrl?: string;
 }): Promise<boolean> {
-  const { playbookName, organizationName, triggeredBy = 'Execution OS', triggerContext, appUrl = 'https://vaughnmartin.com' } = params;
+  const { playbookName, organizationName, triggeredBy = 'Command OS', triggerContext, appUrl = 'https://vaughnmartin.com' } = params;
 
   const now = new Date().toLocaleString('en-US', {
     weekday: 'short', month: 'short', day: 'numeric',
@@ -90,7 +90,7 @@ export async function notifyTeamsPlaybookActivation(params: {
     themeColor: 'C9A84C',
     sections: [
       {
-        activityTitle: '**Execution OS — War Room Open**',
+        activityTitle: '**Command OS — War Room Open**',
         activitySubtitle: `Activated: ${now}`,
         facts: [
           { name: 'Playbook', value: playbookName },

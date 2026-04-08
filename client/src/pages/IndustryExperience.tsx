@@ -90,7 +90,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'VIP client database segmented — 12,000 Ultra-HNWI invitations staged', tool: 'Salesforce + HubSpot', status: 'Complete', time: '5:00' },
       { task: 'Regulatory compliance filings submitted across 15 cities', tool: 'ServiceNow + Legal', status: 'Complete', time: '7:00' },
       { task: 'PR campaign with 50 media outlets synchronized for launch day', tool: 'PR Newswire + Cision', status: 'Complete', time: '9:00' },
-      { task: '1,267 stakeholders coordinated, 10-brand launch program fully operational', tool: 'Execution OS', status: 'Complete', time: '11:47' },
+      { task: '1,267 stakeholders coordinated, 10-brand launch program fully operational', tool: 'Command OS', status: 'Complete', time: '11:47' },
     ],
     outcomes: [
       { metric: 'Time to Full Launch Coordination', before: '6-9 months', after: '11 minutes 47 seconds' },
@@ -146,7 +146,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Dynamic pricing models configured for 4-tier strategy', tool: 'Pricing Engine', status: 'Complete', time: '3:30' },
       { task: 'Product listing templates pre-staged for Day 7 launch', tool: 'SHEIN Marketplace CMS', status: 'Complete', time: '5:00' },
       { task: 'TikTok ad campaigns pre-built with trend-matched creative', tool: 'TikTok Ads Manager', status: 'Complete', time: '7:00' },
-      { task: '5,847 stakeholders synchronized, 7-day sprint activated', tool: 'Execution OS', status: 'Complete', time: '11:22' },
+      { task: '5,847 stakeholders synchronized, 7-day sprint activated', tool: 'Command OS', status: 'Complete', time: '11:22' },
     ],
     outcomes: [
       { metric: 'Time to Trend Response Activation', before: '48-72 hours', after: '11 minutes 22 seconds' },
@@ -203,7 +203,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Propellant loading timeline advanced — LOX/RP-1 delivery confirmed', tool: 'Ground Systems', status: 'Complete', time: '5:00' },
       { task: 'Customer notification — Starlink service activation accelerated', tool: 'Salesforce + Email', status: 'Complete', time: '7:00' },
       { task: 'FCC spectrum filing for accelerated orbital deployment', tool: 'FCC ULS + Legal', status: 'Complete', time: '9:00' },
-      { task: '1,847 stakeholders coordinated, launch acceleration fully operational', tool: 'Execution OS', status: 'Complete', time: '11:33' },
+      { task: '1,847 stakeholders coordinated, launch acceleration fully operational', tool: 'Command OS', status: 'Complete', time: '11:33' },
     ],
     outcomes: [
       { metric: 'Time to Launch Coordination', before: '5-7 days', after: '11 minutes 33 seconds' },
@@ -260,7 +260,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Borrower communication — 2M notification emails staged', tool: 'Salesforce + SendGrid', status: 'Complete', time: '4:30' },
       { task: 'Backup integrity verified — 4-hour RPO restoration initiated', tool: 'Veeam + AWS S3', status: 'Complete', time: '6:00' },
       { task: 'Insurance carrier notified — $50M cyber policy activated', tool: 'Email + DocuSign', status: 'Complete', time: '8:00' },
-      { task: '150 stakeholders coordinated, response fully operational', tool: 'Execution OS', status: 'Complete', time: '11:47' },
+      { task: '150 stakeholders coordinated, response fully operational', tool: 'Command OS', status: 'Complete', time: '11:47' },
     ],
     outcomes: [
       { metric: 'Time to Containment', before: '72 hours', after: '30 seconds (auto-isolation)' },
@@ -317,7 +317,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Therapeutic alternative sourcing from 3 partner manufacturers', tool: 'SAP + Procurement', status: 'Complete', time: '5:00' },
       { task: 'Manufacturing root cause investigation initiated at Indore facility', tool: 'SAP QM + LIMS', status: 'Complete', time: '7:00' },
       { task: 'Investor relations and SEC disclosure prepared', tool: 'EDGAR + IR Platform', status: 'Complete', time: '9:00' },
-      { task: '2,052 stakeholders coordinated, recall operation fully activated', tool: 'Execution OS', status: 'Complete', time: '11:47' },
+      { task: '2,052 stakeholders coordinated, recall operation fully activated', tool: 'Command OS', status: 'Complete', time: '11:47' },
     ],
     outcomes: [
       { metric: 'Time to Recall Initiation', before: '6 weeks', after: '11 minutes 47 seconds' },
@@ -374,7 +374,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Infineon substitute MCU qualification fast-tracked (12-week sprint)', tool: 'PLM + Quality Lab', status: 'Complete', time: '5:00' },
       { task: 'Insurance claim filed — business interruption coverage activated', tool: 'Risk Management', status: 'Complete', time: '7:00' },
       { task: 'Renesas recovery support team dispatched (30 Toyota engineers)', tool: 'HR + Travel', status: 'Complete', time: '9:00' },
-      { task: '158 stakeholders coordinated, crisis response fully operational', tool: 'Execution OS', status: 'Complete', time: '11:12' },
+      { task: '158 stakeholders coordinated, crisis response fully operational', tool: 'Command OS', status: 'Complete', time: '11:12' },
     ],
     outcomes: [
       { metric: 'Time to Crisis Response', before: '30 days', after: '11 minutes 12 seconds' },
@@ -432,7 +432,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Customer refund auto-authorization for all affected purchases', tool: 'Walmart Pay + CRM', status: 'Complete', time: '3:30' },
       { task: 'Media statement and press conference coordinated', tool: 'PR + Cision', status: 'Complete', time: '5:00' },
       { task: 'Alternative fresh produce supplier activated for 847 stores', tool: 'Procurement + SAP', status: 'Complete', time: '7:00' },
-      { task: '5,000 stakeholders coordinated, response fully operational', tool: 'Execution OS', status: 'Complete', time: '11:33' },
+      { task: '5,000 stakeholders coordinated, response fully operational', tool: 'Command OS', status: 'Complete', time: '11:33' },
     ],
     outcomes: [
       { metric: 'Time to Product Removal', before: '7 days', after: '15 minutes (POS block)' },
@@ -490,7 +490,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { task: 'Cooling center coordination with 340 municipal partners', tool: 'WebEOC + GIS', status: 'Complete', time: '4:00' },
       { task: 'Generator dispatch to 47 hospitals approaching backup limit', tool: 'Fleet Management', status: 'Complete', time: '5:00' },
       { task: 'Grid restoration sequence initiated — priority substations first', tool: 'SCADA + OMS', status: 'Complete', time: '7:00' },
-      { task: '2,500 stakeholders coordinated, emergency response fully operational', tool: 'Execution OS', status: 'Complete', time: '11:47' },
+      { task: '2,500 stakeholders coordinated, emergency response fully operational', tool: 'Command OS', status: 'Complete', time: '11:47' },
     ],
     outcomes: [
       { metric: 'Time to Emergency Coordination', before: '3-5 days', after: '11 minutes 47 seconds' },
@@ -1303,7 +1303,7 @@ export default function IndustryExperience() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
               className="text-center text-sm text-gray-800 mt-6"
             >
-              Every activation requires human approval. Execution OS accelerates the process — humans retain full decision authority.
+              Every activation requires human approval. Command OS accelerates the process — humans retain full decision authority.
             </motion.p>
           </div>
         );
@@ -1439,7 +1439,7 @@ export default function IndustryExperience() {
                 {[
                   { msg: `${industry.stakeholders[0]?.name || 'CEO'}: "Playbook activated. All teams report status in 5 minutes."`, time: '2 min ago', color: 'border-[#2B8A6E]/30' },
                   { msg: `AI Alert: All ${allExecutionTasks.length} tasks executing on schedule. ${connectedSources.length} data sources feeding real-time intelligence.`, time: '1 min ago', color: 'border-[#C9A84C]/30' },
-                  { msg: `Execution OS: "${userPlaybook.name}" fully operational. ${userPlaybook.stakeholders.toLocaleString()} stakeholders coordinated in under 12 minutes.`, time: '1 min ago', color: 'border-[#2B8A6E]/30' },
+                  { msg: `Command OS: "${userPlaybook.name}" fully operational. ${userPlaybook.stakeholders.toLocaleString()} stakeholders coordinated in under 12 minutes.`, time: '1 min ago', color: 'border-[#2B8A6E]/30' },
                   { msg: `${industry.stakeholders[1]?.name || 'COO'}: "Confirmed — all teams aligned and executing."`, time: 'Just now', color: 'border-[#0A0F2E]/30' },
                 ].map((item, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 + i * 0.3 }}
@@ -1470,12 +1470,12 @@ export default function IndustryExperience() {
                   <h4 className="text-sm text-[#0A0F2E] mb-3">{outcome.metric}</h4>
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
-                      <div className="text-xs text-[#6B7280] mb-1">Before Execution OS</div>
+                      <div className="text-xs text-[#6B7280] mb-1">Before Command OS</div>
                       <div className="text-lg font-semibold text-red-400 line-through decoration-red-500/50">{outcome.before}</div>
                     </div>
                     <ArrowRight className="h-5 w-5 text-[#2B8A6E] shrink-0" />
                     <div className="flex-1">
-                      <div className="text-xs text-[#6B7280] mb-1">With Execution OS</div>
+                      <div className="text-xs text-[#6B7280] mb-1">With Command OS</div>
                       <div className="text-lg font-semibold text-[#2B8A6E]">{outcome.after}</div>
                     </div>
                   </div>

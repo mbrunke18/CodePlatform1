@@ -121,7 +121,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
       { label: 'Adoption Rate', value: '82% in 90 days', color: 'text-purple-400' },
     ],
     completionMetrics: [
-      { label: 'Technology Integration', before: '36 months average', after: '22 months with Execution OS' },
+      { label: 'Technology Integration', before: '36 months average', after: '22 months with Command OS' },
       { label: 'Cross-System Sync', before: 'Manual API coordination', after: 'Automated orchestration' },
       { label: 'Engineering Alignment', before: 'Weeks of planning', after: 'Instant task assignment' },
     ],
@@ -169,7 +169,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
       { label: 'Churn Prevention', value: '92% save rate', color: 'text-purple-400' },
     ],
     completionMetrics: [
-      { label: 'Data Signal to Action', before: '14 days average', after: '2 hours with Execution OS' },
+      { label: 'Data Signal to Action', before: '14 days average', after: '2 hours with Command OS' },
       { label: 'Model Governance', before: 'Quarterly manual audit', after: 'Continuous automated monitoring' },
       { label: 'Customer Save Rate', before: '60% after manual outreach', after: '92% with instant coordination' },
     ],
@@ -201,7 +201,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
       { label: 'Policy Distribution', value: 'Auto-tracked', color: 'text-purple-400' },
     ],
     completionMetrics: [
-      { label: 'Audit Response', before: '10 business days', after: '2 days with Execution OS' },
+      { label: 'Audit Response', before: '10 business days', after: '2 days with Command OS' },
       { label: 'Compliance Gaps', before: 'Discovered during audit', after: 'Pre-identified and resolved' },
       { label: 'Policy Acknowledgment', before: 'Manual tracking', after: '100% automated verification' },
     ],
@@ -217,7 +217,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
       { label: 'Initiative Velocity', value: '6x faster', color: 'text-amber-400' },
     ],
     completionMetrics: [
-      { label: 'Strategy Execution', before: '70% on-time delivery', after: '95% with Execution OS coordination' },
+      { label: 'Strategy Execution', before: '70% on-time delivery', after: '95% with Command OS coordination' },
       { label: 'Execution Gap', before: '$144M in unrealized value', after: 'Closed through automation' },
       { label: 'Initiative Launch', before: 'Weeks to mobilize', after: '12 minutes to full coordination' },
     ],

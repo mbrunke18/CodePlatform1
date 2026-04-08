@@ -126,7 +126,7 @@ export function IDEAFramework({ progress }: SceneProps) {
           <div className="flex items-center gap-3 bg-gray-50 border border-[#D4AF37]/30 rounded-xl px-5 py-3">
             <LayoutDashboard className="w-5 h-5 text-[#D4AF37]" />
             <div>
-              <p className="text-gray-900 text-sm font-medium">Execution OS One™</p>
+              <p className="text-gray-900 text-sm font-medium">Command OS One™</p>
               <p className="text-gray-700 text-xs">Unified command center for all 4 phases</p>
             </div>
           </div>

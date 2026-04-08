@@ -76,20 +76,20 @@ const STAKEHOLDERS: Stakeholder[] = [
 
 const TASKS: Task[] = [
   { id: '1', time: 0, title: 'Breach detected - playbook activated', stakeholder: 'System', type: 'ai', completed: false },
-  { id: '2', time: 1, title: 'Notifying 8 stakeholders simultaneously', stakeholder: 'Execution OS', type: 'ai', completed: false },
+  { id: '2', time: 1, title: 'Notifying 8 stakeholders simultaneously', stakeholder: 'Command OS', type: 'ai', completed: false },
   { id: '3', time: 2, title: 'CISO acknowledged - reviewing threat assessment', stakeholder: 'Marcus Williams', type: 'task', completed: false },
   { id: '4', time: 3, title: 'Legal team activated - compliance review initiated', stakeholder: 'Robert Chen', type: 'task', completed: false },
-  { id: '5', time: 4, title: 'CEO briefing package auto-generated', stakeholder: 'Execution OS', type: 'ai', completed: false },
-  { id: '6', time: 5, title: 'Regulatory notification template populated', stakeholder: 'Execution OS', type: 'ai', completed: false },
+  { id: '5', time: 4, title: 'CEO briefing package auto-generated', stakeholder: 'Command OS', type: 'ai', completed: false },
+  { id: '6', time: 5, title: 'Regulatory notification template populated', stakeholder: 'Command OS', type: 'ai', completed: false },
   { id: '7', time: 6, title: 'CFO approved emergency budget ($500K)', stakeholder: 'Jennifer Park', type: 'approval', completed: false },
   { id: '8', time: 7, title: 'BLOCKER: Missing breach scope data', stakeholder: 'Legal', type: 'blocker', completed: false },
-  { id: '9', time: 8, title: 'AI auto-requested data from Security team', stakeholder: 'Execution OS', type: 'ai', completed: false },
+  { id: '9', time: 8, title: 'AI auto-requested data from Security team', stakeholder: 'Command OS', type: 'ai', completed: false },
   { id: '10', time: 9, title: 'Security provided scope - Legal unblocked', stakeholder: 'Marcus Williams', type: 'resolved', completed: false },
   { id: '11', time: 10, title: 'Communications draft ready for CEO review', stakeholder: 'Amanda Foster', type: 'task', completed: false },
   { id: '12', time: 11, title: 'CEO approved public statement', stakeholder: 'Sarah Chen', type: 'approval', completed: false },
-  { id: '13', time: 12, title: 'Customer notification initiated (2.4M emails)', stakeholder: 'Execution OS', type: 'ai', completed: false },
+  { id: '13', time: 12, title: 'Customer notification initiated (2.4M emails)', stakeholder: 'Command OS', type: 'ai', completed: false },
   { id: '14', time: 13, title: 'Regulatory notification filed (72-hour deadline met)', stakeholder: 'Robert Chen', type: 'complete', completed: false },
-  { id: '15', time: 14, title: 'All 47 tasks completed - breach contained', stakeholder: 'Execution OS', type: 'complete', completed: false },
+  { id: '15', time: 14, title: 'All 47 tasks completed - breach contained', stakeholder: 'Command OS', type: 'complete', completed: false },
 ];
 
 export default function OneClickDemo() {
@@ -216,7 +216,7 @@ export default function OneClickDemo() {
               </Badge>
             
             <h1 className="text-5xl font-bold text-[#0A0F2E] mb-6">
-              See Execution OS in Action
+              See Command OS in Action
             </h1>
             
             <p className="text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
@@ -456,7 +456,7 @@ export default function OneClickDemo() {
               
               <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">Breach Contained in 12 Minutes</h2>
               <p className="text-gray-800 mb-6">
-                Traditional response time: 17 days. Execution OS response: 12 minutes.
+                Traditional response time: 17 days. Command OS response: 12 minutes.
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">

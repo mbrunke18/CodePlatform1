@@ -133,7 +133,7 @@ export default function BoardReadiness() {
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', display: 'flex', gap: 40, alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: 220 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>VaughnMartin Execution OS</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>VaughnMartin Command OS</div>
               <h1 style={{ fontSize: 26, fontWeight: 800, color: '#fff', margin: '0 0 10px', lineHeight: 1.2 }}>Strategic Readiness Report</h1>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Generated {generatedDate} · Confidential</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 14 }}>
@@ -241,14 +241,14 @@ export default function BoardReadiness() {
             <div style={{ fontSize: 12, color: '#555', lineHeight: 1.7 }}>
               This organization's strategic execution infrastructure is actively monitoring {d.triggersArmed || 221} trigger patterns across {d.totalDomains} domains.
               Stakeholder teams are enrolled to receive real-time alerts within minutes of a trigger detection. 170 pre-staged playbooks are available for immediate deployment.
-              This report was generated automatically by Execution OS and reflects live system state as of {generatedDate}.
+              This report was generated automatically by Command OS and reflects live system state as of {generatedDate}.
             </div>
           </div>
         </div>
 
         {/* Footer */}
         <div style={{ textAlign: 'center', marginTop: 40, fontSize: 11, color: '#bbb' }}>
-          VaughnMartin Execution OS · Confidential · Generated {generatedDate} · execution-os.vaughnmartin.com
+          VaughnMartin Command OS · Confidential · Generated {generatedDate} · execution-os.vaughnmartin.com
         </div>
       </div>
     </div>

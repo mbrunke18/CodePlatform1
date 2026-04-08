@@ -26,7 +26,7 @@ export const EXECUTION_STAGES = [
     number: 3,
     name: 'Notified',
     shortDef: 'All stakeholders alerted — Teams, email, or SMS.',
-    fullDef: 'Execution OS dispatches role-specific alerts to every stakeholder via their configured channel. No manual email chains. No scheduling delays. Notification is simultaneous.',
+    fullDef: 'Command OS dispatches role-specific alerts to every stakeholder via their configured channel. No manual email chains. No scheduling delays. Notification is simultaneous.',
     inClock: true,
     color: GOLD,
     icon: '📡',
@@ -45,7 +45,7 @@ export const EXECUTION_STAGES = [
     number: 5,
     name: 'In Progress',
     shortDef: 'The role-holder is actively performing the assigned work.',
-    fullDef: 'This is where the actual work happens — negotiations, remediation, containment, filings, communications. Execution OS does not perform this work. It ensures the right person started it at minute 13 instead of week 5.',
+    fullDef: 'This is where the actual work happens — negotiations, remediation, containment, filings, communications. Command OS does not perform this work. It ensures the right person started it at minute 13 instead of week 5.',
     inClock: false,
     color: '#6B7280',
     icon: '⚙',
@@ -221,7 +221,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
             What "Complete" Means at Every Stage
           </h2>
           <p style={{ fontSize: 15, color: '#6B7280', maxWidth: 620, margin: '0 auto', lineHeight: 1.65, fontFamily: "'DM Sans', Arial, sans-serif" }}>
-            Not all completions are equal. Execution OS compresses the mobilization cycle to 12 minutes — Stages 1 through 4. The actual work starts at minute 13. Here is exactly what happens at each stage.
+            Not all completions are equal. Command OS compresses the mobilization cycle to 12 minutes — Stages 1 through 4. The actual work starts at minute 13. Here is exactly what happens at each stage.
           </p>
         </div>
 
@@ -319,7 +319,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
           <div style={{ flex: 1 }}>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
               <strong style={{ color: '#fff' }}>The old model took 30 days just to reach Stage 4.</strong>{' '}
-              Figuring out who needs to be in the room, aligning on the plan, assigning ownership — all before a single task was executed. Execution OS compresses Stages 1 through 4 to 12 minutes. The actual work starts immediately after — weeks ahead of where it would have started before.
+              Figuring out who needs to be in the room, aligning on the plan, assigning ownership — all before a single task was executed. Command OS compresses Stages 1 through 4 to 12 minutes. The actual work starts immediately after — weeks ahead of where it would have started before.
             </p>
           </div>
           <div style={{ textAlign: 'right' as const, flexShrink: 0 }}>

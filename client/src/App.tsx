@@ -38,7 +38,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryStat
               </button>
             </div>
           </div>
-          <p style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#9CA3AF' }}>VaughnMartin Execution OS · Error Recovery</p>
+          <p style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#9CA3AF' }}>VaughnMartin Command OS · Error Recovery</p>
         </div>
       );
     }

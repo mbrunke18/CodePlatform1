@@ -38,7 +38,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
             transition={{ delay: 0.3 }}
             className="text-gray-700 text-lg"
           >
-            Execution OS connects to your existing tools
+            Command OS connects to your existing tools
           </motion.p>
         </div>
 
@@ -137,7 +137,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Seamless Enterprise Integration"
-        description="Execution OS connects to Jira, Slack, Teams, Salesforce, and more—automatically creating tasks and notifying teams."
+        description="Command OS connects to Jira, Slack, Teams, Salesforce, and more—automatically creating tasks and notifying teams."
         delay={0.5}
       />
     </div>

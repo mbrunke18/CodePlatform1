@@ -136,7 +136,7 @@ export default function ExecutiveDepartureBrief() {
             <span style={{ ...CG, fontSize: 11, fontWeight: 700, color: GOLD }}>VM</span>
           </div>
           <span style={{ fontSize: 12, fontWeight: 700, color: T3, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            VaughnMartin · Execution OS
+            VaughnMartin · Command OS
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: T4, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
@@ -248,7 +248,7 @@ export default function ExecutiveDepartureBrief() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 36 }}>
             <div style={{ width: 32, height: 1, background: TEAL }} />
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: TEAL }}>
-              Execution OS · Signal Detection
+              Command OS · Signal Detection
             </span>
           </div>
 
@@ -461,7 +461,7 @@ export default function ExecutiveDepartureBrief() {
           {/* Before / After table */}
           <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', marginBottom: 44 }}>
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', background: 'rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.10)' }}>
-              {['Outcome', 'Without Execution OS', 'With Execution OS'].map((h, i) => (
+              {['Outcome', 'Without Command OS', 'With Command OS'].map((h, i) => (
                 <div key={h} style={{ padding: '12px 20px', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: i === 2 ? TEAL : T3 }}>
                   {h}
                 </div>
@@ -481,7 +481,7 @@ export default function ExecutiveDepartureBrief() {
             {[
               { label: "Average C-suite departure cost",       value: "$23M",    sub: "Industry average — McKinsey" },
               { label: "Value protected — coordinated response", value: "$9–14M", sub: "40–60% cost reduction" },
-              { label: "Annual Execution OS investment",       value: "$250K",   sub: "Pays for itself on first activation" },
+              { label: "Annual Command OS investment",       value: "$250K",   sub: "Pays for itself on first activation" },
             ].map(({ label, value, sub }) => (
               <div key={label} style={{ background: 'rgba(201,168,76,0.09)', border: '1px solid rgba(201,168,76,0.22)', borderRadius: 4, padding: '20px' }}>
                 <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: T4, marginBottom: 8, fontWeight: 700 }}>{label}</div>
@@ -544,7 +544,7 @@ export default function ExecutiveDepartureBrief() {
               <div style={{ width: 22, height: 22, borderRadius: '50%', border: `1px solid rgba(201,168,76,0.4)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <span style={{ ...CG, fontSize: 9, fontWeight: 700, color: 'rgba(201,168,76,0.6)' }}>VM</span>
               </div>
-              <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', fontWeight: 600 }}>VaughnMartin Execution OS</span>
+              <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', fontWeight: 600 }}>VaughnMartin Command OS</span>
             </div>
             <p style={{ fontSize: 11, color: T4, margin: 0, fontWeight: 500 }}>
               170 playbooks · 221 triggers · 248+ data points · 9 strategic domains · 12-minute execution

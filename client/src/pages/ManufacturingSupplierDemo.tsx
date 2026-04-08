@@ -196,10 +196,10 @@ export default function ManufacturingSupplierDemo() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Execution OS — Pre-Staged Supplier Network</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Command OS — Pre-Staged Supplier Network</span>
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 12 }}>
-                The 8–16 week qualification delay is eliminated because Execution OS pre-vets alternative suppliers before a crisis fires. Contracts pre-negotiated. Quality specs pre-approved. Authorization pre-staged.
+                The 8–16 week qualification delay is eliminated because Command OS pre-vets alternative suppliers before a crisis fires. Contracts pre-negotiated. Quality specs pre-approved. Authorization pre-staged.
               </p>
               <div className="space-y-2">
                 {preVettedSupplierNetwork.map(({ tier, supplier, status, lead }) => (
@@ -217,7 +217,7 @@ export default function ManufacturingSupplierDemo() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Execution OS 12-Minute Coordination Cascade</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Command OS 12-Minute Coordination Cascade</span>
               </div>
               <div className="space-y-1.5">
                 {coordinationCascade.map(({ step, action, stakeholder, highlight, complete }) => (
@@ -240,7 +240,7 @@ export default function ManufacturingSupplierDemo() {
                 Begin Crisis Simulation
                 <Play className="w-5 h-5 ml-2" />
               </Button>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects the shortage, Execution OS activates the pre-staged supplier network</p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects the shortage, Command OS activates the pre-staged supplier network</p>
             </div>
           </div>
         )}
@@ -363,13 +363,13 @@ export default function ManufacturingSupplierDemo() {
                 ))}
               </div>
 
-              {/* Manufacturing-specific Execution OS framing */}
+              {/* Manufacturing-specific Command OS framing */}
               <div className="mt-8 border border-[#C9A84C]/40 p-6" style={{ background: "rgba(201,168,76,0.05)" }}>
                 <h3 style={{ ...CG, fontSize: 18, fontWeight: 700, color: "#fff", textAlign: "center", marginBottom: 10 }}>
                   What This Means for Your Organization
                 </h3>
                 <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, lineHeight: 1.75, textAlign: "center", maxWidth: 580, margin: "0 auto" }}>
-                  You adopted JIT principles to eliminate waste from your production system. Execution OS brings that same logic to your crisis coordination — eliminating the waste of reactive emergency meetings, duplicated qualification processes, and redundant supplier negotiations. Pre-stage your alternative network once. Activate it in minutes when the trigger fires. The same discipline that made your production floor efficient now applies to your entire response infrastructure.
+                  You adopted JIT principles to eliminate waste from your production system. Command OS brings that same logic to your crisis coordination — eliminating the waste of reactive emergency meetings, duplicated qualification processes, and redundant supplier negotiations. Pre-stage your alternative network once. Activate it in minutes when the trigger fires. The same discipline that made your production floor efficient now applies to your entire response infrastructure.
                 </p>
               </div>
 

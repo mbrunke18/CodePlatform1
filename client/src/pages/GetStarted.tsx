@@ -47,8 +47,8 @@ export default function GetStarted() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Sign In — Execution OS | VaughnMartin",
-      description: "Access the full Execution OS platform. Real playbooks, real AI, real execution.",
+      title: "Sign In — Command OS | VaughnMartin",
+      description: "Access the full Command OS platform. Real playbooks, real AI, real execution.",
     });
   }, []);
 
@@ -78,7 +78,7 @@ export default function GetStarted() {
           </div>
 
           <h1 style={{ ...CG, fontSize: "clamp(40px,5vw,68px)", fontWeight: 600, lineHeight: 1.05, color: "#fff", marginBottom: 20 }}>
-            Try Execution OS.<br />
+            Try Command OS.<br />
             <em style={{ fontStyle: "italic", color: GOLD_LT }}>For Real.</em>
           </h1>
 
@@ -167,7 +167,7 @@ export default function GetStarted() {
         <div style={{ maxWidth: 840, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <h2 style={{ ...CG, fontSize: "clamp(28px,3vw,42px)", fontWeight: 600, color: NAVY }}>
-              Two ways to experience Execution OS
+              Two ways to experience Command OS
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: BORDER }}>
@@ -238,7 +238,7 @@ export default function GetStarted() {
             The platform is waiting.
           </h2>
           <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.7, marginBottom: 32 }}>
-            Existing pilot customers can sign in to access your organization's platform. New to Execution OS? Request pilot access below.
+            Existing pilot customers can sign in to access your organization's platform. New to Command OS? Request pilot access below.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
             <button

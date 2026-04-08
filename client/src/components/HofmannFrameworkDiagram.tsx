@@ -30,7 +30,7 @@ export default function HofmannFrameworkDiagram() {
             fontSize: 10, fontWeight: 600, letterSpacing: "2px",
             textTransform: "uppercase", color: GOLD, marginBottom: 6,
           }}>
-            Where Execution OS Fits in the Enterprise AI Build Stack
+            Where Command OS Fits in the Enterprise AI Build Stack
           </div>
           <div style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -88,7 +88,7 @@ export default function HofmannFrameworkDiagram() {
           fontFamily: "'Barlow Condensed', sans-serif",
           fontSize: 11, fontWeight: 500, color: "#fff", letterSpacing: 0.3, margin: 0,
         }}>
-          Execution OS is the only tool in the stack positioned as Coordination Infrastructure — the layer that makes every other AI investment executable at enterprise speed.
+          Command OS is the only tool in the stack positioned as Coordination Infrastructure — the layer that makes every other AI investment executable at enterprise speed.
         </p>
       </div>
 
@@ -96,7 +96,7 @@ export default function HofmannFrameworkDiagram() {
       <div style={{ background: "#fff", padding: "32px" }}>
         <img
           src={hofmannImg}
-          alt="Adam Hofmann Enterprise AI Framework — How to Build Enterprise AI for Organizations, with Execution OS highlighted as coordination infrastructure"
+          alt="Adam Hofmann Enterprise AI Framework — How to Build Enterprise AI for Organizations, with Command OS highlighted as coordination infrastructure"
           style={{
             width: "100%",
             height: "auto",
@@ -121,7 +121,7 @@ export default function HofmannFrameworkDiagram() {
           fontSize: 10, color: "rgba(240,237,228,0.4)",
           letterSpacing: "1px", textTransform: "uppercase",
         }}>
-          Framework: Adam Hofmann &nbsp;·&nbsp; Coordination Infrastructure: VaughnMartin Execution OS
+          Framework: Adam Hofmann &nbsp;·&nbsp; Coordination Infrastructure: VaughnMartin Command OS
         </div>
         <div style={{
           background: "rgba(201,168,76,0.18)",

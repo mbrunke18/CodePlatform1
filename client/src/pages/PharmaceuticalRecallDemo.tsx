@@ -27,7 +27,7 @@ const fdaClassifications = [
 
 const notificationCascade = [
   { step: "0:00", action: "AI detects dissolution failure in quality monitoring", stakeholder: "Quality Control System", severity: "trigger" },
-  { step: "0:30", action: "Execution OS classifies as Class I recall criteria", stakeholder: "Compliance AI", severity: "critical" },
+  { step: "0:30", action: "Command OS classifies as Class I recall criteria", stakeholder: "Compliance AI", severity: "critical" },
   { step: "1:00", action: "VP Quality, CMO, General Counsel, CEO notified simultaneously", stakeholder: "Executive Team (4)", severity: "critical" },
   { step: "2:00", action: "FDA MedWatch notification drafted and queued for approval", stakeholder: "Regulatory Affairs", severity: "high" },
   { step: "3:00", action: "47M unit traceability report generated — lot numbers, dates, distribution network", stakeholder: "Supply Chain (12)", severity: "high" },
@@ -190,7 +190,7 @@ export default function PharmaceuticalRecallDemo() {
                     The Detection–Coordination Gap That Cost a Life
                   </h3>
                   <p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.75, fontSize: 14 }}>
-                    Glenmark had the technology to detect the dissolution problem. But coordinating 2,052 stakeholders across FDA, wholesalers, pharmacies, and patients took <strong style={{ color: GOLD }}>6 weeks</strong>. In that gap, a patient died. This demo shows how Execution OS compresses that 6-week coordination into 12 minutes — ensuring the patient <strong style={{ color: GOLD }}>never received the deadly capsules</strong>.
+                    Glenmark had the technology to detect the dissolution problem. But coordinating 2,052 stakeholders across FDA, wholesalers, pharmacies, and patients took <strong style={{ color: GOLD }}>6 weeks</strong>. In that gap, a patient died. This demo shows how Command OS compresses that 6-week coordination into 12 minutes — ensuring the patient <strong style={{ color: GOLD }}>never received the deadly capsules</strong>.
                   </p>
                 </div>
               </div>
@@ -200,7 +200,7 @@ export default function PharmaceuticalRecallDemo() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Execution OS 12-Minute Notification Cascade</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Command OS 12-Minute Notification Cascade</span>
               </div>
               <div className="space-y-1.5">
                 {notificationCascade.map(({ step, action, stakeholder, severity }) => (
@@ -223,7 +223,7 @@ export default function PharmaceuticalRecallDemo() {
                 Begin Crisis Simulation
                 <Play className="w-5 h-5 ml-2" />
               </Button>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects the defect, Execution OS coordinates the recall</p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects the defect, Command OS coordinates the recall</p>
             </div>
           </div>
         )}
@@ -346,13 +346,13 @@ export default function PharmaceuticalRecallDemo() {
                 ))}
               </div>
 
-              {/* Pharma-specific Execution OS framing */}
+              {/* Pharma-specific Command OS framing */}
               <div className="mt-8 border border-[#C9A84C]/40 p-6" style={{ background: "rgba(201,168,76,0.05)" }}>
                 <h3 style={{ ...CG, fontSize: 18, fontWeight: 700, color: "#fff", textAlign: "center", marginBottom: 10 }}>
                   What This Means for Your Organization
                 </h3>
                 <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, lineHeight: 1.75, textAlign: "center", maxWidth: 580, margin: "0 auto" }}>
-                  Life sciences companies carry the highest accountability of any industry — FDA oversight, patient safety obligations, and public trust. Your quality systems detect problems in real time. But your coordination model was designed for a world without AI. Execution OS pre-stages your entire notification cascade — FDA, wholesalers, pharmacies, physicians, and patients — before a recall is ever triggered. When detection fires, execution is already in motion.
+                  Life sciences companies carry the highest accountability of any industry — FDA oversight, patient safety obligations, and public trust. Your quality systems detect problems in real time. But your coordination model was designed for a world without AI. Command OS pre-stages your entire notification cascade — FDA, wholesalers, pharmacies, physicians, and patients — before a recall is ever triggered. When detection fires, execution is already in motion.
                 </p>
               </div>
 

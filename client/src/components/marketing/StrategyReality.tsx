@@ -195,10 +195,10 @@ export function StrategyReality() {
               <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
                 <Target className="w-6 h-6 text-[#2B8A6E]" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900">Execution OS: 12 Minutes</h3>
+              <h3 className="text-xl font-bold text-gray-900">Command OS: 12 Minutes</h3>
             </div>
             <p className="text-gray-800 mb-6">
-              Execution OS pre-stages the ecosystem <span className="text-gray-900 font-semibold">before</span> situations 
+              Command OS pre-stages the ecosystem <span className="text-gray-900 font-semibold">before</span> situations 
               occur. When triggers fire, everyone knows their role and executes immediately.
             </p>
             <ul className="space-y-3 text-gray-800">
@@ -236,7 +236,7 @@ export function StrategyReality() {
             </span>
           </p>
           <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-gray-900 font-semibold px-8 py-4 rounded-lg transition-colors" data-testid="link-see-how-it-works">
-            See How Execution OS Works
+            See How Command OS Works
             <ArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
@@ -278,7 +278,7 @@ export function StrategyRealityCompact() {
           <span className="text-gray-900 font-bold">95%</span> execution ecosystem.
         </p>
         <p className="text-sm text-gray-800 mt-1">
-          That's the weeks of mobilization Execution OS compresses to 12 minutes.
+          That's the weeks of mobilization Command OS compresses to 12 minutes.
         </p>
       </div>
     </div>
@@ -343,7 +343,7 @@ export function StrategyRealityHero() {
           
           <div className="text-left">
             <p className="text-4xl md:text-5xl font-bold text-[#2B8A6E]">12m</p>
-            <p className="text-gray-800 text-sm">With Execution OS</p>
+            <p className="text-gray-800 text-sm">With Command OS</p>
           </div>
         </motion.div>
 
@@ -412,7 +412,7 @@ export function StrategyToIDEA() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            How Execution OS Handles the 95%
+            How Command OS Handles the 95%
           </h2>
           <p className="text-xl text-gray-800 max-w-2xl mx-auto">
             The IDEA Framework maps directly to the hidden work around every strategy
@@ -458,7 +458,7 @@ export function StrategyToIDEA() {
 
               <div>
                 <p className="text-xs text-gray-800 uppercase tracking-wide mb-2">
-                  Execution OS Solution
+                  Command OS Solution
                 </p>
                 <p className="text-sm text-gray-800">{item.mPlatform}</p>
               </div>

@@ -15,8 +15,8 @@ export default function EcosystemDiagramPage() {
     <PageLayout>
       <PageHero
         eyebrow="Architecture Overview"
-        title="Execution OS in the Microsoft Ecosystem"
-        subtitle="Execution OS sits as the strategic command layer above the Microsoft Full Stack AI ecosystem — orchestrating models, agents, and productivity tools into a 12-minute execution response."
+        title="Command OS in the Microsoft Ecosystem"
+        subtitle="Command OS sits as the strategic command layer above the Microsoft Full Stack AI ecosystem — orchestrating models, agents, and productivity tools into a 12-minute execution response."
         size="md"
       />
 
@@ -56,14 +56,14 @@ export default function EcosystemDiagramPage() {
               },
               {
                 phase: "02",
-                title: "Execution OS provides the strategic layer",
-                body: "Sitting above the Microsoft stack, Execution OS monitors 221 executive triggers, maps them to 170 pre-staged playbooks, and fires coordinated responses in 12 minutes — inside Teams, M365, and Azure.",
+                title: "Command OS provides the strategic layer",
+                body: "Sitting above the Microsoft stack, Command OS monitors 221 executive triggers, maps them to 170 pre-staged playbooks, and fires coordinated responses in 12 minutes — inside Teams, M365, and Azure.",
                 color: TEAL,
               },
               {
                 phase: "03",
                 title: "Humans retain all decision authority",
-                body: "AI handles monitoring and recommendation. Every playbook activation is a human decision. Execution OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
+                body: "AI handles monitoring and recommendation. Every playbook activation is a human decision. Command OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
                 color: GOLD,
               },
             ].map(({ phase, title, body, color }) => (
@@ -155,7 +155,7 @@ export default function EcosystemDiagramPage() {
           fontSize: "clamp(28px,4vw,48px)", fontWeight: 600,
           color: IVORY, lineHeight: 1.2, marginBottom: 24,
         }}>
-          Activate Execution OS on your Microsoft stack.
+          Activate Command OS on your Microsoft stack.
         </h2>
         <p style={{
           fontFamily: "'Inter',sans-serif",

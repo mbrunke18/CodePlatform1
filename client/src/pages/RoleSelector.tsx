@@ -327,7 +327,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               Your Role. Your Trigger. Your Playbook.
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', maxWidth: 580, margin: '0 auto 28px', lineHeight: 1.6 }}>
-              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Execution OS pre-stage your playbook before the trigger fires.
+              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Command OS pre-stage your playbook before the trigger fires.
             </p>
             {/* The core contrast */}
             <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '14px 28px' }}>
@@ -338,7 +338,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.15)' }}>→</div>
               <div style={{ textAlign: 'center' }}>
-                <p style={{ fontSize: 9, fontWeight: 700, color: 'rgba(43,138,110,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Execution OS</p>
+                <p style={{ fontSize: 9, fontWeight: 700, color: 'rgba(43,138,110,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Command OS</p>
                 <p style={{ fontSize: 24, fontWeight: 800, color: '#4ade80', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
                 <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: '2px 0 0' }}>full execution underway</p>
               </div>

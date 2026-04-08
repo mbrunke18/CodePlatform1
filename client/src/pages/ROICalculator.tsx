@@ -211,7 +211,7 @@ function ExecutionROISection() {
               58% of executive decision time is used ineffectively — costing the average Fortune 500 an estimated <span style={{ color: RC_GOLD }}>$250M annually</span> before a trigger ever fires.
             </div>
             <div style={{ ...RC_DM, fontSize: 12, color: RC_MUTED, lineHeight: 1.6 }}>
-              Execution OS bypasses the high-pressure decision moment entirely. The 12-minute window is a <strong style={{ color: "#fff" }}>cognitive preservation strategy</strong>: pre-staged context eliminates the mobilization bottleneck so the right decision is made by the right person with the right information — in the first twelve minutes.
+              Command OS bypasses the high-pressure decision moment entirely. The 12-minute window is a <strong style={{ color: "#fff" }}>cognitive preservation strategy</strong>: pre-staged context eliminates the mobilization bottleneck so the right decision is made by the right person with the right information — in the first twelve minutes.
             </div>
           </div>
           <div style={{ flexShrink: 0, textAlign: "right" }}>
@@ -254,7 +254,7 @@ export default function ROICalculator() {
     // Regulatory/compliance risk cost
     const complianceRiskCost = inputs.annualRevenue * 0.001 * industryData.regulatoryFactor;
     
-    // With Execution OS
+    // With Command OS
     const mResponseTimeHours = 0.2 + 1.5; 
     const mTotalExecutiveHoursPerYear = mResponseTimeHours * inputs.executivesInvolved * inputs.strategicEventsPerYear;
     
@@ -475,14 +475,14 @@ export default function ROICalculator() {
                     <div style={{ padding: "24px 28px", borderRight: "1px solid #F0EDE8", background: "#FFF8F8" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                         <Clock style={{ width: 13, height: 13, color: "#EF4444" }} />
-                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#EF4444" }}>Without Execution OS</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#EF4444" }}>Without Command OS</span>
                       </div>
                       <p style={{ color: "#374151", fontSize: 13, lineHeight: 1.6 }}>{s.without}</p>
                     </div>
                     <div style={{ padding: "24px 28px", background: "#F0FAF6" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                         <CheckCircle2 style={{ width: 13, height: 13, color: "#2B8A6E" }} />
-                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>With Execution OS · 12 Minutes</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>With Command OS · 12 Minutes</span>
                       </div>
                       <p style={{ color: "#374151", fontSize: 13, lineHeight: 1.6, marginBottom: 12 }}>{s.with}</p>
                       <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.1)", padding: "4px 12px", borderRadius: 2 }}>

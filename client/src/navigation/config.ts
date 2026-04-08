@@ -381,7 +381,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Quick Demo (5 min)',
           path: '/learn/quick-demo',
           icon: '▶️',
-          description: 'What is Execution OS? Interactive overview'
+          description: 'What is Command OS? Interactive overview'
         },
         {
           id: 'role-demo',

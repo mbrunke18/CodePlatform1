@@ -27,9 +27,9 @@ export default function VideoLanding() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Execution OS - Strategic Execution Operating System | 30 Days → 12 Minutes",
-      description: "Watch how Execution OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
-      ogTitle: "Execution OS - The Speed to Execute",
+      title: "Command OS - Strategic Execution Operating System | 30 Days → 12 Minutes",
+      description: "Watch how Command OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
+      ogTitle: "Command OS - The Speed to Execute",
       ogDescription: "170 playbooks. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Strategic Execution Operating System.",
     });
   }, []);
@@ -56,7 +56,7 @@ export default function VideoLanding() {
               Brand Films & <em style={{ color: '#C9A84C' }}>Sizzle Reels</em>
             </div>
             <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
-              Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Execution OS.
+              Cinematic presentations for trade shows, conferences, and broadcast. Experience the speed of Command OS.
             </div>
           </div>
         </div>
@@ -179,7 +179,7 @@ export default function VideoLanding() {
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              Why Fortune 1000 Leaders Choose <em className="italic text-[#C9A84C]">Execution OS</em>
+              Why Fortune 1000 Leaders Choose <em className="italic text-[#C9A84C]">Command OS</em>
             </h2>
             <p className="text-xl text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
               Transform how your organization responds to the moments that matter
@@ -267,7 +267,7 @@ export default function VideoLanding() {
       <footer className="py-12 px-6 bg-white border-t border-[#E8E4DC]">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-[#6B7280] text-xs font-bold uppercase tracking-[0.3em]">
-            Execution OS — Strategic Execution Operating System by VaughnMartin
+            Command OS — Strategic Execution Operating System by VaughnMartin
           </p>
         </div>
       </footer>

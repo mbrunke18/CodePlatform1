@@ -162,7 +162,7 @@ export default function DealRiskDemo() {
             Deal Risk Response Demo
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Experience the full IDEA Framework in action. Watch how Execution OS detects a deal at risk and delivers live execution in 12 minutes — roles assigned, tasks staged, teams already moving.
+            Experience the full IDEA Framework in action. Watch how Command OS detects a deal at risk and delivers live execution in 12 minutes — roles assigned, tasks staged, teams already moving.
           </p>
           <Button 
             variant="outline" 
@@ -387,7 +387,7 @@ export default function DealRiskDemo() {
                     {!completedPhases.includes('advance') ? (
                       <div className="space-y-4">
                         <p className="text-white/80">
-                          Execution OS captures institutional knowledge from every execution, so your organization gets smarter with each response.
+                          Command OS captures institutional knowledge from every execution, so your organization gets smarter with each response.
                         </p>
                         <Button 
                           className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"

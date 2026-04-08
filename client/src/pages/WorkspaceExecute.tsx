@@ -432,7 +432,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/command-center">
-              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Execution OS One™</span>
+              <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Command OS One™</span>
             </Link>
             <ChevronRight className="h-4 w-4 text-[#0A0F2E] dark:text-[#C9A84C]/40" />
             <span className="text-[#C9A84C] font-bold uppercase tracking-wider">EXECUTE</span>
@@ -538,7 +538,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 Minutes to Coordinated Response</h3>
-                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Execution OS delivers a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Command OS delivers a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing</p>
                 </div>
               </div>
             </CardContent>

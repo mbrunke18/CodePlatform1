@@ -34,7 +34,7 @@ const data: EcosystemPageData = {
   step1Body: "Einstein GPT, Flow, MuleSoft, and Tableau automate departments and surface insights across the revenue cycle. Department silos are fast. Cross-functional execution at the executive level still runs on meetings and email.",
   step1Color: "#00A1E0",
   integrationsHeading: "Five Salesforce integrations. One execution system.",
-  ctaHeading: "Activate Execution OS on your Salesforce stack.",
+  ctaHeading: "Activate Command OS on your Salesforce stack.",
   ctaBody: "We deploy alongside your existing Salesforce environment. No migration. No ripping out what works. The cross-functional orchestration layer your enterprise is missing.",
 };
 

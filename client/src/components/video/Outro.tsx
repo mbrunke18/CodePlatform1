@@ -50,7 +50,7 @@ export function Outro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="Execution OS" 
+          text="Command OS" 
           size="2xl" 
           delay={0.3}
           className="text-gray-900 mb-4"

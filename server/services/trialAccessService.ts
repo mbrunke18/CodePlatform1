@@ -28,7 +28,7 @@ function buildTrialEmailHtml(data: {
 }, activationUrl: string): string {
   return `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Your 24-Hour Trial Access — Execution OS</title></head>
+<head><meta charset="UTF-8" /><title>Your 24-Hour Trial Access — Command OS</title></head>
 <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
     <tr><td align="center">
@@ -43,7 +43,7 @@ function buildTrialEmailHtml(data: {
           <td style="padding:36px 40px;">
             <p style="margin:0 0 8px;color:#111827;font-size:16px;font-weight:600;">Hi ${data.firstName},</p>
             <p style="margin:0 0 24px;color:#374151;font-size:15px;line-height:1.6;">
-              You now have full access to the Execution OS platform for the next <strong>48 hours</strong>. 
+              You now have full access to the Command OS platform for the next <strong>48 hours</strong>. 
               Explore the complete platform — live trigger detection, 170 pre-staged playbooks, 
               Mission Control, and the full IDEA Framework in action.
             </p>
@@ -101,9 +101,9 @@ export async function createTrialSession(data: {
   let emailSent = false;
   try {
     const { error } = await resend.emails.send({
-      from: 'Execution OS <onboarding@resend.dev>',
+      from: 'Command OS <onboarding@resend.dev>',
       to: data.email,
-      subject: `Your 48-Hour Trial Access to Execution OS`,
+      subject: `Your 48-Hour Trial Access to Command OS`,
       html: buildTrialEmailHtml({ firstName: data.firstName, company: data.company }, activationUrl),
     });
     if (!error) emailSent = true;

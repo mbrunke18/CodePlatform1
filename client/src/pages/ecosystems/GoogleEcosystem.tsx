@@ -34,7 +34,7 @@ const data: EcosystemPageData = {
   step1Body: "Gemini, Vertex AI, BigQuery, and Workspace form a powerful AI foundation — models, analytics, and collaboration tools your enterprise already runs on. None of it was designed to orchestrate a strategic response.",
   step1Color: "#4285F4",
   integrationsHeading: "Five Google integrations. One execution system.",
-  ctaHeading: "Activate Execution OS on your Google stack.",
+  ctaHeading: "Activate Command OS on your Google stack.",
   ctaBody: "We deploy inside your existing Google Cloud environment. No migration. No new portals. The strategic layer your enterprise is missing.",
 };
 

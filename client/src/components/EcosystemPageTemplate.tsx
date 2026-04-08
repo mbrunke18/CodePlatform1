@@ -104,14 +104,14 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               },
               {
                 phase: "02",
-                title: "Execution OS provides the strategic layer",
-                body: "Sitting above the stack, Execution OS monitors 221 executive triggers, maps them to 170 pre-staged playbooks, and fires coordinated responses in 12 minutes — without waiting for committees, emails, or alignment cycles.",
+                title: "Command OS provides the strategic layer",
+                body: "Sitting above the stack, Command OS monitors 221 executive triggers, maps them to 170 pre-staged playbooks, and fires coordinated responses in 12 minutes — without waiting for committees, emails, or alignment cycles.",
                 color: TEAL,
               },
               {
                 phase: "03",
                 title: "Humans retain all decision authority",
-                body: "AI handles monitoring and recommendation. Every playbook activation is a human decision. Execution OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
+                body: "AI handles monitoring and recommendation. Every playbook activation is a human decision. Command OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
                 color: GOLD,
               },
             ].map(({ phase, title, body, color }) => (

@@ -102,7 +102,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
           <span className="text-lg">📡</span> DETECT Phase — Monitor Signals
         </h3>
         <p className="text-xs text-muted-foreground">
-          Define the signals and conditions that will trigger this playbook. Execution OS' AI continuously monitors 
+          Define the signals and conditions that will trigger this playbook. Command OS' AI continuously monitors 
           these data sources and recommends activation when thresholds are met.
         </p>
       </div>

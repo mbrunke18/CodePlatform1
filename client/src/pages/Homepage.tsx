@@ -131,7 +131,7 @@ function HomepageNav() {
             <Link href="/how-it-works" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Platform</Link>
             <Link href="/industry-demos" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1 }}>Experience</Link>
-            <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Why Execution OS</Link>
+            <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Why Command OS</Link>
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
@@ -190,7 +190,7 @@ function HomepageNav() {
             { label: "How It Works",  href: "/how-it-works" },
             { label: "The Platform",  href: "/platform-overview" },
             { label: "Experience",    href: "/industry-demos" },
-            { label: "Why Execution OS", href: "/why-execution-os" },
+            { label: "Why Command OS", href: "/why-execution-os" },
             { label: "Investors",     href: "/investors" },
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
@@ -299,7 +299,7 @@ function HeroSection() {
           </h1>
 
           <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.4 }}>
-            Execution OS closes that gap — in 12 minutes.
+            Command OS closes that gap — in 12 minutes.
           </p>
 
           <p style={{ ...DM, fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.38)", maxWidth: 520, margin: "0 auto 20px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
@@ -457,7 +457,7 @@ function ProblemSection() {
             {/* Timeline contrast callout */}
             <div style={{ borderTop: `2px solid ${GOLD}`, paddingTop: 24 }}>
               <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
-                Without Execution OS
+                Without Command OS
               </div>
               {[
                 { label: "Trigger detected",    val: "Instantly" },
@@ -471,7 +471,7 @@ function ProblemSection() {
                 </div>
               ))}
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4, padding: "12px 16px", background: "#0A0F2E", borderRadius: 4 }}>
-                <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: GOLD }}>With Execution OS</span>
+                <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: GOLD }}>With Command OS</span>
                 <span style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "#fff" }}>12 minutes</span>
               </div>
             </div>
@@ -528,7 +528,7 @@ function ExecutionGapSection() {
             30 Days of Mobilization. 12 Minutes to Live Execution.
           </div>
           <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 620, margin: "14px auto 0", fontFamily: "'DM Sans', Arial, sans-serif", lineHeight: 1.6 }}>
-            The traditional enterprise spends weeks just getting the right people in the room, aligned on a plan, and ready to act. Execution OS delivers roles assigned, tasks staged, communications drafted, and execution already underway — in 12 minutes.
+            The traditional enterprise spends weeks just getting the right people in the room, aligned on a plan, and ready to act. Command OS delivers roles assigned, tasks staged, communications drafted, and execution already underway — in 12 minutes.
           </div>
         </div>
         <ExecutionGapDiagram />
@@ -645,7 +645,7 @@ function IDEASection() {
               </div>
               {/* After */}
               <div style={{ background: "#F4FBF8", padding: "28px 32px" }}>
-                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 18 }}>With Execution OS</div>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 18 }}>With Command OS</div>
                 {[
                   "Trigger detected — playbook activated automatically",
                   "Roles, tasks, and budget pre-assigned and deployed",
@@ -896,7 +896,7 @@ function MicrosoftEcosystemBanner() {
               <em style={{ color: GOLD, fontStyle: 'italic' }}>None have the operating model to use it.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: 'rgba(240,237,228,0.55)', maxWidth: 620, margin: '0 auto 8px' }}>
-              Execution OS is the operating model layer above your Microsoft investment. When a strategic trigger fires, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
+              Command OS is the operating model layer above your Microsoft investment. When a strategic trigger fires, the coordinated response deploys inside Teams, Azure AI, and M365 in 12 minutes — with the workflow architecture that turns AI capability into AI action.
             </p>
             <p style={{ ...DM, fontSize: 13, color: TEAL, fontWeight: 600 }}>
               For investors: every Microsoft enterprise customer is an immediately addressable prospect.
@@ -1158,7 +1158,7 @@ function HomepageFooter() {
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, textAlign: "center" }}>
           <p style={{ ...DM, fontSize: 11, color: MUTED_LIGHT }}>
-            VaughnMartin · Execution OS · Built for Fortune 1000 · Confidential
+            VaughnMartin · Command OS · Built for Fortune 1000 · Confidential
           </p>
         </div>
       </div>

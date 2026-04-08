@@ -25,7 +25,7 @@ export default function APIPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                Manage API keys for programmatic access to Execution OS
+                Manage API keys for programmatic access to Command OS
               </p>
               <Button variant="outline" disabled>
                 Generate API Key

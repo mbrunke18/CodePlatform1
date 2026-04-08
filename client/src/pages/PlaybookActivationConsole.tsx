@@ -375,7 +375,7 @@ export default function PlaybookActivationConsole() {
     } else if (ackActionType === 'delegate') {
       setLiveEvents(prev => [
         { time: at, text: `→ [${ackRole}] delegated task — ownership transferred and tracking initiated`, type: 'complete' as const },
-        { time: at, text: `🔔 Delegate notified via Execution OS — task marked for real-time progress monitoring`, type: 'init' },
+        { time: at, text: `🔔 Delegate notified via Command OS — task marked for real-time progress monitoring`, type: 'init' },
         ...prev,
       ]);
     } else {
@@ -1493,7 +1493,7 @@ export default function PlaybookActivationConsole() {
                   </div>
                   <div style={{ marginTop: 24, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
                     <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", marginBottom: 14, textAlign: "center" }}>
-                      Evaluating Execution OS for your organization?
+                      Evaluating Command OS for your organization?
                     </p>
                     <Link href="/peer-review">
                       <button style={{
@@ -1521,7 +1521,7 @@ export default function PlaybookActivationConsole() {
                       Concept Simulation — Evidence of Execution Velocity
                     </p>
                     <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55 }}>
-                      This simulation demonstrates what your organization could achieve with Execution OS in a live strategic event.
+                      This simulation demonstrates what your organization could achieve with Command OS in a live strategic event.
                       Performance scores, ROI estimates, and task completion rates are modeled against the <strong>30-day industry mobilization benchmark</strong> for comparable strategic response events.
                       Actual results vary by organization readiness and playbook configuration.
                     </p>

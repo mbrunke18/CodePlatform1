@@ -37,9 +37,9 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Request Pilot Access - Execution OS Now in Pilot",
-      description: "Join Execution OS' exclusive pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
-      ogTitle: "Request Pilot Access - Execution OS Pilot Program",
+      title: "Request Pilot Access - Command OS Now in Pilot",
+      description: "Join Command OS' exclusive pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
+      ogTitle: "Request Pilot Access - Command OS Pilot Program",
       ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership. Now accepting applications.",
     });
   }, []);
@@ -104,7 +104,7 @@ export default function Contact() {
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
               Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution 
-              through Execution OS' 90-day validation partnership.
+              through Command OS' 90-day validation partnership.
             </p>
             <div className="flex gap-8 justify-center flex-wrap">
               {[
@@ -283,7 +283,7 @@ export default function Contact() {
 
                     <div style={{ background: "#F8F7F4", borderLeft: `4px solid ${GOLD}`, padding: "24px" }}>
                       <p className="text-xs text-slate-700 leading-relaxed">
-                        <strong className="text-[#0A0F2E]">Note:</strong> Execution OS is in pre-launch. This pilot program is designed to validate 12-minute execution goals in real-world environments. Selection is limited to 10 companies.
+                        <strong className="text-[#0A0F2E]">Note:</strong> Command OS is in pre-launch. This pilot program is designed to validate 12-minute execution goals in real-world environments. Selection is limited to 10 companies.
                       </p>
                     </div>
 

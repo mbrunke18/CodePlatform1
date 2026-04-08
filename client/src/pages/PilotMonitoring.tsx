@@ -18,9 +18,9 @@ import { useQuery } from "@tanstack/react-query";
 export default function PilotMonitoring() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Pilot Program Monitoring - Execution OS | System Health Dashboard",
-      description: "Real-time monitoring dashboard for Execution OS Early Access Program. Track system health, pilot company activity, and platform performance.",
-      ogTitle: "Execution OS Pilot Monitoring Dashboard",
+      title: "Pilot Program Monitoring - Command OS | System Health Dashboard",
+      description: "Real-time monitoring dashboard for Command OS Early Access Program. Track system health, pilot company activity, and platform performance.",
+      ogTitle: "Command OS Pilot Monitoring Dashboard",
       ogDescription: "Monitor system health and pilot program success metrics in real-time.",
     });
   }, []);

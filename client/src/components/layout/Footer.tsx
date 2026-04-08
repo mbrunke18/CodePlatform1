@@ -65,7 +65,7 @@ export default function Footer() {
       title: "Company",
       links: [
         { label: "IDEA Framework", path: "/idea-framework" },
-        { label: "Why Execution OS", path: "/why-execution-os" },
+        { label: "Why Command OS", path: "/why-execution-os" },
         { label: "Why Not Consulting?", path: "/vs-consulting" },
         { label: "Platform Overview", path: "/platform-overview" },
         { label: "Founder's Story", path: "/founder-story" },
@@ -174,7 +174,7 @@ export default function Footer() {
             <div className="flex flex-col gap-1">
               <VaughnMartinLogo height={72} color="light" />
               <p className="text-xs text-gray-500" style={{ paddingLeft: '2px' }}>
-                © {new Date().getFullYear()} VaughnMartin — Execution OS
+                © {new Date().getFullYear()} VaughnMartin — Command OS
               </p>
             </div>
             <div className="flex items-center gap-6">

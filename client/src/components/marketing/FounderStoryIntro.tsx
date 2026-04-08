@@ -9,10 +9,10 @@ const SCENE_NARRATIONS = [
   "That's how long it takes most Fortune 500 companies to respond to a crisis. Conference calls. Scrambling. Waiting on decisions. Meanwhile, the damage compounds. The window closes.",
   "I spent 20 years inside Fortune 500 companies watching this happen. Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "I kept thinking—in football, we'd never run a play without practicing it first. But in business? We wing it. Every time.",
-  "That's why I built Execution OS. 170 playbooks across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",
+  "That's why I built Command OS. 170 playbooks across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",
   "From signal to coordinated execution. 12 minutes. One click to activate. Roles assigned. Teams moving in parallel.",
   "This isn't about working harder. It's about executing with discipline—the kind that wins championships.",
-  "The companies that figure this out first don't just survive. They dominate. Welcome to Execution OS.",
+  "The companies that figure this out first don't just survive. They dominate. Welcome to Command OS.",
 ];
 
 function useTTSNarration() {
@@ -269,7 +269,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
     { duration: 12000 }, // The problem
     { duration: 14000 }, // Your story - Fortune 500 background
     { duration: 12000 }, // Football metaphor
-    { duration: 14000 }, // The solution - Execution OS intro
+    { duration: 14000 }, // The solution - Command OS intro
     { duration: 12000 }, // 12 minutes transformation
     { duration: 11000 }, // The vision
     { duration: 10000 }, // CTA
@@ -470,7 +470,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
             </Scene>
           )}
 
-          {/* Scene 4: The Solution - Execution OS */}
+          {/* Scene 4: The Solution - Command OS */}
           {currentScene === 4 && (
             <Scene key="scene-4">
               <div className="text-center max-w-4xl">
@@ -488,7 +488,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
                   className="mb-8"
                 >
-                  <span className="text-6xl md:text-8xl font-bold text-gray-900">Execution OS</span>
+                  <span className="text-6xl md:text-8xl font-bold text-gray-900">Command OS</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -617,7 +617,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   className="mb-8"
                 >
                   <span className="text-2xl md:text-3xl text-[#2B8A6E] font-semibold">
-                    Welcome to Execution OS.
+                    Welcome to Command OS.
                   </span>
                 </motion.div>
                 <motion.div

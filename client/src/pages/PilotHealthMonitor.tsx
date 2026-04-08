@@ -139,7 +139,7 @@ export default function PilotHealthMonitor() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Pilot Health Monitor — Execution OS Admin",
+      title: "Pilot Health Monitor — Command OS Admin",
       description: "Real-time health view for all active pilot organizations.",
     });
   }, []);

@@ -44,7 +44,7 @@ const IR_CONTAINER: React.CSSProperties = { maxWidth: 1160, margin: "0 auto", pa
 
 function McKinseyResearchSection() {
   const stats = [
-    { pct: "65%", headline: "Still Piloting", sub: "Not yet scaling AI across the enterprise", bridge: "Execution OS closes this gap — 12-minute activation vs. months of mobilization", color: IR_GOLD, bg: "rgba(201,168,76,0.07)", border: "rgba(201,168,76,0.22)" },
+    { pct: "65%", headline: "Still Piloting", sub: "Not yet scaling AI across the enterprise", bridge: "Command OS closes this gap — 12-minute activation vs. months of mobilization", color: IR_GOLD, bg: "rgba(201,168,76,0.07)", border: "rgba(201,168,76,0.22)" },
     { pct: "1%", headline: "Fully Mature", sub: "Leaders — not employees — are the bottleneck", bridge: "221 executive triggers arm decision-makers so they stop being the constraint", color: IR_TEAL, bg: "rgba(43,138,110,0.07)", border: "rgba(43,138,110,0.22)" },
     { pct: "$4.4T", headline: "AI Productivity Potential", sub: "Locked inside enterprises that can't activate it", bridge: "The coordination layer — not the AI model — is what unlocks this value", color: "#3BAF8A", bg: "rgba(59,175,138,0.07)", border: "rgba(59,175,138,0.22)" },
   ];
@@ -96,7 +96,7 @@ function McKinseyResearchSection() {
               "Orchestration layer · coordination fabric · shared source of truth"
             </div>
             <div style={{ ...IR_DM, fontSize: 13, color: IR_MUTED, lineHeight: 1.6 }}>
-              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Execution OS is the product that sits there: 170 pre-staged playbooks reading across all five organizational pillars simultaneously.
+              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Command OS is the product that sits there: 170 pre-staged playbooks reading across all five organizational pillars simultaneously.
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ function McKinseyResearchSection() {
                 </p>
                 <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", marginBottom: 10 }}>McKinsey Global Institute — November 2025</p>
                 <p style={{ ...IR_DM, fontSize: 12, color: IR_TEAL, lineHeight: 1.55 }}>
-                  Execution OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 playbooks deploy the response. The CEO doesn't become an operator. They become the signal.
+                  Command OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 playbooks deploy the response. The CEO doesn't become an operator. They become the signal.
                 </p>
               </blockquote>
             </div>
@@ -214,9 +214,9 @@ function McKinseyResearchSection() {
 export default function InvestorResources() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Investor Resources | Execution OS Strategic Execution OS",
-      description: "Investment overview for Execution OS, the first Strategic Execution Operating System. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
-      ogTitle: "Invest in Execution OS - Category-Defining Opportunity",
+      title: "Investor Resources | Command OS — Strategic Execution Platform",
+      description: "Investment overview for Command OS, the enterprise command infrastructure platform. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
+      ogTitle: "Invest in Command OS - Category-Defining Opportunity",
       ogDescription: "Transform 30-day alignment cycles into 12-minute execution. First-mover in Strategic Execution Operating System (SEOS) category.",
     });
   }, []);
@@ -250,7 +250,7 @@ export default function InvestorResources() {
           </p>
           
           <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-            What Salesforce did for customer relationships, Execution OS does for strategic execution.
+            What Salesforce did for customer relationships, Command OS does for strategic execution.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
@@ -328,7 +328,7 @@ export default function InvestorResources() {
               </CardHeader>
               <CardContent className="p-8 space-y-6">
                 <p className="text-[#0A0F2E] font-medium leading-relaxed">
-                  Execution OS fundamentally changes the operating model:
+                  Command OS fundamentally changes the operating model:
                 </p>
                 <div className="space-y-4">
                   {[
@@ -387,7 +387,7 @@ export default function InvestorResources() {
           {/* The 4-Phase Lifecycle */}
           <Card className="mb-12 border-[#E8E4DC] bg-white">
             <CardHeader>
-              <CardTitle className="text-[#0A0F2E]" style={CG}>The Execution OS Framework: 4-Phase Lifecycle</CardTitle>
+              <CardTitle className="text-[#0A0F2E]" style={CG}>The Command OS Framework: 4-Phase Lifecycle</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-4 gap-4">
@@ -439,7 +439,7 @@ export default function InvestorResources() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={CG}>ROI Per Strategic Event</h2>
             <p className="text-[#6B7280] max-w-2xl mx-auto">
-              Execution OS pays for itself on the first significant event
+              Command OS pays for itself on the first significant event
             </p>
           </div>
 
@@ -485,7 +485,7 @@ export default function InvestorResources() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={CG}>Competitive Differentiation</h2>
             <p className="text-[#6B7280]">
-              Execution OS owns the category between strategic preparation and operational execution
+              Command OS owns the category between strategic preparation and operational execution
             </p>
           </div>
 
@@ -498,7 +498,7 @@ export default function InvestorResources() {
                       <th className="text-left py-4 px-6 font-bold text-[#0A0F2E]">Capability</th>
                       <th className="text-center py-4 px-4 font-bold text-[#6B7280]">Crisis Tools</th>
                       <th className="text-center py-4 px-4 font-bold text-[#6B7280]">PM Tools</th>
-                      <th className="text-center py-4 px-4 font-bold text-[#C9A84C] bg-[#0A0F2E]/5">Execution OS</th>
+                      <th className="text-center py-4 px-4 font-bold text-[#C9A84C] bg-[#0A0F2E]/5">Command OS</th>
                     </tr>
                   </thead>
                   <tbody className="text-[#6B7280]">
@@ -770,7 +770,7 @@ export default function InvestorResources() {
               Two independent frameworks. The same missing layer.
             </h2>
             <p className="text-[#6B7280] max-w-2xl mx-auto text-sm leading-relaxed">
-              The governance model and the build stack are separate disciplines. Both independently identify the same gap — and Execution OS is the only platform built to fill it.
+              The governance model and the build stack are separate disciplines. Both independently identify the same gap — and Command OS is the only platform built to fill it.
             </p>
           </div>
 
@@ -806,7 +806,7 @@ export default function InvestorResources() {
             Ready to Learn More?
           </h2>
           <p className="text-lg text-white/70 mb-10">
-            See Execution OS in action and explore the category-defining opportunity.
+            See Command OS in action and explore the category-defining opportunity.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/investor-presentation">

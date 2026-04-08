@@ -76,8 +76,8 @@ export default function ExplorePage() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'Explore Execution OS — Experience the Full Platform',
-      description: 'Sign in and experience VaughnMartin Execution OS as a real customer. Browse 170 playbooks, activate a scenario, and see a coordinated response unfold.',
+      title: 'Explore Command OS — Experience the Full Platform',
+      description: 'Sign in and experience VaughnMartin Command OS as a real customer. Browse 170 playbooks, activate a scenario, and see a coordinated response unfold.',
     });
   }, []);
 

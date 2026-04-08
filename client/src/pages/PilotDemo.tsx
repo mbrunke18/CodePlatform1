@@ -169,7 +169,7 @@ export default function PilotDemo() {
         type: "signal", 
         title: "Signal Detected & Captured", 
         description: triggerData?.sampleSignal || "Business event detected",
-        valueCallout: "Execution OS monitors 50+ data sources 24/7 so you never miss a critical signal",
+        valueCallout: "Command OS monitors 50+ data sources 24/7 so you never miss a critical signal",
         traditionalTime: "Hours to days for manual discovery",
         icon: Radio 
       },
@@ -734,7 +734,7 @@ export default function PilotDemo() {
                             <div className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                               <div className="flex items-center gap-2 mb-3">
                                 <Zap className="w-5 h-5 text-[#2B8A6E]" />
-                                <span className="font-semibold text-[#0A2920] dark:text-[#2B8A6E]">With Execution OS</span>
+                                <span className="font-semibold text-[#0A2920] dark:text-[#2B8A6E]">With Command OS</span>
                               </div>
                               <div className="text-3xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">12 minutes</div>
                               <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
@@ -764,7 +764,7 @@ export default function PilotDemo() {
                           </div>
 
                           <p className="text-sm text-gray-800 dark:text-slate-300 text-center mb-6">
-                            In production, Execution OS also creates Jira tickets, notifies Slack channels, stages documents, and unlocks pre-approved budgets—all automatically.
+                            In production, Command OS also creates Jira tickets, notifies Slack channels, stages documents, and unlocks pre-approved budgets—all automatically.
                           </p>
 
                           <div className="flex justify-center gap-4">

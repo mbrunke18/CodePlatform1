@@ -301,7 +301,7 @@ const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: s
 };
 
 const PHASES = [
-  { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without Execution OS' },
+  { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without Command OS' },
   { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'teal', description: 'Playbook ready' },
   { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'navy', description: 'Signal detected' },
   { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'gold', description: 'Coordinate response' },
@@ -594,8 +594,8 @@ export default function TryDemo() {
     <PageLayout>
       <PageHero
         eyebrow="Interactive Demo"
-        title="Experience Execution OS"
-        subtitle="Select a strategic scenario and see how Execution OS responds — from signal detection to full playbook execution in 12 minutes."
+        title="Experience Command OS"
+        subtitle="Select a strategic scenario and see how Command OS responds — from signal detection to full playbook execution in 12 minutes."
         size="md"
       />
       <main className="flex-1 py-8 md:py-12">
@@ -653,11 +653,11 @@ export default function TryDemo() {
                   </div>
                 </div>
 
-                {/* RIGHT — Execution OS way */}
+                {/* RIGHT — Command OS way */}
                 <div style={{ background: NAVY, padding: '24px 22px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
                     <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>With Execution OS</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>With Command OS</span>
                   </div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: '#FFFFFF', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>The same trigger. A completely different result.</p>
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16, lineHeight: 1.6 }}>Your playbook was already built. The system was already watching.</p>
@@ -749,7 +749,7 @@ export default function TryDemo() {
                   <AlertTriangle style={{ width: 20, height: 20, color: '#f87171' }} />
                 </div>
                 <div>
-                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 4 }}>This Is Your Current Reality — Without Execution OS</p>
+                  <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 4 }}>This Is Your Current Reality — Without Command OS</p>
                   <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, margin: 0 }}>
                     Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a strategic trigger fires and no playbook exists.
                   </p>
@@ -882,7 +882,7 @@ export default function TryDemo() {
                         <div style={{ background: '#0A0F2E', borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
                           <div style={{ background: 'rgba(220,38,38,0.12)', padding: '10px 16px', borderBottom: '1px solid rgba(220,38,38,0.2)', display: 'flex', alignItems: 'center', gap: 8 }}>
                             <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#f87171' }} />
-                            <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Execution OS</p>
+                            <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Command OS</p>
                           </div>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                             <div style={{ padding: '14px 16px', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
@@ -892,14 +892,14 @@ export default function TryDemo() {
                               ))}
                             </div>
                             <div style={{ padding: '14px 16px', background: 'rgba(43,138,110,0.07)' }}>
-                              <p style={{ fontSize: 9, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>✓ 12 Minutes with Execution OS</p>
+                              <p style={{ fontSize: 9, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>✓ 12 Minutes with Command OS</p>
                               {['Playbook pre-staged before trigger', 'Budget pre-approved at setup', '3,600× execution head start', 'Board brief auto-generated'].map(item => (
                                 <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.75)', margin: '0 0 5px', lineHeight: 1.4 }}>✓ {item}</p>
                               ))}
                             </div>
                           </div>
                           <div style={{ padding: '10px 16px', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
-                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Every minute you watched = {selectedScenario ? `$${(selectedScenario.revenuePerMinute / 1000).toFixed(0)}K lost` : 'revenue lost'} — that clock stops the moment Execution OS activates</span>
+                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Every minute you watched = {selectedScenario ? `$${(selectedScenario.revenuePerMinute / 1000).toFixed(0)}K lost` : 'revenue lost'} — that clock stops the moment Command OS activates</span>
                           </div>
                         </div>
                         <Button 
@@ -1024,7 +1024,7 @@ export default function TryDemo() {
 
                         <div className="p-3 bg-gray-50 rounded-lg">
                           <p className="text-sm text-gray-800">
-                            <span className="text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
+                            <span className="text-red-400 font-medium">Without Command OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
                         </div>
 
@@ -1143,7 +1143,7 @@ export default function TryDemo() {
                           EXECUTE: Coordinating Response
                         </CardTitle>
                         <CardDescription>
-                          Watch Execution OS orchestrate your response in real-time
+                          Watch Command OS orchestrate your response in real-time
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
@@ -1153,7 +1153,7 @@ export default function TryDemo() {
                             <Zap size={15} style={{ color: '#C9A84C' }} />
                           </div>
                           <div>
-                            <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 3px' }}>What Execution OS Just Replaced</p>
+                            <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 3px' }}>What Command OS Just Replaced</p>
                             <p style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.85)', margin: '0 0 2px', lineHeight: 1.45 }}>
                               {executionSteps.length === 0
                                 ? 'Normally this would take 3–5 days just to convene the right team.'
@@ -1286,7 +1286,7 @@ export default function TryDemo() {
                             {/* Header bar */}
                             <div style={{ background: NAVY_MID, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(201,168,76,0.2)' }}>
                               <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
-                              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Execution OS — Playbook Activated</span>
+                              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Command OS — Playbook Activated</span>
                             </div>
 
                             <div style={{ padding: '32px 28px' }}>
@@ -1358,7 +1358,7 @@ export default function TryDemo() {
                                 <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.15)', margin: 0 }}>→</p>
                               </div>
                               <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 10 }}>
-                                <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>With Execution OS</p>
+                                <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>With Command OS</p>
                                 <p style={{ fontSize: 26, fontWeight: 800, color: '#4ade80', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>12 min</p>
                                 <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>full execution underway</p>
                               </div>
@@ -1412,7 +1412,7 @@ export default function TryDemo() {
                             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>Independent Assessment</div>
                             <h3 style={{ fontSize: 17, fontWeight: 700, color: NAVY, marginBottom: 8, lineHeight: 1.3, fontFamily: "'Cormorant Garamond', serif" }}>Share Your Unfiltered Assessment</h3>
                             <p style={{ fontSize: 13, color: '#6B7280', lineHeight: 1.65, marginBottom: 16 }}>
-                              You have now seen Execution OS in action. Your candid perspective — credibility, gaps, competitive concerns — is more valuable to us than a positive review. The assessment takes 25–35 minutes and directly shapes the product roadmap.
+                              You have now seen Command OS in action. Your candid perspective — credibility, gaps, competitive concerns — is more valuable to us than a positive review. The assessment takes 25–35 minutes and directly shapes the product roadmap.
                             </p>
                             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                               <a
@@ -1447,7 +1447,7 @@ export default function TryDemo() {
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Your organization built this playbook before today.</p>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Every task assignment, stakeholder notification, and communication template was configured in advance — not improvised under pressure. This is the entire point: the work happens before the trigger fires, not after it.</p>
                       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
-                        <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 6 }}>Without Execution OS:</p>
+                        <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 6 }}>Without Command OS:</p>
                         <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Spend 4–8 hours assembling a response team, locating the right people, finding documents, and getting budget approval — while the situation compounds.</p>
                       </div>
                     </div>
@@ -1460,7 +1460,7 @@ export default function TryDemo() {
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 248+ sources — replaced by continuous AI monitoring.</p>
-                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Execution OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Command OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                         {[['248+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (
                           <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '8px 10px', textAlign: 'center' }}>
@@ -1478,7 +1478,7 @@ export default function TryDemo() {
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, animation: 'pulse 1.5s infinite' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL }}>What's Happening Right Now</span>
                       </div>
-                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Execution OS is firing all of the following simultaneously — not sequentially. No one had to email anyone to start this.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Command OS is firing all of the following simultaneously — not sequentially. No one had to email anyone to start this.</p>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                         {[
                           `${selectedScenario.stakeholders} role-specific task assignments`,
@@ -1495,7 +1495,7 @@ export default function TryDemo() {
                         ))}
                       </div>
                       <div style={{ marginTop: 14, borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
-                        <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 4 }}>Without Execution OS:</p>
+                        <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 4 }}>Without Command OS:</p>
                         <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>Each of those 6 actions requires a human email, a meeting invite, and at least one follow-up chase. Collectively: 20–50 hours.</p>
                       </div>
                     </div>
@@ -1528,7 +1528,7 @@ export default function TryDemo() {
                               <p className="text-[10px] text-slate-500 font-medium">Traditional mobilization</p>
                             </div>
                             <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
-                              <p className="text-[10px] text-[#2B8A6E] font-bold uppercase mb-1">Execution OS</p>
+                              <p className="text-[10px] text-[#2B8A6E] font-bold uppercase mb-1">Command OS</p>
                               <p className="text-xl font-bold text-[#2B8A6E]">12 min</p>
                               <p className="text-[10px] text-slate-500 font-medium">Guaranteed</p>
                             </div>
@@ -1608,7 +1608,7 @@ export default function TryDemo() {
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={CG}>See It In Your Industry</h2>
             <p className="text-slate-600 max-w-2xl mx-auto font-medium">
-              Explore how Execution OS handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
+              Explore how Command OS handles real-world scenarios across offense and defense — each demo shows the full trigger-to-execution loop.
             </p>
           </div>
           

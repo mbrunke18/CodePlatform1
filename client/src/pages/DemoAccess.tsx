@@ -32,7 +32,7 @@ export default function DemoAccess() {
       }}>
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 24 }}>
-            VaughnMartin · Execution OS
+            VaughnMartin · Command OS
           </div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#fff", marginBottom: 12 }}>
             Access Token Required
@@ -63,7 +63,7 @@ export default function DemoAccess() {
     }}>
       <div>
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 32 }}>
-          VaughnMartin · Execution OS
+          VaughnMartin · Command OS
         </div>
 
         {/* Animated ring */}
@@ -92,7 +92,7 @@ export default function DemoAccess() {
           Preparing your executive access
         </h1>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", letterSpacing: "0.05em" }}>
-          Signing you in to the Execution OS platform…
+          Signing you in to the Command OS platform…
         </p>
 
         <style>{`

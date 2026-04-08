@@ -345,7 +345,7 @@ export default function CommandTower() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: 'Command Tower — Execution OS',
+      title: 'Command Tower — Command OS',
       description: 'Real-time strategic execution monitoring. Live trigger detections, playbook executions, and signal intelligence at a glance.',
     });
   }, []);

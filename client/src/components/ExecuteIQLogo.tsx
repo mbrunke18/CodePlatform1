@@ -182,7 +182,7 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
             textTransform: 'uppercase' as const,
             color: osColor,
           }}>
-            Execution OS
+            Command OS
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
             textTransform: 'uppercase' as const,
             color: osColor,
           }}>
-            Execution OS
+            Command OS
           </div>
         </div>
       </div>

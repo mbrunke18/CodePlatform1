@@ -392,9 +392,9 @@ export default function QuickDemoPage() {
               <Badge className="mb-4 bg-gradient-to-r from-[#C9A84C]/20 to-[#2B8A6E]/20 text-[#C9A84C] border-[#C9A84C]/30">
                 5-Minute Interactive Demo
               </Badge>
-              <h1 className="text-3xl font-bold mb-2">Experience Execution OS</h1>
+              <h1 className="text-3xl font-bold mb-2">Experience Command OS</h1>
               <p className="text-muted-foreground text-lg">
-                Choose a crisis scenario and watch Execution OS transform chaos into coordinated execution
+                Choose a crisis scenario and watch Command OS transform chaos into coordinated execution
               </p>
             </div>
 
@@ -559,7 +559,7 @@ export default function QuickDemoPage() {
                   {showChaosComplete && (
                     <div className="flex-1 space-y-3">
                       <div className="p-4 border rounded-lg text-center">
-                        <p className="text-muted-foreground text-sm mb-1">This is what happens WITHOUT Execution OS</p>
+                        <p className="text-muted-foreground text-sm mb-1">This is what happens WITHOUT Command OS</p>
                         <p className="font-medium">Chaos. Confusion. Costly delays.</p>
                       </div>
                       <Button
@@ -567,7 +567,7 @@ export default function QuickDemoPage() {
                         onClick={moveToPrepared}
                       >
                         <Sparkles className="mr-2 h-5 w-5" />
-                        Now See Execution OS in Action
+                        Now See Command OS in Action
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </div>
@@ -678,7 +678,7 @@ export default function QuickDemoPage() {
 
                       <div className="p-3 bg-muted/50 rounded-lg">
                         <p className="text-sm text-muted-foreground">
-                          <span className="text-red-500 dark:text-red-400 font-medium">Without Execution OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
+                          <span className="text-red-500 dark:text-red-400 font-medium">Without Command OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                         </p>
                       </div>
 
@@ -747,7 +747,7 @@ export default function QuickDemoPage() {
                         EXECUTE: Coordinating Response
                       </CardTitle>
                       <CardDescription>
-                        Watch Execution OS orchestrate your response in real-time
+                        Watch Command OS orchestrate your response in real-time
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -810,7 +810,7 @@ export default function QuickDemoPage() {
                       {!learnings ? (
                         <div className="space-y-4">
                           <p className="text-muted-foreground">
-                            Execution OS captures what worked and suggests playbook improvements for next time.
+                            Command OS captures what worked and suggests playbook improvements for next time.
                           </p>
                           <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" onClick={completeAdvance}>
                             <Sparkles className="mr-2 h-4 w-4" />
@@ -901,7 +901,7 @@ export default function QuickDemoPage() {
                   <CardContent className="p-4">
                     <h4 className="text-sm font-medium text-[#2B8A6E] dark:text-[#2B8A6E] mb-3 flex items-center gap-2">
                       <Zap className="h-4 w-4" />
-                      What Execution OS Is Doing
+                      What Command OS Is Doing
                     </h4>
                     <div className="space-y-3 text-sm">
                       {currentPhase === 'identify' && (
@@ -924,7 +924,7 @@ export default function QuickDemoPage() {
                       )}
                       {currentPhase === 'execute' && (
                         <>
-                          <p className="text-muted-foreground">Execution OS orchestrates across Jira, Slack, Teams, Salesforce, and more. Tasks assigned, war rooms launched, budgets released automatically.</p>
+                          <p className="text-muted-foreground">Command OS orchestrates across Jira, Slack, Teams, Salesforce, and more. Tasks assigned, war rooms launched, budgets released automatically.</p>
                           <div className="p-3 bg-background rounded-lg">
                             <p className="text-xs font-medium mb-1">12-Minute Execution</p>
                             <p className="text-xs text-muted-foreground">From trigger to coordinated execution across 50-200+ stakeholders.</p>
@@ -945,7 +945,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">The full IDEA Framework loop is complete. This same process works across all 9 strategic domains.</p>
                           <div className="p-3 bg-background rounded-lg">
                             <p className="text-xs font-medium mb-1">Ready for Your Organization</p>
-                            <p className="text-xs text-muted-foreground">Start a pilot to see Execution OS with your real playbooks and integrations.</p>
+                            <p className="text-xs text-muted-foreground">Start a pilot to see Command OS with your real playbooks and integrations.</p>
                           </div>
                         </>
                       )}

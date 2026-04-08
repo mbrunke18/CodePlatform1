@@ -95,8 +95,8 @@ export function registerActivationRoutes(app: Express): void {
 
       notifyTeamsPlaybookActivation({
         playbookName,
-        organizationName: 'Execution OS',
-        triggeredBy: 'Execution OS Platform',
+        organizationName: 'Command OS',
+        triggeredBy: 'Command OS Platform',
         appUrl,
       }).catch(() => {});
 
@@ -121,7 +121,7 @@ export function registerActivationRoutes(app: Express): void {
             <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
               <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
                 <div style="background:#132558;padding:32px 36px;">
-                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Execution OS · Playbook Activated</div>
+                  <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Command OS · Playbook Activated</div>
                   <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Response Initiated</div>
                 </div>
                 <div style="padding:32px 36px;">
@@ -151,14 +151,14 @@ export function registerActivationRoutes(app: Express): void {
                   </div>
                 </div>
                 <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-                  <div style="color:#999;font-size:11px;text-align:center;">This notification was generated automatically by Execution OS when a playbook was activated. No human reviewed it before it reached you.</div>
+                  <div style="color:#999;font-size:11px;text-align:center;">This notification was generated automatically by Command OS when a playbook was activated. No human reviewed it before it reached you.</div>
                 </div>
               </div>
             </div>
           `;
 
           await resend.emails.send({
-            from: 'Execution OS <pilot@vaughnmartin.com>',
+            from: 'Command OS <pilot@vaughnmartin.com>',
             replyTo: 'pilot@vaughnmartin.com',
             to: emails,
             subject: `🚀 Playbook Activated: ${playbookName} — 12-Minute Execution Clock Running`,

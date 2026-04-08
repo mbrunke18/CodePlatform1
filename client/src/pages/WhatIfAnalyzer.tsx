@@ -429,10 +429,10 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
               </CardTitle>
               <CardDescription>
                 {isRecommended
-                  ? 'With this change in place, here is how Execution OS orchestrates the response'
+                  ? 'With this change in place, here is how Command OS orchestrates the response'
                   : isConditional
-                  ? 'If you proceed with safeguards, Execution OS can orchestrate the adjusted response'
-                  : 'Even without this change, Execution OS keeps your current coordination at peak speed'}
+                  ? 'If you proceed with safeguards, Command OS can orchestrate the adjusted response'
+                  : 'Even without this change, Command OS keeps your current coordination at peak speed'}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -1423,7 +1423,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     {analysisResult.triggeredAlerts.length} alert{analysisResult.triggeredAlerts.length !== 1 ? 's' : ''} detected, {analysisResult.recommendedPlaybooks.length} playbook{analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} ready to activate
                   </h3>
                   <p className="text-sm text-gray-800 dark:text-slate-300">
-                    If this scenario occurs, Execution OS would coordinate your response in <strong>{analysisResult.decisionVelocityMetrics.ourTime} minutes</strong> — {analysisResult.decisionVelocityMetrics.percentageFaster}% faster than the industry average of {industryHrs} hours. {analysisResult.teamsInvolved.length} teams would be mobilized simultaneously.
+                    If this scenario occurs, Command OS would coordinate your response in <strong>{analysisResult.decisionVelocityMetrics.ourTime} minutes</strong> — {analysisResult.decisionVelocityMetrics.percentageFaster}% faster than the industry average of {industryHrs} hours. {analysisResult.teamsInvolved.length} teams would be mobilized simultaneously.
                   </p>
                 </div>
               </div>
@@ -1445,7 +1445,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="space-y-4">
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-sm font-medium text-teal-600">With Execution OS</span>
+                      <span className="text-sm font-medium text-teal-600">With Command OS</span>
                       <span className="text-sm font-bold text-teal-600">{analysisResult.decisionVelocityMetrics.ourTime} min</span>
                     </div>
                     <div className="w-full bg-slate-100 dark:bg-[#141B45] rounded-full h-3">
@@ -1497,7 +1497,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2">
                 <Zap className="h-5 w-5 text-teal-600" />
-                What Execution OS Would Do
+                What Command OS Would Do
               </CardTitle>
               <CardDescription>The playbooks and teams that activate automatically when this scenario triggers</CardDescription>
             </CardHeader>

@@ -4403,7 +4403,7 @@ export const insertDemoLeadSchema = createInsertSchema(demoLeads).pick({
 });
 
 // ============================================================================
-// CUSTOMER CONFIGURATION - User-defined settings for M Strategic Execution OS
+// CUSTOMER CONFIGURATION - User-defined settings for M Strategic Execution Platform
 // ============================================================================
 
 // Departments - Organization structure for stakeholder assignment

@@ -29,10 +29,10 @@ export default function VsConsulting() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Execution OS vs. Management Consulting | VaughnMartin",
-      description: "McKinsey charges $300K–$500K for playbooks that sit on a shelf. Execution OS delivers 170 live, executable playbooks at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
-      ogTitle: "Why Not Consulting? Execution OS vs. McKinsey, BCG, Bain",
-      ogDescription: "Consultants deliver documents. Execution OS delivers coordination. See the comparison.",
+      title: "Command OS vs. Management Consulting | VaughnMartin",
+      description: "McKinsey charges $300K–$500K for playbooks that sit on a shelf. Command OS delivers 170 live, executable playbooks at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
+      ogTitle: "Why Not Consulting? Command OS vs. McKinsey, BCG, Bain",
+      ogDescription: "Consultants deliver documents. Command OS delivers coordination. See the comparison.",
     });
   }, []);
 
@@ -60,7 +60,7 @@ export default function VsConsulting() {
 
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,58px)", color: "#F0EDE4", lineHeight: 1.05, marginBottom: 24 }}>
             McKinsey tells you what to do.<br />
-            <em style={{ fontStyle: "italic", color: GOLD }}>Execution OS makes sure it happens.</em>
+            <em style={{ fontStyle: "italic", color: GOLD }}>Command OS makes sure it happens.</em>
           </h1>
 
           <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
@@ -185,7 +185,7 @@ export default function VsConsulting() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(239,68,68,0.7)" }}>McKinsey / BCG / Bain</span>
               </div>
               <div style={{ padding: "16px 24px", borderLeft: "1px solid rgba(240,237,228,0.1)", background: "rgba(201,168,76,0.08)" }}>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Execution OS</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Command OS</span>
               </div>
             </div>
 
@@ -231,9 +231,9 @@ export default function VsConsulting() {
               </div>
             </div>
 
-            {/* Execution OS card */}
+            {/* Command OS card */}
             <div style={{ border: `2px solid ${GOLD}`, borderRadius: 12, padding: "36px 32px", background: `rgba(201,168,76,0.03)`, textAlign: "center" as const }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Execution OS</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Command OS</div>
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$75K–$250K/year</div>
               <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes</div>
               <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 8, border: `1px solid rgba(43,138,110,0.15)` }}>
@@ -248,10 +248,10 @@ export default function VsConsulting() {
               McKinsey tells you what to do.
             </p>
             <p style={{ ...CG, fontSize: "clamp(22px,3vw,30px)", fontWeight: 600, color: GOLD, lineHeight: 1.3, margin: "0 0 28px" }}>
-              Execution OS makes sure it happens.
+              Command OS makes sure it happens.
             </p>
             <p style={{ fontSize: 14, color: "rgba(240,237,228,0.5)", maxWidth: 480, margin: "0 auto 32px", lineHeight: 1.6 }}>
-              Execution OS is the coordination infrastructure your consultants assume you already have — but have never built.
+              Command OS is the coordination infrastructure your consultants assume you already have — but have never built.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <button

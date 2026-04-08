@@ -34,7 +34,7 @@ const data: EcosystemPageData = {
   step1Body: "Flow Designer, Integration Hub, Now Assist, and SecOps manage IT operations, employee services, and security incidents with precision. Operational ticket queues can't handle M&A integrations or competitive crises — that's a different execution class.",
   step1Color: "#00B89C",
   integrationsHeading: "Five ServiceNow integrations. One execution system.",
-  ctaHeading: "Activate Execution OS on your ServiceNow stack.",
+  ctaHeading: "Activate Command OS on your ServiceNow stack.",
   ctaBody: "We deploy alongside your existing ServiceNow environment. No workflow conflicts. The strategic execution layer that operates above the operational layer.",
 };
 

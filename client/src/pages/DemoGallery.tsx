@@ -57,7 +57,7 @@ const demos = [
   {
     id: "sandbox",
     title: "Interactive Sandbox",
-    description: "Explore Execution OS features at your own pace in a guided environment",
+    description: "Explore Command OS features at your own pace in a guided environment",
     path: "/sandbox-demo",
     duration: "Self-paced",
     category: "interactive",
@@ -71,7 +71,7 @@ const demos = [
   {
     id: "investor-demo",
     title: "Investor Demo",
-    description: "Comprehensive overview of Execution OS value proposition and market opportunity",
+    description: "Comprehensive overview of Command OS value proposition and market opportunity",
     path: "/investor-demo",
     duration: "15 min",
     category: "presentation",
@@ -85,7 +85,7 @@ const demos = [
   {
     id: "product-tour",
     title: "Product Tour",
-    description: "Guided walkthrough of all Execution OS modules and capabilities",
+    description: "Guided walkthrough of all Command OS modules and capabilities",
     path: "/product-tour",
     duration: "8 min",
     category: "presentation",
@@ -294,7 +294,7 @@ export default function DemoGallery() {
           <div className="mb-8">
             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2">Industry Scenarios</h2>
             <p className="text-gray-800 mb-6">
-              See Execution OS in action with scenarios tailored to your industry
+              See Command OS in action with scenarios tailored to your industry
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {industryDemos.map((demo) => (

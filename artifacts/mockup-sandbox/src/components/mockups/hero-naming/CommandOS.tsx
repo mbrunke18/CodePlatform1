@@ -42,7 +42,7 @@ function MetricPill({ value, label }: { value: string; label: string }) {
   );
 }
 
-export function CommandOS() {
+export function Command OS() {
   return (
     <div style={{
       minHeight: "100vh",
@@ -79,11 +79,11 @@ export function CommandOS() {
         {/* Eyebrow */}
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 24, padding: "6px 16px", background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.3)", borderRadius: 20 }}>
           <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
-          <span style={{ fontSize: 12, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 500 }}>CommandOS · Enterprise Platform</span>
+          <span style={{ fontSize: 12, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 500 }}>Command OS · Enterprise Platform</span>
         </div>
 
         <h1 style={{ fontSize: 52, fontWeight: 700, color: "white", lineHeight: 1.1, margin: "0 0 10px", fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "-0.02em" }}>
-          CommandOS
+          Command OS
         </h1>
         <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", margin: "0 0 20px", letterSpacing: "0.04em", textTransform: "uppercase", fontWeight: 500 }}>
           by VaughnMartin
@@ -118,7 +118,7 @@ export function CommandOS() {
         <div style={{ marginTop: 56, padding: "18px 28px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 4, textAlign: "left", maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", margin: 0, lineHeight: 1.6 }}>
             <span style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>Every enterprise has Microsoft's AI stack.</span>{" "}
-            None have the operating model to use it. CommandOS is that operating model.
+            None have the operating model to use it. Command OS is that operating model.
           </p>
         </div>
       </div>

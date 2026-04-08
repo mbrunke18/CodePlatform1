@@ -56,7 +56,7 @@ export default function DemoRouter() {
       id: 'industry',
       title: 'Industry Demos',
       duration: '10-15 minutes',
-      description: 'See Execution OS configured for your industry: Financial Services, Healthcare, Manufacturing, Retail, Energy, and Luxury.',
+      description: 'See Command OS configured for your industry: Financial Services, Healthcare, Manufacturing, Retail, Energy, and Luxury.',
       icon: Building2,
       color: 'from-[#0A0F2E] to-[#C9A84C]',
       borderColor: 'border-[#C9A84C]/30 hover:border-[#C9A84C]',
@@ -80,7 +80,7 @@ export default function DemoRouter() {
               Interactive Experience
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-4" data-testid="heading-demo-router">
-              Experience Execution OS
+              Experience Command OS
             </h1>
             <p className="text-xl text-gray-800">
               Choose the demo that fits your schedule
@@ -96,7 +96,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-[#0A0F2E] font-medium mb-1">Recommended for executives</p>
                 <p className="text-sm text-gray-800 mb-3">
-                  See how Execution OS delivers live execution in 12 minutes — roles assigned, tasks staged, teams already moving — with predictive AI and role-specific wins.
+                  See how Command OS delivers live execution in 12 minutes — roles assigned, tasks staged, teams already moving — with predictive AI and role-specific wins.
                 </p>
                 <Button
                   onClick={() => setLocation('/customer-demo')}
@@ -120,7 +120,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-[#0A0F2E] font-medium mb-1">NEW: Predictive Intelligence</p>
                 <p className="text-sm text-gray-800">
-                  Execution OS forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
+                  Command OS forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
                 </p>
               </div>
             </div>

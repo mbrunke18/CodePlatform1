@@ -34,7 +34,7 @@ const data: EcosystemPageData = {
   step1Body: "HCM, People Analytics, Adaptive Planning, and Integration Cloud manage your workforce with precision — org structure, capacity, skills, and financial plans. HR data doesn't orchestrate cross-functional crisis teams or stage strategic responses.",
   step1Color: "#FA6400",
   integrationsHeading: "Five Workday integrations. One execution system.",
-  ctaHeading: "Activate Execution OS on your Workday stack.",
+  ctaHeading: "Activate Command OS on your Workday stack.",
   ctaBody: "We deploy alongside your existing Workday environment. No HR system disruption. The strategic mobilization layer that turns people data into coordinated executive action.",
 };
 

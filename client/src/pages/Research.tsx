@@ -27,10 +27,10 @@ const TEAL = "#2B8A6E";
 export default function Research() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Research Behind Execution OS | Crisis Response Statistics & Industry Data",
-      description: "Execution OS was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
-      ogTitle: "The Research Behind Execution OS - Industry Data & Statistics",
-      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how Execution OS compresses 30 days to 12 minutes.",
+      title: "Research Behind Command OS | Crisis Response Statistics & Industry Data",
+      description: "Command OS was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
+      ogTitle: "The Research Behind Command OS - Industry Data & Statistics",
+      ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how Command OS compresses 30 days to 12 minutes.",
     });
   }, []);
 
@@ -47,11 +47,11 @@ export default function Research() {
             </div>
             
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
-              The Research Behind <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Execution OS</em>
+              The Research Behind <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Command OS</em>
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style={{ color: NAVY }}>
-              Execution OS was built on a foundation of industry research and 20+ years of Fortune 500 
+              Command OS was built on a foundation of industry research and 20+ years of Fortune 500 
               operational experience. Here's the data that shaped our platform.
             </p>
           </div>
@@ -66,7 +66,7 @@ export default function Research() {
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Leading institutions have quantified the cost of slow, uncoordinated response. 
-                Execution OS was designed to solve these exact challenges.
+                Command OS was designed to solve these exact challenges.
               </p>
             </div>
 
@@ -99,7 +99,7 @@ export default function Research() {
                   </div>
                   <div className="text-center">
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: TEAL, lineHeight: 1 }}>12 min</div>
-                    <p className="text-sm text-muted-foreground">Execution OS activation</p>
+                    <p className="text-sm text-muted-foreground">Command OS activation</p>
                     <p className="text-xs text-muted-foreground mt-1">playbooks pre-staged before the trigger fires</p>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ export default function Research() {
                   <h3 className="text-2xl font-bold text-foreground mb-2">Speed Saves Money</h3>
                   <p className="text-muted-foreground">
                     IBM's 2024 Cost of Data Breach study proves what we've seen in practice: faster 
-                    response = lower costs. Execution OS provides all of these capabilities in a single platform.
+                    response = lower costs. Command OS provides all of these capabilities in a single platform.
                   </p>
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function Research() {
                 
                 <div className="p-4 mb-4" style={{ background: "rgba(10,15,46,0.05)", border: "1px solid rgba(10,15,46,0.1)" }}>
                   <p className="text-sm text-foreground font-medium">
-                    22% above global average cost. Execution OS cuts this timeline to minutes.
+                    22% above global average cost. Command OS cuts this timeline to minutes.
                   </p>
                 </div>
                 
@@ -284,7 +284,7 @@ export default function Research() {
                 
                 <div className="p-4 mb-4" style={{ background: "rgba(10,15,46,0.05)", border: "1px solid rgba(10,15,46,0.1)" }}>
                   <p className="text-sm text-foreground font-medium">
-                    Highest regulatory scrutiny of any industry. Execution OS ensures you're ready before the next incident.
+                    Highest regulatory scrutiny of any industry. Command OS ensures you're ready before the next incident.
                   </p>
                 </div>
                 
@@ -407,7 +407,7 @@ export default function Research() {
                 </div>
                 <h4 className="font-bold text-foreground mb-2">Balance Governance & Risk</h4>
                 <p className="text-sm text-muted-foreground">
-                  Give people autonomy while maintaining safeguards. Execution OS' pre-approved resources do exactly this.
+                  Give people autonomy while maintaining safeguards. Command OS' pre-approved resources do exactly this.
                 </p>
               </div>
               <div className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors text-center">
@@ -416,7 +416,7 @@ export default function Research() {
                 </div>
                 <h4 className="font-bold text-foreground mb-2">Empower with Accountability</h4>
                 <p className="text-sm text-muted-foreground">
-                  Clear task ownership with defined acceptance criteria. Execution OS' playbooks assign both.
+                  Clear task ownership with defined acceptance criteria. Command OS' playbooks assign both.
                 </p>
               </div>
               <div className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors text-center">
@@ -425,22 +425,22 @@ export default function Research() {
                 </div>
                 <h4 className="font-bold text-foreground mb-2">Fund Work Dynamically</h4>
                 <p className="text-sm text-muted-foreground">
-                  Shift resources to high-value activities without bureaucracy. Execution OS unlocks pre-approved budgets instantly.
+                  Shift resources to high-value activities without bureaucracy. Command OS unlocks pre-approved budgets instantly.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* How Execution OS Addresses These Findings */}
+        {/* How Command OS Addresses These Findings */}
         <section style={{ background: "#F8F7F4", padding: "64px 48px" }}>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
-                How Execution OS Addresses These Findings
+                How Command OS Addresses These Findings
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Every feature in Execution OS was designed to address a specific research finding about 
+                Every feature in Command OS was designed to address a specific research finding about 
                 what makes organizations faster and more resilient.
               </p>
             </div>
@@ -454,7 +454,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Pre-Defined Response Teams</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      IBM found 35% cost reduction with pre-assigned teams. Execution OS' playbooks 
+                      IBM found 35% cost reduction with pre-assigned teams. Command OS' playbooks 
                       include pre-assigned stakeholders for every scenario.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>170 Playbooks Ready</div>
@@ -470,7 +470,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Automated Orchestration</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $2.2M saved per incident with automation. Execution OS auto-creates Jira projects, 
+                      $2.2M saved per incident with automation. Command OS auto-creates Jira projects, 
                       notifies via Slack, and orchestrates execution.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>Enterprise Integrations</div>
@@ -486,7 +486,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Faster Containment</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $1.76M saved by containing within 30 days. Execution OS' pre-staged playbooks 
+                      $1.76M saved by containing within 30 days. Command OS' pre-staged playbooks 
                       get your organization into live execution in minutes — roles assigned, tasks staged, teams already moving.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>12-Minute Activation</div>
@@ -502,7 +502,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">AI-Powered Detection</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      98 days faster with AI. Execution OS' continuous monitoring detects weak signals 
+                      98 days faster with AI. Command OS' continuous monitoring detects weak signals 
                       before they become crises.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>24/7 Monitoring</div>
@@ -526,7 +526,7 @@ export default function Research() {
               The 2026 Enterprise AI Inflection Point
             </h2>
             <p className="text-white/60 text-lg mb-8 max-w-xl mx-auto">
-              Experience the research-backed speed of Execution OS today.
+              Experience the research-backed speed of Command OS today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/try-demo">

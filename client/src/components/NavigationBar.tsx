@@ -40,7 +40,7 @@ export default function NavigationBar() {
   const productLinks = [
     { title: "Command Center", href: "/command-center", description: "Unified command center: FRI, velocity, preparedness", featured: true },
     { title: "Playbook Library", href: "/playbook-library", description: "170 pre-built strategic playbooks" },
-    { title: "Live Demos", href: "/demo-hub", description: "Watch Execution OS in action" },
+    { title: "Live Demos", href: "/demo-hub", description: "Watch Command OS in action" },
     { title: "Pricing", href: "/calculator", description: "ROI calculator" },
   ];
 
@@ -92,8 +92,8 @@ export default function NavigationBar() {
               <span className="text-white dark:text-slate-900 font-bold text-xl">P</span>
             </div>
             <div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">Execution OS</span>
-              <span className="text-xs block text-gray-600 dark:text-slate-300">Strategic Execution OS</span>
+              <span className="text-xl font-bold text-slate-900 dark:text-white">Command OS</span>
+              <span className="text-xs block text-gray-600 dark:text-slate-300">Strategic Execution Platform</span>
             </div>
           </div>
 

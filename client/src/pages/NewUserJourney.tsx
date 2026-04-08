@@ -179,7 +179,7 @@ const STEPS = [
   { id: 'playbooks', title: 'Select Playbooks', icon: Layers },
   { id: 'signals', title: 'Configure Signals', icon: Radio },
   { id: 'metrics', title: 'Success Metrics', icon: BarChart3 },
-  { id: 'preview', title: 'See Execution OS in Action', icon: Play },
+  { id: 'preview', title: 'See Command OS in Action', icon: Play },
   { id: 'activated', title: 'System Active', icon: CheckCircle },
 ];
 
@@ -345,7 +345,7 @@ export default function NewUserJourney() {
                 <span className="text-[#C9A84C] font-bold text-[10px] uppercase tracking-tighter">ExOS</span>
               </div>
               <div>
-                <h1 className="text-sm font-bold text-[#0A0F2E] uppercase tracking-widest">Execution OS Onboarding</h1>
+                <h1 className="text-sm font-bold text-[#0A0F2E] uppercase tracking-widest">Command OS Onboarding</h1>
                 <p className="text-[10px] text-slate-500 uppercase tracking-tight">Your first playbook ready in 15 minutes</p>
               </div>
             </div>
@@ -401,7 +401,7 @@ export default function NewUserJourney() {
                       Success Favors the Prepared
                     </h2>
                     <p className="text-xl text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
-                      Execution OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
+                      Command OS replaces reactive scrambles with coordinated precision, turning emerging opportunities 
                       into decisive action in <span className="text-[#2B8A6E] font-bold underline decoration-[#C9A84C] underline-offset-4">12 minutes, not 30 days</span>
                     </p>
                   </div>
@@ -437,7 +437,7 @@ export default function NewUserJourney() {
                     <ul className="space-y-3">
                       <li className="flex items-center gap-3 text-sm text-slate-600">
                         <Check className="h-4 w-4 text-[#2B8A6E]" />
-                        Configure Execution OS for your industry
+                        Configure Command OS for your industry
                       </li>
                       <li className="flex items-center gap-3 text-sm text-slate-600">
                         <Check className="h-4 w-4 text-[#2B8A6E]" />
@@ -887,7 +887,7 @@ export default function NewUserJourney() {
                   <div className="text-center mb-6">
                     <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">Your Command Center is Ready</h2>
                     <p className="text-[#6B7280]">
-                      Here's what Execution OS will monitor and execute for {state.organizationName || 'your organization'}
+                      Here's what Command OS will monitor and execute for {state.organizationName || 'your organization'}
                     </p>
                   </div>
 
@@ -1092,7 +1092,7 @@ export default function NewUserJourney() {
                       transition={{ delay: 0.3 }}
                       className="text-3xl font-bold text-[#0A0F2E] mb-2"
                     >
-                      Execution OS is Now Active
+                      Command OS is Now Active
                     </motion.h2>
                     <motion.p 
                       initial={{ opacity: 0, y: 20 }}
@@ -1284,11 +1284,11 @@ export default function NewUserJourney() {
                 {completeJourneyMutation.isPending ? (
                   <>
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                    Activating Execution OS...
+                    Activating Command OS...
                   </>
                 ) : (
                   <>
-                    Activate Execution OS
+                    Activate Command OS
                     <Zap className="h-4 w-4 ml-2" />
                   </>
                 )}

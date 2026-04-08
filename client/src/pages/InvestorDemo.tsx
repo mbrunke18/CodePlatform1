@@ -75,7 +75,7 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
     time: 30,
-    description: "Unlike crisis tools or PM platforms, Execution OS comes with 170 battle-tested playbooks across 9 domains. OFFENSE (M&A, Market Entry, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance).",
+    description: "Unlike crisis tools or PM platforms, Command OS comes with 170 battle-tested playbooks across 9 domains. OFFENSE (M&A, Market Entry, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance).",
     investorHighlight: "This is our moat. 170 playbooks = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
     metrics: [
       { label: "Playbooks", value: "170" },
@@ -103,7 +103,7 @@ const IDEA_STORY = [
     color: "text-[#0A0F2E]",
     bgColor: "bg-[#0A0F2E]/10",
     time: 50,
-    description: "Execution OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right playbook with confidence scoring. AI monitors and recommends. Executives decide.",
+    description: "Command OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right playbook with confidence scoring. AI monitors and recommends. Executives decide.",
     investorHighlight: "What makes this sellable to Fortune 1000 C-suites: we don't replace executives — we eliminate the 30-day mobilization cycle that surrounds them. AI monitors and recommends. The human decision is the same. It just arrives in seconds instead of weeks.",
     metrics: [
       { label: "Signals Monitored", value: "2,847" },
@@ -124,7 +124,7 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
     time: 80,
-    description: "Execution OS doesn't just react—it predicts. Our AI forecasts trigger probabilities at 30, 60, and 90-day horizons. Executives see which threats are accelerating and run what-if scenarios to stress-test playbook readiness. Like Anaplan PlanIQ, but for strategic execution.",
+    description: "Command OS doesn't just react—it predicts. Our AI forecasts trigger probabilities at 30, 60, and 90-day horizons. Executives see which threats are accelerating and run what-if scenarios to stress-test playbook readiness. Like Anaplan PlanIQ, but for strategic execution.",
     investorHighlight: "This is our AI differentiation. We're not just workflow—we're predictive intelligence for the C-suite. No competitor has this capability.",
     metrics: [
       { label: "Forecast Accuracy", value: "94%" },
@@ -152,7 +152,7 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
     time: 120,
-    description: "When the CISO approves, Execution OS auto-creates your Jira project, assigns every task, stages every document, and unlocks pre-approved budgets—all in 12 minutes. 47 stakeholders notified instantly. Teams don't learn Execution OS—Execution OS comes to them in tools they already use.",
+    description: "When the CISO approves, Command OS auto-creates your Jira project, assigns every task, stages every document, and unlocks pre-approved budgets—all in 12 minutes. 47 stakeholders notified instantly. Teams don't learn Command OS—Command OS comes to them in tools they already use.",
     investorHighlight: "The integration layer IS the moat. Once 50 playbooks are syncing to Jira with bi-directional updates, switching costs are massive.",
     metrics: [
       { label: "Stakeholders", value: "47" },
@@ -189,7 +189,7 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
     time: 160,
-    description: "After resolution, Execution OS captures what worked, what didn't, and suggests playbook refinements. This institutional knowledge stays with the organization—not in someone's head who might leave. The playbook library becomes a strategic asset.",
+    description: "After resolution, Command OS captures what worked, what didn't, and suggests playbook refinements. This institutional knowledge stays with the organization—not in someone's head who might leave. The playbook library becomes a strategic asset.",
     investorHighlight: "Historical execution data + playbook refinements = recurring value that compounds. This is how we achieve 150%+ net revenue retention.",
     metrics: [
       { label: "Lessons Captured", value: "23" },
@@ -320,7 +320,7 @@ export default function InvestorDemo() {
               Investor Demo — Market Creation Story
             </Badge>
             <h1 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="heading-investor-demo">
-              Execution OS: The Strategic Execution Operating System
+              Command OS: The Strategic Execution Operating System
             </h1>
             <p className="text-lg text-[#0A0F2E]">
               First mover in $15B+ SEOS category. 170 playbooks. 12-minute execution.

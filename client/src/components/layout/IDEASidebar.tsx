@@ -126,10 +126,10 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
           </div>
           <div>
             <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
-              Execution OS One™
+              Command OS One™
             </h1>
             <p className="text-xs text-gray-600 dark:text-slate-400 font-medium">
-              Strategic Execution OS
+              Strategic Execution Platform
             </p>
           </div>
         </Link>

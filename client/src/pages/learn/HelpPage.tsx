@@ -28,7 +28,7 @@ const resources = [
   {
     icon: MessageCircle,
     title: 'Community',
-    description: 'Connect with other Execution OS users',
+    description: 'Connect with other Command OS users',
     action: 'Join Community',
     color: 'text-[#C9A84C]'
   }

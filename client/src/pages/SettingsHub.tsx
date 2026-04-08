@@ -312,7 +312,7 @@ export default function SettingsHub() {
               {/* ── INTEGRATIONS ── */}
               {activeSection === 'integrations' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Integrations</h2><p className="text-[#6B7280] mt-1">Connect your enterprise systems to Execution OS</p></div><Link href="/integration-hub"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Integration Hub</Button></Link></div>
+                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Integrations</h2><p className="text-[#6B7280] mt-1">Connect your enterprise systems to Command OS</p></div><Link href="/integration-hub"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Integration Hub</Button></Link></div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[

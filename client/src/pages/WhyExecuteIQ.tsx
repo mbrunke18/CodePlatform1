@@ -39,9 +39,9 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 export default function WhyExecutionOS() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Why Execution OS - The Infrastructure 15 Firms Say Is Missing",
-      description: "McKinsey, IBM, BCG, Deloitte, Accenture, Microsoft, Google Cloud, and the World Economic Forum all concluded: organizations fail at AI because they lack execution infrastructure. Execution OS provides it.",
-      ogTitle: "The Infrastructure 15 Firms Say Is Missing | Execution OS",
+      title: "Why Command OS - The Infrastructure 15 Firms Say Is Missing",
+      description: "McKinsey, IBM, BCG, Deloitte, Accenture, Microsoft, Google Cloud, and the World Economic Forum all concluded: organizations fail at AI because they lack execution infrastructure. Command OS provides it.",
+      ogTitle: "The Infrastructure 15 Firms Say Is Missing | Command OS",
       ogDescription: "Fifteen major firms independently concluded that execution infrastructure—governance, decision rights, and coordination systems—is the missing layer for AI adoption.",
     });
   }, []);
@@ -93,7 +93,7 @@ export default function WhyExecutionOS() {
           </blockquote>
           <div style={{ width: 48, height: 2, background: "#C9A84C", margin: "0 auto 28px" }} />
           <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 640, margin: "0 auto", lineHeight: 1.85 }}>
-            AI doesn't transform your organization — it exposes it. Every fuzzy decision right, every undefined role, every coordination gap that slowed you down before AI will become a breaking point after. Execution OS makes your coordination logic explicit, so AI has something real to act on.
+            AI doesn't transform your organization — it exposes it. Every fuzzy decision right, every undefined role, every coordination gap that slowed you down before AI will become a breaking point after. Command OS makes your coordination logic explicit, so AI has something real to act on.
           </p>
         </div>
       </div>
@@ -184,13 +184,13 @@ export default function WhyExecutionOS() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#2B8A6E" }}>The Solution</span>
             </div>
             <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E" }}>
-              Execution OS Provides the Infrastructure
+              Command OS Provides the Infrastructure
             </h2>
           </div>
 
           <div className="border border-[#E8E4DC] bg-[#F8F7F4] p-12 mb-12">
             <p className="text-xl text-[#0A0F2E] leading-relaxed mb-12">
-              Execution OS is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
+              Command OS is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
             </p>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -226,7 +226,7 @@ export default function WhyExecutionOS() {
               Agentic Execution Infrastructure
             </h2>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              Execution OS isn't another tool in the stack. It's the agentic execution layer — where AI agents coordinate enterprise-wide response in real time.
+              Command OS isn't another tool in the stack. It's the agentic execution layer — where AI agents coordinate enterprise-wide response in real time.
             </p>
           </div>
 
@@ -288,7 +288,7 @@ export default function WhyExecutionOS() {
                 <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", color: "#DFC178", fontWeight: 700 }}>MB</div>
                 <div>
                   <div style={{ fontWeight: 700, color: "#0A0F2E" }}>Martin Brunke</div>
-                  <div style={{ fontSize: 12, color: "#6B7280" }}>Founder & CEO, Execution OS</div>
+                  <div style={{ fontSize: 12, color: "#6B7280" }}>Founder & CEO, Command OS</div>
                 </div>
               </div>
             </div>
@@ -299,7 +299,7 @@ export default function WhyExecutionOS() {
       {/* CTA Section */}
       <section style={{ background: "#0A0F2E", padding: "80px 48px", textAlign: "center" }}>
         <h2 style={{ ...CG, fontSize: 40, fontWeight: 600, color: "#fff", marginBottom: 16 }}>Ready to See the Infrastructure?</h2>
-        <p className="text-white/60 mb-8 max-w-xl mx-auto">See how Execution OS closes the gap between AI investment and AI results.</p>
+        <p className="text-white/60 mb-8 max-w-xl mx-auto">See how Command OS closes the gap between AI investment and AI results.</p>
         <div className="flex justify-center gap-4">
           <Link href="/demo-selector">
             <Button style={{ background: "#C9A84C", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px", border: "none" }}>

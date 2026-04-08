@@ -44,9 +44,9 @@ const TOUR_SCENES: Scene[] = [
     id: 'intro',
     type: 'cinematic',
     duration: 6000,
-    title: 'Execution OS',
+    title: 'Command OS',
     subtitle: 'Strategic Execution Operating System',
-    narration: 'Welcome to Execution OS — the operating system that transforms how Fortune 1000 companies execute strategy.',
+    narration: 'Welcome to Command OS — the operating system that transforms how Fortune 1000 companies execute strategy.',
     visual: 'solution'
   },
   {
@@ -71,7 +71,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'The Solution',
     subtitle: 'Compress 30 days into 12 minutes',
-    narration: 'Execution OS connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
+    narration: 'Command OS connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
     visual: 'solution'
   },
   {
@@ -98,7 +98,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'EXECUTE',
     subtitle: 'Execute Response',
-    narration: 'When signals fire, Execution OS orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
+    narration: 'When signals fire, Command OS orchestrates your entire organization. Stakeholders align in parallel, not sequence.',
     visual: 'execute'
   },
   {
@@ -116,7 +116,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'See It In Action',
     subtitle: 'Executive Simulation',
-    narration: 'Experience Execution OS through the eyes of Sarah Chen, Chief Strategy Officer at Meridian Industries.',
+    narration: 'Experience Command OS through the eyes of Sarah Chen, Chief Strategy Officer at Meridian Industries.',
     visual: 'execute'
   },
   {
@@ -125,7 +125,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'Critical Signal Detected',
     subtitle: 'Competitor Acquisition',
-    narration: 'A competitor announces a major acquisition. Execution OS detects it instantly and recommends immediate response.',
+    narration: 'A competitor announces a major acquisition. Command OS detects it instantly and recommends immediate response.',
     visual: 'detect'
   },
   {
@@ -143,16 +143,16 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'The Results',
     subtitle: '3,600× Execution Head Start',
-    narration: 'What traditionally takes 30 days to mobilize, Execution OS coordinates in 12 minutes. That\'s strategic velocity.',
+    narration: 'What traditionally takes 30 days to mobilize, Command OS coordinates in 12 minutes. That\'s strategic velocity.',
     visual: 'metrics'
   },
   {
     id: 'comparison',
     type: 'proof',
     duration: 8000,
-    title: 'Why Execution OS?',
+    title: 'Why Command OS?',
     subtitle: 'The Only Closed-Loop Platform',
-    narration: 'Unlike Palantir, Anaplan, or Dataminr — Execution OS connects signals to playbooks to execution to learning. One platform.',
+    narration: 'Unlike Palantir, Anaplan, or Dataminr — Command OS connects signals to playbooks to execution to learning. One platform.',
     visual: 'comparison'
   },
   {
@@ -315,7 +315,7 @@ export default function ProductTour() {
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Execution OS</span>
+          <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Command OS</span>
         </motion.div>
         <div className="flex items-center justify-center gap-8 mt-8">
           <motion.div 
@@ -529,7 +529,7 @@ export default function ProductTour() {
             <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Anaplan</p>
           </motion.div>
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E]/10 rounded-none shadow-lg">
-            <p className="text-[#C9A84C] font-bold text-[9px] uppercase tracking-widest">Execution OS</p>
+            <p className="text-[#C9A84C] font-bold text-[9px] uppercase tracking-widest">Command OS</p>
           </motion.div>
           
           {[
@@ -570,7 +570,7 @@ export default function ProductTour() {
         <motion.div 
           className="w-24 h-24 mx-auto mb-8 bg-[#0A0F2E] rounded-none flex items-center justify-center shadow-2xl"
         >
-          <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Execution OS</span>
+          <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Command OS</span>
         </motion.div>
         <div className="space-y-6">
           <motion.div

@@ -165,7 +165,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
                 {execution.comparisonMetrics.responseTime} min
               </span>
             </div>
-            <p className="text-sm text-gray-600">Execution OS Response Time</p>
+            <p className="text-sm text-gray-600">Command OS Response Time</p>
           </CardContent>
         </Card>
         <Card className="bg-white border-gray-200">

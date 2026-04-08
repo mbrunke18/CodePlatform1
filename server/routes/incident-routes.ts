@@ -435,10 +435,10 @@ Return ONLY raw JSON (no markdown, no code fences):
     {"time": "0:05", "description": "Acknowledged and tasks assigned"},
     {"time": "0:08", "description": "Coordinated execution underway"},
     {"time": "0:11", "description": "Aligned and executing"},
-    {"time": "Final", "description": "Outcome with Execution OS"}
+    {"time": "Final", "description": "Outcome with Command OS"}
   ],
   "cost_without": "$XM - actual cost/loss/opportunity missed",
-  "cost_with": "$XK - estimated cost with Execution OS",
+  "cost_with": "$XK - estimated cost with Command OS",
   "comparison_metrics": {
     "time_to_coordination": {"reality": "extracted timeline", "execution_os": "12 minutes"},
     "stakeholder_alignment": {"reality": "description", "execution_os": "Parallel in minutes"},
@@ -646,12 +646,12 @@ router.post('/simulate', async (req, res) => {
           await sendgrid.client.send({
             to: email,
             from: sendgrid.fromEmail,
-            subject: `[Execution OS] URGENT: ${playbook.name || 'Incident Response'} — Action Required`,
+            subject: `[Command OS] URGENT: ${playbook.name || 'Incident Response'} — Action Required`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 32px; border-radius: 12px;">
                 <div style="text-align: center; margin-bottom: 24px;">
-                  <h1 style="color: #14b8a6; margin: 0;">Execution OS Alert</h1>
-                  <p style="color: #94a3b8; margin-top: 8px;">Strategic Execution OS</p>
+                  <h1 style="color: #14b8a6; margin: 0;">Command OS Alert</h1>
+                  <p style="color: #94a3b8; margin-top: 8px;">Strategic Execution Platform</p>
                 </div>
                 <div style="background: #1e293b; padding: 24px; border-radius: 8px; border-left: 4px solid #ef4444; margin-bottom: 24px;">
                   <h2 style="color: #f87171; margin-top: 0;">Playbook Activated: ${playbook.name || 'Incident Response'}</h2>
@@ -661,7 +661,7 @@ router.post('/simulate', async (req, res) => {
                 <div style="text-align: center; margin: 24px 0;">
                   <a href="${ackUrl}" style="background: #14b8a6; color: white; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-block;">Acknowledge & Accept Assignment</a>
                 </div>
-                <p style="color: #64748b; font-size: 12px; text-align: center; margin-top: 24px;">This is a live simulation from Execution OS. Your response updates the dashboard in real-time.</p>
+                <p style="color: #64748b; font-size: 12px; text-align: center; margin-top: 24px;">This is a live simulation from Command OS. Your response updates the dashboard in real-time.</p>
               </div>
             `,
           });
@@ -776,12 +776,12 @@ router.get('/simulate/acknowledge', (req, res) => {
 
   res.send(`
     <html>
-    <head><title>Execution OS - Acknowledged</title></head>
+    <head><title>Command OS - Acknowledged</title></head>
     <body style="background: #0f172a; color: white; font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0;">
       <div style="text-align: center; max-width: 500px; padding: 40px;">
         <div style="font-size: 64px; margin-bottom: 16px;">✓</div>
         <h1 style="color: #14b8a6;">Assignment Acknowledged</h1>
-        <p style="color: #94a3b8;">Your acknowledgment has been recorded. The Execution OS dashboard has been updated in real-time.</p>
+        <p style="color: #94a3b8;">Your acknowledgment has been recorded. The Command OS dashboard has been updated in real-time.</p>
         <p style="color: #64748b; font-size: 14px; margin-top: 24px;">You can close this window and return to the simulation.</p>
       </div>
     </body>
@@ -828,7 +828,7 @@ router.post('/assess', async (req, res) => {
       else { gaps.push("No pre-qualified partners or channels ready to activate"); recommendations.push("Build a pre-qualified partner network for rapid market entry deployment"); }
 
       if (answers.playbookLocation === "We don't have one") {
-        gaps.push("No documented market entry playbook"); recommendations.push("Use Execution OS's 58 Offense playbooks to build your market entry protocols");
+        gaps.push("No documented market entry playbook"); recommendations.push("Use Command OS's 58 Offense playbooks to build your market entry protocols");
       } else if (answers.playbookLocation) {
         score += 15;
         if (['Confluence/SharePoint', 'Spreadsheets'].includes(answers.playbookLocation)) {
@@ -854,7 +854,7 @@ router.post('/assess', async (req, res) => {
       } else { gaps.push("No pre-authorized spending thresholds"); recommendations.push("Establish emergency spending authority without requiring a committee meeting"); }
 
       if (answers.playbookLocation === "We don't have one" || answers.playbookLocation === "Don't have one") {
-        gaps.push("No documented response playbook exists"); recommendations.push("Use Execution OS's 56 Defense playbooks to build your crisis response protocols");
+        gaps.push("No documented response playbook exists"); recommendations.push("Use Command OS's 56 Defense playbooks to build your crisis response protocols");
       } else if (answers.playbookLocation) {
         score += 20;
         if (['Confluence/SharePoint', 'Spreadsheets', 'Confluence', 'SharePoint', 'Google Doc'].includes(answers.playbookLocation)) {
@@ -873,14 +873,14 @@ router.post('/assess', async (req, res) => {
 
       if (answers.raciMatrices === 'Yes for all scenarios') score += 20;
       else if (answers.raciMatrices === 'Some scenarios') { score += 10; gaps.push("RACI matrices exist for some but not all scenarios"); }
-      else { gaps.push("No pre-defined RACI matrices for transformation scenarios"); recommendations.push("Build RACI matrices for your top transformation scenarios using Execution OS templates"); }
+      else { gaps.push("No pre-defined RACI matrices for transformation scenarios"); recommendations.push("Build RACI matrices for your top transformation scenarios using Command OS templates"); }
 
       if (answers.resourceAuthority && answers.resourceAuthority.length > 3 && !answers.resourceAuthority.toLowerCase().includes('steering committee')) {
         score += 20;
       } else { gaps.push("Resource reallocation requires steering committee approval"); recommendations.push("Pre-authorize resource reallocation up to 20% at the program lead level"); }
 
       if (answers.playbookLocation === "We don't have one") {
-        gaps.push("No documented transformation playbook"); recommendations.push("Use Execution OS's 52 Special Teams playbooks for transformation initiatives");
+        gaps.push("No documented transformation playbook"); recommendations.push("Use Command OS's 52 Special Teams playbooks for transformation initiatives");
       } else if (answers.playbookLocation) {
         score += 15;
         if (['Confluence/SharePoint', 'Spreadsheets'].includes(answers.playbookLocation)) {

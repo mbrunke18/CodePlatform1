@@ -108,7 +108,7 @@ export default function WelcomeBrief() {
       <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
         <div style={{ textAlign: 'center' }}>
           <div style={{ width: 48, height: 48, border: `2px solid ${GOLD}30`, borderTop: `2px solid ${GOLD}`, borderRadius: '50%', margin: '0 auto 20px', animation: 'spin 1s linear infinite' }} />
-          <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Execution OS</div>
+          <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Command OS</div>
           <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)' }}>Preparing your activation brief...</div>
           <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
         </div>
@@ -164,7 +164,7 @@ export default function WelcomeBrief() {
           </h1>
 
           <p style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 560, margin: '0 auto 28px', lineHeight: 1.65 }}>
-            We didn't wait for you to log in. While your account was being configured, Execution OS was monitoring
+            We didn't wait for you to log in. While your account was being configured, Command OS was monitoring
             248+ strategic signals across 9 domains. This is your activation brief.
           </p>
 

@@ -263,7 +263,7 @@ export default function SizzleReel() {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <span className="text-lg text-gray-800">Execution OS brings that methodology to the enterprise.</span>
+                  <span className="text-lg text-gray-800">Command OS brings that methodology to the enterprise.</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
