@@ -1,0 +1,723 @@
+Readiness os linkedin ad v2 · HTML
+Copy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaughnMartin — Readiness OS</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap');
+ 
+  :root {
+    --navy: #0A0F2E;
+    --navy-mid: #141B45;
+    --gold: #C9A84C;
+    --gold-lt: #DFC178;
+    --teal: #2B8A6E;
+    --teal-lt: #3BAF8A;
+    --ivory: #F0EEE4;
+    --off: #F8F7F4;
+    --red: #E84545;
+    --red-dim: rgba(232,69,69,0.12);
+    --muted: #6B7280;
+  }
+ 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  body {
+    background: var(--navy);
+    color: var(--ivory);
+    font-family: 'Barlow Condensed', sans-serif;
+    overflow: hidden;
+    width: 1920px;
+    height: 1080px;
+  }
+ 
+  /* ===== FOUNDATIONS ===== */
+  .bg-grid {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.035) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: 0;
+  }
+  .bg-vignette {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.5) 100%);
+    z-index: 0;
+  }
+ 
+  .scene {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    z-index: 2;
+  }
+  .scene.active { opacity: 1; pointer-events: auto; }
+ 
+  .progress-bar {
+    position: fixed; bottom: 0; left: 0; height: 4px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    z-index: 100; transition: width 0.4s ease;
+  }
+ 
+  /* ===== GLOBAL ANIM ===== */
+  @keyframes ripple { 0% { transform: translate(-50%,-50%) scale(1); opacity: 0.3; } 100% { transform: translate(-50%,-50%) scale(2.8); opacity: 0; } }
+  @keyframes pulse-gold { 0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); } 50% { box-shadow: 0 0 24px 8px rgba(201,168,76,0.15); } }
+  @keyframes slideUp { from { opacity:0; transform: translateY(50px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes slideUpFast { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+  @keyframes stampIn { 0% { opacity:0; transform: scale(2.5); } 60% { opacity:1; transform: scale(0.92); } 100% { opacity:1; transform: scale(1); } }
+  @keyframes countPulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+  @keyframes glowTeal { 0%,100% { box-shadow: 0 0 20px rgba(43,138,110,0.2); } 50% { box-shadow: 0 0 40px rgba(43,138,110,0.4); } }
+  @keyframes flickerIn { 0% { opacity: 0; } 20% { opacity: 0.8; } 40% { opacity: 0.3; } 60% { opacity: 0.9; } 80% { opacity: 0.5; } 100% { opacity: 1; } }
+  @keyframes shakeX { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+ 
+  /* ===== SCENE 1: INSTANT HOOK (0s) ===== */
+  #scene1 { flex-direction: column; gap: 0; }
+  .hook-top {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px; font-weight: 500; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--red); opacity: 1;
+    animation: flickerIn 0.4s ease forwards;
+  }
+  .hook-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; font-weight: 700; color: var(--ivory);
+    text-align: center; line-height: 1.1; margin-top: 16px;
+    opacity: 0;
+  }
+  .hook-main em { font-style: italic; color: var(--gold); }
+  .hook-stat {
+    margin-top: 36px; display: flex; align-items: center; gap: 16px; opacity: 0;
+  }
+  .hook-stat .bar {
+    width: 48px; height: 2px; background: var(--gold);
+  }
+  .hook-stat .text {
+    font-size: 22px; font-weight: 400; letter-spacing: 1px;
+    color: rgba(240,238,228,0.55);
+  }
+  .hook-stat .text strong { color: var(--gold-lt); font-weight: 600; }
+ 
+  /* ===== SCENE 2: PROBLEM (fast) ===== */
+  .problem-wrap { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+  .prob-headline {
+    font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 700;
+    color: var(--ivory); text-align: center; opacity: 0; max-width: 1100px; line-height: 1.15;
+  }
+  .prob-headline span.red { color: var(--red); }
+  .prob-items {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    max-width: 1000px; width: 100%;
+  }
+  .prob-item {
+    background: var(--red-dim); border: 1px solid rgba(232,69,69,0.2);
+    border-radius: 8px; padding: 16px 22px; text-align: center;
+    font-size: 19px; font-weight: 400; letter-spacing: 0.5px;
+    opacity: 0; color: rgba(240,238,228,0.8);
+  }
+  .prob-closer {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); opacity: 0; margin-top: 10px;
+  }
+ 
+  /* ===== SCENE 3: THESIS (deliberate) ===== */
+  .thesis-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .thesis-word {
+    font-family: 'Cormorant Garamond', serif; font-weight: 700;
+    line-height: 1; text-align: center; opacity: 0;
+  }
+  .thesis-word.w1 { font-size: 72px; color: var(--ivory); }
+  .thesis-word.arrow { font-size: 40px; color: var(--teal); margin: 10px 0; }
+  .thesis-word.w2 { font-size: 72px; color: var(--teal-lt); }
+  .thesis-word.w3 { font-size: 96px; color: var(--gold); margin-top: 10px; }
+  .thesis-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(240,238,228,0.4); margin-top: 30px; opacity: 0; text-align: center;
+    max-width: 700px;
+  }
+ 
+  /* ===== SCENE 4: DETECTION (accelerated) ===== */
+  .detect-wrap { position: relative; width: 100%; height: 100%; }
+  .detect-hub {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, var(--teal) 0%, rgba(43,138,110,0.15) 60%, transparent 100%);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    opacity: 0; animation: glowTeal 2s ease infinite paused;
+  }
+  .detect-hub.on { animation-play-state: running; }
+  .detect-hub .ripple {
+    position: absolute; width: 200px; height: 200px; border-radius: 50%;
+    border: 1px solid var(--teal); top: 50%; left: 50%;
+    animation: ripple 1.8s ease-out infinite;
+  }
+  .detect-hub .ripple:nth-child(2) { animation-delay: 0.5s; }
+  .detect-hub .ripple:nth-child(3) { animation-delay: 1s; }
+  .detect-hub .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 700;
+    color: var(--gold); z-index: 1;
+  }
+  .detect-hub .lbl {
+    font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--ivory); z-index: 1;
+  }
+ 
+  .detect-node {
+    position: absolute; padding: 10px 18px; background: rgba(10,15,46,0.92);
+    border: 1px solid rgba(43,138,110,0.35); border-radius: 6px;
+    font-size: 15px; font-weight: 400; letter-spacing: 0.5px;
+    opacity: 0; transform: scale(0); white-space: nowrap;
+  }
+  .detect-node::before {
+    content: ''; position: absolute; width: 7px; height: 7px;
+    background: var(--teal); border-radius: 50%; left: -3px; top: 50%;
+    transform: translateY(-50%); box-shadow: 0 0 10px var(--teal);
+  }
+  .detect-node.fire { border-color: var(--gold); animation: pulse-gold 1.5s ease infinite; }
+  .detect-node.fire::before { background: var(--gold); box-shadow: 0 0 14px var(--gold); }
+ 
+  .detect-badge {
+    position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 24px; opacity: 0;
+  }
+  .detect-badge .pill {
+    background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 20px; padding: 8px 22px; font-size: 15px; font-weight: 500;
+    letter-spacing: 1px; color: var(--gold-lt);
+  }
+ 
+  .detect-header {
+    position: absolute; top: 50px; left: 80px;
+    font-size: 15px; font-weight: 600; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--teal); opacity: 0;
+  }
+ 
+  /* ===== SCENE 5: PLAYBOOKS (urgent) ===== */
+  .pb-wrap { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+  .pb-stat { text-align: center; opacity: 0; }
+  .pb-stat .n {
+    font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+  .pb-stat .d {
+    font-size: 20px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(240,238,228,0.5);
+  }
+  .pb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 1060px; }
+  .pb-card {
+    background: rgba(20,27,69,0.7); border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 8px; padding: 18px 22px; opacity: 0; position: relative; overflow: hidden;
+    transform: translateY(16px);
+  }
+  .pb-card .dom {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--teal);
+  }
+  .pb-card .nm { font-size: 18px; font-weight: 500; color: var(--ivory); margin-top: 3px; }
+  .pb-card .st {
+    font-size: 12px; font-weight: 400; letter-spacing: 1px;
+    color: rgba(240,238,228,0.35); margin-top: 6px;
+  }
+  .pb-card.on {
+    border-color: var(--gold); box-shadow: 0 0 24px rgba(201,168,76,0.12);
+  }
+  .pb-card.on::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+  }
+  .pb-card.on .st { color: var(--gold); }
+ 
+  .pb-authority {
+    display: flex; align-items: center; gap: 14px; opacity: 0;
+    background: rgba(43,138,110,0.08); border: 1px solid rgba(43,138,110,0.25);
+    border-radius: 8px; padding: 14px 28px;
+  }
+  .pb-authority .icon { font-size: 24px; }
+  .pb-authority .txt { font-size: 18px; font-weight: 500; letter-spacing: 1px; color: var(--teal-lt); }
+ 
+  /* ===== SCENE 6: PUNCH (the money shot) ===== */
+  .punch-wrap { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .punch-before {
+    display: flex; flex-direction: column; align-items: center; opacity: 0;
+  }
+  .punch-before .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 140px; font-weight: 700;
+    color: var(--red); line-height: 1;
+  }
+  .punch-before .lbl {
+    font-size: 28px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(240,238,228,0.4);
+  }
+  .punch-before .sub {
+    font-size: 18px; font-weight: 300; color: rgba(240,238,228,0.25); margin-top: 4px;
+  }
+  .punch-arrow {
+    font-size: 48px; color: var(--gold); opacity: 0; margin: 16px 0;
+  }
+  .punch-after {
+    display: flex; flex-direction: column; align-items: center; opacity: 0;
+  }
+  .punch-after .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 140px; font-weight: 700;
+    color: var(--teal-lt); line-height: 1;
+  }
+  .punch-after .lbl {
+    font-size: 28px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(240,238,228,0.4);
+  }
+  .punch-multiplier {
+    margin-top: 30px; text-align: center; opacity: 0;
+  }
+  .punch-multiplier .big {
+    font-family: 'Cormorant Garamond', serif; font-size: 160px; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+  .punch-multiplier .tag {
+    font-size: 26px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--ivory);
+  }
+  .punch-multiplier .subtag {
+    font-size: 18px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(240,238,228,0.4); margin-top: 6px;
+  }
+ 
+  /* ===== SCENE 7: LIFECYCLE (fast) ===== */
+  .lc-wrap { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+  .lc-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 600;
+    color: var(--ivory); opacity: 0;
+  }
+  .lc-stages { display: flex; gap: 0; }
+  .lc-stage {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 22px 30px; min-width: 175px; opacity: 0;
+    border-right: 1px solid rgba(240,238,228,0.08);
+  }
+  .lc-stage:last-child { border-right: none; }
+  .lc-stage.mob { background: rgba(201,168,76,0.06); }
+  .lc-stage.exec { background: rgba(43,138,110,0.04); }
+  .lc-stage .n { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; color: var(--gold); }
+  .lc-stage .nm { font-size: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--ivory); margin-top: 2px; }
+  .lc-stage .ds { font-size: 12px; font-weight: 300; color: rgba(240,238,228,0.4); margin-top: 2px; text-align: center; max-width: 150px; }
+  .lc-bracket {
+    display: flex; align-items: center; gap: 12px; opacity: 0; margin-top: 8px;
+  }
+  .lc-bracket .bl { font-size: 16px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+  .lc-bracket .bt { font-size: 14px; font-weight: 300; color: rgba(240,238,228,0.4); }
+ 
+  /* ===== SCENE 8: CLOSE (cinematic) ===== */
+  .close-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .cl-logo {
+    font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 700;
+    color: var(--ivory); opacity: 0; letter-spacing: 3px;
+  }
+  .cl-product {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 34px; font-weight: 600;
+    letter-spacing: 8px; text-transform: uppercase; color: var(--teal); opacity: 0;
+  }
+  .cl-tagline {
+    font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400;
+    font-style: italic; color: var(--gold); opacity: 0; margin-top: 24px;
+  }
+  .cl-arc {
+    display: flex; gap: 16px; align-items: center; opacity: 0; margin-top: 8px;
+  }
+  .cl-arc .w { font-size: 17px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,238,228,0.5); }
+  .cl-arc .a { color: var(--gold); font-size: 16px; }
+  .cl-arc .w.gold { color: var(--gold); }
+  .cl-cta {
+    font-size: 18px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(240,238,228,0.3); opacity: 0; margin-top: 16px;
+  }
+  .cl-url {
+    font-size: 22px; font-weight: 600; letter-spacing: 2px;
+    color: var(--gold-lt); opacity: 0; margin-top: 4px;
+  }
+ 
+  /* ===== CONTROLS ===== */
+  .controls { position: fixed; bottom: 30px; right: 40px; z-index: 100; display: flex; gap: 12px; }
+  .controls button {
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    padding: 10px 24px; border-radius: 6px; cursor: pointer; transition: all 0.3s;
+  }
+  .controls button:hover { background: rgba(201,168,76,0.25); border-color: var(--gold); }
+</style>
+</head>
+<body>
+ 
+<div class="bg-grid"></div>
+<div class="bg-vignette"></div>
+<div class="progress-bar" id="progress"></div>
+ 
+<!-- S1: INSTANT HOOK -->
+<div class="scene active" id="scene1">
+  <div style="display:flex;flex-direction:column;align-items:center;">
+    <div class="hook-top" id="ht">THE 30-DAY PROBLEM NO ONE IS SOLVING</div>
+    <div class="hook-main" id="hm">Your strategy isn't failing.<br/>Your <em>mobilization</em> is.</div>
+    <div class="hook-stat" id="hs">
+      <div class="bar"></div>
+      <div class="text"><strong>65% of well-formulated strategies</strong> fail at execution — McKinsey</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- S2: PROBLEM -->
+<div class="scene" id="scene2">
+  <div class="problem-wrap">
+    <div class="prob-headline" id="ph">It takes Fortune 1000 companies <span class="red">30 days</span> just to figure out who's in the room.</div>
+    <div class="prob-items">
+      <div class="prob-item">Emails about emails</div>
+      <div class="prob-item">Decision rights nobody can find</div>
+      <div class="prob-item">Stakeholder alignment theater</div>
+      <div class="prob-item">War rooms that start weeks late</div>
+      <div class="prob-item">Slide decks instead of action</div>
+      <div class="prob-item">30 days to mobilize. Every time.</div>
+    </div>
+    <div class="prob-closer" id="pc">The bottleneck is never the technology. It's the mobilization cycle.</div>
+  </div>
+</div>
+ 
+<!-- S3: THESIS -->
+<div class="scene" id="scene3">
+  <div class="thesis-wrap">
+    <div class="thesis-word w1" id="tw1">Preparation</div>
+    <div class="thesis-word arrow" id="tw2">↓</div>
+    <div class="thesis-word w2" id="tw3">Readiness</div>
+    <div class="thesis-word arrow" id="tw4">↓</div>
+    <div class="thesis-word w3" id="tw5">Fearless</div>
+    <div class="thesis-sub" id="tw6">Every enterprise that prepares for every situation it'll face is no longer afraid of strategic triggers.</div>
+  </div>
+</div>
+ 
+<!-- S4: DETECTION (accelerated) -->
+<div class="scene" id="scene4">
+  <div class="detect-header" id="dh">Readiness OS — Live Signal Detection</div>
+  <div class="detect-wrap">
+    <div class="detect-hub" id="dhub">
+      <div class="ripple"></div>
+      <div class="ripple"></div>
+      <div class="ripple"></div>
+      <div class="num" id="dnum">0</div>
+      <div class="lbl">Data Points</div>
+    </div>
+    <div class="detect-node" style="top:18%;left:12%;">Market Disruption</div>
+    <div class="detect-node" style="top:22%;left:70%;">Regulatory Shift</div>
+    <div class="detect-node" style="top:52%;left:8%;">Supply Chain Stress</div>
+    <div class="detect-node" style="top:68%;left:72%;">AI Governance Risk</div>
+    <div class="detect-node" style="top:42%;left:78%;">Competitive Threat</div>
+    <div class="detect-badge" id="dbadge">
+      <div class="pill">9 Strategic Domains</div>
+      <div class="pill">221 Executive Triggers</div>
+      <div class="pill">Every 15 Minutes</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- S5: PLAYBOOKS (urgent) -->
+<div class="scene" id="scene5">
+  <div class="pb-wrap">
+    <div class="pb-stat" id="pbs">
+      <div class="n">170</div>
+      <div class="d">Pre-Staged Readiness Playbooks · 9 Domains</div>
+    </div>
+    <div class="pb-grid">
+      <div class="pb-card"><div class="dom">Financial Strategy</div><div class="nm">Capital Reallocation Sprint</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Regulatory & Compliance</div><div class="nm">SEC Investigation Response</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Technology & Innovation</div><div class="nm">Ransomware Attack Protocol</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Market Dynamics</div><div class="nm">Aggressive Pricing Disruption</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Talent & Leadership</div><div class="nm">CEO Sudden Departure</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">AI Governance</div><div class="nm">AI Competitive Disruption</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Brand & Reputation</div><div class="nm">Crisis Containment</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Operational Excellence</div><div class="nm">Dual-Source Activation</div><div class="st">PRE-STAGED</div></div>
+      <div class="pb-card"><div class="dom">Market Opportunities</div><div class="nm">New Market Entry</div><div class="st">PRE-STAGED</div></div>
+    </div>
+    <div class="pb-authority" id="pba">
+      <div class="icon">🛡</div>
+      <div class="txt">AI monitors. Executives authorize. Execution pre-staged.</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- S6: THE PUNCH -->
+<div class="scene" id="scene6">
+  <div class="punch-wrap">
+    <div class="punch-before" id="p6a">
+      <div class="num">30</div>
+      <div class="lbl">Day Mobilization</div>
+      <div class="sub">Just to figure out who's in the room</div>
+    </div>
+    <div class="punch-arrow" id="p6b">↓</div>
+    <div class="punch-after" id="p6c">
+      <div class="num">12</div>
+      <div class="lbl">Minute Activation</div>
+    </div>
+    <div class="punch-multiplier" id="p6d">
+      <div class="big">3,600×</div>
+      <div class="tag">Execution Head Start</div>
+      <div class="subtag">Not a speed advantage. A structural advantage.</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- S7: LIFECYCLE (fast) -->
+<div class="scene" id="scene7">
+  <div class="lc-wrap">
+    <div class="lc-title" id="lct">What Collapses to 12 Minutes</div>
+    <div class="lc-stages">
+      <div class="lc-stage mob"><div class="n">1</div><div class="nm">Triggered</div><div class="ds">Signal threshold crossed</div></div>
+      <div class="lc-stage mob"><div class="n">2</div><div class="nm">Staged</div><div class="ds">Tasks created, roles assigned</div></div>
+      <div class="lc-stage mob"><div class="n">3</div><div class="nm">Notified</div><div class="ds">Stakeholders alerted</div></div>
+      <div class="lc-stage mob"><div class="n">4</div><div class="nm">Acknowledged</div><div class="ds">Role-holders confirmed</div></div>
+      <div class="lc-stage exec"><div class="n">5</div><div class="nm">In Progress</div><div class="ds">Work underway</div></div>
+      <div class="lc-stage exec"><div class="n">6</div><div class="nm">Complete</div><div class="ds">Deliverable confirmed</div></div>
+    </div>
+    <div class="lc-bracket" id="lcb">
+      <span class="bl">Stages 1–4: The Mobilization Cycle</span>
+      <span class="bt">← 12 minutes, not 30 days</span>
+    </div>
+  </div>
+</div>
+ 
+<!-- S8: CLOSE -->
+<div class="scene" id="scene8">
+  <div class="close-wrap">
+    <div class="cl-logo" id="c8a">VaughnMartin</div>
+    <div class="cl-product" id="c8b">Readiness OS</div>
+    <div class="cl-tagline" id="c8c">We Make Enterprises Fearless.</div>
+    <div class="cl-arc" id="c8d">
+      <span class="w">Preparation</span><span class="a">→</span>
+      <span class="w">Readiness</span><span class="a">→</span>
+      <span class="w gold">Fearless</span>
+    </div>
+    <div class="cl-cta" id="c8e">The Operating Model Layer Above Your Entire Tech Stack</div>
+    <div class="cl-url" id="c8f">vaughnmartin.com</div>
+  </div>
+</div>
+ 
+<div class="controls">
+  <button onclick="play()">▶ PLAY</button>
+  <button onclick="reset()">↺ RESET</button>
+</div>
+ 
+<script>
+const SC = ['scene1','scene2','scene3','scene4','scene5','scene6','scene7','scene8'];
+let running = false, TT = [];
+ 
+function clr() { TT.forEach(t => clearTimeout(t)); TT = []; }
+function w(ms) { return new Promise(r => { const t = setTimeout(r, ms); TT.push(t); }); }
+ 
+function anim(el, style, dur = 500) {
+  return new Promise(r => {
+    if (typeof el === 'string') el = document.getElementById(el);
+    if (!el) { r(); return; }
+    el.style.transition = `all ${dur}ms cubic-bezier(0.16, 1, 0.3, 1)`;
+    Object.assign(el.style, style);
+    const t = setTimeout(r, dur);
+    TT.push(t);
+  });
+}
+ 
+function show(el, dur = 500) { return anim(el, { opacity: '1', transform: 'translateY(0) scale(1)' }, dur); }
+function stamp(el) {
+  return new Promise(r => {
+    if (typeof el === 'string') el = document.getElementById(el);
+    if (!el) { r(); return; }
+    el.style.animation = `stampIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards`;
+    const t = setTimeout(r, 500); TT.push(t);
+  });
+}
+ 
+function go(idx) {
+  SC.forEach((s, i) => document.getElementById(s).classList.toggle('active', i === idx));
+  document.getElementById('progress').style.width = ((idx + 1) / SC.length * 100) + '%';
+}
+ 
+// ===== SCENE FUNCTIONS =====
+ 
+// S1: INSTANT — text visible frame 1, main fades in fast
+async function s1() {
+  go(0);
+  // hook-top already has CSS animation, visible instantly
+  await w(200);
+  await show('hm', 400);
+  await w(400);
+  await show('hs', 500);
+  await w(2200);
+}
+ 
+// S2: PROBLEM — medium pace, items appear in quick grid burst
+async function s2() {
+  go(1);
+  await show('ph', 500);
+  await w(600);
+  const items = document.querySelectorAll('.prob-item');
+  // Burst: all 6 in rapid succession
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.transition = 'all 300ms cubic-bezier(0.16,1,0.3,1)';
+    items[i].style.opacity = '1';
+    items[i].style.transform = 'scale(1)';
+    await w(180);
+  }
+  await w(400);
+  await show('pc', 400);
+  await w(2200);
+}
+ 
+// S3: THESIS — deliberate, each word lands heavy
+async function s3() {
+  go(2);
+  await w(300);
+  await show('tw1', 500); await w(700);
+  await show('tw2', 250); await w(300);
+  await show('tw3', 500); await w(700);
+  await show('tw4', 250); await w(300);
+  await stamp('tw5'); await w(800);
+  await show('tw6', 600);
+  await w(2500);
+}
+ 
+// S4: DETECTION — FAST. Nodes appear rapidly, fire fast
+async function s4() {
+  go(3);
+  await show('dh', 300);
+  const hub = document.getElementById('dhub');
+  hub.style.transition = 'opacity 0.4s ease';
+  hub.style.opacity = '1';
+  hub.classList.add('on');
+ 
+  // Count up fast
+  const counter = document.getElementById('dnum');
+  let c = 0;
+  const ci = setInterval(() => { c += 5; if (c > 248) { c = 248; clearInterval(ci); } counter.textContent = c; }, 12);
+  TT.push(ci);
+ 
+  // Nodes — FAST, 180ms each
+  const nodes = document.querySelectorAll('.detect-node');
+  for (const n of nodes) {
+    n.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    n.style.opacity = '1'; n.style.transform = 'scale(1)';
+    await w(180);
+  }
+ 
+  // Fire 3 immediately
+  await w(200);
+  [0, 2, 4].forEach(i => nodes[i].classList.add('fire'));
+  await w(300);
+  [1, 3].forEach(i => nodes[i].classList.add('fire'));
+ 
+  await w(400);
+  await show('dbadge', 350);
+  await w(2000);
+}
+ 
+// S5: PLAYBOOKS — cards cascade fast, activation is urgent
+async function s5() {
+  go(4);
+  await show('pbs', 400);
+  await w(300);
+ 
+  const cards = document.querySelectorAll('.pb-card');
+  // Fast cascade
+  for (const c of cards) {
+    c.style.transition = 'all 250ms cubic-bezier(0.16,1,0.3,1)';
+    c.style.opacity = '1'; c.style.transform = 'translateY(0)';
+    await w(100);
+  }
+  await w(300);
+ 
+  // Rapid activation — 4 cards fire in quick succession
+  const activate = [0, 2, 4, 5];
+  for (const idx of activate) {
+    cards[idx].classList.add('on');
+    cards[idx].querySelector('.st').textContent = '● ACTIVATED';
+    await w(200);
+  }
+ 
+  await w(400);
+  await show('pba', 400);
+  await w(2000);
+}
+ 
+// S6: THE PUNCH — hard cuts, stamp the multiplier
+async function s6() {
+  go(5);
+  await w(200);
+  await show('p6a', 400);
+  // Shake the 30 for emphasis
+  await w(600);
+  document.querySelector('.punch-before .num').style.animation = 'shakeX 0.3s ease';
+  await w(500);
+  await show('p6b', 200);
+  await w(300);
+  await show('p6c', 400);
+  await w(800);
+  // STAMP the multiplier
+  await stamp('p6d');
+  await w(3000);
+}
+ 
+// S7: LIFECYCLE — fast reveal
+async function s7() {
+  go(6);
+  await show('lct', 400);
+  await w(300);
+  const stages = document.querySelectorAll('.lc-stage');
+  for (const s of stages) {
+    s.style.transition = 'all 250ms cubic-bezier(0.16,1,0.3,1)';
+    s.style.opacity = '1'; s.style.transform = 'translateY(0)';
+    await w(200);
+  }
+  await w(400);
+  await show('lcb', 400);
+  await w(2200);
+}
+ 
+// S8: CLOSE — cinematic reveal
+async function s8() {
+  go(7);
+  await w(400);
+  await show('c8a', 600); await w(500);
+  await show('c8b', 400); await w(500);
+  await show('c8c', 500); await w(600);
+  await show('c8d', 400); await w(400);
+  await show('c8e', 400); await w(300);
+  await show('c8f', 400);
+}
+ 
+async function play() {
+  if (running) return;
+  running = true;
+  resetVisuals();
+  await s1(); await s2(); await s3(); await s4(); await s5(); await s6(); await s7(); await s8();
+  running = false;
+}
+ 
+function resetVisuals() {
+  document.querySelectorAll('.hook-main,.hook-stat,.prob-headline,.prob-item,.prob-closer,.thesis-word,.thesis-sub,.detect-header,.detect-hub,.detect-node,.detect-badge,.pb-stat,.pb-card,.pb-authority,.punch-before,.punch-arrow,.punch-after,.punch-multiplier,.lc-title,.lc-stage,.lc-bracket,.cl-logo,.cl-product,.cl-tagline,.cl-arc,.cl-cta,.cl-url').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = '';
+    el.style.animation = '';
+  });
+  document.querySelectorAll('.detect-node').forEach(n => { n.classList.remove('fire'); n.style.transform = 'scale(0)'; });
+  document.querySelectorAll('.pb-card').forEach(c => {
+    c.classList.remove('on'); c.style.transform = 'translateY(16px)';
+    const s = c.querySelector('.st'); if (s) s.textContent = 'PRE-STAGED';
+  });
+  document.querySelectorAll('.lc-stage').forEach(s => { s.style.transform = 'translateY(20px)'; });
+  document.getElementById('dnum').textContent = '0';
+  const hub = document.getElementById('dhub');
+  hub.style.opacity = '0'; hub.classList.remove('on');
+  document.getElementById('ht').style.animation = '';
+}
+ 
+function reset() { clr(); running = false; resetVisuals(); go(0); }
+</script>
+</body>
+</html>
