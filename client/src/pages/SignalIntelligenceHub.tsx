@@ -412,7 +412,7 @@ export default function SignalIntelligenceHub() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 variant="outline" 
-                onClick={() => window.location.href = '/api/login'}
+                onClick={() => window.location.href = '/request-access'}
                 style={{ borderColor: "rgba(255,255,255,0.3)", color: "white" }}
               >
                 Sign In

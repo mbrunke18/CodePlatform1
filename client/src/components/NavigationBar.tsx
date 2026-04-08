@@ -284,7 +284,7 @@ export default function NavigationBar() {
               variant="ghost"
               className="text-slate-700 hover:bg-slate-100"
               data-testid="button-sign-in"
-              onClick={() => window.location.href = '/api/login'}
+              onClick={() => window.location.href = '/request-access'}
             >
               Sign In
             </Button>

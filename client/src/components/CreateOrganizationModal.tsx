@@ -58,7 +58,7 @@ export default function CreateOrganizationModal({ open, onOpenChange }: CreateOr
           variant: "destructive",
         });
         setTimeout(() => {
-          window.location.href = "/api/login";
+          window.location.href = "/request-access";
         }, 500);
         return;
       }

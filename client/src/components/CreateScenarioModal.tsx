@@ -68,7 +68,7 @@ export default function CreateScenarioModal({ open, onOpenChange }: CreateScenar
           variant: "destructive",
         });
         setTimeout(() => {
-          window.location.href = "/api/login";
+          window.location.href = "/request-access";
         }, 500);
         return;
       }

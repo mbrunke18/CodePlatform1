@@ -31,7 +31,7 @@ export default function TaskPanel() {
           variant: "destructive",
         });
         setTimeout(() => {
-          window.location.href = "/api/login";
+          window.location.href = "/request-access";
         }, 500);
         return;
       }

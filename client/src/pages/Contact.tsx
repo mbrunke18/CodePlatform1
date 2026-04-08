@@ -76,7 +76,7 @@ export default function Contact() {
       form.reset();
 
       setTimeout(() => {
-        window.location.href = '/api/login';
+        window.location.href = '/request-access';
       }, 1500);
     } catch {
       toast({

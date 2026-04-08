@@ -63,8 +63,8 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
-        toast({ title: 'Sign in required', description: 'Please sign in to run simulations.', variant: 'destructive' });
-        setTimeout(() => { window.location.href = '/api/login'; }, 1500);
+        toast({ title: 'Access required', description: 'Requesting access to run simulations.', variant: 'destructive' });
+        setTimeout(() => { window.location.href = '/request-access'; }, 1500);
       } else {
         toast({ title: 'Simulation failed', description: 'An error occurred. Please try again.', variant: 'destructive' });
       }
