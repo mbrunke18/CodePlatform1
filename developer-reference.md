@@ -1,11 +1,15 @@
-# VaughnMartin Execution OS — Developer Reference
-*Last updated: April 6, 2026 (rev 18) | Single source of truth for engineers onboarding to or extending this codebase.*
+# VaughnMartin Readiness OS — Developer Reference
+*Last updated: April 8, 2026 (rev 19) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
 ## 1. What This Product Is
 
-**Execution OS** by VaughnMartin is a Strategic Execution platform for Fortune 1000 companies. It automates project creation, task assignment, document staging, and budget allocation within 12 minutes of a strategic trigger firing.
+**Readiness OS** by VaughnMartin is the coordination infrastructure for Fortune 1000 companies. It pre-stages project creation, task assignment, document staging, and budget allocation so the organization responds within 12 minutes of a strategic trigger firing — before the trigger fires.
+
+**Canonical product descriptor:** "VaughnMartin builds Readiness OS — coordination infrastructure for the Fortune 1000."
+**Canonical tagline:** "The response is ready before the trigger fires."
+**Product thesis arc (LOCKED):** Preparation → Readiness → Fearless.
 
 - **170 active playbooks** across 9 domains
 - **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
@@ -25,8 +29,8 @@
 
 The retired phrase "16 signal categories" was a previous UI label shown to users. It has been replaced everywhere with "9 strategic domains, 221 triggers." Never write "16 signal categories" in any user-facing copy. The internal counts (20 categories, 16 patterns) are technical implementation details that belong only in code comments and this document.
 
-- **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×" and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time most Fortune 1000 organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Execution OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster." The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
-- **Microsoft Ecosystem positioning** — Execution OS is positioned as "The strategic command layer *above* Microsoft's agentic stack." It does NOT replace Azure AI, Teams, Copilot Studio, Entra, or Power Platform — it orchestrates them. This is a key GTM message: every Microsoft enterprise customer is an immediately addressable prospect with no rip-and-replace required. The full architecture diagram lives at `/ecosystem`.
+- **3,600× Execution Head Start — LOCKED FRAMING (OLD "340×", "360×", and "72 hours" ARE RETIRED):** The 30-day baseline is NOT execution time. It is the time most Fortune 1000 organizations spend just to MOBILIZE before any execution begins — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. Readiness OS compresses that entire mobilization cycle to 12 minutes. The correct math is 30 days × 24 hrs × 60 min = 43,200 minutes ÷ 12 minutes = 3,600×. The label is ALWAYS "3,600× Execution Head Start" — never "Speed Advantage," never "3,600× faster," never "360x." "360×" was derived from the retired 72-hour baseline and is therefore also retired. The correct framing is always "30 days compressed to 12 minutes." Any developer or agent touching this metric must preserve this framing in full.
+- **Microsoft Ecosystem positioning — LOCKED:** "Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the operating model layer above the Microsoft investment — not a replacement, an orchestrator. This framing lives in InvestorLanding ("The Operating Model Layer" section), InvestorPresentation (Platform Vision slide), and IDEAFramework. Do not revert to "Agentic Execution Layer" as product positioning — that phrase is retired.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
 - **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
 - **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Enterprise Pilot.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. Enterprise Pilot ($75K flat fee, Fortune 1000) stays on `/pilot-program` — completely separate audience, separate page, separate CTA.
@@ -1055,7 +1059,7 @@ const perfScore = Math.min(100, Math.round(
 ));
 ```
 
-**ROI formula:** `timeSaved (minutes) × $40/min` → formatted as $XK or $X.XM. `timeSaved = industryStandard (30×24×60 = 43,200 minutes, the 30-day mobilization baseline) - elapsedMinutes`. Never use 72-hour baseline — that framing is retired.
+**ROI formula:** `timeSaved (minutes) × $40/min` → formatted as $XK or $X.XM. `timeSaved = industryStandard (30×24×60 = 43,200 minutes, the 30-day mobilization baseline) - elapsedMinutes`. Never use 72-hour baseline — that framing is retired. The resulting speed multiplier at 12-minute completion is 3,600× — the "360x" value that previously appeared as the default display was derived from the retired 72-hour baseline and has been replaced with "3,600×" everywhere.
 
 **Pattern:** Uses an IIFE `{executionStatus === 'completed' && (() => { ... })()}` to scope local constants without adding state.
 
@@ -1315,22 +1319,40 @@ It does NOT replace any live pipeline alert. It supplements the pipeline for use
 
 ---
 
-## 32. Messaging Guidelines — Locked Copy Rules (April 2026)
+## 32. Messaging Guidelines — Locked Copy Rules (April 2026, rev 19)
 
 The following copy conventions are founder-locked. Any agent or developer who touches marketing pages, investor slides, or product UI must follow these rules without deviation.
 
-### Retired phrases (never use)
+### Product Thesis Arc (LOCKED — must appear on all primary pages)
+**Preparation → Readiness → Fearless**
+- Preparation: Decision rights mapped, ownership defined, response architecture built during low pressure — before any trigger fires.
+- Readiness: 170 playbooks pre-staged. 221 triggers monitored. 12-minute deployment ready.
+- Fearless: Every enterprise that prepares for every situation it'll face is no longer afraid of strategic triggers.
+- Canonical tagline: "The response is ready before the trigger fires."
+- Emotional endpoint: Fearlessness — not speed. Speed is the evidence; readiness is the promise; fearless is the outcome.
+
+### Retired phrases (never use anywhere in the codebase)
 | Retired | Replace with |
 |---|---|
 | "Human-AI partnership" | "AI monitors, executives authorize" |
 | "Human-AI collaboration" | "Executive authority preserved" |
 | "AI augments executives" | "AI eliminates the mobilization cycle" |
 | "Speed advantage" | "3,600× Execution Head Start" |
-| "72 hours" (as baseline) | "30 days" |
-| "340×" | "3,600×" |
+| "72 hours" (as mobilization baseline) | "30 days" |
+| "340×" | "3,600× Execution Head Start" |
+| "360×" or "360x" | "3,600× Execution Head Start" |
+| "Agentic Execution Layer" (as product name) | "The Operating Model Layer" |
+| "Execution Operating System" (as product name) | "Readiness OS" |
+| "Execution Infrastructure" (standalone product descriptor) | "Readiness Infrastructure" |
+| "Strategic Execution Operating System" | "Strategic Readiness Platform" |
+| "Strategic Execution Playbooks" | "Strategic Readiness Playbooks" |
+| "Execution Playbooks" (standalone) | "Readiness Playbooks" |
 | "20–50 hours getting organized" | "30 days to mobilize" |
 | "16 signal categories" | "9 strategic domains, 221 triggers" |
-| "Strategic Execution Platform" (repeated) | Use once at introduction only |
+
+**Note on "72 hours":** Remains acceptable in contextual uses — regulatory notification deadlines (SEC 8-K, GDPR), before-state comparison data in demo scenario tables, or crisis scenario narrative detail. ONLY retired as a product mobilization baseline claim.
+
+**Note on "execution" as verb/noun:** STAYS in all forms — EXECUTE phase, Execution Clock, AI Execution Briefs, 3,600× Execution Head Start, Execution Velocity, Execution Complete, PlaybookActivationConsole debrief. Only RETIRED in old product name framing ("Execution OS," "Execution Infrastructure" as product descriptor).
 
 ### Approved narrative patterns
 - "While others mobilize, you're already executing."
@@ -1340,9 +1362,11 @@ The following copy conventions are founder-locked. Any agent or developer who to
 - "The bottleneck is never the technology. It's the mobilization cycle."
 - "30 days compressed to 12 minutes."
 - "3,600× Execution Head Start — not a speed advantage. A structural advantage."
+- "The response was ready before the trigger fired. That's preparation. That's readiness. That's how enterprises become fearless." (TwelveMinuteTestDrive debrief closing)
+- "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is that operating model." (Investor pages)
 
 ### Pages where the thesis must be present
-Homepage · Investor pages · Founder Story · Investor Presentation · ExecutiveBrief · WhyExecutionOS · MarketingLanding
+Homepage hero · InvestorLanding · InvestorResources · InvestorPresentation · WelcomeBrief · TwelveMinuteTestDrive debrief · FounderStory
 
 ### IDEA card copy (Homepage.tsx) — do not paraphrase
 The four IDEA cards tell the product's emotional story. Their current copy is canonical:
@@ -1350,6 +1374,30 @@ The four IDEA cards tell the product's emotional story. Their current copy is ca
 - **DETECT:** "While others are still in their first email thread, the system has already matched the trigger to the playbook — before your leadership team finishes their first email."
 - **EXECUTE:** "By the time the first alignment call would have been scheduled, you're already executing."
 - **ADVANCE:** "Each execution makes the next response faster, sharper, and more decisive."
+
+### April 2026 Platform-Wide Messaging Sweep (rev 19) — Changes Applied
+All pages were audited and the following corrections were made globally. Do not reintroduce any of these patterns:
+
+**"360x" → "3,600×" (8 locations fixed):**
+- `CustomerDemo.tsx` — stats card "Response Speed"
+- `DemoLiveActivation.tsx` — result display
+- `KeynoteDemo.tsx` — after-state comparison table "Response Speed"
+- `UnifiedEnterprisePlatform.tsx` — capability callout
+- `McKinseyIntelligenceCenter.tsx` — speed improvement metric
+- `PlaybookActivationConsole.tsx` — default display before clock starts (live calculation was already using 30-day baseline)
+
+**"72 hours" mobilization baseline → "30 days" (3 locations fixed):**
+- `KeynoteDemo.tsx` — legacy comparison row → "Time to Mobilize: 30 days"
+- `KeynoteDemo.tsx` — opening stats block → 30-day/83%/$847B framing
+- `CompetitivePositioning.tsx` — before-state strip → "30 days of mobilization lag"
+
+**Product descriptor updates (7 locations fixed):**
+- `WelcomeBrief.tsx` — "Your Readiness Infrastructure — Live Now"
+- `OnboardingGuide.tsx` — logo subtitle "Readiness OS"; section "170 Pre-Built Readiness Playbooks"
+- `CommandLanding.tsx` — "readiness playbooks across 9 strategic domains"
+- `InvestorLanding.tsx` — hero "The Operating Model Layer"; Problem 1 "The Readiness Gap"
+- `InvestorPresentation.tsx` — Platform Vision slide "The Operating Model Layer"
+- `IDEAFramework.tsx` / `WhyExecuteIQ.tsx` — "readiness coordination layer"
 
 ---
 
