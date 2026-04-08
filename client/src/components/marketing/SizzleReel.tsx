@@ -182,7 +182,7 @@ export default function SizzleReel() {
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-lg text-gray-800 mb-4"
                 >
-                  Seventy-two hours later... you're ready to start.
+                  Weeks later... you're finally ready to start.
                 </motion.div>
                 
                 <motion.div
@@ -219,7 +219,7 @@ export default function SizzleReel() {
                     McKinsey, IBM, Bain, BCG, Accenture, Anthropic, OpenAI, and Harvard Business Review all arrived at the same conclusion.
                   </p>
                   <p className="text-lg text-gray-800">
-                    Organizations aren't failing at AI because of technology. They lack execution infrastructure—governance, decision rights, coordination.
+                    Organizations aren't failing at AI because of technology. They lack coordination infrastructure — governance, decision rights, pre-staged execution.
                   </p>
                 </motion.div>
                 
@@ -470,12 +470,12 @@ export default function SizzleReel() {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 2 }}
                 >
-                  <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
-                    THE STRATEGIC EXECUTION
+                  <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#C9A84C] to-amber-400">
+                    READINESS OS
                   </span>
                   <br />
-                  <span className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
-                    OPERATING SYSTEM
+                  <span className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
+                    Coordination Infrastructure for the Fortune 1000
                   </span>
                 </motion.div>
               </div>
@@ -532,7 +532,7 @@ export default function SizzleReel() {
                   className="mb-6"
                 >
                   <span className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#2B8A6E] to-[#3BAF8A]">
-                    PREPARED TO EXECUTE.
+                    THE RESPONSE IS READY BEFORE THE TRIGGER FIRES.
                   </span>
                 </motion.div>
                 
