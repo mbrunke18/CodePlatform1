@@ -549,10 +549,10 @@ export default function MissionControl() {
             ))}
           </div>
 
-          {/* ── CONFIGURE YOUR OS ──────────────────────────────────────────── */}
+          {/* ── YOUR EXECUTION LAYER ────────────────────────────────────────── */}
           <div style={{ marginBottom: 18 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>CONFIGURE YOUR OS</span>
+              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>YOUR EXECUTION LAYER</span>
               <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>

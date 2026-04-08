@@ -553,7 +553,7 @@ export default function InvestorResources() {
                     (Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab)
                   </p>
                   <p className="text-[#0A0F2E] italic font-medium">
-                    "Business has no operating system for coordinated response. We're building it."
+                    "The coordination infrastructure for strategic response has never existed. We built it."
                   </p>
                 </div>
               </div>

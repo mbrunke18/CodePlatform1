@@ -298,8 +298,12 @@ function HeroSection() {
             <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Your organization is still taking 30 days to respond.</span>
           </h1>
 
-          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.4 }}>
+          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.4 }}>
             Execution OS closes that gap — in 12 minutes.
+          </p>
+
+          <p style={{ ...DM, fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.38)", maxWidth: 520, margin: "0 auto 20px", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            Coordination infrastructure for the Fortune 1000 &nbsp;·&nbsp; AI monitors &nbsp;·&nbsp; Executives authorize
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, marginTop: 40 }}>
