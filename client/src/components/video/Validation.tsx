@@ -24,12 +24,14 @@ const firms = [
   { name: "OpenAI", color: "#a3e635" },
   { name: "Anthropic", color: "#d4a037" },
   { name: "World Economic Forum", color: "#60a5fa" },
+  { name: "Harvard Business Review", color: "#dc2626" },
 ];
 
 const quotes = [
   { firm: "IBM", quote: "The operating model required to run AI at scale" },
   { firm: "Deloitte", quote: "95% of CSOs say AI will reshape priorities—but only 16% are reimagining lines of business" },
   { firm: "McKinsey", quote: "Organization design and work change with agents—the agentic organization requires new infrastructure" },
+  { firm: "Harvard Business Review", quote: "AI doesn't reduce work — it intensifies it. Organizations need pre-staged execution infrastructure to govern AI at enterprise scale." },
 ];
 
 export function Validation({ progress }: SceneProps) {
@@ -59,7 +61,7 @@ export function Validation({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch
-          text="17 Reports. One Conclusion."
+          text="18 Reports. One Conclusion."
           size="xl"
           className="text-gray-900 mb-2 text-center"
         />
@@ -79,7 +81,7 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 0.5 }}
           className="text-sm text-gray-600 text-center mb-6"
         >
-          17 independent reports from 15 firms. One conclusion: enterprises need execution infrastructure to operationalize AI.
+          18 independent reports from 16 firms. One conclusion: enterprises need execution infrastructure to operationalize AI.
         </motion.p>
 
         <motion.div
@@ -128,13 +130,13 @@ export function Validation({ progress }: SceneProps) {
           transition={{ delay: 2.5 }}
           className="text-sm text-gray-700 text-center mt-6"
         >
-          <span className="text-[#0A0F2E] font-semibold">15 firms. 17 reports.</span> Every one points at the gap Readiness OS fills.
+          <span className="text-[#0A0F2E] font-semibold">16 firms. 18 reports.</span> Every one points at the gap Readiness OS fills.
         </motion.p>
       </div>
 
       <NarrationBox
-        headline="17 Reports. One Conclusion."
-        description="17 independent reports from 15 firms—McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, and more—all confirm enterprises need execution infrastructure. 95% of CSOs say AI will reshape priorities, but only 16% are acting. Readiness OS built the missing layer."
+        headline="18 Reports. One Conclusion."
+        description="18 independent reports from 16 firms—McKinsey, IBM, BCG, Bain, Deloitte, PwC, Accenture, Microsoft, Google Cloud, Harvard Business Review, and more—all confirm enterprises need execution infrastructure. HBR (Feb 2026): AI intensifies work without an operating model. Readiness OS built the missing layer."
         delay={0.5}
       />
     </div>

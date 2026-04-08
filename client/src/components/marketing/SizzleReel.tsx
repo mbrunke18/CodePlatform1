@@ -216,7 +216,7 @@ export default function SizzleReel() {
                   className="mb-8"
                 >
                   <p className="text-lg text-gray-800 mb-4">
-                    McKinsey, IBM, Bain, BCG, Accenture, Anthropic, and OpenAI all arrived at the same conclusion.
+                    McKinsey, IBM, Bain, BCG, Accenture, Anthropic, OpenAI, and Harvard Business Review all arrived at the same conclusion.
                   </p>
                   <p className="text-lg text-gray-800">
                     Organizations aren't failing at AI because of technology. They lack execution infrastructure—governance, decision rights, coordination.

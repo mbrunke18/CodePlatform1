@@ -200,6 +200,56 @@ export default function Research() {
                 Source: IBM/Ponemon Institute — Cost of a Data Breach Report 2024 — 604 organizations studied
               </p>
             </div>
+
+            {/* HBR Section */}
+            <div style={{ border: "1px solid #fecaca", borderLeft: "3px solid #dc2626", padding: "20px 24px", background: "#fff" }} className="mb-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div style={{ width: 32, height: 32, background: "#dc2626", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <Layers className="h-4 w-4 text-white" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-3 mb-1">
+                    <h3 className="text-2xl font-bold text-foreground">AI Intensifies Work Without an Operating Model</h3>
+                    <span style={{ background: "#dc2626", color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", padding: "2px 8px" }}>HBR · Feb 2026</span>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Harvard Business Review's 8-month study of a 200-person enterprise found AI expanded workloads — not reduced them. The solution is not a better model. It is a pre-staged operating model that governs AI at scale.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-4 mb-4">
+                <div className="p-4" style={{ background: "#FEF2F2", border: "1px solid #fecaca" }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#dc2626", lineHeight: 1 }}>+47%</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Expansion in individual task scope after AI deployment — work grew, not shrank</p>
+                </div>
+                <div className="p-4" style={{ background: "#FEF2F2", border: "1px solid #fecaca" }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#dc2626", lineHeight: 1 }}>+32%</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Increase in multitasking and context-switching as AI surfaced more decisions simultaneously</p>
+                </div>
+                <div className="p-4" style={{ background: "#FEF2F2", border: "1px solid #fecaca" }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#dc2626", lineHeight: 1 }}>Blurred</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Role boundaries across all 200 participants — AI created coordination gaps faster than teams could close them</p>
+                </div>
+              </div>
+
+              <div style={{ background: "#FEF2F2", border: "1px solid #fecaca", padding: "14px 18px", marginBottom: 12 }}>
+                <p className="text-sm font-semibold" style={{ color: "#dc2626" }}>The HBR Prescription — and what Readiness OS delivers:</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged playbooks, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 playbooks pre-staged, 221 triggers monitored, and no action taken without executive authorization.
+                </p>
+              </div>
+
+              <p className="text-sm text-muted-foreground">
+                Source: Harvard Business Review — "How AI Changes Work" · Feb 2026 · 8-month study · 200-person enterprise
+              </p>
+            </div>
           </div>
         </section>
 
