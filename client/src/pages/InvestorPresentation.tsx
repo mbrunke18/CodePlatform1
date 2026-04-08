@@ -236,12 +236,12 @@ function InvestorPresentation() {
 
     () => (
       <div className="flex flex-col items-center justify-center h-full px-4">
-        <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">Research Consensus — March 2026</p>
+        <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">Research Consensus — 2026</p>
         <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2 text-center max-w-4xl">
-          Three Independent Institutions. One Conclusion.
+          Four Independent Sources. One Conclusion.
         </h2>
-        <p className="text-[#6B7280] text-sm mb-7 text-center max-w-2xl">McKinsey, the World Economic Forum, and Accenture — publishing independently — have converged on the same diagnosis: enterprises have the AI. They lack the operating model to use it.</p>
-        <div className="grid md:grid-cols-3 gap-5 max-w-5xl w-full mb-6">
+        <p className="text-[#6B7280] text-sm mb-7 text-center max-w-2xl">McKinsey, WEF, Accenture, and Harvard Business Review — publishing independently — have converged on the same diagnosis: AI without an operating model intensifies the problem, not the solution.</p>
+        <div className="grid md:grid-cols-2 gap-5 max-w-5xl w-full mb-6">
           {[
             {
               org: "McKinsey & Company",
@@ -266,6 +266,14 @@ function InvestorPresentation() {
               bridge: "Readiness OS is the operating model layer AI requires.",
               color: "border-[#0A0F2E]/20 bg-[#0A0F2E]/5",
               dot: "bg-[#0A0F2E]",
+            },
+            {
+              org: "Harvard Business Review",
+              report: "AI Doesn't Reduce Work — It Intensifies It · February 2026",
+              quote: "\"AI tools don't reduce work, they consistently intensify it. Without an AI practice, the natural tendency of AI-assisted work is not contraction but intensification — with implications for burnout, decision quality, and long-term sustainability.\"",
+              bridge: "Readiness OS is the AI practice at the enterprise coordination layer — pre-staged, gate-driven, and human-authorized.",
+              color: "border-[#dc2626]/30 bg-[#dc2626]/5",
+              dot: "bg-[#dc2626]",
             },
           ].map(({ org, report, quote, bridge, color, dot }) => (
             <div key={org} className={`border ${color} rounded-xl p-5 flex flex-col gap-3`}>

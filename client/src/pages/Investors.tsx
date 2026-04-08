@@ -153,6 +153,7 @@ const milestones = [
 ];
 
 const researchCitations = [
+  { id: 0, source: "Harvard Business Review", title: "AI Doesn't Reduce Work — It Intensifies It", year: "February 2026", finding: "8-month study of 200-person enterprise: AI tools don't reduce work, they consistently intensify it. Workers expanded scope, blurred work/life boundaries, and juggled more simultaneously — raising expectations for speed without reducing pressure. The fix: an 'AI practice' — intentional norms, decision gates, and sequenced phases. Readiness OS is that AI practice at the enterprise coordination layer." },
   { id: 1, source: "McKinsey & Company", title: "Enterprise Architecture Synthesis", year: "2025–2026", finding: "65% of enterprises still piloting AI — only 1% fully mature. Leaders, not employees, are the bottleneck. $4.4T AI productivity potential locked behind a missing coordination layer: the 'orchestration layer · coordination fabric · shared source of truth' Readiness OS provides." },
   { id: 2, source: "IBM/Ponemon Institute", title: "Cost of a Data Breach Report", year: "2024", finding: "Global average breach cost: $4.88M; AI/automation saves 98 days in breach lifecycle" },
   { id: 3, source: "PagerDuty", title: "State of Digital Operations", year: "2024", finding: "Distributed response management teams respond 3.5x faster than centralized teams" },

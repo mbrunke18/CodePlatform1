@@ -341,7 +341,7 @@ export default function InvestorLanding() {
                 The world's top consulting and technology firms independently confirm the market Readiness OS addresses
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
-                {['IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
+                {['Harvard Business Review', 'IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
                   <span key={firm} className="bg-[#0A0F2E]/5 border border-[#E8E4DC] rounded-full px-3 py-1 text-xs font-medium text-[#0A0F2E]">{firm}</span>
                 ))}
               </div>
@@ -465,6 +465,26 @@ export default function InvestorLanding() {
                     <p className="text-[#0A0F2E] text-sm">"Reinventing platform strategy for agentic AI"</p>
                   </div>
                   <p className="text-[#2B8A6E] text-sm italic">→ Readiness OS is that platform</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-[#FEF2F2] border-[#dc2626]/20 hover:border-[#dc2626]/40 transition-all md:col-span-2">
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="w-2 h-2 rounded-full bg-[#dc2626] shrink-0" />
+                        <span className="font-bold text-[#0A0F2E] text-lg">Harvard Business Review</span>
+                        <span className="text-xs font-mono text-[#6B7280] uppercase tracking-wider">February 2026</span>
+                      </div>
+                      <div className="text-sm text-[#dc2626] font-semibold mb-3">AI Doesn't Reduce Work — It Intensifies It</div>
+                      <div className="flex items-start gap-2 mb-3">
+                        <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
+                        <p className="text-[#0A0F2E] text-sm italic">"AI tools don't reduce work, they consistently intensify it. Without an AI practice, the natural tendency of AI-assisted work is not contraction but intensification — with implications for burnout, decision quality, and long-term sustainability."</p>
+                      </div>
+                      <p className="text-[#2B8A6E] text-sm font-semibold">→ Readiness OS is the AI practice at the enterprise coordination layer — pre-staged playbooks, decision gates, and sequenced execution phases with executive sign-off at every step.</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
