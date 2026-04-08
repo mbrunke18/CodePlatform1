@@ -829,7 +829,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
             </Scene>
           )}
 
-          {/* Scene 13: 12 minutes / 340x */}
+          {/* Scene 13: 12 minutes / 3,600× */}
           {currentScene === 13 && (
             <Scene key="scene-13">
               <div className="text-center max-w-4xl">
