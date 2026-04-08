@@ -295,7 +295,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
     { duration: 12000 },  // 10: 170 playbooks / 9 domains
     { duration: 11000 },  // 11: IDEA framework
     { duration: 9000 },   // 12: One click activation
-    { duration: 9000 },   // 13: 12 minutes / 340x
+    { duration: 9000 },   // 13: 12 minutes / 3,600×
     { duration: 11000 },  // 14: Stakes - crisis frequency
     { duration: 11000 },  // 15: Not just defense
     { duration: 9000 },   // 16: Execution = competitive advantage

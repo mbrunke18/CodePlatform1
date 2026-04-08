@@ -164,7 +164,7 @@ export default function IntelligenceHub() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
                   { title: 'AI Radar Dashboard', desc: 'Real-time AI signal detection and pattern analysis', path: '/ai-radar', tab: 'radar', icon: Radio, color: GOLD },
-                  { title: 'Signal Intelligence', desc: '248+ data points across 16 categories', path: '/signal-intelligence', tab: 'signals', icon: Zap, color: TEAL },
+                  { title: 'Signal Intelligence', desc: '248+ data points, 9 strategic domains', path: '/signal-intelligence', tab: 'signals', icon: Zap, color: TEAL },
                   { title: 'Compound Threats', desc: 'Cross-domain disruption synthesis', path: '/intelligence', tab: 'compound', icon: Brain, color: NAVY },
                 ].map(item => (
                   <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-all cursor-pointer group">

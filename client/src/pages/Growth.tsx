@@ -68,7 +68,7 @@ const TIERS = [
       { label: "Integrations", value: "Slack + Email" },
       { label: "Support", value: "Email + chat + onboarding call" },
     ],
-    bestFor: "Companies that want proactive detection — seeing threats before they become crises. Signal detection across 16 categories changes the operating model.",
+    bestFor: "Companies that want proactive detection — seeing threats before they become crises. Signal detection across 9 strategic domains changes the operating model.",
     roiNote: "One supply chain disruption caught 48 hours early vs. reactively protects $2M–$10M in revenue. A single caught signal at this level returns the full annual investment.",
   },
   {

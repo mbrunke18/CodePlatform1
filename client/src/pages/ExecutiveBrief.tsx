@@ -186,7 +186,7 @@ export default function ExecutiveBrief() {
                   { label: "Pre-staged playbooks", detail: "Replace real-time coordination", icon: BookOpen },
                   { label: "Pattern detection", detail: "Replaces committee deliberation", icon: Globe },
                   { label: "12-minute execution", detail: "Replaces 30-day alignment cycles", icon: Clock },
-                  { label: "Human-AI partnership", detail: "AI orchestrates. Humans decide.", icon: Users },
+                  { label: "AI monitors, executives authorize", detail: "AI orchestrates. Humans decide.", icon: Users },
                 ].map(({ label, detail, icon: Icon }) => (
                   <div key={label} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
                     <div style={{ width: 36, height: 36, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>

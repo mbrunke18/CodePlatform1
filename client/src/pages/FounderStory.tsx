@@ -218,7 +218,7 @@ export default function FounderStory() {
           <div style={{ background: NAVY, padding: "48px 40px", margin: "48px 0" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
               {[
-                { letter: "I", word: "IDENTIFY", desc: "248+ signals across 16 categories. Every 15 minutes. Before you ask." },
+                { letter: "I", word: "IDENTIFY", desc: "248+ signals across 9 strategic domains. Every 15 minutes. Before you ask." },
                 { letter: "D", word: "DETECT", desc: "Pattern recognition fires before the crisis peaks. Not after." },
                 { letter: "E", word: "EXECUTE", desc: "170 pre-built playbooks deploy simultaneously. Twelve minutes." },
                 { letter: "A", word: "ADVANCE", desc: "Every activation makes the next one smarter. The library compounds." },

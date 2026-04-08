@@ -362,7 +362,7 @@ export default function ExecutiveHub() {
                 <div className="flex items-center gap-4">
                   <div className="p-4 rounded-2xl bg-[#C9A84C] shadow-lg shadow-[#C9A84C]/30"><Brain className="h-8 w-8 text-[#0A0F2E]" /></div>
                   <div>
-                    <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>The IDEA Framework™</h1><Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none px-3 py-1 font-bold uppercase tracking-wider">Human-AI</Badge></div>
+                    <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>The IDEA Framework™</h1><Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none px-3 py-1 font-bold uppercase tracking-wider">AI-Monitored</Badge></div>
                     <p className="text-[#6B7280] mt-1">The operating model powering 12-minute strategic execution</p>
                   </div>
                 </div>

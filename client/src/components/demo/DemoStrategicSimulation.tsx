@@ -138,7 +138,7 @@ export function DemoActiveStrategicCard() {
             <div className="flex items-start gap-2">
               <CheckCircle className="h-4 w-4 text-red-700 mt-0.5" />
               <span className="text-gray-700 dark:text-gray-300">
-                Detected <strong>72 hours before competitors</strong> - 5-day head start
+                Pre-staged response deployed in <strong>12 minutes</strong> — 3,600× execution head start
               </span>
             </div>
           </div>

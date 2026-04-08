@@ -917,7 +917,7 @@ export default function QuickDemoPage() {
                         <>
                           <p className="text-muted-foreground">AI pattern matching identifies triggers and recommends the right playbook. Human executives make the final call.</p>
                           <div className="p-3 bg-background rounded-lg">
-                            <p className="text-xs font-medium mb-1">Human-AI Partnership</p>
+                            <p className="text-xs font-medium mb-1">AI monitors, executives authorize</p>
                             <p className="text-xs text-muted-foreground">AI recommends. Humans decide. Clear decision rights at every step.</p>
                           </div>
                         </>
