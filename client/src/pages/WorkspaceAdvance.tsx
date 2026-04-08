@@ -30,7 +30,13 @@ import {
   Clock,
   User,
   CheckCircle2,
-  ShieldAlert
+  ShieldAlert,
+  Plus,
+  Minus,
+  GitCommit,
+  Shield,
+  TrendingDown,
+  Star
 } from 'lucide-react';
 import { SubBrandLabel } from "@/components/SubBrandLabel";
 import { useToast } from '@/hooks/use-toast';
@@ -151,6 +157,181 @@ function SeverityBadge({ severity }: { severity: string }) {
   );
   return (
     <Badge className="bg-gray-100 text-gray-600 border-gray-200 font-bold text-xs uppercase tracking-wider">Watch</Badge>
+  );
+}
+
+const PLAYBOOK_REFINEMENT_HISTORY = [
+  {
+    name: 'Cyber Incident Response',
+    domain: 'Cyber',
+    refinements: 4,
+    activations: 3,
+    maturity: 91,
+    lastRefined: '3 days ago',
+    color: '#3B82F6',
+    history: [
+      { version: 'v1.0', date: 'Sep 2023', type: 'created', change: 'Initial playbook created from post-mortem analysis of Q3 ransomware incident' },
+      { version: 'v1.1', date: 'Oct 2023', type: 'added', change: 'Added Deputy CISO escalation path after APAC containment gap identified' },
+      { version: 'v1.2', date: 'Dec 2023', type: 'added', change: 'Pre-approved IR retainer spend authority up to $500K (eliminated 3-day CFO approval delay)' },
+      { version: 'v2.0', date: 'Feb 2024', type: 'refined', change: 'Automated SOC alert → CISO notification at detection (eliminated 6.8-hour gap)' },
+    ],
+  },
+  {
+    name: 'SEC Regulatory Response',
+    domain: 'Regulatory',
+    refinements: 3,
+    activations: 1,
+    maturity: 78,
+    lastRefined: '2 weeks ago',
+    color: '#F97316',
+    history: [
+      { version: 'v1.0', date: 'Jan 2024', type: 'created', change: 'Initial playbook built from 2018 SEC inquiry lessons encoded by former CLO' },
+      { version: 'v1.1', date: 'Feb 2024', type: 'added', change: 'Pre-approved holding statement templates for press inquiry (eliminated PR lag)' },
+      { version: 'v1.2', date: 'Mar 2024', type: 'refined', change: 'Board notification protocol added — board briefed within 2 hours of material determination' },
+    ],
+  },
+  {
+    name: 'Supply Chain Disruption',
+    domain: 'Operations',
+    refinements: 2,
+    activations: 2,
+    maturity: 64,
+    lastRefined: '5 weeks ago',
+    color: '#2B8A6E',
+    history: [
+      { version: 'v1.0', date: 'Oct 2023', type: 'created', change: 'Built from semiconductor shortage post-mortem — $40M revenue impact' },
+      { version: 'v1.1', date: 'Jan 2024', type: 'added', change: 'Pre-approved alternate supplier shortlist — eliminates 3-week sourcing delay' },
+    ],
+  },
+];
+
+const IMMUNE_SYSTEM_SCORE = 74;
+
+function ReadinessCompoundsPanel() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
+  return (
+    <div className="mb-8">
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+            <div style={{ width: 20, height: 1.5, background: GOLD }} />
+            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>ADVANCE Phase · Institutional Intelligence</span>
+          </div>
+          <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Readiness Compounds
+          </h2>
+          <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
+            Every activation makes your playbooks smarter. Every debrief closes the gap between what happened and what's pre-staged.
+          </p>
+        </div>
+        <div style={{ textAlign: 'right', flexShrink: 0 }}>
+          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>Corporate Immune System</div>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, justifyContent: 'flex-end' }}>
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{IMMUNE_SYSTEM_SCORE}</span>
+            <span style={{ fontSize: 14, color: '#9CA3AF' }}>/100</span>
+          </div>
+          <div style={{ fontSize: 10, color: TEAL, fontWeight: 600 }}>Strong & Strengthening</div>
+        </div>
+      </div>
+
+      {/* Playbook refinement cards */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        {PLAYBOOK_REFINEMENT_HISTORY.map((pb) => {
+          const isOpen = expanded === pb.name;
+          return (
+            <div key={pb.name} style={{ background: '#fff', border: `1px solid #E8E4DC`, borderLeft: `4px solid ${pb.color}` }}>
+              <button
+                onClick={() => setExpanded(isOpen ? null : pb.name)}
+                style={{ width: '100%', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 16, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', padding: '1px 7px', background: `${pb.color}15`, color: pb.color }}>{pb.domain}</span>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 700, color: NAVY }}>{pb.name}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    <span style={{ fontSize: 11, color: '#6B7280' }}>
+                      <strong style={{ color: NAVY }}>{pb.refinements}</strong> refinements from <strong style={{ color: NAVY }}>{pb.activations}</strong> live activation{pb.activations !== 1 ? 's' : ''}
+                    </span>
+                    <span style={{ fontSize: 11, color: '#9CA3AF' }}>Last updated {pb.lastRefined}</span>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 3 }}>Maturity</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div style={{ width: 80, height: 4, background: '#E8E4DC' }}>
+                        <div style={{ width: `${pb.maturity}%`, height: '100%', background: pb.maturity >= 80 ? TEAL : pb.maturity >= 60 ? GOLD : '#9CA3AF' }} />
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: pb.maturity >= 80 ? TEAL : pb.maturity >= 60 ? GOLD : '#9CA3AF' }}>{pb.maturity}%</span>
+                    </div>
+                  </div>
+                  <div style={{ width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {isOpen
+                      ? <Minus style={{ width: 14, height: 14, color: '#9CA3AF' }} />
+                      : <Plus style={{ width: 14, height: 14, color: '#9CA3AF' }} />}
+                  </div>
+                </div>
+              </button>
+
+              {isOpen && (
+                <div style={{ borderTop: '1px solid #E8E4DC', padding: '16px 20px 20px' }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 12 }}>Refinement History</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 0, position: 'relative' }}>
+                    <div style={{ position: 'absolute', left: 11, top: 8, bottom: 8, width: 1, background: '#E8E4DC' }} />
+                    {pb.history.map((h, hi) => {
+                      const typeColor = h.type === 'added' ? TEAL : h.type === 'refined' ? GOLD : h.type === 'created' ? '#8B5CF6' : '#9CA3AF';
+                      const TypeIcon = h.type === 'added' ? Plus : h.type === 'refined' ? RefreshCw : h.type === 'created' ? Star : GitCommit;
+                      return (
+                        <div key={hi} style={{ display: 'flex', gap: 14, padding: '8px 0', position: 'relative' }}>
+                          <div style={{ width: 22, height: 22, background: `${typeColor}15`, border: `1px solid ${typeColor}40`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1, background: '#fff' }}>
+                            <TypeIcon style={{ width: 10, height: 10, color: typeColor }} />
+                          </div>
+                          <div style={{ flex: 1, paddingTop: 2 }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                              <span style={{ fontSize: 9, fontWeight: 700, color: typeColor, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{h.type}</span>
+                              <span style={{ fontSize: 9, fontWeight: 700, color: NAVY, background: `${NAVY}08`, padding: '0px 5px' }}>{h.version}</span>
+                              <span style={{ fontSize: 9, color: '#9CA3AF' }}>{h.date}</span>
+                            </div>
+                            <div style={{ fontSize: 12, color: '#374151', lineHeight: 1.5 }}>{h.change}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Corporate Immune System Arc */}
+      <div style={{ marginTop: 16, padding: '16px 20px', background: `${NAVY}04`, border: '1px solid #E8E4DC', borderTop: `3px solid ${TEAL}` }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+          <Shield style={{ width: 14, height: 14, color: TEAL }} />
+          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL }}>Corporate Immune System Maturity Arc</span>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+          {[
+            { stage: 'Naive', range: '0–25', desc: 'No institutional memory. Every crisis is a first crisis.', active: IMMUNE_SYSTEM_SCORE < 25 },
+            { stage: 'Reactive', range: '26–50', desc: 'Some lessons captured. Inconsistent application.', active: IMMUNE_SYSTEM_SCORE >= 26 && IMMUNE_SYSTEM_SCORE < 50 },
+            { stage: 'Prepared', range: '51–75', desc: 'Playbooks refine from experience. Coordination compresses.', active: IMMUNE_SYSTEM_SCORE >= 51 && IMMUNE_SYSTEM_SCORE < 75 },
+            { stage: 'Fearless', range: '76–100', desc: 'Institutional readiness compounds. Response is pre-staged before the trigger fires.', active: IMMUNE_SYSTEM_SCORE >= 75 },
+          ].map((s) => (
+            <div key={s.stage} style={{ padding: '10px 12px', background: s.active ? `${TEAL}10` : '#fff', border: `1px solid ${s.active ? TEAL : '#E8E4DC'}`, borderTop: s.active ? `3px solid ${TEAL}` : '1px solid #E8E4DC' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, color: s.active ? TEAL : '#9CA3AF' }}>{s.stage}</span>
+                {s.active && <span style={{ fontSize: 8, fontWeight: 700, color: TEAL, background: `${TEAL}15`, padding: '1px 5px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Current</span>}
+              </div>
+              <div style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.4 }}>{s.desc}</div>
+              <div style={{ fontSize: 9, color: '#9CA3AF', marginTop: 4 }}>{s.range}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -455,6 +636,9 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
               </div>
             </CardContent>
           </Card>
+
+          {/* ─── Readiness Compounds Panel ─── */}
+          <ReadinessCompoundsPanel />
 
           {/* Recent Learnings */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recent Learnings</h2>
