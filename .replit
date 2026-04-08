@@ -47,6 +47,10 @@ externalPort = 3001
 localPort = 5904
 externalPort = 3000
 
+[[ports]]
+localPort = 23636
+externalPort = 3002
+
 [agent]
 integrations = ["javascript_log_in_with_replit:1.0.0", "javascript_openai_ai_integrations:2.0.0", "sendgrid:1.0.0"]
 
