@@ -25255,7 +25255,7 @@ var init_DataIntegrationManager = __esm({
 
 // server/services/integrationManager.ts
 import { eq as eq35 } from "drizzle-orm";
-import crypto4 from "crypto";
+import crypto5 from "crypto";
 var ENCRYPTION_KEY, ALGORITHM2, IntegrationManager, integrationManager;
 var init_integrationManager = __esm({
   "server/services/integrationManager.ts"() {
@@ -25277,8 +25277,8 @@ var init_integrationManager = __esm({
         if (!ENCRYPTION_KEY) {
           throw new Error("Cannot encrypt credentials: INTEGRATION_ENCRYPTION_KEY not set");
         }
-        const iv = crypto4.randomBytes(16);
-        const cipher = crypto4.createCipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
+        const iv = crypto5.randomBytes(16);
+        const cipher = crypto5.createCipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
         const encrypted = Buffer.concat([
           cipher.update(JSON.stringify(credentials), "utf8"),
           cipher.final()
@@ -25297,7 +25297,7 @@ var init_integrationManager = __esm({
         const iv = buffer.slice(0, 16);
         const authTag = buffer.slice(16, 32);
         const encrypted = buffer.slice(32);
-        const decipher = crypto4.createDecipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
+        const decipher = crypto5.createDecipheriv(ALGORITHM2, Buffer.from(ENCRYPTION_KEY, "hex").slice(0, 32), iv);
         decipher.setAuthTag(authTag);
         const decrypted = Buffer.concat([
           decipher.update(encrypted),
@@ -27021,7 +27021,7 @@ __export(oauth_routes_exports, {
   default: () => oauth_routes_default
 });
 import { Router as Router6 } from "express";
-import crypto5 from "crypto";
+import crypto6 from "crypto";
 import { eq as eq38 } from "drizzle-orm";
 function getBaseUrl3(req) {
   const proto = req.headers["x-forwarded-proto"] || req.protocol || "https";
@@ -27059,7 +27059,7 @@ var init_oauth_routes = __esm({
       if (!JIRA_CLIENT_ID2) {
         return res.status(500).json({ error: "Jira OAuth not configured. Set JIRA_CLIENT_ID and JIRA_CLIENT_SECRET." });
       }
-      const state = crypto5.randomBytes(32).toString("hex");
+      const state = crypto6.randomBytes(32).toString("hex");
       pendingOAuthStates.set(state, { provider: "jira", organizationId, userId, createdAt: Date.now() });
       const callbackUrl = `${getBaseUrl3(req)}/api/oauth/jira/callback`;
       const scopes = [
@@ -27187,7 +27187,7 @@ var init_oauth_routes = __esm({
       if (!SLACK_CLIENT_ID) {
         return res.status(500).json({ error: "Slack OAuth not configured. Set SLACK_CLIENT_ID and SLACK_CLIENT_SECRET." });
       }
-      const state = crypto5.randomBytes(32).toString("hex");
+      const state = crypto6.randomBytes(32).toString("hex");
       pendingOAuthStates.set(state, { provider: "slack", organizationId, userId, createdAt: Date.now() });
       const callbackUrl = `${getBaseUrl3(req)}/api/oauth/slack/callback`;
       const scopes = [
@@ -28210,7 +28210,7 @@ __export(webhookRoutes_exports, {
   default: () => webhookRoutes_default
 });
 import { Router as Router7 } from "express";
-import crypto6 from "crypto";
+import crypto7 from "crypto";
 import { parseStringPromise } from "xml2js";
 function verifySlackSignature(req, signingSecret) {
   const timestamp3 = req.headers["x-slack-request-timestamp"];
@@ -28220,8 +28220,8 @@ function verifySlackSignature(req, signingSecret) {
   const time = Math.floor(Date.now() / 1e3);
   if (Math.abs(time - parseInt(timestamp3)) > 300) return false;
   const sigBasestring = `v0:${timestamp3}:${rawBody}`;
-  const mySignature = "v0=" + crypto6.createHmac("sha256", signingSecret).update(sigBasestring).digest("hex");
-  return crypto6.timingSafeEqual(
+  const mySignature = "v0=" + crypto7.createHmac("sha256", signingSecret).update(sigBasestring).digest("hex");
+  return crypto7.timingSafeEqual(
     Buffer.from(mySignature),
     Buffer.from(signature)
   );
@@ -28230,10 +28230,10 @@ function verifySalesforceSignature(req, secret) {
   const signature = req.headers["x-hub-signature"];
   const rawBody = req.rawBody;
   if (!signature || !rawBody) return false;
-  const hmac = crypto6.createHmac("sha1", secret);
+  const hmac = crypto7.createHmac("sha1", secret);
   hmac.update(rawBody);
   const expectedSignature = "sha1=" + hmac.digest("hex");
-  return crypto6.timingSafeEqual(
+  return crypto7.timingSafeEqual(
     Buffer.from(expectedSignature),
     Buffer.from(signature)
   );
@@ -28245,8 +28245,8 @@ function verifyHubSpotSignature(req, clientSecret) {
   const method = req.method;
   const uri = req.originalUrl;
   const sourceString = method + uri + rawBody;
-  const hash = crypto6.createHmac("sha256", clientSecret).update(sourceString).digest("hex");
-  return crypto6.timingSafeEqual(
+  const hash = crypto7.createHmac("sha256", clientSecret).update(sourceString).digest("hex");
+  return crypto7.timingSafeEqual(
     Buffer.from(hash),
     Buffer.from(signature)
   );
@@ -38453,6 +38453,74 @@ function registerActivationRoutes(app2) {
 
 // server/routes/demoAccessRoute.ts
 init_storage();
+
+// server/routes/quickLinkRoute.ts
+import crypto2 from "crypto";
+var SECRET = process.env.QUICK_LINK_SECRET || "vm-quick-link-2026";
+function sign(payload) {
+  const data = JSON.stringify(payload);
+  const b64 = Buffer.from(data).toString("base64url");
+  const hmac = crypto2.createHmac("sha256", SECRET).update(b64).digest("base64url");
+  return `QK-${b64}-${hmac}`;
+}
+function parseQuickLinkToken(token) {
+  if (!token.startsWith("QK-")) return { valid: false, reason: "not_quick_link" };
+  const parts = token.split("-");
+  if (parts.length < 3) return { valid: false, reason: "malformed" };
+  const hmacReceived = parts[parts.length - 1];
+  const b64 = parts.slice(1, parts.length - 1).join("-");
+  const hmacExpected = crypto2.createHmac("sha256", SECRET).update(b64).digest("base64url");
+  if (hmacReceived !== hmacExpected) return { valid: false, reason: "invalid_signature" };
+  try {
+    const payload = JSON.parse(Buffer.from(b64, "base64url").toString());
+    if (Date.now() > payload.expiresAt) return { valid: false, reason: "expired" };
+    return { valid: true, payload };
+  } catch {
+    return { valid: false, reason: "parse_error" };
+  }
+}
+function registerQuickLinkRoute(app2) {
+  app2.post("/api/admin/generate-demo-link", (req, res) => {
+    try {
+      if (!req.isAuthenticated()) {
+        return res.status(401).json({ error: "Authentication required" });
+      }
+      const user = req.user;
+      const role = user?.claims ? null : user?.role;
+      const isDemoUser = user?.claims?.sub === "vm-demo-exec-2026";
+      const isAdmin = role === "admin";
+      const isOwner = user?.claims?.sub === process.env.REPL_OWNER_ID;
+      if (!isDemoUser && !isAdmin && !isOwner) {
+        return res.status(403).json({ error: "Admin access required" });
+      }
+      const { name, email, hours = 48 } = req.body;
+      if (!name || !email) {
+        return res.status(400).json({ error: "Name and email are required" });
+      }
+      const durationHours = Math.min(Math.max(Number(hours) || 48, 1), 168);
+      const expiresAt = Date.now() + durationHours * 60 * 60 * 1e3;
+      const nonce = crypto2.randomBytes(6).toString("hex");
+      const payload = { name, email, expiresAt, nonce };
+      const token = sign(payload);
+      const baseUrl = process.env.REPLIT_DOMAINS ? `https://${process.env.REPLIT_DOMAINS.split(",")[0]}` : "https://vaughnmartin.com";
+      const url = `${baseUrl}/api/demo-access?token=${token}`;
+      console.log(`[QuickLink] Generated link for ${name} <${email}> \u2014 expires in ${durationHours}h`);
+      return res.json({
+        url,
+        token,
+        name,
+        email,
+        expiresAt: new Date(expiresAt).toISOString(),
+        durationHours
+      });
+    } catch (err) {
+      console.error("[QuickLink] Error:", err);
+      return res.status(500).json({ error: "Failed to generate link" });
+    }
+  });
+}
+
+// server/routes/demoAccessRoute.ts
 var DEMO_USER_ID = "vm-demo-exec-2026";
 var DEFAULT_TOKEN = "VMdemo2026";
 function buildExpiredPage(reason) {
@@ -38557,16 +38625,28 @@ function registerDemoAccessRoute(app2) {
   app2.get("/api/demo-access", async (req, res) => {
     try {
       const token = req.query.token;
-      const expectedToken = process.env.DEMO_ACCESS_TOKEN || DEFAULT_TOKEN;
-      if (!token || token !== expectedToken) {
-        return res.status(401).send(buildExpiredPage("invalid"));
-      }
-      const expiresEnv = process.env.DEMO_ACCESS_EXPIRES;
-      if (expiresEnv) {
-        const expiresAt = new Date(expiresEnv);
-        if (!isNaN(expiresAt.getTime()) && Date.now() > expiresAt.getTime()) {
-          console.log(`[DemoAccess] Link expired at ${expiresEnv}`);
-          return res.status(403).send(buildExpiredPage("expired"));
+      if (!token) return res.status(401).send(buildExpiredPage("invalid"));
+      let guestFirstName = "Executive";
+      if (token.startsWith("QK-")) {
+        const result = parseQuickLinkToken(token);
+        if (!result.valid) {
+          const reason = result.reason === "expired" ? "expired" : "invalid";
+          return res.status(reason === "expired" ? 403 : 401).send(buildExpiredPage(reason));
+        }
+        guestFirstName = result.payload.name.split(" ")[0] || "Executive";
+        console.log(`[DemoAccess] Quick-link access: ${result.payload.name} <${result.payload.email}>`);
+      } else {
+        const expectedToken = process.env.DEMO_ACCESS_TOKEN || DEFAULT_TOKEN;
+        if (token !== expectedToken) {
+          return res.status(401).send(buildExpiredPage("invalid"));
+        }
+        const expiresEnv = process.env.DEMO_ACCESS_EXPIRES;
+        if (expiresEnv) {
+          const expiresAt = new Date(expiresEnv);
+          if (!isNaN(expiresAt.getTime()) && Date.now() > expiresAt.getTime()) {
+            console.log(`[DemoAccess] Broadcast link expired at ${expiresEnv}`);
+            return res.status(403).send(buildExpiredPage("expired"));
+          }
         }
       }
       await storage.upsertUser({
@@ -38591,7 +38671,7 @@ function registerDemoAccessRoute(app2) {
         claims: {
           sub: DEMO_USER_ID,
           email: "demo@vaughnmartin.com",
-          first_name: "Executive",
+          first_name: guestFirstName,
           last_name: "",
           profile_image_url: null,
           exp: Math.floor(Date.now() / 1e3) + SESSION_SECONDS,
@@ -38621,13 +38701,13 @@ function registerDemoAccessRoute(app2) {
 init_db();
 init_schema();
 import { Resend as Resend3 } from "resend";
-import crypto2 from "crypto";
+import crypto3 from "crypto";
 import { eq as eq9 } from "drizzle-orm";
 var NAVY = "#0A0F2E";
 var GOLD = "#C9A84C";
 var TOKEN_TTL_HOURS = 24;
 function generateToken() {
-  return crypto2.randomBytes(48).toString("hex");
+  return crypto3.randomBytes(48).toString("hex");
 }
 function getBaseUrl() {
   if (process.env.REPLIT_DOMAINS) {
@@ -38979,14 +39059,14 @@ async function verifyMagicLinkToken(token) {
 init_db();
 init_schema();
 import { Resend as Resend4 } from "resend";
-import crypto3 from "crypto";
+import crypto4 from "crypto";
 import { eq as eq10 } from "drizzle-orm";
 var NAVY2 = "#0A0F2E";
 var GOLD2 = "#C9A84C";
 var TRIAL_HOURS = 48;
 var resend = new Resend4(process.env.RESEND_API_KEY);
 function generateToken2() {
-  return crypto3.randomBytes(48).toString("hex");
+  return crypto4.randomBytes(48).toString("hex");
 }
 function getBaseUrl2() {
   if (process.env.REPLIT_DOMAINS) {
@@ -43298,6 +43378,7 @@ async function registerRoutes(app2, existingServer) {
   app2.use("/api/readiness", incident_routes_default);
   registerActivationRoutes(app2);
   registerDemoAccessRoute(app2);
+  registerQuickLinkRoute(app2);
   registerPeerReviewRoute(app2);
   app2.get("/api/unsubscribe", async (req, res) => {
     const t = req.query.t;

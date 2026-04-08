@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { storage } from "../storage";
+import { parseQuickLinkToken } from "./quickLinkRoute";
 
 const DEMO_USER_ID = "vm-demo-exec-2026";
 const DEFAULT_TOKEN = "VMdemo2026";
@@ -111,21 +112,34 @@ export function registerDemoAccessRoute(app: Express) {
   app.get("/api/demo-access", async (req: any, res) => {
     try {
       const token = req.query.token as string;
-      const expectedToken = process.env.DEMO_ACCESS_TOKEN || DEFAULT_TOKEN;
+      if (!token) return res.status(401).send(buildExpiredPage('invalid'));
 
-      if (!token || token !== expectedToken) {
-        return res.status(401).send(buildExpiredPage('invalid'));
-      }
+      let guestFirstName = "Executive";
 
-      // ── Time-window enforcement ───────────────────────────────────────────
-      // Set DEMO_ACCESS_EXPIRES to an ISO timestamp to close the window.
-      // Example: DEMO_ACCESS_EXPIRES=2026-04-09T20:00:00Z
-      const expiresEnv = process.env.DEMO_ACCESS_EXPIRES;
-      if (expiresEnv) {
-        const expiresAt = new Date(expiresEnv);
-        if (!isNaN(expiresAt.getTime()) && Date.now() > expiresAt.getTime()) {
-          console.log(`[DemoAccess] Link expired at ${expiresEnv}`);
-          return res.status(403).send(buildExpiredPage('expired'));
+      // ── Quick-link token (QK-...) — personalized, signed, self-expiring ──
+      if (token.startsWith("QK-")) {
+        const result = parseQuickLinkToken(token);
+        if (!result.valid) {
+          const reason = result.reason === "expired" ? "expired" : "invalid";
+          return res.status(reason === "expired" ? 403 : 401).send(buildExpiredPage(reason));
+        }
+        // Use the prospect's first name for the session greeting
+        guestFirstName = result.payload!.name.split(" ")[0] || "Executive";
+        console.log(`[DemoAccess] Quick-link access: ${result.payload!.name} <${result.payload!.email}>`);
+      } else {
+        // ── Static broadcast token (VMdemo2026) — with optional time window ──
+        const expectedToken = process.env.DEMO_ACCESS_TOKEN || DEFAULT_TOKEN;
+        if (token !== expectedToken) {
+          return res.status(401).send(buildExpiredPage('invalid'));
+        }
+        // Set DEMO_ACCESS_EXPIRES to an ISO timestamp to close the window.
+        const expiresEnv = process.env.DEMO_ACCESS_EXPIRES;
+        if (expiresEnv) {
+          const expiresAt = new Date(expiresEnv);
+          if (!isNaN(expiresAt.getTime()) && Date.now() > expiresAt.getTime()) {
+            console.log(`[DemoAccess] Broadcast link expired at ${expiresEnv}`);
+            return res.status(403).send(buildExpiredPage('expired'));
+          }
         }
       }
 
@@ -155,7 +169,7 @@ export function registerDemoAccessRoute(app: Express) {
         claims: {
           sub: DEMO_USER_ID,
           email: "demo@vaughnmartin.com",
-          first_name: "Executive",
+          first_name: guestFirstName,
           last_name: "",
           profile_image_url: null,
           exp: Math.floor(Date.now() / 1000) + SESSION_SECONDS,

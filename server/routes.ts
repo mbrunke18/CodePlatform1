@@ -14,6 +14,7 @@ import demoRiskRoutes from "./routes/demoRiskRoutes";
 import incidentRoutes from "./routes/incident-routes";
 import { registerActivationRoutes } from "./routes/activation-routes";
 import { registerDemoAccessRoute } from "./routes/demoAccessRoute";
+import { registerQuickLinkRoute } from "./routes/quickLinkRoute";
 import { createAndSendMagicLink, verifyMagicLinkToken, sendWelcomeTriggerDemo } from "./services/magicLinkService";
 import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
@@ -841,6 +842,8 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   // Demo access bypass (shareable link for investors and pilot prospects)
   registerDemoAccessRoute(app);
+  // Admin: quick-issue personalized demo links
+  registerQuickLinkRoute(app);
   registerPeerReviewRoute(app);
 
   // ── Magic Link Authentication ─────────────────────────────────────────────
