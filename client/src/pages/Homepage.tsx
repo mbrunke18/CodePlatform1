@@ -420,6 +420,9 @@ function ProblemSection() {
           {/* Left */}
           <Reveal style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%" }}>
             <SectionLabel>THE PROBLEM</SectionLabel>
+            <p style={{ ...GEO, fontSize: 22, fontWeight: 600, fontStyle: "italic", color: GOLD, marginBottom: 18, lineHeight: 1.3 }}>
+              Your strategy isn't failing. Your mobilization is.
+            </p>
             <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 32 }}>
               The trigger fires in seconds.
               <br />
