@@ -15,7 +15,6 @@ export default function Footer() {
       title: "IDENTIFY",
       links: [
         { label: "Playbook Library — 170", path: "/playbooks" },
-        { label: "Sample Playbooks", path: "/playbook-library" },
         { label: "Situations Hub", path: "/situations-hub" },
         { label: "Strategic Readiness Report", path: "/preparedness-report" },
         { label: "Board Briefings", path: "/board-briefings" },
@@ -26,35 +25,30 @@ export default function Footer() {
       links: [
         { label: "Signal Intelligence", path: "/signal-intelligence" },
         { label: "AI Trigger Monitoring", path: "/triggers-management" },
-        { label: "Signal Configuration", path: "/signal-configuration" },
-        { label: "AI Radar", path: "/ai-radar" },
-        { label: "Intelligence Hub", path: "/intelligence-hub" },
+        { label: "Command Tower", path: "/command-tower" },
       ]
     },
     {
       title: "EXECUTE",
       links: [
         { label: "Command Center", path: "/command-center" },
-        { label: "Workspace", path: "/workspace" },
         { label: "Live Activation Center", path: "/live-activation-center" },
+        { label: "Concurrent Situation Board", path: "/concurrent-situations" },
         { label: "Practice Drills", path: "/practice-drills" },
-        { label: "Execution Coordination", path: "/execution-coordination" },
       ]
     },
     {
       title: "ADVANCE",
       links: [
-        { label: "Executive Hub", path: "/executive-hub" },
         { label: "ROI Dashboard", path: "/roi-dashboard" },
-        { label: "Decision Velocity", path: "/decision-velocity" },
         { label: "Executive Analytics", path: "/analytics" },
-        { label: "Enterprise Metrics", path: "/enterprise-metrics" },
+        { label: "Institutional Memory", path: "/institutional-memory" },
       ]
     },
     {
       title: "Experience",
       links: [
-        { label: "Try Demo", path: "/try-demo" },
+        { label: "12-Minute Test Drive", path: "/test-drive" },
         { label: "Shadow Simulator", path: "/simulation-studio" },
         { label: "Strategic Recorder", path: "/strategic-recorder" },
         { label: "Readiness Assessment", path: "/readiness-assessment" },
@@ -67,11 +61,8 @@ export default function Footer() {
         { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Readiness OS", path: "/why-execution-os" },
         { label: "Why Not Consulting?", path: "/vs-consulting" },
-        { label: "Platform Overview", path: "/platform-overview" },
         { label: "Founder's Story", path: "/founder-story" },
-        { label: "Integrations", path: "/integrations" },
         { label: "Microsoft Ecosystem", path: "/ecosystems" },
-        { label: "Request Pilot", path: "/pilot-program" },
         { label: "Request Access", path: "/request-access" },
         { label: "Investors", path: "/investors" },
         { label: "Contact", path: "/contact" },
