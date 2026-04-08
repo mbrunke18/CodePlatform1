@@ -336,7 +336,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="mb-6"
             >
               <span className="text-lg text-gray-800">
-                The Strategic Execution Operating System.
+                VaughnMartin Readiness OS.
               </span>
             </motion.div>
 
@@ -454,7 +454,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="mb-2"
             >
               <span className="text-lg text-gray-800 uppercase tracking-widest">
-                Strategic Execution
+                Readiness OS
               </span>
             </motion.div>
             
@@ -465,7 +465,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="mb-6"
             >
               <span className="text-lg text-gray-800 uppercase tracking-widest">
-                Operating System
+                Coordination Infrastructure for the Fortune 1000
               </span>
             </motion.div>
 

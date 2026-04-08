@@ -374,7 +374,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-8"
                 >
                   <span className="text-2xl md:text-4xl font-bold text-gray-900">
-                    Strategic Execution Operating System
+                    VaughnMartin Readiness OS
                   </span>
                 </motion.div>
                 
@@ -547,7 +547,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-4"
                 >
                   <span className="text-xl md:text-2xl text-gray-800 tracking-wide">
-                    Strategic Execution Operating System
+                    Readiness OS — Coordination Infrastructure for the Fortune 1000
                   </span>
                 </motion.div>
 

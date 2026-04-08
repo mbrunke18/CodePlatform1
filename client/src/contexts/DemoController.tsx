@@ -160,7 +160,7 @@ export const hybridDemoScenarios: DemoScene[] = [
     id: 'executive-intro',
     title: 'M: Your Strategic Command Center',
     subtitle: '12 Minutes vs 30 Days — 3,600× Execution Head Start',
-    description: 'Introduction to Strategic Execution Operating System',
+    description: 'Introduction to Readiness OS — Coordination Infrastructure for the Fortune 1000',
     type: 'executive',
     phase: 'detection',
     route: '/hybrid-demo',

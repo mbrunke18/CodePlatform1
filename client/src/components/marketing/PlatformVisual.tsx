@@ -164,7 +164,7 @@ export default function PlatformVisual() {
             30 Days <span className="text-poise-teal">→</span> 12 Minutes
           </h2>
           <p className="text-xl text-poise-teal font-medium">
-            The Execution Infrastructure Powered by AI
+            Readiness OS — AI monitors, executives authorize
           </p>
         </motion.div>
 

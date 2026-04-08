@@ -57,7 +57,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
     "All 5 AI Intelligence Modules in action",
     "Trigger-activated coordinated execution",
     "170 strategic playbook templates across 9 operational domains",
-    "Interactive ROI calculations showing 360x velocity",
+    "Interactive ROI calculations showing 3,600× Execution Head Start",
     "Practice drills and strategic rehearsals"
   ];
 
@@ -80,7 +80,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
               Welcome to M's Live Demo
             </h1>
             <p className="text-xl text-gray-800 max-w-3xl mx-auto">
-              See how M's elite methodology compresses weeks of strategic mobilization into 12-minute execution—the Strategic Execution Operating System in action
+              See how Readiness OS compresses weeks of strategic mobilization into 12-minute execution — the response is ready before the trigger fires
             </p>
           </div>
 

@@ -705,7 +705,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.5 }}
                   className="text-xl text-[#2B8A6E] mt-6"
                 >
-                  The Strategic Execution Operating System
+                  VaughnMartin Readiness OS
                 </motion.p>
               </div>
             </Scene>

@@ -65,7 +65,7 @@ export function Intro({ progress }: SceneProps) {
         </motion.div>
 
         <TextPunch 
-          text="Execution Infrastructure" 
+          text="Readiness OS" 
           size="2xl" 
           delay={0.5}
           className="text-gray-900 mb-4"

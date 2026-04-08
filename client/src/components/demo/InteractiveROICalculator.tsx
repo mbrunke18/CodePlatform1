@@ -199,8 +199,8 @@ export default function InteractiveROICalculator({ persona = 'general', industry
                 </div>
               </div>
               <div className="pt-2 border-t border-green-500/30">
-                <div className="text-2xl font-bold text-gray-900">360x Faster</div>
-                <div className="text-xs text-green-300">99.7% time reduction</div>
+                <div className="text-2xl font-bold text-gray-900">3,600× Execution Head Start</div>
+                <div className="text-xs text-green-300">30 days compressed to 12 minutes</div>
               </div>
             </div>
           </div>
