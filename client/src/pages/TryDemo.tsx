@@ -380,12 +380,12 @@ export default function TryDemo() {
 
   const startDemo = (scenario: Scenario) => {
     setSelectedScenario(scenario);
-    setCurrentPhase('chaos');
-    setCompletedPhases([]);
+    setCurrentPhase('identify');
+    setCompletedPhases(['chaos']);
     setExecutionSteps([]);
     setLearnings(null);
-    setChaosMessages([]);
-    setRevenueLost(0);
+    setChaosMessages(scenario.chaosMessages);
+    setRevenueLost(scenario.revenuePerMinute * 3);
     setStressLevel(0);
     setChaosSeconds(0);
     setShowChaosComplete(false);
@@ -688,37 +688,63 @@ export default function TryDemo() {
 
               <p style={{ fontSize: 12, fontWeight: 600, color: MUTED, textAlign: 'center', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Choose a scenario to watch this play out live</p>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {SCENARIOS.map((scenario) => (
-                  <div
-                    key={scenario.id}
-                    onClick={() => startDemo(scenario)}
-                    className="group relative border border-[#E8E4DC] bg-white p-8 hover:border-[#0A0F2E] transition-all cursor-pointer overflow-hidden"
-                  >
-                    <div className="flex items-start gap-6 relative z-10">
-                      <div style={{ width: 48, height: 48, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <scenario.icon className="h-6 w-6 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                          <div style={{ width: 20, height: 1.5, background: scenario.demoType === 'offensive' ? TEAL : GOLD, flexShrink: 0 }} />
-                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: scenario.demoType === 'offensive' ? TEAL : GOLD }}>{scenario.industry}</span>
-                          <span style={{ fontSize: 10, color: MUTED, fontWeight: 600 }}>· 1 of {scenario.domainCount} {scenario.domain} playbooks</span>
+              <div className="grid md:grid-cols-2 gap-4">
+                {SCENARIOS.map((scenario) => {
+                  const accent = scenario.demoType === 'offensive' ? TEAL : GOLD;
+                  const accentBg = scenario.demoType === 'offensive' ? 'rgba(43,138,110,0.08)' : 'rgba(201,168,76,0.07)';
+                  const accentBorder = scenario.demoType === 'offensive' ? 'rgba(43,138,110,0.25)' : 'rgba(201,168,76,0.22)';
+                  const ScenarioIcon = scenario.icon;
+                  return (
+                    <div
+                      key={scenario.id}
+                      onClick={() => startDemo(scenario)}
+                      style={{
+                        background: NAVY, border: '1px solid rgba(255,255,255,0.08)',
+                        borderBottom: `3px solid ${accent}`, padding: '22px 22px 18px',
+                        cursor: 'pointer', display: 'flex', flexDirection: 'column',
+                        position: 'relative', overflow: 'hidden', transition: 'all 0.2s ease',
+                      }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; }}
+                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; }}
+                    >
+                      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px)', backgroundSize: '44px 44px', pointerEvents: 'none' }} />
+                      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
+                        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                            <div style={{ width: 36, height: 36, background: accentBg, border: `1px solid ${accentBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                              <ScenarioIcon style={{ width: 17, height: 17, color: accent }} />
+                            </div>
+                            <div>
+                              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#F0EDE4', lineHeight: 1.1 }}>{scenario.name}</div>
+                              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.4)', marginTop: 2 }}>{scenario.industry}</div>
+                            </div>
+                          </div>
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, border: `1px solid ${accentBorder}`, padding: '2px 7px', flexShrink: 0 }}>{scenario.demoType === 'offensive' ? 'OFFENSE' : 'DEFENSE'}</span>
                         </div>
-                        <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>{scenario.name}</h3>
-                        <p className="text-slate-600 mb-6 text-sm leading-relaxed">
-                          {scenario.trigger}
-                        </p>
-                        <div className="flex items-center gap-4 text-xs font-bold tracking-widest text-[#0A0F2E] uppercase">
-                          <span>{formatCurrency(scenario.dealValue)} at risk</span>
-                          <div className="w-1 h-1 bg-slate-300" />
-                          <span>{scenario.stakeholders} stakeholders</span>
+
+                        <div style={{ marginBottom: 14, flex: 1 }}>
+                          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, marginBottom: 4 }}>Trigger</div>
+                          <div style={{ fontSize: 12, color: 'rgba(240,237,228,0.75)', lineHeight: 1.5 }}>{scenario.trigger}</div>
+                        </div>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 12, marginBottom: 12 }}>
+                          <div>
+                            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 3 }}>At Risk</div>
+                            <div style={{ fontSize: 11, fontWeight: 700, color: accent }}>{formatCurrency(scenario.dealValue)}</div>
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 3 }}>Stakeholders</div>
+                            <div style={{ fontSize: 11, fontWeight: 700, color: '#F0EDE4' }}>{scenario.stakeholders} mapped</div>
+                          </div>
+                        </div>
+
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: accent, letterSpacing: '0.1em' }}>RUN SIMULATION →</span>
                         </div>
                       </div>
-                      <ArrowRight className="h-5 w-5 text-slate-300 group-hover:text-[#0A0F2E] transition-colors" />
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Industry Proof Cases Banner */}
