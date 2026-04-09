@@ -41,16 +41,19 @@ VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000.
 
 **Feature Specifications:**
 - **Core Platform:** Playbook Library (170 playbooks), Demo Experience, Execution Intelligence Dashboard, Investor Gate, admin views.
-- **AI-Powered Execution:** AI Execution Briefs, Live War Room, Post-Activation Debriefs.
+- **Pre-Staged Execution:** Execution Briefs, Live War Room, Post-Activation Debriefs. All execution is pre-staged — not AI-autonomous.
 - **Automation & Simulation:** Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, Shadow Strategy Simulator (Digital Twin).
-- **IDEA Framework:** Full Trigger → Playbook IDEA Chain for trigger detection and playbook recommendations.
+- **IDEA Framework:** Full Trigger → Playbook IDEA Chain for trigger detection and playbook recommendations. Phase role labels: System-Automated (Identify), System-Orchestrated (Execute), System-Analyzed (Advance).
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Data Consistency:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×), number of playbooks (170), and triggers (221).
 - **12-Minute Test Drive:** A public 4-step sequential experience simulating execution at `/12-minute-experience`.
-- **Live Signal Detection:** Real RSS ingestion from 8 sources every 15 minutes, with `SignalEvaluationService` scoring against 16 trigger patterns.
+- **Live Signal Detection:** Real RSS ingestion from 8 sources every 15 minutes (NY Times Business, BBC Business, Federal Register, CNBC, MarketWatch, NPR Business, Google News Finance, Entrepreneur). `SignalEvaluationService` scores against 16 trigger patterns.
+- **Risk Scoring:** Square-root scaling (`√signals × 8`). LOW <35, MEDIUM 35–74, HIGH 75+. 52 signals → MEDIUM/58. Prevents permanent HIGH state in a mature monitoring environment.
 - **Command Tower:** Full-screen executive display page (`/command-tower`) with live trigger detections and system stats.
 - **Platform Reality Page (`/platform-reality`):** Positions Readiness OS against thought leadership, highlighting the 3,600× mathematical challenge and the failure of traditional approaches.
 - **MS Project EOL Positioning Page (`/ms-project`):** Compares ServiceNow SPM vs. Readiness OS for Fortune 1000 COOs/CIOs.
+- **Competitive Positioning Pages (3, cross-linked):** `/vs-consulting` (VsConsulting), `/ms-project` (MsProjectTransition), `/platform-reality` (PlatformReality). All three cross-link to each other via "Also in This Series" nav bars.
+- **Three Access Paths:** (1) Request Access `/request-access` — magic link via Resend; (2) Trial Access `/trial-access` — 48-hour full platform trial; (3) Demo Access `/demo-access` — token-based controlled access.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI
