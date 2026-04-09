@@ -1496,6 +1496,9 @@ function SimulatorCTASection() {
 }
 export default function Homepage() {
   useScrollDepth();
+  useEffect(() => {
+    document.title = "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure";
+  }, []);
   return (
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>
       <HomepageNav />
