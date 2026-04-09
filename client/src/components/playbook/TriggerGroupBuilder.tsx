@@ -290,7 +290,7 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
             {(["details", "points", "thresholds"] as const).map((s, i) => (
               <div key={s} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <div style={{
-                  width: 22, height: 22, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center",
+                  width: 22, height: 22, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center",
                   fontSize: 11, fontWeight: 700,
                   background: step === s ? GOLD : (["details", "points", "thresholds"].indexOf(step) > i ? TEAL : "#E5E7EB"),
                   color: step === s || ["details", "points", "thresholds"].indexOf(step) > i ? "white" : "#9CA3AF",
@@ -538,7 +538,7 @@ function PreArmedSignalCard({ signal }: { signal: PreArmedSignal }) {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
           <div style={{
-            width: 7, height: 7, borderRadius: "50%",
+            width: 7, height: 7, borderRadius: 0,
             background: hasActivity ? "#10B981" : "#D1D5DB",
           }} />
           <span style={{ fontSize: 10, color: "#9CA3AF" }}>
@@ -584,7 +584,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
       }}>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981", boxShadow: "0 0 0 3px #10B98130" }} />
+            <div style={{ width: 10, height: 10, borderRadius: 0, background: "#10B981", boxShadow: "0 0 0 3px #10B98130" }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: "#10B981", textTransform: "uppercase", letterSpacing: "0.12em" }}>
               Live Monitoring Active
             </span>

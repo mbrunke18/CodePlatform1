@@ -776,7 +776,7 @@ function PlatformPreviewSection() {
             {/* Console header */}
             <div style={{ background: NAVY, padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: TEAL_LIGHT, boxShadow: `0 0 8px ${TEAL_LIGHT}` }} />
+                <div style={{ width: 10, height: 10, borderRadius: 0, background: TEAL_LIGHT, boxShadow: `0 0 8px ${TEAL_LIGHT}` }} />
                 <span style={{ ...DM, fontSize: 13, color: GOLD, fontWeight: 700, letterSpacing: "0.08em" }}>LIVE ACTIVATION — PLAYBOOK #047</span>
               </div>
               <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>Supply Chain Disruption · Tier-1 Supplier Failure</span>
@@ -806,7 +806,7 @@ function PlatformPreviewSection() {
                 </div>
                 {tasks.map((t) => (
                   <div key={t.role} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14, padding: "12px 14px", background: "rgba(255,255,255,0.04)", borderLeft: t.done ? `2px solid ${TEAL_LIGHT}` : `2px solid rgba(201,168,76,0.4)`, borderBottom: `1px solid rgba(255,255,255,0.04)` }}>
-                    <div style={{ width: 18, height: 18, borderRadius: "50%", flexShrink: 0, marginTop: 1, background: t.done ? TEAL_LIGHT : "transparent", border: t.done ? "none" : `2px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div style={{ width: 18, height: 18, borderRadius: 0, flexShrink: 0, marginTop: 1, background: t.done ? TEAL_LIGHT : "transparent", border: t.done ? "none" : `2px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {t.done && <span style={{ color: "#fff", fontSize: 10, lineHeight: 1 }}>✓</span>}
                     </div>
                     <div>
@@ -893,7 +893,7 @@ function MicrosoftEcosystemBanner() {
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             {/* Eyebrow with gold dot */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18, background: `${GOLD}12`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: '5px 16px' }}>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, display: 'inline-block' }} />
+              <span style={{ width: 5, height: 5, borderRadius: 0, background: GOLD, display: 'inline-block' }} />
               <span style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: GOLD, textTransform: 'uppercase' as const, fontWeight: 700 }}>
                 No rip-and-replace — deploys on what you already have
               </span>
@@ -1082,8 +1082,8 @@ function CTASection() {
                 padding: "20px 56px", borderRadius: 0, textDecoration: "none",
                 letterSpacing: "0.04em", display: "inline-block", transition: "all 0.2s ease",
               }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 32px rgba(201,168,76,0.3)"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
             >
               Request a Pilot
             </Link>

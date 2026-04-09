@@ -150,7 +150,7 @@ export default function ThreatsPage() {
               }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
                   <div style={{
-                    width: 8, height: 8, borderRadius: '50%', background: sev.dot,
+                    width: 8, height: 8, borderRadius: 0, background: sev.dot,
                     flexShrink: 0, marginTop: 6,
                     boxShadow: idx === 0 ? `0 0 0 3px rgba(192,57,43,0.15)` : 'none',
                   }} />

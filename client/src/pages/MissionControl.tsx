@@ -243,7 +243,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
               <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
                 {improvements.slice(0, 3).map(({ area, suggestion }, i) => (
                   <div key={i} style={{ display: 'flex', gap: 8 }}>
-                    <div style={{ width: 4, height: 4, borderRadius: '50%', background: TEAL, flexShrink: 0, marginTop: 5 }} />
+                    <div style={{ width: 4, height: 4, borderRadius: 0, background: TEAL, flexShrink: 0, marginTop: 5 }} />
                     <div>
                       <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.6)', marginBottom: 1 }}>{area}</div>
                       <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', lineHeight: 1.4 }}>{suggestion}</div>
@@ -284,12 +284,12 @@ function PulseOrb({ color, size = 10, animate: shouldAnimate = true }: { color: 
     <span style={{ position: 'relative', display: 'inline-block', width: size, height: size, flexShrink: 0 }}>
       {shouldAnimate && (
         <motion.span
-          style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: color, opacity: 0.4 }}
+          style={{ position: 'absolute', inset: 0, borderRadius: 0, background: color, opacity: 0.4 }}
           animate={{ scale: [1, 1.9, 1], opacity: [0.4, 0, 0.4] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
         />
       )}
-      <span style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: color }} />
+      <span style={{ position: 'absolute', inset: 0, borderRadius: 0, background: color }} />
     </span>
   );
 }
@@ -475,8 +475,8 @@ export default function MissionControl() {
         {/* Ambient grid */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: `linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)`, backgroundSize: '48px 48px' }} />
         {/* Glow orbs */}
-        <div style={{ position: 'absolute', top: -200, right: -100, width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: -200, left: -100, width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: -200, right: -100, width: 800, height: 800, borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: -200, left: -100, width: 600, height: 600, borderRadius: 0, background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <ExecutionStageGuide variant="banner" />
 
@@ -486,7 +486,7 @@ export default function MissionControl() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 0 18px', borderBottom: '1px solid rgba(255,255,255,0.08)', marginBottom: 26 }}>
             {/* Identity */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 42, height: 42, borderRadius: '50%', border: `2px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(201,168,76,0.1)', flexShrink: 0 }}>
+              <div style={{ width: 42, height: 42, borderRadius: 0, border: `2px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(201,168,76,0.1)', flexShrink: 0 }}>
                 <span style={{ color: GOLD, fontWeight: 800, fontSize: 14 }}>VM</span>
               </div>
               <div>

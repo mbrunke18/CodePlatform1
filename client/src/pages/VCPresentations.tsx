@@ -136,18 +136,13 @@ export default function VCPresentations() {
           
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex items-center space-x-6">
-                <div className="w-16 h-16 bg-[#C9A84C] rounded-none flex items-center justify-center">
-                  <Briefcase className="w-8 h-8 text-[#0A0F2E]" />
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">VaughnMartin Executive Presentation</span>
                 </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">VaughnMartin Executive Presentation</span>
-                  </div>
-                  <h1 className="text-4xl md:text-5xl font-bold mb-2 text-white" style={CG}>Investor Relations Center</h1>
-                  <p className="text-[#DFC178] text-lg max-w-xl font-medium">Series B Presentation Materials & Financial Projections</p>
-                </div>
+                <h1 className="text-4xl md:text-5xl font-bold mb-2 text-white" style={CG}>Investor Relations Center</h1>
+                <p className="text-[#DFC178] text-lg max-w-xl font-medium">Series B Presentation Materials & Financial Projections</p>
               </div>
               <div className="flex items-center space-x-4">
                 <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C]/50 px-4 py-1">
@@ -192,9 +187,7 @@ export default function VCPresentations() {
                 {pitchMaterials.map((material, index) => (
                   <div key={index} className="flex items-center justify-between p-5 bg-white border border-[#E8E4DC] group hover:border-[#C9A84C] transition-colors">
                     <div className="flex items-center space-x-4">
-                      <div className="w-10 h-10 bg-[#F8F7F4] flex items-center justify-center group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
-                        {material.icon}
-                      </div>
+                      <div style={{ width: 4, alignSelf: 'stretch', background: material.status === 'Ready' ? '#2B8A6E' : '#C9A84C', flexShrink: 0 }} />
                       <div>
                         <h4 className="font-bold text-[#0A0F2E]">{material.title}</h4>
                         <p className="text-sm text-[#6B7280]">{material.description}</p>

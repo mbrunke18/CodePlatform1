@@ -185,7 +185,7 @@ export default function LiveDetectionFeed() {
           }} />
           <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 0, padding: '6px 16px', marginBottom: 24 }}>
-              <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+              <div style={{ width: 7, height: 7, borderRadius: 0, background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
               <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Live System — Monitoring Active</span>
             </div>
             <h1 style={{ color: '#fff', fontSize: 36, fontWeight: 800, margin: '0 0 16px', lineHeight: 1.2 }}>
@@ -242,7 +242,7 @@ export default function LiveDetectionFeed() {
           ))}
 
           <div style={{ background: NAVY, borderRadius: 0, padding: '40px 36px', textAlign: 'center', marginTop: 36 }}>
-            <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+            <div style={{ width: 48, height: 48, borderRadius: 0, background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
               <Shield size={22} color={GOLD} />
             </div>
             <h3 style={{ color: '#fff', fontSize: 22, fontWeight: 700, margin: '0 0 12px' }}>
@@ -276,7 +276,7 @@ export default function LiveDetectionFeed() {
         }} />
         <div style={{ position: 'relative' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E', animation: 'pulse 2s infinite' }} />
+            <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22C55E', boxShadow: '0 0 8px #22C55E', animation: 'pulse 2s infinite' }} />
             <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Live — Monitoring Active</span>
           </div>
           <h1 style={{ color: '#fff', fontSize: 32, fontWeight: 700, margin: '0 0 8px' }}>
@@ -627,7 +627,7 @@ export default function LiveDetectionFeed() {
                 { step: '4', label: 'Team Notified', desc: 'Email + Slack fires to all alert recipients within seconds of detection' },
               ].map(item => (
                 <div key={item.step} style={{ display: 'flex', gap: 14, marginBottom: 16 }}>
-                  <div style={{ width: 24, height: 24, borderRadius: '50%', background: `${GOLD}20`, border: `1px solid ${GOLD}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: 24, height: 24, borderRadius: 0, background: `${GOLD}20`, border: `1px solid ${GOLD}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <span style={{ color: GOLD, fontSize: 11, fontWeight: 700 }}>{item.step}</span>
                   </div>
                   <div>

@@ -303,7 +303,7 @@ function BriefLoadingState() {
               ) : i === step ? (
                 <Loader2 style={{ width: 14, height: 14, color: "#7C3AED", animation: "spin 0.8s linear infinite" }} />
               ) : (
-                <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#ccc" }} />
+                <div style={{ width: 5, height: 5, borderRadius: 0, background: "#ccc" }} />
               )}
             </div>
             <span style={{
@@ -748,7 +748,7 @@ export default function PlaybookActivationConsole() {
             {/* Dry-Run Prompt */}
             <div style={{ border: `1px solid rgba(167,139,250,0.35)`, background: "rgba(167,139,250,0.04)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginBottom: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#A78BFA", flexShrink: 0 }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: "#A78BFA", flexShrink: 0 }} />
                 <div>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>Pre-Deployment Dry-Run Available</div>
                   <div style={{ fontSize: 12, color: MUTED }}>Validate your response strategy before committing resources — see Survive vs. Thrive probability.</div>
@@ -785,7 +785,7 @@ export default function PlaybookActivationConsole() {
             <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid #7C3AED`, background: "#fff", marginBottom: 24 }}>
               <div style={{ padding: "18px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(124,58,237,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: 0, background: "rgba(124,58,237,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <Shield style={{ width: 14, height: 14, color: "#7C3AED" }} />
                   </div>
                   <div>
@@ -817,7 +817,7 @@ export default function PlaybookActivationConsole() {
                       <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
                         {(brief.criticalRoles || []).map((role: string, i: number) => (
                           <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <div style={{ width: 6, height: 6, borderRadius: "50%", background: GOLD, flexShrink: 0 }} />
+                            <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD, flexShrink: 0 }} />
                             <span style={{ fontSize: 13, color: NAVY, fontWeight: 500 }}>{role}</span>
                           </div>
                         ))}
@@ -1098,7 +1098,7 @@ export default function PlaybookActivationConsole() {
                   background: s.status === 'acknowledged' ? "rgba(43,138,110,0.04)" : s.status === 'notified' ? "rgba(201,168,76,0.04)" : "#fafafa",
                 }}>
                   <div style={{
-                    width: 36, height: 36, borderRadius: "50%", flexShrink: 0,
+                    width: 36, height: 36, borderRadius: 0, flexShrink: 0,
                     background: s.status === 'acknowledged' ? "rgba(43,138,110,0.15)" : s.status === 'notified' ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.06)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: 12, fontWeight: 700, color: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : MUTED,
@@ -1205,10 +1205,10 @@ export default function PlaybookActivationConsole() {
                       ) : isActive ? (
                         <>
                           <div style={{
-                            width: 20, height: 20, borderRadius: "50%", border: `2px solid ${GOLD}`,
+                            width: 20, height: 20, borderRadius: 0, border: `2px solid ${GOLD}`,
                             display: "flex", alignItems: "center", justifyContent: "center",
                           }}>
-                            <div style={{ width: 8, height: 8, borderRadius: "50%", background: GOLD, animation: "pulse 1.2s ease-in-out infinite" }} />
+                            <div style={{ width: 8, height: 8, borderRadius: 0, background: GOLD, animation: "pulse 1.2s ease-in-out infinite" }} />
                           </div>
                         </>
                       ) : (
@@ -1353,7 +1353,7 @@ export default function PlaybookActivationConsole() {
         {executionStatus === 'active' && liveEvents.length > 0 && (
           <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, background: "#fff" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "16px 24px", borderBottom: `1px solid ${BORDER}` }}>
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, animation: "pulse 1.5s ease-in-out infinite" }} />
+              <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL, animation: "pulse 1.5s ease-in-out infinite" }} />
               <span style={{ ...CG, fontSize: 16, fontWeight: 600, color: NAVY }}>Live Execution Feed</span>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, marginLeft: 4 }}>● LIVE</span>
             </div>
@@ -1514,7 +1514,7 @@ export default function PlaybookActivationConsole() {
               {safeTasks.length === 0 && (
                 <div style={{ background: "rgba(43,138,110,0.06)", borderBottom: "1px solid rgba(43,138,110,0.2)", padding: "16px 48px", display: "flex", alignItems: "flex-start", gap: 14 }}>
                   <div style={{ flexShrink: 0, marginTop: 1 }}>
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL }} />
+                    <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL }} />
                   </div>
                   <div>
                     <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 4 }}>

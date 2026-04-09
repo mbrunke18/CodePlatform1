@@ -227,7 +227,7 @@ export default function SituationIntentsHub() {
                   key={trigger.id}
                   style={{ background: "#fff", border: `1px dashed ${BORDER}`, borderRadius: 0, padding: "16px 20px", display: "flex", alignItems: "center", gap: 16 }}
                 >
-                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: BORDER, flexShrink: 0 }} />
+                  <div style={{ width: 8, height: 8, borderRadius: 0, background: BORDER, flexShrink: 0 }} />
                   <div style={{ flex: 1 }}>
                     <span style={{ fontSize: 14, fontWeight: 600, color: MUTED }}>{trigger.name}</span>
                     {trigger.domain && <span style={{ fontSize: 12, color: BORDER, marginLeft: 8 }}>{trigger.domain}</span>}

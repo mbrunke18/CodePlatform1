@@ -440,7 +440,7 @@ export default function ExecutiveBrief() {
                     "Recent slow response pain in the last 12 months",
                   ].map(item => (
                     <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10 }}>
-                      <div style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 6 }} />
+                      <div style={{ width: 5, height: 5, borderRadius: 0, background: GOLD, flexShrink: 0, marginTop: 6 }} />
                       <span style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>{item}</span>
                     </div>
                   ))}

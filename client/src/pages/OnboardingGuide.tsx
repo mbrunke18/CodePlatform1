@@ -33,7 +33,7 @@ function ScreenPreview({ title, children, accent = NAVY }: { title: string; chil
   return (
     <div style={{ borderRadius: 0, overflow: "hidden", border: "1px solid #E5E7EB", boxShadow: "0 4px 24px rgba(10,15,46,0.08)" }}>
       <div style={{ background: accent, padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
-        {[0, 1, 2].map(i => <div key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(255,255,255,0.2)" }} />)}
+        {[0, 1, 2].map(i => <div key={i} style={{ width: 10, height: 10, borderRadius: 0, background: "rgba(255,255,255,0.2)" }} />)}
         <span style={{ marginLeft: 8, fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 600, letterSpacing: "0.5px" }}>{title}</span>
       </div>
       <div style={{ background: "#F8FAFC", padding: 20 }}>{children}</div>
@@ -53,7 +53,7 @@ function StatPill({ value, label, color = NAVY }: { value: string; label: string
 function StepCard({ number, title, description, path, icon: Icon }: { number: number; title: string; description: string; path: string; icon: React.ElementType }) {
   return (
     <div style={{ display: "flex", gap: 20, padding: "24px 0", borderBottom: "1px solid #F3F4F6" }}>
-      <div style={{ flexShrink: 0, width: 48, height: 48, borderRadius: "50%", background: NAVY, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ flexShrink: 0, width: 48, height: 48, borderRadius: 0, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <span style={{ fontSize: 18, fontWeight: 900, color: GOLD }}>{number}</span>
       </div>
       <div style={{ flex: 1 }}>
@@ -90,7 +90,7 @@ function FeatureCard({ title, description, icon: Icon, path, color = NAVY }: { t
 function FlowStep({ icon: Icon, title, detail, color }: { icon: React.ElementType; title: string; detail: string; color: string }) {
   return (
     <div style={{ textAlign: "center" as const, flex: 1 }}>
-      <div style={{ width: 52, height: 52, borderRadius: "50%", background: `${color}14`, border: `2px solid ${color}30`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>
+      <div style={{ width: 52, height: 52, borderRadius: 0, background: `${color}14`, border: `2px solid ${color}30`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>
         <Icon size={20} color={color} />
       </div>
       <div style={{ fontSize: 12, fontWeight: 800, color: NAVY, marginBottom: 4 }}>{title}</div>
@@ -139,11 +139,11 @@ export default function OnboardingGuide() {
 
         {/* Cover */}
         <div style={{ background: NAVY, borderRadius: "0 0 16px 16px", padding: "64px 56px 56px", marginBottom: 56, position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, borderRadius: "50%", background: `${GOLD}08`, pointerEvents: "none" }} />
-          <div style={{ position: "absolute", bottom: -60, left: -60, width: 300, height: 300, borderRadius: "50%", background: `${TEAL}0A`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, borderRadius: 0, background: `${GOLD}08`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: -60, left: -60, width: 300, height: 300, borderRadius: 0, background: `${TEAL}0A`, pointerEvents: "none" }} />
           <div style={{ position: "relative" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 32 }}>
-              <div style={{ width: 48, height: 48, borderRadius: "50%", background: `linear-gradient(135deg, ${GOLD}, #A8873A)`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: `0 0 0 2px ${GOLD}40` }}>
+              <div style={{ width: 48, height: 48, borderRadius: 0, background: `linear-gradient(135deg, ${GOLD}, #A8873A)`, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: `0 0 0 2px ${GOLD}40` }}>
                 <Shield size={22} color="#fff" />
               </div>
               <div>
@@ -273,7 +273,7 @@ export default function OnboardingGuide() {
                   { label: "Regulatory Shift Detected · 76% confidence · SEC", dot: TEAL },
                 ].map(({ label, dot }, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 0", borderBottom: i < 2 ? "1px solid #F3F4F6" : "none" }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: dot, flexShrink: 0 }} />
+                    <div style={{ width: 6, height: 6, borderRadius: 0, background: dot, flexShrink: 0 }} />
                     <span style={{ fontSize: 11, color: "#374151" }}>{label}</span>
                   </div>
                 ))}

@@ -577,9 +577,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-alignment-score">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
-                      <BarChart3 className="w-5 h-5 text-[#0A0F2E]" />
-                    </div>
+                    <div style={{ width: 3, alignSelf: 'stretch', background: '#0A0F2E', flexShrink: 0 }} />
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-alignment-score">{assessmentComplete ? `${overallScore}%` : '—'}</p>
                       <p className="text-xs text-muted-foreground">Alignment Score</p>
@@ -590,9 +588,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-priority-elements">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-amber-500/10 flex items-center justify-center">
-                      <AlertCircle className="w-5 h-5 text-amber-500" />
-                    </div>
+                    <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-priority-count">{assessmentComplete ? priorityElements.length : '—'}</p>
                       <p className="text-xs text-muted-foreground">Priority Elements</p>
@@ -603,9 +599,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-recommended-playbooks">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#2B8A6E]/10 flex items-center justify-center">
-                      <BookOpen className="w-5 h-5 text-[#2B8A6E]" />
-                    </div>
+                    <div style={{ width: 3, alignSelf: 'stretch', background: '#2B8A6E', flexShrink: 0 }} />
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-playbook-count">{assessmentComplete ? recommendedPlaybooks.reduce((sum, p) => sum + (p.info?.count || 0), 0) : '—'}</p>
                       <p className="text-xs text-muted-foreground">Recommended Playbooks</p>
@@ -616,9 +610,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-industry-gap">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#C9A84C]/10 flex items-center justify-center">
-                      <TrendingUp className="w-5 h-5 text-[#C9A84C]" />
-                    </div>
+                    <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-industry-gap">30%</p>
                       <p className="text-xs text-muted-foreground">Industry Gap Avg</p>
@@ -902,9 +894,7 @@ export default function OperatingModelAlignment() {
                               <Card key={element} className="border-amber-500/30" data-testid={`card-gap-${element.toLowerCase().replace(/\s+/g, '-')}`}>
                                 <CardContent className="p-4">
                                   <div className="flex items-center gap-3 mb-3">
-                                    <div className="w-10 h-10 bg-amber-500/10 flex items-center justify-center">
-                                      <Icon className="w-5 h-5 text-[#C9A84C]" />
-                                    </div>
+                                    <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                                     <div>
                                       <h4 className="font-medium">{element}</h4>
                                       <p className="text-xs text-muted-foreground">{gap}% gap to close</p>

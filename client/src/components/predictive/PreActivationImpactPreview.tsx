@@ -285,7 +285,7 @@ export default function PreActivationImpactPreview({
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {riskFactors.map((f, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: '#6B7280' }}>
-                    <div style={{ width: 5, height: 5, borderRadius: '50%', background: riskBadgeColor, flexShrink: 0 }} />
+                    <div style={{ width: 5, height: 5, borderRadius: 0, background: riskBadgeColor, flexShrink: 0 }} />
                     {f}
                   </div>
                 ))}

@@ -347,7 +347,7 @@ export default function ProspectBrief() {
           </div>
 
           <div style={{ background: NAVY, padding: "28px 32px", marginBottom: 20, position: "relative", overflow: "hidden" }}>
-            <div style={{ position: "absolute", top: 0, right: 0, width: 200, height: 200, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12), transparent)", transform: "translate(60px, -60px)" }} />
+            <div style={{ position: "absolute", top: 0, right: 0, width: 200, height: 200, borderRadius: 0, background: "radial-gradient(circle, rgba(201,168,76,0.12), transparent)", transform: "translate(60px, -60px)" }} />
             <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 8 }}>Estimated Annual Value Preserved</div>
             <div style={{ fontSize: 48, fontWeight: 700, color: GOLD, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1, marginBottom: 8 }}>
               ${(annualValue / 1000000).toFixed(1)}M

@@ -94,7 +94,7 @@ function RoleTaskCard({ task, index }: { task: any; index: number }) {
         onClick={() => setOpen(!open)}
         style={{ width: "100%", padding: "14px 20px", display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", textAlign: "left" }}
       >
-        <div style={{ width: 8, height: 8, borderRadius: "50%", background: priorityColor, flexShrink: 0 }} />
+        <div style={{ width: 8, height: 8, borderRadius: 0, background: priorityColor, flexShrink: 0 }} />
         <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, flex: 1 }}>{task.role}</span>
         {task.deadline && (
           <span style={{ fontSize: 10, fontWeight: 600, color: MUTED, textTransform: "uppercase", letterSpacing: "0.05em" }}>{task.deadline}</span>
@@ -106,7 +106,7 @@ function RoleTaskCard({ task, index }: { task: any; index: number }) {
           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
             {task.items.map((item: string, i: number) => (
               <li key={i} style={{ display: "flex", gap: 10, marginBottom: 8 }}>
-                <div style={{ width: 4, height: 4, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 7 }} />
+                <div style={{ width: 4, height: 4, borderRadius: 0, background: GOLD, flexShrink: 0, marginTop: 7 }} />
                 <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{item}</span>
               </li>
             ))}
@@ -619,7 +619,7 @@ export default function PlaybookDetail() {
                             <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
                               {signalSources.map((s: string, i: number) => (
                                 <li key={i} style={{ display: "flex", gap: 10, marginBottom: 8 }}>
-                                  <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 6 }} />
+                                  <div style={{ width: 6, height: 6, borderRadius: 0, background: TEAL, flexShrink: 0, marginTop: 6 }} />
                                   <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{s}</span>
                                 </li>
                               ))}
@@ -676,7 +676,7 @@ export default function PlaybookDetail() {
                                 onClick={() => setExpandedPhase(isOpen ? null : phase.id)}
                                 style={{ width: "100%", padding: "20px 28px", display: "flex", alignItems: "center", gap: 16, background: isOpen ? NAVY : "#fff", border: "none", cursor: "pointer", textAlign: "left", transition: "background 0.15s" }}
                               >
-                                <div style={{ width: 32, height: 32, borderRadius: "50%", background: isOpen ? GOLD : OFF, border: `1px solid ${isOpen ? GOLD : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                <div style={{ width: 32, height: 32, borderRadius: 0, background: isOpen ? GOLD : OFF, border: `1px solid ${isOpen ? GOLD : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                                   <span style={{ fontSize: 11, fontWeight: 700, color: isOpen ? NAVY : MUTED }}>{pi + 1}</span>
                                 </div>
                                 <div style={{ flex: 1 }}>
@@ -795,7 +795,7 @@ export default function PlaybookDetail() {
                       <div className="grid md:grid-cols-3 gap-4">
                         <div style={{ border: `1px solid #86EFAC`, background: "#F0FDF4", padding: 24 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#22C55E" }} />
+                            <div style={{ width: 10, height: 10, borderRadius: 0, background: "#22C55E" }} />
                             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#16A34A" }}>Green — On Track</span>
                           </div>
                           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
@@ -807,7 +807,7 @@ export default function PlaybookDetail() {
 
                         <div style={{ border: `1px solid #FCD34D`, background: "#FFFBEB", padding: 24 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
+                            <div style={{ width: 10, height: 10, borderRadius: 0, background: "#F59E0B" }} />
                             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#B45309" }}>Yellow — Watch Closely</span>
                           </div>
                           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
@@ -819,7 +819,7 @@ export default function PlaybookDetail() {
 
                         <div style={{ border: `1px solid #FCA5A5`, background: "#FFF5F5", padding: 24 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                            <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
+                            <div style={{ width: 10, height: 10, borderRadius: 0, background: "#EF4444" }} />
                             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#DC2626" }}>Red — Escalate Now</span>
                           </div>
                           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
@@ -887,7 +887,7 @@ export default function PlaybookDetail() {
                           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
                             {outcomeFraming.failureModes.map((item: string, i: number) => (
                               <li key={i} style={{ display: "flex", gap: 10, marginBottom: 10 }}>
-                                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#EF4444", flexShrink: 0, marginTop: 5 }} />
+                                <div style={{ width: 6, height: 6, borderRadius: 0, background: "#EF4444", flexShrink: 0, marginTop: 5 }} />
                                 <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{item}</span>
                               </li>
                             ))}
@@ -1003,7 +1003,7 @@ export default function PlaybookDetail() {
                             onClick={() => setEditorExpandedPhase(isOpen ? null : phase.id)}
                             style={{ width: "100%", padding: "18px 24px", display: "flex", alignItems: "center", gap: 14, background: isOpen ? NAVY : "#fff", border: "none", cursor: "pointer", textAlign: "left", transition: "background 0.15s" }}
                           >
-                            <div style={{ width: 28, height: 28, borderRadius: "50%", background: isOpen ? GOLD : OFF, border: `1px solid ${isOpen ? GOLD : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <div style={{ width: 28, height: 28, borderRadius: 0, background: isOpen ? GOLD : OFF, border: `1px solid ${isOpen ? GOLD : BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                               <span style={{ fontSize: 10, fontWeight: 700, color: isOpen ? NAVY : MUTED }}>{phaseIdx + 1}</span>
                             </div>
                             <div style={{ flex: 1 }}>
@@ -1075,7 +1075,7 @@ export default function PlaybookDetail() {
                                     <div style={{ padding: "10px 14px" }}>
                                       {taskGroup.items.map((item, itemIdx) => (
                                         <div key={itemIdx} style={{ display: "flex", alignItems: "flex-start", gap: 8, marginBottom: 6 }}>
-                                          <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL, flexShrink: 0, marginTop: 8 }} />
+                                          <div style={{ width: 5, height: 5, borderRadius: 0, background: TEAL, flexShrink: 0, marginTop: 8 }} />
                                           <textarea
                                             value={item}
                                             onChange={e => updateTaskItem(phaseIdx, taskIdx, itemIdx, e.target.value)}
@@ -1136,7 +1136,7 @@ export default function PlaybookDetail() {
                                     </div>
                                     {(phase.decisionGate?.criteria || []).map((criterion: string, cIdx: number) => (
                                       <div key={cIdx} style={{ display: "flex", gap: 7, marginBottom: 5 }}>
-                                        <div style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 9 }} />
+                                        <div style={{ width: 5, height: 5, borderRadius: 0, background: GOLD, flexShrink: 0, marginTop: 9 }} />
                                         <input
                                           type="text"
                                           value={criterion}
@@ -1389,7 +1389,7 @@ export default function PlaybookDetail() {
                         }}
                         style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", background: expandedPhase === phase.id ? `${NAVY}08` : "transparent", border: `1px solid ${expandedPhase === phase.id ? NAVY : BORDER}`, cursor: "pointer", textAlign: "left" }}
                       >
-                        <div style={{ width: 20, height: 20, borderRadius: "50%", background: expandedPhase === phase.id ? NAVY : OFF, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <div style={{ width: 20, height: 20, borderRadius: 0, background: expandedPhase === phase.id ? NAVY : OFF, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                           <span style={{ fontSize: 10, fontWeight: 700, color: expandedPhase === phase.id ? "#fff" : MUTED }}>{pi + 1}</span>
                         </div>
                         <div>

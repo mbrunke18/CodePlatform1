@@ -368,16 +368,14 @@ export default function Investors() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">
-                <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold px-8 h-12">
-                  <Play className="w-4 h-4 mr-2" />
-                  Watch Demo
-                </Button>
+                <button style={{ display: 'inline-flex', alignItems: 'center', background: '#0A0F2E', color: '#fff', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '14px 32px', border: 'none', cursor: 'pointer', fontFamily: "'Barlow Condensed', sans-serif" }}>
+                  Watch the Platform
+                </button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-[#0A0F2E]/5 backdrop-blur-sm">
-                  <Calendar className="w-4 h-4 mr-2 text-[#C9A84C]" />
-                  Schedule Meeting
-                </Button>
+                <button style={{ display: 'inline-flex', alignItems: 'center', background: 'transparent', color: '#0A0F2E', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', padding: '14px 32px', border: '1px solid rgba(10,15,46,0.3)', cursor: 'pointer', fontFamily: "'Barlow Condensed', sans-serif" }}>
+                  Schedule a Conversation
+                </button>
               </Link>
             </div>
           </motion.div>
@@ -502,17 +500,15 @@ export default function Investors() {
           {/* Market Validation */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="mb-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">Market Validation</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#E8E4DC]">
               {metrics.map((metric, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] p-6 text-center hover:border-[#C9A84C]/50 transition-colors">
-                  <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/5 flex items-center justify-center">
-                    <metric.icon className={`w-5 h-5 ${metric.color}`} />
-                  </div>
-                  <p className={`text-3xl font-bold mb-1 ${metric.color}`}>{metric.value}</p>
-                  <p className="text-[#0A0F2E] font-bold text-sm mb-1">{metric.label}</p>
-                  <p className="text-[#6B7280] text-xs mb-2 font-medium">{metric.description}</p>
-                  <p className="text-[#2B8A6E] text-xs font-bold">{metric.source}</p>
+                  className="bg-white p-8">
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1, marginBottom: 8 }}>{metric.value}</p>
+                  <div style={{ width: 24, height: 1, background: '#C9A84C', marginBottom: 8 }} />
+                  <p className="text-[#0A0F2E] font-bold text-xs mb-1 uppercase tracking-widest">{metric.label}</p>
+                  <p className="text-[#6B7280] text-xs font-medium leading-relaxed">{metric.description}</p>
+                  <p className="text-[#2B8A6E] text-[10px] font-bold mt-2 uppercase tracking-wide">{metric.source}</p>
                 </motion.div>
               ))}
             </div>
@@ -554,17 +550,15 @@ export default function Investors() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-3 uppercase tracking-widest">The Problem We Solve</h2>
             <p className="text-[#6B7280] text-center text-sm mb-8 font-medium">Strategic execution fails at massive scale</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#E8E4DC]">
               {industryProblems.map((problem, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] p-6 text-center hover:border-[#C9A84C]/50 transition-colors">
-                  <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/5 flex items-center justify-center">
-                    <problem.icon className="w-5 h-5 text-[#0A0F2E]" />
-                  </div>
-                  <p className="text-3xl font-bold mb-1 text-[#0A0F2E]">{problem.value}</p>
-                  <p className="text-[#0A0F2E] font-bold text-sm mb-1">{problem.label}</p>
-                  <p className="text-[#6B7280] text-xs mb-2 font-medium">{problem.description}</p>
-                  <p className="text-[#6B7280]/60 text-xs font-bold">{problem.source}</p>
+                  className="bg-white p-8">
+                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1, marginBottom: 8 }}>{problem.value}</p>
+                  <div style={{ width: 24, height: 1, background: '#C9A84C', marginBottom: 8 }} />
+                  <p className="text-[#0A0F2E] font-bold text-xs mb-1 uppercase tracking-widest">{problem.label}</p>
+                  <p className="text-[#6B7280] text-xs font-medium leading-relaxed">{problem.description}</p>
+                  <p className="text-[#6B7280]/60 text-[10px] font-bold mt-2 uppercase tracking-wide">{problem.source}</p>
                 </motion.div>
               ))}
             </div>
@@ -589,7 +583,6 @@ export default function Investors() {
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
                   className="bg-white border border-[#E8E4DC] p-6 hover:border-[#C9A84C]/50 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">{scenario.icon}</span>
                     <div>
                       <h3 className="text-[#0A0F2E] font-bold">{scenario.title}</h3>
                       <p className="text-[#6B7280] text-xs font-bold">{scenario.industry}</p>
@@ -650,19 +643,13 @@ export default function Investors() {
           {/* Competitive Advantages */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mb-20">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">Competitive Advantages</h2>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-px bg-[#E8E4DC]">
               {competitiveAdvantages.map((advantage, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] p-6 hover:border-[#C9A84C]/50 transition-colors">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0 border border-[#C9A84C]/20">
-                      <advantage.icon className="w-6 h-6 text-[#C9A84C]" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">{advantage.title}</h3>
-                      <p className="text-[#6B7280] text-sm font-medium">{advantage.description}</p>
-                    </div>
-                  </div>
+                  className="bg-white p-8" style={{ borderLeft: '3px solid #C9A84C' }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Advantage {String(i + 1).padStart(2, '0')}</div>
+                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">{advantage.title}</h3>
+                  <p className="text-[#6B7280] text-sm font-medium leading-relaxed">{advantage.description}</p>
                 </motion.div>
               ))}
             </div>

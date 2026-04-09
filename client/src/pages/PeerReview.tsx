@@ -178,10 +178,10 @@ function RadioGroup({ options, selected, onChange }: { options: string[]; select
         <label key={opt} style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer" }}>
           <div onClick={() => onChange(opt)} style={{
             width: 18, height: 18, minWidth: 18, border: `2px solid ${selected === opt ? GOLD : BORDER}`,
-            background: selected === opt ? GOLD : "white", marginTop: 1, borderRadius: "50%",
+            background: selected === opt ? GOLD : "white", marginTop: 1, borderRadius: 0,
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
-            {selected === opt && <div style={{ width: 7, height: 7, borderRadius: "50%", background: NAVY }} />}
+            {selected === opt && <div style={{ width: 7, height: 7, borderRadius: 0, background: NAVY }} />}
           </div>
           <span style={{ fontSize: 14, color: NAVY, lineHeight: 1.5 }}>{opt}</span>
         </label>
@@ -305,7 +305,7 @@ export default function PeerReview() {
     return (
       <div style={{ background: NAVY, minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center" }}>
         <div style={{ maxWidth: 480 }}>
-          <div style={{ width: 64, height: 64, borderRadius: "50%", background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 28 }}>✓</div>
+          <div style={{ width: 64, height: 64, borderRadius: 0, background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 32px", fontSize: 28 }}>✓</div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>VaughnMartin · Readiness OS</div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 600, color: "white", marginBottom: 16 }}>Thank You</h1>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.7, marginBottom: 32 }}>

@@ -46,8 +46,8 @@ export default function VsConsulting() {
           backgroundImage: "linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)",
           backgroundSize: "48px 48px"
         }} />
-        <div style={{ position: "absolute", left: -120, top: -160, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.18) 0%, transparent 65%)" }} />
-        <div style={{ position: "absolute", right: -80, bottom: -200, width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.14) 0%, transparent 65%)" }} />
+        <div style={{ position: "absolute", left: -120, top: -160, width: 600, height: 600, borderRadius: 0, background: "radial-gradient(circle, rgba(43,138,110,0.18) 0%, transparent 65%)" }} />
+        <div style={{ position: "absolute", right: -80, bottom: -200, width: 500, height: 500, borderRadius: 0, background: "radial-gradient(circle, rgba(201,168,76,0.14) 0%, transparent 65%)" }} />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
@@ -94,7 +94,7 @@ export default function VsConsulting() {
             {/* What consulting delivers */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#EF4444" }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: "#EF4444" }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#EF4444" }}>What $500K in Consulting Gets You</span>
               </div>
 
@@ -130,7 +130,7 @@ export default function VsConsulting() {
             {/* What happens when a crisis hits */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#9CA3AF" }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: "#9CA3AF" }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Six Months Later — A Crisis Hits</span>
               </div>
 

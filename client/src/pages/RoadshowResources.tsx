@@ -192,14 +192,14 @@ export default function RoadshowResources() {
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
-              <Zap className="h-5 w-5 text-[#C9A84C]" />
-            </div>
-            <h2 className="text-2xl font-light text-[#0A0F2E]" style={CG}>
-              Strategic Benchmarks
-            </h2>
+          <div className="flex items-center gap-4 mb-6">
+            <div style={{ width: 28, height: 1.5, background: '#C9A84C' }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C' }}>Metrics</span>
+            <div style={{ flex: 1, height: 1, background: '#E8E4DC' }} />
           </div>
+          <h2 className="text-2xl font-light text-[#0A0F2E] mb-6" style={CG}>
+            Strategic Benchmarks
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {KEY_STATS.map((stat) => (
               <div 
@@ -240,9 +240,7 @@ export default function RoadshowResources() {
                       data-testid={`card-doc-${doc.id}`}
                     >
                       <div className="flex items-center gap-4">
-                        <div className={`w-8 h-8 ${doc.color} flex items-center justify-center text-white`}>
-                          <IconComponent className="h-4 w-4" />
-                        </div>
+                        <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                         <div className="flex-1 min-w-0">
                           <div className="font-bold text-[#0A0F2E] text-sm">{doc.title}</div>
                           <div className="text-xs text-[#6B7280] truncate">{doc.description}</div>
@@ -282,9 +280,7 @@ export default function RoadshowResources() {
               <div className="bg-white border border-[#E8E4DC] overflow-hidden">
                 <div className="p-8 border-b border-[#E8E4DC] flex items-center justify-between bg-[#F8F7F4]/30">
                   <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 ${activeDocument.color} flex items-center justify-center text-white`}>
-                      <activeDocument.icon className="h-7 w-7" />
-                    </div>
+                    <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0, minHeight: 40 }} />
                     <div>
                       <h3 className="text-3xl font-light text-[#0A0F2E]" style={CG}>{activeDocument.title}</h3>
                       <p className="text-[#6B7280] text-sm">{activeDocument.description}</p>

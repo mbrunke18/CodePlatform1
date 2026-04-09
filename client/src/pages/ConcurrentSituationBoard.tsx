@@ -277,7 +277,7 @@ export default function ConcurrentSituationBoard() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {CONFLICTS.map((c, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 12, color: '#6B7280' }}>
-                    <div style={{ width: 5, height: 5, borderRadius: '50%', background: c.riskLevel === 'critical' ? RED : GOLD, flexShrink: 0, marginTop: 6 }} />
+                    <div style={{ width: 5, height: 5, borderRadius: 0, background: c.riskLevel === 'critical' ? RED : GOLD, flexShrink: 0, marginTop: 6 }} />
                     <span><strong style={{ color: NAVY }}>{c.resource}:</strong> {c.description}</span>
                   </div>
                 ))}

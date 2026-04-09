@@ -435,9 +435,6 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             }} />
             <div className="relative z-10 flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-none flex items-center justify-center">
-                  <Building2 className="w-7 h-7 text-[#DFC178]" />
-                </div>
                 <div>
                   <h1 style={{ ...CG, fontWeight: 600, fontSize: "32px", color: "#fff" }} data-testid="org-setup-title">Organization <em style={{ fontStyle: "italic", color: "#DFC178" }}>Setup</em></h1>
                   <p className="text-white/60 mt-1">Configure YOUR team structure, stakeholders, and approval workflows</p>

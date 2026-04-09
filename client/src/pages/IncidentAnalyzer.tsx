@@ -553,9 +553,8 @@ export default function IncidentAnalyzer() {
                   { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-[#C9A84C]" },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className={`w-12 h-12 bg-[#F8F7F4] border border-[#E8E4DC] flex items-center justify-center mx-auto mb-3`}>
-                      <step.icon className={`w-5 h-5 ${step.color}`} />
-                    </div>
+                    <div className="text-2xl font-bold text-[#C9A84C] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{step.num}</div>
+                    <div style={{ width: 20, height: 1, background: '#C9A84C', margin: '0 auto 8px' }} />
                     <div className="text-sm font-semibold text-[#0A0F2E]">{step.label}</div>
                     <div className="text-xs text-[#6B7280] mt-1">{step.desc}</div>
                   </div>
@@ -1439,9 +1438,7 @@ export default function IncidentAnalyzer() {
           <div className="space-y-6">
             <Card className="bg-white border-[#E8E4DC]">
               <CardContent className="pt-8 text-center">
-                <div className="w-16 h-16 bg-[#2B8A6E]/20 flex items-center justify-center mx-auto mb-4">
-                  <FileText className="w-8 h-8 text-[#2B8A6E]" />
-                </div>
+                <div style={{ width: 48, height: 1.5, background: '#2B8A6E', margin: '0 auto 20px' }} />
                 <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">Your Executive Report is Ready</h2>
                 <p className="text-[#6B7280] max-w-lg mx-auto">
                   Download your strategic analysis, playbook, and simulation results as professional PDF reports.

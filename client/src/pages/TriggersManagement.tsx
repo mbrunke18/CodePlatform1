@@ -499,7 +499,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-2">
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: proximityBarColor(selectedTrigger.proximity) }} className="animate-pulse flex-shrink-0" />
+                        <div style={{ width: 6, height: 6, borderRadius: 0, background: proximityBarColor(selectedTrigger.proximity) }} className="animate-pulse flex-shrink-0" />
                         <span className="text-[9px] font-black uppercase tracking-[0.2em]" style={{ color: GOLD }}>Alert Rule · Data Evidence</span>
                       </div>
                       <h2 style={{ ...CG, fontSize: '1.35rem', fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2, marginBottom: 8 }}>
@@ -626,7 +626,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             return (
                               <div>
                                 <div className="flex items-center gap-2 mb-1.5">
-                                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: th.color, flexShrink: 0 }} />
+                                  <div style={{ width: 10, height: 10, borderRadius: 0, background: th.color, flexShrink: 0 }} />
                                   <span className="text-sm font-bold" style={{ color: th.color }}>{th.label}</span>
                                 </div>
                                 <p className="text-[10px] text-gray-400 leading-snug">{th.desc}</p>

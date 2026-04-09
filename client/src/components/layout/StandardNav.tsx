@@ -1004,7 +1004,7 @@ export default function StandardNav() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 30 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ width: 5, height: 5, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                  <span style={{ width: 5, height: 5, background: '#3BAF8A', borderRadius: 0, display: 'inline-block' }} />
                   <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
                 </div>
                 <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>

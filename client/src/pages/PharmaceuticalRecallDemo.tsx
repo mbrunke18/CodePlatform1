@@ -132,7 +132,7 @@ export default function PharmaceuticalRecallDemo() {
                 {fdaClassifications.map(({ class: cls, description, color }) => (
                   <div key={cls} className="flex items-center gap-4 p-3 border border-white/10" style={{ background: cls === "Class I" ? "rgba(239,68,68,0.05)" : "rgba(255,255,255,0.03)" }}>
                     <div style={{ minWidth: 70, fontSize: 12, fontWeight: 700, color }}>{cls}</div>
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: color, flexShrink: 0 }} />
+                    <div style={{ width: 8, height: 8, borderRadius: 0, background: color, flexShrink: 0 }} />
                     <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{description}</div>
                     {cls === "Class I" && <Badge className="ml-auto text-[10px] bg-red-500/20 text-red-400 border-red-500/30">This Scenario</Badge>}
                   </div>

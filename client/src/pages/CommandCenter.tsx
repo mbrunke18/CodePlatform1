@@ -466,7 +466,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="space-y-2">
                   {(compoundAnalysisResult.recommendedPlaybooks || compoundAnalysisResult.playbooks || []).slice(0, 3).map((p: string, i: number) => (
                     <div key={i} style={{ fontSize: 12, color: NAVY, fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
-                      <div style={{ width: 4, height: 4, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                      <div style={{ width: 4, height: 4, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
                       {p}
                     </div>
                   ))}
@@ -520,7 +520,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
               <div className="flex items-center gap-4 sm:gap-6">
                 <div className="relative shrink-0">
-                  <div style={{ width: 96, height: 96, borderRadius: "50%", background: "rgba(255,255,255,0.05)", border: "2px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ width: 96, height: 96, borderRadius: 0, background: "rgba(255,255,255,0.05)", border: "2px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <div className="text-center">
                       <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#fff" }} data-testid="text-countdown-time">
                         {formatTime(demoExecution.elapsedSeconds, true)}
@@ -760,7 +760,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       {/* Signal that fired */}
                       <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)", padding: "10px 14px" }}>
                         <div className="flex items-center gap-2 mb-1">
-                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#ef4444", flexShrink: 0 }} className="animate-pulse" />
+                          <div style={{ width: 6, height: 6, borderRadius: 0, background: "#ef4444", flexShrink: 0 }} className="animate-pulse" />
                           <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(239,68,68,0.9)" }}>LIVE TRIGGER</span>
                         </div>
                         <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{ideaRecommendation.signal.title}</p>

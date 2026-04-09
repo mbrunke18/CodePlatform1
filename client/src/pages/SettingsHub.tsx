@@ -141,7 +141,7 @@ export default function SettingsHub() {
                             </div>
                             {item.status === 'good'
                               ? <CheckCircle style={{ width: 14, height: 14, color: TEAL }} />
-                              : <div style={{ width: 7, height: 7, borderRadius: '50%', background: GOLD }} />}
+                              : <div style={{ width: 7, height: 7, borderRadius: 0, background: GOLD }} />}
                           </div>
                         );
                       })}

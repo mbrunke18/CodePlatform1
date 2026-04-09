@@ -431,9 +431,7 @@ export default function KeynoteDemo() {
         >
           <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-[#0A0F2E] flex items-center justify-center">
-                <Brain className="h-6 w-6 text-[#C9A84C]" />
-              </div>
+              <div style={{ width: 24, height: 1.5, background: '#C9A84C' }} />
               <h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>Key Insights</h3>
             </div>
             <div className="space-y-4">
@@ -638,10 +636,8 @@ export default function KeynoteDemo() {
         >
           <div className="bg-white border border-[#E8E4DC] p-10">
             <div className="flex items-center gap-6 mb-8">
-              <div className="w-16 h-16 bg-[#0A0F2E] flex items-center justify-center">
-                <Brain className="h-8 w-8 text-[#C9A84C]" />
-              </div>
               <div>
+                <div style={{ width: 24, height: 1.5, background: '#C9A84C', marginBottom: 8 }} />
                 <h3 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>AI Recommendation</h3>
                 <p className="text-[#6B7280]">Based on analysis of 847 data points</p>
               </div>

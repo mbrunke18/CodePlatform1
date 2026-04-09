@@ -74,7 +74,7 @@ function TimelineChapter({
     <AnimatedSection className="mb-24">
       <div className="relative pl-12 md:pl-20 pb-12 border-l border-[#E8E4DC] ml-4">
         {/* Timeline dot */}
-        <div style={{ position: "absolute", left: -6, top: 8, width: 12, height: 12, background: colors[color], borderRadius: "50%" }} />
+        <div style={{ position: "absolute", left: -6, top: 8, width: 12, height: 12, background: colors[color], borderRadius: 0 }} />
         
         {/* Chapter header */}
         <div className="mb-8">

@@ -132,7 +132,7 @@ export default function ExecutiveDepartureBrief() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 28, height: 28, borderRadius: '50%', border: `1.5px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: 28, height: 28, borderRadius: 0, border: `1.5px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ ...CG, fontSize: 11, fontWeight: 700, color: GOLD }}>VM</span>
           </div>
           <span style={{ fontSize: 12, fontWeight: 700, color: T3, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
@@ -140,7 +140,7 @@ export default function ExecutiveDepartureBrief() {
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, color: T4, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-          <span style={{ width: 5, height: 5, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 6px #3BAF8A' }} />
+          <span style={{ width: 5, height: 5, background: '#3BAF8A', borderRadius: 0, display: 'inline-block', boxShadow: '0 0 6px #3BAF8A' }} />
           Executive Brief · Confidential
         </div>
       </header>
@@ -274,7 +274,7 @@ export default function ExecutiveDepartureBrief() {
                     display: 'flex', alignItems: 'center', gap: 6,
                     animation: active ? 'pulse-node 1.5s infinite' : 'none',
                   }}>
-                    {active && <span style={{ width: 6, height: 6, background: '#EF4444', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 8px #EF4444' }} />}
+                    {active && <span style={{ width: 6, height: 6, background: '#EF4444', borderRadius: 0, display: 'inline-block', boxShadow: '0 0 8px #EF4444' }} />}
                     {label}
                   </div>
                 ))}
@@ -315,7 +315,7 @@ export default function ExecutiveDepartureBrief() {
               <div style={{ fontSize: 12, color: T3, marginTop: 5, fontWeight: 500 }}>170 playbooks evaluated · 1 matched at 94% confidence · 12 leadership continuity variants available</div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', border: '1px solid rgba(43,138,110,0.35)', padding: '7px 14px', borderRadius: 0 }}>
-              <span style={{ width: 6, height: 6, background: TEAL, borderRadius: '50%' }} />
+              <span style={{ width: 6, height: 6, background: TEAL, borderRadius: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Pre-Staged · Ready</span>
             </div>
           </div>
@@ -346,11 +346,11 @@ export default function ExecutiveDepartureBrief() {
                   display: 'inline-flex', alignItems: 'center', gap: 14,
                   background: GOLD_GRAD, color: '#0A0F2E', border: 'none', borderRadius: 0,
                   padding: '20px 56px', fontSize: 16, fontWeight: 800, cursor: 'pointer',
-                  letterSpacing: 0.5, boxShadow: `0 0 60px rgba(201,168,76,0.35)`,
+                  letterSpacing: 0.5,
                   transition: 'all 0.2s ease',
                 }}
-                onMouseOver={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = `0 8px 60px rgba(201,168,76,0.5)`; }}
-                onMouseOut={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = `0 0 60px rgba(201,168,76,0.35)`; }}
+                onMouseOver={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; }}
+                onMouseOut={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
               >
                 <Zap size={18} />
                 ACTIVATE PLAYBOOK
@@ -370,7 +370,7 @@ export default function ExecutiveDepartureBrief() {
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.35)', padding: '10px 20px', borderRadius: 0 }}>
-                  <span style={{ width: 7, height: 7, background: TEAL, borderRadius: '50%', display: 'inline-block', boxShadow: `0 0 8px ${TEAL}`, animation: timerRunning ? 'pulse-node 1s infinite' : 'none' }} />
+                  <span style={{ width: 7, height: 7, background: TEAL, borderRadius: 0, display: 'inline-block', boxShadow: `0 0 8px ${TEAL}`, animation: timerRunning ? 'pulse-node 1s infinite' : 'none' }} />
                   <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                     {phase === 'complete' ? 'Execution Complete' : 'Deploying...'}
                   </span>
@@ -524,11 +524,11 @@ export default function ExecutiveDepartureBrief() {
                 display: 'inline-flex', alignItems: 'center', gap: 12,
                 background: GOLD_GRAD, color: '#0A0F2E', border: 'none', borderRadius: 0,
                 padding: '18px 48px', fontSize: 15, fontWeight: 800, cursor: 'pointer',
-                letterSpacing: 0.4, boxShadow: `0 0 40px rgba(201,168,76,0.3)`,
+                letterSpacing: 0.4,
                 transition: 'all 0.2s ease',
               }}
-              onMouseOver={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = `0 8px 40px rgba(201,168,76,0.45)`; }}
-              onMouseOut={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = `0 0 40px rgba(201,168,76,0.3)`; }}
+              onMouseOver={e => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; }}
+              onMouseOut={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
             >
               Request Executive Pilot
               <ArrowRight size={16} />
@@ -541,7 +541,7 @@ export default function ExecutiveDepartureBrief() {
           {/* Footer */}
           <div style={{ marginTop: 72, paddingTop: 36, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 10 }}>
-              <div style={{ width: 22, height: 22, borderRadius: '50%', border: `1px solid rgba(201,168,76,0.4)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 22, height: 22, borderRadius: 0, border: `1px solid rgba(201,168,76,0.4)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <span style={{ ...CG, fontSize: 9, fontWeight: 700, color: 'rgba(201,168,76,0.6)' }}>VM</span>
               </div>
               <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', fontWeight: 600 }}>VaughnMartin Readiness OS</span>

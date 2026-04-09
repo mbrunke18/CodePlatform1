@@ -43,7 +43,7 @@ export function ExecutionDividend({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
       <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 20, display: 'flex', alignItems: 'center', gap: 16, fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
-        <div style={{ width: 44, height: 44, borderRadius: '50%', background: `${TEAL}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div style={{ width: 44, height: 44, borderRadius: 0, background: `${TEAL}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <TrendingUp size={20} color={TEAL} />
         </div>
         <div style={{ flex: 1 }}>

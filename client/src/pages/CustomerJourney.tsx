@@ -307,9 +307,7 @@ export default function CustomerJourney() {
             <Card className="bg-[#0A0F2E] border-none relative overflow-hidden">
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
               <CardContent className="p-16 text-center relative z-10">
-                <div className="w-16 h-16 bg-[#C9A84C] flex items-center justify-center mx-auto mb-8">
-                  <Award className="h-8 w-8 text-[#0A0F2E]" />
-                </div>
+                <div style={{ width: 48, height: 1, background: '#C9A84C', margin: '0 auto 32px' }} />
                 <h3 className="text-3xl font-bold text-white mb-4" style={CG}>
                   Ready to Start Your Journey?
                 </h3>

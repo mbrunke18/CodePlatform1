@@ -179,7 +179,7 @@ function PulseOrb({ color, size = 14, animate: shouldAnimate = true }: { color: 
       {shouldAnimate && (
         <motion.span
           style={{
-            position: 'absolute', inset: 0, borderRadius: '50%',
+            position: 'absolute', inset: 0, borderRadius: 0,
             background: color, opacity: 0.4,
           }}
           animate={{ scale: [1, 1.9, 1], opacity: [0.4, 0, 0.4] }}
@@ -187,7 +187,7 @@ function PulseOrb({ color, size = 14, animate: shouldAnimate = true }: { color: 
         />
       )}
       <span style={{
-        position: 'absolute', inset: 0, borderRadius: '50%', background: color,
+        position: 'absolute', inset: 0, borderRadius: 0, background: color,
       }} />
     </span>
   );
@@ -448,12 +448,12 @@ export default function CommandTower() {
       {/* Ambient glow orbs */}
       <div style={{
         position: 'fixed', top: '-200px', right: '-100px', width: 700, height: 700,
-        borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.09) 0%, transparent 70%)',
+        borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.09) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
       <div style={{
         position: 'fixed', bottom: '-200px', left: '-100px', width: 600, height: 600,
-        borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%)',
+        borderRadius: 0, background: 'radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -471,7 +471,7 @@ export default function CommandTower() {
           {/* Left: Identity */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{
-              width: 40, height: 40, borderRadius: '50%',
+              width: 40, height: 40, borderRadius: 0,
               border: `2px solid ${GOLD}`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               background: 'rgba(201,168,76,0.1)',

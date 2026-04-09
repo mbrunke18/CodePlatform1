@@ -204,13 +204,9 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             flexDirection: 'column',
           }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 40px rgba(10,15,46,0.14), 0 2px 10px rgba(10,15,46,0.08)`;
-            (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
             (e.currentTarget as HTMLElement).style.borderColor = cat.accent;
           }}
           onMouseLeave={e => {
-            (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-            (e.currentTarget as HTMLElement).style.transform = 'none';
             (e.currentTarget as HTMLElement).style.borderColor = cat.border;
           }}
         >
@@ -297,7 +293,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
   const renderCategory = (label: string, desc: string, roles: RoleConfig[], cat: typeof CATEGORY_CONFIG[keyof typeof CATEGORY_CONFIG]) => (
     <div style={{ marginBottom: 48 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
-        <div style={{ width: 10, height: 10, borderRadius: '50%', background: cat.accent, boxShadow: `0 0 8px ${cat.accent}` }} />
+        <div style={{ width: 10, height: 10, borderRadius: 0, background: cat.accent, boxShadow: `0 0 8px ${cat.accent}` }} />
         <div>
           <span style={{ fontSize: 11, fontWeight: 800, color: cat.accent, letterSpacing: '0.22em', textTransform: 'uppercase' }}>{label}</span>
           <span style={{ fontSize: 11, color: '#9CA3AF', marginLeft: 10 }}>{desc}</span>
@@ -320,7 +316,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', maxWidth: 760, margin: '0 auto' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 14px', marginBottom: 20 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} className="animate-pulse" />
+              <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD }} className="animate-pulse" />
               <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
             <h1 style={{ ...CG, fontSize: 44, fontWeight: 700, color: '#FFFFFF', marginBottom: 14, lineHeight: 1.15 }}>
@@ -371,7 +367,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                     {i < 5 && (
                       <div style={{ position: 'absolute', top: 20, left: '50%', width: '100%', height: 1, background: 'linear-gradient(90deg, #E8E4DC, transparent)', zIndex: 0 }} />
                     )}
-                    <div style={{ width: 40, height: 40, borderRadius: '50%', background: `${item.color}12`, border: `2px solid ${item.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 1, marginBottom: 8 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 0, background: `${item.color}12`, border: `2px solid ${item.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 1, marginBottom: 8 }}>
                       <Icon size={16} style={{ color: item.color }} />
                     </div>
                     <div style={{ fontSize: 7, fontWeight: 800, color: item.color, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 3 }}>Step {item.step}</div>
@@ -382,7 +378,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               })}
             </div>
             <div style={{ marginTop: 18, padding: '12px 18px', background: '#F8F7F4', borderRadius: 0, border: '1px solid #E8E4DC', display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD, flexShrink: 0 }} className="animate-pulse" />
+              <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD, flexShrink: 0 }} className="animate-pulse" />
               <p style={{ fontSize: 12, color: '#374151', margin: 0, lineHeight: 1.5 }}>
                 <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your playbook, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
               </p>

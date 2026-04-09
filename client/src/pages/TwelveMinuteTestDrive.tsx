@@ -99,7 +99,7 @@ function fmtSecs(s: number): string {
 function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
   return (
     <div style={{
-      width: 32, height: 32, borderRadius: '50%', border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`,
+      width: 32, height: 32, borderRadius: 0, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`,
       background: done ? TEAL : active ? GOLD : 'transparent',
       display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
       fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)',
@@ -302,7 +302,7 @@ export default function TwelveMinuteTestDrive() {
 
             {loadingBrief ? (
               <div style={{ textAlign: 'center', padding: '80px 0' }}>
-                <div style={{ display: 'inline-block', width: 40, height: 40, border: `3px solid ${GOLD}`, borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                <div style={{ display: 'inline-block', width: 40, height: 40, border: `3px solid ${GOLD}`, borderTopColor: 'transparent', borderRadius: 0, animation: 'spin 0.8s linear infinite' }} />
                 <p style={{ color: 'rgba(255,255,255,0.5)', marginTop: 16, fontSize: 13 }}>GPT-4o generating your execution brief…</p>
                 <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
               </div>
@@ -381,17 +381,17 @@ export default function TwelveMinuteTestDrive() {
               <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 8 }}>
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Notification Status:</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 0, border: '2px solid #D1D5DB' }} />
                   <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>Queued — not yet sent</span>
                 </div>
                 <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.2)' }} />
+                  <div style={{ width: 10, height: 10, borderRadius: 0, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.2)' }} />
                   <span style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>Notified — alert sent to role</span>
                 </div>
                 <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <div style={{ width: 10, height: 10, borderRadius: '50%', background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7, color: '#fff', fontWeight: 700 }}>✓</div>
+                  <div style={{ width: 10, height: 10, borderRadius: 0, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 7, color: '#fff', fontWeight: 700 }}>✓</div>
                   <span style={{ fontSize: 11, color: TEAL_LT, fontWeight: 600 }}>Acknowledged — role confirmed receipt</span>
                 </div>
               </div>
@@ -428,11 +428,11 @@ export default function TwelveMinuteTestDrive() {
                           {/* Status icon */}
                           <div style={{ flexShrink: 0, marginTop: 2 }}>
                             {isDone ? (
-                              <div style={{ width: 20, height: 20, borderRadius: '50%', background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                              <div style={{ width: 20, height: 20, borderRadius: 0, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
                             ) : isActive ? (
-                              <div style={{ width: 20, height: 20, borderRadius: '50%', border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'pulse 1.2s ease-in-out infinite' }} />
+                              <div style={{ width: 20, height: 20, borderRadius: 0, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'pulse 1.2s ease-in-out infinite' }} />
                             ) : (
-                              <div style={{ width: 20, height: 20, borderRadius: '50%', border: '2px solid #D1D5DB' }} />
+                              <div style={{ width: 20, height: 20, borderRadius: 0, border: '2px solid #D1D5DB' }} />
                             )}
                           </div>
                           {/* Content */}

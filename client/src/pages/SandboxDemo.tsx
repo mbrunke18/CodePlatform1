@@ -573,13 +573,7 @@ export default function SandboxDemo() {
               data-testid={`domain-card-${domain.id}`}
             >
               <CardContent className="p-6 text-center">
-                <div 
-                  className={`w-12 h-12 mx-auto mb-4 flex items-center justify-center ${
-                    isSelected ? "bg-[#2B8A6E] text-white" : "bg-[#2B8A6E]/10 text-[#2B8A6E]"
-                  }`}
-                >
-                  <IconComponent className="h-6 w-6" />
-                </div>
+                <div style={{ width: 32, height: 3, background: isSelected ? '#2B8A6E' : '#E8E4DC', margin: '0 auto 16px' }} />
                 <h3 className="font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{domain.name}</h3>
                 <p className="text-xs text-slate-500 font-medium mb-3 leading-relaxed">{domain.description}</p>
                 <Badge 

@@ -207,7 +207,7 @@ export default function ManufacturingSupplierDemo() {
                     <div style={{ minWidth: 110, fontSize: 11, fontWeight: 700, color: status === "Active" ? TEAL : status === "Ready" ? GOLD : "rgba(255,255,255,0.4)" }}>{tier}</div>
                     <div style={{ flex: 1, fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{supplier}</div>
                     <div style={{ minWidth: 80, fontSize: 11, color: "rgba(255,255,255,0.5)", textAlign: "right" }}>Lead: {lead}</div>
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: status === "Active" ? TEAL : status === "Ready" ? GOLD : "rgba(255,255,255,0.2)", flexShrink: 0 }} />
+                    <div style={{ width: 8, height: 8, borderRadius: 0, background: status === "Active" ? TEAL : status === "Ready" ? GOLD : "rgba(255,255,255,0.2)", flexShrink: 0 }} />
                   </div>
                 ))}
               </div>

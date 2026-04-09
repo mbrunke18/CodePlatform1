@@ -87,25 +87,21 @@ export default function MarketingLanding() {
           {/* Primary Conversion Funnel - Try Demo + Start Pilot */}
           <div className="text-center mb-16">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-              <Button 
+              <button 
                 onClick={() => { window.location.href = '/begin'; }}
-                size="lg"
-                className="bg-[#C9A84C] border border-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none transition-all"
+                style={{ background: '#C9A84C', color: '#0A0F2E', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: 13, padding: '20px 48px', border: 'none', cursor: 'pointer', fontFamily: "'Barlow Condensed', sans-serif" }}
                 data-testid="button-try-demo"
               >
-                <Play className="mr-3 h-4 w-4" />
                 Experience 12-Minute Execution
-              </Button>
+              </button>
               
-              <Button 
+              <button 
                 onClick={() => setLocation("/contact")}
-                size="lg"
-                className="bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none transition-all"
+                style={{ background: 'transparent', color: '#fff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: 13, padding: '20px 48px', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer', fontFamily: "'Barlow Condensed', sans-serif" }}
                 data-testid="button-start-pilot"
               >
                 Start Pilot Program
-                <ArrowRight className="ml-3 h-4 w-4" />
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -236,16 +232,12 @@ export default function MarketingLanding() {
             {/* 1. Create Playbook - PROMINENT */}
             <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
               <CardContent className="p-10">
-                <div className="flex items-start gap-6 mb-8">
-                  <div className="w-16 h-16 rounded-none bg-[#0A0F2E] flex items-center justify-center flex-shrink-0">
-                    <Rocket className="w-8 h-8 text-[#C9A84C]" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-serif text-2xl text-[#0A0F2E] mb-3">
-                      Create Strategic Playbook
-                    </h3>
-                    <Badge className="bg-[#C9A84C] text-[#0A0F2E] rounded-none text-[9px] tracking-widest font-bold uppercase px-3 py-1 mb-4">Start Here</Badge>
-                  </div>
+                <div className="mb-8">
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Start Here</div>
+                  <h3 className="font-serif text-2xl text-[#0A0F2E] mb-3">
+                    Create Strategic Playbook
+                  </h3>
+                  <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 8 }} />
                 </div>
                 <p className="text-[#6B7280] mb-8 leading-relaxed">
                   Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, and Review.
@@ -257,9 +249,6 @@ export default function MarketingLanding() {
             {/* 2. AI Intelligence (5 Modules) */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-ai-intelligence">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
-                  <Brain className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
-                </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">AI Intelligence Layer</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   5 specialized AI modules: Pulse, Flux, Prism, Echo, Nova for real-time strategic insights and pattern detection.
@@ -273,9 +262,6 @@ export default function MarketingLanding() {
             {/* 3. 24/7 Monitoring */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-monitoring">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
-                  <Radio className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
-                </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">24/7 Monitoring System</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   Track 12 intelligence signals with AI-powered pattern recognition and proactive alerts tailored to your industry.
@@ -289,9 +275,6 @@ export default function MarketingLanding() {
             {/* 4. Playbook Library */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
-                  <FileText className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
-                </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Playbook Library</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   170 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance.
@@ -305,9 +288,6 @@ export default function MarketingLanding() {
             {/* 5. What-If Analyzer */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-what-if">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
-                  <Layers className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
-                </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">What-If Analyzer</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   Test strategic approaches, simulate outcomes, and optimize execution plans before allocating resources.
@@ -321,9 +301,6 @@ export default function MarketingLanding() {
             {/* 6. Command Center */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-command-center">
               <CardContent className="p-8">
-                <div className="w-14 h-14 rounded-none bg-[#F8F7F4] flex items-center justify-center mb-6 group-hover:bg-[#0A0F2E] group-hover:text-white transition-colors">
-                  <Shield className="w-7 h-7 text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors" />
-                </div>
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Executive Command Center</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   Real-time strategic coordination hub for 12-minute execution. Manage active scenarios and stakeholder alignment.

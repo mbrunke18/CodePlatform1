@@ -50,7 +50,7 @@ export function PageHero({ title, subtitle, badge, eyebrow, actions, size = "md"
         {/* Eyebrow / Badge */}
         {eyebrow && (
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.22)", borderRadius: 0, padding: "4px 14px", marginBottom: 16 }}>
-            <span style={{ width: 5, height: 5, background: GOLD, borderRadius: "50%", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, background: GOLD, borderRadius: 0, display: "inline-block" }} />
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD }}>{eyebrow}</span>
           </div>
         )}

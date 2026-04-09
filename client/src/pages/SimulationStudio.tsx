@@ -102,7 +102,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                     { label: 'Audit Trail', desc: 'Every simulation logged — full decision record' },
                   ].map(({ label, desc }) => (
                     <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <div style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, flexShrink: 0 }} />
+                      <div style={{ width: 5, height: 5, borderRadius: 0, background: GOLD, flexShrink: 0 }} />
                       <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.45)' }}>
                         <span style={{ fontWeight: 700, color: 'rgba(240,237,228,0.75)' }}>{label}</span> — {desc}
                       </span>
@@ -112,7 +112,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '5px 14px', border: '1px solid rgba(43,138,110,0.3)' }}>
-                  <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                  <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: 0, display: 'inline-block' }} />
                   AI Simulator Active
                 </div>
               </div>

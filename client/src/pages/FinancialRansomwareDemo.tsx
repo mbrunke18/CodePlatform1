@@ -161,7 +161,7 @@ export default function FinancialRansomwareDemo() {
                 {regulatoryDeadlines.map(({ window, requirement, severity }) => (
                   <div key={window + requirement} className="flex items-center gap-4 p-3 border border-white/10" style={{ background: "rgba(255,255,255,0.03)" }}>
                     <div style={{ minWidth: 80, fontSize: 12, fontWeight: 700, color: severity === "critical" ? "#EF4444" : GOLD }}>{window}</div>
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: severity === "critical" ? "#EF4444" : GOLD, flexShrink: 0 }} />
+                    <div style={{ width: 8, height: 8, borderRadius: 0, background: severity === "critical" ? "#EF4444" : GOLD, flexShrink: 0 }} />
                     <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{requirement}</div>
                   </div>
                 ))}
@@ -183,7 +183,7 @@ export default function FinancialRansomwareDemo() {
                     <div className="space-y-1.5">
                       {members.map(m => (
                         <div key={m} className="flex items-center gap-2">
-                          <div style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
+                          <div style={{ width: 5, height: 5, borderRadius: 0, background: color, flexShrink: 0 }} />
                           <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{m}</span>
                         </div>
                       ))}
@@ -309,9 +309,7 @@ export default function FinancialRansomwareDemo() {
         {currentAct === "summary" && (
           <div className="max-w-4xl mx-auto space-y-8 text-white">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 mb-4" style={{ background: "rgba(43,138,110,0.2)" }}>
-                <CheckCircle2 className="w-10 h-10" style={{ color: TEAL }} />
-              </div>
+              <div style={{ width: 48, height: 1.5, background: TEAL, margin: '0 auto 16px' }} />
               <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#fff", marginBottom: 6 }}>Demo Complete</h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)" }}>Financial Services Ransomware Response</p>
             </div>
@@ -344,7 +342,7 @@ export default function FinancialRansomwareDemo() {
             {/* Microsoft framing */}
             <div className="border border-white/10 p-6" style={{ background: "rgba(255,255,255,0.03)" }}>
               <div className="flex items-start gap-4">
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: GOLD, flexShrink: 0, marginTop: 6 }} />
+                <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD, flexShrink: 0, marginTop: 6 }} />
                 <div>
                   <p style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 4 }}>Already invested in Microsoft Copilot or Azure OpenAI?</p>
                   <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>

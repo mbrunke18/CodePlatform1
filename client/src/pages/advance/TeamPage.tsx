@@ -87,7 +87,7 @@ export default function TeamPage() {
                   background: idx === 0 ? 'rgba(201,168,76,0.025)' : '#fff',
                 }}>
                   <div style={{
-                    width: 28, height: 28, borderRadius: '50%', display: 'flex', alignItems: 'center',
+                    width: 28, height: 28, borderRadius: 0, display: 'flex', alignItems: 'center',
                     justifyContent: 'center', flexShrink: 0,
                     background: idx === 0 ? GOLD : idx === 1 ? '#C0C0C0' : idx === 2 ? '#CD7F32' : 'rgba(10,15,46,0.08)',
                     color: idx < 3 ? '#fff' : NAVY, fontWeight: 800, fontSize: 11,
@@ -95,7 +95,7 @@ export default function TeamPage() {
                     {idx < 3 ? <Trophy size={12} /> : member.rank}
                   </div>
 
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 0, background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <span style={{ fontSize: 12, fontWeight: 700, color: '#fff' }}>{member.initials}</span>
                   </div>
 

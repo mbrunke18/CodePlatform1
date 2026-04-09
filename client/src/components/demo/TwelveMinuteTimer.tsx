@@ -145,7 +145,7 @@ export default function TwelveMinuteTimer({
                 data-testid={`timeline-event-${event.time}`}
               >
                 <div style={{
-                  position: 'absolute', left: 14, width: 18, height: 18, borderRadius: '50%',
+                  position: 'absolute', left: 14, width: 18, height: 18, borderRadius: 0,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   background: isActive
                     ? isLast ? TEAL_LT : NAVY

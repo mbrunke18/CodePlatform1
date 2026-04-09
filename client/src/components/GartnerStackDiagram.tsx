@@ -52,7 +52,7 @@ export default function GartnerStackDiagram() {
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.35)", padding: "4px 10px" }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} className="animate-pulse" />
+            <div style={{ width: 6, height: 6, borderRadius: 0, background: TEAL }} className="animate-pulse" />
             <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" }}>Not in Gartner's Stack</span>
           </div>
         </div>

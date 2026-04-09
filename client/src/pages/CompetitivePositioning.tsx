@@ -246,7 +246,7 @@ export default function CompetitivePositioning() {
                     ].map((step, i) => (
                       <div key={i} className="flex items-start gap-4">
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 4 }}>
-                          <div style={{ width: 10, height: 10, borderRadius: "50%", background: i === 0 ? "#D1D5DB" : "#E5E7EB", border: `2px solid ${i === 0 ? "#9CA3AF" : "#D1D5DB"}`, flexShrink: 0 }} />
+                          <div style={{ width: 10, height: 10, borderRadius: 0, background: i === 0 ? "#D1D5DB" : "#E5E7EB", border: `2px solid ${i === 0 ? "#9CA3AF" : "#D1D5DB"}`, flexShrink: 0 }} />
                           {i < 5 && <div style={{ width: 1, height: 32, background: "#E5E7EB" }} />}
                         </div>
                         <div style={{ paddingBottom: 16 }}>
@@ -277,7 +277,7 @@ export default function CompetitivePositioning() {
                     ].map((step, i) => (
                       <div key={i} className="flex items-start gap-4">
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 4 }}>
-                          <div style={{ width: 10, height: 10, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                          <div style={{ width: 10, height: 10, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
                           {i < 4 && <div style={{ width: 1, height: 32, background: `rgba(43,138,110,0.25)` }} />}
                         </div>
                         <div style={{ paddingBottom: 16 }}>

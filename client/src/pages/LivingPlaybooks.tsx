@@ -315,10 +315,8 @@ export default function LivingPlaybooks() {
                   { step: "4", title: "Evolve", icon: TrendingUp, desc: "Playbook auto-updates for next execution. Over time, your 12-minute response becomes 8 minutes." },
                 ].map((item, idx) => (
                   <div key={idx} className="relative">
-                    <div style={{ background: GOLD, color: NAVY, ...CG }} className="rounded-none w-10 h-10 flex items-center justify-center mb-4 font-bold text-xl">
-                      {item.step}
-                    </div>
-                    <item.icon className="w-5 h-5 mb-2" style={{ color: GOLD }} />
+                    <div style={{ ...CG, color: GOLD, fontSize: 36, fontWeight: 700, marginBottom: 8, lineHeight: 1 }}>{item.step}</div>
+                    <div style={{ width: 16, height: 1, background: GOLD, marginBottom: 12 }} />
                     <h4 className="font-bold uppercase tracking-wider text-xs mb-2" style={{ color: GOLD }}>{item.title}</h4>
                     <p className="text-sm text-white/70 leading-relaxed">{item.desc}</p>
                     {idx < 3 && (

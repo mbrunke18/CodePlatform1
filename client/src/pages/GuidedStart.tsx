@@ -255,7 +255,7 @@ export default function GuidedStart() {
     return (
       <div style={{ minHeight: '100vh', background: NAVY_BG, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '48px 24px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: '48px 48px', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '5%', left: '50%', transform: 'translateX(-50%)', width: 900, height: 900, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '5%', left: '50%', transform: 'translateX(-50%)', width: 900, height: 900, borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
 
         {/* Top nav escape */}
         <div style={{ position: 'absolute', top: 20, left: 24, right: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 20 }}>
@@ -271,7 +271,7 @@ export default function GuidedStart() {
           {/* Brand */}
           <div style={{ textAlign: 'center', marginBottom: 52 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
-              <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD }} />
+              <div style={{ width: 8, height: 8, borderRadius: 0, background: GOLD }} />
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>VaughnMartin · Readiness OS</span>
             </div>
             <h1 style={{ ...CG, fontSize: 'clamp(30px,5vw,54px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: 14 }}>
@@ -434,7 +434,7 @@ export default function GuidedStart() {
                       ) : isActive ? (
                         <Activity style={{ width: 14, height: 14, color: GOLD }} className="animate-pulse" />
                       ) : (
-                        <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
+                        <div style={{ width: 5, height: 5, borderRadius: 0, background: 'rgba(255,255,255,0.15)' }} />
                       )}
                     </div>
                     <span style={{

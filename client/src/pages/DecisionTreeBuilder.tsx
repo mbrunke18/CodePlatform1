@@ -193,9 +193,7 @@ export default function DecisionTreeBuilder() {
           }} />
           <CardContent className="p-10 relative z-10">
             <div className="flex items-start gap-8">
-              <div className="w-16 h-16 bg-[#C9A84C] rounded-none flex items-center justify-center shrink-0">
-                <BookOpen className="h-8 w-8 text-[#0A0F2E]" />
-              </div>
+              <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
               <div className="space-y-6">
                 <h3 style={CG} className="font-bold text-white text-3xl leading-tight italic">
                   "I'm not thinking about what I'm doing. I prepared all week so I could just react."

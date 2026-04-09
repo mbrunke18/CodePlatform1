@@ -45,9 +45,7 @@ export default function TrialAccess() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "#F8F7F4" }}>
         <div className="max-w-md w-full mx-auto text-center px-8 py-12" style={{ background: "#fff", borderRadius: 0, boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
-          <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(201,168,76,0.12)" }}>
-            <CheckCircle size={32} color={GOLD} />
-          </div>
+          <div style={{ width: 48, height: 1.5, background: GOLD, margin: '0 auto 24px' }} />
           <h1 className="text-2xl font-bold mb-3" style={{ color: NAVY }}>Check Your Email</h1>
           <p className="text-sm mb-2" style={{ color: "#374151" }}>
             Your 48-hour trial activation link has been sent to:

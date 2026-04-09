@@ -581,9 +581,7 @@ export default function ExecutiveSimulationDemo() {
             <Card className="max-w-2xl w-full border-2 border-[#0A0F2E] bg-white animate-pulse">
               <CardHeader className="bg-[#141B45] border-b border-[#0A0F2E]/30">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center animate-pulse">
-                    <AlertTriangle className="w-7 h-7 text-[#C9A84C]" />
-                  </div>
+                  <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                   <div>
                     <Badge className="bg-[#C9A84C] text-[#0A0F2E] mb-1">CRITICAL SIGNAL DETECTED</Badge>
                     <CardTitle className="text-xl text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{criticalSignal.title}</CardTitle>

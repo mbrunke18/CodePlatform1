@@ -291,7 +291,7 @@ export default function SituationIntentWizard() {
                 }}
               >
                 <div style={{
-                  width: 24, height: 24, borderRadius: "50%",
+                  width: 24, height: 24, borderRadius: 0,
                   background: isDone ? TEAL : isActive ? GOLD : "rgba(0,0,0,0.06)",
                   display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
                 }}>
@@ -359,7 +359,7 @@ export default function SituationIntentWizard() {
                       }}
                     >
                       <div style={{
-                        width: 8, height: 8, borderRadius: "50%", flexShrink: 0,
+                        width: 8, height: 8, borderRadius: 0, flexShrink: 0,
                         background: form.triggerId === t.id ? GOLD : BORDER,
                       }} />
                       <div style={{ flex: 1 }}>
@@ -490,7 +490,7 @@ export default function SituationIntentWizard() {
                         display: "flex", gap: 10, alignItems: "flex-start",
                       }}
                     >
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", marginTop: 3, flexShrink: 0, background: selected ? TEAL : BORDER }} />
+                      <div style={{ width: 8, height: 8, borderRadius: 0, marginTop: 3, flexShrink: 0, background: selected ? TEAL : BORDER }} />
                       <div>
                         <div style={{ fontSize: 13, fontWeight: 700, color: selected ? TEAL : NAVY, marginBottom: 3 }}>{opt.label}</div>
                         <div style={{ fontSize: 11, color: MUTED, lineHeight: 1.4 }}>{opt.desc}</div>
@@ -620,7 +620,7 @@ export default function SituationIntentWizard() {
                 <div style={{ marginBottom: 16 }}>
                   {form.briefRequirements.map((item, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, marginBottom: 8 }}>
-                      <div style={{ width: 20, height: 20, borderRadius: "50%", background: `${GOLD}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                      <div style={{ width: 20, height: 20, borderRadius: 0, background: `${GOLD}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
                         <span style={{ fontSize: 10, fontWeight: 800, color: GOLD }}>{i + 1}</span>
                       </div>
                       <span style={{ flex: 1, fontSize: 13, color: NAVY, lineHeight: 1.5 }}>{item}</span>
@@ -706,7 +706,7 @@ export default function SituationIntentWizard() {
                   const orient = DECISION_ORIENTATIONS.find(o => o.value === s.decisionOrientation);
                   return (
                     <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: "14px 16px", marginBottom: 10, display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: `${NAVY}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: 0, background: `${NAVY}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <Users size={16} color={NAVY} />
                       </div>
                       <div style={{ flex: 1 }}>
@@ -886,7 +886,7 @@ export default function SituationIntentWizard() {
                 </div>
                 {form.primaryDataPointLabels.map((label, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                    <div style={{ width: 6, height: 6, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
                     <span style={{ fontSize: 13, color: NAVY }}>{label}</span>
                   </div>
                 ))}

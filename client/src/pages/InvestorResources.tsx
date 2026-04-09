@@ -57,7 +57,7 @@ function McKinseyResearchSection() {
         {/* Attribution pill */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "5px 16px" }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 5, height: 5, borderRadius: 0, background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
             <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.5)", textTransform: "uppercase" as const }}>
               McKinsey &amp; Company · Enterprise Architecture Synthesis 2025–2026
             </span>
@@ -103,7 +103,7 @@ function McKinseyResearchSection() {
         {/* MGI Nov 2025 */}
         <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 0, overflow: "hidden" as const, marginBottom: 40 }}>
           <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_TEAL, display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 5, height: 5, borderRadius: 0, background: IR_TEAL, display: "inline-block", flexShrink: 0 }} />
             <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
               McKinsey Global Institute · Skill Partnerships in the Age of AI · November 2025
             </span>
@@ -162,7 +162,7 @@ function McKinseyResearchSection() {
         {/* WEF × Accenture */}
         <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 0, overflow: "hidden" as const, marginBottom: 32 }}>
           <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 5, height: 5, borderRadius: 0, background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
             <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
               World Economic Forum × Accenture · Organizational Transformation in the Age of AI · March 2026
             </span>

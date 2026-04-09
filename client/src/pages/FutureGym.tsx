@@ -469,10 +469,7 @@ export default function FutureGym() {
                           <CheckCircle className="w-5 h-5" style={{ color: cert.color }} />
                         </div>
                       )}
-                      <div className="w-12 h-12 flex items-center justify-center mb-4"
-                        style={{ background: `${cert.color}12`, opacity: cert.earned ? 1 : 0.5 }}>
-                        <Icon className="w-6 h-6" style={{ color: cert.color }} />
-                      </div>
+                      <div style={{ width: 32, height: 3, background: cert.color, opacity: cert.earned ? 1 : 0.4, marginBottom: 16 }} />
                       <div className="font-bold text-[#0A0F2E] mb-1" style={{ ...CG, fontSize: 18, opacity: cert.earned ? 1 : 0.6 }}>{cert.name}</div>
                       <div className="text-sm text-[#6B7280] mb-3" style={{ opacity: cert.earned ? 1 : 0.7 }}>{cert.desc}</div>
                       <div className="flex items-center justify-between">

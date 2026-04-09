@@ -67,8 +67,8 @@ export default function HowItWorks() {
       {/* ── HERO ── */}
       <section style={{ background: NAVY_BG, minHeight: "56vh", display: "flex", alignItems: "center", padding: "120px 56px 80px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}17 1px, transparent 1px), linear-gradient(90deg, ${GOLD}17 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "10%", right: "-10%", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}38 0%, transparent 70%)`, pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: "-15%", left: "5%", width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, ${GOLD}28 0%, transparent 70%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "10%", right: "-10%", width: 700, height: 700, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}38 0%, transparent 70%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: "-15%", left: "5%", width: 600, height: 600, borderRadius: 0, background: `radial-gradient(circle, ${GOLD}28 0%, transparent 70%)`, pointerEvents: "none" }} />
         <div className="max-w-6xl mx-auto w-full" style={{ position: "relative", zIndex: 1 }}>
           <SectionLabel text="Your Complete Execution Roadmap" color={GOLD_LIGHT} />
           <h1 style={{ ...CG, fontSize: "clamp(40px, 5vw, 68px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 24, maxWidth: 800 }}>
@@ -236,7 +236,7 @@ export default function HowItWorks() {
       {/* ── 03: CUSTOMIZATION ── */}
       <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 800, height: 800, borderRadius: "50%", background: `radial-gradient(circle, ${TEAL}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 800, height: 800, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           <SectionLabel text="03 — Playbook Customization" color={GOLD_LIGHT} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 64 }}>
@@ -431,7 +431,7 @@ export default function HowItWorks() {
               { time: "12:00", label: "Full Coordinated Execution", color: GOLD_LIGHT, desc: "Cross-functional teams executing in parallel. Real-time progress tracked. Every action logged. The organization is running — not preparing to run." }
             ].map((step, i) => (
               <div key={i} style={{ position: "relative", paddingLeft: 48, paddingBottom: i < 4 ? 40 : 0 }}>
-                <div style={{ position: "absolute", left: 4, top: 8, width: 8, height: 8, background: step.color, borderRadius: "50%" }} />
+                <div style={{ position: "absolute", left: 4, top: 8, width: 8, height: 8, background: step.color, borderRadius: 0 }} />
                 <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 8 }}>
                   <span style={{ ...CG, fontSize: 28, fontWeight: 600, color: step.color, minWidth: 60 }}>{step.time}</span>
                   <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#fff" }}>{step.label}</span>
@@ -672,7 +672,7 @@ export default function HowItWorks() {
       {/* ── FINAL CTA ── */}
       <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: "-20%", right: "-5%", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${GOLD}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: "-20%", right: "-5%", width: 700, height: 700, borderRadius: 0, background: `radial-gradient(circle, ${GOLD}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div className="max-w-4xl mx-auto" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
           <SectionLabel text="Ready to Start" color={GOLD_LIGHT} />
           <h2 style={{ ...CG, fontSize: "clamp(36px, 5vw, 60px)", fontWeight: 600, color: "#fff", marginBottom: 20 }}>

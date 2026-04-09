@@ -156,7 +156,7 @@ export default function WhyExecutionOS() {
         {/* ── HERO ──────────────────────────────────────── */}
         <section style={{ background: NAVY, padding: "80px 48px 64px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
-          <div style={{ position: "absolute", top: "20%", right: "10%", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.12), transparent 70%)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: "20%", right: "10%", width: 600, height: 600, borderRadius: 0, background: "radial-gradient(circle, rgba(43,138,110,0.12), transparent 70%)", pointerEvents: "none" }} />
           <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1, textAlign: "center" }}>
             <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-[#C9A84C]/40 text-[10px] font-bold tracking-widest uppercase" style={{ color: GOLD, background: "rgba(201,168,76,0.08)" }}>
               Honest Competitive Analysis · Enterprise Positioning

@@ -538,7 +538,7 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
               >
                 {done
                   ? <CheckCircle2 size={13} color={TEAL} />
-                  : <span style={{ width: 18, height: 18, borderRadius: '50%', background: current ? GOLD : '#CBD5E1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: current ? NAVY : '#94A3B8', flexShrink: 0 }}>{i + 1}</span>
+                  : <span style={{ width: 18, height: 18, borderRadius: 0, background: current ? GOLD : '#CBD5E1', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: current ? NAVY : '#94A3B8', flexShrink: 0 }}>{i + 1}</span>
                 }
                 <span style={{ fontSize: 12, fontWeight: 700, color: current ? '#F0EDE4' : done ? TEAL : '#94A3B8' }}>
                   {STAGE_LABELS[s].split('. ')[1]}
@@ -664,7 +664,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
         {scenario.detection.signals.map(({ label, detail }, i) => (
           <div key={i} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0, padding: '18px 20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, flexShrink: 0 }} />
+              <div style={{ width: 6, height: 6, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
               <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{label}</span>
             </div>
             <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>{detail}</p>
@@ -1001,10 +1001,9 @@ export default function ExecutiveScenarioSuite() {
                   background: 'white', border: '1px solid #E2E8F0', borderTop: `4px solid ${scenario.color}`,
                   borderRadius: 0, padding: '28px 32px', cursor: 'pointer',
                   transition: 'all 0.2s ease',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
-                }}
-                onMouseOver={e => { const el = e.currentTarget; el.style.boxShadow = '0 8px 32px rgba(0,0,0,0.10)'; el.style.transform = 'translateY(-2px)'; }}
-                onMouseOut={e => { const el = e.currentTarget; el.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)'; el.style.transform = 'translateY(0)'; }}
+                  }}
+                onMouseOver={e => { const el = e.currentTarget; el.style.borderTopColor = '#C9A84C'; }}
+                onMouseOut={e => { const el = e.currentTarget; el.style.borderTopColor = (el as HTMLElement).getAttribute('data-color') || ''; }}
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
                   <div>

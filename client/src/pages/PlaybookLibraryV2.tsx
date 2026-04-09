@@ -277,9 +277,7 @@ function CompoundDisruptionSection() {
           return (
             <div className="mt-5 border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: "#E8E4DC" }}>
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-10 h-10 bg-white border flex items-center justify-center shrink-0" style={{ borderColor: "#E8E4DC" }}>
-                  <Icon className="h-5 w-5" style={{ color: indicatorColor }} />
-                </div>
+                <div style={{ width: 3, alignSelf: 'stretch', background: indicatorColor, flexShrink: 0 }} />
                 <div className="flex-1">
                   <h4 style={{ ...CG_LOCAL, color: "#0A0F2E" }} className="text-base font-bold mb-1">{scenario.scenario}</h4>
                   <p style={{ color: "#6B7280" }} className="text-sm leading-relaxed">{scenario.description}</p>
@@ -446,7 +444,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               Built from 20+ years of Fortune 500 transformation. Use the filters on the left to narrow by domain, pillar, or urgency.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
+              <span style={{ width: 4, height: 4, borderRadius: 0, background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
               <span style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace' }}>
                 Aligned with WEF AI Transformation Framework · Focus Area 4: Predictive, AI-Powered Strategic Planning
               </span>
@@ -475,7 +473,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                       letterSpacing: "0.06em",
                     }}
                   >
-                    <span style={{ width: 7, height: 7, borderRadius: "50%", background: p.color, flexShrink: 0, display: "inline-block" }} />
+                    <span style={{ width: 7, height: 7, borderRadius: 0, background: p.color, flexShrink: 0, display: "inline-block" }} />
                     {p.label}
                   </button>
                 );
@@ -592,7 +590,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pilot Access Required</span>
                       </div>
                       <div className="flex-1 flex flex-col items-center justify-center py-4 text-center">
-                        <div style={{ width: 40, height: 40, borderRadius: "50%", background: "rgba(10,15,46,0.06)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                        <div style={{ width: 40, height: 40, borderRadius: 0, background: "rgba(10,15,46,0.06)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
                           <Lock className="h-5 w-5" style={{ color: "#9CA3AF" }} />
                         </div>
                         <p style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 4 }}>Full Playbook Access</p>

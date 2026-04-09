@@ -156,9 +156,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           <div className="bg-[#0A0F2E] text-white p-10 border border-[#E8E4DC] mb-10">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="flex items-center space-x-6">
-                <div className="w-16 h-16 bg-white/10 flex items-center justify-center border border-white/10">
-                  <BookOpen className="w-8 h-8 text-[#C9A84C]" />
-                </div>
+                <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <div className="h-4 w-[2px] bg-[#C9A84C]"></div>

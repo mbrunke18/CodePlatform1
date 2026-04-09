@@ -679,16 +679,12 @@ export default function NewUserJourney() {
                   </div>
 
                   <div className="bg-gray-50 p-4 border border-gray-200">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gray-50 flex items-center justify-center">
-                        <Sparkles className="h-5 w-5 text-gray-800" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-800">
-                          You'll have access to all <span className="text-gray-900 font-semibold">170 playbooks</span> after setup.
-                          These are just recommended starting points.
-                        </p>
-                      </div>
+                    <div className="flex items-start gap-3">
+                      <div style={{ width: 3, height: 40, background: '#C9A84C', flexShrink: 0, marginTop: 4 }} />
+                      <p className="text-sm text-gray-800">
+                        You'll have access to all <span className="text-gray-900 font-semibold">170 playbooks</span> after setup.
+                        These are just recommended starting points.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -732,13 +728,7 @@ export default function NewUserJourney() {
                           <CardContent className="p-4">
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-4">
-                                <div 
-                                  className="w-10 h-10 flex items-center justify-center bg-[#0A0F2E]/10"
-                                >
-                                  <Radio 
-                                    className="h-5 w-5 text-[#0A0F2E]" 
-                                  />
-                                </div>
+                                <div style={{ width: 3, alignSelf: 'stretch', background: isEnabled ? '#2B8A6E' : '#E8E4DC', flexShrink: 0 }} />
                                 <div>
                                   <div className="flex items-center gap-2">
                                     <h3 className="font-medium text-gray-900">{category.name}</h3>
@@ -791,9 +781,7 @@ export default function NewUserJourney() {
                     <Card className="bg-gray-50 border-[#E8E4DC]">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 bg-[#0A0F2E]/10 flex items-center justify-center flex-shrink-0">
-                            <Target className="h-6 w-6 text-[#0A0F2E]" />
-                          </div>
+                          <div style={{ width: 3, alignSelf: 'stretch', background: '#0A0F2E', flexShrink: 0 }} />
                           <div className="flex-1">
                             <h3 className="font-semibold text-gray-900 mb-1">Future Readiness Index™ Target</h3>
                             <p className="text-sm text-gray-800 mb-4">
@@ -823,9 +811,7 @@ export default function NewUserJourney() {
                     <Card className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-none bg-[#2B8A6E]/10 flex items-center justify-center flex-shrink-0">
-                            <Timer className="h-6 w-6 text-[#2B8A6E]" />
-                          </div>
+                          <div style={{ width: 3, alignSelf: 'stretch', background: '#2B8A6E', flexShrink: 0 }} />
                           <div className="flex-1">
                             <h3 className="font-semibold text-[#0A0F2E] mb-1">Decision Velocity Target</h3>
                             <p className="text-sm text-[#6B7280] mb-4">
@@ -854,9 +840,7 @@ export default function NewUserJourney() {
                     <Card className="bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-none bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0">
-                            <Shield className="h-6 w-6 text-[#C9A84C]" />
-                          </div>
+                          <div style={{ width: 3, background: '#C9A84C', alignSelf: 'stretch', flexShrink: 0 }} />
                           <div className="flex-1">
                             <h3 className="font-semibold text-[#0A0F2E] mb-1">Playbook Coverage Target</h3>
                             <p className="text-sm text-[#6B7280] mb-4">
@@ -1019,9 +1003,7 @@ export default function NewUserJourney() {
                   <Card className="bg-[#2B8A6E]/5 border-[#2B8A6E]/30 rounded-none">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-none bg-[#2B8A6E]/10 flex items-center justify-center flex-shrink-0">
-                          <TrendingUp className="h-6 w-6 text-[#2B8A6E]" />
-                        </div>
+                        <div style={{ width: 3, background: '#2B8A6E', alignSelf: 'stretch', flexShrink: 0 }} />
                         <div className="flex-1">
                           <h3 className="font-semibold text-[#0A0F2E] mb-2">Projected Annual Value</h3>
                           <p className="text-sm text-[#6B7280] mb-4">

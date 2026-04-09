@@ -267,9 +267,6 @@ export default function ProductTour() {
           transition={{ delay: 0.3 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
-            <Clock className="w-12 h-12 text-[#C9A84C]" />
-          </div>
           <p className="text-2xl font-bold text-[#0A0F2E]">30 Days</p>
           <p className="text-[#0A0F2E] font-medium">To Mobilize a Response</p>
         </motion.div>
@@ -279,9 +276,6 @@ export default function ProductTour() {
           transition={{ delay: 0.5 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
-            <AlertTriangle className="w-12 h-12 text-[#C9A84C]" />
-          </div>
           <p className="text-2xl font-bold text-[#0A0F2E]">15+ Meetings</p>
           <p className="text-[#0A0F2E] font-medium">To Align Stakeholders</p>
         </motion.div>
@@ -291,9 +285,6 @@ export default function ProductTour() {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <div className="w-24 h-24 mx-auto bg-[#C9A84C]/10 rounded-none flex items-center justify-center mb-4">
-            <TrendingUp className="w-12 h-12 text-[#C9A84C] rotate-180" />
-          </div>
           <p className="text-2xl font-bold text-[#0A0F2E]">$10-50M</p>
           <p className="text-[#0A0F2E] font-medium">Annual Revenue at Risk</p>
         </motion.div>

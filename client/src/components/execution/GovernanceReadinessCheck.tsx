@@ -182,7 +182,7 @@ export function GovernanceReadinessCheck({
                     <div style={{ marginTop: 6, flexShrink: 0 }}>
                       {isYes && <CheckCircle2 size={18} color={TEAL} />}
                       {isNo && <AlertTriangle size={18} color='#D97706' />}
-                      {state === 'unanswered' && <div style={{ width: 18, height: 18, borderRadius: '50%', border: '2px solid #E8E4DC' }} />}
+                      {state === 'unanswered' && <div style={{ width: 18, height: 18, borderRadius: 0, border: '2px solid #E8E4DC' }} />}
                     </div>
                   </div>
                 </div>

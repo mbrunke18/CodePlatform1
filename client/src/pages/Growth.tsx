@@ -246,7 +246,7 @@ export default function Growth() {
             }}
           >
             <div style={{
-              width: 20, height: 20, borderRadius: "50%", background: "#fff",
+              width: 20, height: 20, borderRadius: 0, background: "#fff",
               position: "absolute", top: 3, left: annual ? 25 : 3, transition: "left 0.2s"
             }} />
           </button>
@@ -300,7 +300,7 @@ export default function Growth() {
                   {/* Tier name & headline */}
                   <div style={{ marginBottom: 24 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                      <div style={{ width: 8, height: 8, borderRadius: "50%", background: tier.color, flexShrink: 0 }} />
+                      <div style={{ width: 8, height: 8, borderRadius: 0, background: tier.color, flexShrink: 0 }} />
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: tier.color }}>
                         {tier.name}
                       </span>
@@ -336,7 +336,7 @@ export default function Growth() {
                       )}
                       {tier.guarantee && (
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, background: `rgba(43,138,110,0.08)`, border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 0, padding: "3px 10px" }}>
-                          <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL }} />
+                          <div style={{ width: 5, height: 5, borderRadius: 0, background: TEAL }} />
                           <span style={{ fontSize: 10, color: TEAL, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>30-day guarantee</span>
                         </div>
                       )}
@@ -446,7 +446,7 @@ export default function Growth() {
         <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ flex: "1 1 400px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+              <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Built-In Pilot</span>
             </div>
             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(24px,3vw,34px)", color: NAVY, marginBottom: 12, lineHeight: 1.15 }}>
@@ -467,7 +467,7 @@ export default function Growth() {
               { label: "30-day money-back", sub: "If it doesn't deliver, walk away" },
             ].map((item) => (
               <div key={item.label} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{ width: 20, height: 20, borderRadius: "50%", background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+                <div style={{ width: 20, height: 20, borderRadius: 0, background: TEAL, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </div>
                 <div>
@@ -566,7 +566,7 @@ export default function Growth() {
             {TIERS.filter(t => t.id !== "enterprise").map((tier) => (
               <div key={tier.id} style={{ border: `1px solid ${tier.highlight ? GOLD : "#E8E4DC"}`, borderRadius: 0, padding: "28px 24px", background: tier.highlight ? `rgba(201,168,76,0.03)` : "#fff" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: tier.color, flexShrink: 0 }} />
+                  <div style={{ width: 8, height: 8, borderRadius: 0, background: tier.color, flexShrink: 0 }} />
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: tier.color }}>{tier.name}</span>
                   {tier.annual && <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>${(tier.annual / 1000).toFixed(0)}K/yr</span>}
                 </div>
@@ -575,7 +575,7 @@ export default function Growth() {
             ))}
             <div style={{ border: `1px solid #E8E4DC`, borderRadius: 0, padding: "28px 24px", background: `rgba(10,15,46,0.02)` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: NAVY, flexShrink: 0 }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: NAVY, flexShrink: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: NAVY }}>Enterprise</span>
                 <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>$250K+/yr</span>
               </div>

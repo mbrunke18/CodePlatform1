@@ -324,9 +324,8 @@ export default function ReadinessAssessment() {
                   { num: 3, label: "Get Your Score", desc: "Gaps, benchmarks & next steps", icon: BarChart3 },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className="w-12 h-12 bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-3">
-                      <step.icon className="w-5 h-5 text-[#C9A84C]" />
-                    </div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: '#C9A84C', lineHeight: 1, marginBottom: 6 }}>{step.num}</div>
+                    <div style={{ width: 16, height: 1, background: '#C9A84C', margin: '0 auto 8px' }} />
                     <div className="text-sm font-semibold text-white">{step.label}</div>
                     <div className="text-xs text-white/60 mt-1">{step.desc}</div>
                   </div>

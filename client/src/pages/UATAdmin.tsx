@@ -208,9 +208,7 @@ export default function UATAdmin() {
         <div className="bg-white dark:bg-white/5 border-b border-[#E8E4DC] dark:border-white/10 p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center">
-                <Settings className="h-6 w-6 text-[#C9A84C] dark:text-[#0A0F2E]" />
-              </div>
+              <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
               <div>
                 <h1 className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="uat-admin-title">
                   UAT Administration Center

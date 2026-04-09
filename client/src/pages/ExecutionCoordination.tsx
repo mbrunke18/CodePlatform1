@@ -187,9 +187,7 @@ export default function ExecutionCoordination() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 bg-[#0A0F2E]/10 flex items-center justify-center">
-              <Zap className="h-6 w-6 text-[#C9A84C]" />
-            </div>
+            <div style={{ width: 4, height: 48, background: '#C9A84C', flexShrink: 0 }} />
             <div>
               <h1 style={CG} className="text-4xl font-bold text-[#0A0F2E]" data-testid="page-title">
                 Execution Coordination
@@ -252,9 +250,7 @@ export default function ExecutionCoordination() {
           <CardContent className="p-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="flex items-center gap-6">
-                <div className={`w-16 h-16 ${currentStyle.icon} rounded-none flex items-center justify-center flex-shrink-0`}>
-                  <Zap className="h-8 w-8 text-white" />
-                </div>
+                <div style={{ width: 4, alignSelf: 'stretch', flexShrink: 0 }} className={currentStyle.icon} />
                 <div>
                   <h2 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-1">
                     Game Day Execution
@@ -332,9 +328,7 @@ export default function ExecutionCoordination() {
           ].map((m, i) => (
             <Card key={i} className="bg-white border-[#E8E4DC] rounded-none">
               <CardContent className="p-6 flex items-center gap-4">
-                <div className="w-10 h-10 bg-[#F8F7F4] rounded-none flex items-center justify-center">
-                  <m.icon style={{ color: m.color }} className="h-5 w-5" />
-                </div>
+                <div style={{ width: 3, alignSelf: 'stretch', background: m.color, flexShrink: 0 }} />
                 <div>
                   <div style={CG} className="text-2xl font-bold text-[#0A0F2E]" data-testid={m.tid}>
                     {m.value}
@@ -483,9 +477,7 @@ export default function ExecutionCoordination() {
         <Card className="bg-white border border-[#E8E4DC] rounded-none">
           <CardContent className="p-8">
             <div className="flex items-start gap-6">
-              <div className="w-12 h-12 bg-[#0A0F2E]/10 flex items-center justify-center flex-shrink-0">
-                <Clock className="h-6 w-6 text-[#C9A84C]" />
-              </div>
+              <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
               <div>
                 <h3 style={CG} className="text-xl font-bold text-[#0A0F2E] mb-2">
                   Industry Comparison

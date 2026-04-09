@@ -40,7 +40,7 @@ function TimelineRow({ icon: Icon, label, timestamp, start, color, last = false 
   return (
     <div style={{ display: 'flex', gap: 14, position: 'relative' }}>
       {!last && <div style={{ position: 'absolute', left: 17, top: 34, bottom: 0, width: 2, background: hit ? `${color}30` : '#E8E4DC', zIndex: 0 }} />}
-      <div style={{ width: 36, height: 36, borderRadius: '50%', background: hit ? `${color}15` : '#F3F4F6', border: `2px solid ${hit ? color : '#E8E4DC'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1 }}>
+      <div style={{ width: 36, height: 36, borderRadius: 0, background: hit ? `${color}15` : '#F3F4F6', border: `2px solid ${hit ? color : '#E8E4DC'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1 }}>
         <Icon size={15} color={hit ? color : '#CCC'} />
       </div>
       <div style={{ paddingTop: 8, paddingBottom: last ? 0 : 20 }}>
@@ -92,7 +92,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
       : null;
     return (
       <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 20, display: 'flex', alignItems: 'center', gap: 16 }}>
-        <div style={{ width: 44, height: 44, borderRadius: '50%', background: `${GOLD}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div style={{ width: 44, height: 44, borderRadius: 0, background: `${GOLD}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <Clock size={20} color={GOLD} />
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -129,7 +129,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                 onClick={() => setExpanded(isOpen ? null : t.id)}
                 style={{ padding: '16px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14 }}
               >
-                <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${GOLD}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 0, background: `${GOLD}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <Zap size={15} color={GOLD} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>

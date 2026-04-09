@@ -27,7 +27,7 @@ function EventIcon({ type }: { type: string }) {
   };
   const { icon: Icon, color } = map[type] || { icon: Radio, color: '#6B7280' };
   return (
-    <div style={{ width: 26, height: 26, borderRadius: '50%', background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+    <div style={{ width: 26, height: 26, borderRadius: 0, background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
       <Icon size={12} color={color} />
     </div>
   );
@@ -84,7 +84,7 @@ export function LiveSignalFeed({ maxRows = 20, dark = false }: { maxRows?: numbe
       <div style={{ padding: '14px 18px', borderBottom: `1px solid ${border}`, display: 'flex', alignItems: 'center', gap: 10 }}>
         <div style={{ position: 'relative' }}>
           <Radio size={15} color={TEAL} />
-          <span style={{ position: 'absolute', top: -2, right: -2, width: 6, height: 6, borderRadius: '50%', background: TEAL, animation: 'pulse 2s infinite' }} />
+          <span style={{ position: 'absolute', top: -2, right: -2, width: 6, height: 6, borderRadius: 0, background: TEAL, animation: 'pulse 2s infinite' }} />
         </div>
         <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: dark ? GOLD : NAVY }}>Live Signal Activity</span>
         <span style={{ fontSize: 10, color: textSub, marginLeft: 'auto' }}>Refreshes every 30s</span>

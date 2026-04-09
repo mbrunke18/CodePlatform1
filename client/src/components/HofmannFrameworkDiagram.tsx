@@ -82,7 +82,7 @@ export default function HofmannFrameworkDiagram() {
         gap: 12,
       }}>
         <div style={{
-          width: 6, height: 6, borderRadius: "50%", background: GOLD, flexShrink: 0,
+          width: 6, height: 6, borderRadius: 0, background: GOLD, flexShrink: 0,
         }} />
         <p style={{
           fontFamily: "'Barlow Condensed', sans-serif",

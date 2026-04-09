@@ -49,8 +49,8 @@ function AnimatedStat({ target, label, prefix = '', suffix = '', delay = 0, colo
 function PulseOrb({ color, size = 8 }: { color: string; size?: number }) {
   return (
     <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
-      <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: color, opacity: 0.25, animation: 'pulse 2s ease-in-out infinite' }} />
-      <div style={{ position: 'absolute', inset: 2, borderRadius: '50%', background: color }} />
+      <div style={{ position: 'absolute', inset: 0, borderRadius: 0, background: color, opacity: 0.25, animation: 'pulse 2s ease-in-out infinite' }} />
+      <div style={{ position: 'absolute', inset: 2, borderRadius: 0, background: color }} />
       <style>{`@keyframes pulse { 0%,100%{transform:scale(1);opacity:0.25} 50%{transform:scale(2.2);opacity:0.1} }`}</style>
     </div>
   );
@@ -106,7 +106,7 @@ export default function WelcomeBrief() {
     return (
       <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ width: 48, height: 48, border: `2px solid ${GOLD}30`, borderTop: `2px solid ${GOLD}`, borderRadius: '50%', margin: '0 auto 20px', animation: 'spin 1s linear infinite' }} />
+          <div style={{ width: 48, height: 48, border: `2px solid ${GOLD}30`, borderTop: `2px solid ${GOLD}`, borderRadius: 0, margin: '0 auto 20px', animation: 'spin 1s linear infinite' }} />
           <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Readiness OS</div>
           <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)' }}>Preparing your activation brief...</div>
           <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
@@ -129,8 +129,8 @@ export default function WelcomeBrief() {
       <div style={{ position: 'fixed', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none', zIndex: 0 }} />
 
       {/* Ambient orbs */}
-      <div style={{ position: 'fixed', top: -200, right: -200, width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.12) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
-      <div style={{ position: 'fixed', bottom: -300, left: -200, width: 800, height: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'fixed', top: -200, right: -200, width: 700, height: 700, borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.12) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'fixed', bottom: -300, left: -200, width: 800, height: 800, borderRadius: 0, background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
 
       {/* Top navigation escape */}
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 10, padding: '14px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'none' }}>
@@ -330,8 +330,8 @@ export default function WelcomeBrief() {
               fontFamily: "'Barlow Condensed', sans-serif",
               transition: 'all 0.2s ease',
             }}
-            onMouseOver={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 8px 40px ${GOLD}40`; }}
-            onMouseOut={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = `0 0 40px ${GOLD}25`; }}
+            onMouseOver={e => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.9'; }}
+            onMouseOut={e => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
           >
             Enter Mission Control
             <ArrowRight size={20} />

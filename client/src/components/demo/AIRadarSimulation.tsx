@@ -150,7 +150,7 @@ export default function AIRadarSimulation({
           data-testid="card-trigger-alert"
         >
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-            <div style={{ padding: 8, background: '#ef4444', borderRadius: '50%', flexShrink: 0 }}>
+            <div style={{ padding: 8, background: '#ef4444', borderRadius: 0, flexShrink: 0 }}>
               <AlertTriangle style={{ width: 20, height: 20, color: '#fff' }} />
             </div>
             <div style={{ flex: 1 }}>
@@ -190,7 +190,7 @@ export default function AIRadarSimulation({
             <div key={stream.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flex: 1 }}>
                 <div style={{
-                  width: 8, height: 8, borderRadius: '50%',
+                  width: 8, height: 8, borderRadius: 0,
                   background: getStreamStatus(stream.confidence) === 'critical' ? '#ef4444'
                     : getStreamStatus(stream.confidence) === 'warning' ? GOLD
                     : TEAL_LT,

@@ -962,9 +962,7 @@ export default function RoleExperience() {
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
               className="flex items-center gap-4 mb-6 p-4 bg-white border border-[#E8E4DC]"
             >
-              <div className={`w-12 h-12 bg-gradient-to-br ${role.gradient} flex items-center justify-center flex-shrink-0`}>
-                <Icon className="h-6 w-6 text-[#0A0F2E]" />
-              </div>
+              <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-0.5">
                   <span className="text-[10px] font-800 text-[#6B7280] uppercase tracking-widest font-bold">{role.title}</span>
@@ -1035,7 +1033,7 @@ export default function RoleExperience() {
                   { step: '04', label: 'See your outcomes', icon: CheckCircle2, color: '#2B8A6E' },
                 ].map(({ step, label, icon: StepIcon, color }) => (
                   <div key={step} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 0 }}>
-                    <div style={{ width: 32, height: 32, borderRadius: '50%', background: `${color}15`, border: `1px solid ${color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
+                    <div style={{ width: 32, height: 32, borderRadius: 0, background: `${color}15`, border: `1px solid ${color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
                       <StepIcon size={14} style={{ color }} />
                     </div>
                     <p style={{ fontSize: 9, fontWeight: 800, color, margin: '0 0 3px', letterSpacing: '0.1em' }}>{step}</p>
@@ -1175,9 +1173,7 @@ export default function RoleExperience() {
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 ${trigger.enabled ? 'bg-amber-500/20' : 'bg-white/5'} flex items-center justify-center`}>
-                        <Radio className={`h-5 w-5 ${trigger.enabled ? 'text-amber-400' : 'text-gray-800'}`} />
-                      </div>
+                      <div style={{ width: 8, height: 8, borderRadius: '50%', background: trigger.enabled ? '#C9A84C' : 'rgba(255,255,255,0.2)', flexShrink: 0 }} />
                       <div className="flex items-center gap-2">
                         <Switch checked={trigger.enabled}
                           onCheckedChange={checked => setUserTriggers(prev => prev.map((t, j) => j === i ? { ...t, enabled: checked } : t))} />
@@ -1523,9 +1519,7 @@ export default function RoleExperience() {
               className="bg-white border border-[#0A0F2E]/30 p-8"
             >
               <div className="flex items-center gap-5 mb-6">
-                <div className={`w-14 h-14 bg-gradient-to-br ${role.gradient} flex items-center justify-center`}>
-                  <Icon className="h-7 w-7 text-gray-900" />
-                </div>
+                <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                 <div>
                   <h3 className="text-xl font-bold text-[#0A0F2E]">{role.name}</h3>
                   <p className="text-[#6B7280]">{role.title}, {role.company}</p>

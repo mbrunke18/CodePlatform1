@@ -233,9 +233,9 @@ export default function CrisisCommunicationsGenerator() {
                       {isApproved ? (
                         <CheckCircle style={{ width: 14, height: 14, color: TEAL }} />
                       ) : generated ? (
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD }} />
+                        <div style={{ width: 8, height: 8, borderRadius: 0, background: GOLD }} />
                       ) : (
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: BORDER }} />
+                        <div style={{ width: 8, height: 8, borderRadius: 0, background: BORDER }} />
                       )}
                     </div>
                   );

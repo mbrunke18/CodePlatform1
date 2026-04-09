@@ -29,7 +29,7 @@ function AccessGate() {
         padding: '40px 36px', textAlign: 'center',
       }}>
         <div style={{
-          width: 56, height: 56, borderRadius: '50%',
+          width: 56, height: 56, borderRadius: 0,
           background: `rgba(201,168,76,0.1)`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           margin: '0 auto 20px',

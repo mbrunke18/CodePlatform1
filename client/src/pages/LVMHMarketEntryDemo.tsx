@@ -230,7 +230,7 @@ export default function LVMHMarketEntryDemo() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1, flexShrink: 0 }}>1</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Executive Leadership</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">28 executives receive unified brief and approve €580M investment in 4 minutes</p>
@@ -238,7 +238,7 @@ export default function LVMHMarketEntryDemo() {
                 </Card>
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1, flexShrink: 0 }}>2</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Operations Teams</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">Real estate, legal, supply chain, marketing, HR executing simultaneously</p>
@@ -246,7 +246,7 @@ export default function LVMHMarketEntryDemo() {
                 </Card>
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-[#2B8A6E] flex items-center justify-center text-white font-bold">3</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#2B8A6E', lineHeight: 1, flexShrink: 0 }}>3</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>External Partners</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">Developers, contractors, agencies, logistics—all activated</p>

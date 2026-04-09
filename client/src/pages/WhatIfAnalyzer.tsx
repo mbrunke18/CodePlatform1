@@ -1556,8 +1556,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     return (
                       <div key={i} className="relative text-center">
                         {i > 0 && <div className="absolute left-0 top-5 -translate-x-1/2 w-full h-px bg-teal-200 dark:bg-teal-800 hidden sm:block" style={{ left: '-50%', width: '100%' }} />}
-                        <div className="relative z-10 w-10 h-10 bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mx-auto mb-2">
-                          <StepIcon className="h-5 w-5 text-teal-600" />
+                        <div className="relative z-10 w-10 h-10 flex items-center justify-center mx-auto mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 700, color: '#2B8A6E' }}>
+                          {i + 1}
                         </div>
                         <div className="text-xs font-bold text-teal-600 mb-0.5">{step.time}</div>
                         <div className="text-xs font-semibold text-slate-800 dark:text-white">{step.label}</div>

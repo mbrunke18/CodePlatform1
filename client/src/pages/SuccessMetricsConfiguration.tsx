@@ -271,9 +271,6 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
           <div className="bg-[#0A0F2E] text-white p-6 rounded-none border border-[#E8E4DC]">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/10 rounded-none flex items-center justify-center">
-                  <Target className="w-7 h-7 text-[#C9A84C]" />
-                </div>
                 <div>
                   <h1 style={{...CG}} className="text-3xl font-bold" data-testid="success-metrics-title">Success Metrics <em style={{ fontStyle: "italic", color: "#DFC178" }}>Configuration</em></h1>
                   <p className="text-white/60 mt-1">Define YOUR success criteria and KPIs</p>
@@ -310,9 +307,6 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                         <div style={{...CG}} className="text-4xl font-bold text-[#0A0F2E]">{overallFRI.toFixed(1)}%</div>
                         <div className="text-[10px] uppercase tracking-wider text-[#6B7280]">Current FRI</div>
                       </div>
-                    </div>
-                    <div className="absolute -right-2 -top-2 w-10 h-10 rounded-none bg-[#C9A84C] flex items-center justify-center">
-                      <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
                     </div>
                   </div>
                   <div>
@@ -361,9 +355,7 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-none flex items-center justify-center bg-[#F8F7F4]">
-                          <TypeIcon className={`h-5 w-5 ${typeInfo.color}`} />
-                        </div>
+                        <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                         <div>
                           <CardTitle style={{...CG}} className="text-[#0A0F2E] text-lg">{metric.name}</CardTitle>
                           <CardDescription className="text-[#6B7280] text-sm">

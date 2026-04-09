@@ -946,7 +946,7 @@ function InvestorPresentation() {
               size="icon"
               onClick={goToPrev}
               disabled={currentSlide === 0}
-              className="rounded-full border-[#E8E4DC] hover:bg-[#F8F7F4] h-12 w-12"
+              className="border-[#E8E4DC] hover:bg-[#F8F7F4] h-12 w-12 rounded-none"
             >
               <ChevronLeft className="h-6 w-6" />
             </Button>
@@ -967,7 +967,7 @@ function InvestorPresentation() {
               size="icon"
               onClick={goToNext}
               disabled={currentSlide === totalSlides - 1}
-              className="rounded-full border-[#E8E4DC] hover:bg-[#F8F7F4] h-12 w-12"
+              className="border-[#E8E4DC] hover:bg-[#F8F7F4] h-12 w-12 rounded-none"
             >
               <ChevronRight className="h-6 w-6" />
             </Button>

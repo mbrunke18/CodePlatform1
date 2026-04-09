@@ -213,8 +213,8 @@ export default function PilotOnboarding() {
             backgroundImage: 'linear-gradient(rgba(201,168,76,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.6) 1px, transparent 1px)',
             backgroundSize: '48px 48px',
           }} />
-          <div style={{ position: 'absolute', top: -200, right: -200, width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(43,138,110,0.14) 0%, transparent 70%)' }} />
-          <div style={{ position: 'absolute', bottom: -150, left: -100, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%)' }} />
+          <div style={{ position: 'absolute', top: -200, right: -200, width: 700, height: 700, borderRadius: 0, background: 'radial-gradient(circle, rgba(43,138,110,0.14) 0%, transparent 70%)' }} />
+          <div style={{ position: 'absolute', bottom: -150, left: -100, width: 500, height: 500, borderRadius: 0, background: 'radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%)' }} />
 
           <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 40px', position: 'relative' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -297,7 +297,7 @@ export default function PilotOnboarding() {
                 <h2 style={{ fontSize: 30, fontWeight: 700, color: NAVY, margin: '0 0 4px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{role.title}</h2>
                 <p style={{ fontSize: 15, color: 'rgba(10,15,46,0.5)', margin: '0 0 6px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{role.subtitle}</p>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 12px', borderRadius: 0, background: `${role.color}14`, border: `1px solid ${role.color}25` }}>
-                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: role.color, display: 'inline-block' }} />
+                  <span style={{ width: 5, height: 5, borderRadius: 0, background: role.color, display: 'inline-block' }} />
                   <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1, color: role.color, textTransform: 'uppercase' }}>{role.who}</span>
                 </div>
               </div>
@@ -331,7 +331,7 @@ export default function PilotOnboarding() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {role.owns.map((o, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: role.color, flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ width: 6, height: 6, borderRadius: 0, background: role.color, flexShrink: 0, marginTop: 6 }} />
                     <span style={{ fontSize: 13, color: 'rgba(10,15,46,0.65)', lineHeight: 1.6, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{o}</span>
                   </div>
                 ))}
@@ -341,7 +341,7 @@ export default function PilotOnboarding() {
 
           {/* Success at 90 days */}
           <div style={{ background: NAVY, borderRadius: 0, padding: 28, marginBottom: 24, position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: `radial-gradient(circle, ${role.color}18 0%, transparent 70%)` }} />
+            <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: 0, background: `radial-gradient(circle, ${role.color}18 0%, transparent 70%)` }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, position: 'relative' }}>
               <div style={{ width: 3, height: 16, background: role.color, borderRadius: 0 }} />
               <h3 style={{ fontSize: 11, fontWeight: 700, color: 'rgba(240,237,228,0.4)', letterSpacing: 2, textTransform: 'uppercase', margin: 0, fontFamily: "'DM Mono', monospace" }}>Success at Day 90</h3>
@@ -412,7 +412,7 @@ export default function PilotOnboarding() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     {t.milestones.map((m, j) => (
                       <div key={j} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                        <div style={{ width: 16, height: 16, borderRadius: '50%', background: `${t.color}15`, border: `1px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                        <div style={{ width: 16, height: 16, borderRadius: 0, background: `${t.color}15`, border: `1px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
                           <span style={{ fontSize: 8, color: t.color, fontWeight: 700 }}>{j + 1}</span>
                         </div>
                         <span style={{ fontSize: 12, color: 'rgba(10,15,46,0.65)', lineHeight: 1.5, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{m}</span>

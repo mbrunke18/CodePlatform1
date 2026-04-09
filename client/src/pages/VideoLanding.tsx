@@ -162,9 +162,6 @@ export default function VideoLanding() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center mb-6">
-                  <Clock className="h-6 w-6 text-[#C9A84C]" />
-                </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12-Minute Execution</h3>
                 <p className="text-[#6B7280] leading-relaxed font-light">
                   Pre-staged playbooks with predetermined stakeholders and tasks. No meetings. No delays.
@@ -174,9 +171,6 @@ export default function VideoLanding() {
 
             <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center mb-6">
-                  <Users className="h-6 w-6 text-[#C9A84C]" />
-                </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Coordinated Response</h3>
                 <p className="text-[#6B7280] leading-relaxed font-light">
                   Every stakeholder knows their role before the call comes. Parallel execution across teams.
@@ -186,9 +180,6 @@ export default function VideoLanding() {
 
             <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
-                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center mb-6">
-                  <Zap className="h-6 w-6 text-[#C9A84C]" />
-                </div>
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI-Powered Monitoring</h3>
                 <p className="text-[#6B7280] leading-relaxed font-light">
                   Continuous intelligence scanning. Automatic trigger detection. Real-time alerts.

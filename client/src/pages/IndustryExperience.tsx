@@ -1264,9 +1264,7 @@ export default function IndustryExperience() {
               className="bg-white border border-[#E8E4DC] p-8"
             >
               <div className="flex items-center gap-5 mb-6">
-                <div className={`w-14 h-14 bg-gradient-to-br ${industry.gradient} flex items-center justify-center`}>
-                  <Icon className="h-7 w-7 text-gray-900" />
-                </div>
+                <div style={{ width: 4, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">{industry.organization}</h3>
                   <p className="text-gray-800 dark:text-slate-200">{industry.industry} — {industry.domain}</p>

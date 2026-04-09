@@ -195,7 +195,7 @@ export default function ActivationOutcome() {
                         <button onClick={() => setStep(i)}
                           style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, cursor: "pointer", border: "none", background: "none", padding: "0 4px" }}>
                           <div style={{
-                            width: 32, height: 32, borderRadius: "50%",
+                            width: 32, height: 32, borderRadius: 0,
                             background: done ? TEAL : active ? NAVY : "#F3F4F6",
                             display: "flex", alignItems: "center", justifyContent: "center",
                             border: active ? `2px solid ${GOLD}` : "none",
@@ -265,7 +265,7 @@ export default function ActivationOutcome() {
                         { milestone: 'Containment Confirmed', target: '01:00', actual: '01:14', status: 'near' },
                       ].map((m, i) => (
                         <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, padding: "10px 14px", background: OFF, border: `1px solid ${BORDER}` }}>
-                          <div style={{ width: 8, height: 8, borderRadius: "50%", background: m.status === 'hit' ? TEAL : m.status === 'near' ? GOLD : RED, flexShrink: 0 }} />
+                          <div style={{ width: 8, height: 8, borderRadius: 0, background: m.status === 'hit' ? TEAL : m.status === 'near' ? GOLD : RED, flexShrink: 0 }} />
                           <div style={{ flex: 1 }}>
                             <div style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{m.milestone}</div>
                           </div>

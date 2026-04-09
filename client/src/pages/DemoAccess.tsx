@@ -69,17 +69,17 @@ export default function DemoAccess() {
         {/* Animated ring */}
         <div style={{ position: "relative", width: 64, height: 64, margin: "0 auto 32px" }}>
           <div style={{
-            position: "absolute", inset: 0, borderRadius: "50%",
+            position: "absolute", inset: 0, borderRadius: 0,
             border: `2px solid rgba(201,168,76,0.2)`,
           }} />
           <div style={{
-            position: "absolute", inset: 0, borderRadius: "50%",
+            position: "absolute", inset: 0, borderRadius: 0,
             border: `2px solid transparent`,
             borderTopColor: GOLD,
             animation: "spin 1s linear infinite",
           }} />
           <div style={{
-            position: "absolute", inset: 8, borderRadius: "50%",
+            position: "absolute", inset: 8, borderRadius: 0,
             background: `radial-gradient(ellipse, rgba(43,138,110,0.3) 0%, transparent 70%)`,
           }} />
         </div>

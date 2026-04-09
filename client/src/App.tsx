@@ -23,7 +23,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryStat
       return (
         <div style={{ minHeight: '100vh', background: '#F8F7F4', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'system-ui, sans-serif' }}>
           <div style={{ maxWidth: 480, width: '100%', padding: '2.5rem', background: '#fff', border: '1px solid #E8E4DC', borderTop: '4px solid #C9A84C', borderRadius: 4, textAlign: 'center' }}>
-            <div style={{ width: 48, height: 48, background: 'rgba(201,168,76,0.12)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem' }}>
+            <div style={{ marginBottom: '1.25rem' }}>
               <RefreshCw size={22} color="#C9A84C" />
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0A0F2E', margin: '0 0 0.5rem' }}>Page Encountered an Error</h2>

@@ -505,7 +505,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                 {phase.items.map((item, j) => (
                   <div key={j} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                    <div style={{ width: 4, height: 4, background: phase.color, borderRadius: "50%", marginTop: 6, flexShrink: 0 }} />
+                    <div style={{ width: 4, height: 4, background: phase.color, borderRadius: 0, marginTop: 6, flexShrink: 0 }} />
                     <span style={{ fontSize: 12, fontWeight: 400, color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>{item}</span>
                   </div>
                 ))}
@@ -596,7 +596,7 @@ function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) 
                   <div style={{ fontSize: 13, fontWeight: 400, color: MUTED, lineHeight: 1.7 }}>{m.desc}</div>
                   {i === 0 && (
                     <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 6 }}>
-                      <div style={{ width: 6, height: 6, background: TEAL_LT, borderRadius: "50%", animation: "pulse 2s ease infinite" }} />
+                      <div style={{ width: 6, height: 6, background: TEAL_LT, borderRadius: 0, animation: "pulse 2s ease infinite" }} />
                       <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, letterSpacing: "0.1em", textTransform: "uppercase" }}>Next Action</span>
                     </div>
                   )}

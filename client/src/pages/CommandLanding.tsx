@@ -165,7 +165,7 @@ function NavIcon({ active, title, label, onClick, children }: { active?: boolean
 function PulseDot({ color = TEAL, delay = 0 }: { color?: string; delay?: number }) {
   return (
     <span style={{
-      display: 'inline-block', width: 6, height: 6, borderRadius: '50%',
+      display: 'inline-block', width: 6, height: 6, borderRadius: 0,
       background: color, animation: `cl-pulse 1.5s ease-in-out ${delay}s infinite`,
     }} />
   );
@@ -195,7 +195,7 @@ function TileArrow({ hovered }: { hovered?: boolean }) {
   return (
     <div style={{
       position: 'absolute', bottom: 20, right: 20,
-      width: 28, height: 28, borderRadius: '50%',
+      width: 28, height: 28, borderRadius: 0,
       border: '1px solid rgba(240,237,228,0.2)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       opacity: hovered ? 1 : 0, transition: 'opacity 0.2s ease',
@@ -372,7 +372,7 @@ export default function CommandLanding() {
               {lastName ? `${lastName.toUpperCase()}` : firstName.toUpperCase()} · {user?.role?.toUpperCase() || 'EXEC'}
             </div>
             <div style={{
-              width: 32, height: 32, borderRadius: '50%',
+              width: 32, height: 32, borderRadius: 0,
               background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.2)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: "'DM Mono', monospace", fontSize: 12, color: GOLD,
@@ -458,7 +458,7 @@ export default function CommandLanding() {
                 {(hovered) => (
                   <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: GOLD, textTransform: 'uppercase' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, display: 'inline-block', animation: 'cl-pulse 1.5s infinite' }} />
+                      <span style={{ width: 5, height: 5, borderRadius: 0, background: GOLD, display: 'inline-block', animation: 'cl-pulse 1.5s infinite' }} />
                       Primary Action
                     </div>
 
@@ -538,7 +538,7 @@ export default function CommandLanding() {
                 {(hovered) => (
                   <div style={{ padding: 28 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: TEAL, textTransform: 'uppercase' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: TEAL, display: 'inline-block', animation: 'cl-pulse 2s infinite 0.3s' }} />
+                      <span style={{ width: 5, height: 5, borderRadius: 0, background: TEAL, display: 'inline-block', animation: 'cl-pulse 2s infinite 0.3s' }} />
                       Signal Intelligence
                     </div>
 
@@ -579,7 +579,7 @@ export default function CommandLanding() {
                 {(hovered) => (
                   <div style={{ padding: 28 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
+                      <span style={{ width: 5, height: 5, borderRadius: 0, background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
                       Playbook Library
                     </div>
 
@@ -619,12 +619,12 @@ export default function CommandLanding() {
                 {(hovered) => (
                   <div style={{ padding: 28 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
+                      <span style={{ width: 5, height: 5, borderRadius: 0, background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
                       Mission Control
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                      <span style={{ width: 8, height: 8, borderRadius: '50%', background: TEAL, display: 'inline-block', animation: 'cl-live 1s ease-in-out infinite' }} />
+                      <span style={{ width: 8, height: 8, borderRadius: 0, background: TEAL, display: 'inline-block', animation: 'cl-live 1s ease-in-out infinite' }} />
                       <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: TEAL, letterSpacing: 2, textTransform: 'uppercase' }}>Live Coordination</span>
                     </div>
 
@@ -656,7 +656,7 @@ export default function CommandLanding() {
                 {(hovered) => (
                   <div style={{ padding: 28 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase' }}>
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
+                      <span style={{ width: 5, height: 5, borderRadius: 0, background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
                       Performance & ROI
                     </div>
 
@@ -714,7 +714,7 @@ export default function CommandLanding() {
             { dot: providerData?.teamsConfigured ? TEAL : GOLD, label: providerData?.teamsConfigured ? 'Teams notifications active' : 'Teams webhook: configure in integrations' },
           ].map(({ dot, label }) => (
             <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: dot, display: 'inline-block' }} />
+              <span style={{ width: 5, height: 5, borderRadius: 0, background: dot, display: 'inline-block' }} />
               {label}
             </div>
           ))}

@@ -141,7 +141,7 @@ export default function ExplorePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {steps.map((s) => (
                 <div key={s.step} className="bg-white rounded-none p-6 border border-[#E8E4DC] flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-none bg-[#0A0F2E] text-[#C9A84C] flex items-center justify-center font-bold text-xs flex-shrink-0">
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1, flexShrink: 0, minWidth: 24 }}>
                     {s.step}
                   </div>
                   <div>
@@ -162,9 +162,7 @@ export default function ExplorePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((f) => (
                 <div key={f.title} className="bg-white rounded-none p-8 border border-[#E8E4DC] hover:border-[#0A0F2E] transition-all duration-300">
-                  <div className={`w-10 h-10 rounded-none ${f.bg} flex items-center justify-center mb-6`}>
-                    <f.icon className={`h-5 w-5 ${f.color}`} />
-                  </div>
+                  <div style={{ width: 20, height: 1.5, background: '#C9A84C', marginBottom: 20 }} />
                   <h3 className="font-bold text-[#0A0F2E] mb-3 text-[10px] uppercase tracking-widest">{f.title}</h3>
                   <p className="text-[#6B7280] text-sm leading-relaxed">{f.description}</p>
                 </div>
@@ -179,9 +177,7 @@ export default function ExplorePage() {
             <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Two ways to get started</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white rounded-none p-8 border border-[#E8E4DC]">
-                <div className="w-12 h-12 rounded-none bg-[#0A0F2E] flex items-center justify-center mb-6">
-                  <Layers className="h-6 w-6 text-[#C9A84C]" />
-                </div>
+                <div style={{ width: 48, height: 2, background: '#0A0F2E', marginBottom: 24 }} />
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Explore the Product</h3>
                 <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
                   Sign in and experience the full platform immediately. Ideal for evaluators, decision-makers, and teams doing due diligence.
@@ -205,9 +201,7 @@ export default function ExplorePage() {
 
               <div className="bg-white rounded-none p-8 border border-[#C9A84C] relative">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C9A84C] text-[#0A0F2E] text-[9px] font-bold uppercase tracking-widest px-3 py-1">Recommended for F1000</div>
-                <div className="w-12 h-12 rounded-none bg-[#C9A84C] flex items-center justify-center mb-6">
-                  <Shield className="h-6 w-6 text-[#0A0F2E]" />
-                </div>
+                <div style={{ width: 48, height: 2, background: '#C9A84C', marginBottom: 24 }} />
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Apply for Pilot Program</h3>
                 <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
                   A structured 90-day partnership for Fortune 1000 companies ready to validate execution velocity at enterprise scale.

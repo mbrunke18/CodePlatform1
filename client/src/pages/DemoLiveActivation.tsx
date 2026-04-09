@@ -576,14 +576,10 @@ function DemoLiveActivation() {
         <Card className="max-w-7xl mx-auto mb-8 border-2 border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 animate-in fade-in slide-in-from-top duration-500" data-testid="card-augmented-execution-info">
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center">
-                  <Info className="w-6 h-6 text-[#C9A84C]" />
-                </div>
-              </div>
+              <div style={{ width: 3, alignSelf: 'stretch', background: '#C9A84C', flexShrink: 0 }} />
               <div className="flex-1">
                 <h3 className="font-semibold text-lg mb-2 text-white dark:text-white">
-                  ✨ Augmented Execution in Action
+                  Augmented Execution in Action
                 </h3>
                 <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
                   Notice: Readiness OS is coordinating stakeholders, but humans are making all decisions.

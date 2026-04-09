@@ -239,7 +239,7 @@ export default function ProspectDemo() {
         <div style={{ position: "relative", zIndex: 1, borderBottom: `1px solid rgba(201,168,76,0.2)`, padding: "16px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <VaughnMartinLogo height={56} variant="full" color="light" />
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#EF4444", animation: "pulse 1.5s infinite" }} />
+            <div style={{ width: 8, height: 8, borderRadius: 0, background: "#EF4444", animation: "pulse 1.5s infinite" }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
               {displayName} · Live Detection Feed
             </span>
@@ -348,7 +348,7 @@ export default function ProspectDemo() {
           </div>
           <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.1)" }} />
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL }} />
+            <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{displayName} · EXECUTING</span>
           </div>
         </div>
@@ -377,7 +377,7 @@ export default function ProspectDemo() {
                     border: `1px solid ${isDone ? "rgba(43,138,110,0.3)" : "rgba(255,255,255,0.06)"}`,
                     transition: "all 0.4s ease"
                   }}>
-                    <div style={{ width: 20, height: 20, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: isDone ? "rgba(43,138,110,0.3)" : "rgba(255,255,255,0.06)" }}>
+                    <div style={{ width: 20, height: 20, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: isDone ? "rgba(43,138,110,0.3)" : "rgba(255,255,255,0.06)" }}>
                       {isDone ? <CheckCircle2 size={12} color={TEAL} /> : <Clock size={11} color="rgba(255,255,255,0.2)" />}
                     </div>
                     <span style={{ fontSize: 13, fontWeight: isDone ? 600 : 400, color: isDone ? "#fff" : "rgba(255,255,255,0.3)" }}>{step}</span>

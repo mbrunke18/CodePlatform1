@@ -229,7 +229,7 @@ export default function SpaceXLaunchDemo() {
                 ].map(({ n, title, desc, stat }) => (
                   <div key={n} style={{ padding: 24, background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", color: NAVY, fontWeight: 700, fontSize: 15 }}>{n}</div>
+                      <div style={{ width: 36, height: 36, borderRadius: 0, background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", color: NAVY, fontWeight: 700, fontSize: 15 }}>{n}</div>
                       <h3 style={{ fontWeight: 700, color: IVORY, margin: 0 }}>{title}</h3>
                     </div>
                     <p style={{ fontSize: 13, color: "rgba(240,237,228,0.65)", marginBottom: 12 }}>{desc}</p>

@@ -24,19 +24,12 @@ function ScoreRing({ score }: { score: number }) {
   );
 }
 
-function StatCard({ label, value, sub, icon: Icon, color = NAVY }: { label: string; value: any; sub?: string; icon: any; color?: string }) {
+function StatCard({ label, value, sub, color = NAVY }: { label: string; value: any; sub?: string; icon?: any; color?: string }) {
   return (
     <div style={{ padding: '20px 18px', background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, borderLeft: `3px solid ${color}` }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-        <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <Icon size={16} color={color} />
-        </div>
-        <div>
-          <div style={{ fontSize: 22, fontWeight: 800, color: NAVY, lineHeight: 1 }}>{value}</div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: '#666', textTransform: 'uppercase', letterSpacing: '0.8px', marginTop: 4 }}>{label}</div>
-          {sub && <div style={{ fontSize: 11, color: '#999', marginTop: 2 }}>{sub}</div>}
-        </div>
-      </div>
+      <div style={{ fontSize: 24, fontWeight: 800, color: NAVY, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>{value}</div>
+      <div style={{ fontSize: 10, fontWeight: 700, color: '#666', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 6 }}>{label}</div>
+      {sub && <div style={{ fontSize: 11, color: '#999', marginTop: 2 }}>{sub}</div>}
     </div>
   );
 }
@@ -44,7 +37,7 @@ function StatCard({ label, value, sub, icon: Icon, color = NAVY }: { label: stri
 function DomainBar({ domain, active }: { domain: string; active: boolean }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: '1px solid #F0EDE4' }}>
-      <div style={{ width: 8, height: 8, borderRadius: '50%', background: active ? TEAL : '#D1D5DB', flexShrink: 0 }} />
+      <div style={{ width: 8, height: 8, borderRadius: 0, background: active ? TEAL : '#D1D5DB', flexShrink: 0 }} />
       <span style={{ fontSize: 13, color: active ? NAVY : '#9CA3AF', fontWeight: active ? 600 : 400, flex: 1 }}>{domain}</span>
       {active
         ? <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, background: `${TEAL}12`, padding: '2px 8px', borderRadius: 0, letterSpacing: 0.5 }}>MONITORING</span>
@@ -137,7 +130,7 @@ export default function BoardReadiness() {
               <h1 style={{ fontSize: 26, fontWeight: 800, color: '#fff', margin: '0 0 10px', lineHeight: 1.2 }}>Strategic Readiness Report</h1>
               <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>Generated {generatedDate} · Confidential</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 14 }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: statusColor }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: statusColor }} />
                 <span style={{ fontSize: 12, fontWeight: 700, color: statusColor }}>{d.monitoringStatus}</span>
                 <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>· 221 triggers armed · 248+ signals tracked</span>
               </div>

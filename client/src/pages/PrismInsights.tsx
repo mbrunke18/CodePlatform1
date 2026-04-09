@@ -208,7 +208,7 @@ export default function PrismInsights() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end' }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
-                  <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: '50%', display: 'inline-block' }} />
+                  <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: 0, display: 'inline-block' }} />
                   AI Analysis · Updated 2 min ago
                 </div>
                 <Button style={{ background: GOLD, color: NAVY, borderRadius: 0, fontWeight: 700, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
@@ -286,7 +286,7 @@ export default function PrismInsights() {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {insight.insights.map((item, idx) => (
                             <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-                              <div style={{ width: 5, height: 5, borderRadius: '50%', background: insight.color, flexShrink: 0, marginTop: 6 }} />
+                              <div style={{ width: 5, height: 5, borderRadius: 0, background: insight.color, flexShrink: 0, marginTop: 6 }} />
                               <span style={{ fontSize: 12, color: '#4B5563', lineHeight: 1.5 }}>{item}</span>
                             </div>
                           ))}

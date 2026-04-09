@@ -195,23 +195,17 @@ export default function IntegrationsPage() {
           {/* Integration Philosophy */}
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
-              <div className="w-14 h-14 mb-6 bg-[#0A0F2E]/5 rounded-none flex items-center justify-center">
-                <Zap className="w-7 h-7 text-[#0A0F2E]" />
-              </div>
+              <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 20 }} />
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Readiness OS Orchestrates</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">Strategic playbooks trigger coordinated actions across your entire enterprise stack.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
-              <div className="w-14 h-14 mb-6 bg-[#C9A84C]/5 rounded-none flex items-center justify-center">
-                <Database className="w-7 h-7 text-[#C9A84C]" />
-              </div>
+              <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 20 }} />
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Tools Execute</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Readiness OS.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
-              <div className="w-14 h-14 mb-6 bg-[#2B8A6E]/5 rounded-none flex items-center justify-center">
-                <CheckCircle2 className="w-7 h-7 text-[#2B8A6E]" />
-              </div>
+              <div style={{ width: 28, height: 1, background: '#2B8A6E', marginBottom: 20 }} />
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Everything Syncs</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">Bi-directional updates keep Readiness OS and your tools in perfect strategic alignment.</p>
             </Card>
@@ -226,9 +220,6 @@ export default function IntegrationsPage() {
                     {connectedIntegrations.filter(i => i.status === 'active').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-[#2B8A6E]/10 rounded-none flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6 text-[#2B8A6E]" />
-                </div>
               </div>
             </Card>
 
@@ -240,9 +231,6 @@ export default function IntegrationsPage() {
                     {marketplace.filter(i => i.status === 'available').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-[#C9A84C]/10 rounded-none flex items-center justify-center">
-                  <Cloud className="w-6 h-6 text-[#C9A84C]" />
-                </div>
               </div>
             </Card>
 
@@ -253,9 +241,6 @@ export default function IntegrationsPage() {
                   <p style={CG} className="text-4xl font-bold text-[#0A0F2E]">
                     {marketplace.filter(i => i.status === 'coming_soon').length}
                   </p>
-                </div>
-                <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-none flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-[#0A0F2E]" />
                 </div>
               </div>
             </Card>
@@ -280,9 +265,6 @@ export default function IntegrationsPage() {
                   return (
                     <Card key={integration.id} className="p-8  border-[#E8E4DC] bg-white rounded-none" data-testid={`card-integration-${integration.id}`}>
                       <div className="flex items-start justify-between mb-6">
-                        <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
-                          {Icon && <Icon className="w-7 h-7" />}
-                        </div>
                         {connected ? (
                           <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
                             CONNECTED
@@ -370,9 +352,6 @@ export default function IntegrationsPage() {
                   return (
                     <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white">
                       <div className="flex items-start justify-between mb-6">
-                        <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
-                          {Icon && <Icon className="w-7 h-7" />}
-                        </div>
                         <Badge variant="outline" className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
                           ACTIVE
                         </Badge>
@@ -414,9 +393,6 @@ export default function IntegrationsPage() {
                   return (
                     <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white">
                       <div className="flex items-start justify-between mb-6">
-                        <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
-                          {Icon && <Icon className="w-7 h-7" />}
-                        </div>
                         <Badge variant="outline" className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20 rounded-none px-3 py-1 text-[9px] font-bold tracking-widest uppercase">
                           AVAILABLE
                         </Badge>

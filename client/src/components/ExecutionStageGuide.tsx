@@ -246,7 +246,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
               )}
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                 <div style={{
-                  width: 32, height: 32, borderRadius: '50%',
+                  width: 32, height: 32, borderRadius: 0,
                   background: `${GOLD}15`, border: `1px solid ${GOLD}40`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 14, fontWeight: 800, color: GOLD, flexShrink: 0,
@@ -274,7 +274,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
             background: 'rgba(43,138,110,0.08)', border: `1px solid ${TEAL}30`,
             borderRadius: 0,
           }}>
-            <div style={{ width: 8, height: 8, borderRadius: '50%', background: TEAL }} />
+            <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, letterSpacing: '0.06em' }}>
               Mobilization complete. Execution begins at minute 13.
             </span>
@@ -292,7 +292,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                 <div style={{
-                  width: 32, height: 32, borderRadius: '50%',
+                  width: 32, height: 32, borderRadius: 0,
                   background: '#F3F4F6', border: '1px solid #E5E7EB',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 14, fontWeight: 800, color: '#6B7280', flexShrink: 0,

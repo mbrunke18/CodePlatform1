@@ -73,7 +73,7 @@ export default function GetStarted() {
         <div style={{ position: "absolute", top: -120, right: -120, width: 500, height: 500, background: `radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", border: `1px solid rgba(201,168,76,0.3)`, marginBottom: 28 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL_LT }} />
+            <div style={{ width: 6, height: 6, borderRadius: 0, background: TEAL_LT }} />
             <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase" }}>Live Platform Access</span>
           </div>
 

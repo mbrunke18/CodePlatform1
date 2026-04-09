@@ -579,36 +579,24 @@ export default function DealRiskDemo() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                    <BookOpen className="h-5 w-5 text-[#C9A84C]" />
-                  </div>
                   <div>
                     <h5 className="text-sm font-medium text-white">Identify</h5>
                     <p className="text-xs text-white/60">Connect Salesforce and Slack to map your institutional deal knowledge.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                    <Radar className="h-5 w-5 text-[#DFC178]" />
-                  </div>
                   <div>
                     <h5 className="text-sm font-medium text-white">Detect</h5>
                     <p className="text-xs text-white/60">AI monitors communication and CRM signals for hidden risk patterns.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                    <Radio className="h-5 w-5 text-[#2B8A6E]" />
-                  </div>
                   <div>
                     <h5 className="text-sm font-medium text-white">Execute</h5>
                     <p className="text-xs text-white/60">Orchestrate the CEO, VP Sales, and Legal for a 12-minute risk response.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                    <BarChart3 className="h-5 w-5 text-[#DFC178]" />
-                  </div>
                   <div>
                     <h5 className="text-sm font-medium text-white">Advance</h5>
                     <p className="text-xs text-white/60">Capture learnings to strengthen your response for the next deal.</p>

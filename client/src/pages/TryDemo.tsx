@@ -628,7 +628,7 @@ export default function TryDemo() {
                 {/* LEFT — Current State (the pain) */}
                 <div style={{ background: '#F3F2EF', padding: '24px 22px', borderRight: `1px solid ${BORDER}` }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#DC2626' }} />
+                    <div style={{ width: 8, height: 8, borderRadius: 0, background: '#DC2626' }} />
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#DC2626' }}>The Current State</span>
                   </div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a2e', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>A strategic trigger fires. What happens next?</p>
@@ -656,7 +656,7 @@ export default function TryDemo() {
                 {/* RIGHT — Readiness OS way */}
                 <div style={{ background: NAVY, padding: '24px 22px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: GOLD }} />
+                    <div style={{ width: 8, height: 8, borderRadius: 0, background: GOLD }} />
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>With Readiness OS</span>
                   </div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: '#FFFFFF', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>The same trigger. A completely different result.</p>
@@ -881,7 +881,7 @@ export default function TryDemo() {
                         {/* The pivotal contrast moment */}
                         <div style={{ background: '#0A0F2E', borderRadius: 0, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
                           <div style={{ background: 'rgba(220,38,38,0.12)', padding: '10px 16px', borderBottom: '1px solid rgba(220,38,38,0.2)', display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#f87171' }} />
+                            <div style={{ width: 7, height: 7, borderRadius: 0, background: '#f87171' }} />
                             <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Readiness OS</p>
                           </div>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
@@ -1044,13 +1044,13 @@ export default function TryDemo() {
                       {/* Terminal header */}
                       <div style={{ background: NAVY_MID, padding: '10px 18px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                         <div style={{ display: 'flex', gap: 5 }}>
-                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57' }} />
-                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
-                          <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
+                          <div style={{ width: 10, height: 10, borderRadius: 0, background: '#ff5f57' }} />
+                          <div style={{ width: 10, height: 10, borderRadius: 0, background: '#febc2e' }} />
+                          <div style={{ width: 10, height: 10, borderRadius: 0, background: '#28c840' }} />
                         </div>
                         <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 8, fontFamily: 'monospace' }}>execution-os — signal-monitor — live</span>
                         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5 }}>
-                          <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
+                          <div style={{ width: 6, height: 6, borderRadius: 0, background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
                           <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 248+ SOURCES</span>
                         </div>
                       </div>
@@ -1086,7 +1086,7 @@ export default function TryDemo() {
                           {(SCENARIO_SIGNALS[selectedScenario.id] || []).map((signal, idx) => (
                             detectStep > idx ? (
                               <div key={idx} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${idx === 2 && detectStep >= 3 ? 'rgba(34,197,94,0.4)' : 'rgba(255,255,255,0.1)'}`, borderRadius: 0, padding: '10px 14px', display: 'flex', alignItems: 'flex-start', gap: 10, animation: 'slideIn 0.3s ease' }}>
-                                <div style={{ width: 6, height: 6, borderRadius: '50%', background: signal.strength >= 80 ? '#ef4444' : signal.strength >= 60 ? GOLD : '#94a3b8', marginTop: 5, flexShrink: 0 }} />
+                                <div style={{ width: 6, height: 6, borderRadius: 0, background: signal.strength >= 80 ? '#ef4444' : signal.strength >= 60 ? GOLD : '#94a3b8', marginTop: 5, flexShrink: 0 }} />
                                 <div style={{ flex: 1 }}>
                                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: 3 }}>{signal.label}</p>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -1098,7 +1098,7 @@ export default function TryDemo() {
                             ) : (
                               <div key={idx} style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 0, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
                                 <div style={{ display: 'flex', gap: 3 }}>
-                                  {[0,1,2].map(d => <div key={d} style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.15)', animation: `pulse ${0.6 + d * 0.2}s infinite` }} />)}
+                                  {[0,1,2].map(d => <div key={d} style={{ width: 4, height: 4, borderRadius: 0, background: 'rgba(255,255,255,0.15)', animation: `pulse ${0.6 + d * 0.2}s infinite` }} />)}
                                 </div>
                                 <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace' }}>scanning...</span>
                               </div>
@@ -1110,7 +1110,7 @@ export default function TryDemo() {
                         {detectStep >= 3 && (
                           <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 0, padding: '14px 16px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
+                              <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
                               <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Trigger Threshold Crossed — Playbook Matched</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -1126,7 +1126,7 @@ export default function TryDemo() {
                         {detectStep < 3 && (
                           <div style={{ textAlign: 'center', paddingTop: 8 }}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.4)' }}>
-                              <div style={{ width: 14, height: 14, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: GOLD, borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                              <div style={{ width: 14, height: 14, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: GOLD, borderRadius: 0, animation: 'spin 1s linear infinite' }} />
                               <span style={{ fontSize: 12, fontFamily: 'monospace' }}>Correlating signals across {248 - detectStep * 30}+ sources...</span>
                             </div>
                           </div>
@@ -1285,7 +1285,7 @@ export default function TryDemo() {
                           <div style={{ background: NAVY, borderRadius: 0, overflow: 'hidden' }}>
                             {/* Header bar */}
                             <div style={{ background: NAVY_MID, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(201,168,76,0.2)' }}>
-                              <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+                              <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
                               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Readiness OS — Playbook Activated</span>
                             </div>
 
@@ -1441,7 +1441,7 @@ export default function TryDemo() {
                   {currentPhase === 'identify' && (
                     <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} />
+                        <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Why This Was Ready</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Your organization built this playbook before today.</p>
@@ -1456,7 +1456,7 @@ export default function TryDemo() {
                   {currentPhase === 'detect' && (
                     <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+                        <div style={{ width: 6, height: 6, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 248+ sources — replaced by continuous AI monitoring.</p>
@@ -1475,7 +1475,7 @@ export default function TryDemo() {
                   {currentPhase === 'execute' && selectedScenario && (
                     <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, animation: 'pulse 1.5s infinite' }} />
+                        <div style={{ width: 6, height: 6, borderRadius: 0, background: TEAL, animation: 'pulse 1.5s infinite' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL }}>What's Happening Right Now</span>
                       </div>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Readiness OS is firing all of the following simultaneously — not sequentially. No one had to email anyone to start this.</p>
@@ -1489,7 +1489,7 @@ export default function TryDemo() {
                           'External counsel pre-alert sent',
                         ].map((item, i) => (
                           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                            <div style={{ width: 5, height: 5, borderRadius: '50%', background: TEAL, flexShrink: 0 }} />
+                            <div style={{ width: 5, height: 5, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
                             <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', margin: 0, fontWeight: 500 }}>{item}</p>
                           </div>
                         ))}
@@ -1504,7 +1504,7 @@ export default function TryDemo() {
                   {currentPhase === 'advance' && (
                     <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} />
+                        <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>How The System Gets Smarter</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Every execution teaches the system.</p>

@@ -236,7 +236,7 @@ export default function PilotHealthMonitor() {
             <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Milestone:</span>
             {(Object.entries(MILESTONE_CONFIG) as [string, { label: string; color: string }][]).map(([k, v]) => (
               <div key={k} style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: v.color }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: v.color }} />
                 <span style={{ fontSize: 11, color: v.color }}>{v.label}</span>
               </div>
             ))}
@@ -244,7 +244,7 @@ export default function PilotHealthMonitor() {
             <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Health:</span>
             {(Object.entries(HEALTH_CONFIG) as [string, typeof HEALTH_CONFIG.active][]).map(([k, v]) => (
               <div key={k} style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                <div style={{ width: 8, height: 8, borderRadius: "50%", background: v.text }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: v.text }} />
                 <span style={{ fontSize: 11, color: v.text }}>{v.label}</span>
               </div>
             ))}
