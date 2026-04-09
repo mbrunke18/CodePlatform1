@@ -107,7 +107,7 @@ function TwoPhasePlaybookSelector() {
 // ─── DETECT DATA ─────────────────────────────────────────────────────────────
 const detectTools = [
   { title: "Signal Intelligence Hub", description: "Centralized view of all incoming signals and intelligence feeds", path: "/signal-intelligence", icon: Radio, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Real-time monitoring", featured: true },
-  { title: "AI Trigger Monitoring", description: "Configure and manage automated trigger detection rules", path: "/triggers-management", icon: Target, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "AI-powered" },
+  { title: "AI Trigger Monitoring", description: "Configure and manage automated trigger detection rules", path: "/triggers-management", icon: Target, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Continuous" },
   { title: "AI Radar Dashboard", description: "360° view of emerging threats and opportunities", path: "/ai-radar", icon: Radar, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Predictive insights" },
   { title: "Weak Signal Detection", description: "Identify early warning indicators before they escalate", path: "/pulse-intelligence", icon: Activity, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Early warning" },
   { title: "Foresight Radar", description: "Long-range strategic scanning and trend analysis", path: "/foresight-radar", icon: Eye, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Strategic foresight" },
@@ -187,12 +187,12 @@ function MyActionsPanel({ runId }: { runId: string }) {
 
 // ─── ADVANCE DATA ─────────────────────────────────────────────────────────────
 const advanceTools = [
-  { title: "Strategic Learning Center", description: "AI-powered performance intelligence — review what worked, refine what didn't, and close the improvement loop", path: "/execution-learning", icon: Brain, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "AI optimization", featured: true },
+  { title: "Strategic Learning Center", description: "Pattern-based performance intelligence — review what worked, refine what didn't, and close the improvement loop", path: "/execution-learning", icon: Brain, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "AI optimization", featured: true },
   { title: "Institutional Memory", description: "Capture and preserve organizational learnings from every execution", path: "/institutional-memory", icon: BookOpen, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Knowledge base" },
   { title: "Decision Velocity", description: "Track and improve organizational decision-making speed", path: "/decision-velocity", icon: Activity, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Performance metrics" },
   { title: "Executive Dashboard", description: "Strategic overview of organizational readiness and performance", path: "/executive-dashboard", icon: BarChart3, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Executive view" },
   { title: "Executive Analytics", description: "Deep-dive analytics on playbook effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
-  { title: "AI Intelligence Hub", description: "AI-powered pattern recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "AI recommendations" },
+  { title: "AI Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "AI recommendations" },
   { title: "Playbook Refinement", description: "Update playbooks based on lessons learned", path: "/living-playbooks", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
 ];
 const learningMetrics = [

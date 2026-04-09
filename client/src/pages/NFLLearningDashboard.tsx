@@ -241,7 +241,7 @@ export default function NFLLearningDashboard() {
               <CardHeader>
                 <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
                   <Lightbulb className="h-5 w-5 text-[#C9A84C]" />
-                  AI-Powered Optimization Suggestions
+                  Performance Optimization Insights
                 </CardTitle>
                 <CardDescription className="text-[#6B7280]">
                   Machine learning insights from your drill performance and real activations

@@ -40,7 +40,7 @@ const PARTIAL = () => <Minus className="w-5 h-5 mx-auto" style={{ color: GOLD }}
 const comparisonRows = [
   { feature: "Trigger-to-execution in < 12 minutes", execOS: "yes", crisis: "no", pm: "no" },
   { feature: "170+ pre-built strategic playbooks", execOS: "yes", crisis: "no", pm: "no" },
-  { feature: "AI-powered signal monitoring (24/7)", execOS: "yes", crisis: "partial", pm: "no" },
+  { feature: "Continuous signal monitoring (24/7)", execOS: "yes", crisis: "partial", pm: "no" },
   { feature: "Automated task & budget assignment", execOS: "yes", crisis: "no", pm: "partial" },
   { feature: "Executive stakeholder mobilization", execOS: "yes", crisis: "partial", pm: "no" },
   { feature: "Cross-functional coordination layer", execOS: "yes", crisis: "no", pm: "partial" },

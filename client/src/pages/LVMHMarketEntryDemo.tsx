@@ -336,7 +336,7 @@ export default function LVMHMarketEntryDemo() {
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• 12-minute alignment across 1,267 stakeholders</li>
                     <li>• Simultaneous 10-brand launch during Golden Week</li>
-                    <li>• Best-in-class real estate secured before rivals react</li>
+                    <li>• Prime real estate secured before rivals react</li>
                     <li>• €1.68B in value creation + undisputed leadership</li>
                     <li>• Unified strategic offensive at unprecedented scale</li>
                   </ul>

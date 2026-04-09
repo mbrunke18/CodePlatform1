@@ -58,7 +58,7 @@ const TRIGGER_SCENARIOS = [
     icon: Target,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
-    sampleSignal: "TechCorp announces AI-powered enterprise solution competing directly with your flagship product"
+    sampleSignal: "TechCorp announces Continuous enterprise solution competing directly with your flagship product"
   },
   {
     id: "regulatory_change",
@@ -177,7 +177,7 @@ export default function PilotDemo() {
         id: "2", 
         timestamp: new Date(), 
         type: "analysis", 
-        title: "AI-Powered Signal Analysis", 
+        title: "Signal Pattern Analysis", 
         description: "GPT-4o analyzing strategic impact, urgency level, and affected business units",
         valueCallout: "AI classifies severity and recommends immediate actions",
         traditionalTime: "4-8 hours for analyst review",

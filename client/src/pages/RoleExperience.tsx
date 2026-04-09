@@ -568,7 +568,7 @@ const ROLES: Record<string, RoleData> = {
     ],
     customizations: [
       { field: 'Response Timeline', before: 'Standard 30-day', after: 'Emergency 48-hour: Triage → Assemble → Document → Respond' },
-      { field: 'Document Retrieval', before: 'Manual search', after: 'Automated: pre-tagged evidence library with AI-powered retrieval' },
+      { field: 'Document Retrieval', before: 'Manual search', after: 'Automated: pre-tagged evidence library with Pattern-matched retrieval' },
       { field: 'Team Assembly', before: 'Single compliance team', after: 'Cross-functional rapid response: Compliance, Legal, Finance, IT, Operations' },
       { field: 'Communication Protocol', before: 'Ad-hoc', after: 'Structured: hourly status updates, escalation triggers at 12/24/36 hour marks' },
     ],

@@ -322,7 +322,7 @@ export default function Dashboard() {
                 <PhaseCard
                   phase="ADVANCE"
                   title="Review Film"
-                  description="AI-powered analysis and refinement"
+                  description="Continuous analysis and refinement"
                   icon={Brain}
                   color="teal"
                   link="/institutional-memory"

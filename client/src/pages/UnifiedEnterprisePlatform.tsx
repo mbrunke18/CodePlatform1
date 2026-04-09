@@ -1728,7 +1728,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-gray-900">
                       <Brain className="h-5 w-5 text-[#C9A84C]" />
-                      AI-Powered Trigger Learning
+                      Continuous Trigger Learning
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">

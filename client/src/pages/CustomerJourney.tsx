@@ -76,7 +76,7 @@ const phaseDetails = [
     id: 'detect',
     title: 'Phase 4: DETECT — VaughnMartin Signal™',
     duration: 'Days 45-60',
-    objective: 'Activate AI-powered monitoring and alerting',
+    objective: 'Activate Continuous monitoring and alerting',
     activities: [
       { name: 'Signal Ops Workspace', path: '/workspaces/detect', description: 'Central hub for signal monitoring' },
       { name: 'Configure Triggers', path: '/triggers-management', description: 'Set up trigger conditions and thresholds' },

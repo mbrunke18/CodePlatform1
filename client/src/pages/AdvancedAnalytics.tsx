@@ -178,7 +178,7 @@ export default function AdvancedAnalytics() {
         recommendations: [
           { action: 'Implement RPA for finance processes', priority: 1, estimatedROI: 280, timeToImplement: '4 months' },
           { action: 'Automate customer onboarding', priority: 2, estimatedROI: 195, timeToImplement: '3 months' },
-          { action: 'Deploy AI-powered quality assurance', priority: 3, estimatedROI: 165, timeToImplement: '5 months' }
+          { action: 'Deploy Continuous quality monitoring', priority: 3, estimatedROI: 165, timeToImplement: '5 months' }
         ]
       },
       {

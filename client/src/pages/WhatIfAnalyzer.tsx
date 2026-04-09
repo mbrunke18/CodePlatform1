@@ -253,7 +253,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
       <div className="text-center max-w-2xl mx-auto mb-2">
         <h2 className="text-2xl font-bold text-[#0A0F2E] dark:text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Quick What-If Analysis</h2>
         <p className="text-[#6B7280] dark:text-[#E8E4DC]">
-          Describe a scenario in plain language and get an instant AI-powered impact assessment.
+          Describe a scenario in plain language and get an instant Signal-based impact assessment.
           See how long it would take to respond, what risks are involved, and whether to proceed.
         </p>
       </div>
@@ -1677,7 +1677,7 @@ export default function WhatIfAnalyzer() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-700 dark:text-slate-400 mb-4">
-                    Describe a "what if" scenario in plain language and get an instant AI-powered impact assessment
+                    Describe a "what if" scenario in plain language and get an instant Signal-based impact assessment
                     with a go/no-go recommendation.
                   </p>
                   <div className="space-y-2">

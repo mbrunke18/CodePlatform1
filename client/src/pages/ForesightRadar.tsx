@@ -217,7 +217,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                 Foresight <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Radar</em>
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-                AI-powered continuous monitoring detects early signals of threats and opportunities before they become obvious. 
+                Continuous continuous monitoring detects early signals of threats and opportunities before they become obvious. 
                 See what's coming so you can act first, not react late.
               </p>
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-8">

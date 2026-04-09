@@ -188,7 +188,7 @@ function McKinseyResearchSection() {
                 { n: "Focus 1", label: "Real-time, individualized CX", active: false },
                 { n: "Focus 2", label: "Efficient and resilient operations", active: false },
                 { n: "Focus 3", label: "Accelerated R&D and breakthrough innovation", active: false },
-                { n: "Focus 4", label: "Predictive, AI-powered strategic planning", active: true },
+                { n: "Focus 4", label: "Predictive, signal-based strategic planning", active: true },
                 { n: "Focus 5", label: "Data-driven talent & workforce planning", active: false },
               ].map(({ n, label, active }) => (
                 <div key={n} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 0, background: active ? "rgba(201,168,76,0.08)" : "transparent", border: active ? "1px solid rgba(201,168,76,0.2)" : "1px solid rgba(255,255,255,0.04)" }}>

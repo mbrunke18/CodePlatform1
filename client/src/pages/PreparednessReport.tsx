@@ -351,7 +351,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
           </TabsContent>
         </Tabs>
 
-        {/* AI-Powered Forward Gap Analysis */}
+        {/* Continuous Forward Gap Analysis */}
         <div className="bg-white border rounded-sm p-8" style={{ borderColor: "#E8E4DC" }}>
           <div className="flex items-center gap-3 mb-6">
             <Brain className="h-5 w-5" style={{ color: GOLD }} />

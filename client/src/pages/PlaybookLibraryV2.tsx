@@ -446,7 +446,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <span style={{ width: 4, height: 4, borderRadius: 0, background: '#C9A84C', display: 'inline-block', flexShrink: 0 }} />
               <span style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace' }}>
-                Aligned with WEF AI Transformation Framework · Focus Area 4: Predictive, AI-Powered Strategic Planning
+                Aligned with WEF AI Transformation Framework · Focus Area 4: Predictive, Signal-Based Strategic Planning
               </span>
             </div>
           </div>

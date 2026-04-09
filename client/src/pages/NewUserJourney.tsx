@@ -445,7 +445,7 @@ export default function NewUserJourney() {
                       </li>
                       <li className="flex items-center gap-3 text-sm text-slate-600">
                         <Check className="h-4 w-4 text-[#2B8A6E]" />
-                        Enable AI-powered signal monitoring
+                        Enable Continuous signal monitoring
                       </li>
                     </ul>
                   </div>
@@ -800,7 +800,7 @@ export default function NewUserJourney() {
                               />
                               <span className="text-gray-800">%</span>
                               <Badge variant="secondary" className="bg-[#2B8A6E]/20 text-[#2B8A6E]">
-                                Best-in-class: 84.4%
+                                Infrastructure-tier: 84.4%
                               </Badge>
                             </div>
                           </div>

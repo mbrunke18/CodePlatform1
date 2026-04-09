@@ -717,7 +717,7 @@ export default function ReadinessAssessment() {
                         },
                         {
                           step: "2",
-                          title: "DETECT — AI-powered trigger monitoring",
+                          title: "DETECT — Continuous trigger monitoring",
                           description: "Continuous signal scanning across news, regulatory filings, competitor moves, and internal metrics. Get alerted before situations escalate.",
                           icon: TrendingUp,
                         },

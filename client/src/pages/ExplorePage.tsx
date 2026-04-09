@@ -30,7 +30,7 @@ const features = [
   {
     icon: Zap,
     title: 'DETECT — Signal Intelligence',
-    description: 'See AI-powered monitoring detect competitive threats, regulatory shifts, and market opportunities in real time.',
+    description: 'See Continuous monitoring detect competitive threats, regulatory shifts, and market opportunities in real time.',
     color: 'text-[#0A0F2E]',
     bg: 'bg-[#F8F7F4]',
   },

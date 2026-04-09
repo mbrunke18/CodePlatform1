@@ -137,7 +137,7 @@ export default function BoardReadiness() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10 }}>
                 <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>WEF AI Framework</span>
                 <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>·</span>
-                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Aligned with Focus Area 4: Predictive, AI-Powered Strategic Planning</span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Aligned with Focus Area 4: Predictive, Signal-Based Strategic Planning</span>
               </div>
             </div>
             <ScoreRing score={d.readinessScore} />

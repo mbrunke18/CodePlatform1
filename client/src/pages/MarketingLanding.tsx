@@ -168,7 +168,7 @@ export default function MarketingLanding() {
                   <Badge className="mb-4 bg-[#0A0F2E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Detect</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Signal™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
-                    AI-powered monitoring across 248+ data points. Detect threats and opportunities before competitors.
+                    Continuous monitoring across 248+ data points. Detect threats and opportunities before competitors.
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
@@ -264,7 +264,7 @@ export default function MarketingLanding() {
               <CardContent className="p-8">
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">24/7 Monitoring System</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
-                  Track 12 intelligence signals with AI-powered pattern recognition and proactive alerts tailored to your industry.
+                  Track 12 intelligence signals with Pattern-based recognition and proactive alerts tailored to your industry.
                 </p>
                 <Button onClick={() => setLocation('/ai-radar')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-monitoring">
                   View AI Radar <ChevronRight className="ml-2 h-4 w-4" />

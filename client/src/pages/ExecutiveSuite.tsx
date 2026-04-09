@@ -62,7 +62,7 @@ export default function ExecutiveSuite() {
   const executivePriorities = [
     "Digital transformation acceleration (+23% efficiency gains)",
     "Strategic execution protocol optimization (12-minute activation time)",
-    "AI-powered decision intelligence (85-92% accuracy rate)",
+    "Pattern-matched decision intelligence (85-92% accuracy rate)",
     "Cross-functional team collaboration enhancement",
     "Innovation pipeline management (28 active projects)"
   ];

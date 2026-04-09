@@ -225,7 +225,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
             Institutional Memory
           </h1>
           <p className="text-[#6B7280] mt-1">
-            AI-powered learning from past decisions — continuously improving recommendations
+            Pattern-based learning from past decisions — continuously improving recommendations
           </p>
         </div>
         <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" data-testid="button-record-learning">

@@ -89,7 +89,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'DETECT',
     subtitle: 'Monitor Signals',
-    narration: 'Human insight amplified by AI-powered pattern matching. We help you spot what matters—and ignore what doesn\'t.',
+    narration: 'Human insight amplified by Pattern-based matching. We help you spot what matters—and ignore what doesn\'t.',
     visual: 'detect'
   },
   {
@@ -527,7 +527,7 @@ export default function ProductTour() {
             { label: 'Signal Detection', scores: ['Custom Build', 'No', '✓ 16 Categories'] },
             { label: 'Pre-built Playbooks', scores: ['No', 'No', '✓ 170 Ready'] },
             { label: 'Execution Engine', scores: ['No', 'No', '✓ 12-Minute'] },
-            { label: 'Closed-Loop Learning', scores: ['Manual', 'Manual', '✓ AI-Powered'] }
+            { label: 'Closed-Loop Learning', scores: ['Manual', 'Manual', '✓ Continuous'] }
           ].map((row, i) => (
             <motion.div 
               key={row.label}

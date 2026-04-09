@@ -934,7 +934,7 @@ export default function InvestorLanding() {
                 <CardContent className="pt-6">
                   <div className="text-sm text-[#0A0F2E] mb-2">Net Dollar Retention</div>
                   <div className="text-4xl font-bold text-[#C9A84C] mb-1" data-testid="text-ndr">142%</div>
-                  <div className="text-xs text-[#0A0F2E]">Target: &gt;120% (Best-in-class)</div>
+                  <div className="text-xs text-[#0A0F2E]">Target: &gt;120% (Infrastructure-tier retention)</div>
                 </CardContent>
               </Card>
 

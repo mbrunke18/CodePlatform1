@@ -40,7 +40,7 @@ const workspaceTools = [
     icon: Target,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
-    stats: "AI-powered"
+    stats: "Continuous"
   },
   {
     title: "AI Radar Dashboard",

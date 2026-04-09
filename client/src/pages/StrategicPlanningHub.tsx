@@ -539,7 +539,7 @@ export default function StrategicPlanningHub() {
           <TabsContent value="planning" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { title: "Scenario Builder", desc: "Model strategic situations and define response playbooks with AI-guided prompts", icon: Lightbulb, accent: GOLD, tag: "AI-POWERED", path: "/simulation-studio" },
+                { title: "Scenario Builder", desc: "Model strategic situations and define response playbooks with AI-guided prompts", icon: Lightbulb, accent: GOLD, tag: "SIGNAL-BASED", path: "/simulation-studio" },
                 { title: "Impact Analysis", desc: "Quantify potential outcomes, cost exposure, and revenue risk across scenarios", icon: BarChart3, accent: TEAL, tag: "ANALYTICS", path: "/analytics" },
                 { title: "Stakeholder Mapping", desc: "Define who needs to be in the room — roles, authority, and notification tiers", icon: Users, accent: GOLD, tag: "COORDINATION", path: "/setup/team" },
                 { title: "Risk Assessment", desc: "Score probability and severity across all active and planned strategic initiatives", icon: Shield, accent: TEAL, tag: "INTELLIGENCE", path: "/ai-radar" },

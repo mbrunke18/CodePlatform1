@@ -652,7 +652,7 @@ export default function UATAdmin() {
                       
                       <Card className="border-[#E8E4DC] dark:border-white/10 bg-[#F8F7F4] dark:bg-white/5">
                         <CardHeader className="pb-2">
-                          <CardTitle className="text-sm text-[#0A0F2E] dark:text-white">3. AI-Powered Insight</CardTitle>
+                          <CardTitle className="text-sm text-[#0A0F2E] dark:text-white">3. Pattern-Based Insight</CardTitle>
                         </CardHeader>
                         <CardContent>
                           <p className="text-xs text-[#6B7280]">Test AI co-pilot with relevant questions</p>

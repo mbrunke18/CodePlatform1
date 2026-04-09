@@ -662,7 +662,7 @@ export default function Investors() {
             <div className="grid md:grid-cols-4 gap-4">
               {[
                 { phase: "IDENTIFY", module: "Playbook™", desc: "Build and customize strategic playbooks", color: "bg-[#0A0F2E]" },
-                { phase: "DETECT", module: "Signal™", desc: "AI-powered signal monitoring", color: "bg-[#2B8A6E]" },
+                { phase: "DETECT", module: "Signal™", desc: "Continuous signal monitoring", color: "bg-[#2B8A6E]" },
                 { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#C9A84C]" },
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#2B8A6E]" },
               ].map((phase, i) => (

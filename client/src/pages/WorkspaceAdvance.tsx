@@ -48,7 +48,7 @@ const TEAL = "#2B8A6E";
 const workspaceTools = [
   {
     title: "Strategic Learning Center",
-    description: "AI-powered performance intelligence — review what worked, refine what didn't, and close the improvement loop",
+    description: "Pattern-based performance intelligence — review what worked, refine what didn't, and close the improvement loop",
     path: "/execution-learning",
     icon: Brain,
     color: "text-[#C9A84C]",
@@ -94,7 +94,7 @@ const workspaceTools = [
   },
   {
     title: "AI Intelligence Hub",
-    description: "AI-powered pattern recognition and improvement suggestions",
+    description: "Pattern-based recognition and improvement suggestions",
     path: "/ai",
     icon: Brain,
     color: "text-[#2B8A6E]",

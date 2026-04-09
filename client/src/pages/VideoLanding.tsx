@@ -180,7 +180,7 @@ export default function VideoLanding() {
 
             <Card className="bg-white border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 shadow-none">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI-Powered Monitoring</h3>
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Continuous Signal Monitoring</h3>
                 <p className="text-[#6B7280] leading-relaxed font-light">
                   Continuous intelligence scanning. Automatic trigger detection. Real-time alerts.
                 </p>

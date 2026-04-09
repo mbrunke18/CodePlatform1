@@ -97,7 +97,7 @@ export default function SettingsPage() {
     },
     { 
       name: "Learning Pattern Recognition", 
-      description: "AI-powered organizational pattern analysis",
+      description: "Continuous organizational pattern analysis",
       enabled: true,
       critical: true
     },
