@@ -192,7 +192,7 @@ export default function Research() {
                     <CheckCircle2 className="h-5 w-5" style={{ color: TEAL }} />
                     <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: TEAL, lineHeight: 1 }}>98 days</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">Faster response with AI-powered tools</p>
+                  <p className="text-sm text-muted-foreground">Faster detection-to-response when continuous monitoring replaces manual scanning</p>
                 </div>
               </div>
               
@@ -550,10 +550,9 @@ export default function Research() {
                     <TrendingUp className="h-4 w-4 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-foreground mb-2">AI-Powered Detection</h4>
+                    <h4 className="font-bold text-foreground mb-2">Continuous Signal Detection</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      98 days faster with AI. Readiness OS' continuous monitoring detects weak signals 
-                      before they become crises.
+                      98 days faster when 248+ signals are monitored continuously. Readiness OS surfaces weak signals before they escalate — at a point when the response options are still broad.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>24/7 Monitoring</div>
                   </div>

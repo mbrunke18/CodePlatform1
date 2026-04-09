@@ -906,10 +906,10 @@ export default function InvestorLanding() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]" data-testid="heading-economics">
-                Best-in-Class Unit Economics
+                Enterprise SaaS Unit Economics
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-economics-subtitle">
-                High LTV, low CAC, exceptional retention—SaaS metrics investors love
+                Infrastructure-category retention with platform-category expansion — the combination that produces durable LTV
               </p>
             </div>
 
@@ -1030,7 +1030,7 @@ export default function InvestorLanding() {
                         <div className="font-semibold text-[#0A0F2E]">Risk Mitigation: $1.8M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">
-                        Prevented strategic missteps through AI-powered early warnings
+                        Prevented strategic missteps through pre-staged trigger detection — signals surfaced before the mobilization window closed
                       </div>
                     </div>
                   </div>
