@@ -505,15 +505,16 @@ function Router() {
         <Route path="/readiness" component={FutureReadinessDashboard} />
 
         {/* Demo & Sales Tools */}
-        {renderRoutes([
-          "/live-demo", "/try-demo", "/try-it", "/demo", "/demo-hub",
+        <Route path="/try-demo" component={TryDemo} />
+        {renderRedirects([
+          "/live-demo", "/try-it", "/demo", "/demo-hub",
           "/demo-selector", "/demo/selector", "/transformational-demo",
           "/four-phase-demo", "/4-phase-demo", "/demos",
           "/intelligence-demo", "/signals-demo", "/watch-demo",
-          "/executive-demo", "/hybrid-demo", "/executive-demo-walkthrough"
-        ], TryDemo)}
+          "/executive-demo", "/hybrid-demo", "/executive-demo-walkthrough",
+          "/sandbox-demo", "/sandbox", "/pilot-demo", "/one-click-demo"
+        ], "/industry-demos")}
         <Route path="/board-export" component={BoardExport} />
-        {renderRedirects(["/sandbox-demo", "/sandbox", "/pilot-demo"], "/try-demo")}
         <Route path="/12-minute-experience" component={TwelveMinuteTestDrive} />
         <Route path="/test-drive" component={TwelveMinuteTestDrive} />
         <Route path="/executive-scenarios" component={ExecutiveScenarioSuite} />
@@ -528,13 +529,13 @@ function Router() {
         <Route path="/integrations-legacy" component={IntegrationsPage} />
 
         {/* Live Activation & Interactive Demos */}
-        {renderRedirects(["/activation", "/demo/activation"], "/try-demo")}
+        {renderRedirects(["/activation", "/demo/activation"], "/industry-demos")}
         {renderRoutes(["/role-selector", "/demo/role-selector"], RoleSelector)}
         {renderRedirects([
           "/demo/live-activation", "/demo/ransomware", "/demo/ma-integration",
           "/demo/product-launch", "/demo/supplier-crisis", "/demo/competitive-response",
           "/demo/regulatory-crisis", "/demo/customer-crisis"
-        ], "/try-demo")}
+        ], "/industry-demos")}
 
         {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
@@ -551,7 +552,7 @@ function Router() {
         {/* Additional Pages */}
         <Route path="/demo-router" component={DemoRouter} />
         <Route path="/marketing-landing">{() => { window.location.replace('/'); return null; }}</Route>
-        <Route path="/one-click-demo">{() => { window.location.replace('/try-demo'); return null; }}</Route>
+        <Route path="/one-click-demo">{() => { window.location.replace('/industry-demos'); return null; }}</Route>
         <Route path="/ai-intelligence-suite" component={ComprehensiveAIIntelligence} />
         <Route path="/ai-intelligence">{() => <Redirect to="/ai-intelligence-suite" />}</Route>
         <Route path="/live-activation-center" component={LiveActivationCenter} />
@@ -570,15 +571,15 @@ function Router() {
         <Route path="/lvmh-demo" component={LVMHMarketEntryDemo} />
         <Route path="/shein-demo" component={SHEINTrendDemo} />
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
-        {renderRedirects(["/executive-simulation", "/simulation-demo"], "/try-demo")}
+        {renderRedirects(["/executive-simulation", "/simulation-demo"], "/industry-demos")}
         <Route path="/platform-overview" component={PlatformOverview} />
         <Route path="/capabilities" component={PlatformCapabilities} />
-        {renderRedirects(["/product-tour", "/video-tour"], "/try-demo")}
+        {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
         {renderRoutes(["/investor-presentation", "/pitch-deck"], InvestorPresentation)}
-        {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/try-demo")}
+        {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/industry-demos")}
         <Route path="/investor-resources" component={InvestorResources} />
         {renderRoutes(["/roadshow-resources", "/roadshow"], RoadshowResources)}
-        {renderRedirects(["/demo-gallery", "/keynote", "/trade-show-demo"], "/try-demo")}
+        {renderRedirects(["/demo-gallery", "/keynote", "/trade-show-demo"], "/industry-demos")}
 
         {/* Customer Experience */}
         {renderRoutes(["/north-star", "/customer-journey"], CustomerJourney)}
@@ -612,7 +613,7 @@ function Router() {
         {renderRoutes(["/investor-landing", "/executive-access"], InvestorLanding)}
         <Route path="/executive-brief" component={ExecutiveBrief} />
         <Route path="/why-execution-os" component={WhyExecutionOS} />
-        {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/try-demo")}
+        {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/industry-demos")}
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>
         <Route path="/crisis" component={CrisisResponseCenter} />

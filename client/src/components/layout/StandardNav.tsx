@@ -68,8 +68,7 @@ const SEARCH_ITEMS = [
   { label: 'Live Signal Activity Feed', path: '/command-tower', category: 'Execute', icon: Activity },
   { label: 'Execution Clock', path: '/mission-control', category: 'Execute', icon: Activity },
   { label: '12-Minute Test Drive', path: '/12-minute-experience', category: 'Demo', icon: Play },
-  { label: 'Pilot Demo', path: '/pilot-demo', category: 'Demo', icon: Rocket },
-  { label: 'Shadow Strategy Simulator', path: '/simulation-studio', category: 'Demo', icon: FlaskConical },
+  { label: 'Industry Scenarios', path: '/industry-demos', category: 'Demo', icon: Globe },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
@@ -482,31 +481,23 @@ export default function StandardNav() {
   const renderExperienceDropdown = () => {
     const primaryDemos = [
       {
+        path: '/industry-demos',
+        icon: Globe,
+        label: 'See Your Scenario',
+        sub: 'Pick your industry and concern. LVMH · Toyota · LoanDepot · Glenmark — real triggers, real playbooks, real outcomes.',
+        featured: true,
+      },
+      {
         path: '/12-minute-experience',
         icon: Play,
         label: '12-Minute Test Drive',
         sub: 'A trigger fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. No login required.',
         featured: true,
       },
-      {
-        path: '/industry-demos',
-        icon: Globe,
-        label: 'Industry Proof Cases',
-        sub: 'LVMH · Toyota · LoanDepot · Glenmark — real scenarios, real stakes, real outcomes.',
-        featured: true,
-      },
-      {
-        path: '/try-demo',
-        icon: Rocket,
-        label: 'Full Execution Simulation',
-        sub: 'Pick a crisis. Watch revenue saved live as the IDEA Framework fires in real time.',
-        featured: false,
-      },
     ];
     const deeperDemos = [
       { path: '/executive-scenarios', icon: Target, label: 'Executive Scenario Suite', sub: 'Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare.' },
       { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — preparation, activation, coordination, and learning.' },
-      { path: '/simulation-studio', icon: FlaskConical, label: 'Shadow Strategy Simulator', sub: 'The hardest to replicate. AI dry-runs any scenario and scores Survive vs. Thrive before a trigger fires.' },
       { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
       { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right playbook in 60 seconds' },
       { path: '/executive-brief', icon: FileText, label: 'One-Page Board Brief', sub: 'The full thesis, 3,600× metric, and ROI case — shareable in 60 seconds' },
