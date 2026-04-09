@@ -698,7 +698,7 @@ export default function LiveActivationCenter() {
         <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           <div className="lg:col-span-8 space-y-8">
-            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
+            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white/5 border border-white/10 p-8 rounded-none backdrop-blur-md">
               <div className="flex items-center gap-6">
                 <div className={cn("w-16 h-16 flex items-center justify-center border text-white", colors.border, colors.bg)}>
                   {getPlaybookIcon(activePlaybook?.icon || 'shield')}
@@ -729,7 +729,7 @@ export default function LiveActivationCenter() {
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-white/5 border-white/10 p-6 rounded-3xl">
+              <Card className="bg-white/5 border-white/10 p-6 rounded-none">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Stakeholder Alignment</div>
                   <Users className="w-4 h-4 text-[#C9A84C]" />
@@ -739,7 +739,7 @@ export default function LiveActivationCenter() {
                 </div>
                 <Progress value={(stakeholders.filter(s => s.status === 'acknowledged').length / stakeholders.length) * 100} className="h-2 bg-white/10" />
               </Card>
-              <Card className="bg-white/5 border-white/10 p-6 rounded-3xl">
+              <Card className="bg-white/5 border-white/10 p-6 rounded-none">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Task Execution</div>
                   <CheckCircle2 className="w-4 h-4 text-[#2B8A6E]" />
@@ -749,7 +749,7 @@ export default function LiveActivationCenter() {
                 </div>
                 <Progress value={(tasks.filter(t => t.status === 'completed').length / tasks.length) * 100} className="h-2 bg-white/10" />
               </Card>
-              <Card className="bg-white/5 border-white/10 p-6 rounded-3xl">
+              <Card className="bg-white/5 border-white/10 p-6 rounded-none">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Current Phase</div>
                   <Zap className="w-4 h-4 text-[#C9A84C]" />
@@ -762,7 +762,7 @@ export default function LiveActivationCenter() {
               </Card>
             </div>
 
-            <Card className="bg-white/5 border-white/10 rounded-3xl overflow-hidden">
+            <Card className="bg-white/5 border-white/10 rounded-none overflow-hidden">
               <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
                 <div className="flex items-center gap-3">
                   <Users className="w-5 h-5 text-[#C9A84C]" />
@@ -813,7 +813,7 @@ export default function LiveActivationCenter() {
               </div>
             </Card>
 
-            <Card className="bg-white/5 border-white/10 rounded-3xl overflow-hidden">
+            <Card className="bg-white/5 border-white/10 rounded-none overflow-hidden">
               <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />
@@ -885,7 +885,7 @@ export default function LiveActivationCenter() {
           </div>
 
           <div className="lg:col-span-4 space-y-8">
-            <Card className="bg-white/5 border-white/10 rounded-3xl overflow-hidden flex flex-col h-[calc(100vh-140px)] sticky top-6">
+            <Card className="bg-white/5 border-white/10 rounded-none overflow-hidden flex flex-col h-[calc(100vh-140px)] sticky top-6">
               <div className="p-6 border-b border-white/10 bg-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Activity className="w-5 h-5 text-[#C9A84C]" />
@@ -932,10 +932,10 @@ export default function LiveActivationCenter() {
           const targetMet = simMinutes <= 12;
           return (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-6 backdrop-blur-xl bg-[#0A0F2E]/80 animate-in fade-in duration-500 overflow-y-auto">
-            <Card className="max-w-2xl w-full bg-white border-[#E8E4DC] rounded-3xl shadow-[0_0_100px_rgba(201,168,76,0.15)] overflow-hidden my-6">
+            <Card className="max-w-2xl w-full bg-white border-[#E8E4DC] rounded-none shadow-[0_0_100px_rgba(201,168,76,0.15)] overflow-hidden my-6">
               <div className="h-2 bg-[#C9A84C]" />
               <div className="p-10 text-center space-y-6">
-                <div className="w-20 h-20 bg-[#2B8A6E]/10 rounded-3xl flex items-center justify-center mx-auto border border-[#2B8A6E]/20">
+                <div className="w-20 h-20 bg-[#2B8A6E]/10 rounded-none flex items-center justify-center mx-auto border border-[#2B8A6E]/20">
                   <Trophy className="w-10 h-10 text-[#2B8A6E]" />
                 </div>
                 <div className="space-y-3">

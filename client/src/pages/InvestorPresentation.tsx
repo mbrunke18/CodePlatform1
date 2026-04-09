@@ -922,7 +922,7 @@ function InvestorPresentation() {
     <PageLayout embedded={isFullscreen}>
       
       <main className={`relative ${isFullscreen ? 'h-screen w-screen overflow-hidden' : 'max-w-7xl mx-auto px-6 py-12 h-[calc(100vh-200px)]'}`}>
-        <Card className={`h-full border-[#E8E4DC] bg-white overflow-hidden relative transition-all duration-700 ${isFullscreen ? 'border-0 rounded-none' : 'rounded-2xl'}`}>
+        <Card className={`h-full border-[#E8E4DC] bg-white overflow-hidden relative transition-all duration-700 rounded-none ${isFullscreen ? 'border-0' : ''}`}>
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0A0F2E 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
           
           <AnimatePresence mode="wait">

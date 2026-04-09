@@ -571,7 +571,7 @@ export default function Investors() {
               <h2 className="text-2xl font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">30 Days to Still Be Planning. 12 Minutes to Live Execution.</h2>
               <p className="text-[#6B7280] text-sm font-medium max-w-2xl mx-auto">Traditional enterprises spend 30 days just getting the right people in the room — roles unassigned, tasks undefined, communications not sent. Readiness OS delivers a fully deployed organization in 12 minutes. Execution is already underway before competitors have scheduled their first call.</p>
             </div>
-            <ExecutionGapDiagram className="rounded-2xl border border-[#E8E4DC]" />
+            <ExecutionGapDiagram className="border border-[#E8E4DC]" />
           </motion.div>
 
           {/* Scenarios */}

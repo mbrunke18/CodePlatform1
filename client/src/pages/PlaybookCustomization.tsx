@@ -265,7 +265,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
 
         {/* Customization Dialog */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialog}>
-          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border-[#E8E4DC] p-0">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto border-[#E8E4DC] p-0">
             <div className="h-2 bg-[#C9A84C]" />
             <div className="p-10">
               <DialogHeader className="mb-10">
