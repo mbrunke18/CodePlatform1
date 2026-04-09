@@ -9,10 +9,8 @@ function resetAllScrollContainers() {
   const root = document.getElementById('root');
   if (root) root.scrollTop = 0;
 
-  document.querySelectorAll(
-    '[data-scroll-main], [data-scroll-container], main, .overflow-auto, .overflow-y-auto'
-  ).forEach(el => {
-    if (el instanceof HTMLElement) {
+  document.querySelectorAll('*').forEach(el => {
+    if (el instanceof HTMLElement && el.scrollTop > 0) {
       el.scrollTop = 0;
     }
   });
@@ -25,12 +23,10 @@ export function scrollToTop() {
     resetAllScrollContainers();
   });
 
-  // Catch pages that scroll in their own useEffect (fires ~after mount)
   const t1 = setTimeout(resetAllScrollContainers, 80);
-  const t2 = setTimeout(resetAllScrollContainers, 200);
-  const t3 = setTimeout(resetAllScrollContainers, 400);
+  const t2 = setTimeout(resetAllScrollContainers, 220);
+  const t3 = setTimeout(resetAllScrollContainers, 450);
 
-  // Return cleanup so callers can cancel if needed
   return () => {
     clearTimeout(t1);
     clearTimeout(t2);
