@@ -25,10 +25,10 @@ The app runs on port 5000 with hot reload enabled.
 
 ## Project Overview
 
-VaughnMartin Execution OS transforms 72-hour strategic coordination into 12-minute execution through:
+VaughnMartin Readiness OS compresses the 30-day mobilization cycle to 12-minute execution through:
 - **170 pre-built playbooks** across 9 strategic domains
 - **IDEA Framework™** (Identify, Detect, Execute, Advance)
-- **Human-AI partnership** for decision support — AI monitors and recommends, humans approve and decide
+- **AI monitors, executives authorize** — no playbook activates without executive sign-off. The phrase "human-AI partnership" is RETIRED from all copy.
 - **248+ data points** across 20 signal categories, monitored in real time
 
 ---

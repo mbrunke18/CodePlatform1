@@ -46,7 +46,7 @@ const MILESTONE_CONFIG = {
   setup:    { label: "Setup",    color: "rgba(255,255,255,0.3)" },
   "dry-run":{ label: "Dry Run", color: GOLD },
   live:     { label: "Live",     color: TEAL },
-  readout:  { label: "Readout",  color: "#8B5CF6" },
+  readout:  { label: "Readout",  color: GOLD },
 };
 
 function StatCell({ value, label, accent }: { value: string | number; label: string; accent?: string }) {

@@ -15,8 +15,8 @@ const BORDER = '#E8E4DC';
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const DOMAIN_COLORS: Record<string, string> = {
-  financial: GOLD, operational: TEAL, market: '#8B5CF6', technology: '#3B82F6',
-  regulatory: '#F97316', talent: '#EC4899', crisis: '#EF4444', competitive: NAVY, esg: '#10B981',
+  financial: GOLD, operational: TEAL, market: TEAL, technology: NAVY,
+  regulatory: GOLD, talent: TEAL, crisis: '#EF4444', competitive: NAVY, esg: TEAL,
 };
 
 const DOC_TYPES = [
@@ -380,8 +380,8 @@ function PlaybookResults({ playbooks, savedIds, setSavedIds }: { playbooks: any[
   const BORDER = '#E8E4DC';
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
   const DOMAIN_COLORS: Record<string, string> = {
-    financial: GOLD, operational: TEAL, market: '#8B5CF6', technology: '#3B82F6',
-    regulatory: '#F97316', talent: '#EC4899', crisis: '#EF4444', competitive: NAVY, esg: '#10B981',
+    financial: GOLD, operational: TEAL, market: TEAL, technology: NAVY,
+    regulatory: GOLD, talent: TEAL, crisis: '#EF4444', competitive: NAVY, esg: TEAL,
   };
 
   return (

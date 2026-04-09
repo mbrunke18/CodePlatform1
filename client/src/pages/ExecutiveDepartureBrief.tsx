@@ -28,8 +28,8 @@ const STAKEHOLDERS = [
   { role: "CEO",                   action: "Acknowledged — interim plan reviewed",    delay: 1400, color: TEAL  },
   { role: "CHRO",                  action: "Acknowledged — search protocol activated",delay: 1900, color: TEAL  },
   { role: "General Counsel",       action: "Non-compete review initiated",            delay: 2400, color: TEAL  },
-  { role: "VP Investor Relations", action: "Talking points pre-loaded",               delay: 2900, color: "#8B5CF6" },
-  { role: "VP Controller",         action: "Interim CFO designation sent",            delay: 3400, color: "#8B5CF6" },
+  { role: "VP Investor Relations", action: "Talking points pre-loaded",               delay: 2900, color: GOLD },
+  { role: "VP Controller",         action: "Interim CFO designation sent",            delay: 3400, color: GOLD },
 ];
 
 /* ── Task deployment data ─────────────────────────── */

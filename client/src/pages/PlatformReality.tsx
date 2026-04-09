@@ -324,7 +324,7 @@ export default function PlatformReality() {
                 gap: "30 days unchanged",
                 cta: "See the Consulting Comparison",
                 ctaPath: "/vs-consulting",
-                accent: "#F59E0B",
+                accent: "#C9A84C",
               },
               {
                 category: "ServiceNow / Tool Migration",

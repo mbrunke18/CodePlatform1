@@ -281,7 +281,7 @@ function ReadinessCompoundsPanel() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 0, position: 'relative' }}>
                     <div style={{ position: 'absolute', left: 11, top: 8, bottom: 8, width: 1, background: '#E8E4DC' }} />
                     {pb.history.map((h, hi) => {
-                      const typeColor = h.type === 'added' ? TEAL : h.type === 'refined' ? GOLD : h.type === 'created' ? '#8B5CF6' : '#9CA3AF';
+                      const typeColor = h.type === 'added' ? TEAL : h.type === 'refined' ? GOLD : h.type === 'created' ? NAVY : '#9CA3AF';
                       const TypeIcon = h.type === 'added' ? Plus : h.type === 'refined' ? RefreshCw : h.type === 'created' ? Star : GitCommit;
                       return (
                         <div key={hi} style={{ display: 'flex', gap: 14, padding: '8px 0', position: 'relative' }}>

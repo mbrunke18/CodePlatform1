@@ -80,7 +80,7 @@ export default function IntelligenceHub() {
               {[
                 { label: 'Active Signals', value: String(activeTriggers), color: GOLD },
                 { label: 'Weak Signals', value: String(weakSignals), color: TEAL },
-                { label: 'Oracle Patterns', value: String(oraclePatterns), color: '#8B5CF6' },
+                { label: 'Oracle Patterns', value: String(oraclePatterns), color: TEAL },
               ].map(b => (
                 <div key={b.label} className="px-4 py-3 text-center" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
                   <div className="text-2xl font-bold" style={{ ...CG, color: b.color }}>{b.value}</div>
@@ -238,7 +238,7 @@ export default function IntelligenceHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div>
-                  <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Compound Threat Intelligence</h1><Badge className="bg-[#8B5CF6] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">GPT-4o</Badge></div>
+                  <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Compound Threat Intelligence</h1><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">System-Analyzed</Badge></div>
                   <p className="text-[#6B7280] mt-1">Cross-domain disruption synthesis — when multiple weak signals converge into an acute threat</p>
                 </div>
                 <Link href="/intelligence-control-center"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Intelligence Center</Button></Link>
@@ -329,7 +329,7 @@ export default function IntelligenceHub() {
                   {[
                     { action: 'Playbook Activated', detail: 'M&A Integration Protocol v3 — authorized by CEO', time: '2 min ago', type: 'execute', color: TEAL },
                     { action: 'Trigger Threshold Changed', detail: 'Competitive Intelligence: sensitivity raised from Medium to High', time: '14 min ago', type: 'config', color: GOLD },
-                    { action: 'AI Brief Generated', detail: 'Supply Chain Disruption Brief — Crisis Response playbook', time: '31 min ago', type: 'ai', color: '#8B5CF6' },
+                    { action: 'Brief Generated', detail: 'Supply Chain Disruption Brief — Crisis Response playbook', time: '31 min ago', type: 'ai', color: TEAL },
                     { action: 'Role Assignment Updated', detail: 'CFO added to Financial Markets trigger notification list', time: '1 hr ago', type: 'config', color: NAVY },
                     { action: 'Playbook Performance Logged', detail: 'Regulatory Response — 78% target met rate recorded', time: '2 hr ago', type: 'outcome', color: TEAL },
                   ].map((e, i) => (

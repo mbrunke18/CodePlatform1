@@ -149,7 +149,7 @@ export default function BoardReadiness() {
           <StatCard label="Triggers Monitored (90d)" value={d.triggerCount90d} icon={Zap} color={GOLD} sub={`${d.triggerCount30d} in past 30 days`} />
           <StatCard label="Avg Response Time" value={d.avgResponseMinutes ? `${d.avgResponseMinutes}m` : '< 12m'} icon={Clock} color={TEAL} sub="vs. 30-day industry baseline" />
           <StatCard label="Playbooks Activated" value={d.activationCount} icon={BookOpen} color={NAVY} sub="Across all execution events" />
-          <StatCard label="Stakeholders Enrolled" value={d.stakeholderCount} icon={Users} color="#8B5CF6" sub="Receiving real-time alerts" />
+          <StatCard label="Stakeholders Enrolled" value={d.stakeholderCount} icon={Users} color={TEAL} sub="Receiving real-time alerts" />
         </div>
 
         {/* Two columns: domains + dividend */}

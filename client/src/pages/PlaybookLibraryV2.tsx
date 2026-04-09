@@ -51,8 +51,8 @@ const PILLARS = [
   { id: "business", label: "Business Model", color: "#C9A84C", domains: ["financial", "competitive", "ma"] },
   { id: "operating", label: "Operating Model", color: "#2B8A6E", domains: ["gtm", "crisis"] },
   { id: "governance", label: "Governance", color: "#0A0F2E", domains: ["regulatory", "strategic"] },
-  { id: "workforce", label: "Workforce", color: "#7B5EA7", domains: ["talent"] },
-  { id: "technology", label: "Tech & Data", color: "#3BAF8A", domains: ["technology", "crisis"] },
+  { id: "workforce", label: "Workforce", color: "#2B8A6E", domains: ["talent"] },
+  { id: "technology", label: "Tech & Data", color: "#0A0F2E", domains: ["technology", "crisis"] },
 ];
 
 const URGENCY_FILTERS = [

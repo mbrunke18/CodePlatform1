@@ -977,7 +977,7 @@ function CompetitiveClaritySection() {
   const comparisons = [
     {
       tag: "vs. Management Consulting",
-      tagColor: "#F59E0B",
+      tagColor: "#C9A84C",
       heading: "McKinsey tells you what to do.",
       headingEm: "We make sure it happens.",
       body: "$300K–$500K buys you PDFs on SharePoint. Nobody can find them when a trigger fires. The $500K investment sits on a shelf while the organization still takes 30 days to coordinate.",
@@ -999,7 +999,7 @@ function CompetitiveClaritySection() {
     },
     {
       tag: "vs. Thought Leadership",
-      tagColor: "#8B5CF6",
+      tagColor: "#2B8A6E",
       heading: "They described the problem.",
       headingEm: "We shipped the solution.",
       body: "Every keynote, framework, and McKinsey deck proves the mobilization gap is real. The audience nods. The room agrees. The organization still takes 30 days to respond when a trigger fires.",

@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 8, 2026 (rev 19) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 9, 2026 (rev 20) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -14,7 +14,7 @@
 - **170 active playbooks** across 9 domains
 - **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
-- **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. No self-serve trial. No "Start Free Trial" button anywhere.
+- **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. **Three access paths exist** (see Section 5): (1) Request Access `/request-access` — magic link via Resend, no password; (2) Trial Access `/trial-access` — 48-hour full platform; (3) Demo Access `/demo-access` — token-based controlled access. There is no public "Start Free Trial" button on marketing pages — access is gated.
 - **Executive authority preserved** — No playbook activates without executive authorization. AI monitors, scores signals, and recommends the right playbook. Executives decide. The decision is the same; the mobilization cycle surrounding it is compressed from 30 days to 12 minutes. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
 
 **Signal Vocabulary — Three Different Numbers, Three Different Layers (do not conflate):**
@@ -182,7 +182,10 @@ logout();
 const { user, isAuthenticated, isLoading } = useAuth();
 
 if (isLoading) return <div>Loading...</div>;
-if (!isAuthenticated) return <Navigate to="/api/login" />;
+// ✅ CORRECT — redirect unauthenticated users to request-access, NOT /api/login
+if (!isAuthenticated) return <Navigate to="/request-access" />;
+// ❌ WRONG — /api/login bypasses the branded access gate
+// if (!isAuthenticated) return <Navigate to="/api/login" />;
 ```
 
 ### Server-side Auth Helpers (routes.ts)

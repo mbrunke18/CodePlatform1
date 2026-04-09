@@ -340,7 +340,7 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 0, padding: '9px 14px', marginBottom: 14 }}>
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>AI RECOMMENDED PLAYBOOK</div>
+          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>RECOMMENDED PLAYBOOK</div>
           <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
         </div>
       </div>
