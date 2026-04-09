@@ -206,7 +206,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
         background: isCritical ? 'rgba(192,57,43,0.07)' : 'rgba(255,255,255,0.04)',
         border: `1px solid ${isCritical ? 'rgba(192,57,43,0.3)' : 'rgba(255,255,255,0.1)'}`,
         borderLeft: `5px solid ${cc}`,
-        borderRadius: 10,
+        borderRadius: 0,
         padding: '20px 22px',
         marginBottom: 12,
       }}
@@ -218,7 +218,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
             <PulseOrb color={cc} size={10} animate={d.status !== 'acknowledged'} />
             <span style={{
               background: cc, color: '#fff',
-              fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 3, letterSpacing: '0.1em',
+              fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em',
             }}>
               {confidenceLabel(d.confidenceScore).toUpperCase()}
             </span>
@@ -237,7 +237,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
         <div style={{
           background: `linear-gradient(135deg, ${cc}22 0%, ${cc}11 100%)`,
           border: `1px solid ${cc}55`,
-          borderRadius: 10, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80,
+          borderRadius: 0, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80,
         }}>
           <div style={{ color: cc, fontWeight: 800, fontSize: 34, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
             {d.confidenceScore}
@@ -252,7 +252,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
       <div style={{
         display: 'flex', alignItems: 'center', gap: 8,
         background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)',
-        borderRadius: 7, padding: '9px 14px', marginBottom: 14,
+        borderRadius: 0, padding: '9px 14px', marginBottom: 14,
       }}>
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
@@ -270,7 +270,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
           style={{
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
             background: GOLD, color: NAVY,
-            borderRadius: 8, padding: '12px 0',
+            borderRadius: 0, padding: '12px 0',
             fontWeight: 800, fontSize: 13, letterSpacing: '0.05em',
             textDecoration: 'none',
           }}
@@ -283,7 +283,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
             background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
             color: 'rgba(255,255,255,0.7)',
-            borderRadius: 8, padding: '12px 16px',
+            borderRadius: 0, padding: '12px 16px',
             fontWeight: 600, fontSize: 12,
             textDecoration: 'none',
           }}
@@ -323,7 +323,7 @@ function DomainStatusGrid({ detections }: { detections: Detection[] }) {
             <div key={domain} style={{
               background: hasAlert ? 'rgba(201,168,76,0.08)' : 'rgba(43,138,110,0.06)',
               border: `1px solid ${hasAlert ? 'rgba(201,168,76,0.25)' : 'rgba(43,138,110,0.2)'}`,
-              borderRadius: 7, padding: '10px 10px 8px',
+              borderRadius: 0, padding: '10px 10px 8px',
               textAlign: 'center',
             }}>
               <PulseOrb color={color} size={8} animate={hasAlert} />
@@ -485,7 +485,7 @@ export default function CommandTower() {
                 </span>
                 <span style={{
                   background: 'rgba(201,168,76,0.15)', color: GOLD,
-                  fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 3,
+                  fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0,
                   letterSpacing: '0.12em',
                 }}>
                   EXECUTION OS
@@ -509,7 +509,7 @@ export default function CommandTower() {
               display: 'flex', alignItems: 'center', gap: 10,
               background: statusCfg.bg,
               border: `1px solid ${statusCfg.border}`,
-              borderRadius: 8, padding: '10px 22px',
+              borderRadius: 0, padding: '10px 22px',
             }}
           >
             <PulseOrb color={statusCfg.color} size={11} animate={statusCfg.pulse} />
@@ -520,7 +520,7 @@ export default function CommandTower() {
             {systemStatus === 'alert' && criticalCount > 0 && (
               <span style={{
                 background: RED_ALT, color: '#fff', fontSize: 10, fontWeight: 800,
-                padding: '1px 7px', borderRadius: 12, marginLeft: 4,
+                padding: '1px 7px', borderRadius: 0, marginLeft: 4,
               }}>
                 {criticalCount} CRITICAL
               </span>
@@ -541,7 +541,7 @@ export default function CommandTower() {
               onClick={handleManualRefresh}
               style={{
                 background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)',
-                borderRadius: 6, padding: '7px 12px', color: 'rgba(255,255,255,0.6)',
+                borderRadius: 0, padding: '7px 12px', color: 'rgba(255,255,255,0.6)',
                 cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11,
               }}
             >
@@ -552,7 +552,7 @@ export default function CommandTower() {
               <a style={{
                 display: 'flex', alignItems: 'center', gap: 7,
                 background: GOLD, color: NAVY,
-                borderRadius: 7, padding: '9px 18px',
+                borderRadius: 0, padding: '9px 18px',
                 fontWeight: 800, fontSize: 12, letterSpacing: '0.06em',
                 textDecoration: 'none', whiteSpace: 'nowrap',
               }}>
@@ -574,7 +574,7 @@ export default function CommandTower() {
           ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
             <div key={label} style={{
               background: bg, border: `1px solid ${border}`,
-              borderRadius: 10, padding: '18px 20px',
+              borderRadius: 0, padding: '18px 20px',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
                 <Icon size={13} color={color} />
@@ -602,7 +602,7 @@ export default function CommandTower() {
           <div style={{
             background: 'rgba(255,255,255,0.02)',
             border: detections.length > 0 ? '1px solid rgba(201,168,76,0.2)' : '1px solid rgba(255,255,255,0.07)',
-            borderRadius: 12, padding: '20px 22px',
+            borderRadius: 0, padding: '20px 22px',
           }}>
             {/* Zone Header */}
             <div style={{
@@ -614,7 +614,7 @@ export default function CommandTower() {
                 <div style={{
                   background: detections.length > 0 ? 'rgba(201,168,76,0.15)' : 'rgba(43,138,110,0.12)',
                   border: `1px solid ${detections.length > 0 ? 'rgba(201,168,76,0.3)' : 'rgba(43,138,110,0.25)'}`,
-                  borderRadius: 6, padding: '4px 10px',
+                  borderRadius: 0, padding: '4px 10px',
                   display: 'flex', alignItems: 'center', gap: 6,
                 }}>
                   <PulseOrb color={detections.length > 0 ? GOLD : TEAL} size={8} animate />
@@ -641,7 +641,7 @@ export default function CommandTower() {
                   style={{
                     background: 'rgba(43,138,110,0.07)',
                     border: '1px solid rgba(43,138,110,0.2)',
-                    borderRadius: 12, padding: '60px 24px',
+                    borderRadius: 0, padding: '60px 24px',
                     textAlign: 'center',
                   }}
                 >
@@ -656,7 +656,7 @@ export default function CommandTower() {
                     <a href="/live-activation-center" style={{
                       display: 'flex', alignItems: 'center', gap: 6,
                       background: GOLD, color: NAVY,
-                      borderRadius: 8, padding: '11px 22px',
+                      borderRadius: 0, padding: '11px 22px',
                       fontWeight: 800, fontSize: 13, textDecoration: 'none',
                     }}>
                       <Zap size={14} /> Activate Playbook
@@ -665,7 +665,7 @@ export default function CommandTower() {
                       display: 'flex', alignItems: 'center', gap: 6,
                       background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
                       color: 'rgba(255,255,255,0.7)',
-                      borderRadius: 8, padding: '11px 22px',
+                      borderRadius: 0, padding: '11px 22px',
                       fontWeight: 600, fontSize: 13, textDecoration: 'none',
                     }}>
                       <Eye size={13} /> View Triggers
@@ -687,7 +687,7 @@ export default function CommandTower() {
             <div style={{
               background: 'rgba(255,255,255,0.02)',
               border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 12, padding: '18px 20px',
+              borderRadius: 0, padding: '18px 20px',
             }}>
               <DomainStatusGrid detections={detections} />
             </div>
@@ -696,7 +696,7 @@ export default function CommandTower() {
             <div style={{
               background: 'rgba(255,255,255,0.02)',
               border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 12, padding: '18px 20px',
+              borderRadius: 0, padding: '18px 20px',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -706,7 +706,7 @@ export default function CommandTower() {
                   </span>
                 </div>
                 {activations.length > 0 && (
-                  <span style={{ background: 'rgba(43,138,110,0.15)', color: TEAL, fontSize: 10, fontWeight: 700, padding: '1px 8px', borderRadius: 10 }}>
+                  <span style={{ background: 'rgba(43,138,110,0.15)', color: TEAL, fontSize: 10, fontWeight: 700, padding: '1px 8px', borderRadius: 0 }}>
                     {activations.length} total
                   </span>
                 )}
@@ -734,7 +734,7 @@ export default function CommandTower() {
                           background: isRecent ? 'rgba(43,138,110,0.1)' : 'rgba(255,255,255,0.04)',
                           border: `1px solid ${isRecent ? 'rgba(43,138,110,0.25)' : 'rgba(255,255,255,0.07)'}`,
                           borderLeft: `4px solid ${isRecent ? TEAL : 'rgba(255,255,255,0.15)'}`,
-                          borderRadius: 8, padding: '12px 14px',
+                          borderRadius: 0, padding: '12px 14px',
                         }}
                       >
                         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
@@ -746,7 +746,7 @@ export default function CommandTower() {
                             <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>{a.domainName}</span>
                           </div>
                           {a.successRating != null && (
-                            <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 5, flexShrink: 0 }}>
+                            <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 0, flexShrink: 0 }}>
                               {a.successRating}%
                             </div>
                           )}
@@ -766,7 +766,7 @@ export default function CommandTower() {
             <div style={{
               background: 'rgba(255,255,255,0.02)',
               border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: 12, padding: '18px 20px',
+              borderRadius: 0, padding: '18px 20px',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 14 }}>
                 <Clock size={13} color={TEAL} />
@@ -787,7 +787,7 @@ export default function CommandTower() {
               <div style={{
                 background: `linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(43,138,110,0.08) 100%)`,
                 border: '1px solid rgba(201,168,76,0.2)',
-                borderRadius: 8, padding: '14px 16px',
+                borderRadius: 0, padding: '14px 16px',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>
                   <Zap size={12} color={GOLD} />
@@ -804,7 +804,7 @@ export default function CommandTower() {
             <div style={{ display: 'flex', gap: 10 }}>
               <a href="/live-activation-center" style={{
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                background: GOLD, color: NAVY, borderRadius: 8, padding: '13px 0',
+                background: GOLD, color: NAVY, borderRadius: 0, padding: '13px 0',
                 fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none',
               }}>
                 <Zap size={13} /> ACTIVATE
@@ -812,7 +812,7 @@ export default function CommandTower() {
               <a href="/live-detection-feed" style={{
                 flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                 background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
-                color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '13px 0',
+                color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '13px 0',
                 fontWeight: 600, fontSize: 12, textDecoration: 'none',
               }}>
                 <Radio size={12} /> FEED
@@ -831,7 +831,7 @@ export default function CommandTower() {
           marginTop: 24,
           background: 'rgba(255,255,255,0.03)',
           border: '1px solid rgba(255,255,255,0.08)',
-          borderRadius: 10, padding: '14px 20px',
+          borderRadius: 0, padding: '14px 20px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
           flexWrap: 'wrap',
         }}>
@@ -852,7 +852,7 @@ export default function CommandTower() {
               <Link key={href} href={href} style={{
                 display: 'flex', alignItems: 'center', gap: 5,
                 background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 6, padding: '6px 12px',
+                borderRadius: 0, padding: '6px 12px',
                 color, fontSize: 11, fontWeight: 600,
                 textDecoration: 'none', transition: 'all 0.14s',
               }}>
@@ -861,7 +861,7 @@ export default function CommandTower() {
             ))}
             <Link href="/request-access" style={{
               display: 'flex', alignItems: 'center', gap: 5,
-              background: GOLD, borderRadius: 6, padding: '6px 14px',
+              background: GOLD, borderRadius: 0, padding: '6px 14px',
               color: NAVY, fontSize: 11, fontWeight: 800,
               textDecoration: 'none', letterSpacing: '0.04em',
             }}>
@@ -882,7 +882,7 @@ export default function CommandTower() {
             flexShrink: 0,
             background: 'rgba(43,138,110,0.12)',
             border: '1px solid rgba(43,138,110,0.2)',
-            borderRadius: 5, padding: '4px 10px',
+            borderRadius: 0, padding: '4px 10px',
           }}>
             <PulseOrb color={TEAL} size={7} />
             <span style={{ color: TEAL, fontWeight: 700, fontSize: 10, letterSpacing: '0.1em' }}>

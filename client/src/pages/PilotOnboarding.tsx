@@ -218,14 +218,14 @@ export default function PilotOnboarding() {
 
           <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 40px', position: 'relative' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-              <div style={{ width: 3, height: 20, background: GOLD, borderRadius: 2 }} />
+              <div style={{ width: 3, height: 20, background: GOLD, borderRadius: 0 }} />
               <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,228,0.5)', textTransform: 'uppercase' }}>Pilot Onboarding Guide</span>
             </div>
-            <h1 style={{ fontSize: 42, fontWeight: 700, color: '#F0EDE4', margin: '0 0 16px', lineHeight: 1.15, fontFamily: "'Inter', sans-serif" }}>
+            <h1 style={{ fontSize: 42, fontWeight: 700, color: '#F0EDE4', margin: '0 0 16px', lineHeight: 1.15, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
               Your First 90 Days<br />
               <span style={{ color: GOLD }}>Inside Readiness OS</span>
             </h1>
-            <p style={{ fontSize: 17, color: 'rgba(240,237,228,0.65)', maxWidth: 620, margin: '0 0 40px', lineHeight: 1.65, fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 17, color: 'rgba(240,237,228,0.65)', maxWidth: 620, margin: '0 0 40px', lineHeight: 1.65, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
               This guide is built for your pilot team — not a generic walkthrough.
               Each role has a specific view, a specific set of decisions, and a specific
               definition of success at day 90.
@@ -242,7 +242,7 @@ export default function PilotOnboarding() {
               ].map(p => (
                 <div key={p.label} style={{
                   display: 'flex', alignItems: 'center', gap: 7,
-                  padding: '7px 14px', borderRadius: 6,
+                  padding: '7px 14px', borderRadius: 0,
                   background: 'rgba(240,237,228,0.06)',
                   border: '1px solid rgba(240,237,228,0.12)',
                 }}>
@@ -267,7 +267,7 @@ export default function PilotOnboarding() {
                   background: 'transparent',
                   borderBottom: activeRole === r.id ? `3px solid ${r.color}` : '3px solid transparent',
                   color: activeRole === r.id ? NAVY : 'rgba(10,15,46,0.45)',
-                  fontFamily: "'Inter', sans-serif", fontSize: 13, fontWeight: activeRole === r.id ? 600 : 400,
+                  fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 13, fontWeight: activeRole === r.id ? 600 : 400,
                   transition: 'all 0.2s ease', whiteSpace: 'nowrap',
                 }}
               >
@@ -285,7 +285,7 @@ export default function PilotOnboarding() {
           <div style={{ marginBottom: 48 }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 16 }}>
               <div style={{
-                width: 52, height: 52, borderRadius: 12, flexShrink: 0,
+                width: 52, height: 52, borderRadius: 0, flexShrink: 0,
                 background: `rgba(${role.color === GOLD ? '201,168,76' : role.color === TEAL ? '43,138,110' : '124,111,212'},0.12)`,
                 border: `1px solid ${role.color}30`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -294,9 +294,9 @@ export default function PilotOnboarding() {
                 {role.icon}
               </div>
               <div>
-                <h2 style={{ fontSize: 30, fontWeight: 700, color: NAVY, margin: '0 0 4px', fontFamily: "'Inter', sans-serif" }}>{role.title}</h2>
-                <p style={{ fontSize: 15, color: 'rgba(10,15,46,0.5)', margin: '0 0 6px', fontFamily: "'Inter', sans-serif" }}>{role.subtitle}</p>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 12px', borderRadius: 20, background: `${role.color}14`, border: `1px solid ${role.color}25` }}>
+                <h2 style={{ fontSize: 30, fontWeight: 700, color: NAVY, margin: '0 0 4px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{role.title}</h2>
+                <p style={{ fontSize: 15, color: 'rgba(10,15,46,0.5)', margin: '0 0 6px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{role.subtitle}</p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 12px', borderRadius: 0, background: `${role.color}14`, border: `1px solid ${role.color}25` }}>
                   <span style={{ width: 5, height: 5, borderRadius: '50%', background: role.color, display: 'inline-block' }} />
                   <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1, color: role.color, textTransform: 'uppercase' }}>{role.who}</span>
                 </div>
@@ -307,32 +307,32 @@ export default function PilotOnboarding() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 24 }}>
 
             {/* What they see */}
-            <div style={{ background: '#fff', borderRadius: 12, border: '1px solid rgba(10,15,46,0.09)', padding: 28 }}>
+            <div style={{ background: '#fff', borderRadius: 0, border: '1px solid rgba(10,15,46,0.09)', padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22 }}>
-                <div style={{ width: 3, height: 16, background: role.color, borderRadius: 2 }} />
+                <div style={{ width: 3, height: 16, background: role.color, borderRadius: 0 }} />
                 <h3 style={{ fontSize: 11, fontWeight: 700, color: 'rgba(10,15,46,0.4)', letterSpacing: 2, textTransform: 'uppercase', margin: 0, fontFamily: "'DM Mono', monospace" }}>What They See</h3>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {role.sees.map((s, i) => (
                   <div key={i} style={{ paddingLeft: 14, borderLeft: `2px solid ${role.color}30` }}>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: NAVY, marginBottom: 4, fontFamily: "'Inter', sans-serif" }}>{s.label}</div>
-                    <div style={{ fontSize: 13, color: 'rgba(10,15,46,0.55)', lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>{s.detail}</div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: NAVY, marginBottom: 4, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{s.label}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(10,15,46,0.55)', lineHeight: 1.6, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{s.detail}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* What they own */}
-            <div style={{ background: '#fff', borderRadius: 12, border: '1px solid rgba(10,15,46,0.09)', padding: 28 }}>
+            <div style={{ background: '#fff', borderRadius: 0, border: '1px solid rgba(10,15,46,0.09)', padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22 }}>
-                <div style={{ width: 3, height: 16, background: role.color, borderRadius: 2 }} />
+                <div style={{ width: 3, height: 16, background: role.color, borderRadius: 0 }} />
                 <h3 style={{ fontSize: 11, fontWeight: 700, color: 'rgba(10,15,46,0.4)', letterSpacing: 2, textTransform: 'uppercase', margin: 0, fontFamily: "'DM Mono', monospace" }}>What They Own</h3>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {role.owns.map((o, i) => (
                   <div key={i} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
                     <span style={{ width: 6, height: 6, borderRadius: '50%', background: role.color, flexShrink: 0, marginTop: 6 }} />
-                    <span style={{ fontSize: 13, color: 'rgba(10,15,46,0.65)', lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>{o}</span>
+                    <span style={{ fontSize: 13, color: 'rgba(10,15,46,0.65)', lineHeight: 1.6, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{o}</span>
                   </div>
                 ))}
               </div>
@@ -340,19 +340,19 @@ export default function PilotOnboarding() {
           </div>
 
           {/* Success at 90 days */}
-          <div style={{ background: NAVY, borderRadius: 12, padding: 28, marginBottom: 24, position: 'relative', overflow: 'hidden' }}>
+          <div style={{ background: NAVY, borderRadius: 0, padding: 28, marginBottom: 24, position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', background: `radial-gradient(circle, ${role.color}18 0%, transparent 70%)` }} />
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, position: 'relative' }}>
-              <div style={{ width: 3, height: 16, background: role.color, borderRadius: 2 }} />
+              <div style={{ width: 3, height: 16, background: role.color, borderRadius: 0 }} />
               <h3 style={{ fontSize: 11, fontWeight: 700, color: 'rgba(240,237,228,0.4)', letterSpacing: 2, textTransform: 'uppercase', margin: 0, fontFamily: "'DM Mono', monospace" }}>Success at Day 90</h3>
             </div>
-            <p style={{ fontSize: 15, color: '#F0EDE4', lineHeight: 1.7, margin: 0, fontFamily: "'Inter', sans-serif", position: 'relative' }}>{role.success}</p>
+            <p style={{ fontSize: 15, color: '#F0EDE4', lineHeight: 1.7, margin: 0, fontFamily: "'Cormorant Garamond', Georgia, serif", position: 'relative' }}>{role.success}</p>
           </div>
 
           {/* Note if applicable */}
           {role.note && (
-            <div style={{ background: `${role.color}10`, border: `1px solid ${role.color}25`, borderRadius: 10, padding: '16px 20px', marginBottom: 24 }}>
-              <p style={{ fontSize: 13, color: NAVY, margin: 0, lineHeight: 1.65, fontFamily: "'Inter', sans-serif" }}>
+            <div style={{ background: `${role.color}10`, border: `1px solid ${role.color}25`, borderRadius: 0, padding: '16px 20px', marginBottom: 24 }}>
+              <p style={{ fontSize: 13, color: NAVY, margin: 0, lineHeight: 1.65, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 <strong>Note:</strong> {role.note}
               </p>
             </div>
@@ -367,9 +367,9 @@ export default function PilotOnboarding() {
                 onClick={() => setLocation(p.href)}
                 style={{
                   display: 'flex', alignItems: 'center', gap: 6,
-                  padding: '6px 14px', borderRadius: 6, cursor: 'pointer',
+                  padding: '6px 14px', borderRadius: 0, cursor: 'pointer',
                   background: '#fff', border: `1px solid rgba(10,15,46,0.12)`,
-                  fontFamily: "'Inter', sans-serif", fontSize: 12, color: NAVY, fontWeight: 500,
+                  fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 12, color: NAVY, fontWeight: 500,
                   transition: 'all 0.15s ease',
                 }}
                 onMouseEnter={e => {
@@ -395,27 +395,27 @@ export default function PilotOnboarding() {
           <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 40px' }}>
             <div style={{ marginBottom: 36 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                <div style={{ width: 3, height: 18, background: GOLD, borderRadius: 2 }} />
+                <div style={{ width: 3, height: 18, background: GOLD, borderRadius: 0 }} />
                 <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(10,15,46,0.4)', textTransform: 'uppercase' }}>Pilot Timeline</span>
               </div>
-              <h2 style={{ fontSize: 26, fontWeight: 700, color: NAVY, margin: 0, fontFamily: "'Inter', sans-serif" }}>What Happens Across 90 Days</h2>
+              <h2 style={{ fontSize: 26, fontWeight: 700, color: NAVY, margin: 0, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>What Happens Across 90 Days</h2>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
               {timeline.map((t, i) => (
-                <div key={i} style={{ background: IVORY, borderRadius: 12, padding: 24, border: `1px solid rgba(10,15,46,0.07)`, position: 'relative', overflow: 'hidden' }}>
+                <div key={i} style={{ background: IVORY, borderRadius: 0, padding: 24, border: `1px solid rgba(10,15,46,0.07)`, position: 'relative', overflow: 'hidden' }}>
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: t.color, borderRadius: '12px 12px 0 0' }} />
                   <div style={{ marginBottom: 6 }}>
                     <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, color: t.color, textTransform: 'uppercase' }}>{t.phase}</span>
                   </div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: NAVY, marginBottom: 16, fontFamily: "'Inter', sans-serif" }}>{t.label}</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: NAVY, marginBottom: 16, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{t.label}</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     {t.milestones.map((m, j) => (
                       <div key={j} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                         <div style={{ width: 16, height: 16, borderRadius: '50%', background: `${t.color}15`, border: `1px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
                           <span style={{ fontSize: 8, color: t.color, fontWeight: 700 }}>{j + 1}</span>
                         </div>
-                        <span style={{ fontSize: 12, color: 'rgba(10,15,46,0.65)', lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>{m}</span>
+                        <span style={{ fontSize: 12, color: 'rgba(10,15,46,0.65)', lineHeight: 1.5, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{m}</span>
                       </div>
                     ))}
                   </div>
@@ -430,17 +430,17 @@ export default function PilotOnboarding() {
           <div style={{ position: 'absolute', inset: 0, opacity: 0.06, backgroundImage: 'linear-gradient(rgba(201,168,76,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.8) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
           <div style={{ position: 'relative', maxWidth: 600, margin: '0 auto' }}>
             <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase', marginBottom: 16 }}>Questions During Your Pilot</p>
-            <h2 style={{ fontSize: 28, fontWeight: 700, color: '#F0EDE4', margin: '0 0 14px', fontFamily: "'Inter', sans-serif" }}>Your VaughnMartin team is your co-pilot.</h2>
-            <p style={{ fontSize: 15, color: 'rgba(240,237,228,0.55)', margin: '0 0 32px', lineHeight: 1.65, fontFamily: "'Inter', sans-serif" }}>
+            <h2 style={{ fontSize: 28, fontWeight: 700, color: '#F0EDE4', margin: '0 0 14px', fontFamily: "'Cormorant Garamond', Georgia, serif" }}>Your VaughnMartin team is your co-pilot.</h2>
+            <p style={{ fontSize: 15, color: 'rgba(240,237,228,0.55)', margin: '0 0 32px', lineHeight: 1.65, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
               Every pilot has a dedicated success lead. Reach them directly at{' '}
               <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD, textDecoration: 'none' }}>pilot@vaughnmartin.com</a>
             </p>
             <button
               onClick={() => setLocation('/platform-overview')}
               style={{
-                padding: '12px 28px', borderRadius: 8, cursor: 'pointer',
+                padding: '12px 28px', borderRadius: 0, cursor: 'pointer',
                 background: GOLD, border: 'none',
-                fontFamily: "'Inter', sans-serif", fontSize: 14, fontWeight: 600, color: NAVY,
+                fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 14, fontWeight: 600, color: NAVY,
               }}
             >
               Explore the Full Platform

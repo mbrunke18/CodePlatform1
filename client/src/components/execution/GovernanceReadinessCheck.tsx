@@ -92,7 +92,7 @@ export function GovernanceReadinessCheck({
       padding: '24px',
     }}>
       <div style={{
-        background: '#fff', borderRadius: 12, maxWidth: 580, width: '100%',
+        background: '#fff', borderRadius: 0, maxWidth: 580, width: '100%',
         overflow: 'hidden', boxShadow: '0 32px 80px rgba(10,15,46,0.35)',
       }}>
         {/* Header */}
@@ -127,14 +127,14 @@ export function GovernanceReadinessCheck({
               return (
                 <div key={check.id} style={{
                   border: `1.5px solid ${isYes ? `${TEAL}40` : isNo ? '#F59E0B40' : '#E8E4DC'}`,
-                  borderRadius: 8,
+                  borderRadius: 0,
                   padding: '16px 18px',
                   background: isYes ? `${TEAL}08` : isNo ? '#FFF7ED' : '#FAFAFA',
                   transition: 'all 0.15s ease',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
                     <div style={{
-                      width: 34, height: 34, borderRadius: 6, flexShrink: 0, marginTop: 2,
+                      width: 34, height: 34, borderRadius: 0, flexShrink: 0, marginTop: 2,
                       background: isYes ? `${TEAL}15` : isNo ? '#FEF3C720' : '#F3F4F6',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
@@ -152,7 +152,7 @@ export function GovernanceReadinessCheck({
                           onClick={() => setCheck(check.id, 'yes')}
                           style={{
                             display: 'flex', alignItems: 'center', gap: 6,
-                            padding: '6px 14px', borderRadius: 5, border: 'none', cursor: 'pointer',
+                            padding: '6px 14px', borderRadius: 0, border: 'none', cursor: 'pointer',
                             fontSize: 12, fontWeight: 700,
                             background: isYes ? TEAL : '#F3F4F6',
                             color: isYes ? '#fff' : '#4B5563',
@@ -166,7 +166,7 @@ export function GovernanceReadinessCheck({
                           onClick={() => setCheck(check.id, 'no')}
                           style={{
                             display: 'flex', alignItems: 'center', gap: 6,
-                            padding: '6px 14px', borderRadius: 5, border: 'none', cursor: 'pointer',
+                            padding: '6px 14px', borderRadius: 0, border: 'none', cursor: 'pointer',
                             fontSize: 12, fontWeight: 700,
                             background: isNo ? '#FEF3C7' : '#F3F4F6',
                             color: isNo ? '#D97706' : '#4B5563',
@@ -196,7 +196,7 @@ export function GovernanceReadinessCheck({
           {allAnswered && (
             <div style={{
               display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px',
-              borderRadius: 8, marginBottom: 4,
+              borderRadius: 0, marginBottom: 4,
               background: allGreen ? `${TEAL}10` : someRed ? '#FFF7ED' : '#F3F4F6',
               border: `1px solid ${allGreen ? `${TEAL}30` : someRed ? '#FDE68A' : '#E8E4DC'}`,
             }}>

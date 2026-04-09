@@ -31,7 +31,7 @@ function TierBox({ children, style }: { children: ReactNode; style?: CSSProperti
       background: TEAL2, color: "#E1F5EE",
       fontFamily: "'Barlow Condensed', sans-serif",
       fontSize: 12, fontWeight: 500, padding: "7px 16px",
-      borderRadius: 5, textAlign: "center", letterSpacing: 0.3,
+      borderRadius: 0, textAlign: "center", letterSpacing: 0.3,
       ...style,
     }}>{children}</div>
   );
@@ -61,7 +61,7 @@ export default function EnterpriseAIFrameworkDiagram() {
     <div style={{
       background: IVORY,
       border: `1px solid rgba(10,15,46,0.10)`,
-      borderRadius: 12,
+      borderRadius: 0,
       padding: "36px 28px",
       fontFamily: "'Barlow', sans-serif",
     }}>
@@ -106,10 +106,10 @@ export default function EnterpriseAIFrameworkDiagram() {
       {/* Target Operating Model */}
       <div style={{ display: "flex", marginBottom: 6, marginTop: 4 }}>
         <VerticalLabel text="Target Operating Model" />
-        <div style={{ flex: 1, border: `1.5px dashed ${GOLD}`, borderRadius: 8, padding: 10, background: `rgba(201,168,76,0.03)` }}>
+        <div style={{ flex: 1, border: `1.5px dashed ${GOLD}`, borderRadius: 0, padding: 10, background: `rgba(201,168,76,0.03)` }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
             {pillars.map((p) => (
-              <div key={p.head} style={{ background: "#fff", border: `0.5px solid ${TEAL2}`, borderRadius: 7, overflow: "hidden" }}>
+              <div key={p.head} style={{ background: "#fff", border: `0.5px solid ${TEAL2}`, borderRadius: 0, overflow: "hidden" }}>
                 <div style={{
                   background: TEAL2, color: "#E1F5EE",
                   fontFamily: "'Barlow Condensed', sans-serif",
@@ -163,7 +163,7 @@ export default function EnterpriseAIFrameworkDiagram() {
       {/* Readiness OS */}
       <div style={{ display: "flex", marginTop: 2, marginBottom: 16 }}>
         <VerticalLabel text="Coordination Layer" />
-        <div style={{ flex: 1, background: NAVY, border: `1.5px solid ${GOLD}`, borderRadius: 9, padding: "16px 20px", position: "relative", overflow: "hidden" }}>
+        <div style={{ flex: 1, background: NAVY, border: `1.5px solid ${GOLD}`, borderRadius: 0, padding: "16px 20px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(201,168,76,0.07) 0%, transparent 60%)", pointerEvents: "none" }} />
           <div style={{
             fontFamily: "'Cormorant Garamond', serif",
@@ -181,14 +181,14 @@ export default function EnterpriseAIFrameworkDiagram() {
             {["170 Playbooks", "IDEA Framework", "9 Strategic Domains", "12-Minute Execution Cycles", "Fortune 1000 Enterprise"].map((c) => (
               <span key={c} style={{
                 background: "rgba(201,168,76,0.14)", border: `0.5px solid rgba(201,168,76,0.38)`,
-                borderRadius: 4, padding: "3px 10px",
+                borderRadius: 0, padding: "3px 10px",
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontSize: 10, fontWeight: 500, color: GOLD, letterSpacing: 0.5,
               }}>{c}</span>
             ))}
             <span style={{
               background: "rgba(201,168,76,0.28)", border: `1px solid ${GOLD}`,
-              borderRadius: 4, padding: "3px 10px",
+              borderRadius: 0, padding: "3px 10px",
               fontFamily: "'Barlow Condensed', sans-serif",
               fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: 0.5,
             }}>3,600× Execution Head Start</span>
@@ -216,7 +216,7 @@ export default function EnterpriseAIFrameworkDiagram() {
               background: TEAL3, color: "#9FE1CB",
               fontFamily: "'Barlow Condensed', sans-serif",
               fontSize: 12, fontWeight: 500, padding: "8px 16px",
-              borderRadius: 5, letterSpacing: 0.3,
+              borderRadius: 0, letterSpacing: 0.3,
             }}>{bar}</div>
           ))}
         </div>
@@ -224,7 +224,7 @@ export default function EnterpriseAIFrameworkDiagram() {
 
       {/* Legend */}
       <div style={{
-        border: `0.5px solid rgba(10,15,46,0.12)`, borderRadius: 9,
+        border: `0.5px solid rgba(10,15,46,0.12)`, borderRadius: 0,
         padding: "16px 20px", background: "#fff",
         display: "flex", gap: 28,
       }}>
@@ -235,13 +235,13 @@ export default function EnterpriseAIFrameworkDiagram() {
             textTransform: "uppercase", color: NAVY, opacity: 0.45, marginBottom: 8,
           }}>Framework Origin</div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 8, marginBottom: 6 }}>
-            <div style={{ width: 11, height: 11, background: TEAL2, borderRadius: 3, flexShrink: 0, marginTop: 2 }} />
+            <div style={{ width: 11, height: 11, background: TEAL2, borderRadius: 0, flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontSize: 10, color: "#3d3d3a", lineHeight: 1.5, fontFamily: "'Barlow', sans-serif" }}>
               <strong style={{ color: NAVY, fontWeight: 500 }}>Greeshma M. Neglur's framework</strong> — governance architecture & AI operating model design. Defines what decisions get made and who owns them.
             </p>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-            <div style={{ width: 11, height: 11, background: NAVY, border: `1px solid ${GOLD}`, borderRadius: 3, flexShrink: 0, marginTop: 2 }} />
+            <div style={{ width: 11, height: 11, background: NAVY, border: `1px solid ${GOLD}`, borderRadius: 0, flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontSize: 10, color: "#3d3d3a", lineHeight: 1.5, fontFamily: "'Barlow', sans-serif" }}>
               <strong style={{ color: NAVY, fontWeight: 500 }}>Readiness OS by VaughnMartin</strong> — the missing coordination layer. Ensures those decisions compress from 30-day mobilization cycles into 12-minute coordinated action — a 3,600× Execution Head Start.
             </p>

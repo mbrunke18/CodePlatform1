@@ -510,10 +510,10 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
           ← All Scenarios
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 11, fontWeight: 700, background: scenario.color + '18', color: scenario.color, padding: '4px 10px', borderRadius: 3, letterSpacing: '0.06em' }}>
+          <span style={{ fontSize: 11, fontWeight: 700, background: scenario.color + '18', color: scenario.color, padding: '4px 10px', borderRadius: 0, letterSpacing: '0.06em' }}>
             {scenario.industry}
           </span>
-          <span style={{ fontSize: 11, fontWeight: 700, background: '#F1F5F9', color: '#475569', padding: '4px 10px', borderRadius: 3 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, background: '#F1F5F9', color: '#475569', padding: '4px 10px', borderRadius: 0 }}>
             {scenario.roleShort}
           </span>
         </div>
@@ -532,7 +532,7 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
                   display: 'flex', alignItems: 'center', gap: 8,
                   background: current ? NAVY : done ? '#F8FAFC' : '#F8FAFC',
                   border: `1px solid ${current ? NAVY : done ? '#CBD5E1' : '#E2E8F0'}`,
-                  borderRadius: 4, padding: '8px 14px', cursor: i <= stageIndex ? 'pointer' : 'default',
+                  borderRadius: 0, padding: '8px 14px', cursor: i <= stageIndex ? 'pointer' : 'default',
                   whiteSpace: 'nowrap', transition: 'all 0.2s',
                 }}
               >
@@ -569,7 +569,7 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
             style={{
               display: 'flex', alignItems: 'center', gap: 10,
               background: NAVY, color: IVORY, border: 'none',
-              borderRadius: 4, padding: '14px 32px', fontSize: 14, fontWeight: 700, cursor: 'pointer',
+              borderRadius: 0, padding: '14px 32px', fontSize: 14, fontWeight: 700, cursor: 'pointer',
             }}
           >
             Continue <ArrowRight size={15} />
@@ -584,7 +584,7 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
 function TriggerStage({ scenario }: { scenario: Scenario }) {
   return (
     <div>
-      <div style={{ background: NAVY, borderRadius: 8, padding: '40px 48px', marginBottom: 28, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ background: NAVY, borderRadius: 0, padding: '40px 48px', marginBottom: 28, position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
@@ -607,7 +607,7 @@ function TriggerStage({ scenario }: { scenario: Scenario }) {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {scenario.trigger.chaos.map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, background: '#FFF5F5', border: '1px solid #FECACA', borderLeft: '3px solid #EF4444', borderRadius: 4, padding: '12px 16px' }}>
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, background: '#FFF5F5', border: '1px solid #FECACA', borderLeft: '3px solid #EF4444', borderRadius: 0, padding: '12px 16px' }}>
               <AlertTriangle size={14} color="#EF4444" style={{ marginTop: 2, flexShrink: 0 }} />
               <span style={{ fontSize: 13, color: '#374151', lineHeight: 1.55, fontWeight: 500 }}>{item}</span>
             </div>
@@ -615,7 +615,7 @@ function TriggerStage({ scenario }: { scenario: Scenario }) {
         </div>
       </div>
 
-      <div style={{ background: `${scenario.color}10`, border: `1px solid ${scenario.color}30`, borderLeft: `4px solid ${scenario.color}`, borderRadius: 4, padding: '20px 24px', marginTop: 28 }}>
+      <div style={{ background: `${scenario.color}10`, border: `1px solid ${scenario.color}30`, borderLeft: `4px solid ${scenario.color}`, borderRadius: 0, padding: '20px 24px', marginTop: 28 }}>
         <p style={{ fontSize: 14, color: '#1E293B', lineHeight: 1.7, margin: 0, fontWeight: 600 }}>
           Without pre-staged execution, every decision is being made for the first time, under pressure, by people who haven't rehearsed this scenario. Readiness OS changes the constraint.
         </p>
@@ -634,7 +634,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
       </div>
 
       {/* Live platform data strip */}
-      <div style={{ background: 'linear-gradient(135deg, #0A0F2E 0%, #1a2456 100%)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '16px 24px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
+      <div style={{ background: 'linear-gradient(135deg, #0A0F2E 0%, #1a2456 100%)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '16px 24px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Radio size={12} color={GOLD} />
           <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD }}>Live Platform Activity</span>
@@ -662,7 +662,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 28 }}>
         {scenario.detection.signals.map(({ label, detail }, i) => (
-          <div key={i} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 6, padding: '18px 20px' }}>
+          <div key={i} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0, padding: '18px 20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, flexShrink: 0 }} />
               <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{label}</span>
@@ -673,22 +673,22 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginBottom: 28 }}>
-        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 6, padding: '18px 20px', textAlign: 'center' }}>
+        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 0, padding: '18px 20px', textAlign: 'center' }}>
           <div style={{ fontSize: 36, fontWeight: 800, color: TEAL, marginBottom: 4 }}>{scenario.detection.confidence}%</div>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Trigger Confidence</div>
         </div>
-        <div style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: 6, padding: '18px 20px', textAlign: 'center' }}>
+        <div style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: 0, padding: '18px 20px', textAlign: 'center' }}>
           <div style={{ fontSize: 36, fontWeight: 800, color: '#2563EB', marginBottom: 4 }}>{scenario.detection.signals.length}</div>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Signals Detected</div>
         </div>
-        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 6, padding: '18px 20px', textAlign: 'center' }}>
+        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '18px 20px', textAlign: 'center' }}>
           <div style={{ fontSize: 20, fontWeight: 800, color: '#92400E', marginBottom: 4 }}>{scenario.detection.domains.length}</div>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Domains Lit</div>
           <div style={{ fontSize: 10, color: '#92400E', marginTop: 4 }}>{scenario.detection.domains.join(' · ')}</div>
         </div>
       </div>
 
-      <div style={{ background: NAVY, borderRadius: 6, padding: '22px 28px' }}>
+      <div style={{ background: NAVY, borderRadius: 0, padding: '22px 28px' }}>
         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>The Core Principle</div>
         <p style={{ fontSize: 15, color: 'rgba(240,237,228,0.90)', lineHeight: 1.75, margin: 0, fontWeight: 500 }}>
           AI monitored 221 trigger patterns across 248+ data points. When {scenario.detection.signals.length} signals converged, the {scenario.playbook.name.split('—')[0].trim()} playbook was automatically staged — before this trigger event ever occurred. The preparation happened before the pressure.
@@ -707,9 +707,9 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Playbook Activated</div>
           <h3 style={{ fontSize: 24, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{scenario.playbook.name}</h3>
-          <span style={{ fontSize: 12, background: '#F1F5F9', color: '#475569', padding: '4px 10px', borderRadius: 3, fontWeight: 600 }}>{scenario.playbook.domain}</span>
+          <span style={{ fontSize: 12, background: '#F1F5F9', color: '#475569', padding: '4px 10px', borderRadius: 0, fontWeight: 600 }}>{scenario.playbook.domain}</span>
         </div>
-        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 6, padding: '14px 20px', textAlign: 'center', flexShrink: 0 }}>
+        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 0, padding: '14px 20px', textAlign: 'center', flexShrink: 0 }}>
           <div style={{ fontSize: 28, fontWeight: 800, color: TEAL }}>12</div>
           <div style={{ fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Minutes to<br/>Activate</div>
         </div>
@@ -717,7 +717,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
 
       {/* Live playbook match */}
       {live.matchedPlaybook ? (
-        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderLeft: `3px solid ${TEAL}`, borderRadius: 6, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+        <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderLeft: `3px solid ${TEAL}`, borderRadius: 0, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Wifi size={14} color={TEAL} />
             <span style={{ fontSize: 12, fontWeight: 700, color: TEAL }}>This playbook exists in your live library —</span>
@@ -725,13 +725,13 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
           </div>
           <button
             onClick={() => navigate(`/playbooks/${live.matchedPlaybook!.id}`)}
-            style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 4, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 0, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
           >
             View Live Playbook <ArrowRight size={11} />
           </button>
         </div>
       ) : (
-        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 6, padding: '12px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '12px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
           <FileText size={13} color='#92400E' />
           <span style={{ fontSize: 12, fontWeight: 600, color: '#92400E' }}>170 playbooks pre-staged in your library — this playbook activates the moment the trigger fires.</span>
         </div>
@@ -740,7 +740,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
       {/* IDEA chain */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 28 }}>
         {scenario.playbook.phases.map(({ phase, actions }) => (
-          <div key={phase} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 6, padding: '16px' }}>
+          <div key={phase} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0, padding: '16px' }}>
             <div style={{ fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: '0.15em', marginBottom: 12 }}>{phase}</div>
             {actions.map((a, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 6, marginBottom: 6 }}>
@@ -759,7 +759,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {scenario.playbook.preStaged.map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, background: '#F0FDF4', border: '1px solid #BBF7D0', borderLeft: '3px solid ' + TEAL, borderRadius: 4, padding: '12px 16px' }}>
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, background: '#F0FDF4', border: '1px solid #BBF7D0', borderLeft: '3px solid ' + TEAL, borderRadius: 0, padding: '12px 16px' }}>
               <CheckCircle2 size={14} color={TEAL} style={{ marginTop: 1, flexShrink: 0 }} />
               <span style={{ fontSize: 13, color: '#1E293B', lineHeight: 1.55, fontWeight: 500 }}>{item}</span>
             </div>
@@ -779,14 +779,14 @@ function ExecutionStage({ scenario, live }: { scenario: Scenario; live: LiveData
           <h3 style={{ fontSize: 22, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Execution Cascade — 12 Minutes</h3>
           <p style={{ fontSize: 13, color: '#64748B', fontWeight: 500 }}>Stakeholders notified and tasks deployed simultaneously. No coordination calls required.</p>
         </div>
-        <div style={{ marginLeft: 'auto', background: NAVY, borderRadius: 6, padding: '12px 24px', textAlign: 'center', flexShrink: 0 }}>
+        <div style={{ marginLeft: 'auto', background: NAVY, borderRadius: 0, padding: '12px 24px', textAlign: 'center', flexShrink: 0 }}>
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 700, color: GOLD }}>12:00</div>
           <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(240,237,228,0.6)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Execution Clock</div>
         </div>
       </div>
 
       {/* Live stakeholder data */}
-      <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderLeft: `3px solid ${NAVY}`, borderRadius: 6, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+      <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderLeft: `3px solid ${NAVY}`, borderRadius: 0, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <Users size={13} color={NAVY} />
           <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', color: NAVY }}>Your Org's Stakeholder Registry</span>
@@ -816,7 +816,7 @@ function ExecutionStage({ scenario, live }: { scenario: Scenario; live: LiveData
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#94A3B8', marginBottom: 12 }}>Stakeholder Notifications</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {scenario.execution.stakeholders.map(({ role, action, time }, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '180px 1fr 80px', gap: 16, alignItems: 'center', background: '#F8FAFC', border: '1px solid #E2E8F0', borderLeft: `3px solid ${TEAL}`, borderRadius: 4, padding: '12px 16px' }}>
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '180px 1fr 80px', gap: 16, alignItems: 'center', background: '#F8FAFC', border: '1px solid #E2E8F0', borderLeft: `3px solid ${TEAL}`, borderRadius: 0, padding: '12px 16px' }}>
               <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{role}</span>
               <span style={{ fontSize: 12, color: '#475569', fontWeight: 500 }}>{action}</span>
               <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, textAlign: 'right' }}>{time}</span>
@@ -830,7 +830,7 @@ function ExecutionStage({ scenario, live }: { scenario: Scenario; live: LiveData
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#94A3B8', marginBottom: 12 }}>Task Deployment</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 10 }}>
           {scenario.execution.tasks.map(({ owner, task, due }, i) => (
-            <div key={i} style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 4, padding: '14px 16px' }}>
+            <div key={i} style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: 0, padding: '14px 16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                 <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{owner}</span>
                 <span style={{ fontSize: 10, color: '#64748B', fontWeight: 600 }}>Due: {due}</span>
@@ -849,13 +849,13 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
   const [, navigate] = useLocation();
   return (
     <div>
-      <div style={{ background: NAVY, borderRadius: 8, padding: '32px 40px', marginBottom: 28 }}>
+      <div style={{ background: NAVY, borderRadius: 0, padding: '32px 40px', marginBottom: 28 }}>
         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>12 Minutes After Trigger</div>
         <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: IVORY, lineHeight: 1.5, margin: 0 }}>{scenario.outcome.headline}</p>
       </div>
 
       {/* Before / After table */}
-      <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid #E2E8F0', marginBottom: 28 }}>
+      <div style={{ borderRadius: 0, overflow: 'hidden', border: '1px solid #E2E8F0', marginBottom: 28 }}>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
           {['Outcome', 'Without Readiness OS', 'With Readiness OS'].map((h, i) => (
             <div key={h} style={{ padding: '12px 20px', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: i === 2 ? TEAL : '#64748B' }}>{h}</div>
@@ -873,7 +873,7 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
       {/* ROI */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginBottom: 40 }}>
         {scenario.outcome.roi.map(({ label, value }) => (
-          <div key={label} style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 6, padding: '20px' }}>
+          <div key={label} style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '20px' }}>
             <div style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#92400E', marginBottom: 8, fontWeight: 700 }}>{label}</div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#78350F' }}>{value}</div>
           </div>
@@ -881,7 +881,7 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
       </div>
 
       {/* CTA */}
-      <div style={{ background: NAVY, borderRadius: 8, padding: '32px 40px' }}>
+      <div style={{ background: NAVY, borderRadius: 0, padding: '32px 40px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 32, flexWrap: 'wrap', marginBottom: 28 }}>
           <div style={{ flex: 1, minWidth: 260 }}>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>This Is Running Now</div>
@@ -891,14 +891,14 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
             </p>
           </div>
           {live.prepScore !== null && (
-            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 8, padding: '20px 28px', textAlign: 'center', flexShrink: 0 }}>
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 0, padding: '20px 28px', textAlign: 'center', flexShrink: 0 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.55)', marginBottom: 6 }}>Your Readiness Score</div>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: live.prepScore >= 70 ? TEAL : GOLD, lineHeight: 1 }}>{live.prepScore}</div>
               <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.45)', marginTop: 4, fontWeight: 600 }}>out of 100</div>
             </div>
           )}
           {live.detectionCount > 0 && (
-            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 8, padding: '20px 28px', textAlign: 'center', flexShrink: 0 }}>
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '20px 28px', textAlign: 'center', flexShrink: 0 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.55)', marginBottom: 6 }}>Live Detections</div>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{live.detectionCount}</div>
               <div style={{ fontSize: 10, color: 'rgba(240,237,228,0.45)', marginTop: 4, fontWeight: 600 }}>active now</div>
@@ -908,19 +908,19 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <button
             onClick={() => navigate('/mission-control')}
-            style={{ display: 'flex', alignItems: 'center', gap: 8, background: GOLD, color: NAVY, border: 'none', borderRadius: 4, padding: '13px 28px', fontSize: 14, fontWeight: 800, cursor: 'pointer' }}
+            style={{ display: 'flex', alignItems: 'center', gap: 8, background: GOLD, color: NAVY, border: 'none', borderRadius: 0, padding: '13px 28px', fontSize: 14, fontWeight: 800, cursor: 'pointer' }}
           >
             <BarChart3 size={14} /> Enter Mission Control
           </button>
           <button
             onClick={() => navigate('/playbooks')}
-            style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.1)', color: IVORY, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, padding: '13px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
+            style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.1)', color: IVORY, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 0, padding: '13px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
           >
             Browse 170 Playbooks <ChevronRight size={14} />
           </button>
           <button
             onClick={onBack}
-            style={{ background: 'transparent', color: 'rgba(240,237,228,0.6)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 4, padding: '13px 24px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
+            style={{ background: 'transparent', color: 'rgba(240,237,228,0.6)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '13px 24px', fontSize: 13, fontWeight: 600, cursor: 'pointer' }}
           >
             View Another Scenario
           </button>
@@ -947,7 +947,7 @@ export default function ExecutiveScenarioSuite() {
           </p>
           <button
             onClick={() => navigate('/request-access')}
-            style={{ background: NAVY, color: IVORY, border: 'none', borderRadius: 4, padding: '13px 32px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
+            style={{ background: NAVY, color: IVORY, border: 'none', borderRadius: 0, padding: '13px 32px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
           >
             Request Access
           </button>
@@ -999,7 +999,7 @@ export default function ExecutiveScenarioSuite() {
                 onClick={() => setSelected(scenario.id)}
                 style={{
                   background: 'white', border: '1px solid #E2E8F0', borderTop: `4px solid ${scenario.color}`,
-                  borderRadius: 8, padding: '28px 32px', cursor: 'pointer',
+                  borderRadius: 0, padding: '28px 32px', cursor: 'pointer',
                   transition: 'all 0.2s ease',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
                 }}
@@ -1009,10 +1009,10 @@ export default function ExecutiveScenarioSuite() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 16 }}>
                   <div>
                     <div style={{ display: 'flex', gap: 8, marginBottom: 10 }}>
-                      <span style={{ fontSize: 11, fontWeight: 700, background: scenario.color + '18', color: scenario.color, padding: '3px 10px', borderRadius: 3, letterSpacing: '0.05em' }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, background: scenario.color + '18', color: scenario.color, padding: '3px 10px', borderRadius: 0, letterSpacing: '0.05em' }}>
                         {scenario.industry}
                       </span>
-                      <span style={{ fontSize: 11, fontWeight: 700, background: '#F1F5F9', color: '#475569', padding: '3px 10px', borderRadius: 3 }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, background: '#F1F5F9', color: '#475569', padding: '3px 10px', borderRadius: 0 }}>
                         {scenario.roleShort}
                       </span>
                     </div>
@@ -1024,11 +1024,11 @@ export default function ExecutiveScenarioSuite() {
                 <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.6, marginBottom: 20, fontWeight: 500 }}>{scenario.synopsis}</p>
 
                 <div style={{ display: 'flex', gap: 12, marginBottom: 20 }}>
-                  <div style={{ background: '#FFF5F5', border: '1px solid #FECACA', borderRadius: 4, padding: '8px 12px', flex: 1 }}>
+                  <div style={{ background: '#FFF5F5', border: '1px solid #FECACA', borderRadius: 0, padding: '8px 12px', flex: 1 }}>
                     <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Exposure</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: RED }}>{scenario.exposure}</div>
                   </div>
-                  <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 4, padding: '8px 12px', flex: 1 }}>
+                  <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '8px 12px', flex: 1 }}>
                     <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Clock</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: '#92400E' }}>{scenario.clock}</div>
                   </div>

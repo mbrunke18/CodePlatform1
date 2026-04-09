@@ -20,7 +20,7 @@ function Section({ id, children }: { id?: string; children: React.ReactNode }) {
 function SectionHeader({ label, title, subtitle }: { label: string; title: string; subtitle?: string }) {
   return (
     <div style={{ marginBottom: 32 }}>
-      <div style={{ display: "inline-block", background: `${GOLD}18`, border: `1px solid ${GOLD}40`, borderRadius: 4, padding: "4px 12px", fontSize: 10, fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>
+      <div style={{ display: "inline-block", background: `${GOLD}18`, border: `1px solid ${GOLD}40`, borderRadius: 0, padding: "4px 12px", fontSize: 10, fontWeight: 800, letterSpacing: "2px", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>
         {label}
       </div>
       <h2 style={{ fontSize: 28, fontWeight: 800, color: NAVY, margin: "0 0 8px", letterSpacing: "-0.5px" }}>{title}</h2>
@@ -31,7 +31,7 @@ function SectionHeader({ label, title, subtitle }: { label: string; title: strin
 
 function ScreenPreview({ title, children, accent = NAVY }: { title: string; children: React.ReactNode; accent?: string }) {
   return (
-    <div style={{ borderRadius: 10, overflow: "hidden", border: "1px solid #E5E7EB", boxShadow: "0 4px 24px rgba(10,15,46,0.08)" }}>
+    <div style={{ borderRadius: 0, overflow: "hidden", border: "1px solid #E5E7EB", boxShadow: "0 4px 24px rgba(10,15,46,0.08)" }}>
       <div style={{ background: accent, padding: "10px 16px", display: "flex", alignItems: "center", gap: 8 }}>
         {[0, 1, 2].map(i => <div key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(255,255,255,0.2)" }} />)}
         <span style={{ marginLeft: 8, fontSize: 11, color: "rgba(255,255,255,0.6)", fontWeight: 600, letterSpacing: "0.5px" }}>{title}</span>
@@ -43,7 +43,7 @@ function ScreenPreview({ title, children, accent = NAVY }: { title: string; chil
 
 function StatPill({ value, label, color = NAVY }: { value: string; label: string; color?: string }) {
   return (
-    <div style={{ textAlign: "center" as const, padding: "20px 16px", background: "#fff", border: "1px solid #E5E7EB", borderTop: `3px solid ${color}`, borderRadius: 8 }}>
+    <div style={{ textAlign: "center" as const, padding: "20px 16px", background: "#fff", border: "1px solid #E5E7EB", borderTop: `3px solid ${color}`, borderRadius: 0 }}>
       <div style={{ fontSize: 28, fontWeight: 900, color, letterSpacing: "-1px", lineHeight: 1 }}>{value}</div>
       <div style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 6 }}>{label}</div>
     </div>
@@ -60,7 +60,7 @@ function StepCard({ number, title, description, path, icon: Icon }: { number: nu
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6, flexWrap: "wrap" as const }}>
           <Icon size={16} color={TEAL} />
           <span style={{ fontSize: 16, fontWeight: 800, color: NAVY }}>{title}</span>
-          <span style={{ fontSize: 11, color: "#9CA3AF", fontFamily: "monospace", background: "#F3F4F6", padding: "2px 8px", borderRadius: 4 }}>{path}</span>
+          <span style={{ fontSize: 11, color: "#9CA3AF", fontFamily: "monospace", background: "#F3F4F6", padding: "2px 8px", borderRadius: 0 }}>{path}</span>
         </div>
         <p style={{ margin: 0, fontSize: 14, color: "#4B5563", lineHeight: 1.7 }}>{description}</p>
       </div>
@@ -70,15 +70,15 @@ function StepCard({ number, title, description, path, icon: Icon }: { number: nu
 
 function FeatureCard({ title, description, icon: Icon, path, color = NAVY }: { title: string; description: string; icon: React.ElementType; path: string; color?: string }) {
   return (
-    <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 10, padding: 24, borderLeft: `4px solid ${color}` }}>
+    <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 24, borderLeft: `4px solid ${color}` }}>
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-        <div style={{ width: 40, height: 40, borderRadius: 8, background: `${color}14`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <div style={{ width: 40, height: 40, borderRadius: 0, background: `${color}14`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
           <Icon size={18} color={color} />
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" as const }}>
             <span style={{ fontSize: 15, fontWeight: 800, color: NAVY }}>{title}</span>
-            <span style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "monospace", background: "#F3F4F6", padding: "2px 6px", borderRadius: 3 }}>{path}</span>
+            <span style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "monospace", background: "#F3F4F6", padding: "2px 6px", borderRadius: 0 }}>{path}</span>
           </div>
           <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.7 }}>{description}</p>
         </div>
@@ -101,14 +101,14 @@ function FlowStep({ icon: Icon, title, detail, color }: { icon: React.ElementTyp
 
 function FeatureRow({ title, description, icon: Icon, path, color = NAVY }: { title: string; description: string; icon: React.ElementType; path: string; color?: string }) {
   return (
-    <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 8, padding: "16px 20px", display: "flex", gap: 16, alignItems: "flex-start" }}>
-      <div style={{ width: 36, height: 36, borderRadius: 7, background: `${color}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+    <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "16px 20px", display: "flex", gap: 16, alignItems: "flex-start" }}>
+      <div style={{ width: 36, height: 36, borderRadius: 0, background: `${color}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
         <Icon size={16} color={color} />
       </div>
       <div style={{ flex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
           <span style={{ fontSize: 14, fontWeight: 800, color: NAVY }}>{title}</span>
-          <span style={{ fontSize: 10, fontFamily: "monospace", color: "#9CA3AF", background: "#F3F4F6", padding: "2px 6px", borderRadius: 3 }}>{path}</span>
+          <span style={{ fontSize: 10, fontFamily: "monospace", color: "#9CA3AF", background: "#F3F4F6", padding: "2px 6px", borderRadius: 0 }}>{path}</span>
         </div>
         <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.6 }}>{description}</p>
       </div>
@@ -129,7 +129,7 @@ export default function OnboardingGuide() {
         <Link href="/" style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>← Return to Platform</Link>
         <button
           onClick={() => window.print()}
-          style={{ fontSize: 12, fontWeight: 700, color: GOLD, background: "transparent", border: `1px solid ${GOLD}40`, borderRadius: 4, padding: "6px 16px", cursor: "pointer", letterSpacing: "0.5px" }}
+          style={{ fontSize: 12, fontWeight: 700, color: GOLD, background: "transparent", border: `1px solid ${GOLD}40`, borderRadius: 0, padding: "6px 16px", cursor: "pointer", letterSpacing: "0.5px" }}
         >
           Save as PDF
         </button>
@@ -159,7 +159,7 @@ export default function OnboardingGuide() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
               {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["170", "Pre-Built Playbooks"], ["221", "Live Triggers"]].map(([v, l]) => (
-                <div key={l} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "16px 12px", textAlign: "center" as const }}>
+                <div key={l} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "16px 12px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 22, fontWeight: 900, color: GOLD, letterSpacing: "-0.5px" }}>{v}</div>
                   <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>{l}</div>
                 </div>
@@ -175,7 +175,7 @@ export default function OnboardingGuide() {
             title="What You Now Have Access To"
             subtitle="Readiness OS is not a reporting tool or a dashboard. It is the operating infrastructure that compresses your mobilization cycle from 30 days to 12 minutes — before a strategic trigger fires, not after."
           />
-          <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 10, padding: 32, marginBottom: 24 }}>
+          <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 32, marginBottom: 24 }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
               <div>
                 <h3 style={{ fontSize: 13, fontWeight: 800, color: NAVY, margin: "0 0 16px", textTransform: "uppercase" as const, letterSpacing: "1px" }}>What AI Does</h3>
@@ -209,7 +209,7 @@ export default function OnboardingGuide() {
               </div>
             </div>
           </div>
-          <div style={{ background: `${GOLD}0C`, border: `1px solid ${GOLD}30`, borderRadius: 10, padding: 24 }}>
+          <div style={{ background: `${GOLD}0C`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: 24 }}>
             <p style={{ margin: 0, fontSize: 14, color: "#374151", lineHeight: 1.8 }}>
               <strong style={{ color: NAVY }}>The core principle:</strong> No playbook activates without your explicit authorization. AI monitors, detects, and pre-stages. You decide. The preparation compresses the mobilization cycle from weeks to minutes — the authority remains yours.
             </p>
@@ -223,7 +223,7 @@ export default function OnboardingGuide() {
             title="Your First 15 Minutes"
             subtitle="Follow these five steps in order. By the end, you will have a live view of your threat environment, your playbooks, and your organization's execution readiness."
           />
-          <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 10, padding: "8px 32px" }}>
+          <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "8px 32px" }}>
             <StepCard number={1} icon={Monitor} title="Mission Control" path="/mission-control"
               description="Your operational hub. Start here. You will see active trigger detections, playbook status, execution dividend (real-time ROI counter), and a live signal activity feed. This is the page you return to daily." />
             <StepCard number={2} icon={Radio} title="Command Tower" path="/command-tower"
@@ -258,14 +258,14 @@ export default function OnboardingGuide() {
           <ScreenPreview title="vaughnmartin.com/mission-control" accent={NAVY}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 16 }}>
               {[["221", "Triggers Armed"], ["170", "Playbooks Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
-                <div key={l} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 6, padding: "12px 8px", textAlign: "center" as const }}>
+                <div key={l} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "12px 8px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 18, fontWeight: 900, color: NAVY }}>{v}</div>
                   <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "0.5px", marginTop: 3 }}>{l}</div>
                 </div>
               ))}
             </div>
             <div style={{ display: "flex", gap: 8 }}>
-              <div style={{ flex: 2, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 6, padding: 14 }}>
+              <div style={{ flex: 2, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 14 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "1px", marginBottom: 10 }}>Live Signal Feed</div>
                 {[
                   { label: "AI Competitive Disruption · 94% confidence · CNBC", dot: "#EF4444" },
@@ -278,7 +278,7 @@ export default function OnboardingGuide() {
                   </div>
                 ))}
               </div>
-              <div style={{ flex: 1, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 6, padding: 14 }}>
+              <div style={{ flex: 1, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 14 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "1px", marginBottom: 10 }}>Readiness Dividend</div>
                 <div style={{ fontSize: 22, fontWeight: 900, color: TEAL }}>$2.4M</div>
                 <div style={{ fontSize: 10, color: "#6B7280", marginTop: 4 }}>Value preserved vs. 30-day baseline</div>
@@ -294,7 +294,7 @@ export default function OnboardingGuide() {
             title="The Detection & Execution Flow"
             subtitle="From signal ingestion to playbook activation — this is what happens automatically in the background while you run your business."
           />
-          <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 10, padding: "32px 24px", marginBottom: 24 }}>
+          <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "32px 24px", marginBottom: 24 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
               <FlowStep icon={Globe} title="Signal Ingestion" detail={"8 RSS sources\nEvery 15 minutes\n248+ data points"} color={NAVY} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
@@ -333,20 +333,20 @@ export default function OnboardingGuide() {
               { domain: "Financial & Investor", count: 19, examples: ["Activist Investor Response", "Credit Downgrade", "Liquidity Stress"] },
               { domain: "Geopolitical & Macro", count: 18, examples: ["Trade War Escalation", "Energy Disruption", "Pandemic Continuity"] },
             ].map(({ domain, count, examples }) => (
-              <div key={domain} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 8, padding: 20 }}>
+              <div key={domain} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 20 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
                   <span style={{ fontSize: 13, fontWeight: 800, color: NAVY }}>{domain}</span>
-                  <span style={{ fontSize: 12, fontWeight: 900, color: GOLD, background: `${GOLD}12`, padding: "2px 8px", borderRadius: 4 }}>{count}</span>
+                  <span style={{ fontSize: 12, fontWeight: 900, color: GOLD, background: `${GOLD}12`, padding: "2px 8px", borderRadius: 0 }}>{count}</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 4 }}>
                   {examples.map(e => (
-                    <span key={e} style={{ fontSize: 10, color: "#6B7280", background: "#F3F4F6", padding: "3px 8px", borderRadius: 3 }}>{e}</span>
+                    <span key={e} style={{ fontSize: 10, color: "#6B7280", background: "#F3F4F6", padding: "3px 8px", borderRadius: 0 }}>{e}</span>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ background: NAVY, borderRadius: 10, padding: 24, display: "flex", alignItems: "center", gap: 24 }}>
+          <div style={{ background: NAVY, borderRadius: 0, padding: 24, display: "flex", alignItems: "center", gap: 24 }}>
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 13, fontWeight: 800, color: GOLD, marginBottom: 8 }}>Flagship Playbooks — Fully Enriched</div>
               <p style={{ margin: 0, fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>23 playbooks contain the full expert treatment: detailed task owners, time targets, decision gates with escalation paths, and role-specific restrictions. These are the highest-priority scenarios your organization is most likely to face.</p>
@@ -405,10 +405,10 @@ export default function OnboardingGuide() {
               { title: "IDEA Framework", path: "/idea-framework", desc: "Full walkthrough of the Identify → Detect → Execute → Advance framework with the NFL coaching analogy." },
               { title: "Investor Presentation", path: "/investor", desc: "Investor-grade deck with market thesis, McKinsey validation, competitive comparison, and ROI model." },
             ].map(({ title, path, desc }) => (
-              <div key={title} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 8, padding: 20 }}>
+              <div key={title} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 20 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, flexWrap: "wrap" as const }}>
                   <span style={{ fontSize: 14, fontWeight: 800, color: NAVY }}>{title}</span>
-                  <span style={{ fontSize: 10, fontFamily: "monospace", color: "#9CA3AF", background: "#F3F4F6", padding: "2px 6px", borderRadius: 3 }}>{path}</span>
+                  <span style={{ fontSize: 10, fontFamily: "monospace", color: "#9CA3AF", background: "#F3F4F6", padding: "2px 6px", borderRadius: 0 }}>{path}</span>
                 </div>
                 <p style={{ margin: 0, fontSize: 13, color: "#4B5563", lineHeight: 1.6 }}>{desc}</p>
               </div>
@@ -430,11 +430,11 @@ export default function OnboardingGuide() {
               { period: "Days 8–14", color: GOLD, tasks: ["Review your first Board Readiness Snapshot", "Check Execution Dividend ROI counter", "Activate one playbook drill using Practice Drills", "Share role-specific demos with CISO, CFO, or COO"] },
               { period: "Days 15–30", color: PURPLE, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize playbook task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for pilot ROI summary"] },
             ].map(({ period, color, tasks }) => (
-              <div key={period} style={{ background: "#fff", border: "1px solid #E5E7EB", borderLeft: `4px solid ${color}`, borderRadius: 8, padding: 24 }}>
+              <div key={period} style={{ background: "#fff", border: "1px solid #E5E7EB", borderLeft: `4px solid ${color}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 12, fontWeight: 900, color, textTransform: "uppercase" as const, letterSpacing: "1.5px", marginBottom: 16 }}>{period}</div>
                 {tasks.map((task, i) => (
                   <div key={i} style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
-                    <div style={{ width: 16, height: 16, borderRadius: 4, border: `1.5px solid ${color}50`, flexShrink: 0, marginTop: 2 }} />
+                    <div style={{ width: 16, height: 16, borderRadius: 0, border: `1.5px solid ${color}50`, flexShrink: 0, marginTop: 2 }} />
                     <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{task}</span>
                   </div>
                 ))}
@@ -447,7 +447,7 @@ export default function OnboardingGuide() {
         <Section id="reference">
           <SectionHeader label="09 — Quick Reference" title="Key URLs & Reference" />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
-            <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 10, padding: 24 }}>
+            <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: 24 }}>
               <h3 style={{ fontSize: 12, fontWeight: 800, color: NAVY, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 16px" }}>Platform Pages</h3>
               {[
                 ["Mission Control", "/mission-control"],
@@ -466,13 +466,13 @@ export default function OnboardingGuide() {
               ))}
             </div>
             <div>
-              <div style={{ background: NAVY, borderRadius: 10, padding: 24, marginBottom: 16 }}>
+              <div style={{ background: NAVY, borderRadius: 0, padding: 24, marginBottom: 16 }}>
                 <h3 style={{ fontSize: 12, fontWeight: 800, color: GOLD, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 16px" }}>Pilot Contact</h3>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4 }}>VaughnMartin Pilot Team</div>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>pilot@vaughnmartin.com</div>
                 <p style={{ margin: 0, fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>For platform questions, configuration support, or to schedule your executive walkthrough session.</p>
               </div>
-              <div style={{ background: `${GOLD}10`, border: `1px solid ${GOLD}30`, borderRadius: 10, padding: 24 }}>
+              <div style={{ background: `${GOLD}10`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: 24 }}>
                 <h3 style={{ fontSize: 12, fontWeight: 800, color: NAVY, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 14px" }}>Data Glossary</h3>
                 {[
                   ["3,600×", "Execution head start vs. 30-day mobilization baseline"],

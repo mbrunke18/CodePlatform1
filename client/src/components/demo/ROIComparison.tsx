@@ -36,7 +36,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
           style={{
             border: "1px solid rgba(239,68,68,0.35)",
             borderTop: "3px solid #ef4444",
-            borderRadius: 10,
+            borderRadius: 0,
             background: "rgba(239,68,68,0.06)",
             padding: "24px",
           }}
@@ -53,7 +53,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
                 fontSize: 11,
                 fontWeight: 700,
                 padding: "3px 10px",
-                borderRadius: 4,
+                borderRadius: 0,
                 background: "rgba(239,68,68,0.18)",
                 color: "#f87171",
                 border: "1px solid rgba(239,68,68,0.3)",
@@ -73,7 +73,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
             style={{
               background: "rgba(239,68,68,0.1)",
               border: "1px solid rgba(239,68,68,0.25)",
-              borderRadius: 6,
+              borderRadius: 0,
               padding: "10px 14px",
               marginBottom: 14,
             }}
@@ -106,7 +106,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
           style={{
             border: `1px solid rgba(43,138,110,0.4)`,
             borderTop: `3px solid ${TEAL_LT}`,
-            borderRadius: 10,
+            borderRadius: 0,
             background: "rgba(43,138,110,0.07)",
             padding: "24px",
           }}
@@ -123,7 +123,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
                 fontSize: 11,
                 fontWeight: 700,
                 padding: "3px 10px",
-                borderRadius: 4,
+                borderRadius: 0,
                 background: "rgba(43,138,110,0.2)",
                 color: TEAL_LT,
                 border: `1px solid rgba(43,138,110,0.3)`,
@@ -143,7 +143,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
             style={{
               background: "rgba(43,138,110,0.12)",
               border: `1px solid rgba(43,138,110,0.3)`,
-              borderRadius: 6,
+              borderRadius: 0,
               padding: "10px 14px",
               marginBottom: 14,
             }}
@@ -175,7 +175,7 @@ export default function ROIComparison({ traditional, executionOS, vexor, bottomL
       {/* Bottom Line */}
       <div
         style={{
-          borderRadius: 10,
+          borderRadius: 0,
           border: `1px solid rgba(201,168,76,0.3)`,
           background: "rgba(201,168,76,0.07)",
           padding: "20px 24px",

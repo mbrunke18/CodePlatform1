@@ -88,16 +88,16 @@ export default function InvestorLanding() {
               <div className="w-8 h-px" style={{ background: '#C9A84C' }} />
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto text-white" data-testid="heading-hero">
+            <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(40px,6vw,72px)', fontWeight: 700, marginBottom: 16, lineHeight: 1.1, maxWidth: 900, margin: '0 auto 16px', color: '#fff' }} data-testid="heading-hero">
               The Salesforce Moment for Strategic Readiness
             </h1>
             
-            <p className="text-2xl md:text-3xl text-[#C9A84C] font-semibold mb-6" data-testid="text-tagline">
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, fontStyle: 'italic', color: '#C9A84C', marginBottom: 20 }} data-testid="text-tagline">
               The response is ready before the trigger fires.
             </p>
             
-            <p className="text-lg md:text-xl text-white/80 mb-8 max-w-4xl mx-auto" data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives—83% fail due to execution gaps. Readiness OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Readiness OS customers are already deep into coordinated response — in 12 minutes.
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(255,255,255,0.72)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
+              Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Readiness OS customers are already deep into coordinated response — in 12 minutes.
             </p>
 
             {/* VaughnMartin Thesis Block */}

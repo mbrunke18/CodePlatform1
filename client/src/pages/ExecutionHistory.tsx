@@ -140,7 +140,7 @@ export default function ExecutionHistory() {
                 </p>
               </div>
               {isDemo && (
-                <div style={{ background: "rgba(43,138,110,0.15)", border: `1px solid ${TEAL}`, borderRadius: 6, padding: "8px 16px", color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em" }}>
+                <div style={{ background: "rgba(43,138,110,0.15)", border: `1px solid ${TEAL}`, borderRadius: 0, padding: "8px 16px", color: TEAL, fontSize: 12, fontWeight: 700, letterSpacing: "0.1em" }}>
                   CONCEPT SIMULATION — Evidence of Execution Trajectory
                 </div>
               )}
@@ -160,7 +160,7 @@ export default function ExecutionHistory() {
               {/* KPI Cards */}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, marginBottom: 40 }}>
                 {kpis.map((k) => (
-                  <div key={k.label} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${k.color}`, borderRadius: 8, padding: "20px 24px" }}>
+                  <div key={k.label} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${k.color}`, borderRadius: 0, padding: "20px 24px" }}>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                       <div style={{ color: k.color }}>{k.icon}</div>
                       {k.note && <span style={{ fontSize: 10, color: MUTED, fontWeight: 600, letterSpacing: "0.06em" }}>{k.note}</span>}
@@ -177,7 +177,7 @@ export default function ExecutionHistory() {
 
               {/* Trend Chart */}
               {chartData.length > 0 && (
-                <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, padding: "28px 28px 20px", marginBottom: 32 }}>
+                <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: "28px 28px 20px", marginBottom: 32 }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
                     <div>
                       <h2 style={{ fontSize: 16, fontWeight: 700, color: NAVY, margin: 0 }}>Response Time Trajectory</h2>
@@ -185,11 +185,11 @@ export default function ExecutionHistory() {
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: TEAL, fontWeight: 600 }}>
-                        <div style={{ width: 12, height: 3, background: TEAL, borderRadius: 2 }} />
+                        <div style={{ width: 12, height: 3, background: TEAL, borderRadius: 0 }} />
                         Response Time
                       </div>
                       <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, color: "#EF4444", fontWeight: 600 }}>
-                        <div style={{ width: 12, height: 2, background: "#EF4444", borderRadius: 2, borderTop: "1px dashed #EF4444" }} />
+                        <div style={{ width: 12, height: 2, background: "#EF4444", borderRadius: 0, borderTop: "1px dashed #EF4444" }} />
                         12-min target
                       </div>
                     </div>
@@ -206,7 +206,7 @@ export default function ExecutionHistory() {
                       <XAxis dataKey="name" tick={{ fontSize: 11, fill: MUTED }} />
                       <YAxis tick={{ fontSize: 11, fill: MUTED }} domain={[0, 'auto']} />
                       <Tooltip
-                        contentStyle={{ border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 12 }}
+                        contentStyle={{ border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 12 }}
                         formatter={(v: number) => [`${v} min`, "Response Time"]}
                       />
                       <Area type="monotone" dataKey="minutes" stroke={TEAL} strokeWidth={2.5} fill="url(#timeGrad)" dot={{ fill: TEAL, r: 4 }} />
@@ -222,7 +222,7 @@ export default function ExecutionHistory() {
               )}
 
               {/* Activation Table */}
-              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
+              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, overflow: "hidden" }}>
                 <div style={{ padding: "20px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <h2 style={{ fontSize: 16, fontWeight: 700, color: NAVY, margin: 0 }}>Activation Log</h2>
                   <span style={{ fontSize: 12, color: MUTED, fontWeight: 600 }}>{activations.length} activations recorded</span>
@@ -233,7 +233,7 @@ export default function ExecutionHistory() {
                     <p style={{ fontWeight: 600, fontSize: 15 }}>No activations recorded yet</p>
                     <p style={{ fontSize: 13, marginTop: 4 }}>Activate your first playbook to start tracking execution history</p>
                     <Link href="/identify/playbooks">
-                      <button style={{ marginTop: 20, background: NAVY, color: "#fff", border: "none", borderRadius: 6, padding: "10px 24px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+                      <button style={{ marginTop: 20, background: NAVY, color: "#fff", border: "none", borderRadius: 0, padding: "10px 24px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
                         Browse Playbooks
                       </button>
                     </Link>
@@ -276,8 +276,8 @@ export default function ExecutionHistory() {
                         </div>
                         <div>
                           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <div style={{ width: 60, height: 6, background: BORDER, borderRadius: 3, overflow: "hidden" }}>
-                              <div style={{ width: `${a.successRating}%`, height: "100%", background: scoreColor(a.successRating), borderRadius: 3 }} />
+                            <div style={{ width: 60, height: 6, background: BORDER, borderRadius: 0, overflow: "hidden" }}>
+                              <div style={{ width: `${a.successRating}%`, height: "100%", background: scoreColor(a.successRating), borderRadius: 0 }} />
                             </div>
                             <span style={{ fontSize: 13, fontWeight: 700, color: scoreColor(a.successRating) }}>{a.successRating}</span>
                           </div>
@@ -307,7 +307,7 @@ export default function ExecutionHistory() {
 
               {/* Progress narrative */}
               {activations.length >= 3 && (
-                <div style={{ marginTop: 24, background: `rgba(43,138,110,0.05)`, border: `1px solid ${TEAL}`, borderRadius: 8, padding: "20px 24px", display: "flex", alignItems: "flex-start", gap: 16 }}>
+                <div style={{ marginTop: 24, background: `rgba(43,138,110,0.05)`, border: `1px solid ${TEAL}`, borderRadius: 0, padding: "20px 24px", display: "flex", alignItems: "flex-start", gap: 16 }}>
                   <TrendingDown className="h-6 w-6 flex-shrink-0 mt-0.5" style={{ color: TEAL }} />
                   <div>
                     <div style={{ fontWeight: 700, color: NAVY, fontSize: 14, marginBottom: 4 }}>Execution Velocity Trend</div>

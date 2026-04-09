@@ -88,7 +88,7 @@ export default function GetStarted() {
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
             {isLoading ? (
-              <div style={{ height: 52, width: 240, background: "rgba(255,255,255,0.1)", borderRadius: 4 }} />
+              <div style={{ height: 52, width: 240, background: "rgba(255,255,255,0.1)", borderRadius: 0 }} />
             ) : (
               <button
                 onClick={handleStart}

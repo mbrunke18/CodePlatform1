@@ -227,7 +227,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
         <div className="flex-shrink-0 border-b border-[#E8E4DC] bg-white px-8 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Zap className="w-5 h-5 text-white" />
               </div>
               <div>

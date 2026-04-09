@@ -554,7 +554,7 @@ export default function StrategicPlanningHub() {
                       borderLeft: `1px solid ${accent}20`,
                       borderRight: `1px solid ${accent}20`,
                       borderBottom: `3px solid ${accent}`,
-                      borderRadius: 12,
+                      borderRadius: 0,
                     }}
                     className="p-5 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group h-full"
                   >

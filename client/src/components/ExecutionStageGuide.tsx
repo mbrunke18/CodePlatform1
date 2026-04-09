@@ -100,7 +100,7 @@ export function ExecutionStageBadge({
         background: stage.inClock ? `${stage.color}15` : '#F3F4F6',
         color: stage.inClock ? stage.color : '#6B7280',
         border: `1px solid ${stage.inClock ? stage.color + '40' : '#E5E7EB'}`,
-        borderRadius: 4, whiteSpace: 'nowrap' as const,
+        borderRadius: 0, whiteSpace: 'nowrap' as const,
       }}>
         {stage.icon} {stage.name}
         {stage.clockEnd && (
@@ -158,7 +158,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                       {String(stage.number).padStart(2, '0')} {stage.name.toUpperCase()}
                     </span>
                     {stage.clockEnd && (
-                      <span style={{ fontSize: 8, fontWeight: 700, color: TEAL, background: 'rgba(43,138,110,0.15)', padding: '1px 4px', borderRadius: 2 }}>12 MIN</span>
+                      <span style={{ fontSize: 8, fontWeight: 700, color: TEAL, background: 'rgba(43,138,110,0.15)', padding: '1px 4px', borderRadius: 0 }}>12 MIN</span>
                     )}
                   </div>
                   <div style={{ fontSize: 9, color: stage.inClock ? 'rgba(240,237,228,0.55)' : 'rgba(255,255,255,0.25)', lineHeight: 1.4 }}>
@@ -182,7 +182,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
   if (variant === 'compact') {
     return (
       <div style={{
-        background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 8,
+        background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 0,
         padding: '16px 20px', marginBottom: 20,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
@@ -192,7 +192,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 8 }}>
           {EXECUTION_STAGES.map((stage) => (
             <div key={stage.name} style={{
-              padding: '8px 10px', borderRadius: 6,
+              padding: '8px 10px', borderRadius: 0,
               background: stage.inClock ? `${GOLD}08` : 'white',
               border: `1px solid ${stage.inClock ? GOLD + '30' : '#E5E7EB'}`,
               borderTop: `2px solid ${stage.inClock ? GOLD : '#E5E7EB'}`,
@@ -228,7 +228,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 16 }}>
           {EXECUTION_STAGES.slice(0, 4).map((stage) => (
             <div key={stage.name} style={{
-              background: 'white', borderRadius: 8,
+              background: 'white', borderRadius: 0,
               border: `1px solid ${GOLD}30`,
               borderTop: `4px solid ${GOLD}`,
               padding: '24px 24px 20px',
@@ -238,7 +238,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                 <div style={{
                   position: 'absolute' as const, top: 12, right: 12,
                   fontSize: 9, fontWeight: 700, color: TEAL,
-                  background: 'rgba(43,138,110,0.1)', padding: '2px 8px', borderRadius: 10,
+                  background: 'rgba(43,138,110,0.1)', padding: '2px 8px', borderRadius: 0,
                   letterSpacing: '0.08em',
                 }}>
                   12-MIN CLOCK ENDS HERE
@@ -272,7 +272,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
           <div style={{
             display: 'flex', alignItems: 'center', gap: 8, padding: '8px 20px',
             background: 'rgba(43,138,110,0.08)', border: `1px solid ${TEAL}30`,
-            borderRadius: 20,
+            borderRadius: 0,
           }}>
             <div style={{ width: 8, height: 8, borderRadius: '50%', background: TEAL }} />
             <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, letterSpacing: '0.06em' }}>
@@ -285,7 +285,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
           {EXECUTION_STAGES.slice(4).map((stage) => (
             <div key={stage.name} style={{
-              background: 'white', borderRadius: 8,
+              background: 'white', borderRadius: 0,
               border: '1px solid #E5E7EB',
               borderTop: '4px solid #D1D5DB',
               padding: '24px 24px 20px',
@@ -313,7 +313,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
 
         <div style={{
           marginTop: 32, padding: '18px 28px',
-          background: NAVY, borderRadius: 8,
+          background: NAVY, borderRadius: 0,
           display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' as const,
         }}>
           <div style={{ flex: 1 }}>

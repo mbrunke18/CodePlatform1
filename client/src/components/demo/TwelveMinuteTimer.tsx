@@ -98,7 +98,7 @@ export default function TwelveMinuteTimer({
 
       {/* Timer display */}
       <div style={{
-        borderRadius: 10,
+        borderRadius: 0,
         border: `1px solid rgba(43,138,110,0.3)`,
         background: 'rgba(43,138,110,0.07)',
         padding: '16px 22px',
@@ -157,7 +157,7 @@ export default function TwelveMinuteTimer({
                 </div>
 
                 <div style={{
-                  borderRadius: 8,
+                  borderRadius: 0,
                   border: isActive ? `1px solid ${isLast ? `${TEAL_LT}40` : 'rgba(201,168,76,0.2)'}` : '1px solid rgba(255,255,255,0.06)',
                   background: isActive ? 'rgba(255,255,255,0.04)' : 'transparent',
                   padding: '10px 14px',
@@ -165,7 +165,7 @@ export default function TwelveMinuteTimer({
                 }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
                     <span style={{
-                      fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 4,
+                      fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 0,
                       background: isActive ? (isLast ? `${TEAL_LT}20` : 'rgba(201,168,76,0.12)') : 'rgba(255,255,255,0.06)',
                       color: isActive ? (isLast ? TEAL_LT : GOLD) : 'rgba(255,255,255,0.3)',
                       border: `1px solid ${isActive ? (isLast ? `${TEAL_LT}30` : 'rgba(201,168,76,0.2)') : 'rgba(255,255,255,0.06)'}`,
@@ -195,7 +195,7 @@ export default function TwelveMinuteTimer({
       {/* Completion summary */}
       {completed && (
         <div style={{
-          borderRadius: 10,
+          borderRadius: 0,
           border: `2px solid ${TEAL_LT}40`,
           background: 'rgba(59,175,138,0.07)',
           padding: '20px 22px',
@@ -223,7 +223,7 @@ export default function TwelveMinuteTimer({
           style={{
             width: '100%', padding: '12px 0',
             background: GOLD, color: NAVY,
-            borderRadius: 8, fontWeight: 700, fontSize: 14,
+            borderRadius: 0, fontWeight: 700, fontSize: 14,
             border: 'none', cursor: 'pointer',
           }}
           className="hover:opacity-90 transition-opacity"

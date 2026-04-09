@@ -439,7 +439,7 @@ export default function Investors() {
 
           {/* Microsoft Ecosystem — Go-to-Market Fit */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.09 }} className="mb-20">
-            <div style={{ background: '#0A0F2E', borderRadius: 16, overflow: 'hidden', position: 'relative' }}>
+            <div style={{ background: '#0A0F2E', borderRadius: 0, overflow: 'hidden', position: 'relative' }}>
               <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
               <div style={{ position: 'absolute', top: -80, right: -40, width: 500, height: 400, background: 'radial-gradient(ellipse,rgba(0,120,212,0.1) 0%,transparent 65%)', pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', bottom: -60, left: -20, width: 400, height: 300, background: 'radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 65%)', pointerEvents: 'none' }} />
@@ -467,7 +467,7 @@ export default function Investors() {
                     { name: 'Microsoft Entra', color: '#107C10', detail: 'RBAC + identity governance' },
                     { name: 'Power Platform', color: '#742774', detail: 'Workflow automation' },
                   ].map(({ name, color, detail }) => (
-                    <div key={name} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `2px solid ${color}`, borderRadius: 8, padding: '14px 16px' }}>
+                    <div key={name} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `2px solid ${color}`, borderRadius: 0, padding: '14px 16px' }}>
                       <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', marginBottom: 4 }}>{name}</div>
                       <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{detail}</div>
                     </div>
@@ -490,7 +490,7 @@ export default function Investors() {
                 {/* CTA */}
                 <div style={{ marginTop: 32 }}>
                   <Link href="/ecosystem">
-                    <button style={{ background: 'transparent', border: '1px solid #C9A84C', color: '#C9A84C', padding: '10px 24px', borderRadius: 4, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, cursor: 'pointer' }}>
+                    <button style={{ background: 'transparent', border: '1px solid #C9A84C', color: '#C9A84C', padding: '10px 24px', borderRadius: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, cursor: 'pointer' }}>
                       View Full Architecture Diagram →
                     </button>
                   </Link>

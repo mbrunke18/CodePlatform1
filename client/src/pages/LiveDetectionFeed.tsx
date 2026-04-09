@@ -184,7 +184,7 @@ export default function LiveDetectionFeed() {
             backgroundSize: '48px 48px',
           }} />
           <div style={{ position: 'relative', maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 20, padding: '6px 16px', marginBottom: 24 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 0, padding: '6px 16px', marginBottom: 24 }}>
               <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
               <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase' }}>Live System — Monitoring Active</span>
             </div>
@@ -200,7 +200,7 @@ export default function LiveDetectionFeed() {
                 { icon: Zap, label: '16 Trigger Patterns', sub: 'Evaluated every 15 minutes' },
                 { icon: Bell, label: 'Instant Alerts', sub: 'Email + Slack on threshold breach' },
               ].map(({ icon: Icon, label, sub }) => (
-                <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '20px 24px', minWidth: 160, textAlign: 'center' }}>
+                <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '20px 24px', minWidth: 160, textAlign: 'center' }}>
                   <Icon size={22} color={GOLD} style={{ marginBottom: 8 }} />
                   <div style={{ color: '#fff', fontSize: 14, fontWeight: 700, marginBottom: 4 }}>{label}</div>
                   <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>{sub}</div>
@@ -224,7 +224,7 @@ export default function LiveDetectionFeed() {
             <div key={i} style={{
               background: '#fff', border: `1px solid ${item.critical ? 'rgba(192,57,43,0.2)' : '#E8E4DC'}`,
               borderLeft: `5px solid ${item.critical ? '#C0392B' : GOLD}`,
-              borderRadius: 10, padding: '20px 24px', marginBottom: 12,
+              borderRadius: 0, padding: '20px 24px', marginBottom: 12,
               filter: i > 0 ? 'blur(3px)' : 'none',
               userSelect: 'none', position: 'relative',
             }}>
@@ -233,7 +233,7 @@ export default function LiveDetectionFeed() {
                   <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.trigger}</div>
                   <div style={{ fontSize: 12, color: '#6B7280' }}>Source: {item.source} · {item.time}</div>
                 </div>
-                <div style={{ background: item.confidence >= 85 ? 'rgba(192,57,43,0.1)' : 'rgba(201,168,76,0.1)', color: item.confidence >= 85 ? '#C0392B' : '#8B6914', border: `1px solid ${item.confidence >= 85 ? 'rgba(192,57,43,0.25)' : 'rgba(201,168,76,0.25)'}`, borderRadius: 6, padding: '3px 10px', fontSize: 12, fontWeight: 700 }}>
+                <div style={{ background: item.confidence >= 85 ? 'rgba(192,57,43,0.1)' : 'rgba(201,168,76,0.1)', color: item.confidence >= 85 ? '#C0392B' : '#8B6914', border: `1px solid ${item.confidence >= 85 ? 'rgba(192,57,43,0.25)' : 'rgba(201,168,76,0.25)'}`, borderRadius: 0, padding: '3px 10px', fontSize: 12, fontWeight: 700 }}>
                   {item.confidence}% confidence
                 </div>
               </div>
@@ -241,7 +241,7 @@ export default function LiveDetectionFeed() {
             </div>
           ))}
 
-          <div style={{ background: NAVY, borderRadius: 16, padding: '40px 36px', textAlign: 'center', marginTop: 36 }}>
+          <div style={{ background: NAVY, borderRadius: 0, padding: '40px 36px', textAlign: 'center', marginTop: 36 }}>
             <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
               <Shield size={22} color={GOLD} />
             </div>
@@ -252,10 +252,10 @@ export default function LiveDetectionFeed() {
               Pilot program members get real-time signal detection scoped to their organization, stakeholder alert routing, and full trigger history. 12-minute execution starts here.
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/request-access" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 8, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
+              <a href="/request-access" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 0, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
                 Request Pilot Access
               </a>
-              <a href="/platform-overview" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 8, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
+              <a href="/platform-overview" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 0, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
                 Learn More
               </a>
             </div>
@@ -286,15 +286,15 @@ export default function LiveDetectionFeed() {
             Real signals from 8 live sources, evaluated against 16 trigger patterns every 15 minutes. When a threshold is crossed, your team is notified automatically.
           </p>
           <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
-            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, padding: '12px 20px', textAlign: 'center' }}>
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '12px 20px', textAlign: 'center' }}>
               <div style={{ color: '#fff', fontSize: 24, fontWeight: 700 }}>{active.length}</div>
               <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>Active Detections</div>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, padding: '12px 20px', textAlign: 'center' }}>
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '12px 20px', textAlign: 'center' }}>
               <div style={{ color: GOLD, fontSize: 24, fontWeight: 700 }}>{contacts.filter(c => c.email).length}</div>
               <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>Alert Recipients</div>
             </div>
-            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 8, padding: '12px 20px', textAlign: 'center' }}>
+            <div style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '12px 20px', textAlign: 'center' }}>
               <div style={{ color: TEAL, fontSize: 24, fontWeight: 700 }}>{acknowledged.length}</div>
               <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12 }}>Acknowledged</div>
             </div>
@@ -335,7 +335,7 @@ export default function LiveDetectionFeed() {
           {detectionsQuery.isLoading ? (
             <div style={{ textAlign: 'center', padding: 60, color: '#999' }}>Loading detections…</div>
           ) : active.length === 0 ? (
-            <Card style={{ border: '1px solid #e8e4dc', borderRadius: 12 }}>
+            <Card style={{ border: '1px solid #e8e4dc', borderRadius: 0 }}>
               <CardContent style={{ padding: 48, textAlign: 'center' }}>
                 <Shield size={40} style={{ color: TEAL, margin: '0 auto 16px', display: 'block' }} />
                 <div style={{ color: NAVY, fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Monitoring Active — No Triggers Detected</div>
@@ -355,7 +355,7 @@ export default function LiveDetectionFeed() {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {active.map(detection => (
-                <Card key={detection.id} style={{ border: `2px solid ${confidenceColor(detection.confidenceScore)}22`, borderRadius: 12, overflow: 'hidden' }}>
+                <Card key={detection.id} style={{ border: `2px solid ${confidenceColor(detection.confidenceScore)}22`, borderRadius: 0, overflow: 'hidden' }}>
                   <div style={{ height: 4, background: confidenceColor(detection.confidenceScore) }} />
                   <CardContent style={{ padding: '20px 24px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
@@ -405,12 +405,12 @@ export default function LiveDetectionFeed() {
 
                         {/* Evidence trail — which data points fired this trigger */}
                         {detection.matchedEvidence && (detection.matchedEvidence.dataPoints?.length ?? 0) > 0 && (
-                          <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', borderRadius: 8, padding: '12px 14px', marginBottom: 12 }}>
+                          <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', borderRadius: 0, padding: '12px 14px', marginBottom: 12 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
                               <span style={{ color: NAVY, fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Evidence Trail</span>
                               <span style={{
                                 background: TEAL, color: '#fff', fontSize: 9, fontWeight: 700,
-                                padding: '2px 7px', borderRadius: 3, letterSpacing: 0.5,
+                                padding: '2px 7px', borderRadius: 0, letterSpacing: 0.5,
                               }}>
                                 {detection.matchedEvidence.conditionsMet ?? detection.matchedEvidence.dataPoints?.length}/{detection.matchedEvidence.totalConditions ?? detection.matchedEvidence.dataPoints?.length} DATA POINTS MET
                               </span>
@@ -418,7 +418,7 @@ export default function LiveDetectionFeed() {
                                 <span style={{
                                   background: detection.matchedEvidence.engine === 'configured' ? '#C9A84C20' : '#0A0F2E10',
                                   color: detection.matchedEvidence.engine === 'configured' ? '#92681A' : '#555',
-                                  fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 3, textTransform: 'uppercase',
+                                  fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 0, textTransform: 'uppercase',
                                 }}>
                                   {detection.matchedEvidence.engine === 'configured' ? 'Your Triggers' : 'Platform Patterns'}
                                 </span>
@@ -426,7 +426,7 @@ export default function LiveDetectionFeed() {
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
                               {detection.matchedEvidence.dataPoints!.map((dp, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '6px 10px', background: '#fff', borderRadius: 4, borderLeft: `3px solid ${TEAL}` }}>
+                                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '6px 10px', background: '#fff', borderRadius: 0, borderLeft: `3px solid ${TEAL}` }}>
                                   <span style={{ color: TEAL, fontWeight: 700, fontSize: 11, minWidth: 16, marginTop: 1 }}>{i + 1}</span>
                                   <span style={{ color: '#333', fontSize: 12, lineHeight: 1.4 }}>{dp}</span>
                                 </div>
@@ -435,7 +435,7 @@ export default function LiveDetectionFeed() {
                           </div>
                         )}
 
-                        <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 4, padding: '10px 14px', fontSize: 13, color: NAVY }}>
+                        <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: '10px 14px', fontSize: 13, color: NAVY }}>
                           <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Playbook: </span>
                           {detection.recommendedPlaybook}
                         </div>
@@ -466,7 +466,7 @@ export default function LiveDetectionFeed() {
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {acknowledged.map(d => (
-                  <div key={d.id} style={{ background: '#fff', border: '1px solid #e8e4dc', borderRadius: 10, padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', opacity: 0.7 }}>
+                  <div key={d.id} style={{ background: '#fff', border: '1px solid #e8e4dc', borderRadius: 0, padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', opacity: 0.7 }}>
                     <div>
                       <span style={{ color: NAVY, fontSize: 14, fontWeight: 600 }}>{d.triggerName}</span>
                       <span style={{ color: '#999', fontSize: 12, marginLeft: 10 }}>{timeAgo(d.detectedAt)}</span>
@@ -483,7 +483,7 @@ export default function LiveDetectionFeed() {
 
         {/* ── Right: Stakeholder Registry ───────────────────────────────────── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <Card style={{ border: '1px solid #e8e4dc', borderRadius: 12 }}>
+          <Card style={{ border: '1px solid #e8e4dc', borderRadius: 0 }}>
             <CardHeader style={{ padding: '20px 24px 0' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <CardTitle style={{ color: NAVY, fontSize: 16, fontWeight: 700 }}>Alert Recipients</CardTitle>
@@ -503,7 +503,7 @@ export default function LiveDetectionFeed() {
             </CardHeader>
             <CardContent style={{ padding: '16px 24px 24px' }}>
               {showAddContact && (
-                <div style={{ background: '#f8f7f4', border: '1px solid #e8e4dc', borderRadius: 8, padding: 16, marginBottom: 16 }}>
+                <div style={{ background: '#f8f7f4', border: '1px solid #e8e4dc', borderRadius: 0, padding: 16, marginBottom: 16 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     <div>
                       <Label style={{ fontSize: 12, color: NAVY, fontWeight: 600 }}>Role</Label>
@@ -617,7 +617,7 @@ export default function LiveDetectionFeed() {
           </Card>
 
           {/* How it works */}
-          <Card style={{ border: '1px solid #e8e4dc', borderRadius: 12, background: NAVY }}>
+          <Card style={{ border: '1px solid #e8e4dc', borderRadius: 0, background: NAVY }}>
             <CardContent style={{ padding: 24 }}>
               <div style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 12 }}>How It Works</div>
               {[

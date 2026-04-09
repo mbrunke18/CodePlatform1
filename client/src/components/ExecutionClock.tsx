@@ -29,7 +29,7 @@ function Badge({ status }: { status: string }) {
   };
   const c = cfg[status] || cfg.detected;
   return (
-    <span style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: c.color, background: c.bg, padding: '3px 8px', borderRadius: 3 }}>
+    <span style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: c.color, background: c.bg, padding: '3px 8px', borderRadius: 0 }}>
       {c.label}
     </span>
   );
@@ -77,7 +77,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
 
   if (timelines.length === 0) {
     return (
-      <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, padding: 24, textAlign: 'center' }}>
+      <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 24, textAlign: 'center' }}>
         <Clock size={24} color="#DDD" style={{ margin: '0 auto 12px' }} />
         <div style={{ fontSize: 13, fontWeight: 600, color: '#999' }}>No execution events yet</div>
         <div style={{ fontSize: 12, color: '#bbb', marginTop: 4 }}>The clock starts automatically when the first trigger fires</div>
@@ -91,7 +91,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
       ? milliDiff(latest.detectedAt, latest.executionCompletedAt)
       : null;
     return (
-      <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, padding: 20, display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 20, display: 'flex', alignItems: 'center', gap: 16 }}>
         <div style={{ width: 44, height: 44, borderRadius: '50%', background: `${GOLD}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <Clock size={20} color={GOLD} />
         </div>
@@ -123,7 +123,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
           const totalMs = t.executionCompletedAt && t.detectedAt ? milliDiff(t.detectedAt, t.executionCompletedAt) : null;
           const totalMins = totalMs ? Math.round(totalMs / 60000) : null;
           return (
-            <div key={t.id} style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, overflow: 'hidden' }}>
+            <div key={t.id} style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, overflow: 'hidden' }}>
               {/* Summary row */}
               <div
                 onClick={() => setExpanded(isOpen ? null : t.id)}
@@ -170,19 +170,19 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                     <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 16, paddingTop: 14, borderTop: '1px solid #F0EDE4' }}>
                       {!t.playbookActivatedAt && (
                         <button onClick={() => advanceMutation.mutate({ id: t.id, milestone: 'activated', playbookName: t.recommendedPlaybook })}
-                          style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}30`, borderRadius: 4, padding: '5px 12px', cursor: 'pointer' }}>
+                          style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}30`, borderRadius: 0, padding: '5px 12px', cursor: 'pointer' }}>
                           Mark Playbook Activated
                         </button>
                       )}
                       {t.playbookActivatedAt && !t.firstTaskAcknowledgedAt && (
                         <button onClick={() => advanceMutation.mutate({ id: t.id, milestone: 'task_acknowledged' })}
-                          style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}30`, borderRadius: 4, padding: '5px 12px', cursor: 'pointer' }}>
+                          style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}30`, borderRadius: 0, padding: '5px 12px', cursor: 'pointer' }}>
                           Mark First Task Done
                         </button>
                       )}
                       {t.playbookActivatedAt && (
                         <button onClick={() => advanceMutation.mutate({ id: t.id, milestone: 'completed' })}
-                          style={{ fontSize: 11, fontWeight: 700, background: `${NAVY}10`, color: NAVY, border: `1px solid ${NAVY}20`, borderRadius: 4, padding: '5px 12px', cursor: 'pointer' }}>
+                          style={{ fontSize: 11, fontWeight: 700, background: `${NAVY}10`, color: NAVY, border: `1px solid ${NAVY}20`, borderRadius: 0, padding: '5px 12px', cursor: 'pointer' }}>
                           Mark Execution Complete
                         </button>
                       )}
@@ -191,7 +191,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
 
                   {/* Completed summary */}
                   {t.status === 'completed' && totalMins !== null && (
-                    <div style={{ marginTop: 16, background: `${TEAL}08`, border: `1px solid ${TEAL}20`, borderRadius: 6, padding: '12px 16px', display: 'flex', gap: 20 }}>
+                    <div style={{ marginTop: 16, background: `${TEAL}08`, border: `1px solid ${TEAL}20`, borderRadius: 0, padding: '12px 16px', display: 'flex', gap: 20 }}>
                       <div style={{ textAlign: 'center' }}>
                         <div style={{ fontSize: 22, fontWeight: 800, color: TEAL }}>{totalMins}m</div>
                         <div style={{ fontSize: 10, color: '#999', textTransform: 'uppercase', letterSpacing: 0.8 }}>Actual time</div>

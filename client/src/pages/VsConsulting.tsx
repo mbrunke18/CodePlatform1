@@ -72,13 +72,13 @@ export default function VsConsulting() {
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <button
               onClick={() => setLocation("/growth")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "none", cursor: "pointer" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "none", cursor: "pointer" }}
             >
               See Pricing <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <button
               onClick={() => setLocation("/try-demo")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.8)", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "1px solid rgba(240,237,228,0.2)", cursor: "pointer" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.8)", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "1px solid rgba(240,237,228,0.2)", cursor: "pointer" }}
             >
               See the Platform
             </button>
@@ -98,7 +98,7 @@ export default function VsConsulting() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#EF4444" }}>What $500K in Consulting Gets You</span>
               </div>
 
-              <div style={{ border: `1px solid #E8E4DC`, borderRadius: 10, overflow: "hidden" }}>
+              <div style={{ border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
                 {[
                   { phase: "Discovery & Assessment", delivers: "Interviews, current state analysis, gap assessment", cost: "$75K–$125K" },
                   { phase: "Playbook Development", delivers: "5–10 playbooks in PDF / PowerPoint format", cost: "$150K–$250K" },
@@ -120,7 +120,7 @@ export default function VsConsulting() {
                 </div>
               </div>
 
-              <div style={{ marginTop: 16, padding: "16px 20px", background: `rgba(239,68,68,0.04)`, border: `1px solid rgba(239,68,68,0.12)`, borderRadius: 8 }}>
+              <div style={{ marginTop: 16, padding: "16px 20px", background: `rgba(239,68,68,0.04)`, border: `1px solid rgba(239,68,68,0.12)`, borderRadius: 0 }}>
                 <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
                   What you receive: PDF playbooks that live on SharePoint. Nobody reads them. Nobody can find them when it matters.
                 </p>
@@ -142,14 +142,14 @@ export default function VsConsulting() {
                   "The playbooks describe processes — they don't assign tasks.",
                   "The organization still takes 30 days to coordinate.",
                 ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "14px 16px", background: OFF, borderRadius: 8, border: `1px solid #E8E4DC` }}>
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "14px 16px", background: OFF, borderRadius: 0, border: `1px solid #E8E4DC` }}>
                     <X style={{ width: 14, height: 14, color: "#EF4444", flexShrink: 0, marginTop: 1 }} />
                     <span style={{ fontSize: 13, color: "#374151" }}>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div style={{ marginTop: 16, padding: "16px 20px", background: `rgba(239,68,68,0.04)`, border: `1px solid rgba(239,68,68,0.12)`, borderRadius: 8 }}>
+              <div style={{ marginTop: 16, padding: "16px 20px", background: `rgba(239,68,68,0.04)`, border: `1px solid rgba(239,68,68,0.12)`, borderRadius: 0 }}>
                 <p style={{ fontSize: 13, fontWeight: 700, color: "#DC2626", margin: 0 }}>
                   The $500K investment sits on a shelf while the organization scrambles.
                 </p>
@@ -175,7 +175,7 @@ export default function VsConsulting() {
             </h2>
           </div>
 
-          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 12, overflow: "hidden" }}>
+          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
             {/* Header */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", background: NAVY }}>
               <div style={{ padding: "16px 24px" }}>
@@ -222,28 +222,28 @@ export default function VsConsulting() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
             {/* Consulting card */}
-            <div style={{ border: `1px solid rgba(239,68,68,0.2)`, borderRadius: 12, padding: "36px 32px", background: `rgba(239,68,68,0.02)`, textAlign: "center" as const }}>
+            <div style={{ border: `1px solid rgba(239,68,68,0.2)`, borderRadius: 0, padding: "36px 32px", background: `rgba(239,68,68,0.02)`, textAlign: "center" as const }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#EF4444", marginBottom: 16 }}>McKinsey / BCG / Bain</div>
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: "#DC2626", marginBottom: 8 }}>$300K–$500K</div>
               <div style={{ fontSize: 14, color: "#6B7280", marginBottom: 20, lineHeight: 1.5 }}>for playbooks that describe what to do</div>
-              <div style={{ padding: "14px 20px", background: `rgba(239,68,68,0.06)`, borderRadius: 8, border: `1px solid rgba(239,68,68,0.12)` }}>
+              <div style={{ padding: "14px 20px", background: `rgba(239,68,68,0.06)`, borderRadius: 0, border: `1px solid rgba(239,68,68,0.12)` }}>
                 <p style={{ fontSize: 13, color: "#6B7280", margin: 0, fontStyle: "italic" }}>One-time cost. No activation infrastructure. No signal detection. No ongoing maintenance. Returns when your next crisis hits: nothing.</p>
               </div>
             </div>
 
             {/* Readiness OS card */}
-            <div style={{ border: `2px solid ${GOLD}`, borderRadius: 12, padding: "36px 32px", background: `rgba(201,168,76,0.03)`, textAlign: "center" as const }}>
+            <div style={{ border: `2px solid ${GOLD}`, borderRadius: 0, padding: "36px 32px", background: `rgba(201,168,76,0.03)`, textAlign: "center" as const }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Readiness OS</div>
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$75K–$250K/year</div>
               <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes</div>
-              <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 8, border: `1px solid rgba(43,138,110,0.15)` }}>
+              <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 0, border: `1px solid rgba(43,138,110,0.15)` }}>
                 <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>170 live playbooks. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
               </div>
             </div>
           </div>
 
           {/* Closing statement */}
-          <div style={{ marginTop: 48, textAlign: "center" as const, padding: "36px 32px", background: NAVY, borderRadius: 12 }}>
+          <div style={{ marginTop: 48, textAlign: "center" as const, padding: "36px 32px", background: NAVY, borderRadius: 0 }}>
             <p style={{ ...CG, fontSize: "clamp(22px,3vw,30px)", fontWeight: 600, color: "#F0EDE4", lineHeight: 1.3, margin: "0 0 8px" }}>
               McKinsey tells you what to do.
             </p>
@@ -256,13 +256,13 @@ export default function VsConsulting() {
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <button
                 onClick={() => setLocation("/growth")}
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "none", cursor: "pointer" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "none", cursor: "pointer" }}
               >
                 See Pricing <ArrowRight style={{ width: 16, height: 16 }} />
               </button>
               <button
                 onClick={() => setLocation("/contact")}
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.8)", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "1px solid rgba(240,237,228,0.2)", cursor: "pointer" }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.8)", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "1px solid rgba(240,237,228,0.2)", cursor: "pointer" }}
               >
                 Talk to Our Team
               </button>

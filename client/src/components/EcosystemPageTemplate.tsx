@@ -45,7 +45,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
         <div style={{ maxWidth: 860, margin: "0 auto", display: "flex", alignItems: "center", gap: 20 }}>
           <div style={{
             background: `${ecoColor}18`, border: `1px solid ${ecoColor}44`,
-            borderRadius: 8, padding: "8px 16px", whiteSpace: "nowrap",
+            borderRadius: 0, padding: "8px 16px", whiteSpace: "nowrap",
             fontFamily: "'DM Mono',monospace", fontSize: 10, fontWeight: 700,
             letterSpacing: "0.18em", color: ecoColor, textTransform: "uppercase",
           }}>
@@ -116,7 +116,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               },
             ].map(({ phase, title, body, color }) => (
               <div key={phase} style={{
-                padding: 32, borderRadius: 12,
+                padding: 32, borderRadius: 0,
                 border: `1px solid ${color}22`,
                 background: `${color}06`,
               }}>
@@ -159,7 +159,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
             {data.connectors.map(({ label, sub, icon, color }) => (
               <div key={label} style={{
-                padding: "24px 20px", borderRadius: 10, background: "#fff",
+                padding: "24px 20px", borderRadius: 0, background: "#fff",
                 border: `1px solid ${color}25`,
                 boxShadow: `0 2px 12px ${color}10`,
               }}>
@@ -213,7 +213,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               background: GOLD, color: NAVY, border: "none",
               fontFamily: "'Barlow Condensed',sans-serif",
               fontSize: 13, fontWeight: 700, letterSpacing: "0.12em",
-              textTransform: "uppercase", padding: "14px 36px", borderRadius: 6,
+              textTransform: "uppercase", padding: "14px 36px", borderRadius: 0,
               cursor: "pointer",
             }}
           >
@@ -225,7 +225,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               background: "transparent", color: IVORY,
               border: `1px solid rgba(240,237,228,0.25)`,
               fontFamily: "'Barlow Condensed',sans-serif",
-              fontSize: 13, padding: "14px 28px", borderRadius: 6,
+              fontSize: 13, padding: "14px 28px", borderRadius: 0,
               cursor: "pointer",
             }}
           >

@@ -87,7 +87,7 @@ export default function SituationIntentsHub() {
             </div>
             <button
               onClick={() => setLocation("/identify/situation-intent/new")}
-              style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 22px", background: GOLD, border: "none", borderRadius: 8, fontSize: 14, fontWeight: 700, color: NAVY, cursor: "pointer" }}
+              style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 22px", background: GOLD, border: "none", borderRadius: 0, fontSize: 14, fontWeight: 700, color: NAVY, cursor: "pointer" }}
             >
               <Plus size={16} />
               New Situation Intent
@@ -115,14 +115,14 @@ export default function SituationIntentsHub() {
 
         {/* Progress bar */}
         {triggers.length > 0 && (
-          <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 10, padding: "16px 20px", marginBottom: 28, display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: "16px 20px", marginBottom: 28, display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ flex: 1 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
                 <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>Install Completion</span>
                 <span style={{ fontSize: 12, color: MUTED }}>{intents.length} of {triggers.filter((t: any) => t.isActive !== false).length} situations configured</span>
               </div>
-              <div style={{ height: 6, background: BORDER, borderRadius: 3, overflow: "hidden" }}>
-                <div style={{ height: "100%", width: `${completionRate}%`, background: completionRate === 100 ? TEAL : GOLD, borderRadius: 3, transition: "width 0.5s" }} />
+              <div style={{ height: 6, background: BORDER, borderRadius: 0, overflow: "hidden" }}>
+                <div style={{ height: "100%", width: `${completionRate}%`, background: completionRate === 100 ? TEAL : GOLD, borderRadius: 0, transition: "width 0.5s" }} />
               </div>
             </div>
             <div style={{ fontSize: 24, fontWeight: 700, color: completionRate === 100 ? TEAL : GOLD, minWidth: 52, textAlign: "right" }}>
@@ -145,19 +145,19 @@ export default function SituationIntentsHub() {
                 return (
                   <div
                     key={intent.id}
-                    style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 10, padding: "20px 24px", display: "flex", alignItems: "flex-start", gap: 20, transition: "box-shadow 0.15s" }}
+                    style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: "20px 24px", display: "flex", alignItems: "flex-start", gap: 20, transition: "box-shadow 0.15s" }}
                   >
-                    <div style={{ width: 44, height: 44, borderRadius: 8, background: `${TEAL}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <div style={{ width: 44, height: 44, borderRadius: 0, background: `${TEAL}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       <ImpactIcon size={20} color={TEAL} />
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                         <span style={{ fontSize: 15, fontWeight: 700, color: NAVY }}>{intent.triggerName}</span>
-                        <span style={{ fontSize: 10, fontWeight: 700, background: `${urgencyColor}15`, color: urgencyColor, padding: "2px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, background: `${urgencyColor}15`, color: urgencyColor, padding: "2px 8px", borderRadius: 0, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                           {intent.urgencyLevel}
                         </span>
                         {intent.businessImpact && (
-                          <span style={{ fontSize: 10, fontWeight: 600, background: `${NAVY}08`, color: NAVY, padding: "2px 8px", borderRadius: 20 }}>
+                          <span style={{ fontSize: 10, fontWeight: 600, background: `${NAVY}08`, color: NAVY, padding: "2px 8px", borderRadius: 0 }}>
                             {IMPACT_LABELS[intent.businessImpact] || intent.businessImpact}
                           </span>
                         )}
@@ -195,14 +195,14 @@ export default function SituationIntentsHub() {
                     <div style={{ display: "flex", gap: 8, flexShrink: 0 }}>
                       <button
                         onClick={() => setLocation(`/identify/situation-intent/new?triggerId=${intent.triggerId}&triggerName=${encodeURIComponent(intent.triggerName)}&triggerDomain=${encodeURIComponent(intent.triggerDomain || "")}`)}
-                        style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 14px", background: `${NAVY}08`, border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 12, fontWeight: 600, color: NAVY, cursor: "pointer" }}
+                        style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 14px", background: `${NAVY}08`, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 12, fontWeight: 600, color: NAVY, cursor: "pointer" }}
                       >
                         <Edit2 size={12} />
                         Edit
                       </button>
                       <button
                         onClick={() => deleteMutation.mutate(intent.id)}
-                        style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 14px", background: "rgba(220,38,38,0.06)", border: "1px solid rgba(220,38,38,0.2)", borderRadius: 6, fontSize: 12, fontWeight: 600, color: "#DC2626", cursor: "pointer" }}
+                        style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 14px", background: "rgba(220,38,38,0.06)", border: "1px solid rgba(220,38,38,0.2)", borderRadius: 0, fontSize: 12, fontWeight: 600, color: "#DC2626", cursor: "pointer" }}
                       >
                         <Trash2 size={12} />
                       </button>
@@ -225,7 +225,7 @@ export default function SituationIntentsHub() {
               {unconfiguredTriggers.map((trigger: any) => (
                 <div
                   key={trigger.id}
-                  style={{ background: "#fff", border: `1px dashed ${BORDER}`, borderRadius: 10, padding: "16px 20px", display: "flex", alignItems: "center", gap: 16 }}
+                  style={{ background: "#fff", border: `1px dashed ${BORDER}`, borderRadius: 0, padding: "16px 20px", display: "flex", alignItems: "center", gap: 16 }}
                 >
                   <div style={{ width: 8, height: 8, borderRadius: "50%", background: BORDER, flexShrink: 0 }} />
                   <div style={{ flex: 1 }}>
@@ -234,7 +234,7 @@ export default function SituationIntentsHub() {
                   </div>
                   <button
                     onClick={() => setLocation(`/identify/situation-intent/new?triggerId=${trigger.id}&triggerName=${encodeURIComponent(trigger.name)}&triggerDomain=${encodeURIComponent(trigger.domain || trigger.category || "")}`)}
-                    style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: `${GOLD}10`, border: `1px solid ${GOLD}35`, borderRadius: 6, fontSize: 12, fontWeight: 700, color: GOLD, cursor: "pointer" }}
+                    style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: `${GOLD}10`, border: `1px solid ${GOLD}35`, borderRadius: 0, fontSize: 12, fontWeight: 700, color: GOLD, cursor: "pointer" }}
                   >
                     <Plus size={12} />
                     Configure
@@ -253,7 +253,7 @@ export default function SituationIntentsHub() {
         )}
 
         {!isLoading && intents.length === 0 && triggers.length === 0 && (
-          <div style={{ textAlign: "center", padding: 80, background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 12 }}>
+          <div style={{ textAlign: "center", padding: 80, background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0 }}>
             <Target size={48} color={BORDER} style={{ marginBottom: 16 }} />
             <h3 style={{ fontSize: 18, fontWeight: 700, color: NAVY, marginBottom: 8 }}>No triggers configured yet</h3>
             <p style={{ fontSize: 14, color: MUTED, marginBottom: 24 }}>
@@ -261,7 +261,7 @@ export default function SituationIntentsHub() {
             </p>
             <button
               onClick={() => setLocation("/detect/alerts")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 24px", background: NAVY, border: "none", borderRadius: 8, fontSize: 14, fontWeight: 600, color: "#fff", cursor: "pointer" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 24px", background: NAVY, border: "none", borderRadius: 0, fontSize: 14, fontWeight: 600, color: "#fff", cursor: "pointer" }}
             >
               <Zap size={16} />
               Configure Alert Rules

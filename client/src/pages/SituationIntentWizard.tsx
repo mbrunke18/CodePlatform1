@@ -266,7 +266,7 @@ export default function SituationIntentWizard() {
           </div>
           <button
             onClick={() => setLocation("/identify/situation-intents")}
-            style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 6, padding: "8px 18px", color: "rgba(255,255,255,0.7)", fontSize: 13, cursor: "pointer" }}
+            style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 0, padding: "8px 18px", color: "rgba(255,255,255,0.7)", fontSize: 13, cursor: "pointer" }}
           >
             Cancel
           </button>
@@ -329,16 +329,16 @@ export default function SituationIntentWizard() {
             </p>
 
             {preTriggerId ? (
-              <div style={{ background: "#fff", border: `2px solid ${GOLD}`, borderRadius: 12, padding: 24, marginBottom: 24 }}>
+              <div style={{ background: "#fff", border: `2px solid ${GOLD}`, borderRadius: 0, padding: 24, marginBottom: 24 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 8, background: `${GOLD}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 0, background: `${GOLD}15`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Target size={20} color={GOLD} />
                   </div>
                   <div>
                     <div style={{ fontSize: 16, fontWeight: 700, color: NAVY }}>{form.triggerName}</div>
                     {form.triggerDomain && <div style={{ fontSize: 12, color: MUTED }}>{form.triggerDomain}</div>}
                   </div>
-                  <div style={{ marginLeft: "auto", background: `${GOLD}15`, border: `1px solid ${GOLD}40`, borderRadius: 4, padding: "3px 10px" }}>
+                  <div style={{ marginLeft: "auto", background: `${GOLD}15`, border: `1px solid ${GOLD}40`, borderRadius: 0, padding: "3px 10px" }}>
                     <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em" }}>Pre-selected</span>
                   </div>
                 </div>
@@ -353,7 +353,7 @@ export default function SituationIntentWizard() {
                       style={{
                         background: form.triggerId === t.id ? `${GOLD}08` : "#fff",
                         border: form.triggerId === t.id ? `2px solid ${GOLD}` : `1px solid ${BORDER}`,
-                        borderRadius: 8, padding: "16px 20px",
+                        borderRadius: 0, padding: "16px 20px",
                         cursor: "pointer", display: "flex", alignItems: "center", gap: 16,
                         transition: "all 0.15s",
                       }}
@@ -408,7 +408,7 @@ export default function SituationIntentWizard() {
                       style={{
                         background: selected ? NAVY : "#fff",
                         border: selected ? `2px solid ${NAVY}` : `1px solid ${BORDER}`,
-                        borderRadius: 8, padding: "16px 14px",
+                        borderRadius: 0, padding: "16px 14px",
                         cursor: "pointer", textAlign: "left", transition: "all 0.15s",
                       }}
                     >
@@ -435,7 +435,7 @@ export default function SituationIntentWizard() {
                 rows={4}
                 style={{
                   width: "100%", padding: "14px 16px", border: `1px solid ${BORDER}`,
-                  borderRadius: 8, fontSize: 14, color: NAVY, outline: "none",
+                  borderRadius: 0, fontSize: 14, color: NAVY, outline: "none",
                   fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, resize: "vertical",
                   boxSizing: "border-box",
                 }}
@@ -457,7 +457,7 @@ export default function SituationIntentWizard() {
                         flex: 1, padding: "14px 16px",
                         background: selected ? opt.color + "12" : "#fff",
                         border: selected ? `2px solid ${opt.color}` : `1px solid ${BORDER}`,
-                        borderRadius: 8, cursor: "pointer", textAlign: "left", transition: "all 0.15s",
+                        borderRadius: 0, cursor: "pointer", textAlign: "left", transition: "all 0.15s",
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
@@ -486,7 +486,7 @@ export default function SituationIntentWizard() {
                         padding: "12px 16px",
                         background: selected ? `${TEAL}08` : "#fff",
                         border: selected ? `2px solid ${TEAL}` : `1px solid ${BORDER}`,
-                        borderRadius: 8, cursor: "pointer", textAlign: "left", transition: "all 0.15s",
+                        borderRadius: 0, cursor: "pointer", textAlign: "left", transition: "all 0.15s",
                         display: "flex", gap: 10, alignItems: "flex-start",
                       }}
                     >
@@ -516,13 +516,13 @@ export default function SituationIntentWizard() {
             </p>
 
             {form.primaryDataPoints.length > 0 && (
-              <div style={{ background: `${TEAL}08`, border: `1px solid ${TEAL}30`, borderRadius: 8, padding: "12px 16px", marginBottom: 20 }}>
+              <div style={{ background: `${TEAL}08`, border: `1px solid ${TEAL}30`, borderRadius: 0, padding: "12px 16px", marginBottom: 20 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: TEAL, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                   Selected ({form.primaryDataPoints.length}/5)
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {form.primaryDataPointLabels.map((label, i) => (
-                    <div key={form.primaryDataPoints[i]} style={{ display: "flex", alignItems: "center", gap: 6, background: "#fff", border: `1px solid ${TEAL}40`, borderRadius: 20, padding: "4px 10px 4px 12px" }}>
+                    <div key={form.primaryDataPoints[i]} style={{ display: "flex", alignItems: "center", gap: 6, background: "#fff", border: `1px solid ${TEAL}40`, borderRadius: 0, padding: "4px 10px 4px 12px" }}>
                       <span style={{ fontSize: 12, fontWeight: 600, color: NAVY }}>{label}</span>
                       <button
                         onClick={() => {
@@ -550,13 +550,13 @@ export default function SituationIntentWizard() {
                   value={dpSearch}
                   onChange={e => setDpSearch(e.target.value)}
                   placeholder="Search data points..."
-                  style={{ width: "100%", paddingLeft: 36, padding: "10px 12px 10px 36px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, outline: "none", boxSizing: "border-box" }}
+                  style={{ width: "100%", paddingLeft: 36, padding: "10px 12px 10px 36px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none", boxSizing: "border-box" }}
                 />
               </div>
               <select
                 value={dpCategoryFilter}
                 onChange={e => setDpCategoryFilter(e.target.value)}
-                style={{ padding: "10px 12px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, color: NAVY, background: "#fff", cursor: "pointer", outline: "none" }}
+                style={{ padding: "10px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, background: "#fff", cursor: "pointer", outline: "none" }}
               >
                 <option value="all">All Categories</option>
                 {SIGNAL_CATEGORIES.map(cat => (
@@ -575,13 +575,13 @@ export default function SituationIntentWizard() {
                     style={{
                       background: selected ? `${TEAL}08` : "#fff",
                       border: selected ? `2px solid ${TEAL}` : `1px solid ${BORDER}`,
-                      borderRadius: 8, padding: "12px 14px",
+                      borderRadius: 0, padding: "12px 14px",
                       cursor: "pointer", textAlign: "left", transition: "all 0.15s",
                       display: "flex", gap: 10, alignItems: "flex-start",
                     }}
                   >
                     <div style={{
-                      width: 18, height: 18, borderRadius: 4, border: `2px solid ${selected ? TEAL : BORDER}`,
+                      width: 18, height: 18, borderRadius: 0, border: `2px solid ${selected ? TEAL : BORDER}`,
                       background: selected ? TEAL : "transparent",
                       display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1,
                     }}>
@@ -619,7 +619,7 @@ export default function SituationIntentWizard() {
 
                 <div style={{ marginBottom: 16 }}>
                   {form.briefRequirements.map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, marginBottom: 8 }}>
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, marginBottom: 8 }}>
                       <div style={{ width: 20, height: 20, borderRadius: "50%", background: `${GOLD}15`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
                         <span style={{ fontSize: 10, fontWeight: 800, color: GOLD }}>{i + 1}</span>
                       </div>
@@ -640,11 +640,11 @@ export default function SituationIntentWizard() {
                     onChange={e => setNewBriefItem(e.target.value)}
                     onKeyDown={e => e.key === "Enter" && addBriefItem(newBriefItem)}
                     placeholder="Add a custom brief requirement..."
-                    style={{ flex: 1, padding: "10px 12px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, outline: "none" }}
+                    style={{ flex: 1, padding: "10px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none" }}
                   />
                   <button
                     onClick={() => addBriefItem(newBriefItem)}
-                    style={{ padding: "10px 14px", background: NAVY, border: "none", borderRadius: 6, cursor: "pointer" }}
+                    style={{ padding: "10px 14px", background: NAVY, border: "none", borderRadius: 0, cursor: "pointer" }}
                   >
                     <Plus size={16} color="#fff" />
                   </button>
@@ -662,7 +662,7 @@ export default function SituationIntentWizard() {
                       onClick={() => addBriefItem(suggestion)}
                       style={{
                         padding: "10px 14px", background: "#fff", border: `1px solid ${BORDER}`,
-                        borderRadius: 8, cursor: "pointer", textAlign: "left", transition: "all 0.15s",
+                        borderRadius: 0, cursor: "pointer", textAlign: "left", transition: "all 0.15s",
                         display: "flex", alignItems: "center", gap: 10,
                       }}
                     >
@@ -695,7 +695,7 @@ export default function SituationIntentWizard() {
                 </label>
 
                 {form.situationStakeholders.length === 0 && (
-                  <div style={{ padding: "24px", textAlign: "center", background: "#fff", border: `1px dashed ${BORDER}`, borderRadius: 8, marginBottom: 16 }}>
+                  <div style={{ padding: "24px", textAlign: "center", background: "#fff", border: `1px dashed ${BORDER}`, borderRadius: 0, marginBottom: 16 }}>
                     <Users size={24} color={BORDER} style={{ marginBottom: 8 }} />
                     <p style={{ fontSize: 13, color: MUTED }}>No situation-specific contacts yet.</p>
                     <p style={{ fontSize: 12, color: MUTED, marginTop: 4 }}>Your org-wide stakeholders still receive notifications.</p>
@@ -705,7 +705,7 @@ export default function SituationIntentWizard() {
                 {form.situationStakeholders.map((s, i) => {
                   const orient = DECISION_ORIENTATIONS.find(o => o.value === s.decisionOrientation);
                   return (
-                    <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, padding: "14px 16px", marginBottom: 10, display: "flex", alignItems: "center", gap: 12 }}>
+                    <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: "14px 16px", marginBottom: 10, display: "flex", alignItems: "center", gap: 12 }}>
                       <div style={{ width: 36, height: 36, borderRadius: "50%", background: `${NAVY}10`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <Users size={16} color={NAVY} />
                       </div>
@@ -717,7 +717,7 @@ export default function SituationIntentWizard() {
                             Notify: {s.notifyOn}
                           </span>
                           {orient && (
-                            <span style={{ fontSize: 10, background: `${TEAL}12`, color: TEAL, fontWeight: 700, padding: "1px 7px", borderRadius: 4, letterSpacing: "0.06em" }}>
+                            <span style={{ fontSize: 10, background: `${TEAL}12`, color: TEAL, fontWeight: 700, padding: "1px 7px", borderRadius: 0, letterSpacing: "0.06em" }}>
                               {orient.icon} {orient.label} lens
                             </span>
                           )}
@@ -733,32 +733,32 @@ export default function SituationIntentWizard() {
                   );
                 })}
 
-                <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, padding: 16 }}>
+                <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 16 }}>
                   <div style={{ display: "grid", gap: 10, marginBottom: 12 }}>
                     <input
                       value={newStakeholder.name}
                       onChange={e => setNewStakeholder(prev => ({ ...prev, name: e.target.value }))}
                       placeholder="Full name"
-                      style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, outline: "none" }}
+                      style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none" }}
                     />
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                       <input
                         value={newStakeholder.role}
                         onChange={e => setNewStakeholder(prev => ({ ...prev, role: e.target.value }))}
                         placeholder="Role (e.g. CFO)"
-                        style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, outline: "none" }}
+                        style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none" }}
                       />
                       <input
                         value={newStakeholder.email}
                         onChange={e => setNewStakeholder(prev => ({ ...prev, email: e.target.value }))}
                         placeholder="Email address"
-                        style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, outline: "none" }}
+                        style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none" }}
                       />
                     </div>
                     <select
                       value={newStakeholder.notifyOn}
                       onChange={e => setNewStakeholder(prev => ({ ...prev, notifyOn: e.target.value as any }))}
-                      style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 6, fontSize: 13, color: NAVY, background: "#fff", outline: "none" }}
+                      style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, background: "#fff", outline: "none" }}
                     >
                       <option value="detection">On signal detection</option>
                       <option value="activation">On playbook activation</option>
@@ -781,7 +781,7 @@ export default function SituationIntentWizard() {
                             onClick={() => setNewStakeholder(prev => ({ ...prev, decisionOrientation: selected ? "" : o.value as any }))}
                             style={{
                               padding: "8px 10px", border: `1px solid ${selected ? TEAL : BORDER}`,
-                              borderRadius: 6, background: selected ? `${TEAL}10` : "#fff",
+                              borderRadius: 0, background: selected ? `${TEAL}10` : "#fff",
                               cursor: "pointer", textAlign: "left", display: "flex", alignItems: "center", gap: 6,
                             }}
                           >
@@ -798,7 +798,7 @@ export default function SituationIntentWizard() {
 
                   <button
                     onClick={addStakeholder}
-                    style={{ width: "100%", padding: "10px", background: NAVY, border: "none", borderRadius: 6, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
+                    style={{ width: "100%", padding: "10px", background: NAVY, border: "none", borderRadius: 0, color: "#fff", fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                   >
                     <Plus size={14} />
                     Add Stakeholder
@@ -820,13 +820,13 @@ export default function SituationIntentWizard() {
                   rows={6}
                   style={{
                     width: "100%", padding: "12px 14px", border: `1px solid ${BORDER}`,
-                    borderRadius: 8, fontSize: 13, color: NAVY, outline: "none",
+                    borderRadius: 0, fontSize: 13, color: NAVY, outline: "none",
                     fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, resize: "vertical",
                     boxSizing: "border-box",
                   }}
                 />
 
-                <div style={{ background: `${GOLD}08`, border: `1px solid ${GOLD}30`, borderRadius: 8, padding: "16px", marginTop: 16 }}>
+                <div style={{ background: `${GOLD}08`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: "16px", marginTop: 16 }}>
                   <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                     <AlertTriangle size={16} color={GOLD} style={{ marginTop: 1, flexShrink: 0 }} />
                     <div>
@@ -856,23 +856,23 @@ export default function SituationIntentWizard() {
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 24 }}>
               {/* Trigger */}
-              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 12, padding: 24 }}>
+              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: TEAL, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Situation</div>
                 <div style={{ fontSize: 16, fontWeight: 700, color: NAVY }}>{form.triggerName}</div>
                 {form.triggerDomain && <div style={{ fontSize: 12, color: MUTED, marginTop: 4 }}>{form.triggerDomain}</div>}
               </div>
 
               {/* Impact + Urgency */}
-              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 12, padding: 24 }}>
+              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: TEAL, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>Strategic Intent</div>
                 <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, background: `${NAVY}10`, color: NAVY, padding: "3px 10px", borderRadius: 20 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, background: `${NAVY}10`, color: NAVY, padding: "3px 10px", borderRadius: 0 }}>
                     {BUSINESS_IMPACT_OPTIONS.find(o => o.id === form.businessImpact)?.label || "—"}
                   </span>
-                  <span style={{ fontSize: 11, fontWeight: 700, background: `${GOLD}15`, color: GOLD, padding: "3px 10px", borderRadius: 20 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, background: `${GOLD}15`, color: GOLD, padding: "3px 10px", borderRadius: 0 }}>
                     {URGENCY_OPTIONS.find(o => o.id === form.urgencyLevel)?.label || "—"} Urgency
                   </span>
-                  <span style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}12`, color: TEAL, padding: "3px 10px", borderRadius: 20 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}12`, color: TEAL, padding: "3px 10px", borderRadius: 0 }}>
                     {SENSITIVITY_OPTIONS.find(o => o.id === form.sensitivityLevel)?.label || "—"} Sensitivity
                   </span>
                 </div>
@@ -880,7 +880,7 @@ export default function SituationIntentWizard() {
               </div>
 
               {/* Primary Indicators */}
-              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 12, padding: 24 }}>
+              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: TEAL, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>
                   Primary Indicators ({form.primaryDataPoints.length})
                 </div>
@@ -894,7 +894,7 @@ export default function SituationIntentWizard() {
               </div>
 
               {/* Decision Brief */}
-              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 12, padding: 24 }}>
+              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: TEAL, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>
                   Decision Brief ({form.briefRequirements.length} items)
                 </div>
@@ -910,7 +910,7 @@ export default function SituationIntentWizard() {
 
             {/* Stakeholders */}
             {form.situationStakeholders.length > 0 && (
-              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 12, padding: 24, marginBottom: 24 }}>
+              <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24, marginBottom: 24 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: TEAL, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12 }}>
                   Situation-Specific Stakeholders ({form.situationStakeholders.length})
                 </div>
@@ -918,7 +918,7 @@ export default function SituationIntentWizard() {
                   {form.situationStakeholders.map((s, i) => {
                     const orient = DECISION_ORIENTATIONS.find(o => o.value === s.decisionOrientation);
                     return (
-                      <div key={i} style={{ background: `${NAVY}05`, border: `1px solid ${BORDER}`, borderRadius: 8, padding: "10px 14px" }}>
+                      <div key={i} style={{ background: `${NAVY}05`, border: `1px solid ${BORDER}`, borderRadius: 0, padding: "10px 14px" }}>
                         <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{s.name}</div>
                         <div style={{ fontSize: 11, color: MUTED }}>{s.role} · Notify on {s.notifyOn}</div>
                         {orient && (
@@ -935,13 +935,13 @@ export default function SituationIntentWizard() {
 
             {/* Context Notes */}
             {form.contextNotes && (
-              <div style={{ background: `${GOLD}06`, border: `1px solid ${GOLD}25`, borderRadius: 12, padding: 24, marginBottom: 24 }}>
+              <div style={{ background: `${GOLD}06`, border: `1px solid ${GOLD}25`, borderRadius: 0, padding: 24, marginBottom: 24 }}>
                 <div style={{ fontSize: 10, fontWeight: 800, color: GOLD, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 8 }}>Context Notes</div>
                 <div style={{ fontSize: 13, color: NAVY, lineHeight: 1.6 }}>{form.contextNotes}</div>
               </div>
             )}
 
-            <div style={{ background: `${TEAL}08`, border: `1px solid ${TEAL}30`, borderRadius: 8, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ background: `${TEAL}08`, border: `1px solid ${TEAL}30`, borderRadius: 0, padding: "14px 18px", display: "flex", alignItems: "center", gap: 12 }}>
               <CheckCircle2 size={18} color={TEAL} />
               <span style={{ fontSize: 13, color: NAVY, lineHeight: 1.5 }}>
                 Once saved, this intent configuration is immediately active. When <strong>{form.triggerName}</strong> fires, 
@@ -955,7 +955,7 @@ export default function SituationIntentWizard() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 40, paddingTop: 24, borderTop: `1px solid ${BORDER}` }}>
           <button
             onClick={() => step > 1 ? setStep(step - 1) : setLocation("/identify/situation-intents")}
-            style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 24px", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 8, fontSize: 14, fontWeight: 600, color: NAVY, cursor: "pointer" }}
+            style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 24px", background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 14, fontWeight: 600, color: NAVY, cursor: "pointer" }}
           >
             <ChevronLeft size={16} />
             {step === 1 ? "Cancel" : "Back"}
@@ -963,7 +963,7 @@ export default function SituationIntentWizard() {
 
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             {STEPS.map(s => (
-              <div key={s.id} style={{ width: step === s.id ? 24 : 8, height: 8, borderRadius: 4, background: step > s.id ? TEAL : step === s.id ? GOLD : BORDER, transition: "all 0.2s" }} />
+              <div key={s.id} style={{ width: step === s.id ? 24 : 8, height: 8, borderRadius: 0, background: step > s.id ? TEAL : step === s.id ? GOLD : BORDER, transition: "all 0.2s" }} />
             ))}
           </div>
 
@@ -973,7 +973,7 @@ export default function SituationIntentWizard() {
               disabled={!canProceed()}
               style={{
                 display: "flex", alignItems: "center", gap: 8, padding: "12px 28px",
-                background: canProceed() ? NAVY : BORDER, border: "none", borderRadius: 8,
+                background: canProceed() ? NAVY : BORDER, border: "none", borderRadius: 0,
                 fontSize: 14, fontWeight: 700, color: canProceed() ? "#fff" : MUTED,
                 cursor: canProceed() ? "pointer" : "not-allowed", transition: "all 0.2s",
               }}
@@ -987,7 +987,7 @@ export default function SituationIntentWizard() {
               disabled={saveMutation.isPending}
               style={{
                 display: "flex", alignItems: "center", gap: 8, padding: "12px 28px",
-                background: GOLD, border: "none", borderRadius: 8,
+                background: GOLD, border: "none", borderRadius: 0,
                 fontSize: 14, fontWeight: 700, color: NAVY,
                 cursor: saveMutation.isPending ? "not-allowed" : "pointer",
                 opacity: saveMutation.isPending ? 0.7 : 1,

@@ -111,7 +111,7 @@ export default function AdminQuickLink() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: 24, alignItems: 'start' }}>
 
           {/* Form */}
-          <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: 12, padding: '28px 32px' }}>
+          <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: 0, padding: '28px 32px' }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', color: TEAL, marginBottom: 20, textTransform: 'uppercase' }}>
               Prospect Details
             </div>
@@ -125,7 +125,7 @@ export default function AdminQuickLink() {
                 placeholder="Kerry Huang"
                 style={{
                   width: '100%', padding: '10px 14px', fontSize: 14, border: '1px solid #E2E8F0',
-                  borderRadius: 6, outline: 'none', color: NAVY, fontFamily: 'inherit',
+                  borderRadius: 0, outline: 'none', color: NAVY, fontFamily: 'inherit',
                   boxSizing: 'border-box' as const,
                 }}
               />
@@ -140,7 +140,7 @@ export default function AdminQuickLink() {
                 placeholder="kerry@company.com"
                 style={{
                   width: '100%', padding: '10px 14px', fontSize: 14, border: '1px solid #E2E8F0',
-                  borderRadius: 6, outline: 'none', color: NAVY, fontFamily: 'inherit',
+                  borderRadius: 0, outline: 'none', color: NAVY, fontFamily: 'inherit',
                   boxSizing: 'border-box' as const,
                 }}
               />
@@ -153,7 +153,7 @@ export default function AdminQuickLink() {
                   <label key={d.value} style={{
                     display: 'flex', alignItems: 'center', gap: 12,
                     padding: '10px 14px', border: `1px solid ${hours === d.value ? GOLD : '#E2E8F0'}`,
-                    borderRadius: 6, cursor: 'pointer',
+                    borderRadius: 0, cursor: 'pointer',
                     background: hours === d.value ? 'rgba(201,168,76,0.06)' : 'white',
                     transition: 'all 0.1s',
                   }}>
@@ -167,14 +167,14 @@ export default function AdminQuickLink() {
                       <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{d.label}</span>
                       <span style={{ fontSize: 11, color: '#94A3B8', marginLeft: 8 }}>{d.note}</span>
                     </div>
-                    {d.default && <span style={{ fontSize: 9, background: TEAL, color: 'white', padding: '2px 7px', borderRadius: 3, fontWeight: 700, letterSpacing: '0.08em' }}>DEFAULT</span>}
+                    {d.default && <span style={{ fontSize: 9, background: TEAL, color: 'white', padding: '2px 7px', borderRadius: 0, fontWeight: 700, letterSpacing: '0.08em' }}>DEFAULT</span>}
                   </label>
                 ))}
               </div>
             </div>
 
             {error && (
-              <div style={{ background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderRadius: 6, padding: '10px 14px', fontSize: 13, color: '#C0392B', marginBottom: 16 }}>
+              <div style={{ background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderRadius: 0, padding: '10px 14px', fontSize: 13, color: '#C0392B', marginBottom: 16 }}>
                 {error}
               </div>
             )}
@@ -185,7 +185,7 @@ export default function AdminQuickLink() {
               style={{
                 width: '100%', padding: '13px 0', background: generating ? '#94A3B8' : NAVY,
                 color: 'white', fontWeight: 800, fontSize: 14, border: 'none',
-                borderRadius: 6, cursor: generating ? 'not-allowed' : 'pointer',
+                borderRadius: 0, cursor: generating ? 'not-allowed' : 'pointer',
                 letterSpacing: '0.04em', transition: 'background 0.15s',
               }}
             >
@@ -198,7 +198,7 @@ export default function AdminQuickLink() {
 
             {/* Generated link result */}
             {result && (
-              <div style={{ background: 'white', border: `1px solid ${TEAL}`, borderTop: `3px solid ${TEAL}`, borderRadius: 10, padding: '20px 22px' }}>
+              <div style={{ background: 'white', border: `1px solid ${TEAL}`, borderTop: `3px solid ${TEAL}`, borderRadius: 0, padding: '20px 22px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 12 }}>
                   <Zap size={13} color={TEAL} />
                   <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', color: TEAL }}>LINK READY</span>
@@ -212,7 +212,7 @@ export default function AdminQuickLink() {
                   <span style={{ fontSize: 11, color: '#64748B' }}>Expires {formatExpiry(result.expiresAt)}</span>
                 </div>
                 <div style={{
-                  background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 6,
+                  background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0,
                   padding: '10px 12px', fontSize: 11, color: '#475569', wordBreak: 'break-all' as const,
                   lineHeight: 1.5, marginBottom: 12, fontFamily: 'monospace',
                 }}>
@@ -223,7 +223,7 @@ export default function AdminQuickLink() {
                   style={{
                     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                     padding: '10px 0', background: copied ? TEAL : GOLD, color: copied ? 'white' : NAVY,
-                    fontWeight: 800, fontSize: 13, border: 'none', borderRadius: 6,
+                    fontWeight: 800, fontSize: 13, border: 'none', borderRadius: 0,
                     cursor: 'pointer', transition: 'all 0.15s',
                   }}
                 >
@@ -233,7 +233,7 @@ export default function AdminQuickLink() {
             )}
 
             {/* Usage guide */}
-            <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: 10, padding: '20px 22px' }}>
+            <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: 0, padding: '20px 22px' }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', color: '#64748B', marginBottom: 14, textTransform: 'uppercase' }}>
                 When to Use Each Access Path
               </div>
@@ -243,7 +243,7 @@ export default function AdminQuickLink() {
                 { icon: Zap, title: '/request-access form', desc: 'Investor or pilot prospect who wants to enroll properly. Captures their info, triggers the full magic link flow.' },
               ].map(({ icon: Icon, title, desc }) => (
                 <div key={title} style={{ display: 'flex', gap: 10, marginBottom: 14, paddingBottom: 14, borderBottom: '1px solid #F1F5F9' }}>
-                  <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 6, padding: 7, flexShrink: 0, height: 30, display: 'flex', alignItems: 'center' }}>
+                  <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0, padding: 7, flexShrink: 0, height: 30, display: 'flex', alignItems: 'center' }}>
                     <Icon size={13} color={TEAL} />
                   </div>
                   <div>
@@ -259,7 +259,7 @@ export default function AdminQuickLink() {
 
             {/* Recent history */}
             {history.length > 0 && (
-              <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: 10, padding: '18px 22px' }}>
+              <div style={{ background: 'white', border: '1px solid #E2E8F0', borderRadius: 0, padding: '18px 22px' }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', color: '#64748B', marginBottom: 12, textTransform: 'uppercase' }}>
                   This Session
                 </div>
@@ -271,7 +271,7 @@ export default function AdminQuickLink() {
                     </div>
                     <button
                       onClick={() => copyLink(h.url)}
-                      style={{ background: 'none', border: '1px solid #E2E8F0', borderRadius: 4, padding: '4px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: '#64748B', fontWeight: 600 }}
+                      style={{ background: 'none', border: '1px solid #E2E8F0', borderRadius: 0, padding: '4px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4, fontSize: 10, color: '#64748B', fontWeight: 600 }}
                     >
                       <Copy size={10} /> Copy
                     </button>

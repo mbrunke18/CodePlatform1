@@ -120,7 +120,7 @@ function ScaleInput({ value, onChange, labels }: { value: number | null; onChang
             width: 44, height: 44, border: `2px solid ${value === n ? GOLD : BORDER}`,
             background: value === n ? GOLD : "white", color: value === n ? NAVY : MUTED,
             fontWeight: 700, fontSize: 15, cursor: "pointer", transition: "all 0.15s",
-            borderRadius: 4,
+            borderRadius: 0,
           }}>{n}</button>
         ))}
       </div>
@@ -140,7 +140,7 @@ function TextArea({ value, onChange, placeholder, rows = 3 }: { value: string; o
       rows={rows}
       style={{
         width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`,
-        borderRadius: 4, fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+        borderRadius: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 14,
         resize: "vertical", color: NAVY, outline: "none", boxSizing: "border-box",
         lineHeight: 1.6,
       }}
@@ -160,7 +160,7 @@ function CheckboxGroup({ options, selected, onChange }: { options: string[]; sel
           <div onClick={() => toggle(opt)} style={{
             width: 18, height: 18, minWidth: 18, border: `2px solid ${selected.includes(opt) ? GOLD : BORDER}`,
             background: selected.includes(opt) ? GOLD : "white", marginTop: 1,
-            display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 2,
+            display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 0,
           }}>
             {selected.includes(opt) && <span style={{ color: NAVY, fontWeight: 900, fontSize: 11 }}>✓</span>}
           </div>
@@ -385,7 +385,7 @@ export default function PeerReview() {
                   value={(identity as any)[f.key]}
                   onChange={e => setIdentity(prev => ({ ...prev, [f.key]: e.target.value }))}
                   placeholder={f.placeholder}
-                  style={{ width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 14, color: NAVY, boxSizing: "border-box", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 14, color: NAVY, boxSizing: "border-box", fontFamily: "'DM Sans', sans-serif" }}
                 />
               </div>
             ))}
@@ -485,7 +485,7 @@ export default function PeerReview() {
             <QBlock num="Q14" question="Which industries or organizational types would most immediately benefit from Readiness OS?" note="Set H (High), M (Medium), or L (Low) priority for each.">
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {q14Rankings.map((row, i) => (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr auto auto", gap: 12, alignItems: "center", padding: "10px 14px", background: "white", border: `1px solid ${BORDER}`, borderRadius: 4 }}>
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr auto auto", gap: 12, alignItems: "center", padding: "10px 14px", background: "white", border: `1px solid ${BORDER}`, borderRadius: 0 }}>
                     <span style={{ fontSize: 13, color: NAVY }}>{row.industry}</span>
                     <div style={{ display: "flex", gap: 6 }}>
                       {["H", "M", "L"].map(p => (
@@ -497,7 +497,7 @@ export default function PeerReview() {
                           width: 32, height: 32, border: `2px solid ${row.priority === p ? (p === "H" ? TEAL : p === "M" ? GOLD : MUTED) : BORDER}`,
                           background: row.priority === p ? (p === "H" ? TEAL : p === "M" ? GOLD : "#E8E4DC") : "white",
                           color: row.priority === p ? (p === "M" ? NAVY : "white") : MUTED,
-                          fontWeight: 700, fontSize: 11, cursor: "pointer", borderRadius: 4,
+                          fontWeight: 700, fontSize: 11, cursor: "pointer", borderRadius: 0,
                         }}>{p}</button>
                       ))}
                     </div>
@@ -522,7 +522,7 @@ export default function PeerReview() {
             <QBlock num="Q16" question="Rate the following product dimensions as you experienced them." note="1 = Poor, 5 = Excellent">
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {Q16_DIMENSIONS.map(dim => (
-                  <div key={dim} style={{ padding: "14px 16px", background: "white", border: `1px solid ${BORDER}`, borderRadius: 4 }}>
+                  <div key={dim} style={{ padding: "14px 16px", background: "white", border: `1px solid ${BORDER}`, borderRadius: 0 }}>
                     <p style={{ fontSize: 13, fontWeight: 600, color: NAVY, margin: "0 0 10px" }}>{dim}</p>
                     <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
                       {[1, 2, 3, 4, 5].map(n => (
@@ -530,7 +530,7 @@ export default function PeerReview() {
                           width: 36, height: 36, border: `2px solid ${q16Ratings[dim]?.score === n ? GOLD : BORDER}`,
                           background: q16Ratings[dim]?.score === n ? GOLD : "white",
                           color: q16Ratings[dim]?.score === n ? NAVY : MUTED,
-                          fontWeight: 700, fontSize: 13, cursor: "pointer", borderRadius: 4,
+                          fontWeight: 700, fontSize: 13, cursor: "pointer", borderRadius: 0,
                         }}>{n}</button>
                       ))}
                     </div>
@@ -538,7 +538,7 @@ export default function PeerReview() {
                       value={q16Ratings[dim]?.comments || ""}
                       onChange={e => setQ16Ratings(prev => ({ ...prev, [dim]: { ...prev[dim], comments: e.target.value } }))}
                       placeholder="Comments (optional)"
-                      style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, boxSizing: "border-box", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, boxSizing: "border-box", fontFamily: "'DM Sans', sans-serif" }}
                     />
                   </div>
                 ))}
@@ -612,7 +612,7 @@ export default function PeerReview() {
         {/* Navigation */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 16, paddingTop: 24, borderTop: `1px solid ${BORDER}` }}>
           {step > 0 ? (
-            <button onClick={() => setStep(s => s - 1)} style={{ padding: "12px 28px", border: `1px solid ${BORDER}`, background: "white", color: NAVY, fontWeight: 600, fontSize: 14, cursor: "pointer", borderRadius: 4 }}>
+            <button onClick={() => setStep(s => s - 1)} style={{ padding: "12px 28px", border: `1px solid ${BORDER}`, background: "white", color: NAVY, fontWeight: 600, fontSize: 14, cursor: "pointer", borderRadius: 0 }}>
               ← Back
             </button>
           ) : <div />}
@@ -627,7 +627,7 @@ export default function PeerReview() {
                 setStep(s => s + 1);
                 window.scrollTo(0, 0);
               }}
-              style={{ padding: "12px 36px", background: NAVY, color: "white", border: "none", fontWeight: 700, fontSize: 14, cursor: "pointer", borderRadius: 4, letterSpacing: "0.05em" }}
+              style={{ padding: "12px 36px", background: NAVY, color: "white", border: "none", fontWeight: 700, fontSize: 14, cursor: "pointer", borderRadius: 0, letterSpacing: "0.05em" }}
             >
               Continue →
             </button>
@@ -635,7 +635,7 @@ export default function PeerReview() {
             <button
               onClick={handleSubmit}
               disabled={mutation.isPending}
-              style={{ padding: "14px 40px", background: GOLD, color: NAVY, border: "none", fontWeight: 800, fontSize: 14, cursor: "pointer", borderRadius: 4, letterSpacing: "0.05em", opacity: mutation.isPending ? 0.7 : 1 }}
+              style={{ padding: "14px 40px", background: GOLD, color: NAVY, border: "none", fontWeight: 800, fontSize: 14, cursor: "pointer", borderRadius: 0, letterSpacing: "0.05em", opacity: mutation.isPending ? 0.7 : 1 }}
             >
               {mutation.isPending ? "Submitting..." : "Submit Assessment →"}
             </button>

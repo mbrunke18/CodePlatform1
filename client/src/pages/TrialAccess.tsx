@@ -44,7 +44,7 @@ export default function TrialAccess() {
   if (submitted) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "#F8F7F4" }}>
-        <div className="max-w-md w-full mx-auto text-center px-8 py-12" style={{ background: "#fff", borderRadius: 12, boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+        <div className="max-w-md w-full mx-auto text-center px-8 py-12" style={{ background: "#fff", borderRadius: 0, boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
           <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(201,168,76,0.12)" }}>
             <CheckCircle size={32} color={GOLD} />
           </div>

@@ -982,7 +982,7 @@ export default function RoleExperience() {
 
             {/* THE HOOK — largest most prominent element */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              style={{ background: '#0A0F2E', borderRadius: 14, padding: '32px 32px 28px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}
+              style={{ background: '#0A0F2E', borderRadius: 0, padding: '32px 32px 28px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}
             >
               {/* Subtle grid overlay */}
               <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
@@ -993,13 +993,13 @@ export default function RoleExperience() {
                 </h2>
                 {/* Before / After contrast */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, alignItems: 'center' }}>
-                  <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.25)', borderRadius: 8 }}>
+                  <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.25)', borderRadius: 0 }}>
                     <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
                     <p style={{ fontSize: 22, fontWeight: 800, color: '#f87171', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
                     <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>to mobilize a response</p>
                   </div>
                   <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.15)', textAlign: 'center' }}>→</div>
-                  <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 8 }}>
+                  <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0 }}>
                     <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Readiness OS</p>
                     <p style={{ fontSize: 22, fontWeight: 800, color: '#4ade80', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
                     <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>full execution underway</p>
@@ -1010,8 +1010,8 @@ export default function RoleExperience() {
 
             {/* Crisis scenario card */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-              <div style={{ background: '#1a0a0a', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 12, padding: '18px 20px', marginBottom: 16, display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-                <div style={{ width: 36, height: 36, background: 'rgba(220,38,38,0.15)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ background: '#1a0a0a', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 0, padding: '18px 20px', marginBottom: 16, display: 'flex', alignItems: 'flex-start', gap: 14 }}>
+                <div style={{ width: 36, height: 36, background: 'rgba(220,38,38,0.15)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <AlertTriangle className="h-4 w-4 text-red-400" />
                 </div>
                 <div>
@@ -1034,7 +1034,7 @@ export default function RoleExperience() {
                   { step: '03', label: 'Trigger fires — OS executes', icon: AlertTriangle, color: '#DC2626' },
                   { step: '04', label: 'See your outcomes', icon: CheckCircle2, color: '#2B8A6E' },
                 ].map(({ step, label, icon: StepIcon, color }) => (
-                  <div key={step} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 8 }}>
+                  <div key={step} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 0 }}>
                     <div style={{ width: 32, height: 32, borderRadius: '50%', background: `${color}15`, border: `1px solid ${color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
                       <StepIcon size={14} style={{ color }} />
                     </div>

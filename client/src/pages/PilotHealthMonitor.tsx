@@ -77,7 +77,7 @@ function PilotCard({ org }: { org: PilotOrg }) {
     <div style={{
       background: "rgba(255,255,255,0.03)",
       border: `1px solid ${hc.border}`,
-      borderRadius: 12,
+      borderRadius: 0,
       overflow: "hidden",
     }}>
       {/* Header */}
@@ -87,7 +87,7 @@ function PilotCard({ org }: { org: PilotOrg }) {
           <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{org.industry}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6, flexShrink: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 5, background: hc.bg, border: `1px solid ${hc.border}`, borderRadius: 20, padding: "3px 10px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 5, background: hc.bg, border: `1px solid ${hc.border}`, borderRadius: 0, padding: "3px 10px" }}>
             <Icon size={10} color={hc.text} />
             <span style={{ fontSize: 10, fontWeight: 700, color: hc.text, letterSpacing: "0.08em" }}>{hc.label}</span>
           </div>
@@ -121,8 +121,8 @@ function PilotCard({ org }: { org: PilotOrg }) {
         </div>
         {org.pilotDayRemaining !== null && (
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 60, height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2, overflow: "hidden" }}>
-              <div style={{ width: `${progressPct}%`, height: "100%", background: progressPct >= 75 ? AMBER : TEAL, borderRadius: 2, transition: "width 0.3s" }} />
+            <div style={{ width: 60, height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 0, overflow: "hidden" }}>
+              <div style={{ width: `${progressPct}%`, height: "100%", background: progressPct >= 75 ? AMBER : TEAL, borderRadius: 0, transition: "width 0.3s" }} />
             </div>
             <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)" }}>
               {org.pilotDayRemaining}d left
@@ -183,7 +183,7 @@ export default function PilotHealthMonitor() {
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 24, marginBottom: 32, flexWrap: "wrap" }}>
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                <div style={{ width: 3, height: 20, background: GOLD, borderRadius: 2 }} />
+                <div style={{ width: 3, height: 20, background: GOLD, borderRadius: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Admin · Internal View</span>
               </div>
               <h1 style={{ fontSize: 28, fontWeight: 700, color: "#fff", margin: 0, lineHeight: 1.1 }}>Pilot Health Monitor</h1>
@@ -220,7 +220,7 @@ export default function PilotHealthMonitor() {
             ].map((s, i) => {
               const Icon = s.icon;
               return (
-                <div key={i} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 10, padding: "16px 20px", display: "flex", alignItems: "center", gap: 12 }}>
+                <div key={i} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 0, padding: "16px 20px", display: "flex", alignItems: "center", gap: 12 }}>
                   <Icon size={18} color={s.color} />
                   <div>
                     <div style={{ fontSize: 24, fontWeight: 700, color: s.color, lineHeight: 1 }}>{isLoading ? "—" : s.value}</div>
@@ -254,7 +254,7 @@ export default function PilotHealthMonitor() {
           {isLoading ? (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 16 }}>
               {[1, 2, 3, 4].map(i => (
-                <div key={i} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, height: 180, animation: "pulse 1.5s ease-in-out infinite" }} />
+                <div key={i} style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 0, height: 180, animation: "pulse 1.5s ease-in-out infinite" }} />
               ))}
             </div>
           ) : orgs.length === 0 ? (
@@ -270,7 +270,7 @@ export default function PilotHealthMonitor() {
           )}
 
           {/* Footer note */}
-          <div style={{ marginTop: 32, padding: "16px 20px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 8, display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ marginTop: 32, padding: "16px 20px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 0, display: "flex", alignItems: "center", gap: 10 }}>
             <TrendingUp size={14} color={GOLD} />
             <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
               Health is based on last user login: Active ≤2 days · Watch 3–7 days · Stalled 7+ days. Weekly digest emails send automatically every Monday. Compound threat scans run every 4 hours.

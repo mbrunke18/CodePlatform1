@@ -134,10 +134,10 @@ export default function WelcomeBrief() {
 
       {/* Top navigation escape */}
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 10, padding: '14px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'none' }}>
-        <a href="/" style={{ pointerEvents: 'all', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.25)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+        <a href="/" style={{ pointerEvents: 'all', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.25)', padding: '6px 12px', borderRadius: 0, border: '1px solid rgba(255,255,255,0.1)' }}>
           ← Homepage
         </a>
-        <a href="/mission-control" style={{ pointerEvents: 'all', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.25)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+        <a href="/mission-control" style={{ pointerEvents: 'all', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.25)', padding: '6px 12px', borderRadius: 0, border: '1px solid rgba(255,255,255,0.1)' }}>
           Skip to Mission Control →
         </a>
       </div>

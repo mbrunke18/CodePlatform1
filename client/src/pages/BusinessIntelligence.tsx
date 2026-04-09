@@ -70,7 +70,7 @@ export default function BusinessIntelligence() {
           {/* Business Intelligence Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
-              <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ width: 48, height: 48, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <BarChart3 className="w-7 h-7 text-white" />
               </div>
               <div>

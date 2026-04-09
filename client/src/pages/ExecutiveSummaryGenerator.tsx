@@ -427,7 +427,7 @@ export default function ExecutiveSummaryGenerator() {
               {!generatedSummary && !generateMutation.isPending ? (
                 <Card className="border border-dashed border-[#E8E4DC] bg-white h-full min-h-[600px] flex items-center justify-center">
                   <CardContent className="text-center p-12">
-                    <div style={{ width: 64, height: 64, background: "#F8F7F4", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
+                    <div style={{ width: 64, height: 64, background: "#F8F7F4", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
                       <FileText className="w-8 h-8 text-[#E8E4DC]" />
                     </div>
                     <h3 style={{ ...CG, fontSize: "24px", color: NAVY }}>Awaiting Intelligence Parameters</h3>
@@ -455,7 +455,7 @@ export default function ExecutiveSummaryGenerator() {
                   <CardHeader className="flex flex-row items-center justify-between pb-4 border-b border-[#E8E4DC] p-6">
                     <div className="flex items-center gap-4">
                       {selectedReportInfo && (
-                        <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div style={{ width: 40, height: 40, background: NAVY, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <selectedReportInfo.icon className="w-5 h-5 text-white" />
                         </div>
                       )}

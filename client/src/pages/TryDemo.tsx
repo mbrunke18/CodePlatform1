@@ -607,7 +607,7 @@ export default function TryDemo() {
             <div className="space-y-12">
 
               {/* Playbook Examples Callout */}
-              <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.35)', borderRadius: 8, padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+              <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.35)', borderRadius: 0, padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <BookOpen style={{ width: 16, height: 16, color: GOLD, flexShrink: 0 }} />
                   <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, margin: 0 }}>
@@ -617,14 +617,14 @@ export default function TryDemo() {
                 </div>
                 <button
                   onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
-                  style={{ fontSize: 12, fontWeight: 700, color: GOLD, background: 'transparent', border: '1px solid rgba(201,168,76,0.4)', borderRadius: 6, padding: '6px 14px', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
+                  style={{ fontSize: 12, fontWeight: 700, color: GOLD, background: 'transparent', border: '1px solid rgba(201,168,76,0.4)', borderRadius: 0, padding: '6px 14px', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
                 >
                   View Playbook Examples →
                 </button>
               </div>
 
               {/* Before / After — educational explainer */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, border: `1px solid ${BORDER}`, borderRadius: 10, overflow: 'hidden', marginBottom: 8 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, border: `1px solid ${BORDER}`, borderRadius: 0, overflow: 'hidden', marginBottom: 8 }}>
                 {/* LEFT — Current State (the pain) */}
                 <div style={{ background: '#F3F2EF', padding: '24px 22px', borderRight: `1px solid ${BORDER}` }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
@@ -642,7 +642,7 @@ export default function TryDemo() {
                       ['Throughout', 'Manual email chains, missed stakeholders'],
                     ].map(([time, desc]) => (
                       <div key={time} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: '#DC2626', background: 'rgba(220,38,38,0.08)', padding: '2px 6px', borderRadius: 3, flexShrink: 0, lineHeight: 1.6 }}>{time}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: '#DC2626', background: 'rgba(220,38,38,0.08)', padding: '2px 6px', borderRadius: 0, flexShrink: 0, lineHeight: 1.6 }}>{time}</span>
                         <span style={{ fontSize: 12, color: '#374151', lineHeight: 1.5 }}>{desc}</span>
                       </div>
                     ))}
@@ -670,7 +670,7 @@ export default function TryDemo() {
                       { min: '12 min', text: 'Full coordinated response underway — nothing improvised', color: GOLD },
                     ].map(({ min, text, color }) => (
                       <div key={min} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color, background: 'rgba(255,255,255,0.07)', padding: '2px 6px', borderRadius: 3, flexShrink: 0, lineHeight: 1.6 }}>{min}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color, background: 'rgba(255,255,255,0.07)', padding: '2px 6px', borderRadius: 0, flexShrink: 0, lineHeight: 1.6 }}>{min}</span>
                         <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{text}</span>
                       </div>
                     ))}
@@ -744,8 +744,8 @@ export default function TryDemo() {
             <div className="max-w-5xl mx-auto">
 
               {/* Context banner — must be immediately clear this is the pain state */}
-              <div style={{ background: '#1a0a0a', border: '1px solid rgba(220,38,38,0.4)', borderRadius: 10, padding: '18px 24px', marginBottom: 24, display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-                <div style={{ width: 40, height: 40, background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ background: '#1a0a0a', border: '1px solid rgba(220,38,38,0.4)', borderRadius: 0, padding: '18px 24px', marginBottom: 24, display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+                <div style={{ width: 40, height: 40, background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <AlertTriangle style={{ width: 20, height: 20, color: '#f87171' }} />
                 </div>
                 <div>
@@ -792,7 +792,7 @@ export default function TryDemo() {
                           {formatTime(chaosSeconds)}
                         </p>
                       </div>
-                      <div style={{ padding: '9px 11px', background: 'rgba(220,38,38,0.05)', borderRadius: 7, borderLeft: '3px solid #DC2626' }}>
+                      <div style={{ padding: '9px 11px', background: 'rgba(220,38,38,0.05)', borderRadius: 0, borderLeft: '3px solid #DC2626' }}>
                         <p style={{ fontSize: 9, fontWeight: 800, color: '#DC2626', margin: '0 0 3px', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                           {getChaosContext(chaosSeconds).dayLabel}
                         </p>
@@ -879,7 +879,7 @@ export default function TryDemo() {
                     {showChaosComplete && (
                       <div className="flex-1 space-y-3">
                         {/* The pivotal contrast moment */}
-                        <div style={{ background: '#0A0F2E', borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
+                        <div style={{ background: '#0A0F2E', borderRadius: 0, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
                           <div style={{ background: 'rgba(220,38,38,0.12)', padding: '10px 16px', borderBottom: '1px solid rgba(220,38,38,0.2)', display: 'flex', alignItems: 'center', gap: 8 }}>
                             <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#f87171' }} />
                             <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Readiness OS</p>
@@ -1040,7 +1040,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'detect' && (
-                    <div style={{ background: NAVY, borderRadius: 12, overflow: 'hidden' }}>
+                    <div style={{ background: NAVY, borderRadius: 0, overflow: 'hidden' }}>
                       {/* Terminal header */}
                       <div style={{ background: NAVY_MID, padding: '10px 18px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                         <div style={{ display: 'flex', gap: 5 }}>
@@ -1071,8 +1071,8 @@ export default function TryDemo() {
                               {detectStep === 0 ? '0%' : detectStep === 1 ? `${(SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34)}%` : detectStep === 2 ? `${(SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68)}%` : `${(SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96)}%`}
                             </span>
                           </div>
-                          <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 3, overflow: 'hidden' }}>
-                            <div style={{ height: '100%', borderRadius: 3, transition: 'width 0.6s ease, background 0.4s ease', background: detectStep >= 3 ? '#22c55e' : GOLD, width: detectStep === 0 ? '2%' : detectStep === 1 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34}%` : detectStep === 2 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68}%` : `${SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96}%` }} />
+                          <div style={{ height: 6, background: 'rgba(255,255,255,0.08)', borderRadius: 0, overflow: 'hidden' }}>
+                            <div style={{ height: '100%', borderRadius: 0, transition: 'width 0.6s ease, background 0.4s ease', background: detectStep >= 3 ? '#22c55e' : GOLD, width: detectStep === 0 ? '2%' : detectStep === 1 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34}%` : detectStep === 2 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68}%` : `${SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96}%` }} />
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
                             <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Monitoring</span>
@@ -1085,7 +1085,7 @@ export default function TryDemo() {
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 16 }}>
                           {(SCENARIO_SIGNALS[selectedScenario.id] || []).map((signal, idx) => (
                             detectStep > idx ? (
-                              <div key={idx} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${idx === 2 && detectStep >= 3 ? 'rgba(34,197,94,0.4)' : 'rgba(255,255,255,0.1)'}`, borderRadius: 8, padding: '10px 14px', display: 'flex', alignItems: 'flex-start', gap: 10, animation: 'slideIn 0.3s ease' }}>
+                              <div key={idx} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${idx === 2 && detectStep >= 3 ? 'rgba(34,197,94,0.4)' : 'rgba(255,255,255,0.1)'}`, borderRadius: 0, padding: '10px 14px', display: 'flex', alignItems: 'flex-start', gap: 10, animation: 'slideIn 0.3s ease' }}>
                                 <div style={{ width: 6, height: 6, borderRadius: '50%', background: signal.strength >= 80 ? '#ef4444' : signal.strength >= 60 ? GOLD : '#94a3b8', marginTop: 5, flexShrink: 0 }} />
                                 <div style={{ flex: 1 }}>
                                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: 3 }}>{signal.label}</p>
@@ -1096,7 +1096,7 @@ export default function TryDemo() {
                                 </div>
                               </div>
                             ) : (
-                              <div key={idx} style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 8, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
+                              <div key={idx} style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 0, padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10 }}>
                                 <div style={{ display: 'flex', gap: 3 }}>
                                   {[0,1,2].map(d => <div key={d} style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(255,255,255,0.15)', animation: `pulse ${0.6 + d * 0.2}s infinite` }} />)}
                                 </div>
@@ -1108,7 +1108,7 @@ export default function TryDemo() {
 
                         {/* Trigger fired + Playbook match */}
                         {detectStep >= 3 && (
-                          <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 8, padding: '14px 16px' }}>
+                          <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 0, padding: '14px 16px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                               <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
                               <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Trigger Threshold Crossed — Playbook Matched</span>
@@ -1148,8 +1148,8 @@ export default function TryDemo() {
                       </CardHeader>
                       <CardContent>
                         {/* Narration bar — what this replaces */}
-                        <div style={{ background: 'linear-gradient(135deg,rgba(10,15,46,0.96),rgba(20,27,69,0.98))', borderRadius: 10, padding: '12px 16px', marginBottom: 14, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                          <div style={{ width: 32, height: 32, background: 'rgba(201,168,76,0.18)', borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                        <div style={{ background: 'linear-gradient(135deg,rgba(10,15,46,0.96),rgba(20,27,69,0.98))', borderRadius: 0, padding: '12px 16px', marginBottom: 14, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                          <div style={{ width: 32, height: 32, background: 'rgba(201,168,76,0.18)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
                             <Zap size={15} style={{ color: '#C9A84C' }} />
                           </div>
                           <div>
@@ -1220,8 +1220,8 @@ export default function TryDemo() {
                   {currentPhase === 'advance' && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                       {/* Outcome headline */}
-                      <div style={{ background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 10, padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 12 }}>
-                        <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(43,138,110,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <div style={{ background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{ width: 36, height: 36, borderRadius: 0, background: 'rgba(43,138,110,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                           <CheckCircle2 style={{ width: 18, height: 18, color: TEAL }} />
                         </div>
                         <div>
@@ -1233,14 +1233,14 @@ export default function TryDemo() {
                       </div>
 
                       {/* What worked */}
-                      <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 10, padding: '16px 18px' }}>
+                      <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 0, padding: '16px 18px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                           <TrendingUp style={{ width: 14, height: 14, color: TEAL }} />
                           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEAL }}>What Worked — AI Analysis</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.patterns || []).map((pattern, i) => (
-                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px', background: OFF, borderRadius: 6 }}>
+                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px', background: OFF, borderRadius: 0 }}>
                               <CheckCircle2 style={{ width: 12, height: 12, color: TEAL, marginTop: 2, flexShrink: 0 }} />
                               <p style={{ fontSize: 12, color: NAVY, fontWeight: 500, lineHeight: 1.4 }}>{pattern}</p>
                             </div>
@@ -1249,14 +1249,14 @@ export default function TryDemo() {
                       </div>
 
                       {/* Playbook improvements */}
-                      <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 10, padding: '16px 18px' }}>
+                      <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 0, padding: '16px 18px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                           <Lightbulb style={{ width: 14, height: 14, color: GOLD }} />
                           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD }}>AI Playbook Improvements Suggested</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.improvements || []).map((improvement, i) => (
-                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 6 }}>
+                            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '8px 10px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0 }}>
                               <ArrowUpRight style={{ width: 12, height: 12, color: GOLD, marginTop: 2, flexShrink: 0 }} />
                               <p style={{ fontSize: 12, color: NAVY, fontWeight: 500, lineHeight: 1.4 }}>{improvement}</p>
                             </div>
@@ -1282,7 +1282,7 @@ export default function TryDemo() {
                       {(() => {
                         const mapped = selectedScenario ? SCENARIO_PLAYBOOK_MAP[selectedScenario.id] : null;
                         return mapped ? (
-                          <div style={{ background: NAVY, borderRadius: 12, overflow: 'hidden' }}>
+                          <div style={{ background: NAVY, borderRadius: 0, overflow: 'hidden' }}>
                             {/* Header bar */}
                             <div style={{ background: NAVY_MID, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(201,168,76,0.2)' }}>
                               <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
@@ -1291,7 +1291,7 @@ export default function TryDemo() {
 
                             <div style={{ padding: '32px 28px' }}>
                               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20 }}>
-                                <div style={{ width: 56, height: 56, borderRadius: 10, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                <div style={{ width: 56, height: 56, borderRadius: 0, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                   <BookOpen style={{ width: 24, height: 24, color: GOLD }} />
                                 </div>
                                 <div style={{ flex: 1 }}>
@@ -1304,7 +1304,7 @@ export default function TryDemo() {
                               {/* Phase preview strip */}
                               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, margin: '24px 0' }}>
                                 {['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'].map((phase, i) => (
-                                  <div key={phase} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '10px 12px', textAlign: 'center' }}>
+                                  <div key={phase} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '10px 12px', textAlign: 'center' }}>
                                     <div style={{ fontSize: 16, fontWeight: 700, color: GOLD, marginBottom: 2 }}>0{i + 1}</div>
                                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.5)' }}>{phase}</div>
                                   </div>
@@ -1313,7 +1313,7 @@ export default function TryDemo() {
 
                               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 6 }}>
                                 {['Role-Specific Tasks', 'Board Notification Draft', 'Risk Grid', '30-Day Outcomes'].map(tag => (
-                                  <span key={tag} style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '3px 8px' }}>{tag}</span>
+                                  <span key={tag} style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '3px 8px' }}>{tag}</span>
                                 ))}
                               </div>
 
@@ -1322,7 +1322,7 @@ export default function TryDemo() {
                                   setLocation(`/playbook-library/${mapped.id}`);
                                   window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
                                 }}
-                                style={{ marginTop: 20, width: '100%', padding: '14px 20px', background: GOLD, color: NAVY, border: 'none', borderRadius: 8, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.02em' }}
+                                style={{ marginTop: 20, width: '100%', padding: '14px 20px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.02em' }}
                               >
                                 <BookOpen style={{ width: 18, height: 18 }} />
                                 Open Your Activated Playbook
@@ -1346,10 +1346,10 @@ export default function TryDemo() {
                           </div>
 
                           {/* Primary outcome contrast */}
-                          <div style={{ background: '#0A0F2E', borderRadius: 12, padding: '22px 24px', marginBottom: 20, border: '1px solid rgba(201,168,76,0.2)' }}>
+                          <div style={{ background: '#0A0F2E', borderRadius: 0, padding: '22px 24px', marginBottom: 20, border: '1px solid rgba(201,168,76,0.2)' }}>
                             <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 16px', textAlign: 'center' }}>The Outcome — What Just Happened vs. What Didn't</p>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, alignItems: 'center' }}>
-                              <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)', borderRadius: 10 }}>
+                              <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)', borderRadius: 0 }}>
                                 <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>Without OS</p>
                                 <p style={{ fontSize: 26, fontWeight: 800, color: '#f87171', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
                                 <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>to mobilize a response</p>
@@ -1357,7 +1357,7 @@ export default function TryDemo() {
                               <div style={{ textAlign: 'center' }}>
                                 <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.15)', margin: 0 }}>→</p>
                               </div>
-                              <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 10 }}>
+                              <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0 }}>
                                 <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>With Readiness OS</p>
                                 <p style={{ fontSize: 26, fontWeight: 800, color: '#4ade80', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>12 min</p>
                                 <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>full execution underway</p>
@@ -1365,15 +1365,15 @@ export default function TryDemo() {
                             </div>
                           </div>
                           <div className="grid grid-cols-3 gap-3 mb-6">
-                            <div style={{ padding: '14px 12px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: 10, textAlign: 'center' }}>
+                            <div style={{ padding: '14px 12px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: 0, textAlign: 'center' }}>
                               <p className="text-2xl font-bold" style={{ color: '#2B8A6E' }}>{formatCurrency(selectedScenario?.dealValue || 0)}</p>
                               <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Value Protected</p>
                             </div>
-                            <div style={{ padding: '14px 12px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 10, textAlign: 'center' }}>
+                            <div style={{ padding: '14px 12px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0, textAlign: 'center' }}>
                               <p className="text-2xl font-bold" style={{ color: '#C9A84C' }}>3,600×</p>
                               <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Execution Head Start</p>
                             </div>
-                            <div style={{ padding: '14px 12px', background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 10, textAlign: 'center' }}>
+                            <div style={{ padding: '14px 12px', background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 0, textAlign: 'center' }}>
                               <p className="text-2xl font-bold" style={{ color: '#0A0F2E' }}>170</p>
                               <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Playbooks Ready</p>
                             </div>
@@ -1403,9 +1403,9 @@ export default function TryDemo() {
                       </Card>
 
                       {/* Peer Review Invitation */}
-                      <div style={{ background: "white", border: `1px solid #E8E4DC`, borderTop: `3px solid ${GOLD}`, borderRadius: 8, padding: '24px 28px' }}>
+                      <div style={{ background: "white", border: `1px solid #E8E4DC`, borderTop: `3px solid ${GOLD}`, borderRadius: 0, padding: '24px 28px' }}>
                         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-                          <div style={{ width: 44, height: 44, borderRadius: 8, background: `rgba(201,168,76,0.1)`, border: `1px solid rgba(201,168,76,0.25)`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
+                          <div style={{ width: 44, height: 44, borderRadius: 0, background: `rgba(201,168,76,0.1)`, border: `1px solid rgba(201,168,76,0.25)`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>
                             <FileText style={{ width: 20, height: 20, color: GOLD }} />
                           </div>
                           <div style={{ flex: 1 }}>
@@ -1417,7 +1417,7 @@ export default function TryDemo() {
                             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                               <a
                                 href="/peer-review"
-                                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: NAVY, color: GOLD, fontWeight: 700, fontSize: 13, padding: '10px 20px', borderRadius: 6, textDecoration: 'none', letterSpacing: '0.04em' }}
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: NAVY, color: GOLD, fontWeight: 700, fontSize: 13, padding: '10px 20px', borderRadius: 0, textDecoration: 'none', letterSpacing: '0.04em' }}
                               >
                                 Begin Assessment
                                 <ArrowRight style={{ width: 14, height: 14 }} />
@@ -1439,7 +1439,7 @@ export default function TryDemo() {
 
                   {/* Phase-specific context card */}
                   {currentPhase === 'identify' && (
-                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                    <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Why This Was Ready</span>
@@ -1454,7 +1454,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'detect' && (
-                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                    <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
@@ -1463,7 +1463,7 @@ export default function TryDemo() {
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Readiness OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                         {[['248+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (
-                          <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: '8px 10px', textAlign: 'center' }}>
+                          <div key={label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '8px 10px', textAlign: 'center' }}>
                             <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0 }}>{val}</p>
                             <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', margin: 0, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</p>
                           </div>
@@ -1473,7 +1473,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'execute' && selectedScenario && (
-                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                    <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: TEAL, animation: 'pulse 1.5s infinite' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL }}>What's Happening Right Now</span>
@@ -1502,7 +1502,7 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'advance' && (
-                    <div style={{ background: NAVY, borderRadius: 10, padding: '20px 18px' }}>
+                    <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
                         <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>How The System Gets Smarter</span>
@@ -1673,7 +1673,7 @@ export default function TryDemo() {
       <section style={{ background: NAVY, padding: '72px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 20, padding: '4px 14px', marginBottom: 16 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '4px 14px', marginBottom: 16 }}>
               <BookOpen style={{ width: 12, height: 12, color: GOLD }} />
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD }}>Open Access</span>
             </div>
@@ -1725,13 +1725,13 @@ export default function TryDemo() {
               return (
                 <div
                   key={pb.id}
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: 28, display: 'flex', flexDirection: 'column', gap: 16 }}
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: 28, display: 'flex', flexDirection: 'column', gap: 16 }}
                 >
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 0, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Icon style={{ width: 18, height: 18, color: GOLD }} />
                     </div>
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: pb.typeColor, background: `${pb.typeColor}1A`, border: `1px solid ${pb.typeColor}40`, borderRadius: 4, padding: '2px 8px', whiteSpace: 'nowrap' }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: pb.typeColor, background: `${pb.typeColor}1A`, border: `1px solid ${pb.typeColor}40`, borderRadius: 0, padding: '2px 8px', whiteSpace: 'nowrap' }}>
                       {pb.type}
                     </span>
                   </div>
@@ -1741,7 +1741,7 @@ export default function TryDemo() {
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, fontWeight: 400 }}>{pb.description}</p>
                   </div>
 
-                  <div style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 8, padding: '12px 14px' }}>
+                  <div style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0, padding: '12px 14px' }}>
                     <p style={{ fontSize: 18, fontWeight: 700, color: GOLD, marginBottom: 2 }}>{pb.stat}</p>
                     <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{pb.context}</p>
                     <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 4, fontWeight: 600, letterSpacing: '0.05em' }}>Based on: {pb.source}</p>
@@ -1750,12 +1750,12 @@ export default function TryDemo() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 'auto' }}>
                     <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                       {['4-Phase Plan', 'Comms Assets', 'Risk Grid', 'Outcome KPIs'].map(tag => (
-                        <span key={tag} style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, padding: '2px 7px' }}>{tag}</span>
+                        <span key={tag} style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '2px 7px' }}>{tag}</span>
                       ))}
                     </div>
                     <button
                       onClick={() => { setLocation(`/playbook-library/${pb.id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
-                      style={{ width: '100%', padding: '10px 16px', background: GOLD, color: NAVY, border: 'none', borderRadius: 8, fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                      style={{ width: '100%', padding: '10px 16px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                     >
                       View Full Playbook
                       <ArrowRight style={{ width: 14, height: 14 }} />
@@ -1769,7 +1769,7 @@ export default function TryDemo() {
           <div style={{ textAlign: 'center' }}>
             <button
               onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
-              style={{ padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
+              style={{ padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 0, fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
             >
               <BookOpen style={{ width: 14, height: 14 }} />
               Browse All 170 Playbooks

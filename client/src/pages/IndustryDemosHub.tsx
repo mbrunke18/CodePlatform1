@@ -412,7 +412,7 @@ export default function IndustryDemosHub() {
                   Find Your Scenario
                 </span>
                 {recommended && (
-                  <span style={{ fontSize: 10, fontWeight: 700, color: "#2B8A6E", background: "rgba(43,138,110,0.1)", padding: "2px 8px", borderRadius: 10 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: "#2B8A6E", background: "rgba(43,138,110,0.1)", padding: "2px 8px", borderRadius: 0 }}>
                     Recommendation ready
                   </span>
                 )}
@@ -444,7 +444,7 @@ export default function IndustryDemosHub() {
                           onClick={() => { setConcern(opt.key as ConcernType); setIndustry(null); }}
                           style={{
                             display: "flex", alignItems: "flex-start", gap: 10, textAlign: "left" as const,
-                            padding: "12px 14px", borderRadius: 6, cursor: "pointer",
+                            padding: "12px 14px", borderRadius: 0, cursor: "pointer",
                             border: concern === opt.key ? "2px solid #0A0F2E" : "2px solid #E5E7EB",
                             background: concern === opt.key ? "#0A0F2E" : "white",
                             transition: "all 0.15s",
@@ -487,7 +487,7 @@ export default function IndustryDemosHub() {
                           onClick={() => setIndustry(opt.key as IndustryType)}
                           disabled={!concern}
                           style={{
-                            padding: "8px 12px", borderRadius: 6, cursor: concern ? "pointer" : "not-allowed",
+                            padding: "8px 12px", borderRadius: 0, cursor: concern ? "pointer" : "not-allowed",
                             border: industry === opt.key ? "2px solid #C9A84C" : "2px solid #E5E7EB",
                             background: industry === opt.key ? "rgba(201,168,76,0.08)" : concern ? "white" : "#F9F8F5",
                             fontSize: 12, fontWeight: industry === opt.key ? 700 : 500,
@@ -522,7 +522,7 @@ export default function IndustryDemosHub() {
                           key={opt.key}
                           onClick={() => setRole(opt.key as RoleType)}
                           style={{
-                            padding: "8px 12px", borderRadius: 6, cursor: "pointer",
+                            padding: "8px 12px", borderRadius: 0, cursor: "pointer",
                             border: role === opt.key ? "2px solid #2B8A6E" : "2px solid #E5E7EB",
                             background: role === opt.key ? "rgba(43,138,110,0.07)" : "white",
                             fontSize: 12, fontWeight: role === opt.key ? 700 : 500,
@@ -541,12 +541,12 @@ export default function IndustryDemosHub() {
                 {/* Recommendation card */}
                 {recommended && (
                   <div style={{
-                    background: "#0A0F2E", borderRadius: 8, padding: "20px 24px",
+                    background: "#0A0F2E", borderRadius: 0, padding: "20px 24px",
                     border: "1px solid rgba(201,168,76,0.3)", borderLeft: "4px solid #C9A84C",
                     display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap" as const,
                   }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                      <div style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)", padding: "10px 14px", borderRadius: 6, flexShrink: 0 }}>
+                      <div style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)", padding: "10px 14px", borderRadius: 0, flexShrink: 0 }}>
                         <Sparkles style={{ width: 18, height: 18, color: "#C9A84C" }} />
                       </div>
                       <div>
@@ -568,7 +568,7 @@ export default function IndustryDemosHub() {
                       <button style={{
                         display: "flex", alignItems: "center", gap: 8,
                         background: "#C9A84C", color: "#0A0F2E",
-                        border: "none", borderRadius: 6, padding: "12px 22px",
+                        border: "none", borderRadius: 0, padding: "12px 22px",
                         fontWeight: 800, fontSize: 12, cursor: "pointer",
                         letterSpacing: "0.08em", textTransform: "uppercase" as const,
                         whiteSpace: "nowrap" as const,

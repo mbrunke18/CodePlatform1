@@ -79,7 +79,7 @@ export function LiveSignalFeed({ maxRows = 20, dark = false }: { maxRows?: numbe
   const rowBorder = dark ? 'rgba(255,255,255,0.06)' : '#F0EDE4';
 
   return (
-    <div style={{ background: bg, border: `1px solid ${border}`, borderRadius: 8, overflow: 'hidden', fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+    <div style={{ background: bg, border: `1px solid ${border}`, borderRadius: 0, overflow: 'hidden', fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
       {/* Header */}
       <div style={{ padding: '14px 18px', borderBottom: `1px solid ${border}`, display: 'flex', alignItems: 'center', gap: 10 }}>
         <div style={{ position: 'relative' }}>
@@ -116,7 +116,7 @@ export function LiveSignalFeed({ maxRows = 20, dark = false }: { maxRows?: numbe
                 {entry.keywordsMatched && entry.keywordsMatched.length > 0 && (
                   <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginTop: 5 }}>
                     {entry.keywordsMatched.slice(0, 4).map((kw, ki) => (
-                      <span key={ki} style={{ fontSize: 9, background: entry.eventType === 'trigger_fired' ? `${GOLD}20` : `${TEAL}12`, color: entry.eventType === 'trigger_fired' ? '#8B6914' : TEAL, border: `1px solid ${entry.eventType === 'trigger_fired' ? `${GOLD}30` : `${TEAL}25`}`, borderRadius: 3, padding: '2px 6px', fontWeight: 600 }}>{kw}</span>
+                      <span key={ki} style={{ fontSize: 9, background: entry.eventType === 'trigger_fired' ? `${GOLD}20` : `${TEAL}12`, color: entry.eventType === 'trigger_fired' ? '#8B6914' : TEAL, border: `1px solid ${entry.eventType === 'trigger_fired' ? `${GOLD}30` : `${TEAL}25`}`, borderRadius: 0, padding: '2px 6px', fontWeight: 600 }}>{kw}</span>
                     ))}
                   </div>
                 )}

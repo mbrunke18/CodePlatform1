@@ -190,7 +190,7 @@ export default function ExecutiveDepartureBrief() {
                 background: urgent ? 'rgba(239,68,68,0.08)' : 'rgba(255,255,255,0.06)',
                 border: `1px solid ${urgent ? 'rgba(239,68,68,0.4)' : 'rgba(255,255,255,0.14)'}`,
                 borderLeft: `3px solid ${urgent ? '#EF4444' : 'rgba(255,255,255,0.2)'}`,
-                borderRadius: 4, padding: '14px 16px',
+                borderRadius: 0, padding: '14px 16px',
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 7 }}>
                   <span style={{ fontSize: 11, fontWeight: 700, color: urgent ? '#FF8080' : T3, letterSpacing: '0.06em' }}>{channel}</span>
@@ -213,7 +213,7 @@ export default function ExecutiveDepartureBrief() {
             {CHAOS_ITEMS.map(({ icon: Icon, text, who }, i) => (
               <div key={i} style={{
                 background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.22)',
-                borderRadius: 4, padding: '20px',
+                borderRadius: 0, padding: '20px',
               }}>
                 <Icon size={16} color="#FF6B6B" style={{ marginBottom: 10 }} />
                 <p style={{ fontSize: 14, color: T2, lineHeight: 1.6, marginBottom: 8, fontWeight: 500 }}>{text}</p>
@@ -225,7 +225,7 @@ export default function ExecutiveDepartureBrief() {
           {/* Structural problem callout */}
           <div style={{
             background: 'rgba(201,168,76,0.09)', border: '1px solid rgba(201,168,76,0.25)',
-            borderLeft: `4px solid ${GOLD}`, borderRadius: 4, padding: '28px 32px', marginBottom: 56,
+            borderLeft: `4px solid ${GOLD}`, borderRadius: 0, padding: '28px 32px', marginBottom: 56,
           }}>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 14 }}>
               The Structural Problem
@@ -255,7 +255,7 @@ export default function ExecutiveDepartureBrief() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }} className="exec-dep-detect-grid">
 
             {/* Pulse Map */}
-            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: 28 }}>
+            <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: 28 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: T4, marginBottom: 20 }}>War Room Pulse Map</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {[
@@ -266,7 +266,7 @@ export default function ExecutiveDepartureBrief() {
                   { label: "Supply Chain", active: false },
                 ].map(({ label, active }) => (
                   <div key={label} style={{
-                    padding: '6px 13px', borderRadius: 20,
+                    padding: '6px 13px', borderRadius: 0,
                     background: active ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.06)',
                     border: `1px solid ${active ? 'rgba(239,68,68,0.55)' : 'rgba(255,255,255,0.12)'}`,
                     fontSize: 11, fontWeight: active ? 700 : 500,
@@ -282,7 +282,7 @@ export default function ExecutiveDepartureBrief() {
             </div>
 
             {/* Detection card */}
-            <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 6, padding: 28 }}>
+            <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: 0, padding: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
                 <AlertTriangle size={16} color="#EF4444" />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#FF6B6B' }}>Trigger Detected</span>
@@ -308,13 +308,13 @@ export default function ExecutiveDepartureBrief() {
           </div>
 
           {/* Playbook match */}
-          <div style={{ marginTop: 20, background: 'rgba(43,138,110,0.10)', border: '1px solid rgba(43,138,110,0.30)', borderRadius: 6, padding: '22px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div style={{ marginTop: 20, background: 'rgba(43,138,110,0.10)', border: '1px solid rgba(43,138,110,0.30)', borderRadius: 0, padding: '22px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
               <div style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: TEAL, marginBottom: 7, fontWeight: 700 }}>Playbook Recommended</div>
               <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: T1 }}>C-Suite Continuity Response — CFO Departure</div>
               <div style={{ fontSize: 12, color: T3, marginTop: 5, fontWeight: 500 }}>170 playbooks evaluated · 1 matched at 94% confidence · 12 leadership continuity variants available</div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', border: '1px solid rgba(43,138,110,0.35)', padding: '7px 14px', borderRadius: 3 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', border: '1px solid rgba(43,138,110,0.35)', padding: '7px 14px', borderRadius: 0 }}>
               <span style={{ width: 6, height: 6, background: TEAL, borderRadius: '50%' }} />
               <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Pre-Staged · Ready</span>
             </div>
@@ -344,7 +344,7 @@ export default function ExecutiveDepartureBrief() {
                 onClick={handleActivate}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 14,
-                  background: GOLD_GRAD, color: '#0A0F2E', border: 'none', borderRadius: 4,
+                  background: GOLD_GRAD, color: '#0A0F2E', border: 'none', borderRadius: 0,
                   padding: '20px 56px', fontSize: 16, fontWeight: 800, cursor: 'pointer',
                   letterSpacing: 0.5, boxShadow: `0 0 60px rgba(201,168,76,0.35)`,
                   transition: 'all 0.2s ease',
@@ -369,7 +369,7 @@ export default function ExecutiveDepartureBrief() {
                     {formatTime(timerSeconds)}
                   </div>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.35)', padding: '10px 20px', borderRadius: 3 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(43,138,110,0.12)', border: '1px solid rgba(43,138,110,0.35)', padding: '10px 20px', borderRadius: 0 }}>
                   <span style={{ width: 7, height: 7, background: TEAL, borderRadius: '50%', display: 'inline-block', boxShadow: `0 0 8px ${TEAL}`, animation: timerRunning ? 'pulse-node 1s infinite' : 'none' }} />
                   <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                     {phase === 'complete' ? 'Execution Complete' : 'Deploying...'}
@@ -391,7 +391,7 @@ export default function ExecutiveDepartureBrief() {
                       borderRight: `1px solid ${visibleStakeholders.includes(i) ? `${color}40` : 'rgba(255,255,255,0.07)'}`,
                       borderBottom: `1px solid ${visibleStakeholders.includes(i) ? `${color}40` : 'rgba(255,255,255,0.07)'}`,
                       borderLeft: `3px solid ${visibleStakeholders.includes(i) ? color : 'rgba(255,255,255,0.08)'}`,
-                      borderRadius: 3, padding: '13px 16px',
+                      borderRadius: 0, padding: '13px 16px',
                       opacity: visibleStakeholders.includes(i) ? 1 : 0.3,
                       transition: 'all 0.4s ease',
                       transform: visibleStakeholders.includes(i) ? 'translateX(0)' : 'translateX(-10px)',
@@ -415,7 +415,7 @@ export default function ExecutiveDepartureBrief() {
                       <div key={i} style={{
                         background: 'rgba(43,138,110,0.08)',
                         border: `1px solid ${visibleTasks.includes(i) ? 'rgba(43,138,110,0.30)' : 'rgba(255,255,255,0.05)'}`,
-                        borderRadius: 4, padding: '14px 16px',
+                        borderRadius: 0, padding: '14px 16px',
                         opacity: visibleTasks.includes(i) ? 1 : 0,
                         transition: 'all 0.35s ease',
                       }}>
@@ -459,7 +459,7 @@ export default function ExecutiveDepartureBrief() {
           </h2>
 
           {/* Before / After table */}
-          <div style={{ borderRadius: 6, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', marginBottom: 44 }}>
+          <div style={{ borderRadius: 0, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', marginBottom: 44 }}>
             <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', background: 'rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.10)' }}>
               {['Outcome', 'Without Readiness OS', 'With Readiness OS'].map((h, i) => (
                 <div key={h} style={{ padding: '12px 20px', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: i === 2 ? TEAL : T3 }}>
@@ -483,7 +483,7 @@ export default function ExecutiveDepartureBrief() {
               { label: "Value protected — coordinated response", value: "$9–14M", sub: "40–60% cost reduction" },
               { label: "Annual Readiness OS investment",       value: "$250K",   sub: "Pays for itself on first activation" },
             ].map(({ label, value, sub }) => (
-              <div key={label} style={{ background: 'rgba(201,168,76,0.09)', border: '1px solid rgba(201,168,76,0.22)', borderRadius: 4, padding: '20px' }}>
+              <div key={label} style={{ background: 'rgba(201,168,76,0.09)', border: '1px solid rgba(201,168,76,0.22)', borderRadius: 0, padding: '20px' }}>
                 <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: T4, marginBottom: 8, fontWeight: 700 }}>{label}</div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 4 }}>{value}</div>
                 <div style={{ fontSize: 11, color: T3, fontWeight: 500 }}>{sub}</div>
@@ -511,7 +511,7 @@ export default function ExecutiveDepartureBrief() {
             every decision is already made.
           </p>
 
-          <div style={{ background: 'rgba(201,168,76,0.10)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 6, padding: '28px 40px', marginBottom: 48, maxWidth: 560, margin: '0 auto 48px' }}>
+          <div style={{ background: 'rgba(201,168,76,0.10)', border: '1px solid rgba(201,168,76,0.25)', borderRadius: 0, padding: '28px 40px', marginBottom: 48, maxWidth: 560, margin: '0 auto 48px' }}>
             <p style={{ ...CG, fontSize: 22, color: T1, lineHeight: 1.55, margin: 0, fontStyle: 'italic' }}>
               "What's a coordinated leadership<br />transition worth to your board?"
             </p>
@@ -522,7 +522,7 @@ export default function ExecutiveDepartureBrief() {
               onClick={() => navigate('/request-access')}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 12,
-                background: GOLD_GRAD, color: '#0A0F2E', border: 'none', borderRadius: 4,
+                background: GOLD_GRAD, color: '#0A0F2E', border: 'none', borderRadius: 0,
                 padding: '18px 48px', fontSize: 15, fontWeight: 800, cursor: 'pointer',
                 letterSpacing: 0.4, boxShadow: `0 0 40px rgba(201,168,76,0.3)`,
                 transition: 'all 0.2s ease',

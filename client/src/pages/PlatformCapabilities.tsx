@@ -222,7 +222,7 @@ export default function PlatformCapabilities() {
               { label: '12 Minutes', sub: '30 days → 12 min' },
               { label: '3,600×', sub: 'Execution head start' },
             ].map(({ label, sub }) => (
-              <div key={label} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '10px 18px', textAlign: 'center' }}>
+              <div key={label} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '10px 18px', textAlign: 'center' }}>
                 <div style={{ fontSize: 16, fontWeight: 800, color: GOLD, lineHeight: 1 }}>{label}</div>
                 <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', fontWeight: 600, marginTop: 3 }}>{sub}</div>
               </div>
@@ -244,9 +244,9 @@ export default function PlatformCapabilities() {
                   display: 'flex', alignItems: 'flex-start', gap: 20,
                   background: phase.bg, border: `1px solid ${phase.border}`,
                   borderLeft: `4px solid ${phase.color}`,
-                  borderRadius: 10, padding: '24px 28px', marginBottom: 28,
+                  borderRadius: 0, padding: '24px 28px', marginBottom: 28,
                 }}>
-                  <div style={{ background: phase.color, borderRadius: 8, padding: 10, flexShrink: 0, marginTop: 2 }}>
+                  <div style={{ background: phase.color, borderRadius: 0, padding: 10, flexShrink: 0, marginTop: 2 }}>
                     <PhaseIcon size={18} color="white" />
                   </div>
                   <div style={{ flex: 1 }}>
@@ -271,7 +271,7 @@ export default function PlatformCapabilities() {
                         background: 'white',
                         border: '1px solid #E2E8F0',
                         borderTop: `3px solid ${phase.color}`,
-                        borderRadius: 8, padding: '20px 22px',
+                        borderRadius: 0, padding: '20px 22px',
                         gridColumn: phase.capabilities.length % 2 !== 0 && i === phase.capabilities.length - 1 ? 'span 2' : undefined,
                       }}
                     >
@@ -301,7 +301,7 @@ export default function PlatformCapabilities() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
             {PLATFORM_CAPABILITIES.map(({ icon: Icon, title, detail }) => (
-              <div key={title} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 8, padding: '20px 22px' }}>
+              <div key={title} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 0, padding: '20px 22px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 10 }}>
                   <Icon size={15} color={TEAL} />
                   <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{title}</span>
@@ -331,7 +331,7 @@ export default function PlatformCapabilities() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
             <Link href="/mission-control" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
-              background: GOLD, color: NAVY, borderRadius: 6,
+              background: GOLD, color: NAVY, borderRadius: 0,
               padding: '13px 28px', fontSize: 13, fontWeight: 800,
               textDecoration: 'none', letterSpacing: '0.03em',
             }}>
@@ -340,7 +340,7 @@ export default function PlatformCapabilities() {
             <Link href="/executive-scenarios" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: 'rgba(255,255,255,0.08)', color: IVORY,
-              border: '1px solid rgba(255,255,255,0.18)', borderRadius: 6,
+              border: '1px solid rgba(255,255,255,0.18)', borderRadius: 0,
               padding: '13px 28px', fontSize: 13, fontWeight: 700,
               textDecoration: 'none',
             }}>
@@ -349,7 +349,7 @@ export default function PlatformCapabilities() {
             <Link href="/investor-resources" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               background: 'transparent', color: 'rgba(240,237,228,0.5)',
-              border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6,
+              border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0,
               padding: '13px 24px', fontSize: 13, fontWeight: 600,
               textDecoration: 'none',
             }}>

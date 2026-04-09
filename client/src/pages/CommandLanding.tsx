@@ -141,7 +141,7 @@ function NavIcon({ active, title, label, onClick, children }: { active?: boolean
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        width: '100%', height: 36, borderRadius: 6,
+        width: '100%', height: 36, borderRadius: 0,
         display: 'flex', alignItems: 'center', gap: 8,
         padding: '0 10px',
         cursor: 'pointer', transition: 'all 0.15s ease',
@@ -181,7 +181,7 @@ function Tile({ children, className, style, onClick }: { children: React.ReactNo
       className={className}
       style={{
         background: '#111830', border: '1px solid rgba(240,237,228,0.08)',
-        borderRadius: 12, padding: 28, cursor: 'pointer', position: 'relative', overflow: 'hidden',
+        borderRadius: 0, padding: 28, cursor: 'pointer', position: 'relative', overflow: 'hidden',
         transition: 'all 0.3s cubic-bezier(0.4,0,0.2,1)',
         transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
         borderColor: hovered ? 'rgba(240,237,228,0.15)' : 'rgba(240,237,228,0.08)',
@@ -223,7 +223,7 @@ function HoverTile({ children, style, onClick, borderGold, borderTeal }: {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        borderRadius: 12, cursor: 'pointer', position: 'relative', overflow: 'hidden',
+        borderRadius: 0, cursor: 'pointer', position: 'relative', overflow: 'hidden',
         transition: 'all 0.3s cubic-bezier(0.4,0,0.2,1)',
         transform: hovered ? 'translateY(-2px)' : 'translateY(0)',
         border: `1px solid ${hovered ? hov : base}`,
@@ -328,7 +328,7 @@ export default function CommandLanding() {
             <div style={{ width: 1, height: 24, background: 'rgba(240,237,228,0.1)' }} />
             <div
               onClick={() => setLocation('/platform-overview')}
-              style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', padding: '4px 10px', borderRadius: 4, transition: 'background 0.15s' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 5, cursor: 'pointer', padding: '4px 10px', borderRadius: 0, transition: 'background 0.15s' }}
               onMouseEnter={e => (e.currentTarget.style.background = 'rgba(240,237,228,0.06)')}
               onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
@@ -344,7 +344,7 @@ export default function CommandLanding() {
             {providerData && (
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 6,
-                padding: '4px 10px', borderRadius: 4,
+                padding: '4px 10px', borderRadius: 0,
                 background: providerData.azureReady ? 'rgba(0,120,212,0.12)' : 'rgba(43,138,110,0.1)',
                 border: `1px solid ${providerData.azureReady ? 'rgba(0,120,212,0.25)' : 'rgba(43,138,110,0.2)'}`,
               }}>
@@ -481,7 +481,7 @@ export default function CommandLanding() {
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12,
                         background: GOLD, color: NAVY,
                         fontFamily: "'DM Mono', monospace", fontSize: 12, fontWeight: 500, letterSpacing: 2, textTransform: 'uppercase',
-                        padding: '14px 28px', borderRadius: 6, border: 'none', cursor: 'pointer',
+                        padding: '14px 28px', borderRadius: 0, border: 'none', cursor: 'pointer',
                         width: '100%', marginBottom: 12, transition: 'all 0.2s ease',
                       }}
                       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#DFB85C'; }}
@@ -499,7 +499,7 @@ export default function CommandLanding() {
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                         background: 'transparent', color: 'rgba(240,237,228,0.45)',
                         fontFamily: "'DM Mono', monospace", fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase',
-                        padding: '10px 20px', borderRadius: 6, border: '1px solid rgba(240,237,228,0.1)', cursor: 'pointer',
+                        padding: '10px 20px', borderRadius: 0, border: '1px solid rgba(240,237,228,0.1)', cursor: 'pointer',
                         width: '100%', transition: 'all 0.2s ease',
                       }}
                       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(201,168,76,0.3)'; (e.currentTarget as HTMLButtonElement).style.color = GOLD; }}
@@ -517,7 +517,7 @@ export default function CommandLanding() {
                       ].map(({ label, type }) => (
                         <div key={label} style={{
                           fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase',
-                          padding: '4px 10px', borderRadius: 3,
+                          padding: '4px 10px', borderRadius: 0,
                           border: `1px solid ${type === 'offense' ? 'rgba(43,138,110,0.3)' : type === 'defense' ? 'rgba(201,168,76,0.25)' : 'rgba(130,100,200,0.3)'}`,
                           color: type === 'offense' ? TEAL : type === 'defense' ? GOLD : 'rgba(180,150,255,0.7)',
                         }}>{label}</div>
@@ -553,11 +553,11 @@ export default function CommandLanding() {
                           <div key={i} style={{
                             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                             padding: '7px 10px', background: 'rgba(43,138,110,0.05)',
-                            border: '1px solid rgba(43,138,110,0.1)', borderRadius: 4,
+                            border: '1px solid rgba(43,138,110,0.1)', borderRadius: 0,
                             fontFamily: "'DM Mono', monospace", fontSize: 10,
                           }}>
                             <span style={{ color: '#F0EDE4', letterSpacing: 0.5 }}>{sig.name}</span>
-                            <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 2, letterSpacing: 1, textTransform: 'uppercase', background: b.bg, color: b.color, border: `1px solid ${b.border}` }}>
+                            <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 0, letterSpacing: 1, textTransform: 'uppercase', background: b.bg, color: b.color, border: `1px solid ${b.border}` }}>
                               {b.label}
                             </span>
                           </div>
@@ -597,7 +597,7 @@ export default function CommandLanding() {
                         { label: 'Sp. Teams', count: 54, type: 'special' },
                       ].map(({ label, count, type }) => (
                         <div key={label} style={{
-                          padding: '12px 10px', borderRadius: 6, textAlign: 'center',
+                          padding: '12px 10px', borderRadius: 0, textAlign: 'center',
                           border: `1px solid ${type === 'offense' ? 'rgba(43,138,110,0.2)' : type === 'defense' ? 'rgba(201,168,76,0.2)' : 'rgba(130,100,200,0.2)'}`,
                           transition: 'all 0.2s ease',
                         }}>
@@ -628,12 +628,12 @@ export default function CommandLanding() {
                       <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: TEAL, letterSpacing: 2, textTransform: 'uppercase' }}>Live Coordination</span>
                     </div>
 
-                    <div style={{ background: 'rgba(43,138,110,0.05)', border: '1px solid rgba(43,138,110,0.15)', borderRadius: 6, padding: 12, marginBottom: 12 }}>
+                    <div style={{ background: 'rgba(43,138,110,0.05)', border: '1px solid rgba(43,138,110,0.15)', borderRadius: 0, padding: 12, marginBottom: 12 }}>
                       <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: '#F0EDE4', letterSpacing: 0.5, marginBottom: 8 }}>
                         {activeScenarios > 0 ? `${activeScenarios} active execution${activeScenarios > 1 ? 's' : ''}` : 'No active executions'}
                       </div>
-                      <div style={{ height: 3, background: 'rgba(240,237,228,0.06)', borderRadius: 2, overflow: 'hidden', marginBottom: 6 }}>
-                        <div style={{ width: activeScenarios > 0 ? '67%' : '0%', height: '100%', background: `linear-gradient(90deg, ${TEAL}, rgba(43,138,110,0.6))`, borderRadius: 2, animation: activeScenarios > 0 ? 'cl-prog 2s ease-in-out infinite' : 'none' }} />
+                      <div style={{ height: 3, background: 'rgba(240,237,228,0.06)', borderRadius: 0, overflow: 'hidden', marginBottom: 6 }}>
+                        <div style={{ width: activeScenarios > 0 ? '67%' : '0%', height: '100%', background: `linear-gradient(90deg, ${TEAL}, rgba(43,138,110,0.6))`, borderRadius: 0, animation: activeScenarios > 0 ? 'cl-prog 2s ease-in-out infinite' : 'none' }} />
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)' }}>
                         <span>Awaiting activation</span>
@@ -666,7 +666,7 @@ export default function CommandLanding() {
                         { value: '—', label: 'Avg Score', color: TEAL },
                         { value: '$0', label: 'ROI Tracked', color: '#fff' },
                       ].map(({ value, label, color }) => (
-                        <div key={label} style={{ flex: 1, padding: 12, background: 'rgba(240,237,228,0.03)', border: '1px solid rgba(240,237,228,0.08)', borderRadius: 6, textAlign: 'center' }}>
+                        <div key={label} style={{ flex: 1, padding: 12, background: 'rgba(240,237,228,0.03)', border: '1px solid rgba(240,237,228,0.08)', borderRadius: 0, textAlign: 'center' }}>
                           <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, lineHeight: 1, marginBottom: 4, color }}>{value}</div>
                           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', color: 'rgba(240,237,228,0.3)' }}>{label}</div>
                         </div>
@@ -681,8 +681,8 @@ export default function CommandLanding() {
                       ].map(({ label, value, color }) => (
                         <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.45)', width: 110, flexShrink: 0, letterSpacing: 0.5 }}>{label}</div>
-                          <div style={{ flex: 1, height: 4, background: 'rgba(240,237,228,0.06)', borderRadius: 2, overflow: 'hidden' }}>
-                            <div style={{ height: '100%', width: `${Math.min(value, 100)}%`, background: color, borderRadius: 2, transition: 'width 1s ease' }} />
+                          <div style={{ flex: 1, height: 4, background: 'rgba(240,237,228,0.06)', borderRadius: 0, overflow: 'hidden' }}>
+                            <div style={{ height: '100%', width: `${Math.min(value, 100)}%`, background: color, borderRadius: 0, transition: 'width 1s ease' }} />
                           </div>
                           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.45)', width: 28, textAlign: 'right' }}>
                             {value || '—'}

@@ -58,7 +58,7 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           {!compact && (
-            <div style={{ width: 40, height: 40, background: '#EF444412', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: 40, height: 40, background: '#EF444412', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <AlertTriangle className="w-5 h-5" style={{ color: '#EF4444' }} />
             </div>
           )}

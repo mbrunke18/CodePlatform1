@@ -241,7 +241,7 @@ export default function StandardNav() {
       key={path}
       onClick={() => navigateTo(path)}
       style={{
-        display: 'flex', gap: 10, alignItems: 'flex-start', padding: '7px 10px', marginBottom: 2, borderRadius: 8,
+        display: 'flex', gap: 10, alignItems: 'flex-start', padding: '7px 10px', marginBottom: 2, borderRadius: 0,
         cursor: 'pointer', transition: 'all 0.14s',
         background: featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent',
         border: featured ? '1px solid rgba(201,168,76,0.28)' : '1px solid transparent',
@@ -260,7 +260,7 @@ export default function StandardNav() {
       }}
     >
       <div style={{
-        width: 28, height: 28, flexShrink: 0, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        width: 28, height: 28, flexShrink: 0, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: featured ? GOLD : colBg === 'dark' ? 'rgba(255,255,255,0.10)' : 'rgba(43,138,110,0.10)',
       }}>
         <Icon size={13} style={{ color: featured ? NAVY : colBg === 'dark' ? 'rgba(255,255,255,0.75)' : TEAL }} />
@@ -305,7 +305,7 @@ export default function StandardNav() {
               <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Playbooks. 12 minutes.</p>
             </div>
           </div>
-          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 12px', textAlign: 'center' }}>
+          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
             <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
             <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
           </div>
@@ -374,7 +374,7 @@ export default function StandardNav() {
             <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>McKinsey · Gartner · IBM · PwC · Forrester</p>
           </div>
-          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 12px', textAlign: 'center' }}>
+          <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
             <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
             <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
           </div>
@@ -402,7 +402,7 @@ export default function StandardNav() {
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
                 onClick={() => navigateTo('/12-minute-experience')}
-                style={{ background: NAVY, borderRadius: 8, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
+                style={{ background: NAVY, borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
               >
@@ -455,7 +455,7 @@ export default function StandardNav() {
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
                 onClick={() => navigateTo('/request-access')}
-                style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 8, padding: '10px 14px', cursor: 'pointer', transition: 'all 0.12s' }}
+                style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'all 0.12s' }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.background = 'linear-gradient(135deg,rgba(201,168,76,0.22),rgba(43,138,110,0.14))';
@@ -537,7 +537,7 @@ export default function StandardNav() {
                 <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>12 minutes to execution</p>
               </div>
             </div>
-            <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 12px', textAlign: 'center' }}>
+            <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
               <p style={{ fontSize: 15, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
               <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
             </div>
@@ -553,7 +553,7 @@ export default function StandardNav() {
                   key={path}
                   onClick={() => navigateTo(path)}
                   style={{
-                    display: 'flex', gap: 11, alignItems: 'flex-start', padding: '10px 11px', marginBottom: 6, borderRadius: 10,
+                    display: 'flex', gap: 11, alignItems: 'flex-start', padding: '10px 11px', marginBottom: 6, borderRadius: 0,
                     cursor: 'pointer', transition: 'all 0.14s',
                     background: featured ? 'linear-gradient(135deg,rgba(201,168,76,0.11),rgba(43,138,110,0.07))' : 'transparent',
                     border: featured ? '1px solid rgba(201,168,76,0.28)' : '1px solid transparent',
@@ -569,7 +569,7 @@ export default function StandardNav() {
                     el.style.borderColor = featured ? 'rgba(201,168,76,0.28)' : 'transparent';
                   }}
                 >
-                  <div style={{ width: 34, height: 34, background: featured ? GOLD : 'rgba(43,138,110,0.1)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: 34, height: 34, background: featured ? GOLD : 'rgba(43,138,110,0.1)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Icon size={15} style={{ color: featured ? NAVY : TEAL }} />
                   </div>
                   <div>
@@ -587,11 +587,11 @@ export default function StandardNav() {
                 <div
                   key={path}
                   onClick={() => navigateTo(path)}
-                  style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '8px 10px', marginBottom: 4, borderRadius: 8, cursor: 'pointer', transition: 'background 0.12s' }}
+                  style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '8px 10px', marginBottom: 4, borderRadius: 0, cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.06)'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
                 >
-                  <div style={{ width: 28, height: 28, background: 'rgba(10,15,46,0.07)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: 28, height: 28, background: 'rgba(10,15,46,0.07)', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <Icon size={13} style={{ color: NAVY }} />
                   </div>
                   <div>
@@ -604,7 +604,7 @@ export default function StandardNav() {
               <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
                 <div
                   onClick={() => navigateTo('/request-access')}
-                  style={{ background: NAVY, borderRadius: 8, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
+                  style={{ background: NAVY, borderRadius: 0, padding: '11px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
                 >

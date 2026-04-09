@@ -153,7 +153,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
       background: 'linear-gradient(135deg, rgba(43,138,110,0.06) 0%, rgba(10,15,46,0.6) 100%)',
       border: '1px solid rgba(43,138,110,0.22)',
       borderLeft: `3px solid ${TEAL}`,
-      borderRadius: 10, padding: '20px 24px', marginBottom: 18,
+      padding: '20px 24px', marginBottom: 18,
     }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
@@ -168,7 +168,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
             display: 'flex', alignItems: 'center', gap: 5,
             background: trend > 0 ? 'rgba(43,138,110,0.15)' : 'rgba(201,168,76,0.12)',
             border: `1px solid ${trend > 0 ? 'rgba(43,138,110,0.3)' : 'rgba(201,168,76,0.25)'}`,
-            borderRadius: 20, padding: '3px 10px',
+            padding: '3px 10px',
           }}>
             <span style={{ fontSize: 10, fontWeight: 800, color: trend > 0 ? TEAL : GOLD }}>
               {trend > 0 ? `+${trend}` : trend} pts
@@ -212,7 +212,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
                       style={{
                         width: '100%', height,
                         background: barColor(score),
-                        borderRadius: 3,
+                        borderRadius: 0,
                         opacity: i === sorted.length - 1 ? 1 : 0.55 + (i / sorted.length) * 0.4,
                         transition: 'all 0.3s',
                         cursor: 'default',
@@ -222,7 +222,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
                 );
               })}
               {sorted.length < 6 && Array.from({ length: 6 - sorted.length }).map((_, i) => (
-                <div key={`empty-${i}`} style={{ flex: 1, height: 8, background: 'rgba(255,255,255,0.05)', borderRadius: 3 }} />
+                <div key={`empty-${i}`} style={{ flex: 1, height: 8, background: 'rgba(255,255,255,0.05)', borderRadius: 0 }} />
               ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -269,7 +269,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
               Each time a playbook activates, execution quality is scored, improvements are encoded, and the next response starts from a better place. Activate your first playbook to begin the intelligence loop.
             </div>
           </div>
-          <a href="/playbooks" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', color: TEAL, border: '1px solid rgba(43,138,110,0.3)', borderRadius: 6, padding: '9px 16px', fontSize: 11, fontWeight: 700, textDecoration: 'none' }}>
+          <a href="/playbooks" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', color: TEAL, border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '9px 16px', fontSize: 11, fontWeight: 700, textDecoration: 'none' }}>
             Browse Playbooks <ChevronRight size={11} />
           </a>
         </div>
@@ -316,14 +316,14 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
         background: isCritical ? 'rgba(192,57,43,0.07)' : 'rgba(255,255,255,0.04)',
         border: `1px solid ${isCritical ? 'rgba(192,57,43,0.3)' : 'rgba(255,255,255,0.1)'}`,
         borderLeft: `5px solid ${cc}`,
-        borderRadius: 10, padding: '20px 22px', marginBottom: 12,
+        borderRadius: 0, padding: '20px 22px', marginBottom: 12,
       }}
     >
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 14, marginBottom: 14 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 5 }}>
             <PulseOrb color={cc} size={10} animate={d.status !== 'acknowledged'} />
-            <span style={{ background: cc, color: '#fff', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 3, letterSpacing: '0.1em' }}>
+            <span style={{ background: cc, color: '#fff', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em' }}>
               {confidenceLabel(d.confidenceScore).toUpperCase()}
             </span>
             <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{d.triggerDomain}</span>
@@ -331,13 +331,13 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
           <div style={{ color: '#fff', fontWeight: 700, fontSize: 17, lineHeight: 1.35, marginBottom: 4 }}>{d.triggerName}</div>
           <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}</div>
         </div>
-        <div style={{ background: `linear-gradient(135deg, ${cc}22, ${cc}11)`, border: `1px solid ${cc}55`, borderRadius: 10, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80 }}>
+        <div style={{ background: `linear-gradient(135deg, ${cc}22, ${cc}11)`, border: `1px solid ${cc}55`, borderRadius: 0, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80 }}>
           <div style={{ color: cc, fontWeight: 800, fontSize: 34, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{d.confidenceScore}</div>
           <div style={{ color: cc, fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', marginTop: 3 }}>CONF%</div>
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 7, padding: '9px 14px', marginBottom: 14 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 0, padding: '9px 14px', marginBottom: 14 }}>
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
           <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>AI RECOMMENDED PLAYBOOK</div>
@@ -348,11 +348,11 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
       <div style={{ display: 'flex', gap: 8 }}>
         <button
           onClick={handleActivate}
-          style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 8, padding: '12px 0', fontWeight: 800, fontSize: 13, letterSpacing: '0.05em', border: 'none', cursor: 'pointer' }}
+          style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 0, padding: '12px 0', fontWeight: 800, fontSize: 13, letterSpacing: '0.05em', border: 'none', cursor: 'pointer' }}
         >
           <Zap size={14} /> ACTIVATE PLAYBOOK
         </button>
-        <Link href="/live-detection-feed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 16px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
+        <Link href="/live-detection-feed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '12px 16px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
             Details <ArrowRight size={12} />
           
         </Link>
@@ -382,7 +382,7 @@ function DomainStatusGrid({ detections }: { detections: Detection[] }) {
           const hasAlert = detectionDomains.some(d => d.includes(domain.toLowerCase().split(' ')[0]));
           const color = hasAlert ? GOLD : TEAL;
           return (
-            <div key={domain} style={{ background: hasAlert ? 'rgba(201,168,76,0.08)' : 'rgba(43,138,110,0.06)', border: `1px solid ${hasAlert ? 'rgba(201,168,76,0.25)' : 'rgba(43,138,110,0.18)'}`, borderRadius: 7, padding: '10px 10px 8px', textAlign: 'center' }}>
+            <div key={domain} style={{ background: hasAlert ? 'rgba(201,168,76,0.08)' : 'rgba(43,138,110,0.06)', border: `1px solid ${hasAlert ? 'rgba(201,168,76,0.25)' : 'rgba(43,138,110,0.18)'}`, borderRadius: 0, padding: '10px 10px 8px', textAlign: 'center' }}>
               <PulseOrb color={color} size={8} animate={hasAlert} />
               <div style={{ color: hasAlert ? GOLD : 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 700, marginTop: 6, letterSpacing: '0.04em' }}>{domain}</div>
             </div>
@@ -492,7 +492,7 @@ export default function MissionControl() {
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ color: GOLD, fontWeight: 800, fontSize: 18, letterSpacing: '0.04em' }}>MISSION CONTROL</span>
-                  <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 3, letterSpacing: '0.12em' }}>EXECUTION OS</span>
+                  <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.12em' }}>EXECUTION OS</span>
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, marginTop: 1 }}>
                   Welcome back, {firstName} · Strategic Readiness Intelligence
@@ -501,12 +501,12 @@ export default function MissionControl() {
             </div>
 
             {/* System Status Badge */}
-            <motion.div key={systemStatus} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ display: 'flex', alignItems: 'center', gap: 10, background: statusCfg.bg, border: `1px solid ${statusCfg.border}`, borderRadius: 8, padding: '10px 22px' }}>
+            <motion.div key={systemStatus} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} style={{ display: 'flex', alignItems: 'center', gap: 10, background: statusCfg.bg, border: `1px solid ${statusCfg.border}`, borderRadius: 0, padding: '10px 22px' }}>
               <PulseOrb color={statusCfg.color} size={11} animate={statusCfg.pulse} />
               <StatusIcon size={16} color={statusCfg.color} />
               <span style={{ color: statusCfg.color, fontWeight: 800, fontSize: 13, letterSpacing: '0.12em' }}>{statusCfg.label}</span>
               {systemStatus === 'alert' && criticalCount > 0 && (
-                <span style={{ background: RED_ALT, color: '#fff', fontSize: 10, fontWeight: 800, padding: '1px 7px', borderRadius: 12, marginLeft: 4 }}>
+                <span style={{ background: RED_ALT, color: '#fff', fontSize: 10, fontWeight: 800, padding: '1px 7px', borderRadius: 0, marginLeft: 4 }}>
                   {criticalCount} CRITICAL
                 </span>
               )}
@@ -520,10 +520,10 @@ export default function MissionControl() {
                   {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                 </div>
               </div>
-              <button onClick={handleRefresh} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 12px', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11 }}>
+              <button onClick={handleRefresh} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '7px 12px', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11 }}>
                 <RefreshCw size={12} /> Refresh
               </button>
-              <Link href="/command-tower" title="Command Tower — Live wall display for conference rooms & NOC screens (auto-refreshing, read-only)" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 6, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/command-tower" title="Command Tower — Live wall display for conference rooms & NOC screens (auto-refreshing, read-only)" style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '7px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 600, textDecoration: 'none' }}>
                 <Radar size={11} /> Command Tower
               </Link>
             </div>
@@ -683,11 +683,11 @@ export default function MissionControl() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 390px', gap: 20, alignItems: 'start', marginBottom: 24 }}>
 
             {/* ── LEFT: LIVE ALERT ZONE ─────────────────────────────────── */}
-            <div style={{ background: 'rgba(255,255,255,0.02)', border: detections.length > 0 ? '1px solid rgba(201,168,76,0.2)' : '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '22px 24px' }}>
+            <div style={{ background: 'rgba(255,255,255,0.02)', border: detections.length > 0 ? '1px solid rgba(201,168,76,0.2)' : '1px solid rgba(255,255,255,0.07)', borderRadius: 0, padding: '22px 24px' }}>
               {/* Zone header */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{ background: detections.length > 0 ? 'rgba(201,168,76,0.15)' : 'rgba(43,138,110,0.12)', border: `1px solid ${detections.length > 0 ? 'rgba(201,168,76,0.3)' : 'rgba(43,138,110,0.25)'}`, borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ background: detections.length > 0 ? 'rgba(201,168,76,0.15)' : 'rgba(43,138,110,0.12)', border: `1px solid ${detections.length > 0 ? 'rgba(201,168,76,0.3)' : 'rgba(43,138,110,0.25)'}`, borderRadius: 0, padding: '4px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
                     <PulseOrb color={detections.length > 0 ? GOLD : TEAL} size={8} animate />
                     <span style={{ color: detections.length > 0 ? GOLD : TEAL, fontSize: 10, fontWeight: 800, letterSpacing: '0.1em' }}>
                       {detections.length > 0 ? `${detections.length} ALERT${detections.length > 1 ? 'S' : ''} ACTIVE` : 'ALL CLEAR'}
@@ -702,7 +702,7 @@ export default function MissionControl() {
 
               <AnimatePresence mode="popLayout">
                 {recentDetections.length === 0 ? (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ background: 'rgba(43,138,110,0.07)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: 12, padding: '56px 24px', textAlign: 'center' }}>
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ background: 'rgba(43,138,110,0.07)', border: '1px solid rgba(43,138,110,0.2)', borderRadius: 0, padding: '56px 24px', textAlign: 'center' }}>
                     <CheckCircle2 size={52} color={TEAL} style={{ margin: '0 auto 18px', display: 'block' }} />
                     <div style={{ color: TEAL, fontWeight: 800, fontSize: 22, marginBottom: 10, letterSpacing: '0.04em' }}>ALL SYSTEMS CLEAR</div>
                     <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, maxWidth: 440, margin: '0 auto', lineHeight: 1.6 }}>
@@ -711,11 +711,11 @@ export default function MissionControl() {
                     <div style={{ marginTop: 28, display: 'flex', justifyContent: 'center', gap: 12 }}>
                       <button
                         onClick={() => setLocation('/live-activation-center')}
-                        style={{ display: 'flex', alignItems: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 8, padding: '12px 24px', fontWeight: 800, fontSize: 13, border: 'none', cursor: 'pointer' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 0, padding: '12px 24px', fontWeight: 800, fontSize: 13, border: 'none', cursor: 'pointer' }}
                       >
                         <Zap size={14} /> Activate Playbook
                       </button>
-                      <Link href="/triggers-management" style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
+                      <Link href="/triggers-management" style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
                           <Eye size={13} /> View Triggers
                       </Link>
                     </div>
@@ -730,19 +730,19 @@ export default function MissionControl() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
               {/* Domain Status Board */}
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '18px 20px' }}>
                 <DomainStatusGrid detections={detections} />
               </div>
 
               {/* Execution Log */}
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '18px 20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <TrendingUp size={14} color={TEAL} />
                     <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>EXECUTION LOG</span>
                   </div>
                   {activations.length > 0 && (
-                    <span style={{ background: 'rgba(43,138,110,0.15)', color: TEAL, fontSize: 10, fontWeight: 700, padding: '1px 8px', borderRadius: 10 }}>{activations.length} total</span>
+                    <span style={{ background: 'rgba(43,138,110,0.15)', color: TEAL, fontSize: 10, fontWeight: 700, padding: '1px 8px', borderRadius: 0 }}>{activations.length} total</span>
                   )}
                 </div>
                 {recentActivations.length === 0 ? (
@@ -757,7 +757,7 @@ export default function MissionControl() {
                       const isRecent = Date.now() - new Date(a.activatedAt).getTime() < 7200000;
                       return (
                         <motion.div key={a.id as string} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                          style={{ background: isRecent ? 'rgba(43,138,110,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isRecent ? 'rgba(43,138,110,0.25)' : 'rgba(255,255,255,0.07)'}`, borderLeft: `4px solid ${isRecent ? TEAL : 'rgba(255,255,255,0.15)'}`, borderRadius: 8, padding: '12px 14px' }}
+                          style={{ background: isRecent ? 'rgba(43,138,110,0.1)' : 'rgba(255,255,255,0.04)', border: `1px solid ${isRecent ? 'rgba(43,138,110,0.25)' : 'rgba(255,255,255,0.07)'}`, borderLeft: `4px solid ${isRecent ? TEAL : 'rgba(255,255,255,0.15)'}`, borderRadius: 0, padding: '12px 14px' }}
                         >
                           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 4 }}>
                             <div>
@@ -768,7 +768,7 @@ export default function MissionControl() {
                               <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>{a.domainName}</span>
                             </div>
                             {a.successRating != null && (
-                              <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 5, flexShrink: 0 }}>{a.successRating}%</div>
+                              <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 0, flexShrink: 0 }}>{a.successRating}%</div>
                             )}
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -783,7 +783,7 @@ export default function MissionControl() {
               </div>
 
               {/* Scan Timing + 3600x Metric */}
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '18px 20px' }}>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '18px 20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 12 }}>
                   <Clock size={13} color={TEAL} />
                   <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>SCAN CYCLE</span>
@@ -800,7 +800,7 @@ export default function MissionControl() {
                     </div>
                   ))}
                 </div>
-                <div style={{ background: `linear-gradient(135deg, rgba(201,168,76,0.12), rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.2)', borderRadius: 8, padding: '14px 16px' }}>
+                <div style={{ background: `linear-gradient(135deg, rgba(201,168,76,0.12), rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0, padding: '14px 16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>
                     <Zap size={12} color={GOLD} />
                     <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
@@ -812,10 +812,10 @@ export default function MissionControl() {
 
               {/* Quick Actions */}
               <div style={{ display: 'flex', gap: 10 }}>
-                <Link href="/live-activation-center" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: GOLD, color: NAVY, borderRadius: 8, padding: '13px 20px', fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none' }}>
+                <Link href="/live-activation-center" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: GOLD, color: NAVY, borderRadius: 0, padding: '13px 20px', fontWeight: 800, fontSize: 12, letterSpacing: '0.05em', textDecoration: 'none' }}>
                     <Zap size={13} /> ACTIVATE
                 </Link>
-                <Link href="/live-detection-feed" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.7)', borderRadius: 8, padding: '13px 20px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
+                <Link href="/live-detection-feed" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '13px 20px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
                     <Radio size={12} /> FEED
                 </Link>
               </div>
@@ -823,7 +823,7 @@ export default function MissionControl() {
           </div>
 
           {/* ── STRATEGIC PULSE MAP ─────────────────────────────────────────── */}
-          <div style={{ marginBottom: 24, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ marginBottom: 24, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, overflow: 'hidden' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
               <Radar size={14} color={GOLD} />
               <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>STRATEGIC PULSE MAP</span>
@@ -834,7 +834,7 @@ export default function MissionControl() {
 
           {/* ── TRIGGER FORECAST ────────────────────────────────────────────── */}
           {triggers.length > 0 && (
-            <div style={{ marginBottom: 24, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, overflow: 'hidden' }}>
+            <div style={{ marginBottom: 24, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, overflow: 'hidden' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
                 <BarChart3 size={14} color={TEAL} />
                 <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>TRIGGER PROBABILITY FORECAST</span>
@@ -856,7 +856,7 @@ export default function MissionControl() {
           </div>
 
           {/* ── PLATFORM INTEL STRIP ────────────────────────────────────────── */}
-          <div style={{ marginBottom: 32, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ marginBottom: 32, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <ChevronRight size={13} color={GOLD} />
               <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>NAVIGATE EXECUTION OS</span>
@@ -871,7 +871,7 @@ export default function MissionControl() {
                 { label: 'Execution History', href: '/execution-history', gold: false },
                 { label: 'Settings', href: '/settings', gold: false },
               ].map(({ label, href, gold }) => (
-                <Link key={href} href={href} style={{ display: 'flex', alignItems: 'center', gap: 5, background: gold ? GOLD : 'rgba(255,255,255,0.05)', border: `1px solid ${gold ? GOLD : 'rgba(255,255,255,0.1)'}`, borderRadius: 6, padding: '6px 12px', color: gold ? NAVY : 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: gold ? 800 : 600, textDecoration: 'none' }}>
+                <Link key={href} href={href} style={{ display: 'flex', alignItems: 'center', gap: 5, background: gold ? GOLD : 'rgba(255,255,255,0.05)', border: `1px solid ${gold ? GOLD : 'rgba(255,255,255,0.1)'}`, borderRadius: 0, padding: '6px 12px', color: gold ? NAVY : 'rgba(255,255,255,0.6)', fontSize: 11, fontWeight: gold ? 800 : 600, textDecoration: 'none' }}>
                     {label} <ArrowRight size={10} />
                 </Link>
               ))}

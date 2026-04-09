@@ -608,12 +608,12 @@ export default function LiveActivationCenter() {
             <div style={{
               background: configuredIntentCount > 0 ? 'rgba(43,138,110,0.06)' : 'rgba(201,168,76,0.06)',
               border: configuredIntentCount > 0 ? '1px solid rgba(43,138,110,0.25)' : '1px solid rgba(201,168,76,0.25)',
-              borderRadius: 12, padding: '16px 20px',
+              borderRadius: 0, padding: '16px 20px',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <div style={{
-                  width: 36, height: 36, borderRadius: 8,
+                  width: 36, height: 36, borderRadius: 0,
                   background: configuredIntentCount > 0 ? 'rgba(43,138,110,0.15)' : 'rgba(201,168,76,0.15)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                 }}>
@@ -638,7 +638,7 @@ export default function LiveActivationCenter() {
                   flexShrink: 0, padding: '8px 16px',
                   background: configuredIntentCount > 0 ? 'rgba(43,138,110,0.1)' : '#C9A84C',
                   border: configuredIntentCount > 0 ? '1px solid rgba(43,138,110,0.3)' : 'none',
-                  borderRadius: 6, fontSize: 12, fontWeight: 700,
+                  borderRadius: 0, fontSize: 12, fontWeight: 700,
                   color: configuredIntentCount > 0 ? '#2B8A6E' : '#0A0F2E',
                   cursor: 'pointer',
                 }}

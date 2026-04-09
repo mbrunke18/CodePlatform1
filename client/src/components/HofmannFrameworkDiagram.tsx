@@ -10,7 +10,7 @@ export default function HofmannFrameworkDiagram() {
     <div style={{
       background: IVORY,
       border: `1px solid rgba(10,15,46,0.10)`,
-      borderRadius: 12,
+      borderRadius: 0,
       overflow: "hidden",
       fontFamily: "'Barlow', sans-serif",
     }}>
@@ -56,7 +56,7 @@ export default function HofmannFrameworkDiagram() {
             <div key={s.label} style={{
               background: "rgba(201,168,76,0.15)",
               border: `1px solid rgba(201,168,76,0.35)`,
-              borderRadius: 6, padding: "6px 12px", textAlign: "center",
+              borderRadius: 0, padding: "6px 12px", textAlign: "center",
             }}>
               <div style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
@@ -101,7 +101,7 @@ export default function HofmannFrameworkDiagram() {
             width: "100%",
             height: "auto",
             display: "block",
-            borderRadius: 6,
+            borderRadius: 0,
           }}
         />
       </div>
@@ -126,7 +126,7 @@ export default function HofmannFrameworkDiagram() {
         <div style={{
           background: "rgba(201,168,76,0.18)",
           border: `1px solid rgba(201,168,76,0.4)`,
-          borderRadius: 4, padding: "4px 14px",
+          borderRadius: 0, padding: "4px 14px",
           fontFamily: "'Barlow Condensed', sans-serif",
           fontSize: 10, fontWeight: 700, color: GOLD,
           letterSpacing: "1.5px", textTransform: "uppercase",

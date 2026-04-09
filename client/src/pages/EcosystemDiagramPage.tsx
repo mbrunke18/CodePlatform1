@@ -68,7 +68,7 @@ export default function EcosystemDiagramPage() {
               },
             ].map(({ phase, title, body, color }) => (
               <div key={phase} style={{
-                padding: 32, borderRadius: 12,
+                padding: 32, borderRadius: 0,
                 border: `1px solid ${color}22`,
                 background: `${color}06`,
               }}>
@@ -117,7 +117,7 @@ export default function EcosystemDiagramPage() {
               { name: "Power Platform", role: "Webhook hooks route trigger alerts into existing Power Automate flows and enterprise workflows", icon: "◆", color: "#742774" },
             ].map(({ name, role, icon, color }) => (
               <div key={name} style={{
-                padding: "24px 20px", borderRadius: 10, background: "#fff",
+                padding: "24px 20px", borderRadius: 0, background: "#fff",
                 border: `1px solid ${color}25`,
                 boxShadow: `0 2px 12px ${color}10`,
               }}>
@@ -172,7 +172,7 @@ export default function EcosystemDiagramPage() {
               background: GOLD, color: NAVY, border: "none",
               fontFamily: "'Barlow Condensed',sans-serif",
               fontSize: 13, fontWeight: 700, letterSpacing: "0.12em",
-              textTransform: "uppercase", padding: "14px 36px", borderRadius: 6,
+              textTransform: "uppercase", padding: "14px 36px", borderRadius: 0,
               cursor: "pointer",
             }}
           >
@@ -184,7 +184,7 @@ export default function EcosystemDiagramPage() {
               background: "transparent", color: IVORY,
               border: `1px solid rgba(240,237,228,0.25)`,
               fontFamily: "'Barlow Condensed',sans-serif",
-              fontSize: 13, padding: "14px 28px", borderRadius: 6,
+              fontSize: 13, padding: "14px 28px", borderRadius: 0,
               cursor: "pointer",
             }}
           >

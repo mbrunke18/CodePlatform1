@@ -195,7 +195,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             background: '#FFFFFF',
             border: `1px solid ${cat.border}`,
             borderTop: `3px solid ${cat.accent}`,
-            borderRadius: 12,
+            borderRadius: 0,
             padding: '22px 22px 20px',
             cursor: 'pointer',
             transition: 'all 0.18s',
@@ -216,25 +216,25 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
         >
           {/* Role header */}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 14 }}>
-            <div style={{ width: 40, height: 40, background: cat.bg, border: `1px solid ${cat.border}`, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <div style={{ width: 40, height: 40, background: cat.bg, border: `1px solid ${cat.border}`, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Icon size={18} style={{ color: cat.accent }} />
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
                 <span style={{ fontSize: 13, fontWeight: 800, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{config.id.toUpperCase()}</span>
-                <span style={{ fontSize: 9, fontWeight: 700, color: cat.accent, background: cat.bg, border: `1px solid ${cat.border}`, padding: '2px 7px', borderRadius: 3, letterSpacing: '0.14em', textTransform: 'uppercase' }}>{cat.label}</span>
+                <span style={{ fontSize: 9, fontWeight: 700, color: cat.accent, background: cat.bg, border: `1px solid ${cat.border}`, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.14em', textTransform: 'uppercase' }}>{cat.label}</span>
               </div>
               <p style={{ fontSize: 11, color: '#6B7280', margin: 0, fontWeight: 500 }}>{config.title}</p>
             </div>
             {/* Simulation badge */}
-            <div style={{ flexShrink: 0, background: 'rgba(10,15,46,0.05)', border: '1px solid rgba(10,15,46,0.1)', borderRadius: 5, padding: '3px 7px', display: 'flex', alignItems: 'center', gap: 4 }}>
+            <div style={{ flexShrink: 0, background: 'rgba(10,15,46,0.05)', border: '1px solid rgba(10,15,46,0.1)', borderRadius: 0, padding: '3px 7px', display: 'flex', alignItems: 'center', gap: 4 }}>
               <Play size={8} style={{ color: NAVY }} />
               <span style={{ fontSize: 8, fontWeight: 800, color: NAVY, letterSpacing: '0.1em', textTransform: 'uppercase' }}>12-Step</span>
             </div>
           </div>
 
           {/* The hook */}
-          <div style={{ background: `${cat.bg}`, border: `1px solid ${cat.border}`, borderLeft: `3px solid ${cat.accent}`, borderRadius: 6, padding: '10px 12px', marginBottom: 14 }}>
+          <div style={{ background: `${cat.bg}`, border: `1px solid ${cat.border}`, borderLeft: `3px solid ${cat.accent}`, borderRadius: 0, padding: '10px 12px', marginBottom: 14 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: NAVY, margin: 0, lineHeight: 1.5, fontStyle: 'italic' }}>
               "{config.hookQuestion}"
             </p>
@@ -247,7 +247,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           </div>
 
           {/* Before / After outcome */}
-          <div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 8, padding: '10px 12px', background: '#F8F7F4', borderRadius: 8, marginBottom: 14 }}>
+          <div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 8, padding: '10px 12px', background: '#F8F7F4', borderRadius: 0, marginBottom: 14 }}>
             <div style={{ textAlign: 'center' }}>
               <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Without OS</p>
               <p style={{ fontSize: 15, fontWeight: 800, color: '#f87171', margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>{config.metricBefore}</p>
@@ -270,7 +270,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             style={{
               background: cat.accent,
               color: cat.accent === GOLD ? NAVY : '#fff',
-              borderRadius: 8,
+              borderRadius: 0,
               padding: '11px 16px',
               display: 'flex',
               alignItems: 'center',
@@ -319,7 +319,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           {/* Subtle grid */}
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', maxWidth: 760, margin: '0 auto' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 6, padding: '5px 14px', marginBottom: 20 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 14px', marginBottom: 20 }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD }} className="animate-pulse" />
               <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
@@ -330,7 +330,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your playbook before the trigger fires.
             </p>
             {/* The core contrast */}
-            <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 10, padding: '14px 28px' }}>
+            <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '14px 28px' }}>
               <div style={{ textAlign: 'center' }}>
                 <p style={{ fontSize: 9, fontWeight: 700, color: 'rgba(248,113,113,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
                 <p style={{ fontSize: 24, fontWeight: 800, color: '#f87171', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
@@ -381,7 +381,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                 );
               })}
             </div>
-            <div style={{ marginTop: 18, padding: '12px 18px', background: '#F8F7F4', borderRadius: 8, border: '1px solid #E8E4DC', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ marginTop: 18, padding: '12px 18px', background: '#F8F7F4', borderRadius: 0, border: '1px solid #E8E4DC', display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD, flexShrink: 0 }} className="animate-pulse" />
               <p style={{ fontSize: 12, color: '#374151', margin: 0, lineHeight: 1.5 }}>
                 <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your playbook, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
@@ -400,7 +400,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           {renderCategory('Special Teams', 'Compliance, regulatory, AI governance, data strategy', specialTeamsRoles, CATEGORY_CONFIG['SPECIAL TEAMS'])}
 
           {/* Bottom CTA */}
-          <div style={{ background: NAVY, borderRadius: 16, padding: '40px 36px', textAlign: 'center', marginTop: 20 }}>
+          <div style={{ background: NAVY, borderRadius: 0, padding: '40px 36px', textAlign: 'center', marginTop: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 12 }}>
               <Clock size={18} style={{ color: GOLD }} />
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 700, color: '#FFFFFF', margin: 0 }}>Not sure where to start?</h3>

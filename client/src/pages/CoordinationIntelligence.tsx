@@ -60,8 +60,8 @@ function SpeedBar({ minutes, target = 12, max = 60 }: { minutes: number; target?
   const over = minutes > target;
   return (
     <div className="relative h-2 w-full" style={{ background: '#E8E4DC' }}>
-      <div style={{ background: over ? '#EF4444' : TEAL, borderRadius: 4, height: '100%', width: `${pct}%`, transition: 'width 0.6s ease' }} />
-      <div style={{ position: 'absolute', left: `${targetPct}%`, top: -3, width: 2, height: 16, background: GOLD, borderRadius: 1 }} title="12-min target" />
+      <div style={{ background: over ? '#EF4444' : TEAL, borderRadius: 0, height: '100%', width: `${pct}%`, transition: 'width 0.6s ease' }} />
+      <div style={{ position: 'absolute', left: `${targetPct}%`, top: -3, width: 2, height: 16, background: GOLD, borderRadius: 0 }} title="12-min target" />
     </div>
   );
 }
@@ -209,8 +209,8 @@ export default function CoordinationIntelligence() {
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: MUTED, marginBottom: 4 }}>{row.label}</div>
                     <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: row.color, marginBottom: 4 }}>{row.value}</div>
                     <div style={{ fontSize: 11, color: MUTED, marginBottom: 12 }}>{row.note}</div>
-                    <div style={{ height: 6, background: BORDER, borderRadius: 3 }}>
-                      <div style={{ height: '100%', background: row.color, borderRadius: 3, width: `${Math.max(row.pct, 0.2)}%`, minWidth: 4 }} />
+                    <div style={{ height: 6, background: BORDER, borderRadius: 0 }}>
+                      <div style={{ height: '100%', background: row.color, borderRadius: 0, width: `${Math.max(row.pct, 0.2)}%`, minWidth: 4 }} />
                     </div>
                   </div>
                 ))}
@@ -336,8 +336,8 @@ export default function CoordinationIntelligence() {
                         </Badge>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ flex: 1, height: 4, background: BORDER, borderRadius: 2 }}>
-                          <div style={{ height: '100%', background: b.impact === 'critical' ? '#EF4444' : b.impact === 'high' ? GOLD : TEAL, borderRadius: 2, width: `${b.frequency}%` }} />
+                        <div style={{ flex: 1, height: 4, background: BORDER, borderRadius: 0 }}>
+                          <div style={{ height: '100%', background: b.impact === 'critical' ? '#EF4444' : b.impact === 'high' ? GOLD : TEAL, borderRadius: 0, width: `${b.frequency}%` }} />
                         </div>
                         <span style={{ fontSize: 11, color: MUTED, fontWeight: 600, whiteSpace: 'nowrap' }}>+{b.avgDelayMin}m avg</span>
                       </div>
@@ -429,11 +429,11 @@ export default function CoordinationIntelligence() {
                 <span style={{ fontSize: 11, color: MUTED }}>Earliest</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: 2, background: TEAL }} />
+                    <div style={{ width: 10, height: 10, borderRadius: 0, background: TEAL }} />
                     <span style={{ fontSize: 11, color: MUTED }}>Target Met (≤12 min)</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: 2, background: '#EF4444' }} />
+                    <div style={{ width: 10, height: 10, borderRadius: 0, background: '#EF4444' }} />
                     <span style={{ fontSize: 11, color: MUTED }}>Target Missed</span>
                   </div>
                 </div>

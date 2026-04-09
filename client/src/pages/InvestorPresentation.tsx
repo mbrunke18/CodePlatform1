@@ -83,23 +83,25 @@ function InvestorPresentation() {
   const slides = [
     () => (
       <div className="flex flex-col items-center justify-center h-full text-center px-4">
-        <div className="inline-block px-5 py-2 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 text-[#2B8A6E] text-sm font-semibold mb-8">
-          10.3% revenue impact within 12 months
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 32 }}>
+          <div style={{ width: 24, height: 1, background: '#2B8A6E', opacity: 0.6 }} />
+          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#2B8A6E' }}>10.3% revenue impact within 12 months</span>
+          <div style={{ width: 24, height: 1, background: '#2B8A6E', opacity: 0.6 }} />
         </div>
-        <h1 className="text-5xl md:text-7xl font-bold text-[#0A0F2E] mb-6 leading-tight">
+        <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(36px,6vw,72px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.1, marginBottom: 20, maxWidth: 860 }}>
           We redesign how work flows<br />in the age of AI
         </h1>
-        <p className="text-xl md:text-2xl text-[#0A0F2E] max-w-3xl mb-6">
+        <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 'clamp(15px,1.5vw,20px)', color: '#0A0F2E', maxWidth: 680, marginBottom: 16, lineHeight: 1.65, fontWeight: 400 }}>
           The new operating model for Fortune 1000 enterprises — 170 pre-staged playbooks that compress 30 days of mobilization into 12 minutes of live execution
         </p>
-        <p className="text-base text-[#6B7280] max-w-2xl mb-12">
+        <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#6B7280', maxWidth: 560, marginBottom: 48, lineHeight: 1.65 }}>
           Not another AI tool bolted onto the old workflow. A fundamental redesign of how strategic work flows from first principles for the AI era.
         </p>
-        <div className="flex items-center gap-2 text-[#0A0F2E] text-lg">
-          <span className="font-semibold text-[#0A0F2E]">Martin Brunke</span>
-          <span>, Founder & CEO</span>
-          <span className="mx-2">|</span>
-          <span className="text-[#2B8A6E]">info@vaughnmartin.com</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#0A0F2E' }}>
+          <span style={{ fontWeight: 600 }}>Martin Brunke</span>
+          <span style={{ color: '#9CA3AF' }}>, Founder & CEO</span>
+          <span style={{ color: '#D1D5DB', marginLeft: 4, marginRight: 4 }}>|</span>
+          <span style={{ color: '#2B8A6E' }}>info@vaughnmartin.com</span>
         </div>
       </div>
     ),

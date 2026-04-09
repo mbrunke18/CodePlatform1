@@ -25,7 +25,7 @@ function AccessGate() {
       <div style={{
         maxWidth: 480, width: '100%',
         background: '#fff', border: '1px solid #E8E4DC',
-        borderTop: `4px solid ${GOLD}`, borderRadius: 4,
+        borderTop: `4px solid ${GOLD}`, borderRadius: 0,
         padding: '40px 36px', textAlign: 'center',
       }}>
         <div style={{
@@ -51,7 +51,7 @@ function AccessGate() {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               background: NAVY, color: '#fff', border: 'none',
-              borderRadius: 4, padding: '12px 24px',
+              borderRadius: 0, padding: '12px 24px',
               fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer',
             }}
           >
@@ -62,7 +62,7 @@ function AccessGate() {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               background: GOLD, color: NAVY, border: 'none',
-              borderRadius: 4, padding: '12px 24px',
+              borderRadius: 0, padding: '12px 24px',
               fontSize: '0.875rem', fontWeight: 700, cursor: 'pointer',
             }}
           >
@@ -74,7 +74,7 @@ function AccessGate() {
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               background: 'transparent', color: TEAL,
               border: `1px solid ${TEAL}`,
-              borderRadius: 4, padding: '11px 24px',
+              borderRadius: 0, padding: '11px 24px',
               fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer',
             }}
           >

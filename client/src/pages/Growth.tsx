@@ -235,12 +235,12 @@ export default function Growth() {
 
       {/* ── BILLING TOGGLE ── */}
       <section style={{ background: OFF, borderBottom: `1px solid #E8E4DC`, padding: "24px 48px", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 40, padding: "6px 6px 6px 20px" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 16, background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "6px 6px 6px 20px" }}>
           <span style={{ fontSize: 13, fontWeight: 600, color: annual ? "#9CA3AF" : NAVY }}>Monthly</span>
           <button
             onClick={() => setAnnual(!annual)}
             style={{
-              width: 48, height: 26, borderRadius: 13,
+              width: 48, height: 26, borderRadius: 0,
               background: annual ? NAVY : "#E5E7EB",
               border: "none", cursor: "pointer", position: "relative", transition: "background 0.2s"
             }}
@@ -252,7 +252,7 @@ export default function Growth() {
           </button>
           <span style={{ fontSize: 13, fontWeight: 600, color: annual ? NAVY : "#9CA3AF" }}>Annual</span>
           {annual && (
-            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, background: `rgba(43,138,110,0.1)`, borderRadius: 20, padding: "4px 12px" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, background: `rgba(43,138,110,0.1)`, borderRadius: 0, padding: "4px 12px" }}>
               Best Value
             </span>
           )}
@@ -279,7 +279,7 @@ export default function Growth() {
                   key={tier.id}
                   style={{
                     border: tier.highlight ? `2px solid ${GOLD}` : `1px solid #E8E4DC`,
-                    borderRadius: 12,
+                    borderRadius: 0,
                     padding: "36px 28px",
                     background: tier.highlight ? `rgba(201,168,76,0.03)` : isOrchestrated ? `rgba(10,15,46,0.02)` : "#fff",
                     position: "relative",
@@ -291,7 +291,7 @@ export default function Growth() {
                       position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
                       background: tier.highlight ? GOLD : NAVY,
                       color: "#fff", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase",
-                      padding: "4px 14px", borderRadius: 20, whiteSpace: "nowrap"
+                      padding: "4px 14px", borderRadius: 0, whiteSpace: "nowrap"
                     }}>
                       {tier.badge}
                     </div>
@@ -335,7 +335,7 @@ export default function Growth() {
                         </p>
                       )}
                       {tier.guarantee && (
-                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, background: `rgba(43,138,110,0.08)`, border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 20, padding: "3px 10px" }}>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 8, background: `rgba(43,138,110,0.08)`, border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 0, padding: "3px 10px" }}>
                           <div style={{ width: 5, height: 5, borderRadius: "50%", background: TEAL }} />
                           <span style={{ fontSize: 10, color: TEAL, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>30-day guarantee</span>
                         </div>
@@ -383,7 +383,7 @@ export default function Growth() {
                       color: tier.highlight || isOrchestrated || isEnterprise ? "#fff" : NAVY,
                       border: tier.highlight || isOrchestrated || isEnterprise ? "none" : `1px solid #E8E4DC`,
                       fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase",
-                      width: "100%", padding: "14px", borderRadius: 6,
+                      width: "100%", padding: "14px", borderRadius: 0,
                       cursor: "pointer", boxSizing: "border-box"
                     }}
                   >
@@ -426,7 +426,7 @@ export default function Growth() {
                 jump: "$250K → Custom",
               },
             ].map((gate) => (
-              <div key={gate.from} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 10, padding: "28px 24px" }}>
+              <div key={gate.from} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "28px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
                   <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{gate.from}</span>
                   <span style={{ color: gate.color, fontWeight: 700 }}>{gate.arrow}</span>
@@ -478,7 +478,7 @@ export default function Growth() {
             ))}
             <button
               onClick={() => setLocation("/contact")}
-              style={{ marginTop: 8, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, background: TEAL, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, padding: "14px 24px", borderRadius: 6, border: "none", cursor: "pointer" }}
+              style={{ marginTop: 8, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, background: TEAL, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, padding: "14px 24px", borderRadius: 0, border: "none", cursor: "pointer" }}
             >
               Start My Pilot <ArrowRight style={{ width: 14, height: 14 }} />
             </button>
@@ -508,7 +508,7 @@ export default function Growth() {
 
           {/* Comparison table */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 700, margin: "0 auto" }}>
-            <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 12, padding: "28px 24px" }}>
+            <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "28px 24px" }}>
               <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 16 }}>Traditional SaaS</p>
               {[
                 "Price per seat",
@@ -524,7 +524,7 @@ export default function Growth() {
                 </div>
               ))}
             </div>
-            <div style={{ background: "#fff", border: `2px solid ${TEAL}`, borderRadius: 12, padding: "28px 24px" }}>
+            <div style={{ background: "#fff", border: `2px solid ${TEAL}`, borderRadius: 0, padding: "28px 24px" }}>
               <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Readiness OS</p>
               {[
                 "Price per capability tier",
@@ -564,7 +564,7 @@ export default function Growth() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
             {TIERS.filter(t => t.id !== "enterprise").map((tier) => (
-              <div key={tier.id} style={{ border: `1px solid ${tier.highlight ? GOLD : "#E8E4DC"}`, borderRadius: 12, padding: "28px 24px", background: tier.highlight ? `rgba(201,168,76,0.03)` : "#fff" }}>
+              <div key={tier.id} style={{ border: `1px solid ${tier.highlight ? GOLD : "#E8E4DC"}`, borderRadius: 0, padding: "28px 24px", background: tier.highlight ? `rgba(201,168,76,0.03)` : "#fff" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <div style={{ width: 8, height: 8, borderRadius: "50%", background: tier.color, flexShrink: 0 }} />
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: tier.color }}>{tier.name}</span>
@@ -573,7 +573,7 @@ export default function Growth() {
                 <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>{tier.roiNote}</p>
               </div>
             ))}
-            <div style={{ border: `1px solid #E8E4DC`, borderRadius: 12, padding: "28px 24px", background: `rgba(10,15,46,0.02)` }}>
+            <div style={{ border: `1px solid #E8E4DC`, borderRadius: 0, padding: "28px 24px", background: `rgba(10,15,46,0.02)` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: NAVY, flexShrink: 0 }} />
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: NAVY }}>Enterprise</span>
@@ -606,7 +606,7 @@ export default function Growth() {
             </p>
           </div>
 
-          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 12, overflow: "hidden" }}>
+          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
             {/* Table header */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", background: NAVY, padding: "14px 28px", gap: 16 }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>What Companies Buy Today</span>
@@ -646,7 +646,7 @@ export default function Growth() {
               { tier: "Orchestrated", price: "$250K/yr", replace: "Fractional strategy ops team", roi: "2–8× (cost replacement alone)" },
               { tier: "Enterprise", price: "$250K+/yr", replace: "Full strategy ops function", roi: "40–400×" },
             ].map((row) => (
-              <div key={row.tier} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 10, padding: "20px 20px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
+              <div key={row.tier} style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "20px 20px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: NAVY }}>{row.tier}</span>
                   <span style={{ fontSize: 13, fontWeight: 700, color: TEAL }}>{row.roi} ROI</span>
@@ -678,7 +678,7 @@ export default function Growth() {
             </p>
           </div>
 
-          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 12, overflow: "hidden" }}>
+          <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
             {/* Header */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", background: NAVY, padding: "14px 28px", gap: 16 }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Scenario</span>
@@ -713,7 +713,7 @@ export default function Growth() {
           <div style={{ textAlign: "center", marginTop: 28 }}>
             <button
               onClick={() => setLocation("/vs-consulting")}
-              style={{ background: "none", border: `1px solid #E8E4DC`, borderRadius: 6, padding: "10px 20px", cursor: "pointer", fontSize: 12, fontWeight: 600, color: "#6B7280", display: "inline-flex", alignItems: "center", gap: 6 }}
+              style={{ background: "none", border: `1px solid #E8E4DC`, borderRadius: 0, padding: "10px 20px", cursor: "pointer", fontSize: 12, fontWeight: 600, color: "#6B7280", display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               See how this compares to a McKinsey engagement <ArrowRight style={{ width: 13, height: 13 }} />
             </button>
@@ -747,7 +747,7 @@ export default function Growth() {
               { stat: "170", label: "Pre-staged playbooks" },
               { stat: "∞", label: "Users at every tier" },
             ].map((s) => (
-              <div key={s.label} style={{ textAlign: "center", padding: "20px 12px", border: "1px solid rgba(240,237,228,0.1)", borderRadius: 8 }}>
+              <div key={s.label} style={{ textAlign: "center", padding: "20px 12px", border: "1px solid rgba(240,237,228,0.1)", borderRadius: 0 }}>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, marginBottom: 4 }}>{s.stat}</div>
                 <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)", letterSpacing: "0.05em" }}>{s.label}</div>
               </div>
@@ -755,7 +755,7 @@ export default function Growth() {
           </div>
           <button
             onClick={() => setLocation("/contact")}
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "none", cursor: "pointer" }}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "none", cursor: "pointer" }}
           >
             Talk to Our Team <ArrowRight style={{ width: 16, height: 16 }} />
           </button>
@@ -800,7 +800,7 @@ export default function Growth() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
             {FAQS.map((faq, i) => (
-              <div key={i} style={{ background: OFF, border: `1px solid #E8E4DC`, borderRadius: 8, overflow: "hidden" }}>
+              <div key={i} style={{ background: OFF, border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 24px", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}
@@ -834,7 +834,7 @@ export default function Growth() {
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <button
               onClick={() => setLocation("/contact")}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 6, border: "none", cursor: "pointer" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", borderRadius: 0, border: "none", cursor: "pointer" }}
             >
               Contact Sales <ArrowRight style={{ width: 16, height: 16 }} />
             </button>

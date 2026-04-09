@@ -1,32 +1,6 @@
 import { useLocation } from 'wouter';
 import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { 
-  CheckCircle,
-  ArrowRight,
-  Clock,
-  Users,
-  Zap,
-  Target,
-  BookOpen,
-  Settings,
-  BarChart3,
-  Shield,
-  Building2,
-  Calendar,
-  Award,
-  DollarSign,
-  TrendingUp,
-  MessageSquare,
-  Layers,
-  Play,
-  Star,
-  FileText,
-  Rocket
-} from 'lucide-react';
 import { useEffect } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
@@ -97,7 +71,6 @@ const pilotPhases = [
 const pilotInclusions = [
   {
     category: 'Platform Access',
-    icon: Layers,
     items: [
       'Full Readiness OS platform access for pilot team (up to 25 users)',
       '5 customizable playbooks from 170 library',
@@ -107,7 +80,6 @@ const pilotInclusions = [
   },
   {
     category: 'Integrations',
-    icon: Settings,
     items: [
       'Bi-directional Jira or Asana sync',
       'Slack or Microsoft Teams notifications',
@@ -117,7 +89,6 @@ const pilotInclusions = [
   },
   {
     category: 'Support',
-    icon: Users,
     items: [
       'Dedicated Customer Success Manager',
       'Weekly check-in calls',
@@ -127,7 +98,6 @@ const pilotInclusions = [
   },
   {
     category: 'Training',
-    icon: BookOpen,
     items: [
       '2-hour platform training session',
       'Playbook customization workshop',
@@ -141,37 +111,31 @@ const idealCandidates = [
   {
     criteria: 'Organization Size',
     description: 'Fortune 1000 or equivalent ($1B+ revenue)',
-    icon: Building2,
     importance: 'Required'
   },
   {
     criteria: 'Executive Sponsor',
     description: 'C-level or SVP champion with budget authority',
-    icon: Star,
     importance: 'Required'
   },
   {
     criteria: 'PM Tool',
     description: 'Active Jira, Asana, or Monday.com deployment',
-    icon: Settings,
     importance: 'Required'
   },
   {
     criteria: 'Recent Pain Point',
     description: 'Experienced slow response to strategic event in past 12 months',
-    icon: Target,
     importance: 'Preferred'
   },
   {
     criteria: 'Multi-Department',
     description: 'Strategic events require 4+ departments to coordinate',
-    icon: Users,
     importance: 'Preferred'
   },
   {
     criteria: 'Growth Intent',
     description: 'Committed to enterprise rollout if pilot succeeds',
-    icon: TrendingUp,
     importance: 'Preferred'
   }
 ];
@@ -211,22 +175,18 @@ const conversionTerms = [
   {
     term: '100% Pilot Credit',
     description: 'Full pilot investment applies to enterprise contract',
-    icon: DollarSign
   },
   {
     term: 'Preferred Pricing',
     description: 'Founding partner rates locked for 3 years',
-    icon: Star
   },
   {
     term: 'Priority Roadmap',
     description: 'Input on feature development priorities',
-    icon: Target
   },
   {
     term: 'Enterprise SLA',
     description: '99.9% uptime, 2-hour priority support',
-    icon: Shield
   }
 ];
 
@@ -430,8 +390,8 @@ export default function PilotProgram() {
               </p>
             </div>
 
-            <Card className="bg-white/5 backdrop-blur-sm border-white/10" data-testid="card-roi-framework">
-              <CardContent className="p-0 overflow-x-auto">
+            <div style={{ border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }} data-testid="card-roi-framework">
+              <div style={{ padding: 0, overflowX: 'auto' }}>
                 <table className="w-full min-w-[800px]">
                   <thead>
                     <tr className="border-b border-white/10">
@@ -460,77 +420,55 @@ export default function PilotProgram() {
                     </tr>
                   </tfoot>
                 </table>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Conversion Terms */}
         <section className="py-16 px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-conversion">
+            <div style={{ borderBottom: '1px solid #E8E4DC', paddingBottom: 28, marginBottom: 48 }}>
+              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 12 }}>Founding Partner Benefits</p>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }} data-testid="heading-conversion">
                 Pilot to Production Path
               </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                Founding partner benefits for pilot participants
-              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
               {conversionTerms.map((term, i) => (
-                <Card key={i} className="bg-gradient-to-br from-[#F8F7F4] to-[#F8F7F4] dark:from-[#141B45] dark:to-[#0A0F2E] border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
-                  <CardContent className="p-6 text-center">
-                    <div className="p-3 bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 inline-block mb-4">
-                      <term.icon className="w-6 h-6 text-[#2B8A6E] dark:text-[#2B8A6E]" />
-                    </div>
-                    <h3 className="font-bold text-[#0A0F2E] dark:text-white mb-2">{term.term}</h3>
-                    <p className="text-sm text-gray-800 dark:text-slate-300">{term.description}</p>
-                  </CardContent>
-                </Card>
+                <div key={i} style={{ borderLeft: i === 0 ? '1px solid #E8E4DC' : 'none', borderRight: '1px solid #E8E4DC', borderTop: '3px solid #2B8A6E', borderBottom: '1px solid #E8E4DC', padding: '28px 24px' }} data-testid={`card-term-${i}`}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 14 }}>Benefit {String(i + 1).padStart(2, '0')}</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 10, lineHeight: 1.2 }}>{term.term}</h3>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: '#4B5563', lineHeight: 1.6 }}>{term.description}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Success Stories Preview */}
-        <section className="py-16 px-6 bg-[#F8F7F4] dark:bg-[#0A0F2E]/50">
+        <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-4xl mx-auto">
-            <Card className="overflow-hidden" data-testid="card-success-preview">
-              <CardContent className="p-8">
-                <div className="flex items-start gap-6">
-                  <div className="p-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30">
-                    <Award className="w-10 h-10 text-[#0A0F2E] dark:text-[#0A0F2E]" />
+            <div style={{ background: '#fff', borderTop: '3px solid #0A0F2E', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC', borderBottom: '1px solid #E8E4DC', padding: '40px 48px' }} data-testid="card-success-preview">
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 8, opacity: 0.45 }}>Pilot Success Target</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3vw,32px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 28 }}>
+                What Success Looks Like
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                {[
+                  "At least 1 live activation under 15 minutes",
+                  "5+ playbooks customized and operational",
+                  "Quantified ROI with executive sign-off",
+                  "Clear expansion plan for enterprise rollout"
+                ].map(item => (
+                  <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                    <div style={{ width: 6, height: 6, background: '#2B8A6E', flexShrink: 0, marginTop: 7 }} />
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#374151', lineHeight: 1.6 }}>{item}</span>
                   </div>
-                  <div>
-                    <Badge className="mb-3 bg-[#0A0F2E]/10 text-[#0A0F2E] dark:bg-[#0A0F2E]/30 dark:text-slate-300">
-                      Pilot Success Target
-                    </Badge>
-                    <h3 className="text-2xl font-bold text-[#0A0F2E] dark:text-white mb-4">
-                      What Success Looks Like
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-gray-800 dark:text-slate-300">At least 1 live activation under 15 minutes</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-gray-800 dark:text-slate-300">5+ playbooks customized and operational</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-gray-800 dark:text-slate-300">Quantified ROI with executive sign-off</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#2B8A6E]" />
-                        <span className="text-gray-800 dark:text-slate-300">Clear expansion plan for enterprise rollout</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -563,13 +501,12 @@ export default function PilotProgram() {
                 <p className="text-gray-600 text-sm leading-relaxed">Critical and skeptical feedback is more valuable than a positive review. 28 questions across 6 sections. Estimated 25–35 minutes.</p>
               </div>
               <div className="flex-shrink-0">
-                <Button
-                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] font-bold"
+                <button
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#0A0F2E', color: '#C9A84C', fontWeight: 800, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 28px', border: 'none', cursor: 'pointer' }}
                   onClick={() => { setLocation('/peer-review'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
                 >
-                  <FileText className="w-4 h-4 mr-2" />
                   Begin Peer Assessment
-                </Button>
+                </button>
               </div>
             </div>
           </div>
@@ -698,70 +635,58 @@ export default function PilotProgram() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-4">We Make Enterprises Fearless.</p>
-            <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-cta">
+        <section style={{ background: '#0A0F2E', padding: '80px 32px' }}>
+          <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
+            <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 16 }}>We Make Enterprises Fearless</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px,4vw,44px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }} data-testid="heading-cta">
               Ready to Validate Strategic Readiness?
             </h2>
-            <p className="text-lg text-gray-800 dark:text-slate-300 mb-8">
+            <div style={{ width: 48, height: 1, background: 'rgba(201,168,76,0.4)', margin: '0 auto 24px' }} />
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.6)', marginBottom: 40, lineHeight: 1.7 }}>
               Limited to 5 design partners. Priority given to Fortune 1000 organizations with recent strategic event pain.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button 
-                size="lg" 
-                className="bg-[#2B8A6E] hover:bg-[#3BAF8A]"
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 16, marginBottom: 32 }}>
+              <button
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#C9A84C', color: '#0A0F2E', fontWeight: 800, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 40px', border: 'none', cursor: 'pointer' }}
                 onClick={() => setLocation('/request-access')}
                 data-testid="button-cta-apply"
               >
-                <Rocket className="w-5 h-5 mr-2" />
                 Apply for Pilot Program
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white"
+              </button>
+              <button
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: 'rgba(255,255,255,0.75)', fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 40px', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
                 onClick={() => setLocation('/investors')}
                 data-testid="button-cta-positioning"
               >
-                <FileText className="w-5 h-5 mr-2" />
-                View Investor &amp; Partner Overview
-              </Button>
+                View Investor Overview
+              </button>
             </div>
-            <p className="text-sm text-gray-800 dark:text-slate-300 mt-6">
-              Questions? Contact us at <span className="text-[#0A0F2E] dark:text-[#C9A84C]">pilot@vaughnmartin.com</span>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.4)', marginBottom: 32 }}>
+              Questions? <span style={{ color: '#C9A84C' }}>pilot@vaughnmartin.com</span>
             </p>
-
-            {/* Sales prep tools */}
-            <div className="mt-8 pt-8 border-t border-[#E8E4DC] flex flex-col sm:flex-row gap-4 justify-center">
-              <div className="text-center">
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">Preparing for a leadership meeting?</p>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  <button
-                    onClick={() => setLocation('/prospect-demo')}
-                    className="px-5 py-2.5 border border-[#C9A84C] text-[#0A0F2E] text-xs font-bold uppercase tracking-wider bg-transparent cursor-pointer hover:bg-[#C9A84C] transition-colors"
-                  >
-                    Run Personalized Demo →
-                  </button>
-                  <button
-                    onClick={() => setLocation('/prospect-brief')}
-                    className="px-5 py-2.5 border border-[#0A0F2E] text-[#0A0F2E] text-xs font-bold uppercase tracking-wider bg-transparent cursor-pointer hover:bg-[#0A0F2E] hover:text-white transition-colors"
-                  >
-                    Generate Executive Brief →
-                  </button>
-                </div>
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 28 }}>
+              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 16 }}>Preparing for a leadership meeting?</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', marginBottom: 20 }}>
+                <button
+                  onClick={() => setLocation('/prospect-demo')}
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif", padding: '10px 24px', border: '1px solid rgba(201,168,76,0.4)', color: '#C9A84C', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'transparent', cursor: 'pointer' }}
+                >
+                  Run Personalized Demo →
+                </button>
+                <button
+                  onClick={() => setLocation('/prospect-brief')}
+                  style={{ fontFamily: "'Barlow Condensed', sans-serif", padding: '10px 24px', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'transparent', cursor: 'pointer' }}
+                >
+                  Generate Executive Brief →
+                </button>
               </div>
-            </div>
-
-            <p className="text-sm text-gray-500 mt-4">
-              Want platform access without a pilot commitment?{" "}
               <button
                 onClick={() => setLocation('/request-access')}
-                className="text-[#C9A84C] underline underline-offset-2 bg-transparent border-none cursor-pointer p-0 font-medium"
+                style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               >
-                Request executive access →
+                Want access without a pilot commitment? Request executive access →
               </button>
-            </p>
+            </div>
           </div>
         </section>
 

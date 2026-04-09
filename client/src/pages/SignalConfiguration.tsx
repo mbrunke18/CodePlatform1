@@ -178,7 +178,7 @@ export default function SignalConfiguration() {
         <div className="flex-shrink-0 border-b border-[#E8E4DC] bg-white">
           <div className="px-6 pt-6 pb-4 flex items-center justify-between gap-6">
             <div className="flex items-center gap-4">
-              <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 44, height: 44, background: NAVY, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Radio className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -279,7 +279,7 @@ export default function SignalConfiguration() {
                   className="w-full text-left px-3 py-3 flex items-start gap-3 transition-colors border-b border-[#EDE9E3] hover:bg-white"
                   style={{ background: active ? '#fff' : 'transparent', borderLeft: active ? `3px solid ${TEAL}` : '3px solid transparent' }}
                 >
-                  <div style={{ width: 28, height: 28, background: active ? `rgba(43,138,110,0.1)` : '#EDE9E3', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                  <div style={{ width: 28, height: 28, background: active ? `rgba(43,138,110,0.1)` : '#EDE9E3', borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
                     <Icon className="w-3.5 h-3.5" style={{ color: active ? TEAL : '#6B7280' }} />
                   </div>
                   <div className="flex-1 min-w-0">

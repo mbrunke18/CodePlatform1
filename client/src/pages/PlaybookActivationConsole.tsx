@@ -736,7 +736,7 @@ export default function PlaybookActivationConsole() {
                 {playbook?.description || 'Strategic response playbook ready for activation.'}
               </p>
               {!isManualExecution && trigger && (
-                <div style={{ marginTop: 16, padding: 12, background: "rgba(239, 68, 68, 0.05)", border: "1px solid rgba(239, 68, 68, 0.2)", borderRadius: 4 }}>
+                <div style={{ marginTop: 16, padding: 12, background: "rgba(239, 68, 68, 0.05)", border: "1px solid rgba(239, 68, 68, 0.2)", borderRadius: 0 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 2, color: "#B91C1C", fontWeight: 500, fontSize: 13 }}>
                     <AlertTriangle className="h-4 w-4" />
                     Triggered by: {trigger.name}
@@ -763,7 +763,7 @@ export default function PlaybookActivationConsole() {
 
             {/* Role Availability Warning Banner */}
             {limitedPlaybookRoles.length > 0 && (
-              <div style={{ border: '1px solid #D97706', borderLeft: '4px solid #D97706', background: 'rgba(217, 119, 6, 0.06)', padding: '16px 20px', marginBottom: 20, borderRadius: 2 }}>
+              <div style={{ border: '1px solid #D97706', borderLeft: '4px solid #D97706', background: 'rgba(217, 119, 6, 0.06)', padding: '16px 20px', marginBottom: 20, borderRadius: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                   <AlertTriangle className="h-4 w-4" style={{ color: '#D97706', flexShrink: 0 }} />
                   <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#D97706' }}>Role Availability Advisory</span>
@@ -1226,13 +1226,13 @@ export default function PlaybookActivationConsole() {
                         </div>
                         {/* Role owner badge — only shows for flagship playbooks with expert content */}
                         {task.assignedRole && (
-                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "2px 8px", background: "rgba(10,15,46,0.07)", color: NAVY, borderRadius: 2 }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "2px 8px", background: "rgba(10,15,46,0.07)", color: NAVY, borderRadius: 0 }}>
                             {task.assignedRole}
                           </div>
                         )}
                         {/* Time target badge */}
                         {task.timeTarget && (
-                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.04)", color: isActive ? GOLD : MUTED, borderRadius: 2, display: "flex", alignItems: "center", gap: 4 }}>
+                          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.06em", padding: "2px 7px", background: isActive ? "rgba(201,168,76,0.15)" : "rgba(0,0,0,0.04)", color: isActive ? GOLD : MUTED, borderRadius: 0, display: "flex", alignItems: "center", gap: 4 }}>
                             ⏱ {task.timeTarget}
                           </div>
                         )}
@@ -1265,7 +1265,7 @@ export default function PlaybookActivationConsole() {
 
                       {/* Acknowledgment section */}
                       {ackMap[task.id] ? (
-                        <div style={{ marginTop: 10, padding: "6px 12px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 5, display: "flex", alignItems: "center", gap: 10 }}>
+                        <div style={{ marginTop: 10, padding: "6px 12px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 0, display: "flex", alignItems: "center", gap: 10 }}>
                           <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" style={{ color: TEAL }} />
                           <span style={{ fontSize: 11, color: TEAL, fontWeight: 700 }}>
                             {ackMap[task.id].actionType === 'escalate' ? '↑ Escalated' : ackMap[task.id].actionType === 'delegate' ? '→ Delegated' : '✓ Acknowledged'} by {ackMap[task.id].role} — {ackMap[task.id].at}
@@ -1275,22 +1275,22 @@ export default function PlaybookActivationConsole() {
                         <div style={{ marginTop: 10, display: "flex", gap: 8 }}>
                           <button
                             onClick={() => { setAckFormTaskId(task.id); setAckActionType('complete'); }}
-                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(43,138,110,0.1)", border: `1px solid rgba(43,138,110,0.3)`, color: TEAL, borderRadius: 4, cursor: "pointer" }}
+                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(43,138,110,0.1)", border: `1px solid rgba(43,138,110,0.3)`, color: TEAL, borderRadius: 0, cursor: "pointer" }}
                           >✓ Acknowledge</button>
                           <button
                             onClick={() => { setAckFormTaskId(task.id); setAckActionType('escalate'); }}
-                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD, borderRadius: 4, cursor: "pointer" }}
+                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD, borderRadius: 0, cursor: "pointer" }}
                           >↑ Escalate</button>
                           <button
                             onClick={() => { setAckFormTaskId(task.id); setAckActionType('delegate'); }}
-                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(10,15,46,0.05)", border: `1px solid rgba(10,15,46,0.2)`, color: NAVY, borderRadius: 4, cursor: "pointer" }}
+                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(10,15,46,0.05)", border: `1px solid rgba(10,15,46,0.2)`, color: NAVY, borderRadius: 0, cursor: "pointer" }}
                           >→ Delegate</button>
                         </div>
                       ) : null}
 
                       {/* Inline acknowledgment form */}
                       {ackFormTaskId === task.id && (
-                        <div style={{ marginTop: 12, padding: "14px 16px", background: "#F8F9FC", border: `1px solid ${BORDER}`, borderRadius: 6 }}>
+                        <div style={{ marginTop: 12, padding: "14px 16px", background: "#F8F9FC", border: `1px solid ${BORDER}`, borderRadius: 0 }}>
                           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 10 }}>
                             {ackActionType === 'escalate' ? '↑ Escalate Task' : ackActionType === 'delegate' ? '→ Delegate Task' : '✓ Acknowledge Task'}
                           </div>
@@ -1299,12 +1299,12 @@ export default function PlaybookActivationConsole() {
                               value={ackName}
                               onChange={e => setAckName(e.target.value)}
                               placeholder="Your name"
-                              style={{ flex: "1 1 120px", padding: "7px 10px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 12, color: NAVY, minWidth: 100 }}
+                              style={{ flex: "1 1 120px", padding: "7px 10px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 12, color: NAVY, minWidth: 100 }}
                             />
                             <select
                               value={ackRole}
                               onChange={e => setAckRole(e.target.value)}
-                              style={{ flex: "1 1 100px", padding: "7px 10px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 12, color: NAVY, background: "#fff" }}
+                              style={{ flex: "1 1 100px", padding: "7px 10px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 12, color: NAVY, background: "#fff" }}
                             >
                               {['CEO','CFO','COO','CMO','CTO','CISO','CHRO','General Counsel','Chief Strategy Officer','Chief Revenue Officer','Chief Procurement Officer','Board Chair','VP Operations','VP Finance','Head of Sales'].map(r => (
                                 <option key={r} value={r}>{r}</option>
@@ -1312,11 +1312,11 @@ export default function PlaybookActivationConsole() {
                             </select>
                             <button
                               onClick={() => submitAcknowledgment(task.id, task.description || '', index)}
-                              style={{ padding: "7px 18px", background: ackActionType === 'complete' ? TEAL : ackActionType === 'escalate' ? GOLD : NAVY, color: "#fff", border: "none", borderRadius: 4, fontSize: 12, fontWeight: 700, cursor: "pointer" }}
+                              style={{ padding: "7px 18px", background: ackActionType === 'complete' ? TEAL : ackActionType === 'escalate' ? GOLD : NAVY, color: "#fff", border: "none", borderRadius: 0, fontSize: 12, fontWeight: 700, cursor: "pointer" }}
                             >Confirm</button>
                             <button
                               onClick={() => setAckFormTaskId(null)}
-                              style={{ padding: "7px 12px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 12, cursor: "pointer" }}
+                              style={{ padding: "7px 12px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 12, cursor: "pointer" }}
                             >Cancel</button>
                           </div>
                         </div>
@@ -1330,11 +1330,11 @@ export default function PlaybookActivationConsole() {
                         <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>⬥ Decision Gate</div>
                         <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, marginBottom: 8 }}>{task.decisionGate.question}</div>
                         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-                          <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.25)`, borderRadius: 3 }}>
+                          <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.25)`, borderRadius: 0 }}>
                             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 2 }}>✓ YES — Advance</div>
                             <div style={{ fontSize: 11, color: "#444" }}>{task.decisionGate.yes}</div>
                           </div>
-                          <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(201,168,76,0.07)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 3 }}>
+                          <div style={{ flex: 1, minWidth: 140, padding: "6px 10px", background: "rgba(201,168,76,0.07)", border: `1px solid rgba(201,168,76,0.25)`, borderRadius: 0 }}>
                             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>✗ NO — Contain</div>
                             <div style={{ fontSize: 11, color: "#444" }}>{task.decisionGate.no}</div>
                           </div>
@@ -1499,7 +1499,7 @@ export default function PlaybookActivationConsole() {
                       <button style={{
                         display: "block", width: "100%", padding: "14px 24px",
                         background: "transparent", border: `2px solid ${GOLD}`,
-                        borderRadius: 8, color: GOLD, fontSize: 13, fontWeight: 700,
+                        borderRadius: 0, color: GOLD, fontSize: 13, fontWeight: 700,
                         letterSpacing: "0.08em", textTransform: "uppercase" as const,
                         cursor: "pointer", transition: "all 0.2s",
                       }}>

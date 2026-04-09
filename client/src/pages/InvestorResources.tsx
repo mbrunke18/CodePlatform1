@@ -56,7 +56,7 @@ function McKinseyResearchSection() {
       <div style={IR_CONTAINER}>
         {/* Attribution pill */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: 22 }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 20, padding: "5px 16px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "5px 16px" }}>
             <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
             <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.5)", textTransform: "uppercase" as const }}>
               McKinsey &amp; Company · Enterprise Architecture Synthesis 2025–2026
@@ -75,7 +75,7 @@ function McKinseyResearchSection() {
         {/* Stat cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginBottom: 48 }}>
           {stats.map(({ pct, headline, sub, bridge, color, bg, border }) => (
-            <div key={pct} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 14, padding: "30px 26px" }}>
+            <div key={pct} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 0, padding: "30px 26px" }}>
               <div style={{ ...IR_MONO, fontSize: 48, fontWeight: 700, color, lineHeight: 1, marginBottom: 10 }}>{pct}</div>
               <div style={{ ...IR_GEO, fontSize: 18, fontWeight: 700, color: IR_IVORY, marginBottom: 6 }}>{headline}</div>
               <div style={{ ...IR_DM, fontSize: 13, color: IR_MUTED, marginBottom: 18, lineHeight: 1.55 }}>{sub}</div>
@@ -89,7 +89,7 @@ function McKinseyResearchSection() {
           ))}
         </div>
         {/* Architecture callout */}
-        <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)", borderRadius: 14, padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const, marginBottom: 32 }}>
+        <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.18)", borderRadius: 0, padding: "28px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 32, flexWrap: "wrap" as const, marginBottom: 32 }}>
           <div style={{ flex: 1, minWidth: 260 }}>
             <div style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: IR_GOLD, textTransform: "uppercase" as const, marginBottom: 8 }}>The Agentic Mesh Layer</div>
             <div style={{ ...IR_GEO, fontSize: 22, fontWeight: 700, color: IR_IVORY, marginBottom: 8 }}>
@@ -101,7 +101,7 @@ function McKinseyResearchSection() {
           </div>
         </div>
         {/* MGI Nov 2025 */}
-        <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, overflow: "hidden" as const, marginBottom: 40 }}>
+        <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 0, overflow: "hidden" as const, marginBottom: 40 }}>
           <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_TEAL, display: "inline-block", flexShrink: 0 }} />
             <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
@@ -125,7 +125,7 @@ function McKinseyResearchSection() {
           </div>
           <div style={{ padding: "0 28px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
-              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 8, padding: "16px 18px" }}>
+              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0, padding: "16px 18px" }}>
                 <p style={{ ...IR_GEO, fontSize: 15, fontWeight: 600, color: IR_IVORY, lineHeight: 1.55, marginBottom: 8, fontStyle: "italic" as const }}>
                   "The bottleneck is never the technology. It is always the speed of organizational redesign."
                 </p>
@@ -147,7 +147,7 @@ function McKinseyResearchSection() {
                 { sector: "Global Pharma", result: "60% faster · 50% fewer errors", detail: "Clinical reporting redesigned — time to first human-reviewed draft fell nearly 60%" },
                 { sector: "Large Utility", result: "40% AI-resolved · 50% cost cut · +6 NPS", detail: "7 million annual calls — 40% fully resolved without human involvement" },
               ].map(({ sector, result, detail }) => (
-                <div key={sector} style={{ background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.12)", borderRadius: 8, padding: "12px 14px" }}>
+                <div key={sector} style={{ background: "rgba(43,138,110,0.05)", border: "1px solid rgba(43,138,110,0.12)", borderRadius: 0, padding: "12px 14px" }}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
                     <span style={{ ...IR_MONO, fontSize: 10, fontWeight: 700, color: IR_TEAL, textTransform: "uppercase" as const, letterSpacing: "0.12em" }}>{sector}</span>
                     <span style={{ ...IR_MONO, fontSize: 11, color: IR_IVORY, fontWeight: 600 }}>{result}</span>
@@ -160,7 +160,7 @@ function McKinseyResearchSection() {
           </div>
         </div>
         {/* WEF × Accenture */}
-        <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 14, overflow: "hidden" as const, marginBottom: 32 }}>
+        <div style={{ border: "1px solid rgba(255,255,255,0.07)", borderRadius: 0, overflow: "hidden" as const, marginBottom: 32 }}>
           <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 28px", display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ width: 5, height: 5, borderRadius: "50%", background: IR_GOLD, display: "inline-block", flexShrink: 0 }} />
             <span style={{ ...IR_MONO, fontSize: 10, letterSpacing: "0.2em", color: "rgba(240,237,228,0.4)", textTransform: "uppercase" as const }}>
@@ -169,7 +169,7 @@ function McKinseyResearchSection() {
           </div>
           <div style={{ padding: "28px 28px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } as React.CSSProperties}>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
-              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 8, padding: "20px 20px" }}>
+              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0, padding: "20px 20px" }}>
                 <p style={{ ...IR_GEO, fontSize: 16, fontWeight: 600, color: IR_IVORY, lineHeight: 1.6, marginBottom: 10, fontStyle: "italic" as const }}>
                   "Those that do not risk falling behind — not because AI fails them, but because organizational change does."
                 </p>
@@ -191,10 +191,10 @@ function McKinseyResearchSection() {
                 { n: "Focus 4", label: "Predictive, AI-powered strategic planning", active: true },
                 { n: "Focus 5", label: "Data-driven talent & workforce planning", active: false },
               ].map(({ n, label, active }) => (
-                <div key={n} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 6, background: active ? "rgba(201,168,76,0.08)" : "transparent", border: active ? "1px solid rgba(201,168,76,0.2)" : "1px solid rgba(255,255,255,0.04)" }}>
+                <div key={n} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 0, background: active ? "rgba(201,168,76,0.08)" : "transparent", border: active ? "1px solid rgba(201,168,76,0.2)" : "1px solid rgba(255,255,255,0.04)" }}>
                   <span style={{ ...IR_MONO, fontSize: 9, color: active ? IR_GOLD : "rgba(240,237,228,0.2)", fontWeight: 700, flexShrink: 0 }}>{n}</span>
                   <span style={{ ...IR_DM, fontSize: 11, color: active ? IR_IVORY : "rgba(240,237,228,0.25)", fontWeight: active ? 600 : 400 }}>{label}</span>
-                  {active && <span style={{ marginLeft: "auto", background: IR_GOLD, color: IR_NAVY, fontSize: 8, fontWeight: 800, padding: "2px 7px", borderRadius: 3, letterSpacing: "0.08em", flexShrink: 0 }}>EXECUTION OS</span>}
+                  {active && <span style={{ marginLeft: "auto", background: IR_GOLD, color: IR_NAVY, fontSize: 8, fontWeight: 800, padding: "2px 7px", borderRadius: 0, letterSpacing: "0.08em", flexShrink: 0 }}>EXECUTION OS</span>}
                 </div>
               ))}
             </div>

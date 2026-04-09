@@ -90,7 +90,7 @@ export default function AIRadarSimulation({
       {/* Main Confidence Meter */}
       <div
         style={{
-          borderRadius: 10,
+          borderRadius: 0,
           border: triggered ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.12)',
           background: triggered ? 'rgba(239,68,68,0.08)' : 'rgba(255,255,255,0.04)',
           padding: '20px 22px',
@@ -141,7 +141,7 @@ export default function AIRadarSimulation({
       {triggered && (
         <div
           style={{
-            borderRadius: 10,
+            borderRadius: 0,
             border: '2px solid #ef4444',
             background: 'rgba(239,68,68,0.1)',
             padding: '20px 22px',
@@ -161,7 +161,7 @@ export default function AIRadarSimulation({
               <div style={{
                 background: 'rgba(239,68,68,0.12)',
                 border: '1px solid rgba(239,68,68,0.3)',
-                borderRadius: 6,
+                borderRadius: 0,
                 padding: '8px 12px',
               }}>
                 <p style={{ fontSize: 11, fontFamily: 'monospace', color: '#fca5a5' }}>
@@ -176,7 +176,7 @@ export default function AIRadarSimulation({
 
       {/* Data Streams */}
       <div style={{
-        borderRadius: 10,
+        borderRadius: 0,
         border: '1px solid rgba(255,255,255,0.10)',
         background: 'rgba(255,255,255,0.03)',
         padding: '20px 22px',
@@ -216,7 +216,7 @@ export default function AIRadarSimulation({
           style={{
             width: '100%', padding: '12px 0',
             background: GOLD, color: NAVY,
-            borderRadius: 8, fontWeight: 700, fontSize: 14,
+            borderRadius: 0, fontWeight: 700, fontSize: 14,
             border: 'none', cursor: 'pointer',
           }}
           className="hover:opacity-90 transition-opacity"

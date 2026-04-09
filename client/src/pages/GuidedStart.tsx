@@ -259,10 +259,10 @@ export default function GuidedStart() {
 
         {/* Top nav escape */}
         <div style={{ position: 'absolute', top: 20, left: 24, right: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 20 }}>
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 0, border: '1px solid rgba(255,255,255,0.1)' }}>
             ← Homepage
           </a>
-          <a href="/request-access" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.1)' }}>
+          <a href="/request-access" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.45)', fontSize: 12, fontWeight: 600, textDecoration: 'none', letterSpacing: '0.06em', background: 'rgba(0,0,0,0.2)', padding: '6px 12px', borderRadius: 0, border: '1px solid rgba(255,255,255,0.1)' }}>
             Request Access →
           </a>
         </div>
@@ -321,7 +321,7 @@ export default function GuidedStart() {
                   {/* Card header */}
                   <div style={{ padding: '22px 22px 16px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, marginBottom: 14 }}>
-                      <div style={{ padding: '9px', background: `${scenario.urgencyColor}18`, borderRadius: 2 }}>
+                      <div style={{ padding: '9px', background: `${scenario.urgencyColor}18`, borderRadius: 0 }}>
                         <Icon style={{ width: 20, height: 20, color: scenario.urgencyColor }} />
                       </div>
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: scenario.urgencyColor, paddingTop: 3 }}>

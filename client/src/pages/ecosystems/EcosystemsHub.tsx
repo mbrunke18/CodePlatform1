@@ -136,7 +136,7 @@ export default function EcosystemsHub() {
                   background: "#fff",
                   border: `1px solid ${eco.color}22`,
                   borderTop: `3px solid ${eco.color}`,
-                  borderRadius: 12,
+                  borderRadius: 0,
                   padding: 28,
                   cursor: "pointer",
                   transition: "box-shadow 0.18s, transform 0.18s",
@@ -171,7 +171,7 @@ export default function EcosystemsHub() {
                   </div>
                   <div style={{
                     background: `${eco.color}14`, border: `1px solid ${eco.color}33`,
-                    borderRadius: 6, padding: "4px 10px",
+                    borderRadius: 0, padding: "4px 10px",
                     fontFamily: "'DM Mono',monospace", fontSize: 10,
                     color: eco.color, fontWeight: 700, letterSpacing: "0.1em",
                     whiteSpace: "nowrap",
@@ -193,7 +193,7 @@ export default function EcosystemsHub() {
                 <div style={{
                   background: `${eco.color}08`,
                   border: `1px solid ${eco.color}20`,
-                  borderRadius: 6, padding: "10px 14px", marginBottom: 16,
+                  borderRadius: 0, padding: "10px 14px", marginBottom: 16,
                 }}>
                   <span style={{
                     fontFamily: "'DM Mono',monospace",
@@ -216,7 +216,7 @@ export default function EcosystemsHub() {
                     <span key={tool} style={{
                       fontFamily: "'Barlow Condensed',sans-serif",
                       fontSize: 11, fontWeight: 600, color: "#6B7280",
-                      background: "#F3F4F6", borderRadius: 4,
+                      background: "#F3F4F6", borderRadius: 0,
                       padding: "3px 8px", letterSpacing: 0.3,
                     }}>
                       {tool}
@@ -252,7 +252,7 @@ export default function EcosystemsHub() {
               { num: "3,600×", label: "Execution head start", sub: "30 days compressed to 12 minutes" },
             ].map(({ num, label, sub }) => (
               <div key={label} style={{
-                padding: 28, borderRadius: 10,
+                padding: 28, borderRadius: 0,
                 border: `1px solid ${GOLD}22`, background: `${GOLD}05`,
               }}>
                 <div style={{
@@ -323,7 +323,7 @@ export default function EcosystemsHub() {
             background: GOLD, color: NAVY, border: "none",
             fontFamily: "'Barlow Condensed',sans-serif",
             fontSize: 13, fontWeight: 700, letterSpacing: "0.12em",
-            textTransform: "uppercase", padding: "14px 40px", borderRadius: 6,
+            textTransform: "uppercase", padding: "14px 40px", borderRadius: 0,
             cursor: "pointer",
           }}
         >

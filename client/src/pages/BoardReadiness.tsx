@@ -26,7 +26,7 @@ function ScoreRing({ score }: { score: number }) {
 
 function StatCard({ label, value, sub, icon: Icon, color = NAVY }: { label: string; value: any; sub?: string; icon: any; color?: string }) {
   return (
-    <div style={{ padding: '20px 18px', background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, borderLeft: `3px solid ${color}` }}>
+    <div style={{ padding: '20px 18px', background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, borderLeft: `3px solid ${color}` }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
         <div style={{ width: 36, height: 36, borderRadius: '50%', background: `${color}12`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <Icon size={16} color={color} />
@@ -47,8 +47,8 @@ function DomainBar({ domain, active }: { domain: string; active: boolean }) {
       <div style={{ width: 8, height: 8, borderRadius: '50%', background: active ? TEAL : '#D1D5DB', flexShrink: 0 }} />
       <span style={{ fontSize: 13, color: active ? NAVY : '#9CA3AF', fontWeight: active ? 600 : 400, flex: 1 }}>{domain}</span>
       {active
-        ? <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, background: `${TEAL}12`, padding: '2px 8px', borderRadius: 3, letterSpacing: 0.5 }}>MONITORING</span>
-        : <span style={{ fontSize: 10, color: '#9CA3AF', background: '#F3F4F6', padding: '2px 8px', borderRadius: 3 }}>ARMED</span>
+        ? <span style={{ fontSize: 10, fontWeight: 700, color: TEAL, background: `${TEAL}12`, padding: '2px 8px', borderRadius: 0, letterSpacing: 0.5 }}>MONITORING</span>
+        : <span style={{ fontSize: 10, color: '#9CA3AF', background: '#F3F4F6', padding: '2px 8px', borderRadius: 0 }}>ARMED</span>
       }
     </div>
   );
@@ -112,10 +112,10 @@ export default function BoardReadiness() {
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 4 }}>· {generatedDate}</span>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
-          <button onClick={handleCopyLink} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', borderRadius: 5, padding: '7px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
+          <button onClick={handleCopyLink} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', borderRadius: 0, padding: '7px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
             <Link size={13} /> Copy Link
           </button>
-          <button onClick={handlePrint} style={{ display: 'flex', alignItems: 'center', gap: 6, background: GOLD, color: NAVY, border: 'none', borderRadius: 5, padding: '7px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
+          <button onClick={handlePrint} style={{ display: 'flex', alignItems: 'center', gap: 6, background: GOLD, color: NAVY, border: 'none', borderRadius: 0, padding: '7px 14px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>
             <Printer size={13} /> Print / Export PDF
           </button>
         </div>
@@ -129,7 +129,7 @@ export default function BoardReadiness() {
       <div className="print-page" ref={printRef} style={{ maxWidth: 900, margin: '40px auto', padding: '0 24px 60px' }}>
 
         {/* Header */}
-        <div style={{ background: NAVY, borderRadius: 8, padding: '36px 40px', marginBottom: 28, position: 'relative', overflow: 'hidden' }}>
+        <div style={{ background: NAVY, borderRadius: 0, padding: '36px 40px', marginBottom: 28, position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', display: 'flex', gap: 40, alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{ flex: 1, minWidth: 220 }}>
@@ -163,13 +163,13 @@ export default function BoardReadiness() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 28 }}>
 
           {/* Domain coverage */}
-          <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, padding: 24 }}>
+          <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px' }}>Domain Coverage</div>
               <div style={{ fontSize: 22, fontWeight: 800, color: d.domainCoverage >= 60 ? TEAL : GOLD }}>{d.domainCoverage}%</div>
             </div>
-            <div style={{ height: 6, background: '#F0EDE4', borderRadius: 3, overflow: 'hidden', marginBottom: 18 }}>
-              <div style={{ height: '100%', width: `${d.domainCoverage}%`, background: d.domainCoverage >= 60 ? TEAL : GOLD, borderRadius: 3, transition: 'width 1s ease' }} />
+            <div style={{ height: 6, background: '#F0EDE4', borderRadius: 0, overflow: 'hidden', marginBottom: 18 }}>
+              <div style={{ height: '100%', width: `${d.domainCoverage}%`, background: d.domainCoverage >= 60 ? TEAL : GOLD, borderRadius: 0, transition: 'width 1s ease' }} />
             </div>
             {ALL_DOMAINS.map(domain => (
               <DomainBar key={domain} domain={domain} active={d.activeDomains?.includes(domain)} />
@@ -177,7 +177,7 @@ export default function BoardReadiness() {
           </div>
 
           {/* Execution Dividend */}
-          <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, padding: 24, display: 'flex', flexDirection: 'column' }}>
+          <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 24, display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 20 }}>Readiness Dividend</div>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div style={{ textAlign: 'center', padding: '20px 0', borderBottom: '1px solid #F0EDE4' }}>
@@ -194,7 +194,7 @@ export default function BoardReadiness() {
                   { label: 'Avg Response', value: `${div.avgResponseMinutes || 12}m` },
                   { label: 'Baseline Replaced', value: '30 days' },
                 ].map(({ label, value }) => (
-                  <div key={label} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 6 }}>
+                  <div key={label} style={{ textAlign: 'center', padding: '12px 8px', background: '#F8F7F4', borderRadius: 0 }}>
                     <div style={{ fontSize: 18, fontWeight: 800, color: NAVY }}>{value}</div>
                     <div style={{ fontSize: 10, color: '#999', textTransform: 'uppercase', letterSpacing: 0.8, marginTop: 3 }}>{label}</div>
                   </div>
@@ -209,7 +209,7 @@ export default function BoardReadiness() {
 
         {/* Recent detections */}
         {d.recentDetections?.length > 0 && (
-          <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 8, padding: 24, marginBottom: 28 }}>
+          <div style={{ background: '#fff', border: '1px solid #E8E4DC', borderRadius: 0, padding: 24, marginBottom: 28 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: 16 }}>Recent Trigger Events (30 Days)</div>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
@@ -234,7 +234,7 @@ export default function BoardReadiness() {
         )}
 
         {/* Board attestation */}
-        <div style={{ background: `${NAVY}08`, border: `1px solid ${NAVY}15`, borderRadius: 8, padding: 24, display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+        <div style={{ background: `${NAVY}08`, border: `1px solid ${NAVY}15`, borderRadius: 0, padding: 24, display: 'flex', gap: 16, alignItems: 'flex-start' }}>
           <CheckCircle size={18} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 6 }}>Executive Attestation</div>

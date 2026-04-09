@@ -34,8 +34,8 @@ function ScoreBar({ label, avg, n, max = 5 }: { label: string; avg: number | nul
           {avg != null ? avg.toFixed(1) : "—"}<span style={{ fontSize: 11, color: MUTED, fontWeight: 400 }}>/5</span>
         </span>
       </div>
-      <div style={{ height: 8, background: BORDER, borderRadius: 4, overflow: "hidden" }}>
-        <div style={{ height: "100%", width: `${pct}%`, background: color, borderRadius: 4, transition: "width 0.6s" }} />
+      <div style={{ height: 8, background: BORDER, borderRadius: 0, overflow: "hidden" }}>
+        <div style={{ height: "100%", width: `${pct}%`, background: color, borderRadius: 0, transition: "width 0.6s" }} />
       </div>
       {n != null && <div style={{ fontSize: 11, color: MUTED, marginTop: 3 }}>{n} responses</div>}
     </div>
@@ -69,8 +69,8 @@ function FreqList({ items, total, color = TEAL }: { items: [string, number][]; t
             <span style={{ fontSize: 12, color: NAVY, flex: 1, marginRight: 12, lineHeight: 1.4 }}>{label}</span>
             <span style={{ fontSize: 12, fontWeight: 700, color, whiteSpace: "nowrap" }}>{count} <span style={{ color: MUTED, fontWeight: 400 }}>({Math.round(count / total * 100)}%)</span></span>
           </div>
-          <div style={{ height: 5, background: BORDER, borderRadius: 3, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${(count / total) * 100}%`, background: color, borderRadius: 3 }} />
+          <div style={{ height: 5, background: BORDER, borderRadius: 0, overflow: "hidden" }}>
+            <div style={{ height: "100%", width: `${(count / total) * 100}%`, background: color, borderRadius: 0 }} />
           </div>
         </div>
       ))}
@@ -80,7 +80,7 @@ function FreqList({ items, total, color = TEAL }: { items: [string, number][]; t
 
 function Card({ title, children, accent = GOLD }: { title: string; children: React.ReactNode; accent?: string }) {
   return (
-    <div style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 8, padding: 24, marginBottom: 24, borderTop: `3px solid ${accent}` }}>
+    <div style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24, marginBottom: 24, borderTop: `3px solid ${accent}` }}>
       <h3 style={{ fontSize: 14, fontWeight: 700, color: NAVY, margin: "0 0 20px", textTransform: "uppercase", letterSpacing: "0.08em" }}>{title}</h3>
       {children}
     </div>
@@ -91,7 +91,7 @@ function Quotes({ items }: { items: { name: string; role: string; org: string; t
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       {items.slice(0, 6).map((r, i) => (
-        <div key={i} style={{ padding: "14px 16px", background: OFF, borderRadius: 6, borderLeft: `3px solid ${GOLD}` }}>
+        <div key={i} style={{ padding: "14px 16px", background: OFF, borderRadius: 0, borderLeft: `3px solid ${GOLD}` }}>
           <p style={{ fontSize: 13, color: NAVY, lineHeight: 1.6, margin: "0 0 8px", fontStyle: "italic" }}>"{r.text}"</p>
           <p style={{ fontSize: 11, color: MUTED, margin: 0 }}>{r.name} · {r.role}, {r.org}</p>
         </div>
@@ -147,7 +147,7 @@ function ImprovementLog() {
   actions.forEach((a: any) => { if (counts[a.status as keyof typeof counts] !== undefined) counts[a.status as keyof typeof counts]++; });
 
   return (
-    <div style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 8, marginBottom: 24, borderTop: `3px solid ${TEAL}`, overflow: "hidden" }}>
+    <div style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 0, marginBottom: 24, borderTop: `3px solid ${TEAL}`, overflow: "hidden" }}>
       <div style={{ padding: "20px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
         <div>
           <h3 style={{ fontSize: 14, fontWeight: 700, color: NAVY, margin: "0 0 4px", textTransform: "uppercase", letterSpacing: "0.08em" }}>Lessons Applied — Improvement Log</h3>
@@ -155,11 +155,11 @@ function ImprovementLog() {
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           {Object.entries(counts).map(([s, n]) => (
-            <span key={s} style={{ fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 20, background: `${STATUS_COLORS[s]}18`, color: STATUS_COLORS[s], border: `1px solid ${STATUS_COLORS[s]}40` }}>
+            <span key={s} style={{ fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 0, background: `${STATUS_COLORS[s]}18`, color: STATUS_COLORS[s], border: `1px solid ${STATUS_COLORS[s]}40` }}>
               {n} {s.replace("_", " ")}
             </span>
           ))}
-          <button onClick={() => setAdding(!adding)} style={{ background: NAVY, color: GOLD, border: "none", borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em" }}>
+          <button onClick={() => setAdding(!adding)} style={{ background: NAVY, color: GOLD, border: "none", borderRadius: 0, padding: "8px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em" }}>
             {adding ? "Cancel" : "+ Log Insight"}
           </button>
         </div>
@@ -171,17 +171,17 @@ function ImprovementLog() {
             <div>
               <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Feedback Theme / Insight</label>
               <input value={insight} onChange={e => setInsight(e.target.value)} placeholder="e.g. Multiple reviewers questioned the 12-minute claim without seeing a live example"
-                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
+                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
             </div>
             <div>
               <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Action Taken / Planned</label>
               <input value={action} onChange={e => setAction(e.target.value)} placeholder="e.g. Added live activation demo to the test drive complete screen"
-                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
+                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
             </div>
             <div>
               <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Category</label>
               <select value={category} onChange={e => setCategory(e.target.value)}
-                style={{ padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 4, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", background: "white" }}>
+                style={{ padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", background: "white" }}>
                 {["messaging", "product", "pricing", "credibility", "general"].map(c => (
                   <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>
                 ))}
@@ -191,7 +191,7 @@ function ImprovementLog() {
           <button
             onClick={() => createMutation.mutate({ insight, action, category, status: "identified" })}
             disabled={!insight.trim() || !action.trim() || createMutation.isPending}
-            style={{ background: TEAL, color: "white", border: "none", borderRadius: 6, padding: "8px 20px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}
+            style={{ background: TEAL, color: "white", border: "none", borderRadius: 0, padding: "8px 20px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}
           >
             {createMutation.isPending ? "Saving..." : "Save Action"}
           </button>
@@ -207,7 +207,7 @@ function ImprovementLog() {
           {actions.map((a: any) => (
             <div key={a.id} style={{ padding: "16px 24px", borderBottom: `1px solid ${BORDER}`, display: "grid", gridTemplateColumns: "auto 1fr 1fr auto", gap: 16, alignItems: "start" }}>
               <div>
-                <span style={{ fontSize: 10, fontWeight: 700, padding: "3px 8px", borderRadius: 3, background: `${CATEGORY_COLORS[a.category] || NAVY}15`, color: CATEGORY_COLORS[a.category] || NAVY, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, padding: "3px 8px", borderRadius: 0, background: `${CATEGORY_COLORS[a.category] || NAVY}15`, color: CATEGORY_COLORS[a.category] || NAVY, textTransform: "uppercase", letterSpacing: "0.06em" }}>
                   {a.category}
                 </span>
               </div>
@@ -221,21 +221,21 @@ function ImprovementLog() {
                 {a.completedAt && <p style={{ fontSize: 11, color: MUTED, margin: "4px 0 0" }}>Completed {new Date(a.completedAt).toLocaleDateString()}</p>}
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end" }}>
-                <span style={{ fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 20, background: `${STATUS_COLORS[a.status]}18`, color: STATUS_COLORS[a.status], border: `1px solid ${STATUS_COLORS[a.status]}40`, whiteSpace: "nowrap" }}>
+                <span style={{ fontSize: 11, fontWeight: 700, padding: "3px 10px", borderRadius: 0, background: `${STATUS_COLORS[a.status]}18`, color: STATUS_COLORS[a.status], border: `1px solid ${STATUS_COLORS[a.status]}40`, whiteSpace: "nowrap" }}>
                   {a.status.replace("_", " ")}
                 </span>
                 <div style={{ display: "flex", gap: 4 }}>
                   {a.status === "identified" && (
-                    <button onClick={() => patchMutation.mutate({ id: a.id, status: "in_progress" })} style={{ fontSize: 11, padding: "3px 8px", background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}40`, borderRadius: 4, cursor: "pointer" }}>
+                    <button onClick={() => patchMutation.mutate({ id: a.id, status: "in_progress" })} style={{ fontSize: 11, padding: "3px 8px", background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}40`, borderRadius: 0, cursor: "pointer" }}>
                       Start
                     </button>
                   )}
                   {a.status === "in_progress" && (
-                    <button onClick={() => patchMutation.mutate({ id: a.id, status: "completed" })} style={{ fontSize: 11, padding: "3px 8px", background: "#22c55e15", color: "#22c55e", border: "1px solid #22c55e40", borderRadius: 4, cursor: "pointer" }}>
+                    <button onClick={() => patchMutation.mutate({ id: a.id, status: "completed" })} style={{ fontSize: 11, padding: "3px 8px", background: "#22c55e15", color: "#22c55e", border: "1px solid #22c55e40", borderRadius: 0, cursor: "pointer" }}>
                       Complete
                     </button>
                   )}
-                  <button onClick={() => deleteMutation.mutate(a.id)} style={{ fontSize: 11, padding: "3px 8px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, borderRadius: 4, cursor: "pointer" }}>
+                  <button onClick={() => deleteMutation.mutate(a.id)} style={{ fontSize: 11, padding: "3px 8px", background: "transparent", color: MUTED, border: `1px solid ${BORDER}`, borderRadius: 0, cursor: "pointer" }}>
                     ×
                   </button>
                 </div>
@@ -276,7 +276,7 @@ export default function PeerReviewReport() {
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Peer Review Report</div>
         <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, color: NAVY, marginBottom: 16 }}>No Submissions Yet</h1>
         <p style={{ color: MUTED, fontSize: 15 }}>Share the questionnaire link to begin collecting feedback. Results will appear here automatically.</p>
-        <div style={{ marginTop: 32, padding: 20, background: OFF, border: `1px solid ${BORDER}`, borderRadius: 6, textAlign: "left" }}>
+        <div style={{ marginTop: 32, padding: 20, background: OFF, border: `1px solid ${BORDER}`, borderRadius: 0, textAlign: "left" }}>
           <p style={{ fontSize: 12, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Questionnaire Link</p>
           <code style={{ fontSize: 13, color: NAVY }}>{window.location.origin}/peer-review</code>
         </div>
@@ -326,7 +326,7 @@ export default function PeerReviewReport() {
               { label: "Buy / Shortlist Intent", value: `${positiveIntentPct}%`, color: TEAL },
               { label: "Would Refer", value: `${referPct}%`, color: GOLD },
             ].map(m => (
-              <div key={m.label} style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 8, padding: 24, textAlign: "center" }}>
+              <div key={m.label} style={{ background: "white", border: `1px solid ${BORDER}`, borderRadius: 0, padding: 24, textAlign: "center" }}>
                 <div style={{ fontSize: 36, fontWeight: 800, color: m.color, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1 }}>{m.value}</div>
                 <div style={{ fontSize: 12, color: MUTED, marginTop: 8, fontWeight: 500 }}>{m.label}</div>
               </div>
@@ -435,7 +435,7 @@ export default function PeerReviewReport() {
                       <td style={{ padding: "10px 12px", color: NAVY }}>{r.reviewerRole}</td>
                       <td style={{ padding: "10px 12px", color: NAVY }}>{r.reviewerOrg}</td>
                       <td style={{ padding: "10px 12px" }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 20, background: r.reviewerType === "investor" ? `${GOLD}22` : r.reviewerType === "customer" ? `${TEAL}22` : `${NAVY}11`, color: r.reviewerType === "investor" ? GOLD : r.reviewerType === "customer" ? TEAL : NAVY }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 0, background: r.reviewerType === "investor" ? `${GOLD}22` : r.reviewerType === "customer" ? `${TEAL}22` : `${NAVY}11`, color: r.reviewerType === "investor" ? GOLD : r.reviewerType === "customer" ? TEAL : NAVY }}>
                           {r.reviewerType}
                         </span>
                       </td>

@@ -144,8 +144,8 @@ export default function TeamPage() {
                     <span style={{ fontSize: 12, fontWeight: 600, color: NAVY }}>{d.label}</span>
                     <span style={{ fontSize: 11, color: MUTED }}>{d.executions} executions</span>
                   </div>
-                  <div style={{ height: 6, background: 'rgba(10,15,46,0.08)', borderRadius: 3, overflow: 'hidden' }}>
-                    <div style={{ height: '100%', width: `${d.coverage}%`, background: `linear-gradient(to right, ${TEAL}, ${GOLD})`, borderRadius: 3 }} />
+                  <div style={{ height: 6, background: 'rgba(10,15,46,0.08)', borderRadius: 0, overflow: 'hidden' }}>
+                    <div style={{ height: '100%', width: `${d.coverage}%`, background: `linear-gradient(to right, ${TEAL}, ${GOLD})`, borderRadius: 0 }} />
                   </div>
                   <div style={{ fontSize: 10, color: MUTED, marginTop: 3, textAlign: 'right' as const }}>{d.coverage}% coverage</div>
                 </div>

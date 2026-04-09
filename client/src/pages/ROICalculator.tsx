@@ -462,7 +462,7 @@ export default function ROICalculator() {
               {(INDUSTRY_SCENARIOS[inputs.industry] || INDUSTRY_SCENARIOS.other).map((s, i) => (
                 <div key={i} style={{ background: "#fff", border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", overflow: "hidden" }}>
                   <div style={{ padding: "20px 28px", borderBottom: "1px solid #F0EDE8", display: "flex", alignItems: "flex-start", gap: 16 }}>
-                    <div style={{ width: 32, height: 32, background: "rgba(201,168,76,0.1)", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+                    <div style={{ width: 32, height: 32, background: "rgba(201,168,76,0.1)", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                       <AlertTriangle style={{ width: 16, height: 16, color: "#C9A84C" }} />
                     </div>
                     <div>
@@ -485,7 +485,7 @@ export default function ROICalculator() {
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>With Readiness OS · 12 Minutes</span>
                       </div>
                       <p style={{ color: "#374151", fontSize: 13, lineHeight: 1.6, marginBottom: 12 }}>{s.with}</p>
-                      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.1)", padding: "4px 12px", borderRadius: 2 }}>
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.1)", padding: "4px 12px", borderRadius: 0 }}>
                         <Shield style={{ width: 11, height: 11, color: "#2B8A6E" }} />
                         <span style={{ fontSize: 10, fontWeight: 700, color: "#2B8A6E" }}>{s.cost}</span>
                       </div>
@@ -538,11 +538,11 @@ export default function ROICalculator() {
               Your customized ROI estimate is a starting point. Our team builds a fully evidenced business case specific to your organization's risk profile and strategic calendar.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
-              <Button style={{ background: "#0A0F2E", color: "#fff", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 2 }} onClick={() => setLocation('/contact')}>
+              <Button style={{ background: "#0A0F2E", color: "#fff", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 0 }} onClick={() => setLocation('/contact')}>
                 Request Full Business Case
               </Button>
               <Link href="/12-minute-experience">
-                <Button variant="outline" style={{ borderColor: "#E8E4DC", color: "#0A0F2E", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 2 }}>
+                <Button variant="outline" style={{ borderColor: "#E8E4DC", color: "#0A0F2E", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 0 }}>
                   Experience the 12-Minute Test Drive
                 </Button>
               </Link>

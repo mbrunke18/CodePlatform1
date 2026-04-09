@@ -75,7 +75,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
         <div className="border-b border-[#E8E4DC] px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div style={{ width: 48, height: 48, background: TEAL, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 48, height: 48, background: TEAL, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
               <div>

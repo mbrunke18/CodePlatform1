@@ -159,7 +159,7 @@ export default function CustomerJourney() {
               Our 7-phase transformation model takes Fortune 1000 organizations from first evaluation to continuous strategic dominance — in 90 days.
             </p>
             {/* Canonical numbers stat bar */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, maxWidth: 780, margin: "0 auto", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 2 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, maxWidth: 780, margin: "0 auto", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0 }}>
               {[
                 { value: "12", unit: "min", label: "Strategic Response" },
                 { value: "3,600×", unit: "", label: "Execution Head Start" },

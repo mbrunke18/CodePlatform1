@@ -50,7 +50,7 @@ export function GuestPreviewBanner() {
               fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
               letterSpacing: '0.1em', textTransform: 'uppercase' as const,
               padding: '7px 18px', background: GOLD, color: NAVY,
-              textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
+              textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
             }}
           >
             Apply for Pilot →
@@ -62,7 +62,7 @@ export function GuestPreviewBanner() {
               letterSpacing: '0.1em', textTransform: 'uppercase' as const,
               padding: '6px 16px', background: 'transparent',
               border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
-              textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
+              textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
             }}
           >
             Request More Time
@@ -110,7 +110,7 @@ export function GuestPreviewBanner() {
               fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
               letterSpacing: '0.1em', textTransform: 'uppercase' as const,
               padding: '6px 16px', background: GOLD, color: NAVY,
-              textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
+              textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
             }}
           >
             Apply for Full Pilot →
@@ -155,7 +155,7 @@ export function GuestPreviewBanner() {
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.08em', textTransform: 'uppercase' as const,
             padding: '7px 18px', background: GOLD, color: NAVY,
-            textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
+            textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
           }}
         >
           Take the 12-Minute Test Drive →
@@ -167,7 +167,7 @@ export function GuestPreviewBanner() {
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: 'transparent',
             border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
-            textDecoration: 'none', borderRadius: 4, whiteSpace: 'nowrap' as const,
+            textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
           }}
         >
           Request Access
@@ -178,7 +178,7 @@ export function GuestPreviewBanner() {
             fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
             padding: '5px 12px', background: 'transparent',
             border: 'none', color: 'rgba(255,255,255,0.35)',
-            borderRadius: 4, cursor: 'pointer', whiteSpace: 'nowrap' as const,
+            borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap' as const,
           }}
         >
           Sign In

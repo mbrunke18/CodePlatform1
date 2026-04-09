@@ -637,7 +637,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       .map((task, idx) => (
                       <div 
                         key={task.id}
-                        style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", padding: "8px 16px", borderRadius: 20, display: "flex", alignItems: "center", gap: 8 }}
+                        style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", padding: "8px 16px", borderRadius: 0, display: "flex", alignItems: "center", gap: 8 }}
                         className={idx === 0 ? 'animate-pulse ring-1 ring-[#C9A84C]/50' : ''}
                         data-testid={`live-task-${task.id}`}
                       >

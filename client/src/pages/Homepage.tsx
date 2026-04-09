@@ -139,7 +139,7 @@ function HomepageNav() {
                 onClick={() => trackCTA("nav_demo")}
                 style={{
                   ...DM, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 14,
-                  padding: "9px 18px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.03em",
+                  padding: "9px 18px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.03em",
                   border: `1.5px solid rgba(10,15,46,0.25)`,
                 }}
               >
@@ -150,7 +150,7 @@ function HomepageNav() {
                 onClick={() => trackCTA("nav")}
                 style={{
                   ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
-                  padding: "10px 22px", borderRadius: 4, textDecoration: "none", letterSpacing: "0.04em",
+                  padding: "10px 22px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em",
                 }}
               >
                 Request a Pilot
@@ -165,9 +165,9 @@ function HomepageNav() {
             style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 8, flexDirection: "column", gap: 5 }}
             aria-label="Open menu"
           >
-            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 2 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 2 }} />
-            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 2 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 0 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 0 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: NAVY, borderRadius: 0 }} />
           </button>
         </div>
       </nav>
@@ -200,7 +200,7 @@ function HomepageNav() {
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
             style={{
               ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
-              padding: "16px 24px", borderRadius: 4, textDecoration: "none",
+              padding: "16px 24px", borderRadius: 0, textDecoration: "none",
               textAlign: "center", marginTop: 24, width: "calc(100% - 48px)", display: "block",
               border: `1.5px solid rgba(201,168,76,0.5)`,
             }}
@@ -212,7 +212,7 @@ function HomepageNav() {
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
             style={{
               ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
-              padding: "18px 24px", borderRadius: 4, textDecoration: "none",
+              padding: "18px 24px", borderRadius: 0, textDecoration: "none",
               textAlign: "center", marginTop: 10, width: "calc(100% - 48px)", display: "block",
             }}
           >
@@ -319,7 +319,7 @@ function HeroSection() {
               onClick={() => trackCTA("hero")}
               style={{
                 ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
-                padding: "16px 40px", borderRadius: 4, textDecoration: "none",
+                padding: "16px 40px", borderRadius: 0, textDecoration: "none",
                 letterSpacing: "0.04em", transition: "all 0.2s ease", display: "inline-block",
               }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-1px)"; }}
@@ -332,7 +332,7 @@ function HeroSection() {
               onClick={() => trackCTA("hero_testdrive")}
               style={{
                 ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
-                padding: "12px 32px", borderRadius: 4, textDecoration: "none",
+                padding: "12px 32px", borderRadius: 0, textDecoration: "none",
                 letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
               }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
@@ -449,13 +449,13 @@ function ProblemSection() {
                   <span key={tag} style={{
                     ...DM, fontSize: 11, fontWeight: 600, color: "#444",
                     background: "#F0EDE8", border: `1px solid ${BORDER}`,
-                    padding: "3px 10px", borderRadius: 2,
+                    padding: "3px 10px", borderRadius: 0,
                   }}>{tag}</span>
                 ))}
                 <span style={{
                   ...DM, fontSize: 11, fontWeight: 700, color: GOLD,
                   background: "rgba(201,168,76,0.1)", border: `1px solid rgba(201,168,76,0.3)`,
-                  padding: "3px 10px", borderRadius: 2,
+                  padding: "3px 10px", borderRadius: 0,
                 }}>+ 161 more across 9 domains</span>
               </div>
             </div>
@@ -495,14 +495,14 @@ function ProblemSection() {
                   background: c.terminal ? "rgba(192,57,43,0.04)" : "#fff",
                   border: `1px solid ${c.terminal ? "rgba(192,57,43,0.25)" : BORDER}`,
                   borderLeft: `3px solid ${c.accent}`,
-                  padding: "20px 24px", borderRadius: 2, position: "relative", overflow: "hidden",
+                  padding: "20px 24px", borderRadius: 0, position: "relative", overflow: "hidden",
                 }}>
                   <div style={{ ...GEO, fontSize: 42, fontWeight: 700, color: c.terminal ? "rgba(192,57,43,0.1)" : "rgba(192,57,43,0.09)", position: "absolute", bottom: 6, right: 14, lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
                     {c.num}
                   </div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
                     <span style={{ ...DM, fontSize: 13, fontWeight: 700, color: c.terminal ? RED_BORDER : "#1A1A2E" }}>{c.title}</span>
-                    <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: c.terminal ? RED_BORDER : GOLD, background: c.terminal ? "rgba(192,57,43,0.08)" : "rgba(201,168,76,0.12)", padding: "2px 8px", borderRadius: 2 }}>{c.timeLabel}</span>
+                    <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: c.terminal ? RED_BORDER : GOLD, background: c.terminal ? "rgba(192,57,43,0.08)" : "rgba(201,168,76,0.12)", padding: "2px 8px", borderRadius: 0 }}>{c.timeLabel}</span>
                   </div>
                   <div style={{ ...DM, fontSize: 13, color: "#555", lineHeight: 1.6 }}>{c.body}</div>
                   {i < cards.length - 1 && (
@@ -772,7 +772,7 @@ function PlatformPreviewSection() {
 
         {/* Console mockup */}
         <Reveal>
-          <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 12, overflow: "hidden", boxShadow: "0 32px 80px rgba(10,15,46,0.22)", border: "1px solid rgba(10,15,46,0.1)" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto", overflow: "hidden", border: "1px solid rgba(10,15,46,0.15)" }}>
             {/* Console header */}
             <div style={{ background: NAVY, padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -805,7 +805,7 @@ function PlatformPreviewSection() {
                   Role Assignments — Auto-staged
                 </div>
                 {tasks.map((t) => (
-                  <div key={t.role} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14, padding: "12px 14px", borderRadius: 8, background: "rgba(255,255,255,0.04)", border: `1px solid ${t.done ? "rgba(43,138,110,0.3)" : "rgba(255,255,255,0.06)"}` }}>
+                  <div key={t.role} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14, padding: "12px 14px", background: "rgba(255,255,255,0.04)", borderLeft: t.done ? `2px solid ${TEAL_LIGHT}` : `2px solid rgba(201,168,76,0.4)`, borderBottom: `1px solid rgba(255,255,255,0.04)` }}>
                     <div style={{ width: 18, height: 18, borderRadius: "50%", flexShrink: 0, marginTop: 1, background: t.done ? TEAL_LIGHT : "transparent", border: t.done ? "none" : `2px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {t.done && <span style={{ color: "#fff", fontSize: 10, lineHeight: 1 }}>✓</span>}
                     </div>
@@ -819,12 +819,12 @@ function PlatformPreviewSection() {
 
               {/* Right — status panel */}
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                <div style={{ padding: "16px 18px", borderRadius: 8, background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.3)" }}>
+                <div style={{ padding: "16px 18px", background: "rgba(43,138,110,0.12)", borderLeft: `3px solid ${TEAL_LIGHT}`, border: "1px solid rgba(43,138,110,0.3)" }}>
                   <div style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, letterSpacing: "0.08em", marginBottom: 6, textTransform: "uppercase" }}>Time to Full Deployment</div>
                   <div style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#fff", lineHeight: 1 }}>9:47</div>
                   <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>minutes elapsed · target: 12:00</div>
                 </div>
-                <div style={{ padding: "16px 18px", borderRadius: 8, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
                   <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, letterSpacing: "0.08em", marginBottom: 10, textTransform: "uppercase" }}>Stakeholder Coverage</div>
                   {[{ label: "Notified", pct: 100, color: TEAL_LIGHT }, { label: "Briefed", pct: 82, color: GOLD }, { label: "Actioned", pct: 50, color: "#fff" }].map(r => (
                     <div key={r.label} style={{ marginBottom: 10 }}>
@@ -832,13 +832,13 @@ function PlatformPreviewSection() {
                         <span style={{ ...DM, fontSize: 11, color: MUTED_DARK }}>{r.label}</span>
                         <span style={{ ...DM, fontSize: 11, color: r.color, fontWeight: 700 }}>{r.pct}%</span>
                       </div>
-                      <div style={{ height: 4, borderRadius: 2, background: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
-                        <div style={{ width: `${r.pct}%`, height: "100%", background: r.color, borderRadius: 2, transition: "width 0.6s ease" }} />
+                      <div style={{ height: 3, background: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
+                        <div style={{ width: `${r.pct}%`, height: "100%", background: r.color, transition: "width 0.6s ease" }} />
                       </div>
                     </div>
                   ))}
                 </div>
-                <div style={{ padding: "12px 18px", borderRadius: 8, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", textAlign: "center" }}>
+                <div style={{ padding: "12px 18px", background: "rgba(201,168,76,0.08)", borderLeft: `3px solid ${GOLD}`, border: "1px solid rgba(201,168,76,0.2)", textAlign: "center" }}>
                   <div style={{ ...DM, fontSize: 11, color: GOLD, fontWeight: 700, letterSpacing: "0.06em" }}>EXECUTIVE ACTION REQUIRED</div>
                   <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4 }}>1 decision · estimated 90 seconds</div>
                 </div>
@@ -892,7 +892,7 @@ function MicrosoftEcosystemBanner() {
         <Reveal>
           <div style={{ textAlign: 'center', marginBottom: 40 }}>
             {/* Eyebrow with gold dot */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18, background: `${GOLD}12`, border: `1px solid ${GOLD}30`, borderRadius: 2, padding: '5px 16px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 18, background: `${GOLD}12`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: '5px 16px' }}>
               <span style={{ width: 5, height: 5, borderRadius: '50%', background: GOLD, display: 'inline-block' }} />
               <span style={{ ...MONO, fontSize: 10, letterSpacing: 3, color: GOLD, textTransform: 'uppercase' as const, fontWeight: 700 }}>
                 No rip-and-replace — deploys on what you already have
@@ -917,7 +917,7 @@ function MicrosoftEcosystemBanner() {
             {msStack.map(({ name, icon, color }) => (
               <div key={name} style={{
                 display: 'flex', alignItems: 'center', gap: 8,
-                padding: '9px 16px', borderRadius: 6,
+                padding: '9px 16px', borderRadius: 0,
                 background: 'rgba(240,237,228,0.04)',
                 border: '1px solid rgba(240,237,228,0.1)',
                 transition: 'all 0.2s ease',
@@ -948,7 +948,7 @@ function MicrosoftEcosystemBanner() {
 
         {/* Architecture Diagram */}
         <Reveal delay={0.25}>
-          <div style={{ marginTop: 40, padding: '0 0 4px', borderRadius: 14, overflow: 'hidden', border: `1px solid rgba(201,168,76,0.15)` }}>
+          <div style={{ marginTop: 40, padding: '0 0 4px', borderRadius: 0, overflow: 'hidden', border: `1px solid rgba(201,168,76,0.15)` }}>
             <ExecutionOSMicrosoftDiagram />
           </div>
         </Reveal>
@@ -1079,7 +1079,7 @@ function CTASection() {
               className="hp-cta-btn"
               style={{
                 ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 18,
-                padding: "20px 56px", borderRadius: 4, textDecoration: "none",
+                padding: "20px 56px", borderRadius: 0, textDecoration: "none",
                 letterSpacing: "0.04em", display: "inline-block", transition: "all 0.2s ease",
               }}
               onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 32px rgba(201,168,76,0.3)"; }}

@@ -80,13 +80,13 @@ function TriggerGroupCard({ group, playbookId, onEdit }: { group: TriggerGroup; 
   const sev = SEVERITY_OPTIONS.find(s => s.value === group.severity) ?? SEVERITY_OPTIONS[1];
 
   return (
-    <div style={{ border: `1px solid ${GOLD}30`, borderLeft: `4px solid ${sev.color}`, background: "#FAFAF8", borderRadius: 6, padding: "20px 24px", marginBottom: 16 }}>
+    <div style={{ border: `1px solid ${GOLD}30`, borderLeft: `4px solid ${sev.color}`, background: "#FAFAF8", borderRadius: 0, padding: "20px 24px", marginBottom: 16 }}>
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
             <Zap size={14} color={GOLD} />
             <span style={{ fontSize: 15, fontWeight: 700, color: NAVY }}>{group.name}</span>
-            <span style={{ fontSize: 11, fontWeight: 600, color: sev.color, background: `${sev.color}18`, padding: "2px 8px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: sev.color, background: `${sev.color}18`, padding: "2px 8px", borderRadius: 0, textTransform: "uppercase", letterSpacing: "0.05em" }}>
               {sev.label}
             </span>
           </div>
@@ -95,7 +95,7 @@ function TriggerGroupCard({ group, playbookId, onEdit }: { group: TriggerGroup; 
           )}
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
             <span style={{ fontSize: 12, color: "#6B7280" }}>Fires when</span>
-            <span style={{ fontSize: 12, fontWeight: 700, color: NAVY, background: `${GOLD}18`, padding: "2px 10px", borderRadius: 4 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: NAVY, background: `${GOLD}18`, padding: "2px 10px", borderRadius: 0 }}>
               {minRequired} of {points.length}
             </span>
             <span style={{ fontSize: 12, color: "#6B7280" }}>data points are valid</span>
@@ -110,7 +110,7 @@ function TriggerGroupCard({ group, playbookId, onEdit }: { group: TriggerGroup; 
               <div key={dp.id} style={{
                 display: "flex", alignItems: "center", gap: 6,
                 border: dp.mandatory ? "1px solid #EF444440" : `1px solid ${GOLD}30`,
-                borderRadius: 4, padding: "4px 10px", fontSize: 12,
+                borderRadius: 0, padding: "4px 10px", fontSize: 12,
                 background: dp.mandatory ? "#FEF2F2" : "#F9F8F5", color: NAVY, fontWeight: 500
               }}>
                 {dp.mandatory && <Lock size={10} color="#EF4444" />}
@@ -156,7 +156,7 @@ function DataPointPicker({ selected, onToggle }: { selected: SelectedDataPoint[]
   const isSelected = (id: string) => selected.some(s => s.id === id);
 
   return (
-    <div style={{ border: `1px solid #E5E7EB`, borderRadius: 6, overflow: "hidden" }}>
+    <div style={{ border: `1px solid #E5E7EB`, borderRadius: 0, overflow: "hidden" }}>
       <div style={{ padding: "10px 12px", borderBottom: "1px solid #E5E7EB", display: "flex", alignItems: "center", gap: 8 }}>
         <Search size={14} color="#9CA3AF" />
         <input
@@ -205,7 +205,7 @@ function DataPointPicker({ selected, onToggle }: { selected: SelectedDataPoint[]
                 }}
               >
                 <div style={{
-                  width: 16, height: 16, borderRadius: 4, border: isSelected(dp.id) ? `2px solid ${TEAL}` : "2px solid #D1D5DB",
+                  width: 16, height: 16, borderRadius: 0, border: isSelected(dp.id) ? `2px solid ${TEAL}` : "2px solid #D1D5DB",
                   background: isSelected(dp.id) ? TEAL : "white", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
                 }}>
                   {isSelected(dp.id) && <CheckCircle2 size={10} color="white" />}
@@ -325,7 +325,7 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
                       key={s.value}
                       onClick={() => setSeverity(s.value)}
                       style={{
-                        flex: 1, padding: "8px 4px", borderRadius: 6, border: severity === s.value ? `2px solid ${s.color}` : "2px solid #E5E7EB",
+                        flex: 1, padding: "8px 4px", borderRadius: 0, border: severity === s.value ? `2px solid ${s.color}` : "2px solid #E5E7EB",
                         background: severity === s.value ? `${s.color}12` : "white", cursor: "pointer",
                         fontSize: 12, fontWeight: 700, color: s.color, textAlign: "center",
                       }}
@@ -345,11 +345,11 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
               </p>
               <DataPointPicker selected={selectedPoints} onToggle={togglePoint} />
               {selectedPoints.length > 0 && (
-                <div style={{ marginTop: 12, padding: "10px 14px", background: `${TEAL}08`, border: `1px solid ${TEAL}30`, borderRadius: 6 }}>
+                <div style={{ marginTop: 12, padding: "10px 14px", background: `${TEAL}08`, border: `1px solid ${TEAL}30`, borderRadius: 0 }}>
                   <span style={{ fontSize: 12, fontWeight: 600, color: TEAL }}>{selectedPoints.length} data point{selectedPoints.length !== 1 ? "s" : ""} selected</span>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
                     {selectedPoints.map(p => (
-                      <span key={p.id} style={{ fontSize: 11, padding: "3px 8px", background: "white", border: `1px solid ${TEAL}40`, borderRadius: 4, color: NAVY, fontWeight: 500 }}>
+                      <span key={p.id} style={{ fontSize: 11, padding: "3px 8px", background: "white", border: `1px solid ${TEAL}40`, borderRadius: 0, color: NAVY, fontWeight: 500 }}>
                         {p.name}
                       </span>
                     ))}
@@ -361,7 +361,7 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
 
           {step === "thresholds" && (
             <div>
-              <div style={{ marginBottom: 16, padding: "14px 16px", background: `${GOLD}08`, border: `1px solid ${GOLD}30`, borderRadius: 6 }}>
+              <div style={{ marginBottom: 16, padding: "14px 16px", background: `${GOLD}08`, border: `1px solid ${GOLD}30`, borderRadius: 0 }}>
                 <p style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Group Threshold</p>
                 <p style={{ fontSize: 12, color: "#6B7280", marginBottom: 12 }}>
                   How many data points must be valid before this trigger fires? Mandatory points must always be valid regardless of this count.
@@ -386,7 +386,7 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
                 Individual Data Point Thresholds
               </p>
               {selectedPoints.map(dp => (
-                <div key={dp.id} style={{ border: `1px solid #E5E7EB`, borderRadius: 6, padding: "14px 16px", marginBottom: 10, background: dp.mandatory ? "#FEF2F230" : "white" }}>
+                <div key={dp.id} style={{ border: `1px solid #E5E7EB`, borderRadius: 0, padding: "14px 16px", marginBottom: 10, background: dp.mandatory ? "#FEF2F230" : "white" }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                     <div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{dp.name}</p>
@@ -509,7 +509,7 @@ function PreArmedSignalCard({ signal }: { signal: PreArmedSignal }) {
     <div style={{
       border: `1px solid ${signal.directlyMapped ? GOLD + "60" : "#E5E7EB"}`,
       borderTop: `3px solid ${signal.directlyMapped ? GOLD : sevColor}`,
-      borderRadius: 6, padding: "14px 16px", background: signal.directlyMapped ? `${GOLD}04` : "white",
+      borderRadius: 0, padding: "14px 16px", background: signal.directlyMapped ? `${GOLD}04` : "white",
     }}>
       {signal.directlyMapped && (
         <div style={{ display: "flex", alignItems: "center", gap: 4, marginBottom: 8 }}>
@@ -525,13 +525,13 @@ function PreArmedSignalCard({ signal }: { signal: PreArmedSignal }) {
         <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
           <span style={{
             fontSize: 10, fontWeight: 600, color: "#6B7280",
-            background: "#F3F4F6", padding: "2px 6px", borderRadius: 3,
+            background: "#F3F4F6", padding: "2px 6px", borderRadius: 0,
           }}>
             {CATEGORY_LABELS[signal.category] ?? signal.category}
           </span>
           <span style={{
             fontSize: 10, fontWeight: 700, color: sevColor,
-            background: `${sevColor}12`, padding: "2px 6px", borderRadius: 3,
+            background: `${sevColor}12`, padding: "2px 6px", borderRadius: 0,
           }}>
             {signal.severity}
           </span>
@@ -578,7 +578,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
       {/* ── Hero Status Banner ────────────────────────────────────────────── */}
       <div style={{
         background: `linear-gradient(135deg, ${NAVY} 0%, #1a2f6e 100%)`,
-        borderRadius: 8, padding: "24px 32px", marginBottom: 36,
+        borderRadius: 0, padding: "24px 32px", marginBottom: 36,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         flexWrap: "wrap", gap: 20,
       }}>
@@ -604,7 +604,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
             { label: "Direct Maps", value: preArmed?.directlyMapped ?? 0, color: GOLD },
             { label: "Custom Groups", value: groups.length, color: "#A78BFA" },
           ].map(stat => (
-            <div key={stat.label} style={{ textAlign: "center", padding: "10px 20px", background: "rgba(255,255,255,0.07)", borderRadius: 8 }}>
+            <div key={stat.label} style={{ textAlign: "center", padding: "10px 20px", background: "rgba(255,255,255,0.07)", borderRadius: 0 }}>
               <p style={{ fontSize: 22, fontWeight: 700, color: stat.color, marginBottom: 2 }}>{stat.value}</p>
               <p style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{stat.label}</p>
             </div>
@@ -628,7 +628,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
           </div>
           <span style={{
             fontSize: 11, fontWeight: 600, color: "#6B7280",
-            background: "#F3F4F6", padding: "4px 10px", borderRadius: 20,
+            background: "#F3F4F6", padding: "4px 10px", borderRadius: 0,
           }}>
             Read-only
           </span>
@@ -637,11 +637,11 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
         {preArmedLoading ? (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
             {[...Array(6)].map((_, i) => (
-              <div key={i} style={{ height: 90, background: "#F9F8F5", borderRadius: 6, animation: "pulse 1.5s infinite" }} />
+              <div key={i} style={{ height: 90, background: "#F9F8F5", borderRadius: 0, animation: "pulse 1.5s infinite" }} />
             ))}
           </div>
         ) : visiblePreArmed.length === 0 ? (
-          <div style={{ padding: "24px", border: "1px dashed #E5E7EB", borderRadius: 6, textAlign: "center" }}>
+          <div style={{ padding: "24px", border: "1px dashed #E5E7EB", borderRadius: 0, textAlign: "center" }}>
             <p style={{ fontSize: 13, color: "#9CA3AF" }}>No pre-armed signals found for this playbook domain.</p>
           </div>
         ) : (
@@ -656,7 +656,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
                 onClick={() => setShowAllPreArmed(v => !v)}
                 style={{
                   display: "block", width: "100%", marginTop: 12, padding: "10px",
-                  border: `1px solid #E5E7EB`, borderRadius: 6, background: "#F9F8F5",
+                  border: `1px solid #E5E7EB`, borderRadius: 0, background: "#F9F8F5",
                   fontSize: 12, fontWeight: 600, color: "#6B7280", cursor: "pointer",
                   textAlign: "center",
                 }}
@@ -702,7 +702,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
         {groupsLoading ? (
           <div style={{ padding: 32, textAlign: "center", color: "#9CA3AF", fontSize: 14 }}>Loading...</div>
         ) : groups.length === 0 ? (
-          <div style={{ padding: "36px 32px", textAlign: "center", border: `2px dashed ${GOLD}30`, borderRadius: 8, background: `${GOLD}03` }}>
+          <div style={{ padding: "36px 32px", textAlign: "center", border: `2px dashed ${GOLD}30`, borderRadius: 0, background: `${GOLD}03` }}>
             <Zap size={28} color={`${GOLD}60`} style={{ display: "block", margin: "0 auto 10px" }} />
             <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 6 }}>No custom trigger groups yet</p>
             <p style={{ fontSize: 12, color: "#9CA3AF", marginBottom: 18, maxWidth: 380, margin: "0 auto 18px" }}>

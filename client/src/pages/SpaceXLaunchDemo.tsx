@@ -50,7 +50,7 @@ export default function SpaceXLaunchDemo() {
                 onClick={() => goToAct(act.id as DemoAct)}
                 style={{
                   display: "flex", alignItems: "center", gap: 8,
-                  padding: "8px 16px", borderRadius: 6, transition: "all 0.2s",
+                  padding: "8px 16px", borderRadius: 0, transition: "all 0.2s",
                   background: currentAct === act.id ? GOLD : "transparent",
                   color: currentAct === act.id ? NAVY : "rgba(240,237,228,0.6)",
                   border: currentAct === act.id ? "none" : "1px solid rgba(255,255,255,0.12)",
@@ -73,7 +73,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 1: INTRODUCTION */}
         {currentAct === "intro" && (
           <div className="max-w-5xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: 32 }}>
+            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: 32 }}>
               <div className="text-center mb-8">
                 <Satellite style={{ width: 56, height: 56, color: GOLD, margin: "0 auto 16px" }} />
                 <h2 style={{ fontSize: 28, fontWeight: 700, color: IVORY, marginBottom: 12, fontFamily: "'Cormorant Garamond', serif" }}>
@@ -83,7 +83,7 @@ export default function SpaceXLaunchDemo() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div style={{ padding: 24, background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.25)", borderRadius: 10 }}>
+                <div style={{ padding: 24, background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.25)", borderRadius: 0 }}>
                   <h3 style={{ fontWeight: 700, color: IVORY, marginBottom: 16, display: "flex", alignItems: "center", gap: 8, fontSize: 14 }}>
                     <Target style={{ width: 16, height: 16, color: TEAL }} />
                     The Opportunity
@@ -103,7 +103,7 @@ export default function SpaceXLaunchDemo() {
                   </div>
                 </div>
 
-                <div style={{ padding: 24, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10 }}>
+                <div style={{ padding: 24, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0 }}>
                   <h3 style={{ fontWeight: 700, color: IVORY, marginBottom: 16, fontSize: 14 }}>Traditional Aerospace Coordination</h3>
                   <ul style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 13 }}>
                     <li style={{ color: "rgba(240,237,228,0.65)" }}>• Day 1-2: Engineering reviews sequential approvals</li>
@@ -116,7 +116,7 @@ export default function SpaceXLaunchDemo() {
                 </div>
               </div>
 
-              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: `3px solid ${GOLD}`, borderRadius: 10, padding: 24, marginBottom: 32 }}>
+              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: 24, marginBottom: 32 }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
                   <Zap style={{ width: 28, height: 28, color: GOLD, flexShrink: 0, marginTop: 2 }} />
                   <div>
@@ -136,7 +136,7 @@ export default function SpaceXLaunchDemo() {
                   { icon: Zap, value: "12 Minutes", label: "Full Coordination" },
                   { icon: DollarSign, value: "$47M", label: "Revenue Accelerated" },
                 ].map(({ icon: Icon, value, label }) => (
-                  <div key={label} style={{ padding: 20, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, textAlign: "center" }}>
+                  <div key={label} style={{ padding: 20, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, textAlign: "center" }}>
                     <Icon style={{ width: 28, height: 28, color: GOLD, margin: "0 auto 10px" }} />
                     <div style={{ fontSize: 24, fontWeight: 700, color: IVORY, marginBottom: 4 }}>{value}</div>
                     <div style={{ fontSize: 11, color: "rgba(240,237,228,0.5)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em" }}>{label}</div>
@@ -163,7 +163,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 2: AI DETECTION */}
         {currentAct === "detection" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: 32 }}>
+            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: 32 }}>
               <h2 style={{ fontSize: 22, fontWeight: 700, color: IVORY, marginBottom: 16, display: "flex", alignItems: "center", gap: 12 }}>
                 <Target style={{ width: 28, height: 28, color: GOLD }} />
                 Act 2: Orbital Dynamics Detection
@@ -172,7 +172,7 @@ export default function SpaceXLaunchDemo() {
                 9:00 AM PT — SpaceX trajectory analysis identifies rare orbital window opening 3 days early. Favorable
                 atmospheric conditions + ULA delay = vacant April 15 slot. Moving launch forward unlocks $47M revenue + optimal constellation geometry.
               </p>
-              <div style={{ marginTop: 20, padding: 16, background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.3)", borderRadius: 8 }}>
+              <div style={{ marginTop: 20, padding: 16, background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.3)", borderRadius: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <CheckCircle style={{ width: 20, height: 20, color: TEAL }} />
                   <div>
@@ -211,7 +211,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 3: COORDINATED RESPONSE */}
         {currentAct === "coordination" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: 32 }}>
+            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: 32 }}>
               <h2 style={{ fontSize: 22, fontWeight: 700, color: IVORY, marginBottom: 16, display: "flex", alignItems: "center", gap: 12 }}>
                 <Zap style={{ width: 28, height: 28, color: GOLD }} />
                 Act 3: 12-Minute Coordinated Execution
@@ -227,7 +227,7 @@ export default function SpaceXLaunchDemo() {
                   { n: "2", title: "Operations Teams", desc: "Ground crews, vehicle processing, payload, fueling — all accelerated by 72 hours", stat: "813 Specialists" },
                   { n: "3", title: "External Partners", desc: "FAA, Space Force, Range Control, airspace — all coordinated", stat: "1,000 Partners" },
                 ].map(({ n, title, desc, stat }) => (
-                  <div key={n} style={{ padding: 24, background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 10 }}>
+                  <div key={n} style={{ padding: 24, background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                       <div style={{ width: 36, height: 36, borderRadius: "50%", background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", color: NAVY, fontWeight: 700, fontSize: 15 }}>{n}</div>
                       <h3 style={{ fontWeight: 700, color: IVORY, margin: 0 }}>{title}</h3>
@@ -264,7 +264,7 @@ export default function SpaceXLaunchDemo() {
         {/* ACT 4: ROI OUTCOME */}
         {currentAct === "outcome" && (
           <div className="max-w-6xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${GOLD}`, borderRadius: 12, padding: 40, textAlign: "center" }}>
+            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${GOLD}`, borderRadius: 0, padding: 40, textAlign: "center" }}>
               <Rocket style={{ width: 56, height: 56, color: GOLD, margin: "0 auto 20px" }} />
               <h2 style={{ fontSize: 28, fontWeight: 700, color: IVORY, marginBottom: 12, fontFamily: "'Cormorant Garamond', serif" }}>
                 $47M Revenue + Strategic Orbital Position
@@ -280,7 +280,7 @@ export default function SpaceXLaunchDemo() {
                   { value: "12 Min", label: "vs 5-7 Days Traditional" },
                   { value: "72 Hrs", label: "Vehicle Turnaround" },
                 ].map(({ value, label }) => (
-                  <div key={label} style={{ padding: 20, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", borderRadius: 10 }}>
+                  <div key={label} style={{ padding: 20, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", borderRadius: 0 }}>
                     <div style={{ fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{value}</div>
                     <div style={{ fontSize: 11, color: "rgba(240,237,228,0.55)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>{label}</div>
                   </div>
