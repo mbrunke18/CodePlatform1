@@ -436,8 +436,8 @@ export default function IndustryDemosHub() {
                     </p>
                     <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
                       {[
-                        { key: "offense", label: "Capture a strategic opportunity", sub: "Market entry, trends, launches", icon: "⚡" },
-                        { key: "defense", label: "Contain or prevent a crisis",     sub: "Ransomware, recalls, failures", icon: "🛡" },
+                        { key: "offense", label: "Capture a strategic opportunity", sub: "Market entry, trends, launches", marker: "→" },
+                        { key: "defense", label: "Contain or prevent a crisis",     sub: "Ransomware, recalls, failures", marker: "→" },
                       ].map(opt => (
                         <button
                           key={opt.key}
@@ -450,7 +450,7 @@ export default function IndustryDemosHub() {
                             transition: "all 0.15s",
                           }}
                         >
-                          <span style={{ fontSize: 16, flexShrink: 0 }}>{opt.icon}</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, flexShrink: 0, color: concern === opt.key ? "#C9A84C" : "#C9A84C", marginTop: 1 }}>{opt.marker}</span>
                           <div>
                             <div style={{ fontSize: 12, fontWeight: 700, color: concern === opt.key ? "#F0EDE4" : "#0A0F2E", marginBottom: 2 }}>{opt.label}</div>
                             <div style={{ fontSize: 10, color: concern === opt.key ? "rgba(240,237,228,0.5)" : "#9CA3AF" }}>{opt.sub}</div>

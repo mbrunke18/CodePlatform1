@@ -932,13 +932,13 @@ function MicrosoftEcosystemBanner() {
         <Reveal delay={0.2}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap' }}>
             {[
-              { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '🔒' },
-              { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '⚡' },
-              { label: '4-Agent IDEA Framework', sublabel: '3,600× head start — in execution while others mobilize', icon: '◈' },
-              { label: 'Copilot Studio Connector', sublabel: 'Query playbooks from M365', icon: '◉' },
+              { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '◆' },
+              { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '◈' },
+              { label: '4-Agent IDEA Framework', sublabel: '3,600× head start — in execution while others mobilize', icon: '◉' },
+              { label: 'Copilot Studio Connector', sublabel: 'Query playbooks from M365', icon: '◇' },
             ].map(({ label, sublabel, icon }) => (
               <div key={label} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 18, marginBottom: 6 }}>{icon}</div>
+                <div style={{ fontSize: 18, marginBottom: 6, color: GOLD }}>{icon}</div>
                 <div style={{ ...MONO, fontSize: 11, color: GOLD, letterSpacing: 1, marginBottom: 4, fontWeight: 600 }}>{label}</div>
                 <div style={{ ...DM, fontSize: 12, color: 'rgba(240,237,228,0.55)' }}>{sublabel}</div>
               </div>

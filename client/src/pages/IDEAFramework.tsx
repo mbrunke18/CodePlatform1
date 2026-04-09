@@ -232,14 +232,16 @@ export default function IDEAFramework() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "#E8E4DC", border: "1px solid #E8E4DC" }}>
               {[
-                { phase: "IDENTIFY", sport: "Pre-Season Game Planning", icon: "🏈", sportLine: "Coaches define every situation before the season begins.", execLine: "170 playbooks across 9 domains — pre-built before the trigger fires.", color: TEAL },
-                { phase: "DETECT", sport: "Reading the Defense", icon: "📡", sportLine: "Live reads of the field. Data points line up. The situation is confirmed.", execLine: "248+ signals monitored continuously. Trigger surfaces in seconds.", color: GOLD },
-                { phase: "EXECUTE", sport: "The Play Call", icon: "⚡", sportLine: "Under 40 seconds. Everyone already knows their role. No committee needed.", execLine: "Executive authorizes. 12 minutes to full organizational execution.", color: NAVY },
-                { phase: "ADVANCE", sport: "Film Study", icon: "📊", sportLine: "After the game: what worked, what failed, what to refine next time.", execLine: "Post-Activation Debrief. Every execution sharpens the next.", color: TEAL_LT },
+                { phase: "IDENTIFY", sport: "Pre-Season Game Planning", num: "I", sportLine: "Coaches define every situation before the season begins.", execLine: "170 playbooks across 9 domains — pre-built before the trigger fires.", color: TEAL },
+                { phase: "DETECT", sport: "Reading the Defense", num: "II", sportLine: "Live reads of the field. Data points line up. The situation is confirmed.", execLine: "248+ signals monitored continuously. Trigger surfaces in seconds.", color: GOLD },
+                { phase: "EXECUTE", sport: "The Play Call", num: "III", sportLine: "Under 40 seconds. Everyone already knows their role. No committee needed.", execLine: "Executive authorizes. 12 minutes to full organizational execution.", color: NAVY },
+                { phase: "ADVANCE", sport: "Film Study", num: "IV", sportLine: "After the game: what worked, what failed, what to refine next time.", execLine: "Post-Activation Debrief. Every execution sharpens the next.", color: TEAL_LT },
               ].map(item => (
                 <div key={item.phase} style={{ background: "#fff", padding: "28px 24px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                    <span style={{ fontSize: 20 }}>{item.icon}</span>
+                    <div style={{ width: 28, height: 28, background: item.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: "#fff", letterSpacing: "0.05em" }}>{item.num}</span>
+                    </div>
                     <div>
                       <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: item.color }}>{item.phase}</div>
                       <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginTop: 1 }}>{item.sport}</div>
@@ -390,7 +392,6 @@ export default function IDEAFramework() {
                 {
                   phase: "IDENTIFY",
                   sport: "Game Planning",
-                  icon: "🏈",
                   sportDesc: "Before the season, coaches catalog every situation they may face. Plays are built before any opponent is studied.",
                   execDesc: "Executives define every strategic trigger across 9 domains. All 170 playbooks are pre-built before any trigger fires.",
                   color: TEAL,
@@ -398,7 +399,6 @@ export default function IDEAFramework() {
                 {
                   phase: "DETECT",
                   sport: "Reading the Field",
-                  icon: "📡",
                   sportDesc: "The offense reads the defense formation in real time. Data points align. The situation is now — not hypothetical.",
                   execDesc: "248+ live data points monitored continuously. When signals align, the trigger surfaces in seconds — AI reads the field.",
                   color: GOLD,
@@ -406,7 +406,6 @@ export default function IDEAFramework() {
                 {
                   phase: "EXECUTE",
                   sport: "The Play Call",
-                  icon: "⚡",
                   sportDesc: "Under 40 seconds. The coach calls the play. Everyone knows their assignment. No committee. Preparation did the work.",
                   execDesc: "Executive authorizes. 12 minutes later, the full organizational response is coordinated. Every role already pre-defined.",
                   color: NAVY,
@@ -414,15 +413,14 @@ export default function IDEAFramework() {
                 {
                   phase: "ADVANCE",
                   sport: "Film Study",
-                  icon: "📊",
                   sportDesc: "After every game, coaches review what worked and update the playbook. The system learns and improves continuously.",
                   execDesc: "Every execution feeds the intelligence loop. The system strengthens with each activation — permanently.",
                   color: TEAL,
                 },
-              ].map(({ phase, sport, icon, sportDesc, execDesc, color }) => (
+              ].map(({ phase, sport, sportDesc, execDesc, color }) => (
                 <div key={phase} className="border bg-white p-5" style={{ borderTop: `3px solid ${color}`, borderColor: BORDER }}>
                   <div className="text-xs font-bold tracking-widest uppercase mb-1" style={{ color }}>{phase}</div>
-                  <div className="text-lg mb-3">{icon} <span className="font-semibold text-sm" style={{ color: NAVY }}>{sport}</span></div>
+                  <div className="text-sm font-semibold mb-3" style={{ color: NAVY }}>{sport}</div>
                   <div className="text-xs leading-relaxed mb-3 pb-3" style={{ color: MUTED, borderBottom: `1px solid ${BORDER}` }}>{sportDesc}</div>
                   <div className="text-xs leading-relaxed font-medium" style={{ color: NAVY }}>{execDesc}</div>
                 </div>
