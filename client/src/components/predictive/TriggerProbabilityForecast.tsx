@@ -236,7 +236,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
             </div>
 
             <div className="grid grid-cols-3 gap-3 mb-3">
-              <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability30Days)}`}>
+              <div className={`rounded-none p-3 text-center ${getProbabilityBg(forecast.probability30Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <Calendar className="w-3 h-3 text-gray-800" />
                   <span className="text-xs font-medium text-gray-800 dark:text-slate-300">30 Days</span>
@@ -249,7 +249,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   className="h-1 mt-2" 
                 />
               </div>
-              <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability60Days)}`}>
+              <div className={`rounded-none p-3 text-center ${getProbabilityBg(forecast.probability60Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <Calendar className="w-3 h-3 text-gray-800" />
                   <span className="text-xs font-medium text-gray-800 dark:text-slate-300">60 Days</span>
@@ -262,7 +262,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   className="h-1 mt-2" 
                 />
               </div>
-              <div className={`rounded-lg p-3 text-center ${getProbabilityBg(forecast.probability90Days)}`}>
+              <div className={`rounded-none p-3 text-center ${getProbabilityBg(forecast.probability90Days)}`}>
                 <div className="flex items-center justify-center gap-1 mb-1">
                   <Calendar className="w-3 h-3 text-gray-800" />
                   <span className="text-xs font-medium text-gray-800 dark:text-slate-300">90 Days</span>

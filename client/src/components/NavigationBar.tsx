@@ -115,7 +115,7 @@ export default function NavigationBar() {
                               onClick={() => {
                                 setLocation(link.href);
                               }}
-                              className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
+                              className={`w-full text-left block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
                                   ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-[#F8F7F4] dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-[#E8E4DC] dark:border-[#0A0F2E]' 
                                   : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
@@ -150,7 +150,7 @@ export default function NavigationBar() {
                               onClick={() => {
                                 setLocation(link.href);
                               }}
-                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]"
+                              className="w-full text-left block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -181,7 +181,7 @@ export default function NavigationBar() {
                               onClick={() => {
                                 setLocation(link.href);
                               }}
-                              className={`w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors ${
+                              className={`w-full text-left block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors ${
                                 (link as any).featured 
                                   ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-[#F8F7F4] dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-[#E8E4DC] dark:border-[#0A0F2E]' 
                                   : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
@@ -218,7 +218,7 @@ export default function NavigationBar() {
                                 }
                               }}
                               disabled={link.href === '#'}
-                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E] disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-full text-left block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E] disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -249,7 +249,7 @@ export default function NavigationBar() {
                                 }
                               }}
                               disabled={link.href === '#'}
-                              className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E] disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="w-full text-left block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E] disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <div className="text-sm font-medium leading-none text-slate-900 dark:text-slate-100">{link.title}</div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">

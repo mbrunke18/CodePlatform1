@@ -570,7 +570,7 @@ function InvestorPresentation() {
             { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 playbooks', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
             { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ playbooks', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
           ].map((t, i) => (
-            <div key={i} className={`rounded-xl p-6 ${t.highlight ? 'bg-[#0A0F2E] border-2 border-[#C9A84C] text-white' : 'bg-white border border-[#E8E4DC]'}`}>
+            <div key={i} className={`rounded-none p-6 ${t.highlight ? 'bg-[#0A0F2E] border-2 border-[#C9A84C] text-white' : 'bg-white border border-[#E8E4DC]'}`}>
               {t.highlight && <div className="text-[#C9A84C] text-xs font-bold uppercase mb-2">TARGET</div>}
               <div className={`${t.highlight ? 'text-white' : 'text-[#0A0F2E]'} font-bold text-lg`}>{t.tier}</div>
               <div className="text-3xl font-bold text-[#C9A84C] my-2">{t.price}</div>

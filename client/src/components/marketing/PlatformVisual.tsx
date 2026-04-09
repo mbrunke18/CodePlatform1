@@ -217,7 +217,7 @@ export default function PlatformVisual() {
                   key={phase.letter}
                   variants={scaleIn}
                   custom={i + 3}
-                  className={`rounded-xl border ${phase.borderColor} bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 p-4 relative overflow-hidden`}
+                  className={`rounded-none border ${phase.borderColor} bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 p-4 relative overflow-hidden`}
                 >
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${phase.color}`} />
                   <div className="flex items-center gap-2 mb-3">
@@ -305,7 +305,7 @@ export default function PlatformVisual() {
                 key={output.title}
                 variants={scaleIn}
                 custom={i + 10}
-                className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-4"
+                className="rounded-none border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-4"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <output.icon className="h-4 w-4 text-poise-teal" />
@@ -326,7 +326,7 @@ export default function PlatformVisual() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <motion.div
-            className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-6"
+            className="rounded-none border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-6"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUp}
@@ -349,7 +349,7 @@ export default function PlatformVisual() {
           </motion.div>
 
           <motion.div
-            className="rounded-xl border-2 border-poise-teal/30 bg-white p-6"
+            className="rounded-none border-2 border-poise-teal/30 bg-white p-6"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUp}
@@ -369,7 +369,7 @@ export default function PlatformVisual() {
           </motion.div>
 
           <motion.div
-            className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-6"
+            className="rounded-none border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-6"
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             variants={fadeUp}
@@ -382,7 +382,7 @@ export default function PlatformVisual() {
               {domains.map((domain) => (
                 <span
                   key={domain}
-                  className="text-xs px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/20 text-[#C9A84C] dark:text-amber-400 border border-amber-300 dark:border-amber-600/30 font-medium"
+                  className="text-xs px-2 py-1 rounded-none bg-amber-50 dark:bg-amber-900/20 text-[#C9A84C] dark:text-amber-400 border border-amber-300 dark:border-amber-600/30 font-medium"
                 >
                   {domain}
                 </span>
@@ -392,7 +392,7 @@ export default function PlatformVisual() {
         </div>
 
         <motion.div
-          className="rounded-xl bg-gradient-to-r from-poise-teal/5 via-transparent to-poise-teal/5 border border-poise-teal/20 p-6 mb-10"
+          className="rounded-none bg-gradient-to-r from-poise-teal/5 via-transparent to-poise-teal/5 border border-poise-teal/20 p-6 mb-10"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={fadeUp}

@@ -101,7 +101,7 @@ export default function StakeholderMatrixStep({ data, onChange }: StakeholderMat
               id="stakeholder-tier"
               value={newStakeholder.tier}
               onChange={(e) => setNewStakeholder({ ...newStakeholder, tier: e.target.value })}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+              className="w-full rounded-none border border-input bg-background px-3 py-2 text-sm"
               data-testid="select-stakeholder-tier"
             >
               <option value="tier1">Tier 1 - Decision Makers</option>

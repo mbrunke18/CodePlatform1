@@ -488,7 +488,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
             <TabsContent value={selectedCategory}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredTemplates.map((template: any) => (
-                  <Card key={template.id} className="hover:shadow-lg transition-all duration-200 relative" data-testid={`template-card-${template.id}`}>
+                  <Card key={template.id} className=" transition-all duration-200 relative" data-testid={`template-card-${template.id}`}>
                     {/* Certification Badge */}
                     {template.certificationLevel === 'certified' && (
                       <div className="absolute -top-2 -right-2 z-10">

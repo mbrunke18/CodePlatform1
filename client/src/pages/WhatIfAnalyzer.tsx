@@ -904,7 +904,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       onClick={() => loadTemplate(key)}
                       className={`p-3 border-2 text-left transition-all ${isActive ? borderMap[color] : 'border-transparent bg-slate-50 dark:bg-[#141B45] hover:border-slate-300 dark:hover:border-slate-600'}`}
                     >
-                      <div className={`p-1.5 ${iconBg[color]} rounded-md inline-block mb-1.5`}>
+                      <div className={`p-1.5 ${iconBg[color]} rounded-none inline-block mb-1.5`}>
                         <Icon className={`h-4 w-4 ${iconColor[color]}`} />
                       </div>
                       <div className="text-sm font-medium text-slate-800 dark:text-white">{label}</div>
@@ -1059,7 +1059,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     </Button>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-slate-300 bg-white dark:bg-[#141B45] p-3 rounded-md border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-center gap-2 text-sm text-gray-800 dark:text-slate-300 bg-white dark:bg-[#141B45] p-3 rounded-none border border-slate-200 dark:border-slate-700">
                     <span className="font-medium text-slate-800 dark:text-white">{selectedVariable.label}</span>
                     <Select value={conditionOperator} onValueChange={setConditionOperator}>
                       <SelectTrigger className="w-44 h-8 text-xs">
@@ -1743,7 +1743,7 @@ export default function WhatIfAnalyzer() {
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {savedScenarios.slice(0, 6).map((scenario: any) => (
-                      <Card key={scenario.id} className="hover:shadow-md ">
+                      <Card key={scenario.id} className=" ">
                         <CardContent className="p-4">
                           <div className="font-medium text-sm text-slate-800 dark:text-white mb-1">{scenario.name}</div>
                           <div className="text-xs text-gray-700 line-clamp-2 mb-2">{scenario.description}</div>

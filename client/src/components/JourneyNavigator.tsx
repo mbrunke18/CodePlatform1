@@ -155,7 +155,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
     const current = journeyPhases.find(p => p.status === 'current') || journeyPhases[0];
     return (
       <Link href="/north-star">
-        <Card className="hover:shadow-lg transition-all cursor-pointer group border-poise-teal/30 bg-gradient-to-br from-poise-teal/5 to-[#3BAF8A]/5">
+        <Card className=" transition-all cursor-pointer group border-poise-teal/30 bg-gradient-to-br from-poise-teal/5 to-[#3BAF8A]/5">
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
@@ -225,7 +225,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
       <div className="grid gap-4">
         {journeyPhases.map((phase) => (
           <Link key={phase.id} href={phase.workspacePath}>
-            <Card className={`hover:shadow-lg transition-all cursor-pointer group ${
+            <Card className={` transition-all cursor-pointer group ${
               phase.status === 'current' 
                 ? 'border-2 border-poise-teal shadow-poise-teal/10' 
                 : phase.status === 'completed'

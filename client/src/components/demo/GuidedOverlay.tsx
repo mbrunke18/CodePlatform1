@@ -333,7 +333,7 @@ export default function GuidedOverlay() {
             <CardContent className="p-4 overflow-y-auto">
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0">
-                  <div className={`w-10 h-10 rounded-md flex items-center justify-center ${isSpeaking && speechEnabled ? 'bg-[#0A0F2E] animate-pulse' : 'bg-[#0A0F2E]/60'}`}>
+                  <div className={`w-10 h-10 rounded-none flex items-center justify-center ${isSpeaking && speechEnabled ? 'bg-[#0A0F2E] animate-pulse' : 'bg-[#0A0F2E]/60'}`}>
                     <Volume2 className={`h-5 w-5 text-white ${isSpeaking && speechEnabled ? 'animate-pulse' : ''}`} />
                   </div>
                 </div>

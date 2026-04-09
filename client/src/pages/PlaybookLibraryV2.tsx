@@ -250,7 +250,7 @@ function CompoundDisruptionSection() {
                   border: `1px solid ${isExpanded ? "#C9A84C" : "#E8E4DC"}`,
                   background: isExpanded ? "rgba(10,15,46,0.03)" : "white"
                 }}
-                className={`rounded-lg p-4 cursor-pointer transition-all duration-200 hover:border-[#C9A84C]`}
+                className={`rounded-none p-4 cursor-pointer transition-all duration-200 hover:border-[#C9A84C]`}
                 onClick={() => setExpandedScenario(isExpanded ? null : i)}
               >
                 <div className="flex items-center justify-between mb-1">

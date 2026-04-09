@@ -177,6 +177,7 @@ const PilotProgram = lazy(() => import("./pages/PilotProgram"));
 const PilotOnboarding = lazy(() => import("./pages/PilotOnboarding"));
 const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
+const MsProjectTransition = lazy(() => import("./pages/MsProjectTransition"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
 const DemoAccess = lazy(() => import("./pages/DemoAccess"));
 const RequestAccess = lazy(() => import("./pages/RequestAccess"));
@@ -437,6 +438,7 @@ function Router() {
         <Route path="/pilot-onboarding" component={PilotOnboarding} />
         <Route path="/growth" component={Growth} />
         <Route path="/vs-consulting" component={VsConsulting} />
+        {renderRoutes(["/ms-project", "/ms-project-transition", "/vs-servicenow", "/migration"], MsProjectTransition)}
         <Route path="/explore" component={ExplorePage} />
         {renderRoutes(["/contact", "/early-access"], Contact)}
 

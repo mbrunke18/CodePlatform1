@@ -109,6 +109,13 @@ The following terms have been permanently retired from all customer-facing copy:
 **Retired Components:**
 - `SizzleReel.tsx` — permanently deleted. Was a 2-minute animated brand film. Superseded by the 12-Minute Test Drive (interactive) and ThirtySecondSpot (quick pitch). File removed from codebase April 2026.
 
+**MS Project EOL Positioning Page (`/ms-project`, `/ms-project-transition`, `/vs-servicenow`, `/migration`):**
+- Full comparison page: ServiceNow SPM vs. Readiness OS — targeting Fortune 1000 COOs/CIOs at the Microsoft Project EOL decision point
+- Core positioning: "Don't migrate your lag to a new database." ServiceNow = IT cost center migration; Readiness OS = CEO/Board evolution
+- Key lines: "Visibility is not velocity." / "The engine is Microsoft. The transmission is Readiness OS." / "While others move their static plans to ServiceNow, Readiness OS users are already executing."
+- Homepage callout section (`MsProjectCalloutSection`) deployed between MicrosoftEcosystemBanner and CredibilitySection
+- Page linked from StandardNav whyLinks array as featured entry
+
 **Pages not in footer (keep files, just not linked):**
 - `/execution-coordination`, `/enterprise-metrics`, `/ai-radar`, `/intelligence-hub`, `/decision-velocity`
 

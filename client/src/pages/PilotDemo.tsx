@@ -641,7 +641,7 @@ export default function PilotDemo() {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
-                          className={`rounded-lg border transition-colors overflow-hidden ${
+                          className={`rounded-none border transition-colors overflow-hidden ${
                             event.status === "active"
                               ? "bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 border-[#0A0F2E] dark:border-[#0A0F2E]"
                               : event.status === "complete"

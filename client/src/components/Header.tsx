@@ -40,7 +40,7 @@ export default function Header({ isConnected }: HeaderProps) {
           {/* User Menu */}
           <Button
             variant="ghost"
-            className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-accent"
+            className="flex items-center space-x-2 px-3 py-2 rounded-none hover:bg-accent"
             data-testid="button-user-menu"
           >
             <div className="w-8 h-8 bg-primary flex items-center justify-center">

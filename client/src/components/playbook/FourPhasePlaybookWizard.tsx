@@ -373,7 +373,7 @@ export default function FourPhasePlaybookWizard({
                 <button
                   key={step.id}
                   onClick={() => setCurrentStepIndex(idx)}
-                  className={`flex-shrink-0 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  className={`flex-shrink-0 px-3 py-1.5 rounded-none text-xs font-medium transition-colors ${
                     currentStepIndex === idx
                       ? 'bg-primary text-primary-foreground'
                       : currentStepIndex > idx

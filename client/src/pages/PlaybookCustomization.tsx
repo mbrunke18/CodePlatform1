@@ -197,7 +197,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   <Filter className="h-4 w-4 mr-2 text-[#C9A84C]" />
                   <SelectValue placeholder="All Domains" />
                 </SelectTrigger>
-                <SelectContent className="rounded-xl border-[#E8E4DC]">
+                <SelectContent className="rounded-none border-[#E8E4DC]">
                   <SelectItem value="all">All Strategic Domains</SelectItem>
                   {PLAYBOOK_DOMAINS.map(domain => (
                     <SelectItem key={domain.id} value={domain.id}>{domain.name}</SelectItem>
@@ -282,10 +282,10 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
 
               <Tabs defaultValue="basic" className="space-y-8">
                 <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC] h-12">
-                  <TabsTrigger value="basic" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">1. Identity</TabsTrigger>
-                  <TabsTrigger value="stakeholders" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">2. Command</TabsTrigger>
-                  <TabsTrigger value="governance" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">3. Governance</TabsTrigger>
-                  <TabsTrigger value="notifications" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">4. Comms</TabsTrigger>
+                  <TabsTrigger value="basic" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">1. Identity</TabsTrigger>
+                  <TabsTrigger value="stakeholders" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">2. Command</TabsTrigger>
+                  <TabsTrigger value="governance" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">3. Governance</TabsTrigger>
+                  <TabsTrigger value="notifications" className="rounded-none data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">4. Comms</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="basic" className="space-y-8">
@@ -320,7 +320,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                             <SelectTrigger className="w-64 bg-white border-[#E8E4DC] font-bold">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent className="rounded-xl border-[#E8E4DC]">
+                            <SelectContent className="rounded-none border-[#E8E4DC]">
                               <SelectItem value="CEO">CEO</SelectItem>
                               <SelectItem value="COO">COO</SelectItem>
                               <SelectItem value="CFO">CFO</SelectItem>

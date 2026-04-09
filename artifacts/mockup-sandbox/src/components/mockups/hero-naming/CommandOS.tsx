@@ -42,7 +42,7 @@ function MetricPill({ value, label }: { value: string; label: string }) {
   );
 }
 
-export function Readiness OS() {
+export function ReadinessOS() {
   return (
     <div style={{
       minHeight: "100vh",

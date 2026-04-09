@@ -248,7 +248,7 @@ export default function PlaybookManagement() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
+                  className="px-3 py-2 border rounded-none bg-white dark:bg-[#0A0F2E] text-sm"
                   data-testid="select-status-filter"
                 >
                   <option value="all">All Status</option>
@@ -260,7 +260,7 @@ export default function PlaybookManagement() {
                 <select
                   value={categoryFilter}
                   onChange={(e) => setCategoryFilter(e.target.value)}
-                  className="px-3 py-2 border rounded-md bg-white dark:bg-[#0A0F2E] text-sm"
+                  className="px-3 py-2 border rounded-none bg-white dark:bg-[#0A0F2E] text-sm"
                   data-testid="select-category-filter"
                 >
                   <option value="all">All Categories</option>

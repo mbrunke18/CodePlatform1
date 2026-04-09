@@ -177,7 +177,7 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg  duration-200 bg-white dark:bg-[#141B45]"
+                    className="  duration-200 bg-white dark:bg-[#141B45]"
                     data-testid={`card-element-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
@@ -222,7 +222,7 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg  duration-200 bg-white dark:bg-[#141B45]"
+                    className="  duration-200 bg-white dark:bg-[#141B45]"
                     data-testid={`card-strong-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
@@ -267,7 +267,7 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg  duration-200 bg-white dark:bg-[#141B45] border-red-200 dark:border-red-900"
+                    className="  duration-200 bg-white dark:bg-[#141B45] border-red-200 dark:border-red-900"
                     data-testid={`card-focus-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>

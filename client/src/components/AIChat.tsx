@@ -157,7 +157,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
                     )}
                   </div>
 
-                  <div className={`rounded-lg p-4 ${
+                  <div className={`rounded-none p-4 ${
                     message.role === 'user' 
                       ? 'bg-[#0A0F2E] text-white' 
                       : 'bg-gray-50 border'

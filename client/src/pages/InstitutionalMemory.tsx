@@ -445,7 +445,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                           <span className="flex items-center gap-1 text-[#2B8A6E] font-semibold"><Shield className="h-3 w-3" /> {outcome.costSaved} saved</span>
                         </div>
                         {outcome.lessonsLearned && (
-                          <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 rounded-md border border-[#E8E4DC] dark:border-white/10">
+                          <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 rounded-none border border-[#E8E4DC] dark:border-white/10">
                             <p className="text-sm font-medium mb-1 flex items-center gap-1 text-[#0A0F2E] dark:text-[#C9A84C]"><Lightbulb className="h-4 w-4" /> Lessons Learned:</p>
                             <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">{outcome.lessonsLearned}</p>
                           </div>

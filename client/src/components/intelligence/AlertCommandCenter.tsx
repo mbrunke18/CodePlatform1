@@ -388,7 +388,7 @@ function AlertCard({
   return (
     <Card 
       className={`cursor-pointer transition-all border-l-4 ${config.borderColor} ${
-        isSelected ? 'ring-2 ring-primary' : 'hover:shadow-md'
+        isSelected ? 'ring-2 ring-primary' : ''
       }`}
       onClick={onSelect}
       data-testid={`alert-card-${alert.id}`}

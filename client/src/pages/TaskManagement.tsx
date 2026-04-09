@@ -758,7 +758,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                   return (
                     <Card 
                       key={template.id} 
-                      className={`transition-all ${isAdded ? 'opacity-60 bg-[#2B8A6E]/10' : 'hover:shadow-md'}`}
+                      className={`transition-all ${isAdded ? 'opacity-60 bg-[#2B8A6E]/10' : ''}`}
                       data-testid={`card-library-task-${template.id}`}
                     >
                       <CardContent className="p-4">
@@ -885,7 +885,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const progressColor = coverage >= 80 ? "bg-[#2B8A6E]" : coverage >= 50 ? "bg-[#C9A84C]" : "bg-red-600";
                     
                     return (
-                      <Card key={domain.domainName} className="hover:shadow-md ">
+                      <Card key={domain.domainName} className=" ">
                         <CardHeader className="pb-3">
                           <div className="flex items-start justify-between">
                             <div className="flex items-center gap-3">

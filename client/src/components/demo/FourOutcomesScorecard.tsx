@@ -184,7 +184,7 @@ export default function FourOutcomesScorecard({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {outcomes.map((outcome) => (
-          <Card key={outcome.name} className="hover:shadow-lg " data-testid={`card-outcome-${outcome.name.toLowerCase()}`}>
+          <Card key={outcome.name} className=" " data-testid={`card-outcome-${outcome.name.toLowerCase()}`}>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <div className={outcome.color}>

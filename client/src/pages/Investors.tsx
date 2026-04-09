@@ -211,7 +211,7 @@ function PlatformArchitectureDiagram() {
           <div key={i} className="flex items-stretch">
             <div className="flex-1 flex flex-col">
               <div
-                className="rounded-xl p-5 flex-1 border-2"
+                className="rounded-none p-5 flex-1 border-2"
                 style={{ background: step.bg, borderColor: step.border }}
               >
                 <div
@@ -269,7 +269,7 @@ function FuturePositioningDiagram() {
   return (
     <div className="bg-white border border-[#E8E4DC] p-8">
       <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <div className="rounded-xl border-2 border-[#E8E4DC] p-6 relative overflow-hidden">
+        <div className="rounded-none border-2 border-[#E8E4DC] p-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 opacity-5" style={{ background: NAVY, transform: "translate(30%, -30%)" }} />
           <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E]">
             <CheckCircle className="w-3 h-3" />
@@ -293,7 +293,7 @@ function FuturePositioningDiagram() {
           </ul>
         </div>
 
-        <div className="rounded-xl border-2 p-6 relative overflow-hidden" style={{ borderColor: `${GOLD}60`, background: "#FBF8F0" }}>
+        <div className="rounded-none border-2 p-6 relative overflow-hidden" style={{ borderColor: `${GOLD}60`, background: "#FBF8F0" }}>
           <div className="absolute top-0 right-0 w-24 h-24 opacity-10" style={{ background: GOLD, transform: "translate(30%, -30%)" }} />
           <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4" style={{ background: `${GOLD}20`, color: GOLD }}>
             <Zap className="w-3 h-3" />

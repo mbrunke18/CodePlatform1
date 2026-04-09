@@ -512,7 +512,7 @@ export default function InvestorDemo() {
                       
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         {currentStage.metrics.map((metric, idx) => (
-                          <div key={idx} className={`rounded-lg p-4 text-center bg-[#F8F7F4] border border-[#E8E4DC]`}>
+                          <div key={idx} className={`rounded-none p-4 text-center bg-[#F8F7F4] border border-[#E8E4DC]`}>
                             <div className={`text-2xl font-bold mb-1 text-[#0A0F2E]`}>{metric.value}</div>
                             <div className="text-xs text-[#6B7280] font-bold uppercase tracking-wider">{metric.label}</div>
                           </div>

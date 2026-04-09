@@ -27,7 +27,7 @@ export default function Sidebar() {
       <nav className="flex-1 p-4 space-y-2">
         <a 
           href="#" 
-          className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium bg-accent text-accent-foreground"
+          className="flex items-center space-x-3 px-3 py-2 rounded-none text-sm font-medium bg-accent text-accent-foreground"
           data-testid="nav-dashboard"
         >
           <i className="fas fa-chart-line w-5"></i>
@@ -35,7 +35,7 @@ export default function Sidebar() {
         </a>
         <a 
           href="#" 
-          className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+          className="flex items-center space-x-3 px-3 py-2 rounded-none text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
           data-testid="nav-organizations"
         >
           <i className="fas fa-building w-5"></i>
@@ -43,7 +43,7 @@ export default function Sidebar() {
         </a>
         <a 
           href="#" 
-          className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+          className="flex items-center space-x-3 px-3 py-2 rounded-none text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
           data-testid="nav-scenarios"
         >
           <i className="fas fa-lightbulb w-5"></i>
@@ -51,7 +51,7 @@ export default function Sidebar() {
         </a>
         <a 
           href="#" 
-          className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+          className="flex items-center space-x-3 px-3 py-2 rounded-none text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
           data-testid="nav-tasks"
         >
           <i className="fas fa-tasks w-5"></i>
@@ -59,7 +59,7 @@ export default function Sidebar() {
         </a>
         <a 
           href="#" 
-          className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+          className="flex items-center space-x-3 px-3 py-2 rounded-none text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
           data-testid="nav-ai"
         >
           <i className="fas fa-robot w-5"></i>
@@ -67,7 +67,7 @@ export default function Sidebar() {
         </a>
         <a 
           href="#" 
-          className="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+          className="flex items-center space-x-3 px-3 py-2 rounded-none text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
           data-testid="nav-team"
         >
           <i className="fas fa-users w-5"></i>

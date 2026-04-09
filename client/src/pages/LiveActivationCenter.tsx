@@ -800,7 +800,7 @@ export default function LiveActivationCenter() {
                         <div className="text-[9px] font-bold text-white/40 uppercase tracking-tighter">{s.title}</div>
                       </div>
                       <div className={cn(
-                        "text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-md",
+                        "text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none",
                         s.status === 'acknowledged' ? "bg-[#2B8A6E]/20 text-[#2B8A6E]" : 
                         s.status === 'notifying' || s.status === 'notified' ? "bg-[#C9A84C]/20 text-[#C9A84C]" : 
                         "bg-white/5 text-white/20"
@@ -841,7 +841,7 @@ export default function LiveActivationCenter() {
                   >
                     <div className="flex items-center gap-5">
                       <div className={cn(
-                        "w-6 h-6 rounded-md flex items-center justify-center border transition-colors",
+                        "w-6 h-6 rounded-none flex items-center justify-center border transition-colors",
                         t.status === 'completed' ? "bg-[#2B8A6E] border-[#2B8A6E] text-white" : 
                         t.status === 'in_progress' ? "bg-[#C9A84C]/20 border-[#C9A84C] text-[#C9A84C]" : 
                         "border-white/20 text-white/20"

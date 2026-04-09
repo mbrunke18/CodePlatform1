@@ -99,7 +99,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
                 key={item.id} 
                 href={item.path}
                 className={cn(
-                  'flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-all duration-150',
+                  'flex items-center gap-2.5 px-3 py-2 rounded-none text-sm transition-all duration-150',
                   'hover:bg-white/10 dark:hover:bg-white/5',
                   isItemActive(item.path)
                     ? 'bg-white/15 dark:bg-white/10 font-medium text-gray-900 dark:text-white'
@@ -156,14 +156,14 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         <div className="flex items-center gap-2">
           <Link 
             href="/"
-            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-none text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
           >
             <Home className="h-4 w-4" />
             <span>Home</span>
           </Link>
           <Link
             href="/onboarding-guide"
-            className="flex items-center gap-2 px-3 py-2 rounded-md text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
+            className="flex items-center gap-2 px-3 py-2 rounded-none text-sm text-gray-700 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 transition-colors"
             title="Onboarding Guide"
           >
             <BookOpen className="h-4 w-4" />
@@ -180,7 +180,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         </div>
         
         {isAuthenticated && user ? (
-          <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5">
+          <div className="flex items-center gap-2 px-3 py-2 rounded-none bg-white/5">
             <div className="w-8 h-8 bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center text-white text-sm font-medium">
               {user.initials || user.firstName?.charAt(0).toUpperCase() || 'U'}
             </div>

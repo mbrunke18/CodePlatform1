@@ -175,7 +175,7 @@ export function AIPrinciplesScorecard({
               return (
                 <Tooltip key={principle.principle}>
                   <TooltipTrigger asChild>
-                    <div className="flex items-center gap-3 py-2 px-3 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-help">
+                    <div className="flex items-center gap-3 py-2 px-3 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-help">
                       <Icon className="w-4 h-4 text-[#C9A84C] dark:text-[#C9A84C] flex-shrink-0" />
                       <span className="text-sm flex-1 min-w-0">
                         {principle.principle}

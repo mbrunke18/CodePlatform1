@@ -257,7 +257,7 @@ export default function PlaybookCustomizationWizard({
             <button
               key={step.id}
               onClick={() => setCurrentStep(step.id)}
-              className={`flex-shrink-0 px-3 py-1.5 rounded-md text-xs font-medium transition-colors relative group ${
+              className={`flex-shrink-0 px-3 py-1.5 rounded-none text-xs font-medium transition-colors relative group ${
                 currentStep === step.id
                   ? 'bg-primary text-primary-foreground'
                   : currentStep > step.id

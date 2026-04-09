@@ -97,7 +97,7 @@ export default function ActivationPage() {
                 </Card>
               ) : (
                 activations.map((activation) => (
-                  <Card key={activation.id} className="hover:shadow-md ">
+                  <Card key={activation.id} className=" ">
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div className="space-y-1">

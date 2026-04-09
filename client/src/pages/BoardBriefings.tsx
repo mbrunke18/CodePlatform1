@@ -230,7 +230,7 @@ export default function BoardBriefings() {
                       <p className="text-sm text-[#0A0F2E] dark:text-[#C9A84C]/80 leading-relaxed">{briefing.executiveSummary}</p>
                       
                       {briefing.keyInsights && briefing.keyInsights.length > 0 && (
-                        <div className="bg-[#0A0F2E]/5 dark:bg-[#141B45]/40 p-3 rounded-md border border-[#0A0F2E]/10 dark:border-[#C9A84C]/10">
+                        <div className="bg-[#0A0F2E]/5 dark:bg-[#141B45]/40 p-3 rounded-none border border-[#0A0F2E]/10 dark:border-[#C9A84C]/10">
                           <p className="text-sm font-bold mb-1 text-[#0A0F2E] dark:text-[#C9A84C] uppercase tracking-wider">Key Insights:</p>
                           <ul className="list-disc list-inside text-sm text-[#6B7280] dark:text-white/60">
                             {(briefing.keyInsights as any[]).slice(0, 3).map((insight: string, idx: number) => (

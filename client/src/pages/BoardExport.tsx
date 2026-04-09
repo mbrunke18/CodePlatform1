@@ -192,7 +192,7 @@ export default function BoardExport() {
 
                   <div className="space-y-2">
                     <Label className="text-[#0A0F2E] dark:text-white">Report Period</Label>
-                    <div className="text-[#0A0F2E] dark:text-white bg-[#F8F7F4] dark:bg-white/5 rounded-md px-3 py-2 border border-[#E8E4DC] dark:border-white/10">
+                    <div className="text-[#0A0F2E] dark:text-white bg-[#F8F7F4] dark:bg-white/5 rounded-none px-3 py-2 border border-[#E8E4DC] dark:border-white/10">
                       {SAMPLE_DATA.quarter}
                     </div>
                   </div>

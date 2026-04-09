@@ -466,7 +466,7 @@ export default function CrisisDetail() {
               ) : (
                 <div className="space-y-3">
                   {tasks.map((task) => (
-                    <Card key={task.id} className="hover:shadow-md  rounded-none border-[#E8E4DC]">
+                    <Card key={task.id} className="  rounded-none border-[#E8E4DC]">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
                           <div className="flex-1 space-y-2">

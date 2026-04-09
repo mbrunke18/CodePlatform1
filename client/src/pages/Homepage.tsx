@@ -969,6 +969,54 @@ function MicrosoftEcosystemBanner() {
   );
 }
 
+// ─── MS Project EOL Callout ────────────────────────────────────────────────────
+function MsProjectCalloutSection() {
+  const [, setLocation] = useLocation();
+  return (
+    <section style={{ background: "#F8F7F4", padding: "64px 0", borderTop: `1px solid #E8E4DC`, borderBottom: `1px solid #E8E4DC` }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+            <div style={{ width: 6, height: 6, background: "#EF4444", borderRadius: "50%" }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#EF4444" }}>Microsoft Project End of Life</span>
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(26px,3.5vw,38px)", color: NAVY, lineHeight: 1.15, marginBottom: 16 }}>
+            Don't migrate your lag<br />
+            <em style={{ color: GOLD, fontStyle: "italic" }}>to a new database.</em>
+          </h2>
+          <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.7, marginBottom: 8 }}>
+            ServiceNow wants to become your new MS Project. Same 30-day mobilization cycle — better dashboard.
+          </p>
+          <p style={{ fontSize: 15, color: "#374151", fontWeight: 600, lineHeight: 1.6, marginBottom: 28 }}>
+            The Microsoft Project transition is the moment to eliminate the mobilization lag — not migrate it.
+          </p>
+          <button
+            onClick={() => setLocation("/ms-project")}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#F0EDE4", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "14px 28px", border: "none", cursor: "pointer" }}
+          >
+            See Migration vs. Evolution →
+          </button>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+          {[
+            { label: "ServiceNow SPM", value: "30 days", sub: "mobilization cycle unchanged", accent: "#EF4444", dim: true },
+            { label: "Readiness OS", value: "12 min", sub: "response ready before trigger fires", accent: GOLD, dim: false },
+            { label: "IT Budget", value: "Cost\nCenter", sub: "ServiceNow positioning", accent: "#6B7280", dim: true },
+            { label: "CEO / Board Budget", value: "Growth\nFund", sub: "Readiness OS positioning", accent: TEAL, dim: false },
+          ].map((item, i) => (
+            <div key={i} style={{ padding: "24px 20px", background: item.dim ? "#fff" : `rgba(201,168,76,0.05)`, border: `1px solid ${item.dim ? "#E8E4DC" : "rgba(201,168,76,0.25)"}`, textAlign: "center" as const }}>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: item.accent, lineHeight: 1.1, marginBottom: 4, whiteSpace: "pre-line" as const }}>{item.value}</div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 4 }}>{item.label}</div>
+              <div style={{ fontSize: 11, color: "#9CA3AF" }}>{item.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CredibilitySection() {
   const outcomes = [
     { stat: "12 min", label: "Median time from trigger to full org deployment" },
@@ -1408,6 +1456,7 @@ export default function Homepage() {
       <IDEASection />
       <PlatformPreviewSection />
       <MicrosoftEcosystemBanner />
+      <MsProjectCalloutSection />
       <CredibilitySection />
       <SimulatorCTASection />
       <CTASection />

@@ -202,7 +202,7 @@ function SignalCategoryCard({
         transition: "all 0.2s" 
       }}
       onClick={onSelect}
-      className="hover:shadow-sm"
+      className=""
     >
       <div className="flex items-start justify-between mb-4">
         <div 
