@@ -563,6 +563,50 @@ export default function Research() {
           </div>
         </section>
 
+        {/* Platform Reality Callout */}
+        <section style={{ background: "#F8F7F4", padding: "64px 48px", borderTop: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                <div style={{ width: 32, height: 2, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#6B7280" }}>The Research → Reality Gap</span>
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(24px,3.5vw,36px)", color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+                Every firm cited on this page agrees the problem is real.<br />
+                <em style={{ color: GOLD, fontStyle: "italic" }}>None of them built the solution.</em>
+              </h2>
+              <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.7, marginBottom: 24 }}>
+                McKinsey, HBR, Gartner, PwC, IBM — the research is irrefutable. The mobilization gap exists. The 30-day response cycle costs Fortune 1000 enterprises $847B in strategic spend annually. The consultants named the problem. The framework sellers sold approaches. Nobody built the coordination infrastructure.
+              </p>
+              <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1.5 }}>
+                Readiness OS is the only platform that turns this research into a timestamp on a deployed playbook.
+              </p>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 12 }}>
+              {[
+                { firm: "McKinsey & Company", claim: "Named the execution gap. Sold the engagement.", result: "Same 30-day mobilization cycle — with a custom PDF." },
+                { firm: "Harvard Business Review", claim: "Proved AI intensifies work without an operating model.", result: "Published the insight. Didn't build the operating model." },
+                { firm: "Gartner Research", claim: "Cited organizational readiness as the #1 AI barrier.", result: "Framework provided. Infrastructure not included." },
+              ].map((item, i) => (
+                <div key={i} style={{ padding: "20px", background: "#fff", border: "1px solid #E8E4DC" }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 6 }}>{item.firm}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: NAVY, marginBottom: 4 }}>{item.claim}</div>
+                  <div style={{ fontSize: 12, color: "#DC2626", fontStyle: "italic" }}>{item.result}</div>
+                </div>
+              ))}
+              <div style={{ padding: "16px 20px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>Readiness OS</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: "#F0EDE4" }}>Shipped the infrastructure.</div>
+                </div>
+                <Link href="/platform-reality">
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: GOLD, cursor: "pointer", whiteSpace: "nowrap" as const }}>See how →</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 2026 Enterprise AI Landscape - converted to Navy CTA style */}
         <section style={{ background: "#0A0F2E", padding: "64px 48px" }}>
           <div className="max-w-5xl mx-auto text-center">

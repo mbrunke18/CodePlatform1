@@ -3,8 +3,6 @@
 ## Overview
 VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000. Its primary goal is to automate project creation, task assignment, document staging, and budget allocation to achieve a 12-minute response time to strategic triggers. The platform incorporates 170 strategic readiness playbooks across 9 domains within its proprietary IDEA Framework™. It operates on a model where AI monitors, executives authorize, and execution is pre-staged, enabling rapid and approved actions. The vision is to become "The Readiness Infrastructure Enterprises Are Missing," empowering enterprises to be "Fearless."
 
-**Canonical product descriptor:** "VaughnMartin builds Readiness OS — coordination infrastructure for the Fortune 1000."
-
 ## User Preferences
 - Preferred communication style: Simple, everyday language
 - **FOUNDER VISION (HIGHEST PRIORITY — LOCKED):** "We redesign how work flows in the age of AI." Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act decisively. AI changed the constraint. But every vendor bolted AI onto the old model (faster spreadsheets, smarter summaries, better notes from the same slow meetings). VaughnMartin rebuilds from first principles. Pre-staged playbooks REPLACE real-time coordination. Pattern detection REPLACES committee deliberation. 12-minute execution REPLACES 30-day alignment cycles. **We are NOT competing with Copilot or AI tools — we're competing with the 40-year-old meeting-heavy operating model itself.** This thesis must be present on the Homepage, Investor pages, Founder Story, and Presentation slides.
@@ -20,49 +18,16 @@ VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000.
 - Desktop-first layout; mobile adjustments only if non-disruptive
 - Homepage dark sections use `NAVY_BG="#132558"` (not `NAVY="#0A0F2E"`) for large `<section>` backgrounds — lighter so it reads as genuine navy blue rather than near-black. All other files use `NAVY` only. Dark sections layer a gold grid (`rgba(201,168,76,0.09)`, 1px, 48px) and large radial gradient orbs (teal + gold, 600–1000px, opacity 0.11–0.22) for visual depth.
 
-## Retired Terms — NEVER USE in UI
-The following terms have been permanently retired from all customer-facing copy:
-- `"72 hours"` as a mobilization baseline (legitimate uses only: regulatory windows, incident timelines, "before Readiness OS" comparison columns)
-- `"340×"` or `"340x"` — retired speed metric
-- `"360×"` or `"360x"` or `"360X"` — retired speed metric (internal-only prop `version="360x-faster"` on ThirtySecondSpot is acceptable as a code identifier, not display text)
-- `"Agentic Execution"` — replaced with "AI-Coordinated Execution"
-- `"Agentic Execution Layer"` — fully retired
-- `"Execution Operating System"` — product is "Readiness OS"
-- `"Strategic Execution Operating System"` — retired category name
-- `"Execution Infrastructure"` as a standalone descriptor — replaced with "coordination infrastructure"
-- `"Human-AI partnership"` — replaced with "AI monitors, executives authorize"
-- `"Prepared to Execute."` as a tagline — replaced with "The response is ready before the trigger fires."
-
-## Canonical Metrics (use these exact values everywhere)
-- Response time: **12 minutes**
-- Execution head start: **3,600× Execution Head Start**
-- Baseline comparison: **30 days compressed to 12 minutes**
-- Playbooks: **170**
-- Domains: **9**
-- Triggers: **221**
-- Data points: **248+**
-- Fortune 1000 strategic spend: **$847B**
-- Strategic initiative failure rate: **83%**
-
-## Brand Colors
-- `NAVY="#0A0F2E"` — primary dark (all files except Homepage sections)
-- `NAVY_BG="#132558"` — Homepage large section backgrounds only
-- `GOLD="#C9A84C"`
-- `TEAL="#2B8A6E"`
-- `IVORY="#F0EDE4"`
-
 ## System Architecture
 
 **UI/UX Decisions:**
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
 - **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
 - **Branding:** Consistent VaughnMartin and Readiness OS branding with a circular seal logo.
-- **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`). StandardNav Experience dropdown is hardcoded in `renderExperienceDropdown()` — edit `deeperDemos`/`primaryDemos` arrays to change it.
+- **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`).
 - **Layout:** All pages are wrapped by a `PageLayout` component.
 - **Homepage:** Focuses on 12-minute execution, IDEA Framework, and research-backed validation with a specific section order.
-
-**Critical Import Rules:**
-- `ExecutionStageGuide` is a NAMED export — always `import { ExecutionStageGuide } from '@/components/ExecutionStageGuide'`
+- **Brand Colors:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`.
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion.
@@ -79,45 +44,13 @@ The following terms have been permanently retired from all customer-facing copy:
 - **AI-Powered Execution:** AI Execution Briefs, Live War Room, Post-Activation Debriefs.
 - **Automation & Simulation:** Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, Shadow Strategy Simulator (Digital Twin).
 - **IDEA Framework:** Full Trigger → Playbook IDEA Chain for trigger detection and playbook recommendations.
-- **Task Management:** Task Acknowledgment & Audit Trail.
-- **Reporting & Analytics:** Execution History Dashboard with KPIs and activation logs.
-- **Flagship Playbooks:** 23 enriched playbooks with expert content and decision gates.
-- **Configuration Wizards:** Trigger Configuration Wizard for setting up situations and playbook mapping.
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Data Consistency:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×), number of playbooks (170), and triggers (221).
-- **Personalized ROI Calculator:** Interactive calculator on `/roi-calculator`.
-- **12-Minute Test Drive:** A public 4-step sequential experience simulating execution at `/12-minute-experience`. Primary destination for prospects — replaces the retired SizzleReel as the "send before a call" asset.
-- **Playbook Public Access Model:** 3 playbooks are fully public, others require authentication.
-- **McKinsey Research Citations:** Integrated `McKinseyResearchSection` on investor pages.
+- **12-Minute Test Drive:** A public 4-step sequential experience simulating execution at `/12-minute-experience`.
 - **Live Signal Detection:** Real RSS ingestion from 8 sources every 15 minutes, with `SignalEvaluationService` scoring against 16 trigger patterns.
 - **Command Tower:** Full-screen executive display page (`/command-tower`) with live trigger detections and system stats.
-- **Dual Evaluation Engine:** `SignalEvaluationService` runs configured and default engines in parallel.
-- **Magic Link Authentication:** `/request-access` form for branded magic link login.
-- **Execution Clock:** `execution_timelines` DB table tracks 12-minute clock milestones.
-- **Execution Dividend:** Real-time ROI counter on Mission Control.
-- **Board Readiness Snapshot:** Print-ready executive report at `/board-readiness`.
-- **Day One Welcome Brief:** Full-screen first-login experience at `/welcome-brief`.
-- **Live Signal Activity Feed:** `signal_activity_log` DB table buffers scan events; `LiveSignalFeed` component shows real-time evaluation.
-- **PlaybookDetail Task Editor:** Authenticated users can edit tasks on playbook detail pages.
-- **Executive Scenario Suite:** Authenticated deep walk-through at `/executive-scenarios` with industry and role selectors.
-- **Platform Capabilities Page:** `/capabilities` details the full decision lifecycle for product users and investors.
-- **ExecutionStageGuide:** Shared component defining all 6 execution lifecycle stages, deployed across the platform.
-- **Brand Films Page (`/video`, `/brand-films`, `/cinematic`):** Two-tab layout — 90-Second CinematicHero and 30-Second ThirtySecondSpot (3 versions). Routes `/sizzle` and `/2-minute` redirect to `/12-minute-experience`.
-- **ThirtySecondSpot:** Three versions — `offense-defense`, `first-mover`, `360x-faster` (internal prop identifier only; display label is "3,600× Execution Head Start").
-- Playbooks are consistently referred to as "Readiness Playbooks" across the UI.
-
-**Retired Components:**
-- `SizzleReel.tsx` — permanently deleted. Was a 2-minute animated brand film. Superseded by the 12-Minute Test Drive (interactive) and ThirtySecondSpot (quick pitch). File removed from codebase April 2026.
-
-**MS Project EOL Positioning Page (`/ms-project`, `/ms-project-transition`, `/vs-servicenow`, `/migration`):**
-- Full comparison page: ServiceNow SPM vs. Readiness OS — targeting Fortune 1000 COOs/CIOs at the Microsoft Project EOL decision point
-- Core positioning: "Don't migrate your lag to a new database." ServiceNow = IT cost center migration; Readiness OS = CEO/Board evolution
-- Key lines: "Visibility is not velocity." / "The engine is Microsoft. The transmission is Readiness OS." / "While others move their static plans to ServiceNow, Readiness OS users are already executing."
-- Homepage callout section (`MsProjectCalloutSection`) deployed between MicrosoftEcosystemBanner and CredibilitySection
-- Page linked from StandardNav whyLinks array as featured entry
-
-**Pages not in footer (keep files, just not linked):**
-- `/execution-coordination`, `/enterprise-metrics`, `/ai-radar`, `/intelligence-hub`, `/decision-velocity`
+- **Platform Reality Page (`/platform-reality`):** Positions Readiness OS against thought leadership, highlighting the 3,600× mathematical challenge and the failure of traditional approaches.
+- **MS Project EOL Positioning Page (`/ms-project`):** Compares ServiceNow SPM vs. Readiness OS for Fortune 1000 COOs/CIOs.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI

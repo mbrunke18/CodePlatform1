@@ -178,6 +178,7 @@ const PilotOnboarding = lazy(() => import("./pages/PilotOnboarding"));
 const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const MsProjectTransition = lazy(() => import("./pages/MsProjectTransition"));
+const PlatformReality = lazy(() => import("./pages/PlatformReality"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
 const DemoAccess = lazy(() => import("./pages/DemoAccess"));
 const RequestAccess = lazy(() => import("./pages/RequestAccess"));
@@ -439,6 +440,7 @@ function Router() {
         <Route path="/growth" component={Growth} />
         <Route path="/vs-consulting" component={VsConsulting} />
         {renderRoutes(["/ms-project", "/ms-project-transition", "/vs-servicenow", "/migration"], MsProjectTransition)}
+        {renderRoutes(["/platform-reality", "/vs-theory", "/the-execution-gap", "/thought-leadership-trap"], PlatformReality)}
         <Route path="/explore" component={ExplorePage} />
         {renderRoutes(["/contact", "/early-access"], Contact)}
 

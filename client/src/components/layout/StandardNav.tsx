@@ -191,6 +191,7 @@ export default function StandardNav() {
     { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
     { label: "Why Not Consulting?", path: "/vs-consulting", icon: Scale, description: "McKinsey charges $300K–$500K for PDFs. We deliver infrastructure that executes." },
     { label: "MS Project EOL → Don't Just Migrate", path: "/ms-project", icon: Scale, description: "ServiceNow moves your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle.", featured: true },
+    { label: "Platform Reality — They Talked. We Built.", path: "/platform-reality", icon: Scale, description: "Every conference keynote proves the problem. None of them shipped the solution. Readiness OS did.", featured: true },
   ];
 
   const investorsLinks: NavLink[] = [
