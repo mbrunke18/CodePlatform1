@@ -183,7 +183,7 @@ export function SignalControlCenter() {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
-          <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+          <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent mx-auto mb-4"></div>
           <p className="text-muted-foreground">Loading Signal Control Center...</p>
         </div>
       </div>
@@ -378,7 +378,7 @@ function MetricCard({
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-2">
           <span className="text-sm text-muted-foreground">{label}</span>
-          <div className={`p-2 rounded-lg ${colorClasses[color]}`}>
+          <div className={`p-2 ${colorClasses[color]}`}>
             {icon}
           </div>
         </div>
@@ -405,17 +405,17 @@ function SignalCategoryCard({
 
   return (
     <Card 
-      className="cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] hover:border-primary/50"
+      className="cursor-pointer transition-all hover:scale-[1.02] hover:border-primary/50"
       onClick={onClick}
       data-testid={`card-signal-${category.id}`}
     >
       <CardContent className="p-4">
         <div className="flex items-start justify-between mb-3">
-          <div className={`p-2 rounded-lg bg-gradient-to-r ${PHASE_COLORS[category.phase]} text-white`}>
+          <div className={`p-2 bg-gradient-to-r ${PHASE_COLORS[category.phase]} text-white`}>
             <IconComponent className="w-5 h-5" />
           </div>
           <div className="flex items-center gap-2">
-            <div className={`w-2 h-2 rounded-full ${STATUS_COLORS[currentStatus]}`}></div>
+            <div className={`w-2 h-2 ${STATUS_COLORS[currentStatus]}`}></div>
             <span className="text-xs text-muted-foreground">{STATUS_TEXT[currentStatus]}</span>
           </div>
         </div>
@@ -472,7 +472,7 @@ function CategoryDetailView({
       </div>
 
       <div className="flex items-start gap-6">
-        <div className={`p-4 rounded-xl bg-gradient-to-r ${PHASE_COLORS[category.phase]} text-white`}>
+        <div className={`p-4 bg-gradient-to-r ${PHASE_COLORS[category.phase]} text-white`}>
           <IconComponent className="w-8 h-8" />
         </div>
         <div className="flex-1">
@@ -507,7 +507,7 @@ function CategoryDetailView({
               {dataPoints.length > 0 ? dataPoints.map((dp, idx) => (
                 <div 
                   key={dp.id} 
-                  className="p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
+                  className="p-4 border bg-card hover:bg-accent/50 transition-colors"
                   data-testid={`datapoint-${dp.id}`}
                 >
                   <div className="flex items-start justify-between">
@@ -743,7 +743,7 @@ function TriggersPanel() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={`w-2 h-2 rounded-full ${trigger.isActive ? 'bg-[#2B8A6E]' : 'bg-gray-400'}`}></div>
+                    <div className={`w-2 h-2 ${trigger.isActive ? 'bg-[#2B8A6E]' : 'bg-gray-400'}`}></div>
                     <div>
                       <span className="font-medium">{trigger.name}</span>
                       <p className="text-sm text-muted-foreground">{trigger.description}</p>
@@ -810,7 +810,7 @@ function DataSourcesPanel() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium">{source.name}</span>
-                  <div className={`w-2 h-2 rounded-full ${source.isActive ? 'bg-[#2B8A6E]' : 'bg-gray-400'}`}></div>
+                  <div className={`w-2 h-2 ${source.isActive ? 'bg-[#2B8A6E]' : 'bg-gray-400'}`}></div>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Badge variant="outline">{source.sourceType}</Badge>

@@ -47,12 +47,12 @@ export function PeerAdoptionOverlay() {
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <Card className="relative w-[950px] bg-gradient-to-br  border-[#2B8A6E]/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
+      <Card className="relative w-[950px] bg-gradient-to-br  border-[#2B8A6E]/50 p-8 animate-in zoom-in-95 duration-500">
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
-              <div className="p-3 bg-[#0A0F2E]/30 rounded-lg">
+              <div className="p-3 bg-[#0A0F2E]/30">
                 <Users className="h-8 w-8 text-[#0A0F2E]" />
               </div>
               <h2 className="text-3xl font-bold text-[#0A0F2E]">While You're Deciding...</h2>
@@ -62,19 +62,19 @@ export function PeerAdoptionOverlay() {
 
           {/* Stats Bar */}
           <div className="grid grid-cols-3 gap-4">
-            <div className="bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#2B8A6E]/30">
+            <div className="bg-[#0A0F2E]/20 p-4 border border-[#2B8A6E]/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#DFC178]">847</p>
                 <p className="text-[#0A0F2E] text-sm mt-1">Fortune 1000 Executives</p>
               </div>
             </div>
-            <div className="bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#2B8A6E]/30">
+            <div className="bg-[#0A0F2E]/20 p-4 border border-[#2B8A6E]/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#DFC178]">12 min</p>
                 <p className="text-[#0A0F2E] text-sm mt-1">Average Response Time</p>
               </div>
             </div>
-            <div className="bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#2B8A6E]/30">
+            <div className="bg-[#0A0F2E]/20 p-4 border border-[#2B8A6E]/30">
               <div className="text-center">
                 <p className="text-3xl font-bold text-[#DFC178]">94%</p>
                 <p className="text-[#0A0F2E] text-sm mt-1">Crisis Success Rate</p>
@@ -93,7 +93,7 @@ export function PeerAdoptionOverlay() {
               {adoptingCompanies.map((company, idx) => (
                 <div
                   key={idx}
-                  className={`bg-black/40 rounded-lg p-4 border border-[#2B8A6E]/30 transition-all duration-500 ${
+                  className={`bg-black/40 p-4 border border-[#2B8A6E]/30 transition-all duration-500 ${
                     idx < visibleCompanies ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                   }`}
                 >
@@ -121,7 +121,7 @@ export function PeerAdoptionOverlay() {
           </div>
 
           {/* Bottom Message */}
-          <div className="bg-gradient-to-r from-[#0A0F2E]/30 to-[#141B45]/30 rounded-lg p-5 border border-[#2B8A6E]/40">
+          <div className="bg-gradient-to-r from-[#0A0F2E]/30 to-[#141B45]/30 p-5 border border-[#2B8A6E]/40">
             <div className="text-center space-y-2">
               <p className="text-[#0A0F2E] text-xl font-bold">
                 They Had the Same Doubts You Do

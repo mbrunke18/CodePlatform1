@@ -66,7 +66,7 @@ export default function CreateScenarioButton({
         <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden p-0">
           <DialogHeader className="px-6 pt-6 pb-4 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] dark:from-[#0A0F2E]/20 dark:to-[#141B45]/20">
             <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
                 <Rocket className="w-6 h-6 text-gray-900" />
               </div>
               Create Championship-Level Playbook

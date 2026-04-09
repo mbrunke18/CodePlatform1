@@ -136,7 +136,7 @@ export default function ContinuousModePage() {
             <CardContent>
               {continuousMode.enabled && (
                 <div className="flex items-center gap-2 text-sm text-[#2B8A6E]">
-                  <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse"></div>
                   <span className="font-semibold uppercase tracking-wider text-[10px]">Monitoring in progress</span>
                 </div>
               )}
@@ -229,7 +229,7 @@ export default function ContinuousModePage() {
                 {recentExecutions.map((execution, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]"
+                    className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC]"
                     data-testid={`execution-log-${index}`}
                   >
                     <div className="flex items-center gap-3">
@@ -272,7 +272,7 @@ export default function ContinuousModePage() {
             ].map((int) => (
               <div key={int.name} className="p-4 bg-white border rounded-sm" style={{ borderColor: BORDER }}>
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                  <div className="w-2 h-2 bg-[#2B8A6E]" />
                   <span className="text-[9px] font-bold uppercase tracking-widest" style={{ color: TEAL }}>LIVE</span>
                 </div>
                 <div className="font-semibold text-sm mb-1" style={{ color: NAVY }}>{int.name}</div>
@@ -285,7 +285,7 @@ export default function ContinuousModePage() {
         </div>
 
         {/* Proactive AI Insights */}
-        <Card className="border rounded-sm shadow-sm" style={{ borderColor: BORDER, background: "#FDFCFA" }}>
+        <Card className="border rounded-sm" style={{ borderColor: BORDER, background: "#FDFCFA" }}>
           <CardHeader className="pb-4">
             <div className="flex items-center gap-3">
               <Brain className="w-5 h-5" style={{ color: GOLD }} />
@@ -342,14 +342,14 @@ export default function ContinuousModePage() {
         </Card>
 
         {/* Capabilities Overview */}
-        <Card style={{ background: NAVY }} className="border-none shadow-xl text-white relative overflow-hidden">
+        <Card style={{ background: NAVY }} className="border-none text-white relative overflow-hidden">
           <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.1) 1px, transparent 0)", backgroundSize: "24px 24px" }} />
           <CardHeader className="relative z-10">
             <CardTitle className="text-2xl" style={CG}>Continuous Mode Capabilities</CardTitle>
           </CardHeader>
           <CardContent className="relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+              <div className="p-4 bg-white/5 border border-white/10">
                 <h4 className="font-semibold mb-2 flex items-center gap-2 text-[#C9A84C]">
                   <Activity className="w-5 h-5" />
                   Always-On Monitoring
@@ -358,7 +358,7 @@ export default function ContinuousModePage() {
                   24/7 scanning of intelligence signals for threats and opportunities
                 </p>
               </div>
-              <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+              <div className="p-4 bg-white/5 border border-white/10">
                 <h4 className="font-semibold mb-2 flex items-center gap-2 text-[#C9A84C]">
                   <CheckCircle className="w-5 h-5" />
                   Automated Learning
@@ -367,7 +367,7 @@ export default function ContinuousModePage() {
                   Self-improving playbooks after every execution
                 </p>
               </div>
-              <div className="p-4 bg-white/5 border border-white/10 rounded-lg">
+              <div className="p-4 bg-white/5 border border-white/10">
                 <h4 className="font-semibold mb-2 flex items-center gap-2 text-[#C9A84C]">
                   <Clock className="w-5 h-5" />
                   Scheduled Operations

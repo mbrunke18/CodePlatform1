@@ -240,7 +240,7 @@ export default function PlaybookReadinessAudit() {
             return (
               <Card 
                 key={tier} 
-                className={`${config.bgColor} ${config.borderColor} border cursor-pointer hover:shadow-md transition-all`}
+                className={`${config.bgColor} ${config.borderColor} border cursor-pointer transition-all`}
                 onClick={() => setSelectedTier(tier)}
                 style={{ borderTop: `4px solid ${(config as any).indicator}` }}
                 data-testid={`tier-card-${tier}`}
@@ -264,7 +264,7 @@ export default function PlaybookReadinessAudit() {
           })}
         </div>
 
-        <Card className="border border-[#E8E4DC] bg-white shadow-sm" data-testid="card-overall-readiness">
+        <Card className="border border-[#E8E4DC] bg-white" data-testid="card-overall-readiness">
           <CardHeader>
             <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
@@ -382,7 +382,7 @@ export default function PlaybookReadinessAudit() {
             return (
               <Card 
                 key={playbook.id} 
-                className={`border border-[#E8E4DC] bg-white border-l-4 hover:shadow-md transition-all`}
+                className={`border border-[#E8E4DC] bg-white border-l-4 transition-all`}
                 style={{ borderLeftColor: indicatorColor }}
                 data-testid={`playbook-card-${playbook.playbookNumber}`}
               >

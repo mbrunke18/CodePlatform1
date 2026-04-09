@@ -52,7 +52,7 @@ export default function AICopilotPanel() {
       <Card>
         <CardHeader className="border-b border-border">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <i className="fas fa-robot text-white w-4"></i>
             </div>
             <h3 className="text-lg font-semibold text-foreground">AI Strategic Co-pilot</h3>
@@ -61,9 +61,9 @@ export default function AICopilotPanel() {
         
         <CardContent className="p-6 space-y-4">
           {aiResponse && (
-            <div className="bg-muted/50 rounded-lg p-4">
+            <div className="bg-muted/50 p-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-6 h-6 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-sparkles text-white text-xs"></i>
                 </div>
                 <div className="flex-1 space-y-3">
@@ -105,7 +105,7 @@ export default function AICopilotPanel() {
                 data-testid="button-send-ai-query"
               >
                 {aiMutation.isPending ? (
-                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-primary border-t-transparent animate-spin"></div>
                 ) : (
                   <i className="fas fa-paper-plane w-4"></i>
                 )}
@@ -127,7 +127,7 @@ export default function AICopilotPanel() {
             className="w-full justify-start h-auto p-4"
             data-testid="button-create-organization"
           >
-            <div className="w-8 h-8 bg-[#F8F7F4] rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-[#F8F7F4] flex items-center justify-center mr-3">
               <i className="fas fa-building text-[#0A0F2E] w-4"></i>
             </div>
             <div className="text-left">
@@ -141,7 +141,7 @@ export default function AICopilotPanel() {
             className="w-full justify-start h-auto p-4"
             data-testid="button-invite-member"
           >
-            <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-green-100 flex items-center justify-center mr-3">
               <i className="fas fa-user-plus text-green-600 w-4"></i>
             </div>
             <div className="text-left">
@@ -155,7 +155,7 @@ export default function AICopilotPanel() {
             className="w-full justify-start h-auto p-4"
             data-testid="button-generate-report"
           >
-            <div className="w-8 h-8 bg-[#0A0F2E] rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-[#0A0F2E] flex items-center justify-center mr-3">
               <i className="fas fa-chart-pie text-[#C9A84C] w-4"></i>
             </div>
             <div className="text-left">

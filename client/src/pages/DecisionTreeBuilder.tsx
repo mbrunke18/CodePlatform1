@@ -183,7 +183,7 @@ export default function DecisionTreeBuilder() {
           </p>
         </div>
         
-        <Card className="mb-12 bg-[#0A0F2E] border-none rounded-none shadow-xl overflow-hidden relative" data-testid="preparation-mindset-card">
+        <Card className="mb-12 bg-[#0A0F2E] border-none rounded-none overflow-hidden relative" data-testid="preparation-mindset-card">
           <div style={{ 
             position: "absolute", 
             inset: 0, 
@@ -222,7 +222,7 @@ export default function DecisionTreeBuilder() {
         </Card>
         
         <div className="space-y-12">
-          <Card className="rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+          <Card className="rounded-none border-[#E8E4DC] bg-white p-8">
             <CardHeader className="px-0 pt-0 mb-8 border-b border-[#F8F7F4] pb-6">
               <CardTitle style={CG} className="text-3xl font-bold text-[#0A0F2E]">Scenario Information</CardTitle>
               <CardDescription className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280] mt-1">What high-stakes decision needs a pre-staged tree?</CardDescription>
@@ -280,7 +280,7 @@ export default function DecisionTreeBuilder() {
             </CardContent>
           </Card>
           
-          <Card className="rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+          <Card className="rounded-none border-[#E8E4DC] bg-white p-8">
             <CardHeader className="px-0 pt-0 mb-8 border-b border-[#F8F7F4] pb-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -365,7 +365,7 @@ export default function DecisionTreeBuilder() {
             </CardContent>
           </Card>
           
-          <Card className="rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+          <Card className="rounded-none border-[#E8E4DC] bg-white p-8">
             <CardHeader className="px-0 pt-0 mb-8 border-b border-[#F8F7F4] pb-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -499,7 +499,7 @@ export default function DecisionTreeBuilder() {
             size="lg"
             onClick={handleSave}
             disabled={createTreeMutation.isPending}
-            className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-12 h-14 font-bold text-xs tracking-widest uppercase shadow-xl"
+            className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-12 h-14 font-bold text-xs tracking-widest uppercase"
             data-testid="button-save"
           >
             <Save className="mr-3 h-5 w-5 text-[#C9A84C]" />

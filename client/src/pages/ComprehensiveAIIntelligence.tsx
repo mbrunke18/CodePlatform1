@@ -360,7 +360,7 @@ export default function ComprehensiveAIIntelligence() {
         
         {/* AI Intelligence Header */}
         <div className="flex items-center justify-between">
-          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
+          <div className="bg-[#0A0F2E] text-white p-8 relative overflow-hidden w-full flex items-center justify-between">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             <div className="relative z-10 flex items-center gap-4 text-white">
               <Brain className="h-10 w-10 text-[#C9A84C]" />
@@ -373,7 +373,7 @@ export default function ComprehensiveAIIntelligence() {
               <Button 
                 onClick={generateAllIntelligence}
                 disabled={isGenerating}
-                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] shadow-lg"
+                className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
               >
                 {isGenerating ? (
                   <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
@@ -472,9 +472,9 @@ export default function ComprehensiveAIIntelligence() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {aiModules.map((module) => (
-                    <div key={module.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg">
+                    <div key={module.id} className="flex items-center justify-between p-3 bg-[#F8F7F4]">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+                        <div className="p-2 bg-[#0A0F2E]/10">
                           {module.icon}
                         </div>
                         <div>
@@ -506,23 +506,23 @@ export default function ComprehensiveAIIntelligence() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
-                      <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
+                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
+                      <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                       <div className="flex-1">
                         <div className="text-sm text-[#0A0F2E]">Pulse Intelligence generated performance metrics</div>
                         <div className="text-xs text-[#6B7280]">Real-time • Confidence: 96.4%</div>
                       </div>
                       <Progress value={96.4} className="w-12 h-1 [&>div]:bg-[#C9A84C]" />
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
-                      <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
+                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
+                      <div className="w-2 h-2 bg-[#0A0F2E]" />
                       <div className="flex-1">
                         <div className="text-sm text-[#0A0F2E]">Nova identified breakthrough innovation opportunity</div>
                         <div className="text-xs text-[#6B7280]">2 min ago • Impact: $750K potential</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
-                      <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
+                    <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
+                      <div className="w-2 h-2 bg-[#0A0F2E]" />
                       <div className="flex-1">
                         <div className="text-sm text-[#0A0F2E]">Prism completed strategic market analysis</div>
                         <div className="text-xs text-[#6B7280]">5 min ago • Market opportunity: $2.3M</div>
@@ -542,7 +542,7 @@ export default function ComprehensiveAIIntelligence() {
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-[#0A0F2E] flex items-center gap-3">
-                        <div className="p-2 bg-[#0A0F2E] rounded-lg">
+                        <div className="p-2 bg-[#0A0F2E]">
                           {module.icon}
                         </div>
                         {module.name}
@@ -684,23 +684,23 @@ export default function ComprehensiveAIIntelligence() {
                         </div>
                         <p className="text-[#6B7280] mb-4">{report.summary}</p>
                         <div className="grid grid-cols-2 gap-4 mb-4">
-                          <div className="bg-[#F8F7F4] p-3 rounded-lg border border-[#E8E4DC]">
+                          <div className="bg-[#F8F7F4] p-3 border border-[#E8E4DC]">
                             <div className="text-sm font-semibold text-[#0A0F2E] mb-2">Key Findings</div>
                             <ul className="text-xs text-[#6B7280] space-y-1">
                               {report.keyFindings.map((finding, idx) => (
                                 <li key={idx} className="flex items-start gap-2">
-                                  <div className="w-1 h-1 bg-[#6B7280] rounded-full mt-1.5" />
+                                  <div className="w-1 h-1 bg-[#6B7280] mt-1.5" />
                                   {finding}
                                 </li>
                               ))}
                             </ul>
                           </div>
-                          <div className="bg-[#F8F7F4] p-3 rounded-lg border border-[#E8E4DC]">
+                          <div className="bg-[#F8F7F4] p-3 border border-[#E8E4DC]">
                             <div className="text-sm font-semibold text-[#0A0F2E] mb-2">Recommendations</div>
                             <ul className="text-xs text-[#6B7280] space-y-1">
                               {report.recommendations.map((rec, idx) => (
                                 <li key={idx} className="flex items-start gap-2">
-                                  <div className="w-1 h-1 bg-[#0A0F2E] rounded-full mt-1.5" />
+                                  <div className="w-1 h-1 bg-[#0A0F2E] mt-1.5" />
                                   {rec}
                                 </li>
                               ))}

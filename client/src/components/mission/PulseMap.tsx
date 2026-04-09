@@ -249,7 +249,7 @@ export default function PulseMap() {
               { label: 'ACTIVE RESPONSES', count: activeActivations, color: TEAL, desc: 'playbooks executing now' },
             ].map(s => (
               <div key={s.label} className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: s.color }} />
+                <div className="w-2 h-2 flex-shrink-0" style={{ background: s.color }} />
                 <div className="flex-1">
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-black" style={{ color: s.color }}>{s.count}</span>
@@ -270,7 +270,7 @@ export default function PulseMap() {
               { color: '#374151', label: 'Stable / No Rules' },
             ].map(l => (
               <div key={l.label} className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: l.color }} />
+                <div className="w-2.5 h-2.5 flex-shrink-0" style={{ background: l.color }} />
                 <span className="text-[9px]" style={{ color: 'rgba(255,255,255,0.5)' }}>{l.label}</span>
               </div>
             ))}

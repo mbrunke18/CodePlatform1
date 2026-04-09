@@ -79,7 +79,7 @@ export default function ExecutionWebSocketDemo({
               {acknowledgments.map((ack, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-900 animate-in fade-in slide-in-from-top-2 duration-500"
+                  className="flex items-start gap-3 p-3 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 animate-in fade-in slide-in-from-top-2 duration-500"
                   data-testid={`ack-${index}`}
                 >
                   <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />

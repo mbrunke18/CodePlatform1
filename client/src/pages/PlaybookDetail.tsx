@@ -570,7 +570,7 @@ export default function PlaybookDetail() {
                     >
                       <Pencil className="h-3.5 w-3.5 mr-2" />
                       Edit Tasks
-                      {hasUnsaved && <span className="ml-2 w-2 h-2 rounded-full bg-amber-500 inline-block" />}
+                      {hasUnsaved && <span className="ml-2 w-2 h-2 bg-amber-500 inline-block" />}
                     </TabsTrigger>
                   )}
                   {isAuthenticated && (
@@ -978,7 +978,7 @@ export default function PlaybookDetail() {
                       <div className="flex items-center gap-3">
                         {hasUnsaved && (
                           <span style={{ fontSize: 11, color: "#F59E0B", fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-                            <span className="w-2 h-2 rounded-full bg-amber-500 inline-block" />
+                            <span className="w-2 h-2 bg-amber-500 inline-block" />
                             Unsaved changes
                           </span>
                         )}

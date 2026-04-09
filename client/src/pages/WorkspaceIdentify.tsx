@@ -164,7 +164,7 @@ function TwoPhasePlaybookSelector() {
       <CardHeader className="pb-4 bg-[#0A0F2E]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#2B8A6E]/20">
+            <div className="p-2.5 bg-[#2B8A6E]/20">
               <Layers className="h-5 w-5 text-[#2B8A6E]" />
             </div>
             <div>
@@ -239,7 +239,7 @@ function TwoPhasePlaybookSelector() {
           <div className="p-5 min-h-[180px]">
             {!selectedId ? (
               <div className="flex flex-col items-center justify-center h-full py-8 gap-3 text-center">
-                <div className="p-3 rounded-full bg-[#2B8A6E]/10">
+                <div className="p-3 bg-[#2B8A6E]/10">
                   <BookOpen className="h-6 w-6 text-[#2B8A6E]" />
                 </div>
                 <p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a playbook for full details</p>
@@ -269,7 +269,7 @@ function TwoPhasePlaybookSelector() {
                   <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/70 leading-relaxed">{detail.description}</p>
                 )}
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 rounded-lg bg-[#F8F7F4] dark:bg-white/5 text-center">
+                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center">
                     <p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {Array.isArray(detail.executionSteps) ? detail.executionSteps.length : Array.isArray(detail.enrichedPhases) ? detail.enrichedPhases.length : '—'}
                     </p>
@@ -277,7 +277,7 @@ function TwoPhasePlaybookSelector() {
                       {Array.isArray(detail.executionSteps) ? 'Execution Steps' : 'Phases'}
                     </p>
                   </div>
-                  <div className="p-3 rounded-lg bg-[#F8F7F4] dark:bg-white/5 text-center">
+                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center">
                     <p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {Array.isArray(detail.stakeholders) ? detail.stakeholders.length : '—'}
                     </p>
@@ -315,7 +315,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-[#2B8A6E] shadow-lg shadow-[#2B8A6E]/30">
+              <div className="p-4 bg-[#2B8A6E] shadow-[#2B8A6E]/30">
                 <ClipboardList className="h-8 w-8 text-white" />
               </div>
               <div>
@@ -354,27 +354,27 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                 <span className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60">Phase 1 of 4</span>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
+                <div className="flex items-center gap-2 px-3 py-2 bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-[#2B8A6E]/20">
                   <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
                   <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">IDENTIFY</span>
                 </div>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/detect">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
                     <Radar className="h-4 w-4 text-[#0A0F2E]" />
                     <span className="text-sm text-[#0A0F2E] font-medium">DETECT</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/execute">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
                     <Compass className="h-4 w-4 text-[#C9A84C]" />
                     <span className="text-sm text-[#C9A84C]">EXECUTE</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/advance">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
                     <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm text-[#2B8A6E]">ADVANCE</span>
                   </div>
@@ -386,7 +386,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
           {/* Strategic Triad Overview */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             {domainCategories.map((category) => (
-              <Card key={category.name} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
+              <Card key={category.name} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 ">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -413,10 +413,10 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
             Recent Playbook Activity
           </h2>
           <div className="space-y-3 mb-8">
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#2B8A6E]">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5  border-l-4 border-l-[#2B8A6E]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
+                  <div className="p-2 bg-[#2B8A6E]/10">
                     <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -430,10 +430,10 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#0A0F2E]">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5  border-l-4 border-l-[#0A0F2E]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-red-600/10">
+                  <div className="p-2 bg-red-600/10">
                     <Shield className="h-5 w-5 text-red-600" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -447,10 +447,10 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow border-l-4 border-l-[#C9A84C]">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5  border-l-4 border-l-[#C9A84C]">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+                  <div className="p-2 bg-[#C9A84C]/10">
                     <Rocket className="h-5 w-5 text-[#C9A84C]" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -471,10 +471,10 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${tool.bgColor}`}>
+                      <div className={`p-3 ${tool.bgColor}`}>
                         <tool.icon className={`h-6 w-6 ${tool.color}`} />
                       </div>
                       <div className="flex-1">
@@ -503,7 +503,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-white/10">
+                  <div className="p-3 bg-white/10">
                     <Target className="h-6 w-6 text-[#C9A84C]" />
                   </div>
                   <div>

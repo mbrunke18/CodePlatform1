@@ -73,7 +73,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-lg bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center">
+              <div className="h-12 w-12 bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center">
                 <DollarSign className="h-6 w-6 text-[#C9A84C] dark:text-[#0A0F2E]" />
               </div>
               <div>
@@ -161,7 +161,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 rounded-lg p-6 border-2 border-[#2B8A6E]/30">
+              <div className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 p-6 border-2 border-[#2B8A6E]/30">
                 <div className="flex items-center gap-2 mb-3">
                   <Target className="h-5 w-5 text-[#2B8A6E]" />
                   <h3 className="font-semibold text-lg text-[#2B8A6E]">Market Growth</h3>
@@ -182,7 +182,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 </div>
               </div>
 
-              <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 rounded-lg p-6 border-2 border-[#0A0F2E]/30">
+              <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 p-6 border-2 border-[#0A0F2E]/30">
                 <div className="flex items-center gap-2 mb-3">
                   <Shield className="h-5 w-5 text-[#C9A84C]" />
                   <h3 className="font-semibold text-lg text-[#C9A84C]">Risk Management</h3>
@@ -203,7 +203,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 </div>
               </div>
 
-              <div className="bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10 rounded-lg p-6 border-2 border-[#C9A84C]/30">
+              <div className="bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10 p-6 border-2 border-[#C9A84C]/30">
                 <div className="flex items-center gap-2 mb-3">
                   <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
                   <h3 className="font-semibold text-lg text-[#C9A84C]">Strategic Transformation</h3>
@@ -323,12 +323,12 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                   {topScenarios.map((scenario, index) => (
                     <div 
                       key={scenario.id} 
-                      className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6 border-2 border-[#E8E4DC] dark:border-white/10"
+                      className="bg-[#F8F7F4] dark:bg-white/5 p-6 border-2 border-[#E8E4DC] dark:border-white/10"
                       data-testid={`card-top-scenario-${index + 1}`}
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <div className="h-10 w-10 rounded-full bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center text-[#C9A84C] dark:text-[#0A0F2E] font-bold text-lg">
+                          <div className="h-10 w-10 bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center text-[#C9A84C] dark:text-[#0A0F2E] font-bold text-lg">
                             #{index + 1}
                           </div>
                           <div>
@@ -373,7 +373,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* Traditional Approach */}
-                  <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 rounded-lg p-6 border-2 border-[#0A0F2E]/30">
+                  <div className="bg-[#0A0F2E]/5 dark:bg-[#0A0F2E]/10 p-6 border-2 border-[#0A0F2E]/30">
                     <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-[#C9A84C] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       Traditional Approach
                     </h3>
@@ -405,7 +405,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                   </div>
 
                   {/* Readiness OS Approach */}
-                  <div className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 rounded-lg p-6 border-2 border-[#2B8A6E]/30">
+                  <div className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 p-6 border-2 border-[#2B8A6E]/30">
                     <h3 className="text-xl font-bold text-[#2B8A6E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       ✅ Readiness OS
                     </h3>
@@ -438,7 +438,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-6 bg-[#0A0F2E] rounded-lg p-6 border border-[#E8E4DC] dark:border-white/10">
+                <div className="mt-6 bg-[#0A0F2E] p-6 border border-[#E8E4DC] dark:border-white/10">
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-bold text-lg text-[#C9A84C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>

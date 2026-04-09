@@ -117,12 +117,12 @@ export default function ExecutionOSVideo() {
               >
                 <div className="relative w-24 h-24 mx-auto mb-4">
                   <motion.div
-                    className="absolute inset-0 rounded-full border-4 border-[#D4AF37]"
+                    className="absolute inset-0 border-4 border-[#D4AF37]"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   />
                   <motion.div
-                    className="absolute inset-3 rounded-full border-2 border-[#00A8A8]"
+                    className="absolute inset-3 border-2 border-[#00A8A8]"
                     animate={{ rotate: -360 }}
                     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                   />
@@ -137,7 +137,7 @@ export default function ExecutionOSVideo() {
               <Button
                 onClick={() => setIsPlaying(true)}
                 size="lg"
-                className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold text-xl px-12 py-8 rounded-full shadow-2xl"
+                className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold text-xl px-12 py-8"
               >
                 <Play className="w-8 h-8 mr-3" />
                 Watch Video
@@ -151,16 +151,16 @@ export default function ExecutionOSVideo() {
         )}
 
         <div className="absolute top-4 left-4 z-30">
-          <div className="bg-black/40 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm">
+          <div className="bg-black/40 backdrop-blur-sm px-3 py-1.5 text-sm">
             <span className="text-gray-900/60">Scene {currentScene + 1}/{SCENES.length}:</span>
             <span className="text-[#D4AF37] ml-2 font-medium">{SCENES[currentScene].label}</span>
           </div>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/80 to-transparent p-6">
-          <div className="w-full bg-white/20 rounded-full h-1.5 mb-4">
+          <div className="w-full bg-white/20 h-1.5 mb-4">
             <div 
-              className="bg-[#D4AF37] h-1.5 rounded-full transition-all duration-100"
+              className="bg-[#D4AF37] h-1.5 transition-all duration-100"
               style={{ width: `${overallPercent}%` }}
             />
           </div>
@@ -172,7 +172,7 @@ export default function ExecutionOSVideo() {
                   key={scene.id}
                   onClick={() => { setCurrentScene(idx); setProgress(0); }}
                   title={scene.label}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-2 transition-all ${
                     idx === currentScene ? "bg-[#D4AF37] w-8" : 
                     idx < currentScene ? "bg-[#D4AF37]/60 w-3" : "bg-white/30 w-3"
                   }`}

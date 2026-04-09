@@ -884,7 +884,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               
               {/* Top Integrations */}
-              <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardHeader>
                   <CardTitle className="text-[#0A0F2E] flex items-center gap-2 font-bold text-xl uppercase tracking-widest" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <BarChart3 className="h-5 w-5 text-[#C9A84C]" />
@@ -915,7 +915,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
               </Card>
 
               {/* Recent Activity */}
-              <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardHeader>
                   <CardTitle className="text-[#0A0F2E] flex items-center gap-2 font-bold text-xl uppercase tracking-widest" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <Clock className="h-5 w-5 text-[#C9A84C]" />
@@ -982,7 +982,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
                   {filteredIntegrations.map((integration) => {
                     const isConnected = integration.status === 'active';
                     return (
-                      <Card key={integration.id} className="bg-white border-[#E8E4DC] rounded-none hover:shadow-md transition-all duration-300">
+                      <Card key={integration.id} className="bg-white border-[#E8E4DC] rounded-none transition-all duration-300">
                         <CardHeader>
                           <div className="flex items-center justify-between mb-4">
                             <CardTitle className="text-[#0A0F2E] flex items-center gap-3 font-bold uppercase tracking-wider text-sm">
@@ -1079,7 +1079,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           </TabsContent>
 
           <TabsContent value="apis" className="space-y-6">
-            <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+            <Card className="bg-white border-[#E8E4DC] rounded-none">
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -1140,7 +1140,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           <TabsContent value="dataflows" className="space-y-6">
             <div className="space-y-4">
               {dataFlows.map((flow) => (
-                <Card key={flow.id} className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+                <Card key={flow.id} className="bg-white border-[#E8E4DC] rounded-none">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">

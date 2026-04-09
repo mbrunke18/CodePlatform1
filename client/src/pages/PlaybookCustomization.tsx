@@ -153,10 +153,10 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
           </div>
 
           {/* Header */}
-          <div className="bg-[#0A0F2E] text-white p-10 rounded-2xl border border-[#E8E4DC] mb-10">
+          <div className="bg-[#0A0F2E] text-white p-10 border border-[#E8E4DC] mb-10">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="flex items-center space-x-6">
-                <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10">
+                <div className="w-16 h-16 bg-white/10 flex items-center justify-center border border-white/10">
                   <BookOpen className="w-8 h-8 text-[#C9A84C]" />
                 </div>
                 <div>
@@ -170,7 +170,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               </div>
               <div className="flex items-center gap-4">
                 <Link to="/">
-                  <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold h-12 px-8 rounded-xl border-0">
+                  <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold h-12 px-8 border-0">
                     <ArrowLeft className="h-4 w-4 mr-2" />
                     Dashboard
                   </Button>
@@ -188,14 +188,14 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   placeholder="Search playbook templates by keyword, scenario, or domain..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 h-14 bg-white border-[#E8E4DC] rounded-xl text-lg focus:ring-[#C9A84C]"
+                  className="pl-12 h-14 bg-white border-[#E8E4DC] text-lg focus:ring-[#C9A84C]"
                   data-testid="input-search-playbooks"
                 />
               </div>
             </div>
             <div>
               <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-                <SelectTrigger className="h-14 bg-white border-[#E8E4DC] rounded-xl font-bold text-[#0A0F2E]">
+                <SelectTrigger className="h-14 bg-white border-[#E8E4DC] font-bold text-[#0A0F2E]">
                   <Filter className="h-4 w-4 mr-2 text-[#C9A84C]" />
                   <SelectValue placeholder="All Domains" />
                 </SelectTrigger>
@@ -217,7 +217,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               const indicatorColor = isOffense ? TEAL : isDefense ? NAVY : GOLD;
               
               return (
-                <Card key={template.id} className="bg-white border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 shadow-sm hover:shadow-md rounded-2xl overflow-hidden group">
+                <Card key={template.id} className="bg-white border-[#E8E4DC] hover:border-[#C9A84C] transition-all duration-300 overflow-hidden group">
                   <div className="h-1.5 transition-colors" style={{ backgroundColor: indicatorColor }} />
                   <CardHeader className="p-8">
                     <div className="flex items-center justify-between mb-4">
@@ -238,22 +238,22 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 </CardHeader>
                 <CardContent className="px-8 pb-8 pt-0">
                   <div className="grid grid-cols-3 gap-4 mb-8">
-                    <div className="text-center p-3 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="text-center p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="text-[9px] font-bold text-[#6B7280] uppercase mb-1">STAKEHOLDERS</div>
                       <div className="text-lg font-bold text-[#0A0F2E]">{template.stakeholderCount}</div>
                     </div>
-                    <div className="text-center p-3 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="text-center p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="text-[9px] font-bold text-[#6B7280] uppercase mb-1">TASKS</div>
                       <div className="text-lg font-bold text-[#0A0F2E]">{template.tasks}</div>
                     </div>
-                    <div className="text-center p-3 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="text-center p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="text-[9px] font-bold text-[#6B7280] uppercase mb-1">COMPLEXITY</div>
                       <div className="text-[10px] font-bold text-[#0A0F2E] uppercase">{template.complexity}</div>
                     </div>
                   </div>
                   <Button 
                     onClick={() => { setSelectedTemplate(template); setIsDialog(true); }}
-                    className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-12 rounded-xl"
+                    className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-12"
                   >
                     <Copy className="h-4 w-4 mr-2" />
                     Customize Template
@@ -283,7 +283,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               </DialogHeader>
 
               <Tabs defaultValue="basic" className="space-y-8">
-                <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC] rounded-xl h-12">
+                <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC] h-12">
                   <TabsTrigger value="basic" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">1. Identity</TabsTrigger>
                   <TabsTrigger value="stakeholders" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">2. Command</TabsTrigger>
                   <TabsTrigger value="governance" className="rounded-lg data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] font-bold text-[11px] uppercase tracking-wider px-6">3. Governance</TabsTrigger>
@@ -294,11 +294,11 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   <div className="grid gap-8">
                     <div className="space-y-3">
                       <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Localized Playbook Name</Label>
-                      <Input defaultValue={selectedTemplate?.name} className="h-12 border-[#E8E4DC] rounded-xl font-bold text-[#0A0F2E]" />
+                      <Input defaultValue={selectedTemplate?.name} className="h-12 border-[#E8E4DC] font-bold text-[#0A0F2E]" />
                     </div>
                     <div className="space-y-3">
                       <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Strategic Intent & Scope</Label>
-                      <Textarea defaultValue={selectedTemplate?.description} className="min-h-[120px] border-[#E8E4DC] rounded-xl leading-relaxed" />
+                      <Textarea defaultValue={selectedTemplate?.description} className="min-h-[120px] border-[#E8E4DC] leading-relaxed" />
                     </div>
                   </div>
                 </TabsContent>
@@ -313,13 +313,13 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                         { role: 'Operational Lead', default: 'COO' },
                         { role: 'Financial Oversight', default: 'CFO' },
                       ].map((item, i) => (
-                        <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                        <div key={i} className="flex items-center justify-between p-5 bg-[#F8F7F4] border border-[#E8E4DC]">
                           <div>
                             <div className="text-sm font-bold text-[#0A0F2E]">{item.role}</div>
                             <div className="text-xs text-[#6B7280] mt-1">Default Template Role</div>
                           </div>
                           <Select defaultValue={item.default}>
-                            <SelectTrigger className="w-64 bg-white border-[#E8E4DC] rounded-xl font-bold">
+                            <SelectTrigger className="w-64 bg-white border-[#E8E4DC] font-bold">
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent className="rounded-xl border-[#E8E4DC]">
@@ -342,10 +342,10 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                       <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Single Action Budget Limit</Label>
                       <div className="relative">
                         <DollarSign className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
-                        <Input type="number" placeholder="50,000" className="pl-10 h-12 border-[#E8E4DC] rounded-xl font-bold" />
+                        <Input type="number" placeholder="50,000" className="pl-10 h-12 border-[#E8E4DC] font-bold" />
                       </div>
                     </div>
-                    <div className="flex items-center justify-between p-5 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                    <div className="flex items-center justify-between p-5 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="space-y-1">
                         <Label className="font-bold text-[#0A0F2E]">Board Notification</Label>
                         <p className="text-xs text-[#6B7280]">Trigger board alert on activation</p>
@@ -364,7 +364,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                         { title: 'Milestone Completion', desc: 'Broadcast progress as critical tasks are fulfilled' },
                         { title: 'Escalation Triggers', desc: 'Automate high-priority alerts when timeline slippage occurs' },
                       ].map((pref, i) => (
-                        <div key={i} className="flex items-center justify-between p-5 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                        <div key={i} className="flex items-center justify-between p-5 bg-[#F8F7F4] border border-[#E8E4DC]">
                           <div className="space-y-1">
                             <div className="text-sm font-bold text-[#0A0F2E]">{pref.title}</div>
                             <div className="text-xs text-[#6B7280]">{pref.desc}</div>
@@ -380,7 +380,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               <div className="mt-12 flex items-center justify-end gap-4 border-t border-[#E8E4DC] pt-10">
                 <Button variant="ghost" onClick={() => setIsDialog(false)} className="h-12 px-8 font-bold text-[#6B7280] hover:text-[#0A0F2E] hover:bg-transparent">Cancel</Button>
                 <Button 
-                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-12 px-10 rounded-xl"
+                  className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold h-12 px-10"
                   onClick={() => customizeMutation.mutate({})}
                 >
                   <Save className="h-4 w-4 mr-2" />

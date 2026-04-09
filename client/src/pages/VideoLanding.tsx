@@ -92,7 +92,7 @@ export default function VideoLanding() {
                   Purpose: Trade show booth loop · conference opener · website hero · investor meetings
                 </p>
               </div>
-              <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-xl">
+              <div className="rounded-none overflow-hidden border border-[#E8E4DC]">
                 <CinematicHero />
               </div>
             </TabsContent>
@@ -113,7 +113,7 @@ export default function VideoLanding() {
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-1">
                     Version 1: "Offense, Defense, Special Teams"
                   </h3>
-                  <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
+                  <div className="rounded-none overflow-hidden border border-[#E8E4DC]">
                     <ThirtySecondSpot version="offense-defense" />
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function VideoLanding() {
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-2">
                     Version 2: "The First Mover"
                   </h3>
-                  <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
+                  <div className="rounded-none overflow-hidden border border-[#E8E4DC]">
                     <ThirtySecondSpot version="first-mover" />
                   </div>
                 </div>
@@ -133,7 +133,7 @@ export default function VideoLanding() {
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-3">
                     Version 3: "3,600× Execution Head Start"
                   </h3>
-                  <div className="rounded-none overflow-hidden border border-[#E8E4DC] shadow-lg">
+                  <div className="rounded-none overflow-hidden border border-[#E8E4DC]">
                     <ThirtySecondSpot version="360x-faster" />
                   </div>
                 </div>

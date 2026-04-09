@@ -115,7 +115,7 @@ export default function ExecutionTimelineDemo({
 
           {/* Performance Metrics */}
           {plan.historicalPerformance && (
-            <div className="bg-gradient-to-r   rounded-lg p-4 border border-green-500/30">
+            <div className="bg-gradient-to-r   p-4 border border-green-500/30">
               <div className="grid grid-cols-4 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-green-400">{plan.historicalPerformance.actualTime} min</div>
@@ -148,7 +148,7 @@ export default function ExecutionTimelineDemo({
             <div className={`bg-gradient-to-r ${getPhaseColor(phase.name)} p-4`}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 bg-white/20 flex items-center justify-center text-white font-bold">
                     {phaseIdx + 1}
                   </div>
                   <div>
@@ -177,7 +177,7 @@ export default function ExecutionTimelineDemo({
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">
                     <div className="flex items-start gap-3 flex-1">
-                      <div className="w-8 h-8 bg-[#0A0F2E]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <div className="w-8 h-8 bg-[#0A0F2E]/20 flex items-center justify-center flex-shrink-0 mt-1">
                         <span className="text-[#0A0F2E] text-sm font-bold">{task.sequence}</span>
                       </div>
                       <div className="flex-1 min-w-0">

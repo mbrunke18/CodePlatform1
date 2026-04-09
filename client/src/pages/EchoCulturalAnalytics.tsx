@@ -438,8 +438,8 @@ export default function EchoCulturalAnalytics() {
                             <span className="text-[10px] uppercase tracking-widest font-bold" style={{ color: "#6B7280" }}>{d.label}</span>
                             <span className="text-[10px] font-bold" style={{ color: NAVY }}>{d.v}%</span>
                           </div>
-                          <div className="h-1 bg-[#E8E4DC] rounded-full overflow-hidden">
-                            <div className="h-full rounded-full" style={{ width: `${d.v}%`, background: TEAL }} />
+                          <div className="h-1 bg-[#E8E4DC] overflow-hidden">
+                            <div className="h-full" style={{ width: `${d.v}%`, background: TEAL }} />
                           </div>
                         </div>
                       ))}

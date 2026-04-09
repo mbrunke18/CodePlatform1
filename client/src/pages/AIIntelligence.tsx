@@ -129,7 +129,7 @@ export default function AIIntelligence() {
             {aiModules.map((module) => (
               <Card 
                 key={module.id} 
-                className={`cursor-pointer transition-all duration-300 hover:shadow-lg ${
+                className={`cursor-pointer transition-all duration-300 ${
                   activeModule === module.id ? 'ring-2 ring-[#C9A84C] bg-white' : 'bg-white'
                 } border border-[#E8E4DC] p-0`}
                 onClick={() => setActiveModule(module.id)}
@@ -178,7 +178,7 @@ export default function AIIntelligence() {
               <CardContent className="px-0">
                 <div className="space-y-4">
                   {realtimeInsights.map((insight, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 bg-[#F8F7F4] rounded-lg">
+                    <div key={index} className="flex items-start space-x-3 p-3 bg-[#F8F7F4]">
                       <CheckCircle className="w-4 h-4 mt-0.5 text-[#2B8A6E] flex-shrink-0" />
                       <div className="flex-1">
                         <p className="text-sm text-gray-700">{insight}</p>
@@ -204,7 +204,7 @@ export default function AIIntelligence() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="px-0 space-y-4">
-                <div className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                <div className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                   <h4 style={{ ...CG, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Active Intelligence Module</h4>
                   <p className="text-sm text-gray-600 mb-3">
                     {aiModules.find(m => m.id === activeModule)?.description}
@@ -234,7 +234,7 @@ export default function AIIntelligence() {
                   </Button>
                 </div>
 
-                <div className="mt-6 p-4 bg-[#FFF9E5] border border-[#FBE39A] rounded-lg">
+                <div className="mt-6 p-4 bg-[#FFF9E5] border border-[#FBE39A]">
                   <div className="flex items-center text-[#856404]">
                     <AlertTriangle className="w-4 h-4 mr-2" />
                     <span className="text-sm font-medium">AI Intelligence Recommendation</span>

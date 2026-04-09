@@ -141,21 +141,21 @@ export function PreFlightChecklist({ executionPlanId, organizationId, onReadyCha
         />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-3 rounded-lg bg-muted/50" data-testid="stat-tasks">
+          <div className="text-center p-3 bg-muted/50" data-testid="stat-tasks">
             <div className="text-2xl font-semibold">{result.metadata.totalTasks}</div>
             <div className="text-xs text-muted-foreground">Total Tasks</div>
           </div>
-          <div className="text-center p-3 rounded-lg bg-muted/50" data-testid="stat-roles">
+          <div className="text-center p-3 bg-muted/50" data-testid="stat-roles">
             <div className="text-2xl font-semibold">
               {result.metadata.rolesAvailable}/{result.metadata.rolesRequired}
             </div>
             <div className="text-xs text-muted-foreground">Roles Ready</div>
           </div>
-          <div className="text-center p-3 rounded-lg bg-muted/50" data-testid="stat-time">
+          <div className="text-center p-3 bg-muted/50" data-testid="stat-time">
             <div className="text-2xl font-semibold">{result.estimatedCompletionTime}</div>
             <div className="text-xs text-muted-foreground">Est. Minutes</div>
           </div>
-          <div className="text-center p-3 rounded-lg bg-muted/50" data-testid="stat-issues">
+          <div className="text-center p-3 bg-muted/50" data-testid="stat-issues">
             <div className={`text-2xl font-semibold ${result.criticalIssues > 0 ? 'text-red-500' : 'text-green-500'}`}>
               {result.criticalIssues}
             </div>
@@ -163,7 +163,7 @@ export function PreFlightChecklist({ executionPlanId, organizationId, onReadyCha
           </div>
         </div>
 
-        <div className="flex items-center gap-2 p-3 rounded-lg" style={{ backgroundColor: result.canProceed ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)' }}>
+        <div className="flex items-center gap-2 p-3" style={{ backgroundColor: result.canProceed ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)' }}>
           {result.canProceed ? (
             <>
               <CheckCircle2 className="h-5 w-5 text-green-500" />
@@ -194,7 +194,7 @@ export function PreFlightChecklist({ executionPlanId, organizationId, onReadyCha
                   <AccordionItem 
                     key={category} 
                     value={category}
-                    className="border rounded-lg px-4"
+                    className="border px-4"
                     data-testid={`warning-category-${category}`}
                   >
                     <AccordionTrigger className="hover:no-underline">
@@ -214,7 +214,7 @@ export function PreFlightChecklist({ executionPlanId, organizationId, onReadyCha
                           return (
                             <div 
                               key={idx} 
-                              className={`p-3 rounded-lg ${sevConfig.bg}`}
+                              className={`p-3 ${sevConfig.bg}`}
                               data-testid={`warning-item-${category}-${idx}`}
                             >
                               <div className="flex items-start gap-2">

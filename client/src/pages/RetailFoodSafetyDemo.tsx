@@ -58,7 +58,7 @@ export default function RetailFoodSafetyDemo() {
               <button
                 key={act.id}
                 onClick={() => setCurrentAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors border ${
+                className={`flex items-center gap-2 px-4 py-2 transition-colors border ${
                   currentAct === act.id
                     ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]"
                     : "text-white/60 border-transparent hover:bg-white/10"
@@ -87,7 +87,7 @@ export default function RetailFoodSafetyDemo() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                <div className="p-6 bg-white/5 border border-white/10">
                   <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
                     The Crisis
@@ -112,7 +112,7 @@ export default function RetailFoodSafetyDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                <div className="p-6 bg-white/5 border border-white/10">
                   <h3 className="font-bold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Recall Timeline</h3>
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• Week 1: QA detects contamination, internal investigation</li>
@@ -125,7 +125,7 @@ export default function RetailFoodSafetyDemo() {
                 </div>
               </div>
 
-              <div className="bg-white/5 border border-[#C9A84C]/50 rounded-lg p-6 mb-8">
+              <div className="bg-white/5 border border-[#C9A84C]/50 p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <ShieldAlert className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
                   <div>
@@ -142,17 +142,17 @@ export default function RetailFoodSafetyDemo() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                <div className="p-4 bg-white/5 border border-white/10 text-center">
                   <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>5,000+</div>
                   <div className="text-sm text-white/40">Stakeholders Coordinated</div>
                 </div>
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                <div className="p-4 bg-white/5 border border-white/10 text-center">
                   <Clock className="w-8 h-8 text-[#DFC178] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>1 Hour</div>
                   <div className="text-sm text-white/40">Full Coordination</div>
                 </div>
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                <div className="p-4 bg-white/5 border border-white/10 text-center">
                   <DollarSign className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$240M+</div>
                   <div className="text-sm text-white/40">Value Preserved</div>
@@ -190,7 +190,7 @@ export default function RetailFoodSafetyDemo() {
                 </div>
                 <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
                 {detectionProgress >= 88 && (
-                  <div className="mt-4 p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg">
+                  <div className="mt-4 p-4 bg-[#0A0F2E] border border-[#C9A84C]">
                     <p className="text-[#C9A84C] font-semibold">
                       ⚠️ ALERT: Class I recall criteria detected - Food contamination + wide distribution = immediate action required
                     </p>
@@ -344,7 +344,7 @@ export default function RetailFoodSafetyDemo() {
                 }}
               />
 
-              <div className="mt-8 p-6 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg">
+              <div className="mt-8 p-6 bg-[#0A0F2E] border border-[#C9A84C]">
                 <h3 className="font-bold text-white mb-4 text-center text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>

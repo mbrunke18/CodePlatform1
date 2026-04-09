@@ -639,7 +639,7 @@ export default function SettingsPage() {
                       </Button>
                     </div>
 
-                    <div className="text-xs text-gray-800 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                    <div className="text-xs text-gray-800 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-3">
                       <strong>Note:</strong> This action will completely replace all organizations, users, scenarios, tasks, and AI intelligence data with the Golden Demo dataset. This is intended for sales presentations and demonstrations only.
                     </div>
                   </div>

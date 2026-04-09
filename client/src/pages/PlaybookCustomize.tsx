@@ -611,7 +611,7 @@ export default function PlaybookCustomize() {
         <div className="max-w-[1600px] mx-auto px-6 py-12">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-[#C9A84C]/10 border border-[#C9A84C]/20 rounded-xl flex items-center justify-center shrink-0">
+              <div className="w-16 h-16 bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center shrink-0">
                 <FileText className="w-8 h-8 text-[#C9A84C]" />
               </div>
               <div>
@@ -671,15 +671,15 @@ export default function PlaybookCustomize() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-left ${
+                    className={`w-full flex items-center gap-3 px-4 py-3 transition-all text-left ${
                       activeSection === section.id 
-                        ? 'bg-white shadow-sm border border-[#E8E4DC] text-[#0A0F2E]' 
+                        ? 'bg-white border border-[#E8E4DC] text-[#0A0F2E]' 
                         : 'text-[#6B7280] hover:bg-white/50'
                     }`}
                   >
                     <section.icon className={`w-4 h-4 ${activeSection === section.id ? 'text-[#C9A84C]' : 'text-[#6B7280]'}`} />
                     <span className="text-sm font-semibold">{section.label}</span>
-                    {activeSection === section.id && <div className="ml-auto w-1 h-4 rounded-full bg-[#C9A84C]" />}
+                    {activeSection === section.id && <div className="ml-auto w-1 h-4 bg-[#C9A84C]" />}
                   </button>
                 ))}
               </div>
@@ -690,7 +690,7 @@ export default function PlaybookCustomize() {
         {/* Main Configuration Content */}
         <main className="flex-1 space-y-6">
           {activePhase && (
-            <div className="bg-white border border-[#E8E4DC] rounded-xl p-8 mb-6 shadow-sm overflow-hidden relative">
+            <div className="bg-white border border-[#E8E4DC] p-8 mb-6 overflow-hidden relative">
               <div className={`absolute top-0 left-0 right-0 h-1 ${activePhase.color}`} />
               <div className="flex items-start justify-between">
                 <div>
@@ -698,14 +698,14 @@ export default function PlaybookCustomize() {
                   <h2 style={CG} className="text-3xl font-bold text-[#0A0F2E] mb-2">{activePhase.label}: {activePhase.tagline}</h2>
                   <p className="text-[#6B7280] font-medium max-w-2xl">{activePhase.description}</p>
                 </div>
-                <div className={`w-16 h-16 rounded-xl flex items-center justify-center shrink-0 ${activePhase.color} text-white`}>
+                <div className={`w-16 h-16 flex items-center justify-center shrink-0 ${activePhase.color} text-white`}>
                   <div className="text-2xl font-bold">{PHASE_BADGES[activePhase.id].label}</div>
                 </div>
               </div>
             </div>
           )}
 
-          <div className="bg-white border border-[#E8E4DC] rounded-xl shadow-sm" style={{ borderLeft: `4px solid ${indicatorColor}` }}>
+          <div className="bg-white border border-[#E8E4DC]" style={{ borderLeft: `4px solid ${indicatorColor}` }}>
             <div className="p-8">
               {activeSection === 'basic' && (
                 <div className="space-y-8 animate-in fade-in duration-500">
@@ -864,7 +864,7 @@ export default function PlaybookCustomize() {
                               />
                             </div>
                             <div className="md:col-span-2 flex items-end justify-between">
-                              <div className="flex items-center gap-3 h-10 px-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                              <div className="flex items-center gap-3 h-10 px-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                                 <Switch {...register(`triggerConditions.${index}.autoActivate`)} />
                                 <span className="text-[10px] font-bold uppercase text-[#0A0F2E]">Auto</span>
                               </div>
@@ -888,7 +888,7 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Define roles, responsibilities, and notification paths</p></div>
                     <Button onClick={() => stakeholdersArray.append({ role: '', responsibility: '', notificationChannels: [], isBackup: false })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Stakeholder</Button>
                   </div>
-                  {stakeholdersArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><Users className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No stakeholders added yet. Click "Add Stakeholder" to begin.</p></div>}
+                  {stakeholdersArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><Users className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No stakeholders added yet. Click "Add Stakeholder" to begin.</p></div>}
                   <div className="space-y-4">
                     {stakeholdersArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
@@ -898,7 +898,7 @@ export default function PlaybookCustomize() {
                             <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Responsibility</Label><Input {...register(`stakeholders.${index}.responsibility`)} placeholder="e.g. Lead external communications" /></div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3 px-3 py-2 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                            <div className="flex items-center gap-3 px-3 py-2 bg-[#F8F7F4] border border-[#E8E4DC]">
                               <Controller name={`stakeholders.${index}.isBackup`} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
                               <span className="text-xs font-bold uppercase tracking-wider text-[#0A0F2E]">Backup Role</span>
                             </div>
@@ -919,7 +919,7 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Vendors, systems, and partners required for execution</p></div>
                     <Button onClick={() => dependenciesArray.append({ id: generateId(), type: 'vendor', name: '', contactInfo: '', criticality: 'high', notes: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Dependency</Button>
                   </div>
-                  {dependenciesArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><Link2 className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No dependencies defined. Click "Add Dependency" to document what you rely on.</p></div>}
+                  {dependenciesArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><Link2 className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No dependencies defined. Click "Add Dependency" to document what you rely on.</p></div>}
                   <div className="space-y-4">
                     {dependenciesArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
@@ -962,7 +962,7 @@ export default function PlaybookCustomize() {
                       )} /></div>
                   </div>
                   <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Version Notes</Label><Textarea {...register('versionNotes')} placeholder="What changed in this version and why..." className="min-h-[100px]" /></div>
-                  <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                  <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <Controller name="changeApprovalRequired" control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
                     <div><p className="text-sm font-bold text-[#0A0F2E]">Require Change Approval</p><p className="text-xs text-[#6B7280]">Any modification to this playbook requires executive sign-off before saving</p></div>
                   </div>
@@ -983,7 +983,7 @@ export default function PlaybookCustomize() {
                         return (
                           <button key={region.value} type="button"
                             onClick={() => { const cur = watch('geographicScope') || []; const next = isActive ? cur.filter((r: string) => r !== region.value) : [...cur, region.value]; form.setValue('geographicScope', next); }}
-                            className={`px-3 py-2 rounded-lg border text-xs font-bold text-left transition-all ${isActive ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]' : 'bg-white text-[#6B7280] border-[#E8E4DC] hover:border-[#0A0F2E]'}`}>
+                            className={`px-3 py-2 border text-xs font-bold text-left transition-all ${isActive ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]' : 'bg-white text-[#6B7280] border-[#E8E4DC] hover:border-[#0A0F2E]'}`}>
                             {region.label}
                           </button>
                         );
@@ -1049,7 +1049,7 @@ export default function PlaybookCustomize() {
                         return (
                           <button key={fw.value} type="button"
                             onClick={() => { const next = isActive ? cur.filter((f: string) => f !== fw.value) : [...cur, fw.value]; form.setValue('complianceFrameworks', next); }}
-                            className={`px-3 py-2 rounded-lg border text-xs font-bold text-left transition-all ${isActive ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]' : 'bg-white text-[#6B7280] border-[#E8E4DC] hover:border-[#0A0F2E]'}`}>
+                            className={`px-3 py-2 border text-xs font-bold text-left transition-all ${isActive ? 'bg-[#0A0F2E] text-white border-[#0A0F2E]' : 'bg-white text-[#6B7280] border-[#E8E4DC] hover:border-[#0A0F2E]'}`}>
                             {fw.label}
                           </button>
                         );
@@ -1064,7 +1064,7 @@ export default function PlaybookCustomize() {
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Legal Approver</Label><Input {...register('legalReviewApprover')} placeholder="General Counsel, outside firm..." /></div>
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Review Date</Label><Input {...register('legalReviewDate')} type="date" /></div>
                   </div>
-                  <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                  <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <Controller name="auditTrailRequired" control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
                     <div><p className="text-sm font-bold text-[#0A0F2E]">Audit Trail Required</p><p className="text-xs text-[#6B7280]">Every action during this playbook's execution will be logged for compliance review</p></div>
                   </div>
@@ -1095,13 +1095,13 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Define the sequence of actions from trigger to resolution</p></div>
                     <Button onClick={() => stepsArray.append({ id: generateId(), order: stepsArray.fields.length + 1, title: '', description: '', timeTargetMinutes: 30, isParallel: false, dependsOn: [], approvalRequired: 'none', approvalNotes: '', deliverables: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Step</Button>
                   </div>
-                  {stepsArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><Clock className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No steps defined yet. Click "Add Step" to build your execution sequence.</p></div>}
+                  {stepsArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><Clock className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No steps defined yet. Click "Add Step" to build your execution sequence.</p></div>}
                   <div className="space-y-4">
                     {stepsArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
                         <CardContent className="p-6 space-y-4">
                           <div className="flex items-center gap-3 mb-2">
-                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E] text-white flex items-center justify-center text-sm font-bold shrink-0">{index + 1}</div>
+                            <div className="w-8 h-8 bg-[#0A0F2E] text-white flex items-center justify-center text-sm font-bold shrink-0">{index + 1}</div>
                             <Input {...register(`executionSteps.${index}.title`)} placeholder="Step title — e.g. Activate crisis communications team" className="font-bold text-base border-0 border-b border-[#E8E4DC] rounded-none px-0 focus-visible:ring-0" />
                             <Button variant="ghost" size="icon" onClick={() => stepsArray.remove(index)} className="text-[#6B7280] hover:text-red-600 shrink-0"><Trash2 className="w-4 h-4" /></Button>
                           </div>
@@ -1114,7 +1114,7 @@ export default function PlaybookCustomize() {
                               )} /></div>
                             <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Deliverable</Label><Input {...register(`executionSteps.${index}.deliverables`)} placeholder="What this step produces" /></div>
                           </div>
-                          <div className="flex items-center gap-3 px-3 py-2 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC] w-fit">
+                          <div className="flex items-center gap-3 px-3 py-2 bg-[#F8F7F4] border border-[#E8E4DC] w-fit">
                             <Controller name={`executionSteps.${index}.isParallel`} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
                             <span className="text-xs font-bold uppercase tracking-wider text-[#0A0F2E]">Run in Parallel</span>
                           </div>
@@ -1133,7 +1133,7 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Define when and how situations escalate to senior leadership</p></div>
                     <Button onClick={() => escalationArray.append({ id: generateId(), triggerCondition: '', escalateTo: '', backupContact: '', timeToEscalate: 60, notificationChannels: [] })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Path</Button>
                   </div>
-                  {escalationArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><ArrowUpRight className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No escalation paths defined. Every serious playbook needs one.</p></div>}
+                  {escalationArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><ArrowUpRight className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No escalation paths defined. Every serious playbook needs one.</p></div>}
                   <div className="space-y-4">
                     {escalationArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
@@ -1160,7 +1160,7 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Pre-authorize spending categories so execution is never delayed by budget approval</p></div>
                     <Button onClick={() => budgetArray.append({ id: generateId(), category: 'personnel', amount: 0, preApproved: false, approvalThreshold: 0, notes: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Line Item</Button>
                   </div>
-                  <div className="grid md:grid-cols-2 gap-6 p-6 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                  <div className="grid md:grid-cols-2 gap-6 p-6 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Total Pre-Approved Budget</Label><Input {...register('totalBudget', { valueAsNumber: true })} type="number" placeholder="0" className="text-2xl font-bold h-14" /></div>
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Currency</Label>
                       <Controller name="budgetCurrency" control={control} render={({ field }) => (
@@ -1168,7 +1168,7 @@ export default function PlaybookCustomize() {
                       )} /></div>
                   </div>
                   {totalAllocatedBudget > 0 && (
-                    <div className="flex items-center justify-between px-4 py-3 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg">
+                    <div className="flex items-center justify-between px-4 py-3 bg-[#C9A84C]/10 border border-[#C9A84C]/30">
                       <span className="text-sm font-bold text-[#0A0F2E]">Total Allocated Across Categories</span>
                       <span className="text-lg font-bold text-[#C9A84C]">{watch('budgetCurrency')} {totalAllocatedBudget.toLocaleString()}</span>
                     </div>
@@ -1193,7 +1193,7 @@ export default function PlaybookCustomize() {
                         </CardContent>
                       </Card>
                     ))}
-                    {budgetArray.fields.length === 0 && <div className="py-10 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><DollarSign className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No budget line items. Pre-authorized spending eliminates approval delays during execution.</p></div>}
+                    {budgetArray.fields.length === 0 && <div className="py-10 text-center border-2 border-dashed border-[#E8E4DC]"><DollarSign className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No budget line items. Pre-authorized spending eliminates approval delays during execution.</p></div>}
                   </div>
                 </div>
               )}
@@ -1209,7 +1209,7 @@ export default function PlaybookCustomize() {
                       { switchName: 'investorNotificationRequired' as const, label: 'Investor Notification Required', desc: 'Material event requiring timely investor disclosure' },
                       { switchName: 'boardNotificationRequired' as const, label: 'Board Notification Required', desc: 'Board must be briefed as part of this playbook execution' },
                     ].map(({ switchName, label, desc }) => (
-                      <div key={switchName} className="flex items-center gap-4 p-5 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                      <div key={switchName} className="flex items-center gap-4 p-5 bg-[#F8F7F4] border border-[#E8E4DC]">
                         <Controller name={switchName} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
                         <div><p className="text-sm font-bold text-[#0A0F2E]">{label}</p><p className="text-xs text-[#6B7280]">{desc}</p></div>
                       </div>
@@ -1230,7 +1230,7 @@ export default function PlaybookCustomize() {
                 <div className="space-y-8 animate-in fade-in duration-500">
                   <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Success Metrics</h3>
                     <p className="text-sm text-[#6B7280]">Define what "winning" looks like — measurable targets for execution performance</p></div>
-                  <div className="grid md:grid-cols-2 gap-8 p-6 bg-[#F8F7F4] rounded-xl border border-[#E8E4DC]">
+                  <div className="grid md:grid-cols-2 gap-8 p-6 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <div className="space-y-2">
                       <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Response Time Target (minutes)</Label>
                       <Input {...register('successMetrics.responseTimeTarget', { valueAsNumber: true })} type="number" placeholder="12" className="text-3xl font-bold h-16 text-[#C9A84C]" />
@@ -1265,7 +1265,7 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Quantify the value this playbook delivers when executed effectively</p></div>
                     <Button onClick={() => impactArray.append({ id: generateId(), type: 'revenue_protection', estimatedValue: 0, valueUnit: 'USD', description: '', measurementMethod: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Impact</Button>
                   </div>
-                  {impactArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC] rounded-xl"><TrendingUp className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">Define the measurable business value this playbook protects or creates.</p></div>}
+                  {impactArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><TrendingUp className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">Define the measurable business value this playbook protects or creates.</p></div>}
                   <div className="space-y-4">
                     {impactArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">

@@ -184,7 +184,7 @@ export default function FourOutcomesScorecard({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {outcomes.map((outcome) => (
-          <Card key={outcome.name} className="hover:shadow-lg transition-shadow" data-testid={`card-outcome-${outcome.name.toLowerCase()}`}>
+          <Card key={outcome.name} className="hover:shadow-lg " data-testid={`card-outcome-${outcome.name.toLowerCase()}`}>
             <CardHeader>
               <CardTitle className="flex items-center gap-3">
                 <div className={outcome.color}>
@@ -272,7 +272,7 @@ export default function FourOutcomesScorecard({
               This activation demonstrated high trust through transparent stakeholder engagement, human oversight of all 
               critical decisions, and the ability to override system recommendations when needed.
             </p>
-            <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg p-3 border border-[#C9A84C] dark:border-[#C9A84C]">
+            <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 p-3 border border-[#C9A84C] dark:border-[#C9A84C]">
               <p className="text-xs text-[#C9A84C] dark:text-[#C9A84C]">
                 <strong>Future Enhancement:</strong> Conversational activation via Slack/Teams will enable 10-second command-to-execution, 
                 AI autonomous tasks (drafting comms, generating reports), and rapid hypothesis testing—all while maintaining 

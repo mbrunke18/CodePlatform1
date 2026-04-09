@@ -523,7 +523,7 @@ function StepIndicator({ step, total }: { step: number; total: number }) {
   return (
     <div className="flex items-center gap-1">
       {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`h-1 flex-1 rounded-full transition-all ${i <= step ? 'bg-[#0A0F2E]' : 'bg-white/10'} ${i === step ? 'h-1.5' : ''}`} />
+        <div key={i} className={`h-1 flex-1 transition-all ${i <= step ? 'bg-[#0A0F2E]' : 'bg-white/10'} ${i === step ? 'h-1.5' : ''}`} />
       ))}
     </div>
   );
@@ -663,7 +663,7 @@ export default function IndustryExperience() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6">
+              className="bg-white border border-[#2B8A6E]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Your Playbook</h3>
@@ -676,7 +676,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6">
+              className="bg-white border border-[#C9A84C]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Radio className="h-5 w-5 text-[#C9A84C]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Active Triggers</h3>
@@ -684,14 +684,14 @@ export default function IndustryExperience() {
               <div className="space-y-2">
                 {enabledTriggers.map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                    <div className="w-1.5 h-1.5 bg-[#2B8A6E]" />
                     <span className="text-[#6B7280]">{t.name}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#0A0F2E]/10 rounded-2xl p-6">
+              className="bg-white border border-[#0A0F2E]/10 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Database className="h-5 w-5 text-[#0A0F2E]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Connected Data Sources</h3>
@@ -710,7 +710,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6">
+              className="bg-white border border-[#C9A84C]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Sliders className="h-5 w-5 text-[#C9A84C]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Customizations</h3>
@@ -740,7 +740,7 @@ export default function IndustryExperience() {
         return (
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center mx-auto mb-6`}>
+              <div className={`w-20 h-20 bg-gradient-to-br ${industry.gradient} flex items-center justify-center mx-auto mb-6`}>
                 <Icon className="h-10 w-10 text-[#0A0F2E]" />
               </div>
             </motion.div>
@@ -750,7 +750,7 @@ export default function IndustryExperience() {
               <p className="text-xl text-[#6B7280] mb-2">{industry.industry} Industry</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-              className="mt-8 bg-white border border-[#E8E4DC] rounded-2xl p-8"
+              className="mt-8 bg-white border border-[#E8E4DC] p-8"
             >
               <div className="text-sm text-[#0A0F2E] uppercase tracking-wider mb-3">Industry Scenario</div>
               <h2 className="text-2xl md:text-3xl font-bold text-[#0A0F2E] mb-4">{industry.scenario}</h2>
@@ -789,7 +789,7 @@ export default function IndustryExperience() {
               <span className="text-xs text-[#6B7280] font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-white border border-[#2B8A6E]/20 rounded-2xl overflow-hidden"
+              className="bg-white border border-[#2B8A6E]/20 overflow-hidden"
             >
               <div className="bg-[#2B8A6E]/30 border-b border-[#2B8A6E]/10 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -831,8 +831,8 @@ export default function IndustryExperience() {
                   <div className="text-xs text-[#6B7280] uppercase tracking-wider mb-3">Task Sequence (from template)</div>
                   <div className="space-y-2 mb-4">
                     {industry.executionTasks.slice(0, 5).map((task, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                        <div className="w-6 h-6 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center text-xs text-[#2B8A6E] font-bold">{i + 1}</div>
+                      <div key={i} className="flex items-center gap-3 bg-white/5 p-3">
+                        <div className="w-6 h-6 bg-[#2B8A6E]/20 flex items-center justify-center text-xs text-[#2B8A6E] font-bold">{i + 1}</div>
                         <span className="text-sm text-[#6B7280] flex-1">{task.task}</span>
                         <Badge variant="outline" className="text-[10px]">{task.tool}</Badge>
                       </div>
@@ -846,7 +846,7 @@ export default function IndustryExperience() {
                       <div className="text-xs text-[#2B8A6E] uppercase tracking-wider mb-2">Your Custom Tasks</div>
                       <div className="space-y-2">
                         {customTasks.map((task, i) => (
-                          <div key={i} className="flex items-center gap-3 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-lg p-3">
+                          <div key={i} className="flex items-center gap-3 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 p-3">
                             <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-[10px]">Custom</Badge>
                             <span className="text-sm text-[#0A0F2E] flex-1">{task}</span>
                             <button onClick={() => setCustomTasks(prev => prev.filter((_, j) => j !== i))} className="text-[#6B7280] hover:text-red-400">
@@ -893,7 +893,7 @@ export default function IndustryExperience() {
             <div className="space-y-4 mb-6">
               {userTriggers.map((trigger, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.1 }}
-                  className={`bg-white border rounded-2xl p-6 ${trigger.enabled ? 'border-[#C9A84C]/20' : 'border-[#0A0F2E]/10 opacity-60'}`}
+                  className={`bg-white border p-6 ${trigger.enabled ? 'border-[#C9A84C]/20' : 'border-[#0A0F2E]/10 opacity-60'}`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
@@ -935,7 +935,7 @@ export default function IndustryExperience() {
                 </Button>
               ) : (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
-                  className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6">
+                  className="bg-white border border-[#C9A84C]/20 p-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Input placeholder="Trigger name..." className="bg-white/5 border-[#0A0F2E]/10 text-[#0A0F2E]"
                       onKeyDown={e => {
@@ -982,7 +982,7 @@ export default function IndustryExperience() {
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
               <span className="text-xs text-[#6B7280] font-medium">{setupReadiness.percent}% ready</span>
             </div>
-            <div className="bg-white border border-[#E8E4DC] rounded-2xl p-5 mb-4">
+            <div className="bg-white border border-[#E8E4DC] p-5 mb-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <Activity className="h-5 w-5 text-[#0A0F2E]" />
@@ -1022,7 +1022,7 @@ export default function IndustryExperience() {
                           className="text-xs text-[#C9A84C]">Connecting...</motion.span>
                       ) : source.connected ? (
                         <span className="flex items-center gap-1 text-xs text-[#2B8A6E]">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" /> Connected
+                          <div className="w-1.5 h-1.5 bg-[#2B8A6E]" /> Connected
                         </span>
                       ) : (
                         <span className="text-xs text-[#6B7280]">Disconnected</span>
@@ -1141,16 +1141,16 @@ export default function IndustryExperience() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
               <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 1.5 }}
-                className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 rounded-full text-sm font-medium mb-4"
+                className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 text-sm font-medium mb-4"
               >
-                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <div className="w-2 h-2 bg-red-500 animate-pulse" />
                 SIGNAL DETECTED
               </motion.div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">The Trigger Fires</h2>
               <p className="text-[#6B7280]">Your {industry.industry} trigger has detected a critical event</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-white border border-red-500/30 rounded-2xl overflow-hidden"
+              className="bg-white border border-red-500/30 overflow-hidden"
             >
               <div className="bg-red-950/50 border-b border-red-500/20 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -1165,18 +1165,18 @@ export default function IndustryExperience() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{industry.signal.name}</h3>
                 <p className="text-gray-800 dark:text-slate-200 mb-6 leading-relaxed">{industry.signal.detail}</p>
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                  <div className="bg-white/5 p-3 text-center">
                     <Eye className="h-5 w-5 text-[#0A0F2E] mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Source</div>
                     <div className="text-sm text-gray-900 font-medium">{industry.signal.source}</div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                  <div className="bg-white/5 p-3 text-center">
                     <BookOpen className="h-5 w-5 text-[#2B8A6E] mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Your Playbook</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.name}</div>
                     {userPlaybook.name !== industry.playbook.name && <Badge className="mt-1 bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                  <div className="bg-white/5 p-3 text-center">
                     <Bell className="h-5 w-5 text-amber-400 mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Stakeholders Ready</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.stakeholders.toLocaleString()} identified</div>
@@ -1207,7 +1207,7 @@ export default function IndustryExperience() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
-                className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6"
+                className="bg-white border border-[#0A0F2E]/20 p-6"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <Brain className="h-5 w-5 text-[#0A0F2E]" />
@@ -1216,7 +1216,7 @@ export default function IndustryExperience() {
                 <div className="space-y-3">
                   {industry.aiInsights.map((insight, i) => (
                     <motion.div key={i} initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.2 }}
-                      className="flex items-start gap-3 bg-white/5 rounded-lg p-3"
+                      className="flex items-start gap-3 bg-white/5 p-3"
                     >
                       <Lightbulb className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
                       <span className="text-sm text-gray-800">{insight}</span>
@@ -1226,20 +1226,20 @@ export default function IndustryExperience() {
               </motion.div>
               <div className="space-y-6">
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
-                  className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6"
+                  className="bg-white border border-[#0A0F2E]/20 p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Confidence</h3>
                   <div className="flex items-end gap-4 mb-4">
                     <div className="text-5xl font-bold text-[#C9A84C]">96%</div>
                     <div className="text-sm text-gray-800 dark:text-slate-200 pb-2">recommendation confidence</div>
                   </div>
-                  <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
+                  <div className="h-3 bg-gray-50 overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: '96%' }} transition={{ delay: 0.8, duration: 1.5 }}
-                      className="h-full bg-[#C9A84C] rounded-full" />
+                      className="h-full bg-[#C9A84C]" />
                   </div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}
-                  className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6"
+                  className="bg-white border border-[#2B8A6E]/20 p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Recommendation</h3>
                   <p className="text-sm text-gray-800 leading-relaxed">
@@ -1261,10 +1261,10 @@ export default function IndustryExperience() {
               <p className="text-gray-800 dark:text-slate-200">AI recommends. The executive decides. Always.</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#E8E4DC] rounded-2xl p-8"
+              className="bg-white border border-[#E8E4DC] p-8"
             >
               <div className="flex items-center gap-5 mb-6">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center`}>
+                <div className={`w-14 h-14 bg-gradient-to-br ${industry.gradient} flex items-center justify-center`}>
                   <Icon className="h-7 w-7 text-gray-900" />
                 </div>
                 <div>
@@ -1272,7 +1272,7 @@ export default function IndustryExperience() {
                   <p className="text-gray-800 dark:text-slate-200">{industry.industry} — {industry.domain}</p>
                 </div>
               </div>
-              <div className="bg-[#0A0F2E]/30 border border-white/10 rounded-xl p-5 mb-6">
+              <div className="bg-[#0A0F2E]/30 border border-white/10 p-5 mb-6">
                 <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-2">Decision Required</div>
                 <p className="text-gray-800">
                   Activate <span className="text-gray-900 font-semibold">{userPlaybook.name}</span> with {userPlaybook.stakeholders.toLocaleString()} stakeholders, 
@@ -1280,21 +1280,21 @@ export default function IndustryExperience() {
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="bg-white/5 rounded-lg p-3 text-center">
+                <div className="bg-white/5 p-3 text-center">
                   <div className="text-lg font-bold text-[#2B8A6E]">{userPlaybook.tasks + customTasks.length}</div>
                   <div className="text-xs text-gray-800">Tasks Ready</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3 text-center">
+                <div className="bg-white/5 p-3 text-center">
                   <div className="text-lg font-bold text-[#0A0F2E]">{userPlaybook.stakeholders.toLocaleString()}</div>
                   <div className="text-xs text-gray-800">Stakeholders Mapped</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3 text-center">
+                <div className="bg-white/5 p-3 text-center">
                   <div className="text-lg font-bold text-[#2B8A6E]">{userPlaybook.budget}</div>
                   <div className="text-xs text-gray-800">Budget Pre-Approved</div>
                 </div>
               </div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }}
-                className="flex items-center justify-center gap-3 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] px-8 py-4 rounded-none font-bold uppercase tracking-widest text-lg shadow-xl"
+                className="flex items-center justify-center gap-3 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] px-8 py-4 rounded-none font-bold uppercase tracking-widest text-lg"
               >
                 <CheckCircle2 className="h-6 w-6" />
                 APPROVED — {industry.organization.split(' ')[0]} Activates {userPlaybook.name}
@@ -1317,11 +1317,11 @@ export default function IndustryExperience() {
               <p className="text-[#6B7280]">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
             </div>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3 bg-white border border-[#2B8A6E]/20 rounded-none p-5 shadow-sm">
+              <div className="col-span-3 bg-white border border-[#2B8A6E]/20 rounded-none p-5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-gray-900">Execution Timeline</h3>
                   <div className="flex items-center gap-2">
-                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-[#2B8A6E]" />
                     <span className="text-[#2B8A6E] text-xs font-bold uppercase tracking-widest">LIVE</span>
                   </div>
                 </div>
@@ -1335,7 +1335,7 @@ export default function IndustryExperience() {
                         className={`flex items-center gap-3 p-2.5 rounded-none ${isCurrent ? 'bg-[#2B8A6E]/10 ring-1 ring-[#2B8A6E]/20' : ''}`}
                       >
                         <div className="w-12 text-right font-mono text-xs text-gray-800">{task.time}</div>
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
+                        <div className={`w-5 h-5 flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
                           <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-[#2B8A6E]' : 'text-slate-700'}`} />
                         </div>
                         <div className="flex-1">
@@ -1349,12 +1349,12 @@ export default function IndustryExperience() {
                 </div>
               </div>
               <div className="col-span-2 space-y-4">
-                <div className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-5">
+                <div className="bg-white border border-[#0A0F2E]/20 p-5">
                   <h3 className="font-semibold text-gray-900 mb-3 text-sm">Stakeholder Response</h3>
                   <div className="space-y-2">
                     {industry.stakeholders.map((s, i) => (
                       <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: i <= activationStep ? 1 : 0.2 }} transition={{ delay: i * 0.3 }}
-                        className="flex items-center justify-between bg-white/5 rounded-lg p-2.5"
+                        className="flex items-center justify-between bg-white/5 p-2.5"
                       >
                         <div>
                           <div className="text-xs text-gray-900 font-medium">{s.name}</div>
@@ -1370,7 +1370,7 @@ export default function IndustryExperience() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-white border border-[#C9A84C]/20 rounded-2xl p-5">
+                <div className="bg-white border border-[#C9A84C]/20 p-5">
                   <h3 className="font-semibold text-gray-900 mb-3 text-sm">Progress</h3>
                   <div className="space-y-3">
                     <div>
@@ -1404,16 +1404,16 @@ export default function IndustryExperience() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-                className="bg-white border border-[#2B8A6E]/20 rounded-xl p-4">
+                className="bg-white border border-[#2B8A6E]/20 p-4">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                  <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                   <span className="text-xs text-[#2B8A6E] font-medium">OPERATIONAL</span>
                 </div>
                 <div className="text-2xl font-bold text-[#0A0F2E]">{allExecutionTasks.length}</div>
                 <div className="text-xs text-[#6B7280]">Tasks Executing</div>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-                className="bg-white border border-[#0A0F2E]/20 rounded-xl p-4">
+                className="bg-white border border-[#0A0F2E]/20 p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="h-4 w-4 text-[#0A0F2E]" />
                   <span className="text-xs text-[#0A0F2E] font-medium">COORDINATED</span>
@@ -1422,7 +1422,7 @@ export default function IndustryExperience() {
                 <div className="text-xs text-[#6B7280]">Stakeholders Aligned</div>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-                className="bg-white border border-[#C9A84C]/20 rounded-xl p-4">
+                className="bg-white border border-[#C9A84C]/20 p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Clock className="h-4 w-4 text-[#C9A84C]" />
                   <span className="text-xs text-[#C9A84C] font-medium">ELAPSED</span>
@@ -1432,7 +1432,7 @@ export default function IndustryExperience() {
               </motion.div>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6"
+              className="bg-white border border-[#0A0F2E]/20 p-6"
             >
               <h3 className="font-semibold text-[#0A0F2E] mb-4">Live Activity Feed</h3>
               <div className="space-y-3">
@@ -1465,7 +1465,7 @@ export default function IndustryExperience() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.outcomes.map((outcome, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.15 }}
-                  className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6"
+                  className="bg-white border border-[#2B8A6E]/20 p-6"
                 >
                   <h4 className="text-sm text-[#0A0F2E] mb-3">{outcome.metric}</h4>
                   <div className="flex items-center gap-4">
@@ -1494,7 +1494,7 @@ export default function IndustryExperience() {
               <p className="text-[#6B7280]">Every execution makes {industry.organization} smarter</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-8 mb-8"
+              className="bg-white border border-[#0A0F2E]/20 p-8 mb-8"
             >
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-6 w-6 text-[#0A0F2E]" />
@@ -1505,17 +1505,17 @@ export default function IndustryExperience() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
               className="grid grid-cols-3 gap-4 mb-8"
             >
-              <div className="bg-white border border-[#0A0F2E]/20 rounded-xl p-4 text-center">
+              <div className="bg-white border border-[#0A0F2E]/20 p-4 text-center">
                 <BarChart3 className="h-6 w-6 text-[#0A0F2E] mx-auto mb-2" />
                 <div className="text-2xl font-bold text-[#0A0F2E]">170</div>
                 <div className="text-xs text-[#6B7280]">Total Playbooks</div>
               </div>
-              <div className="bg-white border border-[#C9A84C]/20 rounded-xl p-4 text-center">
+              <div className="bg-white border border-[#C9A84C]/20 p-4 text-center">
                 <Brain className="h-6 w-6 text-[#C9A84C] mx-auto mb-2" />
                 <div className="text-2xl font-bold text-[#0A0F2E]">94%</div>
                 <div className="text-xs text-[#6B7280]">AI Accuracy</div>
               </div>
-              <div className="bg-white border border-[#2B8A6E]/20 rounded-xl p-4 text-center">
+              <div className="bg-white border border-[#2B8A6E]/20 p-4 text-center">
                 <Timer className="h-6 w-6 text-[#2B8A6E] mx-auto mb-2" />
                 <div className="text-2xl font-bold text-[#0A0F2E]">&lt;12 min</div>
                 <div className="text-xs text-[#6B7280]">Avg. Execution</div>
@@ -1585,7 +1585,7 @@ export default function IndustryExperience() {
               <Button variant="outline" onClick={prev} disabled={stage === 0} className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none px-10 py-6 font-bold uppercase tracking-widest text-[10px] transition-colors">
                 <ArrowLeft className="h-3 w-3 mr-2" /> Previous
               </Button>
-              <Button onClick={next} disabled={stage === STAGES.length - 1} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-12 py-6 font-bold uppercase tracking-widest text-[10px] shadow-xl">
+              <Button onClick={next} disabled={stage === STAGES.length - 1} className="bg-[#0A0F2E] text-white hover:bg-[#141B45] rounded-none px-12 py-6 font-bold uppercase tracking-widest text-[10px]">
                 Next Stage <ArrowRight className="h-3 w-3 ml-2" />
               </Button>
             </div>

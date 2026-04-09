@@ -213,7 +213,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
     return (
       <PageLayout embedded={embedded}>
         <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: GOLD }} />
+          <div className="animate-spin h-8 w-8 border-b-2" style={{ borderColor: GOLD }} />
         </div>
       </PageLayout>
     );
@@ -265,7 +265,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
               const Icon = s.icon;
               return (
                 <div key={s.label} className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 flex items-center justify-center rounded-lg" style={{ background: `${s.color}12` }}>
+                  <div className="w-8 h-8 flex items-center justify-center" style={{ background: `${s.color}12` }}>
                     <Icon className="w-4 h-4" style={{ color: s.color }} />
                   </div>
                   <div>
@@ -347,8 +347,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     )}
                   </div>
                   {hasRules && (
-                    <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden mb-1.5">
-                      <div className="h-full rounded-full" style={{ width: `${proximity}%`, background: barColor }} />
+                    <div className="w-full h-1 bg-gray-200 overflow-hidden mb-1.5">
+                      <div className="h-full" style={{ width: `${proximity}%`, background: barColor }} />
                     </div>
                   )}
                   <div className="flex items-center justify-between">
@@ -389,8 +389,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                   </div>
                   <h2 className="text-sm font-bold mb-0.5" style={{ color: NAVY }}>{selectedEntry.sc.name}</h2>
                   <p className="text-[10px] text-gray-400 leading-snug">{selectedEntry.sc.description}</p>
-                  <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden mt-2">
-                    <div className="h-full rounded-full"
+                  <div className="w-full h-1.5 bg-gray-200 overflow-hidden mt-2">
+                    <div className="h-full"
                       style={{ width: `${selectedEntry.proximity}%`, background: proximityBarColor(selectedEntry.proximity) }} />
                   </div>
                 </div>
@@ -452,8 +452,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           </div>
 
                           {/* Proximity micro bar */}
-                          <div className="w-full h-0.5 bg-gray-100 rounded-full mt-2">
-                            <div className="h-full rounded-full" style={{ width: `${trigger.proximity}%`, background: barColor }} />
+                          <div className="w-full h-0.5 bg-gray-100 mt-2">
+                            <div className="h-full" style={{ width: `${trigger.proximity}%`, background: barColor }} />
                           </div>
                         </button>
                       );
@@ -510,8 +510,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       )}
                       {/* Proximity bar in header */}
                       <div className="flex items-center gap-3">
-                        <div className="w-40 h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.1)' }}>
-                          <div className="h-full rounded-full"
+                        <div className="w-40 h-2 overflow-hidden" style={{ background: 'rgba(255,255,255,0.1)' }}>
+                          <div className="h-full"
                             style={{ width: `${selectedTrigger.proximity}%`, background: proximityBarColor(selectedTrigger.proximity) }} />
                         </div>
                         <span className="text-[11px] font-black" style={{ color: proximityBarColor(selectedTrigger.proximity) }}>
@@ -553,7 +553,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       </div>
 
                       {selectedDp ? (
-                        <div className="border border-[#E8E4DC] rounded-lg overflow-hidden">
+                        <div className="border border-[#E8E4DC] overflow-hidden">
                           {/* Data point name + type */}
                           <div className="px-6 py-4" style={{ background: '#F8F7F4' }}>
                             <div className="flex items-start justify-between gap-4">
@@ -587,7 +587,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           )}
                         </div>
                       ) : (
-                        <div className="px-5 py-4 border border-[#E8E4DC] rounded-lg text-sm text-gray-400">
+                        <div className="px-5 py-4 border border-[#E8E4DC] text-sm text-gray-400">
                           No data point linked to this rule. Use <strong>Edit</strong> to configure one.
                         </div>
                       )}
@@ -605,7 +605,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
 
                       <div className="grid grid-cols-2 gap-4">
                         {/* Condition */}
-                        <div className="border border-[#E8E4DC] rounded-lg p-5">
+                        <div className="border border-[#E8E4DC] p-5">
                           <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Fires When</p>
                           <div className="flex items-center gap-2 px-3 py-2.5 rounded"
                             style={{ background: `${proximityBarColor(selectedTrigger.proximity)}0D`, border: `1px solid ${proximityBarColor(selectedTrigger.proximity)}30` }}>
@@ -619,7 +619,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         </div>
 
                         {/* Alert level */}
-                        <div className="border border-[#E8E4DC] rounded-lg p-5">
+                        <div className="border border-[#E8E4DC] p-5">
                           <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400 mb-2">Alert Level</p>
                           {(() => {
                             const th = THRESHOLD_CONFIG[selectedTrigger.alertThreshold] ?? THRESHOLD_CONFIG.yellow;
@@ -654,7 +654,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         <div className="grid grid-cols-2 gap-2.5">
                           {selectedDp.sources.map((src: string, i: number) => (
                             <div key={src}
-                              className="flex items-center gap-3 px-4 py-3 rounded-lg border border-[#E8E4DC]"
+                              className="flex items-center gap-3 px-4 py-3 border border-[#E8E4DC]"
                               style={{ background: '#F8F7F4' }}>
                               <div className="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
                                 style={{ background: `${TEAL}15` }}>
@@ -664,7 +664,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                 <p className="text-[11px] font-bold truncate" style={{ color: NAVY }}>{sourceLabel(src)}</p>
                                 <p className="text-[9px] text-gray-400 font-mono">{src}</p>
                               </div>
-                              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 ml-auto animate-pulse"
+                              <div className="w-1.5 h-1.5 flex-shrink-0 ml-auto animate-pulse"
                                 style={{ background: TEAL }} />
                             </div>
                           ))}
@@ -691,7 +691,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         <div className="space-y-2.5">
                           {selectedTrigger.linkedPlaybooks.map((p: { id: string; name: string; domain: string }, idx: number) => (
                             <div key={p.id}
-                              className="flex items-center gap-4 px-5 py-4 rounded-lg border cursor-pointer hover:shadow-sm transition-all"
+                              className="flex items-center gap-4 px-5 py-4 border cursor-pointer transition-all"
                               style={{ borderColor: idx === 0 ? `${GOLD}50` : '#E8E4DC', background: idx === 0 ? `${GOLD}05` : '#fff' }}
                               onClick={() => setLocation(`/playbook-library/${p.id}`)}>
                               <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0"
@@ -723,7 +723,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                                 setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
                               }
                             }}
-                            className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity rounded-lg"
+                            className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity"
                             style={{ background: GOLD, color: NAVY }}
                           >
                             <Zap className="w-4 h-4" />
@@ -732,7 +732,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         ) : (
                           <button
                             onClick={() => setLocation('/get-started')}
-                            className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-80 transition-opacity rounded-lg"
+                            className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-80 transition-opacity"
                             style={{ background: '#E8E4DC', color: '#9CA3AF' }}
                           >
                             Sign In to Activate Playbooks
@@ -743,7 +743,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                         {isAuthenticated && (
                           <button
                             onClick={() => setLocation(`/identify/situation-intent/new?triggerId=${selectedTrigger.id}&triggerName=${encodeURIComponent(selectedTrigger.name)}&triggerDomain=${encodeURIComponent(selectedTrigger.domain || selectedTrigger.category || '')}`)}
-                            className="mt-2 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity rounded-lg"
+                            className="mt-2 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity"
                             style={{
                               background: configuredIntentIds.has(selectedTrigger.id) ? `${TEAL}12` : 'rgba(0,0,0,0.04)',
                               border: configuredIntentIds.has(selectedTrigger.id) ? `1px solid ${TEAL}40` : '1px solid #E8E4DC',
@@ -775,14 +775,14 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             const isThisOne = dp.id === selectedDpId;
                             return (
                               <div key={dp.id}
-                                className="flex items-start gap-3 px-4 py-3 rounded-lg border"
+                                className="flex items-start gap-3 px-4 py-3 border"
                                 style={{
                                   borderColor: isThisOne ? `${GOLD}50` : '#F0EDE8',
                                   background:  isThisOne ? `${GOLD}06` : '#FAFAF9',
                                 }}>
                                 {isThisOne
                                   ? <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
-                                  : <div className="w-3.5 h-3.5 rounded-full border border-gray-200 flex-shrink-0 mt-0.5" />
+                                  : <div className="w-3.5 h-3.5 border border-gray-200 flex-shrink-0 mt-0.5" />
                                 }
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-2 mb-0.5">
@@ -865,7 +865,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       );
                       return (
                         <div key={dp.id}
-                          className="border rounded-lg overflow-hidden"
+                          className="border overflow-hidden"
                           style={{ borderColor: isWatched ? `${TEAL}40` : '#E8E4DC' }}>
                           <div className="px-5 py-4" style={{ background: isWatched ? `${TEAL}05` : '#F8F7F4' }}>
                             <div className="flex items-start justify-between gap-3 mb-1">
@@ -923,7 +923,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       <button
                         key={sc.id}
                         onClick={() => setSelectedCategoryId(sc.id)}
-                        className="text-left p-5 border rounded-lg hover:shadow-md transition-all group"
+                        className="text-left p-5 border transition-all group"
                         style={{
                           borderColor: proximity >= 55 ? `${barColor}40` : '#E8E4DC',
                           background:  proximity >= 55 ? `${barColor}04` : '#fff',
@@ -939,8 +939,8 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                           <span className="text-[8px] font-black uppercase tracking-wider px-2 py-1 rounded"
                             style={{ background: lbl.bg, color: lbl.color }}>{lbl.label}</span>
                         </div>
-                        <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
-                          <div className="h-full rounded-full" style={{ width: `${proximity}%`, background: barColor }} />
+                        <div className="w-full h-1.5 bg-gray-100 overflow-hidden mb-2">
+                          <div className="h-full" style={{ width: `${proximity}%`, background: barColor }} />
                         </div>
                         <div className="flex items-center justify-between mb-3">
                           <span className="text-[9px] text-gray-400">0%</span>

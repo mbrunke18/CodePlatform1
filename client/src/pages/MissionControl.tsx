@@ -529,148 +529,143 @@ export default function MissionControl() {
             </div>
           </div>
 
-          {/* ── NOC STAT RAIL ───────────────────────────────────────────────── */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 14, marginBottom: 24 }}>
+          {/* ── NOC STAT RAIL — Editorial table format ───────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', borderTop: '1px solid rgba(255,255,255,0.08)', marginBottom: 28 }}>
             {[
-              { label: 'TRIGGERS ARMED',     value: triggersArmed.toLocaleString(), sub: '221 signals',                     icon: Target,       color: GOLD,                           bg: 'rgba(201,168,76,0.08)',  border: 'rgba(201,168,76,0.2)' },
-              { label: 'ACTIVE DETECTIONS',  value: detections.length.toString(),   sub: detections.length > 0 ? `${criticalCount} critical` : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
-              { label: 'PLAYBOOKS READY',    value: '170',                          sub: 'Pre-staged',                       icon: Layers,       color: TEAL,                           bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
-              { label: 'EXECUTIONS LOGGED',  value: activations.length.toString(),  sub: activations.length > 0 ? timeAgo(activations[0]?.activatedAt || '') : 'None yet', icon: TrendingUp, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
-              { label: 'NEXT SCAN',          value: nextScanLabel,                  sub: `Engine: ${modeLabel}`,             icon: Clock,        color: 'rgba(255,255,255,0.7)',        bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
-            ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
-              <div key={label} style={{ background: bg, border: `1px solid ${border}`, borderRadius: 10, padding: '16px 18px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
-                  <Icon size={13} color={color} />
-                  <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>{label}</span>
-                </div>
-                <div style={{ color, fontWeight: 800, fontSize: 30, fontVariantNumeric: 'tabular-nums', lineHeight: 1, marginBottom: 4 }}>{value}</div>
-                <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{sub}</div>
+              { label: 'Triggers Armed',    value: triggersArmed.toLocaleString(), sub: '221 signals active',  color: GOLD },
+              { label: 'Live Detections',   value: detections.length.toString(),   sub: detections.length > 0 ? `${criticalCount} critical` : 'All clear', color: detections.length > 0 ? RED_ALT : TEAL },
+              { label: 'Playbooks Ready',   value: '170',                          sub: 'Pre-staged, 9 domains', color: TEAL },
+              { label: 'Executions Logged', value: activations.length.toString(),  sub: activations.length > 0 ? timeAgo(activations[0]?.activatedAt || '') : 'None yet', color: 'rgba(255,255,255,0.65)' },
+              { label: 'Next Scan',         value: nextScanLabel,                  sub: modeLabel,              color: 'rgba(255,255,255,0.65)' },
+            ].map(({ label, value, sub, color }, i) => (
+              <div key={label} style={{ padding: '22px 0 22px', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.06)' : 'none', paddingRight: i < 4 ? 24 : 0, paddingLeft: i > 0 ? 24 : 0 }}>
+                <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{label}</div>
+                <div style={{ color, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 38, lineHeight: 1, marginBottom: 6, fontVariantNumeric: 'tabular-nums' }}>{value}</div>
+                <div style={{ width: 20, height: 1, background: `${color}55`, marginBottom: 7 }} />
+                <div style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em' }}>{sub}</div>
               </div>
             ))}
           </div>
 
-          {/* ── YOUR EXECUTION LAYER ────────────────────────────────────────── */}
-          <div style={{ marginBottom: 18 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>YOUR EXECUTION LAYER</span>
-              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+          {/* ── YOUR EXECUTION LAYER — Editorial nav rows ────────────────────── */}
+          <div style={{ marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
+              <span style={{ color: 'rgba(201,168,76,0.55)', fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Your Execution Layer</span>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
+            <div>
               {[
-                { label: 'Situation Intents', desc: 'Define what you\'re watching for — the starting point', href: '/identify/situation-intents', gold: true, icon: '🎯' },
-                { label: 'Trigger Configuration', desc: 'Set signal thresholds & monitoring rules', href: '/triggers-management', gold: false, icon: '⚡' },
-                { label: 'Stakeholder Registry', desc: 'Map who gets notified when triggers fire', href: '/stakeholders', gold: false, icon: '👥' },
-                { label: 'Playbook Library', desc: '170 pre-staged playbooks ready to deploy', href: '/playbooks', gold: false, icon: '📚' },
-              ].map(({ label, desc, href, gold, icon }) => (
+                { label: 'Situation Intents', desc: 'Define what you\'re watching for', href: '/identify/situation-intents', primary: true },
+                { label: 'Trigger Configuration', desc: 'Signal thresholds & monitoring rules', href: '/triggers-management', primary: false },
+                { label: 'Stakeholder Registry', desc: 'Notification routing at trigger point', href: '/stakeholders', primary: false },
+                { label: 'Playbook Library', desc: '170 pre-staged playbooks ready to deploy', href: '/playbooks', primary: false },
+              ].map(({ label, desc, href, primary }) => (
                 <a key={href} href={href} style={{
-                  display: 'block', textDecoration: 'none',
-                  background: gold ? 'rgba(201,168,76,0.1)' : 'rgba(255,255,255,0.03)',
-                  border: `1px solid ${gold ? 'rgba(201,168,76,0.4)' : 'rgba(255,255,255,0.07)'}`,
-                  borderRadius: 8, padding: '12px 14px',
-                  transition: 'all 0.15s',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  textDecoration: 'none', padding: '13px 0',
+                  borderBottom: '1px solid rgba(255,255,255,0.06)',
+                  transition: 'opacity 0.15s',
+                  gap: 12,
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
-                    <span style={{ fontSize: 14 }}>{icon}</span>
-                    <span style={{ color: gold ? GOLD : 'rgba(255,255,255,0.8)', fontWeight: 700, fontSize: 12 }}>{label}</span>
-                    {gold && <span style={{ marginLeft: 'auto', background: GOLD, color: NAVY, fontSize: 8, fontWeight: 800, padding: '1px 6px', borderRadius: 3, letterSpacing: '0.08em' }}>START HERE</span>}
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, minWidth: 0 }}>
+                    <span style={{ color: primary ? GOLD : 'rgba(255,255,255,0.8)', fontWeight: 700, fontSize: 12, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em', flexShrink: 0 }}>{label}</span>
+                    {primary && <span style={{ background: GOLD, color: NAVY, fontSize: 8, fontWeight: 800, padding: '1px 6px', letterSpacing: '0.1em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>START HERE</span>}
+                    <span style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{desc}</span>
                   </div>
-                  <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, lineHeight: 1.4 }}>{desc}</div>
+                  <span style={{ color: primary ? `${GOLD}80` : 'rgba(255,255,255,0.2)', fontSize: 11, fontWeight: 700, flexShrink: 0 }}>→</span>
                 </a>
               ))}
             </div>
           </div>
 
           {/* ── EXECUTIVE SCENARIO SUITE CALLOUT ─────────────────────────── */}
-          <a href="/executive-scenarios" style={{ display: 'flex', alignItems: 'center', gap: 20, textDecoration: 'none', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)', borderLeft: '3px solid rgba(43,138,110,0.7)', borderRadius: 8, padding: '14px 20px', marginBottom: 18, transition: 'all 0.15s' }}
-            onMouseOver={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(43,138,110,0.10)'; }}
-            onMouseOut={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(43,138,110,0.06)'; }}
-          >
-            <span style={{ fontSize: 22, flexShrink: 0 }}>🎯</span>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-                <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(43,138,110,0.9)' }}>Executive Scenario Suite</span>
-                <span style={{ fontSize: 9, fontWeight: 800, background: 'rgba(43,138,110,0.25)', color: 'rgba(43,138,110,0.9)', padding: '1px 7px', borderRadius: 3, letterSpacing: '0.1em' }}>AUTHENTICATED</span>
-              </div>
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.38)', lineHeight: 1.45 }}>
-                Walk through your industry scenario — full IDEA chain, real playbooks, 12-minute execution data. Technology · Financial Services · Manufacturing · Healthcare.
+          <a href="/executive-scenarios" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', textDecoration: 'none', borderTop: '1px solid rgba(43,138,110,0.2)', borderBottom: '1px solid rgba(43,138,110,0.2)', padding: '16px 0', marginBottom: 24, transition: 'opacity 0.15s', gap: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ width: 3, height: 36, background: TEAL, flexShrink: 0 }} />
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: TEAL, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>Executive Scenario Suite</span>
+                  <span style={{ fontSize: 8, fontWeight: 800, background: 'rgba(43,138,110,0.2)', color: TEAL, padding: '1px 7px', letterSpacing: '0.14em', fontFamily: "'Barlow Condensed', sans-serif" }}>AUTHENTICATED</span>
+                </div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
+                  Full IDEA chain — real playbooks, 12-minute execution data — Technology · Financial Services · Manufacturing · Healthcare
+                </div>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(43,138,110,0.8)', fontSize: 11, fontWeight: 700, flexShrink: 0 }}>
-              Begin <ChevronRight size={13} />
-            </div>
+            <span style={{ color: TEAL, fontSize: 11, fontWeight: 700, flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>Begin →</span>
           </a>
 
-          {/* ── SIGNAL COVERAGE ──────────────────────────────────────────── */}
-          <div style={{ marginBottom: 18 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>SIGNAL COVERAGE — TOP PLAYBOOK AREAS</span>
-              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
-              <a href="/playbooks" style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', textDecoration: 'none', fontWeight: 600, letterSpacing: '0.08em', flexShrink: 0 }}>View All Playbooks →</a>
+          {/* ── SIGNAL COVERAGE — Editorial table rows ───────────────────── */}
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
+              <span style={{ color: 'rgba(201,168,76,0.55)', fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase', flex: 1 }}>Signal Coverage</span>
+              <a href="/playbooks" style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontWeight: 700, letterSpacing: '0.12em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>VIEW ALL →</a>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
-              {[
-                { domain: 'Market Opportunities',    signals: 82,  color: '#2B8A6E', href: '/playbooks', desc: 'Competitive, market & innovation signals' },
-                { domain: 'Market Dynamics',          signals: 51,  color: '#C9A84C', href: '/playbooks', desc: 'Competitive moves & market shifts' },
-                { domain: 'Regulatory & Compliance', signals: 38,  color: '#A78BFA', href: '/playbooks', desc: 'Regulatory, ESG & cyber signals' },
-                { domain: 'Technology & Innovation', signals: 34,  color: '#38BDF8', href: '/playbooks', desc: 'Technology & innovation indicators' },
-              ].map(({ domain, signals, color, href, desc }) => (
-                <a key={domain} href={href} style={{ display: 'block', textDecoration: 'none', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.07)', borderLeft: `3px solid ${color}`, borderRadius: 8, padding: '12px 14px', transition: 'all 0.15s' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                      <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 0 2px rgba(16,185,129,0.2)' }} />
-                      <span style={{ fontSize: 9, color: '#10B981', fontWeight: 700, letterSpacing: '0.1em' }}>LIVE</span>
-                    </div>
-                    <span style={{ fontSize: 18, fontWeight: 800, color, fontVariantNumeric: 'tabular-nums', lineHeight: 1 }}>{signals}</span>
-                  </div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.75)', marginBottom: 3, lineHeight: 1.3 }}>{domain}</div>
-                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', lineHeight: 1.4 }}>{desc}</div>
-                </a>
-              ))}
-            </div>
+            {[
+              { domain: 'Market Opportunities',    signals: 82,  color: TEAL,     desc: 'Competitive, market & innovation signals' },
+              { domain: 'Market Dynamics',          signals: 51,  color: GOLD,     desc: 'Competitive moves & market shifts' },
+              { domain: 'Regulatory & Compliance', signals: 38,  color: '#A78BFA', desc: 'Regulatory, ESG & cyber signals' },
+              { domain: 'Technology & Innovation', signals: 34,  color: '#38BDF8', desc: 'AI & technology indicators' },
+            ].map(({ domain, signals, color, desc }, i) => (
+              <a key={domain} href="/playbooks" style={{
+                display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+                textDecoration: 'none', padding: '12px 0',
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                gap: 16,
+              }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 3, flexShrink: 0 }}>
+                  <span style={{ color, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 28, lineHeight: 1 }}>{signals}</span>
+                  <span style={{ color: `${color}60`, fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.1em', marginLeft: 4 }}>LIVE</span>
+                </div>
+                <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: 12, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, flex: 1, marginLeft: 16 }}>{domain}</span>
+                <span style={{ color: 'rgba(255,255,255,0.22)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{desc}</span>
+              </a>
+            ))}
           </div>
 
           {/* ── EXECUTION INTELLIGENCE TREND ─────────────────────────────── */}
           <ExecutionIntelligenceTrend activations={activations} />
 
-          {/* ── RESEARCH CONSENSUS INDICATOR ──────────────────────────────── */}
-          <div style={{ background: 'rgba(43,138,110,0.03)', border: '1px solid rgba(43,138,110,0.1)', borderRadius: 8, padding: '9px 18px', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' as const }}>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', flexShrink: 0 }}>RESEARCH CONSENSUS</span>
+          {/* ── RESEARCH CONSENSUS — editorial inline text ─────────────────── */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '10px 0', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' as const }}>
+            <span style={{ color: 'rgba(255,255,255,0.18)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Research</span>
             {[
               { label: 'McKinsey EA 2025–26', note: '"Named the gap"' },
               { label: 'MGI Nov 2025', note: '"Org change is the constraint"' },
               { label: 'WEF × Accenture Mar 2026', note: '"Not the AI — the operating model"' },
             ].map(({ label, note }, i) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                {i > 0 && <span style={{ color: 'rgba(255,255,255,0.1)', fontSize: 10 }}>·</span>}
-                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', fontWeight: 600 }}>{label}</span>
-                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.18)', fontStyle: 'italic' }}>{note}</span>
+                {i > 0 && <span style={{ color: 'rgba(255,255,255,0.08)', fontSize: 10, marginRight: 6 }}>·</span>}
+                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.3)', fontWeight: 600, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>{label}</span>
+                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.15)', fontStyle: 'italic', fontFamily: "'Cormorant Garamond', serif" }}>{note}</span>
               </div>
             ))}
           </div>
 
-          {/* ── MCKINSEY MATURITY INDICATOR ─────────────────────────────────── */}
-          <div style={{ background: 'rgba(201,168,76,0.04)', border: '1px solid rgba(201,168,76,0.14)', borderRadius: 10, padding: '14px 22px', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' as const }}>
+          {/* ── MCKINSEY MATURITY — editorial stat layout ─────────────────────── */}
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 32, marginBottom: 20, padding: '16px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', marginBottom: 4 }}>MCKINSEY AI MATURITY INDEX</div>
-              <div style={{ color: GOLD, fontSize: 11, fontWeight: 600 }}>Where does your enterprise stand?</div>
+              <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', marginBottom: 6, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>McKinsey AI Maturity Index</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 28, color: GOLD, lineHeight: 1, marginBottom: 4 }}>1%</div>
+              <div style={{ color: TEAL, fontSize: 10, fontWeight: 700, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.1em' }}>Mature — Readiness OS tier</div>
             </div>
-            <div style={{ flex: 1, minWidth: 280 }}>
-              <div style={{ display: 'flex', height: 8, borderRadius: 4, overflow: 'hidden', marginBottom: 6 }}>
-                <div style={{ width: '65%', background: 'rgba(192,57,43,0.5)', position: 'relative' }} title="65% still piloting" />
-                <div style={{ width: '23%', background: 'rgba(201,168,76,0.55)' }} title="23% scaling" />
-                <div style={{ width: '11%', background: 'rgba(43,138,110,0.65)' }} title="11% not yet scaling" />
-                <div style={{ width: '1%', background: '#2B8A6E' }} title="1% mature" />
+            <div style={{ flex: 1, paddingTop: 6 }}>
+              <div style={{ display: 'flex', height: 3, overflow: 'hidden', marginBottom: 8, gap: 1 }}>
+                <div style={{ width: '65%', background: 'rgba(192,57,43,0.45)' }} />
+                <div style={{ width: '23%', background: 'rgba(201,168,76,0.45)' }} />
+                <div style={{ width: '11%', background: 'rgba(43,138,110,0.45)' }} />
+                <div style={{ width: '1%', background: TEAL }} />
               </div>
-              <div style={{ display: 'flex', gap: 16, fontSize: 10 }}>
-                <span style={{ color: 'rgba(192,57,43,0.8)' }}>■ 65% Piloting</span>
-                <span style={{ color: 'rgba(201,168,76,0.8)' }}>■ 23% Scaling</span>
-                <span style={{ color: 'rgba(43,138,110,0.9)', fontWeight: 700 }}>■ 1% Mature</span>
+              <div style={{ display: 'flex', gap: 20, fontSize: 9 }}>
+                <span style={{ color: 'rgba(192,57,43,0.7)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>65% Piloting</span>
+                <span style={{ color: 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>23% Scaling</span>
+                <span style={{ color: TEAL, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.06em' }}>1% Mature</span>
               </div>
             </div>
             <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
-              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, marginBottom: 2 }}>Readiness OS puts you in the</div>
-              <div style={{ color: TEAL, fontWeight: 800, fontSize: 14 }}>1% Mature</div>
-              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9 }}>12-min activation · 170 pre-staged playbooks</div>
+              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2, letterSpacing: '0.06em' }}>12-min activation</div>
+              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>170 pre-staged playbooks</div>
             </div>
           </div>
 

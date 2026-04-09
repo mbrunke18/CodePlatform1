@@ -83,7 +83,7 @@ export function DemoActiveStrategicCard() {
   };
   
   return (
-    <Card className="border-red-300 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 shadow-lg" data-testid="demo-active-strategic-card">
+    <Card className="border-red-300 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20" data-testid="demo-active-strategic-card">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -120,7 +120,7 @@ export function DemoActiveStrategicCard() {
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-red-200 dark:border-red-800">
+        <div className="bg-white dark:bg-gray-900/50 p-4 border border-red-200 dark:border-red-800">
           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Trigger Conditions Met</h4>
           <div className="space-y-2 text-sm">
             <div className="flex items-start gap-2">
@@ -146,7 +146,7 @@ export function DemoActiveStrategicCard() {
         
         {showAnalysis && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-900/50 p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
                 <DollarSign className="h-4 w-4 text-yellow-600" />
                 <span className="text-xs text-gray-800 dark:text-gray-200">Financial Exposure</span>
@@ -155,7 +155,7 @@ export function DemoActiveStrategicCard() {
               <div className="text-xs text-gray-800 dark:text-gray-300">Quarterly revenue at risk</div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-900/50 p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
                 <Users className="h-4 w-4 text-[#0A0F2E]" />
                 <span className="text-xs text-gray-800 dark:text-gray-200">Workforce Impact</span>
@@ -164,7 +164,7 @@ export function DemoActiveStrategicCard() {
               <div className="text-xs text-gray-800 dark:text-gray-300">Employees affected</div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-900/50 p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
                 <Building2 className="h-4 w-4 text-[#C9A84C]" />
                 <span className="text-xs text-gray-800 dark:text-gray-200">Facilities</span>
@@ -173,7 +173,7 @@ export function DemoActiveStrategicCard() {
               <div className="text-xs text-gray-800 dark:text-gray-300">Production sites at risk</div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-900/50 p-3 border border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-1">
                 <TrendingDown className="h-4 w-4 text-red-700" />
                 <span className="text-xs text-gray-800 dark:text-gray-200">Capacity Risk</span>
@@ -185,7 +185,7 @@ export function DemoActiveStrategicCard() {
         )}
         
         {isActivated && (
-          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]/50">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]/50">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold text-[#0A0F2E] dark:text-white">
                 Coordinated Response Execution
@@ -243,32 +243,32 @@ export function DemoStrategicROIResults() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
+            <div className="bg-white dark:bg-gray-900/50 p-4 border border-green-200 dark:border-green-700">
               <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Response Time</div>
               <div className="text-3xl font-bold text-[#2B8A6E] dark:text-green-400">12 min</div>
               <div className="text-xs text-[#2B8A6E] dark:text-green-400">vs weeks of mobilization</div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
+            <div className="bg-white dark:bg-gray-900/50 p-4 border border-green-200 dark:border-green-700">
               <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Time Saved</div>
               <div className="text-3xl font-bold text-[#0A0F2E] dark:text-[#0A0F2E]">71.8 hrs</div>
               <div className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E]">Decision velocity advantage</div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
+            <div className="bg-white dark:bg-gray-900/50 p-4 border border-green-200 dark:border-green-700">
               <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Revenue Protected</div>
               <div className="text-3xl font-bold text-yellow-700 dark:text-yellow-400">$12M</div>
               <div className="text-xs text-yellow-600 dark:text-yellow-400">Quarterly revenue secured</div>
             </div>
             
-            <div className="bg-white dark:bg-gray-900/50 rounded-lg p-4 border border-green-200 dark:border-green-700">
+            <div className="bg-white dark:bg-gray-900/50 p-4 border border-green-200 dark:border-green-700">
               <div className="text-sm text-gray-800 dark:text-gray-200 mb-1">Competitive Edge</div>
               <div className="text-3xl font-bold text-[#C9A84C] dark:text-[#C9A84C]">5 days</div>
               <div className="text-xs text-[#C9A84C] dark:text-[#C9A84C]">Head start vs competitors</div>
             </div>
           </div>
           
-          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]/50">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]/50">
             <h4 className="font-semibold text-[#0A0F2E] dark:text-white mb-2">Execution Success Metrics</h4>
             <div className="grid grid-cols-3 gap-3 text-sm">
               <div>

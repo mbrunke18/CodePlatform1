@@ -339,8 +339,8 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6">
@@ -460,9 +460,9 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.7 }}
                   className="flex flex-wrap justify-center gap-4"
                 >
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Stakeholder alignment</span>
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Committee deliberation</span>
-                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-gray-800">Waiting on decisions</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 text-gray-800">Stakeholder alignment</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 text-gray-800">Committee deliberation</span>
+                  <span className="px-4 py-2 bg-gray-50 border border-gray-200 text-gray-800">Waiting on decisions</span>
                 </motion.div>
               </div>
             </Scene>
@@ -530,9 +530,9 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 2 }}
                   className="flex flex-wrap justify-center gap-4 text-red-300"
                 >
-                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">No playbooks</span>
-                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">No pre-staged coordination</span>
-                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-lg">Reinventing under pressure</span>
+                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">No playbooks</span>
+                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">No pre-staged coordination</span>
+                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">Reinventing under pressure</span>
                 </motion.div>
               </div>
             </Scene>
@@ -595,7 +595,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 + i * 0.15 }}
-                      className="flex flex-col items-center p-4 bg-gray-50 border border-gray-200 rounded-xl"
+                      className="flex flex-col items-center p-4 bg-gray-50 border border-gray-200"
                     >
                       <Building2 className="h-8 w-8 text-amber-400 mb-2" />
                       <span className="text-lg font-medium text-gray-900">{company.name}</span>
@@ -744,7 +744,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 1.5 + i * 0.08 }}
-                      className="px-3 py-1.5 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-full text-[#2B8A6E] text-sm"
+                      className="px-3 py-1.5 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] text-sm"
                     >
                       {domain}
                     </motion.span>
@@ -778,7 +778,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 + i * 0.2 }}
-                      className={`${phase.bg} ${phase.border} border rounded-xl p-4`}
+                      className={`${phase.bg} ${phase.border} border p-4`}
                     >
                       <phase.icon className={`h-8 w-8 ${phase.color} mx-auto mb-2`} />
                       <span className={`text-3xl font-bold ${phase.color}`}>{phase.letter}</span>
@@ -808,11 +808,11 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 0.8 }}
                   className="flex flex-wrap justify-center gap-4 mb-6"
                 >
-                  <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-lg text-[#2B8A6E]">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E]">
                     <CheckCircle className="h-5 w-5" />
                     <span>Roles assigned instantly</span>
                   </div>
-                  <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 rounded-lg text-[#2B8A6E]">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E]">
                     <Users className="h-5 w-5" />
                     <span>Teams in parallel</span>
                   </div>
@@ -895,7 +895,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 1.8 + i * 0.1 }}
-                      className="px-4 py-2 bg-red-500/20 border border-red-500/30 rounded-full text-red-300"
+                      className="px-4 py-2 bg-red-500/20 border border-red-500/30 text-red-300"
                     >
                       {item}
                     </motion.span>
@@ -931,17 +931,17 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 1.3 }}
                   className="grid md:grid-cols-3 gap-6"
                 >
-                  <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-xl p-4">
+                  <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 p-4">
                     <TrendingUp className="h-8 w-8 text-[#2B8A6E] mx-auto mb-2" />
                     <p className="text-gray-800">Launch in 4 months vs 18</p>
                     <p className="text-[#2B8A6E] text-sm mt-1">Capture the revenue</p>
                   </div>
-                  <div className="bg-[#0A0F2E]/10 border border-[#2B8A6E]/30 rounded-xl p-4">
+                  <div className="bg-[#0A0F2E]/10 border border-[#2B8A6E]/30 p-4">
                     <Target className="h-8 w-8 text-[#0A0F2E] mx-auto mb-2" />
                     <p className="text-gray-800">Integrate in 6 months vs 24</p>
                     <p className="text-[#0A0F2E] text-sm mt-1">Capture synergies</p>
                   </div>
-                  <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4">
+                  <div className="bg-amber-500/10 border border-amber-500/30 p-4">
                     <Zap className="h-8 w-8 text-amber-400 mx-auto mb-2" />
                     <p className="text-gray-800">Move in days vs weeks</p>
                     <p className="text-amber-400 text-sm mt-1">Win the market</p>
@@ -1114,7 +1114,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
       <div className="absolute bottom-0 left-0 right-0 p-6">
         <div className="max-w-4xl mx-auto">
           {/* Progress bar */}
-          <div className="h-1 bg-gray-50 rounded-full mb-4 overflow-hidden">
+          <div className="h-1 bg-gray-50 mb-4 overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-amber-500 to-[#256B56]"
               initial={{ width: 0 }}

@@ -96,7 +96,7 @@ export function StrategyReality() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`flex items-center gap-4 p-4 rounded-lg ${
+              className={`flex items-center gap-4 p-4 ${
                 item.highlight ? "bg-white border border-pink-500/30" : "bg-white"
               }`}
               data-testid={`work-block-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
@@ -139,7 +139,7 @@ export function StrategyReality() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-4 bg-white border border-gray-200 rounded-2xl px-8 py-6">
+          <div className="inline-flex items-center gap-4 bg-white border border-gray-200 px-8 py-6">
             <div className="text-left">
               <p className="text-3xl font-bold text-gray-900 mb-1">
                 The strategy is <span className="text-pink-500">5%</span> of the work.
@@ -158,9 +158,9 @@ export function StrategyReality() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 gap-8"
         >
-          <div className="bg-white border border-gray-200 rounded-2xl p-8">
+          <div className="bg-white border border-gray-200 p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-red-500/10 rounded-lg">
+              <div className="p-2 bg-red-500/10">
                 <Clock className="w-6 h-6 text-red-500" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">The Mobilization Problem</h3>
@@ -190,9 +190,9 @@ export function StrategyReality() {
             </ul>
           </div>
 
-          <div className=" border border-[#2B8A6E]/30 rounded-2xl p-8">
+          <div className=" border border-[#2B8A6E]/30 p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
+              <div className="p-2 bg-[#2B8A6E]/10">
                 <Target className="w-6 h-6 text-[#2B8A6E]" />
               </div>
               <h3 className="text-xl font-bold text-gray-900">Readiness OS: 12 Minutes</h3>
@@ -235,7 +235,7 @@ export function StrategyReality() {
               Optimize for the execution ecosystem around it.
             </span>
           </p>
-          <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-gray-900 font-semibold px-8 py-4 rounded-lg transition-colors" data-testid="link-see-how-it-works">
+          <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-gray-900 font-semibold px-8 py-4 transition-colors" data-testid="link-see-how-it-works">
             See How Readiness OS Works
             <ArrowRight className="w-5 h-5" />
           </Link>
@@ -247,7 +247,7 @@ export function StrategyReality() {
 
 export function StrategyRealityCompact() {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-6" data-testid="strategy-reality-compact">
+    <div className="bg-white border border-gray-200 p-6" data-testid="strategy-reality-compact">
       <h3 className="text-lg font-bold text-gray-900 mb-4">
         Why It's Never Just "The Strategy"
       </h3>
@@ -325,7 +325,7 @@ export function StrategyRealityHero() {
             ))}
           </div>
           
-          <div className="w-4 h-12 md:w-6 md:h-16 bg-gradient-to-b from-rose-500 to-pink-500 rounded shadow-lg shadow-pink-500/30" />
+          <div className="w-4 h-12 md:w-6 md:h-16 bg-gradient-to-b from-rose-500 to-pink-500 rounded shadow-pink-500/30" />
         </motion.div>
 
         <motion.div
@@ -353,7 +353,7 @@ export function StrategyRealityHero() {
           transition={{ delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-gray-900 font-semibold px-8 py-4 rounded-lg transition-colors text-lg" data-testid="button-see-how-it-works">
+          <Link href="/how-it-works" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-gray-900 font-semibold px-8 py-4 transition-colors text-lg" data-testid="button-see-how-it-works">
             See How It Works
             <ArrowRight className="w-5 h-5" />
           </Link>
@@ -427,11 +427,11 @@ export function StrategyToIDEA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-white border ${item.borderColor} rounded-2xl p-6`}
+              className={`bg-white border ${item.borderColor} p-6`}
               data-testid={`idea-phase-${item.phase.toLowerCase()}`}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center`}>
+                <div className={`w-12 h-12 ${item.color} flex items-center justify-center`}>
                   <span className="text-gray-900 font-bold text-xl">{item.phase[0]}</span>
                 </div>
                 <div>

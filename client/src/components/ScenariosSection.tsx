@@ -52,8 +52,8 @@ export default function ScenariosSection() {
           {isLoading ? (
             <div className="space-y-4">
               {[...Array(3)].map((_, i) => (
-                <div key={i} className="animate-pulse flex items-start space-x-4 p-4 rounded-lg border border-border">
-                  <div className="w-10 h-10 bg-muted rounded-lg"></div>
+                <div key={i} className="animate-pulse flex items-start space-x-4 p-4 border border-border">
+                  <div className="w-10 h-10 bg-muted"></div>
                   <div className="flex-1 space-y-2">
                     <div className="h-4 bg-muted rounded w-3/4"></div>
                     <div className="h-3 bg-muted rounded w-1/2"></div>
@@ -77,10 +77,10 @@ export default function ScenariosSection() {
             scenarios?.map((scenario, index) => (
               <div 
                 key={scenario.id} 
-                className="flex items-start space-x-4 p-4 rounded-lg border border-border hover:bg-accent/50 cursor-pointer"
+                className="flex items-start space-x-4 p-4 border border-border hover:bg-accent/50 cursor-pointer"
                 data-testid={`card-scenario-${index}`}
               >
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <i className="fas fa-lightbulb text-primary w-5"></i>
                 </div>
                 <div className="flex-1 min-w-0">
@@ -97,7 +97,7 @@ export default function ScenariosSection() {
                     <span data-testid={`text-scenario-date-${index}`}>
                       {getTimeAgo(scenario.createdAt)}
                     </span>
-                    <span className={`px-2 py-1 rounded-full ${getStatusColor(scenario.status)}`}>
+                    <span className={`px-2 py-1 ${getStatusColor(scenario.status)}`}>
                       {scenario.status}
                     </span>
                   </div>

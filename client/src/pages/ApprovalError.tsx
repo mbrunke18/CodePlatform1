@@ -51,7 +51,7 @@ export default function ApprovalError() {
     <div className="page-background min-h-screen bg-gradient-to-br from-red-50 to-orange-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <Card className="max-w-md w-full">
         <CardHeader className="text-center">
-          <div className="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto w-16 h-16 bg-red-100 dark:bg-red-900 flex items-center justify-center mb-4">
             <AlertCircle className="w-10 h-10 text-red-700 dark:text-red-400" />
           </div>
           <CardTitle className="text-2xl">{errorDetails.title}</CardTitle>

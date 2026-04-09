@@ -218,7 +218,7 @@ export default function ProactiveRadar() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-[#F8F7F4] rounded-lg">
+          <div className="p-2 bg-[#F8F7F4]">
             <Radar className="h-6 w-6 text-[#0A0F2E]" />
           </div>
           <div>
@@ -265,12 +265,12 @@ export default function ProactiveRadar() {
                 <div className="flex items-center space-x-2">
                   {radarStatus?.status?.isScanning ? (
                     <>
-                      <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <div className="h-2 w-2 bg-green-500 animate-pulse"></div>
                       <span className="text-sm font-medium text-green-600">Active Scanning</span>
                     </>
                   ) : (
                     <>
-                      <div className="h-2 w-2 bg-yellow-500 rounded-full"></div>
+                      <div className="h-2 w-2 bg-yellow-500"></div>
                       <span className="text-sm font-medium text-yellow-600">Standby Mode</span>
                     </>
                   )}

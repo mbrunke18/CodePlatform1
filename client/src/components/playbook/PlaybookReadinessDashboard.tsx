@@ -59,7 +59,7 @@ function PhaseScoreCard({
       <CardContent className="p-4">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center gap-2">
-            <div className={`p-2 rounded-lg bg-${config.color}-100 dark:bg-${config.color}-900/30`}>
+            <div className={`p-2 bg-${config.color}-100 dark:bg-${config.color}-900/30`}>
               <Icon className={`w-4 h-4 text-${config.color}-600 dark:text-${config.color}-400`} />
             </div>
             <div>
@@ -85,7 +85,7 @@ function PhaseScoreCard({
 
 function ReadinessMetricCard({ icon: Icon, label, value, subtext }: { icon: any; label: string; value: string | number; subtext?: string }) {
   return (
-    <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
+    <div className="flex items-center gap-3 p-3 bg-muted/30">
       <Icon className="w-5 h-5 text-muted-foreground" />
       <div>
         <div className="text-xs text-muted-foreground">{label}</div>
@@ -146,7 +146,7 @@ export default function PlaybookReadinessDashboard({
 
   if (compact) {
     return (
-      <div className="flex items-center gap-4 p-4 text-gray-900 rounded-lg">
+      <div className="flex items-center gap-4 p-4 text-gray-900">
         <div className="text-center">
           <div className={`text-3xl font-bold text-${status.color}-400`}>{overallScore}%</div>
           <div className="text-xs text-gray-800 dark:text-slate-200">Readiness</div>
@@ -276,7 +276,7 @@ export default function PlaybookReadinessDashboard({
           <CardTitle className="text-sm font-medium">Weight Distribution</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex gap-1 h-4 rounded-full overflow-hidden">
+          <div className="flex gap-1 h-4 overflow-hidden">
             <div 
               className="bg-[#0A0F2E] flex items-center justify-center text-xs text-white font-medium"
               style={{ width: `${score?.prepareWeight ?? 40}%` }}

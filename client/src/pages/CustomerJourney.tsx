@@ -190,7 +190,7 @@ export default function CustomerJourney() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {valueMetrics.map((metric) => (
-              <Card key={metric.label} className="text-center border-[#E8E4DC] bg-white shadow-sm">
+              <Card key={metric.label} className="text-center border-[#E8E4DC] bg-white">
                 <CardContent className="p-8">
                   <div className="text-4xl font-bold text-[#C9A84C] mb-2" style={CG}>{metric.value}</div>
                   <div className="text-[10px] font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">{metric.label}</div>
@@ -209,7 +209,7 @@ export default function CustomerJourney() {
             </div>
 
             <TabsContent value="timeline">
-              <div className="bg-white border border-[#E8E4DC] rounded-2xl p-8 shadow-sm">
+              <div className="bg-white border border-[#E8E4DC] p-8">
                 <JourneyNavigator variant="full" />
               </div>
             </TabsContent>
@@ -217,7 +217,7 @@ export default function CustomerJourney() {
             <TabsContent value="details">
               <div className="space-y-8">
                 {phaseDetails.map((phase, index) => (
-                  <Card key={phase.id} className="overflow-hidden border-[#E8E4DC] bg-white shadow-sm transition-all hover:border-[#C9A84C]/30">
+                  <Card key={phase.id} className="overflow-hidden border-[#E8E4DC] bg-white transition-all hover:border-[#C9A84C]/30">
                     <div className={`h-1.5 ${
                       index < 2 ? 'bg-[#C9A84C]' : 
                       index < 4 ? 'bg-[#0A0F2E]' : 
@@ -239,14 +239,14 @@ export default function CustomerJourney() {
                       <div className="grid md:grid-cols-2 gap-12">
                         <div>
                           <h4 className="text-[10px] font-bold text-[#0A0F2E] mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                            <div className="w-1.5 h-1.5 bg-[#2B8A6E]" />
                             Key Activities
                           </h4>
                           <div className="space-y-3">
                             {phase.activities.map((activity) => (
                               <Link key={activity.path} href={activity.path}>
-                                <div className="flex items-center gap-4 p-4 rounded-xl bg-[#F8F7F4] border border-[#E8E4DC] hover:bg-[#2B8A6E]/5 hover:border-[#2B8A6E]/20 cursor-pointer group transition-all">
-                                  <div className="w-8 h-8 rounded-lg bg-white border border-[#E8E4DC] flex items-center justify-center shrink-0 group-hover:bg-[#2B8A6E] group-hover:border-[#2B8A6E] transition-all shadow-sm">
+                                <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC] hover:bg-[#2B8A6E]/5 hover:border-[#2B8A6E]/20 cursor-pointer group transition-all">
+                                  <div className="w-8 h-8 bg-white border border-[#E8E4DC] flex items-center justify-center shrink-0 group-hover:bg-[#2B8A6E] group-hover:border-[#2B8A6E] transition-all">
                                     <ArrowRight className="h-4 w-4 text-[#6B7280] group-hover:text-white transition-colors" />
                                   </div>
                                   <div className="flex-1">
@@ -264,13 +264,13 @@ export default function CustomerJourney() {
                         <div className="space-y-8">
                           <div>
                             <h4 className="text-[10px] font-bold text-[#0A0F2E] mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
+                              <div className="w-1.5 h-1.5 bg-[#C9A84C]" />
                               Deliverables
                             </h4>
                             <div className="space-y-3">
                               {phase.deliverables.map((deliverable, idx) => (
                                 <div key={idx} className="flex items-center gap-3 text-sm font-medium text-[#0A0F2E]">
-                                  <div className="w-5 h-5 rounded-full bg-[#2B8A6E]/10 flex items-center justify-center shrink-0">
+                                  <div className="w-5 h-5 bg-[#2B8A6E]/10 flex items-center justify-center shrink-0">
                                     <CheckCircle className="h-3 w-3 text-[#2B8A6E]" />
                                   </div>
                                   <span className="text-xs">{deliverable}</span>
@@ -282,7 +282,7 @@ export default function CustomerJourney() {
                           {phase.integrations.length > 0 && (
                             <div>
                               <h4 className="text-[10px] font-bold text-[#0A0F2E] mb-4 uppercase tracking-[0.2em] flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#0A0F2E]" />
+                                <div className="w-1.5 h-1.5 bg-[#0A0F2E]" />
                                 Key Integrations
                               </h4>
                               <div className="flex flex-wrap gap-2">
@@ -304,10 +304,10 @@ export default function CustomerJourney() {
           </Tabs>
 
           <section className="py-12">
-            <Card className="bg-[#0A0F2E] border-none relative overflow-hidden shadow-2xl">
+            <Card className="bg-[#0A0F2E] border-none relative overflow-hidden">
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '30px 30px' }} />
               <CardContent className="p-16 text-center relative z-10">
-                <div className="w-16 h-16 rounded-full bg-[#C9A84C] flex items-center justify-center mx-auto mb-8 shadow-xl">
+                <div className="w-16 h-16 bg-[#C9A84C] flex items-center justify-center mx-auto mb-8">
                   <Award className="h-8 w-8 text-[#0A0F2E]" />
                 </div>
                 <h3 className="text-3xl font-bold text-white mb-4" style={CG}>
@@ -318,12 +318,12 @@ export default function CustomerJourney() {
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                   <Link href="/request-access">
-                    <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-10 py-6 text-base rounded-xl shadow-xl">
+                    <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-10 py-6 text-base">
                       Start Pilot Program
                     </Button>
                   </Link>
                   <Link href="/demo-selector">
-                    <Button variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent px-10 py-6 text-base rounded-xl">
+                    <Button variant="outline" className="border-white/20 text-white hover:bg-[#0A0F2E] bg-transparent px-10 py-6 text-base">
                       Explore Demos
                     </Button>
                   </Link>

@@ -134,7 +134,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
       className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
       data-testid="roi-calculator"
     >
-      <Card className="bg-gradient-to-br border-[#2B8A6E]/50 shadow-2xl">
+      <Card className="bg-gradient-to-br border-[#2B8A6E]/50">
         <CardContent className="p-6 space-y-6">
           {/* Header */}
           <div className="text-center space-y-2">
@@ -184,7 +184,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           </div>
 
           {/* Coordination Time Savings Highlight */}
-          <div className="bg-gradient-to-r   rounded-lg p-4 border-2 border-green-500/50">
+          <div className="bg-gradient-to-r   p-4 border-2 border-green-500/50">
             <div className="text-center space-y-2">
               <div className="text-sm text-gray-800 font-medium">Coordination Time Savings</div>
               <div className="flex items-center justify-center gap-4">
@@ -207,7 +207,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
 
           {/* Results Grid */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-[#0A0F2E]/50 rounded-lg p-4 border border-[#2B8A6E]/30">
+            <div className="bg-[#0A0F2E]/50 p-4 border border-[#2B8A6E]/30">
               <div className="flex items-center gap-2 mb-1">
                 <Clock className="h-4 w-4 text-[#0A0F2E]" />
                 <span className="text-xs text-gray-700">Decision Velocity</span>
@@ -218,7 +218,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
               </div>
             </div>
 
-            <div className="bg-green-950/50 rounded-lg p-4 border border-green-500/30">
+            <div className="bg-green-950/50 p-4 border border-green-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <DollarSign className="h-4 w-4 text-green-400" />
                 <span className="text-xs text-gray-700">Annual Savings</span>
@@ -231,7 +231,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
               </div>
             </div>
 
-            <div className="bg-[#0A0F2E]/50 rounded-lg p-4 border border-[#C9A84C]/30">
+            <div className="bg-[#0A0F2E]/50 p-4 border border-[#C9A84C]/30">
               <div className="flex items-center gap-2 mb-1">
                 <Target className="h-4 w-4 text-[#C9A84C]" />
                 <span className="text-xs text-gray-700">ROI</span>
@@ -242,7 +242,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
               </div>
             </div>
 
-            <div className="bg-orange-950/50 rounded-lg p-4 border border-orange-500/30">
+            <div className="bg-orange-950/50 p-4 border border-orange-500/30">
               <div className="flex items-center gap-2 mb-1">
                 <Users className="h-4 w-4 text-orange-400" />
                 <span className="text-xs text-gray-700">Risk Reduction</span>
@@ -257,7 +257,7 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           </div>
 
           {/* Summary */}
-          <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-teal-600/20 rounded-lg p-4 border border-[#2B8A6E]/30">
+          <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-teal-600/20 p-4 border border-[#2B8A6E]/30">
             <h4 className="text-gray-900 font-semibold mb-2 text-sm">🏈 Championship Execution Through Preparation</h4>
             <ul className="text-xs text-gray-800 space-y-1">
               <li>• <strong className="text-green-400">{mResponseMinutes}-minute playbook execution</strong> vs {currentCrisisResponse}-hour industry standard</li>

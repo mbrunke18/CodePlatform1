@@ -133,11 +133,11 @@ export default function PlatformOverview() {
               </div>
               <div className="flex flex-col gap-2 shrink-0">
                 <div className="flex items-center gap-3 text-sm text-[#6B7280]">
-                  <span className="w-2 h-2 rounded-full bg-[#0A0F2E]" />
+                  <span className="w-2 h-2 bg-[#0A0F2E]" />
                   AI handles signal monitoring and execution orchestration
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#6B7280]">
-                  <span className="w-2 h-2 rounded-full" style={{ background: "#C9A84C" }} />
+                  <span className="w-2 h-2" style={{ background: "#C9A84C" }} />
                   Humans retain all strategic decision authority
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function PlatformOverview() {
             </div>
 
             <div className="space-y-0 relative">
-            <div className="absolute left-[23px] md:left-[47px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#0A0F2E] via-[#C9A84C] to-[#2B8A6E] rounded-full" />
+            <div className="absolute left-[23px] md:left-[47px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#0A0F2E] via-[#C9A84C] to-[#2B8A6E]" />
 
               {timelineSteps.map((step, i) => (
                 <div key={i} className="relative flex gap-6 md:gap-10 mb-8">
@@ -176,7 +176,7 @@ export default function PlatformOverview() {
                     </div>
                   </div>
 
-                  <div className="flex-1 bg-white border border-[#E8E4DC] p-6 shadow-sm">
+                  <div className="flex-1 bg-white border border-[#E8E4DC] p-6">
                     <div className="flex items-start justify-between flex-wrap gap-3 mb-5">
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>

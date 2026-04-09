@@ -85,13 +85,13 @@ export default function Footer() {
               />
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-gold/20 text-poise-gold border border-poise-gold/30">IDENTIFY</span>
+              <span className="text-xs font-medium px-3 py-1 bg-poise-gold/20 text-poise-gold border border-poise-gold/30">IDENTIFY</span>
               <span className="text-poise-gold/40">→</span>
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-teal/20 text-poise-teal border border-poise-teal/30">DETECT</span>
+              <span className="text-xs font-medium px-3 py-1 bg-poise-teal/20 text-poise-teal border border-poise-teal/30">DETECT</span>
               <span className="text-poise-gold/40">→</span>
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-teal/20 text-poise-teal border border-poise-teal/30">EXECUTE</span>
+              <span className="text-xs font-medium px-3 py-1 bg-poise-teal/20 text-poise-teal border border-poise-teal/30">EXECUTE</span>
               <span className="text-poise-gold/40">→</span>
-              <span className="text-xs font-medium px-3 py-1 rounded-full bg-poise-gold/20 text-poise-gold border border-poise-gold/30">ADVANCE</span>
+              <span className="text-xs font-medium px-3 py-1 bg-poise-gold/20 text-poise-gold border border-poise-gold/30">ADVANCE</span>
             </div>
           </div>
         </div>

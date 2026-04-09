@@ -123,7 +123,7 @@ export default function StrategyExecutionDashboard() {
                       <p className="text-sm text-[#6B7280]">Quarterly Executions</p>
                       <p className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{mockQuarterlyData.totalPlaybooksExecuted}</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#2B8A6E]/10">
+                    <div className="p-3 bg-[#2B8A6E]/10">
                       <BarChart3 className="h-6 w-6 text-[#2B8A6E]" />
                     </div>
                   </div>
@@ -138,7 +138,7 @@ export default function StrategyExecutionDashboard() {
                       <p className="text-sm text-[#6B7280]">Orchestration Health</p>
                       <p className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{mockQuarterlyData.orchestrationHealthScore}%</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#C9A84C]/10">
+                    <div className="p-3 bg-[#C9A84C]/10">
                       <Layers className="h-6 w-6 text-[#C9A84C]" />
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default function StrategyExecutionDashboard() {
                       <p className="text-sm text-[#6B7280]">Anticipation Window</p>
                       <p className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{mockQuarterlyData.anticipationWindowDays} days</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#2B8A6E]/10">
+                    <div className="p-3 bg-[#2B8A6E]/10">
                       <Telescope className="h-6 w-6 text-[#2B8A6E]" />
                     </div>
                   </div>
@@ -168,7 +168,7 @@ export default function StrategyExecutionDashboard() {
                       <p className="text-sm text-[#6B7280]">Execution Velocity</p>
                       <p className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{mockQuarterlyData.executionVelocityImprovement}X</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#0A0F2E]/10 dark:bg-[#C9A84C]/10">
+                    <div className="p-3 bg-[#0A0F2E]/10 dark:bg-[#C9A84C]/10">
                       <Zap className="h-6 w-6 text-[#0A0F2E] dark:text-[#C9A84C]" />
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default function StrategyExecutionDashboard() {
                       const Icon = capabilityIcons[capability] || Target;
                       return (
                         <div key={objective.id} className="flex items-center gap-4">
-                          <div className="p-2 rounded-lg bg-[#F8F7F4] dark:bg-white/10">
+                          <div className="p-2 bg-[#F8F7F4] dark:bg-white/10">
                             <Icon className="h-4 w-4 text-[#2B8A6E]" />
                           </div>
                           <div className="flex-1">
@@ -225,7 +225,7 @@ export default function StrategyExecutionDashboard() {
                       const Icon = capabilityIcons[capability.id] || Target;
                       return (
                         <div key={capability.id} className="flex items-center gap-4">
-                          <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+                          <div className="p-2 bg-[#C9A84C]/10">
                             <Icon className="h-4 w-4 text-[#C9A84C]" />
                           </div>
                           <div className="flex-1">
@@ -255,10 +255,10 @@ export default function StrategyExecutionDashboard() {
                 const Icon = capabilityIcons[capability.id] || Target;
                 const metrics = mockCapabilityMetrics.find(m => m.id === capability.id);
                 return (
-                  <Card key={key} className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 hover:shadow-lg transition-shadow">
+                  <Card key={key} className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 ">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-xl bg-[#0A0F2E]/5 dark:bg-white/5">
+                        <div className="p-3 bg-[#0A0F2E]/5 dark:bg-white/5">
                           <Icon className="h-6 w-6 text-[#C9A84C]" />
                         </div>
                         <div className="flex-1">
@@ -308,10 +308,10 @@ export default function StrategyExecutionDashboard() {
                       const capability = (objective as any).leadershipCapability || 'orchestration';
                       const Icon = capabilityIcons[capability] || Target;
                       return (
-                        <div key={objective.id} className="p-4 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                        <div key={objective.id} className="p-4 border border-[#E8E4DC] dark:border-white/10">
                           <div className="flex items-start justify-between mb-4">
                             <div className="flex items-center gap-3">
-                              <div className="p-2 rounded-lg bg-[#F8F7F4] dark:bg-white/5">
+                              <div className="p-2 bg-[#F8F7F4] dark:bg-white/5">
                                 <Icon className="h-5 w-5 text-[#2B8A6E]" />
                               </div>
                               <div>
@@ -352,7 +352,7 @@ export default function StrategyExecutionDashboard() {
                 <CardContent>
                   <div className="space-y-4">
                     {mockAnticipationSignals.map((signal) => (
-                      <div key={signal.id} className="p-4 rounded-lg border border-[#E8E4DC] dark:border-white/10 hover:bg-[#F8F7F4] dark:hover:bg-white/5 transition-colors">
+                      <div key={signal.id} className="p-4 border border-[#E8E4DC] dark:border-white/10 hover:bg-[#F8F7F4] dark:hover:bg-white/5 transition-colors">
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-semibold text-[#0A0F2E] dark:text-white">{signal.name}</h4>
                           <Badge 
@@ -395,24 +395,24 @@ export default function StrategyExecutionDashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
-                    <div className="text-center p-6 rounded-xl bg-[#2B8A6E]/5 border border-[#2B8A6E]/30">
+                    <div className="text-center p-6 bg-[#2B8A6E]/5 border border-[#2B8A6E]/30">
                       <p className="text-4xl font-bold text-[#2B8A6E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6 weeks</p>
                       <p className="text-[#6B7280]">Average anticipation window</p>
                       <p className="text-sm text-[#2B8A6E] mt-2 font-semibold">Improved from 2 weeks last quarter</p>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 rounded-lg bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10 text-center">
+                      <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10 text-center">
                         <p className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12</p>
                         <p className="text-sm text-[#6B7280]">Signals converted to executions</p>
                       </div>
-                      <div className="p-4 rounded-lg bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10 text-center">
+                      <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10 text-center">
                         <p className="text-2xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3</p>
                         <p className="text-sm text-[#6B7280]">Emerging opportunities</p>
                       </div>
                     </div>
 
-                    <div className="p-4 rounded-lg border border-[#C9A84C]/30 bg-[#C9A84C]/5">
+                    <div className="p-4 border border-[#C9A84C]/30 bg-[#C9A84C]/5">
                       <h4 className="font-semibold text-[#0A0F2E] dark:text-white mb-2">Anticipation Insight</h4>
                       <p className="text-sm text-[#6B7280] dark:text-[#E8E4DC]">
                         Your organization detected 3 signals 4+ weeks before threshold, enabling proactive response. Competitors are likely still reacting to what you anticipated.

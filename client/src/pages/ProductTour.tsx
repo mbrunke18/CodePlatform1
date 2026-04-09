@@ -418,7 +418,7 @@ export default function ProductTour() {
         animate={{ opacity: 1 }}
         className="w-full max-w-4xl"
       >
-        <Card className="bg-white border-[#E8E4DC] rounded-none overflow-hidden shadow-2xl">
+        <Card className="bg-white border-[#E8E4DC] rounded-none overflow-hidden">
           <div className="bg-[#0A0F2E] p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -528,7 +528,7 @@ export default function ProductTour() {
           <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="text-center p-3 bg-white border border-[#E8E4DC] rounded-none">
             <p className="text-[#0A0F2E] font-bold text-[9px] uppercase tracking-widest">Anaplan</p>
           </motion.div>
-          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E]/10 rounded-none shadow-lg">
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="text-center p-3 bg-[#0A0F2E]/10 rounded-none">
             <p className="text-[#C9A84C] font-bold text-[9px] uppercase tracking-widest">Readiness OS</p>
           </motion.div>
           
@@ -568,7 +568,7 @@ export default function ProductTour() {
         className="text-center max-w-2xl"
       >
         <motion.div 
-          className="w-24 h-24 mx-auto mb-8 bg-[#0A0F2E] rounded-none flex items-center justify-center shadow-2xl"
+          className="w-24 h-24 mx-auto mb-8 bg-[#0A0F2E] rounded-none flex items-center justify-center"
         >
           <span className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Readiness OS</span>
         </motion.div>
@@ -580,7 +580,7 @@ export default function ProductTour() {
           >
             <Button 
               size="lg" 
-              className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 rounded-none font-bold uppercase tracking-[0.2em] text-xs shadow-xl transition-all"
+              className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 rounded-none font-bold uppercase tracking-[0.2em] text-xs transition-all"
               onClick={() => setLocation('/try-demo')}
             >
               <Play className="mr-3 h-5 w-5" />
@@ -646,8 +646,8 @@ export default function ProductTour() {
       data-testid="page-product-tour"
     >
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A84C]/10 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#2B8A6E]/10 blur-3xl" />
       </div>
 
       <Button
@@ -698,7 +698,7 @@ export default function ProductTour() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mb-32 max-w-3xl text-center bg-[#F8F7F4] p-8 border border-[#E8E4DC] shadow-sm"
+            className="mb-32 max-w-3xl text-center bg-[#F8F7F4] p-8 border border-[#E8E4DC]"
           >
             <p className="text-xl md:text-2xl text-[#0A0F2E] leading-relaxed font-medium">
               {currentScene.narration}

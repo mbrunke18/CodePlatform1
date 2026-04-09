@@ -192,15 +192,15 @@ export default function AgilityAssessment() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6" data-testid="result-current-growth">
+                  <div className="bg-[#F8F7F4] dark:bg-white/5 p-6" data-testid="result-current-growth">
                     <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-2">{revenueImpact.currentGrowth}%</div>
                     <p className="text-[#6B7280] dark:text-white/60 text-sm">Estimated Current Revenue/Employee Growth</p>
                   </div>
-                  <div className="bg-[#2B8A6E]/10 rounded-lg p-6 border border-[#2B8A6E]/30" data-testid="result-potential-growth">
+                  <div className="bg-[#2B8A6E]/10 p-6 border border-[#2B8A6E]/30" data-testid="result-potential-growth">
                     <div className="text-3xl font-bold text-[#0A0F2E] mb-2">+{revenueImpact.potentialGrowth}%</div>
                     <p className="text-[#0A0F2E] dark:text-[#C9A84C] text-sm">Potential Additional Growth with Readiness OS</p>
                   </div>
-                  <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-6" data-testid="result-benchmark">
+                  <div className="bg-[#F8F7F4] dark:bg-white/5 p-6" data-testid="result-benchmark">
                     <div className="text-3xl font-bold text-[#C9A84C] mb-2">10.3%</div>
                     <p className="text-[#6B7280] dark:text-white/60 text-sm">Top Performer Benchmark (BAI 2025)</p>
                   </div>
@@ -315,7 +315,7 @@ export default function AgilityAssessment() {
                 {currentQ.options.map((option) => (
                   <div 
                     key={option.value}
-                    className={`flex items-center space-x-3 p-4 rounded-lg border transition-all cursor-pointer ${
+                    className={`flex items-center space-x-3 p-4 border transition-all cursor-pointer ${
                       currentAnswer === option.value 
                         ? 'border-[#2B8A6E] bg-[#2B8A6E]/10' 
                         : 'border-[#E8E4DC] dark:border-white/10 bg-[#F8F7F4] dark:bg-white/5 hover:border-[#6B7280]'

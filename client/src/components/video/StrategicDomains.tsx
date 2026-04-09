@@ -51,7 +51,7 @@ export function StrategicDomains({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: i < visibleCount ? 1 : 0.2, x: 0 }}
                   transition={{ delay: 0.4 + i * 0.1 }}
-                  className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 flex items-center gap-3"
+                  className="bg-green-500/10 border border-green-500/30 p-3 flex items-center gap-3"
                 >
                   <domain.icon className="w-5 h-5 text-green-400" />
                   <span className="text-gray-900 text-sm">{domain.name}</span>
@@ -69,7 +69,7 @@ export function StrategicDomains({ progress }: SceneProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: i + 3 < visibleCount ? 1 : 0.2, y: 0 }}
                   transition={{ delay: 0.7 + i * 0.1 }}
-                  className="bg-red-500/10 border border-red-500/30 rounded-lg p-3 flex items-center gap-3"
+                  className="bg-red-500/10 border border-red-500/30 p-3 flex items-center gap-3"
                 >
                   <domain.icon className="w-5 h-5 text-red-400" />
                   <span className="text-gray-900 text-sm">{domain.name}</span>
@@ -87,7 +87,7 @@ export function StrategicDomains({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: i + 6 < visibleCount ? 1 : 0.2, x: 0 }}
                   transition={{ delay: 1.0 + i * 0.1 }}
-                  className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg p-3 flex items-center gap-3"
+                  className="bg-[#C9A84C]/10 border border-[#C9A84C]/30 p-3 flex items-center gap-3"
                 >
                   <domain.icon className="w-5 h-5 text-[#C9A84C]" />
                   <span className="text-gray-900 text-sm">{domain.name}</span>
@@ -101,7 +101,7 @@ export function StrategicDomains({ progress }: SceneProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5 }}
-          className="text-center bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-xl p-4"
+          className="text-center bg-[#D4AF37]/10 border border-[#D4AF37]/30 p-4"
         >
           <p className="text-[#D4AF37] font-bold text-xl">170 Pre-Built Playbooks</p>
           <p className="text-gray-700 text-sm">Ready to customize and deploy in minutes</p>

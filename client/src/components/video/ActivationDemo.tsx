@@ -26,7 +26,7 @@ export function ActivationDemo({ progress }: SceneProps) {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="w-12 h-12 bg-[#00A8A8]/20 rounded-xl flex items-center justify-center"
+            className="w-12 h-12 bg-[#00A8A8]/20 flex items-center justify-center"
           >
             <Zap className="w-6 h-6 text-[#00A8A8]" />
           </motion.div>
@@ -48,19 +48,19 @@ export function ActivationDemo({ progress }: SceneProps) {
           transition={{ delay: 0.5 }}
           className="flex items-center justify-center gap-4 mb-6"
         >
-          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
+          <div className="bg-gray-50 border border-gray-200 px-4 py-2 text-center">
             <p className="text-gray-700 text-xs">Stakeholders notified</p>
             <p className="text-[#00A8A8] font-bold text-lg">Automatically</p>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
+          <div className="bg-gray-50 border border-gray-200 px-4 py-2 text-center">
             <p className="text-gray-700 text-xs">Tasks assigned</p>
             <p className="text-[#D4AF37] font-bold text-lg">By Role</p>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
+          <div className="bg-gray-50 border border-gray-200 px-4 py-2 text-center">
             <p className="text-gray-700 text-xs">Budgets unlocked</p>
             <p className="text-green-400 font-bold text-lg">Pre-approved</p>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-center">
+          <div className="bg-gray-50 border border-gray-200 px-4 py-2 text-center">
             <p className="text-gray-700 text-xs">Documents staged</p>
             <p className="text-[#C9A84C] font-bold text-lg">Ready to send</p>
           </div>
@@ -81,9 +81,9 @@ export function ActivationDemo({ progress }: SceneProps) {
             ))}
           </div>
 
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+          <div className="bg-gray-50 border border-gray-200 p-6">
             <h3 className="text-gray-900 font-medium mb-6 flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-green-400 animate-pulse" />
               Execution Timeline
             </h3>
             
@@ -105,7 +105,7 @@ export function ActivationDemo({ progress }: SceneProps) {
                 >
                   <span className="text-[#D4AF37] font-mono text-sm w-12">{item.time}</span>
                   <motion.div
-                    className={`w-3 h-3 rounded-full border-2 ${
+                    className={`w-3 h-3 border-2 ${
                       item.done ? "bg-green-400 border-green-400" : "border-gray-300"
                     }`}
                     animate={item.done ? { scale: [1, 1.2, 1] } : {}}

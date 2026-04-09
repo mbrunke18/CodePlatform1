@@ -247,68 +247,58 @@ export default function PilotProgram() {
       <div className="bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         
         {/* Hero Section */}
-        <section className="py-16 px-6 bg-[#0A0F2E]">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm mb-6">
-              <VaughnMartinLogo color="light" height={44} variant="full" />
+        <section style={{ background: '#0A0F2E', padding: '96px 32px 80px' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 20 }}>
+              <VaughnMartinLogo color="light" height={40} variant="full" />
             </div>
-            <Badge className="mb-6 bg-[#2B8A6E] text-white border-[#2B8A6E]/30" data-testid="badge-pilot">
-              Fortune 1000 Design Partner Program
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" data-testid="heading-pilot-program">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+              <div style={{ width: 32, height: 1, background: 'rgba(201,168,76,0.5)' }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
+                Fortune 1000 Design Partner Program
+              </span>
+            </div>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px,5vw,56px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 8, maxWidth: 740 }} data-testid="heading-pilot-program">
               90-Day Pilot Program
-              <span className="block text-[#C9A84C] mt-2">Validate Before You Commit</span>
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-              Prove Readiness OS' 12-minute coordination claim with real activations in your environment. 
-              Structured phases, measurable outcomes, and a clear path to enterprise deployment.
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, fontStyle: 'italic', color: '#C9A84C', marginBottom: 28 }}>
+              Validate before you commit.
+            </p>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(240,237,228,0.7)', maxWidth: 620, marginBottom: 52, lineHeight: 1.7, fontWeight: 400 }}>
+              Prove the 12-minute coordination claim with real activations in your environment. Structured phases, measurable outcomes, and a clear path to enterprise deployment.
             </p>
             
-            {/* Key Stats */}
-            <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
-                <div className="text-2xl font-bold text-[#3BAF8A]">$75K</div>
-                <div className="text-xs text-white/70">Pilot Investment</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
-                <div className="text-2xl font-bold text-white">90</div>
-                <div className="text-xs text-white/70">Days</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
-                <div className="text-2xl font-bold text-white">5</div>
-                <div className="text-xs text-white/70">Playbooks</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
-                <div className="text-2xl font-bold text-white">25</div>
-                <div className="text-xs text-white/70">Users</div>
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-lg px-6 py-3 text-center border border-white/10">
-                <div className="text-2xl font-bold text-white">100%</div>
-                <div className="text-xs text-white/70">Credit to Year 1</div>
-              </div>
+            {/* Key Stats — editorial horizontal strip */}
+            <div style={{ display: 'flex', gap: 0, marginBottom: 52, borderTop: '1px solid rgba(201,168,76,0.2)', paddingTop: 32 }}>
+              {[
+                { val: '$75K', label: 'Pilot Investment' },
+                { val: '90', label: 'Days' },
+                { val: '5', label: 'Playbooks Configured' },
+                { val: '25', label: 'Users' },
+                { val: '100%', label: 'Credit to Enterprise Year 1' },
+              ].map((s, i) => (
+                <div key={s.label} style={{ flex: 1, paddingRight: 24, borderRight: i < 4 ? '1px solid rgba(255,255,255,0.08)' : 'none', paddingLeft: i > 0 ? 24 : 0 }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.45)', marginTop: 6 }}>{s.label}</div>
+                </div>
+              ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button 
-                size="lg" 
-                className="font-bold"
-                style={{ background: '#C9A84C', color: '#0A0F2E' }}
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' as const }}>
+              <button
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#C9A84C', color: '#0A0F2E', fontWeight: 800, fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 40px', border: 'none', cursor: 'pointer' }}
                 onClick={() => setLocation('/request-access')}
                 data-testid="button-apply-pilot"
               >
-                <Rocket className="w-5 h-5 mr-2" />
                 Apply for Pilot Program
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white/20 text-white hover:bg-white/10"
+              </button>
+              <button
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: '#C9A84C', fontWeight: 700, fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 32px', border: '1px solid rgba(201,168,76,0.35)', cursor: 'pointer' }}
                 onClick={() => setLocation('/request-access')}
                 data-testid="button-request-access"
               >
-                <Play className="w-5 h-5 mr-2 text-[#2B8A6E]" />
                 Request Executive Access
-              </Button>
+              </button>
             </div>
           </div>
         </section>
@@ -330,127 +320,100 @@ export default function PilotProgram() {
         </section>
 
         {/* 4-Phase Timeline */}
-        <section className="py-16 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-phases">
+        <section style={{ padding: '80px 32px', background: '#F8F7F4' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 52 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 16 }}>
                 Structured 90-Day Journey
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, marginBottom: 0 }} data-testid="heading-phases">
+                Crawl, walk, run — with clear milestones at every phase.
               </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                Crawl, walk, run methodology with clear milestones and success criteria
-              </p>
             </div>
 
-            {/* Timeline Visual */}
-            <div className="relative mb-12">
-              <div className="absolute left-0 right-0 top-1/2 h-1 bg-[#E8E4DC] dark:bg-[#141B45] -translate-y-1/2 hidden md:block"></div>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {pilotPhases.map((phase, i) => (
-                  <div key={i} className="relative" data-testid={`phase-${i}`}>
-                    <div className="flex flex-col items-center">
-                      <div className={`w-12 h-12 rounded-full ${phase.color} flex items-center justify-center text-white font-bold z-10 mb-4`}>
-                        {i + 1}
-                      </div>
-                      <Card className="w-full border-[#E8E4DC]">
-                        <CardHeader className="pb-2 text-center">
-                          <Badge className={`${phase.color} text-white mb-2 border-none`}>{phase.duration}</Badge>
-                          <CardTitle className="text-lg text-[#0A0F2E]">{phase.name}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="text-sm">
-                          <ul className="space-y-1 mb-4">
-                            {phase.activities.slice(0, 3).map((activity, j) => (
-                              <li key={j} className="text-gray-800 dark:text-slate-300 flex items-start gap-2">
-                                <CheckCircle className="w-3 h-3 text-[#2B8A6E] mt-1 flex-shrink-0" />
-                                <span className="text-xs">{activity}</span>
-                              </li>
-                            ))}
-                          </ul>
-                          <div className="border-t border-[#E8E4DC] pt-3">
-                            <div className="text-xs font-semibold text-[#0A0F2E] dark:text-[#C9A84C] mb-1">Success Metric</div>
-                            <p className="text-xs text-gray-800 dark:text-slate-300">{phase.successMetrics}</p>
-                          </div>
-                        </CardContent>
-                      </Card>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '2px solid #0A0F2E' }} data-testid="phases-grid">
+              {pilotPhases.map((phase, i) => {
+                const phaseColors = ['#6B7280', '#0A0F2E', '#2B8A6E', '#C9A84C'];
+                const color = phaseColors[i];
+                return (
+                  <div key={i} style={{ padding: '28px 24px 28px', borderRight: i < 3 ? '1px solid #E8E4DC' : 'none', borderTop: `3px solid ${color}`, marginTop: -2 }} data-testid={`phase-${i}`}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color, marginBottom: 4 }}>{phase.duration}</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#0A0F2E', marginBottom: 4 }}>{phase.phase}</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 700, color: '#0A0F2E', marginBottom: 16, letterSpacing: '0.04em' }}>{phase.name}</div>
+                    <div style={{ marginBottom: 20 }}>
+                      {phase.activities.slice(0, 3).map((activity, j) => (
+                        <div key={j} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
+                          <div style={{ width: 3, height: 3, background: color, marginTop: 6, flexShrink: 0 }} />
+                          <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#555', lineHeight: 1.5 }}>{activity}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ borderTop: '1px solid #E8E4DC', paddingTop: 16 }}>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#6B7280', marginBottom: 4 }}>Success Metric</div>
+                      <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: '#555', lineHeight: 1.5 }}>{phase.successMetrics}</p>
                     </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
 
         {/* What's Included */}
-        <section className="py-16 px-6 bg-[#F8F7F4] dark:bg-[#0A0F2E]/50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-inclusions">
+        <section style={{ padding: '80px 32px', background: '#fff' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 52 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 16 }}>
                 What's Included
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }} data-testid="heading-inclusions">
+                Everything needed to validate Readiness OS in your environment.
               </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                Everything you need to validate Readiness OS in your environment
-              </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
               {pilotInclusions.map((inclusion, i) => (
-                <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-inclusion-${i}`}>
-                  <CardHeader className="pb-2">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30">
-                        <inclusion.icon className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
-                      </div>
-                      <CardTitle className="text-base">{inclusion.category}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {inclusion.items.map((item, j) => (
-                        <li key={j} className="text-sm text-gray-800 dark:text-slate-300 flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <div key={i} style={{ padding: '28px 24px', borderRight: i < pilotInclusions.length - 1 ? '1px solid #E8E4DC' : 'none' }} data-testid={`card-inclusion-${i}`}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: '#0A0F2E', marginBottom: 20, borderBottom: '1px solid #E8E4DC', paddingBottom: 12 }}>{inclusion.category}</div>
+                  <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                    {inclusion.items.map((item, j) => (
+                      <li key={j} style={{ display: 'flex', gap: 8, marginBottom: 10, alignItems: 'flex-start' }}>
+                        <div style={{ width: 3, height: 3, background: '#2B8A6E', marginTop: 6, flexShrink: 0 }} />
+                        <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#555', lineHeight: 1.5 }}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Ideal Candidates */}
-        <section className="py-16 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-[#0A0F2E] dark:text-white mb-4" data-testid="heading-candidates">
+        <section style={{ padding: '80px 32px', background: '#F8F7F4' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 52 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 16 }}>
                 Ideal Pilot Candidates
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }} data-testid="heading-candidates">
+                Organizations positioned to maximize pilot value.
               </h2>
-              <p className="text-lg text-gray-800 dark:text-slate-300">
-                Organizations positioned to maximize pilot value
-              </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {idealCandidates.map((candidate, i) => (
-                <Card key={i} className="hover:shadow-lg transition-shadow" data-testid={`card-candidate-${i}`}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-2 rounded-lg bg-[#F8F7F4] dark:bg-[#141B45]">
-                        <candidate.icon className="w-5 h-5 text-gray-800 dark:text-slate-300" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="font-semibold text-[#0A0F2E] dark:text-white">{candidate.criteria}</h3>
-                          <Badge variant={candidate.importance === 'Required' ? 'default' : 'outline'} className={candidate.importance === 'Required' ? 'bg-[#0A0F2E] text-white' : ''}>
-                            {candidate.importance}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-gray-800 dark:text-slate-300">{candidate.description}</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
+              {idealCandidates.map((candidate, i) => {
+                const isRequired = candidate.importance === 'Required';
+                return (
+                  <div key={i} style={{ padding: '28px 24px', borderLeft: i > 0 ? '1px solid #E8E4DC' : 'none', borderTop: i >= 3 ? '1px solid #E8E4DC' : 'none' }} data-testid={`card-candidate-${i}`}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 13, fontWeight: 700, color: '#0A0F2E', letterSpacing: '0.04em', lineHeight: 1.3 }}>{candidate.criteria}</div>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: isRequired ? '#fff' : '#6B7280', background: isRequired ? '#0A0F2E' : 'transparent', padding: isRequired ? '2px 6px' : '2px 0', whiteSpace: 'nowrap' as const, marginLeft: 8, flexShrink: 0 }}>
+                        {candidate.importance}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: '#555', lineHeight: 1.6 }}>{candidate.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -518,7 +481,7 @@ export default function PilotProgram() {
               {conversionTerms.map((term, i) => (
                 <Card key={i} className="bg-gradient-to-br from-[#F8F7F4] to-[#F8F7F4] dark:from-[#141B45] dark:to-[#0A0F2E] border-2 border-[#2B8A6E] dark:border-[#2B8A6E] hover:border-[#2B8A6E] dark:hover:border-[#2B8A6E] transition-colors" data-testid={`card-term-${i}`}>
                   <CardContent className="p-6 text-center">
-                    <div className="p-3 rounded-xl bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 inline-block mb-4">
+                    <div className="p-3 bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 inline-block mb-4">
                       <term.icon className="w-6 h-6 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                     </div>
                     <h3 className="font-bold text-[#0A0F2E] dark:text-white mb-2">{term.term}</h3>
@@ -536,7 +499,7 @@ export default function PilotProgram() {
             <Card className="overflow-hidden" data-testid="card-success-preview">
               <CardContent className="p-8">
                 <div className="flex items-start gap-6">
-                  <div className="p-4 rounded-xl bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30">
+                  <div className="p-4 bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30">
                     <Award className="w-10 h-10 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                   </div>
                   <div>
@@ -587,13 +550,13 @@ export default function PilotProgram() {
                 { label: "After the Pilot", description: "Sections B–F capture your full verdict: product clarity, market viability, gaps, competitive landscape, and whether you would buy or refer.", color: "#0A0F2E" },
                 { label: "Becomes Product Intelligence", description: "Responses feed directly into a private analytics dashboard. Patterns across reviewers drive the product roadmap and sharpen messaging.", color: "#2B8A6E" },
               ].map(item => (
-                <div key={item.label} className="bg-white border border-[#E8E4DC] rounded-lg p-6" style={{ borderTop: `3px solid ${item.color}` }}>
+                <div key={item.label} className="bg-white border border-[#E8E4DC] p-6" style={{ borderTop: `3px solid ${item.color}` }}>
                   <h3 className="font-bold text-[#0A0F2E] mb-2 text-sm uppercase tracking-wide">{item.label}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-white border border-[#E8E4DC] rounded-lg p-8 flex flex-col md:flex-row items-center gap-6">
+            <div className="bg-white border border-[#E8E4DC] p-8 flex flex-col md:flex-row items-center gap-6">
               <div className="flex-1">
                 <div className="text-xs font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-2">Independent Assessment</div>
                 <h3 className="text-xl font-bold text-[#0A0F2E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Ready to Share Your Assessment?</h3>
@@ -628,7 +591,7 @@ export default function PilotProgram() {
                 { phase: 'Days 31–60', label: 'Velocity', color: '#C9A84C', desc: 'Multiple activations with documented outcomes. ROI data capture begins.' },
                 { phase: 'Days 61–90', label: 'Proof', color: '#7C6FD4', desc: 'Full activation history. Board brief generated. Renewal case quantified.' },
               ].map((t) => (
-                <div key={t.label} style={{ borderTop: `3px solid ${t.color}` }} className="bg-white/5 rounded-xl p-5">
+                <div key={t.label} style={{ borderTop: `3px solid ${t.color}` }} className="bg-white/5 p-5">
                   <p style={{ color: t.color }} className="text-xs font-bold tracking-widest uppercase mb-1">{t.phase}</p>
                   <p className="text-white font-semibold text-sm mb-2">{t.label}</p>
                   <p className="text-slate-400 text-xs leading-relaxed">{t.desc}</p>
@@ -675,7 +638,7 @@ export default function PilotProgram() {
                     "Defender monitors for security threats",
                   ].map(item => (
                     <div key={item} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0 mt-2" />
+                      <div className="w-1.5 h-1.5 bg-gray-300 flex-shrink-0 mt-2" />
                       <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
                     </div>
                   ))}
@@ -698,7 +661,7 @@ export default function PilotProgram() {
                     "Continuous improvement — every activation makes your playbooks smarter",
                   ].map(item => (
                     <div key={item} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] flex-shrink-0 mt-2" />
+                      <div className="w-1.5 h-1.5 bg-[#C9A84C] flex-shrink-0 mt-2" />
                       <span className="text-sm text-white/80 leading-relaxed">{item}</span>
                     </div>
                   ))}
@@ -722,7 +685,7 @@ export default function PilotProgram() {
                   { layer: "Defender / Purview / Sentinel", role: "Security & Compliance — what is monitored", highlight: false },
                 ].map(({ layer, role, highlight }, i) => (
                   <div key={layer} className={`flex items-center gap-4 p-3 border ${highlight ? "border-[#C9A84C] bg-[#0A0F2E]" : "border-[#E8E4DC] bg-[#F8F7F4]"}`}>
-                    <div className={`w-2 h-2 rounded-full flex-shrink-0 ${highlight ? "bg-[#C9A84C]" : "bg-gray-300"}`} />
+                    <div className={`w-2 h-2 flex-shrink-0 ${highlight ? "bg-[#C9A84C]" : "bg-gray-300"}`} />
                     <div className={`text-sm font-semibold min-w-[240px] ${highlight ? "text-[#C9A84C]" : "text-[#0A0F2E]"}`}>{layer}</div>
                     <div className={`text-xs ${highlight ? "text-white/70" : "text-gray-500"}`}>{role}</div>
                     {highlight && <span className="ml-auto text-[10px] font-bold tracking-wider uppercase text-[#C9A84C] whitespace-nowrap">← Readiness OS</span>}

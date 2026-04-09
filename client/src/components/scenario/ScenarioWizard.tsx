@@ -270,7 +270,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
               onClick={() => handlePhaseClick(phase.id)}
               disabled={!isAccessible}
               data-testid={`wizard-phase-${phase.id}`}
-              className={`p-4 rounded-lg border-2 transition-all text-left ${
+              className={`p-4 border-2 transition-all text-left ${
                 isCurrent
                   ? 'border-[#2B8A6E] bg-[#0A0F2E]/30 scale-105'
                   : isComplete

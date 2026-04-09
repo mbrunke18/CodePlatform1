@@ -58,7 +58,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
       <CardHeader className="border-b border-border pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <FileText className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -109,7 +109,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
         </div>
 
         {/* AI Confidence Indicator */}
-        <div className="bg-muted/50 rounded-lg p-4">
+        <div className="bg-muted/50 p-4">
           <div className="flex items-center justify-between mb-3">
             <p className="text-sm font-medium text-foreground">AI Analysis Ready</p>
             <AIConfidenceBadge 
@@ -126,7 +126,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
 
         {/* Key Metrics Preview */}
         <div className="grid grid-cols-3 gap-3">
-          <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+          <div className="bg-green-50 dark:bg-green-900/20 p-3">
             <div className="flex items-center gap-2 mb-1">
               <TrendingUp className="w-4 h-4 text-green-600 dark:text-green-400" />
               <p className="text-xs font-medium text-green-700 dark:text-green-400">ROI Impact</p>
@@ -135,7 +135,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
             <p className="text-xs text-green-600 dark:text-green-500">Cost savings</p>
           </div>
 
-          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-3">
             <div className="flex items-center gap-2 mb-1">
               <Zap className="w-4 h-4 text-[#0A0F2E] dark:text-[#0A0F2E]" />
               <p className="text-xs font-medium text-[#0A0F2E] dark:text-[#0A0F2E]">Velocity</p>
@@ -144,7 +144,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
             <p className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E]">Avg execution</p>
           </div>
 
-          <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg p-3">
+          <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 p-3">
             <div className="flex items-center gap-2 mb-1">
               <Shield className="w-4 h-4 text-[#C9A84C] dark:text-[#C9A84C]" />
               <p className="text-xs font-medium text-[#C9A84C] dark:text-[#C9A84C]">Readiness</p>
@@ -164,7 +164,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
         >
           {generateMutation.isPending ? (
             <>
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+              <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin mr-2"></div>
               Generating Board Deck...
             </>
           ) : (
@@ -176,9 +176,9 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
         </Button>
 
         {generateMutation.isSuccess && (
-          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-4">
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-green-100 dark:bg-green-900/40 flex items-center justify-center flex-shrink-0">
                 <FileText className="w-4 h-4 text-green-600 dark:text-green-400" />
               </div>
               <div className="flex-1">

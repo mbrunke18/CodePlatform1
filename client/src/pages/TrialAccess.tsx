@@ -45,7 +45,7 @@ export default function TrialAccess() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "#F8F7F4" }}>
         <div className="max-w-md w-full mx-auto text-center px-8 py-12" style={{ background: "#fff", borderRadius: 12, boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
-          <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(201,168,76,0.12)" }}>
+          <div className="w-16 h-16 flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(201,168,76,0.12)" }}>
             <CheckCircle size={32} color={GOLD} />
           </div>
           <h1 className="text-2xl font-bold mb-3" style={{ color: NAVY }}>Check Your Email</h1>
@@ -53,7 +53,7 @@ export default function TrialAccess() {
             Your 48-hour trial activation link has been sent to:
           </p>
           <p className="font-bold mb-6" style={{ color: NAVY }}>{submittedEmail}</p>
-          <div className="text-left rounded-lg p-4 mb-6" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+          <div className="text-left p-4 mb-6" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
             <div className="flex items-center gap-2 mb-2">
               <Clock size={14} color={GOLD} />
               <span className="text-xs font-bold uppercase tracking-widest" style={{ color: GOLD }}>What Happens Next</span>
@@ -95,7 +95,7 @@ export default function TrialAccess() {
               { icon: Clock, text: "48 hours from the moment you activate" },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.15)" }}>
+                <div className="w-8 h-8 flex items-center justify-center flex-shrink-0" style={{ background: "rgba(201,168,76,0.15)" }}>
                   <Icon size={14} color={GOLD} />
                 </div>
                 <span className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>{text}</span>

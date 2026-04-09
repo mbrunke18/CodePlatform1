@@ -71,7 +71,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
         <div className="p-8">
           {/* Enterprise Metrics Header */}
           <div className="flex items-center justify-between mb-8">
-            <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
+            <div className="bg-[#0A0F2E] text-white p-8 relative overflow-hidden w-full flex items-center justify-between">
               <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
               <div className="relative z-10 flex items-center gap-4">
                 <Building className="h-10 w-10 text-[#C9A84C]" />
@@ -85,7 +85,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                   <CheckCircle className="w-3 h-3 mr-1" />
                   Enterprise Ready
                 </Badge>
-                <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold shadow-lg">
+                <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold">
                   Fortune 1000
                 </Badge>
               </div>
@@ -125,7 +125,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
               <CardContent>
                 <div className="space-y-4">
                   {scalabilityMetrics.map((metric, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                    <div key={index} className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div>
                         <h4 className="font-medium text-[#0A0F2E]">{metric.metric}</h4>
                         <p className="text-sm text-[#6B7280]">{metric.value}</p>
@@ -156,7 +156,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
               <CardContent>
                 <div className="space-y-4">
                   {integrationCapabilities.map((integration, index) => (
-                    <div key={index} className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                    <div key={index} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-semibold text-[#0A0F2E]">{integration.system}</h4>
                         <Badge variant="default" className="bg-[#2B8A6E] text-white">

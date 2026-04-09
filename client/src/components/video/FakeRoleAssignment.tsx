@@ -28,17 +28,17 @@ export function FakeRoleAssignment({ name, role, task, avatar, delay = 0, status
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay, duration: 0.4 }}
-      className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex items-center gap-4"
+      className="bg-gray-50 border border-gray-200 p-4 flex items-center gap-4"
     >
       <div className="relative">
-        <div className="w-12 h-12 rounded-full bg-poise-navy flex items-center justify-center text-lg font-bold text-white">
+        <div className="w-12 h-12 bg-poise-navy flex items-center justify-center text-lg font-bold text-white">
           {avatar}
         </div>
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: delay + 0.3 }}
-          className={`absolute -bottom-1 -right-1 w-5 h-5 ${statusColors[status]} rounded-full flex items-center justify-center`}
+          className={`absolute -bottom-1 -right-1 w-5 h-5 ${statusColors[status]} flex items-center justify-center`}
         >
           {status === "acknowledged" ? (
             <Check className="w-3 h-3 text-gray-900" />

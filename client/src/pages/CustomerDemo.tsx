@@ -398,7 +398,7 @@ export default function CustomerDemo() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg">
+                  <div className="flex items-center gap-2 bg-white/5 px-3 py-1.5">
                     <Clock className="h-4 w-4 text-[#C9A84C]" />
                     <span className="text-white font-mono text-sm">
                       {Math.floor(elapsedTime / 60)}:{(elapsedTime % 60).toString().padStart(2, '0')}
@@ -423,7 +423,7 @@ export default function CustomerDemo() {
                   setAcknowledgedStakeholders(newAcks);
                   setIsComplete(idx === IDEA_STORY.length - 1);
                 }}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all border ${
+                className={`flex-shrink-0 px-4 py-2 text-sm font-medium transition-all border ${
                   idx === currentStageIndex
                     ? `bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]`
                     : 'bg-white/5 text-white/60 border-transparent hover:bg-white/10'
@@ -493,7 +493,7 @@ export default function CustomerDemo() {
                       transition={{ duration: 0.3 }}
                     >
                       <div className="flex items-start gap-4 mb-6">
-                        <div className={`p-4 rounded-xl ${currentStage.bgColor}`}>
+                        <div className={`p-4 ${currentStage.bgColor}`}>
                           <StageIcon className={`h-8 w-8 ${currentStage.color}`} />
                         </div>
                         <div className="flex-1">
@@ -511,7 +511,7 @@ export default function CustomerDemo() {
                       
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         {currentStage.metrics.map((metric, idx) => (
-                          <div key={idx} className="bg-white/5 rounded-lg p-4 text-center border border-white/10">
+                          <div key={idx} className="bg-white/5 p-4 text-center border border-white/10">
                             <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
                             <div className="text-xs text-white/40">{metric.label}</div>
                           </div>
@@ -519,7 +519,7 @@ export default function CustomerDemo() {
                       </div>
 
                       {/* Role-Specific Wins */}
-                      <div className="bg-[#0A0F2E] border border-[#C9A84C]/30 rounded-lg p-4 mb-4">
+                      <div className="bg-[#0A0F2E] border border-[#C9A84C]/30 p-4 mb-4">
                         <div className="flex items-center gap-2 mb-3">
                           <UserCheck className="h-4 w-4 text-[#C9A84C]" />
                           <span className="font-medium text-white">What This Means For You</span>
@@ -538,7 +538,7 @@ export default function CustomerDemo() {
 
                       {/* Smart Defaults Panel */}
                       {currentStage.smartDefaults && (
-                        <div className="bg-white/5 rounded-lg p-4 mb-4 border border-white/10">
+                        <div className="bg-white/5 p-4 mb-4 border border-white/10">
                           <div className="flex items-center gap-2 mb-3">
                             <Settings className="h-4 w-4 text-[#DFC178]" />
                             <span className="font-medium text-white">{currentStage.smartDefaults.title}</span>
@@ -593,7 +593,7 @@ export default function CustomerDemo() {
                           animate={{ opacity: 1, x: 0 }}
                           className="flex items-center gap-3 text-xs bg-white/5 p-2 rounded border border-white/10"
                         >
-                          <div className="w-6 h-6 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center text-[#2B8A6E]">
+                          <div className="w-6 h-6 bg-[#2B8A6E]/20 flex items-center justify-center text-[#2B8A6E]">
                             <CheckCircle2 className="h-3 w-3" />
                           </div>
                           <div className="flex-1 overflow-hidden">
@@ -613,7 +613,7 @@ export default function CustomerDemo() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                 >
-                  <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 shadow-lg shadow-[#C9A84C]/10">
+                  <Card className="bg-[#0A0F2E] border-[#C9A84C] border-2 shadow-[#C9A84C]/10">
                     <CardHeader className="p-4 border-b border-[#C9A84C]/20">
                       <CardTitle className="text-sm font-bold flex items-center gap-2 text-white">
                         <TrendingUp className="h-4 w-4 text-[#C9A84C]" />

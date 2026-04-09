@@ -91,7 +91,7 @@ export default function FinancialRansomwareDemo() {
             ].map((step, i, arr) => (
               <div key={step.id} className="flex items-center gap-4 flex-1">
                 <div className={`flex items-center gap-2 ${currentAct === step.id ? "text-[#C9A84C]" : "text-white/40"}`}>
-                  <div className={`w-2 h-2 rounded-full border ${currentAct === step.id ? "bg-[#C9A84C] border-[#C9A84C]" : "border-white/30"}`} />
+                  <div className={`w-2 h-2 border ${currentAct === step.id ? "bg-[#C9A84C] border-[#C9A84C]" : "border-white/30"}`} />
                   <span className="text-xs font-semibold whitespace-nowrap">{step.label}</span>
                 </div>
                 {i < arr.length - 1 && <div className="flex-1 h-px bg-white/10" />}
@@ -309,7 +309,7 @@ export default function FinancialRansomwareDemo() {
         {currentAct === "summary" && (
           <div className="max-w-4xl mx-auto space-y-8 text-white">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ background: "rgba(43,138,110,0.2)" }}>
+              <div className="inline-flex items-center justify-center w-16 h-16 mb-4" style={{ background: "rgba(43,138,110,0.2)" }}>
                 <CheckCircle2 className="w-10 h-10" style={{ color: TEAL }} />
               </div>
               <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#fff", marginBottom: 6 }}>Demo Complete</h2>

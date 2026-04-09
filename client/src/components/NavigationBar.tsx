@@ -79,7 +79,7 @@ export default function NavigationBar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+      <nav className="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -88,7 +88,7 @@ export default function NavigationBar() {
             onClick={() => navigateAndClose('/')}
             data-testid="nav-logo"
           >
-            <div className="w-10 h-10 bg-white dark:bg-slate-100 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-white dark:bg-slate-100 flex items-center justify-center">
               <span className="text-white dark:text-slate-900 font-bold text-xl">P</span>
             </div>
             <div>
@@ -122,7 +122,7 @@ export default function NavigationBar() {
                               }`}
                             >
                               <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-[#0A0F2E] dark:text-[#0A0F2E] flex items-center gap-2' : 'text-slate-900 dark:text-slate-100'}`}>
-                                {(link as any).featured && <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white rounded-full">NEW</span>}
+                                {(link as any).featured && <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white">NEW</span>}
                                 {link.title}
                               </div>
                               <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
@@ -169,7 +169,7 @@ export default function NavigationBar() {
                   <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50 font-semibold">
                     <span className="flex items-center gap-1">
                       Dynamic Strategy
-                      <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white rounded-full ml-1">NEW</span>
+                      <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white ml-1">NEW</span>
                     </span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -270,7 +270,7 @@ export default function NavigationBar() {
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               data-testid="button-theme-toggle"
               aria-label="Toggle theme"
             >

@@ -37,7 +37,7 @@ export default function BudgetAuthorityStep({ data, onChange }: BudgetAuthorityS
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h3 className="font-semibold text-sm mb-2">100% Pre-filled Template</h3>
         <p className="text-xs text-muted-foreground">
           Pre-approved emergency budget limits and vendor contracts with negotiated rates
@@ -65,7 +65,7 @@ export default function BudgetAuthorityStep({ data, onChange }: BudgetAuthorityS
       </div>
 
       {/* Board Approval Required */}
-      <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg">
+      <div className="flex items-center justify-between p-4 bg-muted/30">
         <div className="flex-1">
           <Label htmlFor="board-approval" className="font-medium">Board Approval Required Above Limit</Label>
           <p className="text-xs text-muted-foreground mt-1">

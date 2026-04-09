@@ -185,7 +185,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
             {/* Outcome Scenarios */}
             <div className="grid gap-4">
               {/* Most Likely */}
-              <div className="bg-[#0A0F2E]/20 border border-[#2B8A6E]/30 rounded-lg p-4">
+              <div className="bg-[#0A0F2E]/20 border border-[#2B8A6E]/30 p-4">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
@@ -199,7 +199,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               </div>
 
               {/* Best Case */}
-              <div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
+              <div className="bg-green-900/20 border border-green-500/30 p-4">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-green-400" />
@@ -213,7 +213,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
               </div>
 
               {/* Worst Case */}
-              <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4">
+              <div className="bg-red-900/20 border border-red-500/30 p-4">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <TrendingDown className="h-5 w-5 text-red-400" />
@@ -229,7 +229,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
 
             {/* Success Factors & Risks */}
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 p-4">
                 <h4 className="font-semibold text-green-400 mb-3 flex items-center gap-2">
                   <CheckCircle className="h-4 w-4" />
                   Key Success Factors
@@ -244,7 +244,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
                 </ul>
               </div>
 
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-gray-50 p-4">
                 <h4 className="font-semibold text-yellow-400 mb-3 flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4" />
                   Critical Risks
@@ -261,7 +261,7 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
             </div>
 
             {/* Recommendations */}
-            <div className="bg-[#C9A84C]/20 border border-[#C9A84C]/30 rounded-lg p-4">
+            <div className="bg-[#C9A84C]/20 border border-[#C9A84C]/30 p-4">
               <h4 className="font-semibold text-[#C9A84C] mb-3">AI Recommendations</h4>
               <ul className="space-y-2">
                 {analysis.recommendations.map((rec: string, index: number) => (

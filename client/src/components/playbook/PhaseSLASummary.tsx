@@ -147,7 +147,7 @@ export function PhaseSLASummary({ phaseSLAs, compact = false }: PhaseSLASummaryP
             return (
               <div 
                 key={phase} 
-                className={`p-3 rounded-lg ${config.bgColor} border border-slate-200 dark:border-slate-700`}
+                className={`p-3 ${config.bgColor} border border-slate-200 dark:border-slate-700`}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <Icon className={`h-4 w-4 ${config.color}`} />
@@ -171,7 +171,7 @@ export function PhaseSLASummary({ phaseSLAs, compact = false }: PhaseSLASummaryP
             );
           })}
         </div>
-        <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+        <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800/50">
           <p className="text-xs text-muted-foreground">
             <span className="font-medium text-slate-900 dark:text-white">SLA Compliance Tracking:</span>{' '}
             When this playbook is activated, Readiness OS will measure actual performance against these targets 

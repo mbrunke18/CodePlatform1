@@ -194,21 +194,21 @@ export default function IntegrationsPage() {
         <div className="p-12 max-w-7xl mx-auto space-y-12">
           {/* Integration Philosophy */}
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
               <div className="w-14 h-14 mb-6 bg-[#0A0F2E]/5 rounded-none flex items-center justify-center">
                 <Zap className="w-7 h-7 text-[#0A0F2E]" />
               </div>
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Readiness OS Orchestrates</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">Strategic playbooks trigger coordinated actions across your entire enterprise stack.</p>
             </Card>
-            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
               <div className="w-14 h-14 mb-6 bg-[#C9A84C]/5 rounded-none flex items-center justify-center">
                 <Database className="w-7 h-7 text-[#C9A84C]" />
               </div>
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Tools Execute</h3>
               <p className="text-sm text-[#6B7280] leading-relaxed">ServiceNow, Jira, Slack, and Teams carry out the operational work directed by Readiness OS.</p>
             </Card>
-            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+            <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
               <div className="w-14 h-14 mb-6 bg-[#2B8A6E]/5 rounded-none flex items-center justify-center">
                 <CheckCircle2 className="w-7 h-7 text-[#2B8A6E]" />
               </div>
@@ -218,7 +218,7 @@ export default function IntegrationsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Connected</p>
@@ -232,7 +232,7 @@ export default function IntegrationsPage() {
               </div>
             </Card>
 
-            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Available</p>
@@ -246,7 +246,7 @@ export default function IntegrationsPage() {
               </div>
             </Card>
 
-            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+            <Card className="p-8 border-[#E8E4DC] bg-white rounded-none">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280] mb-1">Coming Soon</p>
@@ -278,7 +278,7 @@ export default function IntegrationsPage() {
                   const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
 
                   return (
-                    <Card key={integration.id} className="p-8 hover:shadow-lg transition-shadow border-[#E8E4DC] bg-white rounded-none" data-testid={`card-integration-${integration.id}`}>
+                    <Card key={integration.id} className="p-8  border-[#E8E4DC] bg-white rounded-none" data-testid={`card-integration-${integration.id}`}>
                       <div className="flex items-start justify-between mb-6">
                         <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
                           {Icon && <Icon className="w-7 h-7" />}
@@ -368,7 +368,7 @@ export default function IntegrationsPage() {
                   const connectedData = getConnectedIntegration(integration.id);
 
                   return (
-                    <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm">
+                    <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white">
                       <div className="flex items-start justify-between mb-6">
                         <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
                           {Icon && <Icon className="w-7 h-7" />}
@@ -412,7 +412,7 @@ export default function IntegrationsPage() {
                   const colorClass = categoryColors[integration.category as keyof typeof categoryColors];
 
                   return (
-                    <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white shadow-sm">
+                    <Card key={integration.id} className="p-8 rounded-none border-[#E8E4DC] bg-white">
                       <div className="flex items-start justify-between mb-6">
                         <div className={`w-14 h-14 rounded-none flex items-center justify-center ${colorClass}`}>
                           {Icon && <Icon className="w-7 h-7" />}

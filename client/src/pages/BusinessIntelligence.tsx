@@ -95,7 +95,7 @@ export default function BusinessIntelligence() {
           {/* Executive Performance Dashboard */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {executiveMetrics.map((metric, index) => (
-              <Card key={index} className="border border-[#E8E4DC] bg-white p-6 shadow-sm">
+              <Card key={index} className="border border-[#E8E4DC] bg-white p-6">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">{metric.title}</span>
                   {metric.trend === 'up' ? 
@@ -121,7 +121,7 @@ export default function BusinessIntelligence() {
               <CardContent className="px-0">
                 <div className="space-y-4">
                   {competitiveAnalysis.map((comp, index) => (
-                    <div key={index} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg">
+                    <div key={index} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="flex items-center justify-between mb-3">
                         <h4 style={{ ...CG, fontWeight: 600, color: NAVY }}>{comp.competitor}</h4>
                         <div style={{ display:"inline-flex", alignItems:"center", gap:5, background: "rgba(10, 15, 46, 0.05)", color: NAVY, fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase", padding:"3px 10px" }}>

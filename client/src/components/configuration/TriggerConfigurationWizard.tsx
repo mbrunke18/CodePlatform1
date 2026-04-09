@@ -341,7 +341,7 @@ export default function TriggerConfigurationWizard({
                 key={s} 
                 className={`flex items-center gap-1 text-xs ${s <= step ? 'text-[#0A0F2E]' : 'text-gray-600 dark:text-gray-200'}`}
               >
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                <div className={`w-6 h-6 flex items-center justify-center ${
                   s < step ? 'bg-[#0A0F2E] text-white' : 
                   s === step ? 'bg-[#F8F7F4] text-[#0A0F2E] border-2 border-[#0A0F2E]' : 
                   'bg-gray-100 text-gray-600 dark:text-gray-200'
@@ -365,7 +365,7 @@ export default function TriggerConfigurationWizard({
         {step === 1 && (
           <div className="space-y-6">
             {/* Situation framing */}
-            <div className="p-4 rounded-lg border-l-4" style={{ background: 'rgba(201,168,76,0.06)', borderColor: '#C9A84C' }}>
+            <div className="p-4 border-l-4" style={{ background: 'rgba(201,168,76,0.06)', borderColor: '#C9A84C' }}>
               <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>What strategic situation do you want to prepare for?</p>
               <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right playbook the moment it fires.</p>
               <div className="flex flex-wrap gap-2 mt-3">
@@ -423,7 +423,7 @@ export default function TriggerConfigurationWizard({
                   return (
                     <Card 
                       key={category.id}
-                      className={`cursor-pointer transition-all hover:shadow-md ${
+                      className={`cursor-pointer transition-all ${
                         isSelected ? 'ring-2 ring-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20' : ''
                       }`}
                       onClick={() => {
@@ -455,7 +455,7 @@ export default function TriggerConfigurationWizard({
         {/* Step 2: Conditions */}
         {step === 2 && (
           <div className="space-y-6">
-            <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-[#E8E4DC]">
+            <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#E8E4DC]">
               <div className="flex items-center gap-2 mb-2">
                 <AlertTriangle className="h-5 w-5 text-[#0A0F2E]" />
                 <span className="font-medium text-[#0A0F2E] dark:text-[#DFC178]">
@@ -585,7 +585,7 @@ export default function TriggerConfigurationWizard({
         {/* Step 3: Notifications */}
         {step === 3 && (
           <div className="space-y-6">
-            <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200">
+            <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200">
               <div className="flex items-center gap-2">
                 <Bell className="h-5 w-5 text-amber-600" />
                 <span className="font-medium text-amber-800 dark:text-amber-200">
@@ -717,7 +717,7 @@ export default function TriggerConfigurationWizard({
         {/* Step 4: Playbook Mapping */}
         {step === 4 && (
           <div className="space-y-6">
-            <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200">
+            <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200">
               <div className="flex items-center gap-2">
                 <PlayCircle className="h-5 w-5 text-green-600" />
                 <span className="font-medium text-green-800 dark:text-green-200">

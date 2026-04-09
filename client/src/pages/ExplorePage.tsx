@@ -106,7 +106,7 @@ export default function ExplorePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest shadow-xl"
+                className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest"
                 onClick={() => { window.location.href = '/request-access'; }}
               >
                 <LogIn className="h-4 w-4" />
@@ -140,7 +140,7 @@ export default function ExplorePage() {
             <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What happens when you sign in</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {steps.map((s) => (
-                <div key={s.step} className="bg-white rounded-none p-6 border border-[#E8E4DC] flex gap-4 items-start shadow-sm">
+                <div key={s.step} className="bg-white rounded-none p-6 border border-[#E8E4DC] flex gap-4 items-start">
                   <div className="w-10 h-10 rounded-none bg-[#0A0F2E] text-[#C9A84C] flex items-center justify-center font-bold text-xs flex-shrink-0">
                     {s.step}
                   </div>
@@ -178,7 +178,7 @@ export default function ExplorePage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold text-[#0A0F2E] text-center mb-16" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Two ways to get started</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-none p-8 border border-[#E8E4DC] shadow-sm">
+              <div className="bg-white rounded-none p-8 border border-[#E8E4DC]">
                 <div className="w-12 h-12 rounded-none bg-[#0A0F2E] flex items-center justify-center mb-6">
                   <Layers className="h-6 w-6 text-[#C9A84C]" />
                 </div>
@@ -203,7 +203,7 @@ export default function ExplorePage() {
                 </Button>
               </div>
 
-              <div className="bg-white rounded-none p-8 border border-[#C9A84C] shadow-lg relative">
+              <div className="bg-white rounded-none p-8 border border-[#C9A84C] relative">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C9A84C] text-[#0A0F2E] text-[9px] font-bold uppercase tracking-widest px-3 py-1">Recommended for F1000</div>
                 <div className="w-12 h-12 rounded-none bg-[#C9A84C] flex items-center justify-center mb-6">
                   <Shield className="h-6 w-6 text-[#0A0F2E]" />

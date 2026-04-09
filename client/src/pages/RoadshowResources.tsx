@@ -193,7 +193,7 @@ export default function RoadshowResources() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
               <Zap className="h-5 w-5 text-[#C9A84C]" />
             </div>
             <h2 className="text-2xl font-light text-[#0A0F2E]" style={CG}>
@@ -233,7 +233,7 @@ export default function RoadshowResources() {
                       key={doc.id}
                       className={`p-4 cursor-pointer transition-all border-l-4 ${
                         activeDoc === doc.id 
-                          ? 'border-[#C9A84C] bg-white shadow-sm' 
+                          ? 'border-[#C9A84C] bg-white' 
                           : 'border-transparent bg-transparent hover:bg-[#0A0F2E]/10'
                       }`}
                       onClick={() => setActiveDoc(doc.id)}
@@ -279,10 +279,10 @@ export default function RoadshowResources() {
 
           <div className="lg:col-span-8">
             {activeDocument && (
-              <div className="bg-white border border-[#E8E4DC] shadow-sm overflow-hidden">
+              <div className="bg-white border border-[#E8E4DC] overflow-hidden">
                 <div className="p-8 border-b border-[#E8E4DC] flex items-center justify-between bg-[#F8F7F4]/30">
                   <div className="flex items-center gap-6">
-                    <div className={`w-14 h-14 ${activeDocument.color} flex items-center justify-center text-white shadow-lg`}>
+                    <div className={`w-14 h-14 ${activeDocument.color} flex items-center justify-center text-white`}>
                       <activeDocument.icon className="h-7 w-7" />
                     </div>
                     <div>
@@ -315,7 +315,7 @@ export default function RoadshowResources() {
         </div>
 
         <div className="mt-20 p-10 bg-[#0A0F2E] text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/5 rounded-full -mr-32 -mt-32"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C9A84C]/5 -mr-32 -mt-32"></div>
           <div className="relative z-10">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>

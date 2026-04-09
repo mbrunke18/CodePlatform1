@@ -18,7 +18,7 @@ export default function Header({ isConnected }: HeaderProps) {
         <div className="flex items-center space-x-4">
           {/* Real-time Status Indicator */}
           <div className="flex items-center space-x-2">
-            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} data-testid="status-indicator"></div>
+            <div className={`w-2 h-2 ${isConnected ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} data-testid="status-indicator"></div>
             <span className="text-sm text-muted-foreground" data-testid="text-connection-status">
               {isConnected ? 'Live Updates' : 'Disconnected'}
             </span>
@@ -32,7 +32,7 @@ export default function Header({ isConnected }: HeaderProps) {
             data-testid="button-notifications"
           >
             <i className="fas fa-bell w-5 h-5"></i>
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full text-xs text-destructive-foreground flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive text-xs text-destructive-foreground flex items-center justify-center">
               3
             </span>
           </Button>
@@ -43,7 +43,7 @@ export default function Header({ isConnected }: HeaderProps) {
             className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-accent"
             data-testid="button-user-menu"
           >
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-primary flex items-center justify-center">
               <span className="text-sm font-medium text-primary-foreground" data-testid="text-header-user-initials">
                 {user?.initials || 'U'}
               </span>

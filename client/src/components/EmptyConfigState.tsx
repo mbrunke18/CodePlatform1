@@ -89,7 +89,7 @@ export default function EmptyConfigState({
   return (
     <Card className="border-dashed border-2 border-gray-200 bg-white">
       <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-        <div className={`w-16 h-16 rounded-full ${info.bgColor} flex items-center justify-center mb-4`}>
+        <div className={`w-16 h-16 ${info.bgColor} flex items-center justify-center mb-4`}>
           <Icon className={`h-8 w-8 ${info.color}`} />
         </div>
         <h3 className="text-lg font-semibold text-white mb-2">
@@ -115,7 +115,7 @@ export function QuickSetupBanner() {
     <Card className="bg-gradient-to-r   border-[#2B8A6E]/30">
       <CardContent className="flex items-center justify-between py-4">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+          <div className="w-12 h-12 bg-white/10 flex items-center justify-center">
             <Sparkles className="h-6 w-6 text-[#0A0F2E]" />
           </div>
           <div>

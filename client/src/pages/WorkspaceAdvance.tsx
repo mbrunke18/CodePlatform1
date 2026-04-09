@@ -367,7 +367,7 @@ function DoomLoopDetector() {
       <CardHeader className="pb-4 bg-[#0A0F2E]">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-[#C9A84C]/20">
+            <div className="p-2.5 bg-[#C9A84C]/20">
               <ShieldAlert className="h-6 w-6 text-[#C9A84C]" />
             </div>
             <div>
@@ -434,7 +434,7 @@ function DoomLoopDetector() {
           </div>
         ) : stuckTasks.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 gap-3">
-            <div className="p-3 rounded-full bg-[#2B8A6E]/10">
+            <div className="p-3 bg-[#2B8A6E]/10">
               <CheckCircle2 className="h-8 w-8 text-[#2B8A6E]" />
             </div>
             <p className="font-semibold text-[#0A0F2E] dark:text-white">No stuck tasks detected</p>
@@ -449,7 +449,7 @@ function DoomLoopDetector() {
               return (
                 <div key={task.id} className={`p-5 flex flex-col md:flex-row md:items-center gap-4 hover:bg-[#F8F7F4] dark:hover:bg-white/5 transition-colors ${task.severity === 'critical' ? 'bg-red-50/60 dark:bg-red-500/5' : ''}`}>
                   <div className="flex items-start gap-3 flex-1 min-w-0">
-                    <div className={`mt-0.5 p-1.5 rounded-lg flex-shrink-0 ${task.severity === 'critical' ? 'bg-red-100' : task.severity === 'warning' ? 'bg-amber-50' : 'bg-gray-100'}`}>
+                    <div className={`mt-0.5 p-1.5 flex-shrink-0 ${task.severity === 'critical' ? 'bg-red-100' : task.severity === 'warning' ? 'bg-amber-50' : 'bg-gray-100'}`}>
                       <SeverityIcon severity={task.severity} />
                     </div>
                     <div className="flex-1 min-w-0">
@@ -536,7 +536,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
           {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-[#2B8A6E] shadow-lg shadow-[#2B8A6E]/30">
+              <div className="p-4 bg-[#2B8A6E] shadow-[#2B8A6E]/30">
                 <TrendingUp className="h-8 w-8 text-white" />
               </div>
               <div>
@@ -576,27 +576,27 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 <Link href="/workspaces/identify">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
                     <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/detect">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
                     <Radar className="h-4 w-4 text-[#0A0F2E]" />
                     <span className="text-sm text-[#0A0F2E]">DETECT</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/execute">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#C9A84C]/10 hover:bg-[#C9A84C]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(201,168,76,0.2)" }}>
                     <Compass className="h-4 w-4 text-[#C9A84C]" />
                     <span className="text-sm text-[#C9A84C] font-medium">EXECUTE</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-sm shadow-[#2B8A6E]/20">
+                <div className="flex items-center gap-2 px-3 py-2 bg-[#2B8A6E]/10 border-2 border-[#2B8A6E] shadow-[#2B8A6E]/20">
                   <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                   <span className="text-sm font-bold text-[#2B8A6E] uppercase tracking-wider">ADVANCE</span>
                 </div>
@@ -607,7 +607,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
           {/* Learning Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {learningMetrics.map((metric) => (
-              <Card key={metric.label} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
+              <Card key={metric.label} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 ">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
@@ -626,7 +626,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
           <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-[#C9A84C]/10">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-[#0A0F2E]/10 dark:bg-white/10">
+                <div className="p-3 bg-[#0A0F2E]/10 dark:bg-white/10">
                   <RefreshCw className="h-8 w-8 text-[#C9A84C]" />
                 </div>
                 <div>
@@ -643,10 +643,10 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
           {/* Recent Learnings */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Recent Learnings</h2>
           <div className="space-y-3 mb-8">
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 ">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
+                  <div className="p-2 bg-[#2B8A6E]/10">
                     <Lightbulb className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -662,10 +662,10 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 ">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-[#2B8A6E]/10">
+                  <div className="p-2 bg-[#2B8A6E]/10">
                     <Brain className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -681,10 +681,10 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-md transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 ">
               <CardContent className="p-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+                  <div className="p-2 bg-[#C9A84C]/10">
                     <BarChart3 className="h-5 w-5 text-[#C9A84C]" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -707,10 +707,10 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path + tool.title} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#C9A84C]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${tool.bgColor}`}>
+                      <div className={`p-3 ${tool.bgColor}`}>
                         <tool.icon className={`h-6 w-6 ${tool.color}`} />
                       </div>
                       <div className="flex-1">
@@ -739,7 +739,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-white/10">
+                  <div className="p-3 bg-white/10">
                     <ClipboardList className="h-6 w-6 text-[#C9A84C]" />
                   </div>
                   <div>

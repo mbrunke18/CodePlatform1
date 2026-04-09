@@ -98,7 +98,7 @@ function MetricCard({
   };
 
   return (
-    <Card className={`border-l-4 ${statusBorders[status]} bg-white border-[#E8E4DC] hover:shadow-md transition-shadow rounded-none shadow-sm`}>
+    <Card className={`border-l-4 ${statusBorders[status]} bg-white border-[#E8E4DC]  rounded-none`}>
       <CardContent className="pt-5 space-y-3">
         <div className="flex items-center justify-between">
           <div style={{ width: 32, height: 32, background: "#0A0F2E", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -569,7 +569,7 @@ export default function ExecutiveDashboard() {
                   },
                 ].map((m, i) => (
                   <Link key={i} to={m.link}>
-                    <Card className={`border-l-4 ${m.status === 'good' ? 'border-l-[#2B8A6E]' : m.status === 'warning' ? 'border-l-[#C9A84C]' : 'border-l-red-500'} border-[#E8E4DC] bg-white hover:shadow-md transition-shadow cursor-pointer`}>
+                    <Card className={`border-l-4 ${m.status === 'good' ? 'border-l-[#2B8A6E]' : m.status === 'warning' ? 'border-l-[#C9A84C]' : 'border-l-red-500'} border-[#E8E4DC] bg-white  cursor-pointer`}>
                       <CardContent className="p-6 space-y-3">
                         <div className="flex items-center justify-between">
                           <div style={{ width: 32, height: 32, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center" }}>

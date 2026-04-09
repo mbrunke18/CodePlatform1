@@ -409,7 +409,7 @@ export default function NewUserJourney() {
                   <div className="flex flex-col sm:flex-row gap-6 justify-center">
                     <Button
                       size="lg"
-                      className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none shadow-xl"
+                      className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none"
                       onClick={handleNext}
                     >
                       Start Configuration
@@ -597,7 +597,7 @@ export default function NewUserJourney() {
                   </div>
 
                   {state.priorities.length > 0 && (
-                    <div className="bg-gray-50 rounded-xl p-4 border border-[#E8E4DC]">
+                    <div className="bg-gray-50 p-4 border border-[#E8E4DC]">
                       <div className="flex items-center gap-2 text-sm text-gray-800">
                         <CheckCircle className="h-4 w-4 text-[#2B8A6E]" />
                         <span>
@@ -662,7 +662,7 @@ export default function NewUserJourney() {
                                   ))}
                                 </div>
                               </div>
-                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                              <div className={`w-8 h-8 flex items-center justify-center ${
                                 isSelected ? 'bg-[#2B8A6E]' : 'bg-gray-50'
                               }`}>
                                 {isSelected ? (
@@ -678,9 +678,9 @@ export default function NewUserJourney() {
                     })}
                   </div>
 
-                  <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                  <div className="bg-gray-50 p-4 border border-gray-200">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gray-50 flex items-center justify-center">
                         <Sparkles className="h-5 w-5 text-gray-800" />
                       </div>
                       <div>
@@ -703,7 +703,7 @@ export default function NewUserJourney() {
                     </p>
                   </div>
 
-                  <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/20 rounded-xl p-4 mb-6">
+                  <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/20 p-4 mb-6">
                     <div className="flex items-center gap-3">
                       <Activity className="h-5 w-5 text-[#0A0F2E]" />
                       <span className="text-sm text-gray-800">
@@ -733,7 +733,7 @@ export default function NewUserJourney() {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-4">
                                 <div 
-                                  className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0A0F2E]/10"
+                                  className="w-10 h-10 flex items-center justify-center bg-[#0A0F2E]/10"
                                 >
                                   <Radio 
                                     className="h-5 w-5 text-[#0A0F2E]" 
@@ -791,7 +791,7 @@ export default function NewUserJourney() {
                     <Card className="bg-gray-50 border-[#E8E4DC]">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="w-12 h-12 rounded-xl bg-[#0A0F2E]/10 flex items-center justify-center flex-shrink-0">
+                          <div className="w-12 h-12 bg-[#0A0F2E]/10 flex items-center justify-center flex-shrink-0">
                             <Target className="h-6 w-6 text-[#0A0F2E]" />
                           </div>
                           <div className="flex-1">
@@ -921,7 +921,7 @@ export default function NewUserJourney() {
                     <CardHeader className=" border-b border-[#E8E4DC] py-3">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                          <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                           <span className="font-semibold text-[#0A0F2E] text-sm uppercase tracking-widest">LIVE SIGNAL MONITORING</span>
                         </div>
                         <Badge variant="outline" className="text-[#2B8A6E] border-[#2B8A6E]/50 text-xs rounded-none">
@@ -1119,17 +1119,17 @@ export default function NewUserJourney() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="grid grid-cols-3 gap-4">
-                          <div className="bg-white rounded-xl p-4 border border-[#E8E4DC] text-center">
+                          <div className="bg-white p-4 border border-[#E8E4DC] text-center">
                             <div className="text-3xl font-bold text-[#2B8A6E]">{state.enabledSignals.length}</div>
                             <div className="text-sm text-gray-800">Signal Categories</div>
                             <div className="text-xs text-[#2B8A6E] mt-1">Monitoring 24/7</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 border border-[#E8E4DC] text-center">
+                          <div className="bg-white p-4 border border-[#E8E4DC] text-center">
                             <div className="text-3xl font-bold text-[#C9A84C]">{state.selectedPlaybooks.length}</div>
                             <div className="text-sm text-gray-800">Playbooks</div>
                             <div className="text-xs text-[#C9A84C] mt-1">Armed & Ready</div>
                           </div>
-                          <div className="bg-white rounded-xl p-4 border border-[#E8E4DC] text-center">
+                          <div className="bg-white p-4 border border-[#E8E4DC] text-center">
                             <div className="text-3xl font-bold text-[#0A0F2E]">{state.friTarget}%</div>
                             <div className="text-sm text-gray-800">FRI Target</div>
                             <div className="text-xs text-[#0A0F2E] mt-1">Tracking Active</div>
@@ -1152,12 +1152,12 @@ export default function NewUserJourney() {
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gray-50 rounded-lg p-4 border border-[#E8E4DC]">
+                      <div className="bg-gray-50 p-4 border border-[#E8E4DC]">
                         <div className="text-xs text-gray-800 uppercase tracking-wider mb-1">Organization</div>
                         <div className="text-gray-900 font-medium">{state.organizationName}</div>
                         <div className="text-sm text-gray-800">{INDUSTRIES.find(i => i.id === state.industry)?.name}</div>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 border border-[#E8E4DC]">
+                      <div className="bg-gray-50 p-4 border border-[#E8E4DC]">
                         <div className="text-xs text-gray-800 uppercase tracking-wider mb-1">Strategic Focus</div>
                         <div className="text-gray-900 font-medium">{state.priorities.length} Priorities</div>
                         <div className="text-sm text-gray-800 truncate">
@@ -1181,22 +1181,22 @@ export default function NewUserJourney() {
                           Your First Actions in the Platform
                         </h3>
                         <div className="space-y-3">
-                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
+                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
+                            <div className="w-8 h-8 bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
                             <div>
                               <div className="text-gray-900 font-medium">Review Your Dashboard</div>
                               <div className="text-sm text-gray-800">See your Future Readiness Index and active monitoring status</div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
+                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
+                            <div className="w-8 h-8 bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
                             <div>
                               <div className="text-gray-900 font-medium">Explore Your Playbooks</div>
                               <div className="text-sm text-gray-800">Customize response protocols for your specific organization</div>
                             </div>
                           </div>
-                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC] rounded-lg">
-                            <div className="w-8 h-8 rounded-full bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">3</div>
+                          <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
+                            <div className="w-8 h-8 bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">3</div>
                             <div>
                               <div className="text-gray-900 font-medium">Visit Command Center</div>
                               <div className="text-sm text-gray-800">When a trigger fires, this is where 12-minute responses are orchestrated</div>
@@ -1214,11 +1214,11 @@ export default function NewUserJourney() {
                     transition={{ delay: 0.8 }}
                     className="flex items-center justify-center gap-3 py-4"
                   >
-                    <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/10 rounded-full border border-[#2B8A6E]/30">
-                      <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                    <div className="flex items-center gap-2 px-4 py-2 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
+                      <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                       <span className="text-sm text-[#2B8A6E] font-medium">All Systems Operational</span>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-[#0A0F2E]/10 rounded-full border border-[#0A0F2E]/30">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-[#0A0F2E]/10 border border-[#0A0F2E]/30">
                       <Radio className="w-3 h-3 text-[#0A0F2E]" />
                       <span className="text-sm text-[#0A0F2E] font-medium">Intelligence Monitoring Active</span>
                     </div>
@@ -1278,12 +1278,12 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed() || completeJourneyMutation.isPending}
-                className="bg-[#2B8A6E] hover:bg-[#256B56] min-w-[200px] rounded-none font-bold uppercase tracking-widest text-xs shadow-xl"
+                className="bg-[#2B8A6E] hover:bg-[#256B56] min-w-[200px] rounded-none font-bold uppercase tracking-widest text-xs"
                 data-testid="button-complete"
               >
                 {completeJourneyMutation.isPending ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white animate-spin mr-2" />
                     Activating Readiness OS...
                   </>
                 ) : (

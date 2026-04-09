@@ -91,7 +91,7 @@ export default function MagicLogin() {
       </div>
 
       <div
-        className="w-full max-w-md rounded-2xl p-10 text-center"
+        className="w-full max-w-md p-10 text-center"
         style={{ background: "#ffffff" }}
       >
         <div className="flex justify-center mb-6">{current.icon}</div>
@@ -118,7 +118,7 @@ export default function MagicLogin() {
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="w-1.5 h-1.5 rounded-full animate-bounce"
+                className="w-1.5 h-1.5 animate-bounce"
                 style={{ background: GOLD, animationDelay: `${i * 0.15}s` }}
               />
             ))}

@@ -371,7 +371,7 @@ export default function McKinseyIntelligenceCenter() {
               {GOLDEN_RULES.map((rule, index) => (
                 <div 
                   key={rule.key} 
-                  className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+                  className="flex items-center justify-between p-3 border hover:bg-muted/50 transition-colors"
                   data-testid={`rule-${index + 1}`}
                 >
                   <div className="flex items-center gap-3">

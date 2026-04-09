@@ -74,7 +74,7 @@ export default function StakeholderAlignmentDashboard({
     return (
       <Card className="border-dashed border-2 border-gray-200 bg-white" data-testid="stakeholder-alignment-empty">
         <CardContent className="flex flex-col items-center justify-center py-8 text-center">
-          <div className="w-12 h-12 rounded-full bg-[#C9A84C]/10 flex items-center justify-center mb-4">
+          <div className="w-12 h-12 bg-[#C9A84C]/10 flex items-center justify-center mb-4">
             <AlertCircle className="h-6 w-6 text-[#C9A84C]" />
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">
@@ -131,11 +131,11 @@ export default function StakeholderAlignmentDashboard({
           {safeAlignmentData.map((stakeholder: any, idx: number) => (
             <div 
               key={stakeholder.id} 
-              className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800"
               data-testid={`stakeholder-item-${idx}`}
             >
               <div className="flex items-center gap-3 flex-1">
-                <div className={`p-2 rounded-full ${
+                <div className={`p-2 ${
                   stakeholder.acknowledged 
                     ? 'bg-green-100 dark:bg-green-900' 
                     : 'bg-gray-200 dark:bg-gray-700'
@@ -208,7 +208,7 @@ export default function StakeholderAlignmentDashboard({
           ))}
         </div>
 
-        <div className="mt-4 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
+        <div className="mt-4 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#E8E4DC] dark:border-[#0A0F2E]">
           <div className="flex items-center gap-2 text-sm">
             <Mail className="h-4 w-4 text-[#0A0F2E]" />
             <span className="text-[#0A0F2E] dark:text-white">

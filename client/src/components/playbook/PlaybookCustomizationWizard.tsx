@@ -228,7 +228,7 @@ export default function PlaybookCustomizationWizard({
             const isCurrentPhase = phaseSteps.some(s => s.id === currentStep);
             const isCompleted = completedSteps === phaseSteps.length;
             
-            let className = 'flex items-center gap-2 px-3 py-1 rounded-full text-xs transition-colors ';
+            let className = 'flex items-center gap-2 px-3 py-1 text-xs transition-colors ';
             if (isCurrentPhase) {
               className += PHASE_STYLES[phase.id].active;
             } else if (isCompleted) {

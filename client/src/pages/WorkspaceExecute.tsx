@@ -167,7 +167,7 @@ function JITContextBanner({ runId }: { runId: string }) {
 
   if (isLoading) {
     return (
-      <div className="mb-6 p-4 rounded-xl bg-[#C9A84C]/5 border border-[#C9A84C]/20 flex items-center gap-3 text-[#6B7280]">
+      <div className="mb-6 p-4 bg-[#C9A84C]/5 border border-[#C9A84C]/20 flex items-center gap-3 text-[#6B7280]">
         <Loader2 className="h-4 w-4 animate-spin text-[#C9A84C]" />
         <span className="text-sm">Loading execution context...</span>
       </div>
@@ -183,7 +183,7 @@ function JITContextBanner({ runId }: { runId: string }) {
       <div className="bg-[#0A0F2E] px-5 py-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-[#C9A84C]/20">
+            <div className="p-2 bg-[#C9A84C]/20">
               <MapPin className="h-5 w-5 text-[#C9A84C]" />
             </div>
             <div>
@@ -218,7 +218,7 @@ function JITContextBanner({ runId }: { runId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Phase guidance — JIT re-injection */}
           <div className="flex gap-3">
-            <div className="p-2 rounded-lg bg-[#C9A84C]/10 h-fit">
+            <div className="p-2 bg-[#C9A84C]/10 h-fit">
               <BookOpen className="h-4 w-4 text-[#C9A84C]" />
             </div>
             <div>
@@ -243,7 +243,7 @@ function JITContextBanner({ runId }: { runId: string }) {
               <span className="font-bold text-[#0A0F2E] dark:text-white text-sm">{ctx.elapsedMinutes}m</span>
             </div>
             {ctx.blocked > 0 && (
-              <div className="flex items-center gap-2 mt-2 p-2 rounded-lg bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20">
+              <div className="flex items-center gap-2 mt-2 p-2 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20">
                 <AlertOctagon className="h-3.5 w-3.5 text-red-500 flex-shrink-0" />
                 <span className="text-xs text-red-700 dark:text-red-400 font-medium">{ctx.criticalConstraint}</span>
               </div>
@@ -274,7 +274,7 @@ function MyActionsPanel({ runId }: { runId: string }) {
       <CardHeader className="pb-4 border-b border-[#E8E4DC] dark:border-[#C9A84C]/10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-[#C9A84C]/10">
+            <div className="p-2 bg-[#C9A84C]/10">
               <User className="h-5 w-5 text-[#C9A84C]" />
             </div>
             <div>
@@ -440,7 +440,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
 
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
-              <div className="p-4 rounded-2xl bg-[#C9A84C] shadow-lg shadow-[#C9A84C]/30">
+              <div className="p-4 bg-[#C9A84C] shadow-[#C9A84C]/30">
                 <Compass className="h-8 w-8 text-[#0A0F2E]" />
               </div>
               <div>
@@ -480,26 +480,26 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
               </div>
               <div className="flex items-center gap-2 flex-wrap">
                 <Link href="/workspaces/identify">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
                     <ClipboardList className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm text-[#2B8A6E]">IDENTIFY</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/detect">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#0A0F2E]/10 hover:bg-[#0A0F2E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(10,15,46,0.2)" }}>
                     <Radar className="h-4 w-4 text-[#0A0F2E]" />
                     <span className="text-sm text-[#0A0F2E]">DETECT</span>
                   </div>
                 </Link>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
-                <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-sm shadow-[#C9A84C]/20">
+                <div className="flex items-center gap-2 px-3 py-2 bg-[#C9A84C]/20 border-2 border-[#C9A84C] shadow-[#C9A84C]/20">
                   <Compass className="h-4 w-4 text-[#C9A84C]" />
                   <span className="text-sm font-bold text-[#C9A84C] uppercase tracking-wider">EXECUTE</span>
                 </div>
                 <ArrowRight className="h-4 w-4 text-[#6B7280] dark:text-[#C9A84C]/40" />
                 <Link href="/workspaces/advance">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
+                  <div className="flex items-center gap-2 px-3 py-2 bg-[#2B8A6E]/10 hover:bg-[#2B8A6E]/20 cursor-pointer transition-colors" style={{ border: "1px solid rgba(43,138,110,0.2)" }}>
                     <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
                     <span className="text-sm text-[#2B8A6E] font-medium">ADVANCE</span>
                   </div>
@@ -511,7 +511,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
           {/* Execution Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {executionMetrics.map((metric) => (
-              <Card key={metric.label} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 hover:shadow-lg transition-shadow">
+              <Card key={metric.label} className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 ">
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <metric.icon className={`h-5 w-5 ${metric.color}`} />
@@ -533,7 +533,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
           <Card className="mb-8 bg-white border border-[#E8E4DC] dark:bg-white/5 dark:border-[#C9A84C]/10">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-[#0A0F2E]/10 dark:bg-white/10">
+                <div className="p-3 bg-[#0A0F2E]/10 dark:bg-white/10">
                   <Timer className="h-8 w-8 text-[#C9A84C]" />
                 </div>
                 <div>
@@ -547,7 +547,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
           {/* Active Executions */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Active Executions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] hover:shadow-lg transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] ">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration — CloudTech Acquisition</h4>
@@ -569,7 +569,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
                 </Link>
               </CardContent>
             </Card>
-            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] hover:shadow-lg transition-shadow">
+            <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 border-l-4 border-l-[#C9A84C] ">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Competitive Response — Market Counter-Strategy</h4>
@@ -598,10 +598,10 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
             {workspaceTools.map((tool) => (
               <Link key={tool.path + tool.title} href={tool.path}>
-                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full hover:shadow-lg transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#2B8A6E]/50' : ''}`}>
+                <Card className={`border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5 h-full transition-all cursor-pointer group ${tool.featured ? 'border-2 border-[#2B8A6E]/50' : ''}`}>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${tool.bgColor}`}>
+                      <div className={`p-3 ${tool.bgColor}`}>
                         <tool.icon className={`h-6 w-6 ${tool.color}`} />
                       </div>
                       <div className="flex-1">
@@ -630,7 +630,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-white/10">
+                  <div className="p-3 bg-white/10">
                     <TrendingUp className="h-6 w-6 text-[#C9A84C]" />
                   </div>
                   <div>

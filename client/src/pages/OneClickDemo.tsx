@@ -248,7 +248,7 @@ export default function OneClickDemo() {
             <Button 
               size="lg" 
               onClick={startDemo}
-              className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-12 py-6 text-xl rounded-xl shadow-2xl shadow-[#0A0F2E]/30 transition-all hover:scale-105 border-2 border-[#C9A84C]/20"
+              className="bg-[#0A0F2E] text-white hover:bg-[#141B45] px-12 py-6 text-xl shadow-[#0A0F2E]/30 transition-all hover:scale-105 border-2 border-[#C9A84C]/20"
               data-testid="button-start-demo"
             >
               <Play className="h-6 w-6 mr-3 text-[#C9A84C]" />
@@ -395,7 +395,7 @@ export default function OneClickDemo() {
                         {stakeholder.acknowledged ? (
                           <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                         ) : (
-                          <div className="h-4 w-4 rounded-full border-2 border-[#6B7280]" />
+                          <div className="h-4 w-4 border-2 border-[#6B7280]" />
                         )}
                         <div>
                           <div className="text-sm text-[#0A0F2E] font-medium">{stakeholder.name}</div>
@@ -422,19 +422,19 @@ export default function OneClickDemo() {
                 </h3>
                 
                 <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] p-3 text-center">
                     <div className="text-2xl font-bold text-[#0A0F2E]">{completedTasks}</div>
                     <div className="text-sm text-[#6B7280] font-medium">Tasks</div>
                   </div>
-                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] p-3 text-center">
                     <div className="text-2xl font-bold text-[#2B8A6E]">{acknowledgedCount}</div>
                     <div className="text-sm text-[#6B7280] font-medium">Stakeholders</div>
                   </div>
-                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] p-3 text-center">
                     <div className="text-2xl font-bold text-[#2B8A6E]">$500K</div>
                     <div className="text-sm text-[#6B7280] font-medium">Budget</div>
                   </div>
-                  <div className="bg-white border border-[#E8E4DC] rounded-lg p-3 text-center">
+                  <div className="bg-white border border-[#E8E4DC] p-3 text-center">
                     <div className="text-2xl font-bold text-[#C9A84C]">2.4M</div>
                     <div className="text-sm text-[#6B7280] font-medium">Customers</div>
                   </div>
@@ -446,10 +446,10 @@ export default function OneClickDemo() {
 
         {/* Completion Card */}
         {demoState === 'complete' && (
-          <Card className="mt-6 border-[#2B8A6E]/30 shadow-2xl">
+          <Card className="mt-6 border-[#2B8A6E]/30">
             <CardContent className="p-8 text-center">
               <div className="flex justify-center mb-4">
-                <div className="w-20 h-20 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center">
+                <div className="w-20 h-20 bg-[#2B8A6E]/20 flex items-center justify-center">
                   <Shield className="h-10 w-10 text-[#2B8A6E]" />
                 </div>
               </div>
@@ -460,19 +460,19 @@ export default function OneClickDemo() {
               </p>
               
               <div className="grid md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-[#F8F7F4] rounded-lg p-4">
+                <div className="bg-[#F8F7F4] p-4">
                   <div className="text-3xl font-bold text-[#2B8A6E]">3,600×</div>
                   <div className="text-sm text-gray-800">Execution Head Start</div>
                 </div>
-                <div className="bg-[#F8F7F4] rounded-lg p-4">
+                <div className="bg-[#F8F7F4] p-4">
                   <div className="text-3xl font-bold text-[#0A0F2E]">$47M</div>
                   <div className="text-sm text-gray-800">Fine Avoided</div>
                 </div>
-                <div className="bg-[#F8F7F4] rounded-lg p-4">
+                <div className="bg-[#F8F7F4] p-4">
                   <div className="text-3xl font-bold text-[#C9A84C]">47</div>
                   <div className="text-sm text-gray-800">Tasks Coordinated</div>
                 </div>
-                <div className="bg-[#F8F7F4] rounded-lg p-4">
+                <div className="bg-[#F8F7F4] p-4">
                   <div className="text-3xl font-bold text-[#C9A84C]">8</div>
                   <div className="text-sm text-gray-800">Executives Aligned</div>
                 </div>

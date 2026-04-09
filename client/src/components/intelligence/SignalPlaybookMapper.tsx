@@ -169,7 +169,7 @@ export function SignalPlaybookMapper() {
                     data-testid={`category-select-${category.id}`}
                   >
                     <div 
-                      className="w-3 h-3 rounded-full shrink-0"
+                      className="w-3 h-3 shrink-0"
                       style={{ backgroundColor: category.color }}
                     ></div>
                     <div className="flex-1 min-w-0">
@@ -193,7 +193,7 @@ export function SignalPlaybookMapper() {
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <div 
-                    className="w-4 h-4 rounded-full"
+                    className="w-4 h-4"
                     style={{ backgroundColor: selectedCategoryData.color }}
                   ></div>
                   <div>
@@ -217,7 +217,7 @@ export function SignalPlaybookMapper() {
                   </div>
                   
                   {selectedCategoryData.recommendedPlaybooks.length === 0 ? (
-                    <div className="p-8 text-center border rounded-lg border-dashed">
+                    <div className="p-8 text-center border border-dashed">
                       <Unlink className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
                       <p className="text-muted-foreground text-sm">
                         No playbooks linked to this signal category
@@ -247,7 +247,7 @@ export function SignalPlaybookMapper() {
                     {selectedCategoryData.dataPoints.slice(0, 4).map((dp) => (
                       <div 
                         key={dp.id}
-                        className="p-3 border rounded-lg text-sm"
+                        className="p-3 border text-sm"
                       >
                         <div className="font-medium mb-1">{dp.name}</div>
                         {dp.defaultThreshold && (
@@ -267,7 +267,7 @@ export function SignalPlaybookMapper() {
                 </div>
 
                 {/* Auto-Activation Settings */}
-                <div className="p-4 bg-muted rounded-lg">
+                <div className="p-4 bg-muted">
                   <div className="flex items-center justify-between mb-3">
                     <div>
                       <h4 className="font-medium">Auto-Activation</h4>
@@ -323,7 +323,7 @@ function StatCard({
     <Card>
       <CardContent className="p-4">
         <div className="flex items-center justify-between">
-          <div className={`p-2 rounded-lg ${colorClasses[color]}`}>
+          <div className={`p-2 ${colorClasses[color]}`}>
             {icon}
           </div>
           <div className="text-right">
@@ -347,9 +347,9 @@ function PlaybookMappingCard({
   priority: number;
 }) {
   return (
-    <div className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors">
+    <div className="flex items-center justify-between p-3 border hover:bg-muted/50 transition-colors">
       <div className="flex items-center gap-3">
-        <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-medium">
+        <div className="w-6 h-6 bg-primary/10 text-primary flex items-center justify-center text-xs font-medium">
           {priority}
         </div>
         <div>

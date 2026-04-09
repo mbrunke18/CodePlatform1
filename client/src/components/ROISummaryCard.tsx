@@ -81,7 +81,7 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
           <CardTitle className="text-lg font-semibold text-slate-900 dark:text-white">
             Your Impact {getPeriodLabel()}
           </CardTitle>
-          <div className="flex items-center gap-1.5 px-3 py-1 bg-green-100 dark:bg-green-900/30 rounded-full">
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-green-100 dark:bg-green-900/30">
             <TrendingUp className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
             <span className="text-xs font-semibold text-green-700 dark:text-green-400">
               {displayData.confidence}% Confidence

@@ -83,7 +83,7 @@ function InvestorPresentation() {
   const slides = [
     () => (
       <div className="flex flex-col items-center justify-center h-full text-center px-4">
-        <div className="inline-block px-5 py-2 rounded-full bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 text-[#2B8A6E] text-sm font-semibold mb-8">
+        <div className="inline-block px-5 py-2 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 text-[#2B8A6E] text-sm font-semibold mb-8">
           10.3% revenue impact within 12 months
         </div>
         <h1 className="text-5xl md:text-7xl font-bold text-[#0A0F2E] mb-6 leading-tight">
@@ -127,7 +127,7 @@ function InvestorPresentation() {
               { value: '82%', label: 'Boards require crisis preparedness', sub: 'Post-2020 governance mandate' },
               { value: '95% / 16%', label: 'CSOs: AI will reshape priorities — but few reimagining', sub: 'Deloitte 2026 CSO Survey' },
                         ].map((s, i) => (
-                <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-5 shadow-sm hover:border-[#C9A84C]/50 transition-colors">
+                <div key={i} className="bg-white border border-[#E8E4DC] p-5 hover:border-[#C9A84C]/50 transition-colors">
                   <div className="text-2xl font-bold text-[#C9A84C]">{s.value}</div>
                   <div className="text-[#0A0F2E] font-medium">{s.label}</div>
                   <div className="text-[#6B7280] text-sm">{s.sub}</div>
@@ -150,7 +150,7 @@ function InvestorPresentation() {
             { icon: <Zap className="w-8 h-8 text-[#2B8A6E]" />, value: '3,600×', label: 'Execution Head Start', sub: '30 days compressed to 12 minutes', color: 'border-[#2B8A6E]/30' },
             { icon: <DollarSign className="w-8 h-8 text-[#2B8A6E]" />, value: '$21-33M', label: 'Value created per crisis averted', sub: 'Revenue protection + opportunity capture', color: 'border-[#2B8A6E]/30' },
           ].map((c, i) => (
-            <div key={i} className={`bg-white border ${c.color} rounded-xl p-8 text-center`}>
+            <div key={i} className={`bg-white border ${c.color} p-8 text-center`}>
               <div className="flex justify-center mb-4">{c.icon}</div>
               <div className="text-3xl font-bold text-[#0A0F2E] mb-2">{c.value}</div>
               <div className="text-[#0A0F2E] font-medium mb-1">{c.label}</div>
@@ -174,14 +174,14 @@ function InvestorPresentation() {
             { value: '1%', label: 'Fully mature', sub: 'Leaders — not employees — are the bottleneck. 221 executive triggers solve this.', color: 'border-[#2B8A6E]/40 bg-[#2B8A6E]/5' },
             { value: '$4.4T', label: 'AI productivity potential', sub: 'Locked behind the missing coordination layer — the layer Readiness OS provides', color: 'border-[#0A0F2E]/20 bg-[#0A0F2E]/5' },
           ].map((s, i) => (
-            <div key={i} className={`border ${s.color} rounded-xl p-6 text-center`}>
+            <div key={i} className={`border ${s.color} p-6 text-center`}>
               <div className="text-4xl font-black text-[#0A0F2E] mb-2">{s.value}</div>
               <div className="text-[#0A0F2E] font-bold mb-2">{s.label}</div>
               <div className="text-[#6B7280] text-sm leading-relaxed">{s.sub}</div>
             </div>
           ))}
         </div>
-        <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-6 flex items-center justify-between gap-6 mb-4">
+        <div className="max-w-5xl w-full bg-[#0A0F2E] p-6 flex items-center justify-between gap-6 mb-4">
           <div>
             <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">The Agentic Mesh Layer — McKinsey's term for what we built</div>
             <div className="text-white font-semibold text-lg">"Orchestration layer · coordination fabric · shared source of truth"</div>
@@ -193,9 +193,9 @@ function InvestorPresentation() {
           </div>
         </div>
         {/* MGI Nov 2025 second report */}
-        <div className="max-w-5xl w-full border border-[#2B8A6E]/25 rounded-xl overflow-hidden mb-3">
+        <div className="max-w-5xl w-full border border-[#2B8A6E]/25 overflow-hidden mb-3">
           <div className="bg-[#2B8A6E]/8 border-b border-[#2B8A6E]/15 px-5 py-2.5 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E] shrink-0" />
+            <span className="w-1.5 h-1.5 bg-[#2B8A6E] shrink-0" />
             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#2B8A6E]/70">McKinsey Global Institute · Skill Partnerships in the Age of AI · November 2025 · 80 Cases · 190 Workflows</span>
           </div>
           <div className="p-5 grid md:grid-cols-2 gap-6 bg-[#060B1E]">
@@ -219,7 +219,7 @@ function InvestorPresentation() {
                 { s: "Global Pharma", r: "60% faster · 50% fewer errors", d: "Clinical reporting redesigned from the ground up" },
                 { s: "Large Utility", r: "40% AI-resolved · 50% cost cut · +6 NPS", d: "7M annual calls — CEO owned the redesign" },
               ].map(({ s, r, d }) => (
-                <div key={s} className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/15 rounded-lg px-3 py-2">
+                <div key={s} className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/15 px-3 py-2">
                   <div className="flex items-baseline gap-2 mb-0.5">
                     <span className="text-[#2B8A6E] font-mono text-[9px] font-bold uppercase tracking-wider">{s}</span>
                     <span className="text-white text-[11px] font-semibold">{r}</span>
@@ -276,9 +276,9 @@ function InvestorPresentation() {
               dot: "bg-[#dc2626]",
             },
           ].map(({ org, report, quote, bridge, color, dot }) => (
-            <div key={org} className={`border ${color} rounded-xl p-5 flex flex-col gap-3`}>
+            <div key={org} className={`border ${color} p-5 flex flex-col gap-3`}>
               <div className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full shrink-0 ${dot}`} />
+                <span className={`w-2 h-2 shrink-0 ${dot}`} />
                 <span className="text-[#0A0F2E] font-bold text-sm leading-tight">{org}</span>
               </div>
               <div className="text-[#6B7280] text-[10px] uppercase tracking-wider font-mono">{report}</div>
@@ -289,7 +289,7 @@ function InvestorPresentation() {
             </div>
           ))}
         </div>
-        <div className="max-w-5xl w-full bg-[#0A0F2E] rounded-xl p-5 flex items-center gap-6">
+        <div className="max-w-5xl w-full bg-[#0A0F2E] p-5 flex items-center gap-6">
           <div className="flex-1">
             <div className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">The Unified Thesis</div>
             <div className="text-white font-semibold text-base leading-snug">The constraint is never the AI. It is always the operating model. Readiness OS is the infrastructure that closes that gap.</div>
@@ -315,7 +315,7 @@ function InvestorPresentation() {
             { letter: 'E', name: 'EXECUTE', desc: 'One-click activation. 12-minute full mobilization. Pre-approved budgets deployed.', icon: <Zap className="w-6 h-6" />, color: 'from-[#C9A84C] to-[#DFC178]' },
             { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-[#2B8A6E] to-[#3BAF8A]' },
           ].map((p, i) => (
-            <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl overflow-hidden shadow-sm">
+            <div key={i} className="bg-white border border-[#E8E4DC] overflow-hidden">
               <div className={`bg-gradient-to-b ${p.color} p-4 flex items-center gap-3`}>
                 <span className="text-3xl font-black text-white/90">{p.letter}</span>
                 <div>
@@ -342,34 +342,34 @@ function InvestorPresentation() {
           Same trigger. Different outcome.
         </h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full">
-          <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-xl p-8 shadow-sm">
+          <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 p-8">
             <h3 className="text-xl font-bold text-[#0A0F2E] mb-6 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" /> Without Readiness OS
             </h3>
             <div className="space-y-4">
               {['T+0: Signal detected by random employee', 'T+4h: Escalated via email chain', 'T+12h: Leadership aware', 'T+24h: War room assembled', 'T+48h: Response plan drafted', 'T+72h: First coordinated action'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#0A0F2E] mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-[#0A0F2E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm">{t}</span>
                 </div>
               ))}
-              <div className="mt-4 p-3 bg-[#0A0F2E]/10 rounded-lg text-[#0A0F2E] font-semibold text-center">
+              <div className="mt-4 p-3 bg-[#0A0F2E]/10 text-[#0A0F2E] font-semibold text-center">
                 Result: $22-50M in damage
               </div>
             </div>
           </div>
-          <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-xl p-8 shadow-sm">
+          <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 p-8">
             <h3 className="text-xl font-bold text-[#2B8A6E] mb-6 flex items-center gap-2">
               <Zap className="w-5 h-5" /> With Readiness OS
             </h3>
             <div className="space-y-4">
               {['T+0: AI detects signal automatically', 'T+2m: Playbook matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, playbook refined'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-[#2B8A6E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm">{t}</span>
                 </div>
               ))}
-              <div className="mt-4 p-3 bg-[#2B8A6E]/10 rounded-lg text-[#2B8A6E] font-semibold text-center">
+              <div className="mt-4 p-3 bg-[#2B8A6E]/10 text-[#2B8A6E] font-semibold text-center">
                 Result: $21-33M saved
               </div>
             </div>
@@ -385,7 +385,7 @@ function InvestorPresentation() {
           170 playbooks across three domains
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
-          <div className="bg-white border border-[#E8E4DC] rounded-xl p-8 shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-4">
               <Swords className="w-6 h-6 text-[#2B8A6E]" />
               <h3 className="text-xl font-bold text-[#2B8A6E]">OFFENSE</h3>
@@ -397,7 +397,7 @@ function InvestorPresentation() {
               ))}
             </ul>
           </div>
-          <div className="bg-white border border-[#E8E4DC] rounded-xl p-8 shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-4">
               <Shield className="w-6 h-6 text-[#0A0F2E]" />
               <h3 className="text-xl font-bold text-[#0A0F2E]">DEFENSE</h3>
@@ -409,7 +409,7 @@ function InvestorPresentation() {
               ))}
             </ul>
           </div>
-          <div className="bg-white border border-[#E8E4DC] rounded-xl p-8 shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-4">
               <Activity className="w-6 h-6 text-[#C9A84C]" />
               <h3 className="text-xl font-bold text-[#C9A84C]">SPECIAL TEAMS</h3>
@@ -440,7 +440,7 @@ function InvestorPresentation() {
                 { label: 'SAM', value: '$5-8B', desc: 'Fortune 1000 enterprises' },
                 { label: 'SOM', value: '$500M-1B', desc: 'Year 5 target' },
               ].map((m, i) => (
-                <div key={i} className="bg-white border border-[#E8E4DC] rounded-lg p-4 flex items-center gap-4 shadow-sm">
+                <div key={i} className="bg-white border border-[#E8E4DC] p-4 flex items-center gap-4">
                   <span className="text-[#2B8A6E] font-bold text-sm w-12">{m.label}</span>
                   <span className="text-[#0A0F2E] font-bold text-lg">{m.value}</span>
                   <span className="text-[#6B7280] text-xs font-bold uppercase tracking-wider ml-auto">{m.desc}</span>
@@ -482,25 +482,25 @@ function InvestorPresentation() {
           There is no data on the future. What enterprises need is execution infrastructure built before the moment arrives.
         </p>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl w-full mb-10">
-          <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-xl p-8 shadow-sm">
+          <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 p-8">
             <h3 className="text-xl font-bold text-[#0A0F2E] mb-2 uppercase tracking-tight">The Dead Model</h3>
             <p className="text-[#6B7280] text-xs font-bold uppercase mb-4 tracking-widest">Predict → Plan → Execute</p>
             <div className="space-y-3">
               {['Assumes stable, linear environment', 'Ad-hoc response teams assembled after the fact', 'Weeks of coordination loops before action', 'Knowledge lost when people leave', 'Same cost, same scramble, every time'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#0A0F2E] mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-[#0A0F2E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm font-medium">{t}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-xl p-8 shadow-sm">
+          <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 p-8">
             <h3 className="text-xl font-bold text-[#2B8A6E] mb-2 uppercase tracking-tight">The Readiness OS Model</h3>
             <p className="text-[#2B8A6E]/60 text-xs font-bold uppercase mb-4 tracking-widest">Detect → Activate → Coordinate → Execute → Advance</p>
             <div className="space-y-3">
               {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] mt-2 shrink-0" />
+                  <div className="w-2 h-2 bg-[#2B8A6E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm font-medium">{t}</span>
                 </div>
               ))}
@@ -513,7 +513,7 @@ function InvestorPresentation() {
             { from: 'Rapid Coordination', to: 'DETECT + EXECUTE', desc: '12-min coordination, pre-defined rights' },
             { from: 'Adaptive Intelligence', to: 'ADVANCE', desc: 'Grows stronger from every disruption' },
           ].map((m, i) => (
-            <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-4 text-center shadow-sm">
+            <div key={i} className="bg-white border border-[#E8E4DC] p-4 text-center">
               <div className="text-[#6B7280] text-[10px] font-bold uppercase tracking-widest">{m.from}</div>
               <div className="text-[#2B8A6E] font-bold text-sm my-1 tracking-tighter">→ {m.to}</div>
               <div className="text-[#0A0F2E] text-xs font-medium">{m.desc}</div>
@@ -536,14 +536,14 @@ function InvestorPresentation() {
             { name: 'PagerDuty', type: 'Incident Response', has: 'IT alerting', missing: 'IT-only, no strategic execution', color: 'border-[#E8E4DC]' },
             { name: 'Palantir', type: 'Data Analytics', has: 'Data analysis', missing: 'No coordination, no execution', color: 'border-[#E8E4DC]' },
           ].map((c, i) => (
-            <div key={i} className={`bg-white border ${c.color} rounded-xl p-4 shadow-sm`}>
+            <div key={i} className={`bg-white border ${c.color} p-4`}>
               <div className="text-[#0A0F2E] font-bold text-sm mb-1">{c.name}</div>
               <div className="text-[#6B7280] text-[10px] font-bold uppercase tracking-wider mb-3">{c.type}</div>
               <div className="text-[#2B8A6E] text-xs font-bold mb-1">✓ {c.has}</div>
               <div className="text-[#0A0F2E] text-xs font-medium">✗ {c.missing}</div>
             </div>
           ))}
-          <div className="bg-[#0A0F2E] border-2 border-[#C9A84C] rounded-xl p-4 text-white shadow-xl">
+          <div className="bg-[#0A0F2E] border-2 border-[#C9A84C] p-4 text-white">
             <div className="text-[#C9A84C] font-bold text-sm mb-1">Readiness OS</div>
             <div className="text-white/60 text-[10px] font-bold uppercase tracking-wider mb-3">Strategic Readiness Platform</div>
             <div className="text-xs space-y-1">
@@ -635,7 +635,7 @@ function InvestorPresentation() {
             { value: '3,600×', label: 'Execution Head Start' },
             { value: '60x', label: 'Execution improvement' },
           ].map((s, i) => (
-            <div key={i} className="text-center bg-white border border-[#E8E4DC] rounded-xl p-6">
+            <div key={i} className="text-center bg-white border border-[#E8E4DC] p-6">
               <div className="text-3xl font-bold text-[#2B8A6E]">{s.value}</div>
               <div className="text-[#6B7280] text-sm">{s.label}</div>
             </div>
@@ -654,17 +654,17 @@ function InvestorPresentation() {
           Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the coordination infrastructure that sits between strategy and action.
         </p>
         <div className="grid grid-cols-3 gap-6 max-w-4xl w-full mb-10">
-          <div className="text-center p-6 bg-white border border-[#0A0F2E]/30 rounded-xl">
+          <div className="text-center p-6 bg-white border border-[#0A0F2E]/30">
             <Bot className="w-8 h-8 text-[#0A0F2E] mx-auto mb-3" />
             <div className="text-[#0A0F2E] font-bold mb-1">AI Agents</div>
             <div className="text-[#6B7280] text-sm">Detect threats, surface insights, monitor signals</div>
           </div>
-          <div className="text-center p-6 bg-[#0A0F2E]/40 border border-[#2B8A6E]/40 rounded-xl">
+          <div className="text-center p-6 bg-[#0A0F2E]/40 border border-[#2B8A6E]/40">
             <Layers className="w-8 h-8 text-[#2B8A6E] mx-auto mb-3" />
             <div className="text-[#2B8A6E] font-bold mb-1">Readiness OS</div>
             <div className="text-[#0A0F2E] text-sm">Pre-stage responses before the trigger fires. Activate in 12 minutes.</div>
           </div>
-          <div className="text-center p-6 bg-white border border-[#C9A84C]/30 rounded-xl">
+          <div className="text-center p-6 bg-white border border-[#C9A84C]/30">
             <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-3" />
             <div className="text-[#0A0F2E] font-bold mb-1">Human Leaders</div>
             <div className="text-[#6B7280] text-sm">Decide response, approve action, own outcomes</div>
@@ -676,14 +676,14 @@ function InvestorPresentation() {
             { tier: 'Tier 2: Next', title: 'AI-Assisted Coordination', desc: 'AI agents handle prep work—context, drafts, blocker detection. Humans decide.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
             { tier: 'Tier 3: Vision', title: 'Executive-Led AI Playbooks', desc: 'AI monitors and stages. Executives authorize and lead. First platform built this way from the ground up.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
           ].map((t, i) => (
-            <div key={i} className={`bg-white border ${t.color} rounded-xl p-5`}>
-              <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>
+            <div key={i} className={`bg-white border ${t.color} p-5`}>
+              <span className={`inline-block px-2 py-0.5 text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>
               <div className="text-[#0A0F2E] font-bold mb-1">{t.title}</div>
               <p className="text-[#6B7280] text-sm">{t.desc}</p>
             </div>
           ))}
         </div>
-        <div className="bg-gradient-to-r rounded-xl p-5 border border-[#2B8A6E]/20 max-w-4xl w-full text-center">
+        <div className="bg-gradient-to-r p-5 border border-[#2B8A6E]/20 max-w-4xl w-full text-center">
           <p className="text-[#0A0F2E] text-sm italic">
             "Readiness infrastructure for humans" → <span className="text-[#2B8A6E] font-semibold not-italic">The operating model for the AI-era enterprise</span>
           </p>
@@ -699,9 +699,9 @@ function InvestorPresentation() {
           Built by someone who's lived this problem.
         </h2>
         <div className="max-w-4xl w-full">
-          <div className="bg-white border border-[#E8E4DC] rounded-xl p-8 mb-8">
+          <div className="bg-white border border-[#E8E4DC] p-8 mb-8">
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="w-24 h-24 bg-gradient-to-br from-[#2B8A6E] to-[#141B45] rounded-2xl flex items-center justify-center shrink-0">
+              <div className="w-24 h-24 bg-gradient-to-br from-[#2B8A6E] to-[#141B45] flex items-center justify-center shrink-0">
                 <Users className="w-12 h-12 text-white" />
               </div>
               <div>
@@ -724,7 +724,7 @@ function InvestorPresentation() {
               </div>
             </div>
           </div>
-          <div className="bg-white border border-[#2B8A6E]/20 rounded-xl p-6 italic text-[#0A0F2E] text-lg text-center">
+          <div className="bg-white border border-[#2B8A6E]/20 p-6 italic text-[#0A0F2E] text-lg text-center">
             "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a playbook or you're improvising. Fortune 1000 companies are still improvising."
           </div>
         </div>
@@ -743,7 +743,7 @@ function InvestorPresentation() {
             { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Offense domain. Channel partnerships. Industry-specific playbook packs.', color: 'border-[#2B8A6E]/30' },
             { phase: 'Year 3+', title: 'Market Leadership', target: '500+ accounts', desc: 'Full platform adoption. International expansion. Industry standard for strategic execution.', color: 'border-[#C9A84C]/30' },
           ].map((p, i) => (
-            <div key={i} className={`bg-white border ${p.color} rounded-xl p-6`}>
+            <div key={i} className={`bg-white border ${p.color} p-6`}>
               <div className="text-[#2B8A6E] font-bold text-sm mb-1">{p.phase}</div>
               <div className="text-[#0A0F2E] font-bold text-lg mb-1">{p.title}</div>
               <div className="text-[#6B7280] text-sm mb-3">{p.target}</div>
@@ -761,7 +761,7 @@ function InvestorPresentation() {
               { name: 'Insurance', pct: '15%' },
               { name: 'Aerospace', pct: '5%' },
             ].map((v, i) => (
-              <div key={i} className="bg-white border border-[#E8E4DC] rounded-lg px-4 py-2 flex items-center gap-2">
+              <div key={i} className="bg-white border border-[#E8E4DC] px-4 py-2 flex items-center gap-2">
                 <span className="text-[#2B8A6E] font-bold">{v.pct}</span>
                 <span className="text-[#0A0F2E] text-sm">{v.name}</span>
               </div>
@@ -786,7 +786,7 @@ function InvestorPresentation() {
               { year: 'Year 4', arr: '$60-80M', customers: '100-150', focus: 'International' },
               { year: 'Year 5', arr: '$100M+', customers: '200+', focus: 'Market leader' },
             ].map((y, i) => (
-              <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-4 text-center">
+              <div key={i} className="bg-white border border-[#E8E4DC] p-4 text-center">
                 <div className="text-[#2B8A6E] font-bold text-sm mb-2">{y.year}</div>
                 <div className="text-2xl font-bold text-[#0A0F2E] mb-1">{y.arr}</div>
                 <div className="text-[#6B7280] text-xs">{y.customers} customers</div>
@@ -854,8 +854,8 @@ function InvestorPresentation() {
                     <span className="text-[#6B7280]">{f.label}</span>
                     <span className="text-[#0A0F2E] font-bold">{f.pct}%</span>
                   </div>
-                  <div className="w-full bg-[#F8F7F4] rounded-full h-3">
-                    <div className={`${f.color} h-3 rounded-full`} style={{ width: `${f.pct}%` }} />
+                  <div className="w-full bg-[#F8F7F4] h-3">
+                    <div className={`${f.color} h-3`} style={{ width: `${f.pct}%` }} />
                   </div>
                 </div>
               ))}
@@ -883,7 +883,7 @@ function InvestorPresentation() {
 
     () => (
       <div className="flex flex-col items-center justify-center h-full text-center px-4">
-        <div className="w-20 h-20 bg-gradient-to-br from-[#2B8A6E] to-[#141B45] rounded-2xl flex items-center justify-center mb-8">
+        <div className="w-20 h-20 bg-gradient-to-br from-[#2B8A6E] to-[#141B45] flex items-center justify-center mb-8">
           <Zap className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6 max-w-4xl">
@@ -920,7 +920,7 @@ function InvestorPresentation() {
     <PageLayout embedded={isFullscreen}>
       
       <main className={`relative ${isFullscreen ? 'h-screen w-screen overflow-hidden' : 'max-w-7xl mx-auto px-6 py-12 h-[calc(100vh-200px)]'}`}>
-        <Card className={`h-full border-[#E8E4DC] bg-white overflow-hidden relative shadow-2xl transition-all duration-700 ${isFullscreen ? 'border-0 rounded-none' : 'rounded-2xl'}`}>
+        <Card className={`h-full border-[#E8E4DC] bg-white overflow-hidden relative transition-all duration-700 ${isFullscreen ? 'border-0 rounded-none' : 'rounded-2xl'}`}>
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0A0F2E 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
           
           <AnimatePresence mode="wait">
@@ -953,7 +953,7 @@ function InvestorPresentation() {
               {Array.from({ length: totalSlides }).map((_, i) => (
                 <div
                   key={i}
-                  className={`h-2 transition-all duration-300 rounded-full ${
+                  className={`h-2 transition-all duration-300 ${
                     i === currentSlide ? 'w-8 bg-[#0A0F2E]' : 'w-2 bg-[#E8E4DC]'
                   }`}
                 />

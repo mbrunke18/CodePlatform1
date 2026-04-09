@@ -201,7 +201,7 @@ export default function ExecutiveAnalyticsDashboard() {
         <div className="max-w-7xl mx-auto px-8 py-12 space-y-8">
           {/* Real-Time Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+          <Card className="bg-white border-[#E8E4DC] rounded-none">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Active Users</h3>
@@ -212,7 +212,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+          <Card className="bg-white border-[#E8E4DC] rounded-none">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Revenue</h3>
@@ -223,7 +223,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+          <Card className="bg-white border-[#E8E4DC] rounded-none">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Conversion</h3>
@@ -234,7 +234,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+          <Card className="bg-white border-[#E8E4DC] rounded-none">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Customer Sat</h3>
@@ -245,7 +245,7 @@ export default function ExecutiveAnalyticsDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+          <Card className="bg-white border-[#E8E4DC] rounded-none">
             <CardContent className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">System Health</h3>
@@ -270,7 +270,7 @@ export default function ExecutiveAnalyticsDashboard() {
           <TabsContent value="overview" className="space-y-6 mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {executiveMetrics.map((metric) => (
-                <Card key={metric.id} className="bg-white border-[#E8E4DC] rounded-none hover:shadow-md transition-shadow shadow-sm">
+                <Card key={metric.id} className="bg-white border-[#E8E4DC] rounded-none ">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">{metric.name}</h3>
@@ -348,7 +348,7 @@ export default function ExecutiveAnalyticsDashboard() {
         </Tabs>
 
         {/* Organizational Resilience Score */}
-        <div className="bg-white border rounded-sm shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+        <div className="bg-white border rounded-sm p-8" style={{ borderColor: "#E8E4DC" }}>
           <div className="flex items-center justify-between mb-6">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>Organizational Resilience Score</div>
@@ -376,7 +376,7 @@ export default function ExecutiveAnalyticsDashboard() {
         </div>
 
         {/* 90-Day Strategic Forecast */}
-        <div className="bg-white border rounded-sm shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+        <div className="bg-white border rounded-sm p-8" style={{ borderColor: "#E8E4DC" }}>
           <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>AI-Generated</div>
           <h3 className="text-xl font-bold mb-6" style={{ color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif" }}>90-Day Strategic Forecast</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

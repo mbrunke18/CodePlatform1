@@ -274,7 +274,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {crisisTemplates.map((template: ComprehensiveScenarioTemplate) => (
-                <Card key={template.id} className="border-red-300 bg-white dark:bg-gray-800 hover:shadow-md transition-shadow" data-testid={`crisis-template-${template.id}`}>
+                <Card key={template.id} className="border-red-300 bg-white dark:bg-gray-800 " data-testid={`crisis-template-${template.id}`}>
                   <CardHeader className="pb-2">
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-lg">{template.name}</CardTitle>
@@ -423,7 +423,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
 
             {/* Collapsible Advanced Filters */}
             {showAdvancedFilters && (
-              <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 p-4 border border-gray-200 dark:border-gray-700">
                 <div className="flex items-center gap-4 flex-wrap">
                   <div>
                     <Label className="text-xs text-gray-600 dark:text-gray-200">Industry</Label>
@@ -539,7 +539,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
                       <p className="text-gray-600 dark:text-gray-200 text-sm mb-4">{template.description}</p>
                       
                       {/* Effectiveness Metrics */}
-                      <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800">
                         <div className="grid grid-cols-3 gap-2 text-xs">
                           <div className="text-center">
                             <div className="font-medium text-[#0A0F2E]">{template.effectiveness.usageCount}</div>
@@ -558,7 +558,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
 
                       {/* AI Suggestions */}
                       {template.aiSuggestions && (
-                        <div className="mb-4 p-3 bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg border border-[#C9A84C] dark:border-[#C9A84C]">
+                        <div className="mb-4 p-3 bg-[#0A0F2E] dark:bg-[#C9A84C]/20 border border-[#C9A84C] dark:border-[#C9A84C]">
                           <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-1">
                               <Brain className="h-3 w-3 text-[#C9A84C]" />
@@ -651,7 +651,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
   return (
     <div className="space-y-6" data-testid="template-details-form">
       {/* Template Overview */}
-      <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+      <div className="bg-gray-50 dark:bg-gray-800 p-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
           <div>
             <div className="font-medium text-gray-900 dark:text-gray-100">Severity</div>
@@ -704,7 +704,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
       {/* Data Collection Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Basic Scenario Information */}
-        <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 rounded-lg">
+        <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4">
           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Basic Scenario Information</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
@@ -731,7 +731,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
         </div>
 
         {/* Comprehensive Data Collection Fields */}
-        <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+        <div className="bg-gray-50 dark:bg-gray-800 p-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-lg">
               📊 Comprehensive Data Collection
@@ -753,7 +753,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
               return (
                 <div key={category} className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-gray-200 dark:border-gray-600">
-                    <div className="w-3 h-3 rounded-full bg-[#0A0F2E]"></div>
+                    <div className="w-3 h-3 bg-[#0A0F2E]"></div>
                     <h5 className="font-medium text-gray-900 dark:text-gray-100 capitalize">
                       {category.replace('-', ' ')} Information
                     </h5>
@@ -868,7 +868,7 @@ function TemplateDetailsForm({ template, onSubmit, isLoading }: {
         {/* Critical Decision Points */}
         <div>
           <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">Critical Decision Points</h4>
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4">
             <ul className="space-y-2">
               {template.criticalDecisionPoints.map((point, index) => (
                 <li key={index} className="flex items-center gap-2 text-sm">

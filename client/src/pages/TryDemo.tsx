@@ -711,7 +711,7 @@ export default function TryDemo() {
                         </p>
                         <div className="flex items-center gap-4 text-xs font-bold tracking-widest text-[#0A0F2E] uppercase">
                           <span>{formatCurrency(scenario.dealValue)} at risk</span>
-                          <div className="w-1 h-1 bg-slate-300 rounded-full" />
+                          <div className="w-1 h-1 bg-slate-300" />
                           <span>{scenario.stakeholders} stakeholders</span>
                         </div>
                       </div>
@@ -843,11 +843,11 @@ export default function TryDemo() {
                           return (
                             <div
                               key={msg.id}
-                              className={`p-3 rounded-lg border ${URGENCY_COLORS[msg.urgency]} animate-in slide-in-from-right duration-300`}
+                              className={`p-3 border ${URGENCY_COLORS[msg.urgency]} animate-in slide-in-from-right duration-300`}
                               style={{ animationDelay: `${index * 50}ms` }}
                             >
                               <div className="flex items-start gap-3">
-                                <div className="p-2 bg-gray-50 rounded-lg">
+                                <div className="p-2 bg-gray-50">
                                   <IconComponent className="h-4 w-4" />
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -949,7 +949,7 @@ export default function TryDemo() {
                   return (
                     <div 
                       key={phase.id}
-                      className={`p-3 rounded-lg border transition-all ${
+                      className={`p-3 border transition-all ${
                         isCurrent 
                           ? `${colors.bg} ${colors.border}` 
                           : isCompleted 
@@ -990,7 +990,7 @@ export default function TryDemo() {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
-                        <div className="p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg">
+                        <div className="p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30">
                           <h4 className="text-gray-900 font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div className="flex items-center gap-2 text-gray-800">
@@ -1012,7 +1012,7 @@ export default function TryDemo() {
                           </div>
                         </div>
 
-                        <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                        <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
                           <div className="flex items-center gap-2 text-[#2B8A6E] mb-2">
                             <Clock className="h-4 w-4" />
                             <span className="font-medium">Time to Ready: 0 minutes</span>
@@ -1022,7 +1022,7 @@ export default function TryDemo() {
                           </p>
                         </div>
 
-                        <div className="p-3 bg-gray-50 rounded-lg">
+                        <div className="p-3 bg-gray-50">
                           <p className="text-sm text-gray-800">
                             <span className="text-red-400 font-medium">Without Readiness OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                           </p>
@@ -1173,7 +1173,7 @@ export default function TryDemo() {
                         <ExecutionStageGuide variant="compact" />
 
                         {/* Timer */}
-                        <div className="mb-4 p-4 bg-gradient-to-r from-[#2B8A6E]/20 to-[#3BAF8A]/20 border border-[#2B8A6E]/30 rounded-lg text-center">
+                        <div className="mb-4 p-4 bg-gradient-to-r from-[#2B8A6E]/20 to-[#3BAF8A]/20 border border-[#2B8A6E]/30 text-center">
                           <p className="text-xs text-[#2B8A6E] uppercase tracking-wide mb-1">Execution Time</p>
                           <p className="text-4xl font-bold text-gray-900 font-mono">
                             {formatTime(executionTimer)}
@@ -1187,9 +1187,9 @@ export default function TryDemo() {
                             return (
                               <div 
                                 key={step.id}
-                                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border-l-4 border-[#2B8A6E] animate-in slide-in-from-left"
+                                className="flex items-start gap-3 p-3 bg-gray-50 border-l-4 border-[#2B8A6E] animate-in slide-in-from-left"
                               >
-                                <div className="p-2 bg-[#2B8A6E]/20 rounded-lg">
+                                <div className="p-2 bg-[#2B8A6E]/20">
                                   <IconComponent className="h-4 w-4 text-[#2B8A6E]" />
                                 </div>
                                 <div className="flex-1">
@@ -1208,7 +1208,7 @@ export default function TryDemo() {
                           
                           {isExecuting && (
                             <div className="flex items-center justify-center p-4 text-gray-800">
-                              <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#2B8A6E] border-t-transparent mr-2" />
+                              <div className="animate-spin h-5 w-5 border-2 border-[#2B8A6E] border-t-transparent mr-2" />
                               Orchestrating response...
                             </div>
                           )}
@@ -1334,10 +1334,10 @@ export default function TryDemo() {
                         ) : null;
                       })()}
 
-                      <Card className="bg-white border-[#2B8A6E]/50 shadow-lg">
+                      <Card className="bg-white border-[#2B8A6E]/50">
                         <CardContent className="p-8 text-center">
                           <div className="mb-6">
-                            <div className="inline-flex p-4 bg-[#2B8A6E]/10 rounded-full mb-4">
+                            <div className="inline-flex p-4 bg-[#2B8A6E]/10 mb-4">
                               <Rocket className="h-10 w-10 text-[#2B8A6E]" />
                             </div>
                             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-2" style={CG}>IDEA Framework Complete</h2>
@@ -1522,12 +1522,12 @@ export default function TryDemo() {
                     </CardHeader>
                     <CardContent>
                           <div className="grid grid-cols-2 gap-4">
-                            <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-center">
+                            <div className="p-3 bg-red-500/10 border border-red-500/30 text-center">
                               <p className="text-[10px] text-red-600 font-bold uppercase mb-1">Traditional</p>
                               <p className="text-xl font-bold text-red-600">30 days</p>
                               <p className="text-[10px] text-slate-500 font-medium">Traditional mobilization</p>
                             </div>
-                            <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg text-center">
+                            <div className="p-3 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 text-center">
                               <p className="text-[10px] text-[#2B8A6E] font-bold uppercase mb-1">Readiness OS</p>
                               <p className="text-xl font-bold text-[#2B8A6E]">12 min</p>
                               <p className="text-[10px] text-slate-500 font-medium">Guaranteed</p>
@@ -1622,7 +1622,7 @@ export default function TryDemo() {
                     setLocation(demo.route);
                     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                   }}
-                  className={`p-5 rounded-xl border transition-all hover:scale-[1.02] text-left group bg-white ${
+                  className={`p-5 border transition-all hover:scale-[1.02] text-left group bg-white ${
                     demo.type === 'offensive' 
                       ? 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]' 
                       : 'border-[#0A0F2E]/30 hover:border-[#0A0F2E]'

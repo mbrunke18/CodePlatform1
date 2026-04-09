@@ -47,7 +47,7 @@ export default function LVMHMarketEntryDemo() {
               <button
                 key={act.id}
                 onClick={() => goToAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors border ${
+                className={`flex items-center gap-2 px-4 py-2 transition-colors border ${
                   currentAct === act.id
                     ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]"
                     : "text-white/60 border-transparent hover:bg-white/10"
@@ -76,7 +76,7 @@ export default function LVMHMarketEntryDemo() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                <div className="p-6 bg-white/5 border border-white/10">
                   <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     <Globe className="w-5 h-5 text-[#C9A84C]" />
                     The Opportunity
@@ -101,7 +101,7 @@ export default function LVMHMarketEntryDemo() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-white/5 rounded-lg border border-white/10">
+                <div className="p-6 bg-white/5 border border-white/10">
                   <h3 className="font-bold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Coordination Timeline</h3>
                   <ul className="space-y-2 text-sm text-white/60">
                     <li>• Month 1-2: Sequential brand planning (10 brands independently)</li>
@@ -114,7 +114,7 @@ export default function LVMHMarketEntryDemo() {
                 </div>
               </div>
 
-              <div className="bg-white/5 border border-[#C9A84C]/50 rounded-lg p-6 mb-8">
+              <div className="bg-white/5 border border-[#C9A84C]/50 p-6 mb-8">
                 <div className="flex items-start gap-4">
                   <Target className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
                   <div>
@@ -131,17 +131,17 @@ export default function LVMHMarketEntryDemo() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                <div className="p-4 bg-white/5 border border-white/10 text-center">
                   <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>1,267</div>
                   <div className="text-sm text-white/40">Stakeholders Coordinated</div>
                 </div>
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                <div className="p-4 bg-white/5 border border-white/10 text-center">
                   <TrendingUp className="w-8 h-8 text-[#DFC178] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 Minutes</div>
                   <div className="text-sm text-white/40">Full Coordination</div>
                 </div>
-                <div className="p-4 bg-white/5 rounded-lg border border-white/10 text-center">
+                <div className="p-4 bg-white/5 border border-white/10 text-center">
                   <DollarSign className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
                   <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>€1.68B</div>
                   <div className="text-sm text-white/40">Value Created</div>
@@ -230,7 +230,7 @@ export default function LVMHMarketEntryDemo() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
+                    <div className="w-10 h-10 bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">1</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Executive Leadership</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">28 executives receive unified brief and approve €580M investment in 4 minutes</p>
@@ -238,7 +238,7 @@ export default function LVMHMarketEntryDemo() {
                 </Card>
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
+                    <div className="w-10 h-10 bg-[#C9A84C] flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Operations Teams</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">Real estate, legal, supply chain, marketing, HR executing simultaneously</p>
@@ -246,7 +246,7 @@ export default function LVMHMarketEntryDemo() {
                 </Card>
                 <Card className="p-6 bg-white/5 border-white/10">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-[#2B8A6E] flex items-center justify-center text-white font-bold">3</div>
+                    <div className="w-10 h-10 bg-[#2B8A6E] flex items-center justify-center text-white font-bold">3</div>
                     <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>External Partners</h3>
                   </div>
                   <p className="text-sm text-white/60 mb-2">Developers, contractors, agencies, logistics—all activated</p>
@@ -312,12 +312,12 @@ export default function LVMHMarketEntryDemo() {
               bottomLine={lvmhMarketEntryDemoData.roiComparisonData.bottomLine}
             />
 
-            <div className="bg-white/5 p-8 rounded-lg border-2 border-[#DFC178] mb-8">
+            <div className="bg-white/5 p-8 border-2 border-[#DFC178] mb-8">
               <h3 className="text-xl font-bold mb-4 text-white text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-semibold text-[#C9A84C] mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#C9A84C] rounded-full" />
+                    <span className="w-2 h-2 bg-[#C9A84C]" />
                     Traditional Market Entry
                   </h4>
                   <ul className="space-y-2 text-sm text-white/60">
@@ -330,7 +330,7 @@ export default function LVMHMarketEntryDemo() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#2B8A6E] mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#2B8A6E] rounded-full" />
+                    <span className="w-2 h-2 bg-[#2B8A6E]" />
                     Readiness OS Coordinated Move
                   </h4>
                   <ul className="space-y-2 text-sm text-white/60">

@@ -163,7 +163,7 @@ export default function ScenarioVarianceAlert({
       <CardHeader className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-amber-500 animate-pulse">
+            <div className="p-2 bg-amber-500 animate-pulse">
               <Bell className="w-5 h-5 text-gray-900" />
             </div>
             <div>

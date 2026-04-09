@@ -559,7 +559,7 @@ export default function LiveActivationCenter() {
                     onClick={() => setSelectedPlaybook(p.key)}
                     className={cn(
                       "cursor-pointer transition-all duration-300 bg-white border-[#E8E4DC] overflow-hidden group",
-                      isSelected ? "ring-2 ring-[#C9A84C] scale-[1.02] shadow-xl" : "hover:border-[#C9A84C] hover:shadow-lg"
+                      isSelected ? "ring-2 ring-[#C9A84C] scale-[1.02]" : "hover:border-[#C9A84C]"
                     )}
                   >
                     <div className="flex">
@@ -567,7 +567,7 @@ export default function LiveActivationCenter() {
                       <div className="flex-1 p-8">
                         <div className="flex items-start justify-between mb-6">
                           <div className="flex items-center gap-4">
-                            <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center border", colors.border, colors.bg, colors.text)}>
+                            <div className={cn("w-14 h-14 flex items-center justify-center border", colors.border, colors.bg, colors.text)}>
                               {getPlaybookIcon(p.icon)}
                             </div>
                             <div>
@@ -649,14 +649,14 @@ export default function LiveActivationCenter() {
 
             <div className="flex items-center justify-center gap-4 pt-8">
               <Link to="/playbooks">
-                <Button variant="outline" className="border-[#E8E4DC] text-[#6B7280] h-14 px-8 font-bold rounded-xl hover:bg-white">
+                <Button variant="outline" className="border-[#E8E4DC] text-[#6B7280] h-14 px-8 font-bold hover:bg-white">
                   Back to Library
                 </Button>
               </Link>
               <Button 
                 onClick={() => setShowGovernanceCheck(true)}
                 disabled={activateMutation.isPending}
-                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white h-14 px-12 font-bold rounded-xl text-lg shadow-lg group"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white h-14 px-12 font-bold text-lg group"
               >
                 {activateMutation.isPending ? (
                   <>
@@ -700,7 +700,7 @@ export default function LiveActivationCenter() {
           <div className="lg:col-span-8 space-y-8">
             <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
               <div className="flex items-center gap-6">
-                <div className={cn("w-16 h-16 rounded-2xl flex items-center justify-center border text-white", colors.border, colors.bg)}>
+                <div className={cn("w-16 h-16 flex items-center justify-center border text-white", colors.border, colors.bg)}>
                   {getPlaybookIcon(activePlaybook?.icon || 'shield')}
                 </div>
                 <div>
@@ -755,7 +755,7 @@ export default function LiveActivationCenter() {
                   <Zap className="w-4 h-4 text-[#C9A84C]" />
                 </div>
                 <div className="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
+                  <div className="w-2 h-2 bg-[#C9A84C] animate-pulse" />
                   {currentPhase.replace('_', ' ')}
                 </div>
                 <div className="text-[10px] text-white/40 font-mono">NEXT: {currentPhase === 'IMMEDIATE' ? 'SECONDARY' : currentPhase === 'SECONDARY' ? 'FOLLOW UP' : 'COMPLETION'}</div>
@@ -769,8 +769,8 @@ export default function LiveActivationCenter() {
                   <h3 className="font-bold text-white uppercase tracking-wider text-sm">Synchronized Stakeholder Command</h3>
                 </div>
                 <div className="flex gap-2">
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
+                  <div className="flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/10">
+                    <div className="w-1.5 h-1.5 bg-[#C9A84C]" />
                     <span className="text-[9px] font-bold text-white/60 uppercase">Tier 1 Strategy</span>
                   </div>
                 </div>
@@ -781,7 +781,7 @@ export default function LiveActivationCenter() {
                     <div key={s.id} className="group relative flex flex-col items-center text-center space-y-3">
                       <div className="relative">
                         <div className={cn(
-                          "w-16 h-16 rounded-2xl flex items-center justify-center text-white text-xl font-bold transition-all duration-500",
+                          "w-16 h-16 flex items-center justify-center text-white text-xl font-bold transition-all duration-500",
                           s.status === 'acknowledged' ? "ring-4 ring-[#2B8A6E] ring-offset-4 ring-offset-[#0A0F2E]" : 
                           s.status === 'notifying' || s.status === 'notified' ? "ring-4 ring-[#C9A84C] ring-offset-4 ring-offset-[#0A0F2E] animate-pulse" : 
                           "opacity-40",
@@ -790,7 +790,7 @@ export default function LiveActivationCenter() {
                           {s.initials}
                         </div>
                         {s.status === 'acknowledged' && (
-                          <div className="absolute -bottom-1 -right-1 bg-[#2B8A6E] text-white rounded-full p-1 border-2 border-[#0A0F2E]">
+                          <div className="absolute -bottom-1 -right-1 bg-[#2B8A6E] text-white p-1 border-2 border-[#0A0F2E]">
                             <CheckCircle2 className="w-3 h-3" />
                           </div>
                         )}
@@ -854,7 +854,7 @@ export default function LiveActivationCenter() {
                         </div>
                         <div className="flex items-center gap-3 mt-1">
                           <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">{t.owner}</span>
-                          <div className="w-1 h-1 rounded-full bg-white/20" />
+                          <div className="w-1 h-1 bg-white/20" />
                           <span className="text-[10px] font-bold text-[#C9A84C] uppercase tracking-widest">{t.phase}</span>
                         </div>
                       </div>
@@ -897,7 +897,7 @@ export default function LiveActivationCenter() {
                 {activityFeed.map((entry) => (
                   <div key={entry.id} className="relative pl-6 border-l border-white/10 group">
                     <div className={cn(
-                      "absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full border-2 border-[#0A0F2E]",
+                      "absolute -left-[5px] top-0 w-2.5 h-2.5 border-2 border-[#0A0F2E]",
                       entry.type === 'stakeholder' ? "bg-[#C9A84C]" : 
                       entry.type === 'task' ? "bg-[#2B8A6E]" : 
                       entry.type === 'phase' ? "bg-white" : "bg-white/40"
@@ -948,17 +948,17 @@ export default function LiveActivationCenter() {
 
                 {/* Live metric cards from actual activation */}
                 <div className="grid grid-cols-3 gap-4 pt-2">
-                  <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="text-center p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Coordination Time</div>
                     <div className={`text-2xl font-bold font-mono ${targetMet ? 'text-[#2B8A6E]' : 'text-[#EF4444]'}`}>{simMinutes}<span className="text-sm font-normal text-[#6B7280] ml-0.5">m</span></div>
                     <div className="text-[9px] text-[#6B7280] mt-1">{targetMet ? '✓ Below 12-min target' : 'Above 12-min target'}</div>
                   </div>
-                  <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="text-center p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Stakeholders</div>
                     <div className="text-2xl font-bold text-[#0A0F2E] font-mono">{ackPct}%</div>
                     <div className="text-[9px] text-[#6B7280] mt-1">{acknowledgedCount} of {stakeholders.length} acknowledged</div>
                   </div>
-                  <div className="text-center p-4 rounded-2xl bg-[#F8F7F4] border border-[#E8E4DC]">
+                  <div className="text-center p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <div className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-1">Tasks</div>
                     <div className="text-2xl font-bold text-[#0A0F2E] font-mono">{taskPct}%</div>
                     <div className="text-[9px] text-[#6B7280] mt-1">{completedTasks} of {tasks.length} completed</div>
@@ -966,7 +966,7 @@ export default function LiveActivationCenter() {
                 </div>
 
                 {/* 3,600x benchmark comparison */}
-                <div className="pt-2 pb-1 px-4 rounded-2xl border border-[#E8E4DC] bg-[#0A0F2E] mx-2">
+                <div className="pt-2 pb-1 px-4 border border-[#E8E4DC] bg-[#0A0F2E] mx-2">
                   <div className="text-[9px] font-bold text-[#C9A84C] uppercase tracking-widest mb-3 mt-3">Coordination Benchmark</div>
                   <div className="grid grid-cols-3 gap-4 mb-3">
                     <div>
@@ -988,7 +988,7 @@ export default function LiveActivationCenter() {
                   <Link href="/coordination-intelligence" className="flex-1">
                     <Button
                       variant="outline"
-                      className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] h-12 font-bold rounded-xl"
+                      className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#F8F7F4] h-12 font-bold"
                       onClick={() => setShowCompletion(false)}
                     >
                       <BarChart3 className="w-4 h-4 mr-2" />
@@ -997,7 +997,7 @@ export default function LiveActivationCenter() {
                   </Link>
                   <Button 
                     onClick={() => { setActivationId(null); setShowCompletion(false); }}
-                    className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white h-12 font-bold rounded-xl"
+                    className="flex-1 bg-[#0A0F2E] hover:bg-[#141B45] text-white h-12 font-bold"
                   >
                     Return to Mission Control
                   </Button>

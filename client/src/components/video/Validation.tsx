@@ -115,7 +115,7 @@ export function Validation({ progress }: SceneProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 + i * 0.25 }}
-              className="bg-gray-50 border border-gray-200 rounded-xl p-4"
+              className="bg-gray-50 border border-gray-200 p-4"
             >
               <div className="text-[#0A0F2E] font-bold text-sm mb-2">{q.firm}</div>
               <p className="text-gray-800 text-xs italic leading-relaxed">"{q.quote}"</p>

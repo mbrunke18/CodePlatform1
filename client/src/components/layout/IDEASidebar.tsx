@@ -66,7 +66,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         <button
           onClick={() => togglePhase(phase.id)}
           className={cn(
-            'w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-all duration-200',
+            'w-full flex items-center justify-between px-3 py-2.5 transition-all duration-200',
             'hover:bg-white/10 dark:hover:bg-white/5',
             active && 'bg-white/10 dark:bg-white/5'
           )}
@@ -121,8 +121,8 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
     <div className="flex flex-col h-full">
       <div className="p-4 border-b border-border/50">
         <Link href="/mission-control" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center">
-            <div className="w-6 h-6 rounded-full border-2 border-white/90" />
+          <div className="w-10 h-10 bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center">
+            <div className="w-6 h-6 border-2 border-white/90" />
           </div>
           <div>
             <h1 className="font-bold text-lg leading-tight group-hover:text-poise-gold transition-colors">
@@ -181,7 +181,7 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
         
         {isAuthenticated && user ? (
           <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-white/5">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center text-white text-sm font-medium">
+            <div className="w-8 h-8 bg-gradient-to-br from-poise-gold to-poise-teal flex items-center justify-center text-white text-sm font-medium">
               {user.initials || user.firstName?.charAt(0).toUpperCase() || 'U'}
             </div>
             <div className="flex-1 min-w-0">

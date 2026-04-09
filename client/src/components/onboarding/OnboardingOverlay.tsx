@@ -115,11 +115,11 @@ export default function OnboardingOverlay() {
         className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[10000] w-full max-w-lg px-4"
         data-testid="onboarding-overlay"
       >
-        <Card className="bg-white border-[#2B8A6E]/50 shadow-2xl backdrop-blur-md">
+        <Card className="bg-white border-[#2B8A6E]/50 backdrop-blur-md">
           <CardContent className="p-5">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 ${phaseColor} rounded-lg flex items-center justify-center`}>
+                <div className={`w-10 h-10 ${phaseColor} flex items-center justify-center`}>
                   <PhaseIcon className="h-5 w-5 text-gray-900" />
                 </div>
                 <div>

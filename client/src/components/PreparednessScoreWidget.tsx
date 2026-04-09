@@ -93,7 +93,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
   const delta = Math.abs(displayData.score - displayData.industryBenchmark);
 
   return (
-    <Card className="w-full shadow-lg border-2" data-testid="preparedness-score-widget">
+    <Card className="w-full border-2" data-testid="preparedness-score-widget">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div>
@@ -108,7 +108,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
       <CardContent className="space-y-4">
         {/* Main Score Display */}
-        <div className={`${scoreBgColor} rounded-xl p-6 text-center relative`}>
+        <div className={`${scoreBgColor} p-6 text-center relative`}>
           <div className="flex items-center justify-center gap-3">
             <div className={`text-6xl font-bold ${scoreColor}`} data-testid="preparedness-score-value">
               {displayData.score}
@@ -138,7 +138,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
         </div>
 
         {/* Peer Comparison */}
-        <div className="bg-muted/50 dark:bg-muted/20 rounded-lg p-4" data-testid="peer-comparison">
+        <div className="bg-muted/50 dark:bg-muted/20 p-4" data-testid="peer-comparison">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -170,7 +170,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3" data-testid="scenarios-practiced">
+          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-3" data-testid="scenarios-practiced">
             <div className="flex items-center gap-2 mb-1">
               <Target className="h-4 w-4 text-[#0A0F2E] dark:text-[#0A0F2E]" />
               <span className="text-xs text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Scenarios</span>
@@ -181,7 +181,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
             <div className="text-xs text-muted-foreground">practiced</div>
           </div>
 
-          <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-3" data-testid="drills-completed">
+          <div className="bg-green-50 dark:bg-green-950/20 p-3" data-testid="drills-completed">
             <div className="flex items-center gap-2 mb-1">
               <Shield className="h-4 w-4 text-green-600 dark:text-green-400" />
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Drills</span>
@@ -195,7 +195,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
         {/* Coverage Gaps Warning */}
         {displayData.coverageGaps && displayData.coverageGaps.length > 0 && (
-          <div className="bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3" data-testid="coverage-gaps-alert">
+          <div className="bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 p-3" data-testid="coverage-gaps-alert">
             <div className="flex items-start gap-2">
               <AlertTriangle className="h-4 w-4 text-yellow-600 dark:text-yellow-400 mt-0.5" />
               <div className="flex-1">

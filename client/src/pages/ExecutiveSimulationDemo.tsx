@@ -349,7 +349,7 @@ export default function ExecutiveSimulationDemo() {
         <div className="min-h-screen flex items-center justify-center p-6">
           <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5" data-testid="card-simulation-intro">
             <CardHeader className="text-center pb-2">
-              <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] rounded-2xl flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 bg-[#0A0F2E] flex items-center justify-center">
                 <Briefcase className="w-10 h-10 text-white" />
               </div>
               <Badge className="mx-auto mb-4 bg-[#0A0F2E] text-white border-none font-bold">
@@ -364,7 +364,7 @@ export default function ExecutiveSimulationDemo() {
             </CardHeader>
             
             <CardContent className="space-y-6">
-              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Building2 className="w-5 h-5 text-[#C9A84C]" />
                   Your Company Profile
@@ -389,7 +389,7 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               </div>
 
-              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-[#C9A84C]/10">
+              <div className="bg-[#0A0F2E] p-6 border border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Users className="w-5 h-5 text-[#C9A84C]" />
                   Your Role
@@ -406,7 +406,7 @@ export default function ExecutiveSimulationDemo() {
                 </div>
               </div>
 
-              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   <Target className="w-5 h-5 text-[#C9A84C]" />
                   What You'll Experience
@@ -456,7 +456,7 @@ export default function ExecutiveSimulationDemo() {
         <div className="min-h-screen flex items-center justify-center p-6">
           <Card className="max-w-3xl w-full border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5" data-testid="card-simulation-complete">
             <CardHeader className="text-center pb-2">
-              <div className="w-20 h-20 mx-auto mb-6 bg-[#2B8A6E] rounded-2xl flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto mb-6 bg-[#2B8A6E] flex items-center justify-center">
                 <Award className="w-10 h-10 text-white" />
               </div>
               <Badge className="mx-auto mb-4 bg-[#2B8A6E]/10 text-[#2B8A6E] border-none">
@@ -472,24 +472,24 @@ export default function ExecutiveSimulationDemo() {
             
             <CardContent className="space-y-6">
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
+                <div className="bg-[#F8F7F4] dark:bg-white/5 p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                   <Clock className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{formatTime(elapsedTime)}</p>
                   <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm">Total Response Time</p>
                 </div>
-                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
+                <div className="bg-[#F8F7F4] dark:bg-white/5 p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                   <Users className="w-8 h-8 text-[#0A0F2E] dark:text-[#C9A84C] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>6</p>
                   <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm">Stakeholders Aligned</p>
                 </div>
-                <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
+                <div className="bg-[#F8F7F4] dark:bg-white/5 p-6 text-center border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                   <CheckCircle2 className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
                   <p className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{playbookActions.length}</p>
                   <p className="text-[#6B7280] dark:text-[#C9A84C]/60 text-sm">Actions Completed</p>
                 </div>
               </div>
 
-              <div className="bg-[#0A0F2E] rounded-xl p-6 border border-[#C9A84C]/10">
+              <div className="bg-[#0A0F2E] p-6 border border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional vs Readiness OS Response</h3>
                 <div className="space-y-4">
                   <div>
@@ -497,8 +497,8 @@ export default function ExecutiveSimulationDemo() {
                       <span className="text-white/80">Traditional Approach</span>
                       <span className="text-[#C9A84C]">30 days</span>
                     </div>
-                    <div className="h-3 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#141B45] rounded-full" style={{ width: '100%' }}></div>
+                    <div className="h-3 bg-white/5 overflow-hidden">
+                      <div className="h-full bg-[#141B45]" style={{ width: '100%' }}></div>
                     </div>
                   </div>
                   <div>
@@ -506,8 +506,8 @@ export default function ExecutiveSimulationDemo() {
                       <span className="text-white/80">With Readiness OS</span>
                       <span className="text-[#2B8A6E]">{formatTime(elapsedTime)}</span>
                     </div>
-                    <div className="h-3 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#2B8A6E] rounded-full" style={{ width: '3%' }}></div>
+                    <div className="h-3 bg-white/5 overflow-hidden">
+                      <div className="h-full bg-[#2B8A6E]" style={{ width: '3%' }}></div>
                     </div>
                   </div>
                 </div>
@@ -516,29 +516,29 @@ export default function ExecutiveSimulationDemo() {
                 </p>
               </div>
 
-              <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-xl p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
+              <div className="bg-[#F8F7F4] dark:bg-white/5 p-6 border border-[#E8E4DC] dark:border-[#C9A84C]/10">
                 <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>What Happened</h3>
                 <ul className="space-y-3 text-[#0A0F2E] dark:text-white/80 text-sm">
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">1</span>
                     </div>
                     <span>Readiness OS detected competitor acquisition via Reuters and SEC filing monitoring</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">2</span>
                     </div>
                     <span>AI assessed impact and recommended "Competitor M&A Response" playbook</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">3</span>
                     </div>
                     <span>You activated the playbook, triggering automatic stakeholder notification</span>
                   </li>
                   <li className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">4</span>
                     </div>
                     <span>All 6 response workstreams were coordinated in parallel, not sequentially</span>
@@ -581,7 +581,7 @@ export default function ExecutiveSimulationDemo() {
             <Card className="max-w-2xl w-full border-2 border-[#0A0F2E] bg-white animate-pulse">
               <CardHeader className="bg-[#141B45] border-b border-[#0A0F2E]/30">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#0A0F2E] rounded-xl flex items-center justify-center animate-pulse">
+                  <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center animate-pulse">
                     <AlertTriangle className="w-7 h-7 text-[#C9A84C]" />
                   </div>
                   <div>
@@ -602,7 +602,7 @@ export default function ExecutiveSimulationDemo() {
                     Just now
                   </span>
                 </div>
-                <div className="bg-[#2B8A6E]/10 rounded-lg p-4 border border-[#2B8A6E]/20">
+                <div className="bg-[#2B8A6E]/10 p-4 border border-[#2B8A6E]/20">
                   <p className="text-[#2B8A6E] font-medium flex items-center gap-2">
                     <Zap className="w-4 h-4 text-[#C9A84C]" />
                     Readiness OS Recommendation: Activate "Competitor M&A Response" playbook immediately
@@ -646,7 +646,7 @@ export default function ExecutiveSimulationDemo() {
 
               <div className="flex items-center gap-4">
                 {/* Timer */}
-                <div className="flex items-center gap-2 bg-[#F8F7F4] dark:bg-[#141B45] px-4 py-2 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                <div className="flex items-center gap-2 bg-[#F8F7F4] dark:bg-[#141B45] px-4 py-2 border border-[#E8E4DC] dark:border-white/10">
                   <Timer className="w-4 h-4 text-[#0A0F2E] dark:text-[#C9A84C]" />
                   <span className="font-mono font-bold text-[#0A0F2E] dark:text-white" data-testid="text-elapsed-time">
                     {formatTime(elapsedTime)}
@@ -657,7 +657,7 @@ export default function ExecutiveSimulationDemo() {
                 <Button variant="ghost" size="icon" className="relative text-[#0A0F2E] dark:text-[#C9A84C]" data-testid="button-notifications">
                   <Bell className="w-5 h-5" />
                   {notifications.filter(n => !n.read).length > 0 && (
-                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs rounded-full flex items-center justify-center">
+                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs flex items-center justify-center">
                       {notifications.filter(n => !n.read).length}
                     </span>
                   )}
@@ -739,13 +739,13 @@ export default function ExecutiveSimulationDemo() {
                       <CardDescription className="text-[#6B7280] dark:text-white/60">Real-time intelligence monitoring across 12 signal sources</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="aspect-square max-w-md mx-auto relative bg-[#F8F7F4] dark:bg-[#141B45] rounded-full flex items-center justify-center">
-                        <div className="absolute inset-4 border-2 border-dashed border-[#E8E4DC] dark:border-white/10 rounded-full"></div>
-                        <div className="absolute inset-12 border-2 border-dashed border-[#E8E4DC] dark:border-white/10 rounded-full"></div>
-                        <div className="absolute inset-20 border-2 border-dashed border-[#E8E4DC] dark:border-white/10 rounded-full"></div>
+                      <div className="aspect-square max-w-md mx-auto relative bg-[#F8F7F4] dark:bg-[#141B45] flex items-center justify-center">
+                        <div className="absolute inset-4 border-2 border-dashed border-[#E8E4DC] dark:border-white/10"></div>
+                        <div className="absolute inset-12 border-2 border-dashed border-[#E8E4DC] dark:border-white/10"></div>
+                        <div className="absolute inset-20 border-2 border-dashed border-[#E8E4DC] dark:border-white/10"></div>
                         
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-4 h-4 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-full animate-ping"></div>
+                          <div className="w-4 h-4 bg-[#0A0F2E] dark:bg-[#C9A84C] animate-ping"></div>
                         </div>
                         
                         {signals.map((signal, index) => {
@@ -757,7 +757,7 @@ export default function ExecutiveSimulationDemo() {
                           return (
                             <div 
                               key={signal.id}
-                              className={`absolute w-4 h-4 rounded-full ${
+                              className={`absolute w-4 h-4 ${
                                 signal.severity === 'critical' ? 'bg-red-600 animate-pulse' :
                                 signal.severity === 'high' ? 'bg-[#C9A84C]' :
                                 signal.severity === 'medium' ? 'bg-[#C9A84C]/60' : 'bg-[#0A0F2E]'
@@ -793,7 +793,7 @@ export default function ExecutiveSimulationDemo() {
                     <ScrollArea className="h-80">
                       <div className="space-y-3">
                         {TEAM_MEMBERS.map(member => (
-                          <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F8F7F4] dark:hover:bg-[#141B45] transition-colors">
+                          <div key={member.id} className="flex items-center gap-3 p-2 hover:bg-[#F8F7F4] dark:hover:bg-[#141B45] transition-colors">
                             <Avatar className="w-10 h-10 border border-[#E8E4DC] dark:border-white/10">
                               <AvatarFallback className={`text-sm font-bold ${
                                 member.status === 'available' ? 'bg-[#2B8A6E]/10 text-[#2B8A6E]' :
@@ -807,7 +807,7 @@ export default function ExecutiveSimulationDemo() {
                               <p className="font-medium text-sm text-[#0A0F2E] dark:text-white truncate">{member.name}</p>
                               <p className="text-xs text-[#6B7280] dark:text-white/60 truncate">{member.role}</p>
                             </div>
-                            <div className={`w-2 h-2 rounded-full ${
+                            <div className={`w-2 h-2 ${
                               member.status === 'available' ? 'bg-[#2B8A6E]' :
                               member.status === 'busy' ? 'bg-[#C9A84C]' :
                               'bg-[#6B7280]'
@@ -837,7 +837,7 @@ export default function ExecutiveSimulationDemo() {
                     <CardContent className="p-4">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex items-start gap-3">
-                          <div className={`p-2 rounded-lg ${
+                          <div className={`p-2 ${
                             signal.severity === 'critical' ? 'bg-red-100/50 dark:bg-red-900/30' :
                             signal.severity === 'high' ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10' :
                             'bg-[#F8F7F4] dark:bg-[#0A0F2E]/30'
@@ -881,7 +881,7 @@ export default function ExecutiveSimulationDemo() {
             <TabsContent value="playbooks" className="space-y-6">
               {phase === 'playbook_selection' ? (
                 <div className="space-y-4">
-                  <div className="bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10 border border-[#C9A84C]/20 dark:border-[#C9A84C]/20 rounded-lg p-4">
+                  <div className="bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10 border border-[#C9A84C]/20 dark:border-[#C9A84C]/20 p-4">
                     <p className="text-[#0A0F2E] dark:text-[#C9A84C] flex items-center gap-2">
                       <Zap className="w-5 h-5" />
                       <strong>Readiness OS Recommendation:</strong> Based on the detected signal, the following playbook is recommended
@@ -889,7 +889,7 @@ export default function ExecutiveSimulationDemo() {
                   </div>
                   
                   <Card 
-                    className="border-2 border-[#C9A84C] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 cursor-pointer hover:shadow-lg transition-all"
+                    className="border-2 border-[#C9A84C] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 cursor-pointer transition-all"
                     onClick={() => handleSelectPlaybook('competitor-ma-response')}
                     data-testid="card-recommended-playbook"
                   >
@@ -976,10 +976,10 @@ export default function ExecutiveSimulationDemo() {
                         {playbookActions.map((action, index) => (
                           <div 
                             key={action.id} 
-                            className="flex items-center gap-4 p-3 bg-[#F8F7F4] dark:bg-[#141B45] rounded-lg border border-[#E8E4DC] dark:border-white/5"
+                            className="flex items-center gap-4 p-3 bg-[#F8F7F4] dark:bg-[#141B45] border border-[#E8E4DC] dark:border-white/5"
                             data-testid={`action-${action.id}`}
                           >
-                            <div className="w-8 h-8 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-full flex items-center justify-center text-sm font-bold text-white dark:text-[#0A0F2E]">
+                            <div className="w-8 h-8 bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center text-sm font-bold text-white dark:text-[#0A0F2E]">
                               {index + 1}
                             </div>
                             <div className="flex-1">
@@ -1044,7 +1044,7 @@ export default function ExecutiveSimulationDemo() {
                         {playbookActions.map((action) => (
                           <div 
                             key={action.id} 
-                            className={`flex items-center gap-4 p-4 rounded-lg border ${
+                            className={`flex items-center gap-4 p-4 border ${
                               action.status === 'completed' ? 'bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border-[#2B8A6E]/20' :
                               action.status === 'in_progress' ? 'bg-[#0A0F2E]/5 dark:bg-[#C9A84C]/5 border-[#0A0F2E]/20 dark:border-[#C9A84C]/20' :
                               'bg-[#F8F7F4] dark:bg-[#141B45] border-[#E8E4DC] dark:border-white/5'

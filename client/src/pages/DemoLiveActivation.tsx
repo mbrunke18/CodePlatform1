@@ -503,19 +503,19 @@ function DemoLiveActivation() {
             </CardHeader>
             <CardContent className="p-8">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
+                <div className="text-center p-6 bg-[#0A0F2E]/5 border border-[#E8E4DC]">
                   <Users className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2" data-testid="text-stakeholder-count">
                     {STAKEHOLDER_ROSTER.length}
                   </div>
                   <div className="text-gray-800 text-lg">Stakeholders</div>
                 </div>
-                <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
+                <div className="text-center p-6 bg-[#0A0F2E]/5 border border-[#E8E4DC]">
                   <Clock className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2">~12 min</div>
                   <div className="text-gray-800 text-lg">Duration</div>
                 </div>
-                <div className="text-center p-6 bg-[#0A0F2E]/5 rounded-lg border border-[#E8E4DC]">
+                <div className="text-center p-6 bg-[#0A0F2E]/5 border border-[#E8E4DC]">
                   <DollarSign className="h-12 w-12 text-[#0A0F2E] mx-auto mb-3" />
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2">{DEMO_SCENARIO.valueProp}</div>
                   <div className="text-gray-800 text-lg">Value Created</div>
@@ -528,15 +528,15 @@ function DemoLiveActivation() {
                 </p>
             <div className="flex items-center justify-center gap-4 text-sm text-gray-800">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-[#0A0F2E] rounded-full"></div>
+                <div className="w-3 h-3 bg-[#0A0F2E]"></div>
                 <span>Real-time coordination</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-[#2B8A6E] rounded-full"></div>
+                <div className="w-3 h-3 bg-[#2B8A6E]"></div>
                 <span>Live acknowledgments</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-[#C9A84C] rounded-full"></div>
+                <div className="w-3 h-3 bg-[#C9A84C]"></div>
                 <span>Before/after metrics</span>
               </div>
             </div>
@@ -577,7 +577,7 @@ function DemoLiveActivation() {
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-[#0A0F2E] rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center">
                   <Info className="w-6 h-6 text-[#C9A84C]" />
                 </div>
               </div>
@@ -662,7 +662,7 @@ function DemoLiveActivation() {
                 return (
                   <div
                     key={stakeholder.id}
-                    className={`p-3 rounded-lg border transition-all ${
+                    className={`p-3 border transition-all ${
                       isAcknowledged 
                         ? 'bg-[#2B8A6E]/10 border-[#2B8A6E] dark:bg-[#2B8A6E]/30 dark:border-[#2B8A6E]/70 animate-pulse' 
                         : priorityColors[stakeholder.priority as keyof typeof priorityColors] || 'border-slate-400 bg-slate-100 dark:border-slate-600 dark:bg-[#141B45]/30'
@@ -777,7 +777,7 @@ function DemoLiveActivation() {
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                     {/* Without Readiness OS */}
-                    <div className="text-center p-6 bg-red-900/30 rounded-lg border-2 border-red-500/50">
+                    <div className="text-center p-6 bg-red-900/30 border-2 border-red-500/50">
                       <div className="text-lg text-red-300 mb-3 font-semibold">WITHOUT Readiness OS</div>
                       <div className="text-7xl font-bold text-red-400 mb-3" data-testid="text-without-vexor">
                         48-72h
@@ -792,7 +792,7 @@ function DemoLiveActivation() {
                     </div>
 
                     {/* With Readiness OS */}
-                    <div className="text-center p-6 bg-[#2B8A6E]/20 rounded-lg border-2 border-[#2B8A6E]/30">
+                    <div className="text-center p-6 bg-[#2B8A6E]/20 border-2 border-[#2B8A6E]/30">
                       <div className="text-lg text-[#2B8A6E]/80 mb-3 font-semibold">WITH Readiness OS</div>
                       <div className="text-7xl font-bold text-[#2B8A6E] mb-3 animate-pulse" data-testid="text-with-vexor">
                         {finalMetrics.coordinationTime}
@@ -912,7 +912,7 @@ function DemoLiveActivation() {
 
                 {/* Threshold reached message */}
                 {demoPhase === 'threshold' && (
-                  <div className="mt-8 p-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                  <div className="mt-8 p-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
                     <div className="flex items-center justify-center gap-3">
                       <CheckCircle2 className="h-12 w-12 text-[#2B8A6E]" />
                       <div className="text-3xl font-bold text-[#2B8A6E]">
@@ -924,7 +924,7 @@ function DemoLiveActivation() {
 
                 {/* Completing message */}
                 {demoPhase === 'completing' && (
-                  <div className="mt-8 p-6 bg-[#C9A84C]/20 border border-[#C9A84C]/50 rounded-lg animate-pulse">
+                  <div className="mt-8 p-6 bg-[#C9A84C]/20 border border-[#C9A84C]/50 animate-pulse">
                     <div className="flex items-center justify-center gap-3">
                       <Sparkles className="h-12 w-12 text-[#C9A84C]" />
                       <div className="text-3xl font-bold text-[#C9A84C]">
@@ -1029,7 +1029,7 @@ function DemoLiveActivation() {
                   return (
                     <div
                       key={task.id}
-                      className={`p-4 rounded-lg border transition-all ${
+                      className={`p-4 border transition-all ${
                         isExecuted 
                           ? getColor() + ' opacity-100 animate-in slide-in-from-left'
                           : 'bg-gray-50 border-slate-600/30 opacity-40'
@@ -1090,7 +1090,7 @@ function DemoLiveActivation() {
                 {acknowledgments.map((ack, index) => (
                   <div
                     key={`${ack.id}-${ack.acknowledgedAt}-${index}`}
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-slate-600 animate-in slide-in-from-right"
+                    className="flex items-center justify-between p-4 bg-gray-50 border border-slate-600 animate-in slide-in-from-right"
                     data-testid={`ack-item-${index}`}
                   >
                     <div className="flex items-center gap-4 flex-1">

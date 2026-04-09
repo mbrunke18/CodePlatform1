@@ -172,7 +172,7 @@ export default function CreateScenarioModal({ open, onOpenChange }: CreateScenar
               >
                 {createScenarioMutation.isPending ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2"></div>
+                    <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent animate-spin mr-2"></div>
                     Creating...
                   </>
                 ) : (

@@ -349,7 +349,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
           <Card className={`${verdictConfig.border} ${verdictConfig.bg} border-2`}>
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
-                <div className={`p-3 rounded-xl ${verdictConfig.bg}`}>
+                <div className={`p-3 ${verdictConfig.bg}`}>
                   <VerdictIcon className={`h-8 w-8 ${verdictConfig.iconColor}`} />
                 </div>
                 <div>
@@ -379,7 +379,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <div className="w-32 text-sm font-medium text-[#6B7280] dark:text-[#E8E4DC] text-right flex-shrink-0">Current Playbook</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <div className="flex-1 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-full h-8 flex items-center px-4">
+                      <div className="flex-1 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 h-8 flex items-center px-4">
                         <span className="text-sm font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.original_time}</span>
                       </div>
                       <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />
@@ -390,7 +390,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   <div className="w-32 text-sm font-medium text-[#6B7280] dark:text-[#E8E4DC] text-right flex-shrink-0">With This Change</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <div className={`flex-1 ${isNotRecommended ? 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30' : isConditional ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20' : 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20'} rounded-full h-8 flex items-center px-4`}>
+                      <div className={`flex-1 ${isNotRecommended ? 'bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30' : isConditional ? 'bg-[#C9A84C]/10 dark:bg-[#C9A84C]/20' : 'bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20'} h-8 flex items-center px-4`}>
                         <span className={`text-sm font-bold ${isNotRecommended ? 'text-[#0A0F2E]' : isConditional ? 'text-[#C9A84C]' : 'text-[#2B8A6E]'}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>{result.modified_time}</span>
                       </div>
                       {isNotRecommended ? <TrendingDown className="h-5 w-5 text-[#0A0F2E] flex-shrink-0" /> : isConditional ? <AlertTriangle className="h-5 w-5 text-[#C9A84C] flex-shrink-0" /> : <TrendingUp className="h-5 w-5 text-[#2B8A6E] flex-shrink-0" />}
@@ -438,7 +438,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <CardContent>
               <div className="grid sm:grid-cols-3 gap-4 pt-4">
                 <div className="flex gap-3 items-start">
-                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg flex-shrink-0">
+                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 flex-shrink-0">
                     <Target className="h-4 w-4 text-[#2B8A6E]" />
                   </div>
                   <div>
@@ -447,7 +447,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
-                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg flex-shrink-0">
+                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 flex-shrink-0">
                     <Users className="h-4 w-4 text-[#2B8A6E]" />
                   </div>
                   <div>
@@ -456,7 +456,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
-                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg flex-shrink-0">
+                  <div className="p-2 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 flex-shrink-0">
                     <ArrowRight className="h-4 w-4 text-[#2B8A6E]" />
                   </div>
                   <div>
@@ -859,9 +859,9 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               )}
               <button
                 onClick={() => { if (isComplete) setWizardStep(step); }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
-                  isActive ? 'bg-[#0A0F2E] text-white shadow-md' :
-                  isComplete ? 'bg-[#2B8A6E] text-white border-[#2B8A6E] shadow-sm' :
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-all ${
+                  isActive ? 'bg-[#0A0F2E] text-white' :
+                  isComplete ? 'bg-[#2B8A6E] text-white border-[#2B8A6E]' :
                   'bg-slate-100 text-gray-800 dark:bg-[#141B45] dark:text-slate-500'
                 }`}
               >
@@ -902,7 +902,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     <button
                       key={key}
                       onClick={() => loadTemplate(key)}
-                      className={`p-3 rounded-lg border-2 text-left transition-all hover:shadow-md ${isActive ? borderMap[color] : 'border-transparent bg-slate-50 dark:bg-[#141B45] hover:border-slate-300 dark:hover:border-slate-600'}`}
+                      className={`p-3 border-2 text-left transition-all ${isActive ? borderMap[color] : 'border-transparent bg-slate-50 dark:bg-[#141B45] hover:border-slate-300 dark:hover:border-slate-600'}`}
                     >
                       <div className={`p-1.5 ${iconBg[color]} rounded-md inline-block mb-1.5`}>
                         <Icon className={`h-4 w-4 ${iconColor[color]}`} />
@@ -1018,7 +1018,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                               <button
                                 key={variable.id}
                                 onClick={() => handleSelectVariable(variable.id)}
-                                className={`flex items-center gap-3 p-3 rounded-lg border ${colors.border} ${colors.bg} text-left transition-all hover:shadow-md hover:scale-[1.01]`}
+                                className={`flex items-center gap-3 p-3 border ${colors.border} ${colors.bg} text-left transition-all hover:scale-[1.01]`}
                               >
                                 <div className="flex-1 min-w-0">
                                   <div className="text-sm font-medium text-slate-800 dark:text-white">{variable.label}</div>
@@ -1048,7 +1048,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               )}
 
               {selectedVariableId && selectedVariable && (
-                <div className="p-4 bg-navy-50 dark:bg-navy-900/10 rounded-lg space-y-4 border border-navy-200 dark:border-navy-800">
+                <div className="p-4 bg-navy-50 dark:bg-navy-900/10 space-y-4 border border-navy-200 dark:border-navy-800">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-sm font-bold text-slate-800 dark:text-white">{selectedVariable.label}</div>
@@ -1110,7 +1110,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               )}
 
               {showCustomVariable && (
-                <div className="p-4 bg-slate-50 dark:bg-[#141B45]/50 rounded-lg space-y-3 border border-dashed border-slate-300 dark:border-slate-600">
+                <div className="p-4 bg-slate-50 dark:bg-[#141B45]/50 space-y-3 border border-dashed border-slate-300 dark:border-slate-600">
                   <div className="flex items-center justify-between mb-1">
                     <Label className="text-sm font-semibold">Custom Variable</Label>
                     <Button variant="ghost" size="sm" onClick={() => setShowCustomVariable(false)}>
@@ -1191,7 +1191,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       environmental: 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300',
                     };
                     return (
-                      <div key={condition.id} className="flex items-center justify-between p-3 bg-navy-50 dark:bg-navy-900/20 rounded-lg border border-navy-200 dark:border-navy-800">
+                      <div key={condition.id} className="flex items-center justify-between p-3 bg-navy-50 dark:bg-navy-900/20 border border-navy-200 dark:border-navy-800">
                         <div className="text-sm flex-1">
                           <Badge className={`mb-1 text-[10px] border-0 ${catBadgeColors[condition.category] || ''}`}>{condition.category}</Badge>
                           <div className="text-slate-800 dark:text-white">
@@ -1275,9 +1275,9 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                         <button
                           key={dept}
                           onClick={() => toggleDepartment(dept)}
-                          className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
+                          className={`px-2.5 py-1 text-xs font-medium transition-all ${
                             isSelected
-                              ? 'bg-[#0A0F2E] text-white shadow-sm'
+                              ? 'bg-[#0A0F2E] text-white'
                               : 'bg-slate-100 dark:bg-[#141B45] text-gray-800 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-[#141B45]'
                           }`}
                         >
@@ -1318,7 +1318,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <button
                         key={preset.name}
                         onClick={() => addPresetResource(preset)}
-                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-900/20 text-[#C9A84C] dark:text-amber-300 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all"
+                        className="flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-amber-50 dark:bg-amber-900/20 text-[#C9A84C] dark:text-amber-300 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all"
                       >
                         <Plus className="h-3 w-3" /> {preset.name}
                       </button>
@@ -1361,7 +1361,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <button
                         key={preset.name}
                         onClick={() => addPresetStakeholder(preset)}
-                        className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-navy-50 dark:bg-navy-900/20 text-[#2B8A6E] dark:text-navy-300 border border-navy-200 dark:border-navy-800 hover:bg-navy-100 dark:hover:bg-navy-900/40 transition-all"
+                        className="flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-navy-50 dark:bg-navy-900/20 text-[#2B8A6E] dark:text-navy-300 border border-navy-200 dark:border-navy-800 hover:bg-navy-100 dark:hover:bg-navy-900/40 transition-all"
                       >
                         <Plus className="h-3 w-3" /> {preset.name}
                       </button>
@@ -1412,7 +1412,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
           <Card className={`${impactConfig.border} ${impactConfig.bg} border-2`}>
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <div className={`p-3 rounded-xl ${impactConfig.bg} flex-shrink-0`}>
+                <div className={`p-3 ${impactConfig.bg} flex-shrink-0`}>
                   <ImpactIcon className={`h-7 w-7 ${impactConfig.iconColor}`} />
                 </div>
                 <div className="flex-1">
@@ -1448,8 +1448,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <span className="text-sm font-medium text-teal-600">With Readiness OS</span>
                       <span className="text-sm font-bold text-teal-600">{analysisResult.decisionVelocityMetrics.ourTime} min</span>
                     </div>
-                    <div className="w-full bg-slate-100 dark:bg-[#141B45] rounded-full h-3">
-                      <div className="bg-teal-500 h-3 rounded-full" style={{ width: `${Math.max(5, (analysisResult.decisionVelocityMetrics.ourTime / analysisResult.decisionVelocityMetrics.industryAverage) * 100)}%` }} />
+                    <div className="w-full bg-slate-100 dark:bg-[#141B45] h-3">
+                      <div className="bg-teal-500 h-3" style={{ width: `${Math.max(5, (analysisResult.decisionVelocityMetrics.ourTime / analysisResult.decisionVelocityMetrics.industryAverage) * 100)}%` }} />
                     </div>
                   </div>
                   <div>
@@ -1457,11 +1457,11 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                       <span className="text-sm font-medium text-gray-800">Industry Average</span>
                       <span className="text-sm font-bold text-gray-800">{industryHrs} hours</span>
                     </div>
-                    <div className="w-full bg-slate-100 dark:bg-[#141B45] rounded-full h-3">
-                      <div className="bg-slate-300 dark:bg-[#6B7280] h-3 rounded-full w-full" />
+                    <div className="w-full bg-slate-100 dark:bg-[#141B45] h-3">
+                      <div className="bg-slate-300 dark:bg-[#6B7280] h-3 w-full" />
                     </div>
                   </div>
-                  <div className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-3 text-center">
+                  <div className="bg-teal-50 dark:bg-teal-900/20 p-3 text-center">
                     <span className="text-2xl font-bold text-teal-600">{analysisResult.decisionVelocityMetrics.percentageFaster}%</span>
                     <span className="text-sm text-teal-600 ml-1">faster response</span>
                   </div>
@@ -1480,9 +1480,9 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
               <CardContent>
                 <div className="space-y-2">
                   {analysisResult.triggeredAlerts.map(alert => (
-                    <div key={alert.id} className="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-[#141B45] rounded-lg">
+                    <div key={alert.id} className="flex items-center justify-between p-2.5 bg-slate-50 dark:bg-[#141B45]">
                       <div className="flex items-center gap-2.5">
-                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${alert.severity === 'high' ? 'bg-red-500' : alert.severity === 'medium' ? 'bg-amber-500' : 'bg-[#2B8A6E]'}`} />
+                        <div className={`w-2 h-2 flex-shrink-0 ${alert.severity === 'high' ? 'bg-red-500' : alert.severity === 'medium' ? 'bg-amber-500' : 'bg-[#2B8A6E]'}`} />
                         <span className="font-medium text-sm text-slate-700 dark:text-slate-200">{alert.name}</span>
                       </div>
                       <Badge variant={alert.severity === 'high' ? 'destructive' : 'secondary'} className="text-[10px]">{alert.severity}</Badge>
@@ -1506,8 +1506,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Playbooks That Activate</div>
                 <div className="space-y-2">
                   {analysisResult.recommendedPlaybooks.map((playbook, idx) => (
-                    <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-[#141B45] rounded-lg border border-teal-100 dark:border-teal-900/30">
-                      <div className="w-7 h-7 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center flex-shrink-0">
+                    <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-[#141B45] border border-teal-100 dark:border-teal-900/30">
+                      <div className="w-7 h-7 bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center flex-shrink-0">
                         <span className="text-xs font-bold text-teal-600">{idx + 1}</span>
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1533,7 +1533,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Teams Mobilized Simultaneously</div>
                 <div className="flex flex-wrap gap-2">
                   {analysisResult.teamsInvolved.map((team, idx) => (
-                    <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-[#141B45] rounded-full border border-slate-200 dark:border-slate-700">
+                    <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-[#141B45] border border-slate-200 dark:border-slate-700">
                       <Users className="h-3 w-3 text-[#C9A84C]" />
                       <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{team.name}</span>
                     </div>
@@ -1556,7 +1556,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     return (
                       <div key={i} className="relative text-center">
                         {i > 0 && <div className="absolute left-0 top-5 -translate-x-1/2 w-full h-px bg-teal-200 dark:bg-teal-800 hidden sm:block" style={{ left: '-50%', width: '100%' }} />}
-                        <div className="relative z-10 w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mx-auto mb-2">
+                        <div className="relative z-10 w-10 h-10 bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center mx-auto mb-2">
                           <StepIcon className="h-5 w-5 text-teal-600" />
                         </div>
                         <div className="text-xs font-bold text-teal-600 mb-0.5">{step.time}</div>
@@ -1579,8 +1579,8 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 </div>
                 <Badge variant="outline" className="text-[#2B8A6E]">{analysisResult.confidenceLevel}%</Badge>
               </div>
-              <div className="w-full bg-slate-200 dark:bg-[#141B45] rounded-full h-2">
-                <div className="bg-[#0A0F2E] h-2 rounded-full transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
+              <div className="w-full bg-slate-200 dark:bg-[#141B45] h-2">
+                <div className="bg-[#0A0F2E] h-2 transition-all" style={{ width: `${analysisResult.confidenceLevel}%` }} />
               </div>
               <p className="text-xs text-gray-700 mt-1.5">
                 {analysisResult.confidenceLevel < 60
@@ -1644,7 +1644,7 @@ export default function WhatIfAnalyzer() {
             <>
               <div className="text-center max-w-3xl mx-auto">
                 <div className="flex items-center justify-center gap-3 mb-3">
-                  <div className="p-2.5 bg-gradient-to-br from-gold-500 to-navy-600 rounded-xl">
+                  <div className="p-2.5 bg-gradient-to-br from-gold-500 to-navy-600">
                     <FlaskConical className="h-7 w-7 text-gray-900" />
                   </div>
                   <div>
@@ -1665,10 +1665,10 @@ export default function WhatIfAnalyzer() {
               <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <button
                   onClick={() => setViewMode('quick')}
-                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-[#141B45]/50 hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-xl transition-all duration-200"
+                  className="group text-left p-6 border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-[#141B45]/50 hover:border-navy-400 dark:hover:border-navy-500 transition-all duration-200"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2.5 bg-navy-100 dark:bg-navy-900/30 rounded-xl group-hover:bg-navy-200 dark:group-hover:bg-navy-900/50 transition-colors">
+                    <div className="p-2.5 bg-navy-100 dark:bg-navy-900/30 group-hover:bg-navy-200 dark:group-hover:bg-navy-900/50 transition-colors">
                       <Sparkles className="h-6 w-6 text-[#2B8A6E]" />
                     </div>
                     <div>
@@ -1701,10 +1701,10 @@ export default function WhatIfAnalyzer() {
 
                 <button
                   onClick={() => setViewMode('builder')}
-                  className="group text-left p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-[#141B45]/50 hover:border-gold-400 dark:hover:border-gold-500 hover:shadow-xl transition-all duration-200"
+                  className="group text-left p-6 border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-[#141B45]/50 hover:border-gold-400 dark:hover:border-gold-500 transition-all duration-200"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2.5 bg-gold-100 dark:bg-gold-900/30 rounded-xl group-hover:bg-gold-200 dark:group-hover:bg-gold-900/50 transition-colors">
+                    <div className="p-2.5 bg-gold-100 dark:bg-gold-900/30 group-hover:bg-gold-200 dark:group-hover:bg-gold-900/50 transition-colors">
                       <Layers className="h-6 w-6 text-[#C9A84C]" />
                     </div>
                     <div>
@@ -1743,7 +1743,7 @@ export default function WhatIfAnalyzer() {
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {savedScenarios.slice(0, 6).map((scenario: any) => (
-                      <Card key={scenario.id} className="hover:shadow-md transition-shadow">
+                      <Card key={scenario.id} className="hover:shadow-md ">
                         <CardContent className="p-4">
                           <div className="font-medium text-sm text-slate-800 dark:text-white mb-1">{scenario.name}</div>
                           <div className="text-xs text-gray-700 line-clamp-2 mb-2">{scenario.description}</div>

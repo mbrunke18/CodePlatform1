@@ -103,7 +103,7 @@ export default function StrategicInsightsPanel() {
               return (
                 <div 
                   key={insight.id} 
-                  className={`p-3 rounded-lg border ${getInsightColor(insight.insightType)}`}
+                  className={`p-3 border ${getInsightColor(insight.insightType)}`}
                   data-testid={`insight-${insight.insightType.replace(/\s+/g, '-').toLowerCase()}`}
                 >
                   <div className="flex items-start justify-between mb-2">

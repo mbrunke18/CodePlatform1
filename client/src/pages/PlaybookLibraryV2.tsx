@@ -201,7 +201,7 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "critical") {
     return (
       <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(10, 15, 46, 0.12)", color: "#0A0F2E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
-        <span className="w-2 h-2 rounded-full bg-[#0A0F2E] animate-pulse" />
+        <span className="w-2 h-2 bg-[#0A0F2E] animate-pulse" />
         Critical
       </span>
     );
@@ -209,14 +209,14 @@ function UrgencyBadge({ urgency }: { urgency: string }) {
   if (urgency === "high") {
     return (
       <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(201,168,76,0.12)", color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
-        <span className="w-2 h-2 rounded-full" style={{ background: "#C9A84C" }} />
+        <span className="w-2 h-2" style={{ background: "#C9A84C" }} />
         High
       </span>
     );
   }
   return (
     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "rgba(43,138,110,0.12)", color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "3px 10px", borderRadius: "4px" }}>
-      <span className="w-2 h-2 rounded-full" style={{ background: "#2B8A6E" }} />
+      <span className="w-2 h-2" style={{ background: "#2B8A6E" }} />
       Standard
     </span>
   );
@@ -226,7 +226,7 @@ function CompoundDisruptionSection() {
   const [expandedScenario, setExpandedScenario] = useState<number | null>(null);
 
   return (
-    <div className="mt-12 border rounded-xl overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
+    <div className="mt-12 border overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
       <div className="px-6 py-4 flex items-center gap-3 border-b" style={{ background: "white", borderColor: "#E8E4DC" }}>
         <Zap className="h-4 w-4" style={{ color: "#C9A84C" }} />
         <span className="text-sm font-bold uppercase tracking-wide" style={{ color: "#0A0F2E" }}>Compound Disruption Response</span>
@@ -275,9 +275,9 @@ function CompoundDisruptionSection() {
           const indicatorColor = isOffense ? "#2B8A6E" : isDefense ? "#0A0F2E" : "#C9A84C";
           const CG_LOCAL = { fontFamily: "'Cormorant Garamond', serif" };
           return (
-            <div className="mt-5 rounded-xl border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: "#E8E4DC" }}>
+            <div className="mt-5 border bg-[#F8F7F4]/50 p-6 animate-in fade-in slide-in-from-top-2 duration-300" style={{ borderColor: "#E8E4DC" }}>
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-white border flex items-center justify-center shrink-0" style={{ borderColor: "#E8E4DC" }}>
+                <div className="w-10 h-10 bg-white border flex items-center justify-center shrink-0" style={{ borderColor: "#E8E4DC" }}>
                   <Icon className="h-5 w-5" style={{ color: indicatorColor }} />
                 </div>
                 <div className="flex-1">
@@ -286,7 +286,7 @@ function CompoundDisruptionSection() {
                 </div>
               </div>
 
-                  <div className="bg-white rounded-lg p-4 mb-5 border" style={{ borderColor: "#E8E4DC" }}>
+                  <div className="bg-white p-4 mb-5 border" style={{ borderColor: "#E8E4DC" }}>
                     <div style={{ color: "#6B7280" }} className="text-xs font-semibold uppercase tracking-wider mb-1">Trigger Example</div>
                     <p style={{ color: "#0A0F2E" }} className="text-sm font-medium">{scenario.triggerExample}</p>
                   </div>
@@ -303,7 +303,7 @@ function CompoundDisruptionSection() {
                           const pbIsDefense = pb.domain.includes("Crisis") || pb.domain.includes("Regulatory") || pb.domain.includes("Cyber") || pb.domain.includes("Compliance") || pb.domain.includes("Technology") || pb.domain.includes("Talent");
                           const pbIndicatorColor = pbIsOffense ? "#2B8A6E" : pbIsDefense ? "#0A0F2E" : "#C9A84C";
                           return (
-                            <div key={j} className="flex items-center justify-between bg-white rounded-lg px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
+                            <div key={j} className="flex items-center justify-between bg-white px-3 py-2 border" style={{ borderColor: "#E8E4DC" }}>
                               <div className="flex-1">
                                 <div style={{ color: "#0A0F2E" }} className="text-sm font-medium">{pb.name}</div>
                                 <div style={{ color: "#6B7280" }} className="text-xs">{pb.domain}</div>
@@ -321,10 +321,10 @@ function CompoundDisruptionSection() {
                         12-Minute Execution Timeline
                       </h5>
                       <div className="space-y-0 relative">
-                        <div className="absolute left-[7px] top-3 bottom-3 w-0.5 rounded-full" style={{ background: `linear-gradient(to bottom, #2B8A6E, rgba(43,138,110,0.1))` }} />
+                        <div className="absolute left-[7px] top-3 bottom-3 w-0.5" style={{ background: `linear-gradient(to bottom, #2B8A6E, rgba(43,138,110,0.1))` }} />
                         {scenario.timeline.map((step, j) => (
                           <div key={j} className="flex items-start gap-3 py-1.5 relative">
-                            <div className={`w-4 h-4 rounded-full shrink-0 z-10`} style={{ background: j === 0 ? "#2B8A6E" : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
+                            <div className={`w-4 h-4 shrink-0 z-10`} style={{ background: j === 0 ? "#2B8A6E" : `rgba(43,138,110, ${0.7 - (j * 0.1)})` }} />
                             <div className="flex-1 min-w-0">
                               <span style={{ color: "#2B8A6E" }} className="text-xs font-bold mr-2">{step.time}</span>
                               <span style={{ color: "#6B7280" }} className="text-xs">{step.action}</span>
@@ -340,14 +340,14 @@ function CompoundDisruptionSection() {
                         </h5>
                         <div className="flex flex-wrap gap-1.5">
                           {scenario.stakeholders.map((s, j) => (
-                            <span key={j} style={{ background: "white", color: "#0A0F2E", borderColor: "#E8E4DC" }} className="px-2.5 py-1 rounded-full text-xs font-medium border">{s}</span>
+                            <span key={j} style={{ background: "white", color: "#0A0F2E", borderColor: "#E8E4DC" }} className="px-2.5 py-1 text-xs font-medium border">{s}</span>
                           ))}
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border rounded-lg p-4 flex items-center gap-3">
+                  <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border p-4 flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 shrink-0" style={{ color: "#2B8A6E" }} />
                     <p style={{ color: "#0A0F2E" }} className="text-sm">
                       All {scenario.playbookCount} playbooks activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
@@ -466,7 +466,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   <button
                     key={p.id}
                     onClick={() => { setActivePillar(p.id); if (p.id !== "all") setActiveDomain("all"); }}
-                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg transition-all text-left"
+                    className="w-full flex items-center gap-2.5 px-3 py-2 transition-all text-left"
                     style={{
                       background: isActive ? `${p.color}14` : "transparent",
                       border: isActive ? `1px solid ${p.color}40` : "1px solid transparent",
@@ -482,26 +482,30 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               })}
             </div>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 12, paddingLeft: 4 }}>Domains</div>
-            <nav className="space-y-0.5">
+            <nav>
               {DOMAINS.map((domain) => {
-                const Icon = domain.icon;
                 const isActive = activeDomain === domain.id;
                 return (
                   <button
                     key={domain.id}
                     onClick={() => setActiveDomain(domain.id)}
-                    className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all"
+                    className="w-full transition-all"
                     style={{
-                      background: isActive ? "rgba(10, 15, 46, 0.08)" : "transparent",
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                      padding: "9px 0 9px 10px",
+                      background: "transparent",
+                      borderTop: "none", borderRight: "none", borderBottom: "none",
+                      borderLeft: isActive ? `2px solid ${GOLD}` : "2px solid transparent",
                       color: isActive ? NAVY : MUTED,
-                      fontSize: 11, fontWeight: isActive ? 700 : 500, textAlign: "left",
-                      textTransform: "uppercase", letterSpacing: "0.1em"
+                      fontSize: 10, fontWeight: isActive ? 700 : 500, textAlign: "left",
+                      textTransform: "uppercase", letterSpacing: "0.1em",
+                      fontFamily: "'Barlow Condensed', sans-serif",
+                      cursor: "pointer",
+                      width: "100%",
                     }}
                   >
-                    <div className="flex items-center gap-3">
-                      {Icon && <Icon className="h-3.5 w-3.5" style={{ color: isActive ? GOLD : MUTED }} />}
-                      <span>{domain.label}</span>
-                    </div>
+                    <span style={{ flex: 1 }}>{domain.label}</span>
+                    {domain.count && <span style={{ fontSize: 9, color: isActive ? GOLD : "rgba(107,114,128,0.5)", fontWeight: 700 }}>{domain.count}</span>}
                   </button>
                 );
               })}
@@ -510,36 +514,42 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         </aside>
 
         <main className="flex-1 min-w-0">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b" style={{ borderColor: BORDER }}>
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
-              <Input 
-                className="pl-10 border-[#E8E4DC] focus:border-[#C9A84C] focus:ring-[#C9A84C]" 
-                placeholder="Search templates..." 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-[#6B7280] uppercase tracking-widest mr-2">Filter:</span>
+          {/* Filter bar — editorial horizontal nav */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${BORDER}`, marginBottom: 28, gap: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
               {URGENCY_FILTERS.map((f) => (
                 <button
                   key={f.id}
                   onClick={() => setActiveUrgency(f.id)}
                   style={{
-                    padding: "4px 10px",
-                    fontSize: 10,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    background: activeUrgency === f.id ? "#0A0F2E" : "transparent",
-                    color: activeUrgency === f.id ? "white" : MUTED,
-                    border: `1px solid ${activeUrgency === f.id ? "#0A0F2E" : BORDER}`,
-                    borderRadius: 4
+                    padding: "10px 18px 9px",
+                    fontSize: 10, fontWeight: 700,
+                    textTransform: "uppercase", letterSpacing: "0.15em",
+                    background: "transparent",
+                    border: "none",
+                    borderBottom: activeUrgency === f.id ? `2px solid ${GOLD}` : "2px solid transparent",
+                    color: activeUrgency === f.id ? NAVY : MUTED,
+                    cursor: "pointer", marginBottom: -1,
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    transition: "all 0.15s",
                   }}
                 >
                   {f.label}
                 </button>
               ))}
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, paddingBottom: 4 }}>
+              <Search style={{ width: 13, height: 13, color: MUTED, flexShrink: 0 }} />
+              <input
+                style={{
+                  background: "transparent", border: "none", borderBottom: `1px solid ${BORDER}`,
+                  padding: "4px 0", fontSize: 12, color: NAVY, width: 200,
+                  fontFamily: "'Barlow Condensed', sans-serif", outline: "none",
+                }}
+                placeholder="Search playbooks…"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
           </div>
 
@@ -608,26 +618,16 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               return (
               <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5 flex flex-col flex-1">
-                  {/* Header: tier label + urgency badge */}
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center gap-2">
-                      {isSample ? (
-                        <>
-                          <Eye className="h-3 w-3 text-[#2B8A6E]" />
-                          <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Free Sample</span>
-                        </>
-                      ) : (
-                        <>
-                          <Check className="h-3 w-3 text-[#2B8A6E]" />
-                          <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Enterprise Tier</span>
-                        </>
-                      )}
-                    </div>
+                  {/* Name — serif, leads the card */}
+                  <h3 style={{ ...CG, color: "#0A0F2E", fontSize: 18, fontWeight: 700, lineHeight: 1.25, marginBottom: 6 }} className="group-hover:text-[#C9A84C] transition-colors">{playbook.name}</h3>
+
+                  {/* Tier + urgency — minimal, after the name */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span style={{ color: isSample ? "#2B8A6E" : "#9CA3AF", fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                      {isSample ? "Preview Available" : "Enterprise Tier"}
+                    </span>
                     <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
                   </div>
-
-                  {/* Name */}
-                  <h3 style={{ ...CG, color: "#0A0F2E" }} className="text-base font-bold mb-1.5 group-hover:text-[#C9A84C] transition-colors leading-snug">{playbook.name}</h3>
 
                   {/* Description */}
                   <p style={{ color: "#6B7280" }} className="text-xs line-clamp-2 mb-3 leading-relaxed">
@@ -643,36 +643,20 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     </div>
                   )}
 
-                  {/* Depth stats row */}
-                  <div className="flex items-center gap-2 mb-3 flex-wrap">
-                    <span style={{ display: "flex", alignItems: "center", gap: 4, background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "2px 8px", fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
-                      <Zap className="h-2.5 w-2.5 text-[#C9A84C]" />
-                      {playbook.phaseCount || 4} Phases
-                    </span>
-                    {playbook.signalSourceCount > 0 && (
-                      <span style={{ display: "flex", alignItems: "center", gap: 4, background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "2px 8px", fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
-                        <Radio className="h-2.5 w-2.5 text-[#2B8A6E]" />
-                        {playbook.signalSourceCount} Live Sources
+                  {/* Depth stats — plain text separators, no icon boxes */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 12, borderTop: "1px solid #F0EDE4", borderBottom: "1px solid #F0EDE4", padding: "7px 0" }}>
+                    {[
+                      `${playbook.phaseCount || 4} Phases`,
+                      playbook.signalSourceCount > 0 ? `${playbook.signalSourceCount} Live Sources` : null,
+                      playbook.stakeholderCount > 0 ? `${playbook.stakeholderCount} Stakeholders` : null,
+                      playbook.preApprovedBudget && playbook.preApprovedBudget > 0 ? `$${Number(playbook.preApprovedBudget).toLocaleString()} pre-approved` : null,
+                    ].filter(Boolean).map((stat, i) => (
+                      <span key={i} style={{ display: "flex", alignItems: "center", gap: 0 }}>
+                        {i > 0 && <span style={{ color: "#D1D5DB", margin: "0 8px", fontSize: 10 }}>·</span>}
+                        <span style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>{stat}</span>
                       </span>
-                    )}
-                    {playbook.stakeholderCount > 0 && (
-                      <span style={{ display: "flex", alignItems: "center", gap: 4, background: "#F8F7F4", border: "1px solid #E8E4DC", padding: "2px 8px", fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
-                        <Users className="h-2.5 w-2.5 text-[#6B7280]" />
-                        {playbook.stakeholderCount} Stakeholders
-                      </span>
-                    )}
+                    ))}
                   </div>
-
-                  {/* Pre-approved budget if available */}
-                  {playbook.preApprovedBudget && playbook.preApprovedBudget > 0 && (
-                    <div className="flex items-center gap-1.5 mb-3">
-                      <Wallet className="h-3 w-3 text-[#C9A84C]" />
-                      <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280" }}>Pre-Approved Budget:</span>
-                      <span style={{ fontSize: 10, fontWeight: 700, color: "#0A0F2E" }}>
-                        ${Number(playbook.preApprovedBudget).toLocaleString()}
-                      </span>
-                    </div>
-                  )}
 
                   {/* Domain + Actions */}
                   <div className="flex items-center justify-between pt-3 mt-auto border-t" style={{ borderColor: "#F8F7F4" }}>
@@ -724,5 +708,5 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 }
 
 function Card({ children, className, style }: { children: React.ReactNode, className?: string, style?: React.CSSProperties }) {
-  return <div className={`border rounded-xl overflow-hidden ${className}`} style={style}>{children}</div>;
+  return <div className={`border overflow-hidden ${className}`} style={{ borderRadius: 0, ...style }}>{children}</div>;
 }

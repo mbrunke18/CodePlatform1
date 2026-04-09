@@ -231,7 +231,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
 
         {/* Performance Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
+          <Card className="border border-[#E8E4DC] bg-white">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -247,7 +247,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
+          <Card className="border border-[#E8E4DC] bg-white">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -263,7 +263,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
+          <Card className="border border-[#E8E4DC] bg-white">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -279,7 +279,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             </CardContent>
           </Card>
 
-          <Card className="border border-[#E8E4DC] bg-white shadow-sm">
+          <Card className="border border-[#E8E4DC] bg-white">
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -417,7 +417,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
               upcomingDrills.map((drill: any) => {
                 const playbook = playbooks.find((p: any) => p.id === drill.playbookId);
                 return (
-                  <Card key={drill.id} className="border border-[#E8E4DC] bg-white hover:shadow-md transition-all" data-testid={`card-drill-${drill.id}`}>
+                  <Card key={drill.id} className="border border-[#E8E4DC] bg-white transition-all" data-testid={`card-drill-${drill.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
@@ -533,7 +533,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                 const performance = performances.find((p: any) => p.drillId === drill.id);
                 
                 return (
-                  <Card key={drill.id} className="border border-[#E8E4DC] bg-white hover:shadow-sm transition-all" data-testid={`card-completed-drill-${drill.id}`}>
+                  <Card key={drill.id} className="border border-[#E8E4DC] bg-white transition-all" data-testid={`card-completed-drill-${drill.id}`}>
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
@@ -699,7 +699,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   ].map((item) => (
                     <div
                       key={item.team}
-                      className="flex items-center justify-between p-4 rounded-lg border bg-card hover:bg-muted/50 transition-colors"
+                      className="flex items-center justify-between p-4 border bg-card hover:bg-muted/50 transition-colors"
                     >
                       <div className="flex-1">
                         <div className="font-medium">{item.team}</div>

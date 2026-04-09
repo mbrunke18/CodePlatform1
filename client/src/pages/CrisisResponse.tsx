@@ -48,7 +48,7 @@ export default function CrisisResponse() {
               </div>
               <div className="text-right hidden md:block">
                 <div className="flex items-center gap-2 mb-2 justify-end">
-                  <div className="w-2 h-2 bg-[#3BAF8A] rounded-full animate-pulse"></div>
+                  <div className="w-2 h-2 bg-[#3BAF8A] animate-pulse"></div>
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#3BAF8A" }}>System Operational</span>
                 </div>
                 <div className="text-white/40 text-xs tracking-widest uppercase">24/7 Monitoring Active</div>

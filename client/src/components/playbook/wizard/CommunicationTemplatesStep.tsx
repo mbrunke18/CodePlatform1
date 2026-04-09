@@ -48,7 +48,7 @@ export default function CommunicationTemplatesStep({ data, onChange }: Communica
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h3 className="font-semibold text-sm mb-2">80% Pre-filled Template</h3>
         <p className="text-xs text-muted-foreground">
           Pre-drafted communications with &#123;&#123;variables&#125;&#125; for customization. Fill in your specific details.

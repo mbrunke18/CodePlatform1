@@ -38,22 +38,22 @@ export function FakePlaybookCard({ title, domain, tasks, type, delay = 0, isActi
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay, duration: 0.4 }}
       className={`
-        relative bg-gradient-to-br ${color.bg} ${color.border} border rounded-xl p-4
-        ${isActive ? "ring-2 ring-[#D4AF37] shadow-lg shadow-[#D4AF37]/20" : ""}
+        relative bg-gradient-to-br ${color.bg} ${color.border} border p-4
+        ${isActive ? "ring-2 ring-[#D4AF37] shadow-[#D4AF37]/20" : ""}
       `}
     >
       {isActive && (
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="absolute -top-2 -right-2 w-6 h-6 bg-[#D4AF37] rounded-full flex items-center justify-center"
+          className="absolute -top-2 -right-2 w-6 h-6 bg-[#D4AF37] flex items-center justify-center"
         >
           <span className="text-black text-xs font-bold">✓</span>
         </motion.div>
       )}
       
       <div className="flex items-start gap-3">
-        <div className={`w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center ${color.text}`}>
+        <div className={`w-10 h-10 bg-gray-100 flex items-center justify-center ${color.text}`}>
           <Icon className="w-5 h-5" />
         </div>
         <div className="flex-1 min-w-0">

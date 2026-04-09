@@ -404,12 +404,12 @@ export default function QuickDemoPage() {
                 return (
                   <Card
                     key={scenario.id}
-                    className={`cursor-pointer transition-all hover:shadow-xl hover:scale-[1.02] group border-2 ${scenario.borderColor}`}
+                    className={`cursor-pointer transition-all hover:scale-[1.02] group border-2 ${scenario.borderColor}`}
                     onClick={() => startDemo(scenario)}
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className={`p-3 rounded-xl bg-gradient-to-br ${scenario.color}`}>
+                        <div className={`p-3 bg-gradient-to-br ${scenario.color}`}>
                           <IconComponent className="h-6 w-6 text-gray-900" />
                         </div>
                         <div className="flex-1">
@@ -524,11 +524,11 @@ export default function QuickDemoPage() {
                         return (
                           <div
                             key={msg.id}
-                            className={`p-3 rounded-lg border ${URGENCY_COLORS[msg.urgency]} animate-in slide-in-from-right duration-300`}
+                            className={`p-3 border ${URGENCY_COLORS[msg.urgency]} animate-in slide-in-from-right duration-300`}
                             style={{ animationDelay: `${index * 50}ms` }}
                           >
                             <div className="flex items-start gap-3">
-                              <div className="p-2 bg-background/50 rounded-lg">
+                              <div className="p-2 bg-background/50">
                                 <IconComponent className="h-4 w-4" />
                               </div>
                               <div className="flex-1 min-w-0">
@@ -558,7 +558,7 @@ export default function QuickDemoPage() {
                   )}
                   {showChaosComplete && (
                     <div className="flex-1 space-y-3">
-                      <div className="p-4 border rounded-lg text-center">
+                      <div className="p-4 border text-center">
                         <p className="text-muted-foreground text-sm mb-1">This is what happens WITHOUT Readiness OS</p>
                         <p className="font-medium">Chaos. Confusion. Costly delays.</p>
                       </div>
@@ -605,7 +605,7 @@ export default function QuickDemoPage() {
                 return (
                   <div
                     key={phase.id}
-                    className={`p-3 rounded-lg border transition-all ${
+                    className={`p-3 border transition-all ${
                       isCurrent
                         ? `${colors.bg} ${colors.border}`
                         : isCompleted
@@ -644,7 +644,7 @@ export default function QuickDemoPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="p-4 bg-[#0A0F2E] dark:bg-[#C9A84C]/10 border border-[#C9A84C] dark:border-[#C9A84C]/30 rounded-lg">
+                      <div className="p-4 bg-[#0A0F2E] dark:bg-[#C9A84C]/10 border border-[#C9A84C] dark:border-[#C9A84C]/30">
                         <h4 className="font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
                         <div className="grid grid-cols-2 gap-3 text-sm">
                           <div className="flex items-center gap-2 text-muted-foreground">
@@ -666,7 +666,7 @@ export default function QuickDemoPage() {
                         </div>
                       </div>
 
-                      <div className="p-4 bg-[#F0F9F6] dark:bg-[#2B8A6E]/10 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 rounded-lg">
+                      <div className="p-4 bg-[#F0F9F6] dark:bg-[#2B8A6E]/10 border border-[#2B8A6E] dark:border-[#2B8A6E]/30">
                         <div className="flex items-center gap-2 text-[#2B8A6E] dark:text-[#2B8A6E] mb-2">
                           <Clock className="h-4 w-4" />
                           <span className="font-medium">Time to Ready: 0 minutes</span>
@@ -676,7 +676,7 @@ export default function QuickDemoPage() {
                         </p>
                       </div>
 
-                      <div className="p-3 bg-muted/50 rounded-lg">
+                      <div className="p-3 bg-muted/50">
                         <p className="text-sm text-muted-foreground">
                           <span className="text-red-500 dark:text-red-400 font-medium">Without Readiness OS:</span> 20-50 hours to coordinate a response team, find documents, and get budget approval.
                         </p>
@@ -702,7 +702,7 @@ export default function QuickDemoPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                      <div className="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 rounded-lg animate-pulse">
+                      <div className="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 animate-pulse">
                         <div className="flex items-center gap-2 text-red-700 dark:text-red-400 mb-2">
                           <AlertTriangle className="h-5 w-5" />
                           <span className="font-medium">Trigger Detected</span>
@@ -720,7 +720,7 @@ export default function QuickDemoPage() {
                         </div>
                       </div>
 
-                      <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/10 border border-[#0A0F2E] dark:border-[#0A0F2E]/30 rounded-lg">
+                      <div className="p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/10 border border-[#0A0F2E] dark:border-[#0A0F2E]/30">
                         <div className="flex items-center gap-2 text-[#0A0F2E] dark:text-[#0A0F2E] mb-2">
                           <Brain className="h-5 w-5" />
                           <span className="font-medium">AI Recommendation</span>
@@ -751,7 +751,7 @@ export default function QuickDemoPage() {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="mb-4 p-4 bg-[#F0F9F6] dark:bg-gradient-to-r dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/20 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 rounded-lg text-center">
+                      <div className="mb-4 p-4 bg-[#F0F9F6] dark:bg-gradient-to-r dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/20 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 text-center">
                         <p className="text-xs text-[#2B8A6E] dark:text-[#2B8A6E] uppercase tracking-wide mb-1">Execution Time</p>
                         <p className="text-4xl font-bold font-mono">
                           {formatTime(executionTimer)}
@@ -765,9 +765,9 @@ export default function QuickDemoPage() {
                           return (
                             <div
                               key={step.id}
-                              className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg border-l-4 border-[#2B8A6E] animate-in slide-in-from-left"
+                              className="flex items-start gap-3 p-3 bg-muted/50 border-l-4 border-[#2B8A6E] animate-in slide-in-from-left"
                             >
-                              <div className="p-2 bg-[#F0F9F6] dark:bg-[#2B8A6E]/20 rounded-lg">
+                              <div className="p-2 bg-[#F0F9F6] dark:bg-[#2B8A6E]/20">
                                 <IconComponent className="h-4 w-4 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                               </div>
                               <div className="flex-1">
@@ -786,7 +786,7 @@ export default function QuickDemoPage() {
 
                         {isExecuting && (
                           <div className="flex items-center justify-center p-4 text-muted-foreground">
-                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-[#2B8A6E] border-t-transparent mr-2" />
+                            <div className="animate-spin h-5 w-5 border-2 border-[#2B8A6E] border-t-transparent mr-2" />
                             Orchestrating response...
                           </div>
                         )}
@@ -819,7 +819,7 @@ export default function QuickDemoPage() {
                         </div>
                       ) : (
                         <div className="space-y-4">
-                          <div className="p-3 bg-[#F0F9F6] dark:bg-[#2B8A6E]/10 border border-[#2B8A6E] dark:border-[#2B8A6E]/30 rounded-lg">
+                          <div className="p-3 bg-[#F0F9F6] dark:bg-[#2B8A6E]/10 border border-[#2B8A6E] dark:border-[#2B8A6E]/30">
                             <div className="flex items-center gap-2 text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">
                               <CheckCircle2 className="h-4 w-4" />
                               <span className="font-medium text-sm">Execution Complete</span>
@@ -853,7 +853,7 @@ export default function QuickDemoPage() {
                   <Card className="border-[#2B8A6E]/50 bg-[#F0F9F6] dark:bg-gradient-to-br dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/50">
                     <CardContent className="p-8 text-center">
                       <div className="mb-6">
-                        <div className="inline-flex p-4 bg-[#F0F9F6] dark:bg-[#2B8A6E]/20 rounded-full mb-4">
+                        <div className="inline-flex p-4 bg-[#F0F9F6] dark:bg-[#2B8A6E]/20 mb-4">
                           <Rocket className="h-10 w-10 text-[#2B8A6E] dark:text-[#2B8A6E]" />
                         </div>
                         <h2 className="text-2xl font-bold mb-2">Demo Complete</h2>
@@ -861,15 +861,15 @@ export default function QuickDemoPage() {
                       </div>
 
                       <div className="grid grid-cols-3 gap-4 mb-6">
-                        <div className="p-4 bg-background/50 rounded-lg">
+                        <div className="p-4 bg-background/50">
                           <p className="text-2xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E]">12 min</p>
                           <p className="text-xs text-muted-foreground">Response Time</p>
                         </div>
-                        <div className="p-4 bg-background/50 rounded-lg">
+                        <div className="p-4 bg-background/50">
                           <p className="text-2xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E]">{formatCurrency(selectedScenario?.dealValue || 0)}</p>
                           <p className="text-xs text-muted-foreground">Value Protected</p>
                         </div>
-                        <div className="p-4 bg-background/50 rounded-lg">
+                        <div className="p-4 bg-background/50">
                           <p className="text-2xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E]">98 days</p>
                           <p className="text-xs text-muted-foreground">Saved (IBM 2024)</p>
                         </div>
@@ -907,7 +907,7 @@ export default function QuickDemoPage() {
                       {currentPhase === 'identify' && (
                         <>
                           <p className="text-muted-foreground">Pre-configured playbooks mean zero setup time when a crisis hits. Tasks, stakeholders, documents, and budgets are already defined.</p>
-                          <div className="p-3 bg-background rounded-lg">
+                          <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Key Differentiator</p>
                             <p className="text-xs text-muted-foreground">170 playbooks across 9 strategic domains. Customize any or build your own.</p>
                           </div>
@@ -916,7 +916,7 @@ export default function QuickDemoPage() {
                       {currentPhase === 'detect' && (
                         <>
                           <p className="text-muted-foreground">AI pattern matching identifies triggers and recommends the right playbook. Human executives make the final call.</p>
-                          <div className="p-3 bg-background rounded-lg">
+                          <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">AI monitors, executives authorize</p>
                             <p className="text-xs text-muted-foreground">AI recommends. Humans decide. Clear decision rights at every step.</p>
                           </div>
@@ -925,7 +925,7 @@ export default function QuickDemoPage() {
                       {currentPhase === 'execute' && (
                         <>
                           <p className="text-muted-foreground">Readiness OS orchestrates across Jira, Slack, Teams, Salesforce, and more. Tasks assigned, war rooms launched, budgets released automatically.</p>
-                          <div className="p-3 bg-background rounded-lg">
+                          <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">12-Minute Execution</p>
                             <p className="text-xs text-muted-foreground">From trigger to coordinated execution across 50-200+ stakeholders.</p>
                           </div>
@@ -934,7 +934,7 @@ export default function QuickDemoPage() {
                       {currentPhase === 'advance' && (
                         <>
                           <p className="text-muted-foreground">Every execution captures learnings that improve future responses. Your institutional knowledge compounds over time.</p>
-                          <div className="p-3 bg-background rounded-lg">
+                          <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Compounding Moat</p>
                             <p className="text-xs text-muted-foreground">Cross-domain pattern detection and outcome benchmarking create a proprietary intelligence layer.</p>
                           </div>
@@ -943,7 +943,7 @@ export default function QuickDemoPage() {
                       {currentPhase === 'complete' && (
                         <>
                           <p className="text-muted-foreground">The full IDEA Framework loop is complete. This same process works across all 9 strategic domains.</p>
-                          <div className="p-3 bg-background rounded-lg">
+                          <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Ready for Your Organization</p>
                             <p className="text-xs text-muted-foreground">Start a pilot to see Readiness OS with your real playbooks and integrations.</p>
                           </div>

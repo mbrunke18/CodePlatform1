@@ -166,7 +166,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45]">
+            <div className="p-2 bg-gradient-to-br from-[#0A0F2E] to-[#141B45]">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -183,7 +183,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex items-center gap-2 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg text-sm">
+        <div className="flex items-center gap-2 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 text-sm">
           <Info className="w-4 h-4 text-white dark:text-[#C9A84C] flex-shrink-0" />
           <span className="text-white dark:text-[#DFC178]">
             Triggers ranked by highest 30-day firing probability. Higher probability = higher priority for review.
@@ -195,10 +195,10 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
           return (
           <div 
             key={forecast.triggerId} 
-            className={`border rounded-lg p-4 transition-all cursor-pointer ${
+            className={`border p-4 transition-all cursor-pointer ${
               isExpanded 
-                ? 'border-[#C9A84C] dark:border-[#C9A84C] shadow-lg ring-2 ring-[#C9A84C] dark:ring-[#C9A84C]' 
-                : 'border-slate-200 dark:border-slate-700 hover:shadow-md hover:border-[#C9A84C] dark:hover:border-[#C9A84C]'
+                ? 'border-[#C9A84C] dark:border-[#C9A84C] ring-2 ring-[#C9A84C] dark:ring-[#C9A84C]' 
+                : 'border-slate-200 dark:border-slate-700 hover:border-[#C9A84C] dark:hover:border-[#C9A84C]'
             }`}
             onClick={() => setExpandedTriggerId(isExpanded ? null : forecast.triggerId)}
             data-testid={`forecast-${forecast.triggerId}`}
@@ -298,7 +298,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
                   </div>
                 </div>
 
-                <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-3">
+                <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-3">
                   <div className="text-xs font-semibold text-white dark:text-[#DFC178] mb-2 flex items-center gap-1">
                     <Target className="w-3 h-3" />
                     Recommended Preparation

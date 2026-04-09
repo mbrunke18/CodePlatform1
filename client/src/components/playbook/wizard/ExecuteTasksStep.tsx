@@ -109,7 +109,7 @@ export default function ExecuteTasksStep({ data, onChange, playbook }: ExecuteTa
 
   return (
     <div className="space-y-6">
-      <div className="bg-orange-50 dark:bg-orange-950 p-4 rounded-lg border border-orange-200 dark:border-orange-800">
+      <div className="bg-orange-50 dark:bg-orange-950 p-4 border border-orange-200 dark:border-orange-800">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">⚡</span> EXECUTE Phase Configuration
         </h3>
@@ -129,7 +129,7 @@ export default function ExecuteTasksStep({ data, onChange, playbook }: ExecuteTa
               onClick={() => setActiveSubPhase(phase.id)}
             >
               <CardContent className="p-3 text-center">
-                <div className={`w-2 h-2 rounded-full ${phase.color} mx-auto mb-2`} />
+                <div className={`w-2 h-2 ${phase.color} mx-auto mb-2`} />
                 <div className="text-xs font-medium">{phase.label}</div>
                 <div className="text-xs text-muted-foreground">{phase.description}</div>
                 <div className="text-lg font-bold mt-1">{stats.count}</div>
@@ -154,13 +154,13 @@ export default function ExecuteTasksStep({ data, onChange, playbook }: ExecuteTa
             {getTasksByPhase(phase.id).map((task, index) => (
               <div
                 key={task.id}
-                className="flex items-start gap-3 p-3 border rounded-lg bg-background"
+                className="flex items-start gap-3 p-3 border bg-background"
                 data-testid={`task-${task.id}`}
               >
                 <div className="flex-shrink-0 pt-1 text-muted-foreground cursor-grab">
                   <GripVertical className="h-4 w-4" />
                 </div>
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
+                <div className="flex-shrink-0 w-6 h-6 bg-muted flex items-center justify-center text-xs font-medium">
                   {index + 1}
                 </div>
                 <div className="flex-1 min-w-0">

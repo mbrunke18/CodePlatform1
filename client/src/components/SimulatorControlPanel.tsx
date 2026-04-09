@@ -31,8 +31,8 @@ export function SimulatorControlPanel() {
             {isRunning ? (
               <>
                 <div className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex h-3 w-3 bg-green-500"></span>
                 </div>
                 <Badge variant="default" className="bg-green-600">ACTIVE</Badge>
                 <Button
@@ -62,7 +62,7 @@ export function SimulatorControlPanel() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-          <div className="p-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <div className="p-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-1">
               <Zap className="h-4 w-4 text-[#2B8A6E]" />
               <div className="text-xs text-muted-foreground">Readiness</div>
@@ -72,7 +72,7 @@ export function SimulatorControlPanel() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <div className="p-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-1">
               <Activity className="h-4 w-4 text-amber-600" />
               <div className="text-xs text-muted-foreground">Weak Signals</div>
@@ -82,7 +82,7 @@ export function SimulatorControlPanel() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <div className="p-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-1">
               <Brain className="h-4 w-4 text-[#C9A84C]" />
               <div className="text-xs text-muted-foreground">Patterns</div>
@@ -92,7 +92,7 @@ export function SimulatorControlPanel() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <div className="p-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-1">
               <Target className="h-4 w-4 text-[#0A0F2E]" />
               <div className="text-xs text-muted-foreground">Scenarios</div>
@@ -102,7 +102,7 @@ export function SimulatorControlPanel() {
             </div>
           </div>
 
-          <div className="p-3 rounded-lg bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+          <div className="p-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
             <div className="flex items-center gap-2 mb-1">
               <TrendingUp className="h-4 w-4 text-green-600" />
               <div className="text-xs text-muted-foreground">Continuous</div>
@@ -135,7 +135,7 @@ export function SimulatorControlPanel() {
         )}
 
         {isRunning && (
-          <div className="mt-4 p-3 rounded-lg bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#E8E4DC] dark:border-[#0A0F2E]">
+          <div className="mt-4 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border border-[#E8E4DC] dark:border-[#0A0F2E]">
             <div className="flex items-start gap-2">
               <Activity className="h-4 w-4 text-[#0A0F2E] mt-0.5" />
               <div className="text-xs text-[#0A0F2E] dark:text-white">

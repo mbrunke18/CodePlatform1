@@ -90,7 +90,7 @@ export default function MarketingLanding() {
               <Button 
                 onClick={() => { window.location.href = '/begin'; }}
                 size="lg"
-                className="bg-[#C9A84C] border border-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
+                className="bg-[#C9A84C] border border-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none transition-all"
                 data-testid="button-try-demo"
               >
                 <Play className="mr-3 h-4 w-4" />
@@ -100,7 +100,7 @@ export default function MarketingLanding() {
               <Button 
                 onClick={() => setLocation("/contact")}
                 size="lg"
-                className="bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none shadow-2xl transition-all"
+                className="bg-transparent border border-white/20 hover:bg-white/10 text-white font-bold uppercase tracking-widest text-sm px-12 py-8 rounded-none transition-all"
                 data-testid="button-start-pilot"
               >
                 Start Pilot Program
@@ -150,7 +150,7 @@ export default function MarketingLanding() {
           </div>
 
           {/* Readiness OS Product Suite */}
-          <Card className="max-w-6xl mx-auto bg-[#F8F7F4] border-[#E8E4DC] rounded-none shadow-sm">
+          <Card className="max-w-6xl mx-auto bg-[#F8F7F4] border-[#E8E4DC] rounded-none">
             <CardContent className="p-10">
               <div className="text-center mb-12">
                 <h3 className="font-serif text-3xl text-[#0A0F2E] mb-3">
@@ -234,7 +234,7 @@ export default function MarketingLanding() {
           {/* Feature Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* 1. Create Playbook - PROMINENT */}
-            <Card className="border-2 border-[#0A0F2E] bg-white rounded-none hover:shadow-2xl transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
+            <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
               <CardContent className="p-10">
                 <div className="flex items-start gap-6 mb-8">
                   <div className="w-16 h-16 rounded-none bg-[#0A0F2E] flex items-center justify-center flex-shrink-0">

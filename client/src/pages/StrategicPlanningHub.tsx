@@ -350,7 +350,7 @@ export default function StrategicPlanningHub() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {scenarios.filter(s => s.status === 'active').map((scenario) => (
-                    <div key={scenario.id} className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                    <div key={scenario.id} className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold text-[#0A0F2E] dark:text-white">{scenario.name}</h4>
                         <Badge className={getPriorityColor(scenario.priority)}>
@@ -383,22 +383,22 @@ export default function StrategicPlanningHub() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
-                      <div className="w-2 h-2 bg-[#2B8A6E] rounded-full" />
+                    <div className="flex items-center gap-3 p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
+                      <div className="w-2 h-2 bg-[#2B8A6E]" />
                       <div className="flex-1">
                         <div className="text-sm text-[#0A0F2E] dark:text-white">Digital Transformation milestone completed</div>
                         <div className="text-xs text-[#6B7280]">2 hours ago</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
-                      <div className="w-2 h-2 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-full" />
+                    <div className="flex items-center gap-3 p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
+                      <div className="w-2 h-2 bg-[#0A0F2E] dark:bg-[#C9A84C]" />
                       <div className="flex-1">
                         <div className="text-sm text-[#0A0F2E] dark:text-white">Market Expansion budget approved</div>
                         <div className="text-xs text-[#6B7280]">1 day ago</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
-                      <div className="w-2 h-2 bg-[#C9A84C] rounded-full" />
+                    <div className="flex items-center gap-3 p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
+                      <div className="w-2 h-2 bg-[#C9A84C]" />
                       <div className="flex-1">
                         <div className="text-sm text-[#0A0F2E] dark:text-white">Sustainability initiative risk review</div>
                         <div className="text-xs text-[#6B7280]">3 days ago</div>
@@ -414,7 +414,7 @@ export default function StrategicPlanningHub() {
           <TabsContent value="scenarios" className="space-y-6">
             
             {/* Filters and Search */}
-            <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+            <div className="flex items-center gap-4 bg-white dark:bg-white/5 p-4 border border-[#E8E4DC] dark:border-white/10">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
                 <Input
@@ -559,7 +559,7 @@ export default function StrategicPlanningHub() {
                     className="p-5 hover:scale-[1.02] transition-transform duration-200 cursor-pointer group h-full"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div className="p-2 rounded-lg" style={{ background: `${accent}18` }}>
+                      <div className="p-2" style={{ background: `${accent}18` }}>
                         <Icon className="h-5 w-5" style={{ color: accent }} />
                       </div>
                       <span className="text-xs font-bold tracking-widest" style={{ color: `${accent}99` }}>{tag}</span>

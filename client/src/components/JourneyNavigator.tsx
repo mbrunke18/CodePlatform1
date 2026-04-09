@@ -159,7 +159,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
           <CardContent className="p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-poise-teal/20">
+                <div className="p-2 bg-poise-teal/20">
                   <Compass className="h-5 w-5 text-poise-teal" />
                 </div>
                 <div>
@@ -187,7 +187,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
       <div className="flex items-center gap-2 overflow-x-auto pb-2">
         {journeyPhases.map((phase, index) => (
           <Link key={phase.id} href={phase.workspacePath}>
-            <div className={`flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap cursor-pointer transition-all ${
+            <div className={`flex items-center gap-2 px-3 py-2 whitespace-nowrap cursor-pointer transition-all ${
               phase.status === 'current' 
                 ? `${phase.bgColor} border-2 border-current ${phase.color}` 
                 : phase.status === 'completed'
@@ -227,7 +227,7 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
           <Link key={phase.id} href={phase.workspacePath}>
             <Card className={`hover:shadow-lg transition-all cursor-pointer group ${
               phase.status === 'current' 
-                ? 'border-2 border-poise-teal shadow-lg shadow-poise-teal/10' 
+                ? 'border-2 border-poise-teal shadow-poise-teal/10' 
                 : phase.status === 'completed'
                   ? 'border-[#2B8A6E]/50 bg-[#F0F9F6]/50 dark:bg-[#2B8A6E]/10'
                   : 'opacity-70 hover:opacity-100'
@@ -235,14 +235,14 @@ export default function JourneyNavigator({ variant = 'full', currentPhase }: Jou
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
                   <div className={`relative flex-shrink-0`}>
-                    <div className={`p-3 rounded-xl ${phase.status === 'completed' ? 'bg-[#2B8A6E]/20' : phase.bgColor}`}>
+                    <div className={`p-3 ${phase.status === 'completed' ? 'bg-[#2B8A6E]/20' : phase.bgColor}`}>
                       {phase.status === 'completed' ? (
                         <CheckCircle className="h-6 w-6 text-[#2B8A6E]" />
                       ) : (
                         <phase.icon className={`h-6 w-6 ${phase.color}`} />
                       )}
                     </div>
-                    <div className={`absolute -top-2 -left-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                    <div className={`absolute -top-2 -left-2 w-6 h-6 flex items-center justify-center text-xs font-bold ${
                       phase.status === 'completed' 
                         ? 'bg-[#2B8A6E] text-white' 
                         : phase.status === 'current'

@@ -187,7 +187,7 @@ export default function ExecutionCoordination() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-[#0A0F2E]/10 flex items-center justify-center">
               <Zap className="h-6 w-6 text-[#C9A84C]" />
             </div>
             <div>
@@ -207,7 +207,7 @@ export default function ExecutionCoordination() {
             onClick={() => setActiveCategory('offense')}
             className={`p-6 rounded-none border transition-all cursor-pointer text-left ${
               activeCategory === 'offense' 
-                ? 'border-[#C9A84C] bg-white shadow-lg' 
+                ? 'border-[#C9A84C] bg-white' 
                 : 'border-[#E8E4DC] bg-white hover:border-[#C9A84C]/50'
             }`}
             data-testid="triad-offense"
@@ -221,7 +221,7 @@ export default function ExecutionCoordination() {
             onClick={() => setActiveCategory('defense')}
             className={`p-6 rounded-none border transition-all cursor-pointer text-left ${
               activeCategory === 'defense' 
-                ? 'border-[#C9A84C] bg-white shadow-lg' 
+                ? 'border-[#C9A84C] bg-white' 
                 : 'border-[#E8E4DC] bg-white hover:border-[#C9A84C]/50'
             }`}
             data-testid="triad-defense"
@@ -235,7 +235,7 @@ export default function ExecutionCoordination() {
             onClick={() => setActiveCategory('special_teams')}
             className={`p-6 rounded-none border transition-all cursor-pointer text-left ${
               activeCategory === 'special_teams' 
-                ? 'border-[#C9A84C] bg-white shadow-lg' 
+                ? 'border-[#C9A84C] bg-white' 
                 : 'border-[#E8E4DC] bg-white hover:border-[#C9A84C]/50'
             }`}
             data-testid="triad-special"
@@ -330,7 +330,7 @@ export default function ExecutionCoordination() {
             { label: 'Stakeholders', value: 12, color: '#0A0F2E', icon: Users },
             { label: 'Target Time', value: '45m', color: '#0A0F2E', icon: Target }
           ].map((m, i) => (
-            <Card key={i} className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+            <Card key={i} className="bg-white border-[#E8E4DC] rounded-none">
               <CardContent className="p-6 flex items-center gap-4">
                 <div className="w-10 h-10 bg-[#F8F7F4] rounded-none flex items-center justify-center">
                   <m.icon style={{ color: m.color }} className="h-5 w-5" />
@@ -371,7 +371,7 @@ export default function ExecutionCoordination() {
                 return (
                   <Card 
                     key={phase.id} 
-                    className={`rounded-none bg-white shadow-sm transition-all ${phaseComplete ? 'border-[#2B8A6E]/30' : 'border-[#E8E4DC]'}`}
+                    className={`rounded-none bg-white transition-all ${phaseComplete ? 'border-[#2B8A6E]/30' : 'border-[#E8E4DC]'}`}
                     data-testid={`card-phase-${phaseIndex}`}
                   >
                     <CardHeader className="pb-4 border-b border-[#F8F7F4]">
@@ -480,10 +480,10 @@ export default function ExecutionCoordination() {
         </Tabs>
         
         {/* Industry Comparison Banner */}
-        <Card className="bg-white border border-[#E8E4DC] rounded-none shadow-sm">
+        <Card className="bg-white border border-[#E8E4DC] rounded-none">
           <CardContent className="p-8">
             <div className="flex items-start gap-6">
-              <div className="w-12 h-12 bg-[#0A0F2E]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-[#0A0F2E]/10 flex items-center justify-center flex-shrink-0">
                 <Clock className="h-6 w-6 text-[#C9A84C]" />
               </div>
               <div>

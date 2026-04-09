@@ -279,15 +279,15 @@ export default function BoardExport() {
                         Executive Summary
                       </h3>
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-[#2B8A6E]/10 rounded-lg p-4 text-center border border-[#2B8A6E]/20">
+                        <div className="bg-[#2B8A6E]/10 p-4 text-center border border-[#2B8A6E]/20">
                           <div className="text-3xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.executiveSummary.overallReadiness}%</div>
                           <div className="text-sm text-[#0A0F2E] dark:text-white/80">Overall Readiness</div>
                         </div>
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-4 text-center border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-4 text-center border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-3xl font-bold text-[#0A0F2E] dark:text-white">{SAMPLE_DATA.executiveSummary.activeScenarios}</div>
                           <div className="text-sm text-[#0A0F2E] dark:text-white/80">Active Scenarios</div>
                         </div>
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-4 text-center border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-4 text-center border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-3xl font-bold text-[#C9A84C]">{SAMPLE_DATA.executiveSummary.avgResponseTime}</div>
                           <div className="text-sm text-[#0A0F2E] dark:text-white/80">Avg Response Time</div>
                         </div>
@@ -306,7 +306,7 @@ export default function BoardExport() {
                         {SAMPLE_DATA.activeScenarios.map((scenario) => (
                           <div 
                             key={scenario.id}
-                            className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10"
+                            className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10"
                           >
                             <div className="flex items-center gap-3">
                               <Badge className={
@@ -336,15 +336,15 @@ export default function BoardExport() {
                         Response Metrics
                       </h3>
                       <div className="grid grid-cols-3 gap-3">
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 text-center border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-xl font-bold text-[#0A0F2E] dark:text-white">{SAMPLE_DATA.responseMetrics.avgDecisionTime}</div>
                           <div className="text-xs text-[#6B7280] dark:text-white/60">Avg Decision Time</div>
                         </div>
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 text-center border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-xl font-bold text-[#0A0F2E] dark:text-white">{SAMPLE_DATA.responseMetrics.avgExecutionTime}</div>
                           <div className="text-xs text-[#6B7280] dark:text-white/60">Avg Execution Time</div>
                         </div>
-                        <div className="bg-[#2B8A6E]/10 rounded-lg p-3 text-center border border-[#2B8A6E]/20">
+                        <div className="bg-[#2B8A6E]/10 p-3 text-center border border-[#2B8A6E]/20">
                           <div className="text-xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.responseMetrics.stakeholderResponseRate}%</div>
                           <div className="text-xs text-[#2B8A6E] dark:text-[#C9A84C]">Response Rate</div>
                         </div>
@@ -360,21 +360,21 @@ export default function BoardExport() {
                         Financial Summary
                       </h3>
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-sm text-[#6B7280] dark:text-white/60 mb-1">Revenue Protected</div>
                           <div className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(SAMPLE_DATA.financialSummary.revenueProtected)}</div>
                         </div>
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-sm text-[#6B7280] dark:text-white/60 mb-1">Cost Avoided</div>
                           <div className="text-2xl font-bold text-[#2B8A6E]">{formatCurrency(SAMPLE_DATA.financialSummary.costAvoided)}</div>
                         </div>
-                        <div className="bg-[#F8F7F4] dark:bg-white/5 rounded-lg p-3 border border-[#E8E4DC] dark:border-white/10">
+                        <div className="bg-[#F8F7F4] dark:bg-white/5 p-3 border border-[#E8E4DC] dark:border-white/10">
                           <div className="text-sm text-[#6B7280] dark:text-white/60 mb-1">Budget Utilization</div>
                           <div className="text-2xl font-bold text-[#0A0F2E] dark:text-white">
                             {formatCurrency(SAMPLE_DATA.financialSummary.budgetUsed)} / {formatCurrency(SAMPLE_DATA.financialSummary.budgetAllocated)}
                           </div>
                         </div>
-                        <div className="bg-[#2B8A6E]/10 rounded-lg p-3 border border-[#2B8A6E]/20">
+                        <div className="bg-[#2B8A6E]/10 p-3 border border-[#2B8A6E]/20">
                           <div className="text-sm text-[#0A0F2E] dark:text-white/80 mb-1">Quarterly ROI</div>
                           <div className="text-2xl font-bold text-[#2B8A6E]">{SAMPLE_DATA.financialSummary.roiThisQuarter}%</div>
                         </div>
@@ -428,7 +428,7 @@ export default function BoardExport() {
                         {SAMPLE_DATA.recommendations.map((rec, idx) => (
                           <div 
                             key={idx}
-                            className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border-l-4 border-l-[#C9A84C] border border-[#E8E4DC] dark:border-white/10"
+                            className="p-3 bg-[#F8F7F4] dark:bg-white/5 border-l-4 border-l-[#C9A84C] border border-[#E8E4DC] dark:border-white/10"
                           >
                             <div className="flex items-start justify-between">
                               <div>

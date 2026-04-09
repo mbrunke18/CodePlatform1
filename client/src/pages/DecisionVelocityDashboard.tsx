@@ -104,7 +104,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
       
       <div className="container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-4 gap-6 mb-12">
-          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
+          <Card className="border-[#E8E4DC] bg-white rounded-none">
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <Trophy className="h-5 w-5 text-[#C9A84C]" />
@@ -121,7 +121,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
             </CardContent>
           </Card>
           
-          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
+          <Card className="border-[#E8E4DC] bg-white rounded-none">
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <CheckCircle className="h-5 w-5 text-[#C9A84C]" />
@@ -138,7 +138,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
             </CardContent>
           </Card>
           
-          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
+          <Card className="border-[#E8E4DC] bg-white rounded-none">
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <Target className="h-5 w-5 text-[#C9A84C]" />
@@ -155,7 +155,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
             </CardContent>
           </Card>
           
-          <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
+          <Card className="border-[#E8E4DC] bg-white rounded-none">
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-base font-bold uppercase tracking-widest text-[#6B7280]">
                 <Zap className="h-5 w-5 text-[#C9A84C]" />
@@ -173,7 +173,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           </Card>
         </div>
         
-        <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+        <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none">
           <CardHeader className="border-b border-[#E8E4DC]">
             <CardTitle className="text-2xl flex items-center gap-2 text-[#C9A84C]" style={CG}>
               <Target className="h-6 w-6 text-[#C9A84C]" />
@@ -235,7 +235,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
         </Card>
         
         {decisions.length > 0 && (
-          <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+          <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none">
             <CardHeader className="border-b border-[#E8E4DC]">
               <CardTitle className="text-2xl flex items-center gap-2 text-[#C9A84C]" style={CG}>
                 <Trophy className="h-6 w-6 text-[#C9A84C]" />
@@ -267,7 +267,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
           </Card>
         )}
         
-        <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none shadow-sm">
+        <Card className="mb-12 border-[#E8E4DC] bg-white rounded-none">
           <CardHeader className="border-b border-[#E8E4DC]">
             <CardTitle className="text-2xl text-[#0A0F2E]" style={CG}>Recent Decisions</CardTitle>
             <CardDescription className="text-[#6B7280]">
@@ -350,7 +350,7 @@ export default function DecisionVelocityDashboard({ embedded }: { embedded?: boo
         </div>
 
         {/* Decision Velocity Benchmark Panel */}
-        <div className="bg-white border rounded-none shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+        <div className="bg-white border rounded-none p-8" style={{ borderColor: "#E8E4DC" }}>
           <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>Industry Benchmarks</div>
           <h3 className="text-xl font-bold mb-6" style={{ color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif" }}>Your Decision Velocity vs. Peer Group</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

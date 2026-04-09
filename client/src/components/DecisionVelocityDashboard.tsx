@@ -50,7 +50,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
 
   return (
     <div className="space-y-6">
-      <Card className="w-full shadow-lg border-2" data-testid="decision-velocity-dashboard">
+      <Card className="w-full border-2" data-testid="decision-velocity-dashboard">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div>
@@ -70,7 +70,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
 
         <CardContent className="space-y-6">
           {/* Main Velocity Score */}
-          <div className={`${velocityBgColor} rounded-xl p-6 text-center`}>
+          <div className={`${velocityBgColor} p-6 text-center`}>
             <div className="flex items-center justify-center gap-3">
               <div className={`text-6xl font-bold ${velocityColor}`} data-testid="velocity-score">
                 {velocityData.velocityScore}
@@ -99,7 +99,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
 
           {/* Competitive Advantage Grid */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 rounded-lg p-4" data-testid="response-time">
+            <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4" data-testid="response-time">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="h-5 w-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                 <span className="text-sm text-[#0A0F2E] dark:text-[#0A0F2E] font-medium">Avg Response Time</span>
@@ -117,7 +117,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
               </div>
             </div>
 
-            <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-4" data-testid="competitive-advantage">
+            <div className="bg-green-50 dark:bg-green-950/20 p-4" data-testid="competitive-advantage">
               <div className="flex items-center gap-2 mb-2">
                 <Award className="h-5 w-5 text-green-600 dark:text-green-400" />
                 <span className="text-sm text-green-600 dark:text-green-400 font-medium">Competitive Edge</span>
@@ -137,7 +137,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
           </div>
 
           {/* Quarterly Impact */}
-          <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 rounded-lg p-4" data-testid="quarterly-impact">
+          <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 p-4" data-testid="quarterly-impact">
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp className="h-5 w-5 text-[#C9A84C] dark:text-[#C9A84C]" />
               <span className="text-sm font-medium text-[#C9A84C] dark:text-[#C9A84C]">Quarterly Impact</span>
@@ -166,7 +166,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
           </div>
 
           {/* Decision Velocity Premium Calculation */}
-          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-4 border-2 border-dashed border-gray-300 dark:border-gray-700" data-testid="velocity-premium">
+          <div className="bg-gray-50 dark:bg-gray-900/50 p-4 border-2 border-dashed border-gray-300 dark:border-gray-700" data-testid="velocity-premium">
             <div className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
               Decision Velocity Premium™
             </div>
@@ -193,7 +193,7 @@ export default function DecisionVelocityDashboard({ organizationId }: { organiza
           </div>
 
           {/* Board-Ready Messaging */}
-          <div className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-lg p-4 text-white" data-testid="board-message">
+          <div className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] p-4 text-white" data-testid="board-message">
             <div className="text-sm font-semibold mb-2">Board Presentation Language:</div>
             <div className="text-xs italic">
               "We've operationalized Dynamic Strategy through M. Decision velocity improved {velocityData.quarterlyMetrics.velocityImprovement}%, 

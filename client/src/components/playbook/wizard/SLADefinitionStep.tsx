@@ -157,7 +157,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
           <button
             key={phase}
             onClick={() => setSelectedPhase(phase as any)}
-            className={`p-3 rounded-lg border-2 transition-all text-left ${
+            className={`p-3 border-2 transition-all text-left ${
               selectedPhase === phase
                 ? 'border-primary bg-primary/10'
                 : 'border-slate-200 dark:border-slate-700 hover:border-primary/50'

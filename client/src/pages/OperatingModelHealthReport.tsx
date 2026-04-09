@@ -82,7 +82,7 @@ export default function OperatingModelHealthReport() {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
+            <div className="h-12 w-12 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <Activity className="h-6 w-6 text-[#C9A84C]" />
             </div>
             <div>
@@ -97,7 +97,7 @@ export default function OperatingModelHealthReport() {
         </div>
 
         {/* Overall Health Score */}
-        <Card className="mb-8 border-2 shadow-lg bg-white dark:bg-[#141B45]">
+        <Card className="mb-8 border-2 bg-white dark:bg-[#141B45]">
           <CardHeader>
             <CardTitle className="text-2xl">Organization Readiness Score</CardTitle>
             <CardDescription>
@@ -134,7 +134,7 @@ export default function OperatingModelHealthReport() {
                   </div>
                 </div>
               </div>
-              <div className="card-bg rounded-lg p-6">
+              <div className="card-bg p-6">
                 <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-[#0A0F2E]" />
                   Key Insights
@@ -177,12 +177,12 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-[#141B45]"
+                    className="hover:shadow-lg  duration-200 bg-white dark:bg-[#141B45]"
                     data-testid={`card-element-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
-                        <div className={`h-10 w-10 rounded-lg ${status.color} bg-opacity-10 flex items-center justify-center`}>
+                        <div className={`h-10 w-10 ${status.color} bg-opacity-10 flex items-center justify-center`}>
                           <Icon className={`h-5 w-5 ${status.textColor}`} />
                         </div>
                         <Badge className={`${status.color} text-gray-900`}>
@@ -222,12 +222,12 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-[#141B45]"
+                    className="hover:shadow-lg  duration-200 bg-white dark:bg-[#141B45]"
                     data-testid={`card-strong-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
-                        <div className={`h-10 w-10 rounded-lg ${status.color} bg-opacity-10 flex items-center justify-center`}>
+                        <div className={`h-10 w-10 ${status.color} bg-opacity-10 flex items-center justify-center`}>
                           <Icon className={`h-5 w-5 ${status.textColor}`} />
                         </div>
                         <Badge className={`${status.color} text-gray-900`}>
@@ -267,12 +267,12 @@ export default function OperatingModelHealthReport() {
                 return (
                   <Card 
                     key={element.id} 
-                    className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-[#141B45] border-red-200 dark:border-red-900"
+                    className="hover:shadow-lg  duration-200 bg-white dark:bg-[#141B45] border-red-200 dark:border-red-900"
                     data-testid={`card-focus-${element.id.toLowerCase().replace(' ', '-')}`}
                   >
                     <CardHeader>
                       <div className="flex items-start justify-between mb-2">
-                        <div className={`h-10 w-10 rounded-lg ${status.color} bg-opacity-10 flex items-center justify-center`}>
+                        <div className={`h-10 w-10 ${status.color} bg-opacity-10 flex items-center justify-center`}>
                           <Icon className={`h-5 w-5 ${status.textColor}`} />
                         </div>
                         <Badge className={`${status.color} text-gray-900`}>
@@ -322,7 +322,7 @@ export default function OperatingModelHealthReport() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-red-500">
+              <div className="bg-white dark:bg-[#141B45] p-4 border-l-4 border-red-500">
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-red-700 mt-0.5 flex-shrink-0" />
                   <div>
@@ -338,7 +338,7 @@ export default function OperatingModelHealthReport() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-yellow-500">
+              <div className="bg-white dark:bg-[#141B45] p-4 border-l-4 border-yellow-500">
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
                   <div>
@@ -354,7 +354,7 @@ export default function OperatingModelHealthReport() {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-[#141B45] rounded-lg p-4 border-l-4 border-[#2B8A6E]">
+              <div className="bg-white dark:bg-[#141B45] p-4 border-l-4 border-[#2B8A6E]">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
                   <div>

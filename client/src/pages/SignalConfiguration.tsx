@@ -164,7 +164,7 @@ export default function SignalConfiguration() {
     return (
       <PageLayout>
         <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: GOLD }} />
+          <div className="animate-spin h-8 w-8 border-b-2" style={{ borderColor: GOLD }} />
         </div>
       </PageLayout>
     );
@@ -295,7 +295,7 @@ export default function SignalConfiguration() {
                       )}
                     </div>
                   </div>
-                  <div className="w-2 h-2 rounded-full flex-shrink-0 mt-1.5" style={{ background: statusColor }} />
+                  <div className="w-2 h-2 flex-shrink-0 mt-1.5" style={{ background: statusColor }} />
                 </button>
               );
             })}
@@ -389,7 +389,7 @@ export default function SignalConfiguration() {
                         >
                           <div className="flex items-start gap-4">
                             {/* Status dot — gold if alert rule set, teal if monitoring, gray if off */}
-                            <div className="w-2 h-2 rounded-full flex-shrink-0 mt-2"
+                            <div className="w-2 h-2 flex-shrink-0 mt-2"
                               style={{ background: trigger ? GOLD : isEnabled ? TEAL : '#D1D5DB' }} />
 
                             {/* Main content */}

@@ -329,7 +329,7 @@ export default function ExecutionPlanPhase({ data, onChange }: ExecutionPlanPhas
                 <AccordionItem
                   key={phase.id}
                   value={phase.id}
-                  className={`border rounded-lg ${getPhaseColorClass(phase.color)}`}
+                  className={`border ${getPhaseColorClass(phase.color)}`}
                 >
                   <AccordionTrigger
                     className="px-4 hover:no-underline"

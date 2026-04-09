@@ -111,7 +111,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
           <Card key={i} className="bg-black/40 border-gray-200 animate-pulse">
             <CardContent className="p-6">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gray-600/50 rounded-lg" />
+                <div className="w-10 h-10 bg-gray-600/50" />
                 <div className="space-y-2">
                   <div className="h-4 w-24 bg-gray-600/50 rounded" />
                   <div className="h-3 w-16 bg-gray-600/50 rounded" />
@@ -141,7 +141,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
             <Card key={metric.id} className="bg-black/40 border-gray-200 backdrop-blur-sm hover:bg-black/60 transition-all duration-500 group">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${colors.bg} group-hover:scale-105 transition-transform duration-300`}>
+                  <div className={`p-3 bg-gradient-to-r ${colors.bg} group-hover:scale-105 transition-transform duration-300`}>
                     <div className={colors.text}>
                       {icon}
                     </div>
@@ -153,7 +153,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
                       ) : metric.trend === 'down' ? (
                         <TrendingDown className="w-4 h-4 text-red-400" />
                       ) : (
-                        <div className="w-4 h-4 rounded-full bg-yellow-400" />
+                        <div className="w-4 h-4 bg-yellow-400" />
                       )}
                       <span className={`text-sm font-medium ${
                         metric.trend === 'up' ? 'text-green-400' : 
@@ -205,9 +205,9 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
           <Activity className="w-4 h-4 mr-2 text-green-400" />
           Live Metrics
         </div>
-        <div className="w-1 h-1 bg-gray-600 rounded-full" />
+        <div className="w-1 h-1 bg-gray-600" />
         <div>Last updated: {lastUpdate.toLocaleTimeString()}</div>
-        <div className="w-1 h-1 bg-gray-600 rounded-full" />
+        <div className="w-1 h-1 bg-gray-600" />
         <div className="flex items-center">
           <Brain className="w-4 h-4 mr-2 text-[#C9A84C]" />
           AI Generated

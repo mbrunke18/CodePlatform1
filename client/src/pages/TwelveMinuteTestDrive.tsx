@@ -16,12 +16,12 @@ const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
 
 // ─── Preset scenarios ─────────────────────────────────────────────────────────
 const SCENARIOS = [
-  { id: 'activist', icon: '⚔️', title: 'Activist Investor', subtitle: '9.8% stake acquired — board seat demanded', domain: 'competitive', urgency: 'critical' },
-  { id: 'cyber', icon: '🛡️', title: 'Ransomware Attack', subtitle: 'Critical systems encrypted — 72-hr ultimatum', domain: 'cybersecurity', urgency: 'critical' },
-  { id: 'supply', icon: '📦', title: 'Supply Chain Collapse', subtitle: 'Primary supplier bankrupt — 14-day production risk', domain: 'supply chain', urgency: 'high' },
-  { id: 'brand', icon: '📰', title: 'Brand Crisis', subtitle: 'Viral social media incident — sentiment collapsing', domain: 'brand', urgency: 'high' },
-  { id: 'regulatory', icon: '⚖️', title: 'Regulatory Inquiry', subtitle: 'DOJ investigation opened — disclosure required', domain: 'regulatory', urgency: 'high' },
-  { id: 'talent', icon: '👥', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'talent', urgency: 'high' },
+  { id: 'activist', title: 'Activist Investor', subtitle: '9.8% stake acquired — board seat demanded', domain: 'Competitive', urgency: 'critical' },
+  { id: 'cyber', title: 'Ransomware Attack', subtitle: 'Critical systems encrypted — systems locked', domain: 'Cybersecurity', urgency: 'critical' },
+  { id: 'supply', title: 'Supply Chain Collapse', subtitle: 'Primary supplier bankrupt — 14-day production risk', domain: 'Supply Chain', urgency: 'high' },
+  { id: 'brand', title: 'Brand Crisis', subtitle: 'Viral social media incident — sentiment collapsing', domain: 'Brand', urgency: 'high' },
+  { id: 'regulatory', title: 'Regulatory Inquiry', subtitle: 'DOJ investigation opened — disclosure required', domain: 'Regulatory', urgency: 'high' },
+  { id: 'talent', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'Talent', urgency: 'high' },
 ];
 
 // ─── Scenario-specific war room tasks ────────────────────────────────────────
@@ -151,11 +151,11 @@ export default function TwelveMinuteTestDrive() {
       const confirmAt  = dispatchAt + 30;
       if (e >= dispatchAt && !loggedNotify.current.has(i)) {
         loggedNotify.current.add(i);
-        newEvents.push({ time: fmtSecs(e), text: `📤 [${t.role}] Notified — task alert sent to role`, type: 'notified' });
+        newEvents.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert sent to role`, type: 'notified' });
       }
       if (e >= confirmAt && !loggedAcknow.current.has(i)) {
         loggedAcknow.current.add(i);
-        newEvents.push({ time: fmtSecs(e), text: `✅ [${t.role}] Acknowledged — role confirmed receipt, task in progress`, type: 'acknowledged' });
+        newEvents.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — role confirmed receipt, task in progress`, type: 'acknowledged' });
       }
     });
     if (newEvents.length > 0) {
@@ -175,8 +175,8 @@ export default function TwelveMinuteTestDrive() {
     setElapsed(0);
     setRunning(true);
     setLiveEvents([
-      { time: '0:00', text: `🔒 War room secured — ${taskList.length} tasks queued`, type: 'system' },
-      { time: '0:00', text: '⚡ 12-minute execution clock started', type: 'system' },
+      { time: '0:00', text: `War room secured — ${taskList.length} tasks queued`, type: 'system' },
+      { time: '0:00', text: '12-minute execution clock started', type: 'system' },
     ]);
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => tick(taskList), 1000);
@@ -248,25 +248,26 @@ export default function TwelveMinuteTestDrive() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 40 }}>
               {SCENARIOS.map(s => (
                 <button
                   key={s.id}
                   onClick={() => setSelectedId(s.id)}
                   style={{
                     textAlign: 'left', padding: '20px 24px', cursor: 'pointer',
-                    background: selectedId === s.id ? 'rgba(201,168,76,0.1)' : 'rgba(255,255,255,0.04)',
-                    border: `2px solid ${selectedId === s.id ? GOLD : 'rgba(255,255,255,0.1)'}`,
-                    borderLeft: `4px solid ${s.urgency === 'critical' ? '#C0392B' : GOLD}`,
+                    background: selectedId === s.id ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.03)',
+                    border: `1px solid ${selectedId === s.id ? GOLD : 'rgba(255,255,255,0.08)'}`,
+                    borderLeft: `3px solid ${s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-                    <span style={{ fontSize: 24 }}>{s.icon}</span>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : GOLD }}>{s.urgency}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                    <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
+                    <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)', display: 'inline-block' }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
                   </div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{s.title}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{s.subtitle}</div>
+                  <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 4, lineHeight: 1.2 }}>{s.title}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{s.subtitle}</div>
                 </button>
               ))}
             </div>
@@ -294,7 +295,7 @@ export default function TwelveMinuteTestDrive() {
             <div style={{ textAlign: 'center', marginBottom: 40 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>AI Execution Brief · GPT-4o</div>
               <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>
-                {scenario.icon} {scenario.title}
+                {scenario.title}
               </h2>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>{scenario.subtitle}</p>
             </div>
@@ -357,10 +358,10 @@ export default function TwelveMinuteTestDrive() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: '#fff' }}>{scenario.icon} {scenario.title}</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{scenario.title}</div>
               </div>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '🟢 LIVE' : '⏱ COMPLETE'}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
                 <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
                 <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
               </div>
@@ -439,13 +440,13 @@ export default function TwelveMinuteTestDrive() {
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                               <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD, letterSpacing: '0.05em' }}>{t.role}</span>
                               {isDone && (
-                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff', borderRadius: 2 }}>ACKNOWLEDGED ✓</span>
+                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>
                               )}
                               {isActive && (
-                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}`, borderRadius: 2 }}>NOTIFIED</span>
+                                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>
                               )}
                               {isPending && (
-                                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF', borderRadius: 2 }}>QUEUED</span>
+                                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>
                               )}
                             </div>
                             <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
@@ -466,8 +467,8 @@ export default function TwelveMinuteTestDrive() {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
                   {liveEvents.map((e, i) => {
-                    const isConfirmed = e.text.startsWith('✅');
-                    const isDispatched = e.text.startsWith('📤');
+                    const isConfirmed  = e.type === 'acknowledged';
+                    const isDispatched = e.type === 'notified';
                     const borderColor = isConfirmed ? TEAL : isDispatched ? GOLD : 'rgba(255,255,255,0.2)';
                     const textColor   = isConfirmed ? '#6EE7B7' : 'rgba(255,255,255,0.8)';
                     return (
@@ -491,7 +492,7 @@ export default function TwelveMinuteTestDrive() {
         {step === 4 && scenario && (
           <div>
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
               <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
                 {scenario.title} Response:<br />
@@ -546,7 +547,7 @@ export default function TwelveMinuteTestDrive() {
                   Request a Pilot →
                 </a>
                 <button
-                  onClick={() => { setStep(1); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setTaskStatuses({}); setLiveEvents([]); }}
+                  onClick={() => { setStep(1); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); }}
                   style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}
                 >
                   Try Another Scenario

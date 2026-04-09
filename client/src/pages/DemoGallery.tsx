@@ -255,10 +255,10 @@ export default function DemoGallery() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {filteredDemos.filter(d => !d.featured).map((demo) => (
               <Link key={demo.id} href={demo.path}>
-                <Card className="h-full hover:shadow-lg transition-all cursor-pointer group border border-[#E8E4DC]">
+                <Card className="h-full transition-all cursor-pointer group border border-[#E8E4DC]">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className={`p-3 rounded-xl ${demo.bgColor}`}>
+                      <div className={`p-3 ${demo.bgColor}`}>
                         <demo.icon className={`h-6 w-6 ${demo.color}`} />
                       </div>
                       <div className="flex-1">
@@ -299,7 +299,7 @@ export default function DemoGallery() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {industryDemos.map((demo) => (
                 <Link key={demo.id} href={demo.path}>
-                  <Card className="h-full hover:shadow-lg transition-all cursor-pointer group border border-[#E8E4DC]">
+                  <Card className="h-full transition-all cursor-pointer group border border-[#E8E4DC]">
                     <CardContent className="p-6">
                       <demo.icon className={`h-8 w-8 ${demo.color} mb-4`} />
                       <h3 className="font-semibold text-[#0A0F2E] group-hover:text-[#2B8A6E] transition-colors mb-1">

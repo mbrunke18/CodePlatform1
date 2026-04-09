@@ -190,8 +190,8 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
   if (isLoading) {
     return (
       <div className="space-y-4 animate-pulse">
-        <div className="h-24 bg-slate-200 dark:bg-slate-800 rounded-lg" />
-        <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+        <div className="h-24 bg-slate-200 dark:bg-slate-800" />
+        <div className="h-48 bg-slate-200 dark:bg-slate-800" />
       </div>
     );
   }
@@ -224,7 +224,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
               const Icon = config.icon;
               const count = items.filter((i) => i.learnType === type).length;
               return (
-                <div key={type} className="p-3 bg-white dark:bg-slate-900 rounded-lg text-center">
+                <div key={type} className="p-3 bg-white dark:bg-slate-900 text-center">
                   <Icon className={`h-5 w-5 mx-auto mb-1 ${config.color}`} />
                   <div className="text-lg font-semibold">{count}</div>
                   <div className="text-xs text-muted-foreground truncate">{config.label}</div>
@@ -257,7 +257,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
               
               return (
                 <div key={timing} className="relative pl-10 pb-8" data-testid={`learn-timing-${timing}`}>
-                  <div className="absolute left-2 w-5 h-5 rounded-full bg-green-500 border-4 border-white dark:border-slate-900 flex items-center justify-center">
+                  <div className="absolute left-2 w-5 h-5 bg-green-500 border-4 border-white dark:border-slate-900 flex items-center justify-center">
                     <Clock className="h-2.5 w-2.5 text-gray-900" />
                   </div>
                   
@@ -275,7 +275,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
                       return (
                         <div
                           key={item.id}
-                          className="border rounded-lg p-3 bg-card hover:bg-accent/50 transition-all"
+                          className="border p-3 bg-card hover:bg-accent/50 transition-all"
                           data-testid={`learn-item-${item.id}`}
                         >
                           <div className="flex items-center gap-3">

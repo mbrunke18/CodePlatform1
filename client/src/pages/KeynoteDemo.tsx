@@ -107,10 +107,10 @@ function ActivationTimeline() {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: isActive ? 1 : 0.2, x: isActive ? 0 : -40 }}
             transition={{ duration: 0.5 }}
-            className={`flex items-center gap-4 p-3 rounded-lg transition-all ${isCurrent ? 'bg-[#F8F7F4] ring-1 ring-[#E8E4DC] scale-[1.02]' : ''}`}
+            className={`flex items-center gap-4 p-3 transition-all ${isCurrent ? 'bg-[#F8F7F4] ring-1 ring-[#E8E4DC] scale-[1.02]' : ''}`}
           >
             <div className="w-16 text-right font-mono text-xs text-[#6B7280]">{s.time}</div>
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isActive ? 'bg-white shadow-sm' : 'bg-[#0A0F2E]/5'}`}>
+            <div className={`w-10 h-10 flex items-center justify-center ${isActive ? 'bg-white' : 'bg-[#0A0F2E]/5'}`}>
               <Icon className={`h-5 w-5 ${isActive ? s.color : 'text-[#6B7280]'}`} />
             </div>
             <div className="flex-1">
@@ -121,7 +121,7 @@ function ActivationTimeline() {
               <motion.div
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
-                className="w-3 h-3 rounded-full bg-[#2B8A6E]"
+                className="w-3 h-3 bg-[#2B8A6E]"
               />
             )}
           </motion.div>
@@ -263,7 +263,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5 + i * 0.2, duration: 0.6 }}
-              className={`${item.bg} border border-[#E8E4DC] rounded-2xl p-8 text-center shadow-sm`}
+              className={`${item.bg} border border-[#E8E4DC] p-8 text-center`}
             >
               <item.icon className={`h-10 w-10 ${item.color} mx-auto mb-4`} />
               <div className={`text-4xl font-bold ${item.color} mb-2`} style={CG}>{item.value}</div>
@@ -284,8 +284,8 @@ export default function KeynoteDemo() {
           className="mb-8 relative z-10"
         >
           <div className="relative inline-flex items-center justify-center">
-            <div className="absolute inset-0 w-32 h-32 rounded-full bg-[#C9A84C] blur-2xl opacity-20 animate-pulse" />
-            <div className="relative w-28 h-28 rounded-full bg-[#C9A84C] flex items-center justify-center shadow-xl">
+            <div className="absolute inset-0 w-32 h-32 bg-[#C9A84C] blur-2xl opacity-20 animate-pulse" />
+            <div className="relative w-28 h-28 bg-[#C9A84C] flex items-center justify-center">
               <Layers className="h-14 w-14 text-[#0A0F2E]" />
             </div>
           </div>
@@ -348,8 +348,8 @@ export default function KeynoteDemo() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
-            <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#0A0F2E]" />
+          <div className="inline-flex items-center gap-2 bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20 px-4 py-2 text-sm font-medium mb-6">
+            <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-[#0A0F2E]" />
             LIVE SIGNAL DETECTED
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>Signal Intelligence Feed</h2>
@@ -362,7 +362,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="w-full max-w-5xl"
         >
-          <div className="bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] overflow-hidden">
             <div className="bg-[#0A0F2E] border-b border-white/10 px-8 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
@@ -376,7 +376,7 @@ export default function KeynoteDemo() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-white/60 uppercase tracking-widest">Severity</span>
-                <span className="bg-[#0A0F2E] text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">CRITICAL</span>
+                <span className="bg-[#0A0F2E] text-white text-xs font-bold px-3 py-1 border border-white/20">CRITICAL</span>
               </div>
             </div>
             <div className="p-8">
@@ -398,7 +398,7 @@ export default function KeynoteDemo() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 + i * 0.15, duration: 0.5 }}
-                    className="bg-[#0A0F2E]/5 rounded-xl p-4 text-center border border-[#0A0F2E]/5"
+                    className="bg-[#0A0F2E]/5 p-4 text-center border border-[#0A0F2E]/5"
                   >
                     <item.icon className={`h-6 w-6 ${item.color} mx-auto mb-2`} />
                     <div className={`text-xl font-bold ${item.color}`} style={CG}>{item.value}</div>
@@ -415,7 +415,7 @@ export default function KeynoteDemo() {
     analysis: (
       <div className="flex flex-col items-center justify-center min-h-screen px-8 bg-white">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-4 py-2 text-sm font-medium mb-6">
             <Brain className="h-4 w-4" />
             AI ANALYSIS ENGINE
           </div>
@@ -429,9 +429,9 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="w-full max-w-5xl grid grid-cols-2 gap-6"
         >
-          <div className="bg-white border border-[#E8E4DC] rounded-2xl p-8 shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-[#0A0F2E] flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#0A0F2E] flex items-center justify-center">
                 <Brain className="h-6 w-6 text-[#C9A84C]" />
               </div>
               <h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>Key Insights</h3>
@@ -448,7 +448,7 @@ export default function KeynoteDemo() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + i * 0.3, duration: 0.5 }}
-                  className="flex items-start gap-3 bg-[#F8F7F4] rounded-lg p-4 border border-[#E8E4DC]"
+                  className="flex items-start gap-3 bg-[#F8F7F4] p-4 border border-[#E8E4DC]"
                 >
                   <Lightbulb className="h-5 w-5 text-[#C9A84C] mt-0.5 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm font-medium">{insight}</span>
@@ -462,7 +462,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="bg-[#0A0F2E] border border-white/10 rounded-2xl p-8 shadow-xl"
+              className="bg-[#0A0F2E] border border-white/10 p-8"
             >
               <h3 className="text-sm font-bold text-white/60 uppercase tracking-widest mb-4">AI Confidence Score</h3>
               <div className="flex items-end gap-4">
@@ -473,12 +473,12 @@ export default function KeynoteDemo() {
                   Based on {signal?.aiAnalysis?.dataPointsAnalyzed || 847} data points analyzed
                 </div>
               </div>
-              <div className="mt-4 h-2 bg-[#0A0F2E]/30 rounded-full overflow-hidden">
+              <div className="mt-4 h-2 bg-[#0A0F2E]/30 overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${signal?.aiConfidence || 94}%` }}
                   transition={{ delay: 1, duration: 1.5, ease: 'easeOut' }}
-                  className="h-full bg-[#C9A84C] rounded-full"
+                  className="h-full bg-[#C9A84C]"
                 />
               </div>
             </motion.div>
@@ -487,7 +487,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.6 }}
-              className="bg-white border border-[#E8E4DC] rounded-2xl p-8 shadow-sm"
+              className="bg-white border border-[#E8E4DC] p-8"
             >
               <h3 className="text-sm font-bold text-[#0A0F2E]/60 uppercase tracking-widest mb-4">Cost of Inaction</h3>
               <div className="grid grid-cols-2 gap-4">
@@ -497,7 +497,7 @@ export default function KeynoteDemo() {
                   { label: 'Time Decay', value: signal?.costOfInaction?.timeDecay || '-$420K/day', color: 'text-[#C9A84C]' },
                   { label: 'Competitor Edge', value: signal?.costOfInaction?.competitorAdvantage || '18 months', color: 'text-[#2B8A6E]' },
                 ].map((item, i) => (
-                  <div key={i} className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg p-3 text-center">
+                  <div key={i} className="bg-[#F8F7F4] border border-[#E8E4DC] p-3 text-center">
                     <div className={`text-xl font-bold ${item.color}`} style={CG}>{item.value}</div>
                     <div className="text-[10px] text-[#6B7280] uppercase font-bold tracking-tighter">{item.label}</div>
                   </div>
@@ -512,7 +512,7 @@ export default function KeynoteDemo() {
     playbook: (
       <div className="flex flex-col items-center justify-center min-h-screen px-8 bg-[#F8F7F4]">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 px-4 py-2 text-sm font-medium mb-6">
             <BookOpen className="h-4 w-4" />
             PLAYBOOK MATCHED
           </div>
@@ -526,7 +526,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="w-full max-w-5xl"
         >
-          <div className="bg-white border border-[#E8E4DC] rounded-2xl overflow-hidden shadow-sm">
+          <div className="bg-white border border-[#E8E4DC] overflow-hidden">
             <div className="bg-[#2B8A6E] border-b border-white/10 px-8 py-5 flex items-center justify-between">
               <div>
                 <span className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">Recommended Playbook</span>
@@ -607,7 +607,7 @@ export default function KeynoteDemo() {
                   { label: 'Pre-Approved Budget', value: '$250,000', color: 'text-[#2B8A6E]' },
                   { label: 'Target Completion', value: '< 12 Minutes', color: 'text-[#C9A84C]' },
                 ].map((item, i) => (
-                  <div key={i} className="text-center bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-4">
+                  <div key={i} className="text-center bg-[#F8F7F4] border border-[#E8E4DC] p-4">
                     <div className="text-[10px] font-bold text-[#6B7280] mb-1 uppercase tracking-widest">{item.label}</div>
                     <div className={`text-lg font-bold ${item.color}`} style={CG}>{item.value}</div>
                   </div>
@@ -622,7 +622,7 @@ export default function KeynoteDemo() {
     decision: (
       <div className="flex flex-col items-center justify-center min-h-screen px-8 bg-white">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 bg-[#0A0F2E]/5 text-[#0A0F2E] border border-[#0A0F2E]/10 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 bg-[#0A0F2E]/5 text-[#0A0F2E] border border-[#0A0F2E]/10 px-4 py-2 text-sm font-medium mb-6">
             <Shield className="h-4 w-4" />
             AI MONITORS — EXECUTIVES AUTHORIZE
           </div>
@@ -636,9 +636,9 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="w-full max-w-4xl"
         >
-          <div className="bg-white border border-[#E8E4DC] rounded-2xl p-10 shadow-xl">
+          <div className="bg-white border border-[#E8E4DC] p-10">
             <div className="flex items-center gap-6 mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-[#0A0F2E] flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-[#0A0F2E] flex items-center justify-center">
                 <Brain className="h-8 w-8 text-[#C9A84C]" />
               </div>
               <div>
@@ -651,7 +651,7 @@ export default function KeynoteDemo() {
               </div>
             </div>
 
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-6 mb-8 italic">
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] p-6 mb-8 italic">
               <p className="text-lg text-[#0A0F2E] leading-relaxed">
                 "Activate <span className="text-[#0A0F2E] font-bold not-italic underline decoration-[#C9A84C] decoration-2">Competitive Response Playbook #47</span> immediately.
                 Delay beyond 48 hours increases revenue exposure from $12.5M to $28.3M.
@@ -660,9 +660,9 @@ export default function KeynoteDemo() {
               </p>
             </div>
 
-            <div className="flex items-center justify-between p-6 bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-xl">
+            <div className="flex items-center justify-between p-6 bg-[#0A0F2E]/5 border border-[#0A0F2E]/10">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#0A0F2E] flex items-center justify-center text-[#C9A84C] font-bold text-lg border border-[#C9A84C] shadow-sm">JP</div>
+                <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center text-[#C9A84C] font-bold text-lg border border-[#C9A84C]">JP</div>
                 <div>
                   <div className="text-[#0A0F2E] font-bold">Jennifer Park, CEO</div>
                   <div className="text-[#6B7280] text-xs font-bold uppercase tracking-wider">Decision Authority</div>
@@ -673,7 +673,7 @@ export default function KeynoteDemo() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.5, duration: 0.5 }}
               >
-                <div className="flex items-center gap-3 bg-[#2B8A6E] text-white px-6 py-3 rounded-xl font-bold text-lg shadow-lg">
+                <div className="flex items-center gap-3 bg-[#2B8A6E] text-white px-6 py-3 font-bold text-lg">
                   <CheckCircle2 className="h-6 w-6" />
                   APPROVED — Activate Playbook
                 </div>
@@ -697,7 +697,7 @@ export default function KeynoteDemo() {
       <div className="flex items-center justify-center min-h-screen px-8 bg-[#F8F7F4]">
         <div className="w-full max-w-6xl">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 px-4 py-2 text-sm font-medium mb-4">
               <Zap className="h-4 w-4" />
               LIVE ACTIVATION
             </div>
@@ -711,12 +711,12 @@ export default function KeynoteDemo() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="bg-white border border-[#E8E4DC] rounded-2xl p-6 h-full shadow-sm"
+                className="bg-white border border-[#E8E4DC] p-6 h-full"
               >
                 <div className="flex items-center justify-between mb-6 border-b border-[#E8E4DC] pb-4">
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={CG}>Execution Timeline</h3>
                   <div className="flex items-center gap-2">
-                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-[#2B8A6E]" />
                     <span className="text-[#2B8A6E] text-xs font-bold uppercase tracking-widest">Live Activity</span>
                   </div>
                 </div>
@@ -729,7 +729,7 @@ export default function KeynoteDemo() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="bg-[#0A0F2E] border border-white/10 rounded-2xl p-6 text-white shadow-xl"
+                className="bg-[#0A0F2E] border border-white/10 p-6 text-white"
               >
                 <h3 className="text-sm font-bold text-white/60 uppercase tracking-widest mb-6">Coordination Metrics</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -739,7 +739,7 @@ export default function KeynoteDemo() {
                     { label: 'Channels Active', value: '6', color: 'text-[#2B8A6E]' },
                     { label: 'Docs Staged', value: '12', color: 'text-white/80' },
                   ].map((m, i) => (
-                    <div key={i} className="bg-[#0A0F2E]/20 rounded-lg p-4 text-center border border-white/5">
+                    <div key={i} className="bg-[#0A0F2E]/20 p-4 text-center border border-white/5">
                       <div className={`text-2xl font-bold ${m.color}`} style={CG}>{m.value}</div>
                       <div className="text-[10px] text-white/40 font-bold uppercase tracking-wider">{m.label}</div>
                     </div>
@@ -751,7 +751,7 @@ export default function KeynoteDemo() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
-                className="bg-white border border-[#E8E4DC] rounded-2xl p-6 shadow-sm"
+                className="bg-white border border-[#E8E4DC] p-6"
               >
                 <h3 className="text-sm font-bold text-[#0A0F2E]/60 uppercase tracking-widest mb-6">Integration Activity</h3>
                 <div className="space-y-3">
@@ -762,7 +762,7 @@ export default function KeynoteDemo() {
                     { tool: 'Salesforce', status: '340 accounts flagged', color: 'text-[#C9A84C]' },
                     { tool: 'Microsoft Teams', status: 'Briefing live', color: 'text-[#0A0F2E]' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg p-3 shadow-sm">
+                    <div key={i} className="flex items-center justify-between bg-[#F8F7F4] border border-[#E8E4DC] p-3">
                       <span className="text-sm text-[#0A0F2E] font-bold">{item.tool}</span>
                       <span className={`text-[10px] font-bold uppercase tracking-tight ${item.color}`}>{item.status}</span>
                     </div>
@@ -795,7 +795,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.2, duration: 0.6 }}
-              className={`bg-white ${phase.border} border rounded-2xl overflow-hidden shadow-lg`}
+              className={`bg-white ${phase.border} border overflow-hidden`}
             >
               <div className={`${phase.color} p-6 text-center text-white shadow-inner`}>
                 <phase.icon className="h-10 w-10 mx-auto mb-3" />
@@ -822,7 +822,7 @@ export default function KeynoteDemo() {
         >
           {['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'].map((phase, i) => (
             <div key={i} className="flex items-center gap-4">
-              <div className="bg-[#0A0F2E] text-white rounded-full px-6 py-2 text-xs font-bold tracking-widest uppercase border border-[#C9A84C]/30 shadow-md">{phase}</div>
+              <div className="bg-[#0A0F2E] text-white px-6 py-2 text-xs font-bold tracking-widest uppercase border border-[#C9A84C]/30">{phase}</div>
               {i < 3 && <ArrowRight className="h-4 w-4 text-[#0A0F2E]/30" />}
             </div>
           ))}
@@ -833,7 +833,7 @@ export default function KeynoteDemo() {
     outcomes: (
       <div className="flex flex-col items-center justify-center min-h-screen px-8 bg-[#F8F7F4]">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-4 py-2 text-sm font-medium mb-6">
             <Award className="h-4 w-4" />
             PROVEN RESULTS
           </div>
@@ -847,7 +847,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-white border border-red-100 rounded-2xl p-8 shadow-sm"
+              className="bg-white border border-red-100 p-8"
             >
               <h3 className="text-xl font-bold text-red-600 mb-6 flex items-center gap-3" style={CG}>
                 <AlertTriangle className="h-6 w-6" />
@@ -861,7 +861,7 @@ export default function KeynoteDemo() {
                   { metric: 'Budget Approval', value: '5-10 days', detail: 'Multi-layer approval process' },
                   { metric: 'Full Execution', value: '30-90 days', detail: 'If it happens at all' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between bg-red-50/50 border border-red-50 rounded-lg p-4">
+                  <div key={i} className="flex items-center justify-between bg-red-50/50 border border-red-50 p-4">
                     <div>
                       <div className="text-[#0A0F2E] font-bold text-sm">{item.metric}</div>
                       <div className="text-red-600/60 text-[10px] font-bold uppercase tracking-wider">{item.detail}</div>
@@ -876,7 +876,7 @@ export default function KeynoteDemo() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="bg-[#0A0F2E] border border-white/10 rounded-2xl p-8 shadow-xl text-white"
+              className="bg-[#0A0F2E] border border-white/10 p-8 text-white"
             >
               <h3 className="text-xl font-bold text-[#C9A84C] mb-6 flex items-center gap-3" style={CG}>
                 <CheckCircle2 className="h-6 w-6" />
@@ -890,7 +890,7 @@ export default function KeynoteDemo() {
                   { metric: 'Budget Approval', value: 'Pre-approved', detail: 'Built into playbook configuration' },
                   { metric: 'Full Execution', value: '< 12 minutes', detail: 'Signal to action, every time' },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between bg-[#0A0F2E]/20 border border-white/10 rounded-lg p-4">
+                  <div key={i} className="flex items-center justify-between bg-[#0A0F2E]/20 border border-white/10 p-4">
                     <div>
                       <div className="text-white font-bold text-sm">{item.metric}</div>
                       <div className="text-[#C9A84C]/60 text-[10px] font-bold uppercase tracking-wider">{item.detail}</div>
@@ -914,7 +914,7 @@ export default function KeynoteDemo() {
               { label: 'Cost Savings', value: '$2.4M', detail: 'per incident', color: 'text-[#C9A84C]' },
               { label: 'Executive Time', value: '23%', detail: 'reclaimed', color: 'text-[#2B8A6E]' },
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-[#E8E4DC] rounded-2xl p-6 text-center shadow-sm">
+              <div key={i} className="bg-white border border-[#E8E4DC] p-6 text-center">
                 <div className={`text-4xl font-bold ${item.color} mb-1`} style={CG}>{item.value}</div>
                 <div className="text-[#0A0F2E] text-xs font-bold uppercase tracking-widest">{item.detail}</div>
                 <div className="text-[#6B7280] text-[10px] uppercase font-medium mt-1">{item.label}</div>
@@ -935,8 +935,8 @@ export default function KeynoteDemo() {
           className="mb-8 relative z-10"
         >
           <div className="relative inline-flex items-center justify-center">
-            <div className="absolute inset-0 w-36 h-36 rounded-full bg-[#C9A84C] blur-3xl opacity-20 animate-pulse" />
-            <div className="relative w-32 h-32 rounded-full bg-[#C9A84C] flex items-center justify-center shadow-2xl">
+            <div className="absolute inset-0 w-36 h-36 bg-[#C9A84C] blur-3xl opacity-20 animate-pulse" />
+            <div className="relative w-32 h-32 bg-[#C9A84C] flex items-center justify-center">
               <Rocket className="h-16 w-16 text-[#0A0F2E]" />
             </div>
           </div>
@@ -970,7 +970,7 @@ export default function KeynoteDemo() {
         >
           <Button
             size="lg"
-            className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] px-10 py-7 text-xl font-bold rounded-xl shadow-2xl"
+            className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] px-10 py-7 text-xl font-bold"
           >
             Schedule Onboarding
             <ArrowRight className="ml-2 h-6 w-6" />
@@ -978,7 +978,7 @@ export default function KeynoteDemo() {
           <Button
             size="lg"
             variant="outline"
-            className="border-white/20 text-white hover:bg-[#0A0F2E]/30 px-10 py-7 text-xl rounded-xl bg-transparent"
+            className="border-white/20 text-white hover:bg-[#0A0F2E]/30 px-10 py-7 text-xl bg-transparent"
           >
             Download Deck
           </Button>

@@ -90,7 +90,7 @@ export default function TaskPanel() {
         {isLoading ? (
           <div className="space-y-3">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="animate-pulse flex items-center space-x-3 p-3 rounded-lg border border-border">
+              <div key={i} className="animate-pulse flex items-center space-x-3 p-3 border border-border">
                 <div className="w-4 h-4 bg-muted rounded"></div>
                 <div className="flex-1 space-y-2">
                   <div className="h-4 bg-muted rounded w-3/4"></div>
@@ -108,7 +108,7 @@ export default function TaskPanel() {
           tasks?.map((task, index) => (
             <div 
               key={task.id} 
-              className="flex items-center space-x-3 p-3 rounded-lg border border-border"
+              className="flex items-center space-x-3 p-3 border border-border"
               data-testid={`task-${index}`}
             >
               <Checkbox
@@ -125,7 +125,7 @@ export default function TaskPanel() {
                   {task.description}
                 </p>
                 <div className="flex items-center space-x-2 mt-1">
-                  <span className={`px-2 py-1 text-xs rounded-full ${
+                  <span className={`px-2 py-1 text-xs ${
                     task.status === 'Completed' 
                       ? 'bg-green-100 text-green-800' 
                       : getPriorityColor(task.priority)

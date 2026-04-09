@@ -177,7 +177,7 @@ export default function UnifiedEnterprisePlatform() {
           </div>
 
           {/* Header */}
-          <div className="bg-[#0A0F2E] text-white p-3 rounded-lg flex-shrink-0 relative overflow-hidden">
+          <div className="bg-[#0A0F2E] text-white p-3 flex-shrink-0 relative overflow-hidden">
             <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.1) 1px, transparent 0)", backgroundSize: "24px 24px" }} />
             <div className="relative z-10 flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -192,7 +192,7 @@ export default function UnifiedEnterprisePlatform() {
               <div className="flex items-center gap-3">
                 <Link to="/hybrid-demo">
                   <Button 
-                    className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold shadow-lg hover:shadow-xl transition-all" 
+                    className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold transition-all" 
                     data-testid="try-live-demo-btn"
                   >
                     <Play className="h-4 w-4 mr-2" />
@@ -206,7 +206,7 @@ export default function UnifiedEnterprisePlatform() {
                   </Button>
                 </Link>
                 <Badge variant="outline" className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" data-testid="system-status">
-                  <div className="w-2 h-2 bg-[#C9A84C] rounded-full mr-2 animate-pulse"></div>
+                  <div className="w-2 h-2 bg-[#C9A84C] mr-2 animate-pulse"></div>
                   ALL SYSTEMS OPERATIONAL
                 </Badge>
               </div>
@@ -305,7 +305,7 @@ export default function UnifiedEnterprisePlatform() {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full flex-1 flex flex-col min-h-0">
-            <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 xl:grid-cols-10 gap-1 p-1 bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg flex-shrink-0">
+            <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 xl:grid-cols-10 gap-1 p-1 bg-[#F8F7F4] border border-[#E8E4DC] flex-shrink-0">
               <TabsTrigger value="overview" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-overview">
                 <BarChart3 className="h-4 w-4" />
                 Overview
@@ -358,7 +358,7 @@ export default function UnifiedEnterprisePlatform() {
             <TabsContent value="overview" className="flex-1 overflow-y-auto p-3 space-y-3" data-testid="overview-content">
               
               {/* V1 Core Loop Banner */}
-              <div className="bg-[#0A0F2E] text-white rounded-lg border-2 border-[#C9A84C]/30 p-4 mb-4 relative overflow-hidden">
+              <div className="bg-[#0A0F2E] text-white border-2 border-[#C9A84C]/30 p-4 mb-4 relative overflow-hidden">
                 <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.05) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
                 <div className="relative z-10 flex items-center justify-between">
                   <div>
@@ -384,7 +384,7 @@ export default function UnifiedEnterprisePlatform() {
                   <Card key={index} className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5 backdrop-blur-sm" data-testid={`metric-${metric.name.replace(/\s+/g, '-').toLowerCase()}`}>
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
-                        <div className="p-2 rounded-lg bg-[#0A0F2E]/10 dark:bg-white/10">
+                        <div className="p-2 bg-[#0A0F2E]/10 dark:bg-white/10">
                           <BarChart3 className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
                         </div>
                         <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
@@ -430,7 +430,7 @@ export default function UnifiedEnterprisePlatform() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Average Decision Time */}
-                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#2B8A6E]/30">
+                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#2B8A6E]/30">
                       <div className="flex items-center gap-2 mb-2">
                         <Clock className="h-5 w-5 text-[#2B8A6E]" />
                         <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">Avg. Decision Time</span>
@@ -446,7 +446,7 @@ export default function UnifiedEnterprisePlatform() {
                     </div>
 
                     {/* Playbooks Executed */}
-                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#0A0F2E]/30">
+                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#0A0F2E]/30">
                       <div className="flex items-center gap-2 mb-2">
                         <Target className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
                         <span className="text-sm font-medium text-[#0A0F2E] dark:text-white">Plays Executed (30d)</span>
@@ -462,7 +462,7 @@ export default function UnifiedEnterprisePlatform() {
                     </div>
 
                     {/* Value Created */}
-                    <div className="p-4 bg-gray-50 rounded-lg border border-[#C9A84C]/30">
+                    <div className="p-4 bg-gray-50 border border-[#C9A84C]/30">
                       <div className="flex items-center gap-2 mb-2">
                         <DollarSign className="h-5 w-5 text-[#C9A84C]" />
                         <span className="text-sm font-medium text-gray-800">Value Created (30d)</span>
@@ -479,7 +479,7 @@ export default function UnifiedEnterprisePlatform() {
                   </div>
 
                   {/* Most Used Playbooks */}
-                  <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <div className="mt-4 p-4 bg-gray-50 border border-gray-200">
                     <h4 className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
                       <Activity className="h-4 w-4 text-gray-800" />
                       Top 5 Playbooks (This Month)
@@ -522,7 +522,7 @@ export default function UnifiedEnterprisePlatform() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     {strategicScenarios.map((scenario, index) => (
-                      <div key={index} className="p-3 bg-gray-50 rounded-lg border border-slate-600">
+                      <div key={index} className="p-3 bg-gray-50 border border-slate-600">
                         <div className="flex justify-between items-start mb-2">
                           <h4 className="font-semibold text-gray-900">{scenario.name}</h4>
                           <div className="flex gap-2">
@@ -658,7 +658,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-3">
                     {executivePlaybooks.map((playbook, index) => (
                       <Link key={index} href="/comprehensive-scenarios">
-                        <div className="p-3 bg-gray-50 rounded-lg border border-slate-600 hover:border-[#0A0F2E] cursor-pointer transition-colors">
+                        <div className="p-3 bg-gray-50 border border-slate-600 hover:border-[#0A0F2E] cursor-pointer transition-colors">
                           <div className="flex justify-between items-start mb-2">
                             <div>
                               <span className="text-xs text-gray-800 font-mono">{playbook.playbookId}</span>
@@ -692,7 +692,7 @@ export default function UnifiedEnterprisePlatform() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {strategicScenarios.map((scenario, index) => (
-                      <div key={index} className="p-3 bg-gray-50 rounded-lg border border-slate-600">
+                      <div key={index} className="p-3 bg-gray-50 border border-slate-600">
                         <div className="flex justify-between items-start mb-2">
                           <h4 className="font-semibold text-gray-900 text-sm">{scenario.name}</h4>
                           <div className="flex gap-1">
@@ -1013,7 +1013,7 @@ export default function UnifiedEnterprisePlatform() {
                         Schedule Meeting
                       </Button>
                     </div>
-                    <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                    <div className="mt-4 p-3 bg-gray-50">
                       <div className="text-sm text-gray-800">
                         <div className="flex justify-between mb-1">
                           <span>Messages Today:</span>
@@ -1886,7 +1886,7 @@ export default function UnifiedEnterprisePlatform() {
                         AI Insights
                       </Button>
                     </div>
-                    <div className="p-3 bg-gray-50 rounded-lg">
+                    <div className="p-3 bg-gray-50">
                       <div className="text-sm text-gray-800 space-y-1">
                         <div className="flex justify-between">
                           <span>Executive Alerts:</span>

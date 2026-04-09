@@ -120,7 +120,7 @@ export default function HowItWorks() {
               Every step the traditional enterprise spends weeks negotiating — context analysis, role assignment, task orchestration, communications — Readiness OS delivers automatically, end to end, into the tools your teams already use.
             </p>
           </div>
-          <ExecutionProcessDiagram className="rounded-xl shadow-sm border border-[#E8E4DC]" />
+          <ExecutionProcessDiagram className="rounded-xl border border-[#E8E4DC]" />
         </div>
       </section>
 

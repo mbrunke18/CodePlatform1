@@ -88,7 +88,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <Brain className="h-6 w-6 text-white" />
             </div>
             <div>
@@ -112,7 +112,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Readiness Score - Large Display */}
-          <div className="lg:col-span-1 flex flex-col items-center justify-center bg-white/50 dark:bg-slate-900/50 rounded-xl p-6 border border-[#E8E4DC]/50 dark:border-[#0A0F2E]/50">
+          <div className="lg:col-span-1 flex flex-col items-center justify-center bg-white/50 dark:bg-slate-900/50 p-6 border border-[#E8E4DC]/50 dark:border-[#0A0F2E]/50">
             <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
               Overall Readiness
             </div>
@@ -138,7 +138,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
               const Icon = cap.icon;
               return (
                 <div key={cap.label} className="flex items-center gap-3" data-testid={`metric-${cap.label.toLowerCase()}`}>
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${cap.color} flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-8 h-8 bg-gradient-to-br ${cap.color} flex items-center justify-center flex-shrink-0`}>
                     <Icon className="h-4 w-4 text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -150,9 +150,9 @@ export default function FutureReadinessWidget({ organizationId }: { organization
                         {cap.value}%
                       </span>
                     </div>
-                    <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div className="h-2 bg-slate-200 dark:bg-slate-800 overflow-hidden">
                       <div 
-                        className={`h-full bg-gradient-to-r ${cap.color} rounded-full transition-all duration-1000 ease-out`}
+                        className={`h-full bg-gradient-to-r ${cap.color} transition-all duration-1000 ease-out`}
                         style={{ width: `${cap.value}%` }}
                       />
                     </div>

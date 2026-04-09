@@ -122,7 +122,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
 
   return (
     <div className="space-y-6">
-      <div className="bg-amber-50 dark:bg-amber-950 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
+      <div className="bg-amber-50 dark:bg-amber-950 p-4 border border-amber-200 dark:border-amber-800">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">📚</span> ADVANCE Phase — Review the Film
         </h3>
@@ -145,7 +145,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
           {learnItems.map((item) => (
             <div
               key={item.id}
-              className="flex items-start gap-3 p-3 border rounded-lg bg-background"
+              className="flex items-start gap-3 p-3 border bg-background"
               data-testid={`learn-item-${item.id}`}
             >
               <div className="flex-shrink-0 pt-0.5">
@@ -281,7 +281,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center justify-between p-3 border rounded-lg">
+          <div className="flex items-center justify-between p-3 border">
             <div>
               <div className="text-sm font-medium">Auto-Create Improvement Tasks</div>
               <div className="text-xs text-muted-foreground">
@@ -295,7 +295,7 @@ export default function LearnConfigStep({ data, onChange, playbook }: LearnConfi
             />
           </div>
 
-          <div className="p-3 bg-muted/50 rounded-lg">
+          <div className="p-3 bg-muted/50">
             <div className="text-xs text-muted-foreground">
               After each playbook execution, Readiness OS will analyze response metrics and stakeholder 
               feedback to identify patterns and recommend playbook improvements. This creates 

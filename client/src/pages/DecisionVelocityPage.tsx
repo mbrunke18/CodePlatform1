@@ -47,7 +47,7 @@ export default function DecisionVelocityPage() {
 
         <div className="max-w-7xl mx-auto px-12 space-y-12 pb-20">
           {/* Readiness Infrastructure Foundation */}
-          <Card className="bg-[#0A0F2E] border-none rounded-none shadow-xl overflow-hidden relative">
+          <Card className="bg-[#0A0F2E] border-none rounded-none overflow-hidden relative">
             <div style={{ 
               position: "absolute", 
               right: "-5%", 
@@ -114,7 +114,7 @@ export default function DecisionVelocityPage() {
           </Card>
 
           {/* What is Decision Velocity */}
-          <Card className="rounded-none border-[#E8E4DC] shadow-sm bg-white overflow-hidden">
+          <Card className="rounded-none border-[#E8E4DC] bg-white overflow-hidden">
             <div className="flex flex-col md:flex-row">
               <div className="p-10 md:w-2/3 border-r border-[#F8F7F4]">
                 <CardHeader className="px-0 pt-0 mb-6">
@@ -157,7 +157,7 @@ export default function DecisionVelocityPage() {
           </Card>
 
           {/* Main Dashboard Component */}
-          <div className="p-8 bg-white border border-[#E8E4DC] rounded-none shadow-sm">
+          <div className="p-8 bg-white border border-[#E8E4DC] rounded-none">
              <DecisionVelocityDashboard organizationId={organizationId} />
           </div>
 
@@ -169,7 +169,7 @@ export default function DecisionVelocityPage() {
               { title: 'Ecosystem Connectors', color: '#C9A84C', desc: 'Integrated systems eliminate manual handoffs and communication gaps.' },
               { title: 'Institutional Memory', color: '#DFC178', desc: 'AI learns from every move. Each execution improves velocity for the next event.' }
             ].map((p, i) => (
-              <Card key={i} className="rounded-none border-[#E8E4DC] p-6 bg-white shadow-sm hover:border-[#C9A84C] transition-colors">
+              <Card key={i} className="rounded-none border-[#E8E4DC] p-6 bg-white hover:border-[#C9A84C] transition-colors">
                 <div style={{ color: p.color }} className="font-bold text-[10px] tracking-widest uppercase mb-4">0{i+1}. {p.title}</div>
                 <p className="text-sm text-[#6B7280] leading-relaxed">{p.desc}</p>
               </Card>
@@ -177,7 +177,7 @@ export default function DecisionVelocityPage() {
           </div>
 
           {/* Real Examples */}
-          <Card className="rounded-none border-[#E8E4DC] bg-white p-10 shadow-sm">
+          <Card className="rounded-none border-[#E8E4DC] bg-white p-10">
             <CardHeader className="px-0 pt-0 mb-8">
               <CardTitle style={CG} className="text-3xl font-bold text-[#0A0F2E] flex items-center gap-4">
                 <Award className="h-8 w-8 text-[#C9A84C]" />

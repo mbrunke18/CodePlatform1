@@ -47,7 +47,7 @@ export default function PilotMonitoring() {
       <PageLayout>
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C9A84C] mx-auto"></div>
+            <div className="animate-spin h-12 w-12 border-b-2 border-[#C9A84C] mx-auto"></div>
             <p className="mt-4 text-gray-800 dark:text-slate-300">Loading monitoring dashboard...</p>
           </div>
         </div>
@@ -210,8 +210,8 @@ export default function PilotMonitoring() {
                     <span className="text-gray-800 dark:text-slate-300">Adoption Rate</span>
                     <span className="font-semibold text-[#0A0F2E] dark:text-white">70%</span>
                   </div>
-                  <div className="w-full bg-[#E8E4DC] dark:bg-[#141B45] rounded-full h-2">
-                    <div className="bg-[#2B8A6E] h-2 rounded-full" style={{ width: '70%' }}></div>
+                  <div className="w-full bg-[#E8E4DC] dark:bg-[#141B45] h-2">
+                    <div className="bg-[#2B8A6E] h-2" style={{ width: '70%' }}></div>
                   </div>
                 </div>
                 <div>
@@ -219,8 +219,8 @@ export default function PilotMonitoring() {
                     <span className="text-gray-800 dark:text-slate-300">Average Engagement</span>
                     <span className="font-semibold text-[#0A0F2E] dark:text-white">85%</span>
                   </div>
-                  <div className="w-full bg-[#E8E4DC] dark:bg-[#141B45] rounded-full h-2">
-                    <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '85%' }}></div>
+                  <div className="w-full bg-[#E8E4DC] dark:bg-[#141B45] h-2">
+                    <div className="bg-[#0A0F2E] h-2" style={{ width: '85%' }}></div>
                   </div>
                 </div>
               </div>
@@ -272,7 +272,7 @@ export default function PilotMonitoring() {
           <CardContent>
             <div className="grid md:grid-cols-2 gap-4">
               {performanceMetrics.map((metric, index) => (
-                <div key={index} className="bg-[#F8F7F4] dark:bg-[#141B45] rounded-lg p-4 border border-[#E8E4DC]">
+                <div key={index} className="bg-[#F8F7F4] dark:bg-[#141B45] p-4 border border-[#E8E4DC]">
                   <div className="flex items-center justify-between mb-2">
                     <div className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                       {metric.label}
@@ -301,7 +301,7 @@ export default function PilotMonitoring() {
           <CardContent>
             <div className="space-y-3">
               {recentActivity.map((activity, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-[#F8F7F4] dark:bg-[#0A0F2E] rounded-lg border border-[#E8E4DC]">
+                <div key={index} className="flex items-start gap-3 p-3 bg-[#F8F7F4] dark:bg-[#0A0F2E] border border-[#E8E4DC]">
                   <div className="flex-shrink-0 mt-1">
                     {activity.success ? (
                       <CheckCircle2 className="w-5 h-5 text-[#2B8A6E]" />

@@ -14,7 +14,7 @@ export default function PerformanceAnalytics() {
             <span className="text-sm font-medium text-foreground">Agility Score Trend</span>
             <span className="text-sm text-muted-foreground">Last 30 days</span>
           </div>
-          <div className="relative h-20 bg-muted/30 rounded-lg" data-testid="chart-agility-trend">
+          <div className="relative h-20 bg-muted/30" data-testid="chart-agility-trend">
             {/* Simulated chart area */}
             <div className="absolute inset-0 flex items-end justify-between px-2 pb-2">
               <div className="w-2 bg-primary h-8 rounded-t"></div>
@@ -35,8 +35,8 @@ export default function PerformanceAnalytics() {
               <span className="text-sm text-foreground">Scenario Completion Rate</span>
               <span className="text-sm font-medium text-foreground" data-testid="text-completion-rate">87%</span>
             </div>
-            <div className="w-full bg-muted rounded-full h-2 mt-1">
-              <div className="bg-green-500 h-2 rounded-full" style={{ width: '87%' }}></div>
+            <div className="w-full bg-muted h-2 mt-1">
+              <div className="bg-green-500 h-2" style={{ width: '87%' }}></div>
             </div>
           </div>
           
@@ -45,8 +45,8 @@ export default function PerformanceAnalytics() {
               <span className="text-sm text-foreground">Task Velocity</span>
               <span className="text-sm font-medium text-foreground" data-testid="text-task-velocity">2.3/day</span>
             </div>
-            <div className="w-full bg-muted rounded-full h-2 mt-1">
-              <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '76%' }}></div>
+            <div className="w-full bg-muted h-2 mt-1">
+              <div className="bg-[#0A0F2E] h-2" style={{ width: '76%' }}></div>
             </div>
           </div>
           
@@ -55,16 +55,16 @@ export default function PerformanceAnalytics() {
               <span className="text-sm text-foreground">Team Engagement</span>
               <span className="text-sm font-medium text-foreground" data-testid="text-team-engagement">94%</span>
             </div>
-            <div className="w-full bg-muted rounded-full h-2 mt-1">
-              <div className="bg-[#0A0F2E] h-2 rounded-full" style={{ width: '94%' }}></div>
+            <div className="w-full bg-muted h-2 mt-1">
+              <div className="bg-[#0A0F2E] h-2" style={{ width: '94%' }}></div>
             </div>
           </div>
         </div>
         
         {/* AI Insights */}
-        <div className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] p-4 rounded-lg border border-[#C9A84C]">
+        <div className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] p-4 border border-[#C9A84C]">
           <div className="flex items-start space-x-3">
-            <div className="w-6 h-6 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-6 h-6 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] flex items-center justify-center flex-shrink-0">
               <i className="fas fa-lightbulb text-white text-xs"></i>
             </div>
             <div>

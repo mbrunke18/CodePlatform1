@@ -103,7 +103,7 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
           {active.slice(0, compact ? 2 : 10).map((threat: any) => {
             const cc = confidenceColor(threat.confidence);
             return (
-              <div key={threat.id} className="p-4 border hover:shadow-sm transition-shadow"
+              <div key={threat.id} className="p-4 border "
                 style={{ borderColor: `${cc}30`, background: `${cc}04`, borderLeft: `3px solid ${cc}` }}>
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
@@ -116,7 +116,7 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
                         </span>
                       ))}
                       <div className="flex items-center gap-1">
-                        <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: cc }} />
+                        <div className="w-1.5 h-1.5 animate-pulse" style={{ background: cc }} />
                         <span className="text-[9px] font-black" style={{ color: cc }}>{threat.confidence}% confidence</span>
                       </div>
                     </div>

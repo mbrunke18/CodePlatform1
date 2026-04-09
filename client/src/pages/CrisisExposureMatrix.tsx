@@ -130,7 +130,7 @@ export default function CrisisExposureMatrix() {
 
         <div className="p-12 max-w-7xl mx-auto space-y-12">
           {/* Strategy Card */}
-          <Card className="bg-[#0A0F2E] border-none rounded-none shadow-xl overflow-hidden relative">
+          <Card className="bg-[#0A0F2E] border-none rounded-none overflow-hidden relative">
             <div style={{ 
               position: "absolute", 
               right: "-5%", 
@@ -222,7 +222,7 @@ export default function CrisisExposureMatrix() {
           </div>
 
           {/* Action Items */}
-          <Card className="rounded-none border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
+          <Card className="rounded-none border-[#E8E4DC] bg-white overflow-hidden">
             <CardHeader className="p-8 border-b border-OFF">
               <CardTitle style={CG} className="text-3xl text-[#0A0F2E]">Recommended Next Steps</CardTitle>
             </CardHeader>

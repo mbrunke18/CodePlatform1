@@ -60,21 +60,21 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
           </div>
 
           <div className="grid md:grid-cols-3 gap-4">
-            <div className="bg-white rounded-lg p-4">
+            <div className="bg-white p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Users className="h-4 w-4 text-[#0A0F2E]" />
                 <span className="text-sm text-gray-700">Stakeholders</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{stakeholderCount}</p>
             </div>
-            <div className="bg-white rounded-lg p-4">
+            <div className="bg-white p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Bell className="h-4 w-4 text-[#C9A84C]" />
                 <span className="text-sm text-gray-700">Triggers</span>
               </div>
               <p className="text-2xl font-bold text-gray-900">{triggerCount}</p>
             </div>
-            <div className="bg-white rounded-lg p-4">
+            <div className="bg-white p-4">
               <div className="flex items-center gap-2 mb-2">
                 <BarChart3 className="h-4 w-4 text-green-400" />
                 <span className="text-sm text-gray-700">Metrics</span>
@@ -97,7 +97,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
               return (
                 <div
                   key={index}
-                  className={`flex items-center gap-3 p-3 rounded-lg ${
+                  className={`flex items-center gap-3 p-3 ${
                     check.met ? 'bg-green-950/20 border border-green-500/30' : 'bg-white border border-gray-200'
                   }`}
                 >
@@ -120,7 +120,7 @@ export default function ReviewPhase({ data, completionScore }: ReviewPhaseProps)
             })}
           </div>
 
-          <div className="mt-6 p-4 bg-[#0A0F2E]/20 border border-[#2B8A6E]/30 rounded-lg">
+          <div className="mt-6 p-4 bg-[#0A0F2E]/20 border border-[#2B8A6E]/30">
             <div className="flex items-start gap-3">
               <Clock className="h-5 w-5 text-[#0A0F2E] mt-0.5 flex-shrink-0" />
               <div>

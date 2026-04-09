@@ -34,12 +34,12 @@ export function Outro({ progress }: SceneProps) {
         >
           <div className="relative w-24 h-24 mx-auto">
             <motion.div
-              className="absolute inset-0 rounded-full border-4 border-[#D4AF37]"
+              className="absolute inset-0 border-4 border-[#D4AF37]"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
             <motion.div
-              className="absolute inset-3 rounded-full border-2 border-[#00A8A8]"
+              className="absolute inset-3 border-2 border-[#00A8A8]"
               animate={{ rotate: -360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             />
@@ -80,16 +80,16 @@ export function Outro({ progress }: SceneProps) {
           transition={{ delay: 1 }}
           className="flex flex-wrap justify-center gap-3 text-xs mb-10"
         >
-          <span className="px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full text-[#D4AF37]">
+          <span className="px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37]">
             AI-Powered Signal Detection
           </span>
-          <span className="px-3 py-1 bg-[#00A8A8]/10 border border-[#00A8A8]/30 rounded-full text-[#00A8A8]">
+          <span className="px-3 py-1 bg-[#00A8A8]/10 border border-[#00A8A8]/30 text-[#00A8A8]">
             Executive Summary Generator
           </span>
-          <span className="px-3 py-1 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-full text-[#C9A84C]">
+          <span className="px-3 py-1 bg-[#C9A84C]/10 border border-[#C9A84C]/30 text-[#C9A84C]">
             What-If Analyzer
           </span>
-          <span className="px-3 py-1 bg-[#0A0F2E]/10 border border-[#2B8A6E]/30 rounded-full text-[#0A0F2E]">
+          <span className="px-3 py-1 bg-[#0A0F2E]/10 border border-[#2B8A6E]/30 text-[#0A0F2E]">
             Readiness Assessment
           </span>
         </motion.div>
@@ -104,7 +104,7 @@ export function Outro({ progress }: SceneProps) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold px-8 py-4 rounded-full flex items-center gap-3 shadow-2xl shadow-[#D4AF37]/30"
+              className="bg-[#D4AF37] hover:bg-[#c9a432] text-black font-bold px-8 py-4 flex items-center gap-3 shadow-[#D4AF37]/30"
             >
               Try Demo
               <ArrowRight className="w-5 h-5" />
@@ -115,7 +115,7 @@ export function Outro({ progress }: SceneProps) {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium px-8 py-4 rounded-full flex items-center gap-3 border border-gray-200"
+              className="bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium px-8 py-4 flex items-center gap-3 border border-gray-200"
             >
               <Calendar className="w-5 h-5" />
               Start Pilot

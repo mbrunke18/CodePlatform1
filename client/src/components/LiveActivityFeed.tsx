@@ -51,7 +51,7 @@ export default function LiveActivityFeed({ organizationId }: { organizationId: s
             <CardTitle className="text-lg">Live Activity Feed</CardTitle>
           </div>
           <Badge variant="outline" className="text-xs">
-            <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
+            <div className="w-2 h-2 bg-green-500 mr-2 animate-pulse" />
             Live
           </Badge>
         </div>
@@ -76,14 +76,14 @@ export default function LiveActivityFeed({ organizationId }: { organizationId: s
                 return (
                   <div 
                     key={event.id}
-                    className={`flex gap-3 p-3 rounded-lg border ${colors.border} bg-slate-50/50 dark:bg-slate-900/50 transition-all hover:shadow-sm`}
+                    className={`flex gap-3 p-3 border ${colors.border} bg-slate-50/50 dark:bg-slate-900/50 transition-all`}
                     style={{ 
                       animation: index === 0 ? 'slideIn 0.5s ease-out' : 'none' 
                     }}
                     data-testid={`activity-event-${event.id}`}
                   >
                     <div className="flex-shrink-0">
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center`}>
+                      <div className={`w-8 h-8 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center`}>
                         <Icon className="h-4 w-4 text-white" />
                       </div>
                     </div>

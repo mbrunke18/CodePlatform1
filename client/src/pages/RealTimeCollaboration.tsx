@@ -429,7 +429,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 </CardHeader>
                 <CardContent className="space-y-4 max-h-96 overflow-y-auto">
                   {liveUpdates.slice(0, 8).map((update) => (
-                    <div key={update.id} className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                    <div key={update.id} className="p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Badge className={getPriorityColor(update.priority)}>
@@ -530,7 +530,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                                     {participant.name.split(' ').map(n => n[0]).join('')}
                                   </AvatarFallback>
                                 </Avatar>
-                                <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${getStatusColor(participant.status)} rounded-full border border-white`} />
+                                <div className={`absolute -bottom-1 -right-1 w-3 h-3 ${getStatusColor(participant.status)} border border-white`} />
                               </div>
                               <div>
                                 <div className="text-sm font-medium text-[#0A0F2E] dark:text-white">{participant.name}</div>
@@ -547,7 +547,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                           <div className="space-y-1">
                             {session.agenda.map((item, index) => (
                               <div key={index} className="text-sm text-[#0A0F2E]/80 dark:text-white/80 flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full" />
+                                <div className="w-1.5 h-1.5 bg-[#C9A84C]" />
                                 {item}
                               </div>
                             ))}
@@ -603,7 +603,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                             {member.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
-                        <div className={`absolute -bottom-1 -right-1 w-4 h-4 ${getStatusColor(member.status)} rounded-full border-2 border-gray-200`} />
+                        <div className={`absolute -bottom-1 -right-1 w-4 h-4 ${getStatusColor(member.status)} border-2 border-gray-200`} />
                       </div>
                       <div className="flex-1 page-background">
                         <h3 className="font-semibold text-gray-900">{member.name}</h3>
@@ -671,7 +671,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                 
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {liveUpdates.map((update) => (
-                    <div key={update.id} className="p-4 bg-gray-50 rounded-lg">
+                    <div key={update.id} className="p-4 bg-gray-50">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-gray-900 text-sm">{update.user}</span>
@@ -709,7 +709,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg">
+                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[#0A0F2E] dark:text-white font-medium">Digital Transformation Budget</span>
                       <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">APPROVED</Badge>
@@ -718,7 +718,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="text-xs text-[#6B7280] mt-1">Decided by: Chief Executive Officer</div>
                   </div>
                   
-                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg">
+                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[#0A0F2E] dark:text-white font-medium">APAC Market Expansion</span>
                       <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">APPROVED</Badge>
@@ -737,7 +737,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg">
+                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[#0A0F2E] dark:text-white font-medium">Q3 Hiring Plan</span>
                       <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30">PENDING</Badge>
@@ -746,7 +746,7 @@ export default function RealTimeCollaboration({ embedded }: { embedded?: boolean
                     <div className="text-xs text-[#6B7280] mt-1">Assigned to: Chief Financial Officer</div>
                   </div>
                   
-                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg">
+                  <div className="p-3 bg-[#F8F7F4] dark:bg-white/5">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[#0A0F2E] dark:text-white font-medium">Office Expansion</span>
                       <Badge className="bg-[#0A0F2E]/20 text-[#0A0F2E] dark:text-[#C9A84C] border-[#0A0F2E]/30">REVIEW</Badge>

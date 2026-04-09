@@ -742,7 +742,7 @@ function StepIndicator({ step, total }: { step: number; total: number }) {
   return (
     <div className="flex items-center gap-1">
       {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`h-1 flex-1 rounded-full transition-all ${i <= step ? 'bg-[#0A0F2E]' : 'bg-white/10'} ${i === step ? 'h-1.5' : ''}`} />
+        <div key={i} className={`h-1 flex-1 transition-all ${i <= step ? 'bg-[#0A0F2E]' : 'bg-white/10'} ${i === step ? 'h-1.5' : ''}`} />
       ))}
     </div>
   );
@@ -882,7 +882,7 @@ export default function RoleExperience() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6">
+              className="bg-white border border-[#2B8A6E]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Your Playbook</h3>
@@ -895,7 +895,7 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6">
+              className="bg-white border border-[#C9A84C]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Radio className="h-5 w-5 text-[#C9A84C]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Active Triggers</h3>
@@ -903,14 +903,14 @@ export default function RoleExperience() {
               <div className="space-y-2">
                 {enabledTriggers.map((t, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" />
+                    <div className="w-1.5 h-1.5 bg-[#2B8A6E]" />
                     <span className="text-[#6B7280]">{t.name}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#0A0F2E]/10 rounded-2xl p-6">
+              className="bg-white border border-[#0A0F2E]/10 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Database className="h-5 w-5 text-[#0A0F2E]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Connected Data Sources</h3>
@@ -929,7 +929,7 @@ export default function RoleExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-              className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6">
+              className="bg-white border border-[#C9A84C]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <Sliders className="h-5 w-5 text-[#C9A84C]" />
                 <h3 className="font-semibold text-[#0A0F2E]">Customizations</h3>
@@ -960,9 +960,9 @@ export default function RoleExperience() {
           <div className="max-w-4xl mx-auto">
             {/* Role identity bar */}
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-              className="flex items-center gap-4 mb-6 p-4 bg-white border border-[#E8E4DC] rounded-xl"
+              className="flex items-center gap-4 mb-6 p-4 bg-white border border-[#E8E4DC]"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${role.gradient} flex items-center justify-center flex-shrink-0`}>
+              <div className={`w-12 h-12 bg-gradient-to-br ${role.gradient} flex items-center justify-center flex-shrink-0`}>
                 <Icon className="h-6 w-6 text-[#0A0F2E]" />
               </div>
               <div className="flex-1">
@@ -1024,7 +1024,7 @@ export default function RoleExperience() {
 
             {/* What you'll do in this demo */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
-              className="bg-white border border-[#E8E4DC] rounded-xl p-5"
+              className="bg-white border border-[#E8E4DC] p-5"
             >
               <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-3">What Happens Next</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -1067,7 +1067,7 @@ export default function RoleExperience() {
               <span className="text-xs text-[#6B7280] font-medium">{setupReadiness.percent}% ready</span>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="bg-white border border-[#2B8A6E]/20 rounded-2xl overflow-hidden"
+              className="bg-white border border-[#2B8A6E]/20 overflow-hidden"
             >
               <div className="bg-[#2B8A6E]/30 border-b border-[#2B8A6E]/10 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -1109,8 +1109,8 @@ export default function RoleExperience() {
                   <div className="text-xs text-[#6B7280] uppercase tracking-wider mb-3">Task Sequence (from template)</div>
                   <div className="space-y-2 mb-4">
                     {role.executionTasks.slice(0, 5).map((task, i) => (
-                      <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
-                        <div className="w-6 h-6 rounded-full bg-[#2B8A6E]/20 flex items-center justify-center text-xs text-[#2B8A6E] font-bold">{i + 1}</div>
+                      <div key={i} className="flex items-center gap-3 bg-white/5 p-3">
+                        <div className="w-6 h-6 bg-[#2B8A6E]/20 flex items-center justify-center text-xs text-[#2B8A6E] font-bold">{i + 1}</div>
                         <span className="text-sm text-[#6B7280] flex-1">{task.task}</span>
                         <Badge variant="outline" className="text-[10px]">{task.tool}</Badge>
                       </div>
@@ -1124,7 +1124,7 @@ export default function RoleExperience() {
                       <div className="text-xs text-[#2B8A6E] uppercase tracking-wider mb-2">Your Custom Tasks</div>
                       <div className="space-y-2">
                         {customTasks.map((task, i) => (
-                          <div key={i} className="flex items-center gap-3 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-lg p-3">
+                          <div key={i} className="flex items-center gap-3 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 p-3">
                             <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-[10px]">Custom</Badge>
                             <span className="text-sm text-gray-900 flex-1">{task}</span>
                             <button onClick={() => setCustomTasks(prev => prev.filter((_, j) => j !== i))} className="text-gray-800 hover:text-red-400">
@@ -1171,11 +1171,11 @@ export default function RoleExperience() {
             <div className="space-y-4 mb-6">
               {userTriggers.map((trigger, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.1 }}
-                  className={`bg-white border rounded-2xl p-6 ${trigger.enabled ? 'border-amber-500/20' : 'border-white/5 opacity-60'}`}
+                  className={`bg-white border p-6 ${trigger.enabled ? 'border-amber-500/20' : 'border-white/5 opacity-60'}`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl ${trigger.enabled ? 'bg-amber-500/20' : 'bg-white/5'} flex items-center justify-center`}>
+                      <div className={`w-10 h-10 ${trigger.enabled ? 'bg-amber-500/20' : 'bg-white/5'} flex items-center justify-center`}>
                         <Radio className={`h-5 w-5 ${trigger.enabled ? 'text-amber-400' : 'text-gray-800'}`} />
                       </div>
                       <div className="flex items-center gap-2">
@@ -1246,7 +1246,7 @@ export default function RoleExperience() {
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
               <span className="text-xs text-gray-800 font-medium">{setupReadiness.percent}% ready</span>
             </div>
-            <div className="bg-white border border-[#E8E4DC] rounded-xl p-4 mb-6 flex items-center justify-between">
+            <div className="bg-white border border-[#E8E4DC] p-4 mb-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Globe className="h-5 w-5 text-[#0A0F2E]" />
                 <span className="text-sm text-gray-900 font-medium">Total Data Points Monitored</span>
@@ -1256,7 +1256,7 @@ export default function RoleExperience() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               {userDataSources.map((source, i) => (
                 <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1 + i * 0.1 }}
-                  className={`bg-white border rounded-xl p-5 ${source.connected ? 'border-[#2B8A6E]/20' : 'border-white/10'}`}
+                  className={`bg-white border p-5 ${source.connected ? 'border-[#2B8A6E]/20' : 'border-white/10'}`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
@@ -1281,7 +1281,7 @@ export default function RoleExperience() {
                           className="text-xs text-amber-400">Connecting...</motion.span>
                       ) : source.connected ? (
                         <span className="flex items-center gap-1 text-xs text-[#2B8A6E] font-bold uppercase tracking-widest">
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#2B8A6E]" /> Connected
+                          <div className="w-1.5 h-1.5 bg-[#2B8A6E]" /> Connected
                         </span>
                       ) : (
                         <span className="text-xs text-gray-800">Disconnected</span>
@@ -1335,7 +1335,7 @@ export default function RoleExperience() {
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-xl p-3 text-center">
+                className="mb-6 bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 p-3 text-center">
                 <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] inline mr-2" />
                 <span className="text-sm text-[#2B8A6E] font-medium">Configuration Complete — Ready to launch execution</span>
               </motion.div>
@@ -1343,7 +1343,7 @@ export default function RoleExperience() {
             <div className="space-y-4 mb-6">
               {userCustomizations.map((custom, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.08 }}
-                  className="bg-white border border-[#C9A84C]/20 rounded-xl p-5"
+                  className="bg-white border border-[#C9A84C]/20 p-5"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <Label className="text-gray-900 font-medium">{custom.field}</Label>
@@ -1400,16 +1400,16 @@ export default function RoleExperience() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
               <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 1.5 }}
-                className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 rounded-full text-sm font-medium mb-4"
+                className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-2 text-sm font-medium mb-4"
               >
-                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <div className="w-2 h-2 bg-red-500 animate-pulse" />
                 SIGNAL DETECTED
               </motion.div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The Trigger Fires</h2>
               <p className="text-gray-800">Your configured trigger has detected a real event</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-white border border-red-500/30 rounded-2xl overflow-hidden"
+              className="bg-white border border-red-500/30 overflow-hidden"
             >
               <div className="bg-red-950/50 border-b border-red-500/20 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -1424,18 +1424,18 @@ export default function RoleExperience() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{role.signal.name}</h3>
                 <p className="text-gray-800 mb-6 leading-relaxed">{role.signal.detail}</p>
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                  <div className="bg-white/5 p-3 text-center">
                     <Eye className="h-5 w-5 text-[#0A0F2E] mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Source</div>
                     <div className="text-sm text-gray-900 font-medium">{role.signal.source}</div>
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                  <div className="bg-white/5 p-3 text-center">
                     <BookOpen className="h-5 w-5 text-[#2B8A6E] mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Your Playbook</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.name}</div>
                     {userPlaybook.name !== role.playbook.name && <Badge className="mt-1 bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
                   </div>
-                  <div className="bg-white/5 rounded-lg p-3 text-center">
+                  <div className="bg-white/5 p-3 text-center">
                     <Bell className="h-5 w-5 text-amber-400 mx-auto mb-1" />
                     <div className="text-xs text-gray-800">Stakeholders Ready</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.stakeholders} identified</div>
@@ -1466,7 +1466,7 @@ export default function RoleExperience() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}
-                className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6"
+                className="bg-white border border-[#0A0F2E]/20 p-6"
               >
                 <div className="flex items-center gap-2 mb-4">
                   <Brain className="h-5 w-5 text-[#0A0F2E]" />
@@ -1475,7 +1475,7 @@ export default function RoleExperience() {
                 <div className="space-y-3">
                   {role.aiInsights.map((insight, i) => (
                     <motion.div key={i} initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 + i * 0.2 }}
-                      className="flex items-start gap-3 bg-white/5 rounded-lg p-3"
+                      className="flex items-start gap-3 bg-white/5 p-3"
                     >
                       <Lightbulb className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
                       <span className="text-sm text-gray-800">{insight}</span>
@@ -1485,20 +1485,20 @@ export default function RoleExperience() {
               </motion.div>
               <div className="space-y-6">
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
-                  className="bg-white border border-[#C9A84C]/20 rounded-2xl p-6"
+                  className="bg-white border border-[#C9A84C]/20 p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Confidence</h3>
                   <div className="flex items-end gap-4 mb-4">
                     <div className="text-5xl font-bold text-[#C9A84C]">94%</div>
                     <div className="text-sm text-gray-800 pb-2">recommendation confidence</div>
                   </div>
-                  <div className="h-3 bg-gray-50 rounded-full overflow-hidden">
+                  <div className="h-3 bg-gray-50 overflow-hidden">
                     <motion.div initial={{ width: 0 }} animate={{ width: '94%' }} transition={{ delay: 0.8, duration: 1.5 }}
-                      className="h-full bg-[#C9A84C] rounded-full" />
+                      className="h-full bg-[#C9A84C]" />
                   </div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}
-                  className="bg-white border border-[#2B8A6E]/20 rounded-2xl p-6"
+                  className="bg-white border border-[#2B8A6E]/20 p-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Recommendation</h3>
                   <p className="text-sm text-gray-800 leading-relaxed">
@@ -1520,10 +1520,10 @@ export default function RoleExperience() {
               <p className="text-gray-800">AI recommends. The executive decides. Always.</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#0A0F2E]/30 rounded-2xl p-8"
+              className="bg-white border border-[#0A0F2E]/30 p-8"
             >
               <div className="flex items-center gap-5 mb-6">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${role.gradient} flex items-center justify-center`}>
+                <div className={`w-14 h-14 bg-gradient-to-br ${role.gradient} flex items-center justify-center`}>
                   <Icon className="h-7 w-7 text-gray-900" />
                 </div>
                 <div>
@@ -1531,7 +1531,7 @@ export default function RoleExperience() {
                   <p className="text-[#6B7280]">{role.title}, {role.company}</p>
                 </div>
               </div>
-              <div className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/10 rounded-xl p-5 mb-6">
+              <div className="bg-[#0A0F2E]/10 border border-[#0A0F2E]/10 p-5 mb-6">
                 <div className="text-xs text-[#0A0F2E] uppercase tracking-wider mb-2">Decision Required</div>
                 <p className="text-[#6B7280]">
                   Activate <span className="text-[#0A0F2E] font-semibold">{userPlaybook.name}</span> with {userPlaybook.stakeholders} stakeholders, 
@@ -1539,21 +1539,21 @@ export default function RoleExperience() {
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC]">
+                <div className="bg-white/5 p-3 text-center border border-[#E8E4DC]">
                   <div className="text-lg font-bold text-[#2B8A6E]">{userPlaybook.tasks + customTasks.length}</div>
                   <div className="text-xs text-[#6B7280]">Tasks Ready</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC]">
+                <div className="bg-white/5 p-3 text-center border border-[#E8E4DC]">
                   <div className="text-lg font-bold text-[#0A0F2E]">{userPlaybook.stakeholders}</div>
                   <div className="text-xs text-[#6B7280]">Stakeholders Mapped</div>
                 </div>
-                <div className="bg-white/5 rounded-lg p-3 text-center border border-[#E8E4DC]">
+                <div className="bg-white/5 p-3 text-center border border-[#E8E4DC]">
                   <div className="text-lg font-bold text-[#2B8A6E]">{userPlaybook.budget}</div>
                   <div className="text-xs text-[#6B7280]">Budget Pre-Approved</div>
                 </div>
               </div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2 }}
-                className="flex items-center justify-center gap-3 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] px-8 py-4 rounded-xl font-semibold text-lg"
+                className="flex items-center justify-center gap-3 bg-[#2B8A6E]/20 border border-[#2B8A6E]/30 text-[#2B8A6E] px-8 py-4 font-semibold text-lg"
               >
                 <CheckCircle2 className="h-6 w-6" />
                 APPROVED — {role.name.split(' ')[0]} Activates {userPlaybook.name}
@@ -1576,11 +1576,11 @@ export default function RoleExperience() {
               <p className="text-[#6B7280]">Watch as tasks auto-create, stakeholders coordinate, and systems activate</p>
             </div>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-span-3 bg-white border border-[#2B8A6E]/20 rounded-2xl p-5">
+              <div className="col-span-3 bg-white border border-[#2B8A6E]/20 p-5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold text-[#0A0F2E]">Execution Timeline</h3>
                   <div className="flex items-center gap-2">
-                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 rounded-full bg-[#2B8A6E]" />
+                    <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ repeat: Infinity, duration: 1 }} className="w-2 h-2 bg-[#2B8A6E]" />
                     <span className="text-[#2B8A6E] text-xs font-medium">LIVE</span>
                   </div>
                 </div>
@@ -1591,10 +1591,10 @@ export default function RoleExperience() {
                     const isCustom = i >= role.executionTasks.length;
                     return (
                       <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: isActive ? 1 : 0.25, x: isActive ? 0 : -20 }}
-                        className={`flex items-center gap-3 p-2.5 rounded-lg ${isCurrent ? 'bg-[#2B8A6E]/10 ring-1 ring-[#2B8A6E]/20' : ''}`}
+                        className={`flex items-center gap-3 p-2.5 ${isCurrent ? 'bg-[#2B8A6E]/10 ring-1 ring-[#2B8A6E]/20' : ''}`}
                       >
                         <div className="w-12 text-right font-mono text-xs text-[#6B7280]">{task.time}</div>
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
+                        <div className={`w-5 h-5 flex items-center justify-center ${isActive ? 'bg-[#2B8A6E]/20' : 'bg-white/5'}`}>
                           <CheckCircle2 className={`h-3 w-3 ${isActive ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`} />
                         </div>
                         <div className="flex-1">
@@ -1608,12 +1608,12 @@ export default function RoleExperience() {
                 </div>
               </div>
               <div className="col-span-2 space-y-4">
-                <div className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-5">
+                <div className="bg-white border border-[#0A0F2E]/20 p-5">
                   <h3 className="font-semibold text-[#0A0F2E] mb-3 text-sm">Stakeholder Response</h3>
                   <div className="space-y-2">
                     {role.stakeholders.map((s, i) => (
                       <motion.div key={i} initial={{ opacity: 0 }} animate={{ opacity: i <= activationStep ? 1 : 0.2 }} transition={{ delay: i * 0.3 }}
-                        className="flex items-center justify-between bg-white/5 rounded-lg p-2.5"
+                        className="flex items-center justify-between bg-white/5 p-2.5"
                       >
                         <div>
                           <div className="text-xs text-[#0A0F2E] font-medium">{s.name}</div>
@@ -1629,7 +1629,7 @@ export default function RoleExperience() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-white border border-[#C9A84C]/20 rounded-2xl p-5">
+                <div className="bg-white border border-[#C9A84C]/20 p-5">
                   <h3 className="font-semibold text-[#0A0F2E] mb-3 text-sm">Progress</h3>
                   <div className="space-y-3">
                     <div>
@@ -1662,11 +1662,11 @@ export default function RoleExperience() {
               <p className="text-[#6B7280]">All stakeholders coordinating in real-time through a unified command center</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#0A0F2E]/20 rounded-2xl overflow-hidden"
+              className="bg-white border border-[#0A0F2E]/20 overflow-hidden"
             >
               <div className="bg-[#0A0F2E]/5 border-b border-[#0A0F2E]/10 px-6 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                  <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                   <span className="text-[#0A0F2E] font-medium text-sm">War Room — {userPlaybook.name}</span>
                 </div>
                 <div className="flex items-center gap-4 text-xs text-[#6B7280]">
@@ -1709,7 +1709,7 @@ export default function RoleExperience() {
             <div className="space-y-4 mb-8">
               {role.outcomes.map((outcome, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }}
-                  className="bg-white border border-[#E8E4DC] rounded-xl p-5 shadow-sm"
+                  className="bg-white border border-[#E8E4DC] p-5"
                 >
                   <div className="grid grid-cols-3 gap-4 items-center">
                     <div className="text-[#0A0F2E] font-semibold">{outcome.metric}</div>
@@ -1726,7 +1726,7 @@ export default function RoleExperience() {
               ))}
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}
-              className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/20 rounded-2xl p-6 text-center"
+              className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/20 p-6 text-center"
             >
               <CheckCircle2 className="h-10 w-10 text-[#2B8A6E] mx-auto mb-3" />
               <h3 className="text-xl font-bold text-[#0A0F2E] mb-2">Full execution completed in under 12 minutes</h3>
@@ -1744,13 +1744,13 @@ export default function RoleExperience() {
               <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s execution data feeds back into the playbook for continuous improvement</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="bg-white border border-[#0A0F2E]/20 rounded-2xl p-6 mb-6"
+              className="bg-white border border-[#0A0F2E]/20 p-6 mb-6"
             >
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-6 w-6 text-[#0A0F2E]" />
                 <h3 className="text-lg font-semibold text-[#0A0F2E]">AI-Generated Playbook Refinement</h3>
               </div>
-              <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-xl p-5">
+              <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 p-5">
                 <p className="text-[#6B7280] leading-relaxed">{role.lesson}</p>
               </div>
             </motion.div>
@@ -1762,7 +1762,7 @@ export default function RoleExperience() {
                 { label: 'Improvement Areas', value: '3 identified', icon: Lightbulb, color: 'text-[#C9A84C]' },
                 { label: 'Playbook Version', value: 'v2.1 saved', icon: BookOpen, color: 'text-[#0A0F2E]' },
               ].map((item, i) => (
-                <div key={i} className="bg-white/5 border border-[#E8E4DC] rounded-xl p-4 text-center">
+                <div key={i} className="bg-white/5 border border-[#E8E4DC] p-4 text-center">
                   <item.icon className={`h-6 w-6 ${item.color} mx-auto mb-2`} />
                   <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
                   <div className="text-xs text-gray-800">{item.label}</div>
@@ -1771,7 +1771,7 @@ export default function RoleExperience() {
             </motion.div>
             {customTasks.length > 0 && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
-                className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-xl p-5 mb-6"
+                className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 p-5 mb-6"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-xs">Your Custom Tasks</Badge>

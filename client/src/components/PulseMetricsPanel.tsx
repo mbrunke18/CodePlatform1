@@ -102,7 +102,7 @@ export default function PulseMetricsPanel() {
             return (
               <div key={metric.id} className="flex items-center justify-between">
                 <div className="flex items-center gap-3 flex-1">
-                  <div className={`p-2 rounded-lg ${getMetricColor(value)}`}>
+                  <div className={`p-2 ${getMetricColor(value)}`}>
                     {getMetricIcon(metric.category)}
                   </div>
                   <div className="flex-1">

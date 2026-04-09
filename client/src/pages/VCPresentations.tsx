@@ -137,7 +137,7 @@ export default function VCPresentations() {
           <div className="relative z-10 max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="flex items-center space-x-6">
-                <div className="w-16 h-16 bg-[#C9A84C] rounded-none flex items-center justify-center shadow-lg">
+                <div className="w-16 h-16 bg-[#C9A84C] rounded-none flex items-center justify-center">
                   <Briefcase className="w-8 h-8 text-[#0A0F2E]" />
                 </div>
                 <div>
@@ -166,7 +166,7 @@ export default function VCPresentations() {
           {/* Investment Highlights */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 -mt-16 relative z-20">
             {investmentHighlights.map((highlight, index) => (
-              <Card key={index} className="bg-white border-[#E8E4DC] shadow-sm rounded-none">
+              <Card key={index} className="bg-white border-[#E8E4DC] rounded-none">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-xs uppercase tracking-widest font-bold text-[#6B7280]">{highlight.title}</CardTitle>
                 </CardHeader>
@@ -200,9 +200,9 @@ export default function VCPresentations() {
                         <p className="text-sm text-[#6B7280]">{material.description}</p>
                         <div className="flex items-center space-x-4 text-[10px] uppercase tracking-wider text-[#6B7280] mt-2 font-bold">
                           <span>{material.slides} SLIDES</span>
-                          <span className="w-1 h-1 bg-[#E8E4DC] rounded-full"></span>
+                          <span className="w-1 h-1 bg-[#E8E4DC]"></span>
                           <span>{material.duration}</span>
-                          <span className="w-1 h-1 bg-[#E8E4DC] rounded-full"></span>
+                          <span className="w-1 h-1 bg-[#E8E4DC]"></span>
                           <span className="text-[#C9A84C]">{material.type}</span>
                         </div>
                       </div>
@@ -228,7 +228,7 @@ export default function VCPresentations() {
               </div>
               <h2 className="text-3xl font-light text-[#0A0F2E]" style={CG}>Investment Thesis</h2>
               
-              <Card className="bg-white border-[#E8E4DC] rounded-none shadow-sm">
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
                 <CardContent className="p-8">
                   <div className="space-y-5 mb-10">
                     {keyInvestmentThesis.map((point, index) => (

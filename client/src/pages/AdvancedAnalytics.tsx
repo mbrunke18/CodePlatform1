@@ -297,7 +297,7 @@ export default function AdvancedAnalytics() {
 
         {/* Advanced Analytics Header */}
         <div className="flex items-center justify-between">
-          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
+          <div className="bg-[#0A0F2E] text-white p-8 relative overflow-hidden w-full flex items-center justify-between">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             <div className="relative z-10 flex items-center gap-4">
               <BarChart3 className="h-10 w-10 text-[#C9A84C]" />
@@ -317,7 +317,7 @@ export default function AdvancedAnalytics() {
                 <Brain className="w-4 h-4 mr-2" />
                 AI Models Active: 12
               </Badge>
-              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] shadow-lg">
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Generate Report
               </Button>
@@ -361,7 +361,7 @@ export default function AdvancedAnalytics() {
                       <h4 className="font-semibold text-[#0A0F2E] mb-3">Forecasts</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {model.predictions.map((prediction, index) => (
-                          <div key={index} className="p-4 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                          <div key={index} className="p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                             <div className="flex items-center justify-between mb-2">
                               <span className="text-[#0A0F2E] font-medium">{prediction.period}</span>
                               <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-[#0A0F2E]/20">
@@ -386,7 +386,7 @@ export default function AdvancedAnalytics() {
                       <h4 className="font-semibold text-[#0A0F2E] mb-3">Key Drivers</h4>
                       <div className="space-y-3">
                         {model.keyDrivers.map((driver, index) => (
-                          <div key={index} className="flex items-center justify-between p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                          <div key={index} className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                             <div className="flex items-center gap-3">
                               {getTrendIcon(driver.trend)}
                               <span className="text-[#0A0F2E]">{driver.factor}</span>
@@ -412,7 +412,7 @@ export default function AdvancedAnalytics() {
                       <h4 className="font-semibold text-[#0A0F2E] mb-3">Scenario Analysis</h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {model.scenarios.map((scenario, index) => (
-                          <div key={index} className="p-4 bg-white rounded-lg border border-[#E8E4DC]">
+                          <div key={index} className="p-4 bg-white border border-[#E8E4DC]">
                             <div className="flex items-center justify-between mb-2">
                               <span className="font-medium text-[#0A0F2E]">{scenario.name}</span>
                               <span className="text-sm text-[#6B7280]">{scenario.probability}%</span>

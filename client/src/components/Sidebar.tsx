@@ -16,7 +16,7 @@ export default function Sidebar() {
     <aside className="w-64 bg-card border-r border-border flex flex-col">
       <div className="p-6 border-b border-border">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-primary flex items-center justify-center">
             <i className="fas fa-bolt text-primary-foreground text-sm"></i>
           </div>
           <h1 className="text-xl font-bold text-foreground">M</h1>
@@ -77,7 +77,7 @@ export default function Sidebar() {
       
       <div className="p-4 border-t border-border">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-muted flex items-center justify-center">
             <span className="text-sm font-medium text-muted-foreground" data-testid="text-user-initials">
               {user?.initials || 'U'}
             </span>

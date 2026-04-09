@@ -47,7 +47,7 @@ export function PhaseProgressBar({
           {phases.map((phase) => (
             <div
               key={phase.id}
-              className={`w-2 h-2 rounded-full ${
+              className={`w-2 h-2 ${
                 phase.score === 100 
                   ? phase.color
                   : phase.score > 0 
@@ -73,7 +73,7 @@ export function PhaseProgressBar({
         {phases.map((phase) => (
           <div 
             key={phase.id}
-            className={`p-2.5 rounded-lg transition-all ${
+            className={`p-2.5 transition-all ${
               currentPhase === phase.id 
                 ? 'bg-slate-100 dark:bg-slate-800 ring-1 ring-slate-300 dark:ring-slate-600' 
                 : 'bg-slate-50 dark:bg-slate-900/50'
@@ -82,7 +82,7 @@ export function PhaseProgressBar({
           >
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${phase.color}`} />
+                <div className={`w-2 h-2 ${phase.color}`} />
                 <span className={`text-sm font-semibold ${phase.textColor}`}>{phase.name}</span>
                 <span className="text-xs text-gray-800 dark:text-slate-200 italic hidden sm:inline">{phase.tagline}</span>
               </div>

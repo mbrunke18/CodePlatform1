@@ -59,7 +59,7 @@ function SpeedBar({ minutes, target = 12, max = 60 }: { minutes: number; target?
   const targetPct = Math.min((target / max) * 100, 100);
   const over = minutes > target;
   return (
-    <div className="relative h-2 w-full rounded-full" style={{ background: '#E8E4DC' }}>
+    <div className="relative h-2 w-full" style={{ background: '#E8E4DC' }}>
       <div style={{ background: over ? '#EF4444' : TEAL, borderRadius: 4, height: '100%', width: `${pct}%`, transition: 'width 0.6s ease' }} />
       <div style={{ position: 'absolute', left: `${targetPct}%`, top: -3, width: 2, height: 16, background: GOLD, borderRadius: 1 }} title="12-min target" />
     </div>

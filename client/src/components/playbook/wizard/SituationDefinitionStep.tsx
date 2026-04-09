@@ -14,7 +14,7 @@ interface SituationDefinitionStepProps {
 export default function SituationDefinitionStep({ data, onChange, playbook }: SituationDefinitionStepProps) {
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h3 className="font-semibold text-sm mb-2">100% Pre-filled Template</h3>
         <p className="text-xs text-muted-foreground">
           These fields are pre-configured based on industry best practices. Review and adjust as needed for your organization.

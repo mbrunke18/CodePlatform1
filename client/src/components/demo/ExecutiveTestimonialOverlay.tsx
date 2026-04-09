@@ -34,7 +34,7 @@ export function ExecutiveTestimonialOverlay() {
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 bg-black/75 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <Card className="relative w-[950px] border-slate-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
+      <Card className="relative w-[950px] border-slate-500/50 p-8 animate-in zoom-in-95 duration-500">
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center space-y-2">
@@ -51,9 +51,9 @@ export function ExecutiveTestimonialOverlay() {
             <div className={`absolute inset-0 transition-all duration-700 ${
               phase === 'before' ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full'
             }`}>
-              <div className="bg-red-950/40 rounded-lg p-6 border border-red-500/30">
+              <div className="bg-red-950/40 p-6 border border-red-500/30">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-red-600/30 rounded-full">
+                  <div className="p-3 bg-red-600/30">
                     <Quote className="h-6 w-6 text-red-400" />
                   </div>
                   <div className="flex-1 space-y-4">
@@ -78,9 +78,9 @@ export function ExecutiveTestimonialOverlay() {
             <div className={`absolute inset-0 transition-all duration-700 ${
               phase === 'after' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
             }`}>
-              <div className="bg-[#2B8A6E]/15 rounded-lg p-6 border border-[#2B8A6E]/30">
+              <div className="bg-[#2B8A6E]/15 p-6 border border-[#2B8A6E]/30">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-[#2B8A6E]/30 rounded-full">
+                  <div className="p-3 bg-[#2B8A6E]/30">
                     <Sparkles className="h-6 w-6 text-[#2B8A6E]" />
                   </div>
                   <div className="flex-1 space-y-4">
@@ -105,14 +105,14 @@ export function ExecutiveTestimonialOverlay() {
             <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
               phase === 'after' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
             }`}>
-              <div className="p-4 bg-gradient-to-r from-red-600 to-[#256B56] rounded-full">
+              <div className="p-4 bg-gradient-to-r from-red-600 to-[#256B56]">
                 <ArrowRight className="h-8 w-8 text-gray-900" />
               </div>
             </div>
           </div>
 
           {/* Bottom Message */}
-          <div className=" rounded-lg p-5 border border-slate-600/40">
+          <div className=" p-5 border border-slate-600/40">
             <p className="text-center text-gray-800 text-lg">
               {phase === 'before' ? (
                 <span className="text-red-300">The question isn't IF a crisis will hit—it's whether you'll be prepared.</span>

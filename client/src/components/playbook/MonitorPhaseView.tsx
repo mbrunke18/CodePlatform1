@@ -210,8 +210,8 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
   if (isLoading) {
     return (
       <div className="space-y-4 animate-pulse">
-        <div className="h-24 bg-slate-200 dark:bg-slate-800 rounded-lg" />
-        <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+        <div className="h-24 bg-slate-200 dark:bg-slate-800" />
+        <div className="h-48 bg-slate-200 dark:bg-slate-800" />
       </div>
     );
   }
@@ -240,15 +240,15 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-3 gap-4 text-center">
-            <div className="p-3 bg-white dark:bg-slate-900 rounded-lg">
+            <div className="p-3 bg-white dark:bg-slate-900">
               <div className="text-lg font-semibold text-red-500">{criticalCount}</div>
               <div className="text-xs text-muted-foreground">Critical</div>
             </div>
-            <div className="p-3 bg-white dark:bg-slate-900 rounded-lg">
+            <div className="p-3 bg-white dark:bg-slate-900">
               <div className="text-lg font-semibold">{items.length}</div>
               <div className="text-xs text-muted-foreground">Total Signals</div>
             </div>
-            <div className="p-3 bg-white dark:bg-slate-900 rounded-lg">
+            <div className="p-3 bg-white dark:bg-slate-900">
               <div className="text-lg font-semibold text-green-500">
                 {Object.keys(groupedItems).length}
               </div>
@@ -282,7 +282,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
                 return (
                   <div
                     key={item.id}
-                    className={`border rounded-lg p-3 transition-all ${
+                    className={`border p-3 transition-all ${
                       item.isActive
                         ? 'bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 border-[#E8E4DC] dark:border-[#0A0F2E]'
                         : 'bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-700 opacity-60'

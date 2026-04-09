@@ -262,7 +262,7 @@ export default function LiveDrillExecution() {
                   return (
                     <div 
                       key={checkpoint.id}
-                      className={`p-4 rounded-lg border-2 ${
+                      className={`p-4 border-2 ${
                         status === 'active' 
                           ? 'border-[#2B8A6E] bg-[#F8F7F4] dark:bg-[#0A0F2E]/30' 
                           : 'border-gray-200 dark:border-gray-800'
@@ -341,7 +341,7 @@ export default function LiveDrillExecution() {
                     return (
                       <div
                         key={task.id}
-                        className={`p-3 rounded-lg border ${
+                        className={`p-3 border ${
                           isActive 
                             ? 'border-[#0A0F2E] bg-[#0A0F2E] dark:bg-[#0A0F2E]' 
                             : isCompleted 
@@ -375,7 +375,7 @@ export default function LiveDrillExecution() {
         </div>
 
         {/* Complete Drill Button */}
-        <Card className="border-2 border-[#2B8A6E] rounded-none shadow-xl">
+        <Card className="border-2 border-[#2B8A6E] rounded-none">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>

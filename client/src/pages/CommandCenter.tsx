@@ -529,7 +529,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                     </div>
                   </div>
                   {demoExecution.active && (
-                    <div className="absolute top-1 right-1 w-4 h-4 bg-[#3BAF8A] rounded-full animate-pulse border-2 border-[#0A0F2E]"></div>
+                    <div className="absolute top-1 right-1 w-4 h-4 bg-[#3BAF8A] animate-pulse border-2 border-[#0A0F2E]"></div>
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
@@ -607,7 +607,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       </span>
                       {isComplete && <CheckCircle2 className="w-3 h-3 text-[#3BAF8A]" />}
                     </div>
-                    <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-1 bg-white/10 overflow-hidden">
                       <div 
                         className={`h-full transition-all duration-300 ${
                           isComplete ? 'bg-[#3BAF8A]' : isActive ? 'bg-[#C9A84C] animate-pulse' : 'bg-white/20'
@@ -715,7 +715,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         onClick={() => setSelectedSignal(alert.id)}
                       >
                         <div className="flex items-start gap-3">
-                          <div className={`mt-1 shrink-0 w-2 h-2 rounded-full ${
+                          <div className={`mt-1 shrink-0 w-2 h-2 ${
                             alert.severity === 'critical' ? 'bg-red-500' : 
                             alert.severity === 'high' ? 'bg-orange-400' : 
                             alert.severity === 'medium' ? 'bg-amber-300' : 'bg-gray-300'
@@ -817,7 +817,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         {idx !== coordinationTimeline.length - 1 && (
                           <div className="absolute left-3 top-6 bottom-0 w-[1px] bg-[#E8E4DC]"></div>
                         )}
-                        <div className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 flex items-center justify-center bg-white ${
+                        <div className={`absolute left-0 top-1 w-6 h-6 border-2 flex items-center justify-center bg-white ${
                           event.status === 'completed' ? 'border-[#3BAF8A]' : 
                           event.status === 'in-progress' ? 'border-[#C9A84C] animate-pulse' : 'border-[#E8E4DC]'
                         }`}>
@@ -895,7 +895,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
       {/* Scenario Launcher Modal */}
       {showScenarioLauncher && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <Card className="w-full max-w-lg border border-[#E8E4DC] bg-white shadow-2xl">
+          <Card className="w-full max-w-lg border border-[#E8E4DC] bg-white">
             <CardHeader className="border-b border-[#E8E4DC]">
               <div className="flex items-center justify-between">
                 <CardTitle style={{ ...CG, color: NAVY }}>Launch Execution Scenario</CardTitle>

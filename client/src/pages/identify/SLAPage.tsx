@@ -90,15 +90,15 @@ export default function SLAPage() {
               are still scheduling their kickoff call.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="text-center p-4 bg-muted/50 rounded-lg">
+              <div className="text-center p-4 bg-muted/50">
                 <div className="text-3xl font-bold text-[#C9A84C]">10x</div>
                 <div className="text-sm text-muted-foreground">Faster than industry</div>
               </div>
-              <div className="text-center p-4 bg-muted/50 rounded-lg">
+              <div className="text-center p-4 bg-muted/50">
                 <div className="text-3xl font-bold text-[#2B8A6E]">98</div>
                 <div className="text-sm text-muted-foreground">Days saved annually</div>
               </div>
-              <div className="text-center p-4 bg-muted/50 rounded-lg">
+              <div className="text-center p-4 bg-muted/50">
                 <div className="text-3xl font-bold text-[#2B8A6E]">$2.2M</div>
                 <div className="text-sm text-muted-foreground">Average cost savings</div>
               </div>

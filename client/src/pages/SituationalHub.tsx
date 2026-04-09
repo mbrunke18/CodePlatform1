@@ -86,7 +86,7 @@ export default function SituationalHub() {
                 { label: 'Active Drills',   value: String(activeDrills),   color: TEAL },
                 { label: 'Staged Playbooks',value: String(totalPlaybooks), color: '#fff' },
               ].map(b => (
-                <div key={b.label} className="px-4 py-3 rounded-lg text-center" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <div key={b.label} className="px-4 py-3 text-center" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
                   <div className="text-2xl font-bold" style={{ ...CG, color: b.color }}>{b.value}</div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-white/50 mt-0.5">{b.label}</div>
                 </div>
@@ -130,7 +130,7 @@ export default function SituationalHub() {
                 ].map(kpi => (
                   <Card key={kpi.label} className="border-[#E8E4DC] bg-white">
                     <CardContent className="p-5">
-                      <div className="p-2.5 rounded-lg w-fit mb-3" style={{ background: `${kpi.color}12` }}><kpi.icon className="h-5 w-5" style={{ color: kpi.color }} /></div>
+                      <div className="p-2.5 w-fit mb-3" style={{ background: `${kpi.color}12` }}><kpi.icon className="h-5 w-5" style={{ color: kpi.color }} /></div>
                       <p className="text-3xl font-bold text-[#0A0F2E]" style={CG}>{kpi.value}</p>
                       <p className="text-xs font-bold uppercase tracking-wider text-[#6B7280] mt-1">{kpi.label}</p>
                       <p className="text-xs text-[#6B7280] mt-0.5">{kpi.desc}</p>
@@ -146,7 +146,7 @@ export default function SituationalHub() {
                   const lc = getLevelColor(d.level);
                   const Icon = d.icon;
                   return (
-                    <Card key={d.name} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-all cursor-pointer" onClick={() => setActiveTab('exposure')}>
+                    <Card key={d.name} className="border-[#E8E4DC] bg-white transition-all cursor-pointer" onClick={() => setActiveTab('exposure')}>
                       <CardContent className="p-5">
                         <div className="flex items-center justify-between mb-3">
                           <Icon className="h-5 w-5 text-[#0A0F2E]" />
@@ -179,9 +179,9 @@ export default function SituationalHub() {
                   { title: 'Practice Drills',     desc: 'Run live simulations against any of the 170 playbooks before an event occurs', tab: 'drills', icon: Zap, color: TEAL },
                   { title: 'Coordinate Response', desc: 'Pre-define escalation paths, stakeholder roles, and decision gates', tab: 'coordination', icon: Users, color: NAVY },
                 ].map(item => (
-                  <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-all cursor-pointer group">
+                  <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
                     <CardContent className="p-5">
-                      <div className="p-2.5 rounded-xl w-fit mb-3" style={{ background: `${item.color}15` }}><item.icon className="h-5 w-5" style={{ color: item.color }} /></div>
+                      <div className="p-2.5 w-fit mb-3" style={{ background: `${item.color}15` }}><item.icon className="h-5 w-5" style={{ color: item.color }} /></div>
                       <h3 className="font-bold text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors mb-1">{item.title}</h3>
                       <p className="text-sm text-[#6B7280]">{item.desc}</p>
                       <div className="flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider" style={{ color: item.color }}>Open <ChevronRight className="h-3 w-3" /></div>
@@ -234,8 +234,8 @@ export default function SituationalHub() {
                                 <Badge className="text-[10px]" style={{ background: `${lc}12`, color: lc, border: 'none' }}>{d.playbooks} staged</Badge>
                               </div>
                             </div>
-                            <div className="relative h-1.5 bg-[#E8E4DC] rounded-full overflow-hidden">
-                              <div className="h-full rounded-full transition-all" style={{ width: `${d.exposure}%`, background: `linear-gradient(90deg, ${lc}99, ${lc})` }} />
+                            <div className="relative h-1.5 bg-[#E8E4DC] overflow-hidden">
+                              <div className="h-full transition-all" style={{ width: `${d.exposure}%`, background: `linear-gradient(90deg, ${lc}99, ${lc})` }} />
                             </div>
                           </div>
                         );
@@ -254,7 +254,7 @@ export default function SituationalHub() {
                     <Card key={d.name} className="border-[#E8E4DC] bg-white">
                       <CardContent className="p-5">
                         <div className="flex items-start gap-3">
-                          <div className="p-2 rounded-lg flex-shrink-0" style={{ background: `${GOLD}12` }}><Icon className="h-4 w-4" style={{ color: GOLD }} /></div>
+                          <div className="p-2 flex-shrink-0" style={{ background: `${GOLD}12` }}><Icon className="h-4 w-4" style={{ color: GOLD }} /></div>
                           <div className="flex-1">
                             <h4 className="font-semibold text-[#0A0F2E] text-sm">{d.name}</h4>
                             <p className="text-xs text-[#6B7280] mt-0.5">Readiness at {d.exposure}% — {d.playbooks} playbooks available, last drill {d.lastDrill}</p>
@@ -287,7 +287,7 @@ export default function SituationalHub() {
                 {ACTIVE_DRILLS.map((drill, i) => {
                   const sc = getStatusColor(drill.status);
                   return (
-                    <Card key={i} className="border-[#E8E4DC] bg-white hover:shadow-md transition-shadow">
+                    <Card key={i} className="border-[#E8E4DC] bg-white ">
                       <CardContent className="p-5">
                         <div className="flex flex-col md:flex-row md:items-center gap-4">
                           <div className="flex-1">
@@ -331,7 +331,7 @@ export default function SituationalHub() {
                   const Icon = d.icon;
                   return (
                     <Link key={d.name} href="/practice-drills">
-                      <Card className="border-[#E8E4DC] bg-white hover:shadow-md transition-all cursor-pointer hover:border-[#C9A84C] group">
+                      <Card className="border-[#E8E4DC] bg-white transition-all cursor-pointer hover:border-[#C9A84C] group">
                         <CardContent className="p-4 text-center">
                           <Icon className="h-5 w-5 mx-auto mb-2 text-[#6B7280] group-hover:text-[#C9A84C] transition-colors" />
                           <p className="text-xs font-semibold text-[#0A0F2E] leading-tight">{d.name}</p>
@@ -347,7 +347,7 @@ export default function SituationalHub() {
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-white/10"><Zap className="h-6 w-6 text-[#C9A84C]" /></div>
+                      <div className="p-3 bg-white/10"><Zap className="h-6 w-6 text-[#C9A84C]" /></div>
                       <div>
                         <h3 className="font-semibold text-white">The best time to practice is before an event</h3>
                         <p className="text-sm text-white/60">All 170 playbooks are available as full simulation drills</p>
@@ -385,7 +385,7 @@ export default function SituationalHub() {
                       { from: 'CFO / COO', to: 'CEO + Board', trigger: 'Situation severity: Critical or Existential', color: NAVY },
                     ].map((path, i) => (
                       <div key={i} className="flex items-center gap-3 p-4 border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4] transition-colors">
-                        <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: path.color }} />
+                        <div className="w-2 h-2 flex-shrink-0" style={{ background: path.color }} />
                         <div className="flex-1">
                           <div className="text-sm font-semibold text-[#0A0F2E]">{path.from} → {path.to}</div>
                           <div className="text-xs text-[#6B7280] mt-0.5">{path.trigger}</div>
@@ -446,7 +446,7 @@ export default function SituationalHub() {
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <div className="p-3 rounded-xl bg-white/10"><Users className="h-6 w-6 text-[#C9A84C]" /></div>
+                      <div className="p-3 bg-white/10"><Users className="h-6 w-6 text-[#C9A84C]" /></div>
                       <div>
                         <h3 className="font-semibold text-white">Pre-stage your coordination protocols</h3>
                         <p className="text-sm text-white/60">Define escalation paths and decision gates for every domain before you need them</p>

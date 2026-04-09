@@ -12,7 +12,7 @@ interface LessonsLearnedStepProps {
 export default function LessonsLearnedStep({ data, onChange, playbook }: LessonsLearnedStepProps) {
   return (
     <div className="space-y-6">
-      <div className="bg-amber-50 dark:bg-amber-950 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
+      <div className="bg-amber-50 dark:bg-amber-950 p-4 border border-amber-200 dark:border-amber-800">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <AlertCircle className="h-4 w-4" />
           0% Pre-filled Template - Post-Execution Only

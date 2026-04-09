@@ -32,7 +32,7 @@ export default function SuccessMetricsStep({ data, onChange }: SuccessMetricsSte
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h3 className="font-semibold text-sm mb-2">80% Pre-filled Template</h3>
         <p className="text-xs text-muted-foreground">
           Response speed targets and domain-specific outcome metrics
@@ -160,7 +160,7 @@ export default function SuccessMetricsStep({ data, onChange }: SuccessMetricsSte
       </div>
 
       {/* Learning Metrics */}
-      <div className="bg-muted/30 p-4 rounded-lg">
+      <div className="bg-muted/30 p-4">
         <h4 className="font-semibold text-sm mb-2">Continuous Learning Metrics</h4>
         <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
           <li>Post-execution performance review completion rate</li>

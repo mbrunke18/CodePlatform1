@@ -113,7 +113,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
               Live Execution
             </Badge>
           </div>
-          <div className="mt-2 p-3 bg-gray-50 rounded-lg">
+          <div className="mt-2 p-3 bg-gray-50">
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600">Deal:</span>
               <span className="text-white font-medium">{execution.dealName}</span>
@@ -135,9 +135,9 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
             {execution.timeline.slice(0, visibleEvents).map((event, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200 animate-in fade-in slide-in-from-left-2 duration-300"
+                className="flex items-start gap-3 p-3 bg-gray-50 border border-gray-200 animate-in fade-in slide-in-from-left-2 duration-300"
               >
-                <div className={`p-2 rounded-lg ${getSystemColor(event.system)} text-white`}>
+                <div className={`p-2 ${getSystemColor(event.system)} text-white`}>
                   {getSystemIcon(event.system)}
                 </div>
                 <div className="flex-1 min-w-0">

@@ -147,7 +147,7 @@ export default function PlaybookCommand() {
 
           <CardContent className="space-y-6">
             {playbook.triggerCriteria && (
-              <div className="bg-[#0A0F2E] text-white border border-[#E8E4DC] rounded-lg p-4">
+              <div className="bg-[#0A0F2E] text-white border border-[#E8E4DC] p-4">
                 <div className="flex items-start gap-3">
                   <Target className="h-5 w-5 text-[#C9A84C] mt-0.5" />
                   <div>
@@ -207,7 +207,7 @@ export default function PlaybookCommand() {
                   <Button disabled>Configure Organization</Button>
                 </div>
               ) : startExecution.isSuccess ? (
-                <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg p-4 flex items-center gap-3">
+                <div className="bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 p-4 flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-[#2B8A6E]" />
                   <div>
                     <div className="font-medium text-[#2B8A6E]">
@@ -263,7 +263,7 @@ export default function PlaybookCommand() {
         )}
 
         {/* Pre-Flight Checklist */}
-        <Card className="border rounded-none shadow-sm" style={{ borderColor: "#E8E4DC" }}>
+        <Card className="border rounded-none" style={{ borderColor: "#E8E4DC" }}>
           <CardHeader>
             <div className="flex items-center gap-3">
               <Shield className="h-5 w-5" style={{ color: "#C9A84C" }} />
@@ -292,7 +292,7 @@ export default function PlaybookCommand() {
         </Card>
 
         {/* AI Confidence Panel */}
-        <Card className="border-none shadow-lg" style={{ background: "#0A0F2E" }}>
+        <Card className="border-none" style={{ background: "#0A0F2E" }}>
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <Brain className="h-6 w-6 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />

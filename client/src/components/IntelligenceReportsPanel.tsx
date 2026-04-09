@@ -104,7 +104,7 @@ export default function IntelligenceReportsPanel() {
       <CardContent className="space-y-4">
         {report ? (
           <div className="space-y-4">
-            <div className={`p-3 rounded-lg border ${getReportTypeColor(report.reportType)}`}>
+            <div className={`p-3 border ${getReportTypeColor(report.reportType)}`}>
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-2">
                   {getReportTypeIcon(report.reportType)}

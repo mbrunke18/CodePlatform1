@@ -82,7 +82,7 @@ export default function ROIDashboard() {
                   From strategic work completion
                 </p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-green-100 flex items-center justify-center">
                 <i className="fas fa-chart-line text-green-600 w-6"></i>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function ROIDashboard() {
                   From crisis preparedness & efficiency
                 </p>
               </div>
-              <div className="w-12 h-12 bg-[#F8F7F4] rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#F8F7F4] flex items-center justify-center">
                 <i className="fas fa-shield-alt text-[#0A0F2E] w-6"></i>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function ROIDashboard() {
                   Avg resolution: {roiMetrics.avgTimeToResolution}min
                 </p>
               </div>
-              <div className="w-12 h-12 bg-[#0A0F2E] rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#0A0F2E] flex items-center justify-center">
                 <i className="fas fa-tachometer-alt text-[#C9A84C] w-6"></i>
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function ROIDashboard() {
                   {roiMetrics.completedTasks} tasks, {roiMetrics.completedSimulations} simulations
                 </p>
               </div>
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-orange-100 flex items-center justify-center">
                 <i className="fas fa-tasks text-orange-600 w-6"></i>
               </div>
             </div>
@@ -214,7 +214,7 @@ export default function ROIDashboard() {
                 recentEvents.slice(0, 5).map((event) => (
                   <div key={event.id} className="flex items-center justify-between py-2 border-b last:border-b-0">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-primary/10 flex items-center justify-center">
                         <i className={`fas ${
                           event.eventType === 'task_completed' ? 'fa-check' : 
                           event.eventType === 'crisis_simulation_completed' ? 'fa-shield-alt' : 
@@ -258,7 +258,7 @@ export default function ROIDashboard() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-lg p-6">
+          <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <p className="text-2xl font-bold text-primary">

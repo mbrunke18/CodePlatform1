@@ -612,7 +612,7 @@ export default function IndustryDemosHub() {
             </div>
           </div>
 
-          <Card className="bg-[#F8F7F4] border-[#E8E4DC] p-12 rounded-none shadow-sm">
+          <Card className="bg-[#F8F7F4] border-[#E8E4DC] p-12 rounded-none">
             <div className="text-center max-w-3xl mx-auto">
               <h3 className="text-3xl font-serif text-[#0A0F2E] mb-4">The Detection-Execution Gap</h3>
               <p className="text-lg text-[#6B7280] mb-10 font-light leading-relaxed">
@@ -633,7 +633,7 @@ export default function IndustryDemosHub() {
               </div>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <Link href="/onboarding">
-                  <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none shadow-xl">
+                  <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none">
                     <Zap className="w-4 h-4 mr-3 text-[#C9A84C]" />
                     Try Live Activation
                   </Button>

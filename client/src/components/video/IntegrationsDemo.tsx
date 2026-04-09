@@ -52,12 +52,12 @@ export function IntegrationsDemo({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + i * 0.15 }}
-                  className={`flex items-center gap-4 bg-gray-50 border rounded-lg p-4 transition-all ${
+                  className={`flex items-center gap-4 bg-gray-50 border p-4 transition-all ${
                     i < activeIntegration ? "border-green-500/50" : "border-gray-200"
                   }`}
                 >
                   <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
+                    className="w-10 h-10 flex items-center justify-center"
                     style={{ backgroundColor: `${integration.color}20` }}
                   >
                     <integration.icon className="w-5 h-5" style={{ color: integration.color }} />
@@ -88,7 +88,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
           </div>
 
           <div className="flex flex-col justify-center">
-            <div className="bg-gray-50 border border-[#D4AF37]/30 rounded-xl p-6">
+            <div className="bg-gray-50 border border-[#D4AF37]/30 p-6">
               <p className="text-[#D4AF37] font-bold text-lg mb-4">Automatic Actions</p>
               <div className="space-y-4">
                 {actions.map((action, i) => (
@@ -99,7 +99,7 @@ export function IntegrationsDemo({ progress }: SceneProps) {
                     transition={{ delay: action.delay }}
                     className="flex items-center gap-3"
                   >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                    <div className={`w-8 h-8 flex items-center justify-center ${
                       progress > action.delay ? "bg-green-500/20" : "bg-gray-100"
                     }`}>
                       <action.icon className={`w-4 h-4 ${

@@ -28,9 +28,9 @@ export default function ExecutionIntelligenceDashboard() {
 
   if (isLoading) {
     return (
-      <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm mb-8">
+      <Card className="border-[#E8E4DC] bg-white rounded-none mb-8">
         <CardContent className="p-12 text-center">
-          <Skeleton className="w-48 h-48 rounded-full mx-auto mb-4" />
+          <Skeleton className="w-48 h-48 mx-auto mb-4" />
           <Skeleton className="w-32 h-6 mx-auto" />
         </CardContent>
       </Card>
@@ -63,7 +63,7 @@ export default function ExecutionIntelligenceDashboard() {
 
   if (data.totalActivations === 0) {
     return (
-      <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm mb-8">
+      <Card className="border-[#E8E4DC] bg-white rounded-none mb-8">
         <CardContent className="p-12 text-center">
           <p className="text-[#6B7280] font-medium" style={CG}>
             Start activating playbooks to build your maturity score
@@ -76,7 +76,7 @@ export default function ExecutionIntelligenceDashboard() {
   const scoreColor = getScoreColor(data.score);
 
   return (
-    <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm mb-8">
+    <Card className="border-[#E8E4DC] bg-white rounded-none mb-8">
       <CardContent className="p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Circular Score Display */}

@@ -273,7 +273,7 @@ export function ExecutiveWarRoom() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="p-2 bg-primary rounded-lg">
+          <div className="p-2 bg-primary">
             <Command className="h-6 w-6 text-white" />
           </div>
           <div>
@@ -393,7 +393,7 @@ export function ExecutiveWarRoom() {
               ) : (
                 <div className="space-y-4">
                   {sessions.map((session: WarRoomSession) => (
-                    <Card key={session.id} className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setSelectedSession(session.id)}>
+                    <Card key={session.id} className="cursor-pointer " onClick={() => setSelectedSession(session.id)}>
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1">
@@ -566,7 +566,7 @@ export function ExecutiveWarRoom() {
                   <CardDescription>AI-powered strategic analysis and recommendations</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4 rounded-lg">
+                  <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4">
                     <div className="flex items-center mb-2">
                       <Target className="h-5 w-5 text-[#0A0F2E] mr-2" />
                       <span className="font-medium text-[#0A0F2E] dark:text-white">Strategic Opportunity</span>
@@ -576,7 +576,7 @@ export function ExecutiveWarRoom() {
                     </p>
                   </div>
 
-                  <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
+                  <div className="bg-orange-50 dark:bg-orange-900/20 p-4">
                     <div className="flex items-center mb-2">
                       <AlertTriangle className="h-5 w-5 text-orange-600 mr-2" />
                       <span className="font-medium text-orange-900 dark:text-orange-100">Risk Alert</span>
@@ -586,7 +586,7 @@ export function ExecutiveWarRoom() {
                     </p>
                   </div>
 
-                  <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                  <div className="bg-green-50 dark:bg-green-900/20 p-4">
                     <div className="flex items-center mb-2">
                       <TrendingUp className="h-5 w-5 text-green-600 mr-2" />
                       <span className="font-medium text-green-900 dark:text-green-100">Performance Insight</span>

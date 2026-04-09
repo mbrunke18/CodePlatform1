@@ -264,7 +264,7 @@ export function SplitScreenComparison() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 animate-in slide-in-from-bottom duration-700 h-[40vh]">
-      <Card className="rounded-t-xl rounded-b-none border-t-2 border-x-0 border-b-0 border-[#2B8A6E]/50 bg-white backdrop-blur-xl shadow-2xl h-full overflow-y-auto">
+      <Card className="rounded-t-xl rounded-b-none border-t-2 border-x-0 border-b-0 border-[#2B8A6E]/50 bg-white backdrop-blur-xl h-full overflow-y-auto">
         <div className="grid grid-cols-2 divide-x divide-gray-700">
           {/* TRADITIONAL SIDE - PAIN */}
           <div className="p-6 bg-gradient-to-br  ">
@@ -283,7 +283,7 @@ export function SplitScreenComparison() {
               {/* Metrics */}
               <div className="space-y-2">
                 {data.metrics.map((metric, idx) => (
-                  <div key={idx} className="bg-black/30 rounded-lg p-3 border border-red-500/20">
+                  <div key={idx} className="bg-black/30 p-3 border border-red-500/20">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-2xl font-bold text-red-500">{metric.traditional.value}</p>
@@ -296,7 +296,7 @@ export function SplitScreenComparison() {
               </div>
 
               {/* Executive Pressure */}
-              <div className="bg-red-950/30 rounded-lg p-3 border border-red-500/30">
+              <div className="bg-red-950/30 p-3 border border-red-500/30">
                 <p className="text-xs font-semibold text-red-300 mb-2">Executive Pressure</p>
                 <div className="space-y-1">
                   {data.executivePressure.traditional.map((item, idx) => (
@@ -328,7 +328,7 @@ export function SplitScreenComparison() {
               {/* Metrics */}
               <div className="space-y-2">
                 {data.metrics.map((metric, idx) => (
-                  <div key={idx} className="bg-black/30 rounded-lg p-3 border border-[#2B8A6E]/20">
+                  <div key={idx} className="bg-black/30 p-3 border border-[#2B8A6E]/20">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-2xl font-bold text-[#0A0F2E]">{metric.m.value}</p>
@@ -341,7 +341,7 @@ export function SplitScreenComparison() {
               </div>
 
               {/* Executive Confidence */}
-              <div className="bg-[#0A0F2E]/30 rounded-lg p-3 border border-[#2B8A6E]/30">
+              <div className="bg-[#0A0F2E]/30 p-3 border border-[#2B8A6E]/30">
                 <p className="text-xs font-semibold text-[#DFC178] mb-2">Executive Confidence</p>
                 <div className="space-y-1">
                   {data.executivePressure.m.map((item, idx) => (

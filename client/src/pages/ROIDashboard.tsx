@@ -38,8 +38,8 @@ function Bar({ label, value, max, color, suffix = 'min' }: { label: string; valu
         <span className="text-[10px] font-semibold text-gray-600">{label}</span>
         <span className="text-[11px] font-black" style={{ color }}>{value.toLocaleString()} {suffix}</span>
       </div>
-      <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
-        <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: color }} />
+      <div className="w-full h-2.5 bg-gray-100 overflow-hidden">
+        <div className="h-full transition-all" style={{ width: `${pct}%`, background: color }} />
       </div>
     </div>
   );
@@ -102,7 +102,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
 
         {isLoading ? (
           <div className="flex items-center justify-center py-32">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2" style={{ borderColor: GOLD }} />
+            <div className="animate-spin h-8 w-8 border-b-2" style={{ borderColor: GOLD }} />
           </div>
         ) : view === 'summary' ? (
           <div className="max-w-6xl mx-auto px-8 py-10">
@@ -137,7 +137,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 return (
                   <div key={k.label} className="p-5 border border-[#E8E4DC]">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-8 h-8 flex items-center justify-center rounded-lg" style={{ background: `${k.color}15` }}>
+                      <div className="w-8 h-8 flex items-center justify-center" style={{ background: `${k.color}15` }}>
                         <Icon className="w-4 h-4" style={{ color: k.color }} />
                       </div>
                       <p className="text-[9px] font-bold uppercase tracking-wider text-gray-400">{k.label}</p>
@@ -229,7 +229,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
               <div className="space-y-3">
                 {board.events.map((ev: any, i: number) => (
                   <div key={ev.id} className="flex items-start gap-4 p-4 border border-[#E8E4DC]">
-                    <div className="w-8 h-8 flex items-center justify-center rounded-full flex-shrink-0 text-[11px] font-black text-white"
+                    <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 text-[11px] font-black text-white"
                       style={{ background: ev.targetMet ? TEAL : GOLD }}>
                       {i + 1}
                     </div>

@@ -182,7 +182,7 @@ export function ActivationButton({
 
   if (showProgress) {
     return (
-      <div className="w-full space-y-3 p-4 bg-muted/50 rounded-lg" data-testid="activation-progress">
+      <div className="w-full space-y-3 p-4 bg-muted/50" data-testid="activation-progress">
         <div className="flex items-center gap-2">
           <Loader2 className="h-5 w-5 animate-spin text-primary" />
           <span className="font-medium">{currentStep}</span>

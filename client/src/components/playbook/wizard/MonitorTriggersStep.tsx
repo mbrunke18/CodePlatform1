@@ -97,7 +97,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#E8E4DC] dark:border-[#0A0F2E]">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 border border-[#E8E4DC] dark:border-[#0A0F2E]">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">📡</span> DETECT Phase — Monitor Signals
         </h3>
@@ -120,7 +120,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
           {triggers.map((trigger) => (
             <div
               key={trigger.id}
-              className={`flex items-start gap-3 p-3 border rounded-lg ${trigger.enabled ? 'bg-background' : 'bg-muted/50 opacity-60'}`}
+              className={`flex items-start gap-3 p-3 border ${trigger.enabled ? 'bg-background' : 'bg-muted/50 opacity-60'}`}
               data-testid={`trigger-${trigger.id}`}
             >
               <Switch
@@ -241,7 +241,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center justify-between p-3 border rounded-lg">
+          <div className="flex items-center justify-between p-3 border">
             <div>
               <div className="text-sm font-medium">Auto-Activate Playbook</div>
               <div className="text-xs text-muted-foreground">

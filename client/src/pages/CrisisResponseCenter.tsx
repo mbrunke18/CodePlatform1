@@ -301,7 +301,7 @@ export default function CrisisResponseCenter() {
             <TabsContent value="dashboard" className="space-y-12 mt-0">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 {/* Active Situations */}
-                <Card className="border border-[#E8E4DC] bg-white p-8 shadow-sm rounded-none">
+                <Card className="border border-[#E8E4DC] bg-white p-8 rounded-none">
                   <CardHeader className="px-0 pt-0 mb-8">
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                       <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
@@ -342,7 +342,7 @@ export default function CrisisResponseCenter() {
                 </Card>
 
                 {/* Quick Actions */}
-                <Card className="border border-[#E8E4DC] bg-white p-8 shadow-sm rounded-none">
+                <Card className="border border-[#E8E4DC] bg-white p-8 rounded-none">
                   <CardHeader className="px-0 pt-0 mb-8">
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
                       <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
@@ -463,7 +463,7 @@ export default function CrisisResponseCenter() {
                         <div className="space-y-3">
                           {crisis.nextActions.map((action, index) => (
                             <div key={index} className="flex items-start gap-3 text-sm text-[#0A0F2E]">
-                              <div className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full mt-1.5 flex-shrink-0" />
+                              <div className="w-1.5 h-1.5 bg-[#C9A84C] mt-1.5 flex-shrink-0" />
                               {action}
                             </div>
                           ))}

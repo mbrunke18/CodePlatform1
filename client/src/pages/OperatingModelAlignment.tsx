@@ -316,7 +316,7 @@ function RadarChart({ scores, targetScores }: { scores: Record<OperatingModelEle
               width={24}
               height={24}
             >
-              <div className="flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 dark:bg-[#141B45]">
+              <div className="flex items-center justify-center w-6 h-6 bg-slate-100 dark:bg-[#141B45]">
                 <Icon className="w-3 h-3 text-gray-800 dark:text-slate-300" />
               </div>
             </foreignObject>
@@ -364,7 +364,7 @@ function AssessmentStep({
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${category?.[1].hex}18` }}>
+          <div className="w-12 h-12 flex items-center justify-center" style={{ background: `${category?.[1].hex}18` }}>
             <Icon className="w-6 h-6" style={{ color: category?.[1].hex }} />
           </div>
           <div>
@@ -395,7 +395,7 @@ function AssessmentStep({
                   <Label
                     htmlFor={`${element}-${qIndex}-${value}`}
                     data-testid={`label-${element.toLowerCase().replace(/\s+/g, '-')}-q${qIndex}-${value}`}
-                    className={`flex items-center justify-center w-10 h-10 rounded-lg border-2 cursor-pointer transition-all
+                    className={`flex items-center justify-center w-10 h-10 border-2 cursor-pointer transition-all
                       ${answers[qIndex] === value 
                         ? 'bg-primary text-primary-foreground border-primary' 
                         : 'bg-muted/30 border-muted-foreground/20 hover:border-primary/50'
@@ -577,7 +577,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-alignment-score">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-[#0A0F2E]/10 flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#0A0F2E]/10 flex items-center justify-center">
                       <BarChart3 className="w-5 h-5 text-[#0A0F2E]" />
                     </div>
                     <div>
@@ -590,7 +590,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-priority-elements">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                    <div className="w-10 h-10 bg-amber-500/10 flex items-center justify-center">
                       <AlertCircle className="w-5 h-5 text-amber-500" />
                     </div>
                     <div>
@@ -603,7 +603,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-recommended-playbooks">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-[#2B8A6E]/10 flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#2B8A6E]/10 flex items-center justify-center">
                       <BookOpen className="w-5 h-5 text-[#2B8A6E]" />
                     </div>
                     <div>
@@ -616,7 +616,7 @@ export default function OperatingModelAlignment() {
               <Card data-testid="card-industry-gap">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#C9A84C]/10 flex items-center justify-center">
                       <TrendingUp className="w-5 h-5 text-[#C9A84C]" />
                     </div>
                     <div>
@@ -698,7 +698,7 @@ export default function OperatingModelAlignment() {
                           </div>
                         ))}
                       </div>
-                      <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+                      <div className="mt-6 p-4 bg-muted/30">
                         <p className="text-sm text-muted-foreground italic">
                           "Companies achieve only 70% of their strategies' potential—largely due to operating model shortcomings."
                         </p>
@@ -757,11 +757,11 @@ export default function OperatingModelAlignment() {
                         <RadarChart scores={scores} targetScores={targetScores} />
                         <div className="flex justify-center gap-6 mt-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-[#2B8A6E]" />
+                            <div className="w-3 h-3 bg-[#2B8A6E]" />
                             <span className="text-sm text-muted-foreground">Current</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-[#0A0F2E] border-2 border-dashed border-[#0A0F2E]" />
+                            <div className="w-3 h-3 bg-[#0A0F2E] border-2 border-dashed border-[#0A0F2E]" />
                             <span className="text-sm text-muted-foreground">Target</span>
                           </div>
                         </div>
@@ -820,10 +820,10 @@ export default function OperatingModelAlignment() {
                           {recommendedPlaybooks.map(({ domain, info, relevance }, index) => (
                             <div 
                               key={domain}
-                              className="flex items-center gap-4 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors"
+                              className="flex items-center gap-4 p-4 bg-muted/30 hover:bg-muted/50 transition-colors"
                               data-testid={`card-recommendation-${domain}`}
                             >
-                              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                              <div className="w-8 h-8 bg-primary/10 flex items-center justify-center text-primary font-bold">
                                 {index + 1}
                               </div>
                               <div className="flex-1">
@@ -902,7 +902,7 @@ export default function OperatingModelAlignment() {
                               <Card key={element} className="border-amber-500/30" data-testid={`card-gap-${element.toLowerCase().replace(/\s+/g, '-')}`}>
                                 <CardContent className="p-4">
                                   <div className="flex items-center gap-3 mb-3">
-                                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                                    <div className="w-10 h-10 bg-amber-500/10 flex items-center justify-center">
                                       <Icon className="w-5 h-5 text-[#C9A84C]" />
                                     </div>
                                     <div>
@@ -944,21 +944,21 @@ export default function OperatingModelAlignment() {
                         </CardHeader>
                         <CardContent>
                           <div className="space-y-3">
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2B8A6E]/5">
+                            <div className="flex items-start gap-3 p-3 bg-[#2B8A6E]/5">
                               <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Clarify decision rights</p>
                                 <p className="text-xs text-muted-foreground">Map RACI for top 10 cross-functional processes</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2B8A6E]/5">
+                            <div className="flex items-start gap-3 p-3 bg-[#2B8A6E]/5">
                               <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Activate 3 priority playbooks</p>
                                 <p className="text-xs text-muted-foreground">Start with highest-relevance domain recommendations</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2B8A6E]/5">
+                            <div className="flex items-start gap-3 p-3 bg-[#2B8A6E]/5">
                               <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Run a tabletop exercise</p>
@@ -976,21 +976,21 @@ export default function OperatingModelAlignment() {
                         </CardHeader>
                         <CardContent>
                           <div className="space-y-3">
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#0A0F2E]/5">
+                            <div className="flex items-start gap-3 p-3 bg-[#0A0F2E]/5">
                               <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Operating model redesign</p>
                                 <p className="text-xs text-muted-foreground">Address lowest-scoring elements systematically</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#0A0F2E]/5">
+                            <div className="flex items-start gap-3 p-3 bg-[#0A0F2E]/5">
                               <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Build playbook library</p>
                                 <p className="text-xs text-muted-foreground">Customize 20+ playbooks to your context</p>
                               </div>
                             </div>
-                            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#0A0F2E]/5">
+                            <div className="flex items-start gap-3 p-3 bg-[#0A0F2E]/5">
                               <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Leadership alignment program</p>

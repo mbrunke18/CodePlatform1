@@ -32,7 +32,7 @@ export default function TemplatesPage() {
             <Card key={template.name} className="hover:border-[#C9A84C]/50/50 transition-colors cursor-pointer">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-lg ${template.color} flex items-center justify-center`}>
+                  <div className={`w-10 h-10 ${template.color} flex items-center justify-center`}>
                     <FileText className="w-5 h-5 text-gray-900" />
                   </div>
                   <div>

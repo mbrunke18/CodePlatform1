@@ -265,7 +265,7 @@ export default function ExecutionValidationReport({
         </div>
 
         {report.lessonsLearned && report.lessonsLearned.length > 0 && (
-          <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800" data-testid="lessons-learned">
+          <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800" data-testid="lessons-learned">
             <div className="flex items-start gap-2">
               <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5" />
               <div className="flex-1">
@@ -283,7 +283,7 @@ export default function ExecutionValidationReport({
         )}
 
         {report.improvementAreas && report.improvementAreas.length > 0 && (
-          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800" data-testid="improvement-areas">
+          <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800" data-testid="improvement-areas">
             <div className="flex items-start gap-2">
               <AlertTriangle className="h-4 w-4 text-yellow-600 mt-0.5" />
               <div className="flex-1">

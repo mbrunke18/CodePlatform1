@@ -44,7 +44,7 @@ export function Solution({ progress }: SceneProps) {
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#D4AF37] to-[#c9a432] rounded-2xl flex items-center justify-center shadow-2xl shadow-[#D4AF37]/30"
+          className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-[#D4AF37] to-[#c9a432] flex items-center justify-center shadow-[#D4AF37]/30"
         >
           <Zap className="w-10 h-10 text-[#1A2B3D]" />
         </motion.div>
@@ -102,7 +102,7 @@ export function Solution({ progress }: SceneProps) {
               transition={{ delay: 1.4 + i * 0.1 }}
               className="text-center"
             >
-              <div className="w-10 h-10 mx-auto mb-2 rounded-lg bg-gray-50 flex items-center justify-center">
+              <div className="w-10 h-10 mx-auto mb-2 bg-gray-50 flex items-center justify-center">
                 <cap.icon className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <p className="text-gray-900 text-xs font-medium">{cap.label}</p>
@@ -115,7 +115,7 @@ export function Solution({ progress }: SceneProps) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.8 }}
-          className="mt-8 inline-flex items-center gap-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full px-6 py-3"
+          className="mt-8 inline-flex items-center gap-3 bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-6 py-3"
         >
           <span className="text-[#D4AF37] font-bold text-xl">12 minutes</span>
           <span className="text-gray-800">from trigger to full execution</span>

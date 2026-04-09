@@ -103,7 +103,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
   return (
     <div className="space-y-6" data-testid="crisis-response-dashboard">
       {/* Crisis Status Header */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-6 rounded-lg">
+      <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white p-6">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Crisis Response Command Center</h1>
@@ -137,7 +137,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {activeScenarios.map((scenario: any) => (
-              <Card key={scenario.id} className="border-red-200 bg-red-50 dark:bg-red-900/20 hover:shadow-lg transition-shadow">
+              <Card key={scenario.id} className="border-red-200 bg-red-50 dark:bg-red-900/20 ">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -186,7 +186,7 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
         {crisisTemplates.map((template: CrisisTemplate) => (
           <Card 
             key={template.id} 
-            className={`${getSeverityColor(template.severity)} border-2 hover:shadow-lg transition-all duration-200`}
+            className={`${getSeverityColor(template.severity)} border-2 transition-all duration-200`}
             data-testid={`crisis-template-${template.id}`}
           >
             <CardHeader>
@@ -315,21 +315,21 @@ export default function CrisisResponseDashboard({ organizationId }: { organizati
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
+            <div className="text-center p-3 bg-white dark:bg-gray-800">
               <div className="font-semibold">Crisis Commander</div>
               <div className="text-sm text-gray-600 dark:text-gray-200">24/7 Emergency Line</div>
               <Button variant="outline" size="sm" className="mt-2" data-testid="contact-crisis-commander">
                 Contact Now
               </Button>
             </div>
-            <div className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
+            <div className="text-center p-3 bg-white dark:bg-gray-800">
               <div className="font-semibold">Legal Counsel</div>
               <div className="text-sm text-gray-600 dark:text-gray-200">Regulatory & Compliance</div>
               <Button variant="outline" size="sm" className="mt-2" data-testid="contact-legal">
                 Contact Now
               </Button>
             </div>
-            <div className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg">
+            <div className="text-center p-3 bg-white dark:bg-gray-800">
               <div className="font-semibold">Communications Lead</div>
               <div className="text-sm text-gray-600 dark:text-gray-200">Media & Stakeholder</div>
               <Button variant="outline" size="sm" className="mt-2" data-testid="contact-communications">

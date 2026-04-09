@@ -296,7 +296,7 @@ export default function LivingPlaybooks() {
           </div>
 
           {/* How It Works */}
-          <Card style={{ background: NAVY }} className="border-none shadow-xl text-white relative overflow-hidden">
+          <Card style={{ background: NAVY }} className="border-none text-white relative overflow-hidden">
             <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.1) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
             <CardHeader className="relative z-10 border-b border-white/10 pb-6">
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>

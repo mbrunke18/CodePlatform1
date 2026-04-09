@@ -213,7 +213,7 @@ export default function StandardNav() {
 
   const renderDropdownButton = (label: string, highlighted?: boolean) => (
     <button
-      className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-150 flex items-center gap-1.5"
+      className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
       style={{
         color: highlighted ? GOLD : NAVY,
         background: 'transparent',
@@ -289,7 +289,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        className="p-0 overflow-hidden"
         style={{ width: 700, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
@@ -365,7 +365,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        className="p-0 overflow-hidden"
         style={{ width: 620, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
@@ -424,7 +424,7 @@ export default function StandardNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="p-0 shadow-2xl rounded-xl overflow-hidden"
+        className="p-0 overflow-hidden"
         style={{ width: 560, background: '#fff', border: megaBorder, boxShadow: megaShadow }}
       >
         {/* Header bar */}
@@ -516,7 +516,7 @@ export default function StandardNav() {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
-          className="p-0 shadow-2xl rounded-xl overflow-hidden"
+          className="p-0 overflow-hidden"
           style={{
             width: 660,
             background: '#fff',
@@ -653,7 +653,7 @@ export default function StandardNav() {
             {renderInvestorsDropdown()}
             <button
               onClick={() => navigateTo('/onboarding-guide')}
-              className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-150 flex items-center gap-1.5"
+              className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
               style={{ color: GOLD, background: 'transparent' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
@@ -669,7 +669,7 @@ export default function StandardNav() {
             {!isHomePage && (
               <button
                 onClick={handleBack}
-                className="h-9 w-9 flex items-center justify-center rounded-lg transition-all"
+                className="h-9 w-9 flex items-center justify-center transition-all"
                 style={{ color: NAVY, background: 'transparent', border: '1px solid rgba(10,15,46,0.12)' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
@@ -682,14 +682,14 @@ export default function StandardNav() {
             {/* Global Search Button */}
             <button
               onClick={() => { setSearchOpen(o => !o); setSearchQuery(''); }}
-              className="h-9 w-9 flex items-center justify-center rounded-lg border transition-all"
+              className="h-9 w-9 flex items-center justify-center border transition-all"
               style={{ border: '1px solid rgba(10,15,46,0.12)', color: NAVY, background: searchOpen ? 'rgba(10,15,46,0.04)' : 'transparent' }}
               title="Search platform (⌘K)"
             >
               <Search className="h-4 w-4" />
             </button>
             {isLoading ? (
-              <div className="h-9 w-48 bg-gray-100 animate-pulse rounded-lg" />
+              <div className="h-9 w-48 bg-gray-100 animate-pulse" />
             ) : isAuthenticated && user ? (
               <>
                 <Button
@@ -713,7 +713,7 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   onClick={() => navigateTo("/command-center")}
-                  className="h-9 px-4 text-sm font-bold text-white shadow-md"
+                  className="h-9 px-4 text-sm font-bold text-white"
                   style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)`, border: 'none' }}
                   data-testid="nav-open-platform"
                 >
@@ -818,7 +818,7 @@ export default function StandardNav() {
               </Button>
             )}
             <button
-              className="p-2 rounded-lg transition-colors"
+              className="p-2 transition-colors"
               style={{ color: NAVY }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
@@ -915,7 +915,7 @@ export default function StandardNav() {
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                      className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
                       style={{
                         color: isActivePath(link.path) ? NAVY : '#374151',
                         fontWeight: isActivePath(link.path) ? 600 : 500,
@@ -938,7 +938,7 @@ export default function StandardNav() {
                     <button
                       key={link.path + link.label}
                       onClick={() => navigateTo(link.path)}
-                      className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                      className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
                       style={{ color: '#374151', fontWeight: 500 }}
                     >
                       <link.icon className="h-4 w-4" style={{ color: GOLD }} />
@@ -955,7 +955,7 @@ export default function StandardNav() {
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                  className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
                   style={{ color: '#374151', fontWeight: 500 }}
                 >
                   <link.icon className="h-4 w-4" style={{ color: TEAL }} />
@@ -970,7 +970,7 @@ export default function StandardNav() {
                 <button
                   key={link.path}
                   onClick={() => navigateTo(link.path)}
-                  className="w-full text-left py-2.5 px-4 rounded-lg transition-colors flex items-center gap-3"
+                  className="w-full text-left py-2.5 px-4 transition-colors flex items-center gap-3"
                   style={{ color: '#374151', fontWeight: 500 }}
                 >
                   <link.icon className="h-4 w-4" style={{ color: GOLD }} />
@@ -983,7 +983,7 @@ export default function StandardNav() {
                   <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
                   <button
                     onClick={logout}
-                    className="w-full text-left py-2.5 px-4 rounded-lg flex items-center gap-3 text-sm font-medium"
+                    className="w-full text-left py-2.5 px-4 flex items-center gap-3 text-sm font-medium"
                     style={{ color: '#DC2626' }}
                     data-testid="nav-mobile-logout"
                   >

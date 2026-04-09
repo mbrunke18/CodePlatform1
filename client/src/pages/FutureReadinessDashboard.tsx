@@ -181,7 +181,7 @@ export default function FutureReadinessDashboard() {
       <div className="max-w-7xl mx-auto space-y-8 p-12">
 
         {/* Main Readiness Score */}
-        <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm overflow-hidden">
+        <Card className="border-[#E8E4DC] bg-white rounded-none overflow-hidden">
           <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/50">
             <div className="flex items-center justify-between">
               <div>
@@ -289,7 +289,7 @@ export default function FutureReadinessDashboard() {
                       <p className="text-center text-[#6B7280] italic">No weak signals detected</p>
                     ) : (
                       weakSignals.map((signal) => (
-                        <Card key={signal.id} className="border border-[#E8E4DC] border-l-4 border-l-[#C9A84C] rounded-none shadow-sm">
+                        <Card key={signal.id} className="border border-[#E8E4DC] border-l-4 border-l-[#C9A84C] rounded-none">
                           <CardContent className="pt-6">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
@@ -349,7 +349,7 @@ export default function FutureReadinessDashboard() {
                       <p className="text-center text-[#6B7280] italic">No oracle patterns detected</p>
                     ) : (
                       oraclePatterns.map((pattern) => (
-                        <Card key={pattern.id} className="border border-[#E8E4DC] border-l-4 border-l-[#0A0F2E] rounded-none shadow-sm">
+                        <Card key={pattern.id} className="border border-[#E8E4DC] border-l-4 border-l-[#0A0F2E] rounded-none">
                           <CardContent className="pt-6">
                             <div className="flex items-start justify-between">
                               <div className="flex-1">

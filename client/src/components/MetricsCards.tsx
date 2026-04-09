@@ -45,7 +45,7 @@ export default function MetricsCards() {
                 {metrics.activeScenarios}
               </p>
             </div>
-            <div className="w-14 h-14 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <Target className="h-7 w-7 text-white" />
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function MetricsCards() {
                 {metrics.pendingTasks}
               </p>
             </div>
-            <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
               <CheckSquare className="h-7 w-7 text-white" />
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function MetricsCards() {
                 {metrics.teamMembers}
               </p>
             </div>
-            <div className="w-14 h-14 bg-gradient-to-br from-[#2B8A6E] to-[#256B56] rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#2B8A6E] to-[#256B56] flex items-center justify-center">
               <Users className="h-7 w-7 text-white" />
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function MetricsCards() {
                 {metrics.agilityScore}
               </p>
             </div>
-            <div className="w-14 h-14 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
               <Zap className="h-7 w-7 text-white" />
             </div>
           </div>

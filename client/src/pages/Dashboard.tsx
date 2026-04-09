@@ -103,7 +103,7 @@ function PhaseCard({
   return (
     <Link href={link}>
       <Card 
-        className="transition-all cursor-pointer hover:shadow-lg h-full border-t-4 rounded-none"
+        className="transition-all cursor-pointer h-full border-t-4 rounded-none"
         style={{ borderColor: accentColor, background: "#fff" }}
       >
         <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
@@ -333,7 +333,7 @@ export default function Dashboard() {
                 />
               </div>
 
-              <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
+              <Card className="border-[#E8E4DC] bg-white rounded-none">
                 <CardHeader className="border-b border-[#E8E4DC]">
                   <div className="flex items-center justify-between">
                     <CardTitle style={{ ...CG, fontSize: "24px", color: "#0A0F2E" }}>Recent Activations</CardTitle>
@@ -411,7 +411,7 @@ export default function Dashboard() {
             </div>
 
             <div className="lg:col-span-4 space-y-8">
-              <Card className="border-[#E8E4DC] bg-white rounded-none shadow-sm">
+              <Card className="border-[#E8E4DC] bg-white rounded-none">
                 <CardHeader>
                   <CardTitle style={{ ...CG, fontSize: "20px", color: "#0A0F2E" }}>Strategic Actions</CardTitle>
                 </CardHeader>
@@ -452,7 +452,7 @@ export default function Dashboard() {
                 </CardContent>
               </Card>
 
-              <Card style={{ background: "#0A0F2E" }} className="border-none text-white rounded-none shadow-sm">
+              <Card style={{ background: "#0A0F2E" }} className="border-none text-white rounded-none">
                 <CardContent className="pt-6">
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                     <div style={{ width: 20, height: 2, background: GOLD }} />

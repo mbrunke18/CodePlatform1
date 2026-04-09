@@ -174,7 +174,7 @@ export default function DealRiskDemo() {
           </Button>
         </div>
 
-        <div className="flex items-center justify-between mb-8 bg-white/5 rounded-xl p-4 border border-white/10">
+        <div className="flex items-center justify-between mb-8 bg-white/5 p-4 border border-white/10">
           {PHASES.map((phase, index) => {
             const isCompleted = completedPhases.includes(phase.id);
             const isCurrent = currentPhase === phase.id;
@@ -184,7 +184,7 @@ export default function DealRiskDemo() {
               <div key={phase.id} className="flex items-center">
                 <button
                   onClick={() => isCompleted && setCurrentPhase(phase.id)}
-                  className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all border ${
+                  className={`flex items-center gap-3 px-4 py-2 transition-all border ${
                     isCurrent 
                       ? 'bg-[#0A0F2E] border-[#C9A84C]' 
                       : isCompleted 
@@ -192,7 +192,7 @@ export default function DealRiskDemo() {
                         : 'opacity-50 border-transparent'
                   }`}
                 >
-                  <div className={`p-2 rounded-lg ${
+                  <div className={`p-2 ${
                     isCurrent ? `bg-[#C9A84C]` : isCompleted ? 'bg-[#2B8A6E]' : 'bg-white/5'
                   }`}>
                     {isCompleted ? (
@@ -233,7 +233,7 @@ export default function DealRiskDemo() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center justify-between p-3 bg-white/5 border border-white/10">
                       <span className="text-white">Salesforce</span>
                       {integrations.salesforce ? (
                         <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E]">Connected</Badge>
@@ -243,7 +243,7 @@ export default function DealRiskDemo() {
                         </Button>
                       )}
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center justify-between p-3 bg-white/5 border border-white/10">
                       <span className="text-white">Slack</span>
                       {integrations.slack ? (
                         <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E]">Connected</Badge>
@@ -253,7 +253,7 @@ export default function DealRiskDemo() {
                         </Button>
                       )}
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center justify-between p-3 bg-white/5 border border-white/10">
                       <span className="text-white">Jira</span>
                       {integrations.jira ? (
                         <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E]">Connected</Badge>
@@ -276,7 +276,7 @@ export default function DealRiskDemo() {
                   )}
 
                   {typedStatus?.playbook && (
-                    <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                    <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
                       <div className="flex items-center gap-2 text-[#2B8A6E] mb-2">
                         <CheckCircle2 className="h-5 w-5" />
                         <span className="font-medium">Playbook Configured</span>
@@ -315,13 +315,13 @@ export default function DealRiskDemo() {
                   {typedStatus?.monitoring && typedPipeline?.deals && (
                     <div className="space-y-3">
                       <p className="text-sm text-[#2B8A6E] flex items-center gap-2">
-                        <span className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
+                        <span className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                         Monitoring {typedPipeline.deals.length} deals...
                       </p>
                       {typedPipeline.deals.filter((d: any) => d.riskScore > 60).map((deal: any) => (
                         <div 
                           key={deal.id}
-                          className="p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded-lg"
+                          className="p-4 bg-[#0A0F2E] border border-[#C9A84C]"
                         >
                           <div className="flex items-center justify-between mb-2">
                             <span className="text-white font-medium">{deal.dealName}</span>
@@ -410,7 +410,7 @@ export default function DealRiskDemo() {
                     ) : learnings ? (
                       <div className="space-y-6">
                         {/* Success Banner */}
-                        <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-lg">
+                        <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
                           <div className="flex items-center gap-2 text-[#2B8A6E] mb-1">
                             <CheckCircle2 className="h-5 w-5" />
                             <span className="font-medium">Execution Complete - Learnings Captured</span>
@@ -428,7 +428,7 @@ export default function DealRiskDemo() {
                           </h4>
                           <div className="space-y-2">
                             {learnings.successPatterns?.map((pattern: any, i: number) => (
-                              <div key={i} className="p-3 bg-white/5 rounded-lg border-l-2 border-[#2B8A6E]">
+                              <div key={i} className="p-3 bg-white/5 border-l-2 border-[#2B8A6E]">
                                 <div className="flex items-center gap-2 mb-1">
                                   {pattern.icon === 'radar' && <Radar className="h-4 w-4 text-[#2B8A6E]" />}
                                   {pattern.icon === 'users' && <Users className="h-4 w-4 text-[#2B8A6E]" />}
@@ -450,7 +450,7 @@ export default function DealRiskDemo() {
                           </h4>
                           <div className="space-y-2">
                             {learnings.playbookImprovements?.map((improvement: any, i: number) => (
-                              <div key={i} className="p-3 bg-white/5 rounded-lg border border-white/10">
+                              <div key={i} className="p-3 bg-white/5 border border-white/10">
                                 <div className="flex items-center justify-between mb-1">
                                   <span className="text-white text-sm font-medium">{improvement.title}</span>
                                   <Badge className={improvement.priority === 'high' ? 'bg-[#C9A84C]/20 text-[#C9A84C]' : 'bg-[#DFC178]/20 text-[#DFC178]'}>
@@ -475,7 +475,7 @@ export default function DealRiskDemo() {
                               Institutional Knowledge Captured
                             </h4>
                             {learnings.institutionalKnowledge.map((knowledge: any, i: number) => (
-                              <div key={i} className="p-3 bg-white/5 border border-white/10 rounded-lg">
+                              <div key={i} className="p-3 bg-white/5 border border-white/10">
                                 <div className="text-white text-sm font-medium mb-2">{knowledge.pattern}</div>
                                 <div className="grid grid-cols-2 gap-3 text-xs">
                                   <div>
@@ -493,7 +493,7 @@ export default function DealRiskDemo() {
                         )}
 
                         {/* ROI Summary */}
-                        <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                        <div className="p-4 bg-white/5 border border-white/10">
                           <h4 className="text-sm font-medium text-white mb-3 flex items-center gap-2">
                             <Shield className="h-4 w-4 text-[#DFC178]" />
                             Execution ROI
@@ -535,13 +535,13 @@ export default function DealRiskDemo() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                  <div className="p-4 bg-white/5 border border-white/10">
                     <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       {typedPipeline?.summary?.totalDeals || 42}
                     </div>
                     <p className="text-xs text-white/40">Active Deals</p>
                   </div>
-                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                  <div className="p-4 bg-white/5 border border-white/10">
                     <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       ${((typedPipeline?.summary?.totalPipeline || 12000000) / 1000000).toFixed(1)}M
                     </div>
@@ -579,7 +579,7 @@ export default function DealRiskDemo() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                     <BookOpen className="h-5 w-5 text-[#C9A84C]" />
                   </div>
                   <div>
@@ -588,7 +588,7 @@ export default function DealRiskDemo() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                     <Radar className="h-5 w-5 text-[#DFC178]" />
                   </div>
                   <div>
@@ -597,7 +597,7 @@ export default function DealRiskDemo() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                     <Radio className="h-5 w-5 text-[#2B8A6E]" />
                   </div>
                   <div>
@@ -606,7 +606,7 @@ export default function DealRiskDemo() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                     <BarChart3 className="h-5 w-5 text-[#DFC178]" />
                   </div>
                   <div>

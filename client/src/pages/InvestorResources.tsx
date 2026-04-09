@@ -282,10 +282,10 @@ export default function InvestorResources() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* The Problem */}
-            <Card className="border-[#E8E4DC] bg-white shadow-xl hover:shadow-2xl transition-all">
+            <Card className="border-[#E8E4DC] bg-white transition-all">
               <CardHeader className="border-b border-[#E8E4DC] pb-6">
                 <CardTitle className="flex items-center gap-3 text-[#0A0F2E]" style={CG}>
-                  <div className="p-2 bg-[#0A0F2E]/5 rounded-lg">
+                  <div className="p-2 bg-[#0A0F2E]/5">
                     <Clock className="h-6 w-6 text-[#0A0F2E]" />
                   </div>
                   The Problem: 30-Day Mobilization Gap
@@ -320,11 +320,11 @@ export default function InvestorResources() {
             </Card>
 
             {/* The Solution */}
-            <Card className="border-[#C9A84C]/30 bg-white shadow-xl hover:shadow-2xl transition-all relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+            <Card className="border-[#C9A84C]/30 bg-white transition-all relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/5 -mr-16 -mt-16 blur-3xl"></div>
               <CardHeader className="border-b border-[#E8E4DC] pb-6">
                 <CardTitle className="flex items-center gap-3 text-[#2B8A6E]" style={CG}>
-                  <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
+                  <div className="p-2 bg-[#2B8A6E]/10">
                     <Zap className="h-6 w-6 text-[#2B8A6E]" />
                   </div>
                   Solution: 12-Minute Activation
@@ -342,7 +342,7 @@ export default function InvestorResources() {
                     { text: 'Teams execute', sub: 'Clear ownership, no ambiguity' },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <div className="mt-1 p-0.5 bg-[#2B8A6E]/10 rounded-full">
+                      <div className="mt-1 p-0.5 bg-[#2B8A6E]/10">
                         <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] shrink-0" />
                       </div>
                       <div>
@@ -353,7 +353,7 @@ export default function InvestorResources() {
                   ))}
                 </div>
                 <div className="pt-6 border-t border-[#E8E4DC] mt-6">
-                  <div className="bg-[#C9A84C] text-[#0A0F2E] p-4 rounded-lg text-center shadow-lg">
+                  <div className="bg-[#C9A84C] text-[#0A0F2E] p-4 text-center">
                     <p className="text-4xl font-bold" style={CG}>12 minutes</p>
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Coordinated response underway</p>
                   </div>
@@ -395,7 +395,7 @@ export default function InvestorResources() {
             </CardHeader>
             <CardContent>
               <div className="grid md:grid-cols-4 gap-4">
-                <div className="p-4 rounded-lg bg-[#2B8A6E]/5 border border-[#2B8A6E]/10">
+                <div className="p-4 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10">
                   <div className="flex items-center gap-2 mb-3">
                     <Target className="h-5 w-5 text-[#2B8A6E]" />
                     <span className="font-bold text-[#2B8A6E] text-xs uppercase tracking-widest">IDENTIFY</span>
@@ -404,7 +404,7 @@ export default function InvestorResources() {
                     Stakeholders assigned, documents staged, budgets pre-approved, authorities delegated
                   </p>
                 </div>
-                <div className="p-4 rounded-lg bg-[#0A0F2E]/5 border border-[#0A0F2E]/10">
+                <div className="p-4 bg-[#0A0F2E]/5 border border-[#0A0F2E]/10">
                   <div className="flex items-center gap-2 mb-3">
                     <Radio className="h-5 w-5 text-[#0A0F2E]" />
                     <span className="font-bold text-[#0A0F2E] text-xs uppercase tracking-widest">DETECT</span>
@@ -413,7 +413,7 @@ export default function InvestorResources() {
                     248+ signals tracked, triggers configured, alerts routed
                   </p>
                 </div>
-                <div className="p-4 rounded-lg bg-[#C9A84C]/5 border border-[#C9A84C]/10">
+                <div className="p-4 bg-[#C9A84C]/5 border border-[#C9A84C]/10">
                   <div className="flex items-center gap-2 mb-3">
                     <Zap className="h-5 w-5 text-[#C9A84C]" />
                     <span className="font-bold text-[#C9A84C] text-xs uppercase tracking-widest">EXECUTE</span>
@@ -422,7 +422,7 @@ export default function InvestorResources() {
                     One-click activation, auto-project creation, coordinated tasks
                   </p>
                 </div>
-                <div className="p-4 rounded-lg bg-[#2B8A6E]/5 border border-[#2B8A6E]/10">
+                <div className="p-4 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10">
                   <div className="flex items-center gap-2 mb-3">
                     <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
                     <span className="font-bold text-[#2B8A6E] text-xs uppercase tracking-widest">ADVANCE</span>
@@ -471,7 +471,7 @@ export default function InvestorResources() {
                   <div className="text-[10px] text-[#9CA3AF] mt-1 uppercase">Annual savings</div>
                 </div>
               </div>
-              <div className="mt-8 p-6 bg-[#0A0F2E] rounded-lg text-center relative overflow-hidden">
+              <div className="mt-8 p-6 bg-[#0A0F2E] text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-5" style={{ backgroundImage: `radial-gradient(${GOLD} 1px, transparent 1px)`, backgroundSize: '20px 20px' }} />
                 <div className="relative z-10">
                   <div className="text-3xl font-bold text-[#C9A84C] mb-2" style={CG}>$60K - $2M+</div>
@@ -493,7 +493,7 @@ export default function InvestorResources() {
             </p>
           </div>
 
-          <Card className="border-[#E8E4DC] bg-white overflow-hidden shadow-sm">
+          <Card className="border-[#E8E4DC] bg-white overflow-hidden">
             <CardContent className="p-0">
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -543,7 +543,7 @@ export default function InvestorResources() {
           <Card className="border-[#C9A84C]/30 bg-[#F8F7F4]/50">
             <CardContent className="p-8">
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="w-24 h-24 rounded-full bg-[#0A0F2E] flex items-center justify-center text-[#C9A84C] text-3xl font-bold shrink-0 border-2 border-[#C9A84C]">
+                <div className="w-24 h-24 bg-[#0A0F2E] flex items-center justify-center text-[#C9A84C] text-3xl font-bold shrink-0 border-2 border-[#C9A84C]">
                   MB
                 </div>
                 <div>
@@ -582,7 +582,7 @@ export default function InvestorResources() {
           </div>
 
           {/* Tech Stack */}
-          <Card className="border-[#E8E4DC] bg-white shadow-sm mb-8">
+          <Card className="border-[#E8E4DC] bg-white mb-8">
             <CardHeader className="border-b border-[#E8E4DC]">
               <CardTitle className="text-[#0A0F2E] flex items-center gap-2" style={CG}>
                 <Server className="h-5 w-5 text-[#2B8A6E]" />
@@ -638,7 +638,7 @@ export default function InvestorResources() {
           </Card>
 
           {/* Known Gaps */}
-          <Card className="border-[#E8E4DC] bg-white shadow-sm mb-8">
+          <Card className="border-[#E8E4DC] bg-white mb-8">
             <CardHeader className="border-b border-[#E8E4DC]">
               <CardTitle className="text-[#0A0F2E] flex items-center gap-2" style={CG}>
                 <AlertTriangle className="h-5 w-5 text-[#C9A84C]" />
@@ -732,7 +732,7 @@ export default function InvestorResources() {
                   ]
                 },
               ].map((p, i) => (
-                <Card key={i} className="border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
+                <Card key={i} className="border-[#E8E4DC] bg-white overflow-hidden">
                   <div className="h-1.5" style={{ background: p.bg }} />
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between mb-1">
@@ -745,8 +745,8 @@ export default function InvestorResources() {
                     <div className="space-y-3">
                       {p.items.map((item, j) => (
                         <div key={j} className="flex items-start gap-2">
-                          <div className="mt-0.5 shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style={{ background: `${p.bg}15` }}>
-                            <div className="w-1.5 h-1.5 rounded-full" style={{ background: p.bg }} />
+                          <div className="mt-0.5 shrink-0 w-4 h-4 flex items-center justify-center" style={{ background: `${p.bg}15` }}>
+                            <div className="w-1.5 h-1.5" style={{ background: p.bg }} />
                           </div>
                           <p className="text-xs text-[#6B7280] leading-relaxed">{item}</p>
                         </div>
@@ -758,7 +758,7 @@ export default function InvestorResources() {
             </div>
           </div>
 
-          <div className="mt-8 p-6 bg-[#0A0F2E] rounded-lg text-center">
+          <div className="mt-8 p-6 bg-[#0A0F2E] text-center">
             <p className="text-white font-medium text-sm mb-1">The gaps are known. The plan is sequenced. None require rebuilding — only hardening.</p>
             <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest">Phase 1 closes before customer two. Phase 2 before procurement reviews. Phase 3 before parallel pilots.</p>
           </div>

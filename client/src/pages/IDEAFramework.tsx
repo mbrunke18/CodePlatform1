@@ -511,7 +511,7 @@ export default function IDEAFramework() {
             {/* System Status Row */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-10 p-4 bg-white/5 border border-white/10 rounded-none">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#2B8A6E] animate-pulse" />
+                <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                 <span className="text-[10px] uppercase tracking-widest text-white/60">248+ Data Points Monitored</span>
               </div>
               <div className="w-px h-4 bg-white/20" />

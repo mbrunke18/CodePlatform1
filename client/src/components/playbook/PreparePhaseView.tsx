@@ -206,8 +206,8 @@ export function PreparePhaseView({ playbookId, organizationId, isEditable = true
   if (isLoading) {
     return (
       <div className="space-y-4 animate-pulse">
-        <div className="h-24 bg-slate-200 dark:bg-slate-800 rounded-lg" />
-        <div className="h-48 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+        <div className="h-24 bg-slate-200 dark:bg-slate-800" />
+        <div className="h-48 bg-slate-200 dark:bg-slate-800" />
       </div>
     );
   }
@@ -273,7 +273,7 @@ export function PreparePhaseView({ playbookId, organizationId, isEditable = true
                 return (
                   <div
                     key={item.id}
-                    className={`border rounded-lg p-3 transition-all ${
+                    className={`border p-3 transition-all ${
                       item.status === 'completed'
                         ? 'bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800'
                         : 'bg-card border-border hover:border-[#E8E4DC] dark:hover:border-[#0A0F2E]'

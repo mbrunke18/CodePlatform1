@@ -148,8 +148,8 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0A0F2E]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#C9A84C]/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0A0F2E]/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#C9A84C]/10 blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[600px] md:h-[700px] flex items-center justify-center px-6">
@@ -394,7 +394,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
-                    className="bg-gradient-to-br from-red-500/20 to-orange-500/10 border border-red-500/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-red-500/20 to-orange-500/10 border border-red-500/30 p-6"
                   >
                     <Sword className="h-10 w-10 text-red-400 mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-red-400 mb-2">OFFENSE</h3>
@@ -406,7 +406,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 1.0 }}
-                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-[#2B8A6E]/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-[#2B8A6E]/30 p-6"
                   >
                     <Shield className="h-10 w-10 text-[#0A0F2E] mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-[#0A0F2E] mb-2">DEFENSE</h3>
@@ -418,7 +418,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 1.2 }}
-                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-pink-500/10 border border-[#C9A84C]/30 rounded-xl p-6"
+                    className="bg-gradient-to-br from-[#0A0F2E]/20 to-pink-500/10 border border-[#C9A84C]/30 p-6"
                   >
                     <Zap className="h-10 w-10 text-[#C9A84C] mx-auto mb-3" />
                     <h3 className="text-2xl font-bold text-[#C9A84C] mb-2">SPECIAL TEAMS</h3>
@@ -616,7 +616,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
       <div className="absolute bottom-8 left-0 right-0 flex items-center justify-center gap-4">
         <button
           onClick={toggleMute}
-          className="flex items-center gap-2 text-gray-800 hover:text-white transition-colors px-3 py-2 rounded-lg hover:bg-slate-800/50"
+          className="flex items-center gap-2 text-gray-800 hover:text-white transition-colors px-3 py-2 hover:bg-slate-800/50"
           data-testid="button-toggle-sound"
           title={isMuted ? "Enable ambient sound" : "Mute sound"}
         >
@@ -632,7 +632,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                 setCurrentScene(i);
                 setIsPlaying(false);
               }}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`w-2 h-2 transition-all ${
                 i === currentScene 
                   ? "w-8 bg-white" 
                   : i < currentScene 

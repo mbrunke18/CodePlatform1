@@ -281,7 +281,7 @@ export default function PulseIntelligence() {
                       onClick={() => setSelectedSignal(item.id)}
                       className={`w-full text-left p-4 border transition-all ${
                         isSelected 
-                          ? `bg-[#F8F7F4] border-[${NAVY}] shadow-sm` 
+                          ? `bg-[#F8F7F4] border-[${NAVY}]` 
                           : 'bg-white border-[#E8E4DC] hover:border-[#6B7280]'
                       }`}
                     >

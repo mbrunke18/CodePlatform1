@@ -128,7 +128,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
                   key={type.value}
                   onClick={() => onChange({ scenarioType: type.value })}
                   data-testid={`select-scenario-type-${type.value}`}
-                  className={`p-4 rounded-lg border-2 text-left transition-all ${
+                  className={`p-4 border-2 text-left transition-all ${
                     isSelected
                       ? 'border-[#2B8A6E] bg-[#0A0F2E]/30'
                       : 'border-gray-200 bg-white hover:border-slate-600'
@@ -213,7 +213,7 @@ export default function ScenarioContextPhase({ data, onChange }: ScenarioContext
       </div>
 
       {/* Optional: Organizational Context */}
-      <details className="border border-gray-200 rounded-lg p-4 bg-white">
+      <details className="border border-gray-200 p-4 bg-white">
         <summary className="cursor-pointer text-gray-900 font-medium">
           Advanced: Organizational Context (Optional)
         </summary>

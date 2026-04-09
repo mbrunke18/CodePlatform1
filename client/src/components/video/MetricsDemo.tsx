@@ -60,13 +60,13 @@ export function MetricsDemo({ progress }: SceneProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + i * 0.15 }}
-              className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center"
+              className="bg-gray-50 border border-gray-200 p-4 text-center"
             >
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5 + i * 0.15, type: "spring" }}
-                className="w-12 h-12 mx-auto mb-3 rounded-xl flex items-center justify-center"
+                className="w-12 h-12 mx-auto mb-3 flex items-center justify-center"
                 style={{ backgroundColor: `${metric.color}20` }}
               >
                 <metric.icon className="w-6 h-6" style={{ color: metric.color }} />

@@ -109,7 +109,7 @@ export default function EnergyGridFailureDemo() {
             {/* Crisis Event */}
             <Card className="p-8 bg-white/5 border-white/10 border-[#C9A84C]/50">
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-[#0A0F2E] rounded-full">
+                <div className="p-3 bg-[#0A0F2E]">
                   <AlertTriangle className="h-8 w-8 text-[#C9A84C]" />
                 </div>
                 <div className="flex-1">
@@ -139,7 +139,7 @@ export default function EnergyGridFailureDemo() {
             {/* Playbook */}
             <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
               <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-[#C9A84C] rounded-full">
+                <div className="p-3 bg-[#C9A84C]">
                   <ShieldAlert className="h-6 w-6 text-[#0A0F2E]" />
                 </div>
                 <div>

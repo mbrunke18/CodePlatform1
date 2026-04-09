@@ -465,7 +465,7 @@ export default function ExecutiveSummaryGenerator() {
                           <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
                             {organizationName || 'Strategic Entity'}
                           </span>
-                          <span className="w-1 h-1 rounded-full bg-gray-300" />
+                          <span className="w-1 h-1 bg-gray-300" />
                           <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
                             {industry}
                           </span>

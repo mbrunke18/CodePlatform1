@@ -357,7 +357,7 @@ export function TriggerBuilder({
                   {triggerConfig.conditions.map((condition, index) => (
                     <div 
                       key={index}
-                      className="flex items-center justify-between p-3 bg-muted rounded-lg"
+                      className="flex items-center justify-between p-3 bg-muted"
                     >
                       <div className="flex items-center gap-3">
                         <GripVertical className="w-4 h-4 text-muted-foreground cursor-move" />
@@ -400,7 +400,7 @@ export function TriggerBuilder({
               <ScrollArea className="h-[400px] pr-4">
                 <div className="space-y-2">
                   {catalog.map((category) => (
-                    <div key={category.id} className="border rounded-lg overflow-hidden">
+                    <div key={category.id} className="border overflow-hidden">
                       <button
                         className="w-full flex items-center justify-between p-3 hover:bg-muted transition-colors"
                         onClick={() => toggleCategory(category.id)}
@@ -408,7 +408,7 @@ export function TriggerBuilder({
                       >
                         <div className="flex items-center gap-3">
                           <div 
-                            className="w-3 h-3 rounded-full"
+                            className="w-3 h-3"
                             style={{ backgroundColor: category.color }}
                           ></div>
                           <span className="font-medium">{category.name}</span>
@@ -432,7 +432,7 @@ export function TriggerBuilder({
                             return (
                               <div
                                 key={dataPoint.id}
-                                className={`flex items-center justify-between p-2 rounded-lg transition-colors ${
+                                className={`flex items-center justify-between p-2 transition-colors ${
                                   isSelected ? 'bg-primary/10 border border-primary/30' : 'hover:bg-muted'
                                 }`}
                               >
@@ -551,21 +551,21 @@ export function TriggerBuilder({
                 }))}
                 className="space-y-3"
               >
-                <div className="flex items-start space-x-3 p-3 rounded-lg border hover:bg-muted/50">
+                <div className="flex items-start space-x-3 p-3 border hover:bg-muted/50">
                   <RadioGroupItem value="any" id="logic-any" />
                   <div className="flex-1">
                     <Label htmlFor="logic-any" className="font-medium">ANY condition triggers</Label>
                     <p className="text-xs text-muted-foreground">Alert when any single condition is met</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3 p-3 rounded-lg border hover:bg-muted/50">
+                <div className="flex items-start space-x-3 p-3 border hover:bg-muted/50">
                   <RadioGroupItem value="all" id="logic-all" />
                   <div className="flex-1">
                     <Label htmlFor="logic-all" className="font-medium">ALL conditions required</Label>
                     <p className="text-xs text-muted-foreground">Alert only when all conditions are met simultaneously</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3 p-3 rounded-lg border hover:bg-muted/50">
+                <div className="flex items-start space-x-3 p-3 border hover:bg-muted/50">
                   <RadioGroupItem value="threshold" id="logic-threshold" />
                   <div className="flex-1">
                     <Label htmlFor="logic-threshold" className="font-medium">Threshold (at least N)</Label>
@@ -606,7 +606,7 @@ export function TriggerBuilder({
             <CardContent>
               <div className="space-y-4">
                 {triggerConfig.conditions.map((condition, index) => (
-                  <div key={index} className="p-4 border rounded-lg space-y-3">
+                  <div key={index} className="p-4 border space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="font-medium">{condition.dataPointName}</div>
                       <Badge variant="outline">{condition.categoryName}</Badge>
@@ -669,14 +669,14 @@ export function TriggerBuilder({
                 {URGENCY_LEVELS.map((level) => (
                   <div 
                     key={level.value}
-                    className={`flex items-center space-x-3 p-3 rounded-lg border cursor-pointer transition-colors ${
+                    className={`flex items-center space-x-3 p-3 border cursor-pointer transition-colors ${
                       triggerConfig.urgency === level.value ? 'border-primary bg-primary/5' : 'hover:bg-muted/50'
                     }`}
                     onClick={() => setTriggerConfig(prev => ({ ...prev, urgency: level.value as any }))}
                   >
                     <RadioGroupItem value={level.value} id={`urgency-${level.value}`} />
                     <div className="flex items-center gap-2 flex-1">
-                      <div className={`w-3 h-3 rounded-full ${level.color}`}></div>
+                      <div className={`w-3 h-3 ${level.color}`}></div>
                       <div>
                         <Label htmlFor={`urgency-${level.value}`} className="font-medium cursor-pointer">
                           {level.label}
@@ -721,7 +721,7 @@ export function TriggerBuilder({
                   {triggerConfig.conditions.map((condition, index) => (
                     <div 
                       key={index}
-                      className="flex items-center gap-2 p-3 bg-muted rounded-lg"
+                      className="flex items-center gap-2 p-3 bg-muted"
                     >
                       <Activity className="w-4 h-4 text-muted-foreground" />
                       <span className="font-medium">{condition.dataPointName}</span>
@@ -734,7 +734,7 @@ export function TriggerBuilder({
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg">
+                <div className="mt-3 p-3 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30">
                   <div className="flex items-center gap-2 text-sm">
                     <Link className="w-4 h-4 text-[#0A0F2E]" />
                     <span className="text-[#0A0F2E] dark:text-[#DFC178]">
@@ -814,7 +814,7 @@ function StepIndicator({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+      <div className={`w-8 h-8 flex items-center justify-center text-sm font-medium transition-colors ${
         active ? 'bg-primary text-primary-foreground' :
         completed ? 'bg-green-500 text-white' :
         'bg-muted text-muted-foreground'

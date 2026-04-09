@@ -76,12 +76,12 @@ export function Problem({ progress }: SceneProps) {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + i * 0.3 }}
-              className="bg-gray-50 rounded-xl p-5 flex flex-col"
+              className="bg-gray-50 p-5 flex flex-col"
               style={{ borderLeft: `3px solid ${problem.color}` }}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div 
-                  className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                  className="w-9 h-9 flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: `${problem.color}20` }}
                 >
                   <problem.icon className="w-5 h-5" style={{ color: problem.color }} />
@@ -90,7 +90,7 @@ export function Problem({ progress }: SceneProps) {
               </div>
               <p className="text-gray-800 text-xs leading-relaxed mb-3">{problem.pain}</p>
               <div 
-                className="mt-auto rounded-lg p-3"
+                className="mt-auto p-3"
                 style={{ backgroundColor: `${problem.color}10`, border: `1px solid ${problem.borderColor}` }}
               >
                 <div className="flex items-center gap-1.5 mb-1">

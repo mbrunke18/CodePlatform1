@@ -304,7 +304,7 @@ export default function PilotDemo() {
             <div className="flex items-center gap-2">
                       {["setup", "configure", "ready", "executing", "complete"].map((s, i) => (
                 <div key={s} className="flex items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+                  <div className={`w-8 h-8 flex items-center justify-center text-sm font-medium transition-colors ${
                     step === s 
                       ? "bg-[#0A0F2E] text-white" 
                       : ["setup", "configure", "ready", "executing", "complete"].indexOf(step) > i
@@ -364,7 +364,7 @@ export default function PilotDemo() {
                       </p>
                     </div>
 
-                    <div className="bg-[#0A0F2E] rounded-lg p-4 border border-[#0A0F2E]">
+                    <div className="bg-[#0A0F2E] p-4 border border-[#0A0F2E]">
                       <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
                       <ul className="text-sm text-white/90 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
@@ -414,14 +414,14 @@ export default function PilotDemo() {
                         <button
                           key={trigger.id}
                           onClick={() => setSelectedTrigger(trigger.id)}
-                          className={`p-4 rounded-lg border-2 text-left transition-all ${
+                          className={`p-4 border-2 text-left transition-all ${
                             selectedTrigger === trigger.id
                               ? "border-[#0A0F2E] bg-[#0A0F2E]/5"
                               : "border-[#E8E4DC] hover:border-[#C9A84C]/30"
                           }`}
                           data-testid={`button-trigger-${trigger.id}`}
                         >
-                          <div className={`inline-flex p-2 rounded-lg ${trigger.bgColor} mb-3`}>
+                          <div className={`inline-flex p-2 ${trigger.bgColor} mb-3`}>
                             <trigger.icon className={`w-5 h-5 ${trigger.color}`} />
                           </div>
                           <h4 className="font-medium text-[#0A0F2E] dark:text-white mb-1">
@@ -452,7 +452,7 @@ export default function PilotDemo() {
                         <button
                           key={playbook.id}
                           onClick={() => setSelectedPlaybook(playbook.id)}
-                          className={`p-4 rounded-lg border-2 text-left transition-all ${
+                          className={`p-4 border-2 text-left transition-all ${
                             selectedPlaybook === playbook.id
                               ? "border-[#C9A84C] bg-[#C9A84C]/5"
                               : "border-[#E8E4DC] hover:border-[#C9A84C]/30"
@@ -523,9 +523,9 @@ export default function PilotDemo() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="bg-[#F8F7F4] dark:bg-[#141B45]/50 rounded-lg p-6 space-y-4 border border-[#E8E4DC]">
+                    <div className="bg-[#F8F7F4] dark:bg-[#141B45]/50 p-6 space-y-4 border border-[#E8E4DC]">
                       <div className="flex items-start gap-4">
-                        <div className="bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30 p-2 rounded-lg">
+                        <div className="bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/30 p-2">
                           <Mail className="w-5 h-5 text-[#0A0F2E] dark:text-[#0A0F2E]" />
                         </div>
                         <div>
@@ -535,7 +535,7 @@ export default function PilotDemo() {
                       </div>
                       <Separator className="bg-[#E8E4DC]" />
                       <div className="flex items-start gap-4">
-                        <div className={`p-2 rounded-lg ${triggerData?.bgColor}`}>
+                        <div className={`p-2 ${triggerData?.bgColor}`}>
                           {triggerData && <triggerData.icon className={`w-5 h-5 ${triggerData.color}`} />}
                         </div>
                         <div>
@@ -546,7 +546,7 @@ export default function PilotDemo() {
                       </div>
                       <Separator className="bg-[#E8E4DC]" />
                       <div className="flex items-start gap-4">
-                        <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/30 p-2 rounded-lg">
+                        <div className="bg-[#0A0F2E] dark:bg-[#C9A84C]/30 p-2">
                           <BookOpen className="w-5 h-5 text-[#C9A84C] dark:text-[#C9A84C]" />
                         </div>
                         <div>
@@ -559,7 +559,7 @@ export default function PilotDemo() {
                       </div>
                     </div>
 
-                    <div className="bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
+                    <div className="bg-[#F8F7F4] dark:bg-[#2B8A6E]/15 p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                           <h4 className="font-medium text-[#0A2920] mb-2 flex items-center gap-2">
                             <Clock className="w-4 h-4" />
                             What you'll see:
@@ -651,7 +651,7 @@ export default function PilotDemo() {
                           data-testid={`event-${event.type}`}
                         >
                           <div className="flex items-start gap-4 p-4">
-                            <div className={`p-2.5 rounded-lg shrink-0 ${
+                            <div className={`p-2.5 shrink-0 ${
                               event.status === "active" 
                                 ? "bg-[#0A0F2E]/10 dark:bg-[#0A0F2E]/50" 
                                 : "bg-[#F0F9F6] dark:bg-[#2B8A6E]/15/50"
@@ -678,7 +678,7 @@ export default function PilotDemo() {
                                 {event.description}
                               </p>
                               <div className="flex items-center gap-2 text-xs">
-                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-[#F0F9F6] dark:bg-[#2B8A6E]/15/40 text-[#2B8A6E] dark:text-[#2B8A6E]">
+                                <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#F0F9F6] dark:bg-[#2B8A6E]/15/40 text-[#2B8A6E] dark:text-[#2B8A6E]">
                                   <Zap className="w-3 h-3" />
                                   {event.valueCallout}
                                 </span>
@@ -703,7 +703,7 @@ export default function PilotDemo() {
                         animate={{ opacity: 1, y: 0 }}
                         className="space-y-6"
                       >
-                        <div className="bg-gradient-to-br from-[#2B8A6E] to-[#3BAF8A] dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/40 rounded-xl p-6 border border-[#2B8A6E] dark:border-[#2B8A6E]">
+                        <div className="bg-gradient-to-br from-[#2B8A6E] to-[#3BAF8A] dark:from-[#2B8A6E]/15 dark:to-[#3BAF8A]/40 p-6 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                           <div className="text-center mb-6">
                             <CheckCircle className="w-14 h-14 text-[#2B8A6E] mx-auto mb-4" />
                             <h3 className="text-2xl font-bold text-[#0A2920] dark:text-[#2B8A6E] mb-2">
@@ -714,14 +714,14 @@ export default function PilotDemo() {
                             </p>
                           </div>
 
-                          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg p-3 mb-4 border border-[#0A0F2E] dark:border-[#0A0F2E] text-center">
+                          <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 p-3 mb-4 border border-[#0A0F2E] dark:border-[#0A0F2E] text-center">
                             <p className="text-sm text-[#0A0F2E] dark:text-slate-300">
                               <span className="font-semibold">Demo Mode:</span> This {executionStartTime ? Math.round((new Date().getTime() - executionStartTime.getTime()) / 1000) : 0}-second simulation represents the full 12-minute production activation, compressed for demonstration.
                             </p>
                           </div>
 
                           <div className="grid md:grid-cols-2 gap-4 mb-6">
-                            <div className="bg-red-50 dark:bg-red-950/30 rounded-lg p-4 border border-red-200 dark:border-red-800">
+                            <div className="bg-red-50 dark:bg-red-950/30 p-4 border border-red-200 dark:border-red-800">
                               <div className="flex items-center gap-2 mb-3">
                                 <Clock className="w-5 h-5 text-red-500" />
                                 <span className="font-semibold text-red-900 dark:text-red-200">Traditional Approach</span>
@@ -731,7 +731,7 @@ export default function PilotDemo() {
                                 Meetings, email chains, manual coordination, decision delays
                               </p>
                             </div>
-                            <div className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 rounded-lg p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
+                            <div className="bg-[#F0F9F6] dark:bg-[#2B8A6E]/15 p-4 border border-[#2B8A6E] dark:border-[#2B8A6E]">
                               <div className="flex items-center gap-2 mb-3">
                                 <Zap className="w-5 h-5 text-[#2B8A6E]" />
                                 <span className="font-semibold text-[#0A2920] dark:text-[#2B8A6E]">With Readiness OS</span>
@@ -743,7 +743,7 @@ export default function PilotDemo() {
                             </div>
                           </div>
 
-                          <div className="bg-white/50 dark:bg-[#141B45]/50 rounded-lg p-4 mb-6">
+                          <div className="bg-white/50 dark:bg-[#141B45]/50 p-4 mb-6">
                             <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-center">
                               Value Created in This Demo
                             </h4>

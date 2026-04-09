@@ -106,7 +106,7 @@ export default function PrepareOverviewStep({ data, onChange, playbook }: Prepar
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 rounded-lg border border-[#C9A84C] dark:border-[#C9A84C]">
+      <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E] p-4 border border-[#C9A84C] dark:border-[#C9A84C]">
         <h3 className="font-semibold text-sm mb-2 flex items-center gap-2">
           <span className="text-lg">🎯</span> IDENTIFY Phase — Build Your Depth Chart
         </h3>
@@ -130,7 +130,7 @@ export default function PrepareOverviewStep({ data, onChange, playbook }: Prepar
           {prepareItems.map((item) => (
             <div
               key={item.id}
-              className="flex items-center gap-3 p-3 border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors"
+              className="flex items-center gap-3 p-3 border hover:bg-muted/50 cursor-pointer transition-colors"
               onClick={() => handleToggleStatus(item.id)}
               data-testid={`prepare-item-${item.id}`}
             >

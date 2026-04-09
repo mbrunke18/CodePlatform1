@@ -356,7 +356,7 @@ function SummaryCard({
     <Card className={`border ${colorClasses[color]}`}>
       <CardContent className="p-4">
         <div className="flex items-center justify-between">
-          <div className={`p-2 rounded-lg ${colorClasses[color]}`}>
+          <div className={`p-2 ${colorClasses[color]}`}>
             {icon}
           </div>
           <div className="text-right">
@@ -556,7 +556,7 @@ function AlertDetailPanel({
                 {alert.suggestedActions.map((action: any, idx: number) => (
                   <div 
                     key={idx}
-                    className="p-3 bg-muted rounded-lg flex items-center justify-between"
+                    className="p-3 bg-muted flex items-center justify-between"
                   >
                     <span className="text-sm">{action.action || action}</span>
                     <Button variant="ghost" size="sm">

@@ -69,7 +69,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
         </div>
 
         {/* Score Overview */}
-        <Card className="border border-[#E8E4DC] bg-white shadow-sm overflow-hidden">
+        <Card className="border border-[#E8E4DC] bg-white overflow-hidden">
           <div className="h-2 bg-[#0A0F2E]"></div>
           <CardHeader>
             <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-2xl">Current Preparedness Score</CardTitle>
@@ -233,7 +233,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                             <ul className="grid grid-cols-2 gap-2">
                               {gap.missingPlaybooks.map((playbook: string, i: number) => (
                                 <li key={i} className="text-sm font-bold text-[#0A0F2E] flex items-center gap-2">
-                                  <div className="h-1.5 w-1.5 rounded-full bg-[#C9A84C]"></div>
+                                  <div className="h-1.5 w-1.5 bg-[#C9A84C]"></div>
                                   {playbook}
                                 </li>
                               ))}
@@ -352,7 +352,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
         </Tabs>
 
         {/* AI-Powered Forward Gap Analysis */}
-        <div className="bg-white border rounded-sm shadow-sm p-8" style={{ borderColor: "#E8E4DC" }}>
+        <div className="bg-white border rounded-sm p-8" style={{ borderColor: "#E8E4DC" }}>
           <div className="flex items-center gap-3 mb-6">
             <Brain className="h-5 w-5" style={{ color: GOLD }} />
             <div>

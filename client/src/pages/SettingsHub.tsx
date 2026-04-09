@@ -64,8 +64,8 @@ export default function SettingsHub() {
               </h1>
               <p className="text-white/50 mt-2 text-sm">Manage your organization, stakeholders, integrations, and platform preferences</p>
             </div>
-            {user && <div className="flex items-center gap-3 bg-white/10 rounded-xl px-5 py-3 border border-white/10">
-              <div className="w-8 h-8 rounded-full bg-[#C9A84C] flex items-center justify-center text-sm font-bold text-[#0A0F2E]">{(user as any).firstName?.[0] || 'U'}</div>
+            {user && <div className="flex items-center gap-3 bg-white/10 px-5 py-3 border border-white/10">
+              <div className="w-8 h-8 bg-[#C9A84C] flex items-center justify-center text-sm font-bold text-[#0A0F2E]">{(user as any).firstName?.[0] || 'U'}</div>
               <div><div className="text-white font-semibold text-sm">{(user as any).firstName} {(user as any).lastName}</div><div className="text-white/40 text-xs">{org?.name || 'Organization Admin'}</div></div>
             </div>}
           </div>
@@ -82,7 +82,7 @@ export default function SettingsHub() {
                   const isActive = activeSection === s.id;
                   return (
                     <button key={s.id} onClick={() => setActiveSection(s.id)}
-                      className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all text-left"
+                      className="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all text-left"
                       style={{
                         background: isActive ? `${s.color}12` : 'transparent',
                         color: isActive ? s.color : '#6B7280',
@@ -221,7 +221,7 @@ export default function SettingsHub() {
                     ].map(m => (
                       <Card key={m.label} className="border-[#E8E4DC] bg-white">
                         <CardContent className="p-5">
-                          <div className="p-2.5 rounded-lg w-fit mb-3" style={{ background: `${m.color}12` }}><m.icon className="h-5 w-5" style={{ color: m.color }} /></div>
+                          <div className="p-2.5 w-fit mb-3" style={{ background: `${m.color}12` }}><m.icon className="h-5 w-5" style={{ color: m.color }} /></div>
                           <p className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{m.value}</p>
                           <p className="text-xs font-bold uppercase tracking-wider text-[#6B7280] mt-1">{m.label}</p>
                         </CardContent>
@@ -242,7 +242,7 @@ export default function SettingsHub() {
                         { firstName: 'Priya', lastName: 'Sharma', role: 'CTO', department: 'Technology', notificationLevel: 'high' },
                       ]).map((s: any, i: number) => (
                         <div key={i} className="flex items-center gap-4 p-4 border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4] transition-colors">
-                          <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0" style={{ background: NAVY }}>{s.firstName?.[0]}{s.lastName?.[0]}</div>
+                          <div className="w-9 h-9 flex items-center justify-center text-sm font-bold text-white flex-shrink-0" style={{ background: NAVY }}>{s.firstName?.[0]}{s.lastName?.[0]}</div>
                           <div className="flex-1"><p className="font-semibold text-[#0A0F2E] text-sm">{s.firstName} {s.lastName}</p><p className="text-xs text-[#6B7280]">{s.role} · {s.department}</p></div>
                           <Badge className="text-[10px] font-bold capitalize" style={{ background: `${TEAL}15`, color: TEAL, border: 'none' }}>{s.notificationLevel || 'active'}</Badge>
                         </div>
@@ -323,9 +323,9 @@ export default function SettingsHub() {
                       { name: 'Workday HCM', category: 'HR Systems', status: 'available', icon: Users, color: TEAL },
                       { name: 'ServiceNow', category: 'ITSM', status: 'available', icon: Key, color: GOLD },
                     ].map(integ => (
-                      <Card key={integ.name} className="border-[#E8E4DC] bg-white hover:shadow-md transition-shadow">
+                      <Card key={integ.name} className="border-[#E8E4DC] bg-white ">
                         <CardContent className="p-5 flex items-center gap-4">
-                          <div className="p-3 rounded-xl flex-shrink-0" style={{ background: `${integ.color}15` }}><integ.icon className="h-5 w-5" style={{ color: integ.color }} /></div>
+                          <div className="p-3 flex-shrink-0" style={{ background: `${integ.color}15` }}><integ.icon className="h-5 w-5" style={{ color: integ.color }} /></div>
                           <div className="flex-1 min-w-0"><p className="font-semibold text-[#0A0F2E] text-sm">{integ.name}</p><p className="text-xs text-[#6B7280] mt-0.5">{integ.category}</p></div>
                           <Badge className="capitalize text-[10px] font-bold" style={{
                             background: integ.status === 'connected' ? `${TEAL}15` : integ.status === 'pending' ? `${GOLD}15` : '#E8E4DC',
@@ -371,8 +371,8 @@ export default function SettingsHub() {
                         { level: 'Medium', desc: 'Batched every 30 minutes', color: TEAL },
                         { level: 'Low', desc: 'Daily digest only', color: '#6B7280' },
                       ].map(t => (
-                        <div key={t.level} className="flex items-center justify-between p-3 rounded-lg" style={{ background: `${t.color}08` }}>
-                          <div className="flex items-center gap-3"><div className="w-2.5 h-2.5 rounded-full" style={{ background: t.color }} /><div><p className="font-semibold text-[#0A0F2E] text-sm">{t.level}</p><p className="text-xs text-[#6B7280]">{t.desc}</p></div></div>
+                        <div key={t.level} className="flex items-center justify-between p-3" style={{ background: `${t.color}08` }}>
+                          <div className="flex items-center gap-3"><div className="w-2.5 h-2.5" style={{ background: t.color }} /><div><p className="font-semibold text-[#0A0F2E] text-sm">{t.level}</p><p className="text-xs text-[#6B7280]">{t.desc}</p></div></div>
                           <Switch defaultChecked={t.level !== 'Low'} />
                         </div>
                       ))}

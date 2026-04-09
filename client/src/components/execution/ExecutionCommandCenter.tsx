@@ -408,7 +408,7 @@ export function ExecutionCommandCenter({
                         {status.stakeholderAcks?.map((ack, idx) => (
                           <div 
                             key={ack.id} 
-                            className="flex items-center justify-between p-3 rounded-lg bg-muted/50"
+                            className="flex items-center justify-between p-3 bg-muted/50"
                             data-testid={`stakeholder-ack-${idx}`}
                           >
                             <div className="flex items-center gap-3">
@@ -453,7 +453,7 @@ export function ExecutionCommandCenter({
                       {status.documents?.map((doc, idx) => (
                         <div 
                           key={doc.id} 
-                          className="flex items-center justify-between p-3 rounded-lg bg-muted/50"
+                          className="flex items-center justify-between p-3 bg-muted/50"
                           data-testid={`document-item-${idx}`}
                         >
                           <div className="flex items-center gap-3">
@@ -494,7 +494,7 @@ export function ExecutionCommandCenter({
                         {status.events?.map((event, idx) => (
                           <div 
                             key={event.id} 
-                            className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
+                            className="flex items-start gap-3 p-3 bg-muted/50"
                             data-testid={`event-item-${idx}`}
                           >
                             {event.success ? (

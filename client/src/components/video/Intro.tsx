@@ -15,7 +15,7 @@ export function Intro({ progress }: SceneProps) {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-[#D4AF37]/20 rounded-full"
+            className="absolute w-1 h-1 bg-[#D4AF37]/20"
             initial={{ 
               x: Math.random() * 100 + "%", 
               y: Math.random() * 100 + "%",
@@ -44,17 +44,17 @@ export function Intro({ progress }: SceneProps) {
         >
           <div className="relative w-32 h-32 mx-auto">
             <motion.div
-              className="absolute inset-0 rounded-full border-4 border-[#D4AF37]"
+              className="absolute inset-0 border-4 border-[#D4AF37]"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             />
             <motion.div
-              className="absolute inset-4 rounded-full border-2 border-[#00A8A8]"
+              className="absolute inset-4 border-2 border-[#00A8A8]"
               animate={{ rotate: -360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             />
             <motion.div
-              className="absolute inset-8 rounded-full border border-[#D4AF37]/50"
+              className="absolute inset-8 border border-[#D4AF37]/50"
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             />
@@ -95,19 +95,19 @@ export function Intro({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 flex flex-wrap justify-center gap-3 text-xs"
         >
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-700">
             M&A Integration
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-700">
             Crisis Response
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-700">
             Compound Disruption
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-700">
             Competitive Moves
           </span>
-          <span className="px-3 py-1 bg-gray-50 border border-gray-200 rounded-full text-gray-700">
+          <span className="px-3 py-1 bg-gray-50 border border-gray-200 text-gray-700">
             Regulatory Changes
           </span>
         </motion.div>

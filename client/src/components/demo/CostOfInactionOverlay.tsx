@@ -48,12 +48,12 @@ export function CostOfInactionOverlay() {
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <Card className="relative w-[900px] bg-gradient-to-br    border-red-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
+      <Card className="relative w-[900px] bg-gradient-to-br    border-red-500/50 p-8 animate-in zoom-in-95 duration-500">
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
-              <div className="p-3 bg-red-600/30 rounded-lg">
+              <div className="p-3 bg-red-600/30">
                 <AlertTriangle className="h-8 w-8 text-red-400 animate-pulse" />
               </div>
               <h2 className="text-3xl font-bold text-red-500">Every Day You Wait...</h2>
@@ -62,7 +62,7 @@ export function CostOfInactionOverlay() {
           </div>
 
           {/* Counter */}
-          <div className="bg-black/40 rounded-lg p-4 border border-red-500/30">
+          <div className="bg-black/40 p-4 border border-red-500/30">
             <div className="text-center">
               <p className="text-red-300 text-sm mb-2">Days Without M</p>
               <div className="text-6xl font-bold text-red-400 tabular-nums">
@@ -73,7 +73,7 @@ export function CostOfInactionOverlay() {
 
           {/* Loss Metrics */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-black/30 rounded-lg p-4 border border-red-500/20">
+            <div className="bg-black/30 p-4 border border-red-500/20">
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-red-600/20 rounded">
                   <DollarSign className="h-5 w-5 text-red-400" />
@@ -86,7 +86,7 @@ export function CostOfInactionOverlay() {
               </div>
             </div>
 
-            <div className="bg-black/30 rounded-lg p-4 border border-red-500/20">
+            <div className="bg-black/30 p-4 border border-red-500/20">
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-red-600/20 rounded">
                   <TrendingDown className="h-5 w-5 text-red-400" />
@@ -99,7 +99,7 @@ export function CostOfInactionOverlay() {
               </div>
             </div>
 
-            <div className="bg-black/30 rounded-lg p-4 border border-red-500/20">
+            <div className="bg-black/30 p-4 border border-red-500/20">
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-red-600/20 rounded">
                   <Clock className="h-5 w-5 text-red-400" />
@@ -112,7 +112,7 @@ export function CostOfInactionOverlay() {
               </div>
             </div>
 
-            <div className="bg-black/30 rounded-lg p-4 border border-red-500/20">
+            <div className="bg-black/30 p-4 border border-red-500/20">
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-red-600/20 rounded">
                   <Users className="h-5 w-5 text-red-400" />
@@ -127,7 +127,7 @@ export function CostOfInactionOverlay() {
           </div>
 
           {/* Bottom Message */}
-          <div className="bg-red-600/20 rounded-lg p-4 border border-red-500/30">
+          <div className="bg-red-600/20 p-4 border border-red-500/30">
             <p className="text-center text-red-500 text-lg font-semibold">
               Your competitors aren't waiting. Neither should you.
             </p>

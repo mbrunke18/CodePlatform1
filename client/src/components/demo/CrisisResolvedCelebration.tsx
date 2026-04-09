@@ -26,13 +26,13 @@ export function CrisisResolvedCelebration() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in duration-500" data-testid="crisis-resolved-celebration">
-      <Card className="bg-gradient-to-br    border-[#2B8A6E] shadow-2xl max-w-2xl animate-in zoom-in duration-500">
+      <Card className="bg-gradient-to-br    border-[#2B8A6E] max-w-2xl animate-in zoom-in duration-500">
         <div className="p-8 space-y-6 text-center">
           {/* Success Icon */}
           <div className="flex justify-center">
             <div className="relative">
-              <div className="absolute inset-0 bg-[#2B8A6E] rounded-full blur-2xl opacity-50 animate-pulse"></div>
-              <div className="relative w-24 h-24 bg-[#2B8A6E] rounded-full flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#2B8A6E] blur-2xl opacity-50 animate-pulse"></div>
+              <div className="relative w-24 h-24 bg-[#2B8A6E] flex items-center justify-center">
                 <CheckCircle className="h-16 w-16 text-white" strokeWidth={3} />
               </div>
             </div>
@@ -70,7 +70,7 @@ export function CrisisResolvedCelebration() {
           </div>
 
           {/* Competitive Advantage */}
-          <div className="bg-amber-500/20 border border-amber-500/30 rounded-lg p-4">
+          <div className="bg-amber-500/20 border border-amber-500/30 p-4">
             <div className="text-amber-400 font-bold text-lg mb-2">
               ⚡ Competitive Advantage Secured
             </div>
@@ -82,7 +82,7 @@ export function CrisisResolvedCelebration() {
           </div>
 
           {/* Preparedness Score Increase */}
-          <div className="bg-[#C9A84C]/20 border border-[#C9A84C]/30 rounded-lg p-4">
+          <div className="bg-[#C9A84C]/20 border border-[#C9A84C]/30 p-4">
             <div className="flex items-center justify-center gap-3">
               <span className="text-[#C9A84C]">Executive Preparedness Score™</span>
               <div className="flex items-center gap-2">

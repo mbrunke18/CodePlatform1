@@ -26,21 +26,21 @@ export function SignalDemo({ progress }: SceneProps) {
         animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.1, 0.3] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
-        <div className="w-[600px] h-[600px] rounded-full border border-[#00A8A8]/20" />
+        <div className="w-[600px] h-[600px] border border-[#00A8A8]/20" />
       </motion.div>
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.1, 0.4] }}
         transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
       >
-        <div className="w-[400px] h-[400px] rounded-full border border-[#00A8A8]/30" />
+        <div className="w-[400px] h-[400px] border border-[#00A8A8]/30" />
       </motion.div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center justify-center gap-8 mb-6 bg-gray-50 rounded-xl p-3"
+          className="flex items-center justify-center gap-8 mb-6 bg-gray-50 p-3"
         >
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#D4AF37]" />
@@ -61,7 +61,7 @@ export function SignalDemo({ progress }: SceneProps) {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="w-10 h-10 bg-[#00A8A8]/20 rounded-xl flex items-center justify-center"
+                className="w-10 h-10 bg-[#00A8A8]/20 flex items-center justify-center"
               >
                 <Radar className="w-5 h-5 text-[#00A8A8]" />
               </motion.div>
@@ -78,7 +78,7 @@ export function SignalDemo({ progress }: SceneProps) {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: i < detectedCount ? 1 : 0, x: i < detectedCount ? 0 : -30 }}
                   transition={{ delay: 0.3 + i * 0.3 }}
-                  className={`bg-gray-50 border rounded-lg p-3 ${
+                  className={`bg-gray-50 border p-3 ${
                     signal.severity === "high" ? "border-red-500/50" :
                     signal.severity === "medium" ? "border-amber-500/50" : "border-gray-200"
                   }`}
@@ -105,7 +105,7 @@ export function SignalDemo({ progress }: SceneProps) {
                 <motion.div
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  className="bg-gradient-to-br from-red-500/20 to-red-600/10 border-2 border-red-500 rounded-2xl p-8 text-center"
+                  className="bg-gradient-to-br from-red-500/20 to-red-600/10 border-2 border-red-500 p-8 text-center"
                 >
                   <motion.div
                     animate={{ scale: [1, 1.1, 1] }}

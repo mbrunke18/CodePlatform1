@@ -28,7 +28,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="w-12 h-12 bg-[#D4AF37]/20 rounded-xl flex items-center justify-center"
+            className="w-12 h-12 bg-[#D4AF37]/20 flex items-center justify-center"
           >
             <BookOpen className="w-6 h-6 text-[#D4AF37]" />
           </motion.div>
@@ -50,11 +50,11 @@ export function PlaybookDemo({ progress }: SceneProps) {
           transition={{ delay: 0.5 }}
           className="flex items-center justify-center gap-6 mb-6 text-sm"
         >
-          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 px-3 py-2">
             <span className="text-gray-800">Without playbooks:</span>
             <span className="text-red-400 font-bold">72 hours of improvisation</span>
           </div>
-          <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-3 py-2">
             <span className="text-gray-800">With Readiness OS:</span>
             <span className="text-green-400 font-bold">Everyone knows their role</span>
           </div>
@@ -77,7 +77,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-6 text-center"
         >
-          <div className="inline-flex items-center gap-6 bg-gray-50 rounded-xl px-6 py-3">
+          <div className="inline-flex items-center gap-6 bg-gray-50 px-6 py-3">
             <div className="text-center">
               <p className="text-2xl font-bold text-[#D4AF37]">170</p>
               <p className="text-xs text-gray-700">Playbooks</p>

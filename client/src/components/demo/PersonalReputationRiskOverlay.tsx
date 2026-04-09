@@ -47,12 +47,12 @@ export function PersonalReputationRiskOverlay() {
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-in fade-in duration-300" />
       
-      <Card className="relative w-[950px] bg-gradient-to-br border-red-500/50 p-8 shadow-2xl animate-in zoom-in-95 duration-500">
+      <Card className="relative w-[950px] bg-gradient-to-br border-red-500/50 p-8 animate-in zoom-in-95 duration-500">
         <div className="space-y-6">
           {/* Header */}
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
-              <div className="p-3 bg-red-600/30 rounded-lg">
+              <div className="p-3 bg-red-600/30">
                 <UserX className="h-8 w-8 text-red-400" />
               </div>
               <h2 className="text-3xl font-bold text-red-500">What They'll Ask You</h2>
@@ -67,13 +67,13 @@ export function PersonalReputationRiskOverlay() {
               return (
                 <div 
                   key={idx}
-                  className="bg-black/40 rounded-lg p-5 border border-red-500/30 hover:border-red-500/50 transition-all"
+                  className="bg-black/40 p-5 border border-red-500/30 hover:border-red-500/50 transition-all"
                   style={{
                     animation: `slideIn 0.5s ease-out ${idx * 0.2}s backwards`
                   }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 bg-gradient-to-br ${scenario.color} rounded-lg`}>
+                    <div className={`p-3 bg-gradient-to-br ${scenario.color}`}>
                       <Icon className="h-6 w-6 text-gray-900" />
                     </div>
                     <div className="flex-1 space-y-2">
@@ -94,7 +94,7 @@ export function PersonalReputationRiskOverlay() {
           </div>
 
           {/* Bottom Warning */}
-          <div className="bg-gradient-to-r from-red-600/30 to-orange-600/30 rounded-lg p-5 border border-red-500/40">
+          <div className="bg-gradient-to-r from-red-600/30 to-orange-600/30 p-5 border border-red-500/40">
             <div className="text-center space-y-2">
               <p className="text-red-500 text-xl font-bold">
                 Your Reputation Takes Decades to Build

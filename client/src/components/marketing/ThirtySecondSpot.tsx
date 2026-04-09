@@ -514,8 +514,8 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))]  via-transparent to-transparent" />
       
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#2B8A6E]/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#2B8A6E]/10 blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#2B8A6E]/10 blur-3xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative h-[500px] md:h-[600px] flex items-center justify-center px-6">
@@ -533,7 +533,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
                 setCurrentScene(i);
                 setIsPlaying(false);
               }}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`w-2 h-2 transition-all ${
                 i === currentScene 
                   ? "w-6 bg-white" 
                   : i < currentScene 

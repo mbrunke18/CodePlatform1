@@ -38,7 +38,7 @@ export default function ActivityFeed() {
           <div className="space-y-4">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="animate-pulse flex items-start space-x-3">
-                <div className="w-8 h-8 bg-muted rounded-full"></div>
+                <div className="w-8 h-8 bg-muted"></div>
                 <div className="flex-1 space-y-2">
                   <div className="h-4 bg-muted rounded w-3/4"></div>
                   <div className="h-3 bg-muted rounded w-1/4"></div>
@@ -54,7 +54,7 @@ export default function ActivityFeed() {
         ) : (
           activities?.map((activity, index) => (
             <div key={activity.id} className="flex items-start space-x-3" data-testid={`activity-${index}`}>
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-green-100 flex items-center justify-center flex-shrink-0">
                 <i className={`${getActivityIcon(activity.action)} w-3`}></i>
               </div>
               <div className="flex-1 min-w-0">

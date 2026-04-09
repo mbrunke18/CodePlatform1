@@ -885,7 +885,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     const progressColor = coverage >= 80 ? "bg-[#2B8A6E]" : coverage >= 50 ? "bg-[#C9A84C]" : "bg-red-600";
                     
                     return (
-                      <Card key={domain.domainName} className="hover:shadow-md transition-shadow">
+                      <Card key={domain.domainName} className="hover:shadow-md ">
                         <CardHeader className="pb-3">
                           <div className="flex items-start justify-between">
                             <div className="flex items-center gap-3">

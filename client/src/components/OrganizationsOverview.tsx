@@ -52,8 +52,8 @@ export default function OrganizationsOverview() {
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="animate-pulse bg-background p-6 rounded-lg border border-border">
-                <div className="w-12 h-12 bg-muted rounded-lg mb-4"></div>
+              <div key={i} className="animate-pulse bg-background p-6 border border-border">
+                <div className="w-12 h-12 bg-muted mb-4"></div>
                 <div className="h-5 bg-muted rounded mb-2"></div>
                 <div className="h-4 bg-muted rounded mb-4"></div>
                 <div className="flex justify-between">
@@ -80,15 +80,15 @@ export default function OrganizationsOverview() {
             {organizations?.map((org, index) => (
               <div 
                 key={org.id} 
-                className="bg-background p-6 rounded-lg border border-border hover:shadow-md transition-shadow cursor-pointer"
+                className="bg-background p-6 border border-border  cursor-pointer"
                 data-testid={`card-organization-${index}`}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${getGradientClass(index)} rounded-lg flex items-center justify-center`}>
+                  <div className={`w-12 h-12 bg-gradient-to-r ${getGradientClass(index)} flex items-center justify-center`}>
                     <i className="fas fa-building text-white w-5"></i>
                   </div>
                   <div className="text-right">
-                    <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(org.status)}`}>
+                    <span className={`px-2 py-1 text-xs ${getStatusColor(org.status)}`}>
                       {org.status}
                     </span>
                   </div>

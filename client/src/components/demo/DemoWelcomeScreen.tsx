@@ -66,13 +66,13 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
       className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/70 backdrop-blur-sm"
       data-testid="demo-welcome-screen"
     >
-      <Card className="bg-white border-[#2B8A6E]/70 shadow-2xl backdrop-blur-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+      <Card className="bg-white border-[#2B8A6E]/70 backdrop-blur-lg max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         <CardContent className="p-8 space-y-6">
           
           {/* Header */}
           <div className="text-center space-y-3">
             <div className="flex items-center justify-center gap-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#0A0F2E] to-teal-600 rounded-xl flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#0A0F2E] to-teal-600 flex items-center justify-center">
                 <Rocket className="h-8 w-8 text-gray-900" />
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           </div>
 
           {/* Early Access Program */}
-          <div className="bg-gradient-to-r   rounded-lg p-6 border border-[#C9A84C]/30">
+          <div className="bg-gradient-to-r   p-6 border border-[#C9A84C]/30">
             <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-[#C9A84C]" />
               Built for Fortune 1000 Strategic Execution
@@ -141,9 +141,9 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           </div>
 
           {/* Demo Disclaimer */}
-          <div className="bg-yellow-900/30 rounded-lg p-6 border border-yellow-600/30">
+          <div className="bg-yellow-900/30 p-6 border border-yellow-600/30">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-yellow-600/20 rounded-lg flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-yellow-600/20 flex items-center justify-center flex-shrink-0">
                 <Target className="h-6 w-6 text-yellow-400" />
               </div>
               <div>

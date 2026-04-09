@@ -284,7 +284,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card className="bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-[#0A0F2E]/10 dark:bg-white/10 rounded-lg">
+              <div className="p-2 bg-[#0A0F2E]/10 dark:bg-white/10">
                 <RefreshCw className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
               </div>
               <div>
@@ -302,7 +302,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card className="bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border-[#2B8A6E]/20">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-[#2B8A6E]/10 rounded-lg">
+              <div className="p-2 bg-[#2B8A6E]/10">
                 <ArrowUpRight className="h-5 w-5 text-[#2B8A6E]" />
               </div>
               <div>
@@ -317,7 +317,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
         <Card className="bg-[#C9A84C]/5 dark:bg-[#C9A84C]/10 border-[#C9A84C]/20">
           <CardContent className="pt-6">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-[#C9A84C]/10 rounded-lg">
+              <div className="p-2 bg-[#C9A84C]/10">
                 <Lightbulb className="h-5 w-5 text-[#C9A84C]" />
               </div>
               <div>
@@ -359,7 +359,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-2 bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 rounded-lg p-3">
+            <div className="flex items-center gap-2 bg-[#2B8A6E]/5 dark:bg-[#2B8A6E]/10 border border-[#2B8A6E]/20 p-3">
               <TrendingUp className="h-4 w-4 text-[#2B8A6E]" />
               <span className="text-sm font-semibold text-[#2B8A6E]">67% improvement in average execution time over 6 months</span>
             </div>
@@ -381,7 +381,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 { name: 'Competitive Counter (#45)', improvement: 'Added patent monitoring signal', version: 'v1 → v2', date: 'Feb 10' },
                 { name: 'GDPR Compliance (#67)', improvement: 'Staggered notification timing', version: 'v2 → v3', date: 'Jan 18' },
               ].map((item) => (
-                <div key={item.name} className="flex items-center justify-between border border-[#E8E4DC] rounded-lg p-3 bg-[#F8F7F4] dark:bg-white/5">
+                <div key={item.name} className="flex items-center justify-between border border-[#E8E4DC] p-3 bg-[#F8F7F4] dark:bg-white/5">
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-[#0A0F2E] dark:text-white truncate">{item.name}</p>
                     <p className="text-xs text-[#6B7280]">{item.improvement}</p>
@@ -420,7 +420,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 {decisionOutcomes.map((outcome) => (
                   <div 
                     key={outcome.id} 
-                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-3 bg-white dark:bg-white/5"
+                    className="border border-[#E8E4DC] p-4 space-y-3 bg-white dark:bg-white/5"
                     data-testid={`outcome-${outcome.id}`}
                   >
                     <div className="flex items-start justify-between">
@@ -472,7 +472,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 {learningPatterns.map((pattern) => (
                   <div 
                     key={pattern.id} 
-                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-2 bg-white dark:bg-white/5"
+                    className="border border-[#E8E4DC] p-4 space-y-2 bg-white dark:bg-white/5"
                     data-testid={`pattern-${pattern.id}`}
                   >
                     <div className="flex items-center gap-2 flex-wrap">
@@ -518,7 +518,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
                 {institutionalKnowledge.map((knowledge) => (
                   <div 
                     key={knowledge.id} 
-                    className="border border-[#E8E4DC] rounded-lg p-4 space-y-2 bg-white dark:bg-white/5"
+                    className="border border-[#E8E4DC] p-4 space-y-2 bg-white dark:bg-white/5"
                     data-testid={`knowledge-${knowledge.id}`}
                   >
                     <div className="flex items-center gap-2 flex-wrap">

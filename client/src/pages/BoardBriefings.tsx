@@ -212,7 +212,7 @@ export default function BoardBriefings() {
               {briefings.map((briefing: any) => (
                 <div 
                   key={briefing.id} 
-                  className="border border-[#E8E4DC] dark:border-[#C9A84C]/20 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
+                  className="border border-[#E8E4DC] dark:border-[#C9A84C]/20 p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
                   data-testid={`briefing-${briefing.id}`}
                 >
                   <div className="flex items-start justify-between">
@@ -287,7 +287,7 @@ export default function BoardBriefings() {
             ].map((decision) => (
               <div
                 key={decision.title}
-                className={`border rounded-lg p-4 space-y-2 bg-[#F8F7F4] dark:bg-white/5 ${
+                className={`border p-4 space-y-2 bg-[#F8F7F4] dark:bg-white/5 ${
                   decision.priority === 'High'
                     ? 'border-l-4 border-l-[#0A0F2E] border-[#E8E4DC] dark:border-white/10'
                     : 'border-l-4 border-l-[#C9A84C] border-[#E8E4DC] dark:border-white/10'
@@ -360,9 +360,9 @@ export default function BoardBriefings() {
                   </div>
                   <p className="text-xs text-[#6B7280] dark:text-white/60">{rec.description}</p>
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 bg-[#E8E4DC] dark:bg-white/10 rounded-full h-1.5">
+                    <div className="flex-1 bg-[#E8E4DC] dark:bg-white/10 h-1.5">
                       <div
-                        className="bg-[#C9A84C] h-1.5 rounded-full"
+                        className="bg-[#C9A84C] h-1.5"
                         style={{ width: `${rec.confidence}%` }}
                       />
                     </div>
@@ -391,7 +391,7 @@ export default function BoardBriefings() {
               {boardReports.map((report: any) => (
                 <div 
                   key={report.id} 
-                  className="border border-[#E8E4DC] dark:border-[#C9A84C]/20 rounded-lg p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
+                  className="border border-[#E8E4DC] dark:border-[#C9A84C]/20 p-4 space-y-3 bg-[#F8F7F4] dark:bg-white/5"
                   data-testid={`report-${report.id}`}
                 >
                   <div className="flex items-start justify-between">

@@ -129,7 +129,7 @@ export default function InnovationPipelinePanel() {
               return (
                 <div 
                   key={innovation.id} 
-                  className="p-3 rounded-lg border bg-card"
+                  className="p-3 border bg-card"
                   data-testid={`innovation-${innovation.title.replace(/\s+/g, '-').toLowerCase()}`}
                 >
                   <div className="flex items-start justify-between mb-2">

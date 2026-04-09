@@ -574,7 +574,7 @@ export default function SandboxDemo() {
             >
               <CardContent className="p-6 text-center">
                 <div 
-                  className={`w-12 h-12 mx-auto mb-4 rounded-xl flex items-center justify-center ${
+                  className={`w-12 h-12 mx-auto mb-4 flex items-center justify-center ${
                     isSelected ? "bg-[#2B8A6E] text-white" : "bg-[#2B8A6E]/10 text-[#2B8A6E]"
                   }`}
                 >
@@ -598,7 +598,7 @@ export default function SandboxDemo() {
         <Button 
           disabled={!config.domain}
           onClick={() => setCurrentStep('configure')}
-          className="bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] px-12 py-6 text-lg font-bold rounded-full group transition-all"
+          className="bg-[#0A0F2E] hover:bg-[#141B45] text-[#C9A84C] px-12 py-6 text-lg font-bold group transition-all"
         >
           Begin Configuration
           <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -731,7 +731,7 @@ export default function SandboxDemo() {
                     data-testid="slider-response-time"
                   />
                 </div>
-                <div className="p-4 bg-[#C9A84C]/10 rounded-lg border border-[#C9A84C]/20">
+                <div className="p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/20">
                   <p className="text-xs text-[#0A0F2E] font-medium">
                     <strong className="text-[#C9A84C]">Industry Average:</strong> {TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime} hours
                   </p>
@@ -739,7 +739,7 @@ export default function SandboxDemo() {
                     You'll be {Math.round((TIMING_BENCHMARKS.INDUSTRY_AVERAGE.decisionTime * 60) / config.responseTimeTarget)}X faster
                   </p>
                 </div>
-                <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC] rounded-lg">
+                <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                   <div>
                     <Label className="text-sm font-bold text-[#0A0F2E]">AI-Assisted Drafting</Label>
                     <p className="text-[10px] text-slate-500 font-medium">Auto-generate response documents</p>
@@ -771,7 +771,7 @@ export default function SandboxDemo() {
                   return (
                     <div
                       key={stakeholder.id}
-                      className={`flex flex-col items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                      className={`flex flex-col items-center p-4 border-2 cursor-pointer transition-all ${
                         isSelected 
                           ? 'border-[#2B8A6E] bg-[#2B8A6E]/5' 
                           : 'border-[#E8E4DC] hover:border-[#2B8A6E]/30 bg-white'
@@ -848,10 +848,10 @@ export default function SandboxDemo() {
             </CardHeader>
             <CardContent className="space-y-4">
               {config.decisionPoints.map((dp, index) => (
-                <div key={dp.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-[#141B45]/50">
+                <div key={dp.id} className="p-4 border bg-slate-50 dark:bg-[#141B45]/50">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 flex items-center justify-center text-[#0A0F2E] font-bold">
+                      <div className="w-8 h-8 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 flex items-center justify-center text-[#0A0F2E] font-bold">
                         {index + 1}
                       </div>
                       <div className="flex-1">
@@ -971,7 +971,7 @@ export default function SandboxDemo() {
               <div className="space-y-4">
                 {config.escalationPath.map((level, index) => (
                   <div key={level.id} className="flex items-center gap-4">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-gray-900 ${
+                    <div className={`w-10 h-10 flex items-center justify-center font-bold text-gray-900 ${
                       index === 0 ? 'bg-[#2B8A6E]' : index === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                     }`}>
                       L{level.level}
@@ -1016,7 +1016,7 @@ export default function SandboxDemo() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-lg">
+              <div className="mt-4 p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30">
                 <p className="text-sm text-[#C9A84C]">
                   <strong>Auto-Escalation:</strong> If enabled, the system automatically escalates when timeouts are reached
                 </p>
@@ -1043,7 +1043,7 @@ export default function SandboxDemo() {
             </CardHeader>
             <CardContent className="space-y-4">
               {config.communicationTemplates.map((template, index) => (
-                <div key={template.id} className="p-4 border rounded-lg">
+                <div key={template.id} className="p-4 border">
                   <div className="flex items-center gap-3 mb-3">
                     <Badge variant={
                       template.type === 'initial' ? 'default' :
@@ -1147,7 +1147,7 @@ export default function SandboxDemo() {
                   </div>
                 );
               })}
-              <div className="p-4 bg-slate-50 dark:bg-[#141B45] rounded-lg mt-4">
+              <div className="p-4 bg-slate-50 dark:bg-[#141B45] mt-4">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">Total Allocation</span>
                   <span className={`font-bold ${Object.values(budgetBreakdown).reduce((a, b) => a + b, 0) === 100 ? 'text-[#2B8A6E]' : 'text-[#C9A84C]'}`}>
@@ -1178,7 +1178,7 @@ export default function SandboxDemo() {
                   return (
                     <div
                       key={integration.id}
-                      className={`p-4 border rounded-lg cursor-pointer transition-all ${
+                      className={`p-4 border cursor-pointer transition-all ${
                         isEnabled 
                           ? 'bg-[#0A0F2E] border-[#C9A84C] text-white' 
                           : 'hover:bg-slate-50 dark:hover:bg-[#141B45]'
@@ -1205,7 +1205,7 @@ export default function SandboxDemo() {
                   );
                 })}
               </div>
-              <div className="mt-6 p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 rounded-lg">
+              <div className="mt-6 p-4 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30">
                 <p className="text-sm text-[#0A0F2E] dark:text-[#0A0F2E]">
                   <strong>{enabledIntegrations.length} integrations enabled.</strong> When triggered, Readiness OS will automatically create tasks in Jira, send alerts via Slack, and update ServiceNow tickets.
                 </p>
@@ -1225,7 +1225,7 @@ export default function SandboxDemo() {
             </CardHeader>
             <CardContent className="space-y-6">
               {SUCCESS_METRICS.map((metric) => (
-                <div key={metric.id} className="p-4 border rounded-lg bg-slate-50 dark:bg-[#141B45]/50">
+                <div key={metric.id} className="p-4 border bg-slate-50 dark:bg-[#141B45]/50">
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <h4 className="font-medium">{metric.label}</h4>
@@ -1250,7 +1250,7 @@ export default function SandboxDemo() {
                   </div>
                 </div>
               ))}
-              <div className="p-4 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 rounded-lg">
+              <div className="p-4 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20">
                 <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
                   <strong>Automated Tracking:</strong> Readiness OS will measure these KPIs in real-time during execution and include them in post-action reports for continuous improvement.
                 </p>
@@ -1286,11 +1286,11 @@ export default function SandboxDemo() {
         </CardHeader>
         <CardContent className="space-y-4 pt-6">
           {tasks.map((task, index) => (
-            <div key={task.id} className="p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm transition-all hover:border-[#C9A84C]/30">
+            <div key={task.id} className="p-4 border border-[#E8E4DC] bg-white transition-all hover:border-[#C9A84C]/30">
               <div className="flex items-start gap-4">
                 <div className="flex flex-col items-center">
                   <GripVertical className="h-5 w-5 text-slate-400 cursor-move" />
-                  <div className={`mt-2 w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold ${
+                  <div className={`mt-2 w-8 h-8 flex items-center justify-center text-white text-xs font-bold ${
                     task.priority === 'critical' ? 'bg-red-500' :
                     task.priority === 'high' ? 'bg-[#C9A84C]' :
                     task.priority === 'medium' ? 'bg-[#0A0F2E]' : 'bg-slate-400'
@@ -1444,7 +1444,7 @@ export default function SandboxDemo() {
         </CardContent>
       </Card>
 
-      <Card className="bg-[#0A0F2E] border-none shadow-xl">
+      <Card className="bg-[#0A0F2E] border-none">
         <CardContent className="p-8">
           <div className="flex items-center justify-between">
             <div>
@@ -1456,7 +1456,7 @@ export default function SandboxDemo() {
             <div className="flex items-center gap-2">
               {tasks.slice(0, 5).map((task, i) => (
                 <div key={task.id} className="flex items-center">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 ${
+                  <div className={`w-10 h-10 flex items-center justify-center text-white text-xs font-bold border-2 ${
                     task.priority === 'critical' ? 'bg-red-500 border-red-400' :
                     task.priority === 'high' ? 'bg-[#C9A84C] border-[#DFC178]' : 'bg-[#2B8A6E] border-[#3BAF8A]'
                   }`}>
@@ -1568,7 +1568,7 @@ export default function SandboxDemo() {
                 return (
                   <div
                     key={source.id}
-                    className={`p-3 rounded-xl border-2 cursor-pointer transition-all ${
+                    className={`p-3 border-2 cursor-pointer transition-all ${
                       isSelected 
                         ? 'border-[#0A0F2E] bg-[#0A0F2E]/5' 
                         : 'border-[#E8E4DC] hover:border-[#0A0F2E]/30 bg-white'
@@ -1613,7 +1613,7 @@ export default function SandboxDemo() {
               ].map((trigger) => (
                 <div
                   key={trigger.id}
-                  className={`p-3 rounded-xl border-2 cursor-pointer transition-all ${
+                  className={`p-3 border-2 cursor-pointer transition-all ${
                     triggerConfig.triggerType === trigger.id
                       ? 'border-[#C9A84C] bg-[#C9A84C]/5'
                       : 'border-[#E8E4DC] hover:border-[#C9A84C]/30 bg-white'
@@ -1640,7 +1640,7 @@ export default function SandboxDemo() {
         </CardHeader>
         <CardContent className="space-y-4 pt-6">
           {triggerConfig.thresholds.map((threshold, index) => (
-            <div key={threshold.id} className="flex items-center gap-4 p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm">
+            <div key={threshold.id} className="flex items-center gap-4 p-4 border border-[#E8E4DC] bg-white">
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">When</span>
               <Input
                 value={threshold.metric}
@@ -1754,7 +1754,7 @@ export default function SandboxDemo() {
                   ].map((sev) => (
                     <div
                       key={sev.id}
-                      className={`p-3 rounded-xl border-2 cursor-pointer transition-all text-center ${
+                      className={`p-3 border-2 cursor-pointer transition-all text-center ${
                         triggerConfig.severity === sev.id
                           ? 'border-[#0A0F2E] bg-[#0A0F2E]/5 ring-1 ring-[#0A0F2E]'
                           : 'border-[#E8E4DC] hover:border-[#0A0F2E]/30 bg-white'
@@ -1762,7 +1762,7 @@ export default function SandboxDemo() {
                   onClick={() => setTriggerConfig({ ...triggerConfig, severity: sev.id })}
                   data-testid={`severity-${sev.id}`}
                 >
-                  <div className={`w-3 h-3 rounded-full mx-auto mb-2 ${sev.color}`} />
+                  <div className={`w-3 h-3 mx-auto mb-2 ${sev.color}`} />
                   <span className={`text-[10px] font-bold uppercase tracking-tight ${triggerConfig.severity === sev.id ? 'text-[#0A0F2E]' : 'text-slate-400'}`}>{sev.label}</span>
                 </div>
               ))}
@@ -1779,7 +1779,7 @@ export default function SandboxDemo() {
             <CardDescription className="text-slate-500 font-medium">Safeguards and automation settings</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-6">
-            <div className="flex items-center justify-between p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm">
+            <div className="flex items-center justify-between p-4 border border-[#E8E4DC] bg-white">
               <div>
                 <Label className="text-xs font-bold text-[#0A0F2E]">Require Confirmation</Label>
                 <p className="text-[10px] text-slate-500 font-medium">Human must approve activation</p>
@@ -1791,7 +1791,7 @@ export default function SandboxDemo() {
                 data-testid="switch-confirmation-required"
               />
             </div>
-            <div className="flex items-center justify-between p-4 border border-[#E8E4DC] rounded-xl bg-white shadow-sm">
+            <div className="flex items-center justify-between p-4 border border-[#E8E4DC] bg-white">
               <div>
                 <Label className="text-xs font-bold text-[#0A0F2E]">Auto-Activate on Timeout</Label>
                 <p className="text-[10px] text-slate-500 font-medium">If no response in 5 min</p>
@@ -1820,7 +1820,7 @@ export default function SandboxDemo() {
             {SCENARIO_BRANCHES.map((branch) => (
               <div 
                 key={branch.severity}
-                className={`p-5 border-2 rounded-xl transition-all cursor-pointer ${
+                className={`p-5 border-2 transition-all cursor-pointer ${
                   triggerConfig.severity === branch.severity 
                     ? 'border-[#0A0F2E] bg-[#0A0F2E]/5 shadow-inner' 
                     : 'border-[#E8E4DC] opacity-60 hover:opacity-100 hover:border-[#0A0F2E]/30 bg-white'
@@ -1829,7 +1829,7 @@ export default function SandboxDemo() {
                 data-testid={`scenario-branch-${branch.severity}`}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-3 h-3 rounded-full ${branch.color}`} />
+                  <div className={`w-3 h-3 ${branch.color}`} />
                   <span className="font-bold text-[#0A0F2E]">{branch.label}</span>
                   {triggerConfig.severity === branch.severity && (
                     <Badge className="bg-[#0A0F2E] text-[#C9A84C] border-none ml-auto text-[10px] font-bold">ACTIVE PATH</Badge>
@@ -1846,7 +1846,7 @@ export default function SandboxDemo() {
               </div>
             ))}
           </div>
-          <div className="mt-6 p-5 bg-[#0A0F2E] rounded-xl border border-[#0A0F2E]">
+          <div className="mt-6 p-5 bg-[#0A0F2E] border border-[#0A0F2E]">
             <p className="text-xs text-[#C9A84C] leading-relaxed font-medium">
               <strong className="text-white">Dynamic Routing:</strong> Readiness OS automatically routes to the appropriate response path based on detected signal severity. Change severity above to see different response configurations.
             </p>
@@ -1873,11 +1873,11 @@ export default function SandboxDemo() {
       </div>
 
       <div className="max-w-4xl mx-auto">
-        <Card className="mb-8 border-none shadow-2xl bg-[#0A0F2E] overflow-hidden">
+        <Card className="mb-8 border-none bg-[#0A0F2E] overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-[#C9A84C]/10 rounded-full">
+                <div className="p-3 bg-[#C9A84C]/10">
                   <Timer className="h-8 w-8 text-[#C9A84C]" />
                 </div>
                 <div>
@@ -1885,7 +1885,7 @@ export default function SandboxDemo() {
                   <p className="text-slate-400 text-xs font-medium uppercase tracking-widest">Real-time Coordination Progress</p>
                 </div>
               </div>
-              <Badge className={`px-4 py-1.5 rounded-full text-xs font-bold ${simulationComplete ? "bg-[#2B8A6E] text-white" : "bg-[#C9A84C] text-[#0A0F2E]"}`}>
+              <Badge className={`px-4 py-1.5 text-xs font-bold ${simulationComplete ? "bg-[#2B8A6E] text-white" : "bg-[#C9A84C] text-[#0A0F2E]"}`}>
                 {simulationComplete ? 'MISSION COMPLETE' : 'IN PROGRESS'}
               </Badge>
             </div>
@@ -1912,7 +1912,7 @@ export default function SandboxDemo() {
             { label: 'Decisions', value: config.decisionPoints.length, icon: GitBranch, color: 'text-[#C9A84C]' },
             { label: 'Budget', value: `$${(config.budgetPreApproved/1000).toFixed(0)}K`, icon: PieChart, color: 'text-[#2B8A6E]' }
           ].map((stat, i) => (
-            <Card key={i} className="border-[#E8E4DC] bg-white shadow-sm hover:shadow-md transition-shadow">
+            <Card key={i} className="border-[#E8E4DC] bg-white ">
               <CardContent className="p-5 text-center">
                 <stat.icon className={`h-5 w-5 mx-auto mb-2 ${stat.color}`} />
                 <div className="text-2xl font-black text-[#0A0F2E]">{stat.value}</div>
@@ -1922,7 +1922,7 @@ export default function SandboxDemo() {
           ))}
         </div>
 
-        <Card className="border-[#E8E4DC] shadow-xl overflow-hidden">
+        <Card className="border-[#E8E4DC] overflow-hidden">
           <CardHeader className="border-b border-[#E8E4DC] bg-[#F8F7F4]/80">
             <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <FileText className="h-5 w-5 text-[#2B8A6E]" />
@@ -1968,7 +1968,7 @@ export default function SandboxDemo() {
                   <div className="relative inline-block">
                     <Timer className="h-12 w-12 text-slate-200 animate-spin" style={{ animationDuration: '3s' }} />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="h-2 w-2 bg-[#C9A84C] rounded-full animate-ping" />
+                      <div className="h-2 w-2 bg-[#C9A84C] animate-ping" />
                     </div>
                   </div>
                   <p className="mt-4 text-slate-400 font-bold text-xs uppercase tracking-widest">Initializing Protocol...</p>
@@ -2031,7 +2031,7 @@ export default function SandboxDemo() {
 
         <div className="grid md:grid-cols-3 gap-6">
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="response-team" className="border rounded-lg bg-white dark:bg-[#0A0F2E]">
+            <AccordionItem value="response-team" className="border bg-white dark:bg-[#0A0F2E]">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
                   <Users className="h-5 w-5 text-[#C9A84C]" />
@@ -2060,7 +2060,7 @@ export default function SandboxDemo() {
           </Accordion>
 
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="execution-tasks" className="border rounded-lg bg-white dark:bg-[#0A0F2E]">
+            <AccordionItem value="execution-tasks" className="border bg-white dark:bg-[#0A0F2E]">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
                   <ListChecks className="h-5 w-5 text-[#0A0F2E]" />
@@ -2072,7 +2072,7 @@ export default function SandboxDemo() {
                 <div className="space-y-2">
                   {tasks.map((task) => (
                     <div key={task.id} className="flex items-center gap-2 text-sm p-2 rounded bg-slate-50 dark:bg-[#141B45]">
-                      <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
+                      <div className={`w-2 h-2 flex-shrink-0 ${
                         task.priority === 'critical' ? 'bg-red-600' :
                         task.priority === 'high' ? 'bg-[#C9A84C]' : 'bg-[#0A0F2E]'
                       }`} />
@@ -2089,7 +2089,7 @@ export default function SandboxDemo() {
           </Accordion>
 
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="trigger-config" className="border rounded-lg bg-white dark:bg-[#0A0F2E]">
+            <AccordionItem value="trigger-config" className="border bg-white dark:bg-[#0A0F2E]">
               <AccordionTrigger className="px-4 py-3 hover:no-underline">
                 <div className="flex items-center gap-2">
                   <Zap className="h-5 w-5 text-[#C9A84C]" />
@@ -2147,7 +2147,7 @@ export default function SandboxDemo() {
                 const approver = STAKEHOLDER_OPTIONS.find(s => s.id === dp.approver)?.label || dp.approver;
                 return (
                   <div key={dp.id} className="flex items-center gap-3 text-sm">
-                    <div className="w-6 h-6 rounded-full bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 flex items-center justify-center text-[#0A0F2E] text-xs font-bold">
+                    <div className="w-6 h-6 bg-[#0A0F2E] dark:bg-[#0A0F2E]/30 flex items-center justify-center text-[#0A0F2E] text-xs font-bold">
                       {i + 1}
                     </div>
                     <div className="flex-1">
@@ -2170,7 +2170,7 @@ export default function SandboxDemo() {
             <CardContent className="space-y-3">
               {config.escalationPath.map((level, i) => (
                 <div key={level.id} className="flex items-center gap-3 text-sm">
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-gray-900 text-xs font-bold ${
+                  <div className={`w-6 h-6 flex items-center justify-center text-gray-900 text-xs font-bold ${
                     i === 0 ? 'bg-[#2B8A6E]' : i === 1 ? 'bg-[#C9A84C]' : 'bg-red-500'
                   }`}>
                     L{level.level}
@@ -2287,7 +2287,7 @@ export default function SandboxDemo() {
               return (
                 <div key={step.id} className="flex items-center">
                   <div 
-                    className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all whitespace-nowrap ${
+                    className={`flex items-center gap-2 px-3 py-2 transition-all whitespace-nowrap ${
                       isActive 
                         ? 'bg-[#0A0F2E] text-white' 
                         : isComplete 

@@ -205,7 +205,7 @@ function PlatformArchitectureDiagram() {
   ];
 
   return (
-    <div className="bg-white border border-[#E8E4DC] rounded-2xl p-8 shadow-sm">
+    <div className="bg-white border border-[#E8E4DC] p-8">
       <div className="grid grid-cols-4 gap-0 relative">
         {steps.map((step, i) => (
           <div key={i} className="flex items-stretch">
@@ -215,7 +215,7 @@ function PlatformArchitectureDiagram() {
                 style={{ background: step.bg, borderColor: step.border }}
               >
                 <div
-                  className="inline-block text-[9px] font-black uppercase tracking-[0.18em] px-2.5 py-1 rounded-full mb-3"
+                  className="inline-block text-[9px] font-black uppercase tracking-[0.18em] px-2.5 py-1 mb-3"
                   style={{ background: step.color, color: "#fff" }}
                 >
                   {step.phase}
@@ -225,7 +225,7 @@ function PlatformArchitectureDiagram() {
                 <ul className="space-y-1">
                   {step.items.map((item, j) => (
                     <li key={j} className="flex items-center gap-1.5 text-[11px] text-[#0A0F2E]/60 font-medium">
-                      <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: step.color }} />
+                      <span className="w-1 h-1 flex-shrink-0" style={{ background: step.color }} />
                       {item}
                     </li>
                   ))}
@@ -267,11 +267,11 @@ function PlatformArchitectureDiagram() {
 
 function FuturePositioningDiagram() {
   return (
-    <div className="bg-white border border-[#E8E4DC] rounded-2xl p-8 shadow-sm">
+    <div className="bg-white border border-[#E8E4DC] p-8">
       <div className="grid md:grid-cols-2 gap-6 mb-8">
         <div className="rounded-xl border-2 border-[#E8E4DC] p-6 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-5" style={{ background: NAVY, transform: "translate(30%, -30%)" }} />
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E]">
+          <div className="absolute top-0 right-0 w-24 h-24 opacity-5" style={{ background: NAVY, transform: "translate(30%, -30%)" }} />
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 bg-[#0A0F2E]/10 text-[#0A0F2E]">
             <CheckCircle className="w-3 h-3" />
             Today — Selling Pain Relief
           </div>
@@ -294,8 +294,8 @@ function FuturePositioningDiagram() {
         </div>
 
         <div className="rounded-xl border-2 p-6 relative overflow-hidden" style={{ borderColor: `${GOLD}60`, background: "#FBF8F0" }}>
-          <div className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-10" style={{ background: GOLD, transform: "translate(30%, -30%)" }} />
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4" style={{ background: `${GOLD}20`, color: GOLD }}>
+          <div className="absolute top-0 right-0 w-24 h-24 opacity-10" style={{ background: GOLD, transform: "translate(30%, -30%)" }} />
+          <div className="inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4" style={{ background: `${GOLD}20`, color: GOLD }}>
             <Zap className="w-3 h-3" />
             Tomorrow — The AI Operating Layer
           </div>
@@ -368,13 +368,13 @@ export default function Investors() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">
-                <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold px-8 h-12 rounded-xl shadow-lg">
+                <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold px-8 h-12">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-[#0A0F2E]/5 backdrop-blur-sm rounded-xl">
+                <Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 h-12 px-8 bg-[#0A0F2E]/5 backdrop-blur-sm">
                   <Calendar className="w-4 h-4 mr-2 text-[#C9A84C]" />
                   Schedule Meeting
                 </Button>
@@ -505,8 +505,8 @@ export default function Investors() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {metrics.map((metric, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] rounded-xl p-6 text-center shadow-sm hover:border-[#C9A84C]/50 transition-colors">
-                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#0A0F2E]/5 flex items-center justify-center">
+                  className="bg-white border border-[#E8E4DC] p-6 text-center hover:border-[#C9A84C]/50 transition-colors">
+                  <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/5 flex items-center justify-center">
                     <metric.icon className={`w-5 h-5 ${metric.color}`} />
                   </div>
                   <p className={`text-3xl font-bold mb-1 ${metric.color}`}>{metric.value}</p>
@@ -520,7 +520,7 @@ export default function Investors() {
 
           {/* McKinsey Independent Validation */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="mb-20">
-            <div className="bg-[#0A0F2E] rounded-2xl overflow-hidden">
+            <div className="bg-[#0A0F2E] overflow-hidden">
               <div className="px-8 py-6 border-b border-white/10 flex items-center justify-between">
                 <div>
                   <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-1">Independent Analyst Validation</p>
@@ -557,8 +557,8 @@ export default function Investors() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {industryProblems.map((problem, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] rounded-xl p-6 text-center shadow-sm hover:border-[#C9A84C]/50 transition-colors">
-                  <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-[#0A0F2E]/5 flex items-center justify-center">
+                  className="bg-white border border-[#E8E4DC] p-6 text-center hover:border-[#C9A84C]/50 transition-colors">
+                  <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/5 flex items-center justify-center">
                     <problem.icon className="w-5 h-5 text-[#0A0F2E]" />
                   </div>
                   <p className="text-3xl font-bold mb-1 text-[#0A0F2E]">{problem.value}</p>
@@ -577,7 +577,7 @@ export default function Investors() {
               <h2 className="text-2xl font-bold text-[#0A0F2E] uppercase tracking-widest mb-2">30 Days to Still Be Planning. 12 Minutes to Live Execution.</h2>
               <p className="text-[#6B7280] text-sm font-medium max-w-2xl mx-auto">Traditional enterprises spend 30 days just getting the right people in the room — roles unassigned, tasks undefined, communications not sent. Readiness OS delivers a fully deployed organization in 12 minutes. Execution is already underway before competitors have scheduled their first call.</p>
             </div>
-            <ExecutionGapDiagram className="rounded-2xl shadow-sm border border-[#E8E4DC]" />
+            <ExecutionGapDiagram className="rounded-2xl border border-[#E8E4DC]" />
           </motion.div>
 
           {/* Scenarios */}
@@ -587,14 +587,14 @@ export default function Investors() {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               {scenarioComparisons.map((scenario, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] rounded-xl p-6 shadow-sm hover:border-[#C9A84C]/50 transition-colors">
+                  className="bg-white border border-[#E8E4DC] p-6 hover:border-[#C9A84C]/50 transition-colors">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-3xl">{scenario.icon}</span>
                     <div>
                       <h3 className="text-[#0A0F2E] font-bold">{scenario.title}</h3>
                       <p className="text-[#6B7280] text-xs font-bold">{scenario.industry}</p>
                     </div>
-                    <span className={`ml-auto text-xs font-bold px-3 py-1 rounded-full ${
+                    <span className={`ml-auto text-xs font-bold px-3 py-1 ${
                       scenario.type === 'offense' 
                         ? 'bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20' 
                         : 'bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20'
@@ -604,12 +604,12 @@ export default function Investors() {
                   </div>
                   
                   <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 rounded-lg p-3">
+                    <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 p-3">
                       <p className="text-[#6B7280] text-[10px] font-bold uppercase tracking-wider mb-1">Traditional</p>
                       <p className="text-[#0A0F2E] font-bold text-lg">{scenario.traditional.time}</p>
                       <p className="text-[#6B7280] text-xs font-medium mt-1">{scenario.traditional.cost}</p>
                     </div>
-                    <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded-lg p-3">
+                    <div className="bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 p-3">
                       <p className="text-[#2B8A6E]/60 text-[10px] font-bold uppercase tracking-wider mb-1">Readiness OS</p>
                       <p className="text-[#2B8A6E] font-bold text-lg">{scenario.execution.time}</p>
                       <p className="text-[#2B8A6E]/60 text-xs font-medium mt-1">{scenario.execution.value}</p>
@@ -617,11 +617,11 @@ export default function Investors() {
                   </div>
 
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="flex-1 h-2 bg-[#F8F7F4] rounded-full overflow-hidden border border-[#E8E4DC]">
+                    <div className="flex-1 h-2 bg-[#F8F7F4] overflow-hidden border border-[#E8E4DC]">
                       <div className="h-full bg-[#0A0F2E]" style={{ width: '100%' }} />
                     </div>
                     <span className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
-                    <div className="w-6 h-2 bg-[#F8F7F4] rounded-full overflow-hidden border border-[#E8E4DC]">
+                    <div className="w-6 h-2 bg-[#F8F7F4] overflow-hidden border border-[#E8E4DC]">
                       <div className="h-full bg-[#2B8A6E]" style={{ width: '100%' }} />
                     </div>
                   </div>
@@ -632,7 +632,7 @@ export default function Investors() {
             </div>
             <div className="text-center">
               <Link href="/try-demo">
-                <Button className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold rounded-xl shadow-lg transition-all">
+                <Button className="inline-flex items-center gap-2 px-8 py-4 bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold transition-all">
                   <Play className="w-4 h-4" />
                   Experience the Interactive Scenario Demo
                 </Button>
@@ -653,9 +653,9 @@ export default function Investors() {
             <div className="grid md:grid-cols-2 gap-6">
               {competitiveAdvantages.map((advantage, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.1 }}
-                  className="bg-white border border-[#E8E4DC] rounded-xl p-6 shadow-sm hover:border-[#C9A84C]/50 transition-colors">
+                  className="bg-white border border-[#E8E4DC] p-6 hover:border-[#C9A84C]/50 transition-colors">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0 border border-[#C9A84C]/20">
+                    <div className="w-12 h-12 bg-[#C9A84C]/10 flex items-center justify-center flex-shrink-0 border border-[#C9A84C]/20">
                       <advantage.icon className="w-6 h-6 text-[#C9A84C]" />
                     </div>
                     <div>
@@ -670,7 +670,7 @@ export default function Investors() {
 
           {/* IDEA Framework */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-            className="mb-20 bg-white border border-[#E8E4DC] rounded-2xl p-8 shadow-sm">
+            className="mb-20 bg-white border border-[#E8E4DC] p-8">
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">The IDEA Framework™</h2>
             <div className="grid md:grid-cols-4 gap-4">
               {[
@@ -680,7 +680,7 @@ export default function Investors() {
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#2B8A6E]" },
               ].map((phase, i) => (
                 <div key={i} className="text-center">
-                  <div className={`w-12 h-12 mx-auto mb-3 rounded-full ${phase.color} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                  <div className={`w-12 h-12 mx-auto mb-3 ${phase.color} flex items-center justify-center text-white font-bold text-lg`}>
                     {phase.phase[0]}
                   </div>
                   <p className="text-[#0A0F2E] font-bold mb-1 tracking-wider">{phase.phase}</p>
@@ -703,8 +703,8 @@ export default function Investors() {
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">Product Roadmap</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {milestones.map((milestone, i) => (
-                <div key={i} className="bg-white border border-[#E8E4DC] rounded-xl p-6 shadow-sm hover:border-[#C9A84C]/50 transition-colors">
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 ${
+                <div key={i} className="bg-white border border-[#E8E4DC] p-6 hover:border-[#C9A84C]/50 transition-colors">
+                  <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 ${
                     i === 0 ? "bg-[#2B8A6E]/10 text-[#2B8A6E]" :
                     i === 1 ? "bg-[#C9A84C]/10 text-[#C9A84C]" :
                     "bg-[#0A0F2E]/10 text-[#0A0F2E]"
@@ -727,7 +727,7 @@ export default function Investors() {
 
           {/* Target Market */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}
-            className="mb-20 bg-[#0A0F2E] border border-[#E8E4DC] rounded-2xl p-8 shadow-2xl text-white relative overflow-hidden">
+            className="mb-20 bg-[#0A0F2E] border border-[#E8E4DC] p-8 text-white relative overflow-hidden">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             <div className="grid md:grid-cols-2 gap-8 items-center relative z-10">
               <div>
@@ -747,7 +747,7 @@ export default function Investors() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#0A0F2E]/30 border border-white/10 backdrop-blur-sm rounded-xl p-6 shadow-sm">
+              <div className="bg-[#0A0F2E]/30 border border-white/10 backdrop-blur-sm p-6">
                 <p className="text-[#C9A84C] font-bold text-lg mb-2 uppercase tracking-wider">Why Now?</p>
                 <ul className="space-y-2 text-white/70 text-sm font-medium">
                   <li>• AI disruption accelerating strategic uncertainty</li>
@@ -790,7 +790,7 @@ export default function Investors() {
             <h3 className="text-sm font-semibold text-[#0A0F2E]/60 mb-6 text-center">Research Sources & Citations</h3>
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {researchCitations.map((citation) => (
-                <div key={citation.id} className="text-xs text-[#0A0F2E]/40 p-3 bg-[#0A0F2E]/5 rounded-lg">
+                <div key={citation.id} className="text-xs text-[#0A0F2E]/40 p-3 bg-[#0A0F2E]/5">
                   <span className="text-[#0A0F2E]/60 font-medium">[{citation.id}]</span>{' '}
                   <span className="text-[#2B8A6E]">{citation.source}</span>{' '}
                   <span className="italic">"{citation.title}"</span>{' '}

@@ -275,18 +275,21 @@ function HeroSection() {
             WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI
           </div>
 
-          {/* Built for — audience badges */}
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8, marginBottom: 36 }}>
-            {["CEOs & Boards", "C-Suite Executives", "Division Presidents", "Executive Leadership"].map(label => (
-              <span key={label} style={{
-                ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.06em",
-                padding: "5px 14px", borderRadius: 20,
-                background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.28)",
-                color: GOLD,
-              }}>
-                {label}
-              </span>
-            ))}
+          {/* Built for — editorial audience separator */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, marginBottom: 36 }}>
+            <div style={{ width: 40, height: 1, background: `rgba(201,168,76,0.4)` }} />
+            <div style={{ display: "flex", gap: 0 }}>
+              {["CEOs & Boards", "C-Suite Executives", "Division Presidents", "Executive Leadership"].map((label, i) => (
+                <span key={label} style={{
+                  ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
+                  padding: "0 16px", color: `rgba(201,168,76,0.7)`,
+                  borderRight: i < 3 ? `1px solid rgba(201,168,76,0.2)` : "none",
+                }}>
+                  {label}
+                </span>
+              ))}
+            </div>
+            <div style={{ width: 40, height: 1, background: `rgba(201,168,76,0.4)` }} />
           </div>
 
           <h1 className="hp-hero-h1" style={{
@@ -477,7 +480,7 @@ function ProblemSection() {
                   <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: row.val === "Closed" ? RED_BORDER : "#1A1A2E" }}>{row.val}</span>
                 </div>
               ))}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4, padding: "12px 16px", background: "#0A0F2E", borderRadius: 4 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 4, padding: "12px 16px", background: "#0A0F2E" }}>
                 <span style={{ ...DM, fontSize: 14, fontWeight: 700, color: GOLD }}>With Readiness OS</span>
                 <span style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "#fff" }}>12 minutes</span>
               </div>
@@ -584,10 +587,10 @@ function MissingLayerSection() {
             {rows.map((row, i) => (
               <div key={row.label} style={{ width: "100%" }}>
                 <div style={{
-                  width: "100%", padding: "14px 24px", borderRadius: 4, textAlign: "center",
+                  width: "100%", padding: "14px 24px", textAlign: "center",
                   background: row.hi ? GOLD : "rgba(61,74,107,0.4)",
                   border: row.hi ? "none" : `1px solid rgba(61,74,107,0.6)`,
-                  boxShadow: row.hi ? "0 0 32px rgba(201,168,76,0.25)" : "none",
+                  borderLeft: row.hi ? `4px solid rgba(10,15,46,0.2)` : "none",
                 }}>
                   <div style={{ ...DM, fontSize: 13, fontWeight: row.hi ? 700 : 500, letterSpacing: "0.08em", textTransform: "uppercase", color: row.hi ? NAVY : MUTED_DARK }}>
                     {row.label}
@@ -634,7 +637,7 @@ function IDEASection() {
             </h2>
 
             {/* Before / After comparison strip */}
-            <div className="hp-ba-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, maxWidth: 820, margin: "0 auto", borderRadius: 6, overflow: "hidden", border: `1px solid ${BORDER}`, boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
+            <div className="hp-ba-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, maxWidth: 820, margin: "0 auto", border: `1px solid ${BORDER}` }}>
               {/* Before */}
               <div style={{ background: "#fff", padding: "28px 32px", borderRight: `1px solid ${BORDER}` }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: RED_CRISIS, marginBottom: 18 }}>Before</div>
@@ -678,11 +681,8 @@ function IDEASection() {
               <div
                 style={{
                   background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${c.accent}`,
-                  padding: 32, borderRadius: 2, boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-                  position: "relative", overflow: "hidden", transition: "all 0.2s ease", cursor: "default",
+                  padding: 32, position: "relative", overflow: "hidden",
                 }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.08)"; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(0)"; el.style.boxShadow = "0 2px 12px rgba(0,0,0,0.04)"; }}
               >
                 <div style={{ ...GEO, fontSize: 96, fontWeight: 700, color: c.wm, position: "absolute", bottom: 16, right: 24, lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>
                   {c.letter}
@@ -701,7 +701,7 @@ function IDEASection() {
           <div style={{
             maxWidth: 900, margin: "56px auto 0", padding: "32px 40px",
             background: "linear-gradient(135deg, rgba(10,15,46,0.04) 0%, rgba(43,138,110,0.06) 100%)",
-            border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, borderRadius: 4,
+            border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`,
           }}>
             <div style={{ textAlign: "center", marginBottom: 24 }}>
               <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: TEAL, marginBottom: 6 }}>The Compound Execution Advantage</div>

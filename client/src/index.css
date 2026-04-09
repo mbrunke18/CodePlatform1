@@ -87,7 +87,66 @@
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-heading: 'Barlow Condensed', 'Montserrat', sans-serif;
   --font-mono: Menlo, monospace;
-  --radius: 0.5rem;
+  --radius: 0.15rem;
+}
+
+/* ── SHADCN COMPONENT OVERRIDES — Design System Enforcement ───────────────
+   These rules enforce the VaughnMartin editorial design language globally.
+   Every shadcn component (Card, Badge, Button, Input, Table) is refined
+   to remove the generic SaaS defaults.
+   ──────────────────────────────────────────────────────────────────────── */
+
+/* ── Cards: remove shadow, minimal rounding ── */
+.card-bg,
+.card-elevated,
+.card-interactive,
+.metric-card {
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+.card-elevated {
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04) !important;
+}
+.card-interactive:hover {
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.25) !important;
+}
+
+/* ── shadcn Card component global override ── */
+[data-slot="card"],
+.rounded-xl[class*="border"],
+.rounded-lg[class*="shadow-sm"] {
+  border-radius: 2px !important;
+}
+
+/* ── Badges: rectangular instead of pill ── */
+.badge-phase {
+  border-radius: 1px !important;
+}
+
+/* ── Inputs: reduce rounding ── */
+input[class*="rounded"],
+textarea[class*="rounded"],
+select[class*="rounded"],
+.input-field,
+[class*="rounded-md"][class*="border"][class*="px"] {
+  border-radius: 2px !important;
+}
+
+/* ── Buttons: minimal rounding, no shadow ── */
+button[class*="rounded-md"],
+button[class*="rounded-lg"],
+button[class*="rounded-xl"],
+.btn, [role="button"] {
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+button[class*="rounded-full"]:not([class*="w-"]):not([class*="h-"]) {
+  border-radius: 2px !important;
+}
+
+/* ── Dropdown / popover ── */
+[data-radix-popper-content-wrapper] [class*="rounded"] {
+  border-radius: 2px !important;
 }
 
 .dark {
@@ -595,7 +654,7 @@ html:not(.dark) [class*="border-zinc-9"] {
 .card-bg {
   background: #ffffff;
   border: 1px solid hsl(220, 13%, 91%);
-  @apply rounded-xl shadow-sm;
+  border-radius: 2px;
 }
 
 .dark .card-bg {
@@ -606,7 +665,8 @@ html:not(.dark) [class*="border-zinc-9"] {
 .card-elevated {
   background: #ffffff;
   border: 1px solid hsl(220, 13%, 91%);
-  @apply rounded-xl shadow-lg;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
 .dark .card-elevated {
@@ -617,12 +677,12 @@ html:not(.dark) [class*="border-zinc-9"] {
 .card-interactive {
   background: #ffffff;
   border: 1px solid hsl(220, 13%, 91%);
-  @apply rounded-xl shadow-sm transition-all cursor-pointer;
+  border-radius: 2px;
+  @apply transition-all cursor-pointer;
 }
 
 .card-interactive:hover {
   border-color: var(--exos-gold);
-  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.15);
 }
 
 .dark .card-interactive {
@@ -632,14 +692,14 @@ html:not(.dark) [class*="border-zinc-9"] {
 
 .dark .card-interactive:hover {
   border-color: var(--exos-gold);
-  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.12);
 }
 
 /* Metric Cards */
 .metric-card {
   background: #ffffff;
   border: 1px solid hsl(220, 13%, 91%);
-  @apply rounded-lg p-4;
+  border-radius: 2px;
+  @apply p-4;
 }
 
 .dark .metric-card {
@@ -951,6 +1011,139 @@ html:not(.dark) [class*="border-zinc-9"] {
 .border-vm-navy { border-color: var(--exos-midnight); }
 .border-vm-gold { border-color: var(--exos-gold); }
 .border-vm-teal { border-color: var(--exos-success); }
+
+/* ================================================================
+   VAUGHNMARTIN EDITORIAL DESIGN SYSTEM — UTILITY CLASSES
+   These give every page access to the same design language
+   as the Homepage without custom inline styles.
+   ================================================================ */
+
+/* Editorial stat block — large number, rule, small label */
+.vm-stat-editorial {
+  display: flex;
+  flex-direction: column;
+}
+.vm-stat-editorial .stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  color: #C9A84C;
+  letter-spacing: -0.01em;
+}
+.vm-stat-editorial .stat-rule {
+  width: 28px;
+  height: 1px;
+  background: rgba(201,168,76,0.4);
+  margin: 10px 0 8px;
+}
+.vm-stat-editorial .stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B7280;
+}
+
+/* Editorial section label — gold rule + caps text before sections */
+.vm-section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.vm-section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #C9A84C;
+  flex-shrink: 0;
+}
+.vm-section-label span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #C9A84C;
+}
+.vm-section-label.on-dark span { color: rgba(201,168,76,0.7); }
+.vm-section-label.on-dark::before { background: rgba(201,168,76,0.4); }
+
+/* Editorial nav link row */
+.vm-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #E8E4DC;
+  text-decoration: none;
+  transition: color 0.15s;
+  cursor: pointer;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.vm-nav-row:first-child { border-top: 1px solid #E8E4DC; }
+.vm-nav-row .vm-nav-row-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0A0F2E;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.vm-nav-row:hover .vm-nav-row-label { color: #C9A84C; }
+.vm-nav-row .vm-nav-row-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  color: #9CA3AF;
+  margin-right: 12px;
+  letter-spacing: 0.04em;
+}
+.vm-nav-row .vm-nav-row-arrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(201,168,76,0.6);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* Horizontal filter nav (replaces pill-button filters) */
+.vm-filter-nav {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #E8E4DC;
+  margin-bottom: 24px;
+  gap: 0;
+}
+.vm-filter-nav button {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 10px 18px 9px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #9CA3AF;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+  border-radius: 0 !important;
+}
+.vm-filter-nav button.active { color: #0A0F2E; border-bottom-color: #C9A84C; }
+.vm-filter-nav button:hover:not(.active) { color: #374151; }
+
+/* Dark filter nav variant */
+.vm-filter-nav.on-dark { border-bottom-color: rgba(255,255,255,0.1); }
+.vm-filter-nav.on-dark button { color: rgba(255,255,255,0.35); }
+.vm-filter-nav.on-dark button.active { color: #C9A84C; border-bottom-color: #C9A84C; }
+.vm-filter-nav.on-dark button:hover:not(.active) { color: rgba(255,255,255,0.65); }
 
 /* ========================================
    GOLD DIVIDER — BRAND DETAIL

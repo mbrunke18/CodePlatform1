@@ -147,11 +147,11 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
                 <div className={`flex gap-3 max-w-[85%] ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   <div className="flex-shrink-0">
                     {message.role === 'user' ? (
-                      <div className="w-8 h-8 bg-[#0A0F2E] rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-[#0A0F2E] flex items-center justify-center">
                         <User className="w-4 h-4 text-white" />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-green-600 flex items-center justify-center">
                         <Bot className="w-4 h-4 text-white" />
                       </div>
                     )}
@@ -229,12 +229,12 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
 
             {nlqMutation.isPending && (
               <div className="flex gap-3 justify-start">
-                <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-green-600 flex items-center justify-center">
                   <Bot className="w-4 h-4 text-white" />
                 </div>
-                <div className="bg-gray-50 border rounded-lg p-4 max-w-[85%]">
+                <div className="bg-gray-50 border p-4 max-w-[85%]">
                   <div className="flex items-center gap-2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-green-600"></div>
+                    <div className="animate-spin h-4 w-4 border-b-2 border-green-600"></div>
                     <span className="text-sm text-gray-600">Thinking...</span>
                   </div>
                 </div>

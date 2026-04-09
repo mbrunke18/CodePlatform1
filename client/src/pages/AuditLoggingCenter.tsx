@@ -181,7 +181,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
         <ExecutionStageGuide variant="compact" />
         {/* Audit Logging Header */}
         <div className="flex items-center justify-between">
-          <div className="bg-[#0A0F2E] text-white p-8 rounded-lg relative overflow-hidden w-full flex items-center justify-between shadow-xl">
+          <div className="bg-[#0A0F2E] text-white p-8 relative overflow-hidden w-full flex items-center justify-between">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
             <div className="relative z-10 flex items-center gap-4">
               <Shield className="h-10 w-10 text-[#C9A84C]" />
@@ -195,7 +195,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 <Shield className="w-4 h-4 mr-2" />
                 Compliance: {metrics.complianceScore}%
               </Badge>
-              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] shadow-lg">
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
                 <Download className="w-4 h-4 mr-2" />
                 Export Logs
               </Button>
@@ -296,7 +296,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardHeader>
                 <CardContent className="space-y-4 max-h-96 overflow-y-auto">
                   {auditLogs.slice(0, 8).map((log) => (
-                    <div key={log.id} className="p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                    <div key={log.id} className="p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                       <div className="flex items-start justify-between mb-2">
                         <div className="flex items-center gap-2">
                           <Badge className={getCategoryColor(log.category)}>
@@ -330,7 +330,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {securityEvents.slice(0, 3).map((event) => (
-                    <div key={event.id} className="p-3 bg-white rounded-lg border border-[#E8E4DC]">
+                    <div key={event.id} className="p-3 bg-white border border-[#E8E4DC]">
                       <div className="flex items-start justify-between mb-2">
                         <Badge className={getSeverityColor(event.severity)}>
                           {event.severity.toUpperCase()}
@@ -356,7 +356,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
           <TabsContent value="logs" className="space-y-6">
             
             {/* Filters */}
-            <div className="flex items-center gap-4 bg-white p-4 rounded-lg border border-[#E8E4DC]">
+            <div className="flex items-center gap-4 bg-white p-4 border border-[#E8E4DC]">
               <div className="flex-1 page-background relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#6B7280]" />
                 <Input
@@ -553,7 +553,7 @@ export default function AuditLoggingCenter({ embedded }: { embedded?: boolean })
                       <h4 className="font-semibold text-[#0A0F2E] mb-3">Findings</h4>
                       <div className="space-y-2">
                         {report.findings.map((finding, index) => (
-                          <div key={index} className="p-3 bg-[#F8F7F4] rounded-lg border border-[#E8E4DC]">
+                          <div key={index} className="p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                             <div className="flex items-center justify-between mb-2">
                               <span className="font-medium text-[#0A0F2E]">{finding.category}</span>
                               <Badge className={getSeverityColor(finding.severity)}>

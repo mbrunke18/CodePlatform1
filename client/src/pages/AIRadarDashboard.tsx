@@ -85,7 +85,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
             <h1 className="text-3xl font-bold flex items-center gap-3 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">
               <div className="relative">
                 <Radar className="h-10 w-10 text-[#0A0F2E]" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#2B8A6E] rounded-full animate-pulse" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#2B8A6E] animate-pulse" />
               </div>
               Threat Radar
             </h1>
@@ -100,11 +100,11 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
         </div>
 
         {/* Live Status Bar */}
-        <div className="bg-[#0A0F2E] rounded-xl p-4 text-white">
+        <div className="bg-[#0A0F2E] p-4 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse" />
                 <span className="text-sm font-medium">LIVE MONITORING</span>
               </div>
               <div className="text-sm text-white/80">
@@ -139,10 +139,10 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
               <div className="relative w-full aspect-square max-w-[300px] mx-auto">
                 {/* Radar circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-full rounded-full border border-[#E8E4DC]" />
-                  <div className="absolute w-3/4 h-3/4 rounded-full border border-[#E8E4DC]" />
-                  <div className="absolute w-1/2 h-1/2 rounded-full border border-[#E8E4DC]" />
-                  <div className="absolute w-1/4 h-1/4 rounded-full border border-[#E8E4DC]" />
+                  <div className="w-full h-full border border-[#E8E4DC]" />
+                  <div className="absolute w-3/4 h-3/4 border border-[#E8E4DC]" />
+                  <div className="absolute w-1/2 h-1/2 border border-[#E8E4DC]" />
+                  <div className="absolute w-1/4 h-1/4 border border-[#E8E4DC]" />
                 </div>
                 
                 {/* Cross lines */}
@@ -172,7 +172,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   style={{ transform: `rotate(${radarAngle}deg)` }}
                 >
                   <div 
-                    className="absolute inset-0 rounded-full"
+                    className="absolute inset-0"
                     style={{
                       background: `conic-gradient(from ${radarAngle}deg, rgba(43, 138, 110, 0.15) 0deg, transparent 60deg)`
                     }}
@@ -188,7 +188,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   return (
                     <div
                       key={trigger.id}
-                      className={`absolute w-3 h-3 rounded-full ${
+                      className={`absolute w-3 h-3 ${
                         trigger.currentStatus === 'red' ? 'bg-red-500' : 'bg-[#C9A84C]'
                       } animate-pulse`}
                       style={{
@@ -203,22 +203,22 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
 
                 {/* Center dot */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-2 h-2 bg-[#2B8A6E] rounded-full" />
+                  <div className="w-2 h-2 bg-[#2B8A6E]" />
                 </div>
               </div>
 
               {/* Legend */}
               <div className="mt-4 flex justify-center gap-4 text-xs text-[#0A0F2E]">
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 bg-red-500 rounded-full" />
+                  <div className="w-2 h-2 bg-red-500" />
                   Critical
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 bg-[#C9A84C] rounded-full" />
+                  <div className="w-2 h-2 bg-[#C9A84C]" />
                   Warning
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-2 h-2 bg-[#2B8A6E] rounded-full" />
+                  <div className="w-2 h-2 bg-[#2B8A6E]" />
                   Normal
                 </div>
               </div>
@@ -308,14 +308,14 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                       return (
                         <div 
                           key={trigger.id}
-                          className={`flex items-center gap-3 p-3 rounded-lg border ${
+                          className={`flex items-center gap-3 p-3 border ${
                             trigger.currentStatus === 'red' 
                               ? 'bg-red-50 border-red-200' 
                               : 'bg-[#C9A84C]/5 border-[#C9A84C]/20'
                           }`}
                           data-testid={`threat-${trigger.id}`}
                         >
-                          <div className={`w-3 h-3 rounded-full ${
+                          <div className={`w-3 h-3 ${
                             trigger.currentStatus === 'red' ? 'bg-red-500 animate-pulse' : 'bg-[#C9A84C]'
                           }`} />
                           <div className="flex-1">
@@ -372,7 +372,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                 return (
                   <div 
                     key={category.id}
-                    className={`p-3 rounded-lg border text-center transition-all cursor-pointer hover:border-[#0A0F2E] ${
+                    className={`p-3 border text-center transition-all cursor-pointer hover:border-[#0A0F2E] ${
                       isScanning ? 'border-[#2B8A6E] bg-[#2B8A6E]/5 ring-2 ring-[#2B8A6E]/50' :
                       hasAlert ? 'border-red-400 bg-red-50' :
                       hasTrigger ? 'border-[#0A0F2E] bg-[#0A0F2E]/5' :
@@ -382,7 +382,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                     data-testid={`category-${category.id}`}
                   >
                     <div 
-                      className="w-8 h-8 mx-auto mb-2 rounded-full flex items-center justify-center text-lg"
+                      className="w-8 h-8 mx-auto mb-2 flex items-center justify-center text-lg"
                       style={{ backgroundColor: `${category.color}20` }}
                     >
                       {category.icon === 'TrendingUp' && <TrendingUp className="h-4 w-4" style={{ color: category.color }} />}
@@ -419,7 +419,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
               <CardTitle className="flex items-center gap-2 text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 <Activity className="h-5 w-5 text-[#2B8A6E]" />
                 Recent Activity
-                <div className="w-2 h-2 bg-[#2B8A6E] rounded-full animate-pulse ml-2" />
+                <div className="w-2 h-2 bg-[#2B8A6E] animate-pulse ml-2" />
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -441,7 +441,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                             : 'bg-[#C9A84C]/10'
                         }`}
                       >
-                        <div className={`w-2 h-2 rounded-full ${
+                        <div className={`w-2 h-2 ${
                           trigger.currentStatus === 'red' ? 'bg-red-500' : 'bg-[#C9A84C]'
                         }`} />
                         <div className="flex-1">
@@ -455,7 +455,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                         key={`weak-${signal.id}`}
                         className="flex items-center gap-3 p-2 rounded bg-[#0A0F2E]/5 text-sm"
                       >
-                        <div className="w-2 h-2 bg-[#0A0F2E] rounded-full" />
+                        <div className="w-2 h-2 bg-[#0A0F2E]" />
                         <div className="flex-1">
                           <span className="font-medium text-[#0A0F2E]">{signal.title || 'Weak Signal'}</span>
                           <span className="text-[#6B7280]"> · Early indicator</span>
@@ -467,7 +467,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                         key={`alert-${alert.id}`}
                         className="flex items-center gap-3 p-2 rounded bg-[#C9A84C]/10 text-sm"
                       >
-                        <div className="w-2 h-2 bg-[#C9A84C] rounded-full" />
+                        <div className="w-2 h-2 bg-[#C9A84C]" />
                         <div className="flex-1">
                           <span className="font-medium text-[#0A0F2E]">{alert.title}</span>
                           <span className="text-[#6B7280]"> · Strategic Alert</span>
@@ -493,13 +493,13 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-white rounded-lg border border-[#E8E4DC]">
+                <div className="text-center p-4 bg-white border border-[#E8E4DC]">
                   <p className="text-3xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {dynamicStatus?.readinessScore?.toFixed(1) || '—'}%
                   </p>
                   <p className="text-xs text-[#6B7280]">Readiness Score</p>
                 </div>
-                <div className="text-center p-4 bg-white rounded-lg border border-[#E8E4DC]">
+                <div className="text-center p-4 bg-white border border-[#E8E4DC]">
                   <p className="text-3xl font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{totalDataPoints}</p>
                   <p className="text-xs text-[#6B7280]">Data Points</p>
                 </div>

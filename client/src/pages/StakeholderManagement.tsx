@@ -570,7 +570,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+                  <div className="p-2 bg-[#0A0F2E]/10">
                     <CheckCircle className="h-5 w-5 text-[#0A0F2E]" />
                   </div>
                   <Badge className="bg-[#0A0F2E]/10 text-[#0A0F2E] border-none">Above benchmark</Badge>
@@ -587,7 +587,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {/* Communication Timeline Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+            <div className="p-2 bg-[#0A0F2E]/10">
               <Clock className="h-5 w-5 text-[#0A0F2E]" />
             </div>
             <h2 className="text-2xl font-bold text-[#0A0F2E]">Recent Communication Timeline</h2>
@@ -607,9 +607,9 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
                   return (
                     <div
                       key={index}
-                      className={`relative pl-12 pb-8 last:pb-0 ${index % 2 === 0 ? 'bg-slate-50/50 dark:bg-[#141B45]/20' : ''} rounded-lg p-4 pl-12`}
+                      className={`relative pl-12 pb-8 last:pb-0 ${index % 2 === 0 ? 'bg-slate-50/50 dark:bg-[#141B45]/20' : ''} p-4 pl-12`}
                     >
-                      <div className={`absolute left-2.5 top-5 w-3.5 h-3.5 rounded-full ${entry.dotClass} border-2 border-white dark:border-slate-900 z-10`} />
+                      <div className={`absolute left-2.5 top-5 w-3.5 h-3.5 ${entry.dotClass} border-2 border-white dark:border-slate-900 z-10`} />
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
@@ -631,7 +631,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         {/* RACI Matrix Visualization */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-[#0A0F2E]/10 rounded-lg">
+            <div className="p-2 bg-[#0A0F2E]/10">
               <Users className="h-5 w-5 text-[#0A0F2E]" />
             </div>
             <h2 className="text-2xl font-bold text-[#0A0F2E]">RACI Matrix — Active Playbooks</h2>
@@ -823,7 +823,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
 
               <div className="space-y-2">
                 <Label>Notification Channels</Label>
-                <div className="flex flex-wrap gap-2 p-3 border rounded-lg">
+                <div className="flex flex-wrap gap-2 p-3 border">
                   {NOTIFICATION_CHANNELS.map(channel => {
                     const Icon = channel.icon;
                     const isSelected = formData.notificationChannels?.includes(channel.id);

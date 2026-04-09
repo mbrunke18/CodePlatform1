@@ -331,7 +331,7 @@ export default function PlaybookManagement() {
                     >
                       <TableCell>
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${categoryConfig?.bg || 'bg-slate-100 dark:bg-[#141B45]'}`}>
+                          <div className={`p-2 ${categoryConfig?.bg || 'bg-slate-100 dark:bg-[#141B45]'}`}>
                             <CategoryIcon className={`h-4 w-4 ${categoryConfig?.color || 'text-gray-800'}`} />
                           </div>
                           <div>

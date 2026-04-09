@@ -140,7 +140,7 @@ export default function CrisisDetail() {
     return (
       <PageLayout>
         <div className="flex items-center justify-center h-64 bg-[#F8F7F4]">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#0A0F2E]"></div>
+          <div className="animate-spin h-12 w-12 border-b-2 border-[#0A0F2E]"></div>
         </div>
       </PageLayout>
     );
@@ -275,7 +275,7 @@ export default function CrisisDetail() {
         <div className="p-12 max-w-7xl mx-auto space-y-12">
           {/* Quick Actions & Progress */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <Card className="lg:col-span-2 rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+            <Card className="lg:col-span-2 rounded-none border-[#E8E4DC] bg-white p-8">
               <CardHeader className="px-0 pt-0 mb-8">
                 <CardTitle style={CG} className="text-2xl font-bold flex items-center gap-3 text-[#0A0F2E]">
                   <Activity className="h-6 w-6 text-[#2B8A6E]" />
@@ -307,7 +307,7 @@ export default function CrisisDetail() {
               </CardContent>
             </Card>
 
-            <Card className="rounded-none border-[#E8E4DC] shadow-sm bg-white p-8">
+            <Card className="rounded-none border-[#E8E4DC] bg-white p-8">
               <CardHeader className="px-0 pt-0 mb-8">
                 <CardTitle style={CG} className="text-2xl font-bold flex items-center gap-3 text-[#0A0F2E]">
                   <Settings className="h-6 w-6 text-[#C9A84C]" />
@@ -453,7 +453,7 @@ export default function CrisisDetail() {
 
               {tasksLoading ? (
                 <div className="text-center py-8">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#0A0F2E] mx-auto"></div>
+                  <div className="animate-spin h-6 w-6 border-b-2 border-[#0A0F2E] mx-auto"></div>
                 </div>
               ) : tasks.length === 0 ? (
                 <Card className="rounded-none border-[#E8E4DC]">
@@ -466,7 +466,7 @@ export default function CrisisDetail() {
               ) : (
                 <div className="space-y-3">
                   {tasks.map((task) => (
-                    <Card key={task.id} className="hover:shadow-md transition-shadow rounded-none border-[#E8E4DC]">
+                    <Card key={task.id} className="hover:shadow-md  rounded-none border-[#E8E4DC]">
                       <CardContent className="p-4">
                         <div className="flex items-start justify-between">
                           <div className="flex-1 space-y-2">
@@ -485,7 +485,7 @@ export default function CrisisDetail() {
                                 {task.status === 'Completed' ? (
                                   <CheckCircle className="h-5 w-5 text-[#2B8A6E]" />
                                 ) : (
-                                  <div className="h-5 w-5 border-2 border-[#E8E4DC] rounded-full" />
+                                  <div className="h-5 w-5 border-2 border-[#E8E4DC]" />
                                 )}
                               </Button>
                               <div className="flex-1">
@@ -521,7 +521,7 @@ export default function CrisisDetail() {
                 <CardContent>
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-2 h-2 bg-[#0A0F2E] rounded-full mt-2"></div>
+                      <div className="w-2 h-2 bg-[#0A0F2E] mt-2"></div>
                       <div className="flex-1 page-background">
                         <div className="text-sm font-medium">Crisis Detected</div>
                         <div className="text-xs text-[#6B7280]">{new Date(crisis.createdAt).toLocaleString()}</div>
@@ -531,7 +531,7 @@ export default function CrisisDetail() {
                     
                     {crisis.status === 'active' && (
                       <div className="flex items-start gap-4">
-                        <div className="w-2 h-2 bg-[#C9A84C] rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-[#C9A84C] mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Response Activated</div>
                           <div className="text-xs text-[#6B7280]">{new Date().toLocaleString()}</div>
@@ -542,7 +542,7 @@ export default function CrisisDetail() {
 
                     {crisis.status === 'resolved' && (
                       <div className="flex items-start gap-4">
-                        <div className="w-2 h-2 bg-[#2B8A6E] rounded-full mt-2"></div>
+                        <div className="w-2 h-2 bg-[#2B8A6E] mt-2"></div>
                         <div className="flex-1 page-background">
                           <div className="text-sm font-medium">Crisis Resolved</div>
                           <div className="text-xs text-[#6B7280]">{new Date(crisis.updatedAt).toLocaleString()}</div>

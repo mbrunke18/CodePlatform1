@@ -88,9 +88,9 @@ export default function DemoRouter() {
           </div>
 
           {/* Recommended Callout */}
-          <div className="mb-8 p-4 bg-[#0A0F2E]/5 border border-[#0A0F2E]/30 rounded-xl">
+          <div className="mb-8 p-4 bg-[#0A0F2E]/5 border border-[#0A0F2E]/30">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-[#0A0F2E]/20 rounded-lg">
+              <div className="p-2 bg-[#0A0F2E]/20">
                 <Sparkles className="h-5 w-5 text-[#0A0F2E]" />
               </div>
               <div className="flex-1">
@@ -112,9 +112,9 @@ export default function DemoRouter() {
           </div>
 
           {/* AI-Native Differentiator */}
-          <div className="mb-8 p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30 rounded-xl">
+          <div className="mb-8 p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-[#2B8A6E]/20 rounded-lg">
+              <div className="p-2 bg-[#2B8A6E]/20">
                 <TrendingUp className="h-5 w-5 text-[#2B8A6E]" />
               </div>
               <div className="flex-1">
@@ -133,13 +133,13 @@ export default function DemoRouter() {
               return (
                 <Card 
                   key={demo.id}
-                  className={`bg-white border-2 ${demo.borderColor} cursor-pointer transition-all hover:shadow-xl group`}
+                  className={`bg-white border-2 ${demo.borderColor} cursor-pointer transition-all group`}
                   onClick={() => setLocation(demo.path)}
                   data-testid={`card-demo-${demo.id}`}
                 >
                   <CardContent className="p-5 md:p-6 flex items-center gap-4 md:gap-6">
                     {/* Icon */}
-                    <div className={`p-3 md:p-4 rounded-2xl bg-[#0A0F2E] flex-shrink-0`}>
+                    <div className={`p-3 md:p-4 bg-[#0A0F2E] flex-shrink-0`}>
                       <IconComponent className="h-6 w-6 md:h-8 md:w-8 text-[#C9A84C]" />
                     </div>
                     
@@ -184,10 +184,10 @@ export default function DemoRouter() {
           </div>
 
           {/* Investor/Roadshow Resources */}
-          <div className="p-5 bg-[#C9A84C]/10 border border-[#C9A84C]/30 rounded-xl">
+          <div className="p-5 bg-[#C9A84C]/10 border border-[#C9A84C]/30">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-[#C9A84C]/20 rounded-lg">
+                <div className="p-2 bg-[#C9A84C]/20">
                   <FileText className="h-5 w-5 text-[#C9A84C]" />
                 </div>
                 <div>

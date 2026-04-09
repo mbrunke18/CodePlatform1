@@ -80,13 +80,13 @@ export default function InvestorLanding() {
           
           <div className="max-w-7xl mx-auto relative z-10 text-center">
             <div className="mb-8 flex justify-center">
-              <div className="inline-block px-6 py-4 rounded-2xl border border-white/10 backdrop-blur-sm bg-[#0A0F2E]/30">
-                <VaughnMartinLogo color="light" height={48} variant="full" />
-              </div>
+              <VaughnMartinLogo color="light" height={44} variant="full" />
             </div>
-            <Badge className="mb-6 bg-[#C9A84C] text-[#0A0F2E] border-0 text-sm px-4 py-1.5" data-testid="badge-category">
-              Category-Defining Opportunity
-            </Badge>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px" style={{ background: '#C9A84C' }} />
+              <span className="text-[10px] font-bold tracking-[0.22em] uppercase" style={{ color: '#C9A84C' }}>Category-Defining Opportunity</span>
+              <div className="w-8 h-px" style={{ background: '#C9A84C' }} />
+            </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight max-w-5xl mx-auto text-white" data-testid="heading-hero">
               The Salesforce Moment for Strategic Readiness
@@ -101,7 +101,7 @@ export default function InvestorLanding() {
             </p>
 
             {/* VaughnMartin Thesis Block */}
-            <div className="max-w-3xl mx-auto mb-10 rounded-2xl border border-[#C9A84C]/30 bg-white/5 backdrop-blur-sm p-8 text-left">
+            <div className="max-w-3xl mx-auto mb-10 border border-[#C9A84C]/30 bg-white/5 backdrop-blur-sm p-8 text-left">
               <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C9A84C] mb-4">The VaughnMartin Thesis</div>
               <p className="text-base text-white/90 leading-relaxed mb-3 font-medium">
                 The way enterprises work was designed for a world without AI. Committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act alone.
@@ -167,86 +167,27 @@ export default function InvestorLanding() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-10">
-            <Card className="bg-white border border-[#E8E4DC] hover:border-[#0A0F2E]/40 transition-all shadow-sm">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-[#0A0F2E]/10">
-                      <Zap className="h-5 w-5 text-[#0A0F2E]" />
-                    </div>
-                    <span className="text-xs font-semibold text-[#0A0F2E] uppercase tracking-wider">Problem 1</span>
+            {[
+              { n: '01', label: 'The Readiness Gap', body: 'Weeks to mobilize — before the response even begins', stat: '$136K/hour delayed (IBM). $5-50M M&A synergy erosion.', metric: '30 days → 12 min', accent: '#0A0F2E' },
+              { n: '02', label: 'The Coordination Chaos', body: '50-200+ stakeholders. No system to coordinate them.', stat: '$4.88M avg breach cost. 35% higher without pre-defined teams.', metric: '35% cost reduction', accent: '#C9A84C' },
+              { n: '03', label: 'The Institutional Amnesia', body: 'Knowledge walks out the door. Same scramble every time.', stat: '3.5 disruptions per 2 years. Same $4.88M cost repeated.', metric: 'Compounding intelligence', accent: '#2B8A6E' },
+            ].map(p => (
+              <Card key={p.n} className="bg-white border border-[#E8E4DC] transition-all" style={{ borderTopColor: p.accent, borderTopWidth: 3 }}>
+                <CardContent className="p-6">
+                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: p.accent, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>Problem {p.n}</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 8, lineHeight: 1.2 }}>{p.label}</h3>
+                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">{p.body}</p>
+                  <p className="text-xs text-[#6B7280] mb-4">{p.stat}</p>
+                  <div className="border-t border-[#E8E4DC] pt-4">
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 6 }}>Solution</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#2B8A6E' }}>{p.metric}</div>
                   </div>
-                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Readiness Gap</h3>
-                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">Weeks to mobilize — before the response even begins</p>
-                  <p className="text-xs text-[#0A0F2E] font-medium">$136K/hour delayed (IBM). $5-50M M&A synergy erosion.</p>
-                </div>
-                <div className="border-t border-[#E8E4DC] pt-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
-                    <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
-                  </div>
-                  <p className="text-sm text-[#0A0F2E] mb-3">Pre-built infrastructure activates in 12 minutes</p>
-                  <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
-                    <span className="text-[#2B8A6E] font-bold text-lg">30 days → 12 min</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all shadow-sm">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-[#C9A84C]/10">
-                      <Users className="h-5 w-5 text-[#C9A84C]" />
-                    </div>
-                    <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 2</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Coordination Chaos</h3>
-                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">50-200+ stakeholders. No system to coordinate them.</p>
-                  <p className="text-xs text-[#C9A84C] font-semibold">$4.88M avg breach cost. 35% higher without pre-defined teams.</p>
-                </div>
-                <div className="border-t border-[#E8E4DC] pt-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
-                    <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
-                  </div>
-                  <p className="text-sm text-[#0A0F2E] mb-3">Pre-mapped accountability, instant notification, real-time tracking</p>
-                  <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
-                    <span className="text-[#2B8A6E] font-bold text-lg">35% cost reduction</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white border border-[#E8E4DC] hover:border-[#C9A84C]/40 transition-all shadow-sm">
-              <CardContent className="p-6">
-                <div className="mb-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="p-2 rounded-lg bg-[#C9A84C]/10">
-                      <Brain className="h-5 w-5 text-[#C9A84C]" />
-                    </div>
-                    <span className="text-xs font-semibold text-[#C9A84C] uppercase tracking-wider">Problem 3</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-[#0A0F2E] mb-2">The Institutional Amnesia</h3>
-                  <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">Knowledge walks out the door. Same scramble every time.</p>
-                  <p className="text-xs text-[#C9A84C] font-semibold">3.5 disruptions per 2 years. Same $4.88M cost repeated.</p>
-                </div>
-                <div className="border-t border-[#E8E4DC] pt-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] flex-shrink-0" />
-                    <span className="text-sm text-[#2B8A6E] font-semibold">Solution</span>
-                  </div>
-                  <p className="text-sm text-[#0A0F2E] mb-3">AI-powered learning loop. Playbooks that improve automatically.</p>
-                  <div className="bg-[#2B8A6E]/10 rounded-lg px-3 py-2 text-center border border-[#2B8A6E]/20">
-                    <span className="text-[#2B8A6E] font-bold text-lg">Compounding intelligence</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl px-6 py-4 text-center">
+            <div className="bg-[#F8F7F4] border border-[#E8E4DC] px-6 py-4 text-center">
               <p className="text-[#0A0F2E]">
                 <span className="text-[#0A0F2E] font-semibold">Readiness OS at $250K-$750K/year</span> vs. one incident costing <span className="text-[#0A0F2E] font-semibold">$5-50M</span>. <span className="text-[#2B8A6E] font-semibold">Payback on first use.</span>
               </p>
@@ -271,58 +212,36 @@ export default function InvestorLanding() {
             </div>
 
             <div className="grid md:grid-cols-5 gap-2 items-center max-w-4xl mx-auto mb-12">
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-4 text-center">
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] p-4 text-center">
                 <div className="text-xs text-[#6B7280] mb-1">Strategy Layer</div>
                 <div className="text-sm font-semibold text-[#0A0F2E]">Board & C-Suite</div>
               </div>
               <div className="text-center text-[#6B7280]">→</div>
-              <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#2B8A6E]/20 border-2 border-[#C9A84C]/50 rounded-xl p-4 text-center">
+              <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-[#2B8A6E]/20 border-2 border-[#C9A84C]/50 p-4 text-center">
                 <div className="text-xs text-[#C9A84C] font-semibold mb-1">Readiness Infrastructure Layer</div>
                 <div className="text-sm font-bold text-[#0A0F2E]">Readiness OS</div>
               </div>
               <div className="text-center text-[#6B7280]">→</div>
-              <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-4 text-center">
+              <div className="bg-[#F8F7F4] border border-[#E8E4DC] p-4 text-center">
                 <div className="text-xs text-[#6B7280] mb-1">Workflow Layer</div>
                 <div className="text-sm font-semibold text-[#0A0F2E]">Jira, ServiceNow</div>
               </div>
             </div>
 
-          <div className="grid md:grid-cols-5 gap-4 max-w-5xl mx-auto">
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-              <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center text-[#2B8A6E]">
-                <Zap className="h-5 w-5" />
+          <div className="grid md:grid-cols-5 gap-2 max-w-5xl mx-auto">
+            {[
+              { n: '01', label: 'Detection Agent', sub: 'Monitors signals across domains', color: '#2B8A6E' },
+              { n: '02', label: 'Risk Scoring Agent', sub: 'Classifies severity + urgency', color: '#C9A84C' },
+              { n: '03', label: 'Routing Agent', sub: 'Assigns stakeholders + roles', color: '#0A0F2E' },
+              { n: '04', label: 'Decision Agent', sub: 'Pre-authorized within policy', color: '#2B8A6E' },
+              { n: '05', label: 'Learning Agent', sub: 'Compounds institutional knowledge', color: '#C9A84C' },
+            ].map(a => (
+              <div key={a.n} className="bg-[#F8F7F4] border border-[#E8E4DC] p-5 text-center" style={{ borderTopColor: a.color, borderTopWidth: 2 }}>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', color: a.color, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>{a.n}</div>
+                <div className="text-sm font-semibold text-[#0A0F2E] mb-1">{a.label}</div>
+                <div className="text-xs text-[#6B7280]">{a.sub}</div>
               </div>
-              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Detection Agent</div>
-              <div className="text-xs text-[#6B7280]">Monitors signals across domains</div>
-            </div>
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-              <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center text-[#C9A84C]">
-                <Target className="h-5 w-5" />
-              </div>
-              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Risk Scoring Agent</div>
-              <div className="text-xs text-[#6B7280]">Classifies severity + urgency</div>
-            </div>
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-              <div className="w-10 h-10 mx-auto mb-3 bg-[#0A0F2E]/20 rounded-lg flex items-center justify-center text-[#0A0F2E]">
-                <Users className="h-5 w-5" />
-              </div>
-              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Routing Agent</div>
-              <div className="text-xs text-[#6B7280]">Assigns stakeholders + roles</div>
-            </div>
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-              <div className="w-10 h-10 mx-auto mb-3 bg-[#2B8A6E]/20 rounded-lg flex items-center justify-center text-[#2B8A6E]">
-                <Shield className="h-5 w-5" />
-              </div>
-              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Decision Agent</div>
-              <div className="text-xs text-[#6B7280]">Pre-authorized within policy</div>
-            </div>
-            <div className="bg-[#F8F7F4] border border-[#E8E4DC] rounded-xl p-5 text-center">
-              <div className="w-10 h-10 mx-auto mb-3 bg-[#C9A84C]/20 rounded-lg flex items-center justify-center text-[#C9A84C]">
-                <Brain className="h-5 w-5" />
-              </div>
-              <div className="text-sm font-semibold text-[#0A0F2E] mb-1">Learning Agent</div>
-              <div className="text-xs text-[#6B7280]">Compounds institutional knowledge</div>
-            </div>
+            ))}
           </div>
           </div>
         </section>
@@ -342,7 +261,7 @@ export default function InvestorLanding() {
               </p>
               <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {['Harvard Business Review', 'IBM', 'BCG', 'McKinsey', 'Bain', 'Accenture', 'Deloitte', 'PwC', 'Gartner', 'Forrester', 'IDC', 'Microsoft', 'Google Cloud', 'OpenAI', 'Anthropic', 'World Economic Forum'].map((firm) => (
-                  <span key={firm} className="bg-[#0A0F2E]/5 border border-[#E8E4DC] rounded-full px-3 py-1 text-xs font-medium text-[#0A0F2E]">{firm}</span>
+                  <span key={firm} className="bg-[#0A0F2E]/5 border border-[#E8E4DC] px-3 py-1 text-xs font-medium text-[#0A0F2E]">{firm}</span>
                 ))}
               </div>
             </div>
@@ -473,7 +392,7 @@ export default function InvestorLanding() {
                   <div className="flex items-start gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="w-2 h-2 rounded-full bg-[#dc2626] shrink-0" />
+                        <span className="w-2 h-2 bg-[#dc2626] shrink-0" />
                         <span className="font-bold text-[#0A0F2E] text-lg">Harvard Business Review</span>
                         <span className="text-xs font-mono text-[#6B7280] uppercase tracking-wider">February 2026</span>
                       </div>
@@ -502,7 +421,7 @@ export default function InvestorLanding() {
                 From signal detection to coordinated execution in 12 minutes — the full architecture that replaces 30-day mobilization scrambles
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">
+            <div className="overflow-hidden border border-[#E8E4DC]">
               <img
                 src={productArchitectureImg}
                 alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Playbooks, Execution Outputs, Command Center, and Integration Layer"
@@ -674,7 +593,7 @@ export default function InvestorLanding() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-8">
-              <div className="bg-[#F8F7F4] border border-[#0A0F2E]/30 rounded-xl p-5">
+              <div className="bg-[#F8F7F4] border border-[#0A0F2E]/30 p-5">
                 <div className="text-[#0A0F2E] font-bold text-sm mb-3 uppercase tracking-wider">Strategy</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
@@ -696,7 +615,7 @@ export default function InvestorLanding() {
                 </div>
               </div>
 
-              <div className="bg-[#F8F7F4] border border-[#2B8A6E]/30 rounded-xl p-5">
+              <div className="bg-[#F8F7F4] border border-[#2B8A6E]/30 p-5">
                 <div className="text-[#2B8A6E] font-bold text-sm mb-3 uppercase tracking-wider">Build</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
@@ -718,7 +637,7 @@ export default function InvestorLanding() {
                 </div>
               </div>
 
-              <div className="bg-[#F8F7F4] border border-[#C9A84C]/30 rounded-xl p-5">
+              <div className="bg-[#F8F7F4] border border-[#C9A84C]/30 p-5">
                 <div className="text-[#C9A84C] font-bold text-sm mb-3 uppercase tracking-wider">Leadership</div>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-2">
@@ -741,7 +660,7 @@ export default function InvestorLanding() {
               </div>
             </div>
 
-            <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 rounded-lg text-center">
+            <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 text-center">
               <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Readiness OS built the product.</p>
               <p className="text-[#0A0F2E] text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
@@ -843,7 +762,7 @@ export default function InvestorLanding() {
                 Selling pain relief today while building the operating layer for the AI era — infrastructure that evolves with every customer
               </p>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-[#E8E4DC]">
+            <div className="overflow-hidden border border-[#E8E4DC]">
               <img
                 src={futurePositioningImg}
                 alt="Readiness OS Future Positioning — Phase 1: Today's execution infrastructure, Phase 2: Tomorrow's AI operating layer"
@@ -1089,7 +1008,7 @@ export default function InvestorLanding() {
                   <div className="flex-1 space-y-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded bg-[#2B8A6E]"></div>
+                        <div className="w-4 h-4bg-[#2B8A6E]"></div>
                         <div className="font-semibold text-[#0A0F2E]">Cost Savings: $7.2M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">
@@ -1098,7 +1017,7 @@ export default function InvestorLanding() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded bg-[#0A0F2E]"></div>
+                        <div className="w-4 h-4bg-[#0A0F2E]"></div>
                         <div className="font-semibold text-[#0A0F2E]">Time Recovery: $3.4M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">
@@ -1107,7 +1026,7 @@ export default function InvestorLanding() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 rounded bg-[#C9A84C]"></div>
+                        <div className="w-4 h-4bg-[#C9A84C]"></div>
                         <div className="font-semibold text-[#0A0F2E]">Risk Mitigation: $1.8M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">

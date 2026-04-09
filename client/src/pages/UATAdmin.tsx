@@ -208,7 +208,7 @@ export default function UATAdmin() {
         <div className="bg-white dark:bg-white/5 border-b border-[#E8E4DC] dark:border-white/10 p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-[#0A0F2E] dark:bg-[#C9A84C] rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#0A0F2E] dark:bg-[#C9A84C] flex items-center justify-center">
                 <Settings className="h-6 w-6 text-[#C9A84C] dark:text-[#0A0F2E]" />
               </div>
               <div>
@@ -220,7 +220,7 @@ export default function UATAdmin() {
             </div>
             <div className="flex items-center gap-4">
               <Badge variant="secondary" className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30" data-testid="uat-status">
-                <div className="w-2 h-2 bg-[#C9A84C] rounded-full mr-2 animate-pulse"></div>
+                <div className="w-2 h-2 bg-[#C9A84C] mr-2 animate-pulse"></div>
                 UAT Environment Active
               </Badge>
             </div>
@@ -513,7 +513,7 @@ export default function UATAdmin() {
                     ) : (
                       <div className="space-y-3">
                         {(organizations as UATOrganization[]).slice(0, 5).map((org: UATOrganization) => (
-                          <div key={org.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                          <div key={org.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
                             <div>
                               <p className="font-medium text-[#0A0F2E] dark:text-white">{org.name}</p>
                               <p className="text-xs text-[#6B7280]">{org.domain} • {org.type}</p>
@@ -542,7 +542,7 @@ export default function UATAdmin() {
                     ) : (
                       <div className="space-y-3">
                         {(users as UATUser[]).slice(0, 5).map((user: UATUser) => (
-                          <div key={user.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                          <div key={user.id} className="flex items-center justify-between p-3 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
                             <div>
                               <p className="font-medium text-[#0A0F2E] dark:text-white">{user.firstName} {user.lastName}</p>
                               <p className="text-xs text-[#6B7280]">{user.email}</p>
@@ -579,7 +579,7 @@ export default function UATAdmin() {
                   ) : (
                     <div className="space-y-4">
                       {(decisionOutcomes as DecisionOutcome[]).slice(0, 3).map((decision: DecisionOutcome) => (
-                        <div key={decision.id} className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                        <div key={decision.id} className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
                               <p className="font-medium text-[#0A0F2E] dark:text-white">{decision.decisionType}</p>
@@ -663,7 +663,7 @@ export default function UATAdmin() {
                       </Card>
                     </div>
 
-                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 rounded-lg border border-[#E8E4DC] dark:border-white/10">
+                    <div className="p-4 bg-[#F8F7F4] dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
                       <h4 className="font-medium text-[#0A0F2E] dark:text-white mb-2">Validation Checklist:</h4>
                       <div className="space-y-2 text-sm text-[#6B7280]">
                         <div className="flex items-center gap-2">

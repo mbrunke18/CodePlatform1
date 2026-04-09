@@ -82,7 +82,7 @@ export default function IntelligenceHub() {
                 { label: 'Weak Signals', value: String(weakSignals), color: TEAL },
                 { label: 'Oracle Patterns', value: String(oraclePatterns), color: '#8B5CF6' },
               ].map(b => (
-                <div key={b.label} className="px-4 py-3 rounded-lg text-center" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <div key={b.label} className="px-4 py-3 text-center" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
                   <div className="text-2xl font-bold" style={{ ...CG, color: b.color }}>{b.value}</div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-white/50 mt-0.5">{b.label}</div>
                 </div>
@@ -126,7 +126,7 @@ export default function IntelligenceHub() {
                 ].map(kpi => (
                   <Card key={kpi.label} className="border-[#E8E4DC] bg-white">
                     <CardContent className="p-5">
-                      <div className="p-2.5 rounded-lg w-fit mb-3" style={{ background: `${kpi.color}12` }}><kpi.icon className="h-5 w-5" style={{ color: kpi.color }} /></div>
+                      <div className="p-2.5 w-fit mb-3" style={{ background: `${kpi.color}12` }}><kpi.icon className="h-5 w-5" style={{ color: kpi.color }} /></div>
                       <p className="text-3xl font-bold text-[#0A0F2E]" style={CG}>{kpi.value}</p>
                       <p className="text-xs font-bold uppercase tracking-wider text-[#6B7280] mt-1">{kpi.label}</p>
                       <p className="text-xs text-[#6B7280] mt-0.5">{kpi.desc}</p>
@@ -142,7 +142,7 @@ export default function IntelligenceHub() {
                   const sevColor = d.severity === 'high' ? '#dc2626' : d.severity === 'medium' ? GOLD : TEAL;
                   const Icon = d.icon;
                   return (
-                    <Card key={d.domain} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setActiveTab('signals')}>
+                    <Card key={d.domain} className="border-[#E8E4DC] bg-white  cursor-pointer" onClick={() => setActiveTab('signals')}>
                       <CardContent className="p-4">
                         <div className="flex items-center justify-between mb-3">
                           <Icon className="h-5 w-5" style={{ color: NAVY }} />
@@ -167,9 +167,9 @@ export default function IntelligenceHub() {
                   { title: 'Signal Intelligence', desc: '248+ data points, 9 strategic domains', path: '/signal-intelligence', tab: 'signals', icon: Zap, color: TEAL },
                   { title: 'Compound Threats', desc: 'Cross-domain disruption synthesis', path: '/intelligence', tab: 'compound', icon: Brain, color: NAVY },
                 ].map(item => (
-                  <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-all cursor-pointer group">
+                  <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
                     <CardContent className="p-5">
-                      <div className="p-2.5 rounded-xl w-fit mb-3" style={{ background: `${item.color}15` }}><item.icon className="h-5 w-5" style={{ color: item.color }} /></div>
+                      <div className="p-2.5 w-fit mb-3" style={{ background: `${item.color}15` }}><item.icon className="h-5 w-5" style={{ color: item.color }} /></div>
                       <h3 className="font-bold text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors mb-1">{item.title}</h3>
                       <p className="text-sm text-[#6B7280]">{item.desc}</p>
                       <div className="flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider" style={{ color: item.color }}>Open <ChevronRight className="h-3 w-3" /></div>
@@ -207,10 +207,10 @@ export default function IntelligenceHub() {
                   const sevColor = d.severity === 'high' ? '#dc2626' : d.severity === 'medium' ? GOLD : TEAL;
                   const actPct = Math.round((d.active / d.signals) * 100);
                   return (
-                    <Card key={d.domain} className="border-[#E8E4DC] bg-white hover:shadow-md transition-shadow">
+                    <Card key={d.domain} className="border-[#E8E4DC] bg-white ">
                       <CardContent className="p-5">
                         <div className="flex items-center gap-4">
-                          <div className="p-3 rounded-lg flex-shrink-0" style={{ background: `${NAVY}08` }}><Icon className="h-5 w-5" style={{ color: NAVY }} /></div>
+                          <div className="p-3 flex-shrink-0" style={{ background: `${NAVY}08` }}><Icon className="h-5 w-5" style={{ color: NAVY }} /></div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center justify-between mb-2">
                               <h3 className="font-semibold text-[#0A0F2E]">{d.domain}</h3>
@@ -229,7 +229,7 @@ export default function IntelligenceHub() {
                 })}
               </div>
 
-              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-white/10"><Zap className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Configure monitoring thresholds</h3><p className="text-sm text-white/60">Set sensitivity levels and notification rules for each domain</p></div></div><Link href="/signal-configuration"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Signal Config <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
+              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 bg-white/10"><Zap className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Configure monitoring thresholds</h3><p className="text-sm text-white/60">Set sensitivity levels and notification rules for each domain</p></div></div><Link href="/signal-configuration"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Signal Config <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
             </>
           )}
 
@@ -334,7 +334,7 @@ export default function IntelligenceHub() {
                     { action: 'Playbook Performance Logged', detail: 'Regulatory Response — 78% target met rate recorded', time: '2 hr ago', type: 'outcome', color: TEAL },
                   ].map((e, i) => (
                     <div key={i} className="flex items-center gap-4 p-4 border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4] transition-colors">
-                      <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: e.color }} />
+                      <div className="w-2 h-2 flex-shrink-0" style={{ background: e.color }} />
                       <div className="flex-1 min-w-0">
                         <div className="font-semibold text-sm text-[#0A0F2E]">{e.action}</div>
                         <div className="text-xs text-[#6B7280] mt-0.5 truncate">{e.detail}</div>
@@ -345,7 +345,7 @@ export default function IntelligenceHub() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-white/10"><Shield className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Full compliance audit trail</h3><p className="text-sm text-white/60">Export logs, filter by event type, and generate compliance reports</p></div></div><Link href="/audit-logging-center"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Audit Center <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
+              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 bg-white/10"><Shield className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Full compliance audit trail</h3><p className="text-sm text-white/60">Export logs, filter by event type, and generate compliance reports</p></div></div><Link href="/audit-logging-center"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Audit Center <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
             </>
           )}
         </div>

@@ -54,8 +54,8 @@ export function CommandCenterStatusBar() {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <div className={`relative flex h-2 w-2 ${getStatusColor()}`}>
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-current opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-current"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full bg-current opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 bg-current"></span>
               </div>
               <span className={`font-medium ${getStatusColor()}`}>
                 {getStatusText()}

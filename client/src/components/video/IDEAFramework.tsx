@@ -75,7 +75,7 @@ export function IDEAFramework({ progress }: SceneProps) {
               className="flex items-center"
             >
               <motion.div
-                className={`relative p-6 rounded-2xl border-2 transition-all duration-500 ${
+                className={`relative p-6 border-2 transition-all duration-500 ${
                   i <= activePhase 
                     ? "bg-gray-100 border-opacity-100" 
                     : "bg-gray-50 border-opacity-30"
@@ -85,7 +85,7 @@ export function IDEAFramework({ progress }: SceneProps) {
                 transition={{ duration: 1, repeat: Infinity }}
               >
                 <div 
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-3 mx-auto"
+                  className="w-14 h-14 flex items-center justify-center mb-3 mx-auto"
                   style={{ backgroundColor: `${phase.color}20` }}
                 >
                   <phase.icon className="w-7 h-7" style={{ color: phase.color }} />
@@ -96,7 +96,7 @@ export function IDEAFramework({ progress }: SceneProps) {
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: i <= activePhase ? 1 : 0 }}
-                  className="text-xs text-center mt-2 font-semibold px-2 py-1 rounded-full"
+                  className="text-xs text-center mt-2 font-semibold px-2 py-1"
                   style={{ backgroundColor: `${phase.color}30`, color: phase.color }}
                 >
                   {phase.outcome}
@@ -123,7 +123,7 @@ export function IDEAFramework({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="mt-10 flex flex-col items-center"
         >
-          <div className="flex items-center gap-3 bg-gray-50 border border-[#D4AF37]/30 rounded-xl px-5 py-3">
+          <div className="flex items-center gap-3 bg-gray-50 border border-[#D4AF37]/30 px-5 py-3">
             <LayoutDashboard className="w-5 h-5 text-[#D4AF37]" />
             <div>
               <p className="text-gray-900 text-sm font-medium">Readiness OS One™</p>

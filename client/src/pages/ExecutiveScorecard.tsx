@@ -30,7 +30,7 @@ function StatusIndicator({ status }: { status: 'good' | 'warning' | 'critical' }
 
   return (
     <div className="flex items-center gap-2">
-      <div className={`w-2.5 h-2.5 rounded-full ${c.bg}`} />
+      <div className={`w-2.5 h-2.5 ${c.bg}`} />
       <span className={`text-sm font-medium ${c.className}`}>{c.label}</span>
     </div>
   );
@@ -77,10 +77,10 @@ function MetricCard({
   };
 
   return (
-    <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 border-l-4 ${statusBorders[status]} hover:shadow-md transition-shadow`}>
+    <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-white/10 border-l-4 ${statusBorders[status]} `}>
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
-          <div className="p-2 rounded-lg bg-[#0A0F2E]/5 dark:bg-white/10">
+          <div className="p-2 bg-[#0A0F2E]/5 dark:bg-white/10">
             <Icon className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
           </div>
           <StatusIndicator status={status} />
@@ -187,7 +187,7 @@ export default function ExecutiveScorecard() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div className="flex items-center gap-6 flex-wrap">
                 <div className="flex items-center gap-3">
-                  <div className={`w-3 h-3 rounded-full ${statusBg}`} />
+                  <div className={`w-3 h-3 ${statusBg}`} />
                   <div>
                     <div className="text-xs text-[#6B7280] dark:text-white/60 uppercase tracking-wide">System Status</div>
                     <div className="text-[#0A0F2E] dark:text-[#C9A84C] font-semibold">

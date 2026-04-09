@@ -114,7 +114,7 @@ export default function VideoIntro({ onComplete, onSkip }: VideoIntroProps) {
           {SCENES.map((scene, idx) => (
             <div
               key={scene.id}
-              className={`h-1 rounded-full transition-all ${
+              className={`h-1 transition-all ${
                 idx === currentScene ? "bg-[#D4AF37] w-4" : 
                 idx < currentScene ? "bg-[#D4AF37]/50 w-1.5" : "bg-gray-100 w-1.5"
               }`}

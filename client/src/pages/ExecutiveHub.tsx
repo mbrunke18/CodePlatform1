@@ -91,7 +91,7 @@ export default function ExecutiveHub() {
               {/* Header */}
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="p-4 rounded-2xl bg-[#2B8A6E] shadow-lg shadow-[#2B8A6E]/30">
+                  <div className="p-4 bg-[#2B8A6E] shadow-[#2B8A6E]/30">
                     <BarChart3 className="h-8 w-8 text-white" />
                   </div>
                   <div>
@@ -116,10 +116,10 @@ export default function ExecutiveHub() {
                   { label: "Active Triggers", value: String(activeTriggers), desc: "Signals being monitored", icon: Eye, color: 'text-[#0A0F2E]', link: '/triggers-management' },
                 ].map(kpi => (
                   <Link key={kpi.label} href={kpi.link}>
-                    <Card className="border-[#E8E4DC] bg-white hover:shadow-lg transition-all cursor-pointer group">
+                    <Card className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
                       <CardContent className="p-5">
                         <div className="flex items-center justify-between mb-3">
-                          <div className="p-2 rounded-lg bg-[#0A0F2E]/5"><kpi.icon className={`h-5 w-5 ${kpi.color}`} /></div>
+                          <div className="p-2 bg-[#0A0F2E]/5"><kpi.icon className={`h-5 w-5 ${kpi.color}`} /></div>
                           <ArrowUpRight className="h-4 w-4 text-[#6B7280] group-hover:text-[#C9A84C] transition-colors" />
                         </div>
                         <p className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{kpi.value}</p>
@@ -165,7 +165,7 @@ export default function ExecutiveHub() {
                         { label: "Decision Success Rate", value: `${successRate}%`, icon: CheckCircle, color: TEAL },
                         { label: "Avg Response Time", value: "12 min", icon: Clock, color: NAVY },
                       ].map(m => (
-                        <div key={m.label} className="flex items-center justify-between p-3 rounded-lg bg-[#F8F7F4]">
+                        <div key={m.label} className="flex items-center justify-between p-3 bg-[#F8F7F4]">
                           <div className="flex items-center gap-3"><m.icon className="h-4 w-4" style={{ color: m.color }} /><span className="text-sm font-medium text-[#0A0F2E]">{m.label}</span></div>
                           <span className="font-bold text-[#0A0F2E]" style={CG}>{m.value}</span>
                         </div>
@@ -184,9 +184,9 @@ export default function ExecutiveHub() {
                   { title: "Executive Analytics", desc: "Playbook performance & ROI", path: "/analytics", icon: BarChart3, tab: 'analytics', color: NAVY },
                   { title: "IDEA Framework", desc: "The operating model explained", path: "/idea-framework", icon: Brain, tab: 'framework', color: GOLD },
                 ].map(item => (
-                  <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-all cursor-pointer group">
+                  <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
                     <CardContent className="p-5">
-                      <div className="p-2.5 rounded-xl w-fit mb-3" style={{ background: `${item.color}15` }}><item.icon className="h-5 w-5" style={{ color: item.color }} /></div>
+                      <div className="p-2.5 w-fit mb-3" style={{ background: `${item.color}15` }}><item.icon className="h-5 w-5" style={{ color: item.color }} /></div>
                       <h3 className="font-bold text-[#0A0F2E] group-hover:text-[#C9A84C] transition-colors mb-1">{item.title}</h3>
                       <p className="text-sm text-[#6B7280]">{item.desc}</p>
                       <div className="flex items-center gap-1 mt-3 text-xs font-bold uppercase tracking-wider" style={{ color: item.color }}>Open Tab <ChevronRight className="h-3 w-3" /></div>
@@ -209,7 +209,7 @@ export default function ExecutiveHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="p-4 rounded-2xl bg-[#2B8A6E] shadow-lg shadow-[#2B8A6E]/30"><Target className="h-8 w-8 text-white" /></div>
+                  <div className="p-4 bg-[#2B8A6E] shadow-[#2B8A6E]/30"><Target className="h-8 w-8 text-white" /></div>
                   <div>
                     <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Future Readiness Index™</h1><Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge></div>
                     <p className="text-[#6B7280] mt-1">Real-time strategic preparedness across 170 playbooks</p>
@@ -242,7 +242,7 @@ export default function ExecutiveHub() {
                       ].map(d => (
                         <div key={d.label}>
                           <div className="flex justify-between text-sm mb-1.5"><span className="font-medium text-[#0A0F2E]">{d.label}</span><div className="flex items-center gap-3"><span className={`font-bold text-sm ${getScoreColor(d.value)}`}>{d.value}%</span><span className="text-xs text-[#6B7280]">Target: {d.target}%</span></div></div>
-                          <div className="relative h-2 bg-[#E8E4DC] rounded-full overflow-hidden"><div className="h-full rounded-full" style={{ width: `${d.value}%`, background: d.value >= 80 ? TEAL : GOLD }} /><div className="absolute top-0 bottom-0 w-0.5 bg-[#0A0F2E]/30" style={{ left: `${d.target}%` }} /></div>
+                          <div className="relative h-2 bg-[#E8E4DC] overflow-hidden"><div className="h-full" style={{ width: `${d.value}%`, background: d.value >= 80 ? TEAL : GOLD }} /><div className="absolute top-0 bottom-0 w-0.5 bg-[#0A0F2E]/30" style={{ left: `${d.target}%` }} /></div>
                         </div>
                       ))}
                     </div>
@@ -269,7 +269,7 @@ export default function ExecutiveHub() {
                 ))}
               </div>
 
-              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-white/10"><Target className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Want the full readiness breakdown?</h3><p className="text-sm text-white/60">See historical trends, benchmarks, and improvement recommendations</p></div></div><Link href="/future-readiness"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Full Readiness Report <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
+              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 bg-white/10"><Target className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Want the full readiness breakdown?</h3><p className="text-sm text-white/60">See historical trends, benchmarks, and improvement recommendations</p></div></div><Link href="/future-readiness"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Full Readiness Report <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
             </>
           )}
 
@@ -278,7 +278,7 @@ export default function ExecutiveHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="p-4 rounded-2xl bg-[#0A0F2E] shadow-lg shadow-[#0A0F2E]/30"><Activity className="h-8 w-8 text-[#C9A84C]" /></div>
+                  <div className="p-4 bg-[#0A0F2E] shadow-[#0A0F2E]/30"><Activity className="h-8 w-8 text-[#C9A84C]" /></div>
                   <div>
                     <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Executive Analytics</h1><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">ANALYTICS</Badge></div>
                     <p className="text-[#6B7280] mt-1">Playbook performance, ROI, and organizational metrics</p>
@@ -295,7 +295,7 @@ export default function ExecutiveHub() {
                   { label: "Stakeholders Reached", value: "1,240", trend: "+23%", icon: Users, color: TEAL },
                   { label: "Target Met Rate", value: "78%", trend: "+5%", icon: CheckCircle, color: NAVY },
                 ].map(m => (
-                  <Card key={m.label} className="border-[#E8E4DC] bg-white hover:shadow-lg transition-shadow">
+                  <Card key={m.label} className="border-[#E8E4DC] bg-white ">
                     <CardContent className="p-5">
                       <div className="flex items-center justify-between mb-3"><m.icon className="h-5 w-5" style={{ color: m.color }} /><Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 text-xs font-bold">{m.trend}</Badge></div>
                       <p className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{m.value}</p>
@@ -351,7 +351,7 @@ export default function ExecutiveHub() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 rounded-xl bg-white/10"><BarChart3 className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">See the full analytics suite</h3><p className="text-sm text-white/60">Department breakdowns, ROI dashboard, and historical trends</p></div></div><Link href="/analytics"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Full Analytics <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
+              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 bg-white/10"><BarChart3 className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">See the full analytics suite</h3><p className="text-sm text-white/60">Department breakdowns, ROI dashboard, and historical trends</p></div></div><Link href="/analytics"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">Full Analytics <ArrowRight className="h-4 w-4 ml-2" /></Button></Link></div></CardContent></Card>
             </>
           )}
 
@@ -360,7 +360,7 @@ export default function ExecutiveHub() {
             <>
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
                 <div className="flex items-center gap-4">
-                  <div className="p-4 rounded-2xl bg-[#C9A84C] shadow-lg shadow-[#C9A84C]/30"><Brain className="h-8 w-8 text-[#0A0F2E]" /></div>
+                  <div className="p-4 bg-[#C9A84C] shadow-[#C9A84C]/30"><Brain className="h-8 w-8 text-[#0A0F2E]" /></div>
                   <div>
                     <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>The IDEA Framework™</h1><Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none px-3 py-1 font-bold uppercase tracking-wider">AI-Monitored</Badge></div>
                     <p className="text-[#6B7280] mt-1">The operating model powering 12-minute strategic execution</p>

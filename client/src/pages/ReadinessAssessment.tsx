@@ -315,7 +315,7 @@ export default function ReadinessAssessment() {
               </p>
             </div>
 
-            <div className="bg-white/5 border border-[#C9A84C]/10 backdrop-blur-sm rounded-2xl p-8">
+            <div className="bg-white/5 border border-[#C9A84C]/10 backdrop-blur-sm p-8">
               <h2 className="text-lg font-semibold text-white mb-6 text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>How It Works</h2>
               <div className="grid grid-cols-3 gap-6 max-w-lg mx-auto">
                 {[
@@ -324,7 +324,7 @@ export default function ReadinessAssessment() {
                   { num: 3, label: "Get Your Score", desc: "Gaps, benchmarks & next steps", icon: BarChart3 },
                 ].map((step) => (
                   <div key={step.num} className="text-center">
-                    <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-3">
+                    <div className="w-12 h-12 bg-white/10 border border-white/10 flex items-center justify-center mx-auto mb-3">
                       <step.icon className="w-5 h-5 text-[#C9A84C]" />
                     </div>
                     <div className="text-sm font-semibold text-white">{step.label}</div>
@@ -355,10 +355,10 @@ export default function ReadinessAssessment() {
                     <button
                       key={domain}
                       onClick={() => handleSelectDomain(domain)}
-                      className={`text-left rounded-xl bg-white/5 border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] hover:shadow-lg group backdrop-blur-sm`}
+                      className={`text-left bg-white/5 border ${config.border} ${config.borderHover} p-6 transition-all hover:scale-[1.02] group backdrop-blur-sm`}
                     >
                       <div className="text-center">
-                        <div className={`w-16 h-16 rounded-2xl ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
+                        <div className={`w-16 h-16 ${config.bgLight} flex items-center justify-center mx-auto mb-3`}>
                           <IconComponent className={`h-8 w-8 text-[#C9A84C]`} />
                         </div>
                         <h3 className={`text-xl font-bold text-white mb-1`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -418,9 +418,9 @@ export default function ReadinessAssessment() {
                   <button
                     key={idx}
                     onClick={() => setCurrentQuestion(idx)}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
+                    className={`w-10 h-10 flex items-center justify-center text-sm font-semibold transition-colors ${
                       idx === currentQuestion
-                        ? `${domainConfig.bg} text-white shadow-lg ${domainConfig.shadow}`
+                        ? `${domainConfig.bg} text-white ${domainConfig.shadow}`
                         : answers[questions[idx].key]?.trim()
                         ? "bg-[#2B8A6E] text-white"
                         : "bg-[#E8E4DC] dark:bg-white/5 text-[#6B7280] dark:text-[#C9A84C]/60 hover:bg-[#0A0F2E]/10"
@@ -438,7 +438,7 @@ export default function ReadinessAssessment() {
               <Card className={`bg-white dark:bg-white/5 border-[#E8E4DC] dark:border-[#C9A84C]/10`}>
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-3">
-                    <div className={`w-12 h-12 rounded-xl ${iconDef.bg} flex items-center justify-center`}>
+                    <div className={`w-12 h-12 ${iconDef.bg} flex items-center justify-center`}>
                       <IconComponent className={`h-6 w-6 ${iconDef.color}`} />
                     </div>
                     <div className="flex-1 text-left">
@@ -514,7 +514,7 @@ export default function ReadinessAssessment() {
                             {q.options!.map((opt) => (
                               <div
                                 key={opt}
-                                className={`flex items-center space-x-3 p-3 rounded-lg border transition-colors cursor-pointer ${
+                                className={`flex items-center space-x-3 p-3 border transition-colors cursor-pointer ${
                                   answers[q.key] === opt
                                     ? `${domainConfig.bgLight} ${domainConfig.border}`
                                     : "border-[#E8E4DC] dark:border-[#C9A84C]/10 hover:border-[#6B7280]"
@@ -541,7 +541,7 @@ export default function ReadinessAssessment() {
               </Card>
 
               {error && (
-                <div className="mt-6 p-4 bg-red-600/10 border border-red-600/30 rounded-xl text-red-600 text-sm flex items-center gap-2">
+                <div className="mt-6 p-4 bg-red-600/10 border border-red-600/30 text-red-600 text-sm flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 flex-shrink-0" />
                   {error}
                 </div>
@@ -567,7 +567,7 @@ export default function ReadinessAssessment() {
                     size="lg"
                     onClick={handleSubmit}
                     disabled={loading}
-                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
+                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white ${domainConfig.shadow}`}
                   >
                     {loading ? "Analyzing..." : "Complete Assessment"}
                   </Button>
@@ -576,7 +576,7 @@ export default function ReadinessAssessment() {
                     size="lg"
                     onClick={() => setCurrentQuestion(currentQuestion + 1)}
                     disabled={!hasAnswer}
-                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
+                    className={`px-10 ${domainConfig.bg} hover:opacity-90 text-white ${domainConfig.shadow}`}
                   >
                     Next Question
                   </Button>
@@ -654,9 +654,9 @@ export default function ReadinessAssessment() {
                         <span className="text-[#0A0F2E] dark:text-white font-medium">{row.label}</span>
                         <span className="text-[#0A0F2E] dark:text-white font-bold">{row.value}/100</span>
                       </div>
-                      <div className="h-3 bg-[#E8E4DC] dark:bg-white/10 rounded-full overflow-hidden">
+                      <div className="h-3 bg-[#E8E4DC] dark:bg-white/10 overflow-hidden">
                         <div
-                          className={`h-full rounded-full ${row.color} transition-all duration-700`}
+                          className={`h-full ${row.color} transition-all duration-700`}
                           style={{ width: `${row.value}%` }}
                         />
                       </div>
@@ -731,8 +731,8 @@ export default function ReadinessAssessment() {
                       ].map((item) => {
                         const StepIcon = item.icon;
                         return (
-                          <div key={item.step} className={`flex items-start gap-4 p-4 rounded-xl bg-[#F8F7F4] dark:bg-white/5 border ${domainConfig.border}`}>
-                            <div className={`w-10 h-10 rounded-lg ${domainConfig.bg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                          <div key={item.step} className={`flex items-start gap-4 p-4 bg-[#F8F7F4] dark:bg-white/5 border ${domainConfig.border}`}>
+                            <div className={`w-10 h-10 ${domainConfig.bg} flex items-center justify-center flex-shrink-0`}>
                               <StepIcon className="w-5 h-5 text-white" />
                             </div>
                             <div>
@@ -786,7 +786,7 @@ export default function ReadinessAssessment() {
               <Link href="/incident-analyzer">
                 <Button
                   size="lg"
-                  className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-white shadow-lg ${domainConfig.shadow}`}
+                  className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-white ${domainConfig.shadow}`}
                 >
                   Build Your Playbooks
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -795,7 +795,7 @@ export default function ReadinessAssessment() {
               <Link href="/roi-calculator">
                 <Button
                   size="lg"
-                  className="text-lg px-10 py-7 bg-[#2B8A6E] hover:bg-[#2B8A6E]/90 text-white shadow-lg shadow-[#2B8A6E]/25"
+                  className="text-lg px-10 py-7 bg-[#2B8A6E] hover:bg-[#2B8A6E]/90 text-white shadow-[#2B8A6E]/25"
                 >
                   <DollarSign className="mr-2 h-5 w-5" />
                   Calculate Your ROI
