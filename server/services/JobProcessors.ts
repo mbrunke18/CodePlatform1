@@ -94,9 +94,12 @@ export async function processRiskAssessment(jobData: any) {
 
   const signals = Number(signalCount) || 0;
 
-  // Score scales with signal accumulation
-  const score = Math.min(100, signals * 8);
-  const riskLevel = score >= 75 ? 'HIGH' : score >= 40 ? 'MEDIUM' : 'LOW';
+  // Square-root scaling: a mature monitoring environment with many signals isn't
+  // automatically HIGH risk — only a genuine spike in volume pushes the score up.
+  // 10 signals → 25 (LOW), 30 signals → 44 (MEDIUM), 52 signals → 58 (MEDIUM),
+  // 88 signals → 75 (HIGH), 100+ signals → HIGH.
+  const score = Math.min(100, Math.round(Math.sqrt(signals) * 8));
+  const riskLevel = score >= 75 ? 'HIGH' : score >= 35 ? 'MEDIUM' : 'LOW';
 
   const assessment = { riskLevel, score, signals, timestamp: new Date() };
   console.log('✅ Risk assessment completed:', assessment);
@@ -233,7 +236,7 @@ export async function processExecutiveSummary(jobData: any) {
     },
     recommendation: tasks > 0
       ? 'Execution data available — review completed tasks'
-      : 'No executions yet — activate a playbook to begin tracking',
+      : 'Platform ready — activate a playbook when your first trigger fires',
   };
 
   console.log('✅ Executive summary generated');

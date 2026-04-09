@@ -19585,7 +19585,7 @@ var init_LiveSignalIngestionService = __esm({
     RSS_FEEDS = [
       { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", source: "NY Times Business", category: "market" },
       { url: "https://feeds.bbci.co.uk/news/business/rss.xml", source: "BBC Business", category: "market" },
-      { url: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&dateb=&owner=include&count=20&search_text=&action=getcurrent&output=atom", source: "SEC EDGAR 8-K Filings", category: "regulatory" },
+      { url: "https://www.federalregister.gov/articles/search.rss?conditions%5Bterm%5D=corporate+regulatory+compliance", source: "Federal Register", category: "regulatory" },
       { url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114", source: "CNBC Business", category: "market" },
       { url: "https://feeds.marketwatch.com/marketwatch/topstories/", source: "MarketWatch", category: "market" },
       { url: "https://feeds.npr.org/1006/rss.xml", source: "NPR Business", category: "market" },
@@ -24731,8 +24731,8 @@ async function processRiskAssessment(jobData) {
     gte8(weakSignals.detectedAt, thirtyDaysAgo)
   ));
   const signals = Number(signalCount) || 0;
-  const score = Math.min(100, signals * 8);
-  const riskLevel = score >= 75 ? "HIGH" : score >= 40 ? "MEDIUM" : "LOW";
+  const score = Math.min(100, Math.round(Math.sqrt(signals) * 8));
+  const riskLevel = score >= 75 ? "HIGH" : score >= 35 ? "MEDIUM" : "LOW";
   const assessment = { riskLevel, score, signals, timestamp: /* @__PURE__ */ new Date() };
   console.log("\u2705 Risk assessment completed:", assessment);
   return assessment;
@@ -24820,7 +24820,7 @@ async function processExecutiveSummary(jobData) {
       stakeholderResponseRate: tasks4 > 0 ? "\u2014" : "\u2014",
       taskCompletionRate: tasks4 > 0 ? `${tasks4} tasks` : "\u2014"
     },
-    recommendation: tasks4 > 0 ? "Execution data available \u2014 review completed tasks" : "No executions yet \u2014 activate a playbook to begin tracking"
+    recommendation: tasks4 > 0 ? "Execution data available \u2014 review completed tasks" : "Platform ready \u2014 activate a playbook when your first trigger fires"
   };
   console.log("\u2705 Executive summary generated");
   return summary;
