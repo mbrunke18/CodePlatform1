@@ -308,10 +308,23 @@ app.use((req, res, next) => {
 // for /api/* paths because express.static only matches real files.
 if (app.get("env") !== "development") {
   const distPublicPath = path.resolve(process.cwd(), "dist/public");
-  app.use(express.static(distPublicPath));
+  app.use(express.static(distPublicPath, {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+      }
+    }
+  }));
   const indexHtmlPath = path.resolve(distPublicPath, "index.html");
   // Handle GET / immediately — this is what Replit's healthcheck hits
-  app.get("/", (_req, res) => res.sendFile(indexHtmlPath));
+  app.get("/", (_req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.sendFile(indexHtmlPath);
+  });
 }
 
 // Create HTTP server and start listening IMMEDIATELY
@@ -409,13 +422,24 @@ server.listen(
       const distPublicPath = path.resolve(process.cwd(), "dist/public");
       logger.info({ distPublicPath }, "Static file path resolved");
       
-      app.use(express.static(distPublicPath));
+      app.use(express.static(distPublicPath, {
+        setHeaders: (res, filePath) => {
+          if (filePath.endsWith('.html')) {
+            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+            res.setHeader('Pragma', 'no-cache');
+            res.setHeader('Expires', '0');
+          }
+        }
+      }));
       
       const indexHtmlPath = path.resolve(distPublicPath, "index.html");
       app.use("*", (req, res, next) => {
         if (res.headersSent || req.originalUrl.startsWith('/api')) {
           return next();
         }
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
         res.sendFile(indexHtmlPath);
       });
       

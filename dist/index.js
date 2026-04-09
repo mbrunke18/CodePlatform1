@@ -50994,9 +50994,22 @@ app.use((req, res, next) => {
 });
 if (app.get("env") !== "development") {
   const distPublicPath = path2.resolve(process.cwd(), "dist/public");
-  app.use(express2.static(distPublicPath));
+  app.use(express2.static(distPublicPath, {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith(".html")) {
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setHeader("Expires", "0");
+      }
+    }
+  }));
   const indexHtmlPath = path2.resolve(distPublicPath, "index.html");
-  app.get("/", (_req, res) => res.sendFile(indexHtmlPath));
+  app.get("/", (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+    res.sendFile(indexHtmlPath);
+  });
 }
 var port = parseInt(process.env.PORT || "5000", 10);
 var server = createServer2(app);
@@ -51066,12 +51079,23 @@ server.listen(
       logger13.info("\u{1F4E6} Serving static files for production...");
       const distPublicPath = path2.resolve(process.cwd(), "dist/public");
       logger13.info({ distPublicPath }, "Static file path resolved");
-      app.use(express2.static(distPublicPath));
+      app.use(express2.static(distPublicPath, {
+        setHeaders: (res, filePath) => {
+          if (filePath.endsWith(".html")) {
+            res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            res.setHeader("Pragma", "no-cache");
+            res.setHeader("Expires", "0");
+          }
+        }
+      }));
       const indexHtmlPath = path2.resolve(distPublicPath, "index.html");
       app.use("*", (req, res, next) => {
         if (res.headersSent || req.originalUrl.startsWith("/api")) {
           return next();
         }
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.setHeader("Pragma", "no-cache");
+        res.setHeader("Expires", "0");
         res.sendFile(indexHtmlPath);
       });
       logger13.info("\u2705 Production static file serving configured");
