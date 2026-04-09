@@ -298,6 +298,35 @@ export default function MsProjectTransition() {
         </div>
       </section>
 
+      {/* ── ALSO IN THIS SERIES ── */}
+      <section style={{ background: "#fff", padding: "40px 48px", borderTop: `1px solid #E8E4DC` }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+            <div style={{ width: 24, height: 1.5, background: GOLD }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#6B7280" }}>Also in This Series</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+            {[
+              { label: "Why Not Consulting?", sub: "McKinsey charges $300K–$500K for playbooks that sit on a shelf. We deliver infrastructure that executes.", path: "/vs-consulting", tag: "Management Consulting vs. Readiness OS" },
+              { label: "Platform Reality", sub: "Every conference keynote and framework proves the problem. None of them shipped the solution. We did.", path: "/platform-reality", tag: "They Described It. We Built It." },
+            ].map((item) => (
+              <button
+                key={item.path}
+                onClick={() => setLocation(item.path)}
+                style={{ padding: "20px 24px", background: "#F8F7F4", border: `1px solid #E8E4DC`, textAlign: "left" as const, cursor: "pointer", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}
+              >
+                <div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>{item.tag}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 5 }}>{item.label}</div>
+                  <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5 }}>{item.sub}</div>
+                </div>
+                <span style={{ color: GOLD, fontWeight: 700, flexShrink: 0, marginTop: 2 }}>→</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── BOTTOM CTA ── */}
       <section style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
         <div style={{

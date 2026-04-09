@@ -969,46 +969,98 @@ function MicrosoftEcosystemBanner() {
   );
 }
 
-// ─── MS Project EOL Callout ────────────────────────────────────────────────────
-function MsProjectCalloutSection() {
+// ─── Competitive Clarity Section ─────────────────────────────────────────────
+function CompetitiveClaritySection() {
   const [, setLocation] = useLocation();
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
+  const comparisons = [
+    {
+      tag: "vs. Management Consulting",
+      tagColor: "#F59E0B",
+      heading: "McKinsey tells you what to do.",
+      headingEm: "We make sure it happens.",
+      body: "$300K–$500K buys you PDFs on SharePoint. Nobody can find them when a trigger fires. The $500K investment sits on a shelf while the organization still takes 30 days to coordinate.",
+      verdict: "They documented it.",
+      verdictSub: "Same 30-day mobilization cycle — with a custom PDF.",
+      path: "/vs-consulting",
+      cta: "See the consulting comparison",
+    },
+    {
+      tag: "MS Project End of Life",
+      tagColor: "#EF4444",
+      heading: "Don't migrate your lag",
+      headingEm: "to a new database.",
+      body: "ServiceNow wants to become your new MS Project — a better dashboard for the same 30-day mobilization cycle. Use the transition moment to eliminate the lag, not migrate it.",
+      verdict: "They moved the tool.",
+      verdictSub: "Same 30-day mobilization cycle — newer interface.",
+      path: "/ms-project",
+      cta: "See migration vs. evolution",
+    },
+    {
+      tag: "vs. Thought Leadership",
+      tagColor: "#8B5CF6",
+      heading: "They described the problem.",
+      headingEm: "We shipped the solution.",
+      body: "Every keynote, framework, and McKinsey deck proves the mobilization gap is real. The audience nods. The room agrees. The organization still takes 30 days to respond when a trigger fires.",
+      verdict: "They talked about it.",
+      verdictSub: "Same 30-day mobilization cycle — better slides.",
+      path: "/platform-reality",
+      cta: "See the full competitive reality",
+    },
+  ];
+
   return (
-    <section style={{ background: "#F8F7F4", padding: "64px 0", borderTop: `1px solid #E8E4DC`, borderBottom: `1px solid #E8E4DC` }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-        <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-            <div style={{ width: 6, height: 6, background: "#EF4444", borderRadius: "50%" }} />
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#EF4444" }}>Microsoft Project End of Life</span>
+    <section style={{ background: "#F8F7F4", padding: "72px 0", borderTop: `1px solid #E8E4DC`, borderBottom: `1px solid #E8E4DC` }}>
+      <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 48px" }}>
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 40, gap: 32, flexWrap: "wrap" as const }}>
+          <div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+              <div style={{ width: 32, height: 2, background: NAVY }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#6B7280" }}>The Competitive Landscape</span>
+            </div>
+            <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,3.5vw,38px)", color: NAVY, lineHeight: 1.1, margin: 0 }}>
+              Every alternative has the same result:<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>30 days unchanged.</em>
+            </h2>
           </div>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(26px,3.5vw,38px)", color: NAVY, lineHeight: 1.15, marginBottom: 16 }}>
-            Don't migrate your lag<br />
-            <em style={{ color: GOLD, fontStyle: "italic" }}>to a new database.</em>
-          </h2>
-          <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.7, marginBottom: 8 }}>
-            ServiceNow wants to become your new MS Project. Same 30-day mobilization cycle — better dashboard.
-          </p>
-          <p style={{ fontSize: 15, color: "#374151", fontWeight: 600, lineHeight: 1.6, marginBottom: 28 }}>
-            The Microsoft Project transition is the moment to eliminate the mobilization lag — not migrate it.
-          </p>
-          <button
-            onClick={() => setLocation("/ms-project")}
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, background: NAVY, color: "#F0EDE4", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "14px 28px", border: "none", cursor: "pointer" }}
-          >
-            See Migration vs. Evolution →
-          </button>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 24px", background: NAVY, flexShrink: 0 }}>
+            <div>
+              <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>12</div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.45)", marginTop: 2 }}>Minutes — Readiness OS</div>
+            </div>
+            <div style={{ width: 1, height: 40, background: "rgba(201,168,76,0.3)" }} />
+            <div>
+              <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#6B7280", lineHeight: 1 }}>30</div>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.3)", marginTop: 2 }}>Days — every alternative</div>
+            </div>
+          </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
-          {[
-            { label: "ServiceNow SPM", value: "30 days", sub: "mobilization cycle unchanged", accent: "#EF4444", dim: true },
-            { label: "Readiness OS", value: "12 min", sub: "response ready before trigger fires", accent: GOLD, dim: false },
-            { label: "IT Budget", value: "Cost\nCenter", sub: "ServiceNow positioning", accent: "#6B7280", dim: true },
-            { label: "CEO / Board Budget", value: "Growth\nFund", sub: "Readiness OS positioning", accent: TEAL, dim: false },
-          ].map((item, i) => (
-            <div key={i} style={{ padding: "24px 20px", background: item.dim ? "#fff" : `rgba(201,168,76,0.05)`, border: `1px solid ${item.dim ? "#E8E4DC" : "rgba(201,168,76,0.25)"}`, textAlign: "center" as const }}>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: item.accent, lineHeight: 1.1, marginBottom: 4, whiteSpace: "pre-line" as const }}>{item.value}</div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 4 }}>{item.label}</div>
-              <div style={{ fontSize: 11, color: "#9CA3AF" }}>{item.sub}</div>
+        {/* Three cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2 }}>
+          {comparisons.map((item) => (
+            <div key={item.path} style={{ background: "#fff", border: `1px solid #E8E4DC`, display: "flex", flexDirection: "column" as const }}>
+              <div style={{ padding: "28px 28px 0" }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: item.tagColor, marginBottom: 16 }}>{item.tag}</div>
+                <h3 style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 4 }}>{item.heading}</h3>
+                <h3 style={{ ...CG, fontSize: 22, fontWeight: 600, color: GOLD, lineHeight: 1.2, fontStyle: "italic", marginBottom: 16 }}>{item.headingEm}</h3>
+                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65, marginBottom: 20 }}>{item.body}</p>
+                <div style={{ padding: "12px 16px", background: "rgba(220,38,38,0.04)", border: "1px solid rgba(220,38,38,0.1)", marginBottom: 20 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: "#DC2626", marginBottom: 2 }}>{item.verdict}</div>
+                  <div style={{ fontSize: 11, color: "#9CA3AF", fontStyle: "italic" }}>{item.verdictSub}</div>
+                </div>
+              </div>
+              <div style={{ marginTop: "auto", borderTop: `1px solid #F3F4F6` }}>
+                <button
+                  onClick={() => setLocation(item.path)}
+                  style={{ width: "100%", padding: "14px 28px", background: "transparent", border: "none", cursor: "pointer", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: NAVY, textAlign: "left" as const, display: "flex", alignItems: "center", justifyContent: "space-between" }}
+                >
+                  {item.cta}
+                  <span style={{ color: GOLD }}>→</span>
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -1456,7 +1508,7 @@ export default function Homepage() {
       <IDEASection />
       <PlatformPreviewSection />
       <MicrosoftEcosystemBanner />
-      <MsProjectCalloutSection />
+      <CompetitiveClaritySection />
       <CredibilitySection />
       <SimulatorCTASection />
       <CTASection />
