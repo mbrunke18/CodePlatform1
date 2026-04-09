@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useParams } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
+import { scrollToTop } from '@/components/ScrollToTop';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -585,19 +586,23 @@ export default function IndustryExperience() {
     const currentId = STAGES[stage]?.id;
     if (currentId === 'customize' && !showSummary) {
       setShowSummary(true);
+      scrollToTop();
       return;
     }
     if (currentId === 'customize' && showSummary) {
       setShowSummary(false);
     }
     setStage(prev => Math.min(prev + 1, STAGES.length - 1));
+    scrollToTop();
   }, [stage, showSummary]);
   const prev = useCallback(() => {
     if (showSummary) {
       setShowSummary(false);
+      scrollToTop();
       return;
     }
     setStage(prev => Math.max(prev - 1, 0));
+    scrollToTop();
   }, [showSummary]);
 
   useEffect(() => {

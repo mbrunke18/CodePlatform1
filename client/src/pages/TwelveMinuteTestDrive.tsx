@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
+import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
@@ -164,7 +165,7 @@ export default function TwelveMinuteTestDrive() {
     if (e >= TOTAL) {
       clearInterval(timerRef.current!);
       setRunning(false);
-      setTimeout(() => setStep(4), 1200);
+      setTimeout(() => { setStep(4); scrollToTop(); }, 1200);
     }
   }, []);
 
@@ -275,7 +276,7 @@ export default function TwelveMinuteTestDrive() {
             <div style={{ textAlign: 'center' }}>
               <button
                 disabled={!selectedId}
-                onClick={async () => { setStep(2); fetchBrief(); }}
+                onClick={async () => { setStep(2); scrollToTop(); fetchBrief(); }}
                 style={{
                   fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
                   padding: '14px 40px', background: selectedId ? GOLD : 'rgba(201,168,76,0.3)',
@@ -341,7 +342,7 @@ export default function TwelveMinuteTestDrive() {
             {!loadingBrief && (
               <div style={{ textAlign: 'center' }}>
                 <button
-                  onClick={() => { setStep(3); startWarRoom(tasks); }}
+                  onClick={() => { setStep(3); scrollToTop(); startWarRoom(tasks); }}
                   style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}
                 >
                   Enter the War Room — Start Clock →
@@ -547,7 +548,7 @@ export default function TwelveMinuteTestDrive() {
                   Request a Pilot →
                 </a>
                 <button
-                  onClick={() => { setStep(1); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); }}
+                  onClick={() => { setStep(1); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); }}
                   style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}
                 >
                   Try Another Scenario
