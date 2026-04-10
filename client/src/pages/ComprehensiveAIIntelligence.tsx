@@ -279,9 +279,9 @@ export default function ComprehensiveAIIntelligence() {
             timestamp: new Date(Date.now() - 3600000).toISOString(),
             priority: 'medium',
             status: 'actioned',
-            summary: 'Innovation assessment shows strong pipeline with breakthrough potential in AI-powered solutions.',
+            summary: 'Innovation assessment shows strong pipeline with breakthrough potential in next-generation solutions.',
             keyFindings: [
-              'AI-powered customer intelligence platform shows breakthrough potential',
+              'Signal-driven customer intelligence platform shows breakthrough potential',
               'Sustainability framework development ahead of schedule',
               'Remote collaboration ecosystem testing exceeds expectations',
               'Predictive maintenance implementation showing 40% efficiency gains'

@@ -73,7 +73,7 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
                 </span>
               )}
             </div>
-            {!compact && <p className="text-[10px] text-gray-400">AI-detected cross-domain threat patterns</p>}
+            {!compact && <p className="text-[10px] text-gray-400">System-detected cross-domain threat patterns</p>}
           </div>
         </div>
         <Button

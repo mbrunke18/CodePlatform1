@@ -345,7 +345,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 <div style={{ border: `1px dashed ${BORDER}`, padding: '24px', textAlign: 'center' }}>
                   <TrendingUp style={{ width: 20, height: 20, color: '#D1D5DB', margin: '0 auto 8px' }} />
                   <div style={{ fontSize: 11, color: '#9CA3AF' }}>No recordings yet</div>
-                  <div style={{ fontSize: 9, color: '#D1D5DB', marginTop: 4 }}>Your AI-generated playbooks will appear here</div>
+                  <div style={{ fontSize: 9, color: '#D1D5DB', marginTop: 4 }}>Your system-staged playbooks will appear here</div>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>

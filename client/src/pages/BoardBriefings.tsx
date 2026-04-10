@@ -61,7 +61,7 @@ const demoBriefings = [
     briefingType: 'Strategic Initiative',
     timeToDecision: '72h window',
     reviewed: false,
-    executiveSummary: 'Phase 2 of the enterprise digital transformation completed on budget ($4.2M of $4.5M allocated). AI-powered workflow automation deployed across 6 business units, reducing manual processing time by 62%. Phase 3 planning underway with focus on predictive analytics and customer experience optimization.',
+    executiveSummary: 'Phase 2 of the enterprise digital transformation completed on budget ($4.2M of $4.5M allocated). Signal-based workflow automation deployed across 6 business units, reducing manual processing time by 62%. Phase 3 planning underway with focus on predictive analytics and customer experience optimization.',
     keyInsights: [
       'Employee adoption of new digital tools reached 88%, exceeding 80% target',
       'Process automation ROI of 340% realized within first 6 months of deployment',
@@ -190,7 +190,7 @@ export default function BoardBriefings() {
                 : 85}%
             </div>
             <p className="text-xs text-[#6B7280] dark:text-white/60">
-              AI-generated insights
+              System-analyzed insights
             </p>
           </CardContent>
         </Card>
@@ -201,7 +201,7 @@ export default function BoardBriefings() {
         <CardHeader>
           <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Executive Briefings</CardTitle>
           <CardDescription className="text-[#6B7280] dark:text-white/60">
-            AI-generated daily intelligence, crisis alerts, and decision support summaries
+            Continuous signal intelligence, crisis alerts, and decision support summaries
           </CardDescription>
         </CardHeader>
         <CardContent>

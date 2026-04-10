@@ -91,7 +91,7 @@ export default function StrategicInsightsPanel() {
           Strategic Insights
         </CardTitle>
         <CardDescription>
-          AI-powered strategic intelligence and recommendations
+          System-analyzed strategic intelligence and recommendations
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">

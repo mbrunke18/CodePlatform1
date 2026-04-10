@@ -85,6 +85,29 @@ export default function FounderStory() {
       <main style={{ background: "#fff" }}>
         <div style={{ maxWidth: 740, margin: "0 auto", padding: "80px 32px" }}>
 
+          {/* ── Origin — The Father's Words ───────────────────────────────── */}
+          <div style={{ paddingBottom: 64, marginBottom: 56, borderBottom: `1px solid ${BORDER}` }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Origin</span>
+            </div>
+            <Body>
+              My father put me in shoulder pads for the first time in the third grade. On the first day, he looked at me and said four things: <em>prepare</em>, <em>practice</em>, <em>perform fearless</em> — and never give up. I was eight years old. I did not fully understand what he meant. But I felt the weight of it. He was not giving me tips for a game. He was handing me an operating model for a life.
+            </Body>
+            <Body>
+              I carried those four words from a third-grade football field through twenty years inside Fortune 1000 companies. Into every boardroom, every sideline, every organization that was either ready when the moment came or scrambling to build the response after the signal had already fired. The pattern was the same everywhere I looked: the organizations that had prepared in advance moved without fear. The ones that had not were still aligning when the window closed.
+            </Body>
+            <Body>
+              When I built this company and named it for the family that gave me that framework, I named it because this platform is the same idea applied at enterprise scale. Prepare the response before the trigger fires. Practice the playbook before the pressure arrives. Perform without hesitation when the moment comes. And when the first activation is imperfect, never stop — the system advances, the library compounds, and the next response is faster than the last.
+            </Body>
+            <PullQuote>
+              "Every enterprise that prepares for every situation it will face is no longer afraid of what comes next. That is not a product feature. That is the point."
+            </PullQuote>
+            <Body style={{ fontStyle: "italic", color: MUTED }}>
+              The arc from my father's words to this platform is not a metaphor. Preparation produces readiness. Readiness produces fearlessness. The sequence he named on a football field is the operating logic of every playbook in this system.
+            </Body>
+          </div>
+
           {/* I */}
           <RomanDivider num="I" />
           <Body>
@@ -265,7 +288,7 @@ export default function FounderStory() {
             "The answer was never more intelligence. It was better infrastructure for acting on what you already know."
           </PullQuote>
           <Body>
-            Readiness OS uses AI — GPT-4o across five surfaces — not to generate strategy but to compress coordination. Compound Threat Intelligence detects cross-domain patterns before either domain crosses its threshold alone. The Shadow Strategy Simulator runs a dry-run before commitment. The Strategic Recorder converts institutional knowledge directly into executable playbooks. AI doing the work it should be doing — closing the coordination gap, not widening it.
+            Readiness OS uses AI across five coordination surfaces — not to generate strategy but to compress coordination. Compound Threat Intelligence detects cross-domain patterns before either domain crosses its threshold alone. The Shadow Strategy Simulator runs a dry-run before commitment. The Strategic Recorder converts institutional knowledge directly into executable playbooks. AI doing the work it should be doing — closing the coordination gap, not widening it.
           </Body>
 
           {/* ── Artifact vs. Performance — unnumbered interstitial ────────── */}

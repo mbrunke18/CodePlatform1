@@ -175,7 +175,7 @@ const stepData: Record<number, StepData> = {
     metrics: [
       {
         traditional: { value: '37%', sublabel: 'Information complete', trend: 'danger' },
-        m: { value: '100%', sublabel: 'AI-powered intel', trend: 'success' }
+        m: { value: '100%', sublabel: 'signal-based intel', trend: 'success' }
       },
       {
         traditional: { value: '8', sublabel: 'Departments siloed', trend: 'danger' },

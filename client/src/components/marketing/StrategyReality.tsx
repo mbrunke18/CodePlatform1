@@ -382,7 +382,7 @@ export function StrategyToIDEA() {
       textColor: "text-amber-500",
       borderColor: "border-amber-500/30",
       traditionalWork: ["Work BEFORE"],
-      mPlatform: "AI-powered signal monitoring, competitive intelligence, trigger system",
+      mPlatform: "System-detected signal monitoring, competitive intelligence, trigger system",
     },
     {
       phase: "EXECUTE",

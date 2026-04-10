@@ -536,7 +536,7 @@ export default function ProactiveRadar() {
                 Live Strategic Insights
               </CardTitle>
               <p className="text-sm text-gray-600">
-                Real-time AI-generated insights and proactive alerts from continuous monitoring.
+                Real-time system-detected insights and proactive alerts from continuous monitoring.
               </p>
             </CardHeader>
             <CardContent>

@@ -84,7 +84,7 @@ const journeyPhases: JourneyPhase[] = [
     number: 4,
     name: 'DETECT',
     subtitle: 'Signal™',
-    description: 'Configure AI-powered trigger monitoring and alert routing',
+    description: 'Configure signal-based trigger monitoring and alert routing',
     timeline: 'Days 45-60',
     workspace: 'Signal Ops',
     workspacePath: '/workspace?tab=detect',

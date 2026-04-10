@@ -114,7 +114,7 @@ export default function NovaInnovations() {
       potential: 93,
       investment: 2.1,
       timeline: '8-10 months',
-      description: 'AI-driven market analysis and prediction system for strategic advantage',
+      description: 'Signal-driven market analysis and prediction system for strategic advantage',
       impact: {
         efficiency: 88,
         cost: 61,

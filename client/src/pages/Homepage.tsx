@@ -1454,7 +1454,7 @@ function SimulatorCTASection() {
         <Reveal>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 20 }}>
             <div style={{ width: 24, height: 1, background: GOLD }} />
-            <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · GPT-4o</span>
+            <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Shadow Strategy Simulator · Scenario Analysis</span>
             <div style={{ width: 24, height: 1, background: GOLD }} />
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>

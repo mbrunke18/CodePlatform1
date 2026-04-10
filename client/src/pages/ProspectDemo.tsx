@@ -42,7 +42,7 @@ const INDUSTRY_SCENARIOS: Record<string, {
     keywords: ["competitor launch", "market disruption", "pricing pressure", "customer churn risk", "market share"],
     impact: "22% market share segment at risk",
     playbookHint: "Aggressive Pricing Disruption",
-    urgency: "Competitive response window: 72 hours",
+    urgency: "Competitive response window: 12 minutes with Readiness OS",
   },
   "Operational Excellence": {
     trigger: "Tier-1 Supplier Disruption Signal — 14 Facilities Affected",

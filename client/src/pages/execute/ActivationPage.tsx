@@ -32,7 +32,7 @@ export default function ActivationPage() {
       <div className="p-6 space-y-6 max-w-7xl mx-auto">
         <div>
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
-            <Zap className="w-6 h-6 text-amber-500" />
+            <Zap className="w-6 h-6 text-[#C9A84C]" />
             Playbook Activation History
           </h1>
           <p className="text-muted-foreground mt-1">
@@ -117,7 +117,7 @@ export default function ActivationPage() {
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <Star className="w-4 h-4 text-amber-500" />
+                          <Star className="w-4 h-4 text-[#C9A84C]" />
                           <span className="font-bold text-lg">{activation.successRating}%</span>
                         </div>
                       </div>

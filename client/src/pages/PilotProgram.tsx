@@ -580,9 +580,9 @@ export default function PilotProgram() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 p-3 bg-amber-50 border border-amber-100">
-                  <p className="text-xs font-semibold text-amber-800">What it doesn't do</p>
-                  <p className="text-xs text-amber-700 mt-1 leading-relaxed">None of these tools coordinate your organization when a strategic trigger fires. They surface information — but someone still has to mobilize the people, assign the tasks, and execute the playbook. That coordination takes 30 days. That's the gap.</p>
+                <div className="mt-6 p-3 bg-[#F0EDE4] border border-[#E8E4DC]">
+                  <p className="text-xs font-semibold text-[#0A0F2E]">What it doesn't do</p>
+                  <p className="text-xs text-[#4B5563] mt-1 leading-relaxed">None of these tools coordinate your organization when a strategic trigger fires. They surface information — but someone still has to mobilize the people, assign the tasks, and execute the playbook. That coordination takes 30 days. That's the gap.</p>
                 </div>
               </div>
 

@@ -34,7 +34,7 @@ const Q9_OPTIONS = [
   "An improvement on existing project management tools",
   "An improvement on existing crisis management tools",
   "A workflow automation tool with a strategic framing",
-  "An AI-powered decision support tool",
+  "A signal-based coordination infrastructure tool",
   "A coordination infrastructure layer — the missing piece between strategy and execution",
   "Something I am still not sure how to categorize",
 ];
@@ -81,7 +81,7 @@ const Q16_DIMENSIONS = [
   "Clarity of the user interface",
   "Ease of understanding what to do first",
   "Credibility of the playbook library",
-  "Quality of the AI-generated insights",
+  "Quality of the system-analyzed insights",
   "Relevance of signal monitoring to real events",
   "Depth of the post-activation (ADVANCE) experience",
   "Overall enterprise readiness / polish",

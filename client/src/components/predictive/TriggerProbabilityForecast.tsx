@@ -155,7 +155,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
         <CardContent className="p-6 text-center">
           <Brain className="w-12 h-12 text-gray-800 mx-auto mb-3" />
           <p className="text-gray-800 dark:text-slate-300">No triggers configured for forecasting</p>
-          <p className="text-sm text-gray-800 mt-1">Add triggers to see AI-powered probability predictions</p>
+          <p className="text-sm text-gray-800 mt-1">Add triggers to see system-analyzed probability predictions</p>
         </CardContent>
       </Card>
     );

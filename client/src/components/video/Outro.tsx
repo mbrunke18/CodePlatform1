@@ -145,7 +145,7 @@ export function Outro({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="The Infrastructure Enterprises Are Missing"
-        description="Trigger-to-Execution Orchestration for Fortune 1000. 170 playbooks, AI-powered signals, executive intelligence, and compound disruption response—all in 12 minutes."
+        description="Trigger-to-Execution Orchestration for Fortune 1000. 170 playbooks, Signal-based monitoring, executive intelligence, and compound disruption response—all in 12 minutes."
         delay={0.5}
       />
     </div>

@@ -337,7 +337,7 @@ export default function FutureReadinessDashboard() {
                   Oracle Intelligence Patterns
                 </CardTitle>
                 <CardDescription className="text-[#6B7280]">
-                  AI-detected strategic patterns and predictive insights
+                  System-detected strategic patterns and predictive insights
                 </CardDescription>
               </CardHeader>
               <CardContent className="pt-6">

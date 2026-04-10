@@ -509,7 +509,7 @@ export function ExecutiveWarRoom() {
                   <CardContent className="p-8 text-center">
                     <Brain className="h-12 w-12 text-gray-600 dark:text-gray-200 mx-auto mb-4" />
                     <h3 className="text-lg font-semibold text-gray-600 mb-2">No Intelligence Available</h3>
-                    <p className="text-gray-600 dark:text-gray-300">AI-powered briefings will appear here automatically</p>
+                    <p className="text-gray-600 dark:text-gray-300">Signal-based briefings will appear here automatically</p>
                   </CardContent>
                 </Card>
               ) : (
@@ -563,7 +563,7 @@ export function ExecutiveWarRoom() {
               <Card>
                 <CardHeader>
                   <CardTitle>Proactive Intelligence</CardTitle>
-                  <CardDescription>AI-powered strategic analysis and recommendations</CardDescription>
+                  <CardDescription>System-analyzed strategic intelligence and recommendations</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 p-4">

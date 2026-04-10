@@ -153,9 +153,9 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
 
   if (variant === 'icon-only') {
     return (
-      <div className={className}>
+      <span className={className} style={{ display: 'inline-flex', alignItems: 'center' }}>
         <VaughnMartinSeal size={sealSize} color={color} />
-      </div>
+      </span>
     );
   }
 

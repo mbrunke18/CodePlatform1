@@ -567,7 +567,7 @@ export default function PlaybookActivationConsole() {
       const aiTasks: DemoTask[] = Array.isArray(brief?.scenarioTasks)
         ? brief.scenarioTasks.map((t: any, idx: number) => ({
             id: `ai-task-${idx}`,
-            description: t.action || 'AI-generated task',
+            description: t.action || 'Pre-staged task',
             status: 'pending' as const,
             priority: t.priority || 'high',
             assignedTo: null,

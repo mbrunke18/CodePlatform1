@@ -94,7 +94,7 @@ const SIGNAL_TYPE_CONFIG: Record<SignalType, { icon: any; label: string; color: 
 const TRIGGER_TYPE_CONFIG: Record<TriggerType, { label: string; description: string }> = {
   event: { label: 'Event-based', description: 'Triggers when a specific event occurs' },
   threshold: { label: 'Threshold', description: 'Triggers when a metric crosses a threshold' },
-  pattern: { label: 'Pattern Detection', description: 'AI-powered pattern matching' },
+  pattern: { label: 'Pattern Detection', description: 'Signal-based pattern matching' },
   scheduled: { label: 'Scheduled', description: 'Time-based monitoring intervals' },
 };
 
@@ -227,7 +227,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
                 DETECT Phase — Monitor Signals
               </CardTitle>
               <CardDescription>
-                Human insight amplified by AI-powered pattern matching. Configure the signals that matter.
+                Human insight amplified by signal-based pattern matching. Configure the signals that matter.
               </CardDescription>
             </div>
             <div className="text-right">

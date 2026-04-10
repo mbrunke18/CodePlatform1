@@ -91,7 +91,7 @@ export function IDEAFramework({ progress }: SceneProps) {
                   <phase.icon className="w-7 h-7" style={{ color: phase.color }} />
                 </div>
                 <p className="text-gray-900 font-bold text-lg text-center">{phase.name}</p>
-                <p className="text-xs text-center mt-1 flex items-center justify-center" style={{ color: phase.color }}><SubBrandLabel name={phase.module} size={11} /></p>
+                <div className="text-xs text-center mt-1 flex items-center justify-center" style={{ color: phase.color }}><SubBrandLabel name={phase.module} size={11} /></div>
                 <p className="text-gray-700 text-xs text-center mt-2 max-w-[120px]">{phase.description}</p>
                 <motion.p 
                   initial={{ opacity: 0 }}
