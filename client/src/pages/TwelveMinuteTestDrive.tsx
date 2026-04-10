@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import { Radio } from "lucide-react";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const NAVY    = "#0A0F2E";
@@ -14,6 +15,31 @@ const MUTED   = "#6B7280";
 const BORDER  = "#E8E4DC";
 const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
 const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
+
+// ─── Live context ─────────────────────────────────────────────────────────────
+const SCENARIO_DOMAIN_MAP: Record<string, string> = {
+  activist:   'Market Dynamics',
+  cyber:      'Technology & Security',
+  supply:     'Supply Chain & Operations',
+  brand:      'Brand & Reputation',
+  regulatory: 'Regulatory & Compliance',
+  talent:     'Human Capital',
+};
+interface LiveCtxTD {
+  totalToday: number;
+  domainsActive: string[];
+  recentDetections: Array<{ triggerDomain: string; detectedAt: string | null }>;
+}
+function useLiveCtxTD() {
+  const [data, setData] = useState<LiveCtxTD | null>(null);
+  useEffect(() => {
+    fetch('/api/public/live-context')
+      .then(r => r.json())
+      .then(d => { if (d.success !== false) setData(d); })
+      .catch(() => {});
+  }, []);
+  return data;
+}
 
 // ─── Preset scenarios ─────────────────────────────────────────────────────────
 const SCENARIOS = [
@@ -126,6 +152,7 @@ function getTaskStatus(taskIdx: number, elapsed: number, tasks: Array<{ time: st
 export default function TwelveMinuteTestDrive() {
   const [step, setStep]           = useState<1 | 2 | 3 | 4>(1);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const liveCtx = useLiveCtxTD();
   const [brief, setBrief]         = useState<any>(null);
   const [loadingBrief, setLoadingBrief] = useState(false);
   const [elapsed, setElapsed]     = useState(0);
@@ -249,28 +276,59 @@ export default function TwelveMinuteTestDrive() {
               </p>
             </div>
 
+            {/* Live context banner — shown when system has active detections */}
+            {liveCtx && liveCtx.totalToday > 0 && (
+              <div style={{
+                marginBottom: 24,
+                padding: '12px 18px',
+                background: 'rgba(43,138,110,0.08)',
+                border: '1px solid rgba(43,138,110,0.25)',
+                display: 'flex', alignItems: 'center', gap: 12,
+              }}>
+                <Radio size={14} color={TEAL} style={{ flexShrink: 0 }} />
+                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', margin: 0, lineHeight: 1.5 }}>
+                  <strong style={{ color: TEAL_LT, fontWeight: 700 }}>The system detected {liveCtx.totalToday} signal{liveCtx.totalToday !== 1 ? 's' : ''} today</strong>
+                  {liveCtx.domainsActive.length > 0 && <> across {liveCtx.domainsActive.length} domain{liveCtx.domainsActive.length !== 1 ? 's' : ''}</>}
+                  . Scenarios below marked with a live signal have real intelligence in the system right now.
+                </p>
+              </div>
+            )}
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 40 }}>
-              {SCENARIOS.map(s => (
-                <button
-                  key={s.id}
-                  onClick={() => setSelectedId(s.id)}
-                  style={{
-                    textAlign: 'left', padding: '20px 24px', cursor: 'pointer',
-                    background: selectedId === s.id ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.03)',
-                    border: `1px solid ${selectedId === s.id ? GOLD : 'rgba(255,255,255,0.08)'}`,
-                    borderLeft: `3px solid ${s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
-                    <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)', display: 'inline-block' }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
-                  </div>
-                  <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 4, lineHeight: 1.2 }}>{s.title}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{s.subtitle}</div>
-                </button>
-              ))}
+              {SCENARIOS.map(s => {
+                const domain = SCENARIO_DOMAIN_MAP[s.id];
+                const hasLiveSignal = liveCtx && liveCtx.domainsActive.includes(domain);
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => setSelectedId(s.id)}
+                    style={{
+                      textAlign: 'left', padding: '20px 24px', cursor: 'pointer',
+                      background: selectedId === s.id ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.03)',
+                      border: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                      borderLeft: `3px solid ${s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
+                      transition: 'all 0.2s ease',
+                      position: 'relative',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
+                        <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)', display: 'inline-block' }} />
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
+                      </div>
+                      {hasLiveSignal && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
+                          <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: TEAL_LT, animation: 'vm-pulse 2s ease-in-out infinite' }} />
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>Live signal</span>
+                        </div>
+                      )}
+                    </div>
+                    <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 4, lineHeight: 1.2 }}>{s.title}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{s.subtitle}</div>
+                  </button>
+                );
+              })}
             </div>
 
             <div style={{ textAlign: 'center' }}>

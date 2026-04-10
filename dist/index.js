@@ -48451,6 +48451,59 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ success: false, detections: [] });
     }
   });
+  app2.get("/api/public/live-context", async (_req, res) => {
+    try {
+      const { gte: gte10, desc: descOp, and: and30, eq: eqOp } = await import("drizzle-orm");
+      const { triggerDetections: td } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1e3);
+      const recent = await db.select({
+        id: td.id,
+        triggerName: td.triggerName,
+        triggerDomain: td.triggerDomain,
+        signalDescription: td.signalDescription,
+        signalSource: td.signalSource,
+        confidenceScore: td.confidenceScore,
+        recommendedPlaybook: td.recommendedPlaybook,
+        detectedAt: td.detectedAt,
+        status: td.status
+      }).from(td).where(and30(eqOp(td.organizationId, "system"), gte10(td.detectedAt, cutoff))).orderBy(descOp(td.detectedAt)).limit(10);
+      const domainsActive = Array.from(new Set(recent.map((d) => d.triggerDomain).filter(Boolean)));
+      const top3 = recent.slice(0, 3).map((d) => ({
+        id: d.id,
+        triggerName: d.triggerName,
+        triggerDomain: d.triggerDomain || "Strategic",
+        signalDescription: d.signalDescription,
+        signalSource: d.signalSource || "Continuous monitoring",
+        confidenceScore: d.confidenceScore,
+        recommendedPlaybook: d.recommendedPlaybook,
+        detectedAt: d.detectedAt
+      }));
+      res.json({
+        success: true,
+        totalToday: recent.length,
+        domainsActive,
+        latestSignal: recent[0] ? {
+          triggerName: recent[0].triggerName,
+          triggerDomain: recent[0].triggerDomain,
+          signalDescription: recent[0].signalDescription,
+          detectedAt: recent[0].detectedAt,
+          confidenceScore: recent[0].confidenceScore
+        } : null,
+        recentDetections: top3,
+        lastUpdated: (/* @__PURE__ */ new Date()).toISOString()
+      });
+    } catch (err) {
+      console.error("Public live-context error:", err);
+      res.json({
+        success: false,
+        totalToday: 0,
+        domainsActive: [],
+        latestSignal: null,
+        recentDetections: [],
+        lastUpdated: (/* @__PURE__ */ new Date()).toISOString()
+      });
+    }
+  });
   app2.post("/api/detections/:id/acknowledge", async (req, res) => {
     try {
       const { id } = req.params;
@@ -48750,7 +48803,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   });
   app2.post("/api/playbook-activations", requireOrgAccess2, async (req, res) => {
     try {
-      const { playbookId, actualExecutionTime, targetMet, activationReason, situationSummary, triggerEventId } = req.body;
+      const { playbookId, actualExecutionTime, targetMet, activationReason, situationSummary, triggerEventId, playbookName, playbookDomain, taskCount, stakeholderCount } = req.body;
       if (!playbookId) return res.status(400).json({ error: "playbookId required" });
       const [activation] = await db.insert(playbookActivations).values({
         organizationId: req.user.organizationId,
@@ -48764,6 +48817,92 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
         completedAt: /* @__PURE__ */ new Date()
       }).returning();
       res.json(activation);
+      (async () => {
+        try {
+          const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+          if (!apiKey) return;
+          const [userRecord] = await db.select().from(users).where(eq45(users.id, req.user.id)).limit(1);
+          if (!userRecord?.email) return;
+          const recipientName = [userRecord.firstName, userRecord.lastName].filter(Boolean).join(" ") || userRecord.email.split("@")[0];
+          const displayPlaybookName = playbookName || "Strategic Response Playbook";
+          const displayDomain = playbookDomain || "Strategic Response";
+          const displayTasks = taskCount || 7;
+          const displayStakeholders = stakeholderCount || 5;
+          const platformUrl = process.env.APP_URL || "https://vaughnmartin.replit.app";
+          const activationTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
+          const { Resend: Resend7 } = await import("resend");
+          const resend2 = new Resend7(apiKey);
+          const html = `
+            <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#0A0F2E;padding:40px 0;margin:0;">
+              <div style="max-width:580px;margin:0 auto;">
+                <div style="background:#0A0F2E;padding:32px 40px 0;text-align:center;">
+                  <div style="display:inline-block;padding:6px 18px;border:1px solid rgba(201,168,76,0.4);margin-bottom:24px;">
+                    <span style="color:#C9A84C;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;">Authorization Confirmed \xB7 Readiness OS</span>
+                  </div>
+                  <h1 style="color:#ffffff;font-size:32px;font-weight:700;line-height:1.15;margin:0 0 8px;">Response <span style="color:#C9A84C;font-style:italic;">Initiated</span></h1>
+                  <p style="color:rgba(255,255,255,0.45);font-size:13px;margin:0 0 32px;letter-spacing:0.03em;">${displayPlaybookName}</p>
+                </div>
+                <div style="background:#132558;margin:0 40px;padding:28px 32px;">
+                  <table style="width:100%;border-collapse:collapse;">
+                    <tr>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;width:45%;">Activated by</td>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:#fff;font-size:13px;font-weight:600;">${recipientName}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">Domain</td>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:#C9A84C;font-size:13px;font-weight:600;">${displayDomain}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">Tasks Deployed</td>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:#2B8A6E;font-size:13px;font-weight:700;">${displayTasks} tasks pre-staged</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">Stakeholders</td>
+                      <td style="padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);color:#fff;font-size:13px;">${displayStakeholders} being notified</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:14px 0;color:rgba(255,255,255,0.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">Execution clock</td>
+                      <td style="padding:14px 0;color:#fff;font-size:13px;font-weight:600;">Started \u2014 ${activationTime}</td>
+                    </tr>
+                  </table>
+                </div>
+                <div style="margin:1px 40px 0;background:#C9A84C;padding:20px 32px;text-align:center;">
+                  <div style="color:#0A0F2E;font-size:28px;font-weight:800;line-height:1;letter-spacing:-1px;">3,600\xD7</div>
+                  <div style="color:rgba(10,15,46,0.7);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:4px;">Execution Head Start</div>
+                  <div style="color:rgba(10,15,46,0.55);font-size:11px;margin-top:6px;">30 days of mobilization \u2014 compressed to 12 minutes</div>
+                </div>
+                <div style="margin:0 40px;background:#0d1a40;padding:28px 32px;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.5);font-size:12px;line-height:1.7;margin:0 0 24px;">Your response architecture was pre-staged before this trigger fired. Your team is already executing while others are still scheduling their first alignment call.</p>
+                  <a href="${platformUrl}/mission-control" style="display:inline-block;background:#2B8A6E;color:#ffffff;text-decoration:none;padding:14px 32px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">View Execution Console \u2192</a>
+                </div>
+                <div style="padding:24px 40px;text-align:center;">
+                  <p style="color:rgba(255,255,255,0.2);font-size:10px;letter-spacing:0.5px;margin:0;">"The response was ready before the trigger fired." \u2014 Readiness OS</p>
+                  <p style="color:rgba(255,255,255,0.1);font-size:9px;margin:12px 0 0;"><a href="${platformUrl}" style="color:rgba(255,255,255,0.15);text-decoration:none;">vaughnmartin.com</a></p>
+                </div>
+              </div>
+            </div>
+          `;
+          const fromAddresses = ["Readiness OS <onboarding@resend.dev>", "Readiness OS <pilot@vaughnmartin.com>"];
+          for (const from of fromAddresses) {
+            try {
+              const { error } = await resend2.emails.send({
+                from,
+                replyTo: "pilot@vaughnmartin.com",
+                to: [userRecord.email],
+                subject: `Response Initiated \u2014 ${displayPlaybookName} \xB7 Readiness OS`,
+                html
+              });
+              if (!error) {
+                console.log(`[Activation Email] Sent to ${userRecord.email} for playbook "${displayPlaybookName}"`);
+                break;
+              }
+            } catch {
+            }
+          }
+        } catch (emailErr) {
+          console.warn("[Activation Email] Non-blocking send failed:", emailErr.message);
+        }
+      })();
     } catch (error) {
       console.error("Error creating playbook activation:", error);
       res.status(500).json({ error: "Failed to create activation record" });

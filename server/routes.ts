@@ -7394,6 +7394,68 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
+  // GET /api/public/live-context — public-safe live signal summary for homepage/banner
+  app.get('/api/public/live-context', async (_req, res) => {
+    try {
+      const { gte, desc: descOp, and, eq: eqOp } = await import('drizzle-orm');
+      const { triggerDetections: td } = await import('@shared/schema');
+      const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const recent = await db
+        .select({
+          id: td.id,
+          triggerName: td.triggerName,
+          triggerDomain: td.triggerDomain,
+          signalDescription: td.signalDescription,
+          signalSource: td.signalSource,
+          confidenceScore: td.confidenceScore,
+          recommendedPlaybook: td.recommendedPlaybook,
+          detectedAt: td.detectedAt,
+          status: td.status,
+        })
+        .from(td)
+        .where(and(eqOp(td.organizationId, 'system'), gte(td.detectedAt, cutoff)))
+        .orderBy(descOp(td.detectedAt))
+        .limit(10);
+
+      const domainsActive = Array.from(new Set(recent.map(d => d.triggerDomain).filter(Boolean)));
+      const top3 = recent.slice(0, 3).map(d => ({
+        id: d.id,
+        triggerName: d.triggerName,
+        triggerDomain: d.triggerDomain || 'Strategic',
+        signalDescription: d.signalDescription,
+        signalSource: d.signalSource || 'Continuous monitoring',
+        confidenceScore: d.confidenceScore,
+        recommendedPlaybook: d.recommendedPlaybook,
+        detectedAt: d.detectedAt,
+      }));
+
+      res.json({
+        success: true,
+        totalToday: recent.length,
+        domainsActive,
+        latestSignal: recent[0] ? {
+          triggerName: recent[0].triggerName,
+          triggerDomain: recent[0].triggerDomain,
+          signalDescription: recent[0].signalDescription,
+          detectedAt: recent[0].detectedAt,
+          confidenceScore: recent[0].confidenceScore,
+        } : null,
+        recentDetections: top3,
+        lastUpdated: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('Public live-context error:', err);
+      res.json({
+        success: false,
+        totalToday: 0,
+        domainsActive: [],
+        latestSignal: null,
+        recentDetections: [],
+        lastUpdated: new Date().toISOString(),
+      });
+    }
+  });
+
   // POST /api/detections/:id/acknowledge — mark a detection as acknowledged
   app.post('/api/detections/:id/acknowledge', async (req: any, res) => {
     try {

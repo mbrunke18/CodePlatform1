@@ -100,6 +100,187 @@ function SectionMarker({ n }: { n: string }) {
   );
 }
 
+// ─── Live context hook ────────────────────────────────────────────────────────
+interface LiveSignal {
+  id: number;
+  triggerName: string;
+  triggerDomain: string;
+  signalDescription: string;
+  signalSource: string;
+  confidenceScore: number;
+  recommendedPlaybook: string | null;
+  detectedAt: string | null;
+}
+interface LiveCtx {
+  totalToday: number;
+  domainsActive: string[];
+  latestSignal: { triggerName: string; triggerDomain: string | null; signalDescription: string; detectedAt: string | null; confidenceScore: number } | null;
+  recentDetections: LiveSignal[];
+}
+function useLiveContext() {
+  const [data, setData] = useState<LiveCtx | null>(null);
+  useEffect(() => {
+    fetch('/api/public/live-context')
+      .then(r => r.json())
+      .then(d => { if (d.success !== false) setData(d); })
+      .catch(() => {});
+  }, []);
+  return data;
+}
+function signalTimeAgo(dateStr: string | Date | null): string {
+  if (!dateStr) return '';
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins} minute${mins !== 1 ? 's' : ''} ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs} hour${hrs !== 1 ? 's' : ''} ago`;
+  return `${Math.floor(hrs / 24)} day${Math.floor(hrs / 24) !== 1 ? 's' : ''} ago`;
+}
+const DOMAIN_LABELS: Record<string, string> = {
+  'Market Dynamics': 'MARKET',
+  'Regulatory & Compliance': 'REGULATORY',
+  'Technology & Security': 'CYBER',
+  'Supply Chain & Operations': 'SUPPLY CHAIN',
+  'Brand & Reputation': 'BRAND',
+  'Financial': 'FINANCIAL',
+  'ESG & Sustainability': 'ESG',
+  'Geopolitical': 'GEOPOLITICAL',
+  'Human Capital': 'TALENT',
+};
+const FALLBACK_SIGNALS = [
+  { triggerName: 'Activist Investor Pressure', triggerDomain: 'Market Dynamics', signalDescription: 'Institutional investor filed 13D disclosing 8.7% stake in Fortune 500 consumer goods company, citing undervaluation and seeking board representation.', signalSource: 'SEC EDGAR', confidenceScore: 91, detectedAt: null, illustrative: true },
+  { triggerName: 'Regulatory Inquiry Opened', triggerDomain: 'Regulatory & Compliance', signalDescription: 'Federal agency announced formal inquiry into pricing practices of major pharmaceutical distributor — disclosure obligations triggered within 48 hours.', signalSource: 'Federal Register', confidenceScore: 87, detectedAt: null, illustrative: true },
+  { triggerName: 'Ransomware Attack Confirmed', triggerDomain: 'Technology & Security', signalDescription: 'Critical infrastructure provider confirmed ransomware incident affecting billing and operations systems — second major attack in sector this quarter.', signalSource: 'Reuters Business', confidenceScore: 95, detectedAt: null, illustrative: true },
+];
+
+// ─── LiveSignalFeed section ───────────────────────────────────────────────────
+function LiveSignalFeedSection() {
+  const liveCtx = useLiveContext();
+  const hasReal = (liveCtx?.recentDetections?.length ?? 0) > 0;
+  const signals: Array<{ triggerName: string; triggerDomain: string; signalDescription: string; signalSource: string; confidenceScore: number; detectedAt: string | null; illustrative?: boolean }> =
+    hasReal
+      ? liveCtx!.recentDetections.map(d => ({ ...d, illustrative: false }))
+      : FALLBACK_SIGNALS;
+
+  return (
+    <section style={{ ...SECTION_DARK_BG, padding: '64px 0 72px', position: 'relative' }}>
+      <div style={{ ...CONTAINER }}>
+        {/* Header row */}
+        <Reveal>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 40, gap: 24, flexWrap: 'wrap' as const }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                <span style={{
+                  display: 'inline-block', width: 8, height: 8, borderRadius: '50%',
+                  background: '#2B8A6E', animation: 'vm-pulse 2s ease-in-out infinite',
+                }} />
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#2B8A6E' }}>
+                  {hasReal ? 'System monitoring — live' : 'System monitoring — always on'}
+                </span>
+              </div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(22px,3vw,32px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, margin: 0 }}>
+                {hasReal
+                  ? 'What the system detected while you were reading this.'
+                  : 'What the system monitors — continuously, across every domain.'}
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
+              {hasReal && (
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ ...GEO, fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{liveCtx!.totalToday}</div>
+                  <div style={{ ...DM, fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginTop: 4, letterSpacing: '0.04em' }}>signals detected today</div>
+                </div>
+              )}
+              <div style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.35)', textAlign: 'right' as const }}>
+                248+ data points · refreshed every 15 minutes
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Signal cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+          {signals.map((sig, i) => {
+            const domainLabel = DOMAIN_LABELS[sig.triggerDomain] || sig.triggerDomain.toUpperCase();
+            const ago = sig.detectedAt ? signalTimeAgo(sig.detectedAt) : null;
+            return (
+              <Reveal key={i} delay={i * 0.08}>
+                <div style={{
+                  background: 'rgba(255,255,255,0.035)',
+                  border: '1px solid rgba(201,168,76,0.18)',
+                  padding: '24px 24px 20px',
+                  display: 'flex', flexDirection: 'column' as const, gap: 14,
+                  position: 'relative' as const,
+                }}>
+                  {/* Top row: domain badge + time */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                    <span style={{
+                      ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.18em',
+                      textTransform: 'uppercase' as const,
+                      padding: '3px 8px',
+                      background: 'rgba(201,168,76,0.12)',
+                      border: '1px solid rgba(201,168,76,0.3)',
+                      color: GOLD,
+                    }}>{domainLabel}</span>
+                    {ago && (
+                      <span style={{ ...DM, fontSize: 11, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>{ago}</span>
+                    )}
+                    {sig.illustrative && (
+                      <span style={{ ...DM, fontSize: 10, color: 'rgba(255,255,255,0.25)', flexShrink: 0 }}>illustrative</span>
+                    )}
+                  </div>
+
+                  {/* Trigger name */}
+                  <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
+                    {sig.triggerName}
+                  </div>
+
+                  {/* Signal description */}
+                  <p style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: 0, flexGrow: 1 }}>
+                    {sig.signalDescription.length > 140 ? sig.signalDescription.slice(0, 139) + '…' : sig.signalDescription}
+                  </p>
+
+                  {/* Bottom row: source + confidence */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                    <span style={{ ...DM, fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' as const }}>
+                      {sig.signalSource}
+                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <div style={{ height: 4, width: 48, background: 'rgba(255,255,255,0.08)' }}>
+                        <div style={{ height: '100%', width: `${sig.confidenceScore}%`, background: sig.confidenceScore >= 85 ? TEAL : GOLD }} />
+                      </div>
+                      <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: sig.confidenceScore >= 85 ? '#3BAF8A' : GOLD }}>
+                        {sig.confidenceScore}% match
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {/* Footer line */}
+        <Reveal delay={0.25}>
+          <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(201,168,76,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 16 }}>
+            <p style={{ ...DM, fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.5 }}>
+              Every signal above triggers a pre-staged playbook. When the trigger fires, the response is already built.
+            </p>
+            <Link href="/12-minute-experience" style={{
+              ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
+              textTransform: 'uppercase' as const, color: GOLD, textDecoration: 'none',
+              borderBottom: `1px solid rgba(201,168,76,0.4)`, paddingBottom: 1,
+            }}>
+              See how the response deploys in 12 minutes →
+            </Link>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── SECTION 1: Navigation ────────────────────────────────────────────────────
 function HomepageNav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -1525,6 +1706,7 @@ export default function Homepage() {
       <HomepageNav />
       <GuestPreviewBanner />
       <HeroSection />
+      <LiveSignalFeedSection />
       <ProblemSection />
       <ExecutionGapSection />
       <MissingLayerSection />
