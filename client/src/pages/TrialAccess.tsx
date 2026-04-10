@@ -43,27 +43,60 @@ export default function TrialAccess() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: "#F8F7F4" }}>
-        <div className="max-w-md w-full mx-auto text-center px-8 py-12" style={{ background: "#fff", borderRadius: 0, boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
-          <div style={{ width: 48, height: 1.5, background: GOLD, margin: '0 auto 24px' }} />
-          <h1 className="text-2xl font-bold mb-3" style={{ color: NAVY }}>Check Your Email</h1>
-          <p className="text-sm mb-2" style={{ color: "#374151" }}>
-            Your 48-hour trial activation link has been sent to:
-          </p>
-          <p className="font-bold mb-6" style={{ color: NAVY }}>{submittedEmail}</p>
-          <div className="text-left p-4 mb-6" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
-            <div className="flex items-center gap-2 mb-2">
-              <Clock size={14} color={GOLD} />
-              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: GOLD }}>What Happens Next</span>
-            </div>
-            <ul className="text-sm space-y-1" style={{ color: "#374151" }}>
-              <li>1. Click the activation link in your email</li>
-              <li>2. Full platform access unlocks instantly</li>
-              <li>3. Your 24-hour session begins automatically</li>
-              <li>4. Apply for the Pilot Program before it expires</li>
-            </ul>
+      <div style={{ minHeight: "100vh", background: NAVY, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+        {/* Background grid */}
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%,-50%)", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(43,138,110,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
+        <div style={{ position: "relative", maxWidth: 480, width: "100%", padding: "0 32px", textAlign: "center" }}>
+          {/* Overline */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 28 }}>
+            <div style={{ width: 28, height: 1, background: GOLD }} />
+            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Trial Access · Readiness OS</span>
+            <div style={{ width: 28, height: 1, background: GOLD }} />
           </div>
-          <a href="/" className="text-sm" style={{ color: GOLD }}>← Return to homepage</a>
+          {/* Heading */}
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px,5vw,48px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 8 }}>
+            Your link is<br /><em style={{ color: GOLD, fontStyle: "italic" }}>on its way.</em>
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em", marginBottom: 4 }}>
+            Activation link sent to
+          </p>
+          <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 14, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, letterSpacing: "0.02em", marginBottom: 40 }}>
+            {submittedEmail}
+          </p>
+          {/* What happens next */}
+          <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 20, marginBottom: 40, textAlign: "left" }}>
+            <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 14 }}>What happens next</div>
+            {[
+              { step: "01", text: "Click the activation link in your email" },
+              { step: "02", text: "Full platform access unlocks instantly — no password" },
+              { step: "03", text: "Your 48-hour session begins automatically" },
+              { step: "04", text: "Apply for the Pilot Program before your session expires" },
+            ].map(({ step, text }) => (
+              <div key={step} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 12 }}>
+                <span style={{ fontSize: 10, fontWeight: 800, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", flexShrink: 0, marginTop: 2 }}>{step}</span>
+                <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1.5, letterSpacing: "0.02em" }}>{text}</span>
+              </div>
+            ))}
+          </div>
+          {/* Explore links */}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, marginBottom: 28 }}>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 16 }}>While you wait</div>
+            {[
+              { href: "/12-minute-experience", label: "Take the 12-Minute Test Drive", tag: "Interactive" },
+              { href: "/industry-demos", label: "See Your Industry Scenario", tag: "Vertical" },
+              { href: "/roi-calculator", label: "Calculate Your Execution ROI", tag: "Calculator" },
+            ].map(({ href, label, tag }, i) => (
+              <a key={href} href={href} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none", textDecoration: "none", gap: 12 }}>
+                <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.55)", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.02em" }}>{label}</span>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>{tag} →</span>
+              </a>
+            ))}
+          </div>
+          <p style={{ fontSize: 10, color: "rgba(255,255,255,0.18)", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>
+            Not in your inbox? Check spam or email{" "}
+            <a href="mailto:pilot@vaughnmartin.com" style={{ color: "rgba(201,168,76,0.5)", textDecoration: "none" }}>pilot@vaughnmartin.com</a>
+          </p>
         </div>
       </div>
     );

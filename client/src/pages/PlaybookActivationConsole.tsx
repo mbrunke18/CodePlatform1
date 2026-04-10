@@ -665,6 +665,10 @@ export default function PlaybookActivationConsole() {
             actualExecutionTime: executionTime,
             targetMet,
             triggerEventId: !isManualExecution && params?.triggerId !== 'guided' ? params?.triggerId : null,
+            playbookName: playbook?.name || null,
+            playbookDomain: playbook?.domain || playbook?.triggerCriteria || null,
+            taskCount: displayTasks.length || 7,
+            stakeholderCount: stakeholderStatuses.length || 5,
           }),
         });
         if (actRes.ok) {
