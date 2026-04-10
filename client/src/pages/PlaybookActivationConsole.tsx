@@ -697,7 +697,49 @@ export default function PlaybookActivationConsole() {
 
   // For manual executions, only wait for playbook. For trigger-based, wait for both.
   if (!playbook || (!isManualExecution && !trigger)) {
-    return <PageLayout><div className="p-6" style={{ background: OFF, minHeight: "100vh", color: NAVY }}>Loading activation console...</div></PageLayout>;
+    return (
+      <PageLayout>
+        <div style={{ background: NAVY, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+          {/* Background grid */}
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+          {/* Radial orb */}
+          <div style={{ position: "absolute", top: "30%", left: "50%", transform: "translate(-50%, -50%)", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(43,138,110,0.13) 0%, transparent 70%)", pointerEvents: "none" }} />
+          <div style={{ position: "relative", textAlign: "center", maxWidth: 480, padding: "0 32px" }}>
+            {/* Overline */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 32 }}>
+              <div style={{ width: 24, height: 1, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Readiness OS</span>
+              <div style={{ width: 24, height: 1, background: GOLD }} />
+            </div>
+            {/* Heading */}
+            <h1 style={{ ...CG, fontSize: "clamp(28px,4vw,42px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 8 }}>
+              Staging Execution Console
+            </h1>
+            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em", marginBottom: 40 }}>
+              Retrieving playbook parameters and staging response architecture
+            </p>
+            {/* Animated indicator */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 40 }}>
+              <Loader2 style={{ width: 18, height: 18, color: TEAL, animation: "spin 1s linear infinite" }} />
+              <span style={{ color: TEAL, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, fontFamily: "'Barlow Condensed', sans-serif" }}>Initializing</span>
+            </div>
+            {/* Status lines */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, textAlign: "left", borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
+              {[
+                "Loading playbook configuration",
+                "Verifying trigger context",
+                "Pre-staging task architecture",
+              ].map((line, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 5, height: 5, background: i === 0 ? TEAL : "rgba(255,255,255,0.15)", flexShrink: 0 }} />
+                  <span style={{ color: i === 0 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.25)", fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{line}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </PageLayout>
+    );
   }
 
   // Show Pre-Activation Impact Preview if not yet confirmed
