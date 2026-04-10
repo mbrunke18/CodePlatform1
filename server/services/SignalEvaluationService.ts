@@ -240,12 +240,12 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const CONFIDENCE_THRESHOLD = 72; // Aligned with documented threshold — meaningful above base noise floor
 
   // Minimum keyword matches required before a default-pattern trigger can fire.
-  // 3 matches required — ensures the signal is substantively about the trigger domain,
-  // not a tangential article that happens to mention one or two related terms.
-  // The description window has been extended to 450 chars and each pattern now includes
-  // the natural news vocabulary writers actually use, so genuine events will surface
-  // 3+ matches while surface-level mentions remain filtered out.
-  const MIN_KEYWORD_MATCHES = 3;
+  // 2 matches required — RSS headlines are typically 8-15 words; requiring 3 from a
+  // 20+ word keyword list is mathematically too restrictive for real news titles.
+  // The confidence threshold (72) is the quality gate — 2 keyword matches + a
+  // credible source + recent publication reliably produce a 72+ score on genuine events,
+  // while tangential mentions on low-confidence signals stay below the threshold.
+  const MIN_KEYWORD_MATCHES = 2;
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
@@ -514,7 +514,7 @@ export async function evaluateAndPersistSignals(
       const partialMatches = TRIGGER_PATTERNS
         .flatMap(p => p.keywords.filter(kw => text.includes(kw.toLowerCase())))
         .slice(0, 4);
-      if (partialMatches.length > 0 && partialMatches.length < 3) {
+      if (partialMatches.length > 0 && partialMatches.length < 2) {
         await db.insert(signalActivityLog).values({
           organizationId,
           eventType: 'threshold_not_met',
