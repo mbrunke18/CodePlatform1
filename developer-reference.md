@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 9, 2026 (rev 20) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 10, 2026 (rev 21) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -633,6 +633,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 - Mobile hamburger menu: same five links, rendered as `<Link>` components (not `<button>` with `onClick`)
 - **CRITICAL:** "How It Works" MUST use `<Link href="/how-it-works">` — never `onClick={() => scrollTo("how-it-works")}` or `scrollIntoView`. The `#how-it-works` anchor exists on the homepage but the nav link goes to the standalone page.
 - **CRITICAL:** Do NOT merge HomepageNav into StandardNav or PageLayout. They are intentionally separate components.
+- **"The Manifesto" link (April 10, 2026 — LOCKED):** "The Manifesto" is a nav item in `HomepageNav` (both desktop and mobile). Desktop: italic Cormorant Garamond, routes to `/founder-story`. Mobile: gold color. It sits alongside the standard nav links and signals the editorial/personal nature of the Founder Story. Do NOT remove it or move it to a dropdown. The Homepage founder quote block also links to `/founder-story` with the text: *"Why this company exists — and why it's named what it is →"* — this is the mid-funnel discovery path (after product hook).
 
 ### `ExecutionGapDiagram`
 - Location: `client/src/components/ExecutionGapDiagram.tsx`
@@ -660,7 +661,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. **Auth gating:** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggles) are hidden from unauthenticated users — non-auth users see a "Sign In to Activate" button. Trigger data is visible to all. `SOURCE_LABELS` map (top of file) converts raw source IDs to readable labels shown as teal tags. `[location, setLocation] = useLocation()` — must destructure both. |
 | `SignalConfiguration.tsx` | `/signal-configuration` | **Signal Intelligence Configuration.** All 17 signal categories from `shared/intelligence-signals.ts`. Each category expands to show all data points with individual on/off toggles. Category-level enable/disable all. Shows recommended playbooks per category and linked trigger count. Persist state via `signal_monitoring_config` DB table (per org, stores `disabledDataPoints[]`). API: `GET/PATCH /api/signal-monitoring-config`. Framework chain banner shows: Data Points → Triggers Fire → Playbook Executes. Linked from StandardNav "Capabilities" section. |
 | `SignalIntelligenceHub.tsx` | `/signal-intelligence` | Live signal monitoring. Requires auth+org. Shows branded fallback if not. |
-| `FounderStory.tsx` | `/founder-story` | Manifesto-first page. "We Make Enterprises Fearless" by Marty Brunke (March 2026) — 7 Roman-numeral sections, pull quotes, inline IDEA Framework navy card. Bio strip + video cards (90s intro, 3:30 full) are supporting sections below. Closing CTA → `/pilot-program`. **Do not revert to video-first or bio-first layout.** |
+| `FounderStory.tsx` | `/founder-story` | Manifesto-first page. "We Make Enterprises Fearless" by Marty Brunke (March 2026) — 7 Roman-numeral sections, pull quotes, inline IDEA Framework navy card. Bio strip + video cards (90s intro, 3:30 full) are supporting sections below. Closing CTA → `/pilot-program`. **Do not revert to video-first or bio-first layout.** **"The Origin" prologue (LOCKED — April 10, 2026):** Inserted as the very first section, before Section I. Contains the founder's father's words from third grade football — "Prepare. Practice. Perform fearless. Never give up." — explains the VaughnMartin company name and maps directly to the platform thesis arc (Preparation → Readiness → Fearless). Never remove or rewrite this section. |
 | `BoardBriefings.tsx` | `/board-briefings` | Board reports + AI Board Deck Generator. **Investor-gated** (see InvestorGate). |
 | `InvestorResources.tsx` | `/investor-resources` | Full investor materials page. **Investor-gated**. |
 | `InvestorPresentation.tsx` | `/investor-presentation` | Slide deck presentation view. **Investor-gated**. |
@@ -1322,7 +1323,7 @@ It does NOT replace any live pipeline alert. It supplements the pipeline for use
 
 ---
 
-## 32. Messaging Guidelines — Locked Copy Rules (April 2026, rev 19)
+## 32. Messaging Guidelines — Locked Copy Rules (April 2026, rev 21)
 
 The following copy conventions are founder-locked. Any agent or developer who touches marketing pages, investor slides, or product UI must follow these rules without deviation.
 
@@ -1340,6 +1341,12 @@ The following copy conventions are founder-locked. Any agent or developer who to
 | "Human-AI partnership" | "AI monitors, executives authorize" |
 | "Human-AI collaboration" | "Executive authority preserved" |
 | "AI augments executives" | "AI eliminates the mobilization cycle" |
+| "AI-powered" (in user-facing copy) | "signal-based" or "system-analyzed" |
+| "AI-driven" (in user-facing copy) | "signal-based" or "system-detected" |
+| "AI-generated" (in user-facing copy) | "system-analyzed" or "pre-staged" |
+| "AI-detected" (in user-facing copy) | "system-detected" |
+| "GPT-4o" (in user-facing labels/descriptions) | Omit model name; use feature description |
+| "AI Brief" | "Signal-Based Execution Brief · System Analysis" |
 | "Speed advantage" | "3,600× Execution Head Start" |
 | "72 hours" (as mobilization baseline) | "30 days" |
 | "340×" | "3,600× Execution Head Start" |
@@ -1352,6 +1359,8 @@ The following copy conventions are founder-locked. Any agent or developer who to
 | "Execution Playbooks" (standalone) | "Readiness Playbooks" |
 | "20–50 hours getting organized" | "30 days to mobilize" |
 | "16 signal categories" | "9 strategic domains, 221 triggers" |
+
+**AI language rule (LOCKED — zero tolerance):** "AI-powered," "AI-driven," "AI-generated," and "AI-detected" are fully retired from ALL visible UI — labels, descriptions, placeholders, button text, card subtitles, tooltip copy, section headers. Technical code comments are exempt. The underlying AI model name (GPT-4o / Azure OpenAI) may appear ONLY in technical integration listings (e.g. IntegrationHub.tsx, architecture diagrams showing the Microsoft stack). Never in end-user-facing copy. Replacement vocabulary: "system-detected," "signal-based," "system-analyzed," "pre-staged," "system-staged," "continuous monitoring," "pattern-matched."
 
 **Note on "72 hours":** Remains acceptable in contextual uses — regulatory notification deadlines (SEC 8-K, GDPR), before-state comparison data in demo scenario tables, or crisis scenario narrative detail. ONLY retired as a product mobilization baseline claim.
 
@@ -1573,4 +1582,46 @@ Designed to be sent as a URL to a board chair before a pitch meeting. No login r
 
 ### 30-Day Pilot Onboarding Arc (T004)
 `WelcomeBrief.tsx` — new "Your First 30 Days — Activation Arc" section inserted between the detection panel and the "What Happens Next" infrastructure grid. Shows 4 milestones: Day 1 Platform Armed → Week 1 First Alert → Week 2 Shadow Simulation → Day 30 Execution Benchmark. Left gold border, metric-dense, matches existing dark-mode panel style.
+
+---
+
+## 36. Platform-Wide Changes — April 10, 2026 (rev 21)
+
+### Father's Origin Story — "The Origin" Prologue (LOCKED)
+`FounderStory.tsx` — New prologue section inserted as the very first block of the page, before Section I (Roman numerals).
+
+**Copy (LOCKED — never rewrite):**
+- Story: Founder's father, third grade, first day of football — "Prepare. Practice. Perform fearless. Never give up."
+- Explains why the company is named VaughnMartin (named for the family that gave the framework)
+- Maps the four words directly to the platform thesis arc: Preparation → Readiness → Fearless → Never give up
+
+**Why it's locked:** This is not editorial flavor. It is the origin of the product philosophy, the company name, and the IDEA Framework sequence. Every playbook in the system traces back to these four words.
+
+### "The Manifesto" — HomepageNav Visibility
+Both desktop and mobile `HomepageNav` now include a "The Manifesto" link routing to `/founder-story`.
+- Desktop: italic Cormorant Garamond (signals personal/editorial)
+- Mobile: gold color weight
+- Homepage founder quote block has a gold editorial link: *"Why this company exists — and why it's named what it is →"*
+- Position: mid-funnel discovery (after product hook, not the lead)
+
+### Language Enforcement Sweep — AI Terminology Retirement (LOCKED — Zero Tolerance)
+25+ instances of retired AI language cleared from pages and components across the platform.
+
+**Retired permanently from all visible UI copy:**
+- "AI-powered" → "signal-based" / "system-analyzed"
+- "AI-driven" → "signal-based" / "system-detected"
+- "AI-generated" → "system-analyzed" / "pre-staged"
+- "AI-detected" → "system-detected"
+- "GPT-4o" (in any end-user-facing label, description, or copy)
+
+**Files corrected in this sweep:**
+`BoardDeckGenerator.tsx`, `ExecutiveWarRoom.tsx`, `ProactiveRadar.tsx`, `StrategicInsightsPanel.tsx`, `MonitorPhaseView.tsx`, `JourneyNavigator.tsx`, `SplitScreenComparison.tsx`, `FutureReadinessDashboard.tsx`, `PeerReview.tsx`, `PlaybookActivationConsole.tsx`, `BoardBriefings.tsx`, `StrategicRecorder.tsx`, `CompoundThreatAlerts.tsx`
+
+**Exemptions:** Technical code comments. GPT-4o model name may appear only in `IntegrationHub.tsx` or architecture diagrams showing the Microsoft stack — never in end-user-facing copy.
+
+### DOM Warning Fix — VaughnMartin Logo
+`VaughnMartinLogo.tsx` icon-only variant changed wrapper element from `<div>` to `<span>` — eliminates browser DOM nesting warning that appeared when the logo was rendered inside inline/button contexts.
+
+### IDEAFramework DOM Fix
+`IDEAFramework.tsx` SubBrandLabel changed from `<p>` to `<div>` — eliminates invalid nesting console warning.
 
