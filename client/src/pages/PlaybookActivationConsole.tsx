@@ -327,6 +327,8 @@ export default function PlaybookActivationConsole() {
   const { user } = useAuth();
   const { toast } = useToast();
   const [activationConfirmed, setActivationConfirmed] = useState(false);
+  const [showInitiatedScreen, setShowInitiatedScreen] = useState(false);
+  const [initiatedProgress, setInitiatedProgress] = useState(0);
   const [executionStartTime, setExecutionStartTime] = useState<Date | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [notes, setNotes] = useState("");
@@ -556,6 +558,15 @@ export default function PlaybookActivationConsole() {
     const timelineMinutes = timeline === 'accelerated' ? 8 : timeline === 'extended' ? 20 : 12;
 
     setActivationConfirmed(true);
+    setShowInitiatedScreen(true);
+    setInitiatedProgress(0);
+    const progressInterval = setInterval(() => {
+      setInitiatedProgress(p => {
+        if (p >= 100) { clearInterval(progressInterval); return 100; }
+        return p + 2.5;
+      });
+    }, 60);
+    setTimeout(() => { setShowInitiatedScreen(false); clearInterval(progressInterval); }, 2600);
     setExecutionStartTime(new Date());
     setExecutionStatus('active');
     const domain = playbook?.domain || playbook?.strategicCategory || '';
@@ -735,6 +746,69 @@ export default function PlaybookActivationConsole() {
                   <span style={{ color: i === 0 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.25)", fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{line}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  // Dramatic "Response Initiated" moment — shown for ~2.5s after executive confirms activation
+  if (showInitiatedScreen) {
+    const domainStakeholderCount = (DOMAIN_STAKEHOLDERS[playbook?.domain || ''] || GENERIC_STAKEHOLDERS).length;
+    const taskCount = safeTasks.length > 0 ? safeTasks.length : 7;
+    return (
+      <PageLayout>
+        <div style={{ background: NAVY, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+          {/* Background grid */}
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.07) 1px, transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
+          {/* Gold orb */}
+          <div style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%, -50%)", width: 900, height: 900, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 65%)", pointerEvents: "none" }} />
+          {/* Teal orb */}
+          <div style={{ position: "absolute", bottom: 0, right: 0, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(43,138,110,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+          <div style={{ position: "relative", textAlign: "center", maxWidth: 560, padding: "0 40px" }}>
+            {/* Overline */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 28 }}>
+              <div style={{ width: 32, height: 1, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Authorization Confirmed</span>
+              <div style={{ width: 32, height: 1, background: GOLD }} />
+            </div>
+
+            {/* Main heading */}
+            <h1 style={{ ...CG, fontSize: "clamp(38px,6vw,64px)", fontWeight: 600, color: "#fff", lineHeight: 1.0, marginBottom: 12, letterSpacing: "-0.01em" }}>
+              Response <em style={{ color: GOLD, fontStyle: "italic" }}>Initiated</em>
+            </h1>
+
+            {/* Playbook name */}
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em", marginBottom: 48, fontWeight: 500 }}>
+              {playbook?.name || 'Playbook'} · Execution Clock Running
+            </p>
+
+            {/* Three stat cards */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 1, marginBottom: 48, border: `1px solid rgba(201,168,76,0.2)` }}>
+              {[
+                { label: "Clock", value: "0:00", sub: "12-min target" },
+                { label: "Tasks", value: taskCount.toString(), sub: "pre-staged" },
+                { label: "Stakeholders", value: domainStakeholderCount.toString(), sub: "being notified" },
+              ].map((stat, i) => (
+                <div key={i} style={{ padding: "20px 16px", background: i === 1 ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.03)", borderRight: i < 2 ? "1px solid rgba(201,168,76,0.2)" : "none" }}>
+                  <div style={{ fontSize: 28, fontWeight: 700, color: i === 1 ? GOLD : "#fff", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2 }}>{stat.label}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", fontFamily: "'Barlow Condensed', sans-serif" }}>{stat.sub}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Status line */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 32 }}>
+              <div style={{ width: 6, height: 6, background: TEAL, borderRadius: "50%", animation: "pulse 1s ease-in-out infinite" }} />
+              <span style={{ color: TEAL, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, fontFamily: "'Barlow Condensed', sans-serif" }}>Execution Console Loading</span>
+            </div>
+
+            {/* Progress bar */}
+            <div style={{ width: "100%", height: 2, background: "rgba(255,255,255,0.08)", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: `${initiatedProgress}%`, background: `linear-gradient(90deg, ${TEAL}, ${GOLD})`, transition: "width 60ms linear" }} />
             </div>
           </div>
         </div>
