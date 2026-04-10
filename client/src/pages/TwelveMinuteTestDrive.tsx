@@ -213,7 +213,7 @@ export default function TwelveMinuteTestDrive() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           {[
             { n: 1, label: 'Choose Scenario' },
-            { n: 2, label: 'AI Brief' },
+            { n: 2, label: 'Execution Brief' },
             { n: 3, label: 'War Room' },
             { n: 4, label: 'Debrief' },
           ].map((s, i) => (
@@ -294,7 +294,7 @@ export default function TwelveMinuteTestDrive() {
         {step === 2 && scenario && (
           <div>
             <div style={{ textAlign: 'center', marginBottom: 40 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>AI Execution Brief · GPT-4o</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief · System Analysis</div>
               <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>
                 {scenario.title}
               </h2>
@@ -304,7 +304,7 @@ export default function TwelveMinuteTestDrive() {
             {loadingBrief ? (
               <div style={{ textAlign: 'center', padding: '80px 0' }}>
                 <div style={{ display: 'inline-block', width: 40, height: 40, border: `3px solid ${GOLD}`, borderTopColor: 'transparent', borderRadius: 0, animation: 'spin 0.8s linear infinite' }} />
-                <p style={{ color: 'rgba(255,255,255,0.5)', marginTop: 16, fontSize: 13 }}>GPT-4o generating your execution brief…</p>
+                <p style={{ color: 'rgba(255,255,255,0.5)', marginTop: 16, fontSize: 13 }}>Analyzing signals and generating your execution brief…</p>
                 <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
               </div>
             ) : (

@@ -1080,6 +1080,62 @@ html:not(.dark) [class*="border-zinc-9"] {
   color: #6B7280;
 }
 
+/* ── Aliases used in session-plan utility naming ── */
+/* vm-stat-block → alias for vm-stat-editorial */
+.vm-stat-block {
+  display: flex;
+  flex-direction: column;
+}
+.vm-stat-block .stat-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  color: #C9A84C;
+  letter-spacing: -0.01em;
+}
+.vm-stat-block .stat-rule {
+  width: 28px;
+  height: 1px;
+  background: rgba(201,168,76,0.4);
+  margin: 10px 0 8px;
+}
+.vm-stat-block .stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6B7280;
+}
+
+/* vm-editorial-rule → a simple gold horizontal rule, use between editorial sections */
+.vm-editorial-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+.vm-editorial-rule::before,
+.vm-editorial-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E8E4DC;
+}
+.vm-editorial-rule span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  flex-shrink: 0;
+}
+.vm-editorial-rule.on-dark::before,
+.vm-editorial-rule.on-dark::after { background: rgba(255,255,255,0.08); }
+.vm-editorial-rule.on-dark span { color: rgba(201,168,76,0.6); }
+
 /* Editorial section label — gold rule + caps text before sections */
 .vm-section-label {
   display: flex;

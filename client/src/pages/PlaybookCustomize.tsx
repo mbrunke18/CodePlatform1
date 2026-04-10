@@ -396,7 +396,7 @@ const IDEA_PHASES = [
     tagline: 'Review the Film',
     description: 'Track success metrics and capture business impact',
     color: 'bg-[#2B8A6E]',
-    sections: ['metrics', 'impact']
+    sections: ['metrics', 'impact', 'ownership']
   }
 ];
 
@@ -415,7 +415,8 @@ const sections = [
   { id: 'budget', label: 'Budget', icon: DollarSign, phase: 'execute' },
   { id: 'communications', label: 'Communications', icon: Megaphone, phase: 'execute' },
   { id: 'metrics', label: 'Success Metrics', icon: Target, phase: 'advance' },
-  { id: 'impact', label: 'Business Impact', icon: TrendingUp, phase: 'advance' }
+  { id: 'impact', label: 'Business Impact', icon: TrendingUp, phase: 'advance' },
+  { id: 'ownership', label: 'Challenge Rights', icon: Lock, phase: 'advance' }
 ];
 
 export default function PlaybookCustomize() {
@@ -430,7 +431,7 @@ export default function PlaybookCustomize() {
     basic: true, triggers: true, escalation: false, stakeholders: false, 
     steps: false, budget: false, impact: false, compliance: false,
     risk: false, communications: false, dependencies: false, governance: false,
-    geographic: false, readiness: false, metrics: false
+    geographic: false, readiness: false, metrics: false, ownership: false
   });
   
   const playbookId = params?.id || editParams?.id || (customizeParams?.id !== 'new' ? customizeParams?.id : undefined);
@@ -588,7 +589,8 @@ export default function PlaybookCustomize() {
     budget: 'execute',
     communications: 'execute',
     metrics: 'advance',
-    impact: 'advance'
+    impact: 'advance',
+    ownership: 'advance'
   };
   
   const activePhase = IDEA_PHASES.find(p => p.id === sectionPhases[activeSection]);
@@ -1286,6 +1288,88 @@ export default function PlaybookCustomize() {
                         </CardContent>
                       </Card>
                     ))}
+                  </div>
+                </div>
+              )}
+
+              {/* ── CHALLENGE RIGHTS / OWNERSHIP ──────────────────────── */}
+              {activeSection === 'ownership' && (
+                <div className="space-y-8 animate-in fade-in duration-500">
+                  <div>
+                    <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Challenge Rights</h3>
+                    <p className="text-sm text-[#6B7280] mt-1">The operational moat. The executive who activates this playbook must have been in the room building it — not receiving it.</p>
+                  </div>
+
+                  {/* Principle callout */}
+                  <div style={{ borderLeft: "3px solid #C9A84C", background: "#F8F7F4", padding: "24px 24px 24px 28px" }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Design Principle</div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 500, color: "#0A0F2E", lineHeight: 1.6, fontStyle: "italic", marginBottom: 12 }}>
+                      "Preparation that produces compliance looks identical to preparation that produces commitment. The three criteria that separate them: participation in construction, the right to challenge any assumption, and a plan that reflects the owner's specific judgment."
+                    </p>
+                    <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 500 }}>
+                      This section is where the playbook owner formally exercises their challenge rights — before the trigger fires, not after.
+                    </div>
+                  </div>
+
+                  {/* Ownership confirmation */}
+                  <div className="p-6 border border-[#E8E4DC] space-y-4">
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#0A0F2E", marginBottom: 4 }}>Ownership Confirmation</div>
+                    <p className="text-sm text-[#6B7280]">The owner of this playbook was involved in its construction, not just its receipt.</p>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Playbook Owner</Label>
+                        <Input {...register('playbookOwner')} placeholder="Name of the executive who will activate this" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Owner Email</Label>
+                        <Input {...register('playbookOwnerEmail')} type="email" placeholder="owner@company.com" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Challenge log */}
+                  <div className="space-y-3">
+                    <div>
+                      <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Challenges & Flagged Assumptions</Label>
+                      <p className="text-xs text-[#6B7280] mt-1">Document any assumption you question, gap you've identified, or condition where this playbook would fail. These become the basis for the next revision cycle.</p>
+                    </div>
+                    <Textarea
+                      {...register('versionNotes')}
+                      placeholder={`Example challenges:\n— "This assumes Legal can turn a response in 2 hours. In Q4 that's not realistic."\n— "The supply chain step skips our Southeast Asia suppliers — they have a different escalation path."\n— "Step 4 requires CFO sign-off but doesn't account for board travel schedules."`}
+                      className="min-h-[180px] font-mono text-sm"
+                    />
+                    <div className="flex items-start gap-3 p-4" style={{ background: "rgba(43,138,110,0.06)", border: "1px solid rgba(43,138,110,0.2)" }}>
+                      <div style={{ width: 6, height: 6, background: "#2B8A6E", flexShrink: 0, marginTop: 5 }} />
+                      <p className="text-xs" style={{ color: "#2B8A6E", lineHeight: 1.6 }}>
+                        Challenge rights are permanent. Any assumption documented here creates a mandatory review obligation before this playbook activates in a live scenario. The record stays with the playbook through every revision.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Commitment vs compliance indicator */}
+                  <div className="grid md:grid-cols-2 gap-6 pt-2">
+                    <div className="p-5 border-2 border-[#E8E4DC] space-y-3">
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Compliance</div>
+                      <div className="space-y-2">
+                        {["Playbook was received and reviewed", "Owner acknowledged the document", "No formal challenge mechanism", "Template defaults accepted as-is"].map(item => (
+                          <div key={item} className="flex items-center gap-2 text-xs text-[#9CA3AF]">
+                            <div style={{ width: 4, height: 4, background: "#D1D5DB", flexShrink: 0 }} />
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="p-5 space-y-3" style={{ border: "2px solid #C9A84C", background: "rgba(201,168,76,0.03)" }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Commitment</div>
+                      <div className="space-y-2">
+                        {["Owner participated in construction", "Assumptions formally challenged", "Owner's judgment embedded in the plan", "Artifact — not a document received"].map(item => (
+                          <div key={item} className="flex items-center gap-2 text-xs font-medium text-[#0A0F2E]">
+                            <div style={{ width: 4, height: 4, background: "#C9A84C", flexShrink: 0 }} />
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

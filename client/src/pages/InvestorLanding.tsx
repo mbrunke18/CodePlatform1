@@ -124,7 +124,6 @@ export default function InvestorLanding() {
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-request-pilot"
               >
-                <Calendar className="mr-2 h-5 w-5" />
                 Schedule a Conversation
               </Button>
               <Button
@@ -133,7 +132,6 @@ export default function InvestorLanding() {
                 className="bg-[#0A0F2E] text-white border border-white/20 hover:bg-[#141B45]"
                 data-testid="button-see-demo"
               >
-                <Rocket className="mr-2 h-5 w-5 text-[#C9A84C]" />
                 See 8-Minute Demo
               </Button>
               <Button
@@ -143,7 +141,6 @@ export default function InvestorLanding() {
                 className="border-white/20 text-white hover:bg-white/10"
                 data-testid="button-investor-resources"
               >
-                <FileText className="mr-2 h-5 w-5 text-[#C9A84C]" />
                 Investor Resources
               </Button>
             </div>
@@ -154,10 +151,7 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-[#0A0F2E] text-white border border-[#0A0F2E]/30 text-sm px-4 py-1.5">
-                <AlertTriangle className="h-4 w-4 mr-2 inline" />
-                Market Problem
-              </Badge>
+              <div className="vm-section-label justify-center mb-6"><span>Market Problem</span></div>
               <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
               Three Enterprise Problems Worth $847B
             </h2>
@@ -199,10 +193,7 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/30 text-sm px-4 py-1.5">
-                <Brain className="h-4 w-4 mr-2 inline" />
-                Architectural Thesis
-              </Badge>
+              <div className="vm-section-label justify-center mb-6"><span>Architectural Thesis</span></div>
               <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 The Operating Model Layer
               </h2>
@@ -250,9 +241,7 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <Badge className="mb-6 bg-[#0A0F2E] text-white border-0 text-sm px-4 py-1.5">
-                2026 Market Validation
-              </Badge>
+              <div className="vm-section-label justify-center mb-6"><span>2026 Market Validation</span></div>
               <h2 className="text-4xl font-bold mb-4 text-[#0A0F2E]">
                 8 Flagship Reports. One Conclusion.
               </h2>
@@ -563,9 +552,7 @@ export default function InvestorLanding() {
         <section className="py-16 px-6 bg-white text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
-              <Badge className="mb-4 bg-[#2B8A6E] text-white border-0 text-sm px-4 py-1.5">
-                Last 6 Months
-              </Badge>
+              <div className="vm-section-label justify-center mb-4"><span>Last 6 Months</span></div>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-4">
                 12 Guides. 9 Firms. One Conclusion.
               </h2>
@@ -1060,7 +1047,6 @@ export default function InvestorLanding() {
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-cta-schedule"
               >
-                <Calendar className="mr-2 h-5 w-5" />
                 Schedule a Conversation
               </Button>
               <Button
@@ -1069,7 +1055,6 @@ export default function InvestorLanding() {
                 className="bg-white/10 text-white hover:bg-white/20 border border-white/20"
                 data-testid="button-cta-demo"
               >
-                <Rocket className="mr-2 h-5 w-5 text-[#C9A84C]" />
                 Experience the Platform
               </Button>
               <Button
@@ -1079,9 +1064,7 @@ export default function InvestorLanding() {
                 className="border-white/20 text-white hover:bg-white/10"
                 data-testid="button-cta-resources"
               >
-                <FileText className="mr-2 h-5 w-5 text-[#C9A84C]" />
                 Investor Resources
-                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
             <p className="text-sm text-white/40">

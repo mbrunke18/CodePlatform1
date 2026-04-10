@@ -933,9 +933,7 @@ export default function TryDemo() {
                           style={{ background: 'linear-gradient(135deg, #C9A84C, #B8972A)', boxShadow: '0 8px 32px rgba(201,168,76,0.4)', border: 'none' }}
                           onClick={moveToPrepared}
                         >
-                          <Zap className="mr-2 h-5 w-5" />
-                          Now Watch the 12-Minute Response
-                          <ArrowRight className="ml-2 h-5 w-5" />
+                          Now Watch the 12-Minute Response →
                         </Button>
                       </div>
                     )}
@@ -1413,7 +1411,6 @@ export default function TryDemo() {
                                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                               }}
                             >
-                              <Rocket className="mr-2 h-5 w-5" />
                               Start Your Pilot
                             </Button>
                             <Button 
@@ -1421,7 +1418,6 @@ export default function TryDemo() {
                               className="w-full text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#F8F7F4]"
                               onClick={resetDemo}
                             >
-                              <RefreshCw className="mr-2 h-4 w-4" />
                               Try Another Scenario
                             </Button>
                           </div>

@@ -379,7 +379,7 @@ export default function PlaybookActivationConsole() {
         ...prev,
       ]);
     } else {
-      setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ✓ Acknowledged — "${taskLabel.slice(0, 55)}${taskLabel.length > 55 ? '…' : ''}"`, type: 'complete' as const }, ...prev]);
+      setLiveEvents(prev => [{ time: at, text: `[${ackRole}] ✓ Committed — ownership confirmed on "${taskLabel.slice(0, 45)}${taskLabel.length > 45 ? '…' : ''}"`, type: 'complete' as const }, ...prev]);
     }
     setAckFormTaskId(null);
     try {
@@ -1116,7 +1116,7 @@ export default function PlaybookActivationConsole() {
                     background: s.status === 'acknowledged' ? "rgba(43,138,110,0.12)" : s.status === 'notified' ? "rgba(201,168,76,0.12)" : "rgba(0,0,0,0.05)",
                     color: s.status === 'acknowledged' ? TEAL : s.status === 'notified' ? GOLD : MUTED,
                   }}>
-                    {s.status === 'acknowledged' ? '✓ Confirmed' : s.status === 'notified' ? '📣 Notified' : '⏳ Pending'}
+                    {s.status === 'acknowledged' ? '✓ Ownership Confirmed' : s.status === 'notified' ? '📣 Notified' : '⏳ Pending'}
                   </div>
                 </div>
               ))}
@@ -1268,7 +1268,7 @@ export default function PlaybookActivationConsole() {
                         <div style={{ marginTop: 10, padding: "6px 12px", background: "rgba(43,138,110,0.07)", border: `1px solid rgba(43,138,110,0.2)`, borderRadius: 0, display: "flex", alignItems: "center", gap: 10 }}>
                           <CheckCircle2 className="h-3.5 w-3.5 flex-shrink-0" style={{ color: TEAL }} />
                           <span style={{ fontSize: 11, color: TEAL, fontWeight: 700 }}>
-                            {ackMap[task.id].actionType === 'escalate' ? '↑ Escalated' : ackMap[task.id].actionType === 'delegate' ? '→ Delegated' : '✓ Acknowledged'} by {ackMap[task.id].role} — {ackMap[task.id].at}
+                            {ackMap[task.id].actionType === 'escalate' ? '↑ Escalated' : ackMap[task.id].actionType === 'delegate' ? '→ Delegated' : '✓ Committed'} by {ackMap[task.id].role} — {ackMap[task.id].at}
                           </span>
                         </div>
                       ) : (isActive || isDone) && ackFormTaskId !== task.id ? (
@@ -1276,7 +1276,7 @@ export default function PlaybookActivationConsole() {
                           <button
                             onClick={() => { setAckFormTaskId(task.id); setAckActionType('complete'); }}
                             style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(43,138,110,0.1)", border: `1px solid rgba(43,138,110,0.3)`, color: TEAL, borderRadius: 0, cursor: "pointer" }}
-                          >✓ Acknowledge</button>
+                          >✓ Commit to This</button>
                           <button
                             onClick={() => { setAckFormTaskId(task.id); setAckActionType('escalate'); }}
                             style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD, borderRadius: 0, cursor: "pointer" }}
@@ -1292,7 +1292,7 @@ export default function PlaybookActivationConsole() {
                       {ackFormTaskId === task.id && (
                         <div style={{ marginTop: 12, padding: "14px 16px", background: "#F8F9FC", border: `1px solid ${BORDER}`, borderRadius: 0 }}>
                           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 10 }}>
-                            {ackActionType === 'escalate' ? '↑ Escalate Task' : ackActionType === 'delegate' ? '→ Delegate Task' : '✓ Acknowledge Task'}
+                            {ackActionType === 'escalate' ? '↑ Escalate Task' : ackActionType === 'delegate' ? '→ Delegate Task' : '✓ Commit to Task'}
                           </div>
                           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" as const }}>
                             <input

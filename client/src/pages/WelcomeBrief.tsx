@@ -266,7 +266,7 @@ export default function WelcomeBrief() {
               {
                 day: 'Week 1',
                 title: 'First Alert',
-                desc: 'Your first trigger fires. Review the detection, validate your configuration, acknowledge the brief.',
+                desc: 'Your first trigger fires. You built the response. You activate it — not because it was handed to you, but because you constructed it.',
                 color: GOLD,
               },
               {

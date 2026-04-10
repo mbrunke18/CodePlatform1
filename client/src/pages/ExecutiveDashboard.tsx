@@ -264,20 +264,18 @@ export default function ExecutiveDashboard() {
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
                 Single-pane executive overview of organizational gravity. 
-                Monitor readiness, velocity, and AI-detected strategic signals.
+                Monitor readiness, velocity, and system-detected strategic signals.
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Badge style={{ background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.15)" }} className="px-4 py-2 rounded-none h-12">
-                <Activity className="h-4 w-4 mr-2 text-[#2B8A6E]" />
-                <span className="text-[10px] font-bold uppercase tracking-widest">Live System Telemetry</span>
-              </Badge>
+              <div style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", padding: "0 16px", height: 48, display: "flex", alignItems: "center" }}>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-white">Live System Telemetry</span>
+              </div>
               <Button 
                 onClick={handleRecalculate}
                 style={{ background: "transparent", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff" }}
                 className="hover:bg-white/10 rounded-none h-12 px-8 uppercase tracking-widest font-bold text-[10px]"
               >
-                <RefreshCw className="h-4 w-4 mr-2" />
                 Refresh Intelligence
               </Button>
             </div>

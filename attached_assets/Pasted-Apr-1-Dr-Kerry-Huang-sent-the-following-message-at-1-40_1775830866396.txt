@@ -1,0 +1,183 @@
+Apr 1
+Dr. Kerry Huang sent the following message at 1:40 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   1:40 PM
+👏
+👍
+😊
+
+
+
+Martin, your perspective on coordination as the missing layer between AI and execution really resonated with me. I’ve been exploring similar ideas through my 6-ER thinking around orchestration and decision flow. Would be great to connect and exchange perspectives on this.
+
+Monday
+Martin Brunke sent the following message at 9:22 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   9:22 AM
+Kerry, really glad it resonated. The convergence between your 6-ER orchestration thinking and what I built on the execution side is exactly the kind of intersection worth exploring properly.
+
+Would welcome any opportunity to speak when your schedule allows. I am in the US so happy to work around the time difference.
+
+Dr. Kerry Huang sent the following message at 9:27 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   9:27 AM
+Martin, really appreciate that—and I agree, this intersection between coordination and decision orchestration is where a lot of real leverage sits.
+
+Your point reinforces something I’ve been reflecting on as well: execution is less about capability, and more about how decisions are connected and aligned across the system.
+
+I’d be glad to continue the conversation asynchronously here as a start. In the meantime, I recently shared a post featuring my Forbes article that expands on this thinking—would value your perspective:
+https://www.linkedin.com/posts/dr-k-atlas_awacourage-supplychain-leadership-activity-7446909714195664897-qpun?utm_source=share&utm_medium=member_ios&rcm=ACoAAA1vZCkBMZjVs0gFGL6qGzj12ULvXqiO1o8
+
+View Dr. Kerry Huang’s  graphic link
+Dr. Kerry HuangDr. Kerry Huang
+   • 1stPremium • 1st
+Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)
+4d •  4 days ago • Visible to anyone on or off LinkedIn
+This week, AwaCourage spoke to me in Japanese 🇯🇵
+
+My Forbes article was just translated and published by Forbes Japan.
+
+And that signal told me something I hadn’t fully seen before.
+
+The challenges we face in supply chains are not local — they are structural, global, and shared.
+
+Across industries and countries, we continue to see the same pattern:
+Technology investment alone does not create competitive advantage.
+
+From studying 408 firms across manufacturing industries, one insight stands out — and it is uncomfortable for most boardrooms:
+
+Technology adoption alone has zero statistical relationship with supply chain collaboration improvement.
+
+Zero. Not weak. Not marginal. Zero.
+
+The business case most companies present to their boards simply does not exist in the data.
+
+Technology doesn’t build a moat.
+Capability and governance do.
+
+The real gap is not digital — it is organizational.
+
+Lidl spent seven years and nearly $580 million on a world-class SAP system.
+They walked away from it in 2018.
+
+Siemens Amberg built one of the world’s most advanced smart factories —
+not by installing technology first,
+but by ensuring operators had real decision rights before the system arrived.
+
+Same investment category. Opposite results.
+
+It was who owned the decision before it arrived.
+
+Companies don’t fail because they lack systems.
+They fail because they outsource judgment before building it.
+
+This is where I believe a new kind of leadership is required — what I call AwaCourage.
+
+“Awareness without AwaCourage is merely a well-lit prison cell.”
+
+Because in the end,
+AI will scale decisions —
+but only organizations can build the capability to make them right.
+
+Thank you to Forbes Japan for bringing this conversation to Japanese readers.
+
+The problem has no borders. The conversation shouldn’t either.
+
+Three thinkers whose conversations have sharpened how I see this problem:
+Richard Goyette Grant Oliff Oscar Chavarria 
+Grateful for the ongoing exchange.
+
+Where in your organization does the decision live — and who actually owns it when the system fails?
+
+🔗 Links in the first comment. 👇
+
+hashtag#AwaCourage hashtag#SupplyChain hashtag#Leadership hashtag#DigitalTransformation hashtag#Governance hashtag#ForbesBusinessCouncil
+…more
+Activate to view larger image,
+graphical user interface, application
+Activate to view larger image,
+Wednesday
+Martin Brunke sent the following message at 10:39 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   10:39 AM
+Dr. Huang, 
+
+Your framing in the DM lands exactly right. Execution is less about capability and more about how decisions are connected and aligned across the system. That is the premise behind everything I built.
+
+I read the Forbes article. The Siemens versus Lidl contrast is the sharpest version of the capability-first argument I have seen anywhere. And the 408-firm finding is the sentence that matters most. Zero statistical link between technology deployment and improved collaboration. That is exactly why most AI investments are producing activity not outcomes.
+
+Your capability-first audit question is where our work converges most directly. If the platform disappeared tomorrow could your organization still make and own the high-stakes decisions it supposedly enables? What I built requires the organization to answer yes before the platform ever activates. Decision rights mapped. Ownership defined. Response architecture built. All during a period of low pressure and full information before any trigger fires. The platform then deploys what the organization already decided. It accelerates decisions your people already know how to make. That is the Siemens model made operational.
+
+The missing middle layer you describe in the article is what the preparation phase builds and captures. And every time a playbook deploys the debrief encodes what worked back into better preparation for next time. The capability compounds. The moat deepens.
+
+Your research provides the most rigorous academic foundation for what I built that I have come across.
+
+Dr. Kerry Huang sent the following message at 10:53 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   10:53 AM
+Martin, “the capability compounds, the moat deepens” is the formulation that matters most to me here, because it names something the 408-firm data kept pointing at without landing on: the organizations where capability held longest weren’t just better prepared, they had built a feedback mechanism that made each deployment more accurate than the last. The debrief encoding what worked back into preparation isn’t just a quality improvement loop — it’s the mechanism by which the moat becomes genuinely harder to replicate, because the competitor can buy the platform but can’t buy the accumulated decision logic embedded in the preparation phase.
+
+What I’m still working out is the failure mode at the seam between preparation and deployment. In your system — where decision rights, ownership, and response architecture are all established during low pressure before any trigger fires — what’s the earliest signal that the preparation phase didn’t actually transfer when real pressure arrived? Not that the playbook failed, but that the organization reverted to improvising rather than deploying what it had already decided.
+
+Martin Brunke sent the following message at 11:26 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   11:26 AM
+Dr Huang, 
+The failure mode at the seam shows up before the debrief and before any outcome is visible. The earliest signal is not that the playbook failed. It is whether the person who owned the decision during preparation steps into it under pressure or steps back from it.
+
+When a trigger fires every owner has a pre-assigned acknowledgment step. That step is visible in real time. Silence at acknowledgment is the signal. Not silence at completion. Not divergence at debrief. Silence at the moment the response either deploys or does not. That surfaces within the first minutes of execution before anyone can assess whether the playbook worked.
+
+What we have found is that the organizations that hold at the seam are not the ones with the best documentation. They are the ones who built ownership during preparation rather than assignment. Those are different things. Assignment is naming someone. Ownership is when that person has challenged the playbook, rehearsed the decision, and signed off on it before any pressure existed. When the trigger fires they are not reading a document. They are executing a decision they already made.
+
+The debrief captures the second signal. If the organization improvised rather than deployed the debrief encodes why and that encoding feeds back into better preparation for the next deployment. But by then the window has already closed. The first signal is always acknowledgment.
+
+Your concept of AwaCourage is the right frame for that distinction. The courage to act on what was already decided rather than retreating to the comfort of real-time deliberation under pressure.
+
+Thursday
+Dr. Kerry Huang sent the following message at 7:15 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   7:15 AM
+Martin, “silence at acknowledgment” is the operational definition I didn’t have. I had been framing the failure as a documentation problem or a sequencing problem — the playbook wasn’t detailed enough, or the preparation wasn’t deep enough — but you’re pointing at something more precise: the failure is visible in the first moment of execution, before any outcome exists, as the gap between the person who was assigned and the person who owns. And ownership, as you’ve defined it, isn’t a state of mind — it’s an artifact of having already made the decision before pressure arrived. The acknowledgment step makes that artifact visible in real time.
+
+What adjusts my thinking is the debrief as second signal. I’d been treating debrief as the primary learning mechanism. But if the window closes at acknowledgment, the debrief is already encoding a recovery, not a hold. The organizations that compound capability are the ones where the first signal rarely triggers — not because they have better debriefs, but because preparation built real ownership rather than documented assignment.
+
+Martin Brunke sent the following message at 11:44 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   11:44 AM
+Dr. Huang, 
+You moved the frame on me. I had been treating ownership as a behavioral outcome of good preparation. Your formulation makes it an artifact — something the preparation phase either produces or fails to produce, and the acknowledgment step makes that visible before any outcome exists. 
+
+That distinction changes how I think about what the preparation phase is actually building.
+
+The organizations that compound capability are not the ones with better debriefs. They are the ones where preparation produced real ownership and the acknowledgment step confirms it in the first minutes. 
+
+That is the readiness thesis stated at its deepest level. Not 12 minutes. Not 3,600×. Preparation building ownership that holds under pressure.
+
+What you have surfaced in this exchange is something I have observed operationally across twenty years inside Fortune 1000 organizations but never had the academic framing to articulate precisely. Your 408-firm data and this conversation together named it in a way that will stay with me.
+
+Dr. Kerry Huang sent the following message at 7:15 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   7:15 PM
+Martin — “artifact” is the word I needed. The distinction between ownership as something preparation builds and ownership as something performance displays is exactly the boundary I’d been circling without being able to name it clearly, and the acknowledgment step being a diagnostic of the first rather than a demonstration of the second changes how I think about what’s actually being tested in the first minutes.
+
+What I’m still working through is whether the acknowledgment step is a reliable test or whether organizations can produce the acknowledgment without the artifact — rehearsed acknowledgment that looks like ownership confirmed but is actually ownership performed. I’ve seen enough cases where the first-minute signals held and the mid-execution behavior didn’t to think that something can pass the acknowledgment test without the preparation having built what it needed to build.
+
+In the twenty years you’re describing — when preparation produced ownership that held under pressure, what did that preparation do differently from the preparation that produced acknowledgment without the artifact?
+
+Today
+Martin Brunke sent the following messages at 10:11 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   10:11 AM
+Dr Huang,
+
+The question cuts to the most important operational distinction I have seen across twenty years.
+
+Yes the acknowledgment step can be gamed. And the tell is not in the first minutes. It is in mid-execution behavior exactly as you described. Someone can perform ownership at acknowledgment and revert under sustained pressure because what they built during preparation was familiarity not commitment.
+
+The deepest foundation of this product comes from five years coaching major college football at Stanford University. The programs that held under pressure were not the ones with better game plans. They were the ones where every player had been in the room when the play was built, had the right to challenge it during the week, and had rehearsed their specific decision until it was an artifact of preparation not a performance of acknowledgment. The quarterback who helped construct the play on Tuesday, challenged the blocking scheme on Wednesday, and ran the scenario against the scout team on Thursday owns a decision his body knows before his mind processes it. The player who watched film and acknowledged the scheme on Friday performs ownership on the walk-through Saturday morning and reverts when the defense shows a look nobody prepared for.
+
+That distinction is what I carried from the field into twenty years of Fortune 1000 operations. And it is the foundation of how the preparation phase was designed.
+
+The preparation that built ownership that held did three things differently. It put the owner in the room when the response was being built not when it was being delivered. It gave the owner explicit challenge rights before the playbook was final. And it was personalized to the specific decision this specific person would face under their specific conditions not a generic response assigned to a role.
+
+The acknowledgment step is a reliable test for ownership built the first way. It is not a reliable test for ownership built the second way. The platform was designed to build the first kind. Whether it always does depends on how the preparation phase was run.

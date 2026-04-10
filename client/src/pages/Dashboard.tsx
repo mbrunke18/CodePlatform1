@@ -205,7 +205,7 @@ export default function Dashboard() {
                 Strategic <em style={{ fontStyle: "italic", color: GOLD }}>Intelligence</em>
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-                Real-time visibility into strategic execution, AI-driven intelligence, and organizational readiness.
+                The response is ready before the trigger fires. 248+ signals. 170 playbooks. 12 minutes from detection to full organizational execution.
               </p>
             </div>
             
