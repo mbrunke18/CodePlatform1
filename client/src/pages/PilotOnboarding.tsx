@@ -29,7 +29,7 @@ const roles = [
       'Success criteria sign-off — what "working" looks like at 30, 60, and 90 days',
       'Renewal decision at day 90 based on documented activation performance',
     ],
-    success: 'At least 3 live activations with documented coordination time under 12 minutes. AI-generated board brief produced from real activation data. ROI case quantified and ready for the next board cycle.',
+    success: 'At least 3 live activations with documented coordination time under 12 minutes. Signal-based board brief produced from real activation data. ROI case quantified and ready for the next board cycle.',
     pages: [
       { label: 'Readiness Intelligence', href: '/coordination-intelligence' },
       { label: 'Execution History', href: '/execution-history' },
@@ -186,7 +186,7 @@ const timeline = [
     color: '#7C6FD4',
     milestones: [
       'Full activation history documented with timestamps',
-      'AI-generated board brief produced from real data',
+      'Signal-based board brief produced from real data',
       'ROI case quantified with hard numbers',
       'Internal case study complete',
       '90-day review — renewal decision',

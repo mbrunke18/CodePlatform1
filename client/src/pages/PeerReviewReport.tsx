@@ -103,7 +103,7 @@ function Quotes({ items }: { items: { name: string; role: string; org: string; t
 const CATEGORY_COLORS: Record<string, string> = {
   messaging: GOLD,
   product: TEAL,
-  pricing: "#7C3AED",
+  pricing: "#C9A84C",
   credibility: "#DC2626",
   general: NAVY,
 };

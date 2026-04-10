@@ -58,7 +58,7 @@ const strategicInsights = [
       'Team productivity variance of 34% across departments signals structural coordination gaps',
     ],
     recommendations: [
-      'Implement AI-driven process automation in 3 highest-impact workflow clusters in Q1',
+      'Implement systematic process automation in 3 highest-impact workflow clusters in Q1',
       'Restructure resource allocation to match board-stated strategic priorities — requires CFO alignment',
       'Deploy standardized coordination protocols across 4 underperforming departments within 60 days',
     ],

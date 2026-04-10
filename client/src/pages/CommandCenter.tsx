@@ -442,7 +442,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Compound Signal Intelligence · GPT-4o</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Compound Signal Intelligence · System Analysis</span>
             </div>
             <Button
               onClick={() => compoundAnalyzeMutation.mutate()}

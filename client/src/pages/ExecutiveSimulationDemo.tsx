@@ -613,8 +613,7 @@ export default function ExecutiveSimulationDemo() {
                   onClick={handleAcknowledgeAlert}
                   data-testid="button-acknowledge-alert"
                 >
-                  <Bell className="w-4 h-4 mr-2" />
-                  Acknowledge & Respond
+                  Commit & Respond
                 </Button>
               </CardFooter>
             </Card>

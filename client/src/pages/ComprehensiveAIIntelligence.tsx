@@ -365,8 +365,8 @@ export default function ComprehensiveAIIntelligence() {
             <div className="relative z-10 flex items-center gap-4 text-white">
               <Brain className="h-10 w-10 text-[#C9A84C]" />
               <div>
-                <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>AI Intelligence Command Center</h1>
-                <p className="text-white/70">Comprehensive AI-powered organizational intelligence and strategic insights</p>
+                <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Strategic Intelligence Command Center</h1>
+                <p className="text-white/70">Comprehensive signal-based organizational intelligence and strategic insights</p>
               </div>
             </div>
             <div className="relative z-10 flex items-center gap-4">

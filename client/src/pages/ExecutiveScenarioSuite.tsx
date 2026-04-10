@@ -681,10 +681,10 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
           <div style={{ fontSize: 36, fontWeight: 800, color: '#2563EB', marginBottom: 4 }}>{scenario.detection.signals.length}</div>
           <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Signals Detected</div>
         </div>
-        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '18px 20px', textAlign: 'center' }}>
-          <div style={{ fontSize: 20, fontWeight: 800, color: '#92400E', marginBottom: 4 }}>{scenario.detection.domains.length}</div>
-          <div style={{ fontSize: 11, fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Domains Lit</div>
-          <div style={{ fontSize: 10, color: '#92400E', marginTop: 4 }}>{scenario.detection.domains.join(' · ')}</div>
+        <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.35)', borderRadius: 0, padding: '18px 20px', textAlign: 'center' }}>
+          <div style={{ fontSize: 20, fontWeight: 800, color: '#C9A84C', marginBottom: 4 }}>{scenario.detection.domains.length}</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#6B7280', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Domains Lit</div>
+          <div style={{ fontSize: 10, color: '#374151', marginTop: 4 }}>{scenario.detection.domains.join(' · ')}</div>
         </div>
       </div>
 
@@ -731,9 +731,9 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
           </button>
         </div>
       ) : (
-        <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '12px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
-          <FileText size={13} color='#92400E' />
-          <span style={{ fontSize: 12, fontWeight: 600, color: '#92400E' }}>170 playbooks pre-staged in your library — this playbook activates the moment the trigger fires.</span>
+        <div style={{ background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '12px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
+          <FileText size={13} color='#2B8A6E' />
+          <span style={{ fontSize: 12, fontWeight: 600, color: '#2B8A6E' }}>170 playbooks pre-staged in your library — this playbook activates the moment the trigger fires.</span>
         </div>
       )}
 
@@ -873,9 +873,9 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
       {/* ROI */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginBottom: 40 }}>
         {scenario.outcome.roi.map(({ label, value }) => (
-          <div key={label} style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '20px' }}>
-            <div style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#92400E', marginBottom: 8, fontWeight: 700 }}>{label}</div>
-            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#78350F' }}>{value}</div>
+          <div key={label} style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '20px' }}>
+            <div style={{ fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#6B7280', marginBottom: 8, fontWeight: 700 }}>{label}</div>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#0A0F2E' }}>{value}</div>
           </div>
         ))}
       </div>
@@ -1027,9 +1027,9 @@ export default function ExecutiveScenarioSuite() {
                     <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Exposure</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: RED }}>{scenario.exposure}</div>
                   </div>
-                  <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: 0, padding: '8px 12px', flex: 1 }}>
+                  <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '8px 12px', flex: 1 }}>
                     <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Clock</div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: '#92400E' }}>{scenario.clock}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#C9A84C' }}>{scenario.clock}</div>
                   </div>
                 </div>
 

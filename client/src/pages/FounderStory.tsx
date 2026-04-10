@@ -298,6 +298,25 @@ export default function FounderStory() {
             </div>
           </div>
 
+          {/* ── Research Anchor — Dr. Kerry Huang ────────────────────────── */}
+          <div style={{ background: "#F0EDE4", border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: "32px 36px", margin: "48px 0" }}>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 20 }}>External Research Validation</div>
+            <p style={{ ...CG, fontSize: "clamp(18px,2.2vw,22px)", fontWeight: 600, color: NAVY, lineHeight: 1.45, marginBottom: 12, fontStyle: "italic" }}>
+              "Technology adoption alone has zero statistical relationship with supply chain collaboration improvement. Zero. Not weak. Not marginal. Zero. Technology doesn't build a moat. Capability and governance do."
+            </p>
+            <div style={{ fontSize: 12, color: MUTED, fontWeight: 500, marginBottom: 20 }}>
+              Dr. Kerry Huang — ESI Top 1% Researcher, Forbes Business Council · Study of 408 firms across manufacturing industries
+            </div>
+            <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 20 }}>
+              <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, marginBottom: 12 }}>
+                This is the most rigorous academic foundation for why Readiness OS exists. What makes the difference is not which organizations deployed the most sophisticated systems — it is which organizations built the decision-making capability before the system arrived. The Siemens Amberg model: operators had real decision rights before the technology was installed. The Lidl model: $580 million and seven years — then they walked away, because the governance was never built.
+              </p>
+              <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, fontWeight: 600 }}>
+                What Readiness OS installs is the preparation infrastructure that builds the organizational capability. That capability compounds. A competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase.
+              </p>
+            </div>
+          </div>
+
           {/* VI */}
           <RomanDivider num="VI" />
           <Body>
@@ -312,6 +331,11 @@ export default function FounderStory() {
           <Body style={{ fontWeight: 700, color: NAVY, fontSize: 18 }}>
             They already know.
           </Body>
+          <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, margin: "40px 0", maxWidth: 640 }}>
+            <p style={{ ...CG, fontSize: 22, fontWeight: 500, color: NAVY, lineHeight: 1.5, fontStyle: "italic" }}>
+              "That is the readiness thesis stated at its deepest level. Not 12 minutes. Not 3,600×. Preparation building ownership that holds under pressure."
+            </p>
+          </div>
           <Body>
             The first time an organization activates a pre-staged playbook against a real event, something changes. The second time, it changes further. By the tenth time, the anxiety that surrounds most enterprise crises is gone — not because the events are less serious, but because the organization has stopped improvising and started executing. That shift is not incremental. It changes how leadership teams carry themselves. It changes what they are willing to take on. It makes them fearless.
           </Body>

@@ -319,7 +319,7 @@ export default function ContinuousModePage() {
                   label: "Regulatory Filing Window Opens in 72 Hours",
                   body: "SEC Form 10-K deadline approaching. Document staging is 94% complete. 3 pending executive approvals required before automatic submission.",
                   urgency: "CRITICAL",
-                  urgencyColor: "#7C3AED",
+                  urgencyColor: "#dc2626",
                 },
               ].map((insight) => (
                 <div key={insight.label} className="flex items-start gap-4 p-4 bg-white rounded-sm border" style={{ borderColor: BORDER }}>

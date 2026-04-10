@@ -448,8 +448,7 @@ export default function LiveDetectionFeed() {
                         disabled={acknowledgeMutation.isPending}
                         style={{ borderColor: '#e8e4dc', color: '#666', flexShrink: 0, fontSize: 12 }}
                       >
-                        <CheckCircle2 size={14} style={{ marginRight: 4 }} />
-                        Acknowledge
+                        Commit
                       </Button>
                     </div>
                   </CardContent>

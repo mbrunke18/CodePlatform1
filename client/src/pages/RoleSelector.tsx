@@ -356,7 +356,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                 { icon: Layers, label: 'Your Scenario', sub: 'Real situation. Your role. Real stakes.', color: NAVY, step: 1 },
                 { icon: BookOpen, label: 'Build Playbook', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
                 { icon: Radio, label: 'Trigger Fires', sub: 'Signal detected. OS pre-staged & ready.', color: GOLD, step: 3 },
-                { icon: Brain, label: 'AI Analysis', sub: '4 AI insights surface in real time.', color: '#7C3AED', step: 4 },
+                { icon: Brain, label: 'Signal Analysis', sub: '4 system insights surface in real time.', color: TEAL, step: 4 },
                 { icon: Zap, label: 'Live Execution', sub: 'Watch 8 tasks coordinate in 12 minutes.', color: '#DC2626', step: 5 },
                 { icon: CheckCircle2, label: 'Outcomes', sub: 'Before/after. Metrics. Your lesson.', color: TEAL, step: 6 },
               ].map((item, i) => {

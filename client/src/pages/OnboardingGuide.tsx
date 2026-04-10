@@ -9,7 +9,7 @@ import {
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
-const PURPLE = "#7C3AED";
+
 const RED = "#DC2626";
 const GREEN = "#059669";
 
@@ -251,7 +251,7 @@ export default function OnboardingGuide() {
               description="Live monitoring dashboard. Real-time RSS ingestion from 8 sources every 15 minutes. Signal confidence scoring. Trigger detection with deduplication and email alerts." />
             <FeatureCard icon={Zap} title="EXECUTE" path="/mission-control" color={GOLD}
               description="Activate playbooks, assign tasks to role-specific teams, track acknowledgments, and monitor the 12-minute execution clock. Full audit trail on every action." />
-            <FeatureCard icon={BarChart3} title="ADVANCE" path="/board-readiness" color={PURPLE}
+            <FeatureCard icon={BarChart3} title="ADVANCE" path="/board-readiness" color={TEAL}
               description="Board Readiness Snapshot, Execution Dividend ROI counter, historical detection logs, and performance analytics. Turn every incident into institutional memory." />
           </div>
 
@@ -302,7 +302,7 @@ export default function OnboardingGuide() {
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={AlertTriangle} title="Alert Fired" detail={"Email notification\nCommand Tower alert\n4-hr deduplication"} color={GOLD} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
-              <FlowStep icon={BookOpen} title="Playbook Staged" detail={"Right playbook\npre-selected\nawaiting your call"} color={PURPLE} />
+              <FlowStep icon={BookOpen} title="Playbook Staged" detail={"Right playbook\npre-selected\nawaiting your call"} color={TEAL} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={Lock} title="You Authorize" detail={"One decision\nfull team mobilized\n12-min clock starts"} color={RED} />
             </div>
@@ -372,7 +372,7 @@ export default function OnboardingGuide() {
               description="Full-screen executive display with live WebSocket updates. Real-time trigger alerts, signal ticker, system pulse, and execution log. Ideal for war rooms and leadership reviews." />
             <FeatureRow icon={BookOpen} color={GOLD} title="Playbook Library" path="/playbooks"
               description="All 170 playbooks with search and domain filters. Authenticated users can deploy playbooks and use the Task Editor to customize phases and assignments." />
-            <FeatureRow icon={Activity} color={PURPLE} title="Simulation Studio" path="/simulation-studio"
+            <FeatureRow icon={Activity} color={TEAL} title="Simulation Studio" path="/simulation-studio"
               description="Strategic scenario modeling. Input any threat, select industry, and receive Survive vs. Thrive scores with recommended playbooks and recommended actions." />
             <FeatureRow icon={FileText} color={RED} title="Board Readiness Snapshot" path="/board-readiness"
               description="Print-ready board report with domain coverage ring, readiness score, Execution Dividend, and recent detections. Export as PDF in one click." />
@@ -428,7 +428,7 @@ export default function OnboardingGuide() {
               { period: "Day 1", color: NAVY, tasks: ["Complete platform walkthrough (this guide)", "Explore Mission Control and Command Tower", "Review 3 flagship playbooks relevant to your sector", "Share the 12-Minute Test Drive link with your leadership team"] },
               { period: "Days 2–7", color: TEAL, tasks: ["Configure trigger sensitivity for your top 3 risk domains", "Add your stakeholder contacts to the registry", "Run a Simulation Studio scenario on your highest-priority threat", "Monitor live signal feed daily (5 minutes each morning)"] },
               { period: "Days 8–14", color: GOLD, tasks: ["Review your first Board Readiness Snapshot", "Check Execution Dividend ROI counter", "Activate one playbook drill using Practice Drills", "Share role-specific demos with CISO, CFO, or COO"] },
-              { period: "Days 15–30", color: PURPLE, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize playbook task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for pilot ROI summary"] },
+              { period: "Days 15–30", color: TEAL, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize playbook task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for pilot ROI summary"] },
             ].map(({ period, color, tasks }) => (
               <div key={period} style={{ background: "#fff", border: "1px solid #E5E7EB", borderLeft: `4px solid ${color}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 12, fontWeight: 900, color, textTransform: "uppercase" as const, letterSpacing: "1.5px", marginBottom: 16 }}>{period}</div>

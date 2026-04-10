@@ -805,14 +805,14 @@ export default function PlaybookDetail() {
                           </ul>
                         </div>
 
-                        <div style={{ border: `1px solid #FCD34D`, background: "#FFFBEB", padding: 24 }}>
+                        <div style={{ border: `1px solid rgba(201,168,76,0.4)`, background: "rgba(201,168,76,0.05)", padding: 24 }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                            <div style={{ width: 10, height: 10, borderRadius: 0, background: "#F59E0B" }} />
-                            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#B45309" }}>Yellow — Watch Closely</span>
+                            <div style={{ width: 10, height: 10, borderRadius: 0, background: "#C9A84C" }} />
+                            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#0A0F2E" }}>Watch Closely</span>
                           </div>
                           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
                             {riskIndicators.yellow.map((item: string, i: number) => (
-                              <li key={i} style={{ fontSize: 12, color: "#92400E", marginBottom: 10, lineHeight: 1.5, paddingLeft: 8, borderLeft: "2px solid #FCD34D" }}>{item}</li>
+                              <li key={i} style={{ fontSize: 12, color: "#374151", marginBottom: 10, lineHeight: 1.5, paddingLeft: 8, borderLeft: "2px solid #C9A84C" }}>{item}</li>
                             ))}
                           </ul>
                         </div>
@@ -977,8 +977,8 @@ export default function PlaybookDetail() {
                       </div>
                       <div className="flex items-center gap-3">
                         {hasUnsaved && (
-                          <span style={{ fontSize: 11, color: "#F59E0B", fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-                            <span className="w-2 h-2 bg-amber-500 inline-block" />
+                          <span style={{ fontSize: 11, color: "#C9A84C", fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
+                            <span className="w-2 h-2 inline-block" style={{ background: "#C9A84C" }} />
                             Unsaved changes
                           </span>
                         )}
@@ -1209,8 +1209,8 @@ export default function PlaybookDetail() {
 
                     {/* Bottom Save */}
                     {hasUnsaved && (
-                      <div style={{ padding: "16px 20px", background: "#FFFBEB", border: `1px solid #F59E0B`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <span style={{ fontSize: 12, color: "#92400E", fontWeight: 600 }}>You have unsaved changes.</span>
+                      <div style={{ padding: "16px 20px", background: "rgba(201,168,76,0.06)", border: `1px solid #C9A84C`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <span style={{ fontSize: 12, color: "#0A0F2E", fontWeight: 600 }}>You have unsaved changes.</span>
                         <Button
                           onClick={() => savePhasesMutation.mutate(editedPhases)}
                           disabled={savePhasesMutation.isPending}

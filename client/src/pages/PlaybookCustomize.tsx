@@ -1371,6 +1371,23 @@ export default function PlaybookCustomize() {
                       </div>
                     </div>
                   </div>
+
+                  {/* First-Minute Diagnostic */}
+                  <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 24, marginTop: 8 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#0A0F2E", marginBottom: 10 }}>The First-Minute Test</div>
+                    <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 10 }}>
+                      When the trigger fires, the owner who built the response steps into it. The owner who was assigned the response steps back from it. That distinction — invisible during preparation — becomes visible at the acknowledgment step, in the first minutes of execution, before any outcome exists.
+                    </p>
+                    <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 10 }}>
+                      Organizations can produce acknowledgment without the artifact. Rehearsed acknowledgment looks like ownership confirmed but is ownership performed. It holds at acknowledgment and reverts under sustained pressure — because what was built during preparation was familiarity, not commitment.
+                    </p>
+                    <div style={{ background: "rgba(10,15,46,0.03)", border: "1px solid rgba(10,15,46,0.08)", borderLeft: "2px solid #0A0F2E", padding: "14px 18px" }}>
+                      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 500, color: "#0A0F2E", lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>
+                        "Silence at acknowledgment is the signal. Not silence at completion. Not divergence at debrief. Silence at the moment the response either deploys or does not."
+                      </p>
+                      <div style={{ fontSize: 11, color: "#6B7280", marginTop: 8 }}>The preparation phase was designed to build ownership — not acknowledgment. This section is how that distinction is documented before the trigger fires.</div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

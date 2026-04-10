@@ -177,8 +177,8 @@ function PlatformArchitectureDiagram() {
     },
     {
       phase: "IDENTIFY",
-      label: "AI Engine",
-      sub: "GPT-4o powered analysis",
+      label: "Signal Engine",
+      sub: "Pattern-detection analysis",
       items: ["Threat synthesis", "Trigger matching", "Risk scoring", "Playbook recommendation"],
       color: NAVY,
       bg: "#EEF0F7",

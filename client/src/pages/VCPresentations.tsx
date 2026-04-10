@@ -251,7 +251,7 @@ export default function VCPresentations() {
                       <span className="text-lg font-bold" style={CG}>Investment Readiness: 96/100</span>
                     </div>
                     <p className="text-sm text-[#141B45] italic opacity-80 leading-relaxed">
-                      "Platform demonstrates clear market leadership with unprecedented competitive advantages in AI-driven signal monitoring and strategic execution velocity."
+                      "Platform demonstrates clear market leadership with unprecedented competitive advantages in continuous signal monitoring and strategic execution velocity."
                     </p>
                   </div>
                 </CardContent>

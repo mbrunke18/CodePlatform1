@@ -18,7 +18,7 @@ const CG = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
 function RAGBadge({ status }: { status: "green" | "amber" | "red" }) {
   const config = {
     green: { label: "Active", bg: "#2B8A6E", text: "#fff" },
-    amber: { label: "Watch", bg: "#D97706", text: "#fff" },
+    amber: { label: "Watch", bg: "#C9A84C", text: "#fff" },
     red: { label: "At Risk", bg: "#DC2626", text: "#fff" },
   }[status];
   return (
@@ -75,7 +75,7 @@ export default function AdminCustomerHealth() {
             <div style={{ display: "flex", gap: 24, marginTop: 24 }}>
               {[
                 { label: "Active", count: greenCount, color: TEAL },
-                { label: "Watch", count: amberCount, color: "#D97706" },
+                { label: "Watch", count: amberCount, color: "#C9A84C" },
                 { label: "At Risk", count: redCount, color: "#DC2626" },
                 { label: "Total Organizations", count: customers.length, color: "rgba(255,255,255,0.5)" },
               ].map(({ label, count, color }) => (
@@ -102,7 +102,7 @@ export default function AdminCustomerHealth() {
                   return (order[a.ragStatus as keyof typeof order] ?? 3) - (order[b.ragStatus as keyof typeof order] ?? 3);
                 })
                 .map((org) => (
-                  <Card key={org.id} style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${org.ragStatus === 'green' ? TEAL : org.ragStatus === 'amber' ? '#D97706' : '#DC2626'}`, borderRadius: 0 }}>
+                  <Card key={org.id} style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${org.ragStatus === 'green' ? TEAL : org.ragStatus === 'amber' ? '#C9A84C' : '#DC2626'}`, borderRadius: 0 }}>
                     <CardContent className="p-5">
                       <div className="flex items-start justify-between">
                         <div className="flex items-start gap-4 flex-1">
@@ -147,7 +147,7 @@ export default function AdminCustomerHealth() {
                               </div>
                             )}
                             {org.ragStatus === "amber" && (
-                              <div style={{ fontSize: 11, color: "#D97706", fontWeight: 600, textAlign: "right" }}>
+                              <div style={{ fontSize: 11, color: "#C9A84C", fontWeight: 600, textAlign: "right" }}>
                                 8–21 days since activation
                               </div>
                             )}

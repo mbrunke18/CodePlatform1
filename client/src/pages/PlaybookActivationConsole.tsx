@@ -301,7 +301,7 @@ function BriefLoadingState() {
               {i < step ? (
                 <CheckCircle2 style={{ width: 14, height: 14, color: TEAL }} />
               ) : i === step ? (
-                <Loader2 style={{ width: 14, height: 14, color: "#7C3AED", animation: "spin 0.8s linear infinite" }} />
+                <Loader2 style={{ width: 14, height: 14, color: TEAL, animation: "spin 0.8s linear infinite" }} />
               ) : (
                 <div style={{ width: 5, height: 5, borderRadius: 0, background: "#ccc" }} />
               )}
@@ -309,14 +309,14 @@ function BriefLoadingState() {
             <span style={{
               fontSize: 12,
               fontWeight: i === step ? 600 : 400,
-              color: i < step ? MUTED : i === step ? "#7C3AED" : "#bbb",
+              color: i < step ? MUTED : i === step ? TEAL : "#bbb",
               transition: "color 0.4s",
             }}>{s}</span>
           </div>
         ))}
       </div>
       <div style={{ marginTop: 20, fontSize: 11, color: MUTED, fontStyle: "italic" }}>
-        GPT-4o analyzing strategic context — your brief will be ready momentarily
+        Analyzing strategic context — your brief will be ready momentarily
       </div>
     </div>
   );
@@ -746,16 +746,16 @@ export default function PlaybookActivationConsole() {
             </div>
 
             {/* Dry-Run Prompt */}
-            <div style={{ border: `1px solid rgba(167,139,250,0.35)`, background: "rgba(167,139,250,0.04)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginBottom: 8 }}>
+            <div style={{ border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.04)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginBottom: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 8, height: 8, borderRadius: 0, background: "#A78BFA", flexShrink: 0 }} />
+                <div style={{ width: 8, height: 8, borderRadius: 0, background: GOLD, flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>Pre-Deployment Dry-Run Available</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>Pre-Deployment Dry-Run Available</div>
                   <div style={{ fontSize: 12, color: MUTED }}>Validate your response strategy before committing resources — see Survive vs. Thrive probability.</div>
                 </div>
               </div>
               <Link href="/simulation-studio">
-                <Button variant="outline" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, border: "1px solid #A78BFA", color: "#7C3AED", background: "transparent", whiteSpace: "nowrap", flexShrink: 0 }}>
+                <Button variant="outline" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, border: `1px solid ${GOLD}`, color: GOLD, background: "transparent", whiteSpace: "nowrap", flexShrink: 0 }}>
                   Run Dry-Run →
                 </Button>
               </Link>
@@ -763,17 +763,17 @@ export default function PlaybookActivationConsole() {
 
             {/* Role Availability Warning Banner */}
             {limitedPlaybookRoles.length > 0 && (
-              <div style={{ border: '1px solid #D97706', borderLeft: '4px solid #D97706', background: 'rgba(217, 119, 6, 0.06)', padding: '16px 20px', marginBottom: 20, borderRadius: 0 }}>
+              <div style={{ border: '1px solid #C9A84C', borderLeft: '4px solid #C9A84C', background: 'rgba(201,168,76,0.06)', padding: '16px 20px', marginBottom: 20, borderRadius: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                  <AlertTriangle className="h-4 w-4" style={{ color: '#D97706', flexShrink: 0 }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#D97706' }}>Role Availability Advisory</span>
+                  <AlertTriangle className="h-4 w-4" style={{ color: '#C9A84C', flexShrink: 0 }} />
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Role Availability Advisory</span>
                 </div>
-                <p style={{ fontSize: 13, color: '#92400E', lineHeight: 1.5, marginBottom: 8 }}>
+                <p style={{ fontSize: 13, color: '#0A0F2E', lineHeight: 1.5, marginBottom: 8 }}>
                   The following roles have been flagged as limited availability by your admin. This is advisory — you can still proceed, but response time may be impacted.
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 6 }}>
                   {limitedPlaybookRoles.map((f: any) => (
-                    <span key={f.roleName} style={{ fontSize: 11, fontWeight: 600, background: 'rgba(217, 119, 6, 0.12)', color: '#92400E', padding: '3px 8px', border: '1px solid #D97706' }}>
+                    <span key={f.roleName} style={{ fontSize: 11, fontWeight: 600, background: 'rgba(201,168,76,0.12)', color: '#0A0F2E', padding: '3px 8px', border: '1px solid #C9A84C' }}>
                       {f.roleName}{f.note ? ` — ${f.note}` : ''}
                     </span>
                   ))}
@@ -782,18 +782,18 @@ export default function PlaybookActivationConsole() {
             )}
 
             {/* AI Execution Brief */}
-            <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid #7C3AED`, background: "#fff", marginBottom: 24 }}>
+            <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, background: "#fff", marginBottom: 24 }}>
               <div style={{ padding: "18px 24px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ width: 28, height: 28, borderRadius: 0, background: "rgba(124,58,237,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <Shield style={{ width: 14, height: 14, color: "#7C3AED" }} />
+                  <div style={{ width: 28, height: 28, borderRadius: 0, background: "rgba(43,138,110,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Shield style={{ width: 14, height: 14, color: TEAL }} />
                   </div>
                   <div>
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#7C3AED" }}>AI Execution Brief</span>
-                    <div style={{ fontSize: 11, color: MUTED, marginTop: 1 }}>GPT-4o — generated for this activation</div>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL }}>Signal-Based Execution Brief · System Analysis</span>
+                    <div style={{ fontSize: 11, color: MUTED, marginTop: 1 }}>Generated for this activation</div>
                   </div>
                 </div>
-                {briefLoading && <Loader2 style={{ width: 16, height: 16, color: "#7C3AED", animation: "spin 1s linear infinite" }} />}
+                {briefLoading && <Loader2 style={{ width: 16, height: 16, color: TEAL, animation: "spin 1s linear infinite" }} />}
               </div>
 
               {briefLoading ? (
@@ -1171,7 +1171,7 @@ export default function PlaybookActivationConsole() {
                         <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 0 8px", margin: "4px 0 0" }}>
                           <div style={{ height: 1, flex: 1, background: `linear-gradient(to right, ${GOLD}, transparent)` }} />
                           <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const, padding: "4px 12px", background: GOLD, color: NAVY }}>
-                            <span>✦</span> GPT-4o SCENARIO TASKS <span>✦</span>
+                            <span>✦</span> SCENARIO INTELLIGENCE TASKS <span>✦</span>
                           </div>
                           <div style={{ height: 1, flex: 1, background: `linear-gradient(to left, ${GOLD}, transparent)` }} />
                         </div>
@@ -1272,19 +1272,24 @@ export default function PlaybookActivationConsole() {
                           </span>
                         </div>
                       ) : (isActive || isDone) && ackFormTaskId !== task.id ? (
-                        <div style={{ marginTop: 10, display: "flex", gap: 8 }}>
-                          <button
-                            onClick={() => { setAckFormTaskId(task.id); setAckActionType('complete'); }}
-                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(43,138,110,0.1)", border: `1px solid rgba(43,138,110,0.3)`, color: TEAL, borderRadius: 0, cursor: "pointer" }}
-                          >✓ Commit to This</button>
-                          <button
-                            onClick={() => { setAckFormTaskId(task.id); setAckActionType('escalate'); }}
-                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD, borderRadius: 0, cursor: "pointer" }}
-                          >↑ Escalate</button>
-                          <button
-                            onClick={() => { setAckFormTaskId(task.id); setAckActionType('delegate'); }}
-                            style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(10,15,46,0.05)", border: `1px solid rgba(10,15,46,0.2)`, color: NAVY, borderRadius: 0, cursor: "pointer" }}
-                          >→ Delegate</button>
+                        <div style={{ marginTop: 10 }}>
+                          <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                            <button
+                              onClick={() => { setAckFormTaskId(task.id); setAckActionType('complete'); }}
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(43,138,110,0.1)", border: `1px solid rgba(43,138,110,0.3)`, color: TEAL, borderRadius: 0, cursor: "pointer" }}
+                            >✓ Commit to This</button>
+                            <button
+                              onClick={() => { setAckFormTaskId(task.id); setAckActionType('escalate'); }}
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(201,168,76,0.08)", border: `1px solid rgba(201,168,76,0.3)`, color: GOLD, borderRadius: 0, cursor: "pointer" }}
+                            >↑ Escalate</button>
+                            <button
+                              onClick={() => { setAckFormTaskId(task.id); setAckActionType('delegate'); }}
+                              style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "5px 12px", background: "rgba(10,15,46,0.05)", border: `1px solid rgba(10,15,46,0.2)`, color: NAVY, borderRadius: 0, cursor: "pointer" }}
+                            >→ Delegate</button>
+                          </div>
+                          <div style={{ fontSize: 10, color: "rgba(10,15,46,0.38)", fontStyle: "italic", lineHeight: 1.5, letterSpacing: "0.01em" }}>
+                            Silence at acknowledgment is the signal. The response either deploys here — before any outcome exists — or the window closes.
+                          </div>
                         </div>
                       ) : null}
 

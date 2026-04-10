@@ -146,7 +146,7 @@ export default function NFLLearningDashboard() {
                   Strategic <em style={{ color: GOLD }}>Learning Center</em>
                 </div>
                 <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 540, lineHeight: 1.6 }}>
-                  Performance intelligence and continuous optimization — AI-driven insights from every execution.
+                  Performance intelligence and continuous optimization — system-detected insights from every execution.
                 </div>
               </div>
               <div className="bg-[#0A0F2E] p-3 rounded-none" style={{ border: '1px solid rgba(201,168,76,0.2)' }}>

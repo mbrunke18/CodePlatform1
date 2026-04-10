@@ -14,7 +14,7 @@ const NAVY  = "#0A0F2E";
 const GOLD  = "#C9A84C";
 const TEAL  = "#2B8A6E";
 const RED   = "#C0392B";
-const AMBER = "#D97706";
+const AMBER = "#C9A84C";
 
 interface PilotOrg {
   id: string;
@@ -37,7 +37,7 @@ interface PilotOrg {
 
 const HEALTH_CONFIG = {
   active:  { label: "Active",   bg: `${TEAL}20`,  border: `${TEAL}50`,  text: TEAL,  icon: CheckCircle2 },
-  watch:   { label: "Watch",    bg: "#D9770620",   border: "#D9770650",   text: AMBER, icon: AlertTriangle },
+  watch:   { label: "Watch",    bg: "#C9A84C20",   border: "#C9A84C50",   text: AMBER, icon: AlertTriangle },
   stalled: { label: "Stalled",  bg: `${RED}20`,   border: `${RED}50`,   text: RED,   icon: AlertTriangle },
   pending: { label: "Pending",  bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)", text: "rgba(255,255,255,0.4)", icon: Clock },
 };

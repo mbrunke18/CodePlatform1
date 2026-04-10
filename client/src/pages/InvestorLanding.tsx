@@ -666,6 +666,16 @@ export default function InvestorLanding() {
               </p>
             </div>
 
+            <div style={{ background: "rgba(10,15,46,0.03)", border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "24px 28px", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Research Foundation</div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, marginBottom: 10, fontStyle: "italic" }}>
+                "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase — because that logic is built by the organization itself, compounded across every deployment."
+              </p>
+              <p style={{ fontSize: 12, color: "#6B7280", marginBottom: 0 }}>
+                Derived from Dr. Kerry Huang — ESI Top 1% Researcher, Forbes Business Council · 408-firm longitudinal study on governance, capability, and strategic execution. Technology alone has zero statistical relationship with collaboration improvement. Capability and governance compound. The competitor who buys a platform later starts the compounding clock later — permanently.
+              </p>
+            </div>
+
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="border-2" data-testid="card-moat-ecosystem">
                 <CardHeader>
