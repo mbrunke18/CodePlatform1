@@ -132,6 +132,7 @@ function HomepageNav() {
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Platform</Link>
             <Link href="/industry-demos" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1 }}>Experience</Link>
             <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Why Readiness OS</Link>
+            <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>The Manifesto</Link>
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
@@ -195,6 +196,7 @@ function HomepageNav() {
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
           )}
+          <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>The Manifesto</Link>
           <Link
             href="/request-access"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
@@ -1135,7 +1137,7 @@ function CredibilitySection() {
             <p style={{ ...DM, fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.45)", marginBottom: 24, letterSpacing: "0.02em" }}>
               Built by someone who ran execution at Ford · Lockheed Martin · Toyota · Charles Schwab · Vantiv/Worldpay · Boyd Gaming
             </p>
-            <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0 }}>
+            <blockquote style={{ maxWidth: 680, margin: "0 auto", padding: 0, marginBottom: 32 }}>
               <p style={{ ...GEO, fontSize: 20, fontStyle: "italic", color: "#fff", lineHeight: 1.65, marginBottom: 16 }}>
                 "After the fifth company I stopped being patient.
                 <br />
@@ -1145,6 +1147,25 @@ function CredibilitySection() {
                 — Martin Brunke, Founder
               </footer>
             </blockquote>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.3)" }} />
+              <Link
+                href="/founder-story"
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: 15,
+                  fontWeight: 500,
+                  fontStyle: "italic",
+                  color: GOLD_LIGHT,
+                  textDecoration: "none",
+                  letterSpacing: "0.04em",
+                  opacity: 0.85,
+                }}
+              >
+                Why this company exists — and why it's named what it is →
+              </Link>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.3)" }} />
+            </div>
           </div>
         </Reveal>
       </div>
