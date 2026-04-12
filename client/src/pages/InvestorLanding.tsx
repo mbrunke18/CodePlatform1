@@ -611,7 +611,7 @@ export default function InvestorLanding() {
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">Bain</span> — Foundations for Agentic AI</span>
+                    <span className="text-[#0A0F2E]"><span className="text-[#0A0F2E] font-medium">Bain</span> — AI's Next Operating Model</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
@@ -647,6 +647,42 @@ export default function InvestorLanding() {
               </div>
             </div>
 
+            {/* Bain Insight Block */}
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E", background: "#F8F7F4", marginBottom: 16 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+                {/* Left — source + quote */}
+                <div style={{ padding: "28px 28px 24px", borderRight: "1px solid #E8E4DC" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    <div style={{ width: 20, height: 1.5, background: "#2B8A6E", flexShrink: 0 }} />
+                    <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>Bain &amp; Company — AI's Next Operating Model, 2025</span>
+                  </div>
+                  <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.4, fontStyle: "italic", marginBottom: 12 }}>
+                    "Rediscovery is not continuity. A system that must reconstruct the state of the work each time cannot be said to carry the work forward."
+                  </p>
+                  <p style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.6 }}>
+                    Bain's 2025 analysis identifies the core failure of episodic AI: every trigger response requires the organization to re-assemble context, re-align stakeholders, and re-decide what matters — before execution can begin. The 30-day mobilization cycle is the rediscovery tax.
+                  </p>
+                </div>
+
+                {/* Right — product value + customer value */}
+                <div style={{ padding: "28px 28px 24px", display: "flex", flexDirection: "column", gap: 20 }}>
+                  <div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>What this means for the product</div>
+                    <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
+                      Readiness OS eliminates the rediscovery tax entirely. 170 pre-staged playbooks mean the context, ownership, and decision logic exist <em>before</em> the trigger fires — not reconstructed after. The platform is the continuity layer Bain describes as missing.
+                    </p>
+                  </div>
+                  <div style={{ width: "100%", height: 1, background: "#E8E4DC" }} />
+                  <div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 8 }}>What this means for the customer</div>
+                    <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
+                      The Fortune 1000 customer doesn't spend 30 days mobilizing. They respond in 12 minutes — because the institutional memory, ownership assignments, and execution sequence were built and rehearsed before pressure arrived. Every subsequent deployment compounds that advantage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 text-center">
               <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Readiness OS built the product.</p>
               <p className="text-[#0A0F2E] text-sm">170 playbooks, 9 strategic domains, pre-defined governance — ready today.</p>
@@ -671,9 +707,31 @@ export default function InvestorLanding() {
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, marginBottom: 10, fontStyle: "italic" }}>
                 "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase — because that logic is built by the organization itself, compounded across every deployment."
               </p>
-              <p style={{ fontSize: 12, color: "#6B7280", marginBottom: 0 }}>
+              <p style={{ fontSize: 12, color: "#4B5563", marginBottom: 0 }}>
                 Derived from Dr. Kerry Huang — ESI Top 1% Researcher, Forbes Business Council · 408-firm longitudinal study on governance, capability, and strategic execution. Technology alone has zero statistical relationship with collaboration improvement. Capability and governance compound. The competitor who buys a platform later starts the compounding clock later — permanently.
               </p>
+            </div>
+
+            {/* Bain Institutional Memory Callout */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 40 }}>
+              <div style={{ background: "rgba(43,138,110,0.05)", border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E", padding: "20px 22px" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 10 }}>Bain — Product Value</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, fontStyle: "italic", marginBottom: 10 }}>
+                  "Organizations must address memory hygiene, permissioning, and knowledge portability — particularly who owns the institutional memory agents accumulate."
+                </p>
+                <p style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.6 }}>
+                  Readiness OS answers this directly: the enterprise owns its preparation history. Every playbook rehearsal, every ownership acknowledgment, every challenge-rights exchange is embedded in the organization's preparation record — not locked in a vendor's platform.
+                </p>
+              </div>
+              <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "20px 22px" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10 }}>Bain — Customer Value</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, fontStyle: "italic", marginBottom: 10 }}>
+                  "The economic logic changes with persistence: measure by context retained, rework eliminated, and institutional knowledge built."
+                </p>
+                <p style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.6 }}>
+                  For the Fortune 1000 customer, each deployment doesn't start from zero — it starts from accumulated readiness. The 12-minute response time improves with every trigger handled. The preparation compounds. That's a different ROI conversation than any point solution can offer.
+                </p>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
