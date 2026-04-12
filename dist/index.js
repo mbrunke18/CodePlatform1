@@ -18973,7 +18973,7 @@ function scoreSignalAgainstPattern(signal, pattern) {
 function evaluateSignal(signal) {
   const detections = [];
   const CONFIDENCE_THRESHOLD = 72;
-  const MIN_KEYWORD_MATCHES = 3;
+  const MIN_KEYWORD_MATCHES = 2;
   for (const pattern of TRIGGER_PATTERNS) {
     const text3 = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter((kw) => text3.includes(kw.toLowerCase()));
@@ -19194,7 +19194,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
     for (const sig of sampleSignals) {
       const text3 = sig.description.toLowerCase();
       const partialMatches = TRIGGER_PATTERNS.flatMap((p) => p.keywords.filter((kw) => text3.includes(kw.toLowerCase()))).slice(0, 4);
-      if (partialMatches.length > 0 && partialMatches.length < 3) {
+      if (partialMatches.length > 0 && partialMatches.length < 2) {
         await db.insert(signalActivityLog).values({
           organizationId,
           eventType: "threshold_not_met",

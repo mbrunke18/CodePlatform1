@@ -78,51 +78,36 @@ function MetricCard({
   icon: any;
   description?: string;
 }) {
-  const statusBorders = {
-    good: 'border-l-[#2B8A6E]',
-    warning: 'border-l-[#C9A84C]',
-    critical: 'border-l-[#dc2626]'
+  const statusColors = {
+    good: TEAL,
+    warning: GOLD,
+    critical: '#dc2626'
   };
+  const accentColor = statusColors[status];
 
-  const trendIcons = {
-    up: ArrowUpRight,
-    down: ArrowDownRight,
-    neutral: Minus
-  };
-  const TrendIcon = trendDirection ? trendIcons[trendDirection] : null;
-
-  const trendClasses = {
-    up: 'text-[#2B8A6E]',
-    down: 'text-[#C9A84C]',
-    neutral: 'text-[#6B7280]'
+  const trendColors = {
+    up: TEAL,
+    down: GOLD,
+    neutral: '#6B7280'
   };
 
   return (
-    <Card className={`border-l-4 ${statusBorders[status]} bg-white border-[#E8E4DC]  rounded-none`}>
-      <CardContent className="pt-5 space-y-3">
-        <div className="flex items-center justify-between">
-          <div style={{ width: 32, height: 32, background: "#0A0F2E", borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Icon className="h-4 w-4 text-white" />
-          </div>
-          <StatusIndicator status={status} />
-        </div>
-        <div>
-          <div className="text-[10px] font-bold tracking-widest uppercase text-[#6B7280] mb-1">{title}</div>
-          <div className="flex items-baseline gap-1">
-            <span style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>{value}{unit}</span>
-          </div>
-        </div>
-        {trend && trendDirection && TrendIcon && (
-          <div className={`flex items-center gap-1 text-[10px] font-bold uppercase ${trendClasses[trendDirection]}`}>
-            <TrendIcon className="h-3 w-3" />
-            <span>{trend}</span>
-          </div>
-        )}
-        {description && (
-          <p className="text-xs text-[#6B7280]">{description}</p>
-        )}
-      </CardContent>
-    </Card>
+    <div style={{
+      background: '#fff',
+      border: '1px solid #E8E4DC',
+      borderLeft: `3px solid ${accentColor}`,
+      padding: '20px 20px 16px',
+    }}>
+      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{title}</div>
+      <div style={{ ...CG, fontSize: '36px', fontWeight: 600, color: '#0A0F2E', lineHeight: 1, marginBottom: 8 }}>{value}{unit}</div>
+      <div style={{ width: 24, height: 1, background: `${accentColor}60`, marginBottom: 8 }} />
+      {trend && (
+        <div style={{ fontSize: 10, fontWeight: 700, color: trendDirection ? trendColors[trendDirection] : '#6B7280', letterSpacing: '0.04em', marginBottom: description ? 6 : 0 }}>{trend}</div>
+      )}
+      {description && (
+        <div style={{ fontSize: 11, color: '#4B5563', lineHeight: 1.5 }}>{description}</div>
+      )}
+    </div>
   );
 }
 

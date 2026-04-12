@@ -1405,3 +1405,120 @@ button[class*=" bg-[#DFC178]"] {
   .max-w-6xl { max-width: 90rem !important; }
   .max-w-7xl { max-width: 96rem !important; }
 }
+
+/* ================================================================
+   EDITORIAL DESIGN UTILITIES
+   vm-stat-block  — Cormorant number + thin rule + Barlow label
+   vm-section-label — gold overline with leading rule
+   vm-editorial-rule — thin horizontal brand divider
+   vm-metric-row — editorial table-row stat layout
+   ================================================================ */
+
+/* Stat block — large serif number above a thin rule above a Barlow label */
+.vm-stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.vm-stat-block .vm-stat-number {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  color: #C9A84C;
+  font-variant-numeric: tabular-nums;
+}
+.vm-stat-block .vm-stat-rule {
+  width: 24px;
+  height: 1px;
+  background: rgba(201,168,76,0.45);
+  margin: 8px 0 6px;
+}
+.vm-stat-block .vm-stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+}
+
+/* Dark variant */
+.vm-stat-block.on-dark .vm-stat-number { color: #C9A84C; }
+.vm-stat-block.on-dark .vm-stat-rule   { background: rgba(201,168,76,0.3); }
+.vm-stat-block.on-dark .vm-stat-label  { color: rgba(255,255,255,0.3); }
+
+/* Section label — gold rule + overline text above a heading */
+.vm-section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.vm-section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #C9A84C;
+  flex-shrink: 0;
+}
+.vm-section-label span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.65);
+}
+.vm-section-label.on-dark span { color: rgba(201,168,76,0.55); }
+
+/* Editorial rule — thin horizontal divider */
+.vm-editorial-rule {
+  width: 100%;
+  height: 1px;
+  background: #E8E4DC;
+  margin: 20px 0;
+}
+.vm-editorial-rule.on-dark { background: rgba(255,255,255,0.07); }
+.vm-editorial-rule.gold { background: rgba(201,168,76,0.25); }
+
+/* Metric row — editorial table-style stat row (number left, label/desc right) */
+.vm-metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.vm-metric-row .vm-metric-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+  color: #C9A84C;
+  font-variant-numeric: tabular-nums;
+}
+.vm-metric-row .vm-metric-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  flex: 1;
+}
+.vm-metric-row .vm-metric-desc {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.02em;
+}
+
+/* ── Body text contrast floor — prevents #6B7280 from being too faint ──────
+   Targets the most common muted-text patterns on light backgrounds.
+   Only applies in light mode (html:not(.dark)) so dark sections are unaffected. */
+html:not(.dark) .text-\[\#6B7280\]   { color: #4B5563 !important; }
+html:not(.dark) .text-\[\#9CA3AF\]   { color: #6B7280 !important; }
+html:not(.dark) .text-gray-400        { color: #6B7280 !important; }
+html:not(.dark) .text-gray-500        { color: #4B5563 !important; }
+html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }

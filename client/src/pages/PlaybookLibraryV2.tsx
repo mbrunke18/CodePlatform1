@@ -583,32 +583,25 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               // LOCKED CARD — guests cannot see content of the 167 gated playbooks
               if (isLocked) {
                 return (
-                  <Card key={playbook.id} className="border-[#E8E4DC] flex flex-col" style={{ background: "#FAFAF9" }}>
-                    <div className="p-5 flex flex-col flex-1">
-                      <div className="flex items-center gap-2 mb-4">
-                        <Lock className="h-3 w-3" style={{ color: "#C9A84C" }} />
-                        <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Pilot Access Required</span>
-                      </div>
-                      <div className="flex-1 flex flex-col items-center justify-center py-4 text-center">
-                        <div style={{ width: 40, height: 40, borderRadius: 0, background: "rgba(10,15,46,0.06)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                          <Lock className="h-5 w-5" style={{ color: "#9CA3AF" }} />
-                        </div>
-                        <p style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 4 }}>Full Playbook Access</p>
-                        <p style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.5, marginBottom: 4 }}>Domain: <span style={{ color: "#6B7280", fontWeight: 600 }}>{playbook.domain}</span></p>
-                        <p style={{ fontSize: 10, color: "#9CA3AF", lineHeight: 1.5 }}>This playbook is available to pilot and enterprise customers.</p>
-                      </div>
-                      <div className="pt-3 border-t" style={{ borderColor: "#E8E4DC" }}>
-                        <Button
-                          size="sm"
-                          className="w-full font-bold uppercase tracking-wider"
-                          style={{ background: "#0A0F2E", color: "white", fontSize: 10, height: "auto", padding: "6px 12px" }}
-                          onClick={() => setLocation("/request-access")}
-                        >
-                          Request Pilot Access
-                        </Button>
-                      </div>
+                  <div key={playbook.id} style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", borderTop: `2px solid #C9A84C`, padding: "20px", display: "flex", flexDirection: "column", gap: 12 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 20, height: 1, background: "#C9A84C" }} />
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>Enterprise Playbook</span>
                     </div>
-                  </Card>
+                    <div>
+                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#0A0F2E", marginBottom: 4, lineHeight: 1.25 }}>{playbook.name}</div>
+                      <div style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{playbook.domain}</div>
+                    </div>
+                    <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: 10, color: "#9CA3AF" }}>Pilot access required</span>
+                      <button
+                        style={{ fontSize: 10, fontWeight: 700, background: "#0A0F2E", color: "#fff", border: "none", padding: "5px 14px", cursor: "pointer", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
+                        onClick={() => setLocation("/request-access")}
+                      >
+                        Request Access
+                      </button>
+                    </div>
+                  </div>
                 );
               }
 
