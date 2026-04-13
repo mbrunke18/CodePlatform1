@@ -905,108 +905,195 @@ function IDEASection() {
 }
 
 function PlatformPreviewSection() {
-  const phases = ["IDENTIFY", "DETECT", "EXECUTE", "ADVANCE"];
-  const tasks = [
-    { role: "CFO", action: "Approve contingency budget release", done: true },
-    { role: "COO", action: "Activate Tier-1 supplier protocol", done: true },
-    { role: "General Counsel", action: "Review force majeure exposure", done: false },
-    { role: "CMO", action: "Stage customer communication", done: false },
+  const [step, setStep] = useState(0);
+  const TOTAL_STEPS = 9;
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setStep(s => (s >= TOTAL_STEPS - 1 ? 0 : s + 1));
+    }, 1700);
+    return () => clearInterval(id);
+  }, []);
+
+  const roles: { role: string; task: string; notifiedAt: number; acknowledgedAt: number }[] = [
+    { role: "CFO",             task: "Authorize contingency budget release",  notifiedAt: 1, acknowledgedAt: 2 },
+    { role: "COO",             task: "Activate Tier-1 supplier protocol",     notifiedAt: 2, acknowledgedAt: 3 },
+    { role: "General Counsel", task: "Review force majeure exposure",          notifiedAt: 3, acknowledgedAt: 4 },
+    { role: "Board Chair",     task: "Approve emergency procurement ceiling",  notifiedAt: 4, acknowledgedAt: 5 },
+    { role: "CISO",            task: "Secure vendor data channels",            notifiedAt: 5, acknowledgedAt: 6 },
+    { role: "CMO",             task: "Stage customer communication plan",      notifiedAt: 6, acknowledgedAt: 7 },
   ];
+
+  const clockLabels = ["0:00", "2:00", "4:00", "6:00", "8:00", "10:00", "11:00", "12:00", "12:00"];
+  const allDone = step >= 7;
+
+  function getState(r: typeof roles[0]): "queued" | "notified" | "acknowledged" {
+    if (step >= r.acknowledgedAt) return "acknowledged";
+    if (step >= r.notifiedAt)     return "notified";
+    return "queued";
+  }
+
+  const oldWaySteps = [
+    { day: "Day 0",  event: "Trigger fires",                   detail: "Tier-1 supplier failure confirmed" },
+    { day: "Day 1",  event: "Emergency Slack thread",           detail: "47 messages · no single owner" },
+    { day: "Day 3",  event: "Cross-functional meeting called",  detail: "6 time zones · no agenda finalized" },
+    { day: "Day 7",  event: "Alignment (tentatively) reached",  detail: "Competing priorities unresolved" },
+    { day: "Day 14", event: "Tasks manually assigned by email", detail: "Follow-up required for every role" },
+    { day: "Day 30", event: "Execution officially begins",      detail: "If stakeholders remain aligned" },
+  ];
+
+  const acknowledgedCount = roles.filter(r => getState(r) === "acknowledged").length;
+
   return (
     <section style={{ background: "#F0EEE9", padding: "100px 0", position: "relative" }}>
       <SectionMarker n="06" />
       <div style={{ ...CONTAINER }}>
         <Reveal>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <SectionLabel>THE PLATFORM IN ACTION</SectionLabel>
+            <SectionLabel>THE RESPONSE IN ACTION</SectionLabel>
             <h2 style={{ ...GEO, fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1.25, marginBottom: 16 }}>
-              What an executive sees at minute one.
+              The response is ready<em style={{ color: GOLD, fontStyle: "italic" }}> before</em> the trigger fires.
             </h2>
-            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 600, margin: "0 auto" }}>
-              If the playbook calls for a war room, it's already booked. If it calls for an all-hands, it's pre-distributed. Every role, task, approval, and escalation path is pre-staged — so when the trigger fires, the organization executes instead of improvises.
+            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 620, margin: "0 auto" }}>
+              Every role queued. Every task pre-staged. When the trigger fires, the system notifies and tracks acknowledgment — before the first emergency call is scheduled.
             </p>
           </div>
         </Reveal>
 
-        {/* Console mockup */}
         <Reveal>
-          <div style={{ maxWidth: 860, margin: "0 auto", overflow: "hidden", border: "1px solid rgba(10,15,46,0.15)" }}>
-            {/* Console header */}
-            <div style={{ background: NAVY, padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 10, height: 10, borderRadius: 0, background: TEAL_LIGHT, boxShadow: `0 0 8px ${TEAL_LIGHT}` }} />
-                <span style={{ ...DM, fontSize: 13, color: GOLD, fontWeight: 700, letterSpacing: "0.08em" }}>LIVE ACTIVATION — PLAYBOOK #047</span>
+          <div className="hp-ba-compare" style={{
+            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0,
+            maxWidth: 1060, margin: "0 auto",
+            border: "1px solid rgba(10,15,46,0.14)",
+            overflow: "hidden",
+          }}>
+
+            {/* ── LEFT: The Old Way ───────────────────────────────── */}
+            <div style={{ background: "#16142A", padding: "32px 32px 28px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid rgba(220,38,38,0.18)" }}>
+                <div style={{ width: 8, height: 8, background: "#DC2626" }} />
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: "#DC2626", textTransform: "uppercase" as const }}>
+                  The Status Quo — 30 Days
+                </span>
               </div>
-              <span style={{ ...DM, fontSize: 12, color: MUTED_DARK }}>Supply Chain Disruption · Tier-1 Supplier Failure</span>
-            </div>
 
-            {/* Phase bar */}
-            <div style={{ background: "#0D1A3A", padding: "0 24px", display: "flex", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-              {phases.map((p, i) => (
-                <div key={p} style={{
-                  flex: 1, padding: "12px 0", textAlign: "center",
-                  borderBottom: i < 2 ? `2px solid ${TEAL_LIGHT}` : i === 2 ? `2px solid ${GOLD}` : "2px solid rgba(255,255,255,0.1)",
-                }}>
-                  <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em",
-                    color: i < 2 ? TEAL_LIGHT : i === 2 ? GOLD : MUTED_DARK }}>
-                    {p}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Body */}
-            <div className="hp-console-body" style={{ background: "#0A1228", padding: "28px 24px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
-              {/* Left — task assignments */}
               <div>
-                <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, letterSpacing: "0.08em", marginBottom: 14, textTransform: "uppercase" }}>
-                  Role Assignments — Auto-staged
-                </div>
-                {tasks.map((t) => (
-                  <div key={t.role} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14, padding: "12px 14px", background: "rgba(255,255,255,0.04)", borderLeft: t.done ? `2px solid ${TEAL_LIGHT}` : `2px solid rgba(201,168,76,0.4)`, borderBottom: `1px solid rgba(255,255,255,0.04)` }}>
-                    <div style={{ width: 18, height: 18, borderRadius: 0, flexShrink: 0, marginTop: 1, background: t.done ? TEAL_LIGHT : "transparent", border: t.done ? "none" : `2px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      {t.done && <span style={{ color: "#fff", fontSize: 10, lineHeight: 1 }}>✓</span>}
+                {oldWaySteps.map((s, i) => (
+                  <div key={i} style={{ display: "flex", gap: 14 }}>
+                    <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", flexShrink: 0 }}>
+                      <div style={{ width: 9, height: 9, background: i === 0 ? "#DC2626" : "rgba(220,38,38,0.28)", flexShrink: 0, marginTop: 4 }} />
+                      {i < oldWaySteps.length - 1 && (
+                        <div style={{ width: 1, flex: 1, background: "rgba(220,38,38,0.12)", minHeight: 20, marginTop: 3 }} />
+                      )}
                     </div>
-                    <div>
-                      <div style={{ ...DM, fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 3 }}>{t.role}</div>
-                      <div style={{ ...DM, fontSize: 12, color: "#C8D4E8" }}>{t.action}</div>
+                    <div style={{ paddingBottom: 18 }}>
+                      <div style={{ ...DM, fontSize: 10, color: "#DC2626", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 2 }}>{s.day}</div>
+                      <div style={{ ...DM, fontSize: 13, color: "rgba(240,237,228,0.88)", fontWeight: 600, marginBottom: 2 }}>{s.event}</div>
+                      <div style={{ ...DM, fontSize: 11, color: "rgba(240,237,228,0.32)", fontStyle: "italic" as const }}>{s.detail}</div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Right — status panel */}
-              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                <div style={{ padding: "16px 18px", background: "rgba(43,138,110,0.12)", borderLeft: `3px solid ${TEAL_LIGHT}`, border: "1px solid rgba(43,138,110,0.3)" }}>
-                  <div style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, letterSpacing: "0.08em", marginBottom: 6, textTransform: "uppercase" }}>Time to Full Deployment</div>
-                  <div style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#fff", lineHeight: 1 }}>9:47</div>
-                  <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, marginTop: 4 }}>minutes elapsed · target: 12:00</div>
-                </div>
-                <div style={{ padding: "16px 18px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <div style={{ ...DM, fontSize: 11, color: MUTED_DARK, letterSpacing: "0.08em", marginBottom: 10, textTransform: "uppercase" }}>Stakeholder Coverage</div>
-                  {[{ label: "Notified", pct: 100, color: TEAL_LIGHT }, { label: "Briefed", pct: 82, color: GOLD }, { label: "Actioned", pct: 50, color: "#fff" }].map(r => (
-                    <div key={r.label} style={{ marginBottom: 10 }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                        <span style={{ ...DM, fontSize: 11, color: MUTED_DARK }}>{r.label}</span>
-                        <span style={{ ...DM, fontSize: 11, color: r.color, fontWeight: 700 }}>{r.pct}%</span>
-                      </div>
-                      <div style={{ height: 3, background: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
-                        <div style={{ width: `${r.pct}%`, height: "100%", background: r.color, transition: "width 0.6s ease" }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ padding: "12px 18px", background: "rgba(201,168,76,0.08)", borderLeft: `3px solid ${GOLD}`, border: "1px solid rgba(201,168,76,0.2)", textAlign: "center" }}>
-                  <div style={{ ...DM, fontSize: 11, color: GOLD, fontWeight: 700, letterSpacing: "0.06em" }}>EXECUTIVE ACTION REQUIRED</div>
-                  <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4 }}>1 decision · estimated 90 seconds</div>
+              <div style={{ marginTop: 4, paddingTop: 14, borderTop: "1px solid rgba(220,38,38,0.12)" }}>
+                <div style={{ ...DM, fontSize: 12, color: "rgba(220,38,38,0.65)", fontWeight: 600, lineHeight: 1.5 }}>
+                  30 days of coordination lag before<br />a single task is actionable.
                 </div>
               </div>
             </div>
 
-            {/* Console footer */}
-            <div style={{ background: "#060F1F", padding: "12px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <span style={{ ...DM, fontSize: 11, color: MUTED_DARK }}>AI Execution Brief generated · 4 roles deployed · 0 manual coordination</span>
-              <span style={{ ...DM, fontSize: 11, color: TEAL_LIGHT, fontWeight: 700 }}>● ON TRACK</span>
+            {/* ── RIGHT: Readiness OS (animated) ──────────────────── */}
+            <div style={{ background: "#060F1F", display: "flex", flexDirection: "column" as const }}>
+
+              {/* Console header */}
+              <div style={{ background: "#0A1428", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+                  <div style={{ width: 7, height: 7, background: allDone ? TEAL_LIGHT : GOLD, boxShadow: allDone ? `0 0 6px ${TEAL_LIGHT}` : `0 0 6px ${GOLD}`, transition: "all 0.4s" }} />
+                  <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: GOLD, textTransform: "uppercase" as const }}>
+                    Playbook #047 — Supply Chain Disruption
+                  </span>
+                </div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: allDone ? TEAL_LIGHT : "#fff", fontVariantNumeric: "tabular-nums", transition: "color 0.4s", letterSpacing: "-0.5px" }}>
+                  {clockLabels[step]}
+                </div>
+              </div>
+
+              {/* Task list */}
+              <div style={{ padding: "20px 24px", flex: 1 }}>
+                <div style={{ ...DM, fontSize: 10, color: "rgba(200,212,232,0.38)", letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 12 }}>
+                  Role Deployments — Pre-Staged
+                </div>
+
+                {roles.map(r => {
+                  const state = getState(r);
+                  return (
+                    <div key={r.role} style={{
+                      display: "flex", alignItems: "center", gap: 11, marginBottom: 8,
+                      padding: "9px 12px",
+                      background: state === "acknowledged" ? "rgba(43,138,110,0.10)" : state === "notified" ? "rgba(201,168,76,0.07)" : "rgba(255,255,255,0.025)",
+                      borderLeft: state === "acknowledged" ? `2px solid ${TEAL_LIGHT}` : state === "notified" ? `2px solid ${GOLD}` : "2px solid rgba(255,255,255,0.07)",
+                      transition: "all 0.45s ease",
+                    }}>
+                      {/* State indicator */}
+                      <div style={{
+                        width: 18, height: 18, flexShrink: 0,
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        background: state === "acknowledged" ? TEAL_LIGHT : "transparent",
+                        border: state === "acknowledged" ? "none" : state === "notified" ? `2px solid ${GOLD}` : "2px solid rgba(255,255,255,0.12)",
+                        transition: "all 0.4s ease",
+                      }}>
+                        {state === "acknowledged" && <span style={{ color: "#fff", fontSize: 9, fontWeight: 900 }}>✓</span>}
+                        {state === "notified" && <div style={{ width: 5, height: 5, background: GOLD, borderRadius: "50%", animation: "pulse 0.9s ease-in-out infinite" }} />}
+                      </div>
+
+                      {/* Role + task */}
+                      <div style={{ flex: 1 }}>
+                        <div style={{ ...DM, fontSize: 11, fontWeight: 700, marginBottom: 1, transition: "color 0.4s",
+                          color: state === "acknowledged" ? TEAL_LIGHT : state === "notified" ? GOLD : "rgba(200,212,232,0.38)" }}>
+                          {r.role}
+                        </div>
+                        <div style={{ ...DM, fontSize: 11, color: "rgba(200,212,232,0.42)" }}>{r.task}</div>
+                      </div>
+
+                      {/* State badge */}
+                      <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, transition: "color 0.4s",
+                        color: state === "acknowledged" ? TEAL_LIGHT : state === "notified" ? GOLD : "rgba(255,255,255,0.13)" }}>
+                        {state === "acknowledged" ? "Acknowledged" : state === "notified" ? "Notified" : "Queued"}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Console footer */}
+              <div style={{ padding: "11px 24px", borderTop: "1px solid rgba(255,255,255,0.05)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ ...DM, fontSize: 11, color: "rgba(200,212,232,0.28)" }}>
+                  {acknowledgedCount} of {roles.length} confirmed · 0 alignment meetings
+                </span>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, transition: "color 0.4s",
+                  color: allDone ? TEAL_LIGHT : GOLD }}>
+                  {allDone ? "● FULLY DEPLOYED" : "● DEPLOYING..."}
+                </span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Clarifying callout below */}
+        <Reveal delay={0.1}>
+          <div style={{ maxWidth: 1060, margin: "0 auto", marginTop: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
+            <div style={{ padding: "16px 32px", background: "rgba(220,38,38,0.04)", borderLeft: "1px solid rgba(220,38,38,0.12)", borderBottom: "1px solid rgba(220,38,38,0.12)", borderRight: "1px solid rgba(220,38,38,0.08)" }}>
+              <span style={{ ...DM, fontSize: 12, color: "#9CA3AF", fontStyle: "italic" as const }}>
+                Every day without a pre-staged response is cost, confusion, and lost competitive ground.
+              </span>
+            </div>
+            <div style={{ padding: "16px 24px", background: "rgba(43,138,110,0.05)", borderLeft: "1px solid rgba(43,138,110,0.15)", borderBottom: "1px solid rgba(43,138,110,0.12)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span style={{ ...DM, fontSize: 12, color: TEAL, fontWeight: 600 }}>
+                Every role notified and acknowledged before the first emergency call.
+              </span>
+              <Link href="/12-minute-experience" style={{ ...DM, fontSize: 11, fontWeight: 700, color: TEAL, textDecoration: "none", borderBottom: `1px solid ${TEAL}`, paddingBottom: 1, whiteSpace: "nowrap" as const, marginLeft: 16, flexShrink: 0 }}>
+                Experience it →
+              </Link>
             </div>
           </div>
         </Reveal>

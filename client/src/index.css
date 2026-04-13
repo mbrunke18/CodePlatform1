@@ -1522,3 +1522,8 @@ html:not(.dark) .text-\[\#9CA3AF\]   { color: #6B7280 !important; }
 html:not(.dark) .text-gray-400        { color: #6B7280 !important; }
 html:not(.dark) .text-gray-500        { color: #4B5563 !important; }
 html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
+
+/* ── Homepage: Before/After comparison grid ────────────────────────────────── */
+@media (max-width: 720px) {
+  .hp-ba-compare { grid-template-columns: 1fr !important; }
+}
