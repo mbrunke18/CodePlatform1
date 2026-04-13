@@ -44,7 +44,7 @@ const STAGES = [
   { id: 'cost', label: 'Cost of Inaction' },
   { id: 'introducing', label: 'Readiness OS' },
   { id: 'signal', label: 'Signal Detection' },
-  { id: 'analysis', label: 'AI Analysis' },
+  { id: 'analysis', label: 'Strategic Analysis' },
   { id: 'playbook', label: 'Playbook Match' },
   { id: 'decision', label: 'Executive Decision' },
   { id: 'activation', label: '12-Min Activation' },
@@ -417,9 +417,9 @@ export default function KeynoteDemo() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-[#C9A84C]/10 text-[#C9A84C] border border-[#C9A84C]/20 px-4 py-2 text-sm font-medium mb-6">
             <Brain className="h-4 w-4" />
-            AI ANALYSIS ENGINE
+            SIGNAL ANALYSIS ENGINE
           </div>
-          <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>AI Analyzes the Threat</h2>
+          <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The System Analyzes the Threat</h2>
           <p className="text-xl text-[#0A0F2E]">The system analyzes the signal against your organizational context</p>
         </motion.div>
 

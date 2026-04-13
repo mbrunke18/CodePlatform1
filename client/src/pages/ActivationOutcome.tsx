@@ -444,7 +444,7 @@ export default function ActivationOutcome() {
 
                     {outcome.aiSummary ? (
                       <div style={{ background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, padding: "20px 24px" }}>
-                        <div style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10 }}>AI-Generated Outcome Summary</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: TEAL, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10 }}>System-Generated Outcome Summary</div>
                         <p style={{ fontSize: 14, color: NAVY, lineHeight: 1.7 }}>{outcome.aiSummary}</p>
                         <p style={{ fontSize: 11, color: MUTED, marginTop: 12 }}>Generated {outcome.generatedAt ? new Date(outcome.generatedAt).toLocaleDateString() : "recently"}</p>
                         <Button variant="outline" onClick={() => generateMutation.mutate(outcome.id)}

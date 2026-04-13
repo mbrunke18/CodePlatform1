@@ -377,7 +377,7 @@ export default function ExecutiveAnalyticsDashboard() {
 
         {/* 90-Day Strategic Forecast */}
         <div className="bg-white border rounded-sm p-8" style={{ borderColor: "#E8E4DC" }}>
-          <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>AI-Generated</div>
+          <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>System-Generated</div>
           <h3 className="text-xl font-bold mb-6" style={{ color: "#0A0F2E", fontFamily: "'Cormorant Garamond', serif" }}>90-Day Strategic Forecast</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[

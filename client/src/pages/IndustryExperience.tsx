@@ -512,7 +512,7 @@ const STAGES = [
   { id: 'data', label: 'Connect Data' },
   { id: 'customize', label: 'Customize' },
   { id: 'signal', label: 'Signal Fires' },
-  { id: 'analysis', label: 'AI Analysis' },
+  { id: 'analysis', label: 'Strategic Analysis' },
   { id: 'decision', label: 'The Decision' },
   { id: 'activation', label: 'Execution' },
   { id: 'warroom', label: 'War Room' },
@@ -1206,8 +1206,8 @@ export default function IndustryExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Brain className="h-3 w-3 mr-1" /> AI ANALYSIS</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">AI Analyzes the Situation</h2>
+              <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Brain className="h-3 w-3 mr-1" /> STRATEGIC ANALYSIS</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">The System Analyzes the Situation</h2>
               <p className="text-gray-800 dark:text-slate-200">The system analyzes {totalDataPoints.toLocaleString()} data points from your connected sources</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1501,7 +1501,7 @@ export default function IndustryExperience() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-6 w-6 text-[#0A0F2E]" />
-                <h3 className="text-lg font-semibold text-[#0A0F2E]">AI-Generated Playbook Refinement</h3>
+                <h3 className="text-lg font-semibold text-[#0A0F2E]">System-Generated Playbook Refinement</h3>
               </div>
               <p className="text-[#6B7280] leading-relaxed">{industry.lesson}</p>
             </motion.div>

@@ -264,7 +264,7 @@ export default function LivingPlaybooks() {
                         <div className="bg-[#F8F7F4] p-4 border border-[#E8E4DC]">
                           <h4 className="font-bold text-xs text-[#0A0F2E] mb-3 flex items-center gap-2 uppercase tracking-wider">
                             <Brain className="w-4 h-4 text-[#C9A84C]" />
-                            Recent AI-Driven Improvements
+                            Recent System-Driven Improvements
                           </h4>
                           <ul className="space-y-2">
                             {improvements.map((imp, i) => (

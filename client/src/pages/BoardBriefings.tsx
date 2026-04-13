@@ -322,7 +322,7 @@ export default function BoardBriefings() {
           <div className="flex items-center gap-2">
             <CardTitle className="flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <Brain className="h-5 w-5 text-[#C9A84C]" />
-              AI-Generated Strategic Recommendations
+              Strategic Recommendations
             </CardTitle>
             <div className="text-xs text-[#0A0F2E] dark:text-white font-bold bg-[#C9A84C]/20 px-2 py-0.5 rounded">
               RETROSPECT™

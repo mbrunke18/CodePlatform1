@@ -316,13 +316,13 @@ export default function PulseIntelligence() {
               </div>
             </div>
 
-            {/* CENTER: AI Analysis */}
+            {/* CENTER: Signal Analysis */}
             <div className="col-span-5 space-y-6">
               {selected && (
                 <>
                   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Analysis</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Signal Analysis</span>
                   </div>
 
                   {/* Signal Detail */}

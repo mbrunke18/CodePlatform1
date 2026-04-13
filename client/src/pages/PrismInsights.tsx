@@ -209,7 +209,7 @@ export default function PrismInsights() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-end' }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
                   <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: 0, display: 'inline-block' }} />
-                  AI Analysis · Updated 2 min ago
+                  Signal Analysis · Updated 2 min ago
                 </div>
                 <Button style={{ background: GOLD, color: NAVY, borderRadius: 0, fontWeight: 700, fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                   <Download style={{ width: 14, height: 14, marginRight: 8 }} />

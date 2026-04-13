@@ -356,7 +356,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
           <div className="flex items-center gap-3 mb-6">
             <Brain className="h-5 w-5" style={{ color: GOLD }} />
             <div>
-              <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>AI-Generated · Forward-Looking</div>
+              <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "#6B7280" }}>System-Generated · Forward-Looking</div>
               <h3 className="text-xl font-bold" style={{ color: NAVY, fontFamily: "'Cormorant Garamond', serif" }}>Predictive Gap Analysis — Next 90 Days</h3>
             </div>
           </div>
