@@ -48,7 +48,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     <text x="240" y="96" textAnchor="middle" fontSize="10" fontWeight="700" letterSpacing="0.12em" fill={RED}
       fontFamily="'DM Sans', Arial, sans-serif">TRADITIONAL ENTERPRISE</text>
     <text x="920" y="96" textAnchor="middle" fontSize="10" fontWeight="700" letterSpacing="0.12em" fill={TEAL}
-      fontFamily="'DM Sans', Arial, sans-serif">EXECUTION OS</text>
+      fontFamily="'DM Sans', Arial, sans-serif">READINESS OS</text>
 
     {/* ── VERTICAL DIVIDER ── */}
     <line x1="510" y1="78" x2="510" y2="758" stroke={NAVY} strokeWidth="1.5" opacity="0.12" strokeDasharray="6,5" />
@@ -114,7 +114,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     <text x="240" y="633" textAnchor="middle" fontSize="13" fontWeight="700" fill={GOLD}
       fontFamily="'DM Sans', Arial, sans-serif">Execution hasn't started.</text>
 
-    {/* ════════════════ RIGHT SIDE — EXECUTION OS ════════════════ */}
+    {/* ════════════════ RIGHT SIDE — READINESS OS ════════════════ */}
 
     {/* Same trigger */}
     <rect x="770" y="108" width="300" height="66" rx="8" fill="url(#egNavy)" />
@@ -128,10 +128,10 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     {/* Single clean arrow */}
     <path d="M 920 174 L 920 214" stroke={TEAL} strokeWidth="3.5" fill="none" markerEnd="url(#egArrowT)" />
 
-    {/* EXECUTION OS BOX */}
+    {/* READINESS OS BOX */}
     <rect x="535" y="224" width="770" height="204" rx="10" fill="url(#egTeal)" />
     <text x="920" y="250" textAnchor="middle" fontSize="15" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">EXECUTION OS — SINGLE ORCHESTRATION LAYER</text>
+      fontFamily="'DM Sans', Arial, sans-serif">READINESS OS — SINGLE ORCHESTRATION LAYER</text>
     <text x="920" y="268" textAnchor="middle" fontSize="9" letterSpacing="0.13em"
       fill="rgba(201,168,76,0.9)" fontFamily="'DM Sans', Arial, sans-serif">170 PLAYBOOKS · 248+ DATA POINTS · 221 EXECUTIVE TRIGGERS · HUMAN-APPROVED AT EVERY GATE</text>
 

@@ -37,7 +37,7 @@ function AccessGate() {
           <Lock size={22} color={GOLD} />
         </div>
         <div style={{ color: GOLD, fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', marginBottom: 10 }}>
-          EXECUTION OS — AUTHENTICATED ACCESS
+          READINESS OS — AUTHENTICATED ACCESS
         </div>
         <h2 style={{ color: NAVY, fontWeight: 700, fontSize: '1.4rem', margin: '0 0 12px' }}>
           Sign In to Access This Page

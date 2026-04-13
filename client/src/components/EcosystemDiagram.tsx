@@ -195,7 +195,7 @@ export default function EcosystemDiagram({
       <text x={W / 2} y={252} textAnchor="middle"
         fill={GOLD} fontSize={9} fontWeight={700}
         fontFamily="'DM Mono',monospace" letterSpacing={2.5} opacity={0.8}>
-        EXECUTION OS INTEGRATION TOUCHPOINTS
+        READINESS OS INTEGRATION TOUCHPOINTS
       </text>
 
       {/* Connector badges */}
@@ -242,7 +242,7 @@ export default function EcosystemDiagram({
       <text x={eosX + eosW / 2} y={eosY + 62} textAnchor="middle"
         fill={IVORY} fontSize={34} fontWeight={700}
         fontFamily="'Barlow Condensed','Cormorant Garamond',serif" letterSpacing={4}>
-        EXECUTION OS
+        READINESS OS
       </text>
       <text x={eosX + eosW / 2} y={eosY + 82} textAnchor="middle"
         fill={GOLD} fontSize={11} fontWeight={500}

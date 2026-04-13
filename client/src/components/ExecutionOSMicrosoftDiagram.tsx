@@ -231,7 +231,7 @@ export default function ExecutionOSMicrosoftDiagram() {
       <text x={W / 2} y={252} textAnchor="middle"
         fill={GOLD} fontSize={9} fontWeight={700}
         fontFamily="'DM Mono',monospace" letterSpacing={2.5} opacity={0.8}>
-        EXECUTION OS INTEGRATION TOUCHPOINTS
+        READINESS OS INTEGRATION TOUCHPOINTS
       </text>
 
       {connectors.map((c) => (
@@ -253,7 +253,7 @@ export default function ExecutionOSMicrosoftDiagram() {
         />
       ))}
 
-      {/* ══ EXECUTION OS BLOCK ═══════════════════════════════════════ */}
+      {/* ══ READINESS OS BLOCK ═══════════════════════════════════════ */}
       {/* Outer glow ring */}
       <rect x={eosX - 3} y={eosY - 3} width={eosW + 6} height={eosH + 6} rx={17}
         fill="none" stroke={GOLD} strokeWidth={1} strokeOpacity={0.25} filter="url(#goldGlow)"
@@ -286,11 +286,11 @@ export default function ExecutionOSMicrosoftDiagram() {
         THE STRATEGIC COMMAND LAYER ABOVE THE MICROSOFT AGENTIC STACK
       </text>
 
-      {/* EXECUTION OS wordmark */}
+      {/* READINESS OS wordmark */}
       <text x={eosX + eosW / 2} y={eosY + 62} textAnchor="middle"
         fill={IVORY} fontSize={34} fontWeight={700}
         fontFamily="'Barlow Condensed','Cormorant Garamond',serif" letterSpacing={4}>
-        EXECUTION OS
+        READINESS OS
       </text>
       <text x={eosX + eosW / 2} y={eosY + 82} textAnchor="middle"
         fill={GOLD} fontSize={11} fontWeight={500}

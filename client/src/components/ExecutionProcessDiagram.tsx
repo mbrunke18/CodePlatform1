@@ -104,7 +104,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="50" y="412" width="1500" height="24" fill={TEAL2} />
 
     <text x="800" y="417" textAnchor="middle" fontSize="18" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">EXECUTION OS ORCHESTRATION LAYER</text>
+      fontFamily="'DM Sans', Arial, sans-serif">READINESS OS ORCHESTRATION LAYER</text>
 
     {/* 12 min badge */}
     <circle cx="1462" cy="408" r="34" fill={GOLD} />

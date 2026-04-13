@@ -488,7 +488,7 @@ export default function CommandTower() {
                   fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0,
                   letterSpacing: '0.12em',
                 }}>
-                  EXECUTION OS
+                  READINESS OS
                 </span>
               </div>
               <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, marginTop: 1 }}>
@@ -838,7 +838,7 @@ export default function CommandTower() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <ChevronRight size={13} color={GOLD} />
             <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>
-              DRILL DOWN INTO EXECUTION OS
+              DRILL DOWN INTO READINESS OS
             </span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>

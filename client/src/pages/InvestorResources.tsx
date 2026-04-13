@@ -194,7 +194,7 @@ function McKinseyResearchSection() {
                 <div key={n} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 12px", borderRadius: 0, background: active ? "rgba(201,168,76,0.08)" : "transparent", border: active ? "1px solid rgba(201,168,76,0.2)" : "1px solid rgba(255,255,255,0.04)" }}>
                   <span style={{ ...IR_MONO, fontSize: 9, color: active ? IR_GOLD : "rgba(240,237,228,0.2)", fontWeight: 700, flexShrink: 0 }}>{n}</span>
                   <span style={{ ...IR_DM, fontSize: 11, color: active ? IR_IVORY : "rgba(240,237,228,0.25)", fontWeight: active ? 600 : 400 }}>{label}</span>
-                  {active && <span style={{ marginLeft: "auto", background: IR_GOLD, color: IR_NAVY, fontSize: 8, fontWeight: 800, padding: "2px 7px", borderRadius: 0, letterSpacing: "0.08em", flexShrink: 0 }}>EXECUTION OS</span>}
+                  {active && <span style={{ marginLeft: "auto", background: IR_GOLD, color: IR_NAVY, fontSize: 8, fontWeight: 800, padding: "2px 7px", borderRadius: 0, letterSpacing: "0.08em", flexShrink: 0 }}>READINESS OS</span>}
                 </div>
               ))}
             </div>

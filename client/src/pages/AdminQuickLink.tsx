@@ -93,7 +93,7 @@ export default function AdminQuickLink() {
             </div>
           </div>
           <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 600, letterSpacing: '0.12em' }}>
-            ADMIN · VAUGHNMARTIN EXECUTION OS
+            ADMIN · VAUGHNMARTIN READINESS OS
           </div>
         </div>
       </div>
