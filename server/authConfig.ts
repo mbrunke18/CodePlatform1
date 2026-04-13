@@ -233,6 +233,12 @@ export const PUBLIC_ROUTES = [
 
   // Live Signal Context — public summary for homepage banner and guest pages
   '/api/public/live-context',
+
+  // Shadow Strategy Simulator — public demo for prospects (12-minute test drive, homepage)
+  '/api/simulation/public-analyze',
+
+  // Signal Activity Log — public for Command Tower display
+  '/api/signal-activity-log',
 ];
 
 /**

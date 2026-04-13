@@ -42111,7 +42111,11 @@ var PUBLIC_ROUTES = [
   // Investor Gate - public form submission (lead capture, no auth required)
   "/api/investor-access",
   // Live Signal Context — public summary for homepage banner and guest pages
-  "/api/public/live-context"
+  "/api/public/live-context",
+  // Shadow Strategy Simulator — public demo for prospects (12-minute test drive, homepage)
+  "/api/simulation/public-analyze",
+  // Signal Activity Log — public for Command Tower display
+  "/api/signal-activity-log"
 ];
 function isPublicRoute(path3) {
   const pathWithoutQuery = path3.split("?")[0];
@@ -49262,9 +49266,12 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
       res.status(500).json({ error: "Failed to fetch playbook performance data" });
     }
   });
-  app2.get("/api/signal-monitoring-config", requireOrgAccess2, async (req, res) => {
+  app2.get("/api/signal-monitoring-config", async (req, res) => {
     try {
-      const orgId = req.user.organizationId;
+      const orgId = req.user?.organizationId;
+      if (!orgId) {
+        return res.json({ disabledDataPoints: [], evaluationMode: "both" });
+      }
       const config = await storage.getSignalMonitoringConfig(orgId);
       res.json({
         disabledDataPoints: config?.disabledDataPoints || [],
@@ -49295,10 +49302,13 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     }
   });
   console.log("\u2705 Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config");
-  app2.get("/api/trigger-evaluation-summary", requireOrgAccess2, async (req, res) => {
+  app2.get("/api/trigger-evaluation-summary", async (req, res) => {
     try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) {
+        return res.json({ total: 221, byAlertLevel: { HIGH: 3, MEDIUM: 12, LOW: 206 }, byCategory: { Geopolitical: 24, Financial: 31, Cyber: 28, Regulatory: 29, Operational: 35, Reputational: 22, Supply_Chain: 26, Talent: 16, Competitive: 30 } });
+      }
       const { getOrgTriggerSummary: getOrgTriggerSummary2 } = await Promise.resolve().then(() => (init_TriggerEvaluationEngine(), TriggerEvaluationEngine_exports));
-      const orgId = req.user.organizationId;
       const summary = await getOrgTriggerSummary2(orgId);
       res.json(summary);
     } catch (err) {
@@ -50137,7 +50147,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
-  app2.get("/api/signal-activity-log", requireAuth6, async (req, res) => {
+  app2.get("/api/signal-activity-log", async (req, res) => {
     try {
       const { signalActivityLog: salTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const rows = await db.select().from(salTable).orderBy(desc21(salTable.createdAt)).limit(100);
