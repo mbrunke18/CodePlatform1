@@ -22,7 +22,7 @@ const scenarioComparisons = [
     type: "offense" as const,
     traditional: { time: "6-9 months", cost: "€280M opportunity lost" },
     execution: { time: "12 minutes", value: "First-mover advantage secured" },
-    speedup: "21,600x",
+    speedup: "3,600×",
     context: "Playbook activates the moment market signals confirm the window. Stakeholders aligned, budgets staged, comms drafted — before competitors react.",
   },
   {
@@ -42,7 +42,7 @@ const scenarioComparisons = [
     type: "defense" as const,
     traditional: { time: "4-5 days", cost: "$96M+ production impact" },
     execution: { time: "12 minutes", value: "Continuity protocols active" },
-    speedup: "600x",
+    speedup: "3,600×",
     context: "Alternate supplier lists, logistics rerouting, and customer communication templates are pre-staged in the playbook and deploy the moment the signal triggers.",
   },
   {
@@ -52,7 +52,7 @@ const scenarioComparisons = [
     type: "offense" as const,
     traditional: { time: "90+ days", cost: "$180M synergy delay" },
     execution: { time: "12 minutes", value: "40% faster synergy capture" },
-    speedup: "10,800x",
+    speedup: "3,600×",
     context: "Integration playbooks are built pre-close. Day 1 launches with every stakeholder assigned, every workstream active, every communication sent simultaneously.",
   },
 ];
@@ -613,7 +613,7 @@ export default function Investors() {
                     <div className="flex-1 h-2 bg-[#F8F7F4] overflow-hidden border border-[#E8E4DC]">
                       <div className="h-full bg-[#0A0F2E]" style={{ width: '100%' }} />
                     </div>
-                    <span className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap">{scenario.speedup} faster</span>
+                    <span className="text-[#2B8A6E] font-bold text-sm whitespace-nowrap">{scenario.speedup} Execution Head Start</span>
                     <div className="w-6 h-2 bg-[#F8F7F4] overflow-hidden border border-[#E8E4DC]">
                       <div className="h-full bg-[#2B8A6E]" style={{ width: '100%' }} />
                     </div>

@@ -4,6 +4,7 @@ import { Link, useLocation } from 'wouter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { updatePageMetadata } from '@/lib/seo';
 import { useAuth } from '@/hooks/useAuth';
+import { useRequireAuth } from '@/hooks/useRequireAuth';
 import PageLayout from '@/components/layout/PageLayout';
 import PulseMap from '@/components/mission/PulseMap';
 import TriggerProbabilityForecast from '@/components/predictive/TriggerProbabilityForecast';
@@ -395,6 +396,7 @@ function DomainStatusGrid({ detections }: { detections: Detection[] }) {
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function MissionControl() {
+  const { isReady } = useRequireAuth();
   const { user } = useAuth() as any;
   const clock = useClock();
   const [, setLocation] = useLocation();
@@ -462,6 +464,7 @@ export default function MissionControl() {
 
   const firstName = (user as any)?.firstName || (user as any)?.username?.split(' ')[0] || 'Executive';
 
+  if (!isReady) return null;
   return (
     <PageLayout>
       <div style={{

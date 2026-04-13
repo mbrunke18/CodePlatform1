@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRequireAuth } from '@/hooks/useRequireAuth';
 import { useQuery } from '@tanstack/react-query';
 import { updatePageMetadata } from '@/lib/seo';
 import PageLayout from '@/components/layout/PageLayout';
@@ -151,6 +152,7 @@ interface OraclePattern {
 }
 
 export default function ExecutiveDashboard() {
+  const { isReady } = useRequireAuth();
   const [activeTab, setActiveTab] = useState('overview');
 
   useEffect(() => {
@@ -230,6 +232,7 @@ export default function ExecutiveDashboard() {
 
   const organizationId = organizations[0]?.id || 'demo-org-1';
 
+  if (!isReady) return null;
   return (
     <PageLayout>
       <div style={{ background: OFF, minHeight: "100vh" }}>

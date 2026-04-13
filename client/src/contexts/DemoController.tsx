@@ -173,7 +173,7 @@ export const hybridDemoScenarios: DemoScene[] = [
   {
     id: 'trigger-alert',
     title: 'Executive Trigger Activated',
-    subtitle: 'AI-powered early warning system in action',
+    subtitle: 'Signal-based early warning system in action',
     description: 'Real-time trigger detection shows 5-day head start over competitors',
     type: 'navigation',
     phase: 'detection',

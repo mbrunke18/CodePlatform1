@@ -331,7 +331,7 @@ export default function HowItWorks() {
               <div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Build Net-New Playbooks</div>
                 <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, fontWeight: 500 }}>
-                  Use the Strategic Recorder to paste in crisis notes, board transcripts, or past incident reports. GPT-4o generates a structured playbook outline from your own institutional knowledge.
+                  Use the Strategic Recorder to paste in crisis notes, board transcripts, or past incident reports. The system generates a structured playbook outline from your own institutional knowledge.
                 </p>
               </div>
             </div>
@@ -396,7 +396,7 @@ export default function HowItWorks() {
                 color: "#A78BFA",
                 bg: "#fff",
                 title: "Every Execution Gets Smarter",
-                desc: "After each playbook closes, GPT-4o generates an executive outcome summary. Lessons feed back into the playbook. The organization's institutional knowledge compounds.",
+                desc: "After each playbook closes, the system generates an executive outcome summary. Lessons feed back into the playbook. The organization's institutional knowledge compounds.",
                 sub: "Your competitive moat grows with each event."
               }
             ].map((phase, i) => (
@@ -492,7 +492,7 @@ export default function HowItWorks() {
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
                 After every playbook closes, the ADVANCE phase captures what worked, what didn't, and what the next team should know. Those lessons feed directly back into your playbook library — so knowledge stays with the organization, not the individual.
               </p>
-              <CheckItem text="GPT-4o executive outcome summary generated" />
+              <CheckItem text="System-generated executive outcome summary" />
               <CheckItem text="Lessons tagged and stored in playbook history" />
               <CheckItem text="Refinement suggestions surfaced automatically" />
             </div>

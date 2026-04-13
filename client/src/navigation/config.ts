@@ -100,7 +100,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Signal Intelligence',
           path: '/detect/signals',
           icon: '📡',
-          description: 'AI-powered signal monitoring and analysis'
+          description: 'Signal-based monitoring and continuous analysis'
         },
         {
           id: 'threats',
@@ -114,7 +114,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Compound Threat Intelligence',
           path: '/dashboard',
           icon: '🔗',
-          description: 'AI-detected cross-domain threat patterns'
+          description: 'System-detected cross-domain threat patterns'
         },
         {
           id: 'trends',
@@ -258,7 +258,7 @@ export const navigationConfig: NavigationConfig = {
           label: 'Strategic Learning Center',
           path: '/execution-learning',
           icon: '🧠',
-          description: 'AI-powered performance intelligence and continuous improvement'
+          description: 'System-analyzed performance intelligence and continuous improvement'
         },
         {
           id: 'roi-dashboard',

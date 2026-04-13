@@ -178,8 +178,8 @@ export default function PilotDemo() {
         timestamp: new Date(), 
         type: "analysis", 
         title: "Signal Pattern Analysis", 
-        description: "GPT-4o analyzing strategic impact, urgency level, and affected business units",
-        valueCallout: "AI classifies severity and recommends immediate actions",
+        description: "System-analyzing strategic impact, urgency level, and affected business units",
+        valueCallout: "System classifies severity and recommends immediate actions",
         traditionalTime: "4-8 hours for analyst review",
         icon: Zap 
       },

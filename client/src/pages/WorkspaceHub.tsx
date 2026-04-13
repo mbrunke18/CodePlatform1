@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRequireAuth } from '@/hooks/useRequireAuth';
 import { Link, useLocation } from 'wouter';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
@@ -376,6 +377,7 @@ function IDEAPhaseLanding({ activeTab, onSelect }: { activeTab: string; onSelect
 
 // ─── MAIN HUB ─────────────────────────────────────────────────────────────────
 export default function WorkspaceHub() {
+  const { isReady } = useRequireAuth();
   const [location] = useLocation();
   const initTab = () => {
     const p = new URLSearchParams(window.location.search);
@@ -395,6 +397,7 @@ export default function WorkspaceHub() {
 
   const activeTabData = TABS.find(t => t.id === activeTab)!;
 
+  if (!isReady) return null;
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4] dark:bg-[#0A0F2E]">

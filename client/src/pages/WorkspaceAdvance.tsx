@@ -285,7 +285,7 @@ function ReadinessCompoundsPanel() {
                       const TypeIcon = h.type === 'added' ? Plus : h.type === 'refined' ? RefreshCw : h.type === 'created' ? Star : GitCommit;
                       return (
                         <div key={hi} style={{ display: 'flex', gap: 14, padding: '8px 0', position: 'relative' }}>
-                          <div style={{ width: 22, height: 22, background: `${typeColor}15`, border: `1px solid ${typeColor}40`, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1, background: '#fff' }}>
+                          <div style={{ width: 22, height: 22, border: `1px solid ${typeColor}40`, borderRadius: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1, background: '#fff' }}>
                             <TypeIcon style={{ width: 10, height: 10, color: typeColor }} />
                           </div>
                           <div style={{ flex: 1, paddingTop: 2 }}>

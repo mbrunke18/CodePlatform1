@@ -1063,7 +1063,7 @@ export default function InvestorLanding() {
                   <div className="flex-1 space-y-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4bg-[#2B8A6E]"></div>
+                        <div className="w-4 h-4 bg-[#2B8A6E]"></div>
                         <div className="font-semibold text-[#0A0F2E]">Cost Savings: $7.2M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">
@@ -1072,7 +1072,7 @@ export default function InvestorLanding() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4bg-[#0A0F2E]"></div>
+                        <div className="w-4 h-4 bg-[#0A0F2E]"></div>
                         <div className="font-semibold text-[#0A0F2E]">Time Recovery: $3.4M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">
@@ -1081,7 +1081,7 @@ export default function InvestorLanding() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4bg-[#C9A84C]"></div>
+                        <div className="w-4 h-4 bg-[#C9A84C]"></div>
                         <div className="font-semibold text-[#0A0F2E]">Risk Mitigation: $1.8M</div>
                       </div>
                       <div className="text-sm text-[#0A0F2E]">
@@ -1092,6 +1092,70 @@ export default function InvestorLanding() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Investment Ask Section */}
+        <section className="py-16 px-6 bg-[#F8F7F4]">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="vm-section-label justify-center mb-6"><span>The Ask</span></div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(32px,5vw,52px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.1 }}>
+                $2.5M Seed Round
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 560, margin: '0 auto' }}>
+                18-month runway to $3.75M ARR — three Fortune 1000 pilots converting to annual contracts.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-10">
+              {[
+                { label: 'Seed Round', value: '$2.5M', sub: 'SAFE at $12M cap', accent: '#0A0F2E' },
+                { label: 'ARR Target', value: '$3.75M', sub: '18-month milestone', accent: '#C9A84C' },
+                { label: 'Runway', value: '18 mo', sub: 'To Series A inflection', accent: '#2B8A6E' },
+              ].map(m => (
+                <div key={m.label} className="text-center py-10 px-6 border border-[#E8E4DC] bg-white" style={{ borderTopColor: m.accent, borderTopWidth: 3 }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,6vw,64px)', fontWeight: 700, color: m.accent, lineHeight: 1, marginBottom: 8 }}>{m.value}</div>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 4 }}>{m.label}</div>
+                  <div style={{ fontSize: 13, color: '#6B7280' }}>{m.sub}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-white border border-[#E8E4DC] p-6">
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>Use of Proceeds</div>
+                {[
+                  { label: 'Pilot Execution & Customer Success', pct: '40%', color: '#2B8A6E' },
+                  { label: 'Product & Engineering', pct: '30%', color: '#0A0F2E' },
+                  { label: 'Sales & GTM Infrastructure', pct: '20%', color: '#C9A84C' },
+                  { label: 'Operations & Legal', pct: '10%', color: '#6B7280' },
+                ].map(u => (
+                  <div key={u.label} className="flex items-center justify-between py-3 border-b border-[#F0EDE4] last:border-0">
+                    <div className="flex items-center gap-3">
+                      <div className="w-1 h-8" style={{ background: u.color }} />
+                      <span style={{ fontSize: 14, color: '#0A0F2E', fontWeight: 500 }}>{u.label}</span>
+                    </div>
+                    <span style={{ fontSize: 16, fontWeight: 700, color: u.color, fontFamily: "'Barlow Condensed', sans-serif" }}>{u.pct}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-white border border-[#E8E4DC] p-6">
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>18-Month Milestones</div>
+                {[
+                  { mo: 'M1–3', label: 'HPE, Target, Clorox pilots live — 3 paid LOIs', color: '#2B8A6E' },
+                  { mo: 'M4–6', label: 'First 3 pilots convert to $250K+ annual contracts', color: '#2B8A6E' },
+                  { mo: 'M6–12', label: 'Expand to 8 enterprise accounts — $1.5M ARR', color: '#C9A84C' },
+                  { mo: 'M12–18', label: '$3.75M ARR — Series A raise initiated', color: '#0A0F2E' },
+                ].map(m => (
+                  <div key={m.mo} className="flex items-start gap-4 py-3 border-b border-[#F0EDE4] last:border-0">
+                    <div style={{ fontSize: 11, fontWeight: 700, color: m.color, letterSpacing: '0.08em', minWidth: 44, paddingTop: 1 }}>{m.mo}</div>
+                    <p style={{ fontSize: 14, color: '#374151', lineHeight: 1.5 }}>{m.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

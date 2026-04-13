@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRequireAuth } from '@/hooks/useRequireAuth';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import PageLayout from '@/components/layout/PageLayout';
@@ -44,6 +45,7 @@ const COMPOUND_THREATS = [
 ];
 
 export default function IntelligenceHub() {
+  const { isReady } = useRequireAuth();
   const [activeTab, setActiveTab] = useState('overview');
 
   const { data: dynamicStatus } = useQuery<any>({ queryKey: ['/api/dynamic-strategy/status'] });
@@ -56,6 +58,7 @@ export default function IntelligenceHub() {
   const oraclePatterns = dynamicStatus?.oraclePatternsActive || 7;
   const readinessScore = dynamicStatus?.readinessScore || 84;
 
+  if (!isReady) return null;
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4]">
@@ -279,8 +282,8 @@ export default function IntelligenceHub() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[
-                      { step: '01', title: 'Weak Signal Aggregation', desc: 'GPT-4o reads signals across all 20 domains simultaneously, identifying patterns invisible to domain-specific analysis.' },
-                      { step: '02', title: 'Cross-Domain Correlation', desc: 'The AI identifies when signals from multiple domains show convergent patterns that amplify total risk.' },
+                      { step: '01', title: 'Weak Signal Aggregation', desc: 'The system reads signals across all 20 domains simultaneously, identifying patterns invisible to domain-specific analysis.' },
+                      { step: '02', title: 'Cross-Domain Correlation', desc: 'The system identifies when signals from multiple domains show convergent patterns that amplify total risk.' },
                       { step: '03', title: 'Threat Synthesis', desc: 'A compound threat card is generated with severity score, confidence rating, and recommended response playbooks.' },
                     ].map(s => (
                       <div key={s.step}>

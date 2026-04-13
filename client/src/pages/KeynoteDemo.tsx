@@ -420,7 +420,7 @@ export default function KeynoteDemo() {
             AI ANALYSIS ENGINE
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>AI Analyzes the Threat</h2>
-          <p className="text-xl text-[#0A0F2E]">GPT-4o processes the signal against your organizational context</p>
+          <p className="text-xl text-[#0A0F2E]">The system analyzes the signal against your organizational context</p>
         </motion.div>
 
         <motion.div

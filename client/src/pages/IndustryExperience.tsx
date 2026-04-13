@@ -1208,7 +1208,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><Brain className="h-3 w-3 mr-1" /> AI ANALYSIS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">AI Analyzes the Situation</h2>
-              <p className="text-gray-800 dark:text-slate-200">GPT-4o processes {totalDataPoints.toLocaleString()} data points from your connected sources</p>
+              <p className="text-gray-800 dark:text-slate-200">The system analyzes {totalDataPoints.toLocaleString()} data points from your connected sources</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}

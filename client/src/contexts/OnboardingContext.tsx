@@ -111,7 +111,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'wia-welcome',
         title: 'What-If Analyzer',
-        description: 'Model any business scenario beyond the 170 playbook templates. Test market conditions, assess impact, and get AI-powered recommendations.',
+        description: 'Model any business scenario beyond the 170 playbook templates. Test market conditions, assess impact, and get system recommendations.',
         phase: 'IDENTIFY'
       },
       {
