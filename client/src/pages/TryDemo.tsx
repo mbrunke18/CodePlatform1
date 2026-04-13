@@ -638,11 +638,11 @@ export default function TryDemo() {
 
   const startDemo = (scenario: Scenario) => {
     setSelectedScenario(scenario);
-    setCurrentPhase('identify');
-    setCompletedPhases(['chaos']);
+    setCurrentPhase('chaos');
+    setCompletedPhases([]);
     setExecutionSteps([]);
     setLearnings(null);
-    setChaosMessages(scenario.chaosMessages);
+    setChaosMessages([]);
     setRevenueLost(scenario.revenuePerMinute * 3);
     setStressLevel(0);
     setChaosSeconds(0);
@@ -1331,7 +1331,7 @@ export default function TryDemo() {
                           <div style={{ width: 10, height: 10, borderRadius: 0, background: '#febc2e' }} />
                           <div style={{ width: 10, height: 10, borderRadius: 0, background: '#28c840' }} />
                         </div>
-                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 8, fontFamily: 'monospace' }}>execution-os — signal-monitor — live</span>
+                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 8, fontFamily: 'monospace' }}>readiness-os — signal-monitor — live</span>
                         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5 }}>
                           <div style={{ width: 6, height: 6, borderRadius: 0, background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
                           <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 248+ SOURCES</span>
@@ -1400,7 +1400,7 @@ export default function TryDemo() {
                               <BookOpen style={{ width: 16, height: 16, color: GOLD, flexShrink: 0 }} />
                               <div>
                                 <p style={{ fontSize: 14, fontWeight: 700, color: '#FFFFFF', margin: 0 }}>{selectedScenario.playbook}</p>
-                                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', margin: 0 }}>AI match confidence: <span style={{ color: '#22c55e', fontWeight: 700 }}>94%</span> · Activating now</p>
+                                <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', margin: 0 }}>Signal match confidence: <span style={{ color: '#22c55e', fontWeight: 700 }}>94%</span> · Activating now</p>
                               </div>
                             </div>
                           </div>
@@ -1519,7 +1519,7 @@ export default function TryDemo() {
                       <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 0, padding: '16px 18px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                           <TrendingUp style={{ width: 14, height: 14, color: TEAL }} />
-                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEAL }}>What Worked — AI Analysis</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEAL }}>What Worked — System Analysis</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.patterns || []).map((pattern, i) => (
@@ -1535,7 +1535,7 @@ export default function TryDemo() {
                       <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 0, padding: '16px 18px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                           <Lightbulb style={{ width: 14, height: 14, color: GOLD }} />
-                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD }}>AI Playbook Improvements Suggested</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD }}>Playbook Improvements Staged</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.improvements || []).map((improvement, i) => (
