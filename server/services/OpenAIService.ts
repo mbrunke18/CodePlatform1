@@ -3,9 +3,8 @@ import pino from 'pino';
 
 const logger = pino({ name: 'openai-service' });
 
-// AI_DISABLED: set to true to prevent all OpenAI/Azure API calls and use fallback responses only.
-// Change to false to re-enable when a valid API key is available.
-const AI_DISABLED = true;
+// AI_DISABLED: set to false to enable live OpenAI/Azure API calls.
+const AI_DISABLED = false;
 
 interface OpenAIServiceConfig {
   maxRetries: number;
@@ -62,12 +61,20 @@ export class OpenAIService {
       }
     }
 
-    if (!this.isConfigured && process.env.OPENAI_API_KEY) {
+    // Prefer direct OPENAI_API_KEY; fall back to Replit-managed integration key + proxy
+    const openAIKey = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+    const openAIBaseURL = !process.env.OPENAI_API_KEY && process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
+      ? process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
+      : undefined;
+    if (!this.isConfigured && openAIKey) {
       try {
-        this.client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+        this.client = new OpenAI({
+          apiKey: openAIKey,
+          ...(openAIBaseURL ? { baseURL: openAIBaseURL } : {}),
+        });
         this.provider = 'openai';
         this.isConfigured = true;
-        logger.info('OpenAI service initialized successfully');
+        logger.info({ baseURL: openAIBaseURL ?? 'default' }, 'OpenAI service initialized successfully');
       } catch (error) {
         logger.error({ error }, 'Failed to initialize OpenAI client');
         this.isConfigured = false;

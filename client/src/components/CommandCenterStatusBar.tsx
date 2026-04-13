@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Activity, AlertTriangle, Target, Zap } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 
 interface SystemStatus {
   readinessScore: number;
@@ -12,13 +13,15 @@ interface SystemStatus {
 }
 
 export function CommandCenterStatusBar() {
+  const { isAuthenticated } = useAuth();
   const { data: status, isLoading } = useQuery<SystemStatus>({
     queryKey: ['/api/dynamic-strategy/status'],
     refetchInterval: 30000,
+    enabled: isAuthenticated,
   });
 
-  if (isLoading || !status) {
-    return null; // Hide status bar while loading to reduce clutter
+  if (!isAuthenticated || isLoading || !status) {
+    return null;
   }
 
   const getStatusColor = () => {

@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Brain, TrendingUp, ArrowRight, Activity, Zap, Target, Eye, Repeat } from 'lucide-react';
 import { Link } from 'wouter';
+import { useAuth } from '@/hooks/useAuth';
 
 interface ReadinessMetric {
   id: string;
@@ -31,14 +32,17 @@ interface WeakSignal {
 }
 
 export default function FutureReadinessWidget({ organizationId }: { organizationId: string }) {
+  const { isAuthenticated } = useAuth();
   const { data: readinessData } = useQuery<ReadinessMetric>({
     queryKey: ['/api/dynamic-strategy/readiness', organizationId],
     refetchInterval: 30000,
+    enabled: isAuthenticated,
   });
 
   const { data: weakSignalsRaw } = useQuery<WeakSignal[]>({
     queryKey: ['/api/dynamic-strategy/weak-signals', organizationId],
     refetchInterval: 30000,
+    enabled: isAuthenticated,
   });
   const weakSignals = Array.isArray(weakSignalsRaw) ? weakSignalsRaw : [];
 

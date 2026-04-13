@@ -15109,7 +15109,7 @@ var init_OpenAIService = __esm({
   "server/services/OpenAIService.ts"() {
     "use strict";
     logger5 = pino5({ name: "openai-service" });
-    AI_DISABLED = true;
+    AI_DISABLED = false;
     OpenAIService = class {
       client;
       config;
@@ -15147,9 +15147,10 @@ var init_OpenAIService = __esm({
             logger5.error({ error }, "Failed to initialize Azure OpenAI client, falling back to OpenAI");
           }
         }
-        if (!this.isConfigured && process.env.OPENAI_API_KEY) {
+        const openAIKey = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+        if (!this.isConfigured && openAIKey) {
           try {
-            this.client = new OpenAI2({ apiKey: process.env.OPENAI_API_KEY });
+            this.client = new OpenAI2({ apiKey: openAIKey });
             this.provider = "openai";
             this.isConfigured = true;
             logger5.info("OpenAI service initialized successfully");
