@@ -112,7 +112,7 @@ export default function AIIntelligenceHub() {
                     <div style={{ width: 20, height: 1.5, background: GOLD }} />
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Intelligence Suite</span>
                   </div>
-                  <div style={{ ...CG, fontSize: 21, fontWeight: 600, color: '#F0EDE4', lineHeight: 1 }}>AI Intelligence Hub</div>
+                  <div style={{ ...CG, fontSize: 21, fontWeight: 600, color: '#F0EDE4', lineHeight: 1 }}>Intelligence Hub</div>
                 </div>
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '4px 12px', border: '1px solid rgba(43,138,110,0.3)' }}>
