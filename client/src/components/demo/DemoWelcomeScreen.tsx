@@ -54,7 +54,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
   const demoHighlights = [
     "12-Minute Execution Playbooks (vs weeks of traditional mobilization)",
     "Strategic Work Breakdown Structure with phases & dependencies",
-    "All 5 AI Intelligence Modules in action",
+    "All 5 Intelligence Modules in action",
     "Trigger-activated coordinated execution",
     "170 strategic playbook templates across 9 operational domains",
     "Interactive ROI calculations showing 3,600× Execution Head Start",

@@ -243,9 +243,9 @@ export default function FluxAdaptations() {
                   <div style={{ background: OFF, padding: "64px 48px", border: "1px solid #E8E4DC", marginTop: 48 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                       <div style={{ width: 28, height: 2, background: GOLD }} />
-                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Intelligence</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Strategic Intelligence</span>
                     </div>
-                    <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>AI Strategy <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
+                    <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: NAVY, marginBottom: 24 }}>Strategic <em style={{ fontStyle: "italic", color: GOLD }}>Recommendations</em></h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: 24, background: "#fff" }}>
                         <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Prioritization</p>

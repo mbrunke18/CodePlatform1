@@ -152,7 +152,7 @@ export default function Pricing() {
               <ul className="space-y-4 mb-8">
                 {[
                   "Full platform access",
-                  "AI Intelligence Suite",
+                  "Intelligence Suite",
                   "24/7 monitoring system",
                   "Customer success manager",
                   "Quarterly business reviews",

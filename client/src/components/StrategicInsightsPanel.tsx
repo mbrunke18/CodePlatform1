@@ -141,7 +141,7 @@ export default function StrategicInsightsPanel() {
             <Brain className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
             <p className="text-muted-foreground">No strategic insights available</p>
             <p className="text-sm text-muted-foreground mt-1">
-              AI analysis will generate insights as data is processed
+              System analysis will generate insights as data is processed
             </p>
           </div>
         )}

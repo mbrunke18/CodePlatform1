@@ -35,7 +35,7 @@ export default function MarketingLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS - Strategic Readiness Platform | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 AI modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 intelligence modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "Readiness OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Readiness Platform. Active Fortune 1000 pilot program. Identify → Detect → Execute → Advance.",
     });
@@ -136,7 +136,7 @@ export default function MarketingLanding() {
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
-                <span>5 AI Intelligence Modules</span>
+                <span>5 Intelligence Modules</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
@@ -249,7 +249,7 @@ export default function MarketingLanding() {
             {/* 2. AI Intelligence (5 Modules) */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-ai-intelligence">
               <CardContent className="p-8">
-                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">AI Intelligence Layer</h3>
+                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Intelligence Layer</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   5 specialized AI modules: Pulse, Flux, Prism, Echo, Nova for real-time strategic insights and pattern detection.
                 </p>

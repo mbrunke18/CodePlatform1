@@ -84,8 +84,8 @@ export default function IntelligenceControlCenter() {
 
   const intelligenceModules = [
     {
-      id: 'ai-hub', title: 'AI Intelligence Hub',
-      description: '5 AI co-pilots for strategic decision-making',
+      id: 'ai-hub', title: 'Intelligence Hub',
+      description: '5 intelligence modules for strategic decision-making',
       path: '/ai', icon: Brain, accentColor: GOLD, badge: '5 MODULES',
       stat: '5 Co-Pilots', statSub: 'active & monitoring',
       features: ['Pulse Intelligence', 'Flux Adaptations', 'Prism Insights', 'Echo Analytics', 'Nova Innovations'],

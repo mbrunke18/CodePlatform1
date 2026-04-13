@@ -170,7 +170,7 @@ export default function UnifiedEnterprisePlatform() {
                 </Button>
               </Link>
               <span>/</span>
-              <span>AI Intelligence</span>
+              <span>Intelligence</span>
               <span>/</span>
               <span className="text-[#0A0F2E] dark:text-[#C9A84C]">Intelligence Command Center</span>
             </div>
@@ -223,7 +223,7 @@ export default function UnifiedEnterprisePlatform() {
                 </div>
               </CardHeader>
               <CardContent className="p-3 pt-0">
-                <p className="text-xs text-[#6B7280] mb-2">24/7 AI Intelligence</p>
+                <p className="text-xs text-[#6B7280] mb-2">24/7 Continuous Intelligence</p>
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
                     <span className="text-[#6B7280]">Pulse Active</span>
@@ -324,7 +324,7 @@ export default function UnifiedEnterprisePlatform() {
               </TabsTrigger>
               <TabsTrigger value="ai-intelligence" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-ai">
                 <Brain className="h-4 w-4" />
-                AI Intelligence
+                Intelligence
               </TabsTrigger>
               <TabsTrigger value="collaboration" className="flex items-center gap-1 whitespace-nowrap px-2 py-1.5 text-xs data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-collaboration">
                 <Users className="h-4 w-4" />

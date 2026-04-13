@@ -15233,7 +15233,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings \u2014 no markdow
                   { role: "system", content: def.system },
                   { role: "user", content: def.user }
                 ],
-                max_tokens: 600,
+                max_completion_tokens: 600,
                 temperature: 0.65
               })
             );
@@ -15297,7 +15297,7 @@ Analysis Request: ${prompt}` : prompt;
                   content: fullPrompt
                 }
               ],
-              max_tokens: this.config.maxTokens,
+              max_completion_tokens: this.config.maxTokens,
               temperature: this.config.temperature
             });
           });
@@ -15346,7 +15346,7 @@ Analysis Request: ${prompt}` : prompt;
                   content: specializedPrompt
                 }
               ],
-              max_tokens: this.config.maxTokens,
+              max_completion_tokens: this.config.maxTokens,
               temperature: this.config.temperature
             });
           });
@@ -34004,7 +34004,7 @@ Please provide a strategic, data-driven response that references the relevant so
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt }
         ],
-        max_tokens: 1e3,
+        max_completion_tokens: 1e3,
         temperature: 0.7
       });
       const content = completion.choices[0]?.message?.content;

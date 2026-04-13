@@ -376,7 +376,7 @@ export default function InvestorResources() {
               { val: "170", label: "Strategic Playbooks", sub: "Across 9 domains" },
               { val: "248+", label: "Data Points Monitored", sub: "Real-time signals" },
               { val: "12 min", label: "Response Time", sub: "vs 30-day industry avg" },
-              { val: "24/7", label: "AI Intelligence", sub: "Continuous monitoring" },
+              { val: "24/7", label: "Intelligence", sub: "Continuous monitoring" },
             ].map((m, i) => (
               <Card key={i} className="text-center border-[#E8E4DC] bg-white">
                 <CardContent className="pt-6">

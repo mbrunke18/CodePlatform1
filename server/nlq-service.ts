@@ -211,7 +211,7 @@ Please provide a strategic, data-driven response that references the relevant so
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
         ],
-        max_tokens: 1000,
+        max_completion_tokens: 1000,
         temperature: 0.7,
       });
 

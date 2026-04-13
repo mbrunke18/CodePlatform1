@@ -635,7 +635,7 @@ export default function PilotProgram() {
               <div className="space-y-2 max-w-2xl mx-auto">
                 {[
                   { layer: "Readiness OS", role: "Operating Model — coordinates humans at the speed of AI detection", highlight: true },
-                  { layer: "Microsoft Copilot & Azure OpenAI", role: "AI Intelligence — detects, summarizes, analyzes", highlight: false },
+                  { layer: "Microsoft Copilot & Azure OpenAI", role: "Signal Intelligence — detects, summarizes, analyzes", highlight: false },
                   { layer: "Microsoft Teams & Outlook", role: "Communication Infrastructure — how people connect", highlight: false },
                   { layer: "Jira / Asana / ServiceNow", role: "Work Management — where tasks are tracked", highlight: false },
                   { layer: "Defender / Purview / Sentinel", role: "Security & Compliance — what is monitored", highlight: false },

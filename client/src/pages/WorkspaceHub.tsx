@@ -139,7 +139,7 @@ const executionMetrics = [
 type ExecutionRun = { id: string; status: string; startedAt: string | null; completedAt: string | null; outcome: string | null; };
 type ExecutionContext = { instanceId: string; status: string; objective: string; description: string | null; currentPhase: string | null; phaseLabel: string; phaseGuidance: string; completionPct: number; total: number; completed: number; inProgress: number; blocked: number; elapsedMinutes: number; minutesRemaining: number; targetMinutes: number; startedAt: string | null; criticalConstraint: string | null; };
 type MyTask = { id: string; status: string; taskTitle: string | null; taskDescription: string | null; taskRole: string | null; taskPriority: string | null; taskEstimatedMinutes: number | null; isMyTask: boolean; isScopedView: boolean; userRole: string; blockedReason: string | null; updatedAt: string; };
-const STATUS_COLORS: Record<string, string> = { completed: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20', in_progress: 'bg-blue-50 text-blue-700 border-blue-200', pending: 'bg-gray-100 text-gray-600 border-gray-200', blocked: 'bg-red-50 text-red-700 border-red-200' };
+const STATUS_COLORS: Record<string, string> = { completed: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20', in_progress: 'bg-[#C9A84C]/10 text-[#92760E] border-[#C9A84C]/30', pending: 'bg-gray-100 text-gray-600 border-gray-200', blocked: 'bg-red-50 text-red-700 border-red-200' };
 const PRIORITY_BORDER: Record<string, string> = { critical: 'border-l-red-500', high: 'border-l-orange-400', medium: 'border-l-[#C9A84C]', low: 'border-l-gray-300' };
 
 function JITContextBanner({ runId }: { runId: string }) {
@@ -193,7 +193,7 @@ const advanceTools = [
   { title: "Decision Velocity", description: "Track and improve organizational decision-making speed", path: "/decision-velocity", icon: Activity, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Performance metrics" },
   { title: "Executive Dashboard", description: "Strategic overview of organizational readiness and performance", path: "/executive-dashboard", icon: BarChart3, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Executive view" },
   { title: "Executive Analytics", description: "Deep-dive analytics on playbook effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
-  { title: "AI Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "System recommendations" },
+  { title: "Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "System recommendations" },
   { title: "Playbook Refinement", description: "Update playbooks based on lessons learned", path: "/living-playbooks", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
 ];
 const learningMetrics = [

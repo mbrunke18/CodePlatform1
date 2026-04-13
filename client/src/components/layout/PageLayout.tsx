@@ -19,7 +19,7 @@ const ROUTE_MAP: Record<string, { label: string; section: string }> = {
   '/mission-control':          { label: 'Mission Control', section: 'Platform' },
   '/workspace':                { label: 'Execution Workspace', section: 'Platform' },
   '/intelligence-hub':         { label: 'Intelligence Control Center', section: 'Platform' },
-  '/ai-intelligence':          { label: 'AI Intelligence Hub', section: 'Platform' },
+  '/ai-intelligence':          { label: 'Intelligence Hub', section: 'Platform' },
   '/settings-hub':             { label: 'Settings Hub', section: 'Platform' },
   '/organization-setup':       { label: 'Organization Setup', section: 'Platform' },
   '/task-management':          { label: 'Task Library', section: 'Execute' },

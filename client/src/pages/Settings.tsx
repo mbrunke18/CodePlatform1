@@ -82,7 +82,7 @@ export default function SettingsPage() {
   });
 
   const systemStatus = [
-    { service: "AI Intelligence Modules", status: "Active", uptime: "99.97%", color: "text-[#2B8A6E]" },
+    { service: "Intelligence Modules", status: "Active", uptime: "99.97%", color: "text-[#2B8A6E]" },
     { service: "Crisis Response Systems", status: "Ready", uptime: "99.99%", color: "text-[#2B8A6E]" },
     { service: "Database Performance", status: "Optimal", uptime: "99.95%", color: "text-[#2B8A6E]" },
     { service: "WebSocket Connections", status: "Connected", uptime: "99.92%", color: "text-[#2B8A6E]" }

@@ -163,7 +163,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
               { role: 'system', content: def.system },
               { role: 'user', content: def.user },
             ],
-            max_tokens: 600,
+            max_completion_tokens: 600,
             temperature: 0.65,
           })
         );
@@ -235,7 +235,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
               content: fullPrompt
             }
           ],
-          max_tokens: this.config.maxTokens,
+          max_completion_tokens: this.config.maxTokens,
           temperature: this.config.temperature,
         });
       });
@@ -298,7 +298,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
               content: specializedPrompt
             }
           ],
-          max_tokens: this.config.maxTokens,
+          max_completion_tokens: this.config.maxTokens,
           temperature: this.config.temperature,
         });
       });

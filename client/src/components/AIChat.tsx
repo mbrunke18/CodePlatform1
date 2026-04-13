@@ -124,7 +124,7 @@ export function AIChat({ organizationId, placeholder = "Ask me anything about yo
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2">
           <Bot className="w-5 h-5 text-[#0A0F2E]" />
-          AI Intelligence Assistant
+          Intelligence Assistant
         </CardTitle>
         <p className="text-sm text-gray-600">
           Ask questions about your organization's data and get insights backed by real information.

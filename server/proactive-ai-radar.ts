@@ -411,7 +411,7 @@ Respond with JSON in this format:
         model: 'gpt-5',
         messages: [{ role: 'user', content: prompt }],
         response_format: { type: "json_object" },
-        max_tokens: 1000,
+        max_completion_tokens: 1000,
         temperature: 0.3,
       });
 
@@ -545,7 +545,7 @@ Respond with JSON array of scenario objects.
         model: 'gpt-5',
         messages: [{ role: 'user', content: prompt }],
         response_format: { type: "json_object" },
-        max_tokens: 2000,
+        max_completion_tokens: 2000,
         temperature: 0.8, // Higher creativity for novel scenario generation
       });
 
@@ -605,7 +605,7 @@ Respond with JSON object containing your analysis.
         model: 'gpt-5',
         messages: [{ role: 'user', content: prompt }],
         response_format: { type: "json_object" },
-        max_tokens: 1500,
+        max_completion_tokens: 1500,
         temperature: 0.2, // Lower temperature for analytical validation
       });
 

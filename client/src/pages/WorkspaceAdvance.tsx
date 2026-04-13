@@ -93,7 +93,7 @@ const workspaceTools = [
     stats: "Advanced insights"
   },
   {
-    title: "AI Intelligence Hub",
+    title: "Intelligence Hub",
     description: "Pattern-based recognition and improvement suggestions",
     path: "/ai",
     icon: Brain,
@@ -459,7 +459,7 @@ function DoomLoopDetector() {
                         </span>
                         <SeverityBadge severity={task.severity} />
                         {task.status === 'in_progress' && (
-                          <Badge className="bg-blue-50 text-blue-700 border-blue-200 text-xs">In Progress</Badge>
+                          <Badge className="bg-[#C9A84C]/10 text-[#92760E] border-[#C9A84C]/30 text-xs">In Progress</Badge>
                         )}
                         {task.status === 'pending' && (
                           <Badge className="bg-gray-50 text-gray-600 border-gray-200 text-xs">Pending</Badge>

@@ -145,7 +145,7 @@ type MyTask = {
 
 const STATUS_COLORS: Record<string, string> = {
   completed: 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20',
-  in_progress: 'bg-blue-50 text-blue-700 border-blue-200',
+  in_progress: 'bg-[#C9A84C]/10 text-[#92760E] border-[#C9A84C]/30',
   pending: 'bg-gray-100 text-gray-600 border-gray-200',
   blocked: 'bg-red-50 text-red-700 border-red-200',
 };

@@ -79,7 +79,7 @@ const competitors: Competitor[] = [
     category: "Incident & Crisis Management Software",
     claim: "Coordinate responses, track actions, and document outcomes during incidents and crises.",
     whatTheyDo: "These platforms provide a structured digital workspace for crisis management — incident logging, task assignment, communication tracking, and post-incident reporting. They represent a meaningful improvement over spreadsheets and email chains as a coordination workspace.",
-    whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged playbooks tied to specific trigger signatures. No AI monitoring for trigger conditions. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
+    whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged playbooks tied to specific trigger signatures. No signal monitoring for trigger conditions. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
     theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for Fortune 1000 strategic triggers across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
     oneLiner: "That is a digital emergency binder. This is strategic execution infrastructure.",
   },

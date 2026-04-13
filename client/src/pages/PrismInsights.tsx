@@ -182,7 +182,7 @@ export default function PrismInsights() {
           <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
               <div style={{ width: 28, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>AI Intelligence · Multi-Dimensional Analysis</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Strategic Intelligence · Multi-Dimensional Analysis</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 32, flexWrap: 'wrap' }}>
               <div style={{ flex: 1 }}>

@@ -38,7 +38,7 @@ const SEARCH_ITEMS = [
   { label: 'Command Tower', path: '/command-tower', category: 'Platform', icon: Radio },
   { label: 'Execution Workspace', path: '/workspace', category: 'Platform', icon: Layers },
   { label: 'Intelligence Control Center', path: '/intelligence-hub', category: 'Platform', icon: Brain },
-  { label: 'AI Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
+  { label: 'Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
   { label: 'Settings Hub', path: '/settings-hub', category: 'Platform', icon: Settings },
   { label: 'Organization Setup', path: '/organization-setup', category: 'Platform', icon: Building },
   { label: 'Playbook Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
