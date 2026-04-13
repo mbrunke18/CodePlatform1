@@ -162,9 +162,9 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
+        { label: "Real-Company Scenarios", path: "/try-demo", icon: Rocket, description: "HPE · Target · Clorox · ServiceNow · Alphabet — live 12-minute execution simulations", featured: true },
         { label: "12-Minute Test Drive", path: "/12-minute-experience", icon: Play, description: "Feel a trigger fire and reach full execution in 12 minutes — no login required", featured: true },
-        { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives", featured: true },
-        { label: "Full Execution Simulation", path: "/try-demo", icon: Rocket, description: "Guided platform walkthrough with live data" },
+        { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives" },
       ],
     },
     {

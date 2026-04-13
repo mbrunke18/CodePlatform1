@@ -311,7 +311,8 @@ function HomepageNav() {
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/how-it-works" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Platform</Link>
-            <Link href="/industry-demos" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1 }}>Experience</Link>
+            <Link href="/try-demo" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1, borderBottom: `2px solid ${GOLD}`, paddingBottom: 2 }}>See the Demos</Link>
+            <Link href="/industry-demos" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>By Industry</Link>
             <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Why Readiness OS</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>The Manifesto</Link>
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
@@ -369,11 +370,12 @@ function HomepageNav() {
             ✕
           </button>
           {[
-            { label: "How It Works",  href: "/how-it-works" },
-            { label: "The Platform",  href: "/platform-overview" },
-            { label: "Experience",    href: "/industry-demos" },
+            { label: "How It Works",     href: "/how-it-works" },
+            { label: "The Platform",     href: "/platform-overview" },
+            { label: "See the Demos",    href: "/try-demo" },
+            { label: "By Industry",      href: "/industry-demos" },
             { label: "Why Readiness OS", href: "/why-execution-os" },
-            { label: "Investors",     href: "/investors" },
+            { label: "Investors",        href: "/investors" },
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
           )}
