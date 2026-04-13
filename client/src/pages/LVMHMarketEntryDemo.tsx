@@ -1,364 +1,317 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Crown, Target, TrendingUp, Globe, CheckCircle, Users, DollarSign, ArrowLeft, Play } from "lucide-react";
-import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
-import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
-import ROIComparison from "@/components/demo/ROIComparison";
-import DemoNavHeader from "@/components/demo/DemoNavHeader";
-import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
-import { lvmhMarketEntryDemoData } from "@shared/lvmh-market-entry-data";
+import { scrollToTop } from "@/components/ScrollToTop";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-type DemoAct = "intro" | "detection" | "coordination" | "outcome";
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const BORDER  = "#E8E4DC";
+const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
+
+const SCENARIO = {
+  title: "Competitor Acquisition — Market Threat",
+  subtitle: "Rival luxury group acquires your primary competitor — client poaching begins in 24 hours",
+  domain: "Competitive Intelligence & M&A Defense",
+  company: "Global Luxury Conglomerate — 28 Maisons · $85B market cap · 4,200 retail locations worldwide",
+  trigger: "Kering has announced the acquisition of your primary competitor in the American contemporary luxury segment for $6.8B. The deal closes in 60 days. Within hours of the announcement, their integration team will begin client outreach — targeting your most vulnerable accounts. Your top 847 VIP clients generated 40% of revenue last year. Intelligence shows the acquired brand's top 500 client list overlaps significantly with yours. You have a 24-hour head start before their team mobilizes.",
+  stats: [
+    { value: "24 hrs", label: "Window before competitor client outreach begins", sub: "Integration team mobilizing now" },
+    { value: "40%", label: "Revenue from top 847 VIP clients", sub: "Overlap with acquired brand's client base" },
+    { value: "$6.8B", label: "Acquisition deal value", sub: "Signals long-term commitment to your segment" },
+  ],
+  surviveScore: 42,
+  thriveScore: 90,
+  analysis: "Competitor acquisitions are won or lost in the first 24 hours — before the acquiring company's integration team has a chance to move. Without pre-staged client retention protocols, channel partner defense playbooks, and board-level competitive repositioning briefings, luxury conglomerates lose their most vulnerable accounts to integration-phase poaching. Readiness OS deploys VIP client defense, channel partner reinforcement, and talent acquisition simultaneously within 12 minutes of announcement.",
+  playbooks: ["Competitor Acquisition Response", "VIP Client Retention Offensive", "Channel Partner Defense Protocol", "Board Strategic Repositioning Brief", "Competitive Talent Acquisition"],
+  insight: "The luxury sector's most underestimated competitive risk is the acquisition-phase disruption — the 60-day window between announcement and deal close when the acquired brand's best clients, key talent, and channel partners are all in motion. Readiness OS ensures you are the first call they receive — not the last.",
+};
+
+const TASKS = [
+  { phase: "INTELLIGENCE", role: "Chief Strategy Officer", action: "Pull full acquisition brief: deal value, stated strategic rationale, synergy claims, which market segments they are targeting. Map acquisition against your current Maison portfolio gaps and overlaps.", time: "1:30", priority: "critical" },
+  { phase: "INTELLIGENCE", role: "Chief Intelligence Officer + CMO", action: "Run client overlap analysis: which of your 847 top VIP clients had relationships with the acquired brand. Rank by revenue, recency, and vulnerability to competitive approach.", time: "2:00", priority: "critical" },
+  { phase: "BOARD ACTIVATION", role: "CEO + Board Chair", action: "Emergency board session: competitive position briefing, strategic response authorization, budget release for client retention and accelerated acquisition review. Board alignment before press calls.", time: "3:00", priority: "critical" },
+  { phase: "CLIENT DEFENSE", role: "Chief Client Officer", action: "Launch immediate VIP client retention offensive — personal CEO outreach to all clients with any overlap with the acquired brand. Relationship call, not a sales call. Listen first.", time: "4:00", priority: "critical" },
+  { phase: "CHANNEL DEFENSE", role: "Chief Revenue Officer", action: "Brief all distribution partners — reinforce exclusivity commitments, accelerate partner appreciation initiatives, lock channel agreements before competitor integration team arrives at partner HQ", time: "6:00", priority: "high" },
+  { phase: "NARRATIVE CONTROL", role: "CMO", action: "Fast-track differentiation campaign: what makes your Maisons categorically inimitable versus the newly enlarged rival group. Heritage, craft, exclusivity — evidence-based, not defensive positioning.", time: "7:30", priority: "high" },
+  { phase: "TALENT OPPORTUNITY", role: "CHRO", action: "Identify key talent at acquired brand who may become available during integration disruption — designers, client advisors, market specialists. Reach out before integration freeze locks headcount.", time: "9:00", priority: "high" },
+  { phase: "STRATEGIC OFFENSE", role: "Chief Strategy Officer + CFO", action: "Accelerate review of 3 pre-identified strategic acquisition targets that strengthen position in affected segment. Present board with prioritized opportunity and preliminary term structure.", time: "12:00", priority: "high" },
+];
+
+function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
+function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = s % 60; return `${m}:${sec.toString().padStart(2, '0')}`; }
+function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
+  const t = TASKS[idx]; if (!t) return 'pending';
+  const d = parseTime(t.time);
+  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+}
+function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
+  return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
+}
+
+function WarRoomTasks({ elapsed }: { elapsed: number }) {
+  const phases = Array.from(new Set(TASKS.map(t => t.phase)));
+  return (
+    <div>
+      {phases.map(phase => (
+        <div key={phase} style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div style={{ height: 1, width: 24, background: NAVY }} />
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+            <div style={{ height: 1, flex: 1, background: NAVY }} />
+          </div>
+          {TASKS.filter(t => t.phase === phase).map((t, gi) => {
+            const idx = TASKS.indexOf(t); const st = getTaskStatus(idx, elapsed);
+            const isDone = st === 'done'; const isActive = st === 'active'; const isPending = st === 'pending';
+            return (
+              <div key={gi} style={{ display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8, background: isDone ? NAVY : '#fff', border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`, borderLeft: `4px solid ${isDone ? TEAL : isActive ? GOLD : '#D1D5DB'}`, transition: 'all 0.4s ease', opacity: isPending ? 0.65 : 1 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  {isDone ? <div style={{ width: 20, height: 20, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                    : isActive ? <div style={{ width: 20, height: 20, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'lvmhpulse 1.2s ease-in-out infinite' }} />
+                    : <div style={{ width: 20, height: 20, border: '2px solid #D1D5DB' }} />}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD }}>{t.role}</span>
+                    {isDone && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>}
+                    {isActive && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>}
+                    {isPending && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>}
+                  </div>
+                  <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
+                </div>
+                <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.45)' : '#6B7280', flexShrink: 0, marginTop: 2 }}>{t.time}</div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+      <style>{`@keyframes lvmhpulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }`}</style>
+    </div>
+  );
+}
 
 export default function LVMHMarketEntryDemo() {
-  const [currentAct, setCurrentAct] = useState<DemoAct>("intro");
-  const [coordinationComplete, setCoordinationComplete] = useState(false);
+  const [step, setStep] = useState<1|2|3|4>(1);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [liveEvents, setLiveEvents] = useState<{time:string;text:string;type:'notified'|'acknowledged'|'system'}[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>|null>(null);
+  const loggedN = useRef<Set<number>>(new Set());
+  const loggedA = useRef<Set<number>>(new Set());
+  const elapsedRef = useRef(0);
+  const TOTAL = 12 * 60;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const pct = Math.round((elapsed / TOTAL) * 100);
 
-  const goToAct = (act: DemoAct) => {
-    setCurrentAct(act);
-    if (act === "intro") {
-      setCoordinationComplete(false);
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const tick = useCallback(() => {
+    elapsedRef.current += 1; const e = elapsedRef.current; setElapsed(e);
+    const evts: typeof liveEvents = [];
+    TASKS.forEach((t, i) => {
+      const d = parseTime(t.time);
+      if (e >= d && !loggedN.current.has(i)) { loggedN.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert deployed`, type: 'notified' }); }
+      if (e >= d + 30 && !loggedA.current.has(i)) { loggedA.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — confirmed in progress`, type: 'acknowledged' }); }
+    });
+    if (evts.length > 0) setLiveEvents(prev => [...evts, ...prev].slice(0, 24));
+    if (e >= TOTAL) { clearInterval(timerRef.current!); setRunning(false); setTimeout(() => { setStep(4); scrollToTop(); }, 1200); }
+  }, []);
 
-  const resetDemo = () => {
-    setCurrentAct("intro");
-    setCoordinationComplete(false);
+  const startWarRoom = () => {
+    loggedN.current = new Set(); loggedA.current = new Set(); elapsedRef.current = 0; setElapsed(0); setRunning(true);
+    setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(tick, 1000);
   };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
+
+  const Nav = () => (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
+      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+        {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
+          <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {i > 0 && <div style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
+            <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+      <Link href="/request-access"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button></Link>
+    </div>
+  );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0A0F2E" }}>
-      <DemoNavHeader title="LVMH Market Entry Demo" showBackButton={true} />
+    <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <Nav />
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
-      {/* Act Navigation */}
-      <div className="border-b border-white/10 bg-white/5 pt-20">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex justify-between items-center">
-            {[
-              { id: "intro", label: "1. Introduction", icon: Play },
-              { id: "detection", label: "2. AI Detection @ 91%", icon: Target },
-              { id: "coordination", label: "3. 12-Minute Response", icon: TrendingUp },
-              { id: "outcome", label: "4. Market Leadership", icon: Crown }
-            ].map((act) => (
-              <button
-                key={act.id}
-                onClick={() => goToAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 transition-colors border ${
-                  currentAct === act.id
-                    ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]"
-                    : "text-white/60 border-transparent hover:bg-white/10"
-                }`}
-                data-testid={`button-act-${act.id}`}
-              >
-                <act.icon className="w-4 h-4" />
-                <span className="text-sm font-medium">{act.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <ExecutionStageGuide variant="banner" />
-      <div className="container mx-auto px-6 py-12 text-white">
-        {/* ACT 1: INTRODUCTION */}
-        {currentAct === "intro" && (
-          <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <div className="text-center mb-8">
-                <Crown className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{lvmhMarketEntryDemoData.crisis.title}</h2>
-                <p className="text-xl text-[#DFC178]">{lvmhMarketEntryDemoData.crisis.subtitle}</p>
+        {step === 1 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{SCENARIO.domain}</span>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-white/5 border border-white/10">
-                  <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    <Globe className="w-5 h-5 text-[#C9A84C]" />
-                    The Opportunity
-                  </h3>
-                  <div className="space-y-3 text-sm">
-                    <div>
-                      <div className="text-white/60 mb-1">Organization</div>
-                      <div className="text-white font-semibold">{lvmhMarketEntryDemoData.organization.name}</div>
-                    </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Opportunity</div>
-                      <div className="text-white">China luxury market +47% rebound</div>
-                    </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Strategic Move</div>
-                      <div className="text-white">10 brands • 15 cities • 47 retail locations</div>
-                    </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Investment</div>
-                      <div className="text-white font-bold text-[#DFC178]">€580M capex • €1.68B value creation</div>
-                    </div>
+              <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>{SCENARIO.title}</h1>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 600, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
+            </div>
+            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — CRITICAL</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
+              {SCENARIO.stats.map(s => (
+                <div key={s.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>{s.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 20, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Staged War Room — {TASKS.length} Tasks Ready</span>
+              </div>
+              {TASKS.map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, padding: '12px 16px', marginBottom: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${t.priority === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.4)'}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, minWidth: 40, flexShrink: 0 }}>{t.time}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.priority === 'critical' ? '#f87171' : 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginBottom: 3 }}>{t.role}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{t.action}</div>
                   </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0, alignSelf: 'flex-start', paddingTop: 4 }}>{t.phase}</div>
                 </div>
-
-                <div className="p-6 bg-white/5 border border-white/10">
-                  <h3 className="font-bold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Coordination Timeline</h3>
-                  <ul className="space-y-2 text-sm text-white/60">
-                    <li>• Month 1-2: Sequential brand planning (10 brands independently)</li>
-                    <li>• Month 3-4: Real estate negotiations drag out</li>
-                    <li className="text-[#C9A84C] font-semibold">• During gap: Kering and Hermès capture premium locations</li>
-                    <li className="text-[#C9A84C] font-bold">• During gap: Golden Week launch window missed</li>
-                    <li>• Month 5-6: Fragmented launches begin</li>
-                    <li className="text-white/40">• Result: €420M opportunity cost + market leadership lost</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-white/5 border border-[#C9A84C]/50 p-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <Target className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Strategic Readiness, Not Crisis Response</h3>
-                    <p className="text-white/80 leading-relaxed">
-                      This isn't a crisis—it's a strategic offensive move. China's luxury market rebounds 47%, creating 
-                      a 90-day window to capture market leadership. But coordinating 10 brands (Louis Vuitton, Dior, Fendi, 
-                      Givenchy, Celine, Loewe, Loro Piana, Rimowa, Berluti, Kenzo) across 15 cities traditionally takes 
-                      <strong> 6-9 months</strong>. Readiness OS compresses coordination to <strong>12 minutes</strong>, enabling 
-                      simultaneous launch during Golden Week while competitors are still planning.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <div className="p-4 bg-white/5 border border-white/10 text-center">
-                  <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>1,267</div>
-                  <div className="text-sm text-white/40">Stakeholders Coordinated</div>
-                </div>
-                <div className="p-4 bg-white/5 border border-white/10 text-center">
-                  <TrendingUp className="w-8 h-8 text-[#DFC178] mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 Minutes</div>
-                  <div className="text-sm text-white/40">Full Coordination</div>
-                </div>
-                <div className="p-4 bg-white/5 border border-white/10 text-center">
-                  <DollarSign className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>€1.68B</div>
-                  <div className="text-sm text-white/40">Value Created</div>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <Button
-                  size="lg"
-                  onClick={() => goToAct("detection")}
-                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8 py-6 text-lg"
-                  data-testid="button-begin-simulation"
-                >
-                  <Play className="w-5 h-5 mr-2" />
-                  Begin Opportunity Simulation
-                </Button>
-                <p className="text-sm text-white/40 mt-3">Experience how Readiness OS enables strategic velocity</p>
-              </div>
-            </Card>
-          </div>
-        )}
-
-        {/* ACT 2: AI DETECTION */}
-        {currentAct === "detection" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                <Target className="w-8 h-8 text-[#C9A84C]" />
-                Act 2: AI Market Intelligence Detection
-              </h2>
-              <p className="text-lg text-white/80 mb-4">
-                9:00 AM Paris - LVMH AI Intelligence detects massive luxury market opportunity: China consumer spending surges 47%. 
-                Competitive window: 90 days before Kering and Hermès respond. Six AI systems recommend Playbook #145 activation.
-              </p>
-              <div className="mt-6 p-4 bg-white/5 border border-[#C9A84C] rounded">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-6 w-6 text-[#2B8A6E] animate-pulse" />
-                  <div>
-                    <p className="font-bold text-white">Strategic Opportunity Criteria Met</p>
-                    <p className="text-sm text-white/60">
-                      Market conditions optimal - Playbook #145 (Strategic Market Entry) recommended
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <AIRadarSimulation
-              dataStreams={lvmhMarketEntryDemoData.aiDataStreams}
-              title="Market Intelligence Signals"
-              playbookId="#145"
-              playbookName="Strategic Market Entry"
-              autoStart={true}
-            />
-
-            <div className="text-center mt-8">
-              <Button
-                size="lg"
-                onClick={() => goToAct("coordination")}
-                className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
-                data-testid="button-activate-playbook"
-              >
-                <Crown className="h-5 w-5" />
-                Activate Playbook #145 - Market Entry
-              </Button>
-              <p className="text-sm text-[#DFC178] mt-2">
-                Bernard Arnault approves - Execute coordinated launch
-              </p>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(2); scrollToTop(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>View Execution Brief →</button>
             </div>
           </div>
         )}
 
-        {/* ACT 3: COORDINATED RESPONSE */}
-        {currentAct === "coordination" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                <TrendingUp className="w-8 h-8 text-[#DFC178]" />
-                Act 3: 12-Minute Coordinated Execution
-              </h2>
-              <p className="text-lg text-white/80 mb-6">
-                Readiness OS coordinates all 1,267 stakeholders in 12 minutes. Bernard Arnault's decision triggers instant alignment across 
-                28 executives, 347 operational specialists, and 892 external partners—enabling simultaneous 10-brand launch.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <Card className="p-6 bg-white/5 border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1, flexShrink: 0 }}>1</div>
-                    <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Executive Leadership</h3>
-                  </div>
-                  <p className="text-sm text-white/60 mb-2">28 executives receive unified brief and approve €580M investment in 4 minutes</p>
-                  <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>28 Leaders</div>
-                </Card>
-                <Card className="p-6 bg-white/5 border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1, flexShrink: 0 }}>2</div>
-                    <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Operations Teams</h3>
-                  </div>
-                  <p className="text-sm text-white/60 mb-2">Real estate, legal, supply chain, marketing, HR executing simultaneously</p>
-                  <div className="text-2xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>347 Specialists</div>
-                </Card>
-                <Card className="p-6 bg-white/5 border-white/10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#2B8A6E', lineHeight: 1, flexShrink: 0 }}>3</div>
-                    <h3 className="font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>External Partners</h3>
-                  </div>
-                  <p className="text-sm text-white/60 mb-2">Developers, contractors, agencies, logistics—all activated</p>
-                  <div className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>892 Partners</div>
-                </Card>
+        {step === 2 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{SCENARIO.title}</h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{SCENARIO.subtitle}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 40 }}>
+              <div style={{ padding: '20px 24px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderTop: '3px solid #C0392B' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 8 }}>Without Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.surviveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — clients poached before response mobilizes</div>
               </div>
-            </Card>
-
-            <TwelveMinuteTimer
-              timelineEvents={lvmhMarketEntryDemoData.timelineEvents}
-              onComplete={() => setCoordinationComplete(true)}
-              autoStart={true}
-            />
-
-            {coordinationComplete && (
-              <div className="text-center animate-in fade-in duration-500">
-                <Button
-                  size="lg"
-                  onClick={() => goToAct("outcome")}
-                  className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
-                  data-testid="button-view-outcome"
-                >
-                  <Crown className="h-5 w-5" />
-                  View Strategic Outcome
-                </Button>
+              <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.thriveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — 12-minute competitive defense deployed</div>
               </div>
-            )}
-          </div>
-        )}
-
-        {/* ACT 4: ROI OUTCOME */}
-        {currentAct === "outcome" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10 text-center">
-              <Crown className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
-              <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                €1.68B Value Creation Through Strategic Velocity
-              </h2>
-              <p className="text-xl text-white/80 mb-6">
-                LVMH coordinates 10-brand simultaneous launch in 12 minutes, captures Golden Week timing, 
-                secures 47 premium locations, and establishes market leadership before Kering/Hermès respond.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <Card className="p-4 bg-white/5 border-white/10 border-[#2B8A6E]/50">
-                  <div className="text-3xl font-bold text-[#2B8A6E] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>€1.68B</div>
-                  <div className="text-sm text-white/60">Total Value Creation</div>
-                </Card>
-                <Card className="p-4 bg-white/5 border-white/10 border-[#DFC178]/50">
-                  <div className="text-3xl font-bold text-[#DFC178] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12 Min</div>
-                  <div className="text-sm text-white/60">vs 6-9 Months Traditional</div>
-                </Card>
-                <Card className="p-4 bg-white/5 border-white/10 border-[#C9A84C]/50">
-                  <div className="text-3xl font-bold text-[#C9A84C] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>1,267</div>
-                  <div className="text-sm text-white/60">Stakeholders Aligned</div>
-                </Card>
+              <div style={{ gridColumn: '1/-1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{SCENARIO.analysis}</p>
               </div>
-            </Card>
-
-            <ROIComparison
-              traditional={lvmhMarketEntryDemoData.roiComparisonData.traditional}
-              executionOS={lvmhMarketEntryDemoData.roiComparisonData.executionOS}
-              bottomLine={lvmhMarketEntryDemoData.roiComparisonData.bottomLine}
-            />
-
-            <div className="bg-white/5 p-8 border-2 border-[#DFC178] mb-8">
-              <h3 className="text-xl font-bold mb-4 text-white text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold text-[#C9A84C] mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#C9A84C]" />
-                    Traditional Market Entry
-                  </h4>
-                  <ul className="space-y-2 text-sm text-white/60">
-                    <li>• 6-9 months of sequential planning across 10 brands</li>
-                    <li>• Real estate captured by faster moving competitors</li>
-                    <li>• Golden Week launch window missed entirely</li>
-                    <li>• €420M in opportunity cost + lost market share</li>
-                    <li>• Fragmented brand presence across 15 cities</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-[#2B8A6E] mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#2B8A6E]" />
-                    Readiness OS Coordinated Move
-                  </h4>
-                  <ul className="space-y-2 text-sm text-white/60">
-                    <li>• 12-minute alignment across 1,267 stakeholders</li>
-                    <li>• Simultaneous 10-brand launch during Golden Week</li>
-                    <li>• Prime real estate secured before rivals react</li>
-                    <li>• €1.68B in value creation + undisputed leadership</li>
-                    <li>• Unified strategic offensive at unprecedented scale</li>
-                  </ul>
+              <div style={{ gridColumn: '1/-1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks Activating</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {SCENARIO.playbooks.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>)}
                 </div>
               </div>
             </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
+            </div>
+          </div>
+        )}
 
-            <div className="flex flex-col items-center gap-4">
-              <Link href="/request-access">
-                <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10" data-testid="button-request-access">
-                  Join the Pilot Program
-                </Button>
-              </Link>
-              <div className="flex gap-3">
-                <Button size="sm" onClick={resetDemo} variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-replay">
-                  Replay Demo
-                </Button>
-                <Link href="/industry-demos">
-                  <Button size="sm" variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-all-demos">
-                    View All Demos
-                  </Button>
-                </Link>
+        {step === 3 && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{SCENARIO.title}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
+                <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+              </div>
+            </div>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Status:</span>
+              {[['#D1D5DB','transparent','Queued'],[GOLD,'rgba(201,168,76,0.2)','Notified'],[TEAL,TEAL,'Acknowledged ✓']].map(([color,bg,label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, border: `2px solid ${color}`, background: bg }} />
+                  <span style={{ fontSize: 11, color: label === 'Acknowledged ✓' ? TEAL_LT : label === 'Notified' ? GOLD : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+              <WarRoomTasks elapsed={elapsed} />
+              <div style={{ background: NAVY, padding: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>{running ? '● LIVE FEED' : '○ FEED PAUSED'}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
+                  {liveEvents.map((e, i) => (
+                    <div key={i} style={{ fontSize: 11, color: e.type === 'acknowledged' ? '#6EE7B7' : 'rgba(255,255,255,0.8)', borderLeft: `2px solid ${e.type === 'acknowledged' ? TEAL : e.type === 'notified' ? GOLD : 'rgba(255,255,255,0.2)'}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>{e.text}
+                    </div>
+                  ))}
+                  {liveEvents.length === 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Competitive Defense Deployed in {fmtSecs(elapsed)}</em>
+              </h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>VIP clients contacted, board briefed, channel partners reinforced — your response was in motion before their integration team had time to mobilize.</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+              {[
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. days of committee alignment', color: TEAL },
+                { label: 'Clients Defended', value: '847', sub: 'VIP outreach authorized', color: GOLD },
+                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'strategy, client, channel, legal', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
+              ].map(m => (
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>The Strategic Insight</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{SCENARIO.insight}</p>
+            </div>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>"The response was ready before the trigger fired."</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
+            </div>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your Maisons — with your real client lists, your real channel agreements, and your real competitive intelligence?</p>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request a Pilot →</a>
+                <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
               </div>
             </div>
           </div>

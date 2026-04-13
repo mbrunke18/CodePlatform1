@@ -1,319 +1,318 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
-import { TrendingUp, Zap, Target, CheckCircle, Users, DollarSign, Play, Rocket } from "lucide-react";
-import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
-import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
-import ROIComparison from "@/components/demo/ROIComparison";
-import DemoNavHeader from "@/components/demo/DemoNavHeader";
-import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
-import { sheinTrendDemoData } from "@shared/shein-trend-data";
+import { scrollToTop } from "@/components/ScrollToTop";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
-const IVORY = "#F0EDE4";
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const BORDER  = "#E8E4DC";
+const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
 
-type DemoAct = "intro" | "detection" | "coordination" | "outcome";
+const SCENARIO = {
+  title: "Fast Fashion Competitive Disruption",
+  subtitle: "SHEIN launches 47 SKUs targeting your core category at 80% lower price — 2.4M social mentions in 48 hours",
+  domain: "Competitive Strategy & Brand Defense",
+  company: "Legacy Apparel Brand — $8.2B revenue · 18–34 core demographic · 4,800 wholesale doors globally",
+  trigger: "SHEIN's algorithm has flagged your top 3 product categories as high-margin trend opportunities. They've launched 47 direct-competing SKUs at one-fifth your price point. Influencer adoption is tracking at 340% above SHEIN's baseline velocity. Your consumer research team is showing a 22% switching intention rate in your core 18–34 demographic. Holiday season is 11 weeks away. Your wholesale partners are already asking questions.",
+  stats: [
+    { value: "22%", label: "Switching intention in core demographic", sub: "Consumer research data — past 48 hours" },
+    { value: "11 wks", label: "To holiday season peak revenue", sub: "$2.1B at risk if position not defended" },
+    { value: "47 SKUs", label: "Direct-competing products launched", sub: "Priced at 80% below your hero products" },
+  ],
+  surviveScore: 45,
+  thriveScore: 88,
+  analysis: "Fast fashion disruption is the defining competitive threat for legacy apparel brands — and the one most frequently handled reactively. Without pre-staged influencer defense protocols, channel partner reinforcement playbooks, and product acceleration trigger points, brands spend weeks in internal alignment while the trend narrative hardens against them. Readiness OS deploys brand differentiation, influencer retention, and channel defense simultaneously — before the switching window closes.",
+  playbooks: ["Competitive Disruption Response", "Influencer Relationship Defense", "Channel Partner Reinforcement", "Product Acceleration Protocol", "Consumer Sentiment Crisis Response"],
+  insight: "The brands that survive fast fashion disruption are not the ones with the best product teams — they are the ones who already know what makes them inimitable. Pre-staged differentiation messaging, pre-identified influencer relationships, and pre-authorized product acceleration decisions mean you respond before the narrative firms, not after it has already cost you the season.",
+};
+
+const TASKS = [
+  { phase: "INTELLIGENCE", role: "Chief Strategy Officer", action: "Pull competitive analysis: SHEIN SKUs vs your hero products — price gap, feature parity, influencer reach, social velocity, projected market share impact by category and demographic segment", time: "1:30", priority: "critical" },
+  { phase: "INTELLIGENCE", role: "CMO + Head of Consumer Insights", action: "Run customer sentiment analysis: which core 18–34 segments show highest switching intention, what is the primary driver (price vs. trend vs. sustainability), which SKUs are at most risk", time: "2:00", priority: "critical" },
+  { phase: "BRAND DIFFERENTIATION", role: "CMO", action: "Activate differentiation response: identify 3 inimitable brand attributes SHEIN structurally cannot replicate — heritage, craft quality, community. Rapid creative campaign brief issued within the hour.", time: "3:00", priority: "critical" },
+  { phase: "PRICING RESPONSE", role: "CFO + CMO", action: "Selective price response decision: which SKUs require competitive response, which segments to defend at premium, which categories to strategically concede — not a blanket discount", time: "4:30", priority: "high" },
+  { phase: "INFLUENCER OFFENSE", role: "Head of Brand + CMO", action: "Activate tier 1 and tier 2 influencer partnerships — exclusive content agreements, early product access, co-creation invitations. Defend creator relationships before SHEIN acquires them with campaign fees.", time: "6:00", priority: "high" },
+  { phase: "CHANNEL DEFENSE", role: "Chief Revenue Officer", action: "Brief all wholesale partners — cooperative marketing investment, premium in-store positioning reinforcement, exclusive product allocations for Q4. Lock channel commitments before SHEIN's retail push.", time: "7:30", priority: "high" },
+  { phase: "PRODUCT ACCELERATION", role: "Chief Product Officer", action: "Fast-track 6 innovation SKUs that create genuine competitive separation — from 18-month roadmap to 90-day launch. Authorize resources required to compress development timeline.", time: "9:00", priority: "high" },
+  { phase: "COMMUNITY DEFENSE", role: "CMO + Head of Loyalty", action: "Launch loyalty community initiative: exclusive member benefits, early access programs, community experiences that price-alone competitors structurally cannot replicate at scale", time: "12:00", priority: "high" },
+];
+
+function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
+function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = s % 60; return `${m}:${sec.toString().padStart(2, '0')}`; }
+function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
+  const t = TASKS[idx]; if (!t) return 'pending';
+  const d = parseTime(t.time);
+  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+}
+function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
+  return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
+}
+
+function WarRoomTasks({ elapsed }: { elapsed: number }) {
+  const phases = Array.from(new Set(TASKS.map(t => t.phase)));
+  return (
+    <div>
+      {phases.map(phase => (
+        <div key={phase} style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div style={{ height: 1, width: 24, background: NAVY }} />
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+            <div style={{ height: 1, flex: 1, background: NAVY }} />
+          </div>
+          {TASKS.filter(t => t.phase === phase).map((t, gi) => {
+            const idx = TASKS.indexOf(t); const st = getTaskStatus(idx, elapsed);
+            const isDone = st === 'done'; const isActive = st === 'active'; const isPending = st === 'pending';
+            return (
+              <div key={gi} style={{ display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8, background: isDone ? NAVY : '#fff', border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`, borderLeft: `4px solid ${isDone ? TEAL : isActive ? GOLD : '#D1D5DB'}`, transition: 'all 0.4s ease', opacity: isPending ? 0.65 : 1 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  {isDone ? <div style={{ width: 20, height: 20, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                    : isActive ? <div style={{ width: 20, height: 20, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'sheinpulse 1.2s ease-in-out infinite' }} />
+                    : <div style={{ width: 20, height: 20, border: '2px solid #D1D5DB' }} />}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD }}>{t.role}</span>
+                    {isDone && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>}
+                    {isActive && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>}
+                    {isPending && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>}
+                  </div>
+                  <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
+                </div>
+                <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.45)' : '#6B7280', flexShrink: 0, marginTop: 2 }}>{t.time}</div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+      <style>{`@keyframes sheinpulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }`}</style>
+    </div>
+  );
+}
 
 export default function SHEINTrendDemo() {
-  const [currentAct, setCurrentAct] = useState<DemoAct>("intro");
-  const [coordinationComplete, setCoordinationComplete] = useState(false);
+  const [step, setStep] = useState<1|2|3|4>(1);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [liveEvents, setLiveEvents] = useState<{time:string;text:string;type:'notified'|'acknowledged'|'system'}[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>|null>(null);
+  const loggedN = useRef<Set<number>>(new Set());
+  const loggedA = useRef<Set<number>>(new Set());
+  const elapsedRef = useRef(0);
+  const TOTAL = 12 * 60;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const pct = Math.round((elapsed / TOTAL) * 100);
 
-  const goToAct = (act: DemoAct) => {
-    setCurrentAct(act);
-    if (act === "intro") setCoordinationComplete(false);
-  };
+  const tick = useCallback(() => {
+    elapsedRef.current += 1; const e = elapsedRef.current; setElapsed(e);
+    const evts: typeof liveEvents = [];
+    TASKS.forEach((t, i) => {
+      const d = parseTime(t.time);
+      if (e >= d && !loggedN.current.has(i)) { loggedN.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert deployed`, type: 'notified' }); }
+      if (e >= d + 30 && !loggedA.current.has(i)) { loggedA.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — confirmed in progress`, type: 'acknowledged' }); }
+    });
+    if (evts.length > 0) setLiveEvents(prev => [...evts, ...prev].slice(0, 24));
+    if (e >= TOTAL) { clearInterval(timerRef.current!); setRunning(false); setTimeout(() => { setStep(4); scrollToTop(); }, 1200); }
+  }, []);
 
-  const resetDemo = () => {
-    setCurrentAct("intro");
-    setCoordinationComplete(false);
+  const startWarRoom = () => {
+    loggedN.current = new Set(); loggedA.current = new Set(); elapsedRef.current = 0; setElapsed(0); setRunning(true);
+    setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(tick, 1000);
   };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
+
+  const Nav = () => (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
+      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+        {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
+          <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {i > 0 && <div style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
+            <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+      <Link href="/request-access"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button></Link>
+    </div>
+  );
 
   return (
-    <div style={{ minHeight: "100vh", background: NAVY }}>
-      <DemoNavHeader title="SHEIN Trend Demo" showBackButton={true} />
+    <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <Nav />
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
-      {/* Act Navigation */}
-      <div style={{ background: "rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.08)", paddingTop: 80 }}>
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex justify-between items-center">
-            {[
-              { id: "intro", label: "1. Introduction", icon: Play },
-              { id: "detection", label: "2. AI Detection @ 96%", icon: Target },
-              { id: "coordination", label: "3. 12-Minute Response", icon: Zap },
-              { id: "outcome", label: "4. First-Mover Win", icon: TrendingUp }
-            ].map((act) => (
-              <button
-                key={act.id}
-                onClick={() => goToAct(act.id as DemoAct)}
-                style={{
-                  display: "flex", alignItems: "center", gap: 8,
-                  padding: "8px 16px", borderRadius: 0, transition: "all 0.2s",
-                  background: currentAct === act.id ? GOLD : "transparent",
-                  color: currentAct === act.id ? NAVY : "rgba(240,237,228,0.6)",
-                  border: currentAct === act.id ? "none" : "1px solid rgba(255,255,255,0.12)",
-                  cursor: "pointer", fontWeight: 700, fontSize: 12, letterSpacing: "0.04em"
-                }}
-                data-testid={`button-act-${act.id}`}
-              >
-                <act.icon style={{ width: 14, height: 14 }} />
-                <span>{act.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <ExecutionStageGuide variant="banner" />
-      {/* Main Content */}
-      <div className="container mx-auto px-6 py-12">
-
-        {/* ACT 1: INTRODUCTION */}
-        {currentAct === "intro" && (
-          <div className="max-w-5xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: 32 }}>
-              <div className="text-center mb-8">
-                <TrendingUp style={{ width: 56, height: 56, color: GOLD, margin: "0 auto 16px" }} />
-                <h2 style={{ fontSize: 28, fontWeight: 700, color: IVORY, marginBottom: 12, fontFamily: "'Cormorant Garamond', serif" }}>
-                  {sheinTrendDemoData.crisis.title}
-                </h2>
-                <p style={{ fontSize: 18, color: "rgba(240,237,228,0.7)" }}>{sheinTrendDemoData.crisis.subtitle}</p>
+        {step === 1 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{SCENARIO.domain}</span>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div style={{ padding: 24, background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.25)", borderRadius: 0 }}>
-                  <h3 style={{ fontWeight: 700, color: IVORY, marginBottom: 16, display: "flex", alignItems: "center", gap: 8, fontSize: 14 }}>
-                    <TrendingUp style={{ width: 16, height: 16, color: TEAL }} />
-                    The Opportunity
-                  </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                    {[
-                      ["Viral Trend", "Cottage Core Renaissance — 47M TikTok views in 18 hours"],
-                      ["Market Opportunity", "$180M revenue, 21-day lifecycle"],
-                      ["Strategic Move", "200 SKUs · 5,000 suppliers · 7-day launch"],
-                      ["First-Mover Advantage", "65% market share if launched in 7 days"],
-                    ].map(([label, value]) => (
-                      <div key={label}>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: TEAL, marginBottom: 3 }}>{label}</div>
-                        <div style={{ fontSize: 13, color: IVORY, fontWeight: 600 }}>{value}</div>
-                      </div>
-                    ))}
-                  </div>
+              <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>{SCENARIO.title}</h1>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 620, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
+            </div>
+            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — HIGH</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
+              {SCENARIO.stats.map(s => (
+                <div key={s.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>{s.sub}</div>
                 </div>
-
-                <div style={{ padding: 24, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0 }}>
-                  <h3 style={{ fontWeight: 700, color: IVORY, marginBottom: 16, fontSize: 14 }}>Traditional Coordination Timeline</h3>
-                  <ul style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 13 }}>
-                    <li style={{ color: "rgba(240,237,228,0.65)" }}>• Day 1-2: Design teams start planning independently</li>
-                    <li style={{ color: "rgba(240,237,228,0.65)" }}>• Day 2-3: Supplier coordination meetings drag on</li>
-                    <li style={{ color: "#FCD34D", fontWeight: 600 }}>• During gap: Zara and H&M detect same trend</li>
-                    <li style={{ color: "#F87171", fontWeight: 700 }}>• During gap: Launch delayed to day 10</li>
-                    <li style={{ color: "rgba(240,237,228,0.65)" }}>• Day 10+: Launch alongside competitors (not first)</li>
-                    <li style={{ color: TEAL }}>• Result: 40% market share instead of 65% ($72M vs $180M)</li>
-                  </ul>
-                </div>
+              ))}
+            </div>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 20, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Staged War Room — {TASKS.length} Tasks Ready</span>
               </div>
-
-              <div style={{ background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: 24, marginBottom: 32 }}>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-                  <Target style={{ width: 28, height: 28, color: GOLD, flexShrink: 0, marginTop: 2 }} />
-                  <div>
-                    <h3 style={{ fontWeight: 700, color: IVORY, marginBottom: 8, fontSize: 15 }}>Speed = Market Share in Fast Fashion</h3>
-                    <p style={{ color: "rgba(240,237,228,0.7)", lineHeight: 1.6, fontSize: 13 }}>
-                      SHEIN's AI detected the Cottage Core trend instantly. But coordinating 5,847 stakeholders (180 designers,
-                      5,000 suppliers, logistics, marketing) traditionally takes <strong style={{ color: IVORY }}>48-72 hours</strong> — enough time for
-                      Zara and H&M to respond. In fast fashion, first-mover captures 65% of revenue. Readiness OS compresses coordination
-                      to <strong style={{ color: GOLD }}>12 minutes</strong>, enabling 7-day launch before competitors detect the trend.
-                    </p>
+              {TASKS.map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, padding: '12px 16px', marginBottom: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${t.priority === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.4)'}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, minWidth: 40, flexShrink: 0 }}>{t.time}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.priority === 'critical' ? '#f87171' : 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginBottom: 3 }}>{t.role}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{t.action}</div>
                   </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0, alignSelf: 'flex-start', paddingTop: 4 }}>{t.phase}</div>
                 </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
-                {[
-                  { icon: Users, value: "5,847", label: "Stakeholders Coordinated" },
-                  { icon: Zap, value: "12 Minutes", label: "Full Coordination" },
-                  { icon: DollarSign, value: "$108M", label: "Additional Revenue" },
-                ].map(({ icon: Icon, value, label }) => (
-                  <div key={label} style={{ padding: 20, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, textAlign: "center" }}>
-                    <Icon style={{ width: 28, height: 28, color: GOLD, margin: "0 auto 10px" }} />
-                    <div style={{ fontSize: 24, fontWeight: 700, color: IVORY, marginBottom: 4 }}>{value}</div>
-                    <div style={{ fontSize: 11, color: "rgba(240,237,228,0.5)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em" }}>{label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="text-center">
-                <Button
-                  size="lg"
-                  onClick={() => goToAct("detection")}
-                  style={{ background: GOLD, color: NAVY, padding: "20px 40px", fontSize: 16, fontWeight: 700, letterSpacing: "0.04em" }}
-                  data-testid="button-begin-simulation"
-                >
-                  <Play className="w-5 h-5 mr-2" />
-                  Begin Trend Simulation
-                </Button>
-                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.4)", marginTop: 12 }}>Experience first-mover coordination velocity</p>
-              </div>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(2); scrollToTop(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>View Execution Brief →</button>
             </div>
           </div>
         )}
 
-        {/* ACT 2: AI DETECTION */}
-        {currentAct === "detection" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: 32 }}>
-              <h2 style={{ fontSize: 22, fontWeight: 700, color: IVORY, marginBottom: 16, display: "flex", alignItems: "center", gap: 12 }}>
-                <Target style={{ width: 28, height: 28, color: GOLD }} />
-                Act 2: AI Trend Detection
-              </h2>
-              <p style={{ fontSize: 15, color: "rgba(240,237,228,0.7)", marginBottom: 16, lineHeight: 1.6 }}>
-                11:00 AM EST — SHEIN AI detects viral trend: "Cottage Core Renaissance" explodes on TikTok with 47M views in 18 hours.
-                2,300 influencers posting, 850% search spike. Trend lifecycle: 21 days. Window to capture 65% market share: 7 days.
-              </p>
-              <div style={{ marginTop: 20, padding: 16, background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.3)", borderRadius: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <CheckCircle style={{ width: 20, height: 20, color: TEAL }} />
-                  <div>
-                    <p style={{ fontWeight: 700, color: IVORY, margin: 0 }}>Viral Trend Criteria Met</p>
-                    <p style={{ fontSize: 12, color: "rgba(240,237,228,0.55)", margin: "4px 0 0" }}>
-                      First-mover window open — Playbook #146 (Trend Capitalization) recommended
-                    </p>
-                  </div>
+        {step === 2 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{SCENARIO.title}</h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{SCENARIO.subtitle}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 40 }}>
+              <div style={{ padding: '20px 24px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderTop: '3px solid #C0392B' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 8 }}>Without Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.surviveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — reactive response, narrative already set</div>
+              </div>
+              <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.thriveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — 12-minute brand defense deployed</div>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{SCENARIO.analysis}</p>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks Activating</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {SCENARIO.playbooks.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>)}
                 </div>
               </div>
             </div>
-
-            <AIRadarSimulation
-              dataStreams={sheinTrendDemoData.aiDataStreams}
-              title="Trend Intelligence Signals"
-              playbookId="#146"
-              playbookName="Trend Capitalization"
-              autoStart={true}
-            />
-
-            <div className="text-center mt-8">
-              <Button
-                size="lg"
-                onClick={() => goToAct("coordination")}
-                style={{ background: GOLD, color: NAVY, fontWeight: 700, padding: "14px 32px" }}
-                data-testid="button-activate-playbook"
-              >
-                <TrendingUp className="h-5 w-5 mr-2" />
-                Activate Playbook #146 — Trend Capitalization
-              </Button>
-              <p style={{ fontSize: 12, color: "rgba(240,237,228,0.5)", marginTop: 8 }}>CEO approves — Launch 200 SKUs in 7 days</p>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
             </div>
           </div>
         )}
 
-        {/* ACT 3: COORDINATED RESPONSE */}
-        {currentAct === "coordination" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: 32 }}>
-              <h2 style={{ fontSize: 22, fontWeight: 700, color: IVORY, marginBottom: 16, display: "flex", alignItems: "center", gap: 12 }}>
-                <Zap style={{ width: 28, height: 28, color: GOLD }} />
-                Act 3: 12-Minute Coordinated Execution
-              </h2>
-              <p style={{ fontSize: 15, color: "rgba(240,237,228,0.7)", marginBottom: 24, lineHeight: 1.6 }}>
-                Readiness OS coordinates all 5,847 stakeholders in 12 minutes. CEO decision triggers instant alignment across designers,
-                production coordinators, 5,000 suppliers, and marketing teams — enabling 7-day launch before Zara/H&M respond.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                {[
-                  { n: "1", title: "Design Teams", desc: "180 designers begin creating 200 SKUs using AI trend insights", stat: "180 Designers" },
-                  { n: "2", title: "Supplier Network", desc: "5,000 suppliers receive production orders, 3,200 begin manufacturing", stat: "5,000 Suppliers" },
-                  { n: "3", title: "Marketing Launch", desc: "2,300 TikTok influencers engaged, campaign ready for day-7 launch", stat: "667 Specialists" },
-                ].map(({ n, title, desc, stat }) => (
-                  <div key={n} style={{ padding: 24, background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                      <div style={{ width: 36, height: 36, borderRadius: 0, background: GOLD, display: "flex", alignItems: "center", justifyContent: "center", color: NAVY, fontWeight: 700, fontSize: 15 }}>{n}</div>
-                      <h3 style={{ fontWeight: 700, color: IVORY, margin: 0 }}>{title}</h3>
+        {step === 3 && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{SCENARIO.title}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
+                <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+              </div>
+            </div>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Status:</span>
+              {[['#D1D5DB','transparent','Queued'],[GOLD,'rgba(201,168,76,0.2)','Notified'],[TEAL,TEAL,'Acknowledged ✓']].map(([color,bg,label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, border: `2px solid ${color}`, background: bg }} />
+                  <span style={{ fontSize: 11, color: label === 'Acknowledged ✓' ? TEAL_LT : label === 'Notified' ? GOLD : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+              <WarRoomTasks elapsed={elapsed} />
+              <div style={{ background: NAVY, padding: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>{running ? '● LIVE FEED' : '○ FEED PAUSED'}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
+                  {liveEvents.map((e, i) => (
+                    <div key={i} style={{ fontSize: 11, color: e.type === 'acknowledged' ? '#6EE7B7' : 'rgba(255,255,255,0.8)', borderLeft: `2px solid ${e.type === 'acknowledged' ? TEAL : e.type === 'notified' ? GOLD : 'rgba(255,255,255,0.2)'}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>{e.text}
                     </div>
-                    <p style={{ fontSize: 13, color: "rgba(240,237,228,0.65)", marginBottom: 12 }}>{desc}</p>
-                    <div style={{ fontSize: 20, fontWeight: 700, color: GOLD }}>{stat}</div>
-                  </div>
-                ))}
+                  ))}
+                  {liveEvents.length === 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>}
+                </div>
               </div>
             </div>
-
-            <TwelveMinuteTimer
-              timelineEvents={sheinTrendDemoData.timelineEvents}
-              onComplete={() => setCoordinationComplete(true)}
-              autoStart={true}
-            />
-
-            {coordinationComplete && (
-              <div className="text-center animate-in fade-in duration-500">
-                <Button
-                  size="lg"
-                  onClick={() => goToAct("outcome")}
-                  style={{ background: GOLD, color: NAVY, fontWeight: 700, padding: "14px 32px" }}
-                  data-testid="button-view-outcome"
-                >
-                  <TrendingUp className="h-5 w-5 mr-2" />
-                  View First-Mover Outcome
-                </Button>
-              </div>
-            )}
           </div>
         )}
 
-        {/* ACT 4: ROI OUTCOME */}
-        {currentAct === "outcome" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderTop: `3px solid ${GOLD}`, borderRadius: 0, padding: 40, textAlign: "center" }}>
-              <TrendingUp style={{ width: 56, height: 56, color: GOLD, margin: "0 auto 20px" }} />
-              <h2 style={{ fontSize: 28, fontWeight: 700, color: IVORY, marginBottom: 12, fontFamily: "'Cormorant Garamond', serif" }}>
-                $108M Additional Revenue Through First-Mover Velocity
+        {step === 4 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Brand Position Defended in {fmtSecs(elapsed)}</em>
               </h2>
-              <p style={{ fontSize: 16, color: "rgba(240,237,228,0.7)", marginBottom: 32, maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.6 }}>
-                SHEIN coordinates 5,847 stakeholders in 12 minutes, launches 200 SKUs on day 7 — capturing 65% market
-                share and $180M revenue while Zara/H&M are still planning.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-6 mb-10">
-                {[
-                  { value: "$108M", label: "Additional Revenue vs Late Launch" },
-                  { value: "12 Min", label: "vs 48-72 Hours Traditional" },
-                  { value: "65%", label: "Market Share Captured" },
-                ].map(({ value, label }) => (
-                  <div key={label} style={{ padding: 20, background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", borderRadius: 0 }}>
-                    <div style={{ fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{value}</div>
-                    <div style={{ fontSize: 11, color: "rgba(240,237,228,0.55)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 600 }}>{label}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Primary CTA */}
-              <div style={{ marginBottom: 24 }}>
-                <Link href="/request-access">
-                  <Button size="lg" style={{ background: GOLD, color: NAVY, padding: "18px 48px", fontSize: 16, fontWeight: 700, letterSpacing: "0.04em", marginBottom: 8 }}>
-                    <Rocket className="h-5 w-5 mr-2" />
-                    Join the Pilot Program
-                  </Button>
-                </Link>
-                <p style={{ fontSize: 12, color: "rgba(240,237,228,0.4)", marginTop: 10 }}>Deploy Readiness OS across your organization</p>
-              </div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Differentiation campaign briefed, influencers retained, channels reinforced, and product acceleration authorized — before the switching window hardened.</p>
             </div>
-
-            <ROIComparison
-              traditional={sheinTrendDemoData.roiComparisonData.traditional}
-              executionOS={sheinTrendDemoData.roiComparisonData.vexor}
-              bottomLine={sheinTrendDemoData.roiComparisonData.bottomLine}
-            />
-
-            <div className="flex justify-center gap-4">
-              <Button onClick={resetDemo} variant="outline" style={{ background: "transparent", borderColor: "rgba(240,237,228,0.3)", color: IVORY }} data-testid="button-replay">
-                Replay Demo
-              </Button>
-              <Link href="/industry-demos">
-                <Button style={{ background: "rgba(255,255,255,0.08)", color: IVORY, border: "1px solid rgba(255,255,255,0.15)" }} data-testid="button-all-demos">
-                  View All Industry Scenarios
-                </Button>
-              </Link>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+              {[
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. weeks of alignment cycles', color: TEAL },
+                { label: 'Revenue Protected', value: '$2.1B', sub: 'Q4 holiday season defended', color: GOLD },
+                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'brand, product, channel, loyalty', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
+              ].map(m => (
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>The Strategic Insight</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{SCENARIO.insight}</p>
+            </div>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>"The response was ready before the trigger fired."</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
+            </div>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your brand — with your real influencer relationships, your real channel partners, and your real product pipeline?</p>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request a Pilot →</a>
+                <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
+              </div>
             </div>
           </div>
         )}
