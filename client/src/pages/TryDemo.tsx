@@ -229,6 +229,90 @@ const SCENARIOS: Scenario[] = [
     ],
     demoType: 'offensive'
   },
+  {
+    id: 'servicenow-armis',
+    name: 'ServiceNow — $7.75B Armis',
+    industry: 'M&A Integration',
+    domain: 'Mergers & Acquisitions',
+    domainCount: 18,
+    icon: Building2,
+    color: 'bg-[#0A0F2E]',
+    borderColor: 'border-[#E8E4DC]',
+    trigger: '$7.75B Armis acquisition announced — 3rd major deal this quarter',
+    playbook: 'M&A Integration — Day One Readiness',
+    dealValue: 7750000000,
+    stakeholders: 14,
+    revenuePerMinute: 42000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'Integration PMO', content: 'Armis announcement live. Moveworks integration still in progress. Veza onboarding incomplete. Who owns what?', urgency: 'critical' },
+      { id: '2', type: 'slack', sender: 'Pablo Stern — EVP Products', content: 'We need a unified roadmap message for customers in 48 hours. Three acquisitions. One platform story. Where is it?', urgency: 'critical' },
+      { id: '3', type: 'email', sender: 'Enterprise Sales', content: 'Customers asking what Armis means for their existing security licenses. No answer ready. 11 accounts flagged.', urgency: 'critical' },
+      { id: '4', type: 'slack', sender: 'Armis CEO — Yevgeny Dibrov', content: 'Team is watching closely. Our engineers are getting recruiter calls. What is the retention plan?', urgency: 'critical' },
+      { id: '5', type: 'text', sender: 'Gina Mastantuono — CFO', content: 'Debt financing structure needs board sign-off by EOD. Integration budget not yet allocated across 3 deals.', urgency: 'critical' },
+      { id: '6', type: 'email', sender: 'General Counsel', content: 'Antitrust filing required in 4 jurisdictions. EU timeline is 90 days. DOJ pre-notification today.', urgency: 'high' },
+      { id: '7', type: 'slack', sender: 'Customer Success', content: '"One platform, one data model" — customers are asking if that still holds with 3 new acquisitions bolted on.', urgency: 'critical' },
+      { id: '8', type: 'email', sender: 'CHRO', content: 'Armis has 400 employees across 8 countries. Equity conversion, benefits parity, work authorization — none staged.', urgency: 'high' },
+      { id: '9', type: 'text', sender: 'Bill McDermott — CEO', content: 'Analyst from Barclays just asked me about integration coherence on live CNBC call. I need answers from the team.', urgency: 'critical' },
+      { id: '10', type: 'slack', sender: 'Competitive Intel', content: 'Palo Alto just pushed a "one platform" campaign. They are positioning against our integration complexity. Today.', urgency: 'critical' },
+    ],
+    demoType: 'offensive'
+  },
+  {
+    id: 'alphabet-wiz',
+    name: 'Alphabet — $32B Wiz Deal',
+    industry: 'Regulatory + M&A',
+    domain: 'Mergers & Acquisitions',
+    domainCount: 18,
+    icon: Rocket,
+    color: 'bg-[#2B8A6E]',
+    borderColor: 'border-[#2B8A6E]/50',
+    trigger: '$32B Wiz acquisition announced — DOJ watching, Wiz walked away once before',
+    playbook: 'Acquisition Close — Regulatory & Retention',
+    dealValue: 32000000000,
+    stakeholders: 16,
+    revenuePerMinute: 68000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'General Counsel', content: 'DOJ pre-merger notification filed. FTC has 30 days. EU filing required separately. Antitrust counsel on 3 fronts.', urgency: 'critical' },
+      { id: '2', type: 'slack', sender: 'Thomas Kurian — Google Cloud CEO', content: 'Wiz team is asking about organizational structure post-close. They walked away before. We need answers in 24 hours.', urgency: 'critical' },
+      { id: '3', type: 'text', sender: 'Assaf Rappaport — Wiz CEO', content: 'My board is watching the DOJ situation. If this drags past 12 months, the deal economics change for us.', urgency: 'critical' },
+      { id: '4', type: 'email', sender: 'AWS Enterprise Sales', content: 'AWS flagging Wiz customers with "Google lock-in" messaging. 14 enterprise Wiz accounts contacted already.', urgency: 'critical' },
+      { id: '5', type: 'slack', sender: 'Wiz HR Lead', content: 'Engineers are receiving competing offers from CrowdStrike and Palo Alto. Equity vesting cliffs are a concern. No retention package communicated.', urgency: 'critical' },
+      { id: '6', type: 'email', sender: 'Partner Ecosystem', content: 'Security resellers asking whether they will compete with Google Cloud post-close. 3 partners threatening to drop Wiz line.', urgency: 'high' },
+      { id: '7', type: 'text', sender: 'Sundar Pichai — CEO', content: 'Wiz walked away from $23B. The question the board is asking is: what is different this time? I need the answer.', urgency: 'critical' },
+      { id: '8', type: 'slack', sender: 'Communications', content: 'WSJ running a piece on "Google\'s troubled acquisition record." Need statement in 90 minutes.', urgency: 'critical' },
+      { id: '9', type: 'email', sender: 'Investor Relations', content: 'Alphabet stock down 2.1% on antitrust concerns. Institutional shareholders requesting briefing.', urgency: 'high' },
+      { id: '10', type: 'slack', sender: 'Cloud Sales', content: 'Azure is using the regulatory uncertainty as a reason to move Wiz-adjacent accounts. 7 deals at risk this week.', urgency: 'critical' },
+    ],
+    demoType: 'offensive'
+  },
+  {
+    id: 'norwegian-activist',
+    name: 'Norwegian Cruise — Activist',
+    industry: 'Activist Defense',
+    domain: 'Stakeholder & Crisis',
+    domainCount: 21,
+    icon: TrendingDown,
+    color: 'bg-[#0A0F2E]',
+    borderColor: 'border-[#E8E4DC]',
+    trigger: 'Activist investor files 13D — public campaign launched overnight',
+    playbook: 'Activist Investor Defense',
+    dealValue: 3200000000,
+    stakeholders: 11,
+    revenuePerMinute: 18000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'Investor Relations', content: 'SC 13D filed at 6:02 AM. Starboard Value discloses 9.8% stake. Calling current strategy "deeply inadequate." Board needs to respond.', urgency: 'critical' },
+      { id: '2', type: 'text', sender: 'Board Chair', content: 'I saw the filing. How did we not see this coming? Who knew they were accumulating? We need a defense plan today.', urgency: 'critical' },
+      { id: '3', type: 'slack', sender: 'General Counsel', content: 'Proxy rules: we have 10 days before they can formally nominate board candidates. That window closes fast.', urgency: 'critical' },
+      { id: '4', type: 'email', sender: 'Investment Bankers — Goldman', content: 'Calling to review takeover defense protocols and shareholder rights plan. Need to know if poison pill is on the table.', urgency: 'critical' },
+      { id: '5', type: 'text', sender: 'CEO', content: 'CNBC is calling the activist campaign "long overdue." Three institutional shareholders have not returned our calls this morning.', urgency: 'critical' },
+      { id: '6', type: 'slack', sender: 'Communications', content: 'Activist published an open letter at 7 AM. It is on every financial news site. Our silence is being read as confirmation of their narrative.', urgency: 'critical' },
+      { id: '7', type: 'email', sender: 'CFO', content: 'Activist is demanding: (1) CEO replacement, (2) $500M buyback, (3) 2 board seats. What is our counter position?', urgency: 'critical' },
+      { id: '8', type: 'slack', sender: 'Proxy Advisory — ISS', content: 'ISS has reached out for company response to activist thesis. Their recommendation deadline is 3 weeks. No engagement plan ready.', urgency: 'high' },
+      { id: '9', type: 'text', sender: 'Major Institutional Holder', content: 'We hold 7.2%. We are listening to both sides. What is management\'s plan? We need substance, not PR.', urgency: 'critical' },
+      { id: '10', type: 'email', sender: 'Executive Team', content: 'Leadership team morale breaking. Three senior VPs asking privately if the activist is right. No internal narrative exists.', urgency: 'high' },
+    ],
+    demoType: 'defensive'
+  },
 ];
 
 const SCENARIO_SIGNALS: Record<string, { label: string; source: string; strength: number }[]> = {
@@ -251,6 +335,21 @@ const SCENARIO_SIGNALS: Record<string, { label: string; source: string; strength
     { label: 'Deal stalled 18 days past expected stage advance', source: 'CRM Intelligence', strength: 31 },
     { label: 'Customer engagement frequency dropped 80%', source: 'Engagement Tracker', strength: 62 },
     { label: 'Competitor mentioned in 3 recent call transcripts', source: 'Conversation AI', strength: 88 },
+  ],
+  'servicenow-armis': [
+    { label: 'SEC 8-K filing detected — $7.75B Armis acquisition disclosed', source: 'Regulatory Feed', strength: 38 },
+    { label: 'Customer CRM notes: 11 accounts flagging roadmap uncertainty', source: 'Salesforce Signal', strength: 71 },
+    { label: 'Talent platform: 3x recruiter activity targeting Armis engineers', source: 'HR Intelligence', strength: 94 },
+  ],
+  'alphabet-wiz': [
+    { label: 'SEC 13D/A and merger announcement — $32B Wiz transaction detected', source: 'Regulatory Feed', strength: 45 },
+    { label: 'DOJ pre-merger notification filed — 30-day review clock started', source: 'Antitrust Monitor', strength: 77 },
+    { label: 'AWS competitor messaging campaign targeting Wiz customer base', source: 'Market Intelligence', strength: 96 },
+  ],
+  'norwegian-activist': [
+    { label: 'SC 13D filing — Starboard Value 9.8% stake disclosed at 6:02 AM', source: 'SEC EDGAR Monitor', strength: 52 },
+    { label: 'Activist open letter published — ISS engagement clock started', source: 'Proxy Intelligence', strength: 79 },
+    { label: '3 institutional holders non-responsive — proxy vote risk elevated', source: 'Shareholder Tracker', strength: 97 },
   ],
 };
 
@@ -275,6 +374,21 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
     improvements: ['Set deal velocity trigger at 14 days stalled (current: 18)', 'Add procurement stakeholder mapping to Phase 1 task list', 'Include margin exception approval workflow in Phase 2'],
     stat: '$5M deal preserved — 28% margin maintained',
   },
+  'servicenow-armis': {
+    patterns: ['Integration PMO formed and accountabilities assigned in 8 minutes', '"One platform" roadmap narrative delivered to 11 at-risk accounts within 2 hours', 'Armis retention packages activated day one — attrition risk contained'],
+    improvements: ['Stage roadmap message pre-approval for acquisitions above $1B threshold', 'Add competitor response protocol to M&A playbook Phase 1', 'Include equity conversion timeline in employee communication template'],
+    stat: '$7.75B integration protected — "one platform" brand promise intact',
+  },
+  'alphabet-wiz': {
+    patterns: ['DOJ response strategy activated within 6 minutes of announcement', 'Wiz retention playbook deployed before first employee inquiry', 'AWS competitive counter-message live in 47 minutes — ahead of customer concerns'],
+    improvements: ['Pre-stage multi-cloud positioning message for all security acquisitions', 'Add partner ecosystem notification to Phase 1 (currently Phase 2)', 'Build DOJ/FTC timeline tracker into regulatory response template'],
+    stat: '$32B deal on track — Wiz did not walk away this time',
+  },
+  'norwegian-activist': {
+    patterns: ['Board response narrative ready within 9 minutes of 13D detection', 'ISS engagement initiated same morning — ahead of their 3-week deadline', '3 institutional holders engaged before market open — narrative controlled'],
+    improvements: ['Add shareholder accumulation monitoring at 5% threshold (currently 9.8%)', 'Pre-stage CEO statement template for activist scenarios', 'Include proxy advisory firm (ISS/Glass Lewis) contact in Phase 1'],
+    stat: 'Proxy fight neutralized — 2 of 3 activist demands resolved without board change',
+  },
 };
 
 const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
@@ -297,6 +411,21 @@ const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: s
     id: '410046aa-a8a7-4531-8ecb-d555c80e4b44',
     name: 'Customer Consolidation to Competitor',
     badge: 'Market Dynamics',
+  },
+  'servicenow-armis': {
+    id: 'b2c4e8f1-3a7d-4b92-9e01-d6f2a3c5e847',
+    name: 'M&A Integration — Day One Readiness',
+    badge: 'Mergers & Acquisitions',
+  },
+  'alphabet-wiz': {
+    id: 'c3d5f9a2-4b8e-5c03-af12-e7a3b4d6f958',
+    name: 'Acquisition Close — Regulatory & Retention',
+    badge: 'Mergers & Acquisitions',
+  },
+  'norwegian-activist': {
+    id: 'd4e6a0b3-5c9f-6d14-b023-f8b4c5e7a069',
+    name: 'Activist Investor Defense',
+    badge: 'Stakeholder & Crisis',
   },
 };
 
