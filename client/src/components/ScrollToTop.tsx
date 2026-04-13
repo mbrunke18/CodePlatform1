@@ -1,7 +1,22 @@
 import { useEffect, useCallback, useRef } from "react";
 import { useLocation } from "wouter";
 
+function clearScrollLock() {
+  try {
+    [document.body, document.documentElement].forEach((el) => {
+      if (!el) return;
+      el.removeAttribute('data-scroll-locked');
+      el.style.overflow = '';
+      el.style.overflowX = '';
+      el.style.overflowY = '';
+      el.style.paddingRight = '';
+      el.style.position = '';
+    });
+  } catch (_) {}
+}
+
 function resetAllScrollContainers() {
+  clearScrollLock();
   window.scrollTo(0, 0);
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
