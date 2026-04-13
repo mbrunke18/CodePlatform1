@@ -42103,7 +42103,9 @@ var PUBLIC_ROUTES = [
   "/api/auth/status",
   "/api/auth/user",
   // Investor Gate - public form submission (lead capture, no auth required)
-  "/api/investor-access"
+  "/api/investor-access",
+  // Live Signal Context — public summary for homepage banner and guest pages
+  "/api/public/live-context"
 ];
 function isPublicRoute(path3) {
   const pathWithoutQuery = path3.split("?")[0];

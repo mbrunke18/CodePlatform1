@@ -230,6 +230,9 @@ export const PUBLIC_ROUTES = [
 
   // Investor Gate - public form submission (lead capture, no auth required)
   '/api/investor-access',
+
+  // Live Signal Context — public summary for homepage banner and guest pages
+  '/api/public/live-context',
 ];
 
 /**
