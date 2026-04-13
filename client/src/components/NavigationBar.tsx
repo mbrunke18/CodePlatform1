@@ -38,25 +38,24 @@ export default function NavigationBar() {
   };
 
   const productLinks = [
-    { title: "Command Center", href: "/command-center", description: "Unified command center: FRI, velocity, preparedness", featured: true },
-    { title: "Playbook Library", href: "/playbook-library", description: "170 pre-built strategic playbooks" },
-    { title: "Live Demos", href: "/demo-hub", description: "Watch Readiness OS in action" },
-    { title: "Pricing", href: "/calculator", description: "ROI calculator" },
+    { title: "Mission Control", href: "/mission-control", description: "Executive readiness command center", featured: true },
+    { title: "Playbook Library", href: "/playbook-library", description: "170 pre-built strategic playbooks across 9 domains" },
+    { title: "12-Minute Test Drive", href: "/12-minute-experience", description: "4-step live simulation of 12-minute execution" },
+    { title: "ROI Calculator", href: "/calculator", description: "Quantify your readiness head start" },
   ];
 
   const solutionsLinks = [
-    { title: "By Role", href: "/demo-selector", description: "CEO, CFO, COO, CTO, CMO, CRO" },
-    { title: "By Industry", href: "/demo-selector", description: "Financial, Healthcare, Manufacturing" },
-    { title: "By Use Case", href: "/demo-selector", description: "M&A, Crisis, Launch, Competition" },
+    { title: "For the COO", href: "/demo-selector", description: "Execution orchestration at enterprise scale" },
+    { title: "For the CFO", href: "/demo-selector", description: "Pre-staged budget authority and cost controls" },
+    { title: "For the CTO / CIO", href: "/demo-selector", description: "Microsoft stack orchestration layer" },
+    { title: "For the CEO", href: "/demo-selector", description: "Strategic trigger detection and decision authority" },
   ];
 
-  const dynamicStrategyLinks = [
-    { title: "Command Center", href: "/command-center", description: "Real-time execution coordination", featured: true },
-    { title: "Playbook Library", href: "/playbook-library", description: "170 strategic playbooks" },
-    { title: "Foresight Radar", href: "/foresight-radar", description: "Weak signal detection & Oracle AI" },
-    { title: "Future Gym", href: "/future-gym", description: "Strategic training & simulations" },
-    { title: "Living Playbooks", href: "/living-playbooks", description: "Self-learning execution guides" },
-    { title: "Continuous Mode", href: "/continuous-mode", description: "Always-on operations" },
+  const demoLinks = [
+    { title: "Real-Company Scenarios", href: "/try-demo", description: "HPE, Target, Clorox, ServiceNow, Alphabet — live execution simulations", featured: true },
+    { title: "Industry Scenarios", href: "/industry-demos", description: "Financial services, pharma, manufacturing, retail, energy, luxury" },
+    { title: "Deal Risk Detection", href: "/deal-risk-demo", description: "Pipeline risk before it becomes pipeline loss" },
+    { title: "Pilot Program", href: "/pilot-program", description: "Join the Fortune 1000 pilot — 90-day structured onboarding" },
   ];
 
   const resourcesLinks = [
@@ -164,33 +163,28 @@ export default function NavigationBar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* Dynamic Strategy */}
+                {/* Demos */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-gray-50 font-semibold">
-                    <span className="flex items-center gap-1">
-                      Dynamic Strategy
-                      <span className="text-xs px-2 py-0.5 bg-[#0A0F2E] dark:bg-[#0A0F2E] text-white ml-1">NEW</span>
-                    </span>
+                    Demos
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[450px] gap-3 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                      {dynamicStrategyLinks.map((link) => (
+                    <ul className="grid w-[480px] gap-3 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                      {demoLinks.map((link) => (
                         <li key={link.href}>
                           <NavigationMenuLink asChild>
                             <button
-                              onClick={() => {
-                                setLocation(link.href);
-                              }}
+                              onClick={() => setLocation(link.href)}
                               className={`w-full text-left block select-none space-y-1 rounded-none p-3 leading-none no-underline outline-none transition-colors ${
-                                (link as any).featured 
-                                  ? 'bg-gradient-to-r from-[#0A0F2E] dark:from-[#0A0F2E] to-[#141B45] dark:to-[#141B45] hover:from-[#F8F7F4] dark:hover:from-[#0A0F2E] hover:to-[#141B45] dark:hover:to-[#141B45] border-2 border-[#E8E4DC] dark:border-[#0A0F2E]' 
-                                  : 'hover:bg-[#0A0F2E] dark:hover:bg-slate-700 hover:text-[#0A0F2E] dark:hover:text-[#0A0F2E] focus:bg-[#0A0F2E] dark:focus:bg-slate-700 focus:text-[#0A0F2E] dark:focus:text-[#0A0F2E]'
+                                (link as any).featured
+                                  ? 'bg-[#0A0F2E] border border-[#C9A84C]/30'
+                                  : 'hover:bg-slate-50 dark:hover:bg-slate-700 border border-transparent hover:border-slate-200'
                               }`}
                             >
-                              <div className={`text-sm font-medium leading-none ${(link as any).featured ? 'text-[#0A0F2E] dark:text-[#0A0F2E]' : 'text-slate-900 dark:text-slate-100'}`}>
+                              <div className={`text-sm font-semibold leading-none ${(link as any).featured ? 'text-white' : 'text-slate-900 dark:text-slate-100'}`}>
                                 {link.title}
                               </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-gray-600 dark:text-slate-300">
+                              <p className={`line-clamp-2 text-sm leading-snug mt-1 ${(link as any).featured ? 'text-[#C9A84C]' : 'text-gray-500 dark:text-slate-400'}`}>
                                 {link.description}
                               </p>
                             </button>
@@ -290,10 +284,10 @@ export default function NavigationBar() {
             </Button>
             <Button
               className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45] text-white"
-              onClick={() => setLocation('/demo-selector')}
+              onClick={() => setLocation('/try-demo')}
               data-testid="button-get-started-nav"
             >
-              Get Started
+              See a Demo
             </Button>
           </div>
 
@@ -341,6 +335,27 @@ export default function NavigationBar() {
                               navigateAndClose(link.href);
                             }}
                             className="text-gray-600 hover:text-[#0A0F2E] block py-1"
+                          >
+                            {link.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Demos */}
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-3">Demos</h3>
+                    <ul className="space-y-2">
+                      {demoLinks.map((link) => (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigateAndClose(link.href);
+                            }}
+                            className={`block py-1 font-medium ${(link as any).featured ? 'text-[#0A0F2E]' : 'text-gray-600 hover:text-[#0A0F2E]'}`}
                           >
                             {link.title}
                           </a>
