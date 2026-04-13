@@ -39476,7 +39476,7 @@ function registerOrgSetupRoutes(app2) {
       res.status(400).json({ error: "Failed to delete trigger", details: error.message });
     }
   });
-  app2.get("/api/config/departments", requireOrgAccess, async (req, res) => {
+  app2.get("/api/config/departments", async (req, res) => {
     try {
       const organizationId = req.query.organizationId;
       const departments2 = await storage.getDepartments(organizationId);
@@ -39587,7 +39587,7 @@ function registerOrgSetupRoutes(app2) {
       res.status(400).json({ error: "Failed to delete communication channel", details: error.message });
     }
   });
-  app2.get("/api/config/success-metrics", requireOrgAccess, async (req, res) => {
+  app2.get("/api/config/success-metrics", async (req, res) => {
     try {
       const organizationId = req.query.organizationId;
       const metrics = await storage.getSuccessMetricsConfig(organizationId);

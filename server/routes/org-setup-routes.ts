@@ -47,7 +47,7 @@ export function registerOrgSetupRoutes(app: Express): void {
   });
 
   // --- Departments CRUD ---
-  app.get('/api/config/departments', requireOrgAccess, async (req: any, res) => {
+  app.get('/api/config/departments', async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const departments = await storage.getDepartments(organizationId);
@@ -173,7 +173,7 @@ export function registerOrgSetupRoutes(app: Express): void {
   });
 
   // --- Success Metrics CRUD ---
-  app.get('/api/config/success-metrics', requireOrgAccess, async (req: any, res) => {
+  app.get('/api/config/success-metrics', async (req: any, res) => {
     try {
       const organizationId = req.query.organizationId as string | undefined;
       const metrics = await storage.getSuccessMetricsConfig(organizationId);
