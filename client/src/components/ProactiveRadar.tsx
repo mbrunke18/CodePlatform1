@@ -501,7 +501,7 @@ export default function ProactiveRadar() {
                 ) : (
                   <CheckCircle className="h-4 w-4 mr-2" />
                 )}
-                {intuitionMutation.isPending ? 'Validating...' : 'Validate with AI Analysis'}
+                {intuitionMutation.isPending ? 'Validating...' : 'Validate with Signal Analysis'}
               </Button>
 
               {intuitionMutation.data?.validation && (

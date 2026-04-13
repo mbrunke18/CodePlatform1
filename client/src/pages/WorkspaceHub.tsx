@@ -193,7 +193,7 @@ const advanceTools = [
   { title: "Decision Velocity", description: "Track and improve organizational decision-making speed", path: "/decision-velocity", icon: Activity, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Performance metrics" },
   { title: "Executive Dashboard", description: "Strategic overview of organizational readiness and performance", path: "/executive-dashboard", icon: BarChart3, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Executive view" },
   { title: "Executive Analytics", description: "Deep-dive analytics on playbook effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
-  { title: "AI Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "AI recommendations" },
+  { title: "AI Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "System recommendations" },
   { title: "Playbook Refinement", description: "Update playbooks based on lessons learned", path: "/living-playbooks", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
 ];
 const learningMetrics = [

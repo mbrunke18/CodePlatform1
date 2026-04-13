@@ -99,7 +99,7 @@ const workspaceTools = [
     icon: Brain,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
-    stats: "AI recommendations"
+    stats: "System recommendations"
   },
   {
     title: "Playbook Refinement",

@@ -861,7 +861,7 @@ export default function IncidentAnalyzer() {
                 <div className="flex items-center justify-between flex-wrap gap-3">
                   <CardTitle className="text-[#0A0F2E] flex items-center gap-2 text-2xl">
                     <Brain className="w-6 h-6 text-[#2B8A6E]" />
-                    AI Analysis Results
+                    Signal Analysis Results
                   </CardTitle>
                   <div className="flex items-center gap-2">
                     {analysis.domain && (

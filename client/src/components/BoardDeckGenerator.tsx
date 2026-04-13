@@ -111,7 +111,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
         {/* AI Confidence Indicator */}
         <div className="bg-muted/50 p-4">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-sm font-medium text-foreground">AI Analysis Ready</p>
+            <p className="text-sm font-medium text-foreground">Signal Analysis Ready</p>
             <AIConfidenceBadge 
               confidence={94} 
               basedOn={156} 

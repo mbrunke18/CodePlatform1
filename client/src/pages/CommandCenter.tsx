@@ -450,7 +450,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               style={{ background: NAVY, color: "#fff", border: "none", fontSize: 12, fontWeight: 600, padding: "8px 18px", display: "flex", alignItems: "center", gap: 8 }}
             >
               <Brain className="h-4 w-4" />
-              {compoundAnalyzeMutation.isPending ? 'Analyzing...' : 'Run AI Analysis'}
+              {compoundAnalyzeMutation.isPending ? 'Analyzing...' : 'Run Compound Analysis'}
             </Button>
           </div>
 

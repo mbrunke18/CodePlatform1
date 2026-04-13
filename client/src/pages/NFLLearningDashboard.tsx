@@ -222,7 +222,7 @@ export default function NFLLearningDashboard() {
         <Tabs defaultValue="suggestions" className="w-full">
           <TabsList className="bg-[#F8F7F4] p-1 border border-[#E8E4DC]">
             <TabsTrigger value="suggestions" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-suggestions">
-              AI Suggestions ({pendingSuggestions.length})
+              System Suggestions ({pendingSuggestions.length})
             </TabsTrigger>
             <TabsTrigger value="performance" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-performance">
               Performance Trends
@@ -252,7 +252,7 @@ export default function NFLLearningDashboard() {
                   <div className="text-center py-12 text-[#6B7280]">
                     <CheckCircle className="h-12 w-12 mx-auto mb-3 text-[#2B8A6E]" />
                     <p className="font-bold text-[#0A0F2E]">All suggestions reviewed</p>
-                    <p className="text-sm mt-1">You're up to date with AI recommendations</p>
+                    <p className="text-sm mt-1">You're up to date with system recommendations</p>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -497,10 +497,10 @@ export default function NFLLearningDashboard() {
                         <Lightbulb className="h-5 w-5 text-[#C9A84C] mt-0.5" />
                         <div>
                           <h4 className="font-bold text-sm text-[#C9A84C] uppercase tracking-wider">
-                            AI-Driven Improvement
+                            System-Driven Improvement
                           </h4>
                           <p className="text-sm text-[#0A0F2E] mt-1">
-                            You've implemented {acceptedSuggestions.length} AI suggestion{acceptedSuggestions.length !== 1 ? 's' : ''}. 
+                            You've implemented {acceptedSuggestions.length} system suggestion{acceptedSuggestions.length !== 1 ? 's' : ''}. 
                             This typically leads to {improvementRate}% faster response times.
                           </p>
                         </div>
