@@ -382,11 +382,18 @@ export default function PilotProgram() {
         <section className="py-16 px-6 bg-[#0A0F2E]">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-white mb-4" data-testid="heading-roi">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>
+                  Quantified Value Capture
+                </span>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,42px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }} data-testid="heading-roi">
                 ROI Measurement Framework
               </h2>
-              <p className="text-lg text-white/70">
-                Quantified value capture at every milestone
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(255,255,255,0.5)', marginTop: 12, lineHeight: 1.6 }}>
+                Every milestone produces evidence. Every activation is measured.
               </p>
             </div>
 
@@ -476,8 +483,12 @@ export default function PilotProgram() {
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-3">Part of the Pilot Structure</p>
-              <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4">Independent Peer Assessment</h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Part of the Pilot Structure</span>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, margin: '0 0 16px' }}>Independent Peer Assessment</h2>
               <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed">
                 Every pilot participant completes a structured 28-question independent assessment. Your unfiltered perspective — credibility gaps, competitive concerns, pricing instincts — is captured and used to improve the product and sharpen the go-to-market approach.
               </p>
@@ -516,8 +527,12 @@ export default function PilotProgram() {
         <section className="py-14 px-6 bg-[#0A0F2E]">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#C9A84C] mb-3">What Happens After You Sign</p>
-              <h2 className="text-2xl font-bold text-white mb-3">Your first 90 days, by role.</h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>What Happens After You Sign</span>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, margin: '0 0 12px' }}>Your first 90 days, by role.</h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xl mx-auto">
                 Every pilot comes with a structured onboarding guide built around the five roles present in every Fortune 1000 pilot — so each person on your team knows exactly what they see, what they own, and what success looks like at day 90.
               </p>
@@ -526,7 +541,7 @@ export default function PilotProgram() {
               {[
                 { phase: 'Days 1–30', label: 'Foundation', color: '#2B8A6E', desc: 'All 10 users onboarded. Integration live. First playbook activation completed.' },
                 { phase: 'Days 31–60', label: 'Velocity', color: '#C9A84C', desc: 'Multiple activations with documented outcomes. ROI data capture begins.' },
-                { phase: 'Days 61–90', label: 'Proof', color: '#7C6FD4', desc: 'Full activation history. Board brief generated. Renewal case quantified.' },
+                { phase: 'Days 61–90', label: 'Proof', color: '#2B8A6E', desc: 'Full activation history. Board brief generated. Renewal case quantified.' },
               ].map((t) => (
                 <div key={t.label} style={{ borderTop: `3px solid ${t.color}` }} className="bg-white/5 p-5">
                   <p style={{ color: t.color }} className="text-xs font-bold tracking-widest uppercase mb-1">{t.phase}</p>
@@ -553,8 +568,12 @@ export default function PilotProgram() {
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <p className="text-sm font-bold tracking-[0.22em] uppercase text-[#C9A84C] mb-3">A Question Every Pilot Candidate Asks</p>
-              <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>A Question Every Pilot Candidate Asks</span>
+                <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px,4vw,42px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, margin: '0 0 16px' }}>
                 "We already have Microsoft Copilot. Why Readiness OS?"
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">

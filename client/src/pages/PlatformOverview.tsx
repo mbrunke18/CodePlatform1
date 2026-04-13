@@ -14,7 +14,7 @@ const timelineSteps = [
   {
     time: "0:00",
     headline: "Signal Detected",
-    sub: "AI monitoring fires",
+    sub: "signal monitoring fires",
     aiRole: [
       "Ingests signal across 24+ enterprise data sources",
       "Pattern-matches against 170 playbook triggers",

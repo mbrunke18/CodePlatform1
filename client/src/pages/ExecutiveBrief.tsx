@@ -15,7 +15,7 @@ const comparisonRows = [
   {
     category: "Trigger Detection",
     traditional: "Manual monitoring — someone notices, escalates by email",
-    executionOS: "Automatic — continuous AI monitoring across 248+ data points",
+    executionOS: "Automatic — continuous signal monitoring across 248+ data points",
   },
   {
     category: "Time to Mobilization",
@@ -94,7 +94,7 @@ export default function ExecutiveBrief() {
     const url = window.location.href;
     const subject = encodeURIComponent("Strategic Briefing: VaughnMartin Readiness OS — 3,600× Execution Head Start");
     const body = encodeURIComponent(
-      `Hi,\n\nSharing this for board consideration.\n\nVaughnMartin's Readiness OS compresses the 30-day enterprise mobilization cycle to 12 minutes — a 3,600× execution head start over traditional operating models.\n\nThe full executive brief is here: ${url}\n\nKey headline: 170 pre-staged playbooks, continuous AI monitoring across 248+ signals, and full war-room coordination in under 12 minutes after a trigger fires.\n\nHappy to discuss at your convenience.`
+      `Hi,\n\nSharing this for board consideration.\n\nVaughnMartin's Readiness OS compresses the 30-day enterprise mobilization cycle to 12 minutes — a 3,600× execution head start over traditional operating models.\n\nThe full executive brief is here: ${url}\n\nKey headline: 170 pre-staged playbooks, continuous signal monitoring across 248+ signals, and full war-room coordination in under 12 minutes after a trigger fires.\n\nHappy to discuss at your convenience.`
     );
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   }

@@ -164,7 +164,7 @@ export default function DecisionVelocityPage() {
           {/* Improvement Principles */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { title: 'Perpetual Foresight', color: '#2B8A6E', desc: '24/7 AI monitoring detects signals early. Early detection equals faster response.' },
+              { title: 'Perpetual Foresight', color: '#2B8A6E', desc: 'continuous signal monitoring detects signals early. Early detection equals faster response.' },
               { title: 'Aligned Agility', color: '#0A0F2E', desc: 'Pre-configured playbooks eliminate coordination time. One-click activation.' },
               { title: 'Ecosystem Connectors', color: '#C9A84C', desc: 'Integrated systems eliminate manual handoffs and communication gaps.' },
               { title: 'Institutional Memory', color: '#DFC178', desc: 'AI learns from every move. Each execution improves velocity for the next event.' }

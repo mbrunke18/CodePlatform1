@@ -434,7 +434,7 @@ export default function Dashboard() {
                       </div>
                       <div className="text-left">
                         <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Configure Triggers</div>
-                        <div className="text-[10px] text-[#6B7280]">Set up AI monitoring</div>
+                        <div className="text-[10px] text-[#6B7280]">Set up signal monitoring</div>
                       </div>
                     </Button>
                   </Link>
@@ -460,7 +460,7 @@ export default function Dashboard() {
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-xs text-white/60">AI Intelligence Core</span>
+                      <span className="text-xs text-white/60">Intelligence Core</span>
                       <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-none bg-[#2B8A6E]" />
                         <span className="text-[10px] font-bold text-[#2B8A6E] uppercase">Operational</span>
@@ -480,7 +480,7 @@ export default function Dashboard() {
               <div style={{ marginTop: 32 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                   <div style={{ width: 28, height: 2, background: "#C9A84C" }} />
-                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#0A0F2E", fontFamily: "serif" }}>AI Executive Copilot</h2>
+                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#0A0F2E", fontFamily: "serif" }}>Executive Copilot</h2>
                 </div>
                 <AICopilotPanel />
               </div>

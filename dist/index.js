@@ -15147,13 +15147,18 @@ var init_OpenAIService = __esm({
             logger5.error({ error }, "Failed to initialize Azure OpenAI client, falling back to OpenAI");
           }
         }
-        const openAIKey = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
+        const hasReplitIntegration = !!(process.env.AI_INTEGRATIONS_OPENAI_API_KEY && process.env.AI_INTEGRATIONS_OPENAI_BASE_URL);
+        const openAIKey = hasReplitIntegration ? process.env.AI_INTEGRATIONS_OPENAI_API_KEY : process.env.OPENAI_API_KEY;
+        const openAIBaseURL = hasReplitIntegration ? process.env.AI_INTEGRATIONS_OPENAI_BASE_URL : void 0;
         if (!this.isConfigured && openAIKey) {
           try {
-            this.client = new OpenAI2({ apiKey: openAIKey });
+            this.client = new OpenAI2({
+              apiKey: openAIKey,
+              ...openAIBaseURL ? { baseURL: openAIBaseURL } : {}
+            });
             this.provider = "openai";
             this.isConfigured = true;
-            logger5.info("OpenAI service initialized successfully");
+            logger5.info({ baseURL: openAIBaseURL ?? "default" }, "OpenAI service initialized successfully");
           } catch (error) {
             logger5.error({ error }, "Failed to initialize OpenAI client");
             this.isConfigured = false;

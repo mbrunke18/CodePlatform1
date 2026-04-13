@@ -90,7 +90,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
               Threat Radar
             </h1>
             <p className="text-[#6B7280] mt-1">
-              Real-time AI monitoring across {SIGNAL_CATEGORIES.length} signal categories and {totalDataPoints} data points
+              Real-time signal monitoring across {SIGNAL_CATEGORIES.length} signal categories and {totalDataPoints} data points
             </p>
           </div>
           <Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" onClick={() => setLocation('/signal-intelligence')} data-testid="button-configure-signals">

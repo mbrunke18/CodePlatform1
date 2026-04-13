@@ -157,7 +157,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
   const weakSignals: EnhancedWeakSignal[] = apiSignals.length > 0 
     ? apiSignals.map(s => ({
         ...s,
-        description: s.title + ' - Detected by AI monitoring',
+        description: s.title + ' - Detected by signal monitoring',
         impact: 'medium' as const,
         timeline: '1-2 weeks'
       }))

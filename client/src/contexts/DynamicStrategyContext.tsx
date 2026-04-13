@@ -1,5 +1,6 @@
 import { createContext, useContext, ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { useAuth } from '@/hooks/useAuth';
 
 interface ReadinessMetrics {
   overall: number;
@@ -55,24 +56,30 @@ interface DynamicStrategyState {
 const DynamicStrategyContext = createContext<DynamicStrategyState | null>(null);
 
 export function DynamicStrategyProvider({ children }: { children: ReactNode }) {
+  const { isAuthenticated } = useAuth();
+
   const { data: statusData, isLoading: statusLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/status'],
     refetchInterval: 60000,
+    enabled: isAuthenticated,
   });
 
   const { data: readinessData, isLoading: readinessLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/readiness'],
     refetchInterval: 60000,
+    enabled: isAuthenticated,
   });
 
   const { data: weakSignalsData, isLoading: signalsLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/weak-signals'],
     refetchInterval: 120000,
+    enabled: isAuthenticated,
   });
 
   const { data: patternsData, isLoading: patternsLoading } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/oracle-patterns'],
     refetchInterval: 120000,
+    enabled: isAuthenticated,
   });
 
   const isLoading = statusLoading || readinessLoading || signalsLoading || patternsLoading;

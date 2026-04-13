@@ -1740,7 +1740,7 @@ export default function TryDemo() {
                         <div style={{ width: 6, height: 6, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
                       </div>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 248+ sources — replaced by continuous AI monitoring.</p>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 248+ sources — replaced by continuous signal monitoring.</p>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Readiness OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                         {[['248+', 'Signal sources'], ['15 min', 'Scan cycle'], ['24/7', 'Monitoring'], ['<1 sec', 'Alert time']].map(([val, label]) => (

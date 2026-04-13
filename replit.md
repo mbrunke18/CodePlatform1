@@ -33,12 +33,15 @@ VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000.
 
 **UI/UX Decisions:**
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
-- **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy.
+- **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy. All `h2.text-4xl/3xl/2xl.font-bold` and `h3.text-3xl/2xl/xl.font-bold` globally converted to Cormorant Garamond via index.css (T001 editorial lift — affects all 192 pages). Section headings using `tracking-widest uppercase` remain Barlow Condensed.
 - **Branding:** Consistent VaughnMartin and Readiness OS branding with a circular seal logo.
 - **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`).
 - **Layout:** All pages are wrapped by a `PageLayout` component.
 - **Homepage:** Focuses on 12-minute execution, IDEA Framework, and research-backed validation with a specific section order.
-- **Brand Colors:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`.
+- **Brand Colors:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`. Zero purple (#7C6FD4) anywhere — replaced with Teal.
+- **Design Utilities (index.css):** `vm-stat-block`, `vm-section-label`, `vm-editorial-rule`, `vm-metric-row`, `vm-card-editorial`, `vm-table-editorial`, `vm-metric-number`. All buttons/cards/badges are `border-radius: 0.15rem` (no pill look).
+- **Shared Design Components:** `client/src/components/design/index.tsx` — `SectionLabel`, `EditorialStat`, `GoldRule` reusable components.
+- **Language enforcement enforced:** "AI monitoring" → "signal monitoring" purged from all 9 violating files. Zero AI-powered/AI-driven/AI-generated violations in user-facing copy. "AI Intelligence Core" → "Intelligence Core". "AI Executive Copilot" → "Executive Copilot".
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion.

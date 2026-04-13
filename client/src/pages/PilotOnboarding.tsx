@@ -76,7 +76,7 @@ const roles = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
       </svg>
     ),
-    color: '#7C6FD4',
+    color: '#2B8A6E',
     sees: [
       { label: 'Execution History & KPIs', detail: 'Coordination time trends across every activation, executive hours recovered per event, and projected annual value if the pilot performance holds at scale.' },
       { label: 'Pre-Approved Budget Allocations', detail: 'Each playbook carries pre-staged resource authorizations — no mid-crisis approval cycles. The CFO reviews and approves these ceilings before the trigger fires, not after.' },
@@ -183,7 +183,7 @@ const timeline = [
   {
     phase: 'Days 61–90',
     label: 'Proof',
-    color: '#7C6FD4',
+    color: '#2B8A6E',
     milestones: [
       'Full activation history documented with timestamps',
       'Signal-based board brief produced from real data',

@@ -338,7 +338,7 @@ export default function ExecutiveDashboard() {
                 <MetricCard
                   title="Active Signals"
                   value={activeCount}
-                  trend="24/7 AI monitoring"
+                  trend="continuous signal monitoring"
                   trendDirection="neutral"
                   status={activeCount >= 5 ? 'good' : 'warning'}
                   icon={Radio}
@@ -488,7 +488,7 @@ export default function ExecutiveDashboard() {
                     <div className="text-center py-12 flex flex-col items-center gap-3">
                       <CheckCircle className="h-10 w-10" style={{ color: TEAL }} />
                       <p className="text-sm font-semibold" style={{ color: NAVY }}>No active signals detected</p>
-                      <p className="text-xs text-gray-400">AI monitoring is active across all 248+ data points</p>
+                      <p className="text-xs text-gray-400">Signal monitoring is active across all 248+ data points</p>
                     </div>
                   ) : (
                     <div className="space-y-3">

@@ -89,7 +89,7 @@ export function ExecutiveTestimonialOverlay() {
                     </p>
                     <blockquote className="text-xl text-[#2B8A6E] leading-relaxed">
                       Execution infrastructure approach: Pre-built playbooks with governance pre-defined. 
-                      AI monitoring for early warning. Coordinated execution with clear decision rights when trigger fires.
+                      Signal monitoring for early warning. Coordinated execution with clear decision rights when trigger fires.
                     </blockquote>
                     <div className="space-y-2 pt-2">
                       <p className="text-[#2B8A6E]/80 italic">✓ Design goal: 12-minute execution from trigger</p>

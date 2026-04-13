@@ -1527,3 +1527,117 @@ html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
 @media (max-width: 720px) {
   .hp-ba-compare { grid-template-columns: 1fr !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   GLOBAL EDITORIAL TYPOGRAPHY LIFT
+   Converts every vanilla Tailwind h2 heading to Cormorant Garamond so all
+   192 pages gain the editorial voice without per-file edits.
+   Inline fontFamily styles on any element will still override this rule.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+h2.text-4xl.font-bold {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(28px, 4vw, 46px) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+}
+
+h2.text-3xl.font-bold {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(24px, 3.5vw, 38px) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+h2.text-2xl.font-bold {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(20px, 2.5vw, 30px) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+h3.text-3xl.font-bold,
+h3.text-2xl.font-bold,
+h3.text-xl.font-bold {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+/* Section headings that use tracking-widest uppercase should stay Barlow Condensed */
+h2.uppercase.tracking-widest,
+h2.tracking-widest {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: clamp(13px, 1.5vw, 18px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+  line-height: 1.3 !important;
+}
+
+/* ── vm-card-editorial — card with top gold accent, no radius, no shadow ──── */
+.vm-card-editorial {
+  border: 1px solid #E8E4DC;
+  border-top: 3px solid #C9A84C;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+}
+
+.vm-card-editorial.on-dark {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  border-top-color: #C9A84C;
+}
+
+/* ── vm-table-editorial — clean editorial table ────────────────────────────── */
+.vm-table-editorial {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vm-table-editorial thead tr {
+  border-bottom: 2px solid #E8E4DC;
+}
+
+.vm-table-editorial thead th {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  text-align: left;
+  color: #6B7280;
+}
+
+.vm-table-editorial tbody tr {
+  border-bottom: 1px solid #E8E4DC;
+}
+
+.vm-table-editorial tbody tr:last-child { border-bottom: none; }
+
+.vm-table-editorial tbody td {
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  padding: 14px 16px;
+  color: #0A0F2E;
+  line-height: 1.5;
+}
+
+.vm-table-editorial.on-dark thead tr { border-bottom-color: rgba(255,255,255,0.08); }
+.vm-table-editorial.on-dark thead th { color: rgba(255,255,255,0.35); }
+.vm-table-editorial.on-dark tbody tr { border-bottom-color: rgba(255,255,255,0.05); }
+.vm-table-editorial.on-dark tbody td { color: rgba(255,255,255,0.8); }
+
+/* ── Investors.tsx: prevent all-caps Tailwind headings from getting Cormorant ─ */
+.vm-investors-page h2.text-2xl.font-bold.uppercase { font-family: 'Barlow Condensed', sans-serif !important; }
+
+/* ── Global: stat numbers in dark metric blocks remain Cormorant ──────────── */
+.vm-metric-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  line-height: 1;
+}

@@ -703,7 +703,7 @@ export default function NewUserJourney() {
                     <div className="flex items-center gap-3">
                       <Activity className="h-5 w-5 text-[#0A0F2E]" />
                       <span className="text-sm text-gray-800">
-                        Based on your priorities, we recommend these signal categories. Toggle them on to enable 24/7 AI monitoring.
+                        Based on your priorities, we recommend these signal categories. Toggle them on to enable continuous signal monitoring.
                       </span>
                     </div>
                   </div>

@@ -61,9 +61,13 @@ export class OpenAIService {
       }
     }
 
-    // Prefer direct OPENAI_API_KEY; fall back to Replit-managed integration key + proxy
-    const openAIKey = process.env.OPENAI_API_KEY || process.env.AI_INTEGRATIONS_OPENAI_API_KEY;
-    const openAIBaseURL = !process.env.OPENAI_API_KEY && process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
+    // Prefer Replit-managed integration proxy (managed billing, no quota issues)
+    // Fall back to direct OPENAI_API_KEY only if Replit integration is not configured
+    const hasReplitIntegration = !!(process.env.AI_INTEGRATIONS_OPENAI_API_KEY && process.env.AI_INTEGRATIONS_OPENAI_BASE_URL);
+    const openAIKey = hasReplitIntegration
+      ? process.env.AI_INTEGRATIONS_OPENAI_API_KEY
+      : process.env.OPENAI_API_KEY;
+    const openAIBaseURL = hasReplitIntegration
       ? process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
       : undefined;
     if (!this.isConfigured && openAIKey) {
