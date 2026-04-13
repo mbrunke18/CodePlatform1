@@ -313,6 +313,90 @@ const SCENARIOS: Scenario[] = [
     ],
     demoType: 'defensive'
   },
+  {
+    id: 'hpe-juniper',
+    name: 'HPE — Activist + $14B Juniper',
+    industry: 'Activist + Integration',
+    domain: 'Mergers & Acquisitions',
+    domainCount: 18,
+    icon: Zap,
+    color: 'bg-[#0A0F2E]',
+    borderColor: 'border-[#E8E4DC]',
+    trigger: 'Elliott Management files activist position during Juniper integration',
+    playbook: 'Activist Defense + Integration Continuity',
+    dealValue: 14000000000,
+    stakeholders: 13,
+    revenuePerMinute: 48000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'Investor Relations', content: 'Elliott Management disclosed a significant stake this morning. Public letter questioning the entire Juniper integration thesis. Board call needed today.', urgency: 'critical' },
+      { id: '2', type: 'slack', sender: 'Integration PMO', content: 'Juniper integration team asking: do we continue on current plan or pause? Elliott is questioning the rationale for the deal entirely.', urgency: 'critical' },
+      { id: '3', type: 'text', sender: 'Antonio Neri — CEO', content: 'Elliott wants a call with me and the board before market open tomorrow. I need our integration performance data and a defense narrative in the next 3 hours.', urgency: 'critical' },
+      { id: '4', type: 'email', sender: 'General Counsel', content: 'Elliott letter demands board refreshment and strategic review. We need proxy defense counsel engaged immediately — ISS clock starts now.', urgency: 'critical' },
+      { id: '5', type: 'slack', sender: 'Juniper Integration Lead', content: 'Customer migration meetings scheduled for next week. Do we proceed? If the deal thesis is being questioned publicly, customers will start asking questions too.', urgency: 'high' },
+      { id: '6', type: 'email', sender: 'Communications', content: 'Wall Street Journal running a piece: "HPE\'s Juniper Bet Under Fire." Need a CEO statement in 90 minutes. Nothing drafted.', urgency: 'critical' },
+      { id: '7', type: 'slack', sender: 'Enterprise Sales', content: '6 enterprise deals referencing the Elliott letter in calls today. Customers asking if Juniper product roadmap is stable. No answer ready.', urgency: 'critical' },
+      { id: '8', type: 'text', sender: 'CFO', content: 'HPE stock down 4.2% pre-market. Institutional holders are calling. We need to know which ones are on our side before the board meets.', urgency: 'critical' },
+      { id: '9', type: 'email', sender: 'Board Director', content: 'I am getting calls from two other directors. We need a unified board position before anyone speaks publicly. Is there a plan?', urgency: 'critical' },
+      { id: '10', type: 'slack', sender: 'Juniper Executive Team', content: 'Key Juniper leaders asking whether to update their LinkedIn. Morale breaking. We need a clear message that the integration is proceeding.', urgency: 'high' },
+    ],
+    demoType: 'defensive'
+  },
+  {
+    id: 'target-succession',
+    name: 'Target — CEO Succession',
+    industry: 'Leadership Transition',
+    domain: 'Leadership & Governance',
+    domainCount: 16,
+    icon: Crown,
+    color: 'bg-[#C9A84C]',
+    borderColor: 'border-[#C9A84C]/50',
+    trigger: 'CEO announces departure — board has 72 hours before leak',
+    playbook: 'CEO Succession — Board Continuity Protocol',
+    dealValue: 4800000000,
+    stakeholders: 12,
+    revenuePerMinute: 32000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'Board Chair', content: 'CEO has informed the board of his intention to step down. 72-hour confidentiality window before we must disclose. Succession plan meeting — today, 4 PM.', urgency: 'critical' },
+      { id: '2', type: 'slack', sender: 'General Counsel', content: 'SEC disclosure timeline: 8-K required within 4 business days of board determination. Succession process must be documented today.', urgency: 'critical' },
+      { id: '3', type: 'text', sender: 'Lead Independent Director', content: 'We have 3 internal candidates and no formal evaluation framework ready. Do we go internal or external? Who owns this decision and on what timeline?', urgency: 'critical' },
+      { id: '4', type: 'email', sender: 'CHRO', content: 'The senior leadership team does not know yet. Once they find out, retention risk is immediate — especially the two EVPs who are candidates themselves.', urgency: 'critical' },
+      { id: '5', type: 'slack', sender: 'Investor Relations', content: 'Three institutional holders are meeting with us next week for our scheduled check-in. Do we disclose then? Do we postpone? Legal needs to weigh in now.', urgency: 'critical' },
+      { id: '6', type: 'text', sender: 'Communications Lead', content: 'If this leaks before we are ready, the narrative is uncontrolled. We need a holding statement, an employee message, and a press release — all staged and approved.', urgency: 'high' },
+      { id: '7', type: 'email', sender: 'Compensation Committee Chair', content: 'What are the severance and transition terms? Outgoing CEO contract review needed before any announcement. Nothing is staged.', urgency: 'high' },
+      { id: '8', type: 'slack', sender: 'Strategy Team', content: 'If a new CEO comes from outside, does the current 3-year strategy hold? Investors will ask immediately. We need a continuity message ready.', urgency: 'critical' },
+      { id: '9', type: 'text', sender: 'Board Member', content: 'I just got a call from a reporter asking if leadership changes are coming. They have a source. The 72-hour window may be shorter than we thought.', urgency: 'critical' },
+      { id: '10', type: 'email', sender: 'Store Operations', content: '400,000 team members will hear about this. District managers need guidance on what to say before the rumor mill takes over.', urgency: 'high' },
+    ],
+    demoType: 'defensive'
+  },
+  {
+    id: 'clorox-purell',
+    name: 'Clorox — $2.25B Purell',
+    industry: 'Acquisition Integration',
+    domain: 'Mergers & Acquisitions',
+    domainCount: 18,
+    icon: ShoppingCart,
+    color: 'bg-[#2B8A6E]',
+    borderColor: 'border-[#2B8A6E]/50',
+    trigger: '$2.25B GOJO/Purell acquisition — Clorox\'s largest ever, new business model',
+    playbook: 'Acquisition Integration — New Business Model Entry',
+    dealValue: 2250000000,
+    stakeholders: 11,
+    revenuePerMinute: 18000,
+    chaosMessages: [
+      { id: '1', type: 'email', sender: 'Integration PMO', content: 'Deal announced. GOJO brings 20 million installed dispensers. This is a recurring revenue / subscription model. Clorox has never operated one. Who owns the B2B revenue strategy?', urgency: 'critical' },
+      { id: '2', type: 'slack', sender: 'VP B2B Sales', content: 'GOJO has a direct B2B distribution network — hospitals, schools, corporate facilities. Our retail sales model does not map to this. We need a go-to-market plan before close.', urgency: 'critical' },
+      { id: '3', type: 'text', sender: 'Linda Rendle — CEO', content: 'Analysts are asking what our recurring revenue strategy looks like post-close. I need a model and a message in the next 48 hours.', urgency: 'critical' },
+      { id: '4', type: 'email', sender: 'CFO', content: '$2.25B cash deal — largest in company history. Debt financing structure requires board sign-off. Integration budget not yet allocated. Q4 guidance needs revision.', urgency: 'critical' },
+      { id: '5', type: 'slack', sender: 'Brand Marketing', content: 'Purell is synonymous with hand hygiene. It is a stronger consumer brand than Clorox in some categories. What is the brand architecture? Does Purell stay independent?', urgency: 'high' },
+      { id: '6', type: 'email', sender: 'Retail Partners — Walmart, Target', content: 'Retail buyers asking about shelf space changes. Will Purell and Clorox compete for hand hygiene facings? Need answers before next buyer meeting.', urgency: 'high' },
+      { id: '7', type: 'slack', sender: 'Manufacturing / Supply Chain', content: 'GOJO manufacturing facilities need capacity assessment. Their supply chain is built for B2B fulfillment, not retail distribution. Integration timeline?', urgency: 'critical' },
+      { id: '8', type: 'text', sender: 'CHRO', content: 'GOJO employees are asking about job security. Family-owned culture entering a public company. Retention packages not staged. HR integration plan missing.', urgency: 'high' },
+      { id: '9', type: 'email', sender: 'General Counsel', content: 'Hart-Scott-Rodino filing required. FTC may scrutinize — Clorox and Purell overlap in hand hygiene. Antitrust timeline needs to be locked before integration planning proceeds.', urgency: 'critical' },
+      { id: '10', type: 'slack', sender: 'Investor Relations', content: 'Stock down 3.1% on deal announcement. Investors questioning whether Clorox can operate a B2B recurring revenue model. Analyst calls starting at 8 AM.', urgency: 'critical' },
+    ],
+    demoType: 'offensive'
+  },
 ];
 
 const SCENARIO_SIGNALS: Record<string, { label: string; source: string; strength: number }[]> = {
@@ -350,6 +434,21 @@ const SCENARIO_SIGNALS: Record<string, { label: string; source: string; strength
     { label: 'SC 13D filing — Starboard Value 9.8% stake disclosed at 6:02 AM', source: 'SEC EDGAR Monitor', strength: 52 },
     { label: 'Activist open letter published — ISS engagement clock started', source: 'Proxy Intelligence', strength: 79 },
     { label: '3 institutional holders non-responsive — proxy vote risk elevated', source: 'Shareholder Tracker', strength: 97 },
+  ],
+  'hpe-juniper': [
+    { label: 'Elliott Management 13D filing — significant HPE stake disclosed', source: 'SEC EDGAR Monitor', strength: 44 },
+    { label: 'HPE stock down 4.2% pre-market — institutional calls incoming', source: 'Market Intelligence', strength: 76 },
+    { label: 'Juniper integration team communications flagging uncertainty spike', source: 'Internal Signal Monitor', strength: 95 },
+  ],
+  'target-succession': [
+    { label: 'Board communications flagging unscheduled executive session', source: 'Governance Monitor', strength: 29 },
+    { label: 'External search firm engagement detected — CEO succession signal', source: 'Procurement Intelligence', strength: 67 },
+    { label: 'Leak risk elevated — 72-hour disclosure window active', source: 'Communications Monitor', strength: 93 },
+  ],
+  'clorox-purell': [
+    { label: 'Hart-Scott-Rodino filing detected — $2.25B GOJO acquisition', source: 'Regulatory Feed', strength: 41 },
+    { label: 'B2B distributor network mapping — 20M dispenser install base flagged', source: 'Market Intelligence', strength: 73 },
+    { label: 'Retail partner buyer meetings scheduled — shelf conflict risk identified', source: 'Partner Signal', strength: 92 },
   ],
 };
 
@@ -389,6 +488,21 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
     improvements: ['Add shareholder accumulation monitoring at 5% threshold (currently 9.8%)', 'Pre-stage CEO statement template for activist scenarios', 'Include proxy advisory firm (ISS/Glass Lewis) contact in Phase 1'],
     stat: 'Proxy fight neutralized — 2 of 3 activist demands resolved without board change',
   },
+  'hpe-juniper': {
+    patterns: ['Unified board position drafted and approved in 11 minutes', 'Integration continuity message delivered to Juniper team before market open', 'CEO narrative for Elliott call built from pre-staged integration data — no scramble'],
+    improvements: ['Add Elliott-style activist monitoring at 3% stake accumulation threshold', 'Pre-stage integration performance dashboard for board-level activist defense', 'Include Juniper customer communication in Phase 1 — not Phase 2'],
+    stat: '$14B integration thesis defended — Elliott engagement resolved without board change',
+  },
+  'target-succession': {
+    patterns: ['Succession process documented within 7 minutes of CEO notification', '72-hour disclosure window managed — no leak', 'All three internal candidates briefed with consistent messaging before board vote'],
+    improvements: ['Build annual succession readiness review into governance calendar', 'Pre-stage institutional holder communication for leadership transition events', 'Add store operations communication chain to succession playbook Phase 1'],
+    stat: 'CEO transition executed — zero uncontrolled disclosure, market confidence maintained',
+  },
+  'clorox-purell': {
+    patterns: ['B2B revenue integration model drafted and approved before analyst calls', 'Retail partner shelf conflict resolved in joint planning session within 48 hours', 'GOJO employee retention packages activated day one — no attrition during close'],
+    improvements: ['Stage subscription revenue model playbook before any B2B acquisition above $500M', 'Add retail partner conflict mapping to M&A Phase 1 checklist', 'Include HSR filing timeline in integration communication from day one'],
+    stat: '$2.25B acquisition integrated — recurring revenue model operational within 90 days',
+  },
 };
 
 const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
@@ -426,6 +540,21 @@ const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: s
     id: 'd4e6a0b3-5c9f-6d14-b023-f8b4c5e7a069',
     name: 'Activist Investor Defense',
     badge: 'Stakeholder & Crisis',
+  },
+  'hpe-juniper': {
+    id: 'e5f7b1c4-6d0a-7e25-c134-a9c5d6e8b170',
+    name: 'Activist Defense + Integration Continuity',
+    badge: 'Mergers & Acquisitions',
+  },
+  'target-succession': {
+    id: 'f6a8c2d5-7e1b-8f36-d245-b0d6e7f9c281',
+    name: 'CEO Succession — Board Continuity Protocol',
+    badge: 'Leadership & Governance',
+  },
+  'clorox-purell': {
+    id: 'a7b9d3e6-8f2c-9a47-e356-c1e7f8a0d392',
+    name: 'Acquisition Integration — New Business Model Entry',
+    badge: 'Mergers & Acquisitions',
   },
 };
 
