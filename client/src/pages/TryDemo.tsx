@@ -922,7 +922,7 @@ export default function TryDemo() {
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16, lineHeight: 1.6 }}>Your playbook was already built. The system was already watching.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
-                      { min: '0 min', text: 'AI detects the trigger across 248+ signal sources', color: GOLD },
+                      { min: '0 min', text: 'Continuous monitoring detects the trigger across 248+ signal sources', color: GOLD },
                       { min: '2 min', text: 'Matched playbook activates — tasks assigned to named owners', color: '#3BAF8A' },
                       { min: '5 min', text: 'War room channel open, board communication staged', color: '#3BAF8A' },
                       { min: '8 min', text: 'Budget exception routed for approval automatically', color: '#3BAF8A' },
