@@ -236,14 +236,14 @@ export default function CrisisResponseCenter() {
           <div className="max-w-7xl mx-auto relative z-10">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
               <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Emergency Operations Center</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD }}>Strategic Operations Center</span>
             </div>
             <div className="flex items-end justify-between gap-12">
               <div className="max-w-3xl">
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(48px,6vw,72px)", lineHeight: 1, color: "#fff", marginBottom: 24 }}>
-                  Crisis Response <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command Center</em>
+                  Strategic Monitoring <em style={{ fontStyle: "italic", color: "#DFC178" }}>Command Center</em>
                 </h1>
-                <p className="text-white/60 text-xl leading-relaxed max-w-2xl">Enterprise-grade crisis management with 15+ response protocols and real-time coordination systems.</p>
+                <p className="text-white/60 text-xl leading-relaxed max-w-2xl">Enterprise-grade strategic monitoring with 15+ pre-staged protocols and real-time coordination systems.</p>
               </div>
               <div className="flex flex-col items-end gap-4 min-w-[280px]">
                 <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(43,138,110,0.2)", color:TEAL, fontSize:10, fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase" as const, padding:"6px 16px", border: `1px solid ${TEAL}` }}>

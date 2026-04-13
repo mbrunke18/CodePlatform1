@@ -51,7 +51,7 @@ const SEARCH_ITEMS = [
   { label: 'Signal Intelligence', path: '/signal-intelligence', category: 'Detect', icon: Radio },
   { label: 'Incident Analyzer', path: '/incident-analyzer', category: 'Detect', icon: AlertCircle },
   { label: 'Live Activation Center', path: '/live-activation', category: 'Execute', icon: Zap },
-  { label: 'Crisis Response', path: '/crisis', category: 'Execute', icon: AlertCircle },
+  { label: 'Strategic Monitoring', path: '/strategic-monitoring', category: 'Execute', icon: AlertCircle },
   { label: 'Decision Velocity', path: '/decision-velocity', category: 'Execute', icon: TrendingUp },
   { label: 'War Room', path: '/war-room', category: 'Execute', icon: Globe },
   { label: 'Concurrent Situation Board', path: '/concurrent-situations', category: 'Execute', icon: LayoutGrid },
@@ -150,7 +150,8 @@ export default function StandardNav() {
     {
       heading: "Execute Phase Tools",
       links: [
-        { label: "Concurrent Situation Board", path: "/concurrent-situations", icon: LayoutGrid, description: "Command view when multiple crises compete for C-suite bandwidth", featured: true },
+        { label: "Strategic Monitoring", path: "/strategic-monitoring", icon: AlertCircle, description: "Active trigger monitoring — 15+ pre-staged response protocols, real-time coordination", featured: true },
+        { label: "Concurrent Situation Board", path: "/concurrent-situations", icon: LayoutGrid, description: "Command view when multiple triggers compete for C-suite bandwidth", featured: true },
         { label: "Crisis Communications", path: "/crisis-communications", icon: MessageSquare, description: "5 audience-specific communications generated in 18 seconds" },
         { label: "Financial Exposure Estimator", path: "/financial-exposure", icon: DollarSign, description: "Instant dollar-range exposure when a trigger fires — CFO's first question answered" },
       ],

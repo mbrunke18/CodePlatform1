@@ -616,8 +616,7 @@ function Router() {
         {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/industry-demos")}
         <Route path="/landing">{() => <Redirect to="/" />}</Route>
         <Route path="/login">{() => <Redirect to="/" />}</Route>
-        <Route path="/crisis" component={CrisisResponseCenter} />
-        <Route path="/crisis-response-center" component={CrisisResponseCenter} />
+        {renderRedirects(["/crisis", "/crisis-response-center"], "/strategic-monitoring")}
 
         <Route component={NotFound} />
         </Switch>
