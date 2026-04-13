@@ -176,24 +176,18 @@ function LiveSignalFeedSection() {
                   background: '#2B8A6E', animation: 'vm-pulse 2s ease-in-out infinite',
                 }} />
                 <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#2B8A6E' }}>
-                  {hasReal ? 'System monitoring — live' : 'System monitoring — always on'}
+                  System monitoring — always on
                 </span>
               </div>
               <h2 style={{ ...GEO, fontSize: 'clamp(22px,3vw,32px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, margin: 0 }}>
                 {hasReal
-                  ? 'What the system detected while you were reading this.'
+                  ? 'What the system has detected. Mapped to pre-staged playbooks.'
                   : 'What the system monitors — continuously, across every domain.'}
               </h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
-              {hasReal && (
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ ...GEO, fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{liveCtx!.totalToday}</div>
-                  <div style={{ ...DM, fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginTop: 4, letterSpacing: '0.04em' }}>signals detected today</div>
-                </div>
-              )}
               <div style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.35)', textAlign: 'right' as const }}>
-                248+ data points · refreshed every 15 minutes
+                248+ data points · 8 live sources · refreshed every 15 minutes
               </div>
             </div>
           </div>
