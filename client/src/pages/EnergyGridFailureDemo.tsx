@@ -1,428 +1,318 @@
-import StandardNav from '@/components/layout/StandardNav';
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Zap, AlertTriangle, CheckCircle, Clock, Users, DollarSign, ShieldAlert, ArrowLeft, Play, Activity } from "lucide-react";
-import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
-import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
-import ROIComparison from "@/components/demo/ROIComparison";
-import DemoNavHeader from "@/components/demo/DemoNavHeader";
-import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
-import { energyDemoData } from "@shared/energy-demo-data";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from "wouter";
+import { scrollToTop } from "@/components/ScrollToTop";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-type DemoAct = "intro" | "detection" | "coordination" | "outcome";
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const BORDER  = "#E8E4DC";
+const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
+
+const SCENARIO = {
+  title: "Grid Infrastructure Failure",
+  subtitle: "Cascade fault detected — 8.2M customers without power, hospitals on backup",
+  domain: "Infrastructure & Operations",
+  company: "Regional Investor-Owned Utility — $18B rate base · 8.2M customers · 47,000 miles of transmission",
+  trigger: "A substation fault in the Eastern corridor has triggered a cascade failure across 3 transmission segments. 8.2M customers are without power, including 14 hospitals now on generator backup. FERC and the state PUC have already called the CEO. Neighboring utilities are monitoring — mutual aid requests must go out in the next 30 minutes. Every minute of delay extends outage duration and regulatory exposure.",
+  stats: [
+    { value: "8.2M", label: "Customers without power", sub: "Including 14 hospitals on generator" },
+    { value: "30 min", label: "Mutual aid request window", sub: "Neighboring utility crews available now" },
+    { value: "$2.4M/hr", label: "Regulatory penalty exposure", sub: "Per FERC reliability standard violation" },
+  ],
+  surviveScore: 46,
+  thriveScore: 91,
+  analysis: "Grid failure response is extraordinarily time-sensitive — every minute of extended outage multiplies regulatory exposure, customer harm, and reputational damage. Without pre-staged mutual aid agreements, regulatory notification protocols, and critical facility prioritization lists, utilities spend the first hour in coordination chaos. With Readiness OS, field crew activation, FERC notification, and critical customer prioritization execute simultaneously from minute one.",
+  playbooks: ["Grid Cascade Failure Response", "FERC/NERC Regulatory Notification", "Mutual Aid Activation Protocol", "Critical Facility Prioritization", "Mass Customer Outage Communication"],
+  insight: "The NERC reliability standards exist precisely because grid operators discovered — expensively — that uncoordinated response to cascade failures makes them worse. Pre-staged response protocols are not just best practice — they are the regulatory framework. Readiness OS is the operating model that makes that framework executable in real time, not a compliance document on a shelf.",
+};
+
+const TASKS = [
+  { phase: "IMMEDIATE ISOLATION", role: "Grid Operations Director", action: "Isolate the failed segment — prevent cascade propagation. Confirm: affected substations, transmission corridors, geographic scope of outage, number of customers without power", time: "1:00", priority: "critical" },
+  { phase: "IMMEDIATE ISOLATION", role: "CTO / Head of SCADA", action: "Switch all adjacent segments to manual control protocols — automated systems offline until root cause is confirmed and cascade risk eliminated", time: "1:30", priority: "critical" },
+  { phase: "REGULATORY NOTIFICATION", role: "General Counsel + Chief Compliance Officer", action: "Notify FERC, NERC, and state PUC within mandatory regulatory window — report affected customer count, cause estimate, restoration timeline, and corrective actions taken", time: "3:00", priority: "critical" },
+  { phase: "RESTORATION MOBILIZATION", role: "COO", action: "Activate all field crews immediately — prioritize circuit restoration sequence: hospitals, water treatment, emergency services, then residential. Document all critical infrastructure restorations.", time: "4:00", priority: "critical" },
+  { phase: "MUTUAL AID", role: "CEO", action: "Issue mutual aid request to 4 neighboring utilities — pre-negotiated agreements activate for crew and equipment support. Specify crew count, equipment type, and staging location.", time: "5:00", priority: "high" },
+  { phase: "CUSTOMER COMMUNICATION", role: "Chief Communications Officer", action: "Deploy mass customer notification: live outage map, restoration estimate by zone, emergency support resources for medical equipment users — all channels simultaneously", time: "6:00", priority: "high" },
+  { phase: "CRITICAL FACILITIES", role: "VP Grid Operations", action: "Direct circuit prioritization team: confirm hospital generator fuel status, coordinate with emergency management on shelter locations, document all critical customer restorations with timestamps", time: "8:00", priority: "high" },
+  { phase: "BOARD + INVESTOR", role: "CEO + CFO", action: "Brief board on regulatory exposure, restoration timeline, estimated cost of event — equipment replacement, overtime, mutual aid, regulatory penalties. Confirm cyber insurance notification if attack vector suspected.", time: "10:00", priority: "high" },
+  { phase: "FULL RESTORATION", role: "COO + Grid Director", action: "Systematic circuit energization in pre-determined sequence — confirm stability at each step, verify critical facilities restored first, document full restoration milestones for NERC reliability report", time: "12:00", priority: "high" },
+];
+
+function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
+function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = s % 60; return `${m}:${sec.toString().padStart(2, '0')}`; }
+function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
+  const t = TASKS[idx]; if (!t) return 'pending';
+  const d = parseTime(t.time);
+  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+}
+function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
+  return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
+}
+
+function WarRoomTasks({ elapsed }: { elapsed: number }) {
+  const phases = Array.from(new Set(TASKS.map(t => t.phase)));
+  return (
+    <div>
+      {phases.map(phase => (
+        <div key={phase} style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div style={{ height: 1, width: 24, background: NAVY }} />
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+            <div style={{ height: 1, flex: 1, background: NAVY }} />
+          </div>
+          {TASKS.filter(t => t.phase === phase).map((t, gi) => {
+            const idx = TASKS.indexOf(t); const st = getTaskStatus(idx, elapsed);
+            const isDone = st === 'done'; const isActive = st === 'active'; const isPending = st === 'pending';
+            return (
+              <div key={gi} style={{ display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8, background: isDone ? NAVY : '#fff', border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`, borderLeft: `4px solid ${isDone ? TEAL : isActive ? GOLD : '#D1D5DB'}`, transition: 'all 0.4s ease', opacity: isPending ? 0.65 : 1 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  {isDone ? <div style={{ width: 20, height: 20, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                    : isActive ? <div style={{ width: 20, height: 20, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'egfpulse 1.2s ease-in-out infinite' }} />
+                    : <div style={{ width: 20, height: 20, border: '2px solid #D1D5DB' }} />}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD }}>{t.role}</span>
+                    {isDone && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>}
+                    {isActive && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>}
+                    {isPending && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>}
+                  </div>
+                  <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
+                </div>
+                <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.45)' : '#6B7280', flexShrink: 0, marginTop: 2 }}>{t.time}</div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+      <style>{`@keyframes egfpulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }`}</style>
+    </div>
+  );
+}
 
 export default function EnergyGridFailureDemo() {
-  const [currentAct, setCurrentAct] = useState<DemoAct>("intro");
-  const [coordinationComplete, setCoordinationComplete] = useState(false);
+  const [step, setStep] = useState<1|2|3|4>(1);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [liveEvents, setLiveEvents] = useState<{time:string;text:string;type:'notified'|'acknowledged'|'system'}[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>|null>(null);
+  const loggedN = useRef<Set<number>>(new Set());
+  const loggedA = useRef<Set<number>>(new Set());
+  const elapsedRef = useRef(0);
+  const TOTAL = 12 * 60;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const pct = Math.round((elapsed / TOTAL) * 100);
 
-  const goToAct = (act: DemoAct) => {
-    setCurrentAct(act);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const tick = useCallback(() => {
+    elapsedRef.current += 1; const e = elapsedRef.current; setElapsed(e);
+    const evts: typeof liveEvents = [];
+    TASKS.forEach((t, i) => {
+      const d = parseTime(t.time);
+      if (e >= d && !loggedN.current.has(i)) { loggedN.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert deployed`, type: 'notified' }); }
+      if (e >= d + 30 && !loggedA.current.has(i)) { loggedA.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — confirmed in progress`, type: 'acknowledged' }); }
+    });
+    if (evts.length > 0) setLiveEvents(prev => [...evts, ...prev].slice(0, 24));
+    if (e >= TOTAL) { clearInterval(timerRef.current!); setRunning(false); setTimeout(() => { setStep(4); scrollToTop(); }, 1200); }
+  }, []);
+
+  const startWarRoom = () => {
+    loggedN.current = new Set(); loggedA.current = new Set(); elapsedRef.current = 0; setElapsed(0); setRunning(true);
+    setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(tick, 1000);
   };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
 
-  const renderActNavigation = () => {
-    const acts: { id: DemoAct; label: string }[] = [
-      { id: "intro", label: "Introduction" },
-      { id: "detection", label: "Act 1: Detection" },
-      { id: "coordination", label: "Act 2: Coordination" },
-      { id: "outcome", label: "Act 3: Outcome" }
-    ];
-
-    return (
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
-        {acts.map((act) => (
-          <Button
-            key={act.id}
-            variant={currentAct === act.id ? "default" : "outline"}
-            size="sm"
-            onClick={() => goToAct(act.id)}
-            data-testid={`button-act-${act.id}`}
-            className={currentAct === act.id ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]" : "bg-transparent text-white border-white/20 hover:bg-white/10 hover:text-white"}
-          >
-            {act.label}
-          </Button>
+  const Nav = () => (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
+      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+        {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
+          <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {i > 0 && <div style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
+            <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>{s.label}</span>
+          </div>
         ))}
       </div>
-    );
-  };
+      <Link href="/request-access"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button></Link>
+    </div>
+  );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0A0F2E" }}>
-      <DemoNavHeader title="Energy Grid Crisis Demo" showBackButton={true} />
-      <div className="container mx-auto px-4 py-12 pt-24 max-w-6xl text-white">
-        <ExecutionStageGuide variant="compact" />
-        {/* Header */}
-        <div className="text-center mb-8">
-          <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E]" data-testid="badge-demo-type">
-            Interactive Demo
-          </Badge>
-          <h1 className="text-5xl font-bold mb-4 text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Energy Grid Crisis Demo
-          </h1>
-          <p className="text-xl text-[#DFC178] mb-2">
-            {energyDemoData.crisis.subtitle}
-          </p>
-          <p className="text-sm text-white/60 max-w-3xl mx-auto">
-            Experience how Readiness OS prevents catastrophic infrastructure failure through live execution in 12 minutes —
-            transforming a potential 3-5 day blackout affecting 8.2M customers into controlled 3-hour stabilization.
-          </p>
-        </div>
+    <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <Nav />
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
-        {renderActNavigation()}
+        {step === 1 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{SCENARIO.domain}</span>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+              </div>
+              <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>{SCENARIO.title}</h1>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 600, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
+            </div>
+            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — CRITICAL</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
+              {SCENARIO.stats.map(s => (
+                <div key={s.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>{s.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 20, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Staged War Room — {TASKS.length} Tasks Ready</span>
+              </div>
+              {TASKS.map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, padding: '12px 16px', marginBottom: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${t.priority === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.4)'}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, minWidth: 40, flexShrink: 0 }}>{t.time}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.priority === 'critical' ? '#f87171' : 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginBottom: 3 }}>{t.role}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{t.action}</div>
+                  </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0, alignSelf: 'flex-start', paddingTop: 4 }}>{t.phase}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(2); scrollToTop(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>View Execution Brief →</button>
+            </div>
+          </div>
+        )}
 
-        {/* ACT: Introduction */}
-        {currentAct === "intro" && (
-          <div className="space-y-8 animate-in fade-in duration-500">
-            {/* Organization Card */}
-            <Card className="p-8 bg-white/5 border-white/10">
-              <div className="text-center mb-6">
-                <Zap className="h-16 w-16 mx-auto mb-4 text-[#C9A84C]" />
-                <h2 className="text-3xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.name}</h2>
-                <Badge variant="outline" className="mb-4 text-[#C9A84C] border-[#C9A84C]">
-                  {energyDemoData.organization.industry}
-                </Badge>
-                <p className="text-white/80 mb-6">{energyDemoData.organization.description}</p>
-                <div className="grid md:grid-cols-4 gap-6 mt-6">
-                  <div>
-                    <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.stats.revenue}</div>
-                    <div className="text-sm text-white/60">Annual Revenue</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-[#DFC178]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.stats.customers}</div>
-                    <div className="text-sm text-white/60">Customers</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.stats.coverage}</div>
-                    <div className="text-sm text-white/60">Coverage Area</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.organization.stats.facilities}</div>
-                    <div className="text-sm text-white/60">Substations</div>
-                  </div>
+        {step === 2 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{SCENARIO.title}</h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{SCENARIO.subtitle}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 40 }}>
+              <div style={{ padding: '20px 24px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderTop: '3px solid #C0392B' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 8 }}>Without Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.surviveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — coordination chaos, extended outage</div>
+              </div>
+              <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.thriveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — 12-minute coordinated restoration response</div>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{SCENARIO.analysis}</p>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks Activating</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {SCENARIO.playbooks.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>)}
                 </div>
               </div>
-            </Card>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
+            </div>
+          </div>
+        )}
 
-            {/* Crisis Event */}
-            <Card className="p-8 bg-white/5 border-white/10 border-[#C9A84C]/50">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-[#0A0F2E]">
-                  <AlertTriangle className="h-8 w-8 text-[#C9A84C]" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Crisis Event</h3>
-                  <p className="text-lg text-white/80 mb-4">{energyDemoData.crisis.description}</p>
-                  <div className="grid md:grid-cols-3 gap-4 mt-4">
-                    <div className="bg-white/5 p-4 rounded border border-white/10">
-                      <Users className="h-5 w-5 text-[#C9A84C] mb-2" />
-                      <div className="text-sm text-white/60 mb-1">Scope</div>
-                      <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.scope}</div>
-                    </div>
-                    <div className="bg-white/5 p-4 rounded border border-white/10">
-                      <Clock className="h-5 w-5 text-[#DFC178] mb-2" />
-                      <div className="text-sm text-white/60 mb-1">Response Window</div>
-                      <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.timeWindow}</div>
-                    </div>
-                    <div className="bg-white/5 p-4 rounded border border-white/10">
-                      <DollarSign className="h-5 w-5 text-[#C9A84C] mb-2" />
-                      <div className="text-sm text-white/60 mb-1">Financial Impact</div>
-                      <div className="text-lg font-bold text-white">{energyDemoData.crisis.impactMetrics.financialImpact}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            {/* Playbook */}
-            <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-[#C9A84C]">
-                  <ShieldAlert className="h-6 w-6 text-[#0A0F2E]" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <Badge className="bg-[#C9A84C] text-[#0A0F2E]" data-testid="badge-playbook-id">
-                      Playbook {energyDemoData.playbook.id}
-                    </Badge>
-                    <Badge className="bg-[#DFC178] text-[#0A0F2E]" data-testid="badge-playbook-domain">
-                      {energyDemoData.playbook.domain}
-                    </Badge>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {energyDemoData.playbook.name}
-                  </h3>
-                </div>
-              </div>
-              <p className="text-white/80 mb-4">
-                Pre-configured emergency response coordinating federal agencies (DoE, FEMA, DHS), 247 substations, 
-                47 critical hospitals, and 2,500 field personnel for rapid grid stabilization.
-              </p>
-              <div className="bg-white/5 p-4 rounded border border-white/10">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-white/60">Preparedness Score</span>
-                  <span className="text-2xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.playbook.preparednessScore}%</span>
-                </div>
-                <Progress value={energyDemoData.playbook.preparednessScore} className="mt-2 h-2 bg-white/10 [&>div]:bg-[#C9A84C]" />
-              </div>
-            </Card>
-
-            <div className="text-center space-y-4">
-              <Button
-                size="lg"
-                onClick={() => goToAct("detection")}
-                className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
-                data-testid="button-start-demo"
-              >
-                <Play className="h-5 w-5" />
-                Begin Crisis Simulation
-              </Button>
+        {step === 3 && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
               <div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => (window.location.href = "/industry-demos")}
-                  className="bg-transparent gap-2 text-white border-white/20 hover:bg-white/10"
-                  data-testid="button-back-to-hub"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  All Demos
-                </Button>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{SCENARIO.title}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
+                <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+              </div>
+            </div>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Status:</span>
+              {[['#D1D5DB','transparent','Queued'],[GOLD,'rgba(201,168,76,0.2)','Notified'],[TEAL,TEAL,'Acknowledged ✓']].map(([color,bg,label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, border: `2px solid ${color}`, background: bg }} />
+                  <span style={{ fontSize: 11, color: label === 'Acknowledged ✓' ? TEAL_LT : label === 'Notified' ? GOLD : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+              <WarRoomTasks elapsed={elapsed} />
+              <div style={{ background: NAVY, padding: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>{running ? '● LIVE FEED' : '○ FEED PAUSED'}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
+                  {liveEvents.map((e, i) => (
+                    <div key={i} style={{ fontSize: 11, color: e.type === 'acknowledged' ? '#6EE7B7' : 'rgba(255,255,255,0.8)', borderLeft: `2px solid ${e.type === 'acknowledged' ? TEAL : e.type === 'notified' ? GOLD : 'rgba(255,255,255,0.2)'}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>{e.text}
+                    </div>
+                  ))}
+                  {liveEvents.length === 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>}
+                </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* ACT 1: AI Detection */}
-        {currentAct === "detection" && (
-          <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-white/5 border-white/10 border-[#C9A84C]/50">
-              <Activity className="h-12 w-12 text-[#C9A84C] mb-4" />
-              <h2 className="text-3xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                AI Grid Monitoring Detects Cascading Failure Risk
+        {step === 4 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Response Coordinated in {fmtSecs(elapsed)}</em>
               </h2>
-              <p className="text-lg text-white/80 mb-4">
-                2:15 PM - Multiple AI intelligence systems detect heat wave triggering transformer stress across 247 substations. 
-                Pattern recognition identifies cascading failure risk at 96% confidence.
-              </p>
-              <div className="mt-6 p-4 bg-[#0A0F2E] border border-[#C9A84C] rounded">
-                <div className="flex items-center gap-3">
-                  <AlertTriangle className="h-6 w-6 text-[#C9A84C] animate-pulse" />
-                  <div>
-                    <p className="font-bold text-white">NERC Category 3 Emergency Criteria Met</p>
-                    <p className="text-sm text-white/60">
-                      Cascading failures imminent - Playbook #082 activation recommended
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <AIRadarSimulation
-              dataStreams={energyDemoData.aiDataStreams}
-              title="Grid Intelligence Signals"
-              playbookId="#082"
-              playbookName="Grid Emergency Response"
-              autoStart={true}
-            />
-
-            <div className="text-center mt-8">
-              <Button
-                size="lg"
-                onClick={() => goToAct("coordination")}
-                className="gap-2 bg-[#0A0F2E] text-white font-bold hover:bg-[#141B45] border border-white/20"
-                data-testid="button-activate-playbook"
-              >
-                <ShieldAlert className="h-5 w-5" />
-                Activate Playbook #082 - Grid Emergency
-              </Button>
-              <p className="text-sm text-[#DFC178] mt-2">
-                Trigger threshold reached - Immediate action required
-              </p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Cascade isolated, FERC notified, mutual aid activated, and critical facility prioritization underway — all within 12 minutes of confirmed grid failure.</p>
             </div>
-          </div>
-        )}
-
-        {/* ACT 2: Coordinated Response */}
-        {currentAct === "coordination" && (
-          <div className="space-y-8 animate-in fade-in duration-500">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <Zap className="h-12 w-12 text-[#C9A84C] mb-4" />
-              <h2 className="text-3xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                3-Hour Coordinated Response Across 2,500 Stakeholders
-              </h2>
-              <p className="text-lg text-white/80 mb-4">
-                Watch Readiness OS orchestrate grid stabilization across 247 substations, 47 hospitals, federal agencies, 
-                and 2,500 field personnel—executing load shedding and emergency repairs in parallel.
-              </p>
-              <div className="bg-white/5 p-4 rounded border border-white/10 grid md:grid-cols-3 gap-4">
-                <div>
-                  <div className="text-sm text-white/60 mb-1">Critical Facilities</div>
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>47 Hospitals</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+              {[
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. hours of coordination chaos', color: TEAL },
+                { label: 'Customers Protected', value: '8.2M', sub: 'restoration sequence activated', color: GOLD },
+                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'ops, regulatory, comms, legal', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
+              ].map(m => (
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
                 </div>
-                <div>
-                  <div className="text-sm text-white/60 mb-1">Substations Coordinated</div>
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>247 Sites</div>
-                </div>
-                <div>
-                  <div className="text-sm text-white/60 mb-1">Total Stakeholders</div>
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>2,500</div>
-                </div>
-              </div>
-            </Card>
-
-            <TwelveMinuteTimer
-              timelineEvents={energyDemoData.timelineEvents}
-              onComplete={() => setCoordinationComplete(true)}
-              title="3-Hour Grid Stabilization Timeline"
-              subtitle="From crisis detection to full grid recovery across 247 substations"
-              autoStart={true}
-            />
-
-            {coordinationComplete && (
-              <div className="space-y-6 animate-in fade-in duration-500">
-                <Card className="p-6 bg-white/5 border-white/10 border-[#2B8A6E]/50">
-                  <CheckCircle className="h-12 w-12 text-[#2B8A6E] mb-4 mx-auto" />
-                  <h3 className="text-2xl font-bold text-center mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    Grid Stabilized - Crisis Resolved
-                  </h3>
-                  <p className="text-center text-white/80 mb-6">
-                    All 247 substations stable • 47 hospitals uninterrupted • Zero casualties • 
-                    $450M infrastructure preserved through coordinated response
-                  </p>
-                </Card>
-
-                <div className="grid md:grid-cols-3 gap-4">
-                  <Card className="p-6 bg-white/5 border-white/10 border-[#C9A84C]/30">
-                    <div className="text-center">
-                      <Users className="h-8 w-8 text-[#C9A84C] mx-auto mb-2" />
-                      <div className="text-sm text-white/60 mb-1">Tier 1: Crisis Command</div>
-                      <div className="text-3xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.stakeholderTiers.tier1.count}</div>
-                      <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier1.description}</div>
-                    </div>
-                  </Card>
-                  <Card className="p-6 bg-white/5 border-white/10 border-[#C9A84C]/30">
-                    <div className="text-center">
-                      <Activity className="h-8 w-8 text-[#C9A84C] mx-auto mb-2" />
-                      <div className="text-sm text-white/60 mb-1">Tier 2: Field Execution</div>
-                      <div className="text-3xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.stakeholderTiers.tier2.count}</div>
-                      <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier2.description}</div>
-                    </div>
-                  </Card>
-                  <Card className="p-6 bg-white/5 border-white/10 border-[#C9A84C]/30">
-                    <div className="text-center">
-                      <ShieldAlert className="h-8 w-8 text-[#C9A84C] mx-auto mb-2" />
-                      <div className="text-sm text-white/60 mb-1">Tier 3: Network</div>
-                      <div className="text-3xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{energyDemoData.stakeholderTiers.tier3.count}+</div>
-                      <div className="text-xs text-white/40 mt-2">{energyDemoData.stakeholderTiers.tier3.description}</div>
-                    </div>
-                  </Card>
-                </div>
-
-                <div className="text-center">
-                  <Button
-                    size="lg"
-                    onClick={() => goToAct("outcome")}
-                    className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]"
-                    data-testid="button-view-outcome"
-                  >
-                    View ROI Outcome
-                  </Button>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* ACT 3: Outcome */}
-        {currentAct === "outcome" && (
-          <div className="space-y-8 animate-in fade-in duration-500 text-white">
-            <Card className="p-8 bg-white/5 border-white/10 border-[#2B8A6E]/50">
-              <div className="text-center">
-                <CheckCircle className="h-16 w-16 text-[#2B8A6E] mx-auto mb-4" />
-                <h2 className="text-4xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  $2.5B Economic Loss Prevented + Lives Saved
-                </h2>
-                <p className="text-xl text-[#2B8A6E]">
-                  Zero uncontrolled outages • All hospitals protected • Grid stabilized in 3 hours vs 3-5 day blackout
-                </p>
-              </div>
-            </Card>
-
-            <ROIComparison
-              traditional={{
-                label: energyDemoData.roiComparison.traditional.title,
-                duration: energyDemoData.roiComparison.traditional.timeline,
-                approach: energyDemoData.roiComparison.traditional.approach,
-                outcome: energyDemoData.roiComparison.traditional.outcome,
-                points: energyDemoData.roiComparison.traditional.points
-              }}
-              executionOS={{
-                label: energyDemoData.roiComparison.executionOS.title,
-                duration: energyDemoData.roiComparison.executionOS.timeline,
-                approach: energyDemoData.roiComparison.executionOS.approach,
-                outcome: energyDemoData.roiComparison.executionOS.outcome,
-                points: energyDemoData.roiComparison.executionOS.points
-              }}
-              bottomLine={energyDemoData.roiComparison.bottomLine}
-            />
-
-            <Card className="p-8 bg-white/5 border-[#C9A84C]/50 border-2">
-              <h3 className="text-2xl font-bold mb-4 text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-[#C9A84C] mb-2">❌ Traditional Coordination</h4>
-                  <ul className="text-sm text-white/60 space-y-1">
-                    <li>• 3-5 days of sequential phone trees and approvals</li>
-                    <li>• Grid cascades into uncontrolled blackout during delays</li>
-                    <li>• 8.2M customers without power for 36-72 hours</li>
-                    <li>• 12 preventable deaths from hospital backup failures</li>
-                    <li>• $2.5B total economic loss + regulatory consequences</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-[#2B8A6E] mb-2">✓ Readiness OS Coordination</h4>
-                  <ul className="text-sm text-white/60 space-y-1">
-                    <li>• 3-hour coordinated response across 2,500 stakeholders</li>
-                    <li>• Controlled load shedding prevents cascading failures</li>
-                    <li>• Zero uncontrolled outages - managed rotating schedule</li>
-                    <li>• All 47 hospitals protected throughout crisis</li>
-                    <li>• $2.5B saved + Federal commendation as model response</li>
-                  </ul>
-                </div>
-              </div>
-            </Card>
-
-            <div className="flex flex-col items-center gap-4">
-              <Button
-                size="lg"
-                onClick={() => (window.location.href = "/request-access")}
-                className="gap-2 bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10"
-                data-testid="button-request-access"
-              >
-                Join the Pilot Program
-              </Button>
-              <div className="flex gap-3">
-                <Button
-                  size="sm"
-                  onClick={() => goToAct("intro")}
-                  variant="outline"
-                  className="bg-transparent gap-2 text-white border-white/20 hover:bg-white/10"
-                  data-testid="button-replay-demo"
-                >
-                  Replay Demo
-                </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => (window.location.href = "/industry-demos")}
-                  className="bg-transparent gap-2 text-white border-white/20 hover:bg-white/10"
-                  data-testid="button-view-all-demos"
-                >
-                  View All Demos
-                </Button>
+              ))}
+            </div>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>The Strategic Insight</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{SCENARIO.insight}</p>
+            </div>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>"The response was ready before the trigger fired."</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
+            </div>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your grid — with your real mutual aid agreements, your real critical facility lists, and your real FERC relationships?</p>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request a Pilot →</a>
+                <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
               </div>
             </div>
           </div>

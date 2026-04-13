@@ -1,399 +1,321 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { ShoppingCart, Heart, AlertTriangle, CheckCircle, Clock, Users, DollarSign, ShieldAlert, ArrowLeft, Play, Store } from "lucide-react";
-import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
-import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
-import ROIComparison from "@/components/demo/ROIComparison";
-import DemoNavHeader from "@/components/demo/DemoNavHeader";
-import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
-import { retailDemoData } from "@shared/retail-demo-data";
+import { scrollToTop } from "@/components/ScrollToTop";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-type DemoAct = "intro" | "detection" | "coordination" | "outcome";
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const BORDER  = "#E8E4DC";
+const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
+
+const SCENARIO = {
+  title: "Food Safety Recall",
+  subtitle: "Salmonella contamination confirmed — 847 store locations, voluntary recall required",
+  domain: "Regulatory & Consumer Safety",
+  company: "Fortune 50 Retail Chain — $110B revenue · 847 locations · 1,900 food SKUs from affected vendor",
+  trigger: "The FDA has confirmed Salmonella Newport in a ready-to-eat deli product sold across all 847 store locations. 34 cases of illness have been reported across 9 states. The batch affects product sold in the last 11 days — still on shelves and in customer homes. FDA expects voluntary recall initiation within hours. Every minute of delay extends both customer risk and regulatory exposure.",
+  stats: [
+    { value: "847", label: "Store locations with affected product", sub: "Shelf removal required immediately" },
+    { value: "34", label: "Illness reports across 9 states", sub: "FDA notification window already open" },
+    { value: "$400M+", label: "Estimated recall and litigation exposure", sub: "Historical benchmark: similar events" },
+  ],
+  surviveScore: 41,
+  thriveScore: 93,
+  analysis: "Food safety recalls are the highest-stakes, most time-compressed crisis a retail chain faces. Without pre-staged removal protocols, customer communication templates, and pre-authorized FDA liaison relationships, companies spend critical hours in internal approval loops while product stays on shelves and customers stay uninformed. With Readiness OS, shelf removal authorization, FDA notification, and customer-facing communication deploy simultaneously — in the first 12 minutes.",
+  playbooks: ["Food Safety Recall Protocol", "FDA Voluntary Recall Execution", "Customer Safety Communication", "Supplier Halt and Audit", "Crisis Media Response — Food Safety"],
+  insight: "The biggest cost in a food safety recall is not the product recovery or the litigation — it is the delay between confirmation and action. Every hour of delay with product on shelves is an hour of additional exposure, additional illness risk, and additional regulatory liability. Readiness OS eliminates the mobilization delay entirely — shelf removal and FDA notification happen before anyone has time to escalate to a committee.",
+};
+
+const TASKS = [
+  { phase: "PRODUCT IDENTIFICATION", role: "VP Food Safety + Head of Merchandising", action: "Pull full contamination scope: exact SKUs, lot numbers, date codes, vendor batch IDs, geographic distribution of affected product across all 847 locations", time: "1:00", priority: "critical" },
+  { phase: "REMOVAL AUTHORIZATION", role: "CEO + General Counsel", action: "Authorize immediate shelf removal across all 847 locations — do NOT wait for FDA formal recall notice. Document authorization timestamp for regulatory and litigation record.", time: "1:30", priority: "critical" },
+  { phase: "REMOVAL AUTHORIZATION", role: "COO / SVP Store Operations", action: "Issue store-level removal protocol with exact product identifiers, signage instructions, and customer refund authorization. Confirm execution acknowledgment from all 847 stores.", time: "2:00", priority: "critical" },
+  { phase: "FDA NOTIFICATION", role: "General Counsel + VP Regulatory Affairs", action: "Notify FDA per 21 CFR 7.46 — file voluntary recall notification with complete product scope, contamination details, illness reports, and corrective action plan", time: "3:00", priority: "critical" },
+  { phase: "SUPPLIER ACTION", role: "Chief Procurement Officer", action: "Halt all shipments from affected supplier immediately. Initiate facility audit. Preserve all chain-of-custody documentation — receiving logs, delivery records, quality inspection reports", time: "4:00", priority: "high" },
+  { phase: "CUSTOMER COMMUNICATION", role: "Chief Communications Officer", action: "Deploy customer-facing recall notice: exact product identifiers, illness symptoms to watch for, return instructions, full refund process — all channels simultaneously", time: "5:00", priority: "critical" },
+  { phase: "MEDIA STATEMENT", role: "CEO + CMO", action: "CEO-level public statement: specific accountability, exact corrective actions taken, timeline commitment. Authentic over polished — media and regulators will scrutinize every word.", time: "6:00", priority: "high" },
+  { phase: "REGULATORY COOPERATION", role: "VP Regulatory Affairs", action: "Assign dedicated FDA liaison. Cooperate fully with inspection team — full document disclosure. Establish daily regulatory status call and maintain open communication channel.", time: "8:00", priority: "high" },
+  { phase: "SUPPLIER QUALIFICATION", role: "Chief Procurement Officer", action: "Initiate emergency alternate supplier qualification: alternative sources, accelerated product testing, board-approved diversification budget and timeline", time: "10:00", priority: "high" },
+  { phase: "BOARD BRIEFING", role: "CEO + General Counsel", action: "Brief board: full contamination scope, customer safety status, financial exposure estimate, regulatory timeline, litigation risk assessment, corrective action plan for governance approval", time: "12:00", priority: "high" },
+];
+
+function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
+function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = s % 60; return `${m}:${sec.toString().padStart(2, '0')}`; }
+function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
+  const t = TASKS[idx]; if (!t) return 'pending';
+  const d = parseTime(t.time);
+  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+}
+function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
+  return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
+}
+
+function WarRoomTasks({ elapsed }: { elapsed: number }) {
+  const phases = Array.from(new Set(TASKS.map(t => t.phase)));
+  return (
+    <div>
+      {phases.map(phase => (
+        <div key={phase} style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div style={{ height: 1, width: 24, background: NAVY }} />
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+            <div style={{ height: 1, flex: 1, background: NAVY }} />
+          </div>
+          {TASKS.filter(t => t.phase === phase).map((t, gi) => {
+            const idx = TASKS.indexOf(t); const st = getTaskStatus(idx, elapsed);
+            const isDone = st === 'done'; const isActive = st === 'active'; const isPending = st === 'pending';
+            return (
+              <div key={gi} style={{ display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8, background: isDone ? NAVY : '#fff', border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`, borderLeft: `4px solid ${isDone ? TEAL : isActive ? GOLD : '#D1D5DB'}`, transition: 'all 0.4s ease', opacity: isPending ? 0.65 : 1 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  {isDone ? <div style={{ width: 20, height: 20, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                    : isActive ? <div style={{ width: 20, height: 20, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'rfspluse 1.2s ease-in-out infinite' }} />
+                    : <div style={{ width: 20, height: 20, border: '2px solid #D1D5DB' }} />}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD }}>{t.role}</span>
+                    {isDone && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>}
+                    {isActive && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>}
+                    {isPending && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>}
+                  </div>
+                  <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
+                </div>
+                <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.45)' : '#6B7280', flexShrink: 0, marginTop: 2 }}>{t.time}</div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+      <style>{`@keyframes rfspluse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }`}</style>
+    </div>
+  );
+}
 
 export default function RetailFoodSafetyDemo() {
-  const [currentAct, setCurrentAct] = useState<DemoAct>("intro");
-  const [detectionProgress, setDetectionProgress] = useState(0);
-  const [coordinationComplete, setCoordinationComplete] = useState(false);
+  const [step, setStep] = useState<1|2|3|4>(1);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [liveEvents, setLiveEvents] = useState<{time:string;text:string;type:'notified'|'acknowledged'|'system'}[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>|null>(null);
+  const loggedN = useRef<Set<number>>(new Set());
+  const loggedA = useRef<Set<number>>(new Set());
+  const elapsedRef = useRef(0);
+  const TOTAL = 12 * 60;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const pct = Math.round((elapsed / TOTAL) * 100);
 
-  // Auto-progress detection
-  useEffect(() => {
-    if (currentAct === "detection" && detectionProgress < 100) {
-      const interval = setInterval(() => {
-        setDetectionProgress(prev => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            return 100;
-          }
-          return prev + 2;
-        });
-      }, 100);
-      return () => clearInterval(interval);
-    }
-  }, [currentAct, detectionProgress]);
+  const tick = useCallback(() => {
+    elapsedRef.current += 1; const e = elapsedRef.current; setElapsed(e);
+    const evts: typeof liveEvents = [];
+    TASKS.forEach((t, i) => {
+      const d = parseTime(t.time);
+      if (e >= d && !loggedN.current.has(i)) { loggedN.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert deployed`, type: 'notified' }); }
+      if (e >= d + 30 && !loggedA.current.has(i)) { loggedA.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — confirmed in progress`, type: 'acknowledged' }); }
+    });
+    if (evts.length > 0) setLiveEvents(prev => [...evts, ...prev].slice(0, 24));
+    if (e >= TOTAL) { clearInterval(timerRef.current!); setRunning(false); setTimeout(() => { setStep(4); scrollToTop(); }, 1200); }
+  }, []);
 
-  const resetDemo = () => {
-    setCurrentAct("intro");
-    setDetectionProgress(0);
-    setCoordinationComplete(false);
+  const startWarRoom = () => {
+    loggedN.current = new Set(); loggedA.current = new Set(); elapsedRef.current = 0; setElapsed(0); setRunning(true);
+    setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(tick, 1000);
   };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
+
+  const Nav = () => (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
+      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+        {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
+          <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {i > 0 && <div style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
+            <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+      <Link href="/request-access"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button></Link>
+    </div>
+  );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0A0F2E" }}>
-      <DemoNavHeader title="Retail Food Safety Demo" showBackButton={true} />
+    <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <Nav />
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
-      {/* Act Navigation */}
-      <div className="border-b border-white/10 bg-white/5 pt-20">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex justify-between items-center">
-            {[
-              { id: "intro", label: "1. Introduction", icon: Play },
-              { id: "detection", label: "2. AI Detection @ 88%", icon: ShieldAlert },
-              { id: "coordination", label: "3. 1-Hour Response", icon: Clock },
-              { id: "outcome", label: "4. Lives Saved", icon: Heart }
-            ].map((act) => (
-              <button
-                key={act.id}
-                onClick={() => setCurrentAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 transition-colors border ${
-                  currentAct === act.id
-                    ? "bg-[#0A0F2E] text-[#C9A84C] border-[#C9A84C]"
-                    : "text-white/60 border-transparent hover:bg-white/10"
-                }`}
-                data-testid={`button-act-${act.id}`}
-              >
-                <act.icon className="w-4 h-4" />
-                <span className="text-sm font-medium">{act.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <ExecutionStageGuide variant="banner" />
-      <div className="container mx-auto px-6 py-12 text-white">
-        {/* ACT 1: INTRODUCTION */}
-        {currentAct === "intro" && (
-          <div className="max-w-5xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <div className="text-center mb-8">
-                <Store className="w-16 h-16 text-[#C9A84C] mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-[#C9A84C] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{retailDemoData.crisis.title}</h2>
-                <p className="text-xl text-[#DFC178]">{retailDemoData.crisis.subtitle}</p>
+        {step === 1 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{SCENARIO.domain}</span>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-white/5 border border-white/10">
-                  <h3 className="font-bold text-white mb-4 flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    <AlertTriangle className="w-5 h-5 text-[#C9A84C]" />
-                    The Crisis
-                  </h3>
-                  <div className="space-y-3 text-sm">
-                    <div>
-                      <div className="text-white/60 mb-1">Organization</div>
-                      <div className="text-white font-semibold">{retailDemoData.organization.name}</div>
-                    </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Contaminated Product</div>
-                      <div className="text-white">Bagged Lettuce (Batch #47382)</div>
-                    </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Detection</div>
-                      <div className="text-white">Salmonella - exceeds FDA threshold</div>
-                    </div>
-                    <div>
-                      <div className="text-white/60 mb-1">Scale</div>
-                      <div className="text-white font-bold text-[#DFC178]">847 stores • 23 states • 12,847 customers</div>
-                    </div>
+              <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>{SCENARIO.title}</h1>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 600, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
+            </div>
+            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — CRITICAL</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
+              {SCENARIO.stats.map(s => (
+                <div key={s.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>{s.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 20, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Staged War Room — {TASKS.length} Tasks Ready</span>
+              </div>
+              {TASKS.map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, padding: '12px 16px', marginBottom: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${t.priority === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.4)'}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, minWidth: 40, flexShrink: 0 }}>{t.time}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.priority === 'critical' ? '#f87171' : 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginBottom: 3 }}>{t.role}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{t.action}</div>
                   </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0, alignSelf: 'flex-start', paddingTop: 4 }}>{t.phase}</div>
                 </div>
-
-                <div className="p-6 bg-white/5 border border-white/10">
-                  <h3 className="font-bold text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Traditional Recall Timeline</h3>
-                  <ul className="space-y-2 text-sm text-white/60">
-                    <li>• Week 1: QA detects contamination, internal investigation</li>
-                    <li>• Week 1 End: Quietly notify wholesalers only</li>
-                    <li className="text-[#C9A84C] font-semibold">• During gap: 50+ customers consume contaminated lettuce</li>
-                    <li className="text-[#C9A84C] font-bold">• During gap: Hospitalizations begin</li>
-                    <li>• Week 2: Public recall finally announced</li>
-                    <li className="text-white/40">• Month 1-2: $200M in lawsuits, FDA warning letter</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-white/5 border border-[#C9A84C]/50 p-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <ShieldAlert className="w-8 h-8 text-[#C9A84C] flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-bold text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Detection-Execution Gap</h3>
-                    <p className="text-white/80 leading-relaxed">
-                      Walmart's AI supply chain saved $20M+ in transportation costs. Their QA testing detected the salmonella 
-                      immediately. But coordinating 5,000 stakeholders across 847 stores, 12,847 customers, FDA, CDC, and 
-                      23 state health departments took <strong>7 days</strong>. In that gap, 50+ people were hospitalized. 
-                      This demo shows how Readiness OS compresses that 7-day coordination into <strong>1 hour</strong>, ensuring 
-                      zero customers consume contaminated product after detection.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <div className="p-4 bg-white/5 border border-white/10 text-center">
-                  <Users className="w-8 h-8 text-[#C9A84C] mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>5,000+</div>
-                  <div className="text-sm text-white/40">Stakeholders Coordinated</div>
-                </div>
-                <div className="p-4 bg-white/5 border border-white/10 text-center">
-                  <Clock className="w-8 h-8 text-[#DFC178] mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>1 Hour</div>
-                  <div className="text-sm text-white/40">Full Coordination</div>
-                </div>
-                <div className="p-4 bg-white/5 border border-white/10 text-center">
-                  <DollarSign className="w-8 h-8 text-[#2B8A6E] mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>$240M+</div>
-                  <div className="text-sm text-white/40">Value Preserved</div>
-                </div>
-              </div>
-
-              <div className="text-center">
-                <Button
-                  size="lg"
-                  onClick={() => setCurrentAct("detection")}
-                  className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
-                  data-testid="button-start-demo"
-                >
-                  Begin Crisis Simulation
-                  <Play className="w-5 h-5 ml-2" />
-                </Button>
-              </div>
-            </Card>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(2); scrollToTop(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>View Execution Brief →</button>
+            </div>
           </div>
         )}
 
-        {/* ACT 2: AI DETECTION */}
-        {currentAct === "detection" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                <ShieldAlert className="w-8 h-8 text-[#C9A84C]" />
-                AI Quality Control Detects Food Safety Crisis
+        {step === 2 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{SCENARIO.title}</h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{SCENARIO.subtitle}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 40 }}>
+              <div style={{ padding: '20px 24px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderTop: '3px solid #C0392B' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 8 }}>Without Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.surviveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — product on shelves during approval delays</div>
+              </div>
+              <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.thriveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — 12-minute coordinated recall response</div>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{SCENARIO.analysis}</p>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks Activating</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {SCENARIO.playbooks.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>)}
+                </div>
+              </div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{SCENARIO.title}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
+                <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+              </div>
+            </div>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Status:</span>
+              {[['#D1D5DB','transparent','Queued'],[GOLD,'rgba(201,168,76,0.2)','Notified'],[TEAL,TEAL,'Acknowledged ✓']].map(([color,bg,label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, border: `2px solid ${color}`, background: bg }} />
+                  <span style={{ fontSize: 11, color: label === 'Acknowledged ✓' ? TEAL_LT : label === 'Notified' ? GOLD : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+              <WarRoomTasks elapsed={elapsed} />
+              <div style={{ background: NAVY, padding: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>{running ? '● LIVE FEED' : '○ FEED PAUSED'}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
+                  {liveEvents.map((e, i) => (
+                    <div key={i} style={{ fontSize: 11, color: e.type === 'acknowledged' ? '#6EE7B7' : 'rgba(255,255,255,0.8)', borderLeft: `2px solid ${e.type === 'acknowledged' ? TEAL : e.type === 'notified' ? GOLD : 'rgba(255,255,255,0.2)'}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>{e.text}
+                    </div>
+                  ))}
+                  {liveEvents.length === 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Recall Executed in {fmtSecs(elapsed)}</em>
               </h2>
-
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-white/60">AI Confidence Level</span>
-                  <span className="text-2xl font-bold text-[#C9A84C]">{detectionProgress}%</span>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Shelf removal authorized across all 847 locations, FDA notified, and customer safety communication deployed — simultaneously, in under 12 minutes.</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+              {[
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. hours of approval loops', color: TEAL },
+                { label: 'Stores Cleared', value: '847', sub: 'simultaneous removal authorization', color: GOLD },
+                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'ops, legal, regulatory, comms', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
+              ].map(m => (
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
                 </div>
-                <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
-                {detectionProgress >= 88 && (
-                  <div className="mt-4 p-4 bg-[#0A0F2E] border border-[#C9A84C]">
-                    <p className="text-[#C9A84C] font-semibold">
-                      ⚠️ ALERT: Class I recall criteria detected - Food contamination + wide distribution = immediate action required
-                    </p>
-                  </div>
-                )}
+              ))}
+            </div>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>The Strategic Insight</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{SCENARIO.insight}</p>
+            </div>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>"The response was ready before the trigger fired."</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
+            </div>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your organization — with your real store network, your real regulatory relationships, and your real playbooks?</p>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request a Pilot →</a>
+                <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
               </div>
-
-              <AIRadarSimulation
-                dataStreams={retailDemoData.aiDataStreams}
-                title="Food Safety Intelligence Signals"
-                playbookId="#095"
-                playbookName="Food Product Recall (Class I)"
-                autoStart={true}
-              />
-
-              {detectionProgress >= 88 && (
-                <div className="mt-8 text-center">
-                  <Button
-                    size="lg"
-                    onClick={() => setCurrentAct("coordination")}
-                    className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
-                    data-testid="button-activate-playbook"
-                  >
-                    Activate Playbook #095 - Food Recall
-                    <CheckCircle className="w-5 h-5 ml-2" />
-                  </Button>
-                </div>
-              )}
-            </Card>
-          </div>
-        )}
-
-        {/* ACT 3: COORDINATED RESPONSE */}
-        {currentAct === "coordination" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                <Clock className="w-8 h-8 text-[#DFC178]" />
-                1-Hour Coordinated Response Across 5,000 Stakeholders
-              </h2>
-
-              <TwelveMinuteTimer
-                timelineEvents={retailDemoData.timelineEvents}
-                onComplete={() => setCoordinationComplete(true)}
-                title="1-Hour Crisis Response Timeline"
-                subtitle="From detection to full coordination across 5,000 stakeholders"
-                autoStart={true}
-              />
-
-              {coordinationComplete && (
-                <div className="mt-8">
-                  <div className="grid md:grid-cols-3 gap-6 mb-8">
-                    <Card className="p-6 bg-white/5 border-white/10">
-                      <div className="text-center">
-                        <Users className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" />
-                        <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                          {retailDemoData.stakeholderTiers.tier1.count}
-                        </div>
-                        <div className="text-sm text-[#DFC178] mb-4">{retailDemoData.stakeholderTiers.tier1.title}</div>
-                        <ul className="text-xs text-white/60 space-y-1 text-left">
-                          <li>• CEO, COO, CFO</li>
-                          <li>• General Counsel</li>
-                          <li>• FDA Liaison, CDC</li>
-                          <li>• Crisis PR, Insurance</li>
-                        </ul>
-                      </div>
-                    </Card>
-
-                    <Card className="p-6 bg-white/5 border-white/10">
-                      <div className="text-center">
-                        <Users className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" />
-                        <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                          {retailDemoData.stakeholderTiers.tier2.count}
-                        </div>
-                        <div className="text-sm text-[#C9A84C] mb-4">{retailDemoData.stakeholderTiers.tier2.title}</div>
-                        <ul className="text-xs text-white/60 space-y-1 text-left">
-                          <li>• 847 store managers</li>
-                          <li>• Supply chain team</li>
-                          <li>• Customer care (50)</li>
-                          <li>• Communications (15)</li>
-                        </ul>
-                      </div>
-                    </Card>
-
-                    <Card className="p-6 bg-white/5 border-white/10">
-                      <div className="text-center">
-                        <Users className="w-10 h-10 text-[#2B8A6E] mx-auto mb-3" />
-                        <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                          {retailDemoData.stakeholderTiers.tier3.count}+
-                        </div>
-                        <div className="text-sm text-[#C9A84C] mb-4">{retailDemoData.stakeholderTiers.tier3.title}</div>
-                        <ul className="text-xs text-white/60 space-y-1 text-left">
-                          <li>• 12,847 customers</li>
-                          <li>• All store employees</li>
-                          <li>• Board members</li>
-                          <li>• Media, investors</li>
-                        </ul>
-                      </div>
-                    </Card>
-                  </div>
-
-                  <div className="text-center">
-                    <Button
-                      size="lg"
-                      onClick={() => setCurrentAct("outcome")}
-                      className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
-                      data-testid="button-view-outcome"
-                    >
-                      View ROI Outcome
-                      <DollarSign className="w-5 h-5 ml-2" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </Card>
-          </div>
-        )}
-
-        {/* ACT 4: OUTCOME */}
-        {currentAct === "outcome" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10 border-[#2B8A6E]/50">
-              <div className="text-center mb-8">
-                <Heart className="w-16 h-16 text-[#2B8A6E] mx-auto mb-4" />
-                <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Lives Saved Through Rapid Coordination</h2>
-                <p className="text-xl text-[#2B8A6E]">
-                  Zero customers consume contaminated lettuce after 2:00 PM detection
-                </p>
-              </div>
-
-              <ROIComparison
-                traditional={{
-                  label: retailDemoData.roiComparison.traditional.title,
-                  duration: retailDemoData.roiComparison.traditional.timeline,
-                  approach: retailDemoData.roiComparison.traditional.approach,
-                  outcome: retailDemoData.roiComparison.traditional.outcome,
-                  points: retailDemoData.roiComparison.traditional.points,
-                  details: retailDemoData.roiComparison.traditional.details
-                }}
-                executionOS={{
-                  label: retailDemoData.roiComparison.executionOS.title,
-                  duration: retailDemoData.roiComparison.executionOS.timeline,
-                  approach: retailDemoData.roiComparison.executionOS.approach,
-                  outcome: retailDemoData.roiComparison.executionOS.outcome,
-                  points: retailDemoData.roiComparison.executionOS.points,
-                  details: retailDemoData.roiComparison.executionOS.details
-                }}
-                bottomLine={{
-                  value: "$240M+ Value Preserved",
-                  metric: "Lives saved + lawsuits prevented + brand trust reinforced"
-                }}
-              />
-
-              <div className="mt-8 p-6 bg-[#0A0F2E] border border-[#C9A84C]">
-                <h3 className="font-bold text-white mb-4 text-center text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>The Readiness OS Difference</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold text-[#C9A84C] mb-3">Traditional Crisis Response</h4>
-                    <ul className="space-y-2 text-sm text-white/60">
-                      <li>• 7 days of email chains and staged notifications</li>
-                      <li>• 50+ customers hospitalized</li>
-                      <li>• $200M in lawsuit settlements</li>
-                      <li>• Congressional hearing, FDA warning letter</li>
-                      <li>• "Walmart knew for a week" - brand damage</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-[#2B8A6E] mb-3">M Coordinated Response</h4>
-                    <ul className="space-y-2 text-sm text-white/60">
-                      <li>• 1-hour orchestrated execution across 5,000 stakeholders</li>
-                      <li>• 0 hospitalizations after detection</li>
-                      <li>• $5M total cost (only pre-detection cases)</li>
-                      <li>• FDA commendation for "exemplary response"</li>
-                      <li>• "Industry leader in food safety" - trust reinforced</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 flex flex-col items-center gap-4">
-                <Link href="/request-access">
-                  <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10" data-testid="button-request-access">
-                    Join the Pilot Program
-                  </Button>
-                </Link>
-                <div className="flex gap-3">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={resetDemo}
-                    className="bg-transparent text-white border-white/20 hover:bg-white/10"
-                    data-testid="button-replay-demo"
-                  >
-                    Replay Demo
-                  </Button>
-                  <Link href="/industry-demos">
-                    <Button size="sm" variant="outline" className="bg-transparent text-white border-white/20 hover:bg-white/10" data-testid="button-view-all-demos">
-                      View All Demos
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </Card>
+            </div>
           </div>
         )}
       </div>

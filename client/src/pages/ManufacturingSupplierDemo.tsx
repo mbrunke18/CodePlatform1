@@ -1,402 +1,320 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Factory, Cpu, AlertTriangle, CheckCircle, Clock, TrendingUp, DollarSign, ShieldAlert, ArrowLeft, Play, ArrowRight, Layers, Globe, Users } from "lucide-react";
-import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
-import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
-import ROIComparison from "@/components/demo/ROIComparison";
-import DemoNavHeader from "@/components/demo/DemoNavHeader";
-import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
-import { manufacturingDemoData } from "@shared/manufacturing-demo-data";
+import { scrollToTop } from "@/components/ScrollToTop";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
-const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const BORDER  = "#E8E4DC";
+const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
 
-type DemoAct = "intro" | "detection" | "coordination" | "outcome";
+const SCENARIO = {
+  title: "Critical Supplier Failure",
+  subtitle: "Primary semiconductor supplier files bankruptcy — 14-day production halt risk",
+  domain: "Supply Chain & Operations",
+  company: "Fortune 500 Technology Hardware Manufacturer — $42B revenue · 340 enterprise customers · 18 production facilities",
+  trigger: "Your primary semiconductor supplier for three critical server SKUs has filed Chapter 11. You have 14 days of buffer stock. After that, production halts on $2.1B of committed customer orders. Your top 10 enterprise customers — including federal government contracts — have contractual delivery clauses with financial penalties. Competitors are already calling your accounts.",
+  stats: [
+    { value: "14 days", label: "Buffer stock before production halt", sub: "$2.1B of committed orders at risk" },
+    { value: "68%", label: "Single-source dependency on failed supplier", sub: "No pre-qualified alternate in place" },
+    { value: "$180M", label: "Contractual penalty exposure", sub: "If delivery SLAs missed beyond 30 days" },
+  ],
+  surviveScore: 38,
+  thriveScore: 89,
+  analysis: "Single-source supplier failure is the highest-probability, highest-impact supply chain risk for technology manufacturers — and the least prepared for. Without pre-staged alternate supplier relationships and pre-authorized emergency procurement limits, companies spend 3–4 weeks in approval cycles before the first alternate PO ships. With Readiness OS, emergency procurement, customer communication, and production resequencing deploy within 12 minutes of confirmation.",
+  playbooks: ["Critical Supplier Failure Response", "Emergency Procurement Protocol", "Customer Impact Communication", "Production Continuity Planning", "Business Interruption Insurance Filing"],
+  insight: "The organizations that recover fastest from supplier failure are not the ones with the best procurement teams — they are the ones whose procurement decisions were already made before the crisis. Pre-staged alternate supplier relationships, pre-authorized emergency PO limits, and pre-built customer communication templates are the difference between 12-minute response and a 30-day scramble.",
+};
 
-const supplyChainStats = [
-  { stat: "94%", label: "Fortune 500 manufacturers disrupted by supply chain failure in the last 2 years", source: "McKinsey Global Institute, 2024" },
-  { stat: "$4.2M", label: "Average cost per hour of automotive production downtime", source: "Anderson Economic Group" },
-  { stat: "8–16 wks", label: "Time to qualify an alternative supplier without pre-vetting", source: "Deloitte Supply Chain Report" },
+const TASKS = [
+  { phase: "EXPOSURE MAPPING", role: "COO", action: "Pull full supplier exposure: affected SKUs by part number, % of production at risk, buffer stock days remaining by product line, customer commitments at risk by revenue", time: "1:30", priority: "critical" },
+  { phase: "EXPOSURE MAPPING", role: "CFO", action: "Run revenue-at-risk model: production days affected × daily revenue by SKU × margin. Calculate exact date of first customer impact if no alternate supply is secured", time: "2:00", priority: "critical" },
+  { phase: "ALTERNATE SUPPLY", role: "Chief Procurement Officer", action: "Issue emergency POs to 3 pre-vetted alternate suppliers simultaneously — pre-negotiated emergency rates and lead times activate immediately without standard approval cycle", time: "3:00", priority: "critical" },
+  { phase: "ALTERNATE SUPPLY", role: "Head of Logistics", action: "Reroute all inbound freight immediately. Authorize air freight for critical components where margin supports cost delta — document all premium freight costs for insurance claim", time: "4:30", priority: "high" },
+  { phase: "CUSTOMER COMMUNICATION", role: "CEO / Chief Revenue Officer", action: "Personal outreach to top 10 enterprise customers — specific recovery date, named executive contact, written commitment letter. No generic notifications for accounts with penalty clauses.", time: "6:00", priority: "critical" },
+  { phase: "CUSTOMER COMMUNICATION", role: "Chief Revenue Officer", action: "Prepare full customer impact brief: which orders affected, revised commit dates, recovery plan, executive contact assigned. Legal review required before distribution.", time: "7:30", priority: "high" },
+  { phase: "PRODUCTION CONTINUITY", role: "COO", action: "Shift production mix to maximize output from available components — prioritize highest-margin and contractually-penalized orders first, document resequencing rationale", time: "9:00", priority: "high" },
+  { phase: "LEGAL + INSURANCE", role: "General Counsel", action: "File business interruption insurance claim immediately. Document all incremental costs: expediting fees, premium freight, overtime, and accruing customer penalties", time: "10:30", priority: "high" },
+  { phase: "STRATEGIC RESILIENCE", role: "Chief Procurement Officer", action: "Initiate dual-source qualification for all single-source critical components. Present board-level supply chain resilience roadmap with investment requirement and timeline", time: "12:00", priority: "high" },
 ];
 
-const jitParadox = [
-  { label: "JIT annual savings", value: "$220B", detail: "Eliminated from global manufacturing through efficiency gains", positive: true },
-  { label: "Annual supply disruption losses", value: "$455B", detail: "Created by the single-source dependencies JIT requires", positive: false },
-];
+function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
+function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = s % 60; return `${m}:${sec.toString().padStart(2, '0')}`; }
+function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
+  const t = TASKS[idx]; if (!t) return 'pending';
+  const d = parseTime(t.time);
+  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+}
+function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
+  return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
+}
 
-const preVettedSupplierNetwork = [
-  { tier: "Primary", supplier: "TSMC — Primary semiconductor supplier", status: "Active", lead: "Standard" },
-  { tier: "Alternative A", supplier: "Samsung Semiconductor — Pre-vetted, pre-qualified", status: "Ready", lead: "2 days" },
-  { tier: "Alternative B", supplier: "GlobalFoundries — Pre-negotiated emergency pricing", status: "Ready", lead: "4 days" },
-  { tier: "Alternative C", supplier: "SK Hynix — Pre-approved qualification package", status: "Standby", lead: "7 days" },
-];
-
-const coordinationCascade = [
-  { step: "0:00", action: "AI supply chain monitoring detects 50,000 chip shortage at TSMC", stakeholder: "Supply Chain Intelligence System", highlight: true },
-  { step: "1:00", action: "CEO, COO, CPO, CFO, Head of Supply Chain notified with full context", stakeholder: "Executive Team (5)" },
-  { step: "2:30", action: "Alternative supplier Samsung contacted — pre-negotiated terms invoked", stakeholder: "Procurement (8)" },
-  { step: "4:00", action: "Pre-approved quality specs sent to Samsung — qualification bypass activated", stakeholder: "Quality Engineering (12)" },
-  { step: "6:00", action: "10 assembly plants notified with production adjustment schedules", stakeholder: "Operations Managers (10 plants)" },
-  { step: "8:00", action: "Dealer network briefed — delivery adjustment communications staged", stakeholder: "Commercial Operations (847 dealers)" },
-  { step: "10:00", action: "Customer communications prepared and queued for approval", stakeholder: "Customer Relations (10,000+ customers)" },
-  { step: "12:00", action: "Full response operational — 2-day production pause confirmed vs 30-day halt", stakeholder: "All 158 Stakeholders Aligned", complete: true },
-];
+function WarRoomTasks({ elapsed }: { elapsed: number }) {
+  const phases = Array.from(new Set(TASKS.map(t => t.phase)));
+  return (
+    <div>
+      {phases.map(phase => (
+        <div key={phase} style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div style={{ height: 1, width: 24, background: NAVY }} />
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+            <div style={{ height: 1, flex: 1, background: NAVY }} />
+          </div>
+          {TASKS.filter(t => t.phase === phase).map((t, gi) => {
+            const idx = TASKS.indexOf(t); const st = getTaskStatus(idx, elapsed);
+            const isDone = st === 'done'; const isActive = st === 'active'; const isPending = st === 'pending';
+            return (
+              <div key={gi} style={{ display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8, background: isDone ? NAVY : '#fff', border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`, borderLeft: `4px solid ${isDone ? TEAL : isActive ? GOLD : '#D1D5DB'}`, transition: 'all 0.4s ease', opacity: isPending ? 0.65 : 1 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  {isDone ? <div style={{ width: 20, height: 20, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                    : isActive ? <div style={{ width: 20, height: 20, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'wrpulse 1.2s ease-in-out infinite' }} />
+                    : <div style={{ width: 20, height: 20, border: '2px solid #D1D5DB' }} />}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD }}>{t.role}</span>
+                    {isDone && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>}
+                    {isActive && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>}
+                    {isPending && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>}
+                  </div>
+                  <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
+                </div>
+                <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.45)' : '#6B7280', flexShrink: 0, marginTop: 2 }}>{t.time}</div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+      <style>{`@keyframes wrpulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }`}</style>
+    </div>
+  );
+}
 
 export default function ManufacturingSupplierDemo() {
-  const [currentAct, setCurrentAct] = useState<DemoAct>("intro");
-  const [detectionProgress, setDetectionProgress] = useState(0);
-  const [coordinationComplete, setCoordinationComplete] = useState(false);
+  const [step, setStep] = useState<1|2|3|4>(1);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [liveEvents, setLiveEvents] = useState<{time:string;text:string;type:'notified'|'acknowledged'|'system'}[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>|null>(null);
+  const loggedN = useRef<Set<number>>(new Set());
+  const loggedA = useRef<Set<number>>(new Set());
+  const elapsedRef = useRef(0);
+  const TOTAL = 12 * 60;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const pct = Math.round((elapsed / TOTAL) * 100);
 
-  useEffect(() => {
-    if (currentAct === "detection" && detectionProgress < 100) {
-      const interval = setInterval(() => {
-        setDetectionProgress(prev => {
-          if (prev >= 100) { clearInterval(interval); return 100; }
-          return prev + 2;
-        });
-      }, 100);
-      return () => clearInterval(interval);
-    }
-  }, [currentAct, detectionProgress]);
+  const tick = useCallback(() => {
+    elapsedRef.current += 1; const e = elapsedRef.current; setElapsed(e);
+    const evts: typeof liveEvents = [];
+    TASKS.forEach((t, i) => {
+      const d = parseTime(t.time);
+      if (e >= d && !loggedN.current.has(i)) { loggedN.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert deployed`, type: 'notified' }); }
+      if (e >= d + 30 && !loggedA.current.has(i)) { loggedA.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — confirmed in progress`, type: 'acknowledged' }); }
+    });
+    if (evts.length > 0) setLiveEvents(prev => [...evts, ...prev].slice(0, 24));
+    if (e >= TOTAL) { clearInterval(timerRef.current!); setRunning(false); setTimeout(() => { setStep(4); scrollToTop(); }, 1200); }
+  }, []);
 
-  const resetDemo = () => {
-    setCurrentAct("intro");
-    setDetectionProgress(0);
-    setCoordinationComplete(false);
+  const startWarRoom = () => {
+    loggedN.current = new Set(); loggedA.current = new Set(); elapsedRef.current = 0; setElapsed(0); setRunning(true);
+    setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(tick, 1000);
   };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
+
+  const Nav = () => (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
+      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+        {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
+          <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {i > 0 && <div style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
+            <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+      <Link href="/request-access"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button></Link>
+    </div>
+  );
 
   return (
-    <div style={{ minHeight: "100vh", background: NAVY }}>
-      <DemoNavHeader title="Manufacturing Supply Chain Crisis — Supplier Failure Response" showBackButton={true} />
+    <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <Nav />
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
-      {/* Act Navigation */}
-      <div className="border-b border-white/10 bg-white/5 pt-20">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex justify-between items-center">
-            {[
-              { id: "intro", label: "1. Scenario", icon: Play },
-              { id: "detection", label: "2. AI Detection @ 89%", icon: ShieldAlert },
-              { id: "coordination", label: "3. 4-Hour Response", icon: Clock },
-              { id: "outcome", label: "4. $450M Saved", icon: DollarSign }
-            ].map((act) => (
-              <button
-                key={act.id}
-                onClick={() => setCurrentAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 transition-colors border ${currentAct === act.id ? "text-[#C9A84C] border-[#C9A84C] bg-white/5" : "text-white/50 border-transparent hover:bg-white/5"}`}
-                data-testid={`button-act-${act.id}`}
-              >
-                <act.icon className="w-4 h-4" />
-                <span className="text-sm font-semibold">{act.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <ExecutionStageGuide variant="banner" />
-      <div className="container mx-auto px-6 py-12 text-white">
-
-        {/* ── INTRO ACT ──────────────────────────────────── */}
-        {currentAct === "intro" && (
-          <div className="max-w-5xl mx-auto space-y-8">
-
-            {/* Header */}
-            <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 border border-[#C9A84C]/40 text-[10px] font-bold tracking-widest uppercase" style={{ color: GOLD, background: "rgba(201,168,76,0.08)" }}>
-                Industrial Manufacturing · Supply Chain Domain
+        {step === 1 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{SCENARIO.domain}</span>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
               </div>
-              <h1 style={{ ...CG, fontSize: "clamp(26px,4vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 10 }}>
-                {manufacturingDemoData.crisis.title}
-              </h1>
-              <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 17 }}>
-                {manufacturingDemoData.crisis.subtitle}
-              </p>
+              <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>{SCENARIO.title}</h1>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 600, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
             </div>
-
-            {/* Industry Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {supplyChainStats.map(({ stat, label, source }) => (
-                <div key={stat} className="border border-white/10 p-5 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
-                  <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{stat}</div>
-                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", marginBottom: 4 }}>{label}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", fontStyle: "italic" }}>{source}</div>
+            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — CRITICAL</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
+              {SCENARIO.stats.map(s => (
+                <div key={s.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>{s.sub}</div>
                 </div>
               ))}
             </div>
-
-            {/* The JIT Paradox */}
-            <div className="border border-[#C9A84C]/40 p-6" style={{ background: "rgba(201,168,76,0.05)" }}>
-              <div className="flex items-start gap-4">
-                <AlertTriangle className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: GOLD }} />
-                <div>
-                  <h3 style={{ ...CG, fontSize: 19, fontWeight: 700, color: "#fff", marginBottom: 8 }}>The Just-In-Time Paradox</h3>
-                  <p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.75, fontSize: 14, marginBottom: 14 }}>
-                    Toyota pioneered Just-In-Time manufacturing to eliminate waste — removing buffer inventory, reducing lead times, and maximizing efficiency. It works brilliantly in stable conditions. But JIT creates a structural fragility: single-source dependencies. When a critical supplier fails, there is no buffer. The entire production chain stops — and the traditional coordination model (emergency meetings, supplier qualification cycles, contractual negotiations) was never designed to move at JIT speed.
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {jitParadox.map(({ label, value, detail, positive }) => (
-                      <div key={label} className="p-4 border border-white/10" style={{ background: "rgba(255,255,255,0.03)" }}>
-                        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>{label}</div>
-                        <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: positive ? TEAL : "#EF4444", marginBottom: 4 }}>{value}</div>
-                        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{detail}</div>
-                      </div>
-                    ))}
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 20, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Staged War Room — {TASKS.length} Tasks Ready</span>
+              </div>
+              {TASKS.map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, padding: '12px 16px', marginBottom: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${t.priority === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.4)'}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, minWidth: 40, flexShrink: 0 }}>{t.time}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.priority === 'critical' ? '#f87171' : 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginBottom: 3 }}>{t.role}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{t.action}</div>
                   </div>
+                  <div style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0, alignSelf: 'flex-start', paddingTop: 4 }}>{t.phase}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(2); scrollToTop(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>View Execution Brief →</button>
+            </div>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{SCENARIO.title}</h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{SCENARIO.subtitle}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 40 }}>
+              <div style={{ padding: '20px 24px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderTop: '3px solid #C0392B' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 8 }}>Without Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.surviveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — weeks in procurement approval cycles</div>
+              </div>
+              <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.thriveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — 12-minute supply continuity response</div>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{SCENARIO.analysis}</p>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks Activating</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {SCENARIO.playbooks.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>)}
                 </div>
               </div>
             </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
+            </div>
+          </div>
+        )}
 
-            {/* The Crisis */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 bg-white/5 border border-white/10">
-                <h3 style={{ ...CG, fontWeight: 700, color: "#fff", fontSize: 17, marginBottom: 16 }} className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5" style={{ color: GOLD }} />
-                  The Crisis
-                </h3>
-                <div className="space-y-3 text-sm">
-                  {[
-                    { label: "Organization", value: "Toyota Motor Corporation" },
-                    { label: "Component", value: "Critical Semiconductor Chips" },
-                    { label: "Shortage", value: "50,000 chips — production gap detected" },
-                    { label: "At Risk", value: "10,000 vehicles ($500M production)", highlight: true },
-                  ].map(({ label, value, highlight }) => (
-                    <div key={label}>
-                      <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, marginBottom: 2 }}>{label}</div>
-                      <div style={{ color: highlight ? GOLD : "#fff", fontWeight: highlight ? 700 : 500 }}>{value}</div>
+        {step === 3 && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{SCENARIO.title}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
+                <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+              </div>
+            </div>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Status:</span>
+              {[['#D1D5DB','transparent','Queued'],[GOLD,'rgba(201,168,76,0.2)','Notified'],[TEAL,TEAL,'Acknowledged ✓']].map(([color,bg,label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, border: `2px solid ${color}`, background: bg }} />
+                  <span style={{ fontSize: 11, color: label === 'Acknowledged ✓' ? TEAL_LT : label === 'Notified' ? GOLD : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+              <WarRoomTasks elapsed={elapsed} />
+              <div style={{ background: NAVY, padding: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>{running ? '● LIVE FEED' : '○ FEED PAUSED'}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
+                  {liveEvents.map((e, i) => (
+                    <div key={i} style={{ fontSize: 11, color: e.type === 'acknowledged' ? '#6EE7B7' : 'rgba(255,255,255,0.8)', borderLeft: `2px solid ${e.type === 'acknowledged' ? TEAL : e.type === 'notified' ? GOLD : 'rgba(255,255,255,0.2)'}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>{e.text}
                     </div>
                   ))}
+                  {liveEvents.length === 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>}
                 </div>
               </div>
-
-              <div className="p-6 bg-white/5 border border-white/10">
-                <h3 style={{ ...CG, fontWeight: 700, color: "#fff", fontSize: 17, marginBottom: 16 }}>Traditional Response (30 Days)</h3>
-                <ul className="space-y-2 text-sm">
-                  {[
-                    { text: "Day 1–2: Assess which suppliers are affected", high: false },
-                    { text: "Day 3: Discover the full 50,000 chip shortage", high: false },
-                    { text: "Day 4–5: Emergency meetings to find alternatives", high: false },
-                    { text: "Week 2: Alternative supplier can't meet quality specs", high: false },
-                    { text: "Week 3: Engineering scrambles to re-qualify parts", high: true },
-                    { text: "Week 4: Production lines shut down", high: true },
-                    { text: "Month 2: Customers defecting to competitors", high: true },
-                  ].map(({ text, high }) => (
-                    <li key={text} style={{ color: high ? GOLD : "rgba(255,255,255,0.55)", fontWeight: high ? 600 : 400 }}>• {text}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Pre-Vetted Supplier Network */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Readiness OS — Pre-Staged Supplier Network</span>
-              </div>
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 12 }}>
-                The 8–16 week qualification delay is eliminated because Readiness OS pre-vets alternative suppliers before a crisis fires. Contracts pre-negotiated. Quality specs pre-approved. Authorization pre-staged.
-              </p>
-              <div className="space-y-2">
-                {preVettedSupplierNetwork.map(({ tier, supplier, status, lead }) => (
-                  <div key={tier} className="flex items-center gap-4 p-3 border border-white/10" style={{ background: status === "Active" ? "rgba(43,138,110,0.05)" : status === "Ready" ? "rgba(201,168,76,0.04)" : "rgba(255,255,255,0.02)" }}>
-                    <div style={{ minWidth: 110, fontSize: 11, fontWeight: 700, color: status === "Active" ? TEAL : status === "Ready" ? GOLD : "rgba(255,255,255,0.4)" }}>{tier}</div>
-                    <div style={{ flex: 1, fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{supplier}</div>
-                    <div style={{ minWidth: 80, fontSize: 11, color: "rgba(255,255,255,0.5)", textAlign: "right" }}>Lead: {lead}</div>
-                    <div style={{ width: 8, height: 8, borderRadius: 0, background: status === "Active" ? TEAL : status === "Ready" ? GOLD : "rgba(255,255,255,0.2)", flexShrink: 0 }} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 12-Minute Cascade */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Readiness OS 12-Minute Coordination Cascade</span>
-              </div>
-              <div className="space-y-1.5">
-                {coordinationCascade.map(({ step, action, stakeholder, highlight, complete }) => (
-                  <div key={step + action} className="flex items-start gap-4 p-3 border border-white/8" style={{
-                    background: complete ? "rgba(43,138,110,0.06)" : highlight ? "rgba(201,168,76,0.06)" : "rgba(255,255,255,0.02)"
-                  }}>
-                    <div style={{ minWidth: 44, fontSize: 11, fontWeight: 700, color: complete ? TEAL : GOLD }}>{step}</div>
-                    <div className="flex-1">
-                      <div style={{ fontSize: 12, color: "#fff", marginBottom: 2 }}>{action}</div>
-                      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{stakeholder}</div>
-                    </div>
-                    {complete && <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: TEAL }} />}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center pt-2">
-              <Button size="lg" onClick={() => setCurrentAct("detection")} className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10 py-5" data-testid="button-start-demo">
-                Begin Crisis Simulation
-                <Play className="w-5 h-5 ml-2" />
-              </Button>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects the shortage, Readiness OS activates the pre-staged supplier network</p>
             </div>
           </div>
         )}
 
-        {/* ── DETECTION ACT ──────────────────────────────── */}
-        {currentAct === "detection" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 20 }} className="flex items-center gap-3">
-                <ShieldAlert className="w-8 h-8" style={{ color: GOLD }} />
-                Supply Chain AI Detects Critical Supplier Failure
+        {step === 4 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Supply Continuity Secured in {fmtSecs(elapsed)}</em>
               </h2>
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 13 }}>AI Confidence Level</span>
-                  <span style={{ ...CG, fontSize: 24, fontWeight: 700, color: GOLD }}>{detectionProgress}%</span>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Emergency procurement deployed, enterprise customers notified with specific commit dates, and production resequenced — all within 12 minutes of trigger confirmation.</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+              {[
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. weeks of procurement cycles', color: TEAL },
+                { label: 'Orders Protected', value: '$2.1B', sub: 'in committed customer revenue', color: GOLD },
+                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'across procurement, ops, legal', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
+              ].map(m => (
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
                 </div>
-                <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
-                {detectionProgress >= 89 && (
-                  <div className="mt-4 p-4 border border-[#C9A84C]" style={{ background: "rgba(201,168,76,0.08)" }}>
-                    <p style={{ color: GOLD, fontWeight: 700, fontSize: 13 }}>
-                      ⚠️ ALERT: Critical supplier failure detected — 10,000 vehicle production at risk ($500M)
-                    </p>
-                  </div>
-                )}
+              ))}
+            </div>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>The Strategic Insight</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{SCENARIO.insight}</p>
+            </div>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>"The response was ready before the trigger fired."</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
+            </div>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your supply chain — with your real suppliers, your real customer commitments, and your real procurement protocols?</p>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request a Pilot →</a>
+                <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
               </div>
-              <AIRadarSimulation
-                dataStreams={manufacturingDemoData.aiDataStreams}
-                title="Supply Chain Intelligence Signals"
-                playbookId="#019"
-                playbookName="Supplier Failure Response"
-                autoStart={true}
-              />
-              {detectionProgress >= 89 && (
-                <div className="mt-8 text-center">
-                  <Button size="lg" onClick={() => setCurrentAct("coordination")} className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8" data-testid="button-activate-playbook">
-                    Activate Playbook #019 — Supplier Failure
-                    <CheckCircle className="w-5 h-5 ml-2" />
-                  </Button>
-                </div>
-              )}
-            </Card>
-          </div>
-        )}
-
-        {/* ── COORDINATION ACT ───────────────────────────── */}
-        {currentAct === "coordination" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 20 }} className="flex items-center gap-3">
-                <Clock className="w-8 h-8" style={{ color: GOLD }} />
-                4-Hour Coordinated Response Across 158 Stakeholders
-              </h2>
-              <TwelveMinuteTimer
-                timelineEvents={manufacturingDemoData.timelineEvents}
-                onComplete={() => setCoordinationComplete(true)}
-                autoStart={true}
-              />
-              {coordinationComplete && (
-                <div className="mt-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                    {manufacturingDemoData.stakeholderTiers && (
-                      <>
-                        <Card className="p-6 bg-white/5 border-white/10">
-                          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginBottom: 6 }}>Tier 1: Decision Makers</div>
-                          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{manufacturingDemoData.stakeholderTiers.tier1.count}</div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{manufacturingDemoData.stakeholderTiers.tier1.members.join(", ")}</div>
-                        </Card>
-                        <Card className="p-6 bg-white/5 border-white/10">
-                          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginBottom: 6 }}>Tier 2: Execution Teams</div>
-                          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{manufacturingDemoData.stakeholderTiers.tier2.count}</div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{manufacturingDemoData.stakeholderTiers.tier2.members.join(", ")}</div>
-                        </Card>
-                        <Card className="p-6 bg-white/5 border-white/10">
-                          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginBottom: 6 }}>Tier 3: External Partners</div>
-                          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: TEAL, marginBottom: 8 }}>{manufacturingDemoData.stakeholderTiers.tier3.count}</div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{manufacturingDemoData.stakeholderTiers.tier3.members.join(", ")}</div>
-                        </Card>
-                      </>
-                    )}
-                  </div>
-                  <div className="text-center">
-                    <Button size="lg" onClick={() => setCurrentAct("outcome")} className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8" data-testid="button-view-outcome">
-                      View Impact & ROI <DollarSign className="w-5 h-5 ml-2" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </Card>
-          </div>
-        )}
-
-        {/* ── OUTCOME ACT ────────────────────────────────── */}
-        {currentAct === "outcome" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <div className="text-center mb-8">
-                <TrendingUp className="w-16 h-16 mx-auto mb-4" style={{ color: TEAL }} />
-                <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#fff", marginBottom: 6 }}>$450M Production Saved</h2>
-                <p style={{ fontSize: 16, color: TEAL }}>2-day pause vs. 30-day production halt</p>
-              </div>
-
-              <ROIComparison
-                traditional={manufacturingDemoData.roiComparison.traditional}
-                executionOS={manufacturingDemoData.roiComparison.executionOS}
-                bottomLine={manufacturingDemoData.roiComparison.bottomLine}
-              />
-
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-                {[
-                  { label: "Production Saved", value: "$450M", color: TEAL },
-                  { label: "Response Time", value: "4 hours", color: GOLD },
-                  { label: "Vehicles Protected", value: "10,000", color: GOLD },
-                  { label: "Production Pause", value: "2 days", color: GOLD },
-                ].map(({ label, value, color }) => (
-                  <Card key={label} className="p-4 bg-white/5 border-white/10 text-center">
-                    <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 6 }}>{label}</div>
-                    <div style={{ ...CG, fontSize: 24, fontWeight: 700, color }}>{value}</div>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Manufacturing-specific Readiness OS framing */}
-              <div className="mt-8 border border-[#C9A84C]/40 p-6" style={{ background: "rgba(201,168,76,0.05)" }}>
-                <h3 style={{ ...CG, fontSize: 18, fontWeight: 700, color: "#fff", textAlign: "center", marginBottom: 10 }}>
-                  What This Means for Your Organization
-                </h3>
-                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, lineHeight: 1.75, textAlign: "center", maxWidth: 580, margin: "0 auto" }}>
-                  You adopted JIT principles to eliminate waste from your production system. Readiness OS brings that same logic to your crisis coordination — eliminating the waste of reactive emergency meetings, duplicated qualification processes, and redundant supplier negotiations. Pre-stage your alternative network once. Activate it in minutes when the trigger fires. The same discipline that made your production floor efficient now applies to your entire response infrastructure.
-                </p>
-              </div>
-
-              <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Button size="lg" onClick={resetDemo} variant="outline" className="bg-transparent border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10" data-testid="button-replay-demo">
-                  Replay Demo
-                </Button>
-                <Link href="/request-access">
-                  <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
-                    Schedule a Pilot Conversation <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/industry-demos">
-                  <Button size="lg" className="bg-transparent border border-white/20 text-white hover:bg-white/10" data-testid="button-explore-more">
-                    Explore More Industry Demos
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="text-center mt-6">
-                <Link href="/executive-brief">
-                  <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", cursor: "pointer", textDecoration: "underline" }}>
-                    Download executive brief to share with your board →
-                  </span>
-                </Link>
-              </div>
-            </Card>
+            </div>
           </div>
         )}
       </div>

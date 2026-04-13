@@ -1,385 +1,321 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "wouter";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Pill, Heart, AlertTriangle, CheckCircle, Clock, Users, DollarSign, ShieldAlert, ArrowLeft, Play, ArrowRight, FileText, ChevronRight } from "lucide-react";
-import AIRadarSimulation from "@/components/demo/AIRadarSimulation";
-import TwelveMinuteTimer from "@/components/demo/TwelveMinuteTimer";
-import ROIComparison from "@/components/demo/ROIComparison";
-import DemoNavHeader from "@/components/demo/DemoNavHeader";
-import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
-import { pharmaDemoData } from "@shared/pharma-demo-data";
+import { scrollToTop } from "@/components/ScrollToTop";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-const NAVY = "#0A0F2E";
-const GOLD = "#C9A84C";
-const TEAL = "#2B8A6E";
-const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
+const BORDER  = "#E8E4DC";
+const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
 
-type DemoAct = "intro" | "detection" | "coordination" | "outcome";
+const SCENARIO = {
+  title: "Pharmaceutical Product Recall",
+  subtitle: "Out-of-specification active ingredient — 3 production batches, 12 distribution states",
+  domain: "Regulatory & Patient Safety",
+  company: "Top-10 Pharmaceutical Manufacturer — $34B revenue · 4,200 products · distribution in 89 countries",
+  trigger: "Quality control testing has confirmed an out-of-specification active ingredient level in three production batches of a widely-prescribed chronic condition medication. The deviation exceeds FDA allowable tolerance by 23%. The batches have been distributed across 12 states and are in the hands of 140,000 patients. FDA has been informally notified and expects a formal recall classification decision within hours. Patient risk assessment is required before communication can go out.",
+  stats: [
+    { value: "140K", label: "Patients with affected product", sub: "Across 12 states, chronic condition use" },
+    { value: "23%", label: "API deviation from specification", sub: "Exceeds FDA allowable tolerance" },
+    { value: "Class II", label: "Expected recall classification", sub: "FDA decision window: hours, not days" },
+  ],
+  surviveScore: 43,
+  thriveScore: 92,
+  analysis: "Pharmaceutical recalls move at regulatory speed — FDA timelines are measured in hours and days, not weeks. Without pre-staged patient risk protocols, pre-designated regulatory liaisons, and pre-approved physician communication templates, manufacturers spend days in internal approval cycles while patients remain uninformed. With Readiness OS, clinical risk assessment, FDA notification, physician outreach, and patient communication deploy in coordinated sequence within 12 minutes.",
+  playbooks: ["Pharmaceutical Recall — Class II Protocol", "FDA Voluntary Recall Execution", "Healthcare Provider Notification", "Patient Safety Communication", "CAPA Development and Regulatory Filing"],
+  insight: "The FDA's 21 CFR Part 7 framework exists because delayed pharmaceutical recalls compound patient harm geometrically. Every day of delay is another day patients take out-of-spec medication. Readiness OS pre-stages the entire recall response sequence — including the clinical risk decision tree and physician outreach templates — so the mobilization delay is eliminated entirely.",
+};
 
-const fdaClassifications = [
-  { class: "Class I", description: "Reasonable probability of serious adverse health consequences or death", color: "#EF4444" },
-  { class: "Class II", description: "May cause temporary adverse health consequences", color: GOLD },
-  { class: "Class III", description: "Not likely to cause adverse health consequences", color: TEAL },
+const TASKS = [
+  { phase: "BATCH ISOLATION", role: "VP Quality Assurance", action: "Immediate quarantine of all 3 affected batches — halt further distribution. Preserve samples for root cause investigation and FDA regulatory submission. Document quarantine timestamps.", time: "1:00", priority: "critical" },
+  { phase: "CLINICAL RISK", role: "Chief Medical Officer", action: "Assess patient risk: API out-of-spec range and clinical significance, vulnerable population exposure (pediatric, elderly, renal), adverse event monitoring activation, physician advisory required", time: "1:30", priority: "critical" },
+  { phase: "FDA NOTIFICATION", role: "General Counsel + VP Regulatory Affairs", action: "File MedWatch and 15-day safety report with FDA. Prepare Form FDA 3500A submission. Retain regulatory counsel. Establish direct communication channel with FDA district office.", time: "2:00", priority: "critical" },
+  { phase: "DISTRIBUTION HOLD", role: "SVP Supply Chain", action: "Place distribution hold on all affected NDC codes across all 3 batches. Issue stop-ship to all wholesale and specialty pharmacy distributors. Confirm hold acknowledgment from all channels.", time: "3:00", priority: "critical" },
+  { phase: "HEALTHCARE PROVIDER ALERT", role: "Chief Medical Officer + Medical Affairs", action: "Direct physician and pharmacist notification: affected lot numbers, clinical guidance for patient management, adverse event reporting instructions, and who to call with questions", time: "4:00", priority: "critical" },
+  { phase: "VOLUNTARY RECALL", role: "CEO + General Counsel", action: "Authorize Class II voluntary recall in coordination with FDA. Confirm recall strategy, depth (retail vs. wholesale), and public notice preparation. CEO-level authorization required before FDA announcement.", time: "5:00", priority: "high" },
+  { phase: "PATIENT COMMUNICATION", role: "CCO + Medical Affairs", action: "Deploy patient-facing communication: lot number lookup tool live, return instructions, clinical guidance, 24/7 emergency contact line staffed by pharmacists", time: "6:00", priority: "high" },
+  { phase: "MANUFACTURING INVESTIGATION", role: "VP Quality + SVP Manufacturing", action: "Root cause investigation initiated: process deviation identification, equipment calibration audit, raw material supplier testing, CAPA development timeline committed to FDA", time: "8:00", priority: "high" },
+  { phase: "SUPPLY CONTINUITY", role: "SVP Supply Chain", action: "Assess unaffected inventory. Coordinate with FDA on supply continuity plan — shortage prevention is a patient safety obligation and a regulatory requirement under FDASIA", time: "10:00", priority: "high" },
+  { phase: "BOARD + INVESTOR", role: "CEO + CFO", action: "Board briefing: patient safety status, recall classification, regulatory timeline, financial exposure estimate, litigation risk assessment, and reputational management plan for governance approval", time: "12:00", priority: "high" },
 ];
 
-const notificationCascade = [
-  { step: "0:00", action: "AI detects dissolution failure in quality monitoring", stakeholder: "Quality Control System", severity: "trigger" },
-  { step: "0:30", action: "Readiness OS classifies as Class I recall criteria", stakeholder: "Compliance AI", severity: "critical" },
-  { step: "1:00", action: "VP Quality, CMO, General Counsel, CEO notified simultaneously", stakeholder: "Executive Team (4)", severity: "critical" },
-  { step: "2:00", action: "FDA MedWatch notification drafted and queued for approval", stakeholder: "Regulatory Affairs", severity: "high" },
-  { step: "3:00", action: "47M unit traceability report generated — lot numbers, dates, distribution network", stakeholder: "Supply Chain (12)", severity: "high" },
-  { step: "5:00", action: "Wholesaler and pharmacy notification templates sent — 847 distribution points", stakeholder: "Commercial Operations (847)", severity: "high" },
-  { step: "7:00", action: "Healthcare provider alerts staged — 1,189 prescribing physicians notified", stakeholder: "Medical Affairs (1,189)", severity: "medium" },
-  { step: "12:00", action: "All 2,052 stakeholders coordinated. FDA filing submitted. Patient exposure window closed.", stakeholder: "Full Organization (2,052)", severity: "complete" },
-];
+function parseTime(t: string): number { const [m, s] = t.split(':').map(Number); return m * 60 + s; }
+function fmtSecs(s: number): string { const m = Math.floor(s / 60); const sec = s % 60; return `${m}:${sec.toString().padStart(2, '0')}`; }
+function getTaskStatus(idx: number, elapsed: number): 'pending' | 'active' | 'done' {
+  const t = TASKS[idx]; if (!t) return 'pending';
+  const d = parseTime(t.time);
+  if (elapsed >= d + 30) return 'done'; if (elapsed >= d) return 'active'; return 'pending';
+}
+function StepBadge({ n, active, done }: { n: number; active: boolean; done: boolean }) {
+  return <div style={{ width: 32, height: 32, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`, background: done ? TEAL : active ? GOLD : 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}>{done ? '✓' : n}</div>;
+}
+
+function WarRoomTasks({ elapsed }: { elapsed: number }) {
+  const phases = Array.from(new Set(TASKS.map(t => t.phase)));
+  return (
+    <div>
+      {phases.map(phase => (
+        <div key={phase} style={{ marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div style={{ height: 1, width: 24, background: NAVY }} />
+            <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '3px 10px', background: NAVY, color: '#fff' }}>{phase}</div>
+            <div style={{ height: 1, flex: 1, background: NAVY }} />
+          </div>
+          {TASKS.filter(t => t.phase === phase).map((t, gi) => {
+            const idx = TASKS.indexOf(t); const st = getTaskStatus(idx, elapsed);
+            const isDone = st === 'done'; const isActive = st === 'active'; const isPending = st === 'pending';
+            return (
+              <div key={gi} style={{ display: 'flex', gap: 12, padding: '14px 16px', marginBottom: 8, background: isDone ? NAVY : '#fff', border: `1px solid ${isDone ? TEAL : isActive ? GOLD : BORDER}`, borderLeft: `4px solid ${isDone ? TEAL : isActive ? GOLD : '#D1D5DB'}`, transition: 'all 0.4s ease', opacity: isPending ? 0.65 : 1 }}>
+                <div style={{ flexShrink: 0, marginTop: 2 }}>
+                  {isDone ? <div style={{ width: 20, height: 20, background: TEAL, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, color: '#fff', fontWeight: 800 }}>✓</div>
+                    : isActive ? <div style={{ width: 20, height: 20, border: `2px solid ${GOLD}`, background: 'rgba(201,168,76,0.15)', animation: 'prpulse 1.2s ease-in-out infinite' }} />
+                    : <div style={{ width: 20, height: 20, border: '2px solid #D1D5DB' }} />}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: isDone ? TEAL_LT : GOLD }}>{t.role}</span>
+                    {isDone && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: TEAL, color: '#fff' }}>ACK ✓</span>}
+                    {isActive && <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: 'rgba(201,168,76,0.12)', color: GOLD, border: `1px solid ${GOLD}` }}>NOTIFIED</span>}
+                    {isPending && <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '2px 8px', background: '#F3F4F6', color: '#9CA3AF' }}>QUEUED</span>}
+                  </div>
+                  <div style={{ fontSize: 13, color: isDone ? 'rgba(255,255,255,0.9)' : NAVY, fontWeight: 600, lineHeight: 1.4 }}>{t.action}</div>
+                </div>
+                <div style={{ fontSize: 10, color: isDone ? 'rgba(255,255,255,0.45)' : '#6B7280', flexShrink: 0, marginTop: 2 }}>{t.time}</div>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+      <style>{`@keyframes prpulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }`}</style>
+    </div>
+  );
+}
 
 export default function PharmaceuticalRecallDemo() {
-  const [currentAct, setCurrentAct] = useState<DemoAct>("intro");
-  const [detectionProgress, setDetectionProgress] = useState(0);
-  const [coordinationComplete, setCoordinationComplete] = useState(false);
+  const [step, setStep] = useState<1|2|3|4>(1);
+  const [elapsed, setElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [liveEvents, setLiveEvents] = useState<{time:string;text:string;type:'notified'|'acknowledged'|'system'}[]>([]);
+  const timerRef = useRef<ReturnType<typeof setInterval>|null>(null);
+  const loggedN = useRef<Set<number>>(new Set());
+  const loggedA = useRef<Set<number>>(new Set());
+  const elapsedRef = useRef(0);
+  const TOTAL = 12 * 60;
+  const completedTasks = TASKS.filter((_, i) => getTaskStatus(i, elapsed) === 'done').length;
+  const pct = Math.round((elapsed / TOTAL) * 100);
 
-  useEffect(() => {
-    if (currentAct === "detection" && detectionProgress < 100) {
-      const interval = setInterval(() => {
-        setDetectionProgress(prev => {
-          if (prev >= 100) { clearInterval(interval); return 100; }
-          return prev + 2;
-        });
-      }, 100);
-      return () => clearInterval(interval);
-    }
-  }, [currentAct, detectionProgress]);
+  const tick = useCallback(() => {
+    elapsedRef.current += 1; const e = elapsedRef.current; setElapsed(e);
+    const evts: typeof liveEvents = [];
+    TASKS.forEach((t, i) => {
+      const d = parseTime(t.time);
+      if (e >= d && !loggedN.current.has(i)) { loggedN.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Notified — task alert deployed`, type: 'notified' }); }
+      if (e >= d + 30 && !loggedA.current.has(i)) { loggedA.current.add(i); evts.push({ time: fmtSecs(e), text: `[${t.role}] Acknowledged — confirmed in progress`, type: 'acknowledged' }); }
+    });
+    if (evts.length > 0) setLiveEvents(prev => [...evts, ...prev].slice(0, 24));
+    if (e >= TOTAL) { clearInterval(timerRef.current!); setRunning(false); setTimeout(() => { setStep(4); scrollToTop(); }, 1200); }
+  }, []);
 
-  const resetDemo = () => {
-    setCurrentAct("intro");
-    setDetectionProgress(0);
-    setCoordinationComplete(false);
+  const startWarRoom = () => {
+    loggedN.current = new Set(); loggedA.current = new Set(); elapsedRef.current = 0; setElapsed(0); setRunning(true);
+    setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(tick, 1000);
   };
+  useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
+
+  const Nav = () => (
+    <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
+      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+        {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
+          <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {i > 0 && <div style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
+            <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
+            <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.35)', letterSpacing: '0.05em' }}>{s.label}</span>
+          </div>
+        ))}
+      </div>
+      <Link href="/request-access"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Pilot</button></Link>
+    </div>
+  );
 
   return (
-    <div style={{ minHeight: "100vh", background: NAVY }}>
-      <DemoNavHeader title="Pharmaceutical Recall — Class I Response" showBackButton={true} />
+    <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
+      <Nav />
+      <div style={{ maxWidth: 900, margin: '0 auto', padding: '64px 24px' }}>
 
-      {/* Act Navigation */}
-      <div className="border-b border-white/10 bg-white/5 pt-20">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex justify-between items-center">
-            {[
-              { id: "intro", label: "1. Scenario", icon: Play },
-              { id: "detection", label: "2. AI Detection @ 92%", icon: ShieldAlert },
-              { id: "coordination", label: "3. 12-Min Coordination", icon: Clock },
-              { id: "outcome", label: "4. Life Saved", icon: Heart }
-            ].map((act) => (
-              <button
-                key={act.id}
-                onClick={() => setCurrentAct(act.id as DemoAct)}
-                className={`flex items-center gap-2 px-4 py-2 transition-colors border ${currentAct === act.id ? "text-[#C9A84C] border-[#C9A84C] bg-white/5" : "text-white/50 border-transparent hover:bg-white/5"}`}
-                data-testid={`button-act-${act.id}`}
-              >
-                <act.icon className="w-4 h-4" />
-                <span className="text-sm font-semibold">{act.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <ExecutionStageGuide variant="banner" />
-      <div className="container mx-auto px-6 py-12 text-white">
-
-        {/* ── INTRO ACT ──────────────────────────────────── */}
-        {currentAct === "intro" && (
-          <div className="max-w-5xl mx-auto space-y-8">
-
-            {/* Header */}
-            <div className="text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 border border-[#C9A84C]/40 text-[10px] font-bold tracking-widest uppercase" style={{ color: GOLD, background: "rgba(201,168,76,0.08)" }}>
-                Pharmaceutical & Life Sciences · Product Safety Domain
+        {step === 1 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>{SCENARIO.domain}</span>
+                <div style={{ width: 24, height: 1, background: GOLD }} />
               </div>
-              <h1 style={{ ...CG, fontSize: "clamp(26px,4vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 10 }}>
-                {pharmaDemoData.crisis.title}
-              </h1>
-              <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 17 }}>
-                {pharmaDemoData.crisis.subtitle}
-              </p>
+              <h1 style={{ ...GEO, fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>{SCENARIO.title}</h1>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 600, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
             </div>
-
-            {/* Industry Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { stat: "2,052", label: "Stakeholders requiring notification in a Class I recall", source: "FDA 21 CFR 7.40–7.49" },
-                { stat: "6 weeks", label: "Industry average coordination time without automation", source: "Glenmark Recall, May–June 2024" },
-                { stat: "$50M+", label: "Average liability exposure per delayed patient notification day", source: "FDA enforcement data" },
-              ].map(({ stat, label, source }) => (
-                <div key={stat} className="border border-white/10 p-5 text-center" style={{ background: "rgba(255,255,255,0.04)" }}>
-                  <div style={{ ...CG, fontSize: 34, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{stat}</div>
-                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", marginBottom: 4 }}>{label}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", fontStyle: "italic" }}>{source}</div>
+            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
+              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — CRITICAL</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
+              {SCENARIO.stats.map(s => (
+                <div key={s.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 6 }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>{s.sub}</div>
                 </div>
               ))}
             </div>
-
-            {/* FDA Classifications */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>FDA Recall Classification System</span>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 20, height: 1, background: GOLD }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Staged War Room — {TASKS.length} Tasks Ready</span>
               </div>
-              <div className="space-y-2">
-                {fdaClassifications.map(({ class: cls, description, color }) => (
-                  <div key={cls} className="flex items-center gap-4 p-3 border border-white/10" style={{ background: cls === "Class I" ? "rgba(239,68,68,0.05)" : "rgba(255,255,255,0.03)" }}>
-                    <div style={{ minWidth: 70, fontSize: 12, fontWeight: 700, color }}>{cls}</div>
-                    <div style={{ width: 8, height: 8, borderRadius: 0, background: color, flexShrink: 0 }} />
-                    <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{description}</div>
-                    {cls === "Class I" && <Badge className="ml-auto text-[10px] bg-red-500/20 text-red-400 border-red-500/30">This Scenario</Badge>}
+              {TASKS.map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, padding: '12px 16px', marginBottom: 6, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${t.priority === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.4)'}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, minWidth: 40, flexShrink: 0 }}>{t.time}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.priority === 'critical' ? '#f87171' : 'rgba(255,255,255,0.5)', letterSpacing: '0.08em', marginBottom: 3 }}>{t.role}</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5 }}>{t.action}</div>
                   </div>
-                ))}
+                  <div style={{ fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase', flexShrink: 0, alignSelf: 'flex-start', paddingTop: 4 }}>{t.phase}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(2); scrollToTop(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>View Execution Brief →</button>
+            </div>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Signal-Based Execution Brief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', marginBottom: 8 }}>{SCENARIO.title}</h2>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{SCENARIO.subtitle}</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 40 }}>
+              <div style={{ padding: '20px 24px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderTop: '3px solid #C0392B' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 8 }}>Without Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.surviveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — days of internal approval loops</div>
+              </div>
+              <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{SCENARIO.thriveScore}</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — 12-minute coordinated recall response</div>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{SCENARIO.analysis}</p>
+              </div>
+              <div style={{ gridColumn: '1/-1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks Activating</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  {SCENARIO.playbooks.map(p => <span key={p} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>)}
+                </div>
               </div>
             </div>
+            <div style={{ textAlign: 'center' }}>
+              <button onClick={() => { setStep(3); scrollToTop(); startWarRoom(); }} style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Enter the War Room — Start Clock →</button>
+            </div>
+          </div>
+        )}
 
-            {/* The Real Case */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 bg-white/5 border border-white/10">
-                <h3 style={{ ...CG, fontWeight: 700, color: "#fff", fontSize: 17, marginBottom: 16 }} className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5" style={{ color: GOLD }} />
-                  The Crisis
-                </h3>
-                <div className="space-y-3 text-sm">
-                  {[
-                    { label: "Organization", value: "Glenmark Pharmaceuticals" },
-                    { label: "Product", value: "Potassium Chloride Capsules" },
-                    { label: "Defect", value: "Capsules failed to dissolve — potentially deadly" },
-                    { label: "Scale", value: "47 Million Units Recalled", highlight: true },
-                  ].map(({ label, value, highlight }) => (
-                    <div key={label}>
-                      <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, marginBottom: 2 }}>{label}</div>
-                      <div style={{ color: highlight ? GOLD : "#fff", fontWeight: highlight ? 700 : 500 }}>{value}</div>
+        {step === 3 && (
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{SCENARIO.title}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
+                <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+              </div>
+            </div>
+            <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Status:</span>
+              {[['#D1D5DB','transparent','Queued'],[GOLD,'rgba(201,168,76,0.2)','Notified'],[TEAL,TEAL,'Acknowledged ✓']].map(([color,bg,label]) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 10, height: 10, border: `2px solid ${color}`, background: bg }} />
+                  <span style={{ fontSize: 11, color: label === 'Acknowledged ✓' ? TEAL_LT : label === 'Notified' ? GOLD : 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{label}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+              <WarRoomTasks elapsed={elapsed} />
+              <div style={{ background: NAVY, padding: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>{running ? '● LIVE FEED' : '○ FEED PAUSED'}</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
+                  {liveEvents.map((e, i) => (
+                    <div key={i} style={{ fontSize: 11, color: e.type === 'acknowledged' ? '#6EE7B7' : 'rgba(255,255,255,0.8)', borderLeft: `2px solid ${e.type === 'acknowledged' ? TEAL : e.type === 'notified' ? GOLD : 'rgba(255,255,255,0.2)'}`, paddingLeft: 10, lineHeight: 1.5 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>{e.text}
                     </div>
                   ))}
+                  {liveEvents.length === 0 && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>}
                 </div>
               </div>
-
-              <div className="p-6 bg-white/5 border border-white/10">
-                <h3 style={{ ...CG, fontWeight: 700, color: "#fff", fontSize: 17, marginBottom: 16 }}>What Happened (May–June 2024)</h3>
-                <ul className="space-y-2 text-sm">
-                  {[
-                    { text: "Weeks 1–3: Internal investigation", highlight: false },
-                    { text: "Week 4 (May): Quietly notified wholesalers only", highlight: false },
-                    { text: "Week 5: 91-year-old patient takes defective capsules", highlight: true },
-                    { text: "Week 5: Patient dies from lethal potassium levels", highlight: true },
-                    { text: "Week 6 (June): Public announcement", highlight: false },
-                    { text: "Family learns weeks later medication caused the death", highlight: false, dim: true },
-                  ].map(({ text, highlight, dim }) => (
-                    <li key={text} style={{ color: highlight ? GOLD : dim ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.6)", fontWeight: highlight ? 700 : 400 }}>
-                      • {text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* The Detection-Execution Gap */}
-            <div className="border border-[#C9A84C]/40 p-6" style={{ background: "rgba(201,168,76,0.05)" }}>
-              <div className="flex items-start gap-4">
-                <ShieldAlert className="w-7 h-7 flex-shrink-0 mt-1" style={{ color: GOLD }} />
-                <div>
-                  <h3 style={{ ...CG, fontSize: 19, fontWeight: 700, color: "#fff", marginBottom: 8 }}>
-                    The Detection–Coordination Gap That Cost a Life
-                  </h3>
-                  <p style={{ color: "rgba(255,255,255,0.75)", lineHeight: 1.75, fontSize: 14 }}>
-                    Glenmark had the technology to detect the dissolution problem. But coordinating 2,052 stakeholders across FDA, wholesalers, pharmacies, and patients took <strong style={{ color: GOLD }}>6 weeks</strong>. In that gap, a patient died. This demo shows how Readiness OS compresses that 6-week coordination into 12 minutes — ensuring the patient <strong style={{ color: GOLD }}>never received the deadly capsules</strong>.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* 12-Minute Notification Cascade */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div style={{ width: 20, height: 1.5, background: GOLD }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Readiness OS 12-Minute Notification Cascade</span>
-              </div>
-              <div className="space-y-1.5">
-                {notificationCascade.map(({ step, action, stakeholder, severity }) => (
-                  <div key={step + action} className="flex items-start gap-4 p-3 border border-white/8" style={{
-                    background: severity === "trigger" ? "rgba(201,168,76,0.06)" : severity === "complete" ? "rgba(43,138,110,0.06)" : "rgba(255,255,255,0.02)"
-                  }}>
-                    <div style={{ minWidth: 44, fontSize: 11, fontWeight: 700, color: severity === "complete" ? TEAL : GOLD }}>{step}</div>
-                    <div className="flex-1">
-                      <div style={{ fontSize: 12, color: "#fff", marginBottom: 2 }}>{action}</div>
-                      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{stakeholder}</div>
-                    </div>
-                    {severity === "complete" && <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: TEAL }} />}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="text-center pt-2">
-              <Button size="lg" onClick={() => setCurrentAct("detection")} className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-10 py-5" data-testid="button-start-demo">
-                Begin Crisis Simulation
-                <Play className="w-5 h-5 ml-2" />
-              </Button>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", marginTop: 12 }}>Interactive simulation — AI detects the defect, Readiness OS coordinates the recall</p>
             </div>
           </div>
         )}
 
-        {/* ── DETECTION ACT ──────────────────────────────── */}
-        {currentAct === "detection" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 20 }} className="flex items-center gap-3">
-                <ShieldAlert className="w-8 h-8" style={{ color: GOLD }} />
-                AI Quality Monitoring Detects Critical Failure
+        {step === 4 && (
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div style={{ width: 48, height: 2, background: TEAL, margin: '0 auto 24px' }} />
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>Execution Complete — Post-Activation Debrief</div>
+              <h2 style={{ ...GEO, fontSize: 'clamp(28px,4vw,44px)', fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+                {SCENARIO.title}:<br /><em style={{ fontStyle: 'italic', color: TEAL_LT }}>Recall Coordinated in {fmtSecs(elapsed)}</em>
               </h2>
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-3">
-                  <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 13 }}>AI Confidence Level</span>
-                  <span style={{ ...CG, fontSize: 24, fontWeight: 700, color: GOLD }}>{detectionProgress}%</span>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto' }}>Batches quarantined, FDA notified, physicians alerted, and patient communication deployed — all within 12 minutes of quality deviation confirmation.</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+              {[
+                { label: 'Response Time', value: fmtSecs(elapsed), sub: 'vs. days of approval cycles', color: TEAL },
+                { label: 'Patients Notified', value: '140K', sub: 'with safety guidance deployed', color: GOLD },
+                { label: 'Tasks Coordinated', value: `${completedTasks}/${TASKS.length}`, sub: 'quality, regulatory, medical, legal', color: GOLD },
+                { label: 'Execution Head Start', value: '3,600×', sub: 'vs. standard mobilization time', color: TEAL },
+              ].map(m => (
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
+                  <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
                 </div>
-                <Progress value={detectionProgress} className="h-3 bg-white/10 [&>div]:bg-[#C9A84C]" />
-                {detectionProgress >= 92 && (
-                  <div className="mt-4 p-4 border border-[#C9A84C]" style={{ background: "rgba(201,168,76,0.08)" }}>
-                    <p style={{ color: GOLD, fontWeight: 700, fontSize: 13 }}>
-                      ⚠️ ALERT: Class I recall criteria detected — Reasonable probability of serious adverse health consequences or death
-                    </p>
-                  </div>
-                )}
+              ))}
+            </div>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>The Strategic Insight</div>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{SCENARIO.insight}</p>
+            </div>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>"The response was ready before the trigger fired."</p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>That's preparation. That's readiness. That's how enterprises become fearless.</p>
+            </div>
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>Ready to pre-stage this for your organization — with your real batch data, your real FDA relationships, and your real physician communication network?</p>
+              <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>Request a Pilot →</a>
+                <button onClick={() => { setStep(1); scrollToTop(); setElapsed(0); setRunning(false); setLiveEvents([]); }} style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', cursor: 'pointer' }}>Restart Demo</button>
               </div>
-              <AIRadarSimulation
-                dataStreams={pharmaDemoData.aiDataStreams}
-                title="Quality Intelligence Signals"
-                playbookId="#095"
-                playbookName="Product Recall (Class I)"
-                autoStart={true}
-              />
-              {detectionProgress >= 92 && (
-                <div className="mt-8 text-center">
-                  <Button size="lg" onClick={() => setCurrentAct("coordination")} className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8" data-testid="button-activate-playbook">
-                    Activate Playbook #095 — Product Recall
-                    <CheckCircle className="w-5 h-5 ml-2" />
-                  </Button>
-                </div>
-              )}
-            </Card>
-          </div>
-        )}
-
-        {/* ── COORDINATION ACT ───────────────────────────── */}
-        {currentAct === "coordination" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <h2 style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#fff", marginBottom: 20 }} className="flex items-center gap-3">
-                <Clock className="w-8 h-8" style={{ color: GOLD }} />
-                12-Minute Coordinated Response Across 2,052 Stakeholders
-              </h2>
-              <TwelveMinuteTimer
-                timelineEvents={pharmaDemoData.timelineEvents}
-                onComplete={() => setCoordinationComplete(true)}
-                autoStart={true}
-              />
-              {coordinationComplete && (
-                <div className="mt-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                    {pharmaDemoData.stakeholderTiers && (
-                      <>
-                        <Card className="p-6 bg-white/5 border-white/10">
-                          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginBottom: 6 }}>Tier 1: Decision Makers</div>
-                          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{pharmaDemoData.stakeholderTiers.tier1.count}</div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{pharmaDemoData.stakeholderTiers.tier1.members.join(", ")}</div>
-                        </Card>
-                        <Card className="p-6 bg-white/5 border-white/10">
-                          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginBottom: 6 }}>Tier 2: Execution Teams</div>
-                          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD, marginBottom: 8 }}>{pharmaDemoData.stakeholderTiers.tier2.count}</div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{pharmaDemoData.stakeholderTiers.tier2.members.join(", ")}</div>
-                        </Card>
-                        <Card className="p-6 bg-white/5 border-white/10">
-                          <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginBottom: 6 }}>Tier 3: Public Notification</div>
-                          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: TEAL, marginBottom: 8 }}>{pharmaDemoData.stakeholderTiers.tier3.count}</div>
-                          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)" }}>{pharmaDemoData.stakeholderTiers.tier3.members.join(", ")}</div>
-                        </Card>
-                      </>
-                    )}
-                  </div>
-                  <div className="text-center">
-                    <Button size="lg" onClick={() => setCurrentAct("outcome")} className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8" data-testid="button-view-outcome">
-                      View Impact & ROI <Heart className="w-5 h-5 ml-2" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </Card>
-          </div>
-        )}
-
-        {/* ── OUTCOME ACT ────────────────────────────────── */}
-        {currentAct === "outcome" && (
-          <div className="max-w-6xl mx-auto space-y-8">
-            <Card className="p-8 bg-white/5 border-white/10">
-              <div className="text-center mb-8">
-                <Heart className="w-16 h-16 mx-auto mb-4" style={{ color: TEAL }} />
-                <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#fff", marginBottom: 6 }}>A Life Saved</h2>
-                <p style={{ fontSize: 16, color: TEAL }}>The patient never received the deadly capsules</p>
-              </div>
-
-              <ROIComparison
-                traditional={pharmaDemoData.roiComparison.traditional}
-                executionOS={pharmaDemoData.roiComparison.executionOS}
-                bottomLine={pharmaDemoData.roiComparison.bottomLine}
-              />
-
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-                {[
-                  { label: "Lives Saved", value: "1+", color: TEAL },
-                  { label: "Liability Avoided", value: "$50M+", color: GOLD },
-                  { label: "Stakeholders Coordinated", value: "2,052", color: GOLD },
-                  { label: "Coordination Time", value: "12 min", color: GOLD },
-                ].map(({ label, value, color }) => (
-                  <Card key={label} className="p-4 bg-white/5 border-white/10 text-center">
-                    <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, marginBottom: 6 }}>{label}</div>
-                    <div style={{ ...CG, fontSize: 24, fontWeight: 700, color }}>{value}</div>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Pharma-specific Readiness OS framing */}
-              <div className="mt-8 border border-[#C9A84C]/40 p-6" style={{ background: "rgba(201,168,76,0.05)" }}>
-                <h3 style={{ ...CG, fontSize: 18, fontWeight: 700, color: "#fff", textAlign: "center", marginBottom: 10 }}>
-                  What This Means for Your Organization
-                </h3>
-                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, lineHeight: 1.75, textAlign: "center", maxWidth: 580, margin: "0 auto" }}>
-                  Life sciences companies carry the highest accountability of any industry — FDA oversight, patient safety obligations, and public trust. Your quality systems detect problems in real time. But your coordination model was designed for a world without AI. Readiness OS pre-stages your entire notification cascade — FDA, wholesalers, pharmacies, physicians, and patients — before a recall is ever triggered. When detection fires, execution is already in motion.
-                </p>
-              </div>
-
-              <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Button size="lg" onClick={resetDemo} variant="outline" className="bg-transparent border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C]/10" data-testid="button-replay-demo">
-                  Replay Demo
-                </Button>
-                <Link href="/request-access">
-                  <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
-                    Schedule a Pilot Conversation <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/industry-demos">
-                  <Button size="lg" className="bg-transparent border border-white/20 text-white hover:bg-white/10" data-testid="button-explore-more">
-                    Explore More Industry Demos
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="text-center mt-6">
-                <Link href="/executive-brief">
-                  <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", cursor: "pointer", textDecoration: "underline" }}>
-                    Download executive brief to share with your board →
-                  </span>
-                </Link>
-              </div>
-            </Card>
+            </div>
           </div>
         )}
       </div>
