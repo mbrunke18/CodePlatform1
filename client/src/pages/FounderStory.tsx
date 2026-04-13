@@ -76,7 +76,7 @@ export default function FounderStory() {
             We Make Enterprises <em style={{ color: GOLD_LIGHT, fontStyle: "italic" }}>Fearless</em>
           </h1>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em", fontWeight: 500 }}>
-            Marty Brunke · Founder, VaughnMartin · March 2026
+            Marty Brunke · Founder, VaughnMartin · 2023
           </p>
         </div>
       </section>
@@ -276,7 +276,7 @@ export default function FounderStory() {
           {/* V */}
           <RomanDivider num="V" />
           <Body>
-            I need to address AI directly because it is impossible to bring a platform like this to market in 2026 without people asking the question.
+            I need to address AI directly because it is impossible to bring a platform like this to market in 2023 without people asking the question.
           </Body>
           <Body style={{ fontWeight: 700, color: NAVY, fontSize: 18 }}>
             AI does not transform organizations. AI exposes them.

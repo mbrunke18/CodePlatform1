@@ -93,10 +93,10 @@ const VaughnMartinSeal: FC<{ size: number; color: string }> = ({ size, color }) 
         <textPath href={`#${topArcId}`} startOffset="50%">VAUGHNMARTIN</textPath>
       </text>
 
-      {/* Arc text — EXECUTION OS on bottom */}
+      {/* Arc text — READINESS OS on bottom */}
       <path id={botArcId} d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
       <text fontFamily="'Barlow Condensed', sans-serif" fontSize="10.5" fontWeight="700" letterSpacing="5.5" fill={botText} textAnchor="middle">
-        <textPath href={`#${botArcId}`} startOffset="50%">EXECUTION  OS</textPath>
+        <textPath href={`#${botArcId}`} startOffset="50%">READINESS  OS</textPath>
       </text>
 
       {/* Horizontal dividers flanking VM */}
