@@ -761,10 +761,10 @@ export default function InvestorLanding() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#0A0F2E] mb-4">
-                    AI learns from every decision across all customers (anonymized). More customers = smarter recommendations = higher retention. Data moat compounds quarterly.
+                    Every activation compounds the organization's preparation record — decision logic, ownership assignments, and challenge history accumulate across every trigger handled. The moat is organizational capability, not platform capability. A competitor who buys the platform later starts the compounding clock later — permanently.
                   </p>
                   <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-memory-advantage">
-                    Advantage: Data flywheel creates 10x better AI vs. new entrants
+                    Advantage: Preparation compounds — the organization's readiness depth is irreplicable
                   </div>
                 </CardContent>
               </Card>
