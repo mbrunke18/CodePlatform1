@@ -299,25 +299,28 @@ export default function AdvancedAnalytics() {
         <div className="flex items-center justify-between">
           <div className="bg-[#0A0F2E] text-white p-8 relative overflow-hidden w-full flex items-center justify-between">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-            <div className="relative z-10 flex items-center gap-4">
-              <BarChart3 className="h-10 w-10 text-[#C9A84C]" />
-              <div>
-                <h1 className="text-3xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Advanced Business Intelligence</h1>
-                <p className="text-white/70">Predictive analytics, market intelligence, and competitive benchmarking</p>
+            <div className="relative z-10">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                <div style={{ width: 24, height: 1, background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C' }}>Analytics &amp; Intelligence</span>
               </div>
+              <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,3.5vw,40px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 8 }}>
+                Advanced Business <em style={{ fontStyle: 'italic', color: '#C9A84C' }}>Intelligence</em>
+              </h1>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>Predictive analytics, market intelligence, and competitive benchmarking</p>
             </div>
             <div className="relative z-10 flex items-center gap-4">
               <Link to="/">
-                <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10">
+                <Button variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10 rounded-none text-xs tracking-wider uppercase font-bold">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Dashboard
                 </Button>
               </Link>
-              <Badge variant="outline" className="bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30">
-                <Brain className="w-4 h-4 mr-2" />
-                AI Models Active: 12
-              </Badge>
-              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]">
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', color: '#2B8A6E', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, padding: '6px 14px' }}>
+                <Brain className="w-3 h-3" />
+                12 Models Active
+              </div>
+              <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none text-xs tracking-wider uppercase">
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Generate Report
               </Button>
@@ -327,14 +330,14 @@ export default function AdvancedAnalytics() {
 
         {/* Advanced Analytics Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="bg-[#E8E4DC] border border-[#E8E4DC]">
-            <TabsTrigger value="predictive" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Predictive Models</TabsTrigger>
-            <TabsTrigger value="intelligence" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Business Intelligence</TabsTrigger>
-            <TabsTrigger value="benchmarks" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Industry Benchmarks</TabsTrigger>
-            <TabsTrigger value="scenarios" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]">Scenario Analysis</TabsTrigger>
-            <TabsTrigger value="ai-chat" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E] flex items-center gap-2">
-              <MessageSquare className="h-4 w-4" />
-              AI Chat
+          <TabsList className="bg-white border border-[#E8E4DC] rounded-none h-12 p-0 gap-0 px-2">
+            <TabsTrigger value="predictive" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Predictive Models</TabsTrigger>
+            <TabsTrigger value="intelligence" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Business Intelligence</TabsTrigger>
+            <TabsTrigger value="benchmarks" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Industry Benchmarks</TabsTrigger>
+            <TabsTrigger value="scenarios" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Scenario Analysis</TabsTrigger>
+            <TabsTrigger value="ai-chat" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4 flex items-center gap-2">
+              <MessageSquare className="h-3 w-3" />
+              Strategic Chat
             </TabsTrigger>
           </TabsList>
 

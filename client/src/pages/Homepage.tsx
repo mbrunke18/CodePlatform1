@@ -299,12 +299,12 @@ function HomepageNav() {
         background: "#fff",
         borderBottom: "1px solid rgba(10,15,46,0.10)",
         boxShadow: "0 1px 12px rgba(10,15,46,0.07)",
-        height: 130,
+        height: 68,
         display: "flex", alignItems: "center",
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <VaughnMartinLogo variant="full" height={130} color="dark" />
+            <VaughnMartinLogo variant="full" height={68} color="dark" />
           </Link>
 
           {/* Desktop nav — hidden below 768px via CSS */}
@@ -454,46 +454,21 @@ function HeroSection() {
       <SectionMarker n="01" />
       <div style={{ ...CONTAINER, width: "100%", textAlign: "center" }}>
         <Reveal>
-          <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>
+          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(201,168,76,0.75)", marginBottom: 32 }}>
             WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI
           </div>
 
-          {/* Built for — editorial audience separator */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, marginBottom: 36 }}>
-            <div style={{ width: 40, height: 1, background: `rgba(201,168,76,0.4)` }} />
-            <div style={{ display: "flex", gap: 0 }}>
-              {["CEOs & Boards", "C-Suite Executives", "Division Presidents", "Executive Leadership"].map((label, i) => (
-                <span key={label} style={{
-                  ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase",
-                  padding: "0 16px", color: `rgba(201,168,76,0.7)`,
-                  borderRight: i < 3 ? `1px solid rgba(201,168,76,0.2)` : "none",
-                }}>
-                  {label}
-                </span>
-              ))}
-            </div>
-            <div style={{ width: 40, height: 1, background: `rgba(201,168,76,0.4)` }} />
-          </div>
-
           <h1 className="hp-hero-h1" style={{
-            ...GEO, fontSize: 44, fontWeight: 700, color: "#fff",
-            lineHeight: 1.25, maxWidth: 820, margin: "0 auto 20px",
+            ...GEO, fontSize: "clamp(44px,6vw,72px)", fontWeight: 700, color: "#fff",
+            lineHeight: 1.15, maxWidth: 900, margin: "0 auto 28px",
           }}>
             AI is generating signals at machine speed.
             <br />
-            <span style={{ color: GOLD_LIGHT, fontWeight: 900 }}>Your organization is still taking 30 days to respond.</span>
+            <span style={{ color: GOLD_LIGHT }}>Your organization is still taking 30 days to respond.</span>
           </h1>
 
-          <p style={{ ...GEO, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.72)", maxWidth: 680, margin: "0 auto 8px", lineHeight: 1.4 }}>
+          <p style={{ ...GEO, fontSize: "clamp(20px,2.5vw,28px)", fontStyle: "italic", color: "rgba(255,255,255,0.68)", maxWidth: 680, margin: "0 auto 40px", lineHeight: 1.4 }}>
             The response is ready before the trigger fires.
-          </p>
-
-          <p style={{ ...DM, fontSize: 15, fontWeight: 400, color: "rgba(255,255,255,0.52)", maxWidth: 580, margin: "0 auto 16px", lineHeight: 1.6 }}>
-            Prepare for every situation. AI monitors. Executives authorize. 30 days compressed to 12 minutes.
-          </p>
-
-          <p style={{ ...DM, fontSize: 11, fontWeight: 700, color: "rgba(201,168,76,0.7)", maxWidth: 520, margin: "0 auto 20px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Readiness OS &nbsp;·&nbsp; Coordination infrastructure for the Fortune 1000 &nbsp;·&nbsp; Enterprises become fearless
           </p>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, marginTop: 40 }}>
@@ -527,14 +502,14 @@ function HeroSection() {
               href="/request-access"
               onClick={() => trackCTA("hero_request_access")}
               style={{
-                ...DM, color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none",
-                letterSpacing: "0.03em", borderBottom: "1px solid rgba(255,255,255,0.2)", paddingBottom: 1,
+                ...DM, color: "rgba(255,255,255,0.45)", fontSize: 12, textDecoration: "none",
+                letterSpacing: "0.04em",
                 transition: "color 0.15s",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)"; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)"; }}
             >
-              Or request executive access — no pilot commitment required →
+              Request executive access — no pilot commitment required →
             </Link>
           </div>
         </Reveal>
