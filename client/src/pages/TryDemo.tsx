@@ -505,54 +505,54 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
   },
 };
 
-const SCENARIO_PLAYBOOK_MAP: Record<string, { id: string; name: string; badge: string }> = {
+const SCENARIO_PLAYBOOK_MAP: Record<string, { id: number; name: string; badge: string }> = {
   ransomware: {
-    id: '247962f9-e204-4e4a-8fc0-88ffe9d98265',
+    id: 65,
     name: 'Ransomware Attack',
     badge: 'Cyber & Technology',
   },
   competitor: {
-    id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
+    id: 5,
     name: 'Aggressive Pricing Disruption',
     badge: 'Market Dynamics — Free Sample',
   },
   regulatory: {
-    id: '966f55d7-a83b-49cf-8f47-892d13bf2d43',
+    id: 49,
     name: 'SEC Investigation Notice',
     badge: 'Regulatory & Compliance',
   },
   'deal-risk': {
-    id: '410046aa-a8a7-4531-8ecb-d555c80e4b44',
+    id: 12,
     name: 'Customer Consolidation to Competitor',
     badge: 'Market Dynamics',
   },
   'servicenow-armis': {
-    id: '41d234d2-1b23-4724-bf84-7cea8738739d',
+    id: 151,
     name: 'M&A Target Acquisition',
     badge: 'Mergers & Acquisitions',
   },
   'alphabet-wiz': {
-    id: '756d8df1-dec3-4551-9309-ff75333270ae',
+    id: 148,
     name: 'Competitive Acquisition',
     badge: 'Mergers & Acquisitions',
   },
   'norwegian-activist': {
-    id: '3998652e-169e-407f-91f1-cbade5394659',
+    id: 41,
     name: 'Activist Investor Campaign',
     badge: 'Stakeholder & Crisis',
   },
   'hpe-juniper': {
-    id: '3998652e-169e-407f-91f1-cbade5394659',
+    id: 41,
     name: 'Activist Investor Campaign',
     badge: 'Mergers & Acquisitions',
   },
   'target-succession': {
-    id: '3dfecf58-e93c-4a3b-b712-f2a9d4a77ed0',
+    id: 77,
     name: 'CEO Sudden Departure',
     badge: 'Leadership & Governance',
   },
   'clorox-purell': {
-    id: '4b644bbf-65ad-4832-afa5-f842bd0ee369',
+    id: 142,
     name: 'Acquisition Integration Failure',
     badge: 'Mergers & Acquisitions',
   },
@@ -1969,7 +1969,7 @@ export default function TryDemo() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 40 }}>
             {[
               {
-                id: 'a8d182bd-7f3a-4a70-8818-8b80790394b2',
+                id: 5,
                 name: 'Aggressive Pricing Disruption',
                 description: 'Competitor cuts prices 30%+ or introduces a disruptive pricing model threatening your pipeline.',
                 type: 'Offensive',
@@ -1980,7 +1980,7 @@ export default function TryDemo() {
                 icon: TrendingDown,
               },
               {
-                id: 'da7df303-a5bd-4fc0-a8b7-492f8619c500',
+                id: 180,
                 name: 'AI Competitive Disruption',
                 description: 'A competitor deploys AI capability that fundamentally changes market dynamics in your category.',
                 type: 'Defensive',
@@ -1991,7 +1991,7 @@ export default function TryDemo() {
                 icon: Brain,
               },
               {
-                id: '1a309274-6068-46f3-bb17-4303c184939c',
+                id: 182,
                 name: 'Compound: Geopolitical + Supply Chain',
                 description: 'Tariff escalations or sanctions that simultaneously disrupt supply chains and require financial restructuring.',
                 type: 'Compound',

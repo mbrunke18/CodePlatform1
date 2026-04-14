@@ -424,21 +424,21 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
 };
 
 /* ── Scenario → Live Template Mapping ──────────────── */
-const SCENARIO_TEMPLATE_MAP: Record<string, { id: string; name: string }> = {
+const SCENARIO_TEMPLATE_MAP: Record<string, { id: number; name: string }> = {
   'Cybersecurity Breach — Critical Data Exposure': {
-    id: '54f9a8e0-9fd9-40a0-90e6-173765e346e7',
+    id: 69,
     name: 'Vulnerability Disclosure (Zero-Day)',
   },
   'Activist Investor Response — Hostile Shareholder Campaign': {
-    id: '3998652e-169e-407f-91f1-cbade5394659',
+    id: 41,
     name: 'Activist Investor Campaign',
   },
   'Critical Supplier Failure — Tier-1 Production Risk': {
-    id: 'd57efcea-d6a4-46f5-8622-75170a7d3151',
+    id: 19,
     name: 'Primary Supplier Failure',
   },
   'FDA Enforcement Action — Warning Letter Response': {
-    id: 'e9565223-ce5d-42f1-a296-fae2dcbf35ff',
+    id: 95,
     name: 'Product Recall (Safety)',
   },
 };
@@ -450,7 +450,7 @@ interface LiveData {
   lastScan: string;
   stakeholderCount: number;
   prepScore: number | null;
-  matchedPlaybook: { id: string; name: string } | null;
+  matchedPlaybook: { id: number | string; name: string } | null;
   activationsTotal: number;
 }
 
@@ -724,7 +724,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
             <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>{live.matchedPlaybook.name}</span>
           </div>
           <button
-            onClick={() => navigate(`/playbooks/${live.matchedPlaybook!.id}`)}
+            onClick={() => navigate(`/playbook-library/${live.matchedPlaybook!.id}`)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 0, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
           >
             View Live Playbook <ArrowRight size={11} />
