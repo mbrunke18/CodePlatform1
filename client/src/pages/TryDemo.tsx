@@ -603,6 +603,7 @@ export default function TryDemo() {
   const [showChaosComplete, setShowChaosComplete] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const chaosCTARef = useRef<HTMLDivElement>(null);
   
   const [executionTimer, setExecutionTimer] = useState(0);
   const [savedValue, setSavedValue] = useState(0);
@@ -701,9 +702,19 @@ export default function TryDemo() {
 
   useEffect(() => {
     if (currentPhase !== 'select') {
-      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
     }
   }, [currentPhase]);
+
+  useEffect(() => {
+    if (showChaosComplete) {
+      setTimeout(() => {
+        chaosCTARef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 400);
+    }
+  }, [showChaosComplete]);
 
   useEffect(() => {
     if (currentPhase === 'detect') {
@@ -1045,11 +1056,14 @@ export default function TryDemo() {
                 </Button>
               </div>
 
-              <div className="mb-4 flex items-center justify-between">
+              <div className="mb-4 flex items-center justify-between flex-wrap gap-3">
                 <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
                   <AlertTriangle className="h-3 w-3 mr-1" />
                   CRISIS IN PROGRESS — NO PLAYBOOK ACTIVE
                 </Badge>
+                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>
+                  Watch the chaos unfold — or use the <span style={{ color: '#C9A84C', fontWeight: 700 }}>Skip Ahead</span> button below to jump to the solution.
+                </span>
               </div>
 
               <div className="grid lg:grid-cols-3 gap-6">
@@ -1156,13 +1170,17 @@ export default function TryDemo() {
                   {/* Action buttons */}
                   <div className="mt-4 flex gap-3">
                     {!showChaosComplete && (
-                      <Button variant="outline" onClick={skipChaos} className="flex-1 bg-transparent text-white border-white/20 hover:bg-white/10 hover:text-white">
-                        Skip to Solution
-                        <ChevronRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      <button
+                        onClick={skipChaos}
+                        style={{ flex: 1, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.45)', color: '#C9A84C', fontWeight: 700, fontSize: 13, padding: '13px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.05em', textTransform: 'uppercase', borderRadius: 0 }}
+                      >
+                        <Zap style={{ width: 14, height: 14 }} />
+                        Skip Ahead — See the Readiness OS Solution
+                        <ChevronRight style={{ width: 14, height: 14 }} />
+                      </button>
                     )}
                     {showChaosComplete && (
-                      <div className="flex-1 space-y-3">
+                      <div className="flex-1 space-y-3" ref={chaosCTARef}>
                         {/* The pivotal contrast moment */}
                         <div style={{ background: '#0A0F2E', borderRadius: 0, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
                           <div style={{ background: 'rgba(220,38,38,0.12)', padding: '10px 16px', borderBottom: '1px solid rgba(220,38,38,0.2)', display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -1223,7 +1241,7 @@ export default function TryDemo() {
 
               {/* Phase Indicators */}
               <div className="grid grid-cols-4 gap-2 mb-4">
-                {PHASES.filter(p => p.id !== 'chaos').map((phase) => {
+                {PHASES.filter(p => p.id !== 'chaos').map((phase, index) => {
                   const isCompleted = completedPhases.includes(phase.id);
                   const isCurrent = currentPhase === phase.id;
                   const IconComponent = phase.icon;
@@ -1240,16 +1258,22 @@ export default function TryDemo() {
                             : 'bg-white border-gray-200'
                       }`}
                     >
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', color: isCurrent ? '#6B7280' : isCompleted ? '#2B8A6E' : '#9CA3AF', marginBottom: 4, textTransform: 'uppercase' }}>
+                        Step {index + 1} of 4
+                      </div>
                       <div className="flex items-center gap-2">
                         {isCompleted ? (
                           <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
                         ) : (
                           <IconComponent className={`h-4 w-4 ${isCurrent ? colors.text : 'text-gray-800'}`} />
                         )}
-                        <span className={`text-xs font-medium ${isCurrent ? 'text-gray-900' : isCompleted ? 'text-gray-800' : 'text-gray-800'}`}>
+                        <span className={`text-xs font-bold ${isCurrent ? 'text-gray-900' : isCompleted ? 'text-[#2B8A6E]' : 'text-gray-400'}`}>
                           {phase.name}
                         </span>
                       </div>
+                      {isCurrent && (
+                        <div style={{ fontSize: 9, color: '#6B7280', marginTop: 3, fontWeight: 500 }}>{phase.description}</div>
+                      )}
                     </div>
                   );
                 })}
@@ -1311,11 +1335,15 @@ export default function TryDemo() {
                           </p>
                         </div>
 
+                        <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0, padding: '8px 12px', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <ChevronRight style={{ width: 12, height: 12, color: GOLD, flexShrink: 0 }} />
+                          <span style={{ fontSize: 11, color: '#6B7280', fontWeight: 500 }}>Click below to advance to <strong style={{ color: NAVY }}>Step 2 — Signal Detection</strong></span>
+                        </div>
                         <Button 
                           className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white"
                           onClick={completeIdentify}
                         >
-                          Playbook Ready - Continue to Detection
+                          Next: Watch Signal Detection →
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       </CardContent>
@@ -1323,6 +1351,14 @@ export default function TryDemo() {
                   )}
 
                   {currentPhase === 'detect' && (
+                    <div>
+                      {/* Auto-advancing notice */}
+                      <div style={{ background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.35)', borderRadius: 0, padding: '10px 16px', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22c55e', flexShrink: 0, animation: 'pulse 1s infinite' }} />
+                        <p style={{ fontSize: 12, color: NAVY, margin: 0, fontWeight: 600 }}>
+                          This step runs automatically — watch the system scan 248+ sources and match the trigger. It advances on its own in a few seconds.
+                        </p>
+                      </div>
                     <div style={{ background: NAVY, borderRadius: 0, overflow: 'hidden' }}>
                       {/* Terminal header */}
                       <div style={{ background: NAVY_MID, padding: '10px 18px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
@@ -1416,6 +1452,7 @@ export default function TryDemo() {
                         )}
                       </div>
                     </div>
+                    </div>
                   )}
 
                   {currentPhase === 'execute' && (
@@ -1428,6 +1465,10 @@ export default function TryDemo() {
                         <CardDescription>
                           Watch Readiness OS orchestrate your response in real-time
                         </CardDescription>
+                        <div style={{ background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <div style={{ width: 7, height: 7, borderRadius: 0, background: '#22c55e', animation: 'pulse 1s infinite', flexShrink: 0 }} />
+                          <span style={{ fontSize: 11, color: '#2B8A6E', fontWeight: 600 }}>Running automatically — watch each action execute. This advances to the final step on its own.</span>
+                        </div>
                       </CardHeader>
                       <CardContent>
                         {/* Narration bar — what this replaces */}
@@ -1738,7 +1779,7 @@ export default function TryDemo() {
                     <div style={{ background: NAVY, borderRadius: 0, padding: '20px 18px' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
                         <div style={{ width: 6, height: 6, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
-                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What AI Just Replaced</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#22c55e' }}>What the System Just Replaced</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>A team of analysts manually scanning 248+ sources — replaced by continuous signal monitoring.</p>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Readiness OS watches all signal categories simultaneously, every 15 minutes, 24/7. It cross-references data points, identifies patterns, and fires when a threshold is crossed — before your team would have even noticed.</p>
