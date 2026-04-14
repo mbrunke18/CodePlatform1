@@ -238,26 +238,26 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
 
       const analysis = response.choices[0]?.message?.content?.trim();
       if (!analysis) {
-        throw new Error('Empty response from OpenAI');
+        logger.warn('Empty response from OpenAI — returning fallback');
+        return this.getFallbackResponse('empty_response');
       }
 
       logger.info('OpenAI analysis completed successfully');
       return analysis;
 
     } catch (error: any) {
-      logger.error({ error: error.message }, 'OpenAI analysis failed');
-      
-      // Handle specific error types
+      // Handle specific error types — all fall back gracefully, no user-visible failure
       if (error.code === 'insufficient_quota' || error.status === 429) {
-        logger.warn('OpenAI quota exceeded, using fallback response');
+        logger.warn('OpenAI quota exceeded — using fallback response');
         return this.getFallbackResponse('quota_exceeded');
       }
       
       if (error.code === 'model_not_found') {
-        logger.warn('OpenAI model not available, using fallback response');
+        logger.warn('OpenAI model not available — using fallback response');
         return this.getFallbackResponse('model_unavailable');
       }
 
+      logger.warn({ error: error.message }, 'OpenAI analysis — using fallback response');
       return this.getFallbackResponse('error');
     }
   }
@@ -300,14 +300,15 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
 
       const insight = response.choices[0]?.message?.content?.trim();
       if (!insight) {
-        throw new Error('Empty insight generated');
+        logger.warn(`Empty insight from OpenAI for type=${type} — returning fallback`);
+        return this.getSpecializedFallback(type);
       }
 
       logger.info(`${type} intelligence insight generated successfully`);
       return insight;
 
     } catch (error: any) {
-      logger.error({ error: error.message, type }, 'Strategic insight generation failed');
+      logger.warn({ error: error.message, type }, 'Strategic insight generation — using fallback');
       return this.getSpecializedFallback(type);
     }
   }

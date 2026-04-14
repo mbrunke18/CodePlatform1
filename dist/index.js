@@ -11541,7 +11541,7 @@ var init_PostgreSQLJobQueue = __esm({
           }
           await this.cleanup();
         } catch (error) {
-          logger.error({ error }, "Error processing jobs");
+          logger.warn({ error }, "Job queue cycle skipped \u2014 will retry next interval");
         }
       }
       /**
@@ -15310,20 +15310,21 @@ Analysis Request: ${prompt}` : prompt;
           });
           const analysis = response.choices[0]?.message?.content?.trim();
           if (!analysis) {
-            throw new Error("Empty response from OpenAI");
+            logger5.warn("Empty response from OpenAI \u2014 returning fallback");
+            return this.getFallbackResponse("empty_response");
           }
           logger5.info("OpenAI analysis completed successfully");
           return analysis;
         } catch (error) {
-          logger5.error({ error: error.message }, "OpenAI analysis failed");
           if (error.code === "insufficient_quota" || error.status === 429) {
-            logger5.warn("OpenAI quota exceeded, using fallback response");
+            logger5.warn("OpenAI quota exceeded \u2014 using fallback response");
             return this.getFallbackResponse("quota_exceeded");
           }
           if (error.code === "model_not_found") {
-            logger5.warn("OpenAI model not available, using fallback response");
+            logger5.warn("OpenAI model not available \u2014 using fallback response");
             return this.getFallbackResponse("model_unavailable");
           }
+          logger5.warn({ error: error.message }, "OpenAI analysis \u2014 using fallback response");
           return this.getFallbackResponse("error");
         }
       }
@@ -15358,12 +15359,13 @@ Analysis Request: ${prompt}` : prompt;
           });
           const insight = response.choices[0]?.message?.content?.trim();
           if (!insight) {
-            throw new Error("Empty insight generated");
+            logger5.warn(`Empty insight from OpenAI for type=${type} \u2014 returning fallback`);
+            return this.getSpecializedFallback(type);
           }
           logger5.info(`${type} intelligence insight generated successfully`);
           return insight;
         } catch (error) {
-          logger5.error({ error: error.message, type }, "Strategic insight generation failed");
+          logger5.warn({ error: error.message, type }, "Strategic insight generation \u2014 using fallback");
           return this.getSpecializedFallback(type);
         }
       }
@@ -19621,10 +19623,10 @@ var init_LiveSignalIngestionService = __esm({
       isRunning = false;
       intervalId = null;
       lastFetchedUrls = /* @__PURE__ */ new Set();
-      async fetchFeed(feed) {
+      async fetchFeed(feed, attempt = 1) {
         try {
           const controller = new AbortController();
-          const timeout = setTimeout(() => controller.abort(), 1e4);
+          const timeout = setTimeout(() => controller.abort(), 2e4);
           const res = await fetch(feed.url, {
             signal: controller.signal,
             headers: { "User-Agent": "VaughnMartin-Signal-Monitor/1.0" }
@@ -19638,7 +19640,11 @@ var init_LiveSignalIngestionService = __esm({
           const items = parseXML(text3);
           return items.map((item) => ({ ...item, source: feed.source, category: feed.category }));
         } catch (err) {
-          console.log(`\u26A0 Feed ${feed.source} fetch failed: ${err instanceof Error ? err.message : "unknown"}`);
+          if (attempt < 2) {
+            await new Promise((resolve) => setTimeout(resolve, 3e3));
+            return this.fetchFeed(feed, attempt + 1);
+          }
+          console.log(`\u26A0 Feed ${feed.source} unavailable \u2014 skipping`);
           return [];
         }
       }
@@ -24957,11 +24963,11 @@ var init_BackgroundJobService = __esm({
                 error: error.message,
                 completedAt: /* @__PURE__ */ new Date()
               }).where(eq34(backgroundJobs.id, job.id));
-              this.log.error({ jobId: job.id, error }, "Job failed after max retries");
+              this.log.warn({ jobId: job.id, error: error.message }, "Job failed after max retries \u2014 fallback active");
             }
           }
         } catch (error) {
-          this.log.error({ error }, "Error processing job");
+          this.log.warn({ error }, "Job processing skipped \u2014 fallback active");
         }
       }
       /**

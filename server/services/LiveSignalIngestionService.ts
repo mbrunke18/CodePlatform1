@@ -122,10 +122,10 @@ class LiveSignalIngestionService {
   private intervalId: NodeJS.Timeout | null = null;
   private lastFetchedUrls = new Set<string>();
 
-  async fetchFeed(feed: { url: string; source: string; category: string }): Promise<RSSItem[]> {
+  async fetchFeed(feed: { url: string; source: string; category: string }, attempt = 1): Promise<RSSItem[]> {
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 10000);
+      const timeout = setTimeout(() => controller.abort(), 20000);
 
       const res = await fetch(feed.url, {
         signal: controller.signal,
@@ -142,7 +142,11 @@ class LiveSignalIngestionService {
       const items = parseXML(text);
       return items.map(item => ({ ...item, source: feed.source, category: feed.category }));
     } catch (err) {
-      console.log(`⚠ Feed ${feed.source} fetch failed: ${err instanceof Error ? err.message : 'unknown'}`);
+      if (attempt < 2) {
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        return this.fetchFeed(feed, attempt + 1);
+      }
+      console.log(`⚠ Feed ${feed.source} unavailable — skipping`);
       return [];
     }
   }

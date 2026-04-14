@@ -118,7 +118,7 @@ export class PostgreSQLJobQueue {
       // Clean up old completed/failed jobs (older than 7 days)
       await this.cleanup();
     } catch (error) {
-      logger.error({ error }, 'Error processing jobs');
+      logger.warn({ error }, 'Job queue cycle skipped — will retry next interval');
     }
   }
 

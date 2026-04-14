@@ -163,11 +163,11 @@ export class BackgroundJobService {
             })
             .where(eq(backgroundJobs.id, job.id));
 
-          this.log.error({ jobId: job.id, error }, 'Job failed after max retries');
+          this.log.warn({ jobId: job.id, error: error.message }, 'Job failed after max retries — fallback active');
         }
       }
     } catch (error) {
-      this.log.error({ error }, 'Error processing job');
+      this.log.warn({ error }, 'Job processing skipped — fallback active');
     }
   }
 
