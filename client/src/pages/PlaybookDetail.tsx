@@ -1358,7 +1358,9 @@ export default function PlaybookDetail() {
                       {playbook.domain && (
                         <div style={{ display: "flex", justifyContent: "space-between" as const, fontSize: 11, color: MUTED }}>
                           <span>Domain</span>
-                          <span style={{ fontWeight: 600, color: NAVY }}>{playbook.domain}</span>
+                          <span style={{ fontWeight: 600, color: NAVY }}>
+                            {typeof playbook.domain === 'object' ? (playbook.domain as any)?.name : playbook.domain}
+                          </span>
                         </div>
                       )}
                       <div style={{ display: "flex", justifyContent: "space-between" as const, fontSize: 11, color: MUTED }}>
