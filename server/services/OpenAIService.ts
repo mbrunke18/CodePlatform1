@@ -10,7 +10,6 @@ interface OpenAIServiceConfig {
   maxRetries: number;
   retryDelay: number;
   maxTokens: number;
-  temperature: number;
 }
 
 export interface AgentResult {
@@ -32,7 +31,6 @@ export class OpenAIService {
       maxRetries: 3,
       retryDelay: 1000,
       maxTokens: 2000,
-      temperature: 0.7
     };
 
     if (AI_DISABLED) {
@@ -164,7 +162,6 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
               { role: 'user', content: def.user },
             ],
             max_completion_tokens: 600,
-            temperature: 0.65,
           })
         );
         return {
@@ -236,7 +233,6 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
             }
           ],
           max_completion_tokens: this.config.maxTokens,
-          temperature: this.config.temperature,
         });
       });
 
@@ -299,7 +295,6 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
             }
           ],
           max_completion_tokens: this.config.maxTokens,
-          temperature: this.config.temperature,
         });
       });
 

@@ -11668,6 +11668,7 @@ var init_EnterpriseJobService = __esm({
       reportsQueue;
       alertsQueue;
       isInitialized = false;
+      isScheduled = false;
       constructor() {
         this.analysisQueue = new PostgreSQLJobQueue("analysis");
         this.reportsQueue = new PostgreSQLJobQueue("reports");
@@ -11684,6 +11685,10 @@ var init_EnterpriseJobService = __esm({
        * This method is designed to be non-blocking and fail gracefully
        */
       async initialize() {
+        if (this.isInitialized) {
+          logger2.info("Enterprise Job Service already initialized \u2014 skipping duplicate call");
+          return;
+        }
         this.initializeAsync().catch((error) => {
           const errorMessage = error instanceof Error ? error.message : "Unknown error";
           logger2.warn({ error: errorMessage }, "Enterprise Job Service initialization failed - continuing without background jobs");
@@ -11933,6 +11938,11 @@ var init_EnterpriseJobService = __esm({
        * Schedule recurring enterprise jobs
        */
       async scheduleRecurringJobs() {
+        if (this.isScheduled) {
+          logger2.info("Recurring jobs already scheduled \u2014 skipping duplicate call");
+          return;
+        }
+        this.isScheduled = true;
         try {
           const orgs = await db.select({ id: organizations.id }).from(organizations).limit(1);
           const defaultOrg = orgs && orgs.length > 0 ? orgs[0] : null;
@@ -15121,8 +15131,7 @@ var init_OpenAIService = __esm({
         this.config = {
           maxRetries: 3,
           retryDelay: 1e3,
-          maxTokens: 2e3,
-          temperature: 0.7
+          maxTokens: 2e3
         };
         if (AI_DISABLED) {
           logger5.info("AI features disabled \u2014 all requests will use fallback responses");
@@ -15233,8 +15242,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings \u2014 no markdow
                   { role: "system", content: def.system },
                   { role: "user", content: def.user }
                 ],
-                max_completion_tokens: 600,
-                temperature: 0.65
+                max_completion_tokens: 600
               })
             );
             return {
@@ -15297,8 +15305,7 @@ Analysis Request: ${prompt}` : prompt;
                   content: fullPrompt
                 }
               ],
-              max_completion_tokens: this.config.maxTokens,
-              temperature: this.config.temperature
+              max_completion_tokens: this.config.maxTokens
             });
           });
           const analysis = response.choices[0]?.message?.content?.trim();
@@ -15346,8 +15353,7 @@ Analysis Request: ${prompt}` : prompt;
                   content: specializedPrompt
                 }
               ],
-              max_completion_tokens: this.config.maxTokens,
-              temperature: this.config.temperature
+              max_completion_tokens: this.config.maxTokens
             });
           });
           const insight = response.choices[0]?.message?.content?.trim();

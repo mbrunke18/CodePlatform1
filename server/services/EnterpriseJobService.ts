@@ -36,6 +36,7 @@ export class EnterpriseJobService {
   private reportsQueue: PostgreSQLJobQueue;
   private alertsQueue: PostgreSQLJobQueue;
   private isInitialized = false;
+  private isScheduled = false;
 
   private constructor() {
     this.analysisQueue = new PostgreSQLJobQueue('analysis');
@@ -55,6 +56,10 @@ export class EnterpriseJobService {
    * This method is designed to be non-blocking and fail gracefully
    */
   async initialize(): Promise<void> {
+    if (this.isInitialized) {
+      logger.info('Enterprise Job Service already initialized — skipping duplicate call');
+      return;
+    }
     // Don't block - run initialization in background with timeout
     this.initializeAsync().catch(error => {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -343,6 +348,11 @@ export class EnterpriseJobService {
    * Schedule recurring enterprise jobs
    */
   private async scheduleRecurringJobs(): Promise<void> {
+    if (this.isScheduled) {
+      logger.info('Recurring jobs already scheduled — skipping duplicate call');
+      return;
+    }
+    this.isScheduled = true;
     try {
       const orgs = await db.select({ id: organizations.id }).from(organizations).limit(1);
       const defaultOrg = orgs && orgs.length > 0 ? orgs[0] : null;
