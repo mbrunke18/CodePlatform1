@@ -40,14 +40,14 @@ function AccessGate() {
           READINESS OS — AUTHENTICATED ACCESS
         </div>
         <h2 style={{ color: NAVY, fontWeight: 700, fontSize: '1.4rem', margin: '0 0 12px' }}>
-          Sign In to Access This Page
+          Access Required
         </h2>
         <p style={{ color: '#6B7280', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 28px' }}>
-          This section of the platform requires authentication. Sign in to your account, or request a 48-hour trial to explore the full Readiness OS.
+          This section of the platform is available to approved participants. Request access or start a 48-hour trial to explore the full Readiness OS.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <button
-            onClick={() => login()}
+            onClick={() => setLocation('/request-access')}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
               background: NAVY, color: '#fff', border: 'none',
@@ -55,7 +55,7 @@ function AccessGate() {
               fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer',
             }}
           >
-            <LogIn size={15} /> Sign In to Platform
+            <LogIn size={15} /> Request Access
           </button>
           <button
             onClick={() => setLocation('/trial-access')}

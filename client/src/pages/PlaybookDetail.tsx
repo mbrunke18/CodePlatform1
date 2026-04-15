@@ -707,10 +707,10 @@ export default function PlaybookDetail() {
                                             Task sequences, decision rights mapping, stakeholder sequencing, and decision gates are available to pilot participants.
                                           </div>
                                           <button
-                                            onClick={() => login()}
+                                            onClick={() => setLocation('/request-access')}
                                             style={{ background: NAVY, color: "#fff", border: "none", padding: "10px 24px", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", cursor: "pointer" }}
                                           >
-                                            Sign In to View Full Sequence
+                                            Request Access to View Full Sequence
                                           </button>
                                         </div>
                                       )}
@@ -1253,9 +1253,9 @@ export default function PlaybookDetail() {
                     <Button
                       variant="outline"
                       style={{ width: "100%", border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", height: 44, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
-                      onClick={() => login()}
+                      onClick={() => setLocation('/request-access')}
                     >
-                      Sign In
+                      Request Access
                     </Button>
                   </div>
                 ) : (

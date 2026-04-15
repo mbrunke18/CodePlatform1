@@ -195,10 +195,10 @@ export default function PlaybookCommand() {
             <div className="pt-4 border-t">
               {!isAuthenticated ? (
                 <div className="text-center py-4">
-                  <p className="text-[#0A0F2E] mb-1">Sign in to execute this playbook</p>
-                  <p className="text-sm text-[#6B7280] mb-4">Continue with Google, GitHub, or Apple</p>
-                  <Button onClick={() => login()} data-testid="button-login">
-                    Sign In
+                  <p className="text-[#0A0F2E] mb-1">Access required to execute this playbook</p>
+                  <p className="text-sm text-[#6B7280] mb-4">Request access or start a 48-hour trial to activate playbooks</p>
+                  <Button onClick={() => setLocation('/request-access')} data-testid="button-login">
+                    Request Access
                   </Button>
                 </div>
               ) : !organization?.id ? (

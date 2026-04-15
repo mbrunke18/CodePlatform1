@@ -804,15 +804,12 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={() => login()}
+                  onClick={() => navigateTo('/request-access')}
                   className="h-9 px-3 text-sm font-medium"
                   style={{ color: NAVY }}
                   data-testid="nav-login"
                 >
                   <span className="flex items-center gap-1.5">
-                    <SiGoogle className="h-3 w-3 opacity-60" />
-                    <SiGithub className="h-3.5 w-3.5 opacity-60" />
-                    <SiApple className="h-3.5 w-3.5 opacity-60" />
                     <span className="ml-0.5">Sign In</span>
                   </span>
                 </Button>
@@ -907,15 +904,12 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     variant="ghost"
-                    onClick={() => login()}
+                    onClick={() => navigateTo('/request-access')}
                     className="w-full justify-center h-9 text-sm"
                     style={{ color: NAVY }}
                     data-testid="nav-mobile-login"
                   >
                     <span className="flex items-center gap-1.5">
-                      <SiGoogle className="h-3 w-3 opacity-60" />
-                      <SiGithub className="h-3.5 w-3.5 opacity-60" />
-                      <SiApple className="h-3.5 w-3.5 opacity-60" />
                       <span className="ml-0.5">Sign In</span>
                     </span>
                   </Button>

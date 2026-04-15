@@ -12,7 +12,7 @@ interface IDEASidebarProps {
 }
 
 export default function IDEASidebar({ className }: IDEASidebarProps) {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [expandedPhases, setExpandedPhases] = useState<string[]>([]);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -199,12 +199,12 @@ export default function IDEASidebar({ className }: IDEASidebarProps) {
           </div>
         ) : (
           <Button
-            onClick={() => login()}
+            onClick={() => setLocation('/request-access')}
             variant="outline"
             className="w-full justify-start gap-2"
           >
             <User className="h-4 w-4" />
-            Sign In
+            Request Access
           </Button>
         )}
       </div>

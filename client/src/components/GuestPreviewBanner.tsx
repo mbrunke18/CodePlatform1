@@ -242,11 +242,12 @@ export function GuestPreviewBanner() {
           border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
         }}>Request Access</a>
-        <button onClick={() => login()} style={{
+        <a href="/request-access" style={{
           fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
           padding: '5px 12px', background: 'transparent', border: 'none',
           color: 'rgba(255,255,255,0.35)', borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap' as const,
-        }}>Sign In</button>
+          textDecoration: 'none',
+        }}>Sign In</a>
         <button onClick={() => setDismissed(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }} aria-label="Dismiss">
           <X size={14} />
         </button>
