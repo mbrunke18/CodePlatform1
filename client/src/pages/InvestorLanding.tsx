@@ -150,6 +150,71 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── COMPETITIVE MOAT SECTION ─────────────────────────────────────── */}
+        <section className="py-20 px-6" style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+          <div className="max-w-5xl mx-auto">
+
+            {/* Section label + question */}
+            <div className="text-center mb-14">
+              <div className="vm-section-label justify-center mb-6" style={{ color: 'rgba(201,168,76,0.7)' }}><span style={{ color: '#C9A84C' }}>Competitive Defensibility</span></div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,4vw,48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }}>
+                If a well-funded competitor showed up tomorrow —<br />
+                <em style={{ color: '#C9A84C' }}>why do we still win?</em>
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(255,255,255,0.55)', maxWidth: 620, margin: '0 auto', lineHeight: 1.7 }}>
+                A product is not a moat. Features can be rebuilt in 12 months. The moat is what a competitor cannot replicate regardless of funding.
+              </p>
+            </div>
+
+            {/* Three compounding moats */}
+            <div className="grid md:grid-cols-3 gap-px mb-12" style={{ background: 'rgba(201,168,76,0.12)' }}>
+              {[
+                {
+                  n: '01',
+                  label: 'Accumulated Decision Logic',
+                  accent: '#C9A84C',
+                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of Fortune 1000 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 170 playbooks from two decades of real crisis response.',
+                  proof: '20 years of operational experience → not replicable with funding',
+                },
+                {
+                  n: '02',
+                  label: 'Organizational Intelligence That Compounds',
+                  accent: '#2B8A6E',
+                  body: 'Every activation, every debrief, every stakeholder acknowledgment makes the platform more specific to that organization\'s actual failure modes and response patterns. That accumulated intelligence is non-transferable. A competitor starting from zero starts from zero — permanently.',
+                  proof: 'Each use deepens specificity → value compounds, not depreciates',
+                },
+                {
+                  n: '03',
+                  label: 'Embeddedness as Infrastructure',
+                  accent: '#C9A84C',
+                  body: 'When Readiness OS becomes the organizational rhythm for strategic readiness — not a tool they open, but the process by which preparation happens — it stops being a vendor. Infrastructure is not replaced at contract renewal. It is built upon. Removing it means dismantling the preparation architecture entirely.',
+                  proof: 'Operating rhythm, not software → switching cost measured in years',
+                },
+              ].map(m => (
+                <div key={m.n} style={{ background: '#0A0F2E', padding: '32px 28px' }}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: m.accent, marginBottom: 12 }}>Moat {m.n}</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }}>{m.label}</h3>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, marginBottom: 20 }}>{m.body}</p>
+                  <div style={{ borderTop: `1px solid ${m.accent}30`, paddingTop: 16 }}>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, color: m.accent, letterSpacing: '0.04em', lineHeight: 1.5 }}>{m.proof}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Dr. Huang research anchor */}
+            <div className="max-w-3xl mx-auto text-center" style={{ borderTop: '1px solid rgba(201,168,76,0.2)', paddingTop: 40 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: 12 }}>
+                "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase."
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)' }}>
+                Dr. Kerry Huang · ESI Top 1% Researcher · 408-Firm Study
+              </p>
+            </div>
+
+          </div>
+        </section>
+
         {/* Three Problems Worth Billions */}
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">
