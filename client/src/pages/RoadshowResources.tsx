@@ -36,12 +36,12 @@ const BORDER = "#E8E4DC";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const KEY_STATS = [
-  { label: "Response Time", value: "72h → 12min", color: "text-[#2B8A6E]" },
+  { label: "Execution Head Start", value: "3,600×", color: "text-[#2B8A6E]" },
+  { label: "Response Time", value: "12 min", color: "text-[#2B8A6E]" },
   { label: "Playbooks", value: "170", color: "text-[#0A0F2E]" },
   { label: "Domains", value: "9", color: "text-[#C9A84C]" },
   { label: "Pilot Price", value: "$75K", color: "text-[#C9A84C]" },
-  { label: "Contract Range", value: "$250K-$1.5M", color: "text-[#2B8A6E]" },
-  { label: "Seed Target", value: "$2.6M", color: "text-[#0A0F2E]" },
+  { label: "Seed Target", value: "$2.5M", color: "text-[#0A0F2E]" },
 ];
 
 const DOCUMENTS = [

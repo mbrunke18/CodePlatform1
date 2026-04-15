@@ -10,7 +10,7 @@
 
 ### 1. What exactly does Readiness OS do?
 
-Readiness OS is a Strategic Execution Operating System that cuts enterprise response time from 72 hours to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—Readiness OS automatically activates pre-staged playbooks and coordinates response across all stakeholders simultaneously.
+Readiness OS is a Strategic Execution Operating System that cuts enterprise response time from 30 days to 12 minutes. When a strategic event happens—competitor move, crisis, M&A opportunity, regulatory change—Readiness OS automatically activates pre-staged playbooks and coordinates response across all stakeholders simultaneously.
 
 **The elevator pitch:** "15 major firms say execution infrastructure is the enterprise bottleneck. We built it—170 playbooks with pre-defined governance, clear decision rights, and 12-minute coordination. The execution infrastructure enterprises are missing."
 
@@ -18,7 +18,7 @@ Readiness OS is a Strategic Execution Operating System that cuts enterprise resp
 
 ### 2. How is this different from project management tools like Asana or Monday?
 
-Project management tools track work after someone decides what to do. Readiness OS handles the 72 hours *before* that—the signal detection, playbook selection, stakeholder notification, and coordinated launch.
+Project management tools track work after someone decides what to do. Readiness OS handles the coordination work *before* tasks exist—the signal detection, playbook selection, stakeholder notification, and coordinated launch.
 
 | Asana/Monday | Readiness OS |
 |--------------|---|
@@ -75,7 +75,7 @@ The 12 minutes is time-to-first-coordinated-action, not time-to-resolution. Here
 | Stakeholder assembly | 4-24 hours | Pre-assigned in playbook |
 | Response planning | 8-24 hours | Pre-staged (playbook activation) |
 | Task assignment | 2-4 hours | Automatic (one-click deployment) |
-| **Total to first action** | **24-72 hours** | **~12 minutes** |
+| **Total to first action** | **Days to weeks** | **~12 minutes** |
 
 We're not claiming the *crisis is resolved* in 12 minutes—we're claiming the *coordinated response is launched* in 12 minutes. The rest of the execution follows the playbook.
 
@@ -180,7 +180,7 @@ We're raising to accelerate sales hiring and complete enterprise hardening.
 
 ### 13. What are you raising and what's the use of funds?
 
-**Raising:** $2.6M Seed
+**Raising:** $2.5M Seed
 
 **Use of funds:**
 | Category | Allocation | Purpose |
@@ -223,7 +223,7 @@ We believe 3-5 design partners converting to full contracts plus 3-5 net-new cus
 | **Asana/Monday** | Project management | Task tracking, not strategic coordination |
 | **ServiceNow** | IT workflow automation | IT-centric, not C-suite strategic |
 
-**The real competitor:** Status quo. Excel spreadsheets, email chains, and 72-hour response times.
+**The real competitor:** Status quo. Excel spreadsheets, email chains, and days-long response cycles.
 
 ---
 
@@ -300,15 +300,15 @@ For rapid-fire Q&A, memorize these:
 
 | Question | One-Liner |
 |----------|-----------|
-| What do you do? | "We cut enterprise response time from 72 hours to 12 minutes." |
+| What do you do? | "We cut enterprise response time from 30 days to 12 minutes." |
 | How? | "Pre-staged playbooks that activate automatically when triggers fire." |
 | Why now? | "AI can finally do real-time signal analysis, and post-COVID executives know disruption isn't rare." |
 | Why you? | "20 years of Fortune 500 execution plus championship coaching methodology—I've run this system on both fields." |
-| Competitors? | "The real competitor is the status quo—72-hour response times and coordination by email." |
+| Competitors? | "The real competitor is the status quo—days-long response cycles and coordination by email." |
 | Market size? | "$2.5B addressable, creating a new category called Strategic Execution Operating Systems." |
 | Business model? | "$250K-$1.5M enterprise contracts, 80%+ gross margin." |
 | Traction? | "MVP complete, targeting 3-5 design partners in Q1." |
-| Ask? | "$2.6M seed to hire sales team and close first enterprise customers." |
+| Ask? | "$2.5M seed to hire sales team and close first enterprise customers." |
 
 ---
 

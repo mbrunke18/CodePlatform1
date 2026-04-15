@@ -1,4 +1,4 @@
-# Execution OS: Competitive Moat Talking Points
+# Readiness OS: Competitive Moat Talking Points
 ## Handling "Why Can't [BigCo] Just Build This?"
 
 ---
@@ -41,7 +41,7 @@ This document gives you crisp answers.
 > - ServiceNow sells to CIOs (IT leaders)  
 > - Microsoft sells to IT procurement
 >
-> Execution OS sells to CSOs, COOs, and CEOs. Different buyer, different budget, different decision process.
+> Readiness OS sells to CSOs, COOs, and CEOs. Different buyer, different budget, different decision process.
 >
 > When a Fortune 500 CSO wants to improve strategic response speed, they're not calling their Salesforce rep. That's not what Salesforce does. We're not competing for the same budget or the same decision-maker."
 
@@ -56,7 +56,7 @@ This document gives you crisp answers.
 **The Answer:**
 > "We're not competing with Salesforce—we're *orchestrating* it.
 >
-> When Execution OS activates a playbook, we push tasks into Jira, notifications into Slack, approvals into ServiceNow, updates into Salesforce. We're the coordination layer *above* these tools.
+> When Readiness OS activates a playbook, we push tasks into Jira, notifications into Slack, approvals into ServiceNow, updates into Salesforce. We're the coordination layer *above* these tools.
 >
 > For Salesforce to compete, they'd have to become a neutral orchestrator of their competitors' products. That's not their business model. They want you deeper in Salesforce, not coordinating across Jira and ServiceNow.
 >
@@ -104,29 +104,29 @@ This document gives you crisp answers.
 
 ### "What about Salesforce?"
 
-> "Salesforce is CRM—managing customer relationships and sales pipelines. Execution OS is strategic execution—coordinating C-suite response when triggers fire. Different buyer (CRO vs. CSO), different use case (sales process vs. strategic response), different budget (RevOps vs. Strategy). We actually integrate with Salesforce to push relevant tasks into their workflows."
+> "Salesforce is CRM—managing customer relationships and sales pipelines. Readiness OS is strategic execution—coordinating C-suite response when triggers fire. Different buyer (CRO vs. CSO), different use case (sales process vs. strategic response), different budget (RevOps vs. Strategy). We actually integrate with Salesforce to push relevant tasks into their workflows."
 
 ### "What about Microsoft?"
 
-> "Microsoft sells productivity and infrastructure. Execution OS is a strategic application layer. We run on Azure, integrate with Teams, connect to M365. We're a customer of Microsoft, not a competitor. For them to compete, they'd need to build 170 industry-specific playbooks and sell to CSOs—that's not their core business."
+> "Microsoft sells productivity and infrastructure. Readiness OS is a strategic application layer. We run on Azure, integrate with Teams, connect to M365. We're a customer of Microsoft, not a competitor. For them to compete, they'd need to build 170 industry-specific playbooks and sell to CSOs—that's not their core business."
 
 ### "What about ServiceNow?"
 
-> "ServiceNow automates IT workflows—ticketing, approvals, asset management. Execution OS orchestrates strategic response across the C-suite. We push tasks *into* ServiceNow when appropriate. ServiceNow handles the IT execution; Execution OS handles the strategic coordination. Complementary, not competitive."
+> "ServiceNow automates IT workflows—ticketing, approvals, asset management. Readiness OS orchestrates strategic response across the C-suite. We push tasks *into* ServiceNow when appropriate. ServiceNow handles the IT execution; Readiness OS handles the strategic coordination. Complementary, not competitive."
 
 ### "What about Asana/Monday/Notion?"
 
-> "Those are task management tools—they track work after someone decides what to do. Execution OS handles the 72 hours *before* that: signal detection, playbook selection, stakeholder notification, coordinated launch. By the time tasks hit Asana, Execution OS's job is done. We're upstream of project management."
+> "Those are task management tools—they track work after someone decides what to do. Readiness OS handles the strategic coordination *before* that: signal detection, playbook selection, stakeholder notification, coordinated launch. By the time tasks hit Asana, Readiness OS's job is done. We're upstream of project management."
 
 ### "What about dedicated crisis management tools (Everbridge, OnSolve, Fusion)?"
 
-> "Those are point solutions: Everbridge does mass notification, Fusion does business continuity planning. Execution OS is a platform that orchestrates across all of them. We can trigger Everbridge notifications as part of a playbook, pull Fusion plans into our response templates, and coordinate across tools they don't talk to. We're the system of coordination, not another point solution."
+> "Those are point solutions: Everbridge does mass notification, Fusion does business continuity planning. Readiness OS is a platform that orchestrates across all of them. We can trigger Everbridge notifications as part of a playbook, pull Fusion plans into our response templates, and coordinate across tools they don't talk to. We're the system of coordination, not another point solution."
 
 ### "What about consultants (McKinsey, Deloitte, BCG)?"
 
-> "Consultants build playbooks as documents. Execution OS makes playbooks executable. 
+> "Consultants build playbooks as documents. Readiness OS makes playbooks executable. 
 >
-> The Big 4 are actually a channel for us—they can implement Execution OS as part of their transformation engagements. We're the software layer that operationalizes what consultants design. Several of our playbooks are based on frameworks they've published."
+> The Big 4 are actually a channel for us—they can implement Readiness OS as part of their transformation engagements. We're the software layer that operationalizes what consultants design. Several of our playbooks are based on frameworks they've published."
 
 ---
 
@@ -143,7 +143,7 @@ This document gives you crisp answers.
 > - Ongoing maintenance and updates
 > - Total: $5-10M+ and 3+ years before value
 >
-> Or you can deploy Execution OS in 6 weeks and get value immediately.
+> Or you can deploy Readiness OS in 6 weeks and get value immediately.
 >
 > The question isn't whether you *can* build it. The question is whether strategic execution speed is your core competency, or whether you should buy the best platform and focus on what makes your business unique."
 
@@ -179,7 +179,7 @@ For rapid-fire delivery:
 | "You don't have enough engineers" | "We don't need to out-engineer them. We need to out-focus them." |
 | "This is just a feature" | "Slack was just a feature. Salesforce was just a feature. Categories are created by focus." |
 | "They have more data" | "They have different data. We're building the only dataset of strategic execution patterns." |
-| "We could build this" | "You could. In 3 years and $10M. Or deploy Execution OS in 6 weeks." |
+| "We could build this" | "You could. In 3 years and $10M. Or deploy Readiness OS in 6 weeks." |
 
 ---
 
@@ -203,4 +203,4 @@ When delivering these responses:
 
 ---
 
-*Competitive moat talking points prepared for Execution OS Strategic Execution Operating System roadshow. Adapt to specific investor concerns.*
+*Competitive moat talking points prepared for Readiness OS Strategic Execution Operating System roadshow. Adapt to specific investor concerns.*

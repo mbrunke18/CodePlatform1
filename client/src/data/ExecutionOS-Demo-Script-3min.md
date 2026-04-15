@@ -13,7 +13,7 @@
 - [ ] Timer visible to you (not audience) — don't exceed 3:30
 
 ### Mindset
-You're not showing software. You're showing **what becomes possible** when strategic response time collapses from 72 hours to 12 minutes. Lead with the outcome, not the feature.
+You're not showing software. You're showing **what becomes possible** when strategic response time collapses from 30 days to 12 minutes. Lead with the outcome, not the feature.
 
 ---
 
@@ -25,9 +25,9 @@ You're not showing software. You're showing **what becomes possible** when strat
 
 > "Let me show you what Readiness OS does in practice.
 >
-> Today, when a strategic event hits—a competitor launches, a crisis breaks, an acquisition opportunity appears—most Fortune 500 companies take 72 hours just to get the right people aligned on what to do.
+> Today, when a strategic event hits—a competitor launches, a crisis breaks, an acquisition opportunity appears—most Fortune 500 companies spend weeks just mobilizing the right people and aligning on a response.
 >
-> **[Point to the hero: 72 hours → 12 minutes]**
+> **[Point to the hero: 30 days → 12 minutes]**
 >
 > Readiness OS cuts that to 12 minutes. Let me show you how."
 
@@ -101,7 +101,7 @@ You're not showing software. You're showing **what becomes possible** when strat
 
 **[Return to high-level view or homepage]**
 
-> "That's M.
+> "That's Readiness OS.
 >
 > We're not replacing your team's judgment—we're giving them the prepared plays so they can execute immediately instead of scrambling.
 >
@@ -126,7 +126,7 @@ If questions come during the demo, have these ready:
 > "We have 170 pre-built playbooks across 9 strategic domains. Customers customize them to their organization—their roles, their thresholds, their communication templates. We're not starting from scratch."
 
 **"What if the signal is wrong?"**
-> "M recommends—humans decide. You can dismiss a signal, modify the response, or activate. We're augmenting judgment, not replacing it."
+> "The system recommends—humans decide. You can dismiss a signal, modify the response, or activate. We're augmenting judgment, not replacing it."
 
 **"What integrations do you support?"**
 > "Slack, Teams, Jira, ServiceNow, email—we push tasks into your existing tools. We're a coordination layer, not a replacement for your stack."
@@ -167,7 +167,7 @@ This opens dialogue instead of continuing to present.
 
 ### For Technical Investors
 - Show integration architecture
-- Discuss AI signal processing
+- Discuss continuous signal processing
 - Reference the 84.4% system verification
 
 ---

@@ -53,9 +53,9 @@ export default function VCPresentations() {
       color: "text-[#0A0F2E]"
     },
     {
-      title: "AI Accuracy",
+      title: "Playbook Precision",
       value: "85-92%",
-      subtitle: "Strategic decision intelligence",
+      subtitle: "Readiness signal detection accuracy",
       growth: "Industry leading",
       color: "text-[#C9A84C]"
     }
@@ -63,8 +63,8 @@ export default function VCPresentations() {
 
   const pitchMaterials = [
     {
-      title: "Series B Executive Deck",
-      description: "Comprehensive pitch presentation for Series B funding round",
+      title: "Seed Round Executive Deck",
+      description: "Comprehensive pitch presentation for Seed funding round",
       slides: 24,
       duration: "18 min",
       status: "Ready",
@@ -82,7 +82,7 @@ export default function VCPresentations() {
     },
     {
       title: "Product Demo Presentation",
-      description: "Live platform demonstration showcasing AI signal monitoring and strategic execution",
+      description: "Live platform demonstration showcasing continuous signal monitoring and strategic execution",
       slides: 16,
       duration: "12 min",
       status: "Live Demo",
@@ -122,7 +122,7 @@ export default function VCPresentations() {
     "We redesign how work flows in the age of AI — not another AI tool bolted onto the old model",
     "Enterprise work was built for a world without AI: committees, alignment cycles, 30-day delays were the best humans could do. AI changed the constraint — we changed the operating model",
     "3,600× Execution Head Start: 30 days of mobilization compressed to 12 minutes — before rivals have scheduled their first alignment call",
-    "170 pre-staged playbooks replace real-time coordination — the broadest AI-native strategic response coverage available",
+    "170 pre-staged playbooks replace real-time coordination — the broadest strategic readiness coverage available",
     "We're not competing with Copilot. We're competing with the meeting-heavy, committee-bound operating model Fortune 1000s have run for 40 years"
   ];
 
@@ -142,12 +142,12 @@ export default function VCPresentations() {
                   <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">VaughnMartin Executive Presentation</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-2 text-white" style={CG}>Investor Relations Center</h1>
-                <p className="text-[#DFC178] text-lg max-w-xl font-medium">Series B Presentation Materials & Financial Projections</p>
+                <p className="text-[#DFC178] text-lg max-w-xl font-medium">Seed Round Presentation Materials & Investment Thesis</p>
               </div>
               <div className="flex items-center space-x-4">
                 <Badge variant="outline" className="text-[#C9A84C] border-[#C9A84C]/50 px-4 py-1">
                   <Star className="w-3 h-3 mr-2" />
-                  Series B Ready
+                  Seed Round Ready
                 </Badge>
                 <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold px-4 py-1">
                   Investment Grade
@@ -181,7 +181,7 @@ export default function VCPresentations() {
                 <div className="w-7 h-[1px] bg-[#C9A84C]"></div>
                 <span className="text-[9px] uppercase tracking-[0.2em] text-[#C9A84C] font-bold">Documentation</span>
               </div>
-              <h2 className="text-3xl font-light text-[#0A0F2E]" style={CG}>Series B Presentation Materials</h2>
+              <h2 className="text-3xl font-light text-[#0A0F2E]" style={CG}>Seed Round Presentation Materials</h2>
               
               <div className="space-y-4">
                 {pitchMaterials.map((material, index) => (
