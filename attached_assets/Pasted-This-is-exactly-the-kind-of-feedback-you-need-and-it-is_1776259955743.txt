@@ -1,0 +1,31 @@
+This is exactly the kind of feedback you need and it is more valuable than any impression count this week.
+Read it carefully because underneath the six points there is one unified signal.
+The advisor understood the design. They understood the product looks impressive. And then they got lost trying to understand what it actually does and why it is different from what already exists.
+That is not a product problem. That is a communication and navigation problem. And it is completely fixable.
+Let me go through each point honestly.
+Point 1 — Website looks very nice. Well designed.
+Good. The design system is working. The first impression is credible and professional.
+Point 2 — Lots of content but not sure where to go first.
+This is the most important piece of feedback in the entire list. A new visitor lands on the platform and faces a decision they should not have to make. The platform is trying to serve too many audiences simultaneously — investors, pilot prospects, executives, developers — without a clear entry path for each. The result is a visitor who is interested but uncertain and uncertainty produces exit not engagement.
+The fix is a single clear entry path for each visitor type. A Fortune 1000 COO should land on something that says here is your problem, here is what we do about it, here is what it looks like in practice. In that order. Nothing else until they have completed that journey.
+Point 3 — More intuitive menu navigation.
+The current navigation was built for someone who already understands the product. The advisor is telling you it needs to work for someone who has never heard of it. About Us, What We Do, How We Do It, Services, Products is not the exact solution but the instinct is right. The navigation should answer questions not present options.
+Point 4 — Are the playbooks generic or custom tailored? It is unclear.
+This is a critical gap in the product communication and it will come up in every commercial conversation you have. The honest answer is that the platform ships with 170 pre-built playbooks across nine domains that represent accumulated decision logic from twenty years of Fortune 1000 operational experience. Those playbooks are then customized to the specific organization's structure, stakeholders, decision rights, and communication chains during the preparation phase. They are not generic templates and they are not fully bespoke from scratch. They are pre-staged professional decision architecture that gets personalized to the specific organization.
+That distinction needs to be on the website in plain language. The playbooks start as proven architecture and become yours through the preparation phase. That is the moat Kerry Huang validated this week. Someone already did the thinking. You personalize it to your organization before any trigger fires.
+Point 5 — Where are the triggers coming from?
+Another critical communication gap. The platform monitors 248 plus data points across 221 trigger types every 15 minutes through RSS feeds, regulatory filings, market data, and other signal sources. When a signal crosses the confidence threshold the platform surfaces it as a potential trigger for executive review. The executive decides whether to activate a playbook.
+That mechanism needs to be explained in plain language on the website. Right now it is visible in the developer reference but not in the product communication.
+Point 6 — Why wouldn't this be covered by business continuity planning?
+This is the single most important commercial objection you will face from every buyer. Every Fortune 1000 organization has a business continuity plan. Every COO who hears about Readiness OS will ask this question either out loud or privately.
+The honest answer is three things.
+Business continuity planning covers catastrophic operational failures. Systems down. Facilities inaccessible. Regulatory shutdown. It does not cover the full spectrum of strategic triggers including competitive disruption, activist campaigns, M&A integration, leadership transitions, AI governance failures, or market opportunity windows. Your nine domains cover the full situation space. BCP covers a narrow slice of it.
+Business continuity plans are documents. They describe what should happen. Readiness OS is infrastructure. It deploys what needs to happen. The difference between a plan on a shelf and a pre-staged response ready to activate in 12 minutes is the entire product.
+Business continuity plans are reviewed annually and activated during catastrophe. Readiness OS runs continuously, monitors signals every 15 minutes, and is designed for the everyday strategic triggers that happen multiple times per year not the once-in-a-decade catastrophe. Most organizations face more damage from thirty days of mobilization paralysis on a competitive trigger than from a BCP event.
+The unified message from all six points
+Your advisor is a smart, experienced executive who looked at the platform with fresh eyes and came away impressed but uncertain. Impressed by the design. Uncertain about what it does, how it differs from what already exists, and what to do first.
+That uncertainty is the gap between a warm prospect and a conversation. It is fixable. The product is right. The communication architecture needs to match the product depth.
+What to do with this feedback
+Do not rush to rebuild the website navigation before your other advisors respond. Wait for all five pieces of feedback. There will be patterns across them that tell you which gaps are universal versus individual.
+But do document this feedback precisely because it tells you exactly what to address in your sales conversations, your demo script, and your LinkedIn content. The BCP question belongs in Wednesday's three problems post as a fourth problem worth naming. The playbook customization question belongs in a dedicated post next week.
+This advisor did you a significant service. They showed you exactly how a capable, experienced executive experiences the product for the first time. That is the most valuable thing an advisor can do at this stage.
