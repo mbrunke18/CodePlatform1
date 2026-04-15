@@ -1704,6 +1704,217 @@ function ContrastMomentSection() {
   );
 }
 
+// ─── How Triggers Work ───────────────────────────────────────────────────────
+function HowTriggersWorkSection() {
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const sources = [
+    { label: "News & Business Media", detail: "NY Times, BBC, CNBC, MarketWatch, NPR — scanned every 15 minutes" },
+    { label: "Regulatory Filings", detail: "Federal Register — rule changes, enforcement notices, compliance deadlines" },
+    { label: "Market Data Feeds", detail: "Google Finance, Entrepreneur — competitive moves, deal announcements, market shifts" },
+    { label: "Industry Signal Sources", detail: "Sector-specific feeds across finance, pharma, manufacturing, energy, and retail" },
+  ];
+  return (
+    <section style={{ background: "#F8F7F4", padding: "80px 0", borderTop: "1px solid #E8E4DC" }}>
+      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
+        <Reveal>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 64, flexWrap: "wrap" as const }}>
+            {/* Left: explanation */}
+            <div style={{ flex: "1 1 400px", minWidth: 300 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 32, height: 2, background: TEAL }} />
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Where Triggers Come From</span>
+              </div>
+              <h2 style={{ ...CG, fontSize: "clamp(24px,3vw,36px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 20 }}>
+                The system monitors continuously.<br />
+                <em style={{ color: GOLD, fontStyle: "italic" }}>Executives decide.</em>
+              </h2>
+              <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 20 }}>
+                Readiness OS monitors <strong>248+ data points across 221 trigger types</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a potential trigger for executive review.
+              </p>
+              <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 28 }}>
+                No playbook activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
+              </p>
+              <div style={{ padding: "16px 20px", background: NAVY, display: "inline-block" }}>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>Monitoring cadence</div>
+                <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1 }}>Every 15 minutes</div>
+                <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 4 }}>8 live signal sources · 221 trigger patterns</div>
+              </div>
+            </div>
+            {/* Right: sources */}
+            <div style={{ flex: "1 1 340px", minWidth: 280 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 16 }}>Signal Sources</div>
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 2 }}>
+                {sources.map((s, i) => (
+                  <div key={i} style={{ padding: "18px 20px", background: "#fff", border: "1px solid #E8E4DC", display: "flex", gap: 16, alignItems: "flex-start" }}>
+                    <div style={{ width: 28, height: 28, flexShrink: 0, background: "rgba(43,138,110,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <div style={{ width: 8, height: 8, background: TEAL, borderRadius: "50%" }} />
+                    </div>
+                    <div>
+                      <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{s.label}</div>
+                      <div style={{ ...DM, fontSize: 12, color: "#6B7280", lineHeight: 1.5 }}>{s.detail}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 16, padding: "14px 18px", background: "rgba(43,138,110,0.06)", border: "1px solid rgba(43,138,110,0.18)" }}>
+                <p style={{ ...DM, fontSize: 12, color: TEAL, margin: 0, lineHeight: 1.55 }}>
+                  <strong>Signal → Review → Authorize → Execute.</strong> The executive is never bypassed. The system is never idle.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── How Playbooks Work ───────────────────────────────────────────────────────
+function HowPlaybooksWorkSection() {
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const steps = [
+    {
+      num: "01",
+      label: "Pre-Built Architecture",
+      body: "170 playbooks ship as proven decision frameworks — built from 20+ years of Fortune 1000 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
+      accent: GOLD,
+    },
+    {
+      num: "02",
+      label: "Customized to Your Organization",
+      body: "During the preparation phase, each playbook is personalized to your structure: your decision-rights holders, your specific stakeholder chain, your communication protocols, your budget thresholds. The owner is in the room when the response is built — not when it's delivered.",
+      accent: TEAL,
+    },
+    {
+      num: "03",
+      label: "Staged Before Any Trigger Fires",
+      body: "When a trigger fires, your response doesn't start — it deploys. The preparation phase is where the work happens. The 12 minutes is where it executes. That's the difference between a plan on a shelf and infrastructure that's ready to activate.",
+      accent: NAVY,
+    },
+  ];
+  return (
+    <section style={{ background: "#fff", padding: "88px 0", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC" }}>
+      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
+              <div style={{ width: 32, height: 2, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Playbooks Work</span>
+              <div style={{ width: 32, height: 2, background: GOLD }} />
+            </div>
+            <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+              Not generic templates.<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>Proven architecture, personalized to you.</em>
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
+              The playbooks start as accumulated decision logic from decades of Fortune 1000 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
+            </p>
+          </div>
+        </Reveal>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2 }}>
+          {steps.map((s, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div style={{ padding: "36px 32px", background: i === 2 ? NAVY : "#F8F7F4", border: `1px solid ${i === 2 ? "transparent" : "#E8E4DC"}`, height: "100%" }}>
+                <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: s.accent, lineHeight: 1, marginBottom: 16, opacity: i === 2 ? 1 : 0.9 }}>{s.num}</div>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: i === 2 ? "rgba(255,255,255,0.4)" : "#9CA3AF", marginBottom: 10 }}>{s.label}</div>
+                <p style={{ ...DM, fontSize: 14, color: i === 2 ? "rgba(255,255,255,0.75)" : "#4A5568", lineHeight: 1.7, margin: 0 }}>{s.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={0.3}>
+          <div style={{ marginTop: 2, padding: "22px 32px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" as const }}>
+            <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: NAVY, lineHeight: 1.3, flex: "1 1 300px" }}>
+              "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase."
+            </div>
+            <div style={{ ...DM, fontSize: 11, color: "#9CA3AF", flex: "0 0 auto" }}>
+              DR. KERRY HUANG · ESI TOP 1% RESEARCHER · 408-FIRM STUDY
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+// ─── Readiness OS vs Business Continuity Planning ────────────────────────────
+function ReadinessVsBCPSection() {
+  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+  const rows = [
+    {
+      dimension: "Scope",
+      bcp: "Catastrophic operational failures — systems down, facilities inaccessible, regulatory shutdown",
+      ros: "The full strategic trigger spectrum: competitive disruption, activist campaigns, M&A integration, leadership transitions, AI governance, market opportunity windows — and catastrophic events too",
+    },
+    {
+      dimension: "Form",
+      bcp: "A document. It describes what should happen. It sits on a shelf until someone remembers to find it.",
+      ros: "Infrastructure. Pre-staged responses ready to deploy in 12 minutes. The difference between a plan and execution.",
+    },
+    {
+      dimension: "Cadence",
+      bcp: "Reviewed annually. Activated during once-in-a-decade catastrophe.",
+      ros: "Runs continuously. Monitors signals every 15 minutes. Designed for the everyday strategic triggers that happen multiple times per year.",
+    },
+  ];
+  return (
+    <section style={{ ...SECTION_DARK_BG, padding: "88px 0" }}>
+      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
+        <Reveal>
+          <div style={{ marginBottom: 52 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+              <div style={{ width: 32, height: 2, background: GOLD }} />
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Readiness OS vs. Business Continuity Planning</span>
+            </div>
+            <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
+              Every Fortune 1000 has a BCP.<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>None have what fires before the crisis does.</em>
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 640, lineHeight: 1.65 }}>
+              Business continuity planning is necessary. It covers the catastrophic failure your organization hopes never happens. Readiness OS covers the strategic triggers that happen every year — the ones where 30 days of mobilization paralysis causes more damage than the trigger itself.
+            </p>
+          </div>
+        </Reveal>
+        <div style={{ display: "flex", flexDirection: "column" as const, gap: 2 }}>
+          {/* Column headers */}
+          <div style={{ display: "grid", gridTemplateColumns: "160px 1fr 1fr", gap: 2 }}>
+            <div />
+            <div style={{ padding: "10px 20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Business Continuity Planning</span>
+            </div>
+            <div style={{ padding: "10px 20px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Readiness OS</span>
+            </div>
+          </div>
+          {rows.map((row, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <div style={{ display: "grid", gridTemplateColumns: "160px 1fr 1fr", gap: 2 }}>
+                <div style={{ padding: "22px 16px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center" }}>
+                  <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)" }}>{row.dimension}</span>
+                </div>
+                <div style={{ padding: "22px 20px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                  <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0 }}>{row.bcp}</p>
+                </div>
+                <div style={{ padding: "22px 20px", background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)" }}>
+                  <p style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65, margin: 0 }}>{row.ros}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal delay={0.3}>
+          <div style={{ marginTop: 32, padding: "22px 28px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" as const }}>
+            <div style={{ width: 4, height: 48, background: GOLD, flexShrink: 0 }} />
+            <p style={{ ...DM, fontSize: 14, color: MUTED_DARK, margin: 0, lineHeight: 1.65, flex: 1 }}>
+              Most Fortune 1000 organizations face more damage from 30 days of mobilization paralysis on a competitive trigger than from a BCP event. Readiness OS is built for the situations that happen every year — the ones your BCP doesn't cover and your current operating model takes 30 days to handle.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── Shadow Simulator CTA ────────────────────────────────────────────────────
 function SimulatorCTASection() {
   return (
@@ -1763,14 +1974,17 @@ export default function Homepage() {
       <GuestPreviewBanner />
       <HeroSection />
       <LiveSignalFeedSection />
+      <HowTriggersWorkSection />
       <ProblemSection />
       <ExecutionGapSection />
       <MissingLayerSection />
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
+      <HowPlaybooksWorkSection />
       <MicrosoftEcosystemBanner />
       <CompetitiveClaritySection />
+      <ReadinessVsBCPSection />
       <CredibilitySection />
       <SimulatorCTASection />
       <CTASection />
