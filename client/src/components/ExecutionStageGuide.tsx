@@ -7,7 +7,7 @@ export const EXECUTION_STAGES = [
   {
     number: 1,
     name: 'Triggered',
-    shortDef: 'Signal threshold crossed — playbook auto-deployed by AI.',
+    shortDef: 'Signal threshold crossed — playbook pre-staged and system-deployed.',
     fullDef: 'A monitored signal crosses its threshold. The AI evaluation engine selects the matched playbook and begins automated deployment. No human initiates this step.',
     inClock: true,
     color: GOLD,

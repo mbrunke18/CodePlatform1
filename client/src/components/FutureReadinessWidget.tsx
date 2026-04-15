@@ -103,7 +103,7 @@ export default function FutureReadinessWidget({ organizationId }: { organization
                 <Badge className="bg-[#0A0F2E] text-white text-xs font-semibold">NEW</Badge>
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Real-time strategic preparedness • AI intelligence • Predictive analysis
+                Real-time strategic preparedness • System intelligence • Predictive analysis
               </p>
             </div>
           </div>

@@ -44,7 +44,7 @@ export default function BusinessIntelligence() {
       competitor: "Business Intelligence Platforms", 
       strength: "Data visualization",
       weakness: "No strategic execution integration",
-      ourAdvantage: "AI intelligence + immediate execution coordination",
+      ourAdvantage: "Signal intelligence + immediate execution coordination",
       marketPosition: "Leading"
     },
     {

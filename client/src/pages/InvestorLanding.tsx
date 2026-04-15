@@ -497,7 +497,7 @@ export default function InvestorLanding() {
                 Massive Market Opportunity
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-market-subtitle">
-                Creating a new $127B software category at the intersection of strategic planning, AI intelligence, and execution automation
+                Creating a new $127B software category at the intersection of strategic planning, platform intelligence, and execution automation
               </p>
             </div>
 

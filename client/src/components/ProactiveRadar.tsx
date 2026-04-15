@@ -339,7 +339,7 @@ export default function ProactiveRadar() {
                 Synthetic Futures Engine
               </CardTitle>
               <p className="text-sm text-gray-600">
-                Generate novel strategic scenarios beyond historical templates using AI intelligence.
+                Generate novel strategic scenarios beyond historical templates using the Intelligence Core.
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
