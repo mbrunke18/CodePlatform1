@@ -47,7 +47,7 @@ const scenarioComparisons = [
   },
   {
     title: "M&A Day 1 Integration",
-    icon: "",
+    icon: "🤝",
     industry: "Corporate Strategy",
     type: "offense" as const,
     traditional: { time: "90+ days", cost: "$180M synergy delay" },
