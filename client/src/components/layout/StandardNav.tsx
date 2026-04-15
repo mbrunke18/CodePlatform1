@@ -391,6 +391,7 @@ export default function StandardNav() {
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
               { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
               { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
+              { path: '/vs-bcp', icon: Scale, label: 'Readiness OS vs. BCP', sub: 'Your BCP covers catastrophe. We cover the triggers that happen every year.' },
             ].map(l => megaItem(l))}
           </div>
           <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>

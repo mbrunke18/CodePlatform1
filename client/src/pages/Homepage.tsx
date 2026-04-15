@@ -1847,84 +1847,6 @@ function HowPlaybooksWorkSection() {
   );
 }
 
-// ─── Readiness OS vs Business Continuity Planning ────────────────────────────
-function ReadinessVsBCPSection() {
-  const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-  const rows = [
-    {
-      dimension: "Scope",
-      bcp: "Catastrophic operational failures — systems down, facilities inaccessible, regulatory shutdown",
-      ros: "The full strategic trigger spectrum: competitive disruption, activist campaigns, M&A integration, leadership transitions, AI governance, market opportunity windows — and catastrophic events too",
-    },
-    {
-      dimension: "Form",
-      bcp: "A document. It describes what should happen. It sits on a shelf until someone remembers to find it.",
-      ros: "Infrastructure. Pre-staged responses ready to deploy in 12 minutes. The difference between a plan and execution.",
-    },
-    {
-      dimension: "Cadence",
-      bcp: "Reviewed annually. Activated during once-in-a-decade catastrophe.",
-      ros: "Runs continuously. Monitors signals every 15 minutes. Designed for the everyday strategic triggers that happen multiple times per year.",
-    },
-  ];
-  return (
-    <section style={{ ...SECTION_DARK_BG, padding: "88px 0" }}>
-      <div style={{ ...CONTAINER, maxWidth: 1100 }}>
-        <Reveal>
-          <div style={{ marginBottom: 52 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <div style={{ width: 32, height: 2, background: GOLD }} />
-              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD }}>Readiness OS vs. Business Continuity Planning</span>
-            </div>
-            <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
-              Every Fortune 1000 has a BCP.<br />
-              <em style={{ color: GOLD, fontStyle: "italic" }}>None have what fires before the crisis does.</em>
-            </h2>
-            <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 640, lineHeight: 1.65 }}>
-              Business continuity planning is necessary. It covers the catastrophic failure your organization hopes never happens. Readiness OS covers the strategic triggers that happen every year — the ones where 30 days of mobilization paralysis causes more damage than the trigger itself.
-            </p>
-          </div>
-        </Reveal>
-        <div style={{ display: "flex", flexDirection: "column" as const, gap: 2 }}>
-          {/* Column headers */}
-          <div style={{ display: "grid", gridTemplateColumns: "160px 1fr 1fr", gap: 2 }}>
-            <div />
-            <div style={{ padding: "10px 20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Business Continuity Planning</span>
-            </div>
-            <div style={{ padding: "10px 20px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
-              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>Readiness OS</span>
-            </div>
-          </div>
-          {rows.map((row, i) => (
-            <Reveal key={i} delay={i * 0.1}>
-              <div style={{ display: "grid", gridTemplateColumns: "160px 1fr 1fr", gap: 2 }}>
-                <div style={{ padding: "22px 16px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center" }}>
-                  <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)" }}>{row.dimension}</span>
-                </div>
-                <div style={{ padding: "22px 20px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-                  <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0 }}>{row.bcp}</p>
-                </div>
-                <div style={{ padding: "22px 20px", background: "rgba(201,168,76,0.05)", border: "1px solid rgba(201,168,76,0.15)" }}>
-                  <p style={{ ...DM, fontSize: 13, color: MUTED_DARK, lineHeight: 1.65, margin: 0 }}>{row.ros}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal delay={0.3}>
-          <div style={{ marginTop: 32, padding: "22px 28px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 20, alignItems: "center", flexWrap: "wrap" as const }}>
-            <div style={{ width: 4, height: 48, background: GOLD, flexShrink: 0 }} />
-            <p style={{ ...DM, fontSize: 14, color: MUTED_DARK, margin: 0, lineHeight: 1.65, flex: 1 }}>
-              Most Fortune 1000 organizations face more damage from 30 days of mobilization paralysis on a competitive trigger than from a BCP event. Readiness OS is built for the situations that happen every year — the ones your BCP doesn't cover and your current operating model takes 30 days to handle.
-            </p>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 // ─── Shadow Simulator CTA ────────────────────────────────────────────────────
 function SimulatorCTASection() {
   return (
@@ -1994,7 +1916,6 @@ export default function Homepage() {
       <HowPlaybooksWorkSection />
       <MicrosoftEcosystemBanner />
       <CompetitiveClaritySection />
-      <ReadinessVsBCPSection />
       <CredibilitySection />
       <SimulatorCTASection />
       <CTASection />
