@@ -20,11 +20,11 @@ const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 
 function useNavLogoHeight() {
-  const [h, setH] = useState(130);
+  const [h, setH] = useState(68);
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      setH(w >= 1920 ? 180 : w >= 1440 ? 160 : 130);
+      setH(w >= 1920 ? 80 : w >= 1440 ? 72 : 68);
     };
     update();
     window.addEventListener("resize", update);
