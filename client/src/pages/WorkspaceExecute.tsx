@@ -232,7 +232,7 @@ function JITContextBanner({ runId }: { runId: string }) {
             <p className="text-xs font-bold text-[#0A0F2E] dark:text-white uppercase tracking-wider mb-2">Live Status</p>
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1.5 text-sm text-[#6B7280]">
-                <Activity className="h-3.5 w-3.5 text-blue-500" /> In Progress
+                <Activity className="h-3.5 w-3.5 text-[#2B8A6E]" /> In Progress
               </span>
               <span className="font-bold text-[#0A0F2E] dark:text-white text-sm">{ctx.inProgress}</span>
             </div>
@@ -329,7 +329,7 @@ function MyActionsPanel({ runId }: { runId: string }) {
                   ) : task.status === 'blocked' ? (
                     <AlertOctagon className="h-4 w-4 text-red-500" />
                   ) : task.status === 'in_progress' ? (
-                    <Activity className="h-4 w-4 text-blue-500" />
+                    <Activity className="h-4 w-4 text-[#2B8A6E]" />
                   ) : (
                     <Clock className="h-4 w-4 text-[#6B7280]" />
                   )}

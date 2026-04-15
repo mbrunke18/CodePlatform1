@@ -19,7 +19,7 @@ const data: EcosystemPageData = {
   connectors: [
     { label: "Flow Designer",    sub: "Workflow triggers",   icon: "◆", color: "#00B89C" },
     { label: "Integration Hub",  sub: "Data connectors",     icon: "⬡", color: "#00A38D" },
-    { label: "Now Assist",       sub: "AI analysis",         icon: "◈", color: "#00B89C" },
+    { label: "Now Assist",       sub: "Signal analysis",      icon: "◈", color: "#00B89C" },
     { label: "CMDB",             sub: "Asset context",       icon: "◉", color: "#007F6D" },
     { label: "SecOps",           sub: "Security signals",    icon: "◎", color: "#00A38D" },
   ],

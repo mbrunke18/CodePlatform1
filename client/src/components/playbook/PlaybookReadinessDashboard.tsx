@@ -17,8 +17,8 @@ interface PlaybookReadinessDashboardProps {
 }
 
 const PHASE_CONFIG = {
-  identify: { name: 'IDENTIFY', icon: Target, color: 'violet', description: 'Pre-execution readiness' },
-  detect: { name: 'DETECT', icon: Radar, color: 'blue', description: 'Trigger monitoring' },
+  identify: { name: 'IDENTIFY', icon: Target, color: 'teal', description: 'Pre-execution readiness' },
+  detect: { name: 'DETECT', icon: Radar, color: 'teal', description: 'Trigger monitoring' },
   execute: { name: 'EXECUTE', icon: Zap, color: 'emerald', description: 'Execution capability' },
   advance: { name: 'ADVANCE', icon: BookOpen, color: 'amber', description: 'Learning infrastructure' },
 };
@@ -136,7 +136,7 @@ export default function PlaybookReadinessDashboard({
 
   const getOverallStatus = () => {
     if (overallScore >= 80) return { label: 'Fully Ready', color: 'green', icon: CheckCircle2 };
-    if (overallScore >= 60) return { label: 'Mostly Ready', color: 'blue', icon: TrendingUp };
+    if (overallScore >= 60) return { label: 'Mostly Ready', color: 'teal', icon: TrendingUp };
     if (overallScore >= 40) return { label: 'Needs Attention', color: 'amber', icon: AlertTriangle };
     return { label: 'Setup Required', color: 'red', icon: Clock };
   };
