@@ -500,9 +500,9 @@ export default function HowItWorks() {
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Simulation Studio</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Test Scenarios Before They Happen</div>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
-                Describe any hypothetical scenario and the Simulation Studio runs a dry-run against your actual playbook library. It returns Survive and Thrive scores, shows which playbooks would activate, and identifies coverage gaps — before you commit anything.
+                Describe any hypothetical scenario and the Simulation Studio runs a dry-run against your actual playbook library. It maps your coverage readiness, shows which playbooks would activate, and identifies gaps — before you commit anything.
               </p>
-              <CheckItem text="Survive / Thrive scores (0–100)" />
+              <CheckItem text="Coverage readiness mapped by domain" />
               <CheckItem text="Matched playbooks from your library" />
               <CheckItem text="Coverage gaps identified by domain" />
             </div>

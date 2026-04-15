@@ -231,7 +231,7 @@ export default function OnboardingGuide() {
             <StepCard number={3} icon={BookOpen} title="Playbook Library" path="/playbooks"
               description="Browse all 170 pre-built strategic playbooks across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
             <StepCard number={4} icon={Activity} title="Simulation Studio" path="/simulation-studio"
-              description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a Survive vs. Thrive score with recommended playbooks. Use this in board preparation and executive planning sessions." />
+              description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a coverage readiness map with recommended playbooks pre-staged for activation. Use this in board preparation and executive planning sessions." />
             <StepCard number={5} icon={FileText} title="Board Readiness Snapshot" path="/board-readiness"
               description="A print-ready executive report showing your domain coverage, response time statistics, readiness score (0–100), and recent trigger detections. Export as PDF for board and audit committee presentations." />
           </div>
@@ -373,7 +373,7 @@ export default function OnboardingGuide() {
             <FeatureRow icon={BookOpen} color={GOLD} title="Playbook Library" path="/playbooks"
               description="All 170 playbooks with search and domain filters. Authenticated users can deploy playbooks and use the Task Editor to customize phases and assignments." />
             <FeatureRow icon={Activity} color={TEAL} title="Simulation Studio" path="/simulation-studio"
-              description="Strategic scenario modeling. Input any threat, select industry, and receive Survive vs. Thrive scores with recommended playbooks and recommended actions." />
+              description="Strategic scenario modeling. Input any threat, select industry, and receive a coverage readiness brief with pre-staged playbook recommendations and recommended actions." />
             <FeatureRow icon={FileText} color={RED} title="Board Readiness Snapshot" path="/board-readiness"
               description="Print-ready board report with domain coverage ring, readiness score, Execution Dividend, and recent detections. Export as PDF in one click." />
             <FeatureRow icon={TrendingUp} color={TEAL} title="Readiness Dividend" path="/mission-control"
@@ -401,7 +401,7 @@ export default function OnboardingGuide() {
               { title: "12-Minute Test Drive", path: "/try-demo", desc: "Public 4-step simulation of a live trigger-to-execution cycle. No login required. Ideal as a first introduction." },
               { title: "Industry Demos (9)", path: "/demos", desc: "Sector-specific crisis simulations: Energy, Pharma, Finance, Retail, Luxury, Manufacturing, and more." },
               { title: "Role Experience", path: "/role-selector", desc: "CEO, CFO, CMO, CISO, COO and 7 other role-specific 13-stage simulations showing the exact experience for each executive." },
-              { title: "Simulation Studio", path: "/simulation-studio", desc: "Open-ended scenario modeling. Any strategic threat, any industry. Survive vs. Thrive scoring with playbook recommendations." },
+              { title: "Simulation Studio", path: "/simulation-studio", desc: "Open-ended scenario modeling. Any strategic threat, any industry. Coverage readiness mapped with pre-staged playbook recommendations." },
               { title: "IDEA Framework", path: "/idea-framework", desc: "Full walkthrough of the Identify → Detect → Execute → Advance framework with the NFL coaching analogy." },
               { title: "Investor Presentation", path: "/investor", desc: "Investor-grade deck with market thesis, McKinsey validation, competitive comparison, and ROI model." },
             ].map(({ title, path, desc }) => (
