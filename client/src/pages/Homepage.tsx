@@ -775,6 +775,101 @@ function MissingLayerSection() {
   );
 }
 
+// ─── SECTION 4: Athlete Preparation Bridge ───────────────────────────────────
+function AthletePreparationSection() {
+  const mappings = [
+    {
+      athlete: "Athletes study their specific opponent — every week, not just before the game.",
+      platform: "Readiness OS monitors 248 signals every 15 minutes. Continuously. The environment is always being read — not just when a trigger fires.",
+      icon: "◎",
+    },
+    {
+      athlete: "Athletes rehearse every situation they expect to face — with their specific team, for their specific conditions.",
+      platform: "170 playbooks, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
+      icon: "◈",
+    },
+    {
+      athlete: "By Saturday, the performance is already decided. The competition is the confirmation.",
+      platform: "The response is ready before the trigger fires. Not assembled in the moment. Not improvised under pressure. Already decided.",
+      icon: "◉",
+    },
+  ];
+
+  return (
+    <section style={{ background: IVORY, padding: "100px 0", position: "relative", overflow: "hidden" }}>
+      {/* Subtle grid */}
+      <div style={{ position: "absolute", inset: 0, ...GOLD_GRID_BG, opacity: 0.5, pointerEvents: "none" }} />
+
+      <div style={{ ...CONTAINER, position: "relative", zIndex: 1 }}>
+        <Reveal>
+          {/* Section label */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 56 }}>
+            <div style={{ width: 32, height: 1.5, background: GOLD, flexShrink: 0 }} />
+            <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Preparation Principle</span>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+
+            {/* Left — editorial essay */}
+            <div>
+              <h2 style={{ ...GEO, fontSize: "clamp(28px,3.2vw,42px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 28 }}>
+                Elite athletes don't figure out how{" "}
+                <em style={{ color: GOLD, fontStyle: "italic" }}>to perform on game day.</em>
+              </h2>
+              <p style={{ ...GEO, fontSize: "clamp(18px,1.6vw,22px)", color: "#374151", lineHeight: 1.7, marginBottom: 20 }}>
+                Tuesday through Friday is where Saturday is decided. The competition is the confirmation — not the preparation.
+              </p>
+              <p style={{ ...DM, fontSize: 15, color: MUTED_LIGHT, lineHeight: 1.75, marginBottom: 28 }}>
+                Most Fortune 1000 organizations do the opposite. They perform when the trigger fires and prepare for nothing. Every response begins from scratch — who needs to be in the room, what the plan is, who owns what. The mobilization cycle alone takes 30 days.
+              </p>
+              <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24, marginBottom: 0 }}>
+                <p style={{ ...GEO, fontSize: 20, fontWeight: 700, color: NAVY, lineHeight: 1.4, marginBottom: 0 }}>
+                  Readiness OS is the preparation infrastructure that makes the organizational response ready before the trigger arrives.
+                </p>
+              </div>
+            </div>
+
+            {/* Right — three mappings */}
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 0 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: MUTED_LIGHT, marginBottom: 20 }}>
+                How the principle maps to the platform
+              </div>
+              {mappings.map((m, i) => (
+                <div key={i} style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 24, paddingBottom: 24 }}>
+                  <div style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 12 }}>
+                    <span style={{ ...GEO, fontSize: 18, color: GOLD, flexShrink: 0, lineHeight: 1, marginTop: 2 }}>{m.icon}</span>
+                    <p style={{ ...GEO, fontSize: 15, fontWeight: 600, color: "#374151", lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>
+                      {m.athlete}
+                    </p>
+                  </div>
+                  <div style={{ paddingLeft: 34 }}>
+                    <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, lineHeight: 1.65, margin: 0 }}>
+                      {m.platform}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              <div style={{ borderTop: `1px solid ${BORDER}` }} />
+            </div>
+          </div>
+
+          {/* Footer pull-quote */}
+          <div style={{ marginTop: 64, padding: "32px 40px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 40, flexWrap: "wrap" as const }}>
+            <p style={{ ...GEO, fontSize: "clamp(16px,1.6vw,20px)", fontWeight: 700, color: "#fff", lineHeight: 1.4, margin: 0, maxWidth: 640 }}>
+              Any organization can be ready for every situation it expects to face.{" "}
+              <em style={{ color: GOLD, fontStyle: "italic" }}>That's not a promise about speed. It's a promise about fearlessness.</em>
+            </p>
+            <div style={{ flexShrink: 0 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>The Preparation Arc</div>
+              <div style={{ ...GEO, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>Preparation → Readiness → Fearless</div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 // ─── SECTION 5: IDEA Framework ───────────────────────────────────────────────
 function IDEASection() {
   const cards = [
@@ -1910,6 +2005,7 @@ export default function Homepage() {
       <ProblemSection />
       <ExecutionGapSection />
       <MissingLayerSection />
+      <AthletePreparationSection />
       <ContrastMomentSection />
       <IDEASection />
       <PlatformPreviewSection />
