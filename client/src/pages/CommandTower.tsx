@@ -548,8 +548,7 @@ export default function CommandTower() {
               <RefreshCw size={12} />
               Refresh
             </button>
-            <Link href="/request-access">
-              <a style={{
+            <Link href="/request-access" style={{
                 display: 'flex', alignItems: 'center', gap: 7,
                 background: GOLD, color: NAVY,
                 borderRadius: 0, padding: '9px 18px',
@@ -557,7 +556,6 @@ export default function CommandTower() {
                 textDecoration: 'none', whiteSpace: 'nowrap',
               }}>
                 ACCESS PLATFORM <ArrowRight size={13} />
-              </a>
             </Link>
           </div>
         </div>
@@ -626,10 +624,8 @@ export default function CommandTower() {
                   LIVE ALERT ZONE
                 </span>
               </div>
-              <Link href="/live-detection-feed">
-                <a style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
-                  Full Feed <ArrowRight size={11} />
-                </a>
+              <Link href="/live-detection-feed" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
+                Full Feed <ArrowRight size={11} />
               </Link>
             </div>
 

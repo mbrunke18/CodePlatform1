@@ -368,17 +368,17 @@ export default function TwelveMinuteTestDrive() {
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
                 {/* Survive/Thrive Scores */}
-                <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.08)', border: '1px solid rgba(43,138,110,0.25)', borderTop: `3px solid ${TEAL}` }}>
+                <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.08)', borderTop: `3px solid ${TEAL}`, borderRight: '1px solid rgba(43,138,110,0.25)', borderBottom: '1px solid rgba(43,138,110,0.25)', borderLeft: '1px solid rgba(43,138,110,0.25)' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Survive Score (Without Readiness OS)</div>
                   <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.surviveScore ?? 61}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — current readiness estimate</div>
                 </div>
-                <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.25)', borderTop: `3px solid ${GOLD}` }}>
+                <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', borderTop: `3px solid ${GOLD}`, borderRight: '1px solid rgba(201,168,76,0.25)', borderBottom: '1px solid rgba(201,168,76,0.25)', borderLeft: '1px solid rgba(201,168,76,0.25)' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Thrive Score (With Readiness OS)</div>
                   <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.thriveScore ?? 34}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — with 12-minute execution</div>
                 </div>
-                <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: `3px solid ${GOLD}` }}>
+                <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', borderLeft: `3px solid ${GOLD}`, borderTop: '1px solid rgba(255,255,255,0.1)', borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
                   <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
                     {brief?.aiAnalysis || `This ${scenario.title.toLowerCase()} scenario demands immediate cross-functional coordination across your entire C-Suite. Organizations with pre-staged response infrastructure gain a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing. The difference between a controlled response and a cascading crisis is measured in the first 12 minutes.`}
@@ -570,7 +570,7 @@ export default function TwelveMinuteTestDrive() {
                 { label: 'Execution Head Start', value: '3,600×', sub: 'while rivals are still mobilizing', color: GOLD },
                 { label: 'Damage Contained', value: '68%', sub: 'avg reduction in impact', color: TEAL },
               ].map(m => (
-                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${m.color}`, textAlign: 'center' }}>
+                <div key={m.label} style={{ padding: '20px', background: 'rgba(255,255,255,0.04)', borderTop: `3px solid ${m.color}`, borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)', borderLeft: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: m.color, marginBottom: 8 }}>{m.label}</div>
                   <div style={{ fontSize: 32, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
                   <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)' }}>{m.sub}</div>
@@ -579,7 +579,7 @@ export default function TwelveMinuteTestDrive() {
             </div>
 
             {/* What this means */}
-            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', border: `1px solid ${GOLD}`, borderLeft: `4px solid ${GOLD}`, marginBottom: 24 }}>
+            <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', borderLeft: `4px solid ${GOLD}`, borderTop: `1px solid ${GOLD}`, borderRight: `1px solid ${GOLD}`, borderBottom: `1px solid ${GOLD}`, marginBottom: 24 }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>What You Just Experienced</div>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>
                 In this test drive, Readiness OS coordinated {tasks.length} cross-functional tasks across {Array.from(new Set(tasks.map(t => t.role))).length} leadership roles — in sequence, with context, and with zero navigation. In a real activation, this same sequence deploys across your actual organization, notifying real stakeholders, assigning real tasks, and generating real documentation. The result: your organization moves from detection to coordinated response in under 12 minutes.
@@ -587,7 +587,7 @@ export default function TwelveMinuteTestDrive() {
             </div>
 
             {/* Fearless resolution */}
-            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', border: `1px solid rgba(43,138,110,0.3)`, borderLeft: `4px solid ${TEAL}`, marginBottom: 40, textAlign: 'center' }}>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', borderLeft: `4px solid ${TEAL}`, borderTop: '1px solid rgba(43,138,110,0.3)', borderRight: '1px solid rgba(43,138,110,0.3)', borderBottom: '1px solid rgba(43,138,110,0.3)', marginBottom: 40, textAlign: 'center' }}>
               <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>
                 "The response was ready before the trigger fired."
               </p>
@@ -603,7 +603,7 @@ export default function TwelveMinuteTestDrive() {
                 { label: 'Preparation Compounds', body: 'Every activation makes the next response faster. The ownership, sequencing, and context built here carry forward to every future trigger in this domain.' },
                 { label: 'The Ownership Was Built', body: 'The roles acknowledged their tasks before the pressure arrived. That is not a behavioral outcome — it is an artifact the preparation phase produced.' },
               ].map(r => (
-                <div key={r.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderTop: `2px solid ${TEAL}` }}>
+                <div key={r.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', borderTop: `2px solid ${TEAL}`, borderRight: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 10 }}>{r.label}</div>
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, margin: 0 }}>{r.body}</p>
                 </div>
