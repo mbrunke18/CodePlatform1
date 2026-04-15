@@ -26,26 +26,6 @@ const DOMAIN_ICONS: Record<string, string> = {
   regulatory: '📋', talent: '👥', competitive: '⚔️', esg: '🌿', cyber: '🛡️', brand: '📣',
 };
 
-function ScoreGauge({ score, label, color, description }: { score: number; label: string; color: string; description: string }) {
-  const r = 70;
-  const circ = Math.PI * r;
-  const dashVal = (score / 100) * circ;
-  return (
-    <div className="flex flex-col items-center p-6 border border-[#E8E4DC] flex-1">
-      <svg width="180" height="100" viewBox="0 0 180 100" className="mb-2">
-        <path d="M 20,90 A 70,70 0 0,1 160,90" fill="none" stroke="#E8E4DC" strokeWidth="12" strokeLinecap="round" />
-        <path d="M 20,90 A 70,70 0 0,1 160,90" fill="none" stroke={color}
-          strokeWidth="12" strokeLinecap="round"
-          strokeDasharray={`${dashVal} 999`} />
-        <text x="90" y="78" textAnchor="middle" fill={color} fontSize="30" fontWeight="900">{score}</text>
-        <text x="90" y="94" textAnchor="middle" fill="#9CA3AF" fontSize="10">/100</text>
-      </svg>
-      <p className="text-[13px] font-bold text-center" style={{ color: NAVY }}>{label}</p>
-      <p className="text-[10px] text-gray-400 text-center mt-1 max-w-[140px]">{description}</p>
-    </div>
-  );
-}
-
 export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
   const [scenario, setScenario] = useState('');
   const [result, setResult] = useState<any>(null);
@@ -59,7 +39,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
     onSuccess: (data: any) => {
       setResult(data);
       queryClient.invalidateQueries({ queryKey: ['/api/simulation-analyses'] });
-      toast({ title: 'Simulation complete', description: `Survive: ${data.surviveScore} · Thrive: ${data.thriveScore}` });
+      toast({ title: 'Coverage brief ready', description: 'System analysis complete — pre-staged playbooks mapped.' });
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
@@ -73,8 +53,6 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
 
   const canRun = scenario.trim().length >= 10 && !analyzeMutation.isPending;
 
-  const surviveColor = (result?.surviveScore ?? 0) >= 70 ? TEAL : (result?.surviveScore ?? 0) >= 45 ? GOLD : '#EF4444';
-  const thriveColor = (result?.thriveScore ?? 0) >= 60 ? TEAL : (result?.thriveScore ?? 0) >= 35 ? GOLD : '#EF4444';
 
   return (
     <PageLayout embedded={embedded}>
@@ -93,12 +71,12 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                   Shadow Strategy <em style={{ color: GOLD }}>Simulator</em>
                 </div>
                 <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
-                  Validate your response before committing resources. AI scores your Survive and Thrive probability across every relevant playbook — giving the board a pre-approved confidence benchmark before a single dollar moves.
+                  Validate your response before committing resources. The system maps your coverage readiness across every relevant playbook — giving the board a pre-approved confidence benchmark before a single dollar moves.
                 </div>
                 <div style={{ display: 'flex', gap: 20, marginTop: 14, flexWrap: 'wrap' }}>
                   {[
                     { label: 'Executive Use', desc: 'Test scenarios before authorization' },
-                    { label: 'Board Governance', desc: 'Thrive score as board confidence instrument' },
+                    { label: 'Board Governance', desc: 'Coverage analysis as board confidence instrument' },
                     { label: 'Audit Trail', desc: 'Every simulation logged — full decision record' },
                   ].map(({ label, desc }) => (
                     <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -113,7 +91,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.12)', color: '#3BAF8A', fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', textTransform: 'uppercase', padding: '5px 14px', border: '1px solid rgba(43,138,110,0.3)' }}>
                   <span style={{ width: 6, height: 6, background: '#3BAF8A', borderRadius: 0, display: 'inline-block' }} />
-                  AI Simulator Active
+                  Simulator Active
                 </div>
               </div>
             </div>
@@ -165,14 +143,20 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                     <p className="text-sm font-semibold" style={{ color: NAVY }}>{result.scenarioText}</p>
                   </div>
 
-                  <div className="flex gap-4">
-                    <ScoreGauge score={result.surviveScore} label="Survive Probability" color={surviveColor} description="Probability of avoiding major damage" />
-                    <ScoreGauge score={result.thriveScore} label="Thrive Probability" color={thriveColor} description="Probability of competitive advantage" />
+                  <div style={{ padding: '12px 20px', background: `${GOLD}08`, borderTop: `1px solid ${GOLD}40`, borderBottom: `1px solid ${GOLD}40`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase' as const, color: GOLD }}>Coverage Brief</div>
+                      <div style={{ width: 1, height: 12, background: `${GOLD}40` }} />
+                      <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF' }}>Pre-Staged · System-Analyzed</div>
+                    </div>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: TEAL }}>● Analysis Complete</div>
                   </div>
 
-                  <div className="p-5 border border-[#E8E4DC]" style={{ borderLeft: `4px solid ${surviveColor}` }}>
-                    <p className="text-[9px] font-black uppercase tracking-wider mb-2" style={{ color: GOLD }}>Executive Analysis</p>
-                    <p className="text-[13px] text-gray-700 leading-relaxed">{result.aiAnalysis}</p>
+                  <div>
+                    <p className="text-[9px] font-black uppercase tracking-wider mb-2" style={{ color: '#9CA3AF', letterSpacing: '0.2em' }}>Situation Assessment</p>
+                    <div className="p-5 border border-[#E8E4DC]" style={{ borderLeft: `4px solid ${GOLD}` }}>
+                      <p className="text-[13px] text-gray-700 leading-relaxed">{result.aiAnalysis}</p>
+                    </div>
                   </div>
 
                   {result.activatedDomains?.length > 0 && (
@@ -258,28 +242,19 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                 </div>
               ) : (
                 <div className="space-y-3 mb-6">
-                  {(history as any[]).map((sim: any) => {
-                    const sc = sim.surviveScore ?? 0;
-                    const tc = sim.thriveScore ?? 0;
-                    const sC = sc >= 70 ? TEAL : sc >= 45 ? GOLD : '#EF4444';
-                    const tC = tc >= 60 ? TEAL : tc >= 35 ? GOLD : '#EF4444';
-                    return (
-                      <button key={sim.id} onClick={() => setResult(sim)}
-                        className="w-full text-left p-4 border border-[#E8E4DC] hover:bg-[#FAFAF9] transition-all">
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center gap-3">
-                            <span className="text-[10px] font-black" style={{ color: sC }}>S:{sc}</span>
-                            <span className="text-[10px] font-black" style={{ color: tC }}>T:{tc}</span>
-                          </div>
-                          <span className="text-[9px] text-gray-400 flex items-center gap-1">
-                            <Clock className="w-2.5 h-2.5" />
-                            {sim.createdAt ? format(new Date(sim.createdAt), 'MMM d') : ''}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-gray-600 line-clamp-2">{sim.scenarioText}</p>
-                      </button>
-                    );
-                  })}
+                  {(history as any[]).map((sim: any) => (
+                    <button key={sim.id} onClick={() => setResult(sim)}
+                      className="w-full text-left p-4 border border-[#E8E4DC] hover:bg-[#FAFAF9] transition-all">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Simulation</span>
+                        <span className="text-[9px] text-gray-400 flex items-center gap-1">
+                          <Clock className="w-2.5 h-2.5" />
+                          {sim.createdAt ? format(new Date(sim.createdAt), 'MMM d') : ''}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-gray-600 line-clamp-2">{sim.scenarioText}</p>
+                    </button>
+                  ))}
                 </div>
               )}
 

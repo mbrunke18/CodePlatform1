@@ -368,53 +368,81 @@ export default function TwelveMinuteTestDrive() {
                 <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
               </div>
             ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
-                {/* Before/After Execution — gap vs guarantee */}
-                <div style={{ padding: '24px', background: 'rgba(180,30,30,0.08)', borderTop: '3px solid #C0392B', borderRight: '1px solid rgba(192,57,43,0.2)', borderBottom: '1px solid rgba(192,57,43,0.2)', borderLeft: '1px solid rgba(192,57,43,0.2)' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 16 }}>Without Readiness OS</div>
-                  <div style={{ fontSize: 56, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{brief?.surviveScore ?? 28}<span style={{ fontSize: 20, color: 'rgba(255,255,255,0.4)' }}>/100</span></div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16 }}>unassisted mobilization readiness</div>
-                  <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
-                    <div style={{ fontSize: 11, color: '#E05A4A', fontWeight: 600 }}>✗ &nbsp;30-day mobilization cycle</div>
-                    <div style={{ fontSize: 11, color: '#E05A4A', fontWeight: 600 }}>✗ &nbsp;Committee coordination required</div>
-                    <div style={{ fontSize: 11, color: '#E05A4A', fontWeight: 600 }}>✗ &nbsp;No pre-staged response</div>
+              <>
+                {/* ── Brief document header ── */}
+                <div style={{ padding: '16px 24px', background: 'rgba(201,168,76,0.06)', borderTop: `1px solid rgba(201,168,76,0.3)`, borderBottom: `1px solid rgba(201,168,76,0.3)`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 12, marginBottom: 24 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Execution Brief</div>
+                    <div style={{ width: 1, height: 12, background: 'rgba(201,168,76,0.3)' }} />
+                    <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>Pre-Staged · System-Analyzed</div>
                   </div>
-                </div>
-                <div style={{ padding: '24px', background: 'rgba(201,168,76,0.06)', borderTop: `3px solid ${GOLD}`, borderRight: `1px solid rgba(201,168,76,0.25)`, borderBottom: `1px solid rgba(201,168,76,0.25)`, borderLeft: `1px solid rgba(201,168,76,0.25)` }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>With Readiness OS</div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
-                    <div>
-                      <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>12<span style={{ fontSize: 16 }}> min</span></div>
-                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>to first response</div>
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>3,600<span style={{ fontSize: 16 }}>×</span></div>
-                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>execution head start</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: brief?.urgencyLevel === 'critical' ? '#C0392B' : brief?.urgencyLevel === 'high' ? GOLD : TEAL }} />
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: brief?.urgencyLevel === 'critical' ? '#E05A4A' : brief?.urgencyLevel === 'high' ? GOLD : TEAL }}>
+                      {brief?.urgencyLevel === 'critical' ? 'Critical Priority' : brief?.urgencyLevel === 'high' ? 'High Priority' : 'Elevated Priority'}
                     </div>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
-                    <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>✓ &nbsp;Pre-staged before the trigger fires</div>
-                    <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>✓ &nbsp;170 playbooks ready to activate</div>
-                    <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>✓ &nbsp;Executive authority preserved</div>
+                </div>
+
+                {/* ── Situation Assessment ── */}
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>Situation Assessment</div>
+                  <div style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', borderLeft: `3px solid ${GOLD}`, borderTop: '1px solid rgba(255,255,255,0.08)', borderRight: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, margin: 0 }}>
+                      {brief?.aiAnalysis || `A ${scenario.title.toLowerCase()} requires immediate cross-functional coordination across your entire C-Suite. Without a pre-staged response, the organization enters a mobilization cycle — identifying stakeholders, aligning on a plan, and assigning roles — before a single action can be taken. That cycle takes weeks. Readiness OS collapses it to 12 minutes because the response was built before this trigger ever fired.`}
+                    </p>
                   </div>
                 </div>
-                <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', borderLeft: `3px solid ${GOLD}`, borderTop: '1px solid rgba(255,255,255,0.1)', borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>
-                    {brief?.aiAnalysis || `This ${scenario.title.toLowerCase()} scenario demands immediate cross-functional coordination across your entire C-Suite. Organizations with pre-staged response infrastructure gain a 3,600× Execution Head Start — while rivals spend weeks mobilizing, you're already executing. The difference between a controlled response and a cascading crisis is measured in the first 12 minutes.`}
-                  </p>
+
+                {/* ── Pre-Staged Response ── */}
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>Pre-Staged Response — Deploys on Activation</div>
+                  <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.06)', borderLeft: `3px solid ${TEAL}`, borderTop: '1px solid rgba(43,138,110,0.2)', borderRight: '1px solid rgba(43,138,110,0.2)', borderBottom: '1px solid rgba(43,138,110,0.2)' }}>
+                    {brief?.activatedPlaybooks?.length > 0 ? (
+                      <>
+                        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>
+                          The following playbooks are pre-staged and will activate the moment you authorize execution:
+                        </div>
+                        <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
+                          {brief.activatedPlaybooks.map((p: string, i: number) => (
+                            <span key={i} style={{ fontSize: 11, fontWeight: 700, padding: '6px 14px', background: 'rgba(43,138,110,0.15)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.3)' }}>
+                              ▸ {p}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
+                        {['Crisis Response Protocol', 'Executive Stakeholder Coordination', 'Communications Lockdown Playbook', 'Legal & Regulatory Notification'].map((p, i) => (
+                          <span key={i} style={{ fontSize: 11, fontWeight: 700, padding: '6px 14px', background: 'rgba(43,138,110,0.15)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.3)' }}>
+                            ▸ {p}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                {brief?.activatedPlaybooks?.length > 0 && (
-                  <div style={{ gridColumn: '1 / -1', padding: '16px 20px', background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.2)' }}>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 10 }}>Playbooks That Will Activate</div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                      {brief.activatedPlaybooks.map((p: string, i: number) => (
-                        <span key={i} style={{ fontSize: 11, fontWeight: 600, padding: '4px 12px', background: 'rgba(43,138,110,0.12)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.25)' }}>{p}</span>
-                      ))}
+
+                {/* ── Execution Timeline ── */}
+                <div style={{ marginBottom: 32 }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>What This Changes</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 0 }}>
+                    <div style={{ padding: '20px 24px', background: 'rgba(180,30,30,0.07)', borderTop: '1px solid rgba(192,57,43,0.2)', borderBottom: '1px solid rgba(192,57,43,0.2)', borderLeft: '1px solid rgba(192,57,43,0.2)', borderRight: 'none' }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 8 }}>Without Readiness OS</div>
+                      <div style={{ fontSize: 36, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>30 <span style={{ fontSize: 16, color: 'rgba(255,255,255,0.4)' }}>days</span></div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>to mobilize, align stakeholders, agree on a plan, then begin executing</div>
+                    </div>
+                    <div style={{ padding: '0 20px', textAlign: 'center' as const, background: 'rgba(255,255,255,0.02)', alignSelf: 'stretch' as const, display: 'flex', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div style={{ fontSize: 18, color: GOLD }}>→</div>
+                    </div>
+                    <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.06)', borderTop: `1px solid rgba(201,168,76,0.25)`, borderBottom: `1px solid rgba(201,168,76,0.25)`, borderRight: `1px solid rgba(201,168,76,0.25)`, borderLeft: 'none' }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                      <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 4 }}>12 <span style={{ fontSize: 16, color: `rgba(201,168,76,0.5)` }}>minutes</span></div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>from trigger detection to full coordinated executive execution — 3,600× head start</div>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              </>
             )}
 
             {!loadingBrief && (

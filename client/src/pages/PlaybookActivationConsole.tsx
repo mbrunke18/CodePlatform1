@@ -871,7 +871,7 @@ export default function PlaybookActivationConsole() {
                 <div style={{ width: 8, height: 8, borderRadius: 0, background: GOLD, flexShrink: 0 }} />
                 <div>
                   <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>Pre-Deployment Dry-Run Available</div>
-                  <div style={{ fontSize: 12, color: MUTED }}>Validate your response strategy before committing resources — see Survive vs. Thrive probability.</div>
+                  <div style={{ fontSize: 12, color: MUTED }}>Validate your response strategy before committing resources — review pre-staged coverage readiness.</div>
                 </div>
               </div>
               <Link href="/simulation-studio">

@@ -1957,7 +1957,7 @@ function SimulatorCTASection() {
             Test Your Organization Against Any Threat
           </h2>
           <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.65 }}>
-            Describe a real scenario your company is facing. Our AI scores your Survive and Thrive probability in seconds — and maps the exact playbooks you'd need to activate.
+            Describe a real scenario your company is facing. The system maps your coverage readiness in seconds — and surfaces the exact playbooks pre-staged for activation.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginBottom: 36 }}>
             {[
