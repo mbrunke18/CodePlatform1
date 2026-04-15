@@ -219,6 +219,7 @@ export default function StandardNav() {
       style={{
         color: highlighted ? GOLD : NAVY,
         background: 'transparent',
+        whiteSpace: 'nowrap',
       }}
       onMouseEnter={e => {
         (e.currentTarget as HTMLElement).style.background = highlighted ? 'rgba(201,168,76,0.10)' : 'rgba(10,15,46,0.07)';
@@ -513,6 +514,7 @@ export default function StandardNav() {
               color: NAVY,
               background: 'rgba(201,168,76,0.08)',
               border: '1px solid rgba(201,168,76,0.3)',
+              whiteSpace: 'nowrap',
             }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.18)';
@@ -668,7 +670,7 @@ export default function StandardNav() {
             <button
               onClick={() => navigateTo('/onboarding-guide')}
               className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-              style={{ color: GOLD, background: 'transparent' }}
+              style={{ color: GOLD, background: 'transparent', whiteSpace: 'nowrap' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
             >
