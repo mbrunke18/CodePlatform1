@@ -596,6 +596,20 @@ export default function TwelveMinuteTestDrive() {
               </p>
             </div>
 
+            {/* STARR Reflection — what this activation built */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2, marginBottom: 40 }}>
+              {[
+                { label: 'Institutional Memory', body: 'The decisions made in this activation now exist as organizational record — not reconstructed from email next time, already documented.' },
+                { label: 'Preparation Compounds', body: 'Every activation makes the next response faster. The ownership, sequencing, and context built here carry forward to every future trigger in this domain.' },
+                { label: 'The Ownership Was Built', body: 'The roles acknowledged their tasks before the pressure arrived. That is not a behavioral outcome — it is an artifact the preparation phase produced.' },
+              ].map(r => (
+                <div key={r.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderTop: `2px solid ${TEAL}` }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 10 }}>{r.label}</div>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, margin: 0 }}>{r.body}</p>
+                </div>
+              ))}
+            </div>
+
             {/* CTA */}
             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
               <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>

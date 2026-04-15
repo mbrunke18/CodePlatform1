@@ -149,6 +149,11 @@ export default function RequestAccess() {
                   <p style={{ ...BC, fontSize: 13, color: "rgba(240,237,228,0.45)", lineHeight: 1.6, letterSpacing: "0.01em" }}>
                     We'll send a secure link to your work email — one click, no password, no commitment.
                   </p>
+                  <div style={{ marginTop: 20, padding: "14px 18px", borderLeft: `2px solid ${GOLD}`, background: "rgba(201,168,76,0.05)" }}>
+                    <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: "rgba(240,237,228,0.7)", lineHeight: 1.6, margin: 0 }}>
+                      Picture 9:12am — your trigger fires at 9:00. Your organization is already executing: every role activated, every task assigned, every stakeholder notified. Your competitor is scheduling their first call.
+                    </p>
+                  </div>
                 </div>
 
                 <Form {...form}>

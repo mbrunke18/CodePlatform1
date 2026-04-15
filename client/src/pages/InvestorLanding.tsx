@@ -96,7 +96,10 @@ export default function InvestorLanding() {
               The response is ready before the trigger fires.
             </p>
             
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(255,255,255,0.72)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: 16, maxWidth: 760, margin: '0 auto 16px', lineHeight: 1.55 }}>
+              The problem isn't strategy, talent, or AI tools. It's that no enterprise has the infrastructure to make the response ready before the trigger fires. We built it.
+            </p>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(255,255,255,0.60)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
               Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Readiness OS customers are already deep into coordinated response — in 12 minutes.
             </p>
 
