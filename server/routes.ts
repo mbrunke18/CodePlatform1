@@ -3484,7 +3484,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
         events = [
           { id: 1, eventType: 'task_completed', valueGenerated: 15000, timestamp: new Date().toISOString(), description: 'Strategic crisis response task completed' },
           { id: 2, eventType: 'scenario_resolved', valueGenerated: 78000, timestamp: new Date(Date.now() - 86400000).toISOString(), description: 'Market disruption scenario successfully managed' },
-          { id: 3, eventType: 'efficiency_gain', valueGenerated: 23000, timestamp: new Date(Date.now() - 172800000).toISOString(), description: 'AI-driven process optimization implemented' }
+          { id: 3, eventType: 'efficiency_gain', valueGenerated: 23000, timestamp: new Date(Date.now() - 172800000).toISOString(), description: 'System-optimized process efficiency implemented' }
         ];
       }
       
@@ -3989,7 +3989,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
             { label: 'Penalty Range', value: 'Up to 6% of global annual revenue' }
           ],
           aiAnalysis: {
-            summary: 'The EU has accelerated enforcement of AI Act provisions for high-risk systems by 6 months. Your AI-powered analytics and decision tools fall under Article 6 classification. Compliance gap analysis shows 3 critical areas needing remediation.',
+            summary: 'The EU has accelerated enforcement of AI Act provisions for high-risk systems by 6 months. Your analytics and decision tools fall under Article 6 classification. Compliance gap analysis shows 3 critical areas needing remediation.',
             confidence: 0.97,
             riskLevel: 'critical',
             timeToImpact: 'Compliance deadline in 4 months',
@@ -4169,7 +4169,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
           urgency: 'high' as const,
           dataPoints: [
             { label: 'Technology', value: 'OpenAI o3 reasoning model - 10x faster inference' },
-            { label: 'Impact Area', value: 'Your AI analysis pipeline cost drops 80%' },
+            { label: 'Impact Area', value: 'Your intelligence pipeline cost drops 80%' },
             { label: 'Competitive Window', value: '60-day integration advantage' },
             { label: 'Customer Demand', value: '8 enterprise customers asking about capabilities' }
           ],
@@ -6196,7 +6196,7 @@ ${org}'s strategic transformation program is 73% complete across 4 major initiat
 
 ### Key Milestones Achieved
 - **Digital Operations**: Automated 47 manual workflows, reducing processing time by 73% ($2.1M annual savings)
-- **Decision Engine**: Successfully piloted AI-driven scenario analysis with 89% accuracy, deployed to 3 business units
+- **Decision Engine**: Successfully piloted system-driven scenario analysis with 89% accuracy, deployed to 3 business units
 - **Coordination Platform**: IDEA Framework fully deployed, 170 playbooks operational, 12-minute coordination benchmark achieved
 - **Workforce**: 340 employees completed strategic execution training (68% of target population)
 

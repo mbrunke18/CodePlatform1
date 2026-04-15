@@ -96,7 +96,7 @@ export function Validation({ progress }: SceneProps) {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7 + i * 0.06 }}
-              className="rounded-full px-3 py-1.5 text-xs font-medium border"
+              className="px-3 py-1.5 text-xs font-medium border"
               style={{
                 backgroundColor: `${firm.color}15`,
                 borderColor: `${firm.color}40`,

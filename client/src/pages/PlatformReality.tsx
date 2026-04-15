@@ -1,4 +1,4 @@
-import { useEffect, CSSProperties } from 'react';
+import React, { useEffect, CSSProperties } from 'react';
 import { useLocation } from 'wouter';
 import { updatePageMetadata } from '@/lib/seo';
 import PageLayout from "@/components/layout/PageLayout";
@@ -384,14 +384,14 @@ export default function PlatformReality() {
               { they: "They described the gap.", we: "We closed it." },
               { they: "They sold the framework.", we: "We shipped the infrastructure." },
             ].map((item, i) => (
-              <>
-                <div key={`col-${i}`} style={{ padding: "0 32px", textAlign: "center" as const }}>
+              <React.Fragment key={i}>
+                <div style={{ padding: "0 32px", textAlign: "center" as const }}>
                   <p style={{ ...CG, fontSize: 18, fontWeight: 600, color: "#9CA3AF", marginBottom: 12, lineHeight: 1.3, fontStyle: "italic" }}>{item.they}</p>
                   <div style={{ width: 32, height: 1.5, background: GOLD, margin: "0 auto 12px" }} />
                   <p style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY, lineHeight: 1.3 }}>{item.we}</p>
                 </div>
-                {i < 2 && <div key={`div-${i}`} style={{ background: "#E8E4DC" }} />}
-              </>
+                {i < 2 && <div style={{ background: "#E8E4DC" }} />}
+              </React.Fragment>
             ))}
           </div>
 

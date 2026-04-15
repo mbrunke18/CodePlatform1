@@ -181,10 +181,10 @@ export default function RoadshowResources() {
             <span className="text-[10px] uppercase tracking-[0.3em] text-[#C9A84C] font-bold">Internal Executive Suite</span>
             <div className="w-8 h-[1px] bg-[#C9A84C]"></div>
           </div>
-          <h1 className="text-5xl font-light mb-6" style={CG} data-testid="heading-roadshow">
+          <h1 className="text-5xl font-light mb-6 text-white" style={CG} data-testid="heading-roadshow">
             Roadshow Preparation
           </h1>
-          <p className="text-[#6B7280] text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#A8B4C0] text-lg leading-relaxed max-w-2xl mx-auto">
             Complete investor materials and strategic talking points. Premium resources for executive-level presentations.
           </p>
         </div>

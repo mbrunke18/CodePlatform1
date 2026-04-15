@@ -240,7 +240,7 @@ DATE: [DATE]
 RE: Competitor Response - [COMPETITOR_NAME] [PRODUCT] Launch
 
 SITUATION:
-[COMPETITOR_NAME] announced [PRODUCT_TECHNOLOGY] on [DATE]. Our AI monitoring detected the announcement and automatically activated Playbook #004 (Competitor Breakthrough Innovation).
+[COMPETITOR_NAME] announced [PRODUCT_TECHNOLOGY] on [DATE]. Our signal monitoring detected the announcement and automatically activated Playbook #004 (Competitor Breakthrough Innovation).
 
 THREAT ASSESSMENT:
 Technology Gap: [TECH_GAP_MONTHS] months (AI evaluated)
@@ -282,7 +282,7 @@ BOARD DECISION REQUIRED:
       timing: 'T+0:00',
       timelinePhase: 'first_2_hours',
       taskName: 'AI Detects Competitor Announcement',
-      taskDescription: 'AI monitoring system detects competitor announcement and calculates threat score. Deliverables: Threat assessment report, AI-generated brief (2 pages)',
+      taskDescription: 'Signal monitoring system detects competitor announcement and calculates threat score. Deliverables: Threat assessment report, system-generated brief (2 pages)',
       taskOwner: 'AI_SYSTEM',
       dependencies: [],
       isRequired: true,

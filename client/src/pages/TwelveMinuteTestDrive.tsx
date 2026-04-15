@@ -305,7 +305,9 @@ export default function TwelveMinuteTestDrive() {
                     style={{
                       textAlign: 'left', padding: '20px 24px', cursor: 'pointer',
                       background: selectedId === s.id ? 'rgba(201,168,76,0.07)' : 'rgba(255,255,255,0.03)',
-                      border: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                      borderTop: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                      borderRight: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
+                      borderBottom: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
                       borderLeft: `3px solid ${s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
                       transition: 'all 0.2s ease',
                       position: 'relative',
