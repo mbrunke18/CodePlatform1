@@ -8934,31 +8934,37 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
       const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId })
         .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(60);
 
-      const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their likely readiness and recommend specific playbooks.
+      const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their execution readiness under TWO conditions.
 
 SCENARIO: "${scenarioText}"
 
 Available playbooks from the Readiness OS library (170 total across 9 domains):
 ${playbooks.map((p: any) => `- ${p.name} (${p.domain})`).slice(0, 40).join('\n')}
 
+Score TWO distinct conditions on a 0-100 scale:
+1. TRADITIONAL RESPONSE (surviveScore): The organization's ability to coordinate an effective response using ONLY traditional methods — committees, calls, ad-hoc coordination with no pre-staged playbooks. Realistically LOW (15-45) because mobilization takes weeks, not minutes.
+2. READINESS OS RESPONSE (thriveScore): The organization's ability to coordinate an effective response WITH Readiness OS pre-staged playbooks, 12-minute execution, and executive-authorized triggers already in place. Realistically HIGH (78-95) because the response is ready before the trigger fires.
+
+The gap between these two scores is the value Readiness OS delivers.
+
 Respond ONLY as JSON with this structure:
 {
-  "surviveScore": 72,
-  "thriveScore": 38,
+  "surviveScore": 28,
+  "thriveScore": 89,
   "activatedPlaybooks": ["Playbook Name 1", "Playbook Name 2", "Playbook Name 3"],
-  "aiAnalysis": "3-sentence executive-level analysis of why this scenario is a strategic risk and what separates organizations that thrive from those that merely survive",
+  "aiAnalysis": "3-sentence executive-level analysis of why this scenario creates a mobilization crisis for unprepared organizations and how Readiness OS pre-staged execution changes the outcome",
   "urgencyLevel": "critical|high|medium",
-  "timeToRespond": "e.g. 12 minutes with Readiness OS vs 72 hours without"
+  "timeToRespond": "12 minutes with Readiness OS vs 30 days without"
 }`;
 
       const raw = await openAIService.analyzeText(prompt);
       let result: any = {
-        surviveScore: 65,
-        thriveScore: 30,
+        surviveScore: 28,
+        thriveScore: 89,
         activatedPlaybooks: ['Strategic Response Protocol', 'Crisis Communications Playbook', 'Executive Coordination Framework'],
-        aiAnalysis: 'This scenario requires immediate cross-functional coordination across multiple stakeholder groups. Organizations with pre-staged playbooks respond 340x faster than those without structured execution frameworks. The difference between surviving and thriving is measured in minutes, not days.',
+        aiAnalysis: 'This scenario creates a mobilization crisis for organizations relying on ad-hoc coordination — weeks of committee alignment before execution even begins. With Readiness OS, the response is pre-staged across all 170 playbooks and activates in 12 minutes from trigger detection. The gap between these two outcomes is 3,600× — and it is determined before the trigger fires, not after.',
         urgencyLevel: 'high',
-        timeToRespond: '12 minutes with Readiness OS vs 72 hours without'
+        timeToRespond: '12 minutes with Readiness OS vs 30 days without'
       };
       try {
         const jsonMatch = raw.match(/\{[\s\S]*\}/);

@@ -369,16 +369,18 @@ export default function TwelveMinuteTestDrive() {
               </div>
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
-                {/* Survive/Thrive Scores */}
-                <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.08)', borderTop: `3px solid ${TEAL}`, borderRight: '1px solid rgba(43,138,110,0.25)', borderBottom: '1px solid rgba(43,138,110,0.25)', borderLeft: '1px solid rgba(43,138,110,0.25)' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Survive Score (Without Readiness OS)</div>
-                  <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.surviveScore ?? 61}</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — current readiness estimate</div>
+                {/* Before/After Execution Scores */}
+                <div style={{ padding: '20px 24px', background: 'rgba(180,30,30,0.08)', borderTop: '3px solid #C0392B', borderRight: '1px solid rgba(192,57,43,0.25)', borderBottom: '1px solid rgba(192,57,43,0.25)', borderLeft: '1px solid rgba(192,57,43,0.25)' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 8 }}>Traditional Response Score</div>
+                  <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.surviveScore ?? 28}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — without pre-staged execution</div>
+                  <div style={{ fontSize: 10, color: '#E05A4A', marginTop: 8, fontWeight: 600 }}>30-day mobilization cycle · committee coordination</div>
                 </div>
-                <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.08)', borderTop: `3px solid ${GOLD}`, borderRight: '1px solid rgba(201,168,76,0.25)', borderBottom: '1px solid rgba(201,168,76,0.25)', borderLeft: '1px solid rgba(201,168,76,0.25)' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Thrive Score (With Readiness OS)</div>
-                  <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.thriveScore ?? 34}</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — with 12-minute execution</div>
+                <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.10)', borderTop: `3px solid ${GOLD}`, borderRight: `1px solid rgba(201,168,76,0.3)`, borderBottom: `1px solid rgba(201,168,76,0.3)`, borderLeft: `1px solid rgba(201,168,76,0.3)` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Readiness OS Score</div>
+                  <div style={{ fontSize: 52, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{brief?.thriveScore ?? 89}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — with pre-staged 12-minute execution</div>
+                  <div style={{ fontSize: 10, color: GOLD, marginTop: 8, fontWeight: 600 }}>Response ready before the trigger fires</div>
                 </div>
                 <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', borderLeft: `3px solid ${GOLD}`, borderTop: '1px solid rgba(255,255,255,0.1)', borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
