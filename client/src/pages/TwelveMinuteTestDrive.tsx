@@ -369,18 +369,34 @@ export default function TwelveMinuteTestDrive() {
               </div>
             ) : (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 40 }}>
-                {/* Before/After Execution Scores */}
-                <div style={{ padding: '20px 24px', background: 'rgba(180,30,30,0.08)', borderTop: '3px solid #C0392B', borderRight: '1px solid rgba(192,57,43,0.25)', borderBottom: '1px solid rgba(192,57,43,0.25)', borderLeft: '1px solid rgba(192,57,43,0.25)' }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 8 }}>Traditional Response Score</div>
-                  <div style={{ fontSize: 52, fontWeight: 700, color: '#fff', lineHeight: 1 }}>{brief?.surviveScore ?? 28}</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — without pre-staged execution</div>
-                  <div style={{ fontSize: 10, color: '#E05A4A', marginTop: 8, fontWeight: 600 }}>30-day mobilization cycle · committee coordination</div>
+                {/* Before/After Execution — gap vs guarantee */}
+                <div style={{ padding: '24px', background: 'rgba(180,30,30,0.08)', borderTop: '3px solid #C0392B', borderRight: '1px solid rgba(192,57,43,0.2)', borderBottom: '1px solid rgba(192,57,43,0.2)', borderLeft: '1px solid rgba(192,57,43,0.2)' }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 16 }}>Without Readiness OS</div>
+                  <div style={{ fontSize: 56, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{brief?.surviveScore ?? 28}<span style={{ fontSize: 20, color: 'rgba(255,255,255,0.4)' }}>/100</span></div>
+                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16 }}>unassisted mobilization readiness</div>
+                  <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
+                    <div style={{ fontSize: 11, color: '#E05A4A', fontWeight: 600 }}>✗ &nbsp;30-day mobilization cycle</div>
+                    <div style={{ fontSize: 11, color: '#E05A4A', fontWeight: 600 }}>✗ &nbsp;Committee coordination required</div>
+                    <div style={{ fontSize: 11, color: '#E05A4A', fontWeight: 600 }}>✗ &nbsp;No pre-staged response</div>
+                  </div>
                 </div>
-                <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.10)', borderTop: `3px solid ${GOLD}`, borderRight: `1px solid rgba(201,168,76,0.3)`, borderBottom: `1px solid rgba(201,168,76,0.3)`, borderLeft: `1px solid rgba(201,168,76,0.3)` }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Readiness OS Score</div>
-                  <div style={{ fontSize: 52, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{brief?.thriveScore ?? 89}</div>
-                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>/ 100 — with pre-staged 12-minute execution</div>
-                  <div style={{ fontSize: 10, color: GOLD, marginTop: 8, fontWeight: 600 }}>Response ready before the trigger fires</div>
+                <div style={{ padding: '24px', background: 'rgba(201,168,76,0.06)', borderTop: `3px solid ${GOLD}`, borderRight: `1px solid rgba(201,168,76,0.25)`, borderBottom: `1px solid rgba(201,168,76,0.25)`, borderLeft: `1px solid rgba(201,168,76,0.25)` }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 16 }}>With Readiness OS</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
+                    <div>
+                      <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>12<span style={{ fontSize: 16 }}> min</span></div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>to first response</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1 }}>3,600<span style={{ fontSize: 16 }}>×</span></div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>execution head start</div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
+                    <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>✓ &nbsp;Pre-staged before the trigger fires</div>
+                    <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>✓ &nbsp;170 playbooks ready to activate</div>
+                    <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>✓ &nbsp;Executive authority preserved</div>
+                  </div>
                 </div>
                 <div style={{ gridColumn: '1 / -1', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', borderLeft: `3px solid ${GOLD}`, borderTop: '1px solid rgba(255,255,255,0.1)', borderRight: '1px solid rgba(255,255,255,0.1)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Executive Assessment</div>
