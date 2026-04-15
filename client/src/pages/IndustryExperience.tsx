@@ -1516,7 +1516,7 @@ export default function IndustryExperience() {
               <div className="bg-white border border-[#C9A84C]/20 p-4 text-center">
                 <Brain className="h-6 w-6 text-[#C9A84C] mx-auto mb-2" />
                 <div className="text-2xl font-bold text-[#0A0F2E]">94%</div>
-                <div className="text-xs text-[#6B7280]">AI Accuracy</div>
+                <div className="text-xs text-[#6B7280]">Signal Precision</div>
               </div>
               <div className="bg-white border border-[#2B8A6E]/20 p-4 text-center">
                 <Timer className="h-6 w-6 text-[#2B8A6E] mx-auto mb-2" />
