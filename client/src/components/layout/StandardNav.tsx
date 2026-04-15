@@ -283,11 +283,11 @@ export default function StandardNav() {
   const megaShadow = '0 24px 64px rgba(10,15,46,0.22), 0 4px 20px rgba(10,15,46,0.10)';
   const megaBorder = '1px solid rgba(10,15,46,0.14)';
 
-  // ── THE PLATFORM mega-menu ─────────────────────────────────────────────────
+  // ── WHAT WE DO mega-menu ─────────────────────────────────────────────────
   const renderPlatformDropdown = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {renderDropdownButton("The Platform")}
+        {renderDropdownButton("What We Do")}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
@@ -359,11 +359,11 @@ export default function StandardNav() {
     </DropdownMenu>
   );
 
-  // ── EVIDENCE mega-menu ────────────────────────────────────────────────────
+  // ── THE PROOF mega-menu ────────────────────────────────────────────────────
   const renderEvidenceDropdown = () => (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {renderDropdownButton("Evidence")}
+        {renderDropdownButton("The Proof")}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
@@ -506,7 +506,26 @@ export default function StandardNav() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          {renderDropdownButton("Experience")}
+          <button
+            className="px-3 py-2 text-sm font-bold transition-all duration-150 flex items-center gap-1.5"
+            style={{
+              color: NAVY,
+              background: 'rgba(201,168,76,0.08)',
+              border: '1px solid rgba(201,168,76,0.3)',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.18)';
+              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(201,168,76,0.55)';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.08)';
+              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(201,168,76,0.3)';
+            }}
+          >
+            <span style={{ color: GOLD, fontSize: 10 }}>▶</span>
+            See It Work
+            <ChevronDown className="h-3 w-3 opacity-60" />
+          </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="start"
@@ -925,9 +944,9 @@ export default function StandardNav() {
 
               <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              {experienceSections.map((section) => (
+              {experienceSections.map((section, sIdx) => (
                 <div key={section.heading}>
-                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{section.heading}</p>
+                  <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: GOLD }}>{sIdx === 0 ? 'See It Work' : section.heading}</p>
                   {section.links.map((link) => (
                     <button
                       key={link.path + link.label}
@@ -944,7 +963,7 @@ export default function StandardNav() {
 
               <div style={{ borderTop: `1px solid rgba(201,168,76,0.1)`, margin: '8px 0' }} />
 
-              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>Evidence</p>
+              <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>The Proof</p>
               {evidenceLinks.map((link) => (
                 <button
                   key={link.path}

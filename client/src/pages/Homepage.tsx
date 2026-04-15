@@ -303,10 +303,17 @@ function HomepageNav() {
 
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
-            <Link href="/how-it-works" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>How It Works</Link>
-            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Platform</Link>
-            <Link href="/try-demo" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1, borderBottom: `2px solid ${GOLD}`, paddingBottom: 2 }}>See the Demos</Link>
-            <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Why Readiness OS</Link>
+            <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
+            <Link href="/try-demo" style={{
+              ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
+              padding: "6px 14px",
+              background: "rgba(201,168,76,0.10)",
+              border: "1px solid rgba(201,168,76,0.35)",
+              display: "flex", alignItems: "center", gap: 6,
+            }}>
+              <span style={{ color: GOLD, fontSize: 9 }}>▶</span>See It Work
+            </Link>
+            <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>The Manifesto</Link>
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -363,13 +370,16 @@ function HomepageNav() {
             ✕
           </button>
           {[
-            { label: "How It Works",     href: "/how-it-works" },
-            { label: "The Platform",     href: "/platform-overview" },
-            { label: "See the Demos",    href: "/try-demo" },
-            { label: "Why Readiness OS", href: "/why-execution-os" },
-            { label: "Investors",        href: "/investors" },
+            { label: "What We Do",    href: "/platform-overview" },
+            { label: "See It Work",   href: "/try-demo", highlight: true },
+            { label: "The Proof",     href: "/why-execution-os" },
+            { label: "Investors",     href: "/investors" },
           ].map(item =>
-            <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{ ...DM, color: "#fff", fontSize: 22, fontWeight: 500, padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em" }}>{item.label}</Link>
+            <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{
+              ...DM, color: (item as any).highlight ? GOLD : "#fff",
+              fontSize: 22, fontWeight: (item as any).highlight ? 700 : 500,
+              padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em",
+            }}>{(item as any).highlight ? `▶ ${item.label}` : item.label}</Link>
           )}
           <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>The Manifesto</Link>
           <Link
