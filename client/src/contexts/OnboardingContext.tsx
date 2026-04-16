@@ -185,7 +185,7 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
       {
         id: 'tm-welcome',
         title: 'Executive Trigger Dashboard',
-        description: 'This is where YOU define what matters. Set up trigger conditions that AI monitors 24/7, automatically activating playbooks when your thresholds are breached.',
+        description: 'This is where YOU define what matters. Set up trigger conditions that AI monitors 24/7, automatically staging the matched response — ready for your authorization when thresholds are breached.',
         phase: 'DETECT'
       },
       {
