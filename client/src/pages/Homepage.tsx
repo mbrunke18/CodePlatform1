@@ -562,21 +562,21 @@ function HeroSection() {
           {/* LEFT — Headline + CTAs */}
           <Reveal>
             <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 28 }}>
-              WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI
+              STRATEGIC READINESS INFRASTRUCTURE · FORTUNE 1000
             </div>
 
             <h1 className="hp-hero-h1" style={{
               ...GEO, fontSize: "clamp(38px,5vw,62px)", fontWeight: 700, color: "#fff",
               lineHeight: 1.12, marginBottom: 24,
             }}>
-              AI generates signals
-              <br />at machine speed.
+              Pre-stage every
+              <br />strategic response.
               <br />
-              <span style={{ color: GOLD_LIGHT }}>Your response takes 30 days.</span>
+              <span style={{ color: GOLD_LIGHT }}>Deploy in 12 minutes.</span>
             </h1>
 
-            <p style={{ ...GEO, fontSize: "clamp(18px,2vw,24px)", fontStyle: "italic", color: "rgba(255,255,255,0.6)", maxWidth: 520, marginBottom: 44, lineHeight: 1.45 }}>
-              The response is ready before the trigger fires.
+            <p style={{ ...DM, fontSize: "clamp(15px,1.5vw,17px)", color: "rgba(255,255,255,0.62)", maxWidth: 500, marginBottom: 44, lineHeight: 1.7 }}>
+              Readiness OS pre-stages 170 responses across 9 strategic domains — so when the trigger fires, the brief is ready, the team is assigned, and execution begins immediately. Not weeks later.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: 16 }}>
