@@ -535,6 +535,14 @@ export default function LiveActivationCenter() {
     };
   }, []);
 
+  const autoStartRef = useRef(false);
+  useEffect(() => {
+    if (!autoStartRef.current) {
+      autoStartRef.current = true;
+      beginActivation(`demo-${Date.now()}`);
+    }
+  }, [beginActivation]);
+
   if (!activationId) {
     return (
       <PageLayout>
@@ -748,7 +756,9 @@ export default function LiveActivationCenter() {
     );
   }
 
-  const colors = getCategoryColor(activePlaybook?.category || 'DEFENSE');
+  const warRoomAccent = activePlaybook?.category === 'OFFENSE' ? { bg: 'bg-[#2B8A6E]/15', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/40' }
+    : activePlaybook?.category === 'SPECIAL TEAMS' ? { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' }
+    : { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' };
 
   return (
     <PageLayout>
@@ -759,12 +769,12 @@ export default function LiveActivationCenter() {
           <div className="lg:col-span-8 space-y-8">
             <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white/5 border border-white/10 p-8 rounded-none backdrop-blur-md">
               <div className="flex items-center gap-6">
-                <div className={cn("w-16 h-16 flex items-center justify-center border text-white", colors.border, colors.bg)}>
+                <div className={cn("w-16 h-16 flex items-center justify-center border text-white", warRoomAccent.border, warRoomAccent.bg)}>
                   {getPlaybookIcon(activePlaybook?.icon || 'shield')}
                 </div>
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <Badge className={cn("text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 border-0", colors.bg, colors.text)}>
+                    <Badge className={cn("text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 border-0", warRoomAccent.bg, warRoomAccent.text)}>
                       {activePlaybook?.category} ACTIVE
                     </Badge>
                     <span className="text-white/40 text-xs font-mono">ID: {activationId}</span>
@@ -784,6 +794,20 @@ export default function LiveActivationCenter() {
                     <div className="text-3xl font-mono text-[#2B8A6E] font-bold">{formatElapsed(toSimulatedTime(elapsedSeconds))}</div>
                   </div>
                 </div>
+                <button
+                  onClick={() => {
+                    simulationRef.current.forEach(t => clearTimeout(t));
+                    if (timerRef.current) clearInterval(timerRef.current);
+                    setActivationId(null);
+                    setStakeholders([]);
+                    setTasks([]);
+                    setActivityFeed([]);
+                    setElapsedSeconds(0);
+                  }}
+                  style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', padding: '6px 12px', cursor: 'pointer' }}
+                >
+                  ← Switch Scenario
+                </button>
               </div>
             </header>
 
