@@ -239,6 +239,12 @@ export const PUBLIC_ROUTES = [
 
   // Signal Activity Log — public for Command Tower display
   '/api/signal-activity-log',
+
+  // Executive Readiness Score — unauthenticated shows canonical platform values; authenticated shows live org data
+  '/api/readiness-score',
+
+  // Board-Ready Activation Report — activation debrief reports accessible to report recipients
+  '/api/activations/:id/board-report',
 ];
 
 /**

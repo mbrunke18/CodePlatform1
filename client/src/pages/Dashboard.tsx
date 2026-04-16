@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { updatePageMetadata } from "@/lib/seo";
 import IDEALayout from '@/components/layout/IDEALayout';
+import ReadinessScore from '@/components/ReadinessScore';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -411,6 +412,8 @@ export default function Dashboard() {
             </div>
 
             <div className="lg:col-span-4 space-y-8">
+              <ReadinessScore />
+
               <Card className="border-[#E8E4DC] bg-white rounded-none">
                 <CardHeader>
                   <CardTitle style={{ ...CG, fontSize: "20px", color: "#0A0F2E" }}>Strategic Actions</CardTitle>
@@ -446,6 +449,17 @@ export default function Dashboard() {
                       <div className="text-left">
                         <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Readiness Audit</div>
                         <div className="text-[10px] text-[#6B7280]">Full platform analysis</div>
+                      </div>
+                    </Button>
+                  </Link>
+                  <Link href="/regulatory-calendar">
+                    <Button variant="outline" className="w-full justify-start h-auto py-4 border-[#E8E4DC] hover:border-[#0A0F2E] hover:bg-transparent rounded-none">
+                      <div style={{ width: 32, height: 32, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", marginRight: 12, background: "#DC2626" }}>
+                        <Clock className="h-4 w-4 text-white" />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Regulatory Calendar</div>
+                        <div className="text-[10px] text-[#6B7280]">Upcoming compliance deadlines</div>
                       </div>
                     </Button>
                   </Link>

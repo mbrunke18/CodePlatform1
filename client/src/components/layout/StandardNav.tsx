@@ -143,6 +143,7 @@ export default function StandardNav() {
         { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of your IDEA configuration", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
+        { label: "Regulatory Calendar", path: "/regulatory-calendar", icon: Shield, description: "Upcoming compliance deadlines mapped to pre-staged response playbooks — SEC, GDPR, SOX, FDA & more" },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
         { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "Signal radar, monitoring & compound situation synthesis" },
       ],

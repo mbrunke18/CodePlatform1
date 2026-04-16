@@ -3,6 +3,7 @@ import { useParams, Link, useLocation } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import PageLayout from "@/components/layout/PageLayout";
 import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
+import BoardReport from "@/components/BoardReport";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -490,6 +491,13 @@ export default function ActivationOutcome() {
                     </div>
                   </CardContent>
                 </Card>
+              )}
+
+              {/* Board-Ready Report */}
+              {activationId && (
+                <div style={{ marginBottom: 16 }}>
+                  <BoardReport activationId={activationId} />
+                </div>
               )}
 
               {/* Navigation */}

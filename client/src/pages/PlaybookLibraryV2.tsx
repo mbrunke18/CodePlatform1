@@ -46,6 +46,16 @@ const DOMAINS = [
   { id: "strategic", label: "AI Governance", count: 19, icon: Shield },
 ];
 
+const SECTOR_PACKS = [
+  { id: "all",           label: "All Sectors",   color: "#6B7280", domains: [] },
+  { id: "healthcare",    label: "Healthcare",     color: "#DC2626", domains: ["regulatory", "crisis"], tagline: "FDA recalls, HIPAA breaches, supply disruptions" },
+  { id: "financial",     label: "Financial",      color: "#C9A84C", domains: ["financial", "regulatory", "competitive"], tagline: "Regulatory filings, M&A, market volatility" },
+  { id: "technology",    label: "Technology",     color: "#2B8A6E", domains: ["technology", "competitive", "talent"], tagline: "Cyber incidents, competitive disruption, talent" },
+  { id: "manufacturing", label: "Manufacturing",  color: "#0A0F2E", domains: ["gtm", "crisis", "strategic"], tagline: "Supply chain, tariffs, plant disruptions" },
+  { id: "retail",        label: "Retail",         color: "#7C3AED", domains: ["gtm", "competitive", "crisis"], tagline: "Pricing disruption, recalls, reputational risk" },
+  { id: "energy",        label: "Energy",         color: "#059669", domains: ["crisis", "regulatory", "strategic"], tagline: "Grid failures, EPA compliance, geopolitical" },
+];
+
 const PILLARS = [
   { id: "all", label: "All Pillars", color: "#6B7280" },
   { id: "business", label: "Business Model", color: "#C9A84C", domains: ["financial", "competitive", "ma"] },
@@ -370,6 +380,10 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   });
   const [activePillar, setActivePillar] = useState("all");
   const [activeUrgency, setActiveUrgency] = useState("all");
+  const [activeSector, setActiveSector] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('sector') || 'all';
+  });
   const [search, setSearch] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get('search') || '';
@@ -389,6 +403,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
   });
 
   const pillarDomains = activePillar === "all" ? null : (PILLARS.find(p => p.id === activePillar) as any)?.domains as string[] | undefined;
+  const sectorDomains = activeSector === "all" ? null : (SECTOR_PACKS.find(s => s.id === activeSector) as any)?.domains as string[] | undefined;
 
   const domainFilteredTemplates = (templates || []).filter((t) => {
     const domainMatch = (() => {
@@ -403,7 +418,14 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
         return mapped.some((d) => t.domain === d);
       });
     })();
-    return domainMatch && pillarMatch;
+    const sectorMatch = (() => {
+      if (!sectorDomains || sectorDomains.length === 0) return true;
+      return sectorDomains.some((domId: string) => {
+        const mapped = DOMAIN_DB_MAP[domId] || [];
+        return mapped.some((d) => t.domain === d);
+      });
+    })();
+    return domainMatch && pillarMatch && sectorMatch;
   });
 
   const urgencyFiltered = domainFilteredTemplates.filter((t) => {
@@ -456,6 +478,30 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-8">
         <aside className="hidden lg:block w-52 shrink-0">
           <div className="sticky top-24">
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>Industry Sector</div>
+            <div className="space-y-0.5 mb-5">
+              {SECTOR_PACKS.map((s) => {
+                const isActive = activeSector === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => { setActiveSector(s.id); }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 transition-all text-left"
+                    style={{
+                      background: isActive ? `${s.color}14` : "transparent",
+                      border: isActive ? `1px solid ${s.color}40` : "1px solid transparent",
+                      color: isActive ? s.color : MUTED,
+                      fontSize: 11, fontWeight: isActive ? 700 : 500,
+                      letterSpacing: "0.06em",
+                    }}
+                  >
+                    <span style={{ width: 7, height: 7, borderRadius: 0, background: s.color, flexShrink: 0, display: "inline-block" }} />
+                    {s.label}
+                  </button>
+                );
+              })}
+            </div>
+            <div style={{ height: 1, background: BORDER, marginBottom: 12 }} />
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>McKinsey Pillar</div>
             <div className="space-y-0.5 mb-5">
               {PILLARS.map((p) => {
