@@ -409,6 +409,11 @@ function HomepageNav() {
       )}
 
       <style>{`
+        .hp-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+        @media (max-width: 900px) {
+          .hp-hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .hp-chain-diagram { display: none !important; }
+        }
         @media (max-width: 768px) {
           .hp-desktop-nav    { display: none !important; }
           .hp-hamburger      { display: flex !important; }
@@ -445,6 +450,99 @@ function HomepageNav() {
   );
 }
 
+// ─── Execution Chain Diagram ─────────────────────────────────────────────────
+function ExecutionChainDiagram() {
+  const [activeStep, setActiveStep] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setActiveStep(prev => (prev + 1) % 5), 2000);
+    return () => clearInterval(t);
+  }, []);
+
+  const steps = [
+    { label: "TRIGGER FIRES", time: "T+0", desc: "Strategic moment detected — no improvisation", color: GOLD },
+    { label: "SIGNAL MAPPED", time: "T+0:12", desc: "248+ sources evaluated across 9 domains", color: GOLD },
+    { label: "PLAYBOOK STAGED", time: "Pre-built", desc: "170 responses ready before trigger fired", color: TEAL },
+    { label: "EXECUTIVE AUTHORIZES", time: "T+0:08", desc: "Human decision preserved — not bypassed", color: TEAL },
+    { label: "FULL DEPLOYMENT", time: "12 MIN", desc: "Teams coordinated, brief delivered, executing", color: GOLD },
+  ];
+
+  return (
+    <div className="hp-chain-diagram" style={{
+      background: "rgba(5,9,30,0.75)",
+      border: "1px solid rgba(201,168,76,0.18)",
+      backdropFilter: "blur(8px)",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {/* Glow behind diagram */}
+      <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: -60, left: -60, width: 240, height: 240, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+      {/* Header strip */}
+      <div style={{ padding: "18px 24px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", gap: 10, position: "relative" }}>
+        <span style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, display: "inline-block", animation: "vm-pulse 2s ease-in-out infinite", flexShrink: 0 }} />
+        <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL }}>Execution Brief · Live</span>
+        <div style={{ marginLeft: "auto", ...DM, fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.06em" }}>READINESS OS</div>
+      </div>
+
+      {/* Chain steps */}
+      <div style={{ padding: "24px 24px 8px", position: "relative" }}>
+        {steps.map((step, i) => (
+          <div key={i} style={{ display: "flex", gap: 16, marginBottom: i < steps.length - 1 ? 0 : 0 }}>
+            {/* Connector column */}
+            <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "center", width: 28, flexShrink: 0 }}>
+              <div style={{
+                width: 28, height: 28, flexShrink: 0,
+                background: activeStep === i ? step.color : "rgba(255,255,255,0.06)",
+                border: `1.5px solid ${activeStep >= i ? step.color : "rgba(255,255,255,0.1)"}`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                transition: "all 0.5s ease",
+                boxShadow: activeStep === i ? `0 0 16px ${step.color}55` : "none",
+                zIndex: 1,
+              }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 800, color: activeStep === i ? NAVY : "rgba(255,255,255,0.3)", transition: "color 0.5s" }}>{i + 1}</span>
+              </div>
+              {i < steps.length - 1 && (
+                <div style={{
+                  width: 1, flex: 1, minHeight: 28,
+                  background: activeStep > i ? `linear-gradient(${step.color}80, ${steps[i+1].color}40)` : "rgba(255,255,255,0.07)",
+                  transition: "background 0.5s ease",
+                  margin: "3px 0",
+                }} />
+              )}
+            </div>
+            {/* Text */}
+            <div style={{ paddingBottom: i < steps.length - 1 ? 20 : 8, opacity: activeStep === i ? 1 : activeStep > i ? 0.6 : 0.3, transition: "opacity 0.5s ease" }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4 }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: activeStep === i ? step.color : "rgba(255,255,255,0.55)", transition: "color 0.5s" }}>
+                  {step.label}
+                </span>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: step.label === "FULL DEPLOYMENT" ? GOLD : "rgba(255,255,255,0.25)", letterSpacing: "0.06em" }}>
+                  {step.time}
+                </span>
+              </div>
+              <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.4)", margin: 0, lineHeight: 1.45 }}>{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 30 days → 12 min result bar */}
+      <div style={{ margin: "0 24px 24px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.22)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div>
+          <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 3 }}>Traditional</div>
+          <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.25)", textDecoration: "line-through", lineHeight: 1 }}>30 days</div>
+        </div>
+        <div style={{ ...DM, fontSize: 14, color: "rgba(201,168,76,0.4)" }}>→</div>
+        <div style={{ textAlign: "right" as const }}>
+          <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Readiness OS</div>
+          <div style={{ ...GEO, fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1, textShadow: `0 0 20px rgba(201,168,76,0.4)` }}>12 minutes</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── SECTION 2: Hero ─────────────────────────────────────────────────────────
 function HeroSection() {
   return (
@@ -453,87 +551,95 @@ function HeroSection() {
       position: "relative",
       minHeight: "100vh",
       display: "flex", alignItems: "center",
-      paddingTop: 80, paddingBottom: 80,
+      paddingTop: 100, paddingBottom: 100,
     }}>
       <SectionMarker n="01" />
-      <div style={{ ...CONTAINER, width: "100%", textAlign: "center" }}>
-        <Reveal>
-          <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(201,168,76,0.75)", marginBottom: 32 }}>
-            WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI
-          </div>
+      <div style={{ ...CONTAINER, width: "100%" }}>
 
-          <h1 className="hp-hero-h1" style={{
-            ...GEO, fontSize: "clamp(44px,6vw,72px)", fontWeight: 700, color: "#fff",
-            lineHeight: 1.15, maxWidth: 900, margin: "0 auto 28px",
-          }}>
-            AI is generating signals at machine speed.
-            <br />
-            <span style={{ color: GOLD_LIGHT }}>Your organization is still taking 30 days to respond.</span>
-          </h1>
+        {/* Two-column: left text | right diagram */}
+        <div className="hp-hero-grid">
 
-          <p style={{ ...GEO, fontSize: "clamp(20px,2.5vw,28px)", fontStyle: "italic", color: "rgba(255,255,255,0.68)", maxWidth: 680, margin: "0 auto 40px", lineHeight: 1.4 }}>
-            The response is ready before the trigger fires.
-          </p>
+          {/* LEFT — Headline + CTAs */}
+          <Reveal>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 28 }}>
+              WE REDESIGN HOW WORK FLOWS IN THE AGE OF AI
+            </div>
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, marginTop: 40 }}>
-            <Link
-              href="/request-access"
-              onClick={() => trackCTA("hero")}
-              style={{
-                ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
-                padding: "16px 40px", borderRadius: 0, textDecoration: "none",
-                letterSpacing: "0.04em", transition: "all 0.2s ease", display: "inline-block",
-              }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-1px)"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.transform = "translateY(0)"; }}
-            >
-              Request a Pilot
-            </Link>
-            <Link
-              href="/12-minute-experience"
-              onClick={() => trackCTA("hero_testdrive")}
-              style={{
-                ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
-                padding: "12px 32px", borderRadius: 0, textDecoration: "none",
-                letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
-              }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(201,168,76,0.45)"; el.style.background = "none"; }}
-            >
-              Take the 12-Minute Test Drive →
-            </Link>
-            <Link
-              href="/request-access"
-              onClick={() => trackCTA("hero_request_access")}
-              style={{
-                ...DM, color: "rgba(255,255,255,0.45)", fontSize: 12, textDecoration: "none",
-                letterSpacing: "0.04em",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)"; }}
-            >
-              Request executive access — no pilot commitment required →
-            </Link>
-          </div>
-        </Reveal>
+            <h1 className="hp-hero-h1" style={{
+              ...GEO, fontSize: "clamp(38px,5vw,62px)", fontWeight: 700, color: "#fff",
+              lineHeight: 1.12, marginBottom: 24,
+            }}>
+              AI generates signals
+              <br />at machine speed.
+              <br />
+              <span style={{ color: GOLD_LIGHT }}>Your response takes 30 days.</span>
+            </h1>
 
-        {/* Stat strip */}
-        <Reveal delay={0.2}>
+            <p style={{ ...GEO, fontSize: "clamp(18px,2vw,24px)", fontStyle: "italic", color: "rgba(255,255,255,0.6)", maxWidth: 520, marginBottom: 44, lineHeight: 1.45 }}>
+              The response is ready before the trigger fires.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: 16 }}>
+              <Link
+                href="/request-access"
+                onClick={() => trackCTA("hero")}
+                style={{
+                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 15,
+                  padding: "15px 36px", borderRadius: 0, textDecoration: "none",
+                  letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
+                }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 28px rgba(201,168,76,0.3)"; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; }}
+              >
+                Request a Pilot
+              </Link>
+              <Link
+                href="/12-minute-experience"
+                onClick={() => trackCTA("hero_testdrive")}
+                style={{
+                  ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
+                  padding: "12px 28px", borderRadius: 0, textDecoration: "none",
+                  letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
+                }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(201,168,76,0.45)"; el.style.background = "none"; }}
+              >
+                ▶ Take the 12-Minute Test Drive
+              </Link>
+              <Link
+                href="/request-access"
+                onClick={() => trackCTA("hero_request_access")}
+                style={{ ...DM, color: "rgba(255,255,255,0.38)", fontSize: 12, textDecoration: "none", letterSpacing: "0.04em", transition: "color 0.15s" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.38)"; }}
+              >
+                Request executive access — no commitment required →
+              </Link>
+            </div>
+          </Reveal>
+
+          {/* RIGHT — Execution Chain Diagram */}
+          <Reveal delay={0.18}>
+            <ExecutionChainDiagram />
+          </Reveal>
+        </div>
+
+        {/* Stat strip — full width below the grid */}
+        <Reveal delay={0.3}>
           <div className="hp-stat-row" style={{
             display: "flex", alignItems: "center", justifyContent: "center", gap: 48,
-            marginTop: 64, paddingTop: 40,
-            borderTop: "1px solid rgba(201,168,76,0.15)",
+            marginTop: 72, paddingTop: 40,
+            borderTop: "1px solid rgba(201,168,76,0.12)",
           }}>
             {[
-              { num: "170",    label: "Zero improvisation when the trigger fires",   sub: "Pre-staged playbooks across 9 strategic domains" },
-              { num: "248+",   label: "Threats detected before they become crises",  sub: "Signals monitored every 15 minutes" },
-              { num: "12 min", label: "Full organizational deployment",              sub: "Before the first emergency call ends" },
+              { num: "170",       label: "Zero improvisation when the trigger fires",  sub: "Pre-staged playbooks across 9 strategic domains" },
+              { num: "248+",      label: "Threats detected before they become crises", sub: "Signals monitored every 15 minutes" },
+              { num: "3,600×",    label: "Execution head start over the competition",  sub: "30 days compressed to 12 minutes" },
             ].map((s, i) => (
               <div key={s.num} style={{ display: "contents" }}>
-                {i > 0 && <div className="hp-stat-div" style={{ width: 1, height: 40, background: "rgba(201,168,76,0.3)", flexShrink: 0 }} />}
+                {i > 0 && <div className="hp-stat-div" style={{ width: 1, height: 44, background: "rgba(201,168,76,0.22)", flexShrink: 0 }} />}
                 <div style={{ textAlign: "center", maxWidth: 200 }}>
-                  <div style={{ ...GEO, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{s.num}</div>
+                  <div style={{ ...GEO, fontSize: 34, fontWeight: 700, color: GOLD, lineHeight: 1, textShadow: "0 0 24px rgba(201,168,76,0.35)" }}>{s.num}</div>
                   <div style={{ ...DM, fontSize: 13, fontWeight: 600, color: "#fff", marginTop: 8, lineHeight: 1.4 }}>{s.label}</div>
                   <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
                 </div>
@@ -541,6 +647,7 @@ function HeroSection() {
             ))}
           </div>
         </Reveal>
+
       </div>
     </section>
   );
@@ -1454,19 +1561,27 @@ function CredibilitySection() {
             ))}
           </div>
 
-          {/* Practitioner Quote Strip */}
-          <div style={{ margin: "0 0 56px", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "40px 0" }}>
-            <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2.2vw,26px)", fontStyle: "italic", color: "rgba(255,255,255,0.88)", lineHeight: 1.6, marginBottom: 16 }}>
+          {/* Practitioner Quote — Dr. Kerry Huang */}
+          <div style={{ margin: "0 0 64px", position: "relative" }}>
+            <div style={{ maxWidth: 800, margin: "0 auto", position: "relative", padding: "48px 56px", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.14)", borderLeft: "3px solid rgba(201,168,76,0.5)" }}>
+              {/* Large styled quote mark */}
+              <div style={{ position: "absolute", top: 16, left: 20, fontFamily: "Georgia, serif", fontSize: 96, lineHeight: 1, color: "rgba(201,168,76,0.15)", userSelect: "none" as const, pointerEvents: "none" }}>❝</div>
+              <div style={{ position: "absolute", bottom: 16, right: 20, fontFamily: "Georgia, serif", fontSize: 96, lineHeight: 1, color: "rgba(201,168,76,0.08)", userSelect: "none" as const, pointerEvents: "none", transform: "rotate(180deg)" }}>❝</div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(20px,2.4vw,30px)", fontStyle: "italic", color: "rgba(255,255,255,0.92)", lineHeight: 1.55, marginBottom: 28, position: "relative", zIndex: 1 }}>
                 "That is governance as pre-commitment, not governance as review."
               </p>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>
-                — Dr. Kerry Huang
-              </p>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.04em" }}>
-                Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study
-              </p>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 8, fontStyle: "italic" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 16, position: "relative", zIndex: 1 }}>
+                <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
+                <div>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>
+                    Dr. Kerry Huang
+                  </p>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.03em", margin: 0 }}>
+                    Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study
+                  </p>
+                </div>
+              </div>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.22)", marginTop: 16, fontStyle: "italic", position: "relative", zIndex: 1 }}>
                 Produced independently — without product exposure — through intellectual exchange, April 2026
               </p>
             </div>
