@@ -688,6 +688,7 @@ export default function TwelveMinuteTestDrive() {
                   position=""
                   insight={callout.insight}
                   gain={callout.gain}
+                  dark
                   style={{ marginBottom: 24 }}
                 />
               );
