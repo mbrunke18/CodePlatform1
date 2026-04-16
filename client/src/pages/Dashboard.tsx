@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query';
+import { ThreePositionStrip } from "@/components/ValueGainCallout";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { updatePageMetadata } from "@/lib/seo";
 import IDEALayout from '@/components/layout/IDEALayout';
@@ -266,6 +267,17 @@ export default function Dashboard() {
             </div>
           </div>
         )}
+
+        {/* ── Strategic Position Strip — what this readiness level means ── */}
+        <div className="max-w-7xl mx-auto px-6 pt-8 pb-0">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-6 h-0.5" style={{ background: GOLD }} />
+            <span className="text-[9px] font-bold tracking-[0.22em] uppercase" style={{ color: GOLD }}>
+              What Your Readiness Builds
+            </span>
+          </div>
+          <ThreePositionStrip />
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">

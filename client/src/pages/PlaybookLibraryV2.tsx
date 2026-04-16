@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import PageLayout from "@/components/layout/PageLayout";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
+import { ValueGainCallout, ThreePositionStrip, type ValueGainMode } from "@/components/ValueGainCallout";
 import {
   Search, ChevronDown, ChevronRight, Shield, Zap, Brain,
   Network, AlertTriangle, BookOpen, Clock, Users, ArrowRight,
@@ -608,6 +609,52 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               </div>
             )}
           </div>
+
+          {/* ── Value Gain Callout — domain-adaptive, inline position framing ── */}
+          {(() => {
+            const OFFENSE_DOMAINS = new Set(["competitive", "financial", "ma"]);
+            const DEFENSE_DOMAINS = new Set(["crisis", "regulatory", "strategic"]);
+            const SPECIAL_DOMAINS = new Set(["talent", "technology", "gtm"]);
+
+            if (activeDomain === "all" && activePillar === "all" && activeSector === "all") {
+              return <ThreePositionStrip style={{ marginBottom: 28 }} />;
+            }
+
+            const domainMode: ValueGainMode | null =
+              OFFENSE_DOMAINS.has(activeDomain) ? "offense" :
+              DEFENSE_DOMAINS.has(activeDomain) ? "defense" :
+              SPECIAL_DOMAINS.has(activeDomain) ? "special-teams" : null;
+
+            if (!domainMode) return null;
+
+            const CALLOUT_CONTENT: Record<ValueGainMode, { insight: string; gain: { label: string; value: string } }> = {
+              offense: {
+                insight: "Staging these playbooks means your organization has already decided. Every competitor encountering the same trigger starts from zero — your response was built before the moment arrived.",
+                gain: { label: "Execution head start", value: "30 days" },
+              },
+              defense: {
+                insight: "These playbooks eliminate improvisation under pressure. Decisions are made before the stress exists — ownership confirmed, roles clear, execution pre-authorized. You don't react. You execute.",
+                gain: { label: "Scenarios pre-staged", value: "Crisis-ready" },
+              },
+              "special-teams": {
+                insight: "Coordination infrastructure that eliminates the mobilization cycle. When this trigger fires, the right people already know what to do — no alignment meetings, no role confusion, no lag.",
+                gain: { label: "Coordination moat", value: "Compounding" },
+              },
+            };
+
+            const content = CALLOUT_CONTENT[domainMode];
+            const domainLabel = DOMAINS.find(d => d.id === activeDomain)?.label || activeDomain;
+
+            return (
+              <ValueGainCallout
+                mode={domainMode}
+                position={domainMode.toUpperCase() + " POSITION"}
+                insight={content.insight}
+                gain={content.gain}
+                style={{ marginBottom: 28 }}
+              />
+            );
+          })()}
 
           {!isAuthenticated && (
             <div className="mb-3 pb-3 border-b" style={{ borderColor: BORDER }}>
