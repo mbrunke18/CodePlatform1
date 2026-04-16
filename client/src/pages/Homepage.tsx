@@ -640,7 +640,7 @@ function HeroSection() {
           }}>
             {[
               { num: "170",       label: "Zero improvisation when the trigger fires",  sub: "Pre-staged playbooks across 9 strategic domains" },
-              { num: "248+",      label: "Threats detected before they become crises", sub: "Signals monitored every 15 minutes" },
+              { num: "248+",      label: "Situations surfaced before they require response", sub: "Signals monitored every 15 minutes" },
               { num: "3,600×",    label: "Execution head start over the competition",  sub: "30 days compressed to 12 minutes" },
             ].map((s, i) => (
               <div key={s.num} style={{ display: "contents" }}>
@@ -2101,7 +2101,7 @@ function SimulatorCTASection() {
             <div style={{ width: 24, height: 1, background: GOLD }} />
           </div>
           <h2 style={{ ...GEO, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
-            Test Your Organization Against Any Threat
+            Test Your Organization Against Any Situation
           </h2>
           <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.65 }}>
             Describe a real scenario your company is facing. The system maps your coverage readiness in seconds — and surfaces the exact playbooks pre-staged for activation.
