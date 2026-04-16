@@ -1,0 +1,859 @@
+# Readiness OS: Contextual Value Messaging Specification
+
+## Overview
+
+This document specifies contextual value messages ("Value Insights") that appear throughout the Readiness OS product experience. Each message anchors the user action, translates it to business value, and reinforces ROI in real-time.
+
+**Design Principles:**
+- Toast notifications (bottom-right), not modal pop-ups
+- Dismissible with "X" or auto-fade after 8 seconds
+- Subtle animation on appear (slide up + fade in)
+- User setting: "Show Value Insights" toggle (on by default for first 90 days)
+- Aggregate data feeds into Value Dashboard
+
+---
+
+## Message Format
+
+```
+┌─────────────────────────────────────────────────────┐
+│ ✓ [ACTION COMPLETED]                            ✕  │
+│                                                     │
+│ [Value headline - what just happened]               │
+│                                                     │
+│ [Value context - what this typically costs/takes]   │
+│                                                     │
+│ [Optional: specific metric captured]                │
+└─────────────────────────────────────────────────────┘
+```
+
+---
+
+## PHASE 1: IDENTIFY (Trigger Detection)
+
+### 1.1 Trigger Detected - External Signal
+
+**User Action:** System detects external trigger (news, filing, market event)
+
+```
+✓ TRIGGER DETECTED
+
+External signal identified: [Trigger Type]
+Detection time: [X] seconds
+
+Without automated detection, this signal typically surfaces 
+24-72 hours later—after competitors have already responded.
+
+┌──────────────────────────────────┐
+│ Time advantage captured: ~48 hrs │
+└──────────────────────────────────┘
+```
+
+### 1.2 Trigger Detected - Internal Signal
+
+**User Action:** System detects internal trigger (resignation, budget approval, milestone)
+
+```
+✓ TRIGGER DETECTED
+
+Internal signal identified: [Trigger Type]
+Relevant playbook activated automatically.
+
+In most organizations, internal signals take 3-5 days to 
+reach the right decision-makers through normal channels.
+
+┌──────────────────────────────────┐
+│ Coordination head start: ~4 days │
+└──────────────────────────────────┘
+```
+
+### 1.3 Trigger Classification Complete
+
+**User Action:** System categorizes trigger by type, severity, domain
+
+```
+✓ TRIGGER CLASSIFIED
+
+Category: [Opportunity/Growth/Transformation/Innovation/Response]
+Domain: [Executive Transition/M&A/Regulatory/etc.]
+Severity: [Standard/Elevated/Critical]
+
+Classification determines which playbook activates and which 
+stakeholders are notified. Manual triage typically takes 1-2 days.
+
+┌──────────────────────────────────┐
+│ Triage time eliminated: ~1.5 days│
+└──────────────────────────────────┘
+```
+
+### 1.4 False Positive Filtered
+
+**User Action:** System identifies and filters a non-actionable signal
+
+```
+✓ SIGNAL FILTERED
+
+Non-actionable signal identified and filtered.
+No stakeholder time consumed.
+
+Without intelligent filtering, your team would evaluate 
+this signal manually—typically 2-4 hours of senior time.
+
+┌──────────────────────────────────┐
+│ Executive time saved: ~3 hours   │
+└──────────────────────────────────┘
+```
+
+---
+
+## PHASE 2: DECIDE (Decision Rights & Authority)
+
+### 2.1 Playbook Activated
+
+**User Action:** Appropriate playbook loads based on trigger type
+
+```
+✓ PLAYBOOK ACTIVATED
+
+[Playbook Name] loaded.
+[X] pre-staged actions ready for execution.
+[Y] stakeholders identified.
+[Z] decision points mapped.
+
+Building this playbook from scratch typically requires 
+2-3 weeks of cross-functional meetings and documentation.
+
+┌──────────────────────────────────┐
+│ Preparation time encoded: ~15 days│
+└──────────────────────────────────┘
+```
+
+### 2.2 Decision Owner Identified
+
+**User Action:** System confirms who owns the decision
+
+```
+✓ DECISION OWNER CONFIRMED
+
+Primary: [Name, Title]
+Backup: [Name, Title]
+Authority level: [Approve/Execute/Inform]
+
+Determining decision ownership typically requires 2-3 meetings 
+and 5-7 days of organizational navigation.
+
+┌──────────────────────────────────┐
+│ Decision clarity: Immediate      │
+└──────────────────────────────────┘
+```
+
+### 2.3 Decision Rights Verified
+
+**User Action:** System confirms authority levels and approval chains
+
+```
+✓ DECISION RIGHTS VERIFIED
+
+[Decision Owner] has authority to [specific action].
+Approval chain: [if applicable]
+Escalation path: [if needed]
+
+Authority ambiguity is the #1 cause of coordination delays.
+Resolution typically takes 1-2 weeks of political navigation.
+
+┌──────────────────────────────────┐
+│ Authority ambiguity eliminated   │
+└──────────────────────────────────┘
+```
+
+### 2.4 Response Options Presented
+
+**User Action:** Playbook presents pre-staged response options
+
+```
+✓ RESPONSE OPTIONS READY
+
+[X] pre-analyzed response options available.
+Each option includes: resource requirements, timeline, 
+risk assessment, and stakeholder impact.
+
+Developing response options typically requires 1-2 weeks 
+of analysis and multiple strategy sessions.
+
+┌──────────────────────────────────┐
+│ Analysis time pre-staged: ~10 days│
+└──────────────────────────────────┘
+```
+
+### 2.5 Response Selected
+
+**User Action:** Decision owner selects response path
+
+```
+✓ RESPONSE SELECTED
+
+[Response Option] confirmed by [Decision Owner].
+Timestamp: [Date/Time]
+Execution sequence initiated.
+
+Decision documented. No ambiguity about what was decided, 
+by whom, or when. This audit trail typically doesn't exist.
+
+┌──────────────────────────────────┐
+│ Decision accountability: Locked  │
+└──────────────────────────────────┘
+```
+
+---
+
+## PHASE 3: EXECUTE (Coordinated Response)
+
+### 3.1 Stakeholder Notification Initiated
+
+**User Action:** System begins stakeholder notification cascade
+
+```
+✓ STAKEHOLDER NOTIFICATION INITIATED
+
+[X] stakeholders being notified.
+Role-specific instructions included.
+Acknowledgment tracking active.
+
+Manual stakeholder coordination typically requires 3-5 days 
+of emails, calls, and "did you get my message?" follow-ups.
+
+┌──────────────────────────────────┐
+│ Coordination time saved: ~4 days │
+└──────────────────────────────────┘
+```
+
+### 3.2 Stakeholder Notification Complete
+
+**User Action:** All stakeholders notified and acknowledged
+
+```
+✓ STAKEHOLDER NOTIFICATION COMPLETE
+
+[X] stakeholders notified.
+[Y] acknowledgments received.
+[Z] pending (auto-escalation in [time]).
+Total elapsed time: [X minutes]
+
+Typical enterprise coordination time for this step: 3-5 days.
+You just completed it in [X] minutes.
+
+┌──────────────────────────────────┐
+│ 3,600× faster than baseline      │
+└──────────────────────────────────┘
+```
+
+### 3.3 Communication Template Deployed
+
+**User Action:** Pre-staged communication sent to stakeholders
+
+```
+✓ COMMUNICATION DEPLOYED
+
+[Communication Type] sent to [Audience].
+Pre-approved messaging. Consistent narrative.
+
+Drafting, reviewing, and approving crisis/opportunity 
+communications typically takes 2-5 days and 8-12 revisions.
+
+┌──────────────────────────────────┐
+│ Communication cycle: Minutes     │
+└──────────────────────────────────┘
+```
+
+### 3.4 Board Notification Executed
+
+**User Action:** Board notification protocol completes
+
+```
+✓ BOARD NOTIFICATION COMPLETE
+
+[X] board members notified.
+Chair acknowledgment: [Received/Pending]
+Disclosure compliance: [Confirmed]
+
+Board notification typically requires CEO/GC coordination, 
+multiple drafts, and careful timing—usually 24-48 hours.
+
+┌──────────────────────────────────┐
+│ Board notification: [X] minutes  │
+└──────────────────────────────────┘
+```
+
+### 3.5 Regulatory/Disclosure Timeline Confirmed
+
+**User Action:** System confirms compliance deadlines and status
+
+```
+✓ DISCLOSURE TIMELINE CONFIRMED
+
+Filing type: [8-K/10-Q/Press Release/etc.]
+Deadline: [Date/Time]
+Current status: [On track/At risk]
+Owner: [Name]
+
+Compliance timeline confusion creates legal exposure.
+Your disclosure obligations are now tracked and visible.
+
+┌──────────────────────────────────┐
+│ Compliance clarity: Confirmed    │
+└──────────────────────────────────┘
+```
+
+### 3.6 Action Item Assigned
+
+**User Action:** Specific action assigned to owner with deadline
+
+```
+✓ ACTION ASSIGNED
+
+Action: [Description]
+Owner: [Name]
+Deadline: [Date/Time]
+Dependencies: [If any]
+
+Action items without clear ownership and deadlines 
+have a 60% failure rate. This one is locked.
+
+┌──────────────────────────────────┐
+│ Execution accountability: Locked │
+└──────────────────────────────────┘
+```
+
+### 3.7 Action Item Completed
+
+**User Action:** Owner marks action complete
+
+```
+✓ ACTION COMPLETED
+
+[Action] completed by [Owner].
+Elapsed time: [X hours/days]
+Variance from plan: [On time/Early/Late by X]
+
+Completion logged. Institutional knowledge captured.
+This data improves future playbook accuracy.
+
+┌──────────────────────────────────┐
+│ Playbook learning: +1 data point │
+└──────────────────────────────────┘
+```
+
+### 3.8 Milestone Reached
+
+**User Action:** Major execution milestone completed
+
+```
+✓ MILESTONE REACHED
+
+[Milestone Name] complete.
+[X] of [Y] milestones achieved.
+Overall progress: [X]%
+
+Milestone tracking provides executive visibility without 
+status meetings. Typical status meeting cost: $15K-25K each.
+
+┌──────────────────────────────────┐
+│ Status meeting eliminated: ~$20K │
+└──────────────────────────────────┘
+```
+
+### 3.9 Escalation Triggered
+
+**User Action:** System auto-escalates overdue item or blocked action
+
+```
+✓ ESCALATION TRIGGERED
+
+[Item/Issue] escalated to [Name, Title].
+Reason: [Overdue/Blocked/Risk threshold exceeded]
+Auto-escalation preserved [X] hours.
+
+Without automated escalation, blocked items typically 
+sit unaddressed for 5-10 days before someone notices.
+
+┌──────────────────────────────────┐
+│ Delay prevented: ~7 days         │
+└──────────────────────────────────┘
+```
+
+### 3.10 Execution Brief Generated
+
+**User Action:** System generates consolidated execution brief
+
+```
+✓ EXECUTION BRIEF READY
+
+Consolidated brief generated.
+Includes: situation summary, decisions made, actions 
+in progress, stakeholder status, next steps.
+
+Assembling this document manually typically takes 
+2-3 weeks—after someone figures out it's needed.
+
+┌──────────────────────────────────┐
+│ Brief assembly time: Automatic   │
+└──────────────────────────────────┘
+```
+
+### 3.11 War Room Activated
+
+**User Action:** Virtual war room initiated for coordinated response
+
+```
+✓ WAR ROOM ACTIVE
+
+[X] participants connected.
+Shared context loaded.
+Decision log active.
+Real-time status visible.
+
+War room setup typically requires 1-2 days of logistics.
+Yours is ready in [X] minutes.
+
+┌──────────────────────────────────┐
+│ Mobilization time: [X] minutes   │
+└──────────────────────────────────┘
+```
+
+---
+
+## PHASE 4: ASSESS (Learning & Improvement)
+
+### 4.1 Post-Activation Debrief Initiated
+
+**User Action:** System prompts for post-activation assessment
+
+```
+✓ DEBRIEF INITIATED
+
+Capturing lessons from this activation.
+What worked, what didn't, what should change.
+
+Most organizations skip this step entirely—losing 
+institutional knowledge when the team disbands.
+
+┌──────────────────────────────────┐
+│ Knowledge capture: Active        │
+└──────────────────────────────────┘
+```
+
+### 4.2 Debrief Completed
+
+**User Action:** Team completes post-activation debrief
+
+```
+✓ DEBRIEF CAPTURED
+
+[X] lessons documented.
+[Y] playbook improvements identified.
+[Z] stakeholder feedback recorded.
+
+This institutional knowledge is now permanent. It will 
+inform every future activation of this playbook.
+
+┌──────────────────────────────────┐
+│ Institutional learning: Captured │
+└──────────────────────────────────┘
+```
+
+### 4.3 Playbook Updated
+
+**User Action:** Playbook improved based on debrief findings
+
+```
+✓ PLAYBOOK IMPROVED
+
+[X] updates applied to [Playbook Name].
+Changes: [Brief summary]
+Version: [X.Y]
+
+Your playbook just got smarter. The next team to face 
+this trigger will benefit from what you learned.
+
+┌──────────────────────────────────┐
+│ Compounding readiness: +1 cycle  │
+└──────────────────────────────────┘
+```
+
+### 4.4 Benchmark Comparison Generated
+
+**User Action:** System compares activation performance to baseline
+
+```
+✓ PERFORMANCE BENCHMARKED
+
+This activation: [X] days/hours
+Industry baseline: [Y] days
+Your improvement: [Z]%
+
+You're building a performance record that demonstrates 
+the value of preparation over reaction.
+
+┌──────────────────────────────────┐
+│ Performance vs. baseline: [X]%   │
+└──────────────────────────────────┘
+```
+
+### 4.5 ROI Calculated for Activation
+
+**User Action:** System calculates value delivered for this specific activation
+
+```
+✓ ACTIVATION ROI CALCULATED
+
+Coordination time saved: [X] days
+Estimated cost avoided: $[Y]
+Opportunity value captured: $[Z]
+
+This single activation delivered [X]× your monthly 
+platform investment.
+
+┌──────────────────────────────────┐
+│ Activation ROI: [X]×             │
+└──────────────────────────────────┘
+```
+
+---
+
+## SETUP & CONFIGURATION MESSAGES
+
+### S.1 Playbook Configured
+
+**User Action:** Admin completes playbook configuration
+
+```
+✓ PLAYBOOK CONFIGURED
+
+[Playbook Name] ready for activation.
+Triggers: [X] signals monitored
+Stakeholders: [Y] mapped
+Decision rights: [Z] confirmed
+
+This playbook encodes preparation that would typically 
+require 3-4 weeks of planning if built during an event.
+
+┌──────────────────────────────────┐
+│ Preparation encoded: ~25 days    │
+└──────────────────────────────────┘
+```
+
+### S.2 Stakeholder Added
+
+**User Action:** New stakeholder added to system
+
+```
+✓ STAKEHOLDER ADDED
+
+[Name, Title] added to [X] playbooks.
+Role: [Decision Owner/Executor/Informed]
+Contact verification: [Complete/Pending]
+
+When a trigger fires, [Name] will know their role 
+immediately—no "who should handle this?" delay.
+
+┌──────────────────────────────────┐
+│ Role clarity: Pre-established    │
+└──────────────────────────────────┘
+```
+
+### S.3 Decision Rights Mapped
+
+**User Action:** Decision authority assigned for trigger type
+
+```
+✓ DECISION RIGHTS MAPPED
+
+[Decision Type]: [Owner Name]
+Authority: [Approve up to $X / Full authority / etc.]
+Backup: [Name]
+
+When this decision is needed, there's no meeting to 
+determine who decides. It's already settled.
+
+┌──────────────────────────────────┐
+│ Authority ambiguity: Eliminated  │
+└──────────────────────────────────┘
+```
+
+### S.4 Communication Template Saved
+
+**User Action:** Pre-approved communication template created
+
+```
+✓ TEMPLATE SAVED
+
+[Template Name] ready for deployment.
+Audience: [Internal/Board/Investors/Media/etc.]
+Approval status: [Pre-approved by X]
+
+When you need this message, it's ready. No 48-hour 
+drafting cycle. No 12 revision rounds.
+
+┌──────────────────────────────────┐
+│ Communication prep: Complete     │
+└──────────────────────────────────┘
+```
+
+### S.5 Trigger Monitoring Activated
+
+**User Action:** Signal detection turned on for specific trigger type
+
+```
+✓ MONITORING ACTIVE
+
+Now watching for: [Trigger Type]
+Sources: [X] signals monitored
+Alert threshold: [Defined]
+
+You'll know when this trigger fires—typically 24-72 hours 
+before it would surface through normal channels.
+
+┌──────────────────────────────────┐
+│ Early warning: Active            │
+└──────────────────────────────────┘
+```
+
+---
+
+## VALUE DASHBOARD AGGREGATION
+
+All contextual messages feed into a cumulative Value Dashboard:
+
+### Dashboard Metrics (Real-Time)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    VALUE DASHBOARD                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  TRIGGERS DETECTED          RESPONSE TIME (AVG)            │
+│  ━━━━━━━━━━━━━━━━━          ━━━━━━━━━━━━━━━━━━━            │
+│        47                        8 minutes                  │
+│   this quarter                vs. 30-day baseline           │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  COORDINATION TIME SAVED     PLAYBOOK ACTIVATIONS          │
+│  ━━━━━━━━━━━━━━━━━━━━━━     ━━━━━━━━━━━━━━━━━━━━          │
+│      312 days                      23                       │
+│   year-to-date               across 9 domains               │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ESTIMATED VALUE DELIVERED   EXECUTIVE HOURS SAVED         │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━   ━━━━━━━━━━━━━━━━━━━━          │
+│      $4.2M                       847 hours                  │
+│   cost avoided + captured    C-suite & senior leaders       │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ROI MULTIPLE                PLAYBOOK IMPROVEMENTS         │
+│  ━━━━━━━━━━━━━━━            ━━━━━━━━━━━━━━━━━━━━          │
+│      14×                          31                        │
+│   vs. annual investment      learning cycles captured       │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Dashboard Detail Views
+
+**By Domain:**
+- Executive Transitions: 8 activations, 67 days saved, $890K value
+- M&A Integration: 3 activations, 112 days saved, $1.4M value
+- Regulatory Response: 6 activations, 45 days saved, $620K value
+- [etc.]
+
+**By Trigger Type:**
+- CFO Departure: 2 activations, 34 days saved
+- Activist Campaign: 1 activation, 89 days saved
+- Competitor Move: 4 activations, 28 days saved
+- [etc.]
+
+**By Time Period:**
+- This Month / This Quarter / YTD / All Time
+- Trend visualization (improving/stable/declining)
+
+---
+
+## IMPLEMENTATION NOTES
+
+### Toast Notification Styling
+
+```css
+.value-insight {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 360px;
+  background: #FFFFFF;
+  border-left: 4px solid #2B8A6E; /* Teal accent */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 16px 20px;
+  animation: slideUp 0.3s ease-out;
+}
+
+.value-insight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.value-insight-title {
+  font-weight: 600;
+  color: #2B8A6E;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value-insight-close {
+  cursor: pointer;
+  color: #999;
+}
+
+.value-insight-body {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.value-insight-metric {
+  background: #F5F5F5;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 12px;
+  font-weight: 600;
+  color: #0A0F2E;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+### Auto-Dismiss Logic
+
+```javascript
+// Show toast for 8 seconds, then fade out
+// User can dismiss early with X
+// If user hovers, pause the timer
+// Stack multiple toasts vertically if needed (max 3 visible)
+```
+
+### User Preferences
+
+```javascript
+// Settings > Preferences > Value Insights
+// - Show Value Insights: [Toggle On/Off]
+// - Auto-dismiss after: [5s / 8s / 15s / Manual only]
+// - Show metrics in dashboard only: [Toggle]
+// 
+// Default: On for first 90 days, then prompt user to confirm preference
+```
+
+### Data Logging
+
+Every value insight generates a log entry:
+
+```json
+{
+  "timestamp": "2026-04-16T14:32:18Z",
+  "user_id": "user_123",
+  "org_id": "org_456",
+  "insight_type": "stakeholder_notification_complete",
+  "trigger_id": "trigger_789",
+  "playbook_id": "playbook_012",
+  "metrics": {
+    "stakeholders_notified": 12,
+    "elapsed_seconds": 94,
+    "baseline_days": 4,
+    "time_saved_days": 3.99
+  },
+  "dismissed_by_user": false,
+  "dismissed_at_seconds": 8
+}
+```
+
+This data feeds:
+1. Value Dashboard aggregations
+2. ROI reports for renewal conversations
+3. Product usage analytics
+4. Playbook improvement recommendations
+
+---
+
+## RENEWAL CONVERSATION SUPPORT
+
+At renewal, generate a Value Summary Report:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│         READINESS OS: YOUR YEAR IN VALUE                   │
+│                    [Company Name]                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  You invested:           $150,000                           │
+│  Value delivered:        $2.1M (documented)                 │
+│  ROI:                    14×                                │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  HIGHLIGHTS                                                 │
+│                                                             │
+│  • 47 triggers detected and responded to                    │
+│  • Average response time: 8 minutes (vs. 30-day baseline)  │
+│  • 312 days of coordination time saved                      │
+│  • 847 executive hours preserved for strategic work        │
+│  • 31 playbook improvements captured                        │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  NOTABLE ACTIVATIONS                                        │
+│                                                             │
+│  • CFO transition (March): Coordinated response in         │
+│    14 minutes. Board notified same day. No market          │
+│    disruption. Estimated value: $340K                       │
+│                                                             │
+│  • Competitor acquisition response (June): Counter-        │
+│    positioning complete in 48 hours. Estimated             │
+│    retention value: $890K                                   │
+│                                                             │
+│  • Regulatory change (September): Compliance playbook      │
+│    activated. Zero penalties. Estimated savings: $450K     │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## SUMMARY
+
+This contextual value messaging system:
+
+1. **Educates users in real-time** about the value they're receiving
+2. **Builds the ROI case automatically** through accumulated metrics
+3. **Creates renewal-ready documentation** without manual effort
+4. **Reinforces the 3,600× positioning** at every interaction
+5. **Differentiates from competitors** who assume users figure it out
+
+The product doesn't just deliver value—it teaches users to see and articulate that value.
+
+---
+
+*Document Version: 1.0*
+*Last Updated: April 2026*
+*For: Replit Development Team*
