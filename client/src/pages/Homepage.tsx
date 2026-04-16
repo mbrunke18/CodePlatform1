@@ -5,6 +5,7 @@ import { Link, useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import ExecutionOSMicrosoftDiagram from "@/components/ExecutionOSMicrosoftDiagram";
+import EcosystemIntegrationDiagram from "@/components/EcosystemIntegrationDiagram";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -1404,15 +1405,22 @@ function MicrosoftEcosystemBanner() {
           </div>
         </Reveal>
 
-        {/* Ecosystems link */}
+        {/* Universal ecosystem diagram */}
         <Reveal delay={0.3}>
-          <div style={{ textAlign: 'center', marginTop: 40, paddingTop: 32, borderTop: `1px solid rgba(201,168,76,0.12)` }}>
-            <p style={{ ...DM, fontSize: 13, color: 'rgba(240,237,228,0.45)', letterSpacing: '0.04em' }}>
-              Also integrates with Google Workspace, Salesforce, AWS, SAP, ServiceNow, and Workday —{' '}
-              <a href="/ecosystems" style={{ color: GOLD, textDecoration: 'none', fontWeight: 600 }}>
-                view all 7 enterprise ecosystems →
-              </a>
-            </p>
+          <div style={{ marginTop: 48, paddingTop: 40, borderTop: `1px solid rgba(201,168,76,0.1)` }}>
+            <div style={{ textAlign: 'center', marginBottom: 28 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 12 }}>
+                <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.35)' }} />
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Works With Every Stack</span>
+                <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.35)' }} />
+              </div>
+              <p style={{ ...DM, fontSize: 14, color: 'rgba(240,237,228,0.45)', maxWidth: 560, margin: '0 auto' }}>
+                Readiness OS deploys above your existing infrastructure. No rip-and-replace. No new vendor consolidation required.
+              </p>
+            </div>
+            <div style={{ border: `1px solid rgba(201,168,76,0.12)`, overflow: 'hidden' }}>
+              <EcosystemIntegrationDiagram />
+            </div>
           </div>
         </Reveal>
       </div>
