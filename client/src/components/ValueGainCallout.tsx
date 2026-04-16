@@ -16,6 +16,7 @@ interface ValueGainCalloutProps {
   insight: string;
   gain: GainSpec;
   compact?: boolean;
+  dark?: boolean;
   style?: React.CSSProperties;
 }
 
@@ -61,18 +62,24 @@ export function ValueGainCallout({
   insight,
   gain,
   compact = false,
+  dark = false,
   style,
 }: ValueGainCalloutProps) {
   const cfg = MODE_CONFIG[mode];
+
+  const darkAccent = mode === "defense" ? "rgba(255,255,255,0.75)" : cfg.accentColor;
+  const darkLabel  = mode === "defense" ? "rgba(255,255,255,0.5)"
+                   : mode === "offense" ? "#3BAF8A"
+                   : GOLD;
 
   return (
     <div
       style={{
         display: "flex",
         gap: 0,
-        background: cfg.bgColor,
-        border: `1px solid ${cfg.borderColor}`,
-        borderLeft: `3px solid ${cfg.accentColor}`,
+        background: dark ? "rgba(255,255,255,0.05)" : cfg.bgColor,
+        border: dark ? "1px solid rgba(255,255,255,0.1)" : `1px solid ${cfg.borderColor}`,
+        borderLeft: dark ? `3px solid ${darkAccent}` : `3px solid ${cfg.accentColor}`,
         fontFamily: "'Inter', sans-serif",
         ...style,
       }}
@@ -84,7 +91,7 @@ export function ValueGainCallout({
             fontWeight: 800,
             letterSpacing: "0.28em",
             textTransform: "uppercase",
-            color: cfg.labelColor,
+            color: dark ? darkLabel : cfg.labelColor,
             marginBottom: compact ? 6 : 8,
           }}
         >
@@ -93,7 +100,7 @@ export function ValueGainCallout({
         <p
           style={{
             fontSize: compact ? 12 : 13,
-            color: NAVY,
+            color: dark ? "rgba(255,255,255,0.85)" : NAVY,
             lineHeight: 1.65,
             fontWeight: 500,
             margin: compact ? "0 0 10px" : "0 0 14px",
@@ -113,7 +120,7 @@ export function ValueGainCallout({
             style={{
               width: 20,
               height: 1,
-              background: cfg.accentColor,
+              background: dark ? darkAccent : cfg.accentColor,
               opacity: 0.6,
               flexShrink: 0,
             }}
@@ -124,7 +131,7 @@ export function ValueGainCallout({
               fontWeight: 700,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "#6B7280",
+              color: dark ? "rgba(255,255,255,0.38)" : "#6B7280",
             }}
           >
             {gain.label}
@@ -133,14 +140,14 @@ export function ValueGainCallout({
             style={{
               flex: 1,
               height: 1,
-              background: cfg.borderColor,
+              background: dark ? "rgba(255,255,255,0.1)" : cfg.borderColor,
             }}
           />
           <span
             style={{
               fontSize: compact ? 13 : 15,
               fontWeight: 800,
-              color: cfg.accentColor,
+              color: dark ? darkAccent : cfg.accentColor,
               letterSpacing: "0.02em",
               flexShrink: 0,
             }}

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
 import { ValueGainCallout } from '@/components/ValueGainCallout';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { Button } from '@/components/ui/button';
@@ -270,8 +269,6 @@ export default function LiveActivationCenter() {
   const startTimeRef = useRef<number>(0);
   const simulationRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  const { current: activeInsight, enqueue, dismiss } = useValueInsights();
-
   const NAVY = "#0A0F2E";
   const NAVY_MID = "#141B45";
   const GOLD = "#C9A84C";
@@ -537,56 +534,6 @@ export default function LiveActivationCenter() {
       simulationRef.current.forEach(t => clearTimeout(t));
     };
   }, []);
-
-  // ─── Value Insights — 4 high-signal moments only ──────────────────────────
-  // 1. Playbook goes live
-  useEffect(() => {
-    if (activationState === 'IN_PROGRESS') {
-      enqueue({
-        id: 'playbook-activated',
-        headline: 'PLAYBOOK ACTIVATED',
-        body: 'Roles assigned. Tasks staged. Communications armed. The preparation phase is deploying — built before this trigger ever fired.',
-        metric: { label: 'Preparation time encoded', value: '~15 days' },
-      });
-    }
-  }, [activationState]);
-
-  // 2. All stakeholders notified
-  useEffect(() => {
-    if (stakeholders.length > 0 && stakeholders.every(s => s.status === 'notified' || s.status === 'acknowledged')) {
-      enqueue({
-        id: 'all-notified',
-        headline: 'STAKEHOLDER CASCADE COMPLETE',
-        body: `All ${stakeholders.length} stakeholders notified with role-specific instructions — simultaneously. Manual coordination for this step typically takes 3–5 days.`,
-        metric: { label: 'Coordination time eliminated', value: '3–5 days' },
-      });
-    }
-  }, [stakeholders]);
-
-  // 3. First acknowledgment — ownership artifact (Dr. Kerry Huang framework)
-  useEffect(() => {
-    if (stakeholders.some(s => s.status === 'acknowledged')) {
-      enqueue({
-        id: 'first-ack',
-        headline: 'OWNERSHIP CONFIRMED',
-        body: 'The earliest signal that preparation transferred: acknowledgment at the moment of deployment — not silence. This is the ownership artifact the preparation phase was built to produce.',
-        metric: { label: 'Ownership artifact', value: 'Locked' },
-      });
-    }
-  }, [stakeholders]);
-
-  // 4. Activation complete — the full payoff
-  useEffect(() => {
-    if (showCompletion) {
-      enqueue({
-        id: 'activation-complete',
-        headline: 'ACTIVATION COMPLETE',
-        body: 'Full coordinated response deployed. Every stakeholder aligned, every task assigned, execution live — in under 12 minutes. The response was ready before the trigger fired.',
-        metric: { label: '3,600× Execution Head Start', value: 'Captured' },
-        duration: 14000,
-      });
-    }
-  }, [showCompletion]);
 
   if (!activationId) {
     return (
@@ -1073,9 +1020,6 @@ export default function LiveActivationCenter() {
         })()}
       </div>
 
-      {activeInsight && (
-        <ValueInsightToast insight={activeInsight} onDismiss={dismiss} />
-      )}
     </PageLayout>
   );
 }
