@@ -8,10 +8,17 @@ neonConfig.webSocketConstructor = ws;
 
 const logger = pino({ name: 'nlq-service' });
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client lazily to avoid startup crash when key is absent
+let _openai: OpenAI | null = null;
+function getOpenAI(): OpenAI {
+  if (!_openai) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OPENAI_API_KEY is not configured');
+    }
+    _openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  }
+  return _openai;
+}
 
 // Database pool for vector operations
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -111,7 +118,7 @@ export class NaturalLanguageQueryService {
    */
   async generateEmbedding(text: string): Promise<number[]> {
     try {
-      const response = await openai.embeddings.create({
+      const response = await getOpenAI().embeddings.create({
         model: 'text-embedding-ada-002',
         input: text.trim(),
       });
@@ -205,7 +212,7 @@ ${contextText}`;
 Please provide a strategic, data-driven response that references the relevant sources.`;
 
       // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-      const completion = await openai.chat.completions.create({
+      const completion = await getOpenAI().chat.completions.create({
         model: 'gpt-5',
         messages: [
           { role: 'system', content: systemPrompt },
