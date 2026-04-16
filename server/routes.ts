@@ -2666,6 +2666,23 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     try {
       const { id } = req.params;
       const { playbooks } = await import('@shared/schema');
+
+      const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+
+      if (!isUUID) {
+        // Key/slug lookup — normalize both to alphanumeric only and compare
+        const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const idNorm = normalize(id);
+        const allTemplates = await db.select().from(playbookLibrary).limit(200);
+        const match = allTemplates.find(t => {
+          const nameNorm = normalize(t.name ?? '');
+          return nameNorm.includes(idNorm.slice(0, 10)) || idNorm.includes(nameNorm.slice(0, 10));
+        });
+        if (match) {
+          return res.json({ id: match.id, name: match.name, description: match.description, playbookKey: id });
+        }
+        return res.status(404).json({ message: 'Playbook not found' });
+      }
       
       // First check org playbooks table
       const [playbook] = await db.select().from(playbooks).where(eq(playbooks.id, id)).limit(1);
