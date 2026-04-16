@@ -1415,13 +1415,16 @@ function MicrosoftEcosystemBanner() {
         <Reveal delay={0.3}>
           <div style={{ marginTop: 48, paddingTop: 40, borderTop: `1px solid rgba(201,168,76,0.1)` }}>
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 14 }}>
                 <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.35)' }} />
-                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Works With Every Stack</span>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Built for enterprise reality — no 6-month implementation</span>
                 <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.35)' }} />
               </div>
-              <p style={{ ...DM, fontSize: 14, color: 'rgba(240,237,228,0.45)', maxWidth: 560, margin: '0 auto' }}>
-                Readiness OS deploys above your existing infrastructure. No rip-and-replace. No new vendor consolidation required.
+              <h2 style={{ ...GEO, fontSize: 'clamp(22px,3vw,34px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 14 }}>
+                Live in weeks, not months. Responding in 12 minutes.
+              </h2>
+              <p style={{ ...DM, fontSize: 14, color: 'rgba(240,237,228,0.45)', maxWidth: 620, margin: '0 auto' }}>
+                No rip-and-replace. No 6-month implementation. Readiness OS layers above the infrastructure you already own — configured to your org, reviewed by your executives, and ready to deploy a real strategic response within the first month.
               </p>
             </div>
             <div style={{ border: `1px solid rgba(201,168,76,0.12)`, overflow: 'hidden' }}>
