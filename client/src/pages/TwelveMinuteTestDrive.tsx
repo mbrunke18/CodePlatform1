@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { Radio } from "lucide-react";
+import { ValueInsightToast, useValueInsights } from "@/components/ValueInsightToast";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const NAVY    = "#0A0F2E";
@@ -162,10 +163,16 @@ export default function TwelveMinuteTestDrive() {
   const loggedNotify   = useRef<Set<number>>(new Set());
   const loggedAcknow   = useRef<Set<number>>(new Set());
   const elapsedRef     = useRef(0);
+  const firedHalfRef   = useRef(false);
 
-  const scenario = SCENARIOS.find(s => s.id === selectedId);
-  const tasks    = selectedId ? (SCENARIO_TASKS[selectedId] || []) : [];
-  const TOTAL    = 12 * 60;
+  const { current: activeInsight, enqueue, dismiss } = useValueInsights();
+
+  const scenario       = SCENARIOS.find(s => s.id === selectedId);
+  const tasks          = selectedId ? (SCENARIO_TASKS[selectedId] || []) : [];
+  const TOTAL          = 12 * 60;
+  const completedTasks = tasks.filter((_, i) => getTaskStatus(i, elapsed, tasks) === 'done').length;
+  const pct            = Math.round((elapsed / TOTAL) * 100);
+  const phases         = Array.from(new Set(tasks.map(t => t.phase)));
 
   // Timer tick — update elapsed and fire live feed entries exactly once per event
   const tick = useCallback((taskList: typeof tasks) => {
@@ -200,8 +207,15 @@ export default function TwelveMinuteTestDrive() {
     loggedNotify.current  = new Set();
     loggedAcknow.current  = new Set();
     elapsedRef.current    = 0;
+    firedHalfRef.current  = false;
     setElapsed(0);
     setRunning(true);
+    enqueue({
+      id: 'war-room-active',
+      headline: 'STAKEHOLDER CASCADE INITIATED',
+      body: `${taskList.length} roles activated simultaneously — each with role-specific instructions. Manual coordination for this step takes 3–5 days of emails and follow-ups.`,
+      metric: { label: 'Coordination time eliminated', value: '3–5 days' },
+    });
     setLiveEvents([
       { time: '0:00', text: `War room secured — ${taskList.length} tasks queued`, type: 'system' },
       { time: '0:00', text: '12-minute execution clock started', type: 'system' },
@@ -211,6 +225,45 @@ export default function TwelveMinuteTestDrive() {
   };
 
   useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
+
+  // ─── Value Insights — high-signal moments only ────────────────────────────
+  // 1. Execution brief ready
+  useEffect(() => {
+    if (!loadingBrief && brief && step === 2) {
+      enqueue({
+        id: 'brief-staged',
+        headline: 'EXECUTION BRIEF STAGED',
+        body: 'A complete situation analysis and pre-staged response — ready within seconds of scenario selection. Building this from scratch takes 2–3 weeks of cross-functional meetings.',
+        metric: { label: 'Preparation time encoded', value: '~15 days' },
+      });
+    }
+  }, [loadingBrief, brief]);
+
+  // 2. 50% of war room tasks complete
+  useEffect(() => {
+    if (running && tasks.length > 0 && completedTasks >= Math.ceil(tasks.length / 2) && !firedHalfRef.current) {
+      firedHalfRef.current = true;
+      enqueue({
+        id: 'half-mobilized',
+        headline: 'HALF YOUR LEADERSHIP MOBILIZED',
+        body: 'Decision ownership is confirmed. Tasks are in motion. Your competitor is still figuring out who needs to be in the room.',
+        metric: { label: 'Execution head start', value: '3,600×' },
+      });
+    }
+  }, [completedTasks, tasks.length, running]);
+
+  // 3. Debrief — the payoff
+  useEffect(() => {
+    if (step === 4) {
+      enqueue({
+        id: 'execution-complete',
+        headline: 'EXECUTION COMPLETE',
+        body: '30 days compressed to 12 minutes. While other organizations spend weeks mobilizing, yours was already executing. That\'s not speed — that\'s readiness built into infrastructure.',
+        metric: { label: 'Execution head start captured', value: '3,600×' },
+        duration: 14000,
+      });
+    }
+  }, [step]);
 
   async function fetchBrief() {
     if (!scenario) return;
@@ -225,10 +278,6 @@ export default function TwelveMinuteTestDrive() {
       setBrief(d);
     } catch { setBrief(null); } finally { setLoadingBrief(false); }
   }
-
-  const completedTasks = tasks.filter((_, i) => getTaskStatus(i, elapsed, tasks) === 'done').length;
-  const pct            = Math.round((elapsed / TOTAL) * 100);
-  const phases         = Array.from(new Set(tasks.map(t => t.phase)));
 
   return (
     <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
@@ -678,6 +727,10 @@ export default function TwelveMinuteTestDrive() {
           </div>
         )}
       </div>
+
+      {activeInsight && (
+        <ValueInsightToast insight={activeInsight} onDismiss={dismiss} />
+      )}
     </div>
   );
 }
