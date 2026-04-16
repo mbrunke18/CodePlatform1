@@ -213,6 +213,7 @@ const UnifiedEnterprisePlatform = lazy(() => import("./pages/UnifiedEnterprisePl
 const WelcomeBrief = lazy(() => import("./pages/WelcomeBrief"));
 const BoardReadiness = lazy(() => import("./pages/BoardReadiness"));
 const RegulatoryCalendar = lazy(() => import("./pages/RegulatoryCalendar"));
+const Roadmap = lazy(() => import("./pages/Roadmap"));
 const OnboardingGuide = lazy(() => import("./pages/OnboardingGuide"));
 
 const PlaybooksLibraryPage = lazy(() => import("./pages/identify/PlaybooksLibraryPage"));
@@ -320,6 +321,7 @@ function Router() {
             <Route path="/welcome-brief" component={WelcomeBrief} />
             <Route path="/board-readiness" component={BoardReadiness} />
             <Route path="/regulatory-calendar" component={RegulatoryCalendar} />
+            <Route path="/roadmap" component={Roadmap} />
             <Route path="/onboarding-guide" component={OnboardingGuide} />
             <Route path="/workspace" component={WorkspaceHub} />
             <Route path="/workspaces/identify">{() => <Redirect to="/workspace?tab=identify" />}</Route>

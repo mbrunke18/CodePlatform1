@@ -42127,7 +42127,11 @@ var PUBLIC_ROUTES = [
   // Shadow Strategy Simulator — public demo for prospects (12-minute test drive, homepage)
   "/api/simulation/public-analyze",
   // Signal Activity Log — public for Command Tower display
-  "/api/signal-activity-log"
+  "/api/signal-activity-log",
+  // Executive Readiness Score — unauthenticated shows canonical platform values; authenticated shows live org data
+  "/api/readiness-score",
+  // Board-Ready Activation Report — activation debrief reports accessible to report recipients
+  "/api/activations/:id/board-report"
 ];
 function isPublicRoute(path3) {
   const pathWithoutQuery = path3.split("?")[0];
@@ -50331,7 +50335,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     console.log(`\u2705 Weekly pilot digest scheduled \u2014 next send: ${nextMonday.toISOString()}`);
   }
   scheduleWeeklyDigest();
-  app2.get("/api/readiness-score", async (req, res) => {
+  app2.get("/api/readiness-score", optionalAuth, async (req, res) => {
     try {
       const orgId = req.user?.organizationId;
       let signalCount = 52;
@@ -50384,7 +50388,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       res.status(500).json({ error: err.message });
     }
   });
-  app2.get("/api/activations/:id/board-report", async (req, res) => {
+  app2.get("/api/activations/:id/board-report", optionalAuth, async (req, res) => {
     try {
       const { id } = req.params;
       const orgId = req.user?.organizationId;

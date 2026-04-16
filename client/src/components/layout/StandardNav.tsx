@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid } from "lucide-react";
+import { Menu, X, LogIn, LogOut, User, ChevronDown, BarChart3, TrendingUp, Zap, ClipboardList, Radar, Compass, Globe, Users, Calculator, Shield, Layers, ArrowLeft, Brain, Target, Lightbulb, BookOpen, FileText, Settings, Building, Presentation, Video, Eye, Rocket, AlertCircle, ClipboardCheck, FlaskConical, Radio, Play, Search, Activity, Scale, MessageSquare, DollarSign, LayoutGrid, Calendar } from "lucide-react";
 import { SiGoogle, SiGithub, SiApple } from "react-icons/si";
 import { ExecuteIQLogo } from "@/components/ExecuteIQLogo";
 import { useLocation } from "wouter";
@@ -64,6 +64,8 @@ const SEARCH_ITEMS = [
   { label: 'Strategic Innovation Pipeline', path: '/strategic-innovation', category: 'Advance', icon: Lightbulb },
   { label: 'Board Readiness Snapshot', path: '/board-readiness', category: 'Advance', icon: ClipboardList },
   { label: 'Readiness Dividend', path: '/mission-control', category: 'Advance', icon: TrendingUp },
+  { label: 'Regulatory Calendar', path: '/regulatory-calendar', category: 'Identify', icon: Calendar },
+  { label: 'Product Roadmap', path: '/roadmap', category: 'Platform', icon: TrendingUp },
   { label: 'Command Tower', path: '/command-tower', category: 'Execute', icon: Radio },
   { label: 'Live Signal Activity Feed', path: '/command-tower', category: 'Execute', icon: Activity },
   { label: 'Execution Clock', path: '/mission-control', category: 'Execute', icon: Activity },
@@ -144,6 +146,7 @@ export default function StandardNav() {
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
         { label: "Regulatory Calendar", path: "/regulatory-calendar", icon: Shield, description: "Upcoming compliance deadlines mapped to pre-staged response playbooks — SEC, GDPR, SOX, FDA & more" },
+        { label: "What We're Building", path: "/roadmap", icon: TrendingUp, description: "Product roadmap — live features, what's in development, and what's coming next", featured: true },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
         { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "Signal radar, monitoring & compound situation synthesis" },
       ],
@@ -201,6 +204,7 @@ export default function StandardNav() {
     { label: "Investment Thesis", path: "/investors", icon: TrendingUp, description: "Market opportunity, research validation & ROI case" },
     { label: "Pitch Deck", path: "/pitch-deck", icon: Presentation, description: "Pre-seed investor presentation" },
     { label: "Board Briefings", path: "/board-briefings", icon: FileText, description: "Executive-ready board reporting" },
+    { label: "Product Roadmap", path: "/roadmap", icon: TrendingUp, description: "Live features, what's in development, and what's planned — with rationale for each", featured: true },
     { label: "Founder's Story", path: "/founder-story", icon: Video, description: "The vision behind Readiness OS" },
   ];
 
