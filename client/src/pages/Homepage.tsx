@@ -1454,8 +1454,23 @@ function CredibilitySection() {
             ))}
           </div>
 
-          {/* Divider */}
-          <div style={{ width: 48, height: 1, background: "rgba(255,255,255,0.08)", margin: "0 auto 56px" }} />
+          {/* Practitioner Quote Strip */}
+          <div style={{ margin: "0 0 56px", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "40px 0" }}>
+            <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2.2vw,26px)", fontStyle: "italic", color: "rgba(255,255,255,0.88)", lineHeight: 1.6, marginBottom: 16 }}>
+                "That is governance as pre-commitment, not governance as review."
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>
+                — Dr. Kerry Huang
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.04em" }}>
+                Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 8, fontStyle: "italic" }}>
+                Produced independently — without product exposure — through intellectual exchange, April 2026
+              </p>
+            </div>
+          </div>
 
           {/* Outcome metrics */}
           <div style={{ display: "flex", justifyContent: "center", gap: 0, marginBottom: 56, flexWrap: "wrap" }}>

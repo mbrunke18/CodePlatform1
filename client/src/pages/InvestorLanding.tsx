@@ -874,6 +874,80 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Practitioners Named It First */}
+        <section className="py-16 px-6" style={{ background: '#0A0F2E', position: 'relative', overflow: 'hidden' }}>
+          {/* Grid overlay */}
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
+          <div className="max-w-7xl mx-auto" style={{ position: 'relative' }}>
+            <div className="text-center mb-12">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 32, height: 1, background: 'rgba(201,168,76,0.4)' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.8)' }}>Independent Validation</span>
+                <div style={{ width: 32, height: 1, background: 'rgba(201,168,76,0.4)' }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(26px,3vw,38px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }}>
+                Practitioners Named It First
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.55)', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
+                These conclusions were produced organically over a three-week period in April 2026. No one was asked to validate the product. Each arrived at the same structural diagnosis independently, from a different professional direction.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 mb-10">
+              {[
+                {
+                  quote: "That is governance as pre-commitment, not governance as review.",
+                  name: "Dr. Kerry Huang",
+                  title: "Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study",
+                  context: "Produced in a DM exchange — without product exposure. The most precise external description of Readiness OS at the architectural level.",
+                  accent: '#C9A84C',
+                },
+                {
+                  quote: "Speed is structural not technological. The constraint is not the layers. The response was never built before the trigger fired.",
+                  name: "Raj Polanki",
+                  title: "CIO · Board Member · AI Leadership Coach · NACD Director",
+                  context: "A current CIO and NACD board director independently confirmed that organizational speed is an architecture problem, not a technology limitation.",
+                  accent: '#2B8A6E',
+                },
+                {
+                  quote: "Most organizations do not have a response-speed problem first. They have a predecision problem. If authority, sequencing, ownership, and fallback paths are not already defined, the trigger event just exposes that the operating model was never built for time-compressed execution.",
+                  name: "Scott DeJarnette, PhD",
+                  title: "Cybersecurity Strategist · CIO Advisor · Triple CCIE · Incident Response · M&A Integration",
+                  context: "A PhD CIO advisor with incident response credentials independently named the predecision architecture problem.",
+                  accent: '#C9A84C',
+                },
+                {
+                  quote: "The gap between AI strategy and team execution is not a technology issue. It is an operating model issue.",
+                  name: "Zhaohui Feng",
+                  title: "Former CIO · 25 Years Enterprise IT · AI Strategy to Execution",
+                  context: "Independently confirmed the Microsoft positioning argument: every enterprise has the AI stack, none have the operating model.",
+                  accent: '#2B8A6E',
+                },
+              ].map((v, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${v.accent}`, padding: '28px 28px 24px' }}>
+                  <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(16px,1.6vw,20px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.9)', lineHeight: 1.6, marginBottom: 20 }}>
+                    "{v.quote}"
+                  </p>
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 16 }}>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: v.accent, marginBottom: 4 }}>— {v.name}</p>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.02em', marginBottom: 10 }}>{v.title}</p>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55 }}>{v.context}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <div style={{ display: 'inline-block', background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', padding: '14px 28px' }}>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.04em', margin: 0 }}>
+                  <span style={{ color: 'rgba(201,168,76,0.7)', fontWeight: 700 }}>Two convergent frameworks.</span>{' '}
+                  Dr. Huang's AwaCourage governance model and Readiness OS were developed independently. Both require the same upstream pre-commitment architecture. That is intellectual convergence, not coincidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Future Positioning Visual */}
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-7xl mx-auto">
