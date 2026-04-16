@@ -1,7 +1,7 @@
 # VaughnMartin — Readiness OS
 
 ## Overview
-VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000. Its primary goal is to automate project creation, task assignment, document staging, and budget allocation to achieve a 12-minute response time to strategic triggers. The platform incorporates 170 strategic readiness playbooks across 9 domains within its proprietary IDEA Framework™. It operates on a model where AI monitors, executives authorize, and execution is pre-staged, enabling rapid and approved actions. The vision is to become "The Readiness Infrastructure Enterprises Are Missing," empowering enterprises to be "Fearless."
+VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 1000, designed to automate project creation, task assignment, document staging, and budget allocation. Its core purpose is to achieve a 12-minute response time to strategic triggers, leveraging 170 strategic readiness playbooks within its proprietary IDEA Framework™. The platform operates on a model where AI monitors, executives authorize, and execution is pre-staged, enabling rapid and approved actions. The vision is to become "The Readiness Infrastructure Enterprises Are Missing," empowering enterprises to be "Fearless" by transforming how work flows in the age of AI, moving from slow, meeting-heavy operating models to pre-staged, pattern-detected execution. The company's origin stems from the core principle "Prepare. Practice. Perform fearless. Never give up."
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -17,7 +17,7 @@ VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000.
   — **"Silence at Acknowledgment" (LOCKED):** The earliest signal that preparation didn't transfer is not that the playbook failed — it is silence at acknowledgment. Not silence at completion. Not divergence at debrief. Silence at the moment the response either deploys or does not, in the first minutes.
   — **The Deep Readiness Thesis (LOCKED):** "Not 12 minutes. Not 3,600×. Preparation building ownership that holds under pressure."
   — **Competitive Moat (LOCKED):** "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase."
-  — **Three Things Preparation Does Differently:** (1) Owner in the room when the response was built, not when it was delivered. (2) Owner had explicit challenge rights before the playbook was final. (3) Plan personalized to this specific person's specific decision under their specific conditions — not a generic role assignment.
+  — **Three Things Preparation Does Differently:** (1) Owner in the room when the response was built, not when it was delivered. (2) Owner had explicit challenge rights before the playbook is final. (3) Plan personalized to this specific person's specific decision under their specific conditions — not a generic role assignment.
   — **Deployed in:** FounderStory (Research Anchor section + Deep Thesis pullquote), PlaybookCustomize (Challenge Rights + First-Minute Test section), PlaybookActivationConsole ("Silence at acknowledgment" diagnostic line), InvestorLanding (Competitive Moat Research Foundation callout).
 - Valued prioritization approach with phase-by-phase implementation
 - Maintain core product vision: AI monitors, executives authorize, execution pre-staged. The phrase "human-AI partnership" is RETIRED from all UI/UX copy — replace with "AI monitors, executives authorize" or "Executive authority preserved." No playbook activates without executive sign-off. The preparation compresses the mobilization cycle; the decision remains human.
@@ -33,41 +33,45 @@ VaughnMartin's Readiness OS is coordination infrastructure for the Fortune 1000.
 
 **UI/UX Decisions:**
 - **Theme:** Light mode with pure white backgrounds; dark mode supported.
-- **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy. All `h2.text-4xl/3xl/2xl.font-bold` and `h3.text-3xl/2xl/xl.font-bold` globally converted to Cormorant Garamond via index.css (T001 editorial lift — affects all 192 pages). Section headings using `tracking-widest uppercase` remain Barlow Condensed.
+- **Typography:** Global base font-weight 500; headings are font-weight 700 in midnight navy, using Cormorant Garamond for editorial sections and Barlow Condensed for section labels.
 - **Branding:** Consistent VaughnMartin and Readiness OS branding with a circular seal logo.
 - **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`).
 - **Layout:** All pages are wrapped by a `PageLayout` component.
 - **Homepage:** Focuses on 12-minute execution, IDEA Framework, and research-backed validation with a specific section order.
-- **Brand Colors:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`. Zero purple (#7C6FD4) anywhere — replaced with Teal.
-- **Design Utilities (index.css):** `vm-stat-block`, `vm-section-label`, `vm-editorial-rule`, `vm-metric-row`, `vm-card-editorial`, `vm-table-editorial`, `vm-metric-number`. All buttons/cards/badges are `border-radius: 0.15rem` (no pill look).
-- **Shared Design Components:** `client/src/components/design/index.tsx` — `SectionLabel`, `EditorialStat`, `GoldRule` reusable components.
-- **Language enforcement enforced:** "AI monitoring" → "signal monitoring" purged from all 9 violating files. Zero AI-powered/AI-driven/AI-generated violations in user-facing copy. "AI Intelligence Core" → "Intelligence Core". "AI Executive Copilot" → "Executive Copilot".
+- **Brand Colors:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`. No purple.
+- **Design Utilities:** Custom CSS utilities for consistent styling of stat blocks, section labels, editorial rules, metric rows, cards, tables, and metric numbers. Buttons/cards/badges use `border-radius: 0.15rem`.
+- **Shared Design Components:** Reusable components like `SectionLabel`, `EditorialStat`, `GoldRule` in `client/src/components/design/index.tsx`.
+- **Language Enforcement:** Strict adherence to preferred terminology for AI-related concepts, replacing phrases like "AI-powered" with "system-detected" or "signal-based."
 
 **Technical Implementations:**
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion.
 - **Backend:** Node.js, Express.js, TypeScript.
 - **Database:** PostgreSQL (Neon serverless) with Drizzle ORM.
 - **Real-time:** Socket.IO WebSocket server.
-- **AI Services:** Primarily Azure OpenAI, with fallback to OpenAI GPT-4o, utilizing a multi-agent IDEA Framework.
+- **AI Services:** Azure OpenAI primarily, with fallback to OpenAI GPT-4o, employing a multi-agent IDEA Framework.
 - **Authentication:** Replit OIDC with Passport.js.
-- **Role-Based Access:** `requireRole()` middleware.
+- **Role-Based Access:** `requireRole()` middleware for authorization.
 - **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
 
 **Feature Specifications:**
 - **Core Platform:** Playbook Library (170 playbooks), Demo Experience, Execution Intelligence Dashboard, Investor Gate, admin views.
-- **Pre-Staged Execution:** Execution Briefs, Live War Room, Post-Activation Debriefs. All execution is pre-staged — not AI-autonomous.
+- **Pre-Staged Execution:** Execution Briefs, Live War Room, Post-Activation Debriefs, all designed for pre-staged, human-authorized execution.
 - **Automation & Simulation:** Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, Shadow Strategy Simulator (Digital Twin).
-- **IDEA Framework:** Full Trigger → Playbook IDEA Chain for trigger detection and playbook recommendations. Phase role labels: System-Automated (Identify), System-Orchestrated (Execute), System-Analyzed (Advance).
+- **IDEA Framework:** Manages the full Trigger → Playbook IDEA Chain for trigger detection, playbook recommendations, and execution with system-automated, orchestrated, and analyzed phases.
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
-- **Data Consistency:** Strict adherence to consistent values for response time (12 minutes), execution head start (3,600×), number of playbooks (170), and triggers (221).
+- **Data Consistency:** Strict use of "12 minutes," "3,600×," "170 playbooks," and "221 triggers."
 - **12-Minute Test Drive:** A public 4-step sequential experience simulating execution at `/12-minute-experience`.
-- **Live Signal Detection:** Real RSS ingestion from 8 sources every 15 minutes (NY Times Business, BBC Business, Federal Register, CNBC, MarketWatch, NPR Business, Google News Finance, Entrepreneur). `SignalEvaluationService` scores against 16 trigger patterns.
-- **Risk Scoring:** Square-root scaling (`√signals × 8`). LOW <35, MEDIUM 35–74, HIGH 75+. 52 signals → MEDIUM/58. Prevents permanent HIGH state in a mature monitoring environment.
+- **Live Signal Detection:** Real-time RSS ingestion from 8 sources every 15 minutes, scored against 16 trigger patterns by `SignalEvaluationService`.
+- **Risk Scoring:** Square-root scaling (`√signals × 8`) for LOW (<35), MEDIUM (35–74), HIGH (75+) risk levels.
 - **Command Tower:** Full-screen executive display page (`/command-tower`) with live trigger detections and system stats.
-- **Platform Reality Page (`/platform-reality`):** Positions Readiness OS against thought leadership, highlighting the 3,600× mathematical challenge and the failure of traditional approaches.
-- **MS Project EOL Positioning Page (`/ms-project`):** Compares ServiceNow SPM vs. Readiness OS for Fortune 1000 COOs/CIOs.
-- **Competitive Positioning Pages (3, cross-linked):** `/vs-consulting` (VsConsulting), `/ms-project` (MsProjectTransition), `/platform-reality` (PlatformReality). All three cross-link to each other via "Also in This Series" nav bars.
-- **Three Access Paths:** (1) Request Access `/request-access` — magic link via Resend; (2) Trial Access `/trial-access` — 48-hour full platform trial; (3) Demo Access `/demo-access` — token-based controlled access.
+- **Platform Reality Page (`/platform-reality`):** Positions Readiness OS against thought leadership.
+- **MS Project EOL Positioning Page (`/ms-project`):** Compares ServiceNow SPM vs. Readiness OS.
+- **Competitive Positioning Pages:** `/vs-consulting`, `/ms-project`, `/platform-reality` are cross-linked.
+- **Three Access Paths:** Request Access (`/request-access`), Trial Access (`/trial-access`), Demo Access (`/demo-access`).
+- **Executive Readiness Score:** Computes a 0–100 score from live signals, triggers, playbooks, and activations, displayed on `Dashboard.tsx`.
+- **Sector Playbook Packs:** Organizes playbooks by 6 industry sectors.
+- **Regulatory Calendar:** Displays 9 compliance deadlines with urgency, days remaining, regulatory body, description, and recommended actions.
+- **Board-Ready Activation Report:** Generates a report for activations, including elapsed time and next steps, integrated into `ActivationOutcome.tsx`.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI
