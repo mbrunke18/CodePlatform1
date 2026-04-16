@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ValueGainCallout } from "@/components/ValueGainCallout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -650,6 +651,17 @@ export default function PlaybookCustomize() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* What staging this playbook produces — visible before any section is edited */}
+      <div className="max-w-[1600px] mx-auto px-6 pt-6 pb-0">
+        <ValueGainCallout
+          mode="special-teams"
+          position=""
+          insight="What you're building here is the decision before the pressure arrives. The owner will be in the room when this response is built — not just when it is delivered. Assignment is naming someone. Ownership is that person having challenged this playbook, rehearsed the decision, and signed off before any trigger existed."
+          gain={{ label: "Ownership artifact", value: "Pre-built" }}
+          compact
+        />
       </div>
 
       <div className="max-w-[1600px] mx-auto px-6 py-8 flex gap-8">

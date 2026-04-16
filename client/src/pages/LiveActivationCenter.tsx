@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
+import { ValueGainCallout } from '@/components/ValueGainCallout';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -1036,6 +1037,16 @@ export default function LiveActivationCenter() {
                     </div>
                   </div>
                 </div>
+
+                {/* What this activation produced — position framing */}
+                <ValueGainCallout
+                  mode="special-teams"
+                  position=""
+                  insight="The coordination infrastructure just proved itself under a live trigger. Every stakeholder acknowledged, every task deployed, every sequence intact. This is the ownership artifact the preparation phase was built to produce — and it held under pressure."
+                  gain={{ label: "Coordination moat built", value: "Compounding" }}
+                  compact
+                  style={{ textAlign: "left", marginTop: 4 }}
+                />
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                   <Link href="/coordination-intelligence" className="flex-1">

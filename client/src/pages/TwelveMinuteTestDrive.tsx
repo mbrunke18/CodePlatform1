@@ -4,6 +4,7 @@ import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { Radio } from "lucide-react";
 import { ValueInsightToast, useValueInsights } from "@/components/ValueInsightToast";
+import { ValueGainCallout, type ValueGainMode } from "@/components/ValueGainCallout";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const NAVY    = "#0A0F2E";
@@ -51,6 +52,42 @@ const SCENARIOS = [
   { id: 'regulatory', title: 'Regulatory Inquiry', subtitle: 'DOJ investigation opened — disclosure required', domain: 'Regulatory', urgency: 'high' },
   { id: 'talent', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'Talent', urgency: 'high' },
 ];
+
+function scenarioMode(id: string | null): ValueGainMode {
+  if (id === 'activist') return 'offense';
+  if (id === 'talent') return 'special-teams';
+  return 'defense';
+}
+
+const SCENARIO_BRIEF_CALLOUT: Record<ValueGainMode, { insight: string; gain: { label: string; value: string } }> = {
+  offense: {
+    insight: "This brief means your board already knows what to do. Every competitor receiving the same activist notice schedules their first call — you are activating a response built months before this stake was disclosed. That is position, not reaction.",
+    gain: { label: "Execution head start", value: "30 days" },
+  },
+  defense: {
+    insight: "This brief eliminates the mobilization cycle. Every stakeholder already knows their role, every decision is pre-authorized, every communication is pre-staged. You don't convene a war room — the war room was already convened.",
+    gain: { label: "Crisis lead time captured", value: "Pre-staged" },
+  },
+  "special-teams": {
+    insight: "This brief is the coordination artifact. The acknowledgment step that follows is not authorization — it confirms the preparation transferred. Silence at acknowledgment is the earliest failure signal; you just eliminated that risk.",
+    gain: { label: "Coordination ownership", value: "Pre-built" },
+  },
+};
+
+const SCENARIO_DEBRIEF_CALLOUT: Record<ValueGainMode, { insight: string; gain: { label: string; value: string } }> = {
+  offense: {
+    insight: "You just demonstrated that when the trigger fires, your response moves faster than the opposition's first press release. That is not speed. That is position — and it was built before this moment existed.",
+    gain: { label: "Competitive position", value: "30 days ahead" },
+  },
+  defense: {
+    insight: "You just demonstrated that crisis does not end your strategy — it tests whether your preparation held. It held. Every task completed was a decision that was made before the pressure arrived. That is resilience infrastructure.",
+    gain: { label: "Mobilization cycle", value: "Eliminated" },
+  },
+  "special-teams": {
+    insight: "You just demonstrated that the coordination infrastructure was real. The ownership artifact was produced — roles acknowledged, tasks deployed, sequence intact. This is what preparation compounding looks like: it transfers under pressure.",
+    gain: { label: "Ownership artifact", value: "Locked" },
+  },
+};
 
 // ─── Scenario-specific war room tasks ────────────────────────────────────────
 const SCENARIO_TASKS: Record<string, Array<{ phase: string; role: string; action: string; time: string; priority: string }>> = {
@@ -494,16 +531,29 @@ export default function TwelveMinuteTestDrive() {
               </>
             )}
 
-            {!loadingBrief && (
-              <div style={{ textAlign: 'center' }}>
-                <button
-                  onClick={() => { setStep(3); scrollToTop(); startWarRoom(tasks); }}
-                  style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}
-                >
-                  Enter the War Room — Start Clock →
-                </button>
-              </div>
-            )}
+            {!loadingBrief && (() => {
+              const mode = scenarioMode(scenario.id);
+              const callout = SCENARIO_BRIEF_CALLOUT[mode];
+              return (
+                <>
+                  <ValueGainCallout
+                    mode={mode}
+                    position=""
+                    insight={callout.insight}
+                    gain={callout.gain}
+                    style={{ marginBottom: 24, borderColor: 'rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.04)' }}
+                  />
+                  <div style={{ textAlign: 'center' }}>
+                    <button
+                      onClick={() => { setStep(3); scrollToTop(); startWarRoom(tasks); }}
+                      style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}
+                    >
+                      Enter the War Room — Start Clock →
+                    </button>
+                  </div>
+                </>
+              );
+            })()}
           </div>
         )}
 
@@ -674,6 +724,21 @@ export default function TwelveMinuteTestDrive() {
                 </div>
               ))}
             </div>
+
+            {/* Debrief value callout — what this activation produced */}
+            {(() => {
+              const mode = scenarioMode(scenario.id);
+              const callout = SCENARIO_DEBRIEF_CALLOUT[mode];
+              return (
+                <ValueGainCallout
+                  mode={mode}
+                  position=""
+                  insight={callout.insight}
+                  gain={callout.gain}
+                  style={{ marginBottom: 24 }}
+                />
+              );
+            })()}
 
             {/* What this means */}
             <div style={{ padding: '28px 32px', background: 'rgba(201,168,76,0.08)', borderLeft: `4px solid ${GOLD}`, borderTop: `1px solid ${GOLD}`, borderRight: `1px solid ${GOLD}`, borderBottom: `1px solid ${GOLD}`, marginBottom: 24 }}>
