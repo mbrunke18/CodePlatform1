@@ -567,17 +567,23 @@ function HeroSection() {
             </div>
 
             <h1 className="hp-hero-h1" style={{
-              ...GEO, fontSize: "clamp(38px,5vw,62px)", fontWeight: 700, color: "#fff",
-              lineHeight: 1.12, marginBottom: 24,
+              ...GEO, fontSize: "clamp(38px,5vw,68px)", fontWeight: 700, color: "#fff",
+              lineHeight: 1.1, marginBottom: 20,
             }}>
-              Pre-stage every
-              <br />strategic response.
-              <br />
-              <span style={{ color: GOLD_LIGHT }}>Deploy in 12 minutes.</span>
+              The response is ready
+              <br />before the trigger fires.
             </h1>
 
-            <p style={{ ...DM, fontSize: "clamp(15px,1.5vw,17px)", color: "rgba(255,255,255,0.62)", maxWidth: 500, marginBottom: 44, lineHeight: 1.7 }}>
-              Readiness OS pre-stages 170 responses across 9 strategic domains — so when the trigger fires, the brief is ready, the team is assigned, and execution begins immediately. Not weeks later.
+            <p style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: "clamp(17px,1.6vw,22px)", fontStyle: "italic",
+              color: GOLD_LIGHT, marginBottom: 28, lineHeight: 1.45, fontWeight: 500,
+            }}>
+              Fearless isn't a feeling. It's infrastructure.
+            </p>
+
+            <p style={{ ...DM, fontSize: "clamp(14px,1.3vw,16px)", color: "rgba(255,255,255,0.58)", maxWidth: 480, marginBottom: 44, lineHeight: 1.75 }}>
+              Pre-stage 170 strategic responses across 9 domains. When a competitor acts, a regulator moves, or a market event fires — the brief is already built, the team pre-assigned, and execution begins in 12 minutes. Not weeks.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: 16 }}>
