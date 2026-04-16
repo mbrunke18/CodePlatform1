@@ -599,7 +599,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       },
       {
         id: 'int-031', name: 'Broadcom Clarity PPM', category: 'project-tracking', status: 'pending', comingSoon: true,
-        description: 'Enterprise portfolio management with AI-driven project intelligence', provider: 'Broadcom', version: '16.2',
+        description: 'Enterprise portfolio management with intelligent project tracking and governance', provider: 'Broadcom', version: '16.2',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Portfolio Governance', 'Resource Optimization', 'Financial Tracking', 'Risk Management', 'Time Tracking'],
         configuration: { syncFrequency: '30 minutes', dataMapping: ['portfolios', 'projects', 'timesheets', 'risks'] }
@@ -627,14 +627,14 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       },
       {
         id: 'int-035', name: 'BMC Helix ITSM', category: 'itsm', status: 'pending', comingSoon: true,
-        description: 'AI-powered enterprise ITSM and digital service management platform', provider: 'BMC', version: '23.3',
+        description: 'Enterprise ITSM and digital service management platform', provider: 'BMC', version: '23.3',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Incident Management', 'Change Management', 'Problem Management', 'CMDB', 'AI Operations'],
         configuration: { syncFrequency: 'real-time', dataMapping: ['incidents', 'changes', 'problems', 'assets'] }
       },
       {
         id: 'int-036', name: 'Freshservice', category: 'itsm', status: 'pending', comingSoon: true,
-        description: 'Cloud-native ITSM platform with AI-powered service automation', provider: 'Freshworks', version: '2.0',
+        description: 'Cloud-native ITSM platform with automated service management', provider: 'Freshworks', version: '2.0',
         lastSync: '', health: 0, endpoints: 0, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Incident Management', 'Service Catalog', 'Asset Management', 'Change Management', 'Analytics'],
         configuration: { syncFrequency: '10 minutes', dataMapping: ['tickets', 'assets', 'changes', 'releases'] }

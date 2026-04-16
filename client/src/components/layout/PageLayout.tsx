@@ -31,7 +31,7 @@ const ROUTE_MAP: Record<string, { label: string; section: string }> = {
   '/preparedness-report':      { label: 'Preparedness Report', section: 'Identify' },
   '/playbook-command':         { label: 'Playbook Command', section: 'Identify' },
   '/board-briefings':          { label: 'Board Briefings', section: 'Identify' },
-  '/ai-radar':                 { label: 'AI Radar Dashboard', section: 'Detect' },
+  '/ai-radar':                 { label: 'Signal Radar Dashboard', section: 'Detect' },
   '/foresight-radar':          { label: 'Foresight Radar', section: 'Detect' },
   '/signal-intelligence':      { label: 'Signal Intelligence', section: 'Detect' },
   '/incident-analyzer':        { label: 'Incident Analyzer', section: 'Detect' },

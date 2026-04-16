@@ -46,7 +46,7 @@ const SEARCH_ITEMS = [
   { label: 'What-If Analyzer', path: '/what-if-analyzer', category: 'Identify', icon: Lightbulb },
   { label: 'Playbook Customization', path: '/playbook-customization', category: 'Identify', icon: ClipboardCheck },
   { label: 'Preparedness Report', path: '/preparedness-report', category: 'Identify', icon: Shield },
-  { label: 'AI Radar Dashboard', path: '/ai-radar', category: 'Detect', icon: Radar },
+  { label: 'Signal Radar Dashboard', path: '/ai-radar', category: 'Detect', icon: Radar },
   { label: 'Foresight Radar', path: '/foresight-radar', category: 'Detect', icon: Eye },
   { label: 'Signal Intelligence', path: '/signal-intelligence', category: 'Detect', icon: Radio },
   { label: 'Incident Analyzer', path: '/incident-analyzer', category: 'Detect', icon: AlertCircle },
@@ -129,7 +129,7 @@ export default function StandardNav() {
       heading: "Core Capabilities",
       links: [
         { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged playbooks across 9 strategic domains" },
-        { label: "AI Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
+        { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
       ],
@@ -144,7 +144,7 @@ export default function StandardNav() {
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
-        { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "AI radar, signals & compound threat synthesis" },
+        { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "Signal radar, monitoring & compound situation synthesis" },
       ],
     },
     {
@@ -329,7 +329,7 @@ export default function StandardNav() {
             {megaColHeading("Core Capabilities")}
             {[
               { path: '/playbooks', icon: ClipboardList, label: 'Playbook Library', sub: '170 pre-staged playbooks across 9 strategic domains', featured: true },
-              { path: '/triggers-management', icon: Zap, label: 'AI Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
+              { path: '/triggers-management', icon: Zap, label: 'Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
               { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
             ].map(l => megaItem(l))}
@@ -344,7 +344,7 @@ export default function StandardNav() {
               { path: '/workspace', icon: Layers, label: 'Workspace', sub: 'Execute across all 4 IDEA phases' },
               { path: '/situations-hub', icon: Shield, label: '9-Domain Coverage Board', sub: 'Exposure & readiness across all 9 strategic domains' },
               { path: '/coordination-intelligence', icon: Activity, label: 'Coordination Intelligence', sub: 'Your real speed vs. the 12-minute benchmark', featured: true },
-              { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'AI radar, signals & compound threat synthesis' },
+              { path: '/intelligence-hub', icon: Brain, label: 'Intelligence Hub', sub: 'Signal radar, monitoring & compound situation synthesis' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.09)' }} />
             {megaColHeading("Execute Phase Tools")}

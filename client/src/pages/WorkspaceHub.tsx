@@ -108,8 +108,8 @@ function TwoPhasePlaybookSelector() {
 // ─── DETECT DATA ─────────────────────────────────────────────────────────────
 const detectTools = [
   { title: "Signal Intelligence Hub", description: "Centralized view of all incoming signals and intelligence feeds", path: "/signal-intelligence", icon: Radio, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Real-time monitoring", featured: true },
-  { title: "AI Trigger Monitoring", description: "Configure and manage automated trigger detection rules", path: "/triggers-management", icon: Target, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Continuous" },
-  { title: "AI Radar Dashboard", description: "360° view of emerging threats and opportunities", path: "/ai-radar", icon: Radar, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Predictive insights" },
+  { title: "Trigger Monitoring", description: "Configure and manage automated trigger detection rules", path: "/triggers-management", icon: Target, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Continuous" },
+  { title: "Signal Radar Dashboard", description: "360° view of emerging situations and opportunities", path: "/ai-radar", icon: Radar, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Predictive insights" },
   { title: "Weak Signal Detection", description: "Identify early warning indicators before they escalate", path: "/pulse-intelligence", icon: Activity, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Early warning" },
   { title: "Foresight Radar", description: "Long-range strategic scanning and trend analysis", path: "/foresight-radar", icon: Eye, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Strategic foresight" },
   { title: "Alert Configuration", description: "Set up notifications and escalation workflows", path: "/triggers-management", icon: Bell, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Instant alerts" },

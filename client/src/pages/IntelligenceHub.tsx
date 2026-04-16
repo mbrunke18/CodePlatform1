@@ -166,7 +166,7 @@ export default function IntelligenceHub() {
               {/* Quick Links */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
-                  { title: 'AI Radar Dashboard', desc: 'Real-time AI signal detection and pattern analysis', path: '/ai-radar', tab: 'radar', icon: Radio, color: GOLD },
+                  { title: 'Signal Radar Dashboard', desc: 'Real-time signal detection and pattern analysis', path: '/ai-radar', tab: 'radar', icon: Radio, color: GOLD },
                   { title: 'Signal Intelligence', desc: '248+ data points, 9 strategic domains', path: '/signal-intelligence', tab: 'signals', icon: Zap, color: TEAL },
                   { title: 'Compound Threats', desc: 'Cross-domain disruption synthesis', path: '/intelligence', tab: 'compound', icon: Brain, color: NAVY },
                 ].map(item => (
@@ -284,7 +284,7 @@ export default function IntelligenceHub() {
                     {[
                       { step: '01', title: 'Weak Signal Aggregation', desc: 'The system reads signals across all 20 domains simultaneously, identifying patterns invisible to domain-specific analysis.' },
                       { step: '02', title: 'Cross-Domain Correlation', desc: 'The system identifies when signals from multiple domains show convergent patterns that amplify total risk.' },
-                      { step: '03', title: 'Threat Synthesis', desc: 'A compound threat card is generated with severity score, confidence rating, and recommended response playbooks.' },
+                      { step: '03', title: 'Situation Synthesis', desc: 'A compound situation card is generated with severity score, confidence rating, and recommended response playbooks.' },
                     ].map(s => (
                       <div key={s.step}>
                         <div className="text-4xl font-bold mb-3 text-[#E8E4DC]" style={CG}>{s.step}</div>

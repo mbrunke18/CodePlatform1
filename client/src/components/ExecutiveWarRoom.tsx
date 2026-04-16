@@ -451,7 +451,7 @@ export function ExecutiveWarRoom() {
                     <Badge className="bg-green-500 text-white">OPERATIONAL</Badge>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">AI Radar</span>
+                    <span className="text-sm">Signal Radar</span>
                     <Badge className="bg-[#0A0F2E] text-white">SCANNING</Badge>
                   </div>
                   <div className="flex justify-between items-center">

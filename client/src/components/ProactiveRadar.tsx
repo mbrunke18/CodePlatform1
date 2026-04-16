@@ -104,7 +104,7 @@ export default function ProactiveRadar() {
     },
     onSuccess: () => {
       toast({
-        title: "AI Radar Scan Completed",
+        title: "Signal Radar Scan Completed",
         description: "Proactive analysis completed. Check your dashboard for new strategic insights.",
       });
       queryClient.invalidateQueries({ queryKey: ['/api/ai-radar/status'] });
@@ -112,7 +112,7 @@ export default function ProactiveRadar() {
     onError: () => {
       toast({
         title: "Scan Failed",
-        description: "AI Radar scan encountered an issue. Please try again.",
+        description: "Signal radar scan encountered an issue. Please try again.",
         variant: "destructive",
       });
     },
@@ -222,7 +222,7 @@ export default function ProactiveRadar() {
             <Radar className="h-6 w-6 text-[#0A0F2E]" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold">Proactive AI Radar</h2>
+            <h2 className="text-2xl font-bold">Proactive Signal Radar</h2>
             <p className="text-gray-600">Strategic Co-pilot for Executive Decision Making</p>
           </div>
         </div>
@@ -542,7 +542,7 @@ export default function ProactiveRadar() {
             <CardContent>
               <div className="text-center py-8 text-gray-600 dark:text-gray-300" data-testid="div-insights-placeholder">
                 <TrendingUp className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <p>AI Radar is continuously scanning for strategic opportunities and risks.</p>
+                <p>Signal monitoring is continuously scanning for strategic opportunities and emerging situations.</p>
                 <p className="text-sm mt-2">New insights will appear here as they are discovered.</p>
                 <Button 
                   variant="outline" 

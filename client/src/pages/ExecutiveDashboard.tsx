@@ -342,7 +342,7 @@ export default function ExecutiveDashboard() {
                   trendDirection="neutral"
                   status={activeCount >= 5 ? 'good' : 'warning'}
                   icon={Radio}
-                  description="Real-time threat detection"
+                  description="Real-time signal detection"
                 />
                 <MetricCard
                   title="Signal Precision"

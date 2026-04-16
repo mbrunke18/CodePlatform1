@@ -267,7 +267,7 @@ export default function MarketingLanding() {
                   Track 12 intelligence signals with Pattern-based recognition and proactive alerts tailored to your industry.
                 </p>
                 <Button onClick={() => setLocation('/ai-radar')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-monitoring">
-                  View AI Radar <ChevronRight className="ml-2 h-4 w-4" />
+                  View Signal Radar <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>

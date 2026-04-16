@@ -253,7 +253,7 @@ export default function EcosystemDiagram({
       {/* IDEA phase chips */}
       {[
         { label: "IDENTIFY", sub: "Triggers · Signals",   color: GOLD, x: eosX + 48 },
-        { label: "DETECT",   sub: "AI Radar · 248+ pts",  color: TEAL, x: eosX + 210 },
+        { label: "DETECT",   sub: "Signal Radar · 248+ pts",  color: TEAL, x: eosX + 210 },
         { label: "EXECUTE",  sub: "Playbooks · War Room", color: TEAL, x: eosX + 372 },
         { label: "ADVANCE",  sub: "ROI · Analytics",      color: GOLD, x: eosX + 534 },
       ].map((phase) => (

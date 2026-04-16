@@ -22,7 +22,7 @@ const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 const WHAT_YOU_GET = [
   { icon: BookOpen, label: "170 Strategic Playbooks", desc: "Full library across 9 domains — ready to activate" },
   { icon: Radar, label: "Signal Intelligence Dashboard", desc: "Real-time monitoring across 12 enterprise systems" },
-  { icon: Zap, label: "AI Trigger Detection", desc: "Pattern matching surfaces the right playbook in seconds" },
+  { icon: Zap, label: "Trigger Detection", desc: "Pattern matching surfaces the right playbook in seconds" },
   { icon: BarChart3, label: "Executive Analytics", desc: "Live performance metrics, ROI tracking, risk scoring" },
   { icon: Users, label: "Stakeholder Coordination", desc: "Task assignment, escalation paths, approvals built-in" },
   { icon: Shield, label: "Crisis Response Center", desc: "Pre-wired playbooks for every threat scenario" },

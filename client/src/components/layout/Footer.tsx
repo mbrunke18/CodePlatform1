@@ -24,7 +24,7 @@ export default function Footer() {
       title: "DETECT",
       links: [
         { label: "Signal Intelligence", path: "/signal-intelligence" },
-        { label: "AI Trigger Monitoring", path: "/triggers-management" },
+        { label: "Trigger Monitoring", path: "/triggers-management" },
         { label: "Command Tower", path: "/command-tower" },
       ]
     },

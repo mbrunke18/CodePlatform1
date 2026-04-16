@@ -34,7 +34,7 @@ const workspaceTools = [
     featured: true
   },
   {
-    title: "AI Trigger Monitoring",
+    title: "Trigger Monitoring",
     description: "Configure and manage automated trigger detection rules",
     path: "/triggers-management",
     icon: Target,
@@ -43,7 +43,7 @@ const workspaceTools = [
     stats: "Continuous"
   },
   {
-    title: "AI Radar Dashboard",
+    title: "Signal Radar Dashboard",
     description: "360° view of emerging threats and opportunities",
     path: "/ai-radar",
     icon: Radar,

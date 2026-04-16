@@ -102,7 +102,7 @@ export default function AIRadarSimulation({
             <Activity style={{ width: 16, height: 16, color: isMonitoring ? TEAL_LT : 'rgba(255,255,255,0.4)' }}
               className={isMonitoring ? 'animate-pulse' : ''} />
             <span style={{ fontWeight: 600, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
-              AI Trigger Monitoring
+              Trigger Monitoring
             </span>
           </div>
           <Badge

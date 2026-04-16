@@ -222,7 +222,7 @@ export default function PulseIntelligence() {
                 <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", color: "#fff", lineHeight: 1.1 }}>
                   Signal-to-Action <em style={{ fontStyle: "italic", color: "#DFC178" }}>Intelligence</em>
                 </h1>
-                <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Continuous threat detection, signal analysis, and strategic response orchestration</p>
+                <p style={{ color: "rgba(255,255,255,0.7)", marginTop: 8 }}>Continuous signal monitoring, pattern analysis, and strategic response orchestration</p>
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-4">

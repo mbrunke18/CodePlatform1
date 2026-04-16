@@ -353,7 +353,7 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   Signal Coverage
                 </CardTitle>
                 <CardDescription className="text-[#6B7280]">
-                  AI continuously monitors {SIGNAL_CATEGORIES.length} categories with {totalDataPoints} data points
+                  Continuous monitoring across {SIGNAL_CATEGORIES.length} categories and {totalDataPoints} data points
                 </CardDescription>
               </div>
               <Button variant="outline" className="border-[#0A0F2E] text-[#0A0F2E]" onClick={() => setLocation('/signal-intelligence')}>

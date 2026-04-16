@@ -93,7 +93,7 @@ const components = [
   { name: "Execution Orchestrator", desc: "Tasks, comms, docs deployed instantly", icon: Zap },
   { name: "Decision Console", desc: "One-click authorization with AI context", icon: Target },
   { name: "Stakeholder Hub", desc: "Role-based notifications and briefs", icon: Users },
-  { name: "AI Radar", desc: "Pattern detection and risk scoring", icon: Brain },
+  { name: "Signal Radar", desc: "Pattern detection and risk scoring", icon: Brain },
   { name: "Governance Layer", desc: "Decision rights and audit trail", icon: Shield },
   { name: "Outcome Tracking", desc: "Outcome tracking and playbook learning", icon: Eye },
 ];

@@ -248,7 +248,7 @@ export default function ExecutiveScorecard() {
           />
           
           <MetricCard
-            title="AI Trigger Coverage"
+            title="Trigger Coverage"
             value={activeCount}
             unit={`/${triggerCount}`}
             trend="24/7 monitoring active"

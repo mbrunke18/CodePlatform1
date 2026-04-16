@@ -65,7 +65,7 @@ export default function Sitemap() {
       title: "Intelligence",
       pages: [
         { name: "Intelligence Hub", path: "/ai" },
-        { name: "AI Radar Dashboard", path: "/ai-radar" },
+        { name: "Signal Radar Dashboard", path: "/ai-radar" },
         { name: "Pulse Intelligence", path: "/pulse" },
         { name: "Flux Adaptations", path: "/flux" },
         { name: "Prism Insights", path: "/prism" },

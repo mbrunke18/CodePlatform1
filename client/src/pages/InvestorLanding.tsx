@@ -330,7 +330,7 @@ export default function InvestorLanding() {
                     <Brain className="h-5 w-5 text-[#0A0F2E]" />
                     <span className="font-bold text-[#0A0F2E] text-lg">BCG</span>
                   </div>
-                  <div className="text-sm text-[#0A0F2E] mb-3">AI Radar 2026</div>
+                  <div className="text-sm text-[#0A0F2E] mb-3">BCG Research 2026</div>
                   <div className="flex items-start gap-2 mb-3">
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"AI transformation shifting from CIO-led to CEO-led mandate"</p>

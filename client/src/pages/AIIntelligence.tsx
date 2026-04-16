@@ -110,7 +110,7 @@ export default function AIIntelligence() {
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Predictive Intelligence</span>
                 </div>
-                <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>AI Intelligence Center</h1>
+                <h1 style={{ ...CG, fontWeight: 600, fontSize: "2rem", color: NAVY }}>Intelligence Center</h1>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -237,7 +237,7 @@ export default function AIIntelligence() {
                 <div className="mt-6 p-4 bg-[#FFF9E5] border border-[#FBE39A]">
                   <div className="flex items-center text-[#856404]">
                     <AlertTriangle className="w-4 h-4 mr-2" />
-                    <span className="text-sm font-medium">AI Intelligence Recommendation</span>
+                    <span className="text-sm font-medium">System Recommendation</span>
                   </div>
                   <p className="text-xs text-[#856404] mt-1">
                     Based on current data, recommend immediate focus on crisis response protocol optimization and cross-functional team collaboration enhancement.
