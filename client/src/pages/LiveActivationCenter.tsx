@@ -82,9 +82,9 @@ interface PlaybookDef {
 }
 
 const AVATAR_COLORS = [
-  'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
-  'bg-[#0A0F2E]', 'bg-[#2B8A6E]', 'bg-[#0A0F2E]', 'bg-[#C9A84C]',
-  'bg-[#2B8A6E]', 'bg-[#DFC178]'
+  'bg-[#1a3a5c]', 'bg-[#2B8A6E]', 'bg-[#1e3a2e]', 'bg-[#7a5c1e]',
+  'bg-[#1a3a5c]', 'bg-[#2B8A6E]', 'bg-[#3d2b6e]', 'bg-[#7a5c1e]',
+  'bg-[#1e3a2e]', 'bg-[#5c3d1a]'
 ];
 
 const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
@@ -840,10 +840,10 @@ export default function LiveActivationCenter() {
                     <div key={s.id} className="group relative flex flex-col items-center text-center space-y-3">
                       <div className="relative">
                         <div className={cn(
-                          "w-16 h-16 flex items-center justify-center text-white text-xl font-bold transition-all duration-500",
-                          s.status === 'acknowledged' ? "ring-4 ring-[#2B8A6E] ring-offset-4 ring-offset-[#0A0F2E]" : 
-                          s.status === 'notifying' || s.status === 'notified' ? "ring-4 ring-[#C9A84C] ring-offset-4 ring-offset-[#0A0F2E] animate-pulse" : 
-                          "opacity-40",
+                          "w-16 h-16 flex items-center justify-center text-white text-xl font-bold transition-all duration-500 border",
+                          s.status === 'acknowledged' ? "ring-4 ring-[#2B8A6E] ring-offset-4 ring-offset-[#0A0F2E] border-[#2B8A6E]" : 
+                          s.status === 'notifying' || s.status === 'notified' ? "ring-4 ring-[#C9A84C] ring-offset-4 ring-offset-[#0A0F2E] animate-pulse border-[#C9A84C]" : 
+                          "border-white/15",
                           s.color
                         )}>
                           {s.initials}
@@ -856,13 +856,13 @@ export default function LiveActivationCenter() {
                       </div>
                       <div>
                         <div className="text-xs font-bold text-white mb-0.5">{s.name}</div>
-                        <div className="text-[9px] font-bold text-white/40 uppercase tracking-tighter">{s.title}</div>
+                        <div className="text-[9px] font-bold text-white/55 uppercase tracking-tighter">{s.title}</div>
                       </div>
                       <div className={cn(
                         "text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-none",
                         s.status === 'acknowledged' ? "bg-[#2B8A6E]/20 text-[#2B8A6E]" : 
                         s.status === 'notifying' || s.status === 'notified' ? "bg-[#C9A84C]/20 text-[#C9A84C]" : 
-                        "bg-white/5 text-white/20"
+                        "bg-white/5 text-white/40"
                       )}>
                         {s.status}
                       </div>
