@@ -50,7 +50,7 @@ const SEARCH_ITEMS = [
   { label: 'Foresight Radar', path: '/foresight-radar', category: 'Detect', icon: Eye },
   { label: 'Signal Intelligence', path: '/signal-intelligence', category: 'Detect', icon: Radio },
   { label: 'Incident Analyzer', path: '/incident-analyzer', category: 'Detect', icon: AlertCircle },
-  { label: 'Live Activation Center', path: '/live-activation', category: 'Execute', icon: Zap },
+  { label: 'Live Activation Center', path: '/live-activation-center', category: 'Execute', icon: Zap },
   { label: 'Strategic Monitoring', path: '/strategic-monitoring', category: 'Execute', icon: AlertCircle },
   { label: 'Decision Velocity', path: '/decision-velocity', category: 'Execute', icon: TrendingUp },
   { label: 'War Room', path: '/war-room', category: 'Execute', icon: Globe },
@@ -504,6 +504,7 @@ export default function StandardNav() {
       },
     ];
     const deeperDemos = [
+      { path: '/live-activation-center', icon: Zap, label: 'Live Activation Center', sub: 'Select a scenario. Call the audible. Authorize the response — the full executive decision in one place.' },
       { path: '/executive-scenarios', icon: Target, label: 'Executive Scenario Suite', sub: 'Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare.' },
       { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — preparation, activation, coordination, and learning.' },
       { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
