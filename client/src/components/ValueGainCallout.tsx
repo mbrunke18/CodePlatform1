@@ -51,9 +51,9 @@ const MODE_CONFIG: Record<ValueGainMode, {
 };
 
 const MODE_LABELS: Record<ValueGainMode, string> = {
-  offense:        "◆ OFFENSIVE POSITION",
-  defense:        "◆ DEFENSIVE POSITION",
-  "special-teams":"◆ SPECIAL TEAMS POSITION",
+  offense:        "◆ GROWTH & POSITIONING",
+  defense:        "◆ RISK & RESILIENCE",
+  "special-teams":"◆ TRANSFORMATION",
 };
 
 export function ValueGainCallout({

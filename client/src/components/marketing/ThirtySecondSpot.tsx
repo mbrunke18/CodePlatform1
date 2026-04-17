@@ -133,7 +133,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3 }}
               className="text-lg text-gray-800 mb-6"
             >
-              Readiness OS: 170 playbooks for offense, defense, and special teams.
+              Readiness OS: 170 playbooks across growth, risk resilience, and transformation.
             </motion.p>
             
             <motion.div
@@ -144,15 +144,15 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
             >
               <div className="flex items-center gap-2">
                 <Sword className="h-6 w-6 text-red-400" />
-                <span className="text-red-400 font-semibold">OFFENSE</span>
+                <span className="text-red-400 font-semibold">GROWTH</span>
               </div>
               <div className="flex items-center gap-2">
                 <Shield className="h-6 w-6 text-[#0A0F2E]" />
-                <span className="text-[#0A0F2E] font-semibold">DEFENSE</span>
+                <span className="text-[#0A0F2E] font-semibold">RISK & RESILIENCE</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="h-6 w-6 text-[#C9A84C]" />
-                <span className="text-[#C9A84C] font-semibold">SPECIAL TEAMS</span>
+                <span className="text-[#C9A84C] font-semibold">TRANSFORMATION</span>
               </div>
             </motion.div>
             

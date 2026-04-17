@@ -385,7 +385,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-8"
                 >
                   <span className="text-lg text-gray-800">
-                    170 playbooks across offense, defense, and special teams.
+                    170 playbooks across growth, risk resilience, and transformation.
                   </span>
                 </motion.div>
                 
@@ -397,7 +397,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="bg-gradient-to-br from-red-500/20 to-orange-500/10 border border-red-500/30 p-6"
                   >
                     <Sword className="h-10 w-10 text-red-400 mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-red-400 mb-2">OFFENSE</h3>
+                    <h3 className="text-2xl font-bold text-red-400 mb-2">GROWTH & POSITIONING</h3>
                     <p className="text-gray-800 text-sm mb-2">Market Entry • M&A • Product Launch</p>
                     <p className="text-[#2B8A6E] text-sm font-medium">Seize opportunities before competitors react.</p>
                   </motion.div>
@@ -409,7 +409,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="bg-gradient-to-br from-[#0A0F2E]/20 to-[#3BAF8A]/10 border border-[#2B8A6E]/30 p-6"
                   >
                     <Shield className="h-10 w-10 text-[#0A0F2E] mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-[#0A0F2E] mb-2">DEFENSE</h3>
+                    <h3 className="text-2xl font-bold text-[#0A0F2E] mb-2">RISK & RESILIENCE</h3>
                     <p className="text-gray-800 text-sm mb-2">Crisis • Cyber • Regulatory</p>
                     <p className="text-[#2B8A6E] text-sm font-medium">Protect value when threats emerge.</p>
                   </motion.div>
@@ -421,7 +421,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                     className="bg-gradient-to-br from-[#0A0F2E]/20 to-pink-500/10 border border-[#C9A84C]/30 p-6"
                   >
                     <Zap className="h-10 w-10 text-[#C9A84C] mx-auto mb-3" />
-                    <h3 className="text-2xl font-bold text-[#C9A84C] mb-2">SPECIAL TEAMS</h3>
+                    <h3 className="text-2xl font-bold text-[#C9A84C] mb-2">TRANSFORMATION</h3>
                     <p className="text-gray-800 text-sm mb-2">Transformation • AI • Innovation</p>
                     <p className="text-[#2B8A6E] text-sm font-medium">Drive transformation at speed.</p>
                   </motion.div>

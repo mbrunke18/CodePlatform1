@@ -12,15 +12,15 @@ interface SceneProps {
 }
 
 const domains = [
-  { name: "Market Entry", icon: Target, category: "OFFENSE", color: "#10B981" },
-  { name: "M&A", icon: Building, category: "OFFENSE", color: "#10B981" },
-  { name: "Product Launch", icon: Rocket, category: "OFFENSE", color: "#10B981" },
-  { name: "Crisis Management", icon: AlertTriangle, category: "DEFENSE", color: "#EF4444" },
-  { name: "Cyber Security", icon: Shield, category: "DEFENSE", color: "#EF4444" },
-  { name: "Regulatory", icon: Scale, category: "DEFENSE", color: "#EF4444" },
-  { name: "Digital Transform", icon: Cpu, category: "SPECIAL", color: "#8B5CF6" },
-  { name: "Competitive Response", icon: Swords, category: "SPECIAL", color: "#8B5CF6" },
-  { name: "AI Governance", icon: Brain, category: "SPECIAL", color: "#8B5CF6" },
+  { name: "Market Entry", icon: Target, category: "GROWTH", color: "#10B981" },
+  { name: "M&A", icon: Building, category: "GROWTH", color: "#10B981" },
+  { name: "Product Launch", icon: Rocket, category: "GROWTH", color: "#10B981" },
+  { name: "Crisis Management", icon: AlertTriangle, category: "RISK", color: "#EF4444" },
+  { name: "Cyber Security", icon: Shield, category: "RISK", color: "#EF4444" },
+  { name: "Regulatory", icon: Scale, category: "RISK", color: "#EF4444" },
+  { name: "Digital Transform", icon: Cpu, category: "TRANSFORMATION", color: "#8B5CF6" },
+  { name: "Competitive Response", icon: Swords, category: "TRANSFORMATION", color: "#8B5CF6" },
+  { name: "AI Governance", icon: Brain, category: "TRANSFORMATION", color: "#8B5CF6" },
 ];
 
 export function StrategicDomains({ progress }: SceneProps) {
@@ -37,15 +37,15 @@ export function StrategicDomains({ progress }: SceneProps) {
             transition={{ delay: 0.3 }}
             className="text-gray-700 text-lg"
           >
-            Complete coverage across offense, defense, and special operations
+            Complete coverage across growth, risk resilience, and strategic transformation
           </motion.p>
         </div>
 
         <div className="grid grid-cols-3 gap-6 mb-8">
           <div className="text-center">
-            <p className="text-green-400 font-bold text-sm mb-3">OFFENSE</p>
+            <p className="text-green-400 font-bold text-sm mb-3">GROWTH & POSITIONING</p>
             <div className="space-y-3">
-              {domains.filter(d => d.category === "OFFENSE").map((domain, i) => (
+              {domains.filter(d => d.category === "GROWTH").map((domain, i) => (
                 <motion.div
                   key={domain.name}
                   initial={{ opacity: 0, x: -20 }}
@@ -61,9 +61,9 @@ export function StrategicDomains({ progress }: SceneProps) {
           </div>
 
           <div className="text-center">
-            <p className="text-red-400 font-bold text-sm mb-3">DEFENSE</p>
+            <p className="text-red-400 font-bold text-sm mb-3">RISK & RESILIENCE</p>
             <div className="space-y-3">
-              {domains.filter(d => d.category === "DEFENSE").map((domain, i) => (
+              {domains.filter(d => d.category === "RISK").map((domain, i) => (
                 <motion.div
                   key={domain.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -79,9 +79,9 @@ export function StrategicDomains({ progress }: SceneProps) {
           </div>
 
           <div className="text-center">
-            <p className="text-[#C9A84C] font-bold text-sm mb-3">SPECIAL TEAMS</p>
+            <p className="text-[#C9A84C] font-bold text-sm mb-3">TRANSFORMATION</p>
             <div className="space-y-3">
-              {domains.filter(d => d.category === "SPECIAL").map((domain, i) => (
+              {domains.filter(d => d.category === "TRANSFORMATION").map((domain, i) => (
                 <motion.div
                   key={domain.name}
                   initial={{ opacity: 0, x: 20 }}
@@ -110,7 +110,7 @@ export function StrategicDomains({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="Complete Strategic Coverage"
-        description="Nine domains across Offense, Defense, and Special Teams ensure you're prepared for any scenario."
+        description="Nine domains across Growth, Risk Resilience, and Transformation ensure you're prepared for any scenario."
         delay={0.5}
       />
     </div>

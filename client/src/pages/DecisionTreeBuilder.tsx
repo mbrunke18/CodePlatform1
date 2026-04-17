@@ -104,7 +104,7 @@ export default function DecisionTreeBuilder() {
     if (!domain || !category) {
       toast({
         title: "Missing category selection",
-        description: "Please select a domain and strategic category (Offense, Defense, or Special Teams).",
+        description: "Please select a domain and strategic category (Growth, Risk & Resilience, or Transformation).",
         variant: "destructive"
       });
       return;
@@ -268,9 +268,9 @@ export default function DecisionTreeBuilder() {
                       <SelectValue placeholder="Select a category..." />
                     </SelectTrigger>
                     <SelectContent className="rounded-none border-[#E8E4DC]">
-                      <SelectItem value="defense">Defense - Protect Value</SelectItem>
-                      <SelectItem value="offense">Offense - Seize Opportunities</SelectItem>
-                      <SelectItem value="special_teams">Special Teams - Change the Game</SelectItem>
+                      <SelectItem value="defense">Risk & Resilience - Protect Value</SelectItem>
+                      <SelectItem value="offense">Growth & Positioning - Seize Opportunities</SelectItem>
+                      <SelectItem value="special_teams">Transformation - Change the Game</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

@@ -165,7 +165,7 @@ type ViewMode = 'choose' | 'quick' | 'builder';
 
 const domainPresets: Record<string, { label: string; color: string; icon: any; scenarios: string[] }> = {
   offense: {
-    label: 'OFFENSE',
+    label: 'GROWTH & POSITIONING',
     color: 'teal',
     icon: Rocket,
     scenarios: [
@@ -175,7 +175,7 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
     ],
   },
   defense: {
-    label: 'DEFENSE',
+    label: 'RISK & RESILIENCE',
     color: 'navy',
     icon: Shield,
     scenarios: [
@@ -185,7 +185,7 @@ const domainPresets: Record<string, { label: string; color: string; icon: any; s
     ],
   },
   special_teams: {
-    label: 'SPECIAL TEAMS',
+    label: 'TRANSFORMATION',
     color: 'gold',
     icon: Settings,
     scenarios: [
@@ -261,9 +261,9 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
       <div className="flex gap-2 flex-wrap justify-center">
         {[
           { key: 'all', label: 'All Domains', icon: Sparkles, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
-          { key: 'offense', label: 'OFFENSE', icon: Rocket, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
-          { key: 'defense', label: 'DEFENSE', icon: Shield, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
-          { key: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
+          { key: 'offense', label: 'GROWTH & POSITIONING', icon: Rocket, borderColor: 'border-[#2B8A6E]', textColor: 'text-[#2B8A6E]', bgColor: 'bg-[#2B8A6E]/10' },
+          { key: 'defense', label: 'RISK & RESILIENCE', icon: Shield, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
+          { key: 'special_teams', label: 'TRANSFORMATION', icon: Settings, borderColor: 'border-[#C9A84C]', textColor: 'text-[#C9A84C]', bgColor: 'bg-[#C9A84C]/10' },
         ].map(({ key, label, icon: Icon, borderColor, textColor, bgColor }) => (
           <Button
             key={key}

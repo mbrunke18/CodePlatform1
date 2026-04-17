@@ -30,7 +30,7 @@ interface IndustryData {
   gradient: string;
   scenario: string;
   domain: string;
-  domainCategory: 'OFFENSE' | 'DEFENSE' | 'SPECIAL TEAMS';
+  domainCategory: 'GROWTH' | 'RISK & RESILIENCE' | 'TRANSFORMATION';
   playbook: { number: string; name: string; tasks: number; stakeholders: number; budget: string };
   triggers: { name: string; source: string; type: string }[];
   dataSources: { name: string; status: string; dataPoints: number }[];
@@ -48,7 +48,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'lvmh-market-entry', title: 'Strategic Market Entry', organization: 'LVMH Moët Hennessy Louis Vuitton',
     industry: 'Luxury Goods', icon: Crown, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'China Luxury Renaissance — 10-Brand Simultaneous Launch Across 15 Cities',
-    domain: 'Market Entry', domainCategory: 'OFFENSE',
+    domain: 'Market Entry', domainCategory: 'GROWTH',
     playbook: { number: '145', name: 'Strategic Market Entry — Multi-Brand Launch', tasks: 42, stakeholders: 1267, budget: '€85M' },
     triggers: [
       { name: 'Government Trade Policy Change Detected', source: 'Reuters + Bloomberg Terminal', type: 'Automated Regulatory' },
@@ -105,7 +105,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'shein-trend', title: 'Viral Trend Capitalization', organization: 'SHEIN (Global Fashion Marketplace)',
     industry: 'Fast Fashion', icon: TrendingUp, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'TikTok Cottage Core Trend — 200 SKUs Designed, Manufactured & Listed in 7 Days',
-    domain: 'Product Launch', domainCategory: 'OFFENSE',
+    domain: 'Product Launch', domainCategory: 'GROWTH',
     playbook: { number: '146', name: 'Trend Capitalization — Viral Response', tasks: 38, stakeholders: 5847, budget: '$2.4M' },
     triggers: [
       { name: 'TikTok Hashtag Velocity Spike', source: 'TikTok Creator API + Brandwatch', type: 'Automated Social Intelligence' },
@@ -161,7 +161,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'spacex-launch', title: 'Launch Schedule Acceleration', organization: 'SpaceX (Space Transportation)',
     industry: 'Aerospace', icon: Rocket, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
     scenario: 'Optimal Orbital Window — Accelerating Starlink Launch by 3 Days',
-    domain: 'Product Launch', domainCategory: 'OFFENSE',
+    domain: 'Product Launch', domainCategory: 'GROWTH',
     playbook: { number: '155', name: 'Launch Acceleration Protocol', tasks: 45, stakeholders: 1847, budget: '$12M' },
     triggers: [
       { name: 'Orbital Mechanics Window Alert', source: 'Mission Control + AGI STK', type: 'Automated Orbital Analysis' },
@@ -218,7 +218,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'financial-ransomware', title: 'Ransomware Attack Response', organization: 'LoanDepot (Major Mortgage Lender)',
     industry: 'Financial Services', icon: Shield, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Banking Infrastructure Breach — LockBit 3.0 Attack on Mortgage Processing Systems',
-    domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
+    domain: 'Cybersecurity Incident', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '065', name: 'Ransomware Attack Response — Financial Services', tasks: 36, stakeholders: 150, budget: '$4.8M' },
     triggers: [
       { name: 'Anomalous Encryption on Mortgage Processing Servers', source: 'CrowdStrike + AWS GuardDuty', type: 'Automated Threat Detection' },
@@ -275,7 +275,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'pharma-recall', title: 'Product Recall — Class I', organization: 'Glenmark Pharmaceuticals',
     industry: 'Pharmaceutical', icon: Pill, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Class I Recall — Life-Threatening Contamination in Blood Pressure Medication',
-    domain: 'Crisis Management', domainCategory: 'DEFENSE',
+    domain: 'Crisis Management', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '095', name: 'Product Recall — Class I (Life-Threatening)', tasks: 44, stakeholders: 2052, budget: '$8.5M' },
     triggers: [
       { name: 'FDA Adverse Event Report Cluster', source: 'FDA FAERS Database + Internal QA', type: 'Automated Regulatory' },
@@ -332,7 +332,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'manufacturing-supplier', title: 'Supplier Crisis Response', organization: 'Toyota Motor Corporation',
     industry: 'Manufacturing', icon: Factory, color: 'text-orange-400', gradient: 'from-orange-600 to-amber-800',
     scenario: 'Critical Semiconductor Shortage — 3 Assembly Plants at Risk of Shutdown',
-    domain: 'Crisis Management', domainCategory: 'DEFENSE',
+    domain: 'Crisis Management', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '019', name: 'Supplier Failure Response — Critical Component', tasks: 40, stakeholders: 158, budget: '$45M' },
     triggers: [
       { name: 'Tier 1 Supplier Force Majeure Declaration', source: 'Supplier Portal + EDI', type: 'Automated Supply Chain' },
@@ -389,7 +389,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'retail-contamination', title: 'Food Contamination Response', organization: 'Walmart Inc.',
     industry: 'Retail', icon: ShoppingCart, color: 'text-[#2B8A6E]', gradient: 'from-[#2B8A6E] to-[#0A0F2E]',
     scenario: 'Salmonella Contamination — 847 Stores, 23 States, 12,847 Customers Affected',
-    domain: 'Crisis Management', domainCategory: 'DEFENSE',
+    domain: 'Crisis Management', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '095', name: 'Food Product Recall — Contamination Response', tasks: 42, stakeholders: 5000, budget: '$12M' },
     triggers: [
       { name: 'CDC Outbreak Investigation Alert', source: 'CDC PulseNet + State Health Depts', type: 'Automated Health & Safety' },
@@ -447,7 +447,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
     id: 'energy-grid', title: 'Grid Infrastructure Emergency', organization: 'Pacific Grid & Power',
     industry: 'Energy & Utilities', icon: Zap, color: 'text-yellow-400', gradient: 'from-yellow-600 to-orange-800',
     scenario: 'Cascading Grid Failure — 8.2M Customers, 247 Substations, 3 States',
-    domain: 'Crisis Management', domainCategory: 'DEFENSE',
+    domain: 'Crisis Management', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '082', name: 'Grid Emergency Response — Cascading Failure', tasks: 48, stakeholders: 2500, budget: '$85M' },
     triggers: [
       { name: 'SCADA Frequency Deviation Alert', source: 'SCADA/EMS + Grid Sensors', type: 'Automated Grid Monitoring' },
