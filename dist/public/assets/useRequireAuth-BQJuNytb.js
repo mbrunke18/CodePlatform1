@@ -1,1 +1,0 @@
-import{$ as n,u as r,r as u}from"./index-Bai5_m1a.js";import{u as c}from"./GuestPreviewBanner-CRx0g2FE.js";function m(){const{isAuthenticated:t,isLoading:s}=n(),{isTrial:o,isLoading:e}=c(),[i,a]=r();return u.useEffect(()=>{s||e||!t&&!o&&a(`/request-access?returnTo=${encodeURIComponent(i)}`)},[t,o,s,e,i,a]),{isReady:!s&&!e&&(t||o),isAuthenticated:t,isTrial:o}}export{m as u};

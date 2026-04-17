@@ -169,20 +169,20 @@ export function ThreePositionStrip({ style }: PositionStripProps) {
     {
       mode: "offense",
       insight:
-        "Every playbook you stage here is a competitive position taken before the trigger fires. When the moment arrives, you move. Rivals deliberate.",
-      gain: { label: "Position built", value: "30 days ahead" },
+        "Every playbook staged here is a competitive position taken before the trigger fires. When the moment arrives, you move. Rivals spend the next 30 days figuring out who needs to be in the room.",
+      gain: { label: "Their mobilization cycle", value: "Your 12 minutes" },
     },
     {
       mode: "defense",
       insight:
-        "Resilience isn't protection from loss — it's the freedom to act decisively when others freeze. Every scenario prepared is one less crisis improvised.",
-      gain: { label: "Scenarios armed", value: "170 playbooks" },
+        "Resilience isn't protection from loss — it's the freedom to act decisively when others freeze. Every scenario prepared here is one less crisis improvised under pressure.",
+      gain: { label: "Scenarios pre-staged", value: "170 playbooks" },
     },
     {
       mode: "special-teams",
       insight:
-        "The coordination infrastructure built here is the moat competitors cannot buy. They can license the platform — not the accumulated decision logic inside it.",
-      gain: { label: "Moat depth", value: "Compounding" },
+        "The decision logic encoded in each playbook — who owns what, under what conditions, with what authority — cannot be licensed. Competitors can buy the platform. They cannot buy what your team built inside it.",
+      gain: { label: "Competitor advantage", value: "Cannot be copied" },
     },
   ];
 
