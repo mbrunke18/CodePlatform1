@@ -42,9 +42,9 @@ const identifyTools = [
   { title: "Preparedness Report", description: "Assess your organization's strategic readiness score", path: "/preparedness-report", icon: Shield, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Readiness scoring" },
 ];
 const domainCategories = [
-  { name: "OFFENSE", domains: ["Market Entry", "M&A", "Product Launch"], count: 58, color: "text-[#2B8A6E]", icon: Rocket },
-  { name: "DEFENSE", domains: ["Crisis", "Cyber", "Regulatory"], count: 58, color: "text-[#0A0F2E]", icon: Shield },
-  { name: "SPECIAL TEAMS", domains: ["Digital Transformation", "Competitive Response", "AI Governance"], count: 54, color: "text-[#C9A84C]", icon: Globe },
+  { name: "GROWTH & POSITIONING", domains: ["Market Entry", "M&A", "Product Launch"], count: 58, color: "text-[#2B8A6E]", icon: Rocket },
+  { name: "RISK & RESILIENCE", domains: ["Crisis", "Cyber", "Regulatory"], count: 58, color: "text-[#0A0F2E]", icon: Shield },
+  { name: "STRATEGIC TRANSFORMATION", domains: ["Digital Transformation", "Competitive Response", "AI Governance"], count: 54, color: "text-[#C9A84C]", icon: Globe },
 ];
 const PRIORITY_COLORS: Record<string, string> = {
   critical: 'bg-red-100 text-red-700 border-red-200',
