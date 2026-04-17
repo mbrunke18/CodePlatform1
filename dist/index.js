@@ -15626,13 +15626,13 @@ __export(dynamicStrategyService_exports, {
 });
 import { eq as eq12, desc as desc5, and as and7, gte as gte2 } from "drizzle-orm";
 import OpenAI3 from "openai";
-var openai2, DynamicStrategyService, dynamicStrategyService;
+var openai, DynamicStrategyService, dynamicStrategyService;
 var init_dynamicStrategyService = __esm({
   "server/services/dynamicStrategyService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    openai2 = new OpenAI3({
+    openai = new OpenAI3({
       apiKey: process.env.OPENAI_API_KEY || ""
     });
     DynamicStrategyService = class {
@@ -15867,7 +15867,7 @@ Extract 2-3 specific learnings in the following categories:
 
 Format each learning as a concise action statement.`;
         try {
-          const response = await openai2.chat.completions.create({
+          const response = await openai.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -23197,13 +23197,13 @@ __export(TriggerIntelligenceService_exports, {
 });
 import OpenAI5 from "openai";
 import { eq as eq26, and as and18, gte as gte6, desc as desc15 } from "drizzle-orm";
-var openai4, TriggerIntelligenceService, triggerIntelligence;
+var openai3, TriggerIntelligenceService, triggerIntelligence;
 var init_TriggerIntelligenceService = __esm({
   "server/services/TriggerIntelligenceService.ts"() {
     "use strict";
     init_db();
     init_schema();
-    openai4 = new OpenAI5({
+    openai3 = new OpenAI5({
       apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
       baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
     });
@@ -23230,7 +23230,7 @@ Provide analysis in JSON format with:
 7. recommendations: array of 2-3 specific actionable recommendations
 
 Be specific and strategic. Focus on business impact.`;
-          const response = await openai4.chat.completions.create({
+          const response = await openai3.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -23423,14 +23423,14 @@ __export(ExecutiveBriefingService_exports, {
 });
 import OpenAI6 from "openai";
 import { eq as eq27, and as and19, gte as gte7, desc as desc16 } from "drizzle-orm";
-var openai5, ExecutiveBriefingService, executiveBriefing;
+var openai4, ExecutiveBriefingService, executiveBriefing;
 var init_ExecutiveBriefingService = __esm({
   "server/services/ExecutiveBriefingService.ts"() {
     "use strict";
     init_db();
     init_schema();
     init_PreparednessEngine();
-    openai5 = new OpenAI6({
+    openai4 = new OpenAI6({
       apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
       baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
     });
@@ -23508,7 +23508,7 @@ Generate a comprehensive situation report with:
 6. DECISION POINTS (requires executive attention)
 
 Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
-          const response = await openai5.chat.completions.create({
+          const response = await openai4.chat.completions.create({
             model: "gpt-4o",
             messages: [
               {
@@ -23627,7 +23627,7 @@ Generate a concise executive briefing with these sections:
 [Strategic opportunities identified]
 
 Keep it concise, strategic, and actionable. Use bullet points where appropriate.`;
-        const response = await openai5.chat.completions.create({
+        const response = await openai4.chat.completions.create({
           model: "gpt-4o",
           messages: [
             {
@@ -33886,9 +33886,16 @@ import ws2 from "ws";
 import pino4 from "pino";
 neonConfig2.webSocketConstructor = ws2;
 var logger4 = pino4({ name: "nlq-service" });
-var openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+var _openai = null;
+function getOpenAI() {
+  if (!_openai) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY is not configured");
+    }
+    _openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  }
+  return _openai;
+}
 var pool2 = new Pool2({ connectionString: process.env.DATABASE_URL });
 var NaturalLanguageQueryService = class _NaturalLanguageQueryService {
   static instance;
@@ -33937,7 +33944,7 @@ var NaturalLanguageQueryService = class _NaturalLanguageQueryService {
    */
   async generateEmbedding(text3) {
     try {
-      const response = await openai.embeddings.create({
+      const response = await getOpenAI().embeddings.create({
         model: "text-embedding-ada-002",
         input: text3.trim()
       });
@@ -34010,7 +34017,7 @@ ${contextText}`;
       const userPrompt = `Based on the organizational context provided above, please answer this question: ${query}
 
 Please provide a strategic, data-driven response that references the relevant sources.`;
-      const completion = await openai.chat.completions.create({
+      const completion = await getOpenAI().chat.completions.create({
         model: "gpt-5",
         messages: [
           { role: "system", content: systemPrompt },
@@ -41586,12 +41593,12 @@ var chatStorage = {
 
 // server/replit_integrations/audio/client.ts
 import OpenAI4, { toFile } from "openai";
-var openai3 = new OpenAI4({
+var openai2 = new OpenAI4({
   apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
   baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL
 });
 async function textToSpeechStream(text3, voice = "alloy") {
-  const stream = await openai3.chat.completions.create({
+  const stream = await openai2.chat.completions.create({
     model: "gpt-audio-mini",
     modalities: ["text", "audio"],
     audio: { voice, format: "pcm16" },
@@ -41613,7 +41620,7 @@ async function textToSpeechStream(text3, voice = "alloy") {
 }
 async function speechToText(audioBuffer, format = "wav") {
   const file = await toFile(audioBuffer, `audio.${format}`);
-  const response = await openai3.audio.transcriptions.create({
+  const response = await openai2.audio.transcriptions.create({
     file,
     model: "gpt-4o-mini-transcribe"
   });
@@ -41673,7 +41680,7 @@ async function* voiceChatWithTextModel(audioBuffer, options2 = {}) {
     ...chatHistory,
     { role: "user", content: userText }
   ];
-  const textStream = await openai3.chat.completions.create({
+  const textStream = await openai2.chat.completions.create({
     model: textModel,
     messages: messages2,
     stream: true
@@ -41752,7 +41759,7 @@ function registerAudioRoutes(app2) {
       if (!text3) {
         return res.status(400).json({ error: "Text is required" });
       }
-      const response = await openai3.audio.speech.create({
+      const response = await openai2.audio.speech.create({
         model: "tts-1",
         voice,
         input: text3,
@@ -41835,7 +41842,7 @@ function registerAudioRoutes(app2) {
       res.write(`data: ${JSON.stringify({ type: "user_transcript", data: userTranscript })}
 
 `);
-      const stream = await openai3.chat.completions.create({
+      const stream = await openai2.chat.completions.create({
         model: "gpt-audio-mini",
         modalities: ["text", "audio"],
         audio: { voice, format: "pcm16" },

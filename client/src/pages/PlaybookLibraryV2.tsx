@@ -478,7 +478,40 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
       <div className="max-w-6xl mx-auto px-6 py-8 flex gap-8">
         <aside className="hidden lg:block w-52 shrink-0">
-          <div className="sticky top-24">
+          <div className="sticky top-24" style={{ maxHeight: 'calc(100vh - 112px)', overflowY: 'auto', paddingRight: 4, scrollbarWidth: 'thin', scrollbarColor: '#E8E4DC transparent' }}>
+
+            {(activeSector !== 'all' || activePillar !== 'all' || activeDomain !== 'all') && (
+              <div style={{ marginBottom: 14, paddingLeft: 4, borderBottom: `1px solid ${BORDER}`, paddingBottom: 12 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginBottom: 6 }}>Active Filters</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  {activeSector !== 'all' && (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: 10, color: NAVY, fontWeight: 600 }}>{SECTOR_PACKS.find(s => s.id === activeSector)?.label}</span>
+                      <button onClick={() => setActiveSector('all')} style={{ fontSize: 9, color: MUTED, background: 'transparent', border: 'none', cursor: 'pointer', padding: '0 2px' }}>✕</button>
+                    </div>
+                  )}
+                  {activePillar !== 'all' && (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: 10, color: NAVY, fontWeight: 600 }}>{PILLARS.find(p => p.id === activePillar)?.label}</span>
+                      <button onClick={() => setActivePillar('all')} style={{ fontSize: 9, color: MUTED, background: 'transparent', border: 'none', cursor: 'pointer', padding: '0 2px' }}>✕</button>
+                    </div>
+                  )}
+                  {activeDomain !== 'all' && (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: 10, color: NAVY, fontWeight: 600 }}>{DOMAINS.find(d => d.id === activeDomain)?.label}</span>
+                      <button onClick={() => setActiveDomain('all')} style={{ fontSize: 9, color: MUTED, background: 'transparent', border: 'none', cursor: 'pointer', padding: '0 2px' }}>✕</button>
+                    </div>
+                  )}
+                </div>
+                <button
+                  onClick={() => { setActiveSector('all'); setActivePillar('all'); setActiveDomain('all'); }}
+                  style={{ marginTop: 8, fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A84C', background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
+                >
+                  Reset all filters
+                </button>
+              </div>
+            )}
+
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>Industry Sector</div>
             <div className="space-y-0.5 mb-5">
               {SECTOR_PACKS.map((s) => {
@@ -597,6 +630,43 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               />
             </div>
           </div>
+
+          {(activeSector !== 'all' || activePillar !== 'all' || activeDomain !== 'all' || activeUrgency !== 'all' || search) && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED }}>Filtered by:</span>
+              {activeSector !== 'all' && (
+                <button onClick={() => setActiveSector('all')} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, background: '#F0EDE4', border: 'none', padding: '3px 8px', cursor: 'pointer' }}>
+                  {SECTOR_PACKS.find(s => s.id === activeSector)?.label} <span style={{ opacity: 0.5 }}>✕</span>
+                </button>
+              )}
+              {activePillar !== 'all' && (
+                <button onClick={() => setActivePillar('all')} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, background: '#F0EDE4', border: 'none', padding: '3px 8px', cursor: 'pointer' }}>
+                  {PILLARS.find(p => p.id === activePillar)?.label} <span style={{ opacity: 0.5 }}>✕</span>
+                </button>
+              )}
+              {activeDomain !== 'all' && (
+                <button onClick={() => setActiveDomain('all')} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, background: '#F0EDE4', border: 'none', padding: '3px 8px', cursor: 'pointer' }}>
+                  {DOMAINS.find(d => d.id === activeDomain)?.label} <span style={{ opacity: 0.5 }}>✕</span>
+                </button>
+              )}
+              {activeUrgency !== 'all' && (
+                <button onClick={() => setActiveUrgency('all')} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, background: '#F0EDE4', border: 'none', padding: '3px 8px', cursor: 'pointer' }}>
+                  {URGENCY_FILTERS.find(f => f.id === activeUrgency)?.label} <span style={{ opacity: 0.5 }}>✕</span>
+                </button>
+              )}
+              {search && (
+                <button onClick={() => setSearch('')} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, background: '#F0EDE4', border: 'none', padding: '3px 8px', cursor: 'pointer' }}>
+                  "{search}" <span style={{ opacity: 0.5 }}>✕</span>
+                </button>
+              )}
+              <button
+                onClick={() => { setActiveSector('all'); setActivePillar('all'); setActiveDomain('all'); setActiveUrgency('all'); setSearch(''); }}
+                style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#C9A84C', background: 'transparent', border: 'none', cursor: 'pointer', padding: '3px 0', marginLeft: 4 }}
+              >
+                Clear all
+              </button>
+            </div>
+          )}
 
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
