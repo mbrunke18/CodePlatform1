@@ -750,7 +750,7 @@ export default function IndustryExperience() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              <Badge className={`mb-4 rounded-none font-bold uppercase tracking-widest ${industry.domainCategory === 'OFFENSE' ? 'bg-[#2B8A6E]/20 text-[#2B8A6E]' : industry.domainCategory === 'DEFENSE' ? 'bg-[#0A0F2E]/20 text-[#C9A84C]' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>{industry.domainCategory} — {industry.domain}</Badge>
+              <Badge className={`mb-4 rounded-none font-bold uppercase tracking-widest ${industry.domainCategory === 'GROWTH' ? 'bg-[#2B8A6E]/20 text-[#2B8A6E]' : industry.domainCategory === 'RISK & RESILIENCE' ? 'bg-[#0A0F2E]/20 text-[#C9A84C]' : 'bg-[#C9A84C]/20 text-[#C9A84C]'}`}>{industry.domainCategory} — {industry.domain}</Badge>
               <h1 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{industry.organization}</h1>
               <p className="text-xl text-[#6B7280] mb-2">{industry.industry} Industry</p>
             </motion.div>
