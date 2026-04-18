@@ -1635,6 +1635,75 @@ export default function PlaybookActivationConsole() {
                 </div>
               </div>
 
+              {/* Counter-factual Timeline — What would have happened without Readiness OS */}
+              {(() => {
+                const domain = playbook?.domain || playbook?.strategicCategory || '';
+                const cfEvents: { time: string; withOS: string; without: string; highlight?: boolean }[] = [
+                  { time: "T+0:00", withOS: "Signal detected. Playbook auto-deployed.", without: "Trigger fires. No one knows yet.", highlight: true },
+                  { time: "T+0:12", withOS: "Stakeholders acknowledged. Execution underway.", without: "Someone notices the headline. Starts forwarding emails." },
+                  { time: "T+1:00", withOS: "All tasks assigned and in progress.", without: "Calendar invite sent: 'Alignment Call' — 3 days out." },
+                  { time: "Day 2",  withOS: "First task wave complete. Debrief prep begins.", without: "Alignment call. No decisions made. 'Let's loop in legal.'" },
+                  { time: "Day 7",  withOS: "Execution complete. ROI logged.", without: "Second meeting. Workstream owners finally identified." },
+                  { time: "Day 14", withOS: "ADVANCE phase: learnings encoded for next cycle.", without: "Draft plan circulated. Awaiting approval from 6 stakeholders." },
+                  { time: "Day 30", withOS: "Platform already monitoring the next trigger.", without: "First real action taken. The market has already moved.", highlight: true },
+                ];
+                return (
+                  <div style={{ background: "#fff", borderBottom: `1px solid ${BORDER}`, padding: "40px 48px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+                      <div style={{ width: 24, height: 2, background: "#dc2626" }} />
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#dc2626" }}>
+                        Counter-Factual · Without Readiness OS
+                      </span>
+                    </div>
+                    <p style={{ fontSize: 13, color: MUTED, marginBottom: 24, lineHeight: 1.6, maxWidth: 600 }}>
+                      What the same trigger would have looked like inside a standard Fortune 1000 mobilization cycle.
+                    </p>
+                    <div style={{ overflowX: "auto" }}>
+                      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+                        <thead>
+                          <tr style={{ borderBottom: `2px solid ${BORDER}` }}>
+                            <th style={{ textAlign: "left", padding: "8px 12px 10px 0", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: MUTED, width: 90 }}>When</th>
+                            <th style={{ textAlign: "left", padding: "8px 16px 10px", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: TEAL }}>With Readiness OS</th>
+                            <th style={{ textAlign: "left", padding: "8px 0 10px 16px", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#dc2626" }}>Without Readiness OS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {cfEvents.map((ev, i) => (
+                            <tr
+                              key={i}
+                              style={{
+                                borderBottom: `1px solid ${BORDER}`,
+                                background: ev.highlight ? "rgba(10,15,46,0.02)" : "transparent",
+                              }}
+                            >
+                              <td style={{ padding: "12px 12px 12px 0", fontWeight: 700, color: NAVY, fontSize: 11, letterSpacing: "0.04em", whiteSpace: "nowrap" as const }}>{ev.time}</td>
+                              <td style={{ padding: "12px 16px", color: TEAL, fontWeight: 500, lineHeight: 1.5 }}>
+                                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+                                  {ev.withOS}
+                                </span>
+                              </td>
+                              <td style={{ padding: "12px 0 12px 16px", color: "#6B7280", fontWeight: 400, lineHeight: 1.5, borderLeft: `1px solid ${BORDER}` }}>
+                                <span style={{ display: "inline-flex", alignItems: "flex-start", gap: 6 }}>
+                                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#dc2626", flexShrink: 0, marginTop: 5 }} />
+                                  {ev.without}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <div style={{ marginTop: 20, padding: "16px 20px", background: "rgba(10,15,46,0.03)", borderLeft: `4px solid ${NAVY}` }}>
+                      <p style={{ margin: 0, fontSize: 13, color: NAVY, fontWeight: 600, lineHeight: 1.6 }}>
+                        The bottleneck was never the strategy. It was the 30 days it took to mobilize around it.
+                        You just compressed that to {formatTime(elapsedSeconds)}.
+                      </p>
+                    </div>
+                  </div>
+                );
+              })()}
+
               {/* Simulation Context Banner — shown when demo tasks were used */}
               {safeTasks.length === 0 && (
                 <div style={{ background: "rgba(43,138,110,0.06)", borderBottom: "1px solid rgba(43,138,110,0.2)", padding: "16px 48px", display: "flex", alignItems: "flex-start", gap: 14 }}>

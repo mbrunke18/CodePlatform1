@@ -5,6 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Loader2, RefreshCw, Home } from "lucide-react";
+import RoleIndustryCaptureModal from "@/components/RoleIndustryCaptureModal";
 
 interface ErrorBoundaryState { hasError: boolean; error: Error | null; }
 class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryState> {
@@ -644,6 +645,7 @@ function App() {
                 <TooltipProvider>
                   <Toaster />
                   <OnboardingOverlay />
+                  <RoleIndustryCaptureModal />
                   <ErrorBoundary>
                     <Router />
                   </ErrorBoundary>

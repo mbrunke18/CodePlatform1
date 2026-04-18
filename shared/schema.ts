@@ -83,6 +83,8 @@ export const users = pgTable("users", {
   timezone: varchar("timezone", { length: 100 }), // User timezone for predictive execution
   accessLevel: varchar('access_level', { length: 50 }).default('basic'),
   scopes: jsonb('scopes'), // Array of data scopes (org, business unit, team)
+  executiveRole: varchar('executive_role', { length: 100 }), // CEO, CFO, COO, CIO, CHRO, CLO, Board, etc.
+  industryVertical: varchar('industry_vertical', { length: 100 }), // Financial Services, Healthcare, etc.
   lastLoginAt: timestamp("last_login_at"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),

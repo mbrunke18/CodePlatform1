@@ -523,6 +523,10 @@ var init_schema = __esm({
       accessLevel: varchar("access_level", { length: 50 }).default("basic"),
       scopes: jsonb("scopes"),
       // Array of data scopes (org, business unit, team)
+      executiveRole: varchar("executive_role", { length: 100 }),
+      // CEO, CFO, COO, CIO, CHRO, CLO, Board, etc.
+      industryVertical: varchar("industry_vertical", { length: 100 }),
+      // Financial Services, Healthcare, etc.
       lastLoginAt: timestamp2("last_login_at"),
       createdAt: timestamp2("created_at").defaultNow(),
       updatedAt: timestamp2("updated_at").defaultNow()
@@ -44319,6 +44323,21 @@ async function registerRoutes(app2, existingServer) {
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
+    }
+  });
+  app2.patch("/api/user/profile", async (req, res) => {
+    try {
+      const userId = req.user?.claims?.sub || req.user?.sub;
+      if (!userId) return res.status(401).json({ error: "Unauthorized" });
+      const { executiveRole, industryVertical } = req.body;
+      if (!executiveRole || !industryVertical) {
+        return res.status(400).json({ error: "executiveRole and industryVertical are required" });
+      }
+      await db.update(users).set({ executiveRole, industryVertical, updatedAt: /* @__PURE__ */ new Date() }).where(eq45(users.id, userId));
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error updating user profile:", error);
+      res.status(500).json({ error: error.message });
     }
   });
   app2.get("/api/dashboard/metrics", async (req, res) => {

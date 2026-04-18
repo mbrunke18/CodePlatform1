@@ -1994,6 +1994,26 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
+  // PATCH /api/user/profile — save executive role + industry vertical
+  app.patch('/api/user/profile', async (req: any, res) => {
+    try {
+      const userId = req.user?.claims?.sub || req.user?.sub;
+      if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+      const { executiveRole, industryVertical } = req.body;
+      if (!executiveRole || !industryVertical) {
+        return res.status(400).json({ error: 'executiveRole and industryVertical are required' });
+      }
+      await db
+        .update(users)
+        .set({ executiveRole, industryVertical, updatedAt: new Date() })
+        .where(eq(users.id, userId));
+      res.json({ success: true });
+    } catch (error: any) {
+      console.error('Error updating user profile:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   // Dashboard metrics
   app.get('/api/dashboard/metrics', async (req: any, res) => {
     try {
