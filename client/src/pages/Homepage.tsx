@@ -305,7 +305,7 @@ function HomepageNav() {
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
-            <Link href="/executive-departure" style={{
+            <Link href="/manufacturing-demo" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
               background: "rgba(201,168,76,0.10)",
@@ -372,7 +372,7 @@ function HomepageNav() {
           </button>
           {[
             { label: "What We Do",    href: "/platform-overview" },
-            { label: "See It Work",   href: "/executive-departure", highlight: true },
+            { label: "See It Work",   href: "/manufacturing-demo", highlight: true },
             { label: "The Proof",     href: "/why-execution-os" },
             { label: "Investors",     href: "/investors" },
           ].map(item =>
@@ -601,7 +601,7 @@ function HeroSection() {
                 Request a Pilot
               </Link>
               <Link
-                href="/executive-departure"
+                href="/manufacturing-demo"
                 onClick={() => trackCTA("hero_testdrive")}
                 style={{
                   ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,

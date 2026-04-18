@@ -167,7 +167,7 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
-        { label: "The 12-Minute Experience", path: "/executive-departure", icon: Rocket, description: "Watch a CFO resignation trigger fire at 6:47 AM. Full playbook deployment in real time — no login required.", featured: true },
+        { label: "The 12-Minute Experience", path: "/manufacturing-demo", icon: Rocket, description: "$2.1B of committed orders at risk. Primary supplier files bankruptcy. Watch full playbook deployment in real time — no login required.", featured: true },
         { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives" },
         { label: "Real-Company Scenarios", path: "/try-demo", icon: Play, description: "HPE · Target · Clorox · ServiceNow · Alphabet — live execution simulations" },
       ],
@@ -410,7 +410,7 @@ export default function StandardNav() {
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
-                onClick={() => navigateTo('/executive-departure')}
+                onClick={() => navigateTo('/manufacturing-demo')}
                 style={{ background: NAVY, borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
