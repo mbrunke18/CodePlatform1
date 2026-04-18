@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 10, 2026 (rev 21) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 18, 2026 (rev 22) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -79,7 +79,7 @@ MUTED    = "#6B7280"   → helper text, secondary labels, timestamps
 - Yellow/Orange — warnings ONLY
 - Never use: `purple-*`, `violet-*`, `cyan-*`, `indigo-*`, `emerald-*`, `blue-600+`
 - Light neutrals `bg-gray-50`, `bg-slate-50` are acceptable
-- OFFENSE playbooks = Teal. DEFENSE = Navy. SPECIAL_TEAMS = Gold.
+- Playbook category badge colors (internal enum keys unchanged): `offense` → Teal | `defense` → Navy | `special_teams` → Gold. User-facing labels for these categories are **GROWTH & POSITIONING**, **RISK & RESILIENCE**, and **TRANSFORMATION** respectively — never "Offense," "Defense," or "Special Teams" in any visible UI copy (see Section 37).
 
 **Color variable trap:** `Homepage.tsx` uses the local name `TEXT_MUTED` (not `MUTED`), and defines both `NAVY` and `NAVY_BG` locally. `NAVY_BG` is only used for large `<section>` backgrounds on the homepage — do NOT use it for text, borders, or buttons. Every other file uses only `NAVY`. Always check the constants block at the top of each file before referencing color variables.
 
@@ -1359,6 +1359,9 @@ The following copy conventions are founder-locked. Any agent or developer who to
 | "Execution Playbooks" (standalone) | "Readiness Playbooks" |
 | "20–50 hours getting organized" | "30 days to mobilize" |
 | "16 signal categories" | "9 strategic domains, 221 triggers" |
+| "Offense" (as category label) | "GROWTH & POSITIONING" |
+| "Defense" (as category label) | "RISK & RESILIENCE" |
+| "Special Teams" (as category label) | "TRANSFORMATION" |
 
 **AI language rule (LOCKED — zero tolerance):** "AI-powered," "AI-driven," "AI-generated," and "AI-detected" are fully retired from ALL visible UI — labels, descriptions, placeholders, button text, card subtitles, tooltip copy, section headers. Technical code comments are exempt. The underlying AI model name (GPT-4o / Azure OpenAI) may appear ONLY in technical integration listings (e.g. IntegrationHub.tsx, architecture diagrams showing the Microsoft stack). Never in end-user-facing copy. Replacement vocabulary: "system-detected," "signal-based," "system-analyzed," "pre-staged," "system-staged," "continuous monitoring," "pattern-matched."
 
@@ -1624,4 +1627,52 @@ Both desktop and mobile `HomepageNav` now include a "The Manifesto" link routing
 
 ### IDEAFramework DOM Fix
 `IDEAFramework.tsx` SubBrandLabel changed from `<p>` to `<div>` — eliminates invalid nesting console warning.
+
+---
+
+## 37. Football Terminology Retirement — April 18, 2026 (rev 22)
+
+### Background
+The platform's three strategic categories were historically labeled "Offense," "Defense," and "Special Teams" — language borrowed from the founder's Stanford football philosophy. This terminology is **retired from all user-facing copy** as of this revision. Fortune 1000 buyers (HPE, Target, Clorox) respond to enterprise vocabulary, not sports analogies outside the founder's personal narrative.
+
+### New Canonical Labels (user-facing only)
+
+| Internal DB enum | Old UI label | **New UI label** |
+|---|---|---|
+| `offense` | Offense | **GROWTH & POSITIONING** |
+| `defense` | Defense | **RISK & RESILIENCE** |
+| `special_teams` | Special Teams | **TRANSFORMATION** |
+
+### What Changed, What Didn't
+
+**Internal code — unchanged:**
+- `strategicCategoryEnum` in `shared/schema.ts` still uses `'offense' | 'defense' | 'special_teams'`
+- Database values are unchanged — no migration required
+- `CAT_COLORS` / `CATEGORY_COLORS` lookup objects still key on `offense`, `defense`, `special_teams`
+- `offense`/`defense`/`special_teams` boolean flags on playbook library data are unchanged
+
+**User-facing copy — updated:**
+All visible labels, filter tabs, badges, dropdown options, section headers, and card text now use the new vocabulary. Any new component that renders a category label must use the new terms.
+
+### Deliberate Exception
+`FounderStoryFull.tsx` — the football language ("offense," "defense") is **preserved intentionally** as part of the founder's personal origin narrative. This is the one place in the entire platform where sports terminology is appropriate and contextually meaningful.
+
+### Files Updated in This Sweep
+`WorkspaceHub.tsx` · `WhatIfAnalyzer.tsx` · `DecisionTreeBuilder.tsx` · `IndustryExperience.tsx` · `StrategicDomains.tsx` · `ThirtySecondSpot.tsx` · `CinematicHero.tsx` · `ValueGainCallout.tsx`
+
+### Developer Rule Going Forward
+Any component that displays a playbook's `strategicCategory` value must map it through the lookup table before rendering to the user:
+
+```ts
+const CATEGORY_LABELS: Record<string, string> = {
+  offense: 'GROWTH & POSITIONING',
+  defense: 'RISK & RESILIENCE',
+  special_teams: 'TRANSFORMATION',
+};
+
+// Usage:
+const label = CATEGORY_LABELS[playbook.strategicCategory] ?? playbook.strategicCategory;
+```
+
+Never render the raw `offense` / `defense` / `special_teams` DB value directly in visible UI.
 
