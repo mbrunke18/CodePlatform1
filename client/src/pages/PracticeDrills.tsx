@@ -203,6 +203,29 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
     <PageLayout embedded={embedded}>
       <div className="p-8 space-y-8 bg-[#F8F7F4] min-h-screen" data-testid="practice-drills-page">
         <ExecutionStageGuide variant="compact" />
+
+        {/* Hasan Research Callout */}
+        <div style={{
+          background: '#0A0F2E', borderLeft: '4px solid #2B8A6E',
+          padding: '16px 20px', borderRadius: 0,
+          display: 'flex', alignItems: 'flex-start', gap: 14,
+        }}>
+          <div style={{ flexShrink: 0, marginTop: 2 }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#2B8A6E' }} />
+          </div>
+          <div>
+            <p style={{
+              color: 'rgba(255,255,255,0.85)', fontSize: 14, lineHeight: 1.65,
+              fontStyle: 'italic', margin: 0, fontFamily: "'Cormorant Garamond', serif",
+            }}>
+              "Most organizations design for stability, not for pressure. That's why the system appears to work — until it is actually tested."
+            </p>
+            <p style={{ color: '#2B8A6E', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', marginTop: 8, marginBottom: 0 }}>
+              HASAN · ENTERPRISE READINESS PRACTITIONER
+            </p>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>

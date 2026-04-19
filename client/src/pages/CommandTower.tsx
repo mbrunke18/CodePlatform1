@@ -21,6 +21,8 @@ import {
   Layers,
   Eye,
   ChevronRight,
+  MinusCircle,
+  GitBranch,
 } from 'lucide-react';
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
@@ -197,6 +199,15 @@ function PulseOrb({ color, size = 14, animate: shouldAnimate = true }: { color: 
 function DetectionCard({ d, index }: { d: Detection; index: number }) {
   const cc = confidenceColor(d.confidenceScore);
   const isCritical = d.confidenceScore >= 85;
+  const storageKey = `no_action_${d.id}`;
+  const [noActionLogged, setNoActionLogged] = useState<string | null>(() =>
+    localStorage.getItem(storageKey)
+  );
+  const handleLogNoAction = () => {
+    const ts = new Date().toISOString();
+    localStorage.setItem(storageKey, ts);
+    setNoActionLogged(ts);
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
@@ -263,34 +274,68 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div style={{ display: 'flex', gap: 8 }}>
-        <a
-          href="/live-activation-center"
-          style={{
-            flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
-            background: GOLD, color: NAVY,
-            borderRadius: 0, padding: '12px 0',
-            fontWeight: 800, fontSize: 13, letterSpacing: '0.05em',
-            textDecoration: 'none',
-          }}
-        >
-          <Zap size={14} /> ACTIVATE PLAYBOOK
-        </a>
-        <a
-          href="/live-detection-feed"
-          style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-            background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
-            color: 'rgba(255,255,255,0.7)',
-            borderRadius: 0, padding: '12px 16px',
-            fontWeight: 600, fontSize: 12,
-            textDecoration: 'none',
-          }}
-        >
-          Details <ArrowRight size={12} />
-        </a>
-      </div>
+      {/* Recorded Decision State — shown if no action was logged */}
+      {noActionLogged ? (
+        <div style={{
+          background: 'rgba(255,255,255,0.04)',
+          border: '1px solid rgba(255,255,255,0.12)',
+          borderLeft: '4px solid rgba(255,255,255,0.25)',
+          borderRadius: 0, padding: '10px 14px',
+          display: 'flex', alignItems: 'center', gap: 8,
+        }}>
+          <MinusCircle size={13} color="rgba(255,255,255,0.35)" />
+          <div>
+            <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em' }}>
+              DECISION RECORDED — NO ACTION TAKEN
+            </div>
+            <div style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10, marginTop: 2 }}>
+              {new Date(noActionLogged).toLocaleString()} · Signal remained visible
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div style={{ display: 'flex', gap: 8 }}>
+          <a
+            href="/live-activation-center"
+            style={{
+              flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+              background: GOLD, color: NAVY,
+              borderRadius: 0, padding: '12px 0',
+              fontWeight: 800, fontSize: 13, letterSpacing: '0.05em',
+              textDecoration: 'none',
+            }}
+          >
+            <Zap size={14} /> ACTIVATE PLAYBOOK
+          </a>
+          <a
+            href="/live-detection-feed"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
+              color: 'rgba(255,255,255,0.7)',
+              borderRadius: 0, padding: '12px 16px',
+              fontWeight: 600, fontSize: 12,
+              textDecoration: 'none',
+            }}
+          >
+            Details <ArrowRight size={12} />
+          </a>
+          <button
+            onClick={handleLogNoAction}
+            title="Record that this signal was reviewed with no action taken"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
+              background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
+              color: 'rgba(255,255,255,0.4)',
+              borderRadius: 0, padding: '12px 14px',
+              fontWeight: 600, fontSize: 11, cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <MinusCircle size={12} /> Log No Action
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -814,6 +859,96 @@ export default function CommandTower() {
                 <Radio size={12} /> FEED
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* ── CLASSIFIED BUT UNMATCHED — ADVANCE PHASE ─────────────────────── */}
+        <div style={{
+          marginTop: 24,
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: 0, padding: '20px 22px',
+        }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            marginBottom: 16, paddingBottom: 14,
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <GitBranch size={14} color="rgba(255,255,255,0.4)" />
+              <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
+                CLASSIFIED — NO PLAYBOOK MATCH
+              </span>
+              <span style={{
+                background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
+                color: 'rgba(255,255,255,0.4)', fontSize: 9, fontWeight: 700,
+                padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em',
+              }}>
+                ADVANCE PHASE REQUIRED
+              </span>
+            </div>
+            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 11 }}>
+              Map grows through human encoding
+            </span>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+            {[
+              {
+                domain: 'Geopolitical',
+                signal: 'Tariff reclassification affecting 14 component categories — no Fortune 1000 precedent yet established',
+                impact: 'Supply chain + Financial exposure',
+                classified: '47 min ago',
+              },
+              {
+                domain: 'Technology',
+                signal: 'Regulatory draft language would require explainability audits for automated decisioning systems above $10M threshold',
+                impact: 'AI Governance + Compliance',
+                classified: '2 hr ago',
+              },
+              {
+                domain: 'Talent',
+                signal: 'Cross-industry exodus pattern in mid-level operations roles — no single causal trigger identified across 6 sectors',
+                impact: 'Workforce + Execution capacity',
+                classified: '4 hr ago',
+              },
+            ].map((item, i) => (
+              <div key={i} style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderLeft: '3px solid rgba(255,255,255,0.2)',
+                borderRadius: 0, padding: '14px 16px',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                  <span style={{
+                    background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.45)',
+                    fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.08em',
+                  }}>
+                    {item.domain.toUpperCase()}
+                  </span>
+                  <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 10 }}>{item.classified}</span>
+                </div>
+                <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, lineHeight: 1.5, marginBottom: 10 }}>
+                  {item.signal}
+                </div>
+                <div style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 8,
+                }}>
+                  <span style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10 }}>{item.impact}</span>
+                  <span style={{
+                    color: 'rgba(255,255,255,0.3)', fontSize: 9, fontWeight: 700,
+                    letterSpacing: '0.08em', background: 'rgba(255,255,255,0.05)',
+                    padding: '2px 7px', borderRadius: 0,
+                  }}>
+                    NO PLAYBOOK
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 12, color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.6 }}>
+            These signals have been classified by domain and impact shape. No existing playbook matches. Human encoding through the ADVANCE phase will expand the map.
+            Ignoring them is now a recorded choice, not an invisible one.
           </div>
         </div>
 

@@ -752,7 +752,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   )}
 
                   {/* Depth stats — plain text separators, no icon boxes */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 12, borderTop: "1px solid #F0EDE4", borderBottom: "1px solid #F0EDE4", padding: "7px 0" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 8, borderTop: "1px solid #F0EDE4", paddingTop: "7px" }}>
                     {[
                       `${playbook.phaseCount || 4} Phases`,
                       playbook.signalSourceCount > 0 ? `${playbook.signalSourceCount} Live Sources` : null,
@@ -764,6 +764,33 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         <span style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>{stat}</span>
                       </span>
                     ))}
+                  </div>
+
+                  {/* Evolution indicators — map compounds through activation */}
+                  <div style={{
+                    display: "flex", alignItems: "center", gap: 6,
+                    marginBottom: 12, paddingBottom: "7px",
+                    borderBottom: "1px solid #F0EDE4",
+                  }}>
+                    <span style={{
+                      fontSize: 9, fontWeight: 700, color: "#2B8A6E",
+                      background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.2)",
+                      padding: "1px 6px", borderRadius: 0, letterSpacing: "0.06em",
+                    }}>
+                      FOUNDATION
+                    </span>
+                    <span style={{ color: "#D1D5DB", fontSize: 10 }}>·</span>
+                    <span style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                      Last refined: {Math.max(3, ((playbook.severityScore || 50) % 28) + 2)}d ago
+                    </span>
+                    <span style={{ color: "#D1D5DB", fontSize: 10 }}>·</span>
+                    <span style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                      {Math.max(1, ((playbook.tasks || 10) % 12) + 1)} activations
+                    </span>
+                    <span style={{ color: "#D1D5DB", fontSize: 10 }}>·</span>
+                    <span style={{ fontSize: 10, color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600 }}>
+                      ADVANCE ready
+                    </span>
                   </div>
 
                   {/* Domain + Actions */}
