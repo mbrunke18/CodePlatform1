@@ -3301,6 +3301,16 @@ var init_schema = __esm({
       targetMet: boolean("target_met"),
       // Human input (single low-friction field)
       humanNote: text2("human_note"),
+      // Close-Out Gate — required structured debrief before activation can close
+      whatHeld: text2("what_held"),
+      // What prepared response worked under live conditions
+      whatDidntHold: text2("what_didnt_hold"),
+      // Where preparation failed under pressure
+      preparationGap: text2("preparation_gap"),
+      // What the preparation didn't anticipate
+      oneThingToEncode: text2("one_thing_to_encode"),
+      // The one lesson that changes the playbook
+      closeOutCompleted: boolean("close_out_completed").default(false),
       // Status
       status: varchar("status", { length: 50 }).default("pending"),
       generatedAt: timestamp2("generated_at"),
@@ -11309,6 +11319,10 @@ var init_storage = __esm({
       }
       async updateActivationOutcomeNote(outcomeId, humanNote) {
         const [updated] = await db.update(activationOutcomes).set({ humanNote }).where(eq(activationOutcomes.id, outcomeId)).returning();
+        return updated;
+      }
+      async updateActivationOutcomeCloseOut(outcomeId, data) {
+        const [updated] = await db.update(activationOutcomes).set({ ...data, closeOutCompleted: true }).where(eq(activationOutcomes.id, outcomeId)).returning();
         return updated;
       }
       async updateActivationOutcomeAI(outcomeId, aiSummary) {
@@ -48575,6 +48589,57 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.status(500).json({ success: false });
     }
   });
+  app2.get("/api/signal-accountability", async (req, res) => {
+    try {
+      const { and: and30, or: or2, lte: lte2, isNull: isNull5, desc: desc22 } = await import("drizzle-orm");
+      const { eq: eqOp } = await import("drizzle-orm");
+      const { triggerDetections: td } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const orgId = req.query.organizationId || req.orgId || "system";
+      const allDetections = await db.select().from(td).where(eqOp(td.organizationId, orgId)).orderBy(desc22(td.detectedAt));
+      const now = Date.now();
+      const CYCLE_MS = 15 * 60 * 1e3;
+      const unacted = allDetections.filter((d) => d.status === "detected" || d.status === "notified").map((d) => {
+        const ageMs = now - new Date(d.detectedAt).getTime();
+        const ageMinutes = Math.floor(ageMs / 6e4);
+        const cycles = Math.floor(ageMs / CYCLE_MS);
+        const escalated = cycles >= 2;
+        return {
+          id: d.id,
+          triggerName: d.triggerName,
+          triggerDomain: d.triggerDomain,
+          signalDescription: d.signalDescription,
+          signalSource: d.signalSource,
+          confidenceScore: d.confidenceScore,
+          recommendedPlaybook: d.recommendedPlaybook,
+          status: d.status,
+          detectedAt: d.detectedAt,
+          ageMinutes,
+          cycles,
+          escalated,
+          escalationLevel: escalated ? cycles >= 4 ? "BOARD" : "EXECUTIVE" : "MONITORING"
+        };
+      });
+      const boardEscalated = unacted.filter((s) => s.escalationLevel === "BOARD");
+      const executiveEscalated = unacted.filter((s) => s.escalationLevel === "EXECUTIVE");
+      const monitoring = unacted.filter((s) => s.escalationLevel === "MONITORING");
+      res.json({
+        success: true,
+        summary: {
+          total: unacted.length,
+          boardEscalated: boardEscalated.length,
+          executiveEscalated: executiveEscalated.length,
+          monitoring: monitoring.length
+        },
+        boardEscalated,
+        executiveEscalated,
+        monitoring,
+        generatedAt: (/* @__PURE__ */ new Date()).toISOString()
+      });
+    } catch (err) {
+      console.error("Signal accountability error:", err);
+      res.status(500).json({ success: false, error: "Failed to generate report" });
+    }
+  });
   app2.get("/api/stakeholder-contacts", async (req, res) => {
     try {
       const organizationId = req.query.organizationId || req.orgId || "system";
@@ -49197,6 +49262,23 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: "Failed to save note" });
+    }
+  });
+  app2.patch("/api/activation-outcomes/:id/closeout", requireOrgAccess2, async (req, res) => {
+    try {
+      const { whatHeld, whatDidntHold, preparationGap, oneThingToEncode } = req.body;
+      if (!whatHeld || !whatDidntHold || !oneThingToEncode) {
+        return res.status(400).json({ error: "whatHeld, whatDidntHold, and oneThingToEncode are required to close out" });
+      }
+      const outcome = await storage.updateActivationOutcomeCloseOut(req.params.id, {
+        whatHeld,
+        whatDidntHold,
+        preparationGap: preparationGap || "",
+        oneThingToEncode
+      });
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to save close-out data" });
     }
   });
   app2.post("/api/activation-outcomes/:id/generate", requireOrgAccess2, async (req, res) => {

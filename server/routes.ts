@@ -7495,6 +7495,68 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
+  // GET /api/signal-accountability — governance report of unacted signals
+  app.get('/api/signal-accountability', async (req: any, res) => {
+    try {
+      const { and, or, lte, isNull, desc } = await import('drizzle-orm');
+      const { eq: eqOp } = await import('drizzle-orm');
+      const { triggerDetections: td } = await import('@shared/schema');
+
+      const orgId = req.query.organizationId || req.orgId || 'system';
+      const allDetections = await db.select().from(td)
+        .where(eqOp(td.organizationId, orgId))
+        .orderBy(desc(td.detectedAt));
+
+      const now = Date.now();
+      const CYCLE_MS = 15 * 60 * 1000; // 15-minute monitoring cycle
+
+      const unacted = allDetections
+        .filter(d => d.status === 'detected' || d.status === 'notified')
+        .map(d => {
+          const ageMs = now - new Date(d.detectedAt).getTime();
+          const ageMinutes = Math.floor(ageMs / 60000);
+          const cycles = Math.floor(ageMs / CYCLE_MS);
+          const escalated = cycles >= 2;
+          return {
+            id: d.id,
+            triggerName: d.triggerName,
+            triggerDomain: d.triggerDomain,
+            signalDescription: d.signalDescription,
+            signalSource: d.signalSource,
+            confidenceScore: d.confidenceScore,
+            recommendedPlaybook: d.recommendedPlaybook,
+            status: d.status,
+            detectedAt: d.detectedAt,
+            ageMinutes,
+            cycles,
+            escalated,
+            escalationLevel: escalated ? (cycles >= 4 ? 'BOARD' : 'EXECUTIVE') : 'MONITORING',
+          };
+        });
+
+      const boardEscalated = unacted.filter(s => s.escalationLevel === 'BOARD');
+      const executiveEscalated = unacted.filter(s => s.escalationLevel === 'EXECUTIVE');
+      const monitoring = unacted.filter(s => s.escalationLevel === 'MONITORING');
+
+      res.json({
+        success: true,
+        summary: {
+          total: unacted.length,
+          boardEscalated: boardEscalated.length,
+          executiveEscalated: executiveEscalated.length,
+          monitoring: monitoring.length,
+        },
+        boardEscalated,
+        executiveEscalated,
+        monitoring,
+        generatedAt: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error('Signal accountability error:', err);
+      res.status(500).json({ success: false, error: 'Failed to generate report' });
+    }
+  });
+
   // GET /api/stakeholder-contacts — list contacts for an org
   app.get('/api/stakeholder-contacts', async (req: any, res) => {
     try {
@@ -8206,6 +8268,21 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: 'Failed to save note' });
+    }
+  });
+
+  app.patch('/api/activation-outcomes/:id/closeout', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { whatHeld, whatDidntHold, preparationGap, oneThingToEncode } = req.body;
+      if (!whatHeld || !whatDidntHold || !oneThingToEncode) {
+        return res.status(400).json({ error: 'whatHeld, whatDidntHold, and oneThingToEncode are required to close out' });
+      }
+      const outcome = await storage.updateActivationOutcomeCloseOut(req.params.id, {
+        whatHeld, whatDidntHold, preparationGap: preparationGap || '', oneThingToEncode
+      });
+      res.json(outcome);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to save close-out data' });
     }
   });
 

@@ -113,6 +113,7 @@ const AIRadarDashboard = lazy(() => import("./pages/AIRadarDashboard"));
 const SignalIntelligenceHub = lazy(() => import("./pages/SignalIntelligenceHub"));
 const LiveDetectionFeed = lazy(() => import("./pages/LiveDetectionFeed"));
 const InstitutionalMemory = lazy(() => import("./pages/InstitutionalMemory"));
+const SignalAccountability = lazy(() => import("./pages/SignalAccountability"));
 const DrillTrackingSystem = lazy(() => import("./pages/DrillTrackingSystem"));
 const BoardBriefings = lazy(() => import("./pages/BoardBriefings"));
 const InvestorResources = lazy(() => import("./pages/InvestorResources"));
@@ -422,6 +423,7 @@ function Router() {
         <Route path="/decision-trees" component={DecisionTreeBuilder} />
         <Route path="/execution-coordination" component={ExecutionCoordination} />
         <Route path="/institutional-memory" component={InstitutionalMemory} />
+        <Route path="/signal-accountability" component={SignalAccountability} />
         <Route path="/board-briefings" component={BoardBriefings} />
         <Route path="/operating-model" component={OperatingModelAlignment} />
         <Route path="/roi-breakdown" component={ComprehensiveROIBreakdown} />

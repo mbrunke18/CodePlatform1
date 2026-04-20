@@ -505,7 +505,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
       case "360x-faster":
         return "3,600× Execution Head Start";
       default:
-        return "Offense, Defense, Special Teams";
+        return "Growth. Resilience. Transformation.";
     }
   };
 

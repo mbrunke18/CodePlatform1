@@ -2906,6 +2906,13 @@ export const activationOutcomes = pgTable('activation_outcomes', {
   // Human input (single low-friction field)
   humanNote: text('human_note'),
 
+  // Close-Out Gate — required structured debrief before activation can close
+  whatHeld: text('what_held'),            // What prepared response worked under live conditions
+  whatDidntHold: text('what_didnt_hold'), // Where preparation failed under pressure
+  preparationGap: text('preparation_gap'), // What the preparation didn't anticipate
+  oneThingToEncode: text('one_thing_to_encode'), // The one lesson that changes the playbook
+  closeOutCompleted: boolean('close_out_completed').default(false),
+
   // Status
   status: varchar('status', { length: 50 }).default('pending'),
   generatedAt: timestamp('generated_at'),

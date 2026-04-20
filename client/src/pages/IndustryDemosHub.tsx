@@ -336,7 +336,7 @@ export default function IndustryDemosHub() {
               Industry <em style={{ color: "#C9A84C" }}>Scenarios</em>
             </div>
             <div style={{ fontSize: 13, color: "rgba(240,237,228,0.5)", maxWidth: 540, marginBottom: 28, lineHeight: 1.5 }}>
-              Offense & defense. Market entry to crisis response. By the time competitors schedule their first call — Readiness OS has already started execution.
+              Growth scenarios. Resilience scenarios. Market entry to crisis response. By the time competitors schedule their first call — Readiness OS has already started execution.
             </div>
 
             {/* Two Category Tiles */}

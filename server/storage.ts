@@ -3144,6 +3144,19 @@ export class DatabaseStorage implements IStorage {
     return updated;
   }
 
+  async updateActivationOutcomeCloseOut(outcomeId: string, data: {
+    whatHeld: string;
+    whatDidntHold: string;
+    preparationGap: string;
+    oneThingToEncode: string;
+  }): Promise<ActivationOutcome> {
+    const [updated] = await db.update(activationOutcomes)
+      .set({ ...data, closeOutCompleted: true })
+      .where(eq(activationOutcomes.id, outcomeId))
+      .returning();
+    return updated;
+  }
+
   async updateActivationOutcomeAI(outcomeId: string, aiSummary: string): Promise<ActivationOutcome> {
     const [updated] = await db.update(activationOutcomes)
       .set({ aiSummary, status: 'generated', generatedAt: new Date() })

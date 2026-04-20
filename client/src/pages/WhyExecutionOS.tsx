@@ -48,7 +48,7 @@ const competitors: Competitor[] = [
   },
   {
     name: "Palantir AIP",
-    category: "Defense-Grade Data Intelligence",
+    category: "Enterprise-Grade Data Intelligence",
     claim: "Decision intelligence for enterprise and government — ontology-based data integration with AI agents on top.",
     whatTheyDo: "Palantir is architecturally sophisticated and genuinely impressive, particularly in defense, intelligence, and manufacturing. AIP allows enterprises to build AI agents on top of their data with ontology-based reasoning. For organizations with significant data science teams, it provides deep intelligence capability.",
     whereTheyStop: "Palantir tells you what is happening with extraordinary sophistication. It does not then automatically assign tasks, notify your General Counsel, route your CISO to the right response protocol, or activate a pre-staged playbook. The gap from intelligence to coordinated human execution remains entirely manual. Deployment typically takes 6–24 months and requires dedicated data engineers.",

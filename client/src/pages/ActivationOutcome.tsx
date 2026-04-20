@@ -74,6 +74,13 @@ export default function ActivationOutcome() {
   const [wouldChange, setWouldChange] = useState("");
   const [playbookRating, setPlaybookRating] = useState(0);
 
+  // Close-Out Gate — required fields
+  const [whatHeld, setWhatHeld] = useState("");
+  const [whatDidntHold, setWhatDidntHold] = useState("");
+  const [preparationGap, setPreparationGap] = useState("");
+  const [oneThingToEncode, setOneThingToEncode] = useState("");
+  const [closeOutSaved, setCloseOutSaved] = useState(false);
+
   const { data: outcome, isLoading, refetch } = useQuery<any>({
     queryKey: ["/api/activation-outcomes", activationId],
     queryFn: () => fetch(`/api/activation-outcomes/${activationId}`).then(r => r.json()),
@@ -104,6 +111,17 @@ export default function ActivationOutcome() {
       toast({ title: "AI Summary generated", description: "Your ADVANCE outcome report is ready." });
     },
     onError: () => toast({ title: "Generation failed", description: "Check API configuration.", variant: "destructive" }),
+  });
+
+  const closeOutMutation = useMutation({
+    mutationFn: ({ id, data }: { id: string; data: { whatHeld: string; whatDidntHold: string; preparationGap: string; oneThingToEncode: string } }) =>
+      apiRequest("PATCH", `/api/activation-outcomes/${id}/closeout`, data),
+    onSuccess: () => {
+      setCloseOutSaved(true);
+      queryClient.invalidateQueries({ queryKey: ["/api/activation-outcomes", activationId] });
+      toast({ title: "Close-Out Gate completed", description: "Learning encoded. Activation can now be closed." });
+    },
+    onError: () => toast({ title: "Failed to save", description: "All required fields must be completed.", variant: "destructive" }),
   });
 
   const taskCompletionRate = outcome?.totalTasks > 0
@@ -375,62 +393,172 @@ export default function ActivationOutcome() {
                 </Card>
               )}
 
-              {/* Step 4: Learning */}
+              {/* Step 4: Learning + Close-Out Gate */}
               {step === 4 && (
-                <Card style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid ${TEAL}`, borderRadius: 0 }}>
-                  <CardContent className="p-6 space-y-6">
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-                      <TrendingUp style={{ width: 18, height: 18, color: TEAL }} />
-                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL }}>Learning Capture</span>
-                    </div>
-                    <h3 style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY }}>What did this teach us?</h3>
-
-                    <div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.1em" }}>What would you do differently?</div>
-                      <Textarea
-                        value={wouldChange}
-                        onChange={e => setWouldChange(e.target.value)}
-                        placeholder="e.g. 'Legal should be looped in at Phase 1 rather than Phase 2. The 7-minute delay in CLO notification added 40 minutes to the regulatory review.'"
-                        style={{ minHeight: 100, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
-                      />
-                    </div>
-
-                    <div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.1em" }}>Lessons for the playbook</div>
-                      <Textarea
-                        value={lessonsLearned}
-                        onChange={e => setLessonsLearned(e.target.value)}
-                        placeholder="e.g. 'Add a dedicated task for external forensics engagement in Phase 1 — this was ad hoc and cost 25 minutes.'"
-                        style={{ minHeight: 100, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
-                      />
-                    </div>
-
-                    <div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.1em" }}>Playbook effectiveness rating</div>
-                      <div style={{ display: "flex", gap: 8 }}>
-                        {[1, 2, 3, 4, 5].map(n => (
-                          <button key={n} onClick={() => setPlaybookRating(n)}
-                            style={{ width: 40, height: 40, border: `2px solid ${n <= playbookRating ? GOLD : BORDER}`, background: n <= playbookRating ? `${GOLD}12` : "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <Star style={{ width: 18, height: 18, color: n <= playbookRating ? GOLD : "#D1D5DB", fill: n <= playbookRating ? GOLD : "none" }} />
-                          </button>
-                        ))}
-                        {playbookRating > 0 && <span style={{ fontSize: 12, color: MUTED, alignSelf: "center" }}>{['', 'Needs major rework', 'Below expectations', 'Met expectations', 'Above expectations', 'Outstanding'][playbookRating]}</span>}
+                <div className="space-y-4">
+                  {/* Close-Out Gate — required */}
+                  <Card style={{ border: `2px solid ${closeOutSaved || outcome?.closeOutCompleted ? TEAL : RED}`, borderLeft: `4px solid ${closeOutSaved || outcome?.closeOutCompleted ? TEAL : RED}`, borderRadius: 0 }}>
+                    <CardContent className="p-6 space-y-5">
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          {closeOutSaved || outcome?.closeOutCompleted
+                            ? <CheckCircle2 style={{ width: 18, height: 18, color: TEAL }} />
+                            : <AlertTriangle style={{ width: 18, height: 18, color: RED }} />
+                          }
+                          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: closeOutSaved || outcome?.closeOutCompleted ? TEAL : RED }}>
+                            Close-Out Gate — Required to Advance
+                          </span>
+                        </div>
+                        {!(closeOutSaved || outcome?.closeOutCompleted) && (
+                          <span style={{ fontSize: 10, background: `${RED}12`, color: RED, border: `1px solid ${RED}30`, padding: "2px 8px", fontWeight: 700, letterSpacing: "0.1em" }}>LOCKED</span>
+                        )}
+                        {(closeOutSaved || outcome?.closeOutCompleted) && (
+                          <span style={{ fontSize: 10, background: `${TEAL}12`, color: TEAL, border: `1px solid ${TEAL}30`, padding: "2px 8px", fontWeight: 700, letterSpacing: "0.1em" }}>COMPLETE</span>
+                        )}
                       </div>
-                    </div>
 
-                    <Button
-                      style={{ background: TEAL, color: "#fff", borderRadius: 0 }}
-                      onClick={() => {
-                        if (!outcome?.id) return;
-                        const note = `SUMMARY: ${humanNote}\n\nDECISIONS: ${selectedDecisions.join(', ')}${additionalDecision ? `. Additional: ${additionalDecision}` : ''}\n\nWOULD CHANGE: ${wouldChange}\n\nLESSONS: ${lessonsLearned}\n\nPLAYBOOK RATING: ${playbookRating}/5`;
-                        saveNoteMutation.mutate({ id: outcome.id, note });
-                      }}
-                      disabled={saveNoteMutation.isPending}
-                    >
-                      {saveNoteMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving...</> : <><CheckCircle className="h-4 w-4 mr-2" />Save Learning Capture</>}
-                    </Button>
-                  </CardContent>
-                </Card>
+                      <p style={{ fontSize: 12, color: MUTED, lineHeight: 1.6 }}>
+                        These four questions must be answered before this activation can be closed. This is not administrative overhead — it is the mechanism that makes preparation better before the next trigger fires.
+                      </p>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                          What held under pressure? <span style={{ color: RED }}>*</span>
+                        </div>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Which prepared response worked exactly as designed when the trigger fired?</p>
+                        <Textarea
+                          value={whatHeld || outcome?.whatHeld || ""}
+                          onChange={e => setWhatHeld(e.target.value)}
+                          placeholder="e.g. 'The stakeholder notification sequence ran exactly as staged — CLO, CFO, and Communications were on a call within 4 minutes of trigger detection.'"
+                          style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${whatHeld || outcome?.whatHeld ? TEAL : BORDER}`, fontSize: 13 }}
+                          disabled={closeOutSaved || outcome?.closeOutCompleted}
+                        />
+                      </div>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                          What didn't hold? <span style={{ color: RED }}>*</span>
+                        </div>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Where did the preparation fail or deviate under live conditions?</p>
+                        <Textarea
+                          value={whatDidntHold || outcome?.whatDidntHold || ""}
+                          onChange={e => setWhatDidntHold(e.target.value)}
+                          placeholder="e.g. 'The forensics vendor contact was outdated — 8 minutes lost locating the correct escalation contact. The playbook had the wrong number.'"
+                          style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${whatDidntHold || outcome?.whatDidntHold ? TEAL : BORDER}`, fontSize: 13 }}
+                          disabled={closeOutSaved || outcome?.closeOutCompleted}
+                        />
+                      </div>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>What did the preparation not anticipate?</div>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Conditions, decisions, or actors that the playbook didn't account for.</p>
+                        <Textarea
+                          value={preparationGap || outcome?.preparationGap || ""}
+                          onChange={e => setPreparationGap(e.target.value)}
+                          placeholder="e.g. 'Ransomware spread to a subsidiary not covered in the playbook scope. The subsidiary CISO wasn't in the notification chain.'"
+                          style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
+                          disabled={closeOutSaved || outcome?.closeOutCompleted}
+                        />
+                      </div>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                          One thing to encode for next time <span style={{ color: RED }}>*</span>
+                        </div>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>The single most important change that gets built back into the playbook before it's used again.</p>
+                        <Textarea
+                          value={oneThingToEncode || outcome?.oneThingToEncode || ""}
+                          onChange={e => setOneThingToEncode(e.target.value)}
+                          placeholder="e.g. 'Add verified forensics vendor contact (with backup) to Phase 1 task — verify quarterly. This alone would have saved 8 minutes.'"
+                          style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${oneThingToEncode || outcome?.oneThingToEncode ? TEAL : BORDER}`, fontSize: 13 }}
+                          disabled={closeOutSaved || outcome?.closeOutCompleted}
+                        />
+                      </div>
+
+                      {!(closeOutSaved || outcome?.closeOutCompleted) && (
+                        <Button
+                          style={{ background: RED, color: "#fff", borderRadius: 0, width: "100%" }}
+                          onClick={() => {
+                            if (!outcome?.id) return;
+                            closeOutMutation.mutate({
+                              id: outcome.id,
+                              data: { whatHeld, whatDidntHold, preparationGap, oneThingToEncode }
+                            });
+                          }}
+                          disabled={closeOutMutation.isPending || !whatHeld.trim() || !whatDidntHold.trim() || !oneThingToEncode.trim()}
+                        >
+                          {closeOutMutation.isPending
+                            ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Encoding...</>
+                            : <><CheckCircle className="h-4 w-4 mr-2" />Complete Close-Out Gate &amp; Unlock Board Brief</>
+                          }
+                        </Button>
+                      )}
+
+                      {(closeOutSaved || outcome?.closeOutCompleted) && (
+                        <div style={{ padding: "12px 16px", background: `${TEAL}08`, border: `1px solid ${TEAL}25`, display: "flex", alignItems: "center", gap: 10 }}>
+                          <CheckCircle2 style={{ width: 16, height: 16, color: TEAL, flexShrink: 0 }} />
+                          <span style={{ fontSize: 12, color: TEAL, fontWeight: 600 }}>Gate passed — learning encoded into institutional memory. Board Brief now unlocked.</span>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+
+                  {/* Optional fields */}
+                  <Card style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid ${TEAL}`, borderRadius: 0 }}>
+                    <CardContent className="p-6 space-y-5">
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <TrendingUp style={{ width: 18, height: 18, color: TEAL }} />
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL }}>Additional Learning Context</span>
+                        <span style={{ fontSize: 10, color: MUTED, marginLeft: 4 }}>Optional</span>
+                      </div>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.1em" }}>What would you do differently?</div>
+                        <Textarea
+                          value={wouldChange}
+                          onChange={e => setWouldChange(e.target.value)}
+                          placeholder="e.g. 'Legal should be looped in at Phase 1 rather than Phase 2. The 7-minute delay in CLO notification added 40 minutes to the regulatory review.'"
+                          style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
+                        />
+                      </div>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.1em" }}>Additional lessons for the playbook</div>
+                        <Textarea
+                          value={lessonsLearned}
+                          onChange={e => setLessonsLearned(e.target.value)}
+                          placeholder="e.g. 'Add a dedicated task for external forensics engagement in Phase 1 — this was ad hoc and cost 25 minutes.'"
+                          style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
+                        />
+                      </div>
+
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.1em" }}>Playbook effectiveness rating</div>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          {[1, 2, 3, 4, 5].map(n => (
+                            <button key={n} onClick={() => setPlaybookRating(n)}
+                              style={{ width: 40, height: 40, border: `2px solid ${n <= playbookRating ? GOLD : BORDER}`, background: n <= playbookRating ? `${GOLD}12` : "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                              <Star style={{ width: 18, height: 18, color: n <= playbookRating ? GOLD : "#D1D5DB", fill: n <= playbookRating ? GOLD : "none" }} />
+                            </button>
+                          ))}
+                          {playbookRating > 0 && <span style={{ fontSize: 12, color: MUTED, alignSelf: "center" }}>{['', 'Needs major rework', 'Below expectations', 'Met expectations', 'Above expectations', 'Outstanding'][playbookRating]}</span>}
+                        </div>
+                      </div>
+
+                      <Button
+                        style={{ background: TEAL, color: "#fff", borderRadius: 0 }}
+                        onClick={() => {
+                          if (!outcome?.id) return;
+                          const note = `SUMMARY: ${humanNote}\n\nDECISIONS: ${selectedDecisions.join(', ')}${additionalDecision ? `. Additional: ${additionalDecision}` : ''}\n\nWOULD CHANGE: ${wouldChange}\n\nLESSONS: ${lessonsLearned}\n\nPLAYBOOK RATING: ${playbookRating}/5`;
+                          saveNoteMutation.mutate({ id: outcome.id, note });
+                        }}
+                        disabled={saveNoteMutation.isPending}
+                      >
+                        {saveNoteMutation.isPending ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving...</> : <><CheckCircle className="h-4 w-4 mr-2" />Save Additional Notes</>}
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
               )}
 
               {/* Step 5: Board Brief + AI Summary */}
@@ -507,9 +635,15 @@ export default function ActivationOutcome() {
                 </Button>
                 <div style={{ fontSize: 11, color: MUTED }}>Step {step + 1} of {WIZARD_STEPS.length}: {WIZARD_STEPS[step].label}</div>
                 {!isLastStep ? (
-                  <Button onClick={() => setStep(Math.min(WIZARD_STEPS.length - 1, step + 1))} style={{ background: NAVY, color: "#fff", borderRadius: 0 }}>
-                    Next Step <ArrowRight className="h-4 w-4 ml-2" />
-                  </Button>
+                  step === 4 && !(closeOutSaved || outcome?.closeOutCompleted) ? (
+                    <Button disabled style={{ background: "#D1D5DB", color: "#9CA3AF", borderRadius: 0, cursor: "not-allowed" }}>
+                      <AlertTriangle className="h-4 w-4 mr-2" /> Complete Gate First
+                    </Button>
+                  ) : (
+                    <Button onClick={() => setStep(Math.min(WIZARD_STEPS.length - 1, step + 1))} style={{ background: NAVY, color: "#fff", borderRadius: 0 }}>
+                      Next Step <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  )
                 ) : (
                   <Button onClick={() => setLocation('/institutional-memory')} style={{ background: GOLD, color: NAVY, borderRadius: 0, fontWeight: 700 }}>
                     Complete Debrief <CheckCircle className="h-4 w-4 ml-2" />
