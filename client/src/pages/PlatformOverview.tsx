@@ -279,7 +279,7 @@ export default function PlatformOverview() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/try-demo">
+              <Link href="/12-minute-experience">
                 <Button
                   size="lg"
                   className="border border-white/30 text-white hover:bg-white/10 bg-transparent px-8"

@@ -876,23 +876,6 @@ export default function TryDemo() {
           {currentPhase === 'select' && (
             <div className="space-y-12">
 
-              {/* Playbook Examples Callout */}
-              <div style={{ background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.35)', borderRadius: 0, padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <BookOpen style={{ width: 16, height: 16, color: GOLD, flexShrink: 0 }} />
-                  <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, margin: 0 }}>
-                    Prefer to read first?{' '}
-                    <span style={{ fontWeight: 400, color: MUTED }}>Explore 3 fully enriched playbooks — 4-phase plans, comms assets, and risk grids included. No login required.</span>
-                  </p>
-                </div>
-                <button
-                  onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
-                  style={{ fontSize: 12, fontWeight: 700, color: GOLD, background: 'transparent', border: '1px solid rgba(201,168,76,0.4)', borderRadius: 0, padding: '6px 14px', cursor: 'pointer', whiteSpace: 'nowrap', flexShrink: 0 }}
-                >
-                  View Playbook Examples →
-                </button>
-              </div>
-
               {/* Before / After — educational explainer */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, border: `1px solid ${BORDER}`, borderRadius: 0, overflow: 'hidden', marginBottom: 8 }}>
                 {/* LEFT — Current State (the pain) */}
@@ -989,7 +972,7 @@ export default function TryDemo() {
                               <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.4)', marginTop: 2 }}>{scenario.industry}</div>
                             </div>
                           </div>
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, border: `1px solid ${accentBorder}`, padding: '2px 7px', flexShrink: 0 }}>{scenario.demoType === 'offensive' ? 'OFFENSE' : 'DEFENSE'}</span>
+                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, border: `1px solid ${accentBorder}`, padding: '2px 7px', flexShrink: 0 }}>{scenario.demoType === 'offensive' ? 'GROWTH & POSITIONING' : 'RISK & RESILIENCE'}</span>
                         </div>
 
                         <div style={{ marginBottom: 14, flex: 1 }}>
@@ -1017,21 +1000,6 @@ export default function TryDemo() {
                 })}
               </div>
 
-              {/* Industry Proof Cases Banner */}
-              <div className="pt-10 border-t border-[#E8E4DC]">
-                <div style={{ background: "#0A0F2E", border: "1px solid rgba(201,168,76,0.2)", borderLeft: "3px solid #C9A84C", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" as const }}>
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 6 }}>Industry Proof Cases</div>
-                    <p style={{ fontSize: 14, fontWeight: 600, color: "#FFFFFF", margin: 0, lineHeight: 1.4 }}>LVMH · Toyota · LoanDepot · SpaceX · SHEIN — 8 real scenarios, real stakes.</p>
-                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", margin: "4px 0 0" }}>Offense and defense. Market entry to crisis response.</p>
-                  </div>
-                  <Link href="/industry-demos">
-                    <button style={{ fontSize: 12, fontWeight: 700, color: "#0A0F2E", background: "#C9A84C", border: "none", padding: "10px 20px", cursor: "pointer", whiteSpace: "nowrap" as const, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>
-                      Explore All Scenarios →
-                    </button>
-                  </Link>
-                </div>
-              </div>
             </div>
           )}
 
