@@ -43,14 +43,20 @@ export default function RoleIndustryCaptureModal() {
   const { user, isAuthenticated, isLoading } = useAuth();
   const queryClient = useQueryClient();
   const [role, setRole] = useState("");
+  const [customRole, setCustomRole] = useState("");
   const [industry, setIndustry] = useState("");
+  const [customIndustry, setCustomIndustry] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const effectiveRole = role === "Other" ? customRole.trim() : role;
+  const effectiveIndustry = industry === "Other" ? customIndustry.trim() : industry;
+  const canSubmit = effectiveRole && effectiveIndustry;
 
   const saveMutation = useMutation({
     mutationFn: () =>
       apiRequest("PATCH", "/api/user/profile", {
-        executiveRole: role,
-        industryVertical: industry,
+        executiveRole: effectiveRole,
+        industryVertical: effectiveIndustry,
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });
@@ -155,7 +161,7 @@ export default function RoleIndustryCaptureModal() {
             </label>
             <select
               value={role}
-              onChange={(e) => setRole(e.target.value)}
+              onChange={(e) => { setRole(e.target.value); setCustomRole(""); }}
               style={{
                 width: "100%",
                 border: `1.5px solid ${role ? TEAL : BORDER}`,
@@ -169,15 +175,33 @@ export default function RoleIndustryCaptureModal() {
                 transition: "border-color 0.2s",
               }}
             >
-              <option value="" disabled>
-                Select your executive role
-              </option>
+              <option value="" disabled>Select your executive role</option>
               {EXECUTIVE_ROLES.map((r) => (
-                <option key={r} value={r}>
-                  {r}
-                </option>
+                <option key={r} value={r}>{r}</option>
               ))}
+              <option value="Other">Other — write in my role</option>
             </select>
+            {role === "Other" && (
+              <input
+                autoFocus
+                type="text"
+                placeholder="e.g. Chief Transformation Officer, Managing Director..."
+                value={customRole}
+                onChange={(e) => setCustomRole(e.target.value)}
+                style={{
+                  width: "100%",
+                  marginTop: 8,
+                  border: `1.5px solid ${customRole.trim() ? TEAL : GOLD}`,
+                  borderRadius: 0,
+                  padding: "11px 14px",
+                  fontSize: 13,
+                  color: NAVY,
+                  background: "#FFFDF7",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            )}
           </div>
 
           {/* Industry */}
@@ -197,7 +221,7 @@ export default function RoleIndustryCaptureModal() {
             </label>
             <select
               value={industry}
-              onChange={(e) => setIndustry(e.target.value)}
+              onChange={(e) => { setIndustry(e.target.value); setCustomIndustry(""); }}
               style={{
                 width: "100%",
                 border: `1.5px solid ${industry ? TEAL : BORDER}`,
@@ -211,31 +235,48 @@ export default function RoleIndustryCaptureModal() {
                 transition: "border-color 0.2s",
               }}
             >
-              <option value="" disabled>
-                Select your industry
-              </option>
+              <option value="" disabled>Select your industry</option>
               {INDUSTRY_VERTICALS.map((v) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
+                <option key={v} value={v}>{v}</option>
               ))}
+              <option value="Other">Other — write in my sector</option>
             </select>
+            {industry === "Other" && (
+              <input
+                type="text"
+                placeholder="e.g. Aerospace & Defense, Private Equity, Higher Education..."
+                value={customIndustry}
+                onChange={(e) => setCustomIndustry(e.target.value)}
+                style={{
+                  width: "100%",
+                  marginTop: 8,
+                  border: `1.5px solid ${customIndustry.trim() ? TEAL : GOLD}`,
+                  borderRadius: 0,
+                  padding: "11px 14px",
+                  fontSize: 13,
+                  color: NAVY,
+                  background: "#FFFDF7",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            )}
           </div>
 
           <button
             onClick={() => saveMutation.mutate()}
-            disabled={!role || !industry || saveMutation.isPending}
+            disabled={!canSubmit || saveMutation.isPending}
             style={{
               width: "100%",
-              background: role && industry ? NAVY : "#D1D5DB",
-              color: role && industry ? "#fff" : "#9CA3AF",
+              background: canSubmit ? NAVY : "#D1D5DB",
+              color: canSubmit ? "#fff" : "#9CA3AF",
               border: "none",
               padding: "15px 24px",
               fontSize: 12,
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              cursor: role && industry ? "pointer" : "not-allowed",
+              cursor: canSubmit ? "pointer" : "not-allowed",
               transition: "background 0.2s",
               borderRadius: 0,
             }}
