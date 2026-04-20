@@ -896,10 +896,10 @@ export default function InvestorLanding() {
             <div className="grid md:grid-cols-2 gap-4 mb-10">
               {[
                 {
-                  quote: "That is governance as pre-commitment, not governance as review.",
+                  quote: "Martin is building the architecture that makes clarity possible before pressure arrives.",
                   name: "Dr. Kerry Huang",
                   title: "Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study",
-                  context: "Produced in a DM exchange — without product exposure. The most precise external description of Readiness OS at the architectural level.",
+                  context: "Published publicly on LinkedIn, April 2026 — naming Martin by name, to his full professional audience. Followed an earlier private exchange in which Dr. Huang independently described the platform as: 'That is governance as pre-commitment, not governance as review.'",
                   accent: '#C9A84C',
                 },
                 {
@@ -938,10 +938,13 @@ export default function InvestorLanding() {
             </div>
 
             <div className="text-center">
-              <div style={{ display: 'inline-block', background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', padding: '14px 28px' }}>
-                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.04em', margin: 0 }}>
-                  <span style={{ color: 'rgba(201,168,76,0.7)', fontWeight: 700 }}>Two convergent frameworks.</span>{' '}
-                  Dr. Huang's AwaCourage governance model and Readiness OS were developed independently. Both require the same upstream pre-commitment architecture. That is intellectual convergence, not coincidence.
+              <div style={{ display: 'inline-block', background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', padding: '20px 32px', maxWidth: 680, textAlign: 'left' }}>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)', marginBottom: 10 }}>Public Validation · LinkedIn · April 2026</p>
+                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontStyle: 'italic', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, marginBottom: 14 }}>
+                  "Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does."
+                </p>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.4)', margin: 0 }}>
+                  <span style={{ color: 'rgba(201,168,76,0.7)', fontWeight: 700 }}>Dr. Kerry Huang</span> · ESI Top 1% Researcher · Forbes Business Council · Posted publicly to his full LinkedIn audience
                 </p>
               </div>
             </div>
