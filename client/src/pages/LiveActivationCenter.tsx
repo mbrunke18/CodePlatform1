@@ -546,7 +546,7 @@ export default function LiveActivationCenter() {
   if (!activationId) {
     return (
       <PageLayout>
-        <div className="min-h-screen bg-[#F8F7F4] p-12">
+        <div className="p-12" style={{ background: '#F8F7F4', minHeight: '100vh' }}>
           <div className="max-w-4xl mx-auto space-y-12">
             <div className="text-center space-y-4">
               <div className="flex items-center justify-center gap-2 mb-6">
@@ -763,7 +763,7 @@ export default function LiveActivationCenter() {
   return (
     <PageLayout>
       <ExecutionStageGuide variant="banner" />
-      <div className="min-h-screen bg-[#0A0F2E] p-6 lg:p-10 font-sans selection:bg-[#C9A84C] selection:text-[#0A0F2E]">
+      <div className="p-6 lg:p-10 font-sans selection:bg-[#C9A84C] selection:text-[#0A0F2E]" style={{ background: '#0A0F2E', minHeight: '100vh' }}>
         <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           <div className="lg:col-span-8 space-y-8">
