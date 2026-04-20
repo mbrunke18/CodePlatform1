@@ -40,7 +40,7 @@ const mockQuarterlyData = {
   crossDomainActivations: 8,
   orchestrationHealthScore: 94,
   anticipationWindowDays: 42,
-  executionVelocityImprovement: 340,
+  executionVelocityImprovement: 3600,
 };
 
 const mockCapabilityMetrics = [
@@ -165,14 +165,14 @@ export default function StrategyExecutionDashboard() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-[#6B7280]">Execution Velocity</p>
-                      <p className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{mockQuarterlyData.executionVelocityImprovement}X</p>
+                      <p className="text-sm text-[#6B7280]">Execution Head Start</p>
+                      <p className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
                     </div>
                     <div className="p-3 bg-[#0A0F2E]/10 dark:bg-[#C9A84C]/10">
                       <Zap className="h-6 w-6 text-[#0A0F2E] dark:text-[#C9A84C]" />
                     </div>
                   </div>
-                  <p className="text-xs text-[#6B7280] mt-2">vs. industry average</p>
+                  <p className="text-xs text-[#6B7280] mt-2">30 days compressed to 12 minutes</p>
                 </CardContent>
               </Card>
             </div>

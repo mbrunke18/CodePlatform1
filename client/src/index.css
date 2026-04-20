@@ -553,8 +553,8 @@ html:not(.dark) .page-hero {
   color: #0A0F2E !important;
 }
 
-/* ── min-h-screen wrappers → white (nav/footer excluded above) ── */
-html:not(.dark) .min-h-screen:not(.bg-poise-navy) {
+/* ── min-h-screen wrappers → white (nav/footer + intentional dark pages excluded) ── */
+html:not(.dark) .min-h-screen:not(.bg-poise-navy):not([class*="0A0F"]):not([class*="132558"]):not([class*="bg-navy"]) {
   background-color: #ffffff !important;
   background-image: none !important;
 }
