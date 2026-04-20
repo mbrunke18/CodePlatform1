@@ -16,6 +16,7 @@ import {
   TrendingUp, ArrowRight, CheckCircle2, Circle, RefreshCw,
   Layers, Eye, ChevronRight, BarChart3, Radar, Sparkles,
 } from 'lucide-react';
+import PerspectiveSwitcher from '@/components/PerspectiveSwitcher';
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
 const NAVY    = '#0A0F2E';
@@ -463,6 +464,8 @@ export default function MissionControl() {
   }, []);
 
   const firstName = (user as any)?.firstName || (user as any)?.username?.split(' ')[0] || 'Executive';
+  const execRole = (user as any)?.executiveRole as string | undefined;
+  const industry = (user as any)?.industryVertical as string | undefined;
 
   if (!isReady) return null;
   return (
@@ -523,6 +526,7 @@ export default function MissionControl() {
                   {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                 </div>
               </div>
+              <PerspectiveSwitcher currentRole={execRole} currentIndustry={industry} />
               <button onClick={handleRefresh} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 0, padding: '7px 12px', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontSize: 11 }}>
                 <RefreshCw size={12} /> Refresh
               </button>
