@@ -102,6 +102,7 @@ export default function PageLayout({
   const [location] = useLocation();
   const { isAuthenticated } = useAuth();
 
+  // Scroll lock cleanup on location change
   useEffect(() => {
     try {
       [document.body, document.documentElement].forEach((el) => {
@@ -112,6 +113,14 @@ export default function PageLayout({
       });
     } catch (_) {}
   }, [location]);
+
+  // Scroll to top on mount — this fires after the page component has rendered,
+  // catching cases where the global ScrollToTop timer fires before lazy-load completes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   if (embedded) {
     return <div className={className}>{children}</div>;

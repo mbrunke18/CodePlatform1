@@ -1,6 +1,11 @@
 import { useEffect, useCallback, useRef } from "react";
 import { useLocation } from "wouter";
 
+// Disable browser native scroll restoration — must happen once at module load
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 function clearScrollLock() {
   try {
     [document.body, document.documentElement].forEach((el) => {
@@ -17,7 +22,11 @@ function clearScrollLock() {
 
 function resetAllScrollContainers() {
   clearScrollLock();
-  window.scrollTo(0, 0);
+  try {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  } catch (_) {
+    window.scrollTo(0, 0);
+  }
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
 
@@ -38,31 +47,36 @@ export function scrollToTop() {
     resetAllScrollContainers();
   });
 
-  const t1 = setTimeout(resetAllScrollContainers, 80);
-  const t2 = setTimeout(resetAllScrollContainers, 220);
-  const t3 = setTimeout(resetAllScrollContainers, 450);
+  // Staggered resets to catch both fast-cached and slower lazy-loaded pages
+  const timers = [
+    setTimeout(resetAllScrollContainers, 80),
+    setTimeout(resetAllScrollContainers, 220),
+    setTimeout(resetAllScrollContainers, 450),
+    setTimeout(resetAllScrollContainers, 700),
+    setTimeout(resetAllScrollContainers, 1100),
+  ];
 
-  return () => {
-    clearTimeout(t1);
-    clearTimeout(t2);
-    clearTimeout(t3);
-  };
+  return () => timers.forEach(clearTimeout);
 }
 
 export function ScrollToTop() {
   const [location] = useLocation();
   const prevLocation = useRef(location);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     if (prevLocation.current !== location) {
       prevLocation.current = location;
-      const cleanup = scrollToTop();
-      return cleanup;
+      if (cleanupRef.current) cleanupRef.current();
+      cleanupRef.current = scrollToTop();
     }
   }, [location]);
 
   useEffect(() => {
-    scrollToTop();
+    cleanupRef.current = scrollToTop();
+    return () => {
+      if (cleanupRef.current) cleanupRef.current();
+    };
   }, []);
 
   return null;
