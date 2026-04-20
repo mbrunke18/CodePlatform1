@@ -319,7 +319,7 @@ function HomepageNav() {
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
-                href="/request-access"
+                href="/manufacturing-demo"
                 onClick={() => trackCTA("nav_demo")}
                 style={{
                   ...DM, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 14,
@@ -327,7 +327,7 @@ function HomepageNav() {
                   border: `1.5px solid rgba(10,15,46,0.25)`,
                 }}
               >
-                Request Access
+                ▶ Try the Demo
               </Link>
               <Link
                 href="/request-access"
@@ -384,7 +384,7 @@ function HomepageNav() {
           )}
           <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>The Manifesto</Link>
           <Link
-            href="/request-access"
+            href="/manufacturing-demo"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
             style={{
               ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
@@ -393,7 +393,7 @@ function HomepageNav() {
               border: `1.5px solid rgba(201,168,76,0.5)`,
             }}
           >
-            Request Access →
+            ▶ Try the Demo →
           </Link>
           <Link
             href="/request-access"

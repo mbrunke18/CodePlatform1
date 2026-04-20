@@ -160,9 +160,15 @@ export default function ManufacturingSupplierDemo() {
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', maxWidth: 600, margin: '0 auto 8px' }}>{SCENARIO.subtitle}</p>
               <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', maxWidth: 600, margin: '0 auto' }}>{SCENARIO.company}</p>
             </div>
-            <div style={{ padding: '24px 28px', background: 'rgba(192,57,43,0.08)', border: '1px solid rgba(192,57,43,0.25)', borderLeft: '4px solid #C0392B', marginBottom: 32 }}>
-              <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 10 }}>● TRIGGER ACTIVE — CRITICAL</div>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75 }}>{SCENARIO.trigger}</p>
+            <div style={{ background: 'rgba(192,57,43,0.14)', border: '1px solid rgba(192,57,43,0.5)', borderLeft: '5px solid #C0392B', marginBottom: 32, overflow: 'hidden' }}>
+              <div style={{ background: 'rgba(192,57,43,0.2)', padding: '10px 24px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid rgba(192,57,43,0.3)' }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f87171', display: 'inline-block', animation: 'vm-pulse 1.5s ease-in-out infinite', flexShrink: 0 }} />
+                <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#fca5a5' }}>TRIGGER ACTIVE — CRITICAL PRIORITY</span>
+                <span style={{ marginLeft: 'auto', fontSize: 9, fontWeight: 700, color: 'rgba(252,165,165,0.6)', letterSpacing: '0.1em' }}>SYSTEM DETECTED · T+0:00</span>
+              </div>
+              <div style={{ padding: '18px 24px' }}>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.9)', lineHeight: 1.75, margin: 0 }}>{SCENARIO.trigger}</p>
+              </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 40 }}>
               {SCENARIO.stats.map(s => (
