@@ -483,7 +483,10 @@ function ExecutionChainDiagram() {
       <div style={{ padding: "18px 24px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", gap: 10, position: "relative" }}>
         <span style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, display: "inline-block", animation: "vm-pulse 2s ease-in-out infinite", flexShrink: 0 }} />
         <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL }}>Execution Brief · Live</span>
-        <div style={{ marginLeft: "auto", ...DM, fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.06em" }}>READINESS OS</div>
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: TEAL, letterSpacing: "0.12em", background: "rgba(43,138,110,0.15)", border: "1px solid rgba(43,138,110,0.3)", padding: "2px 7px" }}>LIVE SYSTEM</span>
+          <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.06em" }}>READINESS OS</span>
+        </div>
       </div>
 
       {/* Chain steps */}
@@ -513,16 +516,16 @@ function ExecutionChainDiagram() {
               )}
             </div>
             {/* Text */}
-            <div style={{ paddingBottom: i < steps.length - 1 ? 20 : 8, opacity: activeStep === i ? 1 : activeStep > i ? 0.6 : 0.3, transition: "opacity 0.5s ease" }}>
+            <div style={{ paddingBottom: i < steps.length - 1 ? 20 : 8, opacity: activeStep === i ? 1 : activeStep > i ? 0.75 : 0.55, transition: "opacity 0.5s ease" }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 4 }}>
-                <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: activeStep === i ? step.color : "rgba(255,255,255,0.55)", transition: "color 0.5s" }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: activeStep === i ? step.color : "rgba(255,255,255,0.65)", transition: "color 0.5s" }}>
                   {step.label}
                 </span>
-                <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: step.label === "FULL DEPLOYMENT" ? GOLD : "rgba(255,255,255,0.25)", letterSpacing: "0.06em" }}>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: step.label === "FULL DEPLOYMENT" ? GOLD : "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>
                   {step.time}
                 </span>
               </div>
-              <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.4)", margin: 0, lineHeight: 1.45 }}>{step.desc}</p>
+              <p style={{ ...DM, fontSize: 12, color: "rgba(255,255,255,0.6)", margin: 0, lineHeight: 1.45 }}>{step.desc}</p>
             </div>
           </div>
         ))}

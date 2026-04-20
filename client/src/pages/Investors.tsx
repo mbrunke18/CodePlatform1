@@ -364,7 +364,10 @@ export default function Investors() {
               <span className="text-[#C9A84C]"> Fortune 1000</span>
             </h1>
             <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">
-              Readiness OS transforms how enterprises respond to strategic events — in 12 minutes you're in full execution mode while competitors spend 30 days just figuring out who needs to be in the room, what work is needed, and what plan to put together.
+              Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays that exist because humans couldn't process information fast enough to act decisively. Every vendor bolted AI onto that old model. We rebuilt from first principles. The category didn't exist. We built it.
+            </p>
+            <p className="text-base text-[#0A0F2E]/55 max-w-2xl mx-auto mb-8">
+              When a strategic trigger fires, competitors spend 30 days just mobilizing. Readiness OS compresses that to 12 minutes — because the response was staged before the trigger fired.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/try-demo">

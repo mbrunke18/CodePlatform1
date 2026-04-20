@@ -611,7 +611,7 @@ export default function CommandTower() {
         }}>
           {[
             { label: 'TRIGGERS ARMED', value: triggersArmed.toLocaleString(), sub: '221 signals', icon: Target, color: GOLD, bg: 'rgba(201,168,76,0.08)', border: 'rgba(201,168,76,0.2)' },
-            { label: 'ACTIVE DETECTIONS', value: detections.length.toString(), sub: detections.length > 0 ? 'Review required' : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
+            { label: 'ACTIVE DETECTIONS', value: detections.length.toString(), sub: detections.length > 0 ? 'Live ingested · past 30 days' : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
             { label: 'PLAYBOOKS READY', value: '170', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
             { label: 'NEXT SCAN', value: nextScanLabel, sub: `Engine: ${modeLabel}`, icon: Clock, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
           ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
