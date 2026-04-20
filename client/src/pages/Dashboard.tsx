@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query';
+import { useAuth } from "@/hooks/useAuth";
 import { ThreePositionStrip } from "@/components/ValueGainCallout";
 import { useWebSocket } from "@/hooks/useWebSocket";
 import { updatePageMetadata } from "@/lib/seo";
@@ -148,6 +149,11 @@ const ORIENTATION_STEPS = [
 export default function Dashboard() {
   const { isConnected } = useWebSocket();
   const { activeScenarios, weakSignals } = useDynamicStrategy();
+  const { user } = useAuth();
+  const execRole = (user as any)?.executiveRole as string | undefined;
+  const industry = (user as any)?.industryVertical as string | undefined;
+  const userName = (user as any)?.firstName as string | undefined;
+
   const [orientationDismissed, setOrientationDismissed] = useState<boolean>(() => {
     try { return localStorage.getItem('vm_orientation_dismissed') === 'true'; } catch { return false; }
   });
@@ -229,40 +235,72 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Orientation Panel — shown until dismissed */}
+        {/* ── First Activation Banner — shown until dismissed ─────────────── */}
         {!orientationDismissed && (
-          <div style={{ background: "#fff", borderBottom: "1px solid #E8E4DC" }}>
-            <div className="max-w-7xl mx-auto px-6 py-6">
-              <div className="flex items-start justify-between gap-4 mb-5">
+          <div style={{ background: NAVY, borderBottom: "3px solid rgba(201,168,76,0.4)", position: "relative", overflow: "hidden" }}>
+            {/* Subtle grid */}
+            <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "40px 40px", pointerEvents: "none" }} />
+            <div className="max-w-7xl mx-auto px-6 py-8 relative z-10">
+              <div className="flex items-start justify-between gap-4 mb-6">
                 <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-5 h-0.5" style={{ background: GOLD }} />
-                    <span className="text-[10px] font-bold tracking-[0.18em] uppercase" style={{ color: GOLD }}>Getting Started</span>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, display: "inline-block" }} />
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, fontFamily: "'Barlow Condensed', sans-serif" }}>
+                      READINESS OS · YOUR FIRST ACTIVATION
+                    </span>
                   </div>
-                  <h3 style={{ ...CG, fontSize: "20px", fontWeight: 600, color: NAVY }}>Four steps to full operational readiness</h3>
+                  <h3 style={{ ...CG, fontSize: "clamp(20px,2.2vw,28px)", fontWeight: 700, color: "#fff", marginBottom: 4 }}>
+                    {userName ? `${userName}, your` : "Your"} platform is armed and ready.
+                    {industry ? <span style={{ color: GOLD }}> Run your first {industry.split("&")[0].trim()} scenario.</span>
+                    : <span style={{ color: GOLD }}> Run your first activation now.</span>}
+                  </h3>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", maxWidth: 560, lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif" }}>
+                    {execRole ? `As ${execRole.split("—")[0].trim()}, you authorize — the system pre-stages.` : "The response is pre-staged. You authorize."}
+                    {" "}Walk through a live critical supplier failure — see 12-minute execution from trigger to full deployment.
+                  </p>
                 </div>
-                <button onClick={dismissOrientation} className="shrink-0 mt-1 text-[#9CA3AF] hover:text-[#0A0F2E] transition-colors">
+                <button onClick={dismissOrientation} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.3)", padding: 4, flexShrink: 0, marginTop: 2 }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.3)"; }}>
                   <X className="h-4 w-4" />
                 </button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {ORIENTATION_STEPS.map((step, i) => {
-                  const Icon = step.icon;
-                  return (
-                    <Link key={i} href={step.href}>
-                      <div className="group flex items-start gap-3 p-4 border border-[#E8E4DC] hover:border-[#0A0F2E] bg-[#F8F7F4] hover:bg-white transition-all cursor-pointer">
-                        <div style={{ width: 32, height: 32, background: step.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <Icon className="h-4 w-4 text-white" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-bold text-[#0A0F2E] mb-0.5 group-hover:text-[#2B8A6E] transition-colors leading-snug">{step.label}</p>
-                          <p className="text-[10px] text-[#6B7280] leading-snug">{step.sub}</p>
-                        </div>
-                        <ArrowRight className="h-3.5 w-3.5 text-[#E8E4DC] group-hover:text-[#0A0F2E] transition-colors mt-0.5 shrink-0" />
+
+              {/* Primary CTA + secondary steps */}
+              <div className="flex flex-col lg:flex-row gap-4 items-start">
+                {/* Primary — full activation */}
+                <Link href="/manufacturing-demo">
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 12, background: GOLD, color: NAVY, padding: "14px 28px", cursor: "pointer", textDecoration: "none", flexShrink: 0 }}>
+                    <Zap style={{ width: 16, height: 16 }} />
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase" as const, fontFamily: "'Barlow Condensed', sans-serif" }}>
+                        Run Your First Activation
+                      </div>
+                      <div style={{ fontSize: 10, fontWeight: 500, opacity: 0.7, fontFamily: "'DM Sans', sans-serif" }}>
+                        Critical Supplier Failure · 12-minute execution
+                      </div>
+                    </div>
+                    <ArrowRight style={{ width: 14, height: 14, marginLeft: 4 }} />
+                  </div>
+                </Link>
+
+                {/* Secondary steps */}
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { icon: Target, label: "Explore 170 Playbooks", href: "/playbook-library" },
+                    { icon: Radio, label: "Live Signal Tower", href: "/command-tower" },
+                    { icon: Brain, label: "Practice Drills", href: "/practice-drills" },
+                  ].map(({ icon: Icon, label, href }) => (
+                    <Link key={href} href={href}>
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)", padding: "10px 16px", cursor: "pointer", fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', sans-serif" }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLElement).style.color = "#fff"; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"; }}>
+                        <Icon style={{ width: 13, height: 13 }} />
+                        {label}
                       </div>
                     </Link>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
