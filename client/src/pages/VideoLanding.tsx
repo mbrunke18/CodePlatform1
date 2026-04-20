@@ -111,7 +111,7 @@ export default function VideoLanding() {
                 <div className="space-y-4">
                   <div className="h-1 w-12 bg-[#C9A84C]" />
                   <h3 className="text-lg font-bold text-[#0A0F2E]" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="heading-spot-1">
-                    Version 1: "Offense, Defense, Special Teams"
+                    Version 1: "Growth & Positioning, Risk & Resilience, Transformation"
                   </h3>
                   <div className="rounded-none overflow-hidden border border-[#E8E4DC]">
                     <ThirtySecondSpot version="offense-defense" />

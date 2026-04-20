@@ -895,7 +895,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                               <div>
                                 <CardTitle className="text-base">{domain.domainName}</CardTitle>
                                 <CardDescription className="text-xs mt-0.5">
-                                  {isDefense ? "Defense" : isOffense ? "Offense" : "Special Teams"}
+                                  {isDefense ? "Risk & Resilience" : isOffense ? "Growth & Positioning" : "Transformation"}
                                 </CardDescription>
                               </div>
                             </div>

@@ -58,7 +58,7 @@ interface QuestionDef {
 
 const DOMAIN_CONFIG = {
   offense: {
-    label: "OFFENSE",
+    label: "GROWTH & POSITIONING",
     icon: Rocket,
     color: "teal",
     playbooks: "58 Playbooks",
@@ -74,7 +74,7 @@ const DOMAIN_CONFIG = {
     ring: "stroke-[#2B8A6E]",
   },
   defense: {
-    label: "DEFENSE",
+    label: "RISK & RESILIENCE",
     icon: Shield,
     color: "navy",
     playbooks: "74 Playbooks",
@@ -90,7 +90,7 @@ const DOMAIN_CONFIG = {
     ring: "stroke-[#0A0F2E]",
   },
   special_teams: {
-    label: "SPECIAL TEAMS",
+    label: "TRANSFORMATION",
     icon: Settings,
     color: "gold",
     playbooks: "54 Playbooks",

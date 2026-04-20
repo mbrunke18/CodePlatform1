@@ -390,7 +390,7 @@ function InvestorPresentation() {
           <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-4">
               <Swords className="w-6 h-6 text-[#2B8A6E]" />
-              <h3 className="text-xl font-bold text-[#2B8A6E]">OFFENSE</h3>
+              <h3 className="text-xl font-bold text-[#2B8A6E]">GROWTH & POSITIONING</h3>
               <span className="ml-auto text-2xl font-bold text-[#2B8A6E]">58</span>
             </div>
             <ul className="space-y-2 text-[#0A0F2E] text-sm">
@@ -402,7 +402,7 @@ function InvestorPresentation() {
           <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-4">
               <Shield className="w-6 h-6 text-[#0A0F2E]" />
-              <h3 className="text-xl font-bold text-[#0A0F2E]">DEFENSE</h3>
+              <h3 className="text-xl font-bold text-[#0A0F2E]">RISK & RESILIENCE</h3>
               <span className="ml-auto text-2xl font-bold text-[#0A0F2E]">58</span>
             </div>
             <ul className="space-y-2 text-[#0A0F2E] text-sm">
@@ -414,7 +414,7 @@ function InvestorPresentation() {
           <div className="bg-white border border-[#E8E4DC] p-8">
             <div className="flex items-center gap-3 mb-4">
               <Activity className="w-6 h-6 text-[#C9A84C]" />
-              <h3 className="text-xl font-bold text-[#C9A84C]">SPECIAL TEAMS</h3>
+              <h3 className="text-xl font-bold text-[#C9A84C]">TRANSFORMATION</h3>
               <span className="ml-auto text-2xl font-bold text-[#C9A84C]">54</span>
             </div>
             <ul className="space-y-2 text-[#0A0F2E] text-sm">
@@ -566,7 +566,7 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { tier: 'Starter', price: '$250K', desc: 'Single domain (Defense)', features: ['25 playbooks', '100 signals monitored', 'Standard integrations', 'Email support'] },
+            { tier: 'Starter', price: '$250K', desc: 'Single domain — Risk & Resilience', features: ['25 playbooks', '100 signals monitored', 'Standard integrations', 'Email support'] },
             { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 playbooks', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
             { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ playbooks', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
           ].map((t, i) => (
@@ -737,12 +737,12 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">Go-to-Market</p>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-12 text-center">
-          Land with Defense, expand across domains.
+          Land with Risk & Resilience, expand across domains.
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { phase: 'Year 1', title: 'Account-Based Land', target: '50 F500 targets', desc: 'Land with Defense playbooks (crisis/cyber). Prove 3,600× Execution Head Start. Build case studies.', color: 'border-[#0A0F2E]/30' },
-            { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Offense domain. Channel partnerships. Industry-specific playbook packs.', color: 'border-[#2B8A6E]/30' },
+            { phase: 'Year 1', title: 'Account-Based Land', target: '50 F500 targets', desc: 'Land with Risk & Resilience playbooks (crisis/cyber). Prove 3,600× Execution Head Start. Build case studies.', color: 'border-[#0A0F2E]/30' },
+            { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Growth & Positioning domain. Channel partnerships. Industry-specific playbook packs.', color: 'border-[#2B8A6E]/30' },
             { phase: 'Year 3+', title: 'Market Leadership', target: '500+ accounts', desc: 'Full platform adoption. International expansion. Industry standard for strategic execution.', color: 'border-[#C9A84C]/30' },
           ].map((p, i) => (
             <div key={i} className={`bg-white border ${p.color} p-6`}>

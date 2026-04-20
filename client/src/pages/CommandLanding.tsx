@@ -592,9 +592,9 @@ export default function CommandLanding() {
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, margin: '16px 0' }}>
                       {[
-                        { label: 'Offense', count: 58, type: 'offense' },
-                        { label: 'Defense', count: 58, type: 'defense' },
-                        { label: 'Sp. Teams', count: 54, type: 'special' },
+                        { label: 'Growth & Positioning', count: 58, type: 'offense' },
+                        { label: 'Risk & Resilience', count: 58, type: 'defense' },
+                        { label: 'Transformation', count: 54, type: 'special' },
                       ].map(({ label, count, type }) => (
                         <div key={label} style={{
                           padding: '12px 10px', borderRadius: 0, textAlign: 'center',

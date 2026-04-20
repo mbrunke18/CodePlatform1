@@ -210,7 +210,7 @@ export default function ExecutionCoordination() {
             }`}
             data-testid="triad-offense"
           >
-            <p className="text-[9px] uppercase tracking-[0.3em] text-[#2B8A6E] font-bold mb-2">OFFENSE</p>
+            <p className="text-[9px] uppercase tracking-[0.3em] text-[#2B8A6E] font-bold mb-2">GROWTH & POSITIONING</p>
             <p style={CG} className={`text-xl ${activeCategory === 'offense' ? 'text-[#0A0F2E] font-bold' : 'text-[#6B7280]'}`}>
               {activeCategory === 'offense' ? 'M&A Target Acquisition' : 'Seize Opportunities'}
             </p>
@@ -224,7 +224,7 @@ export default function ExecutionCoordination() {
             }`}
             data-testid="triad-defense"
           >
-            <p className="text-[9px] uppercase tracking-[0.3em] text-[#0A0F2E] font-bold mb-2">DEFENSE</p>
+            <p className="text-[9px] uppercase tracking-[0.3em] text-[#0A0F2E] font-bold mb-2">RISK & RESILIENCE</p>
             <p style={CG} className={`text-xl ${activeCategory === 'defense' ? 'text-[#0A0F2E] font-bold' : 'text-[#6B7280]'}`}>
               {activeCategory === 'defense' ? 'Data Breach Response' : 'Protect Value'}
             </p>
@@ -238,7 +238,7 @@ export default function ExecutionCoordination() {
             }`}
             data-testid="triad-special"
           >
-            <p className="text-[9px] uppercase tracking-[0.3em] text-[#C9A84C] font-bold mb-2">SPECIAL TEAMS</p>
+            <p className="text-[9px] uppercase tracking-[0.3em] text-[#C9A84C] font-bold mb-2">TRANSFORMATION</p>
             <p style={CG} className={`text-xl ${activeCategory === 'special_teams' ? 'text-[#0A0F2E] font-bold' : 'text-[#6B7280]'}`}>
               {activeCategory === 'special_teams' ? 'AI Model Governance' : 'Drive Innovation'}
             </p>

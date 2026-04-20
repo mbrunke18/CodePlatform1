@@ -349,7 +349,7 @@ export default function IndustryDemosHub() {
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <Target style={{ width: 18, height: 18, color: "#2B8A6E" }} />
-                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#2B8A6E" }}>OFFENSE</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#2B8A6E" }}>GROWTH & POSITIONING</span>
                     </div>
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: "#2B8A6E", border: "1px solid rgba(43,138,110,0.35)", padding: "2px 8px" }}>3 SCENARIOS</span>
                   </div>
@@ -369,7 +369,7 @@ export default function IndustryDemosHub() {
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <Shield style={{ width: 18, height: 18, color: "#C9A84C" }} />
-                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C9A84C" }}>DEFENSE</span>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#C9A84C" }}>RISK & RESILIENCE</span>
                     </div>
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", color: "#C9A84C", border: "1px solid rgba(201,168,76,0.35)", padding: "2px 8px" }}>5 SCENARIOS</span>
                   </div>
@@ -588,7 +588,7 @@ export default function IndustryDemosHub() {
             <div className="flex items-center gap-3 mb-6">
               <Target className="w-5 h-5 text-[#0A0F2E]" />
               <h2 className="text-xl font-bold text-[#0A0F2E] uppercase tracking-widest">Strategic Opportunities</h2>
-              <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">OFFENSE</Badge>
+              <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">GROWTH & POSITIONING</Badge>
             </div>
             <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
               When opportunities emerge — market shifts, competitive windows, strategic launches — by the time competitors are scheduling their first planning call, Readiness OS has already assigned roles, staged tasks, drafted communications, and put your organization into live execution. In 12 minutes.
@@ -602,7 +602,7 @@ export default function IndustryDemosHub() {
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-5 h-5 text-[#0A0F2E]" />
               <h2 className="text-xl font-bold text-[#0A0F2E] uppercase tracking-widest">Crisis Response</h2>
-              <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">DEFENSE</Badge>
+              <Badge className="bg-[#0A0F2E]/10 text-[#C9A84C] border border-[#0A0F2E]/20 text-[10px] font-bold uppercase tracking-widest rounded-none">RISK & RESILIENCE</Badge>
             </div>
             <p className="text-sm text-[#6B7280] mb-6 max-w-4xl font-light">
               When crises hit — ransomware, recalls, supplier failures — the traditional enterprise spends weeks just getting the right people in the room, aligned on a plan, and ready to act. Readiness OS puts your organization into live execution in 12 minutes: roles assigned, tasks staged, containment already underway.

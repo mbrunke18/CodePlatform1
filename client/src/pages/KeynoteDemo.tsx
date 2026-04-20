@@ -781,7 +781,7 @@ export default function KeynoteDemo() {
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full relative z-10">
           {[
-            { phase: 'IDENTIFY', subtitle: 'Playbook™', icon: BookOpen, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['170 strategic playbooks', '9 domains: Offense, Defense, Special Teams', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
+            { phase: 'IDENTIFY', subtitle: 'Playbook™', icon: BookOpen, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['170 strategic playbooks', '3 domains: Growth & Positioning, Risk & Resilience, Transformation', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
             { phase: 'DETECT', subtitle: 'Signal™', icon: Radio, color: 'bg-[#0A0F2E]', border: 'border-[#0A0F2E]/20', items: ['Continuous signal monitoring', '248+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
             { phase: 'EXECUTE', subtitle: 'Compass™', icon: Zap, color: 'bg-[#C9A84C]', border: 'border-[#C9A84C]/20', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
             { phase: 'ADVANCE', subtitle: 'Retrospect™', icon: TrendingUp, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['Institutional learning', 'Pattern-based outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },

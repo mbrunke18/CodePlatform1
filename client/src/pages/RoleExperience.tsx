@@ -31,7 +31,7 @@ interface RoleData {
   gradient: string;
   scenario: string;
   domain: string;
-  domainCategory: 'OFFENSE' | 'DEFENSE' | 'SPECIAL TEAMS';
+  domainCategory: 'GROWTH & POSITIONING' | 'RISK & RESILIENCE' | 'TRANSFORMATION';
   playbook: { number: string; name: string; tasks: number; stakeholders: number; budget: string };
   triggers: { name: string; source: string; type: string }[];
   dataSources: { name: string; status: string; dataPoints: number }[];
@@ -49,7 +49,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'ceo', title: 'Chief Executive Officer', name: 'Jennifer Park', company: 'Meridian Financial Group',
     icon: Briefcase, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'M&A Integration — $2.3B Acquisition of CloudTech Solutions',
-    domain: 'Mergers & Acquisitions', domainCategory: 'OFFENSE',
+    domain: 'Mergers & Acquisitions', domainCategory: 'GROWTH & POSITIONING',
     playbook: { number: '12', name: 'M&A Day 1 Integration', tasks: 34, stakeholders: 45, budget: '$1.2M' },
     triggers: [
       { name: 'Deal Close Confirmation', source: 'Legal / Board Resolution', type: 'Manual Executive Trigger' },
@@ -105,7 +105,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
     icon: Shield, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Ransomware Attack — Production Systems Compromised at 2:17 AM',
-    domain: 'Cybersecurity Incident', domainCategory: 'DEFENSE',
+    domain: 'Cybersecurity Incident', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '31', name: 'Critical Incident Response — Ransomware', tasks: 28, stakeholders: 30, budget: '$350K' },
     triggers: [
       { name: 'Anomalous Encryption Activity', source: 'AWS CloudWatch + CrowdStrike', type: 'Automated Security' },
@@ -161,7 +161,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
     icon: TrendingUp, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Competitive Response — Major Competitor Launches Rival Product',
-    domain: 'Competitive Response', domainCategory: 'OFFENSE',
+    domain: 'Competitive Response', domainCategory: 'GROWTH & POSITIONING',
     playbook: { number: '47', name: 'Competitive Response — Product Counter-Strategy', tasks: 24, stakeholders: 28, budget: '$250K' },
     triggers: [
       { name: 'Competitor Press Release Detected', source: 'PR Newswire + Google Alerts', type: 'Automated Competitive' },
@@ -217,7 +217,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cfo', title: 'Chief Financial Officer', name: 'Sarah Chen', company: 'Meridian Financial Group',
     icon: DollarSign, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#0A0F2E]',
     scenario: 'Regulatory Change — New SEC Climate Disclosure Requirements',
-    domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
+    domain: 'Regulatory Compliance', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '58', name: 'Regulatory Compliance — Financial Reporting', tasks: 32, stakeholders: 22, budget: '$180K' },
     triggers: [
       { name: 'SEC Rule Change Published', source: 'Federal Register API', type: 'Automated Regulatory' },
@@ -273,7 +273,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'coo', title: 'Chief Operating Officer', name: 'David Wilson', company: 'Meridian Financial Group',
     icon: Settings, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#C9A84C]',
     scenario: 'Supply Chain Disruption — Critical Vendor Data Center Outage',
-    domain: 'Crisis Management', domainCategory: 'DEFENSE',
+    domain: 'Crisis Management', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '39', name: 'Vendor Crisis — Critical Infrastructure Failure', tasks: 26, stakeholders: 24, budget: '$200K' },
     triggers: [
       { name: 'Vendor SLA Breach Alert', source: 'ServiceNow + Datadog', type: 'Automated Infrastructure' },
@@ -329,7 +329,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cto', title: 'Chief Technology Officer', name: 'Michael Rodriguez', company: 'Meridian Financial Group',
     icon: Server, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#2B8A6E]',
     scenario: 'Digital Transformation — Enterprise AI Platform Rollout',
-    domain: 'Digital Transformation', domainCategory: 'SPECIAL TEAMS',
+    domain: 'Digital Transformation', domainCategory: 'TRANSFORMATION',
     playbook: { number: '72', name: 'AI Governance & Platform Launch', tasks: 38, stakeholders: 35, budget: '$2.8M' },
     triggers: [
       { name: 'Board AI Strategy Approval', source: 'Board Resolution', type: 'Manual Executive Trigger' },
@@ -385,7 +385,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'chro', title: 'Chief Human Resources Officer', name: 'Michelle Harris', company: 'Meridian Financial Group',
     icon: Users, color: 'text-pink-400', gradient: 'from-pink-600 to-rose-700',
     scenario: 'Workforce Transformation — Post-Merger Cultural Integration',
-    domain: 'Organizational Change', domainCategory: 'OFFENSE',
+    domain: 'Organizational Change', domainCategory: 'GROWTH & POSITIONING',
     playbook: { number: '85', name: 'Post-M&A Cultural Integration', tasks: 30, stakeholders: 32, budget: '$450K' },
     triggers: [
       { name: 'Change Management Survey Alert', source: 'Workday + Culture Amp', type: 'Automated HR' },
@@ -441,7 +441,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cdo', title: 'Chief Data Officer', name: 'Nicole Hall', company: 'Meridian Financial Group',
     icon: Database, color: 'text-[#0A0F2E]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Data Strategy — Enterprise Customer 360 Platform Launch',
-    domain: 'Digital Transformation', domainCategory: 'SPECIAL TEAMS',
+    domain: 'Digital Transformation', domainCategory: 'TRANSFORMATION',
     playbook: { number: '78', name: 'Enterprise Data Platform Rollout', tasks: 36, stakeholders: 28, budget: '$1.8M' },
     triggers: [
       { name: 'Data Quality Threshold Breach', source: 'Collibra + Great Expectations', type: 'Automated Data Quality' },
@@ -497,7 +497,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'gc', title: 'General Counsel', name: 'Emily Taylor', company: 'Meridian Financial Group',
     icon: Scale, color: 'text-gray-800', gradient: 'from-slate-600 ',
     scenario: 'Regulatory Change — New AI Regulation Compliance Across 4 Jurisdictions',
-    domain: 'Regulatory Compliance', domainCategory: 'SPECIAL TEAMS',
+    domain: 'Regulatory Compliance', domainCategory: 'TRANSFORMATION',
     playbook: { number: '94', name: 'Multi-Jurisdiction AI Compliance', tasks: 34, stakeholders: 26, budget: '$320K' },
     triggers: [
       { name: 'Regulatory Publication Alert', source: 'LexisNexis + Federal Register', type: 'Automated Regulatory' },
@@ -553,7 +553,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cco', title: 'Chief Compliance Officer', name: 'Jessica Thompson', company: 'Meridian Financial Group',
     icon: FileCheck, color: 'text-[#2B8A6E]', gradient: 'from-[#2B8A6E] to-[#3BAF8A]',
     scenario: 'Compliance Emergency — Surprise Regulatory Audit with 48-Hour Notice',
-    domain: 'Regulatory Compliance', domainCategory: 'DEFENSE',
+    domain: 'Regulatory Compliance', domainCategory: 'RISK & RESILIENCE',
     playbook: { number: '62', name: 'Emergency Regulatory Audit Response', tasks: 30, stakeholders: 20, budget: '$150K' },
     triggers: [
       { name: 'Regulatory Notice Received', source: 'Email + Legal Inbox', type: 'Manual Compliance Trigger' },
@@ -609,7 +609,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cso', title: 'Chief Strategy Officer', name: 'Patricia Wright', company: 'Meridian Financial Group',
     icon: Target, color: 'text-[#C9A84C]', gradient: 'from-[#0A0F2E] to-[#141B45]',
     scenario: 'Strategic Pivot — Market Entry into Asia-Pacific Financial Services',
-    domain: 'Market Entry', domainCategory: 'OFFENSE',
+    domain: 'Market Entry', domainCategory: 'GROWTH & POSITIONING',
     playbook: { number: '15', name: 'New Market Entry — APAC Financial Services', tasks: 40, stakeholders: 38, budget: '$3.2M' },
     triggers: [
       { name: 'Market Opportunity Score Threshold', source: 'McKinsey Market Data + Internal Analytics', type: 'Automated Strategic' },
@@ -667,7 +667,7 @@ const ROLES: Record<string, RoleData> = {
     id: 'cro', title: 'Chief Revenue Officer', name: 'Ryan Davis', company: 'Meridian Financial Group',
     icon: TrendingUp, color: 'text-[#2B8A6E]', gradient: 'from-[#2B8A6E] to-[#3BAF8A]',
     scenario: 'Revenue Protection — Major Enterprise Customer Churn Prevention',
-    domain: 'Competitive Response', domainCategory: 'OFFENSE',
+    domain: 'Competitive Response', domainCategory: 'GROWTH & POSITIONING',
     playbook: { number: '52', name: 'Enterprise Customer Retention — Critical Account', tasks: 28, stakeholders: 22, budget: '$200K' },
     triggers: [
       { name: 'Customer Health Score Drop', source: 'Gainsight + Salesforce', type: 'Automated Customer Success' },
@@ -966,7 +966,7 @@ export default function RoleExperience() {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-0.5">
                   <span className="text-[10px] font-800 text-[#6B7280] uppercase tracking-widest font-bold">{role.title}</span>
-                  <Badge className={`text-[9px] font-bold ${role.domainCategory === 'OFFENSE' ? 'bg-[#2B8A6E]/15 text-[#2B8A6E]' : role.domainCategory === 'DEFENSE' ? 'bg-red-500/15 text-red-500' : 'bg-[#C9A84C]/15 text-[#C9A84C]'}`}>
+                  <Badge className={`text-[9px] font-bold ${role.domainCategory === 'GROWTH & POSITIONING' ? 'bg-[#2B8A6E]/15 text-[#2B8A6E]' : role.domainCategory === 'RISK & RESILIENCE' ? 'bg-red-500/15 text-red-500' : 'bg-[#C9A84C]/15 text-[#C9A84C]'}`}>
                     {role.domainCategory} · {role.domain}
                   </Badge>
                 </div>

@@ -61,9 +61,9 @@ import type { Playbook } from "@shared/schema";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const CATEGORY_CONFIG = {
-  offense: { label: "Offense", icon: Target, color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/12" },
-  defense: { label: "Defense", icon: Shield, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/12" },
-  special_teams: { label: "Special Teams", icon: Zap, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/12" },
+  offense: { label: "Growth & Positioning", icon: Target, color: "text-[#2B8A6E]", bg: "bg-[#2B8A6E]/12" },
+  defense: { label: "Risk & Resilience", icon: Shield, color: "text-[#0A0F2E]", bg: "bg-[#0A0F2E]/12" },
+  special_teams: { label: "Transformation", icon: Zap, color: "text-[#C9A84C]", bg: "bg-[#C9A84C]/12" },
 };
 
 const STATUS_CONFIG = {
@@ -264,9 +264,9 @@ export default function PlaybookManagement() {
                   data-testid="select-category-filter"
                 >
                   <option value="all">All Categories</option>
-                  <option value="offense">Offense</option>
-                  <option value="defense">Defense</option>
-                  <option value="special_teams">Special Teams</option>
+                  <option value="offense">Growth & Positioning</option>
+                  <option value="defense">Risk & Resilience</option>
+                  <option value="special_teams">Transformation</option>
                 </select>
               </div>
             </div>

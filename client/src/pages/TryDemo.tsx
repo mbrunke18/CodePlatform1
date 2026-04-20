@@ -1928,7 +1928,7 @@ export default function TryDemo() {
                         ? 'text-[#2B8A6E] border-[#2B8A6E] bg-[#2B8A6E]/10' 
                         : 'text-[#0A0F2E] border-[#0A0F2E] bg-[#0A0F2E]/10'
                     }`}>
-                      {demo.type === 'offensive' ? 'Offense' : 'Defense'}
+                      {demo.type === 'offensive' ? 'Growth & Positioning' : 'Risk & Resilience'}
                     </Badge>
                   </div>
                   <p className="text-sm font-bold text-[#0A0F2E] mb-1" style={CG}>{demo.title}</p>

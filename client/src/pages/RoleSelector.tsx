@@ -175,9 +175,9 @@ const roleConfigs: RoleConfig[] = [
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const CATEGORY_CONFIG = {
-  OFFENSE: { accent: TEAL, bg: 'rgba(43,138,110,0.08)', border: 'rgba(43,138,110,0.22)', label: 'Offense', dot: '#2B8A6E' },
-  DEFENSE: { accent: '#DC2626', bg: 'rgba(220,38,38,0.06)', border: 'rgba(220,38,38,0.2)', label: 'Defense', dot: '#f87171' },
-  'SPECIAL TEAMS': { accent: GOLD, bg: 'rgba(201,168,76,0.07)', border: 'rgba(201,168,76,0.22)', label: 'Special Teams', dot: GOLD },
+  OFFENSE: { accent: TEAL, bg: 'rgba(43,138,110,0.08)', border: 'rgba(43,138,110,0.22)', label: 'Growth & Positioning', dot: '#2B8A6E' },
+  DEFENSE: { accent: '#DC2626', bg: 'rgba(220,38,38,0.06)', border: 'rgba(220,38,38,0.2)', label: 'Risk & Resilience', dot: '#f87171' },
+  'SPECIAL TEAMS': { accent: GOLD, bg: 'rgba(201,168,76,0.07)', border: 'rgba(201,168,76,0.22)', label: 'Transformation', dot: GOLD },
 };
 
 export default function RoleSelector({ embedded }: { embedded?: boolean }) {
@@ -391,9 +391,9 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
 
         {/* Role grid */}
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '52px 24px' }}>
-          {renderCategory('Offense', 'Growth, M&A, market expansion, revenue defense', offenseRoles, CATEGORY_CONFIG.OFFENSE)}
-          {renderCategory('Defense', 'Cyber, breach, crisis containment, legal exposure', defenseRoles, CATEGORY_CONFIG.DEFENSE)}
-          {renderCategory('Special Teams', 'Compliance, regulatory, AI governance, data strategy', specialTeamsRoles, CATEGORY_CONFIG['SPECIAL TEAMS'])}
+          {renderCategory('Growth & Positioning', 'Growth, M&A, market expansion, revenue acceleration', offenseRoles, CATEGORY_CONFIG.OFFENSE)}
+          {renderCategory('Risk & Resilience', 'Cyber, breach, crisis containment, legal exposure', defenseRoles, CATEGORY_CONFIG.DEFENSE)}
+          {renderCategory('Transformation', 'Compliance, regulatory, AI governance, data strategy', specialTeamsRoles, CATEGORY_CONFIG['SPECIAL TEAMS'])}
 
           {/* Bottom CTA */}
           <div style={{ background: NAVY, borderRadius: 0, padding: '40px 36px', textAlign: 'center', marginTop: 20 }}>

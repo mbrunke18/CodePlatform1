@@ -42,11 +42,11 @@ const STEP_LABELS = ["Describe", "Analyze", "Playbook", "Simulate", "Report"];
 function domainColors(domain: string) {
   switch (domain) {
     case "offense":
-      return { bg: "bg-[#2B8A6E]/10", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/20", darkBg: "bg-[#2B8A6E]/15", label: "OFFENSE", realityBg: "bg-[#C9A84C]/10", realityBorder: "border-[#C9A84C]/20" };
+      return { bg: "bg-[#2B8A6E]/10", text: "text-[#2B8A6E]", border: "border-[#2B8A6E]/20", darkBg: "bg-[#2B8A6E]/15", label: "GROWTH & POSITIONING", realityBg: "bg-[#C9A84C]/10", realityBorder: "border-[#C9A84C]/20" };
     case "special_teams":
-      return { bg: "bg-[#C9A84C]/10", text: "text-[#C9A84C]", border: "border-[#C9A84C]/20", darkBg: "bg-[#C9A84C]/30", label: "SPECIAL TEAMS", realityBg: "bg-[#0A0F2E]/10", realityBorder: "border-[#0A0F2E]/20" };
+      return { bg: "bg-[#C9A84C]/10", text: "text-[#C9A84C]", border: "border-[#C9A84C]/20", darkBg: "bg-[#C9A84C]/30", label: "TRANSFORMATION", realityBg: "bg-[#0A0F2E]/10", realityBorder: "border-[#0A0F2E]/20" };
     default:
-      return { bg: "bg-red-500/10", text: "text-red-600", border: "border-red-500/20", darkBg: "bg-red-500/5", label: "DEFENSE", realityBg: "bg-red-500/5", realityBorder: "border-red-500/20" };
+      return { bg: "bg-red-500/10", text: "text-red-600", border: "border-red-500/20", darkBg: "bg-red-500/5", label: "RISK & RESILIENCE", realityBg: "bg-red-500/5", realityBorder: "border-red-500/20" };
   }
 }
 
@@ -567,9 +567,9 @@ export default function IncidentAnalyzer() {
               <p className="text-sm text-[#6B7280] text-center mb-5">Select one to see the analyzer in action, or write your own below</p>
               <div className="grid md:grid-cols-3 gap-4">
                 {[
-                  { domain: 'defense', label: 'DEFENSE', icon: Shield, title: 'Ransomware Attack', desc: 'Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge of the response. By then, the damage had spread to 4 other offices.', borderCls: 'border-red-500/30 hover:border-red-500/50', bgCls: 'bg-red-950/20', textCls: 'text-red-400', badgeCls: 'bg-red-500/20 text-red-400 border-red-500/30' },
-                  { domain: 'offense', label: 'OFFENSE', icon: Rocket, title: 'Missed Market Entry', desc: 'We identified a major opportunity to enter the Southeast Asian market before our competitors. By the time we aligned stakeholders and got budget approval, two competitors had already launched.', borderCls: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', bgCls: 'bg-[#2B8A6E]/15', textCls: 'text-[#2B8A6E]', badgeCls: 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30' },
-                  { domain: 'special_teams', label: 'SPECIAL TEAMS', icon: Settings, title: 'Stalled Transformation', desc: 'We launched a digital transformation initiative to modernize our supply chain. After 18 months and $40M spent, we\'re only 30% through the original scope.', borderCls: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', bgCls: 'bg-[#C9A84C]/20', textCls: 'text-[#C9A84C]', badgeCls: 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30' },
+                  { domain: 'defense', label: 'RISK & RESILIENCE', icon: Shield, title: 'Ransomware Attack', desc: 'Last year ransomware hit our Atlanta office. It took 3 days to figure out who was in charge of the response. By then, the damage had spread to 4 other offices.', borderCls: 'border-red-500/30 hover:border-red-500/50', bgCls: 'bg-red-950/20', textCls: 'text-red-400', badgeCls: 'bg-red-500/20 text-red-400 border-red-500/30' },
+                  { domain: 'offense', label: 'GROWTH & POSITIONING', icon: Rocket, title: 'Missed Market Entry', desc: 'We identified a major opportunity to enter the Southeast Asian market before our competitors. By the time we aligned stakeholders and got budget approval, two competitors had already launched.', borderCls: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]/50', bgCls: 'bg-[#2B8A6E]/15', textCls: 'text-[#2B8A6E]', badgeCls: 'bg-[#2B8A6E]/20 text-[#2B8A6E] border-[#2B8A6E]/30' },
+                  { domain: 'special_teams', label: 'TRANSFORMATION', icon: Settings, title: 'Stalled Transformation', desc: 'We launched a digital transformation initiative to modernize our supply chain. After 18 months and $40M spent, we\'re only 30% through the original scope.', borderCls: 'border-[#C9A84C]/30 hover:border-[#C9A84C]/50', bgCls: 'bg-[#C9A84C]/20', textCls: 'text-[#C9A84C]', badgeCls: 'bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/30' },
                 ].map((preset) => (
                   <button
                     key={preset.domain}
@@ -617,17 +617,17 @@ export default function IncidentAnalyzer() {
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 py-4 px-6 bg-[#F8F7F4] border border-[#E8E4DC]">
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#2B8A6E]">58</div>
-                <div className="text-xs text-[#6B7280]">Offense Playbooks</div>
+                <div className="text-xs text-[#6B7280]">Growth & Positioning</div>
               </div>
               <div className="w-px h-8 bg-[#F8F7F4]" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-red-400">56</div>
-                <div className="text-xs text-[#6B7280]">Defense Playbooks</div>
+                <div className="text-xs text-[#6B7280]">Risk & Resilience</div>
               </div>
               <div className="w-px h-8 bg-[#F8F7F4]" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#C9A84C]">52</div>
-                <div className="text-xs text-[#6B7280]">Special Teams</div>
+                <div className="text-xs text-[#6B7280]">Transformation</div>
               </div>
               <div className="w-px h-8 bg-[#F8F7F4]" />
               <div className="text-center">

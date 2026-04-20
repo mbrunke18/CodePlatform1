@@ -886,12 +886,12 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {[
-                  { key: 'market-entry', label: 'Market Entry', icon: TrendingUp, domain: 'OFFENSE', color: 'teal' },
-                  { key: 'ma-integration', label: 'M&A Integration', icon: Building2, domain: 'OFFENSE', color: 'teal' },
-                  { key: 'product-recall', label: 'Product Recall', icon: AlertTriangle, domain: 'DEFENSE', color: 'red' },
-                  { key: 'cyber-incident', label: 'Cyber Incident', icon: Shield, domain: 'DEFENSE', color: 'red' },
-                  { key: 'digital-transform', label: 'Digital Transform', icon: Zap, domain: 'SPECIAL TEAMS', color: 'gold' },
-                  { key: 'ai-governance', label: 'AI Governance', icon: FileText, domain: 'SPECIAL TEAMS', color: 'gold' },
+                  { key: 'market-entry', label: 'Market Entry', icon: TrendingUp, domain: 'GROWTH & POSITIONING', color: 'teal' },
+                  { key: 'ma-integration', label: 'M&A Integration', icon: Building2, domain: 'GROWTH & POSITIONING', color: 'teal' },
+                  { key: 'product-recall', label: 'Product Recall', icon: AlertTriangle, domain: 'RISK & RESILIENCE', color: 'red' },
+                  { key: 'cyber-incident', label: 'Cyber Incident', icon: Shield, domain: 'RISK & RESILIENCE', color: 'red' },
+                  { key: 'digital-transform', label: 'Digital Transform', icon: Zap, domain: 'TRANSFORMATION', color: 'gold' },
+                  { key: 'ai-governance', label: 'AI Governance', icon: FileText, domain: 'TRANSFORMATION', color: 'gold' },
                 ].map(({ key, label, icon: Icon, domain, color }) => {
                   const isActive = analysisName === { 'market-entry': 'Market Entry Analysis', 'ma-integration': 'M&A Integration', 'product-recall': 'Product Recall Scenario', 'cyber-incident': 'Cybersecurity Incident', 'digital-transform': 'Digital Transformation Sprint', 'ai-governance': 'AI Governance Framework' }[key];
                   const borderMap: Record<string, string> = { teal: 'border-teal-400 bg-teal-50 dark:bg-teal-900/20', red: 'border-red-400 bg-red-50 dark:bg-red-900/20', gold: 'border-gold-400 bg-gold-50 dark:bg-gold-900/20' };
