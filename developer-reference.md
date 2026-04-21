@@ -1808,3 +1808,29 @@ Three additional visible UI violations corrected (not caught in previous sweeps)
 
 **Audit methodology note:** "Defense" and "Offense" in playbook *names* (e.g., "Activist Investor Defense," "Hostile Takeover Defense," "Competitive Market Defense") are business strategy terms — not football category labels — and are intentionally preserved. The retirement rule applies specifically to the three strategic domain *category labels*, not to the words defense/offense used in business contexts within individual playbook titles.
 
+---
+
+### Manifesto Metric Consistency Rule (added April 21, 2026)
+
+**`FounderStory.tsx` is NOT exempt from canonical metric consistency.**
+
+The manifesto is written as longform editorial prose, which caused previous audit sweeps to miss a metric inconsistency: four instances of "seventy-two hours" (spelled out, not numerals) survived every scan because grep patterns targeted `"72 hours"` and `"72-hour"`. The manifesto used the written form, which matched nothing.
+
+**Corrected in rev 23 (April 21):**
+| Line | Old | New |
+|---|---|---|
+| ~150 | "Seventy-two hours later — sometimes more —" | "Thirty days later — sometimes more —" |
+| ~153 | "treating seventy-two hours as the unavoidable cost" | "treating thirty days as the unavoidable cost" |
+| ~352 | "not a faster version of seventy-two hours" | "not a faster version of thirty days" |
+| ~390 | "Watched the seventy-two hours happen again and again" | "Watched the thirty days happen again and again" |
+
+**Preserved (deliberate):** The same paragraph on line ~390 contains "carrying the knowledge that forty seconds was enough when the infrastructure was right." The forty-second reference is the football framing — it describes the huddle-to-snap window, not enterprise mobilization time. It stays.
+
+**Rule for all future audits:** When running any metric sweep, the grep pattern for the 72-hour retirement must include both the numeral form AND the spelled-out form:
+```
+grep -ri "seventy.two\|seventy-two\|72.hour\|72-hour" client/src/pages/
+```
+The same applies to any other retired metric (340×, 360×) — always check both `340x`/`360x` and `"three hundred"` / `"three-sixty"` to cover prose-style editorial copy.
+
+**The broader principle:** The manifesto tells the same story as the product deck. When the product deck locks a number, the manifesto inherits that lock — regardless of whether the manifesto is editorial, protected, or historically locked for other reasons. Metric consistency is a commercial integrity requirement, not a copywriting preference.
+
