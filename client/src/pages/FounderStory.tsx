@@ -147,10 +147,10 @@ export default function FounderStory() {
             I watched it happen again at the next company. And the one after that. Ford. Lockheed Martin. Toyota. Charles Schwab. Vantiv. Boyd Gaming. Churchill Downs. Across industries, across market positions, across leadership styles and organizational structures and cultures — the same failure repeated itself with remarkable consistency.
           </Body>
           <Body>
-            A signal fires. The enterprise stirs. Emails go out. Calendars get checked. Decks get built to explain the situation to people who need to be briefed before anyone can decide anything. Seventy-two hours later — sometimes more — the organization is finally aligned enough to begin moving. By which point the moment has often passed, the competitor has established position, or the window for advantage has closed.
+            A signal fires. The enterprise stirs. Emails go out. Calendars get checked. Decks get built to explain the situation to people who need to be briefed before anyone can decide anything. Thirty days later — sometimes more — the organization is finally aligned enough to begin moving. By which point the moment has often passed, the competitor has established position, or the window for advantage has closed.
           </Body>
           <Body>
-            What struck me most was not the lag itself. It was the resignation around it. Intelligent, capable people treating seventy-two hours as the unavoidable cost of organizational complexity — as if coordination delay were a law of physics rather than a solvable infrastructure problem. Nobody said it was good. Everyone said it was inevitable.
+            What struck me most was not the lag itself. It was the resignation around it. Intelligent, capable people treating thirty days as the unavoidable cost of organizational complexity — as if coordination delay were a law of physics rather than a solvable infrastructure problem. Nobody said it was good. Everyone said it was inevitable.
           </Body>
           <Body style={{ fontWeight: 600, color: NAVY }}>
             After the third company I stopped being surprised. After the fifth I stopped being patient.
@@ -349,7 +349,7 @@ export default function FounderStory() {
             Every organization that reads this and feels a moment of recognition — <em>'yes, that is exactly what happens here'</em> — is already losing ground to the version of itself that operates differently. That gap is not getting smaller on its own. And every quarter it does not close, a competitor who closes it first is building an advantage that compounds.
           </Body>
           <Body>
-            Twelve-minute execution is not a faster version of seventy-two hours. It is a different organizational capability entirely. The team that walks into every strategic event with pre-staged responses and shared coordination infrastructure does not just move faster. It moves without fear. Because it has already answered the question that freezes everyone else: when this happens, what do we do?
+            Twelve-minute execution is not a faster version of thirty days. It is a different organizational capability entirely. The team that walks into every strategic event with pre-staged responses and shared coordination infrastructure does not just move faster. It moves without fear. Because it has already answered the question that freezes everyone else: when this happens, what do we do?
           </Body>
           <Body style={{ fontWeight: 700, color: NAVY, fontSize: 18 }}>
             They already know.
@@ -387,7 +387,7 @@ export default function FounderStory() {
             Readiness OS is the product built around that name. Not because it is technically impressive — though it is. Not because the market is large — though it is. Because it is the answer to a problem I could not stop seeing, a problem I knew was solvable, and a problem I finally stopped waiting for someone else to solve.
           </Body>
           <Body>
-            I have worked inside some of the most sophisticated organizations in American business. I have watched them fail at coordination in ways that would end a football program in a single season. Watched the seventy-two hours happen again and again, carrying the knowledge that forty seconds was enough when the infrastructure was right.
+            I have worked inside some of the most sophisticated organizations in American business. I have watched them fail at coordination in ways that would end a football program in a single season. Watched the thirty days happen again and again, carrying the knowledge that forty seconds was enough when the infrastructure was right.
           </Body>
           <Body>
             That knowledge does not transfer through a consulting engagement. It does not get hired in. It requires infrastructure. Built. Staged. Ready to activate.
