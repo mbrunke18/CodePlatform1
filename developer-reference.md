@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 18, 2026 (rev 22) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 21, 2026 (rev 23) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1675,4 +1675,136 @@ const label = CATEGORY_LABELS[playbook.strategicCategory] ?? playbook.strategicC
 ```
 
 Never render the raw `offense` / `defense` / `special_teams` DB value directly in visible UI.
+
+---
+
+## 38. Dr. Huang Gap Features + Infrastructure Fixes — April 21, 2026 (rev 23)
+
+### Background
+Two governance features were built to address gaps Dr. Kerry Huang (ESI Top 1% Researcher, 408-firm study) would press on during a demo: (1) what happens after a playbook activates — does learning get encoded or discarded? (2) what happens to classified signals no one acts on — is that choice visible or invisible?
+
+---
+
+### Gap 2 — Activation Close-Out Gate
+
+**What it does:** Blocks the debrief from advancing past Learning Capture (step 4) until four structured questions are answered and saved. This enforces the Dr. Huang thesis that ownership is an artifact — either the preparation phase produces it or it doesn't. The gate makes the absence of transfer visible, not invisible.
+
+**Four required fields (schema + UI):**
+| Field | Required | Description |
+|---|---|---|
+| `whatHeld` | ✓ | Which prepared response worked exactly as designed under live conditions |
+| `whatDidntHold` | ✓ | Where did preparation fail or deviate under live pressure |
+| `preparationGap` | — | Conditions, decisions, or actors the playbook didn't anticipate |
+| `oneThingToEncode` | ✓ | The single change that gets built back into the playbook before next use |
+
+**Database — columns added to `activation_outcomes` via direct SQL (April 21):**
+```sql
+ALTER TABLE activation_outcomes
+  ADD COLUMN IF NOT EXISTS what_held text,
+  ADD COLUMN IF NOT EXISTS what_didnt_hold text,
+  ADD COLUMN IF NOT EXISTS preparation_gap text,
+  ADD COLUMN IF NOT EXISTS one_thing_to_encode text,
+  ADD COLUMN IF NOT EXISTS close_out_completed boolean DEFAULT false;
+```
+These columns are also defined in `shared/schema.ts` on the `activationOutcomes` table. If the DB is ever re-created from scratch, `npm run db:push` will create them. Note: `npm run db:push` is interactive and may pause on the `ai_confidence_scores` table prompt — select "create table" when prompted.
+
+**Backend route:**
+```
+PATCH /api/activation-outcomes/:id/closeout
+```
+- Protected by `requireOrgAccess`
+- Validates `whatHeld`, `whatDidntHold`, `oneThingToEncode` are all present (400 if missing)
+- Calls `storage.updateActivationOutcomeCloseOut(id, data)` which sets `closeOutCompleted: true`
+- File: `server/routes.ts` · Storage method: `server/storage.ts` → `updateActivationOutcomeCloseOut`
+
+**Frontend — `ActivationOutcome.tsx` step 4 changes:**
+- Close-Out Gate card renders at top of step 4 with RED border (locked) or TEAL border (complete)
+- LOCKED/COMPLETE badge in header
+- "Complete Close-Out Gate & Unlock Board Brief" button — disabled until all 3 required fields have content
+- "Next Step" button replaced with disabled "Complete Gate First" button if gate is not passed
+- On save: success confirmation reads "Gate passed — learning encoded into institutional memory. Board Brief now unlocked."
+- Optional additional fields (wouldChange, lessonsLearned, playbookRating) remain below in a separate card
+
+**Mutation:**
+```tsx
+const closeOutMutation = useMutation({
+  mutationFn: ({ id, data }) => apiRequest("PATCH", `/api/activation-outcomes/${id}/closeout`, data),
+  onSuccess: () => { setCloseOutSaved(true); queryClient.invalidateQueries(...) }
+});
+```
+
+---
+
+### Gap 3 — Signal Accountability Report
+
+**What it does:** Surfaces every classified signal that no one acted on, grouped by escalation tier. The choice not to act is not invisible — it becomes a governance record with a timestamp. Signals that persist across monitoring cycles escalate automatically.
+
+**Page:** `/signal-accountability` → `client/src/pages/SignalAccountability.tsx`
+**Route registered:** `App.tsx` line ~429
+
+**Escalation tiers:**
+| Tier | Condition | Color |
+|---|---|---|
+| MONITORING | Under 2 cycles (< 30 min unacted) | Teal |
+| EXECUTIVE | 2–3 monitoring cycles without acknowledgment | Gold |
+| BOARD | 4+ monitoring cycles (1 hour+ unacted) | Red |
+
+**Backend route:**
+```
+GET /api/signal-accountability?organizationId=<id>
+```
+- Queries `triggerDetections` where `status = 'detected' OR 'notified'`
+- Calculates `ageMinutes`, `cycles` (15-min windows), `escalationLevel` per signal
+- Returns `{ summary, boardEscalated[], executiveEscalated[], monitoring[], generatedAt }`
+- File: `server/routes.ts` (inserted before `/api/stakeholder-contacts` route)
+
+**UI features:**
+- 4 stat blocks: Total Unacted, Board-Level, Executive, Monitoring
+- Escalation logic callout explaining tier thresholds
+- Per-signal rows: trigger name, description, confidence, recommended playbook, age, cycle count
+- Acknowledge button per signal (calls `POST /api/detections/:id/acknowledge`)
+- Auto-refreshes every 60 seconds (`refetchInterval: 60000`)
+- Dr. Huang research anchor at bottom: "Architecture creates the conditions where the choice to ignore is no longer invisible."
+
+---
+
+### Scroll Infrastructure Fix
+
+**Root cause of intermittent scroll-to-top failures:** Browser native scroll restoration (`history.scrollRestoration = 'auto'`) was overriding the app's scroll resets on back/forward navigation. The previous timeout chain (80ms → 450ms) was also too short to catch lazy-loaded pages that take 500ms+ to mount.
+
+**Fixes applied:**
+
+1. **`client/src/components/ScrollToTop.tsx`** — module-level scroll restoration disable:
+```ts
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+```
+Timeout chain extended: `50ms → 150ms → 350ms → 600ms → 1100ms` with proper cleanup via `cleanupRef`. Previous navigation cleanup cancels pending timers before starting new ones.
+
+2. **`client/src/components/layout/PageLayout.tsx`** — scroll-to-top on mount:
+```tsx
+useEffect(() => {
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}, []);
+```
+This fires after the actual page component renders — catching the gap where the global ScrollToTop fires before lazy-load completes.
+
+**Two-layer protection:** Global `ScrollToTop` handles navigation intent (before load); `PageLayout` mount `useEffect` handles confirmation (after load). Both must remain in place.
+
+---
+
+### Language Audit Sweep — April 21, 2026
+
+Three additional visible UI violations corrected (not caught in previous sweeps):
+
+| File | Old Text | New Text |
+|---|---|---|
+| `IndustryDemosHub.tsx` | "Offense & defense. Market entry to crisis response." | "Growth scenarios. Resilience scenarios. Market entry to crisis response." |
+| `WhyExecutionOS.tsx` | `"Defense-Grade Data Intelligence"` (Palantir category) | `"Enterprise-Grade Data Intelligence"` |
+| `ThirtySecondSpot.tsx` | `getTitle()` returned `"Offense, Defense, Special Teams"` | Returns `"Growth. Resilience. Transformation."` |
+
+**Audit methodology note:** "Defense" and "Offense" in playbook *names* (e.g., "Activist Investor Defense," "Hostile Takeover Defense," "Competitive Market Defense") are business strategy terms — not football category labels — and are intentionally preserved. The retirement rule applies specifically to the three strategic domain *category labels*, not to the words defense/offense used in business contexts within individual playbook titles.
 
