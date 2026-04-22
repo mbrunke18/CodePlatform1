@@ -1,0 +1,260 @@
+Team
+We back exceptional founders. Tell us who’s building this and why you’re the team to make it happen.
+
+Required fields are marked with an asterisk (*).
+
+Are you full-time or part-time on the startup? *
+
+
+Full-time
+
+Part-time
+Number of Full-Time Founders *
+How many founders are working full-time on your startup?
+
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+Founders are individuals with over 10% equity. If you’re part-time or not yet incorporated, enter ‘0’ and add all co-founders in the section below.
+
+Total FTE Employees *
+How many full-time equivalent employees (including founders) are currently at your startup?
+Full-Time Equivalent (FTE) *
+1
+Part-time staff should be counted proportionally (e.g., two half-time employees = 1 FTE).
+
+Founder Details *
+Tell us who’s building this. Start with the CEO, then add any co-founders.
+CEO
+
+first name *
+Martin
+last name *
+Brunke
+email *
+mbrunke@vaughnmartin.com
+phone number
+513-288-6600
+Relevant experience *
+In a few sentences, highlight your most relevant professional, startup, or industry experience. Focus on track record, domain expertise, and past wins.
+Founder experience *
+Twenty years leading high-stakes Enterprise Transformations and PMOs within Fortune 1000 operations, including Ford, Toyota, Lockheed Martin, and Churchill Downs. Five years coaching major college football at Stanford, witnessing coordination infrastructure compress 30-day decisions into 40 seconds. This fusion of elite athletic urgency and industrial-scale execution led to Readiness OS, built solo over three years on the IDEA Framework. The platform features 151 production components and a live signal pipeline. Thesis publicly validated in April 2026 by four independent researchers, including Jim Highsmith (Agile Manifesto co-author) and Dr. Kerry Huang (Fortune 50, ESI Top 1%).
+95 / 100 words
+
+US
+
+country *
+United States of America
+Kentucky
+
+State *
+Kentucky
+City *
+Louisville
+US
+
+Citizenship *
+United States of America
+College / University *
+Menlo College
+Bachelor's Degree (BA, BS)
+
+Highest education
+Bachelor's Degree (BA, BS)
+How many years of professional experience do you have? *
+
+years of experience *
+30
+Are you technical enough to build the product end-to-end? *
+
+
+
+Yes
+
+No
+LinkedIn url *
+https://www.linkedin.com/in/martin-brunke/
+github url
+x url
+portfolio url
+Link to personal website, project portfolio, or side project.
+
+
+add co-founder
+Tell us more about the team *
+How does the team know each other? Is there anyone else on the team? Why is this the best team to win? Do you have any key advisors? Etc
+Team description *
+Solo founder today shipping a product that normally requires a team of ten. 151 page components. Full Drizzle ORM database schema. Live RSS signal ingestion pipeline. GPT-4o integration across five AI surfaces. Seven ecosystem integration pages. Production deployment with Sentry monitoring and role based access control. The entire platform built solo over three years because the intellectual foundation required a single architect to hold together until the market validated it. That validation arrived in April 2026. Five Fortune 500 advisors currently reviewing the platform. Commercial cofounder identification in progress with preference for Fortune 1000 buyer-side sales background.
+97 / 100 words
+
+Startup Details
+Help us understand your startup. The problem you're solving, your solution, and where you are today.
+
+Required fields are marked with an asterisk (*).
+
+Startup Name *
+startup name *
+VaughnMartin
+Pitch your startup in one sentence. *
+What do you do and for whom? E.g. “AI-powered therapist for Gen Z”
+One-liner *
+The strategic response is ready before the trigger fires.
+9/10 words
+
+Startup Description *
+What problem are you solving? What are you building?
+startup description *
+Readiness OS is coordination infrastructure built on the IDEA Framework: Identify, Detect, Execute, Advance. 248 plus data points monitored across 20 signal categories every 15 minutes. 170 playbooks across 9 strategic domains encoding 20 years of Fortune 1000 decision logic. 221 triggers pre-wired for activation. Five compound intelligence features including Shadow Strategy Simulator and Compound Threat Detection. Full Microsoft, Salesforce, AWS, Google, SAP, ServiceNow, Workday ecosystem integration. Four researchers publicly validated the thesis in April 2026. Live production at vaughnmartin.com. The response is ready before the trigger fires.
+88/100 words
+
+Primary Category *
+Select the closest match for your startup. If none apply, choose 'Other'.
+
+
+B2B / Enterprise Applications
+
+Consumer Applications
+
+Deep Tech
+
+Gaming / Entertainment Studio
+
+Infrastructure / Dev Tools
+
+Healthcare
+
+GovTech
+
+Crypto
+
+Other
+Secondary Category (optional)
+If your startup fits more than one category, select a second category. If none apply, choose 'Other'.
+
+
+B2B / Enterprise Applications
+
+Consumer Applications
+
+Deep Tech
+
+Gaming / Entertainment Studio
+
+Infrastructure / Dev Tools
+
+Healthcare
+
+GovTech
+
+Crypto
+
+Other
+Where do you intend to build your startup? *
+US
+
+Country *
+United States of America
+California
+
+State *
+California
+City *
+San Francisco
+When was your startup founded? *
+2023
+
+year *
+2023
+July
+
+month *
+July
+Company Website (optional)
+website url
+https://vaughnmartin.com
+E.g. https://yourcompany.com
+
+Anything else we should know? (optional)
+If there’s something that doesn’t fit elsewhere, drop it here.
+Additional information
+The platform is live in production at vaughnmartin.com. 151 page components. 170 playbooks across 9 strategic domains. Live RSS signal ingestion every 15 minutes. Full Microsoft, Salesforce, AWS, Google, SAP, ServiceNow, Workday ecosystem integration. GPT-4o integration across five AI surfaces. Magic link authentication with executive demo token at https://vaughnmartin.com/demo-access?token=speedrun2026&returnTo=/12-minute-experience. Dr. Kerry Huang publicly reposted the thesis to his Fortune 50 network in April 2026. Jim Highsmith co-author of the Agile Manifesto engaged publicly. Three Founding Partner pilot conversations active. The product is shipped. The commercial motion is starting. Speedrun is the right environment to scale both.
+96 / 100 words
+
+Additional Information
+Show Us More
+
+Any additional information you share with us adds important context that we review and significantly improves the strength of your application. Please share these below.
+
+
+Pitch Deck (PDF)
+Optional
+
+Upload your latest deck. PDF format only.
+
+No file chosen
+Click to upload or drag and drop
+PDF (MAX. 500MB)
+
+
+Traction
+Optional
+
+If you’ve launched and started measuring traction, we’d love to see the data.
+
+Required fields are marked with an asterisk (*).
+
+Product Launch Date *
+When did you first launch a working version to users?
+
+year *
+
+month *
+Any general commentary on your traction?
+traction notes (optional) 
+Pre-revenue. Three Founding Partner pilot conversations active targeting $75K to $500K ACV. Growth segment with three tiers at $75K, $150K, $250K annual. Enterprise Pilot at $75K flat fee. Five Fortune 500 advisors reviewing platform. Dr. Kerry Huang publicly reposted thesis to Fortune 50 network April 2026. Scott DeJarnette PhD produced seven public formulations of product thesis. Jim Highsmith engaged in public threaded exchange. Validation archive preserves 20 externally coined phrases from 10 plus independent practitioners. Live production platform at vaughnmartin.com with 151 page components.
+84 / 100 words
+
+
+Share Revenue
+Toggle on to enter revenue metrics such as annual recurring revenue (ARR) and customer growth.
+
+
+Share Usage Metrics
+Toggle on to enter active user, growth, and retention metrics.
+
+
+Funding History
+Optional
+
+
+Active Fundraising Round
+Optional
+
+
+Referral
+Optional
+
+Where did you learn about speedrun?
+Required
+
+Let us know how you found out about speedrun. X, event, friend, etc.
+
+LinkedIn
+
+source *
+LinkedIn
+additional info (optional)
+Marc Andreessen and Andrew Chen public posts about SR007 application window opening April 20 2026
+Provide the name, handle, post, event, etc.
+
+
+submit application
