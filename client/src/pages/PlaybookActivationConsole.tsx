@@ -865,6 +865,26 @@ export default function PlaybookActivationConsole() {
               )}
             </div>
 
+            {/* ── What This Playbook Replaces ──────────────────────────────── */}
+            <div style={{ borderLeft: `4px solid ${NAVY}`, borderTop: `1px solid rgba(10,15,46,0.12)`, borderRight: `1px solid rgba(10,15,46,0.12)`, borderBottom: `1px solid rgba(10,15,46,0.12)`, padding: '20px 24px', marginBottom: 16, background: 'rgba(10,15,46,0.03)' }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: NAVY, marginBottom: 14 }}>What This Playbook Replaces</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center' }}>
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#dc2626', marginBottom: 6 }}>Without It</div>
+                  <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.65, margin: 0 }}>
+                    30 days to mobilize. Figuring out who calls who, where the brief is, who owns it, who authorizes — while the window closes.
+                  </p>
+                </div>
+                <div style={{ width: 1, height: 64, background: 'rgba(10,15,46,0.12)', flexShrink: 0 }} />
+                <div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 6 }}>With This Playbook</div>
+                  <p style={{ fontSize: 13, color: NAVY, lineHeight: 1.65, margin: 0, fontWeight: 500 }}>
+                    12 minutes from this moment. Brief built. Team assigned. Authority defined. Execution begins.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* Dry-Run Prompt */}
             <div style={{ border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.04)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, marginBottom: 8 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>

@@ -311,6 +311,25 @@ export default function Dashboard() {
           </div>
         )}
 
+        {/* ── Challenge Strip — makes the value visceral ─────────────────── */}
+        {triggerCount > 0 && (
+          <div style={{ background: '#0A0F2E', borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '20px 48px' }}>
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-8 flex-wrap">
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(16px,2vw,22px)', fontWeight: 700, color: '#fff', lineHeight: 1.4, margin: 0 }}>
+                The system has detected <span style={{ color: '#C9A84C' }}>{triggerCount} signals</span> today.{' '}
+                <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.6)', fontWeight: 400 }}>
+                  If any of them triggered a response in your organization right now — your brief is already built, your team is already assigned.
+                </em>
+              </p>
+              <Link href="/command-tower">
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#C9A84C', whiteSpace: 'nowrap' as const, cursor: 'pointer' }}>
+                  See Live Detections →
+                </div>
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* ── Strategic Position Strip — what this readiness level means ── */}
         <div className="max-w-7xl mx-auto px-6 pt-8 pb-0">
           <div className="flex items-center gap-2 mb-3">
