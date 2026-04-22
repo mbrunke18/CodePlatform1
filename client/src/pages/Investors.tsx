@@ -322,7 +322,7 @@ function FuturePositioningDiagram() {
         <p className="text-center text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-4">Competitive Moat Grows Over Time</p>
         <div className="flex items-center gap-0">
           {[
-            { label: "Platform Built", sub: "170 playbooks, IDEA Framework", color: NAVY },
+            { label: "Platform Built", sub: "170 Prepared Responses, IDEA Framework", color: NAVY },
             { label: "Pilot Contracts", sub: "Design partners, real use cases", color: NAVY },
             { label: "Data Network Effect", sub: "Every activation improves the system", color: TEAL },
             { label: "Category Leader", sub: "Strategic Readiness Platform standard", color: GOLD },

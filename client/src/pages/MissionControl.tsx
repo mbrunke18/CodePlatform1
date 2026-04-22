@@ -595,7 +595,7 @@ export default function MissionControl() {
                   <span style={{ fontSize: 8, fontWeight: 800, background: 'rgba(43,138,110,0.2)', color: TEAL, padding: '1px 7px', letterSpacing: '0.14em', fontFamily: "'Barlow Condensed', sans-serif" }}>AUTHENTICATED</span>
                 </div>
                 <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
-                  Full IDEA chain — real playbooks, 12-minute execution data — Technology · Financial Services · Manufacturing · Healthcare
+                  Full IDEA chain — real Prepared Responses, 12-minute execution data — Technology · Financial Services · Manufacturing · Healthcare
                 </div>
               </div>
             </div>

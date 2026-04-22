@@ -316,7 +316,7 @@ export default function KeynoteDemo() {
           className="text-2xl text-white/80 max-w-4xl mb-16 leading-relaxed relative z-10"
         >
           From signal detection to full organizational response in <span className="text-[#C9A84C] font-semibold">12 minutes</span> — not 30 days.
-          <br />170 pre-built playbooks. 9 strategic domains. Pre-staged execution.
+          <br />170 pre-built Prepared Responses. 9 strategic domains. Pre-staged execution.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

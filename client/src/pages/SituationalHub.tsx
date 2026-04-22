@@ -205,7 +205,7 @@ export default function SituationalHub() {
                 </div>
                 <div className="flex gap-3">
                   <Link href="/crisis-exposure-matrix"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Matrix</Button></Link>
-                  <Link href="/playbooks"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">Browse Playbooks <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
+                  <Link href="/playbooks"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">Browse Prepared Responses <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
                 </div>
               </div>
 

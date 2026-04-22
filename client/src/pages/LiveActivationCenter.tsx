@@ -28,7 +28,7 @@ import {
   TrendingUp,
   Trophy
 } from 'lucide-react';
-import { Link, useLocation } from 'wouter';
+import { Link, useLocation, useSearch } from 'wouter';
 import { io, Socket } from 'socket.io-client';
 import { BrandStamp } from "@/components/BrandStamp";
 import { ROLE_OVERLAYS, INDUSTRY_OVERLAYS } from '@/data/activationPersonalization';
@@ -238,18 +238,46 @@ function formatElapsed(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
+// Resolves which demo playbook to show based on URL params —
+// called both at mount and whenever the URL changes.
+const DOMAIN_PLAYBOOK_MAP: Array<{ keywords: string[]; key: string }> = [
+  { keywords: ['technology', 'security', 'cyber', 'ransomware', 'breach', 'malware', 'phishing', 'incident', 'attack', 'hack', 'geopolit', 'supply chain', 'supply_chain', 'financial', 'market', 'activist', 'risk', 'disruption', 'operational', 'workforce', 'talent', 'competitive', 'competitor'], key: 'ransomware' },
+  { keywords: ['m&a', 'merger', 'acquisition', 'integration', 'deal', 'divestiture', 'restructur', 'leadership', 'succession', 'executive', 'transition', 'new market', 'expansion', 'growth'], key: 'ma-day1' },
+  { keywords: ['regulatory', 'compliance', 'governance', 'legal', 'litigation', 'audit', 'ai ', 'artificial', 'esg', 'climate', 'environment', 'policy', 'regulation'], key: 'ai-governance' },
+];
+
+function resolvePlaybookKeyFromSearch(search: string): string {
+  const p = new URLSearchParams(search);
+  const urlPlaybook = p.get('playbook');
+  const urlPlaybookName = p.get('playbookName');
+  const urlDomain = p.get('domain');
+  // 1. Exact key match from ?playbook=
+  if (urlPlaybook && DEFAULT_PLAYBOOKS.some(pb => pb.key === urlPlaybook)) return urlPlaybook;
+  // 2. Exact name match against DEFAULT_PLAYBOOKS
+  if (urlPlaybookName) {
+    const nameLower = urlPlaybookName.toLowerCase();
+    const exact = DEFAULT_PLAYBOOKS.find(pb => pb.name.toLowerCase() === nameLower);
+    if (exact) return exact.key;
+  }
+  // 3. Domain + name keyword matching
+  const searchText = [(urlDomain || ''), (urlPlaybookName || '')].join(' ').toLowerCase();
+  if (searchText.trim()) {
+    for (const { keywords, key } of DOMAIN_PLAYBOOK_MAP) {
+      if (keywords.some(kw => searchText.includes(kw))) return key;
+    }
+  }
+  return 'ma-day1';
+}
+
 export default function LiveActivationCenter() {
   const params = new URLSearchParams(window.location.search);
   const urlPlaybook = params.get('playbook');
   const urlPlaybookName = params.get('playbookName');
+  const urlDomain = params.get('domain');
   const urlRole = params.get('role');
   const urlIndustry = params.get('industry');
 
-  const initialPlaybook = (urlPlaybook && DEFAULT_PLAYBOOKS.some(p => p.key === urlPlaybook))
-    ? urlPlaybook
-    : (urlPlaybookName && DEFAULT_PLAYBOOKS.find(p => p.name.toLowerCase().includes(urlPlaybookName.toLowerCase().slice(0, 8))))
-      ? DEFAULT_PLAYBOOKS.find(p => p.name.toLowerCase().includes(urlPlaybookName.toLowerCase().slice(0, 8)))!.key
-      : 'ma-day1';
+  const initialPlaybook = resolvePlaybookKeyFromSearch(window.location.search);
   const roleOverlay: RoleOverlay | null = urlRole ? ROLE_OVERLAYS[urlRole.toLowerCase()] || null : null;
   const industryOverlay: IndustryOverlay | null = urlIndustry ? INDUSTRY_OVERLAYS[urlIndustry.toLowerCase()] || null : null;
   const contextLabel = roleOverlay?.label || industryOverlay?.label || null;
@@ -287,7 +315,14 @@ export default function LiveActivationCenter() {
 
   const activePlaybook = DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook);
 
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
+  const search = useSearch();
+
+  // Re-resolve selected playbook whenever the URL (path OR query string) changes
+  useEffect(() => {
+    const resolved = resolvePlaybookKeyFromSearch(search);
+    setSelectedPlaybook(resolved);
+  }, [search, location]);
 
   const { data: orgData } = useQuery({
     queryKey: ['/api/organizations'],

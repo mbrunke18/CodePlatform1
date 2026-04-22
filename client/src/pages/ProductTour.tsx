@@ -107,7 +107,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'ADVANCE',
     subtitle: 'Review the Film',
-    narration: 'Every execution feeds back into your playbooks. AI suggests refinements. Your organization gets smarter.',
+    narration: 'Every execution feeds back into your Prepared Responses. AI suggests refinements. Your organization gets smarter.',
     visual: 'advance'
   },
   {

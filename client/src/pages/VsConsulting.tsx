@@ -64,8 +64,8 @@ export default function VsConsulting() {
           </h1>
 
           <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
-            A Fortune 1000 company hires McKinsey to develop crisis response playbooks. Six months later, a crisis hits.
-            Nobody can find the playbooks. The organization still takes 30 days to coordinate.
+            A Fortune 1000 company hires McKinsey to develop crisis response Prepared Responses. Six months later, a crisis hits.
+            Nobody can find the Prepared Responses. The organization still takes 30 days to coordinate.
             The $500K investment sits on a shelf while the company scrambles.
           </p>
 
@@ -136,7 +136,7 @@ export default function VsConsulting() {
 
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
                 {[
-                  "Nobody can find the playbooks.",
+                  "Nobody can find the Prepared Responses.",
                   "The prepared responses are 200 pages — no one has time to read them.",
                   "Key people have changed roles since the prepared responses were written.",
                   "The prepared responses describe processes — they don't assign tasks.",
@@ -266,7 +266,7 @@ export default function VsConsulting() {
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$75K–$250K/year</div>
               <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes</div>
               <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 0, border: `1px solid rgba(43,138,110,0.15)` }}>
-                <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>170 live playbooks. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
+                <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>170 live Prepared Responses. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
               </div>
             </div>
           </div>

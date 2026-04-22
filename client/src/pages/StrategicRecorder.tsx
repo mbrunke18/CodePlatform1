@@ -106,7 +106,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
     onSuccess: (data: any) => {
       setHistoricalResult(data);
       queryClient.invalidateQueries({ queryKey: ['/api/strategic-recordings'] });
-      toast({ title: `${data.generatedPlaybooks?.length ?? 0} prepared responses encoded`, description: 'Historical knowledge has been converted to structured playbooks.' });
+      toast({ title: `${data.generatedPlaybooks?.length ?? 0} prepared responses encoded`, description: 'Historical knowledge has been converted to structured Prepared Responses.' });
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
@@ -181,7 +181,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 {[
                   { icon: History, label: '48-Hour Onboarding', desc: 'vs 2–4 weeks manual setup' },
                   { icon: BookOpen, label: 'Tribal Knowledge Captured', desc: 'From meeting notes & emails' },
-                  { icon: Zap, label: 'Custom Prepared responses Generated', desc: 'Tailored to your history' },
+                  { icon: Zap, label: 'Custom Prepared Responses Generated', desc: 'Tailored to your history' },
                 ].map(v => {
                   const Icon = v.icon;
                   return (
@@ -388,7 +388,7 @@ function PlaybookResults({ playbooks, savedIds, setSavedIds }: { playbooks: any[
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
         <div style={{ width: 20, height: 2, background: GOLD }} />
-        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Prepared responses Generated</span>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Prepared Responses Generated</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         {playbooks.map((pb: any, i: number) => {

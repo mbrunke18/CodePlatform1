@@ -66,7 +66,7 @@ const phaseDetails = [
       { name: 'Browse Prepared Response Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
       { name: 'Select Priority Prepared responses', path: '/workspaces/identify', description: 'Choose prepared responses aligned to your strategic priorities' },
       { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each prepared response' },
-      { name: 'Customize Playbooks', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
+      { name: 'Customize Prepared Responses', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
       { name: 'Establish Readiness Baseline', path: '/readiness-assessment', description: 'Measure your strategic readiness score' }
     ],
     deliverables: ['5-10 priority prepared responses configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
@@ -109,7 +109,7 @@ const phaseDetails = [
     activities: [
       { name: 'Retrospect Lab', path: '/workspaces/advance', description: 'Institutional learning hub' },
       { name: 'Conduct Retrospective', path: '/advance/lessons', description: 'Analyze execution and capture insights' },
-      { name: 'Refine Playbooks', path: '/playbook-customization', description: 'Update playbooks based on lessons learned' },
+      { name: 'Refine Prepared Responses', path: '/playbook-customization', description: 'Update Prepared Responses based on lessons learned' },
       { name: 'Measure Decision Velocity', path: '/decision-velocity', description: 'Track improvement metrics' },
       { name: 'Executive Readout', path: '/board-export', description: 'Generate board-ready summary' }
     ],

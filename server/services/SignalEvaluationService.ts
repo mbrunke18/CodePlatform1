@@ -357,7 +357,7 @@ async function sendDetectionEmail(
             <a href="${platformUrl}/live-detection-feed?trigger=${encodeURIComponent(detection.triggerName)}" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection →</a>
           </div>
           <div style="text-align:center;">
-            <a href="${platformUrl}/live-activation-center?playbookName=${encodeURIComponent(detection.recommendedPlaybook)}" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} →</a>
+            <a href="${platformUrl}/live-activation-center?playbookName=${encodeURIComponent(detection.recommendedPlaybook)}&domain=${encodeURIComponent(detection.triggerDomain)}" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} →</a>
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">

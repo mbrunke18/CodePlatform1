@@ -44,7 +44,7 @@ const features = [
   {
     icon: BarChart3,
     title: 'ADVANCE — Outcome tracking',
-    description: 'Every execution feeds back into your playbooks. AI suggests refinements. Your organization gets smarter.',
+    description: 'Every execution feeds back into your Prepared Responses. AI suggests refinements. Your organization gets smarter.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',
   },

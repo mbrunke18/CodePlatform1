@@ -98,7 +98,7 @@ const TIERS = [
       { label: "Support", value: "Dedicated success manager + white-glove onboarding" },
     ],
     bestFor: "Companies managing multi-front risk across every domain. M&A disruptions, regulatory shifts, talent crises, competitive entries — happening simultaneously.",
-    roiNote: "Organizations managing multi-front threats protect $10M+ per coordinated response. At $250K/year, you are running the full operating model — 170 playbooks, 248+ data points, and full AI coordination. One activation at this level pays for the year.",
+    roiNote: "Organizations managing multi-front threats protect $10M+ per coordinated response. At $250K/year, you are running the full operating model — 170 Prepared Responses, 248+ data points, and full AI coordination. One activation at this level pays for the year.",
   },
   {
     id: "enterprise",
@@ -136,7 +136,7 @@ const FAQS = [
   },
   {
     q: "What exactly changes between tiers?",
-    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 prepared responses across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 prepared responses across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 170 playbooks, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
+    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 prepared responses across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 Prepared Responses across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 170 Prepared Responses, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
   },
   {
     q: "How does the ROI math work at these price points?",
@@ -152,7 +152,7 @@ const FAQS = [
   },
   {
     q: "Can I move up tiers as we grow?",
-    a: "Yes. Everything carries forward — configurations, activation history, custom playbooks, decision rights mappings. There is no re-onboarding and no data loss. You pay the difference at the next billing cycle and immediately gain access to the expanded capability.",
+    a: "Yes. Everything carries forward — configurations, activation history, custom Prepared Responses, decision rights mappings. There is no re-onboarding and no data loss. You pay the difference at the next billing cycle and immediately gain access to the expanded capability.",
   },
   {
     q: "Is this genuinely the same platform Fortune 1000 companies use?",
@@ -416,7 +416,7 @@ export default function Growth() {
               {
                 from: "Responsive", to: "Orchestrated", arrow: "→", color: NAVY,
                 gain: "Coordination becomes invisible infrastructure",
-                detail: "Every domain. All 170 playbooks. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are neutralized before stakeholders even convene. This is where execution velocity becomes a durable competitive advantage.",
+                detail: "Every domain. All 170 Prepared Responses. 248+ data points in continuous monitoring. The shift from Responsive to Orchestrated is the shift from managed risk to invisible coordination — threats are neutralized before stakeholders even convene. This is where execution velocity becomes a durable competitive advantage.",
                 jump: "$150K → $250K/yr",
               },
               {
@@ -736,7 +736,7 @@ export default function Growth() {
             <em style={{ fontStyle: "italic", color: GOLD }}>Now you have the infrastructure to prove it.</em>
           </h2>
           <p style={{ fontSize: 17, color: "rgba(240,237,228,0.6)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.6 }}>
-            A portfolio company that executes in 12 minutes instead of 30 days — with documented playbooks,
+            A portfolio company that executes in 12 minutes instead of 30 days — with documented Prepared Responses,
             activation logs, and board-ready reporting — is a fundamentally different investment.
             Start at Ready. Scale to Orchestrated as the business grows.
           </p>

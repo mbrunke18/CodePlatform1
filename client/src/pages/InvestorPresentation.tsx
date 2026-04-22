@@ -315,7 +315,7 @@ function InvestorPresentation() {
             { letter: 'I', name: 'IDENTIFY', desc: 'AI watches 847+ signals across news, regulatory, market, and threat feeds', icon: <Eye className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
             { letter: 'D', name: 'DETECT', desc: 'Match signals to prepared responses with confidence scoring and stakeholder mapping', icon: <Brain className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
             { letter: 'E', name: 'EXECUTE', desc: 'One-click activation. 12-minute full mobilization. Pre-approved budgets deployed.', icon: <Zap className="w-6 h-6" />, color: 'from-[#C9A84C] to-[#DFC178]' },
-            { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-[#2B8A6E] to-[#3BAF8A]' },
+            { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines Prepared Responses. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-[#2B8A6E] to-[#3BAF8A]' },
           ].map((p, i) => (
             <div key={i} className="bg-white border border-[#E8E4DC] overflow-hidden">
               <div className={`bg-gradient-to-b ${p.color} p-4 flex items-center gap-3`}>
@@ -534,7 +534,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-5 gap-4 max-w-5xl w-full">
           {[
             { name: 'McKinsey / BCG', type: 'Strategy Consulting', has: 'Strategy frameworks', missing: 'No software, no automation', color: 'border-[#E8E4DC]' },
-            { name: 'ServiceNow / Jira', type: 'Workflow Tools', has: 'Task management', missing: 'No playbooks, no strategy layer', color: 'border-[#E8E4DC]' },
+            { name: 'ServiceNow / Jira', type: 'Workflow Tools', has: 'Task management', missing: 'No Prepared Responses, no strategy layer', color: 'border-[#E8E4DC]' },
             { name: 'PagerDuty', type: 'Incident Response', has: 'IT alerting', missing: 'IT-only, no strategic execution', color: 'border-[#E8E4DC]' },
             { name: 'Palantir', type: 'Data Analytics', has: 'Data analysis', missing: 'No coordination, no execution', color: 'border-[#E8E4DC]' },
           ].map((c, i) => (

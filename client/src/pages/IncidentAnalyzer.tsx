@@ -538,7 +538,7 @@ export default function IncidentAnalyzer() {
                 See How Readiness OS Would Have<br className="hidden md:block" /> Transformed Your Outcome
               </h1>
               <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
-                Describe any strategic situation your company faced and watch our AI analyze it, generate a custom playbook, and simulate full execution in under 12 minutes.
+                Describe any strategic situation your company faced and watch our AI analyze it, generate a custom Prepared Response, and simulate full execution in under 12 minutes.
               </p>
             </div>
 
@@ -1441,7 +1441,7 @@ export default function IncidentAnalyzer() {
                 <div style={{ width: 48, height: 1.5, background: '#2B8A6E', margin: '0 auto 20px' }} />
                 <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">Your Executive Report is Ready</h2>
                 <p className="text-[#6B7280] max-w-lg mx-auto">
-                  Download your strategic analysis, playbook, and simulation results as professional PDF reports.
+                  Download your strategic analysis, Prepared Response, and simulation results as professional PDF reports.
                 </p>
               </CardContent>
             </Card>

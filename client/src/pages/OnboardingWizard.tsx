@@ -170,7 +170,7 @@ export default function OnboardingWizard() {
             Building Your <em style={{ fontStyle: "italic", color: GOLD_LT }}>Execution Foundation</em>
           </h1>
           <p style={{ fontSize: 14, fontWeight: 400, color: "rgba(255,255,255,0.5)", marginBottom: 32, maxWidth: 560 }}>
-            This session takes about 20 minutes. We'll configure your org profile, map your IDEA framework, and select your priority playbooks. Integration and activation happen over weeks 1–4 with your implementation team.
+            This session takes about 20 minutes. We'll configure your org profile, map your IDEA framework, and select your priority Prepared Responses. Integration and activation happen over weeks 1–4 with your implementation team.
           </p>
 
           {/* Step indicator */}

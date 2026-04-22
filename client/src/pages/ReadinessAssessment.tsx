@@ -61,7 +61,7 @@ const DOMAIN_CONFIG = {
     label: "GROWTH & POSITIONING",
     icon: Rocket,
     color: "teal",
-    playbooks: "58 Prepared responses",
+    playbooks: "58 Prepared Responses",
     categories: "Market Entry \u2022 M&A \u2022 Product Launch",
     tagline: "How fast can you capture opportunities?",
     bg: "bg-[#2B8A6E]",
@@ -77,7 +77,7 @@ const DOMAIN_CONFIG = {
     label: "RISK & RESILIENCE",
     icon: Shield,
     color: "navy",
-    playbooks: "74 Prepared responses",
+    playbooks: "74 Prepared Responses",
     categories: "Crisis \u2022 Cyber \u2022 Regulatory",
     tagline: "How ready are you to contain threats?",
     bg: "bg-[#0A0F2E]",
@@ -93,7 +93,7 @@ const DOMAIN_CONFIG = {
     label: "TRANSFORMATION",
     icon: Settings,
     color: "gold",
-    playbooks: "54 Prepared responses",
+    playbooks: "54 Prepared Responses",
     categories: "Digital Transformation \u2022 AI Governance",
     tagline: "How effectively do you execute change?",
     bg: "bg-[#C9A84C]",
@@ -776,7 +776,7 @@ export default function ReadinessAssessment() {
                   Based on your score of <span className={`font-bold ${domainConfig.textLight}`}>{result.score}/100</span>,{" "}
                   {result.score < 60
                     ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
-                    : `we recommend starting with our prepared response library — activate ${domainConfig.playbooks.toLowerCase()} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
+                    : `we recommend starting with our prepared response library — activate ${domainConfig.playbooks} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
                 </p>
               </CardContent>
             </Card>

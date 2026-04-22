@@ -196,7 +196,7 @@ export default function PilotProgram() {
   useEffect(() => {
     updatePageMetadata({
       title: "90-Day Pilot Program - Readiness OS | Strategic Readiness Platform",
-      description: "Validate Readiness OS' 12-minute coordination claim with a structured 90-day pilot. Includes 5 playbooks, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
+      description: "Validate Readiness OS' 12-minute coordination claim with a structured 90-day pilot. Includes 5 Prepared Responses, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
       ogTitle: "Readiness OS Pilot Program | 90 Days to Transform Strategic Readiness",
       ogDescription: "Fortune 1000 pilot program with ROI measurement, live activation, and clear conversion path.",
     });

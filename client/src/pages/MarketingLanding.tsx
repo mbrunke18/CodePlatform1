@@ -35,7 +35,7 @@ export default function MarketingLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS - Strategic Readiness Platform | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 playbooks, 5 intelligence modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 Prepared Responses, 5 intelligence modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "Readiness OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Readiness Platform. Active Fortune 1000 pilot program. Identify → Detect → Execute → Advance.",
     });
@@ -123,7 +123,7 @@ export default function MarketingLanding() {
               When a strategic trigger fires — a competitor launches, a regulation shifts, a market window opens — enterprises typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">spend 30 days just getting organized</span>. Readiness OS compresses that entire mobilization cycle to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
-              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched playbook: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
+              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched Prepared Response: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
               We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>
@@ -182,7 +182,7 @@ export default function MarketingLanding() {
                   <Badge className="mb-4 bg-[#0A0F2E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Advance</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Retrospect™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
-                    Capture lessons, refine playbooks. Every execution makes your organization smarter.
+                    Capture lessons, refine Prepared Responses. Every execution makes your organization smarter.
                   </p>
                 </div>
               </div>
