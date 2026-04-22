@@ -123,28 +123,28 @@ export default function InvestorLanding() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 size="lg"
-                onClick={() => setLocation("/request-access")}
+                onClick={() => window.location.href = 'mailto:mbrunke@vaughnmartin.com'}
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-request-pilot"
               >
-                Schedule a Conversation
+                Talk to the Founder →
               </Button>
               <Button
                 size="lg"
-                onClick={() => setLocation("/executive-demo-walkthrough")}
+                onClick={() => setLocation("/command-tower")}
                 className="bg-[#0A0F2E] text-white border border-white/20 hover:bg-[#141B45]"
+                data-testid="button-see-live"
+              >
+                See the System Live →
+              </Button>
+              <Button
+                size="lg"
+                onClick={() => setLocation("/12-minute-experience")}
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10"
                 data-testid="button-see-demo"
               >
-                See 8-Minute Demo
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => setLocation("/investor-resources")}
-                className="border-white/20 text-white hover:bg-white/10"
-                data-testid="button-investor-resources"
-              >
-                Investor Resources
+                12-Minute Test Drive
               </Button>
             </div>
           </div>

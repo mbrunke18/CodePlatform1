@@ -728,6 +728,18 @@ export default function TwelveMinuteTestDrive() {
 
             {/* CTA */}
             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+
+              {/* Investor path */}
+              <div style={{ padding: '20px 28px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', maxWidth: 520, width: '100%' }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Evaluating for Investment?</div>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: '0 0 12px' }}>
+                  Talk directly with the founder — no intermediary, no deck-first process.
+                </p>
+                <a href="mailto:mbrunke@vaughnmartin.com" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', color: GOLD, textDecoration: 'none' }}>
+                  mbrunke@vaughnmartin.com →
+                </a>
+              </div>
+
               <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>
                 Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real playbooks?
               </p>
