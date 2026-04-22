@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 21, 2026 (rev 23) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 22, 2026 (rev 25) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1875,3 +1875,81 @@ https://vaughnmartin.com/demo-access?token=speedrun2026&returnTo=/12-minute-expe
 ### Route Registration Note
 `/executive-departure` (`ExecutiveDepartureBrief.tsx`) was not registered in `App.tsx` until April 22, 2026. It is now live. The page is fully public (no auth required, no StandardNav) — designed as a single-URL boardroom sales instrument for CFO departure scenario demos sent directly to a board chair or CFO prospect.
 
+
+---
+
+## 40. Dr. Kerry Huang Full Repost — April 22, 2026 (rev 25)
+
+### Context
+Dr. Kerry Huang (Fortune 50 AVP, ESI Top 1% Researcher, Forbes Business Council, 408-firm governance study) posted the following to his full LinkedIn professional network on April 20, 2026 — naming Martin Brunke by name. This is a public repost, distinct from his earlier private comment. The full text is now captured across four platform pages.
+
+### Full Repost Text (LOCKED — exact words, do not paraphrase)
+
+> "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions. Martin is building the architecture that makes clarity possible before pressure arrives. My research focuses on what determines whether that clarity actually converts into action when the system has not yet confirmed it is safe to move. Neither side replaces the other. Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does. The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
+
+**Source:** LinkedIn repost, April 20, 2026. Labeled "REPOSTED PUBLICLY" in the original image record (attached_assets/monday_comments_v3_1776872539473.png).
+
+### Where It Lives (4 pages)
+
+| Page | Component | Placement |
+|---|---|---|
+| `/investor-landing` | `InvestorLanding.tsx` | Featured quote block below social proof grid — full 4-paragraph card, gold left border, closing line highlighted in gold |
+| `/research` | `Research.tsx` | Dr. Huang LinkedIn Validation section — full post in gold left-bordered block, closing line in gold |
+| `/founder-story` | `FounderStory.tsx` | Navy block with gold left border, immediately after the 408-firm research anchor in Section V |
+| `/` (Homepage) | `Homepage.tsx` | Compact companion callout beneath the "That is governance as pre-commitment" private exchange quote |
+
+### Key Phrases and Their Significance (for copy decisions)
+- **"Martin is building the architecture that makes clarity possible before pressure arrives."** — Names the founder publicly. Used as standalone pull quote in InvestorLanding testimonials grid.
+- **"The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."** — Closing sentence. Rendered in gold on all pages. This is the most investor-significant sentence — positions Readiness OS at the frontier of governance research.
+- **"AwaCourage"** — Dr. Huang's independent governance framework. Appears throughout as the complementary function to Readiness OS architecture. Never modify or define this term — it belongs to Dr. Huang's research.
+- **"Both functions have to work, or neither does."** — Validates the interdependence thesis. Preserved as written.
+
+### Previously Captured (Prior Revisions)
+The following were already in the platform before April 22 and are NOT the repost:
+- "That is governance as pre-commitment, not governance as review." — private exchange quote, Homepage hero
+- "Technology alone has zero statistical relationship with collaboration improvement." — 408-firm research finding, FounderStory research anchor
+- "Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible." — middle paragraph of the repost, previously shown in isolation (now shown as part of the full repost)
+
+---
+
+## 41. Trigger Alert Email — Specific Deep Links — April 22, 2026 (rev 25)
+
+### Problem Fixed
+Prior to this revision, both buttons in trigger alert emails pointed to static pages regardless of which trigger fired:
+- "Review Live Detection →" → always `/live-detection-feed`
+- "Activate: [Playbook Name] →" → always `/live-activation-center`
+
+The button text was trigger-specific but the URLs were not.
+
+### Change: Email Links (`server/services/SignalEvaluationService.ts`)
+
+Both buttons now include URL parameters tied to the specific detection:
+
+```
+/live-detection-feed?trigger=${encodeURIComponent(detection.triggerName)}
+/live-activation-center?playbookName=${encodeURIComponent(detection.recommendedPlaybook)}
+```
+
+### Change: LiveDetectionFeed (`client/src/pages/LiveDetectionFeed.tsx`)
+
+Reads `?trigger=` on load. When a match is found:
+- The matching detection card gets a **gold 2px border** and `box-shadow: 0 0 0 3px gold`
+- A **gold banner above the card** reads "▼ Detection from your alert email"
+- The top color bar on the card switches from confidence color to gold
+- The page **auto-scrolls** to the card 400ms after data loads (smooth scroll, `block: center`)
+
+Matching logic: `detection.triggerName.toLowerCase().includes(urlTriggerName.toLowerCase().slice(0, 12))` — partial match on first 12 chars to handle URL encoding differences.
+
+### Change: LiveActivationCenter (`client/src/pages/LiveActivationCenter.tsx`)
+
+Reads `?playbookName=` in addition to the existing `?playbook=` (key-based) param.
+
+Resolution order:
+1. `?playbook=ma-day1` (exact key match against `DEFAULT_PLAYBOOKS`) — existing behavior
+2. `?playbookName=Ransomware%20Response` (case-insensitive name match on first 8 chars) — new behavior
+3. Falls back to `ma-day1` if neither matches
+
+`DEFAULT_PLAYBOOKS` keys: `ma-day1` (M&A Day 1 Integration), `ransomware` (Ransomware Response), `ai-governance` (AI Governance Framework).
+
+### Effect
+Every trigger alert email sent after this revision takes the reader directly to the specific detection that fired — highlighted in gold, auto-scrolled to — and pre-selects the recommended playbook in the activation center. One click from email to execution-ready.
