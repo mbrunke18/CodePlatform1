@@ -150,6 +150,24 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── CHALLENGE SECTION ────────────────────────────────────────────── */}
+        <section className="px-6 py-16" style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+          <div className="max-w-4xl mx-auto">
+            <div style={{ borderLeft: '4px solid #C9A84C', borderTop: '1px solid rgba(201,168,76,0.25)', borderRight: '1px solid rgba(201,168,76,0.25)', borderBottom: '1px solid rgba(201,168,76,0.25)', padding: '40px 48px', background: 'rgba(255,255,255,0.02)' }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 20 }}>The Question That Closes Every Conversation</div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', lineHeight: 1.35, marginBottom: 20 }}>
+                If a ransomware attack, an activist investor, or a regulatory inquiry hit one of your portfolio companies today — what would happen in the next 12 minutes?
+              </p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, marginBottom: 28, maxWidth: 680 }}>
+                Who calls who? Where's the brief? Who owns the response? Who authorizes it? Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the stock drops, the competitor acts. That gap is the business. Every Fortune 1000 has it. None have solved it. The cost per trigger: $50M to $500M.
+              </p>
+              <a href="/12-minute-experience" style={{ display: 'inline-block', fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, padding: '14px 36px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none' }}>
+                See What 12 Minutes Looks Like →
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* ── COMPETITIVE MOAT SECTION ─────────────────────────────────────── */}
         <section className="py-20 px-6" style={{ background: '#0A0F2E', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
           <div className="max-w-5xl mx-auto">

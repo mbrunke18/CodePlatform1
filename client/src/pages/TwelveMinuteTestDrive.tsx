@@ -299,6 +299,16 @@ export default function TwelveMinuteTestDrive() {
         {/* ── STEP 1: Scenario Selection ─────────────────────────────────── */}
         {step === 1 && (
           <div>
+            {/* Challenge question — the emotional hook */}
+            <div style={{ marginBottom: 40, padding: '32px 40px', background: 'rgba(255,255,255,0.03)', borderLeft: `4px solid ${GOLD}`, borderTop: '1px solid rgba(201,168,76,0.2)', borderRight: '1px solid rgba(201,168,76,0.2)', borderBottom: '1px solid rgba(201,168,76,0.2)', maxWidth: 720, margin: '0 auto 40px' }}>
+              <p style={{ ...GEO, fontSize: 'clamp(20px,2.8vw,30px)', fontWeight: 700, color: '#fff', lineHeight: 1.4, marginBottom: 16 }}>
+                If any of these scenarios hit your organization today — what would you do?
+              </p>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, margin: 0 }}>
+                Who calls who? Where's the brief? Who owns it? Who authorizes? Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
+              </p>
+            </div>
+
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 16 }}>
                 <div style={{ width: 24, height: 1, background: GOLD }} />
