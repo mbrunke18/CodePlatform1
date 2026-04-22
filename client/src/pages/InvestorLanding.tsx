@@ -1333,6 +1333,127 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* ── Product Roadmap: Phase 1 → Phase 2 ── */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="vm-section-label justify-center mb-5"><span>Product Roadmap</span></div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(30px,4vw,48px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.15, marginBottom: 16 }}>
+                Two phases. One thesis. Expanding market.
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 600, margin: '0 auto', lineHeight: 1.7 }}>
+                The same preparation infrastructure applied first to external triggers, then to internal strategic initiative deployment — the two places where enterprise execution breaks most often.
+              </p>
+            </div>
+
+            {/* Phase comparison grid */}
+            <div className="grid md:grid-cols-2 gap-0 mb-12" style={{ border: '1px solid #E8E4DC' }}>
+
+              {/* Phase 1 */}
+              <div style={{ borderRight: '1px solid #E8E4DC', padding: '40px 44px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
+                  <div>
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>Phase 1 — Now</div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: '#0A0F2E', margin: 0, lineHeight: 1.2 }}>External Trigger Response</h3>
+                  </div>
+                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', padding: '4px 10px', background: '#2B8A6E', color: '#fff', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, flexShrink: 0 }}>Live · Revenue</span>
+                </div>
+
+                <div style={{ marginBottom: 24, paddingBottom: 24, borderBottom: '1px solid #F0EDE4' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#0A0F2E', marginBottom: 8, letterSpacing: '0.03em' }}>The failure mode this solves:</div>
+                  <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
+                    A strategic event fires — activist investor, ransomware, regulatory inquiry, competitive disruption. The enterprise spends 30 days just mobilizing: who's in the room, what's the plan, who owns what. Execution hasn't started. The window is already closing.
+                  </p>
+                </div>
+
+                <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #F0EDE4' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#2B8A6E', marginBottom: 8 }}>The fix:</div>
+                  <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
+                    Pre-stage 170 responses before the trigger fires. When the signal crosses the confidence threshold, the playbook is already built, stakeholders pre-assigned, and executive authorization takes 8 minutes — not 30 days.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 mb-8">
+                  {[
+                    { n: '221', l: 'Trigger types monitored' },
+                    { n: '170', l: 'Pre-staged playbooks' },
+                    { n: '12 min', l: 'Signal to execution' },
+                  ].map(s => (
+                    <div key={s.n} style={{ textAlign: 'center' as const, padding: '14px 8px', background: '#F8F7F4', border: '1px solid #E8E4DC' }}>
+                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#2B8A6E', lineHeight: 1 }}>{s.n}</div>
+                      <div style={{ fontSize: 10, color: '#6B7280', marginTop: 4, lineHeight: 1.4 }}>{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6 }}>
+                  <span style={{ fontWeight: 700, color: '#0A0F2E' }}>Scenarios covered: </span>
+                  Activist investor · Regulatory inquiry · Ransomware · Competitive disruption · Supply chain failure · Leadership transition · M&A event · Market entry
+                </div>
+              </div>
+
+              {/* Phase 2 */}
+              <div style={{ padding: '40px 44px', background: '#FAFAF8' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
+                  <div>
+                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 6 }}>Phase 2 — 2026–2027</div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: '#0A0F2E', margin: 0, lineHeight: 1.2 }}>Internal Initiative Deployment</h3>
+                  </div>
+                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', padding: '4px 10px', background: 'rgba(201,168,76,0.12)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.35)', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, flexShrink: 0 }}>Roadmap</span>
+                </div>
+
+                <div style={{ marginBottom: 24, paddingBottom: 24, borderBottom: '1px solid #E8E4DC' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#0A0F2E', marginBottom: 8, letterSpacing: '0.03em' }}>The failure mode this solves:</div>
+                  <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
+                    Months of strategy work. SVP sign-off. GTM fully built — campaigns, training, enablement, field communication. Launch happens. Six weeks later: adoption is 40% of projection. The strategy didn't fail. GTM didn't fail. Execution broke at the handoff between what was approved and what changed at the frontline.
+                  </p>
+                </div>
+
+                <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #E8E4DC' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#C9A84C', marginBottom: 8 }}>The fix:</div>
+                  <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
+                    Same preparation thesis applied inward. Before the SVP signs off, pre-stage what changes in the rep's day, how it shows up in comp, what managers reinforce in 1:1s, and what gets deprioritized. Ownership is built in the preparation phase — not assumed at launch.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 mb-8">
+                  {[
+                    { n: '10–25', l: 'Major initiatives per enterprise per year' },
+                    { n: '40%', l: 'Average adoption gap at 90 days' },
+                    { n: '10×', l: 'Larger market than external triggers alone' },
+                  ].map(s => (
+                    <div key={s.n} style={{ textAlign: 'center' as const, padding: '14px 8px', background: '#fff', border: '1px solid #E8E4DC' }}>
+                      <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{s.n}</div>
+                      <div style={{ fontSize: 10, color: '#6B7280', marginTop: 4, lineHeight: 1.4 }}>{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6 }}>
+                  <span style={{ fontWeight: 700, color: '#0A0F2E' }}>Scenarios covered: </span>
+                  Product launch · Pricing change · M&A integration · Org restructuring · New market entry · Sales model shift · Platform migration · Culture initiative
+                </div>
+              </div>
+            </div>
+
+            {/* Connecting thesis line */}
+            <div style={{ background: '#0A0F2E', padding: '32px 44px', display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap' as const }}>
+              <div style={{ width: 3, height: 56, background: '#C9A84C', flexShrink: 0 }} />
+              <div style={{ flex: 1, minWidth: 280 }}>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)', marginBottom: 10 }}>The unifying thesis</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: '#fff', margin: 0, lineHeight: 1.5, fontStyle: 'italic' as const }}>
+                  "Same platform. Same preparation thesis. The failure mode is identical — the handoff between what was approved and what actually executed at the front line."
+                </p>
+              </div>
+              <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.35)', marginBottom: 6 }}>Total addressable expansion</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>$127B+</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>Execution infrastructure market</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-6 bg-[#0A0F2E] text-white">
           <div className="max-w-4xl mx-auto text-center">
