@@ -581,6 +581,7 @@ function Router() {
         <Route path="/shein-demo" component={SHEINTrendDemo} />
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
         {renderRedirects(["/executive-simulation", "/simulation-demo"], "/industry-demos")}
+        <Route path="/executive-departure" component={lazy(() => import('./pages/ExecutiveDepartureBrief'))} />
         <Route path="/platform-overview" component={PlatformOverview} />
         <Route path="/capabilities" component={PlatformCapabilities} />
         {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
