@@ -119,7 +119,7 @@ const useCases = [
   {
     trigger: "Competitor launches new product",
     without: "Weeks just to assemble the right team and align stakeholders — execution hasn't started",
-    with: "Readiness OS detects the launch, fires the Competitive Response playbook, creates 24 tasks across Product, Marketing, Sales, and Legal within 12 minutes",
+    with: "Readiness OS detects the launch, fires the Competitive Response Prepared Response, creates 24 tasks across Product, Marketing, Sales, and Legal within 12 minutes",
     icon: Target,
   },
   {

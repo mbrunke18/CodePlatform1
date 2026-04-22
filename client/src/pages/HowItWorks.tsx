@@ -396,7 +396,7 @@ export default function HowItWorks() {
                 color: "#A78BFA",
                 bg: "#fff",
                 title: "Every Execution Gets Smarter",
-                desc: "After each prepared response closes, the system generates an executive outcome summary. Lessons feed back into the playbook. The organization's institutional knowledge compounds.",
+                desc: "After each prepared response closes, the system generates an executive outcome summary. Lessons feed back into the Prepared Response. The organization's institutional knowledge compounds.",
                 sub: "Your competitive moat grows with each event."
               }
             ].map((phase, i) => (

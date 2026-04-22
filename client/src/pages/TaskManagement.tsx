@@ -217,7 +217,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     if (addedLibraryIds.has(template.id)) {
       toast({
         title: "Already Added",
-        description: `"${template.title}" is already in your playbook.`,
+        description: `"${template.title}" is already in your Prepared Response library.`,
         variant: "destructive",
       });
       return;
@@ -236,7 +236,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     setTasks([...tasks, newTask]);
     toast({
       title: "Task Added",
-      description: `"${template.title}" has been added to your playbook.`,
+      description: `"${template.title}" has been added to your Prepared Response library.`,
     });
   };
   
@@ -247,7 +247,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     if (phaseTasks.length === 0) {
       toast({
         title: "No New Tasks",
-        description: `All ${IDEA_PHASES[phase].label} tasks are already in your playbook.`,
+        description: `All ${IDEA_PHASES[phase].label} tasks are already in your Prepared Response library.`,
       });
       return;
     }

@@ -134,7 +134,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'Coordinated Response',
     subtitle: '6 Stakeholders, 12 Minutes',
-    narration: 'One click activates your playbook. CFO, CMO, Legal, Ops, Sales — all moving in parallel.',
+    narration: 'One click activates your Prepared Response. CFO, CMO, Legal, Ops, Sales — all moving in parallel.',
     visual: 'execute'
   },
   {

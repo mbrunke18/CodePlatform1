@@ -132,7 +132,7 @@ const TIERS = [
 const FAQS = [
   {
     q: "Why is pricing based on deployment scope instead of users?",
-    a: "Because headcount doesn't drive execution value — coordination depth does. A 200-person company executing a crisis in 12 minutes gets the same outcome as a 20,000-person company executing the same playbook. Charging per seat penalizes adoption and rewards the wrong behavior. Every tier includes unlimited users so you never have to decide who gets access.",
+    a: "Because headcount doesn't drive execution value — coordination depth does. A 200-person company executing a crisis in 12 minutes gets the same outcome as a 20,000-person company executing the same Prepared Response. Charging per seat penalizes adoption and rewards the wrong behavior. Every tier includes unlimited users so you never have to decide who gets access.",
   },
   {
     q: "What exactly changes between tiers?",

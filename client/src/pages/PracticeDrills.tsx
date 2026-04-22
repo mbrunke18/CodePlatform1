@@ -332,7 +332,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   <Label htmlFor="prepared response" className="font-bold text-[#0A0F2E]">Select Prepared Response</Label>
                   <Select value={selectedPlaybookId} onValueChange={setSelectedPlaybookId}>
                     <SelectTrigger id="prepared response" className="border-[#E8E4DC]" data-testid="select-prepared response">
-                      <SelectValue placeholder="Choose a playbook..." />
+                      <SelectValue placeholder="Choose a Prepared Response..." />
                     </SelectTrigger>
                     <SelectContent>
                       {playbooks.map((playbook: any) => (

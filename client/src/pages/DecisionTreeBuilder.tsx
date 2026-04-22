@@ -467,7 +467,7 @@ export default function DecisionTreeBuilder() {
                       </label>
                       <Select>
                         <SelectTrigger className="rounded-none border-[#E8E4DC] h-12 bg-white">
-                          <SelectValue placeholder="Select playbook..." />
+                          <SelectValue placeholder="Select Prepared Response..." />
                         </SelectTrigger>
                         <SelectContent className="rounded-none border-[#E8E4DC]">
                           <SelectItem value="public-disclosure">Public Disclosure Prepared Response</SelectItem>

@@ -198,7 +198,7 @@ export const enhancedMonitoringMetrics = {
 export const DEMO_EXECUTION_PLANS = {
   competitive_response: {
     id: 'exec-plan-001',
-    name: 'Competitive Response Playbook',
+    name: 'Competitive Response Protocol',
     description: 'Coordinated response to aggressive competitor pricing attack',
     targetExecutionTime: 12,
     scenario: 'Competitor launches 15% price cut + aggressive marketing campaign',
@@ -257,7 +257,7 @@ export const DEMO_EXECUTION_PLANS = {
           },
           {
             sequence: 4,
-            title: 'Product activates retention playbook',
+            title: 'Product activates retention Prepared Response',
             description: 'IF Legal cleared → Enable upgrade path, activate customer success outreach, deploy competitive feature bundle',
             role: 'CPO',
             estimatedMinutes: 3,
@@ -308,7 +308,7 @@ export const DEMO_EXECUTION_PLANS = {
   
   compliance_deadline: {
     id: 'exec-plan-002',
-    name: 'Compliance Remediation Playbook',
+    name: 'Compliance Remediation Protocol',
     description: 'Emergency response to regulatory compliance deadline',
     targetExecutionTime: 12,
     scenario: 'GDPR audit deadline <30 days with readiness score below 80%',

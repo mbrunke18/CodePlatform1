@@ -248,7 +248,7 @@ function TwoPhasePlaybookSelector() {
             ) : detailLoading ? (
               <div className="flex items-center justify-center h-full gap-2 text-[#6B7280]">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                <span className="text-sm">Loading full playbook...</span>
+                <span className="text-sm">Loading full Prepared Response...</span>
               </div>
             ) : detail ? (
               <div className="space-y-4">

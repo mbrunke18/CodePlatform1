@@ -42,7 +42,7 @@ export default function CreateScenarioButton({
     } catch (error) {
       toast({ 
         title: 'Creation Failed',
-        description: 'Failed to create playbook. Please try again.',
+        description: 'Failed to create Prepared Response. Please try again.',
         variant: 'destructive',
       });
     }

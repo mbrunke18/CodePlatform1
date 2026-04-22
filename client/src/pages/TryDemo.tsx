@@ -1620,7 +1620,7 @@ export default function TryDemo() {
                                 Open Your Activated Prepared Response
                                 <ArrowRight style={{ width: 16, height: 16 }} />
                               </button>
-                              <p style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 10 }}>No login required — this is the full playbook, not a preview.</p>
+                              <p style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 10 }}>No login required — this is the full Prepared Response, not a preview.</p>
                             </div>
                           </div>
                         ) : null;

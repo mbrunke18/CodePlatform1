@@ -760,7 +760,7 @@ export default function IndustryExperience() {
               <div className="text-sm text-[#0A0F2E] uppercase tracking-wider mb-3">Industry Scenario</div>
               <h2 className="text-2xl md:text-3xl font-bold text-[#0A0F2E] mb-4">{industry.scenario}</h2>
               <p className="text-lg text-[#6B7280] leading-relaxed">
-                Configure your own playbook, triggers, data sources, and customizations. Then watch your personalized execution come alive as a real signal fires.
+                Configure your own Prepared Response, triggers, data sources, and customizations. Then watch your personalized execution come alive as a real signal fires.
               </p>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}

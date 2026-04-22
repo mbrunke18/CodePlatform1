@@ -1625,17 +1625,30 @@ function CredibilitySection() {
               </p>
             </div>
 
-            {/* Dr. Huang Repost Callout */}
-            <div style={{ maxWidth: 800, margin: "20px auto 0", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.14)", borderTop: "2px solid rgba(201,168,76,0.3)", padding: "24px 32px" }}>
-              <div style={{ display: "flex", alignItems: "flex-start", gap: 20 }}>
-                <div style={{ flex: 1 }}>
-                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.55)", marginBottom: 12 }}>Reposted to his full network · April 20, 2026</p>
-                  <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(16px,1.5vw,19px)", fontStyle: "italic", color: "rgba(255,255,255,0.82)", lineHeight: 1.7, marginBottom: 12 }}>
-                    "The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
-                  </p>
-                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", margin: 0 }}>
-                    Dr. Kerry Huang · ESI Top 1% Researcher · Forbes Business Council · Named Martin Brunke by name, publicly
-                  </p>
+          </div>
+
+          {/* Dr. Huang Public Repost — Full LinkedIn Post */}
+          <div style={{ maxWidth: 800, margin: "0 auto 64px", background: NAVY, border: "1px solid rgba(201,168,76,0.18)", borderLeft: "4px solid rgba(201,168,76,0.7)" }}>
+            <div style={{ padding: "32px 40px 28px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+                <div style={{ width: 20, height: 1, background: "rgba(201,168,76,0.4)" }} />
+                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.75)" }}>Posted to his full professional network · LinkedIn · April 20, 2026</span>
+                <div style={{ width: 20, height: 1, background: "rgba(201,168,76,0.4)" }} />
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,1.8vw,22px)", fontStyle: "italic", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, marginBottom: 18 }}>
+                "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,1.8vw,22px)", fontStyle: "italic", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, marginBottom: 18 }}>
+                Martin is building the architecture that makes clarity possible before pressure arrives. My research focuses on what determines whether that clarity actually converts into action when the system has not yet confirmed it is safe to move. Neither side replaces the other.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,1.8vw,22px)", fontStyle: "italic", color: GOLD, lineHeight: 1.75, marginBottom: 28, fontWeight: 600 }}>
+                The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
+              </p>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 20, display: "flex", alignItems: "center", gap: 16 }}>
+                <div style={{ width: 28, height: 1, background: "rgba(201,168,76,0.35)" }} />
+                <div>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Dr. Kerry Huang</p>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.02em", margin: 0 }}>Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Named Martin Brunke by name to his full professional network</p>
                 </div>
               </div>
             </div>

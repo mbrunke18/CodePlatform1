@@ -535,7 +535,7 @@ export default function ExecutiveSimulationDemo() {
                     <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">3</span>
                     </div>
-                    <span>You activated the playbook, triggering automatic stakeholder notification</span>
+                    <span>You activated the Prepared Response, triggering automatic stakeholder notification</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">

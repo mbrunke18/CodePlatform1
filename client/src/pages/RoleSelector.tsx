@@ -31,7 +31,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Executive Officer',
     icon: Briefcase,
     hookQuestion: 'What percentage of your strategic initiatives actually deliver on time and on budget?',
-    situationLine: 'Board calls at 7 AM. Activist investor filed. You have no playbook.',
+    situationLine: 'Board calls at 7 AM. Activist investor filed. You have no Prepared Response staged.',
     keyMetric: '$144M execution gap closed',
     metricBefore: '30+ days',
     metricAfter: '12 min',
@@ -163,7 +163,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Compliance Officer',
     icon: FileCheck,
     hookQuestion: 'Audit notification arrives Monday. How long before 6 teams have tasks staged and ready?',
-    situationLine: 'Audit in 10 days. Six departments. No pre-staged compliance playbook. Starting from scratch.',
+    situationLine: 'Audit in 10 days. Six departments. No pre-staged compliance Prepared Response. Starting from scratch.',
     keyMetric: 'Audit stress eliminated',
     metricBefore: '10 days scrambling',
     metricAfter: '2 days ready',
@@ -380,7 +380,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <div style={{ marginTop: 18, padding: '12px 18px', background: '#F8F7F4', borderRadius: 0, border: '1px solid #E8E4DC', display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD, flexShrink: 0 }} className="animate-pulse" />
               <p style={{ fontSize: 12, color: '#374151', margin: 0, lineHeight: 1.5 }}>
-                <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your playbook, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
+                <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your Prepared Response, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
               </p>
               <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, fontWeight: 700, color: GOLD }}>
                 <Play size={10} /> No login required

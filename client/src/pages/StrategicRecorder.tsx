@@ -49,7 +49,7 @@ const DOC_TYPES = [
     icon: AlertTriangle,
     label: 'Incident Report',
     description: 'Formal incident logs, regulatory filings, event records',
-    placeholder: 'Paste a formal incident report, regulatory filing, or structured event record. Include timeline, affected systems or stakeholders, actions taken, and outcomes. AI will extract the response pattern and convert it to a repeatable playbook...',
+    placeholder: 'Paste a formal incident report, regulatory filing, or structured event record. Include timeline, affected systems or stakeholders, actions taken, and outcomes. AI will extract the response pattern and convert it to a repeatable Prepared Response...',
     example: "Incident Report #2023-047\nClassification: Critical — Tier 1\nDate: September 14, 2023\nDetected: 2:14 AM\nNotification of CISO: 9:00 AM (+6.8 hours)\nIR firm engaged: September 16 (+48 hours from detection)\nContainment complete: September 17, 6:00 PM (+63 hours)\n\nRoot cause: Phishing attack on VPN credentials 72 hours prior.\nRegulatory deadline: SEC Form 8-K required within 72 hours of material determination.\n8-K filed: September 17 (within deadline, but 48 hours after material determination).\n\nFinancial impact: $4.2M direct IR costs + $2.1M operational downtime.",
   },
   {
