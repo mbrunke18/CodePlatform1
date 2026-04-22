@@ -188,6 +188,11 @@ export default function LiveDetectionFeed() {
   const acknowledged = detections.filter(d => d.status === 'acknowledged');
 
   if (!authLoading && !isAuthenticated) {
+    // When arriving from an email alert link, find the specific detection that fired
+    const emailDetection = urlTriggerName
+      ? detections.find(d => d.triggerName.toLowerCase().includes(urlTriggerName.toLowerCase().slice(0, 12)))
+      : null;
+
     return (
       <div style={{ background: '#f8f7f4', minHeight: '100vh' }}>
         <div style={{ background: NAVY, padding: '56px 48px 48px', position: 'relative', overflow: 'hidden' }}>
@@ -224,35 +229,76 @@ export default function LiveDetectionFeed() {
         </div>
 
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px' }}>
-          <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Shield size={16} color={NAVY} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Live Feed Preview — Pilot Access Required</span>
-          </div>
 
-          {[
-            { trigger: 'AI Competitive Disruption', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'AI Competitive Response Protocol' },
-            { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Prepared Response' },
-            { trigger: 'Geopolitical Supply Chain Risk', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Supply Chain Resilience Protocol' },
-          ].map((item, i) => (
-            <div key={i} style={{
-              background: '#fff', border: `1px solid ${item.critical ? 'rgba(192,57,43,0.2)' : '#E8E4DC'}`,
-              borderLeft: `5px solid ${item.critical ? '#C0392B' : GOLD}`,
-              borderRadius: 0, padding: '20px 24px', marginBottom: 12,
-              filter: i > 0 ? 'blur(3px)' : 'none',
-              userSelect: 'none', position: 'relative',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-                <div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.trigger}</div>
-                  <div style={{ fontSize: 12, color: '#6B7280' }}>Source: {item.source} · {item.time}</div>
-                </div>
-                <div style={{ background: item.confidence >= 85 ? 'rgba(192,57,43,0.1)' : 'rgba(201,168,76,0.1)', color: item.confidence >= 85 ? '#C0392B' : '#8B6914', border: `1px solid ${item.confidence >= 85 ? 'rgba(192,57,43,0.25)' : 'rgba(201,168,76,0.25)'}`, borderRadius: 0, padding: '3px 10px', fontSize: 12, fontWeight: 700 }}>
-                  {item.confidence}% confidence
+          {/* Email link: show the real detection that fired */}
+          {emailDetection ? (
+            <div style={{ marginBottom: 36 }}>
+              <div style={{ marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 8, height: 8, background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+                <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Detection That Triggered Your Alert</span>
+              </div>
+              <div style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '6px 16px' }}>
+                ▼ Live detection — received from your alert email
+              </div>
+              <div style={{ background: '#fff', border: `2px solid ${GOLD}`, boxShadow: `0 0 0 3px ${GOLD}33`, borderTop: 'none' }}>
+                <div style={{ height: 4, background: GOLD }} />
+                <div style={{ padding: '20px 24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                    <AlertTriangle size={15} style={{ color: confidenceColor(emailDetection.confidenceScore), flexShrink: 0 }} />
+                    <span style={{ color: NAVY, fontSize: 16, fontWeight: 700 }}>{emailDetection.triggerName}</span>
+                    <span style={{ background: `${confidenceColor(emailDetection.confidenceScore)}15`, color: confidenceColor(emailDetection.confidenceScore), border: `1px solid ${confidenceColor(emailDetection.confidenceScore)}30`, fontSize: 11, fontWeight: 700, padding: '2px 8px' }}>
+                      {emailDetection.confidenceScore}% confidence
+                    </span>
+                  </div>
+                  <div style={{ color: '#555', fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>
+                    {emailDetection.signalDescription.substring(0, 320)}{emailDetection.signalDescription.length > 320 ? '…' : ''}
+                  </div>
+                  <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 16 }}>
+                    <span style={{ color: '#666', fontSize: 12 }}>Source: <strong>{emailDetection.signalSource}</strong></span>
+                    <span style={{ color: '#666', fontSize: 12 }}>Domain: <strong>{emailDetection.triggerDomain}</strong></span>
+                    <span style={{ color: '#666', fontSize: 12 }}>Detected: <strong>{timeAgo(emailDetection.detectedAt)}</strong></span>
+                  </div>
+                  {emailDetection.recommendedPlaybook && (
+                    <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '10px 14px' }}>
+                      <span style={{ color: TEAL, fontSize: 12, fontWeight: 700 }}>Recommended Prepared Response: </span>
+                      <span style={{ color: NAVY, fontSize: 12, fontWeight: 600 }}>{emailDetection.recommendedPlaybook}</span>
+                    </div>
+                  )}
                 </div>
               </div>
-              <div style={{ fontSize: 12, color: '#2B8A6E', fontWeight: 600 }}>→ {item.playbook}</div>
             </div>
-          ))}
+          ) : (
+            <div>
+              <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
+                <Shield size={16} color={NAVY} />
+                <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Live Feed Preview</span>
+              </div>
+              {[
+                { trigger: 'AI Competitive Disruption', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'AI Competitive Response Protocol' },
+                { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Prepared Response' },
+                { trigger: 'Geopolitical Supply Chain Risk', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Supply Chain Resilience Protocol' },
+              ].map((item, i) => (
+                <div key={i} style={{
+                  background: '#fff', border: `1px solid ${item.critical ? 'rgba(192,57,43,0.2)' : '#E8E4DC'}`,
+                  borderLeft: `5px solid ${item.critical ? '#C0392B' : GOLD}`,
+                  borderRadius: 0, padding: '20px 24px', marginBottom: 12,
+                  filter: i > 0 ? 'blur(3px)' : 'none',
+                  userSelect: 'none',
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+                    <div>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{item.trigger}</div>
+                      <div style={{ fontSize: 12, color: '#6B7280' }}>Source: {item.source} · {item.time}</div>
+                    </div>
+                    <div style={{ background: item.confidence >= 85 ? 'rgba(192,57,43,0.1)' : 'rgba(201,168,76,0.1)', color: item.confidence >= 85 ? '#C0392B' : '#8B6914', border: `1px solid ${item.confidence >= 85 ? 'rgba(192,57,43,0.25)' : 'rgba(201,168,76,0.25)'}`, borderRadius: 0, padding: '3px 10px', fontSize: 12, fontWeight: 700 }}>
+                      {item.confidence}% confidence
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 12, color: '#2B8A6E', fontWeight: 600 }}>→ {item.playbook}</div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div style={{ background: NAVY, borderRadius: 0, padding: '40px 36px', textAlign: 'center', marginTop: 36 }}>
             <div style={{ width: 48, height: 48, borderRadius: 0, background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
