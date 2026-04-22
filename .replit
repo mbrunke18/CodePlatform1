@@ -66,3 +66,6 @@ integrations = ["javascript_log_in_with_replit:1.0.0", "javascript_openai_ai_int
 
 [userenv.shared]
 INTEGRATION_ENCRYPTION_KEY = "0e391d24358482d35ff192bf6b882284d448ad694f5dbbc5066315d0574eafc6"
+
+[userenv.production]
+DEMO_ACCESS_TOKEN = "speedrun2026"
