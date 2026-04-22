@@ -48,12 +48,12 @@ const roles = [
     ),
     color: TEAL,
     sees: [
-      { label: 'Command Center', detail: 'Live view of who owns what task, what is overdue, where bottlenecks are forming, and playbook progress across all active workstreams — without a single status meeting.' },
-      { label: 'Live Activation Center', detail: 'Step-by-step playbook execution in real time. Stakeholder acknowledgment tracking, task completion rate, and the live 3,600× Execution Head Start as execution progresses.' },
+      { label: 'Command Center', detail: 'Live view of who owns what task, what is overdue, where bottlenecks are forming, and prepared response progress across all active workstreams — without a single status meeting.' },
+      { label: 'Live Activation Center', detail: 'Step-by-step prepared response execution in real time. Stakeholder acknowledgment tracking, task completion rate, and the live 3,600× Execution Head Start as execution progresses.' },
       { label: 'Mission Control', detail: 'Strategic overview of all active and completed scenarios — coordination timeline, escalation history, and workstream health at a glance.' },
     ],
     owns: [
-      'Playbook activation decision — which playbook fires for which trigger',
+      'Prepared response activation decision — which prepared response fires for which trigger',
       'Stakeholder assignment — who gets what task, in what sequence',
       'Escalation calls — when a task is overdue and needs to move up the chain',
       'Maintaining execution velocity — keeping the platform active across all 10 pilot users',
@@ -79,11 +79,11 @@ const roles = [
     color: '#2B8A6E',
     sees: [
       { label: 'Execution History & KPIs', detail: 'Coordination time trends across every activation, executive hours recovered per event, and projected annual value if the pilot performance holds at scale.' },
-      { label: 'Pre-Approved Budget Allocations', detail: 'Each playbook carries pre-staged resource authorizations — no mid-crisis approval cycles. The CFO reviews and approves these ceilings before the trigger fires, not after.' },
+      { label: 'Pre-Approved Budget Allocations', detail: 'Each prepared response carries pre-staged resource authorizations — no mid-crisis approval cycles. The CFO reviews and approves these ceilings before the trigger fires, not after.' },
       { label: 'ROI Benchmarks', detail: 'Side-by-side comparison of your organization\'s coordination speed vs. the 30-day industry baseline — expressed in time saved, headcount hours, and revenue-at-risk events resolved.' },
     ],
     owns: [
-      'Pre-approved budget ceilings per playbook domain — set before triggers fire',
+      'Pre-approved budget ceilings per prepared response domain — set before triggers fire',
       'ROI validation at 30, 60, and 90-day pilot checkpoints',
       'Renewal business case — quantified value that justifies full enterprise rollout',
     ],
@@ -163,7 +163,7 @@ const timeline = [
     milestones: [
       'All 10 pilot users onboarded and active',
       'Microsoft integration configured and tested',
-      'First live playbook activation completed',
+      'First live prepared response activation completed',
       'Pre-approved budget ceilings set per domain',
       '30-day checkpoint with Executive Sponsor',
     ],

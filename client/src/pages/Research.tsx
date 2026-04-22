@@ -100,7 +100,7 @@ export default function Research() {
                   <div className="text-center">
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: TEAL, lineHeight: 1 }}>12 min</div>
                     <p className="text-sm text-muted-foreground">Readiness OS activation</p>
-                    <p className="text-xs text-muted-foreground mt-1">playbooks pre-staged before the trigger fires</p>
+                    <p className="text-xs text-muted-foreground mt-1">prepared responses pre-staged before the trigger fires</p>
                   </div>
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function Research() {
               <div style={{ background: "#FEF2F2", border: "1px solid #fecaca", padding: "14px 18px", marginBottom: 12 }}>
                 <p className="text-sm font-semibold" style={{ color: "#dc2626" }}>The HBR Prescription — and what Readiness OS delivers:</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged playbooks, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 playbooks pre-staged, 221 triggers monitored, and no action taken without executive authorization.
+                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged playbooks, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 prepared responses pre-staged, 221 triggers monitored, and no action taken without executive authorization.
                 </p>
               </div>
 
@@ -466,7 +466,7 @@ export default function Research() {
                 </div>
                 <h4 className="font-bold text-foreground mb-2">Empower with Accountability</h4>
                 <p className="text-sm text-muted-foreground">
-                  Clear task ownership with defined acceptance criteria. Readiness OS' playbooks assign both.
+                  Clear task ownership with defined acceptance criteria. Readiness OS' prepared responses assign both.
                 </p>
               </div>
               <div className="border border-[#E8E4DC] bg-white p-6 hover:border-[#0A0F2E] transition-colors text-center">
@@ -504,10 +504,10 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Pre-Defined Response Teams</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      IBM found 35% cost reduction with pre-assigned teams. Readiness OS' playbooks 
+                      IBM found 35% cost reduction with pre-assigned teams. Readiness OS' prepared responses 
                       include pre-assigned stakeholders for every scenario.
                     </p>
-                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>170 Playbooks Ready</div>
+                    <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>170 Prepared responses Ready</div>
                   </div>
                 </div>
               </div>
@@ -536,7 +536,7 @@ export default function Research() {
                   <div>
                     <h4 className="font-bold text-foreground mb-2">Faster Containment</h4>
                     <p className="text-sm text-muted-foreground mb-3">
-                      $1.76M saved by containing within 30 days. Readiness OS' pre-staged playbooks 
+                      $1.76M saved by containing within 30 days. Readiness OS' pre-staged prepared responses 
                       get your organization into live execution in minutes — roles assigned, tasks staged, teams already moving.
                     </p>
                     <div style={{ display:"inline-flex", alignItems:"center", gap:5, background:"rgba(0,0,0,0.05)", color:"#6B7280", fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>12-Minute Activation</div>

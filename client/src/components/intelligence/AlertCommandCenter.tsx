@@ -2,7 +2,7 @@
  * Alert Command Center
  * 
  * Real-time alert queue with prioritization, acknowledgment, and escalation.
- * Provides executives with actionable intelligence and playbook recommendations.
+ * Provides executives with actionable intelligence and prepared response recommendations.
  */
 
 import { useState } from 'react';
@@ -321,7 +321,7 @@ export function AlertCommandCenter() {
                 <Eye className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
                 <h4 className="font-semibold mb-2">Select an Alert</h4>
                 <p className="text-muted-foreground text-sm">
-                  Click on an alert to view details, recommended actions, and playbook suggestions.
+                  Click on an alert to view details, recommended actions, and prepared response suggestions.
                 </p>
               </CardContent>
             </Card>
@@ -568,12 +568,12 @@ function AlertDetailPanel({
             </div>
           )}
 
-          {/* Recommended Playbook */}
+          {/* Recommended Prepared response */}
           {alert.recommendedScenario && (
             <div className="space-y-3">
               <h4 className="font-medium text-sm flex items-center gap-2">
                 <Play className="w-4 h-4" />
-                Recommended Playbook
+                Recommended Prepared response
               </h4>
               <Card className="border-primary/50 bg-primary/5">
                 <CardContent className="p-4">
@@ -584,7 +584,7 @@ function AlertDetailPanel({
                         Pre-configured response for this alert type
                       </p>
                     </div>
-                    <Button size="sm" data-testid="button-activate-playbook">
+                    <Button size="sm" data-testid="button-activate-prepared response">
                       <Zap className="w-4 h-4 mr-1" />
                       Activate
                     </Button>

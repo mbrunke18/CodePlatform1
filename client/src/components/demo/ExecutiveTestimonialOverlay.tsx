@@ -88,7 +88,7 @@ export function ExecutiveTestimonialOverlay() {
                       With Readiness OS Methodology
                     </p>
                     <blockquote className="text-xl text-[#2B8A6E] leading-relaxed">
-                      Execution infrastructure approach: Pre-built playbooks with governance pre-defined. 
+                      Execution infrastructure approach: Pre-built prepared responses with governance pre-defined. 
                       Signal monitoring for early warning. Coordinated execution with clear decision rights when trigger fires.
                     </blockquote>
                     <div className="space-y-2 pt-2">

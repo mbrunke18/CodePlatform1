@@ -262,7 +262,7 @@ function LiveSignalFeedSection() {
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Playbook Staged</span>
+                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Prepared response Staged</span>
                         <span style={{ ...DM, fontSize: 9, color: 'rgba(255,255,255,0.2)' }}>→</span>
                         <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.85)' }}>{sig.recommendedPlaybook}</span>
                       </div>
@@ -481,7 +481,7 @@ function ExecutionChainDiagram() {
   const steps = [
     { label: "TRIGGER FIRES", time: "T+0", desc: "Strategic moment detected — no improvisation", color: GOLD },
     { label: "SIGNAL MAPPED", time: "T+0:12", desc: "248+ sources evaluated across 9 domains", color: GOLD },
-    { label: "PLAYBOOK STAGED", time: "Pre-built", desc: "170 responses ready before trigger fired", color: TEAL },
+    { label: "PREPARED RESPONSE STAGED", time: "Pre-built", desc: "170 responses ready before trigger fired", color: TEAL },
     { label: "EXECUTIVE AUTHORIZES", time: "T+0:08", desc: "Human decision preserved — not bypassed", color: TEAL },
     { label: "FULL DEPLOYMENT", time: "12 MIN", desc: "Teams coordinated, brief delivered, executing", color: GOLD },
   ];
@@ -661,7 +661,7 @@ function HeroSection() {
             borderTop: "1px solid rgba(201,168,76,0.12)",
           }}>
             {[
-              { num: "170",       label: "Zero improvisation when the trigger fires",  sub: "Pre-staged playbooks across 9 strategic domains" },
+              { num: "170",       label: "Zero improvisation when the trigger fires",  sub: "Pre-staged prepared responses across 9 strategic domains" },
               { num: "248+",      label: "Situations surfaced before they require response", sub: "Signals monitored every 15 minutes" },
               { num: "3,600×",    label: "Execution head start over the competition",  sub: "30 days compressed to 12 minutes" },
             ].map((s, i) => (
@@ -1009,8 +1009,8 @@ function AthletePreparationSection() {
 // ─── SECTION 5: IDEA Framework ───────────────────────────────────────────────
 function IDEASection() {
   const cards = [
-    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Playbooks",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
-    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which playbook matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Prepared responses",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which prepared response matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
     { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];
@@ -1050,7 +1050,7 @@ function IDEASection() {
               <div style={{ background: "#F4FBF8", padding: "28px 32px" }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 18 }}>With Readiness OS</div>
                 {[
-                  "Trigger detected — playbook activated automatically",
+                  "Trigger detected — prepared response activated automatically",
                   "Roles, tasks, and budget pre-assigned and deployed",
                   "Full org executing in under 12 minutes",
                   "Every activation feeds institutional memory forward",
@@ -1103,7 +1103,7 @@ function IDEASection() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, position: "relative" }}>
               {[
                 { letter: "A", step: "ADVANCE", desc: "AI writes the debrief. What worked, what to stage differently." },
-                { letter: "I", step: "IDENTIFY", desc: "Playbooks update automatically. Next trigger, better positioned." },
+                { letter: "I", step: "IDENTIFY", desc: "Prepared responses update automatically. Next trigger, better positioned." },
                 { letter: "D", step: "DETECT", desc: "Pattern library sharpens. Signals matched faster, fewer false reads." },
                 { letter: "E", step: "EXECUTE", desc: "Response time compresses. The 12-minute clock starts earlier." },
               ].map((item, i) => (
@@ -1245,7 +1245,7 @@ function PlatformPreviewSection() {
                 <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
                   <div style={{ width: 7, height: 7, background: allDone ? TEAL_LIGHT : GOLD, boxShadow: allDone ? `0 0 6px ${TEAL_LIGHT}` : `0 0 6px ${GOLD}`, transition: "all 0.4s" }} />
                   <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: GOLD, textTransform: "uppercase" as const }}>
-                    Playbook #047 — Supply Chain Disruption
+                    Prepared response #047 — Supply Chain Disruption
                   </span>
                 </div>
                 <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: allDone ? TEAL_LIGHT : "#fff", fontVariantNumeric: "tabular-nums", transition: "color 0.4s", letterSpacing: "-0.5px" }}>
@@ -1415,7 +1415,7 @@ function MicrosoftEcosystemBanner() {
               { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '◆' },
               { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '◈' },
               { label: '4-Agent IDEA Framework', sublabel: '3,600× head start — in execution while others mobilize', icon: '◉' },
-              { label: 'Copilot Studio Connector', sublabel: 'Query playbooks from M365', icon: '◇' },
+              { label: 'Copilot Studio Connector', sublabel: 'Query prepared responses from M365', icon: '◇' },
             ].map(({ label, sublabel, icon }) => (
               <div key={label} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 18, marginBottom: 6, color: GOLD }}>{icon}</div>
@@ -1563,7 +1563,7 @@ function CredibilitySection() {
   const outcomes = [
     { stat: "12 min", label: "Median time from trigger to full org deployment" },
     { stat: "0 hrs",  label: "Executive coordination overhead required" },
-    { stat: "94%",    label: "Playbook phases completed within target window" },
+    { stat: "94%",    label: "Prepared response phases completed within target window" },
   ];
   return (
     <section style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
@@ -2021,7 +2021,7 @@ function HowTriggersWorkSection() {
                 Readiness OS monitors <strong>248+ data points across 221 trigger types</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a potential trigger for executive review.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 28 }}>
-                No playbook activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
+                No prepared response activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
               </p>
               <div style={{ padding: "16px 20px", background: NAVY, display: "inline-block" }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>Monitoring cadence</div>
@@ -2064,7 +2064,7 @@ function HowTriggersWorkSection() {
               {[
                 { step: "01", label: "Signal Detected", detail: "Reuters Business", sub: "Ransomware confirmed · 95% match", bg: "#F8F7F4", accent: TEAL },
                 { step: "02", label: "Trigger Matched", detail: "Ransomware Attack Confirmed", sub: "221 patterns evaluated · instant", bg: "#F0EDE4", accent: TEAL },
-                { step: "03", label: "Playbook Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
+                { step: "03", label: "Prepared response Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
                 { step: "04", label: "Executive Authorizes", detail: "CISO + CFO sign-off", sub: "Human decision preserved", bg: "#F0EDE4", accent: GOLD },
                 { step: "05", label: "Execution Begins", detail: "12 minutes after detection", sub: "30 days → 12 min", bg: NAVY, accent: GOLD },
               ].map((node, i) => (
@@ -2101,20 +2101,20 @@ function HowTriggersWorkSection() {
   );
 }
 
-// ─── How Playbooks Work ───────────────────────────────────────────────────────
+// ─── How Prepared responses Work ───────────────────────────────────────────────────────
 function HowPlaybooksWorkSection() {
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
   const steps = [
     {
       num: "01",
       label: "Pre-Built Architecture",
-      body: "170 playbooks ship as proven decision frameworks — built from 20+ years of Fortune 1000 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
+      body: "170 prepared responses ship as proven decision frameworks — built from 20+ years of Fortune 1000 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
       accent: GOLD,
     },
     {
       num: "02",
       label: "Customized to Your Organization",
-      body: "During the preparation phase, each playbook is personalized to your structure: your decision-rights holders, your specific stakeholder chain, your communication protocols, your budget thresholds. The owner is in the room when the response is built — not when it's delivered.",
+      body: "During the preparation phase, each prepared response is personalized to your structure: your decision-rights holders, your specific stakeholder chain, your communication protocols, your budget thresholds. The owner is in the room when the response is built — not when it's delivered.",
       accent: TEAL,
     },
     {
@@ -2131,7 +2131,7 @@ function HowPlaybooksWorkSection() {
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
               <div style={{ width: 32, height: 2, background: GOLD }} />
-              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Playbooks Work</span>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Prepared responses Work</span>
               <div style={{ width: 32, height: 2, background: GOLD }} />
             </div>
             <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
@@ -2139,7 +2139,7 @@ function HowPlaybooksWorkSection() {
               <em style={{ color: GOLD, fontStyle: "italic" }}>Proven architecture, personalized to you.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
-              The playbooks start as accumulated decision logic from decades of Fortune 1000 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
+              The prepared responses start as accumulated decision logic from decades of Fortune 1000 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
             </p>
           </div>
         </Reveal>
@@ -2184,7 +2184,7 @@ function SimulatorCTASection() {
             Test Your Organization Against Any Situation
           </h2>
           <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.65 }}>
-            Describe a real scenario your company is facing. The system maps your coverage readiness in seconds — and surfaces the exact playbooks pre-staged for activation.
+            Describe a real scenario your company is facing. The system maps your coverage readiness in seconds — and surfaces the exact prepared responses pre-staged for activation.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginBottom: 36 }}>
             {[

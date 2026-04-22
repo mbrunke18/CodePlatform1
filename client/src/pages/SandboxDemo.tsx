@@ -148,7 +148,7 @@ interface SimulationEvent {
 
 const EVENT_EXPLANATIONS: Record<string, string> = {
   trigger: "Readiness OS detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
-  ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured playbook rules.",
+  ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured prepared response rules.",
   stakeholder: "Notifications are being sent through your selected channels (Slack, email, SMS) to the right people automatically.",
   decision: "A decision point has been reached. In production, executives receive mobile alerts with pre-staged options to choose from.",
   task: "Tasks are being assigned to team members with clear instructions, deadlines, and dependencies already mapped out.",
@@ -390,7 +390,7 @@ export default function SandboxDemo() {
     
     events.push({
       time: `0:${String(minute).padStart(2, '0')}`,
-      event: `AI matching to ${config.domainName} playbook (${config.aiAssistEnabled ? '98%' : '85%'} confidence)`,
+      event: `AI matching to ${config.domainName} prepared response (${config.aiAssistEnabled ? '98%' : '85%'} confidence)`,
       type: 'ai'
     });
     minute++;
@@ -552,7 +552,7 @@ export default function SandboxDemo() {
           What strategic challenge do you want to prepare for?
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto font-medium">
-          Select a domain to build your personalized playbook
+          Select a domain to build your personalized prepared response
         </p>
       </div>
 
@@ -608,7 +608,7 @@ export default function SandboxDemo() {
           Step 2 of 6: DETECT Phase
         </Badge>
         <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-          Configure Your {config.domainName} Playbook
+          Configure Your {config.domainName} Prepared response
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           Set up your team, decision tree, escalation paths, and communications
@@ -838,7 +838,7 @@ export default function SandboxDemo() {
                 <GitBranch className="h-5 w-5 text-[#0A0F2E]" />
                 Decision Tree Configuration
               </CardTitle>
-              <CardDescription>Define approval gates and decision points in your playbook</CardDescription>
+              <CardDescription>Define approval gates and decision points in your prepared response</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {config.decisionPoints.map((dp, index) => (
@@ -1215,7 +1215,7 @@ export default function SandboxDemo() {
                 <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                 Success Metrics & KPIs
               </CardTitle>
-              <CardDescription>Define measurable targets to track playbook effectiveness</CardDescription>
+              <CardDescription>Define measurable targets to track prepared response effectiveness</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {SUCCESS_METRICS.map((metric) => (
@@ -1542,7 +1542,7 @@ export default function SandboxDemo() {
           Configure Detection & Triggers
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto font-medium">
-          Define signal sources, thresholds, and activation rules for your {config.domainName} playbook
+          Define signal sources, thresholds, and activation rules for your {config.domainName} prepared response
         </p>
       </div>
 
@@ -1595,7 +1595,7 @@ export default function SandboxDemo() {
               <Zap className="h-5 w-5 text-[#C9A84C]" />
               Trigger Type
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Activation mechanism for this playbook</CardDescription>
+            <CardDescription className="text-slate-500 font-medium">Activation mechanism for this prepared response</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-6">
             <div className="grid grid-cols-2 gap-3">
@@ -1688,7 +1688,7 @@ export default function SandboxDemo() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="alert">Send Alert</SelectItem>
-                  <SelectItem value="activate">Activate Playbook</SelectItem>
+                  <SelectItem value="activate">Activate Prepared response</SelectItem>
                   <SelectItem value="escalate">Escalate</SelectItem>
                 </SelectContent>
               </Select>
@@ -1736,7 +1736,7 @@ export default function SandboxDemo() {
               <AlertTriangle className="h-5 w-5 text-red-600" />
               Severity Level
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Playbook configuration based on impact</CardDescription>
+            <CardDescription className="text-slate-500 font-medium">Prepared response configuration based on impact</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-4 gap-3">
@@ -1988,7 +1988,7 @@ export default function SandboxDemo() {
             Your Personalized ROI Analysis
           </h2>
           <p className="text-lg text-gray-800 dark:text-slate-300">
-            Based on your complete {config.domainName} playbook configuration
+            Based on your complete {config.domainName} prepared response configuration
           </p>
         </div>
 

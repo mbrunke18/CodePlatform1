@@ -260,10 +260,10 @@ export default function InteractiveROICalculator({ persona = 'general', industry
           <div className="bg-gradient-to-r from-[#0A0F2E]/20 to-teal-600/20 p-4 border border-[#2B8A6E]/30">
             <h4 className="text-gray-900 font-semibold mb-2 text-sm">🏈 Championship Execution Through Preparation</h4>
             <ul className="text-xs text-gray-800 space-y-1">
-              <li>• <strong className="text-green-400">{mResponseMinutes}-minute playbook execution</strong> vs {currentCrisisResponse}-hour industry standard</li>
+              <li>• <strong className="text-green-400">{mResponseMinutes}-minute prepared response execution</strong> vs {currentCrisisResponse}-hour industry standard</li>
               <li>• {annualTimeSavings.toFixed(0)} hours saved annually across {averageCrisesPerYear} scenarios</li>
               <li>• ${(annualCostSavings / 1000000).toFixed(2)}M cost avoidance from rapid decision velocity</li>
-              <li>• {(reputationProtection * 100).toFixed(0)}% improvement in brand protection with pre-configured playbooks</li>
+              <li>• {(reputationProtection * 100).toFixed(0)}% improvement in brand protection with pre-configured prepared responses</li>
               <li>• <strong className="text-[#C9A84C]">{paybackMonths.toFixed(1)}-month payback</strong> with {roi.toFixed(0)}% annual ROI</li>
             </ul>
           </div>

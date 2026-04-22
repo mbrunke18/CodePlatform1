@@ -336,7 +336,7 @@ export default function ExecutiveAnalyticsDashboard() {
                       <div className="mt-8 pt-6 border-t border-[#E8E4DC]">
                         <Button className="bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none h-12 px-8 uppercase tracking-widest font-bold text-[10px]">
                           <Zap className="w-4 h-4 mr-2" />
-                          Activate Strategic Playbook
+                          Activate Strategic Prepared response
                         </Button>
                       </div>
                     )}
@@ -362,7 +362,7 @@ export default function ExecutiveAnalyticsDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { dimension: "Detection Speed", score: 94, color: "#2B8A6E" },
-              { dimension: "Playbook Coverage", score: 89, color: "#C9A84C" },
+              { dimension: "Prepared response Coverage", score: 89, color: "#C9A84C" },
               { dimension: "Stakeholder Reach", score: 83, color: "#0A0F2E" },
               { dimension: "Decision Velocity", score: 91, color: "#2B8A6E" },
               { dimension: "Learning Capture", score: 78, color: "#C9A84C" },
@@ -385,22 +385,22 @@ export default function ExecutiveAnalyticsDashboard() {
                 window: "Next 30 Days",
                 confidence: 94,
                 headline: "Regulatory review cycle peaks",
-                detail: "3 compliance playbooks should be elevated to Primary status. Legal team coverage at 87% — one gap identified in GDPR documentation.",
-                action: "Review Compliance Playbooks",
+                detail: "3 compliance prepared responses should be elevated to Primary status. Legal team coverage at 87% — one gap identified in GDPR documentation.",
+                action: "Review Compliance Prepared responses",
               },
               {
                 window: "Days 31–60",
                 confidence: 82,
                 headline: "M&A integration risk window",
-                detail: "Q2 integration milestones due. Change management playbook should be activated by Day 45 to protect employee retention score.",
-                action: "Activate Integration Playbook",
+                detail: "Q2 integration milestones due. Change management prepared response should be activated by Day 45 to protect employee retention score.",
+                action: "Activate Integration Prepared response",
               },
               {
                 window: "Days 61–90",
                 confidence: 76,
                 headline: "Competitive market shift probable",
-                detail: "Signal clusters across 4 sources suggest a competitor pricing action in Q3. Strategic Response playbook pre-staged and ready.",
-                action: "Pre-Stage Response Playbook",
+                detail: "Signal clusters across 4 sources suggest a competitor pricing action in Q3. Strategic Response prepared response pre-staged and ready.",
+                action: "Pre-Stage Response Prepared response",
               },
             ].map((f) => (
               <div key={f.window} className="p-5 bg-[#F8F7F4] rounded-sm border" style={{ borderColor: "#E8E4DC" }}>

@@ -111,7 +111,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               {
                 phase: "03",
                 title: "Humans retain all decision authority",
-                body: "AI handles monitoring and recommendation. Every playbook activation is a human decision. Readiness OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
+                body: "AI handles monitoring and recommendation. Every prepared response activation is a human decision. Readiness OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
                 color: GOLD,
               },
             ].map(({ phase, title, body, color }) => (

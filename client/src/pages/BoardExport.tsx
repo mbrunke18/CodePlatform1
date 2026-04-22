@@ -94,7 +94,7 @@ const SAMPLE_DATA = {
   
   recommendations: [
     { priority: 'High', recommendation: 'Conduct M&A integration drill before Q1 acquisition', owner: 'COO', dueDate: 'Jan 15, 2026' },
-    { priority: 'Medium', recommendation: 'Update Asia Pacific supply chain playbooks with new vendors', owner: 'VP Supply Chain', dueDate: 'Jan 30, 2026' },
+    { priority: 'Medium', recommendation: 'Update Asia Pacific supply chain prepared responses with new vendors', owner: 'VP Supply Chain', dueDate: 'Jan 30, 2026' },
     { priority: 'Low', recommendation: 'Schedule competitive response refresher training', owner: 'Chief Strategy Officer', dueDate: 'Feb 15, 2026' },
   ],
 };
@@ -111,7 +111,7 @@ export default function BoardExport() {
     { id: 'response_metrics', label: 'Response Metrics', description: 'Decision time, execution time, stakeholder engagement', icon: <Clock className="h-5 w-5" />, included: true },
     { id: 'financial_summary', label: 'Financial Summary', description: 'Budget utilization, revenue protected, ROI', icon: <DollarSign className="h-5 w-5" />, included: true },
     { id: 'stakeholder_coverage', label: 'Stakeholder Coverage', description: 'Department-level training and readiness', icon: <Users className="h-5 w-5" />, included: true },
-    { id: 'playbook_readiness', label: 'Playbook Readiness', description: 'Domain-specific playbook status and drill dates', icon: <Shield className="h-5 w-5" />, included: true },
+    { id: 'playbook_readiness', label: 'Prepared response Readiness', description: 'Domain-specific prepared response status and drill dates', icon: <Shield className="h-5 w-5" />, included: true },
     { id: 'recommendations', label: 'Recommendations', description: 'Action items and next steps for leadership', icon: <Zap className="h-5 w-5" />, included: true },
   ]);
 
@@ -382,12 +382,12 @@ export default function BoardExport() {
                     </div>
                   )}
 
-                  {/* Playbook Readiness */}
+                  {/* Prepared response Readiness */}
                   {sections.find(s => s.id === 'playbook_readiness')?.included && (
                     <div className="space-y-4 pt-4 border-t border-[#E8E4DC] dark:border-white/10">
                       <h3 className="text-lg font-semibold text-[#0A0F2E] dark:text-white flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         <Shield className="h-5 w-5 text-[#0A0F2E] dark:text-[#C9A84C]" />
-                        Playbook Readiness by Domain
+                        Prepared response Readiness by Domain
                       </h3>
                       <div className="space-y-2">
                         {SAMPLE_DATA.playbookReadiness.map((domain) => (
@@ -398,7 +398,7 @@ export default function BoardExport() {
                             <div className="flex items-center gap-3">
                               <span className="text-[#0A0F2E] dark:text-white text-sm font-medium">{domain.domain}</span>
                               <Badge variant="outline" className="bg-transparent text-xs text-[#6B7280] dark:text-white/60 border-[#E8E4DC] dark:border-white/10">
-                                {domain.playbooks} playbooks
+                                {domain.playbooks} prepared responses
                               </Badge>
                             </div>
                             <div className="flex items-center gap-3">

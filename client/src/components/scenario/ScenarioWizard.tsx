@@ -237,7 +237,7 @@ export default function ScenarioWizard({ organizationId, onComplete, onCancel }:
             <div>
               <CardTitle className="text-gray-900 text-2xl">Complete Scenario Definition</CardTitle>
               <CardDescription className="text-gray-700">
-                Build an actionable, executable playbook with complete situation capture
+                Build an actionable, executable prepared response with complete situation capture
               </CardDescription>
             </div>
             <Badge className="bg-[#C9A84C]/20 text-[#C9A84C] border-[#C9A84C]/50 px-4 py-2">

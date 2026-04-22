@@ -463,17 +463,17 @@ export default function DecisionTreeBuilder() {
                     
                     <div className="space-y-3">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-[#0A0F2E]">
-                        Execute Playbook on Selection
+                        Execute Prepared response on Selection
                       </label>
                       <Select>
                         <SelectTrigger className="rounded-none border-[#E8E4DC] h-12 bg-white">
                           <SelectValue placeholder="Select playbook..." />
                         </SelectTrigger>
                         <SelectContent className="rounded-none border-[#E8E4DC]">
-                          <SelectItem value="public-disclosure">Public Disclosure Playbook</SelectItem>
-                          <SelectItem value="crisis-comms">Crisis Communications Playbook</SelectItem>
-                          <SelectItem value="regulatory">Regulatory Notification Playbook</SelectItem>
-                          <SelectItem value="internal-only">Internal Assessment Playbook</SelectItem>
+                          <SelectItem value="public-disclosure">Public Disclosure Prepared response</SelectItem>
+                          <SelectItem value="crisis-comms">Crisis Communications Prepared response</SelectItem>
+                          <SelectItem value="regulatory">Regulatory Notification Prepared response</SelectItem>
+                          <SelectItem value="internal-only">Internal Assessment Prepared response</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

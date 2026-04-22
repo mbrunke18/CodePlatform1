@@ -33,7 +33,7 @@ export default function CreateScenarioButton({
       if (!response.ok) throw new Error('Failed to create scenario');
       
       toast({ 
-        title: '✓ Playbook Created Successfully!',
+        title: '✓ Prepared response Created Successfully!',
         description: `${scenarioData.name} is now ready for execution`,
       });
       
@@ -58,7 +58,7 @@ export default function CreateScenarioButton({
         data-testid="button-create-scenario"
       >
         <Rocket className="w-4 h-4 mr-2" />
-        Create New Playbook
+        Create New Prepared response
         <Sparkles className="w-4 h-4 ml-2" />
       </Button>
 
@@ -69,10 +69,10 @@ export default function CreateScenarioButton({
               <div className="w-10 h-10 bg-gradient-to-r from-[#0A0F2E] to-[#141B45] flex items-center justify-center">
                 <Rocket className="w-6 h-6 text-gray-900" />
               </div>
-              Create Championship-Level Playbook
+              Create Championship-Level Prepared response
             </DialogTitle>
             <p className="text-sm text-gray-800 dark:text-gray-200 mt-2">
-              Build a complete decision operations playbook in 5 strategic phases
+              Build a complete decision operations prepared response in 5 strategic phases
             </p>
           </DialogHeader>
           

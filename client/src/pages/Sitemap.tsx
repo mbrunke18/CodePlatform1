@@ -192,7 +192,7 @@ export default function Sitemap() {
               </div>
               <div>
                 <div className="text-4xl font-bold text-[#C9A84C] mb-2">170</div>
-                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Strategic Playbooks</div>
+                <div className="text-white/60 text-[10px] uppercase tracking-widest font-bold">Strategic Prepared responses</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-[#C9A84C] mb-2">70+</div>

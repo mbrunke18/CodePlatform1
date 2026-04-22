@@ -449,7 +449,7 @@ export default function TwelveMinuteTestDrive() {
                     {brief?.activatedPlaybooks?.length > 0 ? (
                       <>
                         <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>
-                          The following playbooks are pre-staged and will activate the moment you authorize execution:
+                          The following prepared responses are pre-staged and will activate the moment you authorize execution:
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
                           {brief.activatedPlaybooks.map((p: string, i: number) => (
@@ -461,7 +461,7 @@ export default function TwelveMinuteTestDrive() {
                       </>
                     ) : (
                       <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
-                        {['Crisis Response Protocol', 'Executive Stakeholder Coordination', 'Communications Lockdown Playbook', 'Legal & Regulatory Notification'].map((p, i) => (
+                        {['Crisis Response Protocol', 'Executive Stakeholder Coordination', 'Communications Lockdown Prepared response', 'Legal & Regulatory Notification'].map((p, i) => (
                           <span key={i} style={{ fontSize: 11, fontWeight: 700, padding: '6px 14px', background: 'rgba(43,138,110,0.15)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.3)' }}>
                             ▸ {p}
                           </span>
@@ -751,7 +751,7 @@ export default function TwelveMinuteTestDrive() {
               </div>
 
               <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>
-                Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real playbooks?
+                Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real prepared responses?
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>

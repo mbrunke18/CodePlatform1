@@ -63,7 +63,7 @@ export default function EcosystemDiagramPage() {
               {
                 phase: "03",
                 title: "Humans retain all decision authority",
-                body: "AI handles monitoring and recommendation. Every playbook activation is a human decision. Readiness OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
+                body: "AI handles monitoring and recommendation. Every prepared response activation is a human decision. Readiness OS makes those decisions faster, more informed, and pre-coordinated — not autonomous.",
                 color: GOLD,
               },
             ].map(({ phase, title, body, color }) => (
@@ -111,8 +111,8 @@ export default function EcosystemDiagramPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
             {[
               { name: "Azure AI", role: "Runs the 4-agent IDEA Framework in parallel — IDENTIFY · DETECT · EXECUTE · ADVANCE", icon: "◈", color: "#0078D4" },
-              { name: "Microsoft Teams", role: "Fires war room notifications to executives on playbook activation — no separate tool required", icon: "⬡", color: "#6264A7" },
-              { name: "Copilot Studio", role: "Custom connector lets execs query playbooks and briefings directly from Microsoft 365 Copilot", icon: "◉", color: "#5BA3E8" },
+              { name: "Microsoft Teams", role: "Fires war room notifications to executives on prepared response activation — no separate tool required", icon: "⬡", color: "#6264A7" },
+              { name: "Copilot Studio", role: "Custom connector lets execs query prepared responses and briefings directly from Microsoft 365 Copilot", icon: "◉", color: "#5BA3E8" },
               { name: "Microsoft Entra", role: "Stamps every AI agent action with an identity audit trail — full governance and SSO", icon: "◎", color: "#107C10" },
               { name: "Power Platform", role: "Webhook hooks route trigger alerts into existing Power Automate flows and enterprise workflows", icon: "◆", color: "#742774" },
             ].map(({ name, role, icon, color }) => (

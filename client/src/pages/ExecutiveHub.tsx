@@ -27,10 +27,10 @@ const TABS = [
 ];
 
 const IDEA_PHASES = [
-  { letter: 'I', name: 'IDENTIFY', color: TEAL, metric: '170 playbooks', tagline: 'Know your triggers before they become crises.', aiRole: 'System-Automated', humanRole: 'Human-Configured', aiActions: ['Pattern-match trigger signals across all 9 domains', 'Score playbook relevance for incoming scenarios', 'Surface coverage gaps in your strategic library', 'Recommend playbooks based on historical outcomes'], humanActions: ['Configure which triggers activate which playbooks', 'Set decision rights and stakeholder ownership', 'Define success metrics and risk tolerance', 'Customize governance rules for your organization'], icon: Eye },
-  { letter: 'D', name: 'DETECT', color: NAVY, metric: '15min cycles', tagline: 'Real-time signal monitoring across 24 enterprise systems.', aiRole: 'System-Automated', humanRole: 'Human-Supervised', aiActions: ['Monitor 24+ enterprise data sources in real time', 'Detect compound disruptions across multiple domains', 'Match incoming signals to relevant playbooks', 'Assess urgency and recommended response timeline'], humanActions: ['Review and approve trigger classification', 'Adjust signal sensitivity thresholds', 'Escalate or suppress low-priority signals', 'Set monitoring rules per domain and region'], icon: Zap },
-  { letter: 'E', name: 'EXECUTE', color: GOLD, metric: '12min execution', tagline: 'From signal to coordinated action in under 12 minutes.', aiRole: 'System-Orchestrated', humanRole: 'Human-Authorized', aiActions: ['Generate task structures with role-specific assignments', 'Send stakeholder notifications with contextual briefs', 'Stage documents and draft initial communications', 'Track execution status across all active workstreams'], humanActions: ['Authorize playbook activation with one click', 'Make real-time strategic decisions at decision gates', 'Escalate or deprioritize based on ground truth', 'Approve communications before external release'], icon: Target },
-  { letter: 'A', name: 'ADVANCE', color: TEAL, metric: '↑ Compound', tagline: 'Every execution makes the organization stronger.', aiRole: 'System-Analyzed', humanRole: 'Human-Decided', aiActions: ['Generate post-activation executive summaries', 'Score stakeholder response rates and SLA adherence', 'Recommend playbook updates based on outcomes', 'Track execution velocity trends over time'], humanActions: ['Review performance against strategic objectives', 'Approve playbook updates and governance changes', 'Share learnings with board and leadership team', 'Set improvement targets for next activation'], icon: Brain },
+  { letter: 'I', name: 'IDENTIFY', color: TEAL, metric: '170 prepared responses', tagline: 'Know your triggers before they become crises.', aiRole: 'System-Automated', humanRole: 'Human-Configured', aiActions: ['Pattern-match trigger signals across all 9 domains', 'Score prepared response relevance for incoming scenarios', 'Surface coverage gaps in your strategic library', 'Recommend prepared responses based on historical outcomes'], humanActions: ['Configure which triggers activate which prepared responses', 'Set decision rights and stakeholder ownership', 'Define success metrics and risk tolerance', 'Customize governance rules for your organization'], icon: Eye },
+  { letter: 'D', name: 'DETECT', color: NAVY, metric: '15min cycles', tagline: 'Real-time signal monitoring across 24 enterprise systems.', aiRole: 'System-Automated', humanRole: 'Human-Supervised', aiActions: ['Monitor 24+ enterprise data sources in real time', 'Detect compound disruptions across multiple domains', 'Match incoming signals to relevant prepared responses', 'Assess urgency and recommended response timeline'], humanActions: ['Review and approve trigger classification', 'Adjust signal sensitivity thresholds', 'Escalate or suppress low-priority signals', 'Set monitoring rules per domain and region'], icon: Zap },
+  { letter: 'E', name: 'EXECUTE', color: GOLD, metric: '12min execution', tagline: 'From signal to coordinated action in under 12 minutes.', aiRole: 'System-Orchestrated', humanRole: 'Human-Authorized', aiActions: ['Generate task structures with role-specific assignments', 'Send stakeholder notifications with contextual briefs', 'Stage documents and draft initial communications', 'Track execution status across all active workstreams'], humanActions: ['Authorize prepared response activation with one click', 'Make real-time strategic decisions at decision gates', 'Escalate or deprioritize based on ground truth', 'Approve communications before external release'], icon: Target },
+  { letter: 'A', name: 'ADVANCE', color: TEAL, metric: '↑ Compound', tagline: 'Every execution makes the organization stronger.', aiRole: 'System-Analyzed', humanRole: 'Human-Decided', aiActions: ['Generate post-activation executive summaries', 'Score stakeholder response rates and SLA adherence', 'Recommend prepared response updates based on outcomes', 'Track execution velocity trends over time'], humanActions: ['Review performance against strategic objectives', 'Approve prepared response updates and governance changes', 'Share learnings with board and leadership team', 'Set improvement targets for next activation'], icon: Brain },
 ];
 
 export default function ExecutiveHub() {
@@ -137,7 +137,7 @@ export default function ExecutiveHub() {
                   <CardHeader className="pb-4"><CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2" style={CG}><Target className="h-5 w-5 text-[#C9A84C]" />Readiness Dimensions</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
                     {[
-                      { label: "Playbook Maturity", value: readiness?.playbookMaturity || 78 },
+                      { label: "Prepared response Maturity", value: readiness?.playbookMaturity || 78 },
                       { label: "Signal Detection", value: readiness?.signalDetection || 86 },
                       { label: "Execution Velocity", value: velocityScore },
                       { label: "Learning Rate", value: readiness?.learningScore || 78 },
@@ -181,7 +181,7 @@ export default function ExecutiveHub() {
                 {[
                   { title: "Decision Velocity Dashboard", desc: "Track how fast your executives decide", path: "/decision-velocity", icon: Zap, tab: 'velocity', color: GOLD },
                   { title: "Future Readiness Index", desc: "Strategic preparedness deep-dive", path: "/future-readiness", icon: Target, tab: 'readiness', color: TEAL },
-                  { title: "Executive Analytics", desc: "Playbook performance & ROI", path: "/analytics", icon: BarChart3, tab: 'analytics', color: NAVY },
+                  { title: "Executive Analytics", desc: "Prepared response performance & ROI", path: "/analytics", icon: BarChart3, tab: 'analytics', color: NAVY },
                   { title: "IDEA Framework", desc: "The operating model explained", path: "/idea-framework", icon: Brain, tab: 'framework', color: GOLD },
                 ].map(item => (
                   <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
@@ -212,7 +212,7 @@ export default function ExecutiveHub() {
                   <div className="p-4 bg-[#2B8A6E] shadow-[#2B8A6E]/30"><Target className="h-8 w-8 text-white" /></div>
                   <div>
                     <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Future Readiness Index™</h1><Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">LIVE</Badge></div>
-                    <p className="text-[#6B7280] mt-1">Real-time strategic preparedness across 170 playbooks</p>
+                    <p className="text-[#6B7280] mt-1">Real-time strategic preparedness across 170 prepared responses</p>
                   </div>
                 </div>
                 <Link href="/future-readiness"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Full Readiness Report</Button></Link>
@@ -234,7 +234,7 @@ export default function ExecutiveHub() {
                     <p className="text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-5">Dimension Breakdown</p>
                     <div className="space-y-4">
                       {[
-                        { label: "Playbook Maturity", value: readiness?.playbookMaturity || 78, target: 90 },
+                        { label: "Prepared response Maturity", value: readiness?.playbookMaturity || 78, target: 90 },
                         { label: "Signal Detection", value: readiness?.signalDetection || 86, target: 90 },
                         { label: "Execution Velocity", value: velocityScore, target: 95 },
                         { label: "Learning Rate", value: readiness?.learningScore || 78, target: 85 },
@@ -254,7 +254,7 @@ export default function ExecutiveHub() {
               <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Strategic Readiness Signals</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 {[
-                  { title: "Playbooks Ready", value: `${readiness?.playbooksReady || 134} / 170`, status: "good", icon: CheckCircle, desc: "Pre-staged for activation" },
+                  { title: "Prepared responses Ready", value: `${readiness?.playbooksReady || 134} / 170`, status: "good", icon: CheckCircle, desc: "Pre-staged for activation" },
                   { title: "Weak Signals Detected", value: String(readiness?.weakSignalsDetected || 23), status: "warning", icon: Eye, desc: "Early warning indicators" },
                   { title: "Avg Response Time", value: "12 min", status: "good", icon: Clock, desc: "Trigger to activation" },
                 ].map(item => (
@@ -281,7 +281,7 @@ export default function ExecutiveHub() {
                   <div className="p-4 bg-[#0A0F2E] shadow-[#0A0F2E]/30"><Activity className="h-8 w-8 text-[#C9A84C]" /></div>
                   <div>
                     <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Executive Analytics</h1><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">ANALYTICS</Badge></div>
-                    <p className="text-[#6B7280] mt-1">Playbook performance, ROI, and organizational metrics</p>
+                    <p className="text-[#6B7280] mt-1">Prepared response performance, ROI, and organizational metrics</p>
                   </div>
                 </div>
                 <Link href="/analytics"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Full Analytics Suite</Button></Link>
@@ -290,7 +290,7 @@ export default function ExecutiveHub() {
               {/* Analytics KPIs */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
-                  { label: "Playbook Activations", value: "47", trend: "+12%", icon: Layers, color: TEAL },
+                  { label: "Prepared response Activations", value: "47", trend: "+12%", icon: Layers, color: TEAL },
                   { label: "Avg Execution Time", value: "11.4m", trend: "-8%", icon: Clock, color: GOLD },
                   { label: "Stakeholders Reached", value: "1,240", trend: "+23%", icon: Users, color: TEAL },
                   { label: "Target Met Rate", value: "78%", trend: "+5%", icon: CheckCircle, color: NAVY },
@@ -306,7 +306,7 @@ export default function ExecutiveHub() {
               </div>
 
               {/* Domain Performance */}
-              <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Playbook Performance by Domain</h2>
+              <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Prepared response Performance by Domain</h2>
               <div className="space-y-3 mb-8">
                 {[
                   { domain: "M&A & Integration", activations: 12, successRate: 83, avgTime: "10.2m" },
@@ -406,7 +406,7 @@ export default function ExecutiveHub() {
                     <h2 className="text-3xl font-bold text-white mb-4" style={CG}>AI handles complexity. Humans retain authority.</h2>
                     <p className="text-white/70 leading-relaxed">The IDEA Framework is built on a fundamental principle: AI is extraordinarily good at monitoring, pattern recognition, and orchestration — but strategic decisions require human judgment, organizational context, and accountability. We never let AI make strategy decisions.</p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                      {[{ v: '170', l: 'Playbooks' }, { v: '12min', l: 'Response SLA' }, { v: '248', l: 'Data Points' }, { v: '3,600×', l: 'Head Start' }].map(s => (
+                      {[{ v: '170', l: 'Prepared responses' }, { v: '12min', l: 'Response SLA' }, { v: '248', l: 'Data Points' }, { v: '3,600×', l: 'Head Start' }].map(s => (
                         <div key={s.l} className="text-center"><div className="text-3xl font-bold text-[#C9A84C]" style={CG}>{s.v}</div><div className="text-xs font-bold uppercase tracking-widest text-white/50 mt-1">{s.l}</div></div>
                       ))}
                     </div>

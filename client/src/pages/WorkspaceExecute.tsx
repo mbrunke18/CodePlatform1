@@ -38,7 +38,7 @@ import { SubBrandLabel } from "@/components/SubBrandLabel";
 const workspaceTools = [
   {
     title: "Command Center",
-    description: "Real-time coordination hub for active playbook execution",
+    description: "Real-time coordination hub for active prepared response execution",
     path: "/command-center",
     icon: Compass,
     color: "text-[#2B8A6E]",
@@ -94,7 +94,7 @@ const workspaceTools = [
 ];
 
 const executionMetrics = [
-  { label: "Active Playbooks", value: "2", icon: Play, color: "text-[#2B8A6E]" },
+  { label: "Active Prepared responses", value: "2", icon: Play, color: "text-[#2B8A6E]" },
   { label: "Tasks In Progress", value: "14", icon: Activity, color: "text-[#0A0F2E]" },
   { label: "Stakeholders Engaged", value: "28", icon: Users, color: "text-[#2B8A6E]" },
   { label: "Avg Response Time", value: "12m", icon: Timer, color: "text-[#C9A84C]" }
@@ -451,7 +451,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
                   </Badge>
                 </div>
                 <p className="text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
-                  Coordinate responses and execute playbooks in 12 minutes
+                  Coordinate responses and execute prepared responses in 12 minutes
                 </p>
               </div>
             </div>
@@ -523,7 +523,7 @@ export default function WorkspaceExecute({ embedded }: { embedded?: boolean } = 
             ))}
           </div>
 
-          {/* JIT CONTEXT BANNER — re-injects playbook intent at execution checkpoints */}
+          {/* JIT CONTEXT BANNER — re-injects prepared response intent at execution checkpoints */}
           {activeRun && <JITContextBanner runId={activeRun.id} />}
 
           {/* ROLE-SCOPED MY ACTIONS — schema-gated to user's role */}

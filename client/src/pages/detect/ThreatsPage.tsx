@@ -39,7 +39,7 @@ const THREATS = [
     signals: 5,
     time: '3 hrs ago',
     detail: 'SEC issued comment letter on Q3 disclosure language. Legal review and regulatory response team required immediately.',
-    playbook: 'Regulatory Response Playbook',
+    playbook: 'Regulatory Response Prepared response',
     status: 'monitoring',
   },
   {
@@ -173,7 +173,7 @@ export default function ThreatsPage() {
                       <span style={{ fontSize: 11, color: MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
                         <Clock size={11} /> {threat.time}
                       </span>
-                      <Link href="/identify/playbook-library">
+                      <Link href="/identify/prepared response-library">
                         <span style={{ fontSize: 11, color: TEAL, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}>
                           <TrendingUp size={11} /> Activate: {threat.playbook} <ChevronRight size={11} />
                         </span>
@@ -189,7 +189,7 @@ export default function ThreatsPage() {
         <div style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
           <Shield size={12} color={TEAL} />
           <span style={{ fontSize: 11, color: MUTED }}>
-            Each detected threat maps directly to a pre-built response playbook across 9 strategic domains. Target: roles assigned, tasks staged, communications sent — execution live in 12 minutes.
+            Each detected threat maps directly to a pre-built response prepared response across 9 strategic domains. Target: roles assigned, tasks staged, communications sent — execution live in 12 minutes.
           </span>
         </div>
       </div>

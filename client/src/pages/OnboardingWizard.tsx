@@ -30,7 +30,7 @@ const MUTED = "#6B7280";
 const PHASE_1_STEPS = [
   { id: 'profile', title: 'Organization Profile', subtitle: 'Your company and key contacts', icon: Building2 },
   { id: 'idea', title: 'IDEA Framework Setup', subtitle: 'Map decision rights and ownership', icon: Target },
-  { id: 'playbooks', title: 'Priority Playbooks', subtitle: 'Select your highest-priority scenarios', icon: Layers },
+  { id: 'prepared responses', title: 'Priority Prepared responses', subtitle: 'Select your highest-priority scenarios', icon: Layers },
 ];
 
 const PLAYBOOK_OPTIONS = [
@@ -350,7 +350,7 @@ export default function OnboardingWizard() {
                   <SelectTrigger className="bg-white border-[#E8E4DC] text-[#0A0F2E] rounded-none h-11"><SelectValue /></SelectTrigger>
                   <SelectContent>
                     {['50000', '100000', '250000', '500000', '1000000'].map(t => (
-                      <SelectItem key={t} value={t}>${parseInt(t).toLocaleString()} per playbook activation</SelectItem>
+                      <SelectItem key={t} value={t}>${parseInt(t).toLocaleString()} per prepared response activation</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -360,7 +360,7 @@ export default function OnboardingWizard() {
             <div style={{ display: "flex", gap: 24 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flex: 1, padding: "14px 18px", background: "#fff", border: `1px solid ${BORDER}` }}>
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>Require human approval before playbook activation</div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>Require human approval before prepared response activation</div>
                   <div style={{ fontSize: 11, color: MUTED }}>Recommended — AI recommends, humans approve</div>
                 </div>
                 <Switch checked={ideaData.approvalRequired} onCheckedChange={c => setIdeaData({ ...ideaData, approvalRequired: c })} className="data-[state=checked]:bg-[#2B8A6E]" />
@@ -369,16 +369,16 @@ export default function OnboardingWizard() {
           </div>
         )}
 
-        {/* STEP 3: Priority Playbooks */}
+        {/* STEP 3: Priority Prepared responses */}
         {currentStep === 2 && (
           <div>
-            <SectionLabel num="03" text="Priority Playbooks" />
+            <SectionLabel num="03" text="Priority Prepared responses" />
             <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Select your highest-priority scenarios</h2>
-            <p style={{ fontSize: 14, color: MUTED, marginBottom: 12 }}>Choose the strategic domains most relevant to your organization. You have access to all 170 playbooks — this selection pins your priorities to the top of your execution console.</p>
+            <p style={{ fontSize: 14, color: MUTED, marginBottom: 12 }}>Choose the strategic domains most relevant to your organization. You have access to all 170 prepared responses — this selection pins your priorities to the top of your execution console.</p>
 
             <div style={{ padding: "14px 18px", background: `rgba(43,138,110,0.07)`, border: `1px solid rgba(43,138,110,0.2)`, marginBottom: 32, display: "flex", gap: 10, alignItems: "center" }}>
               <CheckCircle size={15} color={TEAL} style={{ flexShrink: 0 }} />
-              <p style={{ fontSize: 13, color: NAVY }}>Select <strong>3 to 5 domains</strong> to prioritize. Your full library of 170 playbooks remains available at any time.</p>
+              <p style={{ fontSize: 13, color: NAVY }}>Select <strong>3 to 5 domains</strong> to prioritize. Your full library of 170 prepared responses remains available at any time.</p>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 32 }}>
@@ -392,7 +392,7 @@ export default function OnboardingWizard() {
                       {active && <Check size={14} color={TEAL} />}
                     </div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4, lineHeight: 1.3 }}>{pb.name}</div>
-                    <div style={{ fontSize: 11, color: MUTED }}>{pb.count} playbooks</div>
+                    <div style={{ fontSize: 11, color: MUTED }}>{pb.count} prepared responses</div>
                   </button>
                 );
               })}
@@ -448,7 +448,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
       items: [
         "Organization profile & key contacts",
         "IDEA Framework — decision rights mapping",
-        "Priority playbook selection (from 170)",
+        "Priority prepared response selection (from 170)",
       ],
       outcome: "Your workspace is configured and your implementation team is briefed.",
     },
@@ -464,7 +464,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
     {
       num: "03", label: "Activation", timing: "Week 3–4 · Go-live", color: "#fff", doing: "Your team activates",
       items: [
-        "First practice drill — full playbook simulation",
+        "First practice drill — full prepared response simulation",
         "Executive and PMO team training",
         "Readiness audit & go-live sign-off",
       ],
@@ -534,7 +534,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
 
         <div style={{ marginTop: 48, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: 48 }}>
           {[
-            { num: "170", label: "Playbooks ready at go-live" },
+            { num: "170", label: "Prepared responses ready at go-live" },
             { num: "12min", label: "Execution once live" },
             { num: "2–4wk", label: "Full implementation" },
           ].map((s, i) => (
@@ -553,7 +553,7 @@ function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) 
   const MILESTONES = [
     { week: "Within 24 hours", title: "Implementation kickoff", desc: "Your VaughnMartin implementation team will contact you to schedule your integration sessions and review your IDEA Framework configuration.", icon: Mail, color: GOLD, status: "next" },
     { week: "Week 1–2", title: "Enterprise integration", desc: "Connect Readiness OS to your Salesforce, ServiceNow, Jira, Slack, and other enterprise systems. Signal monitoring goes live.", icon: Zap, color: TEAL, status: "upcoming" },
-    { week: "Week 3–4", title: "First drill & go-live", desc: "Run your first simulated playbook activation with your team. Readiness audit. Executive sign-off. You're live.", icon: TrendingUp, color: NAVY, status: "upcoming" },
+    { week: "Week 3–4", title: "First drill & go-live", desc: "Run your first simulated prepared response activation with your team. Readiness audit. Executive sign-off. You're live.", icon: TrendingUp, color: NAVY, status: "upcoming" },
   ];
 
   return (
@@ -614,7 +614,7 @@ function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) 
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>While you wait for integration</div>
               <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#fff", marginBottom: 8 }}>Preview your dashboard</h3>
               <p style={{ fontSize: 13, fontWeight: 400, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: 420 }}>
-                Explore your execution console with sample data loaded. See how playbook activation works, review your IDEA framework layout, and prepare your team for go-live.
+                Explore your execution console with sample data loaded. See how prepared response activation works, review your IDEA framework layout, and prepare your team for go-live.
               </p>
             </div>
             <button

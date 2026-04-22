@@ -18,7 +18,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
           0% Pre-filled Template - Post-Execution Only
         </h3>
         <p className="text-xs text-muted-foreground">
-          This section is populated AFTER playbook execution. Use it to capture institutional knowledge and improve future activations.
+          This section is populated AFTER prepared response execution. Use it to capture institutional knowledge and improve future activations.
         </p>
       </div>
 
@@ -64,9 +64,9 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="playbook-mods">Recommended Playbook Modifications</Label>
+          <Label htmlFor="prepared response-mods">Recommended Prepared response Modifications</Label>
           <Textarea
-            id="playbook-mods"
+            id="prepared response-mods"
             value={data?.playbookModifications || ''}
             onChange={(e) => onChange({ ...data, playbookModifications: e.target.value })}
             placeholder="Specific changes to make to this playbook:&#10;- Update trigger criteria based on false positives/negatives&#10;- Add/remove stakeholders&#10;- Adjust time allocations&#10;- Update communication templates&#10;- Revise decision checkpoints"
@@ -95,8 +95,8 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
           After you complete lessons learned, Readiness OS' AI will analyze patterns across all executions to generate:
         </p>
         <ul className="text-xs text-muted-foreground mt-2 space-y-1 list-disc list-inside">
-          <li>Automated playbook optimization suggestions</li>
-          <li>Cross-playbook pattern detection</li>
+          <li>Automated prepared response optimization suggestions</li>
+          <li>Cross-prepared response pattern detection</li>
           <li>Predictive risk scoring improvements</li>
           <li>Stakeholder engagement optimization</li>
         </ul>

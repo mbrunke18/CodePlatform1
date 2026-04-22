@@ -123,7 +123,7 @@ export default function OurStory() {
                 VaughnMartin is named after my father.
               </h2>
               <p style={{ fontSize: 15, lineHeight: 1.9, color: "#6B7280", marginBottom: 16 }}>
-                He taught me that preparation isn't about knowing what will happen — it's about being ready when it does. That philosophy shaped how I coached. It shaped how I ran transformation programs inside Fortune 500 companies. And it's the foundation of every playbook in this system.
+                He taught me that preparation isn't about knowing what will happen — it's about being ready when it does. That philosophy shaped how I coached. It shaped how I ran transformation programs inside Fortune 500 companies. And it's the foundation of every prepared response in this system.
               </p>
               <p style={{ fontSize: 15, lineHeight: 1.9, color: "#6B7280" }}>
                 I built Readiness OS because I spent five years on the football sideline and twenty years in Fortune 500 boardrooms — and I couldn't unsee the gap between how two groups of equally talented people handled the exact same problem.
@@ -283,7 +283,7 @@ export default function OurStory() {
 
             <ul className="space-y-4 my-12">
               {[
-                "170 battle-tested playbooks across 9 strategic domains",
+                "170 battle-tested prepared responses across 9 strategic domains",
                 "Continuous monitoring across 248+ intelligence signals",
                 "12-minute coordinated response when triggers fire",
                 "Institutional memory that makes every response smarter"

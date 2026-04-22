@@ -55,7 +55,7 @@ function PrintableReport({ data }: { data: BoardReportData }) {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 24 }}>
         {[
-          { icon: "⚡", label: "Playbook Deployed", value: data.playbookName.split("—")[0].trim() },
+          { icon: "⚡", label: "Prepared response Deployed", value: data.playbookName.split("—")[0].trim() },
           { icon: "✓", label: "Executive Authorization", value: data.authorizedBy },
           { icon: "👥", label: "Stakeholders Notified", value: `${data.stakeholdersNotified} contacts` },
           { icon: "📋", label: "Tasks Completed", value: `${data.tasksCompleted}/${data.tasksTotal}` },

@@ -46,7 +46,7 @@ const scheduledTasks = [
   },
   {
     id: 4,
-    name: 'Playbook Learning Extraction',
+    name: 'Prepared response Learning Extraction',
     schedule: 'After each activation',
     lastRun: '2 days ago',
     nextRun: 'On demand',
@@ -264,7 +264,7 @@ export default function ContinuousModePage() {
               { name: "Microsoft Teams", latency: "94ms", status: "live", uptime: "99.97%" },
               { name: "Azure OpenAI", latency: "210ms", status: "live", uptime: "99.91%" },
               { name: "Signal Intelligence", latency: "18ms", status: "live", uptime: "100%" },
-              { name: "Playbook Engine", latency: "32ms", status: "live", uptime: "99.99%" },
+              { name: "Prepared response Engine", latency: "32ms", status: "live", uptime: "99.99%" },
               { name: "Stakeholder CRM", latency: "55ms", status: "live", uptime: "99.88%" },
               { name: "Budget Allocator", latency: "41ms", status: "live", uptime: "99.95%" },
               { name: "Document Stager", latency: "67ms", status: "live", uptime: "99.93%" },
@@ -301,7 +301,7 @@ export default function ContinuousModePage() {
                   icon: Shield,
                   confidence: 91,
                   label: "Competitor Pricing Shift Detected",
-                  body: "Oracle reduced enterprise licensing by 12% in 3 markets. Playbook 'Competitive Price Response' pre-staged and ready. Recommend executive review within 6 hours.",
+                  body: "Oracle reduced enterprise licensing by 12% in 3 markets. Prepared response 'Competitive Price Response' pre-staged and ready. Recommend executive review within 6 hours.",
                   urgency: "HIGH",
                   urgencyColor: "#dc2626",
                 },
@@ -309,7 +309,7 @@ export default function ContinuousModePage() {
                   icon: TrendingUp,
                   confidence: 84,
                   label: "Talent Pipeline Attrition Risk",
-                  body: "Signal clustering across LinkedIn, Glassdoor, and internal HRIS indicates 2 senior engineering roles at departure risk. Retention playbook can deploy in 12 minutes.",
+                  body: "Signal clustering across LinkedIn, Glassdoor, and internal HRIS indicates 2 senior engineering roles at departure risk. Retention prepared response can deploy in 12 minutes.",
                   urgency: "MEDIUM",
                   urgencyColor: GOLD,
                 },
@@ -364,7 +364,7 @@ export default function ContinuousModePage() {
                   Automated Learning
                 </h4>
                 <p className="text-sm text-white/70">
-                  Self-improving playbooks after every execution
+                  Self-improving prepared responses after every execution
                 </p>
               </div>
               <div className="p-4 bg-white/5 border border-white/10">

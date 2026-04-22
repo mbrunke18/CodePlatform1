@@ -247,7 +247,7 @@ export default function EcosystemsHub() {
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {[
-              { num: "170", label: "Pre-staged playbooks", sub: "Ready before the trigger fires" },
+              { num: "170", label: "Pre-staged prepared responses", sub: "Ready before the trigger fires" },
               { num: "12 min", label: "To full execution", sub: "vs. 30 days of alignment cycles" },
               { num: "3,600×", label: "Execution head start", sub: "30 days compressed to 12 minutes" },
             ].map(({ num, label, sub }) => (

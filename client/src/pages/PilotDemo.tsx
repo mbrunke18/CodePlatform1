@@ -92,7 +92,7 @@ const TRIGGER_SCENARIOS = [
 const PLAYBOOK_OPTIONS = [
   {
     id: "competitive_response",
-    name: "Competitive Response Playbook",
+    name: "Competitive Response Prepared response",
     description: "Coordinate cross-functional response to competitive threats",
     tasks: 12,
     stakeholders: 6,
@@ -100,7 +100,7 @@ const PLAYBOOK_OPTIONS = [
   },
   {
     id: "regulatory_compliance",
-    name: "Regulatory Compliance Playbook",
+    name: "Regulatory Compliance Prepared response",
     description: "Ensure rapid compliance with new regulatory requirements",
     tasks: 18,
     stakeholders: 8,
@@ -108,7 +108,7 @@ const PLAYBOOK_OPTIONS = [
   },
   {
     id: "market_expansion",
-    name: "Market Expansion Playbook",
+    name: "Market Expansion Prepared response",
     description: "Seize market opportunities with coordinated go-to-market",
     tasks: 15,
     stakeholders: 7,
@@ -116,7 +116,7 @@ const PLAYBOOK_OPTIONS = [
   },
   {
     id: "crisis_management",
-    name: "Crisis Management Playbook",
+    name: "Crisis Management Prepared response",
     description: "Rapid incident response with clear accountability chain",
     tasks: 20,
     stakeholders: 10,
@@ -196,10 +196,10 @@ export default function PilotDemo() {
       { 
         id: "4", 
         timestamp: new Date(), 
-        type: "playbook", 
-        title: "Strategic Playbook Activated", 
+        type: "prepared response", 
+        title: "Strategic Prepared response Activated", 
         description: `"${playbookData?.name}" loaded with ${playbookData?.tasks} pre-approved tasks`,
-        valueCallout: "Pre-built playbooks mean no scrambling to figure out next steps",
+        valueCallout: "Pre-built prepared responses mean no scrambling to figure out next steps",
         traditionalTime: "8-16 hours to develop response plan",
         icon: BookOpen 
       },
@@ -344,7 +344,7 @@ export default function PilotDemo() {
                       Step 1: Enter Your Email
                     </CardTitle>
                     <CardDescription>
-                      You'll receive a real notification when the playbook executes
+                      You'll receive a real notification when the prepared response executes
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
@@ -368,7 +368,7 @@ export default function PilotDemo() {
                       <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
                       <ul className="text-sm text-white/90 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
-                        <li>2. You'll select a playbook to execute</li>
+                        <li>2. You'll select a prepared response to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
                         <li>4. Receive an actual email notification as a stakeholder</li>
                       </ul>
@@ -405,7 +405,7 @@ export default function PilotDemo() {
                       Step 2: Choose a Trigger Scenario
                     </CardTitle>
                     <CardDescription>
-                      What business event should activate your playbook?
+                      What business event should activate your prepared response?
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -440,7 +440,7 @@ export default function PilotDemo() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                       <BookOpen className="w-5 h-5 text-[#C9A84C]" />
-                      Step 3: Select a Playbook
+                      Step 3: Select a Prepared response
                     </CardTitle>
                     <CardDescription>
                       Which pre-built response should execute?
@@ -457,7 +457,7 @@ export default function PilotDemo() {
                               ? "border-[#C9A84C] bg-[#C9A84C]/5"
                               : "border-[#E8E4DC] hover:border-[#C9A84C]/30"
                           }`}
-                          data-testid={`button-playbook-${playbook.id}`}
+                          data-testid={`button-prepared response-${playbook.id}`}
                         >
                           <h4 className="font-medium text-[#0A0F2E] dark:text-white mb-1">
                             {playbook.name}
@@ -550,7 +550,7 @@ export default function PilotDemo() {
                           <BookOpen className="w-5 h-5 text-[#C9A84C] dark:text-[#C9A84C]" />
                         </div>
                         <div>
-                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Playbook to Execute</p>
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Prepared response to Execute</p>
                           <p className="font-medium text-[#0A0F2E] dark:text-white">{playbookData?.name}</p>
                           <p className="text-sm text-[#6B7280] mt-1">
                             {playbookData?.tasks} tasks • {playbookData?.stakeholders} stakeholders
@@ -567,7 +567,7 @@ export default function PilotDemo() {
                       <ul className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E] space-y-1">
                         <li>• Real-time Command Center showing each execution step</li>
                         <li>• AI analyzing the signal and matching to your trigger</li>
-                        <li>• Playbook activation with task and stakeholder assignments</li>
+                        <li>• Prepared response activation with task and stakeholder assignments</li>
                         <li>• Actual email notification sent to {email}</li>
                       </ul>
                     </div>
@@ -738,7 +738,7 @@ export default function PilotDemo() {
                               </div>
                               <div className="text-3xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">12 minutes</div>
                               <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
-                                Full coordination: detection, analysis, playbook activation, stakeholder alignment
+                                Full coordination: detection, analysis, prepared response activation, stakeholder alignment
                               </p>
                             </div>
                           </div>

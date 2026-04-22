@@ -39,8 +39,8 @@ const SCENARIO_DOMAINS = [
 const ACTIVE_DRILLS = [
   { name: 'Market Entry — Competitive Response Drill', status: 'in_progress', phase: 'EXECUTE', participants: 8, score: null, playbook: 'Competitive Response Protocol', domain: 'Competitive' },
   { name: 'M&A Integration Walkthrough', status: 'scheduled', phase: 'IDENTIFY', participants: 5, score: null, playbook: 'M&A Integration Protocol v3', domain: 'M&A' },
-  { name: 'Regulatory Inquiry Simulation', status: 'completed', phase: 'ADVANCE', participants: 12, score: 94, playbook: 'Regulatory Response Playbook', domain: 'Regulatory' },
-  { name: 'Digital Transformation Scenario', status: 'completed', phase: 'ADVANCE', participants: 7, score: 87, playbook: 'Digital Acceleration Playbook', domain: 'Digital' },
+  { name: 'Regulatory Inquiry Simulation', status: 'completed', phase: 'ADVANCE', participants: 12, score: 94, playbook: 'Regulatory Response Prepared response', domain: 'Regulatory' },
+  { name: 'Digital Transformation Scenario', status: 'completed', phase: 'ADVANCE', participants: 7, score: 87, playbook: 'Digital Acceleration Prepared response', domain: 'Digital' },
 ];
 
 const getLevelColor = (level: string) => level === 'high' ? GOLD : level === 'medium' ? TEAL : '#9CA3AF';
@@ -77,14 +77,14 @@ export default function SituationalHub() {
                 9-Domain <em style={{ color: GOLD, fontStyle: 'italic' }}>Coverage Board</em>
               </h1>
               <p className="text-white/60 max-w-xl">
-                Exposure levels, readiness drills, and pre-staged playbooks across all 9 strategic domains — M&A, Competitive Response, Regulatory, Supply Chain, Digital Transformation, and beyond.
+                Exposure levels, readiness drills, and pre-staged prepared responses across all 9 strategic domains — M&A, Competitive Response, Regulatory, Supply Chain, Digital Transformation, and beyond.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-wrap">
               {[
                 { label: 'Active Triggers', value: String(activeTriggers), color: GOLD },
                 { label: 'Active Drills',   value: String(activeDrills),   color: TEAL },
-                { label: 'Staged Playbooks',value: String(totalPlaybooks), color: '#fff' },
+                { label: 'Staged Prepared responses',value: String(totalPlaybooks), color: '#fff' },
               ].map(b => (
                 <div key={b.label} className="px-4 py-3 text-center" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
                   <div className="text-2xl font-bold" style={{ ...CG, color: b.color }}>{b.value}</div>
@@ -124,7 +124,7 @@ export default function SituationalHub() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
                   { label: 'Strategic Domains',  value: '9',               desc: 'Fully covered scenario areas', icon: Layers,     color: TEAL  },
-                  { label: 'Staged Playbooks',   value: String(totalPlaybooks), desc: 'Ready for activation',   icon: Target,     color: GOLD  },
+                  { label: 'Staged Prepared responses',   value: String(totalPlaybooks), desc: 'Ready for activation',   icon: Target,     color: GOLD  },
                   { label: 'Avg Activation',     value: '11m',             desc: 'Trigger to response SLA',     icon: Clock,      color: TEAL  },
                   { label: 'Drills Completed',   value: '23',              desc: 'This quarter',                icon: CheckCircle,color: NAVY  },
                 ].map(kpi => (
@@ -162,7 +162,7 @@ export default function SituationalHub() {
                           </div>
                           <Progress value={d.exposure} className="h-1.5 bg-[#E8E4DC]" />
                           <div className="flex justify-between text-xs text-[#6B7280] pt-0.5">
-                            <span>{d.playbooks} playbooks staged</span>
+                            <span>{d.playbooks} prepared responses staged</span>
                             <span>Last drill: {d.lastDrill}</span>
                           </div>
                         </div>
@@ -176,7 +176,7 @@ export default function SituationalHub() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
                   { title: 'Readiness Exposure', desc: 'Understand where your response readiness is strongest and where gaps exist', tab: 'exposure', icon: Eye, color: GOLD },
-                  { title: 'Practice Drills',     desc: 'Run live simulations against any of the 170 playbooks before an event occurs', tab: 'drills', icon: Zap, color: TEAL },
+                  { title: 'Practice Drills',     desc: 'Run live simulations against any of the 170 prepared responses before an event occurs', tab: 'drills', icon: Zap, color: TEAL },
                   { title: 'Coordinate Response', desc: 'Pre-define escalation paths, stakeholder roles, and decision gates', tab: 'coordination', icon: Users, color: NAVY },
                 ].map(item => (
                   <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
@@ -216,7 +216,7 @@ export default function SituationalHub() {
                     <p className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4">Overall Readiness Score</p>
                     <p className="text-8xl font-bold mb-2" style={{ ...CG, color: GOLD }}>{overallExposure}%</p>
                     <div className="text-xs font-bold uppercase tracking-widest text-[#C9A84C]">● BUILDING STRENGTH</div>
-                    <p className="text-xs text-white/40 mt-3 leading-relaxed">Across all 9 strategic domains, {totalPlaybooks} playbooks staged and ready</p>
+                    <p className="text-xs text-white/40 mt-3 leading-relaxed">Across all 9 strategic domains, {totalPlaybooks} prepared responses staged and ready</p>
                   </CardContent>
                 </Card>
                 <Card className="border-[#E8E4DC] bg-white lg:col-span-2">
@@ -257,7 +257,7 @@ export default function SituationalHub() {
                           <div className="p-2 flex-shrink-0" style={{ background: `${GOLD}12` }}><Icon className="h-4 w-4" style={{ color: GOLD }} /></div>
                           <div className="flex-1">
                             <h4 className="font-semibold text-[#0A0F2E] text-sm">{d.name}</h4>
-                            <p className="text-xs text-[#6B7280] mt-0.5">Readiness at {d.exposure}% — {d.playbooks} playbooks available, last drill {d.lastDrill}</p>
+                            <p className="text-xs text-[#6B7280] mt-0.5">Readiness at {d.exposure}% — {d.playbooks} prepared responses available, last drill {d.lastDrill}</p>
                             <Button size="sm" onClick={() => setActiveTab('drills')} className="mt-2 h-7 text-xs bg-[#0A0F2E] text-white hover:bg-[#141B45]">Schedule Drill <ChevronRight className="h-3 w-3 ml-1" /></Button>
                           </div>
                         </div>
@@ -335,7 +335,7 @@ export default function SituationalHub() {
                         <CardContent className="p-4 text-center">
                           <Icon className="h-5 w-5 mx-auto mb-2 text-[#6B7280] group-hover:text-[#C9A84C] transition-colors" />
                           <p className="text-xs font-semibold text-[#0A0F2E] leading-tight">{d.name}</p>
-                          <p className="text-[10px] text-[#6B7280] mt-1">{d.playbooks} playbooks</p>
+                          <p className="text-[10px] text-[#6B7280] mt-1">{d.playbooks} prepared responses</p>
                         </CardContent>
                       </Card>
                     </Link>
@@ -350,7 +350,7 @@ export default function SituationalHub() {
                       <div className="p-3 bg-white/10"><Zap className="h-6 w-6 text-[#C9A84C]" /></div>
                       <div>
                         <h3 className="font-semibold text-white">The best time to practice is before an event</h3>
-                        <p className="text-sm text-white/60">All 170 playbooks are available as full simulation drills</p>
+                        <p className="text-sm text-white/60">All 170 prepared responses are available as full simulation drills</p>
                       </div>
                     </div>
                     <Link href="/practice-drills"><Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] whitespace-nowrap">Browse All Drills <ArrowRight className="h-4 w-4 ml-2" /></Button></Link>

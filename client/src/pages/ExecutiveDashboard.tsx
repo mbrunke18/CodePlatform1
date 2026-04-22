@@ -306,7 +306,7 @@ export default function ExecutiveDashboard() {
                       </div>
                       <h2 style={{ ...CG, fontSize: "32px", fontWeight: 600, color: "#0A0F2E" }}>Your organization is in a <em style={{ fontStyle: "italic", color: "#2B8A6E" }}>high-gravity</em> preparedness state.</h2>
                       <p className="text-[#6B7280] text-sm max-w-xl">
-                        Based on real-time telemetry across 170 strategic playbooks and active signal detection modules. Decision velocity is currently outperforming industry benchmarks by 84%.
+                        Based on real-time telemetry across 170 strategic prepared responses and active signal detection modules. Decision velocity is currently outperforming industry benchmarks by 84%.
                       </p>
                     </div>
                   </div>
@@ -316,7 +316,7 @@ export default function ExecutiveDashboard() {
               {/* Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <MetricCard
-                  title="Playbook Maturity"
+                  title="Prepared response Maturity"
                   value={playbookMaturity.toFixed(0)}
                   unit="%"
                   trend="+2.3% this month"
@@ -431,7 +431,7 @@ export default function ExecutiveDashboard() {
                           { label: 'Agility', score: agilityScore, desc: 'Adaptive response capability' },
                           { label: 'Learning', score: learningScore, desc: 'Post-activation intelligence' },
                           { label: 'Adaptability', score: adaptabilityScore, desc: 'Scenario customization depth' },
-                          { label: 'Playbook Coverage', score: playbookMaturity, desc: `${readiness?.playbooksReady ?? '—'} of ${readiness?.playbooksTotal ?? '170'} ready` },
+                          { label: 'Prepared response Coverage', score: playbookMaturity, desc: `${readiness?.playbooksReady ?? '—'} of ${readiness?.playbooksTotal ?? '170'} ready` },
                         ].map((dim, i) => (
                           <div key={i} className="space-y-2">
                             <div className="flex justify-between items-center">
@@ -453,7 +453,7 @@ export default function ExecutiveDashboard() {
                 {[
                   { label: 'Avg Response Time', value: readiness?.averageResponseTime ? `${readiness.averageResponseTime}m` : '11.4m', desc: 'Trigger-to-activation', icon: Clock, status: 'good' as const },
                   { label: 'Weak Signals Detected', value: readiness?.weakSignalsDetected ?? weakSignals.length, desc: 'Active monitoring alerts', icon: AlertTriangle, status: weakSignals.length > 0 ? 'warning' as const : 'good' as const },
-                  { label: 'Playbooks Active', value: `${readiness?.playbooksReady ?? 170} / 170`, desc: 'Ready for deployment', icon: Layers, status: 'good' as const },
+                  { label: 'Prepared responses Active', value: `${readiness?.playbooksReady ?? 170} / 170`, desc: 'Ready for deployment', icon: Layers, status: 'good' as const },
                 ].map((m, i) => (
                   <Card key={i} className={`border-l-4 ${m.status === 'good' ? 'border-l-[#2B8A6E]' : 'border-l-[#C9A84C]'} border-[#E8E4DC] bg-white`}>
                     <CardContent className="p-6 space-y-3">
@@ -534,7 +534,7 @@ export default function ExecutiveDashboard() {
                     value: `${Math.round(friScore)}%`,
                     icon: Shield,
                     status: friScore >= 80 ? 'good' as const : friScore >= 60 ? 'warning' as const : 'critical' as const,
-                    desc: 'Based on active playbook coverage',
+                    desc: 'Based on active prepared response coverage',
                     link: '/crisis-response'
                   },
                   {
@@ -546,7 +546,7 @@ export default function ExecutiveDashboard() {
                     link: '/signal-intelligence'
                   },
                   {
-                    label: 'Playbooks on Standby',
+                    label: 'Prepared responses on Standby',
                     value: readiness?.playbooksReady ?? 170,
                     icon: Layers,
                     status: 'good' as const,
@@ -626,7 +626,7 @@ export default function ExecutiveDashboard() {
                         </div>
                         <Link to="/playbook-library">
                           <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                            Activate Playbook
+                            Activate Prepared response
                           </Button>
                         </Link>
                       </div>

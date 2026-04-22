@@ -277,7 +277,7 @@ export default function ActivationOutcome() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                       {[
                         { milestone: 'Trigger Detected', target: '00:00', actual: '00:00', status: 'hit' },
-                        { milestone: 'Playbook Activated', target: '00:02', actual: outcome.actualMinutes ? '00:03' : '—', status: 'hit' },
+                        { milestone: 'Prepared response Activated', target: '00:02', actual: outcome.actualMinutes ? '00:03' : '—', status: 'hit' },
                         { milestone: 'First Stakeholder Engaged', target: '00:04', actual: '00:07', status: 'miss' },
                         { milestone: 'Phase 1 Complete', target: '00:12', actual: outcome.actualMinutes ? `00:${outcome.actualMinutes}` : '—', status: outcome.targetMet ? 'hit' : 'miss' },
                         { milestone: 'Board Notified', target: '00:15', actual: '00:22', status: 'miss' },
@@ -443,7 +443,7 @@ export default function ActivationOutcome() {
                         <Textarea
                           value={whatDidntHold || outcome?.whatDidntHold || ""}
                           onChange={e => setWhatDidntHold(e.target.value)}
-                          placeholder="e.g. 'The forensics vendor contact was outdated — 8 minutes lost locating the correct escalation contact. The playbook had the wrong number.'"
+                          placeholder="e.g. 'The forensics vendor contact was outdated — 8 minutes lost locating the correct escalation contact. The prepared response had the wrong number.'"
                           style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${whatDidntHold || outcome?.whatDidntHold ? TEAL : BORDER}`, fontSize: 13 }}
                           disabled={closeOutSaved || outcome?.closeOutCompleted}
                         />
@@ -451,11 +451,11 @@ export default function ActivationOutcome() {
 
                       <div>
                         <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>What did the preparation not anticipate?</div>
-                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Conditions, decisions, or actors that the playbook didn't account for.</p>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Conditions, decisions, or actors that the prepared response didn't account for.</p>
                         <Textarea
                           value={preparationGap || outcome?.preparationGap || ""}
                           onChange={e => setPreparationGap(e.target.value)}
-                          placeholder="e.g. 'Ransomware spread to a subsidiary not covered in the playbook scope. The subsidiary CISO wasn't in the notification chain.'"
+                          placeholder="e.g. 'Ransomware spread to a subsidiary not covered in the prepared response scope. The subsidiary CISO wasn't in the notification chain.'"
                           style={{ minHeight: 90, borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 13 }}
                           disabled={closeOutSaved || outcome?.closeOutCompleted}
                         />
@@ -465,7 +465,7 @@ export default function ActivationOutcome() {
                         <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>
                           One thing to encode for next time <span style={{ color: RED }}>*</span>
                         </div>
-                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>The single most important change that gets built back into the playbook before it's used again.</p>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>The single most important change that gets built back into the prepared response before it's used again.</p>
                         <Textarea
                           value={oneThingToEncode || outcome?.oneThingToEncode || ""}
                           onChange={e => setOneThingToEncode(e.target.value)}
@@ -523,7 +523,7 @@ export default function ActivationOutcome() {
                       </div>
 
                       <div>
-                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.1em" }}>Additional lessons for the playbook</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.1em" }}>Additional lessons for the prepared response</div>
                         <Textarea
                           value={lessonsLearned}
                           onChange={e => setLessonsLearned(e.target.value)}
@@ -533,7 +533,7 @@ export default function ActivationOutcome() {
                       </div>
 
                       <div>
-                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.1em" }}>Playbook effectiveness rating</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.1em" }}>Prepared response effectiveness rating</div>
                         <div style={{ display: "flex", gap: 8 }}>
                           {[1, 2, 3, 4, 5].map(n => (
                             <button key={n} onClick={() => setPlaybookRating(n)}
@@ -601,14 +601,14 @@ export default function ActivationOutcome() {
                       <CheckCircle2 style={{ width: 20, height: 20, color: TEAL, flexShrink: 0 }} />
                       <div>
                         <div style={{ fontSize: 13, fontWeight: 700, color: TEAL }}>ADVANCE Loop Closed</div>
-                        <div style={{ fontSize: 12, color: MUTED }}>This debrief will feed into your Living Playbooks — improving the next activation based on what you just learned.</div>
+                        <div style={{ fontSize: 12, color: MUTED }}>This debrief will feed into your Living Prepared responses — improving the next activation based on what you just learned.</div>
                       </div>
                     </div>
 
                     <div style={{ display: "flex", gap: 10 }}>
-                      <Link href="/living-playbooks">
+                      <Link href="/living-prepared responses">
                         <Button style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 11, fontWeight: 700 }}>
-                          View Living Playbooks <ArrowRight className="h-4 w-4 ml-2" />
+                          View Living Prepared responses <ArrowRight className="h-4 w-4 ml-2" />
                         </Button>
                       </Link>
                       <Link href="/institutional-memory">

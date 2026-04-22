@@ -123,7 +123,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     <text x="920" y="148" textAnchor="middle" fontSize="10" fill={GOLD}
       fontFamily="'DM Sans', Arial, sans-serif">"Activist investor takes 8% stake"</text>
     <text x="920" y="163" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.6)"
-      fontFamily="'DM Sans', Arial, sans-serif">Readiness OS detects. Playbook activates.</text>
+      fontFamily="'DM Sans', Arial, sans-serif">Readiness OS detects. Prepared response activates.</text>
 
     {/* Single clean arrow */}
     <path d="M 920 174 L 920 214" stroke={TEAL} strokeWidth="3.5" fill="none" markerEnd="url(#egArrowT)" />
@@ -133,7 +133,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
     <text x="920" y="250" textAnchor="middle" fontSize="15" fontWeight="700" fill={WHITE}
       fontFamily="'DM Sans', Arial, sans-serif">READINESS OS — SINGLE ORCHESTRATION LAYER</text>
     <text x="920" y="268" textAnchor="middle" fontSize="9" letterSpacing="0.13em"
-      fill="rgba(201,168,76,0.9)" fontFamily="'DM Sans', Arial, sans-serif">170 PLAYBOOKS · 248+ DATA POINTS · 221 EXECUTIVE TRIGGERS · HUMAN-APPROVED AT EVERY GATE</text>
+      fill="rgba(201,168,76,0.9)" fontFamily="'DM Sans', Arial, sans-serif">170 PREPARED RESPONSES · 248+ DATA POINTS · 221 EXECUTIVE TRIGGERS · HUMAN-APPROVED AT EVERY GATE</text>
 
     {/* Three pillars */}
     {/* Pillar 1 */}
@@ -202,7 +202,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
 
     {/* 4 stats — equally spaced */}
     {[
-      { x: 165,  num: '170',   label: 'Pre-Built Playbooks' },
+      { x: 165,  num: '170',   label: 'Pre-Built Prepared responses' },
       { x: 495,  num: '221',   label: 'Executive Triggers' },
       { x: 825,  num: '248+',  label: 'Signal Data Points' },
       { x: 1155, num: '12 min', label: 'To Live Execution' },

@@ -155,7 +155,7 @@ export default function AIRadarSimulation({
             </div>
             <div style={{ flex: 1 }}>
               <h4 style={{ fontWeight: 700, fontSize: 16, color: '#FFFFFF', marginBottom: 4 }}>
-                Playbook {playbookId} Recommended
+                Prepared response {playbookId} Recommended
               </h4>
               <p style={{ fontSize: 13, color: '#f87171', marginBottom: 10 }}>{playbookName}</p>
               <div style={{
@@ -166,7 +166,7 @@ export default function AIRadarSimulation({
               }}>
                 <p style={{ fontSize: 11, fontFamily: 'monospace', color: '#fca5a5' }}>
                   <TrendingDown style={{ display: 'inline', width: 12, height: 12, marginRight: 4 }} />
-                  Confidence: {confidence.toFixed(1)}% | Playbook activation recommended
+                  Confidence: {confidence.toFixed(1)}% | Prepared response activation recommended
                 </p>
               </div>
             </div>

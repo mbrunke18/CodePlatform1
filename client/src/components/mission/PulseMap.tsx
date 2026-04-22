@@ -246,7 +246,7 @@ export default function PulseMap() {
             {[
               { label: 'AT RISK', count: atRiskCount, color: '#EF4444', desc: 'domains proximity ≥80%' },
               { label: 'APPROACHING', count: approachingCount, color: '#F97316', desc: 'domains proximity ≥55%' },
-              { label: 'ACTIVE RESPONSES', count: activeActivations, color: TEAL, desc: 'playbooks executing now' },
+              { label: 'ACTIVE RESPONSES', count: activeActivations, color: TEAL, desc: 'prepared responses executing now' },
             ].map(s => (
               <div key={s.label} className="flex items-center gap-3">
                 <div className="w-2 h-2 flex-shrink-0" style={{ background: s.color }} />

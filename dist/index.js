@@ -19161,7 +19161,7 @@ ${detection.triggerName}` },
 ${detection.triggerDomain}` },
           { type: "mrkdwn", text: `*Confidence:*
 ${detection.confidenceScore}%` },
-          { type: "mrkdwn", text: `*Primary Playbook:*
+          { type: "mrkdwn", text: `*Primary Prepared response:*
 ${detection.recommendedPlaybook}` },
           ...detection.alternatePlaybooks.length > 0 ? [{ type: "mrkdwn", text: `*Also Consider:*
 ${detection.alternatePlaybooks.join(", ")}` }] : []
@@ -19343,7 +19343,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
           eventType: "trigger_fired",
           source: signal.source,
           signalTitle: signal.description.substring(0, 200),
-          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Playbook recommended: ${detection.recommendedPlaybook}`,
+          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Prepared response recommended: ${detection.recommendedPlaybook}`,
           confidence: detection.confidenceScore,
           keywordsMatched: detection.matchedKeywords.slice(0, 5)
         });
@@ -19412,7 +19412,7 @@ var init_SignalEvaluationService = __esm({
         name: "M&A Activity Detected",
         domain: "Market Dynamics",
         keywords: ["acquisition", "merger", "buyout", "takeover", "acquires", "acquired", "deal signed", "consolidation", "private equity", "strategic acquisition", "deal closed", "billion deal", "purchase agreement", "M&A", "joint venture", "acquirer", "merger agreement", "deal valued", "deal worth", "stake acquisition", "hostile takeover", "friendly takeover", "acquire", "acquired by", "bought by", "purchase of"],
-        playbookName: "M&A Response Playbook",
+        playbookName: "M&A Response Prepared response",
         alternatePlaybooks: ["Investor Communications Protocol", "Competitive Threat Response"],
         baseConfidence: 75
       },
@@ -38872,7 +38872,7 @@ function buildEmailHtml(firstName, magicUrl) {
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
                   <div style="color:${GOLD};font-size:20px;font-weight:800;">170</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Playbooks</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Prepared responses</div>
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;">
                   <div style="color:${GOLD};font-size:20px;font-weight:800;">3,600\xD7</div>

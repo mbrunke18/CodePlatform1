@@ -148,7 +148,7 @@ export default function BoardReadiness() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 28 }}>
           <StatCard label="Triggers Monitored (90d)" value={d.triggerCount90d} icon={Zap} color={GOLD} sub={`${d.triggerCount30d} in past 30 days`} />
           <StatCard label="Avg Response Time" value={d.avgResponseMinutes ? `${d.avgResponseMinutes}m` : '< 12m'} icon={Clock} color={TEAL} sub="vs. 30-day industry baseline" />
-          <StatCard label="Playbooks Activated" value={d.activationCount} icon={BookOpen} color={NAVY} sub="Across all execution events" />
+          <StatCard label="Prepared responses Activated" value={d.activationCount} icon={BookOpen} color={NAVY} sub="Across all execution events" />
           <StatCard label="Stakeholders Enrolled" value={d.stakeholderCount} icon={Users} color={TEAL} sub="Receiving real-time alerts" />
         </div>
 
@@ -233,7 +233,7 @@ export default function BoardReadiness() {
             <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 6 }}>Executive Attestation</div>
             <div style={{ fontSize: 12, color: '#555', lineHeight: 1.7 }}>
               This organization's strategic execution infrastructure is actively monitoring {d.triggersArmed || 221} trigger patterns across {d.totalDomains} domains.
-              Stakeholder teams are enrolled to receive real-time alerts within minutes of a trigger detection. 170 pre-staged playbooks are available for immediate deployment.
+              Stakeholder teams are enrolled to receive real-time alerts within minutes of a trigger detection. 170 pre-staged prepared responses are available for immediate deployment.
               This report was generated automatically by Readiness OS and reflects live system state as of {generatedDate}.
             </div>
           </div>

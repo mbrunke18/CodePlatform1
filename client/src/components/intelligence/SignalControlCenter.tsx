@@ -548,7 +548,7 @@ function CategoryDetailView({
         </CardContent>
       </Card>
 
-      {/* Data Sources and Playbooks */}
+      {/* Data Sources and Prepared responses */}
       <div className="grid grid-cols-2 gap-4">
         <Card>
           <CardHeader>
@@ -572,7 +572,7 @@ function CategoryDetailView({
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Play className="w-4 h-4" />
-              Recommended Playbooks
+              Recommended Prepared Responses
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -580,7 +580,7 @@ function CategoryDetailView({
               {recommendedPlaybooks.length > 0 ? recommendedPlaybooks.map(pb => (
                 <Badge key={pb} variant="secondary">{pb}</Badge>
               )) : (
-                <span className="text-sm text-muted-foreground">No playbooks recommended yet</span>
+                <span className="text-sm text-muted-foreground">No prepared responses recommended yet</span>
               )}
             </div>
           </CardContent>
@@ -649,7 +649,7 @@ function AlertCard({ alert }: { alert: any }) {
               Acknowledge
             </Button>
             <Button variant="default" size="sm" data-testid={`button-activate-${alert.id}`}>
-              Activate Playbook
+              Activate Prepared response
             </Button>
           </div>
         </div>
@@ -728,7 +728,7 @@ function TriggersPanel() {
             <Zap className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
             <h4 className="font-semibold mb-2">No Triggers Configured</h4>
             <p className="text-muted-foreground mb-4">
-              Create triggers to automatically monitor signals and recommend playbook activation.
+              Create triggers to automatically monitor signals and recommend prepared response activation.
             </p>
             <Button onClick={() => setShowBuilder(true)} data-testid="button-create-first-trigger">
               <Plus className="w-4 h-4 mr-2" />

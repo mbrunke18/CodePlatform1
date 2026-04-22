@@ -104,9 +104,9 @@ export default function SettingsHub() {
               {activeSection === 'overview' && (() => {
                 const SECTION_META: Record<string, { desc: string; stat: string; statSub: string; accent: string }> = {
                   organization: { desc: 'Company name, industry, pilot parameters, and response window.', stat: org?.name ? '1 Org' : 'Pending', statSub: 'configuration', accent: TEAL },
-                  stakeholders: { desc: 'Manage who gets notified for each playbook activation and trigger.', stat: `${stakeholders.length}`, statSub: 'stakeholders configured', accent: GOLD },
+                  stakeholders: { desc: 'Manage who gets notified for each prepared response activation and trigger.', stat: `${stakeholders.length}`, statSub: 'stakeholders configured', accent: GOLD },
                   metrics: { desc: 'Define success criteria and KPIs for all execution outcomes.', stat: `${metrics.length}`, statSub: 'metrics tracked', accent: TEAL },
-                  roles: { desc: 'Control who can authorize playbook activation and view intel.', stat: '4', statSub: 'permission levels', accent: '#7C9DB5' },
+                  roles: { desc: 'Control who can authorize prepared response activation and view intel.', stat: '4', statSub: 'permission levels', accent: '#7C9DB5' },
                   integrations: { desc: 'Connect enterprise systems — Teams, Copilot, Azure, Entra.', stat: '10+', statSub: 'connectors available', accent: GOLD },
                   notifications: { desc: 'Alert preferences and delivery settings for the 12-min window.', stat: 'Live', statSub: 'alert system', accent: TEAL },
                 };
@@ -212,7 +212,7 @@ export default function SettingsHub() {
               {/* ── STAKEHOLDERS ── */}
               {activeSection === 'stakeholders' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Stakeholder Management</h2><p className="text-[#6B7280] mt-1">Configure who is notified for each playbook activation</p></div><Link href="/stakeholder-management"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Management Page</Button></Link></div>
+                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Stakeholder Management</h2><p className="text-[#6B7280] mt-1">Configure who is notified for each prepared response activation</p></div><Link href="/stakeholder-management"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Management Page</Button></Link></div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {[{ label: 'Total Stakeholders', value: String(stakeholders.length || 12), icon: Users, color: TEAL },
@@ -265,7 +265,7 @@ export default function SettingsHub() {
                         { name: 'Stakeholder Response Rate', target: '90%', current: '94%', unit: '%', status: 'good' },
                         { name: 'Task Completion Rate', target: '85%', current: '78%', unit: '%', status: 'warn' },
                         { name: 'Decision Confidence Score', target: '80%', current: '82%', unit: '%', status: 'good' },
-                        { name: 'Playbook Coverage', target: '95%', current: '89%', unit: '%', status: 'warn' },
+                        { name: 'Prepared response Coverage', target: '95%', current: '89%', unit: '%', status: 'warn' },
                       ]).map((m: any, i: number) => {
                         const isGood = m.status === 'good';
                         return (
@@ -287,13 +287,13 @@ export default function SettingsHub() {
               {/* ── ROLES ── */}
               {activeSection === 'roles' && (
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Roles & Permissions</h2><p className="text-[#6B7280] mt-1">Control access levels for playbook activation and trigger management</p></div></div>
+                  <div className="flex items-center justify-between"><div><h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Roles & Permissions</h2><p className="text-[#6B7280] mt-1">Control access levels for prepared response activation and trigger management</p></div></div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
-                      { role: 'Executive', desc: 'Full authorization — can activate all playbooks', permissions: ['Activate playbooks', 'Approve escalations', 'View all data', 'Modify triggers'], color: GOLD },
-                      { role: 'Strategist', desc: 'Can configure playbooks and view intelligence', permissions: ['View all data', 'Configure triggers', 'Prepare playbooks', 'Draft briefs'], color: TEAL },
-                      { role: 'Operator', desc: 'Execute assigned tasks within active playbooks', permissions: ['View assigned tasks', 'Update task status', 'Receive notifications'], color: NAVY },
+                      { role: 'Executive', desc: 'Full authorization — can activate all prepared responses', permissions: ['Activate prepared responses', 'Approve escalations', 'View all data', 'Modify triggers'], color: GOLD },
+                      { role: 'Strategist', desc: 'Can configure prepared responses and view intelligence', permissions: ['View all data', 'Configure triggers', 'Prepare prepared responses', 'Draft briefs'], color: TEAL },
+                      { role: 'Operator', desc: 'Execute assigned tasks within active prepared responses', permissions: ['View assigned tasks', 'Update task status', 'Receive notifications'], color: NAVY },
                       { role: 'Observer', desc: 'Read-only access for board members and auditors', permissions: ['View dashboards', 'Access audit log', 'Export reports'], color: '#6B7280' },
                     ].map(r => (
                       <Card key={r.role} className="border-[#E8E4DC] bg-white">

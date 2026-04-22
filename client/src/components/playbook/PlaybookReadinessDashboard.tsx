@@ -180,7 +180,7 @@ export default function PlaybookReadinessDashboard({
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Shield className="w-5 h-5" />
-              Playbook Readiness Score
+              Prepared response Readiness Score
             </CardTitle>
             <Button 
               variant="ghost" 

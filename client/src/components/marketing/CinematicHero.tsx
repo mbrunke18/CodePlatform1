@@ -385,7 +385,7 @@ export default function CinematicHero({ onComplete, onSkip }: CinematicHeroProps
                   className="mb-8"
                 >
                   <span className="text-lg text-gray-800">
-                    170 playbooks across growth, risk resilience, and transformation.
+                    170 prepared responses across growth, risk resilience, and transformation.
                   </span>
                 </motion.div>
                 

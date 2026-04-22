@@ -38,13 +38,13 @@ const TEAL = "#2B8A6E";
 
 const workspaceTools = [
   {
-    title: "Playbook Library",
-    description: "Browse and select from 170 pre-built strategic playbooks across 9 domains",
+    title: "Prepared response Library",
+    description: "Browse and select from 170 pre-built strategic prepared responses across 9 domains",
     path: "/playbooks",
     icon: BookOpen,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
-    stats: "170 playbooks",
+    stats: "170 prepared responses",
     featured: true
   },
   {
@@ -75,8 +75,8 @@ const workspaceTools = [
     stats: "Executive reports"
   },
   {
-    title: "Playbook Customization",
-    description: "Tailor playbooks to your organization's specific needs",
+    title: "Prepared response Customization",
+    description: "Tailor prepared responses to your organization's specific needs",
     path: "/playbook-customization",
     icon: ClipboardList,
     color: "text-[#2B8A6E]",
@@ -148,7 +148,7 @@ function TwoPhasePlaybookSelector() {
     },
   });
 
-  // PHASE 2: Load full playbook detail only when one is selected
+  // PHASE 2: Load full prepared response detail only when one is selected
   const { data: detail, isLoading: detailLoading } = useQuery<PlaybookDetail>({
     queryKey: ['/api/playbooks', selectedId],
     queryFn: () => fetch(`/api/playbooks/${selectedId}`, { credentials: 'include' }).then(r => r.json()),
@@ -170,7 +170,7 @@ function TwoPhasePlaybookSelector() {
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-white font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  Playbook Quick-Select
+                  Prepared response Quick-Select
                 </h3>
                 <Badge className="bg-[#2B8A6E] text-white border-none text-xs font-bold uppercase tracking-wider">Two-Phase</Badge>
               </div>
@@ -188,7 +188,7 @@ function TwoPhasePlaybookSelector() {
           <Input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search playbooks by name or domain..."
+            placeholder="Search prepared responses by name or domain..."
             className="pl-9 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-[#2B8A6E]"
           />
         </div>
@@ -201,12 +201,12 @@ function TwoPhasePlaybookSelector() {
             {metaLoading ? (
               <div className="flex items-center justify-center py-10 gap-2 text-[#6B7280]">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                <span className="text-sm">Loading playbook index...</span>
+                <span className="text-sm">Loading prepared response index...</span>
               </div>
             ) : filtered.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10 gap-2 text-[#6B7280]">
                 <Search className="h-5 w-5" />
-                <span className="text-sm">No playbooks match "{search}"</span>
+                <span className="text-sm">No prepared responses match "{search}"</span>
               </div>
             ) : (
               filtered.map(p => (
@@ -242,7 +242,7 @@ function TwoPhasePlaybookSelector() {
                 <div className="p-3 bg-[#2B8A6E]/10">
                   <BookOpen className="h-6 w-6 text-[#2B8A6E]" />
                 </div>
-                <p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a playbook for full details</p>
+                <p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a prepared response for full details</p>
                 <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60">Trigger conditions, escalation paths, and execution steps load on demand</p>
               </div>
             ) : detailLoading ? (
@@ -284,9 +284,9 @@ function TwoPhasePlaybookSelector() {
                     <p className="text-xs text-[#6B7280]">Stakeholders</p>
                   </div>
                 </div>
-                <Link href={`/playbooks/${detail.id}`}>
+                <Link href={`/prepared responses/${detail.id}`}>
                   <Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">
-                    Open Full Playbook
+                    Open Full Prepared response
                     <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
                   </Button>
                 </Link>
@@ -320,13 +320,13 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
               </div>
               <div>
                 <div className="flex items-center gap-3">
-                  <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Factory</h1>
+                  <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Prepared response Factory</h1>
                   <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">
                     IDENTIFY
                   </Badge>
                 </div>
                 <p className="text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
-                  Build, customize, and manage strategic playbooks for every scenario
+                  Build, customize, and manage strategic prepared responses for every scenario
                 </p>
               </div>
             </div>
@@ -393,7 +393,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                       <category.icon className={`h-6 w-6 ${category.color}`} />
                       <h3 className="font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{category.name}</h3>
                     </div>
-                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-[#C9A84C]/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} playbooks</Badge>
+                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-[#C9A84C]/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} prepared responses</Badge>
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
@@ -405,12 +405,12 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
             ))}
           </div>
 
-          {/* TWO-PHASE PLAYBOOK SELECTOR */}
+          {/* TWO-PHASE PREPARED RESPONSE SELECTOR */}
           <TwoPhasePlaybookSelector />
 
-          {/* Recent Playbook Activity */}
+          {/* Recent Prepared response Activity */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Recent Playbook Activity
+            Recent Prepared response Activity
           </h2>
           <div className="space-y-3 mb-8">
             <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5  border-l-4 border-l-[#2B8A6E]">
@@ -421,7 +421,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Playbook #12</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Prepared response #12</h4>
                       <Badge className="bg-[#2B8A6E] text-white border-none">Active</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
@@ -438,7 +438,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Playbook #31</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Prepared response #31</h4>
                       <Badge className="bg-red-600 text-white border-none">Triggered</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Activated Feb 3 via automated trigger</p>
@@ -455,7 +455,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Playbook #45</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Prepared response #45</h4>
                       <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">In Review</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Draft review pending from 3 stakeholders</p>
@@ -509,7 +509,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   <div>
                     <h3 className="font-semibold text-white">Ready for the next phase?</h3>
                     <p className="text-sm text-white/60">
-                      Once your playbooks are ready, set up signal monitoring in DETECT
+                      Once your prepared responses are ready, set up signal monitoring in DETECT
                     </p>
                   </div>
                 </div>

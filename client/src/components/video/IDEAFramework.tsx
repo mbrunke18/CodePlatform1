@@ -13,11 +13,11 @@ const phases = [
   { 
     id: "identify", 
     name: "IDENTIFY", 
-    module: "Playbook™",
+    module: "Prepared response™",
     icon: ClipboardList, 
     color: "#3B82F6",
-    description: "Build your playbook library",
-    outcome: "170 playbooks ready"
+    description: "Build your prepared response library",
+    outcome: "170 prepared responses ready"
   },
   { 
     id: "detect", 

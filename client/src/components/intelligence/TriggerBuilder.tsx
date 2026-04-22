@@ -762,9 +762,9 @@ export function TriggerBuilder({
               {/* Auto-activate Option */}
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="font-medium">Auto-activate Playbook</div>
+                  <div className="font-medium">Auto-activate Prepared response</div>
                   <p className="text-sm text-muted-foreground">
-                    Automatically recommend playbook activation when triggered
+                    Automatically recommend prepared response activation when triggered
                   </p>
                 </div>
                 <Switch

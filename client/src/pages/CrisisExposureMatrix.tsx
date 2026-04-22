@@ -122,7 +122,7 @@ export default function CrisisExposureMatrix() {
               Crisis Exposure <em style={{ fontStyle: "italic", color: "#DFC178" }}>Matrix</em>
             </h1>
             <p className="text-white/60 text-xl leading-relaxed max-w-3xl">
-              Prioritize your playbook preparation with our Likelihood × Impact framework. 
+              Prioritize your prepared response preparation with our Likelihood × Impact framework. 
               Focus on <span className="text-[#DC2626] font-bold">Critical threats</span> first for fastest time-to-value and maximum executive resilience.
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function CrisisExposureMatrix() {
             <CardHeader className="p-10 pb-4 relative z-10">
               <CardTitle style={CG} className="text-3xl text-white mb-2">90-Day Onboarding Strategy</CardTitle>
               <CardDescription className="text-[#DFC178] text-lg font-medium italic">
-                Don't try to prepare for all 170 playbooks at once. Start with your Top 10 Critical threats.
+                Don't try to prepare for all 170 prepared responses at once. Start with your Top 10 Critical threats.
               </CardDescription>
             </CardHeader>
             <CardContent className="p-10 pt-4 relative z-10">
@@ -165,7 +165,7 @@ export default function CrisisExposureMatrix() {
                 </div>
                 <p className="text-white/80 text-sm leading-relaxed">
                   <strong className="text-white block mb-1">Days 31-90: Hardening</strong>
-                  Get your Top 10 Critical playbooks to 95%+ readiness level.
+                  Get your Top 10 Critical prepared responses to 95%+ readiness level.
                 </p>
               </div>
               <div className="space-y-4">
@@ -175,7 +175,7 @@ export default function CrisisExposureMatrix() {
                 </div>
                 <p className="text-white/80 text-sm leading-relaxed">
                   <strong className="text-white block mb-1">Ongoing: Optimization</strong>
-                  Build out remaining playbooks with quarterly readiness sprints.
+                  Build out remaining prepared responses with quarterly readiness sprints.
                 </p>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function CrisisExposureMatrix() {
             <CardContent className="p-8 space-y-4">
               {[
                 { 
-                  title: 'Schedule practice drills for your Critical playbooks', 
+                  title: 'Schedule practice drills for your Critical prepared responses', 
                   desc: 'Turn preparedness into proven performance', 
                   link: '/practice-drills', 
                   btn: 'Schedule Drills',
@@ -237,8 +237,8 @@ export default function CrisisExposureMatrix() {
                   tid: 'card-action-drills'
                 },
                 { 
-                  title: 'Review full playbook library', 
-                  desc: 'Explore all 170 strategic playbooks', 
+                  title: 'Review full prepared response library', 
+                  desc: 'Explore all 170 strategic prepared responses', 
                   link: '/playbook-library', 
                   btn: 'View Library',
                   variant: 'outline',

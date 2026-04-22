@@ -91,7 +91,7 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
     const lastDrill = null;
 
     playbooks.push({
-      id: `playbook-${i}`,
+      id: `prepared response-${i}`,
       playbookNumber: i,
       name: `${playbookNames[nameIndex]} ${Math.floor(i / 24) + 1}`,
       domain: domains[domainIndex],
@@ -211,7 +211,7 @@ export default function PlaybookReadinessAudit() {
               <div className="flex items-center gap-3 mb-3">
                 <Shield className="h-8 w-8 text-[#C9A84C]" />
                 <h1 className="text-4xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">
-                  Playbook Readiness Audit
+                  Prepared response Readiness Audit
                 </h1>
               </div>
               <p className="text-[#6B7280] text-lg max-w-2xl">
@@ -220,7 +220,7 @@ export default function PlaybookReadinessAudit() {
               </p>
             </div>
             <div className="hidden lg:flex items-center gap-4">
-              <OnboardingTrigger pageId="playbook-readiness" autoStart={true} className="bg-white/5 border-white/10 text-white hover:bg-white/10" />
+              <OnboardingTrigger pageId="prepared response-readiness" autoStart={true} className="bg-white/5 border-white/10 text-white hover:bg-white/10" />
               <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-export">
                 <Download className="h-4 w-4 mr-2" />
                 Export Report
@@ -271,7 +271,7 @@ export default function PlaybookReadinessAudit() {
               Overall Readiness Score
             </CardTitle>
             <CardDescription>
-              Average preparedness across all 170 playbooks
+              Average preparedness across all 170 prepared responses
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -367,11 +367,11 @@ export default function PlaybookReadinessAudit() {
             </Select>
           </div>
           <div className="text-sm font-medium text-[#6B7280]">
-            Showing <span className="text-[#0A0F2E]">{filteredPlaybooks.length}</span> of {playbooks.length} playbooks
+            Showing <span className="text-[#0A0F2E]">{filteredPlaybooks.length}</span> of {playbooks.length} prepared responses
           </div>
         </div>
 
-        <div className="grid gap-4" data-testid="playbook-list">
+        <div className="grid gap-4" data-testid="prepared response-list">
           {filteredPlaybooks.slice(0, 20).map((playbook) => {
             const config = tierConfig[playbook.tier];
             const TierIcon = config.icon;
@@ -384,7 +384,7 @@ export default function PlaybookReadinessAudit() {
                 key={playbook.id} 
                 className={`border border-[#E8E4DC] bg-white border-l-4 transition-all`}
                 style={{ borderLeftColor: indicatorColor }}
-                data-testid={`playbook-card-${playbook.playbookNumber}`}
+                data-testid={`prepared response-card-${playbook.playbookNumber}`}
               >
                 <CardContent className="py-4">
                   <div className="flex items-center justify-between">
@@ -515,8 +515,8 @@ export default function PlaybookReadinessAudit() {
               </div>
               <div className="flex items-center gap-4">
                 <Link href="/scenario-gallery">
-                  <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-browse-playbooks">
-                    Browse Playbooks
+                  <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-browse-prepared responses">
+                    Browse Prepared responses
                   </Button>
                 </Link>
                 <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-schedule-drill">

@@ -144,7 +144,7 @@ const BASE_DETECT_STEPS = [
   { label: 'Signal threshold breach confirmed', duration: 1200 },
   { label: 'Cross-referencing 221 executive trigger conditions', duration: 1400 },
   { label: 'TRIGGER DETECTED', duration: 1100, highlight: true },
-  { label: 'Matching against 170 strategic playbooks', duration: 1300 },
+  { label: 'Matching against 170 strategic prepared responses', duration: 1300 },
   { label: 'AI Commander Brief generating', duration: 1500 },
   { label: 'Execution protocol ready', duration: 900, highlight: true },
 ];
@@ -247,7 +247,7 @@ export default function GuidedStart() {
   function handleActivate() {
     if (!selected) return;
     let pid = playbookId || findPlaybook(selected) || (playbookList[0]?.id ?? null);
-    if (pid) setLocation(`/playbook-activation/manual/${pid}`);
+    if (pid) setLocation(`/prepared response-activation/manual/${pid}`);
   }
 
   // ─── PHASE: SELECT ────────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ export default function GuidedStart() {
             <div style={{ display: 'flex', justifyContent: 'center', gap: 32, marginTop: 20 }}>
               {[
                 { val: '248+', label: 'Live signals monitored' },
-                { val: '170',  label: 'Playbooks ready' },
+                { val: '170',  label: 'Prepared responses ready' },
                 { val: '12m',  label: 'Target response time' },
               ].map(s => (
                 <div key={s.label} style={{ textAlign: 'center' }}>
@@ -407,7 +407,7 @@ export default function GuidedStart() {
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: detectStep >= 5 ? '#fff' : 'rgba(255,255,255,0.2)', lineHeight: 1 }}>
                   {detectStep >= 5 ? '1' : '0'}
                 </div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Playbook matched</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Prepared response matched</div>
               </div>
             </div>
 

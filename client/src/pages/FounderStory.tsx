@@ -98,13 +98,13 @@ export default function FounderStory() {
               I carried those four words from a third-grade football field through twenty years inside Fortune 1000 companies. Into every boardroom, every sideline, every organization that was either ready when the moment came or scrambling to build the response after the signal had already fired. The pattern was the same everywhere I looked: the organizations that had prepared in advance moved without fear. The ones that had not were still aligning when the window closed.
             </Body>
             <Body>
-              When I built this company and named it for the family that gave me that framework, I named it because this platform is the same idea applied at enterprise scale. Prepare the response before the trigger fires. Practice the playbook before the pressure arrives. Perform without hesitation when the moment comes. And when the first activation is imperfect, never stop — the system advances, the library compounds, and the next response is faster than the last.
+              When I built this company and named it for the family that gave me that framework, I named it because this platform is the same idea applied at enterprise scale. Prepare the response before the trigger fires. Practice the prepared response before the pressure arrives. Perform without hesitation when the moment comes. And when the first activation is imperfect, never stop — the system advances, the library compounds, and the next response is faster than the last.
             </Body>
             <PullQuote>
               "Every enterprise that prepares for every situation it will face is no longer afraid of what comes next. That is not a product feature. That is the point."
             </PullQuote>
             <Body style={{ fontStyle: "italic", color: MUTED }}>
-              The arc from my father's words to this platform is not a metaphor. Preparation produces readiness. Readiness produces fearlessness. The sequence he named on a football field is the operating logic of every playbook in this system.
+              The arc from my father's words to this platform is not a metaphor. Preparation produces readiness. Readiness produces fearlessness. The sequence he named on a football field is the operating logic of every prepared response in this system.
             </Body>
           </div>
 
@@ -126,7 +126,7 @@ export default function FounderStory() {
             "That is coordination infrastructure performing under the highest pressure I have ever witnessed."
           </PullQuote>
           <Body>
-            Not because the players were exceptional — though many were. Because the system was built before the game started. The playbook wasn't assembled on the sideline. Every scenario had already been prepared for. Every role had already been defined. Every pivot had already been rehearsed. When the situation changed at the line of scrimmage, nobody panicked. They already knew what to do next.
+            Not because the players were exceptional — though many were. Because the system was built before the game started. The prepared response wasn't assembled on the sideline. Every scenario had already been prepared for. Every role had already been defined. Every pivot had already been rehearsed. When the situation changed at the line of scrimmage, nobody panicked. They already knew what to do next.
           </Body>
           <Body>
             I loved that. The clarity of it. The way preparation collapsed the distance between a changing situation and a perfectly coordinated response to almost nothing.
@@ -243,7 +243,7 @@ export default function FounderStory() {
               {[
                 { letter: "I", word: "IDENTIFY", desc: "248+ signals across 9 strategic domains. Every 15 minutes. Before you ask." },
                 { letter: "D", word: "DETECT", desc: "Pattern recognition fires before the crisis peaks. Not after." },
-                { letter: "E", word: "EXECUTE", desc: "170 pre-built playbooks deploy simultaneously. Twelve minutes." },
+                { letter: "E", word: "EXECUTE", desc: "170 pre-built prepared responses deploy simultaneously. Twelve minutes." },
                 { letter: "A", word: "ADVANCE", desc: "Every activation makes the next one smarter. The library compounds." },
               ].map(({ letter, word, desc }) => (
                 <div key={letter} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
@@ -264,7 +264,7 @@ export default function FounderStory() {
             DETECT means pattern recognition fires before the crisis peaks. Not after the call comes in. Not after someone builds a deck to explain what is happening. The system reads cross-domain signal combinations that human analysts miss because they are watching one domain at a time.
           </Body>
           <Body>
-            EXECUTE means when the signal fires, the response is already staged. One hundred and seventy pre-built playbooks deploy simultaneously. Not sequentially. Not after alignment. Simultaneously. From trigger to full execution in twelve minutes.
+            EXECUTE means when the signal fires, the response is already staged. One hundred and seventy pre-built prepared responses deploy simultaneously. Not sequentially. Not after alignment. Simultaneously. From trigger to full execution in twelve minutes.
           </Body>
           <Body>
             ADVANCE means it learns. Every activation generates outcome data. Every execution makes the next one smarter. The library compounds with use.
@@ -305,7 +305,7 @@ export default function FounderStory() {
                 Most organizations treat preparation as a document delivery exercise. A brief gets generated. Stakeholders receive it. They are asked to acknowledge it — to sign off that they have reviewed it, understood it, and are ready to execute it. This looks like preparation. It is not the same thing.
               </p>
               <p style={{ fontSize: 17, lineHeight: 1.85, color: "#374151", fontWeight: 400, marginBottom: 24 }}>
-                The football quarterback was not handed the playbook and asked to acknowledge it. He was in the room when it was built. He challenged the assumptions. He tested it against the defensive tendencies he had studied. His judgment was in the response before the game started. That is not an administrative distinction. That is the difference between a document someone received and an artifact someone constructed.
+                The football quarterback was not handed the prepared response and asked to acknowledge it. He was in the room when it was built. He challenged the assumptions. He tested it against the defensive tendencies he had studied. His judgment was in the response before the game started. That is not an administrative distinction. That is the difference between a document someone received and an artifact someone constructed.
               </p>
               <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, margin: "40px 0" }}>
                 <p style={{ ...CG, fontSize: 22, fontWeight: 500, color: NAVY, lineHeight: 1.5, fontStyle: "italic" }}>
@@ -316,7 +316,7 @@ export default function FounderStory() {
                 Three things define the difference. The executive participated in constructing the response — not receiving it. They had the formal right to challenge any assumption in it — not to rubber-stamp a template. And the plan reflects their specific judgment about their specific situation — not a committee average, not a default. These three criteria are the difference between compliance and commitment.
               </p>
               <p style={{ fontSize: 17, lineHeight: 1.85, color: "#374151", fontWeight: 400, marginBottom: 0 }}>
-                Readiness OS was designed around this distinction from the first line of code. The preparation phase is not brief delivery. It is artifact construction. The executive who activates the playbook at trigger point is activating something they built. That changes what the next twelve minutes feel like. That changes who they are in the room when it matters.
+                Readiness OS was designed around this distinction from the first line of code. The preparation phase is not brief delivery. It is artifact construction. The executive who activates the prepared response at trigger point is activating something they built. That changes what the next twelve minutes feel like. That changes who they are in the room when it matters.
               </p>
             </div>
           </div>
@@ -380,7 +380,7 @@ export default function FounderStory() {
             </p>
           </div>
           <Body>
-            The first time an organization activates a pre-staged playbook against a real event, something changes. The second time, it changes further. By the tenth time, the anxiety that surrounds most enterprise crises is gone — not because the events are less serious, but because the organization has stopped improvising and started executing. That shift is not incremental. It changes how leadership teams carry themselves. It changes what they are willing to take on. It makes them fearless.
+            The first time an organization activates a pre-staged prepared response against a real event, something changes. The second time, it changes further. By the tenth time, the anxiety that surrounds most enterprise crises is gone — not because the events are less serious, but because the organization has stopped improvising and started executing. That shift is not incremental. It changes how leadership teams carry themselves. It changes what they are willing to take on. It makes them fearless.
           </Body>
           <Body>
             I spent five years on a sideline watching what it looks like when a team walks into competition already knowing. It is not arrogance. It is not complacency. It is a calm that comes specifically from having done the work before the moment arrived. From having built the infrastructure that makes the moment manageable before it becomes a crisis.
@@ -392,7 +392,7 @@ export default function FounderStory() {
             That is what Readiness OS is for. Not to make enterprises smarter. Not to make them faster in isolation. To make them the kind of organization that walks into every strategic event having already done the work. Having already built the coordination infrastructure. Having already answered the question.
           </Body>
           <Body style={{ fontWeight: 600, color: NAVY }}>
-            What coordination capability do we have? What playbooks are staged? What signals are we watching? What happens when they fire?
+            What coordination capability do we have? What prepared responses are staged? What signals are we watching? What happens when they fire?
           </Body>
           <Body>
             Most enterprises cannot answer those questions today. They could. That is the gap. That is what we close.

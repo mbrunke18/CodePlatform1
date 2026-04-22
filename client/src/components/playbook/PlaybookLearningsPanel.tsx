@@ -49,7 +49,7 @@ interface PlaybookLearningsPanelProps {
 
 export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearningsPanelProps) {
   const { data: learningsRaw, isLoading: learningsLoading } = useQuery<PlaybookLearning[]>({
-    queryKey: ['/api/dynamic-strategy/playbook-learnings', scenarioId],
+    queryKey: ['/api/dynamic-strategy/prepared response-learnings', scenarioId],
   });
   const learnings = Array.isArray(learningsRaw) ? learningsRaw : [];
 
@@ -196,7 +196,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                 <Lightbulb className="h-12 w-12 text-gray-800 mx-auto mb-4" />
                 <p className="text-gray-800 dark:text-slate-300">No learnings captured yet</p>
                 <p className="text-sm text-gray-800 mt-2">
-                  Execute this playbook to start building institutional knowledge
+                  Execute this prepared response to start building institutional knowledge
                 </p>
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                                   data-testid={`button-apply-learning-${learning.id}`}
                                 >
                                   <CheckCircle2 className="h-4 w-4" />
-                                  Apply to Playbook
+                                  Apply to Prepared response
                                 </Button>
                                 <Button 
                                   size="sm" 
@@ -303,7 +303,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
             Version History
           </CardTitle>
           <CardDescription>
-            Track playbook evolution over time
+            Track prepared response evolution over time
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -312,7 +312,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
               <History className="h-12 w-12 text-gray-800 mx-auto mb-4" />
               <p className="text-gray-800 dark:text-slate-300 font-semibold">Version history is automatically tracked</p>
               <p className="text-sm text-gray-800 mt-2">
-                History entries will appear here after your first playbook activation
+                History entries will appear here after your first prepared response activation
               </p>
             </div>
           </div>

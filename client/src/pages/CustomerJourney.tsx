@@ -59,17 +59,17 @@ const phaseDetails = [
   },
   {
     id: 'identify',
-    title: 'Phase 3: IDENTIFY — VaughnMartin Playbook™',
+    title: 'Phase 3: IDENTIFY — VaughnMartin Prepared response™',
     duration: 'Days 30-45',
-    objective: 'Build your strategic playbook portfolio',
+    objective: 'Build your strategic prepared response portfolio',
     activities: [
-      { name: 'Browse Playbook Library', path: '/identify/playbooks', description: 'Explore 170 playbooks across 9 strategic domains' },
-      { name: 'Select Priority Playbooks', path: '/workspaces/identify', description: 'Choose playbooks aligned to your strategic priorities' },
-      { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each playbook' },
+      { name: 'Browse Prepared response Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
+      { name: 'Select Priority Prepared responses', path: '/workspaces/identify', description: 'Choose prepared responses aligned to your strategic priorities' },
+      { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each prepared response' },
       { name: 'Customize Playbooks', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
       { name: 'Establish Readiness Baseline', path: '/readiness-assessment', description: 'Measure your strategic readiness score' }
     ],
-    deliverables: ['5-10 priority playbooks configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
+    deliverables: ['5-10 priority prepared responses configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
     integrations: ['Document repositories', 'HRIS systems', 'Knowledge bases']
   },
   {
@@ -113,7 +113,7 @@ const phaseDetails = [
       { name: 'Measure Decision Velocity', path: '/decision-velocity', description: 'Track improvement metrics' },
       { name: 'Executive Readout', path: '/board-export', description: 'Generate board-ready summary' }
     ],
-    deliverables: ['First retrospective complete', 'Playbook refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
+    deliverables: ['First retrospective complete', 'Prepared response refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
     integrations: ['BI/Analytics platforms', 'Knowledge management systems']
   },
   {
@@ -123,7 +123,7 @@ const phaseDetails = [
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
       { name: 'Readiness OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
-      { name: 'Expand Playbook Coverage', path: '/identify/playbooks', description: 'Add playbooks for new strategic domains' },
+      { name: 'Expand Prepared response Coverage', path: '/identify/prepared responses', description: 'Add prepared responses for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/future-readiness', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/execution-history', description: 'Regular strategic health checks' }
     ],
@@ -163,7 +163,7 @@ export default function CustomerJourney() {
               {[
                 { value: "12", unit: "min", label: "Strategic Response" },
                 { value: "3,600×", unit: "", label: "Execution Head Start" },
-                { value: "170", unit: "", label: "Playbooks Ready" },
+                { value: "170", unit: "", label: "Prepared responses Ready" },
                 { value: "90", unit: "days", label: "To Full Mastery" },
               ].map(s => (
                 <div key={s.label} style={{ padding: "20px 16px", textAlign: "center" }}>

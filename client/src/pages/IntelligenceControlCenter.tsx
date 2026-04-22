@@ -112,7 +112,7 @@ export default function IntelligenceControlCenter() {
       description: 'Create and manage automated triggers',
       path: '/triggers-management', icon: Bell, accentColor: TEAL, badge: 'CONFIGURE',
       stat: '221 Triggers', statSub: 'across all scenarios',
-      features: ['Trigger Templates', 'Condition Builder', 'Playbook Mapping'],
+      features: ['Trigger Templates', 'Condition Builder', 'Prepared response Mapping'],
       anim: 'icc-tile-4',
     },
   ];
@@ -438,7 +438,7 @@ export default function IntelligenceControlCenter() {
                         </div>
                         <Link href="/playbook-library">
                           <Button style={{ background: NAVY, color: '#fff', borderRadius: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', flexShrink: 0 }}>
-                            View Playbooks <ArrowRight style={{ width: 14, height: 14, marginLeft: 6 }} />
+                            View Prepared responses <ArrowRight style={{ width: 14, height: 14, marginLeft: 6 }} />
                           </Button>
                         </Link>
                       </div>

@@ -123,7 +123,7 @@ export default function TriggerConfigurationWizard({
   const [escalationEnabled, setEscalationEnabled] = useState(true);
   const [escalationTimeout, setEscalationTimeout] = useState('30');
   
-  // Playbook mapping
+  // Prepared response mapping
   const [selectedPlaybooks, setSelectedPlaybooks] = useState<string[]>([]);
   
   // Pre-populate form when editing an existing trigger
@@ -152,12 +152,12 @@ export default function TriggerConfigurationWizard({
     }
   }, [editTrigger, isOpen]);
   
-  // Fetch available playbooks (all 170 templates)
+  // Fetch available prepared responses (all 170 templates)
   const { data: playbooks } = useQuery({
     queryKey: ['/api/playbooks/templates'],
   });
 
-  // Map trigger categories to playbook domains for smart filtering
+  // Map trigger categories to prepared response domains for smart filtering
   const CATEGORY_TO_DOMAIN: Record<string, string> = {
     competitive: 'Market Dynamics', market: 'Market Dynamics',
     financial: 'Financial Strategy', economic: 'Financial Strategy',
@@ -330,7 +330,7 @@ export default function TriggerConfigurationWizard({
               {step === 1 && 'Category & Basics'}
               {step === 2 && 'Conditions'}
               {step === 3 && 'Notifications'}
-              {step === 4 && 'Playbook Mapping'}
+              {step === 4 && 'Prepared response Mapping'}
             </span>
           </div>
           <Progress value={(step / totalSteps) * 100} className="h-2" />
@@ -352,7 +352,7 @@ export default function TriggerConfigurationWizard({
                   {s === 1 && 'Category'}
                   {s === 2 && 'Conditions'}
                   {s === 3 && 'Notify'}
-                  {s === 4 && 'Playbooks'}
+                  {s === 4 && 'Prepared responses'}
                 </span>
               </div>
             ))}
@@ -367,7 +367,7 @@ export default function TriggerConfigurationWizard({
             {/* Situation framing */}
             <div className="p-4 border-l-4" style={{ background: 'rgba(201,168,76,0.06)', borderColor: '#C9A84C' }}>
               <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>What strategic situation do you want to prepare for?</p>
-              <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right playbook the moment it fires.</p>
+              <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right prepared response the moment it fires.</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {[
                   { label: 'Competitor price cut', cat: 'competitive', desc: 'Competitor cuts prices significantly' },
@@ -714,22 +714,22 @@ export default function TriggerConfigurationWizard({
           </div>
         )}
         
-        {/* Step 4: Playbook Mapping */}
+        {/* Step 4: Prepared response Mapping */}
         {step === 4 && (
           <div className="space-y-6">
             <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200">
               <div className="flex items-center gap-2">
                 <PlayCircle className="h-5 w-5 text-green-600" />
                 <span className="font-medium text-green-800 dark:text-green-200">
-                  Link playbooks to this trigger for faster response
+                  Link prepared responses to this trigger for faster response
                 </span>
               </div>
             </div>
             
             <div className="flex items-center justify-between">
               <div>
-                <Label className="text-lg font-semibold">Auto-Activate Playbook</Label>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected playbook when trigger fires</p>
+                <Label className="text-lg font-semibold">Auto-Activate Prepared response</Label>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected prepared response when trigger fires</p>
               </div>
               <Switch 
                 checked={autoActivatePlaybook} 
@@ -740,13 +740,13 @@ export default function TriggerConfigurationWizard({
             
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label className="text-lg font-semibold">Link Playbooks to This Trigger</Label>
+                <Label className="text-lg font-semibold">Link Prepared responses to This Trigger</Label>
                 <span className="text-xs font-semibold px-2 py-1 rounded" style={{ background: 'rgba(201,168,76,0.12)', color: '#C9A84C' }}>
                   {selectedPlaybooks.length} selected
                 </span>
               </div>
               <p className="text-sm text-gray-600">
-                When this trigger fires, these playbooks will be immediately surfaced for decision-maker approval and execution.
+                When this trigger fires, these prepared responses will be immediately surfaced for decision-maker approval and execution.
               </p>
 
               {relevantPlaybooks.length > 0 && (
@@ -781,7 +781,7 @@ export default function TriggerConfigurationWizard({
               {otherPlaybooks.length > 0 && (
                 <>
                   <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-2">
-                    Other playbooks ({otherPlaybooks.length})
+                    Other prepared responses ({otherPlaybooks.length})
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[140px] overflow-y-auto opacity-70">
                     {otherPlaybooks.map((playbook: any) => (
@@ -848,7 +848,7 @@ export default function TriggerConfigurationWizard({
                     </div>
                   </div>
                   <div>
-                    <span className="text-gray-600 dark:text-gray-300">Linked Playbooks:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Linked Prepared responses:</span>
                     <p className="font-medium">{selectedPlaybooks.length} selected</p>
                   </div>
                 </div>

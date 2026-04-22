@@ -109,7 +109,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
           <td style="padding:48px 48px 36px;">
             <p style="margin:0 0 8px;color:${NAVY};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
             <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
-              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform — playbooks, trigger intelligence, and the 12-minute execution model.
+              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform — prepared responses, trigger intelligence, and the 12-minute execution model.
             </p>
 
             <!-- CTA Button -->
@@ -138,7 +138,7 @@ function buildEmailHtml(firstName: string, magicUrl: string): string {
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
                   <div style="color:${GOLD};font-size:20px;font-weight:800;">170</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Playbooks</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Prepared responses</div>
                 </td>
                 <td width="33%" style="text-align:center;padding:0 12px;">
                   <div style="color:${GOLD};font-size:20px;font-weight:800;">3,600×</div>

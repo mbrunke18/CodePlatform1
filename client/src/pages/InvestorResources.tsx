@@ -96,7 +96,7 @@ function McKinseyResearchSection() {
               "Orchestration layer · coordination fabric · shared source of truth"
             </div>
             <div style={{ ...IR_DM, fontSize: 13, color: IR_MUTED, lineHeight: 1.6 }}>
-              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Readiness OS is the product that sits there: 170 pre-staged playbooks reading across all five organizational pillars simultaneously.
+              McKinsey's framework draws this box at the center of every enterprise AI architecture — and leaves it unnamed. Readiness OS is the product that sits there: 170 pre-staged prepared responses reading across all five organizational pillars simultaneously.
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ function McKinseyResearchSection() {
                 </p>
                 <p style={{ ...IR_DM, fontSize: 11, color: "rgba(240,237,228,0.35)", marginBottom: 10 }}>McKinsey Global Institute — November 2025</p>
                 <p style={{ ...IR_DM, fontSize: 12, color: IR_TEAL, lineHeight: 1.55 }}>
-                  Readiness OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 playbooks deploy the response. The CEO doesn't become an operator. They become the signal.
+                  Readiness OS makes executive ownership operational — 221 pre-staged triggers detect the moment, 170 prepared responses deploy the response. The CEO doesn't become an operator. They become the signal.
                 </p>
               </blockquote>
             </div>
@@ -337,7 +337,7 @@ export default function InvestorResources() {
                 <div className="space-y-4">
                   {[
                     { text: 'Signal detected', sub: 'Pre-configured monitoring triggers alert' },
-                    { text: 'Playbook activates', sub: 'Pre-staged, pre-assigned, pre-approved' },
+                    { text: 'Prepared response activates', sub: 'Pre-staged, pre-assigned, pre-approved' },
                     { text: 'Tasks deploy', sub: 'Auto-created in Jira/ServiceNow/Asana' },
                     { text: 'Teams execute', sub: 'Clear ownership, no ambiguity' },
                   ].map((item, idx) => (
@@ -373,7 +373,7 @@ export default function InvestorResources() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             {[
-              { val: "170", label: "Strategic Playbooks", sub: "Across 9 domains" },
+              { val: "170", label: "Strategic Prepared responses", sub: "Across 9 domains" },
               { val: "248+", label: "Data Points Monitored", sub: "Real-time signals" },
               { val: "12 min", label: "Response Time", sub: "vs 30-day industry avg" },
               { val: "24/7", label: "Intelligence", sub: "Continuous monitoring" },
@@ -428,7 +428,7 @@ export default function InvestorResources() {
                     <span className="font-bold text-[#2B8A6E] text-xs uppercase tracking-widest">ADVANCE</span>
                   </div>
                   <p className="text-xs text-[#6B7280] leading-relaxed">
-                    Structured debriefs, metrics captured, playbooks improved
+                    Structured debriefs, metrics captured, prepared responses improved
                   </p>
                 </div>
               </div>
@@ -508,7 +508,7 @@ export default function InvestorResources() {
                   <tbody className="text-[#6B7280]">
                     {[
                       { cap: "Alert/notify stakeholders", crisis: true, pm: false, vm: true },
-                      { cap: "Pre-built response playbooks", crisis: false, pm: false, vm: true },
+                      { cap: "Pre-built response prepared responses", crisis: false, pm: false, vm: true },
                       { cap: "Auto-create project structure", crisis: false, pm: false, vm: true },
                       { cap: "Assign tasks with acceptance criteria", crisis: false, pm: "Manual", vm: "Auto" },
                       { cap: "Stage documents and templates", crisis: false, pm: false, vm: true },
@@ -609,7 +609,7 @@ export default function InvestorResources() {
                       { layer: "Database", tech: "PostgreSQL / Drizzle ORM (Neon)", role: "Schema-as-code, serverless Postgres", status: "warning", note: "Shared dev/prod" },
                       { layer: "Auth", tech: "Replit OIDC + Passport.js", role: "Multi-tenant, role-based, session persistence", status: "production" },
                       { layer: "Real-time", tech: "Socket.IO WebSocket", role: "Live signal updates, collaborative execution console", status: "production" },
-                      { layer: "AI", tech: "OpenAI GPT-4o", role: "Threat synthesis, playbook generation, outcome summaries", status: "production" },
+                      { layer: "AI", tech: "OpenAI GPT-4o", role: "Threat synthesis, prepared response generation, outcome summaries", status: "production" },
                       { layer: "Deployment", tech: "Replit Autoscale + vaughnmartin.com", role: "Custom domain, auto-scaling", status: "warning", note: "Manual CI" },
                       { layer: "Monitoring", tech: "Datadog / Sentry", role: "Error tracking + performance monitoring — Q2 deployment", status: "warning", note: "Q2 Roadmap" },
                       { layer: "Testing", tech: "Playwright + Vitest", role: "E2E and unit test suite — Q2 deployment", status: "warning", note: "Q2 Roadmap" },
@@ -715,7 +715,7 @@ export default function InvestorResources() {
                   phase: "Phase 2", weeks: "Weeks 3–6", milestone: "Before active sales pipeline",
                   color: "#0A0F2E", bg: "#0A0F2E",
                   items: [
-                    "20-test suite — Vitest + Supertest covering playbook seeding, auth, activation chain, top API routes",
+                    "20-test suite — Vitest + Supertest covering prepared response seeding, auth, activation chain, top API routes",
                     "Drizzle versioned migrations — replace db:push, give auditable rollback story",
                     "Route decomposition — split routes.ts into domain-grouped files",
                     "helmet.js + rate limiting — required before any enterprise security review",

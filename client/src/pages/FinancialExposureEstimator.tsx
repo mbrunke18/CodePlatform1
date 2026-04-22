@@ -185,7 +185,7 @@ export default function FinancialExposureEstimator() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="high">High — Pre-staged playbooks, recent drills</SelectItem>
-                    <SelectItem value="medium">Medium — Playbooks exist, limited practice</SelectItem>
+                    <SelectItem value="medium">Medium — Prepared responses exist, limited practice</SelectItem>
                     <SelectItem value="low">Low — No pre-staged response</SelectItem>
                     <SelectItem value="unknown">Unknown — First assessment</SelectItem>
                   </SelectContent>
@@ -291,7 +291,7 @@ export default function FinancialExposureEstimator() {
                         )}
                         <Link href="/playbook-library">
                           <Button style={{ background: 'transparent', color: NAVY, border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                            View Response Playbooks
+                            View Response Prepared responses
                           </Button>
                         </Link>
                       </div>
@@ -304,7 +304,7 @@ export default function FinancialExposureEstimator() {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
                       {[
                         { label: 'Average peer exposure (similar event)', value: fmt(estimate.totalMid * 1.18), sub: 'Unready enterprise baseline', color: RED },
-                        { label: 'Top-quartile response outcome', value: fmt(estimate.totalMid * 0.34), sub: 'Pre-staged playbook orgs', color: TEAL },
+                        { label: 'Top-quartile response outcome', value: fmt(estimate.totalMid * 0.34), sub: 'Pre-staged prepared response orgs', color: TEAL },
                         { label: 'Your estimated outcome (current readiness)', value: fmt(estimate.totalMid), sub: 'Based on your readiness input', color: GOLD },
                       ].map((b, i) => (
                         <div key={i} style={{ padding: '16px 20px', background: OFF, border: `1px solid ${BORDER}` }}>

@@ -50,7 +50,7 @@ const DEFAULT_TASKS: ExecuteTask[] = [
   { id: '7', subPhase: 'resolve', title: 'Execute containment procedures', assignedRole: 'Security Team', estimatedDuration: 30, dependencies: ['1', '4'], isAutomated: false },
   { id: '8', subPhase: 'resolve', title: 'Coordinate with law enforcement', assignedRole: 'General Counsel', estimatedDuration: 45, dependencies: ['4'], isAutomated: false },
   { id: '9', subPhase: 'close', title: 'Conduct post-incident review', assignedRole: 'CISO', estimatedDuration: 60, dependencies: ['7'], isAutomated: false },
-  { id: '10', subPhase: 'close', title: 'Update playbook with learnings', assignedRole: 'COO', estimatedDuration: 30, dependencies: ['9'], isAutomated: false },
+  { id: '10', subPhase: 'close', title: 'Update prepared response with learnings', assignedRole: 'COO', estimatedDuration: 30, dependencies: ['9'], isAutomated: false },
 ];
 
 export default function ExecuteTasksStep({ data, onChange, playbook }: ExecuteTasksStepProps) {

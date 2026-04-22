@@ -69,14 +69,14 @@ const QUESTIONS: Question[] = [
   },
   {
     id: "playbook_readiness",
-    question: "Does your organization have pre-defined playbooks for strategic scenarios?",
+    question: "Does your organization have pre-defined prepared responses for strategic scenarios?",
     context: "Pre-staged responses with predetermined stakeholders, tasks, and budgets.",
     options: [
-      { value: "comprehensive", label: "Yes, comprehensive playbooks for most scenarios", score: 100 },
-      { value: "some", label: "Some playbooks for major scenarios", score: 75 },
+      { value: "comprehensive", label: "Yes, comprehensive prepared responses for most scenarios", score: 100 },
+      { value: "some", label: "Some prepared responses for major scenarios", score: 75 },
       { value: "crisis_only", label: "Only for crisis situations", score: 50 },
       { value: "informal", label: "Informal, undocumented processes", score: 25 },
-      { value: "none", label: "No predefined playbooks—we figure it out each time", score: 0 }
+      { value: "none", label: "No predefined prepared responses—we figure it out each time", score: 0 }
     ]
   },
   {
@@ -230,7 +230,7 @@ export default function AgilityAssessment() {
                           However, there's still room to reach the <span className="text-[#2B8A6E] font-semibold">10.3% benchmark</span> that top performers achieve.
                         </p>
                         <p className="text-[#0A0F2E] dark:text-[#C9A84C]">
-                          Readiness OS can help you close the remaining gap with <span className="text-[#2B8A6E] font-semibold">pre-staged playbooks and 12-minute execution</span>.
+                          Readiness OS can help you close the remaining gap with <span className="text-[#2B8A6E] font-semibold">pre-staged prepared responses and 12-minute execution</span>.
                         </p>
                       </div>
                     )}

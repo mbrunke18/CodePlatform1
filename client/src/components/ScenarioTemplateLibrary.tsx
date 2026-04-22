@@ -144,7 +144,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
     certificationLevel: template.certificationLevel || 'advanced'
   }));
 
-  // Map strategic categories to specific playbook types
+  // Map strategic categories to specific prepared response types
   const getCategoryFilter = (strategicCategory: string) => {
     switch (strategicCategory) {
       case 'risk-security':
@@ -403,7 +403,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
             <div className="flex items-center justify-between gap-4">
               <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="flex-1">
                 <TabsList className="grid w-full grid-cols-4" data-testid="template-category-tabs">
-                  <TabsTrigger value="all">All Playbooks</TabsTrigger>
+                  <TabsTrigger value="all">All Prepared responses</TabsTrigger>
                   <TabsTrigger value="risk-security">Risk & Security</TabsTrigger>
                   <TabsTrigger value="operations">Operations & Growth</TabsTrigger>
                   <TabsTrigger value="financial">Financial & Tech</TabsTrigger>

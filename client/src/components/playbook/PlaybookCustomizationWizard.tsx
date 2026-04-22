@@ -33,11 +33,11 @@ interface PlaybookCustomizationWizardProps {
 
 const STEPS = [
   { id: 1, phase: 'prepare', name: 'PREPARE Overview', prefilled: '85%', component: PrepareOverviewStep, aiTip: 'Configure stakeholders, documents, budgets, and vendor contracts', icon: '🎯', isPhaseOverview: true },
-  { id: 2, phase: 'prepare', name: 'Stakeholder Matrix', prefilled: '90%', component: StakeholderMatrixStep, aiTip: 'Define who does what when this playbook activates', icon: '👥' },
+  { id: 2, phase: 'prepare', name: 'Stakeholder Matrix', prefilled: '90%', component: StakeholderMatrixStep, aiTip: 'Define who does what when this prepared response activates', icon: '👥' },
   { id: 3, phase: 'prepare', name: 'Communication Templates', prefilled: '80%', component: CommunicationTemplatesStep, aiTip: 'Pre-write messages for rapid deployment', icon: '📝' },
   { id: 4, phase: 'prepare', name: 'Budget & Resources', prefilled: '100%', component: BudgetAuthorityStep, aiTip: 'Pre-approve budgets and vendor contracts', icon: '💰' },
   { id: 5, phase: 'prepare', name: 'Phase SLAs', prefilled: '100%', component: SLADefinitionStep, aiTip: 'Set target timeframes for each IDEA phase to measure execution velocity', icon: '⏱️' },
-  { id: 6, phase: 'monitor', name: 'MONITOR Triggers', prefilled: '100%', component: MonitorTriggersStep, aiTip: 'Define signals and conditions that activate this playbook', icon: '📡', isPhaseOverview: true },
+  { id: 6, phase: 'monitor', name: 'MONITOR Triggers', prefilled: '100%', component: MonitorTriggersStep, aiTip: 'Define signals and conditions that activate this prepared response', icon: '📡', isPhaseOverview: true },
   { id: 7, phase: 'execute', name: 'EXECUTE Tasks', prefilled: '75%', component: ExecuteTasksStep, aiTip: 'Define tasks across immediate/coordinate/resolve/close sub-phases', icon: '⚡', isPhaseOverview: true },
   { id: 8, phase: 'execute', name: 'Decision Trees', prefilled: '85%', component: DecisionTreesStep, aiTip: 'Map escalation paths and conditional logic', icon: '🌳' },
   { id: 9, phase: 'learn', name: 'LEARN Activities', prefilled: '80%', component: LearnConfigStep, aiTip: 'Configure post-execution learning and improvement', icon: '📚', isPhaseOverview: true },
@@ -152,15 +152,15 @@ export default function PlaybookCustomizationWizard({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library'] });
       toast({
-        title: 'Playbook Customized',
-        description: 'Your playbook template has been customized successfully',
+        title: 'Prepared response Customized',
+        description: 'Your prepared response template has been customized successfully',
       });
       onClose();
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to save playbook customization',
+        description: 'Failed to save prepared response customization',
         variant: 'destructive',
       });
     },
@@ -195,10 +195,10 @@ export default function PlaybookCustomizationWizard({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col" data-testid="dialog-playbook-wizard">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col" data-testid="dialog-prepared response-wizard">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
-            <span>Customize Playbook: {playbook?.name}</span>
+            <span>Customize Prepared response: {playbook?.name}</span>
             <Badge variant="outline" data-testid="badge-progress">
               Step {currentStep} of {STEPS.length}
             </Badge>
@@ -289,7 +289,7 @@ export default function PlaybookCustomizationWizard({
           <CurrentStepComponent
             data={formData}
             onChange={updateFormData}
-            playbook={playbook}
+            prepared response={ playbook }
           />
         </div>
 
@@ -316,7 +316,7 @@ export default function PlaybookCustomizationWizard({
                 onClick={handleSave}
                 disabled={saveCustomizationMutation.isPending}
                 className="bg-green-600 hover:bg-green-700"
-                data-testid="button-save-playbook"
+                data-testid="button-save-prepared response"
               >
                 <Check className="h-4 w-4 mr-1" />
                 {saveCustomizationMutation.isPending ? 'Saving...' : 'Save Customization'}

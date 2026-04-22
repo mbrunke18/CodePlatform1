@@ -87,7 +87,7 @@ export default function SituationDefinitionStep({ data, onChange, playbook }: Si
           id="trigger-criteria"
           value={data.triggerCriteria || ''}
           onChange={(e) => onChange({ triggerCriteria: e.target.value })}
-          placeholder="Define specific conditions that activate this playbook (e.g., 'Competitor launches product with 25% price advantage AND market share drops 5%')"
+          placeholder="Define specific conditions that activate this prepared response (e.g., 'Competitor launches product with 25% price advantage AND market share drops 5%')"
           rows={4}
           data-testid="textarea-trigger-criteria"
         />

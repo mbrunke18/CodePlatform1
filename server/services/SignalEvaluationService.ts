@@ -29,7 +29,7 @@ async function getOrgEvaluationMode(organizationId: string): Promise<EvaluationM
 }
 
 // ─── Domain trigger keyword maps ─────────────────────────────────────────────
-// Each domain has primary keywords + recommended playbook + severity weight
+// Each domain has primary keywords + recommended prepared response + severity weight
 
 interface TriggerPattern {
   name: string;
@@ -54,7 +54,7 @@ const TRIGGER_PATTERNS: TriggerPattern[] = [
     name: 'M&A Activity Detected',
     domain: 'Market Dynamics',
     keywords: ['acquisition', 'merger', 'buyout', 'takeover', 'acquires', 'acquired', 'deal signed', 'consolidation', 'private equity', 'strategic acquisition', 'deal closed', 'billion deal', 'purchase agreement', 'M&A', 'joint venture', 'acquirer', 'merger agreement', 'deal valued', 'deal worth', 'stake acquisition', 'hostile takeover', 'friendly takeover', 'acquire', 'acquired by', 'bought by', 'purchase of'],
-    playbookName: 'M&A Response Playbook',
+    playbookName: 'M&A Response Prepared response',
     alternatePlaybooks: ['Investor Communications Protocol', 'Competitive Threat Response'],
     baseConfidence: 75,
   },
@@ -419,7 +419,7 @@ async function sendDetectionSlack(detection: DetectedTrigger, signal: AnalyzedSi
           { type: 'mrkdwn', text: `*Trigger:*\n${detection.triggerName}` },
           { type: 'mrkdwn', text: `*Domain:*\n${detection.triggerDomain}` },
           { type: 'mrkdwn', text: `*Confidence:*\n${detection.confidenceScore}%` },
-          { type: 'mrkdwn', text: `*Primary Playbook:*\n${detection.recommendedPlaybook}` },
+          { type: 'mrkdwn', text: `*Primary Prepared response:*\n${detection.recommendedPlaybook}` },
           ...(detection.alternatePlaybooks.length > 0 ? [{ type: 'mrkdwn', text: `*Also Consider:*\n${detection.alternatePlaybooks.join(', ')}` }] : []),
         ],
       },
@@ -480,7 +480,7 @@ export async function evaluateAndPersistSignals(
   //
   //   'configured' — only fire triggers the org has configured (new engine)
   //                  Triggers fire when the customer's own thresholds are met.
-  //                  The playbooks surfaced are the ones they staged for that situation.
+  //                  The prepared responses surfaced are the ones they staged for that situation.
   //
   //   'default'    — only use the original 16-pattern keyword scoring (legacy engine)
   //                  Same behavior as before the new engine was built.
@@ -643,7 +643,7 @@ export async function evaluateAndPersistSignals(
 
       // ── Start the Execution Clock ──────────────────────────────────────────
       // Creates a timeline entry at T+0. Subsequent milestones are stamped as
-      // they occur (playbook activated, task acknowledged, execution complete).
+      // they occur (prepared response activated, task acknowledged, execution complete).
       const now = new Date();
       let executionTimelineId: number | null = null;
       try {
@@ -666,7 +666,7 @@ export async function evaluateAndPersistSignals(
           eventType: 'trigger_fired',
           source: signal.source,
           signalTitle: signal.description.substring(0, 200),
-          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Playbook recommended: ${detection.recommendedPlaybook}`,
+          details: `${detection.triggerName} fired with ${detection.confidenceScore}% confidence. Prepared response recommended: ${detection.recommendedPlaybook}`,
           confidence: detection.confidenceScore,
           keywordsMatched: detection.matchedKeywords.slice(0, 5),
         });

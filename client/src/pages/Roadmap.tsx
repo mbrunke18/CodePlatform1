@@ -40,28 +40,28 @@ const ROUNDS: RoadmapRound[] = [
     items: [
       {
         title: "Executive Readiness Score",
-        description: "A 0–100 score computed from live signal coverage, trigger monitoring, playbook deployment, and activation history. Gauges organizational readiness at a glance — with a tier rating (CRITICAL / DEVELOPING / READY / ELITE) and a specific next-step recommendation.",
+        description: "A 0–100 score computed from live signal coverage, trigger monitoring, prepared response deployment, and activation history. Gauges organizational readiness at a glance — with a tier rating (CRITICAL / DEVELOPING / READY / ELITE) and a specific next-step recommendation.",
         value: "Gives the CISO or COO a single number to bring to the board before a trigger fires.",
         status: "live",
         icon: Shield,
       },
       {
-        title: "Industry Sector Playbook Packs",
-        description: "Playbook Library now filters by industry sector — Healthcare, Financial Services, Technology, Manufacturing, Retail, Energy. Each sector pack surfaces the playbooks most relevant to that industry's dominant risk profile.",
-        value: "A healthcare COO sees FDA recall and HIPAA breach playbooks first. A manufacturing COO sees supply chain and tariff playbooks first.",
+        title: "Industry Sector Prepared response Packs",
+        description: "Prepared response Library now filters by industry sector — Healthcare, Financial Services, Technology, Manufacturing, Retail, Energy. Each sector pack surfaces the prepared responses most relevant to that industry's dominant risk profile.",
+        value: "A healthcare COO sees FDA recall and HIPAA breach prepared responses first. A manufacturing COO sees supply chain and tariff prepared responses first.",
         status: "live",
         icon: Layers,
       },
       {
         title: "Regulatory Calendar",
-        description: "Live compliance deadline tracker showing upcoming regulatory windows (SEC, GDPR, SOX, FDA, OSHA, FTC, EEO-1, CCPA) with exact countdown timers, regulatory body attribution, and direct links to the pre-staged playbooks that respond to each obligation.",
+        description: "Live compliance deadline tracker showing upcoming regulatory windows (SEC, GDPR, SOX, FDA, OSHA, FTC, EEO-1, CCPA) with exact countdown timers, regulatory body attribution, and direct links to the pre-staged prepared responses that respond to each obligation.",
         value: "The response to a regulatory deadline is pre-staged before the deadline appears on anyone's calendar.",
         status: "live",
         icon: Calendar,
       },
       {
         title: "Board-Ready Activation Report",
-        description: "Auto-generated one-page report produced at the close of every playbook activation. Shows: trigger that fired, playbook deployed, executive who authorized, time to full deployment, stakeholders notified, estimated value preserved, and recommended next steps.",
+        description: "Auto-generated one-page report produced at the close of every prepared response activation. Shows: trigger that fired, prepared response deployed, executive who authorized, time to full deployment, stakeholders notified, estimated value preserved, and recommended next steps.",
         value: "The post-activation debrief arrives pre-formatted for the board packet — zero assembly required.",
         status: "live",
         icon: FileText,
@@ -91,15 +91,15 @@ const ROUNDS: RoadmapRound[] = [
       },
       {
         title: "Compound Threat Scoring",
-        description: "When two or more triggers co-fire in overlapping domains (e.g., a cyber incident coinciding with an SEC disclosure window), the system calculates a compound severity score and surfaces the combined playbook response set automatically.",
+        description: "When two or more triggers co-fire in overlapping domains (e.g., a cyber incident coinciding with an SEC disclosure window), the system calculates a compound severity score and surfaces the combined prepared response response set automatically.",
         value: "The most dangerous situations are compound. This is the feature that makes Readiness OS irreplaceable when two crises arrive simultaneously.",
         status: "planned",
         eta: "Q3 2026",
         icon: Zap,
       },
       {
-        title: "Playbook Version History",
-        description: "Every change to a customized playbook is logged — who changed what, when, and what the previous version contained. Enables organizational learning and accountability across preparation cycles.",
+        title: "Prepared response Version History",
+        description: "Every change to a customized prepared response is logged — who changed what, when, and what the previous version contained. Enables organizational learning and accountability across preparation cycles.",
         value: "Ownership is an artifact of preparation, not a state of mind. Version history makes ownership visible and auditable.",
         status: "planned",
         eta: "Q3 2026",
@@ -130,7 +130,7 @@ const ROUNDS: RoadmapRound[] = [
       },
       {
         title: "Executive One-Pager Export",
-        description: "PDF-quality print view of the organization's complete readiness posture — score, tier, top 3 risks, playbooks deployed, activation history, and next recommended actions. Formatted for the board packet or investor update.",
+        description: "PDF-quality print view of the organization's complete readiness posture — score, tier, top 3 risks, prepared responses deployed, activation history, and next recommended actions. Formatted for the board packet or investor update.",
         value: "One button. One page. Board-ready.",
         status: "planned",
         eta: "Q4 2026",
@@ -267,7 +267,7 @@ export default function Roadmap() {
               onClick={() => setLocation("/playbooks")}
               style={{ padding: "10px 24px", background: "transparent", color: NAVY, border: `1px solid ${NAVY}`, cursor: "pointer", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", display: "flex", alignItems: "center", gap: 6 }}
             >
-              Explore Playbooks <ChevronRight style={{ width: 12, height: 12 }} />
+              Explore Prepared responses <ChevronRight style={{ width: 12, height: 12 }} />
             </button>
           </div>
         </div>

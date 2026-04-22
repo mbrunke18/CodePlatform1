@@ -80,7 +80,7 @@ const Q14_INDUSTRIES = [
 const Q16_DIMENSIONS = [
   "Clarity of the user interface",
   "Ease of understanding what to do first",
-  "Credibility of the playbook library",
+  "Credibility of the prepared response library",
   "Quality of the system-analyzed insights",
   "Relevance of signal monitoring to real events",
   "Depth of the post-activation (ADVANCE) experience",
@@ -443,11 +443,11 @@ export default function PeerReview() {
               <TextArea value={q6Text} onChange={setQ6Text} rows={5} placeholder="Your description..." />
             </QBlock>
             <QBlock num="Q7" question="How credible is the core claim that an organization can go from strategic trigger to coordinated execution in 12 minutes?"
-              note="Specifically: the right playbook is activated, roles assigned, documents staged, and execution begins — not that the full response is complete.">
+              note="Specifically: the right prepared response is activated, roles assigned, documents staged, and execution begins — not that the full response is complete.">
               <ScaleInput value={q7Scale} onChange={setQ7Scale} labels={["Not credible", "Fully credible"]} />
               <FollowUp label="What would make this claim more credible to you?" value={q7Text} onChange={setQ7Text} />
             </QBlock>
-            <QBlock num="Q8" question="How compelling is the core value proposition — reducing organizational response time from 30 days to 12 minutes through pre-staged execution playbooks?">
+            <QBlock num="Q8" question="How compelling is the core value proposition — reducing organizational response time from 30 days to 12 minutes through pre-staged execution prepared responses?">
               <ScaleInput value={q8Scale} onChange={setQ8Scale} labels={["Not compelling", "Highly compelling"]} />
               <FollowUp label="What would make this value proposition more compelling?" value={q8Text} onChange={setQ8Text} />
             </QBlock>
@@ -564,7 +564,7 @@ export default function PeerReview() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 600, color: NAVY, margin: "0 0 8px" }}>Competitive Landscape</h2>
               <p style={{ color: MUTED, fontSize: 14, margin: 0 }}>How does this compare to what already exists?</p>
             </div>
-            <QBlock num="Q20" question="Are you aware of any existing product or platform that does what Readiness OS does — specifically pre-staged, AI-activated strategic execution playbooks that deploy across an organization in minutes?">
+            <QBlock num="Q20" question="Are you aware of any existing product or platform that does what Readiness OS does — specifically pre-staged, AI-activated strategic execution prepared responses that deploy across an organization in minutes?">
               <RadioGroup options={Q20_OPTIONS} selected={q20Selection} onChange={setQ20Selection} />
               <FollowUp label="If yes, what product(s) come closest and why?" value={q20Text} onChange={setQ20Text} />
             </QBlock>

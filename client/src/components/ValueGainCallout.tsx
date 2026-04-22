@@ -169,19 +169,19 @@ export function ThreePositionStrip({ style }: PositionStripProps) {
     {
       mode: "offense",
       insight:
-        "Every playbook staged here is a competitive position taken before the trigger fires. When the moment arrives, you move. Rivals spend the next 30 days figuring out who needs to be in the room.",
+        "Every prepared response staged here is a competitive position taken before the trigger fires. When the moment arrives, you move. Rivals spend the next 30 days figuring out who needs to be in the room.",
       gain: { label: "Their mobilization cycle", value: "Your 12 minutes" },
     },
     {
       mode: "defense",
       insight:
         "Resilience isn't protection from loss — it's the freedom to act decisively when others freeze. Every scenario prepared here is one less crisis improvised under pressure.",
-      gain: { label: "Scenarios pre-staged", value: "170 playbooks" },
+      gain: { label: "Scenarios pre-staged", value: "170 prepared responses" },
     },
     {
       mode: "special-teams",
       insight:
-        "The decision logic encoded in each playbook — who owns what, under what conditions, with what authority — cannot be licensed. Competitors can buy the platform. They cannot buy what your team built inside it.",
+        "The decision logic encoded in each prepared response — who owns what, under what conditions, with what authority — cannot be licensed. Competitors can buy the platform. They cannot buy what your team built inside it.",
       gain: { label: "Competitor advantage", value: "Cannot be copied" },
     },
   ];

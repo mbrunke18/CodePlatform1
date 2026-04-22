@@ -93,8 +93,8 @@ export default function PlaybookCommand() {
       <PageLayout>
         <main className="max-w-4xl mx-auto px-6 py-16 text-center">
           <AlertTriangle className="h-12 w-12 mx-auto text-[#C9A84C] mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Playbook Not Found</h1>
-          <p className="text-[#6B7280] mb-6">The requested playbook could not be located.</p>
+          <h1 className="text-2xl font-bold mb-2">Prepared response Not Found</h1>
+          <p className="text-[#6B7280] mb-6">The requested prepared response could not be located.</p>
           <Button onClick={() => setLocation("/playbooks")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Library
@@ -128,7 +128,7 @@ export default function PlaybookCommand() {
           <CardHeader>
             <div className="flex items-start justify-between">
               <div>
-                <CardTitle className="text-2xl" data-testid="text-playbook-name">
+                <CardTitle className="text-2xl" data-testid="text-prepared response-name">
                   {playbook.name}
                 </CardTitle>
                 {domain && (
@@ -195,8 +195,8 @@ export default function PlaybookCommand() {
             <div className="pt-4 border-t">
               {!isAuthenticated ? (
                 <div className="text-center py-4">
-                  <p className="text-[#0A0F2E] mb-1">Access required to execute this playbook</p>
-                  <p className="text-sm text-[#6B7280] mb-4">Request access or start a 48-hour trial to activate playbooks</p>
+                  <p className="text-[#0A0F2E] mb-1">Access required to execute this prepared response</p>
+                  <p className="text-sm text-[#6B7280] mb-4">Request access or start a 48-hour trial to activate prepared responses</p>
                   <Button onClick={() => setLocation('/request-access')} data-testid="button-login">
                     Request Access
                   </Button>
@@ -214,7 +214,7 @@ export default function PlaybookCommand() {
                       Execution Started
                     </div>
                     <p className="text-[#2B8A6E]/80 text-sm">
-                      Playbook activation has been recorded. 12-minute timer started.
+                      Prepared response activation has been recorded. 12-minute timer started.
                     </p>
                   </div>
                 </div>
@@ -274,7 +274,7 @@ export default function PlaybookCommand() {
           <CardContent className="space-y-3">
             {[
               { label: "Executive sponsor identified", ok: true },
-              { label: "Playbook trigger criteria confirmed", ok: true },
+              { label: "Prepared response trigger criteria confirmed", ok: true },
               { label: "Primary stakeholders notified and available", ok: true },
               { label: "Pre-approved budget authorization confirmed", ok: !!playbook.preApprovedBudget },
               { label: "Document staging complete", ok: true },

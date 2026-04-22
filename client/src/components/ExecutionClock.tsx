@@ -24,7 +24,7 @@ function Badge({ status }: { status: string }) {
   const cfg: Record<string, { label: string; color: string; bg: string }> = {
     detected: { label: 'DETECTED', color: GOLD, bg: `${GOLD}15` },
     notified: { label: 'TEAM NOTIFIED', color: '#F59E0B', bg: '#F59E0B15' },
-    activated: { label: 'PLAYBOOK LIVE', color: TEAL, bg: `${TEAL}15` },
+    activated: { label: 'PREPARED RESPONSE LIVE', color: TEAL, bg: `${TEAL}15` },
     completed: { label: 'COMPLETE', color: TEAL, bg: `${TEAL}20` },
   };
   const c = cfg[status] || cfg.detected;
@@ -160,7 +160,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                   <div style={{ paddingTop: 16 }}>
                     <TimelineRow icon={Zap} label="Trigger detected" timestamp={t.detectedAt} start={t.detectedAt} color={GOLD} />
                     <TimelineRow icon={AlertCircle} label="Team notified" timestamp={t.notificationSentAt} start={t.detectedAt} color="#F59E0B" />
-                    <TimelineRow icon={Play} label={t.playbookName ? `Playbook activated: ${t.playbookName}` : 'Playbook activated'} timestamp={t.playbookActivatedAt} start={t.detectedAt} color={TEAL} />
+                    <TimelineRow icon={Play} label={t.playbookName ? `Prepared response activated: ${t.playbookName}` : 'Prepared response activated'} timestamp={t.playbookActivatedAt} start={t.detectedAt} color={TEAL} />
                     <TimelineRow icon={CheckCircle} label="First task acknowledged" timestamp={t.firstTaskAcknowledgedAt} start={t.detectedAt} color={TEAL} />
                     <TimelineRow icon={Flag} label="Execution complete" timestamp={t.executionCompletedAt} start={t.detectedAt} color={NAVY} last />
                   </div>
@@ -171,7 +171,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                       {!t.playbookActivatedAt && (
                         <button onClick={() => advanceMutation.mutate({ id: t.id, milestone: 'activated', playbookName: t.recommendedPlaybook })}
                           style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}30`, borderRadius: 0, padding: '5px 12px', cursor: 'pointer' }}>
-                          Mark Playbook Activated
+                          Mark Prepared response Activated
                         </button>
                       )}
                       {t.playbookActivatedAt && !t.firstTaskAcknowledgedAt && (

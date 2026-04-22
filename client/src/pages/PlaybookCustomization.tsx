@@ -85,7 +85,7 @@ const PLAYBOOK_DOMAINS = [
 ];
 
 const FALLBACK_TEMPLATES: PlaybookTemplate[] = [
-  { id: '1', name: 'Supply Chain Disruption Response', category: 'crisis', domain: 'Crisis Management', description: 'Rapid response playbook for supply chain disruptions including supplier failure, logistics issues, or natural disasters', estimatedDuration: '4-12 hours', complexity: 'high', stakeholderCount: 12, tasks: 24 },
+  { id: '1', name: 'Supply Chain Disruption Response', category: 'crisis', domain: 'Crisis Management', description: 'Rapid response prepared response for supply chain disruptions including supplier failure, logistics issues, or natural disasters', estimatedDuration: '4-12 hours', complexity: 'high', stakeholderCount: 12, tasks: 24 },
   { id: '2', name: 'Competitive Pricing Response', category: 'competitive', domain: 'Market Dynamics', description: 'Quick response to aggressive competitor pricing moves or market share threats', estimatedDuration: '2-4 hours', complexity: 'medium', stakeholderCount: 8, tasks: 16 },
   { id: '3', name: 'Cybersecurity Incident Response', category: 'crisis', domain: 'Crisis Management', description: 'Comprehensive response to security breaches, ransomware, or data compromise', estimatedDuration: '1-24 hours', complexity: 'high', stakeholderCount: 15, tasks: 32 },
 ];
@@ -112,7 +112,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
       queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
       toast({
         title: "Success",
-        description: "Playbook customized successfully",
+        description: "Prepared response customized successfully",
       });
       setIsDialog(false);
     }
@@ -148,7 +148,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-[#0A0F2E] font-bold">Playbook Customization</span>
+              <span className="text-[#0A0F2E] font-bold">Prepared response Customization</span>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <div className="h-4 w-[2px] bg-[#C9A84C]"></div>
                     <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#C9A84C]">Template Engine</span>
                   </div>
-                  <h1 style={CG} className="text-4xl font-bold" data-testid="playbook-customization-title">Strategic Playbook Customization</h1>
+                  <h1 style={CG} className="text-4xl font-bold" data-testid="prepared response-customization-title">Strategic Prepared response Customization</h1>
                   <p className="text-[#6B7280] mt-2 text-lg">Architect your organization's response by cloning and configuring battle-tested templates.</p>
                 </div>
               </div>
@@ -183,11 +183,11 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[#6B7280]" />
                 <Input 
-                  placeholder="Search playbook templates by keyword, scenario, or domain..."
+                  placeholder="Search prepared response templates by keyword, scenario, or domain..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-12 h-14 bg-white border-[#E8E4DC] text-lg focus:ring-[#C9A84C]"
-                  data-testid="input-search-playbooks"
+                  data-testid="input-search-prepared responses"
                 />
               </div>
             </div>
@@ -276,7 +276,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   Customize: {selectedTemplate?.name}
                 </DialogTitle>
                 <DialogDescription className="text-lg text-[#6B7280] mt-2">
-                  Configure this playbook for your organization's specific operating model and governance.
+                  Configure this prepared response for your organization's specific operating model and governance.
                 </DialogDescription>
               </DialogHeader>
 
@@ -291,7 +291,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <TabsContent value="basic" className="space-y-8">
                   <div className="grid gap-8">
                     <div className="space-y-3">
-                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Localized Playbook Name</Label>
+                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Localized Prepared response Name</Label>
                       <Input defaultValue={selectedTemplate?.name} className="h-12 border-[#E8E4DC] font-bold text-[#0A0F2E]" />
                     </div>
                     <div className="space-y-3">
@@ -358,7 +358,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Event-Driven Intelligence</Label>
                     <div className="grid gap-4">
                       {[
-                        { title: 'Activation Alert', desc: 'Notify stakeholders immediately when playbook is engaged' },
+                        { title: 'Activation Alert', desc: 'Notify stakeholders immediately when prepared response is engaged' },
                         { title: 'Milestone Completion', desc: 'Broadcast progress as critical tasks are fulfilled' },
                         { title: 'Escalation Triggers', desc: 'Automate high-priority alerts when timeline slippage occurs' },
                       ].map((pref, i) => (
@@ -382,7 +382,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   onClick={() => customizeMutation.mutate({})}
                 >
                   <Save className="h-4 w-4 mr-2" />
-                  Deploy Customized Playbook
+                  Deploy Customized Prepared response
                 </Button>
               </div>
             </div>

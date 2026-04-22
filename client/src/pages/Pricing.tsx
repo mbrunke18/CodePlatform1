@@ -83,7 +83,7 @@ export default function Pricing() {
                   {[
                     "Full platform access (all features unlocked)",
                     "Dedicated implementation team",
-                    "Custom playbook development (3 scenarios)",
+                    "Custom prepared response development (3 scenarios)",
                     "Strategic execution coaching",
                     "Weekly success reviews",
                     "ROI measurement & documentation"
@@ -189,7 +189,7 @@ export default function Pricing() {
                   "Multi-division coordination",
                   "Advanced integration hub",
                   "Priority support (2-hour SLA)",
-                  "Custom playbook development",
+                  "Custom prepared response development",
                   "Executive briefing service"
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-white/80">

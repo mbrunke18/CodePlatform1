@@ -48,7 +48,7 @@ export default function NFLLearningDashboard() {
   });
   const aiSuggestions = aiSuggestionsData ?? [];
 
-  // Fetch playbook activations for learning
+  // Fetch prepared response activations for learning
   const { data: activationsData } = useQuery<any[]>({
     queryKey: ['/api/playbook-library/activations', organizationId],
     enabled: !!organizationId,
@@ -64,7 +64,7 @@ export default function NFLLearningDashboard() {
     ? drillPerformancesData
     : (drillPerformancesData?.performances ?? []);
 
-  // Fetch playbook library for context
+  // Fetch prepared response library for context
   const { data: libraryDataRaw } = useQuery<any>({
     queryKey: ['/api/playbook-library'],
   });
@@ -228,7 +228,7 @@ export default function NFLLearningDashboard() {
               Performance Trends
             </TabsTrigger>
             <TabsTrigger value="insights" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-insights">
-              Cross-Playbook Insights
+              Cross-Prepared response Insights
             </TabsTrigger>
             <TabsTrigger value="velocity" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-velocity">
               Execution Velocity
@@ -442,13 +442,13 @@ export default function NFLLearningDashboard() {
             </Card>
           </TabsContent>
 
-          {/* Cross-Playbook Insights Tab */}
+          {/* Cross-Prepared response Insights Tab */}
           <TabsContent value="insights" className="space-y-4 mt-6">
             <Card className="border-[#E8E4DC] bg-white shadow-none">
               <CardHeader>
                 <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
                   <Brain className="h-5 w-5 text-[#C9A84C]" />
-                  Cross-Playbook Learning Patterns
+                  Cross-Prepared response Learning Patterns
                 </CardTitle>
                 <CardDescription className="text-[#6B7280]">Insights derived from multiple scenarios</CardDescription>
               </CardHeader>
@@ -464,7 +464,7 @@ export default function NFLLearningDashboard() {
                             Real Activation Insight
                           </h4>
                           <p className="text-sm text-[#0A0F2E] mt-1">
-                            You've had {activations.length} real playbook activation{activations.length !== 1 ? 's' : ''}. 
+                            You've had {activations.length} real prepared response activation{activations.length !== 1 ? 's' : ''}. 
                             Teams that practice monthly respond 3x faster to real crises.
                           </p>
                         </div>
@@ -511,7 +511,7 @@ export default function NFLLearningDashboard() {
                   {drillPerformances.length === 0 && activations.length === 0 && (
                     <div className="text-center py-12 text-[#6B7280]">
                       <Brain className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                      <p className="font-bold text-[#0A0F2E]">No cross-playbook insights yet</p>
+                      <p className="font-bold text-[#0A0F2E]">No cross-prepared response insights yet</p>
                       <p className="text-sm mt-1">Complete drills and activations to unlock patterns</p>
                     </div>
                   )}

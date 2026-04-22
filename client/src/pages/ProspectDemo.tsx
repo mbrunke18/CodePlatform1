@@ -146,7 +146,7 @@ export default function ProspectDemo() {
   const clockDisplay = `${String(Math.floor(clockSeconds / 60)).padStart(2, "0")}:${String(clockSeconds % 60).padStart(2, "0")}`;
 
   const EXEC_STEPS = [
-    "Trigger matched to playbook library",
+    "Trigger matched to prepared response library",
     `${scenario.playbookHint} — activated`,
     "Stakeholder notification dispatched",
     "Task assignments created",
@@ -301,10 +301,10 @@ export default function ProspectDemo() {
                 </div>
               </div>
 
-              {/* Recommended playbook */}
+              {/* Recommended prepared response */}
               <div style={{ background: "rgba(201,168,76,0.06)", border: `1px solid rgba(201,168,76,0.2)`, padding: "16px 20px", marginBottom: 32, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Recommended Playbook</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Recommended Prepared response</div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>{scenario.playbookHint}</div>
                 </div>
                 <span style={{ padding: "4px 12px", background: "rgba(43,138,110,0.2)", border: `1px solid rgba(43,138,110,0.4)`, fontSize: 10, fontWeight: 700, color: "#3BAF8A", textTransform: "uppercase" }}>PRE-STAGED</span>
@@ -396,10 +396,10 @@ export default function ProspectDemo() {
             </div>
           </div>
 
-          {/* Right: Relevant playbooks */}
+          {/* Right: Relevant prepared responses */}
           <div>
             <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 6 }}>Playbooks Armed — {industry}</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 6 }}>Prepared responses Armed — {industry}</div>
               <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>Pre-staged across your domain. Ready before the trigger fires.</div>
             </div>
 
@@ -434,7 +434,7 @@ export default function ProspectDemo() {
                 See this live in {displayName}'s environment
               </div>
               <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginBottom: 20, lineHeight: 1.6 }}>
-                This demo used generic data. A pilot deploys your specific triggers, your stakeholder map, and your org's playbook configurations — in 2 weeks.
+                This demo used generic data. A pilot deploys your specific triggers, your stakeholder map, and your org's prepared response configurations — in 2 weeks.
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <button

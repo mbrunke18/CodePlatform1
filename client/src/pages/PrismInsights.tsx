@@ -127,7 +127,7 @@ const strategicInsights = [
       'Operational concentration in single-region data infrastructure creates 14% continuity exposure',
     ],
     recommendations: [
-      'Pre-stage Supply Chain Disruption Response playbook for immediate activation if corridor signals confirm',
+      'Pre-stage Supply Chain Disruption Response prepared response for immediate activation if corridor signals confirm',
       'Launch parallel regulatory sprint across all 3 jurisdictions — delay creates compounding penalty risk',
       'Initiate infrastructure diversification plan — 6-month implementation timeline, delay increases exposure',
     ],

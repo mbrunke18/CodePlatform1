@@ -111,7 +111,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
 
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="font-bold text-[#0A0F2E]">Playbook Readiness</span>
+                    <span className="font-bold text-[#0A0F2E]">Prepared response Readiness</span>
                     <span className="text-[#6B7280] font-bold">{readinessMetrics.playbookReadiness || 0}/15 pts</span>
                   </div>
                   <Progress value={(readinessMetrics.playbookReadiness || 0) / 15 * 100} className="h-2 bg-[#F8F7F4]" />
@@ -229,12 +229,12 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                         <p className="text-sm text-[#0A0F2E] font-medium leading-relaxed mb-4">{gap.recommendation}</p>
                         {gap.missingPlaybooks && gap.missingPlaybooks.length > 0 && (
                           <div className="bg-white p-4 rounded border border-[#E8E4DC]">
-                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Missing Strategic Playbooks:</div>
+                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Missing Strategic Prepared responses:</div>
                             <ul className="grid grid-cols-2 gap-2">
                               {gap.missingPlaybooks.map((playbook: string, i: number) => (
                                 <li key={i} className="text-sm font-bold text-[#0A0F2E] flex items-center gap-2">
                                   <div className="h-1.5 w-1.5 bg-[#C9A84C]"></div>
-                                  {playbook}
+                                  { playbook }
                                 </li>
                               ))}
                             </ul>
@@ -309,12 +309,12 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   <div className="flex items-start gap-4 p-6 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded" data-testid="rec-drills">
                     <Shield className="h-6 w-6 text-[#2B8A6E] mt-1" />
                     <div className="flex-1">
-                      <div className="font-bold text-[#2B8A6E] text-lg" style={CG}>Run Playbook Drills</div>
+                      <div className="font-bold text-[#2B8A6E] text-lg" style={CG}>Run Prepared response Drills</div>
                       <p className="text-sm text-[#2B8A6E] font-medium mt-1 leading-relaxed">
-                        Complete {Math.ceil((25 - (readinessMetrics.drillsCompleted || 0)) / 5)} more playbook drills. This will strengthen team coordination and add up to {25 - (readinessMetrics.drillsCompleted || 0)} points.
+                        Complete {Math.ceil((25 - (readinessMetrics.drillsCompleted || 0)) / 5)} more prepared response drills. This will strengthen team coordination and add up to {25 - (readinessMetrics.drillsCompleted || 0)} points.
                       </p>
                       <Link href="/playbook-library">
-                        <Button className="mt-4 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold" size="sm" data-testid="button-goto-playbooks">View Playbooks</Button>
+                        <Button className="mt-4 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold" size="sm" data-testid="button-goto-prepared responses">View Prepared responses</Button>
                       </Link>
                     </div>
                   </div>
@@ -366,15 +366,15 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                 window: "Next 30 Days",
                 risk: "Medium",
                 riskColor: GOLD,
-                gap: "Compliance playbook coverage drops below 80% threshold as regulatory review period begins. 3 playbooks need executive re-validation.",
-                action: "Validate Compliance Playbooks",
+                gap: "Compliance prepared response coverage drops below 80% threshold as regulatory review period begins. 3 prepared responses need executive re-validation.",
+                action: "Validate Compliance Prepared responses",
                 confidence: 91,
               },
               {
                 window: "Days 31–60",
                 risk: "Low",
                 riskColor: "#2B8A6E",
-                gap: "Stakeholder mapping refresh overdue. 4 senior leader changes in the last 60 days have not been reflected in playbook ownership.",
+                gap: "Stakeholder mapping refresh overdue. 4 senior leader changes in the last 60 days have not been reflected in prepared response ownership.",
                 action: "Update Stakeholder Map",
                 confidence: 88,
               },

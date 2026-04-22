@@ -25,8 +25,8 @@ const DOC_TYPES = [
     icon: ClipboardList,
     label: 'Post-Mortem Report',
     description: 'After-action reviews, incident retrospectives',
-    placeholder: 'Paste your post-mortem or after-action review. Include what happened, what failed, what worked, key timelines, and lessons learned. The more detail the better — AI will extract decision patterns and convert them to structured playbook phases...',
-    example: "Post-Mortem: Q3 Ransomware Incident (2023)\n\nIncident: Ransomware detected at 2:14 AM on September 14. IT discovered encrypted files across 3 APAC servers at 6:30 AM. CISO was not notified until 9:00 AM — 6.5 hours after detection.\n\nWhat failed: No 24/7 SOC monitoring. Notification chain was manual. Legal team wasn't looped in until Day 2. PR found out from a reporter before internal comms went out. CFO approval for emergency IR retainer took 3 days.\n\nWhat worked: Once IR firm was engaged, containment took 18 hours. Communication templates existed but weren't pre-approved.\n\nKey lessons: Need automated CISO alert at detection. Legal and PR must be in first notification. CFO pre-approval for IR spend up to $500K needed. All hands playbook needed with pre-assigned roles.",
+    placeholder: 'Paste your post-mortem or after-action review. Include what happened, what failed, what worked, key timelines, and lessons learned. The more detail the better — AI will extract decision patterns and convert them to structured prepared response phases...',
+    example: "Post-Mortem: Q3 Ransomware Incident (2023)\n\nIncident: Ransomware detected at 2:14 AM on September 14. IT discovered encrypted files across 3 APAC servers at 6:30 AM. CISO was not notified until 9:00 AM — 6.5 hours after detection.\n\nWhat failed: No 24/7 SOC monitoring. Notification chain was manual. Legal team wasn't looped in until Day 2. PR found out from a reporter before internal comms went out. CFO approval for emergency IR retainer took 3 days.\n\nWhat worked: Once IR firm was engaged, containment took 18 hours. Communication templates existed but weren't pre-approved.\n\nKey lessons: Need automated CISO alert at detection. Legal and PR must be in first notification. CFO pre-approval for IR spend up to $500K needed. All hands prepared response needed with pre-assigned roles.",
   },
   {
     id: 'email',
@@ -64,7 +64,7 @@ const DOC_TYPES = [
 
 const FRESH_INPUTS = [
   "In Q3 2024, we faced a major supply chain disruption when our primary semiconductor supplier in Taiwan halted production due to a typhoon. The CFO called an emergency meeting. We scrambled to find alternative suppliers over 3 weeks, lost $40M in delayed orders. Key lessons: we needed pre-approved backup suppliers, finance needed a faster approval process for emergency POs, and procurement should have had a shortlist ready.",
-  "During the 2023 product recall crisis, our CTO discovered a software defect in firmware version 2.1 affecting 50,000 units. We had no clear escalation path. The PR team found out from Twitter before internal comms. CEO had to fly back from Davos. Regulatory filing was delayed 48 hours. We need a crisis playbook that gets legal, PR, regulatory, and engineering into a single war room within 60 minutes.",
+  "During the 2023 product recall crisis, our CTO discovered a software defect in firmware version 2.1 affecting 50,000 units. We had no clear escalation path. The PR team found out from Twitter before internal comms. CEO had to fly back from Davos. Regulatory filing was delayed 48 hours. We need a crisis prepared response that gets legal, PR, regulatory, and engineering into a single war room within 60 minutes.",
 ];
 
 type TabId = 'analyze' | 'historical';
@@ -89,7 +89,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
     onSuccess: (data: any) => {
       setResult(data);
       queryClient.invalidateQueries({ queryKey: ['/api/strategic-recordings'] });
-      toast({ title: `${data.generatedPlaybooks?.length ?? 0} playbooks generated`, description: 'Your knowledge has been captured and structured.' });
+      toast({ title: `${data.generatedPlaybooks?.length ?? 0} prepared responses generated`, description: 'Your knowledge has been captured and structured.' });
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
@@ -106,7 +106,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
     onSuccess: (data: any) => {
       setHistoricalResult(data);
       queryClient.invalidateQueries({ queryKey: ['/api/strategic-recordings'] });
-      toast({ title: `${data.generatedPlaybooks?.length ?? 0} playbooks encoded`, description: 'Historical knowledge has been converted to structured playbooks.' });
+      toast({ title: `${data.generatedPlaybooks?.length ?? 0} prepared responses encoded`, description: 'Historical knowledge has been converted to structured playbooks.' });
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
@@ -150,11 +150,11 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>IDENTIFY</span>
                 <ChevronRight style={{ width: 10, height: 10, color: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Playbook Generator</span>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Prepared response Generator</span>
               </div>
               <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: '#fff', lineHeight: 1 }}>Strategic Recorder</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 3 }}>
-                Convert crisis notes, post-mortems, and historical documents into structured readiness playbooks
+                Convert crisis notes, post-mortems, and historical documents into structured readiness prepared responses
               </div>
             </div>
           </div>
@@ -181,7 +181,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 {[
                   { icon: History, label: '48-Hour Onboarding', desc: 'vs 2–4 weeks manual setup' },
                   { icon: BookOpen, label: 'Tribal Knowledge Captured', desc: 'From meeting notes & emails' },
-                  { icon: Zap, label: 'Custom Playbooks Generated', desc: 'Tailored to your history' },
+                  { icon: Zap, label: 'Custom Prepared responses Generated', desc: 'Tailored to your history' },
                 ].map(v => {
                   const Icon = v.icon;
                   return (
@@ -226,11 +226,11 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
               <Button onClick={() => analyzeMutation.mutate()} disabled={!canAnalyze}
                 style={{ background: canAnalyze ? NAVY : '#D1D5DB', color: '#fff', borderRadius: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '14px' }}>
                 {analyzeMutation.isPending
-                  ? <><Loader2 style={{ width: 15, height: 15, marginRight: 8, animation: 'spin 1s linear infinite' }} /> Generating Playbooks...</>
-                  : <><Zap style={{ width: 15, height: 15, marginRight: 8 }} /> Generate Custom Playbooks</>}
+                  ? <><Loader2 style={{ width: 15, height: 15, marginRight: 8, animation: 'spin 1s linear infinite' }} /> Generating Prepared responses...</>
+                  : <><Zap style={{ width: 15, height: 15, marginRight: 8 }} /> Generate Custom Prepared responses</>}
               </Button>
 
-              {result?.generatedPlaybooks?.length > 0 && <PlaybookResults playbooks={result.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />}
+              {result?.generatedPlaybooks?.length > 0 && <PlaybookResults prepared responses={result.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />}
             </div>
           )}
 
@@ -240,9 +240,9 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
 
               {/* Value prop banner */}
               <div style={{ background: `${NAVY}05`, border: `1px solid ${BORDER}`, borderLeft: `4px solid ${GOLD}`, padding: '16px 20px' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Upload your last 3 incident reports — we'll pre-build your first playbooks</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Upload your last 3 incident reports — we'll pre-build your first prepared responses</div>
                 <div style={{ fontSize: 12, color: '#6B7280', lineHeight: 1.6 }}>
-                  Every organization has institutional knowledge trapped in documents, email chains, and the heads of experienced leaders. Select the document type below and paste the content — AI reconstructs the decision pattern and converts it to a structured, repeatable playbook your team can deploy in 12 minutes next time.
+                  Every organization has institutional knowledge trapped in documents, email chains, and the heads of experienced leaders. Select the document type below and paste the content — AI reconstructs the decision pattern and converts it to a structured, repeatable prepared response your team can deploy in 12 minutes next time.
                 </div>
               </div>
 
@@ -290,22 +290,22 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
               <Button onClick={() => historicalMutation.mutate()} disabled={!canEncodeHistorical}
                 style={{ background: canEncodeHistorical ? NAVY : '#D1D5DB', color: '#fff', borderRadius: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '14px' }}>
                 {historicalMutation.isPending
-                  ? <><Loader2 style={{ width: 15, height: 15, marginRight: 8 }} /> Encoding to Playbooks...</>
-                  : <><Shield style={{ width: 15, height: 15, marginRight: 8 }} /> Encode Historical Knowledge to Playbooks</>}
+                  ? <><Loader2 style={{ width: 15, height: 15, marginRight: 8 }} /> Encoding to Prepared responses...</>
+                  : <><Shield style={{ width: 15, height: 15, marginRight: 8 }} /> Encode Historical Knowledge to Prepared responses</>}
               </Button>
 
               {historicalResult?.generatedPlaybooks?.length > 0 && (
                 <div style={{ padding: '12px 16px', background: `${TEAL}08`, border: `1px solid ${TEAL}25`, borderLeft: `4px solid ${TEAL}` }}>
                   <div style={{ fontSize: 12, fontWeight: 700, color: TEAL, marginBottom: 4 }}>
-                    {historicalResult.generatedPlaybooks.length} playbooks encoded from historical knowledge
+                    {historicalResult.generatedPlaybooks.length} prepared responses encoded from historical knowledge
                   </div>
                   <div style={{ fontSize: 11, color: '#6B7280' }}>
-                    Your institutional knowledge is now part of your Readiness Infrastructure. These playbooks will be available for deployment the next time a matching trigger fires.
+                    Your institutional knowledge is now part of your Readiness Infrastructure. These prepared responses will be available for deployment the next time a matching trigger fires.
                   </div>
                 </div>
               )}
               {historicalResult?.generatedPlaybooks?.length > 0 && (
-                <PlaybookResults playbooks={historicalResult.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />
+                <PlaybookResults prepared responses={historicalResult.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />
               )}
             </div>
           )}
@@ -331,7 +331,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 <div style={{ height: '100%', background: GOLD, width: `${history.length > 0 ? tribalKnowledgeScore : 0}%`, transition: 'width 0.4s' }} />
               </div>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>
-                {history.length} recording{history.length !== 1 ? 's' : ''} · {history.reduce((s: number, r: any) => s + (r.generatedPlaybooks?.length || 0), 0)} playbooks encoded
+                {history.length} recording{history.length !== 1 ? 's' : ''} · {history.reduce((s: number, r: any) => s + (r.generatedPlaybooks?.length || 0), 0)} prepared responses encoded
               </div>
             </div>
 
@@ -345,7 +345,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 <div style={{ border: `1px dashed ${BORDER}`, padding: '24px', textAlign: 'center' }}>
                   <TrendingUp style={{ width: 20, height: 20, color: '#D1D5DB', margin: '0 auto 8px' }} />
                   <div style={{ fontSize: 11, color: '#9CA3AF' }}>No recordings yet</div>
-                  <div style={{ fontSize: 9, color: '#D1D5DB', marginTop: 4 }}>Your system-staged playbooks will appear here</div>
+                  <div style={{ fontSize: 9, color: '#D1D5DB', marginTop: 4 }}>Your system-staged prepared responses will appear here</div>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -359,7 +359,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                       </div>
                       <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.4 }}>{rec.inputText?.slice(0, 80)}...</div>
                       {rec.generatedPlaybooks?.length > 0 && (
-                        <div style={{ fontSize: 9, fontWeight: 700, color: TEAL, marginTop: 4 }}>{rec.generatedPlaybooks.length} playbooks encoded</div>
+                        <div style={{ fontSize: 9, fontWeight: 700, color: TEAL, marginTop: 4 }}>{rec.generatedPlaybooks.length} prepared responses encoded</div>
                       )}
                     </div>
                   ))}
@@ -388,7 +388,7 @@ function PlaybookResults({ playbooks, savedIds, setSavedIds }: { playbooks: any[
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
         <div style={{ width: 20, height: 2, background: GOLD }} />
-        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Playbooks Generated</span>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Prepared responses Generated</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         {playbooks.map((pb: any, i: number) => {

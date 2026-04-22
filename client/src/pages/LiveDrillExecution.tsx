@@ -32,7 +32,7 @@ export default function LiveDrillExecution() {
   const [isRunning, setIsRunning] = useState(true);
   const [selectedDecisions, setSelectedDecisions] = useState<Record<string, string>>({});
 
-  // Fetch drill details with playbook data
+  // Fetch drill details with prepared response data
   const { data: drillDetails, isLoading } = useQuery<any>({
     queryKey: [`/api/practice-drills/drill/${drillId}`],
     enabled: !!drillId,
@@ -42,14 +42,14 @@ export default function LiveDrillExecution() {
   const playbook = drillDetails?.playbook;
   const domain = drillDetails?.domain;
 
-  // Fetch decision trees for this playbook
+  // Fetch decision trees for this prepared response
   const { data: decisionTreesData } = useQuery<any[]>({
     queryKey: [`/api/playbook-library/${drill?.playbookId}/decision-trees`],
     enabled: !!drill?.playbookId,
   });
   const decisionTrees = decisionTreesData ?? [];
 
-  // Fetch task sequences for this playbook
+  // Fetch task sequences for this prepared response
   const { data: taskSequencesData } = useQuery<any[]>({
     queryKey: [`/api/playbook-library/${drill?.playbookId}/task-sequences`],
     enabled: !!drill?.playbookId,
@@ -254,7 +254,7 @@ export default function LiveDrillExecution() {
             <CardContent className="space-y-4">
               {decisionTrees.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground text-sm">
-                  No decision checkpoints defined for this playbook
+                  No decision checkpoints defined for this prepared response
                 </div>
               ) : (
                 decisionTrees.map((checkpoint: any) => {
@@ -323,7 +323,7 @@ export default function LiveDrillExecution() {
               <div className="space-y-3 max-h-[600px] overflow-y-auto">
                 {taskSequences.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground text-sm">
-                    No task sequences defined for this playbook
+                    No task sequences defined for this prepared response
                   </div>
                 ) : (
                   taskSequences.map((task: any, idx: number) => {

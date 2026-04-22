@@ -128,7 +128,7 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Shield className="w-5 h-5" />
-          Playbook Readiness
+          Prepared response Readiness
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -226,15 +226,15 @@ export default function FourPhasePlaybookWizard({
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library'] });
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', playbook?.id, 'readiness'] });
       toast({
-        title: 'Playbook Customized',
-        description: 'Your playbook template has been customized successfully',
+        title: 'Prepared response Customized',
+        description: 'Your prepared response template has been customized successfully',
       });
       onClose();
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to save playbook customization',
+        description: 'Failed to save prepared response customization',
         variant: 'destructive',
       });
     },
@@ -312,7 +312,7 @@ export default function FourPhasePlaybookWizard({
             <div className="flex items-center gap-3">
               <Shield className="w-6 h-6 text-primary" />
               <div>
-                <div className="text-lg">Configure Playbook: {playbook?.name}</div>
+                <div className="text-lg">Configure Prepared response: {playbook?.name}</div>
                 <div className="text-sm font-normal text-muted-foreground">4-Phase Strategic Readiness</div>
               </div>
             </div>
@@ -402,7 +402,7 @@ export default function FourPhasePlaybookWizard({
                 <CurrentStepComponent
                   data={formData}
                   onChange={updateFormData}
-                  playbook={playbook}
+                  prepared response={ playbook }
                 />
               )}
             </div>
@@ -427,7 +427,7 @@ export default function FourPhasePlaybookWizard({
                     onClick={handleSave}
                     disabled={saveCustomizationMutation.isPending}
                     className="bg-green-600 hover:bg-green-700"
-                    data-testid="button-save-playbook"
+                    data-testid="button-save-prepared response"
                   >
                     <Check className="h-4 w-4 mr-1" />
                     {saveCustomizationMutation.isPending ? 'Saving...' : 'Complete Setup'}

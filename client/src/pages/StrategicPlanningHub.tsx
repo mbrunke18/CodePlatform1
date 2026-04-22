@@ -293,7 +293,7 @@ export default function StrategicPlanningHub() {
               { label: "Portfolio Health", value: `${portfolioMetrics.portfolioHealth}%`, sub: "Milestone velocity on track", icon: Activity, accent: TEAL, tag: "HEALTHY", cls: 'sph-tile-2' },
               { label: "Total Budget", value: formatCurrency(portfolioMetrics.totalBudget), sub: "Across all active scenarios", icon: DollarSign, accent: GOLD, tag: "AUTHORIZED", cls: 'sph-tile-3' },
               { label: "Completed This Quarter", value: String(portfolioMetrics.completedThisQuarter), sub: "Closed with post-mortem review", icon: CheckCircle, accent: TEAL, tag: "CLOSED", cls: 'sph-tile-4' },
-              { label: "Risk Exposure", value: `${portfolioMetrics.riskExposure}%`, sub: "Mitigated via playbook automation", icon: Shield, accent: GOLD, tag: "MONITORED", cls: 'sph-tile-5' },
+              { label: "Risk Exposure", value: `${portfolioMetrics.riskExposure}%`, sub: "Mitigated via prepared response automation", icon: Shield, accent: GOLD, tag: "MONITORED", cls: 'sph-tile-5' },
               { label: "Avg. ROI Realized", value: "245%", sub: "Across completed scenarios", icon: TrendingUp, accent: TEAL, tag: "VERIFIED", cls: 'sph-tile-6' },
             ].map(({ label, value, sub, icon: Icon, accent, tag, cls }) => (
               <div
@@ -539,7 +539,7 @@ export default function StrategicPlanningHub() {
           <TabsContent value="planning" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { title: "Scenario Builder", desc: "Model strategic situations and define response playbooks with AI-guided prompts", icon: Lightbulb, accent: GOLD, tag: "SIGNAL-BASED", path: "/simulation-studio" },
+                { title: "Scenario Builder", desc: "Model strategic situations and define response prepared responses with AI-guided prompts", icon: Lightbulb, accent: GOLD, tag: "SIGNAL-BASED", path: "/simulation-studio" },
                 { title: "Impact Analysis", desc: "Quantify potential outcomes, cost exposure, and revenue risk across scenarios", icon: BarChart3, accent: TEAL, tag: "ANALYTICS", path: "/analytics" },
                 { title: "Stakeholder Mapping", desc: "Define who needs to be in the room — roles, authority, and notification tiers", icon: Users, accent: GOLD, tag: "COORDINATION", path: "/setup/team" },
                 { title: "Risk Assessment", desc: "Score probability and severity across all active and planned strategic initiatives", icon: Shield, accent: TEAL, tag: "INTELLIGENCE", path: "/ai-radar" },

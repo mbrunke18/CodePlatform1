@@ -99,7 +99,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Customer Retention Outreach', before: '2 weeks', after: 'Same day' },
       { metric: 'Integration Cost Savings', before: 'N/A', after: '$4.2M in avoided delays' },
     ],
-    lesson: 'Integration playbook refined: added "CloudTech-specific" technology migration checklist based on actual system gaps discovered during execution. Updated stakeholder tiers to include acquired company leadership in Tier 2.',
+    lesson: 'Integration prepared response refined: added "CloudTech-specific" technology migration checklist based on actual system gaps discovered during execution. Updated stakeholder tiers to include acquired company leadership in Tier 2.',
   },
   ciso: {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
@@ -155,7 +155,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Regulatory Filing', before: 'Scramble at deadline', after: 'Prepared within 2 hours' },
       { metric: 'Financial Impact Avoided', before: 'N/A', after: '$12.8M in breach costs avoided' },
     ],
-    lesson: 'Playbook updated: added auto-isolation rule that triggered 3 minutes faster than manual process. VPN monitoring trigger added to detect credential compromise earlier. Phishing response playbook cross-linked for upstream prevention.',
+    lesson: 'Prepared response updated: added auto-isolation rule that triggered 3 minutes faster than manual process. VPN monitoring trigger added to detect credential compromise earlier. Phishing response prepared response cross-linked for upstream prevention.',
   },
   cmo: {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
@@ -211,7 +211,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Market Share Protected', before: 'Unknown', after: '$12M ARR retained' },
       { metric: 'Sales Team Readiness', before: '2 weeks', after: 'Same day' },
     ],
-    lesson: 'Playbook enhanced: added "SI Partnership Monitoring" as a new trigger source after discovering competitor SI partnerships were a leading indicator. Customer segmentation messaging refined from 2 to 4 tiers based on actual response data.',
+    lesson: 'Prepared response enhanced: added "SI Partnership Monitoring" as a new trigger source after discovering competitor SI partnerships were a leading indicator. Customer segmentation messaging refined from 2 to 4 tiers based on actual response data.',
   },
   cfo: {
     id: 'cfo', title: 'Chief Financial Officer', name: 'Sarah Chen', company: 'Meridian Financial Group',
@@ -267,7 +267,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Audit Readiness', before: '90 days', after: '45 days (50% faster)' },
       { metric: 'Compliance Cost', before: 'Unknown until late', after: '$142K — tracked real-time' },
     ],
-    lesson: 'Playbook updated: Added "Big 4 Capacity Check" as a pre-flight step after discovering auditor availability was a bottleneck. Created reusable template for future SEC rule changes. Linked to ESG reporting playbook for cross-domain coordination.',
+    lesson: 'Prepared response updated: Added "Big 4 Capacity Check" as a pre-flight step after discovering auditor availability was a bottleneck. Created reusable template for future SEC rule changes. Linked to ESG reporting prepared response for cross-domain coordination.',
   },
   coo: {
     id: 'coo', title: 'Chief Operating Officer', name: 'David Wilson', company: 'Meridian Financial Group',
@@ -323,7 +323,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Revenue Protected', before: 'Unknown', after: '$2.1M/day saved' },
       { metric: 'Vendor Accountability', before: 'Post-incident', after: 'Real-time SLA tracking from minute 1' },
     ],
-    lesson: 'Playbook refined: Added failover runbooks for 6 additional services that lacked DR. Vendor escalation SLA tightened from 60-min to 30-min auto-escalation. Added "vendor financial health monitoring" as a leading indicator trigger.',
+    lesson: 'Prepared response refined: Added failover runbooks for 6 additional services that lacked DR. Vendor escalation SLA tightened from 60-min to 30-min auto-escalation. Added "vendor financial health monitoring" as a leading indicator trigger.',
   },
   cto: {
     id: 'cto', title: 'Chief Technology Officer', name: 'Michael Rodriguez', company: 'Meridian Financial Group',
@@ -379,7 +379,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Governance Framework', before: 'Built from scratch', after: 'Pre-configured, customized in minutes' },
       { metric: 'Projected Timeline Savings', before: '18 months', after: '14 months (22% faster)' },
     ],
-    lesson: 'Playbook enhanced: Added EU AI Act compliance checklist as mandatory pre-flight step. Created reusable "Department Readiness Assessment" template. Linked Digital Transformation playbook to AI Governance playbook for cross-domain execution.',
+    lesson: 'Prepared response enhanced: Added EU AI Act compliance checklist as mandatory pre-flight step. Created reusable "Department Readiness Assessment" template. Linked Digital Transformation prepared response to AI Governance prepared response for cross-domain execution.',
   },
   chro: {
     id: 'chro', title: 'Chief Human Resources Officer', name: 'Michelle Harris', company: 'Meridian Financial Group',
@@ -435,7 +435,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Integration Timeline', before: '18 months', after: '9 months' },
       { metric: 'Employee Engagement Recovery', before: 'Unknown', after: '$3.6M retention value saved' },
     ],
-    lesson: 'Playbook enhanced: Added "LinkedIn Activity Monitor" as an early warning trigger — catches flight risk 3 weeks earlier than survey data alone. Created reusable "Skip-Level Listening Session" template. Integration buddy program now auto-activates for all future M&A playbooks.',
+    lesson: 'Prepared response enhanced: Added "LinkedIn Activity Monitor" as an early warning trigger — catches flight risk 3 weeks earlier than survey data alone. Created reusable "Skip-Level Listening Session" template. Integration buddy program now auto-activates for all future M&A playbooks.',
   },
   cdo: {
     id: 'cdo', title: 'Chief Data Officer', name: 'Nicole Hall', company: 'Meridian Financial Group',
@@ -491,7 +491,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Customer View Accuracy', before: 'Unknown', after: '98% single source of truth' },
       { metric: 'Revenue Impact', before: 'N/A', after: '$2.1M saved in Year 1' },
     ],
-    lesson: 'Playbook refined: Added "Privacy Compliance Pre-Check" as mandatory step before any data consolidation. Created reusable "Data Quality Scorecard" template. Linked to AI Governance playbook for ML model data requirements.',
+    lesson: 'Prepared response refined: Added "Privacy Compliance Pre-Check" as mandatory step before any data consolidation. Created reusable "Data Quality Scorecard" template. Linked to AI Governance prepared response for ML model data requirements.',
   },
   gc: {
     id: 'gc', title: 'General Counsel', name: 'Emily Taylor', company: 'Meridian Financial Group',
@@ -547,7 +547,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Risk Exposure', before: 'Unknown', after: '$8.4M in potential fines avoided' },
       { metric: 'External Counsel Coordination', before: 'Ad-hoc', after: 'Structured with SLA tracking' },
     ],
-    lesson: 'Playbook enhanced: Added "Conflicting Jurisdiction Detector" that cross-references requirements across regions automatically. Created reusable "Vendor AI Clause Amendment" template. Linked to AI Governance playbook for technical compliance requirements.',
+    lesson: 'Prepared response enhanced: Added "Conflicting Jurisdiction Detector" that cross-references requirements across regions automatically. Created reusable "Vendor AI Clause Amendment" template. Linked to AI Governance prepared response for technical compliance requirements.',
   },
   cco: {
     id: 'cco', title: 'Chief Compliance Officer', name: 'Jessica Thompson', company: 'Meridian Financial Group',
@@ -603,7 +603,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Team Coordination', before: 'Multiple meetings', after: 'Single coordinated response' },
       { metric: 'Examination Result', before: 'Stressful', after: 'Zero new findings, 2 prior findings closed' },
     ],
-    lesson: 'Playbook refined: Created "Standing Audit Readiness" mode that maintains continuous document freshness. Added "Penetration Test Staleness" alert — auto-triggers at 60 days instead of waiting for examination notice. Linked to Cybersecurity playbook for coordinated documentation updates.',
+    lesson: 'Prepared response refined: Created "Standing Audit Readiness" mode that maintains continuous document freshness. Added "Penetration Test Staleness" alert — auto-triggers at 60 days instead of waiting for examination notice. Linked to Cybersecurity prepared response for coordinated documentation updates.',
   },
   cso: {
     id: 'cso', title: 'Chief Strategy Officer', name: 'Patricia Wright', company: 'Meridian Financial Group',
@@ -661,7 +661,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Cross-Functional Alignment', before: '6-8 weeks', after: 'Same day' },
       { metric: 'Projected Year 2 Revenue', before: 'Unknown', after: '$48M with 78% confidence' },
     ],
-    lesson: 'Playbook enhanced: Added "Competitive Withdrawal Monitor" as a new trigger source — catches market gaps 2-3 weeks faster. Created reusable "JV Partner Evaluation Scorecard" template. Linked Market Entry playbook to Regulatory Compliance playbook for parallel processing.',
+    lesson: 'Prepared response enhanced: Added "Competitive Withdrawal Monitor" as a new trigger source — catches market gaps 2-3 weeks faster. Created reusable "JV Partner Evaluation Scorecard" template. Linked Market Entry prepared response to Regulatory Compliance prepared response for parallel processing.',
   },
   cro: {
     id: 'cro', title: 'Chief Revenue Officer', name: 'Ryan Davis', company: 'Meridian Financial Group',
@@ -682,7 +682,7 @@ const ROLES: Record<string, RoleData> = {
     ],
     customizations: [
       { field: 'Risk Scoring', before: 'Simple RAG', after: 'Multi-factor: usage trends, support tickets, NPS, contract terms, competitive mentions, stakeholder changes' },
-      { field: 'Intervention Tiers', before: 'Single playbook', after: '3-tier: Proactive (score 60-80), Reactive (40-60), Emergency (below 40)' },
+      { field: 'Intervention Tiers', before: 'Single prepared response', after: '3-tier: Proactive (score 60-80), Reactive (40-60), Emergency (below 40)' },
       { field: 'Account Team Assembly', before: 'Standard CSM', after: 'War room: CSM, AE, SE, Product, Executive Sponsor, Professional Services' },
       { field: 'Communication Cadence', before: 'Quarterly review', after: 'Weekly touchpoints, bi-weekly exec alignment, daily monitoring during intervention' },
     ],
@@ -717,7 +717,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Revenue Protected', before: '$4.2M at risk', after: '$4.2M retained + $800K expansion identified' },
       { metric: 'Cascade Impact', before: '3 industry accounts stabilized', after: 'Same messaging deployed' },
     ],
-    lesson: 'Playbook refined: Added "Stakeholder Change Monitor" as a leading indicator — catches executive turnover risk 30 days earlier. Created reusable "Competitive Displacement Response" template. Updated risk scoring to weight stakeholder changes 2x higher than previous model.',
+    lesson: 'Prepared response refined: Added "Stakeholder Change Monitor" as a leading indicator — catches executive turnover risk 30 days earlier. Created reusable "Competitive Displacement Response" template. Updated risk scoring to weight stakeholder changes 2x higher than previous model.',
   },
 };
 
@@ -725,7 +725,7 @@ const FALLBACK_ROLE = ROLES.ciso;
 
 const STAGES = [
   { id: 'intro', label: 'Your Scenario' },
-  { id: 'playbook', label: 'Build Playbook' },
+  { id: 'prepared response', label: 'Build Prepared response' },
   { id: 'triggers', label: 'Configure Triggers' },
   { id: 'data', label: 'Connect Data' },
   { id: 'customize', label: 'Customize' },
@@ -885,7 +885,7 @@ export default function RoleExperience() {
               className="bg-white border border-[#2B8A6E]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
-                <h3 className="font-semibold text-[#0A0F2E]">Your Playbook</h3>
+                <h3 className="font-semibold text-[#0A0F2E]">Your Prepared response</h3>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-[#6B7280]">Name</span><span className="text-[#0A0F2E] font-medium">{userPlaybook.name}</span></div>
@@ -973,7 +973,7 @@ export default function RoleExperience() {
                 <p className="text-sm font-bold text-[#0A0F2E]">{role.name} · {role.company}</p>
               </div>
               <div className="text-right">
-                <p className="text-[10px] text-[#6B7280] uppercase tracking-wider mb-0.5">Playbook</p>
+                <p className="text-[10px] text-[#6B7280] uppercase tracking-wider mb-0.5">Prepared response</p>
                 <p className="text-xs font-bold text-[#0A0F2E]">{role.playbook.name}</p>
               </div>
             </motion.div>
@@ -1027,7 +1027,7 @@ export default function RoleExperience() {
               <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-3">What Happens Next</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { step: '01', label: 'Configure your playbook', icon: BookOpen, color: '#C9A84C' },
+                  { step: '01', label: 'Configure your prepared response', icon: BookOpen, color: '#C9A84C' },
                   { step: '02', label: 'Set triggers & data feeds', icon: Radio, color: '#2B8A6E' },
                   { step: '03', label: 'Trigger fires — OS executes', icon: AlertTriangle, color: '#DC2626' },
                   { step: '04', label: 'See your outcomes', icon: CheckCircle2, color: '#2B8A6E' },
@@ -1049,9 +1049,9 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PLAYBOOK</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Build Your Playbook</h2>
-              <p className="text-[#6B7280]">Customize your playbook configuration — pre-filled with smart defaults from {role.title}</p>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PREPARED RESPONSE</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Build Your Prepared response</h2>
+              <p className="text-[#6B7280]">Customize your prepared response configuration — pre-filled with smart defaults from {role.title}</p>
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -1070,14 +1070,14 @@ export default function RoleExperience() {
               <div className="bg-[#2B8A6E]/30 border-b border-[#2B8A6E]/10 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
-                  <span className="text-[#0A0F2E] font-semibold">Playbook Configuration</span>
+                  <span className="text-[#0A0F2E] font-semibold">Prepared response Configuration</span>
                   <Badge variant="outline" className="text-xs">Template #{role.playbook.number}</Badge>
                 </div>
               </div>
               <div className="p-6 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="pb-name" className="text-[#6B7280]">Playbook Name</Label>
+                    <Label htmlFor="pb-name" className="text-[#6B7280]">Prepared response Name</Label>
                     <Input id="pb-name" value={userPlaybook.name}
                       onChange={e => setUserPlaybook(p => ({ ...p, name: e.target.value }))}
                       placeholder={role.playbook.name}
@@ -1160,7 +1160,7 @@ export default function RoleExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-amber-500/20 text-amber-400"><Radio className="h-3 w-3 mr-1" /> CONFIGURE TRIGGERS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Configure Your Triggers</h2>
-              <p className="text-gray-800">Set up the conditions that will automatically activate your playbook</p>
+              <p className="text-gray-800">Set up the conditions that will automatically activate your prepared response</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
@@ -1427,7 +1427,7 @@ export default function RoleExperience() {
                   </div>
                   <div className="bg-white/5 p-3 text-center">
                     <BookOpen className="h-5 w-5 text-[#2B8A6E] mx-auto mb-1" />
-                    <div className="text-xs text-gray-800">Your Playbook</div>
+                    <div className="text-xs text-gray-800">Your Prepared response</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.name}</div>
                     {userPlaybook.name !== role.playbook.name && <Badge className="mt-1 bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
                   </div>
@@ -1556,7 +1556,7 @@ export default function RoleExperience() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
               className="text-center text-sm text-gray-800 mt-6"
             >
-              No playbook activates without executive sign-off. Readiness OS pre-stages the preparation — the decision remains human.
+              No prepared response activates without executive sign-off. Readiness OS pre-stages the preparation — the decision remains human.
             </motion.p>
           </div>
         );
@@ -1735,14 +1735,14 @@ export default function RoleExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><TrendingUp className="h-3 w-3 mr-1" /> ADVANCE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Institutional Learning</h2>
-              <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s execution data feeds back into the playbook for continuous improvement</p>
+              <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s execution data feeds back into the prepared response for continuous improvement</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="bg-white border border-[#0A0F2E]/20 p-6 mb-6"
             >
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-6 w-6 text-[#0A0F2E]" />
-                <h3 className="text-lg font-semibold text-[#0A0F2E]">System-Generated Playbook Refinement</h3>
+                <h3 className="text-lg font-semibold text-[#0A0F2E]">System-Generated Prepared response Refinement</h3>
               </div>
               <div className="bg-[#0A0F2E]/5 border border-[#0A0F2E]/10 p-5">
                 <p className="text-[#6B7280] leading-relaxed">{role.lesson}</p>
@@ -1754,7 +1754,7 @@ export default function RoleExperience() {
               {[
                 { label: 'Execution Score', value: '96/100', icon: Award, color: 'text-[#2B8A6E]' },
                 { label: 'Improvement Areas', value: '3 identified', icon: Lightbulb, color: 'text-[#C9A84C]' },
-                { label: 'Playbook Version', value: 'v2.1 saved', icon: BookOpen, color: 'text-[#0A0F2E]' },
+                { label: 'Prepared response Version', value: 'v2.1 saved', icon: BookOpen, color: 'text-[#0A0F2E]' },
               ].map((item, i) => (
                 <div key={i} className="bg-white/5 border border-[#E8E4DC] p-4 text-center">
                   <item.icon className={`h-6 w-6 ${item.color} mx-auto mb-2`} />
@@ -1769,7 +1769,7 @@ export default function RoleExperience() {
               >
                 <div className="flex items-center gap-2 mb-3">
                   <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-xs">Your Custom Tasks</Badge>
-                  <span className="text-sm text-gray-800">incorporated into playbook v2.1</span>
+                  <span className="text-sm text-gray-800">incorporated into prepared response v2.1</span>
                 </div>
                 <div className="space-y-1">
                   {customTasks.map((t, i) => (

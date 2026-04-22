@@ -96,7 +96,7 @@ export default function HowItWorks() {
       <div style={{ background: NAVY, borderBottom: `1px solid rgba(255,255,255,0.08)`, display: "flex", overflowX: "auto" }}>
         {[
           { label: "Onboarding", num: "01" },
-          { label: "Your Playbooks", num: "02" },
+          { label: "Your Prepared responses", num: "02" },
           { label: "Customization", num: "03" },
           { label: "The Live Loop", num: "04" },
           { label: "Ongoing Value", num: "05" },
@@ -190,20 +190,20 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* ── 02: THE 170 PLAYBOOKS ── */}
+      {/* ── 02: THE 170 PREPARED RESPONSES ── */}
       <section style={{ background: OFF, padding: "100px 56px" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionLabel text="02 — Your Playbook Foundation" color={GOLD} />
+          <SectionLabel text="02 — Your Prepared response Foundation" color={GOLD} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24 }}>
-                170 Battle-Tested Playbooks — Ready on Day One
+                170 Battle-Tested Prepared responses — Ready on Day One
               </h2>
               <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
-                The platform comes pre-loaded with 170 playbooks across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
+                The platform comes pre-loaded with 170 prepared responses across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
               </p>
               <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
-                These are not generic templates. Each playbook contains a defined task sequence, role assignments, escalation logic, communication assets, and success metrics — built specifically for Fortune 1000-scale responses.
+                These are not generic templates. Each prepared response contains a defined task sequence, role assignments, escalation logic, communication assets, and success metrics — built specifically for Fortune 1000-scale responses.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
                 {["Competitive Movement", "M&A Response", "Crisis Management", "Regulatory Shift", "Supply Chain", "Talent Crisis", "Cyber Breach", "Market Entry", "ESG Response"].map((domain, i) => (
@@ -215,7 +215,7 @@ export default function HowItWorks() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                { num: "170", label: "Pre-Built Playbooks", sub: "Across 9 strategic domains", color: GOLD },
+                { num: "170", label: "Pre-Built Prepared responses", sub: "Across 9 strategic domains", color: GOLD },
                 { num: "9", label: "Strategic Domains", sub: "Full enterprise coverage", color: TEAL },
                 { num: "248+", label: "Signal Data Points", sub: "Monitoring your environment", color: NAVY },
                 { num: "12 min", label: "Execution Window", sub: "From trigger to coordination", color: GOLD },
@@ -238,23 +238,23 @@ export default function HowItWorks() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 800, height: 800, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
-          <SectionLabel text="03 — Playbook Customization" color={GOLD_LIGHT} />
+          <SectionLabel text="03 — Prepared response Customization" color={GOLD_LIGHT} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 64 }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: "#fff", marginBottom: 24 }}>
                 Start with the 170. Make It Yours.
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, fontWeight: 500 }}>
-                Every one of the 170 playbooks is a starting point, not a ceiling. Your team can take any library playbook and configure it to match your exact org structure, approval thresholds, stakeholder names, task sequences, and success criteria — without touching the underlying template.
+                Every one of the 170 prepared responses is a starting point, not a ceiling. Your team can take any library prepared response and configure it to match your exact org structure, approval thresholds, stakeholder names, task sequences, and success criteria — without touching the underlying template.
               </p>
             </div>
             <div>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>
-                You can also build entirely new playbooks from scratch — using the Strategic Recorder, which turns your crisis notes, transcripts, or battle plans into a structured playbook using AI.
+                You can also build entirely new prepared responses from scratch — using the Strategic Recorder, which turns your crisis notes, transcripts, or battle plans into a structured prepared response using AI.
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 20px", border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.07)" }}>
                 <Sparkles style={{ width: 16, height: 16, color: GOLD_LIGHT, flexShrink: 0 }} />
-                <span style={{ fontSize: 13, color: GOLD_LIGHT, fontWeight: 600 }}>The library grows with you. No playbook is ever static.</span>
+                <span style={{ fontSize: 13, color: GOLD_LIGHT, fontWeight: 600 }}>The library grows with you. No prepared response is ever static.</span>
               </div>
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function HowItWorks() {
                 color: GOLD_LIGHT,
                 title: "Set Your Triggers",
                 items: [
-                  "Choose which signals activate this playbook",
+                  "Choose which signals activate this prepared response",
                   "Set confidence thresholds",
                   "Configure auto-activation rules",
                   "Combine conditions with AND / OR logic"
@@ -306,7 +306,7 @@ export default function HowItWorks() {
                   "Set your outcome target metrics",
                   "Define what 'resolved' looks like",
                   "Enable AI retrospective capture",
-                  "Feed learnings back into playbook"
+                  "Feed learnings back into prepared response"
                 ]
               }
             ].map((col, i) => (
@@ -329,9 +329,9 @@ export default function HowItWorks() {
                 <PenLine style={{ width: 18, height: 18, color: GOLD_LIGHT }} />
               </div>
               <div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Build Net-New Playbooks</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Build Net-New Prepared responses</div>
                 <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, fontWeight: 500 }}>
-                  Use the Strategic Recorder to paste in crisis notes, board transcripts, or past incident reports. The system generates a structured playbook outline from your own institutional knowledge.
+                  Use the Strategic Recorder to paste in crisis notes, board transcripts, or past incident reports. The system generates a structured prepared response outline from your own institutional knowledge.
                 </p>
               </div>
             </div>
@@ -342,7 +342,7 @@ export default function HowItWorks() {
               <div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Custom Signal Triggers</div>
                 <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, fontWeight: 500 }}>
-                  The Visual Trigger Builder lets you define your own activation conditions — Spike / Drop operators, multi-condition AND/OR logic, and auto-activation rules that fire a specific playbook the moment conditions are met.
+                  The Visual Trigger Builder lets you define your own activation conditions — Spike / Drop operators, multi-condition AND/OR logic, and auto-activation rules that fire a specific prepared response the moment conditions are met.
                 </p>
               </div>
             </div>
@@ -387,7 +387,7 @@ export default function HowItWorks() {
                 color: TEAL,
                 bg: OFF,
                 title: "Coordination in 12 Minutes",
-                desc: "Playbook activates. Stakeholders notified. Tasks assigned with named owners and deadlines. Decision rights are clear — no committees to convene. Execution begins in minutes.",
+                desc: "Prepared response activates. Stakeholders notified. Tasks assigned with named owners and deadlines. Decision rights are clear — no committees to convene. Execution begins in minutes.",
                 sub: "Not planning. Execution."
               },
               {
@@ -396,7 +396,7 @@ export default function HowItWorks() {
                 color: "#A78BFA",
                 bg: "#fff",
                 title: "Every Execution Gets Smarter",
-                desc: "After each playbook closes, the system generates an executive outcome summary. Lessons feed back into the playbook. The organization's institutional knowledge compounds.",
+                desc: "After each prepared response closes, the system generates an executive outcome summary. Lessons feed back into the playbook. The organization's institutional knowledge compounds.",
                 sub: "Your competitive moat grows with each event."
               }
             ].map((phase, i) => (
@@ -425,8 +425,8 @@ export default function HowItWorks() {
             <div style={{ position: "absolute", left: 8, top: 0, bottom: 0, width: 1, background: "rgba(255,255,255,0.08)" }} />
             {[
               { time: "0:00", label: "Signal Detected", color: GOLD_LIGHT, desc: "AI detects a strategic signal — a competitor announcement, a regulatory filing, a market move — and scores it against your configured thresholds." },
-              { time: "1:00", label: "Alert Generated", color: TEAL_LIGHT, desc: "An alert fires with strategic context: what happened, why it matters for your org, affected domains, and the recommended playbook to activate." },
-              { time: "2:00", label: "Playbook Activated", color: GOLD_LIGHT, desc: "The matched playbook from your library activates. Stakeholders receive coordinated notifications. The system knows who owns what — no ambiguity." },
+              { time: "1:00", label: "Alert Generated", color: TEAL_LIGHT, desc: "An alert fires with strategic context: what happened, why it matters for your org, affected domains, and the recommended prepared response to activate." },
+              { time: "2:00", label: "Prepared response Activated", color: GOLD_LIGHT, desc: "The matched prepared response from your library activates. Stakeholders receive coordinated notifications. The system knows who owns what — no ambiguity." },
               { time: "5:00", label: "Tasks Assigned", color: TEAL_LIGHT, desc: "Every task has a named owner, a deadline, and a clear decision-rights framework. All workstreams start simultaneously, not sequentially." },
               { time: "12:00", label: "Full Coordinated Execution", color: GOLD_LIGHT, desc: "Cross-functional teams executing in parallel. Real-time progress tracked. Every action logged. The organization is running — not preparing to run." }
             ].map((step, i) => (
@@ -471,8 +471,8 @@ export default function HowItWorks() {
               {
                 icon: BookOpen,
                 color: NAVY,
-                title: "Playbook Performance Fingerprints",
-                desc: "For every playbook with 3+ activations: activation count, average execution time, target met rate, and recent outcome notes. Know which playbooks perform and which need refinement."
+                title: "Prepared response Performance Fingerprints",
+                desc: "For every prepared response with 3+ activations: activation count, average execution time, target met rate, and recent outcome notes. Know which prepared responses perform and which need refinement."
               }
             ].map((card, i) => (
               <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
@@ -488,22 +488,22 @@ export default function HowItWorks() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Institutional Memory</div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Playbook</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Prepared response</div>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
-                After every playbook closes, the ADVANCE phase captures what worked, what didn't, and what the next team should know. Those lessons feed directly back into your playbook library — so knowledge stays with the organization, not the individual.
+                After every prepared response closes, the ADVANCE phase captures what worked, what didn't, and what the next team should know. Those lessons feed directly back into your prepared response library — so knowledge stays with the organization, not the individual.
               </p>
               <CheckItem text="System-generated executive outcome summary" />
-              <CheckItem text="Lessons tagged and stored in playbook history" />
+              <CheckItem text="Lessons tagged and stored in prepared response history" />
               <CheckItem text="Refinement suggestions surfaced automatically" />
             </div>
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Simulation Studio</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Test Scenarios Before They Happen</div>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
-                Describe any hypothetical scenario and the Simulation Studio runs a dry-run against your actual playbook library. It maps your coverage readiness, shows which playbooks would activate, and identifies gaps — before you commit anything.
+                Describe any hypothetical scenario and the Simulation Studio runs a dry-run against your actual prepared response library. It maps your coverage readiness, shows which prepared responses would activate, and identifies gaps — before you commit anything.
               </p>
               <CheckItem text="Coverage readiness mapped by domain" />
-              <CheckItem text="Matched playbooks from your library" />
+              <CheckItem text="Matched prepared responses from your library" />
               <CheckItem text="Coverage gaps identified by domain" />
             </div>
           </div>
@@ -538,8 +538,8 @@ export default function HowItWorks() {
                 label: "IDENTIFY WORKSPACE",
                 icon: BookOpen,
                 color: TEAL,
-                title: "Smart Playbook Finder",
-                body: "Searching 170 playbooks shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
+                title: "Smart Prepared response Finder",
+                body: "Searching 170 prepared responses shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
                 items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 170"]
               },
               {
@@ -547,7 +547,7 @@ export default function HowItWorks() {
                 icon: Eye,
                 color: "#6B7280",
                 title: "Your Actions, Your Role",
-                body: "When a playbook activates, most executives don't need to see every task across the entire execution. The platform schema-gates the action surface to your role — a VP of Finance sees finance tasks, a CISO sees security tasks, an HR lead sees people tasks. Not filtered display — actually gated at the data layer. Each executive works their lane without the noise of the full 40-task execution.",
+                body: "When a prepared response activates, most executives don't need to see every task across the entire execution. The platform schema-gates the action surface to your role — a VP of Finance sees finance tasks, a CISO sees security tasks, an HR lead sees people tasks. Not filtered display — actually gated at the data layer. Each executive works their lane without the noise of the full 40-task execution.",
                 items: ["Role-scoped at the data layer, not the display layer", "Admins and executives retain full visibility", "Reduces decision fatigue during high-stakes execution"]
               },
               {
@@ -555,7 +555,7 @@ export default function HowItWorks() {
                 icon: Compass,
                 color: GOLD,
                 title: "Live Execution Compass",
-                body: "Execution drift is a well-documented failure mode: teams start fast, then forget the original intent as tasks multiply. The platform re-injects playbook context at every checkpoint — your strategic objective, the current phase name and what it means right now, any blocked tasks requiring immediate resolution, and elapsed time vs. target. The mission stays visible throughout execution, not just at the moment of activation.",
+                body: "Execution drift is a well-documented failure mode: teams start fast, then forget the original intent as tasks multiply. The platform re-injects prepared response context at every checkpoint — your strategic objective, the current phase name and what it means right now, any blocked tasks requiring immediate resolution, and elapsed time vs. target. The mission stays visible throughout execution, not just at the moment of activation.",
                 items: ["Objective and phase guidance shown at every checkpoint", "Blocked task alerts appear inline before drift compounds", "Auto-refreshes every 30 seconds during live execution"]
               }
             ].map((card, i) => (
@@ -599,25 +599,25 @@ export default function HowItWorks() {
               {
                 num: "01",
                 color: TEAL,
-                title: "Playbook Layer",
-                what: "The 170 library playbooks are starting points. Customize any of them — or build new ones from scratch.",
+                title: "Prepared response Layer",
+                what: "The 170 library prepared responses are starting points. Customize any of them — or build new ones from scratch.",
                 controls: [
                   "Stakeholder names and notification SLAs",
                   "Task sequences and time windows",
                   "Decision trees and escalation logic",
                   "Pre-approved budget thresholds",
                   "Communication templates with merge fields",
-                  "Net-new playbooks via Strategic Recorder"
+                  "Net-new prepared responses via Strategic Recorder"
                 ]
               },
               {
                 num: "02",
                 color: GOLD,
                 title: "Signal & Trigger Layer",
-                what: "Define exactly what activates your playbooks — and how sensitive each trigger is.",
+                what: "Define exactly what activates your prepared responses — and how sensitive each trigger is.",
                 controls: [
                   "20 signal categories to choose from",
-                  "Custom activation conditions per playbook",
+                  "Custom activation conditions per prepared response",
                   "AND / OR / Threshold multi-condition logic",
                   "Spike / Drop / Threshold operators",
                   "Auto-activation (no human required)",
@@ -633,7 +633,7 @@ export default function HowItWorks() {
                   "Business units and department mapping",
                   "Role-based access control (RBAC)",
                   "Domain ownership and executive sponsors",
-                  "Strategic objectives linked to playbooks",
+                  "Strategic objectives linked to prepared responses",
                   "Industry-specific signal defaults",
                   "Execution window and budget limits"
                 ]

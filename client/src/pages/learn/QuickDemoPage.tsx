@@ -312,7 +312,7 @@ export default function QuickDemoPage() {
     }, 200);
 
     const steps = [
-      { id: 1, title: 'Playbook Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'execution-os', delay: 0 },
+      { id: 1, title: 'Prepared response Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'execution-os', delay: 0 },
       { id: 2, title: 'Stakeholders Notified', description: `${selectedScenario?.stakeholders} team members alerted`, icon: Users, integration: 'slack', delay: 1500 },
       { id: 3, title: 'Tasks Auto-Created', description: '12 tasks created with owners assigned', icon: CheckCircle2, integration: 'jira', delay: 3000 },
       { id: 4, title: 'War Room Launched', description: 'Collaboration channel created', icon: MessageSquare, integration: 'teams', delay: 4500 },
@@ -637,15 +637,15 @@ export default function QuickDemoPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <BookOpen className="h-5 w-5 text-[#C9A84C]" />
-                        IDENTIFY: Playbook Ready
+                        IDENTIFY: Prepared response Ready
                       </CardTitle>
                       <CardDescription>
-                        Your {selectedScenario.playbook} playbook was already configured
+                        Your {selectedScenario.playbook} prepared response was already configured
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="p-4 bg-[#0A0F2E] dark:bg-[#C9A84C]/10 border border-[#C9A84C] dark:border-[#C9A84C]/30">
-                        <h4 className="font-medium mb-3">Playbook: {selectedScenario.playbook}</h4>
+                        <h4 className="font-medium mb-3">Prepared response: {selectedScenario.playbook}</h4>
                         <div className="grid grid-cols-2 gap-3 text-sm">
                           <div className="flex items-center gap-2 text-muted-foreground">
                             <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
@@ -683,7 +683,7 @@ export default function QuickDemoPage() {
                       </div>
 
                       <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white" onClick={completeIdentify}>
-                        Playbook Ready - Continue to Detection
+                        Prepared response Ready - Continue to Detection
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </CardContent>
@@ -698,7 +698,7 @@ export default function QuickDemoPage() {
                         DETECT: Signal Received
                       </CardTitle>
                       <CardDescription>
-                        AI identified a trigger matching your playbook
+                        AI identified a trigger matching your prepared response
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -733,7 +733,7 @@ export default function QuickDemoPage() {
 
                       <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white py-6 text-lg font-semibold" onClick={completeDetect}>
                         <Play className="mr-2 h-5 w-5" />
-                        Activate Playbook
+                        Activate Prepared response
                       </Button>
                     </CardContent>
                   </Card>
@@ -810,7 +810,7 @@ export default function QuickDemoPage() {
                       {!learnings ? (
                         <div className="space-y-4">
                           <p className="text-muted-foreground">
-                            Readiness OS captures what worked and suggests playbook improvements for next time.
+                            Readiness OS captures what worked and suggests prepared response improvements for next time.
                           </p>
                           <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" onClick={completeAdvance}>
                             <Sparkles className="mr-2 h-4 w-4" />
@@ -906,10 +906,10 @@ export default function QuickDemoPage() {
                     <div className="space-y-3 text-sm">
                       {currentPhase === 'identify' && (
                         <>
-                          <p className="text-muted-foreground">Pre-configured playbooks mean zero setup time when a crisis hits. Tasks, stakeholders, documents, and budgets are already defined.</p>
+                          <p className="text-muted-foreground">Pre-configured prepared responses mean zero setup time when a crisis hits. Tasks, stakeholders, documents, and budgets are already defined.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Key Differentiator</p>
-                            <p className="text-xs text-muted-foreground">170 playbooks across 9 strategic domains. Customize any or build your own.</p>
+                            <p className="text-xs text-muted-foreground">170 prepared responses across 9 strategic domains. Customize any or build your own.</p>
                           </div>
                         </>
                       )}
@@ -945,7 +945,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">The full IDEA Framework loop is complete. This same process works across all 9 strategic domains.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Ready for Your Organization</p>
-                            <p className="text-xs text-muted-foreground">Start a pilot to see Readiness OS with your real playbooks and integrations.</p>
+                            <p className="text-xs text-muted-foreground">Start a pilot to see Readiness OS with your real prepared responses and integrations.</p>
                           </div>
                         </>
                       )}

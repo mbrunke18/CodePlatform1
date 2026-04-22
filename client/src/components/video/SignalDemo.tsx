@@ -114,7 +114,7 @@ export function SignalDemo({ progress }: SceneProps) {
                     <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
                   </motion.div>
                   <p className="text-red-400 font-bold text-xl mb-2">TRIGGER DETECTED</p>
-                  <p className="text-gray-900 text-sm mb-4">Competitor acquisition matches playbook criteria</p>
+                  <p className="text-gray-900 text-sm mb-4">Competitor acquisition matches prepared response criteria</p>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -122,7 +122,7 @@ export function SignalDemo({ progress }: SceneProps) {
                     className="flex items-center justify-center gap-2 text-[#D4AF37]"
                   >
                     <Zap className="w-5 h-5" />
-                    <span className="font-bold">Playbook Ready to Activate</span>
+                    <span className="font-bold">Prepared response Ready to Activate</span>
                   </motion.div>
                 </motion.div>
               )}

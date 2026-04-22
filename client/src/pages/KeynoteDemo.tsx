@@ -45,7 +45,7 @@ const STAGES = [
   { id: 'introducing', label: 'Readiness OS' },
   { id: 'signal', label: 'Signal Detection' },
   { id: 'analysis', label: 'Strategic Analysis' },
-  { id: 'playbook', label: 'Playbook Match' },
+  { id: 'prepared response', label: 'Prepared response Match' },
   { id: 'decision', label: 'Executive Decision' },
   { id: 'activation', label: '12-Min Activation' },
   { id: 'idea', label: 'IDEA Framework' },
@@ -77,7 +77,7 @@ function ActivationTimeline() {
   const [step, setStep] = useState(0);
   const steps = [
     { time: '0:00', label: 'Signal Detected', detail: 'AI identifies competitive threat', icon: Radio, color: 'text-[#0A0F2E]' },
-    { time: '0:30', label: 'Playbook Matched', detail: 'Competitive Response #47 selected', icon: BookOpen, color: 'text-[#C9A84C]' },
+    { time: '0:30', label: 'Prepared response Matched', detail: 'Competitive Response #47 selected', icon: BookOpen, color: 'text-[#C9A84C]' },
     { time: '1:00', label: 'Stakeholders Notified', detail: '28 executives via Slack, Email, Teams', icon: Users, color: 'text-[#0A0F2E]' },
     { time: '2:00', label: 'War Room Created', detail: '#war-room-competitive-2024 live', icon: Shield, color: 'text-[#0A0F2E]' },
     { time: '3:30', label: 'Tasks Auto-Created', detail: '24 tasks across Jira, ServiceNow', icon: FileText, color: 'text-[#0A0F2E]' },
@@ -325,7 +325,7 @@ export default function KeynoteDemo() {
           className="flex gap-8 relative z-10"
         >
           {[
-            { value: '170', label: 'Strategic Playbooks', icon: BookOpen },
+            { value: '170', label: 'Strategic Prepared responses', icon: BookOpen },
             { value: '9', label: 'Strategic Domains', icon: Globe },
             { value: '<12min', label: 'Signal to Action', icon: Timer },
             { value: '30+', label: 'Enterprise Integrations', icon: Workflow },
@@ -512,10 +512,10 @@ export default function KeynoteDemo() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 px-4 py-2 text-sm font-medium mb-6">
             <BookOpen className="h-4 w-4" />
-            PLAYBOOK MATCHED
+            PREPARED RESPONSE MATCHED
           </div>
-          <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The Right Playbook, Instantly</h2>
-          <p className="text-xl text-[#0A0F2E]">AI selects from 170 pre-built playbooks across 9 strategic domains</p>
+          <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The Right Prepared response, Instantly</h2>
+          <p className="text-xl text-[#0A0F2E]">AI selects from 170 pre-built prepared responses across 9 strategic domains</p>
         </motion.div>
 
         <motion.div
@@ -527,13 +527,13 @@ export default function KeynoteDemo() {
           <div className="bg-white border border-[#E8E4DC] overflow-hidden">
             <div className="bg-[#2B8A6E] border-b border-white/10 px-8 py-5 flex items-center justify-between">
               <div>
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">Recommended Playbook</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">Recommended Prepared response</span>
                 <h3 className="text-2xl font-bold text-white mt-1" style={CG}>
                   {signal?.aiAnalysis?.recommendedPlaybook || 'Competitive Response - Product Counter-Strategy'}
                 </h3>
               </div>
               <div className="text-right">
-                <span className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">Playbook</span>
+                <span className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em]">Prepared response</span>
                 <div className="text-3xl font-bold text-white" style={CG}>#{signal?.aiAnalysis?.playbookNumber || '47'}</div>
               </div>
             </div>
@@ -649,7 +649,7 @@ export default function KeynoteDemo() {
 
             <div className="bg-[#F8F7F4] border border-[#E8E4DC] p-6 mb-8 italic">
               <p className="text-lg text-[#0A0F2E] leading-relaxed">
-                "Activate <span className="text-[#0A0F2E] font-bold not-italic underline decoration-[#C9A84C] decoration-2">Competitive Response Playbook #47</span> immediately.
+                "Activate <span className="text-[#0A0F2E] font-bold not-italic underline decoration-[#C9A84C] decoration-2">Competitive Response Prepared response #47</span> immediately.
                 Delay beyond 48 hours increases revenue exposure from $12.5M to $28.3M.
                 Pre-approved budget of $250K covers initial counter-strategy. 28 stakeholders
                 identified and ready for notification."
@@ -671,7 +671,7 @@ export default function KeynoteDemo() {
               >
                 <div className="flex items-center gap-3 bg-[#2B8A6E] text-white px-6 py-3 font-bold text-lg">
                   <CheckCircle2 className="h-6 w-6" />
-                  APPROVED — Activate Playbook
+                  APPROVED — Activate Prepared response
                 </div>
               </motion.div>
             </div>
@@ -684,7 +684,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 2, duration: 0.8 }}
           className="text-lg text-[#6B7280] mt-8 max-w-2xl text-center font-medium"
         >
-          Every playbook activation requires human approval. AI accelerates the process — humans make the final call.
+          Every prepared response activation requires human approval. AI accelerates the process — humans make the final call.
         </motion.p>
       </div>
     ),
@@ -781,10 +781,10 @@ export default function KeynoteDemo() {
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full relative z-10">
           {[
-            { phase: 'IDENTIFY', subtitle: 'Playbook™', icon: BookOpen, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['170 strategic playbooks', '3 domains: Growth & Positioning, Risk & Resilience, Transformation', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
+            { phase: 'IDENTIFY', subtitle: 'Prepared response™', icon: BookOpen, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['170 strategic prepared responses', '3 domains: Growth & Positioning, Risk & Resilience, Transformation', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
             { phase: 'DETECT', subtitle: 'Signal™', icon: Radio, color: 'bg-[#0A0F2E]', border: 'border-[#0A0F2E]/20', items: ['Continuous signal monitoring', '248+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
             { phase: 'EXECUTE', subtitle: 'Compass™', icon: Zap, color: 'bg-[#C9A84C]', border: 'border-[#C9A84C]/20', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
-            { phase: 'ADVANCE', subtitle: 'Retrospect™', icon: TrendingUp, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['Institutional learning', 'Pattern-based outcome analysis', 'Playbook refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
+            { phase: 'ADVANCE', subtitle: 'Retrospect™', icon: TrendingUp, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['Institutional learning', 'Pattern-based outcome analysis', 'Prepared response refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
           ].map((phase, i) => (
             <motion.div
               key={i}
@@ -882,8 +882,8 @@ export default function KeynoteDemo() {
                 {[
                   { metric: 'Response Time', value: '< 2 minutes', detail: 'AI detects and alerts instantly' },
                   { metric: 'Stakeholder Alignment', value: '< 12 minutes', detail: '28+ stakeholders auto-coordinated' },
-                  { metric: 'Document Preparation', value: 'Instant', detail: 'Pre-staged from playbook templates' },
-                  { metric: 'Budget Approval', value: 'Pre-approved', detail: 'Built into playbook configuration' },
+                  { metric: 'Document Preparation', value: 'Instant', detail: 'Pre-staged from prepared response templates' },
+                  { metric: 'Budget Approval', value: 'Pre-approved', detail: 'Built into prepared response configuration' },
                   { metric: 'Full Execution', value: '< 12 minutes', detail: 'Signal to action, every time' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between bg-[#0A0F2E]/20 border border-white/10 p-4">

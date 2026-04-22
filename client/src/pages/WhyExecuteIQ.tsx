@@ -77,7 +77,7 @@ export default function WhyExecutionOS() {
         </div>
         <div style={{ padding: 32, borderRight: "1px solid #E8E4DC", textAlign: "center" }}>
           <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>170</div>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Pre-Built Playbooks</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6B7280", marginTop: 8 }}>Pre-Built Prepared responses</div>
         </div>
         <div style={{ padding: 32, textAlign: "center" }}>
           <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>12m</div>
@@ -190,12 +190,12 @@ export default function WhyExecutionOS() {
 
           <div className="border border-[#E8E4DC] bg-[#F8F7F4] p-12 mb-12">
             <p className="text-xl text-[#0A0F2E] leading-relaxed mb-12">
-              Readiness OS is the execution infrastructure layer: 170 playbooks with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
+              Readiness OS is the execution infrastructure layer: 170 prepared responses with governance, decision rights, and workflows pre-defined. Customizable to your organization. Build your own for unique situations. 12 minutes from trigger to execution.
             </p>
 
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { icon: BookOpen, val: "170", label: "Pre-built playbooks", color: "#0A0F2E" },
+                { icon: BookOpen, val: "170", label: "Pre-built prepared responses", color: "#0A0F2E" },
                 { icon: Shield, val: "Built-in", label: "Governance", color: "#2B8A6E" },
                 { icon: Target, val: "Custom", label: "Build your own", color: "#C9A84C" },
                 { icon: Timer, val: "12 min", label: "Trigger-to-Execution", color: "#0A0F2E" }
@@ -251,7 +251,7 @@ export default function WhyExecutionOS() {
               <h3 style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#DFC178", marginBottom: 24 }}>AI-Coordinated Execution</h3>
               <ul className="space-y-4">
                 {[
-                  "Agents detect signals and activate playbooks",
+                  "Agents detect signals and activate prepared responses",
                   "Pre-authorized decisions within thresholds",
                   "Cross-enterprise coordination in 12 minutes"
                 ].map(text => (

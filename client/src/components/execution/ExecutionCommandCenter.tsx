@@ -209,7 +209,7 @@ export function ExecutionCommandCenter({
               Ready for One-Click Activation
             </CardTitle>
             <CardDescription>
-              When triggered, Readiness OS will execute this playbook in under 12 minutes
+              When triggered, Readiness OS will execute this prepared response in under 12 minutes
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

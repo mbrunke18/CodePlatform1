@@ -28,7 +28,7 @@ export default function DemoRouter() {
       id: 'quick',
       title: 'Quick Demo',
       duration: '3 minutes',
-      description: 'See a playbook activate and tasks deploy in real-time. Perfect for a quick overview.',
+      description: 'See a prepared response activate and tasks deploy in real-time. Perfect for a quick overview.',
       icon: Zap,
       color: 'from-[#2B8A6E] to-[#C9A84C]',
       borderColor: 'border-[#2B8A6E]/30 hover:border-[#2B8A6E]',
@@ -42,7 +42,7 @@ export default function DemoRouter() {
       id: 'simulation',
       title: 'Full Simulation',
       duration: '12 minutes',
-      description: 'Step into the role of a Fortune 500 CSO. Experience signal detection, playbook activation, and coordinated response.',
+      description: 'Step into the role of a Fortune 500 CSO. Experience signal detection, prepared response activation, and coordinated response.',
       icon: Briefcase,
       color: 'from-[#0A0F2E] to-[#141B45]',
       borderColor: 'border-[#C9A84C]/30 hover:border-[#C9A84C]',
@@ -120,7 +120,7 @@ export default function DemoRouter() {
               <div className="flex-1">
                 <p className="text-[#0A0F2E] font-medium mb-1">NEW: Predictive Intelligence</p>
                 <p className="text-sm text-gray-800">
-                  Readiness OS forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which playbooks you'll need before you need them.
+                  Readiness OS forecasts trigger probabilities 90 days out. Run what-if scenarios. Know which prepared responses you'll need before you need them.
                 </p>
               </div>
             </div>
@@ -177,9 +177,9 @@ export default function DemoRouter() {
               variant="outline"
               onClick={() => setLocation('/playbook-library')}
               className="text-[#0A0F2E] border-[#E8E4DC] hover:bg-[#141B45] hover:text-white"
-              data-testid="button-explore-playbooks"
+              data-testid="button-explore-prepared responses"
             >
-              Browse 170 Playbooks →
+              Browse 170 Prepared responses →
             </Button>
           </div>
 

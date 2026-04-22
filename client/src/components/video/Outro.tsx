@@ -133,7 +133,7 @@ export function Outro({ progress }: SceneProps) {
           <div className="flex items-center justify-center gap-6 text-sm">
             <span className="text-[#D4AF37]">18-month head start</span>
             <span className="text-gray-600">•</span>
-            <span className="text-[#00A8A8]">170 playbooks</span>
+            <span className="text-[#00A8A8]">170 prepared responses</span>
             <span className="text-gray-600">•</span>
             <span className="text-gray-900">17 reports validate the gap</span>
           </div>

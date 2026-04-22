@@ -115,7 +115,7 @@ const SIGNAL_PLAYBOOK_MAP: Array<{ keywords: string[]; playbook: string; domain:
   { keywords: ['sentiment', 'brand', 'reputation', 'social', 'media'], playbook: 'Brand Crisis Response', domain: 'Brand & Reputation', urgency: 'MEDIUM — monitor & respond', domainParam: 'technology' },
   { keywords: ['activist investor', 'institutional', 'position', 'shareholder'], playbook: 'Activist Investor Defense', domain: 'Financial Strategy', urgency: 'CRITICAL — 48-hr window', domainParam: 'financial' },
   { keywords: ['recall', 'fda', 'product', 'safety'], playbook: 'Product Recall Management', domain: 'Operational Excellence', urgency: 'CRITICAL — FDA 48-hr requirement', domainParam: 'gtm' },
-  { keywords: ['integration', 'synergy', 'friction', 'm&a'], playbook: 'M&A Integration Playbook', domain: 'Market Opportunities', urgency: 'HIGH — 30-day milestone at risk', domainParam: 'ma' },
+  { keywords: ['integration', 'synergy', 'friction', 'm&a'], playbook: 'M&A Integration Prepared response', domain: 'Market Opportunities', urgency: 'HIGH — 30-day milestone at risk', domainParam: 'ma' },
   { keywords: ['esg', 'carbon', 'sustainability', 'climate'], playbook: 'ESG Crisis Response', domain: 'Regulatory & Compliance', urgency: 'MEDIUM — investor reporting deadline', domainParam: 'regulatory' },
   { keywords: ['geopolitical', 'trade', 'emea', 'sanctions'], playbook: 'Geopolitical Risk Protocol', domain: 'Market Opportunities', urgency: 'HIGH — cross-border exposure', domainParam: 'ma' },
   { keywords: ['fraud', 'financial', 'anomaly', 'disbursement'], playbook: 'Financial Fraud Detection Response', domain: 'Financial Strategy', urgency: 'CRITICAL — forensic audit triggered', domainParam: 'financial' },
@@ -462,7 +462,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div style={{ fontSize: 12, color: "#6B7280", marginTop: 4 }}>/ 100 — AI-assessed exposure</div>
               </div>
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E" }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>Recommended Playbooks</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>Recommended Prepared Responses</div>
                 <div className="space-y-2">
                   {(compoundAnalysisResult.recommendedPlaybooks || compoundAnalysisResult.playbooks || []).slice(0, 3).map((p: string, i: number) => (
                     <div key={i} style={{ fontSize: 12, color: NAVY, fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
@@ -474,7 +474,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}` }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 8 }}>Executive Assessment</div>
-                <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{compoundAnalysisResult.executiveSummary || compoundAnalysisResult.analysis || 'Analysis complete. Review recommended playbooks and initiate response protocol.'}</p>
+                <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{compoundAnalysisResult.executiveSummary || compoundAnalysisResult.analysis || 'Analysis complete. Review recommended prepared responses and initiate response protocol.'}</p>
               </div>
             </div>
           ) : (
@@ -767,9 +767,9 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 10, marginTop: 2 }}>{ideaRecommendation.signal.source} · {ideaRecommendation.signal.time}</p>
                       </div>
 
-                      {/* Recommended playbook */}
+                      {/* Recommended prepared response */}
                       <div>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>EXECUTE — Recommended Playbook</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>EXECUTE — Recommended Prepared response</div>
                         <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, lineHeight: 1.2, marginBottom: 4 }}>{ideaRecommendation.playbook}</h3>
                         <div className="flex items-center gap-2">
                           <span style={{ fontSize: 10, fontWeight: 700, color: "#C9A84C", background: "rgba(201,168,76,0.15)", padding: "2px 8px", border: "1px solid rgba(201,168,76,0.3)" }}>{ideaRecommendation.domain}</span>
@@ -779,15 +779,15 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
                       {/* Action buttons */}
                       <div className="space-y-2">
-                        <Link href={`/playbook-library?domain=${ideaRecommendation.domainParam}`}>
+                        <Link href={`/prepared response-library?domain=${ideaRecommendation.domainParam}`}>
                           <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] text-xs uppercase tracking-wider">
                             <Zap className="h-3.5 w-3.5 mr-1.5" />
-                            Activate Playbook Now
+                            Activate Prepared response Now
                           </Button>
                         </Link>
                         <Link href="/playbook-library">
                           <Button variant="outline" className="w-full border-white/20 text-white/60 hover:text-white hover:border-white/40 text-xs uppercase tracking-wider bg-transparent">
-                            Browse All 170 Playbooks
+                            Browse All 170 Prepared responses
                           </Button>
                         </Link>
                       </div>
@@ -847,7 +847,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       <Rocket className="w-4 h-4 text-white" />
                     </div>
                     <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Launch Response</h3>
-                    <p className="text-sm text-gray-600 mb-4">Execute a pre-configured playbook for active signals.</p>
+                    <p className="text-sm text-gray-600 mb-4">Execute a pre-configured prepared response for active signals.</p>
                     <Button 
                       variant="outline" 
                       className="w-full" 

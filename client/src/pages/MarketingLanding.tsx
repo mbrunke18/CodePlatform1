@@ -132,7 +132,7 @@ export default function MarketingLanding() {
             <div className="flex flex-wrap items-center justify-center gap-10 text-[10px] uppercase tracking-widest font-bold text-[#C9A84C]">
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
-                <span>170 Strategic Playbooks</span>
+                <span>170 Strategic Prepared responses</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="h-5 w-5 text-[#C9A84C]" />
@@ -159,9 +159,9 @@ export default function MarketingLanding() {
               <div className="grid md:grid-cols-4 gap-6 text-left">
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
                   <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Identify</Badge>
-                  <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Playbook™" /></div>
+                  <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Prepared response™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
-                    170 pre-built playbooks across 9 strategic domains. Build your depth chart before events hit.
+                    170 pre-built prepared responses across 9 strategic domains. Build your depth chart before events hit.
                   </p>
                 </div>
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#2B8A6E] transition-colors">
@@ -229,18 +229,18 @@ export default function MarketingLanding() {
 
           {/* Feature Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* 1. Create Playbook - PROMINENT */}
-            <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-playbook">
+            {/* 1. Create Prepared response - PROMINENT */}
+            <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-prepared response">
               <CardContent className="p-10">
                 <div className="mb-8">
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Start Here</div>
                   <h3 className="font-serif text-2xl text-[#0A0F2E] mb-3">
-                    Create Strategic Playbook
+                    Create Strategic Prepared response
                   </h3>
                   <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 8 }} />
                 </div>
                 <p className="text-[#6B7280] mb-8 leading-relaxed">
-                  Build complete decision operations playbook in 5 phases: Context, Stakeholders, Triggers, Metrics, and Review.
+                  Build complete decision operations prepared response in 5 phases: Context, Stakeholders, Triggers, Metrics, and Review.
                 </p>
                 <CreateScenarioButton organizationId="default-org" className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none h-14 uppercase tracking-widest text-xs font-bold" />
               </CardContent>
@@ -272,15 +272,15 @@ export default function MarketingLanding() {
               </CardContent>
             </Card>
 
-            {/* 4. Playbook Library */}
+            {/* 4. Prepared response Library */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
-                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Playbook Library</h3>
+                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Prepared response Library</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
-                  170 strategic playbooks across 9 operational domains covering growth, defense, transformation, and AI governance.
+                  170 strategic prepared responses across 9 operational domains covering growth, defense, transformation, and AI governance.
                 </p>
                 <Button onClick={() => setLocation('/playbook-library')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-scenarios">
-                  Browse Playbooks <ChevronRight className="ml-2 h-4 w-4" />
+                  Browse Prepared responses <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>

@@ -83,7 +83,7 @@ const roleConfigs: RoleConfig[] = [
     keyMetric: '$12M market share defended',
     metricBefore: '21 days',
     metricAfter: '3 days',
-    playbook: 'Competitive Response Playbook',
+    playbook: 'Competitive Response Prepared response',
     category: 'OFFENSE',
   },
   {
@@ -103,7 +103,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Human Resources Officer',
     icon: Users,
     hookQuestion: "What's the #1 reason your top performers give in exit interviews?",
-    situationLine: 'Key talent departing. Culture score dropping. Nobody has a retention playbook staged.',
+    situationLine: 'Key talent departing. Culture score dropping. Nobody has a retention prepared response staged.',
     keyMetric: '85% engagement · $2.1M saved',
     metricBefore: '6 weeks',
     metricAfter: '12 min',
@@ -131,7 +131,7 @@ const roleConfigs: RoleConfig[] = [
     keyMetric: '70% → 95% strategy delivery',
     metricBefore: '70% delivery',
     metricAfter: '95% delivery',
-    playbook: 'Strategic Alignment Playbook',
+    playbook: 'Strategic Alignment Prepared response',
     category: 'OFFENSE',
   },
   {
@@ -255,7 +255,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             </div>
           </div>
 
-          {/* Playbook label */}
+          {/* Prepared response label */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
             <BookOpen size={10} style={{ color: GOLD, flexShrink: 0 }} />
             <span style={{ fontSize: 10, fontWeight: 600, color: '#9CA3AF' }}>{config.playbook}</span>
@@ -320,10 +320,10 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
             <h1 style={{ ...CG, fontSize: 44, fontWeight: 700, color: '#FFFFFF', marginBottom: 14, lineHeight: 1.15 }}>
-              Your Role. Your Trigger. Your Playbook.
+              Your Role. Your Trigger. Your Prepared response.
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', maxWidth: 580, margin: '0 auto 28px', lineHeight: 1.6 }}>
-              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your playbook before the trigger fires.
+              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your prepared response before the trigger fires.
             </p>
             {/* The core contrast */}
             <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '14px 28px' }}>
@@ -354,7 +354,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, position: 'relative' }}>
               {[
                 { icon: Layers, label: 'Your Scenario', sub: 'Real situation. Your role. Real stakes.', color: NAVY, step: 1 },
-                { icon: BookOpen, label: 'Build Playbook', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
+                { icon: BookOpen, label: 'Build Prepared response', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
                 { icon: Radio, label: 'Trigger Fires', sub: 'Signal detected. OS pre-staged & ready.', color: GOLD, step: 3 },
                 { icon: Brain, label: 'Signal Analysis', sub: '4 system insights surface in real time.', color: TEAL, step: 4 },
                 { icon: Zap, label: 'Live Execution', sub: 'Watch 8 tasks coordinate in 12 minutes.', color: '#DC2626', step: 5 },

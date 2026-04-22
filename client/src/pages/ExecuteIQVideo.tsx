@@ -23,7 +23,7 @@ const SCENES = [
   { id: "idea", component: IDEAFramework, duration: 6000, label: "IDEA" },
   { id: "domains", component: StrategicDomains, duration: 5000, label: "Domains" },
   { id: "signals", component: SignalDemo, duration: 5000, label: "Signals" },
-  { id: "playbook", component: PlaybookDemo, duration: 5000, label: "Playbooks" },
+  { id: "prepared response", component: PlaybookDemo, duration: 5000, label: "Prepared responses" },
   { id: "activation", component: ActivationDemo, duration: 5000, label: "Activation" },
   { id: "integrations", component: IntegrationsDemo, duration: 5000, label: "Integrations" },
   { id: "command", component: CommandCenterDemo, duration: 6000, label: "Command" },

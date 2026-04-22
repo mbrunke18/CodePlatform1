@@ -231,10 +231,10 @@ export default function ExecutionHistory() {
                   <div style={{ textAlign: "center", padding: "60px 0", color: MUTED }}>
                     <Target className="h-8 w-8 mx-auto mb-3" style={{ color: GOLD }} />
                     <p style={{ fontWeight: 600, fontSize: 15 }}>No activations recorded yet</p>
-                    <p style={{ fontSize: 13, marginTop: 4 }}>Activate your first playbook to start tracking execution history</p>
-                    <Link href="/identify/playbooks">
+                    <p style={{ fontSize: 13, marginTop: 4 }}>Activate your first prepared response to start tracking execution history</p>
+                    <Link href="/identify/prepared responses">
                       <button style={{ marginTop: 20, background: NAVY, color: "#fff", border: "none", borderRadius: 0, padding: "10px 24px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
-                        Browse Playbooks
+                        Browse Prepared responses
                       </button>
                     </Link>
                   </div>
@@ -242,7 +242,7 @@ export default function ExecutionHistory() {
                   <div>
                     {/* Table header */}
                     <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 120px 120px 100px 40px", gap: 0, padding: "10px 24px", background: "#F9FAFB", borderBottom: `1px solid ${BORDER}` }}>
-                      {["Playbook", "Date", "Response Time", "Score", "Target", ""].map((h) => (
+                      {["Prepared response", "Date", "Response Time", "Score", "Target", ""].map((h) => (
                         <div key={h} style={{ fontSize: 10, fontWeight: 700, color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase" }}>{h}</div>
                       ))}
                     </div>

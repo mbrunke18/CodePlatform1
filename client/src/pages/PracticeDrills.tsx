@@ -51,7 +51,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
   const organizationId = organizations[0]?.id;
 
-  // Fetch playbooks for selection
+  // Fetch prepared responses for selection
   const { data: libraryData } = useQuery<any>({
     queryKey: ['/api/playbook-library'],
   });
@@ -329,9 +329,9 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="playbook" className="font-bold text-[#0A0F2E]">Select Playbook</Label>
+                  <Label htmlFor="prepared response" className="font-bold text-[#0A0F2E]">Select Prepared response</Label>
                   <Select value={selectedPlaybookId} onValueChange={setSelectedPlaybookId}>
-                    <SelectTrigger id="playbook" className="border-[#E8E4DC]" data-testid="select-playbook">
+                    <SelectTrigger id="prepared response" className="border-[#E8E4DC]" data-testid="select-prepared response">
                       <SelectValue placeholder="Choose a playbook..." />
                     </SelectTrigger>
                     <SelectContent>
@@ -445,7 +445,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                       <div className="flex items-start justify-between">
                         <div>
                           <CardTitle className="text-xl" style={CG} data-testid={`text-drill-title-${drill.id}`}>
-                            {playbook?.title || 'Unknown Playbook'}
+                            {playbook?.title || 'Unknown Prepared response'}
                           </CardTitle>
                           <CardDescription className="mt-1">
                             <div className="flex items-center gap-2 text-sm font-medium">
@@ -502,7 +502,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-xl" style={CG}>
                           <Activity className="h-5 w-5 text-[#2B8A6E] animate-pulse" />
-                          {playbook?.title || 'Unknown Playbook'} - LIVE SIMULATION
+                          {playbook?.title || 'Unknown Prepared response'} - LIVE SIMULATION
                         </CardTitle>
                         <CardDescription className="font-medium">Strategic coordination in progress</CardDescription>
                       </CardHeader>
@@ -561,7 +561,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                       <div className="flex items-start justify-between">
                         <div>
                           <CardTitle className="text-xl" style={CG}>
-                            {playbook?.title || 'Unknown Playbook'}
+                            {playbook?.title || 'Unknown Prepared response'}
                           </CardTitle>
                           <CardDescription className="mt-1 font-medium">
                             Completed: {drill.completedAt ? new Date(drill.completedAt).toLocaleDateString() : 'N/A'}

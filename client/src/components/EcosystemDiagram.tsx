@@ -254,7 +254,7 @@ export default function EcosystemDiagram({
       {[
         { label: "IDENTIFY", sub: "Triggers · Signals",   color: GOLD, x: eosX + 48 },
         { label: "DETECT",   sub: "Signal Radar · 248+ pts",  color: TEAL, x: eosX + 210 },
-        { label: "EXECUTE",  sub: "Playbooks · War Room", color: TEAL, x: eosX + 372 },
+        { label: "EXECUTE",  sub: "Prepared responses · War Room", color: TEAL, x: eosX + 372 },
         { label: "ADVANCE",  sub: "ROI · Analytics",      color: GOLD, x: eosX + 534 },
       ].map((phase) => (
         <g key={phase.label}>

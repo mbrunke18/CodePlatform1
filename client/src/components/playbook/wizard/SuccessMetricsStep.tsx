@@ -164,7 +164,7 @@ export default function SuccessMetricsStep({ data, onChange }: SuccessMetricsSte
         <h4 className="font-semibold text-sm mb-2">Continuous Learning Metrics</h4>
         <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
           <li>Post-execution performance review completion rate</li>
-          <li>Playbook modification adoption rate</li>
+          <li>Prepared response modification adoption rate</li>
           <li>Average time from execution to lessons learned capture</li>
           <li>Knowledge transfer effectiveness (measured via subsequent activations)</li>
         </ul>

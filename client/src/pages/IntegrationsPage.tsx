@@ -184,7 +184,7 @@ export default function IntegrationsPage() {
                 Readiness OS <em style={{ fontStyle: "italic", color: "#DFC178" }}>Orchestration</em>
               </h1>
               <p className="text-white/60 text-xl leading-relaxed max-w-2xl">
-                Readiness OS doesn't replace your workflow tools — it coordinates them. When a playbook 
+                Readiness OS doesn't replace your workflow tools — it coordinates them. When a prepared response 
                 activates, Readiness OS tells each system exactly what to do.
               </p>
             </div>
@@ -197,7 +197,7 @@ export default function IntegrationsPage() {
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
               <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 20 }} />
               <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E] mb-3">Readiness OS Orchestrates</h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">Strategic playbooks trigger coordinated actions across your entire enterprise stack.</p>
+              <p className="text-sm text-[#6B7280] leading-relaxed">Strategic prepared responses trigger coordinated actions across your entire enterprise stack.</p>
             </Card>
             <Card className="p-8 rounded-none border-[#E8E4DC] bg-white hover:border-[#C9A84C] transition-colors">
               <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 20 }} />

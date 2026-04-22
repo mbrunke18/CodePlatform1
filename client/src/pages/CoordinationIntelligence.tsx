@@ -130,7 +130,7 @@ export default function CoordinationIntelligence() {
             </p>
             {isDemo && (
               <Badge style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, border: `1px solid rgba(201,168,76,0.3)`, fontSize: 10, letterSpacing: '0.2em', padding: '4px 12px' }}>
-                DEMO DATA — Activate playbooks to see your organization's real coordination record
+                DEMO DATA — Activate prepared responses to see your organization's real coordination record
               </Badge>
             )}
           </div>
@@ -453,7 +453,7 @@ export default function CoordinationIntelligence() {
                 {[
                   { icon: Target, label: 'Pre-staged coordination replaces real-time alignment', desc: 'Your organization knows exactly who owns what before the trigger fires. No committee. No discovery. Execution begins in minutes.' },
                   { icon: Users, label: 'Human judgment is preserved — coordination overhead is eliminated', desc: 'The AI coordinates around your executives. The right people get the right information at the right time. Decisions happen faster because preparation happened earlier.' },
-                  { icon: TrendingUp, label: 'Every activation improves the playbook', desc: 'Coordination times, bottlenecks, and outcomes are captured after every event. The platform learns. Your organization gets faster.' },
+                  { icon: TrendingUp, label: 'Every activation improves the prepared response', desc: 'Coordination times, bottlenecks, and outcomes are captured after every event. The platform learns. Your organization gets faster.' },
                 ].map(({ icon: Icon, label, desc }) => (
                   <div key={label}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>

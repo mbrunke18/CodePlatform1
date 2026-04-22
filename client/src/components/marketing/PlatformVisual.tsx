@@ -54,13 +54,13 @@ export default function PlatformVisual() {
   const beforeItems = [
     { text: "Who owns this?", icon: AlertTriangle },
     { text: "Let's schedule a meeting", icon: Calendar },
-    { text: "Where's the playbook?", icon: FileText },
+    { text: "Where's the prepared response?", icon: FileText },
     { text: "Who needs to know?", icon: Users },
     { text: "What's the status?", icon: Clock },
   ];
 
   const afterItems = [
-    { text: "Playbook activated", icon: CheckCircle },
+    { text: "Prepared response activated", icon: CheckCircle },
     { text: "Roles assigned", icon: Users },
     { text: "Teams notified", icon: MessageSquare },
     { text: "Tasks created", icon: Layers },
@@ -81,11 +81,11 @@ export default function PlatformVisual() {
     {
       letter: "D",
       name: "DETECT",
-      subtitle: "AI Playbook Matching",
+      subtitle: "AI Prepared response Matching",
       color: "from-[#0A0F2E] to-[#3BAF8A]",
       borderColor: "border-[#2B8A6E]",
       bgColor: "bg-[#0A0F2E]",
-      items: ["170 playbooks scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
+      items: ["170 prepared responses scanned", "Best fit selected", "Customized to context", "Dependencies mapped"],
     },
     {
       letter: "E",
@@ -103,7 +103,7 @@ export default function PlatformVisual() {
       color: "from-amber-500 to-orange-600",
       borderColor: "border-amber-500",
       bgColor: "bg-amber-500",
-      items: ["Outcomes tracked", "Patterns learned", "Playbooks optimized", "Benchmarks updated"],
+      items: ["Outcomes tracked", "Patterns learned", "Prepared responses optimized", "Benchmarks updated"],
     },
   ];
 
@@ -129,18 +129,18 @@ export default function PlatformVisual() {
 
   const valueMetrics = [
     { value: "72→12", label: "min response", suffix: "" },
-    { value: "170", label: "playbooks ready", suffix: "" },
+    { value: "170", label: "prepared responses ready", suffix: "" },
     { value: "100%", label: "role clarity", suffix: "" },
     { value: "Real-time", label: "AI visibility", suffix: "" },
   ];
 
   const customerJourney = [
     { step: 1, title: "Connect", desc: "Link your systems" },
-    { step: 2, title: "Configure", desc: "Customize playbooks" },
+    { step: 2, title: "Configure", desc: "Customize prepared responses" },
     { step: 3, title: "Simulate", desc: "Test with chaos scenarios" },
     { step: 4, title: "Go Live", desc: "Activate monitoring" },
     { step: 5, title: "Respond", desc: "12-min execution" },
-    { step: 6, title: "Learn", desc: "AI optimizes playbooks" },
+    { step: 6, title: "Learn", desc: "AI optimizes prepared responses" },
   ];
 
   const domains = [
@@ -252,7 +252,7 @@ export default function PlatformVisual() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 bg-poise-gold/10 border border-poise-gold/30">
                 <BookOpen className="h-4 w-4 text-poise-gold" />
-                <span className="text-sm font-bold text-poise-gold">170 PLAYBOOKS</span>
+                <span className="text-sm font-bold text-poise-gold">170 PREPARED RESPONSES</span>
                 <span className="text-xs text-gray-800 dark:text-slate-300">•</span>
                 <span className="text-sm font-bold text-poise-gold">9 DOMAINS</span>
               </span>
@@ -376,7 +376,7 @@ export default function PlatformVisual() {
             custom={14}
           >
             <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wide">
-              170 Playbooks • 9 Domains
+              170 Prepared responses • 9 Domains
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {domains.map((domain) => (
@@ -407,7 +407,7 @@ export default function PlatformVisual() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
             {[
               { title: "Pattern Recognition", desc: "Classifies signals in milliseconds" },
-              { title: "Playbook Matching", desc: "Learns which playbooks work best" },
+              { title: "Prepared response Matching", desc: "Learns which prepared responses work best" },
               { title: "Smart Routing", desc: "Optimizes role assignment over time" },
               { title: "Outcome Learning", desc: "Improves recommendations from results" },
               { title: "Predictive Alerts", desc: "Anticipates issues before they escalate" },

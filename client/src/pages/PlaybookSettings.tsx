@@ -21,7 +21,7 @@ export default function PlaybookSettings() {
     queryKey: ['/api/playbook-library', id],
     queryFn: async () => {
       const response = await fetch(`/api/playbook-library/${id}`);
-      if (!response.ok) throw new Error('Failed to fetch playbook');
+      if (!response.ok) throw new Error('Failed to fetch prepared response');
       return response.json();
     },
     enabled: !!id,
@@ -48,7 +48,7 @@ export default function PlaybookSettings() {
     onSuccess: () => {
       toast({
         title: 'Settings Saved',
-        description: 'Playbook settings have been updated successfully.',
+        description: 'Prepared response settings have been updated successfully.',
       });
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', id] });
     },
@@ -79,7 +79,7 @@ export default function PlaybookSettings() {
     return (
       <PageLayout>
         <div className="text-center py-12">
-          <p className="text-muted-foreground">Playbook not found</p>
+          <p className="text-muted-foreground">Prepared response not found</p>
           <Button asChild className="mt-4">
             <Link href="/playbook-library">Back to Library</Link>
           </Button>
@@ -94,12 +94,12 @@ export default function PlaybookSettings() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild data-testid="button-back">
-              <Link href={`/playbook-library/${id}`}>
+              <Link href={`/prepared response-library/${id}`}>
                 <ArrowLeft className="h-5 w-5" />
               </Link>
             </Button>
             <div>
-              <h1 className="text-2xl font-bold">Playbook Settings</h1>
+              <h1 className="text-2xl font-bold">Prepared response Settings</h1>
               <p className="text-muted-foreground">{playbook.name}</p>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function PlaybookSettings() {
               Activation Settings
             </CardTitle>
             <CardDescription>
-              Configure how this playbook is activated and executed
+              Configure how this prepared response is activated and executed
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -319,7 +319,7 @@ export default function PlaybookSettings() {
                 data-testid="input-budget-limit"
               />
               <p className="text-sm text-muted-foreground">
-                Budget automatically unlocked when playbook is activated
+                Budget automatically unlocked when prepared response is activated
               </p>
             </div>
           </CardContent>

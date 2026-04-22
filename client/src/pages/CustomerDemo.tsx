@@ -71,7 +71,7 @@ const IDEA_STORY = [
   {
     id: 2,
     beat: "IDENTIFY",
-    title: "Your Playbooks Are Ready Before You Need Them",
+    title: "Your Prepared responses Are Ready Before You Need Them",
     subtitle: "170 templates customized for your organization",
     phase: "IDENTIFY",
     phaseColor: "bg-[#2B8A6E]",
@@ -79,14 +79,14 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/20",
     time: 30,
-    description: "Readiness OS comes with 170 playbooks across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
+    description: "Readiness OS comes with 170 prepared responses across 9 domains—from cyber incidents to M&A integration to product launches. Each one pre-configured with smart defaults for your industry. You customize once, then it's ready for instant activation.",
     roleWins: [
-      { role: "CISO", benefit: "Cyber playbooks with ISO 27001, SOC2, NIST pre-loaded" },
+      { role: "CISO", benefit: "Cyber prepared responses with ISO 27001, SOC2, NIST pre-loaded" },
       { role: "CFO", benefit: "Pre-approved budgets already staged for each scenario" },
       { role: "General Counsel", benefit: "Legal holds, regulatory notifications pre-staged" }
     ],
     metrics: [
-      { label: "Ready Playbooks", value: "170" },
+      { label: "Ready Prepared responses", value: "170" },
       { label: "Domains Covered", value: "9" },
       { label: "Setup Time", value: "2 hours" }
     ],
@@ -114,7 +114,7 @@ const IDEA_STORY = [
     roleWins: [
       { role: "Chief Strategy Officer", benefit: "Competitive moves flagged before they hit the news" },
       { role: "VP Supply Chain", benefit: "Supplier issues detected before they become crises" },
-      { role: "CISO", benefit: "Threat patterns matched to response playbooks" }
+      { role: "CISO", benefit: "Threat patterns matched to response prepared responses" }
     ],
     metrics: [
       { label: "Signals Analyzed", value: "24/7" },
@@ -196,15 +196,15 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/20",
     time: 160,
-    description: "After each execution, Readiness OS captures what worked, what didn't, and suggests improvements. This knowledge stays with your organization—not in the head of the executive who might leave. Your playbooks get better every time.",
+    description: "After each execution, Readiness OS captures what worked, what didn't, and suggests improvements. This knowledge stays with your organization—not in the head of the executive who might leave. Your prepared responses get better every time.",
     roleWins: [
       { role: "CEO", benefit: "Institutional knowledge survives leadership changes" },
       { role: "COO", benefit: "Process improvements captured automatically" },
-      { role: "CHRO", benefit: "Onboarding new leaders is faster with documented playbooks" }
+      { role: "CHRO", benefit: "Onboarding new leaders is faster with documented prepared responses" }
     ],
     metrics: [
       { label: "Lessons Captured", value: "Automatic" },
-      { label: "Playbook Updates", value: "Suggested" },
+      { label: "Prepared response Updates", value: "Suggested" },
       { label: "Next Execution", value: "15% faster" }
     ],
     smartDefaults: null

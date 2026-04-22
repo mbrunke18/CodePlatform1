@@ -359,7 +359,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
             <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-amber-500" />
             <h3 className="font-medium mb-2">No Monitoring Triggers Configured</h3>
             <p className="text-sm text-muted-foreground mb-4">
-              Add signals and triggers to automatically detect when this playbook should be activated.
+              Add signals and triggers to automatically detect when this prepared response should be activated.
             </p>
             {isEditable && (
               <Button onClick={() => setIsAddDialogOpen(true)} data-testid="button-add-first-trigger">
@@ -381,7 +381,7 @@ export function MonitorPhaseView({ playbookId, organizationId, isEditable = true
             <DialogHeader>
               <DialogTitle>Add Monitor Trigger</DialogTitle>
               <DialogDescription>
-                Configure a new signal to monitor for playbook activation.
+                Configure a new signal to monitor for prepared response activation.
               </DialogDescription>
             </DialogHeader>
             <div className="space-y-4 py-4">

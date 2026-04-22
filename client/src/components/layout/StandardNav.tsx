@@ -139,13 +139,13 @@ export default function StandardNav() {
     {
       heading: "Inside the Platform",
       links: [
-        { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate playbooks", featured: true },
+        { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate prepared responses", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
         { label: "Onboarding Guide", path: "/onboarding-guide", icon: BookOpen, description: "Step-by-step guide for new pilot customers — platform map, quick start, and first 30 days", featured: true },
         { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of your IDEA configuration", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
-        { label: "Regulatory Calendar", path: "/regulatory-calendar", icon: Shield, description: "Upcoming compliance deadlines mapped to pre-staged response playbooks — SEC, GDPR, SOX, FDA & more" },
+        { label: "Regulatory Calendar", path: "/regulatory-calendar", icon: Shield, description: "Upcoming compliance deadlines mapped to pre-staged response prepared responses — SEC, GDPR, SOX, FDA & more" },
         { label: "What We're Building", path: "/roadmap", icon: TrendingUp, description: "Product roadmap — live features, what's in development, and what's coming next", featured: true },
         { label: "Coordination Intelligence", path: "/coordination-intelligence", icon: Activity, description: "Your real coordination speed vs. the 12-minute benchmark", featured: true },
         { label: "Intelligence Hub", path: "/intelligence-hub", icon: Brain, description: "Signal radar, monitoring & compound situation synthesis" },
@@ -167,7 +167,7 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
-        { label: "The 12-Minute Experience", path: "/manufacturing-demo", icon: Rocket, description: "$2.1B of committed orders at risk. Primary supplier files bankruptcy. Watch full playbook deployment in real time — no login required.", featured: true },
+        { label: "The 12-Minute Experience", path: "/manufacturing-demo", icon: Rocket, description: "$2.1B of committed orders at risk. Primary supplier files bankruptcy. Watch full prepared response deployment in real time — no login required.", featured: true },
         { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives" },
         { label: "Real-Company Scenarios", path: "/try-demo", icon: Play, description: "HPE · Target · Clorox · ServiceNow · Alphabet — live execution simulations" },
       ],
@@ -177,7 +177,7 @@ export default function StandardNav() {
       links: [
         { label: "Executive Scenario Suite", path: "/executive-scenarios", icon: Target, description: "Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare", featured: true },
         { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive" },
-        { label: "By Your Role", path: "/role-selector", icon: Users, description: "Playbooks filtered for your C-suite function" },
+        { label: "By Your Role", path: "/role-selector", icon: Users, description: "Prepared responses filtered for your C-suite function" },
         { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
         { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "One-page board summary — shareable in 60 seconds" },
       ],
@@ -310,7 +310,7 @@ export default function StandardNav() {
             <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
             <div>
               <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Readiness OS</p>
-              <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Playbooks. 12 minutes.</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Prepared responses. 12 minutes.</p>
             </div>
           </div>
           <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
@@ -507,8 +507,8 @@ export default function StandardNav() {
       { path: '/live-activation-center', icon: Zap, label: 'Live Activation Center', sub: 'Select a scenario. Call the audible. Authorize the response — the full executive decision in one place.' },
       { path: '/executive-scenarios', icon: Target, label: 'Executive Scenario Suite', sub: 'Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare.' },
       { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — preparation, activation, coordination, and learning.' },
-      { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — playbooks built for your exact function' },
-      { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right playbook in 60 seconds' },
+      { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — prepared responses built for your exact function' },
+      { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right prepared response in 60 seconds' },
       { path: '/executive-brief', icon: FileText, label: 'One-Page Board Brief', sub: 'The full thesis, 3,600× metric, and ROI case — shareable in 60 seconds' },
     ];
     return (

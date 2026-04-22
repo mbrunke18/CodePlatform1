@@ -15,7 +15,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Build an agile response capability.",
     source: "Every enterprise transformation keynote, 2019–2026",
-    reality: "170 Readiness Playbooks pre-staged across 9 domains. Activated in 12 minutes. No meeting required."
+    reality: "170 Readiness Prepared responses pre-staged across 9 domains. Activated in 12 minutes. No meeting required."
   },
   {
     claim: "Align stakeholders before executing.",
@@ -25,7 +25,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Leverage AI for strategic advantage.",
     source: "Nearly every AI strategy deck in circulation today",
-    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Playbook queued. Executive notified. 12 minutes to live coordination — not a dashboard."
+    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Prepared response queued. Executive notified. 12 minutes to live coordination — not a dashboard."
   },
   {
     claim: "Create a learning organization that adapts in real time.",
@@ -35,7 +35,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Bridge the strategy–execution gap.",
     source: "Harvard Business Review, McKinsey, Gartner — cited by nearly everyone",
-    reality: "In Readiness OS, the gap doesn't exist. Strategy IS the playbook. The playbook IS the execution. No translation layer. No alignment cycle."
+    reality: "In Readiness OS, the gap doesn't exist. Strategy IS the playbook. The prepared response IS the execution. No translation layer. No alignment cycle."
   },
   {
     claim: "Move at the speed of the market.",
@@ -45,7 +45,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Develop scenario-based planning capabilities.",
     source: "War room methodology, BCG, strategic planning consultants",
-    reality: "221 triggers pre-mapped across 9 domains. 170 playbooks pre-built. The scenario is already planned. The response is already ready."
+    reality: "221 triggers pre-mapped across 9 domains. 170 prepared responses pre-built. The scenario is already planned. The response is already ready."
   },
   {
     claim: "Build organizational resilience.",
@@ -165,7 +165,7 @@ export default function PlatformReality() {
               </h2>
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 1 }}>
                 {[
-                  { step: "01", label: "The Problem is Pre-Staged", body: "170 Readiness Playbooks built for every situation the organization is likely to face. Not described — deployed. Not in a deck — in the platform." },
+                  { step: "01", label: "The Problem is Pre-Staged", body: "170 Readiness Prepared responses built for every situation the organization is likely to face. Not described — deployed. Not in a deck — in the platform." },
                   { step: "02", label: "The Intelligence is Live", body: "248+ data points monitored continuously across 221 triggers. AI detects the pattern before the leadership team reads the news." },
                   { step: "03", label: "No Committee Required", body: "When a trigger fires, the platform surfaces the matched playbook, assigns roles, and notifies stakeholders. Zero coordination overhead. No steering committee. No workshop." },
                   { step: "04", label: "12 Minutes to Live Execution", body: "While the thought leader's framework is still in Week 3 of stakeholder alignment, Readiness OS users are already 12 minutes into coordinated, executive-authorized execution." },
@@ -257,7 +257,7 @@ export default function PlatformReality() {
                 Any framework, approach, or methodology that still produces a 30-day mobilization cycle loses the conversation in three numbers: <span style={{ fontWeight: 700, color: NAVY }}>30 days vs. 12 minutes</span>. That's 3,600× slower.
               </p>
               <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.7, marginBottom: 20 }}>
-                The 3,600× Execution Head Start is not a speed claim. It's a challenge. If a framework cannot produce a timestamp on a deployed playbook — if it requires even one alignment meeting before execution begins — the math ends the conversation.
+                The 3,600× Execution Head Start is not a speed claim. It's a challenge. If a framework cannot produce a timestamp on a deployed prepared response — if it requires even one alignment meeting before execution begins — the math ends the conversation.
               </p>
               <p style={{ fontSize: 15, color: "#374151", fontWeight: 600, lineHeight: 1.6 }}>
                 We're not competing on who has the better theory. We're competing on who can show the timestamp.
@@ -320,7 +320,7 @@ export default function PlatformReality() {
                 category: "Management Consulting",
                 verdict: "Documented It",
                 cost: "$300K–$500K for PDFs",
-                what: "McKinsey, BCG, and Bain deliver custom playbooks that live on SharePoint. 6 months of engagement. Static documents. No activation infrastructure. No signal detection.",
+                what: "McKinsey, BCG, and Bain deliver custom prepared responses that live on SharePoint. 6 months of engagement. Static documents. No activation infrastructure. No signal detection.",
                 gap: "30 days unchanged",
                 cta: "See the Consulting Comparison",
                 ctaPath: "/vs-consulting",
@@ -409,7 +409,7 @@ export default function PlatformReality() {
                 We're the only ones who built the solution.
               </p>
               <p style={{ fontSize: 14, color: "rgba(240,237,228,0.5)", maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.65 }}>
-                12 minutes from trigger to live execution. 170 playbooks pre-staged and ready. The response is ready before the trigger fires.
+                12 minutes from trigger to live execution. 170 prepared responses pre-staged and ready. The response is ready before the trigger fires.
               </p>
               <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
                 <button

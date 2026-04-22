@@ -164,7 +164,7 @@ export default function VideoLanding() {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>12-Minute Execution</h3>
                 <p className="text-[#6B7280] leading-relaxed font-light">
-                  Pre-staged playbooks with predetermined stakeholders and tasks. No meetings. No delays.
+                  Pre-staged prepared responses with predetermined stakeholders and tasks. No meetings. No delays.
                 </p>
               </CardContent>
             </Card>

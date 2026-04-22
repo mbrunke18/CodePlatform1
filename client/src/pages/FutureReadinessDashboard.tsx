@@ -163,7 +163,7 @@ export default function FutureReadinessDashboard() {
             </h1>
             <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
               Real-time strategic preparedness and self-learning intelligence. 
-              Track organizational gravity across 170 playbooks by VaughnMartin.
+              Track organizational gravity across 170 prepared responses by VaughnMartin.
             </p>
           </div>
           <Button 
@@ -206,7 +206,7 @@ export default function FutureReadinessDashboard() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Playbook Maturity</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Prepared response Maturity</span>
                   <Sparkles className="h-4 w-4 text-[#C9A84C]" />
                 </div>
                 <div className={`text-3xl font-bold ${getScoreColor(playbookMaturity)}`} style={CG}>

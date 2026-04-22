@@ -131,10 +131,10 @@ export default function LivingPlaybooks() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Advance Phase · Pattern-Based Self-Learning</span>
             </div>
             <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#F0EDE4', marginBottom: 8, lineHeight: 1.1 }}>
-              Living <em style={{ color: GOLD }}>Playbooks</em>
+              Living <em style={{ color: GOLD }}>Prepared responses</em>
             </div>
             <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 620, lineHeight: 1.6 }}>
-              Self-learning strategic playbooks that evolve with every activation. AI analyzes outcomes, identifies improvements, and automatically updates task sequences, stakeholder lists, and decision gates.
+              Self-learning strategic prepared responses that evolve with every activation. AI analyzes outcomes, identifies improvements, and automatically updates task sequences, stakeholder lists, and decision gates.
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function LivingPlaybooks() {
           {/* System Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { value: '170', label: 'Living Playbooks', color: NAVY },
+              { value: '170', label: 'Living Prepared responses', color: NAVY },
               { value: isLoading ? '—' : `${(topPlaybooks.reduce((s, p, i) => s + deriveActivationCount(p.severityScore || 70, i), 0) + 14789).toLocaleString()}`, label: 'Total Activations', color: GOLD },
               { value: '91%', label: 'Avg Success Rate', color: TEAL },
               { value: '42%', label: 'Speed Improvement', color: GOLD },
@@ -159,10 +159,10 @@ export default function LivingPlaybooks() {
             ))}
           </div>
 
-          {/* Top Living Playbooks */}
+          {/* Top Living Prepared responses */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Highest-Activity Playbooks</h2>
+              <h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Highest-Activity Prepared responses</h2>
               <Badge className="bg-[#C9A84C]/15 text-[#0A0F2E] border-none text-[10px] font-bold tracking-widest uppercase px-3 py-1">
                 Sorted by Strategic Severity
               </Badge>
@@ -284,7 +284,7 @@ export default function LivingPlaybooks() {
                           </Button>
                           <Button size="sm" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" onClick={() => handleActivatePlaybook(playbook)}>
                             <Target className="w-4 h-4 mr-2" />
-                            Activate Playbook
+                            Activate Prepared response
                           </Button>
                         </div>
                       </CardContent>
@@ -304,15 +304,15 @@ export default function LivingPlaybooks() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The ADVANCE Phase</span>
               </div>
               <CardTitle className="text-2xl" style={CG}>How Self-Learning Works</CardTitle>
-              <CardDescription className="text-white/60">Every execution feeds the intelligence loop — making each playbook faster, sharper, and more precise.</CardDescription>
+              <CardDescription className="text-white/60">Every execution feeds the intelligence loop — making each prepared response faster, sharper, and more precise.</CardDescription>
             </CardHeader>
             <CardContent className="relative z-10 pt-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {[
-                  { step: "1", title: "Execute", icon: Zap, desc: "Playbook activated for a real strategic event — AI records every decision, timing, and outcome." },
+                  { step: "1", title: "Execute", icon: Zap, desc: "Prepared response activated for a real strategic event — AI records every decision, timing, and outcome." },
                   { step: "2", title: "Capture", icon: Brain, desc: "AI analyzes execution data: who responded, how fast, what decisions unlocked downstream tasks." },
                   { step: "3", title: "Learn", icon: Award, desc: "Pattern analysis generates improvement recommendations across stakeholder sequencing, timing gates, and resource allocation." },
-                  { step: "4", title: "Evolve", icon: TrendingUp, desc: "Playbook auto-updates for next execution. Over time, your 12-minute response becomes 8 minutes." },
+                  { step: "4", title: "Evolve", icon: TrendingUp, desc: "Prepared response auto-updates for next execution. Over time, your 12-minute response becomes 8 minutes." },
                 ].map((item, idx) => (
                   <div key={idx} className="relative">
                     <div style={{ ...CG, color: GOLD, fontSize: 36, fontWeight: 700, marginBottom: 8, lineHeight: 1 }}>{item.step}</div>
@@ -329,9 +329,9 @@ export default function LivingPlaybooks() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                <p className="text-white/50 text-sm">Organizations using Living Playbooks report <strong className="text-white">42% faster</strong> execution by their 10th activation.</p>
+                <p className="text-white/50 text-sm">Organizations using Living Prepared responses report <strong className="text-white">42% faster</strong> execution by their 10th activation.</p>
                 <Button size="sm" className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold rounded-none border-none" onClick={() => setLocation('/playbook-library')}>
-                  View All 170 Playbooks
+                  View All 170 Prepared responses
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>

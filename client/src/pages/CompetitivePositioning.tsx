@@ -39,12 +39,12 @@ const PARTIAL = () => <Minus className="w-5 h-5 mx-auto" style={{ color: GOLD }}
 
 const comparisonRows = [
   { feature: "Trigger-to-execution in < 12 minutes", execOS: "yes", crisis: "no", pm: "no" },
-  { feature: "170+ pre-built strategic playbooks", execOS: "yes", crisis: "no", pm: "no" },
+  { feature: "170+ pre-built strategic prepared responses", execOS: "yes", crisis: "no", pm: "no" },
   { feature: "Continuous signal monitoring (24/7)", execOS: "yes", crisis: "partial", pm: "no" },
   { feature: "Automated task & budget assignment", execOS: "yes", crisis: "no", pm: "partial" },
   { feature: "Executive stakeholder mobilization", execOS: "yes", crisis: "partial", pm: "no" },
   { feature: "Cross-functional coordination layer", execOS: "yes", crisis: "no", pm: "partial" },
-  { feature: "Strategic playbook customization", execOS: "yes", crisis: "no", pm: "no" },
+  { feature: "Strategic prepared response customization", execOS: "yes", crisis: "no", pm: "no" },
   { feature: "Outcome tracking & ROI measurement", execOS: "yes", crisis: "no", pm: "partial" },
   { feature: "Enterprise SLA guarantees", execOS: "yes", crisis: "yes", pm: "yes" },
   { feature: "Integrates with existing PM tools", execOS: "yes", crisis: "partial", pm: "yes" },
@@ -56,9 +56,9 @@ const differentiators = [
   {
     icon: BookOpen,
     stat: "170",
-    unit: "Playbooks",
+    unit: "Prepared responses",
     label: "Ready to Activate",
-    description: "The largest library of proven strategic response playbooks across 9 domains — Competitive, Crisis, M&A, Talent, Supply Chain, Regulatory, Financial, Operational, and Reputational.",
+    description: "The largest library of proven strategic response prepared responses across 9 domains — Competitive, Crisis, M&A, Talent, Supply Chain, Regulatory, Financial, Operational, and Reputational.",
     color: GOLD,
   },
   {
@@ -74,7 +74,7 @@ const differentiators = [
     stat: "9",
     unit: "Domains",
     label: "Signal Intelligence",
-    description: "AI monitors 500+ data points across competitive, market, operational, and macro signals — firing the right playbook the moment a strategic trigger is detected.",
+    description: "AI monitors 500+ data points across competitive, market, operational, and macro signals — firing the right prepared response the moment a strategic trigger is detected.",
     color: NAVY,
   },
   {
@@ -109,7 +109,7 @@ const categoryComparison = [
     category: "Project Management",
     vendors: "Jira, Asana, ServiceNow",
     does: "Tracks tasks, manages sprints, provides workflow automation for pre-defined processes",
-    doesNot: "Does not detect strategic triggers, does not know what playbook to run, requires manual setup for every response",
+    doesNot: "Does not detect strategic triggers, does not know what prepared response to run, requires manual setup for every response",
     color: "#E5E7EB",
     textColor: MUTED,
   },
@@ -125,19 +125,19 @@ const useCases = [
   {
     trigger: "Key executive departure announced",
     without: "Weeks of ad-hoc conversations, unclear ownership, reactive talent and communications planning",
-    with: "Leadership Continuity playbook activates instantly — succession, communications, board briefing, and talent sourcing tasks assigned automatically",
+    with: "Leadership Continuity prepared response activates instantly — succession, communications, board briefing, and talent sourcing tasks assigned automatically",
     icon: Users,
   },
   {
     trigger: "Regulatory violation surfaces",
     without: "Legal scrambles to understand scope, comms team improvises, executive team lacks a coordinated narrative",
-    with: "Regulatory Crisis playbook fires — legal, compliance, communications, and executive tasks mobilized with pre-approved response templates in 12 minutes",
+    with: "Regulatory Crisis prepared response fires — legal, compliance, communications, and executive tasks mobilized with pre-approved response templates in 12 minutes",
     icon: Shield,
   },
   {
     trigger: "Activist investor takes position",
     without: "Board is surprised, IR team has no pre-built defense strategy, response is reactive and fragmented",
-    with: "Activist Response playbook activates — investor relations, legal defense, board briefing, and public narrative tasks launched immediately",
+    with: "Activist Response prepared response activates — investor relations, legal defense, board briefing, and public narrative tasks launched immediately",
     icon: AlertTriangle,
   },
 ];
@@ -270,7 +270,7 @@ export default function CompetitivePositioning() {
                   <div className="flex flex-col gap-0">
                     {[
                       { label: "Signal Detected", time: "T+0m", note: "AI monitors 500+ data sources 24/7" },
-                      { label: "Playbook Selected", time: "+2m", note: "Best-fit playbook matched automatically" },
+                      { label: "Prepared response Selected", time: "+2m", note: "Best-fit prepared response matched automatically" },
                       { label: "Projects Created", time: "+5m", note: "Tasks, owners, budgets assigned by role" },
                       { label: "Stakeholders Mobilized", time: "+8m", note: "Executive briefs and assignments sent" },
                       { label: "Execution Underway", time: "+12m", note: "Full organizational response activated" },
@@ -516,7 +516,7 @@ export default function CompetitivePositioning() {
           </div>
         </section>
 
-        {/* The 170 Playbooks Section */}
+        {/* The 170 Prepared responses Section */}
         <section style={{ background: NAVY, padding: "80px 48px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
           <div className="max-w-6xl mx-auto relative z-10">
@@ -524,19 +524,19 @@ export default function CompetitivePositioning() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Playbook Library</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Prepared response Library</span>
                 </div>
                 <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,44px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
-                  170 Playbooks No One Else Has
+                  170 Prepared responses No One Else Has
                 </h2>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 32 }}>
-                  Every playbook in Readiness OS took years to develop — built from real Fortune 1000 strategic events, refined by operating executives, and continuously improved through outcome data.
+                  Every prepared response in Readiness OS took years to develop — built from real Fortune 1000 strategic events, refined by operating executives, and continuously improved through outcome data.
                 </p>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40 }}>
                   You can't buy this institutional knowledge off the shelf. You can't build it in a year. And no PM tool or crisis notification vendor has it — because they're solving a different problem.
                 </p>
                 <Button size="lg" style={{ background: GOLD, color: NAVY, fontWeight: 700 }} className="hover:opacity-90" onClick={() => setLocation('/playbooks')}>
-                  Explore the Playbook Library
+                  Explore the Prepared response Library
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>

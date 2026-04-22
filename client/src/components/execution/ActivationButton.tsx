@@ -138,7 +138,7 @@ export function ActivationButton({
           setCurrentStep("Activation complete!");
           
           toast({
-            title: "Playbook Activated",
+            title: "Prepared response Activated",
             description: `${playbookName} is now executing. ${result.stakeholdersNotified} stakeholders notified.`,
           });
 
@@ -162,7 +162,7 @@ export function ActivationButton({
     onError: (error: any) => {
       toast({
         title: "Activation Failed",
-        description: error.message || "Failed to activate playbook",
+        description: error.message || "Failed to activate prepared response",
         variant: "destructive",
       });
       setShowProgress(false);
@@ -206,10 +206,10 @@ export function ActivationButton({
           variant={variant}
           disabled={buttonDisabled}
           className="gap-2"
-          data-testid="button-activate-playbook"
+          data-testid="button-activate-prepared response"
         >
           <Rocket className="h-5 w-5" />
-          {activationMutation.isPending ? "Activating..." : "Activate Playbook"}
+          {activationMutation.isPending ? "Activating..." : "Activate Prepared response"}
           {readinessScore < 100 && (
             <Badge variant="secondary" className="ml-1">
               {readinessScore}% Ready

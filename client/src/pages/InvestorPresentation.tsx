@@ -92,7 +92,7 @@ function InvestorPresentation() {
           We redesign how work flows<br />in the age of AI
         </h1>
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 'clamp(15px,1.5vw,20px)', color: '#0A0F2E', maxWidth: 680, marginBottom: 16, lineHeight: 1.65, fontWeight: 400 }}>
-          The new operating model for Fortune 1000 enterprises — 170 pre-staged playbooks that compress 30 days of mobilization into 12 minutes of live execution
+          The new operating model for Fortune 1000 enterprises — 170 pre-staged prepared responses that compress 30 days of mobilization into 12 minutes of live execution
         </p>
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#6B7280', maxWidth: 560, marginBottom: 48, lineHeight: 1.65 }}>
           Not another AI tool bolted onto the old workflow. A fundamental redesign of how strategic work flows from first principles for the AI era.
@@ -313,7 +313,7 @@ function InvestorPresentation() {
         <div className="grid md:grid-cols-4 gap-6 max-w-5xl w-full mb-8">
           {[
             { letter: 'I', name: 'IDENTIFY', desc: 'AI watches 847+ signals across news, regulatory, market, and threat feeds', icon: <Eye className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
-            { letter: 'D', name: 'DETECT', desc: 'Match signals to playbooks with confidence scoring and stakeholder mapping', icon: <Brain className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
+            { letter: 'D', name: 'DETECT', desc: 'Match signals to prepared responses with confidence scoring and stakeholder mapping', icon: <Brain className="w-6 h-6" />, color: 'from-[#0A0F2E] to-[#141B45]' },
             { letter: 'E', name: 'EXECUTE', desc: 'One-click activation. 12-minute full mobilization. Pre-approved budgets deployed.', icon: <Zap className="w-6 h-6" />, color: 'from-[#C9A84C] to-[#DFC178]' },
             { letter: 'A', name: 'ADVANCE', desc: 'Learn from every activation. AI refines playbooks. Institutional knowledge captured.', icon: <TrendingUp className="w-6 h-6" />, color: 'from-[#2B8A6E] to-[#3BAF8A]' },
           ].map((p, i) => (
@@ -332,7 +332,7 @@ function InvestorPresentation() {
           ))}
         </div>
         <p className="text-[#0A0F2E] text-center">
-          <span className="text-[#2B8A6E] font-semibold">170 playbooks</span> ready to deploy across <span className="text-[#2B8A6E] font-semibold">9 strategic domains</span>.
+          <span className="text-[#2B8A6E] font-semibold">170 prepared responses</span> ready to deploy across <span className="text-[#2B8A6E] font-semibold">9 strategic domains</span>.
         </p>
       </div>
     ),
@@ -365,7 +365,7 @@ function InvestorPresentation() {
               <Zap className="w-5 h-5" /> With Readiness OS
             </h3>
             <div className="space-y-4">
-              {['T+0: AI detects signal automatically', 'T+2m: Playbook matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, playbook refined'].map((t, i) => (
+              {['T+0: AI detects signal automatically', 'T+2m: Prepared response matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, prepared response refined'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-[#2B8A6E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm">{t}</span>
@@ -384,7 +384,7 @@ function InvestorPresentation() {
       <div className="flex flex-col items-center justify-center h-full px-4">
         <p className="text-[#2B8A6E] font-semibold text-sm uppercase tracking-widest mb-3">The Platform</p>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-12 text-center">
-          170 playbooks across three domains
+          170 prepared responses across three domains
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl w-full">
           <div className="bg-white border border-[#E8E4DC] p-8">
@@ -500,7 +500,7 @@ function InvestorPresentation() {
             <h3 className="text-xl font-bold text-[#2B8A6E] mb-2 uppercase tracking-tight">The Readiness OS Model</h3>
             <p className="text-[#2B8A6E]/60 text-xs font-bold uppercase mb-4 tracking-widest">Detect → Activate → Coordinate → Execute → Advance</p>
             <div className="space-y-3">
-              {['Built for compound, cascading disruptions', 'Pre-built playbooks with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
+              {['Built for compound, cascading disruptions', 'Pre-built prepared responses with decision rights mapped', '12-minute coordinated execution', 'Institutional intelligence that compounds', 'Each response makes the next one faster'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-[#2B8A6E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm font-medium">{t}</span>
@@ -549,7 +549,7 @@ function InvestorPresentation() {
             <div className="text-[#C9A84C] font-bold text-sm mb-1">Readiness OS</div>
             <div className="text-white/60 text-[10px] font-bold uppercase tracking-wider mb-3">Strategic Readiness Platform</div>
             <div className="text-xs space-y-1">
-              {['AI signal detection', 'Pre-built playbooks', 'Automated coordination', 'Learning & refinement'].map((f, i) => (
+              {['AI signal detection', 'Pre-built prepared responses', 'Automated coordination', 'Learning & refinement'].map((f, i) => (
                 <div key={i} className="text-[#C9A84C] font-bold">✓ {f}</div>
               ))}
             </div>
@@ -566,9 +566,9 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { tier: 'Starter', price: '$250K', desc: 'Single domain — Risk & Resilience', features: ['25 playbooks', '100 signals monitored', 'Standard integrations', 'Email support'] },
-            { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 playbooks', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
-            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ playbooks', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
+            { tier: 'Starter', price: '$250K', desc: 'Single domain — Risk & Resilience', features: ['25 prepared responses', '100 signals monitored', 'Standard integrations', 'Email support'] },
+            { tier: 'Professional', price: '$750K', desc: 'Multi-domain expansion', features: ['100 prepared responses', '500+ signals monitored', 'Full integration suite', 'Dedicated CSM'], highlight: true },
+            { tier: 'Enterprise', price: '$1.5M+', desc: 'Full platform deployment', features: ['170+ prepared responses', '847+ signals monitored', 'Custom AI models', 'White-glove onboarding'] },
           ].map((t, i) => (
             <div key={i} className={`rounded-none p-6 ${t.highlight ? 'bg-[#0A0F2E] border-2 border-[#C9A84C] text-white' : 'bg-white border border-[#E8E4DC]'}`}>
               {t.highlight && <div className="text-[#C9A84C] text-xs font-bold uppercase mb-2">TARGET</div>}
@@ -611,7 +611,7 @@ function InvestorPresentation() {
           <div>
             <h3 className="text-lg font-bold text-[#0A0F2E] mb-4 flex items-center gap-2"><Rocket className="w-5 h-5 text-[#2B8A6E]" /> Product Built</h3>
             <div className="space-y-3">
-              {['170 playbooks developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
+              {['170 prepared responses developed and tested', 'IDEA Framework™ fully implemented', 'AI signal detection engine live', 'Enterprise-grade security & compliance', 'Integration layer (Slack, Teams, ServiceNow)'].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-[#0A0F2E]">
                   <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] shrink-0" />
                   <span>{item}</span>
@@ -674,9 +674,9 @@ function InvestorPresentation() {
         </div>
         <div className="grid md:grid-cols-3 gap-4 max-w-5xl w-full mb-8">
           {[
-            { tier: 'Tier 1: Now', title: 'AI-Triggered Playbooks', desc: 'External AI systems trigger playbooks automatically. 400+ connectors ready.', color: 'border-[#2B8A6E]/30', badge: 'bg-[#2B8A6E]/20 text-[#2B8A6E]' },
+            { tier: 'Tier 1: Now', title: 'AI-Triggered Prepared responses', desc: 'External AI systems trigger prepared responses automatically. 400+ connectors ready.', color: 'border-[#2B8A6E]/30', badge: 'bg-[#2B8A6E]/20 text-[#2B8A6E]' },
             { tier: 'Tier 2: Next', title: 'AI-Assisted Coordination', desc: 'AI agents handle prep work—context, drafts, blocker detection. Humans decide.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
-            { tier: 'Tier 3: Vision', title: 'Executive-Led AI Playbooks', desc: 'AI monitors and stages. Executives authorize and lead. First platform built this way from the ground up.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
+            { tier: 'Tier 3: Vision', title: 'Executive-Led AI Prepared responses', desc: 'AI monitors and stages. Executives authorize and lead. First platform built this way from the ground up.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
           ].map((t, i) => (
             <div key={i} className={`bg-white border ${t.color} p-5`}>
               <span className={`inline-block px-2 py-0.5 text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>
@@ -716,7 +716,7 @@ function InvestorPresentation() {
                   </div>
                   <div className="flex items-start gap-3">
                     <Award className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
-                    <span><strong>5 years</strong> college football coaching — learned playbook-driven execution under pressure</span>
+                    <span><strong>5 years</strong> college football coaching — learned prepared response-driven execution under pressure</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Target className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
@@ -727,7 +727,7 @@ function InvestorPresentation() {
             </div>
           </div>
           <div className="bg-white border border-[#2B8A6E]/20 p-6 italic text-[#0A0F2E] text-lg text-center">
-            "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a playbook or you're improvising. Fortune 1000 companies are still improvising."
+            "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a prepared response or you're improvising. Fortune 1000 companies are still improvising."
           </div>
         </div>
       </div>
@@ -741,8 +741,8 @@ function InvestorPresentation() {
         </h2>
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl w-full mb-10">
           {[
-            { phase: 'Year 1', title: 'Account-Based Land', target: '50 F500 targets', desc: 'Land with Risk & Resilience playbooks (crisis/cyber). Prove 3,600× Execution Head Start. Build case studies.', color: 'border-[#0A0F2E]/30' },
-            { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Growth & Positioning domain. Channel partnerships. Industry-specific playbook packs.', color: 'border-[#2B8A6E]/30' },
+            { phase: 'Year 1', title: 'Account-Based Land', target: '50 F500 targets', desc: 'Land with Risk & Resilience prepared responses (crisis/cyber). Prove 3,600× Execution Head Start. Build case studies.', color: 'border-[#0A0F2E]/30' },
+            { phase: 'Year 2', title: 'Scale', target: '100+ accounts', desc: 'Expand to Growth & Positioning domain. Channel partnerships. Industry-specific prepared response packs.', color: 'border-[#2B8A6E]/30' },
             { phase: 'Year 3+', title: 'Market Leadership', target: '500+ accounts', desc: 'Full platform adoption. International expansion. Industry standard for strategic execution.', color: 'border-[#C9A84C]/30' },
           ].map((p, i) => (
             <div key={i} className={`bg-white border ${p.color} p-6`}>
@@ -894,7 +894,7 @@ function InvestorPresentation() {
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
           {[
             { value: '3,600×', label: 'Head Start' },
-            { value: '170', label: 'Playbooks' },
+            { value: '170', label: 'Prepared responses' },
             { value: '10.3%', label: 'Revenue Impact' },
             { value: '$20B', label: 'TAM' },
           ].map((s, i) => (

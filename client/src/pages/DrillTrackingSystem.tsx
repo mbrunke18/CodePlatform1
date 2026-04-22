@@ -57,7 +57,7 @@ const demoDrills = [
       resourceAllocation: 87
     },
     lessons: [
-      'Due diligence checklist completion improved from 72% to 94% with structured playbook',
+      'Due diligence checklist completion improved from 72% to 94% with structured prepared response',
       'Cultural integration assessment protocol successfully tested with realistic talent scenarios'
     ]
   },
@@ -226,7 +226,7 @@ export default function DrillTrackingSystem() {
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY }}>Simulation Log</span>
           </div>
           <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Crisis Simulation Drills</h2>
-          <p className="text-[#6B7280] mb-8">Practice playbook execution with team performance tracking and systematic auditing.</p>
+          <p className="text-[#6B7280] mb-8">Practice prepared response execution with team performance tracking and systematic auditing.</p>
 
           {isLoading ? (
             <div className="text-center py-12 text-[#6B7280]">Loading drills...</div>

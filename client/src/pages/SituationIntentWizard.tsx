@@ -57,7 +57,7 @@ const BRIEF_SUGGESTIONS = [
   "Current revenue impact estimate at time of trigger",
   "Which customer segments are directly exposed",
   "Competitor or threat actor's current position and intent",
-  "Pre-staged playbook summary and first 3 actions",
+  "Pre-staged prepared response summary and first 3 actions",
   "Estimated execution cost and budget runway",
   "Regulatory or legal exposure if we act vs. if we don't",
   "Which internal teams are already mobilized",
@@ -325,7 +325,7 @@ export default function SituationIntentWizard() {
             </h2>
             <p style={{ fontSize: 15, color: MUTED, marginBottom: 32, lineHeight: 1.6 }}>
               Select the trigger situation you want to pre-stage intent for. This determines which 
-              playbook gets deployed, which data points matter, and who gets notified when it fires.
+              prepared response gets deployed, which data points matter, and who gets notified when it fires.
             </p>
 
             {preTriggerId ? (
@@ -761,7 +761,7 @@ export default function SituationIntentWizard() {
                       style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, background: "#fff", outline: "none" }}
                     >
                       <option value="detection">On signal detection</option>
-                      <option value="activation">On playbook activation</option>
+                      <option value="activation">On prepared response activation</option>
                       <option value="both">On both events</option>
                     </select>
                   </div>

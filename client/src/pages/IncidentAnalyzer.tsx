@@ -203,14 +203,14 @@ export default function IncidentAnalyzer() {
           whatWentWrong: analysis?.whatWentWrong,
         }),
       });
-      if (!res.ok) throw new Error(`Playbook generation failed (${res.status})`);
+      if (!res.ok) throw new Error(`Prepared response generation failed (${res.status})`);
       const data = await res.json();
       const pb = data.playbook || data;
       setPlaybook(pb);
       setEditablePlaybook(JSON.parse(JSON.stringify(pb)));
       setCurrentStep(3);
     } catch (e: any) {
-      setError(e.message || "Failed to generate playbook");
+      setError(e.message || "Failed to generate prepared response");
     } finally {
       setIsGenerating(false);
     }
@@ -384,10 +384,10 @@ export default function IncidentAnalyzer() {
       doc.rect(0, 0, 210, 297, "F");
       doc.setTextColor(255, 255, 255);
       doc.setFontSize(16);
-      doc.text("Playbook Summary", 20, 25);
+      doc.text("Prepared response Summary", 20, 25);
       doc.setFontSize(11);
       doc.setTextColor(201, 168, 76); // #C9A84C
-      doc.text(`Name: ${playbook.name || "Generated Playbook"}`, 20, 40);
+      doc.text(`Name: ${playbook.name || "Generated Prepared response"}`, 20, 40);
       doc.text(`Code: ${playbook.code || "N/A"}`, 20, 50);
       doc.text(`Domain: ${playbook.domain || "N/A"}`, 20, 60);
     }
@@ -471,11 +471,11 @@ export default function IncidentAnalyzer() {
     doc.rect(0, 0, 210, 297, "F");
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(18);
-    doc.text("Playbook Overview", 20, 25);
+    doc.text("Prepared response Overview", 20, 25);
     doc.setFontSize(11);
     doc.setTextColor(201, 168, 76); // #C9A84C
     if (playbook) {
-      doc.text(`Playbook: ${playbook.name || "Generated"}`, 20, 40);
+      doc.text(`Prepared response: ${playbook.name || "Generated"}`, 20, 40);
       doc.text(`Tasks: ${playbook.taskSequence?.length || 0}`, 20, 50);
       doc.text(`Stakeholders: ${playbook.raciMatrix?.length || 0}`, 20, 60);
     }
@@ -491,7 +491,7 @@ export default function IncidentAnalyzer() {
     const roiItems = [
       `Coordination time reduced from days to minutes`,
       `Impact avoided: ${analysis?.estimatedImpact || "Significant"}`,
-      `Playbook pre-authorization eliminates decision bottlenecks`,
+      `Prepared response pre-authorization eliminates decision bottlenecks`,
       `Institutional memory captured for future situations`,
     ];
     let roiY = 40;
@@ -519,7 +519,7 @@ export default function IncidentAnalyzer() {
     const d = activeDomain;
     if (d === "offense") return { bg: "bg-[#2B8A6E]/15", border: "border-[#2B8A6E]/30", dotColor: "bg-[#2B8A6E]", textColor: "text-[#2B8A6E]", label: "OPPORTUNITY DETECTED" };
     if (d === "special_teams") return { bg: "bg-[#C9A84C]/30", border: "border-[#C9A84C]/30", dotColor: "bg-[#0A0F2E]", textColor: "text-[#C9A84C]", label: "INITIATIVE TRIGGERED" };
-    return { bg: "bg-[#2B8A6E]/15", border: "border-[#2B8A6E]/30", dotColor: "bg-[#2B8A6E]", textColor: "text-[#2B8A6E]", label: "Playbook Activated" };
+    return { bg: "bg-[#2B8A6E]/15", border: "border-[#2B8A6E]/30", dotColor: "bg-[#2B8A6E]", textColor: "text-[#2B8A6E]", label: "Prepared response Activated" };
   })();
 
   return (
@@ -548,7 +548,7 @@ export default function IncidentAnalyzer() {
                 {[
                   { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-[#0A0F2E]" },
                   { num: 2, label: "Analyze", desc: "AI identifies gaps & root causes", icon: Brain, color: "text-[#0A0F2E]" },
-                  { num: 3, label: "Playbook", desc: "Custom playbook generated", icon: BookOpen, color: "text-[#2B8A6E]" },
+                  { num: 3, label: "Prepared response", desc: "Custom prepared response generated", icon: BookOpen, color: "text-[#2B8A6E]" },
                   { num: 4, label: "Simulate", desc: "Live 12-minute execution", icon: Play, color: "text-[#C9A84C]" },
                   { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-[#C9A84C]" },
                 ].map((step) => (
@@ -755,7 +755,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>
                       OFFENSE
                     </p>
-                    <p className="text-xs text-[#6B7280] mt-0.5">58 Playbooks</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">58 Prepared responses</p>
                     <p className="text-xs text-[#6B7280] mt-1">Market Entry &bull; M&amp;A &bull; Product Launch</p>
                   </button>
                   <button
@@ -770,7 +770,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-600' : 'text-[#6B7280]'}`}>
                       DEFENSE
                     </p>
-                    <p className="text-xs text-[#6B7280] mt-0.5">58 Playbooks</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">58 Prepared responses</p>
                     <p className="text-xs text-[#6B7280] mt-1">Crisis &bull; Cyber &bull; Regulatory</p>
                   </button>
                   <button
@@ -785,7 +785,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-[#6B7280]'}`}>
                       SPECIAL TEAMS
                     </p>
-                    <p className="text-xs text-[#6B7280] mt-0.5">54 Playbooks</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">54 Prepared responses</p>
                     <p className="text-xs text-[#6B7280] mt-1">Digital Transformation &bull; AI Governance</p>
                   </button>
                 </div>
@@ -879,12 +879,12 @@ export default function IncidentAnalyzer() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* Matched Playbook */}
+                {/* Matched Prepared response */}
                 {analysis.matched_playbook && (
                   <div className={`${dc.darkBg} border ${dc.border} p-5`}>
                     <div className="flex items-center gap-3 mb-2">
                       <BookOpen className={`w-5 h-5 ${dc.text}`} />
-                      <h4 className={`font-semibold ${dc.text}`}>Matched Playbook</h4>
+                      <h4 className={`font-semibold ${dc.text}`}>Matched Prepared response</h4>
                     </div>
                     <div className="flex items-center gap-3 mb-2">
                       {analysis.matched_playbook.code && (
@@ -894,7 +894,7 @@ export default function IncidentAnalyzer() {
                       )}
                       <span className="text-[#0A0F2E] font-medium">{analysis.matched_playbook.name}</span>
                     </div>
-                    <p className={`text-sm ${dc.text}`}>This playbook exists. Ready to deploy today.</p>
+                    <p className={`text-sm ${dc.text}`}>This prepared response exists. Ready to deploy today.</p>
                   </div>
                 )}
 
@@ -1067,11 +1067,11 @@ export default function IncidentAnalyzer() {
               >
                 {isGenerating ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" /> Generating Playbook...
+                    <Loader2 className="w-5 h-5 animate-spin" /> Generating Prepared response...
                   </>
                 ) : (
                   <>
-                    <BookOpen className="w-5 h-5" /> Generate Playbook
+                    <BookOpen className="w-5 h-5" /> Generate Prepared response
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}
@@ -1080,7 +1080,7 @@ export default function IncidentAnalyzer() {
           </div>
         )}
 
-        {/* STEP 3: GENERATED PLAYBOOK */}
+        {/* STEP 3: GENERATED PREPARED RESPONSE */}
         {currentStep === 3 && (editablePlaybook || playbook) && (
           <div className="space-y-6">
             <Card className="bg-white border-[#E8E4DC]">
@@ -1088,7 +1088,7 @@ export default function IncidentAnalyzer() {
                 <div className="flex items-center justify-between flex-wrap gap-3">
                   <CardTitle className="text-[#0A0F2E] flex items-center gap-2 text-2xl">
                     <BookOpen className="w-6 h-6 text-[#2B8A6E]" />
-                    {editablePlaybook?.name || playbook?.name || "Generated Playbook"}
+                    {editablePlaybook?.name || playbook?.name || "Generated Prepared response"}
                   </CardTitle>
                   <button
                     onClick={() => setIsEditing(!isEditing)}
@@ -1099,7 +1099,7 @@ export default function IncidentAnalyzer() {
                     }`}
                   >
                     {isEditing ? <Check className="w-4 h-4" /> : <Edit3 className="w-4 h-4" />}
-                    {isEditing ? "Done Editing" : "Edit Playbook"}
+                    {isEditing ? "Done Editing" : "Edit Prepared response"}
                   </button>
                 </div>
               </CardHeader>
@@ -1465,8 +1465,8 @@ export default function IncidentAnalyzer() {
               </div>
               <div className="bg-white border border-[#E8E4DC] p-4 text-center">
                 <BookOpen className="w-6 h-6 text-[#0A0F2E] mx-auto mb-2" />
-                <p className="text-xs text-[#6B7280] mb-1">Playbook Generated</p>
-                <p className="text-sm font-semibold text-[#0A0F2E]">{playbook?.name || "Custom Playbook"}</p>
+                <p className="text-xs text-[#6B7280] mb-1">Prepared response Generated</p>
+                <p className="text-sm font-semibold text-[#0A0F2E]">{playbook?.name || "Custom Prepared response"}</p>
               </div>
             </div>
 
@@ -1477,7 +1477,7 @@ export default function IncidentAnalyzer() {
                   <Download className="w-10 h-10 text-[#0A0F2E] mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="text-lg font-semibold text-[#0A0F2E] mb-2">Strategic Analysis Report</h3>
                   <p className="text-sm text-[#6B7280] mb-4">
-                    Complete analysis with side-by-side comparison, playbook summary, and simulation results
+                    Complete analysis with side-by-side comparison, prepared response summary, and simulation results
                   </p>
                   <Button
                     onClick={generateIncidentPDF}
@@ -1493,7 +1493,7 @@ export default function IncidentAnalyzer() {
                   <FileText className="w-10 h-10 text-[#2B8A6E] mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="text-lg font-semibold text-[#0A0F2E] mb-2">Board Briefing Deck</h3>
                   <p className="text-sm text-[#6B7280] mb-4">
-                    Executive summary, risk assessment, playbook overview, and ROI projection for board presentation
+                    Executive summary, risk assessment, prepared response overview, and ROI projection for board presentation
                   </p>
                   <Button
                     onClick={generateBoardPDF}

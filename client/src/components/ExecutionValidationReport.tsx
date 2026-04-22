@@ -119,7 +119,7 @@ export default function ExecutionValidationReport({
         lessonsLearned: [
           "Early stakeholder engagement reduced response time by 6%",
           "Automated notifications prevented cost overrun",
-          "Pre-configured playbook eliminated 2 major risks before materialization"
+          "Pre-configured prepared response eliminated 2 major risks before materialization"
         ],
         improvementAreas: [
           "Risk assessment could be more granular",

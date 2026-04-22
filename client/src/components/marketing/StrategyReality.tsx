@@ -204,7 +204,7 @@ export function StrategyReality() {
             <ul className="space-y-3 text-gray-800">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
-                <span>170 pre-built playbooks across 9 domains</span>
+                <span>170 pre-built prepared responses across 9 domains</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 shrink-0" />
@@ -398,7 +398,7 @@ export function StrategyToIDEA() {
       textColor: "text-[#C9A84C]",
       borderColor: "border-[#C9A84C]/30",
       traditionalWork: ["Work AFTER"],
-      mPlatform: "Automated debriefs, lessons learned capture, playbook refinement",
+      mPlatform: "Automated debriefs, lessons learned capture, prepared response refinement",
     },
   ];
 

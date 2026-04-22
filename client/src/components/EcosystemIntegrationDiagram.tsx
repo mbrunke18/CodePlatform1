@@ -48,7 +48,7 @@ const PHASES: Phase[] = [
     headlineA: "170 responses configured",
     headlineB: "to your org and domains.",
     body: [
-      "Playbooks are tailored to your industry,",
+      "Prepared responses are tailored to your industry,",
       "org structure, and executive roles. Teams",
       "review and approve responses before any",
       "trigger fires. Ownership built in.",
@@ -105,7 +105,7 @@ export default function EcosystemIntegrationDiagram() {
       viewBox={`0 0 ${W} ${H}`}
       width="100%"
       style={{ maxWidth: W, display: "block", margin: "0 auto" }}
-      aria-label="Three-phase deployment: Connect in 30 minutes, Stage playbooks Day 1, Respond in 12 minutes"
+      aria-label="Three-phase deployment: Connect in 30 minutes, Stage prepared responses Day 1, Respond in 12 minutes"
     >
       <defs>
         <linearGradient id="diagBg2" x1="0" y1="0" x2="0" y2="1">

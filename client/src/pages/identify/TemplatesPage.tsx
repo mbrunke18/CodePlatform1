@@ -23,7 +23,7 @@ export default function TemplatesPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Scenario Templates</h1>
           <p className="text-muted-foreground">
-            Pre-configured playbook templates by industry and threat type. Select a template to customize for your organization.
+            Pre-configured prepared response templates by industry and threat type. Select a template to customize for your organization.
           </p>
         </div>
 
@@ -45,9 +45,9 @@ export default function TemplatesPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-3">
-                  {template.count} pre-built playbooks ready for customization
+                  {template.count} pre-built prepared responses ready for customization
                 </p>
-                <Link href="/identify/playbooks">
+                <Link href="/identify/prepared responses">
                   <Button variant="outline" size="sm" className="w-full">
                     View Templates <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>

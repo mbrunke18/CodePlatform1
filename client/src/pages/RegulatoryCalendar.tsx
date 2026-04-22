@@ -43,7 +43,7 @@ const EVENTS: RegulatoryEvent[] = [
     description: "SEC requires disclosure of material cybersecurity incidents within 4 business days of determining materiality. Failure to file triggers enforcement action.",
     applicableSectors: ["All Public Companies"],
     relatedPlaybooks: ["Cybersecurity Incident Response", "SEC Disclosure Filing", "Crisis Communications"],
-    action: "Activate Cybersecurity Incident Response playbook to pre-stage disclosure workflow.",
+    action: "Activate Cybersecurity Incident Response prepared response to pre-stage disclosure workflow.",
     regulatoryBody: "U.S. Securities and Exchange Commission",
   },
   {
@@ -56,7 +56,7 @@ const EVENTS: RegulatoryEvent[] = [
     description: "GDPR Article 33 requires notification to supervisory authority within 72 hours of becoming aware of a personal data breach. Non-compliance carries fines up to €10M or 2% of global annual turnover.",
     applicableSectors: ["All EU-Facing Operations"],
     relatedPlaybooks: ["GDPR Breach Protocol", "Data Breach Notification", "Regulatory Communications"],
-    action: "Activate GDPR Breach Protocol playbook immediately upon discovery.",
+    action: "Activate GDPR Breach Protocol prepared response immediately upon discovery.",
     regulatoryBody: "EU Data Protection Authorities",
   },
   {
@@ -82,7 +82,7 @@ const EVENTS: RegulatoryEvent[] = [
     description: "Sarbanes-Oxley requires CEO and CFO to certify accuracy of quarterly financial reports. Any material weaknesses in internal controls must be disclosed. Certification is due within 40 days of quarter close.",
     applicableSectors: ["Public Companies"],
     relatedPlaybooks: ["Financial Controls Assessment", "SOX Compliance Response", "Executive Certification Protocol"],
-    action: "Run Financial Controls Assessment playbook to surface any material weakness before certification window.",
+    action: "Run Financial Controls Assessment prepared response to surface any material weakness before certification window.",
     regulatoryBody: "U.S. Securities and Exchange Commission",
   },
   {
@@ -94,7 +94,7 @@ const EVENTS: RegulatoryEvent[] = [
     urgency: "medium",
     description: "HSR Act requires pre-merger notification filing for transactions above $119.5M threshold. Waiting period is 30 days (15 for cash acquisitions). Early termination requests available.",
     applicableSectors: ["M&A Active Organizations"],
-    relatedPlaybooks: ["M&A Regulatory Filing Protocol", "Merger Integration Playbook", "Antitrust Response"],
+    relatedPlaybooks: ["M&A Regulatory Filing Protocol", "Merger Integration Prepared response", "Antitrust Response"],
     action: "Activate M&A Regulatory Filing Protocol to coordinate HSR preparation and legal team staging.",
     regulatoryBody: "Federal Trade Commission / DOJ",
   },
@@ -121,7 +121,7 @@ const EVENTS: RegulatoryEvent[] = [
     description: "FDA Class I recalls involve products with reasonable probability of causing serious health consequences. Public notification, press releases, and retailer/consumer recall letters required within 5–10 days of FDA recall initiation.",
     applicableSectors: ["Healthcare", "Pharmaceutical", "Food & Beverage", "Medical Devices"],
     relatedPlaybooks: ["Product Recall Response", "FDA Regulatory Communications", "Supply Chain Disruption Response"],
-    action: "Pre-stage Product Recall Response playbook — all stakeholder assignments pre-loaded.",
+    action: "Pre-stage Product Recall Response prepared response — all stakeholder assignments pre-loaded.",
     regulatoryBody: "U.S. Food and Drug Administration",
   },
   {
@@ -134,7 +134,7 @@ const EVENTS: RegulatoryEvent[] = [
     description: "Employers with 100+ employees must submit EEO-1 workforce composition data by the annual EEOC deadline. Data covers race/ethnicity and sex by job category. Non-filers risk EEOC audit.",
     applicableSectors: ["All Employers 100+ Employees"],
     relatedPlaybooks: ["HR Compliance Reporting", "Workforce Data Collection Protocol"],
-    action: "Activate HR Compliance Reporting playbook to coordinate data collection across business units.",
+    action: "Activate HR Compliance Reporting prepared response to coordinate data collection across business units.",
     regulatoryBody: "Equal Employment Opportunity Commission",
   },
   {
@@ -147,7 +147,7 @@ const EVENTS: RegulatoryEvent[] = [
     description: "California Consumer Privacy Act requires businesses to review and update privacy notices, data mapping, and consumer rights fulfillment processes annually. Non-compliance fines up to $7,500 per intentional violation.",
     applicableSectors: ["California Operations", "Consumer-Facing Businesses"],
     relatedPlaybooks: ["Privacy Compliance Audit", "Data Governance Protocol", "Consumer Rights Response"],
-    action: "Schedule Privacy Compliance Audit playbook — coordinate legal, IT, and operations teams.",
+    action: "Schedule Privacy Compliance Audit prepared response — coordinate legal, IT, and operations teams.",
     regulatoryBody: "California Privacy Protection Agency",
   },
 ];
@@ -195,7 +195,7 @@ export default function RegulatoryCalendar() {
             {[
               { label: "Critical Deadlines", value: criticalCount, color: "#DC2626", bg: "rgba(220,38,38,0.06)", sub: "Action required now" },
               { label: "High Priority", value: highCount, color: "#F59E0B", bg: "rgba(245,158,11,0.06)", sub: "Within 30 days" },
-              { label: "Playbooks Mapped", value: EVENTS.reduce((a, e) => a + e.relatedPlaybooks.length, 0), color: TEAL, bg: "rgba(43,138,110,0.06)", sub: "Pre-staged responses" },
+              { label: "Prepared responses Mapped", value: EVENTS.reduce((a, e) => a + e.relatedPlaybooks.length, 0), color: TEAL, bg: "rgba(43,138,110,0.06)", sub: "Pre-staged responses" },
               { label: "Regulatory Bodies", value: new Set(EVENTS.map(e => e.regulatoryBody)).size, color: NAVY, bg: "rgba(10,15,46,0.04)", sub: "Monitored authorities" },
             ].map(({ label, value, color, bg, sub }) => (
               <div key={label} style={{ padding: "16px 18px", background: "#fff", border: "1px solid #E8E4DC", borderTop: `3px solid ${color}` }}>
@@ -262,7 +262,7 @@ export default function RegulatoryCalendar() {
                   <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                       <BookOpen style={{ width: 12, height: 12, color: TEAL }} />
-                      <span style={{ fontSize: 10, color: TEAL, fontWeight: 600 }}>{event.relatedPlaybooks.length} playbook{event.relatedPlaybooks.length !== 1 ? "s" : ""}</span>
+                      <span style={{ fontSize: 10, color: TEAL, fontWeight: 600 }}>{event.relatedPlaybooks.length} prepared response{event.relatedPlaybooks.length !== 1 ? "s" : ""}</span>
                     </div>
                     <ChevronRight style={{ width: 16, height: 16, color: "#9CA3AF", transform: isExpanded ? "rotate(90deg)" : "none", transition: "transform 0.2s" }} />
                   </div>
@@ -278,7 +278,7 @@ export default function RegulatoryCalendar() {
                     </div>
 
                     <div style={{ marginBottom: 16 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 8 }}>Pre-Staged Playbooks</div>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 8 }}>Pre-Staged Prepared responses</div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                         {event.relatedPlaybooks.map(pb => (
                           <button
@@ -308,12 +308,12 @@ export default function RegulatoryCalendar() {
         </div>
 
         <div style={{ marginTop: 24, padding: "16px 20px", background: "rgba(10,15,46,0.02)", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 11, color: "#9CA3AF" }}>Regulatory windows are auto-calculated from today's date. Playbook mappings reflect your active 170-playbook library.</div>
+          <div style={{ fontSize: 11, color: "#9CA3AF" }}>Regulatory windows are auto-calculated from today's date. Prepared response mappings reflect your active 170-prepared response library.</div>
           <button
             onClick={() => setLocation("/playbooks")}
             style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: NAVY, color: "#fff", border: "none", cursor: "pointer", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}
           >
-            Open Playbook Library <ChevronRight style={{ width: 12, height: 12 }} />
+            Open Prepared response Library <ChevronRight style={{ width: 12, height: 12 }} />
           </button>
         </div>
       </div>

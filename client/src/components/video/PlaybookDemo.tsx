@@ -32,7 +32,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           >
             <BookOpen className="w-6 h-6 text-[#D4AF37]" />
           </motion.div>
-          <TextPunch text="170 Pre-Built Playbooks" size="lg" className="text-gray-900" />
+          <TextPunch text="170 Pre-Built Prepared responses" size="lg" className="text-gray-900" />
         </div>
 
         <motion.p
@@ -80,7 +80,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           <div className="inline-flex items-center gap-6 bg-gray-50 px-6 py-3">
             <div className="text-center">
               <p className="text-2xl font-bold text-[#D4AF37]">170</p>
-              <p className="text-xs text-gray-700">Playbooks</p>
+              <p className="text-xs text-gray-700">Prepared responses</p>
             </div>
             <div className="w-px h-8 bg-gray-100" />
             <div className="text-center">
@@ -98,13 +98,13 @@ export function PlaybookDemo({ progress }: SceneProps) {
               <p className="text-xs text-gray-700">Head Start</p>
             </div>
           </div>
-          <p className="text-gray-600 text-xs mt-3">Each playbook represents weeks of expert strategic planning—ready to deploy instantly</p>
+          <p className="text-gray-600 text-xs mt-3">Each prepared response represents weeks of expert strategic planning—ready to deploy instantly</p>
         </motion.div>
       </div>
       
       <NarrationBox 
-        headline="Pre-Built Strategic Playbooks"
-        description="170 battle-tested playbooks eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
+        headline="Pre-Built Strategic Prepared responses"
+        description="170 battle-tested prepared responses eliminate the chaos of figuring out 'who does what' when a crisis or opportunity hits."
         delay={0.5}
       />
     </div>

@@ -268,11 +268,11 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
               Decision quality compounds with every activation
             </div>
             <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', lineHeight: 1.6, maxWidth: 500 }}>
-              Each time a playbook activates, execution quality is scored, improvements are encoded, and the next response starts from a better place. Activate your first playbook to begin the intelligence loop.
+              Each time a prepared response activates, execution quality is scored, improvements are encoded, and the next response starts from a better place. Activate your first prepared response to begin the intelligence loop.
             </div>
           </div>
           <a href="/playbooks" style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', color: TEAL, border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '9px 16px', fontSize: 11, fontWeight: 700, textDecoration: 'none' }}>
-            Browse Playbooks <ChevronRight size={11} />
+            Browse Prepared responses <ChevronRight size={11} />
           </a>
         </div>
       )}
@@ -342,7 +342,7 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 0, padding: '9px 14px', marginBottom: 14 }}>
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>RECOMMENDED PLAYBOOK</div>
+          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>RECOMMENDED PREPARED RESPONSE</div>
           <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
         </div>
       </div>
@@ -352,7 +352,7 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
           onClick={handleActivate}
           style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 0, padding: '12px 0', fontWeight: 800, fontSize: 13, letterSpacing: '0.05em', border: 'none', cursor: 'pointer' }}
         >
-          <Zap size={14} /> ACTIVATE PLAYBOOK
+          <Zap size={14} /> ACTIVATE PREPARED RESPONSE
         </button>
         <Link href="/live-detection-feed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '12px 16px', fontWeight: 600, fontSize: 12, textDecoration: 'none' }}>
             Details <ArrowRight size={12} />
@@ -405,7 +405,7 @@ export default function MissionControl() {
   useEffect(() => {
     updatePageMetadata({
       title: 'Mission Control — Readiness OS | VaughnMartin',
-      description: 'Single-pane executive NOC for strategic execution. Live trigger detections, domain monitoring, playbook activation.',
+      description: 'Single-pane executive NOC for strategic execution. Live trigger detections, domain monitoring, prepared response activation.',
     });
   }, []);
 
@@ -541,7 +541,7 @@ export default function MissionControl() {
             {[
               { label: 'Triggers Armed',    value: triggersArmed.toLocaleString(), sub: '221 signals active',  color: GOLD },
               { label: 'Live Detections',   value: detections.length.toString(),   sub: detections.length > 0 ? `${criticalCount} critical` : 'All clear', color: detections.length > 0 ? RED_ALT : TEAL },
-              { label: 'Playbooks Ready',   value: '170',                          sub: 'Pre-staged, 9 domains', color: TEAL },
+              { label: 'Prepared responses Ready',   value: '170',                          sub: 'Pre-staged, 9 domains', color: TEAL },
               { label: 'Executions Logged', value: activations.length.toString(),  sub: activations.length > 0 ? timeAgo(activations[0]?.activatedAt || '') : 'None yet', color: 'rgba(255,255,255,0.65)' },
               { label: 'Next Scan',         value: nextScanLabel,                  sub: modeLabel,              color: 'rgba(255,255,255,0.65)' },
             ].map(({ label, value, sub, color }, i) => (
@@ -672,7 +672,7 @@ export default function MissionControl() {
             </div>
             <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
               <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2, letterSpacing: '0.06em' }}>12-min activation</div>
-              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>170 pre-staged playbooks</div>
+              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>170 pre-staged prepared responses</div>
             </div>
           </div>
 
@@ -720,7 +720,7 @@ export default function MissionControl() {
                         onClick={() => setLocation('/live-activation-center')}
                         style={{ display: 'flex', alignItems: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 0, padding: '12px 24px', fontWeight: 800, fontSize: 13, border: 'none', cursor: 'pointer' }}
                       >
-                        <Zap size={14} /> Activate Playbook
+                        <Zap size={14} /> Activate Prepared response
                       </button>
                       <Link href="/triggers-management" style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
                           <Eye size={13} /> View Triggers
@@ -756,7 +756,7 @@ export default function MissionControl() {
                   <div style={{ textAlign: 'center', padding: '18px 12px' }}>
                     <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
                     <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
-                    <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>170 playbooks pre-staged. 12-minute deployment on trigger.</div>
+                    <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>170 prepared responses pre-staged. 12-minute deployment on trigger.</div>
                   </div>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -813,7 +813,7 @@ export default function MissionControl() {
                     <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
                   </div>
                   <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
-                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>30 days → 12 minutes. 170 playbooks pre-staged.</div>
+                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>30 days → 12 minutes. 170 prepared responses pre-staged.</div>
                 </div>
               </div>
 

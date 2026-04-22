@@ -422,7 +422,7 @@ export default function ExecutiveSimulationDemo() {
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
-                    <span>Activate a pre-built playbook and coordinate your team</span>
+                    <span>Activate a pre-built prepared response and coordinate your team</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#2B8A6E] mt-0.5 flex-shrink-0" />
@@ -529,7 +529,7 @@ export default function ExecutiveSimulationDemo() {
                     <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">2</span>
                     </div>
-                    <span>AI assessed impact and recommended "Competitor M&A Response" playbook</span>
+                    <span>AI assessed impact and recommended "Competitor M&A Response" prepared response</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -603,7 +603,7 @@ export default function ExecutiveSimulationDemo() {
                 <div className="bg-[#2B8A6E]/10 p-4 border border-[#2B8A6E]/20">
                   <p className="text-[#2B8A6E] font-medium flex items-center gap-2">
                     <Zap className="w-4 h-4 text-[#C9A84C]" />
-                    Readiness OS Recommendation: Activate "Competitor M&A Response" playbook immediately
+                    Readiness OS Recommendation: Activate "Competitor M&A Response" prepared response immediately
                   </p>
                 </div>
               </CardContent>
@@ -712,9 +712,9 @@ export default function ExecutiveSimulationDemo() {
                   </Badge>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="playbooks" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-playbooks">
+              <TabsTrigger value="prepared responses" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-prepared responses">
                 <FileText className="w-4 h-4" />
-                Playbooks
+                Prepared responses
               </TabsTrigger>
               <TabsTrigger value="command" className="flex items-center gap-2 data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white dark:data-[state=active]:bg-[#C9A84C] dark:data-[state=active]:text-[#0A0F2E]" data-testid="tab-command">
                 <Radio className="w-4 h-4" />
@@ -874,21 +874,21 @@ export default function ExecutiveSimulationDemo() {
               </div>
             </TabsContent>
 
-            {/* Playbooks Tab */}
-            <TabsContent value="playbooks" className="space-y-6">
+            {/* Prepared responses Tab */}
+            <TabsContent value="prepared responses" className="space-y-6">
               {phase === 'playbook_selection' ? (
                 <div className="space-y-4">
                   <div className="bg-[#C9A84C]/10 dark:bg-[#C9A84C]/10 border border-[#C9A84C]/20 dark:border-[#C9A84C]/20 p-4">
                     <p className="text-[#0A0F2E] dark:text-[#C9A84C] flex items-center gap-2">
                       <Zap className="w-5 h-5" />
-                      <strong>Readiness OS Recommendation:</strong> Based on the detected signal, the following playbook is recommended
+                      <strong>Readiness OS Recommendation:</strong> Based on the detected signal, the following prepared response is recommended
                     </p>
                   </div>
                   
                   <Card 
                     className="border-2 border-[#C9A84C] bg-[#0A0F2E] dark:bg-[#0A0F2E]/20 cursor-pointer transition-all"
                     onClick={() => handleSelectPlaybook('competitor-ma-response')}
-                    data-testid="card-recommended-playbook"
+                    data-testid="card-recommended-prepared response"
                   >
                     <CardHeader>
                       <div className="flex items-center justify-between">
@@ -939,9 +939,9 @@ export default function ExecutiveSimulationDemo() {
                       </div>
                     </CardContent>
                     <CardFooter className="bg-white/5 dark:bg-[#0A0F2E]/30">
-                      <Button className="w-full bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0A0F2E] font-bold" data-testid="button-activate-playbook">
+                      <Button className="w-full bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0A0F2E] font-bold" data-testid="button-activate-prepared response">
                         <Rocket className="w-4 h-4 mr-2" />
-                        Activate This Playbook
+                        Activate This Prepared response
                       </Button>
                     </CardFooter>
                   </Card>
@@ -953,7 +953,7 @@ export default function ExecutiveSimulationDemo() {
                       <div className="flex items-center gap-3">
                         <CheckCircle2 className="w-8 h-8 text-[#2B8A6E]" />
                         <div>
-                          <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Playbook Activated: Competitor M&A Response</CardTitle>
+                          <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Prepared response Activated: Competitor M&A Response</CardTitle>
                           <CardDescription className="text-[#6B7280] dark:text-white/60">Team notifications sent. Review actions below and launch execution.</CardDescription>
                         </div>
                       </div>
@@ -1003,7 +1003,7 @@ export default function ExecutiveSimulationDemo() {
               ) : (
                 <div className="text-center py-12">
                   <FileText className="w-12 h-12 text-[#6B7280] dark:text-[#C9A84C]/60 mx-auto mb-4" />
-                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Playbooks will be recommended when a signal requires response</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Prepared responses will be recommended when a signal requires response</p>
                 </div>
               )}
             </TabsContent>
@@ -1079,7 +1079,7 @@ export default function ExecutiveSimulationDemo() {
               ) : (
                 <div className="text-center py-12">
                   <Radio className="w-12 h-12 text-[#6B7280] dark:text-white/60 mx-auto mb-4" />
-                  <p className="text-[#6B7280] dark:text-white/60">Command Center activates when a playbook is launched</p>
+                  <p className="text-[#6B7280] dark:text-white/60">Command Center activates when a prepared response is launched</p>
                 </div>
               )}
             </TabsContent>
