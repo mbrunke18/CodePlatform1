@@ -1834,3 +1834,44 @@ The same applies to any other retired metric (340×, 360×) — always check bot
 
 **The broader principle:** The manifesto tells the same story as the product deck. When the product deck locks a number, the manifesto inherits that lock — regardless of whether the manifesto is editorial, protected, or historically locked for other reasons. Metric consistency is a commercial integrity requirement, not a copywriting preference.
 
+---
+
+## 39. Canonical Demo Scenarios + Access — April 22, 2026 (rev 24)
+
+### The Three Canonical Scenarios (LOCKED)
+
+These are the three primary situations the platform is built around. They appear as live signal detections on the Homepage and are the agreed-upon canonical scenarios for all demos, sales conversations, investor presentations, and marketing copy. Do not substitute, replace, or reorder them without explicit founder approval.
+
+| # | Scenario | Signal Detail | Source | Confidence |
+|---|---|---|---|---|
+| 1 | **Activist Investor Pressure** | Institutional investor filed 13D disclosing 8.7% stake — board seat demanded | SEC EDGAR | 91% |
+| 2 | **Regulatory Inquiry Opened** | Federal agency formal inquiry into pricing practices — 48-hour disclosure window | Federal Register | 87% |
+| 3 | **Ransomware Attack Confirmed** | Critical systems encrypted — billing and operations affected | Reuters Business | 95% |
+
+These three scenarios represent the three strategic domains:
+- Activist Investor → **RISK & RESILIENCE** (internal: `defense`)
+- Regulatory Inquiry → **RISK & RESILIENCE** (internal: `defense`)
+- Ransomware Attack → **RISK & RESILIENCE** (internal: `defense`)
+
+All three are selectable in the 12-Minute Test Drive (`/12-minute-experience`) alongside three additional scenarios (Supply Chain Collapse, Brand Crisis, Talent Exodus).
+
+### Demo Access — SpeedRun / a16z (April 2026)
+
+**Canonical demo link for a16z SpeedRun application:**
+```
+https://vaughnmartin.com/demo-access?token=speedrun2026&returnTo=/12-minute-experience
+```
+
+**Token:** `speedrun2026` — set as `DEMO_ACCESS_TOKEN` in production environment (April 22, 2026). Overrides the hardcoded default `VMdemo2026`. To change the token, update the `DEMO_ACCESS_TOKEN` environment variable in production and republish.
+
+**Landing destination:** `/12-minute-experience` — the canonical 4-step guided demo (Choose Scenario → Execution Brief → War Room → Debrief). Reviewer selects one of the three canonical scenarios (or any of the 6 available), runs the full 12-minute execution, sees the IDEA Framework in action end-to-end.
+
+**Why this destination (not `/executive-departure`):** The 12-minute test drive shows the platform across multiple trigger types. The Executive Departure Brief is a single-scenario cinematic instrument designed for individual board chairs — appropriate for a targeted sales URL, not a platform introduction.
+
+**Session behavior:** Each visitor gets an independent 4-hour browser session. Multi-use, no limit on concurrent visitors. Session is browser-cookie-scoped — no shared state between reviewers.
+
+**To expire the token:** Set `DEMO_ACCESS_EXPIRES` to an ISO timestamp in the production environment (e.g., `2026-05-31T00:00:00Z`). The system serves a branded "Access Window Closed" page automatically.
+
+### Route Registration Note
+`/executive-departure` (`ExecutiveDepartureBrief.tsx`) was not registered in `App.tsx` until April 22, 2026. It is now live. The page is fully public (no auth required, no StandardNav) — designed as a single-URL boardroom sales instrument for CFO departure scenario demos sent directly to a board chair or CFO prospect.
+
