@@ -150,16 +150,16 @@ const DOMAIN_LABELS: Record<string, string> = {
   'Human Capital': 'TALENT',
 };
 const FALLBACK_SIGNALS = [
-  { triggerName: 'Activist Investor Pressure', triggerDomain: 'Market Dynamics', signalDescription: 'Institutional investor filed 13D disclosing 8.7% stake in Fortune 500 consumer goods company, citing undervaluation and seeking board representation.', signalSource: 'SEC EDGAR', confidenceScore: 91, detectedAt: null, illustrative: true },
-  { triggerName: 'Regulatory Inquiry Opened', triggerDomain: 'Regulatory & Compliance', signalDescription: 'Federal agency announced formal inquiry into pricing practices of major pharmaceutical distributor — disclosure obligations triggered within 48 hours.', signalSource: 'Federal Register', confidenceScore: 87, detectedAt: null, illustrative: true },
-  { triggerName: 'Ransomware Attack Confirmed', triggerDomain: 'Technology & Security', signalDescription: 'Critical infrastructure provider confirmed ransomware incident affecting billing and operations systems — second major attack in sector this quarter.', signalSource: 'Reuters Business', confidenceScore: 95, detectedAt: null, illustrative: true },
+  { triggerName: 'Activist Investor Pressure', triggerDomain: 'Market Dynamics', signalDescription: 'Institutional investor filed 13D disclosing 8.7% stake in Fortune 500 consumer goods company, citing undervaluation and seeking board representation.', signalSource: 'SEC EDGAR', confidenceScore: 91, detectedAt: null, illustrative: true, recommendedPlaybook: 'Activist Investor Defense' },
+  { triggerName: 'Regulatory Inquiry Opened', triggerDomain: 'Regulatory & Compliance', signalDescription: 'Federal agency announced formal inquiry into pricing practices of major pharmaceutical distributor — disclosure obligations triggered within 48 hours.', signalSource: 'Federal Register', confidenceScore: 87, detectedAt: null, illustrative: true, recommendedPlaybook: 'Regulatory Investigation Response' },
+  { triggerName: 'Ransomware Attack Confirmed', triggerDomain: 'Technology & Security', signalDescription: 'Critical infrastructure provider confirmed ransomware incident affecting billing and operations systems — second major attack in sector this quarter.', signalSource: 'Reuters Business', confidenceScore: 95, detectedAt: null, illustrative: true, recommendedPlaybook: 'Ransomware Response' },
 ];
 
 // ─── LiveSignalFeed section ───────────────────────────────────────────────────
 function LiveSignalFeedSection() {
   const liveCtx = useLiveContext();
   const hasReal = (liveCtx?.recentDetections?.length ?? 0) > 0;
-  const signals: Array<{ triggerName: string; triggerDomain: string; signalDescription: string; signalSource: string; confidenceScore: number; detectedAt: string | null; illustrative?: boolean }> =
+  const signals: Array<{ triggerName: string; triggerDomain: string; signalDescription: string; signalSource: string; confidenceScore: number; detectedAt: string | null; illustrative?: boolean; recommendedPlaybook?: string | null }> =
     hasReal
       ? liveCtx!.recentDetections.map(d => ({ ...d, illustrative: false }))
       : FALLBACK_SIGNALS;
@@ -250,6 +250,25 @@ function LiveSignalFeedSection() {
                       </span>
                     </div>
                   </div>
+
+                  {/* Chain completion row — what fires next */}
+                  {sig.recommendedPlaybook && (
+                    <div style={{
+                      marginTop: 2,
+                      padding: '10px 14px',
+                      background: 'rgba(43,138,110,0.1)',
+                      border: '1px solid rgba(43,138,110,0.25)',
+                      borderLeft: `3px solid ${TEAL}`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Playbook Staged</span>
+                        <span style={{ ...DM, fontSize: 9, color: 'rgba(255,255,255,0.2)' }}>→</span>
+                        <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.85)' }}>{sig.recommendedPlaybook}</span>
+                      </div>
+                      <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.08em', whiteSpace: 'nowrap' as const, flexShrink: 0 }}>12 MIN</span>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             );
@@ -604,7 +623,7 @@ function HeroSection() {
                 Request a Pilot
               </Link>
               <Link
-                href="/manufacturing-demo"
+                href="/12-minute-experience"
                 onClick={() => trackCTA("hero_testdrive")}
                 style={{
                   ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
@@ -614,7 +633,7 @@ function HeroSection() {
                 onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
                 onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(201,168,76,0.45)"; el.style.background = "none"; }}
               >
-                ▶ See It Work
+                ▶ See It Execute — 12 Minutes
               </Link>
               <Link
                 href="/request-access"
@@ -2031,6 +2050,49 @@ function HowTriggersWorkSection() {
                   <strong>Signal → Review → Authorize → Execute.</strong> The executive is never bypassed. The system is never idle.
                 </p>
               </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* ── Live chain trace — one scenario, end-to-end ── */}
+        <Reveal delay={0.15}>
+          <div style={{ marginTop: 56, borderTop: "1px solid #E8E4DC", paddingTop: 40 }}>
+            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 24, textAlign: "center" as const }}>
+              Watch the chain — signal to execution
+            </div>
+            <div style={{ display: "flex", alignItems: "stretch", gap: 0, overflowX: "auto" as const }}>
+              {[
+                { step: "01", label: "Signal Detected", detail: "Reuters Business", sub: "Ransomware confirmed · 95% match", bg: "#F8F7F4", accent: TEAL },
+                { step: "02", label: "Trigger Matched", detail: "Ransomware Attack Confirmed", sub: "221 patterns evaluated · instant", bg: "#F0EDE4", accent: TEAL },
+                { step: "03", label: "Playbook Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
+                { step: "04", label: "Executive Authorizes", detail: "CISO + CFO sign-off", sub: "Human decision preserved", bg: "#F0EDE4", accent: GOLD },
+                { step: "05", label: "Execution Begins", detail: "12 minutes after detection", sub: "30 days → 12 min", bg: NAVY, accent: GOLD },
+              ].map((node, i) => (
+                <div key={i} style={{ flex: "1 1 0", minWidth: 140, display: "flex", alignItems: "stretch" }}>
+                  <div style={{
+                    flex: 1, padding: "20px 18px", background: node.bg,
+                    border: `1px solid ${i < 4 ? "#E8E4DC" : "transparent"}`,
+                    borderLeft: i === 0 ? `3px solid ${node.accent}` : undefined,
+                    borderRight: i === 4 ? undefined : "none",
+                    display: "flex", flexDirection: "column" as const, gap: 6,
+                    position: "relative" as const,
+                  }}>
+                    <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", color: node.accent, textTransform: "uppercase" as const }}>
+                      {node.step} · {node.label}
+                    </div>
+                    <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: i === 4 ? "#fff" : NAVY, lineHeight: 1.3 }}>{node.detail}</div>
+                    <div style={{ ...DM, fontSize: 11, color: i === 4 ? "rgba(255,255,255,0.55)" : "#6B7280", lineHeight: 1.4 }}>{node.sub}</div>
+                    {i < 4 && (
+                      <div style={{ position: "absolute" as const, right: -10, top: "50%", transform: "translateY(-50%)", zIndex: 2, ...DM, fontSize: 14, color: node.accent, fontWeight: 700 }}>→</div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 20, display: "flex", justifyContent: "flex-end" as const }}>
+              <Link href="/12-minute-experience" style={{ ...DM, fontSize: 12, fontWeight: 700, color: TEAL, textDecoration: "none", letterSpacing: "0.06em", borderBottom: `1px solid rgba(43,138,110,0.35)`, paddingBottom: 1 }}>
+                Experience the full 12-minute execution →
+              </Link>
             </div>
           </div>
         </Reveal>
