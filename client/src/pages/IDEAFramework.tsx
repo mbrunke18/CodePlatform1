@@ -232,10 +232,10 @@ export default function IDEAFramework() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "#E8E4DC", border: "1px solid #E8E4DC" }}>
               {[
-                { phase: "IDENTIFY", sport: "Pre-Season Game Planning", num: "I", sportLine: "Coaches define every situation before the season begins.", execLine: "170 playbooks across 9 domains — pre-built before the trigger fires.", color: TEAL },
-                { phase: "DETECT", sport: "Reading the Defense", num: "II", sportLine: "Live reads of the field. Data points line up. The situation is confirmed.", execLine: "248+ signals monitored continuously. Trigger surfaces in seconds.", color: GOLD },
-                { phase: "EXECUTE", sport: "The Play Call", num: "III", sportLine: "Under 40 seconds. Everyone already knows their role. No committee needed.", execLine: "Executive authorizes. 12 minutes to full organizational execution.", color: NAVY },
-                { phase: "ADVANCE", sport: "Film Study", num: "IV", sportLine: "After the game: what worked, what failed, what to refine next time.", execLine: "Post-Activation Debrief. Every execution sharpens the next.", color: TEAL_LT },
+                { phase: "IDENTIFY", sport: "Pre-Staged Architecture", num: "I", sportLine: "Every strategic situation catalogued before any trigger fires. The response is ready before the pressure arrives.", execLine: "170 playbooks across 9 domains — pre-built before the trigger fires.", color: TEAL },
+                { phase: "DETECT", sport: "Continuous Signal Intelligence", num: "II", sportLine: "Signals aligned. Trigger detected. Situation confirmed in seconds — before mobilization begins.", execLine: "248+ signals monitored continuously. Trigger surfaces in seconds.", color: GOLD },
+                { phase: "EXECUTE", sport: "Executive Authorization", num: "III", sportLine: "One decision. Every role pre-defined. No committee. The preparation did the work.", execLine: "Executive authorizes. 12 minutes to full organizational execution.", color: NAVY },
+                { phase: "ADVANCE", sport: "Institutional Memory", num: "IV", sportLine: "Every activation feeds the intelligence loop. Debrief, refine, and sharpen the next response.", execLine: "Post-Activation Debrief. Every execution sharpens the next.", color: TEAL_LT },
               ].map(item => (
                 <div key={item.phase} style={{ background: "#fff", padding: "28px 24px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
@@ -391,29 +391,29 @@ export default function IDEAFramework() {
               {[
                 {
                   phase: "IDENTIFY",
-                  sport: "Game Planning",
-                  sportDesc: "Before the season, coaches catalog every situation they may face. Plays are built before any opponent is studied.",
+                  sport: "Pre-Staged Architecture",
+                  sportDesc: "Organizations map every strategic situation they may face. Playbooks are built before any trigger is studied.",
                   execDesc: "Executives define every strategic trigger across 9 domains. All 170 playbooks are pre-built before any trigger fires.",
                   color: TEAL,
                 },
                 {
                   phase: "DETECT",
-                  sport: "Reading the Field",
-                  sportDesc: "The offense reads the defense formation in real time. Data points align. The situation is now — not hypothetical.",
-                  execDesc: "248+ live data points monitored continuously. When signals align, the trigger surfaces in seconds — AI reads the field.",
+                  sport: "Signal Intelligence",
+                  sportDesc: "248+ live data points monitored continuously. When signals align, the situation surfaces in seconds — not days.",
+                  execDesc: "248+ live data points monitored continuously. When signals align, the trigger surfaces in seconds.",
                   color: GOLD,
                 },
                 {
                   phase: "EXECUTE",
-                  sport: "The Play Call",
-                  sportDesc: "Under 40 seconds. The coach calls the play. Everyone knows their assignment. No committee. Preparation did the work.",
+                  sport: "Executive Authorization",
+                  sportDesc: "One executive decision. Every role pre-defined. No committee. The preparation compressed the mobilization cycle.",
                   execDesc: "Executive authorizes. 12 minutes later, the full organizational response is coordinated. Every role already pre-defined.",
                   color: NAVY,
                 },
                 {
                   phase: "ADVANCE",
-                  sport: "Film Study",
-                  sportDesc: "After every game, coaches review what worked and update the playbook. The system learns and improves continuously.",
+                  sport: "Institutional Memory",
+                  sportDesc: "Every activation is reviewed and codified. The system learns what worked, what failed, and sharpens the next response.",
                   execDesc: "Every execution feeds the intelligence loop. The system strengthens with each activation — permanently.",
                   color: TEAL,
                 },
