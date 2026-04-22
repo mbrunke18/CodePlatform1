@@ -27,7 +27,7 @@ const SCENARIO = {
   ],
   surviveScore: 44,
   thriveScore: 91,
-  analysis: "Luxury brand equity is the balance sheet. A single viral incident without coordinated response destroys decades of positioning in hours. Without Readiness OS, your VIP clients hear from journalists before they hear from you — a relationship-ending sequence. With pre-staged playbooks, your CCO, regional Maison directors, and VIP client teams deploy simultaneously before narrative control is lost.",
+  analysis: "Luxury brand equity is the balance sheet. A single viral incident without coordinated response destroys decades of positioning in hours. Without Readiness OS, your VIP clients hear from journalists before they hear from you — a relationship-ending sequence. With pre-staged Prepared Responses, your CCO, regional Maison directors, and VIP client teams deploy simultaneously before narrative control is lost.",
   debrief: { value1: "$280M", label1: "Brand Value Protected", value2: "193", label2: "Stakeholders Coordinated", value3: "12 min", label3: "Narrative Controlled" },
   insight: "Luxury brands are spending billions on AI social monitoring. But without Readiness OS, they still lose the critical first 12 minutes to coordination chaos — unclear accountability, delayed VIP outreach, staggered messaging that lets the narrative escape. The operating model is the missing layer.",
 };

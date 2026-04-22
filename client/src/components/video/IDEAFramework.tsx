@@ -138,7 +138,7 @@ export function IDEAFramework({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="The IDEA Framework"
-        description="Four phases work together: Identify playbooks, Detect triggers, Execute responses, and Advance through learning."
+        description="Four phases work together: Identify Prepared Responses, Detect triggers, Execute responses, and Advance through learning."
         delay={0.5}
       />
     </div>

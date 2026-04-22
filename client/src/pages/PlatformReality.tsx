@@ -60,7 +60,7 @@ export default function PlatformReality() {
   useEffect(() => {
     updatePageMetadata({
       title: "Platform Reality: They Described It. We Shipped It. | VaughnMartin Readiness OS",
-      description: "Every conference keynote, McKinsey deck, and LinkedIn post proves the mobilization problem is real. None of them built the solution. Readiness OS did — 12-minute execution, 170 pre-staged playbooks, 3,600× Execution Head Start.",
+      description: "Every conference keynote, McKinsey deck, and LinkedIn post proves the mobilization problem is real. None of them built the solution. Readiness OS did — 12-minute execution, 170 pre-staged Prepared Responses, 3,600× Execution Head Start.",
       ogTitle: "They Described the Problem. We Shipped the Solution.",
       ogDescription: "The 3,600× Execution Head Start is not a framework. It's a timestamp on a deployed Prepared Response. See how Readiness OS ends the thought leadership theater.",
     });

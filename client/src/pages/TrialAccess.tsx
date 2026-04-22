@@ -117,7 +117,7 @@ export default function TrialAccess() {
             See the full platform.<br />No commitment required.
           </h2>
           <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
-            Request access and get an activation link instantly. Your 48-hour session unlocks every capability — live trigger detection, 170 playbooks, Mission Control, and the complete IDEA Framework.
+            Request access and get an activation link instantly. Your 48-hour session unlocks every capability — live trigger detection, 170 Prepared Responses, Mission Control, and the complete IDEA Framework.
           </p>
           <div className="space-y-4">
             {[

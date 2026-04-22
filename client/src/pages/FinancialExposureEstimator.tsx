@@ -184,7 +184,7 @@ export default function FinancialExposureEstimator() {
                     <SelectValue placeholder="Select readiness..." />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="high">High — Pre-staged playbooks, recent drills</SelectItem>
+                    <SelectItem value="high">High — Pre-staged Prepared Responses, recent drills</SelectItem>
                     <SelectItem value="medium">Medium — Prepared responses exist, limited practice</SelectItem>
                     <SelectItem value="low">Low — No pre-staged response</SelectItem>
                     <SelectItem value="unknown">Unknown — First assessment</SelectItem>

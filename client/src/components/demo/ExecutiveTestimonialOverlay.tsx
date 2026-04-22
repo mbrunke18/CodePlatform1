@@ -62,7 +62,7 @@ export function ExecutiveTestimonialOverlay() {
                     </p>
                     <blockquote className="text-xl text-red-500 leading-relaxed">
                       Traditional ad-hoc approach: When crisis hits, executives scramble to coordinate response. 
-                      No playbooks, no rehearsed roles, no pre-built execution plans.
+                      No Prepared Responses, no rehearsed roles, no pre-built execution plans.
                     </blockquote>
                     <div className="space-y-2 pt-2">
                       <p className="text-red-700/80 italic">• Typical result: 30-day mobilization cycle</p>

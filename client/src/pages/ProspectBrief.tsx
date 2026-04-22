@@ -117,7 +117,7 @@ export default function ProspectBrief() {
               Generate a Prospect-Specific Executive Brief
             </h1>
             <p style={{ fontSize: 13, color: MUTED, textAlign: "center", marginBottom: 32, lineHeight: 1.6 }}>
-              A printable 2-page document showing exactly how Readiness OS would deploy for this organization — specific playbooks, triggers, and ROI.
+              A printable 2-page document showing exactly how Readiness OS would deploy for this organization — specific Prepared Responses, triggers, and ROI.
             </p>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>

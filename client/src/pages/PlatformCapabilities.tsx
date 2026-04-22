@@ -106,7 +106,7 @@ const PHASES = [
       },
       {
         title: 'Live War Room',
-        detail: 'Real-time execution status across all active playbooks, stakeholder acknowledgment tracking, decision gate visibility, and cross-functional coordination from a single screen. Executives see the execution state without calling for a status update.',
+        detail: 'Real-time execution status across all active Prepared Responses, stakeholder acknowledgment tracking, decision gate visibility, and cross-functional coordination from a single screen. Executives see the execution state without calling for a status update.',
       },
       {
         title: 'Microsoft Ecosystem Integration',

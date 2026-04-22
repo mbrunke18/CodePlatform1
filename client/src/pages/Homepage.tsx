@@ -182,7 +182,7 @@ function LiveSignalFeedSection() {
               </div>
               <h2 style={{ ...GEO, fontSize: 'clamp(22px,3vw,32px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, margin: 0 }}>
                 {hasReal
-                  ? 'What the system has detected. Mapped to pre-staged playbooks.'
+                  ? 'What the system has detected. Mapped to pre-staged Prepared Responses.'
                   : 'What the system monitors — continuously, across every domain.'}
               </h2>
             </div>

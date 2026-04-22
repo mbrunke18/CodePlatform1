@@ -71,7 +71,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'The Solution',
     subtitle: 'Compress 30 days into 12 minutes',
-    narration: 'Readiness OS connects intelligence signals directly to pre-built playbooks, enabling coordinated response in minutes — not days.',
+    narration: 'Readiness OS connects intelligence signals directly to pre-staged Prepared Responses, enabling coordinated response in minutes — not days.',
     visual: 'solution'
   },
   {

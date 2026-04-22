@@ -231,7 +231,7 @@ export default function FounderStory() {
             Sixty to eighty decisions. Forty seconds each. Three units. Over a hundred people ready to execute the moment their number is called. And a system built to pivot in real time when the situation changes at the line.
           </Body>
           <Body>
-            The pre-staged playbook. The shared coordination infrastructure. The response already built before the signal fires. That is not a football concept. It is how elite execution works anywhere the cost of lag is high. Which is everywhere. Every industry. Every scale.
+            The pre-staged Prepared Response. The shared coordination infrastructure. The response already built before the signal fires. That is not a football concept. It is how elite execution works anywhere the cost of lag is high. Which is everywhere. Every industry. Every scale.
           </Body>
           <Body>
             I spent twenty years knowing that and watching organizations that could afford to fix it choose not to — not out of stubbornness, but because no one had ever built the infrastructure that made it fixable. So I built it.

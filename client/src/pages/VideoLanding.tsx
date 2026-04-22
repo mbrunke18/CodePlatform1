@@ -26,7 +26,7 @@ export default function VideoLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS - Strategic Readiness Platform | 30 Days → 12 Minutes",
-      description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged playbooks, coordinated stakeholders, instant activation for Fortune 1000 companies.",
+      description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged Prepared Responses, coordinated stakeholders, instant activation for Fortune 1000 companies.",
       ogTitle: "Readiness OS - The Speed to Execute",
       ogDescription: "170 playbooks. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Strategic Readiness Platform.",
     });

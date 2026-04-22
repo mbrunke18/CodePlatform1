@@ -242,7 +242,7 @@ export default function Research() {
               <div style={{ background: "#FEF2F2", border: "1px solid #fecaca", padding: "14px 18px", marginBottom: 12 }}>
                 <p className="text-sm font-semibold" style={{ color: "#dc2626" }}>The HBR Prescription — and what Readiness OS delivers:</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged playbooks, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 prepared responses pre-staged, 221 triggers monitored, and no action taken without executive authorization.
+                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged Prepared Responses, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 prepared responses pre-staged, 221 triggers monitored, and no action taken without executive authorization.
                 </p>
               </div>
 

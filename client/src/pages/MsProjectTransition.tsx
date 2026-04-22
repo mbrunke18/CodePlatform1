@@ -30,7 +30,7 @@ export default function MsProjectTransition() {
   useEffect(() => {
     updatePageMetadata({
       title: "MS Project End of Life — Don't Just Migrate. Evolve. | VaughnMartin Readiness OS",
-      description: "Microsoft Project is retiring. ServiceNow wants to migrate your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle entirely — 170 pre-staged playbooks, 12-minute execution, and the operating model Fortune 1000 boards actually need.",
+      description: "Microsoft Project is retiring. ServiceNow wants to migrate your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle entirely — 170 pre-staged Prepared Responses, 12-minute execution, and the operating model Fortune 1000 boards actually need.",
       ogTitle: "Microsoft Project EOL: Migration vs. Evolution",
       ogDescription: "While others migrate their static plans to ServiceNow, Readiness OS users are already executing. 30 days compressed to 12 minutes.",
     });
@@ -186,7 +186,7 @@ export default function MsProjectTransition() {
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
               {[
                 { phase: "01", title: "Microsoft provides the AI engine", body: "Azure AI Foundry, Copilot Studio, Teams, M365 — your organization already has this infrastructure." },
-                { phase: "02", title: "Readiness OS is the operating model layer", body: "Pre-staged playbooks, role assignments, decision rights, and execution coordination — activated in 12 minutes above your existing Microsoft stack." },
+                { phase: "02", title: "Readiness OS is the operating model layer", body: "Pre-staged Prepared Responses, role assignments, decision rights, and execution coordination — activated in 12 minutes above your existing Microsoft stack." },
                 { phase: "03", title: "Every Microsoft customer is a Readiness OS prospect", body: "For investors: the total addressable market is every Fortune 1000 Microsoft enterprise account — a $847B strategic spend already committed." },
               ].map((item) => (
                 <div key={item.phase} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "24px", background: "#fff", border: `1px solid #E8E4DC` }}>
@@ -286,7 +286,7 @@ export default function MsProjectTransition() {
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>The Evolution Path</div>
               <div style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY, marginBottom: 12, lineHeight: 1.1 }}>Upgrade to Readiness OS</div>
               <p style={{ fontSize: 14, color: "#4B5563", marginBottom: 24, lineHeight: 1.6 }}>
-                Use the Microsoft transition as the catalyst to eliminate the mobilization cycle entirely. Deploy 170 pre-staged playbooks. 248+ signal monitors. Executive-authorized execution in 12 minutes. CEO/Board budget — not IT.
+                Use the Microsoft transition as the catalyst to eliminate the mobilization cycle entirely. Deploy 170 pre-staged Prepared Responses. 248+ signal monitors. Executive-authorized execution in 12 minutes. CEO/Board budget — not IT.
               </p>
               <div style={{ padding: "16px 20px", background: "rgba(43,138,110,0.06)", border: "1px solid rgba(43,138,110,0.15)" }}>
                 <p style={{ fontSize: 13, color: "#374151", margin: 0, fontWeight: 600 }}>

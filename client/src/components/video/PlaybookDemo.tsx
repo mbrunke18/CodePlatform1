@@ -51,7 +51,7 @@ export function PlaybookDemo({ progress }: SceneProps) {
           className="flex items-center justify-center gap-6 mb-6 text-sm"
         >
           <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 px-3 py-2">
-            <span className="text-gray-800">Without playbooks:</span>
+            <span className="text-gray-800">Without Prepared Responses:</span>
             <span className="text-red-400 font-bold">72 hours of improvisation</span>
           </div>
           <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-3 py-2">

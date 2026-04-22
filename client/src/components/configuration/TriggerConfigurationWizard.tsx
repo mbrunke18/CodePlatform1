@@ -752,7 +752,7 @@ export default function TriggerConfigurationWizard({
               {relevantPlaybooks.length > 0 && (
                 <>
                   <div className="text-xs font-bold uppercase tracking-wider" style={{ color: '#C9A84C' }}>
-                    Recommended for this situation ({relevantPlaybooks.length} playbooks)
+                    Recommended for this situation ({relevantPlaybooks.length} Prepared Responses)
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto">
                     {relevantPlaybooks.map((playbook: any) => (

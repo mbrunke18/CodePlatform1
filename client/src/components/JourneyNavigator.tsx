@@ -69,7 +69,7 @@ const journeyPhases: JourneyPhase[] = [
     number: 3,
     name: 'IDENTIFY',
     subtitle: 'Prepared Response™',
-    description: 'Select playbooks, map stakeholders, and establish your strategic readiness baseline',
+    description: 'Select Prepared Responses, map stakeholders, and establish your strategic readiness baseline',
     timeline: 'Days 30-45',
     workspace: 'Prepared Response Factory',
     workspacePath: '/workspace?tab=identify',
