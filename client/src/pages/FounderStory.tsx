@@ -340,6 +340,26 @@ export default function FounderStory() {
             </div>
           </div>
 
+          {/* ── Dr. Kerry Huang Public Repost ─────────────────────────────── */}
+          <div style={{ background: NAVY, borderLeft: `3px solid ${GOLD}`, padding: "32px 36px", margin: "32px 0" }}>
+            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 20 }}>Reposted Publicly · LinkedIn · April 20, 2026</div>
+            <p style={{ ...CG, fontSize: "clamp(17px,2vw,21px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 16 }}>
+              "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions.
+            </p>
+            <p style={{ ...CG, fontSize: "clamp(17px,2vw,21px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 16 }}>
+              Martin is building the architecture that makes clarity possible before pressure arrives. My research focuses on what determines whether that clarity actually converts into action when the system has not yet confirmed it is safe to move. Neither side replaces the other.
+            </p>
+            <p style={{ ...CG, fontSize: "clamp(17px,2vw,21px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 16 }}>
+              Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does.
+            </p>
+            <p style={{ ...CG, fontSize: "clamp(17px,2vw,21px)", fontStyle: "italic", color: GOLD, lineHeight: 1.75, marginBottom: 24, fontWeight: 600 }}>
+              The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
+            </p>
+            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", fontWeight: 600 }}>
+              Dr. Kerry Huang · Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Posted to his full professional network
+            </div>
+          </div>
+
           {/* VI */}
           <RomanDivider num="VI" />
           <Body>

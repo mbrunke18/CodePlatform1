@@ -1605,6 +1605,21 @@ function CredibilitySection() {
                 Produced independently — without product exposure — through intellectual exchange, April 2026
               </p>
             </div>
+
+            {/* Dr. Huang Repost Callout */}
+            <div style={{ maxWidth: 800, margin: "20px auto 0", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.14)", borderTop: "2px solid rgba(201,168,76,0.3)", padding: "24px 32px" }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 20 }}>
+                <div style={{ flex: 1 }}>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.55)", marginBottom: 12 }}>Reposted to his full network · April 20, 2026</p>
+                  <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(16px,1.5vw,19px)", fontStyle: "italic", color: "rgba(255,255,255,0.82)", lineHeight: 1.7, marginBottom: 12 }}>
+                    "The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
+                  </p>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", margin: 0 }}>
+                    Dr. Kerry Huang · ESI Top 1% Researcher · Forbes Business Council · Named Martin Brunke by name, publicly
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Outcome metrics */}

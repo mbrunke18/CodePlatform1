@@ -564,22 +564,30 @@ export default function Research() {
 
         {/* Dr. Huang LinkedIn Validation */}
         <section style={{ background: NAVY, padding: "64px 48px" }}>
-          <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 24 }}>
+          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 36 }}>
               <div style={{ width: 28, height: 1, background: "rgba(201,168,76,0.4)" }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.65)" }}>Public Validation · LinkedIn · April 2026</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.65)" }}>Reposted Publicly · Dr. Kerry Huang · Full Post · April 20, 2026</span>
               <div style={{ width: 28, height: 1, background: "rgba(201,168,76,0.4)" }} />
             </div>
-            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(20px,2.5vw,28px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.65, marginBottom: 20 }}>
-              "Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does."
-            </p>
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: GOLD, letterSpacing: "0.06em", marginBottom: 4 }}>Dr. Kerry Huang</p>
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.04em" }}>
-              ESI Top 1% Researcher · Forbes Business Council · Fortune 50 AVP · 408-firm governance study
-            </p>
-            <div style={{ marginTop: 28, display: "inline-block", background: "rgba(201,168,76,0.07)", border: "1px solid rgba(201,168,76,0.2)", padding: "10px 24px" }}>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.45)", margin: 0, letterSpacing: "0.03em" }}>
-                <span style={{ color: "rgba(201,168,76,0.7)", fontWeight: 700 }}>Also named publicly:</span> "Martin is building the architecture that makes clarity possible before pressure arrives."
+            <div style={{ borderLeft: "3px solid rgba(201,168,76,0.45)", paddingLeft: 36, marginBottom: 32 }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2vw,24px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 20 }}>
+                "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2vw,24px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 20 }}>
+                Martin is building the architecture that makes clarity possible before pressure arrives. My research focuses on what determines whether that clarity actually converts into action when the system has not yet confirmed it is safe to move. Neither side replaces the other.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2vw,24px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 20 }}>
+                Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(18px,2vw,24px)", fontStyle: "italic", color: GOLD, lineHeight: 1.75, marginBottom: 0, fontWeight: 600 }}>
+                The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
+              </p>
+            </div>
+            <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 24, textAlign: "center" }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: GOLD, letterSpacing: "0.06em", marginBottom: 6 }}>Dr. Kerry Huang</p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.04em", marginBottom: 0 }}>
+                Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · 408-firm governance study · Named Martin Brunke by name to his full professional network
               </p>
             </div>
           </div>

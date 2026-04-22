@@ -955,15 +955,26 @@ export default function InvestorLanding() {
               ))}
             </div>
 
-            <div className="text-center">
-              <div style={{ display: 'inline-block', background: 'rgba(201,168,76,0.07)', border: '1px solid rgba(201,168,76,0.2)', padding: '20px 32px', maxWidth: 680, textAlign: 'left' }}>
-                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)', marginBottom: 10 }}>Public Validation · LinkedIn · April 2026</p>
-                <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontStyle: 'italic', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, marginBottom: 14 }}>
-                  "Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does."
-                </p>
-                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.4)', margin: 0 }}>
-                  <span style={{ color: 'rgba(201,168,76,0.7)', fontWeight: 700 }}>Dr. Kerry Huang</span> · ESI Top 1% Researcher · Forbes Business Council · Posted publicly to his full LinkedIn audience
-                </p>
+            <div style={{ background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.25)', borderLeft: '3px solid rgba(201,168,76,0.6)', padding: '36px 40px', maxWidth: 820, margin: '0 auto', textAlign: 'left' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
+                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Reposted Publicly · LinkedIn · April 20, 2026 · Full Post</span>
+                <div style={{ flex: 1, height: 1, background: 'rgba(201,168,76,0.2)' }} />
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(17px,1.6vw,21px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.92)', lineHeight: 1.75, marginBottom: 18 }}>
+                "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(17px,1.6vw,21px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.92)', lineHeight: 1.75, marginBottom: 18 }}>
+                Martin is building the architecture that makes clarity possible before pressure arrives. My research focuses on what determines whether that clarity actually converts into action when the system has not yet confirmed it is safe to move. Neither side replaces the other.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(17px,1.6vw,21px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.92)', lineHeight: 1.75, marginBottom: 18 }}>
+                Architecture creates the conditions where the choice to ignore is no longer invisible. AwaCourage determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(17px,1.6vw,21px)', fontStyle: 'italic', color: 'rgba(201,168,76,0.95)', lineHeight: 1.75, marginBottom: 24, fontWeight: 600 }}>
+                The boundary Martin named — between what architecture can supply and what only human capacity can carry — is where the next decade of governance work sits."
+              </p>
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 18 }}>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: 'rgba(201,168,76,0.85)', letterSpacing: '0.06em', marginBottom: 4 }}>Dr. Kerry Huang</p>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.4)', margin: 0 }}>Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Posted to his full professional network, naming Martin Brunke by name</p>
               </div>
             </div>
           </div>
