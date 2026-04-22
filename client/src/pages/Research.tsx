@@ -609,7 +609,7 @@ export default function Research() {
                 McKinsey, HBR, Gartner, PwC, IBM — the research is irrefutable. The mobilization gap exists. The 30-day response cycle costs Fortune 1000 enterprises $847B in strategic spend annually. The consultants named the problem. The framework sellers sold approaches. Nobody built the coordination infrastructure.
               </p>
               <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1.5 }}>
-                Readiness OS is the only platform that turns this research into a timestamp on a deployed playbook.
+                Readiness OS is the only platform that turns this research into a timestamp on a deployed Prepared Response.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 12 }}>

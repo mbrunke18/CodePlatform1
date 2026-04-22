@@ -855,19 +855,19 @@ export default function InvestorLanding() {
                 </CardContent>
               </Card>
 
-              <Card className="border-2" data-testid="card-moat-templates">
+              <Card className="border-2" data-testid="card-moat-living-system">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
-                    <Network className="h-6 w-6 text-[#0A0F2E]" />
-                    Template Library Network Effects
+                    <Network className="h-6 w-6 text-[#2B8A6E]" />
+                    Living Prepared Response System
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#0A0F2E] mb-4">
-                    Start with 13+ templates, grows to 500+ as customers contribute. More templates = more use cases = more customers. Self-reinforcing growth loop.
+                    The entire platform IS the Prepared Response system — and it grows through team engagement. The 170 Prepared Responses are the starting point, not the ceiling. Each activation, ownership acknowledgment, and challenge-rights exchange deepens the record. After 18 months, the organization's preparation intelligence is irreplicable — built from real trigger events, under real pressure, by their actual people.
                   </p>
-                  <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-templates-advantage">
-                    Advantage: Content moat—competitors can't replicate library scale
+                  <div className="text-sm font-semibold text-[#2B8A6E]" data-testid="text-moat-living-system-advantage">
+                    Advantage: Preparation history compounds — no competitor can buy it retroactively
                   </div>
                 </CardContent>
               </Card>

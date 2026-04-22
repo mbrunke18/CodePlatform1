@@ -279,7 +279,7 @@ function LiveSignalFeedSection() {
         <Reveal delay={0.25}>
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(201,168,76,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 16 }}>
             <p style={{ ...DM, fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.5 }}>
-              Every signal above triggers a pre-staged playbook. When the trigger fires, the response is already built.
+              Every signal above stages a Prepared Response. When the trigger fires, the execution is already built.
             </p>
             <Link href="/12-minute-experience" style={{
               ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
@@ -921,7 +921,7 @@ function AthletePreparationSection() {
     },
     {
       athlete: "Athletes rehearse every situation they expect to face — with their specific team, for their specific conditions.",
-      platform: "170 playbooks, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
+      platform: "170 Prepared Responses, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
       icon: "◈",
     },
     {
@@ -1775,7 +1775,7 @@ function HomepageFooter() {
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>PRODUCT</div>
             {[
               { label: "How It Works",   href: "/how-it-works" },
-              { label: "Playbooks",      href: "/playbook-library" },
+              { label: "Prepared Responses", href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
               { label: "Request a Pilot", href: "/request-access" },
               { label: "Request Access", href: "/request-access" },
@@ -2101,7 +2101,7 @@ function HowTriggersWorkSection() {
   );
 }
 
-// ─── How Prepared responses Work ───────────────────────────────────────────────────────
+// ─── How Prepared Responses Work ───────────────────────────────────────────────────────
 function HowPlaybooksWorkSection() {
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
   const steps = [
@@ -2131,7 +2131,7 @@ function HowPlaybooksWorkSection() {
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
               <div style={{ width: 32, height: 2, background: GOLD }} />
-              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Prepared responses Work</span>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Prepared Responses Work</span>
               <div style={{ width: 32, height: 2, background: GOLD }} />
             </div>
             <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
@@ -2154,6 +2154,25 @@ function HowPlaybooksWorkSection() {
             </Reveal>
           ))}
         </div>
+        <Reveal delay={0.2}>
+          <div style={{ marginTop: 2, padding: "36px 40px", background: NAVY, border: "none", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 40, alignItems: "center" }}>
+            <div>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>The System Compounds</div>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>
+                04 —<br />
+                <em style={{ color: GOLD, fontStyle: "italic" }}>Deepens through every activation.</em>
+              </div>
+            </div>
+            <div>
+              <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: 0 }}>
+                The entire platform IS the Prepared Response system — and it grows with every use. Each activation adds a real decision record. Each challenge-rights exchange embeds your organization's specific judgment. Each debrief updates the failure modes. After 12 months, your Prepared Response record contains irreplicable organizational intelligence: real trigger events, under real pressure, by your actual people, in your actual structure. A competitor can buy the same software on day one. They cannot buy your preparation history.
+              </p>
+              <div style={{ marginTop: 16, ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: TEAL }}>
+                The moat is capability, not software — and capability compounds.
+              </div>
+            </div>
+          </div>
+        </Reveal>
         <Reveal delay={0.3}>
           <div style={{ marginTop: 2, padding: "22px 32px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" as const }}>
             <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: NAVY, lineHeight: 1.3, flex: "1 1 300px" }}>

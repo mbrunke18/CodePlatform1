@@ -38843,7 +38843,7 @@ function buildEmailHtml(firstName, magicUrl) {
           <td style="padding:48px 48px 36px;">
             <p style="margin:0 0 8px;color:${NAVY};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
             <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
-              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform \u2014 playbooks, trigger intelligence, and the 12-minute execution model.
+              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform \u2014 prepared responses, trigger intelligence, and the 12-minute execution model.
             </p>
 
             <!-- CTA Button -->
@@ -42835,7 +42835,7 @@ async function seedFlagshipPlaybooks() {
             tasks: [
               { owner: "COO", action: "Activate Competitive Response Team: CEO, CFO, CMO, Chief Strategy Officer, Head of Sales, General Counsel", timeTarget: "3 min" },
               { owner: "CMO", action: "Pull competitive intelligence dossier \u2014 pricing, positioning, ICP overlap, recent wins/losses against this competitor", timeTarget: "4 min" },
-              { owner: "Chief Strategy Officer", action: "Retrieve pre-built competitive response playbook options (Defensive Hold / Counter-Offensive / Market Pivot)", timeTarget: "5 min" }
+              { owner: "Chief Strategy Officer", action: "Retrieve pre-staged competitive Prepared Response options (Defensive Hold / Counter-Offensive / Market Pivot)", timeTarget: "5 min" }
             ]
           },
           {
@@ -42921,7 +42921,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%supply chain%",
       data: {
-        whyItMatters: "Supply chain disruptions cost the average Fortune 1000 company $184M annually. Companies with pre-built response playbooks recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.",
+        whyItMatters: "Supply chain disruptions cost the average Fortune 1000 company $184M annually. Companies with pre-staged prepared responses recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.",
         enrichedPhases: [
           {
             name: "DISRUPTION ASSESSMENT",
@@ -43025,7 +43025,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%leadership%",
       data: {
-        whyItMatters: "Unmanaged executive departures cause an average 9.2% stock price decline in the first 72 hours. Companies with succession playbooks pre-activated recover 3.7x faster and retain 89% more senior talent during the transition.",
+        whyItMatters: "Unmanaged executive departures cause an average 9.2% stock price decline in the first 72 hours. Companies with prepared responses pre-staged recover 3.7x faster and retain 89% more senior talent during the transition.",
         enrichedPhases: [
           {
             name: "SITUATION CONFIRMATION",
@@ -43036,7 +43036,7 @@ async function seedFlagshipPlaybooks() {
               { owner: "General Counsel", action: "Review departure executive's employment agreement: severance triggers, non-compete scope, equity treatment, non-disparagement", timeTarget: "90 sec" },
               { owner: "Board Chair", action: "Invoke succession plan: confirm interim leader authority, scope, and duration. Board resolution may be required", timeTarget: "2 min" }
             ],
-            decisionGate: { question: "Is there an approved successor OR interim leader with board mandate?", yes: "Execute transition playbook", no: "Emergency board meeting required within 4 hours to designate interim authority" }
+            decisionGate: { question: "Is there an approved successor OR interim leader with board mandate?", yes: "Execute transition prepared response", no: "Emergency board meeting required within 4 hours to designate interim authority" }
           },
           {
             name: "INTERNAL STABILIZATION",
@@ -43078,7 +43078,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%activist%",
       data: {
-        whyItMatters: "Activist investors targeting Fortune 1000 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built activist defense playbooks respond 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.",
+        whyItMatters: "Activist investors targeting Fortune 1000 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built prepared responses deployed 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.",
         enrichedPhases: [
           { name: "INTELLIGENCE GATHERING", timeWindow: "0\u20132 min", objective: "Know more about the activist's position than they expect you to know", tasks: [
             { owner: "General Counsel", action: "Confirm Schedule 13D/13G filing: stake %, acquisition date, stated intentions, associated entities. Access SEC EDGAR immediately", timeTarget: "90 sec" },
@@ -43108,7 +43108,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%merger%",
       data: {
-        whyItMatters: "Failed M&A integrations destroy an average of $1.6B in shareholder value per deal. The first 100 days of integration determine 70% of total deal outcome. Companies with pre-built integration playbooks achieve target synergies 2.4x faster and retain 31% more acquired talent.",
+        whyItMatters: "Failed M&A integrations destroy an average of $1.6B in shareholder value per deal. The first 100 days of integration determine 70% of total deal outcome. Companies with pre-staged prepared responses achieve target synergies 2.4x faster and retain 31% more acquired talent.",
         enrichedPhases: [
           { name: "DAY-ONE READINESS", timeWindow: "0\u20132 min", objective: "Day 1 must feel seamless to employees, customers, and partners \u2014 regardless of what is still being figured out", tasks: [
             { owner: "Integration Management Officer", action: "Activate Day 1 command center. Confirm all systems access, communication channels, and escalation paths are live and tested", timeTarget: "90 sec" },
@@ -43198,7 +43198,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%talent%",
       data: {
-        whyItMatters: "Mass talent departures in critical roles cost Fortune 1000 companies 3\u20135x the departing employees' combined annual salaries in replacement and productivity loss. Companies with talent retention playbooks stabilize within 14 days vs. 4+ months for reactive organizations.",
+        whyItMatters: "Mass talent departures in critical roles cost Fortune 1000 companies 3\u20135x the departing employees' combined annual salaries in replacement and productivity loss. Companies with talent retention prepared responses stabilize within 14 days vs. 4+ months for reactive organizations.",
         enrichedPhases: [
           { name: "FLIGHT RISK TRIAGE", timeWindow: "0\u20132 min", objective: "Know exactly who is at risk and why \u2014 before the next resignation hits your inbox", tasks: [
             { owner: "CHRO", action: "Pull talent flight risk model: identify all employees with >70% departure probability based on engagement score, tenure, compensation percentile, manager quality", timeTarget: "90 sec" },
@@ -43228,7 +43228,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%esg%",
       data: {
-        whyItMatters: "ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of Fortune 1000 shares and have ESG voting mandates. Companies with ESG response playbooks contain institutional sell-pressure 3x more effectively.",
+        whyItMatters: "ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of Fortune 1000 shares and have ESG voting mandates. Companies with ESG prepared responses contain institutional sell-pressure 3x more effectively.",
         enrichedPhases: [
           { name: "ESG INCIDENT CLASSIFICATION", timeWindow: "0\u20132 min", objective: "Classify accurately \u2014 an environmental violation and a governance failure require entirely different responses", tasks: [
             { owner: "Chief Sustainability Officer", action: "Classify ESG incident: Environmental (E), Social (S), or Governance (G). Severity: Tier 1 (material, public) / Tier 2 (internal, manageable) / Tier 3 (emerging risk)", timeTarget: "90 sec" },
@@ -43288,7 +43288,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%financial%",
       data: {
-        whyItMatters: "Financial fraud events trigger an average 31% stock price decline and $2.1B in regulatory fines for companies that fail to self-report promptly. Organizations with pre-built financial fraud playbooks self-report 4x faster, receive 67% lower penalties, and restore investor confidence 2.8x faster.",
+        whyItMatters: "Financial fraud events trigger an average 31% stock price decline and $2.1B in regulatory fines for companies that fail to self-report promptly. Organizations with pre-staged financial fraud prepared responses self-report 4x faster, receive 67% lower penalties, and restore investor confidence 2.8x faster.",
         enrichedPhases: [
           { name: "ALLEGATION ASSESSMENT", timeWindow: "0\u20132 min", objective: "Establish credibility of allegation before any external action \u2014 but assume it could be true", tasks: [
             { owner: "General Counsel", action: "Assess allegation source and specificity: internal whistleblower, SEC complaint, short-seller report, or regulatory inquiry. Each has different required response timelines", timeTarget: "90 sec" },
@@ -43318,7 +43318,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%ipo%",
       data: {
-        whyItMatters: "IPO pricing missteps and market timing failures cost companies an average 22% in underpriced share value or result in withdrawn offerings. Companies with pre-built IPO response playbooks navigate pricing windows 3x more effectively and maintain institutional demand through market volatility.",
+        whyItMatters: "IPO pricing missteps and market timing failures cost companies an average 22% in underpriced share value or result in withdrawn offerings. Companies with pre-staged IPO prepared responses navigate pricing windows 3x more effectively and maintain institutional demand through market volatility.",
         enrichedPhases: [
           { name: "MARKET WINDOW ASSESSMENT", timeWindow: "0\u20132 min", objective: "Determine if this is a timing issue (delay) or a structural issue (pricing reset)", tasks: [
             { owner: "CFO + Investment Bankers", action: "Pull real-time IPO comps: recent IPO performance in your sector, institutional book-build status, and current market sentiment index for your industry", timeTarget: "90 sec" },
@@ -44706,8 +44706,8 @@ async function registerRoutes(app2, existingServer) {
             id,
             title: formattedTitle,
             category: "strategic",
-            description: `Strategic scenario demonstrating M's 12-minute execution capability. This playbook enables coordinated response across all stakeholder groups with pre-approved resources and automated task sequencing.`,
-            purpose: "Demonstrate rapid strategic response capability with pre-positioned playbook execution",
+            description: `Strategic scenario demonstrating M's 12-minute execution capability. This prepared response enables coordinated execution across all stakeholder groups with pre-approved resources and automated task sequencing.`,
+            purpose: "Demonstrate rapid strategic response capability with pre-staged prepared response execution",
             status: "active",
             priority: "high",
             triggerConditions: ["Market signal detected", "Competitive action identified", "Regulatory change announced"],
