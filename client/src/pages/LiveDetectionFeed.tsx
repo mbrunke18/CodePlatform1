@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import { Badge } from '@/components/ui/badge';
@@ -86,6 +86,10 @@ export default function LiveDetectionFeed() {
   const [showAddContact, setShowAddContact] = useState(false);
   const [newContact, setNewContact] = useState({ role: '', name: '', email: '', slackChannel: '' });
 
+  // Read ?trigger= from email link to highlight the specific detection
+  const urlTriggerName = new URLSearchParams(window.location.search).get('trigger') || '';
+  const highlightRef = useRef<HTMLDivElement | null>(null);
+
   // Real-time WebSocket listener — refreshes feed the instant a detection fires
   useEffect(() => {
     const socket = io(window.location.origin, {
@@ -103,6 +107,15 @@ export default function LiveDetectionFeed() {
     queryFn: () => fetch(`/api/detections?organizationId=${ORG_ID}`).then(r => r.json()),
     refetchInterval: 30000,
   });
+
+  // Scroll to highlighted detection once data loads
+  useEffect(() => {
+    if (urlTriggerName && highlightRef.current) {
+      setTimeout(() => {
+        highlightRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 400);
+    }
+  }, [urlTriggerName, detectionsQuery.data]);
 
   const contactsQuery = useQuery<{ success: boolean; contacts: StakeholderContact[] }>({
     queryKey: ['/api/stakeholder-contacts', ORG_ID],
@@ -354,9 +367,22 @@ export default function LiveDetectionFeed() {
             </Card>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {active.map(detection => (
-                <Card key={detection.id} style={{ border: `2px solid ${confidenceColor(detection.confidenceScore)}22`, borderRadius: 0, overflow: 'hidden' }}>
-                  <div style={{ height: 4, background: confidenceColor(detection.confidenceScore) }} />
+              {active.map(detection => {
+                const isHighlighted = urlTriggerName &&
+                  detection.triggerName.toLowerCase().includes(urlTriggerName.toLowerCase().slice(0, 12));
+                return (
+                <div key={detection.id} ref={isHighlighted ? highlightRef : null}>
+                {isHighlighted && (
+                  <div style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '6px 16px' }}>
+                    ▼ Detection from your alert email
+                  </div>
+                )}
+                <Card style={{
+                  border: isHighlighted ? `2px solid ${GOLD}` : `2px solid ${confidenceColor(detection.confidenceScore)}22`,
+                  borderRadius: 0, overflow: 'hidden',
+                  boxShadow: isHighlighted ? `0 0 0 3px ${GOLD}33` : 'none',
+                }}>
+                  <div style={{ height: 4, background: isHighlighted ? GOLD : confidenceColor(detection.confidenceScore) }} />
                   <CardContent style={{ padding: '20px 24px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
                       <div style={{ flex: 1 }}>
@@ -453,7 +479,9 @@ export default function LiveDetectionFeed() {
                     </div>
                   </CardContent>
                 </Card>
-              ))}
+                </div>
+                );
+              })}
             </div>
           )}
 

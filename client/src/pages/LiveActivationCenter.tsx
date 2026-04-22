@@ -241,10 +241,15 @@ function formatElapsed(seconds: number): string {
 export default function LiveActivationCenter() {
   const params = new URLSearchParams(window.location.search);
   const urlPlaybook = params.get('playbook');
+  const urlPlaybookName = params.get('playbookName');
   const urlRole = params.get('role');
   const urlIndustry = params.get('industry');
 
-  const initialPlaybook = (urlPlaybook && DEFAULT_PLAYBOOKS.some(p => p.key === urlPlaybook)) ? urlPlaybook : 'ma-day1';
+  const initialPlaybook = (urlPlaybook && DEFAULT_PLAYBOOKS.some(p => p.key === urlPlaybook))
+    ? urlPlaybook
+    : (urlPlaybookName && DEFAULT_PLAYBOOKS.find(p => p.name.toLowerCase().includes(urlPlaybookName.toLowerCase().slice(0, 8))))
+      ? DEFAULT_PLAYBOOKS.find(p => p.name.toLowerCase().includes(urlPlaybookName.toLowerCase().slice(0, 8)))!.key
+      : 'ma-day1';
   const roleOverlay: RoleOverlay | null = urlRole ? ROLE_OVERLAYS[urlRole.toLowerCase()] || null : null;
   const industryOverlay: IndustryOverlay | null = urlIndustry ? INDUSTRY_OVERLAYS[urlIndustry.toLowerCase()] || null : null;
   const contextLabel = roleOverlay?.label || industryOverlay?.label || null;
