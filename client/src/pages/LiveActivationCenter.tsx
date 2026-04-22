@@ -26,7 +26,8 @@ import {
   BarChart3,
   FileText,
   TrendingUp,
-  Trophy
+  Trophy,
+  Globe
 } from 'lucide-react';
 import { Link, useLocation, useSearch } from 'wouter';
 import { io, Socket } from 'socket.io-client';
@@ -120,6 +121,17 @@ const DEFAULT_PLAYBOOKS: PlaybookDef[] = [
     taskCount: 10,
     duration: '12 min to live execution',
     color: 'gold'
+  },
+  {
+    key: 'geopolitical',
+    name: 'Geopolitical Risk Response',
+    category: 'DEFENSE',
+    description: 'Activate coordinated response to geopolitical disruption — trade exposure assessed, supply chain contingencies staged, government affairs engaged, executive leadership briefed.',
+    icon: 'globe',
+    stakeholderCount: 10,
+    taskCount: 12,
+    duration: '12 min to live execution',
+    color: 'navy'
   }
 ];
 
@@ -158,6 +170,18 @@ const DEFAULT_STAKEHOLDERS: Record<string, Stakeholder[]> = {
     { id: 's7', name: 'David Kim', title: 'VP Compliance', department: 'Compliance', tier: 2, status: 'pending', initials: 'DK', color: AVATAR_COLORS[6] },
     { id: 's8', name: 'Rachel Torres', title: 'VP Product', department: 'Product', tier: 2, status: 'pending', initials: 'RT', color: AVATAR_COLORS[7] },
     { id: 's9', name: 'Chris Taylor', title: 'VP Communications', department: 'Comms', tier: 2, status: 'pending', initials: 'CT', color: AVATAR_COLORS[8] },
+  ],
+  'geopolitical': [
+    { id: 's1', name: 'Sarah Chen', title: 'CEO', department: 'Executive', tier: 1, status: 'pending', initials: 'SC', color: AVATAR_COLORS[0] },
+    { id: 's2', name: 'Marcus Rivera', title: 'CFO', department: 'Finance', tier: 1, status: 'pending', initials: 'MR', color: AVATAR_COLORS[1] },
+    { id: 's3', name: 'Diana Park', title: 'COO', department: 'Operations', tier: 1, status: 'pending', initials: 'DP', color: AVATAR_COLORS[2] },
+    { id: 's4', name: 'Lisa Wang', title: 'General Counsel', department: 'Legal', tier: 1, status: 'pending', initials: 'LW', color: AVATAR_COLORS[3] },
+    { id: 's5', name: 'Tom Bradley', title: 'Chief Strategy Officer', department: 'Strategy', tier: 1, status: 'pending', initials: 'TB', color: AVATAR_COLORS[4] },
+    { id: 's6', name: 'Ana Petrov', title: 'VP Government Affairs', department: 'Gov Affairs', tier: 2, status: 'pending', initials: 'AP', color: AVATAR_COLORS[5] },
+    { id: 's7', name: 'David Kim', title: 'VP Supply Chain', department: 'Operations', tier: 2, status: 'pending', initials: 'DK', color: AVATAR_COLORS[6] },
+    { id: 's8', name: 'Rachel Torres', title: 'VP Risk', department: 'Risk Management', tier: 2, status: 'pending', initials: 'RT', color: AVATAR_COLORS[7] },
+    { id: 's9', name: 'Chris Taylor', title: 'VP Communications', department: 'Comms', tier: 2, status: 'pending', initials: 'CT', color: AVATAR_COLORS[8] },
+    { id: 's10', name: 'James Mitchell', title: 'VP Finance', department: 'Finance', tier: 2, status: 'pending', initials: 'JM', color: AVATAR_COLORS[9] },
   ]
 };
 
@@ -201,6 +225,20 @@ const DEFAULT_TASKS: Record<string, Task[]> = {
     { id: 't8', name: 'Policy Document Distribution', owner: 'VP Comms', phase: 'FOLLOW_UP', status: 'pending' },
     { id: 't9', name: 'Compliance Monitoring Setup', owner: 'VP Compliance', phase: 'FOLLOW_UP', status: 'pending' },
     { id: 't10', name: 'Board Reporting Framework', owner: 'CEO', phase: 'FOLLOW_UP', status: 'pending' },
+  ],
+  'geopolitical': [
+    { id: 't1', name: 'Assess Trade Exposure Impact', owner: 'CFO', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't2', name: 'Activate Government Affairs Protocol', owner: 'VP Government Affairs', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't3', name: 'Notify Executive Leadership', owner: 'CEO', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't4', name: 'Deploy Supply Chain Contingency Plans', owner: 'VP Supply Chain', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't5', name: 'Legal & Regulatory Risk Assessment', owner: 'General Counsel', phase: 'SECONDARY', status: 'pending' },
+    { id: 't6', name: 'Customer & Partner Impact Brief', owner: 'VP Communications', phase: 'SECONDARY', status: 'pending' },
+    { id: 't7', name: 'Activate Regulatory Monitoring', owner: 'General Counsel', phase: 'SECONDARY', status: 'pending' },
+    { id: 't8', name: 'Financial Hedge & Exposure Review', owner: 'CFO', phase: 'SECONDARY', status: 'pending' },
+    { id: 't9', name: 'Board Situation Report', owner: 'CEO', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't10', name: 'Competitive Positioning Update', owner: 'Chief Strategy Officer', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't11', name: 'Long-term Scenario Planning', owner: 'VP Risk', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't12', name: 'Public Affairs Statement Prep', owner: 'VP Communications', phase: 'FOLLOW_UP', status: 'pending' },
   ]
 };
 
@@ -211,6 +249,7 @@ function getPlaybookIcon(icon: string) {
     case 'shield': return <Shield className="w-8 h-8" />;
     case 'alert-triangle': return <AlertTriangle className="w-8 h-8" />;
     case 'brain': return <Brain className="w-8 h-8" />;
+    case 'globe': return <Globe className="w-8 h-8" />;
     default: return <Shield className="w-8 h-8" />;
   }
 }
@@ -241,9 +280,14 @@ function formatElapsed(seconds: number): string {
 // Resolves which demo playbook to show based on URL params —
 // called both at mount and whenever the URL changes.
 const DOMAIN_PLAYBOOK_MAP: Array<{ keywords: string[]; key: string }> = [
-  { keywords: ['technology', 'security', 'cyber', 'ransomware', 'breach', 'malware', 'phishing', 'incident', 'attack', 'hack', 'geopolit', 'supply chain', 'supply_chain', 'financial', 'market', 'activist', 'risk', 'disruption', 'operational', 'workforce', 'talent', 'competitive', 'competitor'], key: 'ransomware' },
-  { keywords: ['m&a', 'merger', 'acquisition', 'integration', 'deal', 'divestiture', 'restructur', 'leadership', 'succession', 'executive', 'transition', 'new market', 'expansion', 'growth'], key: 'ma-day1' },
-  { keywords: ['regulatory', 'compliance', 'governance', 'legal', 'litigation', 'audit', 'ai ', 'artificial', 'esg', 'climate', 'environment', 'policy', 'regulation'], key: 'ai-governance' },
+  // Geopolitical — must be first so it doesn't fall into generic risk/crisis buckets
+  { keywords: ['geopolit', 'geopolitical', 'tariff', 'tariffs', 'trade war', 'sanctions', 'iran', 'middle east', 'nato', 'diplomatic', 'military', 'embargo', 'export ban', 'export control', 'trade policy', 'trade restriction', 'trade deal', 'political instability', 'foreign policy', 'global tension', 'trump tariff', 'import dut', 'armed conflict', 'oil price', 'crude oil', 'ceasefire', 'peace talk', 'nuclear', 'weapons'], key: 'geopolitical' },
+  // Cybersecurity, operational crisis, financial distress, reputational, supply chain
+  { keywords: ['technology', 'security', 'cyber', 'ransomware', 'breach', 'malware', 'phishing', 'incident', 'attack', 'hack', 'supply chain', 'supply_chain', 'operational', 'crisis', 'reputational', 'financial distress', 'financial crisis', 'distress', 'disruption', 'risk', 'workforce', 'talent'], key: 'ransomware' },
+  // M&A, growth, executive, investor, competitive
+  { keywords: ['m&a', 'merger', 'acquisition', 'integration', 'deal', 'divestiture', 'restructur', 'leadership', 'succession', 'executive', 'transition', 'new market', 'expansion', 'growth', 'investor', 'competitive', 'competitor', 'market dynamic', 'brand', 'reputation'], key: 'ma-day1' },
+  // Regulatory, compliance, ESG, AI governance
+  { keywords: ['regulatory', 'compliance', 'governance', 'legal', 'litigation', 'audit', 'artificial', 'esg', 'climate', 'environment', 'policy', 'regulation', 'disclosure', 'sustainability'], key: 'ai-governance' },
 ];
 
 function resolvePlaybookKeyFromSearch(search: string): string {
