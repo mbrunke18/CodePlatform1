@@ -19098,10 +19098,10 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
             <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
           </div>
           <div style="text-align:center;margin-bottom:12px;">
-            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+            <a href="${platformUrl}/live-detection-feed?trigger=${encodeURIComponent(detection.triggerName)}" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
           </div>
           <div style="text-align:center;">
-            <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} \u2192</a>
+            <a href="${platformUrl}/live-activation-center?playbookName=${encodeURIComponent(detection.recommendedPlaybook)}" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} \u2192</a>
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
@@ -39040,10 +39040,10 @@ async function sendWelcomeTriggerDemo(email, firstName) {
             <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprises are accelerating AI adoption across core operations \u2014 pricing automation, customer intelligence, and supply chain \u2014 creating structural competitive gaps between early movers and laggards that widen each quarter.</div>
           </div>
           <div style="text-align:center;margin-bottom:12px;">
-            <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+            <a href="${platformUrl}/live-detection-feed?trigger=AI%20Competitive%20Disruption" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
           </div>
           <div style="text-align:center;">
-            <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: AI Competitive Disruption Response \u2192</a>
+            <a href="${platformUrl}/live-activation-center?playbookName=AI%20Competitive%20Disruption%20Response" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: AI Competitive Disruption Response \u2192</a>
           </div>
         </div>
         <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
@@ -48760,10 +48760,10 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
                   <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprise software vendor announces AI-native product suite targeting Fortune 1000 operations teams, undercutting incumbent pricing by 40% with a direct channel-to-CXO sales motion\u2026</div>
                 </div>
                 <div style="text-align:center;margin-bottom:12px;">
-                  <a href="${platformUrl}/live-detection-feed" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+                  <a href="${platformUrl}/live-detection-feed?trigger=AI%20Competitive%20Disruption" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
                 </div>
                 <div style="text-align:center;">
-                  <a href="${platformUrl}/live-activation-center" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate Playbook \u2192</a>
+                  <a href="${platformUrl}/live-activation-center?playbookName=AI%20Competitive%20Disruption%20Response" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: AI Competitive Disruption Response \u2192</a>
                 </div>
               </div>
               <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
