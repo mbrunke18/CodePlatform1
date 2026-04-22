@@ -172,7 +172,7 @@ export async function createAndSendMagicLink(data: {
   email: string;
   company: string;
   title: string;
-}): Promise<{ success: boolean; error?: string }> {
+}): Promise<{ success: boolean; error?: string; emailSent?: boolean }> {
   const token = generateToken();
   const expiresAt = new Date(Date.now() + TOKEN_TTL_HOURS * 60 * 60 * 1000);
 

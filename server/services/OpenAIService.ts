@@ -19,7 +19,7 @@ export interface AgentResult {
 }
 
 export class OpenAIService {
-  private client: OpenAI;
+  private client!: OpenAI;
   private config: OpenAIServiceConfig;
   private isConfigured: boolean = false;
   private requestCount: number = 0;

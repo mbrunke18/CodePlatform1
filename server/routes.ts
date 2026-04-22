@@ -115,15 +115,15 @@ async function requireOrgAccess(req: any, res: any, next: any) {
     try {
       const user = await storage.getUser(userId);
       const newOrg = await storage.createOrganization({
-        name: user?.name ? `${user.name}'s Organization` : 'My Organization',
+        name: user?.firstName ? `${user.firstName}'s Organization` : 'My Organization',
         description: 'Created automatically on first access',
         ownerId: userId,
         domain: '',
         type: 'enterprise',
-        size: 'medium',
+        size: 500,
         industry: 'Technology',
         headquarters: '',
-        adaptabilityScore: 75,
+        adaptabilityScore: 'stable',
         onboardingCompleted: false,
         subscriptionTier: 'pilot',
       });
@@ -1338,16 +1338,16 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   app.get('/api/executive-analytics', requireAuth, async (req: any, res) => {
     try {
       const userId = getUserId(req);
-      const { playbookActivations, detections, organizations: orgs } = await import('@shared/schema');
+      const { playbookActivations, triggerDetections, organizations: orgs } = await import('@shared/schema');
       const userOrgs = await storage.getUserOrganizations(userId as string);
       const orgId = userOrgs?.[0]?.id;
       if (!orgId) return res.json({ activations: [], detections: [], kpis: {}, trends: [] });
       const activationsData = await db.select().from(playbookActivations)
         .where(eq(playbookActivations.organizationId, orgId))
         .orderBy(desc(playbookActivations.activatedAt)).limit(20);
-      const detectionsData = await db.select().from(detections)
-        .where(eq(detections.organizationId, orgId))
-        .orderBy(desc(detections.detectedAt)).limit(20);
+      const detectionsData = await db.select().from(triggerDetections)
+        .where(eq(triggerDetections.organizationId, orgId))
+        .orderBy(desc(triggerDetections.detectedAt)).limit(20);
       const totalActivations = activationsData.length;
       const avgResponseTime = 12;
       const playbooksReady = 170;
@@ -3088,7 +3088,8 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app.get('/api/playbooks/:id/trigger-groups', async (req: any, res) => {
     try {
       const { id } = req.params;
-      const org = await storage.getOrganizationByUserId(req.user?.id);
+      const userOrgs = await storage.getUserOrganizations(req.user?.id ?? '');
+      const org = userOrgs?.[0];
       if (!org) return res.status(404).json({ message: 'Organization not found' });
       const groups = await storage.getPlaybookTriggerGroups(id, org.id);
       res.json(groups);
@@ -3101,7 +3102,8 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app.post('/api/playbooks/:id/trigger-groups', async (req: any, res) => {
     try {
       const { id } = req.params;
-      const org = await storage.getOrganizationByUserId(req.user?.id);
+      const userOrgs2 = await storage.getUserOrganizations(req.user?.id ?? '');
+      const org = userOrgs2?.[0];
       if (!org) return res.status(404).json({ message: 'Organization not found' });
       const { name, description, dataPoints, minimumRequired, severity } = req.body;
       if (!name || !dataPoints || !Array.isArray(dataPoints) || dataPoints.length === 0) {
@@ -9607,12 +9609,12 @@ Respond ONLY as JSON with this exact structure:
 
       if (orgId) {
         try {
-          const { intelligenceSignals, executiveTriggers, playbookActivations, practiceDrills } = await import('@shared/schema');
+          const { triggerSignals, executiveTriggers, playbookActivations, practiceDrills } = await import('@shared/schema');
           const { count: countFn, avg } = await import('drizzle-orm');
           const { db } = await import('./db');
           const { eq, desc } = await import('drizzle-orm');
 
-          const [sigRow] = await db.select({ c: countFn() }).from(intelligenceSignals).where(eq(intelligenceSignals.organizationId, orgId));
+          const [sigRow] = await db.select({ c: countFn() }).from(triggerSignals).where(eq(triggerSignals.organizationId, orgId));
           signalCount = Number(sigRow?.c ?? 52);
 
           const [trigRow] = await db.select({ c: countFn() }).from(executiveTriggers).where(eq(executiveTriggers.organizationId, orgId));
@@ -9687,7 +9689,7 @@ Respond ONLY as JSON with this exact structure:
       try {
         const [row] = await db.select({
           activation: playbookActivations,
-          playbook: { name: playbookLibrary.name, domain: playbookLibrary.domain },
+          playbook: { name: playbookLibrary.name, domain: playbookLibrary.domainId },
         })
           .from(playbookActivations)
           .leftJoin(playbookLibrary, eq(playbookActivations.playbookId, playbookLibrary.id))

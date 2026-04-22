@@ -42704,15 +42704,15 @@ async function requireOrgAccess2(req, res, next) {
     try {
       const user = await storage.getUser(userId);
       const newOrg = await storage.createOrganization({
-        name: user?.name ? `${user.name}'s Organization` : "My Organization",
+        name: user?.firstName ? `${user.firstName}'s Organization` : "My Organization",
         description: "Created automatically on first access",
         ownerId: userId,
         domain: "",
         type: "enterprise",
-        size: "medium",
+        size: 500,
         industry: "Technology",
         headquarters: "",
-        adaptabilityScore: 75,
+        adaptabilityScore: "stable",
         onboardingCompleted: false,
         subscriptionTier: "pilot"
       });
@@ -43796,12 +43796,12 @@ async function registerRoutes(app2, existingServer) {
   app2.get("/api/executive-analytics", requireAuth6, async (req, res) => {
     try {
       const userId = getUserId6(req);
-      const { playbookActivations: playbookActivations2, detections, organizations: orgs } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { playbookActivations: playbookActivations2, triggerDetections: triggerDetections2, organizations: orgs } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const userOrgs = await storage.getUserOrganizations(userId);
       const orgId = userOrgs?.[0]?.id;
       if (!orgId) return res.json({ activations: [], detections: [], kpis: {}, trends: [] });
       const activationsData = await db.select().from(playbookActivations2).where(eq45(playbookActivations2.organizationId, orgId)).orderBy(desc21(playbookActivations2.activatedAt)).limit(20);
-      const detectionsData = await db.select().from(detections).where(eq45(detections.organizationId, orgId)).orderBy(desc21(detections.detectedAt)).limit(20);
+      const detectionsData = await db.select().from(triggerDetections2).where(eq45(triggerDetections2.organizationId, orgId)).orderBy(desc21(triggerDetections2.detectedAt)).limit(20);
       const totalActivations = activationsData.length;
       const avgResponseTime = 12;
       const playbooksReady = 170;
@@ -45224,7 +45224,8 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app2.get("/api/playbooks/:id/trigger-groups", async (req, res) => {
     try {
       const { id } = req.params;
-      const org = await storage.getOrganizationByUserId(req.user?.id);
+      const userOrgs = await storage.getUserOrganizations(req.user?.id ?? "");
+      const org = userOrgs?.[0];
       if (!org) return res.status(404).json({ message: "Organization not found" });
       const groups = await storage.getPlaybookTriggerGroups(id, org.id);
       res.json(groups);
@@ -45236,7 +45237,8 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
   app2.post("/api/playbooks/:id/trigger-groups", async (req, res) => {
     try {
       const { id } = req.params;
-      const org = await storage.getOrganizationByUserId(req.user?.id);
+      const userOrgs2 = await storage.getUserOrganizations(req.user?.id ?? "");
+      const org = userOrgs2?.[0];
       if (!org) return res.status(404).json({ message: "Organization not found" });
       const { name, description, dataPoints, minimumRequired, severity } = req.body;
       if (!name || !dataPoints || !Array.isArray(dataPoints) || dataPoints.length === 0) {
@@ -50467,11 +50469,11 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       let avgActivationMinutes = null;
       if (orgId) {
         try {
-          const { intelligenceSignals, executiveTriggers: executiveTriggers3, playbookActivations: playbookActivations2, practiceDrills: practiceDrills2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { triggerSignals: triggerSignals3, executiveTriggers: executiveTriggers3, playbookActivations: playbookActivations2, practiceDrills: practiceDrills2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
           const { count: countFn, avg: avg2 } = await import("drizzle-orm");
           const { db: db2 } = await Promise.resolve().then(() => (init_db(), db_exports));
           const { eq: eq49, desc: desc22 } = await import("drizzle-orm");
-          const [sigRow] = await db2.select({ c: countFn() }).from(intelligenceSignals).where(eq49(intelligenceSignals.organizationId, orgId));
+          const [sigRow] = await db2.select({ c: countFn() }).from(triggerSignals3).where(eq49(triggerSignals3.organizationId, orgId));
           signalCount = Number(sigRow?.c ?? 52);
           const [trigRow] = await db2.select({ c: countFn() }).from(executiveTriggers3).where(eq49(executiveTriggers3.organizationId, orgId));
           triggerCount = Number(trigRow?.c ?? 221);
@@ -50523,7 +50525,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       try {
         const [row] = await db2.select({
           activation: playbookActivations2,
-          playbook: { name: playbookLibrary2.name, domain: playbookLibrary2.domain }
+          playbook: { name: playbookLibrary2.name, domain: playbookLibrary2.domainId }
         }).from(playbookActivations2).leftJoin(playbookLibrary2, eq49(playbookActivations2.playbookId, playbookLibrary2.id)).where(eq49(playbookActivations2.id, id)).limit(1);
         activation = row?.activation;
         playbook = row?.playbook;
