@@ -398,7 +398,7 @@ export default function CommandLanding() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.809 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>
           </NavIcon>
-          <NavIcon title="Playbook Library" label="Playbooks" onClick={() => setLocation('/playbook-library')}>
+          <NavIcon title="Prepared Response Library" label="Playbooks" onClick={() => setLocation('/playbook-library')}>
             <svg width={18} height={18} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
@@ -580,7 +580,7 @@ export default function CommandLanding() {
                   <div style={{ padding: 28 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 3, color: 'rgba(240,237,228,0.4)', textTransform: 'uppercase' }}>
                       <span style={{ width: 5, height: 5, borderRadius: 0, background: 'rgba(240,237,228,0.3)', display: 'inline-block' }} />
-                      Prepared response Library
+                      Prepared Response Library
                     </div>
 
                     <div style={{ fontFamily: "'Crimson Pro', serif", fontSize: 22, fontWeight: 600, color: '#fff', lineHeight: 1.2, marginBottom: 8 }}>

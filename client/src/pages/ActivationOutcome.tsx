@@ -277,7 +277,7 @@ export default function ActivationOutcome() {
                     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                       {[
                         { milestone: 'Trigger Detected', target: '00:00', actual: '00:00', status: 'hit' },
-                        { milestone: 'Prepared response Activated', target: '00:02', actual: outcome.actualMinutes ? '00:03' : '—', status: 'hit' },
+                        { milestone: 'Prepared Response Activated', target: '00:02', actual: outcome.actualMinutes ? '00:03' : '—', status: 'hit' },
                         { milestone: 'First Stakeholder Engaged', target: '00:04', actual: '00:07', status: 'miss' },
                         { milestone: 'Phase 1 Complete', target: '00:12', actual: outcome.actualMinutes ? `00:${outcome.actualMinutes}` : '—', status: outcome.targetMet ? 'hit' : 'miss' },
                         { milestone: 'Board Notified', target: '00:15', actual: '00:22', status: 'miss' },
@@ -533,7 +533,7 @@ export default function ActivationOutcome() {
                       </div>
 
                       <div>
-                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.1em" }}>Prepared response effectiveness rating</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.1em" }}>Prepared Response effectiveness rating</div>
                         <div style={{ display: "flex", gap: 8 }}>
                           {[1, 2, 3, 4, 5].map(n => (
                             <button key={n} onClick={() => setPlaybookRating(n)}

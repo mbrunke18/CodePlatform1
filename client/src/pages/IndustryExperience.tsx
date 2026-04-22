@@ -99,7 +99,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'First-Mover Revenue Captured', before: 'Unknown', after: '€1.68B projected Year 1' },
       { metric: 'Competitive Advantage', before: 'React to competitors', after: '90-day head start vs. Kering' },
     ],
-    lesson: 'Prepared response enhanced: Added "Government Policy Monitor" as a leading indicator trigger — detected tariff changes 45 days before public announcement. Created reusable "Multi-Brand Simultaneous Launch" template. WeChat-first digital strategy outperformed traditional retail-first by 340%.',
+    lesson: 'Prepared Response enhanced: Added "Government Policy Monitor" as a leading indicator trigger — detected tariff changes 45 days before public announcement. Created reusable "Multi-Brand Simultaneous Launch" template. WeChat-first digital strategy outperformed traditional retail-first by 340%.',
   },
   'shein-trend': {
     id: 'shein-trend', title: 'Viral Trend Capitalization', organization: 'SHEIN (Global Fashion Marketplace)',
@@ -155,7 +155,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'Revenue Captured', before: '$40M (late entry)', after: '$108M (first-mover)' },
       { metric: 'Supply Chain Coordination', before: '3-5 days manual', after: '5,847 stakeholders aligned instantly' },
     ],
-    lesson: 'Prepared response enhanced: Added "TikTok Velocity Acceleration Rate" as a predictive trigger — identifies mega-trends 48 hours earlier than view count alone. Created reusable "7-Day Sprint" template for all future trend responses. Plus-size inclusion (40 SKUs) generated 28% of total revenue, now mandatory in all trend playbooks.',
+    lesson: 'Prepared Response enhanced: Added "TikTok Velocity Acceleration Rate" as a predictive trigger — identifies mega-trends 48 hours earlier than view count alone. Created reusable "7-Day Sprint" template for all future trend responses. Plus-size inclusion (40 SKUs) generated 28% of total revenue, now mandatory in all trend playbooks.',
   },
   'spacex-launch': {
     id: 'spacex-launch', title: 'Launch Schedule Acceleration', organization: 'SpaceX (Space Transportation)',
@@ -212,7 +212,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'Revenue Impact', before: 'Standard timeline', after: '$47M saved + strategic orbital priority' },
       { metric: 'Competitive Position', before: 'React to OneWeb', after: 'Secured ITU spectrum priority' },
     ],
-    lesson: 'Prepared response refined: Added "Orbital Window Prediction" as a 7-day lookahead trigger — identifies acceleration opportunities 5 days earlier. Created reusable "Accelerated Countdown" template with parallel regulatory filing. Recovery ship pre-positioning reduced booster turnaround by 2 days.',
+    lesson: 'Prepared Response refined: Added "Orbital Window Prediction" as a 7-day lookahead trigger — identifies acceleration opportunities 5 days earlier. Created reusable "Accelerated Countdown" template with parallel regulatory filing. Recovery ship pre-positioning reduced booster turnaround by 2 days.',
   },
   'financial-ransomware': {
     id: 'financial-ransomware', title: 'Ransomware Attack Response', organization: 'LoanDepot (Major Mortgage Lender)',
@@ -269,7 +269,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'Regulatory Compliance', before: 'Scramble at deadline', after: 'SEC filing within 4 hours' },
       { metric: 'Financial Impact Avoided', before: '$22M+ in costs', after: '$22M avoided + $50M insurance activated' },
     ],
-    lesson: 'Prepared response enhanced: Added "Third-Party Vendor Access Monitor" as a leading indicator — would have detected the compromised vendor credentials 72 hours earlier. SWIFT auto-disconnect reduced payment exposure from potential $400M to zero. Created reusable "Financial Services Ransomware" template with built-in regulatory filing timelines.',
+    lesson: 'Prepared Response enhanced: Added "Third-Party Vendor Access Monitor" as a leading indicator — would have detected the compromised vendor credentials 72 hours earlier. SWIFT auto-disconnect reduced payment exposure from potential $400M to zero. Created reusable "Financial Services Ransomware" template with built-in regulatory filing timelines.',
   },
   'pharma-recall': {
     id: 'pharma-recall', title: 'Product Recall — Class I', organization: 'Glenmark Pharmaceuticals',
@@ -326,7 +326,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'Patient Safety', before: 'Continued exposure for weeks', after: 'Same-day prescriber + pharmacy alerts' },
       { metric: 'Liability Avoided', before: 'Unknown', after: '$50M+ in litigation exposure reduced' },
     ],
-    lesson: 'Prepared response enhanced: Added "API Process Change Monitor" as a root cause prevention trigger — would have detected the synthesis modification 8 months earlier. TraceLink serialization enabled unprecedented pharmacy-level recall precision. Created reusable "NDMA Contamination Response" template now shared across industry consortium.',
+    lesson: 'Prepared Response enhanced: Added "API Process Change Monitor" as a root cause prevention trigger — would have detected the synthesis modification 8 months earlier. TraceLink serialization enabled unprecedented pharmacy-level recall precision. Created reusable "NDMA Contamination Response" template now shared across industry consortium.',
   },
   'manufacturing-supplier': {
     id: 'manufacturing-supplier', title: 'Supplier Crisis Response', organization: 'Toyota Motor Corporation',
@@ -383,7 +383,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'Revenue Protected', before: '$1.2B at risk', after: '$450M production saved' },
       { metric: 'Recovery Acceleration', before: '3-4 months', after: '2 months (Toyota engineers on-site)' },
     ],
-    lesson: 'Prepared response enhanced: Added "Tier 1 Supplier Facility Risk Score" as a predictive trigger — monitors fire safety ratings, geographic risk, and single-source dependencies. Created reusable "Semiconductor Shortage Response" template. Toyota engineer deployment to supplier recovery is now standard protocol.',
+    lesson: 'Prepared Response enhanced: Added "Tier 1 Supplier Facility Risk Score" as a predictive trigger — monitors fire safety ratings, geographic risk, and single-source dependencies. Created reusable "Semiconductor Shortage Response" template. Toyota engineer deployment to supplier recovery is now standard protocol.',
   },
   'retail-contamination': {
     id: 'retail-contamination', title: 'Food Contamination Response', organization: 'Walmart Inc.',
@@ -441,7 +441,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'CDC Data Sharing', before: '3-5 days', after: '90 minutes' },
       { metric: 'Lives Protected + Liability Avoided', before: 'Continued exposure', after: '$245M liability reduced + faster patient treatment' },
     ],
-    lesson: 'Prepared response enhanced: Added "Supplier Violation Pattern Monitor" as a predictive trigger — 2 minor violations in 18 months now triggers proactive audit. POS-level product blocking reduced customer exposure from 7 days to 15 minutes. Receipt-based customer identification enabled unprecedented direct notification.',
+    lesson: 'Prepared Response enhanced: Added "Supplier Violation Pattern Monitor" as a predictive trigger — 2 minor violations in 18 months now triggers proactive audit. POS-level product blocking reduced customer exposure from 7 days to 15 minutes. Receipt-based customer identification enabled unprecedented direct notification.',
   },
   'energy-grid': {
     id: 'energy-grid', title: 'Grid Infrastructure Emergency', organization: 'Pacific Grid & Power',
@@ -499,7 +499,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { metric: 'Grid Restoration', before: '5-7 days full restoration', after: '3 hours (priority substations)' },
       { metric: 'Lives Protected + Costs Avoided', before: 'Reactive response', after: '$2.5B infrastructure damage prevented + lives saved' },
     ],
-    lesson: 'Prepared response enhanced: Added "Heat Wave Demand Prediction" as a 72-hour advance trigger — predicts demand-capacity gaps 3 days ahead. Intelligent load shedding with medical-needs prioritization prevented 340+ potential heat casualties. Mutual aid auto-activation reduced line worker mobilization from 24 hours to 4 hours.',
+    lesson: 'Prepared Response enhanced: Added "Heat Wave Demand Prediction" as a 72-hour advance trigger — predicts demand-capacity gaps 3 days ahead. Intelligent load shedding with medical-needs prioritization prevented 340+ potential heat casualties. Mutual aid auto-activation reduced line worker mobilization from 24 hours to 4 hours.',
   },
 };
 
@@ -507,7 +507,7 @@ const FALLBACK_INDUSTRY = INDUSTRIES['financial-ransomware'];
 
 const STAGES = [
   { id: 'intro', label: 'The Scenario' },
-  { id: 'prepared response', label: 'Build Prepared response' },
+  { id: 'prepared response', label: 'Build Prepared Response' },
   { id: 'triggers', label: 'Configure Triggers' },
   { id: 'data', label: 'Connect Data' },
   { id: 'customize', label: 'Customize' },
@@ -671,7 +671,7 @@ export default function IndustryExperience() {
               className="bg-white border border-[#2B8A6E]/20 p-6">
               <div className="flex items-center gap-2 mb-3">
                 <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
-                <h3 className="font-semibold text-[#0A0F2E]">Your Prepared response</h3>
+                <h3 className="font-semibold text-[#0A0F2E]">Your Prepared Response</h3>
               </div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-[#6B7280]">Name</span><span className="text-[#0A0F2E] font-medium">{userPlaybook.name}</span></div>
@@ -766,7 +766,7 @@ export default function IndustryExperience() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
               className="mt-8 flex items-center justify-center gap-6 text-sm text-[#6B7280] flex-wrap"
             >
-              <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-[#2B8A6E]" /> Prepared response #{industry.playbook.number}</span>
+              <span className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-[#2B8A6E]" /> Prepared Response #{industry.playbook.number}</span>
               <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#0A0F2E]" /> {industry.playbook.stakeholders.toLocaleString()} stakeholders</span>
               <span className="flex items-center gap-2"><FileText className="h-4 w-4 text-amber-400" /> {industry.playbook.tasks} tasks</span>
               <span className="flex items-center gap-2"><DollarSign className="h-4 w-4 text-[#2B8A6E]" /> {industry.playbook.budget} budget</span>
@@ -779,7 +779,7 @@ export default function IndustryExperience() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PREPARED RESPONSE</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Build Your Prepared response</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Build Your Prepared Response</h2>
               <p className="text-[#6B7280]">Customize your prepared response for {industry.organization}</p>
             </div>
             {configComplete && (
@@ -799,14 +799,14 @@ export default function IndustryExperience() {
               <div className="bg-[#2B8A6E]/30 border-b border-[#2B8A6E]/10 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <BookOpen className="h-5 w-5 text-[#2B8A6E]" />
-                  <span className="text-[#0A0F2E] font-semibold">Prepared response Configuration</span>
+                  <span className="text-[#0A0F2E] font-semibold">Prepared Response Configuration</span>
                   <Badge variant="outline" className="text-xs">Template #{industry.playbook.number}</Badge>
                 </div>
               </div>
               <div className="p-6 space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="pb-name" className="text-[#6B7280]">Prepared response Name</Label>
+                    <Label htmlFor="pb-name" className="text-[#6B7280]">Prepared Response Name</Label>
                     <Input id="pb-name" value={userPlaybook.name}
                       onChange={e => setUserPlaybook(p => ({ ...p, name: e.target.value }))}
                       placeholder={industry.playbook.name}
@@ -1177,7 +1177,7 @@ export default function IndustryExperience() {
                   </div>
                   <div className="bg-white/5 p-3 text-center">
                     <BookOpen className="h-5 w-5 text-[#2B8A6E] mx-auto mb-1" />
-                    <div className="text-xs text-gray-800">Your Prepared response</div>
+                    <div className="text-xs text-gray-800">Your Prepared Response</div>
                     <div className="text-sm text-gray-900 font-medium">{userPlaybook.name}</div>
                     {userPlaybook.name !== industry.playbook.name && <Badge className="mt-1 bg-[#2B8A6E]/20 text-[#2B8A6E] text-[8px]">Custom</Badge>}
                   </div>
@@ -1440,7 +1440,7 @@ export default function IndustryExperience() {
               <h3 className="font-semibold text-[#0A0F2E] mb-4">Live Activity Feed</h3>
               <div className="space-y-3">
                 {[
-                  { msg: `${industry.stakeholders[0]?.name || 'CEO'}: "Prepared response activated. All teams report status in 5 minutes."`, time: '2 min ago', color: 'border-[#2B8A6E]/30' },
+                  { msg: `${industry.stakeholders[0]?.name || 'CEO'}: "Prepared Response activated. All teams report status in 5 minutes."`, time: '2 min ago', color: 'border-[#2B8A6E]/30' },
                   { msg: `AI Alert: All ${allExecutionTasks.length} tasks executing on schedule. ${connectedSources.length} data sources feeding real-time intelligence.`, time: '1 min ago', color: 'border-[#C9A84C]/30' },
                   { msg: `Readiness OS: "${userPlaybook.name}" fully operational. ${userPlaybook.stakeholders.toLocaleString()} stakeholders coordinated in under 12 minutes.`, time: '1 min ago', color: 'border-[#2B8A6E]/30' },
                   { msg: `${industry.stakeholders[1]?.name || 'COO'}: "Confirmed — all teams aligned and executing."`, time: 'Just now', color: 'border-[#0A0F2E]/30' },
@@ -1501,7 +1501,7 @@ export default function IndustryExperience() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-6 w-6 text-[#0A0F2E]" />
-                <h3 className="text-lg font-semibold text-[#0A0F2E]">System-Generated Prepared response Refinement</h3>
+                <h3 className="text-lg font-semibold text-[#0A0F2E]">System-Generated Prepared Response Refinement</h3>
               </div>
               <p className="text-[#6B7280] leading-relaxed">{industry.lesson}</p>
             </motion.div>

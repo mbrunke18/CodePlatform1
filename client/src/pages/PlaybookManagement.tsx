@@ -109,7 +109,7 @@ export default function PlaybookManagement() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/playbooks"] });
       toast({
-        title: "Prepared response Deleted",
+        title: "Prepared Response Deleted",
         description: "The prepared response has been permanently deleted.",
       });
       setDeleteId(null);
@@ -157,7 +157,7 @@ export default function PlaybookManagement() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Prepared response Management</span>
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Prepared Response Management</span>
           </div>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -174,7 +174,7 @@ export default function PlaybookManagement() {
               data-testid="button-create-prepared response"
             >
               <Plus className="h-4 w-4 mr-2" />
-              Create Prepared response
+              Create Prepared Response
             </Button>
           </div>
         </div>
@@ -297,7 +297,7 @@ export default function PlaybookManagement() {
               {playbooks.length === 0 && (
                 <Button onClick={() => setLocation('/playbook-customize/new')} data-testid="button-create-first">
                   <Plus className="h-4 w-4 mr-2" />
-                  Create Your First Prepared response
+                  Create Your First Prepared Response
                 </Button>
               )}
             </CardContent>
@@ -307,7 +307,7 @@ export default function PlaybookManagement() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Prepared response</TableHead>
+                  <TableHead>Prepared Response</TableHead>
                   <TableHead>Category</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Priority</TableHead>
@@ -421,7 +421,7 @@ export default function PlaybookManagement() {
         <AlertDialog open={!!deleteId} onOpenChange={() => setDeleteId(null)}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Delete Prepared response</AlertDialogTitle>
+              <AlertDialogTitle>Delete Prepared Response</AlertDialogTitle>
               <AlertDialogDescription>
                 Are you sure you want to delete this prepared response? This action cannot be undone and will permanently remove the prepared response and all its configuration.
               </AlertDialogDescription>

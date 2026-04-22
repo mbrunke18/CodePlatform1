@@ -150,7 +150,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>IDENTIFY</span>
                 <ChevronRight style={{ width: 10, height: 10, color: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Prepared response Generator</span>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Prepared Response Generator</span>
               </div>
               <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: '#fff', lineHeight: 1 }}>Strategic Recorder</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 3 }}>

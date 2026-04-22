@@ -99,7 +99,7 @@ const categoryComparison = [
   {
     category: "Strategic Readiness Platform",
     vendors: "Readiness OS (Category of One)",
-    does: "Detects strategic triggers, fires the right playbook, creates projects, assigns tasks by role, allocates budget, mobilizes stakeholders — all within 12 minutes",
+    does: "Detects strategic triggers, fires the right Prepared Response, creates projects, assigns tasks by role, allocates budget, mobilizes stakeholders — all within 12 minutes",
     doesNot: "The only platform that bridges signal detection to coordinated organizational execution",
     color: NAVY,
     textColor: "#fff",
@@ -270,7 +270,7 @@ export default function CompetitivePositioning() {
                   <div className="flex flex-col gap-0">
                     {[
                       { label: "Signal Detected", time: "T+0m", note: "AI monitors 500+ data sources 24/7" },
-                      { label: "Prepared response Selected", time: "+2m", note: "Best-fit prepared response matched automatically" },
+                      { label: "Prepared Response Selected", time: "+2m", note: "Best-fit prepared response matched automatically" },
                       { label: "Projects Created", time: "+5m", note: "Tasks, owners, budgets assigned by role" },
                       { label: "Stakeholders Mobilized", time: "+8m", note: "Executive briefs and assignments sent" },
                       { label: "Execution Underway", time: "+12m", note: "Full organizational response activated" },
@@ -524,7 +524,7 @@ export default function CompetitivePositioning() {
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Prepared response Library</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The Prepared Response Library</span>
                 </div>
                 <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(28px,4vw,44px)", lineHeight: 1.1, color: "#fff", marginBottom: 20 }}>
                   170 Prepared responses No One Else Has
@@ -536,7 +536,7 @@ export default function CompetitivePositioning() {
                   You can't buy this institutional knowledge off the shelf. You can't build it in a year. And no PM tool or crisis notification vendor has it — because they're solving a different problem.
                 </p>
                 <Button size="lg" style={{ background: GOLD, color: NAVY, fontWeight: 700 }} className="hover:opacity-90" onClick={() => setLocation('/playbooks')}>
-                  Explore the Prepared response Library
+                  Explore the Prepared Response Library
                   <ChevronRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>

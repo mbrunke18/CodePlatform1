@@ -23,7 +23,7 @@ const comparisonRows = [
     executionOS: "12 minutes after trigger detection — full coordination live",
   },
   {
-    category: "Prepared response Readiness",
+    category: "Prepared Response Readiness",
     traditional: "Built in real time during the crisis under pressure",
     executionOS: "Pre-staged — 170 prepared responses ready before the trigger fires",
   },

@@ -46,8 +46,8 @@ const ROUNDS: RoadmapRound[] = [
         icon: Shield,
       },
       {
-        title: "Industry Sector Prepared response Packs",
-        description: "Prepared response Library now filters by industry sector — Healthcare, Financial Services, Technology, Manufacturing, Retail, Energy. Each sector pack surfaces the prepared responses most relevant to that industry's dominant risk profile.",
+        title: "Industry Sector Prepared Response Packs",
+        description: "Prepared Response Library now filters by industry sector — Healthcare, Financial Services, Technology, Manufacturing, Retail, Energy. Each sector pack surfaces the prepared responses most relevant to that industry's dominant risk profile.",
         value: "A healthcare COO sees FDA recall and HIPAA breach prepared responses first. A manufacturing COO sees supply chain and tariff prepared responses first.",
         status: "live",
         icon: Layers,
@@ -98,7 +98,7 @@ const ROUNDS: RoadmapRound[] = [
         icon: Zap,
       },
       {
-        title: "Prepared response Version History",
+        title: "Prepared Response Version History",
         description: "Every change to a customized prepared response is logged — who changed what, when, and what the previous version contained. Enables organizational learning and accountability across preparation cycles.",
         value: "Ownership is an artifact of preparation, not a state of mind. Version history makes ownership visible and auditable.",
         status: "planned",

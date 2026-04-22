@@ -366,7 +366,7 @@ export default function Dashboard() {
                   color="teal"
                   link="/playbook-library"
                   metrics={[
-                    { label: 'Prepared response Templates', value: '170' },
+                    { label: 'Prepared Response Templates', value: '170' },
                     { label: 'Coverage', value: '94%', highlight: true }
                   ]}
                 />
@@ -447,7 +447,7 @@ export default function Dashboard() {
                               <div className="w-2 h-2 rounded-none mt-1.5 flex-shrink-0" style={{ background: activation.status === 'completed' ? TEAL : activation.status === 'active' ? GOLD : "#9CA3AF" }} />
                               <div className="flex-1">
                                 <div className="flex items-center justify-between mb-1">
-                                  <span className="text-sm font-semibold group-hover:text-[#2B8A6E] transition-colors" style={{ color: NAVY }}>{activation.playbookName || activation.name || "Prepared response Activation"}</span>
+                                  <span className="text-sm font-semibold group-hover:text-[#2B8A6E] transition-colors" style={{ color: NAVY }}>{activation.playbookName || activation.name || "Prepared Response Activation"}</span>
                                   <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#6B7280" }}>
                                     {activation.createdAt ? new Date(activation.createdAt).toLocaleDateString() : "Recent"}
                                   </span>

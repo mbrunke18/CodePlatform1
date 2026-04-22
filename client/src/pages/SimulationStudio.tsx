@@ -262,7 +262,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                 <p className="text-[9px] font-black uppercase tracking-wider mb-3" style={{ color: NAVY }}>How Scoring Works</p>
                 <div className="space-y-2 text-[10px] text-gray-500">
                   {[
-                    { icon: Shield, label: 'Survive', desc: 'Prepared response coverage for damage containment' },
+                    { icon: Shield, label: 'Survive', desc: 'Prepared Response coverage for damage containment' },
                     { icon: TrendingUp, label: 'Thrive', desc: 'Offensive prepared responses & competitive gaps' },
                     { icon: AlertTriangle, label: 'Gaps', desc: 'Scenarios your library doesn\'t cover' },
                   ].map(h => {

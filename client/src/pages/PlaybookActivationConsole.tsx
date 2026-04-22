@@ -603,7 +603,7 @@ export default function PlaybookActivationConsole() {
       { time: now, text: `📊 Real-time monitoring dashboard initialized`, type: 'init' },
     ]);
     toast({
-      title: "Prepared response Activated",
+      title: "Prepared Response Activated",
       description: `${scopeLabel} · ${timelineMinutes}-min clock started.`,
     });
   };
@@ -651,7 +651,7 @@ export default function PlaybookActivationConsole() {
       queryClient.refetchQueries({ queryKey: ['/api/executive-triggers'], exact: false });
       setExecutionStatus('completed');
       toast({
-        title: "✅ Prepared response Execution Completed",
+        title: "✅ Prepared Response Execution Completed",
         description: `Executed in ${formatTime(elapsedSeconds)}`,
       });
       try {
@@ -784,9 +784,9 @@ export default function PlaybookActivationConsole() {
               Response <em style={{ color: GOLD, fontStyle: "italic" }}>Initiated</em>
             </h1>
 
-            {/* Prepared response name */}
+            {/* Prepared Response name */}
             <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em", marginBottom: 48, fontWeight: 500 }}>
-              {playbook?.name || 'Prepared response'} · Execution Clock Running
+              {playbook?.name || 'Prepared Response'} · Execution Clock Running
             </p>
 
             {/* Three stat cards */}
@@ -846,11 +846,11 @@ export default function PlaybookActivationConsole() {
               </Link>
             </div>
 
-            {/* Prepared response Summary Card */}
+            {/* Prepared Response Summary Card */}
             <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, padding: "20px 24px", background: "#fff", marginBottom: 24 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 2, marginBottom: 8 }}>
                 <PlayCircle className="h-5 w-5" style={{ color: GOLD }} />
-                <span style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>Prepared response: {playbook?.name || 'Loading...'}</span>
+                <span style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>Prepared Response: {playbook?.name || 'Loading...'}</span>
               </div>
               <p style={{ fontSize: 14, color: MUTED }}>
                 {playbook?.description || 'Strategic response prepared response ready for activation.'}
@@ -865,9 +865,9 @@ export default function PlaybookActivationConsole() {
               )}
             </div>
 
-            {/* ── What This Prepared response Replaces ──────────────────────────────── */}
+            {/* ── What This Prepared Response Replaces ──────────────────────────────── */}
             <div style={{ borderLeft: `4px solid ${NAVY}`, borderTop: `1px solid rgba(10,15,46,0.12)`, borderRight: `1px solid rgba(10,15,46,0.12)`, borderBottom: `1px solid rgba(10,15,46,0.12)`, padding: '20px 24px', marginBottom: 16, background: 'rgba(10,15,46,0.03)' }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: NAVY, marginBottom: 14 }}>What This Prepared response Replaces</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: NAVY, marginBottom: 14 }}>What This Prepared Response Replaces</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center' }}>
                 <div>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#dc2626', marginBottom: 6 }}>Without It</div>
@@ -877,7 +877,7 @@ export default function PlaybookActivationConsole() {
                 </div>
                 <div style={{ width: 1, height: 64, background: 'rgba(10,15,46,0.12)', flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 6 }}>With This Prepared response</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 6 }}>With This Prepared Response</div>
                   <p style={{ fontSize: 13, color: NAVY, lineHeight: 1.65, margin: 0, fontWeight: 500 }}>
                     12 minutes from this moment. Brief built. Team assigned. Authority defined. Execution begins.
                   </p>
@@ -1035,7 +1035,7 @@ export default function PlaybookActivationConsole() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Live Execution Console</span>
               </div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,5vw,48px)", lineHeight: 1.05, color: NAVY, marginBottom: 16 }}>
-                Execute Your <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Prepared response</em>
+                Execute Your <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Prepared Response</em>
               </h1>
               <p style={{ color: MUTED, marginTop: 4 }}>
                 Make the call. Rally your team. Win the moment.
@@ -1136,7 +1136,7 @@ export default function PlaybookActivationConsole() {
             </div>
           </div>
 
-        {/* Trigger & Prepared response Info */}
+        {/* Trigger & Prepared Response Info */}
         <div className={`grid grid-cols-1 ${isManualExecution ? 'md:grid-cols-1' : 'md:grid-cols-2'} gap-6`}>
           {!isManualExecution && trigger && (
             <div style={{ border: `1px solid ${BORDER}`, borderLeft: "3px solid #EF4444", padding: "20px 24px", background: "#fff" }}>
@@ -1174,11 +1174,11 @@ export default function PlaybookActivationConsole() {
           <div style={{ border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}`, padding: "20px 24px", background: "#fff" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
               <PlayCircle className="h-5 w-5" style={{ color: TEAL }} />
-              <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Active Prepared response</span>
+              <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Active Prepared Response</span>
             </div>
             <div className="space-y-4">
               <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Prepared response Name</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Prepared Response Name</div>
                 <div style={{ fontWeight: 600, color: NAVY }} data-testid="text-prepared response-name">{playbook.title || playbook.name}</div>
               </div>
               <div>
@@ -1601,7 +1601,7 @@ export default function PlaybookActivationConsole() {
                 <div className="relative z-10">
                   <Trophy className="h-14 w-14 mx-auto mb-4" style={{ color: GOLD }} />
                   <h2 style={{ ...CG, fontSize: "clamp(28px,5vw,44px)", fontWeight: 700, marginBottom: 12 }}>
-                    Prepared response Executed <em style={{ fontStyle: "italic", color: GOLD }}>Successfully</em>
+                    Prepared Response Executed <em style={{ fontStyle: "italic", color: GOLD }}>Successfully</em>
                   </h2>
                   <div style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 20 }}>
                     Completed in {formatTime(elapsedSeconds)} &nbsp;·&nbsp; 3,600× Execution Head Start vs. 30-day industry mobilization cycle
@@ -1659,7 +1659,7 @@ export default function PlaybookActivationConsole() {
               {(() => {
                 const domain = playbook?.domain || playbook?.strategicCategory || '';
                 const cfEvents: { time: string; withOS: string; without: string; highlight?: boolean }[] = [
-                  { time: "T+0:00", withOS: "Signal detected. Prepared response auto-deployed.", without: "Trigger fires. No one knows yet.", highlight: true },
+                  { time: "T+0:00", withOS: "Signal detected. Prepared Response auto-deployed.", without: "Trigger fires. No one knows yet.", highlight: true },
                   { time: "T+0:12", withOS: "Stakeholders acknowledged. Execution underway.", without: "Someone notices the headline. Starts forwarding emails." },
                   { time: "T+1:00", withOS: "All tasks assigned and in progress.", without: "Calendar invite sent: 'Alignment Call' — 3 days out." },
                   { time: "Day 2",  withOS: "First task wave complete. Debrief prep begins.", without: "Alignment call. No decisions made. 'Let's loop in legal.'" },

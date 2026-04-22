@@ -137,7 +137,7 @@ export default function ExecutiveHub() {
                   <CardHeader className="pb-4"><CardTitle className="text-lg text-[#0A0F2E] flex items-center gap-2" style={CG}><Target className="h-5 w-5 text-[#C9A84C]" />Readiness Dimensions</CardTitle></CardHeader>
                   <CardContent className="space-y-4">
                     {[
-                      { label: "Prepared response Maturity", value: readiness?.playbookMaturity || 78 },
+                      { label: "Prepared Response Maturity", value: readiness?.playbookMaturity || 78 },
                       { label: "Signal Detection", value: readiness?.signalDetection || 86 },
                       { label: "Execution Velocity", value: velocityScore },
                       { label: "Learning Rate", value: readiness?.learningScore || 78 },
@@ -181,7 +181,7 @@ export default function ExecutiveHub() {
                 {[
                   { title: "Decision Velocity Dashboard", desc: "Track how fast your executives decide", path: "/decision-velocity", icon: Zap, tab: 'velocity', color: GOLD },
                   { title: "Future Readiness Index", desc: "Strategic preparedness deep-dive", path: "/future-readiness", icon: Target, tab: 'readiness', color: TEAL },
-                  { title: "Executive Analytics", desc: "Prepared response performance & ROI", path: "/analytics", icon: BarChart3, tab: 'analytics', color: NAVY },
+                  { title: "Executive Analytics", desc: "Prepared Response performance & ROI", path: "/analytics", icon: BarChart3, tab: 'analytics', color: NAVY },
                   { title: "IDEA Framework", desc: "The operating model explained", path: "/idea-framework", icon: Brain, tab: 'framework', color: GOLD },
                 ].map(item => (
                   <Card key={item.title} onClick={() => setActiveTab(item.tab)} className="border-[#E8E4DC] bg-white transition-all cursor-pointer group">
@@ -234,7 +234,7 @@ export default function ExecutiveHub() {
                     <p className="text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-5">Dimension Breakdown</p>
                     <div className="space-y-4">
                       {[
-                        { label: "Prepared response Maturity", value: readiness?.playbookMaturity || 78, target: 90 },
+                        { label: "Prepared Response Maturity", value: readiness?.playbookMaturity || 78, target: 90 },
                         { label: "Signal Detection", value: readiness?.signalDetection || 86, target: 90 },
                         { label: "Execution Velocity", value: velocityScore, target: 95 },
                         { label: "Learning Rate", value: readiness?.learningScore || 78, target: 85 },
@@ -281,7 +281,7 @@ export default function ExecutiveHub() {
                   <div className="p-4 bg-[#0A0F2E] shadow-[#0A0F2E]/30"><Activity className="h-8 w-8 text-[#C9A84C]" /></div>
                   <div>
                     <div className="flex items-center gap-3"><h1 className="text-3xl font-bold text-[#0A0F2E]" style={CG}>Executive Analytics</h1><Badge className="bg-[#0A0F2E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">ANALYTICS</Badge></div>
-                    <p className="text-[#6B7280] mt-1">Prepared response performance, ROI, and organizational metrics</p>
+                    <p className="text-[#6B7280] mt-1">Prepared Response performance, ROI, and organizational metrics</p>
                   </div>
                 </div>
                 <Link href="/analytics"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><ExternalLink className="h-4 w-4 mr-2" />Full Analytics Suite</Button></Link>
@@ -290,7 +290,7 @@ export default function ExecutiveHub() {
               {/* Analytics KPIs */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
-                  { label: "Prepared response Activations", value: "47", trend: "+12%", icon: Layers, color: TEAL },
+                  { label: "Prepared Response Activations", value: "47", trend: "+12%", icon: Layers, color: TEAL },
                   { label: "Avg Execution Time", value: "11.4m", trend: "-8%", icon: Clock, color: GOLD },
                   { label: "Stakeholders Reached", value: "1,240", trend: "+23%", icon: Users, color: TEAL },
                   { label: "Target Met Rate", value: "78%", trend: "+5%", icon: CheckCircle, color: NAVY },
@@ -306,7 +306,7 @@ export default function ExecutiveHub() {
               </div>
 
               {/* Domain Performance */}
-              <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Prepared response Performance by Domain</h2>
+              <h2 className="text-xl font-bold text-[#0A0F2E] mb-4" style={CG}>Prepared Response Performance by Domain</h2>
               <div className="space-y-3 mb-8">
                 {[
                   { domain: "M&A & Integration", activations: 12, successRate: 83, avgTime: "10.2m" },

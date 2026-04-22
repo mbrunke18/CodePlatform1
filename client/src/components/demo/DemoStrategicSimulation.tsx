@@ -219,7 +219,7 @@ export function DemoActiveStrategicCard() {
         {!isActivated && sceneId === 'decision-activation' && (
           <Button className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-white" size="lg" data-testid="demo-activate-prepared response-btn">
             <Play className="h-5 w-5 mr-2" />
-            Activate Supply Chain Disruption Prepared response SCM-001
+            Activate Supply Chain Disruption Prepared Response SCM-001
           </Button>
         )}
       </CardContent>

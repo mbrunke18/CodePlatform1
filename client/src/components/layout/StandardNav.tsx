@@ -41,10 +41,10 @@ const SEARCH_ITEMS = [
   { label: 'Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
   { label: 'Settings Hub', path: '/settings-hub', category: 'Platform', icon: Settings },
   { label: 'Organization Setup', path: '/organization-setup', category: 'Platform', icon: Building },
-  { label: 'Playbook Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
+  { label: 'Prepared Response Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
   { label: 'Strategic Planning Hub', path: '/strategic', category: 'Identify', icon: Target },
   { label: 'What-If Analyzer', path: '/what-if-analyzer', category: 'Identify', icon: Lightbulb },
-  { label: 'Playbook Customization', path: '/playbook-customization', category: 'Identify', icon: ClipboardCheck },
+  { label: 'Response Customization', path: '/playbook-customization', category: 'Identify', icon: ClipboardCheck },
   { label: 'Preparedness Report', path: '/preparedness-report', category: 'Identify', icon: Shield },
   { label: 'Signal Radar Dashboard', path: '/ai-radar', category: 'Detect', icon: Radar },
   { label: 'Foresight Radar', path: '/foresight-radar', category: 'Detect', icon: Eye },
@@ -130,7 +130,7 @@ export default function StandardNav() {
     {
       heading: "Core Capabilities",
       links: [
-        { label: "Playbook Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged playbooks across 9 strategic domains" },
+        { label: "Prepared Response Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged playbooks across 9 strategic domains" },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
@@ -333,7 +333,7 @@ export default function StandardNav() {
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
             {megaColHeading("Core Capabilities")}
             {[
-              { path: '/playbooks', icon: ClipboardList, label: 'Playbook Library', sub: '170 pre-staged playbooks across 9 strategic domains', featured: true },
+              { path: '/playbooks', icon: ClipboardList, label: 'Prepared Response Library', sub: '170 pre-staged playbooks across 9 strategic domains', featured: true },
               { path: '/triggers-management', icon: Zap, label: 'Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
               { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },

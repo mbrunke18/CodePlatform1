@@ -39,7 +39,7 @@ const THREATS = [
     signals: 5,
     time: '3 hrs ago',
     detail: 'SEC issued comment letter on Q3 disclosure language. Legal review and regulatory response team required immediately.',
-    playbook: 'Regulatory Response Prepared response',
+    playbook: 'Regulatory Response Prepared Response',
     status: 'monitoring',
   },
   {

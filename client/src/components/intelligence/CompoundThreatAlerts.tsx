@@ -142,7 +142,7 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
                     {/* Actions */}
                     <div className="flex items-center gap-3 mt-2">
                       <button className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
-                        <BookOpen className="w-3 h-3" /> Stage Defense Prepared response
+                        <BookOpen className="w-3 h-3" /> Stage Defense Prepared Response
                       </button>
                       <span className="text-[8px] text-gray-300">·</span>
                       <span className="text-[9px] text-gray-400">

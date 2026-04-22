@@ -115,7 +115,7 @@ const SIGNAL_PLAYBOOK_MAP: Array<{ keywords: string[]; playbook: string; domain:
   { keywords: ['sentiment', 'brand', 'reputation', 'social', 'media'], playbook: 'Brand Crisis Response', domain: 'Brand & Reputation', urgency: 'MEDIUM — monitor & respond', domainParam: 'technology' },
   { keywords: ['activist investor', 'institutional', 'position', 'shareholder'], playbook: 'Activist Investor Defense', domain: 'Financial Strategy', urgency: 'CRITICAL — 48-hr window', domainParam: 'financial' },
   { keywords: ['recall', 'fda', 'product', 'safety'], playbook: 'Product Recall Management', domain: 'Operational Excellence', urgency: 'CRITICAL — FDA 48-hr requirement', domainParam: 'gtm' },
-  { keywords: ['integration', 'synergy', 'friction', 'm&a'], playbook: 'M&A Integration Prepared response', domain: 'Market Opportunities', urgency: 'HIGH — 30-day milestone at risk', domainParam: 'ma' },
+  { keywords: ['integration', 'synergy', 'friction', 'm&a'], playbook: 'M&A Integration Prepared Response', domain: 'Market Opportunities', urgency: 'HIGH — 30-day milestone at risk', domainParam: 'ma' },
   { keywords: ['esg', 'carbon', 'sustainability', 'climate'], playbook: 'ESG Crisis Response', domain: 'Regulatory & Compliance', urgency: 'MEDIUM — investor reporting deadline', domainParam: 'regulatory' },
   { keywords: ['geopolitical', 'trade', 'emea', 'sanctions'], playbook: 'Geopolitical Risk Protocol', domain: 'Market Opportunities', urgency: 'HIGH — cross-border exposure', domainParam: 'ma' },
   { keywords: ['fraud', 'financial', 'anomaly', 'disbursement'], playbook: 'Financial Fraud Detection Response', domain: 'Financial Strategy', urgency: 'CRITICAL — forensic audit triggered', domainParam: 'financial' },
@@ -769,7 +769,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
                       {/* Recommended prepared response */}
                       <div>
-                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>EXECUTE — Recommended Prepared response</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>EXECUTE — Recommended Prepared Response</div>
                         <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, lineHeight: 1.2, marginBottom: 4 }}>{ideaRecommendation.playbook}</h3>
                         <div className="flex items-center gap-2">
                           <span style={{ fontSize: 10, fontWeight: 700, color: "#C9A84C", background: "rgba(201,168,76,0.15)", padding: "2px 8px", border: "1px solid rgba(201,168,76,0.3)" }}>{ideaRecommendation.domain}</span>
@@ -782,7 +782,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         <Link href={`/prepared response-library?domain=${ideaRecommendation.domainParam}`}>
                           <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] text-xs uppercase tracking-wider">
                             <Zap className="h-3.5 w-3.5 mr-1.5" />
-                            Activate Prepared response Now
+                            Activate Prepared Response Now
                           </Button>
                         </Link>
                         <Link href="/playbook-library">

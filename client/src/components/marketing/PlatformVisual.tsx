@@ -60,7 +60,7 @@ export default function PlatformVisual() {
   ];
 
   const afterItems = [
-    { text: "Prepared response activated", icon: CheckCircle },
+    { text: "Prepared Response activated", icon: CheckCircle },
     { text: "Roles assigned", icon: Users },
     { text: "Teams notified", icon: MessageSquare },
     { text: "Tasks created", icon: Layers },
@@ -81,7 +81,7 @@ export default function PlatformVisual() {
     {
       letter: "D",
       name: "DETECT",
-      subtitle: "AI Prepared response Matching",
+      subtitle: "AI Prepared Response Matching",
       color: "from-[#0A0F2E] to-[#3BAF8A]",
       borderColor: "border-[#2B8A6E]",
       bgColor: "bg-[#0A0F2E]",
@@ -407,7 +407,7 @@ export default function PlatformVisual() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-4">
             {[
               { title: "Pattern Recognition", desc: "Classifies signals in milliseconds" },
-              { title: "Prepared response Matching", desc: "Learns which prepared responses work best" },
+              { title: "Prepared Response Matching", desc: "Learns which prepared responses work best" },
               { title: "Smart Routing", desc: "Optimizes role assignment over time" },
               { title: "Outcome Learning", desc: "Improves recommendations from results" },
               { title: "Predictive Alerts", desc: "Anticipates issues before they escalate" },

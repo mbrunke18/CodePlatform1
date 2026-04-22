@@ -90,7 +90,7 @@ export function ActivationDemo({ progress }: SceneProps) {
             <div className="space-y-4">
               {[
                 { time: "0:00", event: "Trigger detected", done: timelineProgress > 0.1 },
-                { time: "0:15", event: "Prepared response activated", done: timelineProgress > 0.25 },
+                { time: "0:15", event: "Prepared Response activated", done: timelineProgress > 0.25 },
                 { time: "0:30", event: "Teams notified", done: timelineProgress > 0.4 },
                 { time: "2:00", event: "Tasks assigned", done: timelineProgress > 0.55 },
                 { time: "5:00", event: "Budget unlocked", done: timelineProgress > 0.7 },

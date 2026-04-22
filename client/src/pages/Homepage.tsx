@@ -262,7 +262,7 @@ function LiveSignalFeedSection() {
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Prepared response Staged</span>
+                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Prepared Response Staged</span>
                         <span style={{ ...DM, fontSize: 9, color: 'rgba(255,255,255,0.2)' }}>→</span>
                         <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.85)' }}>{sig.recommendedPlaybook}</span>
                       </div>
@@ -1245,7 +1245,7 @@ function PlatformPreviewSection() {
                 <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
                   <div style={{ width: 7, height: 7, background: allDone ? TEAL_LIGHT : GOLD, boxShadow: allDone ? `0 0 6px ${TEAL_LIGHT}` : `0 0 6px ${GOLD}`, transition: "all 0.4s" }} />
                   <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: GOLD, textTransform: "uppercase" as const }}>
-                    Prepared response #047 — Supply Chain Disruption
+                    Prepared Response #047 — Supply Chain Disruption
                   </span>
                 </div>
                 <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: allDone ? TEAL_LIGHT : "#fff", fontVariantNumeric: "tabular-nums", transition: "color 0.4s", letterSpacing: "-0.5px" }}>
@@ -1563,7 +1563,7 @@ function CredibilitySection() {
   const outcomes = [
     { stat: "12 min", label: "Median time from trigger to full org deployment" },
     { stat: "0 hrs",  label: "Executive coordination overhead required" },
-    { stat: "94%",    label: "Prepared response phases completed within target window" },
+    { stat: "94%",    label: "Prepared Response phases completed within target window" },
   ];
   return (
     <section style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
@@ -2064,7 +2064,7 @@ function HowTriggersWorkSection() {
               {[
                 { step: "01", label: "Signal Detected", detail: "Reuters Business", sub: "Ransomware confirmed · 95% match", bg: "#F8F7F4", accent: TEAL },
                 { step: "02", label: "Trigger Matched", detail: "Ransomware Attack Confirmed", sub: "221 patterns evaluated · instant", bg: "#F0EDE4", accent: TEAL },
-                { step: "03", label: "Prepared response Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
+                { step: "03", label: "Prepared Response Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
                 { step: "04", label: "Executive Authorizes", detail: "CISO + CFO sign-off", sub: "Human decision preserved", bg: "#F0EDE4", accent: GOLD },
                 { step: "05", label: "Execution Begins", detail: "12 minutes after detection", sub: "30 days → 12 min", bg: NAVY, accent: GOLD },
               ].map((node, i) => (
@@ -2147,7 +2147,7 @@ function HowPlaybooksWorkSection() {
           {steps.map((s, i) => (
             <Reveal key={i} delay={i * 0.1}>
               <div style={{ padding: "36px 32px", background: i === 2 ? NAVY : "#F8F7F4", border: `1px solid ${i === 2 ? "transparent" : "#E8E4DC"}`, height: "100%" }}>
-                <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: s.accent, lineHeight: 1, marginBottom: 16, opacity: i === 2 ? 1 : 0.9 }}>{s.num}</div>
+                <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: i === 2 ? GOLD : s.accent, lineHeight: 1, marginBottom: 16, opacity: 1 }}>{s.num}</div>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: i === 2 ? "rgba(255,255,255,0.4)" : "#9CA3AF", marginBottom: 10 }}>{s.label}</div>
                 <p style={{ ...DM, fontSize: 14, color: i === 2 ? "rgba(255,255,255,0.75)" : "#4A5568", lineHeight: 1.7, margin: 0 }}>{s.body}</p>
               </div>

@@ -365,7 +365,7 @@ function InvestorPresentation() {
               <Zap className="w-5 h-5" /> With Readiness OS
             </h3>
             <div className="space-y-4">
-              {['T+0: AI detects signal automatically', 'T+2m: Prepared response matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, prepared response refined'].map((t, i) => (
+              {['T+0: AI detects signal automatically', 'T+2m: Prepared Response matched with 94% confidence', 'T+4m: Stakeholders notified, tasks assigned', 'T+8m: Budget pre-approved, resources staged', 'T+12m: Full coordinated response active', 'T+24h: Post-action review, prepared response refined'].map((t, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-[#2B8A6E] mt-2 shrink-0" />
                   <span className="text-[#0A0F2E] text-sm">{t}</span>

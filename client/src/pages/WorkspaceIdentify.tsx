@@ -38,7 +38,7 @@ const TEAL = "#2B8A6E";
 
 const workspaceTools = [
   {
-    title: "Prepared response Library",
+    title: "Prepared Response Library",
     description: "Browse and select from 170 pre-built strategic prepared responses across 9 domains",
     path: "/playbooks",
     icon: BookOpen,
@@ -75,7 +75,7 @@ const workspaceTools = [
     stats: "Executive reports"
   },
   {
-    title: "Prepared response Customization",
+    title: "Prepared Response Customization",
     description: "Tailor prepared responses to your organization's specific needs",
     path: "/playbook-customization",
     icon: ClipboardList,
@@ -170,7 +170,7 @@ function TwoPhasePlaybookSelector() {
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-white font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  Prepared response Quick-Select
+                  Prepared Response Quick-Select
                 </h3>
                 <Badge className="bg-[#2B8A6E] text-white border-none text-xs font-bold uppercase tracking-wider">Two-Phase</Badge>
               </div>
@@ -286,7 +286,7 @@ function TwoPhasePlaybookSelector() {
                 </div>
                 <Link href={`/prepared responses/${detail.id}`}>
                   <Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">
-                    Open Full Prepared response
+                    Open Full Prepared Response
                     <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
                   </Button>
                 </Link>
@@ -320,7 +320,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
               </div>
               <div>
                 <div className="flex items-center gap-3">
-                  <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Prepared response Factory</h1>
+                  <h1 className="text-3xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Prepared Response Factory</h1>
                   <Badge className="bg-[#2B8A6E] text-white border-none px-3 py-1 font-bold uppercase tracking-wider">
                     IDENTIFY
                   </Badge>
@@ -408,9 +408,9 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
           {/* TWO-PHASE PREPARED RESPONSE SELECTOR */}
           <TwoPhasePlaybookSelector />
 
-          {/* Recent Prepared response Activity */}
+          {/* Recent Prepared Response Activity */}
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Recent Prepared response Activity
+            Recent Prepared Response Activity
           </h2>
           <div className="space-y-3 mb-8">
             <Card className="border-[#E8E4DC] dark:border-[#C9A84C]/10 bg-white dark:bg-white/5  border-l-4 border-l-[#2B8A6E]">
@@ -421,7 +421,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Prepared response #12</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">M&A Integration Prepared Response #12</h4>
                       <Badge className="bg-[#2B8A6E] text-white border-none">Active</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Updated 2 hours ago by Sarah Chen</p>
@@ -438,7 +438,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Prepared response #31</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Crisis Response Prepared Response #31</h4>
                       <Badge className="bg-red-600 text-white border-none">Triggered</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Activated Feb 3 via automated trigger</p>
@@ -455,7 +455,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Prepared response #45</h4>
+                      <h4 className="font-semibold text-[#0A0F2E] dark:text-white">Product Launch Prepared Response #45</h4>
                       <Badge className="bg-[#C9A84C] text-[#0A0F2E] border-none font-bold">In Review</Badge>
                     </div>
                     <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-0.5">Draft review pending from 3 stakeholders</p>

@@ -53,7 +53,7 @@ export default function VCPresentations() {
       color: "text-[#0A0F2E]"
     },
     {
-      title: "Prepared response Precision",
+      title: "Prepared Response Precision",
       value: "85-92%",
       subtitle: "Readiness signal detection accuracy",
       growth: "Industry leading",

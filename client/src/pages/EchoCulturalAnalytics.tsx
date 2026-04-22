@@ -378,7 +378,7 @@ export default function EchoCulturalAnalytics() {
                       severityColor: "#dc2626",
                       confidence: 88,
                       finding: "Cross-functional survey data indicates decision-making participation down 18% over 90 days. Teams participating in 3+ concurrent strategic initiatives show 31% higher absenteeism.",
-                      playbook: "Change Resilience Prepared response",
+                      playbook: "Change Resilience Prepared Response",
                       impact: "Risk to Q3 execution velocity",
                     },
                     {
@@ -387,7 +387,7 @@ export default function EchoCulturalAnalytics() {
                       severityColor: TEAL,
                       confidence: 93,
                       finding: "Cross-department collaboration index up 22% following new workspace rollout. Engineering + Sales joint sessions correlate with 3× faster deal qualification.",
-                      playbook: "Collaboration Acceleration Prepared response",
+                      playbook: "Collaboration Acceleration Prepared Response",
                       impact: "Revenue cycle compression opportunity",
                     },
                     {
@@ -396,7 +396,7 @@ export default function EchoCulturalAnalytics() {
                       severityColor: GOLD,
                       confidence: 79,
                       finding: "Signal analysis across internal channels shows 41% of employees unclear on Q3 strategic priorities. Misalignment historically adds 2–3 weeks to initiative rollouts.",
-                      playbook: "Strategic Alignment Prepared response",
+                      playbook: "Strategic Alignment Prepared Response",
                       impact: "Execution delay risk",
                     },
                   ].map((insight) => (

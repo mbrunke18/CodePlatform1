@@ -355,7 +355,7 @@ export default function CoordinationIntelligence() {
                       { label: 'Run Practice Drill', path: '/practice-drills', icon: Zap },
                       { label: 'Open Live Activation', path: '/live-activation', icon: Activity },
                       { label: 'View Board Briefings', path: '/board-briefings', icon: FileText },
-                      { label: 'Playbook Library', path: '/playbook-library', icon: BarChart3 },
+                      { label: 'Prepared Response Library', path: '/playbook-library', icon: BarChart3 },
                     ].map(({ label, path, icon: Icon }) => (
                       <Link key={path} href={path}>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: 'rgba(255,255,255,0.05)', cursor: 'pointer', transition: 'background 0.15s' }}

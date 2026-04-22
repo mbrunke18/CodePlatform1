@@ -231,7 +231,7 @@ export default function LiveDetectionFeed() {
 
           {[
             { trigger: 'AI Competitive Disruption', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'AI Competitive Response Protocol' },
-            { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Prepared response' },
+            { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Prepared Response' },
             { trigger: 'Geopolitical Supply Chain Risk', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Supply Chain Resilience Protocol' },
           ].map((item, i) => (
             <div key={i} style={{
@@ -462,7 +462,7 @@ export default function LiveDetectionFeed() {
                         )}
 
                         <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: '10px 14px', fontSize: 13, color: NAVY }}>
-                          <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Prepared response: </span>
+                          <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Prepared Response: </span>
                           {detection.recommendedPlaybook}
                         </div>
                       </div>

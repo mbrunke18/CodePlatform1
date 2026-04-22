@@ -22,7 +22,7 @@ import {
 const features = [
   {
     icon: Shield,
-    title: 'IDENTIFY — Prepared response Depth Chart',
+    title: 'IDENTIFY — Prepared Response Depth Chart',
     description: 'Build your strategic arsenal. Browse 170 pre-built prepared responses across 9 domains — ready to deploy instantly.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',

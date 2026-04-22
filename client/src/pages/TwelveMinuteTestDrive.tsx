@@ -461,7 +461,7 @@ export default function TwelveMinuteTestDrive() {
                       </>
                     ) : (
                       <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
-                        {['Crisis Response Protocol', 'Executive Stakeholder Coordination', 'Communications Lockdown Prepared response', 'Legal & Regulatory Notification'].map((p, i) => (
+                        {['Crisis Response Protocol', 'Executive Stakeholder Coordination', 'Communications Lockdown Prepared Response', 'Legal & Regulatory Notification'].map((p, i) => (
                           <span key={i} style={{ fontSize: 11, fontWeight: 700, padding: '6px 14px', background: 'rgba(43,138,110,0.15)', color: TEAL_LT, border: '1px solid rgba(43,138,110,0.3)' }}>
                             ▸ {p}
                           </span>

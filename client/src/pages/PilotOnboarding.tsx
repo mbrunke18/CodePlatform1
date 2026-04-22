@@ -53,7 +53,7 @@ const roles = [
       { label: 'Mission Control', detail: 'Strategic overview of all active and completed scenarios — coordination timeline, escalation history, and workstream health at a glance.' },
     ],
     owns: [
-      'Prepared response activation decision — which prepared response fires for which trigger',
+      'Prepared Response activation decision — which prepared response fires for which trigger',
       'Stakeholder assignment — who gets what task, in what sequence',
       'Escalation calls — when a task is overdue and needs to move up the chain',
       'Maintaining execution velocity — keeping the platform active across all 10 pilot users',
@@ -63,7 +63,7 @@ const roles = [
       { label: 'Command Center', href: '/command-center' },
       { label: 'Live Activation', href: '/live-activation' },
       { label: 'Mission Control', href: '/mission-control' },
-      { label: 'Playbook Library', href: '/playbook-library' },
+      { label: 'Prepared Response Library', href: '/playbook-library' },
     ],
   },
   {
@@ -150,7 +150,7 @@ const roles = [
       { label: 'Platform Overview', href: '/platform-overview' },
       { label: 'Stakeholder Management', href: '/stakeholder-management' },
       { label: 'Success Metrics', href: '/success-metrics-configuration' },
-      { label: 'Playbook Library', href: '/playbook-library' },
+      { label: 'Prepared Response Library', href: '/playbook-library' },
     ],
   },
 ];

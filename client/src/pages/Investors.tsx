@@ -23,7 +23,7 @@ const scenarioComparisons = [
     traditional: { time: "6-9 months", cost: "€280M opportunity lost" },
     execution: { time: "12 minutes", value: "First-mover advantage secured" },
     speedup: "3,600×",
-    context: "Prepared response activates the moment market signals confirm the window. Stakeholders aligned, budgets staged, comms drafted — before competitors react.",
+    context: "Prepared Response activates the moment market signals confirm the window. Stakeholders aligned, budgets staged, comms drafted — before competitors react.",
   },
   {
     title: "Ransomware Attack",
@@ -179,7 +179,7 @@ function PlatformArchitectureDiagram() {
       phase: "IDENTIFY",
       label: "Signal Engine",
       sub: "Pattern-detection analysis",
-      items: ["Threat synthesis", "Trigger matching", "Risk scoring", "Prepared response recommendation"],
+      items: ["Threat synthesis", "Trigger matching", "Risk scoring", "Prepared Response recommendation"],
       color: NAVY,
       bg: "#EEF0F7",
       border: `${NAVY}40`,
@@ -664,7 +664,7 @@ export default function Investors() {
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">The IDEA Framework™</h2>
             <div className="grid md:grid-cols-4 gap-4">
               {[
-                { phase: "IDENTIFY", module: "Prepared response™", desc: "Build and customize strategic prepared responses", color: "bg-[#0A0F2E]" },
+                { phase: "IDENTIFY", module: "Prepared Response™", desc: "Build and customize strategic prepared responses", color: "bg-[#0A0F2E]" },
                 { phase: "DETECT", module: "Signal™", desc: "Continuous signal monitoring", color: "bg-[#2B8A6E]" },
                 { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#C9A84C]" },
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#2B8A6E]" },

@@ -111,7 +111,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
 
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="font-bold text-[#0A0F2E]">Prepared response Readiness</span>
+                    <span className="font-bold text-[#0A0F2E]">Prepared Response Readiness</span>
                     <span className="text-[#6B7280] font-bold">{readinessMetrics.playbookReadiness || 0}/15 pts</span>
                   </div>
                   <Progress value={(readinessMetrics.playbookReadiness || 0) / 15 * 100} className="h-2 bg-[#F8F7F4]" />
@@ -309,7 +309,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                   <div className="flex items-start gap-4 p-6 bg-[#2B8A6E]/5 border border-[#2B8A6E]/10 rounded" data-testid="rec-drills">
                     <Shield className="h-6 w-6 text-[#2B8A6E] mt-1" />
                     <div className="flex-1">
-                      <div className="font-bold text-[#2B8A6E] text-lg" style={CG}>Run Prepared response Drills</div>
+                      <div className="font-bold text-[#2B8A6E] text-lg" style={CG}>Run Prepared Response Drills</div>
                       <p className="text-sm text-[#2B8A6E] font-medium mt-1 leading-relaxed">
                         Complete {Math.ceil((25 - (readinessMetrics.drillsCompleted || 0)) / 5)} more prepared response drills. This will strengthen team coordination and add up to {25 - (readinessMetrics.drillsCompleted || 0)} points.
                       </p>

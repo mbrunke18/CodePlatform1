@@ -649,7 +649,7 @@ function AlertCard({ alert }: { alert: any }) {
               Acknowledge
             </Button>
             <Button variant="default" size="sm" data-testid={`button-activate-${alert.id}`}>
-              Activate Prepared response
+              Activate Prepared Response
             </Button>
           </div>
         </div>

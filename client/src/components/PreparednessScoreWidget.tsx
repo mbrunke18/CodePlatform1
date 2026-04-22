@@ -247,7 +247,7 @@ export default function PreparednessScoreWidget({ organizationId }: { organizati
 
             <div>
               <div className="flex justify-between text-xs mb-1">
-                <span>Prepared response Readiness</span>
+                <span>Prepared Response Readiness</span>
                 <span className="font-medium">{displayData.readinessMetrics?.playbookReadiness || 0}/15</span>
               </div>
               <Progress value={(displayData.readinessMetrics?.playbookReadiness || 0) / 15 * 100} className="h-1.5" data-testid="progress-prepared responses" />

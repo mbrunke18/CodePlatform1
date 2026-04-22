@@ -39,8 +39,8 @@ const SCENARIO_DOMAINS = [
 const ACTIVE_DRILLS = [
   { name: 'Market Entry — Competitive Response Drill', status: 'in_progress', phase: 'EXECUTE', participants: 8, score: null, playbook: 'Competitive Response Protocol', domain: 'Competitive' },
   { name: 'M&A Integration Walkthrough', status: 'scheduled', phase: 'IDENTIFY', participants: 5, score: null, playbook: 'M&A Integration Protocol v3', domain: 'M&A' },
-  { name: 'Regulatory Inquiry Simulation', status: 'completed', phase: 'ADVANCE', participants: 12, score: 94, playbook: 'Regulatory Response Prepared response', domain: 'Regulatory' },
-  { name: 'Digital Transformation Scenario', status: 'completed', phase: 'ADVANCE', participants: 7, score: 87, playbook: 'Digital Acceleration Prepared response', domain: 'Digital' },
+  { name: 'Regulatory Inquiry Simulation', status: 'completed', phase: 'ADVANCE', participants: 12, score: 94, playbook: 'Regulatory Response Prepared Response', domain: 'Regulatory' },
+  { name: 'Digital Transformation Scenario', status: 'completed', phase: 'ADVANCE', participants: 7, score: 87, playbook: 'Digital Acceleration Prepared Response', domain: 'Digital' },
 ];
 
 const getLevelColor = (level: string) => level === 'high' ? GOLD : level === 'medium' ? TEAL : '#9CA3AF';

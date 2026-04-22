@@ -122,7 +122,7 @@ export function SignalDemo({ progress }: SceneProps) {
                     className="flex items-center justify-center gap-2 text-[#D4AF37]"
                   >
                     <Zap className="w-5 h-5" />
-                    <span className="font-bold">Prepared response Ready to Activate</span>
+                    <span className="font-bold">Prepared Response Ready to Activate</span>
                   </motion.div>
                 </motion.div>
               )}

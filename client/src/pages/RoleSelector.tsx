@@ -83,7 +83,7 @@ const roleConfigs: RoleConfig[] = [
     keyMetric: '$12M market share defended',
     metricBefore: '21 days',
     metricAfter: '3 days',
-    playbook: 'Competitive Response Prepared response',
+    playbook: 'Competitive Response Prepared Response',
     category: 'OFFENSE',
   },
   {
@@ -131,7 +131,7 @@ const roleConfigs: RoleConfig[] = [
     keyMetric: '70% → 95% strategy delivery',
     metricBefore: '70% delivery',
     metricAfter: '95% delivery',
-    playbook: 'Strategic Alignment Prepared response',
+    playbook: 'Strategic Alignment Prepared Response',
     category: 'OFFENSE',
   },
   {
@@ -255,7 +255,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             </div>
           </div>
 
-          {/* Prepared response label */}
+          {/* Prepared Response label */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
             <BookOpen size={10} style={{ color: GOLD, flexShrink: 0 }} />
             <span style={{ fontSize: 10, fontWeight: 600, color: '#9CA3AF' }}>{config.playbook}</span>
@@ -320,7 +320,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
             <h1 style={{ ...CG, fontSize: 44, fontWeight: 700, color: '#FFFFFF', marginBottom: 14, lineHeight: 1.15 }}>
-              Your Role. Your Trigger. Your Prepared response.
+              Your Role. Your Trigger. Your Prepared Response.
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', maxWidth: 580, margin: '0 auto 28px', lineHeight: 1.6 }}>
               Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your prepared response before the trigger fires.
@@ -354,7 +354,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, position: 'relative' }}>
               {[
                 { icon: Layers, label: 'Your Scenario', sub: 'Real situation. Your role. Real stakes.', color: NAVY, step: 1 },
-                { icon: BookOpen, label: 'Build Prepared response', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
+                { icon: BookOpen, label: 'Build Prepared Response', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
                 { icon: Radio, label: 'Trigger Fires', sub: 'Signal detected. OS pre-staged & ready.', color: GOLD, step: 3 },
                 { icon: Brain, label: 'Signal Analysis', sub: '4 system insights surface in real time.', color: TEAL, step: 4 },
                 { icon: Zap, label: 'Live Execution', sub: 'Watch 8 tasks coordinate in 12 minutes.', color: '#DC2626', step: 5 },

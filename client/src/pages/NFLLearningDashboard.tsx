@@ -228,7 +228,7 @@ export default function NFLLearningDashboard() {
               Performance Trends
             </TabsTrigger>
             <TabsTrigger value="insights" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-insights">
-              Cross-Prepared response Insights
+              Cross-Prepared Response Insights
             </TabsTrigger>
             <TabsTrigger value="velocity" className="data-[state=active]:bg-white data-[state=active]:text-[#0A0F2E]" data-testid="tab-velocity">
               Execution Velocity
@@ -442,13 +442,13 @@ export default function NFLLearningDashboard() {
             </Card>
           </TabsContent>
 
-          {/* Cross-Prepared response Insights Tab */}
+          {/* Cross-Prepared Response Insights Tab */}
           <TabsContent value="insights" className="space-y-4 mt-6">
             <Card className="border-[#E8E4DC] bg-white shadow-none">
               <CardHeader>
                 <CardTitle style={CG} className="flex items-center gap-2 text-xl text-[#0A0F2E]">
                   <Brain className="h-5 w-5 text-[#C9A84C]" />
-                  Cross-Prepared response Learning Patterns
+                  Cross-Prepared Response Learning Patterns
                 </CardTitle>
                 <CardDescription className="text-[#6B7280]">Insights derived from multiple scenarios</CardDescription>
               </CardHeader>

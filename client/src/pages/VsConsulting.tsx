@@ -101,7 +101,7 @@ export default function VsConsulting() {
               <div style={{ border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
                 {[
                   { phase: "Discovery & Assessment", delivers: "Interviews, current state analysis, gap assessment", cost: "$75K–$125K" },
-                  { phase: "Prepared response Development", delivers: "5–10 prepared responses in PDF / PowerPoint format", cost: "$150K–$250K" },
+                  { phase: "Prepared Response Development", delivers: "5–10 prepared responses in PDF / PowerPoint format", cost: "$150K–$250K" },
                   { phase: "Implementation Support", delivers: "Training, rollout facilitation, change management", cost: "$75K–$150K" },
                 ].map((row, i) => (
                   <div key={i} style={{ padding: "16px 20px", borderBottom: i < 2 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>

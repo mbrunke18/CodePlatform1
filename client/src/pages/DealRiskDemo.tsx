@@ -270,7 +270,7 @@ export default function DealRiskDemo() {
                       className="w-full bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                       onClick={() => selectPlaybookMutation.mutate()}
                     >
-                      Select Deal Risk Response Prepared response
+                      Select Deal Risk Response Prepared Response
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   )}
@@ -279,7 +279,7 @@ export default function DealRiskDemo() {
                     <div className="p-4 bg-[#2B8A6E]/10 border border-[#2B8A6E]/30">
                       <div className="flex items-center gap-2 text-[#2B8A6E] mb-2">
                         <CheckCircle2 className="h-5 w-5" />
-                        <span className="font-medium">Prepared response Configured</span>
+                        <span className="font-medium">Prepared Response Configured</span>
                       </div>
                       <p className="text-sm text-white/80">
                         {typedStatus.playbook.name} with {typedStatus.playbook.triggers.length} trigger conditions
@@ -442,11 +442,11 @@ export default function DealRiskDemo() {
                           </div>
                         </div>
 
-                        {/* Prepared response Improvements */}
+                        {/* Prepared Response Improvements */}
                         <div>
                           <h4 className="text-sm font-medium text-[#DFC178] mb-3 flex items-center gap-2">
                             <Lightbulb className="h-4 w-4" />
-                            Recommended Prepared response Improvements
+                            Recommended Prepared Response Improvements
                           </h4>
                           <div className="space-y-2">
                             {learnings.playbookImprovements?.map((improvement: any, i: number) => (

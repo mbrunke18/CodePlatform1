@@ -123,7 +123,7 @@ export default function TriggerConfigurationWizard({
   const [escalationEnabled, setEscalationEnabled] = useState(true);
   const [escalationTimeout, setEscalationTimeout] = useState('30');
   
-  // Prepared response mapping
+  // Prepared Response mapping
   const [selectedPlaybooks, setSelectedPlaybooks] = useState<string[]>([]);
   
   // Pre-populate form when editing an existing trigger
@@ -330,7 +330,7 @@ export default function TriggerConfigurationWizard({
               {step === 1 && 'Category & Basics'}
               {step === 2 && 'Conditions'}
               {step === 3 && 'Notifications'}
-              {step === 4 && 'Prepared response Mapping'}
+              {step === 4 && 'Prepared Response Mapping'}
             </span>
           </div>
           <Progress value={(step / totalSteps) * 100} className="h-2" />
@@ -714,7 +714,7 @@ export default function TriggerConfigurationWizard({
           </div>
         )}
         
-        {/* Step 4: Prepared response Mapping */}
+        {/* Step 4: Prepared Response Mapping */}
         {step === 4 && (
           <div className="space-y-6">
             <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200">
@@ -728,7 +728,7 @@ export default function TriggerConfigurationWizard({
             
             <div className="flex items-center justify-between">
               <div>
-                <Label className="text-lg font-semibold">Auto-Activate Prepared response</Label>
+                <Label className="text-lg font-semibold">Auto-Activate Prepared Response</Label>
                 <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected prepared response when trigger fires</p>
               </div>
               <Switch 

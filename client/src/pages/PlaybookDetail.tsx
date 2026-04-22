@@ -229,7 +229,7 @@ export default function PlaybookDetail() {
     },
     onSuccess: (result) => {
       toast({
-        title: 'Prepared response Activated',
+        title: 'Prepared Response Activated',
         description: `12-minute execution window initiated. ${result.stakeholders} stakeholders notified.`,
       });
       setLocation('/command-center');
@@ -250,7 +250,7 @@ export default function PlaybookDetail() {
       const drillData = {
         organizationId,
         playbookId: id,
-        drillName: `Practice Drill: ${playbook?.name || 'Prepared response'}`,
+        drillName: `Practice Drill: ${playbook?.name || 'Prepared Response'}`,
         drillType: 'simulation',
         scenarioDescription: playbook?.description || 'Practice drill simulation',
         scheduledDate: new Date(),
@@ -304,7 +304,7 @@ export default function PlaybookDetail() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', id] });
       setHasUnsaved(false);
-      toast({ title: 'Prepared response updated', description: 'Phase tasks and decision gates saved.' });
+      toast({ title: 'Prepared Response updated', description: 'Phase tasks and decision gates saved.' });
     },
     onError: (error: any) => {
       toast({ title: 'Save failed', description: error.message || 'Could not save changes.', variant: 'destructive' });
@@ -473,7 +473,7 @@ export default function PlaybookDetail() {
       <PageLayout>
         <div className="container mx-auto p-6 text-center">
           <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-amber-500" />
-          <h2 className="text-xl font-semibold mb-2">Prepared response Not Found</h2>
+          <h2 className="text-xl font-semibold mb-2">Prepared Response Not Found</h2>
           <p className="text-muted-foreground mb-4">
             The requested prepared response could not be found.
           </p>
@@ -516,7 +516,7 @@ export default function PlaybookDetail() {
               <div style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid ${GOLD}`, padding: 40, background: "#fff" }}>
                 <div className="flex items-center gap-3 mb-6">
                   <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
-                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Prepared response No. {playbook.playbookNumber}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Prepared Response No. {playbook.playbookNumber}</span>
                 </div>
                 <h1 style={{ ...CG, fontSize: "clamp(32px,5vw,48px)", fontWeight: 600, color: NAVY, lineHeight: 1.05, marginBottom: 24 }}>
                   {playbook.name}
@@ -1276,7 +1276,7 @@ export default function PlaybookDetail() {
                             data-testid="button-activate"
                           >
                             <Zap className="h-4 w-4 mr-2" />
-                            Activate Prepared response
+                            Activate Prepared Response
                           </Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent style={{ borderRadius: 0, border: `1px solid ${GOLD}` }}>
@@ -1329,7 +1329,7 @@ export default function PlaybookDetail() {
                 </ul>
               </div>
 
-              {/* Prepared response Governance Indicator */}
+              {/* Prepared Response Governance Indicator */}
               {(() => {
                 const versionStr: string = playbook.version || '1.0';
                 const major = parseFloat(versionStr.split('.')[0] || '1');
@@ -1352,7 +1352,7 @@ export default function PlaybookDetail() {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
                       <div style={{ display: "flex", justifyContent: "space-between" as const, fontSize: 11, color: MUTED }}>
-                        <span>Prepared response No.</span>
+                        <span>Prepared Response No.</span>
                         <span style={{ fontWeight: 600, color: NAVY }}>#{playbook.playbookNumber || '—'}</span>
                       </div>
                       {playbook.domain && (

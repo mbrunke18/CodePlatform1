@@ -359,7 +359,7 @@ export default function ProductTour() {
       advance: {
         icon: Brain,
         hex: '#2B8A6E',
-        items: ['Outcome Analysis', 'AI Recommendations', 'Prepared response Refinement', 'Future Readiness Index']
+        items: ['Outcome Analysis', 'AI Recommendations', 'Prepared Response Refinement', 'Future Readiness Index']
       }
     };
 

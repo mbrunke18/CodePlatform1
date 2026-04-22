@@ -108,7 +108,7 @@ const IDEA_STORY = [
     metrics: [
       { label: "Signals Monitored", value: "2,847" },
       { label: "Pattern Match", value: "94%" },
-      { label: "Recommendation", value: "Prepared response #018" }
+      { label: "Recommendation", value: "Prepared Response #018" }
     ],
     smartDefaults: null,
     pmSync: null
@@ -193,7 +193,7 @@ const IDEA_STORY = [
     investorHighlight: "Historical execution data + prepared response refinements = recurring value that compounds. This is how we achieve 150%+ net revenue retention.",
     metrics: [
       { label: "Lessons Captured", value: "23" },
-      { label: "Prepared response Updates", value: "7" },
+      { label: "Prepared Response Updates", value: "7" },
       { label: "Time Saved Next", value: "15%" }
     ],
     smartDefaults: null,

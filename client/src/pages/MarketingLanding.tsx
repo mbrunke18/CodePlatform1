@@ -159,7 +159,7 @@ export default function MarketingLanding() {
               <div className="grid md:grid-cols-4 gap-6 text-left">
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
                   <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Identify</Badge>
-                  <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Prepared response™" /></div>
+                  <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Prepared Response™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
                     170 pre-built prepared responses across 9 strategic domains. Build your depth chart before events hit.
                   </p>
@@ -229,13 +229,13 @@ export default function MarketingLanding() {
 
           {/* Feature Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* 1. Create Prepared response - PROMINENT */}
+            {/* 1. Create Prepared Response - PROMINENT */}
             <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-prepared response">
               <CardContent className="p-10">
                 <div className="mb-8">
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Start Here</div>
                   <h3 className="font-serif text-2xl text-[#0A0F2E] mb-3">
-                    Create Strategic Prepared response
+                    Create Strategic Prepared Response
                   </h3>
                   <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 8 }} />
                 </div>
@@ -272,10 +272,10 @@ export default function MarketingLanding() {
               </CardContent>
             </Card>
 
-            {/* 4. Prepared response Library */}
+            {/* 4. Prepared Response Library */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
-                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Prepared response Library</h3>
+                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Prepared Response Library</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   170 strategic prepared responses across 9 operational domains covering growth, defense, transformation, and AI governance.
                 </p>

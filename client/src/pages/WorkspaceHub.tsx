@@ -34,7 +34,7 @@ const TABS = [
 
 // ─── IDENTIFY DATA ───────────────────────────────────────────────────────────
 const identifyTools = [
-  { title: "Playbook Library", description: "Browse 170 pre-built strategic playbooks across 9 domains", path: "/playbooks", icon: BookOpen, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "170 playbooks", featured: true },
+  { title: "Prepared Response Library", description: "Browse 170 pre-built strategic playbooks across 9 domains", path: "/playbooks", icon: BookOpen, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "170 playbooks", featured: true },
   { title: "Scenario Planning Hub", description: "Design strategic scenarios and map potential trigger conditions", path: "/strategic", icon: Target, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Strategic planning" },
   { title: "What-If Analyzer", description: "Model different scenarios and their potential outcomes", path: "/what-if-analyzer", icon: Lightbulb, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Predictive modeling" },
   { title: "Board Briefings", description: "Generate executive-ready presentations and board materials", path: "/board-briefings", icon: FileText, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Executive reports" },
@@ -78,7 +78,7 @@ function TwoPhasePlaybookSelector() {
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-[#2B8A6E]/20"><Layers className="h-5 w-5 text-[#2B8A6E]" /></div>
             <div>
-              <div className="flex items-center gap-2"><h3 className="text-white font-semibold" style={CG}>Prepared response Quick-Select</h3><Badge className="bg-[#2B8A6E] text-white border-none text-xs font-bold uppercase tracking-wider">Two-Phase</Badge></div>
+              <div className="flex items-center gap-2"><h3 className="text-white font-semibold" style={CG}>Prepared Response Quick-Select</h3><Badge className="bg-[#2B8A6E] text-white border-none text-xs font-bold uppercase tracking-wider">Two-Phase</Badge></div>
               <p className="text-white/50 text-xs mt-0.5">Metadata loads instantly — full detail on selection</p>
             </div>
           </div>
@@ -96,7 +96,7 @@ function TwoPhasePlaybookSelector() {
           <div className="p-5 min-h-[180px]">
             {!selectedId ? (<div className="flex flex-col items-center justify-center h-full py-8 gap-3 text-center"><div className="p-3 bg-[#2B8A6E]/10"><BookOpen className="h-6 w-6 text-[#2B8A6E]" /></div><p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a prepared response for full details</p><p className="text-xs text-[#6B7280]">Trigger conditions, escalation paths, and execution steps load on demand</p></div>)
               : detailLoading ? (<div className="flex items-center justify-center h-full gap-2 text-[#6B7280]"><Loader2 className="h-4 w-4 animate-spin" /><span className="text-sm">Loading...</span></div>)
-              : detail ? (<div className="space-y-4"><div className="flex items-start justify-between gap-2"><div><h4 className="font-bold text-[#0A0F2E] dark:text-white text-base" style={CG}>{detail.name}</h4><div className="flex items-center gap-2 mt-1 flex-wrap"><Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 text-xs">{detail.domain}</Badge>{detail.category && <Badge variant="outline" className="text-xs">{detail.category}</Badge>}{detail.priority && <Badge className={`text-xs border ${PRIORITY_COLORS[detail.priority] || PRIORITY_COLORS.medium}`}>{detail.priority}</Badge>}</div></div><button onClick={() => setSelectedId(null)} className="text-[#6B7280] hover:text-[#0A0F2E] flex-shrink-0"><X className="h-4 w-4" /></button></div>{detail.description && <p className="text-sm text-[#6B7280] leading-relaxed">{detail.description}</p>}<div className="grid grid-cols-2 gap-3"><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.executionSteps) ? detail.executionSteps.length : Array.isArray(detail.enrichedPhases) ? detail.enrichedPhases.length : '—'}</p><p className="text-xs text-[#6B7280]">{Array.isArray(detail.executionSteps) ? 'Steps' : 'Phases'}</p></div><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.stakeholders) ? detail.stakeholders.length : '—'}</p><p className="text-xs text-[#6B7280]">Stakeholders</p></div></div><Link href={`/prepared responses/${detail.id}`}><Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">Open Full Prepared response <ExternalLink className="h-3.5 w-3.5 ml-1.5" /></Button></Link></div>)
+              : detail ? (<div className="space-y-4"><div className="flex items-start justify-between gap-2"><div><h4 className="font-bold text-[#0A0F2E] dark:text-white text-base" style={CG}>{detail.name}</h4><div className="flex items-center gap-2 mt-1 flex-wrap"><Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 text-xs">{detail.domain}</Badge>{detail.category && <Badge variant="outline" className="text-xs">{detail.category}</Badge>}{detail.priority && <Badge className={`text-xs border ${PRIORITY_COLORS[detail.priority] || PRIORITY_COLORS.medium}`}>{detail.priority}</Badge>}</div></div><button onClick={() => setSelectedId(null)} className="text-[#6B7280] hover:text-[#0A0F2E] flex-shrink-0"><X className="h-4 w-4" /></button></div>{detail.description && <p className="text-sm text-[#6B7280] leading-relaxed">{detail.description}</p>}<div className="grid grid-cols-2 gap-3"><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.executionSteps) ? detail.executionSteps.length : Array.isArray(detail.enrichedPhases) ? detail.enrichedPhases.length : '—'}</p><p className="text-xs text-[#6B7280]">{Array.isArray(detail.executionSteps) ? 'Steps' : 'Phases'}</p></div><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.stakeholders) ? detail.stakeholders.length : '—'}</p><p className="text-xs text-[#6B7280]">Stakeholders</p></div></div><Link href={`/prepared responses/${detail.id}`}><Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">Open Full Prepared Response <ExternalLink className="h-3.5 w-3.5 ml-1.5" /></Button></Link></div>)
               : null}
           </div>
         </div>
@@ -194,7 +194,7 @@ const advanceTools = [
   { title: "Executive Dashboard", description: "Strategic overview of organizational readiness and performance", path: "/executive-dashboard", icon: BarChart3, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Executive view" },
   { title: "Executive Analytics", description: "Deep-dive analytics on prepared response effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
   { title: "Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "System recommendations" },
-  { title: "Prepared response Refinement", description: "Update prepared responses based on lessons learned", path: "/living-prepared responses", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
+  { title: "Prepared Response Refinement", description: "Update prepared responses based on lessons learned", path: "/living-prepared responses", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
 ];
 const learningMetrics = [
   { label: "Lessons Captured", value: "47", icon: Lightbulb, color: "text-[#2B8A6E]" },
@@ -264,7 +264,7 @@ const IDEA_PHASE_TILES = [
     id: 'identify',
     phase: 'Phase 1',
     label: 'IDENTIFY',
-    name: 'Prepared response Factory',
+    name: 'Prepared Response Factory',
     desc: 'Build, customize, and manage strategic prepared responses for every scenario your organization will face.',
     stat: '170 Prepared responses',
     statSub: 'across 9 domains',
@@ -445,7 +445,7 @@ export default function WorkspaceHub() {
               <div>
                 <div className="flex items-center gap-3">
                   <h1 className="text-3xl font-bold" style={{ ...CG, color: NAVY }}>
-                    {activeTab === 'identify' ? 'Prepared response Factory' : activeTab === 'detect' ? 'Signal Ops' : activeTab === 'execute' ? 'Compass Command' : 'Retrospect Lab'}
+                    {activeTab === 'identify' ? 'Prepared Response Factory' : activeTab === 'detect' ? 'Signal Ops' : activeTab === 'execute' ? 'Compass Command' : 'Retrospect Lab'}
                   </h1>
                   <Badge className="px-3 py-1 font-bold uppercase tracking-wider border-none" style={{ background: activeTabData.color, color: activeTab === 'execute' ? NAVY : 'white' }}>
                     {activeTabData.label}
@@ -478,9 +478,9 @@ export default function WorkspaceHub() {
                 ))}
               </div>
               <TwoPhasePlaybookSelector />
-              <h2 className="text-xl font-bold mb-4" style={{ ...CG, color: NAVY }}>Recent Prepared response Activity</h2>
+              <h2 className="text-xl font-bold mb-4" style={{ ...CG, color: NAVY }}>Recent Prepared Response Activity</h2>
               <div className="space-y-3 mb-8">
-                {[{ name: "M&A Integration Prepared response #12", badge: "Active", badgeBg: "#2B8A6E", icon: BookOpen, border: "#2B8A6E", time: "2 hours ago", note: "Updated by Sarah Chen" },{ name: "Crisis Response Prepared response #31", badge: "Triggered", badgeBg: "#EF4444", icon: Shield, border: NAVY, time: "Feb 3", note: "Activated via automated trigger" },{ name: "Product Launch Prepared response #45", badge: "In Review", badgeBg: GOLD, icon: Rocket, border: GOLD, time: "Pending", note: "Draft review from 3 stakeholders" }].map(item => (
+                {[{ name: "M&A Integration Prepared Response #12", badge: "Active", badgeBg: "#2B8A6E", icon: BookOpen, border: "#2B8A6E", time: "2 hours ago", note: "Updated by Sarah Chen" },{ name: "Crisis Response Prepared Response #31", badge: "Triggered", badgeBg: "#EF4444", icon: Shield, border: NAVY, time: "Feb 3", note: "Activated via automated trigger" },{ name: "Product Launch Prepared Response #45", badge: "In Review", badgeBg: GOLD, icon: Rocket, border: GOLD, time: "Pending", note: "Draft review from 3 stakeholders" }].map(item => (
                   <Card key={item.name} className="border-[#E8E4DC] bg-white " style={{ borderLeft: `4px solid ${item.border}` }}>
                     <CardContent className="p-4"><div className="flex items-center gap-4"><div className="p-2" style={{ background: `${item.border}1A` }}><item.icon className="h-5 w-5" style={{ color: item.border }} /></div><div className="flex-1 min-w-0"><div className="flex items-center gap-2 flex-wrap"><h4 className="font-semibold text-[#0A0F2E]">{item.name}</h4><Badge className="border-none text-white font-bold" style={{ background: item.badgeBg, color: item.badgeBg === GOLD ? NAVY : 'white' }}>{item.badge}</Badge></div><p className="text-sm text-[#6B7280] mt-0.5">{item.note} · {item.time}</p></div></div></CardContent>
                   </Card>

@@ -98,7 +98,7 @@ export default function ScenarioVarianceAlert({
             direction: 'above',
             severity: analysisResult.projectedExecutionTime > 30 ? 'critical' : 'warning',
             detectedAt: timestamp,
-            affectedPlaybooks: ['Primary Response Prepared response'],
+            affectedPlaybooks: ['Primary Response Prepared Response'],
             suggestedAction: 'Review prepared response tasks for optimization opportunities',
             acknowledged: false
           });

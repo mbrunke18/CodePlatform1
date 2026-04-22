@@ -243,7 +243,7 @@ export default function MonitorTriggersStep({ data, onChange, playbook }: Monito
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between p-3 border">
             <div>
-              <div className="text-sm font-medium">Auto-Activate Prepared response</div>
+              <div className="text-sm font-medium">Auto-Activate Prepared Response</div>
               <div className="text-xs text-muted-foreground">
                 Automatically activate when all trigger conditions are met (requires CISO approval)
               </div>

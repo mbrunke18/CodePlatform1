@@ -482,14 +482,14 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
         id: 'int-018', name: 'Microsoft Teams', category: 'communication', status: 'available',
         description: 'War room notifications delivered directly to Teams channels on prepared response activation. Configure your incoming webhook URL to enable.', provider: 'Microsoft', version: '2.0',
         lastSync: '', health: 0, endpoints: 3, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
-        features: ['War Room Alerts', 'Prepared response Activation Notifications', 'Escalation Pings', 'Delegation Notices', 'Adaptive Cards'],
+        features: ['War Room Alerts', 'Prepared Response Activation Notifications', 'Escalation Pings', 'Delegation Notices', 'Adaptive Cards'],
         configuration: { syncFrequency: 'event-driven', dataMapping: ['playbook_activations', 'escalations', 'war_room_events'] }
       },
       {
         id: 'int-024', name: 'Microsoft Copilot Studio', category: 'ai', status: 'available',
         description: 'Surface Readiness OS prepared response recommendations inside Microsoft 365 Copilot. Executives can query "What prepared responses should activate right now?" directly from Teams or Outlook.', provider: 'Microsoft', version: '2025',
         lastSync: '', health: 0, endpoints: 5, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
-        features: ['Prepared response Query Agent', 'Trigger Alert Surfacing', 'IDEA Framework Connector', 'Teams & Outlook Native', 'Executive Brief Delivery'],
+        features: ['Prepared Response Query Agent', 'Trigger Alert Surfacing', 'IDEA Framework Connector', 'Teams & Outlook Native', 'Executive Brief Delivery'],
         configuration: { syncFrequency: 'real-time', dataMapping: ['playbook_recommendations', 'trigger_signals', 'execution_briefs'] }
       },
       {

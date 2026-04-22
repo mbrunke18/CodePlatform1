@@ -110,7 +110,7 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#0A0F2E]/20",
     time: 50,
-    description: "Readiness OS's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right playbook. You stay in control—AI recommends, you decide.",
+    description: "Readiness OS's AI monitors competitive intelligence, regulatory filings, supply chain signals, and internal alerts. When it detects something relevant, it recommends the right Prepared Response. You stay in control—AI recommends, you decide.",
     roleWins: [
       { role: "Chief Strategy Officer", benefit: "Competitive moves flagged before they hit the news" },
       { role: "VP Supply Chain", benefit: "Supplier issues detected before they become crises" },
@@ -165,7 +165,7 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/20",
     time: 120,
-    description: "When you activate a playbook, Readiness OS instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
+    description: "When you activate a Prepared Response, Readiness OS instantly notifies all stakeholders, creates tasks in your existing PM tools (Jira, Asana, etc.), stages all documents, and unlocks pre-approved budgets. Your team sees their role-specific dashboard—they know exactly what to do.",
     roleWins: [
       { role: "CEO", benefit: "Board notification happens automatically at thresholds" },
       { role: "COO", benefit: "See all 47 stakeholders acknowledge in real-time" },
@@ -204,7 +204,7 @@ const IDEA_STORY = [
     ],
     metrics: [
       { label: "Lessons Captured", value: "Automatic" },
-      { label: "Prepared response Updates", value: "Suggested" },
+      { label: "Prepared Response Updates", value: "Suggested" },
       { label: "Next Execution", value: "15% faster" }
     ],
     smartDefaults: null

@@ -100,7 +100,7 @@ const pilotInclusions = [
     category: 'Training',
     items: [
       '2-hour platform training session',
-      'Prepared response customization workshop',
+      'Prepared Response customization workshop',
       'Tabletop exercise facilitation (2-3 sessions)',
       'Documentation and quick-start guides'
     ]

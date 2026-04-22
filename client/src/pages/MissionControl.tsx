@@ -565,7 +565,7 @@ export default function MissionControl() {
                 { label: 'Situation Intents', desc: 'Define what you\'re watching for', href: '/identify/situation-intents', primary: true },
                 { label: 'Trigger Configuration', desc: 'Signal thresholds & monitoring rules', href: '/triggers-management', primary: false },
                 { label: 'Stakeholder Registry', desc: 'Notification routing at trigger point', href: '/stakeholders', primary: false },
-                { label: 'Playbook Library', desc: '170 pre-staged playbooks ready to deploy', href: '/playbooks', primary: false },
+                { label: 'Prepared Response Library', desc: '170 pre-staged playbooks ready to deploy', href: '/playbooks', primary: false },
               ].map(({ label, desc, href, primary }) => (
                 <a key={href} href={href} style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -720,7 +720,7 @@ export default function MissionControl() {
                         onClick={() => setLocation('/live-activation-center')}
                         style={{ display: 'flex', alignItems: 'center', gap: 7, background: GOLD, color: NAVY, borderRadius: 0, padding: '12px 24px', fontWeight: 800, fontSize: 13, border: 'none', cursor: 'pointer' }}
                       >
-                        <Zap size={14} /> Activate Prepared response
+                        <Zap size={14} /> Activate Prepared Response
                       </button>
                       <Link href="/triggers-management" style={{ display: 'flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.7)', borderRadius: 0, padding: '12px 24px', fontWeight: 600, fontSize: 13, textDecoration: 'none' }}>
                           <Eye size={13} /> View Triggers
@@ -871,7 +871,7 @@ export default function MissionControl() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
               {[
                 { label: 'Situation Intents', href: '/identify/situation-intents', gold: true },
-                { label: 'Playbook Library', href: '/playbooks', gold: false },
+                { label: 'Prepared Response Library', href: '/playbooks', gold: false },
                 { label: 'Trigger Intelligence', href: '/triggers-management', gold: false },
                 { label: 'Signal Intelligence', href: '/signal-intelligence', gold: false },
                 { label: 'Board Readiness', href: '/board-readiness', gold: false },

@@ -560,7 +560,7 @@ const SCENARIO_PLAYBOOK_MAP: Record<string, { id: number; name: string; badge: s
 
 const PHASES = [
   { id: 'chaos' as Phase, name: 'THE CHAOS', icon: AlertTriangle, color: 'red', description: 'Without Readiness OS' },
-  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'teal', description: 'Prepared response ready' },
+  { id: 'identify' as Phase, name: 'IDENTIFY', icon: BookOpen, color: 'teal', description: 'Prepared Response ready' },
   { id: 'detect' as Phase, name: 'DETECT', icon: Radar, color: 'navy', description: 'Signal detected' },
   { id: 'execute' as Phase, name: 'EXECUTE', icon: Radio, color: 'gold', description: 'Coordinate response' },
   { id: 'advance' as Phase, name: 'ADVANCE', icon: BarChart3, color: 'teal', description: 'Capture learnings' },
@@ -768,7 +768,7 @@ export default function TryDemo() {
     }, 200);
 
     const steps = [
-      { id: 1, title: 'Prepared response Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'execution-os', delay: 0 },
+      { id: 1, title: 'Prepared Response Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'execution-os', delay: 0 },
       { id: 2, title: 'Stakeholders Notified', description: `${selectedScenario?.stakeholders} team members alerted`, icon: Users, integration: 'slack', delay: 1500 },
       { id: 3, title: 'Tasks Auto-Created', description: '12 tasks created with owners assigned', icon: CheckCircle2, integration: 'jira', delay: 3000 },
       { id: 4, title: 'War Room Launched', description: 'Collaboration channel created', icon: MessageSquare, integration: 'teams', delay: 4500 },
@@ -1164,7 +1164,7 @@ export default function TryDemo() {
                             </div>
                             <div style={{ padding: '14px 16px', background: 'rgba(43,138,110,0.07)' }}>
                               <p style={{ fontSize: 9, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>✓ 12 Minutes with Readiness OS</p>
-                              {['Prepared response pre-staged before trigger', 'Budget pre-approved at setup', '3,600× execution head start', 'Board brief auto-generated'].map(item => (
+                              {['Prepared Response pre-staged before trigger', 'Budget pre-approved at setup', '3,600× execution head start', 'Board brief auto-generated'].map(item => (
                                 <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.75)', margin: '0 0 5px', lineHeight: 1.4 }}>✓ {item}</p>
                               ))}
                             </div>
@@ -1258,7 +1258,7 @@ export default function TryDemo() {
                       <CardHeader>
                         <CardTitle className="text-gray-900 flex items-center gap-2">
                           <BookOpen className="h-5 w-5 text-[#C9A84C]" />
-                          IDENTIFY: Prepared response Ready
+                          IDENTIFY: Prepared Response Ready
                         </CardTitle>
                         <CardDescription>
                           Your {selectedScenario.playbook} prepared response was already configured
@@ -1266,7 +1266,7 @@ export default function TryDemo() {
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="p-4 bg-[#C9A84C]/10 border border-[#C9A84C]/30">
-                          <h4 className="text-gray-900 font-medium mb-3">Prepared response: {selectedScenario.playbook}</h4>
+                          <h4 className="text-gray-900 font-medium mb-3">Prepared Response: {selectedScenario.playbook}</h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div className="flex items-center gap-2 text-gray-800">
                               <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
@@ -1393,12 +1393,12 @@ export default function TryDemo() {
                           ))}
                         </div>
 
-                        {/* Trigger fired + Prepared response match */}
+                        {/* Trigger fired + Prepared Response match */}
                         {detectStep >= 3 && (
                           <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 0, padding: '14px 16px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                               <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
-                              <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Trigger Threshold Crossed — Prepared response Matched</span>
+                              <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Trigger Threshold Crossed — Prepared Response Matched</span>
                             </div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                               <BookOpen style={{ width: 16, height: 16, color: GOLD, flexShrink: 0 }} />
@@ -1452,7 +1452,7 @@ export default function TryDemo() {
                                 : executionSteps.length <= 2
                                 ? `Stakeholders notified automatically — no email chains, no missed alerts.`
                                 : executionSteps.length <= 4
-                                ? `Prepared response activated in seconds — budget pre-approved, tasks pre-assigned.`
+                                ? `Prepared Response activated in seconds — budget pre-approved, tasks pre-assigned.`
                                 : `Full response coordinated — what takes most enterprises 3–4 weeks done in minutes.`}
                             </p>
                             <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', margin: 0 }}>
@@ -1540,11 +1540,11 @@ export default function TryDemo() {
                         </div>
                       </div>
 
-                      {/* Prepared response improvements */}
+                      {/* Prepared Response improvements */}
                       <div style={{ background: 'white', border: `1px solid ${BORDER}`, borderRadius: 0, padding: '16px 18px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
                           <Lightbulb style={{ width: 14, height: 14, color: GOLD }} />
-                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD }}>Prepared response Improvements Staged</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: GOLD }}>Prepared Response Improvements Staged</span>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           {(selectedScenario && SCENARIO_ADVANCE[selectedScenario.id]?.improvements || []).map((improvement, i) => (
@@ -1561,7 +1561,7 @@ export default function TryDemo() {
                         className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-semibold py-5"
                         onClick={completeAdvance}
                       >
-                        See the Full Prepared response That Powered This Response
+                        See the Full Prepared Response That Powered This Response
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
 
@@ -1570,7 +1570,7 @@ export default function TryDemo() {
 
                   {currentPhase === 'complete' && (
                     <div className="space-y-6">
-                      {/* Prepared response reveal — primary WOW moment */}
+                      {/* Prepared Response reveal — primary WOW moment */}
                       {(() => {
                         const mapped = selectedScenario ? SCENARIO_PLAYBOOK_MAP[selectedScenario.id] : null;
                         return mapped ? (
@@ -1578,7 +1578,7 @@ export default function TryDemo() {
                             {/* Header bar */}
                             <div style={{ background: NAVY_MID, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: '1px solid rgba(201,168,76,0.2)' }}>
                               <div style={{ width: 8, height: 8, borderRadius: 0, background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
-                              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Readiness OS — Prepared response Activated</span>
+                              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Readiness OS — Prepared Response Activated</span>
                             </div>
 
                             <div style={{ padding: '32px 28px' }}>
@@ -1617,7 +1617,7 @@ export default function TryDemo() {
                                 style={{ marginTop: 20, width: '100%', padding: '14px 20px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.02em' }}
                               >
                                 <BookOpen style={{ width: 18, height: 18 }} />
-                                Open Your Activated Prepared response
+                                Open Your Activated Prepared Response
                                 <ArrowRight style={{ width: 16, height: 16 }} />
                               </button>
                               <p style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 10 }}>No login required — this is the full playbook, not a preview.</p>
@@ -1881,7 +1881,7 @@ export default function TryDemo() {
                         className="mt-3 w-full text-[10px] font-bold text-[#0A0F2E] border border-[#C9A84C] rounded px-3 py-1.5 hover:bg-[#C9A84C]/10 transition-colors flex items-center justify-center gap-1"
                       >
                         <BookOpen className="h-3 w-3" />
-                        View 3 Free Prepared response Examples
+                        View 3 Free Prepared Response Examples
                       </button>
                     </CardContent>
                   </Card>
@@ -1959,7 +1959,7 @@ export default function TryDemo() {
         </Link>
       </div>
 
-      {/* Live Prepared response Examples Section */}
+      {/* Live Prepared Response Examples Section */}
       <section style={{ background: NAVY, padding: '72px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
@@ -1968,7 +1968,7 @@ export default function TryDemo() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD }}>Open Access</span>
             </div>
             <h2 style={{ fontSize: 30, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", marginBottom: 12 }}>
-              Explore Live Prepared response Examples
+              Explore Live Prepared Response Examples
             </h2>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto', lineHeight: 1.6, fontWeight: 500 }}>
               Three fully enriched prepared responses — open to everyone. Each includes a 4-phase execution plan, pre-staged communications, risk indicators, and outcome benchmarks.
@@ -2047,7 +2047,7 @@ export default function TryDemo() {
                       onClick={() => { setLocation(`/prepared response-library/${pb.id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
                       style={{ width: '100%', padding: '10px 16px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                     >
-                      View Full Prepared response
+                      View Full Prepared Response
                       <ArrowRight style={{ width: 14, height: 14 }} />
                     </button>
                   </div>

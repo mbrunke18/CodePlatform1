@@ -13,7 +13,7 @@ const phases = [
   { 
     id: "identify", 
     name: "IDENTIFY", 
-    module: "Prepared response™",
+    module: "Prepared Response™",
     icon: ClipboardList, 
     color: "#3B82F6",
     description: "Build your prepared response library",

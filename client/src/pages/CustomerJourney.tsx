@@ -59,11 +59,11 @@ const phaseDetails = [
   },
   {
     id: 'identify',
-    title: 'Phase 3: IDENTIFY — VaughnMartin Prepared response™',
+    title: 'Phase 3: IDENTIFY — VaughnMartin Prepared Response™',
     duration: 'Days 30-45',
     objective: 'Build your strategic prepared response portfolio',
     activities: [
-      { name: 'Browse Prepared response Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
+      { name: 'Browse Prepared Response Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
       { name: 'Select Priority Prepared responses', path: '/workspaces/identify', description: 'Choose prepared responses aligned to your strategic priorities' },
       { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each prepared response' },
       { name: 'Customize Playbooks', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
@@ -113,7 +113,7 @@ const phaseDetails = [
       { name: 'Measure Decision Velocity', path: '/decision-velocity', description: 'Track improvement metrics' },
       { name: 'Executive Readout', path: '/board-export', description: 'Generate board-ready summary' }
     ],
-    deliverables: ['First retrospective complete', 'Prepared response refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
+    deliverables: ['First retrospective complete', 'Prepared Response refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
     integrations: ['BI/Analytics platforms', 'Knowledge management systems']
   },
   {
@@ -123,7 +123,7 @@ const phaseDetails = [
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
       { name: 'Readiness OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
-      { name: 'Expand Prepared response Coverage', path: '/identify/prepared responses', description: 'Add prepared responses for new strategic domains' },
+      { name: 'Expand Prepared Response Coverage', path: '/identify/prepared responses', description: 'Add prepared responses for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/future-readiness', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/execution-history', description: 'Regular strategic health checks' }
     ],

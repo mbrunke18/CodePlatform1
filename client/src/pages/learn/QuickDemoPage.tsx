@@ -312,7 +312,7 @@ export default function QuickDemoPage() {
     }, 200);
 
     const steps = [
-      { id: 1, title: 'Prepared response Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'execution-os', delay: 0 },
+      { id: 1, title: 'Prepared Response Activated', description: `${selectedScenario?.playbook} triggered`, icon: Zap, integration: 'execution-os', delay: 0 },
       { id: 2, title: 'Stakeholders Notified', description: `${selectedScenario?.stakeholders} team members alerted`, icon: Users, integration: 'slack', delay: 1500 },
       { id: 3, title: 'Tasks Auto-Created', description: '12 tasks created with owners assigned', icon: CheckCircle2, integration: 'jira', delay: 3000 },
       { id: 4, title: 'War Room Launched', description: 'Collaboration channel created', icon: MessageSquare, integration: 'teams', delay: 4500 },
@@ -637,7 +637,7 @@ export default function QuickDemoPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <BookOpen className="h-5 w-5 text-[#C9A84C]" />
-                        IDENTIFY: Prepared response Ready
+                        IDENTIFY: Prepared Response Ready
                       </CardTitle>
                       <CardDescription>
                         Your {selectedScenario.playbook} prepared response was already configured
@@ -645,7 +645,7 @@ export default function QuickDemoPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="p-4 bg-[#0A0F2E] dark:bg-[#C9A84C]/10 border border-[#C9A84C] dark:border-[#C9A84C]/30">
-                        <h4 className="font-medium mb-3">Prepared response: {selectedScenario.playbook}</h4>
+                        <h4 className="font-medium mb-3">Prepared Response: {selectedScenario.playbook}</h4>
                         <div className="grid grid-cols-2 gap-3 text-sm">
                           <div className="flex items-center gap-2 text-muted-foreground">
                             <CheckCircle2 className="h-4 w-4 text-[#2B8A6E]" />
@@ -683,7 +683,7 @@ export default function QuickDemoPage() {
                       </div>
 
                       <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white" onClick={completeIdentify}>
-                        Prepared response Ready - Continue to Detection
+                        Prepared Response Ready - Continue to Detection
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </CardContent>
@@ -733,7 +733,7 @@ export default function QuickDemoPage() {
 
                       <Button className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white py-6 text-lg font-semibold" onClick={completeDetect}>
                         <Play className="mr-2 h-5 w-5" />
-                        Activate Prepared response
+                        Activate Prepared Response
                       </Button>
                     </CardContent>
                   </Card>
@@ -915,7 +915,7 @@ export default function QuickDemoPage() {
                       )}
                       {currentPhase === 'detect' && (
                         <>
-                          <p className="text-muted-foreground">AI pattern matching identifies triggers and recommends the right playbook. Human executives make the final call.</p>
+                          <p className="text-muted-foreground">AI pattern matching identifies triggers and recommends the right Prepared Response. Human executives make the final call.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">AI monitors, executives authorize</p>
                             <p className="text-xs text-muted-foreground">AI recommends. Humans decide. Clear decision rights at every step.</p>

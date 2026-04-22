@@ -25,7 +25,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Leverage AI for strategic advantage.",
     source: "Nearly every AI strategy deck in circulation today",
-    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Prepared response queued. Executive notified. 12 minutes to live coordination — not a dashboard."
+    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Prepared Response queued. Executive notified. 12 minutes to live coordination — not a dashboard."
   },
   {
     claim: "Create a learning organization that adapts in real time.",

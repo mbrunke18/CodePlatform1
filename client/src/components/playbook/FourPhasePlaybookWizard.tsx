@@ -128,7 +128,7 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Shield className="w-5 h-5" />
-          Prepared response Readiness
+          Prepared Response Readiness
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -226,7 +226,7 @@ export default function FourPhasePlaybookWizard({
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library'] });
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', playbook?.id, 'readiness'] });
       toast({
-        title: 'Prepared response Customized',
+        title: 'Prepared Response Customized',
         description: 'Your prepared response template has been customized successfully',
       });
       onClose();
@@ -312,7 +312,7 @@ export default function FourPhasePlaybookWizard({
             <div className="flex items-center gap-3">
               <Shield className="w-6 h-6 text-primary" />
               <div>
-                <div className="text-lg">Configure Prepared response: {playbook?.name}</div>
+                <div className="text-lg">Configure Prepared Response: {playbook?.name}</div>
                 <div className="text-sm font-normal text-muted-foreground">4-Phase Strategic Readiness</div>
               </div>
             </div>

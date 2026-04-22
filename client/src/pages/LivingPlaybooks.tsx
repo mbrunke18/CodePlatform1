@@ -284,7 +284,7 @@ export default function LivingPlaybooks() {
                           </Button>
                           <Button size="sm" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]" onClick={() => handleActivatePlaybook(playbook)}>
                             <Target className="w-4 h-4 mr-2" />
-                            Activate Prepared response
+                            Activate Prepared Response
                           </Button>
                         </div>
                       </CardContent>
@@ -309,10 +309,10 @@ export default function LivingPlaybooks() {
             <CardContent className="relative z-10 pt-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {[
-                  { step: "1", title: "Execute", icon: Zap, desc: "Prepared response activated for a real strategic event — AI records every decision, timing, and outcome." },
+                  { step: "1", title: "Execute", icon: Zap, desc: "Prepared Response activated for a real strategic event — AI records every decision, timing, and outcome." },
                   { step: "2", title: "Capture", icon: Brain, desc: "AI analyzes execution data: who responded, how fast, what decisions unlocked downstream tasks." },
                   { step: "3", title: "Learn", icon: Award, desc: "Pattern analysis generates improvement recommendations across stakeholder sequencing, timing gates, and resource allocation." },
-                  { step: "4", title: "Evolve", icon: TrendingUp, desc: "Prepared response auto-updates for next execution. Over time, your 12-minute response becomes 8 minutes." },
+                  { step: "4", title: "Evolve", icon: TrendingUp, desc: "Prepared Response auto-updates for next execution. Over time, your 12-minute response becomes 8 minutes." },
                 ].map((item, idx) => (
                   <div key={idx} className="relative">
                     <div style={{ ...CG, color: GOLD, fontSize: 36, fontWeight: 700, marginBottom: 8, lineHeight: 1 }}>{item.step}</div>

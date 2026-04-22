@@ -47,7 +47,7 @@ export default function GartnerStackDiagram() {
                 EXECUTION OPERATING MODEL
               </div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>
-                VaughnMartin Readiness OS · Trigger → Prepared response → 12-minute response
+                VaughnMartin Readiness OS · Trigger → Prepared Response → 12-minute response
               </div>
             </div>
           </div>

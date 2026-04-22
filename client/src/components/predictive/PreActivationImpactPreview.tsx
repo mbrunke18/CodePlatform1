@@ -142,14 +142,14 @@ export default function PreActivationImpactPreview({
       {
         resourceType: 'Personnel',
         resourceName: 'Crisis Communications Lead',
-        conflictingPlaybook: 'Regulatory Response Prepared response',
+        conflictingPlaybook: 'Regulatory Response Prepared Response',
         severity: 'medium' as const,
         resolution: 'Assign backup: VP Communications'
       },
       {
         resourceType: 'Budget',
         resourceName: 'Emergency Response Fund',
-        conflictingPlaybook: 'Cyber Incident Prepared response',
+        conflictingPlaybook: 'Cyber Incident Prepared Response',
         severity: 'low' as const,
         resolution: '60% allocation available'
       }
@@ -199,7 +199,7 @@ export default function PreActivationImpactPreview({
               <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Activation Outcome Prediction</span>
             </div>
             <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: '#F0EDE4', lineHeight: 1.1, marginBottom: 4 }}>
-              "{playbook?.name || 'Prepared response'}"
+              "{playbook?.name || 'Prepared Response'}"
             </div>
             <div style={{ fontSize: 11, color: 'rgba(240,237,228,0.55)' }}>Projected impact and risk assessment — review before activation</div>
           </div>

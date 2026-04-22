@@ -568,12 +568,12 @@ function AlertDetailPanel({
             </div>
           )}
 
-          {/* Recommended Prepared response */}
+          {/* Recommended Prepared Response */}
           {alert.recommendedScenario && (
             <div className="space-y-3">
               <h4 className="font-medium text-sm flex items-center gap-2">
                 <Play className="w-4 h-4" />
-                Recommended Prepared response
+                Recommended Prepared Response
               </h4>
               <Card className="border-primary/50 bg-primary/5">
                 <CardContent className="p-4">

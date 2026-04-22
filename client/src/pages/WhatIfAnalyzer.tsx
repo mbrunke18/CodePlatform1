@@ -231,7 +231,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
         body: JSON.stringify({
           scenario,
           domain: selectedDomain === 'all' ? undefined : selectedDomain,
-          playbook: { name: `${domainLabel} Response Prepared response`, tasks: Array(8).fill(null), stakeholders: Array(6).fill(null) },
+          playbook: { name: `${domainLabel} Response Prepared Response`, tasks: Array(8).fill(null), stakeholders: Array(6).fill(null) },
         }),
       });
       if (!response.ok) throw new Error('Analysis failed');
@@ -376,7 +376,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-32 text-sm font-medium text-[#6B7280] dark:text-[#E8E4DC] text-right flex-shrink-0">Current Prepared response</div>
+                  <div className="w-32 text-sm font-medium text-[#6B7280] dark:text-[#E8E4DC] text-right flex-shrink-0">Current Prepared Response</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
                       <div className="flex-1 bg-[#2B8A6E]/10 dark:bg-[#2B8A6E]/20 h-8 flex items-center px-4">
@@ -425,7 +425,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
             <CardHeader className="pb-3 border-b border-[#E8E4DC] dark:border-white/10">
               <CardTitle className="text-base flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 <Shield className="h-5 w-5 text-[#2B8A6E]" />
-                Prepared response Activation Readiness
+                Prepared Response Activation Readiness
               </CardTitle>
               <CardDescription>
                 {isRecommended
@@ -710,7 +710,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
           },
           market: {
             alerts: [{ name: `${scenarioLabel} - Market Signal`, severity: 'high' }, { name: 'Competitive Intelligence Alert', severity: 'medium' }],
-            playbooks: [{ name: 'Market Entry Acceleration', time: 10, coverage: 78 }, { name: 'Competitive Response Framework', time: 14, coverage: 72 }, { name: 'Go-to-Market Sprint Prepared response', time: 8, coverage: 85 }],
+            playbooks: [{ name: 'Market Entry Acceleration', time: 10, coverage: 78 }, { name: 'Competitive Response Framework', time: 14, coverage: 72 }, { name: 'Go-to-Market Sprint Prepared Response', time: 8, coverage: 85 }],
             teams: ['Strategy & Growth', 'Executive Leadership', 'Sales Operations', 'Product Management'],
           },
           operational: {
@@ -720,7 +720,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
           },
           strategic: {
             alerts: [{ name: `${scenarioLabel} - Strategic Trigger`, severity: 'high' }, { name: 'Integration Readiness Alert', severity: 'medium' }],
-            playbooks: [{ name: 'M&A Integration Prepared response', time: 14, coverage: 70 }, { name: 'Cultural Alignment Framework', time: 10, coverage: 68 }, { name: 'Systems Consolidation Sprint', time: 12, coverage: 74 }],
+            playbooks: [{ name: 'M&A Integration Prepared Response', time: 14, coverage: 70 }, { name: 'Cultural Alignment Framework', time: 10, coverage: 68 }, { name: 'Systems Consolidation Sprint', time: 12, coverage: 74 }],
             teams: ['M&A Integration Office', 'Executive Leadership', 'HR & Culture', 'IT Infrastructure'],
           },
           regulatory: {

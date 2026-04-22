@@ -64,7 +64,7 @@ export default function UnifiedEnterprisePlatform() {
   // Real-time metrics
   const metrics = [
     { name: "Global Agility Score", value: "87.6%", change: "+2.4%", color: "text-[#2B8A6E]" },
-    { name: "Prepared response Readiness", value: "98.7%", change: "+0.8%", color: "text-[#C9A84C]" },
+    { name: "Prepared Response Readiness", value: "98.7%", change: "+0.8%", color: "text-[#C9A84C]" },
     { name: "Strategic Intelligence", value: "94.2%", change: "+1.6%", color: "text-[#0A0F2E]" },
     { name: "Innovation Pipeline", value: "91.4%", change: "+3.2%", color: "text-[#C9A84C]" }
   ];
@@ -624,7 +624,7 @@ export default function UnifiedEnterprisePlatform() {
             </TabsContent>
 
             <TabsContent value="crisis" className="flex-1 overflow-y-auto p-3 space-y-3" data-testid="crisis-content">
-              {/* Executive Prepared response Control Panel */}
+              {/* Executive Prepared Response Control Panel */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <Card className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
                   <CardHeader>
@@ -636,7 +636,7 @@ export default function UnifiedEnterprisePlatform() {
                   <CardContent className="space-y-4">
                     <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
                       <AlertTriangle className="h-4 w-4 mr-2" />
-                      Execute Prepared response
+                      Execute Prepared Response
                     </Button>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="text-center p-3 bg-white dark:bg-red-900 rounded">

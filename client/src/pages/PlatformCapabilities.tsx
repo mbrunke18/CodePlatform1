@@ -172,7 +172,7 @@ const PLATFORM_CAPABILITIES = [
   },
   {
     icon: BookOpen,
-    title: 'Prepared response Detail Editor',
+    title: 'Prepared Response Detail Editor',
     detail: 'Authenticated users can customize phases, tasks, decision gates, and stakeholder assignments within any prepared response — ensuring the pre-staged response reflects the organization\'s actual structure, not a generic template.',
   },
   {

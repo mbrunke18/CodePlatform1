@@ -925,7 +925,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label>Can Approve Prepared response Activations</Label>
+                  <Label>Can Approve Prepared Response Activations</Label>
                   <Switch 
                     checked={newStakeholder.canApproveActivations}
                     onCheckedChange={(checked) => setNewStakeholder({ ...newStakeholder, canApproveActivations: checked })}

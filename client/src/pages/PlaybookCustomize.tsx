@@ -552,7 +552,7 @@ export default function PlaybookCustomize() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
-      toast({ title: "Prepared response saved", description: "Your prepared response has been created successfully." });
+      toast({ title: "Prepared Response saved", description: "Your prepared response has been created successfully." });
       setLocation('/playbooks');
     },
     onError: (error: any) => {
@@ -617,10 +617,10 @@ export default function PlaybookCustomize() {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <div className="h-4 w-[2px] bg-[#C9A84C]"></div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#C9A84C]">Prepared response Architect</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#C9A84C]">Prepared Response Architect</span>
                 </div>
                 <h1 style={CG} className="text-4xl font-bold text-white">
-                  {isCreateMode ? "Architect New Prepared response" : `Configure: ${template?.name || "Prepared response"}`}
+                  {isCreateMode ? "Architect New Prepared Response" : `Configure: ${template?.name || "Prepared Response"}`}
                 </h1>
                 <div className="flex items-center gap-4 mt-2">
                   <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold uppercase tracking-wider text-[10px]">
@@ -646,7 +646,7 @@ export default function PlaybookCustomize() {
                 onClick={handleSubmit((data) => savePlaybook.mutate(data))}
                 disabled={savePlaybook.isPending}
               >
-                {savePlaybook.isPending ? "Saving..." : "Deploy Prepared response"}
+                {savePlaybook.isPending ? "Saving..." : "Deploy Prepared Response"}
               </Button>
             </div>
           </div>
@@ -722,7 +722,7 @@ export default function PlaybookCustomize() {
                 <div className="space-y-8 animate-in fade-in duration-500">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared response Identity</Label>
+                      <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared Response Identity</Label>
                       <Input 
                         {...register("name")} 
                         placeholder="e.g. CEO Sudden Departure Response" 
@@ -964,7 +964,7 @@ export default function PlaybookCustomize() {
                   <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Governance & Ownership</h3>
                     <p className="text-sm text-[#6B7280]">Define accountability, review cadence, and change control</p></div>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared response Owner</Label><Input {...register('playbookOwner')} placeholder="e.g. VP of Strategy" /></div>
+                    <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared Response Owner</Label><Input {...register('playbookOwner')} placeholder="e.g. VP of Strategy" /></div>
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Owner Email</Label><Input {...register('playbookOwnerEmail')} type="email" placeholder="owner@company.com" /></div>
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Next Review Date</Label><Input {...register('nextReviewDate')} type="date" /></div>
                     <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Review Frequency</Label>
@@ -1329,7 +1329,7 @@ export default function PlaybookCustomize() {
                     <p className="text-sm text-[#6B7280]">The owner of this prepared response was involved in its construction, not just its receipt.</p>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared response Owner</Label>
+                        <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared Response Owner</Label>
                         <Input {...register('playbookOwner')} placeholder="Name of the executive who will activate this" />
                       </div>
                       <div className="space-y-2">
@@ -1363,7 +1363,7 @@ export default function PlaybookCustomize() {
                     <div className="p-5 border-2 border-[#E8E4DC] space-y-3">
                       <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Compliance</div>
                       <div className="space-y-2">
-                        {["Prepared response was received and reviewed", "Owner acknowledged the document", "No formal challenge mechanism", "Template defaults accepted as-is"].map(item => (
+                        {["Prepared Response was received and reviewed", "Owner acknowledged the document", "No formal challenge mechanism", "Template defaults accepted as-is"].map(item => (
                           <div key={item} className="flex items-center gap-2 text-xs text-[#9CA3AF]">
                             <div style={{ width: 4, height: 4, background: "#D1D5DB", flexShrink: 0 }} />
                             {item}

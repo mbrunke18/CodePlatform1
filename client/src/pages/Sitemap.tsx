@@ -12,7 +12,7 @@ export default function Sitemap() {
       pages: [
         { name: "Home", path: "/" },
         { name: "Demo Selector", path: "/demo-selector" },
-        { name: "Playbook Library", path: "/playbook-library" },
+        { name: "Prepared Response Library", path: "/playbook-library" },
         { name: "Dashboard", path: "/dashboard" },
         { name: "Executive Suite", path: "/executive-suite" },
         { name: "ROI Calculator", path: "/calculator" },

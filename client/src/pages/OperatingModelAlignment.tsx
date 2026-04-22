@@ -624,7 +624,7 @@ export default function OperatingModelAlignment() {
               <TabsList className="mb-6">
                 <TabsTrigger value="overview" data-testid="tab-overview">Overview</TabsTrigger>
                 <TabsTrigger value="fingerprint" disabled={!assessmentComplete} data-testid="tab-fingerprint">Fingerprint</TabsTrigger>
-                <TabsTrigger value="prepared responses" disabled={!assessmentComplete} data-testid="tab-prepared responses">Prepared response Recommendations</TabsTrigger>
+                <TabsTrigger value="prepared responses" disabled={!assessmentComplete} data-testid="tab-prepared responses">Prepared Response Recommendations</TabsTrigger>
                 <TabsTrigger value="gap" disabled={!assessmentComplete} data-testid="tab-gap">Gap Analysis</TabsTrigger>
               </TabsList>
               
@@ -801,7 +801,7 @@ export default function OperatingModelAlignment() {
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <Zap className="w-5 h-5 text-primary" />
-                          Recommended Prepared response Domains
+                          Recommended Prepared Response Domains
                         </CardTitle>
                         <CardDescription>
                           Based on your operating model gaps, these prepared response domains will have the highest impact

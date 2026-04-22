@@ -1,0 +1,1 @@
+import{a0 as n,u as r,r as u}from"./index-C7eHU90b.js";import{u as c}from"./GuestPreviewBanner-Qa4bbNNL.js";function m(){const{isAuthenticated:t,isLoading:s}=n(),{isTrial:o,isLoading:e}=c(),[i,a]=r();return u.useEffect(()=>{s||e||!t&&!o&&a(`/request-access?returnTo=${encodeURIComponent(i)}`)},[t,o,s,e,i,a]),{isReady:!s&&!e&&(t||o),isAuthenticated:t,isTrial:o}}export{m as u};

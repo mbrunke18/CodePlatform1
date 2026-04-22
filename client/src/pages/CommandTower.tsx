@@ -259,7 +259,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
         </div>
       </div>
 
-      {/* Recommended Prepared response */}
+      {/* Recommended Prepared Response */}
       <div style={{
         display: 'flex', alignItems: 'center', gap: 8,
         background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)',
@@ -700,7 +700,7 @@ export default function CommandTower() {
                       borderRadius: 0, padding: '11px 22px',
                       fontWeight: 800, fontSize: 13, textDecoration: 'none',
                     }}>
-                      <Zap size={14} /> Activate Prepared response
+                      <Zap size={14} /> Activate Prepared Response
                     </a>
                     <a href="/triggers-management" style={{
                       display: 'flex', alignItems: 'center', gap: 6,
@@ -975,7 +975,7 @@ export default function CommandTower() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
             {[
               { label: 'Live Detections', href: '/live-detection-feed', color: GOLD },
-              { label: 'Playbook Library', href: '/playbooks', color: 'rgba(255,255,255,0.6)' },
+              { label: 'Prepared Response Library', href: '/playbooks', color: 'rgba(255,255,255,0.6)' },
               { label: 'Trigger Intelligence', href: '/triggers-management', color: 'rgba(255,255,255,0.6)' },
               { label: 'Command Center', href: '/command-center', color: 'rgba(255,255,255,0.6)' },
               { label: 'Signal Intelligence', href: '/signal-intelligence', color: 'rgba(255,255,255,0.6)' },
