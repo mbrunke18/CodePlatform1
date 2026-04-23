@@ -103,7 +103,7 @@ export function StrategicDomains({ progress }: SceneProps) {
           transition={{ delay: 1.5 }}
           className="text-center bg-[#D4AF37]/10 border border-[#D4AF37]/30 p-4"
         >
-          <p className="text-[#D4AF37] font-bold text-xl">170 Pre-Built Prepared responses</p>
+          <p className="text-[#D4AF37] font-bold text-xl">170 Pre-Built Readiness Protocols</p>
           <p className="text-gray-700 text-sm">Ready to customize and deploy in minutes</p>
         </motion.div>
       </div>

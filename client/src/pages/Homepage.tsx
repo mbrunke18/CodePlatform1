@@ -1917,7 +1917,8 @@ function HomepageFooter() {
           <div style={{ flex: 1 }}>
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>COMPANY</div>
             {[
-              { label: "About",              href: "/founder-story" },
+              { label: "Team",               href: "/team" },
+              { label: "Founder's Story",    href: "/founder-story" },
               { label: "vaughnmartin.com",   href: "/" },
               { label: "LinkedIn",           href: "https://linkedin.com/company/vaughnmartin", external: true },
             ].map(l => (

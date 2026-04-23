@@ -193,6 +193,7 @@ const PilotHealthMonitor = lazy(() => import("./pages/PilotHealthMonitor"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
+const Team = lazy(() => import("./pages/Team"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
@@ -432,6 +433,7 @@ function Router() {
         {/* Marketing & Company Pages */}
         <Route path="/our-story" component={OurStory} />
         <Route path="/founder-story" component={FounderStory} />
+        <Route path="/team" component={Team} />
         <Route path="/execution-os-video" component={ExecuteIQVideo} />
         <Route path="/why-execution-os-legacy" component={WhyExecuteIQ} />
         <Route path="/research" component={Research} />

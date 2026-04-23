@@ -438,7 +438,7 @@ export default function IntelligenceControlCenter() {
                         </div>
                         <Link href="/playbook-library">
                           <Button style={{ background: NAVY, color: '#fff', borderRadius: 0, fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', flexShrink: 0 }}>
-                            View Prepared responses <ArrowRight style={{ width: 14, height: 14, marginLeft: 6 }} />
+                            View Readiness Protocols <ArrowRight style={{ width: 14, height: 14, marginLeft: 6 }} />
                           </Button>
                         </Link>
                       </div>

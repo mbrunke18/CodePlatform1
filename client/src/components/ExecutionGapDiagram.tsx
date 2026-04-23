@@ -202,7 +202,7 @@ const ExecutionGapDiagram: FC<{ className?: string }> = ({ className = '' }) => 
 
     {/* 4 stats — equally spaced */}
     {[
-      { x: 165,  num: '170',   label: 'Pre-Built Prepared responses' },
+      { x: 165,  num: '170',   label: 'Pre-Built Readiness Protocols' },
       { x: 495,  num: '221',   label: 'Executive Triggers' },
       { x: 825,  num: '248+',  label: 'Signal Data Points' },
       { x: 1155, num: '12 min', label: 'To Live Execution' },

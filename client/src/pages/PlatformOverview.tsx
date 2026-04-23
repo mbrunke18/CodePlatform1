@@ -22,7 +22,7 @@ const timelineSteps = [
       "Monitoring parameters set — continuous signal detection active",
     ],
     humanRole: [
-      "Prepared responses reviewed and customized to your organization",
+      "Readiness Protocols reviewed and customized to your organization",
       "Executive authorization protocols established in advance",
       "No action required when the trigger fires — preparation is already done",
     ],

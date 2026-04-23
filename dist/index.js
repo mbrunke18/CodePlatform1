@@ -42835,7 +42835,7 @@ async function seedFlagshipPlaybooks() {
             tasks: [
               { owner: "COO", action: "Activate Competitive Response Team: CEO, CFO, CMO, Chief Strategy Officer, Head of Sales, General Counsel", timeTarget: "3 min" },
               { owner: "CMO", action: "Pull competitive intelligence dossier \u2014 pricing, positioning, ICP overlap, recent wins/losses against this competitor", timeTarget: "4 min" },
-              { owner: "Chief Strategy Officer", action: "Retrieve pre-staged competitive Prepared Response options (Defensive Hold / Counter-Offensive / Market Pivot)", timeTarget: "5 min" }
+              { owner: "Chief Strategy Officer", action: "Retrieve pre-staged competitive Readiness Protocol options (Defensive Hold / Counter-Offensive / Market Pivot)", timeTarget: "5 min" }
             ]
           },
           {

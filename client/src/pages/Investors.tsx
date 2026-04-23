@@ -187,7 +187,7 @@ function PlatformArchitectureDiagram() {
     },
     {
       phase: "EXECUTE",
-      label: "170 Prepared responses",
+      label: "170 Readiness Protocols",
       sub: "9 strategic domains",
       items: ["Pre-staged tasks", "Role assignments", "Communication templates", "Decision trees"],
       color: GOLD,

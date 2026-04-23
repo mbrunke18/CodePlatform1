@@ -640,7 +640,7 @@ export default function IndustryDemosHub() {
                 </Link>
                 <Link href="/playbook-library">
                   <Button size="lg" variant="outline" className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white px-12 py-8 font-bold uppercase tracking-widest text-xs rounded-none transition-colors">
-                    Explore 170 Prepared responses
+                    Explore 170 Readiness Protocols
                   </Button>
                 </Link>
               </div>

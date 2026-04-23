@@ -1,4 +1,5 @@
 import { useState } from "react";
+import deskImg from "@/assets/images/executive-desk-minimal.png";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -86,13 +87,14 @@ export default function RequestAccess() {
         <div style={{ position: "fixed", inset: 0, background: "radial-gradient(ellipse at 20% 60%, rgba(43,138,110,0.07) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.05) 0%, transparent 50%)", pointerEvents: "none" }} />
 
         {/* Left — editorial statement panel */}
-        <div className="hidden lg:flex" style={{ width: 480, flexShrink: 0, flexDirection: "column", justifyContent: "space-between", padding: "60px 56px", position: "relative", zIndex: 1, borderRight: "1px solid rgba(240,237,228,0.06)" }}>
+        <div className="hidden lg:flex" style={{ width: 480, flexShrink: 0, flexDirection: "column", justifyContent: "space-between", padding: "60px 56px", position: "relative", zIndex: 1, borderRight: "1px solid rgba(240,237,228,0.06)", backgroundImage: `url(${deskImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+          <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.88)", zIndex: 0 }} />
 
-          <div>
+          <div style={{ position: "relative", zIndex: 1 }}>
             <VaughnMartinLogo color="light" height={40} variant="full" />
           </div>
 
-          <div>
+          <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ width: 28, height: 1.5, background: GOLD, marginBottom: 20 }} />
             <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
               Executive Access
@@ -122,7 +124,7 @@ export default function RequestAccess() {
             </p>
           </div>
 
-          <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.2)", letterSpacing: "0.04em" }}>
+          <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.2)", letterSpacing: "0.04em", position: "relative", zIndex: 1 }}>
             © VaughnMartin · vaughnmartin.com
           </p>
         </div>

@@ -76,7 +76,7 @@ export default function FounderStory() {
             We Make Enterprises <em style={{ color: GOLD_LIGHT, fontStyle: "italic" }}>Fearless</em>
           </h1>
           <p style={{ fontSize: 16, color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em", fontWeight: 500 }}>
-            Marty Brunke · Founder, VaughnMartin · 2023
+            Martin Brunke · Founder, VaughnMartin · 2023
           </p>
         </div>
       </section>
@@ -426,7 +426,7 @@ export default function FounderStory() {
               We Make Enterprises Fearless.
             </p>
             <p style={{ fontSize: 13, color: MUTED, letterSpacing: "0.06em" }}>
-              Marty Brunke · Founder, VaughnMartin · <a href="https://vaughnmartin.com" style={{ color: GOLD, textDecoration: "none" }}>vaughnmartin.com</a>
+              Martin Brunke · Founder, VaughnMartin · <a href="https://vaughnmartin.com" style={{ color: GOLD, textDecoration: "none" }}>vaughnmartin.com</a>
             </p>
           </div>
         </div>
@@ -438,7 +438,7 @@ export default function FounderStory() {
 
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Hear It Directly</div>
-            <h2 style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY }}>The Story in Marty's Own Words</h2>
+            <h2 style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY }}>The Story in Martin's Own Words</h2>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 64 }}>

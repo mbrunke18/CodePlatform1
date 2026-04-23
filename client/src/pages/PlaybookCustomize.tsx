@@ -624,7 +624,7 @@ export default function PlaybookCustomize() {
                 </h1>
                 <div className="flex items-center gap-4 mt-2">
                   <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold uppercase tracking-wider text-[10px]">
-                    {watch("category")?.toUpperCase() || 'DEFENSE'}
+                    {({'offense':'GROWTH & POSITIONING','defense':'RISK & RESILIENCE','special_teams':'TRANSFORMATION','OFFENSE':'GROWTH & POSITIONING','DEFENSE':'RISK & RESILIENCE','SPECIAL TEAMS':'TRANSFORMATION'} as Record<string,string>)[watch("category")] || 'RISK & RESILIENCE'}
                   </Badge>
                   <span className="text-[#6B7280] text-sm font-medium">
                     {watch("domain") || 'Strategic Intelligence'}
