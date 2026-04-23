@@ -33,7 +33,7 @@ export default function ActivationPage() {
         <div>
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Zap className="w-6 h-6 text-[#C9A84C]" />
-            Prepared Response Activation History
+            Readiness Protocol Activation History
           </h1>
           <p className="text-muted-foreground mt-1">
             Track every prepared response activation, success ratings, and lessons learned across your organization.
@@ -92,7 +92,7 @@ export default function ActivationPage() {
                   <CardContent className="py-12 text-center">
                     <AlertTriangle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                     <p className="text-lg font-medium text-muted-foreground">No activations yet</p>
-                    <p className="text-sm text-muted-foreground mt-1">Prepared Response activations will appear here once triggered.</p>
+                    <p className="text-sm text-muted-foreground mt-1">Readiness Protocol activations will appear here once triggered.</p>
                   </CardContent>
                 </Card>
               ) : (

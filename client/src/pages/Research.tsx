@@ -242,7 +242,7 @@ export default function Research() {
               <div style={{ background: "#FEF2F2", border: "1px solid #fecaca", padding: "14px 18px", marginBottom: 12 }}>
                 <p className="text-sm font-semibold" style={{ color: "#dc2626" }}>The HBR Prescription — and what Readiness OS delivers:</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged Prepared Responses, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 prepared responses pre-staged, 221 triggers monitored, and no action taken without executive authorization.
+                  "Organizations need an AI practice at the enterprise coordination layer — pre-staged Readiness Protocols, decision gates, and sequenced execution with executive sign-off." That is precisely the architecture of Readiness OS: 170 prepared responses pre-staged, 221 triggers monitored, and no action taken without executive authorization.
                 </p>
               </div>
 
@@ -609,7 +609,7 @@ export default function Research() {
                 McKinsey, HBR, Gartner, PwC, IBM — the research is irrefutable. The mobilization gap exists. The 30-day response cycle costs Fortune 1000 enterprises $847B in strategic spend annually. The consultants named the problem. The framework sellers sold approaches. Nobody built the coordination infrastructure.
               </p>
               <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1.5 }}>
-                Readiness OS is the only platform that turns this research into a timestamp on a deployed Prepared Response.
+                Readiness OS is the only platform that turns this research into a timestamp on a deployed Readiness Protocol.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 12 }}>

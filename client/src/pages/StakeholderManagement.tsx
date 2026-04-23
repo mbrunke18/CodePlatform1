@@ -597,11 +597,11 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
               <div className="relative">
                 <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-200" />
                 {[
-                  { date: "Feb 15, 2:14 PM", description: "Competitive Response prepared response activated — 18 stakeholders notified via Slack, Email, SMS", badge: "Prepared Response #45", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#0A0F2E]", icon: Zap },
+                  { date: "Feb 15, 2:14 PM", description: "Competitive Response prepared response activated — 18 stakeholders notified via Slack, Email, SMS", badge: "Readiness Protocol #45", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#0A0F2E]", icon: Zap },
                   { date: "Feb 10, 9:30 AM", description: "Monthly practice drill completed — 92% participation, avg response 2.8 min", badge: "Drill", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#C9A84C]", icon: Activity },
                   { date: "Feb 3, 2:17 AM", description: "CRITICAL: Ransomware incident triggered — 47 stakeholders notified, all C-Suite reached in 45 sec", badge: "Emergency", badgeClass: "bg-red-100 text-red-700", dotClass: "bg-red-500", icon: AlertTriangle },
-                  { date: "Jan 28, 10:00 AM", description: "M&A integration prepared response activated — 45 stakeholders coordinated across 6 departments", badge: "Prepared Response #12", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#C9A84C]", icon: Building2 },
-                  { date: "Jan 15, 11:00 AM", description: "GDPR compliance audit response — 28 stakeholders notified, Legal team first response in 90 sec", badge: "Prepared Response #67", badgeClass: "bg-[#2B8A6E]/10 text-[#2B8A6E]", dotClass: "bg-[#2B8A6E]", icon: Shield },
+                  { date: "Jan 28, 10:00 AM", description: "M&A integration prepared response activated — 45 stakeholders coordinated across 6 departments", badge: "Readiness Protocol #12", badgeClass: "bg-[#0A0F2E]/10 text-[#0A0F2E]", dotClass: "bg-[#C9A84C]", icon: Building2 },
+                  { date: "Jan 15, 11:00 AM", description: "GDPR compliance audit response — 28 stakeholders notified, Legal team first response in 90 sec", badge: "Readiness Protocol #67", badgeClass: "bg-[#2B8A6E]/10 text-[#2B8A6E]", dotClass: "bg-[#2B8A6E]", icon: Shield },
                 ].map((entry, index) => {
                   const EntryIcon = entry.icon;
                   return (

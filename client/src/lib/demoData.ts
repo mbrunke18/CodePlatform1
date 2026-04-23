@@ -257,7 +257,7 @@ export const DEMO_EXECUTION_PLANS = {
           },
           {
             sequence: 4,
-            title: 'Product activates retention Prepared Response',
+            title: 'Product activates retention Readiness Protocol',
             description: 'IF Legal cleared → Enable upgrade path, activate customer success outreach, deploy competitive feature bundle',
             role: 'CPO',
             estimatedMinutes: 3,

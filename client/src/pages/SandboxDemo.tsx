@@ -608,7 +608,7 @@ export default function SandboxDemo() {
           Step 2 of 6: DETECT Phase
         </Badge>
         <h2 className="text-3xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-          Configure Your {config.domainName} Prepared Response
+          Configure Your {config.domainName} Readiness Protocol
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto font-medium">
           Set up your team, decision tree, escalation paths, and communications
@@ -1688,7 +1688,7 @@ export default function SandboxDemo() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="alert">Send Alert</SelectItem>
-                  <SelectItem value="activate">Activate Prepared Response</SelectItem>
+                  <SelectItem value="activate">Activate Readiness Protocol</SelectItem>
                   <SelectItem value="escalate">Escalate</SelectItem>
                 </SelectContent>
               </Select>
@@ -1736,7 +1736,7 @@ export default function SandboxDemo() {
               <AlertTriangle className="h-5 w-5 text-red-600" />
               Severity Level
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Prepared Response configuration based on impact</CardDescription>
+            <CardDescription className="text-slate-500 font-medium">Readiness Protocol configuration based on impact</CardDescription>
           </CardHeader>
           <CardContent className="pt-6">
             <div className="grid grid-cols-4 gap-3">

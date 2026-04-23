@@ -106,7 +106,7 @@ const PHASES = [
       },
       {
         title: 'Live War Room',
-        detail: 'Real-time execution status across all active Prepared Responses, stakeholder acknowledgment tracking, decision gate visibility, and cross-functional coordination from a single screen. Executives see the execution state without calling for a status update.',
+        detail: 'Real-time execution status across all active Readiness Protocols, stakeholder acknowledgment tracking, decision gate visibility, and cross-functional coordination from a single screen. Executives see the execution state without calling for a status update.',
       },
       {
         title: 'Microsoft Ecosystem Integration',
@@ -172,7 +172,7 @@ const PLATFORM_CAPABILITIES = [
   },
   {
     icon: BookOpen,
-    title: 'Prepared Response Detail Editor',
+    title: 'Readiness Protocol Detail Editor',
     detail: 'Authenticated users can customize phases, tasks, decision gates, and stakeholder assignments within any prepared response — ensuring the pre-staged response reflects the organization\'s actual structure, not a generic template.',
   },
   {

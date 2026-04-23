@@ -265,7 +265,7 @@ export default function SettingsHub() {
                         { name: 'Stakeholder Response Rate', target: '90%', current: '94%', unit: '%', status: 'good' },
                         { name: 'Task Completion Rate', target: '85%', current: '78%', unit: '%', status: 'warn' },
                         { name: 'Decision Confidence Score', target: '80%', current: '82%', unit: '%', status: 'good' },
-                        { name: 'Prepared Response Coverage', target: '95%', current: '89%', unit: '%', status: 'warn' },
+                        { name: 'Readiness Protocol Coverage', target: '95%', current: '89%', unit: '%', status: 'warn' },
                       ]).map((m: any, i: number) => {
                         const isGood = m.status === 'good';
                         return (

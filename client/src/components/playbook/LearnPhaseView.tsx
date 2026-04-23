@@ -81,7 +81,7 @@ const LEARN_TYPE_CONFIG: Record<LearnType, { icon: any; label: string; color: st
   debrief_meeting: { icon: MessageSquare, label: 'Debrief Meeting', color: 'text-[#0A0F2E]' },
   survey: { icon: ClipboardList, label: 'Feedback Survey', color: 'text-green-500' },
   documentation: { icon: FileText, label: 'Documentation', color: 'text-[#C9A84C]' },
-  playbook_update: { icon: RefreshCw, label: 'Prepared Response Update', color: 'text-orange-500' },
+  playbook_update: { icon: RefreshCw, label: 'Readiness Protocol Update', color: 'text-orange-500' },
   metrics_review: { icon: BarChart3, label: 'Metrics Review', color: 'text-[#2B8A6E]' },
   process_improvement: { icon: Users, label: 'Process Improvement', color: 'text-pink-500' },
 };

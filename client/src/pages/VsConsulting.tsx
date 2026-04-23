@@ -64,8 +64,8 @@ export default function VsConsulting() {
           </h1>
 
           <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
-            A Fortune 1000 company hires McKinsey to develop crisis response Prepared Responses. Six months later, a crisis hits.
-            Nobody can find the Prepared Responses. The organization still takes 30 days to coordinate.
+            A Fortune 1000 company hires McKinsey to develop crisis response Readiness Protocols. Six months later, a crisis hits.
+            Nobody can find the Readiness Protocols. The organization still takes 30 days to coordinate.
             The $500K investment sits on a shelf while the company scrambles.
           </p>
 
@@ -101,7 +101,7 @@ export default function VsConsulting() {
               <div style={{ border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
                 {[
                   { phase: "Discovery & Assessment", delivers: "Interviews, current state analysis, gap assessment", cost: "$75K–$125K" },
-                  { phase: "Prepared Response Development", delivers: "5–10 prepared responses in PDF / PowerPoint format", cost: "$150K–$250K" },
+                  { phase: "Readiness Protocol Development", delivers: "5–10 prepared responses in PDF / PowerPoint format", cost: "$150K–$250K" },
                   { phase: "Implementation Support", delivers: "Training, rollout facilitation, change management", cost: "$75K–$150K" },
                 ].map((row, i) => (
                   <div key={i} style={{ padding: "16px 20px", borderBottom: i < 2 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
@@ -136,7 +136,7 @@ export default function VsConsulting() {
 
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
                 {[
-                  "Nobody can find the Prepared Responses.",
+                  "Nobody can find the Readiness Protocols.",
                   "The prepared responses are 200 pages — no one has time to read them.",
                   "Key people have changed roles since the prepared responses were written.",
                   "The prepared responses describe processes — they don't assign tasks.",
@@ -266,7 +266,7 @@ export default function VsConsulting() {
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: NAVY, marginBottom: 8 }}>$75K–$250K/year</div>
               <div style={{ fontSize: 14, color: "#4B5563", marginBottom: 20, lineHeight: 1.5 }}>for infrastructure that actually executes</div>
               <div style={{ padding: "14px 20px", background: `rgba(43,138,110,0.06)`, borderRadius: 0, border: `1px solid rgba(43,138,110,0.15)` }}>
-                <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>170 live Prepared Responses. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
+                <p style={{ fontSize: 13, color: "#374151", margin: 0 }}>170 live Readiness Protocols. 12-minute activation. Continuous signal monitoring. Unlimited users. Every situation handled correctly pays for the year.</p>
               </div>
             </div>
           </div>

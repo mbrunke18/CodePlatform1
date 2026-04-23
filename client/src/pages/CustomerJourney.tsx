@@ -59,14 +59,14 @@ const phaseDetails = [
   },
   {
     id: 'identify',
-    title: 'Phase 3: IDENTIFY — VaughnMartin Prepared Response™',
+    title: 'Phase 3: IDENTIFY — VaughnMartin Readiness Protocol™',
     duration: 'Days 30-45',
     objective: 'Build your strategic prepared response portfolio',
     activities: [
-      { name: 'Browse Prepared Response Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
+      { name: 'Browse Readiness Protocol Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
       { name: 'Select Priority Prepared responses', path: '/workspaces/identify', description: 'Choose prepared responses aligned to your strategic priorities' },
       { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each prepared response' },
-      { name: 'Customize Prepared Responses', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
+      { name: 'Customize Readiness Protocols', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
       { name: 'Establish Readiness Baseline', path: '/readiness-assessment', description: 'Measure your strategic readiness score' }
     ],
     deliverables: ['5-10 priority prepared responses configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
@@ -109,11 +109,11 @@ const phaseDetails = [
     activities: [
       { name: 'Retrospect Lab', path: '/workspaces/advance', description: 'Institutional learning hub' },
       { name: 'Conduct Retrospective', path: '/advance/lessons', description: 'Analyze execution and capture insights' },
-      { name: 'Refine Prepared Responses', path: '/playbook-customization', description: 'Update Prepared Responses based on lessons learned' },
+      { name: 'Refine Readiness Protocols', path: '/playbook-customization', description: 'Update Readiness Protocols based on lessons learned' },
       { name: 'Measure Decision Velocity', path: '/decision-velocity', description: 'Track improvement metrics' },
       { name: 'Executive Readout', path: '/board-export', description: 'Generate board-ready summary' }
     ],
-    deliverables: ['First retrospective complete', 'Prepared Response refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
+    deliverables: ['First retrospective complete', 'Readiness Protocol refinements documented', 'Decision velocity baseline', 'Executive report delivered'],
     integrations: ['BI/Analytics platforms', 'Knowledge management systems']
   },
   {
@@ -123,7 +123,7 @@ const phaseDetails = [
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
       { name: 'Readiness OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
-      { name: 'Expand Prepared Response Coverage', path: '/identify/prepared responses', description: 'Add prepared responses for new strategic domains' },
+      { name: 'Expand Readiness Protocol Coverage', path: '/identify/prepared responses', description: 'Add prepared responses for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/future-readiness', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/execution-history', description: 'Regular strategic health checks' }
     ],

@@ -24,7 +24,7 @@ const ROUTE_MAP: Record<string, { label: string; section: string }> = {
   '/organization-setup':       { label: 'Organization Setup', section: 'Platform' },
   '/task-management':          { label: 'Task Library', section: 'Execute' },
   '/stakeholder-management':   { label: 'Stakeholder Management', section: 'Platform' },
-  '/playbooks':                { label: 'Prepared Response Library', section: 'Identify' },
+  '/playbooks':                { label: 'Readiness Protocol Library', section: 'Identify' },
   '/strategic':                { label: 'Strategic Planning Hub', section: 'Identify' },
   '/what-if-analyzer':         { label: 'What-If Analyzer', section: 'Identify' },
   '/playbook-customization':   { label: 'Response Customization', section: 'Identify' },

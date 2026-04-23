@@ -496,7 +496,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
                       className="flex-1 rounded-none h-12 bg-[#0A0F2E] text-white hover:bg-[#141B45] text-xs font-bold uppercase tracking-widest"
                       onClick={() => handleActivatePlaybook(selectedSignal)}
                     >
-                      Activate Response Prepared Response
+                      Activate Response Readiness Protocol
                     </Button>
                     <Button 
                       variant="outline" 

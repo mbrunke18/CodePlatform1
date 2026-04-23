@@ -25,7 +25,7 @@ const SCENARIO = {
   ],
   surviveScore: 42,
   thriveScore: 90,
-  analysis: "Competitor acquisitions are won or lost in the first 24 hours — before the acquiring company's integration team has a chance to move. Without pre-staged client retention protocols, channel partner defense Prepared Responses, and board-level competitive repositioning briefings, luxury conglomerates lose their most vulnerable accounts to integration-phase poaching. Readiness OS deploys VIP client defense, channel partner reinforcement, and talent acquisition simultaneously within 12 minutes of announcement.",
+  analysis: "Competitor acquisitions are won or lost in the first 24 hours — before the acquiring company's integration team has a chance to move. Without pre-staged client retention protocols, channel partner defense Readiness Protocols, and board-level competitive repositioning briefings, luxury conglomerates lose their most vulnerable accounts to integration-phase poaching. Readiness OS deploys VIP client defense, channel partner reinforcement, and talent acquisition simultaneously within 12 minutes of announcement.",
   playbooks: ["Competitor Acquisition Response", "VIP Client Retention Offensive", "Channel Partner Defense Protocol", "Board Strategic Repositioning Brief", "Competitive Talent Acquisition"],
   insight: "The luxury sector's most underestimated competitive risk is the acquisition-phase disruption — the 60-day window between announcement and deal close when the acquired brand's best clients, key talent, and channel partners are all in motion. Readiness OS ensures you are the first call they receive — not the last.",
 };

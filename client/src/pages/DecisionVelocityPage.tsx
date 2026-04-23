@@ -107,7 +107,7 @@ export default function DecisionVelocityPage() {
                 <div className="text-[10px] font-bold text-[#0A0F2E] tracking-[0.2em] uppercase mb-2">The Strategic MOAT</div>
                 <p className="text-[#6B7280] leading-relaxed">
                   Companies like Microsoft and Amazon built execution infrastructure over 5+ years. 
-                  Readiness OS gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—170 Prepared Responses, pre-defined governance, and a compressed 12-minute execution cycle.
+                  Readiness OS gives you that infrastructure on <strong className="text-[#0A0F2E]">day one</strong>—170 Readiness Protocols, pre-defined governance, and a compressed 12-minute execution cycle.
                 </p>
               </div>
             </CardContent>

@@ -54,7 +54,7 @@ export const EXECUTION_STAGES = [
     number: 6,
     name: 'Complete',
     shortDef: 'Deliverable confirmed and verified by the role-holder.',
-    fullDef: 'The assigned work is delivered and verified. The role-holder confirms completion, which triggers any downstream tasks in the Prepared Response. The audit trail is automatically recorded.',
+    fullDef: 'The assigned work is delivered and verified. The role-holder confirms completion, which triggers any downstream tasks in the Readiness Protocol. The audit trail is automatically recorded.',
     inClock: false,
     color: '#6B7280',
     icon: '◉',

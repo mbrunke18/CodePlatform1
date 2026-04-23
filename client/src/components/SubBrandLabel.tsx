@@ -1,6 +1,6 @@
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
-export const SUB_BRAND_NAMES = ["Prepared Response™", "Signal™", "Compass™", "Retrospect™"] as const;
+export const SUB_BRAND_NAMES = ["Readiness Protocol™", "Signal™", "Compass™", "Retrospect™"] as const;
 export type SubBrandName = typeof SUB_BRAND_NAMES[number];
 
 interface SubBrandLabelProps {

@@ -206,7 +206,7 @@ export default function FutureReadinessDashboard() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Prepared Response Maturity</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Readiness Protocol Maturity</span>
                   <Sparkles className="h-4 w-4 text-[#C9A84C]" />
                 </div>
                 <div className={`text-3xl font-bold ${getScoreColor(playbookMaturity)}`} style={CG}>

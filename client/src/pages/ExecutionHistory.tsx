@@ -242,7 +242,7 @@ export default function ExecutionHistory() {
                   <div>
                     {/* Table header */}
                     <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 120px 120px 100px 40px", gap: 0, padding: "10px 24px", background: "#F9FAFB", borderBottom: `1px solid ${BORDER}` }}>
-                      {["Prepared Response", "Date", "Response Time", "Score", "Target", ""].map((h) => (
+                      {["Readiness Protocol", "Date", "Response Time", "Score", "Target", ""].map((h) => (
                         <div key={h} style={{ fontSize: 10, fontWeight: 700, color: MUTED, letterSpacing: "0.1em", textTransform: "uppercase" }}>{h}</div>
                       ))}
                     </div>

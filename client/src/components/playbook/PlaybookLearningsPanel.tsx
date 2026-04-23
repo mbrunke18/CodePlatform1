@@ -272,7 +272,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                                   data-testid={`button-apply-learning-${learning.id}`}
                                 >
                                   <CheckCircle2 className="h-4 w-4" />
-                                  Apply to Prepared Response
+                                  Apply to Readiness Protocol
                                 </Button>
                                 <Button 
                                   size="sm" 

@@ -68,10 +68,10 @@ const journeyPhases: JourneyPhase[] = [
     id: 'identify',
     number: 3,
     name: 'IDENTIFY',
-    subtitle: 'Prepared Response™',
-    description: 'Select Prepared Responses, map stakeholders, and establish your strategic readiness baseline',
+    subtitle: 'Readiness Protocol™',
+    description: 'Select Readiness Protocols, map stakeholders, and establish your strategic readiness baseline',
     timeline: 'Days 30-45',
-    workspace: 'Prepared Response Factory',
+    workspace: 'Readiness Protocol Factory',
     workspacePath: '/workspace?tab=identify',
     icon: ClipboardList,
     color: 'text-poise-gold',
@@ -121,7 +121,7 @@ const journeyPhases: JourneyPhase[] = [
     icon: TrendingUp,
     color: 'text-poise-gold',
     bgColor: 'bg-poise-gold/10',
-    milestones: ['First retrospective completed', 'Prepared Response refinements captured', 'Decision velocity measured', 'Executive readout delivered'],
+    milestones: ['First retrospective completed', 'Readiness Protocol refinements captured', 'Decision velocity measured', 'Executive readout delivered'],
     status: 'upcoming'
   },
   {

@@ -374,7 +374,7 @@ export function StrategyToIDEA() {
       textColor: "text-[#0A0F2E]",
       borderColor: "border-[#2B8A6E]/30",
       traditionalWork: ["Work AROUND", "Work BEFORE"],
-      mPlatform: "Pre-staged Prepared Responses, stakeholder mapping, decision workflows staged before situations occur",
+      mPlatform: "Pre-staged Readiness Protocols, stakeholder mapping, decision workflows staged before situations occur",
     },
     {
       phase: "DETECT",

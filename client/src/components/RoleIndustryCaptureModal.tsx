@@ -137,7 +137,7 @@ export default function RoleIndustryCaptureModal() {
               lineHeight: 1.6,
             }}
           >
-            Two fields. We use them to surface the triggers, Prepared Responses, and
+            Two fields. We use them to surface the triggers, Readiness Protocols, and
             dollar figures that match your function — not generic defaults.
           </p>
         </div>

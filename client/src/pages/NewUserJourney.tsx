@@ -103,7 +103,7 @@ const PLAYBOOK_RECOMMENDATIONS: Record<string, { playbooks: { id: string; name: 
       { id: 'market-volatility', name: 'Market Volatility Response', domain: 'Crisis', description: 'Navigate market disruptions and protect portfolios', triggers: ['Market drop >5%', 'Volatility index spike'] },
       { id: 'regulatory-change', name: 'Regulatory Change Response', domain: 'Regulatory', description: 'Rapid compliance with new financial regulations', triggers: ['Regulatory announcement', 'Audit finding'] },
       { id: 'fraud-response', name: 'Fraud Incident Response', domain: 'Crisis', description: 'Coordinate response to fraud detection', triggers: ['Fraud detected', 'Suspicious activity alert'] },
-      { id: 'ma-integration', name: 'M&A Integration Prepared Response', domain: 'Strategic', description: 'Orchestrate post-merger integration', triggers: ['Deal close', 'Integration milestone'] },
+      { id: 'ma-integration', name: 'M&A Integration Readiness Protocol', domain: 'Strategic', description: 'Orchestrate post-merger integration', triggers: ['Deal close', 'Integration milestone'] },
     ]
   },
   'healthcare': {
@@ -842,7 +842,7 @@ export default function NewUserJourney() {
                         <div className="flex items-start gap-4">
                           <div style={{ width: 3, background: '#C9A84C', alignSelf: 'stretch', flexShrink: 0 }} />
                           <div className="flex-1">
-                            <h3 className="font-semibold text-[#0A0F2E] mb-1">Prepared Response Coverage Target</h3>
+                            <h3 className="font-semibold text-[#0A0F2E] mb-1">Readiness Protocol Coverage Target</h3>
                             <p className="text-sm text-[#6B7280] mb-4">
                               Percentage of critical scenarios with ready prepared responses
                             </p>
@@ -957,7 +957,7 @@ export default function NewUserJourney() {
                     </CardContent>
                   </Card>
 
-                  {/* Prepared Response Ready Status */}
+                  {/* Readiness Protocol Ready Status */}
                   <Card className="bg-white border-[#E8E4DC] overflow-hidden rounded-none">
                     <CardHeader className=" border-b border-[#E8E4DC] py-3">
                       <div className="flex items-center justify-between">

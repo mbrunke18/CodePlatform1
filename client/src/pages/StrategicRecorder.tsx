@@ -49,7 +49,7 @@ const DOC_TYPES = [
     icon: AlertTriangle,
     label: 'Incident Report',
     description: 'Formal incident logs, regulatory filings, event records',
-    placeholder: 'Paste a formal incident report, regulatory filing, or structured event record. Include timeline, affected systems or stakeholders, actions taken, and outcomes. AI will extract the response pattern and convert it to a repeatable Prepared Response...',
+    placeholder: 'Paste a formal incident report, regulatory filing, or structured event record. Include timeline, affected systems or stakeholders, actions taken, and outcomes. AI will extract the response pattern and convert it to a repeatable Readiness Protocol...',
     example: "Incident Report #2023-047\nClassification: Critical — Tier 1\nDate: September 14, 2023\nDetected: 2:14 AM\nNotification of CISO: 9:00 AM (+6.8 hours)\nIR firm engaged: September 16 (+48 hours from detection)\nContainment complete: September 17, 6:00 PM (+63 hours)\n\nRoot cause: Phishing attack on VPN credentials 72 hours prior.\nRegulatory deadline: SEC Form 8-K required within 72 hours of material determination.\n8-K filed: September 17 (within deadline, but 48 hours after material determination).\n\nFinancial impact: $4.2M direct IR costs + $2.1M operational downtime.",
   },
   {
@@ -106,7 +106,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
     onSuccess: (data: any) => {
       setHistoricalResult(data);
       queryClient.invalidateQueries({ queryKey: ['/api/strategic-recordings'] });
-      toast({ title: `${data.generatedPlaybooks?.length ?? 0} prepared responses encoded`, description: 'Historical knowledge has been converted to structured Prepared Responses.' });
+      toast({ title: `${data.generatedPlaybooks?.length ?? 0} prepared responses encoded`, description: 'Historical knowledge has been converted to structured Readiness Protocols.' });
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
@@ -150,7 +150,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>IDENTIFY</span>
                 <ChevronRight style={{ width: 10, height: 10, color: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Prepared Response Generator</span>
+                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Readiness Protocol Generator</span>
               </div>
               <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: '#fff', lineHeight: 1 }}>Strategic Recorder</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 3 }}>
@@ -181,7 +181,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 {[
                   { icon: History, label: '48-Hour Onboarding', desc: 'vs 2–4 weeks manual setup' },
                   { icon: BookOpen, label: 'Tribal Knowledge Captured', desc: 'From meeting notes & emails' },
-                  { icon: Zap, label: 'Custom Prepared Responses Generated', desc: 'Tailored to your history' },
+                  { icon: Zap, label: 'Custom Readiness Protocols Generated', desc: 'Tailored to your history' },
                 ].map(v => {
                   const Icon = v.icon;
                   return (
@@ -388,7 +388,7 @@ function PlaybookResults({ playbooks, savedIds, setSavedIds }: { playbooks: any[
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
         <div style={{ width: 20, height: 2, background: GOLD }} />
-        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Prepared Responses Generated</span>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Readiness Protocols Generated</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         {playbooks.map((pb: any, i: number) => {

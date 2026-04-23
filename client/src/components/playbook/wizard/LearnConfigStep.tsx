@@ -29,7 +29,7 @@ const LEARN_ITEM_TYPES = [
   { value: 'debrief_meeting', label: 'Debrief Meeting', icon: Users, color: 'text-[#0A0F2E]' },
   { value: 'stakeholder_survey', label: 'Stakeholder Survey', icon: FileText, color: 'text-[#C9A84C]' },
   { value: 'metrics_review', label: 'Metrics Review', icon: BarChart3, color: 'text-[#2B8A6E]' },
-  { value: 'playbook_update', label: 'Prepared Response Update', icon: BookOpen, color: 'text-amber-500' },
+  { value: 'playbook_update', label: 'Readiness Protocol Update', icon: BookOpen, color: 'text-amber-500' },
   { value: 'documentation', label: 'Documentation', icon: FileText, color: 'text-[#2B8A6E]' },
 ];
 
@@ -44,7 +44,7 @@ const DEFAULT_LEARN_ITEMS: LearnItem[] = [
   { id: '1', type: 'debrief_meeting', title: 'Incident Post-Mortem', timing: 'within_48h', participants: ['CISO', 'CTO', 'General Counsel'], required: true },
   { id: '2', type: 'stakeholder_survey', title: 'Response Effectiveness Survey', timing: 'within_1week', participants: ['All Responders'], required: true },
   { id: '3', type: 'metrics_review', title: 'Response Time Analysis', timing: 'within_48h', participants: ['CISO', 'COO'], required: true },
-  { id: '4', type: 'playbook_update', title: 'Update Prepared Response with Learnings', timing: 'within_2weeks', participants: ['COO', 'Risk Team'], required: true },
+  { id: '4', type: 'playbook_update', title: 'Update Readiness Protocol with Learnings', timing: 'within_2weeks', participants: ['COO', 'Risk Team'], required: true },
   { id: '5', type: 'documentation', title: 'Incident Report for Board', timing: 'within_1week', participants: ['CCO', 'General Counsel'], required: false },
 ];
 

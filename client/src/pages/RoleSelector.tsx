@@ -31,7 +31,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Executive Officer',
     icon: Briefcase,
     hookQuestion: 'What percentage of your strategic initiatives actually deliver on time and on budget?',
-    situationLine: 'Board calls at 7 AM. Activist investor filed. You have no Prepared Response staged.',
+    situationLine: 'Board calls at 7 AM. Activist investor filed. You have no Readiness Protocol staged.',
     keyMetric: '$144M execution gap closed',
     metricBefore: '30+ days',
     metricAfter: '12 min',
@@ -83,7 +83,7 @@ const roleConfigs: RoleConfig[] = [
     keyMetric: '$12M market share defended',
     metricBefore: '21 days',
     metricAfter: '3 days',
-    playbook: 'Competitive Response Prepared Response',
+    playbook: 'Competitive Response Readiness Protocol',
     category: 'OFFENSE',
   },
   {
@@ -131,7 +131,7 @@ const roleConfigs: RoleConfig[] = [
     keyMetric: '70% → 95% strategy delivery',
     metricBefore: '70% delivery',
     metricAfter: '95% delivery',
-    playbook: 'Strategic Alignment Prepared Response',
+    playbook: 'Strategic Alignment Readiness Protocol',
     category: 'OFFENSE',
   },
   {
@@ -163,7 +163,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Compliance Officer',
     icon: FileCheck,
     hookQuestion: 'Audit notification arrives Monday. How long before 6 teams have tasks staged and ready?',
-    situationLine: 'Audit in 10 days. Six departments. No pre-staged compliance Prepared Response. Starting from scratch.',
+    situationLine: 'Audit in 10 days. Six departments. No pre-staged compliance Readiness Protocol. Starting from scratch.',
     keyMetric: 'Audit stress eliminated',
     metricBefore: '10 days scrambling',
     metricAfter: '2 days ready',
@@ -255,7 +255,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             </div>
           </div>
 
-          {/* Prepared Response label */}
+          {/* Readiness Protocol label */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 12 }}>
             <BookOpen size={10} style={{ color: GOLD, flexShrink: 0 }} />
             <span style={{ fontSize: 10, fontWeight: 600, color: '#9CA3AF' }}>{config.playbook}</span>
@@ -320,7 +320,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
             <h1 style={{ ...CG, fontSize: 44, fontWeight: 700, color: '#FFFFFF', marginBottom: 14, lineHeight: 1.15 }}>
-              Your Role. Your Trigger. Your Prepared Response.
+              Your Role. Your Trigger. Your Readiness Protocol.
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', maxWidth: 580, margin: '0 auto 28px', lineHeight: 1.6 }}>
               Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your prepared response before the trigger fires.
@@ -354,7 +354,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 0, position: 'relative' }}>
               {[
                 { icon: Layers, label: 'Your Scenario', sub: 'Real situation. Your role. Real stakes.', color: NAVY, step: 1 },
-                { icon: BookOpen, label: 'Build Prepared Response', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
+                { icon: BookOpen, label: 'Build Readiness Protocol', sub: 'Configure tasks, stakeholders & budget.', color: TEAL, step: 2 },
                 { icon: Radio, label: 'Trigger Fires', sub: 'Signal detected. OS pre-staged & ready.', color: GOLD, step: 3 },
                 { icon: Brain, label: 'Signal Analysis', sub: '4 system insights surface in real time.', color: TEAL, step: 4 },
                 { icon: Zap, label: 'Live Execution', sub: 'Watch 8 tasks coordinate in 12 minutes.', color: '#DC2626', step: 5 },
@@ -380,7 +380,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             <div style={{ marginTop: 18, padding: '12px 18px', background: '#F8F7F4', borderRadius: 0, border: '1px solid #E8E4DC', display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD, flexShrink: 0 }} className="animate-pulse" />
               <p style={{ fontSize: 12, color: '#374151', margin: 0, lineHeight: 1.5 }}>
-                <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your Prepared Response, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
+                <strong style={{ color: NAVY }}>Pick your role below.</strong> You'll enter a live, interactive 12-step simulation — configure your Readiness Protocol, watch the trigger fire, make the executive decision, and see real execution metrics for your function.
               </p>
               <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, fontWeight: 700, color: GOLD }}>
                 <Play size={10} /> No login required

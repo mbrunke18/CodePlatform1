@@ -266,7 +266,7 @@ export default function IntelligenceHub() {
                             </div>
                             <div className="flex flex-col items-end gap-2 flex-shrink-0">
                               <div className="text-right"><div className="text-2xl font-bold" style={{ ...CG, color: sevColor }}>{threat.confidence}%</div><div className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">Confidence</div></div>
-                              <Link href={`/workspace?tab=execute`}><Button size="sm" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">Activate Prepared Response <ChevronRight className="h-3.5 w-3.5 ml-1" /></Button></Link>
+                              <Link href={`/workspace?tab=execute`}><Button size="sm" className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">Activate Readiness Protocol <ChevronRight className="h-3.5 w-3.5 ml-1" /></Button></Link>
                             </div>
                           </div>
                         </CardContent>
@@ -330,11 +330,11 @@ export default function IntelligenceHub() {
                 <CardHeader className="border-b border-[#E8E4DC]"><CardTitle className="text-base text-[#0A0F2E] flex items-center gap-2" style={CG}><Activity className="h-4 w-4 text-[#C9A84C]" />Recent Audit Events</CardTitle></CardHeader>
                 <CardContent className="p-0">
                   {[
-                    { action: 'Prepared Response Activated', detail: 'M&A Integration Protocol v3 — authorized by CEO', time: '2 min ago', type: 'execute', color: TEAL },
+                    { action: 'Readiness Protocol Activated', detail: 'M&A Integration Protocol v3 — authorized by CEO', time: '2 min ago', type: 'execute', color: TEAL },
                     { action: 'Trigger Threshold Changed', detail: 'Competitive Intelligence: sensitivity raised from Medium to High', time: '14 min ago', type: 'config', color: GOLD },
                     { action: 'Brief Generated', detail: 'Supply Chain Disruption Brief — Crisis Response prepared response', time: '31 min ago', type: 'ai', color: TEAL },
                     { action: 'Role Assignment Updated', detail: 'CFO added to Financial Markets trigger notification list', time: '1 hr ago', type: 'config', color: NAVY },
-                    { action: 'Prepared Response Performance Logged', detail: 'Regulatory Response — 78% target met rate recorded', time: '2 hr ago', type: 'outcome', color: TEAL },
+                    { action: 'Readiness Protocol Performance Logged', detail: 'Regulatory Response — 78% target met rate recorded', time: '2 hr ago', type: 'outcome', color: TEAL },
                   ].map((e, i) => (
                     <div key={i} className="flex items-center gap-4 p-4 border-b border-[#E8E4DC] last:border-0 hover:bg-[#F8F7F4] transition-colors">
                       <div className="w-2 h-2 flex-shrink-0" style={{ background: e.color }} />

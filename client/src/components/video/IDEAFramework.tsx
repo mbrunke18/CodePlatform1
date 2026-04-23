@@ -13,7 +13,7 @@ const phases = [
   { 
     id: "identify", 
     name: "IDENTIFY", 
-    module: "Prepared Response™",
+    module: "Readiness Protocol™",
     icon: ClipboardList, 
     color: "#3B82F6",
     description: "Build your prepared response library",
@@ -138,7 +138,7 @@ export function IDEAFramework({ progress }: SceneProps) {
       
       <NarrationBox 
         headline="The IDEA Framework"
-        description="Four phases work together: Identify Prepared Responses, Detect triggers, Execute responses, and Advance through learning."
+        description="Four phases work together: Identify Readiness Protocols, Detect triggers, Execute responses, and Advance through learning."
         delay={0.5}
       />
     </div>

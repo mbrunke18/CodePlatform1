@@ -572,7 +572,7 @@ function CategoryDetailView({
           <CardHeader>
             <CardTitle className="text-base flex items-center gap-2">
               <Play className="w-4 h-4" />
-              Recommended Prepared Responses
+              Recommended Readiness Protocols
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -649,7 +649,7 @@ function AlertCard({ alert }: { alert: any }) {
               Acknowledge
             </Button>
             <Button variant="default" size="sm" data-testid={`button-activate-${alert.id}`}>
-              Activate Prepared Response
+              Activate Readiness Protocol
             </Button>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function TermsOfService() {
     {
       id: "ip",
       title: "2. Intellectual Property",
-      body: `All content on this platform — including but not limited to the IDEA Framework™, the 170 strategic Prepared Responses, trigger patterns, signal scoring methodology, written copy, visual design, software architecture, and the VaughnMartin and Readiness OS trademarks — is the exclusive intellectual property of ${COMPANY} and is protected by United States and international copyright, trademark, and trade secret law.\n\nThe IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), the "3,600× Execution Head Start" methodology, and the prepared response content represent proprietary operational knowledge developed over years of enterprise experience. These materials may not be reproduced, distributed, modified, reverse-engineered, or used to create derivative works without express written permission from VaughnMartin.`,
+      body: `All content on this platform — including but not limited to the IDEA Framework™, the 170 strategic Readiness Protocols, trigger patterns, signal scoring methodology, written copy, visual design, software architecture, and the VaughnMartin and Readiness OS trademarks — is the exclusive intellectual property of ${COMPANY} and is protected by United States and international copyright, trademark, and trade secret law.\n\nThe IDEA Framework™ (IDENTIFY, DETECT, EXECUTE, ADVANCE), the "3,600× Execution Head Start" methodology, and the prepared response content represent proprietary operational knowledge developed over years of enterprise experience. These materials may not be reproduced, distributed, modified, reverse-engineered, or used to create derivative works without express written permission from VaughnMartin.`,
     },
     {
       id: "prohibited",
@@ -37,7 +37,7 @@ export default function TermsOfService() {
     {
       id: "confidentiality",
       title: "5. Confidentiality of Pilot Materials",
-      body: `Pilot program participants and users granted access to the authenticated platform agree that all materials accessed within the platform — including unreleased Prepared Responses, configuration templates, execution data, and platform features — are confidential and may not be shared, published, or disclosed to third parties without VaughnMartin's prior written consent.`,
+      body: `Pilot program participants and users granted access to the authenticated platform agree that all materials accessed within the platform — including unreleased Readiness Protocols, configuration templates, execution data, and platform features — are confidential and may not be shared, published, or disclosed to third parties without VaughnMartin's prior written consent.`,
     },
     {
       id: "enforcement",

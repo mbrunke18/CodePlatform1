@@ -160,7 +160,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                   <div style={{ paddingTop: 16 }}>
                     <TimelineRow icon={Zap} label="Trigger detected" timestamp={t.detectedAt} start={t.detectedAt} color={GOLD} />
                     <TimelineRow icon={AlertCircle} label="Team notified" timestamp={t.notificationSentAt} start={t.detectedAt} color="#F59E0B" />
-                    <TimelineRow icon={Play} label={t.playbookName ? `Prepared Response activated: ${t.playbookName}` : 'Prepared Response activated'} timestamp={t.playbookActivatedAt} start={t.detectedAt} color={TEAL} />
+                    <TimelineRow icon={Play} label={t.playbookName ? `Readiness Protocol activated: ${t.playbookName}` : 'Readiness Protocol activated'} timestamp={t.playbookActivatedAt} start={t.detectedAt} color={TEAL} />
                     <TimelineRow icon={CheckCircle} label="First task acknowledged" timestamp={t.firstTaskAcknowledgedAt} start={t.detectedAt} color={TEAL} />
                     <TimelineRow icon={Flag} label="Execution complete" timestamp={t.executionCompletedAt} start={t.detectedAt} color={NAVY} last />
                   </div>
@@ -171,7 +171,7 @@ export function ExecutionClock({ compact = false }: { compact?: boolean }) {
                       {!t.playbookActivatedAt && (
                         <button onClick={() => advanceMutation.mutate({ id: t.id, milestone: 'activated', playbookName: t.recommendedPlaybook })}
                           style={{ fontSize: 11, fontWeight: 700, background: `${TEAL}15`, color: TEAL, border: `1px solid ${TEAL}30`, borderRadius: 0, padding: '5px 12px', cursor: 'pointer' }}>
-                          Mark Prepared Response Activated
+                          Mark Readiness Protocol Activated
                         </button>
                       )}
                       {t.playbookActivatedAt && !t.firstTaskAcknowledgedAt && (

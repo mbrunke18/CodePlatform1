@@ -535,7 +535,7 @@ export default function ExecutiveSimulationDemo() {
                     <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-[#C9A84C] text-xs font-bold">3</span>
                     </div>
-                    <span>You activated the Prepared Response, triggering automatic stakeholder notification</span>
+                    <span>You activated the Readiness Protocol, triggering automatic stakeholder notification</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-[#C9A84C]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -941,7 +941,7 @@ export default function ExecutiveSimulationDemo() {
                     <CardFooter className="bg-white/5 dark:bg-[#0A0F2E]/30">
                       <Button className="w-full bg-[#C9A84C] hover:bg-[#C9A84C]/90 text-[#0A0F2E] font-bold" data-testid="button-activate-prepared response">
                         <Rocket className="w-4 h-4 mr-2" />
-                        Activate This Prepared Response
+                        Activate This Readiness Protocol
                       </Button>
                     </CardFooter>
                   </Card>
@@ -953,7 +953,7 @@ export default function ExecutiveSimulationDemo() {
                       <div className="flex items-center gap-3">
                         <CheckCircle2 className="w-8 h-8 text-[#2B8A6E]" />
                         <div>
-                          <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Prepared Response Activated: Competitor M&A Response</CardTitle>
+                          <CardTitle className="text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Readiness Protocol Activated: Competitor M&A Response</CardTitle>
                           <CardDescription className="text-[#6B7280] dark:text-white/60">Team notifications sent. Review actions below and launch execution.</CardDescription>
                         </div>
                       </div>

@@ -30,7 +30,7 @@ export function BestOutcome() {
 
         {/* Nav links */}
         <div style={{ display: "flex", gap: 36, alignItems: "center" }}>
-          {["Platform", "Prepared Responses", "Industries", "Investors"].map(item => (
+          {["Platform", "Readiness Protocols", "Industries", "Investors"].map(item => (
             <span key={item} style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, fontWeight: 500, letterSpacing: "0.03em", cursor: "pointer" }}>{item}</span>
           ))}
         </div>
@@ -109,7 +109,7 @@ export function BestOutcome() {
               margin: "0 0 48px",
               fontWeight: 400,
             }}>
-              30 days of mobilization compressed to 12 minutes. 170 Prepared Responses pre-staged and executive-authorized — not after the trigger, before it.
+              30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — not after the trigger, before it.
             </p>
 
             {/* CTAs */}
@@ -127,7 +127,7 @@ export function BestOutcome() {
               {[
                 { n: "12 min", l: "Trigger to execution" },
                 { n: "3,600×", l: "Execution head start" },
-                { n: "170", l: "Prepared Responses" },
+                { n: "170", l: "Readiness Protocols" },
                 { n: "221", l: "Trigger patterns" },
               ].map((s, i) => (
                 <div key={i} style={{ flex: 1, paddingRight: 24, marginRight: 24, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
@@ -166,7 +166,7 @@ export function BestOutcome() {
                   <span style={{ color: "rgba(255,255,255,0.25)", fontSize: 10.5, fontWeight: 500 }}>{item.time}</span>
                 </div>
                 <div style={{ color: "rgba(255,255,255,0.82)", fontSize: 13, fontWeight: 500, lineHeight: 1.45, marginBottom: 6 }}>{item.text}</div>
-                <div style={{ color: GOLD, fontSize: 10.5, fontWeight: 600, cursor: "pointer" }}>Prepared Response ready →</div>
+                <div style={{ color: GOLD, fontSize: 10.5, fontWeight: 600, cursor: "pointer" }}>Readiness Protocol ready →</div>
               </div>
             ))}
 

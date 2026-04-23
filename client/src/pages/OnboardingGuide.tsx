@@ -228,7 +228,7 @@ export default function OnboardingGuide() {
               description="Your operational hub. Start here. You will see active trigger detections, prepared response status, execution dividend (real-time ROI counter), and a live signal activity feed. This is the page you return to daily." />
             <StepCard number={2} icon={Radio} title="Command Tower" path="/command-tower"
               description="Full-screen executive display. Shows live trigger detections as they fire, system pulse stats, your 12-minute execution clock, and a signal ticker in real time. Designed for war room situations and leadership reviews." />
-            <StepCard number={3} icon={BookOpen} title="Prepared Response Library" path="/playbooks"
+            <StepCard number={3} icon={BookOpen} title="Readiness Protocol Library" path="/playbooks"
               description="Browse all 170 pre-built strategic prepared responses across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
             <StepCard number={4} icon={Activity} title="Simulation Studio" path="/simulation-studio"
               description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a coverage readiness map with recommended prepared responses pre-staged for activation. Use this in board preparation and executive planning sessions." />
@@ -302,7 +302,7 @@ export default function OnboardingGuide() {
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={AlertTriangle} title="Alert Fired" detail={"Email notification\nCommand Tower alert\n4-hr deduplication"} color={GOLD} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
-              <FlowStep icon={BookOpen} title="Prepared Response Staged" detail={"Right prepared response\npre-selected\nawaiting your call"} color={TEAL} />
+              <FlowStep icon={BookOpen} title="Readiness Protocol Staged" detail={"Right prepared response\npre-selected\nawaiting your call"} color={TEAL} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={Lock} title="You Authorize" detail={"One decision\nfull team mobilized\n12-min clock starts"} color={RED} />
             </div>
@@ -314,10 +314,10 @@ export default function OnboardingGuide() {
           </div>
         </Section>
 
-        {/* 05 — Prepared Response Library */}
+        {/* 05 — Readiness Protocol Library */}
         <Section id="prepared responses">
           <SectionHeader
-            label="05 — Prepared Response Library"
+            label="05 — Readiness Protocol Library"
             title="170 Pre-Built Readiness Prepared responses"
             subtitle="Every prepared response contains 4 structured phases, role-specific task assignments, decision gates, escalation protocols, and expert content — pre-built before the trigger fires."
           />
@@ -370,7 +370,7 @@ export default function OnboardingGuide() {
               description="Primary operational hub. Live signal feed, trigger detections, execution dividend counter, prepared response status, and 12-minute clock tracking." />
             <FeatureRow icon={Radio} color={TEAL} title="Command Tower" path="/command-tower"
               description="Full-screen executive display with live WebSocket updates. Real-time trigger alerts, signal ticker, system pulse, and execution log. Ideal for war rooms and leadership reviews." />
-            <FeatureRow icon={BookOpen} color={GOLD} title="Prepared Response Library" path="/playbooks"
+            <FeatureRow icon={BookOpen} color={GOLD} title="Readiness Protocol Library" path="/playbooks"
               description="All 170 prepared responses with search and domain filters. Authenticated users can deploy prepared responses and use the Task Editor to customize phases and assignments." />
             <FeatureRow icon={Activity} color={TEAL} title="Simulation Studio" path="/simulation-studio"
               description="Strategic scenario modeling. Input any threat, select industry, and receive a coverage readiness brief with pre-staged prepared response recommendations and recommended actions." />
@@ -452,7 +452,7 @@ export default function OnboardingGuide() {
               {[
                 ["Mission Control", "/mission-control"],
                 ["Command Tower", "/command-tower"],
-                ["Prepared Response Library", "/playbooks"],
+                ["Readiness Protocol Library", "/playbooks"],
                 ["Simulation Studio", "/simulation-studio"],
                 ["Board Readiness", "/board-readiness"],
                 ["IDEA Workspace", "/workspace"],

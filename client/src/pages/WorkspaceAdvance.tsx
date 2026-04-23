@@ -102,7 +102,7 @@ const workspaceTools = [
     stats: "System recommendations"
   },
   {
-    title: "Prepared Response Refinement",
+    title: "Readiness Protocol Refinement",
     description: "Update prepared responses based on lessons learned",
     path: "/living-prepared responses",
     icon: RefreshCw,
@@ -236,7 +236,7 @@ function ReadinessCompoundsPanel() {
         </div>
       </div>
 
-      {/* Prepared Response refinement cards */}
+      {/* Readiness Protocol refinement cards */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         {PLAYBOOK_REFINEMENT_HISTORY.map((pb) => {
           const isOpen = expanded === pb.name;

@@ -172,7 +172,7 @@ export const demoDecisionOutcomes: DemoDecisionOutcome[] = [
     valueCaptured: 3200000,
     lessonsLearned: [
       'Early AI detection (18 hours before public announcement) enabled proactive positioning',
-      'Pre-staged Prepared Response reduced coordination time from 3 days to 11 minutes',
+      'Pre-staged Readiness Protocol reduced coordination time from 3 days to 11 minutes',
       'Customer outreach within 4 hours prevented 7 enterprise defections',
       'Sales team equipped with counter-messaging same day as competitor announcement'
     ],
@@ -295,7 +295,7 @@ export const demoAIInsights = {
       confidence: 89,
       impact: 'High',
       timeDetected: '2 hours ago',
-      recommendation: 'Activate price matching Prepared Response'
+      recommendation: 'Activate price matching Readiness Protocol'
     },
     {
       signal: 'Industry M&A Activity Spike',
@@ -400,7 +400,7 @@ export const demoDashboardSummary = {
     },
     {
       type: 'execution',
-      title: 'Competitive Response Prepared Response activated',
+      title: 'Competitive Response Readiness Protocol activated',
       time: '11 minutes ago',
       status: 'in-progress'
     },

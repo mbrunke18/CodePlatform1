@@ -727,7 +727,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             style={{ background: GOLD, color: NAVY }}
                           >
                             <Zap className="w-4 h-4" />
-                            Activate Prepared Response Now
+                            Activate Readiness Protocol Now
                           </button>
                         ) : (
                           <button

@@ -120,7 +120,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
             />
           </div>
           <p className="text-xs text-muted-foreground">
-            Your board deck will include insights from 156 executed Prepared Responses, 47 strategic decisions, and $4.2M in measured ROI impact.
+            Your board deck will include insights from 156 executed Readiness Protocols, 47 strategic decisions, and $4.2M in measured ROI impact.
           </p>
         </div>
 

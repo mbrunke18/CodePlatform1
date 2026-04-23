@@ -23,7 +23,7 @@ const STAGES: Stage[] = ['trigger', 'detection', 'playbook', 'execution', 'outco
 const STAGE_LABELS: Record<Stage, string> = {
   trigger:   '1. The Trigger',
   detection: '2. Signal Detection',
-  playbook:  '3. Prepared Response Matched',
+  playbook:  '3. Readiness Protocol Matched',
   execution: '4. Execution Cascade',
   outcome:   '5. Outcome',
 };
@@ -698,14 +698,14 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
   );
 }
 
-/* ── Stage: Prepared Response ────────────────────────────────── */
+/* ── Stage: Readiness Protocol ────────────────────────────────── */
 function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData }) {
   const [, navigate] = useLocation();
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: live.matchedPlaybook ? 16 : 28, flexWrap: 'wrap' }}>
         <div>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Prepared Response Activated</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>Readiness Protocol Activated</div>
           <h3 style={{ fontSize: 24, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{scenario.playbook.name}</h3>
           <span style={{ fontSize: 12, background: '#F1F5F9', color: '#475569', padding: '4px 10px', borderRadius: 0, fontWeight: 600 }}>{scenario.playbook.domain}</span>
         </div>
@@ -727,7 +727,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
             onClick={() => navigate(`/prepared response-library/${live.matchedPlaybook!.id}`)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 0, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
           >
-            View Live Prepared Response <ArrowRight size={11} />
+            View Live Readiness Protocol <ArrowRight size={11} />
           </button>
         </div>
       ) : (
@@ -805,7 +805,7 @@ function ExecutionStage({ scenario, live }: { scenario: Scenario; live: LiveData
           {live.activationsTotal > 0 && (
             <div>
               <span style={{ fontSize: 22, fontWeight: 800, color: GOLD }}>{live.activationsTotal}</span>
-              <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600, marginLeft: 6 }}>Prepared Response Activations</span>
+              <span style={{ fontSize: 11, color: '#64748B', fontWeight: 600, marginLeft: 6 }}>Readiness Protocol Activations</span>
             </div>
           )}
         </div>

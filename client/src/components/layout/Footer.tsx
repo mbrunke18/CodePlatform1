@@ -153,7 +153,7 @@ export default function Footer() {
             "Stop improvising. Start executing."
           </p>
           <p className="text-sm text-poise-teal">
-            170 Prepared Responses. Pre-staged coordination. Clear decision rights. 12 minutes to execution.
+            170 Readiness Protocols. Pre-staged coordination. Clear decision rights. 12 minutes to execution.
           </p>
         </div>
       </div>

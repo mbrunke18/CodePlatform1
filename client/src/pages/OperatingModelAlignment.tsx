@@ -602,7 +602,7 @@ export default function OperatingModelAlignment() {
                     <div style={{ width: 3, alignSelf: 'stretch', background: '#2B8A6E', flexShrink: 0 }} />
                     <div>
                       <p className="text-2xl font-bold" data-testid="text-prepared response-count">{assessmentComplete ? recommendedPlaybooks.reduce((sum, p) => sum + (p.info?.count || 0), 0) : '—'}</p>
-                      <p className="text-xs text-muted-foreground">Recommended Prepared Responses</p>
+                      <p className="text-xs text-muted-foreground">Recommended Readiness Protocols</p>
                     </div>
                   </div>
                 </CardContent>
@@ -624,7 +624,7 @@ export default function OperatingModelAlignment() {
               <TabsList className="mb-6">
                 <TabsTrigger value="overview" data-testid="tab-overview">Overview</TabsTrigger>
                 <TabsTrigger value="fingerprint" disabled={!assessmentComplete} data-testid="tab-fingerprint">Fingerprint</TabsTrigger>
-                <TabsTrigger value="prepared responses" disabled={!assessmentComplete} data-testid="tab-prepared responses">Prepared Response Recommendations</TabsTrigger>
+                <TabsTrigger value="prepared responses" disabled={!assessmentComplete} data-testid="tab-prepared responses">Readiness Protocol Recommendations</TabsTrigger>
                 <TabsTrigger value="gap" disabled={!assessmentComplete} data-testid="tab-gap">Gap Analysis</TabsTrigger>
               </TabsList>
               
@@ -801,7 +801,7 @@ export default function OperatingModelAlignment() {
                       <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                           <Zap className="w-5 h-5 text-primary" />
-                          Recommended Prepared Response Domains
+                          Recommended Readiness Protocol Domains
                         </CardTitle>
                         <CardDescription>
                           Based on your operating model gaps, these prepared response domains will have the highest impact

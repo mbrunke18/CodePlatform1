@@ -112,7 +112,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
       queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
       toast({
         title: "Success",
-        description: "Prepared Response customized successfully",
+        description: "Readiness Protocol customized successfully",
       });
       setIsDialog(false);
     }
@@ -148,7 +148,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
               <span>/</span>
               <span>Configuration</span>
               <span>/</span>
-              <span className="text-[#0A0F2E] font-bold">Prepared Response Customization</span>
+              <span className="text-[#0A0F2E] font-bold">Readiness Protocol Customization</span>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                     <div className="h-4 w-[2px] bg-[#C9A84C]"></div>
                     <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-[#C9A84C]">Template Engine</span>
                   </div>
-                  <h1 style={CG} className="text-4xl font-bold" data-testid="prepared response-customization-title">Strategic Prepared Response Customization</h1>
+                  <h1 style={CG} className="text-4xl font-bold" data-testid="prepared response-customization-title">Strategic Readiness Protocol Customization</h1>
                   <p className="text-[#6B7280] mt-2 text-lg">Architect your organization's response by cloning and configuring battle-tested templates.</p>
                 </div>
               </div>
@@ -291,7 +291,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                 <TabsContent value="basic" className="space-y-8">
                   <div className="grid gap-8">
                     <div className="space-y-3">
-                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Localized Prepared Response Name</Label>
+                      <Label className="text-[10px] uppercase font-bold tracking-widest text-[#6B7280]">Localized Readiness Protocol Name</Label>
                       <Input defaultValue={selectedTemplate?.name} className="h-12 border-[#E8E4DC] font-bold text-[#0A0F2E]" />
                     </div>
                     <div className="space-y-3">
@@ -382,7 +382,7 @@ export default function PlaybookCustomization({ embedded }: { embedded?: boolean
                   onClick={() => customizeMutation.mutate({})}
                 >
                   <Save className="h-4 w-4 mr-2" />
-                  Deploy Customized Prepared Response
+                  Deploy Customized Readiness Protocol
                 </Button>
               </div>
             </div>

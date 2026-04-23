@@ -25,7 +25,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Leverage AI for strategic advantage.",
     source: "Nearly every AI strategy deck in circulation today",
-    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Prepared Response queued. Executive notified. 12 minutes to live coordination — not a dashboard."
+    reality: "AI monitors 248+ data points across 221 triggers. Pattern detected. Readiness Protocol queued. Executive notified. 12 minutes to live coordination — not a dashboard."
   },
   {
     claim: "Create a learning organization that adapts in real time.",
@@ -35,7 +35,7 @@ const CLAIMS: { claim: string; source: string; reality: string }[] = [
   {
     claim: "Bridge the strategy–execution gap.",
     source: "Harvard Business Review, McKinsey, Gartner — cited by nearly everyone",
-    reality: "In Readiness OS, the gap doesn't exist. Strategy IS the Prepared Response. The Prepared Response IS the execution. No translation layer. No alignment cycle."
+    reality: "In Readiness OS, the gap doesn't exist. Strategy IS the Readiness Protocol. The Readiness Protocol IS the execution. No translation layer. No alignment cycle."
   },
   {
     claim: "Move at the speed of the market.",
@@ -60,9 +60,9 @@ export default function PlatformReality() {
   useEffect(() => {
     updatePageMetadata({
       title: "Platform Reality: They Described It. We Shipped It. | VaughnMartin Readiness OS",
-      description: "Every conference keynote, McKinsey deck, and LinkedIn post proves the mobilization problem is real. None of them built the solution. Readiness OS did — 12-minute execution, 170 pre-staged Prepared Responses, 3,600× Execution Head Start.",
+      description: "Every conference keynote, McKinsey deck, and LinkedIn post proves the mobilization problem is real. None of them built the solution. Readiness OS did — 12-minute execution, 170 pre-staged Readiness Protocols, 3,600× Execution Head Start.",
       ogTitle: "They Described the Problem. We Shipped the Solution.",
-      ogDescription: "The 3,600× Execution Head Start is not a framework. It's a timestamp on a deployed Prepared Response. See how Readiness OS ends the thought leadership theater.",
+      ogDescription: "The 3,600× Execution Head Start is not a framework. It's a timestamp on a deployed Readiness Protocol. See how Readiness OS ends the thought leadership theater.",
     });
   }, []);
 
@@ -167,7 +167,7 @@ export default function PlatformReality() {
                 {[
                   { step: "01", label: "The Problem is Pre-Staged", body: "170 Readiness Prepared responses built for every situation the organization is likely to face. Not described — deployed. Not in a deck — in the platform." },
                   { step: "02", label: "The Intelligence is Live", body: "248+ data points monitored continuously across 221 triggers. AI detects the pattern before the leadership team reads the news." },
-                  { step: "03", label: "No Committee Required", body: "When a trigger fires, the platform surfaces the matched Prepared Response, assigns roles, and notifies stakeholders. Zero coordination overhead. No steering committee. No workshop." },
+                  { step: "03", label: "No Committee Required", body: "When a trigger fires, the platform surfaces the matched Readiness Protocol, assigns roles, and notifies stakeholders. Zero coordination overhead. No steering committee. No workshop." },
                   { step: "04", label: "12 Minutes to Live Execution", body: "While the thought leader's framework is still in Week 3 of stakeholder alignment, Readiness OS users are already 12 minutes into coordinated, executive-authorized execution." },
                 ].map((item) => (
                   <div key={item.step} style={{ display: "flex", alignItems: "flex-start", gap: 0, borderBottom: `1px solid #F3F4F6` }}>
@@ -277,7 +277,7 @@ export default function PlatformReality() {
               <div style={{ padding: "32px", background: `rgba(201,168,76,0.08)`, border: `2px solid ${GOLD}`, textAlign: "center" as const }}>
                 <div style={{ ...CG, fontSize: 56, fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: 8 }}>12</div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: NAVY, marginBottom: 8 }}>Minutes to execute</div>
-                <div style={{ fontSize: 13, color: "#4B5563" }}>Pre-staged Prepared Response. Role assignments automated. Executive-authorized. Live.</div>
+                <div style={{ fontSize: 13, color: "#4B5563" }}>Pre-staged Readiness Protocol. Role assignments automated. Executive-authorized. Live.</div>
               </div>
               <div style={{ padding: "16px 20px", background: TEAL, textAlign: "center" as const }}>
                 <p style={{ fontSize: 12, fontWeight: 700, color: "#fff", margin: 0, letterSpacing: "0.1em", textTransform: "uppercase" as const }}>3,600× Execution Head Start</p>

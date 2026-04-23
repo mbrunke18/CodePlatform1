@@ -762,7 +762,7 @@ export function TriggerBuilder({
               {/* Auto-activate Option */}
               <div className="flex items-center justify-between">
                 <div>
-                  <div className="font-medium">Auto-activate Prepared Response</div>
+                  <div className="font-medium">Auto-activate Readiness Protocol</div>
                   <p className="text-sm text-muted-foreground">
                     Automatically recommend prepared response activation when triggered
                   </p>

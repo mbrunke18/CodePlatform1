@@ -22,7 +22,7 @@ const SCENE_NARRATIONS = [
   "So I built Readiness OS. Not another AI tool. The new operating model. Redesigned from first principles for the AI era.",
   "170 prepared responses across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
   "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built prepared responses ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
-  "One click to activate a Prepared Response. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
+  "One click to activate a Readiness Protocol. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
   "From signal detection to coordinated execution. 12 minutes. That's 30 days of mobilization compressed to 12 minutes. While competitors are still scheduling their first alignment call — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",

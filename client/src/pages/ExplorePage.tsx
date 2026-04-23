@@ -22,7 +22,7 @@ import {
 const features = [
   {
     icon: Shield,
-    title: 'IDENTIFY — Prepared Response Depth Chart',
+    title: 'IDENTIFY — Readiness Protocol Depth Chart',
     description: 'Build your strategic arsenal. Browse 170 pre-built prepared responses across 9 domains — ready to deploy instantly.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',
@@ -44,7 +44,7 @@ const features = [
   {
     icon: BarChart3,
     title: 'ADVANCE — Outcome tracking',
-    description: 'Every execution feeds back into your Prepared Responses. AI suggests refinements. Your organization gets smarter.',
+    description: 'Every execution feeds back into your Readiness Protocols. AI suggests refinements. Your organization gets smarter.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',
   },
@@ -77,7 +77,7 @@ export default function ExplorePage() {
   useEffect(() => {
     updatePageMetadata({
       title: 'Explore Readiness OS — Experience the Full Platform',
-      description: 'Sign in and experience VaughnMartin Readiness OS as a real customer. Browse 170 Prepared Responses, activate a scenario, and see a coordinated response unfold.',
+      description: 'Sign in and experience VaughnMartin Readiness OS as a real customer. Browse 170 Readiness Protocols, activate a scenario, and see a coordinated response unfold.',
     });
   }, []);
 

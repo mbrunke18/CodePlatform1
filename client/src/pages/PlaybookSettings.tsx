@@ -48,7 +48,7 @@ export default function PlaybookSettings() {
     onSuccess: () => {
       toast({
         title: 'Settings Saved',
-        description: 'Prepared Response settings have been updated successfully.',
+        description: 'Readiness Protocol settings have been updated successfully.',
       });
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', id] });
     },
@@ -79,7 +79,7 @@ export default function PlaybookSettings() {
     return (
       <PageLayout>
         <div className="text-center py-12">
-          <p className="text-muted-foreground">Prepared Response not found</p>
+          <p className="text-muted-foreground">Readiness Protocol not found</p>
           <Button asChild className="mt-4">
             <Link href="/playbook-library">Back to Library</Link>
           </Button>
@@ -99,7 +99,7 @@ export default function PlaybookSettings() {
               </Link>
             </Button>
             <div>
-              <h1 className="text-2xl font-bold">Prepared Response Settings</h1>
+              <h1 className="text-2xl font-bold">Readiness Protocol Settings</h1>
               <p className="text-muted-foreground">{playbook.name}</p>
             </div>
           </div>

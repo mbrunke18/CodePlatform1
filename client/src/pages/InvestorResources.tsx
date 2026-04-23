@@ -337,7 +337,7 @@ export default function InvestorResources() {
                 <div className="space-y-4">
                   {[
                     { text: 'Signal detected', sub: 'Pre-configured monitoring triggers alert' },
-                    { text: 'Prepared Response activates', sub: 'Pre-staged, pre-assigned, pre-approved' },
+                    { text: 'Readiness Protocol activates', sub: 'Pre-staged, pre-assigned, pre-approved' },
                     { text: 'Tasks deploy', sub: 'Auto-created in Jira/ServiceNow/Asana' },
                     { text: 'Teams execute', sub: 'Clear ownership, no ambiguity' },
                   ].map((item, idx) => (

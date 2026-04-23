@@ -71,7 +71,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'The Solution',
     subtitle: 'Compress 30 days into 12 minutes',
-    narration: 'Readiness OS connects intelligence signals directly to pre-staged Prepared Responses, enabling coordinated response in minutes — not days.',
+    narration: 'Readiness OS connects intelligence signals directly to pre-staged Readiness Protocols, enabling coordinated response in minutes — not days.',
     visual: 'solution'
   },
   {
@@ -107,7 +107,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'ADVANCE',
     subtitle: 'Review the Film',
-    narration: 'Every execution feeds back into your Prepared Responses. AI suggests refinements. Your organization gets smarter.',
+    narration: 'Every execution feeds back into your Readiness Protocols. AI suggests refinements. Your organization gets smarter.',
     visual: 'advance'
   },
   {
@@ -134,7 +134,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 7000,
     title: 'Coordinated Response',
     subtitle: '6 Stakeholders, 12 Minutes',
-    narration: 'One click activates your Prepared Response. CFO, CMO, Legal, Ops, Sales — all moving in parallel.',
+    narration: 'One click activates your Readiness Protocol. CFO, CMO, Legal, Ops, Sales — all moving in parallel.',
     visual: 'execute'
   },
   {
@@ -359,7 +359,7 @@ export default function ProductTour() {
       advance: {
         icon: Brain,
         hex: '#2B8A6E',
-        items: ['Outcome Analysis', 'AI Recommendations', 'Prepared Response Refinement', 'Future Readiness Index']
+        items: ['Outcome Analysis', 'AI Recommendations', 'Readiness Protocol Refinement', 'Future Readiness Index']
       }
     };
 

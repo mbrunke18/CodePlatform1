@@ -459,7 +459,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Prepared responses · 9 Domains</span>
             </div>
             <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
-              A Prepared Response for Every{" "}
+              A Readiness Protocol for Every{" "}
               <em className="italic" style={{ color: "#C9A84C" }}>Strategic Scenario</em>
             </h1>
             <p style={{ color: "#6B7280" }} className="text-base max-w-2xl mb-2">
@@ -685,7 +685,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center gap-2 mb-1">
                 <Eye className="h-3.5 w-3.5 text-[#2B8A6E]" />
                 <span style={{ color: "#2B8A6E", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
-                  3 Full Prepared Response Previews — No Sign-In Required
+                  3 Full Readiness Protocol Previews — No Sign-In Required
                 </span>
               </div>
               <p style={{ color: MUTED, fontSize: 11 }}>See the full depth of what a deployed prepared response contains — trigger logic, stakeholders, tasks, and budget authority.</p>
@@ -703,7 +703,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   <div key={playbook.id} style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", borderTop: `2px solid #C9A84C`, padding: "20px", display: "flex", flexDirection: "column", gap: 12 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <div style={{ width: 20, height: 1, background: "#C9A84C" }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>Enterprise Prepared Response</span>
+                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>Enterprise Readiness Protocol</span>
                     </div>
                     <div>
                       <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#0A0F2E", marginBottom: 4, lineHeight: 1.25 }}>{playbook.name}</div>

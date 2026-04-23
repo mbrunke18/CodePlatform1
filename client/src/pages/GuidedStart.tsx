@@ -275,7 +275,7 @@ export default function GuidedStart() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>VaughnMartin · Readiness OS</span>
             </div>
             <h1 style={{ ...CG, fontSize: 'clamp(30px,5vw,54px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: 14 }}>
-              One trigger. One Prepared Response.<br />
+              One trigger. One Readiness Protocol.<br />
               <em style={{ fontStyle: 'italic', color: GOLD }}>Twelve minutes.</em>
             </h1>
             <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', maxWidth: 540, margin: '0 auto 12px' }}>
@@ -407,7 +407,7 @@ export default function GuidedStart() {
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: detectStep >= 5 ? '#fff' : 'rgba(255,255,255,0.2)', lineHeight: 1 }}>
                   {detectStep >= 5 ? '1' : '0'}
                 </div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Prepared Response matched</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Readiness Protocol matched</div>
               </div>
             </div>
 

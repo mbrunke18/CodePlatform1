@@ -260,7 +260,7 @@ export default function LiveDetectionFeed() {
                   </div>
                   {emailDetection.recommendedPlaybook && (
                     <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '10px 14px' }}>
-                      <span style={{ color: TEAL, fontSize: 12, fontWeight: 700 }}>Recommended Prepared Response: </span>
+                      <span style={{ color: TEAL, fontSize: 12, fontWeight: 700 }}>Recommended Readiness Protocol: </span>
                       <span style={{ color: NAVY, fontSize: 12, fontWeight: 600 }}>{emailDetection.recommendedPlaybook}</span>
                     </div>
                   )}
@@ -275,7 +275,7 @@ export default function LiveDetectionFeed() {
               </div>
               {[
                 { trigger: 'AI Competitive Disruption', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'AI Competitive Response Protocol' },
-                { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Prepared Response' },
+                { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Readiness Protocol' },
                 { trigger: 'Geopolitical Supply Chain Risk', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Supply Chain Resilience Protocol' },
               ].map((item, i) => (
                 <div key={i} style={{
@@ -508,7 +508,7 @@ export default function LiveDetectionFeed() {
                         )}
 
                         <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: '10px 14px', fontSize: 13, color: NAVY }}>
-                          <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Prepared Response: </span>
+                          <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Readiness Protocol: </span>
                           {detection.recommendedPlaybook}
                         </div>
                       </div>

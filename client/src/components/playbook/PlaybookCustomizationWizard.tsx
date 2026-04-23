@@ -152,7 +152,7 @@ export default function PlaybookCustomizationWizard({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library'] });
       toast({
-        title: 'Prepared Response Customized',
+        title: 'Readiness Protocol Customized',
         description: 'Your prepared response template has been customized successfully',
       });
       onClose();
@@ -198,7 +198,7 @@ export default function PlaybookCustomizationWizard({
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden flex flex-col" data-testid="dialog-prepared response-wizard">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
-            <span>Customize Prepared Response: {playbook?.name}</span>
+            <span>Customize Readiness Protocol: {playbook?.name}</span>
             <Badge variant="outline" data-testid="badge-progress">
               Step {currentStep} of {STEPS.length}
             </Badge>

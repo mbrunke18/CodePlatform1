@@ -39,8 +39,8 @@ const SCENARIO_DOMAINS = [
 const ACTIVE_DRILLS = [
   { name: 'Market Entry — Competitive Response Drill', status: 'in_progress', phase: 'EXECUTE', participants: 8, score: null, playbook: 'Competitive Response Protocol', domain: 'Competitive' },
   { name: 'M&A Integration Walkthrough', status: 'scheduled', phase: 'IDENTIFY', participants: 5, score: null, playbook: 'M&A Integration Protocol v3', domain: 'M&A' },
-  { name: 'Regulatory Inquiry Simulation', status: 'completed', phase: 'ADVANCE', participants: 12, score: 94, playbook: 'Regulatory Response Prepared Response', domain: 'Regulatory' },
-  { name: 'Digital Transformation Scenario', status: 'completed', phase: 'ADVANCE', participants: 7, score: 87, playbook: 'Digital Acceleration Prepared Response', domain: 'Digital' },
+  { name: 'Regulatory Inquiry Simulation', status: 'completed', phase: 'ADVANCE', participants: 12, score: 94, playbook: 'Regulatory Response Readiness Protocol', domain: 'Regulatory' },
+  { name: 'Digital Transformation Scenario', status: 'completed', phase: 'ADVANCE', participants: 7, score: 87, playbook: 'Digital Acceleration Readiness Protocol', domain: 'Digital' },
 ];
 
 const getLevelColor = (level: string) => level === 'high' ? GOLD : level === 'medium' ? TEAL : '#9CA3AF';
@@ -205,7 +205,7 @@ export default function SituationalHub() {
                 </div>
                 <div className="flex gap-3">
                   <Link href="/crisis-exposure-matrix"><Button variant="outline" className="border-[#0A0F2E]/20 text-[#0A0F2E]"><ExternalLink className="h-4 w-4 mr-2" />Full Matrix</Button></Link>
-                  <Link href="/playbooks"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">Browse Prepared Responses <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
+                  <Link href="/playbooks"><Button className="bg-[#0A0F2E] text-white hover:bg-[#141B45]">Browse Readiness Protocols <ChevronRight className="h-4 w-4 ml-2" /></Button></Link>
                 </div>
               </div>
 

@@ -94,7 +94,7 @@ const EVENTS: RegulatoryEvent[] = [
     urgency: "medium",
     description: "HSR Act requires pre-merger notification filing for transactions above $119.5M threshold. Waiting period is 30 days (15 for cash acquisitions). Early termination requests available.",
     applicableSectors: ["M&A Active Organizations"],
-    relatedPlaybooks: ["M&A Regulatory Filing Protocol", "Merger Integration Prepared Response", "Antitrust Response"],
+    relatedPlaybooks: ["M&A Regulatory Filing Protocol", "Merger Integration Readiness Protocol", "Antitrust Response"],
     action: "Activate M&A Regulatory Filing Protocol to coordinate HSR preparation and legal team staging.",
     regulatoryBody: "Federal Trade Commission / DOJ",
   },
@@ -308,12 +308,12 @@ export default function RegulatoryCalendar() {
         </div>
 
         <div style={{ marginTop: 24, padding: "16px 20px", background: "rgba(10,15,46,0.02)", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 11, color: "#9CA3AF" }}>Regulatory windows are auto-calculated from today's date. Prepared Response mappings reflect your active 170-prepared response library.</div>
+          <div style={{ fontSize: 11, color: "#9CA3AF" }}>Regulatory windows are auto-calculated from today's date. Readiness Protocol mappings reflect your active 170-prepared response library.</div>
           <button
             onClick={() => setLocation("/playbooks")}
             style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 16px", background: NAVY, color: "#fff", border: "none", cursor: "pointer", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}
           >
-            Open Prepared Response Library <ChevronRight style={{ width: 12, height: 12 }} />
+            Open Readiness Protocol Library <ChevronRight style={{ width: 12, height: 12 }} />
           </button>
         </div>
       </div>

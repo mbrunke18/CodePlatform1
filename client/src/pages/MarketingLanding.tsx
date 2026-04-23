@@ -35,7 +35,7 @@ export default function MarketingLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS - Strategic Readiness Platform | Transform Strategy into 12-Minute Execution",
-      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 Prepared Responses, 5 intelligence modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
+      description: "Your competitor just launched. Your board meeting is in 3 days. Readiness OS is the orchestration layer that transforms 30-day alignment cycles into 12-minute coordinated execution. 170 Readiness Protocols, 5 intelligence modules, 24/7 monitoring, institutional memory—built for Fortune 1000 strategic dominance.",
       ogTitle: "Readiness OS - When Your Competitor Moves, Will You Be Ready?",
       ogDescription: "The category-defining Strategic Readiness Platform. Active Fortune 1000 pilot program. Identify → Detect → Execute → Advance.",
     });
@@ -123,7 +123,7 @@ export default function MarketingLanding() {
               When a strategic trigger fires — a competitor launches, a regulation shifts, a market window opens — enterprises typically <span className="text-[#0A0F2E] font-medium uppercase tracking-widest text-[11px]">spend 30 days just getting organized</span>. Readiness OS compresses that entire mobilization cycle to <span className="text-[#C9A84C] font-bold underline decoration-[#C9A84C] underline-offset-8">12 minutes</span>.
             </p>
             <p className="text-lg text-[#6B7280] mb-8 leading-relaxed max-w-4xl mx-auto">
-              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched Prepared Response: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
+              AI monitors 248+ signals across 9 strategic domains and 221 pre-armed triggers — detecting threats and opportunities before the first committee call. When a signal crosses the threshold, Readiness OS deploys the matched Readiness Protocol: stakeholders notified, tasks assigned, budgets unlocked — all before the first alignment meeting would have started.
             </p>
             <p className="text-lg text-[#0A0F2E] mb-10 leading-relaxed max-w-4xl mx-auto font-medium">
               We're the orchestration layer between strategy and execution. <span className="text-[#C9A84C]">AI handles detection and coordination. Executives make the decisions.</span>
@@ -159,7 +159,7 @@ export default function MarketingLanding() {
               <div className="grid md:grid-cols-4 gap-6 text-left">
                 <div className="bg-white p-6 border border-[#E8E4DC] hover:border-[#C9A84C] transition-colors">
                   <Badge className="mb-4 bg-[#C9A84C] text-[#0A0F2E] border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Identify</Badge>
-                  <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Prepared Response™" /></div>
+                  <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Readiness Protocol™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
                     170 pre-built prepared responses across 9 strategic domains. Build your depth chart before events hit.
                   </p>
@@ -182,7 +182,7 @@ export default function MarketingLanding() {
                   <Badge className="mb-4 bg-[#0A0F2E] text-white border-0 text-[9px] tracking-widest font-bold rounded-none uppercase">Advance</Badge>
                   <div className="text-[#0A0F2E] font-serif text-xl mb-3"><SubBrandLabel name="Retrospect™" /></div>
                   <p className="text-[#6B7280] text-sm leading-relaxed">
-                    Capture lessons, refine Prepared Responses. Every execution makes your organization smarter.
+                    Capture lessons, refine Readiness Protocols. Every execution makes your organization smarter.
                   </p>
                 </div>
               </div>
@@ -229,13 +229,13 @@ export default function MarketingLanding() {
 
           {/* Feature Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {/* 1. Create Prepared Response - PROMINENT */}
+            {/* 1. Create Readiness Protocol - PROMINENT */}
             <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-prepared response">
               <CardContent className="p-10">
                 <div className="mb-8">
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Start Here</div>
                   <h3 className="font-serif text-2xl text-[#0A0F2E] mb-3">
-                    Create Strategic Prepared Response
+                    Create Strategic Readiness Protocol
                   </h3>
                   <div style={{ width: 28, height: 1, background: '#C9A84C', marginBottom: 8 }} />
                 </div>
@@ -272,10 +272,10 @@ export default function MarketingLanding() {
               </CardContent>
             </Card>
 
-            {/* 4. Prepared Response Library */}
+            {/* 4. Readiness Protocol Library */}
             <Card className="border border-[#E8E4DC] rounded-none hover:border-[#0A0F2E] transition-all duration-300 group" data-testid="card-scenarios">
               <CardContent className="p-8">
-                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Prepared Response Library</h3>
+                <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Readiness Protocol Library</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
                   170 strategic prepared responses across 9 operational domains covering growth, defense, transformation, and AI governance.
                 </p>

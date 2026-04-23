@@ -193,7 +193,7 @@ export default function HowItWorks() {
       {/* ── 02: THE 170 PREPARED RESPONSES ── */}
       <section style={{ background: OFF, padding: "100px 56px" }}>
         <div className="max-w-6xl mx-auto">
-          <SectionLabel text="02 — Your Prepared Response Foundation" color={GOLD} />
+          <SectionLabel text="02 — Your Readiness Protocol Foundation" color={GOLD} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24 }}>
@@ -238,7 +238,7 @@ export default function HowItWorks() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 800, height: 800, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
-          <SectionLabel text="03 — Prepared Response Customization" color={GOLD_LIGHT} />
+          <SectionLabel text="03 — Readiness Protocol Customization" color={GOLD_LIGHT} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 64 }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: "#fff", marginBottom: 24 }}>
@@ -387,7 +387,7 @@ export default function HowItWorks() {
                 color: TEAL,
                 bg: OFF,
                 title: "Coordination in 12 Minutes",
-                desc: "Prepared Response activates. Stakeholders notified. Tasks assigned with named owners and deadlines. Decision rights are clear — no committees to convene. Execution begins in minutes.",
+                desc: "Readiness Protocol activates. Stakeholders notified. Tasks assigned with named owners and deadlines. Decision rights are clear — no committees to convene. Execution begins in minutes.",
                 sub: "Not planning. Execution."
               },
               {
@@ -396,7 +396,7 @@ export default function HowItWorks() {
                 color: "#A78BFA",
                 bg: "#fff",
                 title: "Every Execution Gets Smarter",
-                desc: "After each prepared response closes, the system generates an executive outcome summary. Lessons feed back into the Prepared Response. The organization's institutional knowledge compounds.",
+                desc: "After each prepared response closes, the system generates an executive outcome summary. Lessons feed back into the Readiness Protocol. The organization's institutional knowledge compounds.",
                 sub: "Your competitive moat grows with each event."
               }
             ].map((phase, i) => (
@@ -426,7 +426,7 @@ export default function HowItWorks() {
             {[
               { time: "0:00", label: "Signal Detected", color: GOLD_LIGHT, desc: "AI detects a strategic signal — a competitor announcement, a regulatory filing, a market move — and scores it against your configured thresholds." },
               { time: "1:00", label: "Alert Generated", color: TEAL_LIGHT, desc: "An alert fires with strategic context: what happened, why it matters for your org, affected domains, and the recommended prepared response to activate." },
-              { time: "2:00", label: "Prepared Response Activated", color: GOLD_LIGHT, desc: "The matched prepared response from your library activates. Stakeholders receive coordinated notifications. The system knows who owns what — no ambiguity." },
+              { time: "2:00", label: "Readiness Protocol Activated", color: GOLD_LIGHT, desc: "The matched prepared response from your library activates. Stakeholders receive coordinated notifications. The system knows who owns what — no ambiguity." },
               { time: "5:00", label: "Tasks Assigned", color: TEAL_LIGHT, desc: "Every task has a named owner, a deadline, and a clear decision-rights framework. All workstreams start simultaneously, not sequentially." },
               { time: "12:00", label: "Full Coordinated Execution", color: GOLD_LIGHT, desc: "Cross-functional teams executing in parallel. Real-time progress tracked. Every action logged. The organization is running — not preparing to run." }
             ].map((step, i) => (
@@ -471,7 +471,7 @@ export default function HowItWorks() {
               {
                 icon: BookOpen,
                 color: NAVY,
-                title: "Prepared Response Performance Fingerprints",
+                title: "Readiness Protocol Performance Fingerprints",
                 desc: "For every prepared response with 3+ activations: activation count, average execution time, target met rate, and recent outcome notes. Know which prepared responses perform and which need refinement."
               }
             ].map((card, i) => (
@@ -488,7 +488,7 @@ export default function HowItWorks() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Institutional Memory</div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Prepared Response</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Readiness Protocol</div>
               <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
                 After every prepared response closes, the ADVANCE phase captures what worked, what didn't, and what the next team should know. Those lessons feed directly back into your prepared response library — so knowledge stays with the organization, not the individual.
               </p>
@@ -538,7 +538,7 @@ export default function HowItWorks() {
                 label: "IDENTIFY WORKSPACE",
                 icon: BookOpen,
                 color: TEAL,
-                title: "Smart Prepared Response Finder",
+                title: "Smart Readiness Protocol Finder",
                 body: "Searching 170 prepared responses shouldn't feel like loading a database. The platform uses two-phase loading: playbook names, domains, and priorities appear instantly from a lightweight index. Full detail — execution steps, trigger conditions, escalation paths — loads only when you select a specific playbook. Faster selection, less cognitive load on the team receiving the activation.",
                 items: ["Instant metadata index — no wait on full payloads", "Full detail loads only on selection", "Search by name, domain, or priority across all 170"]
               },
@@ -599,7 +599,7 @@ export default function HowItWorks() {
               {
                 num: "01",
                 color: TEAL,
-                title: "Prepared Response Layer",
+                title: "Readiness Protocol Layer",
                 what: "The 170 library prepared responses are starting points. Customize any of them — or build new ones from scratch.",
                 controls: [
                   "Stakeholder names and notification SLAs",

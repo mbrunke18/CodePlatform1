@@ -217,7 +217,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     if (addedLibraryIds.has(template.id)) {
       toast({
         title: "Already Added",
-        description: `"${template.title}" is already in your Prepared Response library.`,
+        description: `"${template.title}" is already in your Readiness Protocol library.`,
         variant: "destructive",
       });
       return;
@@ -236,7 +236,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     setTasks([...tasks, newTask]);
     toast({
       title: "Task Added",
-      description: `"${template.title}" has been added to your Prepared Response library.`,
+      description: `"${template.title}" has been added to your Readiness Protocol library.`,
     });
   };
   
@@ -247,7 +247,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
     if (phaseTasks.length === 0) {
       toast({
         title: "No New Tasks",
-        description: `All ${IDEA_PHASES[phase].label} tasks are already in your Prepared Response library.`,
+        description: `All ${IDEA_PHASES[phase].label} tasks are already in your Readiness Protocol library.`,
       });
       return;
     }
@@ -479,7 +479,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
               className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
               data-testid="tab-prepared response-tasks"
             >
-              Prepared Response Tasks ({tasks.length})
+              Readiness Protocol Tasks ({tasks.length})
             </TabsTrigger>
             <TabsTrigger 
               value="library" 
@@ -847,7 +847,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                       <div>
                         <h2 className="text-xl font-bold text-[#0A0F2E] flex items-center gap-2">
                           <Activity className="h-5 w-5 text-[#C9A84C]" />
-                          Prepared Response Execution Sequences
+                          Readiness Protocol Execution Sequences
                         </h2>
                         <p className="text-[#6B7280] mt-1">
                           Real task sequences from the database across all strategic domains

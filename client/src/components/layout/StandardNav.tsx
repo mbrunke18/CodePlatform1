@@ -41,7 +41,7 @@ const SEARCH_ITEMS = [
   { label: 'Intelligence Hub', path: '/ai-intelligence', category: 'Platform', icon: Brain },
   { label: 'Settings Hub', path: '/settings-hub', category: 'Platform', icon: Settings },
   { label: 'Organization Setup', path: '/organization-setup', category: 'Platform', icon: Building },
-  { label: 'Prepared Response Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
+  { label: 'Readiness Protocol Library', path: '/playbooks', category: 'Identify', icon: BookOpen },
   { label: 'Strategic Planning Hub', path: '/strategic', category: 'Identify', icon: Target },
   { label: 'What-If Analyzer', path: '/what-if-analyzer', category: 'Identify', icon: Lightbulb },
   { label: 'Response Customization', path: '/playbook-customization', category: 'Identify', icon: ClipboardCheck },
@@ -130,7 +130,7 @@ export default function StandardNav() {
     {
       heading: "Core Capabilities",
       links: [
-        { label: "Prepared Response Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged Prepared Responses across 9 strategic domains" },
+        { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged Readiness Protocols across 9 strategic domains" },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
@@ -333,7 +333,7 @@ export default function StandardNav() {
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
             {megaColHeading("Core Capabilities")}
             {[
-              { path: '/playbooks', icon: ClipboardList, label: 'Prepared Response Library', sub: '170 pre-staged Prepared Responses across 9 strategic domains', featured: true },
+              { path: '/playbooks', icon: ClipboardList, label: 'Readiness Protocol Library', sub: '170 pre-staged Readiness Protocols across 9 strategic domains', featured: true },
               { path: '/triggers-management', icon: Zap, label: 'Trigger Monitoring', sub: 'Automated detection across 248+ data points' },
               { path: '/signal-intelligence', icon: Radar, label: 'Signal Intelligence', sub: '221 triggers — monitored every 15 minutes' },
               { path: '/ecosystems', icon: Globe, label: 'Enterprise Ecosystems', sub: 'Microsoft · Salesforce · AWS · SAP · Workday' },
@@ -492,7 +492,7 @@ export default function StandardNav() {
         path: '/industry-demos',
         icon: Globe,
         label: 'See Your Scenario',
-        sub: 'Pick your industry and concern. LVMH · Toyota · LoanDepot · Glenmark — real triggers, real Prepared Responses, real outcomes.',
+        sub: 'Pick your industry and concern. LVMH · Toyota · LoanDepot · Glenmark — real triggers, real Readiness Protocols, real outcomes.',
         featured: true,
       },
       {
@@ -1053,7 +1053,7 @@ export default function StandardNav() {
                   autoFocus
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  placeholder="Search pages, Prepared Responses, actions…"
+                  placeholder="Search pages, Readiness Protocols, actions…"
                   style={{ flex: 1, border: 'none', outline: 'none', fontSize: 14, color: '#0A0F2E', fontWeight: 500, background: 'transparent' }}
                 />
                 <kbd style={{ fontSize: 10, color: '#9CA3AF', border: '1px solid #E8E4DC', padding: '2px 6px', fontFamily: 'monospace' }}>ESC</kbd>

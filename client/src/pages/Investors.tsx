@@ -23,7 +23,7 @@ const scenarioComparisons = [
     traditional: { time: "6-9 months", cost: "€280M opportunity lost" },
     execution: { time: "12 minutes", value: "First-mover advantage secured" },
     speedup: "3,600×",
-    context: "Prepared Response activates the moment market signals confirm the window. Stakeholders aligned, budgets staged, comms drafted — before competitors react.",
+    context: "Readiness Protocol activates the moment market signals confirm the window. Stakeholders aligned, budgets staged, comms drafted — before competitors react.",
   },
   {
     title: "Ransomware Attack",
@@ -179,7 +179,7 @@ function PlatformArchitectureDiagram() {
       phase: "IDENTIFY",
       label: "Signal Engine",
       sub: "Pattern-detection analysis",
-      items: ["Threat synthesis", "Trigger matching", "Risk scoring", "Prepared Response recommendation"],
+      items: ["Threat synthesis", "Trigger matching", "Risk scoring", "Readiness Protocol recommendation"],
       color: NAVY,
       bg: "#EEF0F7",
       border: `${NAVY}40`,
@@ -322,7 +322,7 @@ function FuturePositioningDiagram() {
         <p className="text-center text-xs font-bold uppercase tracking-widest text-[#6B7280] mb-4">Competitive Moat Grows Over Time</p>
         <div className="flex items-center gap-0">
           {[
-            { label: "Platform Built", sub: "170 Prepared Responses, IDEA Framework", color: NAVY },
+            { label: "Platform Built", sub: "170 Readiness Protocols, IDEA Framework", color: NAVY },
             { label: "Pilot Contracts", sub: "Design partners, real use cases", color: NAVY },
             { label: "Data Network Effect", sub: "Every activation improves the system", color: TEAL },
             { label: "Category Leader", sub: "Strategic Readiness Platform standard", color: GOLD },
@@ -664,7 +664,7 @@ export default function Investors() {
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">The IDEA Framework™</h2>
             <div className="grid md:grid-cols-4 gap-4">
               {[
-                { phase: "IDENTIFY", module: "Prepared Response™", desc: "Build and customize strategic prepared responses", color: "bg-[#0A0F2E]" },
+                { phase: "IDENTIFY", module: "Readiness Protocol™", desc: "Build and customize strategic prepared responses", color: "bg-[#0A0F2E]" },
                 { phase: "DETECT", module: "Signal™", desc: "Continuous signal monitoring", color: "bg-[#2B8A6E]" },
                 { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#C9A84C]" },
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#2B8A6E]" },

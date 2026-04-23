@@ -493,7 +493,7 @@ export default function LiveActivationCenter() {
 
     setTimeout(() => {
       setActivationState('IN_PROGRESS');
-      addActivity('system', 'Prepared Response activated — roles assigned, tasks staged, execution live', 0);
+      addActivity('system', 'Readiness Protocol activated — roles assigned, tasks staged, execution live', 0);
     }, 1500);
 
     const socket = io({ path: '/socket.io/' });
@@ -638,7 +638,7 @@ export default function LiveActivationCenter() {
                 <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" }}>Activation Center</span>
                 <div className="w-10 h-[2px] bg-[#C9A84C]" />
               </div>
-              <h1 style={CG} className="text-6xl font-bold text-[#0A0F2E]">Live Prepared Response Engagement</h1>
+              <h1 style={CG} className="text-6xl font-bold text-[#0A0F2E]">Live Readiness Protocol Engagement</h1>
               <p className="text-[#6B7280] text-xl max-w-2xl mx-auto">Select a strategic scenario. Roles assign, tasks stage, communications send — execution is live in 12 minutes.</p>
             </div>
 
@@ -825,7 +825,7 @@ export default function LiveActivationCenter() {
 
             {showGovernanceCheck && (
               <GovernanceReadinessCheck
-                playbookName={activePlaybook?.name || 'Selected Prepared Response'}
+                playbookName={activePlaybook?.name || 'Selected Readiness Protocol'}
                 onConfirm={() => {
                   setShowGovernanceCheck(false);
                   activateMutation.mutate(selectedPlaybook);
@@ -1108,7 +1108,7 @@ export default function LiveActivationCenter() {
                 <div className="space-y-3">
                   <h2 style={CG} className="text-4xl font-bold text-[#0A0F2E]">Coordination Realized</h2>
                   <p className="text-[#6B7280] max-w-md mx-auto">
-                    {activePlaybook?.name || 'Prepared Response'} executed successfully.
+                    {activePlaybook?.name || 'Readiness Protocol'} executed successfully.
                     {targetMet ? ' 12-minute target met.' : ` Coordination completed in ${simMinutes} minutes.`}
                   </p>
                 </div>

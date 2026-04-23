@@ -238,7 +238,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
           <TabsContent value="all">
             <Card className="border-[#E8E4DC] dark:border-white/10 bg-white dark:bg-white/5">
               <CardHeader>
-                <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Prepared Response Value Analysis</CardTitle>
+                <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Readiness Protocol Value Analysis</CardTitle>
                 <CardDescription>
                   Financial impact and execution head start across strategic prepared responses
                 </CardDescription>

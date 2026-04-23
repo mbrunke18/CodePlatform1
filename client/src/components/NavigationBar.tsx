@@ -39,7 +39,7 @@ export default function NavigationBar() {
 
   const productLinks = [
     { title: "Mission Control", href: "/mission-control", description: "Executive readiness command center", featured: true },
-    { title: "Prepared Response Library", href: "/playbook-library", description: "170 pre-staged Prepared Responses across 9 strategic domains" },
+    { title: "Readiness Protocol Library", href: "/playbook-library", description: "170 pre-staged Readiness Protocols across 9 strategic domains" },
     { title: "12-Minute Test Drive", href: "/12-minute-experience", description: "4-step live simulation of 12-minute execution" },
     { title: "ROI Calculator", href: "/calculator", description: "Quantify your readiness head start" },
   ];

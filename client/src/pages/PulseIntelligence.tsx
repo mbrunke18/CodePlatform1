@@ -375,7 +375,7 @@ export default function PulseIntelligence() {
               )}
             </div>
 
-            {/* RIGHT: Decision & Prepared Response */}
+            {/* RIGHT: Decision & Readiness Protocol */}
             <div className="col-span-4 space-y-6">
               {selected && (
                 <>
@@ -394,12 +394,12 @@ export default function PulseIntelligence() {
                     <p style={{ fontSize: 12, color: "#6B7280", marginTop: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Revenue At Risk · {selected.costOfInaction.timeDecay} Decay</p>
                   </div>
 
-                  {/* Recommended Prepared Response */}
+                  {/* Recommended Readiness Protocol */}
                   <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${TEAL}`, padding: 24, background: "#fff" }}>
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
                         <Target className="h-4 w-4 text-[#2B8A6E]" />
-                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL }}>Recommended Prepared Response</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL }}>Recommended Readiness Protocol</span>
                       </div>
                       <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textTransform: "uppercase" }}>{selected.recommendedPlaybook.estimatedDuration}</span>
                     </div>

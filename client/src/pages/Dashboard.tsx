@@ -143,7 +143,7 @@ function PhaseCard({
 
 const ORIENTATION_STEPS = [
   { icon: Settings, label: "Configure signal monitoring", sub: "Set up your 221 armed triggers", href: "/signal-configuration", color: TEAL },
-  { icon: Target, label: "Explore your Prepared Response library", sub: "170 pre-staged templates across 9 domains", href: "/playbook-library", color: NAVY },
+  { icon: Target, label: "Explore your Readiness Protocol library", sub: "170 pre-staged templates across 9 domains", href: "/playbook-library", color: NAVY },
   { icon: Zap, label: "Run a live simulation", sub: "Experience the 12-minute execution cycle", href: "/command-center", color: GOLD },
   { icon: Brain, label: "Invite your stakeholders", sub: "Map your executive decision network", href: "/stakeholder-management", color: TEAL },
 ];
@@ -215,7 +215,7 @@ export default function Dashboard() {
                 Strategic <em style={{ fontStyle: "italic", color: GOLD }}>Intelligence</em>
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-                The response is ready before the trigger fires. 248+ signals. 170 Prepared Responses. 12 minutes from detection to full organizational execution.
+                The response is ready before the trigger fires. 248+ signals. 170 Readiness Protocols. 12 minutes from detection to full organizational execution.
               </p>
               <div className="mt-5 flex justify-center md:justify-start">
                 <PerspectiveSwitcher currentRole={execRole} currentIndustry={industry} />
@@ -292,7 +292,7 @@ export default function Dashboard() {
                 {/* Secondary steps */}
                 <div className="flex flex-wrap gap-2">
                   {[
-                    { icon: Target, label: "Explore 170 Prepared Responses", href: "/playbook-library" },
+                    { icon: Target, label: "Explore 170 Readiness Protocols", href: "/playbook-library" },
                     { icon: Radio, label: "Live Signal Tower", href: "/command-tower" },
                     { icon: Brain, label: "Practice Drills", href: "/practice-drills" },
                   ].map(({ icon: Icon, label, href }) => (
@@ -366,7 +366,7 @@ export default function Dashboard() {
                   color="teal"
                   link="/playbook-library"
                   metrics={[
-                    { label: 'Prepared Response Templates', value: '170' },
+                    { label: 'Readiness Protocol Templates', value: '170' },
                     { label: 'Coverage', value: '94%', highlight: true }
                   ]}
                 />
@@ -447,7 +447,7 @@ export default function Dashboard() {
                               <div className="w-2 h-2 rounded-none mt-1.5 flex-shrink-0" style={{ background: activation.status === 'completed' ? TEAL : activation.status === 'active' ? GOLD : "#9CA3AF" }} />
                               <div className="flex-1">
                                 <div className="flex items-center justify-between mb-1">
-                                  <span className="text-sm font-semibold group-hover:text-[#2B8A6E] transition-colors" style={{ color: NAVY }}>{activation.playbookName || activation.name || "Prepared Response Activation"}</span>
+                                  <span className="text-sm font-semibold group-hover:text-[#2B8A6E] transition-colors" style={{ color: NAVY }}>{activation.playbookName || activation.name || "Readiness Protocol Activation"}</span>
                                   <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#6B7280" }}>
                                     {activation.createdAt ? new Date(activation.createdAt).toLocaleDateString() : "Recent"}
                                   </span>

@@ -53,7 +53,7 @@ export function VariantA() {
           </h1>
 
           <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 18, lineHeight: 1.7, maxWidth: 560, margin: "0 0 40px" }}>
-            VaughnMartin compresses 30 days of mobilization into 12 minutes. 170 Prepared Responses. Pre-staged. Executive-authorized. Ready before you need them.
+            VaughnMartin compresses 30 days of mobilization into 12 minutes. 170 Readiness Protocols. Pre-staged. Executive-authorized. Ready before you need them.
           </p>
 
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
@@ -73,7 +73,7 @@ export function VariantA() {
           {[
             { stat: "12 min", label: "Execution Head Start", sub: "From trigger to live execution" },
             { stat: "3,600×", label: "Faster Than 30 Days", sub: "Mobilization compressed" },
-            { stat: "170", label: "Prepared Responses", sub: "Pre-staged before trigger fires" },
+            { stat: "170", label: "Readiness Protocols", sub: "Pre-staged before trigger fires" },
             { stat: "221", label: "Trigger Patterns", sub: "Monitored continuously" },
           ].map((item, i) => (
             <div key={i} style={{ padding: "28px 32px", borderRight: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none", textAlign: "center" }}>

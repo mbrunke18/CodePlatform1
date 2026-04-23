@@ -64,7 +64,7 @@ export default function LessonsLearnedStep({ data, onChange, playbook }: Lessons
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="prepared response-mods">Recommended Prepared Response Modifications</Label>
+          <Label htmlFor="prepared response-mods">Recommended Readiness Protocol Modifications</Label>
           <Textarea
             id="prepared response-mods"
             value={data?.playbookModifications || ''}

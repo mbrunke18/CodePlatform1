@@ -92,7 +92,7 @@ const TRIGGER_SCENARIOS = [
 const PLAYBOOK_OPTIONS = [
   {
     id: "competitive_response",
-    name: "Competitive Response Prepared Response",
+    name: "Competitive Response Readiness Protocol",
     description: "Coordinate cross-functional response to competitive threats",
     tasks: 12,
     stakeholders: 6,
@@ -100,7 +100,7 @@ const PLAYBOOK_OPTIONS = [
   },
   {
     id: "regulatory_compliance",
-    name: "Regulatory Compliance Prepared Response",
+    name: "Regulatory Compliance Readiness Protocol",
     description: "Ensure rapid compliance with new regulatory requirements",
     tasks: 18,
     stakeholders: 8,
@@ -108,7 +108,7 @@ const PLAYBOOK_OPTIONS = [
   },
   {
     id: "market_expansion",
-    name: "Market Expansion Prepared Response",
+    name: "Market Expansion Readiness Protocol",
     description: "Seize market opportunities with coordinated go-to-market",
     tasks: 15,
     stakeholders: 7,
@@ -116,7 +116,7 @@ const PLAYBOOK_OPTIONS = [
   },
   {
     id: "crisis_management",
-    name: "Crisis Management Prepared Response",
+    name: "Crisis Management Readiness Protocol",
     description: "Rapid incident response with clear accountability chain",
     tasks: 20,
     stakeholders: 10,
@@ -197,7 +197,7 @@ export default function PilotDemo() {
         id: "4", 
         timestamp: new Date(), 
         type: "prepared response", 
-        title: "Strategic Prepared Response Activated", 
+        title: "Strategic Readiness Protocol Activated", 
         description: `"${playbookData?.name}" loaded with ${playbookData?.tasks} pre-approved tasks`,
         valueCallout: "Pre-built prepared responses mean no scrambling to figure out next steps",
         traditionalTime: "8-16 hours to develop response plan",
@@ -440,7 +440,7 @@ export default function PilotDemo() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-[#0A0F2E]">
                       <BookOpen className="w-5 h-5 text-[#C9A84C]" />
-                      Step 3: Select a Prepared Response
+                      Step 3: Select a Readiness Protocol
                     </CardTitle>
                     <CardDescription>
                       Which pre-built response should execute?
@@ -550,7 +550,7 @@ export default function PilotDemo() {
                           <BookOpen className="w-5 h-5 text-[#C9A84C] dark:text-[#C9A84C]" />
                         </div>
                         <div>
-                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Prepared Response to Execute</p>
+                          <p className="text-sm text-[#6B7280] dark:text-slate-300">Readiness Protocol to Execute</p>
                           <p className="font-medium text-[#0A0F2E] dark:text-white">{playbookData?.name}</p>
                           <p className="text-sm text-[#6B7280] mt-1">
                             {playbookData?.tasks} tasks • {playbookData?.stakeholders} stakeholders
@@ -567,7 +567,7 @@ export default function PilotDemo() {
                       <ul className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E] space-y-1">
                         <li>• Real-time Command Center showing each execution step</li>
                         <li>• AI analyzing the signal and matching to your trigger</li>
-                        <li>• Prepared Response activation with task and stakeholder assignments</li>
+                        <li>• Readiness Protocol activation with task and stakeholder assignments</li>
                         <li>• Actual email notification sent to {email}</li>
                       </ul>
                     </div>

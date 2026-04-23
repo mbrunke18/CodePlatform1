@@ -560,7 +560,7 @@ function DemoLiveActivation() {
                   <Badge className="bg-red-600 text-white text-lg px-4 py-2">ACTIVE</Badge>
                 </div>
                 <p className="text-xl text-red-800 dark:text-red-200 mb-3" data-testid="text-prepared response-name">
-                  Prepared Response: {DEMO_SCENARIO.playbook}
+                  Readiness Protocol: {DEMO_SCENARIO.playbook}
                 </p>
                 <p className="text-lg text-red-700 dark:text-red-300" data-testid="text-scenario-description">
                   {DEMO_SCENARIO.description}
@@ -1176,7 +1176,7 @@ function DemoLiveActivation() {
             <div className="grid grid-cols-2 gap-4 text-lg">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-6 w-6 text-[#2B8A6E]" />
-                <span>Prepared Response Library ready</span>
+                <span>Readiness Protocol Library ready</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-6 w-6 text-[#2B8A6E]" />

@@ -304,7 +304,7 @@ export default function ProspectDemo() {
               {/* Recommended prepared response */}
               <div style={{ background: "rgba(201,168,76,0.06)", border: `1px solid rgba(201,168,76,0.2)`, padding: "16px 20px", marginBottom: 32, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Recommended Prepared Response</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Recommended Readiness Protocol</div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>{scenario.playbookHint}</div>
                 </div>
                 <span style={{ padding: "4px 12px", background: "rgba(43,138,110,0.2)", border: `1px solid rgba(43,138,110,0.4)`, fontSize: 10, fontWeight: 700, color: "#3BAF8A", textTransform: "uppercase" }}>PRE-STAGED</span>

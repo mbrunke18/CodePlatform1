@@ -15,7 +15,7 @@ export function VariantB() {
           <span style={{ color: "#fff", fontSize: 15, fontWeight: 700, letterSpacing: "0.04em" }}>VAUGHNMARTIN</span>
         </div>
         <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
-          {["Platform", "Prepared Responses", "Industries", "Investors"].map(item => (
+          {["Platform", "Readiness Protocols", "Industries", "Investors"].map(item => (
             <span key={item} style={{ color: "rgba(255,255,255,0.65)", fontSize: 13, fontWeight: 500, cursor: "pointer" }}>{item}</span>
           ))}
         </div>
@@ -71,7 +71,7 @@ export function VariantB() {
             </div>
 
             <p style={{ color: "rgba(255,255,255,0.62)", fontSize: 17, lineHeight: 1.75, margin: "0 0 44px", maxWidth: 520 }}>
-              30 days of mobilization compressed to 12 minutes. 170 Prepared Responses pre-staged and executive-authorized — before the trigger fires.
+              30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — before the trigger fires.
             </p>
 
             <div style={{ display: "flex", gap: 14 }}>
@@ -91,7 +91,7 @@ export function VariantB() {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 0 }}>
           {[
             { label: "Geopolitical Risk Response", sub: "Pre-staged before the trigger fires", accent: TEAL },
-            { label: "M&A Day 1 Integration", sub: "170 Prepared Responses ready to activate", accent: GOLD },
+            { label: "M&A Day 1 Integration", sub: "170 Readiness Protocols ready to activate", accent: GOLD },
             { label: "Cybersecurity Breach", sub: "12-minute mobilization from signal to execution", accent: TEAL },
             { label: "Regulatory Sprint", sub: "Automated at trigger point — executive authorized", accent: GOLD },
           ].map((item, i) => (

@@ -99,7 +99,7 @@ export default function MyPlaybooksPage() {
               background: NAVY, color: '#fff', border: 'none', cursor: 'pointer',
               fontSize: 12, fontWeight: 700, letterSpacing: '0.06em',
             }}>
-              <Plus size={14} /> Add Prepared Response
+              <Plus size={14} /> Add Readiness Protocol
             </button>
           </Link>
         </div>

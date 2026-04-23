@@ -93,7 +93,7 @@ export default function PlaybookCommand() {
       <PageLayout>
         <main className="max-w-4xl mx-auto px-6 py-16 text-center">
           <AlertTriangle className="h-12 w-12 mx-auto text-[#C9A84C] mb-4" />
-          <h1 className="text-2xl font-bold mb-2">Prepared Response Not Found</h1>
+          <h1 className="text-2xl font-bold mb-2">Readiness Protocol Not Found</h1>
           <p className="text-[#6B7280] mb-6">The requested prepared response could not be located.</p>
           <Button onClick={() => setLocation("/playbooks")}>
             <ArrowLeft className="h-4 w-4 mr-2" />
@@ -214,7 +214,7 @@ export default function PlaybookCommand() {
                       Execution Started
                     </div>
                     <p className="text-[#2B8A6E]/80 text-sm">
-                      Prepared Response activation has been recorded. 12-minute timer started.
+                      Readiness Protocol activation has been recorded. 12-minute timer started.
                     </p>
                   </div>
                 </div>
@@ -274,7 +274,7 @@ export default function PlaybookCommand() {
           <CardContent className="space-y-3">
             {[
               { label: "Executive sponsor identified", ok: true },
-              { label: "Prepared Response trigger criteria confirmed", ok: true },
+              { label: "Readiness Protocol trigger criteria confirmed", ok: true },
               { label: "Primary stakeholders notified and available", ok: true },
               { label: "Pre-approved budget authorization confirmed", ok: !!playbook.preApprovedBudget },
               { label: "Document staging complete", ok: true },

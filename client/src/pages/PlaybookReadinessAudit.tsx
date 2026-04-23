@@ -211,7 +211,7 @@ export default function PlaybookReadinessAudit() {
               <div className="flex items-center gap-3 mb-3">
                 <Shield className="h-8 w-8 text-[#C9A84C]" />
                 <h1 className="text-4xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif" }} data-testid="page-title">
-                  Prepared Response Readiness Audit
+                  Readiness Protocol Readiness Audit
                 </h1>
               </div>
               <p className="text-[#6B7280] text-lg max-w-2xl">

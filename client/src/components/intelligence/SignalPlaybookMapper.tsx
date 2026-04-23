@@ -1,5 +1,5 @@
 /**
- * Signal-to-Prepared Response Mapper
+ * Signal-to-Readiness Protocol Mapper
  * 
  * Connect triggers to automatic prepared response recommendations and activation.
  * Provides a visual interface for mapping signal categories to playbooks.
@@ -96,7 +96,7 @@ export function SignalPlaybookMapper() {
         <div>
           <h2 className="text-2xl font-bold flex items-center gap-2">
             <Link className="w-6 h-6 text-primary" />
-            Signal-Prepared Response Mapping
+            Signal-Readiness Protocol Mapping
           </h2>
           <p className="text-muted-foreground">
             Connect intelligence signals to automated prepared response recommendations
@@ -212,7 +212,7 @@ export function SignalPlaybookMapper() {
                     </h4>
                     <Button variant="outline" size="sm" data-testid="button-add-mapping">
                       <Plus className="w-4 h-4 mr-1" />
-                      Add Prepared Response
+                      Add Readiness Protocol
                     </Button>
                   </div>
                   
@@ -336,7 +336,7 @@ function StatCard({
   );
 }
 
-// Prepared Response Mapping Card
+// Readiness Protocol Mapping Card
 function PlaybookMappingCard({
   playbookName,
   signalCategory,

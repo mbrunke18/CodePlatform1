@@ -84,7 +84,7 @@ const stepData: Record<number, StepData> = {
       },
       {
         traditional: { value: '0%', sublabel: 'Plan completion', trend: 'danger' },
-        m: { value: '100%', sublabel: 'Prepared Response activated', trend: 'success' }
+        m: { value: '100%', sublabel: 'Readiness Protocol activated', trend: 'success' }
       }
     ],
     executivePressure: {

@@ -138,7 +138,7 @@ export function ActivationButton({
           setCurrentStep("Activation complete!");
           
           toast({
-            title: "Prepared Response Activated",
+            title: "Readiness Protocol Activated",
             description: `${playbookName} is now executing. ${result.stakeholdersNotified} stakeholders notified.`,
           });
 
@@ -209,7 +209,7 @@ export function ActivationButton({
           data-testid="button-activate-prepared response"
         >
           <Rocket className="h-5 w-5" />
-          {activationMutation.isPending ? "Activating..." : "Activate Prepared Response"}
+          {activationMutation.isPending ? "Activating..." : "Activate Readiness Protocol"}
           {readinessScore < 100 && (
             <Badge variant="secondary" className="ml-1">
               {readinessScore}% Ready

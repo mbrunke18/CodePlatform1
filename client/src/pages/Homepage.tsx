@@ -182,7 +182,7 @@ function LiveSignalFeedSection() {
               </div>
               <h2 style={{ ...GEO, fontSize: 'clamp(22px,3vw,32px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, margin: 0 }}>
                 {hasReal
-                  ? 'What the system has detected. Mapped to pre-staged Prepared Responses.'
+                  ? 'What the system has detected. Mapped to pre-staged Readiness Protocols.'
                   : 'What the system monitors — continuously, across every domain.'}
               </h2>
             </div>
@@ -262,7 +262,7 @@ function LiveSignalFeedSection() {
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Prepared Response Staged</span>
+                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Readiness Protocol Staged</span>
                         <span style={{ ...DM, fontSize: 9, color: 'rgba(255,255,255,0.2)' }}>→</span>
                         <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.85)' }}>{sig.recommendedPlaybook}</span>
                       </div>
@@ -279,7 +279,7 @@ function LiveSignalFeedSection() {
         <Reveal delay={0.25}>
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(201,168,76,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 16 }}>
             <p style={{ ...DM, fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.5 }}>
-              Every signal above stages a Prepared Response. When the trigger fires, the execution is already built.
+              Every signal above stages a Readiness Protocol. When the trigger fires, the execution is already built.
             </p>
             <Link href="/12-minute-experience" style={{
               ...DM, fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
@@ -921,7 +921,7 @@ function AthletePreparationSection() {
     },
     {
       athlete: "Athletes rehearse every situation they expect to face — with their specific team, for their specific conditions.",
-      platform: "170 Prepared Responses, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
+      platform: "170 Readiness Protocols, built across 9 strategic domains. Your organization's specific failure modes, already worked through — before any pressure exists.",
       icon: "◈",
     },
     {
@@ -1245,7 +1245,7 @@ function PlatformPreviewSection() {
                 <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
                   <div style={{ width: 7, height: 7, background: allDone ? TEAL_LIGHT : GOLD, boxShadow: allDone ? `0 0 6px ${TEAL_LIGHT}` : `0 0 6px ${GOLD}`, transition: "all 0.4s" }} />
                   <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", color: GOLD, textTransform: "uppercase" as const }}>
-                    Prepared Response #047 — Supply Chain Disruption
+                    Readiness Protocol #047 — Supply Chain Disruption
                   </span>
                 </div>
                 <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: allDone ? TEAL_LIGHT : "#fff", fontVariantNumeric: "tabular-nums", transition: "color 0.4s", letterSpacing: "-0.5px" }}>
@@ -1563,7 +1563,7 @@ function CredibilitySection() {
   const outcomes = [
     { stat: "12 min", label: "Median time from trigger to full org deployment" },
     { stat: "0 hrs",  label: "Executive coordination overhead required" },
-    { stat: "94%",    label: "Prepared Response phases completed within target window" },
+    { stat: "94%",    label: "Readiness Protocol phases completed within target window" },
   ];
   return (
     <section style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
@@ -1788,7 +1788,7 @@ function HomepageFooter() {
             <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>PRODUCT</div>
             {[
               { label: "How It Works",   href: "/how-it-works" },
-              { label: "Prepared Responses", href: "/playbook-library" },
+              { label: "Readiness Protocols", href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
               { label: "Request a Pilot", href: "/request-access" },
               { label: "Request Access", href: "/request-access" },
@@ -2077,7 +2077,7 @@ function HowTriggersWorkSection() {
               {[
                 { step: "01", label: "Signal Detected", detail: "Reuters Business", sub: "Ransomware confirmed · 95% match", bg: "#F8F7F4", accent: TEAL },
                 { step: "02", label: "Trigger Matched", detail: "Ransomware Attack Confirmed", sub: "221 patterns evaluated · instant", bg: "#F0EDE4", accent: TEAL },
-                { step: "03", label: "Prepared Response Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
+                { step: "03", label: "Readiness Protocol Staged", detail: "Ransomware Response", sub: "Pre-built · roles pre-assigned", bg: "#F8F7F4", accent: GOLD },
                 { step: "04", label: "Executive Authorizes", detail: "CISO + CFO sign-off", sub: "Human decision preserved", bg: "#F0EDE4", accent: GOLD },
                 { step: "05", label: "Execution Begins", detail: "12 minutes after detection", sub: "30 days → 12 min", bg: NAVY, accent: GOLD },
               ].map((node, i) => (
@@ -2114,7 +2114,7 @@ function HowTriggersWorkSection() {
   );
 }
 
-// ─── How Prepared Responses Work ───────────────────────────────────────────────────────
+// ─── How Readiness Protocols Work ───────────────────────────────────────────────────────
 function HowPlaybooksWorkSection() {
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
   const steps = [
@@ -2144,7 +2144,7 @@ function HowPlaybooksWorkSection() {
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 16 }}>
               <div style={{ width: 32, height: 2, background: GOLD }} />
-              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Prepared Responses Work</span>
+              <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>How the Readiness Protocols Work</span>
               <div style={{ width: 32, height: 2, background: GOLD }} />
             </div>
             <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
@@ -2178,7 +2178,7 @@ function HowPlaybooksWorkSection() {
             </div>
             <div>
               <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: 0 }}>
-                The entire platform IS the Prepared Response system — and it grows with every use. Each activation adds a real decision record. Each challenge-rights exchange embeds your organization's specific judgment. Each debrief updates the failure modes. After 12 months, your Prepared Response record contains irreplicable organizational intelligence: real trigger events, under real pressure, by your actual people, in your actual structure. A competitor can buy the same software on day one. They cannot buy your preparation history.
+                The entire platform IS the Readiness Protocol system — and it grows with every use. Each activation adds a real decision record. Each challenge-rights exchange embeds your organization's specific judgment. Each debrief updates the failure modes. After 12 months, your Readiness Protocol record contains irreplicable organizational intelligence: real trigger events, under real pressure, by your actual people, in your actual structure. A competitor can buy the same software on day one. They cannot buy your preparation history.
               </p>
               <div style={{ marginTop: 16, ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: TEAL }}>
                 The moat is capability, not software — and capability compounds.

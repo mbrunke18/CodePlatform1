@@ -316,7 +316,7 @@ export default function ExecutiveDashboard() {
               {/* Metrics Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <MetricCard
-                  title="Prepared Response Maturity"
+                  title="Readiness Protocol Maturity"
                   value={playbookMaturity.toFixed(0)}
                   unit="%"
                   trend="+2.3% this month"
@@ -431,7 +431,7 @@ export default function ExecutiveDashboard() {
                           { label: 'Agility', score: agilityScore, desc: 'Adaptive response capability' },
                           { label: 'Learning', score: learningScore, desc: 'Post-activation intelligence' },
                           { label: 'Adaptability', score: adaptabilityScore, desc: 'Scenario customization depth' },
-                          { label: 'Prepared Response Coverage', score: playbookMaturity, desc: `${readiness?.playbooksReady ?? '—'} of ${readiness?.playbooksTotal ?? '170'} ready` },
+                          { label: 'Readiness Protocol Coverage', score: playbookMaturity, desc: `${readiness?.playbooksReady ?? '—'} of ${readiness?.playbooksTotal ?? '170'} ready` },
                         ].map((dim, i) => (
                           <div key={i} className="space-y-2">
                             <div className="flex justify-between items-center">
@@ -626,7 +626,7 @@ export default function ExecutiveDashboard() {
                         </div>
                         <Link to="/playbook-library">
                           <Button size="sm" style={{ background: NAVY, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                            Activate Prepared Response
+                            Activate Readiness Protocol
                           </Button>
                         </Link>
                       </div>

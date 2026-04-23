@@ -107,7 +107,7 @@ function SignalRow({ signal, onAcknowledge, isPending }: {
         {signal.recommendedPlaybook && (
           <Button variant="outline" style={{ borderRadius: 0, border: `1px solid ${BORDER}`, fontSize: 11, whiteSpace: "nowrap" }}>
             <ArrowRight style={{ width: 12, height: 12, marginRight: 6 }} />
-            Activate Prepared Response
+            Activate Readiness Protocol
           </Button>
         )}
       </div>
