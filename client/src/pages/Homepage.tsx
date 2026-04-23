@@ -691,6 +691,55 @@ function HeroSection() {
   );
 }
 
+// ─── SCENARIO HOOK ────────────────────────────────────────────────────────────
+function ScenarioHookSection() {
+  return (
+    <section style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.06)", padding: "72px 0 56px" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ maxWidth: 760 }}>
+
+          {/* Label */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+            <div style={{ width: 28, height: 1.5, background: GOLD }} />
+            <span style={{ ...DM, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
+              The Readiness Question
+            </span>
+          </div>
+
+          {/* Lead statement */}
+          <p style={{ ...GEO, fontSize: "clamp(22px,2.8vw,34px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 28 }}>
+            One of these scenarios will hit your organization.<br />
+            <em style={{ fontStyle: "italic", color: GOLD }}>The question is whether the response is already staged.</em>
+          </p>
+
+          {/* Four questions — the gut punch */}
+          <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "6px 0", marginBottom: 24 }}>
+            {["Who calls who?", "Where's the brief?", "Who owns it?", "Who authorizes?"].map((q, i, arr) => (
+              <span key={q} style={{ ...DM, fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.88)" }}>
+                {q}{i < arr.length - 1 && <span style={{ color: GOLD, margin: "0 10px" }}>·</span>}
+              </span>
+            ))}
+          </div>
+
+          {/* Context */}
+          <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.48)", lineHeight: 1.7, maxWidth: 660, marginBottom: 32 }}>
+            Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
+          </p>
+
+          {/* Bridge line */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ width: 1, height: 32, background: `linear-gradient(to bottom, ${GOLD}, transparent)` }} />
+            <span style={{ ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" as const }}>
+              Select a scenario to see the full 12-minute execution
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── SCENARIO CARDS ROW ───────────────────────────────────────────────────────
 function ScenarioCardsRow() {
   return (
@@ -2375,7 +2424,10 @@ export default function Homepage() {
       {/* 1. CLAIM */}
       <HeroSection />
 
-      {/* 2. EXAMPLES — Breadth before explanation */}
+      {/* 2. HOOK — The readiness question */}
+      <ScenarioHookSection />
+
+      {/* 3. EXAMPLES — Breadth before explanation */}
       <ScenarioCardsRow />
 
       {/* 3. PAIN — Cost of the old way */}
