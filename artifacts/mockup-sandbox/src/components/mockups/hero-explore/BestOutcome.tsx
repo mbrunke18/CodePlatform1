@@ -212,6 +212,95 @@ export function BestOutcome() {
         </div>
       </div>
 
+      {/* ── ANATOMY OF A READINESS PROTOCOL ── */}
+      <div style={{ background: "#0d1a3e", borderTop: "1px solid rgba(255,255,255,0.07)", padding: "64px 56px" }}>
+
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 48 }}>
+          <div>
+            <div style={{ color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 14 }}>
+              What's Inside Every Readiness Protocol
+            </div>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', 'Georgia', serif",
+              color: "#fff", fontSize: 38, fontWeight: 700, lineHeight: 1.1, margin: 0, maxWidth: 520,
+            }}>
+              Not a template. Not a checklist.<br />
+              <span style={{ color: GOLD }}>A complete mobilization package.</span>
+            </h2>
+          </div>
+          <div style={{ textAlign: "right", maxWidth: 320, paddingTop: 8 }}>
+            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 14, lineHeight: 1.75, margin: 0 }}>
+              Each of the 170 Readiness Protocols contains all six components — pre-built, pre-approved, and pre-staged before the trigger fires.
+            </p>
+          </div>
+        </div>
+
+        {/* Six components grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1px", background: "rgba(255,255,255,0.07)" }}>
+          {[
+            {
+              num: "01",
+              label: "Pre-Assigned Executive Owners",
+              body: "Every task has a named owner — not a role, a person. They were in the room when the protocol was built, challenged it before pressure existed, and signed off before the trigger fired.",
+              accent: GOLD,
+            },
+            {
+              num: "02",
+              label: "Three-Phase Task Sequence",
+              body: "Tasks are organized across IMMEDIATE (minutes 0–12), SECONDARY (hours 1–4), and FOLLOW-UP (days 1–5) phases. Sequence is pre-determined. Nothing is figured out under pressure.",
+              accent: TEAL,
+            },
+            {
+              num: "03",
+              label: "Pre-Staged Communication Chain",
+              body: "Board notification, stakeholder alerts, external partner briefs, and public communications are drafted, sequenced, and staged — ready for executive authorization at the moment of activation.",
+              accent: GOLD,
+            },
+            {
+              num: "04",
+              label: "Pre-Drafted Document Package",
+              body: "Execution briefs, board-ready reports, legal hold notices, and scenario-specific documents are pre-written for the specific situation. The executive reviews, not authors, under pressure.",
+              accent: TEAL,
+            },
+            {
+              num: "05",
+              label: "Pre-Authorized Budget Envelope",
+              body: "Spending authority is defined in advance by scenario type and severity. Finance does not convene. Resources deploy within the pre-approved envelope at the moment of activation.",
+              accent: GOLD,
+            },
+            {
+              num: "06",
+              label: "Decision Authority Map",
+              body: "Who authorizes. Who executes. Who observes. Defined before the trigger — not negotiated during it. Executive authority is preserved at every step. No Readiness Protocol activates without sign-off.",
+              accent: TEAL,
+            },
+          ].map((item, i) => (
+            <div key={i} style={{ background: "#0d1a3e", padding: "32px 32px 28px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                <span style={{ color: item.accent, fontSize: 10, fontWeight: 800, letterSpacing: "0.12em" }}>{item.num}</span>
+                <div style={{ flex: 1, height: 1, background: `${item.accent}33` }} />
+              </div>
+              <div style={{ color: "#fff", fontSize: 14, fontWeight: 700, lineHeight: 1.4, marginBottom: 10 }}>
+                {item.label}
+              </div>
+              <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 12.5, lineHeight: 1.7 }}>
+                {item.body}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom proof line */}
+        <div style={{ marginTop: 36, display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />
+          <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, fontWeight: 500, whiteSpace: "nowrap" }}>
+            "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase."
+          </span>
+          <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />
+        </div>
+      </div>
+
       {/* ── THESIS BAR ── */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", padding: "16px 56px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
