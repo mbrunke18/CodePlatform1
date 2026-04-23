@@ -1,0 +1,284 @@
+website
+
+Dr. Kerry Huang Profile
+Dr. Kerry Huang 
+1st degree connection
+· 1st
+Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)
+Apr 1
+Dr. Kerry Huang sent the following message at 1:40 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   1:40 PM
+👏
+👍
+😊
+
+
+
+Martin, your perspective on coordination as the missing layer between AI and execution really resonated with me. I’ve been exploring similar ideas through my 6-ER thinking around orchestration and decision flow. Would be great to connect and exchange perspectives on this.
+
+Apr 6
+Martin Brunke sent the following message at 9:22 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   9:22 AM
+Kerry, really glad it resonated. The convergence between your 6-ER orchestration thinking and what I built on the execution side is exactly the kind of intersection worth exploring properly.
+
+Would welcome any opportunity to speak when your schedule allows. I am in the US so happy to work around the time difference.
+
+Dr. Kerry Huang sent the following message at 9:27 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   9:27 AM
+Martin, really appreciate that—and I agree, this intersection between coordination and decision orchestration is where a lot of real leverage sits.
+
+Your point reinforces something I’ve been reflecting on as well: execution is less about capability, and more about how decisions are connected and aligned across the system.
+
+I’d be glad to continue the conversation asynchronously here as a start. In the meantime, I recently shared a post featuring my Forbes article that expands on this thinking—would value your perspective:
+https://www.linkedin.com/posts/dr-k-atlas_awacourage-supplychain-leadership-activity-7446909714195664897-qpun?utm_source=share&utm_medium=member_ios&rcm=ACoAAA1vZCkBMZjVs0gFGL6qGzj12ULvXqiO1o8
+
+View Dr. Kerry Huang’s  graphic link
+Dr. Kerry HuangDr. Kerry Huang
+   • 1stPremium • 1st
+Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)Studied 408 firms: technology didn’t fix supply chains — governance did | Creator of the 6-ER Framework | AwaCourage | ESI Top 1% Researcher | Forbes Council | AVP at world’s largest electronics manufacturer (Fortune 50)
+Visit my website
+2w •  2 weeks ago • Visible to anyone on or off LinkedIn
+This week, AwaCourage spoke to me in Japanese 🇯🇵
+
+My Forbes article was just translated and published by Forbes Japan.
+
+And that signal told me something I hadn’t fully seen before.
+
+The challenges we face in supply chains are not local — they are structural, global, and shared.
+
+Across industries and countries, we continue to see the same pattern:
+Technology investment alone does not create competitive advantage.
+
+From studying 408 firms across manufacturing industries, one insight stands out — and it is uncomfortable for most boardrooms:
+
+Technology adoption alone has zero statistical relationship with supply chain collaboration improvement.
+
+Zero. Not weak. Not marginal. Zero.
+
+The business case most companies present to their boards simply does not exist in the data.
+
+Technology doesn’t build a moat.
+Capability and governance do.
+
+The real gap is not digital — it is organizational.
+
+Lidl spent seven years and nearly $580 million on a world-class SAP system.
+They walked away from it in 2018.
+
+Siemens Amberg built one of the world’s most advanced smart factories —
+not by installing technology first,
+but by ensuring operators had real decision rights before the system arrived.
+
+Same investment category. Opposite results.
+
+It was who owned the decision before it arrived.
+
+Companies don’t fail because they lack systems.
+They fail because they outsource judgment before building it.
+
+This is where I believe a new kind of leadership is required — what I call AwaCourage.
+
+“Awareness without AwaCourage is merely a well-lit prison cell.”
+
+Because in the end,
+AI will scale decisions —
+but only organizations can build the capability to make them right.
+
+Thank you to Forbes Japan for bringing this conversation to Japanese readers.
+
+The problem has no borders. The conversation shouldn’t either.
+
+Three thinkers whose conversations have sharpened how I see this problem:
+Richard Goyette Grant Oliff Oscar Chavarria 
+Grateful for the ongoing exchange.
+
+Where in your organization does the decision live — and who actually owns it when the system fails?
+
+🔗 Links in the first comment. 👇
+
+hashtag#AwaCourage hashtag#SupplyChain hashtag#Leadership hashtag#DigitalTransformation hashtag#Governance hashtag#ForbesBusinessCouncil
+…more
+Activate to view larger image,
+graphical user interface, application
+Activate to view larger image,
+Apr 8
+Martin Brunke sent the following message at 10:39 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   10:39 AM
+Dr. Huang, 
+
+Your framing in the DM lands exactly right. Execution is less about capability and more about how decisions are connected and aligned across the system. That is the premise behind everything I built.
+
+I read the Forbes article. The Siemens versus Lidl contrast is the sharpest version of the capability-first argument I have seen anywhere. And the 408-firm finding is the sentence that matters most. Zero statistical link between technology deployment and improved collaboration. That is exactly why most AI investments are producing activity not outcomes.
+
+Your capability-first audit question is where our work converges most directly. If the platform disappeared tomorrow could your organization still make and own the high-stakes decisions it supposedly enables? What I built requires the organization to answer yes before the platform ever activates. Decision rights mapped. Ownership defined. Response architecture built. All during a period of low pressure and full information before any trigger fires. The platform then deploys what the organization already decided. It accelerates decisions your people already know how to make. That is the Siemens model made operational.
+
+The missing middle layer you describe in the article is what the preparation phase builds and captures. And every time a playbook deploys the debrief encodes what worked back into better preparation for next time. The capability compounds. The moat deepens.
+
+Your research provides the most rigorous academic foundation for what I built that I have come across.
+
+Dr. Kerry Huang sent the following message at 10:53 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   10:53 AM
+Martin, “the capability compounds, the moat deepens” is the formulation that matters most to me here, because it names something the 408-firm data kept pointing at without landing on: the organizations where capability held longest weren’t just better prepared, they had built a feedback mechanism that made each deployment more accurate than the last. The debrief encoding what worked back into preparation isn’t just a quality improvement loop — it’s the mechanism by which the moat becomes genuinely harder to replicate, because the competitor can buy the platform but can’t buy the accumulated decision logic embedded in the preparation phase.
+
+What I’m still working out is the failure mode at the seam between preparation and deployment. In your system — where decision rights, ownership, and response architecture are all established during low pressure before any trigger fires — what’s the earliest signal that the preparation phase didn’t actually transfer when real pressure arrived? Not that the playbook failed, but that the organization reverted to improvising rather than deploying what it had already decided.
+
+Martin Brunke sent the following message at 11:26 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   11:26 AM
+Dr Huang, 
+The failure mode at the seam shows up before the debrief and before any outcome is visible. The earliest signal is not that the playbook failed. It is whether the person who owned the decision during preparation steps into it under pressure or steps back from it.
+
+When a trigger fires every owner has a pre-assigned acknowledgment step. That step is visible in real time. Silence at acknowledgment is the signal. Not silence at completion. Not divergence at debrief. Silence at the moment the response either deploys or does not. That surfaces within the first minutes of execution before anyone can assess whether the playbook worked.
+
+What we have found is that the organizations that hold at the seam are not the ones with the best documentation. They are the ones who built ownership during preparation rather than assignment. Those are different things. Assignment is naming someone. Ownership is when that person has challenged the playbook, rehearsed the decision, and signed off on it before any pressure existed. When the trigger fires they are not reading a document. They are executing a decision they already made.
+
+The debrief captures the second signal. If the organization improvised rather than deployed the debrief encodes why and that encoding feeds back into better preparation for the next deployment. But by then the window has already closed. The first signal is always acknowledgment.
+
+Your concept of AwaCourage is the right frame for that distinction. The courage to act on what was already decided rather than retreating to the comfort of real-time deliberation under pressure.
+
+Apr 9
+Dr. Kerry Huang sent the following message at 7:15 AM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   7:15 AM
+Martin, “silence at acknowledgment” is the operational definition I didn’t have. I had been framing the failure as a documentation problem or a sequencing problem — the playbook wasn’t detailed enough, or the preparation wasn’t deep enough — but you’re pointing at something more precise: the failure is visible in the first moment of execution, before any outcome exists, as the gap between the person who was assigned and the person who owns. And ownership, as you’ve defined it, isn’t a state of mind — it’s an artifact of having already made the decision before pressure arrived. The acknowledgment step makes that artifact visible in real time.
+
+What adjusts my thinking is the debrief as second signal. I’d been treating debrief as the primary learning mechanism. But if the window closes at acknowledgment, the debrief is already encoding a recovery, not a hold. The organizations that compound capability are the ones where the first signal rarely triggers — not because they have better debriefs, but because preparation built real ownership rather than documented assignment.
+
+Martin Brunke sent the following message at 11:44 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   11:44 AM
+Dr. Huang, 
+You moved the frame on me. I had been treating ownership as a behavioral outcome of good preparation. Your formulation makes it an artifact — something the preparation phase either produces or fails to produce, and the acknowledgment step makes that visible before any outcome exists. 
+
+That distinction changes how I think about what the preparation phase is actually building.
+
+The organizations that compound capability are not the ones with better debriefs. They are the ones where preparation produced real ownership and the acknowledgment step confirms it in the first minutes. 
+
+That is the readiness thesis stated at its deepest level. Not 12 minutes. Not 3,600×. Preparation building ownership that holds under pressure.
+
+What you have surfaced in this exchange is something I have observed operationally across twenty years inside Fortune 1000 organizations but never had the academic framing to articulate precisely. Your 408-firm data and this conversation together named it in a way that will stay with me.
+
+Dr. Kerry Huang sent the following message at 7:15 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   7:15 PM
+Martin — “artifact” is the word I needed. The distinction between ownership as something preparation builds and ownership as something performance displays is exactly the boundary I’d been circling without being able to name it clearly, and the acknowledgment step being a diagnostic of the first rather than a demonstration of the second changes how I think about what’s actually being tested in the first minutes.
+
+What I’m still working through is whether the acknowledgment step is a reliable test or whether organizations can produce the acknowledgment without the artifact — rehearsed acknowledgment that looks like ownership confirmed but is actually ownership performed. I’ve seen enough cases where the first-minute signals held and the mid-execution behavior didn’t to think that something can pass the acknowledgment test without the preparation having built what it needed to build.
+
+In the twenty years you’re describing — when preparation produced ownership that held under pressure, what did that preparation do differently from the preparation that produced acknowledgment without the artifact?
+
+Apr 10
+Martin Brunke sent the following message at 10:11 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   10:11 AM
+Dr Huang,
+
+The question cuts to the most important operational distinction I have seen across twenty years.
+
+Yes the acknowledgment step can be gamed. And the tell is not in the first minutes. It is in mid-execution behavior exactly as you described. Someone can perform ownership at acknowledgment and revert under sustained pressure because what they built during preparation was familiarity not commitment.
+
+The deepest foundation of this product comes from five years coaching major college football at Stanford University. The programs that held under pressure were not the ones with better game plans. They were the ones where every player had been in the room when the play was built, had the right to challenge it during the week, and had rehearsed their specific decision until it was an artifact of preparation not a performance of acknowledgment. The quarterback who helped construct the play on Tuesday, challenged the blocking scheme on Wednesday, and ran the scenario against the scout team on Thursday owns a decision his body knows before his mind processes it. The player who watched film and acknowledged the scheme on Friday performs ownership on the walk-through Saturday morning and reverts when the defense shows a look nobody prepared for.
+
+That distinction is what I carried from the field into twenty years of Fortune 1000 operations. And it is the foundation of how the preparation phase was designed.
+
+The preparation that built ownership that held did three things differently. It put the owner in the room when the response was being built not when it was being delivered. It gave the owner explicit challenge rights before the playbook was final. And it was personalized to the specific decision this specific person would face under their specific conditions not a generic response assigned to a role.
+
+The acknowledgment step is a reliable test for ownership built the first way. It is not a reliable test for ownership built the second way. The platform was designed to build the first kind. Whether it always does depends on how the preparation phase was run.
+
+Apr 11
+Dr. Kerry Huang sent the following message at 11:20 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   11:20 PM
+Martin, thank you for this — and I want to say directly that the Stanford football foundation changes how I understand everything you’ve built since. The quarterback who helped construct the play on Tuesday and challenged the blocking scheme on Wednesday owns a decision his body knows before his mind processes it — that formulation is the clearest description I’ve encountered of what embodied ownership actually looks like, as distinct from acknowledged ownership. And it names something I had been circling without being able to locate precisely: the difference isn’t in how clearly the decision was communicated or how thoroughly it was rehearsed, but in whether the person was present at the moment of construction and carried explicit rights to alter it before it was final.
+
+The three conditions you’ve named are the most operationally precise answer to the question I’ve been working through. Being in the room when the response is built, not when it’s delivered. Challenge rights before the playbook closes. And personalization to the specific decision this specific person will face under their specific conditions — not a role assignment. The third condition is the one I’ve seen governance architectures most consistently skip, because personalization at that level requires knowing what each person’s specific failure mode looks like under pressure before the pressure arrives.
+
+What I’m still thinking through is which of the three is hardest to build in Fortune 1000 environments, because the organizational pressures that undermine each are structurally different. Being in the room requires access decisions that most hierarchies don’t distribute. Challenge rights require a culture where the playbook is genuinely open before it closes, not just nominally. And personalization requires someone with enough knowledge of the individual to design preparation that reaches their specific decision point — which is a different kind of intelligence than most governance functions carry.
+
+Apr 13
+Martin Brunke sent the following message at 9:54 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   9:54 AM
+Dr. Huang that phrase "embodied ownership versus acknowledged ownership"... is the one I had been circling without landing on. You named it better than I had.
+
+On which of the three is hardest to build. From twenty years inside these organizations my answer is personalization. But the reason it gets skipped is not resistance. Nobody decides against personalizing preparation. They just never build the systems that would require knowing each person's specific failure mode before pressure arrives. You can redesign access. You can create the conditions for genuine challenge rights even inside a hierarchy that resists them. But personalization requires a level of individual intelligence about each person that most governance functions simply do not carry. It gets skipped because there is no mechanism for it not because anyone decided it was not worth doing.
+
+Challenge rights get skipped for a different reason. Not because organizations push back on them in principle but because the playbook almost always closes before anyone has genuinely used them. The door is nominally open. In practice the decisions are already made by the time the owner is in the room. What looks like challenge rights is usually just a review.
+
+The football environment solves both of these structurally rather than culturally. The practice week is designed around personalized preparation and challenge rights are not optional. The coordinator who does not push back on the scheme before Friday has not done their job regardless of what happens Saturday.
+
+What I built was an attempt to make both of those things structural inside an enterprise rather than dependent on culture to produce them.
+
+Apr 14
+Dr. Kerry Huang sent the following message at 10:16 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   10:16 PM
+Martin, the distinction between skipped by default and decided against is the one that changes the entire governance design problem. If organizations were actively deciding against personalization, the intervention would be to change the decision. But you’re describing something harder — a structural blind spot where the governance function never developed the intelligence layer that would make the requirement visible in the first place. You cannot decide to build what you cannot yet see you are missing.
+
+The challenge rights observation completes that picture in a different way. The door nominally open but the decision already made by the time the owner is in the room — that is not a courage problem, it is a sequencing problem. AwaCourage cannot operate at a point in the process where the decision has already closed. The intervention has to move upstream, before the playbook locks.
+
+Which is exactly what you are describing with the football model. Practice week is not just preparation — it is the structural mechanism that makes personalization obligatory and challenge rights non-optional before anyone enters the high-stakes environment. The coordinator who did not push back has not done their job regardless of Saturday’s outcome. That is governance as pre-commitment, not governance as review.
+
+What I am still thinking about: in the enterprise version you built, what was the minimum viable mechanism that made personalization structural — the thing that forced the organization to carry individual intelligence about failure modes before pressure arrived, rather than discovering it during?
+
+Apr 15
+Martin Brunke sent the following message at 9:27 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   9:27 AM
+Dr. Huang, 
+governance as pre-commitment not governance as review is the formulation I had been working around without being able to place precisely. That is exactly what the preparation phase is designed to produce.
+On your question about the minimum viable mechanism. The honest answer is that in the enterprise version the structural forcing function is the same one that makes it work on the practice field. The schedule.
+In championship programs personalization is not optional because the week is built around it by design. Tuesday through Friday creates the structural obligation before anyone enters Saturday. The coordinator who did not push back did not fail a policy. They failed a process that was specifically designed to surface that failure before pressure existed.
+The enterprise equivalent is continuous preparation running independently of any specific trigger. The platform monitors 248 data points across 221 trigger types every 15 minutes not because a threat is visible but because the preparation architecture never stops. That continuous cycle is what forces the organization to carry individual intelligence about failure modes before pressure arrives. The intelligence is not built in response to a signal. It is maintained as a standing structural requirement.
+The blind spot you named is exactly right. The governance function never developed the intelligence layer that would make the requirement visible. The mechanism that closes that blind spot is making the preparation phase a continuous structural obligation rather than a response to a perceived need. You cannot see what you are missing until the architecture requires you to look for it before the moment it matters.
+What you called AwaCourage operating upstream before the playbook locks is the preparation week. The intervention moves upstream by design because the structure makes downstream intervention too late by definition.
+
+Apr 16
+Dr. Kerry Huang sent the following message at 6:42 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   6:42 PM
+Martin, “the schedule” is the answer I didn’t know I was looking for. It moves the question out of individual character and into structural design — which is exactly where it needs to sit if it’s going to hold under real pressure.
+
+What strikes me most is the 15-minute cycle running independently of any visible threat. That’s the key architectural move. Most organizations build preparation around signal detection — something surfaces, then they prepare. What you’re describing inverts that entirely. The preparation never stops, which means the intelligence about failure modes is already present when the signal arrives, not being assembled in response to it. That’s the difference between governance that acts early and governance that confirms late.
+
+The question I’m still working through is what happens at the edge of the 221 trigger types. The continuous architecture is designed to surface known failure modes before pressure exists. But when something genuinely outside that map appears — a failure mode the system hasn’t seen before — does the preparation architecture create the conditions to recognize it, or does the continuous cycle create its own kind of blindness, where what isn’t in the 248 data points doesn’t register as a signal at all?
+
+I’m asking because in the governance failures I’ve studied, the most expensive ones weren’t failures to act on visible signals. They were failures to recognize that something outside the existing map was even a signal worth acting on.​​​​​​​​​​​​​​​​
+
+Friday
+Martin Brunke sent the following message at 11:48 AM
+View Martin’s profileMartin Brunke
+Martin Brunke   11:48 AM
+Dr. Huang,
+The schedule answer points to something I want to be honest about because your question deserves a real answer not a reassuring one.
+
+The 221 triggers are the known map today. Failure modes encoded with enough cross-organizational confidence to run as defaults. But the architecture was built with the understanding that the map is never finished.
+
+Signals that do not match any configured trigger still surface. The system classifies them by domain and impact before any trigger matching happens. Something genuinely novel does not disappear. It lands as classified but unmatched. The system registers that something strategic is happening here even before it knows what to call it.
+
+What it does not do automatically is generate a novel playbook in response. That step requires a human decision. The ADVANCE phase lets organizations encode what they learned into new trigger conditions after the event. The map grows through human encoding not automated inference. And as more organizations use the platform across more industries and trigger scenarios the 221 grows. The 248 data points grow. The playbooks improve. Every activation makes the next response more precise.
+
+Your question names the honest limitation. If nobody looks at the unmatched signal and decides it matters the preparation cycle does not self-correct. The architecture creates the conditions to see it. It does not guarantee recognition.
+
+That gap is where the operating model matters more than the platform. Which is exactly where your research sits.
+
+Saturday
+Dr. Kerry Huang sent the following message at 8:19 PM
+View Dr. Kerry’s profileDr. Kerry Huang
+Dr. Kerry Huang   8:19 PM
+Martin,
+
+Thank you for the directness — the honest limitation framing is more useful than any reassurance would have been, because what you’ve just surfaced is the precise boundary I’ve been trying to name in my own work, and you’ve named it cleaner than I have.
+
+“Classified but unmatched” is the formulation I didn’t have a word for. The system has done real work: it has separated the signal from noise and assigned it a domain and an impact shape before any trigger fires. What it cannot do — and what your architecture is honest about not doing — is carry the final act of recognition, which is the human judgment that this classified-but-unmatched thing is worth disrupting the current operating rhythm for. That judgment is not a data problem and not a platform problem. It is a capability problem, and it lives upstream of any technology decision.
+
+This is where I have started calling the relevant capacity AwaCourage — awareness paired with the courage to act on what awareness has surfaced, specifically when the signal has not yet earned social consensus or playbook backing. Most organizations I have studied can generate awareness at volume. Very few can reliably convert classified-but-unmatched signals into action without the signal first being re-classified as matched through delayed institutional recognition — by which point the cost of response has typically compounded two to three orders of magnitude.
+
+Your ADVANCE phase is the honest structural answer: the map grows through human encoding, not automated inference. That is the exact mechanism. But it raises the question I find myself returning to — what determines whether the human in the loop actually looks at the unmatched signal rather than scrolling past it? Because in most of the governance failures I have studied, the unmatched signal was available; it was just rendered illegible by the incentive environment, the social cost of raising it, or the absence of any precedent that treating it seriously would be rewarded.
+
+I suspect the platform can do one thing the operating model cannot: it can make the unmatched signal visible enough and persistent enough that ignoring it becomes its own recorded decision. That reframes the human choice from “did I notice?” to “did I choose not to act on something the system asked me to look at?” — which is a very different accountability structure.

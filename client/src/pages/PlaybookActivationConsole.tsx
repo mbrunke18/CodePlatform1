@@ -1655,6 +1655,216 @@ export default function PlaybookActivationConsole() {
                 </div>
               </div>
 
+              {/* ── OWNERSHIP CLOSE-OUT GATE ─────────────────────────────────────────── */}
+              {(() => {
+                const tasksAcknowledged = Object.keys(ackMap).length;
+                const totalTasks = displayTasks.length;
+                const silentTasks = displayTasks.filter((t: any) => !ackMap[t.id]);
+                const ownershipRate = totalTasks > 0 ? Math.round((tasksAcknowledged / totalTasks) * 100) : 0;
+                const ownershipVerdict =
+                  ownershipRate >= 80
+                    ? { label: "Ownership Confirmed", sub: "The preparation produced an artifact.", color: TEAL, icon: "✓" }
+                    : ownershipRate >= 40
+                    ? { label: "Partial Transfer", sub: "Some tasks remained silent at acknowledgment.", color: GOLD, icon: "△" }
+                    : { label: "Silence Detected", sub: "Ownership did not transfer. The preparation phase did not produce the artifact.", color: "#B91C1C", icon: "○" };
+
+                return (
+                  <div style={{ background: NAVY, padding: "56px 48px", position: "relative", overflow: "hidden" }}>
+                    {/* Grid background */}
+                    <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)", backgroundSize: "44px 44px", pointerEvents: "none" }} />
+
+                    <div style={{ position: "relative" }}>
+                      {/* Gate label */}
+                      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
+                        <div style={{ width: 32, height: 1.5, background: GOLD }} />
+                        <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
+                          Ownership Close-Out Gate
+                        </span>
+                        <div style={{ flex: 1, height: 1, background: "rgba(201,168,76,0.2)" }} />
+                      </div>
+
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
+
+                        {/* Left — verdict + thesis */}
+                        <div>
+                          {/* Verdict card */}
+                          <div style={{ border: `1.5px solid ${ownershipVerdict.color}`, padding: "28px 28px 24px", marginBottom: 28, background: "rgba(255,255,255,0.03)" }}>
+                            <div style={{ display: "flex", align: "center", gap: 14, marginBottom: 16 }}>
+                              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: ownershipVerdict.color, lineHeight: 1 }}>
+                                {ownershipVerdict.icon}
+                              </span>
+                              <div>
+                                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 4 }}>
+                                  {ownershipVerdict.label}
+                                </div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>
+                                  {ownershipVerdict.sub}
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Ownership rate bar */}
+                            <div style={{ marginBottom: 12 }}>
+                              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>
+                                  Ownership Transfer Rate
+                                </span>
+                                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: ownershipVerdict.color }}>
+                                  {ownershipRate}%
+                                </span>
+                              </div>
+                              <div style={{ height: 3, background: "rgba(255,255,255,0.08)", width: "100%" }}>
+                                <div style={{ height: "100%", width: `${ownershipRate}%`, background: ownershipVerdict.color, transition: "width 1s ease" }} />
+                              </div>
+                            </div>
+
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 16 }}>
+                              <div style={{ textAlign: "center", padding: "10px 8px", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.25)" }}>
+                                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{tasksAcknowledged}</div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Ownership Artifacts</div>
+                              </div>
+                              <div style={{ textAlign: "center", padding: "10px 8px", background: silentTasks.length > 0 ? "rgba(185,28,28,0.1)" : "rgba(255,255,255,0.03)", border: `1px solid ${silentTasks.length > 0 ? "rgba(185,28,28,0.3)" : "rgba(255,255,255,0.08)"}` }}>
+                                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: silentTasks.length > 0 ? "#EF4444" : "rgba(255,255,255,0.3)", lineHeight: 1 }}>{silentTasks.length}</div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Silent at Acknowledgment</div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Silence diagnostic */}
+                          {silentTasks.length > 0 && (
+                            <div style={{ borderLeft: `3px solid #B91C1C`, padding: "14px 18px", background: "rgba(185,28,28,0.07)", marginBottom: 24 }}>
+                              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#EF4444", marginBottom: 8 }}>
+                                Silence at Acknowledgment — Unresolved
+                              </div>
+                              {silentTasks.slice(0, 4).map((t: any) => (
+                                <div key={t.id} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.55)", marginBottom: 4, paddingLeft: 8, borderLeft: "1px solid rgba(185,28,28,0.3)" }}>
+                                  ○ {t.description?.slice(0, 70)}{(t.description?.length || 0) > 70 ? '…' : ''}
+                                </div>
+                              ))}
+                              {silentTasks.length > 4 && (
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 4 }}>
+                                  +{silentTasks.length - 4} more silent tasks
+                                </div>
+                              )}
+                              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 10, lineHeight: 1.6, marginBottom: 0, fontStyle: "italic" }}>
+                                "The earliest signal that preparation didn't transfer is not that the playbook failed — it is silence at acknowledgment."
+                              </p>
+                            </div>
+                          )}
+
+                          {/* Confirmed acknowledgments */}
+                          {tasksAcknowledged > 0 && (
+                            <div>
+                              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 10 }}>
+                                Ownership Artifacts Produced
+                              </div>
+                              <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                                {Object.entries(ackMap).slice(0, 5).map(([taskId, ack]: [string, any]) => {
+                                  const task = displayTasks.find((t: any) => t.id === taskId);
+                                  return (
+                                    <div key={taskId} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "8px 12px", background: "rgba(43,138,110,0.07)", border: "1px solid rgba(43,138,110,0.18)" }}>
+                                      <span style={{ color: TEAL, fontSize: 12, marginTop: 1 }}>✓</span>
+                                      <div style={{ flex: 1 }}>
+                                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.75)", fontWeight: 500, marginBottom: 2 }}>
+                                          {task?.description?.slice(0, 55)}{(task?.description?.length || 0) > 55 ? '…' : ''}
+                                        </div>
+                                        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: TEAL, fontWeight: 600 }}>
+                                          {ack.role} · {ack.by} · {ack.at}
+                                          {ack.actionType === 'escalate' && <span style={{ color: "#F59E0B", marginLeft: 6 }}>↑ Escalated</span>}
+                                          {ack.actionType === 'delegate' && <span style={{ color: "rgba(255,255,255,0.4)", marginLeft: 6 }}>→ Delegated</span>}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                                {tasksAcknowledged > 5 && (
+                                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.3)", padding: "4px 12px" }}>
+                                    +{tasksAcknowledged - 5} additional ownership artifacts on record
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Right — framework + three signals */}
+                        <div>
+                          {/* Dr. Huang deep thesis */}
+                          <div style={{ borderLeft: `3px solid ${GOLD}`, padding: "20px 24px", background: "rgba(201,168,76,0.06)", marginBottom: 28 }}>
+                            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.55, marginBottom: 14 }}>
+                              "Not 12 minutes. Not 3,600×. Preparation building ownership that holds under pressure."
+                            </div>
+                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.12em", textTransform: "uppercase" as const }}>
+                              Dr. Kerry Huang · ESI Top 1% Researcher · 408-Firm Study
+                            </div>
+                          </div>
+
+                          {/* Ownership as Artifact definition */}
+                          <div style={{ marginBottom: 24 }}>
+                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>
+                              Ownership as Artifact — What This Gate Measures
+                            </div>
+                            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, marginBottom: 0 }}>
+                              Ownership is not a behavioral outcome of good preparation, nor a state of mind. It is an <strong style={{ color: "rgba(255,255,255,0.85)" }}>artifact</strong> — something the preparation phase either produces or fails to produce. The acknowledgment step makes the artifact visible in real time.
+                            </p>
+                          </div>
+
+                          {/* Three ownership signals */}
+                          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>
+                            Three Signals That Preparation Produced Ownership
+                          </div>
+                          {[
+                            {
+                              n: "01",
+                              title: "Owner was present when the response was built",
+                              sub: "Not when it was delivered — when it was constructed. The acknowledgment confirms presence.",
+                              pass: tasksAcknowledged > 0,
+                            },
+                            {
+                              n: "02",
+                              title: "Owner exercised challenge rights before the trigger",
+                              sub: "The preparation gave the owner the right to challenge the playbook before pressure existed.",
+                              pass: ownershipRate >= 50,
+                            },
+                            {
+                              n: "03",
+                              title: "Response personalized to this owner's specific decision",
+                              sub: "Not a generic role assignment — a specific person's specific decision under specific conditions.",
+                              pass: ownershipRate >= 80,
+                            },
+                          ].map(sig => (
+                            <div key={sig.n} style={{ display: "flex", gap: 14, marginBottom: 16, padding: "14px 16px", background: sig.pass ? "rgba(43,138,110,0.07)" : "rgba(255,255,255,0.02)", border: `1px solid ${sig.pass ? "rgba(43,138,110,0.2)" : "rgba(255,255,255,0.07)"}` }}>
+                              <div style={{ flexShrink: 0, width: 20, textAlign: "center" as const }}>
+                                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 12, fontWeight: 700, color: sig.pass ? TEAL : "rgba(255,255,255,0.2)" }}>{sig.n}</span>
+                              </div>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: sig.pass ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.35)", marginBottom: 3, display: "flex", alignItems: "center", gap: 8 }}>
+                                  {sig.title}
+                                  <span style={{ fontSize: 10, color: sig.pass ? TEAL : "#EF4444" }}>{sig.pass ? "✓" : "○"}</span>
+                                </div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", lineHeight: 1.55 }}>
+                                  {sig.sub}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+
+                          {/* Competitive moat callout */}
+                          <div style={{ marginTop: 8, padding: "14px 18px", background: "rgba(10,15,46,0.4)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", marginBottom: 6 }}>
+                              The Compound Moat
+                            </div>
+                            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, margin: 0 }}>
+                              The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase. Every ownership artifact this activation produced is non-transferable intelligence.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()}
+
               {/* Counter-factual Timeline — What would have happened without Readiness OS */}
               {(() => {
                 const domain = playbook?.domain || playbook?.strategicCategory || '';
