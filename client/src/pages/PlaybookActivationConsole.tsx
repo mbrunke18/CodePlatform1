@@ -1593,6 +1593,57 @@ export default function PlaybookActivationConsole() {
             ? 'Solid execution. Focus your ADVANCE debrief on timeline adherence — explore where time was lost and update task estimates accordingly.'
             : 'This activation surfaced areas for improvement. Use the ADVANCE workspace to run a full debrief before the next trigger fires.';
 
+          // ── Debrief type classification — Dr. Huang framework ──────────────
+          // "If the window closes at acknowledgment, the debrief is already
+          //  encoding a recovery, not a hold." — Dr. Kerry Huang
+          const ackCount = Object.keys(ackMap).length;
+          const totalTaskCount = displayTasks.length;
+          const ownershipPct = totalTaskCount > 0 ? Math.round((ackCount / totalTaskCount) * 100) : 0;
+          const debriefType: 'optimization' | 'recovery' | 'partial' =
+            ownershipPct >= 70 ? 'optimization' : ownershipPct >= 35 ? 'partial' : 'recovery';
+
+          const debriefConfig = {
+            optimization: {
+              label: 'Optimization Debrief',
+              sub: 'Ownership transferred. The first signal held.',
+              color: TEAL,
+              border: TEAL,
+              bg: 'rgba(43,138,110,0.05)',
+              instruction: 'Ownership confirmed at acknowledgment. The preparation produced the artifact. This debrief encodes optimization — what to sharpen for the next activation cycle. Focus on: task timing precision, stakeholder tier sequencing, and protocol refinement. The window did not close.',
+              focusAreas: [
+                'Where in the task sequence did execution slow? Update time targets.',
+                'Which stakeholder acknowledgments came slowest? Adjust tier placement.',
+                'What in the protocol performed exactly as designed? Lock it as a benchmark.',
+              ],
+            },
+            partial: {
+              label: 'Mixed-Signal Debrief',
+              sub: 'Partial ownership transfer. Some silence detected at acknowledgment.',
+              color: GOLD,
+              border: GOLD,
+              bg: 'rgba(201,168,76,0.05)',
+              instruction: 'Some ownership transferred; some tasks remained silent at acknowledgment. This debrief encodes both optimization and recovery. The window partially held — but the silent tasks represent preparation that did not produce an artifact. Investigate each silent task before the next trigger fires.',
+              focusAreas: [
+                'For each silent task: was this assignment or ownership? Rebuild as ownership.',
+                'Did the owner participate in preparation, or receive the playbook after it was built?',
+                'Which phase of preparation failed to transfer? Encode the answer before next cycle.',
+              ],
+            },
+            recovery: {
+              label: 'Recovery Debrief',
+              sub: 'Silence detected at acknowledgment. The window closed before the hold.',
+              color: '#B91C1C',
+              border: '#B91C1C',
+              bg: 'rgba(185,28,28,0.04)',
+              instruction: 'Silence was detected at acknowledgment. The window closed. This debrief is encoding recovery — not optimization. The organizations that compound capability are the ones where this debrief rarely triggers, because preparation built real ownership rather than documented assignment. The question this debrief must answer: where did the preparation phase fail to produce the artifact?',
+              focusAreas: [
+                'Were owners present when the response was built, or assigned after?',
+                'Did each owner have explicit challenge rights before the trigger fired?',
+                'Was this assignment (naming someone) or ownership (person who signed off before pressure)?',
+              ],
+            },
+          }[debriefType];
+
           return (
             <>
               {/* Hero Completion Banner */}
@@ -1955,9 +2006,13 @@ export default function PlaybookActivationConsole() {
 
               {/* ADVANCE Debrief Strip */}
               <div style={{ background: OFF, borderBottom: `1px solid ${BORDER}`, padding: "40px 48px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
                   <div style={{ width: 24, height: 2, background: GOLD }} />
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>ADVANCE — Execution Debrief</span>
+                  <div style={{ marginLeft: 8, padding: "3px 10px", background: debriefConfig.bg, border: `1px solid ${debriefConfig.border}`, display: "inline-flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ width: 5, height: 5, borderRadius: "50%", background: debriefConfig.color, flexShrink: 0 }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: debriefConfig.color }}>{debriefConfig.label}</span>
+                  </div>
                 </div>
 
                 {/* 4 Metric Cards */}
@@ -2007,17 +2062,78 @@ export default function PlaybookActivationConsole() {
                   </div>
                 </div>
 
-                {/* AI Recommendation */}
-                <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderLeft: `4px solid ${perfColor}`, padding: "20px 24px", display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <Brain className="h-5 w-5 flex-shrink-0 mt-0.5" style={{ color: perfColor }} />
+                {/* Debrief Classification — Dr. Huang framework */}
+                <div style={{ border: `1px solid ${BORDER}`, borderLeft: `4px solid ${debriefConfig.color}`, background: "#fff", marginBottom: 16 }}>
+                  {/* Type header */}
+                  <div style={{ padding: "16px 24px 14px", borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", gap: 12, background: debriefConfig.bg }}>
+                    <Brain className="h-4 w-4 flex-shrink-0" style={{ color: debriefConfig.color }} />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: debriefConfig.color, marginBottom: 2 }}>
+                        {debriefConfig.label} — Debrief Type Classification
+                      </div>
+                      <div style={{ fontSize: 11, color: MUTED, fontWeight: 500 }}>{debriefConfig.sub}</div>
+                    </div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: debriefConfig.color, letterSpacing: "0.06em", textTransform: "uppercase" as const, flexShrink: 0 }}>
+                      {ownershipPct}% ownership transfer
+                    </div>
+                  </div>
+
+                  <div style={{ padding: "20px 24px" }}>
+                    {/* Primary instruction */}
+                    <p style={{ fontSize: 13, color: NAVY, fontWeight: 500, lineHeight: 1.7, marginBottom: 20 }}>
+                      {debriefConfig.instruction}
+                    </p>
+
+                    {/* Focus areas */}
+                    <div style={{ marginBottom: 20 }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 12 }}>
+                        This Debrief Must Answer
+                      </div>
+                      <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
+                        {debriefConfig.focusAreas.map((area: string, i: number) => (
+                          <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                            <span style={{ flexShrink: 0, fontSize: 11, fontWeight: 700, color: debriefConfig.color, marginTop: 1 }}>{String(i + 1).padStart(2, '0')}</span>
+                            <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.55 }}>{area}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Huang source note */}
+                    <div style={{ padding: "12px 16px", background: "rgba(10,15,46,0.03)", borderLeft: `3px solid rgba(10,15,46,0.12)`, display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 16 }}>
+                      <div style={{ flex: 1 }}>
+                        <p style={{ fontSize: 11, color: MUTED, lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
+                          "If the window closes at acknowledgment, the debrief is already encoding a recovery, not a hold. The organizations that compound capability are the ones where the first signal rarely triggers — not because they have better debriefs, but because preparation built real ownership rather than documented assignment."
+                        </p>
+                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(10,15,46,0.35)", marginTop: 8 }}>
+                          Dr. Kerry Huang · ESI Top 1% Researcher · 408-Firm Study
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                      <Link href="/workspace?tab=advance">
+                        <button style={{ fontSize: 11, fontWeight: 700, color: debriefConfig.color, background: "none", border: `1.5px solid ${debriefConfig.color}`, cursor: "pointer", letterSpacing: "0.05em", textTransform: "uppercase" as const, padding: "9px 20px", display: "flex", alignItems: "center", gap: 6 }}>
+                          Open ADVANCE Workspace <ArrowRight className="h-3 w-3" />
+                        </button>
+                      </Link>
+                      {debriefType !== 'optimization' && (
+                        <Link href="/playbook-library">
+                          <button style={{ fontSize: 11, fontWeight: 600, color: MUTED, background: "none", border: `1px solid ${BORDER}`, cursor: "pointer", letterSpacing: "0.04em", padding: "9px 20px" }}>
+                            Rebuild Preparation Phase
+                          </button>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Legacy performance recommendation — kept as secondary signal */}
+                <div style={{ padding: "14px 18px", background: "rgba(10,15,46,0.02)", border: `1px solid ${BORDER}`, display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <div style={{ width: 3, height: "100%", minHeight: 40, background: perfColor, flexShrink: 0 }} />
                   <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: perfColor, marginBottom: 6 }}>AI Execution Recommendation</div>
-                    <p style={{ fontSize: 13, color: NAVY, fontWeight: 500, lineHeight: 1.6, margin: 0 }}>{recommendation}</p>
-                    <Link href="/workspace?tab=advance">
-                      <button style={{ marginTop: 12, fontSize: 11, fontWeight: 700, color: perfColor, background: "none", border: "none", cursor: "pointer", letterSpacing: "0.05em", textTransform: "uppercase" as const, padding: 0, display: "flex", alignItems: "center", gap: 4 }}>
-                        Open ADVANCE Workspace <ArrowRight className="h-3 w-3" />
-                      </button>
-                    </Link>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 6 }}>Execution Performance Note</div>
+                    <p style={{ fontSize: 12, color: "#374151", fontWeight: 400, lineHeight: 1.6, margin: 0 }}>{recommendation}</p>
                   </div>
                 </div>
               </div>
