@@ -568,112 +568,206 @@ function ExecutionChainDiagram() {
 
 // ─── SECTION 2: Hero ─────────────────────────────────────────────────────────
 function HeroSection() {
+  const liveCtx = useLiveContext();
+  const hasReal = (liveCtx?.recentDetections?.length ?? 0) > 0;
+  const signals = hasReal
+    ? liveCtx!.recentDetections.slice(0, 4)
+    : FALLBACK_SIGNALS.slice(0, 3);
+
   return (
-    <section style={{
-      ...SECTION_DARK_BG,
-      position: "relative",
-      minHeight: "100vh",
-      display: "flex", alignItems: "center",
-      paddingTop: 100, paddingBottom: 100,
-    }}>
-      <SectionMarker n="01" />
+    <section style={{ ...SECTION_DARK_BG, position: "relative", overflow: "hidden" }}>
+      {/* Single deliberate gold accent rule */}
+      <div style={{ position: "absolute", right: 0, top: 160, width: "58%", height: 1, background: `linear-gradient(to left, transparent 0%, ${GOLD}44 50%, transparent 100%)`, pointerEvents: "none" }} />
+
       <div style={{ ...CONTAINER, width: "100%" }}>
+        <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 36%", minHeight: 580 }}>
 
-        {/* Two-column: left text | right diagram */}
-        <div className="hp-hero-grid">
+          {/* LEFT — Headline + CTAs + Stats */}
+          <div style={{ padding: "100px 56px 88px 0", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
+            <Reveal>
+              {/* Status badge */}
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
+                <span style={{ ...DM, color: "rgba(255,255,255,0.45)", fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>
+                  {hasReal ? `${liveCtx?.totalToday ?? 0} Signals Detected Today — System Active` : "221 Trigger Patterns Monitored — System Active"}
+                </span>
+              </div>
 
-          {/* LEFT — Headline + CTAs */}
-          <Reveal>
-            <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.7)", marginBottom: 28 }}>
-              STRATEGIC READINESS INFRASTRUCTURE · FORTUNE 1000
-            </div>
+              {/* Headline */}
+              <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 6px", color: "#fff", letterSpacing: "-0.01em" }}>
+                The Response Is Ready
+              </h1>
+              <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(42px,4.5vw,66px)", fontWeight: 700, lineHeight: 1.05, margin: "0 0 32px", color: GOLD, letterSpacing: "-0.01em" }}>
+                Before the Trigger Fires.
+              </h1>
 
-            <h1 className="hp-hero-h1" style={{
-              ...GEO, fontSize: "clamp(38px,5vw,68px)", fontWeight: 700, color: "#fff",
-              lineHeight: 1.1, marginBottom: 20,
-            }}>
-              The response is ready
-              <br />before the trigger fires.
-            </h1>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.58)", fontSize: "clamp(14px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 48px" }}>
+                30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — not after the trigger, before it.
+              </p>
 
-            <p style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: "clamp(17px,1.6vw,22px)", fontStyle: "italic",
-              color: GOLD_LIGHT, marginBottom: 28, lineHeight: 1.45, fontWeight: 500,
-            }}>
-              Fearless isn't a feeling. It's infrastructure.
-            </p>
+              {/* CTAs — horizontal */}
+              <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 64, flexWrap: "wrap" as const }}>
+                <Link
+                  href="/request-access"
+                  onClick={() => trackCTA("hero")}
+                  style={{ ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "15px 36px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
+                >
+                  Request a Pilot →
+                </Link>
+                <Link
+                  href="/12-minute-experience"
+                  onClick={() => trackCTA("hero_testdrive")}
+                  style={{ ...DM, background: "transparent", color: "rgba(255,255,255,0.72)", border: "1px solid rgba(255,255,255,0.18)", padding: "15px 28px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}
+                >
+                  12-Minute Experience
+                </Link>
+              </div>
 
-            <p style={{ ...DM, fontSize: "clamp(14px,1.3vw,16px)", color: "rgba(255,255,255,0.58)", maxWidth: 480, marginBottom: 44, lineHeight: 1.75 }}>
-              Pre-stage 170 strategic responses across 9 domains. When a competitor acts, a regulator moves, or a market event fires — the brief is already built, the team pre-assigned, and execution begins in 12 minutes. Not weeks.
-            </p>
+              {/* Inline metric row */}
+              <div style={{ display: "flex", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 32 }}>
+                {[
+                  { n: "12 min",  l: "Trigger to execution" },
+                  { n: "3,600×", l: "Execution head start" },
+                  { n: "170",    l: "Readiness Protocols" },
+                  { n: "221",    l: "Trigger patterns" },
+                ].map((s, i) => (
+                  <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
+                    <div style={{ ...GEO, color: GOLD, fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, lineHeight: 1 }}>{s.n}</div>
+                    <div style={{ ...DM, color: "rgba(255,255,255,0.38)", fontSize: 11, marginTop: 6, letterSpacing: "0.04em", fontWeight: 500 }}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
 
-            <div style={{ display: "flex", flexDirection: "column" as const, alignItems: "flex-start", gap: 16 }}>
-              <Link
-                href="/request-access"
-                onClick={() => trackCTA("hero")}
-                style={{
-                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 15,
-                  padding: "15px 36px", borderRadius: 0, textDecoration: "none",
-                  letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
-                }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD_LIGHT; el.style.transform = "translateY(-2px)"; el.style.boxShadow = "0 8px 28px rgba(201,168,76,0.3)"; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = GOLD; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; }}
-              >
-                Request a Pilot
-              </Link>
-              <Link
-                href="/12-minute-experience"
-                onClick={() => trackCTA("hero_testdrive")}
-                style={{
-                  ...DM, background: "none", border: `1.5px solid rgba(201,168,76,0.45)`, color: GOLD, fontWeight: 600, fontSize: 14,
-                  padding: "12px 28px", borderRadius: 0, textDecoration: "none",
-                  letterSpacing: "0.05em", transition: "all 0.2s ease", display: "inline-block",
-                }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = GOLD; el.style.background = "rgba(201,168,76,0.07)"; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "rgba(201,168,76,0.45)"; el.style.background = "none"; }}
-              >
-                ▶ See It Execute — 12 Minutes
-              </Link>
-              <Link
-                href="/request-access"
-                onClick={() => trackCTA("hero_request_access")}
-                style={{ ...DM, color: "rgba(255,255,255,0.38)", fontSize: 12, textDecoration: "none", letterSpacing: "0.04em", transition: "color 0.15s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.38)"; }}
-              >
-                Request executive access — no commitment required →
-              </Link>
+          {/* RIGHT — Live Signal Feed panel */}
+          <Reveal delay={0.18}>
+            <div style={{ borderLeft: "1px solid rgba(255,255,255,0.06)", padding: "100px 0 88px 44px", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
+              <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 24 }}>
+                Live Signal Feed
+              </div>
+
+              {signals.map((sig, i) => (
+                <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "16px 0" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                    <span style={{ ...DM, color: TEAL, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em" }}>
+                      {DOMAIN_LABELS[(sig as any).triggerDomain ?? ''] ?? ((sig as any).triggerDomain ?? 'SIGNAL').toUpperCase()}
+                    </span>
+                    <span style={{ ...DM, color: "rgba(255,255,255,0.25)", fontSize: 10, fontWeight: 500 }}>
+                      {(sig as any).detectedAt ? signalTimeAgo((sig as any).detectedAt) : "continuous"}
+                    </span>
+                  </div>
+                  <div style={{ ...DM, color: "rgba(255,255,255,0.8)", fontSize: 12.5, fontWeight: 500, lineHeight: 1.45, marginBottom: 6 }}>
+                    {(sig as any).triggerName}
+                  </div>
+                  <Link href="/12-minute-experience" style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>
+                    Readiness Protocol ready →
+                  </Link>
+                </div>
+              ))}
+
+              <div style={{ marginTop: 20, padding: "16px 20px", border: `1px solid ${GOLD}33`, background: `${GOLD}08` }}>
+                <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>Protocol Readiness</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+                  <span style={{ ...GEO, color: "#fff", fontSize: 26, fontWeight: 700 }}>170</span>
+                  <span style={{ ...DM, color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Protocols pre-staged across 9 domains</span>
+                </div>
+              </div>
             </div>
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          {/* RIGHT — Execution Chain Diagram */}
-          <Reveal delay={0.18}>
-            <ExecutionChainDiagram />
+// ─── SCENARIO CARDS ROW ───────────────────────────────────────────────────────
+function ScenarioCardsRow() {
+  return (
+    <div style={{ background: NAVY, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+      <div style={{ ...CONTAINER }}>
+        <div className="hp-scenario-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
+          {[
+            { domain: "RISK & RESILIENCE",    label: "Geopolitical Risk Response",  sub: "Trade disruption, sanctions, supply chain exposure",     accent: TEAL },
+            { domain: "GROWTH & POSITIONING", label: "M&A Day 1 Integration",        sub: "Pre-staged execution from the moment of close",          accent: GOLD },
+            { domain: "RISK & RESILIENCE",    label: "Cybersecurity Breach",         sub: "Containment, notification and recovery in 12 minutes",   accent: TEAL },
+            { domain: "TRANSFORMATION",       label: "Regulatory Compliance Sprint", sub: "Policy activation deployed before the deadline arrives", accent: GOLD },
+          ].map((item, i) => (
+            <Link key={i} href="/request-access" style={{
+              display: "block", padding: "24px 28px 22px",
+              borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none",
+              borderTop: `2px solid ${item.accent}`,
+              textDecoration: "none",
+            }}>
+              <div style={{ ...DM, color: item.accent, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
+              <div style={{ ...DM, color: "#fff", fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>{item.label}</div>
+              <div style={{ ...DM, color: "rgba(255,255,255,0.4)", fontSize: 11.5, lineHeight: 1.55, marginBottom: 12 }}>{item.sub}</div>
+              <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>Activate protocol →</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── ANATOMY OF A READINESS PROTOCOL ─────────────────────────────────────────
+function AnatomySection() {
+  return (
+    <section style={{ background: "#0d1a3e", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "88px 0" }}>
+      <div style={{ ...CONTAINER }}>
+
+        {/* Header row */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 56, gap: 32, flexWrap: "wrap" as const }}>
+          <Reveal>
+            <div>
+              <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 16 }}>
+                What's Inside Every Readiness Protocol
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: "#fff", fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, lineHeight: 1.1, margin: 0 }}>
+                Not a template. Not a checklist.<br />
+                <span style={{ color: GOLD }}>A complete mobilization package.</span>
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p style={{ ...DM, color: "rgba(255,255,255,0.45)", fontSize: 14, lineHeight: 1.75, margin: 0, maxWidth: 340, textAlign: "right" as const }}>
+              Each of the 170 Readiness Protocols contains all six components — pre-built, pre-approved, and pre-staged before the trigger fires.
+            </p>
           </Reveal>
         </div>
 
-        {/* Stat strip — full width below the grid */}
-        <Reveal delay={0.3}>
-          <div className="hp-stat-row" style={{
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 48,
-            marginTop: 72, paddingTop: 40,
-            borderTop: "1px solid rgba(201,168,76,0.12)",
-          }}>
-            {[
-              { num: "170",       label: "Zero improvisation when the trigger fires",  sub: "Pre-staged prepared responses across 9 strategic domains" },
-              { num: "248+",      label: "Situations surfaced before they require response", sub: "Signals monitored every 15 minutes" },
-              { num: "3,600×",    label: "Execution head start over the competition",  sub: "30 days compressed to 12 minutes" },
-            ].map((s, i) => (
-              <div key={s.num} style={{ display: "contents" }}>
-                {i > 0 && <div className="hp-stat-div" style={{ width: 1, height: 44, background: "rgba(201,168,76,0.22)", flexShrink: 0 }} />}
-                <div style={{ textAlign: "center", maxWidth: 200 }}>
-                  <div style={{ ...GEO, fontSize: 34, fontWeight: 700, color: GOLD, lineHeight: 1, textShadow: "0 0 24px rgba(201,168,76,0.35)" }}>{s.num}</div>
-                  <div style={{ ...DM, fontSize: 13, fontWeight: 600, color: "#fff", marginTop: 8, lineHeight: 1.4 }}>{s.label}</div>
-                  <div style={{ ...DM, fontSize: 12, color: MUTED_DARK, marginTop: 4, lineHeight: 1.4 }}>{s.sub}</div>
+        {/* Six-component grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1px", background: "rgba(255,255,255,0.06)" }}>
+          {[
+            { num: "01", label: "Pre-Assigned Executive Owners",   body: "Every task has a named owner — not a role, a person. They were in the room when the protocol was built, challenged it before pressure existed, and signed off before the trigger fired.", accent: GOLD },
+            { num: "02", label: "Three-Phase Task Sequence",        body: "Tasks are organized across IMMEDIATE (minutes 0–12), SECONDARY (hours 1–4), and FOLLOW-UP (days 1–5). Sequence is pre-determined. Nothing is figured out under pressure.", accent: TEAL },
+            { num: "03", label: "Pre-Staged Communication Chain",   body: "Board notification, stakeholder alerts, external partner briefs, and public communications are drafted, sequenced, and staged — ready for executive authorization at the moment of activation.", accent: GOLD },
+            { num: "04", label: "Pre-Drafted Document Package",     body: "Execution briefs, board-ready reports, legal hold notices, and scenario-specific documents are pre-written for the specific situation. The executive reviews, not authors, under pressure.", accent: TEAL },
+            { num: "05", label: "Pre-Authorized Budget Envelope",   body: "Spending authority is defined in advance by scenario type and severity. Finance does not convene. Resources deploy within the pre-approved envelope at the moment of activation.", accent: GOLD },
+            { num: "06", label: "Decision Authority Map",           body: "Who authorizes. Who executes. Who observes. Defined before the trigger — not negotiated during it. Executive authority is preserved at every step. No Readiness Protocol activates without sign-off.", accent: TEAL },
+          ].map((item, i) => (
+            <Reveal key={i} delay={i * 0.06}>
+              <div style={{ background: "#0d1a3e", padding: "32px 32px 28px", height: "100%", boxSizing: "border-box" as const }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                  <span style={{ ...DM, color: item.accent, fontSize: 10, fontWeight: 800, letterSpacing: "0.12em" }}>{item.num}</span>
+                  <div style={{ flex: 1, height: 1, background: `${item.accent}33` }} />
                 </div>
+                <div style={{ ...DM, color: "#fff", fontSize: 14, fontWeight: 700, lineHeight: 1.4, marginBottom: 10 }}>{item.label}</div>
+                <div style={{ ...DM, color: "rgba(255,255,255,0.45)", fontSize: 12.5, lineHeight: 1.7 }}>{item.body}</div>
               </div>
-            ))}
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Closing quote */}
+        <Reveal delay={0.3}>
+          <div style={{ marginTop: 44, display: "flex", alignItems: "center", gap: 20 }}>
+            <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />
+            <span style={{ ...DM, color: "rgba(255,255,255,0.28)", fontSize: 12, fontWeight: 500, textAlign: "center" as const, maxWidth: 660 }}>
+              "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase." — Dr. Kerry Huang, ESI Top 1% Researcher · 408-firm study
+            </span>
+            <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />
           </div>
         </Reveal>
 
@@ -2259,6 +2353,8 @@ export default function Homepage() {
       <HomepageNav />
       <GuestPreviewBanner />
       <HeroSection />
+      <ScenarioCardsRow />
+      <AnatomySection />
       <LiveSignalFeedSection />
       <HowTriggersWorkSection />
       <ProblemSection />
