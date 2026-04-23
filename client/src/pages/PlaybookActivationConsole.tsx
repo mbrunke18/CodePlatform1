@@ -1714,10 +1714,10 @@ export default function PlaybookActivationConsole() {
                 const ownershipRate = totalTasks > 0 ? Math.round((tasksAcknowledged / totalTasks) * 100) : 0;
                 const ownershipVerdict =
                   ownershipRate >= 80
-                    ? { label: "Ownership Confirmed", sub: "The preparation produced an artifact.", color: TEAL, icon: "✓" }
+                    ? { label: "Ownership Confirmed", sub: "The preparation transferred ownership. The record is on file.", color: TEAL, icon: "✓" }
                     : ownershipRate >= 40
                     ? { label: "Partial Transfer", sub: "Some tasks remained silent at acknowledgment.", color: GOLD, icon: "△" }
-                    : { label: "Silence Detected", sub: "Ownership did not transfer. The preparation phase did not produce the artifact.", color: "#B91C1C", icon: "○" };
+                    : { label: "Silence Detected", sub: "Ownership did not transfer. The preparation phase did not confirm it.", color: "#B91C1C", icon: "○" };
 
                 return (
                   <div style={{ background: NAVY, padding: "56px 48px", position: "relative", overflow: "hidden" }}>
@@ -1850,13 +1850,13 @@ export default function PlaybookActivationConsole() {
                             </div>
                           </div>
 
-                          {/* Ownership as Artifact definition */}
+                          {/* What the Gate Measures */}
                           <div style={{ marginBottom: 24 }}>
                             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>
-                              Ownership as Artifact — What This Gate Measures
+                              What This Gate Measures
                             </div>
                             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, marginBottom: 0 }}>
-                              Ownership is not a behavioral outcome of good preparation, nor a state of mind. It is an <strong style={{ color: "rgba(255,255,255,0.85)" }}>artifact</strong> — something the preparation phase either produces or fails to produce. The acknowledgment step makes the artifact visible in real time.
+                              Ownership is not a behavioral outcome of good preparation, nor a state of mind. It is a <strong style={{ color: "rgba(255,255,255,0.85)" }}>concrete record</strong> — something the preparation phase either produces or fails to produce. The acknowledgment step makes that record visible in real time.
                             </p>
                           </div>
 
