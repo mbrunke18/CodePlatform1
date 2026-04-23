@@ -135,7 +135,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <text x="462" y="497" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
       fontFamily="'DM Sans', Arial, sans-serif">2</text>
     <text x="498" y="494" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">PREPARED RESPONSE SELECTION</text>
+      fontFamily="'DM Sans', Arial, sans-serif">Readiness Protocol SELECTION</text>
     {['"Competitive Response — Pricing"', 'Customized to your org structure', 'Adapts to your tools & processes'].map((t, i) => (
       <text key={i} x="442" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
     ))}
@@ -268,7 +268,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
       },
       {
         x: 578, label: 'WHAT YOUR MANAGERS SEE',
-        lines: ['Real-time progress across all active prepared responses', 'Escalation alerts before problems surface', 'Trade-off decisions surfaced with full context', 'No status meetings required']
+        lines: ['Real-time progress across all active Readiness Protocols', 'Escalation alerts before problems surface', 'Trade-off decisions surfaced with full context', 'No status meetings required']
       },
       {
         x: 1078, label: 'WHAT YOUR EXECUTIVES SEE',

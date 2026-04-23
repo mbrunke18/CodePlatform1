@@ -66,7 +66,7 @@ export default function ExecutionIntelligenceDashboard() {
       <Card className="border-[#E8E4DC] bg-white rounded-none mb-8">
         <CardContent className="p-12 text-center">
           <p className="text-[#6B7280] font-medium" style={CG}>
-            Start activating prepared responses to build your maturity score
+            Start activating Readiness Protocols to build your maturity score
           </p>
         </CardContent>
       </Card>

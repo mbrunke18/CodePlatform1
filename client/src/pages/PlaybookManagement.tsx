@@ -110,7 +110,7 @@ export default function PlaybookManagement() {
       queryClient.invalidateQueries({ queryKey: ["/api/playbooks"] });
       toast({
         title: "Readiness Protocol Deleted",
-        description: "The prepared response has been permanently deleted.",
+        description: "The Readiness Protocol has been permanently deleted.",
       });
       setDeleteId(null);
     },
@@ -162,16 +162,16 @@ export default function PlaybookManagement() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(32px,4vw,48px)", lineHeight: 1.1, color: "#fff" }}>
-                Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Readiness Prepared responses</em>
+                Strategic <em style={{ fontStyle: "italic", color: "#DFC178" }}>Readiness Readiness Protocols</em>
               </h1>
               <p className="text-white/60 mt-1 max-w-2xl">
-                Create, customize, and manage your organization's strategic prepared responses
+                Create, customize, and manage your organization's strategic Readiness Protocols
               </p>
             </div>
             <Button 
               onClick={() => setLocation('/playbook-customize/new')}
               className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"
-              data-testid="button-create-prepared response"
+              data-testid="button-create-Readiness Protocol"
             >
               <Plus className="h-4 w-4 mr-2" />
               Create Readiness Protocol
@@ -189,7 +189,7 @@ export default function PlaybookManagement() {
                   <FileText className="h-4 w-4 text-white" />
                 </div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", lineHeight: 1 }}>{stats.total}</div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Prepared responses</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>Total Readiness Protocols</div>
               </div>
             </CardContent>
           </Card>
@@ -287,11 +287,11 @@ export default function PlaybookManagement() {
             <CardContent className="py-16 text-center">
               <FileText className="h-12 w-12 mx-auto mb-4 text-gray-800 dark:text-slate-400" />
               <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-2">
-                {playbooks.length === 0 ? "No Prepared responses Yet" : "No Matching Prepared responses"}
+                {playbooks.length === 0 ? "No Readiness Protocols Yet" : "No Matching Readiness Protocols"}
               </h3>
               <p className="text-gray-800 mb-6 max-w-md mx-auto">
                 {playbooks.length === 0 
-                  ? "Create your first prepared response to start building your strategic response library."
+                  ? "Create your first Readiness Protocol to start building your strategic response library."
                   : "Try adjusting your search or filter criteria."}
               </p>
               {playbooks.length === 0 && (
@@ -327,7 +327,7 @@ export default function PlaybookManagement() {
                     <TableRow 
                       key={playbook.id} 
                       className="cursor-pointer hover:bg-slate-50 dark:hover:bg-[#141B45]/50"
-                      data-testid={`row-prepared response-${playbook.id}`}
+                      data-testid={`row-Readiness Protocol-${playbook.id}`}
                     >
                       <TableCell>
                         <div className="flex items-center gap-3">
@@ -379,21 +379,21 @@ export default function PlaybookManagement() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/prepared response-library/${playbook.id}`)}
+                              onClick={() => setLocation(`/Readiness Protocol-library/${playbook.id}`)}
                               data-testid={`menu-view-${playbook.id}`}
                             >
                               <Eye className="h-4 w-4 mr-2" />
                               View
                             </DropdownMenuItem>
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/prepared response-customize/${playbook.id}`)}
+                              onClick={() => setLocation(`/Readiness Protocol-customize/${playbook.id}`)}
                               data-testid={`menu-edit-${playbook.id}`}
                             >
                               <Edit className="h-4 w-4 mr-2" />
                               Edit
                             </DropdownMenuItem>
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/prepared response-customize/new?template=${playbook.id}`)}
+                              onClick={() => setLocation(`/Readiness Protocol-customize/new?template=${playbook.id}`)}
                               data-testid={`menu-duplicate-${playbook.id}`}
                             >
                               <Copy className="h-4 w-4 mr-2" />
@@ -423,7 +423,7 @@ export default function PlaybookManagement() {
             <AlertDialogHeader>
               <AlertDialogTitle>Delete Readiness Protocol</AlertDialogTitle>
               <AlertDialogDescription>
-                Are you sure you want to delete this prepared response? This action cannot be undone and will permanently remove the prepared response and all its configuration.
+                Are you sure you want to delete this Readiness Protocol? This action cannot be undone and will permanently remove the Readiness Protocol and all its configuration.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

@@ -67,7 +67,7 @@ const IDEA_STORY = [
   {
     id: 2,
     beat: "IDENTIFY",
-    title: "170 Prepared responses. Zero Blank Pages.",
+    title: "170 Readiness Protocols. Zero Blank Pages.",
     subtitle: "Build your depth chart before the game starts",
     phase: "IDENTIFY",
     phaseColor: "bg-[#2B8A6E]",
@@ -75,10 +75,10 @@ const IDEA_STORY = [
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
     time: 30,
-    description: "Unlike crisis tools or PM platforms, Readiness OS comes with 170 battle-tested prepared responses across 9 domains. OFFENSE (M&A, Market Entry, Product Launch), DEFENSE (Crisis, Cyber, Regulatory), SPECIAL TEAMS (Digital Transformation, Competitive Response, AI Governance).",
-    investorHighlight: "This is our moat. 170 prepared responses = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
+    description: "Unlike crisis tools or PM platforms, Readiness OS comes with 170 battle-tested Readiness Protocols across 9 domains. GROWTH & POSITIONING (M&A, Market Entry, Product Launch), RISK & RESILIENCE (Crisis, Cyber, Regulatory), TRANSFORMATION (Digital Transformation, Competitive Response, AI Governance).",
+    investorHighlight: "This is our moat. 170 Readiness Protocols = 20+ years of Fortune 500 execution experience. Competitors would need years to replicate.",
     metrics: [
-      { label: "Prepared responses", value: "170" },
+      { label: "Readiness Protocols", value: "170" },
       { label: "Domains", value: "9" },
       { label: "Categories", value: "3" }
     ],
@@ -103,7 +103,7 @@ const IDEA_STORY = [
     color: "text-[#0A0F2E]",
     bgColor: "bg-[#0A0F2E]/10",
     time: 50,
-    description: "Readiness OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right prepared response with confidence scoring. AI monitors and recommends. Executives decide.",
+    description: "Readiness OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right Readiness Protocol with confidence scoring. AI monitors and recommends. Executives decide.",
     investorHighlight: "What makes this sellable to Fortune 1000 C-suites: we don't replace executives — we eliminate the 30-day mobilization cycle that surrounds them. AI monitors and recommends. The human decision is the same. It just arrives in seconds instead of weeks.",
     metrics: [
       { label: "Signals Monitored", value: "2,847" },
@@ -124,7 +124,7 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
     time: 80,
-    description: "Readiness OS doesn't just react—it predicts. Our AI forecasts trigger probabilities at 30, 60, and 90-day horizons. Executives see which threats are accelerating and run what-if scenarios to stress-test prepared response readiness. Like Anaplan PlanIQ, but for strategic execution.",
+    description: "Readiness OS doesn't just react—it predicts. Our AI forecasts trigger probabilities at 30, 60, and 90-day horizons. Executives see which threats are accelerating and run what-if scenarios to stress-test Readiness Protocol readiness. Like Anaplan PlanIQ, but for strategic execution.",
     investorHighlight: "This is our AI differentiation. We're not just workflow—we're predictive intelligence for the C-suite. No competitor has this capability.",
     metrics: [
       { label: "Forecast Accuracy", value: "94%" },
@@ -135,7 +135,7 @@ const IDEA_STORY = [
       title: "Predictive Capabilities",
       items: [
         { domain: "Trigger Forecasting", defaults: "30/60/90-day probability with confidence scoring" },
-        { domain: "What-If Analyzer", defaults: "Stress-test prepared responses against multiple scenarios" },
+        { domain: "What-If Analyzer", defaults: "Stress-test Readiness Protocols against multiple scenarios" },
         { domain: "Pre-Activation Preview", defaults: "See impact before you execute" }
       ]
     },
@@ -153,7 +153,7 @@ const IDEA_STORY = [
     bgColor: "bg-[#2B8A6E]/10",
     time: 120,
     description: "When the CISO approves, Readiness OS auto-creates your Jira project, assigns every task, stages every document, and unlocks pre-approved budgets—all in 12 minutes. 47 stakeholders notified instantly. Teams don't learn Readiness OS—Readiness OS comes to them in tools they already use.",
-    investorHighlight: "The integration layer IS the moat. Once 50 prepared responses are syncing to Jira with bi-directional updates, switching costs are massive.",
+    investorHighlight: "The integration layer IS the moat. Once 50 Readiness Protocols are syncing to Jira with bi-directional updates, switching costs are massive.",
     metrics: [
       { label: "Stakeholders", value: "47" },
       { label: "Tasks Created", value: "127" },
@@ -189,8 +189,8 @@ const IDEA_STORY = [
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
     time: 160,
-    description: "After resolution, Readiness OS captures what worked, what didn't, and suggests prepared response refinements. This institutional knowledge stays with the organization—not in someone's head who might leave. The prepared response library becomes a strategic asset.",
-    investorHighlight: "Historical execution data + prepared response refinements = recurring value that compounds. This is how we achieve 150%+ net revenue retention.",
+    description: "After resolution, Readiness OS captures what worked, what didn't, and suggests Readiness Protocol refinements. This institutional knowledge stays with the organization—not in someone's head who might leave. The Readiness Protocol library becomes a strategic asset.",
+    investorHighlight: "Historical execution data + Readiness Protocol refinements = recurring value that compounds. This is how we achieve 150%+ net revenue retention.",
     metrics: [
       { label: "Lessons Captured", value: "23" },
       { label: "Readiness Protocol Updates", value: "7" },
@@ -214,7 +214,7 @@ const STAKEHOLDER_ACKNOWLEDGMENTS = [
 ];
 
 const MOAT_COMPONENTS = [
-  { icon: BookOpen, title: "170 Prepared responses", description: "20+ years encoded" },
+  { icon: BookOpen, title: "170 Readiness Protocols", description: "20+ years encoded" },
   { icon: LineChart, title: "Predictive AI", description: "90-day forecasting" },
   { icon: GitBranch, title: "Integration Layer", description: "Bi-directional PM sync" },
   { icon: Brain, title: "Institutional Data", description: "Execution history" },

@@ -158,7 +158,7 @@ export default function OnboardingGuide() {
               Everything you need to understand, activate, and operate your Readiness OS from day one.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
-              {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["170", "Pre-Built Prepared responses"], ["221", "Live Triggers"]].map(([v, l]) => (
+              {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["170", "Pre-Built Readiness Protocols"], ["221", "Live Triggers"]].map(([v, l]) => (
                 <div key={l} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "16px 12px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 22, fontWeight: 900, color: GOLD, letterSpacing: "-0.5px" }}>{v}</div>
                   <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>{l}</div>
@@ -183,7 +183,7 @@ export default function OnboardingGuide() {
                   "Monitors 248+ data points across 9 strategic domains",
                   "Detects patterns across 221 configured trigger scenarios",
                   "Scores signal confidence and fires alerts above 72% threshold",
-                  "Pre-stages the right prepared response before you are asked to act",
+                  "Pre-stages the right Readiness Protocol before you are asked to act",
                   "Logs every detection for audit and board reporting",
                 ].map(item => (
                   <div key={item} style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
@@ -196,7 +196,7 @@ export default function OnboardingGuide() {
                 <h3 style={{ fontSize: 13, fontWeight: 800, color: NAVY, margin: "0 0 16px", textTransform: "uppercase" as const, letterSpacing: "1px" }}>What You Do</h3>
                 {[
                   "Review trigger alerts and confidence scores",
-                  "Authorize prepared response activation with one decision",
+                  "Authorize Readiness Protocol activation with one decision",
                   "Monitor live execution progress in the Command Tower",
                   "Track team acknowledgments and task completion",
                   "Review Board Readiness reports and ROI metrics",
@@ -211,7 +211,7 @@ export default function OnboardingGuide() {
           </div>
           <div style={{ background: `${GOLD}0C`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: 24 }}>
             <p style={{ margin: 0, fontSize: 14, color: "#374151", lineHeight: 1.8 }}>
-              <strong style={{ color: NAVY }}>The core principle:</strong> No prepared response activates without your explicit authorization. AI monitors, detects, and pre-stages. You decide. The preparation compresses the mobilization cycle from weeks to minutes — the authority remains yours.
+              <strong style={{ color: NAVY }}>The core principle:</strong> No Readiness Protocol activates without your explicit authorization. AI monitors, detects, and pre-stages. You decide. The preparation compresses the mobilization cycle from weeks to minutes — the authority remains yours.
             </p>
           </div>
         </Section>
@@ -225,13 +225,13 @@ export default function OnboardingGuide() {
           />
           <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "8px 32px" }}>
             <StepCard number={1} icon={Monitor} title="Mission Control" path="/mission-control"
-              description="Your operational hub. Start here. You will see active trigger detections, prepared response status, execution dividend (real-time ROI counter), and a live signal activity feed. This is the page you return to daily." />
+              description="Your operational hub. Start here. You will see active trigger detections, Readiness Protocol status, execution dividend (real-time ROI counter), and a live signal activity feed. This is the page you return to daily." />
             <StepCard number={2} icon={Radio} title="Command Tower" path="/command-tower"
               description="Full-screen executive display. Shows live trigger detections as they fire, system pulse stats, your 12-minute execution clock, and a signal ticker in real time. Designed for war room situations and leadership reviews." />
             <StepCard number={3} icon={BookOpen} title="Readiness Protocol Library" path="/playbooks"
-              description="Browse all 170 pre-built strategic prepared responses across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
+              description="Browse all 170 pre-built strategic Readiness Protocols across 9 domains. Each contains 4 execution phases, role-specific task assignments, decision gates, and expert content. Three are publicly accessible; 167 are pilot-exclusive." />
             <StepCard number={4} icon={Activity} title="Simulation Studio" path="/simulation-studio"
-              description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a coverage readiness map with recommended prepared responses pre-staged for activation. Use this in board preparation and executive planning sessions." />
+              description="Model any strategic scenario before it happens. Input a threat, select your industry, and receive a coverage readiness map with recommended Readiness Protocols pre-staged for activation. Use this in board preparation and executive planning sessions." />
             <StepCard number={5} icon={FileText} title="Board Readiness Snapshot" path="/board-readiness"
               description="A print-ready executive report showing your domain coverage, response time statistics, readiness score (0–100), and recent trigger detections. Export as PDF for board and audit committee presentations." />
           </div>
@@ -257,7 +257,7 @@ export default function OnboardingGuide() {
 
           <ScreenPreview title="vaughnmartin.com/mission-control" accent={NAVY}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8, marginBottom: 16 }}>
-              {[["221", "Triggers Armed"], ["170", "Prepared responses Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
+              {[["221", "Triggers Armed"], ["170", "Readiness Protocols Ready"], ["248+", "Data Points"], ["12 min", "Response Time"]].map(([v, l]) => (
                 <div key={l} style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "12px 8px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 18, fontWeight: 900, color: NAVY }}>{v}</div>
                   <div style={{ fontSize: 10, color: "#6B7280", textTransform: "uppercase" as const, letterSpacing: "0.5px", marginTop: 3 }}>{l}</div>
@@ -292,7 +292,7 @@ export default function OnboardingGuide() {
           <SectionHeader
             label="04 — How It Works"
             title="The Detection & Execution Flow"
-            subtitle="From signal ingestion to prepared response activation — this is what happens automatically in the background while you run your business."
+            subtitle="From signal ingestion to Readiness Protocol activation — this is what happens automatically in the background while you run your business."
           />
           <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "32px 24px", marginBottom: 24 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
@@ -302,7 +302,7 @@ export default function OnboardingGuide() {
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={AlertTriangle} title="Alert Fired" detail={"Email notification\nCommand Tower alert\n4-hr deduplication"} color={GOLD} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
-              <FlowStep icon={BookOpen} title="Readiness Protocol Staged" detail={"Right prepared response\npre-selected\nawaiting your call"} color={TEAL} />
+              <FlowStep icon={BookOpen} title="Readiness Protocol Staged" detail={"Right Readiness Protocol\npre-selected\nawaiting your call"} color={TEAL} />
               <div style={{ paddingTop: 24, color: "#D1D5DB", fontWeight: 300, fontSize: 18, flexShrink: 0 }}>→</div>
               <FlowStep icon={Lock} title="You Authorize" detail={"One decision\nfull team mobilized\n12-min clock starts"} color={RED} />
             </div>
@@ -315,11 +315,11 @@ export default function OnboardingGuide() {
         </Section>
 
         {/* 05 — Readiness Protocol Library */}
-        <Section id="prepared responses">
+        <Section id="Readiness Protocols">
           <SectionHeader
             label="05 — Readiness Protocol Library"
-            title="170 Pre-Built Readiness Prepared responses"
-            subtitle="Every prepared response contains 4 structured phases, role-specific task assignments, decision gates, escalation protocols, and expert content — pre-built before the trigger fires."
+            title="170 Pre-Built Readiness Readiness Protocols"
+            subtitle="Every Readiness Protocol contains 4 structured phases, role-specific task assignments, decision gates, escalation protocols, and expert content — pre-built before the trigger fires."
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>
             {[
@@ -348,8 +348,8 @@ export default function OnboardingGuide() {
           </div>
           <div style={{ background: NAVY, borderRadius: 0, padding: 24, display: "flex", alignItems: "center", gap: 24 }}>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 800, color: GOLD, marginBottom: 8 }}>Flagship Prepared responses — Fully Enriched</div>
-              <p style={{ margin: 0, fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>23 prepared responses contain the full expert treatment: detailed task owners, time targets, decision gates with escalation paths, and role-specific restrictions. These are the highest-priority scenarios your organization is most likely to face.</p>
+              <div style={{ fontSize: 13, fontWeight: 800, color: GOLD, marginBottom: 8 }}>Flagship Readiness Protocols — Fully Enriched</div>
+              <p style={{ margin: 0, fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>23 Readiness Protocols contain the full expert treatment: detailed task owners, time targets, decision gates with escalation paths, and role-specific restrictions. These are the highest-priority scenarios your organization is most likely to face.</p>
             </div>
             <div style={{ flexShrink: 0, textAlign: "center" as const }}>
               <div style={{ fontSize: 40, fontWeight: 900, color: GOLD, lineHeight: 1 }}>23</div>
@@ -367,13 +367,13 @@ export default function OnboardingGuide() {
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 10 }}>
             <FeatureRow icon={Monitor} color={NAVY} title="Mission Control" path="/mission-control"
-              description="Primary operational hub. Live signal feed, trigger detections, execution dividend counter, prepared response status, and 12-minute clock tracking." />
+              description="Primary operational hub. Live signal feed, trigger detections, execution dividend counter, Readiness Protocol status, and 12-minute clock tracking." />
             <FeatureRow icon={Radio} color={TEAL} title="Command Tower" path="/command-tower"
               description="Full-screen executive display with live WebSocket updates. Real-time trigger alerts, signal ticker, system pulse, and execution log. Ideal for war rooms and leadership reviews." />
             <FeatureRow icon={BookOpen} color={GOLD} title="Readiness Protocol Library" path="/playbooks"
-              description="All 170 prepared responses with search and domain filters. Authenticated users can deploy prepared responses and use the Task Editor to customize phases and assignments." />
+              description="All 170 Readiness Protocols with search and domain filters. Authenticated users can deploy Readiness Protocols and use the Task Editor to customize phases and assignments." />
             <FeatureRow icon={Activity} color={TEAL} title="Simulation Studio" path="/simulation-studio"
-              description="Strategic scenario modeling. Input any threat, select industry, and receive a coverage readiness brief with pre-staged prepared response recommendations and recommended actions." />
+              description="Strategic scenario modeling. Input any threat, select industry, and receive a coverage readiness brief with pre-staged Readiness Protocol recommendations and recommended actions." />
             <FeatureRow icon={FileText} color={RED} title="Board Readiness Snapshot" path="/board-readiness"
               description="Print-ready board report with domain coverage ring, readiness score, Execution Dividend, and recent detections. Export as PDF in one click." />
             <FeatureRow icon={TrendingUp} color={TEAL} title="Readiness Dividend" path="/mission-control"
@@ -401,7 +401,7 @@ export default function OnboardingGuide() {
               { title: "12-Minute Test Drive", path: "/try-demo", desc: "Public 4-step simulation of a live trigger-to-execution cycle. No login required. Ideal as a first introduction." },
               { title: "Industry Demos (9)", path: "/demos", desc: "Sector-specific crisis simulations: Energy, Pharma, Finance, Retail, Luxury, Manufacturing, and more." },
               { title: "Role Experience", path: "/role-selector", desc: "CEO, CFO, CMO, CISO, COO and 7 other role-specific 13-stage simulations showing the exact experience for each executive." },
-              { title: "Simulation Studio", path: "/simulation-studio", desc: "Open-ended scenario modeling. Any strategic threat, any industry. Coverage readiness mapped with pre-staged prepared response recommendations." },
+              { title: "Simulation Studio", path: "/simulation-studio", desc: "Open-ended scenario modeling. Any strategic threat, any industry. Coverage readiness mapped with pre-staged Readiness Protocol recommendations." },
               { title: "IDEA Framework", path: "/idea-framework", desc: "Full walkthrough of the Identify → Detect → Execute → Advance framework with the NFL coaching analogy." },
               { title: "Investor Presentation", path: "/investor", desc: "Investor-grade deck with market thesis, McKinsey validation, competitive comparison, and ROI model." },
             ].map(({ title, path, desc }) => (
@@ -425,10 +425,10 @@ export default function OnboardingGuide() {
           />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
-              { period: "Day 1", color: NAVY, tasks: ["Complete platform walkthrough (this guide)", "Explore Mission Control and Command Tower", "Review 3 flagship prepared responses relevant to your sector", "Share the 12-Minute Test Drive link with your leadership team"] },
+              { period: "Day 1", color: NAVY, tasks: ["Complete platform walkthrough (this guide)", "Explore Mission Control and Command Tower", "Review 3 flagship Readiness Protocols relevant to your sector", "Share the 12-Minute Test Drive link with your leadership team"] },
               { period: "Days 2–7", color: TEAL, tasks: ["Configure trigger sensitivity for your top 3 risk domains", "Add your stakeholder contacts to the registry", "Run a Simulation Studio scenario on your highest-priority threat", "Monitor live signal feed daily (5 minutes each morning)"] },
-              { period: "Days 8–14", color: GOLD, tasks: ["Review your first Board Readiness Snapshot", "Check Execution Dividend ROI counter", "Activate one prepared response drill using Practice Drills", "Share role-specific demos with CISO, CFO, or COO"] },
-              { period: "Days 15–30", color: TEAL, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize prepared response task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for pilot ROI summary"] },
+              { period: "Days 8–14", color: GOLD, tasks: ["Review your first Board Readiness Snapshot", "Check Execution Dividend ROI counter", "Activate one Readiness Protocol drill using Practice Drills", "Share role-specific demos with CISO, CFO, or COO"] },
+              { period: "Days 15–30", color: TEAL, tasks: ["Review trigger detection history in Command Tower", "Export Board Readiness PDF for an upcoming committee meeting", "Customize Readiness Protocol task assignments for your team structure", "Evaluate Execution Dividend vs. baseline for pilot ROI summary"] },
             ].map(({ period, color, tasks }) => (
               <div key={period} style={{ background: "#fff", border: "1px solid #E5E7EB", borderLeft: `4px solid ${color}`, borderRadius: 0, padding: 24 }}>
                 <div style={{ fontSize: 12, fontWeight: 900, color, textTransform: "uppercase" as const, letterSpacing: "1.5px", marginBottom: 16 }}>{period}</div>

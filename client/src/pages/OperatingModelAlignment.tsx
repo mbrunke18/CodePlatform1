@@ -544,7 +544,7 @@ export default function OperatingModelAlignment() {
             <div>
               <h1 className="text-3xl font-bold text-foreground mb-2">Operating Model Alignment</h1>
               <p className="text-muted-foreground max-w-2xl">
-                Map your operating model to execution prepared responses using McKinsey's 12-element "Organize to Value" framework.
+                Map your operating model to execution Readiness Protocols using McKinsey's 12-element "Organize to Value" framework.
               </p>
             </div>
             {assessmentComplete && (
@@ -596,12 +596,12 @@ export default function OperatingModelAlignment() {
                   </div>
                 </CardContent>
               </Card>
-              <Card data-testid="card-recommended-prepared responses">
+              <Card data-testid="card-recommended-Readiness Protocols">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
                     <div style={{ width: 3, alignSelf: 'stretch', background: '#2B8A6E', flexShrink: 0 }} />
                     <div>
-                      <p className="text-2xl font-bold" data-testid="text-prepared response-count">{assessmentComplete ? recommendedPlaybooks.reduce((sum, p) => sum + (p.info?.count || 0), 0) : '—'}</p>
+                      <p className="text-2xl font-bold" data-testid="text-Readiness Protocol-count">{assessmentComplete ? recommendedPlaybooks.reduce((sum, p) => sum + (p.info?.count || 0), 0) : '—'}</p>
                       <p className="text-xs text-muted-foreground">Recommended Readiness Protocols</p>
                     </div>
                   </div>
@@ -624,7 +624,7 @@ export default function OperatingModelAlignment() {
               <TabsList className="mb-6">
                 <TabsTrigger value="overview" data-testid="tab-overview">Overview</TabsTrigger>
                 <TabsTrigger value="fingerprint" disabled={!assessmentComplete} data-testid="tab-fingerprint">Fingerprint</TabsTrigger>
-                <TabsTrigger value="prepared responses" disabled={!assessmentComplete} data-testid="tab-prepared responses">Readiness Protocol Recommendations</TabsTrigger>
+                <TabsTrigger value="Readiness Protocols" disabled={!assessmentComplete} data-testid="tab-Readiness Protocols">Readiness Protocol Recommendations</TabsTrigger>
                 <TabsTrigger value="gap" disabled={!assessmentComplete} data-testid="tab-gap">Gap Analysis</TabsTrigger>
               </TabsList>
               
@@ -652,7 +652,7 @@ export default function OperatingModelAlignment() {
                         </div>
                         <div className="flex items-center gap-3">
                           <CheckCircle2 className="w-5 h-5 text-green-500" />
-                          <span className="text-sm">Generates personalized prepared response recommendations</span>
+                          <span className="text-sm">Generates personalized Readiness Protocol recommendations</span>
                         </div>
                       </div>
                       <Button 
@@ -794,7 +794,7 @@ export default function OperatingModelAlignment() {
                 )}
               </TabsContent>
               
-              <TabsContent value="prepared responses">
+              <TabsContent value="Readiness Protocols">
                 <div className="grid lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
                     <Card>
@@ -804,7 +804,7 @@ export default function OperatingModelAlignment() {
                           Recommended Readiness Protocol Domains
                         </CardTitle>
                         <CardDescription>
-                          Based on your operating model gaps, these prepared response domains will have the highest impact
+                          Based on your operating model gaps, these Readiness Protocol domains will have the highest impact
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
@@ -821,7 +821,7 @@ export default function OperatingModelAlignment() {
                               <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-1">
                                   <h4 className="font-medium">{info?.name}</h4>
-                                  <Badge variant="secondary">{info?.count} prepared responses</Badge>
+                                  <Badge variant="secondary">{info?.count} Readiness Protocols</Badge>
                                 </div>
                                 <p className="text-sm text-muted-foreground">{info?.description}</p>
                               </div>
@@ -846,7 +846,7 @@ export default function OperatingModelAlignment() {
                       <CardContent className="p-6">
                         <h3 className="font-semibold text-lg mb-2">McKinsey → Readiness OS Connection</h3>
                         <p className="text-sm text-muted-foreground mb-4">
-                          "McKinsey gives you the operating model fingerprint. Readiness OS gives you the prepared responses to execute it."
+                          "McKinsey gives you the operating model fingerprint. Readiness OS gives you the Readiness Protocols to execute it."
                         </p>
                         <div className="space-y-3 mb-6">
                           <div className="flex items-center gap-2">
@@ -859,12 +859,12 @@ export default function OperatingModelAlignment() {
                           </div>
                           <div className="flex items-center gap-2">
                             <CheckCircle2 className="w-4 h-4 text-green-500" />
-                            <span className="text-sm">Pre-built prepared responses</span>
+                            <span className="text-sm">Pre-built Readiness Protocols</span>
                           </div>
                         </div>
                         <Link href="/playbook-library" data-testid="link-explore-playbooks">
-                          <Button className="w-full" data-testid="button-explore-prepared responses">
-                            Explore Prepared responses
+                          <Button className="w-full" data-testid="button-explore-Readiness Protocols">
+                            Explore Readiness Protocols
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </Link>
@@ -944,7 +944,7 @@ export default function OperatingModelAlignment() {
                             <div className="flex items-start gap-3 p-3 bg-[#2B8A6E]/5">
                               <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
-                                <p className="font-medium text-sm">Activate 3 priority prepared responses</p>
+                                <p className="font-medium text-sm">Activate 3 priority Readiness Protocols</p>
                                 <p className="text-xs text-muted-foreground">Start with highest-relevance domain recommendations</p>
                               </div>
                             </div>
@@ -952,7 +952,7 @@ export default function OperatingModelAlignment() {
                               <Zap className="w-5 h-5 text-[#2B8A6E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Run a tabletop exercise</p>
-                                <p className="text-xs text-muted-foreground">Test one prepared response with executive team</p>
+                                <p className="text-xs text-muted-foreground">Test one Readiness Protocol with executive team</p>
                               </div>
                             </div>
                           </div>
@@ -976,15 +976,15 @@ export default function OperatingModelAlignment() {
                             <div className="flex items-start gap-3 p-3 bg-[#0A0F2E]/5">
                               <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
-                                <p className="font-medium text-sm">Build prepared response library</p>
-                                <p className="text-xs text-muted-foreground">Customize 20+ prepared responses to your context</p>
+                                <p className="font-medium text-sm">Build Readiness Protocol library</p>
+                                <p className="text-xs text-muted-foreground">Customize 20+ Readiness Protocols to your context</p>
                               </div>
                             </div>
                             <div className="flex items-start gap-3 p-3 bg-[#0A0F2E]/5">
                               <Target className="w-5 h-5 text-[#0A0F2E] mt-0.5" />
                               <div>
                                 <p className="font-medium text-sm">Leadership alignment program</p>
-                                <p className="text-xs text-muted-foreground">Train executives on prepared response activation</p>
+                                <p className="text-xs text-muted-foreground">Train executives on Readiness Protocol activation</p>
                               </div>
                             </div>
                           </div>

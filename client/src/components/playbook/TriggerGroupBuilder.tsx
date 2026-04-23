@@ -314,7 +314,7 @@ function BuilderDialog({ open, onClose, playbookId, editing }: BuilderDialogProp
               <div>
                 <Label style={{ fontSize: 12, fontWeight: 700, color: NAVY, textTransform: "uppercase", letterSpacing: "0.05em" }}>Description</Label>
                 <Textarea value={description} onChange={e => setDescription(e.target.value)}
-                  placeholder="When should this trigger group fire? What signals indicate this prepared response is needed?"
+                  placeholder="When should this trigger group fire? What signals indicate this Readiness Protocol is needed?"
                   style={{ marginTop: 6, fontSize: 13, resize: "none", minHeight: 80 }} />
               </div>
               <div>
@@ -590,7 +590,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
             </span>
           </div>
           <p style={{ fontSize: 24, fontWeight: 700, color: "white", marginBottom: 4 }}>
-            {preArmedLoading ? "—" : preArmed?.totalWatching ?? 0} signals watching this prepared response
+            {preArmedLoading ? "—" : preArmed?.totalWatching ?? 0} signals watching this Readiness Protocol
           </p>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)" }}>
             {preArmed?.domainName ? `${preArmed.domainName} domain` : "All domains"} ·{" "}
@@ -623,7 +623,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
               </span>
             </div>
             <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 560 }}>
-              These signals were active the moment this prepared response was created. Readiness OS monitors them continuously — no setup required.
+              These signals were active the moment this Readiness Protocol was created. Readiness OS monitors them continuously — no setup required.
             </p>
           </div>
           <span style={{
@@ -642,7 +642,7 @@ export default function TriggerGroupManager({ playbookId }: { playbookId: string
           </div>
         ) : visiblePreArmed.length === 0 ? (
           <div style={{ padding: "24px", border: "1px dashed #E5E7EB", borderRadius: 0, textAlign: "center" }}>
-            <p style={{ fontSize: 13, color: "#9CA3AF" }}>No pre-armed signals found for this prepared response domain.</p>
+            <p style={{ fontSize: 13, color: "#9CA3AF" }}>No pre-armed signals found for this Readiness Protocol domain.</p>
           </div>
         ) : (
           <>

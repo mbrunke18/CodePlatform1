@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 interface EmptyConfigStateProps {
-  type: 'departments' | 'stakeholders' | 'triggers' | 'prepared responses' | 'metrics' | 'general';
+  type: 'departments' | 'stakeholders' | 'triggers' | 'Readiness Protocols' | 'metrics' | 'general';
   title?: string;
   description?: string;
   actionPath?: string;
@@ -23,7 +23,7 @@ const configInfo = {
   departments: {
     icon: Building2,
     title: 'No Departments Configured',
-    description: 'Add your organizational departments to enable team coordination during prepared response execution.',
+    description: 'Add your organizational departments to enable team coordination during Readiness Protocol execution.',
     actionPath: '/organization-setup',
     actionLabel: 'Configure Organization',
     color: 'text-[#0A0F2E]',
@@ -49,10 +49,10 @@ const configInfo = {
   },
   playbooks: {
     icon: Layers,
-    title: 'No Prepared responses Customized',
-    description: 'Customize prepared responses from our library of 170 templates to match your organization\'s processes.',
+    title: 'No Readiness Protocols Customized',
+    description: 'Customize Readiness Protocols from our library of 170 templates to match your organization\'s processes.',
     actionPath: '/playbook-customization',
-    actionLabel: 'Customize Prepared responses',
+    actionLabel: 'Customize Readiness Protocols',
     color: 'text-green-500',
     bgColor: 'bg-green-500/10',
   },

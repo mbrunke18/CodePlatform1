@@ -122,7 +122,7 @@ const APPROVAL_TYPES = [
 
 const generateId = () => Date.now().toString(36);
 
-// Convert library template to prepared response task format
+// Convert library template to Readiness Protocol task format
 const templateToTask = (template: TaskTemplate): Task => ({
   id: template.id,
   templateId: template.id, // Preserve original template ID for duplicate detection
@@ -472,12 +472,12 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           </Card>
         </div>
 
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "prepared response" | "library" | "sequences")} className="mb-6">
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "Readiness Protocol" | "library" | "sequences")} className="mb-6">
           <TabsList className="bg-white border border-[#E8E4DC] rounded-none h-12 p-0 gap-8 px-6">
             <TabsTrigger 
-              value="prepared response" 
+              value="Readiness Protocol" 
               className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
-              data-testid="tab-prepared response-tasks"
+              data-testid="tab-Readiness Protocol-tasks"
             >
               Readiness Protocol Tasks ({tasks.length})
             </TabsTrigger>
@@ -497,7 +497,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="prepared response" className="mt-6">
+          <TabsContent value="Readiness Protocol" className="mt-6">
             <Card className="mb-6 rounded-none border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="relative">
@@ -663,7 +663,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                         Enterprise Task Library
                       </h2>
                       <p className="text-[#6B7280] mt-1">
-                        {libraryStats.total} pre-defined tasks across all IDEA phases. Add tasks to your prepared response to ensure everyone knows their role.
+                        {libraryStats.total} pre-defined tasks across all IDEA phases. Add tasks to your Readiness Protocol to ensure everyone knows their role.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -858,7 +858,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                           <p className="text-2xl font-bold text-[#C9A84C]">
                             {sequenceSummary?.reduce((sum, d) => sum + parseInt(d.playbookCount), 0)?.toLocaleString() ?? '0'}
                           </p>
-                          <p className="text-xs text-[#6B7280]">Total Prepared responses</p>
+                          <p className="text-xs text-[#6B7280]">Total Readiness Protocols</p>
                         </div>
                         <div className="text-center px-4 py-2 bg-white dark:bg-[#0A0F2E] rounded-none border">
                           <p className="text-2xl font-bold text-[#0A0F2E]">
@@ -908,7 +908,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                           <div className="flex justify-between text-sm">
                             <span className="text-[#6B7280] flex items-center gap-1">
                               <BookOpen className="h-3.5 w-3.5" />
-                              {playbookCount} prepared responses
+                              {playbookCount} Readiness Protocols
                             </span>
                             <span className="text-[#6B7280] flex items-center gap-1">
                               <ListChecks className="h-3.5 w-3.5" />
@@ -938,7 +938,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                     <CardContent className="py-12 text-center">
                       <Activity className="h-12 w-12 mx-auto mb-4 text-[#0A0F2E]" />
                       <h3 className="text-lg font-medium text-[#0A0F2E] mb-2">No Execution Sequences</h3>
-                      <p className="text-[#6B7280]">No prepared response task sequences found in the database.</p>
+                      <p className="text-[#6B7280]">No Readiness Protocol task sequences found in the database.</p>
                     </CardContent>
                   </Card>
                 )}

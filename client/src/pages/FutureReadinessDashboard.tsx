@@ -163,7 +163,7 @@ export default function FutureReadinessDashboard() {
             </h1>
             <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
               Real-time strategic preparedness and self-learning intelligence. 
-              Track organizational gravity across 170 prepared responses by VaughnMartin.
+              Track organizational gravity across 170 Readiness Protocols by VaughnMartin.
             </p>
           </div>
           <Button 

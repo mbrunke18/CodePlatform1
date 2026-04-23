@@ -114,7 +114,7 @@ export function SignalDemo({ progress }: SceneProps) {
                     <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
                   </motion.div>
                   <p className="text-red-400 font-bold text-xl mb-2">TRIGGER DETECTED</p>
-                  <p className="text-gray-900 text-sm mb-4">Competitor acquisition matches prepared response criteria</p>
+                  <p className="text-gray-900 text-sm mb-4">Competitor acquisition matches Readiness Protocol criteria</p>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

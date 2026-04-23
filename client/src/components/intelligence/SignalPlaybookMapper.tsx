@@ -1,7 +1,7 @@
 /**
  * Signal-to-Readiness Protocol Mapper
  * 
- * Connect triggers to automatic prepared response recommendations and activation.
+ * Connect triggers to automatic Readiness Protocol recommendations and activation.
  * Provides a visual interface for mapping signal categories to playbooks.
  */
 
@@ -64,7 +64,7 @@ export function SignalPlaybookMapper() {
     queryKey: ['/api/intelligence/catalog']
   });
 
-  // Fetch prepared responses - returns array directly
+  // Fetch Readiness Protocols - returns array directly
   const { data: playbooksData, isLoading: playbooksLoading } = useQuery<any[]>({
     queryKey: ['/api/scenario-templates']
   });
@@ -79,7 +79,7 @@ export function SignalPlaybookMapper() {
     cat.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Group prepared responses by category for easy lookup
+  // Group Readiness Protocols by category for easy lookup
   const playbooksByCategory = playbooks.reduce((acc: Record<string, any[]>, pb: any) => {
     const category = pb.category || 'General';
     if (!acc[category]) acc[category] = [];
@@ -99,7 +99,7 @@ export function SignalPlaybookMapper() {
             Signal-Readiness Protocol Mapping
           </h2>
           <p className="text-muted-foreground">
-            Connect intelligence signals to automated prepared response recommendations
+            Connect intelligence signals to automated Readiness Protocol recommendations
           </p>
         </div>
         <Button data-testid="button-configure-mappings">
@@ -117,7 +117,7 @@ export function SignalPlaybookMapper() {
           color="blue"
         />
         <StatCard
-          label="Available Prepared responses"
+          label="Available Readiness Protocols"
           value={playbooks.length}
           icon={<Play className="w-5 h-5" />}
           color="purple"
@@ -155,7 +155,7 @@ export function SignalPlaybookMapper() {
           <Card>
             <CardHeader className="pb-3">
               <CardTitle className="text-base">Signal Categories</CardTitle>
-              <CardDescription>Select a category to manage prepared response mappings</CardDescription>
+              <CardDescription>Select a category to manage Readiness Protocol mappings</CardDescription>
             </CardHeader>
             <CardContent className="p-0">
               <ScrollArea className="h-[500px]">
@@ -175,7 +175,7 @@ export function SignalPlaybookMapper() {
                     <div className="flex-1 min-w-0">
                       <div className="font-medium truncate">{category.name}</div>
                       <div className="text-xs text-muted-foreground">
-                        {category.recommendedPlaybooks.length} prepared responses linked
+                        {category.recommendedPlaybooks.length} Readiness Protocols linked
                       </div>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
@@ -208,7 +208,7 @@ export function SignalPlaybookMapper() {
                   <div className="flex items-center justify-between">
                     <h4 className="font-medium flex items-center gap-2">
                       <Link className="w-4 h-4" />
-                      Linked Prepared responses
+                      Linked Readiness Protocols
                     </h4>
                     <Button variant="outline" size="sm" data-testid="button-add-mapping">
                       <Plus className="w-4 h-4 mr-1" />
@@ -220,7 +220,7 @@ export function SignalPlaybookMapper() {
                     <div className="p-8 text-center border border-dashed">
                       <Unlink className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
                       <p className="text-muted-foreground text-sm">
-                        No prepared responses linked to this signal category
+                        No Readiness Protocols linked to this signal category
                       </p>
                     </div>
                   ) : (
@@ -272,13 +272,13 @@ export function SignalPlaybookMapper() {
                     <div>
                       <h4 className="font-medium">Auto-Activation</h4>
                       <p className="text-sm text-muted-foreground">
-                        Automatically recommend prepared responses when signals trigger
+                        Automatically recommend Readiness Protocols when signals trigger
                       </p>
                     </div>
                     <Switch data-testid="switch-auto-activation" />
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    When enabled, Readiness OS will automatically recommend linked prepared responses when any signal in this category triggers an alert.
+                    When enabled, Readiness OS will automatically recommend linked Readiness Protocols when any signal in this category triggers an alert.
                   </div>
                 </div>
               </CardContent>
@@ -289,7 +289,7 @@ export function SignalPlaybookMapper() {
                 <Target className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
                 <h4 className="font-semibold mb-2">Select a Signal Category</h4>
                 <p className="text-muted-foreground text-sm">
-                  Choose a signal category from the list to manage its prepared response mappings
+                  Choose a signal category from the list to manage its Readiness Protocol mappings
                 </p>
               </CardContent>
             </Card>

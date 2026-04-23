@@ -20,15 +20,15 @@ const SCENE_NARRATIONS = [
   "Before all that? Football coach. 5 years. What I learned: you never run a play in a game without practicing it first. You have a playbook. Everyone knows their role. When the whistle blows, you execute.",
   "But in business? We wing it. Every single time. It's insane when you think about it. And now that AI has removed the processing constraint — there is no excuse left for the old model.",
   "So I built Readiness OS. Not another AI tool. The new operating model. Redesigned from first principles for the AI era.",
-  "170 prepared responses across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
-  "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built prepared responses ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
+  "170 Readiness Protocols across 9 strategic domains. Market entry, M&A, competitive response, crisis management, product launches, regulatory compliance, digital transformation, AI governance, and cybersecurity.",
+  "The IDEA Framework. Identify, Detect, Execute, Advance. AI monitors for signals. Pre-built Readiness Protocols ready to activate. Coordinated execution with your team. Then capture what worked for next time.",
   "One click to activate a Readiness Protocol. Tasks auto-assigned. Stakeholders notified. Documents staged. Budgets unlocked. Everyone knows their role.",
   "From signal detection to coordinated execution. 12 minutes. That's 30 days of mobilization compressed to 12 minutes. While competitors are still scheduling their first alignment call — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
   "We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model Fortune 1000s have been running for 40 years.",
   "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
-  "Readiness OS has an 18-month head start. 170 prepared responses built. Platform validated with enterprise customers. The moat widens every day.",
+  "Readiness OS has an 18-month head start. 170 Readiness Protocols built. Platform validated with enterprise customers. The moat widens every day.",
   "The companies that figure this out first don't just survive. They dominate. Welcome to Readiness OS. The new operating model for AI-native enterprises.",
 ];
 
@@ -292,7 +292,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
     { duration: 11000 },  // 7: Football coaching
     { duration: 9000 },   // 8: Business winging it
     { duration: 9000 },   // 9: So I built Readiness OS
-    { duration: 12000 },  // 10: 170 prepared responses / 9 domains
+    { duration: 12000 },  // 10: 170 Readiness Protocols / 9 domains
     { duration: 11000 },  // 11: IDEA framework
     { duration: 9000 },   // 12: One click activation
     { duration: 9000 },   // 13: 12 minutes / 3,600×
@@ -530,7 +530,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5, delay: 2 }}
                   className="flex flex-wrap justify-center gap-4 text-red-300"
                 >
-                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">No prepared responses</span>
+                  <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">No Readiness Protocols</span>
                   <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">No pre-staged coordination</span>
                   <span className="px-4 py-2 bg-red-500/20 border border-red-500/30">Reinventing under pressure</span>
                 </motion.div>
@@ -711,7 +711,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
             </Scene>
           )}
 
-          {/* Scene 10: 170 prepared responses */}
+          {/* Scene 10: 170 Readiness Protocols */}
           {currentScene === 10 && (
             <Scene key="scene-10">
               <div className="text-center max-w-5xl">
@@ -722,7 +722,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   className="mb-8"
                 >
                   <span className="text-6xl md:text-8xl font-bold text-[#2B8A6E]">170</span>
-                  <span className="text-2xl md:text-4xl text-gray-800 ml-4">PREPARED RESPONSES</span>
+                  <span className="text-2xl md:text-4xl text-gray-800 ml-4">Readiness Protocols</span>
                 </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -1100,7 +1100,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                       className="px-8 py-6 text-lg border-slate-600 text-gray-800 hover:bg-slate-800"
                     >
                       <BookOpen className="mr-2 h-5 w-5" />
-                      Browse Prepared responses
+                      Browse Readiness Protocols
                     </Button>
                   </Link>
                 </motion.div>

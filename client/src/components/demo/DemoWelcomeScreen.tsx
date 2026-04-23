@@ -39,7 +39,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
       icon: CheckCircle, 
       value: "13", 
       label: "Strategic Scenarios",
-      comparison: "Pre-built prepared response templates",
+      comparison: "Pre-built Readiness Protocol templates",
       color: "text-[#C9A84C]"
     },
     { 
@@ -52,11 +52,11 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
   ];
 
   const demoHighlights = [
-    "12-Minute Execution Prepared responses (vs weeks of traditional mobilization)",
+    "12-Minute Execution Readiness Protocols (vs weeks of traditional mobilization)",
     "Strategic Work Breakdown Structure with phases & dependencies",
     "All 5 Intelligence Modules in action",
     "Trigger-activated coordinated execution",
-    "170 strategic prepared response templates across 9 operational domains",
+    "170 strategic Readiness Protocol templates across 9 operational domains",
     "Interactive ROI calculations showing 3,600× Execution Head Start",
     "Practice drills and strategic rehearsals"
   ];

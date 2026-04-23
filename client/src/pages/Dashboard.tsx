@@ -422,12 +422,12 @@ export default function Dashboard() {
                         <Zap className="h-6 w-6" style={{ color: GOLD }} />
                       </div>
                       <h3 className="font-semibold text-sm mb-1" style={{ color: NAVY }}>No activations yet</h3>
-                      <p className="text-xs mb-5" style={{ color: "#6B7280" }}>Activate a prepared response to begin tracking execution history and performance data.</p>
+                      <p className="text-xs mb-5" style={{ color: "#6B7280" }}>Activate a Readiness Protocol to begin tracking execution history and performance data.</p>
                       <div className="flex flex-col sm:flex-row gap-2 justify-center">
                         <Link href="/playbook-library">
                           <Button size="sm" className="rounded-none text-xs font-bold uppercase tracking-wider" style={{ background: NAVY, color: "#fff" }}>
                             <Target className="h-3.5 w-3.5 mr-2" />
-                            Browse Prepared responses
+                            Browse Readiness Protocols
                           </Button>
                         </Link>
                         <Link href="/command-center">
@@ -499,7 +499,7 @@ export default function Dashboard() {
                         <Target className="h-4 w-4 text-white" />
                       </div>
                       <div className="text-left">
-                        <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Browse Prepared responses</div>
+                        <div className="font-bold text-xs uppercase tracking-wider text-[#0A0F2E]">Browse Readiness Protocols</div>
                         <div className="text-[10px] text-[#6B7280]">170 strategic templates</div>
                       </div>
                     </Button>

@@ -19,7 +19,7 @@ const demoBriefings = [
     executiveSummary: 'Revenue exceeded targets by 12.3% driven by enterprise expansion and new logo acquisition. Operating margins improved 180bps YoY to 34.2%. Customer retention rate held steady at 96.8%, with NPS increasing to 72. Three strategic initiatives on track for H1 2026 delivery.',
     keyInsights: [
       'Enterprise ARR grew 28% YoY to $47.2M, exceeding guidance by $3.1M',
-      'Sales cycle compression from 94 to 71 days following prepared response standardization',
+      'Sales cycle compression from 94 to 71 days following Readiness Protocol standardization',
       'Gross margin expansion to 78.4% reflects operational leverage from platform investments'
     ],
     confidenceLevel: 94,

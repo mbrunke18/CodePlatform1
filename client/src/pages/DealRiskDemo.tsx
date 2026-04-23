@@ -84,7 +84,7 @@ export default function DealRiskDemo() {
   });
 
   const selectPlaybookMutation = useMutation({
-    mutationFn: () => apiRequest('POST', '/api/demo/deal-risk/identify/select-prepared response'),
+    mutationFn: () => apiRequest('POST', '/api/demo/deal-risk/identify/select-Readiness Protocol'),
     onSuccess: () => {
       refetchStatus();
       setCompletedPhases(prev => [...prev, 'identify']);
@@ -228,7 +228,7 @@ export default function DealRiskDemo() {
                     IDENTIFY Phase
                   </CardTitle>
                   <CardDescription className="text-white/60">
-                    Connect your systems and select a prepared response
+                    Connect your systems and select a Readiness Protocol
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -380,7 +380,7 @@ export default function DealRiskDemo() {
                       ADVANCE Phase
                     </CardTitle>
                     <CardDescription className="text-white/60">
-                      Capture learnings and strengthen your prepared response
+                      Capture learnings and strengthen your Readiness Protocol
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">

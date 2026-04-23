@@ -102,7 +102,7 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
       ],
       confidence: 96,
       domains: ['Technology', 'Regulatory', 'Reputation'],
-      leadTime: '8 days of early signal — prepared response pre-staged before the breach confirmed',
+      leadTime: '8 days of early signal — Readiness Protocol pre-staged before the breach confirmed',
     },
     playbook: {
       name: 'Cybersecurity Breach — Critical Data Exposure',
@@ -190,7 +190,7 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
       ],
       confidence: 91,
       domains: ['Finance', 'Board Governance', 'Market'],
-      leadTime: '3 weeks of early signal — activist defense prepared response pre-staged before filing',
+      leadTime: '3 weeks of early signal — activist defense Readiness Protocol pre-staged before filing',
     },
     playbook: {
       name: 'Activist Investor Response — Hostile Shareholder Campaign',
@@ -556,7 +556,7 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
       <div key={stage} style={{ animation: 'fadeInUp 0.3s ease' }}>
         {stage === 'trigger'    && <TriggerStage    scenario={scenario} />}
         {stage === 'detection'  && <DetectionStage  scenario={scenario} live={live} />}
-        {stage === 'prepared response'   && <PlaybookStage   scenario={scenario} live={live} />}
+        {stage === 'Readiness Protocol'   && <PlaybookStage   scenario={scenario} live={live} />}
         {stage === 'execution'  && <ExecutionStage  scenario={scenario} live={live} />}
         {stage === 'outcome'    && <OutcomeStage    scenario={scenario} live={live} onBack={onBack} />}
       </div>
@@ -691,7 +691,7 @@ function DetectionStage({ scenario, live }: { scenario: Scenario; live: LiveData
       <div style={{ background: NAVY, borderRadius: 0, padding: '22px 28px' }}>
         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>The Core Principle</div>
         <p style={{ fontSize: 15, color: 'rgba(240,237,228,0.90)', lineHeight: 1.75, margin: 0, fontWeight: 500 }}>
-          AI monitored 221 trigger patterns across 248+ data points. When {scenario.detection.signals.length} signals converged, the {scenario.playbook.name.split('—')[0].trim()} prepared response was automatically staged — before this trigger event ever occurred. The preparation happened before the pressure.
+          AI monitored 221 trigger patterns across 248+ data points. When {scenario.detection.signals.length} signals converged, the {scenario.playbook.name.split('—')[0].trim()} Readiness Protocol was automatically staged — before this trigger event ever occurred. The preparation happened before the pressure.
         </p>
       </div>
     </div>
@@ -715,16 +715,16 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
         </div>
       </div>
 
-      {/* Live prepared response match */}
+      {/* Live Readiness Protocol match */}
       {live.matchedPlaybook ? (
         <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderLeft: `3px solid ${TEAL}`, borderRadius: 0, padding: '14px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <Wifi size={14} color={TEAL} />
-            <span style={{ fontSize: 12, fontWeight: 700, color: TEAL }}>This prepared response exists in your live library —</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: TEAL }}>This Readiness Protocol exists in your live library —</span>
             <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>{live.matchedPlaybook.name}</span>
           </div>
           <button
-            onClick={() => navigate(`/prepared response-library/${live.matchedPlaybook!.id}`)}
+            onClick={() => navigate(`/Readiness Protocol-library/${live.matchedPlaybook!.id}`)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 0, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
           >
             View Live Readiness Protocol <ArrowRight size={11} />
@@ -733,7 +733,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
       ) : (
         <div style={{ background: 'rgba(43,138,110,0.06)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0, padding: '12px 20px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
           <FileText size={13} color='#2B8A6E' />
-          <span style={{ fontSize: 12, fontWeight: 600, color: '#2B8A6E' }}>170 prepared responses pre-staged in your library — this prepared response activates the moment the trigger fires.</span>
+          <span style={{ fontSize: 12, fontWeight: 600, color: '#2B8A6E' }}>170 Readiness Protocols pre-staged in your library — this Readiness Protocol activates the moment the trigger fires.</span>
         </div>
       )}
 
@@ -916,7 +916,7 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
             onClick={() => navigate('/playbooks')}
             style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(255,255,255,0.1)', color: IVORY, border: '1px solid rgba(255,255,255,0.2)', borderRadius: 0, padding: '13px 28px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
           >
-            Browse 170 Prepared responses <ChevronRight size={14} />
+            Browse 170 Readiness Protocols <ChevronRight size={14} />
           </button>
           <button
             onClick={onBack}
@@ -943,7 +943,7 @@ export default function ExecutiveScenarioSuite() {
           <Lock size={32} color="#94A3B8" style={{ marginBottom: 20 }} />
           <h2 style={{ fontSize: 24, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Access Required</h2>
           <p style={{ fontSize: 14, color: '#64748B', lineHeight: 1.7, marginBottom: 28 }}>
-            The Executive Scenario Suite is available to authorized users. Request access to walk through full industry scenarios with real prepared responses and execution data.
+            The Executive Scenario Suite is available to authorized users. Request access to walk through full industry scenarios with real Readiness Protocols and execution data.
           </p>
           <button
             onClick={() => navigate('/request-access')}
@@ -1044,7 +1044,7 @@ export default function ExecutiveScenarioSuite() {
         {/* Footer note */}
         <div style={{ marginTop: 52, paddingTop: 28, borderTop: '1px solid #E2E8F0', textAlign: 'center' }}>
           <p style={{ fontSize: 12, color: '#94A3B8', fontWeight: 500 }}>
-            170 prepared responses · 221 triggers · 9 strategic domains · 12-minute execution across all scenarios
+            170 Readiness Protocols · 221 triggers · 9 strategic domains · 12-minute execution across all scenarios
           </p>
         </div>
 

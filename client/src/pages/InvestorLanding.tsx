@@ -113,7 +113,7 @@ export default function InvestorLanding() {
                 AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays.
               </p>
               <p className="text-base font-bold leading-relaxed" style={{ color: '#C9A84C' }}>
-                VaughnMartin redesigned how work flows from first principles for the AI era. Pre-staged prepared responses replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
+                VaughnMartin redesigned how work flows from first principles for the AI era. Pre-staged Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
               </p>
               <div className="mt-4 pt-4 border-t border-white/10 text-sm text-white/50 italic">
                 We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model Fortune 1000s have been running for 40 years.
@@ -191,7 +191,7 @@ export default function InvestorLanding() {
                   n: '01',
                   label: 'Accumulated Decision Logic',
                   accent: '#C9A84C',
-                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of Fortune 1000 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 170 prepared responses from two decades of real crisis response.',
+                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of Fortune 1000 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 170 Readiness Protocols from two decades of real crisis response.',
                   proof: '20 years of operational experience → not replicable with funding',
                 },
                 {
@@ -383,7 +383,7 @@ export default function InvestorLanding() {
                     <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                     <p className="text-[#0A0F2E] text-sm">"CIOs evolving from cost managers to strategy architects"</p>
                   </div>
-                  <p className="text-[#2B8A6E] text-sm italic">→ Our 170 prepared responses give them the execution infrastructure</p>
+                  <p className="text-[#2B8A6E] text-sm italic">→ Our 170 Readiness Protocols give them the execution infrastructure</p>
                 </CardContent>
               </Card>
 
@@ -476,7 +476,7 @@ export default function InvestorLanding() {
                         <Quote className="h-4 w-4 text-[#6B7280] flex-shrink-0 mt-1" />
                         <p className="text-[#0A0F2E] text-sm italic">"AI tools don't reduce work, they consistently intensify it. Without an AI practice, the natural tendency of AI-assisted work is not contraction but intensification — with implications for burnout, decision quality, and long-term sustainability."</p>
                       </div>
-                      <p className="text-[#2B8A6E] text-sm font-semibold">→ Readiness OS is the AI practice at the enterprise coordination layer — pre-staged prepared responses, decision gates, and sequenced execution phases with executive sign-off at every step.</p>
+                      <p className="text-[#2B8A6E] text-sm font-semibold">→ Readiness OS is the AI practice at the enterprise coordination layer — pre-staged Readiness Protocols, decision gates, and sequenced execution phases with executive sign-off at every step.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -499,7 +499,7 @@ export default function InvestorLanding() {
             <div className="overflow-hidden border border-[#E8E4DC]">
               <img
                 src={productArchitectureImg}
-                alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Prepared responses, Execution Outputs, Command Center, and Integration Layer"
+                alt="Readiness OS End-to-End Product Architecture — Signal Sources, AI Engine, 170 Readiness Protocols, Execution Outputs, Command Center, and Integration Layer"
                 className="w-full h-auto"
                 loading="eager"
               />
@@ -755,7 +755,7 @@ export default function InvestorLanding() {
                   <div>
                     <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>What this means for the product</div>
                     <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
-                      Readiness OS eliminates the rediscovery tax entirely. 170 pre-staged prepared responses mean the context, ownership, and decision logic exist <em>before</em> the trigger fires — not reconstructed after. The platform is the continuity layer Bain describes as missing.
+                      Readiness OS eliminates the rediscovery tax entirely. 170 pre-staged Readiness Protocols mean the context, ownership, and decision logic exist <em>before</em> the trigger fires — not reconstructed after. The platform is the continuity layer Bain describes as missing.
                     </p>
                   </div>
                   <div style={{ width: "100%", height: 1, background: "#E8E4DC" }} />
@@ -771,7 +771,7 @@ export default function InvestorLanding() {
 
             <div className="p-5 bg-[#2B8A6E]/15 border border-[#2B8A6E]/50 text-center">
               <p className="text-[#2B8A6E] font-semibold mb-1">Every firm is consulting on the problem. Readiness OS built the product.</p>
-              <p className="text-[#0A0F2E] text-sm">170 prepared responses, 9 strategic domains, pre-defined governance — ready today.</p>
+              <p className="text-[#0A0F2E] text-sm">170 Readiness Protocols, 9 strategic domains, pre-defined governance — ready today.</p>
             </div>
           </div>
         </section>
@@ -806,7 +806,7 @@ export default function InvestorLanding() {
                   "Organizations must address memory hygiene, permissioning, and knowledge portability — particularly who owns the institutional memory agents accumulate."
                 </p>
                 <p style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.6 }}>
-                  Readiness OS answers this directly: the enterprise owns its preparation history. Every prepared response rehearsal, every ownership acknowledgment, every challenge-rights exchange is embedded in the organization's preparation record — not locked in a vendor's platform.
+                  Readiness OS answers this directly: the enterprise owns its preparation history. Every Readiness Protocol rehearsal, every ownership acknowledgment, every challenge-rights exchange is embedded in the organization's preparation record — not locked in a vendor's platform.
                 </p>
               </div>
               <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "20px 22px" }}>
@@ -1115,7 +1115,7 @@ export default function InvestorLanding() {
                       <Zap className="h-5 w-5 text-[#0A0F2E]" />
                       <div className="font-semibold text-[#0A0F2E]">Premium Templates</div>
                     </div>
-                    <div className="text-[#0A0F2E]">Industry-specific prepared responses ($5K-$50K per template pack)</div>
+                    <div className="text-[#0A0F2E]">Industry-specific Readiness Protocols ($5K-$50K per template pack)</div>
                   </div>
                   <div data-testid="expansion-3">
                     <div className="flex items-center gap-2 mb-2">
@@ -1369,14 +1369,14 @@ export default function InvestorLanding() {
                 <div style={{ marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid #F0EDE4' }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: '#2B8A6E', marginBottom: 8 }}>The fix:</div>
                   <p style={{ fontSize: 14, color: '#4B5563', lineHeight: 1.7, margin: 0 }}>
-                    Pre-stage 170 responses before the trigger fires. When the signal crosses the confidence threshold, the prepared response is already built, stakeholders pre-assigned, and executive authorization takes 8 minutes — not 30 days.
+                    Pre-stage 170 responses before the trigger fires. When the signal crosses the confidence threshold, the Readiness Protocol is already built, stakeholders pre-assigned, and executive authorization takes 8 minutes — not 30 days.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-3 gap-3 mb-8">
                   {[
                     { n: '221', l: 'Trigger types monitored' },
-                    { n: '170', l: 'Pre-staged prepared responses' },
+                    { n: '170', l: 'Pre-staged Readiness Protocols' },
                     { n: '12 min', l: 'Signal to execution' },
                   ].map(s => (
                     <div key={s.n} style={{ textAlign: 'center' as const, padding: '14px 8px', background: '#F8F7F4', border: '1px solid #E8E4DC' }}>

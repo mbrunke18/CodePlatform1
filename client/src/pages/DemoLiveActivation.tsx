@@ -559,7 +559,7 @@ function DemoLiveActivation() {
                   </h2>
                   <Badge className="bg-red-600 text-white text-lg px-4 py-2">ACTIVE</Badge>
                 </div>
-                <p className="text-xl text-red-800 dark:text-red-200 mb-3" data-testid="text-prepared response-name">
+                <p className="text-xl text-red-800 dark:text-red-200 mb-3" data-testid="text-Readiness Protocol-name">
                   Readiness Protocol: {DEMO_SCENARIO.playbook}
                 </p>
                 <p className="text-lg text-red-700 dark:text-red-300" data-testid="text-scenario-description">

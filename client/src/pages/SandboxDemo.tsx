@@ -148,7 +148,7 @@ interface SimulationEvent {
 
 const EVENT_EXPLANATIONS: Record<string, string> = {
   trigger: "Readiness OS detected this event through connected monitoring systems. In production, this would come from your SIEM, news feeds, or internal alerts.",
-  ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured prepared response rules.",
+  ai: "The AI assistant is processing the situation and taking automated actions based on your pre-configured Readiness Protocol rules.",
   stakeholder: "Notifications are being sent through your selected channels (Slack, email, SMS) to the right people automatically.",
   decision: "A decision point has been reached. In production, executives receive mobile alerts with pre-staged options to choose from.",
   task: "Tasks are being assigned to team members with clear instructions, deadlines, and dependencies already mapped out.",
@@ -390,7 +390,7 @@ export default function SandboxDemo() {
     
     events.push({
       time: `0:${String(minute).padStart(2, '0')}`,
-      event: `AI matching to ${config.domainName} prepared response (${config.aiAssistEnabled ? '98%' : '85%'} confidence)`,
+      event: `AI matching to ${config.domainName} Readiness Protocol (${config.aiAssistEnabled ? '98%' : '85%'} confidence)`,
       type: 'ai'
     });
     minute++;
@@ -552,7 +552,7 @@ export default function SandboxDemo() {
           What strategic challenge do you want to prepare for?
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto font-medium">
-          Select a domain to build your personalized prepared response
+          Select a domain to build your personalized Readiness Protocol
         </p>
       </div>
 
@@ -838,7 +838,7 @@ export default function SandboxDemo() {
                 <GitBranch className="h-5 w-5 text-[#0A0F2E]" />
                 Decision Tree Configuration
               </CardTitle>
-              <CardDescription>Define approval gates and decision points in your prepared response</CardDescription>
+              <CardDescription>Define approval gates and decision points in your Readiness Protocol</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {config.decisionPoints.map((dp, index) => (
@@ -1215,7 +1215,7 @@ export default function SandboxDemo() {
                 <BarChart3 className="h-5 w-5 text-[#0A0F2E]" />
                 Success Metrics & KPIs
               </CardTitle>
-              <CardDescription>Define measurable targets to track prepared response effectiveness</CardDescription>
+              <CardDescription>Define measurable targets to track Readiness Protocol effectiveness</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {SUCCESS_METRICS.map((metric) => (
@@ -1542,7 +1542,7 @@ export default function SandboxDemo() {
           Configure Detection & Triggers
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto font-medium">
-          Define signal sources, thresholds, and activation rules for your {config.domainName} prepared response
+          Define signal sources, thresholds, and activation rules for your {config.domainName} Readiness Protocol
         </p>
       </div>
 
@@ -1595,7 +1595,7 @@ export default function SandboxDemo() {
               <Zap className="h-5 w-5 text-[#C9A84C]" />
               Trigger Type
             </CardTitle>
-            <CardDescription className="text-slate-500 font-medium">Activation mechanism for this prepared response</CardDescription>
+            <CardDescription className="text-slate-500 font-medium">Activation mechanism for this Readiness Protocol</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 pt-6">
             <div className="grid grid-cols-2 gap-3">
@@ -1988,7 +1988,7 @@ export default function SandboxDemo() {
             Your Personalized ROI Analysis
           </h2>
           <p className="text-lg text-gray-800 dark:text-slate-300">
-            Based on your complete {config.domainName} prepared response configuration
+            Based on your complete {config.domainName} Readiness Protocol configuration
           </p>
         </div>
 

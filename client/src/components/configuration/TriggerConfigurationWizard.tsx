@@ -152,12 +152,12 @@ export default function TriggerConfigurationWizard({
     }
   }, [editTrigger, isOpen]);
   
-  // Fetch available prepared responses (all 170 templates)
+  // Fetch available Readiness Protocols (all 170 templates)
   const { data: playbooks } = useQuery({
     queryKey: ['/api/playbooks/templates'],
   });
 
-  // Map trigger categories to prepared response domains for smart filtering
+  // Map trigger categories to Readiness Protocol domains for smart filtering
   const CATEGORY_TO_DOMAIN: Record<string, string> = {
     competitive: 'Market Dynamics', market: 'Market Dynamics',
     financial: 'Financial Strategy', economic: 'Financial Strategy',
@@ -352,7 +352,7 @@ export default function TriggerConfigurationWizard({
                   {s === 1 && 'Category'}
                   {s === 2 && 'Conditions'}
                   {s === 3 && 'Notify'}
-                  {s === 4 && 'Prepared responses'}
+                  {s === 4 && 'Readiness Protocols'}
                 </span>
               </div>
             ))}
@@ -367,7 +367,7 @@ export default function TriggerConfigurationWizard({
             {/* Situation framing */}
             <div className="p-4 border-l-4" style={{ background: 'rgba(201,168,76,0.06)', borderColor: '#C9A84C' }}>
               <p className="text-sm font-semibold" style={{ color: '#0A0F2E' }}>What strategic situation do you want to prepare for?</p>
-              <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right prepared response the moment it fires.</p>
+              <p className="text-xs text-gray-500 mt-1">Define the scenario — we'll monitor the right signals and surface the right Readiness Protocol the moment it fires.</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {[
                   { label: 'Competitor price cut', cat: 'competitive', desc: 'Competitor cuts prices significantly' },
@@ -721,7 +721,7 @@ export default function TriggerConfigurationWizard({
               <div className="flex items-center gap-2">
                 <PlayCircle className="h-5 w-5 text-green-600" />
                 <span className="font-medium text-green-800 dark:text-green-200">
-                  Link prepared responses to this trigger for faster response
+                  Link Readiness Protocols to this trigger for faster response
                 </span>
               </div>
             </div>
@@ -729,7 +729,7 @@ export default function TriggerConfigurationWizard({
             <div className="flex items-center justify-between">
               <div>
                 <Label className="text-lg font-semibold">Auto-Activate Readiness Protocol</Label>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected prepared response when trigger fires</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300">Automatically activate selected Readiness Protocol when trigger fires</p>
               </div>
               <Switch 
                 checked={autoActivatePlaybook} 
@@ -740,13 +740,13 @@ export default function TriggerConfigurationWizard({
             
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label className="text-lg font-semibold">Link Prepared responses to This Trigger</Label>
+                <Label className="text-lg font-semibold">Link Readiness Protocols to This Trigger</Label>
                 <span className="text-xs font-semibold px-2 py-1 rounded" style={{ background: 'rgba(201,168,76,0.12)', color: '#C9A84C' }}>
                   {selectedPlaybooks.length} selected
                 </span>
               </div>
               <p className="text-sm text-gray-600">
-                When this trigger fires, these prepared responses will be immediately surfaced for decision-maker approval and execution.
+                When this trigger fires, these Readiness Protocols will be immediately surfaced for decision-maker approval and execution.
               </p>
 
               {relevantPlaybooks.length > 0 && (
@@ -781,7 +781,7 @@ export default function TriggerConfigurationWizard({
               {otherPlaybooks.length > 0 && (
                 <>
                   <div className="text-xs font-bold uppercase tracking-wider text-gray-400 mt-2">
-                    Other prepared responses ({otherPlaybooks.length})
+                    Other Readiness Protocols ({otherPlaybooks.length})
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-[140px] overflow-y-auto opacity-70">
                     {otherPlaybooks.map((playbook: any) => (
@@ -848,7 +848,7 @@ export default function TriggerConfigurationWizard({
                     </div>
                   </div>
                   <div>
-                    <span className="text-gray-600 dark:text-gray-300">Linked Prepared responses:</span>
+                    <span className="text-gray-600 dark:text-gray-300">Linked Readiness Protocols:</span>
                     <p className="font-medium">{selectedPlaybooks.length} selected</p>
                   </div>
                 </div>

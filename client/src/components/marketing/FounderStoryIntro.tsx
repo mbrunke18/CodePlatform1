@@ -9,7 +9,7 @@ const SCENE_NARRATIONS = [
   "That's how long it takes most Fortune 500 companies to respond to a crisis. Conference calls. Scrambling. Waiting on decisions. Meanwhile, the damage compounds. The window closes.",
   "I spent 20 years inside Fortune 500 companies watching this happen. Ford, Toyota, Lockheed Martin, Boyd Gaming, Churchill Downs, Charles Schwab. I've watched 50 million dollars evaporate because we couldn't coordinate fast enough.",
   "I kept thinking—in football, we'd never run a play without practicing it first. But in business? We wing it. Every time.",
-  "That's why I built Readiness OS. 170 prepared responses across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",
+  "That's why I built Readiness OS. 170 Readiness Protocols across every scenario you'll face. Crisis Response, Market Entry, M&A Integration, Product Launches.",
   "From signal to coordinated execution. 12 minutes. One click to activate. Roles assigned. Teams moving in parallel.",
   "This isn't about working harder. It's about executing with discipline—the kind that wins championships.",
   "The companies that figure this out first don't just survive. They dominate. Welcome to Readiness OS.",
@@ -496,7 +496,7 @@ export default function FounderStoryIntro({ onComplete, onSkip }: FounderStoryIn
                   transition={{ duration: 0.5, delay: 1 }}
                   className="text-xl md:text-2xl text-gray-800 mb-6"
                 >
-                  170 prepared responses across every scenario you'll face
+                  170 Readiness Protocols across every scenario you'll face
                 </motion.p>
                 <motion.div
                   initial={{ opacity: 0 }}

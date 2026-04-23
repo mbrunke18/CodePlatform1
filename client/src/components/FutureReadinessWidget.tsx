@@ -182,10 +182,10 @@ export default function FutureReadinessWidget({ organizationId }: { organization
             <div className="text-xs text-muted-foreground mt-1">Weak Signals Detected</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-green-600 dark:text-green-400" data-testid="text-prepared responses-ready">
+            <div className="text-2xl font-bold text-green-600 dark:text-green-400" data-testid="text-Readiness Protocols-ready">
               {readinessData?.playbooksReady || 170}/{readinessData?.playbooksTotal || 170}
             </div>
-            <div className="text-xs text-muted-foreground mt-1">Prepared responses Ready</div>
+            <div className="text-xs text-muted-foreground mt-1">Readiness Protocols Ready</div>
           </div>
         </div>
       </CardContent>

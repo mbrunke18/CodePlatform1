@@ -103,7 +103,7 @@ const roleConfigs: RoleConfig[] = [
     title: 'Chief Human Resources Officer',
     icon: Users,
     hookQuestion: "What's the #1 reason your top performers give in exit interviews?",
-    situationLine: 'Key talent departing. Culture score dropping. Nobody has a retention prepared response staged.',
+    situationLine: 'Key talent departing. Culture score dropping. Nobody has a retention Readiness Protocol staged.',
     keyMetric: '85% engagement · $2.1M saved',
     metricBefore: '6 weeks',
     metricAfter: '12 min',
@@ -323,7 +323,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
               Your Role. Your Trigger. Your Readiness Protocol.
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', maxWidth: 580, margin: '0 auto 28px', lineHeight: 1.6 }}>
-              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your prepared response before the trigger fires.
+              Every C-suite role faces a different strategic trigger — competitive moves, regulatory deadlines, M&A signals, talent shifts. Select yours — then watch Readiness OS pre-stage your Readiness Protocol before the trigger fires.
             </p>
             {/* The core contrast */}
             <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '14px 28px' }}>

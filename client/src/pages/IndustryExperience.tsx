@@ -83,7 +83,7 @@ const INDUSTRIES: Record<string, IndustryData> = {
       { name: 'Jean-Jacques Guiony', role: 'CFO, LVMH Group', responseTime: '3 min 5 sec' },
     ],
     executionTasks: [
-      { task: 'Multi-brand launch prepared response activated across 10 brand CEOs', tool: 'Microsoft Teams + Slack', status: 'Complete', time: '0:30' },
+      { task: 'Multi-brand launch Readiness Protocol activated across 10 brand CEOs', tool: 'Microsoft Teams + Slack', status: 'Complete', time: '0:30' },
       { task: '47 retail location lease negotiations initiated simultaneously', tool: 'Salesforce + DocuSign', status: 'Complete', time: '1:00' },
       { task: 'WeChat Mini Programs configured for all 10 brands', tool: 'Tencent API + Custom', status: 'Complete', time: '1:30' },
       { task: 'KOL partnerships activated — 200 influencers across Douyin/Red', tool: 'Influencer Platform + Sprout Social', status: 'Complete', time: '2:30' },
@@ -507,7 +507,7 @@ const FALLBACK_INDUSTRY = INDUSTRIES['financial-ransomware'];
 
 const STAGES = [
   { id: 'intro', label: 'The Scenario' },
-  { id: 'prepared response', label: 'Build Readiness Protocol' },
+  { id: 'Readiness Protocol', label: 'Build Readiness Protocol' },
   { id: 'triggers', label: 'Configure Triggers' },
   { id: 'data', label: 'Connect Data' },
   { id: 'customize', label: 'Customize' },
@@ -778,9 +778,9 @@ export default function IndustryExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PREPARED RESPONSE</Badge>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR Readiness Protocol</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Build Your Readiness Protocol</h2>
-              <p className="text-[#6B7280]">Customize your prepared response for {industry.organization}</p>
+              <p className="text-[#6B7280]">Customize your Readiness Protocol for {industry.organization}</p>
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -889,7 +889,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#C9A84C]/20 text-[#C9A84C] rounded-none font-bold uppercase tracking-widest"><Radio className="h-3 w-3 mr-1" /> TRIGGER CONFIGURATION</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Configure Your Triggers</h2>
-              <p className="text-[#6B7280]">Set up conditions that activate your {industry.industry} prepared response</p>
+              <p className="text-[#6B7280]">Set up conditions that activate your {industry.industry} Readiness Protocol</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
@@ -1463,7 +1463,7 @@ export default function IndustryExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><Award className="h-3 w-3 mr-1" /> OUTCOMES</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Execution Results</h2>
-              <p className="text-[#6B7280]">The measurable impact of your {industry.industry} prepared response</p>
+              <p className="text-[#6B7280]">The measurable impact of your {industry.industry} Readiness Protocol</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {industry.outcomes.map((outcome, i) => (
@@ -1511,7 +1511,7 @@ export default function IndustryExperience() {
               <div className="bg-white border border-[#0A0F2E]/20 p-4 text-center">
                 <BarChart3 className="h-6 w-6 text-[#0A0F2E] mx-auto mb-2" />
                 <div className="text-2xl font-bold text-[#0A0F2E]">170</div>
-                <div className="text-xs text-[#6B7280]">Total Prepared responses</div>
+                <div className="text-xs text-[#6B7280]">Total Readiness Protocols</div>
               </div>
               <div className="bg-white border border-[#C9A84C]/20 p-4 text-center">
                 <Brain className="h-6 w-6 text-[#C9A84C] mx-auto mb-2" />
@@ -1583,7 +1583,7 @@ export default function IndustryExperience() {
             </motion.div>
           </AnimatePresence>
 
-          {!showSummary && !['prepared response', 'triggers', 'data', 'customize', 'learning'].includes(currentStage.id) && (
+          {!showSummary && !['Readiness Protocol', 'triggers', 'data', 'customize', 'learning'].includes(currentStage.id) && (
             <div className="max-w-5xl mx-auto mt-16 flex justify-between border-t border-[#F8F7F4] pt-8">
               <Button variant="outline" onClick={prev} disabled={stage === 0} className="border-[#0A0F2E] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none px-10 py-6 font-bold uppercase tracking-widest text-[10px] transition-colors">
                 <ArrowLeft className="h-3 w-3 mr-2" /> Previous

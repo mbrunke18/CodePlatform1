@@ -481,7 +481,7 @@ function ExecutionChainDiagram() {
   const steps = [
     { label: "TRIGGER FIRES", time: "T+0", desc: "Strategic moment detected — no improvisation", color: GOLD },
     { label: "SIGNAL MAPPED", time: "T+0:12", desc: "248+ sources evaluated across 9 domains", color: GOLD },
-    { label: "PREPARED RESPONSE STAGED", time: "Pre-built", desc: "170 responses ready before trigger fired", color: TEAL },
+    { label: "Readiness Protocol STAGED", time: "Pre-built", desc: "170 responses ready before trigger fired", color: TEAL },
     { label: "EXECUTIVE AUTHORIZES", time: "T+0:08", desc: "Human decision preserved — not bypassed", color: TEAL },
     { label: "FULL DEPLOYMENT", time: "12 MIN", desc: "Teams coordinated, brief delivered, executing", color: GOLD },
   ];
@@ -1103,8 +1103,8 @@ function AthletePreparationSection() {
 // ─── SECTION 5: IDEA Framework ───────────────────────────────────────────────
 function IDEASection() {
   const cards = [
-    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Prepared responses",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
-    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which prepared response matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
+    { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Readiness Protocols",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which Readiness Protocol matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
     { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];
@@ -1144,7 +1144,7 @@ function IDEASection() {
               <div style={{ background: "#F4FBF8", padding: "28px 32px" }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: TEAL, marginBottom: 18 }}>With Readiness OS</div>
                 {[
-                  "Trigger detected — prepared response activated automatically",
+                  "Trigger detected — Readiness Protocol activated automatically",
                   "Roles, tasks, and budget pre-assigned and deployed",
                   "Full org executing in under 12 minutes",
                   "Every activation feeds institutional memory forward",
@@ -1197,7 +1197,7 @@ function IDEASection() {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, position: "relative" }}>
               {[
                 { letter: "A", step: "ADVANCE", desc: "AI writes the debrief. What worked, what to stage differently." },
-                { letter: "I", step: "IDENTIFY", desc: "Prepared responses update automatically. Next trigger, better positioned." },
+                { letter: "I", step: "IDENTIFY", desc: "Readiness Protocols update automatically. Next trigger, better positioned." },
                 { letter: "D", step: "DETECT", desc: "Pattern library sharpens. Signals matched faster, fewer false reads." },
                 { letter: "E", step: "EXECUTE", desc: "Response time compresses. The 12-minute clock starts earlier." },
               ].map((item, i) => (
@@ -1509,7 +1509,7 @@ function MicrosoftEcosystemBanner() {
               { label: 'Azure AI Ready', sublabel: 'Enterprise data residency + SOC 2', icon: '◆' },
               { label: 'Teams War Room', sublabel: 'Notifications on activation', icon: '◈' },
               { label: '4-Agent IDEA Framework', sublabel: '3,600× head start — in execution while others mobilize', icon: '◉' },
-              { label: 'Copilot Studio Connector', sublabel: 'Query prepared responses from M365', icon: '◇' },
+              { label: 'Copilot Studio Connector', sublabel: 'Query Readiness Protocols from M365', icon: '◇' },
             ].map(({ label, sublabel, icon }) => (
               <div key={label} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 18, marginBottom: 6, color: GOLD }}>{icon}</div>
@@ -2128,7 +2128,7 @@ function HowTriggersWorkSection() {
                 Readiness OS monitors <strong>248+ data points across 221 trigger types</strong> — every 15 minutes, around the clock. When a signal crosses the confidence threshold, the system surfaces it as a potential trigger for executive review.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "#4A5568", lineHeight: 1.7, marginBottom: 28 }}>
-                No prepared response activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
+                No Readiness Protocol activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
               </p>
               <div style={{ padding: "16px 20px", background: NAVY, display: "inline-block" }}>
                 <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>Monitoring cadence</div>
@@ -2215,13 +2215,13 @@ function HowPlaybooksWorkSection() {
     {
       num: "01",
       label: "Pre-Built Architecture",
-      body: "170 prepared responses ship as proven decision frameworks — built from 20+ years of Fortune 1000 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
+      body: "170 Readiness Protocols ship as proven decision frameworks — built from 20+ years of Fortune 1000 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
       accent: GOLD,
     },
     {
       num: "02",
       label: "Customized to Your Organization",
-      body: "During the preparation phase, each prepared response is personalized to your structure: your decision-rights holders, your specific stakeholder chain, your communication protocols, your budget thresholds. The owner is in the room when the response is built — not when it's delivered.",
+      body: "During the preparation phase, each Readiness Protocol is personalized to your structure: your decision-rights holders, your specific stakeholder chain, your communication protocols, your budget thresholds. The owner is in the room when the response is built — not when it's delivered.",
       accent: TEAL,
     },
     {
@@ -2246,7 +2246,7 @@ function HowPlaybooksWorkSection() {
               <em style={{ color: GOLD, fontStyle: "italic" }}>Proven architecture, personalized to you.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
-              The prepared responses start as accumulated decision logic from decades of Fortune 1000 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
+              The Readiness Protocols start as accumulated decision logic from decades of Fortune 1000 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
             </p>
           </div>
         </Reveal>
@@ -2310,7 +2310,7 @@ function SimulatorCTASection() {
             Test Your Organization Against Any Situation
           </h2>
           <p style={{ ...DM, fontSize: 16, color: MUTED_DARK, maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.65 }}>
-            Describe a real scenario your company is facing. The system maps your coverage readiness in seconds — and surfaces the exact prepared responses pre-staged for activation.
+            Describe a real scenario your company is facing. The system maps your coverage readiness in seconds — and surfaces the exact Readiness Protocols pre-staged for activation.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginBottom: 36 }}>
             {[
@@ -2352,22 +2352,54 @@ export default function Homepage() {
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>
       <HomepageNav />
       <GuestPreviewBanner />
+
+      {/* 1. CLAIM — The bold thesis, live signal proof */}
       <HeroSection />
+
+      {/* 2. EXAMPLES — Breadth across domains, before explanation */}
       <ScenarioCardsRow />
-      <AnatomySection />
-      <LiveSignalFeedSection />
-      <HowTriggersWorkSection />
+
+      {/* 3. PAIN — Feel the cost of the old way first */}
       <ProblemSection />
+
+      {/* 4. GAP — Visualize the execution gap */}
       <ExecutionGapSection />
-      <MissingLayerSection />
-      <AthletePreparationSection />
+
+      {/* 5. CONTRAST — 30 days → 12 minutes cinematic moment, lands hardest right after pain */}
       <ContrastMomentSection />
+
+      {/* 6. THESIS — Nobody redesigned the operating model */}
+      <MissingLayerSection />
+
+      {/* 7. ANALOGY — Preparation framework, makes it intuitive */}
+      <AthletePreparationSection />
+
+      {/* 8. SOLUTION DEPTH — Now they want to know what's inside */}
+      <AnatomySection />
+
+      {/* 9. LIVE PROOF — System is detecting right now */}
+      <LiveSignalFeedSection />
+
+      {/* 10. HOW IT DETECTS — Where signals come from */}
+      <HowTriggersWorkSection />
+
+      {/* 11. FRAMEWORK — The IDEA system */}
       <IDEASection />
+
+      {/* 12. PLATFORM — What they'd actually use */}
       <PlatformPreviewSection />
       <HowPlaybooksWorkSection />
+
+      {/* 13. ECOSYSTEM — Microsoft positioning */}
       <MicrosoftEcosystemBanner />
+
+      {/* 14. COMPETITION — Why not consulting or other tools */}
       <CompetitiveClaritySection />
+
+      {/* 15. RESEARCH — Academic credibility, moat */}
       <CredibilitySection />
+
+      {/* 16. CTA — Final conversion */}
       <SimulatorCTASection />
       <CTASection />
       <HomepageFooter />

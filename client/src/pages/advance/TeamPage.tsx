@@ -49,7 +49,7 @@ export default function TeamPage() {
           </div>
           <h1 style={{ fontSize: 28, fontWeight: 700, color: NAVY, margin: 0 }}>Execution Team Scorecard</h1>
           <p style={{ fontSize: 14, color: MUTED, marginTop: 6 }}>
-            Individual executive performance across prepared response activations — response velocity, SLA compliance, and domain coverage
+            Individual executive performance across Readiness Protocol activations — response velocity, SLA compliance, and domain coverage
           </p>
         </div>
 

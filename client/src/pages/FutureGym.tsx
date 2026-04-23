@@ -65,7 +65,7 @@ const trainingScenarios = [
   {
     id: 4,
     name: 'Readiness Protocol Customization',
-    description: 'Adapt standard prepared responses to your specific organizational context, risk tolerance, and governance rules',
+    description: 'Adapt standard Readiness Protocols to your specific organizational context, risk tolerance, and governance rules',
     difficulty: 'Beginner',
     duration: '20 min',
     domain: 'IDENTIFY',
@@ -166,7 +166,7 @@ const leaderboard = [
 const certifications = [
   { id: 'crisis-commander', name: 'Crisis Commander', desc: 'Complete all 3 Advanced crisis exercises with 80%+ score', earned: false, requirement: '3 exercises', icon: Shield, color: '#dc2626' },
   { id: 'signal-reader', name: 'Signal Reader', desc: 'Complete Weak Signal Detection with 90%+ score', earned: true, requirement: '1 exercise', icon: Activity, color: TEAL },
-  { id: 'prepared response-architect', name: 'Readiness Protocol Architect', desc: 'Customize 5 prepared responses with peer-reviewed quality scores', earned: false, requirement: '5 prepared responses', icon: BookOpen, color: NAVY },
+  { id: 'Readiness Protocol-architect', name: 'Readiness Protocol Architect', desc: 'Customize 5 Readiness Protocols with peer-reviewed quality scores', earned: false, requirement: '5 Readiness Protocols', icon: BookOpen, color: NAVY },
   { id: 'coordination-expert', name: 'Coordination Expert', desc: 'Lead 3 multi-team simulation sessions as exercise commander', earned: false, requirement: '3 sessions', icon: Users, color: GOLD },
   { id: 'execution-ready', name: 'Execution Ready', desc: 'Complete all beginner and intermediate exercises with 85%+ average', earned: true, requirement: '6 exercises', icon: CheckCircle, color: TEAL },
   { id: 'elite-responder', name: 'Elite Responder', desc: 'Earn all 5 other certifications — the full strategic readiness credential', earned: false, requirement: 'All certifications', icon: Trophy, color: GOLD },

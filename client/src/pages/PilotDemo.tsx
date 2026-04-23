@@ -196,10 +196,10 @@ export default function PilotDemo() {
       { 
         id: "4", 
         timestamp: new Date(), 
-        type: "prepared response", 
+        type: "Readiness Protocol", 
         title: "Strategic Readiness Protocol Activated", 
         description: `"${playbookData?.name}" loaded with ${playbookData?.tasks} pre-approved tasks`,
-        valueCallout: "Pre-built prepared responses mean no scrambling to figure out next steps",
+        valueCallout: "Pre-built Readiness Protocols mean no scrambling to figure out next steps",
         traditionalTime: "8-16 hours to develop response plan",
         icon: BookOpen 
       },
@@ -344,7 +344,7 @@ export default function PilotDemo() {
                       Step 1: Enter Your Email
                     </CardTitle>
                     <CardDescription>
-                      You'll receive a real notification when the prepared response executes
+                      You'll receive a real notification when the Readiness Protocol executes
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
@@ -368,7 +368,7 @@ export default function PilotDemo() {
                       <h4 className="font-medium text-[#C9A84C] mb-2">What happens next:</h4>
                       <ul className="text-sm text-white/90 space-y-1">
                         <li>1. You'll pick a trigger scenario (competitor move, crisis, etc.)</li>
-                        <li>2. You'll select a prepared response to execute</li>
+                        <li>2. You'll select a Readiness Protocol to execute</li>
                         <li>3. Watch the 12-minute activation happen in real-time</li>
                         <li>4. Receive an actual email notification as a stakeholder</li>
                       </ul>
@@ -405,7 +405,7 @@ export default function PilotDemo() {
                       Step 2: Choose a Trigger Scenario
                     </CardTitle>
                     <CardDescription>
-                      What business event should activate your prepared response?
+                      What business event should activate your Readiness Protocol?
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -457,7 +457,7 @@ export default function PilotDemo() {
                               ? "border-[#C9A84C] bg-[#C9A84C]/5"
                               : "border-[#E8E4DC] hover:border-[#C9A84C]/30"
                           }`}
-                          data-testid={`button-prepared response-${playbook.id}`}
+                          data-testid={`button-Readiness Protocol-${playbook.id}`}
                         >
                           <h4 className="font-medium text-[#0A0F2E] dark:text-white mb-1">
                             {playbook.name}
@@ -738,7 +738,7 @@ export default function PilotDemo() {
                               </div>
                               <div className="text-3xl font-bold text-[#2B8A6E] dark:text-[#2B8A6E] mb-1">12 minutes</div>
                               <p className="text-sm text-[#2B8A6E] dark:text-[#2B8A6E]">
-                                Full coordination: detection, analysis, prepared response activation, stakeholder alignment
+                                Full coordination: detection, analysis, Readiness Protocol activation, stakeholder alignment
                               </p>
                             </div>
                           </div>

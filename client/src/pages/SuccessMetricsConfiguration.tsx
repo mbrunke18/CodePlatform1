@@ -53,7 +53,7 @@ interface SuccessMetric {
 const METRIC_TYPES = [
   { id: 'fri', name: 'Future Readiness Index', icon: Gauge, color: 'text-[#C9A84C]', description: 'Overall organizational readiness score' },
   { id: 'velocity', name: 'Decision Velocity', icon: Zap, color: 'text-[#C9A84C]', description: 'Speed of strategic decision-making' },
-  { id: 'coverage', name: 'Scenario Coverage', icon: Shield, color: 'text-[#2B8A6E]', description: 'Percentage of risks with active prepared responses' },
+  { id: 'coverage', name: 'Scenario Coverage', icon: Shield, color: 'text-[#2B8A6E]', description: 'Percentage of risks with active Readiness Protocols' },
   { id: 'roi', name: 'ROI Metrics', icon: DollarSign, color: 'text-[#2B8A6E]', description: 'Return on strategic investments' },
   { id: 'custom', name: 'Custom KPI', icon: BarChart3, color: 'text-[#0A0F2E]', description: 'Organization-specific metrics' },
 ];
@@ -94,7 +94,7 @@ const DEFAULT_METRICS: SuccessMetric[] = [
     id: '3', 
     name: 'Scenario Coverage', 
     type: 'coverage', 
-    description: 'Percentage of identified risk scenarios with active, tested prepared responses',
+    description: 'Percentage of identified risk scenarios with active, tested Readiness Protocols',
     targetValue: 95,
     currentValue: 78,
     baselineValue: 35,

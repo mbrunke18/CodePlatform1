@@ -99,7 +99,7 @@ export default function ScenarioVarianceAlert({
             severity: analysisResult.projectedExecutionTime > 30 ? 'critical' : 'warning',
             detectedAt: timestamp,
             affectedPlaybooks: ['Primary Response Readiness Protocol'],
-            suggestedAction: 'Review prepared response tasks for optimization opportunities',
+            suggestedAction: 'Review Readiness Protocol tasks for optimization opportunities',
             acknowledged: false
           });
         }
@@ -237,7 +237,7 @@ export default function ScenarioVarianceAlert({
 
                 {alert.affectedPlaybooks.length > 0 && (
                   <div className="mb-2">
-                    <span className="text-xs text-gray-800">Affected Prepared responses: </span>
+                    <span className="text-xs text-gray-800">Affected Readiness Protocols: </span>
                     <span className="text-xs font-medium">{alert.affectedPlaybooks.join(', ')}</span>
                   </div>
                 )}

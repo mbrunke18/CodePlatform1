@@ -231,10 +231,10 @@ export default function ExecutionHistory() {
                   <div style={{ textAlign: "center", padding: "60px 0", color: MUTED }}>
                     <Target className="h-8 w-8 mx-auto mb-3" style={{ color: GOLD }} />
                     <p style={{ fontWeight: 600, fontSize: 15 }}>No activations recorded yet</p>
-                    <p style={{ fontSize: 13, marginTop: 4 }}>Activate your first prepared response to start tracking execution history</p>
-                    <Link href="/identify/prepared responses">
+                    <p style={{ fontSize: 13, marginTop: 4 }}>Activate your first Readiness Protocol to start tracking execution history</p>
+                    <Link href="/identify/Readiness Protocols">
                       <button style={{ marginTop: 20, background: NAVY, color: "#fff", border: "none", borderRadius: 0, padding: "10px 24px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
-                        Browse Prepared responses
+                        Browse Readiness Protocols
                       </button>
                     </Link>
                   </div>

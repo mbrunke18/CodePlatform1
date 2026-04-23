@@ -85,7 +85,7 @@ const workspaceTools = [
   },
   {
     title: "Executive Analytics",
-    description: "Deep-dive analytics on prepared response effectiveness and outcomes",
+    description: "Deep-dive analytics on Readiness Protocol effectiveness and outcomes",
     path: "/analytics",
     icon: TrendingUp,
     color: "text-[#0A0F2E]",
@@ -103,8 +103,8 @@ const workspaceTools = [
   },
   {
     title: "Readiness Protocol Refinement",
-    description: "Update prepared responses based on lessons learned",
-    path: "/living-prepared responses",
+    description: "Update Readiness Protocols based on lessons learned",
+    path: "/living-Readiness Protocols",
     icon: RefreshCw,
     color: "text-[#2B8A6E]",
     bgColor: "bg-[#2B8A6E]/10",
@@ -114,7 +114,7 @@ const workspaceTools = [
 
 const learningMetrics = [
   { label: "Lessons Captured", value: "47", icon: Lightbulb, color: "text-[#2B8A6E]" },
-  { label: "Prepared responses Improved", value: "23", icon: RefreshCw, color: "text-[#0A0F2E]" },
+  { label: "Readiness Protocols Improved", value: "23", icon: RefreshCw, color: "text-[#0A0F2E]" },
   { label: "Decision Velocity", value: "+34%", icon: Activity, color: "text-[#C9A84C]" },
   { label: "Team Readiness", value: "92%", icon: Award, color: "text-[#0A0F2E]" }
 ];
@@ -170,7 +170,7 @@ const PLAYBOOK_REFINEMENT_HISTORY = [
     lastRefined: '3 days ago',
     color: '#3B82F6',
     history: [
-      { version: 'v1.0', date: 'Sep 2023', type: 'created', change: 'Initial prepared response created from post-mortem analysis of Q3 ransomware incident' },
+      { version: 'v1.0', date: 'Sep 2023', type: 'created', change: 'Initial Readiness Protocol created from post-mortem analysis of Q3 ransomware incident' },
       { version: 'v1.1', date: 'Oct 2023', type: 'added', change: 'Added Deputy CISO escalation path after APAC containment gap identified' },
       { version: 'v1.2', date: 'Dec 2023', type: 'added', change: 'Pre-approved IR retainer spend authority up to $500K (eliminated 3-day CFO approval delay)' },
       { version: 'v2.0', date: 'Feb 2024', type: 'refined', change: 'Automated SOC alert → CISO notification at detection (eliminated 6.8-hour gap)' },
@@ -185,7 +185,7 @@ const PLAYBOOK_REFINEMENT_HISTORY = [
     lastRefined: '2 weeks ago',
     color: '#F97316',
     history: [
-      { version: 'v1.0', date: 'Jan 2024', type: 'created', change: 'Initial prepared response built from 2018 SEC inquiry lessons encoded by former CLO' },
+      { version: 'v1.0', date: 'Jan 2024', type: 'created', change: 'Initial Readiness Protocol built from 2018 SEC inquiry lessons encoded by former CLO' },
       { version: 'v1.1', date: 'Feb 2024', type: 'added', change: 'Pre-approved holding statement templates for press inquiry (eliminated PR lag)' },
       { version: 'v1.2', date: 'Mar 2024', type: 'refined', change: 'Board notification protocol added — board briefed within 2 hours of material determination' },
     ],
@@ -223,7 +223,7 @@ function ReadinessCompoundsPanel() {
             Readiness Compounds
           </h2>
           <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
-            Every activation makes your prepared responses smarter. Every debrief closes the gap between what happened and what's pre-staged.
+            Every activation makes your Readiness Protocols smarter. Every debrief closes the gap between what happened and what's pre-staged.
           </p>
         </div>
         <div style={{ textAlign: 'right', flexShrink: 0 }}>
@@ -317,7 +317,7 @@ function ReadinessCompoundsPanel() {
           {[
             { stage: 'Naive', range: '0–25', desc: 'No institutional memory. Every crisis is a first crisis.', active: IMMUNE_SYSTEM_SCORE < 25 },
             { stage: 'Reactive', range: '26–50', desc: 'Some lessons captured. Inconsistent application.', active: IMMUNE_SYSTEM_SCORE >= 26 && IMMUNE_SYSTEM_SCORE < 50 },
-            { stage: 'Prepared', range: '51–75', desc: 'Prepared responses refine from experience. Coordination compresses.', active: IMMUNE_SYSTEM_SCORE >= 51 && IMMUNE_SYSTEM_SCORE < 75 },
+            { stage: 'Prepared', range: '51–75', desc: 'Readiness Protocols refine from experience. Coordination compresses.', active: IMMUNE_SYSTEM_SCORE >= 51 && IMMUNE_SYSTEM_SCORE < 75 },
             { stage: 'Fearless', range: '76–100', desc: 'Institutional readiness compounds. Response is pre-staged before the trigger fires.', active: IMMUNE_SYSTEM_SCORE >= 75 },
           ].map((s) => (
             <div key={s.stage} style={{ padding: '10px 12px', background: s.active ? `${TEAL}10` : '#fff', border: `1px solid ${s.active ? TEAL : '#E8E4DC'}`, borderTop: s.active ? `3px solid ${TEAL}` : '1px solid #E8E4DC' }}>
@@ -631,7 +631,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Continuous Learning Loop</h3>
-                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Every execution makes your prepared responses smarter and your team faster</p>
+                  <p className="text-[#6B7280] dark:text-[#C9A84C]/60">Every execution makes your Readiness Protocols smarter and your team faster</p>
                 </div>
               </div>
             </CardContent>
@@ -745,7 +745,7 @@ export default function WorkspaceAdvance({ embedded }: { embedded?: boolean } = 
                   <div>
                     <h3 className="font-semibold text-white">Ready to apply learnings?</h3>
                     <p className="text-sm text-white/60">
-                      Update your prepared responses with new insights and start the cycle again
+                      Update your Readiness Protocols with new insights and start the cycle again
                     </p>
                   </div>
                 </div>

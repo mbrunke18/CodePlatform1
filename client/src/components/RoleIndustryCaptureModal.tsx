@@ -308,7 +308,7 @@ export default function RoleIndustryCaptureModal() {
               lineHeight: 1.5,
             }}
           >
-            Used only to personalize your trigger view and prepared response
+            Used only to personalize your trigger view and Readiness Protocol
             recommendations. Never shared.
           </p>
         </div>

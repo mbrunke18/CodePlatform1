@@ -39,7 +39,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
     onSuccess: (data: any) => {
       setResult(data);
       queryClient.invalidateQueries({ queryKey: ['/api/simulation-analyses'] });
-      toast({ title: 'Coverage brief ready', description: 'System analysis complete — pre-staged prepared responses mapped.' });
+      toast({ title: 'Coverage brief ready', description: 'System analysis complete — pre-staged Readiness Protocols mapped.' });
     },
     onError: (error: any) => {
       if (error?.message?.startsWith('401')) {
@@ -71,7 +71,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                   Shadow Strategy <em style={{ color: GOLD }}>Simulator</em>
                 </div>
                 <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 560, lineHeight: 1.6 }}>
-                  Validate your response before committing resources. The system maps your coverage readiness across every relevant prepared response — giving the board a pre-approved confidence benchmark before a single dollar moves.
+                  Validate your response before committing resources. The system maps your coverage readiness across every relevant Readiness Protocol — giving the board a pre-approved confidence benchmark before a single dollar moves.
                 </div>
                 <div style={{ display: 'flex', gap: 20, marginTop: 14, flexWrap: 'wrap' }}>
                   {[
@@ -176,7 +176,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                     <div>
                       <div className="flex items-center gap-2 mb-3">
                         <CheckCircle className="w-4 h-4" style={{ color: TEAL }} />
-                        <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: TEAL }}>Prepared responses That Would Activate</p>
+                        <p className="text-[10px] font-black uppercase tracking-wider" style={{ color: TEAL }}>Readiness Protocols That Would Activate</p>
                       </div>
                       <div className="space-y-2">
                         {result.recommendedPlaybooks.map((pb: string) => (
@@ -211,7 +211,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
               {result && (
                 <div style={{ marginTop: 20, padding: '16px 20px', background: NAVY, borderTop: `3px solid ${GOLD}` }}>
                   <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 6 }}>
-                    Want these 170 prepared responses armed and ready before the trigger fires?
+                    Want these 170 Readiness Protocols armed and ready before the trigger fires?
                   </p>
                   <a
                     href="/request-access"
@@ -263,7 +263,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                 <div className="space-y-2 text-[10px] text-gray-500">
                   {[
                     { icon: Shield, label: 'Survive', desc: 'Readiness Protocol coverage for damage containment' },
-                    { icon: TrendingUp, label: 'Thrive', desc: 'Offensive prepared responses & competitive gaps' },
+                    { icon: TrendingUp, label: 'Thrive', desc: 'Offensive Readiness Protocols & competitive gaps' },
                     { icon: AlertTriangle, label: 'Gaps', desc: 'Scenarios your library doesn\'t cover' },
                   ].map(h => {
                     const Icon = h.icon;

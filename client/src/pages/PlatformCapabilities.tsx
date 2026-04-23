@@ -35,12 +35,12 @@ const PHASES = [
         detail: 'Across 9 strategic domains including competitive intelligence, regulatory conditions, financial signals, operational risk, and market opportunity — creating a continuously updated picture of the environment your decisions will land in.',
       },
       {
-        title: '170 Pre-Staged Prepared responses',
-        detail: 'Each prepared response represents a strategic decision already made by the best minds in the organization under no pressure, with full information and complete clarity. Not a template — a commitment. The organization has already decided what it will do when this trigger fires.',
+        title: '170 Pre-Staged Readiness Protocols',
+        detail: 'Each Readiness Protocol represents a strategic decision already made by the best minds in the organization under no pressure, with full information and complete clarity. Not a template — a commitment. The organization has already decided what it will do when this trigger fires.',
       },
       {
         title: 'Trigger Configuration Wizard',
-        detail: 'Maps your specific strategic situations to the prepared responses that respond to them. The system understands what your organization considers a trigger, not what a generic model suggests. Situation intents, signal thresholds, and monitoring rules are configured to your context.',
+        detail: 'Maps your specific strategic situations to the Readiness Protocols that respond to them. The system understands what your organization considers a trigger, not what a generic model suggests. Situation intents, signal thresholds, and monitoring rules are configured to your context.',
       },
       {
         title: '9 Strategic Domains — Full Coverage',
@@ -65,15 +65,15 @@ const PHASES = [
       },
       {
         title: 'Executive Authorization Preserved',
-        detail: 'No prepared response activates without executive sign-off. The platform compresses the mobilization cycle, not the decision authority. The preparation eliminates improvisation under pressure; the human judgment that authorizes action remains exactly where it belongs.',
+        detail: 'No Readiness Protocol activates without executive sign-off. The platform compresses the mobilization cycle, not the decision authority. The preparation eliminates improvisation under pressure; the human judgment that authorizes action remains exactly where it belongs.',
       },
       {
         title: 'AI Execution Brief at Activation',
-        detail: 'A structured pre-read generated at the moment of trigger detection — telling the authorizing executive what fired, why, what the prepared response deploys, who gets notified, and what they are approving. Decision-ready in under 2 minutes, not 2 hours.',
+        detail: 'A structured pre-read generated at the moment of trigger detection — telling the authorizing executive what fired, why, what the Readiness Protocol deploys, who gets notified, and what they are approving. Decision-ready in under 2 minutes, not 2 hours.',
       },
       {
         title: 'Execution Confidence Score',
-        detail: 'Per detection — showing which signals converged, which domains lit, the confidence weight of the trigger, and the recommended prepared response with alternates. The executive sees the case for action before they authorize it.',
+        detail: 'Per detection — showing which signals converged, which domains lit, the confidence weight of the trigger, and the recommended Readiness Protocol with alternates. The executive sees the case for action before they authorize it.',
       },
       {
         title: 'Live Signal Detection — IDEA Framework',
@@ -102,7 +102,7 @@ const PHASES = [
       },
       {
         title: 'Task Deployment at Activation',
-        detail: 'Every owner receives their specific responsibilities, due times, and success criteria the moment the prepared response activates — no waiting for a coordinator to assign work, no ambiguity about who owns what. Pre-staged task sequences deploy automatically.',
+        detail: 'Every owner receives their specific responsibilities, due times, and success criteria the moment the Readiness Protocol activates — no waiting for a coordinator to assign work, no ambiguity about who owns what. Pre-staged task sequences deploy automatically.',
       },
       {
         title: 'Live War Room',
@@ -135,7 +135,7 @@ const PHASES = [
       },
       {
         title: 'Institutional Memory Encoding',
-        detail: 'Improvements identified in each post-activation debrief are captured and fed back into the prepared response architecture. The specific changes — who should have been in Tier 1, which communications needed earlier distribution, which decision gate slowed the clock — become part of the prepared response the next time it activates.',
+        detail: 'Improvements identified in each post-activation debrief are captured and fed back into the Readiness Protocol architecture. The specific changes — who should have been in Tier 1, which communications needed earlier distribution, which decision gate slowed the clock — become part of the Readiness Protocol the next time it activates.',
       },
       {
         title: 'Compounding Intelligence Loop',
@@ -143,7 +143,7 @@ const PHASES = [
       },
       {
         title: 'Post-Activation Debrief',
-        detail: 'A structured performance record scored against what was designed vs. what happened — not a retrospective document but a forward-feeding artifact that drives prepared response improvement. Performance is not evaluated to assign blame; it is evaluated to eliminate the gap between plan and execution.',
+        detail: 'A structured performance record scored against what was designed vs. what happened — not a retrospective document but a forward-feeding artifact that drives Readiness Protocol improvement. Performance is not evaluated to assign blame; it is evaluated to eliminate the gap between plan and execution.',
       },
       {
         title: 'Board Readiness Report',
@@ -158,7 +158,7 @@ const PLATFORM_CAPABILITIES = [
   {
     icon: Brain,
     title: 'Executive Scenario Suite',
-    detail: 'Authenticated walk-throughs of industry-specific triggers — CISO zero-day breach, CFO activist investor, COO supplier failure, GC FDA enforcement — mapped to the live prepared response library, showing the exact IDEA chain and 12-minute execution in the buyer\'s own context.',
+    detail: 'Authenticated walk-throughs of industry-specific triggers — CISO zero-day breach, CFO activist investor, COO supplier failure, GC FDA enforcement — mapped to the live Readiness Protocol library, showing the exact IDEA chain and 12-minute execution in the buyer\'s own context.',
   },
   {
     icon: BarChart3,
@@ -168,22 +168,22 @@ const PLATFORM_CAPABILITIES = [
   {
     icon: Shield,
     title: 'Shadow Strategy Simulator',
-    detail: 'Digital twin environment where organizations test prepared response responses against live signals without activating in production. Run fire drills at any time — validate response quality before the real trigger fires.',
+    detail: 'Digital twin environment where organizations test Readiness Protocol responses against live signals without activating in production. Run fire drills at any time — validate response quality before the real trigger fires.',
   },
   {
     icon: BookOpen,
     title: 'Readiness Protocol Detail Editor',
-    detail: 'Authenticated users can customize phases, tasks, decision gates, and stakeholder assignments within any prepared response — ensuring the pre-staged response reflects the organization\'s actual structure, not a generic template.',
+    detail: 'Authenticated users can customize phases, tasks, decision gates, and stakeholder assignments within any Readiness Protocol — ensuring the pre-staged response reflects the organization\'s actual structure, not a generic template.',
   },
   {
     icon: Target,
     title: 'Compound Threat Intelligence',
-    detail: 'Identifies when multiple signals across different domains converge into a compound threat — a cyber event coinciding with a regulatory inquiry coinciding with a key executive departure — and surfaces the combined risk with a unified prepared response response.',
+    detail: 'Identifies when multiple signals across different domains converge into a compound threat — a cyber event coinciding with a regulatory inquiry coinciding with a key executive departure — and surfaces the combined risk with a unified Readiness Protocol response.',
   },
   {
     icon: Lock,
     title: 'Role-Based Access & Audit Trail',
-    detail: 'Executive, strategist, and admin roles with granular access controls. Every action — detection acknowledgment, prepared response activation, task completion, decision gate clearance — is logged with timestamp and actor for complete governance and audit compliance.',
+    detail: 'Executive, strategist, and admin roles with granular access controls. Every action — detection acknowledgment, Readiness Protocol activation, task completion, decision gate clearance — is logged with timestamp and actor for complete governance and audit compliance.',
   },
 ];
 
@@ -216,7 +216,7 @@ export default function PlatformCapabilities() {
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             {[
-              { label: '170 Prepared responses', sub: 'Pre-staged' },
+              { label: '170 Readiness Protocols', sub: 'Pre-staged' },
               { label: '221 Triggers', sub: 'Armed & monitoring' },
               { label: '248+ Data Points', sub: 'Every 15 minutes' },
               { label: '12 Minutes', sub: '30 days → 12 min' },

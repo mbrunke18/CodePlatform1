@@ -463,7 +463,7 @@ export default function CommandLanding() {
                     </div>
 
                     <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 52, lineHeight: 0.95, color: GOLD, letterSpacing: 2, marginBottom: 16 }}>
-                      ACTIVATE<br />PREPARED RESPONSE
+                      ACTIVATE<br />Readiness Protocol
                     </div>
 
                     <div style={{ fontSize: 17, fontWeight: 300, color: 'rgba(240,237,228,0.65)', lineHeight: 1.5, marginBottom: 32, maxWidth: 320 }}>
@@ -487,7 +487,7 @@ export default function CommandLanding() {
                       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#DFB85C'; }}
                       onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = GOLD; }}
                     >
-                      SELECT PREPARED RESPONSE & ACTIVATE
+                      SELECT Readiness Protocol & ACTIVATE
                       <svg width={16} height={16} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
@@ -570,7 +570,7 @@ export default function CommandLanding() {
               </HoverTile>
             </div>
 
-            {/* ── TILE 3: PREPARED RESPONSES ── */}
+            {/* ── TILE 3: Readiness Protocols ── */}
             <div className="cl-tile-3" style={{ gridColumn: 3, gridRow: 1 }}>
               <HoverTile
                 onClick={() => setLocation('/playbook-library')}
@@ -587,7 +587,7 @@ export default function CommandLanding() {
                       170 Response<br />Architectures
                     </div>
                     <div style={{ fontSize: 14, fontWeight: 300, color: 'rgba(240,237,228,0.45)', lineHeight: 1.5, marginBottom: 20 }}>
-                      Pre-built, AI-informed readiness prepared responses across 9 strategic domains.
+                      Pre-built, AI-informed readiness Readiness Protocols across 9 strategic domains.
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8, margin: '16px 0' }}>
@@ -603,7 +603,7 @@ export default function CommandLanding() {
                         }}>
                           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4, color: type === 'offense' ? TEAL : type === 'defense' ? GOLD : 'rgba(180,150,255,0.8)' }}>{label}</div>
                           <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, lineHeight: 1, color: '#fff' }}>{count}</div>
-                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>prepared responses</div>
+                          <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: 'rgba(240,237,228,0.3)', letterSpacing: 0.5 }}>Readiness Protocols</div>
                         </div>
                       ))}
                     </div>
@@ -642,7 +642,7 @@ export default function CommandLanding() {
                     </div>
 
                     <div style={{ fontSize: 13, fontWeight: 300, color: 'rgba(240,237,228,0.45)', lineHeight: 1.5 }}>
-                      Real-time coordination hub. When a prepared response activates, your war room opens here.
+                      Real-time coordination hub. When a Readiness Protocol activates, your war room opens here.
                     </div>
                     <TileArrow hovered={hovered} />
                   </div>
@@ -709,7 +709,7 @@ export default function CommandLanding() {
           {[
             { dot: TEAL, label: `${signalCount} signals monitored` },
             { dot: GOLD, label: '221 executive triggers configured' },
-            { dot: 'rgba(240,237,228,0.3)', label: '170 prepared responses ready' },
+            { dot: 'rgba(240,237,228,0.3)', label: '170 Readiness Protocols ready' },
             { dot: providerData?.multiAgentParallel ? TEAL : 'rgba(240,237,228,0.3)', label: providerData?.multiAgentParallel ? '4-agent IDEA framework active' : 'AI agents ready' },
             { dot: providerData?.teamsConfigured ? TEAL : GOLD, label: providerData?.teamsConfigured ? 'Teams notifications active' : 'Teams webhook: configure in integrations' },
           ].map(({ dot, label }) => (

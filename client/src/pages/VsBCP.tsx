@@ -35,7 +35,7 @@ const COMPARISON_ROWS = [
   {
     dimension: "Authorization",
     bcp: "Emergency escalation — who has authority is unclear under pressure.",
-    ros: "Decision rights mapped and enforced. No prepared response activates without executive sign-off.",
+    ros: "Decision rights mapped and enforced. No Readiness Protocol activates without executive sign-off.",
   },
   {
     dimension: "Coverage gap",

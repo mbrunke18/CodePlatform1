@@ -69,7 +69,7 @@ const STATUS_CONFIG: Record<string, { label: string; bg: string; color: string; 
 };
 
 const KPI = [
-  { icon: <BookOpen size={18} color={NAVY} />,       value: '4',     label: 'Active Prepared responses',  bg: 'rgba(10,15,46,0.04)',   border: 'rgba(10,15,46,0.15)'   },
+  { icon: <BookOpen size={18} color={NAVY} />,       value: '4',     label: 'Active Readiness Protocols',  bg: 'rgba(10,15,46,0.04)',   border: 'rgba(10,15,46,0.15)'   },
   { icon: <Clock size={18} color={TEAL} />,           value: '10.8m', label: 'Avg Response Time', bg: 'rgba(43,138,110,0.06)', border: 'rgba(43,138,110,0.25)' },
   { icon: <Users size={18} color={GOLD} />,           value: '27',    label: 'Stakeholders',      bg: 'rgba(201,168,76,0.06)', border: 'rgba(201,168,76,0.25)' },
   { icon: <CheckCircle2 size={18} color={TEAL} />,   value: '6',     label: 'Activations',       bg: 'rgba(43,138,110,0.06)', border: 'rgba(43,138,110,0.25)' },
@@ -85,15 +85,15 @@ export default function MyPlaybooksPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
               <div style={{ width: 20, height: 2, background: GOLD }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase' as const, color: GOLD }}>
-                Identify · My Prepared responses
+                Identify · My Readiness Protocols
               </span>
             </div>
-            <h1 style={{ fontSize: 28, fontWeight: 700, color: NAVY, margin: 0 }}>My Active Prepared responses</h1>
+            <h1 style={{ fontSize: 28, fontWeight: 700, color: NAVY, margin: 0 }}>My Active Readiness Protocols</h1>
             <p style={{ fontSize: 14, color: MUTED, marginTop: 6 }}>
-              Your organization's configured and monitored prepared responses — ready for immediate activation
+              Your organization's configured and monitored Readiness Protocols — ready for immediate activation
             </p>
           </div>
-          <Link href="/identify/prepared response-library">
+          <Link href="/identify/Readiness Protocol-library">
             <button style={{
               display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px',
               background: NAVY, color: '#fff', border: 'none', cursor: 'pointer',
@@ -172,7 +172,7 @@ export default function MyPlaybooksPage() {
                     )}
                   </div>
 
-                  <Link href={`/identify/prepared response-library`}>
+                  <Link href={`/identify/Readiness Protocol-library`}>
                     <button style={{
                       display: 'flex', alignItems: 'center', gap: 6,
                       padding: '8px 16px', background: NAVY, color: '#fff',
@@ -192,10 +192,10 @@ export default function MyPlaybooksPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <TrendingUp size={14} color={TEAL} />
             <span style={{ fontSize: 12, color: MUTED }}>
-              170 prepared responses available in the library — 9 strategic domains, 221 executive triggers monitored
+              170 Readiness Protocols available in the library — 9 strategic domains, 221 executive triggers monitored
             </span>
           </div>
-          <Link href="/identify/prepared response-library">
+          <Link href="/identify/Readiness Protocol-library">
             <span style={{ fontSize: 12, fontWeight: 700, color: NAVY, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
               Browse Full Library <ChevronRight size={12} />
             </span>

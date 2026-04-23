@@ -138,7 +138,7 @@ const DOMAIN_QUESTIONS: Record<Domain, QuestionDef[]> = {
     },
     {
       key: "playbookLocation",
-      question: "Where is your market entry prepared response documented?",
+      question: "Where is your market entry Readiness Protocol documented?",
       type: "radio",
       options: ["Dedicated system", "Confluence/SharePoint", "Spreadsheets", "Someone's head", "We don't have one"],
     },
@@ -158,7 +158,7 @@ const DOMAIN_QUESTIONS: Record<Domain, QuestionDef[]> = {
     },
     {
       key: "firstActions",
-      question: "What are the first 3 actions in your incident response prepared response?",
+      question: "What are the first 3 actions in your incident response Readiness Protocol?",
       type: "textarea",
       placeholder: "e.g., 1. Isolate affected systems, 2. Alert legal team, 3. Activate incident response plan",
     },
@@ -170,7 +170,7 @@ const DOMAIN_QUESTIONS: Record<Domain, QuestionDef[]> = {
     },
     {
       key: "playbookLocation",
-      question: "Where is your incident response prepared response documented?",
+      question: "Where is your incident response Readiness Protocol documented?",
       type: "radio",
       options: ["Dedicated system", "Confluence/SharePoint", "Spreadsheets", "Someone's head", "We don't have one"],
     },
@@ -203,7 +203,7 @@ const DOMAIN_QUESTIONS: Record<Domain, QuestionDef[]> = {
     },
     {
       key: "playbookLocation",
-      question: "Where are your transformation prepared responses documented?",
+      question: "Where are your transformation Readiness Protocols documented?",
       type: "radio",
       options: ["Dedicated system", "Confluence/SharePoint", "Spreadsheets", "Someone's head", "We don't have one"],
     },
@@ -711,7 +711,7 @@ export default function ReadinessAssessment() {
                       {[
                         {
                           step: "1",
-                          title: `IDENTIFY — Pre-built prepared responses for ${domainConfig.label.toLowerCase()}`,
+                          title: `IDENTIFY — Pre-built Readiness Protocols for ${domainConfig.label.toLowerCase()}`,
                           description: `${domainConfig.playbooks} ready to deploy across ${domainConfig.categories}. No more building from scratch — activate proven response frameworks in minutes.`,
                           icon: Target,
                         },
@@ -776,7 +776,7 @@ export default function ReadinessAssessment() {
                   Based on your score of <span className={`font-bold ${domainConfig.textLight}`}>{result.score}/100</span>,{" "}
                   {result.score < 60
                     ? `we recommend starting with our Founding Partner Pilot — a guided 6-week engagement to close your most critical ${domainConfig.label.toLowerCase()} gaps with dedicated support.`
-                    : `we recommend starting with our prepared response library — activate ${domainConfig.playbooks} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
+                    : `we recommend starting with our Readiness Protocol library — activate ${domainConfig.playbooks} for ${domainConfig.label.toLowerCase()} and begin building execution muscle immediately.`}
                 </p>
               </CardContent>
             </Card>
@@ -787,7 +787,7 @@ export default function ReadinessAssessment() {
                   size="lg"
                   className={`text-lg px-10 py-7 ${domainConfig.bg} hover:opacity-90 text-white ${domainConfig.shadow}`}
                 >
-                  Build Your Prepared responses
+                  Build Your Readiness Protocols
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -806,7 +806,7 @@ export default function ReadinessAssessment() {
                   variant="outline"
                   className="text-lg px-10 py-7 border-[#0A0F2E] dark:border-white text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5 bg-transparent"
                 >
-                  See Our 170 Prepared responses
+                  See Our 170 Readiness Protocols
                 </Button>
               </Link>
               <Button

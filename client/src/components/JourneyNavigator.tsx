@@ -76,7 +76,7 @@ const journeyPhases: JourneyPhase[] = [
     icon: ClipboardList,
     color: 'text-poise-gold',
     bgColor: 'bg-poise-gold/10',
-    milestones: ['Priority prepared responses selected', 'Stakeholders mapped', 'Readiness score baseline', 'Tasks assigned'],
+    milestones: ['Priority Readiness Protocols selected', 'Stakeholders mapped', 'Readiness score baseline', 'Tasks assigned'],
     status: 'upcoming'
   },
   {
@@ -114,7 +114,7 @@ const journeyPhases: JourneyPhase[] = [
     number: 6,
     name: 'ADVANCE',
     subtitle: 'Retrospect™',
-    description: 'Capture lessons learned and refine prepared responses for continuous improvement',
+    description: 'Capture lessons learned and refine Readiness Protocols for continuous improvement',
     timeline: 'Days 75-90',
     workspace: 'Retrospect Lab',
     workspacePath: '/workspace?tab=advance',

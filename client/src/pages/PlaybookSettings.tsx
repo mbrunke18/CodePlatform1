@@ -21,7 +21,7 @@ export default function PlaybookSettings() {
     queryKey: ['/api/playbook-library', id],
     queryFn: async () => {
       const response = await fetch(`/api/playbook-library/${id}`);
-      if (!response.ok) throw new Error('Failed to fetch prepared response');
+      if (!response.ok) throw new Error('Failed to fetch Readiness Protocol');
       return response.json();
     },
     enabled: !!id,
@@ -94,7 +94,7 @@ export default function PlaybookSettings() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild data-testid="button-back">
-              <Link href={`/prepared response-library/${id}`}>
+              <Link href={`/Readiness Protocol-library/${id}`}>
                 <ArrowLeft className="h-5 w-5" />
               </Link>
             </Button>
@@ -120,7 +120,7 @@ export default function PlaybookSettings() {
               Activation Settings
             </CardTitle>
             <CardDescription>
-              Configure how this prepared response is activated and executed
+              Configure how this Readiness Protocol is activated and executed
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -319,7 +319,7 @@ export default function PlaybookSettings() {
                 data-testid="input-budget-limit"
               />
               <p className="text-sm text-muted-foreground">
-                Budget automatically unlocked when prepared response is activated
+                Budget automatically unlocked when Readiness Protocol is activated
               </p>
             </div>
           </CardContent>

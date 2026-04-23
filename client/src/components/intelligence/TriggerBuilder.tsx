@@ -764,7 +764,7 @@ export function TriggerBuilder({
                 <div>
                   <div className="font-medium">Auto-activate Readiness Protocol</div>
                   <p className="text-sm text-muted-foreground">
-                    Automatically recommend prepared response activation when triggered
+                    Automatically recommend Readiness Protocol activation when triggered
                   </p>
                 </div>
                 <Switch

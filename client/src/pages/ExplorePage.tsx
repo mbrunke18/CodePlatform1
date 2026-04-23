@@ -23,7 +23,7 @@ const features = [
   {
     icon: Shield,
     title: 'IDENTIFY — Readiness Protocol Depth Chart',
-    description: 'Build your strategic arsenal. Browse 170 pre-built prepared responses across 9 domains — ready to deploy instantly.',
+    description: 'Build your strategic arsenal. Browse 170 pre-built Readiness Protocols across 9 domains — ready to deploy instantly.',
     color: 'text-[#2B8A6E]',
     bg: 'bg-[#F8F7F4]',
   },
@@ -51,7 +51,7 @@ const features = [
   {
     icon: Bell,
     title: 'Real-Time Orchestration',
-    description: 'Activate a prepared response and your stakeholders get instant notifications with their assigned tasks and contextual briefs.',
+    description: 'Activate a Readiness Protocol and your stakeholders get instant notifications with their assigned tasks and contextual briefs.',
     color: 'text-[#0A0F2E]',
     bg: 'bg-[#F8F7F4]',
   },
@@ -68,7 +68,7 @@ const steps = [
   { step: '01', label: 'Sign in', description: 'Continue with Google, GitHub, or Apple — instant access' },
   { step: '02', label: 'Set up your workspace', description: 'Walk through a 7-step configuration wizard in under 5 minutes' },
   { step: '03', label: 'Explore with sample data', description: 'Opt in to pre-populate your workspace so you can see the platform in action' },
-  { step: '04', label: 'Activate a prepared response', description: 'Pick a scenario, launch it, and experience the full execution loop' },
+  { step: '04', label: 'Activate a Readiness Protocol', description: 'Pick a scenario, launch it, and experience the full execution loop' },
 ];
 
 export default function ExplorePage() {
@@ -100,7 +100,7 @@ export default function ExplorePage() {
               <em style={{ color: '#C9A84C' }}>as a Real Customer</em>
             </h1>
             <p className="text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light" style={{ color: 'rgba(240,237,228,0.6)' }}>
-              Sign in, set up your workspace, and walk through an actual prepared response activation — complete with real email notifications and a live command center.
+              Sign in, set up your workspace, and walk through an actual Readiness Protocol activation — complete with real email notifications and a live command center.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -207,7 +207,7 @@ export default function ExplorePage() {
                   A structured 90-day partnership for Fortune 1000 companies ready to validate execution velocity at enterprise scale.
                 </p>
                 <ul className="space-y-3 mb-8">
-                  {['Dedicated onboarding', 'Up to 25 users', 'Custom prepared response configuration', 'Executive readout at 90 days'].map(item => (
+                  {['Dedicated onboarding', 'Up to 25 users', 'Custom Readiness Protocol configuration', 'Executive readout at 90 days'].map(item => (
                     <li key={item} className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#6B7280]">
                       <ChevronRight className="h-4 w-4 text-[#C9A84C]" />
                       {item}

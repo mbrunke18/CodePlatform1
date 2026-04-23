@@ -21,7 +21,7 @@ const resources = [
   {
     icon: FileText,
     title: 'Best Practices',
-    description: 'Learn from enterprise prepared response templates',
+    description: 'Learn from enterprise Readiness Protocol templates',
     action: 'Read Guides',
     color: 'text-[#2B8A6E]'
   },

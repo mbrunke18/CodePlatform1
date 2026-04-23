@@ -279,7 +279,7 @@ function generateDemoTasks(domain: string, enrichedPhases?: any[]): DemoTask[] {
 }
 
 const BRIEF_LOADING_STEPS = [
-  'Analyzing strategic domain and prepared response configuration',
+  'Analyzing strategic domain and Readiness Protocol configuration',
   'Synthesizing intelligence signals from 248+ data points',
   'Mapping critical roles and stakeholder dependencies',
   'Generating risk and mitigation assessment',
@@ -408,7 +408,7 @@ export default function PlaybookActivationConsole() {
     enabled: !!params?.triggerId && !isManualExecution,
   });
 
-  // Fetch prepared response details from playbookLibrary (IDs come from linkedPlaybooks on triggers)
+  // Fetch Readiness Protocol details from playbookLibrary (IDs come from linkedPlaybooks on triggers)
   const { data: playbookRaw } = useQuery<any>({
     queryKey: ['/api/playbook-library', params?.playbookId],
     queryFn: () =>
@@ -419,21 +419,21 @@ export default function PlaybookActivationConsole() {
   // Normalize: playbookLibrary returns { playbook: {...} }, scenarios returns the object directly
   const playbook = playbookRaw?.playbook ?? playbookRaw;
 
-  // Fetch tasks for this prepared response
+  // Fetch tasks for this Readiness Protocol
   const { data: tasksRaw } = useQuery<any[]>({
     queryKey: [`/api/tasks?playbookId=${params?.playbookId}`],
     enabled: !!params?.playbookId,
   });
   const tasks = Array.isArray(tasksRaw) ? tasksRaw : [];
 
-  // Role availability check — extract role names from prepared response and check for flags
+  // Role availability check — extract role names from Readiness Protocol and check for flags
   const { data: roleAvailabilityFlagsRaw } = useQuery<any[]>({
     queryKey: ['/api/role-availability'],
     enabled: !activationConfirmed,
   });
   const roleAvailabilityFlags = Array.isArray(roleAvailabilityFlagsRaw) ? roleAvailabilityFlagsRaw : [];
 
-  // AI-generated Execution Brief — fetched once prepared response ID is known
+  // AI-generated Execution Brief — fetched once Readiness Protocol ID is known
   const { data: briefData, isLoading: briefLoading } = useQuery<any>({
     queryKey: ['/api/playbooks', params?.playbookId, 'execution-brief', params?.triggerId],
     queryFn: () => {
@@ -622,7 +622,7 @@ export default function PlaybookActivationConsole() {
         ? Math.round((prevAvg * prevCount + executionTime) / (prevCount + 1))
         : executionTime;
 
-      // Non-fatal stat updates — 404s are expected when prepared response is from library (not scenarios table)
+      // Non-fatal stat updates — 404s are expected when Readiness Protocol is from library (not scenarios table)
       try {
         await fetch(`/api/scenarios/${params?.playbookId}`, {
           method: 'PUT',
@@ -731,7 +731,7 @@ export default function PlaybookActivationConsole() {
               Staging Execution Console
             </h1>
             <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em", marginBottom: 40 }}>
-              Retrieving prepared response parameters and staging response architecture
+              Retrieving Readiness Protocol parameters and staging response architecture
             </p>
             {/* Animated indicator */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 40 }}>
@@ -741,7 +741,7 @@ export default function PlaybookActivationConsole() {
             {/* Status lines */}
             <div style={{ display: "flex", flexDirection: "column", gap: 10, textAlign: "left", borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
               {[
-                "Loading prepared response configuration",
+                "Loading Readiness Protocol configuration",
                 "Verifying trigger context",
                 "Pre-staging task architecture",
               ].map((line, i) => (
@@ -853,7 +853,7 @@ export default function PlaybookActivationConsole() {
                 <span style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY }}>Readiness Protocol: {playbook?.name || 'Loading...'}</span>
               </div>
               <p style={{ fontSize: 14, color: MUTED }}>
-                {playbook?.description || 'Strategic response prepared response ready for activation.'}
+                {playbook?.description || 'Strategic response Readiness Protocol ready for activation.'}
               </p>
               {!isManualExecution && trigger && (
                 <div style={{ marginTop: 16, padding: 12, background: "rgba(239, 68, 68, 0.05)", border: "1px solid rgba(239, 68, 68, 0.2)", borderRadius: 0 }}>
@@ -1012,7 +1012,7 @@ export default function PlaybookActivationConsole() {
 
             {/* Pre-Activation Impact Preview */}
             <PreActivationImpactPreview 
-              prepared response={ playbook }
+              Readiness Protocol={ playbook }
               onConfirmActivation={handleConfirmActivation}
               onCancel={handleCancelActivation}
             />
@@ -1179,7 +1179,7 @@ export default function PlaybookActivationConsole() {
             <div className="space-y-4">
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Readiness Protocol Name</div>
-                <div style={{ fontWeight: 600, color: NAVY }} data-testid="text-prepared response-name">{playbook.title || playbook.name}</div>
+                <div style={{ fontWeight: 600, color: NAVY }} data-testid="text-Readiness Protocol-name">{playbook.title || playbook.name}</div>
               </div>
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>Description</div>
@@ -1193,7 +1193,7 @@ export default function PlaybookActivationConsole() {
                     background: playbook.readinessState === 'green' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", 
                     color: playbook.readinessState === 'green' ? TEAL : GOLD, 
                     fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px", marginTop:4 
-                  }} data-testid="badge-prepared response-readiness">
+                  }} data-testid="badge-Readiness Protocol-readiness">
                     {playbook.readinessState === 'green' ? '✓ Ready' : '⚠ Needs Review'}
                   </div>
                 </div>
@@ -1294,7 +1294,7 @@ export default function PlaybookActivationConsole() {
             <div className="space-y-3">
               {displayTasks.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  No tasks defined for this prepared response
+                  No tasks defined for this Readiness Protocol
                 </div>
               ) : (
                 displayTasks.map((task: any, index: number) => {
@@ -1364,7 +1364,7 @@ export default function PlaybookActivationConsole() {
                         }}>
                           {actionType}
                         </div>
-                        {/* Role owner badge — only shows for flagship prepared responses with expert content */}
+                        {/* Role owner badge — only shows for flagship Readiness Protocols with expert content */}
                         {task.assignedRole && (
                           <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, padding: "2px 8px", background: "rgba(10,15,46,0.07)", color: NAVY, borderRadius: 0 }}>
                             {task.assignedRole}
@@ -1586,7 +1586,7 @@ export default function PlaybookActivationConsole() {
           const perfLabel = perfScore >= 90 ? 'Exceptional' : perfScore >= 75 ? 'Strong' : perfScore >= 60 ? 'On Track' : 'Needs Review';
           const perfColor = perfScore >= 90 ? TEAL : perfScore >= 75 ? GOLD : perfScore >= 60 ? NAVY : '#B91C1C';
           const recommendation = perfScore >= 90
-            ? 'Outstanding execution. This prepared response is ready to be promoted as a benchmark across your portfolio. Consider sharing learnings with your strategic leadership team.'
+            ? 'Outstanding execution. This Readiness Protocol is ready to be promoted as a benchmark across your portfolio. Consider sharing learnings with your strategic leadership team.'
             : perfScore >= 75
             ? 'Strong execution. Review task-level performance in the ADVANCE workspace to identify 1–2 optimizations for the next activation cycle.'
             : perfScore >= 60
@@ -1737,7 +1737,7 @@ export default function PlaybookActivationConsole() {
                     <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.55 }}>
                       This simulation demonstrates what your organization could achieve with Readiness OS in a live strategic event.
                       Performance scores, ROI estimates, and task completion rates are modeled against the <strong>30-day industry mobilization benchmark</strong> for comparable strategic response events.
-                      Actual results vary by organization readiness and prepared response configuration.
+                      Actual results vary by organization readiness and Readiness Protocol configuration.
                     </p>
                   </div>
                 </div>

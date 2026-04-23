@@ -319,7 +319,7 @@ export default function SignalConfiguration() {
                       {activeCat.recommendedPlaybooks?.length > 0 && (
                         <div className="flex items-center gap-2 mt-2 flex-wrap">
                           <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: GOLD }} />
-                          <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Prepared responses:</span>
+                          <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: GOLD }}>Readiness Protocols:</span>
                           {activeCat.recommendedPlaybooks.map(slug => (
                             <span key={slug} className="text-[10px] font-medium" style={{ color: NAVY }}>
                               {slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -426,7 +426,7 @@ export default function SignalConfiguration() {
                                       </span>
                                       {trigger.recommendedPlaybooks?.length > 0 && (
                                         <span className="text-[9px] text-gray-400">
-                                          Fires → {trigger.recommendedPlaybooks.slice(0,2).map((p: string) => p.replace(/-/g,' ')).join(', ')} prepared response{trigger.recommendedPlaybooks.length > 1 ? 's' : ''}
+                                          Fires → {trigger.recommendedPlaybooks.slice(0,2).map((p: string) => p.replace(/-/g,' ')).join(', ')} Readiness Protocol{trigger.recommendedPlaybooks.length > 1 ? 's' : ''}
                                         </span>
                                       )}
                                     </div>

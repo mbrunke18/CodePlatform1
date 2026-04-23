@@ -107,7 +107,7 @@ export default function TriggerProbabilityForecast({ triggers = [], compact = fa
         signalStrength: Math.round(60 + rand3 * 35),
         contributingFactors: factors,
         recommendedActions: [
-          'Review and update associated prepared response',
+          'Review and update associated Readiness Protocol',
           'Confirm stakeholder availability',
           'Pre-stage critical resources'
         ],

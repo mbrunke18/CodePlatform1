@@ -39,12 +39,12 @@ const TEAL = "#2B8A6E";
 const workspaceTools = [
   {
     title: "Readiness Protocol Library",
-    description: "Browse and select from 170 pre-built strategic prepared responses across 9 domains",
+    description: "Browse and select from 170 pre-built strategic Readiness Protocols across 9 domains",
     path: "/playbooks",
     icon: BookOpen,
     color: "text-[#C9A84C]",
     bgColor: "bg-[#C9A84C]/10",
-    stats: "170 prepared responses",
+    stats: "170 Readiness Protocols",
     featured: true
   },
   {
@@ -76,7 +76,7 @@ const workspaceTools = [
   },
   {
     title: "Readiness Protocol Customization",
-    description: "Tailor prepared responses to your organization's specific needs",
+    description: "Tailor Readiness Protocols to your organization's specific needs",
     path: "/playbook-customization",
     icon: ClipboardList,
     color: "text-[#2B8A6E]",
@@ -148,7 +148,7 @@ function TwoPhasePlaybookSelector() {
     },
   });
 
-  // PHASE 2: Load full prepared response detail only when one is selected
+  // PHASE 2: Load full Readiness Protocol detail only when one is selected
   const { data: detail, isLoading: detailLoading } = useQuery<PlaybookDetail>({
     queryKey: ['/api/playbooks', selectedId],
     queryFn: () => fetch(`/api/playbooks/${selectedId}`, { credentials: 'include' }).then(r => r.json()),
@@ -188,7 +188,7 @@ function TwoPhasePlaybookSelector() {
           <Input
             value={search}
             onChange={e => setSearch(e.target.value)}
-            placeholder="Search prepared responses by name or domain..."
+            placeholder="Search Readiness Protocols by name or domain..."
             className="pl-9 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-[#2B8A6E]"
           />
         </div>
@@ -201,12 +201,12 @@ function TwoPhasePlaybookSelector() {
             {metaLoading ? (
               <div className="flex items-center justify-center py-10 gap-2 text-[#6B7280]">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                <span className="text-sm">Loading prepared response index...</span>
+                <span className="text-sm">Loading Readiness Protocol index...</span>
               </div>
             ) : filtered.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-10 gap-2 text-[#6B7280]">
                 <Search className="h-5 w-5" />
-                <span className="text-sm">No prepared responses match "{search}"</span>
+                <span className="text-sm">No Readiness Protocols match "{search}"</span>
               </div>
             ) : (
               filtered.map(p => (
@@ -242,7 +242,7 @@ function TwoPhasePlaybookSelector() {
                 <div className="p-3 bg-[#2B8A6E]/10">
                   <BookOpen className="h-6 w-6 text-[#2B8A6E]" />
                 </div>
-                <p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a prepared response for full details</p>
+                <p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a Readiness Protocol for full details</p>
                 <p className="text-xs text-[#6B7280] dark:text-[#C9A84C]/60">Trigger conditions, escalation paths, and execution steps load on demand</p>
               </div>
             ) : detailLoading ? (
@@ -284,7 +284,7 @@ function TwoPhasePlaybookSelector() {
                     <p className="text-xs text-[#6B7280]">Stakeholders</p>
                   </div>
                 </div>
-                <Link href={`/prepared responses/${detail.id}`}>
+                <Link href={`/Readiness Protocols/${detail.id}`}>
                   <Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">
                     Open Full Readiness Protocol
                     <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
@@ -326,7 +326,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   </Badge>
                 </div>
                 <p className="text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
-                  Build, customize, and manage strategic prepared responses for every scenario
+                  Build, customize, and manage strategic Readiness Protocols for every scenario
                 </p>
               </div>
             </div>
@@ -393,7 +393,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                       <category.icon className={`h-6 w-6 ${category.color}`} />
                       <h3 className="font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{category.name}</h3>
                     </div>
-                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-[#C9A84C]/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} prepared responses</Badge>
+                    <Badge variant="secondary" className="bg-[#E8E4DC] dark:bg-[#C9A84C]/10 text-[#0A0F2E] dark:text-[#C9A84C]">{category.count} Readiness Protocols</Badge>
                   </div>
                   <div className="space-y-1">
                     {category.domains.map((domain) => (
@@ -405,7 +405,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
             ))}
           </div>
 
-          {/* TWO-PHASE PREPARED RESPONSE SELECTOR */}
+          {/* TWO-PHASE Readiness Protocol SELECTOR */}
           <TwoPhasePlaybookSelector />
 
           {/* Recent Readiness Protocol Activity */}
@@ -509,7 +509,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
                   <div>
                     <h3 className="font-semibold text-white">Ready for the next phase?</h3>
                     <p className="text-sm text-white/60">
-                      Once your prepared responses are ready, set up signal monitoring in DETECT
+                      Once your Readiness Protocols are ready, set up signal monitoring in DETECT
                     </p>
                   </div>
                 </div>

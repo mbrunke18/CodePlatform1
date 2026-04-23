@@ -41,7 +41,7 @@ export default function VCPresentations() {
     {
       title: "Current Traction",
       value: "170",
-      subtitle: "Active prepared responses across 9 strategic domains",
+      subtitle: "Active Readiness Protocols across 9 strategic domains",
       growth: "221 executive triggers mapped",
       color: "text-[#2B8A6E]"
     },
@@ -122,7 +122,7 @@ export default function VCPresentations() {
     "We redesign how work flows in the age of AI — not another AI tool bolted onto the old model",
     "Enterprise work was built for a world without AI: committees, alignment cycles, 30-day delays were the best humans could do. AI changed the constraint — we changed the operating model",
     "3,600× Execution Head Start: 30 days of mobilization compressed to 12 minutes — before rivals have scheduled their first alignment call",
-    "170 pre-staged prepared responses replace real-time coordination — the broadest strategic readiness coverage available",
+    "170 pre-staged Readiness Protocols replace real-time coordination — the broadest strategic readiness coverage available",
     "We're not competing with Copilot. We're competing with the meeting-heavy, committee-bound operating model Fortune 1000s have run for 40 years"
   ];
 

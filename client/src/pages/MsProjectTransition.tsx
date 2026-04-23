@@ -14,11 +14,11 @@ const COMPARISON_ROWS = [
   { dimension: "Primary Goal", them: "Administrative governance", us: "Strategic velocity & fearless execution" },
   { dimension: "Microsoft Relation", them: "A replacement for MS Project data storage", us: "The operating model layer above the entire MS stack" },
   { dimension: "Response Time", them: "Days to weeks of planning after a trigger", us: "12 minutes — response is ready before the trigger fires" },
-  { dimension: "Mobilization Lag", them: "30-day cycle (same as MS Project — tool changed, model didn't)", us: "Eliminated — 170 prepared responses pre-staged and ready" },
+  { dimension: "Mobilization Lag", them: "30-day cycle (same as MS Project — tool changed, model didn't)", us: "Eliminated — 170 Readiness Protocols pre-staged and ready" },
   { dimension: "Core Value Metric", them: "End-to-end visibility", us: "3,600× Execution Head Start" },
   { dimension: "Budget Source", them: "IT Operations (cost center)", us: "CEO / Board Strategic Fund (growth center)" },
   { dimension: "AI Integration", them: "Reports and dashboards on top of data", us: "AI monitors, executives authorize, execution coordinated in 12 min" },
-  { dimension: "Prepared responses", them: "Custom templates — weeks to configure", us: "170 pre-built, battle-tested readiness prepared responses" },
+  { dimension: "Readiness Protocols", them: "Custom templates — weeks to configure", us: "170 pre-built, battle-tested readiness Readiness Protocols" },
   { dimension: "Signal Detection", them: "Not included", us: "248+ data points continuously monitored across 9 domains" },
   { dimension: "ROI Metric", them: "System consolidation", us: "$3,472 per minute of strategic advantage preserved" },
   { dimension: "Core Message", them: "Better governance", us: "Enterprises become fearless" },
@@ -307,7 +307,7 @@ export default function MsProjectTransition() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             {[
-              { label: "Why Not Consulting?", sub: "McKinsey charges $300K–$500K for prepared responses that sit on a shelf. We deliver infrastructure that executes.", path: "/vs-consulting", tag: "Management Consulting vs. Readiness OS" },
+              { label: "Why Not Consulting?", sub: "McKinsey charges $300K–$500K for Readiness Protocols that sit on a shelf. We deliver infrastructure that executes.", path: "/vs-consulting", tag: "Management Consulting vs. Readiness OS" },
               { label: "Platform Reality", sub: "Every conference keynote and framework proves the problem. None of them shipped the solution. We did.", path: "/platform-reality", tag: "They Described It. We Built It." },
             ].map((item) => (
               <button

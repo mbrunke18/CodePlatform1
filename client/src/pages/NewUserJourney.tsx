@@ -176,7 +176,7 @@ const STEPS = [
   { id: 'welcome', title: 'Welcome', icon: Rocket },
   { id: 'organization', title: 'Your Organization', icon: Building2 },
   { id: 'priorities', title: 'Strategic Priorities', icon: Target },
-  { id: 'prepared responses', title: 'Select Prepared responses', icon: Layers },
+  { id: 'Readiness Protocols', title: 'Select Readiness Protocols', icon: Layers },
   { id: 'signals', title: 'Configure Signals', icon: Radio },
   { id: 'metrics', title: 'Success Metrics', icon: BarChart3 },
   { id: 'preview', title: 'See Readiness OS in Action', icon: Play },
@@ -346,7 +346,7 @@ export default function NewUserJourney() {
               </div>
               <div>
                 <h1 className="text-sm font-bold text-[#0A0F2E] uppercase tracking-widest">Readiness OS Onboarding</h1>
-                <p className="text-[10px] text-slate-500 uppercase tracking-tight">Your first prepared response ready in 15 minutes</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-tight">Your first Readiness Protocol ready in 15 minutes</p>
               </div>
             </div>
             <div className="flex items-center gap-6">
@@ -424,7 +424,7 @@ export default function NewUserJourney() {
                     </div>
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
                       <div className="text-3xl font-serif text-[#0A0F2E] mb-2">170</div>
-                      <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Prepared responses</div>
+                      <div className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Readiness Protocols</div>
                     </div>
                     <div className="text-center p-6 border-b-2 border-slate-100 hover:border-[#C9A84C] transition-colors">
                       <div className="text-3xl font-serif text-[#0A0F2E] mb-2">92</div>
@@ -441,7 +441,7 @@ export default function NewUserJourney() {
                       </li>
                       <li className="flex items-center gap-3 text-sm text-slate-600">
                         <Check className="h-4 w-4 text-[#2B8A6E]" />
-                        Select your first operational prepared response
+                        Select your first operational Readiness Protocol
                       </li>
                       <li className="flex items-center gap-3 text-sm text-slate-600">
                         <Check className="h-4 w-4 text-[#2B8A6E]" />
@@ -456,7 +456,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">Tell us about your organization</h2>
-                    <p className="text-[#6B7280]">This helps us personalize your prepared responses and intelligence signals</p>
+                    <p className="text-[#6B7280]">This helps us personalize your Readiness Protocols and intelligence signals</p>
                   </div>
 
                   <div className="grid gap-6">
@@ -555,7 +555,7 @@ export default function NewUserJourney() {
                 <div className="space-y-8">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl font-bold text-[#0A0F2E] mb-2">What are your strategic priorities?</h2>
-                    <p className="text-[#6B7280]">Select at least 2 priorities to personalize your prepared response recommendations</p>
+                    <p className="text-[#6B7280]">Select at least 2 priorities to personalize your Readiness Protocol recommendations</p>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -614,10 +614,10 @@ export default function NewUserJourney() {
               {state.step === 3 && (
                 <div className="space-y-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-2">Choose your first prepared responses</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-2">Choose your first Readiness Protocols</h2>
                     <p className="text-gray-800">
                       Based on your industry ({INDUSTRIES.find(i => i.id === state.industry)?.name}), 
-                      we recommend these prepared responses
+                      we recommend these Readiness Protocols
                     </p>
                   </div>
 
@@ -639,7 +639,7 @@ export default function NewUserJourney() {
                               updateState({ selectedPlaybooks: [...state.selectedPlaybooks, playbook.id] });
                             }
                           }}
-                          data-testid={`prepared response-${playbook.id}`}
+                          data-testid={`Readiness Protocol-${playbook.id}`}
                         >
                           <CardContent className="p-5">
                             <div className="flex items-start justify-between">
@@ -682,7 +682,7 @@ export default function NewUserJourney() {
                     <div className="flex items-start gap-3">
                       <div style={{ width: 3, height: 40, background: '#C9A84C', flexShrink: 0, marginTop: 4 }} />
                       <p className="text-sm text-gray-800">
-                        You'll have access to all <span className="text-gray-900 font-semibold">170 prepared responses</span> after setup.
+                        You'll have access to all <span className="text-gray-900 font-semibold">170 Readiness Protocols</span> after setup.
                         These are just recommended starting points.
                       </p>
                     </div>
@@ -844,7 +844,7 @@ export default function NewUserJourney() {
                           <div className="flex-1">
                             <h3 className="font-semibold text-[#0A0F2E] mb-1">Readiness Protocol Coverage Target</h3>
                             <p className="text-sm text-[#6B7280] mb-4">
-                              Percentage of critical scenarios with ready prepared responses
+                              Percentage of critical scenarios with ready Readiness Protocols
                             </p>
                             <div className="flex items-center gap-4">
                               <Input
@@ -887,7 +887,7 @@ export default function NewUserJourney() {
                     <Card className="bg-white border-[#C9A84C]/20 rounded-none">
                       <CardContent className="p-4 text-center">
                         <div className="text-3xl font-bold text-[#C9A84C] mb-1">{state.selectedPlaybooks.length}</div>
-                        <div className="text-sm text-[#6B7280]">Active Prepared responses</div>
+                        <div className="text-sm text-[#6B7280]">Active Readiness Protocols</div>
                         <div className="text-xs text-[#C9A84C] mt-1">Ready for instant activation</div>
                       </CardContent>
                     </Card>
@@ -963,7 +963,7 @@ export default function NewUserJourney() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <Layers className="w-4 h-4 text-[#C9A84C]" />
-                          <span className="font-semibold text-[#0A0F2E] text-sm uppercase tracking-widest">PREPARED RESPONSES ARMED & READY</span>
+                          <span className="font-semibold text-[#0A0F2E] text-sm uppercase tracking-widest">Readiness Protocols ARMED & READY</span>
                         </div>
                         <Badge className="bg-[#C9A84C]/20 text-[#0A0F2E] border-[#C9A84C]/50 text-xs rounded-none">
                           {state.selectedPlaybooks.length} Active
@@ -1041,7 +1041,7 @@ export default function NewUserJourney() {
                       </div>
                       <div className="flex items-center gap-2 text-sm text-[#6B7280]">
                         <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
-                        {state.selectedPlaybooks.length} prepared responses ready for activation
+                        {state.selectedPlaybooks.length} Readiness Protocols ready for activation
                       </div>
                       <div className="flex items-center gap-2 text-sm text-[#6B7280]">
                         <CheckCircle className="w-4 h-4 text-[#2B8A6E]" />
@@ -1108,7 +1108,7 @@ export default function NewUserJourney() {
                           </div>
                           <div className="bg-white p-4 border border-[#E8E4DC] text-center">
                             <div className="text-3xl font-bold text-[#C9A84C]">{state.selectedPlaybooks.length}</div>
-                            <div className="text-sm text-gray-800">Prepared responses</div>
+                            <div className="text-sm text-gray-800">Readiness Protocols</div>
                             <div className="text-xs text-[#C9A84C] mt-1">Armed & Ready</div>
                           </div>
                           <div className="bg-white p-4 border border-[#E8E4DC] text-center">
@@ -1173,7 +1173,7 @@ export default function NewUserJourney() {
                           <div className="flex items-center gap-3 p-3 bg-white border border-[#E8E4DC]">
                             <div className="w-8 h-8 bg-[#0A0F2E]/10 flex items-center justify-center text-[#0A0F2E] font-bold">2</div>
                             <div>
-                              <div className="text-gray-900 font-medium">Explore Your Prepared responses</div>
+                              <div className="text-gray-900 font-medium">Explore Your Readiness Protocols</div>
                               <div className="text-sm text-gray-800">Customize response protocols for your specific organization</div>
                             </div>
                           </div>

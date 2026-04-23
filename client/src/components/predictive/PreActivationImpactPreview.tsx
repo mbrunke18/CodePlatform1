@@ -254,7 +254,7 @@ export default function PreActivationImpactPreview({
                 <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>Readiness Score</div>
                 <div style={{ ...CG, fontSize: 42, fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: 6 }}>{preview.readinessScore}</div>
                 <Progress value={preview.readinessScore} className="h-1.5" />
-                <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 4 }}>Org preparedness for this prepared response</div>
+                <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 4 }}>Org preparedness for this Readiness Protocol</div>
               </div>
             </div>
 
@@ -427,7 +427,7 @@ export default function PreActivationImpactPreview({
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {([
                   { value: 'accelerated', label: 'Accelerated', mins: '8 min', desc: 'Maximum compression — all parallel tracks active', color: RED, recommended: false },
-                  { value: 'standard', label: 'Standard', mins: '12 min', desc: 'Default — AI-recommended pacing for this prepared response', color: TEAL, recommended: true },
+                  { value: 'standard', label: 'Standard', mins: '12 min', desc: 'Default — AI-recommended pacing for this Readiness Protocol', color: TEAL, recommended: true },
                   { value: 'extended', label: 'Extended', mins: '20 min', desc: 'Deliberate pacing — additional stakeholder review cycles', color: '#9CA3AF', recommended: false },
                 ] as const).map(opt => (
                   <button key={opt.value} onClick={() => setExecTimeline(opt.value)}

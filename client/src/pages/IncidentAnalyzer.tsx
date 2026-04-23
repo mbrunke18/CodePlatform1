@@ -210,7 +210,7 @@ export default function IncidentAnalyzer() {
       setEditablePlaybook(JSON.parse(JSON.stringify(pb)));
       setCurrentStep(3);
     } catch (e: any) {
-      setError(e.message || "Failed to generate prepared response");
+      setError(e.message || "Failed to generate Readiness Protocol");
     } finally {
       setIsGenerating(false);
     }
@@ -548,7 +548,7 @@ export default function IncidentAnalyzer() {
                 {[
                   { num: 1, label: "Describe", desc: "Tell us what happened", icon: FileText, color: "text-[#0A0F2E]" },
                   { num: 2, label: "Analyze", desc: "AI identifies gaps & root causes", icon: Brain, color: "text-[#0A0F2E]" },
-                  { num: 3, label: "Readiness Protocol", desc: "Custom prepared response generated", icon: BookOpen, color: "text-[#2B8A6E]" },
+                  { num: 3, label: "Readiness Protocol", desc: "Custom Readiness Protocol generated", icon: BookOpen, color: "text-[#2B8A6E]" },
                   { num: 4, label: "Simulate", desc: "Live 12-minute execution", icon: Play, color: "text-[#C9A84C]" },
                   { num: 5, label: "Report", desc: "Download executive report", icon: Download, color: "text-[#C9A84C]" },
                 ].map((step) => (
@@ -755,7 +755,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>
                       OFFENSE
                     </p>
-                    <p className="text-xs text-[#6B7280] mt-0.5">58 Prepared responses</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">58 Readiness Protocols</p>
                     <p className="text-xs text-[#6B7280] mt-1">Market Entry &bull; M&amp;A &bull; Product Launch</p>
                   </button>
                   <button
@@ -770,7 +770,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-600' : 'text-[#6B7280]'}`}>
                       DEFENSE
                     </p>
-                    <p className="text-xs text-[#6B7280] mt-0.5">58 Prepared responses</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">58 Readiness Protocols</p>
                     <p className="text-xs text-[#6B7280] mt-1">Crisis &bull; Cyber &bull; Regulatory</p>
                   </button>
                   <button
@@ -785,7 +785,7 @@ export default function IncidentAnalyzer() {
                     <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-[#6B7280]'}`}>
                       SPECIAL TEAMS
                     </p>
-                    <p className="text-xs text-[#6B7280] mt-0.5">54 Prepared responses</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">54 Readiness Protocols</p>
                     <p className="text-xs text-[#6B7280] mt-1">Digital Transformation &bull; AI Governance</p>
                   </button>
                 </div>
@@ -894,7 +894,7 @@ export default function IncidentAnalyzer() {
                       )}
                       <span className="text-[#0A0F2E] font-medium">{analysis.matched_playbook.name}</span>
                     </div>
-                    <p className={`text-sm ${dc.text}`}>This prepared response exists. Ready to deploy today.</p>
+                    <p className={`text-sm ${dc.text}`}>This Readiness Protocol exists. Ready to deploy today.</p>
                   </div>
                 )}
 
@@ -1080,7 +1080,7 @@ export default function IncidentAnalyzer() {
           </div>
         )}
 
-        {/* STEP 3: GENERATED PREPARED RESPONSE */}
+        {/* STEP 3: GENERATED Readiness Protocol */}
         {currentStep === 3 && (editablePlaybook || playbook) && (
           <div className="space-y-6">
             <Card className="bg-white border-[#E8E4DC]">
@@ -1477,7 +1477,7 @@ export default function IncidentAnalyzer() {
                   <Download className="w-10 h-10 text-[#0A0F2E] mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="text-lg font-semibold text-[#0A0F2E] mb-2">Strategic Analysis Report</h3>
                   <p className="text-sm text-[#6B7280] mb-4">
-                    Complete analysis with side-by-side comparison, prepared response summary, and simulation results
+                    Complete analysis with side-by-side comparison, Readiness Protocol summary, and simulation results
                   </p>
                   <Button
                     onClick={generateIncidentPDF}
@@ -1493,7 +1493,7 @@ export default function IncidentAnalyzer() {
                   <FileText className="w-10 h-10 text-[#2B8A6E] mx-auto mb-3 group-hover:scale-110 transition-transform" />
                   <h3 className="text-lg font-semibold text-[#0A0F2E] mb-2">Board Briefing Deck</h3>
                   <p className="text-sm text-[#6B7280] mb-4">
-                    Executive summary, risk assessment, prepared response overview, and ROI projection for board presentation
+                    Executive summary, risk assessment, Readiness Protocol overview, and ROI projection for board presentation
                   </p>
                   <Button
                     onClick={generateBoardPDF}

@@ -140,7 +140,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                 </div>
                 <div className="flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-[#C9A84C]" />
-                  <span>Validates prepared response feasibility</span>
+                  <span>Validates Readiness Protocol feasibility</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-[#0A0F2E]" />
@@ -290,7 +290,7 @@ export default function SLADefinitionStep({ data, onChange, playbook }: SLADefin
                         <>
                           <p>• You set: Tasks must begin within {displayValue} {sla.unit} of trigger fire</p>
                           <p>• Platform tracks: Actual time from activation to first task execution</p>
-                          <p>• Result: Measures your prepared response's coordination effectiveness</p>
+                          <p>• Result: Measures your Readiness Protocol's coordination effectiveness</p>
                         </>
                       )}
                       {currentPhase === 'advance' && (

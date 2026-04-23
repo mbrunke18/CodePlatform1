@@ -61,15 +61,15 @@ const phaseDetails = [
     id: 'identify',
     title: 'Phase 3: IDENTIFY — VaughnMartin Readiness Protocol™',
     duration: 'Days 30-45',
-    objective: 'Build your strategic prepared response portfolio',
+    objective: 'Build your strategic Readiness Protocol portfolio',
     activities: [
-      { name: 'Browse Readiness Protocol Library', path: '/identify/prepared responses', description: 'Explore 170 prepared responses across 9 strategic domains' },
-      { name: 'Select Priority Prepared responses', path: '/workspaces/identify', description: 'Choose prepared responses aligned to your strategic priorities' },
-      { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each prepared response' },
+      { name: 'Browse Readiness Protocol Library', path: '/identify/Readiness Protocols', description: 'Explore 170 Readiness Protocols across 9 strategic domains' },
+      { name: 'Select Priority Readiness Protocols', path: '/workspaces/identify', description: 'Choose Readiness Protocols aligned to your strategic priorities' },
+      { name: 'Map Stakeholders', path: '/setup/team', description: 'Assign accountability for each Readiness Protocol' },
       { name: 'Customize Readiness Protocols', path: '/playbook-customization', description: 'Tailor tasks, timelines, and resources' },
       { name: 'Establish Readiness Baseline', path: '/readiness-assessment', description: 'Measure your strategic readiness score' }
     ],
-    deliverables: ['5-10 priority prepared responses configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
+    deliverables: ['5-10 priority Readiness Protocols configured', 'Stakeholder matrix complete', 'Task assignments finalized', 'Readiness baseline established'],
     integrations: ['Document repositories', 'HRIS systems', 'Knowledge bases']
   },
   {
@@ -123,7 +123,7 @@ const phaseDetails = [
     objective: 'Scale adoption and maximize strategic impact',
     activities: [
       { name: 'Readiness OS One™ Dashboard', path: '/command-center', description: 'Executive overview of strategic readiness' },
-      { name: 'Expand Readiness Protocol Coverage', path: '/identify/prepared responses', description: 'Add prepared responses for new strategic domains' },
+      { name: 'Expand Readiness Protocol Coverage', path: '/identify/Readiness Protocols', description: 'Add Readiness Protocols for new strategic domains' },
       { name: 'Track Organizational Maturity', path: '/future-readiness', description: 'Monitor maturity progression' },
       { name: 'Quarterly Strategy Reviews', path: '/execution-history', description: 'Regular strategic health checks' }
     ],
@@ -163,7 +163,7 @@ export default function CustomerJourney() {
               {[
                 { value: "12", unit: "min", label: "Strategic Response" },
                 { value: "3,600×", unit: "", label: "Execution Head Start" },
-                { value: "170", unit: "", label: "Prepared responses Ready" },
+                { value: "170", unit: "", label: "Readiness Protocols Ready" },
                 { value: "90", unit: "days", label: "To Full Mastery" },
               ].map(s => (
                 <div key={s.label} style={{ padding: "20px 16px", textAlign: "center" }}>

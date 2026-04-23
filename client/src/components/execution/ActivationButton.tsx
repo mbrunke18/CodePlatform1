@@ -162,7 +162,7 @@ export function ActivationButton({
     onError: (error: any) => {
       toast({
         title: "Activation Failed",
-        description: error.message || "Failed to activate prepared response",
+        description: error.message || "Failed to activate Readiness Protocol",
         variant: "destructive",
       });
       setShowProgress(false);
@@ -206,7 +206,7 @@ export function ActivationButton({
           variant={variant}
           disabled={buttonDisabled}
           className="gap-2"
-          data-testid="button-activate-prepared response"
+          data-testid="button-activate-Readiness Protocol"
         >
           <Rocket className="h-5 w-5" />
           {activationMutation.isPending ? "Activating..." : "Activate Readiness Protocol"}

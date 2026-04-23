@@ -21,7 +21,7 @@ const GOLD  = '#C9A84C';
 const TEAL  = '#2B8A6E';
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
-// ── Category → domain mapping (for prepared response routing) ─────────────────────────
+// ── Category → domain mapping (for Readiness Protocol routing) ─────────────────────────
 const TRIGGER_CATEGORY_TO_DOMAIN: Record<string, string> = {
   behavior: 'gtm', competitive: 'competitive', customer: 'gtm',
   cyber: 'crisis', economic: 'financial', esg: 'regulatory',
@@ -677,13 +677,13 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                       </section>
                     )}
 
-                    {/* ── SECTION 4: Linked Prepared responses ────────────────────────── */}
+                    {/* ── SECTION 4: Linked Readiness Protocols ────────────────────────── */}
                     {selectedTrigger.linkedPlaybooks?.length > 0 && (
                       <section>
                         <div className="flex items-center gap-2 mb-4">
                           <BookOpen className="w-4 h-4" style={{ color: GOLD }} />
                           <h3 className="text-[11px] font-black uppercase tracking-[0.2em]" style={{ color: NAVY }}>
-                            Pre-Staged Prepared responses — Ready When This Fires
+                            Pre-Staged Readiness Protocols — Ready When This Fires
                           </h3>
                           <div className="flex-1 h-px" style={{ background: '#E8E4DC' }} />
                         </div>
@@ -693,7 +693,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             <div key={p.id}
                               className="flex items-center gap-4 px-5 py-4 border cursor-pointer transition-all"
                               style={{ borderColor: idx === 0 ? `${GOLD}50` : '#E8E4DC', background: idx === 0 ? `${GOLD}05` : '#fff' }}
-                              onClick={() => setLocation(`/prepared response-library/${p.id}`)}>
+                              onClick={() => setLocation(`/Readiness Protocol-library/${p.id}`)}>
                               <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0"
                                 style={{ background: idx === 0 ? `${GOLD}18` : `${NAVY}0A` }}>
                                 <BookOpen className="w-4 h-4" style={{ color: idx === 0 ? GOLD : NAVY }} />
@@ -717,10 +717,10 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             onClick={() => {
                               const first = selectedTrigger.linkedPlaybooks?.[0];
                               if (first?.id) {
-                                setLocation(`/prepared response-activation/${selectedTrigger.id}/${first.id}`);
+                                setLocation(`/Readiness Protocol-activation/${selectedTrigger.id}/${first.id}`);
                               } else {
                                 const domain = TRIGGER_CATEGORY_TO_DOMAIN[selectedTrigger.category] || 'all';
-                                setLocation(`/identify/prepared response-library?domain=${encodeURIComponent(domain)}`);
+                                setLocation(`/identify/Readiness Protocol-library?domain=${encodeURIComponent(domain)}`);
                               }
                             }}
                             className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity"
@@ -735,7 +735,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-80 transition-opacity"
                             style={{ background: '#E8E4DC', color: '#9CA3AF' }}
                           >
-                            Sign In to Activate Prepared responses
+                            Sign In to Activate Readiness Protocols
                           </button>
                         )}
 

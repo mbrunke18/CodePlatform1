@@ -119,7 +119,7 @@ export function Intro({ progress }: SceneProps) {
           className="mt-8 pt-6 border-t border-gray-200"
         >
           <p className="text-[#D4AF37] text-2xl font-bold">Trigger to Execution in 12 Minutes</p>
-          <p className="text-[#00A8A8] text-sm mt-2">170 prepared responses • 9 strategic domains • 50-200+ stakeholders coordinated</p>
+          <p className="text-[#00A8A8] text-sm mt-2">170 Readiness Protocols • 9 strategic domains • 50-200+ stakeholders coordinated</p>
         </motion.div>
       </div>
       

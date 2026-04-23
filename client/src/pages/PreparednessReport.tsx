@@ -229,7 +229,7 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                         <p className="text-sm text-[#0A0F2E] font-medium leading-relaxed mb-4">{gap.recommendation}</p>
                         {gap.missingPlaybooks && gap.missingPlaybooks.length > 0 && (
                           <div className="bg-white p-4 rounded border border-[#E8E4DC]">
-                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Missing Strategic Prepared responses:</div>
+                            <div className="text-[10px] uppercase tracking-wider font-bold text-[#6B7280] mb-2">Missing Strategic Readiness Protocols:</div>
                             <ul className="grid grid-cols-2 gap-2">
                               {gap.missingPlaybooks.map((playbook: string, i: number) => (
                                 <li key={i} className="text-sm font-bold text-[#0A0F2E] flex items-center gap-2">
@@ -311,10 +311,10 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                     <div className="flex-1">
                       <div className="font-bold text-[#2B8A6E] text-lg" style={CG}>Run Readiness Protocol Drills</div>
                       <p className="text-sm text-[#2B8A6E] font-medium mt-1 leading-relaxed">
-                        Complete {Math.ceil((25 - (readinessMetrics.drillsCompleted || 0)) / 5)} more prepared response drills. This will strengthen team coordination and add up to {25 - (readinessMetrics.drillsCompleted || 0)} points.
+                        Complete {Math.ceil((25 - (readinessMetrics.drillsCompleted || 0)) / 5)} more Readiness Protocol drills. This will strengthen team coordination and add up to {25 - (readinessMetrics.drillsCompleted || 0)} points.
                       </p>
                       <Link href="/playbook-library">
-                        <Button className="mt-4 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold" size="sm" data-testid="button-goto-prepared responses">View Prepared responses</Button>
+                        <Button className="mt-4 bg-[#2B8A6E] text-white hover:bg-[#3BAF8A] font-bold" size="sm" data-testid="button-goto-Readiness Protocols">View Readiness Protocols</Button>
                       </Link>
                     </div>
                   </div>
@@ -366,15 +366,15 @@ export default function PreparednessReport({ embedded }: { embedded?: boolean })
                 window: "Next 30 Days",
                 risk: "Medium",
                 riskColor: GOLD,
-                gap: "Compliance prepared response coverage drops below 80% threshold as regulatory review period begins. 3 prepared responses need executive re-validation.",
-                action: "Validate Compliance Prepared responses",
+                gap: "Compliance Readiness Protocol coverage drops below 80% threshold as regulatory review period begins. 3 Readiness Protocols need executive re-validation.",
+                action: "Validate Compliance Readiness Protocols",
                 confidence: 91,
               },
               {
                 window: "Days 31–60",
                 risk: "Low",
                 riskColor: "#2B8A6E",
-                gap: "Stakeholder mapping refresh overdue. 4 senior leader changes in the last 60 days have not been reflected in prepared response ownership.",
+                gap: "Stakeholder mapping refresh overdue. 4 senior leader changes in the last 60 days have not been reflected in Readiness Protocol ownership.",
                 action: "Update Stakeholder Map",
                 confidence: 88,
               },

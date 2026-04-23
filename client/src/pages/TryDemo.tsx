@@ -465,7 +465,7 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
   },
   regulatory: {
     patterns: ['Legal hold activated 2 hours before SEC timeline requirement', 'All 14 named executives briefed within 90 minutes', '8-K draft staged for board approval — 19 hours ahead of filing deadline'],
-    improvements: ['Pre-load outside counsel engagement letter in prepared response templates', 'Add IR firm to Phase 1 notifications (currently Phase 2)', 'Stage restatement scenario models as Phase 1 Finance task'],
+    improvements: ['Pre-load outside counsel engagement letter in Readiness Protocol templates', 'Add IR firm to Phase 1 notifications (currently Phase 2)', 'Stage restatement scenario models as Phase 1 Finance task'],
     stat: 'Regulatory filing timeline met — zero compliance penalties',
   },
   'deal-risk': {
@@ -475,11 +475,11 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
   },
   'servicenow-armis': {
     patterns: ['Integration PMO formed and accountabilities assigned in 8 minutes', '"One platform" roadmap narrative delivered to 11 at-risk accounts within 2 hours', 'Armis retention packages activated day one — attrition risk contained'],
-    improvements: ['Stage roadmap message pre-approval for acquisitions above $1B threshold', 'Add competitor response protocol to M&A prepared response Phase 1', 'Include equity conversion timeline in employee communication template'],
+    improvements: ['Stage roadmap message pre-approval for acquisitions above $1B threshold', 'Add competitor response protocol to M&A Readiness Protocol Phase 1', 'Include equity conversion timeline in employee communication template'],
     stat: '$7.75B integration protected — "one platform" brand promise intact',
   },
   'alphabet-wiz': {
-    patterns: ['DOJ response strategy activated within 6 minutes of announcement', 'Wiz retention prepared response deployed before first employee inquiry', 'AWS competitive counter-message live in 47 minutes — ahead of customer concerns'],
+    patterns: ['DOJ response strategy activated within 6 minutes of announcement', 'Wiz retention Readiness Protocol deployed before first employee inquiry', 'AWS competitive counter-message live in 47 minutes — ahead of customer concerns'],
     improvements: ['Pre-stage multi-cloud positioning message for all security acquisitions', 'Add partner ecosystem notification to Phase 1 (currently Phase 2)', 'Build DOJ/FTC timeline tracker into regulatory response template'],
     stat: '$32B deal on track — Wiz did not walk away this time',
   },
@@ -495,12 +495,12 @@ const SCENARIO_ADVANCE: Record<string, { patterns: string[]; improvements: strin
   },
   'target-succession': {
     patterns: ['Succession process documented within 7 minutes of CEO notification', '72-hour disclosure window managed — no leak', 'All three internal candidates briefed with consistent messaging before board vote'],
-    improvements: ['Build annual succession readiness review into governance calendar', 'Pre-stage institutional holder communication for leadership transition events', 'Add store operations communication chain to succession prepared response Phase 1'],
+    improvements: ['Build annual succession readiness review into governance calendar', 'Pre-stage institutional holder communication for leadership transition events', 'Add store operations communication chain to succession Readiness Protocol Phase 1'],
     stat: 'CEO transition executed — zero uncontrolled disclosure, market confidence maintained',
   },
   'clorox-purell': {
     patterns: ['B2B revenue integration model drafted and approved before analyst calls', 'Retail partner shelf conflict resolved in joint planning session within 48 hours', 'GOJO employee retention packages activated day one — no attrition during close'],
-    improvements: ['Stage subscription revenue model prepared response before any B2B acquisition above $500M', 'Add retail partner conflict mapping to M&A Phase 1 checklist', 'Include HSR filing timeline in integration communication from day one'],
+    improvements: ['Stage subscription revenue model Readiness Protocol before any B2B acquisition above $500M', 'Add retail partner conflict mapping to M&A Phase 1 checklist', 'Include HSR filing timeline in integration communication from day one'],
     stat: '$2.25B acquisition integrated — recurring revenue model operational within 90 days',
   },
 };
@@ -819,8 +819,8 @@ export default function TryDemo() {
         responseTime: '12 minutes',
       },
       nextExecutionRecommendations: [
-        'Apply improved prepared response to similar scenarios in pipeline',
-        'Schedule quarterly prepared response review with leadership',
+        'Apply improved Readiness Protocol to similar scenarios in pipeline',
+        'Schedule quarterly Readiness Protocol review with leadership',
         'Train team on early signal recognition',
       ],
     });
@@ -865,7 +865,7 @@ export default function TryDemo() {
       <PageHero
         eyebrow="Interactive Demo"
         title="Experience Readiness OS"
-        subtitle="Select a strategic scenario and see how Readiness OS responds — from signal detection to full prepared response execution in 12 minutes."
+        subtitle="Select a strategic scenario and see how Readiness OS responds — from signal detection to full Readiness Protocol execution in 12 minutes."
         size="md"
       />
       <main className="flex-1 py-8 md:py-12">
@@ -913,11 +913,11 @@ export default function TryDemo() {
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>With Readiness OS</span>
                   </div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: '#FFFFFF', marginBottom: 6, lineHeight: 1.35, fontFamily: "'Cormorant Garamond', serif" }}>The same trigger. A completely different result.</p>
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16, lineHeight: 1.6 }}>Your prepared response was already built. The system was already watching.</p>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 16, lineHeight: 1.6 }}>Your Readiness Protocol was already built. The system was already watching.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {[
                       { min: '0 min', text: 'Continuous monitoring detects the trigger across 248+ signal sources', color: GOLD },
-                      { min: '2 min', text: 'Matched prepared response activates — tasks assigned to named owners', color: '#3BAF8A' },
+                      { min: '2 min', text: 'Matched Readiness Protocol activates — tasks assigned to named owners', color: '#3BAF8A' },
                       { min: '5 min', text: 'War room channel open, board communication staged', color: '#3BAF8A' },
                       { min: '8 min', text: 'Budget exception routed for approval automatically', color: '#3BAF8A' },
                       { min: '12 min', text: 'Full coordinated response underway — nothing improvised', color: GOLD },
@@ -929,7 +929,7 @@ export default function TryDemo() {
                     ))}
                   </div>
                   <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.08)', display: 'flex', gap: 20 }}>
-                    {[['170', 'Prepared responses ready'], ['248+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
+                    {[['170', 'Readiness Protocols ready'], ['248+', 'Signals watched'], ['12 min', 'To execution']].map(([val, label]) => (
                       <div key={label}>
                         <p style={{ fontSize: 17, fontWeight: 700, color: GOLD, margin: 0, lineHeight: 1 }}>{val}</p>
                         <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', margin: '2px 0 0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</p>
@@ -1015,7 +1015,7 @@ export default function TryDemo() {
                 <div>
                   <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#f87171', marginBottom: 4 }}>This Is Your Current Reality — Without Readiness OS</p>
                   <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, margin: 0 }}>
-                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a strategic trigger fires and no prepared response exists.
+                    Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a strategic trigger fires and no Readiness Protocol exists.
                   </p>
                 </div>
                 <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.4)', marginLeft: 'auto', flexShrink: 0 }}>
@@ -1027,7 +1027,7 @@ export default function TryDemo() {
               <div className="mb-4 flex items-center justify-between flex-wrap gap-3">
                 <Badge className="bg-red-500/20 text-red-300 border-red-500/30 animate-pulse">
                   <AlertTriangle className="h-3 w-3 mr-1" />
-                  CRISIS IN PROGRESS — NO PREPARED RESPONSE ACTIVE
+                  CRISIS IN PROGRESS — NO Readiness Protocol ACTIVE
                 </Badge>
                 <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>
                   Watch the chaos unfold — or use the <span style={{ color: '#C9A84C', fontWeight: 700 }}>Skip Ahead</span> button below to jump to the solution.
@@ -1158,7 +1158,7 @@ export default function TryDemo() {
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                             <div style={{ padding: '14px 16px', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
                               <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>❌ 30 Days of This</p>
-                              {['No prepared response owner assigned', 'Budget stuck in committee', 'Competitor already responded', 'Board demanding answers'].map(item => (
+                              {['No Readiness Protocol owner assigned', 'Budget stuck in committee', 'Competitor already responded', 'Board demanding answers'].map(item => (
                                 <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.45)', margin: '0 0 5px', lineHeight: 1.4 }}>— {item}</p>
                               ))}
                             </div>
@@ -1261,7 +1261,7 @@ export default function TryDemo() {
                           IDENTIFY: Readiness Protocol Ready
                         </CardTitle>
                         <CardDescription>
-                          Your {selectedScenario.playbook} prepared response was already configured
+                          Your {selectedScenario.playbook} Readiness Protocol was already configured
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
@@ -1554,7 +1554,7 @@ export default function TryDemo() {
                             </div>
                           ))}
                         </div>
-                        <p style={{ fontSize: 10, color: MUTED, marginTop: 10, fontStyle: 'italic' }}>These improvements are automatically staged for your next prepared response review cycle.</p>
+                        <p style={{ fontSize: 10, color: MUTED, marginTop: 10, fontStyle: 'italic' }}>These improvements are automatically staged for your next Readiness Protocol review cycle.</p>
                       </div>
 
                       <Button
@@ -1589,7 +1589,7 @@ export default function TryDemo() {
                                 <div style={{ flex: 1 }}>
                                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>{mapped.badge}</div>
                                   <h2 style={{ fontSize: 24, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", marginBottom: 6, lineHeight: 1.2 }}>{mapped.name}</h2>
-                                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', margin: 0 }}>The prepared response that just coordinated your response — 4 execution phases, pre-staged communications, risk indicators, and outcome benchmarks. Ready to activate for real.</p>
+                                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', margin: 0 }}>The Readiness Protocol that just coordinated your response — 4 execution phases, pre-staged communications, risk indicators, and outcome benchmarks. Ready to activate for real.</p>
                                 </div>
                               </div>
 
@@ -1611,7 +1611,7 @@ export default function TryDemo() {
 
                               <button
                                 onClick={() => {
-                                  setLocation(`/prepared response-library/${mapped.id}`);
+                                  setLocation(`/Readiness Protocol-library/${mapped.id}`);
                                   window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
                                 }}
                                 style={{ marginTop: 20, width: '100%', padding: '14px 20px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.02em' }}
@@ -1667,7 +1667,7 @@ export default function TryDemo() {
                             </div>
                             <div style={{ padding: '14px 12px', background: '#F8F7F4', border: '1px solid #E8E4DC', borderRadius: 0, textAlign: 'center' }}>
                               <p className="text-2xl font-bold" style={{ color: '#0A0F2E' }}>170</p>
-                              <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Prepared responses Ready</p>
+                              <p className="text-xs font-semibold mt-1" style={{ color: '#374151' }}>Readiness Protocols Ready</p>
                             </div>
                           </div>
 
@@ -1734,7 +1734,7 @@ export default function TryDemo() {
                         <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD }} />
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Why This Was Ready</span>
                       </div>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Your organization built this prepared response before today.</p>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Your organization built this Readiness Protocol before today.</p>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Every task assignment, stakeholder notification, and communication template was configured in advance — not improvised under pressure. This is the entire point: the work happens before the trigger fires, not after it.</p>
                       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
                         <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 6 }}>Without Readiness OS:</p>
@@ -1798,7 +1798,7 @@ export default function TryDemo() {
                         <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>How The System Gets Smarter</span>
                       </div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Every execution teaches the system.</p>
-                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Pattern analysis identifies what worked, what slowed response, and where pre-staging gaps exist. Improvements are automatically staged for your next prepared response review — not buried in a post-mortem slide deck that no one reads.</p>
+                      <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Pattern analysis identifies what worked, what slowed response, and where pre-staging gaps exist. Improvements are automatically staged for your next Readiness Protocol review — not buried in a post-mortem slide deck that no one reads.</p>
                       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
                         <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Over time, your organization builds an institutional memory that new hires inherit from day one — not after years of experience.</p>
                       </div>
@@ -1870,11 +1870,11 @@ export default function TryDemo() {
                     </CardContent>
                   </Card>
 
-                  {/* 170 Prepared responses */}
+                  {/* 170 Readiness Protocols */}
                   <Card className="bg-white border-[#C9A84C]">
                     <CardContent className="p-4 text-center">
                       <p className="text-4xl font-bold text-[#C9A84C] mb-1">170</p>
-                      <p className="text-sm font-bold text-[#0A0F2E]" style={CG}>Pre-Built Prepared responses</p>
+                      <p className="text-sm font-bold text-[#0A0F2E]" style={CG}>Pre-Built Readiness Protocols</p>
                       <p className="text-[10px] text-slate-500 font-medium mt-1 uppercase tracking-wider">Across 9 Strategic Domains</p>
                       <button
                         onClick={() => { setLocation('/playbook-library'); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
@@ -1971,7 +1971,7 @@ export default function TryDemo() {
               Explore Live Readiness Protocol Examples
             </h2>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 580, margin: '0 auto', lineHeight: 1.6, fontWeight: 500 }}>
-              Three fully enriched prepared responses — open to everyone. Each includes a 4-phase execution plan, pre-staged communications, risk indicators, and outcome benchmarks.
+              Three fully enriched Readiness Protocols — open to everyone. Each includes a 4-phase execution plan, pre-staged communications, risk indicators, and outcome benchmarks.
             </p>
           </div>
 
@@ -2044,7 +2044,7 @@ export default function TryDemo() {
                       ))}
                     </div>
                     <button
-                      onClick={() => { setLocation(`/prepared response-library/${pb.id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+                      onClick={() => { setLocation(`/Readiness Protocol-library/${pb.id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
                       style={{ width: '100%', padding: '10px 16px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                     >
                       View Full Readiness Protocol
@@ -2062,7 +2062,7 @@ export default function TryDemo() {
               style={{ padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 0, fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
             >
               <BookOpen style={{ width: 14, height: 14 }} />
-              Browse All 170 Prepared responses
+              Browse All 170 Readiness Protocols
             </button>
           </div>
         </div>

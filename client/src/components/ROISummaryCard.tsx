@@ -116,8 +116,8 @@ export default function ROISummaryCard({ organizationId, period = "quarter" }: R
         {/* Execution Metrics */}
         <div className="flex items-center justify-between pt-3 border-t border-[#E8E4DC] dark:border-[#0A0F2E]">
           <div className="space-y-1">
-            <div className="text-xs text-gray-600 dark:text-slate-300">Prepared responses Executed</div>
-            <div className="text-lg font-semibold text-slate-900 dark:text-white" data-testid="roi-prepared responses-executed">
+            <div className="text-xs text-gray-600 dark:text-slate-300">Readiness Protocols Executed</div>
+            <div className="text-lg font-semibold text-slate-900 dark:text-white" data-testid="roi-Readiness Protocols-executed">
               {displayData.playbooksExecuted}
             </div>
           </div>

@@ -51,7 +51,7 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const organizations = Array.isArray(organizationsRaw) ? organizationsRaw : [];
   const organizationId = organizations[0]?.id;
 
-  // Fetch prepared responses for selection
+  // Fetch Readiness Protocols for selection
   const { data: libraryData } = useQuery<any>({
     queryKey: ['/api/playbook-library'],
   });
@@ -329,9 +329,9 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="prepared response" className="font-bold text-[#0A0F2E]">Select Readiness Protocol</Label>
+                  <Label htmlFor="Readiness Protocol" className="font-bold text-[#0A0F2E]">Select Readiness Protocol</Label>
                   <Select value={selectedPlaybookId} onValueChange={setSelectedPlaybookId}>
-                    <SelectTrigger id="prepared response" className="border-[#E8E4DC]" data-testid="select-prepared response">
+                    <SelectTrigger id="Readiness Protocol" className="border-[#E8E4DC]" data-testid="select-Readiness Protocol">
                       <SelectValue placeholder="Choose a Readiness Protocol..." />
                     </SelectTrigger>
                     <SelectContent>

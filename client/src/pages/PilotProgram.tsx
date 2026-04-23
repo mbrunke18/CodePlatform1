@@ -14,11 +14,11 @@ const pilotPhases = [
     activities: [
       'Executive sponsor alignment session',
       'Integration setup (Jira, Slack/Teams)',
-      'Select 3-5 pilot prepared responses from 170 library',
+      'Select 3-5 pilot Readiness Protocols from 170 library',
       'Configure signal monitoring for pilot triggers',
       'Baseline current response metrics'
     ],
-    deliverables: ['Integration complete', 'Prepared responses configured', 'Baseline metrics documented'],
+    deliverables: ['Integration complete', 'Readiness Protocols configured', 'Baseline metrics documented'],
     successMetrics: 'All integrations tested and operational'
   },
   {
@@ -30,10 +30,10 @@ const pilotPhases = [
       'Conduct 2-3 tabletop exercises with Readiness OS',
       'Measure activation time (target: <12 min)',
       'Train response team leads on Readiness OS workflow',
-      'Refine prepared responses based on dry run feedback',
+      'Refine Readiness Protocols based on dry run feedback',
       'Establish KPI tracking dashboard'
     ],
-    deliverables: ['Dry run reports', 'Training completion', 'Refined prepared responses'],
+    deliverables: ['Dry run reports', 'Training completion', 'Refined Readiness Protocols'],
     successMetrics: 'Activation time under 15 minutes in dry runs'
   },
   {
@@ -43,7 +43,7 @@ const pilotPhases = [
     color: 'bg-[#2B8A6E]',
     activities: [
       'Enable live signal monitoring',
-      'First live prepared response activation',
+      'First live Readiness Protocol activation',
       'Track all coordination metrics',
       'Document lessons learned',
       'Capture stakeholder feedback'
@@ -73,7 +73,7 @@ const pilotInclusions = [
     category: 'Platform Access',
     items: [
       'Full Readiness OS platform access for pilot team (up to 25 users)',
-      '5 customizable prepared responses from 170 library',
+      '5 customizable Readiness Protocols from 170 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
     ]
@@ -233,7 +233,7 @@ export default function PilotProgram() {
               {[
                 { val: '$75K', label: 'Pilot Investment' },
                 { val: '90', label: 'Days' },
-                { val: '5', label: 'Prepared responses Configured' },
+                { val: '5', label: 'Readiness Protocols Configured' },
                 { val: '25', label: 'Users' },
                 { val: '100%', label: 'Credit to Enterprise Year 1' },
               ].map((s, i) => (
@@ -269,7 +269,7 @@ export default function PilotProgram() {
             {[
               { label: "Agentic, not a Copilot", body: "Our IDEA agents execute tasks. They don't suggest them. This is the difference between an AI tool and an execution engine." },
               { label: "Coordination, not capability", body: "Every enterprise already has AI capability. What they're missing is the coordination layer that makes AI execute — not just recommend." },
-              { label: "Pre-staged, not inferred", body: "170 prepared responses are ready before the trigger fires. No real-time inference loops. That's how you compress 30 days into 12 minutes." },
+              { label: "Pre-staged, not inferred", body: "170 Readiness Protocols are ready before the trigger fires. No real-time inference loops. That's how you compress 30 days into 12 minutes." },
             ].map((item) => (
               <div key={item.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.02)' }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 8 }}>{item.label}</div>
@@ -465,7 +465,7 @@ export default function PilotProgram() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
                 {[
                   "At least 1 live activation under 15 minutes",
-                  "5+ prepared responses customized and operational",
+                  "5+ Readiness Protocols customized and operational",
                   "Quantified ROI with executive sign-off",
                   "Clear expansion plan for enterprise rollout"
                 ].map(item => (
@@ -539,7 +539,7 @@ export default function PilotProgram() {
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
               {[
-                { phase: 'Days 1–30', label: 'Foundation', color: '#2B8A6E', desc: 'All 10 users onboarded. Integration live. First prepared response activation completed.' },
+                { phase: 'Days 1–30', label: 'Foundation', color: '#2B8A6E', desc: 'All 10 users onboarded. Integration live. First Readiness Protocol activation completed.' },
                 { phase: 'Days 31–60', label: 'Velocity', color: '#C9A84C', desc: 'Multiple activations with documented outcomes. ROI data capture begins.' },
                 { phase: 'Days 61–90', label: 'Proof', color: '#2B8A6E', desc: 'Full activation history. Board brief generated. Renewal case quantified.' },
               ].map((t) => (
@@ -610,11 +610,11 @@ export default function PilotProgram() {
                 <div className="text-xs font-bold tracking-[0.18em] uppercase text-[#C9A84C] mb-4">Readiness OS Adds</div>
                 <div className="space-y-3">
                   {[
-                    "Pre-staged prepared responses — 170 across 9 domains, ready before any trigger fires",
+                    "Pre-staged Readiness Protocols — 170 across 9 domains, ready before any trigger fires",
                     "Automated stakeholder cascade — every role notified and assigned in 12 minutes",
                     "Trigger-to-coordination engine — detection becomes execution, not a meeting",
                     "Decision authority preserved — AI orchestrates, your executives decide",
-                    "Continuous improvement — every activation makes your prepared responses smarter",
+                    "Continuous improvement — every activation makes your Readiness Protocols smarter",
                   ].map(item => (
                     <div key={item} className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 bg-[#C9A84C] flex-shrink-0 mt-2" />

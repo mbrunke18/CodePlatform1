@@ -174,7 +174,7 @@ export function PhaseSLASummary({ phaseSLAs, compact = false }: PhaseSLASummaryP
         <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-800/50">
           <p className="text-xs text-muted-foreground">
             <span className="font-medium text-slate-900 dark:text-white">SLA Compliance Tracking:</span>{' '}
-            When this prepared response is activated, Readiness OS will measure actual performance against these targets 
+            When this Readiness Protocol is activated, Readiness OS will measure actual performance against these targets 
             and report compliance metrics for continuous improvement.
           </p>
         </div>

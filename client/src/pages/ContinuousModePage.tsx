@@ -309,7 +309,7 @@ export default function ContinuousModePage() {
                   icon: TrendingUp,
                   confidence: 84,
                   label: "Talent Pipeline Attrition Risk",
-                  body: "Signal clustering across LinkedIn, Glassdoor, and internal HRIS indicates 2 senior engineering roles at departure risk. Retention prepared response can deploy in 12 minutes.",
+                  body: "Signal clustering across LinkedIn, Glassdoor, and internal HRIS indicates 2 senior engineering roles at departure risk. Retention Readiness Protocol can deploy in 12 minutes.",
                   urgency: "MEDIUM",
                   urgencyColor: GOLD,
                 },
@@ -364,7 +364,7 @@ export default function ContinuousModePage() {
                   Automated Learning
                 </h4>
                 <p className="text-sm text-white/70">
-                  Self-improving prepared responses after every execution
+                  Self-improving Readiness Protocols after every execution
                 </p>
               </div>
               <div className="p-4 bg-white/5 border border-white/10">

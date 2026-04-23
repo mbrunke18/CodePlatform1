@@ -207,7 +207,7 @@ export function LearnPhaseView({ playbookId, organizationId, isEditable = true }
                 ADVANCE Phase — Review the Film
               </CardTitle>
               <CardDescription>
-                Post-execution activities to capture learnings and improve prepared responses
+                Post-execution activities to capture learnings and improve Readiness Protocols
               </CardDescription>
             </div>
             <div className="text-right">

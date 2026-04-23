@@ -16,7 +16,7 @@ const timelineSteps = [
     headline: "Identify",
     sub: "Preparation before the trigger fires",
     aiRole: [
-      "170 prepared responses built and staged across 9 strategic domains",
+      "170 Readiness Protocols built and staged across 9 strategic domains",
       "221 triggers defined and mapped to response protocols",
       "Stakeholder roles, decision rights, and escalation paths configured",
       "Monitoring parameters set — continuous signal detection active",
@@ -37,11 +37,11 @@ const timelineSteps = [
       "Ingests signal across 24+ enterprise data sources",
       "Pattern-matches against 221 trigger definitions",
       "Scores urgency and compound disruption risk",
-      "Surfaces the right prepared response with rationale and stakeholder map",
+      "Surfaces the right Readiness Protocol with rationale and stakeholder map",
     ],
     humanRole: [
       "Receives instant notification with a scored, context-ready brief",
-      "Reviews the signal classification and recommended prepared response",
+      "Reviews the signal classification and recommended Readiness Protocol",
       "Nothing else required yet — the response is already staged",
     ],
     color: "#2B8A6E",
@@ -74,7 +74,7 @@ const timelineSteps = [
       "Generates live execution dashboard with full status visibility",
       "Tracks stakeholder response rates and flags at-risk workstreams",
       "Prepares executive debrief and post-event summary",
-      "Updates the prepared response with decisions made under real pressure",
+      "Updates the Readiness Protocol with decisions made under real pressure",
     ],
     humanRole: [
       "Reviews live execution status and resolves blockers",
@@ -89,13 +89,13 @@ const timelineSteps = [
 
 const components = [
   { name: "Signal Intelligence", desc: "24+ source monitoring in 15-min cycles", icon: Globe2 },
-  { name: "Readiness Protocol Engine", desc: "170 pre-built + custom prepared response builder", icon: BookOpen },
+  { name: "Readiness Protocol Engine", desc: "170 pre-built Readiness Protocols + custom builder", icon: BookOpen },
   { name: "Execution Orchestrator", desc: "Tasks, comms, docs deployed instantly", icon: Zap },
-  { name: "Decision Console", desc: "One-click authorization with AI context", icon: Target },
+  { name: "Decision Console", desc: "One-click executive authorization with full context", icon: Target },
   { name: "Stakeholder Hub", desc: "Role-based notifications and briefs", icon: Users },
   { name: "Signal Radar", desc: "Pattern detection and risk scoring", icon: Brain },
   { name: "Governance Layer", desc: "Decision rights and audit trail", icon: Shield },
-  { name: "Outcome Tracking", desc: "Outcome tracking and prepared response learning", icon: Eye },
+  { name: "Outcome Tracking", desc: "Outcome capture and Readiness Protocol refinement", icon: Eye },
 ];
 
 export default function PlatformOverview() {
@@ -192,7 +192,7 @@ export default function PlatformOverview() {
                       <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                         <div className="flex items-center gap-2 mb-3">
                           <Cpu className="h-3.5 w-3.5" style={{ color: "#0A0F2E" }} />
-                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#0A0F2E" }}>AI Role</span>
+                          <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "#0A0F2E" }}>System Role</span>
                         </div>
                         <ul className="space-y-2">
                           {step.aiRole.map((a, j) => (
@@ -267,7 +267,7 @@ export default function PlatformOverview() {
               Experience the Full Loop
             </h2>
             <p className="text-white/60 text-lg mb-8 max-w-xl mx-auto">
-              Watch a live trigger fire, prepared responses activate, and stakeholders mobilize — in real time.
+              Watch a live trigger fire, Readiness Protocols activate, and stakeholders mobilize — in real time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/request-access">

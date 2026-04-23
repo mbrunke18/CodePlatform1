@@ -268,7 +268,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
           <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
-            SYSTEM-RECOMMENDED PREPARED RESPONSE
+            SYSTEM-RECOMMENDED Readiness Protocol
           </div>
           <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
         </div>
@@ -305,7 +305,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
               textDecoration: 'none',
             }}
           >
-            <Zap size={14} /> ACTIVATE PREPARED RESPONSE
+            <Zap size={14} /> ACTIVATE Readiness Protocol
           </a>
           <a
             href="/live-detection-feed"
@@ -391,7 +391,7 @@ export default function CommandTower() {
   useEffect(() => {
     updatePageMetadata({
       title: 'Command Tower — Readiness OS',
-      description: 'Real-time strategic execution monitoring. Live trigger detections, prepared response executions, and signal intelligence at a glance.',
+      description: 'Real-time strategic execution monitoring. Live trigger detections, Readiness Protocol executions, and signal intelligence at a glance.',
     });
   }, []);
 
@@ -612,7 +612,7 @@ export default function CommandTower() {
           {[
             { label: 'TRIGGERS ARMED', value: triggersArmed.toLocaleString(), sub: '221 signals', icon: Target, color: GOLD, bg: 'rgba(201,168,76,0.08)', border: 'rgba(201,168,76,0.2)' },
             { label: 'ACTIVE DETECTIONS', value: detections.length.toString(), sub: detections.length > 0 ? 'Live ingested · past 30 days' : 'All clear', icon: AlertTriangle, color: detections.length > 0 ? RED_ALT : TEAL, bg: detections.length > 0 ? 'rgba(192,57,43,0.08)' : 'rgba(43,138,110,0.07)', border: detections.length > 0 ? 'rgba(192,57,43,0.25)' : 'rgba(43,138,110,0.2)' },
-            { label: 'PREPARED RESPONSES READY', value: '170', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
+            { label: 'Readiness Protocols READY', value: '170', sub: 'Pre-staged', icon: Layers, color: TEAL, bg: 'rgba(43,138,110,0.07)', border: 'rgba(43,138,110,0.2)' },
             { label: 'NEXT SCAN', value: nextScanLabel, sub: `Engine: ${modeLabel}`, icon: Clock, color: 'rgba(255,255,255,0.7)', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.1)' },
           ].map(({ label, value, sub, icon: Icon, color, bg, border }) => (
             <div key={label} style={{
@@ -758,7 +758,7 @@ export default function CommandTower() {
                   <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
                   <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
                   <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>
-                    170 prepared responses pre-staged. 12-minute deployment on trigger.
+                    170 Readiness Protocols pre-staged. 12-minute deployment on trigger.
                   </div>
                 </div>
               ) : (
@@ -836,7 +836,7 @@ export default function CommandTower() {
                 </div>
                 <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
                 <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>
-                  30 days → 12 minutes. 170 prepared responses pre-staged.
+                  30 days → 12 minutes. 170 Readiness Protocols pre-staged.
                 </div>
               </div>
             </div>
@@ -877,7 +877,7 @@ export default function CommandTower() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <GitBranch size={14} color="rgba(255,255,255,0.4)" />
               <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
-                CLASSIFIED — NO PREPARED RESPONSE MATCH
+                CLASSIFIED — NO Readiness Protocol MATCH
               </span>
               <span style={{
                 background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
@@ -940,14 +940,14 @@ export default function CommandTower() {
                     letterSpacing: '0.08em', background: 'rgba(255,255,255,0.05)',
                     padding: '2px 7px', borderRadius: 0,
                   }}>
-                    NO PREPARED RESPONSE
+                    NO Readiness Protocol
                   </span>
                 </div>
               </div>
             ))}
           </div>
           <div style={{ marginTop: 12, color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.6 }}>
-            These signals have been classified by domain and impact shape. No existing prepared response matches. Human encoding through the ADVANCE phase will expand the map.
+            These signals have been classified by domain and impact shape. No existing Readiness Protocol matches. Human encoding through the ADVANCE phase will expand the map.
             Ignoring them is now a recorded choice, not an invisible one.
           </div>
         </div>
@@ -1033,14 +1033,14 @@ export default function CommandTower() {
                 `Evaluation engine: ${modeLabel}`,
                 'Signal scan interval: every 15 minutes',
                 'Sources: Reuters, Bloomberg, SEC EDGAR, AP News + 4 more',
-                '170 prepared responses pre-staged and ready to deploy',
+                '170 Readiness Protocols pre-staged and ready to deploy',
                 'Response time: 30 days → 12 minutes  ·  3,600× Execution Head Start',
                 'Monitoring 248+ data points across 9 strategic domains',
                 `${triggersArmed} triggers armed and evaluating`,
                 `Evaluation engine: ${modeLabel}`,
                 'Signal scan interval: every 15 minutes',
                 'Sources: Reuters, Bloomberg, SEC EDGAR, AP News + 4 more',
-                '170 prepared responses pre-staged and ready to deploy',
+                '170 Readiness Protocols pre-staged and ready to deploy',
                 'Response time: 30 days → 12 minutes  ·  3,600× Execution Head Start',
               ].map((item, i) => (
                 <span key={i} style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11 }}>

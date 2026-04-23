@@ -181,12 +181,12 @@ export default function PlaybookDetail() {
     queryFn: async () => {
       if (isPlaybookNumber) {
         const response = await fetch(`/api/playbook-library/by-number/${id}`);
-        if (!response.ok) throw new Error('Failed to fetch prepared response');
+        if (!response.ok) throw new Error('Failed to fetch Readiness Protocol');
         const data = await response.json();
         return { playbook: data };
       }
       const response = await fetch(`/api/playbook-library/${id}`);
-      if (!response.ok) throw new Error('Failed to fetch prepared response');
+      if (!response.ok) throw new Error('Failed to fetch Readiness Protocol');
       return response.json();
     },
     enabled: !!id,
@@ -237,7 +237,7 @@ export default function PlaybookDetail() {
     onError: (error) => {
       toast({
         title: 'Activation Failed',
-        description: error instanceof Error ? error.message : 'Unable to activate prepared response',
+        description: error instanceof Error ? error.message : 'Unable to activate Readiness Protocol',
         variant: 'destructive',
       });
     },
@@ -284,7 +284,7 @@ export default function PlaybookDetail() {
     },
   });
 
-  // Sync enrichedPhases into the editor when prepared response data loads
+  // Sync enrichedPhases into the editor when Readiness Protocol data loads
   useEffect(() => {
     if (playbook?.enrichedPhases && Array.isArray(playbook.enrichedPhases)) {
       setEditedPhases(JSON.parse(JSON.stringify(playbook.enrichedPhases)));
@@ -475,7 +475,7 @@ export default function PlaybookDetail() {
           <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-amber-500" />
           <h2 className="text-xl font-semibold mb-2">Readiness Protocol Not Found</h2>
           <p className="text-muted-foreground mb-4">
-            The requested prepared response could not be found.
+            The requested Readiness Protocol could not be found.
           </p>
           <Button asChild>
             <Link href="/playbook-library">Back to Library</Link>
@@ -489,7 +489,7 @@ export default function PlaybookDetail() {
     <PageLayout>
       <ExecutionStageGuide variant="compact" />
       <div style={{ background: OFF, minHeight: "100vh" }}>
-        <div className="container mx-auto px-6 py-12 space-y-8" data-testid="prepared response-detail-page">
+        <div className="container mx-auto px-6 py-12 space-y-8" data-testid="Readiness Protocol-detail-page">
           <div className="flex items-center justify-between">
             <Button variant="ghost" size="sm" asChild data-testid="button-back" style={{ color: NAVY }}>
               <Link href="/playbook-library">
@@ -499,7 +499,7 @@ export default function PlaybookDetail() {
             </Button>
             <div className="flex gap-3">
               <Button
-                onClick={() => setLocation(`/prepared response/${id}/customize`)}
+                onClick={() => setLocation(`/Readiness Protocol/${id}/customize`)}
                 style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
               >
                 <Settings className="h-4 w-4 mr-2" />
@@ -882,7 +882,7 @@ export default function PlaybookDetail() {
                             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#EF4444" }}>What Failure Looks Like</span>
                           </div>
                           <div style={{ fontSize: 12, color: MUTED, marginBottom: 16 }}>
-                            These are the specific, avoidable failure modes this prepared response is designed to prevent.
+                            These are the specific, avoidable failure modes this Readiness Protocol is designed to prevent.
                           </div>
                           <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
                             {outcomeFraming.failureModes.map((item: string, i: number) => (
@@ -904,7 +904,7 @@ export default function PlaybookDetail() {
                       <Activity className="mx-auto h-12 w-12 mb-4" style={{ color: GOLD }} />
                       <h3 style={{ ...CG, fontSize: 24, color: GOLD, marginBottom: 12 }}>Performance Intelligence Accumulating</h3>
                       <p style={{ color: OFF, opacity: 0.8, fontSize: 16 }}>
-                        This prepared response needs 3+ activations to generate meaningful patterns.
+                        This Readiness Protocol needs 3+ activations to generate meaningful patterns.
                         <br />
                         <span style={{ fontWeight: 700, color: GOLD }}>{performance?.activationCount || 0} activation(s) recorded.</span>
                       </p>
@@ -1238,10 +1238,10 @@ export default function PlaybookDetail() {
                   <div>
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 12 }}>Free Sample Preview</div>
                     <div style={{ ...CG, fontSize: 15, fontWeight: 600, color: NAVY, marginBottom: 8, lineHeight: 1.4 }}>
-                      167 exclusive prepared responses are waiting for your team
+                      167 exclusive Readiness Protocols are waiting for your team
                     </div>
                     <p style={{ fontSize: 12, color: MUTED, marginBottom: 24, lineHeight: 1.6 }}>
-                      Access the full library, activate prepared responses in real-time, and run practice drills with your executive team.
+                      Access the full library, activate Readiness Protocols in real-time, and run practice drills with your executive team.
                     </p>
                     <Button
                       style={{ width: "100%", background: GOLD, color: NAVY, height: 54, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 10 }}
@@ -1370,7 +1370,7 @@ export default function PlaybookDetail() {
                     </div>
                     {status !== 'current' && (
                       <div style={{ marginTop: 14, padding: "8px 12px", background: cfg.bg, border: `1px solid ${cfg.borderColor}`, fontSize: 11, color: cfg.color, lineHeight: 1.5 }}>
-                        {status === 'review' ? 'This prepared response has undergone significant revisions. Validate against current operating conditions.' : 'High version count — schedule a formal recertification review with your strategy team.'}
+                        {status === 'review' ? 'This Readiness Protocol has undergone significant revisions. Validate against current operating conditions.' : 'High version count — schedule a formal recertification review with your strategy team.'}
                       </div>
                     )}
                   </div>
@@ -1417,7 +1417,7 @@ export default function PlaybookDetail() {
                   <em style={{ color: GOLD }}>167 exclusive ones are already protecting your competitors.</em>
                 </div>
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
-                  Every prepared response in the Readiness OS library is built from 20+ years of Fortune 500 transformation.
+                  Every Readiness Protocol in the Readiness OS library is built from 20+ years of Fortune 500 transformation.
                   Your team can be execution-ready in 12 minutes — not 12 weeks.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1437,7 +1437,7 @@ export default function PlaybookDetail() {
                   </Button>
                 </div>
                 <div className="flex items-center justify-center gap-8 mt-12 flex-wrap">
-                  {["170 Prepared responses", "9 Strategic Domains", "12-Minute Execution", "Fortune 1000 Ready"].map((item) => (
+                  {["170 Readiness Protocols", "9 Strategic Domains", "12-Minute Execution", "Fortune 1000 Ready"].map((item) => (
                     <div key={item} className="flex items-center gap-2">
                       <CheckCircle2 className="h-3.5 w-3.5" style={{ color: GOLD }} />
                       <span style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{item}</span>

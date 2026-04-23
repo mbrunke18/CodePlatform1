@@ -398,7 +398,7 @@ export default function LiveActivationCenter() {
   const hasLiveIntegrations = hasJira || hasSlack;
 
   const { data: playbooksData } = useQuery({
-    queryKey: ['/api/activation/prepared responses'],
+    queryKey: ['/api/activation/Readiness Protocols'],
     retry: false,
     staleTime: 60000,
   });
@@ -776,7 +776,7 @@ export default function LiveActivationCenter() {
 
                 {/* Option 2: Call the audible */}
                 <button
-                  onClick={() => selectedPlaybook && setLocation(`/prepared responses/${selectedPlaybook}/customize`)}
+                  onClick={() => selectedPlaybook && setLocation(`/Readiness Protocols/${selectedPlaybook}/customize`)}
                   disabled={!selectedPlaybook}
                   style={{
                     background: 'rgba(201,168,76,0.07)',

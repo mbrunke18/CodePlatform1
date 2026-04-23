@@ -332,7 +332,7 @@ export default function IntelligenceHub() {
                   {[
                     { action: 'Readiness Protocol Activated', detail: 'M&A Integration Protocol v3 — authorized by CEO', time: '2 min ago', type: 'execute', color: TEAL },
                     { action: 'Trigger Threshold Changed', detail: 'Competitive Intelligence: sensitivity raised from Medium to High', time: '14 min ago', type: 'config', color: GOLD },
-                    { action: 'Brief Generated', detail: 'Supply Chain Disruption Brief — Crisis Response prepared response', time: '31 min ago', type: 'ai', color: TEAL },
+                    { action: 'Brief Generated', detail: 'Supply Chain Disruption Brief — Crisis Response Readiness Protocol', time: '31 min ago', type: 'ai', color: TEAL },
                     { action: 'Role Assignment Updated', detail: 'CFO added to Financial Markets trigger notification list', time: '1 hr ago', type: 'config', color: NAVY },
                     { action: 'Readiness Protocol Performance Logged', detail: 'Regulatory Response — 78% target met rate recorded', time: '2 hr ago', type: 'outcome', color: TEAL },
                   ].map((e, i) => (

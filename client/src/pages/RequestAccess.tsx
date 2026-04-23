@@ -106,7 +106,7 @@ export default function RequestAccess() {
             {/* Editorial stats — horizontal rules, no icons */}
             <div style={{ borderTop: "1px solid rgba(240,237,228,0.1)" }}>
               {[
-                { num: "170", label: "Pre-staged readiness prepared responses" },
+                { num: "170", label: "Pre-staged Readiness Protocols" },
                 { num: "12 min", label: "Trigger to full coordination" },
                 { num: "3,600×", label: "Execution head start" },
               ].map(({ num, label }) => (

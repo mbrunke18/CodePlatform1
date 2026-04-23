@@ -347,7 +347,7 @@ export default function OperatingModelHealthReport() {
                       Current score: 65. Process inefficiencies are creating execution drag.
                     </p>
                     <p className="text-sm text-[#0A0F2E] dark:text-[#E8E4DC]">
-                      <strong>Action:</strong> Activate the Process Improvement prepared response to streamline workflows 
+                      <strong>Action:</strong> Activate the Process Improvement Readiness Protocol to streamline workflows 
                       and eliminate bottlenecks. Expected ROI: $8M annually.
                     </p>
                   </div>

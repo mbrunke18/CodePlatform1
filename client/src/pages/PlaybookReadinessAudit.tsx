@@ -91,7 +91,7 @@ const generateMockPlaybooks = (): PlaybookReadiness[] => {
     const lastDrill = null;
 
     playbooks.push({
-      id: `prepared response-${i}`,
+      id: `Readiness Protocol-${i}`,
       playbookNumber: i,
       name: `${playbookNames[nameIndex]} ${Math.floor(i / 24) + 1}`,
       domain: domains[domainIndex],
@@ -220,7 +220,7 @@ export default function PlaybookReadinessAudit() {
               </p>
             </div>
             <div className="hidden lg:flex items-center gap-4">
-              <OnboardingTrigger pageId="prepared response-readiness" autoStart={true} className="bg-white/5 border-white/10 text-white hover:bg-white/10" />
+              <OnboardingTrigger pageId="Readiness Protocol-readiness" autoStart={true} className="bg-white/5 border-white/10 text-white hover:bg-white/10" />
               <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-export">
                 <Download className="h-4 w-4 mr-2" />
                 Export Report
@@ -271,7 +271,7 @@ export default function PlaybookReadinessAudit() {
               Overall Readiness Score
             </CardTitle>
             <CardDescription>
-              Average preparedness across all 170 prepared responses
+              Average preparedness across all 170 Readiness Protocols
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -367,11 +367,11 @@ export default function PlaybookReadinessAudit() {
             </Select>
           </div>
           <div className="text-sm font-medium text-[#6B7280]">
-            Showing <span className="text-[#0A0F2E]">{filteredPlaybooks.length}</span> of {playbooks.length} prepared responses
+            Showing <span className="text-[#0A0F2E]">{filteredPlaybooks.length}</span> of {playbooks.length} Readiness Protocols
           </div>
         </div>
 
-        <div className="grid gap-4" data-testid="prepared response-list">
+        <div className="grid gap-4" data-testid="Readiness Protocol-list">
           {filteredPlaybooks.slice(0, 20).map((playbook) => {
             const config = tierConfig[playbook.tier];
             const TierIcon = config.icon;
@@ -384,7 +384,7 @@ export default function PlaybookReadinessAudit() {
                 key={playbook.id} 
                 className={`border border-[#E8E4DC] bg-white border-l-4 transition-all`}
                 style={{ borderLeftColor: indicatorColor }}
-                data-testid={`prepared response-card-${playbook.playbookNumber}`}
+                data-testid={`Readiness Protocol-card-${playbook.playbookNumber}`}
               >
                 <CardContent className="py-4">
                   <div className="flex items-center justify-between">
@@ -515,8 +515,8 @@ export default function PlaybookReadinessAudit() {
               </div>
               <div className="flex items-center gap-4">
                 <Link href="/scenario-gallery">
-                  <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-browse-prepared responses">
-                    Browse Prepared responses
+                  <Button variant="outline" className="bg-white/5 border-white/10 text-white hover:bg-white/10" data-testid="button-browse-Readiness Protocols">
+                    Browse Readiness Protocols
                   </Button>
                 </Link>
                 <Button className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178]" data-testid="button-schedule-drill">

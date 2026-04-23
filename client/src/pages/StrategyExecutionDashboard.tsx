@@ -184,7 +184,7 @@ export default function StrategyExecutionDashboard() {
                     <Target className="h-5 w-5 text-[#2B8A6E]" />
                     Strategic Goal Progress
                   </CardTitle>
-                  <CardDescription>Objectives advanced by prepared response executions</CardDescription>
+                  <CardDescription>Objectives advanced by Readiness Protocol executions</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -320,7 +320,7 @@ export default function StrategyExecutionDashboard() {
                               </div>
                             </div>
                             <Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20">
-                              {(objective as any).executionCount || 0} prepared response executions
+                              {(objective as any).executionCount || 0} Readiness Protocol executions
                             </Badge>
                           </div>
                           <div className="space-y-2">

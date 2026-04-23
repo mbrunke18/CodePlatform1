@@ -12,7 +12,7 @@ const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const COMPARISON_ROWS = [
   { dimension: "Cost", consulting: "$300K–$500K one-time", executionOs: "$75K–$250K/year" },
-  { dimension: "Prepared responses", consulting: "5–10 custom PDFs", executionOs: "170 pre-built + unlimited custom" },
+  { dimension: "Readiness Protocols", consulting: "5–10 custom PDFs", executionOs: "170 pre-built + unlimited custom" },
   { dimension: "Format", consulting: "Static documents", executionOs: "Live, executable platform" },
   { dimension: "Activation", consulting: "Manual — find the PDF, read it, interpret it, convene", executionOs: "One-click. 12 minutes." },
   { dimension: "Decision rights", consulting: "Described in prose", executionOs: "Mapped and enforced" },
@@ -30,7 +30,7 @@ export default function VsConsulting() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS vs. Management Consulting | VaughnMartin",
-      description: "McKinsey charges $300K–$500K for prepared responses that sit on a shelf. Readiness OS delivers 170 live, executable prepared responses at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
+      description: "McKinsey charges $300K–$500K for Readiness Protocols that sit on a shelf. Readiness OS delivers 170 live, executable Readiness Protocols at $75K–$250K/year — with 12-minute activation and continuous signal monitoring.",
       ogTitle: "Why Not Consulting? Readiness OS vs. McKinsey, BCG, Bain",
       ogDescription: "Consultants deliver documents. Readiness OS delivers coordination. See the comparison.",
     });
@@ -101,7 +101,7 @@ export default function VsConsulting() {
               <div style={{ border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
                 {[
                   { phase: "Discovery & Assessment", delivers: "Interviews, current state analysis, gap assessment", cost: "$75K–$125K" },
-                  { phase: "Readiness Protocol Development", delivers: "5–10 prepared responses in PDF / PowerPoint format", cost: "$150K–$250K" },
+                  { phase: "Readiness Protocol Development", delivers: "5–10 Readiness Protocols in PDF / PowerPoint format", cost: "$150K–$250K" },
                   { phase: "Implementation Support", delivers: "Training, rollout facilitation, change management", cost: "$75K–$150K" },
                 ].map((row, i) => (
                   <div key={i} style={{ padding: "16px 20px", borderBottom: i < 2 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
@@ -122,7 +122,7 @@ export default function VsConsulting() {
 
               <div style={{ marginTop: 16, padding: "16px 20px", background: `rgba(239,68,68,0.04)`, border: `1px solid rgba(239,68,68,0.12)`, borderRadius: 0 }}>
                 <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
-                  What you receive: PDF prepared responses that live on SharePoint. Nobody reads them. Nobody can find them when it matters.
+                  What you receive: PDF Readiness Protocols that live on SharePoint. Nobody reads them. Nobody can find them when it matters.
                 </p>
               </div>
             </div>
@@ -137,9 +137,9 @@ export default function VsConsulting() {
               <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
                 {[
                   "Nobody can find the Readiness Protocols.",
-                  "The prepared responses are 200 pages — no one has time to read them.",
-                  "Key people have changed roles since the prepared responses were written.",
-                  "The prepared responses describe processes — they don't assign tasks.",
+                  "The Readiness Protocols are 200 pages — no one has time to read them.",
+                  "Key people have changed roles since the Readiness Protocols were written.",
+                  "The Readiness Protocols describe processes — they don't assign tasks.",
                   "The organization still takes 30 days to coordinate.",
                 ].map((item, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "14px 16px", background: OFF, borderRadius: 0, border: `1px solid #E8E4DC` }}>
@@ -254,7 +254,7 @@ export default function VsConsulting() {
             <div style={{ border: `1px solid rgba(239,68,68,0.2)`, borderRadius: 0, padding: "36px 32px", background: `rgba(239,68,68,0.02)`, textAlign: "center" as const }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#EF4444", marginBottom: 16 }}>McKinsey / BCG / Bain</div>
               <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: "#DC2626", marginBottom: 8 }}>$300K–$500K</div>
-              <div style={{ fontSize: 14, color: "#6B7280", marginBottom: 20, lineHeight: 1.5 }}>for prepared responses that describe what to do</div>
+              <div style={{ fontSize: 14, color: "#6B7280", marginBottom: 20, lineHeight: 1.5 }}>for Readiness Protocols that describe what to do</div>
               <div style={{ padding: "14px 20px", background: `rgba(239,68,68,0.06)`, borderRadius: 0, border: `1px solid rgba(239,68,68,0.12)` }}>
                 <p style={{ fontSize: 13, color: "#6B7280", margin: 0, fontStyle: "italic" }}>One-time cost. No activation infrastructure. No signal detection. No ongoing maintenance. Returns when your next crisis hits: nothing.</p>
               </div>

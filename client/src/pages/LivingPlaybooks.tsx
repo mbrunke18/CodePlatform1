@@ -131,10 +131,10 @@ export default function LivingPlaybooks() {
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>Advance Phase · Pattern-Based Self-Learning</span>
             </div>
             <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#F0EDE4', marginBottom: 8, lineHeight: 1.1 }}>
-              Living <em style={{ color: GOLD }}>Prepared responses</em>
+              Living <em style={{ color: GOLD }}>Readiness Protocols</em>
             </div>
             <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 620, lineHeight: 1.6 }}>
-              Self-learning strategic prepared responses that evolve with every activation. AI analyzes outcomes, identifies improvements, and automatically updates task sequences, stakeholder lists, and decision gates.
+              Self-learning strategic Readiness Protocols that evolve with every activation. AI analyzes outcomes, identifies improvements, and automatically updates task sequences, stakeholder lists, and decision gates.
             </div>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function LivingPlaybooks() {
           {/* System Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { value: '170', label: 'Living Prepared responses', color: NAVY },
+              { value: '170', label: 'Living Readiness Protocols', color: NAVY },
               { value: isLoading ? '—' : `${(topPlaybooks.reduce((s, p, i) => s + deriveActivationCount(p.severityScore || 70, i), 0) + 14789).toLocaleString()}`, label: 'Total Activations', color: GOLD },
               { value: '91%', label: 'Avg Success Rate', color: TEAL },
               { value: '42%', label: 'Speed Improvement', color: GOLD },
@@ -159,10 +159,10 @@ export default function LivingPlaybooks() {
             ))}
           </div>
 
-          {/* Top Living Prepared responses */}
+          {/* Top Living Readiness Protocols */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Highest-Activity Prepared responses</h2>
+              <h2 className="text-2xl font-bold text-[#0A0F2E]" style={CG}>Highest-Activity Readiness Protocols</h2>
               <Badge className="bg-[#C9A84C]/15 text-[#0A0F2E] border-none text-[10px] font-bold tracking-widest uppercase px-3 py-1">
                 Sorted by Strategic Severity
               </Badge>
@@ -304,7 +304,7 @@ export default function LivingPlaybooks() {
                 <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>The ADVANCE Phase</span>
               </div>
               <CardTitle className="text-2xl" style={CG}>How Self-Learning Works</CardTitle>
-              <CardDescription className="text-white/60">Every execution feeds the intelligence loop — making each prepared response faster, sharper, and more precise.</CardDescription>
+              <CardDescription className="text-white/60">Every execution feeds the intelligence loop — making each Readiness Protocol faster, sharper, and more precise.</CardDescription>
             </CardHeader>
             <CardContent className="relative z-10 pt-6">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -329,9 +329,9 @@ export default function LivingPlaybooks() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                <p className="text-white/50 text-sm">Organizations using Living Prepared responses report <strong className="text-white">42% faster</strong> execution by their 10th activation.</p>
+                <p className="text-white/50 text-sm">Organizations using Living Readiness Protocols report <strong className="text-white">42% faster</strong> execution by their 10th activation.</p>
                 <Button size="sm" className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold rounded-none border-none" onClick={() => setLocation('/playbook-library')}>
-                  View All 170 Prepared responses
+                  View All 170 Readiness Protocols
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </div>

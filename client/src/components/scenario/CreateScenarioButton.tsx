@@ -72,7 +72,7 @@ export default function CreateScenarioButton({
               Create Championship-Level Readiness Protocol
             </DialogTitle>
             <p className="text-sm text-gray-800 dark:text-gray-200 mt-2">
-              Build a complete decision operations prepared response in 5 strategic phases
+              Build a complete decision operations Readiness Protocol in 5 strategic phases
             </p>
           </DialogHeader>
           

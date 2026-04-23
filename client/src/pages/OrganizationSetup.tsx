@@ -566,7 +566,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-[#0A0F2E]">Key Stakeholders</h2>
-                  <p className="text-sm text-[#6B7280]">Define executives and decision-makers for prepared response coordination</p>
+                  <p className="text-sm text-[#6B7280]">Define executives and decision-makers for Readiness Protocol coordination</p>
                 </div>
                 <Button onClick={() => setIsStakeholderDialogOpen(true)} data-testid="button-add-stakeholder">
                   <Plus className="h-4 w-4 mr-2" />
@@ -634,7 +634,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A84C]">Role Availability</span>
                 </div>
                 <h3 className="text-lg font-semibold text-[#0A0F2E] mb-1">Pre-Activation Availability Flags</h3>
-                <p className="text-sm text-[#6B7280] mb-4">Mark roles as limited availability. A warning will appear before any prepared response activation that depends on a flagged role.</p>
+                <p className="text-sm text-[#6B7280] mb-4">Mark roles as limited availability. A warning will appear before any Readiness Protocol activation that depends on a flagged role.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {COMMON_ROLES.map((role) => {
                     const limited = isRoleLimited(role);
@@ -867,7 +867,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
             <DialogContent className="max-w-md">
               <DialogHeader>
                 <DialogTitle>Add Stakeholder</DialogTitle>
-                <DialogDescription>Add a key stakeholder for prepared response coordination</DialogDescription>
+                <DialogDescription>Add a key stakeholder for Readiness Protocol coordination</DialogDescription>
               </DialogHeader>
               <div className="space-y-4">
                 <div className="space-y-2">

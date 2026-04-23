@@ -86,10 +86,10 @@ export default function DemoNavHeader({
               }}
               style={{ background: "#C9A84C", color: "#0A0F2E" }}
               className="font-semibold hover:opacity-90"
-              data-testid="button-explore-prepared responses"
+              data-testid="button-explore-Readiness Protocols"
             >
               <BookOpen className="h-4 w-4 mr-1.5" />
-              <span className="hidden sm:inline">Explore</span> Prepared responses
+              <span className="hidden sm:inline">Explore</span> Readiness Protocols
             </Button>
           </div>
         </div>

@@ -449,7 +449,7 @@ export default function TwelveMinuteTestDrive() {
                     {brief?.activatedPlaybooks?.length > 0 ? (
                       <>
                         <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>
-                          The following prepared responses are pre-staged and will activate the moment you authorize execution:
+                          The following Readiness Protocols are pre-staged and will activate the moment you authorize execution:
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
                           {brief.activatedPlaybooks.map((p: string, i: number) => (
@@ -751,7 +751,7 @@ export default function TwelveMinuteTestDrive() {
               </div>
 
               <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 480 }}>
-                Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real prepared responses?
+                Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real Readiness Protocols?
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
                 <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>

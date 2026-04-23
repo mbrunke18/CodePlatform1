@@ -295,7 +295,7 @@ export default function ExecutiveDepartureBrief() {
                 {[
                   { label: "Detection Confidence", value: "94%" },
                   { label: "Affected Domains",      value: "Finance · Board · IR · Ops" },
-                  { label: "Prepared responses Matched",      value: "1 primary" },
+                  { label: "Readiness Protocols Matched",      value: "1 primary" },
                   { label: "Time to Activation",     value: "Immediate" },
                 ].map(({ label, value }) => (
                   <div key={label}>
@@ -312,7 +312,7 @@ export default function ExecutiveDepartureBrief() {
             <div>
               <div style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: TEAL, marginBottom: 7, fontWeight: 700 }}>Readiness Protocol Recommended</div>
               <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: T1 }}>C-Suite Continuity Response — CFO Departure</div>
-              <div style={{ fontSize: 12, color: T3, marginTop: 5, fontWeight: 500 }}>170 prepared responses evaluated · 1 matched at 94% confidence · 12 leadership continuity variants available</div>
+              <div style={{ fontSize: 12, color: T3, marginTop: 5, fontWeight: 500 }}>170 Readiness Protocols evaluated · 1 matched at 94% confidence · 12 leadership continuity variants available</div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(43,138,110,0.15)', border: '1px solid rgba(43,138,110,0.35)', padding: '7px 14px', borderRadius: 0 }}>
               <span style={{ width: 6, height: 6, background: TEAL, borderRadius: 0 }} />
@@ -353,7 +353,7 @@ export default function ExecutiveDepartureBrief() {
                 onMouseOut={e => { (e.currentTarget as HTMLElement).style.opacity = '1'; }}
               >
                 <Zap size={18} />
-                ACTIVATE PREPARED RESPONSE
+                ACTIVATE Readiness Protocol
               </button>
               <div style={{ fontSize: 12, color: T4, marginTop: 14 }}>C-Suite Continuity Response — CFO Departure</div>
             </div>
@@ -547,7 +547,7 @@ export default function ExecutiveDepartureBrief() {
               <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', fontWeight: 600 }}>VaughnMartin Readiness OS</span>
             </div>
             <p style={{ fontSize: 11, color: T4, margin: 0, fontWeight: 500 }}>
-              170 prepared responses · 221 triggers · 248+ data points · 9 strategic domains · 12-minute execution
+              170 Readiness Protocols · 221 triggers · 248+ data points · 9 strategic domains · 12-minute execution
             </p>
           </div>
         </div>

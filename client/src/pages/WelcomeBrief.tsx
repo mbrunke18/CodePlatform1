@@ -189,7 +189,7 @@ export default function WelcomeBrief() {
         }}>
           <AnimatedStat target={d.triggersArmed} label="Triggers Armed" color={GOLD} delay={0} />
           <AnimatedStat target={d.domainsMonitored} label="Domains Monitored" color={TEAL} delay={120} />
-          <AnimatedStat target={d.playbooksReady} label="Prepared responses Pre-Staged" color={TEAL} delay={240} />
+          <AnimatedStat target={d.playbooksReady} label="Readiness Protocols Pre-Staged" color={TEAL} delay={240} />
           <AnimatedStat target={d.signalsTracked} label="Signals Tracked" suffix="+" color={GOLD} delay={360} />
           {d.stakeholdersEnrolled > 0 && (
             <AnimatedStat target={d.stakeholdersEnrolled} label="Stakeholders Enrolled" color={TEAL} delay={480} />
@@ -304,7 +304,7 @@ export default function WelcomeBrief() {
             {[
               { label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
               { label: 'Real-Time Alerts', desc: 'Email notifications to enrolled stakeholders within minutes of a trigger firing at ≥72% confidence.', color: TEAL },
-              { label: '12-Minute Activation', desc: '170 prepared responses are pre-staged. Response begins before competitors know the trigger fired.', color: GOLD },
+              { label: '12-Minute Activation', desc: '170 Readiness Protocols are pre-staged. Response begins before competitors know the trigger fired.', color: GOLD },
               { label: 'Readiness Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: TEAL },
             ].map(({ label, desc, color }, i) => (
               <div key={i} style={{ padding: '16px 20px 16px 16px', borderLeft: `2px solid ${color}30`, marginLeft: i === 0 ? 0 : 0 }}>

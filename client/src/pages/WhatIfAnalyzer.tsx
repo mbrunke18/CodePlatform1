@@ -443,7 +443,7 @@ function QuickAnalysis({ onBack, onSwitchToBuilder }: { onBack: () => void; onSw
                   </div>
                   <div>
                     <div className="text-sm font-semibold text-[#0A0F2E] dark:text-white">Auto-Detect Trigger</div>
-                    <p className="text-xs text-[#6B7280] mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right prepared response instantly</p>
+                    <p className="text-xs text-[#6B7280] mt-0.5">AI agents continuously monitor for this scenario pattern and activate the right Readiness Protocol instantly</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start">
@@ -761,7 +761,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
       };
       setAnalysisResult(result);
       setWizardStep(totalSteps);
-      toast({ title: "Analysis Complete", description: `Found ${triggeredAlerts.length} triggers and ${recommendedPlaybooksList.length} recommended prepared responses` });
+      toast({ title: "Analysis Complete", description: `Found ${triggeredAlerts.length} triggers and ${recommendedPlaybooksList.length} recommended Readiness Protocols` });
     } catch (error) {
       console.error('Analysis error:', error);
       toast({ title: "Analysis Failed", description: "Unable to complete the scenario analysis", variant: "destructive" });
@@ -843,7 +843,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
         <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-2">Deep Scenario Builder</h2>
         <p className="text-gray-700 dark:text-slate-400">
           Build a detailed scenario model step by step. Define conditions, assess impact, and see exactly which
-          prepared responses and teams would activate.
+          Readiness Protocols and teams would activate.
         </p>
       </div>
 
@@ -1420,7 +1420,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                     {impactConfig.label} — Score: {analysisResult.impactScore}/100
                   </Badge>
                   <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-2">
-                    {analysisResult.triggeredAlerts.length} alert{analysisResult.triggeredAlerts.length !== 1 ? 's' : ''} detected, {analysisResult.recommendedPlaybooks.length} prepared response{analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} ready to activate
+                    {analysisResult.triggeredAlerts.length} alert{analysisResult.triggeredAlerts.length !== 1 ? 's' : ''} detected, {analysisResult.recommendedPlaybooks.length} Readiness Protocol{analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} ready to activate
                   </h3>
                   <p className="text-sm text-gray-800 dark:text-slate-300">
                     If this scenario occurs, Readiness OS would coordinate your response in <strong>{analysisResult.decisionVelocityMetrics.ourTime} minutes</strong> — {analysisResult.decisionVelocityMetrics.percentageFaster}% faster than the industry average of {industryHrs} hours. {analysisResult.teamsInvolved.length} teams would be mobilized simultaneously.
@@ -1499,11 +1499,11 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <Zap className="h-5 w-5 text-teal-600" />
                 What Readiness OS Would Do
               </CardTitle>
-              <CardDescription>The prepared responses and teams that activate automatically when this scenario triggers</CardDescription>
+              <CardDescription>The Readiness Protocols and teams that activate automatically when this scenario triggers</CardDescription>
             </CardHeader>
             <CardContent className="space-y-5">
               <div>
-                <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Prepared responses That Activate</div>
+                <div className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-2">Readiness Protocols That Activate</div>
                 <div className="space-y-2">
                   {analysisResult.recommendedPlaybooks.map((playbook, idx) => (
                     <div key={playbook.id} className="flex items-center gap-3 p-3 bg-white dark:bg-[#141B45] border border-teal-100 dark:border-teal-900/30">
@@ -1548,7 +1548,7 @@ function ScenarioBuilder({ onBack }: { onBack: () => void }) {
                 <div className="grid sm:grid-cols-4 gap-3">
                   {[
                     { time: '0:00', label: 'Trigger Detected', desc: 'AI agents identify the scenario pattern', icon: Target },
-                    { time: '0:30', label: 'Prepared responses Matched', desc: `${analysisResult.recommendedPlaybooks.length} prepared response${analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} auto-selected`, icon: Rocket },
+                    { time: '0:30', label: 'Readiness Protocols Matched', desc: `${analysisResult.recommendedPlaybooks.length} Readiness Protocol${analysisResult.recommendedPlaybooks.length !== 1 ? 's' : ''} auto-selected`, icon: Rocket },
                     { time: '1:00', label: 'Teams Notified', desc: `${analysisResult.teamsInvolved.length} teams receive role-specific instructions`, icon: Users },
                     { time: `${analysisResult.decisionVelocityMetrics.ourTime}:00`, label: 'Fully Coordinated', desc: 'Tasks assigned, budgets released, execution underway', icon: CheckCircle2 },
                   ].map((step, i) => {
@@ -1658,7 +1658,7 @@ export default function WhatIfAnalyzer() {
                 </div>
                 <p className="text-gray-700 dark:text-slate-400 text-lg">
                   Test any strategic scenario before it happens. See how your organization would respond,
-                  which prepared responses activate, and how fast you'd coordinate.
+                  which Readiness Protocols activate, and how fast you'd coordinate.
                 </p>
               </div>
 
@@ -1723,7 +1723,7 @@ export default function WhatIfAnalyzer() {
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />
-                      <span>See which prepared responses and teams activate</span>
+                      <span>See which Readiness Protocols and teams activate</span>
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-slate-400">
                       <CheckCircle2 className="h-3.5 w-3.5 text-teal-500 flex-shrink-0" />

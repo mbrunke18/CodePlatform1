@@ -75,7 +75,7 @@ export function DealRiskCommandCenter({ execution, isAnimating = false }: DealRi
       <Card className="bg-white border-gray-200">
         <CardContent className="p-8 text-center">
           <AlertTriangle className="h-12 w-12 text-gray-600 mx-auto mb-4" />
-          <p className="text-gray-600">No active execution. Trigger a prepared response to see the Command Center in action.</p>
+          <p className="text-gray-600">No active execution. Trigger a Readiness Protocol to see the Command Center in action.</p>
         </CardContent>
       </Card>
     );

@@ -25,7 +25,7 @@ const comparisonRows = [
   {
     category: "Readiness Protocol Readiness",
     traditional: "Built in real time during the crisis under pressure",
-    executionOS: "Pre-staged — 170 prepared responses ready before the trigger fires",
+    executionOS: "Pre-staged — 170 Readiness Protocols ready before the trigger fires",
   },
   {
     category: "Stakeholder Coordination",
@@ -40,12 +40,12 @@ const comparisonRows = [
   {
     category: "Learning & Improvement",
     traditional: "Post-mortems that rarely change behavior",
-    executionOS: "Automated debrief after every activation — prepared responses improve continuously",
+    executionOS: "Automated debrief after every activation — Readiness Protocols improve continuously",
   },
 ];
 
 const proofNumbers = [
-  { value: "170", label: "Pre-staged prepared responses across 9 strategic domains" },
+  { value: "170", label: "Pre-staged Readiness Protocols across 9 strategic domains" },
   { value: "221", label: "Trigger configurations monitoring for strategic events" },
   { value: "248+", label: "Enterprise data points monitored continuously" },
   { value: "12 min", label: "Trigger to full organizational coordination" },
@@ -55,7 +55,7 @@ const proofNumbers = [
 
 const pilotIncludes = [
   "Full Readiness OS platform access for up to 25 users",
-  "5 customizable prepared responses from the 170 library",
+  "5 customizable Readiness Protocols from the 170 library",
   "Live signal monitoring across 3 intelligence categories",
   "Microsoft Teams + Jira/Asana integration",
   "Dedicated Customer Success Manager",
@@ -178,12 +178,12 @@ export default function ExecutiveBrief() {
                   Faster spreadsheets. Smarter summaries. Better notes from the same slow meetings. The 30-day mobilization cycle — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — remained completely untouched.
                 </p>
                 <p style={{ fontSize: 15, color: "#4B5563", lineHeight: 1.8, marginTop: 12 }}>
-                  Readiness OS doesn't bolt intelligence onto that model. It replaces it. Pre-staged prepared responses replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
+                  Readiness OS doesn't bolt intelligence onto that model. It replaces it. Pre-staged Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
                 </p>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
-                  { label: "Pre-staged prepared responses", detail: "Replace real-time coordination", icon: BookOpen },
+                  { label: "Pre-staged Readiness Protocols", detail: "Replace real-time coordination", icon: BookOpen },
                   { label: "Pattern detection", detail: "Replaces committee deliberation", icon: Globe },
                   { label: "12-minute execution", detail: "Replaces 30-day alignment cycles", icon: Clock },
                   { label: "AI monitors, executives authorize", detail: "AI orchestrates. Humans decide.", icon: Users },

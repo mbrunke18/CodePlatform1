@@ -103,7 +103,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
             </CardHeader>
             <CardContent>
               <p className="text-sm text-[#6B7280]">
-                Across 170 strategic prepared responses
+                Across 170 strategic Readiness Protocols
               </p>
             </CardContent>
           </Card>
@@ -170,7 +170,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                   ${offensiveValue.toFixed(0)}M
                 </div>
                 <p className="text-sm text-[#6B7280] mb-4">
-                  Market dynamics, opportunities, and expansion prepared responses
+                  Market dynamics, opportunities, and expansion Readiness Protocols
                 </p>
                 <div className="space-y-1 text-xs text-[#2B8A6E]">
                   {scenarioData.filter(s => s.category === 'offensive').map(s => (
@@ -230,7 +230,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
         {/* Detailed Scenario Breakdown */}
         <Tabs defaultValue="all" className="mb-8">
           <TabsList className="mb-6 bg-white dark:bg-white/5 border border-[#E8E4DC] dark:border-white/10">
-            <TabsTrigger value="all" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-all-scenarios">All Prepared responses</TabsTrigger>
+            <TabsTrigger value="all" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-all-scenarios">All Readiness Protocols</TabsTrigger>
             <TabsTrigger value="top5" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-top-5">Top 5 by Value</TabsTrigger>
             <TabsTrigger value="comparison" className="data-[state=active]:bg-[#0A0F2E] data-[state=active]:text-white" data-testid="tab-comparison">Traditional vs Readiness OS</TabsTrigger>
           </TabsList>
@@ -240,7 +240,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
               <CardHeader>
                 <CardTitle style={{ fontFamily: "'Cormorant Garamond', serif" }}>Complete Readiness Protocol Value Analysis</CardTitle>
                 <CardDescription>
-                  Financial impact and execution head start across strategic prepared responses
+                  Financial impact and execution head start across strategic Readiness Protocols
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -418,7 +418,7 @@ export default function ComprehensiveROIBreakdown({ embedded }: { embedded?: boo
                         <div className="text-sm text-[#2B8A6E] mb-1">Decision Process</div>
                         <ul className="text-sm text-[#2B8A6E] space-y-1">
                           <li>• AI detects trigger automatically</li>
-                          <li>• Pre-configured prepared response activates</li>
+                          <li>• Pre-configured Readiness Protocol activates</li>
                           <li>• One-click stakeholder coordination</li>
                           <li>• Real-time progress monitoring</li>
                           <li>• Learning captured for next time</li>

@@ -20,12 +20,12 @@ const BORDER = "#E8E4DC";
 const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
 const WHAT_YOU_GET = [
-  { icon: BookOpen, label: "170 Strategic Prepared responses", desc: "Full library across 9 domains — ready to activate" },
+  { icon: BookOpen, label: "170 Strategic Readiness Protocols", desc: "Full library across 9 domains — ready to activate" },
   { icon: Radar, label: "Signal Intelligence Dashboard", desc: "Real-time monitoring across 12 enterprise systems" },
-  { icon: Zap, label: "Trigger Detection", desc: "Pattern matching surfaces the right prepared response in seconds" },
+  { icon: Zap, label: "Trigger Detection", desc: "Pattern matching surfaces the right Readiness Protocol in seconds" },
   { icon: BarChart3, label: "Executive Analytics", desc: "Live performance metrics, ROI tracking, risk scoring" },
   { icon: Users, label: "Stakeholder Coordination", desc: "Task assignment, escalation paths, approvals built-in" },
-  { icon: Shield, label: "Crisis Response Center", desc: "Pre-wired prepared responses for every threat scenario" },
+  { icon: Shield, label: "Crisis Response Center", desc: "Pre-wired Readiness Protocols for every threat scenario" },
 ];
 
 const ICON_STYLES = [
@@ -37,7 +37,7 @@ const ICON_STYLES = [
 const STEPS = [
   { num: "01", label: "Sign In", desc: "Authenticate securely — no password required" },
   { num: "02", label: "Set Up Your Org", desc: "2-minute setup: name, industry, key departments" },
-  { num: "03", label: "Pick Your Prepared responses", desc: "Choose the 3–5 most relevant to your role" },
+  { num: "03", label: "Pick Your Readiness Protocols", desc: "Choose the 3–5 most relevant to your role" },
   { num: "04", label: "Run the Platform", desc: "Real signals, real AI, real execution — fully live" },
 ];
 
@@ -176,7 +176,7 @@ export default function GetStarted() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: TEAL, textTransform: "uppercase", marginBottom: 16 }}>Interactive Demo</div>
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: NAVY, marginBottom: 12 }}>See It in Action</h3>
               <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, marginBottom: 24 }}>
-                Walk through a live scenario — signal fires, prepared response activates, stakeholders mobilize. No commitment, no sales call. Ideal for initial evaluation before engaging your executive team.
+                Walk through a live scenario — signal fires, Readiness Protocol activates, stakeholders mobilize. No commitment, no sales call. Ideal for initial evaluation before engaging your executive team.
               </p>
               {["Live 7-phase walkthrough", "Real Supply Chain scenario", "AI brief + role assignments", "Stakeholder coordination view", "No sign-in required"].map((f, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
@@ -204,7 +204,7 @@ export default function GetStarted() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 16 }}>Enterprise Pilot</div>
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: "#fff", marginBottom: 12 }}>Guided Pilot Program</h3>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: 24 }}>
-                A structured 12-week engagement with dedicated support, custom prepared response configuration, integration setup, and executive reporting. For Fortune 1000 deployment.
+                A structured 12-week engagement with dedicated support, custom Readiness Protocol configuration, integration setup, and executive reporting. For Fortune 1000 deployment.
               </p>
               {["Dedicated VaughnMartin team", "Custom integration setup", "Executive sponsor alignment", "12-week structured program", "Guaranteed ROI measurement"].map((f, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>

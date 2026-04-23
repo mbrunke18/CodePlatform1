@@ -16,8 +16,8 @@ const phases = [
     module: "Readiness Protocol™",
     icon: ClipboardList, 
     color: "#3B82F6",
-    description: "Build your prepared response library",
-    outcome: "170 prepared responses ready"
+    description: "Build your Readiness Protocol library",
+    outcome: "170 Readiness Protocols ready"
   },
   { 
     id: "detect", 

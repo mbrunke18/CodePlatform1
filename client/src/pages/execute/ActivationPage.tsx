@@ -36,7 +36,7 @@ export default function ActivationPage() {
             Readiness Protocol Activation History
           </h1>
           <p className="text-muted-foreground mt-1">
-            Track every prepared response activation, success ratings, and lessons learned across your organization.
+            Track every Readiness Protocol activation, success ratings, and lessons learned across your organization.
           </p>
         </div>
 

@@ -252,7 +252,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
             ) : (
               <div className="text-center py-16 text-gray-400">
                 <Activity className="w-8 h-8 mx-auto mb-3" />
-                <p className="text-sm">Complete prepared response activations to generate board report data</p>
+                <p className="text-sm">Complete Readiness Protocol activations to generate board report data</p>
               </div>
             )}
           </div>

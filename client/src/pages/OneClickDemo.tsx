@@ -75,7 +75,7 @@ const STAKEHOLDERS: Stakeholder[] = [
 ];
 
 const TASKS: Task[] = [
-  { id: '1', time: 0, title: 'Breach detected - prepared response activated', stakeholder: 'System', type: 'ai', completed: false },
+  { id: '1', time: 0, title: 'Breach detected - Readiness Protocol activated', stakeholder: 'System', type: 'ai', completed: false },
   { id: '2', time: 1, title: 'Notifying 8 stakeholders simultaneously', stakeholder: 'Readiness OS', type: 'ai', completed: false },
   { id: '3', time: 2, title: 'CISO acknowledged - reviewing threat assessment', stakeholder: 'Marcus Williams', type: 'task', completed: false },
   { id: '4', time: 3, title: 'Legal team activated - compliance review initiated', stakeholder: 'Robert Chen', type: 'task', completed: false },

@@ -220,8 +220,8 @@ export function DeterministicExecutionBadge() {
         </TooltipTrigger>
         <TooltipContent side="top" className="max-w-xs">
           <p className="text-sm">
-            Unlike autonomous AI agents, Readiness OS delivers predictable, pre-defined prepared response execution. 
-            AI monitors and recommends—humans decide, prepared responses execute exactly as designed.
+            Unlike autonomous AI agents, Readiness OS delivers predictable, pre-defined Readiness Protocol execution. 
+            AI monitors and recommends—humans decide, Readiness Protocols execute exactly as designed.
           </p>
         </TooltipContent>
       </Tooltip>

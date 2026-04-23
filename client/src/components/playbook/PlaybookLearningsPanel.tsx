@@ -49,7 +49,7 @@ interface PlaybookLearningsPanelProps {
 
 export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearningsPanelProps) {
   const { data: learningsRaw, isLoading: learningsLoading } = useQuery<PlaybookLearning[]>({
-    queryKey: ['/api/dynamic-strategy/prepared response-learnings', scenarioId],
+    queryKey: ['/api/dynamic-strategy/Readiness Protocol-learnings', scenarioId],
   });
   const learnings = Array.isArray(learningsRaw) ? learningsRaw : [];
 
@@ -196,7 +196,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
                 <Lightbulb className="h-12 w-12 text-gray-800 mx-auto mb-4" />
                 <p className="text-gray-800 dark:text-slate-300">No learnings captured yet</p>
                 <p className="text-sm text-gray-800 mt-2">
-                  Execute this prepared response to start building institutional knowledge
+                  Execute this Readiness Protocol to start building institutional knowledge
                 </p>
               </div>
             </div>
@@ -303,7 +303,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
             Version History
           </CardTitle>
           <CardDescription>
-            Track prepared response evolution over time
+            Track Readiness Protocol evolution over time
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -312,7 +312,7 @@ export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearnings
               <History className="h-12 w-12 text-gray-800 mx-auto mb-4" />
               <p className="text-gray-800 dark:text-slate-300 font-semibold">Version history is automatically tracked</p>
               <p className="text-sm text-gray-800 mt-2">
-                History entries will appear here after your first prepared response activation
+                History entries will appear here after your first Readiness Protocol activation
               </p>
             </div>
           </div>

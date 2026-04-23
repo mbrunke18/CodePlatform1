@@ -227,14 +227,14 @@ export default function FourPhasePlaybookWizard({
       queryClient.invalidateQueries({ queryKey: ['/api/playbook-library', playbook?.id, 'readiness'] });
       toast({
         title: 'Readiness Protocol Customized',
-        description: 'Your prepared response template has been customized successfully',
+        description: 'Your Readiness Protocol template has been customized successfully',
       });
       onClose();
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Failed to save prepared response customization',
+        description: 'Failed to save Readiness Protocol customization',
         variant: 'destructive',
       });
     },
@@ -402,7 +402,7 @@ export default function FourPhasePlaybookWizard({
                 <CurrentStepComponent
                   data={formData}
                   onChange={updateFormData}
-                  prepared response={ playbook }
+                  Readiness Protocol={ playbook }
                 />
               )}
             </div>
@@ -427,7 +427,7 @@ export default function FourPhasePlaybookWizard({
                     onClick={handleSave}
                     disabled={saveCustomizationMutation.isPending}
                     className="bg-green-600 hover:bg-green-700"
-                    data-testid="button-save-prepared response"
+                    data-testid="button-save-Readiness Protocol"
                   >
                     <Check className="h-4 w-4 mr-1" />
                     {saveCustomizationMutation.isPending ? 'Saving...' : 'Complete Setup'}

@@ -90,13 +90,13 @@ function TwoPhasePlaybookSelector() {
         <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#E8E4DC] dark:divide-white/10">
           <div className="overflow-y-auto max-h-72">
             {metaLoading ? (<div className="flex items-center justify-center py-10 gap-2 text-[#6B7280]"><Loader2 className="h-4 w-4 animate-spin" /><span className="text-sm">Loading...</span></div>)
-              : filtered.length === 0 ? (<div className="flex flex-col items-center justify-center py-10 gap-2 text-[#6B7280]"><Search className="h-5 w-5" /><span className="text-sm">No prepared responses match "{search}"</span></div>)
+              : filtered.length === 0 ? (<div className="flex flex-col items-center justify-center py-10 gap-2 text-[#6B7280]"><Search className="h-5 w-5" /><span className="text-sm">No Readiness Protocols match "{search}"</span></div>)
               : filtered.map(p => (<button key={p.id} onClick={() => setSelectedId(prev => prev === p.id ? null : p.id)} className={`w-full text-left px-4 py-3 flex items-start gap-3 hover:bg-[#F8F7F4] dark:hover:bg-white/5 transition-colors border-b border-[#E8E4DC] dark:border-white/5 last:border-b-0 ${selectedId === p.id ? 'bg-[#2B8A6E]/5 border-l-2 border-l-[#2B8A6E]' : ''}`}><div className="flex-1 min-w-0"><div className="flex items-center gap-2 flex-wrap"><span className="font-semibold text-sm text-[#0A0F2E] dark:text-white truncate">{p.name}</span>{p.priority && <Badge className={`text-xs border ${PRIORITY_COLORS[p.priority] || PRIORITY_COLORS.medium}`}>{p.priority}</Badge>}</div><div className="flex items-center gap-2 mt-0.5"><span className={`text-xs font-medium ${CAT_COLORS[p.category?.toLowerCase() || ''] || 'text-[#6B7280]'}`}>{p.domain}</span>{p.timesUsed && p.timesUsed > 0 && <span className="text-xs text-[#6B7280]">· Used {p.timesUsed}×</span>}</div></div><ChevronRight className={`h-4 w-4 flex-shrink-0 mt-0.5 transition-transform ${selectedId === p.id ? 'rotate-90 text-[#2B8A6E]' : 'text-[#6B7280]'}`} /></button>))}
           </div>
           <div className="p-5 min-h-[180px]">
-            {!selectedId ? (<div className="flex flex-col items-center justify-center h-full py-8 gap-3 text-center"><div className="p-3 bg-[#2B8A6E]/10"><BookOpen className="h-6 w-6 text-[#2B8A6E]" /></div><p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a prepared response for full details</p><p className="text-xs text-[#6B7280]">Trigger conditions, escalation paths, and execution steps load on demand</p></div>)
+            {!selectedId ? (<div className="flex flex-col items-center justify-center h-full py-8 gap-3 text-center"><div className="p-3 bg-[#2B8A6E]/10"><BookOpen className="h-6 w-6 text-[#2B8A6E]" /></div><p className="text-sm font-medium text-[#0A0F2E] dark:text-white">Select a Readiness Protocol for full details</p><p className="text-xs text-[#6B7280]">Trigger conditions, escalation paths, and execution steps load on demand</p></div>)
               : detailLoading ? (<div className="flex items-center justify-center h-full gap-2 text-[#6B7280]"><Loader2 className="h-4 w-4 animate-spin" /><span className="text-sm">Loading...</span></div>)
-              : detail ? (<div className="space-y-4"><div className="flex items-start justify-between gap-2"><div><h4 className="font-bold text-[#0A0F2E] dark:text-white text-base" style={CG}>{detail.name}</h4><div className="flex items-center gap-2 mt-1 flex-wrap"><Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 text-xs">{detail.domain}</Badge>{detail.category && <Badge variant="outline" className="text-xs">{detail.category}</Badge>}{detail.priority && <Badge className={`text-xs border ${PRIORITY_COLORS[detail.priority] || PRIORITY_COLORS.medium}`}>{detail.priority}</Badge>}</div></div><button onClick={() => setSelectedId(null)} className="text-[#6B7280] hover:text-[#0A0F2E] flex-shrink-0"><X className="h-4 w-4" /></button></div>{detail.description && <p className="text-sm text-[#6B7280] leading-relaxed">{detail.description}</p>}<div className="grid grid-cols-2 gap-3"><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.executionSteps) ? detail.executionSteps.length : Array.isArray(detail.enrichedPhases) ? detail.enrichedPhases.length : '—'}</p><p className="text-xs text-[#6B7280]">{Array.isArray(detail.executionSteps) ? 'Steps' : 'Phases'}</p></div><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.stakeholders) ? detail.stakeholders.length : '—'}</p><p className="text-xs text-[#6B7280]">Stakeholders</p></div></div><Link href={`/prepared responses/${detail.id}`}><Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">Open Full Readiness Protocol <ExternalLink className="h-3.5 w-3.5 ml-1.5" /></Button></Link></div>)
+              : detail ? (<div className="space-y-4"><div className="flex items-start justify-between gap-2"><div><h4 className="font-bold text-[#0A0F2E] dark:text-white text-base" style={CG}>{detail.name}</h4><div className="flex items-center gap-2 mt-1 flex-wrap"><Badge className="bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20 text-xs">{detail.domain}</Badge>{detail.category && <Badge variant="outline" className="text-xs">{detail.category}</Badge>}{detail.priority && <Badge className={`text-xs border ${PRIORITY_COLORS[detail.priority] || PRIORITY_COLORS.medium}`}>{detail.priority}</Badge>}</div></div><button onClick={() => setSelectedId(null)} className="text-[#6B7280] hover:text-[#0A0F2E] flex-shrink-0"><X className="h-4 w-4" /></button></div>{detail.description && <p className="text-sm text-[#6B7280] leading-relaxed">{detail.description}</p>}<div className="grid grid-cols-2 gap-3"><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.executionSteps) ? detail.executionSteps.length : Array.isArray(detail.enrichedPhases) ? detail.enrichedPhases.length : '—'}</p><p className="text-xs text-[#6B7280]">{Array.isArray(detail.executionSteps) ? 'Steps' : 'Phases'}</p></div><div className="p-3 bg-[#F8F7F4] dark:bg-white/5 text-center"><p className="text-lg font-bold text-[#0A0F2E] dark:text-white" style={CG}>{Array.isArray(detail.stakeholders) ? detail.stakeholders.length : '—'}</p><p className="text-xs text-[#6B7280]">Stakeholders</p></div></div><Link href={`/Readiness Protocols/${detail.id}`}><Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">Open Full Readiness Protocol <ExternalLink className="h-3.5 w-3.5 ml-1.5" /></Button></Link></div>)
               : null}
           </div>
         </div>
@@ -123,7 +123,7 @@ const signalCategories = [
 
 // ─── EXECUTE DATA ─────────────────────────────────────────────────────────────
 const executeTools = [
-  { title: "Command Center", description: "Real-time coordination hub for active prepared response execution", path: "/mission-control", icon: Compass, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Live coordination", featured: true },
+  { title: "Command Center", description: "Real-time coordination hub for active Readiness Protocol execution", path: "/mission-control", icon: Compass, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Live coordination", featured: true },
   { title: "Crisis Response", description: "Rapid response protocols for critical situations", path: "/crisis", icon: AlertTriangle, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Emergency protocols" },
   { title: "Situation Room", description: "War room for strategic decision-making during execution", path: "/war-room", icon: Shield, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Decision support" },
   { title: "Team Collaboration", description: "Real-time communication and task coordination", path: "/collaboration", icon: MessageSquare, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Team sync" },
@@ -131,7 +131,7 @@ const executeTools = [
   { title: "Stakeholder Tracking", description: "Monitor stakeholder engagement and task completion", path: "/stakeholder-management", icon: Users, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Engagement" },
 ];
 const executionMetrics = [
-  { label: "Active Prepared responses", value: "2", icon: Play, color: "text-[#2B8A6E]" },
+  { label: "Active Readiness Protocols", value: "2", icon: Play, color: "text-[#2B8A6E]" },
   { label: "Tasks In Progress", value: "14", icon: Activity, color: "text-[#0A0F2E]" },
   { label: "Stakeholders Engaged", value: "28", icon: Users, color: "text-[#2B8A6E]" },
   { label: "Avg Response Time", value: "12m", icon: Timer, color: "text-[#C9A84C]" },
@@ -192,13 +192,13 @@ const advanceTools = [
   { title: "Institutional Memory", description: "Capture and preserve organizational learnings from every execution", path: "/institutional-memory", icon: BookOpen, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Knowledge base" },
   { title: "Decision Velocity", description: "Track and improve organizational decision-making speed", path: "/decision-velocity", icon: Activity, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Performance metrics" },
   { title: "Executive Dashboard", description: "Strategic overview of organizational readiness and performance", path: "/executive-dashboard", icon: BarChart3, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Executive view" },
-  { title: "Executive Analytics", description: "Deep-dive analytics on prepared response effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
+  { title: "Executive Analytics", description: "Deep-dive analytics on Readiness Protocol effectiveness and outcomes", path: "/analytics", icon: TrendingUp, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Advanced insights" },
   { title: "Intelligence Hub", description: "Pattern-based recognition and improvement suggestions", path: "/ai", icon: Brain, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "System recommendations" },
-  { title: "Readiness Protocol Refinement", description: "Update prepared responses based on lessons learned", path: "/living-prepared responses", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
+  { title: "Readiness Protocol Refinement", description: "Update Readiness Protocols based on lessons learned", path: "/living-Readiness Protocols", icon: RefreshCw, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Continuous improvement" },
 ];
 const learningMetrics = [
   { label: "Lessons Captured", value: "47", icon: Lightbulb, color: "text-[#2B8A6E]" },
-  { label: "Prepared responses Improved", value: "23", icon: RefreshCw, color: "text-[#0A0F2E]" },
+  { label: "Readiness Protocols Improved", value: "23", icon: RefreshCw, color: "text-[#0A0F2E]" },
   { label: "Decision Velocity", value: "+34%", icon: Activity, color: "text-[#C9A84C]" },
   { label: "Team Readiness", value: "92%", icon: Award, color: "text-[#0A0F2E]" },
 ];
@@ -265,8 +265,8 @@ const IDEA_PHASE_TILES = [
     phase: 'Phase 1',
     label: 'IDENTIFY',
     name: 'Readiness Protocol Factory',
-    desc: 'Build, customize, and manage strategic prepared responses for every scenario your organization will face.',
-    stat: '170 Prepared responses',
+    desc: 'Build, customize, and manage strategic Readiness Protocols for every scenario your organization will face.',
+    stat: '170 Readiness Protocols',
     statSub: 'across 9 domains',
     accentColor: TEAL,
     borderHover: TEAL,
@@ -452,9 +452,9 @@ export default function WorkspaceHub() {
                   </Badge>
                 </div>
                 <p className="text-[#6B7280] mt-1">
-                  {activeTab === 'identify' ? 'Build, customize, and manage strategic prepared responses for every scenario'
+                  {activeTab === 'identify' ? 'Build, customize, and manage strategic Readiness Protocols for every scenario'
                     : activeTab === 'detect' ? 'Monitor, detect, and analyze strategic signals in real-time'
-                    : activeTab === 'execute' ? 'Coordinate responses and execute prepared responses in 12 minutes'
+                    : activeTab === 'execute' ? 'Coordinate responses and execute Readiness Protocols in 12 minutes'
                     : 'Learn, improve, and strengthen organizational resilience'}
                 </p>
               </div>
@@ -473,7 +473,7 @@ export default function WorkspaceHub() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 {domainCategories.map(cat => (
                   <Card key={cat.name} className="border-[#E8E4DC] bg-white ">
-                    <CardContent className="p-6"><div className="flex items-center justify-between mb-4"><div className="flex items-center gap-3"><cat.icon className={`h-6 w-6 ${cat.color}`} /><h3 className="font-bold" style={{ ...CG, color: NAVY }}>{cat.name}</h3></div><Badge variant="secondary" className="bg-[#E8E4DC]">{cat.count} prepared responses</Badge></div><div className="space-y-1">{cat.domains.map(d => <p key={d} className="text-sm text-[#6B7280]">• {d}</p>)}</div></CardContent>
+                    <CardContent className="p-6"><div className="flex items-center justify-between mb-4"><div className="flex items-center gap-3"><cat.icon className={`h-6 w-6 ${cat.color}`} /><h3 className="font-bold" style={{ ...CG, color: NAVY }}>{cat.name}</h3></div><Badge variant="secondary" className="bg-[#E8E4DC]">{cat.count} Readiness Protocols</Badge></div><div className="space-y-1">{cat.domains.map(d => <p key={d} className="text-sm text-[#6B7280]">• {d}</p>)}</div></CardContent>
                   </Card>
                 ))}
               </div>
@@ -542,7 +542,7 @@ export default function WorkspaceHub() {
                 {learningMetrics.map(m => (<Card key={m.label} className="border-[#E8E4DC] bg-white "><CardContent className="p-4"><m.icon className={`h-5 w-5 ${m.color} mb-2`} /><p className="text-2xl font-bold text-[#0A0F2E]" style={CG}>{m.value}</p><p className="text-xs text-[#6B7280]">{m.label}</p></CardContent></Card>))}
               </div>
               <DoomLoopDetector />
-              <Card className="mb-8 bg-white border border-[#E8E4DC]"><CardContent className="p-6"><div className="flex items-center gap-4"><div className="p-3 bg-[#0A0F2E]/10"><RefreshCw className="h-8 w-8 text-[#C9A84C]" /></div><div><h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>Continuous Learning Loop</h3><p className="text-[#6B7280]">Every execution makes your prepared responses smarter and your team faster</p></div></div></CardContent></Card>
+              <Card className="mb-8 bg-white border border-[#E8E4DC]"><CardContent className="p-6"><div className="flex items-center gap-4"><div className="p-3 bg-[#0A0F2E]/10"><RefreshCw className="h-8 w-8 text-[#C9A84C]" /></div><div><h3 className="text-xl font-bold text-[#0A0F2E]" style={CG}>Continuous Learning Loop</h3><p className="text-[#6B7280]">Every execution makes your Readiness Protocols smarter and your team faster</p></div></div></CardContent></Card>
               <h2 className="text-xl font-bold mb-4" style={{ ...CG, color: NAVY }}>Recent Learnings</h2>
               <div className="space-y-3 mb-8">
                 {[{ text: "5-tier stakeholder hierarchy reduced notification fatigue by 41%", badge: "Pattern", badgeBg: TEAL, icon: Lightbulb, conf: 89 },{ text: "Auto-isolation rules cut cyber incident damage by 78%", badge: "Automation", badgeBg: TEAL, icon: Brain, conf: 96 },{ text: "Pre-approved budget thresholds accelerate response by 34%", badge: "Financial", badgeBg: GOLD, icon: BarChart3, conf: 87 }].map(l => (
@@ -550,7 +550,7 @@ export default function WorkspaceHub() {
                 ))}
               </div>
               <ToolsGrid tools={advanceTools} label="ADVANCE" />
-              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 bg-white/10"><ClipboardList className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Ready to apply learnings?</h3><p className="text-sm text-white/60">Update your prepared responses and start the cycle again</p></div></div><Button onClick={() => setActiveTab('identify')} className="bg-[#2B8A6E] text-white font-bold hover:bg-[#3BAF8A]">Back to IDENTIFY <ArrowRight className="h-4 w-4 ml-2" /></Button></div></CardContent></Card>
+              <Card className="bg-[#0A0F2E] border-[#C9A84C]/30"><CardContent className="p-6"><div className="flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex items-center gap-4"><div className="p-3 bg-white/10"><ClipboardList className="h-6 w-6 text-[#C9A84C]" /></div><div><h3 className="font-semibold text-white">Ready to apply learnings?</h3><p className="text-sm text-white/60">Update your Readiness Protocols and start the cycle again</p></div></div><Button onClick={() => setActiveTab('identify')} className="bg-[#2B8A6E] text-white font-bold hover:bg-[#3BAF8A]">Back to IDENTIFY <ArrowRight className="h-4 w-4 ml-2" /></Button></div></CardContent></Card>
             </>
           )}
         </div>

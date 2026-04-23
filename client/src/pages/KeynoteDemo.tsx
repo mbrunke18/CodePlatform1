@@ -45,7 +45,7 @@ const STAGES = [
   { id: 'introducing', label: 'Readiness OS' },
   { id: 'signal', label: 'Signal Detection' },
   { id: 'analysis', label: 'Strategic Analysis' },
-  { id: 'prepared response', label: 'Readiness Protocol Match' },
+  { id: 'Readiness Protocol', label: 'Readiness Protocol Match' },
   { id: 'decision', label: 'Executive Decision' },
   { id: 'activation', label: '12-Min Activation' },
   { id: 'idea', label: 'IDEA Framework' },
@@ -325,7 +325,7 @@ export default function KeynoteDemo() {
           className="flex gap-8 relative z-10"
         >
           {[
-            { value: '170', label: 'Strategic Prepared responses', icon: BookOpen },
+            { value: '170', label: 'Strategic Readiness Protocols', icon: BookOpen },
             { value: '9', label: 'Strategic Domains', icon: Globe },
             { value: '<12min', label: 'Signal to Action', icon: Timer },
             { value: '30+', label: 'Enterprise Integrations', icon: Workflow },
@@ -512,10 +512,10 @@ export default function KeynoteDemo() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20 px-4 py-2 text-sm font-medium mb-6">
             <BookOpen className="h-4 w-4" />
-            PREPARED RESPONSE MATCHED
+            Readiness Protocol MATCHED
           </div>
           <h2 className="text-5xl font-bold text-[#0A0F2E] mb-4" style={CG}>The Right Readiness Protocol, Instantly</h2>
-          <p className="text-xl text-[#0A0F2E]">AI selects from 170 pre-built prepared responses across 9 strategic domains</p>
+          <p className="text-xl text-[#0A0F2E]">AI selects from 170 pre-built Readiness Protocols across 9 strategic domains</p>
         </motion.div>
 
         <motion.div
@@ -684,7 +684,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 2, duration: 0.8 }}
           className="text-lg text-[#6B7280] mt-8 max-w-2xl text-center font-medium"
         >
-          Every prepared response activation requires human approval. AI accelerates the process — humans make the final call.
+          Every Readiness Protocol activation requires human approval. AI accelerates the process — humans make the final call.
         </motion.p>
       </div>
     ),
@@ -781,7 +781,7 @@ export default function KeynoteDemo() {
 
         <div className="grid grid-cols-4 gap-6 max-w-6xl w-full relative z-10">
           {[
-            { phase: 'IDENTIFY', subtitle: 'Readiness Protocol™', icon: BookOpen, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['170 strategic prepared responses', '3 domains: Growth & Positioning, Risk & Resilience, Transformation', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
+            { phase: 'IDENTIFY', subtitle: 'Readiness Protocol™', icon: BookOpen, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['170 strategic Readiness Protocols', '3 domains: Growth & Positioning, Risk & Resilience, Transformation', 'Customizable task sequences', 'Pre-approved budget allocation', 'Role-based stakeholder mapping'] },
             { phase: 'DETECT', subtitle: 'Signal™', icon: Radio, color: 'bg-[#0A0F2E]', border: 'border-[#0A0F2E]/20', items: ['Continuous signal monitoring', '248+ data points tracked', 'Pattern recognition engine', 'Early warning dashboard', 'Human-triggered activation'] },
             { phase: 'EXECUTE', subtitle: 'Compass™', icon: Zap, color: 'bg-[#C9A84C]', border: 'border-[#C9A84C]/20', items: ['12-minute coordination', '30+ enterprise integrations', 'Automated task creation', 'War room orchestration', 'Real-time stakeholder tracking'] },
             { phase: 'ADVANCE', subtitle: 'Retrospect™', icon: TrendingUp, color: 'bg-[#2B8A6E]', border: 'border-[#2B8A6E]/20', items: ['Institutional learning', 'Pattern-based outcome analysis', 'Readiness Protocol refinement', 'Performance benchmarking', 'Continuous improvement loop'] },
@@ -882,8 +882,8 @@ export default function KeynoteDemo() {
                 {[
                   { metric: 'Response Time', value: '< 2 minutes', detail: 'AI detects and alerts instantly' },
                   { metric: 'Stakeholder Alignment', value: '< 12 minutes', detail: '28+ stakeholders auto-coordinated' },
-                  { metric: 'Document Preparation', value: 'Instant', detail: 'Pre-staged from prepared response templates' },
-                  { metric: 'Budget Approval', value: 'Pre-approved', detail: 'Built into prepared response configuration' },
+                  { metric: 'Document Preparation', value: 'Instant', detail: 'Pre-staged from Readiness Protocol templates' },
+                  { metric: 'Budget Approval', value: 'Pre-approved', detail: 'Built into Readiness Protocol configuration' },
                   { metric: 'Full Execution', value: '< 12 minutes', detail: 'Signal to action, every time' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between bg-[#0A0F2E]/20 border border-white/10 p-4">

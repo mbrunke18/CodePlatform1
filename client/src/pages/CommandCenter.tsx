@@ -474,7 +474,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
               </div>
               <div style={{ padding: "20px 24px", background: "#fff", border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}` }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#6B7280", marginBottom: 8 }}>Executive Assessment</div>
-                <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{compoundAnalysisResult.executiveSummary || compoundAnalysisResult.analysis || 'Analysis complete. Review recommended prepared responses and initiate response protocol.'}</p>
+                <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>{compoundAnalysisResult.executiveSummary || compoundAnalysisResult.analysis || 'Analysis complete. Review recommended Readiness Protocols and initiate response protocol.'}</p>
               </div>
             </div>
           ) : (
@@ -767,7 +767,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 10, marginTop: 2 }}>{ideaRecommendation.signal.source} · {ideaRecommendation.signal.time}</p>
                       </div>
 
-                      {/* Recommended prepared response */}
+                      {/* Recommended Readiness Protocol */}
                       <div>
                         <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 6 }}>EXECUTE — Recommended Readiness Protocol</div>
                         <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, lineHeight: 1.2, marginBottom: 4 }}>{ideaRecommendation.playbook}</h3>
@@ -779,7 +779,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
                       {/* Action buttons */}
                       <div className="space-y-2">
-                        <Link href={`/prepared response-library?domain=${ideaRecommendation.domainParam}`}>
+                        <Link href={`/Readiness Protocol-library?domain=${ideaRecommendation.domainParam}`}>
                           <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] text-xs uppercase tracking-wider">
                             <Zap className="h-3.5 w-3.5 mr-1.5" />
                             Activate Readiness Protocol Now
@@ -787,7 +787,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                         </Link>
                         <Link href="/playbook-library">
                           <Button variant="outline" className="w-full border-white/20 text-white/60 hover:text-white hover:border-white/40 text-xs uppercase tracking-wider bg-transparent">
-                            Browse All 170 Prepared responses
+                            Browse All 170 Readiness Protocols
                           </Button>
                         </Link>
                       </div>
@@ -847,7 +847,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                       <Rocket className="w-4 h-4 text-white" />
                     </div>
                     <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Launch Response</h3>
-                    <p className="text-sm text-gray-600 mb-4">Execute a pre-configured prepared response for active signals.</p>
+                    <p className="text-sm text-gray-600 mb-4">Execute a pre-configured Readiness Protocol for active signals.</p>
                     <Button 
                       variant="outline" 
                       className="w-full" 

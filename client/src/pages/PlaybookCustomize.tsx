@@ -552,11 +552,11 @@ export default function PlaybookCustomize() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/playbooks'] });
-      toast({ title: "Readiness Protocol saved", description: "Your prepared response has been created successfully." });
+      toast({ title: "Readiness Protocol saved", description: "Your Readiness Protocol has been created successfully." });
       setLocation('/playbooks');
     },
     onError: (error: any) => {
-      toast({ title: "Error", description: error.message || "Failed to save prepared response", variant: "destructive" });
+      toast({ title: "Error", description: error.message || "Failed to save Readiness Protocol", variant: "destructive" });
     }
   });
   
@@ -653,7 +653,7 @@ export default function PlaybookCustomize() {
         </div>
       </div>
 
-      {/* What staging this prepared response produces — visible before any section is edited */}
+      {/* What staging this Readiness Protocol produces — visible before any section is edited */}
       <div className="max-w-[1600px] mx-auto px-6 pt-6 pb-0">
         <ValueGainCallout
           mode="special-teams"
@@ -825,7 +825,7 @@ export default function PlaybookCustomize() {
                   <div className="flex items-center justify-between mb-2">
                     <div>
                       <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Event Triggers</h3>
-                      <p className="text-sm text-[#6B7280]">Define what signals should activate this prepared response</p>
+                      <p className="text-sm text-[#6B7280]">Define what signals should activate this Readiness Protocol</p>
                     </div>
                     <Button 
                       onClick={() => triggersArray.append({ id: generateId(), description: "", source: "manual", severity: "warning", autoActivate: false })}
@@ -975,7 +975,7 @@ export default function PlaybookCustomize() {
                   <div className="space-y-2"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Version Notes</Label><Textarea {...register('versionNotes')} placeholder="What changed in this version and why..." className="min-h-[100px]" /></div>
                   <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <Controller name="changeApprovalRequired" control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
-                    <div><p className="text-sm font-bold text-[#0A0F2E]">Require Change Approval</p><p className="text-xs text-[#6B7280]">Any modification to this prepared response requires executive sign-off before saving</p></div>
+                    <div><p className="text-sm font-bold text-[#0A0F2E]">Require Change Approval</p><p className="text-xs text-[#6B7280]">Any modification to this Readiness Protocol requires executive sign-off before saving</p></div>
                   </div>
                 </div>
               )}
@@ -1077,7 +1077,7 @@ export default function PlaybookCustomize() {
                   </div>
                   <div className="flex items-center gap-4 p-4 bg-[#F8F7F4] border border-[#E8E4DC]">
                     <Controller name="auditTrailRequired" control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
-                    <div><p className="text-sm font-bold text-[#0A0F2E]">Audit Trail Required</p><p className="text-xs text-[#6B7280]">Every action during this prepared response's execution will be logged for compliance review</p></div>
+                    <div><p className="text-sm font-bold text-[#0A0F2E]">Audit Trail Required</p><p className="text-xs text-[#6B7280]">Every action during this Readiness Protocol's execution will be logged for compliance review</p></div>
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between"><Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Specific Compliance Requirements</Label>
@@ -1144,7 +1144,7 @@ export default function PlaybookCustomize() {
                       <p className="text-sm text-[#6B7280]">Define when and how situations escalate to senior leadership</p></div>
                     <Button onClick={() => escalationArray.append({ id: generateId(), triggerCondition: '', escalateTo: '', backupContact: '', timeToEscalate: 60, notificationChannels: [] })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Path</Button>
                   </div>
-                  {escalationArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><ArrowUpRight className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No escalation paths defined. Every serious prepared response needs one.</p></div>}
+                  {escalationArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><ArrowUpRight className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">No escalation paths defined. Every serious Readiness Protocol needs one.</p></div>}
                   <div className="space-y-4">
                     {escalationArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
@@ -1218,7 +1218,7 @@ export default function PlaybookCustomize() {
                     {[
                       { switchName: 'pressResponseRequired' as const, label: 'Press Response Required', desc: 'This situation requires coordinated external communications and media management' },
                       { switchName: 'investorNotificationRequired' as const, label: 'Investor Notification Required', desc: 'Material event requiring timely investor disclosure' },
-                      { switchName: 'boardNotificationRequired' as const, label: 'Board Notification Required', desc: 'Board must be briefed as part of this prepared response execution' },
+                      { switchName: 'boardNotificationRequired' as const, label: 'Board Notification Required', desc: 'Board must be briefed as part of this Readiness Protocol execution' },
                     ].map(({ switchName, label, desc }) => (
                       <div key={switchName} className="flex items-center gap-4 p-5 bg-[#F8F7F4] border border-[#E8E4DC]">
                         <Controller name={switchName} control={control} render={({ field: f }) => <Switch checked={!!f.value} onCheckedChange={f.onChange} />} />
@@ -1273,10 +1273,10 @@ export default function PlaybookCustomize() {
                 <div className="space-y-8 animate-in fade-in duration-500">
                   <div className="flex items-center justify-between">
                     <div><h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Business Impact</h3>
-                      <p className="text-sm text-[#6B7280]">Quantify the value this prepared response delivers when executed effectively</p></div>
+                      <p className="text-sm text-[#6B7280]">Quantify the value this Readiness Protocol delivers when executed effectively</p></div>
                     <Button onClick={() => impactArray.append({ id: generateId(), type: 'revenue_protection', estimatedValue: 0, valueUnit: 'USD', description: '', measurementMethod: '' })} className="bg-[#0A0F2E] text-white hover:bg-[#141B45]"><Plus className="w-4 h-4 mr-2" />Add Impact</Button>
                   </div>
-                  {impactArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><TrendingUp className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">Define the measurable business value this prepared response protects or creates.</p></div>}
+                  {impactArray.fields.length === 0 && <div className="py-12 text-center border-2 border-dashed border-[#E8E4DC]"><TrendingUp className="w-10 h-10 text-[#C9A84C] mx-auto mb-3" /><p className="text-[#6B7280] font-medium">Define the measurable business value this Readiness Protocol protects or creates.</p></div>}
                   <div className="space-y-4">
                     {impactArray.fields.map((field, index) => (
                       <Card key={field.id} className="border-[#E8E4DC] shadow-none">
@@ -1309,7 +1309,7 @@ export default function PlaybookCustomize() {
                 <div className="space-y-8 animate-in fade-in duration-500">
                   <div>
                     <h3 style={CG} className="text-2xl font-bold text-[#0A0F2E]">Challenge Rights</h3>
-                    <p className="text-sm text-[#6B7280] mt-1">The operational moat. The executive who activates this prepared response must have been in the room building it — not receiving it.</p>
+                    <p className="text-sm text-[#6B7280] mt-1">The operational moat. The executive who activates this Readiness Protocol must have been in the room building it — not receiving it.</p>
                   </div>
 
                   {/* Principle callout */}
@@ -1319,14 +1319,14 @@ export default function PlaybookCustomize() {
                       "Preparation that produces compliance looks identical to preparation that produces commitment. The three criteria that separate them: participation in construction, the right to challenge any assumption, and a plan that reflects the owner's specific judgment."
                     </p>
                     <div style={{ fontSize: 12, color: "#6B7280", fontWeight: 500 }}>
-                      This section is where the prepared response owner formally exercises their challenge rights — before the trigger fires, not after.
+                      This section is where the Readiness Protocol owner formally exercises their challenge rights — before the trigger fires, not after.
                     </div>
                   </div>
 
                   {/* Ownership confirmation */}
                   <div className="p-6 border border-[#E8E4DC] space-y-4">
                     <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#0A0F2E", marginBottom: 4 }}>Ownership Confirmation</div>
-                    <p className="text-sm text-[#6B7280]">The owner of this prepared response was involved in its construction, not just its receipt.</p>
+                    <p className="text-sm text-[#6B7280]">The owner of this Readiness Protocol was involved in its construction, not just its receipt.</p>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Readiness Protocol Owner</Label>
@@ -1343,7 +1343,7 @@ export default function PlaybookCustomize() {
                   <div className="space-y-3">
                     <div>
                       <Label className="text-[10px] uppercase tracking-widest font-bold text-[#6B7280]">Challenges & Flagged Assumptions</Label>
-                      <p className="text-xs text-[#6B7280] mt-1">Document any assumption you question, gap you've identified, or condition where this prepared response would fail. These become the basis for the next revision cycle.</p>
+                      <p className="text-xs text-[#6B7280] mt-1">Document any assumption you question, gap you've identified, or condition where this Readiness Protocol would fail. These become the basis for the next revision cycle.</p>
                     </div>
                     <Textarea
                       {...register('versionNotes')}
@@ -1353,7 +1353,7 @@ export default function PlaybookCustomize() {
                     <div className="flex items-start gap-3 p-4" style={{ background: "rgba(43,138,110,0.06)", border: "1px solid rgba(43,138,110,0.2)" }}>
                       <div style={{ width: 6, height: 6, background: "#2B8A6E", flexShrink: 0, marginTop: 5 }} />
                       <p className="text-xs" style={{ color: "#2B8A6E", lineHeight: 1.6 }}>
-                        Challenge rights are permanent. Any assumption documented here creates a mandatory review obligation before this prepared response activates in a live scenario. The record stays with the prepared response through every revision.
+                        Challenge rights are permanent. Any assumption documented here creates a mandatory review obligation before this Readiness Protocol activates in a live scenario. The record stays with the Readiness Protocol through every revision.
                       </p>
                     </div>
                   </div>

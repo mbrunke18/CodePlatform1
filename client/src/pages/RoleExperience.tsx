@@ -99,7 +99,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Customer Retention Outreach', before: '2 weeks', after: 'Same day' },
       { metric: 'Integration Cost Savings', before: 'N/A', after: '$4.2M in avoided delays' },
     ],
-    lesson: 'Integration prepared response refined: added "CloudTech-specific" technology migration checklist based on actual system gaps discovered during execution. Updated stakeholder tiers to include acquired company leadership in Tier 2.',
+    lesson: 'Integration Readiness Protocol refined: added "CloudTech-specific" technology migration checklist based on actual system gaps discovered during execution. Updated stakeholder tiers to include acquired company leadership in Tier 2.',
   },
   ciso: {
     id: 'ciso', title: 'Chief Information Security Officer', name: 'Robert Kim', company: 'Meridian Financial Group',
@@ -155,7 +155,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Regulatory Filing', before: 'Scramble at deadline', after: 'Prepared within 2 hours' },
       { metric: 'Financial Impact Avoided', before: 'N/A', after: '$12.8M in breach costs avoided' },
     ],
-    lesson: 'Readiness Protocol updated: added auto-isolation rule that triggered 3 minutes faster than manual process. VPN monitoring trigger added to detect credential compromise earlier. Phishing response prepared response cross-linked for upstream prevention.',
+    lesson: 'Readiness Protocol updated: added auto-isolation rule that triggered 3 minutes faster than manual process. VPN monitoring trigger added to detect credential compromise earlier. Phishing response Readiness Protocol cross-linked for upstream prevention.',
   },
   cmo: {
     id: 'cmo', title: 'Chief Marketing Officer', name: 'Lisa Anderson', company: 'Meridian Financial Group',
@@ -267,7 +267,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Audit Readiness', before: '90 days', after: '45 days (50% faster)' },
       { metric: 'Compliance Cost', before: 'Unknown until late', after: '$142K — tracked real-time' },
     ],
-    lesson: 'Readiness Protocol updated: Added "Big 4 Capacity Check" as a pre-flight step after discovering auditor availability was a bottleneck. Created reusable template for future SEC rule changes. Linked to ESG reporting prepared response for cross-domain coordination.',
+    lesson: 'Readiness Protocol updated: Added "Big 4 Capacity Check" as a pre-flight step after discovering auditor availability was a bottleneck. Created reusable template for future SEC rule changes. Linked to ESG reporting Readiness Protocol for cross-domain coordination.',
   },
   coo: {
     id: 'coo', title: 'Chief Operating Officer', name: 'David Wilson', company: 'Meridian Financial Group',
@@ -379,7 +379,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Governance Framework', before: 'Built from scratch', after: 'Pre-configured, customized in minutes' },
       { metric: 'Projected Timeline Savings', before: '18 months', after: '14 months (22% faster)' },
     ],
-    lesson: 'Readiness Protocol enhanced: Added EU AI Act compliance checklist as mandatory pre-flight step. Created reusable "Department Readiness Assessment" template. Linked Digital Transformation prepared response to AI Governance prepared response for cross-domain execution.',
+    lesson: 'Readiness Protocol enhanced: Added EU AI Act compliance checklist as mandatory pre-flight step. Created reusable "Department Readiness Assessment" template. Linked Digital Transformation Readiness Protocol to AI Governance Readiness Protocol for cross-domain execution.',
   },
   chro: {
     id: 'chro', title: 'Chief Human Resources Officer', name: 'Michelle Harris', company: 'Meridian Financial Group',
@@ -491,7 +491,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Customer View Accuracy', before: 'Unknown', after: '98% single source of truth' },
       { metric: 'Revenue Impact', before: 'N/A', after: '$2.1M saved in Year 1' },
     ],
-    lesson: 'Readiness Protocol refined: Added "Privacy Compliance Pre-Check" as mandatory step before any data consolidation. Created reusable "Data Quality Scorecard" template. Linked to AI Governance prepared response for ML model data requirements.',
+    lesson: 'Readiness Protocol refined: Added "Privacy Compliance Pre-Check" as mandatory step before any data consolidation. Created reusable "Data Quality Scorecard" template. Linked to AI Governance Readiness Protocol for ML model data requirements.',
   },
   gc: {
     id: 'gc', title: 'General Counsel', name: 'Emily Taylor', company: 'Meridian Financial Group',
@@ -547,7 +547,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Risk Exposure', before: 'Unknown', after: '$8.4M in potential fines avoided' },
       { metric: 'External Counsel Coordination', before: 'Ad-hoc', after: 'Structured with SLA tracking' },
     ],
-    lesson: 'Readiness Protocol enhanced: Added "Conflicting Jurisdiction Detector" that cross-references requirements across regions automatically. Created reusable "Vendor AI Clause Amendment" template. Linked to AI Governance prepared response for technical compliance requirements.',
+    lesson: 'Readiness Protocol enhanced: Added "Conflicting Jurisdiction Detector" that cross-references requirements across regions automatically. Created reusable "Vendor AI Clause Amendment" template. Linked to AI Governance Readiness Protocol for technical compliance requirements.',
   },
   cco: {
     id: 'cco', title: 'Chief Compliance Officer', name: 'Jessica Thompson', company: 'Meridian Financial Group',
@@ -603,7 +603,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Team Coordination', before: 'Multiple meetings', after: 'Single coordinated response' },
       { metric: 'Examination Result', before: 'Stressful', after: 'Zero new findings, 2 prior findings closed' },
     ],
-    lesson: 'Readiness Protocol refined: Created "Standing Audit Readiness" mode that maintains continuous document freshness. Added "Penetration Test Staleness" alert — auto-triggers at 60 days instead of waiting for examination notice. Linked to Cybersecurity prepared response for coordinated documentation updates.',
+    lesson: 'Readiness Protocol refined: Created "Standing Audit Readiness" mode that maintains continuous document freshness. Added "Penetration Test Staleness" alert — auto-triggers at 60 days instead of waiting for examination notice. Linked to Cybersecurity Readiness Protocol for coordinated documentation updates.',
   },
   cso: {
     id: 'cso', title: 'Chief Strategy Officer', name: 'Patricia Wright', company: 'Meridian Financial Group',
@@ -661,7 +661,7 @@ const ROLES: Record<string, RoleData> = {
       { metric: 'Cross-Functional Alignment', before: '6-8 weeks', after: 'Same day' },
       { metric: 'Projected Year 2 Revenue', before: 'Unknown', after: '$48M with 78% confidence' },
     ],
-    lesson: 'Readiness Protocol enhanced: Added "Competitive Withdrawal Monitor" as a new trigger source — catches market gaps 2-3 weeks faster. Created reusable "JV Partner Evaluation Scorecard" template. Linked Market Entry prepared response to Regulatory Compliance prepared response for parallel processing.',
+    lesson: 'Readiness Protocol enhanced: Added "Competitive Withdrawal Monitor" as a new trigger source — catches market gaps 2-3 weeks faster. Created reusable "JV Partner Evaluation Scorecard" template. Linked Market Entry Readiness Protocol to Regulatory Compliance Readiness Protocol for parallel processing.',
   },
   cro: {
     id: 'cro', title: 'Chief Revenue Officer', name: 'Ryan Davis', company: 'Meridian Financial Group',
@@ -682,7 +682,7 @@ const ROLES: Record<string, RoleData> = {
     ],
     customizations: [
       { field: 'Risk Scoring', before: 'Simple RAG', after: 'Multi-factor: usage trends, support tickets, NPS, contract terms, competitive mentions, stakeholder changes' },
-      { field: 'Intervention Tiers', before: 'Single prepared response', after: '3-tier: Proactive (score 60-80), Reactive (40-60), Emergency (below 40)' },
+      { field: 'Intervention Tiers', before: 'Single Readiness Protocol', after: '3-tier: Proactive (score 60-80), Reactive (40-60), Emergency (below 40)' },
       { field: 'Account Team Assembly', before: 'Standard CSM', after: 'War room: CSM, AE, SE, Product, Executive Sponsor, Professional Services' },
       { field: 'Communication Cadence', before: 'Quarterly review', after: 'Weekly touchpoints, bi-weekly exec alignment, daily monitoring during intervention' },
     ],
@@ -725,7 +725,7 @@ const FALLBACK_ROLE = ROLES.ciso;
 
 const STAGES = [
   { id: 'intro', label: 'Your Scenario' },
-  { id: 'prepared response', label: 'Build Readiness Protocol' },
+  { id: 'Readiness Protocol', label: 'Build Readiness Protocol' },
   { id: 'triggers', label: 'Configure Triggers' },
   { id: 'data', label: 'Connect Data' },
   { id: 'customize', label: 'Customize' },
@@ -1027,7 +1027,7 @@ export default function RoleExperience() {
               <p className="text-[10px] font-bold text-[#6B7280] uppercase tracking-widest mb-3">What Happens Next</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[
-                  { step: '01', label: 'Configure your prepared response', icon: BookOpen, color: '#C9A84C' },
+                  { step: '01', label: 'Configure your Readiness Protocol', icon: BookOpen, color: '#C9A84C' },
                   { step: '02', label: 'Set triggers & data feeds', icon: Radio, color: '#2B8A6E' },
                   { step: '03', label: 'Trigger fires — OS executes', icon: AlertTriangle, color: '#DC2626' },
                   { step: '04', label: 'See your outcomes', icon: CheckCircle2, color: '#2B8A6E' },
@@ -1049,9 +1049,9 @@ export default function RoleExperience() {
         return (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR PREPARED RESPONSE</Badge>
+              <Badge className="mb-3 bg-[#2B8A6E]/20 text-[#2B8A6E]"><BookOpen className="h-3 w-3 mr-1" /> BUILD YOUR Readiness Protocol</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Build Your Readiness Protocol</h2>
-              <p className="text-[#6B7280]">Customize your prepared response configuration — pre-filled with smart defaults from {role.title}</p>
+              <p className="text-[#6B7280]">Customize your Readiness Protocol configuration — pre-filled with smart defaults from {role.title}</p>
             </div>
             {configComplete && (
               <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
@@ -1160,7 +1160,7 @@ export default function RoleExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-amber-500/20 text-amber-400"><Radio className="h-3 w-3 mr-1" /> CONFIGURE TRIGGERS</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Configure Your Triggers</h2>
-              <p className="text-gray-800">Set up the conditions that will automatically activate your prepared response</p>
+              <p className="text-gray-800">Set up the conditions that will automatically activate your Readiness Protocol</p>
             </div>
             <div className="mb-4 flex items-center gap-3">
               <Progress value={setupReadiness.percent} className="h-2 flex-1" />
@@ -1556,7 +1556,7 @@ export default function RoleExperience() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }}
               className="text-center text-sm text-gray-800 mt-6"
             >
-              No prepared response activates without executive sign-off. Readiness OS pre-stages the preparation — the decision remains human.
+              No Readiness Protocol activates without executive sign-off. Readiness OS pre-stages the preparation — the decision remains human.
             </motion.p>
           </div>
         );
@@ -1735,7 +1735,7 @@ export default function RoleExperience() {
             <div className="text-center mb-8">
               <Badge className="mb-3 bg-[#0A0F2E]/20 text-[#0A0F2E]"><TrendingUp className="h-3 w-3 mr-1" /> ADVANCE PHASE</Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-[#0A0F2E] mb-2">Institutional Learning</h2>
-              <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s execution data feeds back into the prepared response for continuous improvement</p>
+              <p className="text-[#6B7280]">{role.name.split(' ')[0]}'s execution data feeds back into the Readiness Protocol for continuous improvement</p>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
               className="bg-white border border-[#0A0F2E]/20 p-6 mb-6"
@@ -1769,7 +1769,7 @@ export default function RoleExperience() {
               >
                 <div className="flex items-center gap-2 mb-3">
                   <Badge className="bg-[#2B8A6E]/20 text-[#2B8A6E] text-xs">Your Custom Tasks</Badge>
-                  <span className="text-sm text-gray-800">incorporated into prepared response v2.1</span>
+                  <span className="text-sm text-gray-800">incorporated into Readiness Protocol v2.1</span>
                 </div>
                 <div className="space-y-1">
                   {customTasks.map((t, i) => (

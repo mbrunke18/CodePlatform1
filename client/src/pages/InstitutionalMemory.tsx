@@ -25,7 +25,7 @@ const DEMO_OUTCOMES = [
     decisionType: 'Ransomware Incident Response — LockBit 3.0',
     outcomeType: 'successful',
     decisionDescription: 'Critical cybersecurity incident at 2:17 AM. Readiness Protocol #31 activated via automated trigger from AWS CloudWatch + CrowdStrike Falcon. 47 production servers isolated in 45 seconds. Full recovery achieved from clean backups with 4-hour RPO.',
-    lessonsLearned: 'Auto-isolation rule triggered 3 minutes faster than manual approval would have. VPN monitoring trigger should be added to detect credential compromise earlier. Phishing response prepared response now cross-linked for upstream prevention.',
+    lessonsLearned: 'Auto-isolation rule triggered 3 minutes faster than manual approval would have. VPN monitoring trigger should be added to detect credential compromise earlier. Phishing response Readiness Protocol now cross-linked for upstream prevention.',
     date: 'Feb 3, 2026',
     domain: 'Cybersecurity',
     executionTime: '11 min 47 sec',
@@ -92,7 +92,7 @@ const DEMO_PATTERNS = [
     patternType: 'Automation',
     category: 'Readiness Protocol Design',
     title: 'Auto-Isolation Rules Cut Cyber Incident Damage by 78%',
-    description: 'Prepared responses with automated network isolation rules (triggered within 60 seconds of detection) reduced data exposure by 78% compared to manual-approval workflows. The 3-minute gap between auto and manual represents critical damage window in ransomware scenarios.',
+    description: 'Readiness Protocols with automated network isolation rules (triggered within 60 seconds of detection) reduced data exposure by 78% compared to manual-approval workflows. The 3-minute gap between auto and manual represents critical damage window in ransomware scenarios.',
     confidenceLevel: '96%',
     impactScore: 'Critical',
     dataPoints: 23,
@@ -102,7 +102,7 @@ const DEMO_PATTERNS = [
     patternType: 'Integration',
     category: 'Tool Effectiveness',
     title: 'Jira Sync Reduces Project Setup Time by 87%',
-    description: 'Auto-creating Jira boards with pre-populated tasks and assignments during prepared response execution saves an average of 4.2 hours per incident compared to manual project creation. Teams using auto-sync report 92% task visibility within the first hour.',
+    description: 'Auto-creating Jira boards with pre-populated tasks and assignments during Readiness Protocol execution saves an average of 4.2 hours per incident compared to manual project creation. Teams using auto-sync report 92% task visibility within the first hour.',
     confidenceLevel: '91%',
     impactScore: 'Medium',
     dataPoints: 89,
@@ -112,7 +112,7 @@ const DEMO_PATTERNS = [
     patternType: 'Financial',
     category: 'Budget Optimization',
     title: 'Pre-Approved Budget Thresholds Accelerate Response by 34%',
-    description: 'Organizations with pre-approved emergency budget thresholds (auto-approve below threshold, dual-sign above) execute financial aspects of prepared responses 34% faster. Sweet spot: auto-approve up to $100K, dual-sign $100K-$1M, board approval above $1M.',
+    description: 'Organizations with pre-approved emergency budget thresholds (auto-approve below threshold, dual-sign above) execute financial aspects of Readiness Protocols 34% faster. Sweet spot: auto-approve up to $100K, dual-sign $100K-$1M, board approval above $1M.',
     confidenceLevel: '87%',
     impactScore: 'High',
     dataPoints: 112,
@@ -122,7 +122,7 @@ const DEMO_PATTERNS = [
     patternType: 'Learning',
     category: 'Continuous Improvement',
     title: 'Post-Execution Reviews Improve Next-Run Performance by 18%',
-    description: 'Prepared responses that capture lessons learned and auto-update trigger conditions show 18% improvement in execution speed on subsequent activations. Organizations conducting reviews within 48 hours capture 3x more actionable insights than those reviewing after 1 week.',
+    description: 'Readiness Protocols that capture lessons learned and auto-update trigger conditions show 18% improvement in execution speed on subsequent activations. Organizations conducting reviews within 48 hours capture 3x more actionable insights than those reviewing after 1 week.',
     confidenceLevel: '82%',
     impactScore: 'Medium',
     dataPoints: 67,
@@ -145,7 +145,7 @@ const DEMO_KNOWLEDGE = [
     domain: 'Cybersecurity',
     title: 'VPN Credential Compromise Detection Gap',
     summary: 'In the Feb 3 ransomware incident, the initial compromise occurred 72 hours before detection via a phishing email targeting VPN credentials. Current monitoring missed the lateral movement because VPN session monitoring was not integrated with SIEM. Remediation: Added VPN anomaly detection to trigger conditions in all cybersecurity Readiness Protocols.',
-    applicability: 'All cybersecurity incident prepared responses',
+    applicability: 'All cybersecurity incident Readiness Protocols',
     lastUpdated: 'Feb 5, 2026',
   },
   {
@@ -154,7 +154,7 @@ const DEMO_KNOWLEDGE = [
     domain: 'Crisis Management',
     title: 'CEO Communication Cadence During Active Crisis',
     summary: 'During active crisis scenarios, CEO updates should be pushed every 30 minutes for the first 2 hours, then hourly for the next 6 hours, then every 4 hours until resolution. This cadence was refined across 12 crisis responses and correlates with 89% board satisfaction scores.',
-    applicability: 'All DEFENSE domain prepared responses',
+    applicability: 'All RISK & RESILIENCE domain Readiness Protocols',
     lastUpdated: 'Feb 10, 2026',
   },
   {
@@ -163,7 +163,7 @@ const DEMO_KNOWLEDGE = [
     domain: 'Regulatory',
     title: 'Regulatory Filing Pre-Staging Strategy',
     summary: 'Maintain a library of 80% pre-completed regulatory filing templates for SEC, GDPR, SOX, and state AG notifications. Auto-populate with organization data quarterly. During an incident, only the incident-specific details need manual input, reducing filing preparation from 8 hours to 45 minutes.',
-    applicability: 'All regulatory compliance prepared responses',
+    applicability: 'All regulatory compliance Readiness Protocols',
     lastUpdated: 'Jan 20, 2026',
   },
   {
@@ -172,7 +172,7 @@ const DEMO_KNOWLEDGE = [
     domain: 'Operations',
     title: 'Supplier Redundancy Framework',
     summary: 'Maintain at minimum 3 qualified backup suppliers per critical component across 2+ geographic regions. Quarterly capability verification ensures backup suppliers can activate within 48 hours. The Taiwan supply chain incident proved this framework prevented a $15.2M revenue impact.',
-    applicability: 'Supply chain and operations prepared responses',
+    applicability: 'Supply chain and operations Readiness Protocols',
     lastUpdated: 'Dec 22, 2025',
   },
   {
@@ -181,7 +181,7 @@ const DEMO_KNOWLEDGE = [
     domain: 'AI Governance',
     title: 'AI Model Risk Assessment Protocol',
     summary: 'Before deploying any customer-facing AI model, execute the 18-point governance checklist including bias testing across 7 demographic dimensions, explainability scoring (minimum 0.7), and adversarial robustness testing. Models failing any critical checkpoint require VP-level approval and documented risk acceptance.',
-    applicability: 'All AI Governance domain prepared responses',
+    applicability: 'All AI Governance domain Readiness Protocols',
     lastUpdated: 'Feb 1, 2026',
   },
 ];
@@ -307,7 +307,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
               </div>
               <div>
                 <p className="text-sm font-semibold text-[#2B8A6E]">Response Improvement</p>
-                <p className="text-xs text-[#2B8A6E]/70">Avg improvement per prepared response iteration</p>
+                <p className="text-xs text-[#2B8A6E]/70">Avg improvement per Readiness Protocol iteration</p>
               </div>
             </div>
             <div className="text-3xl font-bold text-[#2B8A6E]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>+18%</div>
@@ -322,7 +322,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
               </div>
               <div>
                 <p className="text-sm font-semibold text-[#C9A84C]">AI Recommendations</p>
-                <p className="text-xs text-[#C9A84C]/70">Insights applied to active prepared responses</p>
+                <p className="text-xs text-[#C9A84C]/70">Insights applied to active Readiness Protocols</p>
               </div>
             </div>
             <div className="text-3xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>34</div>
@@ -370,7 +370,7 @@ export default function InstitutionalMemory({ embedded }: { embedded?: boolean }
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               <BookOpen className="h-5 w-5 text-[#C9A84C]" />
-              Prepared responses Improved From Learnings
+              Readiness Protocols Improved From Learnings
             </CardTitle>
           </CardHeader>
           <CardContent>

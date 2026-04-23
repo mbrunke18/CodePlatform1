@@ -56,7 +56,7 @@ export function DemoActiveStrategicCard() {
   useEffect(() => {
     const sceneId = currentSceneData?.id || '';
     
-    if (['prepared response-activation', 'execution-tracking'].includes(sceneId)) {
+    if (['Readiness Protocol-activation', 'execution-tracking'].includes(sceneId)) {
       const timer = setInterval(() => {
         setElapsedTime(prev => Math.min(prev + 1, 720)); // 12 minutes max
         setTaskProgress(prev => Math.min(prev + 3, 94));
@@ -101,7 +101,7 @@ export function DemoActiveStrategicCard() {
               {isActivated && (
                 <Badge className="bg-green-600 text-gray-900">
                   <Zap className="h-3 w-3 mr-1" />
-                  PREPARED RESPONSE ACTIVE
+                  Readiness Protocol ACTIVE
                 </Badge>
               )}
             </div>
@@ -217,7 +217,7 @@ export function DemoActiveStrategicCard() {
         )}
         
         {!isActivated && sceneId === 'decision-activation' && (
-          <Button className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-white" size="lg" data-testid="demo-activate-prepared response-btn">
+          <Button className="w-full bg-gradient-to-r from-[#0A0F2E] to-[#141B45] text-white" size="lg" data-testid="demo-activate-Readiness Protocol-btn">
             <Play className="h-5 w-5 mr-2" />
             Activate Supply Chain Disruption Readiness Protocol SCM-001
           </Button>

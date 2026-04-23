@@ -80,7 +80,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'IDENTIFY',
     subtitle: 'Build Your Depth Chart',
-    narration: 'Build your strategic arsenal. 170 pre-built prepared responses across 9 domains — ready to deploy instantly when needed.',
+    narration: 'Build your strategic arsenal. 170 pre-built Readiness Protocols across 9 domains — ready to deploy instantly when needed.',
     visual: 'identify'
   },
   {
@@ -152,7 +152,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 8000,
     title: 'Why Readiness OS?',
     subtitle: 'The Only Closed-Loop Platform',
-    narration: 'Unlike Palantir, Anaplan, or Dataminr — Readiness OS connects signals to prepared responses to execution to learning. One platform.',
+    narration: 'Unlike Palantir, Anaplan, or Dataminr — Readiness OS connects signals to Readiness Protocols to execution to learning. One platform.',
     visual: 'comparison'
   },
   {
@@ -332,7 +332,7 @@ export default function ProductTour() {
             className="text-center"
           >
             <p className="text-4xl font-bold text-[#C9A84C]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>170</p>
-            <p className="text-[#6B7280] uppercase tracking-widest text-[10px] font-bold">Prepared responses</p>
+            <p className="text-[#6B7280] uppercase tracking-widest text-[10px] font-bold">Readiness Protocols</p>
           </motion.div>
         </div>
       </motion.div>
@@ -344,7 +344,7 @@ export default function ProductTour() {
       identify: {
         icon: BookOpen,
         hex: '#2B8A6E',
-        items: ['170 Strategic Prepared responses', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
+        items: ['170 Strategic Readiness Protocols', '9 Strategic Domains', 'Pre-approved Budgets', 'Stakeholder Assignments']
       },
       detect: {
         icon: Radio,
@@ -525,7 +525,7 @@ export default function ProductTour() {
           
           {[
             { label: 'Signal Detection', scores: ['Custom Build', 'No', '✓ 16 Categories'] },
-            { label: 'Pre-built Prepared responses', scores: ['No', 'No', '✓ 170 Ready'] },
+            { label: 'Pre-built Readiness Protocols', scores: ['No', 'No', '✓ 170 Ready'] },
             { label: 'Execution Engine', scores: ['No', 'No', '✓ 12-Minute'] },
             { label: 'Closed-Loop Learning', scores: ['Manual', 'Manual', '✓ Continuous'] }
           ].map((row, i) => (
@@ -591,7 +591,7 @@ export default function ProductTour() {
               onClick={() => setLocation('/playbook-library')}
             >
               <BookOpen className="w-4 h-4 mr-2" />
-              Explore Prepared responses
+              Explore Readiness Protocols
             </Button>
             <Button 
               variant="outline" 

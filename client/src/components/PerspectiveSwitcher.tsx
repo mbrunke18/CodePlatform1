@@ -221,7 +221,7 @@ export default function PerspectiveSwitcher({ currentRole, currentIndustry }: Pe
             </button>
 
             <p style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textAlign: "center", marginTop: 12, marginBottom: 0 }}>
-              This calibrates your dashboard framing and prepared response context.
+              This calibrates your dashboard framing and Readiness Protocol context.
             </p>
           </div>
         </>

@@ -640,7 +640,7 @@ export default function QuickDemoPage() {
                         IDENTIFY: Readiness Protocol Ready
                       </CardTitle>
                       <CardDescription>
-                        Your {selectedScenario.playbook} prepared response was already configured
+                        Your {selectedScenario.playbook} Readiness Protocol was already configured
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -698,7 +698,7 @@ export default function QuickDemoPage() {
                         DETECT: Signal Received
                       </CardTitle>
                       <CardDescription>
-                        AI identified a trigger matching your prepared response
+                        AI identified a trigger matching your Readiness Protocol
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
@@ -810,7 +810,7 @@ export default function QuickDemoPage() {
                       {!learnings ? (
                         <div className="space-y-4">
                           <p className="text-muted-foreground">
-                            Readiness OS captures what worked and suggests prepared response improvements for next time.
+                            Readiness OS captures what worked and suggests Readiness Protocol improvements for next time.
                           </p>
                           <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white" onClick={completeAdvance}>
                             <Sparkles className="mr-2 h-4 w-4" />
@@ -906,10 +906,10 @@ export default function QuickDemoPage() {
                     <div className="space-y-3 text-sm">
                       {currentPhase === 'identify' && (
                         <>
-                          <p className="text-muted-foreground">Pre-configured prepared responses mean zero setup time when a crisis hits. Tasks, stakeholders, documents, and budgets are already defined.</p>
+                          <p className="text-muted-foreground">Pre-configured Readiness Protocols mean zero setup time when a crisis hits. Tasks, stakeholders, documents, and budgets are already defined.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Key Differentiator</p>
-                            <p className="text-xs text-muted-foreground">170 prepared responses across 9 strategic domains. Customize any or build your own.</p>
+                            <p className="text-xs text-muted-foreground">170 Readiness Protocols across 9 strategic domains. Customize any or build your own.</p>
                           </div>
                         </>
                       )}
@@ -945,7 +945,7 @@ export default function QuickDemoPage() {
                           <p className="text-muted-foreground">The full IDEA Framework loop is complete. This same process works across all 9 strategic domains.</p>
                           <div className="p-3 bg-background">
                             <p className="text-xs font-medium mb-1">Ready for Your Organization</p>
-                            <p className="text-xs text-muted-foreground">Start a pilot to see Readiness OS with your real prepared responses and integrations.</p>
+                            <p className="text-xs text-muted-foreground">Start a pilot to see Readiness OS with your real Readiness Protocols and integrations.</p>
                           </div>
                         </>
                       )}

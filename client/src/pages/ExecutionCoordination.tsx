@@ -55,7 +55,7 @@ const sampleExecutions = {
         startMinute: 0,
         endMinute: 2,
         tasks: [
-          { id: 't1', title: 'Activate acquisition prepared response', assignee: 'CEO', role: 'Executive', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
+          { id: 't1', title: 'Activate acquisition Readiness Protocol', assignee: 'CEO', role: 'Executive', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
           { id: 't2', title: 'Alert M&A team', assignee: 'CFO', role: 'Finance', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
           { id: 't3', title: 'Pull due diligence template', assignee: 'Legal', role: 'Legal', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
         ]
@@ -127,7 +127,7 @@ const sampleExecutions = {
         startMinute: 0,
         endMinute: 2,
         tasks: [
-          { id: 't1', title: 'Activate AI governance prepared response', assignee: 'Chief AI Officer', role: 'AI', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
+          { id: 't1', title: 'Activate AI governance Readiness Protocol', assignee: 'Chief AI Officer', role: 'AI', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
           { id: 't2', title: 'Alert ethics review board', assignee: 'Ethics Lead', role: 'Compliance', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
           { id: 't3', title: 'Pull AI principles framework', assignee: 'Legal', role: 'Legal', status: 'completed', isParallel: true, parallelGroup: 1, estimatedMinutes: 1, actualMinutes: 1, dependencies: [] },
         ]
@@ -466,7 +466,7 @@ export default function ExecutionCoordination() {
             <Card className="rounded-none border-[#E8E4DC]">
               <CardContent className="p-6">
                 <p className="text-[#6B7280] text-center py-8 italic font-medium">
-                  Activate a prepared response to generate the dependency graph and visualize the critical execution path
+                  Activate a Readiness Protocol to generate the dependency graph and visualize the critical execution path
                 </p>
               </CardContent>
             </Card>

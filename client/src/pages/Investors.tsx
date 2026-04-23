@@ -33,7 +33,7 @@ const scenarioComparisons = [
     traditional: { time: "30 days", cost: "$36.7M average impact" },
     execution: { time: "12 minutes", value: "$36M+ impact contained" },
     speedup: "3,600×",
-    context: "Incident prepared response fires on detection. Containment steps, legal holds, regulator notifications, and board briefing all coordinate in parallel — not sequence.",
+    context: "The Readiness Protocol activates on detection. Containment steps, legal holds, regulator notifications, and board briefing all coordinate in parallel — not sequence.",
   },
   {
     title: "Critical Supplier Failure",
@@ -43,7 +43,7 @@ const scenarioComparisons = [
     traditional: { time: "4-5 days", cost: "$96M+ production impact" },
     execution: { time: "12 minutes", value: "Continuity protocols active" },
     speedup: "3,600×",
-    context: "Alternate supplier lists, logistics rerouting, and customer communication templates are pre-staged in the prepared response and deploy the moment the signal triggers.",
+    context: "Alternate supplier lists, logistics rerouting, and customer communication templates are pre-staged in the Readiness Protocol and deploy the moment the signal triggers.",
   },
   {
     title: "M&A Day 1 Integration",
@@ -53,7 +53,7 @@ const scenarioComparisons = [
     traditional: { time: "90+ days", cost: "$180M synergy delay" },
     execution: { time: "12 minutes", value: "40% faster synergy capture" },
     speedup: "3,600×",
-    context: "Integration prepared responses are built pre-close. Day 1 launches with every stakeholder assigned, every workstream active, every communication sent simultaneously.",
+    context: "Integration Readiness Protocols are built pre-close. Day 1 launches with every stakeholder assigned, every workstream active, every communication sent simultaneously.",
   },
 ];
 
@@ -126,12 +126,12 @@ const industryProblems = [
 const competitiveAdvantages = [
   {
     title: "18-Month Head Start",
-    description: "170 pre-built prepared responses across 9 strategic domains represent 18+ months of strategic planning already done for customers.",
+    description: "170 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already done for customers.",
     icon: Zap,
   },
   {
     title: "Executive Authority Preserved",
-    description: "No prepared response activates without executive authorization. AI monitors, scores, and recommends. Humans decide. The preparation just means that decision takes seconds — not 30 days.",
+    description: "No Readiness Protocol activates without executive authorization. The system monitors, scores, and recommends. Humans decide. The preparation just means that decision takes seconds — not 30 days.",
     icon: Users,
   },
   {
@@ -147,9 +147,9 @@ const competitiveAdvantages = [
 ];
 
 const milestones = [
-  { phase: "Completed", items: ["170 prepared responses across 9 domains", "IDEA Framework implementation", "Enterprise integration architecture", "Interactive demo platform"] },
-  { phase: "Current", items: ["Customer pilot programs", "AI signal detection refinement", "Enterprise partnership discussions"] },
-  { phase: "Next 12 Months", items: ["First enterprise contracts", "Expanded prepared response library (250+)", "Industry-specific vertical solutions"] },
+  { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework implementation", "Enterprise integration architecture", "Interactive demo platform"] },
+  { phase: "Current", items: ["Customer pilot programs", "Signal detection refinement", "Enterprise partnership discussions"] },
+  { phase: "Next 12 Months", items: ["First enterprise contracts", "Expanded Readiness Protocol library (250+)", "Industry-specific vertical solutions"] },
 ];
 
 const researchCitations = [
@@ -279,7 +279,7 @@ function FuturePositioningDiagram() {
           <p className="text-sm text-[#6B7280] font-medium mb-4">Immediate ROI: enterprises stop losing $36M+ on slow strategic response. The platform pays for itself on the first activation.</p>
           <ul className="space-y-2">
             {[
-              "170 pre-built prepared responses ready to deploy",
+              "170 pre-built Readiness Protocols ready to deploy",
               "12 min to full execution — others spend weeks just to mobilize",
               "3,600× Execution Head Start while competitors still plan",
               "Human executives retain full decision authority",
@@ -412,7 +412,7 @@ export default function Investors() {
                 </p>
 
                 <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, fontWeight: 600, marginBottom: 40 }}>
-                  VaughnMartin rebuilt how work flows from first principles. Pre-staged prepared responses replace real-time coordination. Pattern detection replaces committee deliberation. This is a new category — and Readiness OS is the first system built for the AI-native enterprise.
+                  VaughnMartin rebuilt how work flows from first principles. Pre-staged Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. This is a new category — and Readiness OS is the first system built for the AI-native enterprise.
                 </p>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
@@ -595,7 +595,7 @@ export default function Investors() {
                         ? 'bg-[#2B8A6E]/10 text-[#2B8A6E] border border-[#2B8A6E]/20' 
                         : 'bg-[#0A0F2E]/10 text-[#0A0F2E] border border-[#0A0F2E]/20'
                     }`}>
-                      {scenario.type === 'offense' ? 'OFFENSE' : 'DEFENSE'}
+                      {scenario.type === 'offense' ? 'GROWTH & POSITIONING' : 'RISK & RESILIENCE'}
                     </span>
                   </div>
                   
@@ -664,7 +664,7 @@ export default function Investors() {
             <h2 className="text-2xl font-bold text-[#0A0F2E] text-center mb-8 uppercase tracking-widest">The IDEA Framework™</h2>
             <div className="grid md:grid-cols-4 gap-4">
               {[
-                { phase: "IDENTIFY", module: "Readiness Protocol™", desc: "Build and customize strategic prepared responses", color: "bg-[#0A0F2E]" },
+                { phase: "IDENTIFY", module: "Readiness Protocol™", desc: "Build and customize strategic Readiness Protocols", color: "bg-[#0A0F2E]" },
                 { phase: "DETECT", module: "Signal™", desc: "Continuous signal monitoring", color: "bg-[#2B8A6E]" },
                 { phase: "EXECUTE", module: "Compass™", desc: "Coordinated 12-minute response", color: "bg-[#C9A84C]" },
                 { phase: "ADVANCE", module: "Retrospect™", desc: "Institutional learning", color: "bg-[#2B8A6E]" },

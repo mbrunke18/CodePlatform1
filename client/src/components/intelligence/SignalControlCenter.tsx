@@ -548,7 +548,7 @@ function CategoryDetailView({
         </CardContent>
       </Card>
 
-      {/* Data Sources and Prepared responses */}
+      {/* Data Sources and Readiness Protocols */}
       <div className="grid grid-cols-2 gap-4">
         <Card>
           <CardHeader>
@@ -580,7 +580,7 @@ function CategoryDetailView({
               {recommendedPlaybooks.length > 0 ? recommendedPlaybooks.map(pb => (
                 <Badge key={pb} variant="secondary">{pb}</Badge>
               )) : (
-                <span className="text-sm text-muted-foreground">No prepared responses recommended yet</span>
+                <span className="text-sm text-muted-foreground">No Readiness Protocols recommended yet</span>
               )}
             </div>
           </CardContent>
@@ -728,7 +728,7 @@ function TriggersPanel() {
             <Zap className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
             <h4 className="font-semibold mb-2">No Triggers Configured</h4>
             <p className="text-muted-foreground mb-4">
-              Create triggers to automatically monitor signals and recommend prepared response activation.
+              Create triggers to automatically monitor signals and recommend Readiness Protocol activation.
             </p>
             <Button onClick={() => setShowBuilder(true)} data-testid="button-create-first-trigger">
               <Plus className="w-4 h-4 mr-2" />

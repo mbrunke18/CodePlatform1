@@ -70,7 +70,7 @@ const competitors: Competitor[] = [
     category: "Governance, Risk & Compliance",
     claim: "Know your risks, document your controls, and demonstrate compliance to regulators and boards.",
     whatTheyDo: "GRC platforms — Archer, OneTrust, LogicGate, and others — are documentation and audit trail systems. They record what risks exist, what controls are in place, and generate reports for regulators. For audit, compliance, and governance functions, they are genuinely valuable.",
-    whereTheyStop: "GRC platforms are retrospective by design. They document what happened and whether controls existed. When a trigger fires — a ransomware attack, a product recall, a regulatory inquiry — your GRC platform generates a record of your controls. It does not mobilize your response. The CISO, GC, and CFO still need to be called. The prepared response still needs to be found. Coordination still takes 30 days.",
+    whereTheyStop: "GRC platforms are retrospective by design. They document what happened and whether controls existed. When a trigger fires — a ransomware attack, a product recall, a regulatory inquiry — your GRC platform generates a record of your controls. It does not mobilize your response. The CISO, GC, and CFO still need to be called. The Readiness Protocol still needs to be found. Coordination still takes 30 days.",
     theGap: "Fortune 1000 organizations spend hundreds of thousands annually on GRC platforms to prove they have a plan. Readiness OS is what actually executes the plan when it matters. GRC satisfies auditors. Readiness OS protects the business.",
     oneLiner: "Your GRC platform proves you had a plan. Readiness OS proves the plan worked — in 12 minutes.",
   },
@@ -79,7 +79,7 @@ const competitors: Competitor[] = [
     category: "Incident & Crisis Management Software",
     claim: "Coordinate responses, track actions, and document outcomes during incidents and crises.",
     whatTheyDo: "These platforms provide a structured digital workspace for crisis management — incident logging, task assignment, communication tracking, and post-incident reporting. They represent a meaningful improvement over spreadsheets and email chains as a coordination workspace.",
-    whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged prepared responses tied to specific trigger signatures. No signal monitoring for trigger conditions. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
+    whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged Readiness Protocols tied to specific trigger signatures. No signal monitoring for trigger conditions. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
     theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for Fortune 1000 strategic triggers across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
     oneLiner: "That is a digital emergency binder. This is strategic execution infrastructure.",
   },
@@ -108,8 +108,8 @@ const fiveReasons = [
   {
     icon: BookOpen,
     title: "Pre-staged beats reactive — every time",
-    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 170 prepared responses across 9 domains. 221 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
-    metric: "170 prepared responses pre-staged",
+    body: "Every competitor reacts to triggers. Readiness OS is already staged before the trigger fires. 170 Readiness Protocols across 9 domains. 221 configured trigger signatures. When the trigger fires, your organization is not starting from zero — it is executing from a pre-positioned stance. No competitor offers this.",
+    metric: "170 Readiness Protocols pre-staged",
   },
   {
     icon: Clock,
@@ -182,7 +182,7 @@ export default function WhyExecutionOS() {
               </div>
               <div style={{ background: "rgba(201,168,76,0.06)", padding: "28px 28px" }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 14 }}>What no one built — until now</div>
-                {["The operating model that coordinates humans at AI speed", "Pre-staged prepared responses that fire before the trigger", "12-minute stakeholder cascade — fully automated", "Trigger-to-execution without a single meeting", "Infrastructure that runs 24/7, not episodically"].map(item => (
+                {["The operating model that coordinates humans at AI speed", "Pre-staged Readiness Protocols that fire before the trigger", "12-minute stakeholder cascade — fully automated", "Trigger-to-execution without a single meeting", "Infrastructure that runs 24/7, not episodically"].map(item => (
                   <div key={item} className="flex items-center gap-3 mb-3">
                     <CheckCircle2 style={{ width: 14, height: 14, color: TEAL, flexShrink: 0 }} />
                     <span style={{ fontSize: 13, color: "rgba(255,255,255,0.75)" }}>{item}</span>
@@ -327,7 +327,7 @@ export default function WhyExecutionOS() {
             {/* Proof bar */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               {[
-                { v: "170", l: "Pre-staged prepared responses" },
+                { v: "170", l: "Pre-staged Readiness Protocols" },
                 { v: "221", l: "Trigger signatures" },
                 { v: "12 min", l: "Trigger to coordination" },
                 { v: "3,600×", l: "Execution head start" },

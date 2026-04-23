@@ -118,7 +118,7 @@ const compoundScenarios = [
     stakeholders: ["CISO", "General Counsel", "DPO", "CFO", "VP Communications", "CTO"],
     timeline: [
       { time: "0:00", action: "Breach detected — signal triggers pattern match" },
-      { time: "0:30", action: "AI matches to 6 prepared responses across Crisis + Regulatory" },
+      { time: "0:30", action: "AI matches to 6 Readiness Protocols across Crisis + Regulatory" },
       { time: "1:00", action: "All 6 stakeholder leads notified simultaneously" },
       { time: "3:00", action: "Parallel workstreams active: containment, legal, comms" },
       { time: "8:00", action: "Regulatory filings staged, customer comms drafted" },
@@ -146,7 +146,7 @@ const compoundScenarios = [
     stakeholders: ["COO", "CPO", "CFO", "VP Supply Chain", "General Counsel", "VP Sales", "Board Secretary"],
     timeline: [
       { time: "0:00", action: "Tariff announcement detected via news signal feed" },
-      { time: "0:30", action: "AI identifies 8 affected prepared responses across Financial + Crisis" },
+      { time: "0:30", action: "AI identifies 8 affected Readiness Protocols across Financial + Crisis" },
       { time: "1:00", action: "7 stakeholder leads notified with role-specific briefs" },
       { time: "3:00", action: "Supplier alternatives assessed, cost impact modeled" },
       { time: "8:00", action: "Customer communication drafted, board briefing staged" },
@@ -171,7 +171,7 @@ const compoundScenarios = [
     stakeholders: ["COO", "VP Facilities", "CHRO", "VP Customer Success", "Risk Officer"],
     timeline: [
       { time: "0:00", action: "Weather monitoring signal triggers facility risk alert" },
-      { time: "0:30", action: "5 prepared responses activated across Crisis + Technology" },
+      { time: "0:30", action: "5 Readiness Protocols activated across Crisis + Technology" },
       { time: "1:00", action: "Employee evacuation notification, customer rerouting begins" },
       { time: "3:00", action: "Backup operations online, logistics rerouted" },
       { time: "8:00", action: "Insurance claims process initiated, recovery timeline set" },
@@ -198,7 +198,7 @@ const compoundScenarios = [
     stakeholders: ["CHRO", "CTO", "General Counsel", "VP Communications", "Chief AI Officer", "CEO"],
     timeline: [
       { time: "0:00", action: "Media report detected — crisis signal triggers compound match" },
-      { time: "0:30", action: "7 prepared responses activated across Technology + Talent" },
+      { time: "0:30", action: "7 Readiness Protocols activated across Technology + Talent" },
       { time: "1:00", action: "6 executive leads notified with coordinated talking points" },
       { time: "3:00", action: "Employee town hall scheduled, media holding statement issued" },
       { time: "8:00", action: "Reskilling plan drafted, regulatory filing reviewed" },
@@ -244,7 +244,7 @@ function CompoundDisruptionSection() {
       </div>
       <div className="p-6 bg-white">
         <p className="text-sm mb-5" style={{ color: "#6B7280" }}>
-          When disruptions cascade across domains, Readiness OS activates multi-domain prepared responses simultaneously. Click any scenario to explore the full response.
+          When disruptions cascade across domains, Readiness OS activates multi-domain Readiness Protocols simultaneously. Click any scenario to explore the full response.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {compoundScenarios.map((item, i) => {
@@ -271,7 +271,7 @@ function CompoundDisruptionSection() {
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`} style={{ color: "#6B7280" }} />
                 </div>
                 <div style={{ color: "#6B7280" }} className="text-xs mb-2">{item.domains}</div>
-                <div className="text-xs font-semibold" style={{ color: indicatorColor }}>{item.playbookCount} coordinated prepared responses</div>
+                <div className="text-xs font-semibold" style={{ color: indicatorColor }}>{item.playbookCount} coordinated Readiness Protocols</div>
               </div>
             );
           })}
@@ -303,7 +303,7 @@ function CompoundDisruptionSection() {
                     <div>
                       <h5 style={{ color: "#0A0F2E" }} className="text-sm font-bold mb-3 flex items-center gap-2">
                         <BookOpen className="h-4 w-4" style={{ color: "#2B8A6E" }} />
-                        Activated Prepared responses ({scenario.playbookCount})
+                        Activated Readiness Protocols ({scenario.playbookCount})
                       </h5>
                       <div className="space-y-2">
                         {scenario.playbooks.map((pb, j) => {
@@ -358,7 +358,7 @@ function CompoundDisruptionSection() {
                   <div style={{ background: "rgba(43,138,110,0.05)", borderColor: "rgba(43,138,110,0.2)" }} className="border p-4 flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 shrink-0" style={{ color: "#2B8A6E" }} />
                     <p style={{ color: "#0A0F2E" }} className="text-sm">
-                      All {scenario.playbookCount} prepared responses activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
+                      All {scenario.playbookCount} Readiness Protocols activate simultaneously with pre-mapped decision rights — no sequential handoffs, no coordination meetings, no time lost.
                     </p>
                   </div>
                 </div>
@@ -456,7 +456,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
           <div className="max-w-6xl mx-auto px-6 pt-24 pb-10">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-7 h-[2px]" style={{ background: "#C9A84C" }} />
-              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Prepared responses · 9 Domains</span>
+              <span style={{ color: "#C9A84C", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>170 Readiness Protocols · 9 Domains</span>
             </div>
             <h1 style={{ ...CG, color: "#0A0F2E" }} className="text-4xl md:text-5xl font-semibold mb-3 leading-tight">
               A Readiness Protocol for Every{" "}
@@ -623,7 +623,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   padding: "4px 0", fontSize: 12, color: NAVY, width: 200,
                   fontFamily: "'Barlow Condensed', sans-serif", outline: "none",
                 }}
-                placeholder="Search prepared responses…"
+                placeholder="Search Readiness Protocols…"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -669,12 +669,12 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
-              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> prepared responses
+              Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> Readiness Protocols
             </span>
             {!isAuthenticated && (
               <div className="flex items-center gap-2">
                 <Lock className="h-3 w-3 text-[#C9A84C]" />
-                <span style={{ color: MUTED, fontSize: 11 }}>Sign in to deploy any prepared response</span>
+                <span style={{ color: MUTED, fontSize: 11 }}>Sign in to deploy any Readiness Protocol</span>
               </div>
             )}
           </div>
@@ -688,7 +688,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   3 Full Readiness Protocol Previews — No Sign-In Required
                 </span>
               </div>
-              <p style={{ color: MUTED, fontSize: 11 }}>See the full depth of what a deployed prepared response contains — trigger logic, stakeholders, tasks, and budget authority.</p>
+              <p style={{ color: MUTED, fontSize: 11 }}>See the full depth of what a deployed Readiness Protocol contains — trigger logic, stakeholders, tasks, and budget authority.</p>
             </div>
           )}
 
@@ -697,7 +697,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
               const isSample = !isAuthenticated && SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
               const isLocked = !isAuthenticated && !SAMPLE_PLAYBOOK_NAMES.has(playbook.name);
 
-              // LOCKED CARD — guests cannot see content of the 167 gated prepared responses
+              // LOCKED CARD — guests cannot see content of the 167 gated Readiness Protocols
               if (isLocked) {
                 return (
                   <div key={playbook.id} style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", borderTop: `2px solid #C9A84C`, padding: "20px", display: "flex", flexDirection: "column", gap: 12 }}>
@@ -722,7 +722,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                 );
               }
 
-              // FULL CARD — 3 sample prepared responses for guests (isSample=true), or all 170 for authenticated users
+              // FULL CARD — 3 sample Readiness Protocols for guests (isSample=true), or all 170 for authenticated users
               return (
               <Card key={playbook.id} className={`group transition-all duration-300 bg-white flex flex-col ${isSample ? 'border-[#2B8A6E] hover:border-[#2B8A6E]' : 'border-[#E8E4DC] hover:border-[#C9A84C]'}`} style={isSample ? { boxShadow: '0 0 0 1px #2B8A6E22, 0 2px 8px 0 #2B8A6E11' } : {}}>
                 <div className="p-5 flex flex-col flex-1">
@@ -802,7 +802,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     <div className="flex items-center gap-2">
                       {isAuthenticated && (
                         <button
-                          onClick={() => setLocation(`/prepared response-library/${playbook.id}`)}
+                          onClick={() => setLocation(`/Readiness Protocol-library/${playbook.id}`)}
                           style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textDecoration: "underline", background: "none", border: "none", cursor: "pointer" }}
                         >
                           Preview
@@ -814,9 +814,9 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                         className="font-bold uppercase tracking-wider"
                         onClick={() => {
                           if (isAuthenticated) {
-                            setLocation(`/prepared response-customize/${playbook.id}`);
+                            setLocation(`/Readiness Protocol-customize/${playbook.id}`);
                           } else {
-                            setLocation(`/prepared response-library/${playbook.id}`);
+                            setLocation(`/Readiness Protocol-library/${playbook.id}`);
                           }
                         }}
                       >

@@ -64,7 +64,7 @@ export default function StakeholderAlignmentDashboard({
   });
 
   // Note: Stakeholder data now comes from organization configuration
-  // Users should configure stakeholders in Organization Setup before activating prepared responses
+  // Users should configure stakeholders in Organization Setup before activating Readiness Protocols
 
   if (isLoading) {
     return null;
@@ -81,7 +81,7 @@ export default function StakeholderAlignmentDashboard({
             No Stakeholders Assigned
           </h3>
           <p className="text-slate-600 dark:text-slate-200 mb-4 max-w-sm">
-            Configure your organization's stakeholders to enable alignment tracking during prepared response execution.
+            Configure your organization's stakeholders to enable alignment tracking during Readiness Protocol execution.
           </p>
           <Link href="/organization-setup">
             <Button className="bg-gradient-to-r from-[#0A0F2E] to-[#141B45] hover:from-[#0A0F2E] hover:to-[#141B45]">

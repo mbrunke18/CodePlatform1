@@ -75,7 +75,7 @@ export default function DecisionVelocityPage() {
               <div className="bg-white/5 border border-white/10 p-8 rounded-none">
                 <div className="text-[10px] font-bold text-[#C9A84C] tracking-[0.2em] uppercase mb-4">Pre-Defined Governance</div>
                 <div className="space-y-3 text-sm text-white/60">
-                  <div className="flex justify-between border-b border-white/5 pb-2"><strong>170 Prepared responses</strong> <span>9 Domains</span></div>
+                  <div className="flex justify-between border-b border-white/5 pb-2"><strong>170 Readiness Protocols</strong> <span>9 Domains</span></div>
                   <div className="flex justify-between border-b border-white/5 pb-2"><strong>Roles Mapped</strong> <span>Pre-Incident</span></div>
                   <div className="flex justify-between border-b border-white/5 pb-2"><strong>Accountability</strong> <span>Clear Chain</span></div>
                   <div className="text-[#2B8A6E] font-bold mt-4 pt-2">✓ "Embedded Governance"</div>
@@ -165,7 +165,7 @@ export default function DecisionVelocityPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               { title: 'Perpetual Foresight', color: '#2B8A6E', desc: 'continuous signal monitoring detects signals early. Early detection equals faster response.' },
-              { title: 'Aligned Agility', color: '#0A0F2E', desc: 'Pre-configured prepared responses eliminate coordination time. One-click activation.' },
+              { title: 'Aligned Agility', color: '#0A0F2E', desc: 'Pre-configured Readiness Protocols eliminate coordination time. One-click activation.' },
               { title: 'Ecosystem Connectors', color: '#C9A84C', desc: 'Integrated systems eliminate manual handoffs and communication gaps.' },
               { title: 'Institutional Memory', color: '#DFC178', desc: 'AI learns from every move. Each execution improves velocity for the next event.' }
             ].map((p, i) => (

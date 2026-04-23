@@ -57,7 +57,7 @@ const DOMAIN_TRIGGERS: Record<string, string[]> = {
 };
 
 const IDEA_PHASES = [
-  { letter: "I", name: "IDENTIFY", desc: "170 prepared responses pre-built and staged across 9 domains. Nothing improvised. Everything ready before the trigger fires." },
+  { letter: "I", name: "IDENTIFY", desc: "170 Readiness Protocols pre-built and staged across 9 domains. Nothing improvised. Everything ready before the trigger fires." },
   { letter: "D", name: "DETECT", desc: "248+ data points monitored every 15 minutes across 8 live signal sources. 221 trigger patterns armed and ready." },
   { letter: "E", name: "EXECUTE", desc: "12-minute response from trigger detection to full execution in flight. No alignment call. No mobilization delay." },
   { letter: "A", name: "ADVANCE", desc: "Every execution improves the next. Institutional memory compounds. Response time and accuracy improve continuously." },
@@ -265,7 +265,7 @@ export default function ProspectBrief() {
           {[
             { label: "Execution Head Start", value: "3,600×", sub: "vs. 30-day mobilization" },
             { label: "Time to Live Execution", value: "12 min", sub: "from trigger detection" },
-            { label: "Prepared responses Armed", value: `${playbookCount}`, sub: `in ${form.industry}` },
+            { label: "Readiness Protocols Armed", value: `${playbookCount}`, sub: `in ${form.industry}` },
             { label: "Triggers Monitored", value: "221", sub: "across 9 domains" },
           ].map(m => (
             <div key={m.label} style={{ background: "#fff", padding: "20px 18px", textAlign: "center" }}>
@@ -276,7 +276,7 @@ export default function ProspectBrief() {
           ))}
         </div>
 
-        {/* Prepared responses for their domain */}
+        {/* Readiness Protocols for their domain */}
         <div style={{ marginBottom: 36 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
             <div style={{ width: 24, height: 2, background: GOLD, flexShrink: 0 }} />
@@ -285,7 +285,7 @@ export default function ProspectBrief() {
             </span>
           </div>
           <p style={{ fontSize: 13, color: MUTED, marginBottom: 20, lineHeight: 1.6 }}>
-            {playbookCount} prepared responses are pre-built and staged in {form.industry}. The following are immediately relevant based on your domain and concern:
+            {playbookCount} Readiness Protocols are pre-built and staged in {form.industry}. The following are immediately relevant based on your domain and concern:
           </p>
 
           {domainPlaybooks.length > 0 ? (
@@ -417,7 +417,7 @@ export default function ProspectBrief() {
               Request a 2-Week Pilot — $75,000 Flat Fee, Zero Integration Risk
             </h3>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", margin: "0 0 20px", lineHeight: 1.6 }}>
-              Deployable in 2 weeks. {playbookCount} prepared responses pre-built for {form.industry}. Your triggers armed from day one. No rip-and-replace — sits above your existing Microsoft infrastructure.
+              Deployable in 2 weeks. {playbookCount} Readiness Protocols pre-built for {form.industry}. Your triggers armed from day one. No rip-and-replace — sits above your existing Microsoft infrastructure.
             </p>
             <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
               <span style={{ padding: "10px 24px", background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>vaughnmartin.com/pilot-program</span>

@@ -48,7 +48,7 @@ export default function NFLLearningDashboard() {
   });
   const aiSuggestions = aiSuggestionsData ?? [];
 
-  // Fetch prepared response activations for learning
+  // Fetch Readiness Protocol activations for learning
   const { data: activationsData } = useQuery<any[]>({
     queryKey: ['/api/playbook-library/activations', organizationId],
     enabled: !!organizationId,
@@ -64,7 +64,7 @@ export default function NFLLearningDashboard() {
     ? drillPerformancesData
     : (drillPerformancesData?.performances ?? []);
 
-  // Fetch prepared response library for context
+  // Fetch Readiness Protocol library for context
   const { data: libraryDataRaw } = useQuery<any>({
     queryKey: ['/api/playbook-library'],
   });
@@ -464,7 +464,7 @@ export default function NFLLearningDashboard() {
                             Real Activation Insight
                           </h4>
                           <p className="text-sm text-[#0A0F2E] mt-1">
-                            You've had {activations.length} real prepared response activation{activations.length !== 1 ? 's' : ''}. 
+                            You've had {activations.length} real Readiness Protocol activation{activations.length !== 1 ? 's' : ''}. 
                             Teams that practice monthly respond 3x faster to real crises.
                           </p>
                         </div>
@@ -511,7 +511,7 @@ export default function NFLLearningDashboard() {
                   {drillPerformances.length === 0 && activations.length === 0 && (
                     <div className="text-center py-12 text-[#6B7280]">
                       <Brain className="h-12 w-12 mx-auto mb-3 opacity-50" />
-                      <p className="font-bold text-[#0A0F2E]">No cross-prepared response insights yet</p>
+                      <p className="font-bold text-[#0A0F2E]">No cross-Readiness Protocol insights yet</p>
                       <p className="text-sm mt-1">Complete drills and activations to unlock patterns</p>
                     </div>
                   )}

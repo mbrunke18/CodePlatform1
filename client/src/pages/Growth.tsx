@@ -26,7 +26,7 @@ const TIERS = [
     cta: "Get Started",
     ctaAction: "/contact",
     capabilities: [
-      { label: "Prepared responses", value: "25 essential scenarios" },
+      { label: "Readiness Protocols", value: "25 essential scenarios" },
       { label: "Strategic domains", value: "2 (choose from 9)" },
       { label: "Users", value: "Unlimited" },
       { label: "Activation", value: "One-click" },
@@ -35,12 +35,12 @@ const TIERS = [
       { label: "Real-time dashboard", value: true },
       { label: "Signal detection", value: "5 signal categories" },
       { label: "System recommendations", value: false },
-      { label: "Custom prepared responses", value: false },
+      { label: "Custom Readiness Protocols", value: false },
       { label: "Integrations", value: false },
       { label: "Support", value: "Email + docs" },
     ],
     bestFor: "Companies who need coordination infrastructure for their 3–5 most critical scenarios. One handled situation pays for multiple years.",
-    roiNote: "A vendor dispute mishandled costs $500K–$2M in lost margin and executive time. Handled with a pre-staged prepared response in 12 minutes, you protect that. One activation at this level returns the annual investment many times over.",
+    roiNote: "A vendor dispute mishandled costs $500K–$2M in lost margin and executive time. Handled with a pre-staged Readiness Protocol in 12 minutes, you protect that. One activation at this level returns the annual investment many times over.",
   },
   {
     id: "responsive",
@@ -55,7 +55,7 @@ const TIERS = [
     cta: "Get Started",
     ctaAction: "/contact",
     capabilities: [
-      { label: "Prepared responses", value: "75 scenarios" },
+      { label: "Readiness Protocols", value: "75 scenarios" },
       { label: "Strategic domains", value: "5 (choose from 9)" },
       { label: "Users", value: "Unlimited" },
       { label: "Activation", value: "One-click" },
@@ -64,7 +64,7 @@ const TIERS = [
       { label: "Real-time dashboard", value: true },
       { label: "Signal detection", value: "Full 9 strategic domains" },
       { label: "System recommendations", value: "Basic IDEA agents" },
-      { label: "Custom prepared responses", value: "Up to 5" },
+      { label: "Custom Readiness Protocols", value: "Up to 5" },
       { label: "Integrations", value: "Slack + Email" },
       { label: "Support", value: "Email + chat + onboarding call" },
     ],
@@ -84,7 +84,7 @@ const TIERS = [
     cta: "Get Started",
     ctaAction: "/contact",
     capabilities: [
-      { label: "Prepared responses", value: "Full library — all 170" },
+      { label: "Readiness Protocols", value: "Full library — all 170" },
       { label: "Strategic domains", value: "All 9" },
       { label: "Users", value: "Unlimited" },
       { label: "Activation", value: "One-click + auto-trigger" },
@@ -93,7 +93,7 @@ const TIERS = [
       { label: "Real-time dashboard", value: true },
       { label: "Signal detection", value: "248+ data points, full monitoring" },
       { label: "System recommendations", value: "Advanced IDEA agents" },
-      { label: "Custom prepared responses", value: "Unlimited" },
+      { label: "Custom Readiness Protocols", value: "Unlimited" },
       { label: "Integrations", value: "Slack, Teams, Jira, ServiceNow, Salesforce" },
       { label: "Support", value: "Dedicated success manager + white-glove onboarding" },
     ],
@@ -136,7 +136,7 @@ const FAQS = [
   },
   {
     q: "What exactly changes between tiers?",
-    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 prepared responses across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 Readiness Protocols across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 170 Readiness Protocols, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
+    a: "Breadth of deployment and depth of intelligence — not the product itself. Ready activates 25 Readiness Protocols across your 2 most critical domains with foundational signal awareness. Responsive expands to 75 Readiness Protocols across 5 domains with proactive detection across all 9 strategic domains. Orchestrated is the full operating model — 170 Readiness Protocols, all 9 domains, 248+ data points in continuous monitoring, advanced AI, and full integrations. Enterprise adds multi-org deployment, API access, SSO, and dedicated implementation. The platform is the same at every tier.",
   },
   {
     q: "How does the ROI math work at these price points?",
@@ -144,7 +144,7 @@ const FAQS = [
   },
   {
     q: "What's the 30-day guarantee on Ready?",
-    a: "For companies starting at the Ready tier, if you activate a prepared response in a real situation within 30 days and don't see measurable value, we refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
+    a: "For companies starting at the Ready tier, if you activate a Readiness Protocol in a real situation within 30 days and don't see measurable value, we refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
   },
   {
     q: "How does this relate to the Fortune 1000 Enterprise Pilot ($75K)?",
@@ -156,7 +156,7 @@ const FAQS = [
   },
   {
     q: "Is this genuinely the same platform Fortune 1000 companies use?",
-    a: "Yes. Same IDEA Framework. Same execution engine. Same 170-prepared response library. Same 12-minute activation infrastructure. The tier determines how much of the platform you deploy across your organization — not a reduced or restricted version of the product.",
+    a: "Yes. Same IDEA Framework. Same execution engine. Same 170-Readiness Protocol library. Same 12-minute activation infrastructure. The tier determines how much of the platform you deploy across your organization — not a reduced or restricted version of the product.",
   },
 ];
 
@@ -615,7 +615,7 @@ export default function Growth() {
             </div>
 
             {[
-              { item: "McKinsey crisis prepared response engagement", cost: "$150K–$500K", problem: "One-time. Not executable. Sits on a shelf." },
+              { item: "McKinsey crisis Readiness Protocol engagement", cost: "$150K–$500K", problem: "One-time. Not executable. Sits on a shelf." },
               { item: "Enterprise OKR / strategy tool", cost: "$50K–$150K/yr", problem: "Tracks goals. Doesn't execute them." },
               { item: "War-room consulting (per incident)", cost: "$50K–$200K", problem: "Reactive. Expensive. Not repeatable." },
               { item: "Internal strategy ops team", cost: "$500K–$2M/yr", problem: "3–5 FTEs. Still takes 30 days to coordinate." },
@@ -642,7 +642,7 @@ export default function Growth() {
           <div style={{ marginTop: 28, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
             {[
               { tier: "Ready", price: "$75K/yr", replace: "One consulting engagement", roi: "7–70×" },
-              { tier: "Responsive", price: "$150K/yr", replace: "Intelligence subscription + prepared response development", roi: "10–100×" },
+              { tier: "Responsive", price: "$150K/yr", replace: "Intelligence subscription + Readiness Protocol development", roi: "10–100×" },
               { tier: "Orchestrated", price: "$250K/yr", replace: "Fractional strategy ops team", roi: "2–8× (cost replacement alone)" },
               { tier: "Enterprise", price: "$250K+/yr", replace: "Full strategy ops function", roi: "40–400×" },
             ].map((row) => (
@@ -744,7 +744,7 @@ export default function Growth() {
             {[
               { stat: "12 min", label: "Trigger to execution" },
               { stat: "3,600×", label: "Execution head start" },
-              { stat: "170", label: "Pre-staged prepared responses" },
+              { stat: "170", label: "Pre-staged Readiness Protocols" },
               { stat: "∞", label: "Users at every tier" },
             ].map((s) => (
               <div key={s.label} style={{ textAlign: "center", padding: "20px 12px", border: "1px solid rgba(240,237,228,0.1)", borderRadius: 0 }}>
@@ -781,7 +781,7 @@ export default function Growth() {
             you're prepaying for the deployment.
           </p>
           <p style={{ fontSize: 14, color: "#9CA3AF", marginBottom: 28 }}>
-            10 founding partner slots available. Includes custom prepared response development, white-glove onboarding, and full ROI documentation.
+            10 founding partner slots available. Includes custom Readiness Protocol development, white-glove onboarding, and full ROI documentation.
           </p>
           <Button
             onClick={() => setLocation("/request-access")}

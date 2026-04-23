@@ -133,7 +133,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3 }}
               className="text-lg text-gray-800 mb-6"
             >
-              Readiness OS: 170 prepared responses across growth, risk resilience, and transformation.
+              Readiness OS: 170 Readiness Protocols across growth, risk resilience, and transformation.
             </motion.p>
             
             <motion.div
