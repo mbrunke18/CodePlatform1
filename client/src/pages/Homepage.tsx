@@ -6,6 +6,8 @@ import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import ExecutionOSMicrosoftDiagram from "@/components/ExecutionOSMicrosoftDiagram";
 import EcosystemIntegrationDiagram from "@/components/EcosystemIntegrationDiagram";
+import heroImg from "@/assets/images/executive-floor-night.png";
+import aerialImg from "@/assets/images/aerial-city-grid.png";
 
 // ─── Brand Tokens (Spec v2.0 §0) ─────────────────────────────────────────────
 const NAVY        = "#0A0F2E";
@@ -576,8 +578,16 @@ function HeroSection() {
 
   return (
     <section style={{ ...SECTION_DARK_BG, position: "relative", overflow: "hidden" }}>
+      {/* Photography — editorial office floor, dark overlay preserves readability */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 0,
+        backgroundImage: `url(${heroImg})`,
+        backgroundSize: "cover", backgroundPosition: "center right",
+        opacity: 0.18,
+        pointerEvents: "none",
+      }} />
       {/* Single deliberate gold accent rule */}
-      <div style={{ position: "absolute", right: 0, top: 160, width: "58%", height: 1, background: `linear-gradient(to left, transparent 0%, ${GOLD}44 50%, transparent 100%)`, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", right: 0, top: 160, width: "58%", height: 1, background: `linear-gradient(to left, transparent 0%, ${GOLD}44 50%, transparent 100%)`, pointerEvents: "none", zIndex: 1 }} />
 
       <div style={{ ...CONTAINER, width: "100%" }}>
         <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 36%", minHeight: 580 }}>
@@ -1982,6 +1992,14 @@ function ContrastMomentSection() {
         overflow: "hidden",
       }}
     >
+      {/* Aerial city grid — precision and scale at low opacity */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 0,
+        backgroundImage: `url(${aerialImg})`,
+        backgroundSize: "cover", backgroundPosition: "center",
+        opacity: 0.12,
+        pointerEvents: "none",
+      }} />
       <SectionMarker n="04" />
       <div style={{ textAlign: "center", position: "relative", zIndex: 1, padding: "0 24px" }}>
 
@@ -2353,54 +2371,28 @@ export default function Homepage() {
       <HomepageNav />
       <GuestPreviewBanner />
 
-      {/* 1. CLAIM — The bold thesis, live signal proof */}
+      {/* 1. CLAIM */}
       <HeroSection />
 
-      {/* 2. EXAMPLES — Breadth across domains, before explanation */}
+      {/* 2. EXAMPLES — Breadth before explanation */}
       <ScenarioCardsRow />
 
-      {/* 3. PAIN — Feel the cost of the old way first */}
+      {/* 3. PAIN — Cost of the old way */}
       <ProblemSection />
 
-      {/* 4. GAP — Visualize the execution gap */}
-      <ExecutionGapSection />
-
-      {/* 5. CONTRAST — 30 days → 12 minutes cinematic moment, lands hardest right after pain */}
+      {/* 4. CONTRAST — 30 days → 12 minutes */}
       <ContrastMomentSection />
 
-      {/* 6. THESIS — Nobody redesigned the operating model */}
+      {/* 5. THESIS — The missing operating model */}
       <MissingLayerSection />
 
-      {/* 7. ANALOGY — Preparation framework, makes it intuitive */}
-      <AthletePreparationSection />
-
-      {/* 8. SOLUTION DEPTH — Now they want to know what's inside */}
+      {/* 6. SOLUTION DEPTH */}
       <AnatomySection />
 
-      {/* 9. LIVE PROOF — System is detecting right now */}
-      <LiveSignalFeedSection />
-
-      {/* 10. HOW IT DETECTS — Where signals come from */}
-      <HowTriggersWorkSection />
-
-      {/* 11. FRAMEWORK — The IDEA system */}
-      <IDEASection />
-
-      {/* 12. PLATFORM — What they'd actually use */}
-      <PlatformPreviewSection />
-      <HowPlaybooksWorkSection />
-
-      {/* 13. ECOSYSTEM — Microsoft positioning */}
-      <MicrosoftEcosystemBanner />
-
-      {/* 14. COMPETITION — Why not consulting or other tools */}
-      <CompetitiveClaritySection />
-
-      {/* 15. RESEARCH — Academic credibility, moat */}
+      {/* 7. RESEARCH — Credibility and moat */}
       <CredibilitySection />
 
-      {/* 16. CTA — Final conversion */}
-      <SimulatorCTASection />
+      {/* 8. CTA */}
       <CTASection />
       <HomepageFooter />
     </div>

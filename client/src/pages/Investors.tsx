@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import PageLayout from "@/components/layout/PageLayout";
+import boardroomImg from "@/assets/images/investors-boardroom.png";
 import { Button } from "@/components/ui/button";
 import { 
   TrendingUp, Clock, Target, DollarSign, Users, Shield, 
@@ -246,7 +247,7 @@ function PlatformArchitectureDiagram() {
           {[
             { label: "Signal Categories", value: "20" },
             { label: "Data Points", value: "248+" },
-            { label: "Prepared responses", value: "170" },
+            { label: "Readiness Protocols", value: "170" },
             { label: "Strategic Domains", value: "9" },
             { label: "Executive Triggers", value: "221" },
           ].map((stat, i) => (
@@ -386,6 +387,8 @@ export default function Investors() {
           {/* ── Category Manifesto ─────────────────────────────────────────── */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }} className="mb-20">
             <div style={{ background: '#0A0F2E', padding: '72px 56px', position: 'relative', overflow: 'hidden' }}>
+              {/* Boardroom photography — editorial, low opacity */}
+              <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${boardroomImg})`, backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.14, pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)', backgroundSize: '48px 48px' }} />
               <div style={{ position: 'absolute', top: -120, right: -80, width: 700, height: 700, background: 'radial-gradient(ellipse,rgba(43,138,110,0.12) 0%,transparent 60%)', pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', bottom: -80, left: -60, width: 500, height: 500, background: 'radial-gradient(ellipse,rgba(201,168,76,0.09) 0%,transparent 60%)', pointerEvents: 'none' }} />

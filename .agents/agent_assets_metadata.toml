@@ -1,5 +1,40 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "2Ha3cgFKCb5DBDd2i3-i1"
+uri = "file://client/src/assets/images/hero-command-center.png"
+type = "image"
+title = "hero command center dark"
+
+[[generated]]
+id = "GrXND6wqxNydWLRD5CyQ1"
+uri = "file://client/src/assets/images/investors-boardroom.png"
+type = "image"
+title = "investors boardroom night"
+
+[[generated]]
+id = "mE6rq9UCHwIuvUauQRNwf"
+uri = "file://client/src/assets/images/aerial-city-grid.png"
+type = "image"
+title = "aerial city grid precision"
+
+[[generated]]
+id = "ykqQZLrbdkA1zYUzqA9OV"
+uri = "file://client/src/assets/images/executive-decision.png"
+type = "image"
+title = "executive silhouette decision"
+
+[[generated]]
+id = "UPvhl4YDsKkV3UvkYSsC-"
+uri = "file://client/src/assets/images/executive-floor-night.png"
+type = "image"
+title = "executive floor night architectural"
+
+[[generated]]
+id = "-UCSPcNQADs_8zx4O8Z2B"
+uri = "file://client/src/assets/images/executive-desk-minimal.png"
+type = "image"
+title = "executive desk minimal dark"
 
 [[outputs]]
 id = "YKDXL8v_fNIqx4S2b26bE"
