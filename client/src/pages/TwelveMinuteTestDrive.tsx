@@ -757,12 +757,15 @@ export default function TwelveMinuteTestDrive() {
                 <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
                   Request a Pilot →
                 </a>
-                <a href="/investor-landing" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none' }}>
-                  See the Investor View →
+                <a href="/growth" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none' }}>
+                  See Pricing →
+                </a>
+                <a href="/investor-landing" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.5)', border: '1px solid rgba(255,255,255,0.15)', textDecoration: 'none' }}>
+                  Investor View →
                 </a>
                 <button
                   onClick={() => { setStep(1); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); }}
-                  style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.45)', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer' }}
+                  style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' }}
                 >
                   Try Another Scenario
                 </button>

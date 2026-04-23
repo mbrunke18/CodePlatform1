@@ -1,5 +1,6 @@
 import { useState, useEffect, CSSProperties } from 'react';
 import { useLocation } from 'wouter';
+import aerialCityImg from "@/assets/images/aerial-city-grid.png";
 import { updatePageMetadata } from '@/lib/seo';
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
@@ -191,8 +192,12 @@ export default function Growth() {
     <PageLayout>
 
       {/* ── HERO ── */}
-      <section style={{ background: "#fff", borderBottom: `1px solid #E8E4DC`, padding: "88px 48px 72px", textAlign: "center" }}>
-        <div className="max-w-4xl mx-auto">
+      <section style={{ background: NAVY, padding: "96px 48px 80px", textAlign: "center", position: "relative", overflow: "hidden", backgroundImage: `url(${aerialCityImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.88)" }} />
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: -120, right: -80, width: 800, height: 800, background: "radial-gradient(ellipse,rgba(43,138,110,0.13) 0%,transparent 60%)", pointerEvents: "none" }} />
+
+        <div className="max-w-4xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
             <div style={{ width: 28, height: 2, background: GOLD }} />
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>
@@ -201,17 +206,17 @@ export default function Growth() {
             <div style={{ width: 28, height: 2, background: GOLD }} />
           </div>
 
-          <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(38px,5vw,58px)", lineHeight: 1.05, color: NAVY, marginBottom: 20 }}>
+          <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(38px,5vw,58px)", lineHeight: 1.05, color: "#fff", marginBottom: 20 }}>
             Price reflects how much of the<br />
             <em style={{ fontStyle: "italic", color: GOLD }}>operating model you activate.</em>
           </h1>
 
-          <p style={{ fontSize: 18, color: "#4B5563", maxWidth: 680, margin: "0 auto 12px", lineHeight: 1.6 }}>
+          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.65)", maxWidth: 680, margin: "0 auto 12px", lineHeight: 1.6 }}>
             Every tier runs the same platform — the same IDEA Framework, the same execution engine,
             the same 12-minute activation infrastructure. What scales is the breadth of deployment:
             how many domains, how many signals, how deep the intelligence runs.
           </p>
-          <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.55 }}>
+          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.55 }}>
             One situation handled correctly returns the annual investment many times over.
             Unlimited users at every tier. The same platform Fortune 1000 companies use.
           </p>
@@ -226,7 +231,7 @@ export default function Growth() {
             ].map((s) => (
               <div key={s.text} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                 {s.icon}
-                <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>{s.text}</span>
+                <span style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>{s.text}</span>
               </div>
             ))}
           </div>

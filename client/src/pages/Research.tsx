@@ -2,6 +2,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import GartnerStackDiagram from "@/components/GartnerStackDiagram";
 import { Button } from "@/components/ui/button";
 import gartnerAIStack from "@/assets/gartner-ai-stack-2026.png";
+import boardroomImg from "@/assets/images/investors-boardroom.png";
 import { 
   ArrowRight, 
   Clock, 
@@ -38,19 +39,21 @@ export default function Research() {
     <PageLayout>
       <div className="min-h-screen bg-white text-foreground">
         {/* Hero Section */}
-        <section style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "64px 48px", minHeight: 260 }}>
-          <div className="max-w-5xl mx-auto text-center">
+        <section style={{ background: NAVY, padding: "88px 48px 72px", position: "relative", overflow: "hidden", textAlign: "center", backgroundImage: `url(${boardroomImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+          <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.88)" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
+          <div className="max-w-5xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Research & Intelligence</span>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
             </div>
             
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
+            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
               The Research Behind <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Readiness OS</em>
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style={{ color: NAVY }}>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" style={{ color: "rgba(255,255,255,0.65)" }}>
               Readiness OS was built on a foundation of industry research and 20+ years of Fortune 500 
               operational experience. Here's the data that shaped our platform.
             </p>

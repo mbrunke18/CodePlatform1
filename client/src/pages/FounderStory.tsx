@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
+import executiveDecisionImg from "@/assets/images/executive-decision.png";
 import PageLayout from "@/components/layout/PageLayout";
 import FounderStoryIntro from "@/components/marketing/FounderStoryIntro";
 import FounderStoryFull from "@/components/marketing/FounderStoryFull";
@@ -63,7 +64,8 @@ export default function FounderStory() {
     <PageLayout>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section style={{ background: NAVY_BG, padding: "96px 48px 80px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: NAVY_BG, padding: "96px 48px 80px", textAlign: "center", position: "relative", overflow: "hidden", backgroundImage: `url(${executiveDecisionImg})`, backgroundSize: "cover", backgroundPosition: "center top" }}>
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.85)" }} />
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.09) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
         <div style={{ position: "absolute", top: -100, right: -60, width: 700, height: 700, background: "radial-gradient(ellipse,rgba(43,138,110,0.15) 0%,transparent 60%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: -80, left: -60, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(201,168,76,0.10) 0%,transparent 60%)", pointerEvents: "none" }} />

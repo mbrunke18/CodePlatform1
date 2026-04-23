@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
+import commandCenterImg from "@/assets/images/hero-command-center.png";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -114,30 +115,32 @@ export default function PlatformOverview() {
     <PageLayout>
       <div>
         {/* Hero — white */}
-        <section style={{ background: "#fff", borderBottom: "1px solid #E8E4DC", padding: "64px 48px", minHeight: 260 }}>
-          <div className="max-w-5xl mx-auto">
+        <section style={{ background: "#0A0F2E", padding: "88px 48px 72px", position: "relative", overflow: "hidden", backgroundImage: `url(${commandCenterImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>
+          <div style={{ position: "absolute", inset: 0, background: "rgba(10,15,46,0.87)" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
+          <div className="max-w-5xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Readiness OS · Platform Architecture</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end gap-8">
               <div className="flex-1">
-                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
+                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
                   The Complete<br />
                   <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Readiness Infrastructure</em>
                 </h1>
-                <p className="text-lg text-[#6B7280] max-w-xl leading-relaxed">
+                <p className="text-lg max-w-xl leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
                   Every component needed to move from strategic trigger to coordinated organizational response — in under 12 minutes.
                 </p>
               </div>
               <div className="flex flex-col gap-2 shrink-0">
-                <div className="flex items-center gap-3 text-sm text-[#6B7280]">
-                  <span className="w-2 h-2 bg-[#0A0F2E]" />
-                  AI handles signal monitoring and execution orchestration
+                <div className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  <span className="w-2 h-2" style={{ background: "#2B8A6E", flexShrink: 0 }} />
+                  Continuous monitoring — no human required to detect
                 </div>
-                <div className="flex items-center gap-3 text-sm text-[#6B7280]">
-                  <span className="w-2 h-2" style={{ background: "#C9A84C" }} />
-                  Humans retain all strategic decision authority
+                <div className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
+                  <span className="w-2 h-2" style={{ background: "#C9A84C", flexShrink: 0 }} />
+                  Executive authority preserved on every activation
                 </div>
               </div>
             </div>
