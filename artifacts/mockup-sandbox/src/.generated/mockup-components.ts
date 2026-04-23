@@ -3,6 +3,7 @@ type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/hero-naming/CommandOS.tsx": () => import("../components/mockups/hero-naming/CommandOS.tsx"),
   "./components/mockups/hero-naming/ExecutionOS.tsx": () => import("../components/mockups/hero-naming/ExecutionOS.tsx"),
+  "./components/mockups/hero-explore/BestOutcome.tsx": () => import("../components/mockups/hero-explore/BestOutcome.tsx"),
   "./components/mockups/hero-explore/VariantA.tsx": () => import("../components/mockups/hero-explore/VariantA.tsx"),
   "./components/mockups/hero-explore/VariantB.tsx": () => import("../components/mockups/hero-explore/VariantB.tsx")
 };
