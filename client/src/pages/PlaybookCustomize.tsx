@@ -659,7 +659,7 @@ export default function PlaybookCustomize() {
           mode="special-teams"
           position=""
           insight="What you're building here is the decision before the pressure arrives. The owner will be in the room when this response is built — not just when it is delivered. Assignment is naming someone. Ownership is that person having challenged this playbook, rehearsed the decision, and signed off before any trigger existed."
-          gain={{ label: "Ownership artifact", value: "Pre-built" }}
+          gain={{ label: "Ownership record", value: "Pre-built" }}
           compact
         />
       </div>
@@ -1374,7 +1374,7 @@ export default function PlaybookCustomize() {
                     <div className="p-5 space-y-3" style={{ border: "2px solid #C9A84C", background: "rgba(201,168,76,0.03)" }}>
                       <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Commitment</div>
                       <div className="space-y-2">
-                        {["Owner participated in construction", "Assumptions formally challenged", "Owner's judgment embedded in the plan", "Artifact — not a document received"].map(item => (
+                        {["Owner participated in construction", "Assumptions formally challenged", "Owner's judgment embedded in the plan", "Confirmed record — not a document received"].map(item => (
                           <div key={item} className="flex items-center gap-2 text-xs font-medium text-[#0A0F2E]">
                             <div style={{ width: 4, height: 4, background: "#C9A84C", flexShrink: 0 }} />
                             {item}
@@ -1391,7 +1391,7 @@ export default function PlaybookCustomize() {
                       When the trigger fires, the owner who built the response steps into it. The owner who was assigned the response steps back from it. That distinction — invisible during preparation — becomes visible at the acknowledgment step, in the first minutes of execution, before any outcome exists.
                     </p>
                     <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 10 }}>
-                      Organizations can produce acknowledgment without the artifact. Rehearsed acknowledgment looks like ownership confirmed but is ownership performed. It holds at acknowledgment and reverts under sustained pressure — because what was built during preparation was familiarity, not commitment.
+                      Organizations can produce acknowledgment without real ownership. Rehearsed acknowledgment looks like ownership confirmed but is ownership performed. It holds at acknowledgment and reverts under sustained pressure — because what was built during preparation was familiarity, not commitment.
                     </p>
                     <div style={{ background: "rgba(10,15,46,0.03)", border: "1px solid rgba(10,15,46,0.08)", borderLeft: "2px solid #0A0F2E", padding: "14px 18px" }}>
                       <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 500, color: "#0A0F2E", lineHeight: 1.55, fontStyle: "italic", margin: 0 }}>

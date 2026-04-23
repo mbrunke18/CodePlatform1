@@ -1609,7 +1609,7 @@ export default function PlaybookActivationConsole() {
               color: TEAL,
               border: TEAL,
               bg: 'rgba(43,138,110,0.05)',
-              instruction: 'Ownership confirmed at acknowledgment. The preparation produced the artifact. This debrief encodes optimization — what to sharpen for the next activation cycle. Focus on: task timing precision, stakeholder tier sequencing, and protocol refinement. The window did not close.',
+              instruction: 'Ownership confirmed at acknowledgment. The preparation transferred ownership. This debrief encodes optimization — what to sharpen for the next activation cycle. Focus on: task timing precision, stakeholder tier sequencing, and protocol refinement. The window did not close.',
               focusAreas: [
                 'Where in the task sequence did execution slow? Update time targets.',
                 'Which stakeholder acknowledgments came slowest? Adjust tier placement.',
@@ -1622,7 +1622,7 @@ export default function PlaybookActivationConsole() {
               color: GOLD,
               border: GOLD,
               bg: 'rgba(201,168,76,0.05)',
-              instruction: 'Some ownership transferred; some tasks remained silent at acknowledgment. This debrief encodes both optimization and recovery. The window partially held — but the silent tasks represent preparation that did not produce an artifact. Investigate each silent task before the next trigger fires.',
+              instruction: 'Some ownership transferred; some tasks remained silent at acknowledgment. This debrief encodes both optimization and recovery. The window partially held — but the silent tasks represent preparation that did not confirm ownership. Investigate each silent task before the next trigger fires.',
               focusAreas: [
                 'For each silent task: was this assignment or ownership? Rebuild as ownership.',
                 'Did the owner participate in preparation, or receive the playbook after it was built?',
@@ -1635,7 +1635,7 @@ export default function PlaybookActivationConsole() {
               color: '#B91C1C',
               border: '#B91C1C',
               bg: 'rgba(185,28,28,0.04)',
-              instruction: 'Silence was detected at acknowledgment. The window closed. This debrief is encoding recovery — not optimization. The organizations that compound capability are the ones where this debrief rarely triggers, because preparation built real ownership rather than documented assignment. The question this debrief must answer: where did the preparation phase fail to produce the artifact?',
+              instruction: 'Silence was detected at acknowledgment. The window closed. This debrief is encoding recovery — not optimization. The organizations that compound capability are the ones where this debrief rarely triggers, because preparation built real ownership rather than documented assignment. The question this debrief must answer: where did the preparation phase fail to confirm ownership?',
               focusAreas: [
                 'Were owners present when the response was built, or assigned after?',
                 'Did each owner have explicit challenge rights before the trigger fired?',
@@ -1772,7 +1772,7 @@ export default function PlaybookActivationConsole() {
                             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 16 }}>
                               <div style={{ textAlign: "center", padding: "10px 8px", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.25)" }}>
                                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{tasksAcknowledged}</div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Ownership Artifacts</div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Ownership Records</div>
                               </div>
                               <div style={{ textAlign: "center", padding: "10px 8px", background: silentTasks.length > 0 ? "rgba(185,28,28,0.1)" : "rgba(255,255,255,0.03)", border: `1px solid ${silentTasks.length > 0 ? "rgba(185,28,28,0.3)" : "rgba(255,255,255,0.08)"}` }}>
                                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: silentTasks.length > 0 ? "#EF4444" : "rgba(255,255,255,0.3)", lineHeight: 1 }}>{silentTasks.length}</div>
@@ -1807,7 +1807,7 @@ export default function PlaybookActivationConsole() {
                           {tasksAcknowledged > 0 && (
                             <div>
                               <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 10 }}>
-                                Ownership Artifacts Produced
+                                Ownership Records Confirmed
                               </div>
                               <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
                                 {Object.entries(ackMap).slice(0, 5).map(([taskId, ack]: [string, any]) => {
@@ -1830,7 +1830,7 @@ export default function PlaybookActivationConsole() {
                                 })}
                                 {tasksAcknowledged > 5 && (
                                   <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.3)", padding: "4px 12px" }}>
-                                    +{tasksAcknowledged - 5} additional ownership artifacts on record
+                                    +{tasksAcknowledged - 5} additional ownership records confirmed
                                   </div>
                                 )}
                               </div>
@@ -1906,7 +1906,7 @@ export default function PlaybookActivationConsole() {
                               The Compound Moat
                             </div>
                             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, margin: 0 }}>
-                              The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase. Every ownership artifact this activation produced is non-transferable intelligence.
+                              The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase. Every ownership record this activation produced is non-transferable intelligence.
                             </p>
                           </div>
                         </div>

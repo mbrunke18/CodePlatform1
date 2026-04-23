@@ -293,7 +293,7 @@ export default function FounderStory() {
             Readiness OS uses AI across five coordination surfaces — not to generate strategy but to compress coordination. Compound Threat Intelligence detects cross-domain patterns before either domain crosses its threshold alone. The Shadow Strategy Simulator runs a dry-run before commitment. The Strategic Recorder converts institutional knowledge directly into executable playbooks. AI doing the work it should be doing — closing the coordination gap, not widening it.
           </Body>
 
-          {/* ── Artifact vs. Performance — unnumbered interstitial ────────── */}
+          {/* ── Built vs. Received — unnumbered interstitial ────────── */}
           <div style={{ margin: "56px -32px", background: "#F8F7F4", padding: "56px 56px", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, position: "relative" }}>
             <div style={{ maxWidth: 680, margin: "0 auto" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
@@ -301,13 +301,13 @@ export default function FounderStory() {
                 <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>Design Principle</span>
               </div>
               <p style={{ ...CG, fontSize: "clamp(26px,3.2vw,38px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 32, letterSpacing: "-0.01em" }}>
-                The artifact and the performance look identical from the outside.
+                Built looks identical to received — until the trigger fires.
               </p>
               <p style={{ fontSize: 17, lineHeight: 1.85, color: "#374151", fontWeight: 400, marginBottom: 24 }}>
                 Most organizations treat preparation as a document delivery exercise. A brief gets generated. Stakeholders receive it. They are asked to acknowledge it — to sign off that they have reviewed it, understood it, and are ready to execute it. This looks like preparation. It is not the same thing.
               </p>
               <p style={{ fontSize: 17, lineHeight: 1.85, color: "#374151", fontWeight: 400, marginBottom: 24 }}>
-                The football quarterback was not handed the prepared response and asked to acknowledge it. He was in the room when it was built. He challenged the assumptions. He tested it against the defensive tendencies he had studied. His judgment was in the response before the game started. That is not an administrative distinction. That is the difference between a document someone received and an artifact someone constructed.
+                The football quarterback was not handed the prepared response and asked to acknowledge it. He was in the room when it was built. He challenged the assumptions. He tested it against the defensive tendencies he had studied. His judgment was in the response before the game started. That is not an administrative distinction. That is the difference between a document someone received and a decision someone constructed.
               </p>
               <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, margin: "40px 0" }}>
                 <p style={{ ...CG, fontSize: 22, fontWeight: 500, color: NAVY, lineHeight: 1.5, fontStyle: "italic" }}>
@@ -318,7 +318,7 @@ export default function FounderStory() {
                 Three things define the difference. The executive participated in constructing the response — not receiving it. They had the formal right to challenge any assumption in it — not to rubber-stamp a template. And the plan reflects their specific judgment about their specific situation — not a committee average, not a default. These three criteria are the difference between compliance and commitment.
               </p>
               <p style={{ fontSize: 17, lineHeight: 1.85, color: "#374151", fontWeight: 400, marginBottom: 0 }}>
-                Readiness OS was designed around this distinction from the first line of code. The preparation phase is not brief delivery. It is artifact construction. The executive who activates the prepared response at trigger point is activating something they built. That changes what the next twelve minutes feel like. That changes who they are in the room when it matters.
+                Readiness OS was designed around this distinction from the first line of code. The preparation phase is not brief delivery. It is construction, not delivery. The executive who activates the prepared response at trigger point is activating something they built. That changes what the next twelve minutes feel like. That changes who they are in the room when it matters.
               </p>
             </div>
           </div>

@@ -181,7 +181,7 @@ export default function Team() {
                 </div>
 
                 <p style={{ fontSize: 16, color: `${NAVY}75`, lineHeight: 1.8, marginBottom: 16, fontWeight: 500 }}>
-                  Dr. Huang's research across 408 manufacturing firms establishes the intellectual foundation of Readiness OS: preparation produces ownership, and ownership is an artifact — not a mindset. The platform produces that artifact at every activation through the acknowledgment step.
+                  Dr. Huang's research across 408 manufacturing firms establishes the intellectual foundation of Readiness OS: preparation produces ownership — not as a mindset, but as a concrete, verifiable record. The platform confirms that record at every activation through the acknowledgment step.
                 </p>
 
                 <p style={{ fontSize: 16, color: `${NAVY}75`, lineHeight: 1.8, fontWeight: 500 }}>

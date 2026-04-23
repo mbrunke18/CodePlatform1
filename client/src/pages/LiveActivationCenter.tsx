@@ -1155,7 +1155,7 @@ export default function LiveActivationCenter() {
                 <ValueGainCallout
                   mode="special-teams"
                   position=""
-                  insight="The coordination infrastructure just proved itself under a live trigger. Every stakeholder acknowledged, every task deployed, every sequence intact. This is the ownership artifact the preparation phase was built to produce — and it held under pressure."
+                  insight="The coordination infrastructure just proved itself under a live trigger. Every stakeholder acknowledged, every task deployed, every sequence intact. This is the ownership record the preparation phase was built to produce — and it held under pressure."
                   gain={{ label: "Coordination moat built", value: "Compounding" }}
                   compact
                   style={{ textAlign: "left", marginTop: 4 }}

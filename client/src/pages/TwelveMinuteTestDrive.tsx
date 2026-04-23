@@ -83,8 +83,8 @@ const SCENARIO_DEBRIEF_CALLOUT: Record<ValueGainMode, { insight: string; gain: {
     gain: { label: "Mobilization cycle", value: "Eliminated" },
   },
   "special-teams": {
-    insight: "You just demonstrated that the coordination infrastructure was real. The ownership artifact was produced — roles acknowledged, tasks deployed, sequence intact. This is what preparation compounding looks like: it transfers under pressure.",
-    gain: { label: "Ownership artifact", value: "Locked" },
+    insight: "You just demonstrated that the coordination infrastructure was real. Ownership was confirmed — roles acknowledged, tasks deployed, sequence intact. This is what preparation compounding looks like: it transfers under pressure.",
+    gain: { label: "Ownership record", value: "Locked" },
   },
 };
 
@@ -727,7 +727,7 @@ export default function TwelveMinuteTestDrive() {
               {[
                 { label: 'Institutional Memory', body: 'The decisions made in this activation now exist as organizational record — not reconstructed from email next time, already documented.' },
                 { label: 'Preparation Compounds', body: 'Every activation makes the next response faster. The ownership, sequencing, and context built here carry forward to every future trigger in this domain.' },
-                { label: 'The Ownership Was Built', body: 'The roles acknowledged their tasks before the pressure arrived. That is not a behavioral outcome — it is an artifact the preparation phase produced.' },
+                { label: 'The Ownership Was Built', body: 'The roles acknowledged their tasks before the pressure arrived. That is not a behavioral outcome — it is a confirmed record the preparation phase produced.' },
               ].map(r => (
                 <div key={r.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', borderTop: `2px solid ${TEAL}`, borderRight: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 10 }}>{r.label}</div>

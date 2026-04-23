@@ -100,7 +100,7 @@ const ROUNDS: RoadmapRound[] = [
       {
         title: "Readiness Protocol Version History",
         description: "Every change to a customized Readiness Protocol is logged — who changed what, when, and what the previous version contained. Enables organizational learning and accountability across preparation cycles.",
-        value: "Ownership is an artifact of preparation, not a state of mind. Version history makes ownership visible and auditable.",
+        value: "Ownership is built during preparation, not declared after the fact. Version history makes it visible and auditable.",
         status: "planned",
         eta: "Q3 2026",
         icon: FileText,
