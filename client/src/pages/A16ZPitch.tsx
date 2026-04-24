@@ -1,5 +1,7 @@
-import { useState, useCallback, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import html2canvas from 'html2canvas';
+import PptxGenJS from 'pptxgenjs';
 
 const NAVY = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -847,10 +849,47 @@ const NAV_H = 44;
 export default function A16ZPitch() {
   const [current, setCurrent] = useState(0);
   const [scale, setScale] = useState(1);
+  const [exporting, setExporting] = useState(false);
+  const [exportStep, setExportStep] = useState(0);
+  const slideRef = useRef<HTMLDivElement>(null);
   const total = SLIDES.length;
 
   const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
   const next = useCallback(() => setCurrent(p => Math.min(total - 1, p + 1)), [total]);
+
+  const exportToPPTX = useCallback(async () => {
+    if (!slideRef.current || exporting) return;
+    setExporting(true);
+    const savedCurrent = current;
+    const images: string[] = [];
+
+    for (let i = 0; i < SLIDES.length; i++) {
+      setCurrent(i);
+      setExportStep(i + 1);
+      await new Promise(resolve => setTimeout(resolve, 350));
+      const canvas = await html2canvas(slideRef.current, {
+        width: SLIDE_W,
+        height: SLIDE_H,
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        logging: false,
+        backgroundColor: null,
+      });
+      images.push(canvas.toDataURL('image/jpeg', 0.95));
+    }
+
+    const pptx = new PptxGenJS();
+    pptx.layout = 'LAYOUT_16x9';
+    for (let i = 0; i < images.length; i++) {
+      const slide = pptx.addSlide();
+      slide.addImage({ data: images[i], x: 0, y: 0, w: 10, h: 5.625 });
+    }
+    await pptx.writeFile({ fileName: 'VaughnMartin-ReadinessOS-a16z-SpeedRun007.pptx' });
+    setCurrent(savedCurrent);
+    setExporting(false);
+    setExportStep(0);
+  }, [current, exporting]);
 
   useEffect(() => {
     const updateScale = () => {
@@ -876,17 +915,33 @@ export default function A16ZPitch() {
 
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden", background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start" }}>
+      {/* Export loading overlay */}
+      {exporting && (
+        <div style={{ position: "fixed", inset: 0, zIndex: 999, background: "rgba(10,15,46,0.88)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)" }}>
+          <div style={{ ...CG, fontSize: 18, color: "#fff", marginBottom: 20 }}>Generating PPTX…</div>
+          <div style={{ width: 280, height: 4, background: "rgba(255,255,255,0.12)", borderRadius: 2, overflow: "hidden" }}>
+            <div style={{ height: "100%", width: `${(exportStep / total) * 100}%`, background: GOLD, borderRadius: 2, transition: "width 0.3s ease" }} />
+          </div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", color: GOLD, marginTop: 12 }}>
+            SLIDE {exportStep} OF {total}
+          </div>
+        </div>
+      )}
+
       {/* Slide stage — centers the scaled 16:9 canvas */}
       <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        <div style={{
-          width: SLIDE_W,
-          height: SLIDE_H,
-          transform: `scale(${scale})`,
-          transformOrigin: "center center",
-          position: "relative",
-          flexShrink: 0,
-          overflow: "hidden",
-        }}>
+        <div
+          ref={slideRef}
+          style={{
+            width: SLIDE_W,
+            height: SLIDE_H,
+            transform: `scale(${scale})`,
+            transformOrigin: "center center",
+            position: "relative",
+            flexShrink: 0,
+            overflow: "hidden",
+          }}
+        >
           <SlideComponent />
         </div>
       </div>
@@ -928,8 +983,21 @@ export default function A16ZPitch() {
           ))}
         </div>
 
-        <div style={{ ...BC, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em" }}>
-          {current + 1} / {total}
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <button
+            onClick={exportToPPTX}
+            disabled={exporting}
+            title="Download as PowerPoint"
+            style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.35)", borderRadius: "0.15rem", padding: "5px 12px", cursor: exporting ? "not-allowed" : "pointer", opacity: exporting ? 0.5 : 1, transition: "opacity 0.2s" }}
+          >
+            <Download size={13} color={GOLD} />
+            <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD }}>
+              {exporting ? `${exportStep}/${total}` : "Download PPTX"}
+            </span>
+          </button>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em" }}>
+            {current + 1} / {total}
+          </div>
         </div>
       </div>
     </div>
