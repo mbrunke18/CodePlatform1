@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 22, 2026 (rev 25) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: April 24, 2026 (rev 26) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -1347,6 +1347,10 @@ The following copy conventions are founder-locked. Any agent or developer who to
 | "AI-detected" (in user-facing copy) | "system-detected" |
 | "GPT-4o" (in user-facing labels/descriptions) | Omit model name; use feature description |
 | "AI Brief" | "Signal-Based Execution Brief · System Analysis" |
+| "Ownership as Artifact" (in any UI copy) | "Ownership confirmed" / "confirm ownership" / "ownership record" — term is on hold pending Dr. Huang's approval for public use |
+| "Ownership Artifacts" (as a metric label) | "Ownership Records" |
+| "produce the artifact" (in ownership context) | "confirm ownership" / "the preparation transferred ownership" |
+| "Artifact vs. Performance" (section label) | "Built vs. Received" |
 | "Speed advantage" | "3,600× Execution Head Start" |
 | "72 hours" (as mobilization baseline) | "30 days" |
 | "340×" | "3,600× Execution Head Start" |
@@ -1687,7 +1691,7 @@ Two governance features were built to address gaps Dr. Kerry Huang (ESI Top 1% R
 
 ### Gap 2 — Activation Close-Out Gate
 
-**What it does:** Blocks the debrief from advancing past Learning Capture (step 4) until four structured questions are answered and saved. This enforces the Dr. Huang thesis that ownership is an artifact — either the preparation phase produces it or it doesn't. The gate makes the absence of transfer visible, not invisible.
+**What it does:** Blocks the debrief from advancing past Learning Capture (step 4) until four structured questions are answered and saved. This operationalizes the Dr. Huang thesis: the preparation phase either produces a confirmed ownership record or it doesn't — the gate makes absence of transfer visible, not invisible. **IP note:** The phrase "ownership is an artifact" comes from a private exchange with Dr. Huang and is NOT used in any visible UI copy. All UI copy uses "ownership record," "ownership confirmed," or "confirm ownership." This internal documentation may reference the concept directly, but no user-facing component should use that phrasing until Dr. Huang approves public use.
 
 **Four required fields (schema + UI):**
 | Field | Required | Description |
@@ -1953,3 +1957,79 @@ Resolution order:
 
 ### Effect
 Every trigger alert email sent after this revision takes the reader directly to the specific detection that fired — highlighted in gold, auto-scrolled to — and pre-selects the recommended playbook in the activation center. One click from email to execution-ready.
+
+---
+
+## 42. Ownership Close-Out Gate + Debrief Classification — April 24, 2026 (rev 26)
+
+### Context
+Two features were added to `PlaybookActivationConsole.tsx` to operationalize the Dr. Kerry Huang framework at the moment of execution completion. These are distinct from the ActivationOutcome.tsx Close-Out Gate documented in Section 38 (Gap 2), which blocks the ADVANCE learning capture form. These features appear inside the PlaybookActivationConsole itself when `executionStatus === 'completed'`.
+
+---
+
+### Feature 1 — Ownership Close-Out Gate (PlaybookActivationConsole.tsx)
+
+**What it does:** After the post-activation debrief renders, a formal governance verdict card appears measuring whether ownership actually transferred during the execution. This is the platform's answer to the Huang thesis: the preparation phase either produces ownership or it doesn't — and that result must be made visible, not invisible.
+
+**Three verdict states:**
+
+| Verdict | Threshold | Visual |
+|---|---|---|
+| **Ownership Confirmed** | ≥70% tasks acknowledged by their assigned owners | Teal border + checkmark |
+| **Partial Transfer** | 35–69% acknowledgment rate | Gold border + warning |
+| **Silence Detected** | <35% acknowledgment rate | Red border + alert |
+
+**What it shows:**
+- Ownership transfer rate (progress bar — X% of tasks had confirmed ownership at handoff)
+- Silent tasks diagnostic (named list of tasks with no acknowledgment)
+- Three-signal test: (1) Did the assigned owner participate in building the response? (2) Did the owner have formal challenge rights before activation? (3) Is the plan personalized to this owner's specific decision context?
+- Dr. Huang attribution block: "Research Foundation — Dr. Kerry Huang, ESI Top 1% Researcher, 408-firm study" with his core finding about zero statistical relationship between technology and collaboration improvement
+
+**IP rule:** All visible copy uses "ownership confirmed," "ownership record," "silence detected" — never "ownership artifact" or "ownership as artifact." Those phrases are on hold pending Dr. Huang's approval for public use (see Section 32 retired phrases table).
+
+**Location in component:** Rendered after the debrief hero banner and ADVANCE debrief strip, before the CTAs, when `executionStatus === 'completed'`.
+
+---
+
+### Feature 2 — Recovery vs. Optimization Debrief Classification (PlaybookActivationConsole.tsx)
+
+**What it does:** The ADVANCE debrief section (previously static) now automatically classifies itself based on the Close-Out Gate ownership %. Different ownership outcomes call for fundamentally different ADVANCE conversations — optimization (high ownership) vs. recovery (low ownership, silence detected).
+
+**Three classification types:**
+
+| Type | Ownership % | Purpose |
+|---|---|---|
+| **Optimization** | ≥70% | Build on what held — encode the preparation advantage into the next cycle |
+| **Mixed-Signal** | 35–69% | Separate what was built from what was received — find the ownership gap |
+| **Recovery** | <35% | Silence at acknowledgment — the preparation-to-action transfer failed |
+
+**Each type includes:**
+- Type-specific ADVANCE instructions (what this debrief is for)
+- 3 focus questions calibrated to the outcome
+- A Dr. Huang quote about the acknowledgment window closing
+
+**Key Huang quote used in Recovery type:**
+> "Silence at acknowledgment is the signal. Not silence at completion. Not divergence at debrief. Silence at the moment the response either deploys or does not."
+
+**This quote is attributed to "Silence at Acknowledgment" — which is Martin's own concept, confirmed by Dr. Huang.** It is displayed with proper attribution and is cleared for public use.
+
+**Location in component:** ADVANCE debrief section renders immediately after the Close-Out Gate when `executionStatus === 'completed'`. Classification is computed from the same ownership rate used by the gate (no additional API call required).
+
+---
+
+### Terminology Sweep — April 24, 2026
+
+The following phrase changes were applied globally across 7 files as part of this revision:
+
+| Old | New | Files |
+|---|---|---|
+| "Ownership Artifacts" (metric label) | "Ownership Records" | PlaybookActivationConsole, Team, Roadmap, LiveActivationCenter |
+| "produce the artifact" (ownership context) | "confirm ownership" | PlaybookCustomize, TwelveMinuteTestDrive |
+| "the ownership artifact was produced" | "ownership was confirmed" | TwelveMinuteTestDrive |
+| "Ownership artifact" (gain label) | "Ownership record" | TwelveMinuteTestDrive, PlaybookCustomize |
+| "Ownership as Artifact" (section label) | Removed entirely — replaced with "What This Gate Measures" | PlaybookActivationConsole |
+| "Artifact vs. Performance" (section heading) | "Built vs. Received" | FounderStory |
+| "an artifact someone constructed" | "a decision someone constructed" | FounderStory |
+| "It is artifact construction." | "It is construction, not delivery." | FounderStory |
+
+**Why:** "Ownership as Artifact" originated in a private exchange with Dr. Huang and is not available for public use without his approval. All concepts and mechanics remain intact — only the specific naming is held. When Dr. Huang approves, a single find-and-replace across these files will restore the terminology. No structural changes required.
