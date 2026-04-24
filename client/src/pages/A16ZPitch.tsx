@@ -96,9 +96,12 @@ function ProblemSlide() {
         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
           By the time they move, the competitor has acted, the regulator has moved, or the window has closed.
         </p>
-        <div style={{ marginTop: 32, padding: "16px 20px", border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.06)" }}>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Cost per trigger</div>
-          <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#FFFFFF" }}>$50M – $500M</div>
+        <div style={{ marginTop: 20, padding: "14px 18px", border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.06)" }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 5 }}>Real-world trigger costs</div>
+          <div style={{ ...CG, fontSize: 24, fontWeight: 600, color: "#FFFFFF", lineHeight: 1 }}>$5M – $575M+</div>
+          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", marginTop: 7, lineHeight: 1.6 }}>
+            Equifax breach: $575M settlement · Target cyber: $292M · Boeing 737 MAX: $20B+ · M&A failure avg: $277M destroyed (McKinsey)
+          </div>
         </div>
       </div>
 
@@ -130,19 +133,19 @@ function ProblemSlide() {
 // ─── Slide 3: The Insight ─────────────────────────────────────────────────────
 function InsightSlide() {
   return (
-    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px" }}>
-      <div style={{ textAlign: "center", marginBottom: 40 }}>
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
+      <div style={{ textAlign: "center", marginBottom: 14 }}>
         <SlideLabel>The Insight</SlideLabel>
-        <h2 style={{ ...CG, fontSize: "clamp(28px,3.5vw,48px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, maxWidth: 740, margin: "0 auto 12px" }}>
+        <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1, maxWidth: 740, margin: "0 auto" }}>
           Championship football programs close the same gap every Saturday in 40 seconds.
         </h2>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, flex: 1, maxWidth: 1100, margin: "0 auto", width: "100%" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, flex: 1, width: "100%" }}>
         {/* Fortune 1000 column */}
-        <div style={{ border: `1px solid ${BORDER}`, borderRight: "none", background: "#FFFFFF", padding: "40px 44px" }}>
-          <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 24 }}>Fortune 1000</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+        <div style={{ border: `1px solid ${BORDER}`, borderRight: "none", background: "#FFFFFF", padding: "20px 30px" }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 16 }}>Fortune 1000</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
               { label: "Trigger fires.", body: "The organization spends 30 days figuring out who should be in the room." },
               { label: "Zero preparation.", body: "Building a response from scratch. Every time. For every trigger. Across every domain." },
@@ -150,18 +153,18 @@ function InsightSlide() {
               { label: "Result:", body: "The window closes before the response begins." },
             ].map((r, i) => (
               <div key={i}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{r.label}</div>
-                <div style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65 }}>{r.body}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{r.label}</div>
+                <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55 }}>{r.body}</div>
               </div>
             ))}
           </div>
         </div>
 
         {/* Championship Football column */}
-        <div style={{ ...GRID_BG, background: NAVY, border: `2px solid ${GOLD}`, padding: "40px 44px", position: "relative", overflow: "hidden" }}>
+        <div style={{ ...GRID_BG, background: NAVY, border: `2px solid ${GOLD}`, padding: "20px 30px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.2) 0%, transparent 70%)" }} />
-          <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 24 }}>Championship Football</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Championship Football</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
               { label: "Trigger fires.", body: "The response is already built. Every situation owned. Every role rehearsed at full speed by Thursday." },
               { label: "Pre-staged execution.", body: "40 seconds from signal to coordinated execution across 11 roles." },
@@ -169,17 +172,17 @@ function InsightSlide() {
               { label: "Result:", body: "The preparation decided Saturday on Tuesday. The window opens and closes on your timeline." },
             ].map((r, i) => (
               <div key={i}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{r.label}</div>
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.65 }}>{r.body}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#FFFFFF", marginBottom: 3 }}>{r.label}</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", lineHeight: 1.55 }}>{r.body}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div style={{ textAlign: "center", marginTop: 28 }}>
-        <div style={{ display: "inline-block", padding: "12px 32px", background: GOLD, color: NAVY }}>
-          <span style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>At week four, they're finally in the room. You've been executing for 29 days, 23 hours.</span>
+      <div style={{ textAlign: "center", marginTop: 10 }}>
+        <div style={{ display: "inline-block", padding: "9px 28px", background: GOLD, color: NAVY }}>
+          <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" as const }}>At week four, they're finally in the room. You've been executing for 29 days, 23 hours.</span>
         </div>
       </div>
     </div>
@@ -346,29 +349,29 @@ function ValidationSlide() {
     },
   ];
   return (
-    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "48px 64px" }}>
-      <div style={{ textAlign: "center", marginBottom: 36 }}>
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "22px 48px" }}>
+      <div style={{ textAlign: "center", marginBottom: 14 }}>
         <SlideLabel>Independent Validation · April 2026</SlideLabel>
-        <h2 style={{ ...CG, fontSize: "clamp(28px,3.2vw,46px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 8 }}>
+        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 4 }}>
           Four researchers. Four disciplines. One conclusion.
         </h2>
-        <p style={{ fontSize: 14, color: "#6B7280" }}>That does not happen with a weak thesis.</p>
+        <p style={{ fontSize: 13, color: "#6B7280" }}>That does not happen with a weak thesis.</p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, flex: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, flex: 1 }}>
         {researchers.map((r, i) => (
-          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `3px solid ${r.color}`, padding: "24px 28px", display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14 }}>
-              <div style={{ width: 44, height: 44, borderRadius: "50%", background: r.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <span style={{ ...BC, fontSize: 14, fontWeight: 800, color: r.color === GOLD ? NAVY : "#FFFFFF", letterSpacing: "0.06em" }}>{r.initials}</span>
+          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `3px solid ${r.color}`, padding: "14px 18px", display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+              <div style={{ width: 36, height: 36, borderRadius: "50%", background: r.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: r.color === GOLD ? NAVY : "#FFFFFF", letterSpacing: "0.06em" }}>{r.initials}</span>
               </div>
               <div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{r.name}</div>
-                <div style={{ fontSize: 11, color: "#9CA3AF", lineHeight: 1.5 }}>{r.credentials}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 1 }}>{r.name}</div>
+                <div style={{ fontSize: 9, color: "#9CA3AF", lineHeight: 1.4 }}>{r.credentials}</div>
               </div>
             </div>
-            <p style={{ ...CG, fontSize: 16, fontStyle: "italic", color: "#374151", lineHeight: 1.65, flex: 1 }}>{r.quote}</p>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 12 }}>{r.source}</div>
+            <p style={{ ...CG, fontSize: 13, fontStyle: "italic", color: "#374151", lineHeight: 1.55, flex: 1 }}>{r.quote}</p>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 8 }}>{r.source}</div>
           </div>
         ))}
       </div>
@@ -402,26 +405,26 @@ function WhyNowSlide() {
     },
   ];
   return (
-    <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px", position: "relative", overflow: "hidden" }}>
+    <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "28px 48px", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: -200, left: "30%", width: 800, height: 400, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(43,138,110,0.12) 0%, transparent 70%)" }} />
 
       <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <div style={{ textAlign: "center", marginBottom: 20 }}>
           <SlideLabel light>Why Now</SlideLabel>
-          <h2 style={{ ...CG, fontSize: "clamp(26px,3.2vw,44px)", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.15 }}>
+          <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1 }}>
             AI did not create our product.<br />AI created the market for our product.
           </h2>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, flex: 1 }}>
           {reasons.map((r, i) => (
-            <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `3px solid ${r.color}`, padding: "32px 28px", display: "flex", flexDirection: "column" }}>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: r.color, marginBottom: 16 }}>{r.label}</div>
-              <h3 style={{ ...CG, fontSize: "clamp(18px,1.8vw,24px)", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 16 }}>{r.headline}</h3>
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.75, flex: 1 }}>{r.body}</p>
-              <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: r.color, lineHeight: 1 }}>{r.stat}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 4 }}>{r.statLabel}</div>
+            <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `3px solid ${r.color}`, padding: "20px 20px", display: "flex", flexDirection: "column" }}>
+              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: r.color, marginBottom: 10 }}>{r.label}</div>
+              <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 10 }}>{r.headline}</h3>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, flex: 1 }}>{r.body}</p>
+              <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: r.color, lineHeight: 1 }}>{r.stat}</div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 3 }}>{r.statLabel}</div>
               </div>
             </div>
           ))}
@@ -522,24 +525,24 @@ function MoatSlide() {
     },
   ];
   return (
-    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px" }}>
-      <div style={{ marginBottom: 40 }}>
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "26px 52px" }}>
+      <div style={{ marginBottom: 16 }}>
         <SlideLabel>The Moat</SlideLabel>
-        <h2 style={{ ...CG, fontSize: "clamp(28px,3.2vw,48px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, maxWidth: 720 }}>
+        <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1, maxWidth: 720 }}>
           A competitor can rebuild the software in 12 months.<br />They cannot rebuild any of these.
         </h2>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 16, flex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
         {moats.map((m, i) => (
-          <div key={i} style={{ display: "flex", gap: 32, padding: "28px 32px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : NAVY}`, background: "#FAFAF9", flex: 1 }}>
+          <div key={i} style={{ display: "flex", gap: 24, padding: "16px 24px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : NAVY}`, background: "#FAFAF9", flex: 1 }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ ...BC, fontSize: 36, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1, opacity: 0.3 }}>{m.num}</div>
+              <div style={{ ...BC, fontSize: 28, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1, opacity: 0.25 }}>{m.num}</div>
             </div>
             <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: 17, fontWeight: 700, color: NAVY, marginBottom: 10 }}>{m.title}</h3>
-              <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.75, marginBottom: 10 }}>{m.body}</p>
-              <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>{m.note}</div>
+              <h3 style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{m.title}</h3>
+              <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.65, marginBottom: 6 }}>{m.body}</p>
+              <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>{m.note}</div>
             </div>
           </div>
         ))}
@@ -556,71 +559,71 @@ function ModelSlide() {
     { name: "ORCHESTRATED", price: "$250K/yr", scope: "Full platform · 170 Readiness Protocols" },
   ];
   return (
-    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px" }}>
-      <div style={{ textAlign: "center", marginBottom: 40 }}>
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
+      <div style={{ textAlign: "center", marginBottom: 16 }}>
         <SlideLabel>The Model</SlideLabel>
-        <h2 style={{ ...CG, fontSize: "clamp(28px,3.2vw,46px)", fontWeight: 600, color: NAVY, lineHeight: 1.15 }}>
+        <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
           One platform. Two deployment paths.<br />No per-seat pricing.
         </h2>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, flex: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, flex: 1 }}>
         {/* Enterprise Pilot */}
-        <div style={{ ...GRID_BG, background: NAVY, padding: "40px 44px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
+        <div style={{ ...GRID_BG, background: NAVY, padding: "22px 28px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -100, right: -100, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)" }} />
           <div style={{ position: "relative", zIndex: 1, flex: 1 }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 8 }}>Enterprise Pilot · Fortune 1000</div>
-            <div style={{ ...CG, fontSize: 52, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 4 }}>$75K</div>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", color: "rgba(255,255,255,0.5)", marginBottom: 28 }}>FLAT FEE · 90-DAY DEPLOYMENT</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>Enterprise Pilot · Fortune 1000</div>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 3 }}>$75K</div>
+            <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>FLAT FEE · 90-DAY DEPLOYMENT</div>
 
-            <div style={{ marginBottom: 24 }}>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Delivers</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Delivers</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                 {["Full platform across selected domains", "Signal pipeline live — 248 data points", "Readiness Protocol library activated", "Executive team trained"].map(d => (
                   <div key={d} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <div style={{ width: 4, height: 4, background: TEAL, flexShrink: 0 }} />
-                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{d}</span>
+                    <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0 }} />
+                    <span style={{ fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{d}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div style={{ paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Converts to</div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
-              <div style={{ marginTop: 12, padding: "10px 14px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 12, color: GOLD, fontWeight: 600 }}>3 Founding Partner pilots in active conversation</div>
+            <div style={{ paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+              <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
+              <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
+                <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>3 Founding Partner pilots in active conversation</div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Growth Deployment */}
-        <div style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, padding: "40px 44px", display: "flex", flexDirection: "column" }}>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 20 }}>Growth Deployment · PE-Backed & Mid-Market</div>
+        <div style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, padding: "22px 28px", display: "flex", flexDirection: "column" }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 14 }}>Growth Deployment · PE-Backed & Mid-Market</div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
             {growthTiers.map((t, i) => (
-              <div key={i} style={{ padding: "20px 24px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 2 ? TEAL : i === 1 ? GOLD : NAVY}`, background: i === 2 ? `rgba(43,138,110,0.03)` : "#FAFAF9" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 6 }}>
-                  <div style={{ ...BC, fontSize: 14, fontWeight: 800, letterSpacing: "0.1em", color: NAVY }}>{t.name}</div>
-                  <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: i === 2 ? TEAL : NAVY }}>{t.price}</div>
+              <div key={i} style={{ padding: "14px 18px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 2 ? TEAL : i === 1 ? GOLD : NAVY}`, background: i === 2 ? `rgba(43,138,110,0.03)` : "#FAFAF9" }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4 }}>
+                  <div style={{ ...BC, fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", color: NAVY }}>{t.name}</div>
+                  <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: i === 2 ? TEAL : NAVY }}>{t.price}</div>
                 </div>
-                <div style={{ fontSize: 13, color: "#6B7280" }}>{t.scope}</div>
+                <div style={{ fontSize: 12, color: "#6B7280" }}>{t.scope}</div>
               </div>
             ))}
           </div>
 
-          <div style={{ marginTop: 24, padding: "16px 20px", background: OFF, border: `1px solid ${BORDER}` }}>
-            <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65 }}>
+          <div style={{ marginTop: 14, padding: "12px 16px", background: OFF, border: `1px solid ${BORDER}` }}>
+            <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55 }}>
               Priced on deployment scope. The platform covers the organization or it doesn't. No per-seat pricing at any tier.
             </p>
           </div>
         </div>
       </div>
 
-      <div style={{ marginTop: 16, textAlign: "center", padding: "14px", background: `rgba(201,168,76,0.08)`, border: `1px solid rgba(201,168,76,0.2)` }}>
-        <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: GOLD }}>ONE FORTUNE 1000 ANNUAL LICENSE = ONE GROWTH READY DEPLOYMENT. SAME PLATFORM, TWO MARKETS.</span>
+      <div style={{ marginTop: 10, textAlign: "center", padding: "10px", background: `rgba(201,168,76,0.08)`, border: `1px solid rgba(201,168,76,0.2)` }}>
+        <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: GOLD }}>ONE FORTUNE 1000 ANNUAL LICENSE = ONE GROWTH READY DEPLOYMENT. SAME PLATFORM, TWO MARKETS.</span>
       </div>
     </div>
   );
@@ -648,36 +651,36 @@ function TractionSlide() {
     "Forcing function for full-time transition",
   ];
   return (
-    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px" }}>
-      <div style={{ marginBottom: 36 }}>
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
+      <div style={{ marginBottom: 14 }}>
         <SlideLabel>Traction · Why SpeedRun</SlideLabel>
-        <h2 style={{ ...CG, fontSize: "clamp(28px,3.2vw,46px)", fontWeight: 600, color: NAVY, lineHeight: 1.15 }}>
+        <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
           Shipped. Validated. Ready to scale.
         </h2>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, flex: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, flex: 1 }}>
         {/* Left: Product + Validation */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "28px 32px" }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 16 }}>Product</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "16px 20px" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Product</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
               {productMetrics.map(m => (
-                <div key={m} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <div style={{ width: 4, height: 4, background: TEAL, flexShrink: 0, marginTop: 6 }} />
-                  <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{m}</span>
+                <div key={m} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0, marginTop: 5 }} />
+                  <span style={{ fontSize: 11, color: "#374151", lineHeight: 1.45 }}>{m}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "28px 32px" }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Validation</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "16px 20px" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Validation</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
               {validation.map(v => (
-                <div key={v} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <div style={{ width: 4, height: 4, background: GOLD, flexShrink: 0, marginTop: 6 }} />
-                  <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{v}</span>
+                <div key={v} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <div style={{ width: 3, height: 3, background: GOLD, flexShrink: 0, marginTop: 5 }} />
+                  <span style={{ fontSize: 11, color: "#374151", lineHeight: 1.45 }}>{v}</span>
                 </div>
               ))}
             </div>
@@ -685,22 +688,22 @@ function TractionSlide() {
         </div>
 
         {/* Right: SpeedRun */}
-        <div style={{ ...GRID_BG, background: NAVY_BG, padding: "36px 40px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
+        <div style={{ ...GRID_BG, background: NAVY_BG, padding: "22px 28px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -100, right: -100, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)" }} />
           <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>What SpeedRun Unlocks</div>
-            <div style={{ ...CG, fontSize: 48, fontWeight: 700, color: "#FFFFFF", lineHeight: 1, marginBottom: 6 }}>12</div>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)", marginBottom: 24 }}>WEEKS IN SAN FRANCISCO</div>
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: 28 }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>What SpeedRun Unlocks</div>
+            <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: "#FFFFFF", lineHeight: 1, marginBottom: 4 }}>12</div>
+            <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>WEEKS IN SAN FRANCISCO</div>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 16 }}>
               to close 3 Founding Partners, hire commercial cofounder, and reach $1M ARR.
             </p>
 
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>Why SR007</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Why SR007</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
               {unlocks.map(u => (
-                <div key={u} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                  <div style={{ width: 4, height: 4, background: GOLD, flexShrink: 0, marginTop: 5 }} />
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{u}</span>
+                <div key={u} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <div style={{ width: 3, height: 3, background: GOLD, flexShrink: 0, marginTop: 5 }} />
+                  <span style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", lineHeight: 1.45 }}>{u}</span>
                 </div>
               ))}
             </div>
