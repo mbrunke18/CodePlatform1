@@ -191,8 +191,8 @@ function ProductSlide() {
   const phases = [
     { key: "I", name: "IDENTIFY", stat: "248", statLabel: "data points", body: "Monitored every 15 minutes across 9 strategic domains. Nothing is improvised. Everything is pre-staged." },
     { key: "D", name: "DETECT", stat: "221", statLabel: "triggers", body: "Pattern recognition surfaces classified signals before peak pressure. Pre-wired to every strategic domain." },
-    { key: "E", name: "EXECUTE", stat: "170", statLabel: "playbooks", body: "Pre-staged protocols deploy in 12 minutes — team, tasks, communications, decision rights." },
-    { key: "A", name: "ADVANCE", stat: "100%+", statLabel: "net retention", body: "Close-out gate encodes learning. By activation 12, the playbook is organization-authored — the mechanism behind net retention above 100%." },
+    { key: "E", name: "EXECUTE", stat: "170", statLabel: "Readiness Protocols", body: "Pre-staged protocols deploy in 12 minutes — team, tasks, communications, decision rights." },
+    { key: "A", name: "ADVANCE", stat: "100%+", statLabel: "net retention", body: "Close-out gate encodes learning. By activation 12, the Readiness Protocol is organization-authored — the mechanism behind net retention above 100%." },
   ];
   return (
     <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px", position: "relative", overflow: "hidden" }}>
@@ -377,7 +377,7 @@ function MoatSlide() {
     {
       num: "01",
       title: "20 years of Fortune 1000 decision logic",
-      body: "170 playbooks encoding operational decision architecture from Ford, Toyota, Lockheed Martin, Charles Schwab, Vantiv/Worldpay, Boyd Gaming, and Churchill Downs Incorporated. A competitor cannot buy the twenty years.",
+      body: "170 Readiness Protocols encoding operational decision architecture from Ford, Toyota, Lockheed Martin, Charles Schwab, Vantiv/Worldpay, Boyd Gaming, and Churchill Downs Incorporated. A competitor cannot buy the twenty years.",
       note: "Cannot be replicated with capital or compute",
     },
     {
@@ -423,9 +423,9 @@ function MoatSlide() {
 // ─── Slide 8: The Model ───────────────────────────────────────────────────────
 function ModelSlide() {
   const growthTiers = [
-    { name: "READY", price: "$75K/yr", scope: "3 domains · 60 playbooks" },
-    { name: "RESPONSIVE", price: "$150K/yr", scope: "6 domains · 120 playbooks" },
-    { name: "ORCHESTRATED", price: "$250K/yr", scope: "Full platform · 170 playbooks" },
+    { name: "READY", price: "$75K/yr", scope: "3 domains · 60 Readiness Protocols" },
+    { name: "RESPONSIVE", price: "$150K/yr", scope: "6 domains · 120 Readiness Protocols" },
+    { name: "ORCHESTRATED", price: "$250K/yr", scope: "Full platform · 170 Readiness Protocols" },
   ];
   return (
     <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px" }}>
@@ -448,7 +448,7 @@ function ModelSlide() {
             <div style={{ marginBottom: 24 }}>
               <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Delivers</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {["Full platform across selected domains", "Signal pipeline live — 248 data points", "Playbook library activated", "Executive team trained"].map(d => (
+                {["Full platform across selected domains", "Signal pipeline live — 248 data points", "Readiness Protocol library activated", "Executive team trained"].map(d => (
                   <div key={d} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <div style={{ width: 4, height: 4, background: TEAL, flexShrink: 0 }} />
                     <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{d}</span>
@@ -502,7 +502,7 @@ function ModelSlide() {
 function TractionSlide() {
   const productMetrics = [
     "Live in production at vaughnmartin.com",
-    "151 page components · 170 playbooks · 221 triggers",
+    "151 page components · 170 Readiness Protocols · 221 triggers",
     "Live signal pipeline · 248 data points · 15-minute cycles",
     "7 ecosystem integrations · 5 AI surfaces",
     "$75K pilot priced below procurement threshold · 90-day ROI",
@@ -644,7 +644,7 @@ function FounderSlide() {
             { label: "Fortune 1000 experience", value: "20 yrs" },
             { label: "Industries spanned", value: "7" },
             { label: "Stanford football", value: "5 yrs" },
-            { label: "Playbooks encoded", value: "170" },
+            { label: "Protocols encoded", value: "170" },
           ].map(s => (
             <div key={s.label} style={{ padding: "16px 20px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
               <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: NAVY }}>{s.value}</div>
@@ -728,7 +728,7 @@ export default function A16ZPitch() {
   return (
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden", position: "relative", background: NAVY }}>
       {/* Slide */}
-      <div style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
+      <div style={{ width: "100%", position: "absolute", top: 0, left: 0, right: 0, bottom: "44px" }}>
         <SlideComponent />
       </div>
 
