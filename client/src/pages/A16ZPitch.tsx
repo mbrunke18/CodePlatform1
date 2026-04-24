@@ -707,12 +707,28 @@ const SLIDES = [
   { component: CloseSlide, label: "Close" },
 ];
 
+const SLIDE_W = 960;
+const SLIDE_H = 540;
+const NAV_H = 44;
+
 export default function A16ZPitch() {
   const [current, setCurrent] = useState(0);
+  const [scale, setScale] = useState(1);
   const total = SLIDES.length;
 
   const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
   const next = useCallback(() => setCurrent(p => Math.min(total - 1, p + 1)), [total]);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const availW = window.innerWidth;
+      const availH = window.innerHeight - NAV_H;
+      setScale(Math.min(availW / SLIDE_W, availH / SLIDE_H));
+    };
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -726,17 +742,27 @@ export default function A16ZPitch() {
   const SlideComponent = SLIDES[current].component;
 
   return (
-    <div style={{ width: "100vw", height: "100vh", overflow: "hidden", position: "relative", background: NAVY }}>
-      {/* Slide */}
-      <div style={{ width: "100%", position: "absolute", top: 0, left: 0, right: 0, bottom: "44px" }}>
-        <SlideComponent />
+    <div style={{ width: "100vw", height: "100vh", overflow: "hidden", background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start" }}>
+      {/* Slide stage — centers the scaled 16:9 canvas */}
+      <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+        <div style={{
+          width: SLIDE_W,
+          height: SLIDE_H,
+          transform: `scale(${scale})`,
+          transformOrigin: "center center",
+          position: "relative",
+          flexShrink: 0,
+          overflow: "hidden",
+        }}>
+          <SlideComponent />
+        </div>
       </div>
 
-      {/* Prev / Next */}
+      {/* Prev / Next — positioned relative to full viewport */}
       <button
         onClick={prev}
         disabled={current === 0}
-        style={{ position: "fixed", left: 20, top: "50%", transform: "translateY(-50%)", zIndex: 100, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: current === 0 ? "default" : "pointer", opacity: current === 0 ? 0.2 : 0.8, backdropFilter: "blur(8px)", transition: "opacity 0.2s" }}
+        style={{ position: "fixed", left: 20, top: `calc(50% - ${NAV_H / 2}px)`, transform: "translateY(-50%)", zIndex: 100, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: current === 0 ? "default" : "pointer", opacity: current === 0 ? 0.2 : 0.8, backdropFilter: "blur(8px)", transition: "opacity 0.2s" }}
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} color="#fff" />
@@ -744,22 +770,20 @@ export default function A16ZPitch() {
       <button
         onClick={next}
         disabled={current === total - 1}
-        style={{ position: "fixed", right: 20, top: "50%", transform: "translateY(-50%)", zIndex: 100, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: current === total - 1 ? "default" : "pointer", opacity: current === total - 1 ? 0.2 : 0.8, backdropFilter: "blur(8px)", transition: "opacity 0.2s" }}
+        style={{ position: "fixed", right: 20, top: `calc(50% - ${NAV_H / 2}px)`, transform: "translateY(-50%)", zIndex: 100, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: current === total - 1 ? "default" : "pointer", opacity: current === total - 1 ? 0.2 : 0.8, backdropFilter: "blur(8px)", transition: "opacity 0.2s" }}
         aria-label="Next slide"
       >
         <ChevronRight size={20} color="#fff" />
       </button>
 
-      {/* Bottom bar */}
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 100, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 28px", background: "rgba(10,15,46,0.7)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-        {/* slide name */}
+      {/* Bottom bar — fixed height, always at bottom */}
+      <div style={{ width: "100%", height: NAV_H, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 28px", background: "rgba(10,15,46,0.92)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.08)", zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)" }}>VaughnMartin</span>
           <div style={{ width: 1, height: 10, background: "rgba(255,255,255,0.15)" }} />
           <span style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD }}>{SLIDES[current].label}</span>
         </div>
 
-        {/* dots */}
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
           {SLIDES.map((_, i) => (
             <button
@@ -771,7 +795,6 @@ export default function A16ZPitch() {
           ))}
         </div>
 
-        {/* counter */}
         <div style={{ ...BC, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em" }}>
           {current + 1} / {total}
         </div>
