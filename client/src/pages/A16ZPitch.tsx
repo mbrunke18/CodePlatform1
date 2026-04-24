@@ -200,50 +200,116 @@ function ProductSlide() {
       <div style={{ position: "absolute", bottom: -200, left: -200, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%)" }} />
 
       <div style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ textAlign: "center", marginBottom: 36 }}>
+        <div style={{ textAlign: "center", marginBottom: 18 }}>
           <SlideLabel light>The Product</SlideLabel>
-          <h2 style={{ ...CG, fontSize: "clamp(28px,3.2vw,46px)", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.15, marginBottom: 10 }}>
+          <h2 style={{ ...CG, fontSize: 36, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 6 }}>
             We didn't add AI to the old model.<br />We redesigned how strategic work flows.
           </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", maxWidth: 600, margin: "0 auto" }}>
+          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", maxWidth: 600, margin: "0 auto" }}>
             Readiness OS is the operating model above the AI stack every enterprise already owns.
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, marginBottom: 28 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, marginBottom: 10 }}>
           {phases.map((p, i) => (
-            <div key={i} style={{ background: i === 0 ? "rgba(255,255,255,0.06)" : i === 3 ? "rgba(43,138,110,0.15)" : "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `2px solid ${i === 3 ? TEAL : GOLD}`, padding: "28px 24px" }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 16 }}>
-                <span style={{ ...BC, fontSize: 32, fontWeight: 900, color: GOLD, lineHeight: 1 }}>{p.key}</span>
-                <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>{p.name}</span>
+            <div key={i} style={{ background: i === 0 ? "rgba(255,255,255,0.06)" : i === 3 ? "rgba(43,138,110,0.15)" : "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `2px solid ${i === 3 ? TEAL : GOLD}`, padding: "18px 18px" }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 10 }}>
+                <span style={{ ...BC, fontSize: 26, fontWeight: 900, color: GOLD, lineHeight: 1 }}>{p.key}</span>
+                <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>{p.name}</span>
               </div>
-              <div style={{ marginBottom: 12 }}>
-                <div style={{ ...CG, fontSize: 36, fontWeight: 700, color: "#FFFFFF", lineHeight: 1 }}>{p.stat}</div>
-                <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginTop: 2 }}>{p.statLabel}</div>
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#FFFFFF", lineHeight: 1 }}>{p.stat}</div>
+                <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginTop: 2 }}>{p.statLabel}</div>
               </div>
-              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>{p.body}</p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>{p.body}</p>
             </div>
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
-          <div style={{ padding: "16px 24px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)", textAlign: "center" }}>
-            <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: GOLD }}>30 DAYS COMPRESSED TO 12 MINUTES</span>
-          </div>
-          <div style={{ padding: "16px 24px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center" }}>
-            <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.7)" }}>3,600× EXECUTION HEAD START</span>
-          </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 6 }}>
+          {["GROWTH & POSITIONING", "RISK & RESILIENCE", "TRANSFORMATION"].map((d, i) => (
+            <div key={i} style={{ padding: "9px 14px", border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.03)", textAlign: "center" }}>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.11em", color: i === 0 ? GOLD : i === 1 ? TEAL : "rgba(255,255,255,0.5)" }}>{d}</span>
+            </div>
+          ))}
         </div>
 
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textAlign: "center", marginTop: 16, lineHeight: 1.6 }}>
-          The ADVANCE phase is where the platform becomes irreplaceable. Every activation encodes decision logic specific to this organization's failure modes — by activation 12, a competitor who buys the software starts at zero.
-        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2 }}>
+          <div style={{ padding: "10px 14px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)", textAlign: "center" }}>
+            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.11em", color: GOLD }}>30 DAYS → 12 MINUTES</span>
+          </div>
+          <div style={{ padding: "10px 14px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center" }}>
+            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.11em", color: "rgba(255,255,255,0.7)" }}>3,600× EXECUTION HEAD START</span>
+          </div>
+          <div style={{ padding: "10px 14px", background: "rgba(43,138,110,0.1)", border: "1px solid rgba(43,138,110,0.25)", textAlign: "center" }}>
+            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.11em", color: TEAL }}>ABOVE YOUR MICROSOFT STACK</span>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-// ─── Slide 5: Independent Validation ─────────────────────────────────────────
+// ─── Slide 5: Platform Depth ──────────────────────────────────────────────────
+function PlatformDepthSlide() {
+  const features = [
+    {
+      name: "Command Tower",
+      desc: "Full-screen executive live wall. Real-time signal feeds, trigger confidence scores (0–100), and live activation status. Continuous monitoring so leadership never operates blind.",
+      color: TEAL,
+    },
+    {
+      name: "Executive War Room",
+      desc: "Auto-assembles the moment a protocol activates. Chaos Simulator injects real-world complications — CFO unavailable, media inquiry — for drill-level realism before live pressure arrives.",
+      color: GOLD,
+    },
+    {
+      name: "Executive Readiness Score",
+      desc: "Proprietary 0–100 metric across 4 dimensions: Coverage, Response Speed, Alignment, Intelligence. Tiered: Critical → Developing → Ready → Elite. The board metric that didn't exist.",
+      color: NAVY,
+    },
+    {
+      name: "Shadow Strategy Simulator",
+      desc: "Digital twin for pre-activation rehearsal. Run what-if scenarios across any of 221 triggers without live activation. The practice field built into the platform.",
+      color: TEAL,
+    },
+    {
+      name: "Regulatory Calendar",
+      desc: "9 compliance deadlines tracked with urgency, regulatory body, and recommended Readiness Protocol. Every window is pre-staged before it opens.",
+      color: GOLD,
+    },
+    {
+      name: "Integration Hub",
+      desc: "7 ecosystem integrations live: Microsoft Teams, Azure AD / Entra, SharePoint, Copilot Studio, Slack, Jira, ServiceNow. Coordination layer above the stack you already own.",
+      color: "#6B7280",
+    },
+  ];
+  return (
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "36px 52px" }}>
+      <div style={{ marginBottom: 20 }}>
+        <SlideLabel>Platform Depth</SlideLabel>
+        <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, lineHeight: 1.15 }}>
+          This is not a prototype. It is a fully operational enterprise platform.
+        </h2>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "1fr 1fr", gap: 8, flex: 1 }}>
+        {features.map((f, i) => (
+          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `2px solid ${f.color}`, padding: "18px 20px", display: "flex", flexDirection: "column" }}>
+            <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: f.color, marginBottom: 8 }}>{f.name}</div>
+            <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.65, flex: 1 }}>{f.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 10, padding: "10px 20px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, textAlign: "center" }}>
+        <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", color: NAVY }}>151 PAGES · 170 READINESS PROTOCOLS · 221 TRIGGERS · 248 SIGNAL DATA POINTS · LIVE AT VAUGHNMARTIN.COM</span>
+      </div>
+    </div>
+  );
+}
+
+// ─── Slide 6: Independent Validation ─────────────────────────────────────────
 function ValidationSlide() {
   const researchers = [
     {
@@ -371,7 +437,69 @@ function WhyNowSlide() {
   );
 }
 
-// ─── Slide 7: The Moat ────────────────────────────────────────────────────────
+// ─── Slide 8: The Market ─────────────────────────────────────────────────────
+function MarketSlide() {
+  return (
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", position: "relative" }}>
+      {/* Left — TAM math */}
+      <div style={{ ...GRID_BG, background: NAVY_BG, width: "45%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 40px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", bottom: -80, left: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
+        <SlideLabel light>The Market</SlideLabel>
+        <div style={{ ...CG, fontSize: 56, fontWeight: 700, color: "#FFFFFF", lineHeight: 0.9, marginBottom: 6 }}>$500M+</div>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>SAM · 3-Year Target</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
+          {[
+            { label: "537 US Fortune 1000", value: "× $250K/yr = $134M ARR at full penetration" },
+            { label: "+400 Global Fortune 500", value: "international expansion layer" },
+            { label: "PE-backed mid-market", value: "Thousands × $75–150K/yr" },
+            { label: "6 industry sector packs", value: "Retail, Energy, Manufacturing, Pharma, Financial, Luxury" },
+          ].map((r, i) => (
+            <div key={i} style={{ paddingBottom: 12, borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#FFFFFF", marginBottom: 2 }}>{r.label}</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{r.value}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{ padding: "12px 16px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Long-term TAM</div>
+          <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
+          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>All enterprise strategic coordination infrastructure globally</div>
+        </div>
+      </div>
+
+      {/* Right — Microsoft distribution wedge */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 44px" }}>
+        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>The Distribution Wedge</div>
+        <h3 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+          Every Fortune 1000 has Microsoft's AI stack.<br />None have the operating model to use it.
+        </h3>
+        <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 18 }}>
+          Copilot, Azure, Teams, M365 — live in every Fortune 1000. The coordination layer above that investment doesn't exist. Readiness OS is that layer. Every Microsoft enterprise partner conversation leads here.
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
+          {[
+            "Microsoft Teams — protocol activation notifications live",
+            "Azure AD / Entra — SSO across the enterprise",
+            "Copilot Studio — signal analysis and summarization layer",
+            "SharePoint / M365 — documentation staging and distribution",
+          ].map((item) => (
+            <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+              <div style={{ width: 4, height: 4, background: TEAL, borderRadius: "50%", flexShrink: 0, marginTop: 5 }} />
+              <span style={{ fontSize: 12, color: NAVY, fontWeight: 500 }}>{item}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ padding: "14px 18px", background: `rgba(43,138,110,0.06)`, border: `1px solid rgba(43,138,110,0.2)`, borderLeft: `3px solid ${TEAL}` }}>
+          <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.6 }}>
+            <strong style={{ color: NAVY }}>Category:</strong> Strategic Coordination Infrastructure — no category leader exists. The window to define it is 18 months. We are already in it.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Slide 9: The Moat ────────────────────────────────────────────────────────
 function MoatSlide() {
   const moats = [
     {
@@ -383,8 +511,8 @@ function MoatSlide() {
     {
       num: "02",
       title: "Compounding organizational intelligence",
-      body: "Every activation makes the platform more specific to that organization's failure modes, decision preferences, and stakeholder dynamics. This is the mechanism behind net retention above 100%: the platform becomes more valuable with each use.",
-      note: "Ownership Close-Out Gate + Recovery vs. Optimization debrief shipped April 2026 — built directly from Dr. Kerry Huang's 408-firm governance research",
+      body: "Every activation encodes organization-specific failure modes, stakeholder dynamics, and decision preferences via the Ownership Close-Out Gate. Ownership transfer rate ≥70% = Confirmed. <35% = Silence Detected. Built from Dr. Huang's 408-firm governance research. No two organizations produce the same platform after 12 activations. The mechanism behind net retention above 100%.",
+      note: "Ownership Close-Out Gate + Debrief Classification shipped April 2026 — Huang's 408-firm governance research encoded in the platform",
     },
     {
       num: "03",
@@ -501,11 +629,11 @@ function ModelSlide() {
 // ─── Slide 9: Traction / Why SpeedRun ────────────────────────────────────────
 function TractionSlide() {
   const productMetrics = [
-    "Live in production at vaughnmartin.com",
-    "151 page components · 170 Readiness Protocols · 221 triggers",
-    "Live signal pipeline · 248 data points · 15-minute cycles",
-    "7 ecosystem integrations · 5 AI surfaces",
-    "$75K pilot priced below procurement threshold · 90-day ROI",
+    "Live in production — 151 pages, fully operational at vaughnmartin.com",
+    "170 Readiness Protocols · 221 triggers · 248 signal data points · 15-min cycles",
+    "Command Tower · War Room · Shadow Simulator · Readiness Score · Regulatory Calendar",
+    "7 Microsoft-stack integrations · 6 industry sector packs · 3 strategic domains",
+    "12-Minute Test Drive live — public conversion funnel proving the thesis in real time",
   ];
   const validation = [
     "4 independent researchers publicly validated thesis",
@@ -698,8 +826,10 @@ const SLIDES = [
   { component: ProblemSlide, label: "The Problem" },
   { component: InsightSlide, label: "The Insight" },
   { component: ProductSlide, label: "The Product" },
+  { component: PlatformDepthSlide, label: "Platform Depth" },
   { component: ValidationSlide, label: "Validation" },
   { component: WhyNowSlide, label: "Why Now" },
+  { component: MarketSlide, label: "The Market" },
   { component: MoatSlide, label: "The Moat" },
   { component: ModelSlide, label: "The Model" },
   { component: TractionSlide, label: "Traction" },
