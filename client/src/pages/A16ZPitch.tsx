@@ -1369,14 +1369,14 @@ export default function A16ZPitch() {
     for (let i = 0; i < SLIDES.length; i++) {
       onProgress(i + 1);
       const container = document.createElement('div');
-      // Keep inside viewport (left:0, top:0) so browser computes full layout.
-      // opacity:0 + pointer-events:none keeps it invisible and non-interactive.
-      // z-index:998 sits below the export overlay (z-index:999) as a safety net.
+      // Keep inside viewport (left:0, top:0) so browser computes full flex/grid layout.
+      // z-index:998 sits below the export loading overlay (z-index:999) so the user
+      // never sees the slide — but html2canvas captures it without any opacity mask.
       container.style.cssText = [
         'position:fixed', 'left:0', 'top:0',
         `width:${SLIDE_W}px`, `height:${SLIDE_H}px`,
         'overflow:hidden', 'z-index:998',
-        'opacity:0', 'pointer-events:none',
+        'pointer-events:none',
       ].join(';');
       document.body.appendChild(container);
       const SlideComp = SLIDES[i].component;
