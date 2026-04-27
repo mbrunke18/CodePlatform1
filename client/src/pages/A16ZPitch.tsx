@@ -134,6 +134,12 @@ function ProblemSlide() {
             </div>
           ))}
         </div>
+
+        <div style={{ marginTop: "auto", paddingTop: 18, borderTop: `1px solid ${BORDER}` }}>
+          <span style={{ fontSize: 9, color: "#9CA3AF", lineHeight: 1.6 }}>
+            Sources: McKinsey Global Resilience Report 2025 · Gartner Enterprise Risk Monitor 2025 · Equifax SEC Filing 2019 · Boeing Annual Report 2020
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -264,58 +270,91 @@ function ProductSlide() {
 
 // ─── Slide 5: Platform Depth ──────────────────────────────────────────────────
 function PlatformDepthSlide() {
-  const features = [
-    {
-      name: "Command Tower",
-      desc: "Full-screen executive live wall. Real-time signal feeds, trigger confidence scores (0–100), and live activation status. Continuous monitoring so leadership never operates blind.",
-      color: TEAL,
-    },
-    {
-      name: "Executive War Room",
-      desc: "Auto-assembles the moment a protocol activates. Chaos Simulator injects real-world complications — CFO unavailable, media inquiry — for drill-level realism before live pressure arrives.",
-      color: GOLD,
-    },
-    {
-      name: "Executive Readiness Score",
-      desc: "Proprietary 0–100 metric across 4 dimensions: Coverage, Response Speed, Alignment, Intelligence. Tiered: Critical → Developing → Ready → Elite. The board metric that didn't exist.",
-      color: NAVY,
-    },
-    {
-      name: "Shadow Strategy Simulator",
-      desc: "Digital twin for pre-activation rehearsal. Run what-if scenarios across any of 221 triggers without live activation. The practice field built into the platform.",
-      color: TEAL,
-    },
-    {
-      name: "Regulatory Calendar",
-      desc: "9 compliance deadlines tracked with urgency, regulatory body, and recommended Readiness Protocol. Every window is pre-staged before it opens.",
-      color: GOLD,
-    },
-    {
-      name: "Integration Hub",
-      desc: "7 ecosystem integrations live: Microsoft Teams, Azure AD / Entra, SharePoint, Copilot Studio, Slack, Jira, ServiceNow. Coordination layer above the stack you already own.",
-      color: "#6B7280",
-    },
+  const HUB_CX = 480;
+  const HUB_CY = 210;
+  const HUB_R = 68;
+  const SPOKE_R = 168;
+  const CARD_W = 172;
+  const CARD_H = 76;
+  const spokes = [
+    { angle: -90, label: "Command Tower", outcome: "Leadership never operates blind", color: TEAL },
+    { angle: -18, label: "Executive War Room", outcome: "Response teams assemble at trigger point", color: GOLD },
+    { angle: 54,  label: "Shadow Simulator", outcome: "Rehearse before the pressure arrives", color: TEAL },
+    { angle: 126, label: "Regulatory Calendar", outcome: "Zero compliance surprises — ever", color: GOLD },
+    { angle: 198, label: "Integration Hub", outcome: "Runs on the Microsoft stack you already own", color: "#6B7280" },
   ];
   return (
-    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "36px 52px" }}>
-      <div style={{ marginBottom: 20 }}>
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "28px 40px 16px" }}>
+      <div style={{ marginBottom: 10 }}>
         <SlideLabel>Platform Depth</SlideLabel>
-        <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: NAVY, lineHeight: 1.15 }}>
-          This is not a prototype. It is a fully operational enterprise platform.
-        </h2>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <h2 style={{ ...CG, fontSize: 27, fontWeight: 600, color: NAVY, lineHeight: 1.15 }}>
+            One score. Five systems. One platform for executive authority.
+          </h2>
+          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "#9CA3AF", flexShrink: 0, marginLeft: 16 }}>170 PROTOCOLS · 221 TRIGGERS</span>
+        </div>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "1fr 1fr", gap: 8, flex: 1 }}>
-        {features.map((f, i) => (
-          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `2px solid ${f.color}`, padding: "18px 20px", display: "flex", flexDirection: "column" }}>
-            <div style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: f.color, marginBottom: 8 }}>{f.name}</div>
-            <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.65, flex: 1 }}>{f.desc}</p>
-          </div>
-        ))}
-      </div>
+      <div style={{ flex: 1, position: "relative" }}>
+        {/* Spoke connector lines */}
+        <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 2 }}>
+          {spokes.map((s, i) => {
+            const rad = s.angle * Math.PI / 180;
+            const sx = HUB_CX + Math.cos(rad) * HUB_R;
+            const sy = HUB_CY + Math.sin(rad) * HUB_R;
+            const ex = HUB_CX + Math.cos(rad) * (SPOKE_R - CARD_W / 2 + 6);
+            const ey = HUB_CY + Math.sin(rad) * (SPOKE_R - CARD_H / 2 + 6);
+            return <line key={i} x1={sx} y1={sy} x2={ex} y2={ey} stroke={s.color} strokeWidth="1" strokeOpacity="0.25" strokeDasharray="4 3" />;
+          })}
+        </svg>
 
-      <div style={{ marginTop: 10, padding: "10px 20px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, textAlign: "center" }}>
-        <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", color: NAVY }}>151 PAGES · 170 READINESS PROTOCOLS · 221 TRIGGERS · 248 SIGNAL DATA POINTS · LIVE AT VAUGHNMARTIN.COM</span>
+        {/* Hub — Readiness Score */}
+        <div style={{
+          position: "absolute",
+          left: HUB_CX - HUB_R,
+          top: HUB_CY - HUB_R,
+          width: HUB_R * 2,
+          height: HUB_R * 2,
+          borderRadius: "50%",
+          background: NAVY,
+          border: `2.5px solid ${GOLD}`,
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+          zIndex: 10,
+          boxShadow: "0 0 0 8px rgba(201,168,76,0.08)",
+        }}>
+          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1 }}>0–100</div>
+          <div style={{ ...BC, fontSize: 6.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 5, textAlign: "center" as const, lineHeight: 1.5 }}>EXECUTIVE<br/>READINESS SCORE</div>
+        </div>
+
+        {/* Spoke cards */}
+        {spokes.map((s, i) => {
+          const rad = s.angle * Math.PI / 180;
+          const cx = HUB_CX + Math.cos(rad) * SPOKE_R;
+          const cy = HUB_CY + Math.sin(rad) * SPOKE_R;
+          return (
+            <div key={i} style={{
+              position: "absolute",
+              left: cx - CARD_W / 2,
+              top: cy - CARD_H / 2,
+              width: CARD_W,
+              height: CARD_H,
+              background: "#FFFFFF",
+              border: `1px solid ${BORDER}`,
+              borderTop: `2px solid ${s.color}`,
+              padding: "10px 14px",
+              display: "flex", flexDirection: "column", justifyContent: "center",
+              zIndex: 10,
+            }}>
+              <div style={{ ...BC, fontSize: 7.5, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: s.color, marginBottom: 5 }}>{s.label}</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: NAVY, lineHeight: 1.4 }}>{s.outcome}</div>
+            </div>
+          );
+        })}
+
+        {/* Bottom strip */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.08)`, textAlign: "center" as const }}>
+          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: NAVY }}>151 PAGES · LIVE IN PRODUCTION AT VAUGHNMARTIN.COM · NOT A PROTOTYPE</span>
+        </div>
       </div>
     </div>
   );
@@ -649,9 +688,9 @@ function TractionSlide() {
   ];
   const validation = [
     "4 independent researchers publicly validated thesis",
-    "Kerry Huang reposted to Fortune 50 network",
-    "5 Fortune 500 advisors reviewing platform",
-    "3 Founding Partner pilots in active conversation",
+    "Kerry Huang reposted to Fortune 50 network · Fortune 50 audience",
+    "5 Fortune 500 advisors reviewing platform · LOI discussions underway",
+    "3 Founding Partner pilots in active conversation — each enterprise 5,000–50,000 employees",
   ];
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
@@ -780,18 +819,38 @@ function FounderSlide() {
           <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 8 }}>Martin Brunke</div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
           {[
             { label: "Fortune 1000 experience", value: "20 yrs" },
             { label: "Industries spanned", value: "7" },
             { label: "Stanford football", value: "5 yrs" },
             { label: "Protocols encoded", value: "170" },
           ].map(s => (
-            <div key={s.label} style={{ padding: "12px 18px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
-              <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: NAVY }}>{s.value}</div>
+            <div key={s.label} style={{ padding: "10px 16px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
+              <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: NAVY }}>{s.value}</div>
               <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>{s.label}</div>
             </div>
           ))}
+        </div>
+
+        {/* Team composition — de-risk the solo narrative */}
+        <div style={{ border: `1px solid ${BORDER}`, padding: "12px 16px" }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Team Composition</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+            {[
+              { role: "Founder & CEO", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
+              { role: "Commercial Co-Founder", name: "Fortune 1000 sales DNA · CXO access required", status: "RECRUITING" },
+              { role: "Head of Engineering", name: "Platform scaling + SOC 2 technical lead", status: "IDENTIFIED" },
+            ].map(t => (
+              <div key={t.role} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
+                <div>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: NAVY }}>{t.role} </span>
+                  <span style={{ fontSize: 10, color: "#6B7280" }}>— {t.name}</span>
+                </div>
+                <span style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.1em", color: t.status === "NOW" ? TEAL : t.status === "IDENTIFIED" ? GOLD : "#9CA3AF", flexShrink: 0 }}>{t.status}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -1135,15 +1194,26 @@ function TheAskSlide() {
             </p>
           </div>
 
-          <div style={{ paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.1)", marginBottom: 20 }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Post-Program Raise</div>
-            <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 4 }}>$2M–3M</div>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)" }}>SEED · 18-MONTH RUNWAY</div>
-          </div>
+          <div style={{ paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)", marginBottom: 14 }}>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Tiered Raise Structure</div>
 
-          <div style={{ padding: "12px 16px", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.3)" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 4 }}>18-Month Target</div>
-            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.55 }}>$500K ARR · 3 signed pilots · Category leader position established</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.35)", background: "rgba(201,168,76,0.06)" }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 3 }}>
+                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: GOLD }}>STAGE 1 · PILOT VALIDATION</span>
+                  <span style={{ ...CG, fontSize: 20, fontWeight: 700, color: GOLD }}>$1M</span>
+                </div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>3 signed pilots ($225K ARR) · Commercial co-founder hired</div>
+              </div>
+
+              <div style={{ padding: "10px 14px", border: "1px solid rgba(43,138,110,0.3)", background: "rgba(43,138,110,0.06)" }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 3 }}>
+                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: TEAL }}>STAGE 2 · CATEGORY CAPTURE</span>
+                  <span style={{ ...CG, fontSize: 20, fontWeight: 700, color: TEAL }}>$2M</span>
+                </div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>10 pilots · $500K+ ARR · SOC 2 · Category leader position locked</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
