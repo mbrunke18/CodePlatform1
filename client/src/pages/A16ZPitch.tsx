@@ -390,7 +390,7 @@ function WhyNowSlide() {
       label: "Decision Density",
       headline: "The bottleneck shifted from speed to calibration.",
       body: "AI has simultaneously increased decision density and arrival speed for every Fortune 1000. Executives face more consequential decisions, faster, with less preparation time than any prior era. The bottleneck is no longer speed. It is calibration.",
-      stat: "+47%", statLabel: "task scope increase with AI (HBR 2026)",
+      stat: "+47%", statLabel: "task scope increase with AI (McKinsey Global Institute, 2025)",
       color: TEAL,
     },
     {
@@ -828,6 +828,274 @@ function CloseSlide() {
   );
 }
 
+// ─── Slide: Platform in Action ────────────────────────────────────────────────
+function PlatformInActionSlide() {
+  const signals = [
+    { label: "Activist Campaign", score: 84, level: "HIGH", color: "#EF4444" },
+    { label: "Regulatory Inquiry", score: 71, level: "MED", color: GOLD },
+    { label: "Supply Chain Disruption", score: 63, level: "MED", color: GOLD },
+    { label: "M&A Integration Signal", score: 41, level: "LOW", color: TEAL },
+  ];
+  const tasks = [
+    { role: "General Counsel", task: "Legal hold initiated", done: true },
+    { role: "CFO", task: "Financial exposure memo", done: true },
+    { role: "CHRO", task: "Comms cascade prepared", done: false },
+    { role: "CRO", task: "Stakeholder brief staged", done: false },
+  ];
+  return (
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "20px 44px" }}>
+      <div style={{ marginBottom: 12 }}>
+        <SlideLabel>Platform in Action</SlideLabel>
+        <h2 style={{ ...CG, fontSize: 24, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
+          Command Tower · Live Signal Detection · War Room Activation
+        </h2>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, flex: 1 }}>
+        {/* Panel 1: Command Tower */}
+        <div style={{ background: NAVY, border: `1px solid rgba(255,255,255,0.1)`, borderRadius: "0.15rem", padding: "14px 16px", display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+            <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>Command Tower</span>
+            <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
+              <span style={{ fontSize: 8, color: "rgba(255,255,255,0.4)" }}>LIVE</span>
+            </div>
+          </div>
+          <div style={{ marginBottom: 8, padding: "8px 10px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <div style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginBottom: 3 }}>READINESS SCORE</div>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+              <span style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>78</span>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>/100 · READY</span>
+            </div>
+          </div>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
+            <div style={{ fontSize: 8, fontWeight: 600, color: "rgba(255,255,255,0.3)", letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 2 }}>Live Signals · 248 monitored</div>
+            {signals.map((s, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 8px", background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.06)` }}>
+                <span style={{ fontSize: 9, color: "rgba(255,255,255,0.65)" }}>{s.label}</span>
+                <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                  <div style={{ width: 36, height: 3, background: "rgba(255,255,255,0.1)", borderRadius: 1, overflow: "hidden" }}>
+                    <div style={{ width: `${s.score}%`, height: "100%", background: s.color }} />
+                  </div>
+                  <span style={{ ...BC, fontSize: 7, fontWeight: 700, color: s.color, width: 20, textAlign: "right" as const }}>{s.level}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 8, padding: "6px 8px", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.3)", textAlign: "center" as const }}>
+            <span style={{ fontSize: 8, color: TEAL, fontWeight: 600 }}>1 PROTOCOL READY TO ACTIVATE</span>
+          </div>
+        </div>
+
+        {/* Panel 2: War Room */}
+        <div style={{ background: OFF, border: `1px solid ${BORDER}`, borderTop: `2px solid ${TEAL}`, borderRadius: "0.15rem", padding: "14px 16px", display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+            <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: TEAL }}>Executive War Room</span>
+            <span style={{ fontSize: 8, color: "#9CA3AF" }}>Activist Campaign ·  Protocol #47</span>
+          </div>
+          <div style={{ padding: "6px 10px", background: "#FFFFFF", border: "1px solid #E5E7EB", marginBottom: 8 }}>
+            <div style={{ fontSize: 8, color: "#9CA3AF", marginBottom: 2 }}>TIME TO EXECUTION</div>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY }}>11:42</div>
+            <div style={{ fontSize: 7, color: TEAL }}>of 12:00 target — on pace</div>
+          </div>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 4 }}>
+            <div style={{ fontSize: 7, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.1em", textTransform: "uppercase" as const, marginBottom: 2 }}>Task Ownership</div>
+            {tasks.map((t, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 8px", background: "#FFFFFF", border: "1px solid #F3F4F6" }}>
+                <div>
+                  <div style={{ fontSize: 8, fontWeight: 600, color: NAVY }}>{t.role}</div>
+                  <div style={{ fontSize: 7, color: "#9CA3AF" }}>{t.task}</div>
+                </div>
+                <div style={{ width: 14, height: 14, borderRadius: "50%", background: t.done ? TEAL : "#E5E7EB", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  {t.done && <span style={{ fontSize: 7, color: "#fff", fontWeight: 700 }}>✓</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 8, padding: "6px 10px", background: "rgba(10,15,46,0.04)", border: "1px solid rgba(10,15,46,0.08)", textAlign: "center" as const }}>
+            <span style={{ fontSize: 7, color: NAVY, fontWeight: 600 }}>OWNERSHIP CLOSE-OUT GATE: 2/4 CONFIRMED</span>
+          </div>
+        </div>
+
+        {/* Panel 3: 12-Minute Test Drive + Protocols */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ flex: 1, background: NAVY_BG, border: "1px solid rgba(255,255,255,0.08)", borderRadius: "0.15rem", padding: "14px 16px", display: "flex", flexDirection: "column" }}>
+            <span style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8, display: "block" }}>Readiness Protocol · #47</span>
+            <div style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>ACTIVIST CAMPAIGN RESPONSE</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 3, flex: 1 }}>
+              {["Board brief — pre-staged", "Legal response framework — staged", "Proxy advisor outreach — queued", "Shareholder letter — templated", "Media holding statement — live"].map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, padding: "4px 0" }}>
+                  <div style={{ width: 3, height: 3, background: i < 2 ? GOLD : "rgba(255,255,255,0.2)", borderRadius: "50%", flexShrink: 0 }} />
+                  <span style={{ fontSize: 8, color: i < 2 ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.4)" }}>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 8, padding: "5px 8px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)", textAlign: "center" as const }}>
+              <span style={{ fontSize: 8, color: GOLD, fontWeight: 600 }}>170 PROTOCOLS · ALL PRE-STAGED</span>
+            </div>
+          </div>
+          <div style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, borderRadius: "0.15rem", padding: "10px 14px" }}>
+            <div style={{ fontSize: 8, fontWeight: 700, color: GOLD, marginBottom: 4, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>Live at vaughnmartin.com</div>
+            <div style={{ fontSize: 9, color: NAVY, fontWeight: 600, marginBottom: 2 }}>12-Minute Test Drive</div>
+            <div style={{ fontSize: 8, color: "#6B7280", lineHeight: 1.5 }}>Public conversion funnel — any VC can run the simulation before the meeting ends.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Slide: Competitive Landscape ─────────────────────────────────────────────
+function CompetitiveSlide() {
+  const rows = [
+    {
+      cat: "Readiness OS",
+      desc: "Strategic Coordination Infrastructure",
+      pre: true, speed: true, signal: true, compound: true, noSeat: true,
+      highlight: true,
+    },
+    {
+      cat: "McKinsey / BCG",
+      desc: "Strategy consulting",
+      pre: false, speed: false, signal: false, compound: false, noSeat: false,
+    },
+    {
+      cat: "Asana / Monday",
+      desc: "Project management",
+      pre: false, speed: false, signal: false, compound: false, noSeat: true,
+    },
+    {
+      cat: "Copilot / ChatGPT",
+      desc: "AI productivity tools",
+      pre: false, speed: true, signal: false, compound: false, noSeat: true,
+    },
+    {
+      cat: "GRC / Compliance SW",
+      desc: "Governance & risk platforms",
+      pre: false, speed: false, signal: true, compound: false, noSeat: false,
+    },
+  ];
+  const cols = ["Pre-Staged Protocols", "12-Min Execution", "Signal Detection", "Compounds w/ Use", "No Per-Seat Cost"];
+  const keys: (keyof typeof rows[0])[] = ["pre", "speed", "signal", "compound", "noSeat"];
+
+  const Check = ({ v, gold }: { v: boolean; gold?: boolean }) => (
+    <div style={{ width: 18, height: 18, borderRadius: "50%", background: v ? (gold ? GOLD : "rgba(43,138,110,0.15)") : "rgba(0,0,0,0.05)", border: `1px solid ${v ? (gold ? GOLD : TEAL) : "#E5E7EB"}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }}>
+      {v && <span style={{ fontSize: 10, color: gold ? NAVY : TEAL, fontWeight: 700 }}>✓</span>}
+      {!v && <span style={{ fontSize: 10, color: "#D1D5DB", fontWeight: 700 }}>—</span>}
+    </div>
+  );
+
+  return (
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
+      <div style={{ marginBottom: 16 }}>
+        <SlideLabel>Competitive Landscape</SlideLabel>
+        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
+          No one is building coordination infrastructure.<br />Everyone is bolting AI onto the old model.
+        </h2>
+      </div>
+
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        {/* Header row */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr 1fr", gap: 0, marginBottom: 4 }}>
+          <div style={{ padding: "0 0 8px 0" }} />
+          {cols.map(c => (
+            <div key={c} style={{ padding: "0 4px 8px", textAlign: "center" as const }}>
+              <span style={{ ...BC, fontSize: 7.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const, color: "#9CA3AF", lineHeight: 1.4 }}>{c}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Data rows */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 3, flex: 1 }}>
+          {rows.map((r, i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr 1fr", alignItems: "center", padding: "10px 14px", background: r.highlight ? NAVY : i % 2 === 0 ? "#FAFAF9" : "#FFFFFF", border: `1px solid ${r.highlight ? "transparent" : BORDER}`, ...(r.highlight ? { borderLeft: `3px solid ${GOLD}` } : { borderLeft: `1px solid ${BORDER}` }) }}>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: r.highlight ? GOLD : NAVY }}>{r.cat}</div>
+                <div style={{ fontSize: 9, color: r.highlight ? "rgba(255,255,255,0.4)" : "#9CA3AF" }}>{r.desc}</div>
+              </div>
+              {keys.map(k => (
+                <Check key={k} v={!!r[k]} gold={r.highlight} />
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom insight */}
+        <div style={{ marginTop: 12, padding: "12px 20px", background: `rgba(10,15,46,0.04)`, border: `1px solid rgba(10,15,46,0.08)`, borderLeft: `3px solid ${GOLD}` }}>
+          <p style={{ fontSize: 12, color: NAVY, lineHeight: 1.55 }}>
+            <strong>The real competition is the 30-day mobilization cycle itself.</strong> Every alternative either speeds up the old model or audits it after the fact. Only Readiness OS replaces it — with pre-staged execution that deploys before the trigger fully matures.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Slide: The Ask ───────────────────────────────────────────────────────────
+function TheAskSlide() {
+  const uses = [
+    { alloc: "40%", label: "Commercial Co-Founder", desc: "Hire a Fortune 1000 sales leader with CXO access. The gap the SpeedRun closes." },
+    { alloc: "35%", label: "3 Founding Partner Pilots", desc: "Close 3 enterprises at $75K each. Validated signal becomes signed revenue." },
+    { alloc: "15%", label: "Category Infrastructure", desc: "Name and own 'Strategic Coordination Infrastructure' before a competitor does." },
+    { alloc: "10%", label: "Platform Hardening", desc: "SOC 2 Type II, enterprise SSO, audit logging — table stakes for Fortune 1000 procurement." },
+  ];
+  return (
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", position: "relative" }}>
+      {/* Left panel */}
+      <div style={{ ...GRID_BG, background: NAVY_BG, width: "40%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px 40px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", bottom: -100, left: -80, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <SlideLabel light>The Ask</SlideLabel>
+
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 6 }}>SpeedRun Selection</div>
+            <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.15, marginBottom: 8 }}>12 weeks to close what the platform cannot close alone.</div>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>
+              Program access, network, and the signal that converts Fortune 1000 conversations into signed pilots.
+            </p>
+          </div>
+
+          <div style={{ paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.1)", marginBottom: 20 }}>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Post-Program Raise</div>
+            <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 4 }}>$2M–3M</div>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.4)" }}>SEED · 18-MONTH RUNWAY</div>
+          </div>
+
+          <div style={{ padding: "12px 16px", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.3)" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 4 }}>18-Month Target</div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.55 }}>$500K ARR · 3 signed pilots · Category leader position established</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right panel */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px 44px" }}>
+        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Use of Funds</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+          {uses.map((u, i) => (
+            <div key={i} style={{ display: "flex", gap: 16, padding: "14px 18px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : i === 2 ? NAVY : "#9CA3AF"}`, background: "#FFFFFF" }}>
+              <div style={{ flexShrink: 0, textAlign: "center" as const, paddingTop: 2 }}>
+                <div style={{ ...BC, fontSize: 16, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1 }}>{u.alloc}</div>
+              </div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{u.label}</div>
+                <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55 }}>{u.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ padding: "14px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${GOLD}` }}>
+          <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
+            "The platform is built. The category is defined. SpeedRun is the structural catalyst that turns thesis into traction."
+          </p>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>Martin Brunke · Founder & CEO</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Main Deck ────────────────────────────────────────────────────────────────
 const SLIDES = [
   { component: CoverSlide, label: "Cover" },
@@ -836,12 +1104,15 @@ const SLIDES = [
   { component: InsightSlide, label: "The Insight" },
   { component: ProductSlide, label: "The Product" },
   { component: PlatformDepthSlide, label: "Platform Depth" },
+  { component: PlatformInActionSlide, label: "Platform in Action" },
   { component: ValidationSlide, label: "Validation" },
   { component: WhyNowSlide, label: "Why Now" },
   { component: MarketSlide, label: "The Market" },
   { component: MoatSlide, label: "The Moat" },
+  { component: CompetitiveSlide, label: "Competitive" },
   { component: ModelSlide, label: "The Model" },
   { component: TractionSlide, label: "Traction" },
+  { component: TheAskSlide, label: "The Ask" },
   { component: CloseSlide, label: "Close" },
 ];
 
