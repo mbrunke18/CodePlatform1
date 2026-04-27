@@ -135,9 +135,10 @@ function ProblemSlide() {
           ))}
         </div>
 
-        <div style={{ marginTop: "auto", paddingTop: 18, borderTop: `1px solid ${BORDER}` }}>
-          <span style={{ fontSize: 9, color: "#9CA3AF", lineHeight: 1.6 }}>
-            Sources: McKinsey Global Resilience Report 2025 · Gartner Enterprise Risk Monitor 2025 · Equifax SEC Filing 2019 · Boeing Annual Report 2020
+        <div style={{ marginTop: "auto", paddingTop: 14, borderTop: `1px solid ${BORDER}` }}>
+          <div style={{ ...BC, fontSize: 7.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 5 }}>Sources</div>
+          <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.7 }}>
+            McKinsey Global Resilience Report 2025 · Gartner Enterprise Risk Monitor 2025 · Equifax SEC Filing 2019 · Boeing Annual Report 2020
           </span>
         </div>
       </div>
@@ -492,29 +493,51 @@ function WhyNowSlide() {
 function MarketSlide() {
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", position: "relative" }}>
-      {/* Left — TAM math */}
-      <div style={{ ...GRID_BG, background: NAVY_BG, width: "45%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 40px", position: "relative", overflow: "hidden" }}>
+      {/* Left — bottom-up land-and-expand model */}
+      <div style={{ ...GRID_BG, background: NAVY_BG, width: "45%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: -80, left: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
         <SlideLabel light>The Market</SlideLabel>
-        <div style={{ ...CG, fontSize: 56, fontWeight: 700, color: "#FFFFFF", lineHeight: 0.9, marginBottom: 6 }}>$500M+</div>
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>SAM · 3-Year Target</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
+
+        {/* Land → Expand → Compound stages */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 3, marginBottom: 16 }}>
           {[
-            { label: "537 US Fortune 1000", value: "× $250K/yr = $134M ARR at full penetration" },
-            { label: "+400 Global Fortune 500", value: "international expansion layer" },
-            { label: "PE-backed mid-market", value: "Thousands × $75–150K/yr" },
-            { label: "6 industry sector packs", value: "Retail, Energy, Manufacturing, Pharma, Financial, Luxury" },
-          ].map((r, i) => (
-            <div key={i} style={{ paddingBottom: 12, borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#FFFFFF", marginBottom: 2 }}>{r.label}</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{r.value}</div>
+            { stage: "LAND", acv: "$75K ACV", detail: "3 domains · 60 protocols · pilot scope", color: GOLD },
+            { stage: "EXPAND", acv: "$150–250K ACV", detail: "Full platform · 170 protocols · 12–18 months post-land", color: TEAL },
+            { stage: "COMPOUND", acv: "NRR 100%+", detail: "Org-encoded intelligence · Ownership Close-Out Gate", color: "rgba(255,255,255,0.5)" },
+          ].map((s, i) => (
+            <div key={i} style={{ display: "flex", gap: 12, padding: "9px 14px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `3px solid ${s.color}` }}>
+              <div style={{ flexShrink: 0, width: 72 }}>
+                <div style={{ ...BC, fontSize: 7.5, fontWeight: 800, letterSpacing: "0.14em", color: s.color }}>{s.stage}</div>
+                <div style={{ ...CG, fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginTop: 2 }}>{s.acv}</div>
+              </div>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.5, paddingTop: 2 }}>{s.detail}</div>
             </div>
           ))}
         </div>
-        <div style={{ padding: "12px 16px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
-          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Long-term TAM</div>
-          <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
-          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>All enterprise strategic coordination infrastructure globally</div>
+
+        {/* Realistic 3-year ARR path */}
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 8 }}>Realistic 3-Year ARR Path</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {[
+              { yr: "Yr 1", math: "3 pilots × $75K", arr: "$225K ARR", note: "proof" },
+              { yr: "Yr 2", math: "10 accounts × $120K avg", arr: "$1.2M ARR", note: "land + first expands" },
+              { yr: "Yr 3", math: "30 accounts × $155K avg", arr: "$4.65M ARR", note: "3% F1000 penetration" },
+            ].map((r, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 0, paddingBottom: 4, borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
+                <div style={{ ...BC, fontSize: 8, fontWeight: 800, color: GOLD, width: 28 }}>{r.yr}</div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", flex: 1 }}>{r.math}</div>
+                <div style={{ ...BC, fontSize: 10, fontWeight: 700, color: "#FFFFFF", marginRight: 6 }}>{r.arr}</div>
+                <div style={{ fontSize: 8, color: "rgba(255,255,255,0.25)" }}>({r.note})</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>Long-term TAM</div>
+          <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
+          <div style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", marginTop: 1 }}>Global strategic coordination infrastructure · 537 US F1000 + 400 global + PE mid-market</div>
         </div>
       </div>
 
@@ -640,7 +663,8 @@ function ModelSlide() {
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
               <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>3 Founding Partner pilots actively being qualified</div>
+                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 targets in active qualification · No signed LOI yet</div>
+                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing</div>
               </div>
             </div>
           </div>
@@ -670,42 +694,75 @@ function ModelSlide() {
         </div>
       </div>
 
-      <div style={{ marginTop: 10, textAlign: "center", padding: "10px", background: `rgba(201,168,76,0.08)`, border: `1px solid rgba(201,168,76,0.2)` }}>
-        <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: GOLD }}>ONE FORTUNE 1000 ANNUAL LICENSE = ONE GROWTH READY DEPLOYMENT. SAME PLATFORM, TWO MARKETS.</span>
+      {/* Unit Economics strip */}
+      <div style={{ marginTop: 10, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 2 }}>
+        {[
+          { label: "Pilot ACV", value: "$75K", note: "Self-liquidating CAC — pilot fee covers activation" },
+          { label: "Year 2+ ACV", value: "$150–250K", note: "Expansion to full platform after proof" },
+          { label: "5-Year LTV", value: "$1.25M+", note: "Per Fortune 1000 account at $250K × 5 years" },
+          { label: "Target NRR", value: "100%+", note: "Org-encoded intelligence drives expansion, not churn" },
+        ].map(u => (
+          <div key={u.label} style={{ padding: "8px 12px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)` }}>
+            <div style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 2 }}>{u.label}</div>
+            <div style={{ ...CG, fontSize: 17, fontWeight: 700, color: NAVY }}>{u.value}</div>
+            <div style={{ fontSize: 8.5, color: "#6B7280", lineHeight: 1.4, marginTop: 2 }}>{u.note}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-// ─── Slide 9: Traction / Why SpeedRun ────────────────────────────────────────
+// ─── Slide 9: Traction ────────────────────────────────────────────────────────
 function TractionSlide() {
   const productMetrics = [
     "Live in production — 151 pages, fully operational at vaughnmartin.com",
     "170 Readiness Protocols · 221 triggers · 248 signal data points · 15-min cycles",
     "Command Tower · War Room · Shadow Simulator · Readiness Score · Regulatory Calendar",
     "7 Microsoft-stack integrations · 6 industry sector packs · 3 strategic domains",
-    "12-Minute Test Drive live — public conversion funnel proving the thesis in real time",
+    "12-Minute Test Drive — public funnel. Any VC can run it before the meeting ends.",
   ];
   const pipeline = [
-    { stage: "Fortune 1000 Targets Identified", count: "15+", color: NAVY, sub: "Active qualification underway across 5 sectors" },
-    { stage: "Founding Partner Pilot Targets", count: "3", color: GOLD, sub: "Gaming · Finance · Manufacturing — enterprise 5K–50K employees" },
-    { stage: "Stage 1 Pilot ACV Target", count: "$225K", color: TEAL, sub: "3 pilots × $75K · No signed revenue yet" },
+    {
+      stageBadge: "IDENTIFICATION",
+      badgeColor: NAVY,
+      stage: "Fortune 1000 Targets",
+      count: "15+",
+      color: NAVY,
+      sub: "Outreach active across Gaming · Finance · Manufacturing · Retail · Energy",
+    },
+    {
+      stageBadge: "ACTIVE QUALIFICATION",
+      badgeColor: GOLD,
+      stage: "Founding Partner Pilot Targets",
+      count: "3",
+      color: GOLD,
+      sub: "Enterprise 5K–50K employees. Fit confirmed. No signed LOI. Conversations underway.",
+    },
+    {
+      stageBadge: "STAGE 1 GATE",
+      badgeColor: TEAL,
+      stage: "Target ACV at Pilot Close",
+      count: "$225K",
+      color: TEAL,
+      sub: "3 pilots × $75K flat fee · No signed revenue yet · SpeedRun closes this gap",
+    },
   ];
   return (
-    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
-      <div style={{ marginBottom: 14 }}>
-        <SlideLabel>Traction · Why a16z</SlideLabel>
-        <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
-          Platform built. Thesis validated. Three gaps left to close.
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "22px 48px" }}>
+      <div style={{ marginBottom: 12 }}>
+        <SlideLabel>Traction</SlideLabel>
+        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
+          Platform built. Thesis validated. Pilots are the gap SpeedRun closes.
         </h2>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, flex: 1 }}>
-        {/* Left: Product + Validation */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <div style={{ flexShrink: 0, border: `1px solid ${BORDER}`, padding: "14px 18px" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>Product</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+        {/* Left: Product + Pipeline */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ flexShrink: 0, border: `1px solid ${BORDER}`, padding: "12px 16px" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 7 }}>What's Built</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
               {productMetrics.map(m => (
                 <div key={m} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                   <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0, marginTop: 4 }} />
@@ -715,57 +772,58 @@ function TractionSlide() {
             </div>
           </div>
 
-          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "16px 20px", display: "flex", flexDirection: "column" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Enterprise Pipeline</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "14px 18px", display: "flex", flexDirection: "column" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Enterprise Pipeline · Pilot Status</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1 }}>
               {pipeline.map((p, i) => (
-                <div key={i} style={{ display: "flex", gap: 14, padding: "10px 14px", borderLeft: `3px solid ${p.color}`, background: "#FAFAF9", border: `1px solid ${BORDER}`, borderLeftWidth: 3, borderLeftColor: p.color }}>
-                  <div style={{ flexShrink: 0, minWidth: 52, textAlign: "right" as const }}>
-                    <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: p.color, lineHeight: 1 }}>{p.count}</div>
+                <div key={i} style={{ display: "flex", gap: 12, padding: "9px 12px", background: "#FAFAF9", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${p.color}` }}>
+                  <div style={{ flexShrink: 0, minWidth: 48, textAlign: "right" as const }}>
+                    <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: p.color, lineHeight: 1 }}>{p.count}</div>
                   </div>
-                  <div>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{p.stage}</div>
-                    <div style={{ fontSize: 10, color: "#6B7280", lineHeight: 1.4 }}>{p.sub}</div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 2 }}>
+                      <div style={{ ...BC, fontSize: 7, fontWeight: 800, letterSpacing: "0.1em", color: p.badgeColor, background: `rgba(10,15,46,0.06)`, padding: "1px 5px", borderRadius: 1 }}>{p.stageBadge}</div>
+                    </div>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{p.stage}</div>
+                    <div style={{ fontSize: 9.5, color: "#6B7280", lineHeight: 1.4 }}>{p.sub}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 10, padding: "7px 10px", background: "rgba(10,15,46,0.04)", border: `1px solid rgba(10,15,46,0.08)` }}>
-              <span style={{ fontSize: 9, color: "#9CA3AF" }}>Validation: 4 independent researchers · Kerry Huang (Fortune 50 network repost) · 5 Fortune 500 advisors reviewing</span>
+            <div style={{ marginTop: 8, padding: "6px 10px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.07)` }}>
+              <span style={{ fontSize: 9, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · 5 Fortune 500 advisors</span>
             </div>
           </div>
         </div>
 
-        {/* Right: Why a16z */}
-        <div style={{ ...GRID_BG, background: NAVY_BG, padding: "22px 28px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
+        {/* Right: Why a16z — simplified */}
+        <div style={{ ...GRID_BG, background: NAVY_BG, padding: "22px 26px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -100, right: -100, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)" }} />
           <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Why a16z · Not Just Any Program</div>
-            <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: "#FFFFFF", lineHeight: 1, marginBottom: 4 }}>12</div>
-            <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>WEEKS TO BUILD WHAT'S MISSING</div>
-            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 14 }}>
-              Close 3 Founding Partner pilots. Bring on an equity-based commercial co-founder with Fortune 1000 CXO access. Lock the Strategic Coordination Infrastructure category name before anyone else does.
-            </p>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Why a16z · Not Just Any Program</div>
 
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Why a16z Specifically</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 12 }}>
+              12 weeks to close what the platform cannot close alone.
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
               {[
-                "a16z's enterprise portfolio validates the thesis — 500+ companies facing the same operating model gap",
-                "Pattern recognition across enterprise transformation no other program has",
-                "Introduction velocity to Fortune 1000 CXOs capital alone cannot buy",
-                "The structural catalyst — from solo builder to funded company with commercial co-founder",
-              ].map(u => (
-                <div key={u} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <div style={{ width: 3, height: 3, background: GOLD, flexShrink: 0, marginTop: 5 }} />
-                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.45 }}>{u}</span>
+                { head: "Enterprise introduction velocity", body: "Fortune 1000 CXO access the a16z portfolio provides cannot be bought with capital alone." },
+                { head: "Category-defining signal", body: "a16z backing names the 'Strategic Coordination Infrastructure' category before anyone else does." },
+                { head: "Commercial co-founder catalyst", body: "SpeedRun is the structural moment to bring on the equity-based commercial co-founder vetting is already underway for." },
+              ].map((u, i) => (
+                <div key={i} style={{ display: "flex", gap: 10, padding: "9px 12px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `2px solid rgba(201,168,76,0.4)` }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#FFFFFF", marginBottom: 3 }}>{u.head}</div>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>{u.body}</div>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div style={{ marginTop: 14, padding: "12px 16px", border: `1px solid rgba(255,255,255,0.12)`, background: "rgba(255,255,255,0.04)" }}>
-              <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>What Isn't Done Yet</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.55 }}>
-                No signed pilot. Commercial co-founder vetting underway (equity-based, not a budget line). SpeedRun accelerates both timelines.
+            <div style={{ marginTop: 12, padding: "9px 14px", border: `1px solid rgba(255,255,255,0.1)`, background: "rgba(255,255,255,0.03)" }}>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.55 }}>
+                <strong style={{ color: "rgba(255,255,255,0.65)" }}>What isn't done yet:</strong> No signed pilot. No signed LOI. SpeedRun closes the commercial gap the platform cannot close alone.
               </div>
             </div>
           </div>
