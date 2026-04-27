@@ -838,6 +838,72 @@ function CloseSlide() {
   );
 }
 
+// ─── Slide: Live Product Screenshot ──────────────────────────────────────────
+function LiveProductSlide() {
+  const callouts = [
+    { top: "19%", left: "1%", label: "221 Triggers Armed", sub: "Pre-wired to every domain", color: GOLD, align: "left" as const },
+    { top: "19%", left: "34%", label: "20 Active Detections", sub: "Live ingested · past 30 days", color: "#EF4444", align: "left" as const },
+    { top: "19%", left: "54%", label: "170 Protocols Ready", sub: "Pre-staged — not built on demand", color: TEAL, align: "left" as const },
+    { top: "57%", left: "1%", label: "82% Confidence Trigger", sub: "System-recommended protocol auto-staged", color: GOLD, align: "left" as const },
+    { top: "35%", left: "70%", label: "9 of 9 Domains Monitored", sub: "Competitive · M&A · Regulatory · Financial…", color: TEAL, align: "left" as const },
+  ];
+  return (
+    <div style={{ background: "#020816", width: "100%", height: "100%", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
+      {/* Top label strip */}
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 28px 8px", borderBottom: "1px solid rgba(201,168,76,0.2)", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)", zIndex: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ width: 18, height: 1.5, background: GOLD, opacity: 0.7 }} />
+          <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: GOLD }}>Live Product</span>
+          <div style={{ width: 18, height: 1.5, background: GOLD, opacity: 0.7 }} />
+        </div>
+        <div style={{ ...CG, fontSize: 16, fontWeight: 600, color: "#FFFFFF" }}>
+          Command Tower — live at vaughnmartin.com
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 7, height: 7, borderRadius: "50%", background: TEAL, boxShadow: `0 0 8px ${TEAL}` }} />
+          <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", color: TEAL }}>LIVE · AUTO-REFRESHING</span>
+        </div>
+      </div>
+
+      {/* Screenshot with annotations */}
+      <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+        {/* The actual screenshot */}
+        <img
+          src="/deck-assets/command-tower.jpg"
+          alt="Command Tower live view"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
+        />
+
+        {/* Subtle dark vignette at edges for visual depth */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(2,8,22,0.35) 0%, transparent 18%, transparent 65%, rgba(2,8,22,0.2) 100%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 70%, rgba(2,8,22,0.6) 100%)", pointerEvents: "none" }} />
+
+        {/* Callout annotations */}
+        {callouts.map((c, i) => (
+          <div key={i} style={{ position: "absolute", top: c.top, left: c.left, zIndex: 20 }}>
+            <div style={{ display: "inline-flex", flexDirection: "column", background: "rgba(2,8,22,0.88)", border: `1px solid ${c.color}`, borderLeft: `3px solid ${c.color}`, padding: "5px 9px", backdropFilter: "blur(6px)", maxWidth: 180 }}>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: c.color, letterSpacing: "0.06em" }}>{c.label}</span>
+              <span style={{ fontSize: 8, color: "rgba(255,255,255,0.5)", lineHeight: 1.4, marginTop: 1 }}>{c.sub}</span>
+            </div>
+          </div>
+        ))}
+
+        {/* Bottom brand bar */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 24px", background: "rgba(2,8,22,0.85)", backdropFilter: "blur(8px)", borderTop: `1px solid rgba(201,168,76,0.2)`, display: "flex", alignItems: "center", justifyContent: "space-between", zIndex: 20 }}>
+          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)" }}>
+            THE PLATFORM IS NOT A PROTOTYPE. THIS IS PRODUCTION.
+          </span>
+          <div style={{ display: "flex", gap: 16 }}>
+            {["248 Signal Data Points", "15-Min Scan Cycles", "6 Execution Stages"].map(s => (
+              <span key={s} style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.4)" }}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Slide: Platform in Action ────────────────────────────────────────────────
 function PlatformInActionSlide() {
   const signals = [
@@ -1117,6 +1183,7 @@ const SLIDES = [
   { component: InsightSlide, label: "The Insight" },
   { component: ProductSlide, label: "The Product" },
   { component: PlatformDepthSlide, label: "Platform Depth" },
+  { component: LiveProductSlide, label: "Live Product" },
   { component: PlatformInActionSlide, label: "Platform in Action" },
   { component: ValidationSlide, label: "Validation" },
   { component: WhyNowSlide, label: "Why Now" },
