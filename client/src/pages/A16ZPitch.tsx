@@ -1369,10 +1369,14 @@ export default function A16ZPitch() {
     for (let i = 0; i < SLIDES.length; i++) {
       onProgress(i + 1);
       const container = document.createElement('div');
+      // Keep inside viewport (left:0, top:0) so browser computes full layout.
+      // opacity:0 + pointer-events:none keeps it invisible and non-interactive.
+      // z-index:998 sits below the export overlay (z-index:999) as a safety net.
       container.style.cssText = [
-        'position:fixed', 'left:-9999px', 'top:0',
+        'position:fixed', 'left:0', 'top:0',
         `width:${SLIDE_W}px`, `height:${SLIDE_H}px`,
-        'overflow:hidden', 'z-index:-9999', 'pointer-events:none',
+        'overflow:hidden', 'z-index:998',
+        'opacity:0', 'pointer-events:none',
       ].join(';');
       document.body.appendChild(container);
       const SlideComp = SLIDES[i].component;
@@ -1380,22 +1384,24 @@ export default function A16ZPitch() {
       // Render and wait for fonts + layout to fully settle
       await new Promise<void>(resolve => {
         root.render(<SlideComp />);
-        setTimeout(resolve, 700);
+        setTimeout(resolve, 1000);
       });
       // Wait for any images inside the slide to load
       const imgs = Array.from(container.querySelectorAll('img'));
       if (imgs.length > 0) {
         await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })));
-        await new Promise(r => setTimeout(r, 100));
+        await new Promise(r => setTimeout(r, 150));
       }
 
       const canvas = await html2canvas(container, {
         width: SLIDE_W, height: SLIDE_H, scale: 2,
         useCORS: true, allowTaint: false, logging: false,
         backgroundColor: '#ffffff',
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight,
-        imageTimeout: 8000,
+        // Use slide dimensions so flex/grid resolves against 960×540, not the browser window
+        windowWidth: SLIDE_W,
+        windowHeight: SLIDE_H,
+        scrollX: 0, scrollY: 0,
+        imageTimeout: 10000,
         x: 0, y: 0,
       });
       images.push(canvas.toDataURL('image/jpeg', 0.95));
