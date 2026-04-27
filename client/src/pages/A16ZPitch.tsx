@@ -850,7 +850,7 @@ function LiveProductSlide() {
   return (
     <div style={{ background: "#020816", width: "100%", height: "100%", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
       {/* Top label strip */}
-      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 28px 8px", borderBottom: "1px solid rgba(201,168,76,0.2)", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)", zIndex: 10 }}>
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 28px 8px", borderBottom: "1px solid rgba(201,168,76,0.3)", background: "rgba(2,8,22,0.96)", zIndex: 10 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div style={{ width: 18, height: 1.5, background: GOLD, opacity: 0.7 }} />
           <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: GOLD }}>Live Product</span>
@@ -871,6 +871,7 @@ function LiveProductSlide() {
         <img
           src="/deck-assets/command-tower.jpg"
           alt="Command Tower live view"
+          crossOrigin="anonymous"
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
         />
 
@@ -881,7 +882,7 @@ function LiveProductSlide() {
         {/* Callout annotations */}
         {callouts.map((c, i) => (
           <div key={i} style={{ position: "absolute", top: c.top, left: c.left, zIndex: 20 }}>
-            <div style={{ display: "inline-flex", flexDirection: "column", background: "rgba(2,8,22,0.88)", border: `1px solid ${c.color}`, borderLeft: `3px solid ${c.color}`, padding: "5px 9px", backdropFilter: "blur(6px)", maxWidth: 180 }}>
+            <div style={{ display: "inline-flex", flexDirection: "column", background: "rgba(2,8,22,0.97)", border: `1px solid ${c.color}`, borderLeft: `3px solid ${c.color}`, padding: "5px 9px", maxWidth: 180 }}>
               <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: c.color, letterSpacing: "0.06em" }}>{c.label}</span>
               <span style={{ fontSize: 8, color: "rgba(255,255,255,0.5)", lineHeight: 1.4, marginTop: 1 }}>{c.sub}</span>
             </div>
@@ -889,7 +890,7 @@ function LiveProductSlide() {
         ))}
 
         {/* Bottom brand bar */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 24px", background: "rgba(2,8,22,0.85)", backdropFilter: "blur(8px)", borderTop: `1px solid rgba(201,168,76,0.2)`, display: "flex", alignItems: "center", justifyContent: "space-between", zIndex: 20 }}>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 24px", background: "rgba(2,8,22,0.97)", borderTop: `1px solid rgba(201,168,76,0.25)`, display: "flex", alignItems: "center", justifyContent: "space-between", zIndex: 20 }}>
           <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)" }}>
             THE PLATFORM IS NOT A PROTOTYPE. THIS IS PRODUCTION.
           </span>
@@ -1229,11 +1230,18 @@ export default function A16ZPitch() {
         root.render(<SlideComp />);
         setTimeout(resolve, 450);
       });
+      // Wait for images inside the container to load before capturing
+      const imgs = Array.from(container.querySelectorAll('img'));
+      if (imgs.length > 0) {
+        await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })));
+      }
+
       const canvas = await html2canvas(container, {
         width: SLIDE_W, height: SLIDE_H, scale: 2,
-        useCORS: true, allowTaint: true, logging: false,
-        backgroundColor: '#0A0F2E',
+        useCORS: true, allowTaint: false, logging: false,
+        backgroundColor: '#ffffff',
         windowWidth: SLIDE_W, windowHeight: SLIDE_H,
+        imageTimeout: 8000,
       });
       images.push(canvas.toDataURL('image/jpeg', 0.95));
       root.unmount();
