@@ -1397,10 +1397,9 @@ export default function A16ZPitch() {
         width: SLIDE_W, height: SLIDE_H, scale: 2,
         useCORS: true, allowTaint: false, logging: false,
         backgroundColor: '#ffffff',
-        // Use slide dimensions so flex/grid resolves against 960×540, not the browser window
-        windowWidth: SLIDE_W,
-        windowHeight: SLIDE_H,
-        scrollX: 0, scrollY: 0,
+        // Match the actual browser viewport so Tailwind/CSS breakpoints resolve correctly
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
         imageTimeout: 10000,
         x: 0, y: 0,
       });
