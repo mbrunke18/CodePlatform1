@@ -640,7 +640,7 @@ function ModelSlide() {
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
               <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>3 Founding Partner pilots in active conversation</div>
+                <div style={{ fontSize: 11, color: GOLD, fontWeight: 600 }}>3 Founding Partner pilots actively being qualified</div>
               </div>
             </div>
           </div>
@@ -686,11 +686,10 @@ function TractionSlide() {
     "7 Microsoft-stack integrations · 6 industry sector packs · 3 strategic domains",
     "12-Minute Test Drive live — public conversion funnel proving the thesis in real time",
   ];
-  const validation = [
-    "4 independent researchers publicly validated thesis",
-    "Kerry Huang reposted to Fortune 50 network · Fortune 50 audience",
-    "5 Fortune 500 advisors reviewing platform · LOI discussions underway",
-    "3 Founding Partner pilots in active conversation — each enterprise 5,000–50,000 employees",
+  const pipeline = [
+    { stage: "Fortune 1000 Targets Identified", count: "15+", color: NAVY, sub: "Active qualification underway across 5 sectors" },
+    { stage: "Founding Partner Pilot Targets", count: "3", color: GOLD, sub: "Gaming · Finance · Manufacturing — enterprise 5K–50K employees" },
+    { stage: "Stage 1 Pilot ACV Target", count: "$225K", color: TEAL, sub: "3 pilots × $75K · No signed revenue yet" },
   ];
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
@@ -716,15 +715,23 @@ function TractionSlide() {
             </div>
           </div>
 
-          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "16px 20px" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Validation</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
-              {validation.map(v => (
-                <div key={v} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <div style={{ width: 3, height: 3, background: GOLD, flexShrink: 0, marginTop: 5 }} />
-                  <span style={{ fontSize: 11, color: "#374151", lineHeight: 1.45 }}>{v}</span>
+          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "16px 20px", display: "flex", flexDirection: "column" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Enterprise Pipeline</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+              {pipeline.map((p, i) => (
+                <div key={i} style={{ display: "flex", gap: 14, padding: "10px 14px", borderLeft: `3px solid ${p.color}`, background: "#FAFAF9", border: `1px solid ${BORDER}`, borderLeftWidth: 3, borderLeftColor: p.color }}>
+                  <div style={{ flexShrink: 0, minWidth: 52, textAlign: "right" as const }}>
+                    <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: p.color, lineHeight: 1 }}>{p.count}</div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{p.stage}</div>
+                    <div style={{ fontSize: 10, color: "#6B7280", lineHeight: 1.4 }}>{p.sub}</div>
+                  </div>
                 </div>
               ))}
+            </div>
+            <div style={{ marginTop: 10, padding: "7px 10px", background: "rgba(10,15,46,0.04)", border: `1px solid rgba(10,15,46,0.08)` }}>
+              <span style={{ fontSize: 9, color: "#9CA3AF" }}>Validation: 4 independent researchers · Kerry Huang (Fortune 50 network repost) · 5 Fortune 500 advisors reviewing</span>
             </div>
           </div>
         </div>
@@ -737,7 +744,7 @@ function TractionSlide() {
             <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: "#FFFFFF", lineHeight: 1, marginBottom: 4 }}>12</div>
             <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>WEEKS TO BUILD WHAT'S MISSING</div>
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 14 }}>
-              Close 3 Founding Partners. Hire commercial co-founder with Fortune 1000 DNA. Name and own the Strategic Coordination Infrastructure category.
+              Close 3 Founding Partner pilots. Bring on an equity-based commercial co-founder with Fortune 1000 CXO access. Lock the Strategic Coordination Infrastructure category name before anyone else does.
             </p>
 
             <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Why a16z Specifically</div>
@@ -758,7 +765,7 @@ function TractionSlide() {
             <div style={{ marginTop: 14, padding: "12px 16px", border: `1px solid rgba(255,255,255,0.12)`, background: "rgba(255,255,255,0.04)" }}>
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>What Isn't Done Yet</div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.55 }}>
-                No signed pilot. No commercial co-founder. SpeedRun is the forcing function that closes both gaps and locks in full-time structure.
+                No signed pilot. Commercial co-founder vetting underway (equity-based, not a budget line). SpeedRun accelerates both timelines.
               </div>
             </div>
           </div>
@@ -779,7 +786,7 @@ function FounderSlide() {
         <div style={{ position: "relative", zIndex: 1 }}>
           <SlideLabel light>The Founder</SlideLabel>
           <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 6 }}>Martin Brunke</div>
-          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 18 }}>Founder & CEO · VaughnMartin</div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 18 }}>Founder, CEO & Chief Architect · VaughnMartin</div>
 
           <div style={{ marginBottom: 24 }}>
             <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 12 }}>Fortune 1000 · 20 Years</div>
@@ -838,7 +845,7 @@ function FounderSlide() {
           <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Team Composition</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
             {[
-              { role: "Founder & CEO", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
+              { role: "Founder, CEO & Chief Architect", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
               { role: "Commercial Co-Founder", name: "Fortune 1000 sales DNA · CXO access required", status: "RECRUITING" },
               { role: "Head of Engineering", name: "Platform scaling + SOC 2 technical lead", status: "IDENTIFIED" },
             ].map(t => (
@@ -1170,10 +1177,10 @@ function CompetitiveSlide() {
 // ─── Slide: The Ask ───────────────────────────────────────────────────────────
 function TheAskSlide() {
   const uses = [
-    { alloc: "40%", label: "Commercial Co-Founder", desc: "Hire a Fortune 1000 sales leader with CXO access. The gap the SpeedRun closes." },
-    { alloc: "35%", label: "3 Founding Partner Pilots", desc: "Close 3 enterprises at $75K each. Validated signal becomes signed revenue." },
-    { alloc: "15%", label: "Category Infrastructure", desc: "Name and own 'Strategic Coordination Infrastructure' before a competitor does." },
-    { alloc: "10%", label: "Platform Hardening", desc: "SOC 2 Type II, enterprise SSO, audit logging — table stakes for Fortune 1000 procurement." },
+    { alloc: "40%", label: "Engineering Squad", desc: "Scale the existing architecture with a dedicated dev team — feature velocity, reliability, and enterprise-grade infrastructure.", color: TEAL },
+    { alloc: "30%", label: "Pilot Success", desc: "High-touch support to land and expand 3 Founding Partner pilots. Enterprise deals require human bandwidth.", color: GOLD },
+    { alloc: "20%", label: "Market Presence", desc: "Lock the 'Strategic Coordination Infrastructure' category name and convert pipeline into signed contracts.", color: NAVY },
+    { alloc: "10%", label: "SOC 2 & Security", desc: "SOC 2 Type II, enterprise SSO, audit logging — procurement table stakes for every Fortune 1000 deal.", color: "#6B7280" },
   ];
   return (
     <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", position: "relative" }}>
@@ -1223,9 +1230,9 @@ function TheAskSlide() {
         <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Use of Funds</div>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
           {uses.map((u, i) => (
-            <div key={i} style={{ display: "flex", gap: 16, padding: "14px 18px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : i === 2 ? NAVY : "#9CA3AF"}`, background: "#FFFFFF" }}>
+            <div key={i} style={{ display: "flex", gap: 16, padding: "14px 18px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${u.color}`, background: "#FFFFFF" }}>
               <div style={{ flexShrink: 0, textAlign: "center" as const, paddingTop: 2 }}>
-                <div style={{ ...BC, fontSize: 16, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1 }}>{u.alloc}</div>
+                <div style={{ ...BC, fontSize: 16, fontWeight: 900, color: u.color, lineHeight: 1 }}>{u.alloc}</div>
               </div>
               <div>
                 <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{u.label}</div>
@@ -1237,7 +1244,7 @@ function TheAskSlide() {
 
         <div style={{ padding: "14px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${GOLD}` }}>
           <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
-            "The platform is built. The category is defined. SpeedRun is the structural catalyst that turns thesis into traction."
+            "The platform is built. The category is defined. The commercial co-founder is equity, not a budget line. Every dollar goes toward growth."
           </p>
           <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>Martin Brunke · Founder & CEO</div>
         </div>
