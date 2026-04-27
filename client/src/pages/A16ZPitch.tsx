@@ -906,17 +906,17 @@ function CloseSlide() {
 
 // ─── Slide: Live Product Screenshot ──────────────────────────────────────────
 function LiveProductSlide() {
-  const callouts = [
-    { top: "19%", left: "1%", label: "221 Triggers Armed", sub: "Pre-wired to every domain", color: GOLD, align: "left" as const },
-    { top: "19%", left: "34%", label: "20 Active Detections", sub: "Live ingested · past 30 days", color: "#EF4444", align: "left" as const },
-    { top: "19%", left: "54%", label: "170 Protocols Ready", sub: "Pre-staged — not built on demand", color: TEAL, align: "left" as const },
-    { top: "57%", left: "1%", label: "82% Confidence Trigger", sub: "System-recommended protocol auto-staged", color: GOLD, align: "left" as const },
-    { top: "35%", left: "70%", label: "9 of 9 Domains Monitored", sub: "Competitive · M&A · Regulatory · Financial…", color: TEAL, align: "left" as const },
+  const stats = [
+    { value: "221", label: "Triggers Armed", color: GOLD },
+    { value: "248", label: "Signal Data Points", color: GOLD },
+    { value: "170", label: "Protocols Ready", color: TEAL },
+    { value: "15 min", label: "Scan Cycle", color: TEAL },
+    { value: "9 / 9", label: "Domains Monitored", color: "rgba(255,255,255,0.6)" },
   ];
   return (
     <div style={{ background: "#020816", width: "100%", height: "100%", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
       {/* Top label strip */}
-      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 28px 8px", borderBottom: "1px solid rgba(201,168,76,0.3)", background: "rgba(2,8,22,0.96)", zIndex: 10 }}>
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 28px 8px", borderBottom: "1px solid rgba(201,168,76,0.3)", background: "rgba(2,8,22,0.97)", zIndex: 10 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div style={{ width: 18, height: 1.5, background: GOLD, opacity: 0.7 }} />
           <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: GOLD }}>Live Product</span>
@@ -931,40 +931,28 @@ function LiveProductSlide() {
         </div>
       </div>
 
-      {/* Screenshot with annotations */}
+      {/* Screenshot — clean, no overlays */}
       <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
-        {/* The actual screenshot */}
         <img
           src="/deck-assets/command-tower.jpg"
           alt="Command Tower live view"
           crossOrigin="anonymous"
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", display: "block" }}
         />
+        {/* Bottom gradient so stat bar reads cleanly */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 65%, rgba(2,8,22,0.88) 100%)", pointerEvents: "none" }} />
+      </div>
 
-        {/* Subtle dark vignette at edges for visual depth */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(2,8,22,0.35) 0%, transparent 18%, transparent 65%, rgba(2,8,22,0.2) 100%)", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 70%, rgba(2,8,22,0.6) 100%)", pointerEvents: "none" }} />
-
-        {/* Callout annotations */}
-        {callouts.map((c, i) => (
-          <div key={i} style={{ position: "absolute", top: c.top, left: c.left, zIndex: 20 }}>
-            <div style={{ display: "inline-flex", flexDirection: "column", background: "rgba(2,8,22,0.97)", border: `1px solid ${c.color}`, borderLeft: `3px solid ${c.color}`, padding: "5px 9px", maxWidth: 180 }}>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: c.color, letterSpacing: "0.06em" }}>{c.label}</span>
-              <span style={{ fontSize: 8, color: "rgba(255,255,255,0.5)", lineHeight: 1.4, marginTop: 1 }}>{c.sub}</span>
+      {/* Stat bar — below image, no overlays on screenshot */}
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "9px 28px", background: "rgba(2,8,22,0.97)", borderTop: `1px solid rgba(201,168,76,0.2)` }}>
+        <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.25)" }}>THE PLATFORM IS NOT A PROTOTYPE. THIS IS PRODUCTION.</span>
+        <div style={{ display: "flex", gap: 24 }}>
+          {stats.map(s => (
+            <div key={s.label} style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
+              <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: s.color }}>{s.value}</span>
+              <span style={{ fontSize: 8, color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>{s.label}</span>
             </div>
-          </div>
-        ))}
-
-        {/* Bottom brand bar */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 24px", background: "rgba(2,8,22,0.97)", borderTop: `1px solid rgba(201,168,76,0.25)`, display: "flex", alignItems: "center", justifyContent: "space-between", zIndex: 20 }}>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.3)" }}>
-            THE PLATFORM IS NOT A PROTOTYPE. THIS IS PRODUCTION.
-          </span>
-          <div style={{ display: "flex", gap: 16 }}>
-            {["248 Signal Data Points", "15-Min Scan Cycles", "6 Execution Stages"].map(s => (
-              <span key={s} style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.4)" }}>{s}</span>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -1202,23 +1190,38 @@ function TheAskSlide() {
           </div>
 
           <div style={{ paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)", marginBottom: 14 }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Tiered Raise Structure</div>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Capital Structure</div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.35)", background: "rgba(201,168,76,0.06)" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 3 }}>
-                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: GOLD }}>STAGE 1 · PILOT VALIDATION</span>
+              {/* Stage 1 — explicitly Speedrun SAFE structure */}
+              <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.5)", background: "rgba(201,168,76,0.08)" }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 5 }}>
+                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: GOLD }}>SPEEDRUN SAFE · PROGRAM CAPITAL</span>
                   <span style={{ ...CG, fontSize: 20, fontWeight: 700, color: GOLD }}>$1M</span>
                 </div>
-                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>3 signed pilots ($225K ARR) · Commercial co-founder hired</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 5 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span style={{ fontSize: 9, color: "rgba(255,255,255,0.45)" }}>SpeedRun SAFE — upfront at program start</span>
+                    <span style={{ ...BC, fontSize: 9, fontWeight: 700, color: GOLD }}>$500K</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span style={{ fontSize: 9, color: "rgba(255,255,255,0.45)" }}>Follow-on participation option at SpeedRun close</span>
+                    <span style={{ ...BC, fontSize: 9, fontWeight: 700, color: GOLD }}>$500K</span>
+                  </div>
+                </div>
+                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", borderTop: "1px solid rgba(201,168,76,0.2)", paddingTop: 4 }}>Success gate: 3 signed pilots · $225K ARR · Commercial co-founder on board</div>
               </div>
 
-              <div style={{ padding: "10px 14px", border: "1px solid rgba(43,138,110,0.3)", background: "rgba(43,138,110,0.06)" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 3 }}>
-                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: TEAL }}>STAGE 2 · CATEGORY CAPTURE</span>
+              {/* Stage 2 — post-Speedrun seed, not additional Speedrun capital */}
+              <div style={{ padding: "10px 14px", border: "1px solid rgba(43,138,110,0.3)", background: "rgba(43,138,110,0.05)" }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4 }}>
+                  <div>
+                    <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: TEAL }}>POST-SPEEDRUN SEED ROUND</span>
+                    <div style={{ fontSize: 8, color: "rgba(255,255,255,0.3)", marginTop: 1 }}>Triggered by pilot success — not additional SpeedRun capital</div>
+                  </div>
                   <span style={{ ...CG, fontSize: 20, fontWeight: 700, color: TEAL }}>$2M</span>
                 </div>
-                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>10 pilots · $500K+ ARR · SOC 2 · Category leader position locked</div>
+                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.35)" }}>10 pilots · $500K+ ARR · SOC 2 complete · Category leadership locked</div>
               </div>
             </div>
           </div>

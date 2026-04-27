@@ -1,0 +1,35 @@
+This is a materially stronger deck than the version we were iterating on two weeks ago. The narrative arc holds end to end, the canonical metrics are consistent throughout, and the proof points have hardened in ways that matter for a Speedrun reviewer. Before I get into specifics, the headline assessment is that this is submission-ready in substance but has two issues that I would fix tonight before you upload.
+
+**What's working and should not be touched**
+
+The cover line is the best version of this thesis you have ever had. "The strategic response is ready before the trigger fires" is the entire pitch in one sentence, and pairing it with "Coordination infrastructure for the Fortune 1000" gives the reviewer the category in the same breath.
+
+Slide 2 finally lands the cost narrative with sourced numbers. Equifax 575M, Target 292M, Boeing 20B+, McKinsey M&A failure average 277M. These are not hand-waved. A reviewer can verify them in 30 seconds and they cannot, which is exactly what you want.
+
+Slide 4 is the emotional core and the founder-market fit slide simultaneously. The "29 days, 23 hours" footer callout is a hammer. Keep it.
+
+Slide 9 is your single biggest credibility asset and it is positioned correctly. Jim Highsmith co-authoring the Agile Manifesto and endorsing your thesis is the kind of validation a16z reviewers cannot manufacture for portfolio companies. Four researchers across four disciplines reaching the same conclusion is exactly the right framing for that slide.
+
+Slide 8 with the live 12-Minute Test Drive callout is the move that separates this deck from every other application in the cohort. "Any VC can run the simulation before the meeting ends" is something most pre-seed teams cannot say.
+
+The moat slide and competitive matrix work. The Microsoft wedge is preserved cleanly through the deck.
+
+**The two issues to fix before submitting**
+
+*Slide 7 has visual rendering problems.* The Command Tower screenshot has empty bordered boxes layered over the image (yellow outlines top-left and middle, red and teal outlines mid-page) and the header text reads "D TOWER" instead of "COMMAND TOWER" because of a cropping issue. This is the slide that proves the platform is real and not a prototype. As it currently renders, it looks unfinished. A reviewer will notice immediately. Either retake the screenshot cleanly or rebuild that slide with a tighter crop and remove the overlay artifacts. This is the most important fix in the deck.
+
+*Slide 16 (The Ask) is ambiguous on Speedrun terms.* Stage 1 at 1M and Stage 2 at 2M reads as a 3M total raise without context. If your intent is that Stage 1 represents the Speedrun structure (500K SAFE upfront plus 500K follow-on participation, totaling 1M) and Stage 2 represents the next round that triggers the Speedrun follow-on, that needs to be explicit. The way it reads now, a reviewer could interpret it as asking for capital outside Speedrun terms, which is the exact concern we discussed when you decided to keep this deck Speedrun-specific. I would either name Speedrun explicitly in Stage 1 (something like "Speedrun SR007 commitment $1M, 12-week deployment") or restructure the slide to lead with the Speedrun acceptance and treat Stage 2 as the post-program round milestone rather than part of the ask.
+
+**Smaller polish items**
+
+Slide 5 and Slide 11 both have minor text-over-number collision where the label sits behind the large numeral (the "248 DATA POINTS" and "$500M+ SAM 3-YEAR TARGET" treatments specifically). Not deal-breaking, but the brand otherwise looks tight, and these two spots stand out.
+
+Slide 3 lists Churchill Downs Incorporated in your Fortune 1000 experience. For an investor deck this is appropriate and adds credibility, but worth knowing this version of the deck is internal-only since CDI does not appear in your public-facing VaughnMartin materials.
+
+Slide 14 says "3 Founding Partner pilots actively being qualified." Slide 16 Stage 1 success criterion says "3 signed pilots ($225K ARR)." Be ready in the partner meeting for the question "what is the actual status of those three" with a clean answer (e.g., names blinded but stage clear: in qualification, in proposal, LOI signed). A Speedrun partner will ask.
+
+**Verdict**
+
+Substance is there. The thesis, the proof, the math, the moat, and the founder story are all working. Fix Slide 7's screenshot issue and tighten Slide 16's Ask framing tonight, and this is ready to upload. Leave everything else alone. You have iterated past the point where more changes improve the deck.
+
+Want me to draft a revised Slide 16 layout that maps cleanly to Speedrun's published structure? That is a 20-minute job and removes the only ambiguity a reviewer would flag.
