@@ -517,8 +517,8 @@ function MoatSlide() {
     {
       num: "02",
       title: "Compounding organizational intelligence",
-      body: "Every activation encodes organization-specific failure modes, stakeholder dynamics, and decision preferences via the Ownership Close-Out Gate. Ownership transfer rate ≥70% = Confirmed. <35% = Silence Detected. Built from Dr. Huang's 408-firm governance research. No two organizations produce the same platform after 12 activations. The mechanism behind net retention above 100%.",
-      note: "Ownership Close-Out Gate + Debrief Classification shipped April 2026 — Huang's 408-firm governance research encoded in the platform",
+      body: "Every activation encodes failure modes and decision preferences via the Ownership Close-Out Gate. Transfer rate ≥70% = Confirmed. <35% = Silence Detected. Built from Dr. Huang's 408-firm governance research. After 12 activations, no two organizations produce the same platform — the mechanism behind net retention above 100%.",
+      note: "Ownership Close-Out Gate shipped April 2026",
     },
     {
       num: "03",
@@ -528,7 +528,7 @@ function MoatSlide() {
     },
   ];
   return (
-    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "26px 52px" }}>
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "26px 52px", overflow: "hidden" }}>
       <div style={{ marginBottom: 16 }}>
         <SlideLabel>The Moat</SlideLabel>
         <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1, maxWidth: 720 }}>
@@ -733,7 +733,7 @@ function FounderSlide() {
         <div style={{ position: "relative", zIndex: 1 }}>
           <SlideLabel light>The Founder</SlideLabel>
           <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 6 }}>Martin Brunke</div>
-          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 28 }}>Founder & CEO · VaughnMartin</div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 18 }}>Founder & CEO · VaughnMartin</div>
 
           <div style={{ marginBottom: 24 }}>
             <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 12 }}>Fortune 1000 · 20 Years</div>
@@ -758,19 +758,19 @@ function FounderSlide() {
 
       {/* Right — the pattern */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 48px" }}>
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>The Pattern</div>
-        <h3 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 24 }}>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>The Pattern</div>
+        <h3 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
           Same coordination failure across 7 industries. Same solution already proven on the practice field.
         </h3>
-        <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.8, marginBottom: 28 }}>
+        <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.7, marginBottom: 16 }}>
           The infrastructure nobody built for the boardroom.
         </p>
 
-        <div style={{ padding: "24px 28px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 28 }}>
-          <p style={{ ...CG, fontSize: 18, fontStyle: "italic", color: NAVY, lineHeight: 1.6 }}>
+        <div style={{ padding: "16px 22px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 18 }}>
+          <p style={{ ...CG, fontSize: 17, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
             "VaughnMartin is named for my father, Vaughn. The product carries his standard."
           </p>
-          <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 10 }}>Martin Brunke</div>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 8 }}>Martin Brunke</div>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
@@ -780,9 +780,9 @@ function FounderSlide() {
             { label: "Stanford football", value: "5 yrs" },
             { label: "Protocols encoded", value: "170" },
           ].map(s => (
-            <div key={s.label} style={{ padding: "16px 20px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
-              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: NAVY }}>{s.value}</div>
-              <div style={{ fontSize: 12, color: "#9CA3AF", marginTop: 2 }}>{s.label}</div>
+            <div key={s.label} style={{ padding: "12px 18px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
+              <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: NAVY }}>{s.value}</div>
+              <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>{s.label}</div>
             </div>
           ))}
         </div>
