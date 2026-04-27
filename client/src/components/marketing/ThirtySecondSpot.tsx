@@ -428,8 +428,8 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               transition={{ duration: 0.3, delay: 0.6 }}
               className="text-lg text-gray-800"
             >
-              170 playbooks. Instant coordination.
-              <br />Whether you're playing offense, defense, or changing the game.
+              170 Readiness Protocols. Pre-staged coordination.
+              <br />Growth, resilience, or transformation — the response is ready.
             </motion.p>
           </div>
         </Scene>

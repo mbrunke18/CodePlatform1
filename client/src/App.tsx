@@ -340,7 +340,7 @@ function Router() {
         <Route path="/identify/wizard" component={IdentifyWizardPage} />
         <Route path="/identify/sla" component={IdentifySLAPage} />
         <Route path="/identify/metrics" component={IdentifyMetricsPage} />
-        <Route path="/identify/playbook-library" component={PlaybookLibraryV2} />
+        <Route path="/identify/playbook-library">{() => <PlaybookLibraryV2 />}</Route>
         <Route path="/identify/playbook-command/:id" component={PlaybookCommand} />
         <Route path="/identify/situation-intents" component={SituationIntentsHub} />
         <Route path="/identify/situation-intent/new" component={SituationIntentWizard} />
@@ -394,7 +394,7 @@ function Router() {
         <Route path="/business-intelligence" component={BusinessIntelligence} />
         <Route path="/intelligence" component={IntelligenceControlCenter} />
         <Route path="/intelligence-control-center" component={IntelligenceControlCenter} />
-        <Route path="/ai-radar" component={AIRadarDashboard} />
+        <Route path="/ai-radar">{() => <AIRadarDashboard />}</Route>
         <Route path="/signal-intelligence" component={SignalIntelligenceHub} />
         {renderRoutes(["/live-detection", "/live-detection-feed"], LiveDetectionFeed)}
         {renderRoutes(["/ai", "/pulse", "/flux", "/prism", "/echo", "/nova"], AIIntelligenceHub)}
@@ -413,23 +413,23 @@ function Router() {
         <Route path="/command-center">{() => <Redirect to="/mission-control" />}</Route>
         <Route path="/command-center-dynamic">{() => <Redirect to="/mission-control" />}</Route>
         <Route path="/execution-history" component={ExecutionHistory} />
-        <Route path="/collaboration" component={RealTimeCollaboration} />
+        <Route path="/collaboration">{() => <RealTimeCollaboration />}</Route>
         <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
 
         {/* Strategic Planning */}
         <Route path="/strategic" component={StrategicPlanningHub} />
         <Route path="/strategic-planning-hub" component={StrategicPlanningHub} />
         <Route path="/what-if-analyzer" component={WhatIfAnalyzer} />
-        <Route path="/decision-velocity" component={DecisionVelocityPage} />
-        <Route path="/decisions" component={DecisionVelocityDashboard} />
+        <Route path="/decision-velocity">{() => <DecisionVelocityPage />}</Route>
+        <Route path="/decisions">{() => <DecisionVelocityDashboard />}</Route>
         <Route path="/decision-trees" component={DecisionTreeBuilder} />
-        <Route path="/execution-coordination" component={ExecutionCoordination} />
-        <Route path="/institutional-memory" component={InstitutionalMemory} />
+        <Route path="/execution-coordination">{() => <ExecutionCoordination />}</Route>
+        <Route path="/institutional-memory">{() => <InstitutionalMemory />}</Route>
         <Route path="/signal-accountability" component={SignalAccountability} />
-        <Route path="/board-briefings" component={BoardBriefings} />
-        <Route path="/operating-model" component={OperatingModelAlignment} />
-        <Route path="/roi-breakdown" component={ComprehensiveROIBreakdown} />
-        <Route path="/calculator" component={ComprehensiveROIBreakdown} />
+        <Route path="/board-briefings">{() => <BoardBriefings />}</Route>
+        <Route path="/operating-model">{() => <OperatingModelAlignment />}</Route>
+        <Route path="/roi-breakdown">{() => <ComprehensiveROIBreakdown />}</Route>
+        <Route path="/calculator">{() => <ComprehensiveROIBreakdown />}</Route>
 
         {/* Marketing & Company Pages */}
         <Route path="/our-story" component={OurStory} />
@@ -457,12 +457,12 @@ function Router() {
         {renderRoutes(["/contact", "/early-access"], Contact)}
 
         {/* Playbooks & Triggers */}
-        <Route path="/triggers-management" component={TriggersManagement} />
+        <Route path="/triggers-management">{() => <TriggersManagement />}</Route>
         <Route path="/signal-configuration" component={SignalConfiguration} />
-        <Route path="/organization-setup" component={OrganizationSetup} />
-        <Route path="/playbook-customization" component={PlaybookCustomization} />
-        <Route path="/success-metrics" component={SuccessMetricsConfiguration} />
-        <Route path="/get-started" component={GetStarted} />
+        <Route path="/organization-setup">{() => <OrganizationSetup />}</Route>
+        <Route path="/playbook-customization">{() => <PlaybookCustomization />}</Route>
+        <Route path="/success-metrics">{() => <SuccessMetricsConfiguration />}</Route>
+        <Route path="/get-started">{() => <GetStarted />}</Route>
         <Route path="/demo-access" component={DemoAccess} />
         <Route path="/request-access" component={RequestAccess} />
         <Route path="/trial-access" component={TrialAccess} />
@@ -473,7 +473,7 @@ function Router() {
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/begin" component={GuidedStart} />
         <Route path="/start" component={GuidedStart} />
-        <Route path="/preparedness-report" component={PreparednessReport} />
+        <Route path="/preparedness-report">{() => <PreparednessReport />}</Route>
         <Route path="/drill-tracking" component={DrillTrackingSystem} />
         {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], PlaybookLibraryV2)}
         <Route path="/playbooks/:id/customize" component={PlaybookCustomize} />
@@ -482,26 +482,26 @@ function Router() {
         <Route path="/playbooks/create" component={PlaybookCustomize} />
         <Route path="/playbook-management" component={PlaybookManagement} />
         {renderRoutes(["/playbook-customize/new", "/playbook-customize/:id"], PlaybookCustomize)}
-        <Route path="/task-management" component={TaskManagement} />
+        <Route path="/task-management">{() => <TaskManagement />}</Route>
         {renderRoutes(["/stakeholder-management", "/stakeholders"], StakeholderManagement)}
         <Route path="/playbook-library/:id" component={PlaybookDetail} />
         <Route path="/business-scenario/:id" component={PlaybookDetail} />
         <Route path="/playbook-library/:id/settings" component={PlaybookSettings} />
         <Route path="/playbook-command/:id" component={PlaybookCommand} />
         <Route path="/practice-drills/:drillId/live" component={LiveDrillExecution} />
-        <Route path="/practice-drills" component={PracticeDrills} />
+        <Route path="/practice-drills">{() => <PracticeDrills />}</Route>
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
         <Route path="/crisis-communications" component={CrisisCommunicationsGenerator} />
         <Route path="/financial-exposure" component={FinancialExposureEstimator} />
         <Route path="/concurrent-situations" component={ConcurrentSituationBoard} />
-        <Route path="/simulation-studio" component={SimulationStudioPage} />
-        <Route path="/roi-dashboard" component={ROIDashboard} />
+        <Route path="/simulation-studio">{() => <SimulationStudioPage />}</Route>
+        <Route path="/roi-dashboard">{() => <ROIDashboard />}</Route>
         <Route path="/coordination-intelligence" component={lazy(() => import('./pages/CoordinationIntelligence'))} />
-        <Route path="/strategic-recorder" component={StrategicRecorder} />
+        <Route path="/strategic-recorder">{() => <StrategicRecorder />}</Route>
         <Route path="/execution-learning" component={ExecutionLearningDashboard} />
         {renderRoutes(["/playbook-readiness", "/playbook-audit"], PlaybookReadinessAudit)}
         <Route path="/future-gym" component={FutureGym} />
-        <Route path="/foresight-radar" component={ForesightRadar} />
+        <Route path="/foresight-radar">{() => <ForesightRadar />}</Route>
         <Route path="/living-playbooks" component={LivingPlaybooks} />
         <Route path="/continuous-mode" component={ContinuousModePage} />
 
@@ -510,7 +510,7 @@ function Router() {
         <Route path="/advanced-analytics" component={AdvancedAnalytics} />
         <Route path="/executive-analytics-dashboard" component={ExecutiveAnalyticsDashboard} />
         {renderRoutes(["/executive-summary", "/executive-summary-generator", "/report-generator"], ExecutiveSummaryGenerator)}
-        <Route path="/audit-logging-center" component={AuditLoggingCenter} />
+        <Route path="/audit-logging-center">{() => <AuditLoggingCenter />}</Route>
         <Route path="/roi-calculator" component={ROICalculator} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
         <Route path="/future-readiness" component={FutureReadinessDashboard} />
@@ -536,7 +536,7 @@ function Router() {
         {renderRedirects(["/sizzle", "/2-minute"], "/12-minute-experience")}
 
         {/* Integration Hub */}
-        <Route path="/integration-hub" component={IntegrationHub} />
+        <Route path="/integration-hub">{() => <IntegrationHub />}</Route>
         {renderRoutes(["/integrations", "/integration-connections"], IntegrationConnections)}
         <Route path="/integrations-legacy" component={IntegrationsPage} />
 
@@ -569,7 +569,7 @@ function Router() {
         <Route path="/ai-intelligence">{() => <Redirect to="/ai-intelligence-suite" />}</Route>
         <Route path="/live-activation-center" component={LiveActivationCenter} />
         <Route path="/live-activation">{() => <Redirect to="/live-activation-center" />}</Route>
-        <Route path="/enterprise-metrics" component={EnterpriseMetrics} />
+        <Route path="/enterprise-metrics">{() => <EnterpriseMetrics />}</Route>
         <Route path="/unified-platform" component={UnifiedEnterprisePlatform} />
 
         {/* Industry Demos */}

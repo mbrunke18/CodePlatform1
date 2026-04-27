@@ -1,8 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Download, FileText } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import PptxGenJS from 'pptxgenjs';
+import { jsPDF } from 'jspdf';
 
 const NAVY = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -851,72 +852,76 @@ const NAV_H = 44;
 export default function A16ZPitch() {
   const [current, setCurrent] = useState(0);
   const [scale, setScale] = useState(1);
-  const [exporting, setExporting] = useState(false);
+  const [exportMode, setExportMode] = useState<'pptx' | 'pdf' | null>(null);
   const [exportStep, setExportStep] = useState(0);
   const total = SLIDES.length;
+  const exporting = exportMode !== null;
 
   const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
   const next = useCallback(() => setCurrent(p => Math.min(total - 1, p + 1)), [total]);
 
-  const exportToPPTX = useCallback(async () => {
-    if (exporting) return;
-    setExporting(true);
+  // Shared slide-rendering helper: captures all slides as JPEG data URLs
+  const renderAllSlides = useCallback(async (onProgress: (step: number) => void): Promise<string[]> => {
     const images: string[] = [];
-
     for (let i = 0; i < SLIDES.length; i++) {
-      setExportStep(i + 1);
-
-      // Create a fully off-screen container at the exact native slide dimensions
-      // — no CSS scaling, no viewport influence, captures the true 960×540 layout
+      onProgress(i + 1);
       const container = document.createElement('div');
       container.style.cssText = [
-        'position:fixed',
-        'left:-9999px',
-        'top:0',
-        `width:${SLIDE_W}px`,
-        `height:${SLIDE_H}px`,
-        'overflow:hidden',
-        'z-index:-9999',
-        'pointer-events:none',
+        'position:fixed', 'left:-9999px', 'top:0',
+        `width:${SLIDE_W}px`, `height:${SLIDE_H}px`,
+        'overflow:hidden', 'z-index:-9999', 'pointer-events:none',
       ].join(';');
       document.body.appendChild(container);
-
       const SlideComp = SLIDES[i].component;
       const root = createRoot(container);
-
       await new Promise<void>(resolve => {
         root.render(<SlideComp />);
-        // Allow React to paint + web fonts to load
         setTimeout(resolve, 450);
       });
-
       const canvas = await html2canvas(container, {
-        width: SLIDE_W,
-        height: SLIDE_H,
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
-        backgroundColor: '#ffffff',
-        windowWidth: SLIDE_W,
-        windowHeight: SLIDE_H,
+        width: SLIDE_W, height: SLIDE_H, scale: 2,
+        useCORS: true, allowTaint: true, logging: false,
+        backgroundColor: '#0A0F2E',
+        windowWidth: SLIDE_W, windowHeight: SLIDE_H,
       });
-
       images.push(canvas.toDataURL('image/jpeg', 0.95));
       root.unmount();
       document.body.removeChild(container);
     }
+    return images;
+  }, []);
 
+  const exportToPPTX = useCallback(async () => {
+    if (exporting) return;
+    setExportMode('pptx');
+    setExportStep(0);
+    const images = await renderAllSlides(step => setExportStep(step));
     const pptx = new PptxGenJS();
     pptx.layout = 'LAYOUT_16x9';
-    for (let i = 0; i < images.length; i++) {
+    for (const img of images) {
       const slide = pptx.addSlide();
-      slide.addImage({ data: images[i], x: 0, y: 0, w: 10, h: 5.625 });
+      slide.addImage({ data: img, x: 0, y: 0, w: 10, h: 5.625 });
     }
     await pptx.writeFile({ fileName: 'VaughnMartin-ReadinessOS-a16z-SpeedRun007.pptx' });
-    setExporting(false);
+    setExportMode(null);
     setExportStep(0);
-  }, [exporting]);
+  }, [exporting, renderAllSlides]);
+
+  const exportToPDF = useCallback(async () => {
+    if (exporting) return;
+    setExportMode('pdf');
+    setExportStep(0);
+    const images = await renderAllSlides(step => setExportStep(step));
+    // Each PDF page exactly matches the 16:9 slide canvas (960×540 pt)
+    const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: [SLIDE_W, SLIDE_H] });
+    for (let i = 0; i < images.length; i++) {
+      if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'landscape');
+      pdf.addImage(images[i], 'JPEG', 0, 0, SLIDE_W, SLIDE_H);
+    }
+    pdf.save('VaughnMartin-ReadinessOS-a16z-SpeedRun007.pdf');
+    setExportMode(null);
+    setExportStep(0);
+  }, [exporting, renderAllSlides]);
 
   useEffect(() => {
     const updateScale = () => {
@@ -945,7 +950,7 @@ export default function A16ZPitch() {
       {/* Export loading overlay */}
       {exporting && (
         <div style={{ position: "fixed", inset: 0, zIndex: 999, background: "rgba(10,15,46,0.88)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)" }}>
-          <div style={{ ...CG, fontSize: 18, color: "#fff", marginBottom: 20 }}>Generating PPTX…</div>
+          <div style={{ ...CG, fontSize: 18, color: "#fff", marginBottom: 20 }}>{exportMode === 'pdf' ? 'Generating PDF…' : 'Generating PPTX…'}</div>
           <div style={{ width: 280, height: 4, background: "rgba(255,255,255,0.12)", borderRadius: 2, overflow: "hidden" }}>
             <div style={{ height: "100%", width: `${(exportStep / total) * 100}%`, background: GOLD, borderRadius: 2, transition: "width 0.3s ease" }} />
           </div>
@@ -1009,7 +1014,18 @@ export default function A16ZPitch() {
           ))}
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <button
+            onClick={exportToPDF}
+            disabled={exporting}
+            title="Download as PDF"
+            style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.15)", border: "1px solid rgba(43,138,110,0.4)", borderRadius: "0.15rem", padding: "5px 12px", cursor: exporting ? "not-allowed" : "pointer", opacity: exporting ? 0.5 : 1, transition: "opacity 0.2s" }}
+          >
+            <FileText size={13} color={TEAL} />
+            <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: TEAL }}>
+              {exportMode === 'pdf' ? `${exportStep}/${total}` : "Download PDF"}
+            </span>
+          </button>
           <button
             onClick={exportToPPTX}
             disabled={exporting}
@@ -1018,7 +1034,7 @@ export default function A16ZPitch() {
           >
             <Download size={13} color={GOLD} />
             <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD }}>
-              {exporting ? `${exportStep}/${total}` : "Download PPTX"}
+              {exportMode === 'pptx' ? `${exportStep}/${total}` : "Download PPTX"}
             </span>
           </button>
           <div style={{ ...BC, fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.35)", letterSpacing: "0.08em" }}>
