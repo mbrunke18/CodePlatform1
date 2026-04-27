@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import PptxGenJS from 'pptxgenjs';
@@ -851,32 +852,58 @@ export default function A16ZPitch() {
   const [scale, setScale] = useState(1);
   const [exporting, setExporting] = useState(false);
   const [exportStep, setExportStep] = useState(0);
-  const slideRef = useRef<HTMLDivElement>(null);
   const total = SLIDES.length;
 
   const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
   const next = useCallback(() => setCurrent(p => Math.min(total - 1, p + 1)), [total]);
 
   const exportToPPTX = useCallback(async () => {
-    if (!slideRef.current || exporting) return;
+    if (exporting) return;
     setExporting(true);
-    const savedCurrent = current;
     const images: string[] = [];
 
     for (let i = 0; i < SLIDES.length; i++) {
-      setCurrent(i);
       setExportStep(i + 1);
-      await new Promise(resolve => setTimeout(resolve, 350));
-      const canvas = await html2canvas(slideRef.current, {
+
+      // Create a fully off-screen container at the exact native slide dimensions
+      // — no CSS scaling, no viewport influence, captures the true 960×540 layout
+      const container = document.createElement('div');
+      container.style.cssText = [
+        'position:fixed',
+        'left:-9999px',
+        'top:0',
+        `width:${SLIDE_W}px`,
+        `height:${SLIDE_H}px`,
+        'overflow:hidden',
+        'z-index:-9999',
+        'pointer-events:none',
+      ].join(';');
+      document.body.appendChild(container);
+
+      const SlideComp = SLIDES[i].component;
+      const root = createRoot(container);
+
+      await new Promise<void>(resolve => {
+        root.render(<SlideComp />);
+        // Allow React to paint + web fonts to load
+        setTimeout(resolve, 450);
+      });
+
+      const canvas = await html2canvas(container, {
         width: SLIDE_W,
         height: SLIDE_H,
         scale: 2,
         useCORS: true,
         allowTaint: true,
         logging: false,
-        backgroundColor: null,
+        backgroundColor: '#ffffff',
+        windowWidth: SLIDE_W,
+        windowHeight: SLIDE_H,
       });
+
       images.push(canvas.toDataURL('image/jpeg', 0.95));
+      root.unmount();
+      document.body.removeChild(container);
     }
 
     const pptx = new PptxGenJS();
@@ -886,10 +913,9 @@ export default function A16ZPitch() {
       slide.addImage({ data: images[i], x: 0, y: 0, w: 10, h: 5.625 });
     }
     await pptx.writeFile({ fileName: 'VaughnMartin-ReadinessOS-a16z-SpeedRun007.pptx' });
-    setCurrent(savedCurrent);
     setExporting(false);
     setExportStep(0);
-  }, [current, exporting]);
+  }, [exporting]);
 
   useEffect(() => {
     const updateScale = () => {
@@ -931,7 +957,6 @@ export default function A16ZPitch() {
       {/* Slide stage — centers the scaled 16:9 canvas */}
       <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
         <div
-          ref={slideRef}
           style={{
             width: SLIDE_W,
             height: SLIDE_H,
