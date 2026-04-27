@@ -1,0 +1,93 @@
+Analysis Complete! 🎯
+Evaluated as
+Pre-seed
+deck
+
+C
+Promising
+4
+Critical Issues
+3
+Quick Wins
+13
+Slides Reviewed
+
+✨
+What's Working
+5 Strengths
+▼
+✓
+Exceptional Founder-Market Fit
+Slide 3
+Martin Brunke's 20 years of experience with iconic Fortune 1000 brands (Ford, Toyota, Lockheed) combined with his Stanford football coaching background creates a unique and highly credible narrative for 'organizational readiness.'
+
+✓
+Compelling Analogy and Insight
+Slide 4
+The comparison between the 30-day enterprise mobilization cycle and the 40-second football play clock is a brilliant way to frame the 'coordination gap' in a memorable, high-stakes context.
+
+✓
+Premium Visual Identity
+Slide 1
+The deck uses a sophisticated color palette and typography that feels 'enterprise-ready' and aligns with the high-ticket Fortune 1000 target market.
+
+✓
+Strategic 'Microsoft Stack' Wedge
+Slide 9
+Positioning the product as the 'operating model' layer on top of the existing Microsoft AI stack (Teams, Azure, Copilot) is a smart GTM strategy that reduces friction for enterprise adoption.
+
+✓
+Clear and Logical Pricing Model
+Slide 11
+The move away from per-seat pricing toward 'deployment scope' pricing is well-justified for an enterprise infrastructure tool, and the tiers ($75K to $250K) are appropriately anchored for the Fortune 1000.
+
+
+🔴
+Fix These First
+4 Critical
+▼
+
+1
+Missing specific funding ask
+The deck lacks a clear dollar amount and use of funds.
+Slide 12
+→
+
+2
+Missing competitive landscape
+No visual mapping of competitors or existing alternatives.
+→
+
+3
+Single founder risk and missing technical lead
+The team appears to be a solo founder without a CTO.
+Slide 3
+→
+
+4
+Lack of signed pilots
+The deck admits to having no signed pilots yet.
+Slide 12
+→
+
+Show less
+3 items
+💡 Quick Wins
+
+💡
+Reduce text density on validation slide
+Slide 7 is a wall of text that is difficult to skim.
+Slide 7
+→
+
+💡
+Clarify 'HBR 2026' citation
+The citation on slide 8 refers to a future date.
+Slide 8
+→
+
+💡
+Show, don't just tell, the product
+The deck lacks actual UI/UX screenshots.
+Slide 6
+→
