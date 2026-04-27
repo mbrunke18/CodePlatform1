@@ -647,18 +647,12 @@ function TractionSlide() {
     "5 Fortune 500 advisors reviewing platform",
     "3 Founding Partner pilots in active conversation",
   ];
-  const unlocks = [
-    "Fortune 1000 executive network access",
-    "Battle-tested operators covering commercial gaps",
-    "Demo Day to 1,000+ early-stage investors",
-    "Forcing function for full-time transition",
-  ];
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "24px 48px" }}>
       <div style={{ marginBottom: 14 }}>
-        <SlideLabel>Traction · Why SpeedRun</SlideLabel>
+        <SlideLabel>Traction · Why a16z</SlideLabel>
         <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1 }}>
-          Shipped. Validated. Ready to scale.
+          Platform built. Thesis validated. Three gaps left to close.
         </h2>
       </div>
 
@@ -690,30 +684,37 @@ function TractionSlide() {
           </div>
         </div>
 
-        {/* Right: SpeedRun */}
+        {/* Right: Why a16z */}
         <div style={{ ...GRID_BG, background: NAVY_BG, padding: "22px 28px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -100, right: -100, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)" }} />
           <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>What SpeedRun Unlocks</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Why a16z · Not Just Any Program</div>
             <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: "#FFFFFF", lineHeight: 1, marginBottom: 4 }}>12</div>
-            <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>WEEKS IN SAN FRANCISCO</div>
-            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 16 }}>
-              to close 3 Founding Partners, hire commercial cofounder, and reach $1M ARR.
+            <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)", marginBottom: 14 }}>WEEKS TO BUILD WHAT'S MISSING</div>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, marginBottom: 14 }}>
+              Close 3 Founding Partners. Hire commercial co-founder with Fortune 1000 DNA. Name and own the Strategic Coordination Infrastructure category.
             </p>
 
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Why SR007</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Why a16z Specifically</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
-              {unlocks.map(u => (
+              {[
+                "a16z's enterprise portfolio validates the thesis — 500+ companies facing the same operating model gap",
+                "Pattern recognition across enterprise transformation no other program has",
+                "Introduction velocity to Fortune 1000 CXOs capital alone cannot buy",
+                "Full-time forcing function — the one structural gap the program closes",
+              ].map(u => (
                 <div key={u} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                   <div style={{ width: 3, height: 3, background: GOLD, flexShrink: 0, marginTop: 5 }} />
-                  <span style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", lineHeight: 1.45 }}>{u}</span>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.45 }}>{u}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ marginTop: 24, padding: "14px 18px", border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(201,168,76,0.08)" }}>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>Target ARR</div>
-              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#FFFFFF" }}>$1M</div>
+            <div style={{ marginTop: 14, padding: "12px 16px", border: `1px solid rgba(255,255,255,0.12)`, background: "rgba(255,255,255,0.04)" }}>
+              <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>What Isn't Done Yet</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.55 }}>
+                No signed pilot. No commercial co-founder. Part-time founder. The platform proves the thesis — SpeedRun closes all three gaps.
+              </div>
             </div>
           </div>
         </div>
@@ -830,6 +831,7 @@ function CloseSlide() {
 const SLIDES = [
   { component: CoverSlide, label: "Cover" },
   { component: ProblemSlide, label: "The Problem" },
+  { component: FounderSlide, label: "The Founder" },
   { component: InsightSlide, label: "The Insight" },
   { component: ProductSlide, label: "The Product" },
   { component: PlatformDepthSlide, label: "Platform Depth" },
@@ -839,7 +841,6 @@ const SLIDES = [
   { component: MoatSlide, label: "The Moat" },
   { component: ModelSlide, label: "The Model" },
   { component: TractionSlide, label: "Traction" },
-  { component: FounderSlide, label: "The Founder" },
   { component: CloseSlide, label: "Close" },
 ];
 
