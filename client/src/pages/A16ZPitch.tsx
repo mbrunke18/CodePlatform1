@@ -1223,8 +1223,8 @@ function CompetitiveSlide() {
 // ─── Slide: The Ask ───────────────────────────────────────────────────────────
 function TheAskSlide() {
   const uses = [
-    { alloc: "40%", label: "Platform Infrastructure", desc: "Feature velocity, reliability, and enterprise-grade architecture — SOC 2 pathway, integration depth, and scaling for multi-tenant pilots.", color: TEAL },
-    { alloc: "30%", label: "Pilot Success", desc: "High-touch support to land and expand 3 Founding Partner pilots. Enterprise deals require human bandwidth.", color: GOLD },
+    { alloc: "40%", label: "Platform Infrastructure", desc: "1–2 contract engineers — feature velocity, reliability, SOC 2 pathway, integration depth, and multi-tenant pilot scaling.", color: TEAL },
+    { alloc: "30%", label: "Pilot Sales & Onboarding", desc: "1 enterprise account executive — pilot landing, hands-on onboarding, and account expansion from $75K pilot to full ACV.", color: GOLD },
     { alloc: "20%", label: "Market Presence", desc: "Lock the 'Strategic Coordination Infrastructure' category name and convert pipeline into signed contracts.", color: NAVY },
     { alloc: "10%", label: "SOC 2 & Security", desc: "SOC 2 Type II, enterprise SSO, audit logging — procurement table stakes for every Fortune 1000 deal.", color: "#6B7280" },
   ];
