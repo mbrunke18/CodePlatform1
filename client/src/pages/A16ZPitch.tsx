@@ -231,9 +231,9 @@ function ProductSlide() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2, marginBottom: 10 }}>
           {phases.map((p, i) => (
             <div key={i} style={{ background: i === 0 ? "rgba(255,255,255,0.06)" : i === 3 ? "rgba(43,138,110,0.15)" : "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `2px solid ${i === 3 ? TEAL : GOLD}`, padding: "18px 18px" }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 10 }}>
+              <div style={{ display: "flex", alignItems: "flex-end", gap: 6, marginBottom: 10 }}>
                 <span style={{ ...BC, fontSize: 26, fontWeight: 900, color: GOLD, lineHeight: 1 }}>{p.key}</span>
-                <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>{p.name}</span>
+                <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", paddingBottom: 2 }}>{p.name}</span>
               </div>
               <div style={{ marginBottom: 8 }}>
                 <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: "#FFFFFF", lineHeight: 1 }}>{p.stat}</div>
@@ -653,8 +653,8 @@ function ModelSlide() {
           <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
             {growthTiers.map((t, i) => (
               <div key={i} style={{ padding: "14px 18px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 2 ? TEAL : i === 1 ? GOLD : NAVY}`, background: i === 2 ? `rgba(43,138,110,0.03)` : "#FAFAF9" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4 }}>
-                  <div style={{ ...BC, fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", color: NAVY }}>{t.name}</div>
+                <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 4 }}>
+                  <div style={{ ...BC, fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", color: NAVY, paddingBottom: 2 }}>{t.name}</div>
                   <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: i === 2 ? TEAL : NAVY }}>{t.price}</div>
                 </div>
                 <div style={{ fontSize: 12, color: "#6B7280" }}>{t.scope}</div>
@@ -948,7 +948,7 @@ function LiveProductSlide() {
         <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.25)" }}>THE PLATFORM IS NOT A PROTOTYPE. THIS IS PRODUCTION.</span>
         <div style={{ display: "flex", gap: 24 }}>
           {stats.map(s => (
-            <div key={s.label} style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
+            <div key={s.label} style={{ display: "flex", alignItems: "flex-end", gap: 5 }}>
               <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: s.color }}>{s.value}</span>
               <span style={{ fontSize: 8, color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>{s.label}</span>
             </div>
@@ -994,9 +994,9 @@ function PlatformInActionSlide() {
           </div>
           <div style={{ marginBottom: 8, padding: "8px 10px", background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)" }}>
             <div style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginBottom: 3 }}>READINESS SCORE</div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+            <div style={{ display: "flex", alignItems: "flex-end", gap: 4 }}>
               <span style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>78</span>
-              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>/100 · READY</span>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", paddingBottom: 3 }}>/100 · READY</span>
             </div>
           </div>
           <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
@@ -1195,8 +1195,8 @@ function TheAskSlide() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {/* Stage 1 — explicitly Speedrun SAFE structure */}
               <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.5)", background: "rgba(201,168,76,0.08)" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 5 }}>
-                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: GOLD }}>SPEEDRUN SAFE · PROGRAM CAPITAL</span>
+                <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 5 }}>
+                  <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: GOLD, paddingBottom: 3 }}>SPEEDRUN SAFE · PROGRAM CAPITAL</span>
                   <span style={{ ...CG, fontSize: 20, fontWeight: 700, color: GOLD }}>$1M</span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 5 }}>
@@ -1214,7 +1214,7 @@ function TheAskSlide() {
 
               {/* Stage 2 — post-Speedrun seed, not additional Speedrun capital */}
               <div style={{ padding: "10px 14px", border: "1px solid rgba(43,138,110,0.3)", background: "rgba(43,138,110,0.05)" }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4 }}>
+                <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 4 }}>
                   <div>
                     <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", color: TEAL }}>POST-SPEEDRUN SEED ROUND</span>
                     <div style={{ fontSize: 8, color: "rgba(255,255,255,0.3)", marginTop: 1 }}>Triggered by pilot success — not additional SpeedRun capital</div>
@@ -1294,6 +1294,19 @@ export default function A16ZPitch() {
 
   // Shared slide-rendering helper: captures all slides as JPEG data URLs
   const renderAllSlides = useCallback(async (onProgress: (step: number) => void): Promise<string[]> => {
+    // Pre-load all custom fonts so html2canvas captures correct metrics
+    await Promise.allSettled([
+      document.fonts.load('400 16px "Cormorant Garamond"'),
+      document.fonts.load('600 16px "Cormorant Garamond"'),
+      document.fonts.load('700 16px "Cormorant Garamond"'),
+      document.fonts.load('400 16px "Barlow Condensed"'),
+      document.fonts.load('600 16px "Barlow Condensed"'),
+      document.fonts.load('700 16px "Barlow Condensed"'),
+      document.fonts.load('800 16px "Barlow Condensed"'),
+      document.fonts.load('900 16px "Barlow Condensed"'),
+    ]);
+    await document.fonts.ready;
+
     const images: string[] = [];
     for (let i = 0; i < SLIDES.length; i++) {
       onProgress(i + 1);
@@ -1306,22 +1319,26 @@ export default function A16ZPitch() {
       document.body.appendChild(container);
       const SlideComp = SLIDES[i].component;
       const root = createRoot(container);
+      // Render and wait for fonts + layout to fully settle
       await new Promise<void>(resolve => {
         root.render(<SlideComp />);
-        setTimeout(resolve, 450);
+        setTimeout(resolve, 700);
       });
-      // Wait for images inside the container to load before capturing
+      // Wait for any images inside the slide to load
       const imgs = Array.from(container.querySelectorAll('img'));
       if (imgs.length > 0) {
         await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })));
+        await new Promise(r => setTimeout(r, 100));
       }
 
       const canvas = await html2canvas(container, {
         width: SLIDE_W, height: SLIDE_H, scale: 2,
         useCORS: true, allowTaint: false, logging: false,
         backgroundColor: '#ffffff',
-        windowWidth: SLIDE_W, windowHeight: SLIDE_H,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
         imageTimeout: 8000,
+        x: 0, y: 0,
       });
       images.push(canvas.toDataURL('image/jpeg', 0.95));
       root.unmount();
