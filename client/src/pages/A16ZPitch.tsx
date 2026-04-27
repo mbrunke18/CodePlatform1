@@ -701,7 +701,7 @@ function TractionSlide() {
                 "a16z's enterprise portfolio validates the thesis — 500+ companies facing the same operating model gap",
                 "Pattern recognition across enterprise transformation no other program has",
                 "Introduction velocity to Fortune 1000 CXOs capital alone cannot buy",
-                "Full-time forcing function — the one structural gap the program closes",
+                "The structural catalyst — from solo builder to funded company with commercial co-founder",
               ].map(u => (
                 <div key={u} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                   <div style={{ width: 3, height: 3, background: GOLD, flexShrink: 0, marginTop: 5 }} />
@@ -713,7 +713,7 @@ function TractionSlide() {
             <div style={{ marginTop: 14, padding: "12px 16px", border: `1px solid rgba(255,255,255,0.12)`, background: "rgba(255,255,255,0.04)" }}>
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>What Isn't Done Yet</div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.55 }}>
-                No signed pilot. No commercial co-founder. Part-time founder. The platform proves the thesis — SpeedRun closes all three gaps.
+                No signed pilot. No commercial co-founder. SpeedRun is the forcing function that closes both gaps and locks in full-time structure.
               </div>
             </div>
           </div>
