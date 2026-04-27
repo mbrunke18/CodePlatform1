@@ -49,7 +49,7 @@ function CoverSlide() {
           <div style={{ width: 24, height: 1, background: GOLD, opacity: 0.5 }} />
         </div>
 
-        <h1 style={{ ...CG, fontSize: "clamp(42px,5.5vw,80px)", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 28, letterSpacing: "-0.01em" }}>
+        <h1 style={{ ...CG, fontSize: 64, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 28, letterSpacing: "-0.01em" }}>
           The strategic response is ready<br />before the trigger fires.
         </h1>
 
@@ -87,10 +87,10 @@ function ProblemSlide() {
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", position: "relative" }}>
       {/* Left — dark panel with 30-day stat */}
-      <div style={{ ...GRID_BG, background: NAVY_BG, width: "38%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "60px 48px", position: "relative", overflow: "hidden" }}>
+      <div style={{ ...GRID_BG, background: NAVY_BG, width: "38%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: -100, left: -100, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
         <SlideLabel light>The Problem</SlideLabel>
-        <div style={{ ...CG, fontSize: "clamp(72px,9vw,120px)", fontWeight: 700, color: "#FFFFFF", lineHeight: 0.9, marginBottom: 12 }}>30</div>
+        <div style={{ ...CG, fontSize: 96, fontWeight: 700, color: "#FFFFFF", lineHeight: 0.9, marginBottom: 12 }}>30</div>
         <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>days</div>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: 28 }}>
           to mobilize a response inside the average Fortune 1000 enterprise when a strategic trigger fires.
@@ -109,9 +109,9 @@ function ProblemSlide() {
       </div>
 
       {/* Right — trigger types */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "60px 56px" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 48px" }}>
         <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>The Problem</p>
-        <h2 style={{ ...CG, fontSize: "clamp(28px,3.2vw,44px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 16, maxWidth: 540 }}>
+        <h2 style={{ ...CG, fontSize: 34, fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 16, maxWidth: 540 }}>
           Enterprise work was designed for a world without AI.<br />Nobody redesigned it.
         </h2>
         <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, marginBottom: 36, maxWidth: 480 }}>
@@ -201,7 +201,7 @@ function ProductSlide() {
     { key: "A", name: "ADVANCE", stat: "100%+", statLabel: "net retention", body: "Close-out gate encodes learning. By activation 12, the Readiness Protocol is organization-authored — the mechanism behind net retention above 100%." },
   ];
   return (
-    <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "52px 64px", position: "relative", overflow: "hidden" }}>
+    <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "28px 52px", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: -200, right: -200, width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.15) 0%, transparent 70%)" }} />
       <div style={{ position: "absolute", bottom: -200, left: -200, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%)" }} />
 
@@ -728,11 +728,11 @@ function FounderSlide() {
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", position: "relative" }}>
       {/* Left — dark panel */}
-      <div style={{ ...GRID_BG, background: NAVY, width: "42%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "60px 52px", position: "relative", overflow: "hidden" }}>
+      <div style={{ ...GRID_BG, background: NAVY, width: "42%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 44px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: -100, right: -80, width: 320, height: 320, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.2) 0%, transparent 70%)" }} />
         <div style={{ position: "relative", zIndex: 1 }}>
           <SlideLabel light>The Founder</SlideLabel>
-          <div style={{ ...CG, fontSize: "clamp(36px,4vw,60px)", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 6 }}>Martin Brunke</div>
+          <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 6 }}>Martin Brunke</div>
           <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 28 }}>Founder & CEO · VaughnMartin</div>
 
           <div style={{ marginBottom: 24 }}>
@@ -757,9 +757,9 @@ function FounderSlide() {
       </div>
 
       {/* Right — the pattern */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "60px 56px" }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 48px" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>The Pattern</div>
-        <h3 style={{ ...CG, fontSize: "clamp(24px,2.8vw,38px)", fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 24 }}>
+        <h3 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 24 }}>
           Same coordination failure across 7 industries. Same solution already proven on the practice field.
         </h3>
         <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.8, marginBottom: 28 }}>
@@ -801,14 +801,14 @@ function CloseSlide() {
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, padding: "0 48px" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 28 }}>Preparation · Readiness · Fearless</div>
 
-        <h1 style={{ ...CG, fontSize: "clamp(48px,7vw,100px)", fontWeight: 600, color: "#FFFFFF", lineHeight: 1.05, marginBottom: 28, letterSpacing: "-0.01em" }}>
+        <h1 style={{ ...CG, fontSize: 76, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.05, marginBottom: 28, letterSpacing: "-0.01em" }}>
           We make enterprises<br />
           <span style={{ color: GOLD }}>fearless.</span>
         </h1>
 
         <div style={{ width: 56, height: 2, background: GOLD, margin: "0 auto 32px" }} />
 
-        <p style={{ ...CG, fontSize: "clamp(18px,2vw,26px)", fontStyle: "italic", color: "rgba(255,255,255,0.65)", marginBottom: 52, lineHeight: 1.5 }}>
+        <p style={{ ...CG, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.65)", marginBottom: 52, lineHeight: 1.5 }}>
           The strategic response is ready before the trigger fires.
         </p>
 
