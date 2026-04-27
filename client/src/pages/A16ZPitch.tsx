@@ -520,9 +520,9 @@ function MarketSlide() {
           <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 8 }}>Realistic 3-Year ARR Path</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             {[
-              { yr: "Yr 1", math: "3 pilots × $75K", arr: "$225K ARR", note: "proof" },
-              { yr: "Yr 2", math: "10 accounts × $120K avg", arr: "$1.2M ARR", note: "land + first expands" },
-              { yr: "Yr 3", math: "30 accounts × $155K avg", arr: "$4.65M ARR", note: "3% F1000 penetration" },
+              { yr: "Yr 1", math: "8 accounts × $87K avg", arr: "~$700K ARR", note: "3 founding pilots + 5 new lands" },
+              { yr: "Yr 2", math: "18 accounts × $140K avg", arr: "~$2.5M ARR", note: "expand momentum + new lands" },
+              { yr: "Yr 3", math: "38 accounts × $165K avg", arr: "~$6.3M ARR", note: "7% F1000 penetration" },
             ].map((r, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 0, paddingBottom: 4, borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
                 <div style={{ ...BC, fontSize: 8, fontWeight: 800, color: GOLD, width: 28 }}>{r.yr}</div>
@@ -905,14 +905,14 @@ function FounderSlide() {
             {[
               { role: "Founder, CEO & Chief Architect", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
               { role: "Commercial Co-Founder", name: "Fortune 1000 sales DNA · CXO access required", status: "RECRUITING" },
-              { role: "Head of Engineering", name: "Platform scaling + SOC 2 technical lead", status: "IDENTIFIED" },
+              { role: "Strategic Communications Lead", name: "Enterprise narrative, media access, thought leadership", status: "IN NETWORK" },
             ].map(t => (
               <div key={t.role} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
                 <div>
                   <span style={{ fontSize: 10, fontWeight: 700, color: NAVY }}>{t.role} </span>
                   <span style={{ fontSize: 10, color: "#6B7280" }}>— {t.name}</span>
                 </div>
-                <span style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.1em", color: t.status === "NOW" ? TEAL : t.status === "IDENTIFIED" ? GOLD : "#9CA3AF", flexShrink: 0 }}>{t.status}</span>
+                <span style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.1em", color: t.status === "NOW" ? TEAL : t.status === "IN NETWORK" ? GOLD : "#9CA3AF", flexShrink: 0 }}>{t.status}</span>
               </div>
             ))}
           </div>
