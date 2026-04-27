@@ -271,11 +271,11 @@ function ProductSlide() {
 // ─── Slide 5: Platform Depth ──────────────────────────────────────────────────
 function PlatformDepthSlide() {
   const HUB_CX = 480;
-  const HUB_CY = 210;
+  const HUB_CY = 222;
   const HUB_R = 68;
-  const SPOKE_R = 168;
-  const CARD_W = 172;
-  const CARD_H = 76;
+  const SPOKE_R = 152;
+  const CARD_W = 168;
+  const CARD_H = 72;
   const spokes = [
     { angle: -90, label: "Command Tower", outcome: "Leadership never operates blind", color: TEAL },
     { angle: -18, label: "Executive War Room", outcome: "Response teams assemble at trigger point", color: GOLD },
@@ -703,13 +703,13 @@ function TractionSlide() {
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, flex: 1 }}>
         {/* Left: Product + Validation */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "16px 20px" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Product</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+          <div style={{ flexShrink: 0, border: `1px solid ${BORDER}`, padding: "14px 18px" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 8 }}>Product</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
               {productMetrics.map(m => (
                 <div key={m} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0, marginTop: 5 }} />
-                  <span style={{ fontSize: 11, color: "#374151", lineHeight: 1.45 }}>{m}</span>
+                  <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0, marginTop: 4 }} />
+                  <span style={{ fontSize: 10.5, color: "#374151", lineHeight: 1.4 }}>{m}</span>
                 </div>
               ))}
             </div>
@@ -812,36 +812,36 @@ function FounderSlide() {
       {/* Right — the pattern */}
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 48px" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>The Pattern</div>
-        <h3 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+        <h3 style={{ ...CG, fontSize: 23, fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 10 }}>
           Same coordination failure across 7 industries. Same solution already proven on the practice field.
         </h3>
-        <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.7, marginBottom: 16 }}>
+        <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, marginBottom: 10 }}>
           The infrastructure nobody built for the boardroom.
         </p>
 
-        <div style={{ padding: "16px 22px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 18 }}>
-          <p style={{ ...CG, fontSize: 17, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
+        <div style={{ padding: "12px 18px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 12 }}>
+          <p style={{ ...CG, fontSize: 15, fontStyle: "italic", color: NAVY, lineHeight: 1.5 }}>
             "VaughnMartin is named for my father, Vaughn. The product carries his standard."
           </p>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 8 }}>Martin Brunke</div>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>Martin Brunke</div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, marginBottom: 10 }}>
           {[
             { label: "Fortune 1000 experience", value: "20 yrs" },
             { label: "Industries spanned", value: "7" },
             { label: "Stanford football", value: "5 yrs" },
             { label: "Protocols encoded", value: "170" },
           ].map(s => (
-            <div key={s.label} style={{ padding: "10px 16px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
-              <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: NAVY }}>{s.value}</div>
-              <div style={{ fontSize: 11, color: "#9CA3AF", marginTop: 2 }}>{s.label}</div>
+            <div key={s.label} style={{ padding: "8px 14px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
+              <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY }}>{s.value}</div>
+              <div style={{ fontSize: 10, color: "#9CA3AF", marginTop: 1 }}>{s.label}</div>
             </div>
           ))}
         </div>
 
         {/* Team composition — de-risk the solo narrative */}
-        <div style={{ border: `1px solid ${BORDER}`, padding: "12px 16px" }}>
+        <div style={{ border: `1px solid ${BORDER}`, padding: "10px 14px" }}>
           <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Team Composition</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
             {[
