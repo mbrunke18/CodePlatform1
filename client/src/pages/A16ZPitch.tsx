@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Download, FileText } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import PptxGenJS from 'pptxgenjs';
 import { jsPDF } from 'jspdf';
+import { VaughnMartinLogo } from '@/components/ExecuteIQLogo';
 
 const NAVY = "#0A0F2E";
 const NAVY_BG = "#132558";
@@ -42,6 +43,10 @@ function CoverSlide() {
       <div style={{ position: "absolute", top: -200, right: -200, width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, rgba(43,138,110,0.18) 0%, transparent 70%)`, pointerEvents: "none" }} />
       {/* orb bottom-left */}
       <div style={{ position: "absolute", bottom: -150, left: -150, width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, rgba(201,168,76,0.13) 0%, transparent 70%)`, pointerEvents: "none" }} />
+      {/* Large watermark seal — centered, very low opacity */}
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", opacity: 0.06, pointerEvents: "none" }}>
+        <VaughnMartinLogo color="white" height={560} variant="icon-only" />
+      </div>
 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 820, padding: "0 48px" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 36 }}>
@@ -71,12 +76,12 @@ function CoverSlide() {
         </div>
       </div>
 
-      {/* bottom wordmark */}
-      <div style={{ position: "absolute", bottom: 32, left: 48 }}>
-        <span style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.18em", color: "rgba(255,255,255,0.2)", textTransform: "uppercase" as const }}>VaughnMartin</span>
+      {/* bottom wordmark with logo */}
+      <div style={{ position: "absolute", bottom: 24, left: 44, opacity: 0.55 }}>
+        <VaughnMartinLogo color="white" height={36} variant="full" />
       </div>
       <div style={{ position: "absolute", bottom: 32, right: 48 }}>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.18)" }}>Readiness OS</span>
+        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.18)" }}>April 2026</span>
       </div>
     </div>
   );
@@ -801,9 +806,14 @@ function CloseSlide() {
       <div style={{ position: "absolute", top: -200, right: -200, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 860, padding: "0 48px" }}>
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 28 }}>Preparation · Readiness · Fearless</div>
+        {/* Seal above the headline */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+          <VaughnMartinLogo color="white" height={80} variant="icon-only" />
+        </div>
 
-        <h1 style={{ ...CG, fontSize: 76, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.05, marginBottom: 28, letterSpacing: "-0.01em" }}>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>Preparation · Readiness · Fearless</div>
+
+        <h1 style={{ ...CG, fontSize: 68, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.05, marginBottom: 24, letterSpacing: "-0.01em" }}>
           We make enterprises<br />
           <span style={{ color: GOLD }}>fearless.</span>
         </h1>
@@ -1045,7 +1055,10 @@ function TheAskSlide() {
       <div style={{ ...GRID_BG, background: NAVY_BG, width: "40%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px 40px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: -100, left: -80, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <SlideLabel light>The Ask</SlideLabel>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
+            <VaughnMartinLogo color="white" height={48} variant="icon-only" />
+            <SlideLabel light>The Ask</SlideLabel>
+          </div>
 
           <div style={{ marginBottom: 20 }}>
             <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 6 }}>SpeedRun Selection</div>
