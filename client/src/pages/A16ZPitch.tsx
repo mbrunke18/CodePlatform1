@@ -23,7 +23,7 @@ const GRID_BG: React.CSSProperties = {
 
 function SlideLabel({ children, light = false }: { children: string; light?: boolean }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
       <div style={{ width: 18, height: 1.5, background: GOLD, opacity: 0.7 }} />
       <span style={{ ...BC, fontSize: 10, fontWeight: 800, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: light ? "rgba(255,255,255,0.5)" : GOLD }}>{children}</span>
       <div style={{ width: 18, height: 1.5, background: GOLD, opacity: 0.7 }} />
@@ -398,19 +398,19 @@ function ValidationSlide() {
     },
   ];
   return (
-    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "22px 48px" }}>
-      <div style={{ textAlign: "center", marginBottom: 14 }}>
+    <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "16px 48px" }}>
+      <div style={{ textAlign: "center", marginBottom: 10 }}>
         <SlideLabel>Independent Validation · April 2026</SlideLabel>
-        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 4 }}>
+        <h2 style={{ ...CG, fontSize: 26, fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 2 }}>
           Four researchers. Four disciplines. One conclusion.
         </h2>
-        <p style={{ fontSize: 13, color: "#6B7280" }}>That does not happen with a weak thesis.</p>
+        <p style={{ fontSize: 12, color: "#6B7280" }}>That does not happen with a weak thesis.</p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, flex: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7, flex: 1 }}>
         {researchers.map((r, i) => (
-          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `3px solid ${r.color}`, padding: "14px 18px", display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+          <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `3px solid ${r.color}`, padding: "11px 16px", display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 8 }}>
               <div style={{ width: 36, height: 36, borderRadius: "50%", background: r.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <span style={{ ...BC, fontSize: 11, fontWeight: 800, color: r.color === GOLD ? NAVY : "#FFFFFF", letterSpacing: "0.06em" }}>{r.initials}</span>
               </div>
@@ -419,8 +419,8 @@ function ValidationSlide() {
                 <div style={{ fontSize: 9, color: "#9CA3AF", lineHeight: 1.4 }}>{r.credentials}</div>
               </div>
             </div>
-            <p style={{ ...CG, fontSize: 13, fontStyle: "italic", color: "#374151", lineHeight: 1.55, flex: 1 }}>{r.quote}</p>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 8 }}>{r.source}</div>
+            <p style={{ ...CG, fontSize: 12, fontStyle: "italic", color: "#374151", lineHeight: 1.5, flex: 1 }}>{r.quote}</p>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>{r.source}</div>
           </div>
         ))}
       </div>
@@ -479,8 +479,8 @@ function WhyNowSlide() {
           ))}
         </div>
 
-        <div style={{ marginTop: 24, padding: "14px 24px", background: "rgba(255,255,255,0.04)", borderLeft: `3px solid rgba(201,168,76,0.5)` }}>
-          <p style={{ ...CG, fontSize: 15, fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>
+        <div style={{ marginTop: 14, padding: "11px 20px", background: "rgba(255,255,255,0.04)", borderLeft: `3px solid rgba(201,168,76,0.5)` }}>
+          <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>
             Jim Highsmith, co-author of the Agile Manifesto: "Process ran the last era. Judgment runs the next."
           </p>
         </div>
@@ -596,24 +596,24 @@ function MoatSlide() {
     },
   ];
   return (
-    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "26px 52px", overflow: "hidden" }}>
-      <div style={{ marginBottom: 16 }}>
+    <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "20px 52px", overflow: "hidden" }}>
+      <div style={{ marginBottom: 12 }}>
         <SlideLabel>The Moat</SlideLabel>
-        <h2 style={{ ...CG, fontSize: 30, fontWeight: 600, color: NAVY, lineHeight: 1.1, maxWidth: 720 }}>
+        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.1, maxWidth: 720 }}>
           A competitor can rebuild the software in 12 months.<br />They cannot rebuild any of these.
         </h2>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
         {moats.map((m, i) => (
-          <div key={i} style={{ display: "flex", gap: 24, padding: "16px 24px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : NAVY}`, background: "#FAFAF9", flex: 1 }}>
+          <div key={i} style={{ display: "flex", gap: 22, padding: "13px 20px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : NAVY}`, background: "#FAFAF9", flex: 1, overflow: "hidden" }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ ...BC, fontSize: 28, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1, opacity: 0.25 }}>{m.num}</div>
+              <div style={{ ...BC, fontSize: 26, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1, opacity: 0.25 }}>{m.num}</div>
             </div>
-            <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 6 }}>{m.title}</h3>
-              <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.65, marginBottom: 6 }}>{m.body}</p>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>{m.note}</div>
+            <div style={{ flex: 1, overflow: "hidden" }}>
+              <h3 style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 5 }}>{m.title}</h3>
+              <p style={{ fontSize: 10.5, color: "#374151", lineHeight: 1.6, marginBottom: 5 }}>{m.body}</p>
+              <div style={{ ...BC, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>{m.note}</div>
             </div>
           </div>
         ))}
@@ -663,7 +663,7 @@ function ModelSlide() {
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
               <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 targets in active qualification · No signed LOI yet</div>
+                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 pilot targets identified · Outreach initiating · No signed LOI</div>
                 <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing</div>
               </div>
             </div>
@@ -732,12 +732,12 @@ function TractionSlide() {
       sub: "Outreach active across Gaming · Finance · Manufacturing · Retail · Energy",
     },
     {
-      stageBadge: "ACTIVE QUALIFICATION",
+      stageBadge: "INITIAL OUTREACH",
       badgeColor: GOLD,
       stage: "Founding Partner Pilot Targets",
       count: "3",
       color: GOLD,
-      sub: "Enterprise 5K–50K employees. Fit confirmed. No signed LOI. Conversations underway.",
+      sub: "Enterprise 5K–50K employees. Profile aligned. Outreach initiating. No signed LOI.",
     },
     {
       stageBadge: "STAGE 1 GATE",
@@ -777,7 +777,7 @@ function TractionSlide() {
             <div style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1 }}>
               {pipeline.map((p, i) => (
                 <div key={i} style={{ display: "flex", gap: 12, padding: "9px 12px", background: "#FAFAF9", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${p.color}` }}>
-                  <div style={{ flexShrink: 0, minWidth: 48, textAlign: "right" as const }}>
+                  <div style={{ flexShrink: 0, minWidth: 62, textAlign: "right" as const }}>
                     <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: p.color, lineHeight: 1 }}>{p.count}</div>
                   </div>
                   <div style={{ flex: 1 }}>
