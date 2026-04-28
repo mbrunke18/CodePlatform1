@@ -407,7 +407,7 @@ function ValidationSlide() {
         <p style={{ fontSize: 12, color: "#6B7280" }}>That does not happen with a weak thesis.</p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7, flex: 1 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7, flex: 1, minHeight: 0 }}>
         {researchers.map((r, i) => (
           <div key={i} style={{ background: "#FFFFFF", border: `1px solid ${BORDER}`, borderTop: `3px solid ${r.color}`, padding: "11px 16px", display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 8 }}>
@@ -421,6 +421,28 @@ function ValidationSlide() {
             </div>
             <p style={{ ...CG, fontSize: 12, fontStyle: "italic", color: "#374151", lineHeight: 1.5, flex: 1 }}>{r.quote}</p>
             <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>{r.source}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Info-Tech Research Group — third-party market validation strip */}
+      <div style={{ marginTop: 7, background: NAVY, border: `1px solid rgba(201,168,76,0.25)`, padding: "9px 18px", display: "flex", alignItems: "center", gap: 20, flexShrink: 0 }}>
+        <div style={{ flexShrink: 0 }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>Info-Tech Research Group</div>
+          <div style={{ fontSize: 8, color: "rgba(255,255,255,0.4)", marginTop: 1 }}>AI Trends 2026 · 700+ Global IT Leaders · Nov 2025</div>
+        </div>
+        <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
+        {[
+          { stat: "75%+", label: "of CIOs investing in agentic AI by end of 2026" },
+          { stat: "<25%", label: "have any formal agent oversight protocol" },
+          { stat: "19%", label: "have a fully implemented AI governance framework" },
+        ].map((d, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, flex: 1 }}>
+            {i > 0 && <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.08)", flexShrink: 0 }} />}
+            <div>
+              <div style={{ ...CG, fontSize: 17, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{d.stat}</div>
+              <div style={{ fontSize: 8.5, color: "rgba(255,255,255,0.45)", marginTop: 2, lineHeight: 1.35 }}>{d.label}</div>
+            </div>
           </div>
         ))}
       </div>
@@ -441,8 +463,8 @@ function WhyNowSlide() {
     {
       label: "The Microsoft Gap",
       headline: "Every enterprise has the AI stack. None have the operating model.",
-      body: "Every Fortune 1000 has the Microsoft AI stack live. Copilot, Azure, Teams, M365. None have the operating model to use it at the speed it now operates. Readiness OS is the layer above your Microsoft investment — the architecture that turns AI capability into AI action.",
-      stat: "0%", statLabel: "of enterprises have the coordination layer",
+      body: "Info-Tech Research Group (700+ CIOs, 2026): 75% are investing in agentic AI by year-end — fewer than 25% have any formal oversight protocol. They bought the stack. The operating model layer doesn't exist. Readiness OS is that layer.",
+      stat: "75%+", statLabel: "of CIOs investing in agentic AI · <25% have an operating model for it · Info-Tech Research Group, 2026",
       color: GOLD,
     },
     {
