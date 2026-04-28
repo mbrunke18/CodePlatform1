@@ -1,0 +1,79 @@
+I have a meeting for a possible podcast,  how do i best present myself and the product for the intro meetings:   [Wayne D. Roye](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE)
+1st degree connection· 1st
+Founder/CIO @ OpixIQ — Microsoft Resource Intelligence Platform | Host, The Digital Exchange
+
+Apr 16Wayne D. Roye sent the following message at 8:23 PM [View Wayne D.’s profile](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE) [Wayne D. Roye](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE) 8:23 PM
+Martin, I like the message you have in the group and I wanted to reach out. I host The Digital Exchange, a podcast where I interview technology leaders about how they approach strategic IT decisions especially around Microsoft and cloud infrastructure. If you live in the Microsoft world let me know and we can talk about being a guest. You would be my first PMO.
+Martin Brunke sent the following message at 8:46 PM [View Martin’s profile](https://www.linkedin.com/in/ACoAACP0jCwB1uT5pLom6b-TDMl2Ttoq5U8fbTY) [Martin Brunke](https://www.linkedin.com/in/ACoAACP0jCwB1uT5pLom6b-TDMl2Ttoq5U8fbTY) 8:46 PM
+Wayne appreciate you reaching out and for engaging with the content this week. I want to be straight with you though. I am not a Microsoft technical expert and would not want to misrepresent that. Where I live is the operating model gap above the stack. Why organizations that have already invested in Microsoft AI are still unable to execute when a strategic trigger fires. That is the conversation I can speak to with real credibility and honestly it is one your audience probably needs right now given where most enterprises are with their Microsoft investments. If that angle fits what you are building on the show I would welcome the conversation.
+Apr 17Wayne D. Roye sent the following message at 10:06 AM [View Wayne D.’s profile](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE) [Wayne D. Roye](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE) 10:06 AM
+Im not looking for a technical conversation but a business strategy conversation around Microsoft. Microsoft whether we like it or not has over 85% of the commercial companies and 90% government. It is the tool being used in majority of companies. What is not happening is taking a holistic view of how we can stop fighting what is and how we can incorporate it into our business goal. Im looking for C-Level that is in that world and has failures, successes or stories so other may learn. Note: Part of the problem is we tend to have technical conversations when we should be having more business conversations.
+Martin Brunke sent the following message at 11:34 AM [View Martin’s profile](https://www.linkedin.com/in/ACoAACP0jCwB1uT5pLom6b-TDMl2Ttoq5U8fbTY) [Martin Brunke](https://www.linkedin.com/in/ACoAACP0jCwB1uT5pLom6b-TDMl2Ttoq5U8fbTY) 11:34 AM
+Wayne that reframe changes the conversation entirely and honestly it is the conversation most Microsoft customers need to hear right now. The business strategy gap above the stack is exactly where I live. Twenty years inside Fortune 500 organizations watching the same pattern. The investment gets made. The tools get deployed. And when a strategic trigger fires the organization still spends thirty days mobilizing because nobody built the operating model that tells the Microsoft stack what to do when it matters. That is not a technical failure. It is a preparation and coordination failure at the business strategy level. And I have plenty of stories from both sides of it. Would welcome being on the show. Let me know if you still want to move forward with a conversation.
+Apr 20Wayne D. Roye sent the following messages at 5:14 PM [View Wayne D.’s profile](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE) [Wayne D. Roye](https://www.linkedin.com/in/ACoAAAOsGsQBtIl_htUqEfhqYZAURiuGFe2uwyE) 5:14 PM
+Martin, lets do a quick 15-minute prep call to understand your story and make sure the episode will be valuable for you. Here's my calendar: https://calendly.com/wroye/prep-call Grab any time that works. Looking forward to the conversation.
+[Podcast Prep Call - Wayne Roye](https://calendly.com/wroye/prep-call) [calendly.com](http://calendly.com)
+Reply to conversation with “Sounds good”Sounds good
+Reply to conversation with “Thanks”Thanks
+Reply to conversation with “👍”👍
+*
+
+Show more
+3:34 PM
+Claude responded: Good earn.
+Good earn. Your two messages did exactly what they needed to do — declined the technical framing, redirected to your actual category, and let Wayne come back with the business-strategy frame on his own terms. He's now invested in the conversation.
+
+Here's how to play the 15-minute prep call.
+
+The strategic frame for this meeting
+
+Wayne is not interviewing you yet. He's deciding whether you'll be a good guest. Three things are running in his head: Is this person credible, are they a clear talker, and will they make my audience smarter? Your job in 15 minutes is to land all three without pitching the product.
+
+You also have a quiet asymmetric goal: Wayne is the founder of OpixIQ, a Microsoft Resource Intelligence Platform. That means he sells into the same Microsoft ecosystem you're positioning above. He is a potential channel relationship, a potential category peer, or — at minimum — a node in the Microsoft enterprise practitioner conversation you want to be embedded in. Don't push for any of that on this call. Just don't miss the signal that he's more than a podcast host.
+
+The shape of the 15 minutes
+
+Wayne will probably open with logistics, then ask some version of "tell me your story" or "what would the episode be about." Be ready to deliver the answer in two minutes, not eight. Long answers in prep calls are the most common reason guests don't get booked.
+
+Open with the operating model gap, not your bio. Something like:
+
+"The conversation I can carry for your audience is the gap most Microsoft customers don't realize they have. Their AI stack is live. Copilot, Azure, Teams, M365, all of it. But when a strategic trigger fires — a competitive move, a regulatory action, an activist campaign, an M&A integration — the organization still takes thirty days to mobilize a response. The technology is ready. The operating model isn't. That's the conversation. I've watched it happen at Ford, Toyota, Lockheed Martin, Charles Schwab, and a few others over twenty years."
+
+That's roughly 90 seconds spoken at a normal pace. It does four things — names the audience pain, anchors in Microsoft specifically (Wayne's world), introduces the trigger frame, and lands credibility through the company list without it feeling like a resume read.
+
+Then stop. Let him ask the next question.
+
+What he'll likely ask next, and how to answer
+
+"Can you give me an example?" This is where the football analogy earns its keep, but only if you frame it as a business operation, not a sport. "I spent five years coaching at Stanford. Major college football is a billion-dollar business operation that has solved a coordination problem most Fortune 1000 companies are still wrestling with. They get from signal to coordinated execution across eleven roles in forty seconds. The mechanism is preparation architecture — every situation already owned, every role rehearsed before the trigger fires. That same logic applied to enterprise coordination is what I've spent the last several years building." Then offer one Fortune 1000 example without naming the company — a regulatory trigger, an activist campaign, an M&A integration. Whichever one you can tell most cleanly in 60 seconds.
+
+"What's the takeaway your audience walks away with?" This is the question that decides whether you get booked. Have a clean answer ready. Something like: "The Microsoft investment isn't the problem. The operating model above it is. Most enterprises are running 2026 AI capability through a coordination model designed before AI existed. The fix isn't more technology. It's redesigning how the stack gets activated when a trigger fires." That's the kind of line a podcast host writes down and uses to pitch the episode internally.
+
+"What's the format you're comfortable with?" Defer to him. "Whatever works for your show. I'm comfortable with structured questions or an open conversation, your call." Hosts appreciate guests who don't try to control the format.
+
+What not to do on this call
+
+Don't mention VaughnMartin or Readiness OS unless he asks directly. If he asks what you do, say "I run a small company called VaughnMartin, but the conversation isn't about the product, it's about the pattern." Then redirect back to the operating model gap. The product gets one sentence on the show, at the end, only if Wayne sets it up. Pitching on a prep call is the fastest way to lose a podcast spot.
+
+Don't over-credential. The Ford / Toyota / Lockheed / Schwab list lands once, naturally, in the opening. Don't repeat it. Don't reach for Stanford twice. Don't bring up Churchill Downs (CDI doesn't appear in your VaughnMartin-facing materials and a podcast intro is exactly where you want to keep that line clean).
+
+Don't pitch yourself as a category leader. Wayne hasn't earned that frame yet and it'll read as overreach on a first call. The credibility comes from the operating model insight and the Fortune 1000 pattern, not from claiming a category.
+
+Don't ask about his audience size, sponsors, or distribution. New podcast hosts get that question constantly and it signals you're sizing up his show rather than treating it as a real conversation. If he wants you to know the numbers he'll volunteer them.
+
+One thing to do on the call
+
+Ask him one question about OpixIQ near the end, after he's gotten what he needs. Something like "I noticed you're building OpixIQ in the Microsoft Resource Intelligence space — is that informing the kinds of conversations you're trying to have on the show?" That's a peer-to-peer question, not a pitch, and it opens the door to a conversation later about the relationship between his platform and your category. He'll remember a guest who asked about his work. Most don't.
+
+The tactical close
+
+When the booking conversation happens, get a recording date locked before the call ends. Hosts schedule fast and slow guests slip. If he offers a date, take it. If he doesn't, ask "what's a good week for you to record."
+
+Ahead of the call
+
+Spend five minutes on his LinkedIn and the OpixIQ website. Know one specific thing about Microsoft Resource Intelligence so the OpixIQ question at the end is informed. Spend five more minutes listening to two minutes of any recent episode of The Digital Exchange to hear his pacing and how he handles guest intros. That's enough prep — more than that and you'll over-prepare and sound stiff.
+
+Want me to draft a 90-second version of the opening as a script you can rehearse out loud, or do you want to take the structure above and put it in your own words for the call?
+
+You said: draft a quick cheat sheet on all this and make the resonses in my tone and vocabluary
+draft a quick cheat sheet on all this and make the resonses in my tone and vocabluary
