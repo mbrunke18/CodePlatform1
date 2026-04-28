@@ -61,9 +61,26 @@ function CoverSlide() {
 
         <div style={{ width: 56, height: 2, background: GOLD, margin: "0 auto 28px" }} />
 
-        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.65)", fontWeight: 400, marginBottom: 52, lineHeight: 1.6 }}>
-          Coordination infrastructure for the Fortune 1000.
+        <p style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
+          We redesign how work flows in the age of AI.
         </p>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 48 }}>
+          <div style={{ textAlign: "center" as const }}>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,0.35)", lineHeight: 1 }}>30 days</div>
+            <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", marginTop: 4 }}>Mobilization Cycle</div>
+          </div>
+          <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.12)", margin: "0 22px" }} />
+          <div style={{ textAlign: "center" as const }}>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: TEAL, lineHeight: 1 }}>12 minutes</div>
+            <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginTop: 4 }}>With Readiness OS</div>
+          </div>
+          <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.12)", margin: "0 22px" }} />
+          <div style={{ textAlign: "center" as const }}>
+            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD, lineHeight: 1 }}>3,600×</div>
+            <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginTop: 4 }}>Execution Head Start</div>
+          </div>
+        </div>
 
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -360,8 +377,12 @@ function PlatformDepthSlide() {
         })}
 
         {/* Bottom strip */}
-        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.08)`, textAlign: "center" as const }}>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: NAVY }}>151 PAGES · LIVE IN PRODUCTION AT VAUGHNMARTIN.COM · NOT A PROTOTYPE</span>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 20px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.45)" }}>151 PAGES · LIVE IN PRODUCTION AT VAUGHNMARTIN.COM · NOT A PROTOTYPE</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
+            <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: GOLD }}>12-MINUTE TEST DRIVE LIVE · VAUGHNMARTIN.COM/12-MINUTE-EXPERIENCE</span>
+          </div>
         </div>
       </div>
     </div>
@@ -483,7 +504,7 @@ function WhyNowSlide() {
     {
       label: "Category Window",
       headline: "No category leader exists. The window is 18 months.",
-      body: "No category leader exists for strategic coordination infrastructure. The window for category ownership is 18 months. We are already in it.",
+      body: "No category leader exists for strategic coordination infrastructure. The window for category ownership is 18 months. We are already in it. And we are naming it.",
       stat: "18mo", statLabel: "to define the category",
       color: NAVY,
     },
@@ -752,8 +773,8 @@ function ModelSlide() {
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
               <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 pilot targets identified · Outreach initiating · No signed LOI</div>
-                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing</div>
+                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 enterprise conversations active · Profile-aligned targets</div>
+                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing · SpeedRun closes the gap</div>
               </div>
             </div>
           </div>
@@ -1309,10 +1330,17 @@ function CompetitiveSlide() {
         </div>
 
         {/* Bottom insight */}
-        <div style={{ marginTop: 12, padding: "12px 20px", background: `rgba(10,15,46,0.04)`, border: `1px solid rgba(10,15,46,0.08)`, borderLeft: `3px solid ${GOLD}` }}>
-          <p style={{ fontSize: 12, color: NAVY, lineHeight: 1.55 }}>
-            <strong>The real competition is the 30-day mobilization cycle itself.</strong> Every alternative either speeds up the old model or audits it after the fact. Only Readiness OS replaces it — with pre-staged execution that deploys before the trigger fully matures.
-          </p>
+        <div style={{ marginTop: 12, display: "flex", gap: 0 }}>
+          <div style={{ flex: 1, padding: "12px 20px", background: `rgba(10,15,46,0.04)`, border: `1px solid rgba(10,15,46,0.08)`, borderLeft: `3px solid ${GOLD}` }}>
+            <p style={{ fontSize: 12, color: NAVY, lineHeight: 1.55, margin: 0 }}>
+              <strong>The real competition is the 30-day mobilization cycle itself.</strong> Every alternative either speeds up the old model or audits it after the fact. Only Readiness OS replaces it — with pre-staged execution that deploys before the trigger fully matures.
+            </p>
+          </div>
+          <div style={{ flexShrink: 0, padding: "12px 20px", background: NAVY, display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" as const, minWidth: 148 }}>
+            <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1 }}>3,600×</div>
+            <div style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>Execution Head Start</div>
+            <div style={{ fontSize: 8.5, color: "rgba(255,255,255,0.3)", marginTop: 3 }}>30 days → 12 minutes</div>
+          </div>
         </div>
       </div>
     </div>
