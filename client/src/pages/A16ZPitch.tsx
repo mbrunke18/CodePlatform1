@@ -1537,7 +1537,9 @@ export default function A16ZPitch() {
       )}
 
       {/* Slide stage — centers the scaled 16:9 canvas */}
-      <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+      {/* data-html2canvas-ignore: prevent the visible slide from bleeding into the
+          off-screen render container capture (both occupy the same page region) */}
+      <div data-html2canvas-ignore="true" style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
         <div
           ref={slideRef}
           style={{
