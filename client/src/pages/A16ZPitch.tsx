@@ -563,24 +563,50 @@ function MarketSlide() {
         </div>
 
         <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>Bottom-Up TAM</div>
-            <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
-          </div>
-          {[
-            { segment: "Fortune 1000 US", n: "1,000 cos", acv: "× $200K ACV", total: "$200M" },
-            { segment: "Global Fortune 2000 (ex-US)", n: "1,000 cos", acv: "× $200K ACV", total: "$200M" },
-            { segment: "PE-backed enterprise ($500M+ rev)", n: "3,000 cos", acv: "× $100K ACV", total: "$300M" },
-            { segment: "Global enterprises 5K+ employees", n: "20,000 cos", acv: "× $150K ACV", total: "$3B+" },
-            { segment: "Platform licensing & protocol API layer", n: "—", acv: "—", total: "$1.3B+" },
-          ].map((r, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 4, paddingTop: 3, paddingBottom: 3, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-              <span style={{ fontSize: 7.5, color: "rgba(255,255,255,0.38)", flex: 1 }}>{r.segment}</span>
-              <span style={{ fontSize: 7.5, color: "rgba(255,255,255,0.25)", width: 54, textAlign: "right" as const }}>{r.n}</span>
-              <span style={{ fontSize: 7.5, color: "rgba(255,255,255,0.22)", width: 54, textAlign: "right" as const }}>{r.acv}</span>
-              <span style={{ ...BC, fontSize: 8, fontWeight: 700, color: GOLD, width: 32, textAlign: "right" as const }}>{r.total}</span>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 7 }}>Market Sizing · Bottom-Up</div>
+          <div style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+
+            {/* SAM column */}
+            <div style={{ flex: 1, padding: "6px 9px", background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.2)" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                <div style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.12em", color: TEAL }}>SAM — NEAR-TERM</div>
+                <div style={{ ...CG, fontSize: 15, fontWeight: 700, color: "#FFFFFF" }}>~$400M</div>
+              </div>
+              {[
+                { seg: "Fortune 1000 US¹", n: "1,000", total: "$200M" },
+                { seg: "Forbes Global 2000 ex-US²", n: "1,000", total: "$200M" },
+              ].map((r, i) => (
+                <div key={i} style={{ display: "flex", justifyContent: "space-between", paddingTop: 3, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                  <span style={{ fontSize: 7, color: "rgba(255,255,255,0.32)" }}>{r.seg}</span>
+                  <span style={{ ...BC, fontSize: 7, fontWeight: 700, color: TEAL }}>{r.total}</span>
+                </div>
+              ))}
+              <div style={{ marginTop: 3, fontSize: 6.5, color: "rgba(255,255,255,0.18)", lineHeight: 1.4 }}>All × $200K full-platform ACV</div>
             </div>
-          ))}
+
+            {/* TAM column */}
+            <div style={{ flex: 1, padding: "6px 9px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                <div style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.12em", color: GOLD }}>TAM — LONG-TERM</div>
+                <div style={{ ...CG, fontSize: 15, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
+              </div>
+              {[
+                { seg: "Global 5K+ emp enterprises³", total: "$3B+" },
+                { seg: "PE-backed ($500M+ rev)", total: "$300M" },
+                { seg: "Protocol licensing layer", total: "$1.3B+" },
+              ].map((r, i) => (
+                <div key={i} style={{ display: "flex", justifyContent: "space-between", paddingTop: 3, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                  <span style={{ fontSize: 7, color: "rgba(255,255,255,0.32)" }}>{r.seg}</span>
+                  <span style={{ ...BC, fontSize: 7, fontWeight: 700, color: GOLD }}>{r.total}</span>
+                </div>
+              ))}
+              <div style={{ marginTop: 3, fontSize: 6.5, color: "rgba(255,255,255,0.18)", lineHeight: 1.4 }}>~20K cos × $150K blended ACV</div>
+            </div>
+          </div>
+
+          <div style={{ fontSize: 6.5, color: "rgba(255,255,255,0.2)", lineHeight: 1.5 }}>
+            ¹ Fortune Media Fortune 1000 (annual) · ² Forbes Global 2000 (annual) · ³ OECD enterprise size distribution · ACV derived from platform Land/Expand model ($75K pilot → $200K full)
+          </div>
         </div>
       </div>
 
@@ -1360,6 +1386,10 @@ function TheAskSlide() {
                 <div style={{ fontSize: 8, color: "#9CA3AF" }}>{b.note}</div>
               </div>
             ))}
+          </div>
+          <div style={{ marginTop: 8, paddingTop: 6, borderTop: `1px solid ${BORDER}`, fontSize: 7.5, color: "#9CA3AF", lineHeight: 1.6 }}>
+            <span style={{ fontWeight: 600, color: "#6B7280" }}>Burn breakdown: </span>
+            Contract eng ×2 $14K · Enterprise AE $8K · Infrastructure $5K · Go-to-market $6K · Overhead $5K = $38K/mo
           </div>
         </div>
 
