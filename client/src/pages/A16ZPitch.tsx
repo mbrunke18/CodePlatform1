@@ -1428,6 +1428,10 @@ export default function A16ZPitch() {
 
   const exportToPDF = useCallback(async () => {
     if (exporting) return;
+    // Open blank tab immediately while the user gesture is still live —
+    // after async work completes we point it to the blob URL.
+    // This bypasses iframe popup/download blocking.
+    const pdfTab = window.open('', '_blank');
     setExportMode('pdf');
     setExportStep(0);
     const images = await renderAllSlides(step => setExportStep(step));
@@ -1437,7 +1441,17 @@ export default function A16ZPitch() {
       if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'landscape');
       pdf.addImage(images[i], 'JPEG', 0, 0, SLIDE_W, SLIDE_H);
     }
-    pdf.save('VaughnMartin-ReadinessOS-a16z-SpeedRun007.pdf');
+    const blob = pdf.output('blob');
+    const url = URL.createObjectURL(blob);
+    if (pdfTab) {
+      pdfTab.location.href = url;
+    } else {
+      // Fallback if popup was blocked — try a direct download link
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'VaughnMartin-ReadinessOS-a16z-SpeedRun007.pdf';
+      a.click();
+    }
     setExportMode(null);
     setExportStep(0);
   }, [exporting, renderAllSlides]);
