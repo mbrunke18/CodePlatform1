@@ -49,36 +49,36 @@ function CoverSlide() {
       </div>
 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 820, padding: "0 48px" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 36 }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 22 }}>
           <div style={{ width: 24, height: 1, background: GOLD, opacity: 0.5 }} />
           <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>a16z SpeedRun 007 · April 2026</span>
           <div style={{ width: 24, height: 1, background: GOLD, opacity: 0.5 }} />
         </div>
 
-        <h1 style={{ ...CG, fontSize: 64, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 28, letterSpacing: "-0.01em" }}>
-          The strategic response is ready<br />before the trigger fires.
+        <h1 style={{ ...CG, fontSize: 56, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.12, marginBottom: 20, letterSpacing: "-0.01em", maxWidth: 700 }}>
+          The strategic response is ready before the trigger fires.
         </h1>
 
-        <div style={{ width: 56, height: 2, background: GOLD, margin: "0 auto 28px" }} />
+        <div style={{ width: 56, height: 2, background: GOLD, margin: "0 auto 18px" }} />
 
-        <p style={{ ...BC, fontSize: 13, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
+        <p style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 22 }}>
           We redesign how work flows in the age of AI.
         </p>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 48 }}>
-          <div style={{ textAlign: "center" as const }}>
-            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "rgba(255,255,255,0.35)", lineHeight: 1 }}>30 days</div>
-            <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", marginTop: 4 }}>Mobilization Cycle</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, marginBottom: 28 }}>
+          <div style={{ textAlign: "center" as const, padding: "0 22px" }}>
+            <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.32)", lineHeight: 1 }}>30 days</div>
+            <div style={{ ...BC, fontSize: 7, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.22)", marginTop: 4 }}>Mobilization Cycle</div>
           </div>
-          <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.12)", margin: "0 22px" }} />
-          <div style={{ textAlign: "center" as const }}>
-            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: TEAL, lineHeight: 1 }}>12 minutes</div>
-            <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginTop: 4 }}>With Readiness OS</div>
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.12)" }} />
+          <div style={{ textAlign: "center" as const, padding: "0 22px" }}>
+            <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: TEAL, lineHeight: 1 }}>12 minutes</div>
+            <div style={{ ...BC, fontSize: 7, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.28)", marginTop: 4 }}>With Readiness OS</div>
           </div>
-          <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.12)", margin: "0 22px" }} />
-          <div style={{ textAlign: "center" as const }}>
-            <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD, lineHeight: 1 }}>3,600×</div>
-            <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginTop: 4 }}>Execution Head Start</div>
+          <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.12)" }} />
+          <div style={{ textAlign: "center" as const, padding: "0 22px" }}>
+            <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: GOLD, lineHeight: 1 }}>3,600×</div>
+            <div style={{ ...BC, fontSize: 7, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.28)", marginTop: 4 }}>Execution Head Start</div>
           </div>
         </div>
 
