@@ -44,8 +44,8 @@ function CoverSlide() {
       {/* orb bottom-left */}
       <div style={{ position: "absolute", bottom: -150, left: -150, width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, rgba(201,168,76,0.13) 0%, transparent 70%)`, pointerEvents: "none" }} />
       {/* Large watermark seal — centered, very low opacity */}
-      <div style={{ position: "absolute", top: "48%", left: "50%", transform: "translate(-50%, -50%)", opacity: 0.06, pointerEvents: "none" }}>
-        <VaughnMartinLogo color="white" height={460} variant="icon-only" />
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.06, pointerEvents: "none" }}>
+        <VaughnMartinLogo color="white" height={440} variant="icon-only" />
       </div>
 
       <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: 820, padding: "0 48px" }}>
