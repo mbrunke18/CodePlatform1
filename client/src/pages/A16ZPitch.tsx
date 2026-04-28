@@ -773,8 +773,8 @@ function ModelSlide() {
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
               <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 enterprise conversations active · Profile-aligned targets</div>
-                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing · SpeedRun closes the gap</div>
+                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 pilot targets selected · Profile-aligned for Founding Partner Program</div>
+                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing · SpeedRun opens the introduction</div>
               </div>
             </div>
           </div>
@@ -842,12 +842,12 @@ function TractionSlide() {
       sub: "Gaming · Finance · Manufacturing · Retail · Energy",
     },
     {
-      stageBadge: "ACTIVE OUTREACH",
+      stageBadge: "TARGET SELECTION",
       badgeColor: GOLD,
       stage: "Founding Partner Pilot Targets",
       count: "3",
       color: GOLD,
-      sub: "5K–50K employees · Profile aligned · Conversations in progress",
+      sub: "5K–50K employees · Profile-aligned · SpeedRun opens the introduction",
     },
     {
       stageBadge: "STAGE 1 GATE",
