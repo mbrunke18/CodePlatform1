@@ -1344,6 +1344,7 @@ export default function A16ZPitch() {
   const [scale, setScale] = useState(1);
   const [exportMode, setExportMode] = useState<'pptx' | 'pdf' | null>(null);
   const [exportStep, setExportStep] = useState(0);
+  const [pdfReadyUrl, setPdfReadyUrl] = useState<string | null>(null);
   const total = SLIDES.length;
   const exporting = exportMode !== null;
 
@@ -1428,14 +1429,9 @@ export default function A16ZPitch() {
 
   const exportToPDF = useCallback(async () => {
     if (exporting) return;
-    // Open blank tab immediately while the user gesture is still live —
-    // after async work completes we point it to the blob URL.
-    // This bypasses iframe popup/download blocking.
-    const pdfTab = window.open('', '_blank');
     setExportMode('pdf');
     setExportStep(0);
     const images = await renderAllSlides(step => setExportStep(step));
-    // Each PDF page exactly matches the 16:9 slide canvas (960×540 pt)
     const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: [SLIDE_W, SLIDE_H] });
     for (let i = 0; i < images.length; i++) {
       if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'landscape');
@@ -1443,15 +1439,7 @@ export default function A16ZPitch() {
     }
     const blob = pdf.output('blob');
     const url = URL.createObjectURL(blob);
-    if (pdfTab) {
-      pdfTab.location.href = url;
-    } else {
-      // Fallback if popup was blocked — try a direct download link
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'VaughnMartin-ReadinessOS-a16z-SpeedRun007.pdf';
-      a.click();
-    }
+    setPdfReadyUrl(url);
     setExportMode(null);
     setExportStep(0);
   }, [exporting, renderAllSlides]);
@@ -1489,6 +1477,29 @@ export default function A16ZPitch() {
           </div>
           <div style={{ ...BC, fontSize: 11, fontWeight: 600, letterSpacing: "0.12em", color: GOLD, marginTop: 12 }}>
             SLIDE {exportStep} OF {total}
+          </div>
+        </div>
+      )}
+
+      {/* PDF Ready overlay — universal: works on mobile, desktop, and inside iframes */}
+      {pdfReadyUrl && (
+        <div
+          style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(10,15,46,0.95)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 24 }}
+          onClick={() => setPdfReadyUrl(null)}
+        >
+          <div style={{ ...CG, fontSize: 22, color: "#fff", textAlign: "center" }}>Your PDF is ready</div>
+          <a
+            href={pdfReadyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="VaughnMartin-ReadinessOS-a16z-SpeedRun007.pdf"
+            onClick={e => e.stopPropagation()}
+            style={{ display: "flex", alignItems: "center", gap: 10, background: TEAL, color: "#fff", textDecoration: "none", padding: "14px 32px", borderRadius: "0.15rem", fontFamily: "'Barlow Condensed', sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}
+          >
+            <FileText size={18} /> Tap to Open / Download PDF
+          </a>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.4)", letterSpacing: "0.08em" }}>
+            Tap anywhere else to dismiss
           </div>
         </div>
       )}
