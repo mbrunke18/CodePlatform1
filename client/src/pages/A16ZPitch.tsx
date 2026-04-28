@@ -1314,6 +1314,97 @@ function TheAskSlide() {
   );
 }
 
+// ─── Print / PDF Export Page ──────────────────────────────────────────────────
+// Opened in a new tab by the "Download PDF" button. The browser's native
+// print engine renders everything perfectly — fonts, flex gaps, gradients,
+// SVG arc-text — then Save as PDF produces a clean 960×540-pt deck.
+export function A16ZPrint() {
+  useEffect(() => {
+    // Wait for fonts + layout to settle, then trigger the print dialog
+    document.fonts.ready.then(() => {
+      setTimeout(() => window.print(), 600);
+    });
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        /* Force colour / background printing in all browsers */
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+        /* Each slide becomes exactly one landscape page */
+        @page {
+          size: 960px 540px;
+          margin: 0;
+        }
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 960px;
+        }
+        .vm-print-slide {
+          width: 960px;
+          height: 540px;
+          overflow: hidden;
+          position: relative;
+          page-break-after: always;
+          break-after: page;
+        }
+        .vm-print-slide:last-child {
+          page-break-after: avoid;
+          break-after: avoid;
+        }
+        /* Screen preview: dark bg with small gap between slides */
+        @media screen {
+          body {
+            background: #111;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 24px 0;
+          }
+          .vm-print-slide {
+            outline: 1px solid rgba(255,255,255,0.12);
+          }
+          .vm-print-hint {
+            font-family: sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 16px;
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 10;
+            width: 960px;
+          }
+        }
+        @media print {
+          .vm-print-hint { display: none; }
+        }
+      `}</style>
+
+      <div className="vm-print-hint">
+        Save as PDF — select Destination "Save as PDF", Margins "None", scale 100%.
+        The print dialog opened automatically.
+      </div>
+
+      {SLIDES.map((slide, i) => {
+        const SlideComp = slide.component;
+        return (
+          <div key={i} className="vm-print-slide">
+            <SlideComp />
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
 // ─── Main Deck ────────────────────────────────────────────────────────────────
 const SLIDES = [
   { component: CoverSlide, label: "Cover" },
@@ -1597,14 +1688,13 @@ export default function A16ZPitch() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <button
-            onClick={exportToPDF}
-            disabled={exporting}
-            title="Download as PDF"
-            style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.15)", border: "1px solid rgba(43,138,110,0.4)", borderRadius: "0.15rem", padding: "5px 12px", cursor: exporting ? "not-allowed" : "pointer", opacity: exporting ? 0.5 : 1, transition: "opacity 0.2s" }}
+            onClick={() => window.open('/a16z-print', '_blank')}
+            title="Download as PDF — opens print-ready page"
+            style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(43,138,110,0.15)", border: "1px solid rgba(43,138,110,0.4)", borderRadius: "0.15rem", padding: "5px 12px", cursor: "pointer", transition: "opacity 0.2s" }}
           >
             <FileText size={13} color={TEAL} />
             <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: TEAL }}>
-              {exportMode === 'pdf' ? `${exportStep}/${total}` : "Download PDF"}
+              Download PDF
             </span>
           </button>
           <button

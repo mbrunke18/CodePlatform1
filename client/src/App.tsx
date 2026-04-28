@@ -158,6 +158,7 @@ const PlatformCapabilities = lazy(() => import("./pages/PlatformCapabilities"));
 const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
 const InvestorPresentation = lazy(() => import("./pages/InvestorPresentation"));
 const A16ZPitch = lazy(() => import("./pages/A16ZPitch"));
+const A16ZPrint = lazy(() => import("./pages/A16ZPitch").then(m => ({ default: m.A16ZPrint })));
 const MissionControl = lazy(() => import("./pages/MissionControl"));
 const CommandTower = lazy(() => import("./pages/CommandTower"));
 const WorkspaceHub = lazy(() => import("./pages/WorkspaceHub"));
@@ -590,6 +591,7 @@ function Router() {
         {renderRedirects(["/product-tour", "/video-tour"], "/industry-demos")}
         {renderRoutes(["/investor-presentation", "/pitch-deck"], InvestorPresentation)}
         {renderRoutes(["/a16z", "/speedrun-pitch"], A16ZPitch)}
+        <Route path="/a16z-print" component={A16ZPrint} />
         {renderRedirects(["/investor-demo", "/customer-demo", "/deal-risk-demo"], "/industry-demos")}
         <Route path="/investor-resources" component={InvestorResources} />
         {renderRoutes(["/roadshow-resources", "/roadshow"], RoadshowResources)}
