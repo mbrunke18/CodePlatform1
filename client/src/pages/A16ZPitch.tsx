@@ -522,30 +522,30 @@ function MarketSlide() {
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", position: "relative" }}>
       {/* Left — bottom-up land-and-expand model */}
-      <div style={{ ...GRID_BG, background: NAVY_BG, width: "45%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 40px", position: "relative", overflow: "hidden" }}>
+      <div style={{ ...GRID_BG, background: NAVY_BG, width: "45%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: "16px 32px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: -80, left: -80, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)" }} />
         <SlideLabel light>The Market</SlideLabel>
 
         {/* Land → Expand → Compound stages */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 3, marginBottom: 16 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 3, marginBottom: 10 }}>
           {[
             { stage: "LAND", acv: "$75K ACV", detail: "3 domains · 60 protocols · pilot scope", color: GOLD },
             { stage: "EXPAND", acv: "$150–250K ACV", detail: "Full platform · 170 protocols · 12–18 months post-land", color: TEAL },
             { stage: "COMPOUND", acv: "NRR 100%+", detail: "Org-encoded intelligence · Ownership Close-Out Gate", color: "rgba(255,255,255,0.5)" },
           ].map((s, i) => (
-            <div key={i} style={{ display: "flex", gap: 12, padding: "9px 14px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `3px solid ${s.color}` }}>
+            <div key={i} style={{ display: "flex", gap: 10, padding: "7px 10px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `3px solid ${s.color}` }}>
               <div style={{ flexShrink: 0, width: 72 }}>
                 <div style={{ ...BC, fontSize: 7.5, fontWeight: 800, letterSpacing: "0.14em", color: s.color }}>{s.stage}</div>
-                <div style={{ ...CG, fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginTop: 2 }}>{s.acv}</div>
+                <div style={{ ...CG, fontSize: 13, fontWeight: 700, color: "#FFFFFF", marginTop: 1 }}>{s.acv}</div>
               </div>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.5, paddingTop: 2 }}>{s.detail}</div>
+              <div style={{ fontSize: 9.5, color: "rgba(255,255,255,0.45)", lineHeight: 1.4, paddingTop: 2 }}>{s.detail}</div>
             </div>
           ))}
         </div>
 
         {/* Realistic 3-year ARR path */}
-        <div style={{ marginBottom: 14 }}>
-          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 8 }}>Realistic 3-Year ARR Path</div>
+        <div style={{ marginBottom: 8 }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 4 }}>Realistic 3-Year ARR Path</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             {[
               { yr: "Yr 1", math: "8 accounts × $87K avg", arr: "~$700K ARR", note: "3 founding pilots + 5 new lands" },
@@ -1356,48 +1356,48 @@ function TheAskSlide() {
       </div>
 
       {/* Right panel */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "40px 44px" }}>
-        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 16 }}>Use of Funds</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: "20px 36px" }}>
+        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Use of Funds</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 10 }}>
           {uses.map((u, i) => (
-            <div key={i} style={{ display: "flex", gap: 16, padding: "14px 18px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${u.color}`, background: "#FFFFFF" }}>
-              <div style={{ flexShrink: 0, textAlign: "center" as const, paddingTop: 2 }}>
-                <div style={{ ...BC, fontSize: 16, fontWeight: 900, color: u.color, lineHeight: 1 }}>{u.alloc}</div>
+            <div key={i} style={{ display: "flex", gap: 12, padding: "9px 12px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${u.color}`, background: "#FFFFFF" }}>
+              <div style={{ flexShrink: 0, textAlign: "center" as const, paddingTop: 1, width: 32 }}>
+                <div style={{ ...BC, fontSize: 14, fontWeight: 900, color: u.color, lineHeight: 1 }}>{u.alloc}</div>
               </div>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{u.label}</div>
-                <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55 }}>{u.desc}</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{u.label}</div>
+                <div style={{ fontSize: 10, color: "#6B7280", lineHeight: 1.4 }}>{u.desc}</div>
               </div>
             </div>
           ))}
         </div>
 
-        <div style={{ marginBottom: 10, padding: "10px 16px", background: "#F8F7F4", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}` }}>
-          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Burn & Runway</div>
-          <div style={{ display: "flex", gap: 0 }}>
+        <div style={{ marginBottom: 8, padding: "8px 12px", background: "#F8F7F4", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}` }}>
+          <div style={{ ...BC, fontSize: 7.5, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 5 }}>Burn & Runway</div>
+          <div style={{ display: "flex", gap: 0, marginBottom: 6 }}>
             {[
               { label: "Monthly Burn", value: "~$38K", note: "Eng + AE + ops + GTM" },
               { label: "Runway · SAFE ($500K)", value: "13 mo", note: "Upfront at program start" },
               { label: "Runway · Full ($1M)", value: "26 mo", note: "Incl. follow-on participation" },
             ].map((b, i) => (
-              <div key={i} style={{ flex: 1, paddingRight: i < 2 ? 12 : 0, marginRight: i < 2 ? 12 : 0, borderRight: i < 2 ? `1px solid ${BORDER}` : "none" }}>
-                <div style={{ ...CG, fontSize: 16, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{b.value}</div>
-                <div style={{ ...BC, fontSize: 7.5, fontWeight: 700, color: "#374151", marginTop: 2, marginBottom: 1 }}>{b.label}</div>
-                <div style={{ fontSize: 8, color: "#9CA3AF" }}>{b.note}</div>
+              <div key={i} style={{ flex: 1, paddingRight: i < 2 ? 10 : 0, marginRight: i < 2 ? 10 : 0, borderRight: i < 2 ? `1px solid ${BORDER}` : "none" }}>
+                <div style={{ ...CG, fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{b.value}</div>
+                <div style={{ ...BC, fontSize: 7, fontWeight: 700, color: "#374151", marginTop: 2, marginBottom: 1 }}>{b.label}</div>
+                <div style={{ fontSize: 7.5, color: "#9CA3AF" }}>{b.note}</div>
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 8, paddingTop: 6, borderTop: `1px solid ${BORDER}`, fontSize: 7.5, color: "#9CA3AF", lineHeight: 1.6 }}>
-            <span style={{ fontWeight: 600, color: "#6B7280" }}>Burn breakdown: </span>
-            Contract eng ×2 $14K · Enterprise AE $8K · Infrastructure $5K · Go-to-market $6K · Overhead $5K = $38K/mo
+          <div style={{ paddingTop: 5, borderTop: `1px solid ${BORDER}`, fontSize: 7, color: "#9CA3AF", lineHeight: 1.5 }}>
+            <span style={{ fontWeight: 600, color: "#6B7280" }}>Breakdown: </span>
+            Contract eng ×2 $14K · Enterprise AE $8K · Infrastructure $5K · GTM $6K · Overhead $5K = $38K/mo
           </div>
         </div>
 
-        <div style={{ padding: "12px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${GOLD}` }}>
-          <p style={{ ...CG, fontSize: 13, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
+        <div style={{ padding: "10px 14px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${GOLD}` }}>
+          <p style={{ ...CG, fontSize: 12, fontStyle: "italic", color: NAVY, lineHeight: 1.5 }}>
             "The platform is built. The category is defined. The commercial co-founder is equity, not a budget line. Every dollar goes toward growth."
           </p>
-          <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>Martin Brunke · Founder & CEO</div>
+          <div style={{ ...BC, fontSize: 7.5, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 5 }}>Martin Brunke · Founder & CEO</div>
         </div>
       </div>
     </div>
