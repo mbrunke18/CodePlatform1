@@ -135,9 +135,16 @@ function ProblemSlide() {
           ))}
         </div>
 
-        <div style={{ marginTop: "auto", paddingTop: 14, borderTop: `1px solid ${BORDER}` }}>
+        <div style={{ marginTop: 20, padding: "12px 18px", background: NAVY, borderLeft: `3px solid ${GOLD}` }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 5 }}>The white space no vendor has entered</div>
+          <p style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", lineHeight: 1.6, margin: 0 }}>
+            Preparation is not a software category. Every vendor built faster reactions. No one built infrastructure for preparation itself — until now.
+          </p>
+        </div>
+
+        <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px solid ${BORDER}` }}>
           <div style={{ ...BC, fontSize: 7.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 5 }}>Sources</div>
-          <span style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.7 }}>
+          <span style={{ fontSize: 10, color: "#6B7280", lineHeight: 1.6 }}>
             McKinsey Global Resilience Report 2025 · Gartner Enterprise Risk Monitor 2025 · Equifax SEC Filing 2019 · Boeing Annual Report 2020
           </span>
         </div>
@@ -673,19 +680,32 @@ function MoatSlide() {
         </h2>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 7, flex: 1 }}>
         {moats.map((m, i) => (
-          <div key={i} style={{ display: "flex", gap: 22, padding: "13px 20px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : NAVY}`, background: "#FAFAF9", flex: 1, overflow: "hidden" }}>
+          <div key={i} style={{ display: "flex", gap: 22, padding: "11px 20px", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${i === 0 ? GOLD : i === 1 ? TEAL : NAVY}`, background: "#FAFAF9", flex: 1, overflow: "hidden" }}>
             <div style={{ flexShrink: 0 }}>
               <div style={{ ...BC, fontSize: 26, fontWeight: 900, color: i === 0 ? GOLD : i === 1 ? TEAL : NAVY, lineHeight: 1, opacity: 0.25 }}>{m.num}</div>
             </div>
             <div style={{ flex: 1, overflow: "hidden" }}>
-              <h3 style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 5 }}>{m.title}</h3>
-              <p style={{ fontSize: 10.5, color: "#374151", lineHeight: 1.6, marginBottom: 5 }}>{m.body}</p>
+              <h3 style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{m.title}</h3>
+              <p style={{ fontSize: 10.5, color: "#374151", lineHeight: 1.55, marginBottom: 4 }}>{m.body}</p>
               <div style={{ ...BC, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>{m.note}</div>
             </div>
           </div>
         ))}
+      </div>
+
+      <div style={{ marginTop: 10, display: "flex", gap: 0 }}>
+        <div style={{ flex: 1, padding: "10px 18px", background: NAVY, borderLeft: `3px solid ${GOLD}` }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 4 }}>The compound effect</div>
+          <p style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", lineHeight: 1.5, margin: 0 }}>
+            After 12 activations, no two organizations run the same platform. The intelligence is theirs — encoded from their own decisions, failures, and ownership patterns. That is not a feature. That is a moat that deepens every time they use it.
+          </p>
+        </div>
+        <div style={{ width: 180, padding: "10px 16px", background: `rgba(43,138,110,0.06)`, border: `1px solid rgba(43,138,110,0.2)`, display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" as const }}>
+          <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1 }}>NRR 100%+</div>
+          <div style={{ fontSize: 9, color: "#6B7280", marginTop: 4, lineHeight: 1.4 }}>Built into the architecture — not the sales motion</div>
+        </div>
       </div>
     </div>
   );
@@ -1004,17 +1024,27 @@ function CloseSlide() {
           <VaughnMartinLogo color="white" height={80} variant="icon-only" />
         </div>
 
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 20 }}>Preparation · Readiness · Fearless</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, justifyContent: "center", marginBottom: 20 }}>
+          {["Preparation", "Readiness", "Fearless"].map((word, i) => (
+            <div key={word} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: i === 2 ? GOLD : "rgba(255,255,255,0.6)" }}>{word}</span>
+              {i < 2 && <span style={{ color: "rgba(255,255,255,0.2)", fontSize: 14 }}>→</span>}
+            </div>
+          ))}
+        </div>
 
         <h1 style={{ ...CG, fontSize: 68, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.05, marginBottom: 24, letterSpacing: "-0.01em" }}>
           We make enterprises<br />
           <span style={{ color: GOLD }}>fearless.</span>
         </h1>
 
-        <div style={{ width: 56, height: 2, background: GOLD, margin: "0 auto 32px" }} />
+        <div style={{ width: 56, height: 2, background: GOLD, margin: "0 auto 20px" }} />
 
-        <p style={{ ...CG, fontSize: 22, fontStyle: "italic", color: "rgba(255,255,255,0.65)", marginBottom: 52, lineHeight: 1.5 }}>
+        <p style={{ ...CG, fontSize: 20, fontStyle: "italic", color: "rgba(255,255,255,0.65)", marginBottom: 10, lineHeight: 1.5 }}>
           The strategic response is ready before the trigger fires.
+        </p>
+        <p style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 40 }}>
+          Speed is the evidence · Fearlessness is the outcome
         </p>
 
         <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
