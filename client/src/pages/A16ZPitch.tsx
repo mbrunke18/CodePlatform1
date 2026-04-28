@@ -433,18 +433,24 @@ function ValidationSlide() {
         </div>
         <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
         {[
-          { stat: "75%+", label: "of CIOs investing in agentic AI by end of 2026" },
-          { stat: "<25%", label: "have any formal agent oversight protocol" },
-          { stat: "19%", label: "have a fully implemented AI governance framework" },
+          { stat: "75%+", label: "of CIOs investing in agentic AI by end of 2026", solve: "Readiness OS is the operating model above that investment" },
+          { stat: "<25%", label: "have any formal agent oversight protocol", solve: "Readiness OS: AI monitors, executives authorize — built in" },
+          { stat: "19%", label: "have a fully implemented AI governance framework", solve: "Readiness OS: 170 pre-staged governance protocols, ready now" },
         ].map((d, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, flex: 1 }}>
-            {i > 0 && <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.08)", flexShrink: 0 }} />}
+            {i > 0 && <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.08)", flexShrink: 0 }} />}
             <div>
               <div style={{ ...CG, fontSize: 17, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{d.stat}</div>
-              <div style={{ fontSize: 8.5, color: "rgba(255,255,255,0.45)", marginTop: 2, lineHeight: 1.35 }}>{d.label}</div>
+              <div style={{ fontSize: 8.5, color: "rgba(255,255,255,0.4)", marginTop: 2, lineHeight: 1.3 }}>{d.label}</div>
+              <div style={{ fontSize: 8, color: TEAL, fontWeight: 600, marginTop: 3, lineHeight: 1.3 }}>→ {d.solve}</div>
             </div>
           </div>
         ))}
+        <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.08)", flexShrink: 0 }} />
+        <div style={{ flexShrink: 0, textAlign: "center" as const }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#FFFFFF", lineHeight: 1.3 }}>Readiness OS</div>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", color: TEAL, marginTop: 2 }}>closes all three.</div>
+        </div>
       </div>
     </div>
   );
