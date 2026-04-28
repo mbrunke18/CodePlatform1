@@ -973,7 +973,7 @@ function FounderSlide() {
           <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
             {[
               { role: "Founder, CEO & Chief Architect", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
-              { role: "Commercial Co-Founder", name: "Fortune 1000 sales DNA · CXO access required", status: "RECRUITING" },
+              { role: "Commercial Co-Founder", name: "Equity-based seat · enterprise sales DNA · candidates in active vetting", status: "VETTING NOW" },
               { role: "Strategic Communications Lead", name: "Enterprise narrative, media access, thought leadership", status: "IN NETWORK" },
             ].map(t => (
               <div key={t.role} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
