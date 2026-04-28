@@ -563,9 +563,24 @@ function MarketSlide() {
         </div>
 
         <div style={{ padding: "10px 14px", border: "1px solid rgba(201,168,76,0.3)", background: "rgba(201,168,76,0.07)" }}>
-          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 2 }}>Long-term TAM</div>
-          <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
-          <div style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", marginTop: 1 }}>Global strategic coordination infrastructure · 537 US F1000 + 400 global + PE mid-market</div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD }}>Bottom-Up TAM</div>
+            <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: "#FFFFFF" }}>$5B+</div>
+          </div>
+          {[
+            { segment: "Fortune 1000 US", n: "1,000 cos", acv: "× $200K ACV", total: "$200M" },
+            { segment: "Global Fortune 2000 (ex-US)", n: "1,000 cos", acv: "× $200K ACV", total: "$200M" },
+            { segment: "PE-backed enterprise ($500M+ rev)", n: "3,000 cos", acv: "× $100K ACV", total: "$300M" },
+            { segment: "Global enterprises 5K+ employees", n: "20,000 cos", acv: "× $150K ACV", total: "$3B+" },
+            { segment: "Platform licensing & protocol API layer", n: "—", acv: "—", total: "$1.3B+" },
+          ].map((r, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 4, paddingTop: 3, paddingBottom: 3, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+              <span style={{ fontSize: 7.5, color: "rgba(255,255,255,0.38)", flex: 1 }}>{r.segment}</span>
+              <span style={{ fontSize: 7.5, color: "rgba(255,255,255,0.25)", width: 54, textAlign: "right" as const }}>{r.n}</span>
+              <span style={{ fontSize: 7.5, color: "rgba(255,255,255,0.22)", width: 54, textAlign: "right" as const }}>{r.acv}</span>
+              <span style={{ ...BC, fontSize: 8, fontWeight: 700, color: GOLD, width: 32, textAlign: "right" as const }}>{r.total}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -760,12 +775,12 @@ function TractionSlide() {
       sub: "Gaming · Finance · Manufacturing · Retail · Energy",
     },
     {
-      stageBadge: "INITIAL OUTREACH",
+      stageBadge: "ACTIVE OUTREACH",
       badgeColor: GOLD,
       stage: "Founding Partner Pilot Targets",
       count: "3",
       color: GOLD,
-      sub: "5K–50K employees · Profile aligned · Outreach initiating · No LOI",
+      sub: "5K–50K employees · Profile aligned · Conversations in progress",
     },
     {
       stageBadge: "STAGE 1 GATE",
@@ -773,7 +788,7 @@ function TractionSlide() {
       stage: "Target ACV at Pilot Close",
       count: "$225K",
       color: TEAL,
-      sub: "$75K per pilot · No signed revenue yet · SpeedRun closes this gap",
+      sub: "$75K per pilot × 3 · SpeedRun network accelerates close",
     },
   ];
   return (
@@ -851,7 +866,7 @@ function TractionSlide() {
 
             <div style={{ marginTop: 12, padding: "9px 14px", border: `1px solid rgba(255,255,255,0.1)`, background: "rgba(255,255,255,0.03)" }}>
               <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.55 }}>
-                <strong style={{ color: "rgba(255,255,255,0.65)" }}>What isn't done yet:</strong> No signed pilot. No signed LOI. SpeedRun closes the commercial gap the platform cannot close alone.
+                <strong style={{ color: "rgba(255,255,255,0.65)" }}>What SpeedRun closes:</strong> The platform is live. Pilot targets are identified. a16z network access converts pipeline conversations into signed commitments — in 12 weeks.
               </div>
             </div>
           </div>
@@ -1331,8 +1346,25 @@ function TheAskSlide() {
           ))}
         </div>
 
-        <div style={{ padding: "14px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${GOLD}` }}>
-          <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
+        <div style={{ marginBottom: 10, padding: "10px 16px", background: "#F8F7F4", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${TEAL}` }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Burn & Runway</div>
+          <div style={{ display: "flex", gap: 0 }}>
+            {[
+              { label: "Monthly Burn", value: "~$38K", note: "Eng + AE + ops + GTM" },
+              { label: "Runway · SAFE ($500K)", value: "13 mo", note: "Upfront at program start" },
+              { label: "Runway · Full ($1M)", value: "26 mo", note: "Incl. follow-on participation" },
+            ].map((b, i) => (
+              <div key={i} style={{ flex: 1, paddingRight: i < 2 ? 12 : 0, marginRight: i < 2 ? 12 : 0, borderRight: i < 2 ? `1px solid ${BORDER}` : "none" }}>
+                <div style={{ ...CG, fontSize: 16, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{b.value}</div>
+                <div style={{ ...BC, fontSize: 7.5, fontWeight: 700, color: "#374151", marginTop: 2, marginBottom: 1 }}>{b.label}</div>
+                <div style={{ fontSize: 8, color: "#9CA3AF" }}>{b.note}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ padding: "12px 18px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)`, borderLeft: `3px solid ${GOLD}` }}>
+          <p style={{ ...CG, fontSize: 13, fontStyle: "italic", color: NAVY, lineHeight: 1.55 }}>
             "The platform is built. The category is defined. The commercial co-founder is equity, not a budget line. Every dollar goes toward growth."
           </p>
           <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>Martin Brunke · Founder & CEO</div>
