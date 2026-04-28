@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { createRoot } from 'react-dom/client';
 import { ChevronLeft, ChevronRight, Download, FileText } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import PptxGenJS from 'pptxgenjs';
@@ -1354,23 +1355,47 @@ export default function A16ZPitch() {
   const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
   const next = useCallback(() => setCurrent(p => Math.min(total - 1, p + 1)), [total]);
 
-  // Capture every slide from the live DOM element, cycling through each index.
-  // Fonts are already loaded, layout is pixel-perfect — nothing is re-rendered.
+  // Render every slide into a dedicated off-screen container placed at
+  // position:fixed; left:0; top:0 — NO transform — so html2canvas reads (0,0)
+  // from getBoundingClientRect and captures the correct 960×540 region.
+  // The export overlay (z-index:999) hides this container from the user;
+  // the onclone callback removes the overlay (and all data-html2canvas-ignore
+  // elements) from the clone so they don't appear in the capture.
   const renderAllSlides = useCallback(async (onProgress: (step: number) => void): Promise<string[]> => {
+    // Ensure all custom fonts are fully loaded before we start
+    await Promise.allSettled([
+      document.fonts.load('700 16px "Cormorant Garamond"'),
+      document.fonts.load('400 16px "Cormorant Garamond"'),
+      document.fonts.load('700 16px "Barlow Condensed"'),
+      document.fonts.load('600 16px "Barlow Condensed"'),
+    ]);
+    await document.fonts.ready;
+
     const images: string[] = [];
-    const savedCurrent = current;
 
     for (let i = 0; i < SLIDES.length; i++) {
-      // Switch to this slide and let React paint it
-      setCurrent(i);
       onProgress(i + 1);
-      await new Promise<void>(r => setTimeout(r, 450));
 
-      const el = slideRef.current;
-      if (!el) continue;
+      // Create a render container at exactly (0,0) with no transform.
+      // z-index:1 keeps it below the export overlay (z-index:999) so the
+      // user sees the overlay, not the slide-render flash.
+      const container = document.createElement('div');
+      container.setAttribute('data-pdf-slide', 'true');
+      container.style.cssText =
+        `position:fixed;left:0;top:0;width:${SLIDE_W}px;height:${SLIDE_H}px;` +
+        `overflow:hidden;z-index:1;pointer-events:none;`;
+      document.body.appendChild(container);
 
-      // Wait for any <img> elements in the slide to finish loading
-      const imgs = Array.from(el.querySelectorAll('img'));
+      const SlideComp = SLIDES[i].component;
+      const root = createRoot(container);
+      // Render the slide and wait for React + fonts + layout to fully settle
+      await new Promise<void>(resolve => {
+        root.render(<SlideComp />);
+        setTimeout(resolve, 800);
+      });
+
+      // Wait for any <img> elements to fully load (e.g. command-tower.jpg)
+      const imgs = Array.from(container.querySelectorAll('img'));
       if (imgs.length > 0) {
         await Promise.all(imgs.map(img =>
           img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })
@@ -1378,10 +1403,10 @@ export default function A16ZPitch() {
         await new Promise(r => setTimeout(r, 100));
       }
 
-      // Capture the element at its native 960×540 size.
-      // onclone: strip scale transform, pin to 0,0, and remove all
-      // page-chrome elements (overlays, nav) so only the slide is captured.
-      const canvas = await html2canvas(el, {
+      // Capture from (0,0) — exactly where the container lives.
+      // onclone removes all page-chrome (overlay, nav, bottom bar) so only
+      // the slide content is present in the clone during rendering.
+      const canvas = await html2canvas(container, {
         width: SLIDE_W,
         height: SLIDE_H,
         scale: 2,
@@ -1392,28 +1417,23 @@ export default function A16ZPitch() {
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
         imageTimeout: 15000,
-        onclone: (doc: Document, clonedEl: HTMLElement) => {
-          // Strip the viewer scale transform so html2canvas captures at native 960×540.
-          clonedEl.style.transform = 'none';
-          clonedEl.style.transformOrigin = 'top left';
-          clonedEl.style.position = 'fixed';
-          clonedEl.style.left = '0';
-          clonedEl.style.top = '0';
-          clonedEl.style.zIndex = '99999';
-          // Remove all elements marked to be ignored during capture
-          // (export overlay, nav buttons, bottom bar — all have backdropFilter
-          // which html2canvas does not support and will throw on).
-          doc.querySelectorAll('[data-html2canvas-ignore]').forEach(el => (el as HTMLElement).remove());
+        x: 0,
+        y: 0,
+        onclone: (doc: Document) => {
+          // Remove all page-chrome elements marked to skip (backdropFilter etc.)
+          doc.querySelectorAll('[data-html2canvas-ignore]').forEach(
+            el => (el as HTMLElement).remove()
+          );
         },
       });
 
       images.push(canvas.toDataURL('image/jpeg', 0.95));
+      root.unmount();
+      document.body.removeChild(container);
     }
 
-    // Restore the slide the user was on
-    setCurrent(savedCurrent);
     return images;
-  }, [current]);
+  }, []);
 
   const exportToPPTX = useCallback(async () => {
     if (exporting) return;
