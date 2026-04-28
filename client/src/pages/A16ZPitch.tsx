@@ -729,7 +729,7 @@ function TractionSlide() {
       stage: "Fortune 1000 Targets",
       count: "15+",
       color: NAVY,
-      sub: "Outreach active across Gaming · Finance · Manufacturing · Retail · Energy",
+      sub: "Gaming · Finance · Manufacturing · Retail · Energy",
     },
     {
       stageBadge: "INITIAL OUTREACH",
@@ -737,7 +737,7 @@ function TractionSlide() {
       stage: "Founding Partner Pilot Targets",
       count: "3",
       color: GOLD,
-      sub: "Enterprise 5K–50K employees. Profile aligned. Outreach initiating. No signed LOI.",
+      sub: "5K–50K employees · Profile aligned · Outreach initiating · No LOI",
     },
     {
       stageBadge: "STAGE 1 GATE",
@@ -745,7 +745,7 @@ function TractionSlide() {
       stage: "Target ACV at Pilot Close",
       count: "$225K",
       color: TEAL,
-      sub: "3 pilots × $75K flat fee · No signed revenue yet · SpeedRun closes this gap",
+      sub: "$75K per pilot · No signed revenue yet · SpeedRun closes this gap",
     },
   ];
   return (
@@ -759,39 +759,39 @@ function TractionSlide() {
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, flex: 1 }}>
         {/* Left: Product + Pipeline */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={{ flexShrink: 0, border: `1px solid ${BORDER}`, padding: "12px 16px" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 7 }}>What's Built</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div style={{ flexShrink: 0, border: `1px solid ${BORDER}`, padding: "8px 14px" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 5 }}>What's Built</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
               {productMetrics.map(m => (
-                <div key={m} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0, marginTop: 4 }} />
-                  <span style={{ fontSize: 10.5, color: "#374151", lineHeight: 1.4 }}>{m}</span>
+                <div key={m} style={{ display: "flex", alignItems: "flex-start", gap: 7 }}>
+                  <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0, marginTop: 3 }} />
+                  <span style={{ fontSize: 10, color: "#374151", lineHeight: 1.35 }}>{m}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div style={{ flex: 1, border: `1px solid ${BORDER}`, padding: "14px 18px", display: "flex", flexDirection: "column" }}>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>Enterprise Pipeline · Pilot Status</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6, flex: 1 }}>
+          <div style={{ flex: 1, minHeight: 0, border: `1px solid ${BORDER}`, padding: "10px 14px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 7 }}>Enterprise Pipeline · Pilot Status</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1 }}>
               {pipeline.map((p, i) => (
-                <div key={i} style={{ display: "flex", gap: 12, padding: "9px 12px", background: "#FAFAF9", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${p.color}` }}>
+                <div key={i} style={{ display: "flex", gap: 10, padding: "7px 10px", background: "#FAFAF9", border: `1px solid ${BORDER}`, borderLeft: `3px solid ${p.color}`, alignItems: "center" }}>
                   <div style={{ flexShrink: 0, minWidth: 62, textAlign: "right" as const }}>
-                    <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: p.color, lineHeight: 1 }}>{p.count}</div>
+                    <div style={{ ...CG, fontSize: 19, fontWeight: 700, color: p.color, lineHeight: 1 }}>{p.count}</div>
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 2 }}>
                       <div style={{ ...BC, fontSize: 7, fontWeight: 800, letterSpacing: "0.1em", color: p.badgeColor, background: `rgba(10,15,46,0.06)`, padding: "1px 5px", borderRadius: 1 }}>{p.stageBadge}</div>
                     </div>
-                    <div style={{ fontSize: 10.5, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{p.stage}</div>
-                    <div style={{ fontSize: 9.5, color: "#6B7280", lineHeight: 1.4 }}>{p.sub}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: NAVY, marginBottom: 1 }}>{p.stage}</div>
+                    <div style={{ fontSize: 9, color: "#6B7280", lineHeight: 1.35, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.sub}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 8, padding: "6px 10px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.07)` }}>
-              <span style={{ fontSize: 9, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · 5 Fortune 500 advisors</span>
+            <div style={{ marginTop: 5, padding: "5px 8px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.07)` }}>
+              <span style={{ fontSize: 8.5, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · 5 Fortune 500 advisors</span>
             </div>
           </div>
         </div>
