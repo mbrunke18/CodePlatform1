@@ -1370,14 +1370,18 @@ export default function A16ZPitch() {
     for (let i = 0; i < SLIDES.length; i++) {
       onProgress(i + 1);
       const container = document.createElement('div');
-      // Keep inside viewport (left:0, top:0) so browser computes full flex/grid layout.
-      // z-index:998 sits below the export loading overlay (z-index:999) so the user
-      // never sees the slide — but html2canvas captures it without any opacity mask.
+      // transform:translateX(-9999px) moves the container visually off-screen so
+      // the user never sees it, but the browser still fully paints and lays it out
+      // (transforms don't suppress layout or paint — unlike left:-9999px which can).
+      // z-index:1 (positive) avoids paint-suppression from deeply-negative stacking.
+      // The onclone callback below resets the transform in html2canvas's clone so
+      // it captures at position 0,0 and produces the correct image.
+      container.setAttribute('data-pdf-render', 'true');
       container.style.cssText = [
         'position:fixed', 'left:0', 'top:0',
         `width:${SLIDE_W}px`, `height:${SLIDE_H}px`,
-        'overflow:hidden', 'z-index:998',
-        'pointer-events:none',
+        'overflow:hidden', 'z-index:1',
+        'transform:translateX(-9999px)', 'pointer-events:none',
       ].join(';');
       document.body.appendChild(container);
       const SlideComp = SLIDES[i].component;
@@ -1398,11 +1402,14 @@ export default function A16ZPitch() {
         width: SLIDE_W, height: SLIDE_H, scale: 2,
         useCORS: true, allowTaint: false, logging: false,
         backgroundColor: '#ffffff',
-        // Match the actual browser viewport so Tailwind/CSS breakpoints resolve correctly
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
         imageTimeout: 10000,
         x: 0, y: 0,
+        // Reset the off-screen transform in the clone so html2canvas captures at 0,0
+        onclone: (_doc: Document, el: HTMLElement) => {
+          el.style.transform = 'none';
+        },
       });
       images.push(canvas.toDataURL('image/jpeg', 0.95));
       root.unmount();
@@ -1431,17 +1438,25 @@ export default function A16ZPitch() {
     if (exporting) return;
     setExportMode('pdf');
     setExportStep(0);
-    const images = await renderAllSlides(step => setExportStep(step));
-    const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: [SLIDE_W, SLIDE_H] });
-    for (let i = 0; i < images.length; i++) {
-      if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'landscape');
-      pdf.addImage(images[i], 'JPEG', 0, 0, SLIDE_W, SLIDE_H);
+    try {
+      const images = await renderAllSlides(step => setExportStep(step));
+      const pdf = new jsPDF({ orientation: 'landscape', unit: 'pt', format: [SLIDE_W, SLIDE_H] });
+      for (let i = 0; i < images.length; i++) {
+        if (i > 0) pdf.addPage([SLIDE_W, SLIDE_H], 'landscape');
+        pdf.addImage(images[i], 'JPEG', 0, 0, SLIDE_W, SLIDE_H);
+      }
+      const blob = pdf.output('blob');
+      const url = URL.createObjectURL(blob);
+      setPdfReadyUrl(url);
+    } catch (err) {
+      console.error('[PDF Export] Failed:', err);
+      // Clean up any orphaned render containers left by a crashed slide
+      document.querySelectorAll('[data-pdf-render]').forEach(el => el.remove());
+      alert('PDF generation encountered an error. Please try again.');
+    } finally {
+      setExportMode(null);
+      setExportStep(0);
     }
-    const blob = pdf.output('blob');
-    const url = URL.createObjectURL(blob);
-    setPdfReadyUrl(url);
-    setExportMode(null);
-    setExportStep(0);
   }, [exporting, renderAllSlides]);
 
   useEffect(() => {
