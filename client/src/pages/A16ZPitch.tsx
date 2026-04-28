@@ -908,28 +908,28 @@ function FounderSlide() {
   return (
     <div style={{ background: "#FFFFFF", width: "100%", height: "100%", display: "flex", position: "relative" }}>
       {/* Left — dark panel */}
-      <div style={{ ...GRID_BG, background: NAVY, width: "42%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 44px", position: "relative", overflow: "hidden" }}>
+      <div style={{ ...GRID_BG, background: NAVY, width: "42%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: "18px 36px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: -100, right: -80, width: 320, height: 320, borderRadius: "50%", background: "radial-gradient(circle, rgba(43,138,110,0.2) 0%, transparent 70%)" }} />
         <div style={{ position: "relative", zIndex: 1 }}>
           <SlideLabel light>The Founder</SlideLabel>
-          <div style={{ ...CG, fontSize: 42, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 6 }}>Martin Brunke</div>
-          <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 18 }}>Founder, CEO & Chief Architect · VaughnMartin</div>
+          <div style={{ ...CG, fontSize: 38, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 4 }}>Martin Brunke</div>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>Founder, CEO & Chief Architect · VaughnMartin</div>
 
-          <div style={{ marginBottom: 24 }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 12 }}>Fortune 1000 · 20 Years</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 8 }}>Fortune 1000 · 20 Years</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
               {fortune1000.map(c => (
                 <div key={c} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 3, height: 3, background: TEAL, flexShrink: 0 }} />
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{c}</span>
+                  <span style={{ fontSize: 12, color: "rgba(255,255,255,0.7)" }}>{c}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div style={{ paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 10 }}>Major College Football · 5 Years</div>
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7 }}>
+          <div style={{ paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 6 }}>Major College Football · 5 Years</div>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6 }}>
               Coaching at Stanford. The practice field where preparation architecture compressed 30-day organizational decisions into 40 seconds.
             </p>
           </div>
@@ -937,51 +937,51 @@ function FounderSlide() {
       </div>
 
       {/* Right — the pattern */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "36px 48px" }}>
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>The Pattern</div>
-        <h3 style={{ ...CG, fontSize: 23, fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 10 }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", padding: "18px 40px" }}>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>The Pattern</div>
+        <h3 style={{ ...CG, fontSize: 21, fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 8 }}>
           Same coordination failure across 7 industries. Same solution already proven on the practice field.
         </h3>
-        <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, marginBottom: 10 }}>
+        <p style={{ fontSize: 12, color: "#374151", lineHeight: 1.55, marginBottom: 8 }}>
           The infrastructure nobody built for the boardroom.
         </p>
 
-        <div style={{ padding: "12px 18px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 12 }}>
-          <p style={{ ...CG, fontSize: 15, fontStyle: "italic", color: NAVY, lineHeight: 1.5 }}>
+        <div style={{ padding: "10px 14px", background: OFF, border: `1px solid ${BORDER}`, borderLeft: `3px solid ${GOLD}`, marginBottom: 10 }}>
+          <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: NAVY, lineHeight: 1.45 }}>
             "VaughnMartin is named for my father, Vaughn. The product carries his standard."
           </p>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 6 }}>Martin Brunke</div>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#9CA3AF", marginTop: 5 }}>Martin Brunke</div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6, marginBottom: 10 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 5, marginBottom: 10 }}>
           {[
             { label: "Fortune 1000 experience", value: "20 yrs" },
             { label: "Industries spanned", value: "7" },
             { label: "Stanford football", value: "5 yrs" },
             { label: "Protocols encoded", value: "170" },
           ].map(s => (
-            <div key={s.label} style={{ padding: "8px 14px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
-              <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: NAVY }}>{s.value}</div>
-              <div style={{ fontSize: 10, color: "#9CA3AF", marginTop: 1 }}>{s.label}</div>
+            <div key={s.label} style={{ padding: "7px 12px", border: `1px solid ${BORDER}`, background: "#FFFFFF" }}>
+              <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: NAVY }}>{s.value}</div>
+              <div style={{ fontSize: 9.5, color: "#9CA3AF", marginTop: 1 }}>{s.label}</div>
             </div>
           ))}
         </div>
 
         {/* Team composition — de-risk the solo narrative */}
-        <div style={{ border: `1px solid ${BORDER}`, padding: "10px 14px" }}>
-          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 10 }}>Team Composition</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+        <div style={{ border: `1px solid ${BORDER}`, padding: "8px 12px" }}>
+          <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 7 }}>Team Composition</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {[
               { role: "Founder, CEO & Chief Architect", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
               { role: "Commercial Co-Founder", name: "Equity-based seat · enterprise sales DNA · candidates in active vetting", status: "VETTING NOW" },
               { role: "Strategic Communications Lead", name: "Enterprise narrative, media access, thought leadership", status: "IN NETWORK" },
             ].map(t => (
               <div key={t.role} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
-                <div>
-                  <span style={{ fontSize: 10, fontWeight: 700, color: NAVY }}>{t.role} </span>
-                  <span style={{ fontSize: 10, color: "#6B7280" }}>— {t.name}</span>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <span style={{ fontSize: 9.5, fontWeight: 700, color: NAVY }}>{t.role} </span>
+                  <span style={{ fontSize: 9.5, color: "#6B7280" }}>— {t.name}</span>
                 </div>
-                <span style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.1em", color: t.status === "NOW" ? TEAL : t.status === "IN NETWORK" ? GOLD : "#9CA3AF", flexShrink: 0 }}>{t.status}</span>
+                <span style={{ ...BC, fontSize: 7, fontWeight: 700, letterSpacing: "0.1em", color: t.status === "NOW" ? TEAL : t.status === "IN NETWORK" ? GOLD : GOLD, flexShrink: 0 }}>{t.status}</span>
               </div>
             ))}
           </div>
