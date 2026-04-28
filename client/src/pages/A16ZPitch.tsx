@@ -454,33 +454,33 @@ function WhyNowSlide() {
     },
   ];
   return (
-    <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "28px 48px", position: "relative", overflow: "hidden" }}>
+    <div style={{ ...GRID_BG, background: NAVY_BG, width: "100%", height: "100%", display: "flex", flexDirection: "column", padding: "20px 48px", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: -200, left: "30%", width: 800, height: 400, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(43,138,110,0.12) 0%, transparent 70%)" }} />
 
       <div style={{ position: "relative", zIndex: 1, flex: 1, display: "flex", flexDirection: "column" }}>
-        <div style={{ textAlign: "center", marginBottom: 20 }}>
+        <div style={{ textAlign: "center", marginBottom: 12 }}>
           <SlideLabel light>Why Now</SlideLabel>
-          <h2 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1 }}>
+          <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.1 }}>
             AI did not create our product.<br />AI created the market for our product.
           </h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, flex: 1 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2, flex: 1, minHeight: 0 }}>
           {reasons.map((r, i) => (
-            <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `3px solid ${r.color}`, padding: "20px 20px", display: "flex", flexDirection: "column" }}>
-              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: r.color, marginBottom: 10 }}>{r.label}</div>
-              <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 10 }}>{r.headline}</h3>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, flex: 1 }}>{r.body}</p>
-              <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: r.color, lineHeight: 1 }}>{r.stat}</div>
-                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 3 }}>{r.statLabel}</div>
+            <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderTop: `3px solid ${r.color}`, padding: "14px 16px", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+              <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: r.color, marginBottom: 8 }}>{r.label}</div>
+              <h3 style={{ ...CG, fontSize: 18, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 8 }}>{r.headline}</h3>
+              <p style={{ fontSize: 10.5, color: "rgba(255,255,255,0.55)", lineHeight: 1.55, flex: 1 }}>{r.body}</p>
+              <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid rgba(255,255,255,0.08)", flexShrink: 0 }}>
+                <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: r.color, lineHeight: 1 }}>{r.stat}</div>
+                <div style={{ fontSize: 9.5, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{r.statLabel}</div>
               </div>
             </div>
           ))}
         </div>
 
-        <div style={{ marginTop: 14, padding: "11px 20px", background: "rgba(255,255,255,0.04)", borderLeft: `3px solid rgba(201,168,76,0.5)` }}>
-          <p style={{ ...CG, fontSize: 14, fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>
+        <div style={{ marginTop: 8, padding: "8px 16px", background: "rgba(255,255,255,0.04)", borderLeft: `3px solid rgba(201,168,76,0.5)` }}>
+          <p style={{ ...CG, fontSize: 13, fontStyle: "italic", color: "rgba(255,255,255,0.55)" }}>
             Jim Highsmith, co-author of the Agile Manifesto: "Process ran the last era. Judgment runs the next."
           </p>
         </div>
