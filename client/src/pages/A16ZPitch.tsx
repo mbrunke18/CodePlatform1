@@ -1,5 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Download, FileText } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import PptxGenJS from 'pptxgenjs';
@@ -1345,78 +1344,70 @@ export default function A16ZPitch() {
   const [exportMode, setExportMode] = useState<'pptx' | 'pdf' | null>(null);
   const [exportStep, setExportStep] = useState(0);
   const [pdfReadyUrl, setPdfReadyUrl] = useState<string | null>(null);
+  // Ref to the actual 960×540 slide element already rendered in the DOM.
+  // Capturing this directly guarantees fonts, layout, and colours exactly
+  // match what the user sees on screen — no re-render / font-fallback issues.
+  const slideRef = useRef<HTMLDivElement>(null);
   const total = SLIDES.length;
   const exporting = exportMode !== null;
 
   const prev = useCallback(() => setCurrent(p => Math.max(0, p - 1)), []);
   const next = useCallback(() => setCurrent(p => Math.min(total - 1, p + 1)), [total]);
 
-  // Shared slide-rendering helper: captures all slides as JPEG data URLs
+  // Capture every slide from the live DOM element, cycling through each index.
+  // Fonts are already loaded, layout is pixel-perfect — nothing is re-rendered.
   const renderAllSlides = useCallback(async (onProgress: (step: number) => void): Promise<string[]> => {
-    // Pre-load all custom fonts so html2canvas captures correct metrics
-    await Promise.allSettled([
-      document.fonts.load('400 16px "Cormorant Garamond"'),
-      document.fonts.load('600 16px "Cormorant Garamond"'),
-      document.fonts.load('700 16px "Cormorant Garamond"'),
-      document.fonts.load('400 16px "Barlow Condensed"'),
-      document.fonts.load('600 16px "Barlow Condensed"'),
-      document.fonts.load('700 16px "Barlow Condensed"'),
-      document.fonts.load('800 16px "Barlow Condensed"'),
-      document.fonts.load('900 16px "Barlow Condensed"'),
-    ]);
-    await document.fonts.ready;
-
     const images: string[] = [];
+    const savedCurrent = current;
+
     for (let i = 0; i < SLIDES.length; i++) {
+      // Switch to this slide and let React paint it
+      setCurrent(i);
       onProgress(i + 1);
-      const container = document.createElement('div');
-      // transform:translateX(-9999px) moves the container visually off-screen so
-      // the user never sees it, but the browser still fully paints and lays it out
-      // (transforms don't suppress layout or paint — unlike left:-9999px which can).
-      // z-index:1 (positive) avoids paint-suppression from deeply-negative stacking.
-      // The onclone callback below resets the transform in html2canvas's clone so
-      // it captures at position 0,0 and produces the correct image.
-      container.setAttribute('data-pdf-render', 'true');
-      container.style.cssText = [
-        'position:fixed', 'left:0', 'top:0',
-        `width:${SLIDE_W}px`, `height:${SLIDE_H}px`,
-        'overflow:hidden', 'z-index:1',
-        'transform:translateX(-9999px)', 'pointer-events:none',
-      ].join(';');
-      document.body.appendChild(container);
-      const SlideComp = SLIDES[i].component;
-      const root = createRoot(container);
-      // Render and wait for fonts + layout to fully settle
-      await new Promise<void>(resolve => {
-        root.render(<SlideComp />);
-        setTimeout(resolve, 1000);
-      });
-      // Wait for any images inside the slide to load
-      const imgs = Array.from(container.querySelectorAll('img'));
+      await new Promise<void>(r => setTimeout(r, 450));
+
+      const el = slideRef.current;
+      if (!el) continue;
+
+      // Wait for any <img> elements in the slide to finish loading
+      const imgs = Array.from(el.querySelectorAll('img'));
       if (imgs.length > 0) {
-        await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })));
-        await new Promise(r => setTimeout(r, 150));
+        await Promise.all(imgs.map(img =>
+          img.complete ? Promise.resolve() : new Promise(r => { img.onload = r; img.onerror = r; })
+        ));
+        await new Promise(r => setTimeout(r, 100));
       }
 
-      const canvas = await html2canvas(container, {
-        width: SLIDE_W, height: SLIDE_H, scale: 2,
-        useCORS: true, allowTaint: false, logging: false,
+      // Capture the element at its native 960×540 size.
+      // onclone removes the scale() transform so html2canvas captures 1:1.
+      const canvas = await html2canvas(el, {
+        width: SLIDE_W,
+        height: SLIDE_H,
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
         backgroundColor: '#ffffff',
-        windowWidth: window.innerWidth,
-        windowHeight: window.innerHeight,
-        imageTimeout: 10000,
-        x: 0, y: 0,
-        // Reset the off-screen transform in the clone so html2canvas captures at 0,0
-        onclone: (_doc: Document, el: HTMLElement) => {
-          el.style.transform = 'none';
+        windowWidth: SLIDE_W,
+        windowHeight: SLIDE_H,
+        onclone: (_doc: Document, clonedEl: HTMLElement) => {
+          // Strip the viewer scale transform so html2canvas captures at native 960×540.
+          // Also move the element to top-left so the capture region aligns correctly.
+          clonedEl.style.transform = 'none';
+          clonedEl.style.transformOrigin = 'top left';
+          clonedEl.style.position = 'fixed';
+          clonedEl.style.left = '0';
+          clonedEl.style.top = '0';
         },
       });
+
       images.push(canvas.toDataURL('image/jpeg', 0.95));
-      root.unmount();
-      document.body.removeChild(container);
     }
+
+    // Restore the slide the user was on
+    setCurrent(savedCurrent);
     return images;
-  }, []);
+  }, [current]);
 
   const exportToPPTX = useCallback(async () => {
     if (exporting) return;
@@ -1522,6 +1513,7 @@ export default function A16ZPitch() {
       {/* Slide stage — centers the scaled 16:9 canvas */}
       <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
         <div
+          ref={slideRef}
           style={{
             width: SLIDE_W,
             height: SLIDE_H,
