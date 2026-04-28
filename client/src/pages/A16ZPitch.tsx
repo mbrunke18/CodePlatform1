@@ -1379,7 +1379,8 @@ export default function A16ZPitch() {
       }
 
       // Capture the element at its native 960×540 size.
-      // onclone removes the scale() transform so html2canvas captures 1:1.
+      // onclone: strip scale transform, pin to 0,0, and remove all
+      // page-chrome elements (overlays, nav) so only the slide is captured.
       const canvas = await html2canvas(el, {
         width: SLIDE_W,
         height: SLIDE_H,
@@ -1388,16 +1389,21 @@ export default function A16ZPitch() {
         allowTaint: false,
         logging: false,
         backgroundColor: '#ffffff',
-        windowWidth: SLIDE_W,
-        windowHeight: SLIDE_H,
-        onclone: (_doc: Document, clonedEl: HTMLElement) => {
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
+        imageTimeout: 15000,
+        onclone: (doc: Document, clonedEl: HTMLElement) => {
           // Strip the viewer scale transform so html2canvas captures at native 960×540.
-          // Also move the element to top-left so the capture region aligns correctly.
           clonedEl.style.transform = 'none';
           clonedEl.style.transformOrigin = 'top left';
           clonedEl.style.position = 'fixed';
           clonedEl.style.left = '0';
           clonedEl.style.top = '0';
+          clonedEl.style.zIndex = '99999';
+          // Remove all elements marked to be ignored during capture
+          // (export overlay, nav buttons, bottom bar — all have backdropFilter
+          // which html2canvas does not support and will throw on).
+          doc.querySelectorAll('[data-html2canvas-ignore]').forEach(el => (el as HTMLElement).remove());
         },
       });
 
@@ -1440,10 +1446,9 @@ export default function A16ZPitch() {
       const url = URL.createObjectURL(blob);
       setPdfReadyUrl(url);
     } catch (err) {
-      console.error('[PDF Export] Failed:', err);
-      // Clean up any orphaned render containers left by a crashed slide
-      document.querySelectorAll('[data-pdf-render]').forEach(el => el.remove());
-      alert('PDF generation encountered an error. Please try again.');
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error('[PDF Export] Failed:', msg, err);
+      alert(`PDF generation failed: ${msg}\n\nPlease try again.`);
     } finally {
       setExportMode(null);
       setExportStep(0);
@@ -1476,7 +1481,7 @@ export default function A16ZPitch() {
     <div style={{ width: "100vw", height: "100vh", overflow: "hidden", background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start" }}>
       {/* Export loading overlay */}
       {exporting && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 999, background: "rgba(10,15,46,0.88)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)" }}>
+        <div data-html2canvas-ignore="true" style={{ position: "fixed", inset: 0, zIndex: 999, background: "rgba(10,15,46,0.88)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backdropFilter: "blur(8px)" }}>
           <div style={{ ...CG, fontSize: 18, color: "#fff", marginBottom: 20 }}>{exportMode === 'pdf' ? 'Generating PDF…' : 'Generating PPTX…'}</div>
           <div style={{ width: 280, height: 4, background: "rgba(255,255,255,0.12)", borderRadius: 2, overflow: "hidden" }}>
             <div style={{ height: "100%", width: `${(exportStep / total) * 100}%`, background: GOLD, borderRadius: 2, transition: "width 0.3s ease" }} />
@@ -1490,6 +1495,7 @@ export default function A16ZPitch() {
       {/* PDF Ready overlay — universal: works on mobile, desktop, and inside iframes */}
       {pdfReadyUrl && (
         <div
+          data-html2canvas-ignore="true"
           style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(10,15,46,0.95)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 24 }}
           onClick={() => setPdfReadyUrl(null)}
         >
@@ -1530,6 +1536,7 @@ export default function A16ZPitch() {
 
       {/* Prev / Next — positioned relative to full viewport */}
       <button
+        data-html2canvas-ignore="true"
         onClick={prev}
         disabled={current === 0}
         style={{ position: "fixed", left: 20, top: `calc(50% - ${NAV_H / 2}px)`, transform: "translateY(-50%)", zIndex: 100, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: current === 0 ? "default" : "pointer", opacity: current === 0 ? 0.2 : 0.8, backdropFilter: "blur(8px)", transition: "opacity 0.2s" }}
@@ -1538,6 +1545,7 @@ export default function A16ZPitch() {
         <ChevronLeft size={20} color="#fff" />
       </button>
       <button
+        data-html2canvas-ignore="true"
         onClick={next}
         disabled={current === total - 1}
         style={{ position: "fixed", right: 20, top: `calc(50% - ${NAV_H / 2}px)`, transform: "translateY(-50%)", zIndex: 100, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50%", width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", cursor: current === total - 1 ? "default" : "pointer", opacity: current === total - 1 ? 0.2 : 0.8, backdropFilter: "blur(8px)", transition: "opacity 0.2s" }}
@@ -1547,7 +1555,7 @@ export default function A16ZPitch() {
       </button>
 
       {/* Bottom bar — fixed height, always at bottom */}
-      <div style={{ width: "100%", height: NAV_H, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 28px", background: "rgba(10,15,46,0.92)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.08)", zIndex: 100 }}>
+      <div data-html2canvas-ignore="true" style={{ width: "100%", height: NAV_H, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 28px", background: "rgba(10,15,46,0.92)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.08)", zIndex: 100 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)" }}>VaughnMartin</span>
           <div style={{ width: 1, height: 10, background: "rgba(255,255,255,0.15)" }} />
