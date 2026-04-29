@@ -849,12 +849,12 @@ function TractionSlide() {
       sub: "Gaming · Finance · Manufacturing · Retail · Energy",
     },
     {
-      stageBadge: "TARGET SELECTION",
+      stageBadge: "SECTOR FOCUS",
       badgeColor: GOLD,
-      stage: "Founding Partner Pilot Targets",
+      stage: "Founding Partner Sectors Identified",
       count: "3",
       color: GOLD,
-      sub: "5K–50K employees · Profile-aligned · SpeedRun opens the introduction",
+      sub: "Gaming · Finance · Manufacturing · SpeedRun opens the introduction",
     },
     {
       stageBadge: "STAGE 1 GATE",
