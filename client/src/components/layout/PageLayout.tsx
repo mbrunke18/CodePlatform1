@@ -6,6 +6,7 @@ import { BackButton } from '@/components/ui/back-button';
 import { useAuth } from '@/hooks/useAuth';
 import { ChevronRight } from 'lucide-react';
 import { GuestPreviewBanner } from '@/components/GuestPreviewBanner';
+import QuickActions from '@/components/QuickActions';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -148,6 +149,7 @@ export default function PageLayout({
       </main>
       
       <Footer />
+      <QuickActions />
     </div>
   );
 }
