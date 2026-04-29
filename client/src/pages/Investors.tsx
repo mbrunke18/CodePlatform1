@@ -149,7 +149,7 @@ const competitiveAdvantages = [
 
 const milestones = [
   { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework implementation", "Enterprise integration architecture", "Interactive demo platform"] },
-  { phase: "Current", items: ["Customer pilot programs", "Signal detection refinement", "Enterprise partnership discussions"] },
+  { phase: "Current", items: ["Founding Partner pilot program launching", "Signal detection refinement", "Enterprise partnership discussions"] },
   { phase: "Next 12 Months", items: ["First enterprise contracts", "Expanded Readiness Protocol library (250+)", "Industry-specific vertical solutions"] },
 ];
 

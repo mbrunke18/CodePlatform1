@@ -71,7 +71,7 @@ const ROUNDS: RoadmapRound[] = [
   {
     round: "Round 2",
     theme: "Pilot Stickiness",
-    description: "Features that deepen daily engagement for active pilot organizations — turning Readiness OS from a one-time demo into an always-on operating model.",
+    description: "Features that deepen daily engagement for Founding Partner organizations — turning Readiness OS from a one-time demo into an always-on operating model.",
     items: [
       {
         title: "Drill Scheduler",

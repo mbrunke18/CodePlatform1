@@ -47,9 +47,9 @@ import {
 
 // Market funnel data
 const marketFunnelData = [
-  { name: 'TAM', value: 127, label: '$127B', color: '#0A0F2E' },
-  { name: 'SAM', value: 38, label: '$38B', color: '#C9A84C' },
-  { name: 'SOM', value: 1.9, label: '$1.9B', color: '#2B8A6E' }
+  { name: 'TAM', value: 5, label: '$5B+', color: '#0A0F2E' },
+  { name: 'SAM', value: 0.4, label: '~$400M', color: '#C9A84C' },
+  { name: 'SOM', value: 0.02, label: '~$20M', color: '#2B8A6E' }
 ];
 
 // LTV:CAC trend over 5 years
@@ -515,7 +515,7 @@ export default function InvestorLanding() {
                 Massive Market Opportunity
               </h2>
               <p className="text-xl text-[#0A0F2E] max-w-3xl mx-auto" data-testid="text-market-subtitle">
-                Creating a new $127B software category at the intersection of strategic planning, platform intelligence, and execution automation
+                Creating a new $5B+ addressable market at the intersection of strategic planning, platform intelligence, and execution automation
               </p>
             </div>
 
@@ -528,9 +528,9 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="text-tam-value">$127B</div>
+                  <div className="text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="text-tam-value">$5B+</div>
                   <p className="text-[#0A0F2E]" data-testid="text-tam-description">
-                    Fortune 1000 strategic execution software spend (15% of $847B total strategic initiatives budget)
+                    ~20,000 enterprises globally × $150K–$200K ACV (Fortune 1000 US · Forbes Global 2000 · PE-backed $500M+ revenue)
                   </p>
                 </CardContent>
               </Card>
@@ -543,9 +543,9 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold text-[#C9A84C] mb-2" data-testid="text-sam-value">$38B</div>
+                  <div className="text-4xl font-bold text-[#C9A84C] mb-2" data-testid="text-sam-value">~$400M</div>
                   <p className="text-[#0A0F2E]" data-testid="text-sam-description">
-                    Fortune 500 + high-growth enterprises with $1B+ revenue requiring executive decision velocity
+                    Fortune 1000 US + Forbes Global 2000 ex-US · 2,000 enterprises × $200K ACV near-term reachable market
                   </p>
                 </CardContent>
               </Card>
@@ -558,9 +558,9 @@ export default function InvestorLanding() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-4xl font-bold text-[#2B8A6E] mb-2" data-testid="text-som-value">$1.9B</div>
+                  <div className="text-4xl font-bold text-[#2B8A6E] mb-2" data-testid="text-som-value">~$20M</div>
                   <p className="text-[#0A0F2E]" data-testid="text-som-description">
-                    5% market capture in Year 5 (50 Fortune 500 + 200 mid-market at $250K-$1.5M ACV)
+                    Year 5 target: 50 Founding Partners converted to full enterprise contracts at $200K+ ACV — 5% SAM capture
                   </p>
                 </CardContent>
               </Card>
@@ -578,7 +578,7 @@ export default function InvestorLanding() {
                     <XAxis type="number" />
                     <YAxis dataKey="name" type="category" />
                     <Tooltip 
-                      formatter={(value: number) => `$${value}B`}
+                      formatter={(value: number) => value >= 1 ? `$${value}B+` : value >= 0.1 ? `~$${Math.round(value * 1000)}M` : `~$${Math.round(value * 1000)}M`}
                       contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: 'none', borderRadius: '8px', color: 'white' }}
                     />
                     <Bar dataKey="value" radius={[0, 8, 8, 0]}>
@@ -589,7 +589,7 @@ export default function InvestorLanding() {
                   </BarChart>
                 </ResponsiveContainer>
                 <div className="mt-4 text-center text-sm text-[#0A0F2E]">
-                  Progressive market capture: $127B TAM → $38B SAM → $1.9B SOM (Year 5)
+                  Bottom-up market sizing: $5B+ TAM · ~$400M SAM · ~$20M SOM (Year 5 target)
                 </div>
               </CardContent>
             </Card>
@@ -1447,8 +1447,8 @@ export default function InvestorLanding() {
               </div>
               <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
                 <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.35)', marginBottom: 6 }}>Total addressable expansion</div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>$127B+</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>Execution infrastructure market</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>$5B+</div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>Total addressable market</div>
               </div>
             </div>
           </div>
@@ -1462,7 +1462,7 @@ export default function InvestorLanding() {
               Let's Build This Together
             </h2>
             <p className="text-xl mb-4 text-white/80" data-testid="text-cta-description">
-              Readiness OS is defining the Strategic Readiness Platform category — a $127B market opportunity with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
+              Readiness OS is defining the Strategic Readiness Platform category — a $5B+ addressable market with winner-take-most dynamics. Early investors gain exposure to category creation with defensible moats and exceptional unit economics.
             </p>
             <p className="text-base mb-10 text-white/60">
               Schedule a conversation with the VaughnMartin founding team to review our full investment deck, pipeline metrics, and strategic roadmap.

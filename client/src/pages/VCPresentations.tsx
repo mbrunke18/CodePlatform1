@@ -39,9 +39,9 @@ export default function VCPresentations() {
       color: "text-[#C9A84C]"
     },
     {
-      title: "Current Traction",
+      title: "Platform Depth",
       value: "170",
-      subtitle: "Active Readiness Protocols across 9 strategic domains",
+      subtitle: "Pre-built Readiness Protocols across 9 strategic domains",
       growth: "221 executive triggers mapped",
       color: "text-[#2B8A6E]"
     },

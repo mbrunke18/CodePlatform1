@@ -109,7 +109,7 @@ export default function Contact() {
             <div className="flex gap-8 justify-center flex-wrap">
               {[
                 { icon: Shield, label: "Limited to 10 Partners" },
-                { icon: Zap, label: "Pilot Active Now" },
+                { icon: Zap, label: "Founding Partner Program Open" },
                 { icon: Target, label: "90-Day Validation" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-2">
