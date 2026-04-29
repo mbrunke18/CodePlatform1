@@ -578,11 +578,11 @@ function Router() {
         {/* Industry Demos */}
         {renderRoutes(["/industry-demos", "/crisis-demos"], IndustryDemosHub)}
         {renderRoutes(["/luxury-demo", "/luxury-crisis-demo"], LuxuryCrisisDemo)}
-        <Route path="/financial-demo" component={FinancialRansomwareDemo} />
-        <Route path="/pharma-demo" component={PharmaceuticalRecallDemo} />
-        <Route path="/manufacturing-demo" component={ManufacturingSupplierDemo} />
-        <Route path="/retail-demo" component={RetailFoodSafetyDemo} />
-        <Route path="/energy-demo" component={EnergyGridFailureDemo} />
+        {renderRoutes(["/financial-demo", "/financial-ransomware-demo", "/financial-crisis-demo"], FinancialRansomwareDemo)}
+        {renderRoutes(["/pharma-demo", "/pharmaceutical-recall-demo", "/pharma-recall-demo"], PharmaceuticalRecallDemo)}
+        {renderRoutes(["/manufacturing-demo", "/manufacturing-supplier-demo"], ManufacturingSupplierDemo)}
+        {renderRoutes(["/retail-demo", "/retail-food-demo", "/retail-food-safety-demo"], RetailFoodSafetyDemo)}
+        {renderRoutes(["/energy-demo", "/energy-grid-demo", "/energy-grid-failure-demo"], EnergyGridFailureDemo)}
         <Route path="/lvmh-demo" component={LVMHMarketEntryDemo} />
         <Route path="/shein-demo" component={SHEINTrendDemo} />
         <Route path="/spacex-demo" component={SpaceXLaunchDemo} />
@@ -622,7 +622,8 @@ function Router() {
           "/scorecard", "/executive-scorecard", "/executive-suite",
           "/dashboard", "/platform", "/operating-model-health"
         ], "/mission-control")}
-        {renderRedirects(["/command-center", "/command-center-dynamic", "/war-room"], "/mission-control")}
+        {renderRedirects(["/command-center", "/command-center-dynamic"], "/mission-control")}
+        <Route path="/war-room">{() => <ExecutiveWarRoomPage />}</Route>
         {renderRedirects([
           "/scenarios", "/scenario-library", "/scenario-gallery",
           "/comprehensive-scenarios", "/templates"

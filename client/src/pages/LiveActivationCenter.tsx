@@ -75,7 +75,7 @@ interface PlaybookDef {
   name: string;
   category: 'OFFENSE' | 'DEFENSE' | 'SPECIAL TEAMS';
   description: string;
-  icon: 'shield' | 'alert-triangle' | 'brain';
+  icon: 'shield' | 'alert-triangle' | 'brain' | 'globe';
   stakeholderCount: number;
   taskCount: number;
   duration: string;
@@ -263,6 +263,17 @@ function getCategoryColor(category: string) {
   }
 }
 
+function getCategoryDisplayName(category: string | undefined): string {
+  switch (category) {
+    case 'OFFENSE': return 'GROWTH & POSITIONING';
+    case 'DEFENSE': return 'RISK & RESILIENCE';
+    case 'SPECIAL TEAMS': return 'TRANSFORMATION';
+    default: return category || 'READINESS';
+  }
+}
+
+const DEMO_PRESEED_SECONDS = 38;
+
 const DEMO_DURATION = 90;
 const SIMULATED_DURATION = 720;
 const TIME_SCALE = SIMULATED_DURATION / DEMO_DURATION;
@@ -444,19 +455,50 @@ export default function LiveActivationCenter() {
 
   const beginActivation = useCallback((id: string) => {
     setActivationId(id);
-    setActivationState('ACTIVATING');
-    setElapsedSeconds(0);
+    setActivationState('IN_PROGRESS');
+    setElapsedSeconds(DEMO_PRESEED_SECONDS);
     setCurrentPhase('IMMEDIATE');
     setShowCompletion(false);
-    setActivityFeed([]);
     setLiveDispatchResults(null);
-    startTimeRef.current = Date.now();
+    startTimeRef.current = Date.now() - DEMO_PRESEED_SECONDS * 1000;
 
     const playbookKey = selectedPlaybook;
     const industryStakeholders = industryOverlay?.stakeholders?.[playbookKey];
     const industryTasks = industryOverlay?.tasks?.[playbookKey];
-    const initialStakeholders = (industryStakeholders || DEFAULT_STAKEHOLDERS[playbookKey] || DEFAULT_STAKEHOLDERS['ma-day1']).map(s => ({ ...s, status: 'pending' as StakeholderStatus }));
-    const initialTasks = (industryTasks || DEFAULT_TASKS[playbookKey] || DEFAULT_TASKS['ma-day1']).map(t => ({ ...t, status: 'pending' as TaskStatus }));
+    const rawStakeholders = (industryStakeholders || DEFAULT_STAKEHOLDERS[playbookKey] || DEFAULT_STAKEHOLDERS['ma-day1']);
+    const rawTasks = (industryTasks || DEFAULT_TASKS[playbookKey] || DEFAULT_TASKS['ma-day1']);
+
+    const PRESEED_ACKNOWLEDGED = Math.min(4, Math.floor(rawStakeholders.length * 0.4));
+    const PRESEED_TASKS_DONE = Math.min(3, Math.floor(rawTasks.filter(t => t.phase === 'IMMEDIATE').length * 0.5));
+
+    const preseedChannels = ['Microsoft Teams', 'Email', 'SMS', 'Slack'];
+    const initialStakeholders: Stakeholder[] = rawStakeholders.map((s, i) => ({
+      ...s,
+      status: i < PRESEED_ACKNOWLEDGED ? 'acknowledged' : i < PRESEED_ACKNOWLEDGED + 1 ? 'notified' : 'pending' as StakeholderStatus,
+      responseTime: i < PRESEED_ACKNOWLEDGED ? 18 + i * 14 : undefined,
+    }));
+    const initialTasks: Task[] = rawTasks.map((t, i) => ({
+      ...t,
+      status: i < PRESEED_TASKS_DONE ? 'completed' : i === PRESEED_TASKS_DONE ? 'in_progress' : 'pending' as TaskStatus,
+    }));
+
+    const preseedFeed: ActivityEntry[] = [
+      { id: 'pre-1', timestamp: 2, type: 'system', description: 'Readiness Protocol activated — roles assigned, tasks staged, execution live' },
+      ...rawStakeholders.slice(0, PRESEED_ACKNOWLEDGED).map((s, i) => ({
+        id: `pre-s${i}`,
+        timestamp: 5 + i * 7,
+        type: 'stakeholder' as const,
+        description: `${s.name} (${s.title}) acknowledged via ${preseedChannels[i % preseedChannels.length]}`,
+      })),
+      ...rawTasks.slice(0, PRESEED_TASKS_DONE).map((t, i) => ({
+        id: `pre-t${i}`,
+        timestamp: 12 + i * 8,
+        type: 'task' as const,
+        description: `Task completed: ${t.name}`,
+      })),
+      { id: 'pre-phase', timestamp: DEMO_PRESEED_SECONDS - 3, type: 'system', description: 'Coordination Intelligence monitoring — all channels active' },
+    ];
+    setActivityFeed(preseedFeed);
 
     setStakeholders(initialStakeholders);
     setTasks(initialTasks);
@@ -534,33 +576,36 @@ export default function LiveActivationCenter() {
     simulationRef.current = [];
 
     const totalTime = 90;
+    const remainingTime = totalTime - DEMO_PRESEED_SECONDS;
     const stakeholderCount = initStakeholders.length;
 
     initStakeholders.forEach((s, i) => {
-      const notifyDelay = 2000 + i * 800;
+      if (s.status === 'acknowledged') return;
+
+      const notifyDelay = 1000 + i * 600;
       const t1 = setTimeout(() => {
         setStakeholders(prev => prev.map(st => st.id === s.id ? { ...st, status: 'notifying' } : st));
       }, notifyDelay);
 
-      const notifiedDelay = notifyDelay + 1500;
+      const notifiedDelay = notifyDelay + 1200;
       const t2 = setTimeout(() => {
         setStakeholders(prev => prev.map(st => st.id === s.id ? { ...st, status: 'notified' } : st));
         addActivity('system', `Notification sent to ${s.name} (${s.title}) via ${CHANNELS[i % CHANNELS.length]}`);
       }, notifiedDelay);
 
-      const ackBase = totalTime * 1000 / (stakeholderCount + 2);
-      const ackDelay = notifiedDelay + 3000 + (ackBase * 0.3);
+      const ackBase = remainingTime * 1000 / (stakeholderCount + 2);
+      const ackDelay = notifiedDelay + 2500 + (ackBase * 0.3);
       const responseTime = Math.floor((ackDelay - notifiedDelay) / 1000);
       const t3 = setTimeout(() => {
         setStakeholders(prev => prev.map(st => st.id === s.id ? { ...st, status: 'acknowledged', responseTime } : st));
         addActivity('stakeholder', `${s.name} (${s.title}) acknowledged via ${CHANNELS[i % CHANNELS.length]}`);
-      }, Math.min(ackDelay, (totalTime - 60) * 1000));
+      }, Math.min(ackDelay, (remainingTime - 20) * 1000));
 
       simulationRef.current.push(t1, t2, t3);
     });
 
     const phases: ActivationPhase[] = ['IMMEDIATE', 'SECONDARY', 'FOLLOW_UP'];
-    const phaseTimings = [0, totalTime * 0.2, totalTime * 0.5];
+    const phaseTimings = [0, remainingTime * 0.25, remainingTime * 0.55];
 
     phases.forEach((phase, pi) => {
       if (pi > 0) {
@@ -574,30 +619,32 @@ export default function LiveActivationCenter() {
     });
 
     initTasks.forEach((task, i) => {
+      if (task.status === 'completed') return;
+
       const phaseIndex = phases.indexOf(task.phase);
       const phaseStart = phaseTimings[phaseIndex] * 1000;
-      const phaseTasks = initTasks.filter(t => t.phase === task.phase);
+      const phaseTasks = initTasks.filter(t => t.phase === task.phase && t.status !== 'completed');
       const posInPhase = phaseTasks.findIndex(t => t.id === task.id);
-      const phaseEnd = (phaseIndex < 2 ? phaseTimings[phaseIndex + 1] : totalTime) * 1000;
+      const phaseEnd = (phaseIndex < 2 ? phaseTimings[phaseIndex + 1] : remainingTime) * 1000;
       const taskInterval = (phaseEnd - phaseStart) / (phaseTasks.length + 1);
-      const startDelay = phaseStart + taskInterval * (posInPhase + 0.5);
+      const startDelay = task.status === 'in_progress' ? 500 : (phaseStart + taskInterval * (posInPhase + 0.5));
 
       const t1 = setTimeout(() => {
         setTasks(prev => prev.map(t => t.id === task.id ? { ...t, status: 'in_progress' } : t));
       }, startDelay);
 
-      const completeDelay = startDelay + 5000 + Math.random() * 10000;
+      const completeDelay = startDelay + 4000 + Math.random() * 8000;
       const t2 = setTimeout(() => {
         setTasks(prev => prev.map(t => t.id === task.id ? { ...t, status: 'completed' } : t));
         addActivity('task', `Task completed: ${task.name}`);
-      }, Math.min(completeDelay, (totalTime - 10) * 1000));
+      }, Math.min(completeDelay, (remainingTime - 8) * 1000));
 
       simulationRef.current.push(t1, t2);
     });
 
     const tFinal = setTimeout(() => {
       completeActivation();
-    }, totalTime * 1000);
+    }, remainingTime * 1000);
     simulationRef.current.push(tFinal);
 
     timerRef.current = setInterval(() => {
@@ -666,7 +713,7 @@ export default function LiveActivationCenter() {
                             <div>
                               <div className="flex items-center gap-2 mb-1">
                                 <Badge variant="outline" className={cn("text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border-0", colors.bg, colors.text)}>
-                                  {p.category}
+                                  {getCategoryDisplayName(p.category)}
                                 </Badge>
                                 <span className="text-xs text-[#6B7280] flex items-center gap-1">
                                   <Clock className="w-3 h-3" /> {p.duration}
@@ -859,7 +906,7 @@ export default function LiveActivationCenter() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <Badge className={cn("text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 border-0", warRoomAccent.bg, warRoomAccent.text)}>
-                      {activePlaybook?.category} ACTIVE
+                      {getCategoryDisplayName(activePlaybook?.category)} ACTIVE
                     </Badge>
                     <span className="text-white/40 text-xs font-mono">ID: {activationId}</span>
                   </div>
