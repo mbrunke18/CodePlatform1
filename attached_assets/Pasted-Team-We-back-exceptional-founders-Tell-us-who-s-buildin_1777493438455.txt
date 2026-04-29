@@ -1,0 +1,268 @@
+Team
+We back exceptional founders. Tell us who’s building this and why you’re the team to make it happen.
+
+Required fields are marked with an asterisk (*).
+
+Are you full-time or part-time on the startup? *
+
+
+Full-time
+
+Part-time
+Number of Full-Time Founders *
+How many founders are working full-time on your startup?
+
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+Founders are individuals with over 10% equity. If you’re part-time or not yet incorporated, enter ‘0’ and add all co-founders in the section below.
+
+Total FTE Employees *
+How many full-time equivalent employees (including founders) are currently at your startup?
+Full-Time Equivalent (FTE) *
+1
+Part-time staff should be counted proportionally (e.g., two half-time employees = 1 FTE).
+
+Founder Details *
+Tell us who’s building this. Start with the CEO, then add any co-founders.
+CEO
+
+first name *
+Martin
+last name *
+Brunke
+email *
+mbrunke@vaughnmartin.com
+phone number
+513-288-6600
+Relevant experience *
+In a few sentences, highlight your most relevant professional, startup, or industry experience. Focus on track record, domain expertise, and past wins.
+Founder experience *
+Watched the same mobilization failure repeat inside Ford, Toyota, Lockheed Martin, Schwab, Vantiv, Boyd Gaming, and CDI across 20 years — seven industries, one pattern. Spent five years coaching major college football at Stanford, where preparation-as-infrastructure is not a metaphor; it is the operating model. Built Readiness OS solo from that cross-domain observation over three years. April 2026: Jim Highsmith — Agile Manifesto co-author — publicly engaged with the thesis. Dr. Kerry Huang credited the framework in a Forbes piece. The Close-Out Gate shipped in direct response within days. Domain-earned, not hypothesis-tested.
+92 / 100 words
+
+US
+
+country *
+United States of America
+Kentucky
+
+State *
+Kentucky
+City *
+Louisville
+US
+
+Citizenship *
+United States of America
+College / University *
+Menlo College
+Bachelor's Degree (BA, BS)
+
+Highest education
+Bachelor's Degree (BA, BS)
+How many years of professional experience do you have? *
+
+years of experience *
+30
+Are you technical enough to build the product end-to-end? *
+
+
+
+Yes
+
+No
+LinkedIn url *
+https://www.linkedin.com/in/martin-brunke/
+github url
+x url
+portfolio url
+https://vaughnmartin.com
+Link to personal website, project portfolio, or side project.
+
+
+add co-founder
+Tell us more about the team *
+How does the team know each other? Is there anyone else on the team? Why is this the best team to win? Do you have any key advisors? Etc
+Team description *
+Solo founder — 20-year Fortune 1000 operator turned builder. Three years shipping a production enterprise platform: 151 page components, 170 Readiness Protocols, live signal pipeline. April 2026 validation wave: Jim Highsmith (Agile Manifesto co-author), Dr. Kerry Huang (Fortune 50 AVP, ESI Top 1%, Forbes piece), Scott DeJarnette PhD, and Dr. Kulneet Suri all publicly engaged. Early advisor conversations underway with operators from prior Fortune 1000 work. Commercial cofounder search beginning. The edge: this founder lived inside the operational failure for 20 years before building the solution
+86 / 100 words
+
+Startup Details
+Help us understand your startup. The problem you're solving, your solution, and where you are today.
+
+Required fields are marked with an asterisk (*).
+
+Startup Name *
+startup name *
+VaughnMartin
+Pitch your startup in one sentence. *
+What do you do and for whom? E.g. “AI-powered therapist for Gen Z”
+One-liner *
+Pre-staged Fortune 1000 execution — 30 days to 12 minutes
+10/10 words
+
+Startup Description *
+What problem are you solving? What are you building?
+startup description *
+When a strategic trigger fires — activist investor, supply chain collapse, cyber breach, pharmaceutical recall, financial ransomware, or regulatory deadline — Fortune 1000 organizations spend 30 days mobilizing before execution even begins. That delay is the operating model itself, not a failure of speed. Readiness OS eliminates the cycle by pre-staging everything: project creation, role assignment, documents, and budget allocation ready before the trigger fires. Response begins in 12 minutes — 3,600× ahead. 170 Readiness Protocols across 9 domains. 221 triggers. Live signal pipeline. Seven Microsoft integrations. We are the operating model layer above every enterprise's existing AI investment
+99/100 words
+
+Primary Category *
+Select the closest match for your startup. If none apply, choose 'Other'.
+
+
+B2B / Enterprise Applications
+
+Consumer Applications
+
+Deep Tech
+
+Gaming / Entertainment Studio
+
+Infrastructure / Dev Tools
+
+Healthcare
+
+GovTech
+
+Crypto
+
+Other
+Secondary Category (optional)
+If your startup fits more than one category, select a second category. If none apply, choose 'Other'.
+
+
+B2B / Enterprise Applications
+
+Consumer Applications
+
+Deep Tech
+
+Gaming / Entertainment Studio
+
+Infrastructure / Dev Tools
+
+Healthcare
+
+GovTech
+
+Crypto
+
+Other
+Where do you intend to build your startup? *
+US
+
+Country *
+United States of America
+California
+
+State *
+California
+City *
+San Francisco
+When was your startup founded? *
+2023
+
+year *
+2023
+July
+
+month *
+July
+Company Website (optional)
+website url
+https://vaughnmartin.com
+E.g. https://yourcompany.com
+
+Anything else we should know? (optional)
+If there’s something that doesn’t fit elsewhere, drop it here.
+Additional information
+Platform live in production at vaughnmartin.com — 151 page components, 170 Readiness Protocols across 9 domains, 221 triggers, real-time signal pipeline, seven Microsoft ecosystem integrations. Full IDEA Framework chain: signal detection through execution debrief with governance Close-Out Gate. Industry coverage: cyber breach, activist investor, supply chain failure, pharmaceutical recall, energy grid failure, financial ransomware, M&A defense, and more. Four independent researchers validated publicly April 2026 — Jim Highsmith, Dr. Kerry Huang (Forbes piece), Scott DeJarnette PhD, Dr. Kulneet Suri. Pilot candidate identification underway. Target ACV $75K–$500K. This round converts validator momentum into signed contracts.
+94 / 100 words
+
+Additional Information
+Show Us More
+
+Any additional information you share with us adds important context that we review and significantly improves the strength of your application. Please share these below.
+
+
+Pitch Deck (PDF)
+Optional
+
+Upload your latest deck. PDF format only.
+
+pdf file format
+
+remove
+View PDF
+pdf file format
+
+Traction
+Optional
+
+If you’ve launched and started measuring traction, we’d love to see the data.
+
+Required fields are marked with an asterisk (*).
+
+Product Launch Date *
+When did you first launch a working version to users?
+2026
+
+year *
+2026
+January
+
+month *
+January
+Any general commentary on your traction?
+traction notes (optional) 
+Pre-revenue. Pricing framework established: Growth tiers at $75K, $150K, $250K annual; Enterprise Pilot at $75K flat fee. Identifying Fortune 1000 organizations as pilot candidates. April 2026 research validation: Jim Highsmith (Agile Manifesto co-author), Dr. Kerry Huang (publicly credited framework in Forbes piece, reposted to Fortune 50 network), Scott DeJarnette PhD (seven independent thesis formulations), Dr. Kulneet Suri. Validation archive: 20 externally coined phrases from 10+ independent practitioners. Platform fully deployed at vaughnmartin.com. Validator density at pre-seed is the leading signal. Revenue conversion follows first pilot execution.
+
+
+86 / 100 words
+
+
+Share Revenue
+Toggle on to enter revenue metrics such as annual recurring revenue (ARR) and customer growth.
+
+
+Share Usage Metrics
+Toggle on to enter active user, growth, and retention metrics.
+
+
+Funding History
+Optional
+
+
+Active Fundraising Round
+Optional
+
+
+Referral
+Optional
+
+Where did you learn about speedrun?
+Required
+
+Let us know how you found out about speedrun. X, event, friend, etc.
+
+LinkedIn
+
+source *
+LinkedIn
+additional info (optional)
+Marc Andreessen and Andrew Chen public posts about SR007 application window opening April 20 2026
+Provide the name, handle, post, event, etc.
+
+
+submit application
