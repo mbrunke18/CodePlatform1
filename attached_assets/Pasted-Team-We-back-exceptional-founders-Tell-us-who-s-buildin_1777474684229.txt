@@ -1,0 +1,261 @@
+Team
+We back exceptional founders. Tell us who’s building this and why you’re the team to make it happen.
+
+Required fields are marked with an asterisk (*).
+
+Are you full-time or part-time on the startup? *
+
+
+Full-time
+
+Part-time
+Number of Full-Time Founders *
+How many founders are working full-time on your startup?
+
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+Founders are individuals with over 10% equity. If you’re part-time or not yet incorporated, enter ‘0’ and add all co-founders in the section below.
+
+Total FTE Employees *
+How many full-time equivalent employees (including founders) are currently at your startup?
+Full-Time Equivalent (FTE) *
+1
+Part-time staff should be counted proportionally (e.g., two half-time employees = 1 FTE).
+
+Founder Details *
+Tell us who’s building this. Start with the CEO, then add any co-founders.
+CEO
+
+first name *
+Martin
+last name *
+Brunke
+email *
+mbrunke@vaughnmartin.com
+phone number
+513-288-6600
+Relevant experience *
+In a few sentences, highlight your most relevant professional, startup, or industry experience. Focus on track record, domain expertise, and past wins.
+Founder experience *
+Twenty years inside Fortune 1000 operations across Ford, Toyota, Lockheed Martin, Schwab, Vantiv, Boyd Gaming, and CDI. Five years coaching major college football at Stanford. Watched the same coordination failure repeat across seven industries. Built Readiness OS solo over two years on top of that observation. April 2026 produced four researcher validators including Dr. Kerry Huang publicly crediting the framework in his Forbes piece announcement and the platform's Close-Out Gate shipping in direct response to his governance research within days of the public exchange. The work has been earned and the timing is right.
+94 / 100 words
+
+US
+
+country *
+United States of America
+Kentucky
+
+State *
+Kentucky
+City *
+Louisville
+US
+
+Citizenship *
+United States of America
+College / University *
+Menlo College
+Bachelor's Degree (BA, BS)
+
+Highest education
+Bachelor's Degree (BA, BS)
+How many years of professional experience do you have? *
+
+years of experience *
+30
+Are you technical enough to build the product end-to-end? *
+
+
+
+Yes
+
+No
+LinkedIn url *
+https://www.linkedin.com/in/martin-brunke/
+github url
+https://github.com/mbrunke18/CodePlatform1
+x url
+portfolio url
+Link to personal website, project portfolio, or side project.
+
+
+add co-founder
+Tell us more about the team *
+How does the team know each other? Is there anyone else on the team? Why is this the best team to win? Do you have any key advisors? Etc
+Team description *
+Solo founder building toward a small operating team. Shipping a production enterprise platform across 3 years while validating thesis publicly with four independent researchers in April 2026. Dr. Kerry Huang (Fortune 50 AVP, ESI Top 1 percent), Scott DeJarnette PhD, Jim Highsmith, and Dr. Kulneet Suri all publicly engaged with the work. Five Fortune 500 operators serving as informal advisors. Commercial cofounder identification underway with two named candidates from prior Fortune 1000 work. The right team to win because the founder lived the operational reality the product solves and the practitioner network that has formed in the last month is unusually deep for pre-seed stage.
+105 / 100 words
+
+Startup Details
+Help us understand your startup. The problem you're solving, your solution, and where you are today.
+
+Required fields are marked with an asterisk (*).
+
+Startup Name *
+startup name *
+VaughnMartin
+Pitch your startup in one sentence. *
+What do you do and for whom? E.g. “AI-powered therapist for Gen Z”
+One-liner *
+The strategic response is ready before the trigger fires.
+9/10 words
+
+Startup Description *
+What problem are you solving? What are you building?
+startup description *
+Readiness OS is enterprise coordination infrastructure. We pre-stage project creation, role assignment, document staging, and budget allocation so Fortune 1000 organizations respond inside 12 minutes when a strategic trigger fires. Today's baseline is 30 days to mobilize. 170 playbooks across 9 strategic domains. 248 plus data points. 221 triggers. Live signal pipeline. Seven ecosystem integrations. Ownership Close-Out Gate and Recovery vs Optimization debrief shipped April 2026 in direct response to governance research from Dr. Kerry Huang. The strategic response is ready before the trigger fires.
+85/100 words
+
+Primary Category *
+Select the closest match for your startup. If none apply, choose 'Other'.
+
+
+B2B / Enterprise Applications
+
+Consumer Applications
+
+Deep Tech
+
+Gaming / Entertainment Studio
+
+Infrastructure / Dev Tools
+
+Healthcare
+
+GovTech
+
+Crypto
+
+Other
+Secondary Category (optional)
+If your startup fits more than one category, select a second category. If none apply, choose 'Other'.
+
+
+B2B / Enterprise Applications
+
+Consumer Applications
+
+Deep Tech
+
+Gaming / Entertainment Studio
+
+Infrastructure / Dev Tools
+
+Healthcare
+
+GovTech
+
+Crypto
+
+Other
+Where do you intend to build your startup? *
+US
+
+Country *
+United States of America
+California
+
+State *
+California
+City *
+San Francisco
+When was your startup founded? *
+2023
+
+year *
+2023
+July
+
+month *
+July
+Company Website (optional)
+website url
+https://vaughnmartin.com
+E.g. https://yourcompany.com
+
+Anything else we should know? (optional)
+If there’s something that doesn’t fit elsewhere, drop it here.
+Additional information
+The platform is live in production at vaughnmartin.com. 151 page components. 170 playbooks. Live signal pipeline. Seven ecosystem integrations. Four independent researchers publicly validated the thesis in April 2026 culminating in a Forbes piece announcement that named the framework. The Close-Out Gate feature shipped in direct response to that exchange within days. Known gaps are formal CI/CD, SOC 2, and third-party security attestation. Speedrun capital funds the infrastructure maturation required before the first Fortune 1000 pilot contract executes. Acceptance into SR007 is the forcing function the company is ready for.
+90 / 100 words
+
+Additional Information
+Show Us More
+
+Any additional information you share with us adds important context that we review and significantly improves the strength of your application. Please share these below.
+
+
+Pitch Deck (PDF)
+Optional
+
+Upload your latest deck. PDF format only.
+
+No file chosen
+Click to upload or drag and drop
+PDF (MAX. 500MB)
+
+
+Traction
+Optional
+
+If you’ve launched and started measuring traction, we’d love to see the data.
+
+Required fields are marked with an asterisk (*).
+
+Product Launch Date *
+When did you first launch a working version to users?
+
+year *
+
+month *
+Any general commentary on your traction?
+traction notes (optional) 
+Pre-revenue. Three Founding Partner pilot conversations active targeting $75K to $500K ACV. Growth segment with three tiers at $75K, $150K, $250K annual. Enterprise Pilot at $75K flat fee. Five Fortune 500 advisors reviewing platform. Dr. Kerry Huang publicly reposted thesis to Fortune 50 network April 2026. Scott DeJarnette PhD produced seven public formulations of product thesis. Jim Highsmith engaged in public threaded exchange. Validation archive preserves 20 externally coined phrases from 10 plus independent practitioners. Live production platform at vaughnmartin.com with 151 page components.
+84 / 100 words
+
+
+Share Revenue
+Toggle on to enter revenue metrics such as annual recurring revenue (ARR) and customer growth.
+
+
+Share Usage Metrics
+Toggle on to enter active user, growth, and retention metrics.
+
+
+Funding History
+Optional
+
+
+Active Fundraising Round
+Optional
+
+
+Referral
+Optional
+
+Where did you learn about speedrun?
+Required
+
+Let us know how you found out about speedrun. X, event, friend, etc.
+
+LinkedIn
+
+source *
+LinkedIn
+additional info (optional)
+Marc Andreessen and Andrew Chen public posts about SR007 application window opening April 20 2026
+Provide the name, handle, post, event, etc.
+
+
+submit application
