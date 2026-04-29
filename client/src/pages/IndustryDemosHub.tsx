@@ -277,7 +277,7 @@ export default function IndustryDemosHub() {
                   <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.4)", marginTop: 2 }}>{demo.industry}</div>
                 </div>
               </div>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 7px", flexShrink: 0 }}>{demo.type}</span>
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 7px", flexShrink: 0 }}>{demo.type === 'OFFENSE' ? 'GROWTH & POSITIONING' : demo.type === 'DEFENSE' ? 'RISK & RESILIENCE' : 'TRANSFORMATION'}</span>
             </div>
 
             <div style={{ marginBottom: 14, flex: 1 }}>

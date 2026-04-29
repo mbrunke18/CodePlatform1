@@ -753,7 +753,7 @@ export default function IncidentAnalyzer() {
                   >
                     <Rocket className={`w-6 h-6 mb-2 ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`} />
                     <p className={`text-sm font-semibold ${selectedDomain === 'offense' ? 'text-[#2B8A6E]' : 'text-[#6B7280]'}`}>
-                      OFFENSE
+                      GROWTH & POSITIONING
                     </p>
                     <p className="text-xs text-[#6B7280] mt-0.5">58 Readiness Protocols</p>
                     <p className="text-xs text-[#6B7280] mt-1">Market Entry &bull; M&amp;A &bull; Product Launch</p>
@@ -768,7 +768,7 @@ export default function IncidentAnalyzer() {
                   >
                     <Shield className={`w-6 h-6 mb-2 ${selectedDomain === 'defense' ? 'text-red-600' : 'text-[#6B7280]'}`} />
                     <p className={`text-sm font-semibold ${selectedDomain === 'defense' ? 'text-red-600' : 'text-[#6B7280]'}`}>
-                      DEFENSE
+                      RISK & RESILIENCE
                     </p>
                     <p className="text-xs text-[#6B7280] mt-0.5">58 Readiness Protocols</p>
                     <p className="text-xs text-[#6B7280] mt-1">Crisis &bull; Cyber &bull; Regulatory</p>
@@ -783,7 +783,7 @@ export default function IncidentAnalyzer() {
                   >
                     <Settings className={`w-6 h-6 mb-2 ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-[#6B7280]'}`} />
                     <p className={`text-sm font-semibold ${selectedDomain === 'special_teams' ? 'text-[#C9A84C]' : 'text-[#6B7280]'}`}>
-                      SPECIAL TEAMS
+                      TRANSFORMATION
                     </p>
                     <p className="text-xs text-[#6B7280] mt-0.5">54 Readiness Protocols</p>
                     <p className="text-xs text-[#6B7280] mt-1">Digital Transformation &bull; AI Governance</p>
