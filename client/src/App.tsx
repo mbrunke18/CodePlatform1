@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Loader2, RefreshCw, Home } from "lucide-react";
 import RoleIndustryCaptureModal from "@/components/RoleIndustryCaptureModal";
+import QuickActions from "@/components/QuickActions";
 
 interface ErrorBoundaryState { hasError: boolean; error: Error | null; }
 class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryState> {
@@ -657,6 +658,7 @@ function App() {
                   <Toaster />
                   <OnboardingOverlay />
                   <RoleIndustryCaptureModal />
+                  <QuickActions />
                   <ErrorBoundary>
                     <Router />
                   </ErrorBoundary>
