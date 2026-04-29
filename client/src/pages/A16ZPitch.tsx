@@ -780,7 +780,7 @@ function ModelSlide() {
               <div style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Converts to</div>
               <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Annual license at $150K–$250K/yr based on scope</div>
               <div style={{ marginTop: 10, padding: "8px 12px", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
-                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 pilot targets selected · Profile-aligned for Founding Partner Program</div>
+                <div style={{ fontSize: 10, color: GOLD, fontWeight: 600 }}>3 pilot targets identified · Profile-aligned for Founding Partner Program</div>
                 <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Gaming · Finance · Manufacturing · SpeedRun opens the introduction</div>
               </div>
             </div>

@@ -1318,7 +1318,7 @@ export default function InvestorLanding() {
               <div className="bg-white border border-[#E8E4DC] p-6">
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>18-Month Milestones</div>
                 {[
-                  { mo: 'M1–3', label: 'HPE, Target, Clorox pilots live — 3 paid LOIs', color: '#2B8A6E' },
+                  { mo: 'M1–3', label: '3 Founding Partner pilots signed · $225K ARR · Commercial co-founder on board', color: '#2B8A6E' },
                   { mo: 'M4–6', label: 'First 3 pilots convert to $250K+ annual contracts', color: '#2B8A6E' },
                   { mo: 'M6–12', label: 'Expand to 8 enterprise accounts — $1.5M ARR', color: '#C9A84C' },
                   { mo: 'M12–18', label: '$3.75M ARR — Series A raise initiated', color: '#0A0F2E' },
