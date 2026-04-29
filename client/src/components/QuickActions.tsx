@@ -92,29 +92,43 @@ export default function QuickActions() {
         <button
           onClick={() => setOpen(o => !o)}
           style={{
-            width: 52, height: 52,
+            height: 40,
             background: open ? GOLD : NAVY,
-            border: 'none',
-            borderRadius: '50%',
+            border: `1px solid ${open ? 'rgba(201,168,76,0.4)' : 'rgba(201,168,76,0.25)'}`,
+            borderRadius: 20,
             cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: open ? `0 4px 20px rgba(201,168,76,0.5)` : `0 4px 20px rgba(10,15,46,0.35)`,
+            display: 'flex', alignItems: 'center', gap: 8,
+            padding: '0 16px 0 14px',
+            boxShadow: open ? `0 4px 20px rgba(201,168,76,0.4)` : `0 4px 20px rgba(10,15,46,0.28)`,
             transition: 'all 0.2s',
             position: 'relative',
+            whiteSpace: 'nowrap',
           }}
-          title="Quick Actions"
+          onMouseEnter={e => { if (!open) (e.currentTarget as HTMLElement).style.background = '#132558'; }}
+          onMouseLeave={e => { if (!open) (e.currentTarget as HTMLElement).style.background = NAVY; }}
         >
-          <Zap size={20} style={{ color: open ? NAVY : GOLD }} />
+          <Zap size={15} style={{ color: open ? NAVY : GOLD, flexShrink: 0 }} />
+          <span style={{
+            fontFamily: "'Barlow Condensed', sans-serif",
+            fontSize: 11,
+            fontWeight: 800,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: open ? NAVY : '#fff',
+          }}>
+            {open ? 'Close' : 'Command Strip'}
+          </span>
           {!open && badgeCount > 0 && (
             <span style={{
-              position: 'absolute', top: 0, right: 0,
-              width: 18, height: 18,
+              minWidth: 18, height: 18,
+              padding: '0 4px',
               background: highAlerts.length > 0 ? RED : GOLD,
-              borderRadius: '50%',
+              borderRadius: 9,
               fontSize: 9, fontWeight: 800,
               color: highAlerts.length > 0 ? '#fff' : NAVY,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              border: '2px solid #fff',
+              marginLeft: 2,
+              lineHeight: 1,
             }}>
               {badgeCount > 9 ? '9+' : badgeCount}
             </span>
