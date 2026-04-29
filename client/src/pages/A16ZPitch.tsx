@@ -385,7 +385,7 @@ function PlatformDepthSlide() {
 
         {/* Bottom strip */}
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "8px 20px", background: NAVY, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.45)" }}>151 PAGES · LIVE IN PRODUCTION AT VAUGHNMARTIN.COM · NOT A PROTOTYPE</span>
+          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: "rgba(255,255,255,0.45)" }}>193 PAGES · LIVE IN PRODUCTION AT VAUGHNMARTIN.COM · NOT A PROTOTYPE</span>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL }} />
             <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", color: GOLD }}>12-MINUTE TEST DRIVE LIVE · VAUGHNMARTIN.COM/12-MINUTE-EXPERIENCE</span>
@@ -833,10 +833,10 @@ function ModelSlide() {
 // ─── Slide 9: Traction ────────────────────────────────────────────────────────
 function TractionSlide() {
   const productMetrics = [
-    "Live in production — 151 pages, fully operational at vaughnmartin.com",
+    "Live in production — 193 pages, fully operational at vaughnmartin.com",
     "170 Readiness Protocols · 221 triggers · 248 signal data points · 15-min cycles",
     "Command Tower · War Room · Shadow Simulator · Readiness Score · Regulatory Calendar",
-    "7 Microsoft-stack integrations · 6 industry sector packs · 3 strategic domains",
+    "6 Microsoft-stack integrations · 6 industry sector packs · 3 strategic domains",
     "12-Minute Test Drive — public funnel. Any VC can run it before the meeting ends.",
   ];
   const pipeline = [
