@@ -908,7 +908,7 @@ function TractionSlide() {
               ))}
             </div>
             <div style={{ marginTop: 5, padding: "5px 8px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.07)` }}>
-              <span style={{ fontSize: 8.5, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · 5 Fortune 500 advisors</span>
+              <span style={{ fontSize: 8.5, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · advisors from prior Fortune 1000 work</span>
             </div>
           </div>
         </div>
@@ -927,7 +927,7 @@ function TractionSlide() {
               {[
                 { head: "Enterprise introduction velocity", body: "Fortune 1000 CXO access the a16z portfolio provides cannot be bought with capital alone." },
                 { head: "Category-defining signal", body: "a16z backing names the 'Strategic Coordination Infrastructure' category before anyone else does." },
-                { head: "Commercial co-founder catalyst", body: "SpeedRun is the structural moment to bring on the equity-based commercial co-founder vetting is already underway for." },
+                { head: "Commercial co-founder catalyst", body: "SpeedRun is the structural moment to bring on the equity-based commercial co-founder. Search beginning — program access is the catalyst." },
               ].map((u, i) => (
                 <div key={i} style={{ display: "flex", gap: 10, padding: "9px 12px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderLeft: `2px solid rgba(201,168,76,0.4)` }}>
                   <div style={{ flex: 1 }}>
@@ -1021,7 +1021,7 @@ function FounderSlide() {
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {[
               { role: "Founder, CEO & Chief Architect", name: "Martin Brunke — builder, architect, 20-yr operator", status: "NOW" },
-              { role: "Commercial Co-Founder", name: "Equity-based seat · enterprise sales DNA · candidates in active vetting", status: "VETTING NOW" },
+              { role: "Commercial Co-Founder", name: "Equity-based seat · enterprise sales DNA · search beginning", status: "IDENTIFYING" },
               { role: "Strategic Communications Lead", name: "Enterprise narrative, media access, thought leadership", status: "IN NETWORK" },
             ].map(t => (
               <div key={t.role} style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 8 }}>
