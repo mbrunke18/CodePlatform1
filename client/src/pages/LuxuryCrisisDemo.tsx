@@ -93,7 +93,7 @@ export default function LuxuryCrisisDemo() {
     setElapsed(0); setRunning(true);
     setLiveEvents([{ time: '0:00', text: `War room secured — ${TASKS.length} tasks queued across ${phases.length} phases`, type: 'system' }, { time: '0:00', text: '12-minute execution clock started', type: 'system' }]);
     if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(tick, 1000);
+    timerRef.current = setInterval(tick, 120);
   };
   useEffect(() => () => { if (timerRef.current) clearInterval(timerRef.current); }, []);
 
@@ -248,6 +248,7 @@ export default function LuxuryCrisisDemo() {
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
                 <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
                 <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+                <div style={{ marginTop: 6, fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', padding: '2px 8px', display: 'inline-block' }}>COMPRESSED SIMULATION</div>
               </div>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{TASKS.length}</div>
@@ -256,7 +257,7 @@ export default function LuxuryCrisisDemo() {
             </div>
 
             <div style={{ height: 4, background: 'rgba(255,255,255,0.1)', marginBottom: 32 }}>
-              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 1s linear' }} />
+              <div style={{ height: '100%', background: GOLD, width: `${Math.min(100,pct)}%`, transition: 'width 120ms linear' }} />
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 24 }}>
