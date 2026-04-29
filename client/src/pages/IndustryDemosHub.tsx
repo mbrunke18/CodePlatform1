@@ -182,6 +182,18 @@ const industryDemos: IndustryDemo[] = [
   }
 ];
 
+// Maps each demo ID directly to its rich 4-step war room experience
+const DEMO_ROUTE: Record<string, string> = {
+  'lvmh-market-entry':      '/lvmh-demo',
+  'shein-trend':            '/shein-demo',
+  'spacex-launch':          '/spacex-demo',
+  'financial-ransomware':   '/financial-ransomware-demo',
+  'pharma-recall':          '/pharmaceutical-recall-demo',
+  'manufacturing-supplier': '/manufacturing-supplier-demo',
+  'retail-contamination':   '/retail-food-safety-demo',
+  'energy-grid':            '/energy-grid-failure-demo',
+};
+
 const categoryBadge = (cat: string) => {
   if (cat === 'OFFENSE') return 'bg-[#2B8A6E]/10 text-[#2B8A6E] border-[#2B8A6E]/20';
   if (cat === 'DEFENSE') return 'bg-[#0A0F2E]/10 text-[#C9A84C] border-[#0A0F2E]/20';
@@ -246,7 +258,7 @@ export default function IndustryDemosHub() {
     const accentBg = isOffense ? "rgba(43,138,110,0.07)" : "rgba(201,168,76,0.05)";
     const accentBorder = isOffense ? "rgba(43,138,110,0.22)" : "rgba(201,168,76,0.18)";
     return (
-      <Link key={demo.id} href={`/industry-experience/${demo.id}`}>
+      <Link key={demo.id} href={DEMO_ROUTE[demo.id] || `/industry-experience/${demo.id}`}>
         <div
           style={{
             background: "#0A0F2E",
@@ -564,7 +576,7 @@ export default function IndustryDemosHub() {
                         )}
                       </div>
                     </div>
-                    <Link href={`/industry-experience/${recommended.id}`}>
+                    <Link href={DEMO_ROUTE[recommended.id] || `/industry-experience/${recommended.id}`}>
                       <button style={{
                         display: "flex", alignItems: "center", gap: 8,
                         background: "#C9A84C", color: "#0A0F2E",
