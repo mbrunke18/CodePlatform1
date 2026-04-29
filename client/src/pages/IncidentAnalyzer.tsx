@@ -538,7 +538,7 @@ export default function IncidentAnalyzer() {
                 See How Readiness OS Would Have<br className="hidden md:block" /> Transformed Your Outcome
               </h1>
               <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
-                Describe any strategic situation your company faced and watch our AI analyze it, generate a custom Readiness Protocol, and simulate full execution in under 12 minutes.
+                Describe any strategic situation your company faced and watch the system analyze it, generate a custom Readiness Protocol, and simulate full execution in under 12 minutes.
               </p>
             </div>
 

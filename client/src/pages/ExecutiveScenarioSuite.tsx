@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import PageLayout from '@/components/layout/PageLayout';
-import { useAuth } from '@/hooks/useAuth';
 import {
   AlertTriangle, CheckCircle2, ArrowRight, ChevronRight,
   Clock, Shield, Zap, Users, TrendingUp, FileText,
@@ -932,29 +931,8 @@ function OutcomeStage({ scenario, live, onBack }: { scenario: Scenario; live: Li
 
 /* ── Main Page ──────────────────────────────────────── */
 export default function ExecutiveScenarioSuite() {
-  const { user, isAuthenticated } = useAuth() as any;
-  const [, navigate] = useLocation();
   const [selected, setSelected] = useState<ScenarioId | null>(null);
 
-  if (!isAuthenticated) {
-    return (
-      <PageLayout>
-        <div style={{ maxWidth: 520, margin: '120px auto', textAlign: 'center', padding: '0 24px' }}>
-          <Lock size={32} color="#94A3B8" style={{ marginBottom: 20 }} />
-          <h2 style={{ fontSize: 24, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Access Required</h2>
-          <p style={{ fontSize: 14, color: '#64748B', lineHeight: 1.7, marginBottom: 28 }}>
-            The Executive Scenario Suite is available to authorized users. Request access to walk through full industry scenarios with real Readiness Protocols and execution data.
-          </p>
-          <button
-            onClick={() => navigate('/request-access')}
-            style={{ background: NAVY, color: IVORY, border: 'none', borderRadius: 0, padding: '13px 32px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
-          >
-            Request Access
-          </button>
-        </div>
-      </PageLayout>
-    );
-  }
 
   if (selected) {
     const scenario = SCENARIOS[selected];
@@ -977,7 +955,7 @@ export default function ExecutiveScenarioSuite() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
             <div style={{ width: 28, height: 1, background: GOLD }} />
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>
-              Executive Scenario Suite · Authenticated
+              Executive Scenario Suite · No Login Required
             </span>
           </div>
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 18 }}>
