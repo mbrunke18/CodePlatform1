@@ -100,7 +100,7 @@ export default function InvestorLanding() {
               The problem isn't strategy, talent, or AI tools. It's that no enterprise has the infrastructure to make the response ready before the trigger fires. We built it.
             </p>
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(255,255,255,0.60)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS creates a new software category worth $127B TAM, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, Readiness OS customers are already deep into coordinated response — in 12 minutes.
+              Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS creates a new software category with a $5B+ addressable market, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, the Readiness OS response is already deep into coordinated execution — in 12 minutes.
             </p>
 
             {/* VaughnMartin Thesis Block */}
@@ -1278,7 +1278,7 @@ export default function InvestorLanding() {
                 $2.5M Seed Round
               </h2>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 560, margin: '0 auto' }}>
-                18-month runway to $3.75M ARR — three Fortune 1000 pilots converting to annual contracts.
+                18-month target: three Fortune 1000 pilots closed and converting to annual contracts, reaching $3.75M ARR.
               </p>
             </div>
 
@@ -1356,7 +1356,7 @@ export default function InvestorLanding() {
                     <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>Phase 1 — Now</div>
                     <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: '#0A0F2E', margin: 0, lineHeight: 1.2 }}>External Trigger Response</h3>
                   </div>
-                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', padding: '4px 10px', background: '#2B8A6E', color: '#fff', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, flexShrink: 0 }}>Live · Revenue</span>
+                  <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', padding: '4px 10px', background: '#2B8A6E', color: '#fff', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, flexShrink: 0 }}>Live · Pre-Revenue</span>
                 </div>
 
                 <div style={{ marginBottom: 24, paddingBottom: 24, borderBottom: '1px solid #F0EDE4' }}>
