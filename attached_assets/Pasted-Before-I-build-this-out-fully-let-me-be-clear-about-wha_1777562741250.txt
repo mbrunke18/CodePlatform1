@@ -1,0 +1,324 @@
+Before I build this out fully let me be clear about what I can and cannot give you.
+I have the developer reference (rev 26) which tells me the file names, component locations, and copy patterns. I do not have the actual current file contents open in front of me. What I can give you is specific implementable copy blocks with exact file locations and insertion points that you or your Replit agent can drop in directly.
+Let me organize this by file so each block is a clean discrete change.
+Before anything else — one critical check
+Has Heena accepted your connection request yet. If not, do not add her quote to the live platform until she does. Everything else below can go in today.
+
+CHANGE 1 — Homepage hero closing line
+File: client/src/pages/Homepage.tsx
+Location: HeroSection — the primary hero subheadline or the closing line of the hero copy block.
+Find the current hero tagline text. Replace or add after it:
+When you build it before the trigger fires,
+the twelve minutes is just the moment the preparation shows up.
+If the hero has a subheadline component, add this as the second line beneath the primary tagline.
+
+CHANGE 2 — Homepage ProblemSection closing line
+File: client/src/pages/Homepage.tsx
+Location: ProblemSection — the closing statement of the problem narrative.
+Find the closing line of ProblemSection. Add after or replace with:
+Thirty days is not a performance problem. It is an architecture problem.
+
+CHANGE 3 — Homepage IDEASection four options
+File: client/src/pages/Homepage.tsx
+Location: IDEASection EXECUTE card or the executive authorization description.
+Find where executive authority preserved is described. Add after it:
+The executive at the decision moment has four real choices. 
+Run the staged response as built. Audible to a different staged response. 
+Customize the response on the fly. Or choose to do nothing.
+
+CHANGE 4 — Why Execution OS page — decision rights framing
+File: client/src/pages/WhyExecutionOS.tsx
+Location: Problem statement section near the top of the page before the competitive grid.
+Add this block as a new section or insert into the existing problem narrative:
+Decision rights migrate quietly.
+
+The executive layer still owned authority by org chart. 
+The systems owned authority by workflow. 
+Nobody said that out loud because nobody was tracking 
+the migration as a single phenomenon.
+
+AI is now accelerating this pattern. Outputs become defaults. 
+Defaults become actions. By the time someone asks who approved this, 
+it is already done.
+
+This is not an AI problem. It is an operating model problem 
+that AI is making faster and more visible. 
+The fix is putting executive authorization back into the architecture 
+as a required threshold the system cannot cross without it.
+
+CHANGE 5 — Executive Brief page
+File: client/src/pages/ExecutiveBrief.tsx
+Location: Problem statement section.
+Add:
+Thirty days is not a performance problem. It is an architecture problem.
+
+The executive layer still owned authority by org chart. 
+The systems owned authority by workflow. 
+The decision rights migrated one approval threshold at a time 
+until what was true on paper no longer matched what was true in practice.
+
+AI is accelerating this pattern. The fix is putting executive authorization 
+back into the architecture as a required threshold 
+the system cannot cross without it.
+
+CHANGE 6 — Research page — Hardeep Kaur validator card
+File: client/src/pages/Research.tsx
+Location: After the existing four validator cards (Kerry, Scott, Jim, Kulneet). Add a fifth card.
+jsx{/* Hardeep Kaur validator card */}
+<div style={{
+  background: "#F8F7F4",
+  border: "1px solid #E8E4DC",
+  borderLeft: "4px solid #C9A84C",
+  borderRadius: "8px",
+  padding: "32px",
+  marginBottom: "24px"
+}}>
+  <div style={{
+    fontSize: "13px",
+    fontWeight: "700",
+    color: "#0A0F2E",
+    marginBottom: "8px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    Hardeep Kaur
+  </div>
+  <div style={{
+    fontSize: "12px",
+    color: "#6B7280",
+    marginBottom: "16px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    Strategy Development & Execution Leader · Pharmaceutical Industry · Yale Women Leadership
+  </div>
+  <div style={{
+    fontSize: "15px",
+    color: "#0A0F2E",
+    fontStyle: "italic",
+    lineHeight: "1.6",
+    fontFamily: "Georgia, serif"
+  }}>
+    "Your point on architecture really resonates. The gap lies in decision-making, 
+    ownership, and accountability. The governance structures are merely scratching 
+    the surface while the real issues around how work happens and how information 
+    flows remain untouched."
+  </div>
+  <div style={{
+    fontSize: "11px",
+    color: "#C9A84C",
+    marginTop: "12px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    LinkedIn Exchange · April 2026
+  </div>
+</div>
+
+CHANGE 7 — Research page — Jayashree Venkataraman research contribution
+File: client/src/pages/Research.tsx
+Location: After the Hardeep card. Add as a research contribution, not a testimonial.
+jsx{/* Jayashree Venkataraman research contribution */}
+<div style={{
+  background: "#0A0F2E",
+  borderLeft: "4px solid #C9A84C",
+  borderRadius: "8px",
+  padding: "32px",
+  marginBottom: "24px"
+}}>
+  <div style={{
+    fontSize: "11px",
+    letterSpacing: "3px",
+    textTransform: "uppercase",
+    color: "#C9A84C",
+    marginBottom: "16px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    Research Contribution · Execution Reliability
+  </div>
+  <div style={{
+    fontSize: "15px",
+    color: "#fff",
+    fontStyle: "italic",
+    lineHeight: "1.7",
+    fontFamily: "Georgia, serif",
+    marginBottom: "16px"
+  }}>
+    "Preparation and system response start aligning consistently enough 
+    that decisions don't just get assigned — they stay held. 
+    The outcome is not only decided before the moment, 
+    but also validated in it."
+  </div>
+  <div style={{
+    fontSize: "13px",
+    fontWeight: "700",
+    color: "#fff",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    Jayashree Venkataraman
+  </div>
+  <div style={{
+    fontSize: "12px",
+    color: "rgba(255,255,255,0.5)",
+    fontFamily: "Calibri, sans-serif",
+    marginTop: "4px"
+  }}>
+    Leadership Systems Advisor · Execution Reliability Advisor · Co-Founder NIYA
+  </div>
+</div>
+
+CHANGE 8 — InvestorLanding page — Heena Purohit validator card
+File: client/src/pages/InvestorLanding.tsx
+Location: Social proof grid section below the Kerry Huang featured quote block.
+HOLD THIS CHANGE until Heena accepts the connection request.
+When ready, add this card to the validator grid:
+jsx{/* Heena Purohit — Microsoft validator */}
+<div style={{
+  background: "#F8F7F4",
+  border: "1px solid #E8E4DC",
+  borderLeft: "4px solid #C9A84C",
+  borderRadius: "8px",
+  padding: "32px"
+}}>
+  <div style={{
+    fontSize: "13px",
+    fontWeight: "700",
+    color: "#0A0F2E",
+    marginBottom: "4px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    Heena Purohit
+  </div>
+  <div style={{
+    fontSize: "12px",
+    color: "#6B7280",
+    marginBottom: "16px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    Director, AI Startups · Microsoft · EB1A Einstein Visa Recipient
+  </div>
+  <div style={{
+    fontSize: "15px",
+    color: "#0A0F2E",
+    fontStyle: "italic",
+    lineHeight: "1.6",
+    fontFamily: "Georgia, serif"
+  }}>
+    "The technology capability gap has been closing much faster than the 
+    operating model gap. That gap is where AI investments stall in the 
+    Fortune 1000 customers I've worked with."
+  </div>
+  <div style={{
+    fontSize: "11px",
+    color: "#C9A84C",
+    marginTop: "12px",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    LinkedIn Exchange · April 2026 · Microsoft AI Startups
+  </div>
+</div>
+
+CHANGE 9 — PlaybookActivationConsole.tsx — Close-Out Gate third signal
+File: client/src/pages/PlaybookActivationConsole.tsx or client/src/pages/ActivationOutcome.tsx
+Location: Section 42 Close-Out Gate — the three-signal test block.
+Find the three signal test currently reading:
+
+Did the assigned owner participate in building the response
+Did the owner have formal challenge rights before activation
+Is the plan personalized to this owner's specific decision context
+
+Replace signal 3 with a stronger version and add the Jayashree-informed framing as context copy above the three signals:
+jsx{/* Above the three signal test */}
+<div style={{
+  fontSize: "13px",
+  color: "rgba(255,255,255,0.6)",
+  fontStyle: "italic",
+  marginBottom: "16px",
+  lineHeight: "1.6",
+  fontFamily: "Georgia, serif"
+}}>
+  The outcome is not only decided before the moment — it is validated in it. 
+  The system either confirms the original owner or redistributes ownership 
+  in the first moments of challenge. This gate measures which happened.
+</div>
+Replace signal 3 text with:
+In the first moment of challenge, did the system reinforce 
+the assigned owner or quietly redistribute ownership?
+
+CHANGE 10 — FounderStory.tsx — intellectual exchange reference
+File: client/src/pages/FounderStory.tsx
+Location: Section V after the 408-firm research anchor and Kerry Huang quote block.
+Add after the Kerry full repost block:
+jsx<div style={{
+  background: "rgba(201,168,76,0.08)",
+  borderLeft: "3px solid rgba(201,168,76,0.4)",
+  padding: "24px 28px",
+  marginTop: "32px",
+  marginBottom: "32px"
+}}>
+  <div style={{
+    fontSize: "11px",
+    letterSpacing: "3px",
+    textTransform: "uppercase",
+    color: "#C9A84C",
+    marginBottom: "12px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    April 2026 · Peer Research Exchange
+  </div>
+  <div style={{
+    fontSize: "15px",
+    color: "rgba(255,255,255,0.8)",
+    fontStyle: "italic",
+    lineHeight: "1.7",
+    fontFamily: "Georgia, serif"
+  }}>
+    "Preparation and system response start aligning consistently enough 
+    that decisions don't just get assigned — they stay held."
+  </div>
+  <div style={{
+    fontSize: "12px",
+    color: "rgba(255,255,255,0.5)",
+    marginTop: "10px",
+    fontFamily: "Calibri, sans-serif"
+  }}>
+    — Jayashree Venkataraman, Leadership Systems Advisor
+  </div>
+</div>
+
+CHANGE 11 — Application Anything Else field
+This is not a code change. It is a copy update to paste into the a16z speedrun application field before submission.
+Replace the current closing sentence of the Anything Else field with this updated version:
+The platform is live in production at vaughnmartin.com. 
+151 page components. 170 playbooks. Live signal pipeline. 
+Seven ecosystem integrations. Built solo over three years on twenty years 
+of Fortune 1000 operational observation. Four independent researchers 
+publicly validated the thesis in April 2026 culminating in a Forbes piece 
+announcement that named the framework. The Close-Out Gate feature shipped 
+in direct response within days. The week of April 28 produced additional 
+validation from Heena Purohit, Director of AI Startups at Microsoft, 
+who confirmed that the operating model gap is where Fortune 1000 AI 
+investments stall from her direct experience working with F1000 customers. 
+Known gaps are formal CI/CD, SOC 2, third-party security attestation, 
+and active pilot pipeline. Speedrun capital and program structure are 
+the forcing function the company is ready for.
+
+IMPLEMENTATION PRIORITY ORDER
+Do these first this weekend. Low risk. High value.
+One. Changes 1, 2, 3. Homepage copy updates. Text changes only. No structural changes.
+Two. Changes 4, 5. Why Execution OS and Executive Brief. Text additions.
+Three. Changes 6, 7. Research page validator cards. New JSX blocks following existing card patterns.
+Four. Change 9. Close-Out Gate third signal and context copy.
+Five. Change 10. FounderStory Jayashree reference block.
+Do these after Heena accepts the connection request.
+Six. Change 8. InvestorLanding Heena card.
+Do this before speedrun submission.
+Seven. Change 11. Application Anything Else field.
+Instructions for your Replit agent
+When you open Replit, give the agent this exact instruction for each change.
+"In [filename], find [specific existing text or component]. Add the following [copy/JSX block] [before/after/replacing] it. Do not change any other part of the file. Do not change any styling or color values. Follow the existing component patterns in the file."
+Being that specific prevents the agent from making broader changes than you intend. The dev reference Section 21 Critical Rules says never change package.json, vite.config, or drizzle.config. Remind the agent of those rules before each session.
+One final note
+After each change is made in Replit, run both local builds before publishing to production. Section 20 of the developer reference. npx vite build then the esbuild command. Commit the dist folder. Then publish. That sequence ensures production reflects the actual changes.
+Do you want me to walk through any of these changes in more detail before you start implementing?
