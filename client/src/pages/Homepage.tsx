@@ -2446,6 +2446,9 @@ export default function Homepage() {
       {/* 5. THESIS — The missing operating model */}
       <MissingLayerSection />
 
+      {/* 5b. MICROSOFT — The stack you already own */}
+      <MicrosoftEcosystemBanner />
+
       {/* 6. SOLUTION DEPTH */}
       <AnatomySection />
 
