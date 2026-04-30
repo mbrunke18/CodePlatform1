@@ -204,6 +204,58 @@ export default function Research() {
               </p>
             </div>
 
+            {/* BCG Section */}
+            <div style={{ border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "20px 24px", background: "#fff" }} className="mb-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div style={{ width: 32, height: 32, background: "#0A0F2E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <TrendingUp className="h-4 w-4 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">The Operating Model Gap</h3>
+                  <p className="text-muted-foreground">
+                    BCG's 2026 research across Fortune 1000 clients confirms the structural constraint: the gap between AI investment and AI value is not the technology. It is the operating model.
+                  </p>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="p-6" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: "#C9A84C", lineHeight: 1, marginBottom: 8 }}>95%</div>
+                  <p className="text-sm font-semibold text-[#0A0F2E] mb-1">Piloting AI</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">of Fortune 1000 companies are running AI initiatives</p>
+                </div>
+                <div className="p-6" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: "#2B8A6E", lineHeight: 1, marginBottom: 8 }}>5%</div>
+                  <p className="text-sm font-semibold text-[#0A0F2E] mb-1">Capturing Real Value at Scale</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">The gap between the two groups is not the technology — it is the operating model</p>
+                </div>
+              </div>
+              <div style={{ background: "#0A0F2E", padding: "20px 24px", marginBottom: 16 }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontStyle: "italic", color: "rgba(255,255,255,0.85)", lineHeight: 1.6, marginBottom: 12 }}>
+                  "Most companies are layering AI onto operating models built for a purely human workforce — predefined processes, fixed handoffs, and decision bottlenecks. Then wondering why the ROI stalls."
+                </p>
+                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#C9A84C" }}>BCG · AI-First Org & Operating Model Study · 2026</p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4 mb-4">
+                <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <CheckCircle2 className="h-5 w-5" style={{ color: "#2B8A6E" }} />
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#2B8A6E", lineHeight: 1 }}>30%</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Technology — the AI stack, models, and infrastructure</p>
+                </div>
+                <div className="p-4" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <CheckCircle2 className="h-5 w-5" style={{ color: "#C9A84C" }} />
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>70%</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">People and organization — the operating model that governs how AI executes</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Source: BCG · AI-First Org & Operating Model Study · 2026 — Fortune 1000 client research across multiple industries and geographies. Co-authored by Sophie Strelczyk, Nina Kataeva, Christoph Hilberath, Vinciane Beauchene, and Kevin Kelley.
+              </p>
+            </div>
+
             {/* HBR Section */}
             <div style={{ border: "1px solid #fecaca", borderLeft: "3px solid #dc2626", padding: "20px 24px", background: "#fff" }} className="mb-8">
               <div className="flex items-start gap-4 mb-6">

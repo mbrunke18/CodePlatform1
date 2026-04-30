@@ -205,9 +205,18 @@ export default function WhyExecutionOS() {
             <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
               AI is now accelerating this pattern. Outputs become defaults. Defaults become actions. By the time someone asks who approved this, it is already done.
             </p>
-            <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24 }}>
+            <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24, marginBottom: 28 }}>
               <p style={{ fontSize: 16, fontWeight: 600, color: NAVY, lineHeight: 1.7, margin: 0 }}>
                 This is not an AI problem. It is an operating model problem that AI is making faster and more visible. The fix is putting executive authorization back into the architecture as a required threshold the system cannot cross without it.
+              </p>
+            </div>
+            <div style={{ background: "#0A0F2E", padding: "20px 24px" }}>
+              <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 10 }}>BCG · AI-First Org & Operating Model Study · 2026</p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 10 }}>
+                "Most companies are layering AI onto operating models built for a purely human workforce — predefined processes, fixed handoffs, and decision bottlenecks. 95% are piloting. 5% are capturing real value at scale. The difference is the operating model."
+              </p>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>
+                Fortune 1000 client research across multiple industries and geographies. Published 2026.
               </p>
             </div>
           </div>

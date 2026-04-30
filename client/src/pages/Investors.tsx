@@ -163,6 +163,7 @@ const researchCitations = [
   { id: 6, source: "Taylor & Francis", title: "Global Transformation Research", year: "2024", finding: "$2.3 trillion wasted globally on failed digital transformation programs" },
   { id: 7, source: "Business Continuity Institute", title: "Resilience Report", year: "2024", finding: "75% of organizations activated strategic response plans in past 12 months" },
   { id: 8, source: "Gartner", title: "AI Technology Stack", year: "2026", finding: "Nine layers of enterprise AI investment mapped — from infrastructure to solutions — with no operating model layer identified to orchestrate execution. That gap is the market Readiness OS serves." },
+  { id: 9, source: "BCG", title: "AI-First Org & Operating Model Study", year: "2026", finding: "95% of companies are piloting AI. Only 5% are capturing real value at scale. The difference is not the technology — it is the operating model. Becoming AI-first is 30% technology, 70% people and organization. Fortune 1000 client research across multiple industries." },
 ];
 
 function PlatformArchitectureDiagram() {
@@ -549,6 +550,53 @@ export default function Investors() {
               <div className="px-8 py-4 bg-white/[0.03] border-t border-white/10">
                 <p className="text-white/35 text-xs">"Orchestration layer · coordination fabric · shared source of truth" — McKinsey's label for the infrastructure layer at the center of every enterprise AI stack. They named it. We built it.</p>
               </div>
+            </div>
+          </motion.div>
+
+          {/* Three-Source Research Convergence */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.175 }} className="mb-20">
+            <div className="text-center mb-8">
+              <p className="text-[#C9A84C] text-xs font-bold uppercase tracking-widest mb-2">Independent Research Convergence</p>
+              <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Three Research Organizations. One Structural Conclusion.</h2>
+              <p className="text-[#6B7280] text-sm max-w-2xl mx-auto">McKinsey, BCG, and MIT Sloan arrived at the same finding independently — from different datasets, different methodologies, different client bases. The operating model is the constraint.</p>
+            </div>
+            <div className="grid grid-cols-3 gap-px bg-[#E8E4DC]">
+              {[
+                {
+                  firm: "McKinsey & Company",
+                  year: "2025–2026",
+                  headline: "The coordination layer is missing.",
+                  finding: "65% of enterprises still piloting AI — only 1% fully mature. Leaders are the bottleneck. $4.4T in AI productivity potential is locked behind a missing orchestration layer.",
+                  color: "#0A0F2E",
+                },
+                {
+                  firm: "BCG",
+                  year: "2026",
+                  headline: "95% piloting. 5% capturing value.",
+                  finding: "Fortune 1000 client study: 95% of companies are piloting AI. Only 5% are capturing real value at scale. The difference is not the technology — it is the operating model.",
+                  color: "#C9A84C",
+                },
+                {
+                  firm: "MIT Sloan",
+                  year: "2025",
+                  headline: "The execution gap is the defining challenge.",
+                  finding: "The gap between strategy and delivery is the defining organizational challenge of the decade. Enterprises that close it outperform peers by measurable margins across every studied sector.",
+                  color: "#2B8A6E",
+                },
+              ].map((s) => (
+                <div key={s.firm} className="bg-white p-8">
+                  <div style={{ width: 24, height: 2, background: s.color, marginBottom: 16 }} />
+                  <p className="text-[#0A0F2E] font-black text-sm uppercase tracking-widest mb-1">{s.firm}</p>
+                  <p className="text-[#6B7280] text-xs mb-4">{s.year}</p>
+                  <p className="text-[#0A0F2E] font-bold text-base mb-3">{s.headline}</p>
+                  <p className="text-[#6B7280] text-xs leading-relaxed">{s.finding}</p>
+                </div>
+              ))}
+            </div>
+            <div className="bg-[#0A0F2E] p-6 text-center">
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.6 }}>
+                Three of the world's leading research organizations arrived at the same structural conclusion independently. The operating model is the constraint. Readiness OS is the coordination infrastructure built to close it.
+              </p>
             </div>
           </motion.div>
 
