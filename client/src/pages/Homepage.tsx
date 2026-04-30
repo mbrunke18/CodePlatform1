@@ -333,9 +333,7 @@ function HomepageNav() {
         display: "flex", alignItems: "center",
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <VaughnMartinLogo variant="full" height={68} color="dark" />
-          </Link>
+          <VaughnMartinLogo variant="full" height={68} color="dark" />
 
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>

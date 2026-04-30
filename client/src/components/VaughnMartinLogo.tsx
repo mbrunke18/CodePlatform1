@@ -1,5 +1,6 @@
 import { VaughnMartinLogo as SealLogo } from '@/components/ExecuteIQLogo';
 import type { FC } from 'react';
+import { Link } from 'wouter';
 
 interface VaughnMartinLogoProps {
   width?: number;
@@ -7,6 +8,7 @@ interface VaughnMartinLogoProps {
   variant?: 'full' | 'icon-only';
   className?: string;
   color?: 'dark' | 'light';
+  noLink?: boolean;
 }
 
 export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
@@ -15,11 +17,12 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   variant = 'full',
   className = '',
   color = 'dark',
+  noLink = false,
 }) => {
   const sealColor = color === 'light' ? 'white' : 'navy';
   const sealVariant = variant === 'icon-only' ? 'icon-only' : 'full';
 
-  return (
+  const logo = (
     <SealLogo
       width={width}
       height={height}
@@ -27,6 +30,19 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
       color={sealColor}
       className={className}
     />
+  );
+
+  if (noLink) return logo;
+
+  return (
+    <Link
+      href="/"
+      style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', cursor: 'pointer', opacity: 1, transition: 'opacity 0.15s ease' }}
+      onMouseEnter={e => (e.currentTarget.style.opacity = '0.8')}
+      onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+    >
+      {logo}
+    </Link>
   );
 };
 
