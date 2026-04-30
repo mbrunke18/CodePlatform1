@@ -601,7 +601,7 @@ function HeroSection() {
               {/* Status badge */}
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
-                <span style={{ ...DM, color: "rgba(255,255,255,0.45)", fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>
+                <span style={{ ...DM, color: "rgba(255,255,255,0.78)", fontSize: 11, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" as const }}>
                   {hasReal ? `${liveCtx?.totalToday ?? 0} Signals Detected Today — System Active` : "221 Trigger Patterns Monitored — System Active"}
                 </span>
               </div>
@@ -614,10 +614,10 @@ function HeroSection() {
                 Before the Trigger Fires.
               </h1>
 
-              <p style={{ ...DM, color: "rgba(255,255,255,0.58)", fontSize: "clamp(14px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
                 30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — not after the trigger, before it.
               </p>
-              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(14px,1.1vw,17px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(16px,1.2vw,18px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
                 The twelve minutes is not about speed. It is about clarity built ahead of time.
               </p>
 
@@ -669,7 +669,7 @@ function HeroSection() {
                     <span style={{ ...DM, color: TEAL, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em" }}>
                       {DOMAIN_LABELS[(sig as any).triggerDomain ?? ''] ?? ((sig as any).triggerDomain ?? 'SIGNAL').toUpperCase()}
                     </span>
-                    <span style={{ ...DM, color: "rgba(255,255,255,0.25)", fontSize: 10, fontWeight: 500 }}>
+                    <span style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 10, fontWeight: 500 }}>
                       {(sig as any).detectedAt ? signalTimeAgo((sig as any).detectedAt) : "continuous"}
                     </span>
                   </div>
@@ -691,7 +691,7 @@ function HeroSection() {
                 <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>Protocol Readiness</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
                   <span style={{ ...GEO, color: "#fff", fontSize: 26, fontWeight: 700 }}>170</span>
-                  <span style={{ ...DM, color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Protocols pre-staged across 9 domains</span>
+                  <span style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: 12 }}>Protocols pre-staged across 9 domains</span>
                 </div>
               </div>
             </div>
@@ -733,14 +733,14 @@ function ScenarioHookSection() {
           </div>
 
           {/* Context */}
-          <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.48)", lineHeight: 1.7, maxWidth: 660, marginBottom: 32 }}>
+          <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.78)", lineHeight: 1.7, maxWidth: 660, marginBottom: 32 }}>
             Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
           </p>
 
           {/* Bridge line */}
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ width: 1, height: 32, background: `linear-gradient(to bottom, ${GOLD}, transparent)` }} />
-            <span style={{ ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" as const }}>
+            <span style={{ ...DM, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", color: "rgba(255,255,255,0.65)", textTransform: "uppercase" as const }}>
               Select a scenario to see the full 12-minute execution
             </span>
           </div>
@@ -771,7 +771,7 @@ function ScenarioCardsRow() {
             }}>
               <div style={{ ...DM, color: item.accent, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
               <div style={{ ...DM, color: "#fff", fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>{item.label}</div>
-              <div style={{ ...DM, color: "rgba(255,255,255,0.4)", fontSize: 11.5, lineHeight: 1.55, marginBottom: 12 }}>{item.sub}</div>
+              <div style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: 11.5, lineHeight: 1.55, marginBottom: 12 }}>{item.sub}</div>
               <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>Activate protocol →</span>
             </Link>
           ))}
@@ -801,7 +801,7 @@ function AnatomySection() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <p style={{ ...DM, color: "rgba(255,255,255,0.45)", fontSize: 14, lineHeight: 1.75, margin: 0, maxWidth: 340, textAlign: "right" as const }}>
+            <p style={{ ...DM, color: "rgba(255,255,255,0.78)", fontSize: 14, lineHeight: 1.75, margin: 0, maxWidth: 340, textAlign: "right" as const }}>
               Each of the 170 Readiness Protocols contains all six components — pre-built, pre-approved, and pre-staged before the trigger fires.
             </p>
           </Reveal>
@@ -824,7 +824,7 @@ function AnatomySection() {
                   <div style={{ flex: 1, height: 1, background: `${item.accent}33` }} />
                 </div>
                 <div style={{ ...DM, color: "#fff", fontSize: 14, fontWeight: 700, lineHeight: 1.4, marginBottom: 10 }}>{item.label}</div>
-                <div style={{ ...DM, color: "rgba(255,255,255,0.45)", fontSize: 12.5, lineHeight: 1.7 }}>{item.body}</div>
+                <div style={{ ...DM, color: "rgba(255,255,255,0.75)", fontSize: 12.5, lineHeight: 1.7 }}>{item.body}</div>
               </div>
             </Reveal>
           ))}
@@ -834,7 +834,7 @@ function AnatomySection() {
         <Reveal delay={0.3}>
           <div style={{ marginTop: 44, display: "flex", alignItems: "center", gap: 20 }}>
             <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />
-            <span style={{ ...DM, color: "rgba(255,255,255,0.28)", fontSize: 12, fontWeight: 500, textAlign: "center" as const, maxWidth: 660 }}>
+            <span style={{ ...DM, color: "rgba(255,255,255,0.65)", fontSize: 12, fontWeight: 500, textAlign: "center" as const, maxWidth: 660 }}>
               "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase." — Dr. Kerry Huang, ESI Top 1% Researcher · 408-firm study
             </span>
             <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.07)" }} />

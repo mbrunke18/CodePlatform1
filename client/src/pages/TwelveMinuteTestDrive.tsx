@@ -286,7 +286,7 @@ export default function TwelveMinuteTestDrive() {
             <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               {i > 0 && <div style={{ width: 32, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
               <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.4)', letterSpacing: '0.05em' }}>{s.label}</span>
+              <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.68)', letterSpacing: '0.05em' }}>{s.label}</span>
             </div>
           ))}
         </div>
@@ -305,7 +305,7 @@ export default function TwelveMinuteTestDrive() {
               <p style={{ ...GEO, fontSize: 'clamp(20px,2.8vw,30px)', fontWeight: 700, color: '#fff', lineHeight: 1.4, marginBottom: 16 }}>
                 If any of these scenarios hit your organization today — what would you do?
               </p>
-              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, margin: 0 }}>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, margin: 0 }}>
                 Who calls who? Where's the brief? Who owns it? Who authorizes? Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
               </p>
             </div>
@@ -366,7 +366,7 @@ export default function TwelveMinuteTestDrive() {
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
                         <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)', display: 'inline-block' }} />
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
+                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
                       </div>
                       {hasLiveSignal && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
@@ -479,7 +479,7 @@ export default function TwelveMinuteTestDrive() {
                     <div style={{ padding: '20px 24px', background: 'rgba(180,30,30,0.07)', borderTop: '1px solid rgba(192,57,43,0.2)', borderBottom: '1px solid rgba(192,57,43,0.2)', borderLeft: '1px solid rgba(192,57,43,0.2)', borderRight: 'none' }}>
                       <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 8 }}>Without Readiness OS</div>
                       <div style={{ fontSize: 36, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>30 <span style={{ fontSize: 16, color: 'rgba(255,255,255,0.4)' }}>days</span></div>
-                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>to mobilize, align stakeholders, agree on a plan, then begin executing</div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.72)' }}>to mobilize, align stakeholders, agree on a plan, then begin executing</div>
                     </div>
                     <div style={{ padding: '0 20px', textAlign: 'center' as const, background: 'rgba(255,255,255,0.02)', alignSelf: 'stretch' as const, display: 'flex', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                       <div style={{ fontSize: 18, color: GOLD }}>→</div>
@@ -487,7 +487,7 @@ export default function TwelveMinuteTestDrive() {
                     <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.06)', borderTop: `1px solid rgba(201,168,76,0.25)`, borderBottom: `1px solid rgba(201,168,76,0.25)`, borderRight: `1px solid rgba(201,168,76,0.25)`, borderLeft: 'none' }}>
                       <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
                       <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 4 }}>12 <span style={{ fontSize: 16, color: `rgba(201,168,76,0.5)` }}>minutes</span></div>
-                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>from trigger detection to full coordinated executive execution — 3,600× head start</div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.72)' }}>from trigger detection to full coordinated executive execution — 3,600× head start</div>
                     </div>
                   </div>
                 </div>

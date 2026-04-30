@@ -74,7 +74,7 @@ export default function RequestAccess() {
   return (
     <>
       <style>{`
-        .request-field::placeholder { color: rgba(240,237,228,0.3); }
+        .request-field::placeholder { color: rgba(240,237,228,0.45); }
         .request-field:focus { border-bottom-color: rgba(201,168,76,0.6); }
         .request-field { transition: border-color 0.2s ease; }
         .access-submit:hover { background: rgba(201,168,76,0.12) !important; }
@@ -114,17 +114,17 @@ export default function RequestAccess() {
               ].map(({ num, label }) => (
                 <div key={num} style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "18px 0", borderBottom: "1px solid rgba(240,237,228,0.08)" }}>
                   <span style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>{num}</span>
-                  <span style={{ ...BC, fontSize: 12, fontWeight: 400, letterSpacing: "0.04em", color: "rgba(240,237,228,0.45)", textAlign: "right", maxWidth: 220 }}>{label}</span>
+                  <span style={{ ...BC, fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", color: "rgba(240,237,228,0.78)", textAlign: "right", maxWidth: 220 }}>{label}</span>
                 </div>
               ))}
             </div>
 
-            <p style={{ ...BC, fontSize: 12, color: "rgba(240,237,228,0.35)", lineHeight: 1.65, marginTop: 28 }}>
+            <p style={{ ...BC, fontSize: 12, color: "rgba(240,237,228,0.65)", lineHeight: 1.65, marginTop: 28 }}>
               Coordination infrastructure for the Fortune 1000. AI monitors. Executives authorize. Execution pre-staged.
             </p>
           </div>
 
-          <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.2)", letterSpacing: "0.04em", position: "relative", zIndex: 1 }}>
+          <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.45)", letterSpacing: "0.04em", position: "relative", zIndex: 1 }}>
             © VaughnMartin · vaughnmartin.com
           </p>
         </div>
@@ -148,7 +148,7 @@ export default function RequestAccess() {
                   <h1 style={{ ...CG, fontSize: 36, fontWeight: 700, color: IVORY, lineHeight: 1.2, marginBottom: 12 }}>
                     Request Executive Access
                   </h1>
-                  <p style={{ ...BC, fontSize: 13, color: "rgba(240,237,228,0.45)", lineHeight: 1.6, letterSpacing: "0.01em" }}>
+                  <p style={{ ...BC, fontSize: 13, color: "rgba(240,237,228,0.78)", lineHeight: 1.6, letterSpacing: "0.01em" }}>
                     We'll send a secure link to your work email — one click, no password, no commitment.
                   </p>
                   <div style={{ marginTop: 20, padding: "14px 18px", borderLeft: `2px solid ${GOLD}`, background: "rgba(201,168,76,0.05)" }}>
@@ -164,7 +164,7 @@ export default function RequestAccess() {
 
                       {/* First Name */}
                       <div style={{ marginBottom: 28 }}>
-                        <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", display: "block", marginBottom: 6 }}>First Name</label>
+                        <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>First Name</label>
                         <FormField control={form.control} name="firstName" render={({ field }) => (
                           <FormItem>
                             <FormControl><MinimalInput field={field} placeholder="Jane" /></FormControl>
@@ -175,7 +175,7 @@ export default function RequestAccess() {
 
                       {/* Last Name */}
                       <div style={{ marginBottom: 28 }}>
-                        <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", display: "block", marginBottom: 6 }}>Last Name</label>
+                        <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Last Name</label>
                         <FormField control={form.control} name="lastName" render={({ field }) => (
                           <FormItem>
                             <FormControl><MinimalInput field={field} placeholder="Smith" /></FormControl>
@@ -187,7 +187,7 @@ export default function RequestAccess() {
 
                     {/* Work Email */}
                     <div style={{ marginBottom: 28 }}>
-                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", display: "block", marginBottom: 6 }}>Work Email</label>
+                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Work Email</label>
                       <FormField control={form.control} name="email" render={({ field }) => (
                         <FormItem>
                           <FormControl><MinimalInput field={field} placeholder="jane.smith@company.com" /></FormControl>
@@ -198,7 +198,7 @@ export default function RequestAccess() {
 
                     {/* Company */}
                     <div style={{ marginBottom: 28 }}>
-                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", display: "block", marginBottom: 6 }}>Company</label>
+                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Company</label>
                       <FormField control={form.control} name="company" render={({ field }) => (
                         <FormItem>
                           <FormControl><MinimalInput field={field} placeholder="Acme Corporation" /></FormControl>
@@ -209,7 +209,7 @@ export default function RequestAccess() {
 
                     {/* Title */}
                     <div style={{ marginBottom: 40 }}>
-                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", display: "block", marginBottom: 6 }}>Title / Role</label>
+                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Title / Role</label>
                       <FormField control={form.control} name="title" render={({ field }) => (
                         <FormItem>
                           <FormControl><MinimalInput field={field} placeholder="Chief Strategy Officer" /></FormControl>
@@ -249,9 +249,9 @@ export default function RequestAccess() {
                     </button>
 
                     {/* Note */}
-                    <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.22)", textAlign: "center", marginTop: 18, letterSpacing: "0.02em", lineHeight: 1.6 }}>
+                    <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.55)", textAlign: "center", marginTop: 18, letterSpacing: "0.02em", lineHeight: 1.6 }}>
                       Link expires in 24 hours · single sign-in · no password required.<br />
-                      <span style={{ color: "rgba(240,237,228,0.18)" }}>This is Executive Access — not the <a href="/pilot-program" style={{ color: "rgba(201,168,76,0.5)", textDecoration: "none" }}>Pilot Program</a> ($75K).</span>
+                      <span style={{ color: "rgba(240,237,228,0.5)" }}>This is Executive Access — not the <a href="/founding-partner-program" style={{ color: GOLD, textDecoration: "none" }}>Founding Partner Program</a> ($75K).</span>
                     </p>
                   </form>
                 </Form>
@@ -267,15 +267,15 @@ export default function RequestAccess() {
                 <h2 style={{ ...CG, fontSize: 40, fontWeight: 700, color: IVORY, textAlign: "center", lineHeight: 1.15, marginBottom: 12 }}>
                   Your link is on its way.
                 </h2>
-                <p style={{ ...BC, fontSize: 13, color: "rgba(240,237,228,0.45)", textAlign: "center", marginBottom: 6, lineHeight: 1.6 }}>
-                  Sent to <strong style={{ color: "rgba(240,237,228,0.7)", fontWeight: 600 }}>{submittedEmail}</strong>
+                <p style={{ ...BC, fontSize: 13, color: "rgba(240,237,228,0.75)", textAlign: "center", marginBottom: 6, lineHeight: 1.6 }}>
+                  Sent to <strong style={{ color: IVORY, fontWeight: 600 }}>{submittedEmail}</strong>
                 </p>
-                <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.25)", textAlign: "center", marginBottom: 48, letterSpacing: "0.04em" }}>
+                <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.6)", textAlign: "center", marginBottom: 48, letterSpacing: "0.04em" }}>
                   Valid 24 hours · single sign-in · no password
                 </p>
 
                 <div style={{ borderTop: "1px solid rgba(240,237,228,0.08)", paddingTop: 32 }}>
-                  <p style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,228,0.3)", marginBottom: 20 }}>
+                  <p style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,228,0.65)", marginBottom: 20 }}>
                     While you wait
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
@@ -311,8 +311,8 @@ export default function RequestAccess() {
                   </Link>
                 </div>
 
-                <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.2)", textAlign: "center", marginTop: 24 }}>
-                  Not in your inbox? Check spam or email <a href="mailto:pilot@vaughnmartin.com" style={{ color: "rgba(201,168,76,0.4)" }}>pilot@vaughnmartin.com</a>
+                <p style={{ ...BC, fontSize: 11, color: "rgba(240,237,228,0.55)", textAlign: "center", marginTop: 24 }}>
+                  Not in your inbox? Check spam or email <a href="mailto:pilot@vaughnmartin.com" style={{ color: GOLD }}>pilot@vaughnmartin.com</a>
                 </p>
               </div>
             )}

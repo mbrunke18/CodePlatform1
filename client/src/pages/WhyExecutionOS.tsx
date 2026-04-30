@@ -172,7 +172,7 @@ export default function WhyExecutionOS() {
             {/* The category problem — 2 columns */}
             <div className="grid md:grid-cols-2 gap-0 max-w-3xl mx-auto mt-10 text-left border border-white/10">
               <div style={{ background: "rgba(255,255,255,0.04)", padding: "28px 28px", borderRight: "1px solid rgba(255,255,255,0.1)" }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 14 }}>What the market has built</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: 14 }}>What the market has built</div>
                 {["AI tools that detect and analyze", "Workflow tools that track tasks", "Notification tools that alert people", "GRC tools that document risk", "Consulting tools that analyze gaps"].map(item => (
                   <div key={item} className="flex items-center gap-3 mb-3">
                     <XCircle style={{ width: 14, height: 14, color: "#EF4444", flexShrink: 0 }} />
@@ -215,7 +215,7 @@ export default function WhyExecutionOS() {
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.7, marginBottom: 10 }}>
                 "Most companies are layering AI onto operating models built for a purely human workforce — predefined processes, fixed handoffs, and decision bottlenecks. 95% are piloting. 5% are capturing real value at scale. The difference is the operating model."
               </p>
-              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>
+              <p style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", lineHeight: 1.5 }}>
                 Fortune 1000 client research across multiple industries and geographies. Published 2026.
               </p>
             </div>
