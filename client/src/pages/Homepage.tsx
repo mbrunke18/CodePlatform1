@@ -615,7 +615,7 @@ function HeroSection() {
                 30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — not after the trigger, before it.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(14px,1.1vw,17px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
-                When you build it before the trigger fires, the twelve minutes is just the moment the preparation shows up.
+                The twelve minutes is not about speed. It is about clarity built ahead of time.
               </p>
 
               {/* CTAs — horizontal */}

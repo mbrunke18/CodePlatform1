@@ -715,12 +715,19 @@ export default function TwelveMinuteTestDrive() {
             </div>
 
             {/* Fearless resolution */}
-            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', borderLeft: `4px solid ${TEAL}`, borderTop: '1px solid rgba(43,138,110,0.3)', borderRight: '1px solid rgba(43,138,110,0.3)', borderBottom: '1px solid rgba(43,138,110,0.3)', marginBottom: 40, textAlign: 'center' }}>
+            <div style={{ padding: '24px 32px', background: 'rgba(43,138,110,0.08)', borderLeft: `4px solid ${TEAL}`, borderTop: '1px solid rgba(43,138,110,0.3)', borderRight: '1px solid rgba(43,138,110,0.3)', borderBottom: '1px solid rgba(43,138,110,0.3)', marginBottom: 24, textAlign: 'center' }}>
               <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>
                 "The response was ready before the trigger fired."
               </p>
               <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>
                 That's preparation. That's readiness. That's how enterprises become fearless.
+              </p>
+            </div>
+
+            {/* Canonical clarity quote */}
+            <div style={{ padding: '20px 32px', background: 'rgba(201,168,76,0.06)', borderLeft: `3px solid ${GOLD}`, marginBottom: 40, textAlign: 'center' }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(16px,2vw,22px)', fontStyle: 'italic', color: GOLD, lineHeight: 1.5, margin: 0 }}>
+                "The twelve minutes is not about speed. It is about clarity built ahead of time."
               </p>
             </div>
 
