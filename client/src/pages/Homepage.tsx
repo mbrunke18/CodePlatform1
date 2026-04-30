@@ -1861,7 +1861,7 @@ function CredibilitySection() {
                   opacity: 0.85,
                 }}
               >
-                Why this company exists — and why it's named what it is →
+                Read the founder's story →
               </Link>
               <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.3)" }} />
             </div>
