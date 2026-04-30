@@ -158,7 +158,7 @@ export default function InvestorLanding() {
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(24px,3.5vw,40px)', fontWeight: 700, color: '#fff', lineHeight: 1.35, marginBottom: 20 }}>
                 If a ransomware attack, an activist investor, or a regulatory inquiry hit one of your portfolio companies today — what would happen in the next 12 minutes?
               </p>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, marginBottom: 28, maxWidth: 680 }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8, marginBottom: 28, maxWidth: 680 }}>
                 Who calls who? Where's the brief? Who owns the response? Who authorizes it? Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the stock drops, the competitor acts. That gap is the business. Every Fortune 1000 has it. None have solved it. The cost per trigger: $50M to $500M.
               </p>
               <a href="/12-minute-experience" style={{ display: 'inline-block', fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, padding: '14px 36px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none' }}>
@@ -179,7 +179,7 @@ export default function InvestorLanding() {
                 If a well-funded competitor showed up tomorrow —<br />
                 <em style={{ color: '#C9A84C' }}>why do we still win?</em>
               </h2>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(255,255,255,0.55)', maxWidth: 620, margin: '0 auto', lineHeight: 1.7 }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(255,255,255,0.78)', maxWidth: 620, margin: '0 auto', lineHeight: 1.7 }}>
                 A product is not a moat. Features can be rebuilt in 12 months. The moat is what a competitor cannot replicate regardless of funding.
               </p>
             </div>
@@ -212,7 +212,7 @@ export default function InvestorLanding() {
                 <div key={m.n} style={{ background: '#0A0F2E', padding: '32px 28px' }}>
                   <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: m.accent, marginBottom: 12 }}>Moat {m.n}</div>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }}>{m.label}</h3>
-                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, marginBottom: 20 }}>{m.body}</p>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.78)', lineHeight: 1.75, marginBottom: 20 }}>{m.body}</p>
                   <div style={{ borderTop: `1px solid ${m.accent}30`, paddingTop: 16 }}>
                     <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, color: m.accent, letterSpacing: '0.04em', lineHeight: 1.5 }}>{m.proof}</p>
                   </div>
@@ -225,7 +225,7 @@ export default function InvestorLanding() {
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginBottom: 12 }}>
                 "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase."
               </p>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)' }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.88)' }}>
                 Dr. Kerry Huang · ESI Top 1% Researcher · 408-Firm Study
               </p>
             </div>
@@ -948,7 +948,7 @@ export default function InvestorLanding() {
                   </p>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 16 }}>
                     <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: v.accent, marginBottom: 4 }}>— {v.name}</p>
-                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.02em', marginBottom: 10 }}>{v.title}</p>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.68)', letterSpacing: '0.02em', marginBottom: 10 }}>{v.title}</p>
                     <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.68)', lineHeight: 1.55 }}>{v.context}</p>
                   </div>
                 </div>

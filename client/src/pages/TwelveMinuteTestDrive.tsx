@@ -376,7 +376,7 @@ export default function TwelveMinuteTestDrive() {
                       )}
                     </div>
                     <div style={{ ...GEO, fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 4, lineHeight: 1.2 }}>{s.title}</div>
-                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{s.subtitle}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', lineHeight: 1.5 }}>{s.subtitle}</div>
                   </button>
                 );
               })}
@@ -413,7 +413,7 @@ export default function TwelveMinuteTestDrive() {
             {loadingBrief ? (
               <div style={{ textAlign: 'center', padding: '80px 0' }}>
                 <div style={{ display: 'inline-block', width: 40, height: 40, border: `3px solid ${GOLD}`, borderTopColor: 'transparent', borderRadius: 0, animation: 'spin 0.8s linear infinite' }} />
-                <p style={{ color: 'rgba(255,255,255,0.5)', marginTop: 16, fontSize: 13 }}>Analyzing signals and generating your execution brief…</p>
+                <p style={{ color: 'rgba(255,255,255,0.72)', marginTop: 16, fontSize: 13 }}>Analyzing signals and generating your execution brief…</p>
                 <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
               </div>
             ) : (
@@ -449,7 +449,7 @@ export default function TwelveMinuteTestDrive() {
                   <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.06)', borderLeft: `3px solid ${TEAL}`, borderTop: '1px solid rgba(43,138,110,0.2)', borderRight: '1px solid rgba(43,138,110,0.2)', borderBottom: '1px solid rgba(43,138,110,0.2)' }}>
                     {brief?.activatedPlaybooks?.length > 0 ? (
                       <>
-                        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 14 }}>
+                        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.72)', marginBottom: 14 }}>
                           The following Readiness Protocols are pre-staged and will activate the moment you authorize execution:
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 8 }}>
@@ -719,7 +719,7 @@ export default function TwelveMinuteTestDrive() {
               <p style={{ ...GEO, fontSize: 'clamp(18px,2.5vw,26px)', fontStyle: 'italic', color: '#fff', lineHeight: 1.4, marginBottom: 8 }}>
                 "The response was ready before the trigger fired."
               </p>
-              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em' }}>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.72)', letterSpacing: '0.06em' }}>
                 That's preparation. That's readiness. That's how enterprises become fearless.
               </p>
             </div>
@@ -769,12 +769,12 @@ export default function TwelveMinuteTestDrive() {
                 <a href="/growth" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none' }}>
                   See Pricing →
                 </a>
-                <a href="/investor-landing" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.5)', border: '1px solid rgba(255,255,255,0.15)', textDecoration: 'none' }}>
+                <a href="/investor-landing" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none' }}>
                   Investor View →
                 </a>
                 <button
                   onClick={() => { setStep(1); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); }}
-                  style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.35)', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' }}
+                  style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
                 >
                   Try Another Scenario
                 </button>
