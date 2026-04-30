@@ -153,14 +153,15 @@ export default function PlatformOverview() {
             <div className="text-center mb-12">
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The 12-Minute Window</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>The 3,600× Execution Window</span>
                 <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
               </div>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,40px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
-                What Happens in 12 Minutes
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(28px,4vw,44px)", lineHeight: 1.1, color: "#0A0F2E", marginBottom: 12 }}>
+                30 Days of Mobilization.
+                <span style={{ color: "#C9A84C", fontStyle: "italic" }}> Compressed to 12 Minutes.</span>
               </h2>
               <p className="text-[#6B7280] max-w-2xl mx-auto">
-                From the moment a signal fires to the moment your organization is fully coordinated. Every step system-monitored, every decision made by humans.
+                From the moment a signal fires to the moment your organization is fully coordinated — every step system-monitored, every decision made by humans, every action pre-staged before the trigger fires.
               </p>
             </div>
 

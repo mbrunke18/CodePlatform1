@@ -228,15 +228,29 @@ function LiveSignalFeedSection() {
                     )}
                   </div>
 
-                  {/* Trigger name */}
-                  <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: '#fff', lineHeight: 1.3 }}>
-                    {sig.triggerName}
-                  </div>
-
-                  {/* Signal description */}
-                  <p style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: 0, flexGrow: 1 }}>
-                    {sig.signalDescription.length > 140 ? sig.signalDescription.slice(0, 139) + '…' : sig.signalDescription}
-                  </p>
+                  {/* Signal headline — extracted from actual news content */}
+                  {(() => {
+                    const raw = sig.signalDescription || '';
+                    const dashIdx = raw.indexOf(' — ');
+                    const colonIdx = raw.indexOf(': Reports');
+                    const headline = dashIdx > 0 ? raw.slice(0, dashIdx) : colonIdx > 0 ? raw.slice(0, colonIdx) : raw.slice(0, 100);
+                    const body = dashIdx > 0 ? raw.slice(dashIdx + 3) : '';
+                    return (
+                      <>
+                        <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: '#fff', lineHeight: 1.35 }}>
+                          {headline.length > 110 ? headline.slice(0, 109) + '…' : headline}
+                        </div>
+                        {body && (
+                          <p style={{ ...DM, fontSize: 11.5, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: 0, flexGrow: 1 }}>
+                            {body.length > 120 ? body.slice(0, 119) + '…' : body}
+                          </p>
+                        )}
+                        <div style={{ ...DM, fontSize: 9.5, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+                          Matched trigger → {sig.triggerName}
+                        </div>
+                      </>
+                    );
+                  })()}
 
                   {/* Bottom row: source + confidence */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
@@ -659,8 +673,13 @@ function HeroSection() {
                       {(sig as any).detectedAt ? signalTimeAgo((sig as any).detectedAt) : "continuous"}
                     </span>
                   </div>
-                  <div style={{ ...DM, color: "rgba(255,255,255,0.8)", fontSize: 12.5, fontWeight: 500, lineHeight: 1.45, marginBottom: 6 }}>
-                    {(sig as any).triggerName}
+                  <div style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: 12.5, fontWeight: 600, lineHeight: 1.45, marginBottom: 6 }}>
+                    {(() => {
+                      const raw = (sig as any).signalDescription || (sig as any).triggerName || '';
+                      const dashIdx = raw.indexOf(' — ');
+                      const headline = dashIdx > 0 ? raw.slice(0, dashIdx) : raw.slice(0, 90);
+                      return headline.length > 88 ? headline.slice(0, 87) + '…' : headline;
+                    })()}
                   </div>
                   <Link href="/12-minute-experience" style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>
                     Readiness Protocol ready →
