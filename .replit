@@ -1,4 +1,4 @@
-modules = ["nodejs-20", "web", "postgresql-16", "python-3.11"]
+modules = ["nodejs-20", "web", "python-3.11", "postgresql-16"]
 run = "npm run dev"
 hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
@@ -69,3 +69,7 @@ INTEGRATION_ENCRYPTION_KEY = "0e391d24358482d35ff192bf6b882284d448ad694f5dbbc506
 
 [userenv.production]
 DEMO_ACCESS_TOKEN = "speedrun2026"
+
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 20000

@@ -8,6 +8,13 @@
       "when": 1761383222366,
       "tag": "0000_cuddly_pride",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1777579876778,
+      "tag": "0001_missing_tables",
+      "breakpoints": true
     }
   ]
 }
