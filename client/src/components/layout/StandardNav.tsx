@@ -458,8 +458,9 @@ export default function StandardNav() {
           <div style={{ padding: '16px 18px 16px 14px', background: 'rgba(248,247,244,0.55)' }}>
             {megaColHeading("Company")}
             {[
+              { path: '/about', icon: Users, label: 'About the Founder', sub: 'Martin Brunke — background, credentials & origin story', featured: true },
               { path: '/team', icon: Users, label: 'Team', sub: 'Founder, research partners, open roles' },
-              { path: '/founder-story', icon: Video, label: "Founder's Story", sub: 'The vision behind Readiness OS', featured: true },
+              { path: '/founder-story', icon: Video, label: "Founder's Story", sub: 'The vision behind Readiness OS' },
               { path: '/board-briefings', icon: FileText, label: 'Board Briefings', sub: 'Executive-ready board reporting' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
@@ -984,6 +985,7 @@ export default function StandardNav() {
 
               <p className="px-4 py-2 text-[10px] uppercase tracking-widest font-bold" style={{ color: TEAL }}>Company</p>
               {[
+                { path: '/about', label: 'About the Founder', icon: Users },
                 { path: '/team', label: 'Team', icon: Users },
                 { path: '/founder-story', label: "Founder's Story", icon: Video },
               ].map((link) => (

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
+import martinHeadshot from "@/assets/martin-brunke.jpg";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -56,21 +57,35 @@ export default function About() {
       {/* Hero */}
       <section style={{ background: NAVY, padding: "96px 0 72px", borderBottom: `1px solid rgba(201,168,76,0.15)` }}>
         <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 20 }}>
-            Founder
+          <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 56, alignItems: "flex-start" }}>
+            {/* Headshot */}
+            <div style={{ flexShrink: 0 }}>
+              <img
+                src={martinHeadshot}
+                alt="Martin Brunke — CEO & Founder, VaughnMartin"
+                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "center top", display: "block", border: `2px solid rgba(201,168,76,0.3)` }}
+              />
+            </div>
+
+            {/* Name + bio */}
+            <div>
+              <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>
+                Founder
+              </div>
+              <h1 style={{ ...GEO, fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 700, color: "#fff", lineHeight: 1.05, margin: "0 0 8px" }}>
+                Martin Brunke
+              </h1>
+              <div style={{ ...BC, fontSize: 14, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 28 }}>
+                CEO & Founder · VaughnMartin Inc.
+              </div>
+              <p style={{ ...DM, fontSize: "clamp(15px,1.4vw,17px)", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: "0 0 24px" }}>
+                Twenty years inside Fortune 1000 organizations watching the same failure repeat across seven industries. Five years on the practice field at Stanford watching the exact opposite — a pre-staged response deploy in 40 seconds under full pressure.
+              </p>
+              <p style={{ ...GEO, fontSize: "clamp(16px,1.3vw,20px)", fontStyle: "italic", color: GOLD, lineHeight: 1.6, margin: 0 }}>
+                "The infrastructure existed on the practice field. Nobody had built it for the boardroom."
+              </p>
+            </div>
           </div>
-          <h1 style={{ ...GEO, fontSize: "clamp(40px, 5vw, 64px)", fontWeight: 700, color: "#fff", lineHeight: 1.05, margin: "0 0 8px" }}>
-            Martin Brunke
-          </h1>
-          <div style={{ ...BC, fontSize: 14, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 32 }}>
-            CEO & Founder · VaughnMartin Inc.
-          </div>
-          <p style={{ ...DM, fontSize: "clamp(15px,1.4vw,18px)", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, maxWidth: 680, margin: "0 0 24px" }}>
-            Twenty years inside Fortune 1000 organizations watching the same failure repeat across seven industries. Five years on the practice field at Stanford watching the exact opposite — a pre-staged response deploy in 40 seconds under full pressure.
-          </p>
-          <p style={{ ...GEO, fontSize: "clamp(16px,1.3vw,20px)", fontStyle: "italic", color: GOLD, lineHeight: 1.6, maxWidth: 600, margin: 0 }}>
-            "The infrastructure existed on the practice field. Nobody had built it for the boardroom."
-          </p>
         </div>
       </section>
 
