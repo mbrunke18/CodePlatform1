@@ -93,6 +93,11 @@ export default function WorkspaceDetect({ embedded }: { embedded?: boolean } = {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           
           {/* Breadcrumb */}
+          <div className="mb-4">
+            <Link href="/dashboard" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#6B7280] hover:text-[#0A0F2E] transition-colors" style={{ textDecoration: 'none' }}>
+              ← Dashboard
+            </Link>
+          </div>
           <nav className="flex items-center gap-2 text-sm mb-6">
             <Link href="/command-center">
               <span className="text-[#0A0F2E] dark:text-[#C9A84C]/60 hover:text-[#C9A84C] cursor-pointer">Readiness OS One™</span>
