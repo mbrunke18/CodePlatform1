@@ -68,7 +68,7 @@ export default function BoardDeckGenerator({ organizationId }: BoardDeckGenerato
           </div>
           <Badge variant="outline" className="bg-[#0A0F2E] dark:bg-[#C9A84C]/20 text-[#C9A84C] dark:text-[#C9A84C] border-[#C9A84C] dark:border-[#C9A84C]">
             <Sparkles className="w-3 h-3 mr-1" />
-            AI Generated
+            System Generated
           </Badge>
         </div>
       </CardHeader>

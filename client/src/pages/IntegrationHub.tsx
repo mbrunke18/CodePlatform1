@@ -494,7 +494,7 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
       },
       {
         id: 'int-025', name: 'Azure AI / Azure OpenAI', category: 'ai', status: 'available',
-        description: 'Enterprise-grade AI with data residency, SOC 2 compliance, and GDPR guarantees. Set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_KEY to route all AI analysis through Azure instead of OpenAI direct.', provider: 'Microsoft', version: 'GPT-4o',
+        description: 'Enterprise-grade AI with data residency, SOC 2 compliance, and GDPR guarantees. Set AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_KEY to route all signal analysis through Azure instead of OpenAI direct.', provider: 'Microsoft', version: 'Azure OpenAI',
         lastSync: '', health: 0, endpoints: 4, dailyRequests: 0, monthlyRequests: 0, errorRate: 0, responseTime: 0,
         features: ['Azure Data Residency', 'SOC 2 Type II', 'GDPR Compliant', 'HIPAA Ready', 'Multi-Agent IDEA Framework', 'Entra Agent ID'],
         configuration: { syncFrequency: 'real-time', dataMapping: ['execution_briefs', 'signal_analysis', 'playbook_recommendations'] }

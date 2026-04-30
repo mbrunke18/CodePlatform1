@@ -81,7 +81,7 @@ export function Outro({ progress }: SceneProps) {
           className="flex flex-wrap justify-center gap-3 text-xs mb-10"
         >
           <span className="px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37]">
-            AI-Powered Signal Detection
+            Continuous Signal Detection
           </span>
           <span className="px-3 py-1 bg-[#00A8A8]/10 border border-[#00A8A8]/30 text-[#00A8A8]">
             Executive Summary Generator

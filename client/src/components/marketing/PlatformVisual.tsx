@@ -72,7 +72,7 @@ export default function PlatformVisual() {
     {
       letter: "I",
       name: "IDENTIFY",
-      subtitle: "AI Pattern Recognition",
+      subtitle: "Signal Pattern Recognition",
       color: "from-[#0A0F2E] to-[#141B45]",
       borderColor: "border-[#C9A84C]",
       bgColor: "bg-[#0A0F2E]",
@@ -81,7 +81,7 @@ export default function PlatformVisual() {
     {
       letter: "D",
       name: "DETECT",
-      subtitle: "AI Readiness Protocol Matching",
+      subtitle: "System Readiness Protocol Matching",
       color: "from-[#0A0F2E] to-[#3BAF8A]",
       borderColor: "border-[#2B8A6E]",
       bgColor: "bg-[#0A0F2E]",
@@ -90,7 +90,7 @@ export default function PlatformVisual() {
     {
       letter: "E",
       name: "EXECUTE",
-      subtitle: "AI Coordination",
+      subtitle: "Automated Coordination",
       color: "from-[#2B8A6E] to-teal-600",
       borderColor: "border-[#2B8A6E]",
       bgColor: "bg-[#2B8A6E]",
@@ -99,7 +99,7 @@ export default function PlatformVisual() {
     {
       letter: "A",
       name: "ADVANCE",
-      subtitle: "AI Learning Loop",
+      subtitle: "Continuous Learning Loop",
       color: "from-amber-500 to-orange-600",
       borderColor: "border-amber-500",
       bgColor: "bg-amber-500",

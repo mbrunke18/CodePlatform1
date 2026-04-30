@@ -324,7 +324,7 @@ export default function ScenarioTemplateLibrary({ organizationId }: { organizati
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-5 w-5 text-[#C9A84C]" />
-              AI-Powered Template Recommendations
+              Signal-Based Template Recommendations
               <Badge className="bg-[#0A0F2E] text-[#C9A84C]">Beta</Badge>
             </CardTitle>
           </CardHeader>

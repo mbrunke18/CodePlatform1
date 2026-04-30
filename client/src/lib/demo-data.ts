@@ -97,7 +97,7 @@ export const demoTriggers: DemoTrigger[] = [
     severity: 'medium',
     timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(), // 12 hours ago
     status: 'monitoring',
-    description: 'AI detected 15% increase in enterprise customer churn signals. Correlation with competitor pricing changes.',
+    description: 'System detected 15% increase in enterprise customer churn signals. Correlation with competitor pricing changes.',
     aiConfidence: 87,
     relatedScenario: 'customer-retention-crisis'
   },

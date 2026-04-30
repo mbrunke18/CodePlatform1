@@ -89,10 +89,10 @@ export default function WhatIfAnalyzer({ scenario }: WhatIfAnalyzerProps) {
       <CardHeader>
         <CardTitle className="text-gray-900 flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-[#2B8A6E]" />
-          AI-Powered What-If Analyzer
+          Signal-Based What-If Analyzer
         </CardTitle>
         <p className="text-gray-700 text-sm">
-          Adjust variables to see AI-predicted outcomes for your scenario
+          Adjust variables to see system-modeled outcomes for your scenario
         </p>
       </CardHeader>
       <CardContent className="space-y-6">

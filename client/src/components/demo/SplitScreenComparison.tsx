@@ -45,7 +45,7 @@ const stepData: Record<number, StepData> = {
   0: {
     title: 'Signal Detection',
     traditionalState: 'Unaware - Crisis brewing',
-    mState: 'Alert triggered - AI detected',
+    mState: 'Alert triggered - system detected',
     metrics: [
       {
         traditional: { value: '0 hours', sublabel: 'No awareness yet', trend: 'danger' },

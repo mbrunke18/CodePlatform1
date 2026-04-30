@@ -609,7 +609,7 @@ export default function InvestorResources() {
                       { layer: "Database", tech: "PostgreSQL / Drizzle ORM (Neon)", role: "Schema-as-code, serverless Postgres", status: "warning", note: "Shared dev/prod" },
                       { layer: "Auth", tech: "Replit OIDC + Passport.js", role: "Multi-tenant, role-based, session persistence", status: "production" },
                       { layer: "Real-time", tech: "Socket.IO WebSocket", role: "Live signal updates, collaborative execution console", status: "production" },
-                      { layer: "AI", tech: "OpenAI GPT-4o", role: "Threat synthesis, Readiness Protocol generation, outcome summaries", status: "production" },
+                      { layer: "AI", tech: "Azure OpenAI", role: "Threat synthesis, Readiness Protocol generation, outcome summaries", status: "production" },
                       { layer: "Deployment", tech: "Replit Autoscale + vaughnmartin.com", role: "Custom domain, auto-scaling", status: "warning", note: "Manual CI" },
                       { layer: "Monitoring", tech: "Datadog / Sentry", role: "Error tracking + performance monitoring — Q2 deployment", status: "warning", note: "Q2 Roadmap" },
                       { layer: "Testing", tech: "Playwright + Vitest", role: "E2E and unit test suite — Q2 deployment", status: "warning", note: "Q2 Roadmap" },

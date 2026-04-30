@@ -33,7 +33,7 @@ export default function NovaInnovations() {
   const innovationProjects = [
     {
       id: 'ai-automation',
-      name: 'AI-Powered Process Automation',
+      name: 'Automated Process Optimization',
       stage: 'development',
       priority: 'high',
       potential: 95,
@@ -372,7 +372,7 @@ export default function NovaInnovations() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${GOLD}`, padding: 24, background: "#fff" }}>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Priority Alignment</p>
-                    <p style={{ fontSize: 14, color: "#4B5563" }}>Focus on AI-Powered Process Automation and Predictive Market Intelligence for maximum ROI in Q1-Q2.</p>
+                    <p style={{ fontSize: 14, color: "#4B5563" }}>Focus on Automated Process Optimization and Predictive Market Intelligence for maximum ROI in Q1-Q2.</p>
                   </div>
                   <div style={{ border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: 24, background: "#fff" }}>
                     <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: NAVY, marginBottom: 8 }}>Resource Optimization</p>
@@ -397,7 +397,7 @@ export default function NovaInnovations() {
                   <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 40, maxWidth: 560 }}>AI models trained on 847 enterprise innovation cycles assess each project's probability of achieving target ROI within the stated timeline.</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
-                      { project: "AI-Powered Process Automation", confidence: 92, horizon: "6-9 months", roi: "$8.2M", risk: "Low" },
+                      { project: "Automated Process Optimization", confidence: 92, horizon: "6-9 months", roi: "$8.2M", risk: "Low" },
                       { project: "Predictive Market Intelligence", confidence: 87, horizon: "9-12 months", roi: "$6.7M", risk: "Low" },
                       { project: "Blockchain Supply Chain", confidence: 71, horizon: "12-18 months", roi: "$4.1M", risk: "Medium" },
                       { project: "Quantum-Resistant Security", confidence: 63, horizon: "24+ months", roi: "$12.4M", risk: "High" },

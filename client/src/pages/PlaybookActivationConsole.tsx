@@ -58,7 +58,7 @@ interface DemoTask {
   timeTarget?: string | null;    // From enrichedPhases: "90 sec", "2 min", etc.
   phase?: string | null;         // From enrichedPhases: phase name e.g. "DETECT & VALIDATE"
   decisionGate?: { question: string; yes: string; no: string } | null; // After last task of a phase
-  isAIGenerated?: boolean; // True for GPT-4o generated scenario-specific tasks
+  isAIGenerated?: boolean; // True for system-generated scenario-specific tasks
 }
 
 // ─── Brand constants (module-level so helper components can use them) ──────
@@ -433,7 +433,7 @@ export default function PlaybookActivationConsole() {
   });
   const roleAvailabilityFlags = Array.isArray(roleAvailabilityFlagsRaw) ? roleAvailabilityFlagsRaw : [];
 
-  // AI-generated Execution Brief — fetched once Readiness Protocol ID is known
+  // System-generated Execution Brief — fetched once Readiness Protocol ID is known
   const { data: briefData, isLoading: briefLoading } = useQuery<any>({
     queryKey: ['/api/playbooks', params?.playbookId, 'execution-brief', params?.triggerId],
     queryFn: () => {
@@ -574,7 +574,7 @@ export default function PlaybookActivationConsole() {
       // Use expert enrichedPhases tasks if available — otherwise fall back to domain templates
       const enrichedPhases = Array.isArray(playbook?.enrichedPhases) ? playbook.enrichedPhases : null;
       const baseTasks = generateDemoTasks(domain, enrichedPhases ?? undefined);
-      // Prepend GPT-4o scenario-specific tasks from the Execution Brief if available
+      // Prepend scenario-specific tasks from the Execution Brief if available
       const aiTasks: DemoTask[] = Array.isArray(brief?.scenarioTasks)
         ? brief.scenarioTasks.map((t: any, idx: number) => ({
             id: `ai-task-${idx}`,
@@ -584,11 +584,11 @@ export default function PlaybookActivationConsole() {
             assignedTo: null,
             assignedRole: t.role || null,
             timeTarget: t.timeTarget || null,
-            phase: 'AI SCENARIO INTELLIGENCE',
+            phase: 'SCENARIO INTELLIGENCE',
             isAIGenerated: true,
           }))
         : [];
-      // In pilot scope, use only AI-generated tasks for the core team
+      // In pilot scope, use only system-generated tasks for the core team
       setLocalDemoTasks(scope === 'pilot' ? [...aiTasks, ...baseTasks.slice(0, 5)] : [...aiTasks, ...baseTasks]);
     }
     const domainStakeholders = DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;

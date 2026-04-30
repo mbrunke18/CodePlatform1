@@ -210,7 +210,7 @@ export function LiveEnterpriseMetrics({ organizationId = "demo", className = "" 
         <div className="w-1 h-1 bg-gray-600" />
         <div className="flex items-center">
           <Brain className="w-4 h-4 mr-2 text-[#C9A84C]" />
-          AI Generated
+          System Generated
         </div>
       </div>
     </div>

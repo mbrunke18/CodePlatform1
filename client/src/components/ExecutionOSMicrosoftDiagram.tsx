@@ -107,7 +107,7 @@ export default function ExecutionOSMicrosoftDiagram() {
   // Microsoft ecosystem tiles (bottom section)
   const tileY = 386, tileH = 102;
   const tiles = [
-    { label: "Models",      items: ["Azure OpenAI", "GPT-4o", "Phi-4", "MAI-1"],         x:  40 },
+    { label: "Models",      items: ["Azure OpenAI", "Phi-4", "MAI-1", "Semantic Kernel"], x:  40 },
     { label: "Frameworks",  items: ["Semantic Kernel", "Magentic-One", "AutoGen"],        x: 230 },
     { label: "AI Agents",   items: ["Copilot Studio", "SharePoint AI", "Dynamics 365"],   x: 420 },
     { label: "Cloud",       items: ["Azure AI Services", "Azure Fabric", "Blob Storage"],  x: 610 },

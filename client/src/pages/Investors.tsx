@@ -466,7 +466,7 @@ export default function Investors() {
                 {/* 5 Integration tiles */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(170px,1fr))', gap: 12, marginBottom: 36 }}>
                   {[
-                    { name: 'Azure AI', color: '#0078D4', detail: 'GPT-4o + 4 IDEA agents' },
+                    { name: 'Azure AI', color: '#0078D4', detail: 'Azure OpenAI + 4 IDEA agents' },
                     { name: 'Microsoft Teams', color: '#6264A7', detail: 'War room + notifications' },
                     { name: 'Copilot Studio', color: '#5BA3E8', detail: 'Custom Readiness OS agent' },
                     { name: 'Microsoft Entra', color: '#107C10', detail: 'RBAC + identity governance' },
