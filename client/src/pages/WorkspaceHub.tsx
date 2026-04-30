@@ -437,6 +437,11 @@ export default function WorkspaceHub() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
           {/* Page header */}
+          <div className="mb-4">
+            <Link href="/dashboard" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#6B7280] hover:text-[#0A0F2E] transition-colors" style={{ textDecoration: 'none', letterSpacing: '0.1em' }}>
+              ← Dashboard
+            </Link>
+          </div>
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
             <div className="flex items-center gap-4">
               <div className="p-4" style={{ background: activeTabData.color, boxShadow: `0 8px 20px ${activeTabData.color}33` }}>

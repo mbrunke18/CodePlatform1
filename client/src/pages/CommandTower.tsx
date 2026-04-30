@@ -519,9 +519,14 @@ export default function CommandTower() {
             <span style={{ color: GOLD, fontWeight: 700 }}>Command Tower</span> — Live executive display. Monitors signals continuously, surfaces trigger detections, and tracks Readiness Protocol activations. No action executes without executive authorization.
           </span>
         </div>
-        <a href="/executive-brief" style={{ fontSize: 11, color: GOLD, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
-          What is this? →
-        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
+          <Link href="/mission-control" style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', fontWeight: 600, letterSpacing: '0.08em', textDecoration: 'none', whiteSpace: 'nowrap', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)', padding: '6px 14px', borderRadius: 0 }}>
+            ← Mission Control
+          </Link>
+          <a href="/executive-brief" style={{ fontSize: 11, color: GOLD, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            What is this? →
+          </a>
+        </div>
       </div>
 
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1400, margin: '0 auto', padding: '0 28px' }}>
