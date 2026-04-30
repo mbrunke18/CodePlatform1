@@ -160,7 +160,7 @@ export default function PlatformOverview() {
                 What Happens in 12 Minutes
               </h2>
               <p className="text-[#6B7280] max-w-2xl mx-auto">
-                From the moment a signal fires to the moment your organization is fully coordinated. Every step powered by AI, every decision made by humans.
+                From the moment a signal fires to the moment your organization is fully coordinated. Every step system-monitored, every decision made by humans.
               </p>
             </div>
 

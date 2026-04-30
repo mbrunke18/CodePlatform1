@@ -340,22 +340,11 @@ function HomepageNav() {
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
-                href="/manufacturing-demo"
-                onClick={() => trackCTA("nav_demo")}
-                style={{
-                  ...DM, background: "transparent", color: NAVY, fontWeight: 600, fontSize: 14,
-                  padding: "9px 18px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.03em",
-                  border: `1.5px solid rgba(10,15,46,0.25)`,
-                }}
-              >
-                ▶ Try the Demo
-              </Link>
-              <Link
                 href="/request-access"
                 onClick={() => trackCTA("nav")}
                 style={{
-                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 11,
-                  padding: "10px 14px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
+                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
+                  padding: "10px 20px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
                 }}
               >
                 Request Founding Partner Access

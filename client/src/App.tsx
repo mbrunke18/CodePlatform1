@@ -440,7 +440,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/founder-story" component={FounderStory} />
         <Route path="/team" component={Team} />
-        <Route path="/execution-os-video" component={ExecuteIQVideo} />
+        {renderRoutes(["/execution-os-video", "/readiness-video", "/platform-video"], ExecuteIQVideo)}
         <Route path="/why-execution-os-legacy" component={WhyExecuteIQ} />
         <Route path="/research" component={Research} />
         <Route path="/how-it-works" component={HowItWorks} />
@@ -449,10 +449,10 @@ function Router() {
         <Route path="/terms" component={TermsOfService} />
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
-        <Route path="/pilot-program" component={PilotProgram} />
+        {renderRoutes(["/pilot-program", "/founding-partner-program"], PilotProgram)}
         <Route path="/prospect-brief" component={ProspectBrief} />
         <Route path="/prospect-demo" component={ProspectDemo} />
-        <Route path="/pilot-onboarding" component={PilotOnboarding} />
+        {renderRoutes(["/pilot-onboarding", "/founding-partner-onboarding"], PilotOnboarding)}
         <Route path="/growth" component={Growth} />
         <Route path="/vs-consulting" component={VsConsulting} />
         <Route path="/vs-bcp" component={VsBCP} />
