@@ -373,10 +373,10 @@ export default function FounderStory() {
             <div style={{ fontSize: 9, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12, fontWeight: 700 }}>
               April 2026 · Peer Research Exchange
             </div>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px,1.8vw,20px)", color: "rgba(255,255,255,0.8)", fontStyle: "italic", lineHeight: 1.75, margin: "0 0 12px" }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px,1.8vw,20px)", color: "#0A0F2E", fontStyle: "italic", lineHeight: 1.75, margin: "0 0 12px" }}>
               "Preparation and system response start aligning consistently enough that decisions don't just get assigned — they stay held."
             </p>
-            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)" }}>
+            <div style={{ fontSize: 12, color: "#6B7280" }}>
               — Jayashree Venkataraman, Leadership Systems Advisor
             </div>
           </div>
