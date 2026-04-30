@@ -83,6 +83,14 @@ export default function FounderStory() {
         </div>
       </section>
 
+      {/* ── Reader Orientation ─────────────────────────────────────────────── */}
+      <div style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "16px 48px" }}>
+        <div style={{ maxWidth: 740, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Long Read</span>
+          <span style={{ fontSize: 12, color: "#6B7280" }}>The full thesis — the research, the 20-year observation, and the belief behind VaughnMartin. Estimated 12–15 minutes.</span>
+        </div>
+      </div>
+
       {/* ── Manifesto Body ────────────────────────────────────────────────── */}
       <main style={{ background: "#fff" }}>
         <div style={{ maxWidth: 740, margin: "0 auto", padding: "80px 32px" }}>

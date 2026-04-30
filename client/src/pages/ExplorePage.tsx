@@ -118,7 +118,7 @@ export default function ExplorePage() {
                 className="border-white/30 text-white hover:bg-white/10 hover:border-white px-10 py-8 text-sm font-bold rounded-none gap-3 uppercase tracking-widest transition-colors"
                 onClick={() => setLocation('/contact')}
               >
-                Apply for Pilot Program
+                Apply for Founding Partner Access
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -202,7 +202,7 @@ export default function ExplorePage() {
               <div className="bg-white rounded-none p-8 border border-[#C9A84C] relative">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C9A84C] text-[#0A0F2E] text-[9px] font-bold uppercase tracking-widest px-3 py-1">Recommended for F1000</div>
                 <div style={{ width: 48, height: 2, background: '#C9A84C', marginBottom: 24 }} />
-                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Apply for Pilot Program</h3>
+                <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Founding Partner Program</h3>
                 <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
                   A structured 90-day partnership for Fortune 1000 companies ready to validate execution velocity at enterprise scale.
                 </p>

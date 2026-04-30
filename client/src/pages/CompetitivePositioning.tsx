@@ -206,7 +206,7 @@ export default function CompetitivePositioning() {
                 See 12-Minute Activation
               </Button>
               <Button size="lg" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)", background: "transparent" }} className="hover:bg-white/10" onClick={() => setLocation('/contact')}>
-                Start Pilot Program
+                Apply for Founding Partner Access
               </Button>
             </div>
           </div>
@@ -575,11 +575,11 @@ export default function CompetitivePositioning() {
               Stop Managing. Start Executing.
             </h2>
             <p style={{ fontSize: 17, color: MUTED, marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>
-              Join the pilot program and see what a 12-minute strategic response looks like for your organization.
+              Join the Founding Partner Program and see what a 12-minute strategic response looks like for your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" style={{ background: NAVY, color: "#fff", fontWeight: 700 }} className="hover:opacity-90" onClick={() => setLocation('/contact')}>
-                Request Pilot Access
+                Request Founding Partner Access
               </Button>
               <Button size="lg" style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontWeight: 600 }} className="hover:bg-white" onClick={() => setLocation('/try-demo')}>
                 Try Interactive Demo

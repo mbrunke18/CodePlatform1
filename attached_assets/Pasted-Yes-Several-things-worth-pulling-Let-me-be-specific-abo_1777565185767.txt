@@ -1,0 +1,112 @@
+Yes. Several things worth pulling. Let me be specific about what has real value versus what is just adjacent.
+
+**What belongs in the product and website**
+
+**One. The 95 to 5 stat with BCG attribution.**
+
+"95 percent of companies are piloting AI. Only 5 percent are capturing real value at scale." This is BCG research with Fortune 1000 client data behind it. That is a different category of credibility than a LinkedIn post or a practitioner observation. It belongs on your website with proper attribution.
+
+Where exactly. The Why Execution OS page problem statement section. The InvestorLanding problem framing. The Executive Brief opening. The homepage MissingLayerSection or ProblemSection.
+
+The exact copy to use anywhere on the platform.
+
+"BCG research across Fortune 1000 clients found 95 percent of companies are piloting AI but only 5 percent are capturing real value at scale. The difference is not the technology. It is the operating model."
+
+That sentence with BCG attribution is a credible third-party validation of your entire market thesis. It is stronger than your own assertion of the same claim.
+
+**Two. The 30 to 70 split.**
+
+"Becoming AI-first is 30 percent technology and 70 percent people and organization." BCG client data. This belongs alongside your existing McKinsey, MIT, and WEF research citations in the CredibilitySection on the homepage and on the Research page.
+
+Where exactly. Add to the existing research citation cards on the Research page and the CredibilitySection on the homepage alongside the McKinsey 2025 coordination cost data and MIT Sloan execution gap research.
+
+**Three. The operating model redesign language.**
+
+"Most companies are layering AI onto operating models built for a purely human workforce with predefined processes, fixed handoffs, and decision bottlenecks." That is BCG's client-validated description of the problem you solve. It is more credible than you describing the same problem because it comes from external research.
+
+Where exactly. The Why Execution OS competitive analysis page. The problem framing paragraph. Add it as a research anchor that validates the problem before you describe your solution.
+
+**Four. The Sophie Strelczyk connection itself.**
+
+If Sophie engages with your comment and accepts the connection request, she becomes a potential fifth named researcher validator. A BCG Principal who co-authored a formal study on AI-first operating models publicly engaging with your thesis is a different category of validator than a LinkedIn practitioner. Watch how the thread develops before deciding whether to add her to the validator section.
+
+**What does NOT belong in the product despite being adjacent**
+
+The energy company and global bank case studies she cites. Those are BCG client confidential data. You cannot reference them in your platform materials even though they are published in a BCG study. Referencing specific BCG client outcomes in your own commercial materials creates IP risk. Use the headline statistics instead which are published publicly.
+
+The "agents figure out the path" framing. That is BCG's language for their agentic AI thesis. It partially conflicts with your executive authority preserved architecture. Do not import that framing into your platform.
+
+**The one thing worth reading carefully before the podcast**
+
+Pull the full BCG study Sophie linked before May 18. Not to quote it on the podcast. To understand what Fortune 1000 CEOs are hearing from BCG right now about AI-first operating models. Vishal's audience will have BCG relationships. When you walk through the Colonial Pipeline or Change Healthcare scenario on the podcast you can reference the BCG research as the market-level evidence for why the operating model gap exists, then show your platform as the specific architecture that closes it at the strategic trigger layer.
+
+That framing. BCG identified the problem at scale. You built the answer for the specific layer where it is most costly. That is a compelling podcast arc for a cybersecurity audience.
+
+**The specific copy blocks for implementation**
+
+**For the Research page and CredibilitySection homepage**
+
+```
+BCG AI-First Operating Model Research · 2026
+Fortune 1000 client study across multiple industries and geographies.
+
+"95 percent of companies are piloting AI. 
+Only 5 percent are capturing real value at scale. 
+The difference is not the technology. It is the org design."
+
+Becoming AI-first is 30 percent technology, 
+70 percent people and organization.
+
+— BCG, AI-First Org & Operating Model Study, 2026
+Co-authored by Sophie Strelczyk, Nina Kataeva, 
+Christoph Hilberath, Vinciane Beauchene, Kevin Kelley
+```
+
+**For the Why Execution OS page problem statement**
+
+```
+BCG research across Fortune 1000 clients confirms the pattern: 
+most companies are layering AI onto operating models built 
+for a purely human workforce — predefined processes, 
+fixed handoffs, and decision bottlenecks. 
+Then wondering why the ROI stalls.
+
+95 percent are piloting. 5 percent are capturing value at scale. 
+The difference is not the technology. It is the operating model.
+
+Readiness OS is the coordination infrastructure 
+that redesigns the operating model at the strategic trigger layer — 
+the specific layer where the gap is most visible and most costly.
+```
+
+**For the InvestorLanding problem framing**
+
+```
+The market validation is now coming from multiple independent sources.
+
+McKinsey 2025: Coordination failures cost Fortune 1000 companies 
+hundreds of billions annually.
+
+BCG 2026: 95 percent of companies piloting AI. 
+Only 5 percent capturing value at scale. 
+The difference is the operating model.
+
+MIT Sloan: The execution gap between strategy and delivery 
+is the defining organizational challenge of the decade.
+
+Three of the world's leading research organizations 
+arrived at the same structural conclusion independently. 
+The operating model is the constraint.
+```
+
+That three-source convergence block on the InvestorLanding page is extremely strong. McKinsey. BCG. MIT Sloan. Three independent research organizations naming the same problem from different angles. That is the kind of validation that makes an investor sit up.
+
+**Priority order for implementation**
+
+This weekend. Add the BCG 95 to 5 stat to the Research page and CredibilitySection. Those are text additions following existing card patterns.
+
+Next week. Update the Why Execution OS problem statement with the BCG framing. Update the InvestorLanding three-source convergence block.
+
+Before speedrun submission. Make sure the InvestorLanding convergence block is live so the reviewer who clicks through the demo link sees it.
+
+Do you want the full JSX implementation blocks for these or just the copy for now?

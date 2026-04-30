@@ -504,6 +504,26 @@ export default function CommandTower() {
 
       <ExecutionStageGuide variant="banner" />
 
+      {/* ── Visitor Context Banner ─────────────────────────────────────────── */}
+      <div style={{
+        position: 'relative', zIndex: 2,
+        borderBottom: '1px solid rgba(201,168,76,0.2)',
+        background: 'rgba(201,168,76,0.06)',
+        padding: '10px 28px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        gap: 16,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: GOLD, flexShrink: 0 }} />
+          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', lineHeight: 1.5 }}>
+            <span style={{ color: GOLD, fontWeight: 700 }}>Command Tower</span> — Live executive display. Monitors signals continuously, surfaces trigger detections, and tracks Readiness Protocol activations. No action executes without executive authorization.
+          </span>
+        </div>
+        <a href="/executive-brief" style={{ fontSize: 11, color: GOLD, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+          What is this? →
+        </a>
+      </div>
+
       <div style={{ position: 'relative', zIndex: 1, maxWidth: 1400, margin: '0 auto', padding: '0 28px' }}>
 
         {/* ── TOP HEADER BAR ──────────────────────────────────────────────── */}

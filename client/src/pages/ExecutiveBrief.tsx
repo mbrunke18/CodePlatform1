@@ -77,7 +77,7 @@ export default function ExecutiveBrief() {
   useEffect(() => {
     updatePageMetadata({
       title: "Executive Brief — Readiness OS by VaughnMartin",
-      description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and pilot program. Built for Fortune 1000 board-level conversations.",
+      description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and Founding Partner Program. Built for Fortune 1000 board-level conversations.",
       ogTitle: "Executive Brief — VaughnMartin Readiness OS",
       ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic readiness platform built for Fortune 1000 enterprises.",
     });
@@ -361,7 +361,7 @@ export default function ExecutiveBrief() {
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
               <div style={{ width: 24, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Fortune 1000 Pilot Program</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Founding Partner Program</span>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
               <div>
@@ -381,7 +381,7 @@ export default function ExecutiveBrief() {
                 </div>
                 <Link href="/request-access">
                   <Button style={{ background: NAVY, color: "#fff", fontWeight: 700 }}>
-                    View Full Pilot Program Details <ArrowRight className="w-4 h-4 ml-2" />
+                    View Founding Partner Details <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
               </div>

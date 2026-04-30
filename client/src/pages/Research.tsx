@@ -596,8 +596,22 @@ export default function Research() {
           </div>
         </section>
 
-        {/* Hardeep Kaur — Validator */}
+        {/* April 2026 Validation Header */}
         <section style={{ background: "#F8F7F4", padding: "48px 48px 0" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto", marginBottom: 32 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 32, height: 1.5, background: "#C9A84C" }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C" }}>April 2026 · Independent Validation</span>
+              <div style={{ flex: 1, height: 1, background: "#E8E4DC" }} />
+            </div>
+            <p style={{ fontSize: 13, color: "#6B7280", marginTop: 10, lineHeight: 1.6 }}>
+              The following exchanges occurred publicly on LinkedIn in April 2026 — practitioners from enterprise strategy and execution independently confirming the thesis.
+            </p>
+          </div>
+        </section>
+
+        {/* Hardeep Kaur — Validator */}
+        <section style={{ background: "#F8F7F4", padding: "0 48px 0" }}>
           <div style={{ maxWidth: 860, margin: "0 auto" }}>
             <div style={{
               background: "#fff",

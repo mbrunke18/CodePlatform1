@@ -78,7 +78,7 @@ function AccessGate() {
               fontSize: '0.875rem', fontWeight: 600, cursor: 'pointer',
             }}
           >
-            Apply for Full Pilot Program
+            Apply for Founding Partner Access
           </button>
         </div>
         <p style={{ color: '#9CA3AF', fontSize: '0.75rem', marginTop: 20 }}>

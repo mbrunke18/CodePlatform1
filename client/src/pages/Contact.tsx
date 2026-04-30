@@ -37,10 +37,10 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Request Pilot Access - Readiness OS Now in Pilot",
-      description: "Join Readiness OS' exclusive pilot program. Limited to 10 Fortune 1000 companies for 90-day validation partnership. Transform strategic execution from days to minutes.",
-      ogTitle: "Request Pilot Access - Readiness OS Pilot Program",
-      ogDescription: "Limited pilot opportunity for Fortune 1000 companies. 90-day validation partnership. Now accepting applications.",
+      title: "Founding Partner Program — Readiness OS | VaughnMartin",
+      description: "Apply for Readiness OS' Founding Partner Program. Limited to 10 Fortune 1000 companies for a 90-day validation partnership. Transform strategic execution from 30 days to 12 minutes.",
+      ogTitle: "Founding Partner Program — Readiness OS by VaughnMartin",
+      ogDescription: "Limited to 10 Fortune 1000 partners. 90-day validation. Apply for founding access.",
     });
   }, []);
 
@@ -96,11 +96,11 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Now in Pilot</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Founding Partner Program</span>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
-              Request <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Pilot Access</em>
+              Request <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Founding Partner Access</em>
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
               Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution 
@@ -283,7 +283,7 @@ export default function Contact() {
 
                     <div style={{ background: "#F8F7F4", borderLeft: `4px solid ${GOLD}`, padding: "24px" }}>
                       <p className="text-xs text-slate-700 leading-relaxed">
-                        <strong className="text-[#0A0F2E]">Note:</strong> Readiness OS is in pre-launch. This pilot program is designed to validate 12-minute execution goals in real-world environments. Selection is limited to 10 companies.
+                        <strong className="text-[#0A0F2E]">Note:</strong> Readiness OS is in pre-launch. The Founding Partner Program is a 90-day validation partnership designed to confirm 12-minute execution goals in a real enterprise environment. Selection is limited to 10 companies.
                       </p>
                     </div>
 
@@ -291,7 +291,7 @@ export default function Contact() {
                       type="submit"
                       className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-sm py-8 rounded-none"
                     >
-                      Submit Pilot Request
+                      Submit Partner Application
                     </Button>
                   </form>
                 </Form>

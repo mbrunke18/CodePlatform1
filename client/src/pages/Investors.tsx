@@ -127,7 +127,7 @@ const industryProblems = [
 const competitiveAdvantages = [
   {
     title: "18-Month Head Start",
-    description: "170 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already done for customers.",
+    description: "170 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already pre-staged for Fortune 1000 enterprises.",
     icon: Zap,
   },
   {
