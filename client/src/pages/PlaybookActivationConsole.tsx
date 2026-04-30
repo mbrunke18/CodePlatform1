@@ -1861,6 +1861,9 @@ export default function PlaybookActivationConsole() {
                           </div>
 
                           {/* Three ownership signals */}
+                          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 13, fontStyle: "italic", color: "rgba(255,255,255,0.5)", lineHeight: 1.65, marginBottom: 16 }}>
+                            The outcome is not only decided before the moment — it is validated in it. The system either confirms the original owner or redistributes ownership in the first moments of challenge. This gate measures which happened.
+                          </div>
                           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>
                             Three Signals That Preparation Produced Ownership
                           </div>
@@ -1879,8 +1882,8 @@ export default function PlaybookActivationConsole() {
                             },
                             {
                               n: "03",
-                              title: "Response personalized to this owner's specific decision",
-                              sub: "Not a generic role assignment — a specific person's specific decision under specific conditions.",
+                              title: "In the first moment of challenge, the system reinforced the assigned owner",
+                              sub: "Not quietly redistributed. The preparation either held ownership or surfaced the redistribution — both outcomes are recorded.",
                               pass: ownershipRate >= 80,
                             },
                           ].map(sig => (

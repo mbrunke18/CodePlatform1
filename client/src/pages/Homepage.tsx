@@ -611,8 +611,11 @@ function HeroSection() {
                 Before the Trigger Fires.
               </h1>
 
-              <p style={{ ...DM, color: "rgba(255,255,255,0.58)", fontSize: "clamp(14px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 48px" }}>
+              <p style={{ ...DM, color: "rgba(255,255,255,0.58)", fontSize: "clamp(14px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
                 30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — not after the trigger, before it.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(14px,1.1vw,17px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
+                When you build it before the trigger fires, the twelve minutes is just the moment the preparation shows up.
               </p>
 
               {/* CTAs — horizontal */}
@@ -1111,6 +1114,9 @@ function AthletePreparationSection() {
               <p style={{ ...DM, fontSize: 15, color: MUTED_LIGHT, lineHeight: 1.75, marginBottom: 28 }}>
                 Most Fortune 1000 organizations do the opposite. They perform when the trigger fires and prepare for nothing. Every response begins from scratch — who needs to be in the room, what the plan is, who owns what. The mobilization cycle alone takes 30 days.
               </p>
+              <p style={{ ...DM, fontSize: 15, fontWeight: 700, color: NAVY, lineHeight: 1.6, marginBottom: 20 }}>
+                Thirty days is not a performance problem. It is an architecture problem.
+              </p>
               <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24, marginBottom: 0 }}>
                 <p style={{ ...GEO, fontSize: 20, fontWeight: 700, color: NAVY, lineHeight: 1.4, marginBottom: 0 }}>
                   Readiness OS is the preparation infrastructure that makes the organizational response ready before the trigger arrives.
@@ -1164,7 +1170,7 @@ function IDEASection() {
   const cards = [
     { letter: "I", title: "Identify", subtitle: "170 Pre-Staged Readiness Protocols",        body: "Every scenario across all 9 strategic domains is fully mapped before the trigger fires. Roles, tasks, documents, and budget are already assigned — waiting for the moment. Nothing is improvised.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "D", title: "Detect",   subtitle: "248+ Signals, Every 15 Minutes",  body: "AI monitors 248+ signals around the clock and knows exactly which Readiness Protocol matches each pattern. The trigger is identified — and the response is ready — before your leadership team finishes their first email.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
-    { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
+    { letter: "E", title: "Execute",  subtitle: "12-Minute Full Deployment",        body: "One executive authorization. The organization moves. Roles distributed, tasks assigned, war rooms opened — simultaneously, to every stakeholder. By the time the first alignment call would have been scheduled, you're already executing. The executive at the decision moment has four real choices: run the staged response as built, audible to a different staged response, customize the response on the fly, or choose to do nothing.", accent: TEAL, wm: "rgba(43,138,110,0.06)" },
     { letter: "A", title: "Advance",  subtitle: "Institutional Memory, Built In",   body: "Every activation writes itself into institutional memory. What worked, what didn't, what to pre-stage differently next time — each execution makes the next response faster, sharper, and more decisive.", accent: GOLD, wm: "rgba(201,168,76,0.06)" },
   ];
 

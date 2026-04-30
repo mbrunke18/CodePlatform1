@@ -596,6 +596,58 @@ export default function Research() {
           </div>
         </section>
 
+        {/* Hardeep Kaur — Validator */}
+        <section style={{ background: "#F8F7F4", padding: "48px 48px 0" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+            <div style={{
+              background: "#fff",
+              border: "1px solid #E8E4DC",
+              borderLeft: "4px solid #C9A84C",
+              borderRadius: "2px",
+              padding: "32px",
+              marginBottom: "24px"
+            }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#0A0F2E", marginBottom: 6, fontFamily: "'Barlow', sans-serif", letterSpacing: "0.04em" }}>
+                Hardeep Kaur
+              </div>
+              <div style={{ fontSize: 12, color: "#6B7280", marginBottom: 20, fontFamily: "'Barlow', sans-serif" }}>
+                Strategy Development &amp; Execution Leader · Pharmaceutical Industry · Yale Women Leadership
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, color: "#0A0F2E", fontStyle: "italic", lineHeight: 1.7, margin: "0 0 16px" }}>
+                "Your point on architecture really resonates. The gap lies in decision-making, ownership, and accountability. The governance structures are merely scratching the surface while the real issues around how work happens and how information flows remain untouched."
+              </p>
+              <div style={{ fontSize: 10, color: "#C9A84C", letterSpacing: "0.2em", textTransform: "uppercase" as const, fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}>
+                LinkedIn Exchange · April 2026
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Jayashree Venkataraman — Research Contribution */}
+        <section style={{ background: "#F8F7F4", padding: "0 48px 48px" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+            <div style={{
+              background: "#0A0F2E",
+              borderLeft: "4px solid #C9A84C",
+              borderRadius: "2px",
+              padding: "32px",
+            }}>
+              <div style={{ fontSize: 10, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 16, fontFamily: "'Barlow', sans-serif", fontWeight: 700 }}>
+                Research Contribution · Execution Reliability
+              </div>
+              <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, color: "rgba(255,255,255,0.9)", fontStyle: "italic", lineHeight: 1.75, margin: "0 0 20px" }}>
+                "Preparation and system response start aligning consistently enough that decisions don't just get assigned — they stay held. The outcome is not only decided before the moment, but also validated in it."
+              </p>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", fontFamily: "'Barlow', sans-serif" }}>
+                Jayashree Venkataraman
+              </div>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", fontFamily: "'Barlow', sans-serif", marginTop: 4 }}>
+                Leadership Systems Advisor · Execution Reliability Advisor · Co-Founder NIYA
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Platform Reality Callout */}
         <section style={{ background: "#F8F7F4", padding: "64px 48px", borderTop: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 1000, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>

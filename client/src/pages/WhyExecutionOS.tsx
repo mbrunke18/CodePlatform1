@@ -153,6 +153,26 @@ export default function WhyExecutionOS() {
     <PageLayout>
       <div style={{ background: "#F8F7F4" }}>
 
+        {/* ── DECISION RIGHTS FRAMING ───────────────────── */}
+        <section style={{ background: "#F8F7F4", padding: "64px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 760, margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(22px,2.5vw,30px)", fontWeight: 700, color: NAVY, lineHeight: 1.3, marginBottom: 28 }}>
+              Decision rights migrate quietly.
+            </p>
+            <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
+              The executive layer still owned authority by org chart. The systems owned authority by workflow. Nobody said that out loud because nobody was tracking the migration as a single phenomenon.
+            </p>
+            <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
+              AI is now accelerating this pattern. Outputs become defaults. Defaults become actions. By the time someone asks who approved this, it is already done.
+            </p>
+            <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24 }}>
+              <p style={{ fontSize: 16, fontWeight: 600, color: NAVY, lineHeight: 1.7, margin: 0 }}>
+                This is not an AI problem. It is an operating model problem that AI is making faster and more visible. The fix is putting executive authorization back into the architecture as a required threshold the system cannot cross without it.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* ── HERO ──────────────────────────────────────── */}
         <section style={{ background: NAVY, padding: "80px 48px 64px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />

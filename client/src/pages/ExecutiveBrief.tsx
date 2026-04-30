@@ -171,6 +171,15 @@ export default function ExecutiveBrief() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
               <div>
+                <p style={{ fontSize: 15, fontWeight: 700, color: NAVY, lineHeight: 1.6, marginBottom: 16 }}>
+                  Thirty days is not a performance problem. It is an architecture problem.
+                </p>
+                <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8, marginBottom: 16 }}>
+                  The executive layer still owned authority by org chart. The systems owned authority by workflow. The decision rights migrated one approval threshold at a time until what was true on paper no longer matched what was true in practice.
+                </p>
+                <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
+                  AI is accelerating this pattern. The fix is putting executive authorization back into the architecture as a required threshold the system cannot cross without it.
+                </p>
                 <h2 style={{ ...CG, fontSize: 32, fontWeight: 700, color: NAVY, lineHeight: 1.15, marginBottom: 16 }}>
                   Every AI vendor bolted intelligence onto the old model.
                 </h2>
