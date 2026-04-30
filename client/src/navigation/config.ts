@@ -167,17 +167,10 @@ export const navigationConfig: NavigationConfig = {
         },
         {
           id: 'prism-insights',
-          label: 'PRISM Insights',
+          label: 'Prism Insights',
           path: '/prism-insights',
           icon: '◈',
           description: 'Pattern recognition scoring and insight mapping across all monitored domains'
-        },
-        {
-          id: 'intelligence-suite',
-          label: 'Intelligence Suite',
-          path: '/ai-intelligence-suite',
-          icon: '🔬',
-          description: 'Cross-domain intelligence across all active and emerging signals'
         }
       ]
     },
@@ -378,13 +371,6 @@ export const navigationConfig: NavigationConfig = {
           path: '/strategic-innovation',
           icon: '🚀',
           description: 'Innovation pipeline management and opportunity scoring'
-        },
-        {
-          id: 'cultural-analytics',
-          label: 'Cultural Analytics',
-          path: '/echo-cultural-analytics',
-          icon: '🌐',
-          description: 'Organizational resilience indicators — workforce dynamics and execution culture health'
         },
         {
           id: 'enterprise-metrics',

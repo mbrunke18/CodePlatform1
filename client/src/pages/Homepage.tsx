@@ -326,7 +326,7 @@ function HomepageNav() {
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
-            <Link href="/manufacturing-demo" style={{
+            <Link href="/12-minute-experience" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
               background: "rgba(201,168,76,0.10)",
@@ -335,7 +335,7 @@ function HomepageNav() {
             }}>
               <span style={{ color: GOLD, fontSize: 9 }}>▶</span>See It Work
             </Link>
-            <Link href="/why-execution-os" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
+            <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>The Manifesto</Link>
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -354,8 +354,8 @@ function HomepageNav() {
                 href="/request-access"
                 onClick={() => trackCTA("nav")}
                 style={{
-                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14,
-                  padding: "10px 22px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em",
+                  ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 11,
+                  padding: "10px 14px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em", whiteSpace: "nowrap",
                 }}
               >
                 Request Founding Partner Access
@@ -393,8 +393,8 @@ function HomepageNav() {
           </button>
           {[
             { label: "What We Do",    href: "/platform-overview" },
-            { label: "See It Work",   href: "/manufacturing-demo", highlight: true },
-            { label: "The Proof",     href: "/why-execution-os" },
+            { label: "See It Work",   href: "/12-minute-experience", highlight: true },
+            { label: "The Proof",     href: "/the-proof" },
             { label: "Investors",     href: "/investors" },
           ].map(item =>
             <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} style={{

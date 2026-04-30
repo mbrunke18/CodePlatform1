@@ -76,7 +76,7 @@ const SEARCH_ITEMS = [
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
   { label: 'Request Founding Partner Access', path: '/request-access', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
-  { label: 'Why Readiness OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },
+  { label: 'Why Readiness OS?', path: '/the-proof', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
   { label: 'Investor Presentation', path: '/investor-presentation', category: 'Investors', icon: Presentation },
 ];
@@ -124,7 +124,7 @@ export default function StandardNav() {
         { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
-        { label: "Why Readiness OS", path: "/why-execution-os", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
+        { label: "Why Readiness OS", path: "/the-proof", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
     },
     {
@@ -167,7 +167,7 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
-        { label: "The 12-Minute Experience", path: "/manufacturing-demo", icon: Rocket, description: "$2.1B of committed orders at risk. Primary supplier files bankruptcy. Watch full Readiness Protocol deployment in real time — no login required.", featured: true },
+        { label: "The 12-Minute Experience", path: "/12-minute-experience", icon: Rocket, description: "Watch a full Readiness Protocol activate from trigger detection to task assignment — in 12 minutes. No login required.", featured: true },
         { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives" },
         { label: "Real-Company Scenarios", path: "/try-demo", icon: Play, description: "HPE · Target · Clorox · ServiceNow · Alphabet — live execution simulations" },
       ],
@@ -186,7 +186,7 @@ export default function StandardNav() {
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
-    { label: "Why Readiness OS?", path: "/why-execution-os", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
+    { label: "Why Readiness OS?", path: "/the-proof", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
     { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "Board-ready one-pager — thesis, 3,600× metric, ROI case", featured: true },
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
     { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
@@ -328,7 +328,7 @@ export default function StandardNav() {
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
               { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
               { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Identify · Detect · Execute · Advance' },
-              { path: '/why-execution-os', icon: Shield, label: 'Why Readiness OS', sub: 'The 30-day mobilization gap — and how we close it' },
+              { path: '/the-proof', icon: Shield, label: 'Why Readiness OS', sub: 'The 30-day mobilization gap — and how we close it' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />
             {megaColHeading("Core Capabilities")}
@@ -393,7 +393,7 @@ export default function StandardNav() {
           <div style={{ padding: '16px 14px 16px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
             {megaColHeading("The Case for Readiness OS")}
             {[
-              { path: '/why-execution-os', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
+              { path: '/the-proof', icon: Scale, label: 'Why Readiness OS?', sub: 'vs. Copilot, ServiceNow, Palantir, Everbridge — the honest answer', featured: true },
               { path: '/executive-brief', icon: FileText, label: 'Executive Brief', sub: 'Board-ready one-pager — thesis, 3,600× metric, ROI case', featured: true },
               { path: '/research', icon: FileText, label: 'Research & Validation', sub: 'McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS' },
               { path: '/vs-consulting', icon: Scale, label: 'Why Not Consulting?', sub: 'McKinsey charges $300K–$500K for PDFs. We deliver execution.' },
@@ -410,7 +410,7 @@ export default function StandardNav() {
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
-                onClick={() => navigateTo('/manufacturing-demo')}
+                onClick={() => navigateTo('/12-minute-experience')}
                 style={{ background: NAVY, borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'background 0.12s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
@@ -727,13 +727,13 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   onClick={() => navigateTo("/request-access")}
-                  className="h-9 px-3 text-sm font-bold"
-                  style={{ background: GOLD, color: NAVY, border: 'none' }}
+                  className="h-9 px-4 text-sm font-bold"
+                  style={{ background: GOLD, color: NAVY, border: "none" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
-                  Request Founding Partner Access
+                  Request Access
                 </Button>
                 <Button
                   onClick={() => navigateTo("/command-center")}
@@ -803,12 +803,12 @@ export default function StandardNav() {
                 <Button
                   onClick={() => navigateTo("/request-access")}
                   className="h-9 px-4 text-sm font-bold"
-                  style={{ background: GOLD, color: NAVY, border: 'none' }}
+                  style={{ background: GOLD, color: NAVY, border: "none" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
-                  Request Founding Partner Access
+                  Request Access
                 </Button>
                 <Button
                   variant="ghost"
