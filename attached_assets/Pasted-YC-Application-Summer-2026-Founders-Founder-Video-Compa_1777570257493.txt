@@ -1,0 +1,175 @@
+YC Application
+Summer 2026
+Founders
+Founder Video
+Company
+Progress
+Idea
+Equity
+Curious
+Batch Preference
+Founders
+Martin Brunke
+check_circle
+Profile complete
+Edit profile
+arrow_forward
++ Add a co-founder
+Who writes code, or does other technical work on your product? Was any of it done by a non-founder? Please explain.
+I wrote code throughout, feature design, and technical decision-making. The build relied extensively on vibe coding — Replit Agent (Claude-based) as the primary AI coding assistant — to translate product vision into 193 production pages and a full-stack platform. Martin wrote code throughout, but the scale and speed of the build was only possible by directing an AI coding agent with deep product intent on every feature. No non-founder contributors. All architecture, specifications, and product decisions were made solely by the founder.
+Are you looking for a cofounder?
+Yes — an equity-based commercial co-founder with enterprise sales DNA. YC is the structural moment to find them.
+Founder Video
+Please record a one minute video introducing the founder(s).*
+Read more about the video here. Make sure the file does not exceed 100 MB.
+
+Drop here or browse
+Company
+Company name*
+VaughnMartin
+Describe what your company does in 50 characters or less.*
+We replaced 30-day mobilization with 12 minutes
+Company URL, if any
+https://vaughnmartin.com/
+If you have a demo, attach it below.
+Anything that shows us how the product works. Please limit to 3 minutes / 100 MB.
+
+
+Drop here or browse
+Please provide a link to the product, if any.
+https://vaughnmartin.com/
+If login credentials are required for the link above, enter them here.
+
+username / password
+What is your company going to make? Please describe your product and what it does or will do.
+VaughnMartin builds Readiness OS — the operating model layer that replaces the 30-day mobilization cycle inside Fortune 1000 enterprises with 12-minute execution.
+
+When a strategic trigger fires today — activist campaign, regulatory action, cyber incident, M&A disruption — a Fortune 1000 spends weeks just figuring out who should be in the room before execution begins. We replaced that 30 day cycle with 12 minute-execution.
+
+Readiness OS does this through 170 pre-staged Readiness Protocols: pre-assigned tasks, pre-authorized decision rights, pre-staged communications, and a live signal pipeline monitoring 248 data points every 15 minutes across 221 trigger patterns. When a trigger fires, the response deploys. Nothing is improvised.
+
+The platform sits above the Microsoft stack every enterprise already owns — Teams, Azure, Copilot, M365 — and provides the coordination infrastructure no vendor has built. We don't replace any of those tools. We give enterprises the operating model to use them when it matters most.
+
+The insight came from 20 years inside Fortune 1000 organizations across 7 industries, and 5 years coaching at Stanford, where I watched championship football programs do in 40 seconds what Fortune 1000 boards take 30 days to attempt: coordinate a pre-staged response to a known trigger under full pressure. The infrastructure existed on the practice field. Nobody built it for the boardroom.
+Where do you live now, and where would the company be based after YC?
+Use the format City A, Country A / City B, Country B
+
+Louisville, USA / San Francisco, USA
+Explain your decision regarding location.
+San Francisco is the right base for a company defining a new enterprise software category. The density of Fortune 1000 decision-makers, enterprise investors, and senior commercial talent in the Bay Area accelerates every dimension of what we are building — pilot introductions, co-founder search, and category definition. YC's network makes San Francisco the obvious choice
+Progress
+How far along are you?
+The platform is fully built and live in production at vaughnmartin.com — not a prototype, not a demo environment. 193 pages. Full-stack. Real-time signal pipeline processing every 15 minutes. Command Tower, Executive War Room, Shadow Simulator, Regulatory Calendar, Integration Hub — all operational.
+
+Key metrics live today:
+
+170 Readiness Protocols across 3 strategic domains
+221 trigger patterns monitored
+248 signal data points, 15-minute scan cycles
+12-Minute Test Drive — a public simulation any investor can run before the meeting ends (vaughnmartin.com/12-minute-experience)
+No paying customers yet. Founding Partner pilot program is open. Sector focus: Gaming, Finance, Manufacturing. First pilot target ACV: $75K per 90-day deployment.
+
+Thesis independently validated by Jim Highsmith (co-author, Agile Manifesto), Dr. Kerry Huang (Fortune 50 AVP, 408-firm governance study, public LinkedIn repost), Scott DeJarnette PhD (cybersecurity strategist, triple CCIE), and Dr. Kulneet Suri (Harvard/Oxford behavioral scientist)
+How long have each of you been working on this? How much of that has been full-time? Please explain.
+I have been building Readiness OS for approximately three years alongside full-time employment — nights, weekends, and every available hour. The research phase spanned 20 years of Fortune 1000 observation; the active build began in earnest in 2023. The platform shipped to production in January 2026. I built this in parallel with professional obligations, not after leaving them — which is why vibe coding was essential to reaching 193 pages as a solo founder while employed. The commitment has been total even if the hours weren't exclusive.
+What tech stack are you using, or planning to use, to build this product? Include AI models and AI coding tools you use.
+Frontend: React 18, TypeScript, Vite, Tailwind CSS, Radix UI/shadcn, TanStack Query v5, Framer Motion, Wouter
+Backend: Node.js, Express, TypeScript
+Database: PostgreSQL (Neon serverless) with Drizzle ORM
+Real-time: Socket.IO WebSocket server
+AI: Azure OpenAI (primary), OpenAI GPT-4o (fallback) — multi-agent IDEA Framework pipeline
+Auth: Replit OIDC with Passport.js, role-based access control
+Infrastructure: Replit deployments
+AI coding tools used in build: Replit Agent (Claude-based) — used extensively throughout the entire build
+Optional: attach a coding agent session you're particularly proud of.
+This is an experimental question for the Summer 2026 batch to give people a chance to show off their skills with AI coding tools.
+
+Many coding agents (e.g. Claude Code, Cursor, etc) have a `/export` command, or otherwise include a button allowing you to export a transcript. Can be text or markdown.
+
+Learn more about this question here.
+
+Click or drag to upload a .md or .txt file
+Maximum file size: 25MB
+Are people using your product?
+Yes
+No
+How many active users or customers do you have? How many are paying? Who is paying you the most, and how much do they pay you?
+The 12-Minute Test Drive at vaughnmartin.com/12-minute-experience is publicly accessible — investors, researchers, and enterprise contacts have run the simulation. The full platform is live at vaughnmartin.com. No paying enterprise customers yet — the Founding Partner pilot program is open and sector targets are identified.
+Do you have revenue?
+Yes
+No
+If you are applying with the same idea as a previous batch, did anything change? If you applied with a different idea, why did you pivot and what did you learn from the last idea?
+Applied to YC Spring 2026 with a working version of the platform. The core thesis was the same — pre-staged Fortune 1000 execution replacing the 30-day mobilization cycle. What changed in the two months since: the platform grew from 151 to 193 production pages; the thesis received independent public validation from four researchers (Jim Highsmith — Agile Manifesto co-author; Dr. Kerry Huang — Fortune 50 AVP who credited the framework in a Forbes piece and reposted to his Fortune 50 network; Scott DeJarnette PhD; Dr. Kulneet Suri); and the investor materials, pricing architecture, and Founding Partner program were formalized. The idea did not change. The evidence behind it did.
+If you have already participated or committed to participate in an incubator, "accelerator" or "pre-accelerator" program, please tell us about it.
+Applied to a16z SpeedRun SR007 (April 2026). Not accepted or committed — application submitted and under review
+Idea
+Why did you pick this idea to work on? Do you have domain expertise in this area? How do you know people need what you're making?
+I spent 20 years inside Fortune 1000 organizations watching the same failure repeat across 7 industries: a trigger fires, and the organization spends weeks mobilizing before a single action begins. I watched it at Ford during supply disruptions, at Lockheed during regulatory cycles, at Charles Schwab during market events. The same coordination failure, every time, regardless of industry or leadership quality.
+
+Then I spent 5 years on the practice field at Stanford coaching football, where I watched the exact opposite: a trigger fires, and a pre-staged response deploys in 40 seconds across 11 coordinated roles. Same pressure. Completely different architecture. The difference wasn't the people. It was the preparation infrastructure.
+
+Nobody had built that infrastructure for the boardroom. I know people need it because I spent two decades watching the cost of its absence. The Equifax breach cost $575M. Boeing's MAX crisis cost $20B+. Average M&A integration failure destroys $277M in value (McKinsey). Every one of those outcomes had a mobilization failure at its root — not a strategy failure.
+Who are your competitors? What do you understand about your business that they don't?
+No direct competitor exists in the category we are building — Strategic Coordination Infrastructure. The adjacent players:
+
+ServiceNow / Jira — task management after decisions are made. Not pre-staged, not trigger-aware.
+Everbridge / Archer — crisis notification and compliance. Reactive, not pre-staged.
+McKinsey / BCG — consulting that builds responses after triggers fire. Expensive, slow, non-scalable.
+Microsoft Copilot — AI summary layer on top of the old coordination model. Faster meetings, not replaced coordination.
+What we understand that none of them do: the bottleneck is not information — it's pre-staged coordination. Every competitor either speeds up the old mobilization model or audits it after the fact. We replace it. The real competition is the 30-day mobilization cycle itself, not any software vendor.
+How do or will you make money? How much could you make?
+(We realize you can't know precisely, but give your best estimate)
+
+Pilot: $75K flat fee, 90-day deployment. Self-liquidating CAC — the pilot fee covers activation cost.
+Full platform: $150K–$250K/year annual license based on scope.
+5-year LTV per Fortune 1000 account: $1.25M+ at $250K × 5 years with 100%+ NRR built into the architecture (org-encoded intelligence drives expansion, not churn).
+
+Market:
+
+SAM (Fortune 1000 US + Global 2000 ex-US): ~$400M at $200K ACV
+TAM (all 5K+ employee enterprises globally): $5B+
+Realistic 3-year path:
+
+Yr 1: 8 accounts × $87K avg = ~$700K ARR (3 founding pilots + 5 new lands)
+Yr 2: 18 accounts × $140K avg = ~$2.5M ARR
+Yr 3: 38 accounts × $165K avg = ~$6.3M ARR
+Which category best applies to your company?
+
+B2B SaaS
+If you had any other ideas you considered applying with, please list them. One may be something we've been waiting for. Often when we fund people it's to do something they list here and not in the main application.
+None. This is the only idea. It has been the only idea for 20 years.
+Equity
+Have you formed ANY legal entity yet?
+This may be in the United States, in your home country or in another country.
+
+Yes
+No
+Please list all legal entities you have and in what state or country each was formed (e.g. Delaware C Corp, Mexican SAPI, Singapore Pvt Ltd, etc.).
+This might include subsidiary companies, legal entities you formed in other markets to do business, entities you created before a pivot, or legal entities you set up to employ developers or other service providers.
+
+VaughnMartin Inc. — Delaware C-Corporation
+Please describe the breakdown of the equity ownership in percentages among the founders, employees and any other stockholders. If there are multiple founders, be sure to give the equity ownership of each founder and founder title (e.g. CEO).
+Martin Brunke, CEO — 100% equity. No other stockholders. A co-founder equity pool (10–15%) is reserved for the commercial co-founder currently being recruited — the search begins in earnest through YC's network.
+Have you taken any investment yet?
+Yes
+No
+Are you currently fundraising?
+Yes
+No
+Please provide any relevant details about your current fundraise.
+Yes — seeking first institutional capital. Applied to a16z SpeedRun SR007 (April 2026, under review).
+Curious
+What convinced you to apply to Y Combinator? Did someone encourage you to apply? Have you been to any YC events?
+The platform is built. The category is real. The gap is the first Fortune 1000 pilot introduction — the moment where the thesis becomes a signed contract. YC's network and the 12-week program structure are the most direct path to that moment. The Demo Day signal also names a category in front of the people who write the checks for the companies we sell to. No other program does both simultaneously.
+How did you hear about Y Combinator?
+Follow YC on LinkedIn. Long-time awareness of the program and portfolio.
+Batch Preference
+What batch do you want to apply for?
+Summer 2026
+A batch after Summer 2026
+errorFounder video is required
+After submitting your application, you will be able to edit only certain sections: founder profiles, founder video, demo video, progress, and fundraising.
+chevron_left
+Back
+Save changes
+Submit application
