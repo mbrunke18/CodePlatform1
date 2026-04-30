@@ -111,8 +111,8 @@ export default function ExecutiveBrief() {
               <VaughnMartinLogo color="light" height={44} variant="full" />
               <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Executive Brief</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>Confidential — For Internal Circulation</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>vaughnmartin.com</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)" }}>Confidential — For Internal Circulation</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)" }}>vaughnmartin.com</div>
               </div>
             </div>
 
@@ -259,7 +259,7 @@ export default function ExecutiveBrief() {
                   <div key={label} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "16px 20px", background: "rgba(255,255,255,0.04)" }}>
                     <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", marginBottom: 4 }}>{label}</div>
                     <div style={{ ...CG, fontSize: 28, fontWeight: 700, color, marginBottom: 4 }}>{value}</div>
-                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>{sub}</div>
+                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", fontStyle: "italic" }}>{sub}</div>
                   </div>
                 ))}
               </div>
@@ -456,7 +456,7 @@ export default function ExecutiveBrief() {
                       <span style={{ fontSize: 13, color: "rgba(255,255,255,0.65)" }}>{item}</span>
                     </div>
                   ))}
-                  <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.1)", fontSize: 11, color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
+                  <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.1)", fontSize: 11, color: "rgba(255,255,255,0.68)", fontStyle: "italic" }}>
                     Limited to 5 design partners per cohort. Priority given to organizations with recent strategic event pain.
                   </div>
                 </div>

@@ -43,7 +43,7 @@ const HEALTH_CONFIG = {
 };
 
 const MILESTONE_CONFIG = {
-  setup:    { label: "Setup",    color: "rgba(255,255,255,0.3)" },
+  setup:    { label: "Setup",    color: "rgba(255,255,255,0.68)" },
   "dry-run":{ label: "Dry Run", color: GOLD },
   live:     { label: "Live",     color: TEAL },
   readout:  { label: "Readout",  color: GOLD },
@@ -53,7 +53,7 @@ function StatCell({ value, label, accent }: { value: string | number; label: str
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{ fontSize: 22, fontWeight: 700, color: accent || "#fff", lineHeight: 1 }}>{value}</div>
-      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 4 }}>{label}</div>
+      <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 4 }}>{label}</div>
     </div>
   );
 }
@@ -84,7 +84,7 @@ function PilotCard({ org }: { org: PilotOrg }) {
       <div style={{ padding: "18px 22px 14px", borderBottom: "1px solid rgba(255,255,255,0.07)", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{org.name}</div>
-          <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>{org.industry}</div>
+          <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)" }}>{org.industry}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6, flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 5, background: hc.bg, border: `1px solid ${hc.border}`, borderRadius: 0, padding: "3px 10px" }}>
@@ -115,7 +115,7 @@ function PilotCard({ org }: { org: PilotOrg }) {
       <div style={{ padding: "12px 22px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
           <Clock size={11} color="rgba(255,255,255,0.3)" />
-          <span style={{ fontSize: 11, color: org.daysSinceLogin !== null && org.daysSinceLogin > 7 ? AMBER : "rgba(255,255,255,0.4)" }}>
+          <span style={{ fontSize: 11, color: org.daysSinceLogin !== null && org.daysSinceLogin > 7 ? AMBER : "rgba(255,255,255,0.68)" }}>
             Last login: {loginLabel}
           </span>
         </div>
@@ -124,7 +124,7 @@ function PilotCard({ org }: { org: PilotOrg }) {
             <div style={{ width: 60, height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 0, overflow: "hidden" }}>
               <div style={{ width: `${progressPct}%`, height: "100%", background: progressPct >= 75 ? AMBER : TEAL, borderRadius: 0, transition: "width 0.3s" }} />
             </div>
-            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)" }}>
+            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.68)" }}>
               {org.pilotDayRemaining}d left
             </span>
           </div>
@@ -192,7 +192,7 @@ export default function PilotHealthMonitor() {
               </p>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)" }}>Updated {lastRefreshed}</span>
+              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.68)" }}>Updated {lastRefreshed}</span>
               <Button
                 onClick={() => refetch()}
                 variant="outline"
@@ -224,7 +224,7 @@ export default function PilotHealthMonitor() {
                   <Icon size={18} color={s.color} />
                   <div>
                     <div style={{ fontSize: 24, fontWeight: 700, color: s.color, lineHeight: 1 }}>{isLoading ? "—" : s.value}</div>
-                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 4 }}>{s.label}</div>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: 4 }}>{s.label}</div>
                   </div>
                 </div>
               );
@@ -233,7 +233,7 @@ export default function PilotHealthMonitor() {
 
           {/* Legend */}
           <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 20, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Milestone:</span>
+            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Milestone:</span>
             {(Object.entries(MILESTONE_CONFIG) as [string, { label: string; color: string }][]).map(([k, v]) => (
               <div key={k} style={{ display: "flex", alignItems: "center", gap: 5 }}>
                 <div style={{ width: 8, height: 8, borderRadius: 0, background: v.color }} />
@@ -241,7 +241,7 @@ export default function PilotHealthMonitor() {
               </div>
             ))}
             <div style={{ width: 1, height: 14, background: "rgba(255,255,255,0.1)" }} />
-            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Health:</span>
+            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Health:</span>
             {(Object.entries(HEALTH_CONFIG) as [string, typeof HEALTH_CONFIG.active][]).map(([k, v]) => (
               <div key={k} style={{ display: "flex", alignItems: "center", gap: 5 }}>
                 <div style={{ width: 8, height: 8, borderRadius: 0, background: v.text }} />
@@ -260,8 +260,8 @@ export default function PilotHealthMonitor() {
           ) : orgs.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 0" }}>
               <BookOpen size={40} color="rgba(255,255,255,0.15)" style={{ marginBottom: 16 }} />
-              <div style={{ fontSize: 16, color: "rgba(255,255,255,0.4)" }}>No pilot organizations yet.</div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.25)", marginTop: 8 }}>Organizations will appear here once pilots are active.</div>
+              <div style={{ fontSize: 16, color: "rgba(255,255,255,0.68)" }}>No pilot organizations yet.</div>
+              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)", marginTop: 8 }}>Organizations will appear here once pilots are active.</div>
             </div>
           ) : (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 16 }}>
@@ -272,7 +272,7 @@ export default function PilotHealthMonitor() {
           {/* Footer note */}
           <div style={{ marginTop: 32, padding: "16px 20px", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 0, display: "flex", alignItems: "center", gap: 10 }}>
             <TrendingUp size={14} color={GOLD} />
-            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
+            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.68)" }}>
               Health is based on last user login: Active ≤2 days · Watch 3–7 days · Stalled 7+ days. Weekly digest emails send automatically every Monday. Compound threat scans run every 4 hours.
             </span>
           </div>

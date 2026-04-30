@@ -124,7 +124,7 @@ export default function QuickActions() {
               padding: '0 4px',
               background: highAlerts.length > 0 ? RED : GOLD,
               borderRadius: 9,
-              fontSize: 9, fontWeight: 800,
+              fontSize: 11, fontWeight: 800,
               color: highAlerts.length > 0 ? '#fff' : NAVY,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               marginLeft: 2,
@@ -159,7 +159,7 @@ function PanelShell({ onClose, children }: { onClose: () => void; children: Reac
     }}>
       <div style={{ background: NAVY, padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
-          <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 2 }}>
+          <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 2 }}>
             Executive Command Strip
           </div>
           <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 15, fontWeight: 700, color: '#fff', letterSpacing: '0.04em' }}>
@@ -199,7 +199,7 @@ function LivePanel({ topAlert, highAlerts, medAlerts, readinessScore, navigate, 
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, lineHeight: 1.4, marginBottom: 4 }}>{topAlert.title}</div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: highAlerts.length > 0 ? RED : GOLD }}>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: highAlerts.length > 0 ? RED : GOLD }}>
                     {topAlert.severity} · Awaiting Authorization
                   </span>
                   <ChevronRight size={11} style={{ color: '#9CA3AF' }} />
@@ -227,7 +227,7 @@ function LivePanel({ topAlert, highAlerts, medAlerts, readinessScore, navigate, 
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 8 }}>
           <Radio size={9} style={{ color: TEAL }} />
-          <span style={{ fontSize: 9.5, color: '#9CA3AF', fontStyle: 'italic' }}>Live · updates every 15 minutes</span>
+          <span style={{ fontSize: 11, color: '#9CA3AF', fontStyle: 'italic' }}>Live · updates every 15 minutes</span>
         </div>
       </div>
 
@@ -251,7 +251,7 @@ function LivePanel({ topAlert, highAlerts, medAlerts, readinessScore, navigate, 
 
       <div style={{ padding: '10px 16px', background: '#FAFAF8', borderTop: '1px solid rgba(10,15,46,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
         <Clock size={10} style={{ color: '#9CA3AF' }} />
-        <span style={{ fontSize: 9.5, color: '#9CA3AF' }}>Target response: <strong style={{ color: NAVY }}>12 minutes</strong> from trigger detection</span>
+        <span style={{ fontSize: 11, color: '#9CA3AF' }}>Target response: <strong style={{ color: NAVY }}>12 minutes</strong> from trigger detection</span>
       </div>
     </PanelShell>
   );
@@ -284,7 +284,7 @@ function TeaserPanel({ navigate, onClose }: { navigate: (path: string) => void; 
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: NAVY, lineHeight: 1.4, marginBottom: 4 }}>Geopolitical Risk Signal Detected</div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: RED }}>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: RED }}>
                     HIGH · Awaiting Authorization
                   </span>
                   <ChevronRight size={11} style={{ color: '#9CA3AF' }} />
@@ -293,7 +293,7 @@ function TeaserPanel({ navigate, onClose }: { navigate: (path: string) => void; 
             </div>
           </div>
         </div>
-        <div style={{ position: 'absolute', bottom: 8, right: 12, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#9CA3AF' }}>
+        <div style={{ position: 'absolute', bottom: 8, right: 12, fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#9CA3AF' }}>
           Sample Preview
         </div>
       </div>
@@ -307,7 +307,7 @@ function TeaserPanel({ navigate, onClose }: { navigate: (path: string) => void; 
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 8 }}>
           <Radio size={9} style={{ color: '#9CA3AF' }} />
-          <span style={{ fontSize: 9.5, color: '#9CA3AF', fontStyle: 'italic' }}>Live monitoring activates with full access</span>
+          <span style={{ fontSize: 11, color: '#9CA3AF', fontStyle: 'italic' }}>Live monitoring activates with full access</span>
         </div>
       </div>
 
@@ -358,7 +358,7 @@ function TeaserPanel({ navigate, onClose }: { navigate: (path: string) => void; 
 
 function ZoneLabel({ children }: { children: string }) {
   return (
-    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 10 }}>
+    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 10 }}>
       {children}
     </div>
   );
@@ -370,7 +370,7 @@ function SignalStat({ label, value, color, suffix = '' }: { label: string; value
       <div style={{ fontSize: 18, fontWeight: 800, color, fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1 }}>
         {value}<span style={{ fontSize: 11 }}>{suffix}</span>
       </div>
-      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF', marginTop: 3 }}>{label}</div>
+      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF', marginTop: 3 }}>{label}</div>
     </div>
   );
 }

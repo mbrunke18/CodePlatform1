@@ -196,7 +196,7 @@ export default function PreActivationImpactPreview({
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
               <div style={{ width: 20, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Activation Outcome Prediction</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Pre-Activation Outcome Prediction</span>
             </div>
             <div style={{ ...CG, fontSize: 20, fontWeight: 700, color: '#F0EDE4', lineHeight: 1.1, marginBottom: 4 }}>
               "{playbook?.name || 'Readiness Protocol'}"
@@ -245,13 +245,13 @@ export default function PreActivationImpactPreview({
             {/* Success probability gauge */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               <div style={{ padding: '16px 18px', background: OFF, border: `1px solid ${BORDER}`, borderTop: `3px solid ${probabilityColor}` }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>Predicted Success Rate</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>Predicted Success Rate</div>
                 <div style={{ ...CG, fontSize: 42, fontWeight: 700, color: probabilityColor, lineHeight: 1, marginBottom: 6 }}>{preview.successProbability}%</div>
                 <Progress value={preview.successProbability} className="h-1.5" />
                 <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 4 }}>Based on 847 peer-company executions</div>
               </div>
               <div style={{ padding: '16px 18px', background: OFF, border: `1px solid ${BORDER}`, borderTop: `3px solid ${NAVY}` }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>Readiness Score</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 6 }}>Readiness Score</div>
                 <div style={{ ...CG, fontSize: 42, fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: 6 }}>{preview.readinessScore}</div>
                 <Progress value={preview.readinessScore} className="h-1.5" />
                 <div style={{ fontSize: 10, color: '#9CA3AF', marginTop: 4 }}>Org preparedness for this Readiness Protocol</div>
@@ -260,7 +260,7 @@ export default function PreActivationImpactPreview({
 
             {/* 3 Outcome Scenarios */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Predicted Outcome Scenarios</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Predicted Outcome Scenarios</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {outcomes.map((o, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '12px 14px', border: `1px solid ${BORDER}`, background: '#fff', borderLeft: `3px solid ${o.color}` }}>
@@ -281,7 +281,7 @@ export default function PreActivationImpactPreview({
 
             {/* Risk factors */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>Key Risk Factors</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>Key Risk Factors</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {riskFactors.map((f, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 11, color: '#6B7280' }}>
@@ -294,7 +294,7 @@ export default function PreActivationImpactPreview({
 
             {/* Peer benchmark */}
             <div style={{ padding: '12px 14px', background: `${TEAL}06`, border: `1px solid ${TEAL}20`, borderLeft: `3px solid ${TEAL}` }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: TEAL, marginBottom: 6 }}>Peer Benchmark</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: TEAL, marginBottom: 6 }}>Peer Benchmark</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
                 {[
                   { label: 'Avg completion (peers)', value: '82%' },
@@ -303,7 +303,7 @@ export default function PreActivationImpactPreview({
                 ].map((b, i) => (
                   <div key={i} style={{ textAlign: 'center' }}>
                     <div style={{ fontSize: 15, fontWeight: 700, color: TEAL }}>{b.value}</div>
-                    <div style={{ fontSize: 9, color: '#9CA3AF' }}>{b.label}</div>
+                    <div style={{ fontSize: 11, color: '#9CA3AF' }}>{b.label}</div>
                   </div>
                 ))}
               </div>
@@ -317,7 +317,7 @@ export default function PreActivationImpactPreview({
             {/* Blockers */}
             {hasBlockers && (
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>Pre-Activation Blockers</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>Pre-Activation Blockers</div>
                 {preview.blockers.map((b, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 14px', background: `${RED}06`, border: `1px solid ${RED}20`, borderLeft: `3px solid ${RED}` }}>
                     <AlertTriangle style={{ width: 14, height: 14, color: RED, flexShrink: 0, marginTop: 1 }} />
@@ -329,7 +329,7 @@ export default function PreActivationImpactPreview({
 
             {/* Resource conflicts */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>
                 Resource Conflicts {hasConflicts ? `(${preview.resourceConflicts.length} detected)` : '(none)'}
               </div>
               {!hasConflicts ? (
@@ -345,7 +345,7 @@ export default function PreActivationImpactPreview({
                       <div key={i} style={{ padding: '12px 14px', border: `1px solid ${BORDER}`, borderLeft: `3px solid ${sc}` }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                           <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{c.resourceName}</span>
-                          <span style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', color: sc }}>{c.severity} conflict</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', color: sc }}>{c.severity} conflict</span>
                         </div>
                         <div style={{ fontSize: 11, color: '#6B7280', marginBottom: 4 }}>Conflict: {c.conflictingPlaybook}</div>
                         <div style={{ fontSize: 11, color: TEAL, fontWeight: 600 }}>Resolution: {c.resolution}</div>
@@ -358,7 +358,7 @@ export default function PreActivationImpactPreview({
 
             {/* Departments */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>Departments Activated</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 8 }}>Departments Activated</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                 {preview.departmentsInvolved.map(dept => (
                   <span key={dept} style={{ fontSize: 10, fontWeight: 700, color: NAVY, background: `${NAVY}08`, border: `1px solid ${BORDER}`, padding: '3px 10px' }}>{dept}</span>
@@ -388,7 +388,7 @@ export default function PreActivationImpactPreview({
                     </div>
                     <div>
                       <div style={{ fontSize: 16, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{item.value}</div>
-                      <div style={{ fontSize: 9, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 2 }}>{item.label}</div>
+                      <div style={{ fontSize: 11, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 2 }}>{item.label}</div>
                     </div>
                   </div>
                 );
@@ -402,7 +402,7 @@ export default function PreActivationImpactPreview({
 
             {/* Execution Scope */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Scope</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Scope</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 {([
                   { value: 'full', label: 'Full Deployment', desc: 'All teams and stakeholders activated simultaneously', icon: '⚡' },
@@ -414,7 +414,7 @@ export default function PreActivationImpactPreview({
                     <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{opt.label}</div>
                     <div style={{ fontSize: 10, color: '#6B7280', lineHeight: 1.5 }}>{opt.desc}</div>
                     {execScope === opt.value && (
-                      <div style={{ marginTop: 8, fontSize: 9, fontWeight: 700, color: GOLD, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Selected</div>
+                      <div style={{ marginTop: 8, fontSize: 11, fontWeight: 700, color: GOLD, textTransform: 'uppercase', letterSpacing: '0.1em' }}>Selected</div>
                     )}
                   </button>
                 ))}
@@ -423,7 +423,7 @@ export default function PreActivationImpactPreview({
 
             {/* Timeline */}
             <div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Timeline</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10 }}>Execution Timeline</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 {([
                   { value: 'accelerated', label: 'Accelerated', mins: '8 min', desc: 'Maximum compression — all parallel tracks active', color: RED, recommended: false },
@@ -451,7 +451,7 @@ export default function PreActivationImpactPreview({
             {/* Stakeholder Notification Scope */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF' }}>Departments to Notify</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF' }}>Departments to Notify</div>
                 <button onClick={() => setNotifyDepts(notifyDepts.length === preview.departmentsInvolved.length ? [] : [...preview.departmentsInvolved])}
                   style={{ fontSize: 10, fontWeight: 700, color: TEAL, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>
                   {notifyDepts.length === preview.departmentsInvolved.length ? 'Deselect All' : 'Select All'}

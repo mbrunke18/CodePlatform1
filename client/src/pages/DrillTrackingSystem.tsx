@@ -242,7 +242,7 @@ export default function DrillTrackingSystem() {
                     <div className="flex-1 space-y-4">
                       <div className="flex items-center gap-4">
                         <h3 className="text-xl font-bold text-[#0A0F2E]" data-testid={`text-drill-name-${sim.id}`}>{sim.name}</h3>
-                        <span style={{ ...getStatusBadgeStyle(sim.status), fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
+                        <span style={{ ...getStatusBadgeStyle(sim.status), fontSize: 11, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px" }}>
                           {sim.status}
                         </span>
                         <span style={{ background: OFF, border: "1px solid #E8E4DC", padding: "4px 8px", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#6B7280" }}>

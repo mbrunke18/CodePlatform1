@@ -71,7 +71,7 @@ export default function AdminQuickLink() {
   if (isLoading) {
     return (
       <div style={{ minHeight: '100vh', background: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Loading...</div>
+        <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 13 }}>Loading...</div>
       </div>
     );
   }
@@ -83,16 +83,16 @@ export default function AdminQuickLink() {
       <div style={{ background: NAVY, padding: '20px 40px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <Link href="/mission-control" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.4)', fontSize: 12, textDecoration: 'none', fontWeight: 600 }}>
+            <Link href="/mission-control" style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(255,255,255,0.68)', fontSize: 12, textDecoration: 'none', fontWeight: 600 }}>
               <ArrowLeft size={13} /> Mission Control
             </Link>
-            <span style={{ color: 'rgba(255,255,255,0.15)' }}>·</span>
+            <span style={{ color: 'rgba(255,255,255,0.68)' }}>·</span>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Shield size={14} color={GOLD} />
               <span style={{ color: GOLD, fontWeight: 800, fontSize: 14, letterSpacing: '0.06em' }}>QUICK-ISSUE DEMO LINKS</span>
             </div>
           </div>
-          <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 600, letterSpacing: '0.12em' }}>
+          <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontWeight: 600, letterSpacing: '0.12em' }}>
             ADMIN · VAUGHNMARTIN READINESS OS
           </div>
         </div>

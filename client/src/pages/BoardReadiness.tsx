@@ -102,7 +102,7 @@ export default function BoardReadiness() {
           <div style={{ width: 1, height: 18, background: 'rgba(255,255,255,0.15)' }} />
           <Award size={16} color={GOLD} />
           <span style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>Board Readiness Snapshot</span>
-          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 4 }}>· {generatedDate}</span>
+          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginLeft: 4 }}>· {generatedDate}</span>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
           <button onClick={handleCopyLink} style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', borderRadius: 0, padding: '7px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}>
@@ -132,12 +132,12 @@ export default function BoardReadiness() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 14 }}>
                 <div style={{ width: 8, height: 8, borderRadius: 0, background: statusColor }} />
                 <span style={{ fontSize: 12, fontWeight: 700, color: statusColor }}>{d.monitoringStatus}</span>
-                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>· 221 triggers armed · 248+ signals tracked</span>
+                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)' }}>· 221 triggers armed · 248+ signals tracked</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10 }}>
                 <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>WEF AI Framework</span>
-                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>·</span>
-                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Aligned with Focus Area 4: Predictive, Signal-Based Strategic Planning</span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>·</span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>Aligned with Focus Area 4: Predictive, Signal-Based Strategic Planning</span>
               </div>
             </div>
             <ScoreRing score={d.readinessScore} />

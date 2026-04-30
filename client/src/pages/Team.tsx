@@ -149,7 +149,7 @@ export default function Team() {
                     <span style={{ ...CG, fontSize: 22, fontWeight: 700, color: "#fff" }}>KH</span>
                   </div>
                   <div style={{ ...CG, fontSize: 15, fontWeight: 700, color: NAVY, textAlign: "center" }}>Dr. Kerry Huang</div>
-                  <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: TEAL, marginTop: 6, textAlign: "center" }}>Research Collaborator</div>
+                  <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: TEAL, marginTop: 6, textAlign: "center" }}>Research Collaborator</div>
                   <div style={{ marginTop: 20, width: "100%" }}>
                     {[
                       "ESI Top 1% Researcher",

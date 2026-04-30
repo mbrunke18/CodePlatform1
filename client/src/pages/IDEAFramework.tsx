@@ -221,7 +221,7 @@ export default function IDEAFramework() {
         <section style={{ background: "#F8F7F4", padding: "72px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: TEAL, marginBottom: 12 }}>The Operating Model Origin</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: TEAL, marginBottom: 12 }}>The Operating Model Origin</div>
               <h2 style={{ fontFamily: "Georgia, serif", fontSize: "clamp(28px,4vw,42px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
                 Built on the same model elite coaches use to win.
               </h2>
@@ -243,7 +243,7 @@ export default function IDEAFramework() {
                       <span style={{ fontSize: 10, fontWeight: 700, color: "#fff", letterSpacing: "0.05em" }}>{item.num}</span>
                     </div>
                     <div>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: item.color }}>{item.phase}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: item.color }}>{item.phase}</div>
                       <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginTop: 1 }}>{item.sport}</div>
                     </div>
                   </div>
@@ -256,7 +256,7 @@ export default function IDEAFramework() {
             </div>
 
             <div style={{ marginTop: 32, padding: "20px 28px", background: NAVY, display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, flexShrink: 0 }}>Executive Authority</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, flexShrink: 0 }}>Executive Authority</div>
               <p style={{ fontSize: 14, color: "#C8D4E8", lineHeight: 1.6, margin: 0, flex: 1 }}>
                 In both models, the coach — the executive — makes every call. The preparation eliminates the mobilization delay. The authority remains with the human who holds it.
                 <strong style={{ color: GOLD }}> AI monitors. Executives authorize. Execution pre-staged.</strong>

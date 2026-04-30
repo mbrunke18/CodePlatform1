@@ -481,7 +481,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
             {(activeSector !== 'all' || activePillar !== 'all' || activeDomain !== 'all') && (
               <div style={{ marginBottom: 14, paddingLeft: 4, borderBottom: `1px solid ${BORDER}`, paddingBottom: 12 }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginBottom: 6 }}>Active Filters</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginBottom: 6 }}>Active Filters</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   {activeSector !== 'all' && (
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -582,7 +582,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     }}
                   >
                     <span style={{ flex: 1 }}>{domain.label}</span>
-                    {domain.count && <span style={{ fontSize: 9, color: isActive ? GOLD : "rgba(107,114,128,0.5)", fontWeight: 700 }}>{domain.count}</span>}
+                    {domain.count && <span style={{ fontSize: 11, color: isActive ? GOLD : "rgba(107,114,128,0.5)", fontWeight: 700 }}>{domain.count}</span>}
                   </button>
                 );
               })}
@@ -632,7 +632,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
           {(activeSector !== 'all' || activePillar !== 'all' || activeDomain !== 'all' || activeUrgency !== 'all' || search) && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED }}>Filtered by:</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED }}>Filtered by:</span>
               {activeSector !== 'all' && (
                 <button onClick={() => setActiveSector('all')} style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 9, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, background: '#F0EDE4', border: 'none', padding: '3px 8px', cursor: 'pointer' }}>
                   {SECTOR_PACKS.find(s => s.id === activeSector)?.label} <span style={{ opacity: 0.5 }}>✕</span>
@@ -703,7 +703,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                   <div key={playbook.id} style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", borderTop: `2px solid #C9A84C`, padding: "20px", display: "flex", flexDirection: "column", gap: 12 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                       <div style={{ width: 20, height: 1, background: "#C9A84C" }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>Enterprise Readiness Protocol</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>Enterprise Readiness Protocol</span>
                     </div>
                     <div>
                       <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#0A0F2E", marginBottom: 4, lineHeight: 1.25 }}>{playbook.name}</div>
@@ -731,7 +731,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
 
                   {/* Tier + urgency — minimal, after the name */}
                   <div className="flex items-center justify-between mb-3">
-                    <span style={{ color: isSample ? "#2B8A6E" : "#9CA3AF", fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                    <span style={{ color: isSample ? "#2B8A6E" : "#9CA3AF", fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}>
                       {isSample ? "Preview Available" : "Enterprise Tier"}
                     </span>
                     <UrgencyBadge urgency={playbook.priority?.toLowerCase() || "standard"} />
@@ -773,7 +773,7 @@ export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) 
                     borderBottom: "1px solid #F0EDE4",
                   }}>
                     <span style={{
-                      fontSize: 9, fontWeight: 700, color: "#2B8A6E",
+                      fontSize: 11, fontWeight: 700, color: "#2B8A6E",
                       background: "rgba(43,138,110,0.08)", border: "1px solid rgba(43,138,110,0.2)",
                       padding: "1px 6px", borderRadius: 0, letterSpacing: "0.06em",
                     }}>

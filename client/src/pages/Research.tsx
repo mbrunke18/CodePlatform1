@@ -641,7 +641,7 @@ export default function Research() {
             </div>
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 24, textAlign: "center" }}>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: GOLD, letterSpacing: "0.06em", marginBottom: 6 }}>Dr. Kerry Huang</p>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.04em", marginBottom: 0 }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", letterSpacing: "0.04em", marginBottom: 0 }}>
                 Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · 408-firm governance study · Named Martin Brunke by name to his full professional network
               </p>
             </div>

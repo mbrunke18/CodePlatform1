@@ -229,18 +229,18 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
             <PulseOrb color={cc} size={10} animate={d.status !== 'acknowledged'} />
             <span style={{
               background: cc, color: '#fff',
-              fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em',
+              fontSize: 11, fontWeight: 800, padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em',
             }}>
               {confidenceLabel(d.confidenceScore).toUpperCase()}
             </span>
-            <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>
+            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>
               {d.triggerDomain}
             </span>
           </div>
           <div style={{ color: '#fff', fontWeight: 700, fontSize: 17, lineHeight: 1.35, marginBottom: 4 }}>
             {d.triggerName}
           </div>
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>
+          <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12 }}>
             {d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}
           </div>
         </div>
@@ -267,7 +267,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
       }}>
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
+          <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>
             SYSTEM-RECOMMENDED Readiness Protocol
           </div>
           <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
@@ -288,7 +288,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
             <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em' }}>
               DECISION RECORDED — NO ACTION TAKEN
             </div>
-            <div style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10, marginTop: 2 }}>
+            <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, marginTop: 2 }}>
               {new Date(noActionLogged).toLocaleString()} · Signal remained visible
             </div>
           </div>
@@ -326,7 +326,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
               background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-              color: 'rgba(255,255,255,0.4)',
+              color: 'rgba(255,255,255,0.68)',
               borderRadius: 0, padding: '12px 14px',
               fontWeight: 600, fontSize: 11, cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -356,7 +356,7 @@ function DomainStatusGrid({ detections }: { detections: Detection[] }) {
         <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>
           DOMAIN STATUS BOARD
         </span>
-        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>— 9 of 9 monitored</span>
+        <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>— 9 of 9 monitored</span>
       </div>
       <div style={{
         display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8,
@@ -550,15 +550,15 @@ export default function CommandTower() {
                 </span>
                 <span style={{
                   background: 'rgba(201,168,76,0.15)', color: GOLD,
-                  fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0,
+                  fontSize: 11, fontWeight: 700, padding: '2px 7px', borderRadius: 0,
                   letterSpacing: '0.12em',
                 }}>
                   READINESS OS
                 </span>
               </div>
-              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11, marginTop: 1 }}>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, marginTop: 1 }}>
                 Live Wall Display · Auto-Refreshing · Read-Only
-                <Link href="/mission-control" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10, marginLeft: 12, textDecoration: 'none', fontWeight: 600 }}>
+                <Link href="/mission-control" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, marginLeft: 12, textDecoration: 'none', fontWeight: 600 }}>
                   ← Back to Mission Control
                 </Link>
               </div>
@@ -598,7 +598,7 @@ export default function CommandTower() {
               <div style={{ color: '#fff', fontWeight: 700, fontSize: 16, fontVariantNumeric: 'tabular-nums' }}>
                 {clock}
               </div>
-              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, marginTop: 1 }}>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, marginTop: 1 }}>
                 {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
               </div>
             </div>
@@ -641,14 +641,14 @@ export default function CommandTower() {
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10 }}>
                 <Icon size={13} color={color} />
-                <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>
+                <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em' }}>
                   {label}
                 </span>
               </div>
               <div style={{ color, fontWeight: 800, fontSize: 32, fontVariantNumeric: 'tabular-nums', lineHeight: 1, marginBottom: 5 }}>
                 {value}
               </div>
-              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{sub}</div>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>{sub}</div>
             </div>
           ))}
         </div>
@@ -689,7 +689,7 @@ export default function CommandTower() {
                   LIVE ALERT ZONE
                 </span>
               </div>
-              <Link href="/live-detection-feed" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Link href="/live-detection-feed" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
                 Full Feed <ArrowRight size={11} />
               </Link>
             </div>
@@ -776,8 +776,8 @@ export default function CommandTower() {
               {recentActivations.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '20px 12px' }}>
                   <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
-                  <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
-                  <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>
+                  <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
+                  <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, lineHeight: 1.5 }}>
                     170 Readiness Protocols pre-staged. 12-minute deployment on trigger.
                   </div>
                 </div>
@@ -804,7 +804,7 @@ export default function CommandTower() {
                               {isRecent && <PulseOrb color={TEAL} size={7} />}
                               <span style={{ color: '#fff', fontWeight: 700, fontSize: 13 }}>{a.playbookName}</span>
                             </div>
-                            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>{a.domainName}</span>
+                            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>{a.domainName}</span>
                           </div>
                           {a.successRating != null && (
                             <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 0, flexShrink: 0 }}>
@@ -813,8 +813,8 @@ export default function CommandTower() {
                           )}
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{isRecent ? '● In progress' : '✓ Completed'}</span>
-                          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{timeAgo(a.activatedAt)}</span>
+                          <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>{isRecent ? '● In progress' : '✓ Completed'}</span>
+                          <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>{timeAgo(a.activatedAt)}</span>
                         </div>
                       </motion.div>
                     );
@@ -840,7 +840,7 @@ export default function CommandTower() {
                   { label: 'Engine', value: modeLabel.toUpperCase(), color: TEAL },
                 ].map(({ label, value, color }) => (
                   <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{label}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12 }}>{label}</span>
                     <span style={{ color, fontSize: 12, fontWeight: 700 }}>{value}</span>
                   </div>
                 ))}
@@ -852,7 +852,7 @@ export default function CommandTower() {
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>
                   <Zap size={12} color={GOLD} />
-                  <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
+                  <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
                 </div>
                 <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
                 <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>
@@ -901,13 +901,13 @@ export default function CommandTower() {
               </span>
               <span style={{
                 background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)',
-                color: 'rgba(255,255,255,0.4)', fontSize: 9, fontWeight: 700,
+                color: 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700,
                 padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em',
               }}>
                 ADVANCE PHASE REQUIRED
               </span>
             </div>
-            <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: 11 }}>
+            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>
               Map grows through human encoding
             </span>
           </div>
@@ -941,11 +941,11 @@ export default function CommandTower() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                   <span style={{
                     background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.45)',
-                    fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.08em',
+                    fontSize: 11, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.08em',
                   }}>
                     {item.domain.toUpperCase()}
                   </span>
-                  <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 10 }}>{item.classified}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>{item.classified}</span>
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12, lineHeight: 1.5, marginBottom: 10 }}>
                   {item.signal}
@@ -954,9 +954,9 @@ export default function CommandTower() {
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: 8,
                 }}>
-                  <span style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10 }}>{item.impact}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>{item.impact}</span>
                   <span style={{
-                    color: 'rgba(255,255,255,0.3)', fontSize: 9, fontWeight: 700,
+                    color: 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.08em', background: 'rgba(255,255,255,0.05)',
                     padding: '2px 7px', borderRadius: 0,
                   }}>
@@ -966,7 +966,7 @@ export default function CommandTower() {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 12, color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.6 }}>
+          <div style={{ marginTop: 12, color: 'rgba(255,255,255,0.68)', fontSize: 11, lineHeight: 1.6 }}>
             These signals have been classified by domain and impact shape. No existing Readiness Protocol matches. Human encoding through the ADVANCE phase will expand the map.
             Ignoring them is now a recorded choice, not an invisible one.
           </div>
@@ -988,7 +988,7 @@ export default function CommandTower() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <ChevronRight size={13} color={GOLD} />
-            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>
+            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>
               DRILL DOWN INTO READINESS OS
             </span>
           </div>
@@ -1063,7 +1063,7 @@ export default function CommandTower() {
                 '170 Readiness Protocols pre-staged and ready to deploy',
                 'Response time: 30 days → 12 minutes  ·  3,600× Execution Head Start',
               ].map((item, i) => (
-                <span key={i} style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11 }}>
+                <span key={i} style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>
                   {item}
                   <span style={{ margin: '0 16px', color: 'rgba(255,255,255,0.1)' }}>·</span>
                 </span>

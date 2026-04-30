@@ -281,7 +281,7 @@ export default function StandardNav() {
   );
 
   const megaColHeading = (text: string, light = false) => (
-    <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: light ? 'rgba(255,255,255,0.35)' : GOLD, margin: '0 0 6px 2px' }}>
+    <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: light ? 'rgba(255,255,255,0.68)' : GOLD, margin: '0 0 6px 2px' }}>
       {text}
     </p>
   );
@@ -304,18 +304,18 @@ export default function StandardNav() {
         <div style={{ background: NAVY, padding: '11px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Old Operating Model</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 2px' }}>Old Operating Model</p>
               <p style={{ fontSize: 15, fontWeight: 700, color: '#f87171', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>Committees. Alignment. Delay.</p>
             </div>
-            <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
+            <div style={{ fontSize: 18, color: 'rgba(255,255,255,0.68)', padding: '0 4px' }}>→</div>
             <div>
-              <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Readiness OS</p>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 2px' }}>Readiness OS</p>
               <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>170 Readiness Protocols. 12 minutes.</p>
             </div>
           </div>
           <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
             <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>9 Domains</p>
-            <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
+            <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>248+ Data Points</p>
           </div>
         </div>
 
@@ -379,12 +379,12 @@ export default function StandardNav() {
         {/* Header bar */}
         <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 3px' }}>Research-Backed · Independently Validated</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: '#fff', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>McKinsey · Gartner · IBM · PwC · Forrester</p>
           </div>
           <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
             <p style={{ fontSize: 14, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
-            <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
+            <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
           </div>
         </div>
 
@@ -415,7 +415,7 @@ export default function StandardNav() {
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
               >
-                <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>See It In Action</p>
+                <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>See It In Action</p>
                 <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Run the 12-Minute Test Drive — no login required →</p>
               </div>
             </div>
@@ -439,7 +439,7 @@ export default function StandardNav() {
         {/* Header bar */}
         <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 3px' }}>Pre-Seed · Category-Defining Infrastructure</p>
             <p style={{ fontSize: 15, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>The Readiness Infrastructure Enterprises Are Missing</p>
           </div>
         </div>
@@ -478,7 +478,7 @@ export default function StandardNav() {
                   el.style.borderColor = 'rgba(201,168,76,0.3)';
                 }}
               >
-                <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Request Founding Partner Access</p>
+                <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Request Founding Partner Access</p>
                 <p style={{ fontSize: 10.5, color: '#374151', margin: 0, lineHeight: 1.4 }}>Deploy Readiness OS inside your portfolio company →</p>
               </div>
             </div>
@@ -552,18 +552,18 @@ export default function StandardNav() {
           <div style={{ background: NAVY, padding: '14px 22px', display: 'flex', alignItems: 'center', gap: 0, justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
               <div>
-                <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Traditional Enterprise</p>
+                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 2px' }}>Traditional Enterprise</p>
                 <p style={{ fontSize: 16, fontWeight: 700, color: '#f87171', margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>30 days to mobilize</p>
               </div>
-              <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.2)', padding: '0 4px' }}>→</div>
+              <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.68)', padding: '0 4px' }}>→</div>
               <div>
-                <p style={{ fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', margin: '0 0 2px' }}>Readiness OS</p>
+                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', margin: '0 0 2px' }}>Readiness OS</p>
                 <p style={{ fontSize: 16, fontWeight: 700, color: GOLD, margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.2 }}>12 minutes to execution</p>
               </div>
             </div>
             <div style={{ background: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 12px', textAlign: 'center' }}>
               <p style={{ fontSize: 15, fontWeight: 800, color: GOLD, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>3,600×</p>
-              <p style={{ fontSize: 8, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
+              <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.7)', letterSpacing: '0.15em', textTransform: 'uppercase', margin: '2px 0 0' }}>Execution Head Start</p>
             </div>
           </div>
 
@@ -571,7 +571,7 @@ export default function StandardNav() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
             {/* Left column: primary demo paths */}
             <div style={{ padding: '18px 14px 18px 18px', borderRight: '1px solid rgba(10,15,46,0.07)' }}>
-              <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, margin: '0 0 12px 2px' }}>Live Demos — No Login Required</p>
+              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, margin: '0 0 12px 2px' }}>Live Demos — No Login Required</p>
               {primaryDemos.map(({ path, icon: Icon, label, sub, featured }) => (
                 <div
                   key={path}
@@ -606,7 +606,7 @@ export default function StandardNav() {
 
             {/* Right column: deeper experiences */}
             <div style={{ padding: '18px 18px 18px 14px', background: 'rgba(248,247,244,0.55)' }}>
-              <p style={{ fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 12px 2px' }}>Go Deeper</p>
+              <p style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9CA3AF', margin: '0 0 12px 2px' }}>Go Deeper</p>
               {deeperDemos.map(({ path, icon: Icon, label, sub }) => (
                 <div
                   key={path}
@@ -632,7 +632,7 @@ export default function StandardNav() {
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#141B45'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = NAVY; }}
                 >
-                  <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 3px' }}>Ready to Run It Inside Your Org?</p>
+                  <p style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 3px' }}>Ready to Run It Inside Your Org?</p>
                   <p style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.4 }}>Deploy Readiness OS for your team in 30 days →</p>
                 </div>
               </div>
@@ -1042,14 +1042,14 @@ export default function StandardNav() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <span style={{ width: 5, height: 5, background: '#3BAF8A', borderRadius: 0, display: 'inline-block' }} />
-                  <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#3BAF8A' }}>Monitoring Active</span>
                 </div>
-                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>
-                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>221 Triggers Active</span>
+                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>248+ Data Points</span>
+                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.35)', letterSpacing: '0.08em' }}>221 Triggers Active</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <Radio style={{ width: 8, height: 8, color: 'rgba(201,168,76,0.45)' }} />
-                <span style={{ fontSize: 9, color: 'rgba(240,237,228,0.3)', letterSpacing: '0.08em' }}>Scanning every 15 min</span>
+                <span style={{ fontSize: 11, color: 'rgba(240,237,228,0.3)', letterSpacing: '0.08em' }}>Scanning every 15 min</span>
               </div>
             </div>
           </div>
@@ -1096,7 +1096,7 @@ export default function StandardNav() {
                   );
                   return Object.entries(groups).map(([cat, items]) => (
                     <div key={cat}>
-                      <div style={{ padding: '10px 18px 4px', fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C9A84C' }}>{cat}</div>
+                      <div style={{ padding: '10px 18px 4px', fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C9A84C' }}>{cat}</div>
                       {items.map(item => (
                         <button
                           key={item.path}

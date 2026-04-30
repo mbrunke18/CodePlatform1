@@ -590,7 +590,7 @@ export default function SituationIntentWizard() {
                     <div>
                       <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{dp.name}</div>
                       <div style={{ fontSize: 10, color: MUTED, lineHeight: 1.4 }}>{dp.description}</div>
-                      <div style={{ fontSize: 9, color: TEAL, marginTop: 4, fontWeight: 600 }}>{(dp as any).categoryName}</div>
+                      <div style={{ fontSize: 11, color: TEAL, marginTop: 4, fontWeight: 600 }}>{(dp as any).categoryName}</div>
                     </div>
                   </button>
                 );
@@ -788,7 +788,7 @@ export default function SituationIntentWizard() {
                             <span style={{ fontSize: 14 }}>{o.icon}</span>
                             <div>
                               <div style={{ fontSize: 11, fontWeight: 700, color: selected ? TEAL : NAVY }}>{o.label}</div>
-                              <div style={{ fontSize: 9, color: MUTED, lineHeight: 1.3 }}>{o.desc}</div>
+                              <div style={{ fontSize: 11, color: MUTED, lineHeight: 1.3 }}>{o.desc}</div>
                             </div>
                           </button>
                         );

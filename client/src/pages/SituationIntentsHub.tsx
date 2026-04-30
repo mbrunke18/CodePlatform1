@@ -68,7 +68,7 @@ export default function SituationIntentsHub() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 8 }}>
-                <a href="/mission-control" style={{ display: "flex", alignItems: "center", gap: 6, color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 600, textDecoration: "none", letterSpacing: "0.06em" }}>
+                <a href="/mission-control" style={{ display: "flex", alignItems: "center", gap: 6, color: "rgba(255,255,255,0.68)", fontSize: 11, fontWeight: 600, textDecoration: "none", letterSpacing: "0.06em" }}>
                   ← Mission Control
                 </a>
                 <div style={{ width: 1, height: 12, background: "rgba(255,255,255,0.15)" }} />

@@ -217,7 +217,7 @@ function ExecutionROISection() {
           <div style={{ flexShrink: 0, textAlign: "right" }}>
             <div style={{ ...RC_GEO, fontSize: 36, fontWeight: 700, color: RC_GOLD, lineHeight: 1 }}>$250M</div>
             <div style={{ ...RC_DM, fontSize: 10, color: RC_MUTED, marginTop: 4 }}>annual decision tax</div>
-            <div style={{ ...RC_DM, fontSize: 9, color: RC_MUTED, marginTop: 2, letterSpacing: "0.05em" }}>Fortune 500 avg · McKinsey</div>
+            <div style={{ ...RC_DM, fontSize: 11, color: RC_MUTED, marginTop: 2, letterSpacing: "0.05em" }}>Fortune 500 avg · McKinsey</div>
           </div>
         </div>
       </div>

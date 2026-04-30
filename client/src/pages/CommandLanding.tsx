@@ -153,7 +153,7 @@ function NavIcon({ active, title, label, onClick, children }: { active?: boolean
       <span style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>{children}</span>
       <span style={{
         fontFamily: "'DM Mono', monospace",
-        fontSize: 9, letterSpacing: 0.8, textTransform: 'uppercase',
+        fontSize: 11, letterSpacing: 0.8, textTransform: 'uppercase',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         fontWeight: on ? 600 : 400,
         color: on ? GOLD : 'rgba(240,237,228,0.4)',

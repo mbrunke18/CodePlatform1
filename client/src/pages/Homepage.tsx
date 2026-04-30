@@ -189,7 +189,7 @@ function LiveSignalFeedSection() {
               </h2>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'flex-end', gap: 6, flexShrink: 0 }}>
-              <div style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.35)', textAlign: 'right' as const }}>
+              <div style={{ ...DM, fontSize: 12, color: 'rgba(255,255,255,0.68)', textAlign: 'right' as const }}>
                 248+ data points · 8 live sources · refreshed every 15 minutes
               </div>
             </div>
@@ -213,7 +213,7 @@ function LiveSignalFeedSection() {
                   {/* Top row: domain badge + time */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
                     <span style={{
-                      ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.18em',
+                      ...DM, fontSize: 11, fontWeight: 800, letterSpacing: '0.18em',
                       textTransform: 'uppercase' as const,
                       padding: '3px 8px',
                       background: 'rgba(201,168,76,0.12)',
@@ -221,10 +221,10 @@ function LiveSignalFeedSection() {
                       color: GOLD,
                     }}>{domainLabel}</span>
                     {ago && (
-                      <span style={{ ...DM, fontSize: 11, color: 'rgba(255,255,255,0.35)', flexShrink: 0 }}>{ago}</span>
+                      <span style={{ ...DM, fontSize: 11, color: 'rgba(255,255,255,0.68)', flexShrink: 0 }}>{ago}</span>
                     )}
                     {sig.illustrative && (
-                      <span style={{ ...DM, fontSize: 10, color: 'rgba(255,255,255,0.25)', flexShrink: 0 }}>illustrative</span>
+                      <span style={{ ...DM, fontSize: 10, color: 'rgba(255,255,255,0.68)', flexShrink: 0 }}>illustrative</span>
                     )}
                   </div>
 
@@ -245,7 +245,7 @@ function LiveSignalFeedSection() {
                             {body.length > 120 ? body.slice(0, 119) + '…' : body}
                           </p>
                         )}
-                        <div style={{ ...DM, fontSize: 9.5, fontWeight: 600, color: 'rgba(255,255,255,0.58)', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+                        <div style={{ ...DM, fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.58)', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
                           Matched trigger → {sig.triggerName}
                         </div>
                       </>
@@ -254,7 +254,7 @@ function LiveSignalFeedSection() {
 
                   {/* Bottom row: source + confidence */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-                    <span style={{ ...DM, fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' as const }}>
+                    <span style={{ ...DM, fontSize: 10, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic' as const }}>
                       {sig.signalSource}
                     </span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -278,11 +278,11 @@ function LiveSignalFeedSection() {
                       display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                        <span style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Readiness Protocol Staged</span>
-                        <span style={{ ...DM, fontSize: 9, color: 'rgba(255,255,255,0.2)' }}>→</span>
+                        <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: '0.14em', color: TEAL, textTransform: 'uppercase' as const }}>Readiness Protocol Staged</span>
+                        <span style={{ ...DM, fontSize: 11, color: 'rgba(255,255,255,0.68)' }}>→</span>
                         <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.85)' }}>{sig.recommendedPlaybook}</span>
                       </div>
-                      <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.08em', whiteSpace: 'nowrap' as const, flexShrink: 0 }}>12 MIN</span>
+                      <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.08em', whiteSpace: 'nowrap' as const, flexShrink: 0 }}>12 MIN</span>
                     </div>
                   )}
                 </div>
@@ -294,7 +294,7 @@ function LiveSignalFeedSection() {
         {/* Footer line */}
         <Reveal delay={0.25}>
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid rgba(201,168,76,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 16 }}>
-            <p style={{ ...DM, fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.5 }}>
+            <p style={{ ...DM, fontSize: 13, color: 'rgba(255,255,255,0.68)', margin: 0, lineHeight: 1.5 }}>
               Every signal above stages a Readiness Protocol. When the trigger fires, the execution is already built.
             </p>
             <Link href="/12-minute-experience" style={{
@@ -347,7 +347,7 @@ function HomepageNav() {
               border: "1px solid rgba(201,168,76,0.35)",
               display: "flex", alignItems: "center", gap: 6,
             }}>
-              <span style={{ color: GOLD, fontSize: 9 }}>▶</span>See It Work
+              <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
             <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
             <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>The Manifesto</Link>
@@ -509,7 +509,7 @@ function ExecutionChainDiagram() {
         <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: TEAL }}>Execution Brief · Live</span>
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ ...DM, fontSize: 9, fontWeight: 700, color: TEAL, letterSpacing: "0.12em", background: "rgba(43,138,110,0.15)", border: "1px solid rgba(43,138,110,0.3)", padding: "2px 7px" }}>LIVE SYSTEM</span>
-          <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.06em" }}>READINESS OS</span>
+          <span style={{ ...DM, fontSize: 10, color: "rgba(255,255,255,0.68)", letterSpacing: "0.06em" }}>READINESS OS</span>
         </div>
       </div>
 
@@ -528,7 +528,7 @@ function ExecutionChainDiagram() {
                 boxShadow: activeStep === i ? `0 0 16px ${step.color}55` : "none",
                 zIndex: 1,
               }}>
-                <span style={{ ...DM, fontSize: 11, fontWeight: 800, color: activeStep === i ? NAVY : "rgba(255,255,255,0.3)", transition: "color 0.5s" }}>{i + 1}</span>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 800, color: activeStep === i ? NAVY : "rgba(255,255,255,0.68)", transition: "color 0.5s" }}>{i + 1}</span>
               </div>
               {i < steps.length - 1 && (
                 <div style={{
@@ -545,7 +545,7 @@ function ExecutionChainDiagram() {
                 <span style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: activeStep === i ? step.color : "rgba(255,255,255,0.65)", transition: "color 0.5s" }}>
                   {step.label}
                 </span>
-                <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: step.label === "FULL DEPLOYMENT" ? GOLD : "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, color: step.label === "FULL DEPLOYMENT" ? GOLD : "rgba(255,255,255,0.68)", letterSpacing: "0.06em" }}>
                   {step.time}
                 </span>
               </div>
@@ -558,12 +558,12 @@ function ExecutionChainDiagram() {
       {/* 30 days → 12 min result bar */}
       <div style={{ margin: "0 24px 24px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.22)", padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
-          <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 3 }}>Traditional</div>
-          <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.25)", textDecoration: "line-through", lineHeight: 1 }}>30 days</div>
+          <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 3 }}>Traditional</div>
+          <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: "rgba(255,255,255,0.68)", textDecoration: "line-through", lineHeight: 1 }}>30 days</div>
         </div>
         <div style={{ ...DM, fontSize: 14, color: "rgba(201,168,76,0.4)" }}>→</div>
         <div style={{ textAlign: "right" as const }}>
-          <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Readiness OS</div>
+          <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Readiness OS</div>
           <div style={{ ...GEO, fontSize: 28, fontWeight: 700, color: GOLD, lineHeight: 1, textShadow: `0 0 20px rgba(201,168,76,0.4)` }}>12 minutes</div>
         </div>
       </div>
@@ -649,7 +649,7 @@ function HeroSection() {
                 ].map((s, i) => (
                   <div key={i} style={{ flex: 1, paddingRight: 20, marginRight: 20, borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none" }}>
                     <div style={{ ...GEO, color: GOLD, fontSize: "clamp(18px,2vw,26px)", fontWeight: 700, lineHeight: 1 }}>{s.n}</div>
-                    <div style={{ ...DM, color: "rgba(255,255,255,0.38)", fontSize: 11, marginTop: 6, letterSpacing: "0.04em", fontWeight: 500 }}>{s.l}</div>
+                    <div style={{ ...DM, color: "rgba(255,255,255,0.68)", fontSize: 11, marginTop: 6, letterSpacing: "0.04em", fontWeight: 500 }}>{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -659,14 +659,14 @@ function HeroSection() {
           {/* RIGHT — Live Signal Feed panel */}
           <Reveal delay={0.18}>
             <div style={{ borderLeft: "1px solid rgba(255,255,255,0.06)", padding: "100px 0 88px 44px", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
-              <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 24 }}>
+              <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 24 }}>
                 Live Signal Feed
               </div>
 
               {signals.map((sig, i) => (
                 <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "16px 0" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                    <span style={{ ...DM, color: TEAL, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em" }}>
+                    <span style={{ ...DM, color: TEAL, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em" }}>
                       {DOMAIN_LABELS[(sig as any).triggerDomain ?? ''] ?? ((sig as any).triggerDomain ?? 'SIGNAL').toUpperCase()}
                     </span>
                     <span style={{ ...DM, color: "rgba(255,255,255,0.55)", fontSize: 10, fontWeight: 500 }}>
@@ -688,7 +688,7 @@ function HeroSection() {
               ))}
 
               <div style={{ marginTop: 20, padding: "16px 20px", border: `1px solid ${GOLD}33`, background: `${GOLD}08` }}>
-                <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>Protocol Readiness</div>
+                <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>Protocol Readiness</div>
                 <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
                   <span style={{ ...GEO, color: "#fff", fontSize: 26, fontWeight: 700 }}>170</span>
                   <span style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: 12 }}>Protocols pre-staged across 9 domains</span>
@@ -712,7 +712,7 @@ function ScenarioHookSection() {
           {/* Label */}
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
             <div style={{ width: 28, height: 1.5, background: GOLD }} />
-            <span style={{ ...DM, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
+            <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>
               The Readiness Question
             </span>
           </div>
@@ -769,7 +769,7 @@ function ScenarioCardsRow() {
               borderTop: `2px solid ${item.accent}`,
               textDecoration: "none",
             }}>
-              <div style={{ ...DM, color: item.accent, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
+              <div style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 8 }}>{item.domain}</div>
               <div style={{ ...DM, color: "#fff", fontSize: 13, fontWeight: 700, lineHeight: 1.4, marginBottom: 6 }}>{item.label}</div>
               <div style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: 11.5, lineHeight: 1.55, marginBottom: 12 }}>{item.sub}</div>
               <span style={{ ...DM, color: item.accent, fontSize: 11, fontWeight: 600 }}>Activate protocol →</span>
@@ -791,7 +791,7 @@ function AnatomySection() {
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 56, gap: 32, flexWrap: "wrap" as const }}>
           <Reveal>
             <div>
-              <div style={{ ...DM, color: GOLD, fontSize: 9.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 16 }}>
+              <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 16 }}>
                 What's Inside Every Readiness Protocol
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: "#fff", fontSize: "clamp(26px,3vw,40px)", fontWeight: 700, lineHeight: 1.1, margin: 0 }}>
@@ -1444,7 +1444,7 @@ function PlatformPreviewSection() {
                         border: state === "acknowledged" ? "none" : state === "notified" ? `2px solid ${GOLD}` : "2px solid rgba(255,255,255,0.12)",
                         transition: "all 0.4s ease",
                       }}>
-                        {state === "acknowledged" && <span style={{ color: "#fff", fontSize: 9, fontWeight: 900 }}>✓</span>}
+                        {state === "acknowledged" && <span style={{ color: "#fff", fontSize: 11, fontWeight: 900 }}>✓</span>}
                         {state === "notified" && <div style={{ width: 5, height: 5, background: GOLD, borderRadius: "50%", animation: "pulse 0.9s ease-in-out infinite" }} />}
                       </div>
 
@@ -1458,8 +1458,8 @@ function PlatformPreviewSection() {
                       </div>
 
                       {/* State badge */}
-                      <div style={{ ...DM, fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, transition: "color 0.4s",
-                        color: state === "acknowledged" ? TEAL_LIGHT : state === "notified" ? GOLD : "rgba(255,255,255,0.13)" }}>
+                      <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, transition: "color 0.4s",
+                        color: state === "acknowledged" ? TEAL_LIGHT : state === "notified" ? GOLD : "rgba(255,255,255,0.68)" }}>
                         {state === "acknowledged" ? "Acknowledged" : state === "notified" ? "Notified" : "Queued"}
                       </div>
                     </div>
@@ -1686,12 +1686,12 @@ function CompetitiveClaritySection() {
           <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "16px 24px", background: NAVY, flexShrink: 0 }}>
             <div>
               <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1 }}>12</div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.45)", marginTop: 2 }}>Minutes — Readiness OS</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.45)", marginTop: 2 }}>Minutes — Readiness OS</div>
             </div>
             <div style={{ width: 1, height: 40, background: "rgba(201,168,76,0.3)" }} />
             <div>
               <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: "#6B7280", lineHeight: 1 }}>30</div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.3)", marginTop: 2 }}>Days — every alternative</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.3)", marginTop: 2 }}>Days — every alternative</div>
             </div>
           </div>
         </div>
@@ -1783,12 +1783,12 @@ function CredibilitySection() {
                   <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>
                     Dr. Kerry Huang
                   </p>
-                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.03em", margin: 0 }}>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", letterSpacing: "0.03em", margin: 0 }}>
                     Fortune 50 AVP · ESI Top 1% Researcher · Forbes Council · 408-firm governance study
                   </p>
                 </div>
               </div>
-              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.22)", marginTop: 16, fontStyle: "italic", position: "relative", zIndex: 1 }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", marginTop: 16, fontStyle: "italic", position: "relative", zIndex: 1 }}>
                 Produced independently — without product exposure — through intellectual exchange, April 2026
               </p>
             </div>
@@ -1800,7 +1800,7 @@ function CredibilitySection() {
             <div style={{ padding: "32px 40px 28px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 28 }}>
                 <div style={{ width: 20, height: 1, background: "rgba(201,168,76,0.4)" }} />
-                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.75)" }}>Posted to his full professional network · LinkedIn · April 20, 2026</span>
+                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.26em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.75)" }}>Posted to his full professional network · LinkedIn · April 20, 2026</span>
                 <div style={{ width: 20, height: 1, background: "rgba(201,168,76,0.4)" }} />
               </div>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(17px,1.8vw,22px)", fontStyle: "italic", color: "rgba(255,255,255,0.88)", lineHeight: 1.75, marginBottom: 18 }}>
@@ -1816,7 +1816,7 @@ function CredibilitySection() {
                 <div style={{ width: 28, height: 1, background: "rgba(201,168,76,0.35)" }} />
                 <div>
                   <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 3 }}>Dr. Kerry Huang</p>
-                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "0.02em", margin: 0 }}>Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Named Martin Brunke by name to his full professional network</p>
+                  <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", letterSpacing: "0.02em", margin: 0 }}>Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Named Martin Brunke by name to his full professional network</p>
                 </div>
               </div>
             </div>
@@ -1925,7 +1925,7 @@ function CTASection() {
             </Link>
           </p>
           <p style={{ ...DM, fontSize: 13, marginTop: 8 }}>
-            <Link href="/request-access" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1 }}>
+            <Link href="/request-access" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.68)", paddingBottom: 1 }}>
               Request executive platform access — separate from the Founding Partner Program →
             </Link>
           </p>
@@ -2214,7 +2214,7 @@ function HowTriggersWorkSection() {
                 No Readiness Protocol activates without executive sign-off. The system detects and stages. The executive authorizes. That sequence is the product.
               </p>
               <div style={{ padding: "16px 20px", background: NAVY, display: "inline-block" }}>
-                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 6 }}>Monitoring cadence</div>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>Monitoring cadence</div>
                 <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: GOLD, lineHeight: 1 }}>Every 15 minutes</div>
                 <div style={{ ...DM, fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 4 }}>8 live signal sources · 221 trigger patterns</div>
               </div>
@@ -2267,7 +2267,7 @@ function HowTriggersWorkSection() {
                     display: "flex", flexDirection: "column" as const, gap: 6,
                     position: "relative" as const,
                   }}>
-                    <div style={{ ...DM, fontSize: 9, fontWeight: 800, letterSpacing: "0.18em", color: node.accent, textTransform: "uppercase" as const }}>
+                    <div style={{ ...DM, fontSize: 11, fontWeight: 800, letterSpacing: "0.18em", color: node.accent, textTransform: "uppercase" as const }}>
                       {node.step} · {node.label}
                     </div>
                     <div style={{ ...DM, fontSize: 13, fontWeight: 700, color: i === 4 ? "#fff" : NAVY, lineHeight: 1.3 }}>{node.detail}</div>
@@ -2338,7 +2338,7 @@ function HowPlaybooksWorkSection() {
             <Reveal key={i} delay={i * 0.1}>
               <div style={{ padding: "36px 32px", background: i === 2 ? NAVY : "#F8F7F4", border: `1px solid ${i === 2 ? "transparent" : "#E8E4DC"}`, height: "100%" }}>
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: i === 2 ? GOLD : s.accent, lineHeight: 1, marginBottom: 16, opacity: 1 }}>{s.num}</div>
-                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: i === 2 ? "rgba(255,255,255,0.4)" : "#9CA3AF", marginBottom: 10 }}>{s.label}</div>
+                <div style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: i === 2 ? "rgba(255,255,255,0.68)" : "#9CA3AF", marginBottom: 10 }}>{s.label}</div>
                 <p style={{ ...DM, fontSize: 14, color: i === 2 ? "rgba(255,255,255,0.75)" : "#4A5568", lineHeight: 1.7, margin: 0 }}>{s.body}</p>
               </div>
             </Reveal>

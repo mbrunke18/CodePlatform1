@@ -120,7 +120,7 @@ export default function About() {
 
             <div>
               <div style={{ background: NAVY, padding: "32px 28px" }}>
-                <div style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
+                <div style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
                   Stanford · Practice Field
                 </div>
                 <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, margin: "0 0 20px" }}>
@@ -151,7 +151,7 @@ export default function About() {
               { label: "Platform in Production", value: "Jan 2026", sub: "193 pages · Full-stack · Live" },
             ].map(({ label, value, sub }) => (
               <div key={label} style={{ background: "#fff", padding: "28px 24px", borderTop: `2px solid ${GOLD}` }}>
-                <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#999", marginBottom: 8 }}>{label}</div>
+                <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "#999", marginBottom: 8 }}>{label}</div>
                 <div style={{ ...GEO, fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1, marginBottom: 6 }}>{value}</div>
                 <div style={{ ...DM, fontSize: 12, color: "#888" }}>{sub}</div>
               </div>
@@ -210,7 +210,7 @@ export default function About() {
                 { label: "First ACV", value: "$75K · 90-day Founding Partner engagement" },
               ].map(({ label, value }) => (
                 <div key={label} style={{ padding: "16px 20px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                  <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>{label}</div>
+                  <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)", marginBottom: 4 }}>{label}</div>
                   <div style={{ ...DM, fontSize: 13, color: "#fff", fontWeight: 500 }}>{value}</div>
                 </div>
               ))}

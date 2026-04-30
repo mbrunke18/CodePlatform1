@@ -47,7 +47,7 @@ export default function DemoNavHeader({
 
             {title && (
               <div className="hidden md:flex items-center gap-2">
-                <span style={{ color: "rgba(255,255,255,0.25)", fontSize: 14 }}>/</span>
+                <span style={{ color: "rgba(255,255,255,0.68)", fontSize: 14 }}>/</span>
                 <span
                   style={{
                     fontSize: 12,

@@ -166,7 +166,7 @@ function StepBadge({ n, active, done }: { n: number; active: boolean; done: bool
       width: 32, height: 32, borderRadius: 0, border: `2px solid ${done ? TEAL : active ? GOLD : 'rgba(255,255,255,0.25)'}`,
       background: done ? TEAL : active ? GOLD : 'transparent',
       display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-      fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.4)',
+      fontSize: 12, fontWeight: 700, color: done || active ? NAVY : 'rgba(255,255,255,0.68)',
       transition: 'all 0.3s ease',
     }}>
       {done ? '✓' : n}
@@ -364,14 +364,14 @@ export default function TwelveMinuteTestDrive() {
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
+                        <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: s.urgency === 'critical' ? '#f87171' : 'rgba(201,168,76,0.7)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.urgency}</span>
                         <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)', display: 'inline-block' }} />
-                        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
                       </div>
                       {hasLiveSignal && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
                           <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: TEAL_LT, animation: 'vm-pulse 2s ease-in-out infinite' }} />
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>Live signal</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>Live signal</span>
                         </div>
                       )}
                     </div>
@@ -421,13 +421,13 @@ export default function TwelveMinuteTestDrive() {
                 {/* ── Brief document header ── */}
                 <div style={{ padding: '16px 24px', background: 'rgba(201,168,76,0.06)', borderTop: `1px solid rgba(201,168,76,0.3)`, borderBottom: `1px solid rgba(201,168,76,0.3)`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 12, marginBottom: 24 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Execution Brief</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD }}>Execution Brief</div>
                     <div style={{ width: 1, height: 12, background: 'rgba(201,168,76,0.3)' }} />
-                    <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>Pre-Staged · System-Analyzed</div>
+                    <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)' }}>Pre-Staged · System-Analyzed</div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <div style={{ width: 6, height: 6, borderRadius: '50%', background: brief?.urgencyLevel === 'critical' ? '#C0392B' : brief?.urgencyLevel === 'high' ? GOLD : TEAL }} />
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: brief?.urgencyLevel === 'critical' ? '#E05A4A' : brief?.urgencyLevel === 'high' ? GOLD : TEAL }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: brief?.urgencyLevel === 'critical' ? '#E05A4A' : brief?.urgencyLevel === 'high' ? GOLD : TEAL }}>
                       {brief?.urgencyLevel === 'critical' ? 'Critical Priority' : brief?.urgencyLevel === 'high' ? 'High Priority' : 'Elevated Priority'}
                     </div>
                   </div>
@@ -435,7 +435,7 @@ export default function TwelveMinuteTestDrive() {
 
                 {/* ── Situation Assessment ── */}
                 <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>Situation Assessment</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 10 }}>Situation Assessment</div>
                   <div style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', borderLeft: `3px solid ${GOLD}`, borderTop: '1px solid rgba(255,255,255,0.08)', borderRight: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                     <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, margin: 0 }}>
                       {brief?.aiAnalysis || `A ${scenario.title.toLowerCase()} requires immediate cross-functional coordination across your entire C-Suite. Without a pre-staged response, the organization enters a mobilization cycle — identifying stakeholders, aligning on a plan, and assigning roles — before a single action can be taken. That cycle takes weeks. Readiness OS collapses it to 12 minutes because the response was built before this trigger ever fired.`}
@@ -445,7 +445,7 @@ export default function TwelveMinuteTestDrive() {
 
                 {/* ── Pre-Staged Response ── */}
                 <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>Pre-Staged Response — Deploys on Activation</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 10 }}>Pre-Staged Response — Deploys on Activation</div>
                   <div style={{ padding: '20px 24px', background: 'rgba(43,138,110,0.06)', borderLeft: `3px solid ${TEAL}`, borderTop: '1px solid rgba(43,138,110,0.2)', borderRight: '1px solid rgba(43,138,110,0.2)', borderBottom: '1px solid rgba(43,138,110,0.2)' }}>
                     {brief?.activatedPlaybooks?.length > 0 ? (
                       <>
@@ -474,18 +474,18 @@ export default function TwelveMinuteTestDrive() {
 
                 {/* ── Execution Timeline ── */}
                 <div style={{ marginBottom: 32 }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>What This Changes</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 10 }}>What This Changes</div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 0 }}>
                     <div style={{ padding: '20px 24px', background: 'rgba(180,30,30,0.07)', borderTop: '1px solid rgba(192,57,43,0.2)', borderBottom: '1px solid rgba(192,57,43,0.2)', borderLeft: '1px solid rgba(192,57,43,0.2)', borderRight: 'none' }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 8 }}>Without Readiness OS</div>
-                      <div style={{ fontSize: 36, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>30 <span style={{ fontSize: 16, color: 'rgba(255,255,255,0.4)' }}>days</span></div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 8 }}>Without Readiness OS</div>
+                      <div style={{ fontSize: 36, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>30 <span style={{ fontSize: 16, color: 'rgba(255,255,255,0.68)' }}>days</span></div>
                       <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.72)' }}>to mobilize, align stakeholders, agree on a plan, then begin executing</div>
                     </div>
                     <div style={{ padding: '0 20px', textAlign: 'center' as const, background: 'rgba(255,255,255,0.02)', alignSelf: 'stretch' as const, display: 'flex', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                       <div style={{ fontSize: 18, color: GOLD }}>→</div>
                     </div>
                     <div style={{ padding: '20px 24px', background: 'rgba(201,168,76,0.06)', borderTop: `1px solid rgba(201,168,76,0.25)`, borderBottom: `1px solid rgba(201,168,76,0.25)`, borderRight: `1px solid rgba(201,168,76,0.25)`, borderLeft: 'none' }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>With Readiness OS</div>
                       <div style={{ fontSize: 36, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 4 }}>12 <span style={{ fontSize: 16, color: `rgba(201,168,76,0.5)` }}>minutes</span></div>
                       <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.72)' }}>from trigger detection to full coordinated executive execution — 3,600× head start</div>
                     </div>
@@ -533,12 +533,12 @@ export default function TwelveMinuteTestDrive() {
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : GOLD, marginBottom: 4 }}>{running ? '● LIVE' : '— COMPLETE'}</div>
                 <div style={{ fontSize: 48, fontWeight: 700, color: '#fff', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{fmtSecs(elapsed)}</div>
-                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>/ 12:00 target</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>/ 12:00 target</div>
                 <div style={{ marginTop: 6, fontSize: 8, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', padding: '2px 8px', display: 'inline-block' }}>COMPRESSED SIMULATION</div>
               </div>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontSize: 28, fontWeight: 700, color: GOLD }}>{completedTasks}/{tasks.length}</div>
-                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Tasks Complete</div>
               </div>
             </div>
 
@@ -550,10 +550,10 @@ export default function TwelveMinuteTestDrive() {
             {/* Status legend */}
             <div style={{ marginBottom: 20 }}>
               <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 16, padding: '10px 16px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', marginBottom: 8 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Notification Status:</span>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)' }}>Notification Status:</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <div style={{ width: 10, height: 10, borderRadius: 0, border: '2px solid #D1D5DB' }} />
-                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>Queued — not yet sent</span>
+                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontWeight: 600 }}>Queued — not yet sent</span>
                 </div>
                 <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.1)' }} />
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -566,7 +566,7 @@ export default function TwelveMinuteTestDrive() {
                   <span style={{ fontSize: 11, color: TEAL_LT, fontWeight: 600 }}>Acknowledged — role confirmed receipt</span>
                 </div>
               </div>
-              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic', paddingLeft: 4 }}>
+              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic', paddingLeft: 4 }}>
                 These badges track notification and acknowledgment only — not whether the task work itself has been completed. Work completion is tracked in the full platform.
               </div>
             </div>
@@ -633,7 +633,7 @@ export default function TwelveMinuteTestDrive() {
 
               {/* Live Feed */}
               <div style={{ background: NAVY, padding: 20 }}>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.4)', marginBottom: 16 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: running ? TEAL_LT : 'rgba(255,255,255,0.68)', marginBottom: 16 }}>
                   {running ? '● LIVE FEED' : '○ FEED PAUSED'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10, maxHeight: 480, overflowY: 'auto' }}>
@@ -644,13 +644,13 @@ export default function TwelveMinuteTestDrive() {
                     const textColor   = isConfirmed ? '#6EE7B7' : 'rgba(255,255,255,0.8)';
                     return (
                       <div key={i} style={{ fontSize: 11, color: textColor, borderLeft: `2px solid ${borderColor}`, paddingLeft: 10, lineHeight: 1.5 }}>
-                        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>
+                        <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, display: 'block', marginBottom: 2 }}>{e.time}</span>
                         {e.text}
                       </div>
                     );
                   })}
                   {liveEvents.length === 0 && (
-                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Awaiting first action…</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic' }}>Awaiting first action…</div>
                   )}
                 </div>
               </div>
@@ -739,7 +739,7 @@ export default function TwelveMinuteTestDrive() {
                 { label: 'The Ownership Was Built', body: 'The roles acknowledged their tasks before the pressure arrived. That is not a behavioral outcome — it is a confirmed record the preparation phase produced.' },
               ].map(r => (
                 <div key={r.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.03)', borderTop: `2px solid ${TEAL}`, borderRight: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)', borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 10 }}>{r.label}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: TEAL, marginBottom: 10 }}>{r.label}</div>
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, margin: 0 }}>{r.body}</p>
                 </div>
               ))}
@@ -750,7 +750,7 @@ export default function TwelveMinuteTestDrive() {
 
               {/* Investor path */}
               <div style={{ padding: '20px 28px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', maxWidth: 520, width: '100%' }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Evaluating for Investment?</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Evaluating for Investment?</div>
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: '0 0 12px' }}>
                   Talk directly with the founder — no intermediary, no deck-first process.
                 </p>

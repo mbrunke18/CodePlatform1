@@ -212,11 +212,11 @@ export default function InvestorGate({ children, pageName = "/investor-resources
 
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 24, justifyContent: "center" }}>
             <Shield size={11} color="rgba(255,255,255,0.25)" />
-            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.05em" }}>Confidential — not for distribution</span>
+            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", letterSpacing: "0.05em" }}>Confidential — not for distribution</span>
           </div>
         </div>
 
-        <p style={{ textAlign: "center", marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
+        <p style={{ textAlign: "center", marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.68)" }}>
           Questions? <a href="mailto:info@vaughnmartin.com" style={{ color: GOLD_LIGHT, textDecoration: "none" }}>info@vaughnmartin.com</a>
         </p>
       </div>

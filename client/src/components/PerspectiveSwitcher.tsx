@@ -140,7 +140,7 @@ export default function PerspectiveSwitcher({ currentRole, currentIndustry }: Pe
             <div style={{ marginBottom: 20 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
                 <div style={{ width: 16, height: 1, background: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD }}>
                   Switch Perspective
                 </span>
               </div>
@@ -205,7 +205,7 @@ export default function PerspectiveSwitcher({ currentRole, currentIndustry }: Pe
               style={{
                 width: "100%",
                 background: canSave ? GOLD : "rgba(255,255,255,0.08)",
-                color: canSave ? NAVY : "rgba(255,255,255,0.3)",
+                color: canSave ? NAVY : "rgba(255,255,255,0.68)",
                 border: "none",
                 padding: "12px 20px",
                 fontSize: 11,
@@ -220,7 +220,7 @@ export default function PerspectiveSwitcher({ currentRole, currentIndustry }: Pe
               {saveMutation.isPending ? "Switching…" : "Apply Perspective →"}
             </button>
 
-            <p style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textAlign: "center", marginTop: 12, marginBottom: 0 }}>
+            <p style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textAlign: "center", marginTop: 12, marginBottom: 0 }}>
               This calibrates your dashboard framing and Readiness Protocol context.
             </p>
           </div>

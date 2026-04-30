@@ -29,7 +29,7 @@ export default function PodcastPrep() {
 
         {/* Header */}
         <div style={{ borderBottom: `2px solid ${NAVY}`, paddingBottom: 10, marginBottom: 14 }}>
-          <div style={{ ...BC, fontSize: 8.5, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 4 }}>VaughnMartin · April 2026</div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 4 }}>VaughnMartin · April 2026</div>
           <div style={{ ...BC, fontSize: 20, fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase", color: NAVY }}>Podcast Prep — The Digital Exchange</div>
           <div style={{ fontSize: 10.5, color: "#6B7280", marginTop: 3 }}>Wayne D. Roye · Founder/CIO, OpixIQ · 15-minute prep call</div>
         </div>
@@ -88,7 +88,7 @@ export default function PodcastPrep() {
               "Pitch anything on this call",
             ].map((t, i) => (
               <div key={i} style={{ display: "flex", gap: 7, padding: "3px 0", fontSize: 10.5, color: "#374151" }}>
-                <span style={{ color: "#EF4444", fontWeight: 800, fontSize: 9, flexShrink: 0, paddingTop: 2 }}>✕</span>
+                <span style={{ color: "#EF4444", fontWeight: 800, fontSize: 11, flexShrink: 0, paddingTop: 2 }}>✕</span>
                 <span>{t}</span>
               </div>
             ))}
@@ -96,7 +96,7 @@ export default function PodcastPrep() {
           <div>
             <SectionLabel>One Thing To Do</SectionLabel>
             <div style={{ background: NAVY, padding: "10px 14px" }}>
-              <div style={{ ...BC, fontSize: 7.5, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 5 }}>Near the end — after he's got what he needs</div>
+              <div style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 5 }}>Near the end — after he's got what he needs</div>
               <p style={{ fontSize: 11, color: "rgba(255,255,255,0.8)", lineHeight: 1.6 }}>
                 "I noticed you're building OpixIQ in the Microsoft Resource Intelligence space — is that shaping the kinds of conversations you're trying to have on the show?"
               </p>
@@ -128,8 +128,8 @@ export default function PodcastPrep() {
 
         {/* Footer */}
         <div style={{ marginTop: 20, paddingTop: 8, borderTop: "1px solid #E5E7EB", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: NAVY }}>VaughnMartin · Readiness OS</span>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>The Digital Exchange · Prep Reference · April 2026</span>
+          <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: NAVY }}>VaughnMartin · Readiness OS</span>
+          <span style={{ ...BC, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>The Digital Exchange · Prep Reference · April 2026</span>
         </div>
       </div>
     </>
@@ -138,7 +138,7 @@ export default function PodcastPrep() {
 
 function SectionLabel({ children }: { children: string }) {
   return (
-    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8.5, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 6 }}>
+    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 6 }}>
       {children}
     </div>
   );
@@ -168,7 +168,7 @@ function Quote({ children }: { children: React.ReactNode }) {
 function QA({ q, children }: { q: string; children: string }) {
   return (
     <div style={{ marginBottom: 10 }}>
-      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 3 }}>{q}</div>
+      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 3 }}>{q}</div>
       <Quote>{`"${children}"`}</Quote>
     </div>
   );
@@ -177,7 +177,7 @@ function QA({ q, children }: { q: string; children: string }) {
 function PrepItem({ time, children }: { time: string; children: string }) {
   return (
     <div style={{ padding: "7px 10px", border: "1px solid #E5E7EB", borderLeft: "2px solid #2B8A6E", marginBottom: 6 }}>
-      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 3 }}>{time}</div>
+      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 3 }}>{time}</div>
       <p style={{ fontSize: 10.5, color: "#374151", lineHeight: 1.4 }}>{children}</p>
     </div>
   );

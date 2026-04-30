@@ -222,7 +222,7 @@ export default function ActivationOutcome() {
                           }}>
                             {done ? <CheckCircle style={{ width: 14, height: 14, color: "#fff" }} /> : <Icon style={{ width: 14, height: 14, color: active ? "#fff" : "#9CA3AF" }} />}
                           </div>
-                          <div style={{ fontSize: 9, fontWeight: 700, color: active ? NAVY : done ? TEAL : "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", whiteSpace: "nowrap" }}>{s.label}</div>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: active ? NAVY : done ? TEAL : "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.08em", whiteSpace: "nowrap" }}>{s.label}</div>
                         </button>
                         {i < WIZARD_STEPS.length - 1 && (
                           <div style={{ flex: 1, height: 1, background: done ? TEAL : "#E5E7EB", margin: "0 4px", marginBottom: 16 }} />

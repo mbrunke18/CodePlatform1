@@ -42,7 +42,7 @@ function EventLabel({ type }: { type: string }) {
     dismissed: { label: 'DISMISSED', color: '#9CA3AF' },
   };
   const { label, color } = map[type] || { label: type.toUpperCase(), color: '#999' };
-  return <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1.5, color }}>{label}</span>;
+  return <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color }}>{label}</span>;
 }
 
 export function LiveSignalFeed({ maxRows = 20, dark = false }: { maxRows?: number; dark?: boolean }) {
@@ -105,9 +105,9 @@ export function LiveSignalFeed({ maxRows = 20, dark = false }: { maxRows?: numbe
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3, flexWrap: 'wrap' }}>
                   <EventLabel type={entry.eventType} />
-                  {entry.source && <span style={{ fontSize: 9, color: textSub, fontWeight: 500 }}>· {entry.source}</span>}
+                  {entry.source && <span style={{ fontSize: 11, color: textSub, fontWeight: 500 }}>· {entry.source}</span>}
                   {entry.confidence != null && (
-                    <span style={{ fontSize: 9, fontWeight: 700, color: entry.eventType === 'trigger_fired' ? GOLD : textSub }}>{entry.confidence}%</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: entry.eventType === 'trigger_fired' ? GOLD : textSub }}>{entry.confidence}%</span>
                   )}
                 </div>
                 <div style={{ fontSize: 12, color: textPrimary, fontWeight: entry.eventType === 'trigger_fired' ? 700 : 400, lineHeight: 1.4, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' } as any}>

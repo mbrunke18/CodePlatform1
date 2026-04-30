@@ -295,7 +295,7 @@ export default function Growth() {
                     <div style={{
                       position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
                       background: tier.highlight ? GOLD : NAVY,
-                      color: "#fff", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase",
+                      color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase",
                       padding: "4px 14px", borderRadius: 0, whiteSpace: "nowrap"
                     }}>
                       {tier.badge}
@@ -351,7 +351,7 @@ export default function Growth() {
                   {/* ROI note — right below price where eyes land */}
                   <div style={{ background: tier.highlight ? `rgba(201,168,76,0.07)` : `rgba(10,15,46,0.04)`, borderLeft: `3px solid ${tier.color}`, padding: "10px 14px", marginBottom: 20, borderRadius: "0 4px 4px 0" }}>
                     <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.6, margin: 0 }}>
-                      <strong style={{ color: tier.color, fontSize: 9, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>ROI — </strong>
+                      <strong style={{ color: tier.color, fontSize: 11, letterSpacing: "0.15em", textTransform: "uppercase" as const }}>ROI — </strong>
                       {tier.roiNote}
                     </p>
                   </div>

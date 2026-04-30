@@ -98,7 +98,7 @@ export function ValueInsightToast({ insight, onDismiss }: ToastProps) {
             style={{
               background: "none",
               border: "none",
-              color: "rgba(255,255,255,0.3)",
+              color: "rgba(255,255,255,0.68)",
               cursor: "pointer",
               padding: "0 0 0 4px",
               fontSize: 13,
@@ -135,7 +135,7 @@ export function ValueInsightToast({ insight, onDismiss }: ToastProps) {
             marginBottom: 14,
           }}
         >
-          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.42)", lineHeight: 1.35 }}>
+          <span style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", lineHeight: 1.35 }}>
             {insight.metric.label}
           </span>
           <span

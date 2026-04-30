@@ -344,7 +344,7 @@ export default function ExecutiveHub() {
                     ].map(s => (
                       <div key={s.l} className="text-center">
                         <div className="text-xl font-bold" style={{ fontFamily: "'Cormorant Garamond', serif", color: GOLD }}>{s.v}</div>
-                        <div className="text-[9px] font-bold uppercase tracking-widest mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.l}</div>
+                        <div className="text-[9px] font-bold uppercase tracking-widest mt-0.5" style={{ color: 'rgba(255,255,255,0.68)' }}>{s.l}</div>
                       </div>
                     ))}
                   </div>

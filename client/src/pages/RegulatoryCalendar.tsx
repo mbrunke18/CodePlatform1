@@ -199,7 +199,7 @@ export default function RegulatoryCalendar() {
               { label: "Regulatory Bodies", value: new Set(EVENTS.map(e => e.regulatoryBody)).size, color: NAVY, bg: "rgba(10,15,46,0.04)", sub: "Monitored authorities" },
             ].map(({ label, value, color, bg, sub }) => (
               <div key={label} style={{ padding: "16px 18px", background: "#fff", border: "1px solid #E8E4DC", borderTop: `3px solid ${color}` }}>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 4 }}>{label}</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 4 }}>{label}</div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 700, color, lineHeight: 1 }}>{value}</div>
                 <div style={{ fontSize: 10, color: "#9CA3AF", marginTop: 4 }}>{sub}</div>
               </div>
@@ -247,14 +247,14 @@ export default function RegulatoryCalendar() {
                     <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: urgency.color, lineHeight: 1 }}>
                       {event.daysUntil === 0 ? "NOW" : event.daysUntil === 1 ? "1" : event.daysUntil}
                     </div>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>
                       {event.daysUntil === 0 ? "" : event.daysUntil === 1 ? "day" : "days"}
                     </div>
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
                       <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: urgency.color, padding: "2px 8px", background: urgency.bg }}>{urgency.label}</span>
-                      <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>{event.category}</span>
+                      <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>{event.category}</span>
                     </div>
                     <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 3 }}>{event.title}</div>
                     <div style={{ fontSize: 11, color: "#6B7280" }}>{event.regulatoryBody} · Due {fmtDate(event.deadline)}</div>
@@ -273,12 +273,12 @@ export default function RegulatoryCalendar() {
                     <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, marginBottom: 16 }}>{event.description}</p>
 
                     <div style={{ padding: "12px 16px", background: "rgba(201,168,76,0.06)", borderLeft: `3px solid ${GOLD}`, marginBottom: 16 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Recommended Action</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>Recommended Action</div>
                       <p style={{ fontSize: 12, color: NAVY, margin: 0, fontWeight: 500 }}>{event.action}</p>
                     </div>
 
                     <div style={{ marginBottom: 16 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 8 }}>Pre-Staged Readiness Protocols</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 8 }}>Pre-Staged Readiness Protocols</div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                         {event.relatedPlaybooks.map(pb => (
                           <button
@@ -295,7 +295,7 @@ export default function RegulatoryCalendar() {
                     </div>
 
                     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>Applies to:</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>Applies to:</div>
                       {event.applicableSectors.map(s => (
                         <span key={s} style={{ fontSize: 10, padding: "2px 8px", background: "#F8F7F4", color: NAVY, fontWeight: 600 }}>{s}</span>
                       ))}

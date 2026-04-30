@@ -625,9 +625,9 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <Activity className="w-4 h-4 text-[#C9A84C]" />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>Live Activity Feed</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)" }}>Live Activity Feed</span>
                   </div>
-                  <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>{demoExecution.completedTasks.length} of 20 tasks</span>
+                  <span style={{ fontSize: 10, color: "rgba(255,255,255,0.68)" }}>{demoExecution.completedTasks.length} of 20 tasks</span>
                 </div>
                 <div className="max-h-32 overflow-y-auto">
                   <div className="flex flex-wrap gap-2">

@@ -99,7 +99,7 @@ export default function AIRadarSimulation({
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Activity style={{ width: 16, height: 16, color: isMonitoring ? TEAL_LT : 'rgba(255,255,255,0.4)' }}
+            <Activity style={{ width: 16, height: 16, color: isMonitoring ? TEAL_LT : 'rgba(255,255,255,0.68)' }}
               className={isMonitoring ? 'animate-pulse' : ''} />
             <span style={{ fontWeight: 600, fontSize: 14, color: 'rgba(255,255,255,0.85)' }}>
               Trigger Monitoring
@@ -126,7 +126,7 @@ export default function AIRadarSimulation({
           <Progress value={confidence} className="h-3" data-testid="progress-confidence" />
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>Threshold: 85%</span>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)' }}>Threshold: 85%</span>
             {triggered && (
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ef4444', display: 'flex', alignItems: 'center', gap: 4 }}>
                 <AlertTriangle style={{ width: 12, height: 12 }} />

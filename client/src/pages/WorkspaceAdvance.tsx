@@ -217,7 +217,7 @@ function ReadinessCompoundsPanel() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
             <div style={{ width: 20, height: 1.5, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>ADVANCE Phase · Institutional Intelligence</span>
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD }}>ADVANCE Phase · Institutional Intelligence</span>
           </div>
           <h2 className="text-xl font-bold text-[#0A0F2E] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Readiness Compounds
@@ -227,7 +227,7 @@ function ReadinessCompoundsPanel() {
           </p>
         </div>
         <div style={{ textAlign: 'right', flexShrink: 0 }}>
-          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>Corporate Immune System</div>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>Corporate Immune System</div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, justifyContent: 'flex-end' }}>
             <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: NAVY, lineHeight: 1 }}>{IMMUNE_SYSTEM_SCORE}</span>
             <span style={{ fontSize: 14, color: '#9CA3AF' }}>/100</span>
@@ -259,7 +259,7 @@ function ReadinessCompoundsPanel() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0 }}>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 3 }}>Maturity</div>
+                    <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 3 }}>Maturity</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <div style={{ width: 80, height: 4, background: '#E8E4DC' }}>
                         <div style={{ width: `${pb.maturity}%`, height: '100%', background: pb.maturity >= 80 ? TEAL : pb.maturity >= 60 ? GOLD : '#9CA3AF' }} />
@@ -277,7 +277,7 @@ function ReadinessCompoundsPanel() {
 
               {isOpen && (
                 <div style={{ borderTop: '1px solid #E8E4DC', padding: '16px 20px 20px' }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 12 }}>Refinement History</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 12 }}>Refinement History</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 0, position: 'relative' }}>
                     <div style={{ position: 'absolute', left: 11, top: 8, bottom: 8, width: 1, background: '#E8E4DC' }} />
                     {pb.history.map((h, hi) => {
@@ -290,9 +290,9 @@ function ReadinessCompoundsPanel() {
                           </div>
                           <div style={{ flex: 1, paddingTop: 2 }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-                              <span style={{ fontSize: 9, fontWeight: 700, color: typeColor, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{h.type}</span>
+                              <span style={{ fontSize: 11, fontWeight: 700, color: typeColor, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{h.type}</span>
                               <span style={{ fontSize: 9, fontWeight: 700, color: NAVY, background: `${NAVY}08`, padding: '0px 5px' }}>{h.version}</span>
-                              <span style={{ fontSize: 9, color: '#9CA3AF' }}>{h.date}</span>
+                              <span style={{ fontSize: 11, color: '#9CA3AF' }}>{h.date}</span>
                             </div>
                             <div style={{ fontSize: 12, color: '#374151', lineHeight: 1.5 }}>{h.change}</div>
                           </div>
@@ -311,7 +311,7 @@ function ReadinessCompoundsPanel() {
       <div style={{ marginTop: 16, padding: '16px 20px', background: `${NAVY}04`, border: '1px solid #E8E4DC', borderTop: `3px solid ${TEAL}` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
           <Shield style={{ width: 14, height: 14, color: TEAL }} />
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL }}>Corporate Immune System Maturity Arc</span>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: TEAL }}>Corporate Immune System Maturity Arc</span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
           {[
@@ -325,8 +325,8 @@ function ReadinessCompoundsPanel() {
                 <span style={{ fontSize: 11, fontWeight: 700, color: s.active ? TEAL : '#9CA3AF' }}>{s.stage}</span>
                 {s.active && <span style={{ fontSize: 8, fontWeight: 700, color: TEAL, background: `${TEAL}15`, padding: '1px 5px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Current</span>}
               </div>
-              <div style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.4 }}>{s.desc}</div>
-              <div style={{ fontSize: 9, color: '#9CA3AF', marginTop: 4 }}>{s.range}</div>
+              <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.4 }}>{s.desc}</div>
+              <div style={{ fontSize: 11, color: '#9CA3AF', marginTop: 4 }}>{s.range}</div>
             </div>
           ))}
         </div>

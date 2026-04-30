@@ -183,9 +183,9 @@ export default function CompetitivePositioning() {
             {/* Three Category Visual */}
             <div className="flex flex-wrap justify-center gap-0 mb-12 max-w-3xl mx-auto">
               <div style={{ flex: 1, minWidth: 180, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "20px 24px", borderRight: "none" }}>
-                <Bell className="w-5 h-5 mb-3" style={{ color: "rgba(255,255,255,0.3)" }} />
+                <Bell className="w-5 h-5 mb-3" style={{ color: "rgba(255,255,255,0.68)" }} />
                 <div style={{ fontWeight: 600, color: "rgba(255,255,255,0.5)", fontSize: 14, marginBottom: 4 }}>Crisis Notification</div>
-                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.15em", textTransform: "uppercase" }}>Everbridge · OnSolve · Noggin</div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", letterSpacing: "0.15em", textTransform: "uppercase" }}>Everbridge · OnSolve · Noggin</div>
               </div>
               <div style={{ flex: 1, minWidth: 180, border: `2px solid ${GOLD}`, padding: "20px 24px", background: `rgba(201,168,76,0.08)`, position: "relative" }}>
                 <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", padding: "3px 12px", textTransform: "uppercase" }}>Category of One</div>
@@ -194,9 +194,9 @@ export default function CompetitivePositioning() {
                 <div style={{ fontSize: 10, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 700 }}>Readiness OS</div>
               </div>
               <div style={{ flex: 1, minWidth: 180, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "20px 24px", borderLeft: "none" }}>
-                <Settings className="w-5 h-5 mb-3" style={{ color: "rgba(255,255,255,0.3)" }} />
+                <Settings className="w-5 h-5 mb-3" style={{ color: "rgba(255,255,255,0.68)" }} />
                 <div style={{ fontWeight: 600, color: "rgba(255,255,255,0.5)", fontSize: 14, marginBottom: 4 }}>Project Management</div>
-                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.25)", letterSpacing: "0.15em", textTransform: "uppercase" }}>Jira · Asana · ServiceNow</div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", letterSpacing: "0.15em", textTransform: "uppercase" }}>Jira · Asana · ServiceNow</div>
               </div>
             </div>
 
@@ -335,7 +335,7 @@ export default function CompetitivePositioning() {
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: cat.featured ? GOLD : MUTED, marginBottom: 8 }}>
                     {cat.category}
                   </div>
-                  <div style={{ fontSize: 12, color: cat.featured ? "rgba(255,255,255,0.4)" : "#9CA3AF", marginBottom: 24, fontStyle: "italic" }}>
+                  <div style={{ fontSize: 12, color: cat.featured ? "rgba(255,255,255,0.68)" : "#9CA3AF", marginBottom: 24, fontStyle: "italic" }}>
                     {cat.vendors}
                   </div>
 
@@ -555,7 +555,7 @@ export default function CompetitivePositioning() {
                 ].map((d, i) => (
                   <div key={i} style={{ border: "1px solid rgba(255,255,255,0.06)", padding: "20px 16px", textAlign: "center", background: i === 4 ? "rgba(255,255,255,0.05)" : "transparent" }}>
                     <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: d.color, lineHeight: 1, marginBottom: 4 }}>{d.count}</div>
-                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.15em", lineHeight: 1.3 }}>{d.domain}</div>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.15em", lineHeight: 1.3 }}>{d.domain}</div>
                   </div>
                 ))}
               </div>

@@ -1314,7 +1314,7 @@ export default function PlaybookCustomize() {
 
                   {/* Principle callout */}
                   <div style={{ borderLeft: "3px solid #C9A84C", background: "#F8F7F4", padding: "24px 24px 24px 28px" }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Design Principle</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Design Principle</div>
                     <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 500, color: "#0A0F2E", lineHeight: 1.6, fontStyle: "italic", marginBottom: 12 }}>
                       "Preparation that produces compliance looks identical to preparation that produces commitment. The three criteria that separate them: participation in construction, the right to challenge any assumption, and a plan that reflects the owner's specific judgment."
                     </p>
@@ -1361,7 +1361,7 @@ export default function PlaybookCustomize() {
                   {/* Commitment vs compliance indicator */}
                   <div className="grid md:grid-cols-2 gap-6 pt-2">
                     <div className="p-5 border-2 border-[#E8E4DC] space-y-3">
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Compliance</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#9CA3AF" }}>Compliance</div>
                       <div className="space-y-2">
                         {["Readiness Protocol was received and reviewed", "Owner acknowledged the document", "No formal challenge mechanism", "Template defaults accepted as-is"].map(item => (
                           <div key={item} className="flex items-center gap-2 text-xs text-[#9CA3AF]">
@@ -1372,7 +1372,7 @@ export default function PlaybookCustomize() {
                       </div>
                     </div>
                     <div className="p-5 space-y-3" style={{ border: "2px solid #C9A84C", background: "rgba(201,168,76,0.03)" }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Commitment</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Commitment</div>
                       <div className="space-y-2">
                         {["Owner participated in construction", "Assumptions formally challenged", "Owner's judgment embedded in the plan", "Confirmed record — not a document received"].map(item => (
                           <div key={item} className="flex items-center gap-2 text-xs font-medium text-[#0A0F2E]">
@@ -1386,7 +1386,7 @@ export default function PlaybookCustomize() {
 
                   {/* First-Minute Diagnostic */}
                   <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 24, marginTop: 8 }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#0A0F2E", marginBottom: 10 }}>The First-Minute Test</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#0A0F2E", marginBottom: 10 }}>The First-Minute Test</div>
                     <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 10 }}>
                       When the trigger fires, the owner who built the response steps into it. The owner who was assigned the response steps back from it. That distinction — invisible during preparation — becomes visible at the acknowledgment step, in the first minutes of execution, before any outcome exists.
                     </p>

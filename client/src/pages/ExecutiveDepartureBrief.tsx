@@ -194,7 +194,7 @@ export default function ExecutiveDepartureBrief() {
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 7 }}>
                   <span style={{ fontSize: 11, fontWeight: 700, color: urgent ? '#FF8080' : T3, letterSpacing: '0.06em' }}>{channel}</span>
-                  <span style={{ fontSize: 9, color: T4, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{type}</span>
+                  <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{type}</span>
                 </div>
                 <p style={{ fontSize: 13, color: T2, lineHeight: 1.55, margin: 0, fontWeight: 500 }}>{msg}</p>
               </div>
@@ -299,7 +299,7 @@ export default function ExecutiveDepartureBrief() {
                   { label: "Time to Activation",     value: "Immediate" },
                 ].map(({ label, value }) => (
                   <div key={label}>
-                    <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: T4, marginBottom: 4 }}>{label}</div>
+                    <div style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: T4, marginBottom: 4 }}>{label}</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: T1 }}>{value}</div>
                   </div>
                 ))}
@@ -310,7 +310,7 @@ export default function ExecutiveDepartureBrief() {
           {/* Readiness Protocol match */}
           <div style={{ marginTop: 20, background: 'rgba(43,138,110,0.10)', border: '1px solid rgba(43,138,110,0.30)', borderRadius: 0, padding: '22px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: TEAL, marginBottom: 7, fontWeight: 700 }}>Readiness Protocol Recommended</div>
+              <div style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: TEAL, marginBottom: 7, fontWeight: 700 }}>Readiness Protocol Recommended</div>
               <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: T1 }}>C-Suite Continuity Response — CFO Departure</div>
               <div style={{ fontSize: 12, color: T3, marginTop: 5, fontWeight: 500 }}>170 Readiness Protocols evaluated · 1 matched at 94% confidence · 12 leadership continuity variants available</div>
             </div>
@@ -364,7 +364,7 @@ export default function ExecutiveDepartureBrief() {
               {/* Timer */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 36, flexWrap: 'wrap', gap: 16 }}>
                 <div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>Execution Clock</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>Execution Clock</div>
                   <div style={{ ...CG, fontSize: 56, fontWeight: 700, color: timerSeconds >= 443 ? TEAL : GOLD, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
                     {formatTime(timerSeconds)}
                   </div>
@@ -484,7 +484,7 @@ export default function ExecutiveDepartureBrief() {
               { label: "Annual Readiness OS investment",       value: "$250K",   sub: "Pays for itself on first activation" },
             ].map(({ label, value, sub }) => (
               <div key={label} style={{ background: 'rgba(201,168,76,0.09)', border: '1px solid rgba(201,168,76,0.22)', borderRadius: 0, padding: '20px' }}>
-                <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: T4, marginBottom: 8, fontWeight: 700 }}>{label}</div>
+                <div style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: T4, marginBottom: 8, fontWeight: 700 }}>{label}</div>
                 <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, marginBottom: 4 }}>{value}</div>
                 <div style={{ fontSize: 11, color: T3, fontWeight: 500 }}>{sub}</div>
               </div>
@@ -542,7 +542,7 @@ export default function ExecutiveDepartureBrief() {
           <div style={{ marginTop: 72, paddingTop: 36, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 10 }}>
               <div style={{ width: 22, height: 22, borderRadius: 0, border: `1px solid rgba(201,168,76,0.4)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ ...CG, fontSize: 9, fontWeight: 700, color: 'rgba(201,168,76,0.6)' }}>VM</span>
+                <span style={{ ...CG, fontSize: 11, fontWeight: 700, color: 'rgba(201,168,76,0.6)' }}>VM</span>
               </div>
               <span style={{ fontSize: 11, color: T4, letterSpacing: '0.1em', fontWeight: 600 }}>VaughnMartin Readiness OS</span>
             </div>

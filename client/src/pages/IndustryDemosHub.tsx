@@ -286,26 +286,26 @@ export default function IndustryDemosHub() {
                 </div>
                 <div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#F0EDE4", lineHeight: 1.1 }}>{demo.title}</div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.4)", marginTop: 2 }}>{demo.industry}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.4)", marginTop: 2 }}>{demo.industry}</div>
                 </div>
               </div>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 7px", flexShrink: 0 }}>{demo.type === 'OFFENSE' ? 'GROWTH & POSITIONING' : demo.type === 'DEFENSE' ? 'RISK & RESILIENCE' : 'TRANSFORMATION'}</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: accent, border: `1px solid ${accentBorder}`, padding: "2px 7px", flexShrink: 0 }}>{demo.type === 'OFFENSE' ? 'GROWTH & POSITIONING' : demo.type === 'DEFENSE' ? 'RISK & RESILIENCE' : 'TRANSFORMATION'}</span>
             </div>
 
             <div style={{ marginBottom: 14, flex: 1 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accent, marginBottom: 4 }}>Scenario</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: accent, marginBottom: 4 }}>Scenario</div>
               <div style={{ fontSize: 12, color: "rgba(240,237,228,0.75)", lineHeight: 1.5, marginBottom: 10 }}>{demo.scenario}</div>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Organization</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Organization</div>
               <div style={{ fontSize: 11, color: "rgba(240,237,228,0.45)" }}>{demo.organization}</div>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 12, marginBottom: 12 }}>
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Speed</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Speed</div>
                 <div style={{ fontSize: 11, fontWeight: 700, color: accent }}>{demo.timeSaved}</div>
               </div>
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Value Preserved</div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.35)", marginBottom: 3 }}>Value Preserved</div>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#F0EDE4" }}>{demo.valueSaved}</div>
               </div>
             </div>
@@ -562,7 +562,7 @@ export default function IndustryDemosHub() {
                         <Sparkles style={{ width: 18, height: 18, color: "#C9A84C" }} />
                       </div>
                       <div>
-                        <div style={{ fontSize: 9, fontWeight: 700, color: "#C9A84C", letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 4 }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: "#C9A84C", letterSpacing: "0.16em", textTransform: "uppercase" as const, marginBottom: 4 }}>
                           Your Recommended Scenario
                         </div>
                         <div style={{ fontSize: 17, fontWeight: 700, color: "#F0EDE4", marginBottom: 4, fontFamily: "'Cormorant Garamond', serif" }}>

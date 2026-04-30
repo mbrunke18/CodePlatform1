@@ -224,7 +224,7 @@ export default function PlatformCapabilities() {
             ].map(({ label, sub }) => (
               <div key={label} style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '10px 18px', textAlign: 'center' }}>
                 <div style={{ fontSize: 16, fontWeight: 800, color: GOLD, lineHeight: 1 }}>{label}</div>
-                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', fontWeight: 600, marginTop: 3 }}>{sub}</div>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontWeight: 600, marginTop: 3 }}>{sub}</div>
               </div>
             ))}
           </div>

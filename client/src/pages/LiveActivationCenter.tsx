@@ -790,8 +790,8 @@ export default function LiveActivationCenter() {
             {/* ─── Three-Decision Panel ─────────────────────────────── */}
             <div style={{ background: '#0A0F2E', padding: '32px 32px 24px' }}>
               <div style={{
-                fontSize: 9, fontWeight: 800, letterSpacing: '0.25em',
-                textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)',
+                fontSize: 11, fontWeight: 800, letterSpacing: '0.25em',
+                textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)',
                 marginBottom: 20, textAlign: 'center',
               }}>
                 When the trigger fires — three decisions already built
@@ -812,7 +812,7 @@ export default function LiveActivationCenter() {
                     transition: 'all 0.2s',
                   }}
                 >
-                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 10 }}>Option 1</div>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 10 }}>Option 1</div>
                   <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: "'Cormorant Garamond', serif" }}>
                     {activateMutation.isPending ? 'Initializing…' : 'Authorize as built'}
                   </div>
@@ -835,7 +835,7 @@ export default function LiveActivationCenter() {
                     transition: 'all 0.2s',
                   }}
                 >
-                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Option 2</div>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Option 2</div>
                   <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: "'Cormorant Garamond', serif" }}>
                     Call the audible
                   </div>
@@ -855,7 +855,7 @@ export default function LiveActivationCenter() {
                     cursor: 'pointer', transition: 'all 0.2s',
                   }}
                 >
-                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(43,138,110,0.75)', marginBottom: 10 }}>Option 3</div>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(43,138,110,0.75)', marginBottom: 10 }}>Option 3</div>
                   <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: "'Cormorant Garamond', serif" }}>
                     Select a different play
                   </div>
@@ -865,7 +865,7 @@ export default function LiveActivationCenter() {
                 </button>
               </div>
 
-              <div style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.25)', fontStyle: 'italic', letterSpacing: '0.03em' }}>
+              <div style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic', letterSpacing: '0.03em' }}>
                 Not automation. Preparation producing executive power.
               </div>
             </div>

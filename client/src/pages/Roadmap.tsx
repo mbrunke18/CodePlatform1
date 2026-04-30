@@ -146,7 +146,7 @@ function StatusBadge({ status }: { status: Status }) {
   return (
     <div style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "3px 10px", background: cfg.bg, border: `1px solid ${cfg.border}` }}>
       <Icon style={{ width: 10, height: 10, color: cfg.color }} />
-      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: cfg.color }}>{cfg.label}</span>
+      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: cfg.color }}>{cfg.label}</span>
     </div>
   );
 }

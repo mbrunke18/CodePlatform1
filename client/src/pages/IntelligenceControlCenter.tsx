@@ -491,7 +491,7 @@ export default function IntelligenceControlCenter() {
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20 }}>
                         <div style={{ flexShrink: 0, width: 80, textAlign: 'center', padding: '10px 0', borderRight: `1px solid ${BORDER}` }}>
                           <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: probColor, lineHeight: 1 }}>{alert.probability}%</div>
-                          <div style={{ fontSize: 9, fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>probability</div>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>probability</div>
                         </div>
                         <div style={{ flex: 1 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>

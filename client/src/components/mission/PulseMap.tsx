@@ -255,14 +255,14 @@ export default function PulseMap() {
                     <span className="text-2xl font-black" style={{ color: s.color }}>{s.count}</span>
                     <span className="text-[8px] font-bold uppercase tracking-wider" style={{ color: s.color }}>{s.label}</span>
                   </div>
-                  <p className="text-[9px]" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.desc}</p>
+                  <p className="text-[9px]" style={{ color: 'rgba(255,255,255,0.68)' }}>{s.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="space-y-1.5">
-            <p className="text-[8px] font-bold uppercase tracking-wider mb-2" style={{ color: 'rgba(255,255,255,0.3)' }}>Node Size = Trigger Count · Click Any Domain</p>
+            <p className="text-[8px] font-bold uppercase tracking-wider mb-2" style={{ color: 'rgba(255,255,255,0.68)' }}>Node Size = Trigger Count · Click Any Domain</p>
             {[
               { color: '#EF4444', label: 'At Risk (≥80%)' },
               { color: '#F97316', label: 'Approaching (≥55%)' },
@@ -281,13 +281,13 @@ export default function PulseMap() {
               {['IDENTIFY', 'DETECT', 'EXECUTE', 'ADVANCE'].map((phase, i) => (
                 <span key={phase}>
                   <span className="text-[7px] font-black uppercase tracking-wider" style={{
-                    color: phase === 'EXECUTE' ? GOLD : 'rgba(255,255,255,0.25)'
+                    color: phase === 'EXECUTE' ? GOLD : 'rgba(255,255,255,0.68)'
                   }}>{phase}</span>
-                  {i < 3 && <span className="text-[7px] mx-1" style={{ color: 'rgba(255,255,255,0.15)' }}>›</span>}
+                  {i < 3 && <span className="text-[7px] mx-1" style={{ color: 'rgba(255,255,255,0.68)' }}>›</span>}
                 </span>
               ))}
             </div>
-            <p className="text-[8px] mt-0.5" style={{ color: 'rgba(255,255,255,0.25)' }}>IDEA Framework · Mission Control</p>
+            <p className="text-[8px] mt-0.5" style={{ color: 'rgba(255,255,255,0.68)' }}>IDEA Framework · Mission Control</p>
           </div>
         </div>
       </div>

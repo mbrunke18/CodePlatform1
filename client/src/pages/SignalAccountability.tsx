@@ -33,7 +33,7 @@ function EscalationBadge({ level }: { level: string }) {
   }[level] ?? { bg: OFF, color: MUTED, border: BORDER, label: level };
   return (
     <span style={{
-      fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase",
+      fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase",
       background: config.bg, color: config.color, border: `1px solid ${config.border}`,
       padding: "2px 8px",
     }}>
@@ -65,7 +65,7 @@ function SignalRow({ signal, onAcknowledge, isPending }: {
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
           <EscalationBadge level={signal.escalationLevel} />
           {signal.triggerDomain && (
-            <span style={{ fontSize: 9, color: MUTED, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <span style={{ fontSize: 11, color: MUTED, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               {signal.triggerDomain}
             </span>
           )}
@@ -176,7 +176,7 @@ export default function SignalAccountability() {
             <div key={label} style={{ padding: "18px 20px", background: "#fff", border: `1px solid ${BORDER}`, borderTop: `3px solid ${color}` }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
                 <Icon style={{ width: 14, height: 14, color }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED }}>{label}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED }}>{label}</span>
               </div>
               <div style={{ ...CG, fontSize: 36, fontWeight: 700, color, lineHeight: 1 }}>{isLoading ? "—" : value}</div>
             </div>

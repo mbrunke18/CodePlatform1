@@ -413,7 +413,7 @@ export default function SignalIntelligenceHub() {
               <Button 
                 variant="outline" 
                 onClick={() => window.location.href = '/request-access'}
-                style={{ borderColor: "rgba(255,255,255,0.3)", color: "white" }}
+                style={{ borderColor: "rgba(255,255,255,0.68)", color: "white" }}
               >
                 Sign In
               </Button>

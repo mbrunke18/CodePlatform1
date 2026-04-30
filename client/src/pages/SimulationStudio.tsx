@@ -145,11 +145,11 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
 
                   <div style={{ padding: '12px 20px', background: `${GOLD}08`, borderTop: `1px solid ${GOLD}40`, borderBottom: `1px solid ${GOLD}40`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap' as const, gap: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase' as const, color: GOLD }}>Coverage Brief</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase' as const, color: GOLD }}>Coverage Brief</div>
                       <div style={{ width: 1, height: 12, background: `${GOLD}40` }} />
-                      <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF' }}>Pre-Staged · System-Analyzed</div>
+                      <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#9CA3AF' }}>Pre-Staged · System-Analyzed</div>
                     </div>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: TEAL }}>● Analysis Complete</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: TEAL }}>● Analysis Complete</div>
                   </div>
 
                   <div>

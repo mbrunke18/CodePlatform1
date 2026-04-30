@@ -167,7 +167,7 @@ export default function TwelveMinuteTimer({
                     <span style={{
                       fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 0,
                       background: isActive ? (isLast ? `${TEAL_LT}20` : 'rgba(201,168,76,0.12)') : 'rgba(255,255,255,0.06)',
-                      color: isActive ? (isLast ? TEAL_LT : GOLD) : 'rgba(255,255,255,0.3)',
+                      color: isActive ? (isLast ? TEAL_LT : GOLD) : 'rgba(255,255,255,0.68)',
                       border: `1px solid ${isActive ? (isLast ? `${TEAL_LT}30` : 'rgba(201,168,76,0.2)') : 'rgba(255,255,255,0.06)'}`,
                     }}>
                       {event.label}
@@ -175,14 +175,14 @@ export default function TwelveMinuteTimer({
                     {event.stakeholderCount && isActive && (
                       <span style={{
                         fontSize: 10, fontWeight: 600,
-                        color: 'rgba(255,255,255,0.4)',
+                        color: 'rgba(255,255,255,0.68)',
                         whiteSpace: 'nowrap',
                       }}>
                         {event.stakeholderCount} people
                       </span>
                     )}
                   </div>
-                  <p style={{ fontSize: 12, color: isActive ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.3)', margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 12, color: isActive ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.68)', margin: 0, lineHeight: 1.5 }}>
                     {event.description}
                   </p>
                 </div>
@@ -203,15 +203,15 @@ export default function TwelveMinuteTimer({
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, textAlign: 'center' }}>
             <div>
               <div style={{ fontSize: 22, fontWeight: 700, color: TEAL_LT }}>12:00</div>
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>Total Time</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 2 }}>Total Time</div>
             </div>
             <div>
               <div style={{ fontSize: 22, fontWeight: 700, color: TEAL_LT }}>193</div>
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>Stakeholders</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 2 }}>Stakeholders</div>
             </div>
             <div>
               <div style={{ fontSize: 22, fontWeight: 700, color: TEAL_LT }}>$50M</div>
-              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>Budget Activated</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 2 }}>Budget Activated</div>
             </div>
           </div>
         </div>

@@ -127,11 +127,11 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
             <div style={{ width: 20, height: 1.5, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.18em', textTransform: 'uppercase' as const }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.18em', textTransform: 'uppercase' as const }}>
               Execution Stage Reference
             </span>
             <div style={{ width: 20, height: 1.5, background: GOLD }} />
-            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', marginLeft: 8 }}>
+            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', marginLeft: 8 }}>
               Stages 1–4 complete in 12 minutes. Stages 5–6 are the actual work that follows.
             </span>
           </div>
@@ -154,19 +154,19 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                     }} />
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 3 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: stage.inClock ? GOLD : '#6B7280', letterSpacing: '0.06em' }}>
+                    <span style={{ fontSize: 11, fontWeight: 800, color: stage.inClock ? GOLD : '#6B7280', letterSpacing: '0.06em' }}>
                       {String(stage.number).padStart(2, '0')} {stage.name.toUpperCase()}
                     </span>
                     {stage.clockEnd && (
                       <span style={{ fontSize: 8, fontWeight: 700, color: TEAL, background: 'rgba(43,138,110,0.15)', padding: '1px 4px', borderRadius: 0 }}>12 MIN</span>
                     )}
                   </div>
-                  <div style={{ fontSize: 9, color: stage.inClock ? 'rgba(240,237,228,0.55)' : 'rgba(255,255,255,0.25)', lineHeight: 1.4 }}>
+                  <div style={{ fontSize: 11, color: stage.inClock ? 'rgba(240,237,228,0.55)' : 'rgba(255,255,255,0.68)', lineHeight: 1.4 }}>
                     {stage.shortDef}
                   </div>
                 </div>
                 {i < EXECUTION_STAGES.length - 1 && !stage.clockEnd && (
-                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.15)', flexShrink: 0, zIndex: 1 }}>→</div>
+                  <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', flexShrink: 0, zIndex: 1 }}>→</div>
                 )}
                 {stage.clockEnd && (
                   <div style={{ fontSize: 10, color: TEAL, flexShrink: 0, zIndex: 1, fontWeight: 700 }}>→</div>
@@ -197,11 +197,11 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
               border: `1px solid ${stage.inClock ? GOLD + '30' : '#E5E7EB'}`,
               borderTop: `2px solid ${stage.inClock ? GOLD : '#E5E7EB'}`,
             }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: NAVY, marginBottom: 3 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 3 }}>
                 {stage.number}. {stage.name}
-                {stage.clockEnd && <span style={{ color: TEAL, marginLeft: 4, fontSize: 8 }}>←12m</span>}
+                {stage.clockEnd && <span style={{ color: TEAL, marginLeft: 4, fontSize: 11 }}>←12m</span>}
               </div>
-              <div style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.4 }}>{stage.shortDef}</div>
+              <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.4 }}>{stage.shortDef}</div>
             </div>
           ))}
         </div>
@@ -237,7 +237,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
               {stage.clockEnd && (
                 <div style={{
                   position: 'absolute' as const, top: 12, right: 12,
-                  fontSize: 9, fontWeight: 700, color: TEAL,
+                  fontSize: 11, fontWeight: 700, color: TEAL,
                   background: 'rgba(43,138,110,0.1)', padding: '2px 8px', borderRadius: 0,
                   letterSpacing: '0.08em',
                 }}>
@@ -255,7 +255,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                 </div>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 800, color: NAVY }}>{stage.name}</div>
-                  <div style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>Within 12 minutes</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>Within 12 minutes</div>
                 </div>
               </div>
               <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontFamily: "'DM Sans', Arial, sans-serif" }}>
@@ -301,7 +301,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                 </div>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 800, color: NAVY }}>{stage.name}</div>
-                  <div style={{ fontSize: 9, fontWeight: 700, color: '#9CA3AF', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>After mobilization — actual work</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: '#9CA3AF', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>After mobilization — actual work</div>
                 </div>
               </div>
               <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontFamily: "'DM Sans', Arial, sans-serif" }}>
@@ -324,7 +324,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
           </div>
           <div style={{ textAlign: 'right' as const, flexShrink: 0 }}>
             <div style={{ fontSize: 28, fontWeight: 800, color: GOLD }}>3,600×</div>
-            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em' }}>Execution Head Start</div>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', letterSpacing: '0.08em' }}>Execution Head Start</div>
           </div>
         </div>
 

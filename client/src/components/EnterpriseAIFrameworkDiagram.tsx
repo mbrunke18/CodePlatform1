@@ -126,7 +126,7 @@ export default function EnterpriseAIFrameworkDiagram() {
                       paddingLeft: 10, position: "relative", marginBottom: 2,
                       fontFamily: "'Barlow', sans-serif",
                     }}>
-                      <span style={{ position: "absolute", left: 0, color: TEAL2, fontSize: 9 }}>✓</span>
+                      <span style={{ position: "absolute", left: 0, color: TEAL2, fontSize: 11 }}>✓</span>
                       {item}
                     </div>
                   ))}
@@ -144,7 +144,7 @@ export default function EnterpriseAIFrameworkDiagram() {
           <div style={{
             textAlign: "center",
             fontFamily: "'Barlow Condensed', sans-serif",
-            fontSize: 9, letterSpacing: "1.5px", color: GOLD,
+            fontSize: 11, letterSpacing: "1.5px", color: GOLD,
             textTransform: "uppercase", marginBottom: 2,
           }}>
             All four pillars route through the coordination layer

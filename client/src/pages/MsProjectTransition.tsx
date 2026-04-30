@@ -316,7 +316,7 @@ export default function MsProjectTransition() {
                 style={{ padding: "20px 24px", background: "#F8F7F4", border: `1px solid #E8E4DC`, textAlign: "left" as const, cursor: "pointer", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}
               >
                 <div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>{item.tag}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>{item.tag}</div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: NAVY, marginBottom: 5 }}>{item.label}</div>
                   <div style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5 }}>{item.sub}</div>
                 </div>

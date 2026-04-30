@@ -210,7 +210,7 @@ export default function InvestorLanding() {
                 },
               ].map(m => (
                 <div key={m.n} style={{ background: '#0A0F2E', padding: '32px 28px' }}>
-                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: m.accent, marginBottom: 12 }}>Moat {m.n}</div>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: m.accent, marginBottom: 12 }}>Moat {m.n}</div>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }}>{m.label}</h3>
                   <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, marginBottom: 20 }}>{m.body}</p>
                   <div style={{ borderTop: `1px solid ${m.accent}30`, paddingTop: 16 }}>
@@ -254,12 +254,12 @@ export default function InvestorLanding() {
             ].map(p => (
               <Card key={p.n} className="bg-white border border-[#E8E4DC] transition-all" style={{ borderTopColor: p.accent, borderTopWidth: 3 }}>
                 <CardContent className="p-6">
-                  <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: p.accent, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>Problem {p.n}</div>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: p.accent, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>Problem {p.n}</div>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 8, lineHeight: 1.2 }}>{p.label}</h3>
                   <p className="text-sm text-[#0A0F2E] mb-2 leading-relaxed">{p.body}</p>
                   <p className="text-xs text-[#6B7280] mb-4">{p.stat}</p>
                   <div className="border-t border-[#E8E4DC] pt-4">
-                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 6 }}>Solution</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 6 }}>Solution</div>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: '#2B8A6E' }}>{p.metric}</div>
                   </div>
                 </CardContent>
@@ -314,7 +314,7 @@ export default function InvestorLanding() {
               { n: '05', label: 'Learning Agent', sub: 'Compounds institutional knowledge', color: '#C9A84C' },
             ].map(a => (
               <div key={a.n} className="bg-[#F8F7F4] border border-[#E8E4DC] p-5 text-center" style={{ borderTopColor: a.color, borderTopWidth: 2 }}>
-                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', color: a.color, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>{a.n}</div>
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', color: a.color, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>{a.n}</div>
                 <div className="text-sm font-semibold text-[#0A0F2E] mb-1">{a.label}</div>
                 <div className="text-xs text-[#6B7280]">{a.sub}</div>
               </div>
@@ -740,7 +740,7 @@ export default function InvestorLanding() {
                 <div style={{ padding: "28px 28px 24px", borderRight: "1px solid #E8E4DC" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                     <div style={{ width: 20, height: 1.5, background: "#2B8A6E", flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>Bain &amp; Company — AI's Next Operating Model, 2025</span>
+                    <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#2B8A6E" }}>Bain &amp; Company — AI's Next Operating Model, 2025</span>
                   </div>
                   <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 22, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.4, fontStyle: "italic", marginBottom: 12 }}>
                     "Rediscovery is not continuity. A system that must reconstruct the state of the work each time cannot be said to carry the work forward."
@@ -753,14 +753,14 @@ export default function InvestorLanding() {
                 {/* Right — product value + customer value */}
                 <div style={{ padding: "28px 28px 24px", display: "flex", flexDirection: "column", gap: 20 }}>
                   <div>
-                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>What this means for the product</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 8 }}>What this means for the product</div>
                     <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
                       Readiness OS eliminates the rediscovery tax entirely. 170 pre-staged Readiness Protocols mean the context, ownership, and decision logic exist <em>before</em> the trigger fires — not reconstructed after. The platform is the continuity layer Bain describes as missing.
                     </p>
                   </div>
                   <div style={{ width: "100%", height: 1, background: "#E8E4DC" }} />
                   <div>
-                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 8 }}>What this means for the customer</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 8 }}>What this means for the customer</div>
                     <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
                       The Fortune 1000 customer doesn't spend 30 days mobilizing. They respond in 12 minutes — because the institutional memory, ownership assignments, and execution sequence were built and rehearsed before pressure arrived. Every subsequent deployment compounds that advantage.
                     </p>
@@ -789,7 +789,7 @@ export default function InvestorLanding() {
             </div>
 
             <div style={{ background: "rgba(10,15,46,0.03)", border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "24px 28px", marginBottom: 40, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Research Foundation</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12 }}>Research Foundation</div>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 20, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, marginBottom: 10, fontStyle: "italic" }}>
                 "The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase — because that logic is built by the organization itself, compounded across every deployment."
               </p>
@@ -801,7 +801,7 @@ export default function InvestorLanding() {
             {/* Bain Institutional Memory Callout */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 40 }}>
               <div style={{ background: "rgba(43,138,110,0.05)", border: "1px solid #E8E4DC", borderLeft: "3px solid #2B8A6E", padding: "20px 22px" }}>
-                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 10 }}>Bain — Product Value</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 10 }}>Bain — Product Value</div>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, fontStyle: "italic", marginBottom: 10 }}>
                   "Organizations must address memory hygiene, permissioning, and knowledge portability — particularly who owns the institutional memory agents accumulate."
                 </p>
@@ -810,7 +810,7 @@ export default function InvestorLanding() {
                 </p>
               </div>
               <div style={{ background: "rgba(201,168,76,0.05)", border: "1px solid #E8E4DC", borderLeft: "3px solid #C9A84C", padding: "20px 22px" }}>
-                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10 }}>Bain — Customer Value</div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 10 }}>Bain — Customer Value</div>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: "#0A0F2E", lineHeight: 1.45, fontStyle: "italic", marginBottom: 10 }}>
                   "The economic logic changes with persistence: measure by context retained, rework eliminated, and institutional knowledge built."
                 </p>
@@ -949,7 +949,7 @@ export default function InvestorLanding() {
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 16 }}>
                     <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: v.accent, marginBottom: 4 }}>— {v.name}</p>
                     <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.02em', marginBottom: 10 }}>{v.title}</p>
-                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.35)', lineHeight: 1.55 }}>{v.context}</p>
+                    <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.68)', lineHeight: 1.55 }}>{v.context}</p>
                   </div>
                 </div>
               ))}
@@ -957,7 +957,7 @@ export default function InvestorLanding() {
 
             <div style={{ background: 'rgba(201,168,76,0.05)', border: '1px solid rgba(201,168,76,0.25)', borderLeft: '3px solid rgba(201,168,76,0.6)', padding: '36px 40px', maxWidth: 820, margin: '0 auto', textAlign: 'left' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
-                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Reposted Publicly · LinkedIn · April 20, 2026 · Full Post</span>
+                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Reposted Publicly · LinkedIn · April 20, 2026 · Full Post</span>
                 <div style={{ flex: 1, height: 1, background: 'rgba(201,168,76,0.2)' }} />
               </div>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(17px,1.6vw,21px)', fontStyle: 'italic', color: 'rgba(255,255,255,0.92)', lineHeight: 1.75, marginBottom: 18 }}>
@@ -974,7 +974,7 @@ export default function InvestorLanding() {
               </p>
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 18 }}>
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: 'rgba(201,168,76,0.85)', letterSpacing: '0.06em', marginBottom: 4 }}>Dr. Kerry Huang</p>
-                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.4)', margin: 0 }}>Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Posted to his full professional network, naming Martin Brunke by name</p>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: 'rgba(255,255,255,0.68)', margin: 0 }}>Fortune 50 AVP · ESI Top 1% Researcher · Forbes Business Council · Posted to his full professional network, naming Martin Brunke by name</p>
               </div>
             </div>
           </div>
@@ -1353,7 +1353,7 @@ export default function InvestorLanding() {
               <div style={{ borderRight: '1px solid #E8E4DC', padding: '40px 44px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>Phase 1 — Now</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>Phase 1 — Now</div>
                     <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: '#0A0F2E', margin: 0, lineHeight: 1.2 }}>External Trigger Response</h3>
                   </div>
                   <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', padding: '4px 10px', background: '#2B8A6E', color: '#fff', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, flexShrink: 0 }}>Live · Pre-Revenue</span>
@@ -1396,7 +1396,7 @@ export default function InvestorLanding() {
               <div style={{ padding: '40px 44px', background: '#FAFAF8' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 6 }}>Phase 2 — 2026–2027</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 6 }}>Phase 2 — 2026–2027</div>
                     <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: '#0A0F2E', margin: 0, lineHeight: 1.2 }}>Internal Initiative Deployment</h3>
                   </div>
                   <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.14em', padding: '4px 10px', background: 'rgba(201,168,76,0.12)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.35)', textTransform: 'uppercase' as const, whiteSpace: 'nowrap' as const, flexShrink: 0 }}>Roadmap</span>
@@ -1440,7 +1440,7 @@ export default function InvestorLanding() {
             <div style={{ background: '#0A0F2E', padding: '32px 44px', display: 'flex', alignItems: 'center', gap: 40, flexWrap: 'wrap' as const }}>
               <div style={{ width: 3, height: 56, background: '#C9A84C', flexShrink: 0 }} />
               <div style={{ flex: 1, minWidth: 280 }}>
-                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)', marginBottom: 10 }}>The unifying thesis</div>
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.6)', marginBottom: 10 }}>The unifying thesis</div>
                 <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: '#fff', margin: 0, lineHeight: 1.5, fontStyle: 'italic' as const }}>
                   "Same platform. Same preparation thesis. The failure mode is identical — the handoff between what was approved and what actually executed at the front line."
                 </p>

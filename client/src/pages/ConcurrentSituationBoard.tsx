@@ -233,10 +233,10 @@ export default function ConcurrentSituationBoard() {
                   <div key={i} style={{ padding: '16px 24px', borderRight: i < 3 ? `1px solid rgba(255,255,255,0.08)` : 'none' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
                       <Icon style={{ width: 12, height: 12, color: s.color }} />
-                      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>{s.label}</span>
+                      <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)' }}>{s.label}</span>
                     </div>
                     <div style={{ ...CG, fontSize: 26, fontWeight: 700, color: s.color, lineHeight: 1, marginBottom: 3 }}>{s.value}</div>
-                    <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>{s.sub}</div>
+                    <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>{s.sub}</div>
                   </div>
                 );
               })}
@@ -349,7 +349,7 @@ export default function ConcurrentSituationBoard() {
                             );
                           })}
                         </div>
-                        <div style={{ fontSize: 9, color: TEAL, marginTop: 4 }}>Mobilized {sit.mobilizedAt}</div>
+                        <div style={{ fontSize: 11, color: TEAL, marginTop: 4 }}>Mobilized {sit.mobilizedAt}</div>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                         {!isPriority && (
@@ -382,9 +382,9 @@ export default function ConcurrentSituationBoard() {
                     { label: 'Execution head start across all three', value: '3,600×', sub: 'The response was ready before the trigger fired', color: GOLD },
                   ].map((s, i) => (
                     <div key={i} style={{ padding: '14px 16px', background: '#fff', border: `1px solid ${BORDER}` }}>
-                      <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 6, lineHeight: 1.4 }}>{s.label}</div>
+                      <div style={{ fontSize: 11, color: '#9CA3AF', marginBottom: 6, lineHeight: 1.4 }}>{s.label}</div>
                       <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: s.color, lineHeight: 1, marginBottom: 3 }}>{s.value}</div>
-                      <div style={{ fontSize: 9, color: '#6B7280' }}>{s.sub}</div>
+                      <div style={{ fontSize: 11, color: '#6B7280' }}>{s.sub}</div>
                     </div>
                   ))}
                 </div>
@@ -398,7 +398,7 @@ export default function ConcurrentSituationBoard() {
               <div style={{ background: '#fff', border: `1px solid ${BORDER}` }}>
                 <div style={{ padding: '14px 20px', borderBottom: `1px solid ${BORDER}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF' }}>Leadership Capacity</div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 9, fontWeight: 700, color: RED }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 700, color: RED }}>
                     <AlertTriangle style={{ width: 10, height: 10 }} />
                     1 Executive Critical
                   </div>
@@ -421,7 +421,7 @@ export default function ConcurrentSituationBoard() {
                             <span style={{ fontSize: 11, fontWeight: 700, color: cc }}>{leader.capacity}% avail.</span>
                           </div>
                           <Progress value={leader.capacity} className="h-1.5" />
-                          {isCritical && <div style={{ fontSize: 9, color: RED, marginTop: 3, fontWeight: 600 }}>⚠ Reallocation recommended below</div>}
+                          {isCritical && <div style={{ fontSize: 11, color: RED, marginTop: 3, fontWeight: 600 }}>⚠ Reallocation recommended below</div>}
                         </div>
                       </div>
                     );
@@ -443,9 +443,9 @@ export default function ConcurrentSituationBoard() {
                         <div style={{ fontSize: 10, fontWeight: 700, color: isApproved ? TEAL : GOLD, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 4 }}>{rec.from} · {rec.situation}</div>
                         <div style={{ fontSize: 11, color: NAVY, lineHeight: 1.5, marginBottom: 8 }}>{rec.action}</div>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <span style={{ fontSize: 9, color: TEAL, fontWeight: 700 }}>+{rec.frees} capacity freed</span>
+                          <span style={{ fontSize: 11, color: TEAL, fontWeight: 700 }}>+{rec.frees} capacity freed</span>
                           {isApproved ? (
-                            <span style={{ fontSize: 9, fontWeight: 700, color: TEAL, display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, color: TEAL, display: 'flex', alignItems: 'center', gap: 4 }}>
                               <CheckCircle style={{ width: 11, height: 11 }} /> Approved
                             </span>
                           ) : (

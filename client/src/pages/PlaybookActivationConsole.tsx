@@ -747,7 +747,7 @@ export default function PlaybookActivationConsole() {
               ].map((line, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 5, height: 5, background: i === 0 ? TEAL : "rgba(255,255,255,0.15)", flexShrink: 0 }} />
-                  <span style={{ color: i === 0 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.25)", fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{line}</span>
+                  <span style={{ color: i === 0 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.68)", fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{line}</span>
                 </div>
               ))}
             </div>
@@ -798,8 +798,8 @@ export default function PlaybookActivationConsole() {
               ].map((stat, i) => (
                 <div key={i} style={{ padding: "20px 16px", background: i === 1 ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.03)", borderRight: i < 2 ? "1px solid rgba(201,168,76,0.2)" : "none" }}>
                   <div style={{ fontSize: 28, fontWeight: 700, color: i === 1 ? GOLD : "#fff", fontFamily: "'Barlow Condensed', sans-serif", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2 }}>{stat.label}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", fontFamily: "'Barlow Condensed', sans-serif" }}>{stat.sub}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2 }}>{stat.label}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", fontFamily: "'Barlow Condensed', sans-serif" }}>{stat.sub}</div>
                 </div>
               ))}
             </div>
@@ -1062,7 +1062,7 @@ export default function PlaybookActivationConsole() {
                     display:"inline-flex", alignItems:"center", gap:5, 
                     background: isOnTrack ? "rgba(43,138,110,0.2)" : "rgba(201,168,76,0.2)", 
                     color: isOnTrack ? TEAL_LT : GOLD_LT, 
-                    fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"6px 14px",
+                    fontSize: 11, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"6px 14px",
                     border: `1px solid ${isOnTrack ? TEAL : GOLD}`
                   }}>
                     {isOnTrack ? '✅ On Track for 12 Min Target' : '⚠️ Exceeding 12 Min Target'}
@@ -1192,7 +1192,7 @@ export default function PlaybookActivationConsole() {
                     display:"inline-flex", alignItems:"center", gap:5, 
                     background: playbook.readinessState === 'green' ? "rgba(43,138,110,0.12)" : "rgba(201,168,76,0.12)", 
                     color: playbook.readinessState === 'green' ? TEAL : GOLD, 
-                    fontSize:9, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px", marginTop:4 
+                    fontSize: 11, fontWeight:700, letterSpacing:"0.15em", textTransform:"uppercase" as const, padding:"3px 10px", marginTop:4 
                   }} data-testid="badge-Readiness Protocol-readiness">
                     {playbook.readinessState === 'green' ? '✓ Ready' : '⚠ Needs Review'}
                   </div>
@@ -1757,7 +1757,7 @@ export default function PlaybookActivationConsole() {
                             {/* Ownership rate bar */}
                             <div style={{ marginBottom: 12 }}>
                               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>
+                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)" }}>
                                   Ownership Transfer Rate
                                 </span>
                                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: ownershipVerdict.color }}>
@@ -1772,11 +1772,11 @@ export default function PlaybookActivationConsole() {
                             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 16 }}>
                               <div style={{ textAlign: "center", padding: "10px 8px", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.25)" }}>
                                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{tasksAcknowledged}</div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Ownership Records</div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Ownership Records</div>
                               </div>
                               <div style={{ textAlign: "center", padding: "10px 8px", background: silentTasks.length > 0 ? "rgba(185,28,28,0.1)" : "rgba(255,255,255,0.03)", border: `1px solid ${silentTasks.length > 0 ? "rgba(185,28,28,0.3)" : "rgba(255,255,255,0.08)"}` }}>
-                                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: silentTasks.length > 0 ? "#EF4444" : "rgba(255,255,255,0.3)", lineHeight: 1 }}>{silentTasks.length}</div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Silent at Acknowledgment</div>
+                                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: silentTasks.length > 0 ? "#EF4444" : "rgba(255,255,255,0.68)", lineHeight: 1 }}>{silentTasks.length}</div>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Silent at Acknowledgment</div>
                               </div>
                             </div>
                           </div>
@@ -1793,11 +1793,11 @@ export default function PlaybookActivationConsole() {
                                 </div>
                               ))}
                               {silentTasks.length > 4 && (
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 4 }}>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", marginTop: 4 }}>
                                   +{silentTasks.length - 4} more silent tasks
                                 </div>
                               )}
-                              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 10, lineHeight: 1.6, marginBottom: 0, fontStyle: "italic" }}>
+                              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", marginTop: 10, lineHeight: 1.6, marginBottom: 0, fontStyle: "italic" }}>
                                 "The earliest signal that preparation didn't transfer is not that the playbook failed — it is silence at acknowledgment."
                               </p>
                             </div>
@@ -1806,7 +1806,7 @@ export default function PlaybookActivationConsole() {
                           {/* Confirmed acknowledgments */}
                           {tasksAcknowledged > 0 && (
                             <div>
-                              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 10 }}>
+                              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 10 }}>
                                 Ownership Records Confirmed
                               </div>
                               <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
@@ -1822,14 +1822,14 @@ export default function PlaybookActivationConsole() {
                                         <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: TEAL, fontWeight: 600 }}>
                                           {ack.role} · {ack.by} · {ack.at}
                                           {ack.actionType === 'escalate' && <span style={{ color: "#F59E0B", marginLeft: 6 }}>↑ Escalated</span>}
-                                          {ack.actionType === 'delegate' && <span style={{ color: "rgba(255,255,255,0.4)", marginLeft: 6 }}>→ Delegated</span>}
+                                          {ack.actionType === 'delegate' && <span style={{ color: "rgba(255,255,255,0.68)", marginLeft: 6 }}>→ Delegated</span>}
                                         </div>
                                       </div>
                                     </div>
                                   );
                                 })}
                                 {tasksAcknowledged > 5 && (
-                                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.3)", padding: "4px 12px" }}>
+                                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", padding: "4px 12px" }}>
                                     +{tasksAcknowledged - 5} additional ownership records confirmed
                                   </div>
                                 )}
@@ -1852,7 +1852,7 @@ export default function PlaybookActivationConsole() {
 
                           {/* What the Gate Measures */}
                           <div style={{ marginBottom: 24 }}>
-                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>
+                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 14 }}>
                               What This Gate Measures
                             </div>
                             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, marginBottom: 0 }}>
@@ -1864,7 +1864,7 @@ export default function PlaybookActivationConsole() {
                           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 13, fontStyle: "italic", color: "rgba(255,255,255,0.5)", lineHeight: 1.65, marginBottom: 16 }}>
                             The outcome is not only decided before the moment — it is validated in it. The system either confirms the original owner or redistributes ownership in the first moments of challenge. This gate measures which happened.
                           </div>
-                          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>
+                          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 14 }}>
                             Three Signals That Preparation Produced Ownership
                           </div>
                           {[
@@ -1889,14 +1889,14 @@ export default function PlaybookActivationConsole() {
                           ].map(sig => (
                             <div key={sig.n} style={{ display: "flex", gap: 14, marginBottom: 16, padding: "14px 16px", background: sig.pass ? "rgba(43,138,110,0.07)" : "rgba(255,255,255,0.02)", border: `1px solid ${sig.pass ? "rgba(43,138,110,0.2)" : "rgba(255,255,255,0.07)"}` }}>
                               <div style={{ flexShrink: 0, width: 20, textAlign: "center" as const }}>
-                                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 12, fontWeight: 700, color: sig.pass ? TEAL : "rgba(255,255,255,0.2)" }}>{sig.n}</span>
+                                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 12, fontWeight: 700, color: sig.pass ? TEAL : "rgba(255,255,255,0.68)" }}>{sig.n}</span>
                               </div>
                               <div style={{ flex: 1 }}>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: sig.pass ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.35)", marginBottom: 3, display: "flex", alignItems: "center", gap: 8 }}>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: sig.pass ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.68)", marginBottom: 3, display: "flex", alignItems: "center", gap: 8 }}>
                                   {sig.title}
                                   <span style={{ fontSize: 10, color: sig.pass ? TEAL : "#EF4444" }}>{sig.pass ? "✓" : "○"}</span>
                                 </div>
-                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.35)", lineHeight: 1.55 }}>
+                                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", lineHeight: 1.55 }}>
                                   {sig.sub}
                                 </div>
                               </div>
@@ -1905,10 +1905,10 @@ export default function PlaybookActivationConsole() {
 
                           {/* Competitive moat callout */}
                           <div style={{ marginTop: 8, padding: "14px 18px", background: "rgba(10,15,46,0.4)", border: "1px solid rgba(255,255,255,0.06)" }}>
-                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", marginBottom: 6 }}>
+                            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>
                               The Compound Moat
                             </div>
-                            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, margin: 0 }}>
+                            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.68)", lineHeight: 1.6, margin: 0 }}>
                               The competitor can buy the platform. They cannot buy the accumulated decision logic embedded in the preparation phase. Every ownership record this activation produced is non-transferable intelligence.
                             </p>
                           </div>
@@ -2014,7 +2014,7 @@ export default function PlaybookActivationConsole() {
                   <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>ADVANCE — Execution Debrief</span>
                   <div style={{ marginLeft: 8, padding: "3px 10px", background: debriefConfig.bg, border: `1px solid ${debriefConfig.border}`, display: "inline-flex", alignItems: "center", gap: 6 }}>
                     <span style={{ width: 5, height: 5, borderRadius: "50%", background: debriefConfig.color, flexShrink: 0 }} />
-                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: debriefConfig.color }}>{debriefConfig.label}</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: debriefConfig.color }}>{debriefConfig.label}</span>
                   </div>
                 </div>
 
@@ -2089,7 +2089,7 @@ export default function PlaybookActivationConsole() {
 
                     {/* Focus areas */}
                     <div style={{ marginBottom: 20 }}>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 12 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 12 }}>
                         This Debrief Must Answer
                       </div>
                       <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
@@ -2108,7 +2108,7 @@ export default function PlaybookActivationConsole() {
                         <p style={{ fontSize: 11, color: MUTED, lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
                           "If the window closes at acknowledgment, the debrief is already encoding a recovery, not a hold. The organizations that compound capability are the ones where the first signal rarely triggers — not because they have better debriefs, but because preparation built real ownership rather than documented assignment."
                         </p>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(10,15,46,0.35)", marginTop: 8 }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(10,15,46,0.35)", marginTop: 8 }}>
                           Dr. Kerry Huang · ESI Top 1% Researcher · 408-Firm Study
                         </div>
                       </div>
@@ -2135,7 +2135,7 @@ export default function PlaybookActivationConsole() {
                 <div style={{ padding: "14px 18px", background: "rgba(10,15,46,0.02)", border: `1px solid ${BORDER}`, display: "flex", gap: 12, alignItems: "flex-start" }}>
                   <div style={{ width: 3, height: "100%", minHeight: 40, background: perfColor, flexShrink: 0 }} />
                   <div>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 6 }}>Execution Performance Note</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 6 }}>Execution Performance Note</div>
                     <p style={{ fontSize: 12, color: "#374151", fontWeight: 400, lineHeight: 1.6, margin: 0 }}>{recommendation}</p>
                   </div>
                 </div>

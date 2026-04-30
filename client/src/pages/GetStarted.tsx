@@ -109,7 +109,7 @@ export default function GetStarted() {
                 <ArrowRight size={16} />
               </button>
             )}
-            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.68)", letterSpacing: "0.05em" }}>
               Existing pilot customers — sign in to access your platform.
             </p>
           </div>

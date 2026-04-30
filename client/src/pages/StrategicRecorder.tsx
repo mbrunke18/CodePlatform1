@@ -148,9 +148,9 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>IDENTIFY</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>IDENTIFY</span>
                 <ChevronRight style={{ width: 10, height: 10, color: GOLD }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Readiness Protocol Generator</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: TEAL }}>AI Readiness Protocol Generator</span>
               </div>
               <div style={{ ...CG, fontSize: 24, fontWeight: 700, color: '#fff', lineHeight: 1 }}>Strategic Recorder</div>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 3 }}>
@@ -188,7 +188,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                     <div key={v.label} style={{ padding: '14px', border: `1px solid ${BORDER}`, textAlign: 'center' }}>
                       <Icon style={{ width: 18, height: 18, color: GOLD, margin: '0 auto 8px' }} />
                       <div style={{ fontSize: 10, fontWeight: 700, color: NAVY, marginBottom: 2 }}>{v.label}</div>
-                      <div style={{ fontSize: 9, color: '#9CA3AF' }}>{v.desc}</div>
+                      <div style={{ fontSize: 11, color: '#9CA3AF' }}>{v.desc}</div>
                     </div>
                   );
                 })}
@@ -199,7 +199,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                   <label style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: NAVY }}>
                     Paste Crisis Notes, Meeting Transcripts, or Incident Reports
                   </label>
-                  <span style={{ fontSize: 9, color: '#9CA3AF' }}>{inputText.length} chars {inputText.length < 50 ? '(min 50)' : '✓'}</span>
+                  <span style={{ fontSize: 11, color: '#9CA3AF' }}>{inputText.length} chars {inputText.length < 50 ? '(min 50)' : '✓'}</span>
                 </div>
                 <Textarea
                   value={inputText}
@@ -211,7 +211,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
 
               {!inputText && (
                 <div>
-                  <div style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#9CA3AF', marginBottom: 8 }}>Try an example:</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#9CA3AF', marginBottom: 8 }}>Try an example:</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     {FRESH_INPUTS.map((ex, i) => (
                       <button key={i} onClick={() => setInputText(ex)}
@@ -257,7 +257,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                       <button key={dt.id} onClick={() => { setSelectedDocType(dt.id); setHistoricalText(''); }}
                         style={{ padding: '12px 8px', border: `1px solid ${isSelected ? GOLD : BORDER}`, background: isSelected ? `${GOLD}10` : '#fff', cursor: 'pointer', textAlign: 'center', transition: 'all 0.15s' }}>
                         <Icon style={{ width: 16, height: 16, color: isSelected ? GOLD : '#9CA3AF', margin: '0 auto 6px' }} />
-                        <div style={{ fontSize: 9, fontWeight: 700, color: isSelected ? NAVY : '#6B7280', lineHeight: 1.3 }}>{dt.label}</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: isSelected ? NAVY : '#6B7280', lineHeight: 1.3 }}>{dt.label}</div>
                       </button>
                     );
                   })}
@@ -276,7 +276,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                       style={{ fontSize: 9, color: GOLD, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', background: 'none', border: `1px solid ${GOLD}40`, padding: '3px 8px', cursor: 'pointer' }}>
                       Load Example
                     </button>
-                    <span style={{ fontSize: 9, color: '#9CA3AF' }}>{historicalText.length} chars {historicalText.length < 50 ? '(min 50)' : '✓'}</span>
+                    <span style={{ fontSize: 11, color: '#9CA3AF' }}>{historicalText.length} chars {historicalText.length < 50 ? '(min 50)' : '✓'}</span>
                   </div>
                 </div>
                 <Textarea
@@ -315,10 +315,10 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
 
             {/* Tribal Knowledge Score */}
             <div style={{ background: NAVY, padding: '20px', color: '#fff' }}>
-              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Tribal Knowledge Score</div>
-              <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: history.length > 0 ? GOLD : 'rgba(255,255,255,0.2)', lineHeight: 1, marginBottom: 4 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD, marginBottom: 10 }}>Tribal Knowledge Score</div>
+              <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: history.length > 0 ? GOLD : 'rgba(255,255,255,0.68)', lineHeight: 1, marginBottom: 4 }}>
                 {history.length > 0 ? tribalKnowledgeScore : 0}
-                <span style={{ fontSize: 20, color: 'rgba(255,255,255,0.3)' }}>/100</span>
+                <span style={{ fontSize: 20, color: 'rgba(255,255,255,0.68)' }}>/100</span>
               </div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', marginBottom: 12 }}>
                 {history.length === 0
@@ -330,7 +330,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
               <div style={{ background: 'rgba(255,255,255,0.08)', height: 4, marginBottom: 12 }}>
                 <div style={{ height: '100%', background: GOLD, width: `${history.length > 0 ? tribalKnowledgeScore : 0}%`, transition: 'width 0.4s' }} />
               </div>
-              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>
+              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>
                 {history.length} recording{history.length !== 1 ? 's' : ''} · {history.reduce((s: number, r: any) => s + (r.generatedPlaybooks?.length || 0), 0)} Readiness Protocols encoded
               </div>
             </div>
@@ -345,7 +345,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 <div style={{ border: `1px dashed ${BORDER}`, padding: '24px', textAlign: 'center' }}>
                   <TrendingUp style={{ width: 20, height: 20, color: '#D1D5DB', margin: '0 auto 8px' }} />
                   <div style={{ fontSize: 11, color: '#9CA3AF' }}>No recordings yet</div>
-                  <div style={{ fontSize: 9, color: '#D1D5DB', marginTop: 4 }}>Your system-staged Readiness Protocols will appear here</div>
+                  <div style={{ fontSize: 11, color: '#D1D5DB', marginTop: 4 }}>Your system-staged Readiness Protocols will appear here</div>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -355,11 +355,11 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                       onClick={() => { setResult(rec); setActiveTab('analyze'); }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                         <span style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', padding: '1px 6px', background: rec.status === 'complete' ? `${TEAL}15` : `${GOLD}15`, color: rec.status === 'complete' ? TEAL : GOLD }}>{rec.status}</span>
-                        <span style={{ fontSize: 9, color: '#9CA3AF' }}>{rec.createdAt ? format(new Date(rec.createdAt), 'MMM d') : ''}</span>
+                        <span style={{ fontSize: 11, color: '#9CA3AF' }}>{rec.createdAt ? format(new Date(rec.createdAt), 'MMM d') : ''}</span>
                       </div>
                       <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.4 }}>{rec.inputText?.slice(0, 80)}...</div>
                       {rec.generatedPlaybooks?.length > 0 && (
-                        <div style={{ fontSize: 9, fontWeight: 700, color: TEAL, marginTop: 4 }}>{rec.generatedPlaybooks.length} Readiness Protocols encoded</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: TEAL, marginTop: 4 }}>{rec.generatedPlaybooks.length} Readiness Protocols encoded</div>
                       )}
                     </div>
                   ))}
@@ -388,7 +388,7 @@ function PlaybookResults({ playbooks, savedIds, setSavedIds }: { playbooks: any[
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
         <div style={{ width: 20, height: 2, background: GOLD }} />
-        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Readiness Protocols Generated</span>
+        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>{playbooks.length} Readiness Protocols Generated</span>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         {playbooks.map((pb: any, i: number) => {
@@ -422,8 +422,8 @@ function PlaybookResults({ playbooks, savedIds, setSavedIds }: { playbooks: any[
               {(pb.phases || []).map((phase: any, pi: number) => (
                 <div key={pi} style={{ paddingLeft: 12, borderLeft: `1px solid ${BORDER}`, marginBottom: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                    <span style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: domainColor }}>{phase.name}</span>
-                    {phase.duration && <span style={{ fontSize: 8, color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: 3 }}><Clock style={{ width: 9, height: 9 }} />{phase.duration}</span>}
+                    <span style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: domainColor }}>{phase.name}</span>
+                    {phase.duration && <span style={{ fontSize: 11, color: '#9CA3AF', display: 'flex', alignItems: 'center', gap: 3 }}><Clock style={{ width: 9, height: 9 }} />{phase.duration}</span>}
                   </div>
                   <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
                     {(phase.tasks || []).map((task: string, ti: number) => (

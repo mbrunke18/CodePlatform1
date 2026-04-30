@@ -233,7 +233,7 @@ export default function MarketingLanding() {
             <Card className="border-2 border-[#0A0F2E] bg-white rounded-none transition-all duration-500 col-span-full lg:col-span-1" data-testid="card-create-Readiness Protocol">
               <CardContent className="p-10">
                 <div className="mb-8">
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Start Here</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Start Here</div>
                   <h3 className="font-serif text-2xl text-[#0A0F2E] mb-3">
                     Create Strategic Readiness Protocol
                   </h3>

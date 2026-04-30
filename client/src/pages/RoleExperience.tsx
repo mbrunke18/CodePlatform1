@@ -985,22 +985,22 @@ export default function RoleExperience() {
               {/* Subtle grid overlay */}
               <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)', backgroundSize: '48px 48px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative' }}>
-                <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 14px' }}>The Question Every {role.title} Has to Answer</p>
+                <p style={{ fontSize: 11, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 14px' }}>The Question Every {role.title} Has to Answer</p>
                 <h2 style={{ fontSize: 24, fontWeight: 700, color: '#FFFFFF', fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.35, margin: '0 0 20px' }}>
                   "{role.signal.name.replace(/—.*/, '').trim()}"
                 </h2>
                 {/* Before / After contrast */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, alignItems: 'center' }}>
                   <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.25)', borderRadius: 0 }}>
-                    <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
+                    <p style={{ fontSize: 11, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
                     <p style={{ fontSize: 22, fontWeight: 800, color: '#f87171', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
-                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>to mobilize a response</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', margin: 0 }}>to mobilize a response</p>
                   </div>
-                  <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.15)', textAlign: 'center' }}>→</div>
+                  <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.68)', textAlign: 'center' }}>→</div>
                   <div style={{ textAlign: 'center', padding: '12px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0 }}>
-                    <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Readiness OS</p>
+                    <p style={{ fontSize: 11, fontWeight: 700, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Readiness OS</p>
                     <p style={{ fontSize: 22, fontWeight: 800, color: '#4ade80', margin: '0 0 2px', fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
-                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: 0 }}>full execution underway</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', margin: 0 }}>full execution underway</p>
                   </div>
                 </div>
               </div>
@@ -1013,7 +1013,7 @@ export default function RoleExperience() {
                   <AlertTriangle className="h-4 w-4 text-red-400" />
                 </div>
                 <div>
-                  <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 5px' }}>Today's Live Scenario — {role.domain}</p>
+                  <p style={{ fontSize: 11, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: '0 0 5px' }}>Today's Live Scenario — {role.domain}</p>
                   <p style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.9)', margin: '0 0 5px', lineHeight: 1.4 }}>{role.scenario}</p>
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.5 }}>{role.signal.detail}</p>
                 </div>
@@ -1036,7 +1036,7 @@ export default function RoleExperience() {
                     <div style={{ width: 32, height: 32, borderRadius: 0, background: `${color}15`, border: `1px solid ${color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px' }}>
                       <StepIcon size={14} style={{ color }} />
                     </div>
-                    <p style={{ fontSize: 9, fontWeight: 800, color, margin: '0 0 3px', letterSpacing: '0.1em' }}>{step}</p>
+                    <p style={{ fontSize: 11, fontWeight: 800, color, margin: '0 0 3px', letterSpacing: '0.1em' }}>{step}</p>
                     <p style={{ fontSize: 10, color: '#374151', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>{label}</p>
                   </div>
                 ))}

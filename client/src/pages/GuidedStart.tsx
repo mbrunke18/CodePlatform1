@@ -290,7 +290,7 @@ export default function GuidedStart() {
               ].map(s => (
                 <div key={s.label} style={{ textAlign: 'center' }}>
                   <div style={{ ...CG, fontSize: 22, fontWeight: 700, color: GOLD }}>{s.val}</div>
-                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 2 }}>{s.label}</div>
+                  <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginTop: 2 }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -341,14 +341,14 @@ export default function GuidedStart() {
                     {scenario.stakeMetrics.map((m) => (
                       <div key={m.label} style={{ background: 'rgba(255,255,255,0.03)', padding: '10px 12px', border: '1px solid rgba(255,255,255,0.06)' }}>
                         <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: m.color, lineHeight: 1 }}>{m.value}</div>
-                        <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>{m.label}</div>
+                        <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginTop: 4 }}>{m.label}</div>
                       </div>
                     ))}
                   </div>
 
                   {/* CTA */}
                   <div style={{ padding: '12px 22px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)' }}>
                       {scenario.domain}
                     </span>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: scenario.urgencyColor }}>
@@ -362,8 +362,8 @@ export default function GuidedStart() {
           </div>
 
           <div style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-            <Lock style={{ width: 12, height: 12, color: 'rgba(255,255,255,0.25)' }} />
-            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)' }}>
+            <Lock style={{ width: 12, height: 12, color: 'rgba(255,255,255,0.68)' }} />
+            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)' }}>
               No login required · Full simulation · Results in under 12 minutes
             </span>
           </div>
@@ -393,21 +393,21 @@ export default function GuidedStart() {
             <div style={{ display: 'flex', justifyContent: 'center', gap: 40, marginBottom: 28 }}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: TEAL, lineHeight: 1 }}>{signalCount}</div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Data points scanned</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginTop: 4 }}>Data points scanned</div>
               </div>
               <div style={{ width: 1, background: 'rgba(255,255,255,0.08)' }} />
               <div style={{ textAlign: 'center' }}>
                 <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: GOLD, lineHeight: 1 }}>
                   {detectStep >= 3 ? '1' : '0'}
                 </div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Trigger confirmed</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginTop: 4 }}>Trigger confirmed</div>
               </div>
               <div style={{ width: 1, background: 'rgba(255,255,255,0.08)' }} />
               <div style={{ textAlign: 'center' }}>
-                <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: detectStep >= 5 ? '#fff' : 'rgba(255,255,255,0.2)', lineHeight: 1 }}>
+                <div style={{ ...CG, fontSize: 44, fontWeight: 700, color: detectStep >= 5 ? '#fff' : 'rgba(255,255,255,0.68)', lineHeight: 1 }}>
                   {detectStep >= 5 ? '1' : '0'}
                 </div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>Readiness Protocol matched</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginTop: 4 }}>Readiness Protocol matched</div>
               </div>
             </div>
 
@@ -421,7 +421,7 @@ export default function GuidedStart() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 32 }}>
             {/* Detection steps */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 4 }}>System Scan Progress</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 4 }}>System Scan Progress</div>
               {BASE_DETECT_STEPS.map((step, i) => {
                 const isComplete = i < detectStep;
                 const isActive = i === detectStep;
@@ -457,7 +457,7 @@ export default function GuidedStart() {
 
             {/* Signal categories */}
             <div>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 12 }}>Domain Signal Categories</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 12 }}>Domain Signal Categories</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
                 {selected.allSignals.map((sig, i) => (
                   <span key={sig} style={{
@@ -465,7 +465,7 @@ export default function GuidedStart() {
                     padding: '5px 9px',
                     background: detectStep > i ? 'rgba(43,138,110,0.18)' : 'rgba(255,255,255,0.04)',
                     border: `1px solid ${detectStep > i ? 'rgba(43,138,110,0.45)' : 'rgba(255,255,255,0.08)'}`,
-                    color: detectStep > i ? TEAL : 'rgba(255,255,255,0.25)',
+                    color: detectStep > i ? TEAL : 'rgba(255,255,255,0.68)',
                     transition: 'all 0.4s',
                   }}>
                     {detectStep > i ? '✓ ' : ''}{sig}
@@ -484,11 +484,11 @@ export default function GuidedStart() {
                   <div style={{ display: 'flex', gap: 16, marginTop: 8 }}>
                     <div>
                       <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: selected.urgencyColor }}>{selected.stakes}</div>
-                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.stakesLabel}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.stakesLabel}</div>
                     </div>
                     <div>
                       <div style={{ ...CG, fontSize: 18, fontWeight: 700, color: TEAL }}>{selected.window}</div>
-                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.windowLabel}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{selected.windowLabel}</div>
                     </div>
                   </div>
                 </div>
@@ -577,7 +577,7 @@ export default function GuidedStart() {
               <ArrowRight style={{ width: 18, height: 18 }} />
             </button>
 
-            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 16 }}>
+            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 16 }}>
               Simulation only · No real data affected · No login required
             </p>
           </div>

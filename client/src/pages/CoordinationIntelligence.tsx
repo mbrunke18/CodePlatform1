@@ -366,7 +366,7 @@ export default function CoordinationIntelligence() {
                             <Icon className="w-4 h-4" style={{ color: GOLD }} />
                             <span style={{ fontSize: 12, fontWeight: 600, color: '#fff' }}>{label}</span>
                           </div>
-                          <ChevronRight className="w-4 h-4" style={{ color: 'rgba(255,255,255,0.3)' }} />
+                          <ChevronRight className="w-4 h-4" style={{ color: 'rgba(255,255,255,0.68)' }} />
                         </div>
                       </Link>
                     ))}
@@ -387,15 +387,15 @@ export default function CoordinationIntelligence() {
                   <div style={{ marginTop: 12, paddingTop: 12, borderTop: `1px solid ${BORDER}`, display: 'flex', justifyContent: 'space-between' }}>
                     <div style={{ textAlign: 'center' }}>
                       <div style={{ fontSize: 20, fontWeight: 700, color: NAVY, fontFamily: 'monospace' }}>{summary.avgMinutes ?? 12}<span style={{ fontSize: 11, color: MUTED }}>m</span></div>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED }}>Your Org</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED }}>Your Org</div>
                     </div>
                     <div style={{ textAlign: 'center' }}>
                       <div style={{ fontSize: 20, fontWeight: 700, color: '#EF4444', fontFamily: 'monospace' }}>30d</div>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED }}>Industry</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED }}>Industry</div>
                     </div>
                     <div style={{ textAlign: 'center' }}>
                       <div style={{ fontSize: 20, fontWeight: 700, color: GOLD, fontFamily: 'monospace' }}>{summary.speedMultiplier ? `${summary.speedMultiplier.toLocaleString()}×` : '3,600×'}</div>
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED }}>Head Start</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: MUTED }}>Head Start</div>
                     </div>
                   </div>
                 </CardContent>

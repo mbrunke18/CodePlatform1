@@ -114,7 +114,7 @@ export function GuestPreviewBanner() {
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: 'transparent',
-            border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
+            border: '1px solid rgba(255,255,255,0.68)', color: 'rgba(255,255,255,0.7)',
             textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
           }}>Request More Time</a>
           <button onClick={() => setDismissed(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }} aria-label="Dismiss">
@@ -214,7 +214,7 @@ export function GuestPreviewBanner() {
             }}>
               <span style={{ color: 'rgba(201,168,76,0.7)', fontWeight: 600, marginRight: 4 }}>{currentHeadline.domain} ·</span>
               {currentHeadline.text}
-              <span style={{ color: 'rgba(255,255,255,0.35)', marginLeft: 6 }}>{currentHeadline.ago}</span>
+              <span style={{ color: 'rgba(255,255,255,0.68)', marginLeft: 6 }}>{currentHeadline.ago}</span>
             </span>
           </div>
         ) : (
@@ -239,13 +239,13 @@ export function GuestPreviewBanner() {
           fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
           letterSpacing: '0.1em', textTransform: 'uppercase' as const,
           padding: '6px 16px', background: 'transparent',
-          border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.7)',
+          border: '1px solid rgba(255,255,255,0.68)', color: 'rgba(255,255,255,0.7)',
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
         }}>Request Access</a>
         <a href="/request-access" style={{
           fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
           padding: '5px 12px', background: 'transparent', border: 'none',
-          color: 'rgba(255,255,255,0.35)', borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap' as const,
+          color: 'rgba(255,255,255,0.68)', borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap' as const,
           textDecoration: 'none',
         }}>Sign In</a>
         <button onClick={() => setDismissed(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }} aria-label="Dismiss">

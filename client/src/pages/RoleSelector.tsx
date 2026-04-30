@@ -225,7 +225,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             {/* Simulation badge */}
             <div style={{ flexShrink: 0, background: 'rgba(10,15,46,0.05)', border: '1px solid rgba(10,15,46,0.1)', borderRadius: 0, padding: '3px 7px', display: 'flex', alignItems: 'center', gap: 4 }}>
               <Play size={8} style={{ color: NAVY }} />
-              <span style={{ fontSize: 8, fontWeight: 800, color: NAVY, letterSpacing: '0.1em', textTransform: 'uppercase' }}>12-Step</span>
+              <span style={{ fontSize: 11, fontWeight: 800, color: NAVY, letterSpacing: '0.1em', textTransform: 'uppercase' }}>12-Step</span>
             </div>
           </div>
 
@@ -245,12 +245,12 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           {/* Before / After outcome */}
           <div style={{ marginTop: 'auto', display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 8, padding: '10px 12px', background: '#F8F7F4', borderRadius: 0, marginBottom: 14 }}>
             <div style={{ textAlign: 'center' }}>
-              <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Without OS</p>
+              <p style={{ fontSize: 11, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>Without OS</p>
               <p style={{ fontSize: 15, fontWeight: 800, color: '#f87171', margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>{config.metricBefore}</p>
             </div>
             <ArrowRight size={12} style={{ color: '#D1D5DB' }} />
             <div style={{ textAlign: 'center' }}>
-              <p style={{ fontSize: 9, fontWeight: 700, color: TEAL, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>With OS</p>
+              <p style={{ fontSize: 11, fontWeight: 700, color: TEAL, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>With OS</p>
               <p style={{ fontSize: 15, fontWeight: 800, color: TEAL, margin: 0, lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>{config.metricAfter}</p>
             </div>
           </div>
@@ -317,7 +317,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           <div style={{ position: 'relative', maxWidth: 760, margin: '0 auto' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '5px 14px', marginBottom: 20 }}>
               <div style={{ width: 6, height: 6, borderRadius: 0, background: GOLD }} className="animate-pulse" />
-              <span style={{ fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
+              <span style={{ fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Role-Specific Execution Experience</span>
             </div>
             <h1 style={{ ...CG, fontSize: 44, fontWeight: 700, color: '#FFFFFF', marginBottom: 14, lineHeight: 1.15 }}>
               Your Role. Your Trigger. Your Readiness Protocol.
@@ -328,15 +328,15 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
             {/* The core contrast */}
             <div style={{ display: 'inline-grid', gridTemplateColumns: '1fr auto 1fr', gap: 20, alignItems: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 0, padding: '14px 28px' }}>
               <div style={{ textAlign: 'center' }}>
-                <p style={{ fontSize: 9, fontWeight: 700, color: 'rgba(248,113,113,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
+                <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(248,113,113,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Traditional Enterprise</p>
                 <p style={{ fontSize: 24, fontWeight: 800, color: '#f87171', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
-                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: '2px 0 0' }}>to mobilize a response</p>
+                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', margin: '2px 0 0' }}>to mobilize a response</p>
               </div>
-              <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.15)' }}>→</div>
+              <div style={{ fontSize: 20, color: 'rgba(255,255,255,0.68)' }}>→</div>
               <div style={{ textAlign: 'center' }}>
-                <p style={{ fontSize: 9, fontWeight: 700, color: 'rgba(43,138,110,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Readiness OS</p>
+                <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(43,138,110,0.8)', textTransform: 'uppercase', letterSpacing: '0.16em', margin: '0 0 4px' }}>Readiness OS</p>
                 <p style={{ fontSize: 24, fontWeight: 800, color: '#4ade80', margin: 0, fontFamily: "'Cormorant Garamond', serif" }}>12 minutes</p>
-                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', margin: '2px 0 0' }}>full execution underway</p>
+                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', margin: '2px 0 0' }}>full execution underway</p>
               </div>
             </div>
           </div>
@@ -347,7 +347,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
           <div style={{ maxWidth: 1200, margin: '0 auto', padding: '28px 24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
               <div style={{ width: 18, height: 2, background: GOLD }} />
-              <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>What You'll Experience</span>
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>What You'll Experience</span>
               <div style={{ flex: 1, height: 1, background: '#E8E4DC' }} />
               <span style={{ fontSize: 10, fontWeight: 600, color: '#9CA3AF' }}>12-step interactive simulation · No login required · ~8 minutes</span>
             </div>
@@ -370,7 +370,7 @@ export default function RoleSelector({ embedded }: { embedded?: boolean }) {
                     <div style={{ width: 40, height: 40, borderRadius: 0, background: `${item.color}12`, border: `2px solid ${item.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 1, marginBottom: 8 }}>
                       <Icon size={16} style={{ color: item.color }} />
                     </div>
-                    <div style={{ fontSize: 7, fontWeight: 800, color: item.color, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 3 }}>Step {item.step}</div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: item.color, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 3 }}>Step {item.step}</div>
                     <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 3, lineHeight: 1.2 }}>{item.label}</div>
                     <div style={{ fontSize: 10, color: '#9CA3AF', lineHeight: 1.4 }}>{item.sub}</div>
                   </div>

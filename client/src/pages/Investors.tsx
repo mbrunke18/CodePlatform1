@@ -701,7 +701,7 @@ export default function Investors() {
               {competitiveAdvantages.map((advantage, i) => (
                 <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.1 }}
                   className="bg-white p-8" style={{ borderLeft: '3px solid #C9A84C' }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Advantage {String(i + 1).padStart(2, '0')}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Advantage {String(i + 1).padStart(2, '0')}</div>
                   <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">{advantage.title}</h3>
                   <p className="text-[#6B7280] text-sm font-medium leading-relaxed">{advantage.description}</p>
                 </motion.div>

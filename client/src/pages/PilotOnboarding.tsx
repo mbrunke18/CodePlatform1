@@ -413,7 +413,7 @@ export default function PilotOnboarding() {
                     {t.milestones.map((m, j) => (
                       <div key={j} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                         <div style={{ width: 16, height: 16, borderRadius: 0, background: `${t.color}15`, border: `1px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
-                          <span style={{ fontSize: 8, color: t.color, fontWeight: 700 }}>{j + 1}</span>
+                          <span style={{ fontSize: 11, color: t.color, fontWeight: 700 }}>{j + 1}</span>
                         </div>
                         <span style={{ fontSize: 12, color: 'rgba(10,15,46,0.65)', lineHeight: 1.5, fontFamily: "'Cormorant Garamond', Georgia, serif" }}>{m}</span>
                       </div>

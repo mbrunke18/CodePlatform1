@@ -108,11 +108,11 @@ export default function ReadinessScore({ compact = false }: { compact?: boolean 
       <div style={{ padding: "20px 24px 16px", borderBottom: "1px solid #E8E4DC" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <div style={{ width: 20, height: 1, background: GOLD }} />
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Executive Readiness Score</span>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Executive Readiness Score</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY, margin: 0 }}>Organizational Readiness</h3>
-          <span style={{ fontSize: 9, color: "#9CA3AF", fontWeight: 500 }}>Updated {data.lastUpdated}</span>
+          <span style={{ fontSize: 11, color: "#9CA3AF", fontWeight: 500 }}>Updated {data.lastUpdated}</span>
         </div>
       </div>
 
@@ -122,7 +122,7 @@ export default function ReadinessScore({ compact = false }: { compact?: boolean 
             <ScoreArc score={data.score} />
             <div style={{ display: "inline-flex", alignItems: "center", gap: 5, background: tier.bg, padding: "3px 10px", marginTop: 4 }}>
               <Shield style={{ width: 10, height: 10, color: tier.color }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: tier.color }}>{tier.label}</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: tier.color }}>{tier.label}</span>
             </div>
           </div>
           <div style={{ flex: 1, paddingTop: 4 }}>
@@ -147,7 +147,7 @@ export default function ReadinessScore({ compact = false }: { compact?: boolean 
                 <div style={{ height: 3, background: "#E8E4DC", marginBottom: 5 }}>
                   <div style={{ height: "100%", width: `${pct}%`, background: dimColor, transition: "width 1s ease" }} />
                 </div>
-                <span style={{ fontSize: 9, color: "#9CA3AF" }}>{dim.detail}</span>
+                <span style={{ fontSize: 11, color: "#9CA3AF" }}>{dim.detail}</span>
               </div>
             );
           })}

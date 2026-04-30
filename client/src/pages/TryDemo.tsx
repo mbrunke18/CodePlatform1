@@ -969,24 +969,24 @@ export default function TryDemo() {
                             </div>
                             <div>
                               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#F0EDE4', lineHeight: 1.1 }}>{scenario.name}</div>
-                              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.4)', marginTop: 2 }}>{scenario.industry}</div>
+                              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.4)', marginTop: 2 }}>{scenario.industry}</div>
                             </div>
                           </div>
-                          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, border: `1px solid ${accentBorder}`, padding: '2px 7px', flexShrink: 0 }}>{scenario.demoType === 'offensive' ? 'GROWTH & POSITIONING' : 'RISK & RESILIENCE'}</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: accent, border: `1px solid ${accentBorder}`, padding: '2px 7px', flexShrink: 0 }}>{scenario.demoType === 'offensive' ? 'GROWTH & POSITIONING' : 'RISK & RESILIENCE'}</span>
                         </div>
 
                         <div style={{ marginBottom: 14, flex: 1 }}>
-                          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, marginBottom: 4 }}>Trigger</div>
+                          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: accent, marginBottom: 4 }}>Trigger</div>
                           <div style={{ fontSize: 12, color: 'rgba(240,237,228,0.75)', lineHeight: 1.5 }}>{scenario.trigger}</div>
                         </div>
 
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 12, marginBottom: 12 }}>
                           <div>
-                            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 3 }}>At Risk</div>
+                            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 3 }}>At Risk</div>
                             <div style={{ fontSize: 11, fontWeight: 700, color: accent }}>{formatCurrency(scenario.dealValue)}</div>
                           </div>
                           <div>
-                            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 3 }}>Stakeholders</div>
+                            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(240,237,228,0.35)', marginBottom: 3 }}>Stakeholders</div>
                             <div style={{ fontSize: 11, fontWeight: 700, color: '#F0EDE4' }}>{scenario.stakeholders} mapped</div>
                           </div>
                         </div>
@@ -1018,7 +1018,7 @@ export default function TryDemo() {
                     Watch what happens right now across your organization. Every message below is real — it's what your team experiences when a strategic trigger fires and no Readiness Protocol exists.
                   </p>
                 </div>
-                <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.4)', marginLeft: 'auto', flexShrink: 0 }}>
+                <Button variant="ghost" size="sm" onClick={resetDemo} style={{ color: 'rgba(255,255,255,0.68)', marginLeft: 'auto', flexShrink: 0 }}>
                   <XCircle className="h-4 w-4 mr-1" />
                   Exit
                 </Button>
@@ -1060,7 +1060,7 @@ export default function TryDemo() {
                         </p>
                       </div>
                       <div style={{ padding: '9px 11px', background: 'rgba(220,38,38,0.05)', borderRadius: 0, borderLeft: '3px solid #DC2626' }}>
-                        <p style={{ fontSize: 9, fontWeight: 800, color: '#DC2626', margin: '0 0 3px', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                        <p style={{ fontSize: 11, fontWeight: 800, color: '#DC2626', margin: '0 0 3px', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                           {getChaosContext(chaosSeconds).dayLabel}
                         </p>
                         <p style={{ fontSize: 11, fontWeight: 700, color: '#374151', margin: '0 0 3px', lineHeight: 1.4 }}>
@@ -1153,24 +1153,24 @@ export default function TryDemo() {
                         <div style={{ background: '#0A0F2E', borderRadius: 0, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.25)' }}>
                           <div style={{ background: 'rgba(220,38,38,0.12)', padding: '10px 16px', borderBottom: '1px solid rgba(220,38,38,0.2)', display: 'flex', alignItems: 'center', gap: 8 }}>
                             <div style={{ width: 7, height: 7, borderRadius: 0, background: '#f87171' }} />
-                            <p style={{ fontSize: 9, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Readiness OS</p>
+                            <p style={{ fontSize: 11, fontWeight: 800, color: '#f87171', letterSpacing: '0.2em', textTransform: 'uppercase', margin: 0 }}>What You Just Witnessed — Without Readiness OS</p>
                           </div>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
                             <div style={{ padding: '14px 16px', borderRight: '1px solid rgba(255,255,255,0.06)' }}>
-                              <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>❌ 30 Days of This</p>
+                              <p style={{ fontSize: 11, fontWeight: 700, color: '#f87171', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>❌ 30 Days of This</p>
                               {['No Readiness Protocol owner assigned', 'Budget stuck in committee', 'Competitor already responded', 'Board demanding answers'].map(item => (
                                 <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.45)', margin: '0 0 5px', lineHeight: 1.4 }}>— {item}</p>
                               ))}
                             </div>
                             <div style={{ padding: '14px 16px', background: 'rgba(43,138,110,0.07)' }}>
-                              <p style={{ fontSize: 9, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>✓ 12 Minutes with Readiness OS</p>
+                              <p style={{ fontSize: 11, fontWeight: 700, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 8px' }}>✓ 12 Minutes with Readiness OS</p>
                               {['Readiness Protocol pre-staged before trigger', 'Budget pre-approved at setup', '3,600× execution head start', 'Board brief auto-generated'].map(item => (
                                 <p key={item} style={{ fontSize: 10.5, color: 'rgba(255,255,255,0.75)', margin: '0 0 5px', lineHeight: 1.4 }}>✓ {item}</p>
                               ))}
                             </div>
                           </div>
                           <div style={{ padding: '10px 16px', borderTop: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
-                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', fontStyle: 'italic' }}>Every minute you watched = {selectedScenario ? `$${(selectedScenario.revenuePerMinute / 1000).toFixed(0)}K lost` : 'revenue lost'} — that clock stops the moment Readiness OS activates</span>
+                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic' }}>Every minute you watched = {selectedScenario ? `$${(selectedScenario.revenuePerMinute / 1000).toFixed(0)}K lost` : 'revenue lost'} — that clock stops the moment Readiness OS activates</span>
                           </div>
                         </div>
                         <Button 
@@ -1226,7 +1226,7 @@ export default function TryDemo() {
                             : 'bg-white border-gray-200'
                       }`}
                     >
-                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', color: isCurrent ? '#6B7280' : isCompleted ? '#2B8A6E' : '#9CA3AF', marginBottom: 4, textTransform: 'uppercase' }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', color: isCurrent ? '#6B7280' : isCompleted ? '#2B8A6E' : '#9CA3AF', marginBottom: 4, textTransform: 'uppercase' }}>
                         Step {index + 1} of 4
                       </div>
                       <div className="flex items-center gap-2">
@@ -1240,7 +1240,7 @@ export default function TryDemo() {
                         </span>
                       </div>
                       {isCurrent && (
-                        <div style={{ fontSize: 9, color: '#6B7280', marginTop: 3, fontWeight: 500 }}>{phase.description}</div>
+                        <div style={{ fontSize: 11, color: '#6B7280', marginTop: 3, fontWeight: 500 }}>{phase.description}</div>
                       )}
                     </div>
                   );
@@ -1335,7 +1335,7 @@ export default function TryDemo() {
                           <div style={{ width: 10, height: 10, borderRadius: 0, background: '#febc2e' }} />
                           <div style={{ width: 10, height: 10, borderRadius: 0, background: '#28c840' }} />
                         </div>
-                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 8, fontFamily: 'monospace' }}>readiness-os — signal-monitor — live</span>
+                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', marginLeft: 8, fontFamily: 'monospace' }}>readiness-os — signal-monitor — live</span>
                         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5 }}>
                           <div style={{ width: 6, height: 6, borderRadius: 0, background: '#22c55e', animation: 'pulse 1.5s infinite' }} />
                           <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>SCANNING 248+ SOURCES</span>
@@ -1345,7 +1345,7 @@ export default function TryDemo() {
                       {/* Demo timeline note */}
                       <div style={{ background: 'rgba(201,168,76,0.07)', borderBottom: '1px solid rgba(201,168,76,0.15)', padding: '7px 18px', display: 'flex', alignItems: 'center', gap: 8 }}>
                         <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: '0.1em' }}>DEMO MODE</span>
-                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>—</span>
+                        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>—</span>
                         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>Timeline compressed for demonstration. In production, signal monitoring runs continuously every 15 minutes across all 248+ sources.</span>
                       </div>
 
@@ -1362,7 +1362,7 @@ export default function TryDemo() {
                             <div style={{ height: '100%', borderRadius: 0, transition: 'width 0.6s ease, background 0.4s ease', background: detectStep >= 3 ? '#22c55e' : GOLD, width: detectStep === 0 ? '2%' : detectStep === 1 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[0]?.strength || 34}%` : detectStep === 2 ? `${SCENARIO_SIGNALS[selectedScenario.id]?.[1]?.strength || 68}%` : `${SCENARIO_SIGNALS[selectedScenario.id]?.[2]?.strength || 96}%` }} />
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
-                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)' }}>Monitoring</span>
+                            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)' }}>Monitoring</span>
                             <span style={{ fontSize: 10, color: GOLD }}>Threshold: 80%</span>
                             <span style={{ fontSize: 10, color: '#22c55e' }}>Trigger</span>
                           </div>
@@ -1377,7 +1377,7 @@ export default function TryDemo() {
                                 <div style={{ flex: 1 }}>
                                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.85)', fontWeight: 500, marginBottom: 3 }}>{signal.label}</p>
                                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                                    <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontFamily: 'monospace' }}>src: {signal.source}</span>
+                                    <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontFamily: 'monospace' }}>src: {signal.source}</span>
                                     <span style={{ fontSize: 10, fontWeight: 700, color: signal.strength >= 80 ? '#ef4444' : signal.strength >= 60 ? GOLD : '#94a3b8' }}>strength {signal.strength}%</span>
                                   </div>
                                 </div>
@@ -1387,7 +1387,7 @@ export default function TryDemo() {
                                 <div style={{ display: 'flex', gap: 3 }}>
                                   {[0,1,2].map(d => <div key={d} style={{ width: 4, height: 4, borderRadius: 0, background: 'rgba(255,255,255,0.15)', animation: `pulse ${0.6 + d * 0.2}s infinite` }} />)}
                                 </div>
-                                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace' }}>scanning...</span>
+                                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontFamily: 'monospace' }}>scanning...</span>
                               </div>
                             )
                           ))}
@@ -1412,7 +1412,7 @@ export default function TryDemo() {
 
                         {detectStep < 3 && (
                           <div style={{ textAlign: 'center', paddingTop: 8 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.4)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, color: 'rgba(255,255,255,0.68)' }}>
                               <div style={{ width: 14, height: 14, border: '2px solid rgba(255,255,255,0.3)', borderTopColor: GOLD, borderRadius: 0, animation: 'spin 1s linear infinite' }} />
                               <span style={{ fontSize: 12, fontFamily: 'monospace' }}>Correlating signals across {248 - detectStep * 30}+ sources...</span>
                             </div>
@@ -1445,7 +1445,7 @@ export default function TryDemo() {
                             <Zap size={15} style={{ color: '#C9A84C' }} />
                           </div>
                           <div>
-                            <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 3px' }}>What Readiness OS Just Replaced</p>
+                            <p style={{ fontSize: 11, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.18em', textTransform: 'uppercase', margin: '0 0 3px' }}>What Readiness OS Just Replaced</p>
                             <p style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.85)', margin: '0 0 2px', lineHeight: 1.45 }}>
                               {executionSteps.length === 0
                                 ? 'Normally this would take 3–5 days just to convene the right team.'
@@ -1620,7 +1620,7 @@ export default function TryDemo() {
                                 Open Your Activated Readiness Protocol
                                 <ArrowRight style={{ width: 16, height: 16 }} />
                               </button>
-                              <p style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 10 }}>No login required — this is the full Readiness Protocol, not a preview.</p>
+                              <p style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.68)', marginTop: 10 }}>No login required — this is the full Readiness Protocol, not a preview.</p>
                             </div>
                           </div>
                         ) : null;
@@ -1639,20 +1639,20 @@ export default function TryDemo() {
 
                           {/* Primary outcome contrast */}
                           <div style={{ background: '#0A0F2E', borderRadius: 0, padding: '22px 24px', marginBottom: 20, border: '1px solid rgba(201,168,76,0.2)' }}>
-                            <p style={{ fontSize: 9, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 16px', textAlign: 'center' }}>The Outcome — What Just Happened vs. What Didn't</p>
+                            <p style={{ fontSize: 11, fontWeight: 800, color: '#C9A84C', letterSpacing: '0.22em', textTransform: 'uppercase', margin: '0 0 16px', textAlign: 'center' }}>The Outcome — What Just Happened vs. What Didn't</p>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, alignItems: 'center' }}>
                               <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)', borderRadius: 0 }}>
-                                <p style={{ fontSize: 9, fontWeight: 700, color: '#f87171', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>Without OS</p>
+                                <p style={{ fontSize: 11, fontWeight: 700, color: '#f87171', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>Without OS</p>
                                 <p style={{ fontSize: 26, fontWeight: 800, color: '#f87171', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>30 days</p>
-                                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>to mobilize a response</p>
+                                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', margin: 0 }}>to mobilize a response</p>
                               </div>
                               <div style={{ textAlign: 'center' }}>
-                                <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.15)', margin: 0 }}>→</p>
+                                <p style={{ fontSize: 22, color: 'rgba(255,255,255,0.68)', margin: 0 }}>→</p>
                               </div>
                               <div style={{ textAlign: 'center', padding: '14px', background: 'rgba(43,138,110,0.1)', border: '1px solid rgba(43,138,110,0.3)', borderRadius: 0 }}>
-                                <p style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>With Readiness OS</p>
+                                <p style={{ fontSize: 11, fontWeight: 700, color: '#4ade80', letterSpacing: '0.16em', textTransform: 'uppercase', margin: '0 0 6px' }}>With Readiness OS</p>
                                 <p style={{ fontSize: 26, fontWeight: 800, color: '#4ade80', margin: '0 0 4px', lineHeight: 1, fontFamily: "'Cormorant Garamond', serif" }}>12 min</p>
-                                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', margin: 0 }}>full execution underway</p>
+                                <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', margin: 0 }}>full execution underway</p>
                               </div>
                             </div>
                           </div>
@@ -1738,7 +1738,7 @@ export default function TryDemo() {
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Every task assignment, stakeholder notification, and communication template was configured in advance — not improvised under pressure. This is the entire point: the work happens before the trigger fires, not after it.</p>
                       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
                         <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 6 }}>Without Readiness OS:</p>
-                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Spend 4–8 hours assembling a response team, locating the right people, finding documents, and getting budget approval — while the situation compounds.</p>
+                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', lineHeight: 1.55 }}>Spend 4–8 hours assembling a response team, locating the right people, finding documents, and getting budget approval — while the situation compounds.</p>
                       </div>
                     </div>
                   )}
@@ -1786,7 +1786,7 @@ export default function TryDemo() {
                       </div>
                       <div style={{ marginTop: 14, borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
                         <p style={{ fontSize: 11, color: GOLD, fontWeight: 700, marginBottom: 4 }}>Without Readiness OS:</p>
-                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>Each of those 6 actions requires a human email, a meeting invite, and at least one follow-up chase. Collectively: 20–50 hours.</p>
+                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)' }}>Each of those 6 actions requires a human email, a meeting invite, and at least one follow-up chase. Collectively: 20–50 hours.</p>
                       </div>
                     </div>
                   )}
@@ -1800,7 +1800,7 @@ export default function TryDemo() {
                       <p style={{ fontSize: 13, fontWeight: 700, color: '#FFFFFF', marginBottom: 8, lineHeight: 1.4 }}>Every execution teaches the system.</p>
                       <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 14 }}>Pattern analysis identifies what worked, what slowed response, and where pre-staging gaps exist. Improvements are automatically staged for your next Readiness Protocol review — not buried in a post-mortem slide deck that no one reads.</p>
                       <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 12 }}>
-                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55 }}>Over time, your organization builds an institutional memory that new hires inherit from day one — not after years of experience.</p>
+                        <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', lineHeight: 1.55 }}>Over time, your organization builds an institutional memory that new hires inherit from day one — not after years of experience.</p>
                       </div>
                     </div>
                   )}
@@ -2034,7 +2034,7 @@ export default function TryDemo() {
                   <div style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0, padding: '12px 14px' }}>
                     <p style={{ fontSize: 18, fontWeight: 700, color: GOLD, marginBottom: 2 }}>{pb.stat}</p>
                     <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{pb.context}</p>
-                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 4, fontWeight: 600, letterSpacing: '0.05em' }}>Based on: {pb.source}</p>
+                    <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', marginTop: 4, fontWeight: 600, letterSpacing: '0.05em' }}>Based on: {pb.source}</p>
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 'auto' }}>

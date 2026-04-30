@@ -70,7 +70,7 @@ export default function GartnerStackDiagram() {
           padding: "2px 12px",
           border: `1px solid ${BORDER}`,
         }}>
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF" }}>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9CA3AF" }}>
             Gartner AI Technology Stack · 2026
           </span>
         </div>

@@ -217,7 +217,7 @@ export default function ProspectDemo() {
             </button>
           </div>
 
-          <p style={{ textAlign: "center", marginTop: 20, fontSize: 11, color: "rgba(255,255,255,0.25)" }}>
+          <p style={{ textAlign: "center", marginTop: 20, fontSize: 11, color: "rgba(255,255,255,0.68)" }}>
             No login required · 3-minute experience · Tailored to your domain
           </p>
         </div>
@@ -253,7 +253,7 @@ export default function ProspectDemo() {
             <div style={{ border: `1px solid rgba(239,68,68,0.5)`, background: "rgba(239,68,68,0.07)", padding: "8px 20px", marginBottom: 4, display: "flex", alignItems: "center", gap: 8 }}>
               <AlertTriangle size={14} color="#EF4444" />
               <span style={{ fontSize: 11, fontWeight: 700, color: "#EF4444", textTransform: "uppercase", letterSpacing: "0.1em" }}>Live Trigger Detection — {industry}</span>
-              <span style={{ marginLeft: "auto", fontSize: 11, color: "rgba(255,255,255,0.3)" }}>Just now</span>
+              <span style={{ marginLeft: "auto", fontSize: 11, color: "rgba(255,255,255,0.68)" }}>Just now</span>
             </div>
 
             <div style={{ border: `1px solid rgba(201,168,76,0.3)`, background: "rgba(255,255,255,0.03)", padding: "36px 40px" }}>
@@ -269,7 +269,7 @@ export default function ProspectDemo() {
               {/* Confidence meter */}
               <div style={{ marginBottom: 28 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.08em" }}>AI Confidence Score</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.08em" }}>AI Confidence Score</span>
                   <span style={{ fontSize: 18, fontWeight: 700, color: confidence >= 90 ? TEAL : GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{confidence}%</span>
                 </div>
                 <div style={{ height: 6, background: "rgba(255,255,255,0.08)", borderRadius: 0 }}>
@@ -279,7 +279,7 @@ export default function ProspectDemo() {
 
               {/* Keywords */}
               <div style={{ marginBottom: 28 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Matched Signals</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Matched Signals</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {scenario.keywords.map((kw, i) => (
                     <span key={i} style={{ padding: "4px 12px", background: "rgba(43,138,110,0.15)", border: `1px solid rgba(43,138,110,0.3)`, fontSize: 11, color: "#3BAF8A", fontWeight: 600 }}>
@@ -292,11 +292,11 @@ export default function ProspectDemo() {
               {/* Impact + urgency */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 32 }}>
                 <div style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.08)`, padding: "16px 20px" }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>Estimated Impact</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>Estimated Impact</div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>{scenario.impact}</div>
                 </div>
                 <div style={{ background: "rgba(255,255,255,0.04)", border: `1px solid rgba(255,255,255,0.08)`, padding: "16px 20px" }}>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>Urgency</div>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>Urgency</div>
                   <div style={{ fontSize: 14, fontWeight: 700, color: GOLD }}>{scenario.urgency}</div>
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function ProspectDemo() {
               </button>
             </div>
 
-            <p style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.2)" }}>
+            <p style={{ textAlign: "center", marginTop: 16, fontSize: 11, color: "rgba(255,255,255,0.68)" }}>
               This is what {displayName} would see the moment a trigger fires. Everything pre-staged. Decision made in seconds.
             </p>
           </div>
@@ -343,7 +343,7 @@ export default function ProspectDemo() {
         <VaughnMartinLogo height={56} variant="full" color="light" />
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Execution Clock</div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Execution Clock</div>
             <div style={{ fontSize: 22, fontWeight: 700, color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{clockDisplay}</div>
           </div>
           <div style={{ width: 1, height: 36, background: "rgba(255,255,255,0.1)" }} />
@@ -364,7 +364,7 @@ export default function ProspectDemo() {
               <h2 style={{ fontSize: 20, fontWeight: 700, color: "#fff", margin: 0, fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.3 }}>
                 {scenario.playbookHint}
               </h2>
-              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 6 }}>{displayName} · {industry}</p>
+              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.68)", marginTop: 6 }}>{displayName} · {industry}</p>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -380,7 +380,7 @@ export default function ProspectDemo() {
                     <div style={{ width: 20, height: 20, borderRadius: 0, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: isDone ? "rgba(43,138,110,0.3)" : "rgba(255,255,255,0.06)" }}>
                       {isDone ? <CheckCircle2 size={12} color={TEAL} /> : <Clock size={11} color="rgba(255,255,255,0.2)" />}
                     </div>
-                    <span style={{ fontSize: 13, fontWeight: isDone ? 600 : 400, color: isDone ? "#fff" : "rgba(255,255,255,0.3)" }}>{step}</span>
+                    <span style={{ fontSize: 13, fontWeight: isDone ? 600 : 400, color: isDone ? "#fff" : "rgba(255,255,255,0.68)" }}>{step}</span>
                     {isDone && <span style={{ marginLeft: "auto", fontSize: 10, color: TEAL, fontWeight: 700 }}>DONE</span>}
                   </div>
                 );
@@ -399,8 +399,8 @@ export default function ProspectDemo() {
           {/* Right: Relevant Readiness Protocols */}
           <div>
             <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 6 }}>Readiness Protocols Armed — {industry}</div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>Pre-staged across your domain. Ready before the trigger fires.</div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 6 }}>Readiness Protocols Armed — {industry}</div>
+              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)" }}>Pre-staged across your domain. Ready before the trigger fires.</div>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>

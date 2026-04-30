@@ -309,7 +309,7 @@ export default function PilotProgram() {
                       ))}
                     </div>
                     <div style={{ borderTop: '1px solid #E8E4DC', paddingTop: 16 }}>
-                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#6B7280', marginBottom: 4 }}>Success Metric</div>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#6B7280', marginBottom: 4 }}>Success Metric</div>
                       <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, color: '#555', lineHeight: 1.5 }}>{phase.successMetrics}</p>
                     </div>
                   </div>
@@ -384,7 +384,7 @@ export default function PilotProgram() {
             <div className="text-center mb-12">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>
                   Quantified Value Capture
                 </span>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
@@ -445,7 +445,7 @@ export default function PilotProgram() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
               {conversionTerms.map((term, i) => (
                 <div key={i} style={{ borderLeft: i === 0 ? '1px solid #E8E4DC' : 'none', borderRight: '1px solid #E8E4DC', borderTop: '3px solid #2B8A6E', borderBottom: '1px solid #E8E4DC', padding: '28px 24px' }} data-testid={`card-term-${i}`}>
-                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 14 }}>Benefit {String(i + 1).padStart(2, '0')}</div>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 14 }}>Benefit {String(i + 1).padStart(2, '0')}</div>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 10, lineHeight: 1.2 }}>{term.term}</h3>
                   <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: '#4B5563', lineHeight: 1.6 }}>{term.description}</p>
                 </div>
@@ -458,7 +458,7 @@ export default function PilotProgram() {
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-4xl mx-auto">
             <div style={{ background: '#fff', borderTop: '3px solid #0A0F2E', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC', borderBottom: '1px solid #E8E4DC', padding: '40px 48px' }} data-testid="card-success-preview">
-              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 8, opacity: 0.45 }}>Pilot Success Target</div>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 8, opacity: 0.45 }}>Pilot Success Target</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3vw,32px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 28 }}>
                 What Success Looks Like
               </h3>
@@ -485,7 +485,7 @@ export default function PilotProgram() {
             <div className="text-center mb-10">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Part of the Pilot Structure</span>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Part of the Pilot Structure</span>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, margin: '0 0 16px' }}>Independent Peer Assessment</h2>
@@ -529,7 +529,7 @@ export default function PilotProgram() {
             <div className="text-center mb-10">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>What Happens After You Sign</span>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>What Happens After You Sign</span>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, margin: '0 0 12px' }}>Your first 90 days, by role.</h2>
@@ -570,7 +570,7 @@ export default function PilotProgram() {
             <div className="text-center mb-12">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>A Question Every Pilot Candidate Asks</span>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>A Question Every Pilot Candidate Asks</span>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px,4vw,42px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, margin: '0 0 16px' }}>
@@ -680,11 +680,11 @@ export default function PilotProgram() {
                 View Investor Overview
               </button>
             </div>
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.4)', marginBottom: 32 }}>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.68)', marginBottom: 32 }}>
               Questions? <span style={{ color: '#C9A84C' }}>pilot@vaughnmartin.com</span>
             </p>
             <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 28 }}>
-              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 16 }}>Preparing for a leadership meeting?</p>
+              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 16 }}>Preparing for a leadership meeting?</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', marginBottom: 20 }}>
                 <button
                   onClick={() => setLocation('/prospect-demo')}

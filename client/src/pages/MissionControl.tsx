@@ -161,7 +161,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <TrendingUp size={13} color={TEAL} />
-          <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 9, fontWeight: 700, letterSpacing: '0.18em' }}>
+          <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em' }}>
             EXECUTION INTELLIGENCE TREND
           </span>
         </div>
@@ -175,7 +175,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
             <span style={{ fontSize: 10, fontWeight: 800, color: trend > 0 ? TEAL : GOLD }}>
               {trend > 0 ? `+${trend}` : trend} pts
             </span>
-            <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.35)', fontWeight: 600 }}>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontWeight: 600 }}>
               {trend > 0 ? 'compounding ↑' : 'stabilizing'}
             </span>
           </div>
@@ -190,12 +190,12 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 700, color: avgScore! >= 80 ? TEAL : GOLD, lineHeight: 1 }}>
                 {avgScore}
               </span>
-              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)', fontWeight: 600, marginLeft: 4 }}>/100</span>
+              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.68)', fontWeight: 600, marginLeft: 4 }}>/100</span>
             </div>
-            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 8 }}>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontWeight: 700, letterSpacing: '0.1em', marginBottom: 8 }}>
               AVG EXECUTION QUALITY
             </div>
-            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', lineHeight: 1.5 }}>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', lineHeight: 1.5 }}>
               {sorted.length} activation{sorted.length !== 1 ? 's' : ''} captured<br />
               Each cycle feeds the next
             </div>
@@ -228,17 +228,17 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
               ))}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.2)', fontWeight: 600 }}>Cycle 1</span>
-              <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.2)', fontWeight: 600 }}>
+              <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontWeight: 600 }}>Cycle 1</span>
+              <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontWeight: 600 }}>
                 {sorted.length < 6 ? `${6 - sorted.length} cycles to full baseline` : 'Baseline established'}
               </span>
-              <span style={{ fontSize: 9, color: TEAL, fontWeight: 700 }}>Latest</span>
+              <span style={{ fontSize: 11, color: TEAL, fontWeight: 700 }}>Latest</span>
             </div>
           </div>
 
           {/* Right — Institutional Memory */}
           <div style={{ borderLeft: '1px solid rgba(255,255,255,0.07)', paddingLeft: 20 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.25)', marginBottom: 10 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.68)', marginBottom: 10 }}>
               ENCODED FROM LAST CYCLE
             </div>
             {improvements.length > 0 ? (
@@ -248,13 +248,13 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
                     <div style={{ width: 4, height: 4, borderRadius: 0, background: TEAL, flexShrink: 0, marginTop: 5 }} />
                     <div>
                       <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.6)', marginBottom: 1 }}>{area}</div>
-                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', lineHeight: 1.4 }}>{suggestion}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', lineHeight: 1.4 }}>{suggestion}</div>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', lineHeight: 1.5 }}>
+              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', lineHeight: 1.5 }}>
                 Learning captured after first activation completes
               </div>
             )}
@@ -267,7 +267,7 @@ function ExecutionIntelligenceTrend({ activations }: { activations: Activation[]
             <div style={{ fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.5)', marginBottom: 4 }}>
               Decision quality compounds with every activation
             </div>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', lineHeight: 1.6, maxWidth: 500 }}>
+            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', lineHeight: 1.6, maxWidth: 500 }}>
               Each time a Readiness Protocol activates, execution quality is scored, improvements are encoded, and the next response starts from a better place. Activate your first Readiness Protocol to begin the intelligence loop.
             </div>
           </div>
@@ -328,10 +328,10 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
             <span style={{ background: cc, color: '#fff', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 0, letterSpacing: '0.1em' }}>
               {confidenceLabel(d.confidenceScore).toUpperCase()}
             </span>
-            <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11 }}>{d.triggerDomain}</span>
+            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>{d.triggerDomain}</span>
           </div>
           <div style={{ color: '#fff', fontWeight: 700, fontSize: 17, lineHeight: 1.35, marginBottom: 4 }}>{d.triggerName}</div>
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}</div>
+          <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12 }}>{d.signalSource || 'Live Signal'} · {timeAgo(d.detectedAt)}</div>
         </div>
         <div style={{ background: `linear-gradient(135deg, ${cc}22, ${cc}11)`, border: `1px solid ${cc}55`, borderRadius: 0, padding: '12px 16px', textAlign: 'center', flexShrink: 0, minWidth: 80 }}>
           <div style={{ color: cc, fontWeight: 800, fontSize: 34, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{d.confidenceScore}</div>
@@ -342,7 +342,7 @@ function DetectionCard({ d, index, scenarios }: { d: Detection; index: number; s
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 0, padding: '9px 14px', marginBottom: 14 }}>
         <Target size={13} color={GOLD} />
         <div style={{ flex: 1 }}>
-          <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>RECOMMENDED Readiness Protocol</div>
+          <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 600, letterSpacing: '0.08em', marginBottom: 1 }}>RECOMMENDED Readiness Protocol</div>
           <div style={{ color: GOLD, fontSize: 13, fontWeight: 700 }}>{d.recommendedPlaybook}</div>
         </div>
       </div>
@@ -377,7 +377,7 @@ function DomainStatusGrid({ detections }: { detections: Detection[] }) {
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
         <Layers size={14} color={GOLD} />
         <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>DOMAIN STATUS BOARD</span>
-        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>9 of 9 monitored</span>
+        <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>9 of 9 monitored</span>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8 }}>
         {DOMAINS.map((domain) => {
@@ -500,7 +500,7 @@ export default function MissionControl() {
                   <span style={{ color: GOLD, fontWeight: 800, fontSize: 18, letterSpacing: '0.04em' }}>MISSION CONTROL</span>
                   <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.12em' }}>READINESS OS</span>
                 </div>
-                <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 11, marginTop: 1 }}>
+                <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, marginTop: 1 }}>
                   Welcome back, {firstName} · Strategic Readiness Intelligence
                 </div>
               </div>
@@ -522,7 +522,7 @@ export default function MissionControl() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ color: '#fff', fontWeight: 700, fontSize: 16, fontVariantNumeric: 'tabular-nums' }}>{clock}</div>
-                <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10, marginTop: 1 }}>
+                <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, marginTop: 1 }}>
                   {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                 </div>
               </div>
@@ -546,10 +546,10 @@ export default function MissionControl() {
               { label: 'Next Scan',         value: nextScanLabel,                  sub: modeLabel,              color: 'rgba(255,255,255,0.65)' },
             ].map(({ label, value, sub, color }, i) => (
               <div key={label} style={{ padding: '22px 0 22px', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.06)' : 'none', paddingRight: i < 4 ? 24 : 0, paddingLeft: i > 0 ? 24 : 0 }}>
-                <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{label}</div>
+                <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{label}</div>
                 <div style={{ color, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 38, lineHeight: 1, marginBottom: 6, fontVariantNumeric: 'tabular-nums' }}>{value}</div>
                 <div style={{ width: 20, height: 1, background: `${color}55`, marginBottom: 7 }} />
-                <div style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em' }}>{sub}</div>
+                <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em' }}>{sub}</div>
               </div>
             ))}
           </div>
@@ -558,7 +558,7 @@ export default function MissionControl() {
           <div style={{ marginBottom: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
               <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
-              <span style={{ color: 'rgba(201,168,76,0.55)', fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Your Execution Layer</span>
+              <span style={{ color: 'rgba(201,168,76,0.55)', fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Your Execution Layer</span>
             </div>
             <div>
               {[
@@ -577,9 +577,9 @@ export default function MissionControl() {
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, minWidth: 0 }}>
                     <span style={{ color: primary ? GOLD : 'rgba(255,255,255,0.8)', fontWeight: 700, fontSize: 12, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.04em', flexShrink: 0 }}>{label}</span>
                     {primary && <span style={{ background: GOLD, color: NAVY, fontSize: 8, fontWeight: 800, padding: '1px 6px', letterSpacing: '0.1em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>START HERE</span>}
-                    <span style={{ color: 'rgba(255,255,255,0.28)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{desc}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{desc}</span>
                   </div>
-                  <span style={{ color: primary ? `${GOLD}80` : 'rgba(255,255,255,0.2)', fontSize: 11, fontWeight: 700, flexShrink: 0 }}>→</span>
+                  <span style={{ color: primary ? `${GOLD}80` : 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700, flexShrink: 0 }}>→</span>
                 </a>
               ))}
             </div>
@@ -594,7 +594,7 @@ export default function MissionControl() {
                   <span style={{ fontSize: 12, fontWeight: 700, color: TEAL, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>Executive Scenario Suite</span>
                   <span style={{ fontSize: 8, fontWeight: 800, background: 'rgba(43,138,110,0.2)', color: TEAL, padding: '1px 7px', letterSpacing: '0.14em', fontFamily: "'Barlow Condensed', sans-serif" }}>AUTHENTICATED</span>
                 </div>
-                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
+                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>
                   Full IDEA chain — real Readiness Protocols, 12-minute execution data — Technology · Financial Services · Manufacturing · Healthcare
                 </div>
               </div>
@@ -606,8 +606,8 @@ export default function MissionControl() {
           <div style={{ marginBottom: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
               <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
-              <span style={{ color: 'rgba(201,168,76,0.55)', fontSize: 9, fontWeight: 700, letterSpacing: '0.22em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase', flex: 1 }}>Signal Coverage</span>
-              <a href="/playbooks" style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', fontWeight: 700, letterSpacing: '0.12em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>VIEW ALL →</a>
+              <span style={{ color: 'rgba(201,168,76,0.55)', fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase', flex: 1 }}>Signal Coverage</span>
+              <a href="/playbooks" style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', textDecoration: 'none', fontWeight: 700, letterSpacing: '0.12em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>VIEW ALL →</a>
             </div>
             {[
               { domain: 'Market Opportunities',    signals: 82,  color: TEAL,     desc: 'Competitive, market & innovation signals' },
@@ -623,10 +623,10 @@ export default function MissionControl() {
               }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 3, flexShrink: 0 }}>
                   <span style={{ color, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 28, lineHeight: 1 }}>{signals}</span>
-                  <span style={{ color: `${color}60`, fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.1em', marginLeft: 4 }}>LIVE</span>
+                  <span style={{ color: `${color}60`, fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, letterSpacing: '0.1em', marginLeft: 4 }}>LIVE</span>
                 </div>
                 <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: 12, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, flex: 1, marginLeft: 16 }}>{domain}</span>
-                <span style={{ color: 'rgba(255,255,255,0.22)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{desc}</span>
+                <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.02em' }}>{desc}</span>
               </a>
             ))}
           </div>
@@ -636,7 +636,7 @@ export default function MissionControl() {
 
           {/* ── RESEARCH CONSENSUS — editorial inline text ─────────────────── */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '10px 0', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' as const }}>
-            <span style={{ color: 'rgba(255,255,255,0.18)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Research</span>
+            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>Research</span>
             {[
               { label: 'McKinsey EA 2025–26', note: '"Named the gap"' },
               { label: 'MGI Nov 2025', note: '"Org change is the constraint"' },
@@ -644,8 +644,8 @@ export default function MissionControl() {
             ].map(({ label, note }, i) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 {i > 0 && <span style={{ color: 'rgba(255,255,255,0.08)', fontSize: 10, marginRight: 6 }}>·</span>}
-                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.3)', fontWeight: 600, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>{label}</span>
-                <span style={{ fontSize: 9, color: 'rgba(255,255,255,0.15)', fontStyle: 'italic', fontFamily: "'Cormorant Garamond', serif" }}>{note}</span>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontWeight: 600, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>{label}</span>
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic', fontFamily: "'Cormorant Garamond', serif" }}>{note}</span>
               </div>
             ))}
           </div>
@@ -653,7 +653,7 @@ export default function MissionControl() {
           {/* ── MCKINSEY MATURITY — editorial stat layout ─────────────────────── */}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 32, marginBottom: 20, padding: '16px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <div style={{ flexShrink: 0 }}>
-              <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', marginBottom: 6, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>McKinsey AI Maturity Index</div>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', marginBottom: 6, fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>McKinsey AI Maturity Index</div>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontSize: 28, color: GOLD, lineHeight: 1, marginBottom: 4 }}>1%</div>
               <div style={{ color: TEAL, fontSize: 10, fontWeight: 700, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.1em' }}>Mature — Readiness OS tier</div>
             </div>
@@ -671,8 +671,8 @@ export default function MissionControl() {
               </div>
             </div>
             <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
-              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2, letterSpacing: '0.06em' }}>12-min activation</div>
-              <div style={{ color: 'rgba(255,255,255,0.25)', fontSize: 9, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>170 pre-staged Readiness Protocols</div>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 2, letterSpacing: '0.06em' }}>12-min activation</div>
+              <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: '0.06em' }}>170 pre-staged Readiness Protocols</div>
             </div>
           </div>
 
@@ -702,7 +702,7 @@ export default function MissionControl() {
                   </div>
                   <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 700, fontSize: 13, letterSpacing: '0.06em' }}>LIVE ALERT ZONE</span>
                 </div>
-                <Link href="/live-detection-feed" style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <Link href="/live-detection-feed" style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}>
                     Full Feed <ArrowRight size={11} />
                 </Link>
               </div>
@@ -755,8 +755,8 @@ export default function MissionControl() {
                 {recentActivations.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '18px 12px' }}>
                     <Circle size={24} color="rgba(255,255,255,0.12)" style={{ margin: '0 auto 8px', display: 'block' }} />
-                    <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
-                    <div style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11, lineHeight: 1.5 }}>170 Readiness Protocols pre-staged. 12-minute deployment on trigger.</div>
+                    <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>No executions yet</div>
+                    <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, lineHeight: 1.5 }}>170 Readiness Protocols pre-staged. 12-minute deployment on trigger.</div>
                   </div>
                 ) : (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -772,15 +772,15 @@ export default function MissionControl() {
                                 {isRecent && <PulseOrb color={TEAL} size={7} />}
                                 <span style={{ color: '#fff', fontWeight: 700, fontSize: 13 }}>{a.playbookName}</span>
                               </div>
-                              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 11 }}>{a.domainName}</span>
+                              <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>{a.domainName}</span>
                             </div>
                             {a.successRating != null && (
                               <div style={{ background: 'rgba(43,138,110,0.2)', color: TEAL, fontWeight: 800, fontSize: 13, padding: '2px 8px', borderRadius: 0, flexShrink: 0 }}>{a.successRating}%</div>
                             )}
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{isRecent ? '● In progress' : '✓ Completed'}</span>
-                            <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 10 }}>{timeAgo(a.activatedAt)}</span>
+                            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>{isRecent ? '● In progress' : '✓ Completed'}</span>
+                            <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10 }}>{timeAgo(a.activatedAt)}</span>
                           </div>
                         </motion.div>
                       );
@@ -802,7 +802,7 @@ export default function MissionControl() {
                     { label: 'Engine',    value: modeLabel.toUpperCase(), color: TEAL },
                   ].map(({ label, value, color }) => (
                     <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 12 }}>{label}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 12 }}>{label}</span>
                       <span style={{ color, fontSize: 12, fontWeight: 700 }}>{value}</span>
                     </div>
                   ))}
@@ -810,7 +810,7 @@ export default function MissionControl() {
                 <div style={{ background: `linear-gradient(135deg, rgba(201,168,76,0.12), rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.2)', borderRadius: 0, padding: '14px 16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 6 }}>
                     <Zap size={12} color={GOLD} />
-                    <span style={{ color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
+                    <span style={{ color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em' }}>EXECUTION HEAD START</span>
                   </div>
                   <div style={{ color: '#fff', fontWeight: 800, fontSize: 30, lineHeight: 1, marginBottom: 3 }}>3,600×</div>
                   <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 11, lineHeight: 1.5 }}>30 days → 12 minutes. 170 Readiness Protocols pre-staged.</div>
@@ -834,7 +834,7 @@ export default function MissionControl() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '16px 22px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
               <Radar size={14} color={GOLD} />
               <span style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: 11, letterSpacing: '0.12em' }}>STRATEGIC PULSE MAP</span>
-              <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 11 }}>— Domain activity visualization</span>
+              <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11 }}>— Domain activity visualization</span>
             </div>
             <PulseMap />
           </div>
@@ -866,7 +866,7 @@ export default function MissionControl() {
           <div style={{ marginBottom: 32, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 0, padding: '16px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <ChevronRight size={13} color={GOLD} />
-              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>NAVIGATE READINESS OS</span>
+              <span style={{ color: 'rgba(255,255,255,0.68)', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em' }}>NAVIGATE READINESS OS</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
               {[

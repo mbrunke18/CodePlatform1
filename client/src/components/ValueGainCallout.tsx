@@ -131,7 +131,7 @@ export function ValueGainCallout({
               fontWeight: 700,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: dark ? "rgba(255,255,255,0.38)" : "#6B7280",
+              color: dark ? "rgba(255,255,255,0.68)" : "#6B7280",
             }}
           >
             {gain.label}
@@ -235,7 +235,7 @@ export function ThreePositionStrip({ style }: PositionStripProps) {
             </p>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <div style={{ width: 14, height: 1, background: cfg.accentColor, opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9CA3AF" }}>
                 {item.gain.label}
               </span>
               <div style={{ flex: 1, height: 1, background: cfg.borderColor }} />

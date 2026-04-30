@@ -526,7 +526,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                     {/* Toggle */}
                     {isAuthenticated && (
                       <div className="flex items-center gap-2 flex-shrink-0">
-                        <span className="text-[9px] font-bold" style={{ color: selectedTrigger.isActive ? '#4ade80' : 'rgba(255,255,255,0.3)' }}>
+                        <span className="text-[9px] font-bold" style={{ color: selectedTrigger.isActive ? '#4ade80' : 'rgba(255,255,255,0.68)' }}>
                           {selectedTrigger.isActive ? 'Active' : 'Paused'}
                         </span>
                         <Switch

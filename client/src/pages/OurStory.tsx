@@ -137,7 +137,7 @@ export default function OurStory() {
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C" }}>
                 Martin Brunke — Founder, VaughnMartin
               </p>
-              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", marginTop: 6 }}>
+              <p style={{ fontSize: 12, color: "rgba(255,255,255,0.68)", marginTop: 6 }}>
                 5 years college football · 20+ years Fortune 500 transformation
               </p>
             </div>

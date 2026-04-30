@@ -78,7 +78,7 @@ export function ExecutionDividend({ compact = false }: { compact?: boolean }) {
           <div style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 800, color: '#fff', letterSpacing: '-1px', lineHeight: 1 }}>
             {hasData
               ? <AnimatedCount target={d.totalValueCreated} prefix="$" duration={2200} />
-              : <span style={{ fontSize: 18, color: 'rgba(255,255,255,0.4)' }}>Value accumulates as triggers are responded to</span>
+              : <span style={{ fontSize: 18, color: 'rgba(255,255,255,0.68)' }}>Value accumulates as triggers are responded to</span>
             }
           </div>
           {hasData && <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: 6 }}>estimated executive value created since deployment</div>}

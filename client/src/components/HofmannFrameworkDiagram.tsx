@@ -60,7 +60,7 @@ export default function HofmannFrameworkDiagram() {
             }}>
               <div style={{
                 fontFamily: "'Barlow Condensed', sans-serif",
-                fontSize: 9, fontWeight: 700, letterSpacing: "1.2px",
+                fontSize: 11, fontWeight: 700, letterSpacing: "1.2px",
                 textTransform: "uppercase", color: GOLD,
               }}>{s.label}</div>
               <div style={{

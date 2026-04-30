@@ -1007,7 +1007,7 @@ export default function PlaybookDetail() {
                               <span style={{ fontSize: 10, fontWeight: 700, color: isOpen ? NAVY : MUTED }}>{phaseIdx + 1}</span>
                             </div>
                             <div style={{ flex: 1 }}>
-                              <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: isOpen ? GOLD : MUTED, marginBottom: 2 }}>{phase.timeWindow}</div>
+                              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: isOpen ? GOLD : MUTED, marginBottom: 2 }}>{phase.timeWindow}</div>
                               <div style={{ fontSize: 14, fontWeight: 700, color: isOpen ? "#fff" : NAVY }}>{phase.name}</div>
                             </div>
                             {isOpen ? <ChevronDown size={15} color={GOLD} /> : <ChevronRight size={15} color={MUTED} />}

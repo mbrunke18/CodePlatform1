@@ -158,7 +158,7 @@ export default function VsBCP() {
           {COMPARISON_ROWS.map((row, i) => (
             <div key={i} style={{ display: "grid", gridTemplateColumns: "180px 1fr 1fr", gap: 2, marginBottom: 2 }}>
               <div style={{ padding: "22px 16px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center" }}>
-                <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>{row.dimension}</span>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)" }}>{row.dimension}</span>
               </div>
               <div style={{ padding: "22px 20px", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
                 <p style={{ ...DM, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.65, margin: 0 }}>{row.bcp}</p>

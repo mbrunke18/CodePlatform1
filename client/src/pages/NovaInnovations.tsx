@@ -409,15 +409,15 @@ export default function NovaInnovations() {
                         </div>
                         <div style={{ display: "flex", gap: 24 }}>
                           <div>
-                            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Timeline</div>
+                            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Timeline</div>
                             <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)" }}>{p.horizon}</div>
                           </div>
                           <div>
-                            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Target ROI</div>
+                            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Target ROI</div>
                             <div style={{ fontSize: 13, color: TEAL_LT }}>{p.roi}</div>
                           </div>
                           <div>
-                            <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Risk</div>
+                            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700, marginBottom: 2 }}>Risk</div>
                             <div style={{ fontSize: 13, color: p.risk === 'Low' ? TEAL_LT : p.risk === 'Medium' ? GOLD : "#f87171" }}>{p.risk}</div>
                           </div>
                         </div>

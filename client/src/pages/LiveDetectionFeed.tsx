@@ -490,7 +490,7 @@ export default function LiveDetectionFeed() {
                                 <span style={{
                                   background: detection.matchedEvidence.engine === 'configured' ? '#C9A84C20' : '#0A0F2E10',
                                   color: detection.matchedEvidence.engine === 'configured' ? '#92681A' : '#555',
-                                  fontSize: 9, fontWeight: 700, padding: '2px 6px', borderRadius: 0, textTransform: 'uppercase',
+                                  fontSize: 11, fontWeight: 700, padding: '2px 6px', borderRadius: 0, textTransform: 'uppercase',
                                 }}>
                                   {detection.matchedEvidence.engine === 'configured' ? 'Your Triggers' : 'Platform Patterns'}
                                 </span>

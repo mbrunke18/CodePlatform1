@@ -99,7 +99,7 @@ export default function FounderStory() {
           <div style={{ paddingBottom: 64, marginBottom: 56, borderBottom: `1px solid ${BORDER}` }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
               <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Origin</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>The Origin</span>
             </div>
             <Body>
               My father put me in shoulder pads for the first time in the third grade. On the first day, he looked at me and said four things: <em>prepare</em>, <em>practice</em>, <em>perform fearless</em> — and never give up. I was eight years old. I did not fully understand what he meant. But I felt the weight of it. He was not giving me tips for a game. He was handing me an operating model for a life.
@@ -306,7 +306,7 @@ export default function FounderStory() {
             <div style={{ maxWidth: 680, margin: "0 auto" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
                 <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>Design Principle</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD }}>Design Principle</span>
               </div>
               <p style={{ ...CG, fontSize: "clamp(26px,3.2vw,38px)", fontWeight: 600, color: NAVY, lineHeight: 1.15, marginBottom: 32, letterSpacing: "-0.01em" }}>
                 Built looks identical to received — until the trigger fires.
@@ -333,7 +333,7 @@ export default function FounderStory() {
 
           {/* ── Research Anchor — Dr. Kerry Huang ────────────────────────── */}
           <div style={{ background: "#F0EDE4", border: "1px solid #E8E4DC", borderLeft: `3px solid ${NAVY}`, padding: "32px 36px", margin: "48px 0" }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 20 }}>External Research Validation</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: MUTED, marginBottom: 20 }}>External Research Validation</div>
             <p style={{ ...CG, fontSize: "clamp(18px,2.2vw,22px)", fontWeight: 600, color: NAVY, lineHeight: 1.45, marginBottom: 12, fontStyle: "italic" }}>
               "Technology adoption alone has zero statistical relationship with supply chain collaboration improvement. Zero. Not weak. Not marginal. Zero. Technology doesn't build a moat. Capability and governance do."
             </p>
@@ -352,7 +352,7 @@ export default function FounderStory() {
 
           {/* ── Dr. Kerry Huang Public Repost ─────────────────────────────── */}
           <div style={{ background: NAVY, borderLeft: `3px solid ${GOLD}`, padding: "32px 36px", margin: "32px 0" }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 20 }}>Reposted Publicly · LinkedIn · April 20, 2026</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.6)", marginBottom: 20 }}>Reposted Publicly · LinkedIn · April 20, 2026</div>
             <p style={{ ...CG, fontSize: "clamp(17px,2vw,21px)", fontStyle: "italic", color: "rgba(255,255,255,0.9)", lineHeight: 1.75, marginBottom: 16 }}>
               "What four weeks of public intellectual exchange with Martin Brunke surfaced is that AwaCourage — awareness paired with the willingness to act before consensus arrives — and the architecture that makes this capacity possible at scale are two different governance functions. Same mechanism, opposite directions.
             </p>
@@ -378,7 +378,7 @@ export default function FounderStory() {
             marginTop: "32px",
             marginBottom: "32px"
           }}>
-            <div style={{ fontSize: 9, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12, fontWeight: 700 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 12, fontWeight: 700 }}>
               April 2026 · Peer Research Exchange
             </div>
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(16px,1.8vw,20px)", color: "#0A0F2E", fontStyle: "italic", lineHeight: 1.75, margin: "0 0 12px" }}>

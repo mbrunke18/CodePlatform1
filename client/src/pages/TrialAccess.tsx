@@ -51,14 +51,14 @@ export default function TrialAccess() {
           {/* Overline */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 28 }}>
             <div style={{ width: 28, height: 1, background: GOLD }} />
-            <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Trial Access · Readiness OS</span>
+            <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif" }}>Trial Access · Readiness OS</span>
             <div style={{ width: 28, height: 1, background: GOLD }} />
           </div>
           {/* Heading */}
           <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(32px,5vw,48px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 8 }}>
             Your link is<br /><em style={{ color: GOLD, fontStyle: "italic" }}>on its way.</em>
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em", marginBottom: 4 }}>
+          <p style={{ color: "rgba(255,255,255,0.68)", fontSize: 13, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em", marginBottom: 4 }}>
             Activation link sent to
           </p>
           <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 14, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, letterSpacing: "0.02em", marginBottom: 40 }}>
@@ -66,7 +66,7 @@ export default function TrialAccess() {
           </p>
           {/* What happens next */}
           <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 20, marginBottom: 40, textAlign: "left" }}>
-            <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 14 }}>What happens next</div>
+            <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 14 }}>What happens next</div>
             {[
               { step: "01", text: "Click the activation link in your email" },
               { step: "02", text: "Full platform access unlocks instantly — no password" },
@@ -81,7 +81,7 @@ export default function TrialAccess() {
           </div>
           {/* Explore links */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 28, marginBottom: 28 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.25)", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 16 }}>While you wait</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 16 }}>While you wait</div>
             {[
               { href: "/12-minute-experience", label: "Take the 12-Minute Test Drive", tag: "Interactive" },
               { href: "/industry-demos", label: "See Your Industry Scenario", tag: "Vertical" },
@@ -89,11 +89,11 @@ export default function TrialAccess() {
             ].map(({ href, label, tag }, i) => (
               <a key={href} href={href} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.06)" : "none", textDecoration: "none", gap: 12 }}>
                 <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.55)", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.02em" }}>{label}</span>
-                <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>{tag} →</span>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: GOLD, flexShrink: 0, fontFamily: "'Barlow Condensed', sans-serif" }}>{tag} →</span>
               </a>
             ))}
           </div>
-          <p style={{ fontSize: 10, color: "rgba(255,255,255,0.18)", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>
+          <p style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>
             Not in your inbox? Check spam or email{" "}
             <a href="mailto:pilot@vaughnmartin.com" style={{ color: "rgba(201,168,76,0.5)", textDecoration: "none" }}>pilot@vaughnmartin.com</a>
           </p>
@@ -134,7 +134,7 @@ export default function TrialAccess() {
             ))}
           </div>
         </div>
-        <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+        <p className="text-xs" style={{ color: "rgba(255,255,255,0.68)" }}>
           Reserved for senior executives and qualified organizations.
         </p>
       </div>

@@ -164,7 +164,7 @@ export default function RequestAccess() {
 
                       {/* First Name */}
                       <div style={{ marginBottom: 28 }}>
-                        <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>First Name</label>
+                        <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>First Name</label>
                         <FormField control={form.control} name="firstName" render={({ field }) => (
                           <FormItem>
                             <FormControl><MinimalInput field={field} placeholder="Jane" /></FormControl>
@@ -175,7 +175,7 @@ export default function RequestAccess() {
 
                       {/* Last Name */}
                       <div style={{ marginBottom: 28 }}>
-                        <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Last Name</label>
+                        <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Last Name</label>
                         <FormField control={form.control} name="lastName" render={({ field }) => (
                           <FormItem>
                             <FormControl><MinimalInput field={field} placeholder="Smith" /></FormControl>
@@ -187,7 +187,7 @@ export default function RequestAccess() {
 
                     {/* Work Email */}
                     <div style={{ marginBottom: 28 }}>
-                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Work Email</label>
+                      <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Work Email</label>
                       <FormField control={form.control} name="email" render={({ field }) => (
                         <FormItem>
                           <FormControl><MinimalInput field={field} placeholder="jane.smith@company.com" /></FormControl>
@@ -198,7 +198,7 @@ export default function RequestAccess() {
 
                     {/* Company */}
                     <div style={{ marginBottom: 28 }}>
-                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Company</label>
+                      <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Company</label>
                       <FormField control={form.control} name="company" render={({ field }) => (
                         <FormItem>
                           <FormControl><MinimalInput field={field} placeholder="Acme Corporation" /></FormControl>
@@ -209,7 +209,7 @@ export default function RequestAccess() {
 
                     {/* Title */}
                     <div style={{ marginBottom: 40 }}>
-                      <label style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Title / Role</label>
+                      <label style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(240,237,228,0.72)", display: "block", marginBottom: 6 }}>Title / Role</label>
                       <FormField control={form.control} name="title" render={({ field }) => (
                         <FormItem>
                           <FormControl><MinimalInput field={field} placeholder="Chief Strategy Officer" /></FormControl>
@@ -296,7 +296,7 @@ export default function RequestAccess() {
                         }}
                       >
                         <span style={{ ...BC, fontSize: 13, fontWeight: 500, color: "rgba(240,237,228,0.65)", letterSpacing: "0.01em" }}>{label}</span>
-                        <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, flexShrink: 0 }}>{tag} →</span>
+                        <span style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, flexShrink: 0 }}>{tag} →</span>
                       </a>
                     ))}
                   </div>

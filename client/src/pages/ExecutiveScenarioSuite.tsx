@@ -1002,11 +1002,11 @@ export default function ExecutiveScenarioSuite() {
 
                 <div style={{ display: 'flex', gap: 12, marginBottom: 20 }}>
                   <div style={{ background: '#FFF5F5', border: '1px solid #FECACA', borderRadius: 0, padding: '8px 12px', flex: 1 }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Exposure</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Exposure</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: RED }}>{scenario.exposure}</div>
                   </div>
                   <div style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '8px 12px', flex: 1 }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Clock</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 3 }}>Clock</div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: '#C9A84C' }}>{scenario.clock}</div>
                   </div>
                 </div>

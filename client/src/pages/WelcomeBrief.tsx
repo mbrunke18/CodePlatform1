@@ -41,7 +41,7 @@ function AnimatedStat({ target, label, prefix = '', suffix = '', delay = 0, colo
       <div style={{ fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 800, color: '#fff', lineHeight: 1, letterSpacing: '-1px', fontVariantNumeric: 'tabular-nums' }}>
         {prefix}{value.toLocaleString()}{suffix}
       </div>
-      <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '1.2px', marginTop: 8 }}>{label}</div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.68)', textTransform: 'uppercase', letterSpacing: '1.2px', marginTop: 8 }}>{label}</div>
     </div>
   );
 }
@@ -69,13 +69,13 @@ function DetectionRow({ det, i }: { det: any; i: number }) {
       <div style={{ width: 6, height: 6, background: GOLD, flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{det.triggerName}</div>
-        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>
+        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)' }}>
           {det.triggerDomain} · {new Date(det.detectedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
         </div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', flexShrink: 0 }}>
         <div style={{ fontSize: 14, fontWeight: 800, color: TEAL }}>{det.confidenceScore}%</div>
-        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>confidence</div>
+        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', marginTop: 1 }}>confidence</div>
       </div>
     </div>
   );
@@ -108,7 +108,7 @@ export default function WelcomeBrief() {
         <div style={{ textAlign: 'center' }}>
           <div style={{ width: 48, height: 48, border: `2px solid ${GOLD}30`, borderTop: `2px solid ${GOLD}`, borderRadius: 0, margin: '0 auto 20px', animation: 'spin 1s linear infinite' }} />
           <div style={{ fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Readiness OS</div>
-          <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)' }}>Preparing your activation brief...</div>
+          <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.68)' }}>Preparing your activation brief...</div>
           <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
         </div>
       </div>
@@ -223,7 +223,7 @@ export default function WelcomeBrief() {
                   <DetectionRow key={i} det={det} i={i} />
                 ))}
               </div>
-              <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.07)', fontSize: 12, color: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.07)', fontSize: 12, color: 'rgba(255,255,255,0.68)', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Radio size={12} color="rgba(255,255,255,0.3)" />
                 Continuous monitoring is active. Alerts will be sent to enrolled stakeholders in real time.
               </div>
@@ -283,11 +283,11 @@ export default function WelcomeBrief() {
               },
             ].map(({ day, title, desc, color }, i) => (
               <div key={day} style={{ position: 'relative', paddingLeft: 16, borderLeft: `2px solid ${color}30` }}>
-                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color, marginBottom: 4 }}>{day}</div>
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color, marginBottom: 4 }}>{day}</div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6 }}>{title}</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.38)', lineHeight: 1.6 }}>{desc}</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)', lineHeight: 1.6 }}>{desc}</div>
                 {i < 3 && (
-                  <div style={{ position: 'absolute', right: -12, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.15)', fontSize: 16, display: 'none' }}>→</div>
+                  <div style={{ position: 'absolute', right: -12, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.68)', fontSize: 16, display: 'none' }}>→</div>
                 )}
               </div>
             ))}
@@ -299,7 +299,7 @@ export default function WelcomeBrief() {
           background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', padding: '28px 28px 24px', marginBottom: 48,
           opacity: contentVisible ? 1 : 0, transition: 'opacity 0.7s ease 0.2s',
         }}>
-          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 20 }}>Your Readiness Infrastructure — Live Now</div>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '1.8px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 20 }}>Your Readiness Infrastructure — Live Now</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 0 }}>
             {[
               { label: 'Continuous Monitoring', desc: '248+ signals scanned every 15 minutes, 24/7, across 9 strategic domains.', color: GOLD },
@@ -308,8 +308,8 @@ export default function WelcomeBrief() {
               { label: 'Readiness Dividend', desc: 'Every response builds a live record of executive hours saved and value created.', color: TEAL },
             ].map(({ label, desc, color }, i) => (
               <div key={i} style={{ padding: '16px 20px 16px 16px', borderLeft: `2px solid ${color}30`, marginLeft: i === 0 ? 0 : 0 }}>
-                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color, marginBottom: 6 }}>{label}</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6 }}>{desc}</div>
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color, marginBottom: 6 }}>{label}</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)', lineHeight: 1.6 }}>{desc}</div>
               </div>
             ))}
           </div>
@@ -338,7 +338,7 @@ export default function WelcomeBrief() {
           </button>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginTop: 16 }}>
             <Eye size={11} color="rgba(255,255,255,0.2)" />
-            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>
+            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.68)' }}>
               This brief is shown once. Full execution history is always available from Mission Control.
             </span>
           </div>

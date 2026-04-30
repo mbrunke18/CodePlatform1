@@ -148,7 +148,7 @@ export default function OnboardingGuide() {
               </div>
               <div>
                 <div style={{ fontSize: 11, fontWeight: 800, color: GOLD, letterSpacing: "2.5px", textTransform: "uppercase" as const }}>VaughnMartin</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", letterSpacing: "1px" }}>Readiness OS</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", letterSpacing: "1px" }}>Readiness OS</div>
               </div>
             </div>
             <h1 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, color: "#fff", margin: "0 0 12px", letterSpacing: "-1.5px", lineHeight: 1.1 }}>
@@ -161,7 +161,7 @@ export default function OnboardingGuide() {
               {[["12 min", "Execution Time"], ["3,600×", "Execution Head Start"], ["170", "Pre-Built Readiness Protocols"], ["221", "Live Triggers"]].map(([v, l]) => (
                 <div key={l} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 0, padding: "16px 12px", textAlign: "center" as const }}>
                   <div style={{ fontSize: 22, fontWeight: 900, color: GOLD, letterSpacing: "-0.5px" }}>{v}</div>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>{l}</div>
+                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>{l}</div>
                 </div>
               ))}
             </div>
@@ -353,7 +353,7 @@ export default function OnboardingGuide() {
             </div>
             <div style={{ flexShrink: 0, textAlign: "center" as const }}>
               <div style={{ fontSize: 40, fontWeight: 900, color: GOLD, lineHeight: 1 }}>23</div>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>Flagship</div>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.68)", textTransform: "uppercase" as const, letterSpacing: "1px", marginTop: 4 }}>Flagship</div>
             </div>
           </div>
         </Section>
@@ -470,7 +470,7 @@ export default function OnboardingGuide() {
                 <h3 style={{ fontSize: 12, fontWeight: 800, color: GOLD, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 16px" }}>Pilot Contact</h3>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4 }}>VaughnMartin Pilot Team</div>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>pilot@vaughnmartin.com</div>
-                <p style={{ margin: 0, fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>For platform questions, configuration support, or to schedule your executive walkthrough session.</p>
+                <p style={{ margin: 0, fontSize: 12, color: "rgba(255,255,255,0.68)", lineHeight: 1.6 }}>For platform questions, configuration support, or to schedule your executive walkthrough session.</p>
               </div>
               <div style={{ background: `${GOLD}10`, border: `1px solid ${GOLD}30`, borderRadius: 0, padding: 24 }}>
                 <h3 style={{ fontSize: 12, fontWeight: 800, color: NAVY, textTransform: "uppercase" as const, letterSpacing: "1px", margin: "0 0 14px" }}>Data Glossary</h3>

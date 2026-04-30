@@ -157,7 +157,7 @@ export default function OnboardingWizard() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Phase 1 of 3 — Foundation</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)" }}>Phase 1 of 3 — Foundation</span>
             </div>
             <button
               onClick={() => completeOnboardingMutation.mutate()}
@@ -194,8 +194,8 @@ export default function OnboardingWizard() {
                       }
                     </div>
                     <div style={{ display: i < 2 ? "block" : "block" }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: active ? "#fff" : done ? TEAL_LT : "rgba(255,255,255,0.35)" }}>{step.title}</div>
-                      <div style={{ fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.25)" }}>{step.subtitle}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: active ? "#fff" : done ? TEAL_LT : "rgba(255,255,255,0.68)" }}>{step.title}</div>
+                      <div style={{ fontSize: 10, fontWeight: 400, color: "rgba(255,255,255,0.68)" }}>{step.subtitle}</div>
                     </div>
                   </div>
                   {i < PHASE_1_STEPS.length - 1 && (
@@ -481,7 +481,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
 
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
           <div style={{ width: 24, height: 2, background: "rgba(255,255,255,0.2)" }} />
-          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)" }}>Welcome to Readiness OS</span>
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)" }}>Welcome to Readiness OS</span>
         </div>
 
         <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,62px)", color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
@@ -501,7 +501,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
               <div style={{ ...CG, fontSize: 48, fontWeight: 300, color: phase.color, lineHeight: 1, marginBottom: 4 }}>{phase.num}</div>
               <div style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 4 }}>{phase.label}</div>
               <div style={{ fontSize: 11, fontWeight: 600, color: phase.color, marginBottom: 20 }}>{phase.timing}</div>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>{phase.doing}</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)", marginBottom: 14 }}>{phase.doing}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
                 {phase.items.map((item, j) => (
                   <div key={j} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
@@ -511,7 +511,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
                 ))}
               </div>
               <div style={{ paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ fontSize: 11, fontWeight: 400, color: "rgba(255,255,255,0.4)", lineHeight: 1.6, fontStyle: "italic" }}>{phase.outcome}</div>
+                <div style={{ fontSize: 11, fontWeight: 400, color: "rgba(255,255,255,0.68)", lineHeight: 1.6, fontStyle: "italic" }}>{phase.outcome}</div>
               </div>
             </div>
           ))}
@@ -524,7 +524,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
             Begin Phase 1 — Foundation
             <ArrowRight size={18} />
           </button>
-          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}>About 20 minutes</div>
+          <div style={{ fontSize: 13, color: "rgba(255,255,255,0.68)" }}>About 20 minutes</div>
           <button
             onClick={onSkip}
             style={{ background: "transparent", border: "none", color: "rgba(255,255,255,0.35)", fontSize: 12, fontWeight: 500, cursor: "pointer", textDecoration: "underline", padding: 0 }}>
@@ -540,7 +540,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
           ].map((s, i) => (
             <div key={i}>
               <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, lineHeight: 1 }}>{s.num}</div>
-              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginTop: 4 }}>{s.label}</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.68)", marginTop: 4 }}>{s.label}</div>
             </div>
           ))}
         </div>

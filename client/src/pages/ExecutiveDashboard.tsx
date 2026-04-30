@@ -99,7 +99,7 @@ function MetricCard({
       borderLeft: `3px solid ${accentColor}`,
       padding: '20px 20px 16px',
     }}>
-      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{title}</div>
+      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 10, fontFamily: "'Barlow Condensed', sans-serif" }}>{title}</div>
       <div style={{ ...CG, fontSize: '36px', fontWeight: 600, color: '#0A0F2E', lineHeight: 1, marginBottom: 8 }}>{value}{unit}</div>
       <div style={{ width: 24, height: 1, background: `${accentColor}60`, marginBottom: 8 }} />
       {trend && (

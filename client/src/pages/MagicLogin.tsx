@@ -126,7 +126,7 @@ export default function MagicLogin() {
         )}
       </div>
 
-      <p className="mt-8 text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+      <p className="mt-8 text-xs" style={{ color: "rgba(255,255,255,0.68)" }}>
         Need help?{" "}
         <a href="mailto:pilot@vaughnmartin.com" style={{ color: "rgba(255,255,255,0.5)" }}>
           pilot@vaughnmartin.com
