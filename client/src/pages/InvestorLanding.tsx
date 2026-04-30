@@ -1446,7 +1446,7 @@ export default function InvestorLanding() {
                 </p>
               </div>
               <div style={{ flexShrink: 0, textAlign: 'right' as const }}>
-                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.35)', marginBottom: 6 }}>Total addressable expansion</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.68)', marginBottom: 6 }}>Total addressable expansion</div>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>$5B+</div>
                 <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>Total addressable market</div>
               </div>

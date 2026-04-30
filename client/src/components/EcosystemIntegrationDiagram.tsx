@@ -154,7 +154,7 @@ export default function EcosystemIntegrationDiagram() {
 
             {/* Phase number */}
             <text x={px + 16} y={PHASE_Y + 24}
-              fill={phase.color} fontSize={10} fontWeight={700} letterSpacing={2} opacity={0.55}
+              fill={phase.color} fontSize={11} fontWeight={700} letterSpacing={2} opacity={0.82}
               fontFamily="'DM Mono',monospace"
             >
               {phase.n}
@@ -200,8 +200,8 @@ export default function EcosystemIntegrationDiagram() {
 
             {/* Body text lines */}
             {phase.body.map((line, li) => (
-              <text key={li} x={px + 16} y={PHASE_Y + 136 + li * 16}
-                fill={IVORY} fontSize={9.5} opacity={0.48}
+              <text key={li} x={px + 16} y={PHASE_Y + 136 + li * 17}
+                fill={IVORY} fontSize={11} opacity={0.75}
                 fontFamily="'Barlow Condensed',sans-serif" letterSpacing={0.2}
               >
                 {line}
@@ -220,8 +220,8 @@ export default function EcosystemIntegrationDiagram() {
                   fill={phase.color} opacity={0.7}
                 />
                 <text x={px + 26} y={PHASE_Y + 243 + bi * 28}
-                  fill={IVORY} fontSize={10} fontWeight={600} letterSpacing={0.4}
-                  fontFamily="'Barlow Condensed',sans-serif" opacity={0.78}
+                  fill={IVORY} fontSize={11} fontWeight={600} letterSpacing={0.4}
+                  fontFamily="'Barlow Condensed',sans-serif" opacity={0.88}
                 >
                   {b}
                 </text>
@@ -239,7 +239,7 @@ export default function EcosystemIntegrationDiagram() {
       <rect x={0} y={H - 38} width={W} height={38} fill="rgba(255,255,255,0.015)" />
       <line x1={0} y1={H - 38} x2={W} y2={H - 38} stroke={GOLD} strokeWidth={0.5} strokeOpacity={0.12} />
       <text x={W / 2} y={H - 14} textAnchor="middle"
-        fill={IVORY} fontSize={9} opacity={0.28}
+        fill={IVORY} fontSize={10} opacity={0.58}
         fontFamily="'DM Mono',monospace" letterSpacing={0.8}
       >
         No rip-and-replace. No new infrastructure required. Executive authority preserved on every activation.

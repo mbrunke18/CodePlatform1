@@ -15,7 +15,7 @@ export function SectionLabel({ overline, heading, headingSize = 'clamp(28px,4vw,
     <div className={className} style={{ textAlign: centered ? 'center' : 'left' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14, justifyContent: centered ? 'center' : 'flex-start' }}>
         <div style={{ width: 20, height: 1.5, background: '#C9A84C', flexShrink: 0 }} />
-        <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: dark ? 'rgba(201,168,76,0.7)' : '#C9A84C' }}>
+        <span style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: dark ? 'rgba(201,168,76,0.88)' : '#C9A84C' }}>
           {overline}
         </span>
         {centered && <div style={{ width: 20, height: 1.5, background: '#C9A84C', flexShrink: 0 }} />}
@@ -40,8 +40,8 @@ export function EditorialStat({ value, label, sub, color = '#C9A84C', dark = fal
     <div>
       <div style={{ ...CG, fontSize: 40, fontWeight: 700, color, lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>{value}</div>
       <div style={{ width: 20, height: 1, background: `${color}55`, margin: '8px 0 6px' }} />
-      <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,0.3)' : '#9CA3AF' }}>{label}</div>
-      {sub && <div style={{ fontSize: 11, color: dark ? 'rgba(255,255,255,0.2)' : '#9CA3AF', marginTop: 3 }}>{sub}</div>}
+      <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,0.72)' : '#6B7280' }}>{label}</div>
+      {sub && <div style={{ fontSize: 12, color: dark ? 'rgba(255,255,255,0.58)' : '#6B7280', marginTop: 3 }}>{sub}</div>}
     </div>
   );
 }

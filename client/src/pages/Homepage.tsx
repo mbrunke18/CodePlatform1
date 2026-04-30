@@ -245,7 +245,7 @@ function LiveSignalFeedSection() {
                             {body.length > 120 ? body.slice(0, 119) + '…' : body}
                           </p>
                         )}
-                        <div style={{ ...DM, fontSize: 9.5, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
+                        <div style={{ ...DM, fontSize: 9.5, fontWeight: 600, color: 'rgba(255,255,255,0.58)', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>
                           Matched trigger → {sig.triggerName}
                         </div>
                       </>
