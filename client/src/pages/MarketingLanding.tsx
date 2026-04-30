@@ -100,7 +100,7 @@ export default function MarketingLanding() {
                 style={{ background: 'transparent', color: '#fff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.15em', fontSize: 13, padding: '20px 48px', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer', fontFamily: "'Barlow Condensed', sans-serif" }}
                 data-testid="button-start-pilot"
               >
-                Start Pilot Program
+                Apply for Founding Partner Access
               </button>
             </div>
           </div>

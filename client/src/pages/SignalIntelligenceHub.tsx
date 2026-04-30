@@ -421,7 +421,7 @@ export default function SignalIntelligenceHub() {
                 onClick={() => setLocation('/request-access')}
                 style={{ background: "#C9A84C", color: "#0A0F2E" }}
               >
-                Request Pilot Access
+                Apply for Founding Partner Access
               </Button>
             </div>
           </div>

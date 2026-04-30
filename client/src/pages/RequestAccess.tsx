@@ -307,7 +307,7 @@ export default function RequestAccess() {
                     Ready for a formal engagement?
                   </p>
                   <Link href="/pilot-program" style={{ ...BC, fontSize: 12, fontWeight: 700, color: GOLD, textDecoration: "none", letterSpacing: "0.06em" }}>
-                    View Pilot Program — $75K flat →
+                    Learn About the Founding Partner Program →
                   </Link>
                 </div>
 

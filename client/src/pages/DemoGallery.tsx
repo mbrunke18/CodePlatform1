@@ -332,7 +332,7 @@ export default function DemoGallery() {
                 </Link>
                 <Link href="/contact">
                   <Button size="lg" className="bg-[#0A0F2E] hover:bg-[#141B45] text-white font-semibold border-2 border-[#C9A84C]/30">
-                    Start Pilot Program
+                    Apply for Founding Partner Access
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>

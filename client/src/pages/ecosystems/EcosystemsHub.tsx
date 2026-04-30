@@ -327,7 +327,7 @@ export default function EcosystemsHub() {
             cursor: "pointer",
           }}
         >
-          Request a Pilot
+          Request Founding Partner Access
         </button>
       </section>
     </PageLayout>

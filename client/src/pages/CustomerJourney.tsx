@@ -38,7 +38,7 @@ const phaseDetails = [
       { name: 'Explore Demo Gallery', path: '/demo-gallery', description: 'Interactive demos for prospects, executives, and investors' },
       { name: 'Calculate Your ROI', path: '/roi-calculator', description: 'Quantify potential value with industry benchmarks' },
       { name: 'Review Pricing', path: '/pricing', description: 'Understand pilot and enterprise options' },
-      { name: 'Start Pilot Program', path: '/request-access', description: 'Define scope and success criteria' }
+      { name: 'Apply for Founding Partner Access', path: '/request-access', description: 'Define scope and success criteria' }
     ],
     deliverables: ['Executive sponsor commitment', 'Pilot scope document', 'Success metrics defined', 'Timeline agreed'],
     integrations: []
@@ -317,7 +317,7 @@ export default function CustomerJourney() {
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                   <Link href="/request-access">
                     <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-10 py-6 text-base">
-                      Start Pilot Program
+                      Apply for Founding Partner Access
                     </Button>
                   </Link>
                   <Link href="/demo-selector">

@@ -94,7 +94,7 @@ export default function VsBCP() {
               onClick={() => setLocation("/request-access")}
               style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", border: "none", cursor: "pointer" }}
             >
-              Request a Pilot <ArrowRight style={{ width: 16, height: 16 }} />
+              Request Founding Partner Access <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <button
               onClick={() => setLocation("/try-demo")}
@@ -257,7 +257,7 @@ export default function VsBCP() {
               onClick={() => setLocation("/request-access")}
               style={{ ...DM, display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: IVORY, fontSize: 11, fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px", border: "1px solid rgba(240,237,228,0.25)", cursor: "pointer" }}
             >
-              Request a Pilot
+              Request Founding Partner Access
             </button>
           </div>
         </div>

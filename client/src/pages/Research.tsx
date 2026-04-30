@@ -29,7 +29,7 @@ export default function Research() {
   useEffect(() => {
     updatePageMetadata({
       title: "Research Behind Readiness OS | Crisis Response Statistics & Industry Data",
-      description: "Readiness OS was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data that proves faster response saves millions.",
+      description: "Readiness OS was built on a foundation of industry research from McKinsey, PwC, IBM, and Ponemon Institute. See the data behind 30-day mobilization compressed to 12 minutes.",
       ogTitle: "The Research Behind Readiness OS - Industry Data & Statistics",
       ogDescription: "IBM, McKinsey, PwC research proves the cost of slow response. See how Readiness OS compresses 30 days to 12 minutes.",
     });
@@ -787,7 +787,7 @@ export default function Research() {
                   size="lg"
                   className="border border-white/20 text-white/60 bg-transparent hover:bg-white/10 px-8"
                 >
-                  Request Pilot Access
+                  Apply for Founding Partner Access
                 </Button>
               </Link>
             </div>

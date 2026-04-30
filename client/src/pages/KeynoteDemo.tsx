@@ -50,7 +50,7 @@ const STAGES = [
   { id: 'activation', label: '12-Min Activation' },
   { id: 'idea', label: 'IDEA Framework' },
   { id: 'outcomes', label: 'Outcomes & ROI' },
-  { id: 'cta', label: 'Start Pilot' },
+  { id: 'cta', label: 'Founding Partner Access' },
 ];
 
 function CountUp({ end, duration = 2000, prefix = '', suffix = '' }: { end: number; duration?: number; prefix?: string; suffix?: string }) {

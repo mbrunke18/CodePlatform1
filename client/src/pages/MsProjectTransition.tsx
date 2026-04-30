@@ -81,7 +81,7 @@ export default function MsProjectTransition() {
               onClick={() => setLocation("/pilot-program")}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "transparent", color: "rgba(240,237,228,0.8)", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "16px 32px", border: "1px solid rgba(240,237,228,0.2)", cursor: "pointer" }}
             >
-              Request Pilot Access
+              Apply for Founding Partner Access
             </button>
           </div>
         </div>
@@ -356,7 +356,7 @@ export default function MsProjectTransition() {
               onClick={() => setLocation("/pilot-program")}
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "16px 36px", border: "none", cursor: "pointer" }}
             >
-              Request Pilot Access <ArrowRight style={{ width: 16, height: 16 }} />
+              Apply for Founding Partner Access <ArrowRight style={{ width: 16, height: 16 }} />
             </button>
             <button
               onClick={() => setLocation("/12-minute-experience")}

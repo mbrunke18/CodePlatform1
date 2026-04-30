@@ -176,7 +176,7 @@ export default function EcosystemDiagramPage() {
               cursor: "pointer",
             }}
           >
-            Request a Pilot
+            Request Founding Partner Access
           </button>
           <button
             onClick={() => setLocation("/integrations")}

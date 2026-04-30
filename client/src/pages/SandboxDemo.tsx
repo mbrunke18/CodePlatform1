@@ -2233,7 +2233,7 @@ export default function SandboxDemo() {
               Try Another Scenario
             </Button>
             <Button onClick={() => setLocation('/request-access')} data-testid="button-pilot-programs">
-              View Pilot Program
+              Learn About the Founding Partner Program
             </Button>
           </div>
         </div>

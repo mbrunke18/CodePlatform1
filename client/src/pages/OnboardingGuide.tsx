@@ -500,7 +500,7 @@ export default function OnboardingGuide() {
           </div>
           <div style={{ fontSize: 11, color: "#9CA3AF", textAlign: "right" as const }}>
             <div>vaughnmartin.com/onboarding-guide</div>
-            <div style={{ marginTop: 2 }}>Confidential — Pilot Access Only</div>
+            <div style={{ marginTop: 2 }}>Confidential — Founding Partner Access Only</div>
           </div>
         </div>
 

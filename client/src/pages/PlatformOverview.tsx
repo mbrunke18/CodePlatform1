@@ -278,7 +278,7 @@ export default function PlatformOverview() {
                   size="lg"
                   className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"
                 >
-                  Request a Pilot
+                  Request Founding Partner Access
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>

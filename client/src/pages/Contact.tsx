@@ -304,7 +304,7 @@ export default function Contact() {
         <section className="py-24 px-12 bg-[#F8F7F4] border-t border-[#E8E4DC]">
           <div className="max-w-4xl mx-auto text-center">
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: "#0A0F2E", marginBottom: 16 }}>
-              Questions About the Pilot Program?
+              Questions About the Founding Partner Program?
             </h2>
             <p className="text-slate-600 mb-10 text-lg">
               Reach out directly or learn more about program structure and success metrics.

@@ -217,7 +217,7 @@ export default function EcosystemPageTemplate({ data }: { data: EcosystemPageDat
               cursor: "pointer",
             }}
           >
-            Request a Pilot
+            Request Founding Partner Access
           </button>
           <button
             onClick={() => setLocation("/integrations")}

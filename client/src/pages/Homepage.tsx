@@ -358,7 +358,7 @@ function HomepageNav() {
                   padding: "10px 22px", borderRadius: 0, textDecoration: "none", letterSpacing: "0.04em",
                 }}
               >
-                Request a Pilot
+                Request Founding Partner Access
               </Link>
             </div>
           </div>
@@ -425,7 +425,7 @@ function HomepageNav() {
               textAlign: "center", marginTop: 10, width: "calc(100% - 48px)", display: "block",
             }}
           >
-            Request a Pilot
+            Request Founding Partner Access
           </Link>
         </div>
       )}
@@ -625,7 +625,7 @@ function HeroSection() {
                   onClick={() => trackCTA("hero")}
                   style={{ ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "15px 36px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
                 >
-                  Request a Pilot →
+                  Request Founding Partner Access →
                 </Link>
                 <Link
                   href="/12-minute-experience"
@@ -1905,7 +1905,7 @@ function CTASection() {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = GOLD_LIGHT; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
             >
-              Request a Pilot
+              Request Founding Partner Access
             </Link>
           </div>
           <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 20, opacity: 0.6 }}>
@@ -1918,7 +1918,7 @@ function CTASection() {
           </p>
           <p style={{ ...DM, fontSize: 13, marginTop: 8 }}>
             <Link href="/request-access" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: 1 }}>
-              Request executive platform access — separate from the Pilot Program →
+              Request executive platform access — separate from the Founding Partner Program →
             </Link>
           </p>
         </Reveal>
@@ -1950,7 +1950,7 @@ function HomepageFooter() {
               { label: "How It Works",   href: "/how-it-works" },
               { label: "Readiness Protocols", href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
-              { label: "Request a Pilot", href: "/request-access" },
+              { label: "Request Founding Partner Access", href: "/request-access" },
               { label: "Request Access", href: "/request-access" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>

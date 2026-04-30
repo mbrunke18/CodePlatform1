@@ -807,7 +807,7 @@ export default function Investors() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/request-access">
                 <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12 rounded-none tracking-wide">
-                  Request a Pilot
+                  Request Founding Partner Access
                 </Button>
               </Link>
               <Link href="/investor-resources">

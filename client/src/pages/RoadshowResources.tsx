@@ -56,8 +56,8 @@ const DOCUMENTS = [
   },
   {
     id: 'pilot',
-    title: 'Pilot Program',
-    description: '90-day engagement structure, pricing, success metrics',
+    title: 'Founding Partner Program',
+    description: '90-day validation partnership, pricing, success metrics',
     icon: Target,
     color: 'bg-[#2B8A6E]',
     badge: '$75K',
@@ -321,7 +321,7 @@ export default function RoadshowResources() {
               <div className="flex flex-wrap justify-center gap-3">
                 {[
                   { label: "Tough Question", target: "FAQ" },
-                  { label: "Pricing Talk", target: "Pilot Program" },
+                  { label: "Pricing Talk", target: "Founding Partner Program" },
                   { label: "Product Demo", target: "Demo Script" },
                   { label: "Moat Analysis", target: "Competitive Moat" }
                 ].map((item, i) => (

@@ -80,7 +80,7 @@ export default function HowItWorks() {
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Link href="/request-access">
               <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "none" }}>
-                Request Pilot Access
+                Apply for Founding Partner Access
               </Button>
             </Link>
             <Link href="/try-demo">
@@ -684,7 +684,7 @@ export default function HowItWorks() {
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/request-access">
               <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "none" }}>
-                Request Pilot Access
+                Apply for Founding Partner Access
               </Button>
             </Link>
             <Link href="/12-minute-experience">

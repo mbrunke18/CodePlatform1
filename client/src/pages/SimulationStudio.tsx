@@ -222,7 +222,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                       textDecoration: 'none',
                     }}
                   >
-                    Request Pilot Access →
+                    Apply for Founding Partner Access →
                   </a>
                 </div>
               )}

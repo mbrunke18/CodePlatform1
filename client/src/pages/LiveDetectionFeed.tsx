@@ -312,7 +312,7 @@ export default function LiveDetectionFeed() {
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/request-access" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 0, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>
-                Request Pilot Access
+                Apply for Founding Partner Access
               </a>
               <a href="/platform-overview" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)', padding: '14px 28px', borderRadius: 0, fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
                 Learn More

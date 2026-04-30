@@ -48,7 +48,7 @@ export default function DemoAccess() {
               textDecoration: "none", letterSpacing: "0.05em",
             }}
           >
-            Request Pilot Access
+            Apply for Founding Partner Access
           </a>
         </div>
       </div>

@@ -261,7 +261,7 @@ export default function Roadmap() {
               onClick={() => setLocation("/request-access")}
               style={{ padding: "10px 24px", background: NAVY, color: "#fff", border: "none", cursor: "pointer", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}
             >
-              Request Pilot Access
+              Apply for Founding Partner Access
             </button>
             <button
               onClick={() => setLocation("/playbooks")}

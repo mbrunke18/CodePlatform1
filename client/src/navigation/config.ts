@@ -64,6 +64,13 @@ export const navigationConfig: NavigationConfig = {
           path: '/identify/metrics',
           icon: '📊',
           description: 'Define KPIs and success criteria for playbooks'
+        },
+        {
+          id: 'readiness-audit',
+          label: 'Readiness Audit',
+          path: '/playbook-readiness',
+          icon: '🔍',
+          description: 'Evaluate protocol coverage gaps and pre-staging completeness across all 170 Readiness Protocols'
         }
       ]
     },
@@ -136,6 +143,41 @@ export const navigationConfig: NavigationConfig = {
           path: '/live-detection',
           icon: '🔴',
           description: 'Real signals crossing trigger thresholds — Slack + email auto-fired'
+        },
+        {
+          id: 'foresight-radar',
+          label: 'Foresight Radar',
+          path: '/foresight-radar',
+          icon: '📡',
+          description: 'Forward-looking signal patterns — emerging risks before they cross trigger thresholds'
+        },
+        {
+          id: 'future-readiness',
+          label: 'Future Readiness',
+          path: '/future-readiness',
+          icon: '🔭',
+          description: 'Long-horizon readiness projection — coverage gaps mapped to your strategic calendar'
+        },
+        {
+          id: 'intelligence-control',
+          label: 'Intelligence Control',
+          path: '/intelligence',
+          icon: '🧠',
+          description: 'Signal management, pattern classification, and detection configuration'
+        },
+        {
+          id: 'prism-insights',
+          label: 'PRISM Insights',
+          path: '/prism-insights',
+          icon: '◈',
+          description: 'Pattern recognition scoring and insight mapping across all monitored domains'
+        },
+        {
+          id: 'intelligence-suite',
+          label: 'Intelligence Suite',
+          path: '/ai-intelligence-suite',
+          icon: '🔬',
+          description: 'Cross-domain intelligence across all active and emerging signals'
         }
       ]
     },
@@ -243,6 +285,13 @@ export const navigationConfig: NavigationConfig = {
           path: '/financial-exposure',
           icon: '💵',
           description: 'Instant dollar-range exposure at trigger point'
+        },
+        {
+          id: 'live-activation-center',
+          label: 'Live Activation Center',
+          path: '/live-activation-center',
+          icon: '🚨',
+          description: 'Real-time playbook activation management — tasks, owners, and 12-minute execution clock'
         }
       ]
     },
@@ -328,7 +377,21 @@ export const navigationConfig: NavigationConfig = {
           label: 'Strategic Innovation Pipeline',
           path: '/strategic-innovation',
           icon: '🚀',
-          description: 'Innovation pipeline management and AI opportunity scoring'
+          description: 'Innovation pipeline management and opportunity scoring'
+        },
+        {
+          id: 'cultural-analytics',
+          label: 'Cultural Analytics',
+          path: '/echo-cultural-analytics',
+          icon: '🌐',
+          description: 'Organizational resilience indicators — workforce dynamics and execution culture health'
+        },
+        {
+          id: 'enterprise-metrics',
+          label: 'Enterprise Metrics',
+          path: '/enterprise-metrics',
+          icon: '📐',
+          description: 'Enterprise-wide readiness KPIs and performance benchmarks across all domains'
         }
       ]
     },

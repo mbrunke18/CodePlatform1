@@ -442,7 +442,7 @@ export default function ProspectDemo() {
                   style={{ padding: "14px", background: GOLD, color: NAVY, border: "none", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                 >
                   <ArrowRight size={14} />
-                  Request Pilot for {displayName}
+                  Request Founding Partner Access for {displayName}
                 </button>
                 <button
                   onClick={() => setLocation("/prospect-brief")}

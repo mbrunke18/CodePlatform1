@@ -71,7 +71,7 @@ export default function TrialAccess() {
               { step: "01", text: "Click the activation link in your email" },
               { step: "02", text: "Full platform access unlocks instantly — no password" },
               { step: "03", text: "Your 48-hour session begins automatically" },
-              { step: "04", text: "Apply for the Pilot Program before your session expires" },
+              { step: "04", text: "Apply for Founding Partner Access before your session expires" },
             ].map(({ step, text }) => (
               <div key={step} style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 12 }}>
                 <span style={{ fontSize: 10, fontWeight: 800, color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", flexShrink: 0, marginTop: 2 }}>{step}</span>

@@ -1248,7 +1248,7 @@ export default function PlaybookDetail() {
                       onClick={() => setLocation("/request-access")}
                     >
                       <Zap className="h-4 w-4 mr-2" />
-                      Request Pilot
+                      Apply for Founding Partner Access
                     </Button>
                     <Button
                       variant="outline"
@@ -1426,7 +1426,7 @@ export default function PlaybookDetail() {
                     onClick={() => setLocation("/request-access")}
                   >
                     <Zap className="h-4 w-4 mr-2" />
-                    Request Pilot — Full Access
+                    Apply for Founding Partner Access
                   </Button>
                   <Button
                     style={{ background: "transparent", color: "#fff", height: 56, paddingLeft: 36, paddingRight: 36, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", borderRadius: 0, border: "1.5px solid rgba(255,255,255,0.25)" }}

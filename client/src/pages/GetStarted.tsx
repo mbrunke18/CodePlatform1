@@ -202,7 +202,7 @@ export default function GetStarted() {
             {/* Pilot Program */}
             <div style={{ background: NAVY, padding: "40px 36px" }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 16 }}>Enterprise Pilot</div>
-              <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: "#fff", marginBottom: 12 }}>Guided Pilot Program</h3>
+              <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: "#fff", marginBottom: 12 }}>Founding Partner Program</h3>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: 24 }}>
                 A structured 12-week engagement with dedicated support, custom Readiness Protocol configuration, integration setup, and executive reporting. For Fortune 1000 deployment.
               </p>
@@ -223,7 +223,7 @@ export default function GetStarted() {
                 onMouseLeave={e => (e.currentTarget.style.background = GOLD)}
               >
                 <Clock size={14} />
-                Request Pilot Access
+                Apply for Founding Partner Access
               </button>
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function GetStarted() {
               onMouseEnter={e => (e.currentTarget.style.borderColor = NAVY)}
               onMouseLeave={e => (e.currentTarget.style.borderColor = BORDER)}
             >
-              Request Pilot Access
+              Apply for Founding Partner Access
               <ArrowRight size={16} />
             </button>
           </div>

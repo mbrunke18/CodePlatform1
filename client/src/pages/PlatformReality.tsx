@@ -416,7 +416,7 @@ export default function PlatformReality() {
                   onClick={() => setLocation("/pilot-program")}
                   style={{ display: "inline-flex", alignItems: "center", gap: 8, background: GOLD, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, padding: "16px 36px", border: "none", cursor: "pointer" }}
                 >
-                  Request Pilot Access <ArrowRight style={{ width: 16, height: 16 }} />
+                  Apply for Founding Partner Access <ArrowRight style={{ width: 16, height: 16 }} />
                 </button>
                 <button
                   onClick={() => setLocation("/research")}

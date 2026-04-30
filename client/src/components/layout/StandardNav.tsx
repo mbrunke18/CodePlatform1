@@ -74,7 +74,7 @@ const SEARCH_ITEMS = [
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
-  { label: 'Request a Pilot', path: '/request-access', category: 'Action', icon: Target },
+  { label: 'Request Founding Partner Access', path: '/request-access', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'Why Readiness OS?', path: '/why-execution-os', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
@@ -478,7 +478,7 @@ export default function StandardNav() {
                   el.style.borderColor = 'rgba(201,168,76,0.3)';
                 }}
               >
-                <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Request a Pilot</p>
+                <p style={{ fontSize: 9, fontWeight: 700, color: GOLD, letterSpacing: '0.14em', textTransform: 'uppercase', margin: '0 0 2px' }}>Request Founding Partner Access</p>
                 <p style={{ fontSize: 10.5, color: '#374151', margin: 0, lineHeight: 1.4 }}>Deploy Readiness OS inside your portfolio company →</p>
               </div>
             </div>
@@ -733,7 +733,7 @@ export default function StandardNav() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
-                  Request a Pilot
+                  Request Founding Partner Access
                 </Button>
                 <Button
                   onClick={() => navigateTo("/command-center")}
@@ -808,7 +808,7 @@ export default function StandardNav() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
-                  Request a Pilot
+                  Request Founding Partner Access
                 </Button>
                 <Button
                   variant="ghost"
@@ -885,7 +885,7 @@ export default function StandardNav() {
                       style={{ background: GOLD, color: NAVY }}
                       data-testid="nav-mobile-request-pilot"
                     >
-                      Request a Pilot
+                      Request Founding Partner Access
                     </Button>
                   </div>
                 </div>
@@ -908,7 +908,7 @@ export default function StandardNav() {
                     data-testid="nav-mobile-request-pilot"
                   >
                     <Target className="h-4 w-4 mr-2" />
-                    Request a Pilot
+                    Request Founding Partner Access
                   </Button>
                   <Button
                     variant="ghost"

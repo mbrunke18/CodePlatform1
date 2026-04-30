@@ -519,7 +519,7 @@ export default function FounderStory() {
           </p>
           <Link href="/request-access">
             <button style={{ background: GOLD, color: NAVY, border: "none", padding: "18px 40px", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer" }}>
-              Request Pilot Access
+              Apply for Founding Partner Access
             </button>
           </Link>
         </div>
