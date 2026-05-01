@@ -49,7 +49,7 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **IDEA Framework:** Manages the full Trigger → Playbook IDEA Chain for trigger detection, playbook recommendations, and execution.
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Data Consistency:** Strict use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers."
-- **Readiness Protocol Terminology:** "Readiness Protocol" is the canonical term for execution artifacts in UI/UX; internal code uses "playbook."
+- **Readiness Protocol Terminology:** "Readiness Protocol" is the canonical term for execution artifacts in UI/UX. Phase 1 naming cleanup complete: file names and component names now use `Protocol*` (e.g., `ProtocolLibrary.tsx`, `ProtocolActivationConsole.tsx`) and `FoundingPartner*` (e.g., `FoundingPartnerProgram.tsx`). Internal database column values and URL routes remain unchanged. `components/playbook/` folder renamed to `components/protocol/`.
 - **12-Minute Test Drive:** A public 4-step experience simulating execution at `/12-minute-experience`.
 - **Live Signal Detection:** Real-time RSS ingestion from 8 sources every 15 minutes, scored against 16 trigger patterns.
 - **Risk Scoring:** Square-root scaling (`√signals × 8`) for LOW (<35), MEDIUM (35–74), HIGH (75+) risk levels.
@@ -60,8 +60,8 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Sector Playbook Packs:** Organizes playbooks by 6 industry sectors.
 - **Regulatory Calendar:** Displays 9 compliance deadlines with urgency, regulatory body, description, and recommended actions.
 - **Board-Ready Activation Report:** Generates a report for activations, including elapsed time and next steps.
-- **Ownership Close-Out Gate:** Formal governance verdict at activation completion inside PlaybookActivationConsole. Measures ownership transfer rate, surfaces silent tasks diagnostic, delivers one of three verdicts: Ownership Confirmed (≥70%), Partial Transfer (35-69%), Silence Detected (<35%).
-- **Recovery vs. Optimization Debrief Classification:** ADVANCE debrief inside PlaybookActivationConsole automatically classifies itself based on Close-Out Gate ownership %: Optimization (≥70%), Mixed-Signal (35-69%), Recovery (<35%).
+- **Ownership Close-Out Gate:** Formal governance verdict at activation completion inside `ProtocolActivationConsole.tsx`. Measures ownership transfer rate, surfaces silent tasks diagnostic, delivers one of three verdicts: Ownership Confirmed (≥70%), Partial Transfer (35-69%), Silence Detected (<35%).
+- **Recovery vs. Optimization Debrief Classification:** ADVANCE debrief inside `ProtocolActivationConsole.tsx` automatically classifies itself based on Close-Out Gate ownership %: Optimization (≥70%), Mixed-Signal (35-69%), Recovery (<35%).
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI

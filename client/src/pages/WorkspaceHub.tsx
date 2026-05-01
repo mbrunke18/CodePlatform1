@@ -56,7 +56,7 @@ const CAT_COLORS: Record<string, string> = {
   offense: 'text-[#2B8A6E]', defense: 'text-[#0A0F2E]', special_teams: 'text-[#C9A84C]',
 };
 type PlaybookMeta = { id: string; name: string; domain: string; category: string | null; description: string | null; priority: string | null; timesUsed: number | null; sourceType: string; approvalStatus: string | null; status: string | null; };
-type PlaybookDetailType = PlaybookMeta & { triggerConditions?: any; escalationPaths?: any; stakeholders?: any; executionSteps?: any; enrichedPhases?: any; };
+type ProtocolDetailType = PlaybookMeta & { triggerConditions?: any; escalationPaths?: any; stakeholders?: any; executionSteps?: any; enrichedPhases?: any; };
 
 function TwoPhasePlaybookSelector() {
   const [search, setSearch] = useState('');
@@ -65,7 +65,7 @@ function TwoPhasePlaybookSelector() {
     queryKey: ['/api/playbooks/metadata', search],
     queryFn: () => { const p = new URLSearchParams({ limit: '30' }); if (search.trim()) p.set('search', search.trim()); return fetch(`/api/playbooks/metadata?${p}`, { credentials: 'include' }).then(r => r.ok ? r.json() : []); },
   });
-  const { data: detail, isLoading: detailLoading } = useQuery<PlaybookDetailType>({
+  const { data: detail, isLoading: detailLoading } = useQuery<ProtocolDetailType>({
     queryKey: ['/api/playbooks', selectedId],
     queryFn: () => fetch(`/api/playbooks/${selectedId}`, { credentials: 'include' }).then(r => r.json()),
     enabled: !!selectedId,

@@ -113,7 +113,7 @@ type PlaybookMeta = {
   status: string | null;
 };
 
-type PlaybookDetail = PlaybookMeta & {
+type ProtocolDetail = PlaybookMeta & {
   triggerConditions?: any;
   escalationPaths?: any;
   stakeholders?: any;
@@ -149,7 +149,7 @@ function TwoPhasePlaybookSelector() {
   });
 
   // PHASE 2: Load full Readiness Protocol detail only when one is selected
-  const { data: detail, isLoading: detailLoading } = useQuery<PlaybookDetail>({
+  const { data: detail, isLoading: detailLoading } = useQuery<ProtocolDetail>({
     queryKey: ['/api/playbooks', selectedId],
     queryFn: () => fetch(`/api/playbooks/${selectedId}`, { credentials: 'include' }).then(r => r.json()),
     enabled: !!selectedId,

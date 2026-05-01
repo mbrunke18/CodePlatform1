@@ -1,10 +1,10 @@
 import IDEALayout from '@/components/layout/IDEALayout';
-import PlaybookCustomization from '@/pages/PlaybookCustomization';
+import ProtocolCustomization from '@/pages/ProtocolCustomization';
 
 export default function WizardPage() {
   return (
     <IDEALayout>
-      <PlaybookCustomization embedded={true} />
+      <ProtocolCustomization embedded={true} />
     </IDEALayout>
   );
 }

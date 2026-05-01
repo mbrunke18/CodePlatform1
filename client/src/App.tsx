@@ -56,8 +56,8 @@ const TwelveMinuteTestDrive = lazy(() => import("./pages/TwelveMinuteTestDrive")
 const IncidentAnalyzer = lazy(() => import("./pages/IncidentAnalyzer"));
 const ReadinessAssessment = lazy(() => import("./pages/ReadinessAssessment"));
 const WhatIfAnalyzer = lazy(() => import("./pages/WhatIfAnalyzer"));
-const PlaybookLibraryV2 = lazy(() => import("./pages/PlaybookLibraryV2"));
-const PlaybookDetail = lazy(() => import("./pages/PlaybookDetail"));
+const ProtocolLibrary = lazy(() => import("./pages/ProtocolLibrary"));
+const ProtocolDetail = lazy(() => import("./pages/ProtocolDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
@@ -94,10 +94,10 @@ const EchoCulturalAnalytics = lazy(() => import("./pages/EchoCulturalAnalytics")
 const NovaInnovations = lazy(() => import("./pages/NovaInnovations"));
 const ExecutiveWarRoomPage = lazy(() => import("./pages/ExecutiveWarRoomPage"));
 const UATAdmin = lazy(() => import("./pages/UATAdmin"));
-const PlaybookActivationConsole = lazy(() => import("./pages/PlaybookActivationConsole"));
+const ProtocolActivationConsole = lazy(() => import("./pages/ProtocolActivationConsole"));
 const PreparednessReport = lazy(() => import("./pages/PreparednessReport"));
-const PlaybookCommand = lazy(() => import("./pages/PlaybookCommand"));
-const PlaybookSettings = lazy(() => import("./pages/PlaybookSettings"));
+const ProtocolCommand = lazy(() => import("./pages/ProtocolCommand"));
+const ProtocolSettings = lazy(() => import("./pages/ProtocolSettings"));
 const PracticeDrills = lazy(() => import("./pages/PracticeDrills"));
 const LiveDrillExecution = lazy(() => import("./pages/LiveDrillExecution"));
 const ExecutionLearningDashboard = lazy(() => import("./pages/NFLLearningDashboard"));
@@ -127,7 +127,7 @@ const ComprehensiveROIBreakdown = lazy(() => import("./pages/ComprehensiveROIBre
 const OurStory = lazy(() => import("./pages/OurStory"));
 const WhyExecuteIQ = lazy(() => import("./pages/WhyExecuteIQ"));
 const Research = lazy(() => import("./pages/Research"));
-const PilotMonitoring = lazy(() => import("./pages/PilotMonitoring"));
+const FoundingPartnerMonitoring = lazy(() => import("./pages/FoundingPartnerMonitoring"));
 const CrisisExposureMatrix = lazy(() => import("./pages/CrisisExposureMatrix"));
 const CrisisCommunicationsGenerator = lazy(() => import("./pages/CrisisCommunicationsGenerator"));
 const FinancialExposureEstimator = lazy(() => import("./pages/FinancialExposureEstimator"));
@@ -151,9 +151,9 @@ const CommandLanding = lazy(() => import("./pages/CommandLanding"));
 const ExecutionHistory = lazy(() => import("./pages/ExecutionHistory"));
 const FutureGym = lazy(() => import("./pages/FutureGym"));
 const ForesightRadar = lazy(() => import("./pages/ForesightRadar"));
-const LivingPlaybooks = lazy(() => import("./pages/LivingPlaybooks"));
+const LivingProtocols = lazy(() => import("./pages/LivingProtocols"));
 const ContinuousModePage = lazy(() => import("./pages/ContinuousModePage"));
-const PlaybookReadinessAudit = lazy(() => import("./pages/PlaybookReadinessAudit"));
+const ProtocolReadinessAudit = lazy(() => import("./pages/ProtocolReadinessAudit"));
 const PlatformOverview = lazy(() => import("./pages/PlatformOverview"));
 const PlatformCapabilities = lazy(() => import("./pages/PlatformCapabilities"));
 const IDEAFramework = lazy(() => import("./pages/IDEAFramework"));
@@ -170,8 +170,8 @@ const WorkspaceExecute = lazy(() => import("./pages/WorkspaceExecute"));
 const WorkspaceAdvance = lazy(() => import("./pages/WorkspaceAdvance"));
 const CustomerJourney = lazy(() => import("./pages/CustomerJourney"));
 const OrganizationSetup = lazy(() => import("./pages/OrganizationSetup"));
-const PlaybookCustomization = lazy(() => import("./pages/PlaybookCustomization"));
-const PlaybookCustomize = lazy(() => import("./pages/PlaybookCustomize"));
+const ProtocolCustomization = lazy(() => import("./pages/ProtocolCustomization"));
+const ProtocolCustomize = lazy(() => import("./pages/ProtocolCustomize"));
 const SuccessMetricsConfiguration = lazy(() => import("./pages/SuccessMetricsConfiguration"));
 const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
@@ -179,8 +179,8 @@ const GuidedStart = lazy(() => import("./pages/GuidedStart"));
 const PeerReview = lazy(() => import("./pages/PeerReview"));
 const PeerReviewReport = lazy(() => import("./pages/PeerReviewReport"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
-const PilotProgram = lazy(() => import("./pages/PilotProgram"));
-const PilotOnboarding = lazy(() => import("./pages/PilotOnboarding"));
+const FoundingPartnerProgram = lazy(() => import("./pages/FoundingPartnerProgram"));
+const FoundingPartnerOnboarding = lazy(() => import("./pages/FoundingPartnerOnboarding"));
 const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const VsBCP = lazy(() => import("./pages/VsBCP"));
@@ -193,7 +193,7 @@ const TrialAccess = lazy(() => import("./pages/TrialAccess"));
 const MagicLogin = lazy(() => import("./pages/MagicLogin"));
 const AdminCustomerHealth = lazy(() => import("./pages/AdminCustomerHealth"));
 const AdminQuickLink = lazy(() => import("./pages/AdminQuickLink"));
-const PilotHealthMonitor = lazy(() => import("./pages/PilotHealthMonitor"));
+const FoundingPartnerHealthMonitor = lazy(() => import("./pages/FoundingPartnerHealthMonitor"));
 const ActivationOutcome = lazy(() => import("./pages/ActivationOutcome"));
 const ExplorePage = lazy(() => import("./pages/ExplorePage"));
 const FounderStory = lazy(() => import("./pages/FounderStory"));
@@ -205,7 +205,7 @@ const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
 const FutureReadinessDashboard = lazy(() => import("./pages/FutureReadinessDashboard"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
 const VideoLanding = lazy(() => import("./pages/VideoLanding"));
-const PlaybookManagement = lazy(() => import("./pages/PlaybookManagement"));
+const ProtocolManagement = lazy(() => import("./pages/ProtocolManagement"));
 const TaskManagement = lazy(() => import("./pages/TaskManagement"));
 const StakeholderManagement = lazy(() => import("./pages/StakeholderManagement"));
 const RoleExperience = lazy(() => import("./pages/RoleExperience"));
@@ -224,9 +224,9 @@ const RegulatoryCalendar = lazy(() => import("./pages/RegulatoryCalendar"));
 const Roadmap = lazy(() => import("./pages/Roadmap"));
 const OnboardingGuide = lazy(() => import("./pages/OnboardingGuide"));
 
-const PlaybooksLibraryPage = lazy(() => import("./pages/identify/PlaybooksLibraryPage"));
+const ProtocolsLibraryPage = lazy(() => import("./pages/identify/ProtocolsLibraryPage"));
 const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
-const MyPlaybooksPage = lazy(() => import("./pages/identify/MyPlaybooksPage"));
+const MyProtocolsPage = lazy(() => import("./pages/identify/MyProtocolsPage"));
 const IdentifyWizardPage = lazy(() => import("./pages/identify/WizardPage"));
 const IdentifySLAPage = lazy(() => import("./pages/identify/SLAPage"));
 const IdentifyMetricsPage = lazy(() => import("./pages/identify/MetricsPage"));
@@ -338,14 +338,14 @@ function Router() {
             <Route path="/workspaces/advance">{() => <Redirect to="/workspace?tab=advance" />}</Route>
 
         {/* IDENTIFY Phase */}
-        <Route path="/identify/playbooks" component={PlaybooksLibraryPage} />
+        <Route path="/identify/playbooks" component={ProtocolsLibraryPage} />
         <Route path="/identify/templates" component={IdentifyTemplatesPage} />
-        <Route path="/identify/my-playbooks" component={MyPlaybooksPage} />
+        <Route path="/identify/my-playbooks" component={MyProtocolsPage} />
         <Route path="/identify/wizard" component={IdentifyWizardPage} />
         <Route path="/identify/sla" component={IdentifySLAPage} />
         <Route path="/identify/metrics" component={IdentifyMetricsPage} />
-        <Route path="/identify/playbook-library">{() => <PlaybookLibraryV2 />}</Route>
-        <Route path="/identify/playbook-command/:id" component={PlaybookCommand} />
+        <Route path="/identify/playbook-library">{() => <ProtocolLibrary />}</Route>
+        <Route path="/identify/playbook-command/:id" component={ProtocolCommand} />
         <Route path="/identify/situation-intents" component={SituationIntentsHub} />
         <Route path="/identify/situation-intent/new" component={SituationIntentWizard} />
 
@@ -418,7 +418,7 @@ function Router() {
         <Route path="/command-center-dynamic">{() => <Redirect to="/mission-control" />}</Route>
         <Route path="/execution-history" component={ExecutionHistory} />
         <Route path="/collaboration">{() => <RealTimeCollaboration />}</Route>
-        <Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
+        <Route path="/playbook-activation/:triggerId/:playbookId" component={ProtocolActivationConsole} />
 
         {/* Strategic Planning */}
         <Route path="/strategic" component={StrategicPlanningHub} />
@@ -449,10 +449,10 @@ function Router() {
         <Route path="/terms" component={TermsOfService} />
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
-        {renderRoutes(["/pilot-program", "/founding-partner-program"], PilotProgram)}
+        {renderRoutes(["/pilot-program", "/founding-partner-program"], FoundingPartnerProgram)}
         <Route path="/prospect-brief" component={ProspectBrief} />
         <Route path="/prospect-demo" component={ProspectDemo} />
-        {renderRoutes(["/pilot-onboarding", "/founding-partner-onboarding"], PilotOnboarding)}
+        {renderRoutes(["/pilot-onboarding", "/founding-partner-onboarding"], FoundingPartnerOnboarding)}
         <Route path="/growth" component={Growth} />
         <Route path="/vs-consulting" component={VsConsulting} />
         <Route path="/vs-bcp" component={VsBCP} />
@@ -465,7 +465,7 @@ function Router() {
         <Route path="/triggers-management">{() => <TriggersManagement />}</Route>
         <Route path="/signal-configuration" component={SignalConfiguration} />
         <Route path="/organization-setup">{() => <OrganizationSetup />}</Route>
-        <Route path="/playbook-customization">{() => <PlaybookCustomization />}</Route>
+        <Route path="/playbook-customization">{() => <ProtocolCustomization />}</Route>
         <Route path="/success-metrics">{() => <SuccessMetricsConfiguration />}</Route>
         <Route path="/get-started">{() => <GetStarted />}</Route>
         <Route path="/demo-access" component={DemoAccess} />
@@ -480,19 +480,19 @@ function Router() {
         <Route path="/start" component={GuidedStart} />
         <Route path="/preparedness-report">{() => <PreparednessReport />}</Route>
         <Route path="/drill-tracking" component={DrillTrackingSystem} />
-        {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], PlaybookLibraryV2)}
-        <Route path="/playbooks/:id/customize" component={PlaybookCustomize} />
-        <Route path="/playbooks/:id/preview" component={PlaybookDetail} />
-        <Route path="/playbooks/:id/edit" component={PlaybookCustomize} />
-        <Route path="/playbooks/create" component={PlaybookCustomize} />
-        <Route path="/playbook-management" component={PlaybookManagement} />
-        {renderRoutes(["/playbook-customize/new", "/playbook-customize/:id"], PlaybookCustomize)}
+        {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], ProtocolLibrary)}
+        <Route path="/playbooks/:id/customize" component={ProtocolCustomize} />
+        <Route path="/playbooks/:id/preview" component={ProtocolDetail} />
+        <Route path="/playbooks/:id/edit" component={ProtocolCustomize} />
+        <Route path="/playbooks/create" component={ProtocolCustomize} />
+        <Route path="/playbook-management" component={ProtocolManagement} />
+        {renderRoutes(["/playbook-customize/new", "/playbook-customize/:id"], ProtocolCustomize)}
         <Route path="/task-management">{() => <TaskManagement />}</Route>
         {renderRoutes(["/stakeholder-management", "/stakeholders"], StakeholderManagement)}
-        <Route path="/playbook-library/:id" component={PlaybookDetail} />
-        <Route path="/business-scenario/:id" component={PlaybookDetail} />
-        <Route path="/playbook-library/:id/settings" component={PlaybookSettings} />
-        <Route path="/playbook-command/:id" component={PlaybookCommand} />
+        <Route path="/playbook-library/:id" component={ProtocolDetail} />
+        <Route path="/business-scenario/:id" component={ProtocolDetail} />
+        <Route path="/playbook-library/:id/settings" component={ProtocolSettings} />
+        <Route path="/playbook-command/:id" component={ProtocolCommand} />
         <Route path="/practice-drills/:drillId/live" component={LiveDrillExecution} />
         <Route path="/practice-drills">{() => <PracticeDrills />}</Route>
         <Route path="/crisis-exposure-matrix" component={CrisisExposureMatrix} />
@@ -504,10 +504,10 @@ function Router() {
         <Route path="/coordination-intelligence" component={lazy(() => import('./pages/CoordinationIntelligence'))} />
         <Route path="/strategic-recorder">{() => <StrategicRecorder />}</Route>
         <Route path="/execution-learning" component={ExecutionLearningDashboard} />
-        {renderRoutes(["/playbook-readiness", "/playbook-audit"], PlaybookReadinessAudit)}
+        {renderRoutes(["/playbook-readiness", "/playbook-audit"], ProtocolReadinessAudit)}
         <Route path="/future-gym" component={FutureGym} />
         <Route path="/foresight-radar">{() => <ForesightRadar />}</Route>
-        <Route path="/living-playbooks" component={LivingPlaybooks} />
+        <Route path="/living-playbooks" component={LivingProtocols} />
         <Route path="/continuous-mode" component={ContinuousModePage} />
 
         {/* Analytics */}
@@ -611,9 +611,9 @@ function Router() {
         <Route path="/vc-presentations" component={VCPresentations} />
         <Route path="/settings" component={Settings} />
         <Route path="/uat-admin" component={UATAdmin} />
-        <Route path="/pilot-monitoring" component={PilotMonitoring} />
+        <Route path="/pilot-monitoring" component={FoundingPartnerMonitoring} />
         <Route path="/admin/customer-health" component={AdminCustomerHealth} />
-        <Route path="/admin/pilot-health" component={PilotHealthMonitor} />
+        <Route path="/admin/pilot-health" component={FoundingPartnerHealthMonitor} />
         <Route path="/admin/quick-link" component={AdminQuickLink} />
         <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
