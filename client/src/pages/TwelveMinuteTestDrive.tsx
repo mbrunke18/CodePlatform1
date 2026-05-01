@@ -195,6 +195,9 @@ export default function TwelveMinuteTestDrive() {
   const [elapsed, setElapsed]     = useState(0);
   const [running, setRunning]     = useState(false);
   const [liveEvents, setLiveEvents] = useState<{ time: string; text: string; type: 'notified' | 'acknowledged' | 'system' }[]>([]);
+  const [companyName, setCompanyName] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [emailStatus, setEmailStatus] = useState<'idle' | 'loading' | 'sent' | 'error'>('idle');
   const timerRef       = useRef<ReturnType<typeof setInterval> | null>(null);
   const loggedNotify   = useRef<Set<number>>(new Set());
   const loggedAcknow   = useRef<Set<number>>(new Set());
@@ -383,6 +386,21 @@ export default function TwelveMinuteTestDrive() {
             </div>
 
             <div style={{ textAlign: 'center' }}>
+              {/* Optional company name personalization */}
+              <div style={{ marginBottom: 16 }}>
+                <input
+                  type="text"
+                  value={companyName}
+                  onChange={e => setCompanyName(e.target.value)}
+                  placeholder="Enter your company name to personalize this simulation (optional)"
+                  style={{
+                    width: '100%', maxWidth: 420, padding: '11px 16px',
+                    background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)',
+                    color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const,
+                    fontFamily: 'inherit',
+                  }}
+                />
+              </div>
               <button
                 disabled={!selectedId}
                 onClick={async () => { setStep(2); scrollToTop(); fetchBrief(); }}
@@ -408,6 +426,12 @@ export default function TwelveMinuteTestDrive() {
                 {scenario.title}
               </h2>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)' }}>{scenario.subtitle}</p>
+              {companyName && (
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 12, padding: '6px 14px', background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.25)' }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Activating for</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: '#fff' }}>{companyName}</span>
+                </div>
+              )}
             </div>
 
             {loadingBrief ? (
@@ -527,7 +551,9 @@ export default function TwelveMinuteTestDrive() {
             {/* Header with countdown */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, padding: '20px 28px', background: NAVY, border: `1px solid rgba(201,168,76,0.3)` }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>War Room Active</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: 4 }}>
+                  {companyName ? `${companyName} · War Room Active` : 'War Room Active'}
+                </div>
                 <div style={{ ...GEO, fontSize: 20, fontWeight: 700, color: '#fff' }}>{scenario.title}</div>
               </div>
               <div style={{ textAlign: 'center' }}>
@@ -748,6 +774,73 @@ export default function TwelveMinuteTestDrive() {
             {/* CTA */}
             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
 
+              {/* Email capture — send me this summary */}
+              <div style={{ padding: '24px 28px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.12)', maxWidth: 520, width: '100%' }}>
+                {emailStatus === 'sent' ? (
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: TEAL, marginBottom: 8 }}>✓ Summary Sent</div>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, margin: 0 }}>
+                      Check your inbox for the 12-minute execution summary. We will be in touch about the Founding Partner Program.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#fff', marginBottom: 8 }}>Send Me This Execution Summary</div>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, margin: '0 0 16px' }}>
+                      Get this scenario summary, the 3,600× data, and Founding Partner details in your inbox.
+                    </p>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' as const }}>
+                      <input
+                        type="email"
+                        value={emailInput}
+                        onChange={e => setEmailInput(e.target.value)}
+                        placeholder="Your work email"
+                        style={{
+                          flex: 1, minWidth: 180, padding: '10px 14px',
+                          background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.2)',
+                          color: '#fff', fontSize: 13, outline: 'none', fontFamily: 'inherit',
+                        }}
+                      />
+                      <button
+                        disabled={emailStatus === 'loading' || !emailInput.includes('@')}
+                        onClick={async () => {
+                          if (!emailInput.includes('@') || !scenario) return;
+                          setEmailStatus('loading');
+                          try {
+                            const r = await fetch('/api/test-drive/email-summary', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                email: emailInput,
+                                companyName: companyName || null,
+                                scenarioId: scenario.id,
+                                scenarioTitle: scenario.title,
+                                completedTasks,
+                                totalTasks: tasks.length,
+                              }),
+                            });
+                            const d = await r.json();
+                            setEmailStatus(d.success ? 'sent' : 'error');
+                          } catch { setEmailStatus('error'); }
+                        }}
+                        style={{
+                          padding: '10px 20px', background: emailInput.includes('@') ? GOLD : 'rgba(201,168,76,0.3)',
+                          color: NAVY, border: 'none', fontSize: 12, fontWeight: 700,
+                          letterSpacing: '0.08em', textTransform: 'uppercase' as const,
+                          cursor: emailInput.includes('@') ? 'pointer' : 'not-allowed',
+                          whiteSpace: 'nowrap' as const,
+                        }}
+                      >
+                        {emailStatus === 'loading' ? 'Sending…' : 'Send Summary →'}
+                      </button>
+                    </div>
+                    {emailStatus === 'error' && (
+                      <p style={{ fontSize: 12, color: '#E05A4A', marginTop: 8, marginBottom: 0 }}>Something went wrong — please try again or email pilot@vaughnmartin.com</p>
+                    )}
+                  </>
+                )}
+              </div>
+
               {/* Investor path */}
               <div style={{ padding: '20px 28px', background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.2)', maxWidth: 520, width: '100%' }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: GOLD, marginBottom: 8 }}>Evaluating for Investment?</div>
@@ -773,7 +866,7 @@ export default function TwelveMinuteTestDrive() {
                   Investor View →
                 </a>
                 <button
-                  onClick={() => { setStep(1); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); }}
+                  onClick={() => { setStep(1); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); setEmailInput(''); setEmailStatus('idle'); }}
                   style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
                 >
                   Try Another Scenario

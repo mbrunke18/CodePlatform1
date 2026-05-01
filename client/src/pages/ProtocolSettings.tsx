@@ -13,7 +13,7 @@ import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layout/PageLayout';
 
-export default function PlaybookSettings() {
+export default function ProtocolSettings() {
   const { id } = useParams<{ id: string }>();
   const { toast } = useToast();
 

@@ -24,7 +24,7 @@ import ExecuteTasksStep from './wizard/ExecuteTasksStep';
 import LearnConfigStep from './wizard/LearnConfigStep';
 import SLADefinitionStep from './wizard/SLADefinitionStep';
 
-interface PlaybookCustomizationWizardProps {
+interface ProtocolCustomizationWizardProps {
   playbook: any;
   organizationId: string;
   isOpen: boolean;
@@ -66,12 +66,12 @@ const PHASES = [
   { id: 'learn' as const, name: 'Learn', icon: '📚', steps: [9, 10] },
 ];
 
-export default function PlaybookCustomizationWizard({
+export default function ProtocolCustomizationWizard({
   playbook,
   organizationId,
   isOpen,
   onClose,
-}: PlaybookCustomizationWizardProps) {
+}: ProtocolCustomizationWizardProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<any>({
     // Step 1: Situation Definition

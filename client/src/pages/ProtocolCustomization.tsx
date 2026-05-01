@@ -90,7 +90,7 @@ const FALLBACK_TEMPLATES: PlaybookTemplate[] = [
   { id: '3', name: 'Cybersecurity Incident Response', category: 'crisis', domain: 'Crisis Management', description: 'Comprehensive response to security breaches, ransomware, or data compromise', estimatedDuration: '1-24 hours', complexity: 'high', stakeholderCount: 15, tasks: 32 },
 ];
 
-export default function PlaybookCustomization({ embedded }: { embedded?: boolean }) {
+export default function ProtocolCustomization({ embedded }: { embedded?: boolean }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [selectedTemplate, setSelectedTemplate] = useState<PlaybookTemplate | null>(null);

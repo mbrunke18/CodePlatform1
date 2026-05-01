@@ -24,7 +24,7 @@ import BudgetAuthorityStep from './wizard/BudgetAuthorityStep';
 import SuccessMetricsStep from './wizard/SuccessMetricsStep';
 import LessonsLearnedStep from './wizard/LessonsLearnedStep';
 
-interface FourPhasePlaybookWizardProps {
+interface FourPhaseProtocolWizardProps {
   playbook: any;
   organizationId: string;
   isOpen: boolean;
@@ -175,12 +175,12 @@ function OverallReadinessCard({ readinessData }: { readinessData: any }) {
   );
 }
 
-export default function FourPhasePlaybookWizard({
+export default function FourPhaseProtocolWizard({
   playbook,
   organizationId,
   isOpen,
   onClose,
-}: FourPhasePlaybookWizardProps) {
+}: FourPhaseProtocolWizardProps) {
   const [activePhase, setActivePhase] = useState('prepare');
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [formData, setFormData] = useState<any>({

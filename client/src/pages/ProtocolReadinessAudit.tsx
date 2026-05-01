@@ -157,7 +157,7 @@ const tierConfig = {
   }
 };
 
-export default function PlaybookReadinessAudit() {
+export default function ProtocolReadinessAudit() {
   const [playbooks] = useState<PlaybookReadiness[]>(generateMockPlaybooks);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDomain, setSelectedDomain] = useState<string>('all');

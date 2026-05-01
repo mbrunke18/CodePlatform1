@@ -37,7 +37,7 @@ interface ProtocolDetailResponse {
   decisionTrees: unknown[];
 }
 
-export default function PlaybookCommand() {
+export default function ProtocolCommand() {
   const { id } = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
   const { organization } = useCustomer();

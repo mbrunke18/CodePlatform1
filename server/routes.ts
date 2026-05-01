@@ -78,6 +78,7 @@ import {
   simulationAnalyses,
   strategicRecordings,
   executiveTriggers,
+  testDriveLeads,
 } from "@shared/schema";
 import { eq, desc, sql, like, and, asc, count, gte, ne, inArray, or } from 'drizzle-orm';
 import { db } from './db';
@@ -9734,6 +9735,144 @@ Respond ONLY as JSON with this exact structure:
       });
     } catch (err: any) {
       res.status(500).json({ error: err.message });
+    }
+  });
+
+  // POST /api/test-drive/email-summary — capture lead + send execution summary email
+  app.post('/api/test-drive/email-summary', async (req: any, res) => {
+    try {
+      const { email, companyName, scenarioId, scenarioTitle, completedTasks, totalTasks } = req.body;
+      if (!email || !scenarioId || !scenarioTitle) {
+        return res.status(400).json({ success: false, error: 'email, scenarioId, and scenarioTitle are required' });
+      }
+
+      // Store the lead
+      await db.insert(testDriveLeads).values({
+        email: email.trim().toLowerCase(),
+        companyName: companyName?.trim() || null,
+        scenarioId,
+        scenarioTitle,
+        completedTasks: completedTasks ?? 0,
+        totalTasks: totalTasks ?? 0,
+      });
+
+      // Send email via Resend
+      const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+      if (!apiKey) {
+        console.log(`[TestDrive] No Resend key — lead stored without email for ${email}`);
+        return res.json({ success: true, emailSent: false });
+      }
+
+      const { Resend } = await import('resend');
+      const resend = new Resend(apiKey);
+
+      const company = companyName ? ` for ${companyName}` : '';
+      const completionPct = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 100;
+      const NAVY = '#0A0F2E';
+      const GOLD = '#C9A84C';
+
+      const html = `
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+        <body style="margin:0;padding:0;background:#f4f4f4;font-family:'Helvetica Neue',Arial,sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;padding:32px 16px;">
+            <tr><td align="center">
+              <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
+                <!-- Header -->
+                <tr><td style="background:${NAVY};padding:32px 40px;">
+                  <div style="font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD};margin-bottom:8px;">VaughnMartin · Readiness OS</div>
+                  <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your 12-Minute Execution Summary${company}</div>
+                  <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Scenario: ${scenarioTitle}</div>
+                </td></tr>
+                <!-- Gold rule -->
+                <tr><td style="height:3px;background:${GOLD};"></td></tr>
+                <!-- Body -->
+                <tr><td style="padding:40px;">
+                  <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    You just ran a live simulation of the <strong>${scenarioTitle}</strong> scenario and completed your 12-minute execution clock. Here is what you demonstrated.
+                  </p>
+                  <!-- Stats -->
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+                    <tr>
+                      <td width="50%" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:28px;font-weight:700;color:${NAVY};">${completedTasks}/${totalTasks}</div>
+                        <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Tasks Completed</div>
+                      </td>
+                      <td width="4px"></td>
+                      <td width="50%" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:28px;font-weight:700;color:${NAVY};">${completionPct}%</div>
+                        <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Completion Rate</div>
+                      </td>
+                    </tr>
+                    <tr><td colspan="3" height="4"></td></tr>
+                    <tr>
+                      <td colspan="3" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
+                        <div style="font-size:28px;font-weight:700;color:${NAVY};">12 min</div>
+                        <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">vs. 30 days without Readiness OS</div>
+                      </td>
+                    </tr>
+                  </table>
+                  <!-- Key message -->
+                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD};margin-bottom:32px;">
+                    <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What you just demonstrated</div>
+                    <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
+                      When a strategic trigger fires, Fortune 1000s typically spend 30 days just mobilizing — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. You compressed that entire cycle to <strong>12 minutes</strong>. That is a <strong>3,600× Execution Head Start</strong>.
+                    </p>
+                  </div>
+                  <!-- What's next -->
+                  <p style="font-size:15px;font-weight:600;color:${NAVY};margin:0 0 8px;">What comes next</p>
+                  <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
+                    The Founding Partner Program gives your organization 90 days to pre-stage Readiness Protocols against your real strategic scenarios — with your actual team, your actual risk register, and your actual authorization structure.
+                  </p>
+                  <!-- CTA -->
+                  <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+                    <tr>
+                      <td style="background:${NAVY};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD};text-decoration:none;">Apply for Founding Partner Access →</a>
+                      </td>
+                    </tr>
+                  </table>
+                  <p style="font-size:12px;color:#9ca3af;line-height:1.6;margin:0;">
+                    VaughnMartin · Readiness OS<br>
+                    You received this because you completed the 12-Minute Test Drive.<br>
+                    <a href="mailto:pilot@vaughnmartin.com" style="color:#9ca3af;">pilot@vaughnmartin.com</a>
+                  </p>
+                </td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </body>
+        </html>
+      `;
+
+      const fromAddresses = [
+        'Readiness OS <onboarding@resend.dev>',
+        'Readiness OS <pilot@vaughnmartin.com>',
+      ];
+
+      let sent = false;
+      for (const from of fromAddresses) {
+        try {
+          const { error } = await resend.emails.send({
+            from,
+            replyTo: 'pilot@vaughnmartin.com',
+            to: [email.trim()],
+            subject: `Your 12-Minute Execution Summary — ${scenarioTitle}`,
+            html,
+          });
+          if (!error) { sent = true; break; }
+          console.warn(`[TestDrive] Sender ${from} rejected: ${error.message}`);
+        } catch (err: any) {
+          console.warn(`[TestDrive] Sender ${from} threw: ${err.message}`);
+        }
+      }
+
+      console.log(`✅ [TestDrive] Lead captured: ${email} · ${scenarioTitle} · email ${sent ? 'sent' : 'failed'}`);
+      res.json({ success: true, emailSent: sent });
+    } catch (err: any) {
+      console.error('[TestDrive] Error:', err.message);
+      res.status(500).json({ success: false, error: err.message });
     }
   });
 

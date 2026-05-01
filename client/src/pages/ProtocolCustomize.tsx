@@ -420,7 +420,7 @@ const sections = [
   { id: 'ownership', label: 'Challenge Rights', icon: Lock, phase: 'advance' }
 ];
 
-export default function PlaybookCustomize() {
+export default function ProtocolCustomize() {
   const [, params] = useRoute('/playbooks/:id/customize');
   const [, editParams] = useRoute('/playbooks/:id/edit');
   const [, createParams] = useRoute('/playbooks/create');

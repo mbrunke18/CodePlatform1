@@ -80,7 +80,7 @@ const PRIORITY_CONFIG = {
   low: { label: "Low", color: "bg-slate-100 text-gray-800 dark:bg-[#141B45] dark:text-slate-300" },
 };
 
-export default function PlaybookManagement() {
+export default function ProtocolManagement() {
   const [, setLocation] = useLocation();
   const { organization } = useCustomer();
   const { toast } = useToast();

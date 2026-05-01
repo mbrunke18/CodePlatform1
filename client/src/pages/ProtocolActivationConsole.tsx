@@ -324,7 +324,7 @@ function BriefLoadingState() {
   );
 }
 
-export default function PlaybookActivationConsole() {
+export default function ProtocolActivationConsole() {
   const [, params] = useRoute("/playbook-activation/:triggerId/:playbookId");
   const { user } = useAuth();
   const { toast } = useToast();

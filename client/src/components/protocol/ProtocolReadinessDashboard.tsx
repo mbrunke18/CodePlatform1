@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-interface PlaybookReadinessDashboardProps {
+interface ProtocolReadinessDashboardProps {
   playbookId: string;
   organizationId: string;
   compact?: boolean;
@@ -96,11 +96,11 @@ function ReadinessMetricCard({ icon: Icon, label, value, subtext }: { icon: any;
   );
 }
 
-export default function PlaybookReadinessDashboard({
+export default function ProtocolReadinessDashboard({
   playbookId,
   organizationId,
   compact = false,
-}: PlaybookReadinessDashboardProps) {
+}: ProtocolReadinessDashboardProps) {
   const { data: readinessData, isLoading, refetch } = useQuery({
     queryKey: ['/api/playbook-library', playbookId, 'readiness', { organizationId }],
     queryFn: async () => {

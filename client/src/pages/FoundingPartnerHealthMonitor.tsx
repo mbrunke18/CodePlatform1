@@ -134,7 +134,7 @@ function PilotCard({ org }: { org: PilotOrg }) {
   );
 }
 
-export default function PilotHealthMonitor() {
+export default function FoundingPartnerHealthMonitor() {
   const { user } = useAuth();
 
   useEffect(() => {

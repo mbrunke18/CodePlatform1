@@ -43,11 +43,11 @@ interface PlaybookVersion {
   metadata: Record<string, any>;
 }
 
-interface PlaybookLearningsPanelProps {
+interface ProtocolLearningsPanelProps {
   scenarioId: string;
 }
 
-export default function PlaybookLearningsPanel({ scenarioId }: PlaybookLearningsPanelProps) {
+export default function ProtocolLearningsPanel({ scenarioId }: PlaybookLearningsPanelProps) {
   const { data: learningsRaw, isLoading: learningsLoading } = useQuery<PlaybookLearning[]>({
     queryKey: ['/api/dynamic-strategy/Readiness Protocol-learnings', scenarioId],
   });

@@ -6576,3 +6576,18 @@ export const situationIntents = pgTable('situation_intents', {
 export const insertSituationIntentSchema = createInsertSchema(situationIntents).omit({ id: true, createdAt: true, updatedAt: true });
 export type InsertSituationIntent = z.infer<typeof insertSituationIntentSchema>;
 export type SituationIntent = typeof situationIntents.$inferSelect;
+
+// ── Test Drive Lead Capture ───────────────────────────────────────────────────
+export const testDriveLeads = pgTable('test_drive_leads', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: text('email').notNull(),
+  companyName: text('company_name'),
+  scenarioId: text('scenario_id').notNull(),
+  scenarioTitle: text('scenario_title').notNull(),
+  completedTasks: integer('completed_tasks').default(0),
+  totalTasks: integer('total_tasks').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertTestDriveLeadSchema = createInsertSchema(testDriveLeads).omit({ id: true, createdAt: true });
+export type InsertTestDriveLead = z.infer<typeof insertTestDriveLeadSchema>;
+export type TestDriveLead = typeof testDriveLeads.$inferSelect;

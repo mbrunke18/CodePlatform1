@@ -90,7 +90,7 @@ function deriveImprovements(playbook: PlaybookTemplate): string[] {
   return baseSets[domain] || fallback;
 }
 
-export default function LivingPlaybooks() {
+export default function LivingProtocols() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 

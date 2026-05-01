@@ -124,7 +124,7 @@ const PLAYBOOK_OPTIONS = [
   }
 ];
 
-export default function PilotDemo() {
+export default function FoundingPartnerDemo() {
   const [step, setStep] = useState<Step>("setup");
   const [email, setEmail] = useState("");
   const [selectedTrigger, setSelectedTrigger] = useState<string | null>(null);

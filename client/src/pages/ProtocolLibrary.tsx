@@ -370,7 +370,7 @@ function CompoundDisruptionSection() {
     }
 
 
-export default function PlaybookLibraryV2({ embedded }: { embedded?: boolean }) {
+export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
   const [, setLocation] = useLocation();
   const [activeDomain, setActiveDomain] = useState(() => {
     const params = new URLSearchParams(window.location.search);

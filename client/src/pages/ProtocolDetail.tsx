@@ -155,7 +155,7 @@ interface EditablePhase {
   restrictions: string[];
 }
 
-export default function PlaybookDetail() {
+export default function ProtocolDetail() {
   const { id } = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState('overview');

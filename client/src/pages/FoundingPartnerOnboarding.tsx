@@ -194,7 +194,7 @@ const timeline = [
   },
 ];
 
-export default function PilotOnboarding() {
+export default function FoundingPartnerOnboarding() {
   const [activeRole, setActiveRole] = useState('sponsor');
   const [, setLocation] = useLocation();
 

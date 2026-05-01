@@ -15,7 +15,7 @@ import { updatePageMetadata } from "@/lib/seo";
 import PageLayout from "@/components/layout/PageLayout";
 import { useQuery } from "@tanstack/react-query";
 
-export default function PilotMonitoring() {
+export default function FoundingPartnerMonitoring() {
   useEffect(() => {
     updatePageMetadata({
       title: "Pilot Program Monitoring - Readiness OS | System Health Dashboard",

@@ -190,7 +190,7 @@ const conversionTerms = [
   }
 ];
 
-export default function PilotProgram() {
+export default function FoundingPartnerProgram() {
   const [, setLocation] = useLocation();
 
   useEffect(() => {
