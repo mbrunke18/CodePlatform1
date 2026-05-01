@@ -430,7 +430,6 @@ export default function LiveActivationCenter() {
     },
     onSuccess: (data: any) => {
       const id = data?.activation?.id || data?.activationId || data?.id || `local-${Date.now()}`;
-      enqueueInsight(INSIGHTS.playbookActivated(selectedPlaybook));
       beginActivation(id);
     },
     onError: () => {
@@ -459,6 +458,7 @@ export default function LiveActivationCenter() {
   }, [addActivity, enqueueInsight]);
 
   const beginActivation = useCallback((id: string) => {
+    enqueueInsight(INSIGHTS.playbookActivated(selectedPlaybook));
     setActivationId(id);
     setActivationState('IN_PROGRESS');
     setElapsedSeconds(DEMO_PRESEED_SECONDS);
@@ -482,6 +482,7 @@ export default function LiveActivationCenter() {
       status: i < PRESEED_ACKNOWLEDGED ? 'acknowledged' : i < PRESEED_ACKNOWLEDGED + 1 ? 'notified' : 'pending' as StakeholderStatus,
       responseTime: i < PRESEED_ACKNOWLEDGED ? 18 + i * 14 : undefined,
     }));
+    setTimeout(() => enqueueInsight(INSIGHTS.stakeholderNotified(rawStakeholders.length)), 5000);
     const initialTasks: Task[] = rawTasks.map((t, i) => ({
       ...t,
       status: i < PRESEED_TASKS_DONE ? 'completed' : i === PRESEED_TASKS_DONE ? 'in_progress' : 'pending' as TaskStatus,
@@ -574,7 +575,7 @@ export default function LiveActivationCenter() {
     });
 
     runClientSimulation(initialStakeholders, initialTasks, playbookKey);
-  }, [selectedPlaybook, addActivity, industryOverlay, hasLiveIntegrations, organizationId, activePlaybook, completeActivation]);
+  }, [selectedPlaybook, addActivity, industryOverlay, hasLiveIntegrations, organizationId, activePlaybook, completeActivation, enqueueInsight]);
 
   const runClientSimulation = useCallback((initStakeholders: Stakeholder[], initTasks: Task[], playbookKey: string) => {
     simulationRef.current.forEach(t => clearTimeout(t));
