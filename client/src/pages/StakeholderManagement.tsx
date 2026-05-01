@@ -5,6 +5,8 @@ import PageLayout from "@/components/layout/PageLayout";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
+import { INSIGHTS } from '@/data/valueInsights';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -139,6 +141,7 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 export default function StakeholderManagement({ embedded }: { embedded?: boolean }) {
   const { organization } = useCustomer();
   const { toast } = useToast();
+  const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [search, setSearch] = useState("");
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>(DEFAULT_STAKEHOLDERS);
   const [editingStakeholder, setEditingStakeholder] = useState<Stakeholder | null>(null);
@@ -233,6 +236,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
         isActive: formData.isActive ?? true,
       };
       setStakeholders([...stakeholders, newStakeholder]);
+      enqueueInsight(INSIGHTS.decisionOwnerConfirmed());
       toast({ title: "Stakeholder Added", description: "New stakeholder has been added to the directory." });
     }
     setIsDialogOpen(false);
@@ -916,6 +920,7 @@ export default function StakeholderManagement({ embedded }: { embedded?: boolean
           </AlertDialogContent>
         </AlertDialog>
       </main>
+      {currentInsight && <ValueInsightToast insight={currentInsight} onDismiss={dismissInsight} />}
     </PageLayout>
   );
 }

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
+import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
+import { INSIGHTS } from '@/data/valueInsights';
 import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { useRoute, Link } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -326,6 +328,7 @@ export default function PlaybookActivationConsole() {
   const [, params] = useRoute("/playbook-activation/:triggerId/:playbookId");
   const { user } = useAuth();
   const { toast } = useToast();
+  const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [activationConfirmed, setActivationConfirmed] = useState(false);
   const [showInitiatedScreen, setShowInitiatedScreen] = useState(false);
   const [initiatedProgress, setInitiatedProgress] = useState(0);
@@ -558,6 +561,7 @@ export default function PlaybookActivationConsole() {
     const timelineMinutes = timeline === 'accelerated' ? 8 : timeline === 'extended' ? 20 : 12;
 
     setActivationConfirmed(true);
+    enqueueInsight(INSIGHTS.playbookActivated(playbook?.title || playbook?.name));
     setShowInitiatedScreen(true);
     setInitiatedProgress(0);
     const progressInterval = setInterval(() => {
@@ -595,6 +599,7 @@ export default function PlaybookActivationConsole() {
     // In pilot scope, only notify first 2 stakeholders (core team)
     const activeStakeholders = scope === 'pilot' ? domainStakeholders.slice(0, 2) : domainStakeholders;
     setStakeholderStatuses(activeStakeholders.map(s => ({ ...s, status: 'pending' as const })));
+    setTimeout(() => enqueueInsight(INSIGHTS.stakeholderNotified(activeStakeholders.length)), 4000);
     const now = formatEventTime();
     const scopeLabel = scope === 'pilot' ? 'Pilot Deployment (core team)' : 'Full Deployment (all teams)';
     setLiveEvents([
@@ -650,6 +655,7 @@ export default function PlaybookActivationConsole() {
       queryClient.refetchQueries({ queryKey: ['/api/scenarios'], exact: false });
       queryClient.refetchQueries({ queryKey: ['/api/executive-triggers'], exact: false });
       setExecutionStatus('completed');
+      enqueueInsight(INSIGHTS.executionComplete());
       toast({
         title: "✅ Readiness Protocol Execution Completed",
         description: `Executed in ${formatTime(elapsedSeconds)}`,
@@ -2157,6 +2163,7 @@ export default function PlaybookActivationConsole() {
         })()}
       </div>
     </div>
+    {currentInsight && <ValueInsightToast insight={currentInsight} onDismiss={dismissInsight} />}
     </PageLayout>
   );
 }

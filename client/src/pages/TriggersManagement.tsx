@@ -6,6 +6,8 @@ import { Switch } from '@/components/ui/switch';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { queryClient, apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
+import { INSIGHTS } from '@/data/valueInsights';
 import { useAuth } from '@/hooks/useAuth';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
@@ -132,6 +134,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
   const [isWizardOpen, setIsWizardOpen]           = useState(false);
   const [editTriggerData, setEditTriggerData]     = useState<any>(null);
   const { toast } = useToast();
+  const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
@@ -156,8 +159,9 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
   const toggleMutation = useMutation({
     mutationFn: ({ id, isActive }: { id: string; isActive: boolean }) =>
       apiRequest('PUT', `/api/executive-triggers/${id}`, { isActive }),
-    onSuccess: () => {
+    onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
+      if (variables.isActive) enqueueInsight(INSIGHTS.triggerDetected());
       toast({ title: 'Alert rule updated' });
     },
   });
@@ -977,6 +981,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
           setIsWizardOpen(false);
           setEditTriggerData(null);
           queryClient.invalidateQueries({ queryKey: ['/api/executive-triggers'] });
+          if (!editTriggerData) enqueueInsight(INSIGHTS.triggerClassified());
           toast({
             title: editTriggerData ? 'Alert rule updated' : 'Alert rule created',
             description: editTriggerData ? 'Rule has been updated.' : 'New rule is now monitoring.',
@@ -984,6 +989,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
         }}
         editTrigger={editTriggerData}
       />
+    {currentInsight && <ValueInsightToast insight={currentInsight} onDismiss={dismissInsight} />}
     </PageLayout>
   );
 }

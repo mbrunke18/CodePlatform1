@@ -6,6 +6,8 @@ import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
+import { INSIGHTS } from '@/data/valueInsights';
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -156,6 +158,7 @@ const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 export default function TaskManagement({ embedded }: { embedded?: boolean }) {
   const { organization } = useCustomer();
   const { toast } = useToast();
+  const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [search, setSearch] = useState("");
   const [tasks, setTasks] = useState<Task[]>(DEFAULT_TASKS);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -337,6 +340,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
         deliverables: formData.deliverables || '',
       };
       setTasks([...tasks, newTask]);
+      enqueueInsight(INSIGHTS.taskAssigned(newTask.assignedRole || undefined));
       toast({ title: "Task Created", description: "New task has been added." });
     }
     setIsDialogOpen(false);
@@ -618,6 +622,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
                                 className="bg-[#2B8A6E] hover:bg-[#3BAF8A] text-white h-8 text-[10px] uppercase font-bold tracking-wider rounded-none"
                                 onClick={() => {
                                   setTasks(tasks.map(t => t.id === task.id ? { ...t, status: 'completed' } : t));
+                                  enqueueInsight(INSIGHTS.taskCompleted(task.title));
                                   toast({ title: "Task Completed", description: `"${task.title}" marked as complete.` });
                                 }}
                               >
@@ -1123,6 +1128,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           </AlertDialogContent>
         </AlertDialog>
       </main>
+      {currentInsight && <ValueInsightToast insight={currentInsight} onDismiss={dismissInsight} />}
     </PageLayout>
   );
 }

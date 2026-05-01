@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { ValueGainCallout } from '@/components/ValueGainCallout';
+import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
+import { INSIGHTS } from '@/data/valueInsights';
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -340,6 +342,7 @@ export default function LiveActivationCenter() {
   const activeKpis = industryOverlay?.kpis || roleOverlay?.kpis || null;
   const highlightedTaskIds = roleOverlay?.highlightedTaskIds || [];
 
+  const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [selectedPlaybook, setSelectedPlaybook] = useState<string>(initialPlaybook);
   const [showGovernanceCheck, setShowGovernanceCheck] = useState(false);
   const [activationId, setActivationId] = useState<string | null>(null);
@@ -427,6 +430,7 @@ export default function LiveActivationCenter() {
     },
     onSuccess: (data: any) => {
       const id = data?.activation?.id || data?.activationId || data?.id || `local-${Date.now()}`;
+      enqueueInsight(INSIGHTS.playbookActivated(selectedPlaybook));
       beginActivation(id);
     },
     onError: () => {
@@ -451,7 +455,8 @@ export default function LiveActivationCenter() {
     setShowCompletion(true);
     if (timerRef.current) clearInterval(timerRef.current);
     addActivity('system', 'Activation sequence complete — operational state maintained');
-  }, [addActivity]);
+    enqueueInsight(INSIGHTS.executionComplete());
+  }, [addActivity, enqueueInsight]);
 
   const beginActivation = useCallback((id: string) => {
     setActivationId(id);
@@ -1233,6 +1238,7 @@ export default function LiveActivationCenter() {
         })()}
       </div>
 
+      {currentInsight && <ValueInsightToast insight={currentInsight} onDismiss={dismissInsight} />}
     </PageLayout>
   );
 }
