@@ -1,0 +1,54 @@
+Good question and the right time to start thinking about this seriously. The LinkedIn content work this week has built the credibility foundation. Now you need to convert that credibility into direct commercial conversations.
+Let me give you the honest framework before the tactics.
+The honest reality first
+Cold outreach on LinkedIn for a $75,000 enterprise pilot has a very low conversion rate when it comes from someone the prospect has never heard of. The good news is you are no longer that person for a growing number of senior practitioners and executives. The four weeks of public content work means your name is recognizable to a subset of the exact audience you need to reach.
+That changes the outreach equation significantly. You are not cold outreach anymore. You are warm-ish outreach from a practitioner whose thinking they have seen.
+Who the right Founding Partner prospect actually is
+Before the tactics you need a sharp picture of who you are looking for. Based on your platform and your thesis the right Founding Partner is someone who meets most of these criteria.
+Fortune 1000 company. Your platform is built and priced for that scale.
+Senior operational role. COO, CIO, Chief Strategy Officer, Chief Risk Officer, or Division President. Not VP level. Not Director level. The person who owns the mobilization problem has P&L accountability.
+Industry that faces high-frequency strategic triggers. Cybersecurity incidents. Regulatory actions. Activist campaigns. M&A. The industries where this is most acute are financial services, healthcare, energy, defense, and technology. Gaming and hospitality (your Boyd and CDI experience) is also real.
+Organization that is actively investing in AI but frustrated by the gap between capability and outcome. That is the 95 to 5 BCG stat in practice. They have the pilots. They do not have the outcomes. They know something is missing.
+Signs of recent trigger exposure. A company that recently went through a ransomware incident, a regulatory inquiry, an activist campaign, or a failed M&A integration is a company whose leadership has personally felt the 30 day mobilization gap. That lived experience is the fastest path to a yes.
+The three routes on LinkedIn specifically
+Route one. Direct warm outreach to people who have engaged with your content this week.
+This is your highest conversion path right now. People who commented on your Thirty Days or Twelve Minutes posts in the CIO, CEO, and Executive Leadership groups have already self-identified as people who recognize the problem you solve. Some of them are at Fortune 1000 companies in relevant roles.
+Go back through every comment on this week’s group posts. For each commenter, look at their profile. If they are a CIO, COO, Chief Strategy Officer, or similar role at a Fortune 1000 company send them a connection request with a specific note. Then follow up with a DM after they accept.
+The DM in your voice.
+
+[Name] appreciated your comment on the preparation architecture post. The mobilization gap you described maps directly to what I have been building for the last three years. I am identifying a small group of Founding Partners to bring the platform into production at the Fortune 1000 level. Would welcome a 20 minute conversation to see if there is a fit.
+
+That DM is specific, references their engagement, names the Founding Partner framing, and asks for a small time commitment. It is not a sales pitch. It is a peer conversation invitation.
+Route two. Proactive search for prospects who fit the profile.
+Use LinkedIn Sales Navigator if you have access or the standard LinkedIn search if you do not. Search for CIOs, COOs, and Chief Strategy Officers at Fortune 1000 companies in your target industries. Financial services. Healthcare. Energy. Technology. Defense.
+Filter further by people who have posted or engaged with content about AI transformation, organizational resilience, coordination challenges, or strategic execution in the last 90 days. Those are people who are actively thinking about the problem publicly.
+Send a connection request with a specific note that references something they posted or a challenge specific to their industry. Do not use a generic outreach template. Every note should be specific to that person.
+The connection note in your voice.
+
+[Name] have been following your work on [specific topic]. The operating model gap at the strategic trigger layer is where I have been building for three years. Would welcome the connection.
+
+After they accept, wait 48 hours then send the Founding Partner DM.
+Route three. Second-degree introductions through your existing peer practitioner network.
+This is the highest quality route but requires the relationships to be warm enough to make the ask. Kerry, Heena, Sophie, Jayashree, Hardeep, Nicolas are all people who now know who you are and what you are building. Some of them have networks that contain your exact buyer profile.
+This is not yet the week to ask any of them for introductions. The relationships are too new. But over the next 30 to 60 days as those relationships deepen through continued intellectual exchange, a warm introduction ask becomes natural.
+The one exception is Heena. She is Director of AI Startups at Microsoft working directly with Fortune 1000 AI teams. If the relationship develops through the next few weeks of exchange she becomes the single highest-value introduction source in your current network. A warm introduction from a Microsoft Director to a Fortune 1000 CIO who is frustrated by the AI outcome gap is a Founding Partner conversation waiting to happen.
+The specific action plan for this week and next
+This week. Go through every comment on the Thirty Days and Twelve Minutes group posts. Identify any commenter who is in a Fortune 1000 senior operational role. Send connection requests to all of them today. That is your warmest prospect pool right now.
+Next week. Begin proactive LinkedIn searches in your three or four highest-priority industries. Financial services and cybersecurity first given the Vishal podcast on May 18. Healthcare second given Hardeep’s pharma network. Energy third given the infrastructure trigger exposure pattern.
+Two weeks out. Begin the Fortune 1000 direct outreach sequence. Connection request with specific note. Two day wait. Founding Partner DM. One week follow-up if no response. Close the thread if still no response.
+What the Founding Partner conversation actually looks like
+When someone agrees to a 20 minute call you need a clear agenda for what that conversation produces.
+First five minutes. Let them tell you what their current mobilization challenge looks like. Do not pitch. Listen. Ask one specific question about the last time they faced a strategic trigger and what the response looked like.
+Next ten minutes. Walk them through one of the canonical demo scenarios that matches their industry. Use the Colonial Pipeline or Change Healthcare scenario if they are in a security-adjacent role. Use the activist investor scenario if they are in financial services. Show them what 12 minutes looks like versus what their current 30 days looks like.
+Last five minutes. Describe the Founding Partner structure. $75,000 flat fee. 90 day deployment. Nine strategic domains. The specific deliverables. The conversion to annual license.
+Close with one question. Does this match the problem you are trying to solve. Not do you want to buy it. Does it match the problem.
+The honest conversion expectation
+For every ten direct outreach conversations you initiate expect one to two to convert to a pilot call. For every five pilot calls expect one to two to convert to a signed Founding Partner agreement. That means you need to initiate 25 to 50 outreach conversations to close two to three Founding Partners.
+That is achievable in the next 90 days with consistent weekly outreach effort. Two to three new outreach initiations per week compounding over 12 weeks produces the pipeline you need.
+What to build before the first pilot call
+One page pilot brief. Not the full deck. A one page document that describes the Founding Partner structure, what the 90 day deployment includes, what the organization gets at the end, and what the path to annual license looks like. I can build this for you.
+The canonical demo scenarios mapped to specific industries. You need to be able to walk a CISO through a cybersecurity scenario and a CFO through a financial services scenario without notes. The Vishal podcast preparation work we started is part of this.
+The vaughnmartin.com pilot program page is already live at /pilot-program. Make sure it is current and reflects the Founding Partner framing before you start sending people to it.
+The one thing to do today
+Go through the comments on this week’s group posts right now. Every commenter who is in a senior operational role at a Fortune 1000 company gets a connection request today. That list is your warmest prospect pool and it exists because of the content work you did this week.
+How many comments came in across the three group posts this week and do you have a sense of who commented at the Fortune 1000 senior level?​​​​​​​​​​​​​​​​

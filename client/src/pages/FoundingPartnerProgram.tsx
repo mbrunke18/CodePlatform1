@@ -14,8 +14,8 @@ const pilotPhases = [
     activities: [
       'Executive sponsor alignment session',
       'Integration setup (Jira, Slack/Teams)',
-      'Select 3-5 pilot Readiness Protocols from 170 library',
-      'Configure signal monitoring for pilot triggers',
+      'Select 3-5 Readiness Protocols from your priority domains',
+      'Configure signal monitoring for priority triggers',
       'Baseline current response metrics'
     ],
     deliverables: ['Integration complete', 'Readiness Protocols configured', 'Baseline metrics documented'],
@@ -72,7 +72,7 @@ const pilotInclusions = [
   {
     category: 'Platform Access',
     items: [
-      'Full Readiness OS platform access for pilot team (up to 25 users)',
+      'Full Readiness OS platform access for Founding Partner team (up to 25 users)',
       '5 customizable Readiness Protocols from 170 library',
       'Signal monitoring for 3 intelligence categories',
       'Command Center with real-time coordination'
@@ -135,7 +135,7 @@ const idealCandidates = [
   },
   {
     criteria: 'Growth Intent',
-    description: 'Committed to enterprise rollout if pilot succeeds',
+    description: 'Committed to enterprise rollout if the engagement succeeds',
     importance: 'Preferred'
   }
 ];
@@ -173,8 +173,8 @@ const roiCalculator = [
 
 const conversionTerms = [
   {
-    term: '100% Pilot Credit',
-    description: 'Full pilot investment applies to enterprise contract',
+    term: '100% Investment Credit',
+    description: 'Full engagement investment applies to enterprise contract',
   },
   {
     term: 'Preferred Pricing',
@@ -219,10 +219,10 @@ export default function FoundingPartnerProgram() {
               </span>
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px,5vw,56px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 8, maxWidth: 740 }} data-testid="heading-pilot-program">
-              90-Day Pilot Program
+              Founding Partner Program
             </h1>
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, fontStyle: 'italic', color: '#C9A84C', marginBottom: 28 }}>
-              Validate before you commit.
+              90 days. Measured outcomes. Clear path to enterprise.
             </p>
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(240,237,228,0.7)', maxWidth: 620, marginBottom: 52, lineHeight: 1.7, fontWeight: 400 }}>
               Prove the 12-minute coordination claim with real activations in your environment. Structured phases, measurable outcomes, and a clear path to enterprise deployment.
@@ -231,7 +231,7 @@ export default function FoundingPartnerProgram() {
             {/* Key Stats — editorial horizontal strip */}
             <div style={{ display: 'flex', gap: 0, marginBottom: 52, borderTop: '1px solid rgba(201,168,76,0.2)', paddingTop: 32 }}>
               {[
-                { val: '$75K', label: 'Pilot Investment' },
+                { val: '$75K', label: 'Engagement Investment' },
                 { val: '90', label: 'Days' },
                 { val: '5', label: 'Readiness Protocols Configured' },
                 { val: '25', label: 'Users' },
@@ -250,7 +250,7 @@ export default function FoundingPartnerProgram() {
                 onClick={() => setLocation('/request-access')}
                 data-testid="button-apply-pilot"
               >
-                Apply for Pilot Program
+                Apply for Founding Partner Access
               </button>
               <button
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: '#C9A84C', fontWeight: 700, fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 32px', border: '1px solid rgba(201,168,76,0.35)', cursor: 'pointer' }}
@@ -353,10 +353,10 @@ export default function FoundingPartnerProgram() {
           <div style={{ maxWidth: 960, margin: '0 auto' }}>
             <div style={{ marginBottom: 52 }}>
               <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 16 }}>
-                Ideal Pilot Candidates
+                Ideal Founding Partners
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }} data-testid="heading-candidates">
-                Organizations positioned to maximize pilot value.
+                Organizations built to validate strategic readiness.
               </h2>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
@@ -438,7 +438,7 @@ export default function FoundingPartnerProgram() {
             <div style={{ borderBottom: '1px solid #E8E4DC', paddingBottom: 28, marginBottom: 48 }}>
               <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#2B8A6E', marginBottom: 12 }}>Founding Partner Benefits</p>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }} data-testid="heading-conversion">
-                Pilot to Production Path
+                Founding Partner to Production Path
               </h2>
             </div>
 
@@ -458,7 +458,7 @@ export default function FoundingPartnerProgram() {
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-4xl mx-auto">
             <div style={{ background: '#fff', borderTop: '3px solid #0A0F2E', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC', borderBottom: '1px solid #E8E4DC', padding: '40px 48px' }} data-testid="card-success-preview">
-              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 8, opacity: 0.45 }}>Pilot Success Target</div>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 8, opacity: 0.45 }}>Founding Partner Success Target</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3vw,32px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 28 }}>
                 What Success Looks Like
               </h3>
@@ -485,18 +485,18 @@ export default function FoundingPartnerProgram() {
             <div className="text-center mb-10">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Part of the Pilot Structure</span>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>Part of the Founding Partner Structure</span>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,4vw,40px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, margin: '0 0 16px' }}>Independent Peer Assessment</h2>
               <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                Every pilot participant completes a structured 28-question independent assessment. Your unfiltered perspective — credibility gaps, competitive concerns, pricing instincts — is captured and used to improve the product and sharpen the go-to-market approach.
+                Every Founding Partner completes a structured 28-question independent assessment. Your unfiltered perspective — credibility gaps, competitive concerns, pricing instincts — is captured and used to improve the product and sharpen the go-to-market approach.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6 mb-10">
               {[
-                { label: "Before the Pilot", description: "Section A (The Problem Space) establishes your baseline — what the execution gap looks like in your organization before you have experienced the platform.", color: "#6B7280" },
-                { label: "After the Pilot", description: "Sections B–F capture your full verdict: product clarity, market viability, gaps, competitive landscape, and whether you would buy or refer.", color: "#0A0F2E" },
+                { label: "Before Engagement", description: "Section A (The Problem Space) establishes your baseline — what the execution gap looks like in your organization before you have experienced the platform.", color: "#6B7280" },
+                { label: "After Engagement", description: "Sections B–F capture your full verdict: product clarity, market viability, gaps, competitive landscape, and whether you would buy or refer.", color: "#0A0F2E" },
                 { label: "Becomes Product Intelligence", description: "Responses feed directly into a private analytics dashboard. Patterns across reviewers drive the product roadmap and sharpen messaging.", color: "#2B8A6E" },
               ].map(item => (
                 <div key={item.label} className="bg-white border border-[#E8E4DC] p-6" style={{ borderTop: `3px solid ${item.color}` }}>
@@ -534,7 +534,7 @@ export default function FoundingPartnerProgram() {
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, margin: '0 0 12px' }}>Your first 90 days, by role.</h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xl mx-auto">
-                Every pilot comes with a structured onboarding guide built around the five roles present in every Fortune 1000 pilot — so each person on your team knows exactly what they see, what they own, and what success looks like at day 90.
+                Every Founding Partner engagement includes a structured onboarding guide built around the five roles present in every Fortune 1000 deployment — so each person on your team knows exactly what they see, what they own, and what success looks like at day 90.
               </p>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
@@ -570,7 +570,7 @@ export default function FoundingPartnerProgram() {
             <div className="text-center mb-12">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, justifyContent: 'center', marginBottom: 14 }}>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>A Question Every Pilot Candidate Asks</span>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>A Question Every Founding Partner Asks</span>
                 <div style={{ width: 20, height: 1.5, background: '#C9A84C' }} />
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px,4vw,42px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, margin: '0 0 16px' }}>
@@ -670,7 +670,7 @@ export default function FoundingPartnerProgram() {
                 onClick={() => setLocation('/request-access')}
                 data-testid="button-cta-apply"
               >
-                Apply for Pilot Program
+                Apply for Founding Partner Access
               </button>
               <button
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: 'rgba(255,255,255,0.75)', fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 40px', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
@@ -703,7 +703,7 @@ export default function FoundingPartnerProgram() {
                 onClick={() => setLocation('/request-access')}
                 style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               >
-                Want access without a pilot commitment? Request executive access →
+                Want access before a formal engagement? Request executive access →
               </button>
             </div>
           </div>
