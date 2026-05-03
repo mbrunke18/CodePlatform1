@@ -70,7 +70,9 @@ const SEARCH_ITEMS = [
   { label: 'Live Signal Activity Feed', path: '/command-tower', category: 'Execute', icon: Activity },
   { label: 'Execution Clock', path: '/mission-control', category: 'Execute', icon: Activity },
   { label: '12-Minute Test Drive', path: '/12-minute-experience', category: 'Demo', icon: Play },
+  { label: 'Protocol Builder', path: '/protocol-builder', category: 'Demo', icon: ClipboardList },
   { label: 'Industry Scenarios', path: '/industry-demos', category: 'Demo', icon: Globe },
+  { label: 'Founding Partner Program', path: '/founding-partner-program', category: 'Action', icon: Target },
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
@@ -168,6 +170,7 @@ export default function StandardNav() {
       heading: "Try It Now",
       links: [
         { label: "The 12-Minute Experience", path: "/12-minute-experience", icon: Rocket, description: "Watch a full Readiness Protocol activate from trigger detection to task assignment — in 12 minutes. No login required.", featured: true },
+        { label: "Protocol Builder", path: "/protocol-builder", icon: ClipboardList, description: "Pre-stage your own Readiness Protocol in 6 guided steps. No login required.", featured: true },
         { label: "Industry Scenarios", path: "/industry-demos", icon: Globe, description: "Finance · Pharma · Manufacturing · Luxury — vertical deep dives" },
         { label: "Real-Company Scenarios", path: "/try-demo", icon: Play, description: "HPE · Target · Clorox · ServiceNow · Alphabet — live execution simulations" },
       ],
@@ -175,10 +178,11 @@ export default function StandardNav() {
     {
       heading: "Go Deeper",
       links: [
+        { label: "Founding Partner Program", path: "/founding-partner-program", icon: Target, description: "90-day validation partnership — deploy Readiness OS and co-design custom protocols", featured: true },
         { label: "Executive Scenario Suite", path: "/executive-scenarios", icon: Target, description: "Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare", featured: true },
-        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — AI scores Survive vs. Thrive" },
+        { label: "Shadow Simulator", path: "/simulation-studio", icon: FlaskConical, description: "Dry-run any scenario — scores Survive vs. Thrive" },
         { label: "By Your Role", path: "/role-selector", icon: Users, description: "Readiness Protocols filtered for your C-suite function" },
-        { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation with AI" },
+        { label: "Strategic Analyzer", path: "/incident-analyzer", icon: AlertCircle, description: "Analyze any strategic situation" },
         { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "One-page board summary — shareable in 60 seconds" },
       ],
     },
@@ -504,13 +508,21 @@ export default function StandardNav() {
         sub: 'A trigger fires. Your C-suite mobilizes in 12 minutes — watch every role, every task, live. No login required.',
         featured: true,
       },
+      {
+        path: '/protocol-builder',
+        icon: ClipboardList,
+        label: 'Protocol Builder',
+        sub: 'Pre-stage your own Readiness Protocol in 6 guided steps — fill in your org\'s specifics. No login required.',
+        featured: true,
+      },
     ];
     const deeperDemos = [
+      { path: '/founding-partner-program', icon: Target, label: 'Founding Partner Program', sub: '90-day validation partnership — deploy Readiness OS, co-design custom protocols, shape the product roadmap.' },
       { path: '/live-activation-center', icon: Zap, label: 'Live Activation Center', sub: 'Select a scenario. Call the audible. Authorize the response — the full executive decision in one place.' },
       { path: '/executive-scenarios', icon: Target, label: 'Executive Scenario Suite', sub: 'Your industry. Your trigger. Full IDEA chain walk-through — Technology, Finance, Manufacturing, Healthcare.' },
       { path: '/capabilities', icon: Layers, label: 'Platform Capabilities', sub: 'Every capability across the full decision lifecycle — preparation, activation, coordination, and learning.' },
       { path: '/role-selector', icon: Users, label: 'By Your Role', sub: 'CEO · CISO · CFO · CMO — Readiness Protocols built for your exact function' },
-      { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — AI maps it to the right Readiness Protocol in 60 seconds' },
+      { path: '/incident-analyzer', icon: AlertCircle, label: 'Analyze Your Situation', sub: 'Describe any event — system maps it to the right Readiness Protocol in 60 seconds' },
       { path: '/executive-brief', icon: FileText, label: 'One-Page Board Brief', sub: 'The full thesis, 3,600× metric, and ROI case — shareable in 60 seconds' },
     ];
     return (
