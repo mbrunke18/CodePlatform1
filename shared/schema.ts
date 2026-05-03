@@ -2720,6 +2720,20 @@ export const practiceDrills = pgTable('practice_drills', {
   // AI Complications (for realism)
   complications: jsonb('complications'), // AI-injected complications during drill
   
+  // Scheduling & facilitation (set when scheduling drill)
+  drillObjective: text('drill_objective'),
+  facilitator: varchar('facilitator', { length: 255 }),
+  minPassScore: integer('min_pass_score').default(75),
+  scenarioVariant: varchar('scenario_variant', { length: 255 }),
+
+  // Post-drill debrief (filled after completion)
+  debriefWhatWorked: text('debrief_what_worked'),
+  debriefWhatFailed: text('debrief_what_failed'),
+  debriefProtocolChanges: text('debrief_protocol_changes'),
+  debriefActionItems: text('debrief_action_items'),
+  debriefComplete: boolean('debrief_complete').default(false),
+  passedDrill: boolean('passed_drill'),
+
   // Metadata
   createdBy: varchar('created_by').references(() => users.id).notNull(),
   createdAt: timestamp('created_at').defaultNow(),
@@ -2912,6 +2926,9 @@ export const activationOutcomes = pgTable('activation_outcomes', {
   preparationGap: text('preparation_gap'), // What the preparation didn't anticipate
   oneThingToEncode: text('one_thing_to_encode'), // The one lesson that changes the playbook
   closeOutCompleted: boolean('close_out_completed').default(false),
+
+  // Outcome classification (set during activation close)
+  outcomeClassification: varchar('outcome_classification', { length: 100 }), // 'contained' | 'board_notified' | 'regulatory_filing' | 'escalated'
 
   // Status
   status: varchar('status', { length: 50 }).default('pending'),

@@ -1,7 +1,7 @@
 # VaughnMartin — Readiness OS
 
 ## Overview
-VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 1000, designed to automate project creation, task assignment, document staging, and budget allocation. Its core purpose is to achieve a 12-minute response time to strategic triggers by leveraging 170 strategic Readiness Protocols within its proprietary IDEA Framework™. The platform aims to transform enterprise operating models from slow, meeting-heavy processes to pre-staged, pattern-detected execution, empowering companies to be "Fearless" by enabling rapid, approved actions with AI monitoring and executive authorization.
+VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 1000, designed to automate project creation, task assignment, document staging, and budget allocation. Its core purpose is to achieve a 12-minute response time to strategic triggers by leveraging 170 strategic Readiness Protocols within its proprietary IDEA Framework™. The platform aims to transform enterprise operating models from slow, meeting-heavy processes to pre-staged, pattern-detected execution, empowering companies to be "Fearless" by enabling rapid, approved actions with AI monitoring and executive authorization. The project's vision is to redesign how work flows in the age of AI, moving enterprises from 30-day alignment cycles to 12-minute execution through pre-staged Readiness Protocols and pattern detection.
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -27,10 +27,8 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Branding:** Consistent VaughnMartin and Readiness OS branding with a circular seal logo.
 - **Navigation:** Three synchronized navigation systems (`HomepageNav`, `StandardNav`, `IDEASidebar`).
 - **Layout:** All pages are wrapped by a `PageLayout` component.
-- **Homepage:** Focuses on 12-minute execution, IDEA Framework, and research-backed validation with a specific section order.
-- **Brand Colors:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`. No purple.
-- **Design Utilities:** Custom CSS for consistent styling (stat blocks, section labels, editorial rules, metric rows, cards, tables, metric numbers). Buttons/cards/badges use `border-radius: 0.15rem`.
-- **Shared Design Components:** Reusable components like `SectionLabel`, `EditorialStat`, `GoldRule` in `client/src/components/design/index.tsx`.
+- **Color Palette:** `NAVY="#0A0F2E"`, `NAVY_BG="#132558"`, `GOLD="#C9A84C"`, `TEAL="#2B8A6E"`, `IVORY="#F0EDE4"`. No purple.
+- **Design System:** Custom CSS utilities for consistent styling (e.g., stat blocks, section labels, cards, buttons) and shared React components (`SectionLabel`, `EditorialStat`, `GoldRule`). Buttons/cards/badges use `border-radius: 0.15rem`.
 
 ### Technical Implementations
 - **Frontend:** React 18, TypeScript, Vite, Radix UI + shadcn/ui, Tailwind CSS, TanStack Query v5, Wouter, React Hook Form + Zod, Framer Motion.
@@ -39,32 +37,36 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Real-time:** Socket.IO WebSocket server.
 - **AI Services:** Azure OpenAI primarily, with fallback to OpenAI GPT-4o, employing a multi-agent IDEA Framework.
 - **Authentication:** Replit OIDC with Passport.js.
-- **Role-Based Access:** `requireRole()` middleware for authorization.
-- **Async Tasks:** PostgreSQL-backed background job queue for AI tasks.
+- **Authorization:** Role-Based Access Control using `requireRole()` middleware.
+- **Background Tasks:** PostgreSQL-backed job queue for asynchronous AI tasks.
 
 ### Feature Specifications
-- **Core Platform:** Playbook Library (170 playbooks), Demo Experience, Execution Intelligence Dashboard, Investor Gate, admin views.
-- **Pre-Staged Execution:** Execution Briefs, Live War Room, Post-Activation Debriefs, designed for pre-staged, human-authorized execution.
-- **Automation & Simulation:** Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, Shadow Strategy Simulator (Digital Twin).
-- **IDEA Framework:** Manages the full Trigger → Playbook IDEA Chain for trigger detection, playbook recommendations, and execution.
+- **Core Platform:** Includes a Playbook Library (170 protocols), Demo Experience, Execution Intelligence Dashboard, Investor Gate, and admin views.
+- **Pre-Staged Execution:** Features Execution Briefs, Live War Room, and Post-Activation Debriefs for human-authorized, pre-staged execution.
+- **Automation & Simulation:** Offers Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, and a Shadow Strategy Simulator (Digital Twin).
+- **IDEA Framework:** Manages the entire Trigger → Playbook IDEA Chain, from trigger detection to playbook recommendations and execution.
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
-- **Data Consistency:** Strict use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers."
-- **Readiness Protocol Terminology:** "Readiness Protocol" is the canonical term for execution artifacts in UI/UX. Naming cleanup complete (Phase 1 + Phase 2): all file names, component names, and internal function names now use `Protocol*` (e.g., `ProtocolLibrary.tsx`, `ProtocolActivationConsole.tsx`) and `FoundingPartner*` (e.g., `FoundingPartnerProgram.tsx`). Internal database column values and URL routes remain unchanged. `components/playbook/` folder renamed to `components/protocol/`.
-- **12-Minute Test Drive:** A public 4-step experience simulating execution at `/12-minute-experience`. Step 1 includes an optional company name field that personalizes the simulation (shown in Steps 2–4 headers). Step 4 includes email capture ("Send Me This Execution Summary") — stores lead in `test_drive_leads` table and sends a branded Resend email with stats and Founding Partner CTA.
-- **Platform Architecture — Three-Tier Model:** Homepage (`PlatformArchitectureSection`) and Founding Partner page both present the three-tier architecture: Tier 1 (Readiness OS Core — 170 protocols, available now), Tier 2 (Industry Protocol Packs — 6 verticals, sector-specific), Tier 3 (Protocol Builder — custom from scratch, co-designed with Founding Partners, in development).
-- **Getting Started Hub (`/getting-started`):** Single-page go-live readiness dashboard. Shows real-time completion across all 4 setup phases (Foundation, Org Structure, Protocol Readiness, Validation) with a live Go-Live Readiness score (0–100%), individual phase progress bars, "Fix this →" links for every incomplete item, a right-rail summary of critical missing items, and a "You're Live" state when all critical fields are complete. Accessible from StandardNav Platform dropdown and search.
-- **Protocol Builder (`/protocol-builder`):** A 6-step guided wizard that pre-stages the proven anatomy of the 170 protocols. Founding Partners fill in their organization's specifics into the pre-established structure: (1) Protocol Identity, (2) Executive Owners per phase, (3) Three-Phase Task Sequence, (4) Communication Chain, (5) Budget Envelope, (6) Decision Authority. Saves to `custom_protocols` table. Linked from Founding Partner page CTAs. No auth required — accessible to prospects.
+- **Terminology Enforcement:** Consistent use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers." "Readiness Protocol" is the canonical term for all execution artifacts.
+- **12-Minute Test Drive:** A public 4-step simulation at `/12-minute-experience` for lead generation and experience demonstration.
+- **Platform Architecture:** Presented as a three-tier model: Readiness OS Core (170 protocols), Industry Protocol Packs (6 verticals), and Protocol Builder (custom protocol creation).
+- **Getting Started Hub (`/getting-started`):** A single-page dashboard for go-live readiness, tracking 4 setup phases (Foundation, Org Structure, Protocol Readiness, Validation) with a live completion score.
+- **Protocol Builder (`/protocol-builder`):** A 6-step wizard for Founding Partners and prospects to create custom protocols based on the established anatomy.
 - **Live Signal Detection:** Real-time RSS ingestion from 8 sources every 15 minutes, scored against 16 trigger patterns.
-- **Risk Scoring:** Square-root scaling (`√signals × 8`) for LOW (<35), MEDIUM (35–74), HIGH (75+) risk levels.
-- **Command Tower:** Full-screen executive display page (`/command-tower`) with live trigger detections and system stats.
-- **Competitive Positioning Pages:** `/platform-reality`, `/ms-project`, `/vs-consulting` cross-linked.
-- **Three Access Paths:** Request Access (`/request-access`), Trial Access (`/trial-access`), Demo Access (`/demo-access`).
-- **Executive Readiness Score:** Computes a 0–100 score from live signals, triggers, playbooks, and activations.
-- **Sector Playbook Packs:** Organizes playbooks by 6 industry sectors.
-- **Regulatory Calendar:** Displays 9 compliance deadlines with urgency, regulatory body, description, and recommended actions.
-- **Board-Ready Activation Report:** Generates a report for activations, including elapsed time and next steps.
-- **Ownership Close-Out Gate:** Formal governance verdict at activation completion inside `ProtocolActivationConsole.tsx`. Measures ownership transfer rate, surfaces silent tasks diagnostic, delivers one of three verdicts: Ownership Confirmed (≥70%), Partial Transfer (35-69%), Silence Detected (<35%).
-- **Recovery vs. Optimization Debrief Classification:** ADVANCE debrief inside `ProtocolActivationConsole.tsx` automatically classifies itself based on Close-Out Gate ownership %: Optimization (≥70%), Mixed-Signal (35-69%), Recovery (<35%).
+- **Risk Scoring:** Uses square-root scaling (`√signals × 8`) to classify risk as LOW (<35), MEDIUM (35–74), HIGH (75+).
+- **Command Tower (`/command-tower`):** A full-screen executive display page showing live trigger detections and system statistics.
+- **Competitive Positioning:** Dedicated pages (`/platform-reality`, `/ms-project`, `/vs-consulting`) highlighting unique value.
+- **Access Paths:** Three distinct access routes: Request Access (`/request-access`), Trial Access (`/trial-access`), Demo Access (`/demo-access`).
+- **Executive Readiness Score:** A 0–100 score derived from live signals, triggers, playbooks, and activations.
+- **Sector Playbook Packs:** Organizes protocols by 6 industry sectors.
+- **Regulatory Calendar:** Displays compliance deadlines with urgency and recommended actions.
+- **Board-Ready Activation Report:** Generates reports for activations, including elapsed time and next steps.
+- **Ownership Close-Out Gate:** Formal governance verdict post-activation, measuring ownership transfer rate and diagnosing silent tasks.
+- **Recovery vs. Optimization Debrief Classification:** Debriefs are automatically classified as Optimization, Mixed-Signal, or Recovery based on ownership transfer percentage.
+- **Post-Drill Debrief (`/practice-drills`):** Structured debrief dialog after practice drills, capturing insights and action items.
+- **ROI Dashboard:** Displays actual costs logged across activations and outcome classifications.
+- **Activation Console:** Integrates real organizational stakeholders for notifications.
+- **Intelligence Control Center:** Features a live Recent Signal Detections feed.
+- **AIRadarDashboard:** Displays real-time average response times against benchmarks.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI

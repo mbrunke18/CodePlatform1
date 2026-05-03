@@ -3,7 +3,7 @@ import PageLayout from '@/components/layout/PageLayout';
 import { useQuery } from '@tanstack/react-query';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { TrendingDown, TrendingUp, DollarSign, Clock, Target, Zap, ChevronRight, Download, BarChart3, Activity } from 'lucide-react';
+import { TrendingDown, TrendingUp, DollarSign, Clock, Target, Zap, ChevronRight, Download, BarChart3, Activity, Shield, AlertTriangle, FileText, ArrowUpRight } from 'lucide-react';
 import { format } from 'date-fns';
 
 const NAVY = '#0A0F2E';
@@ -179,6 +179,49 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
               </div>
             </div>
 
+            {/* Actual cost panel — shown only when real outcome data exists */}
+            {s.actualCostTotal > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <div className="p-5 border border-[#E8E4DC] col-span-1">
+                  <p className="text-[9px] font-black uppercase tracking-wider text-gray-400 mb-2">Actual Cost Logged</p>
+                  <p className="text-2xl font-black" style={{ color: NAVY }}>${s.actualCostTotal.toLocaleString()}</p>
+                  <p className="text-[10px] text-gray-400 mt-1">Across all recorded activations</p>
+                </div>
+                {s.outcomeBreakdown && (
+                  <div className="p-5 border border-[#E8E4DC] col-span-2">
+                    <p className="text-[9px] font-black uppercase tracking-wider text-gray-400 mb-3">Outcome Classification Breakdown</p>
+                    <div className="flex flex-wrap gap-2">
+                      {s.outcomeBreakdown.contained > 0 && (
+                        <Badge style={{ background: 'rgba(43,138,110,0.1)', color: TEAL, fontSize: 10, fontWeight: 700 }}>
+                          <Shield className="w-3 h-3 mr-1" />Contained: {s.outcomeBreakdown.contained}
+                        </Badge>
+                      )}
+                      {s.outcomeBreakdown.boardNotified > 0 && (
+                        <Badge style={{ background: 'rgba(10,15,46,0.08)', color: NAVY, fontSize: 10, fontWeight: 700 }}>
+                          <FileText className="w-3 h-3 mr-1" />Board Notified: {s.outcomeBreakdown.boardNotified}
+                        </Badge>
+                      )}
+                      {s.outcomeBreakdown.regulatoryFiling > 0 && (
+                        <Badge style={{ background: 'rgba(201,168,76,0.1)', color: GOLD, fontSize: 10, fontWeight: 700 }}>
+                          <ArrowUpRight className="w-3 h-3 mr-1" />Regulatory Filing: {s.outcomeBreakdown.regulatoryFiling}
+                        </Badge>
+                      )}
+                      {s.outcomeBreakdown.escalated > 0 && (
+                        <Badge style={{ background: 'rgba(239,68,68,0.1)', color: '#EF4444', fontSize: 10, fontWeight: 700 }}>
+                          <AlertTriangle className="w-3 h-3 mr-1" />Escalated: {s.outcomeBreakdown.escalated}
+                        </Badge>
+                      )}
+                      {s.outcomeBreakdown.unclassified > 0 && (
+                        <Badge style={{ background: '#F4F4F4', color: '#9CA3AF', fontSize: 10 }}>
+                          Unclassified: {s.outcomeBreakdown.unclassified}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Board-ready callout */}
             <div className="p-6 border-2" style={{ borderColor: GOLD, background: 'rgba(201,168,76,0.03)' }}>
               <div className="flex items-start gap-4">
@@ -234,16 +277,24 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                       {i + 1}
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <span className="text-[10px] text-gray-400">{ev.activatedAt ? format(new Date(ev.activatedAt), 'MMM d, yyyy') : '—'}</span>
                         <Badge style={{ background: ev.targetMet ? 'rgba(43,138,110,0.1)' : 'rgba(201,168,76,0.1)', color: ev.targetMet ? TEAL : GOLD, fontSize: 8 }}>
                           {ev.targetMet ? '12-MIN TARGET MET' : 'EXTENDED RESPONSE'}
                         </Badge>
+                        {ev.outcomeClassification && (
+                          <Badge style={{ background: ev.outcomeClassification === 'contained' ? 'rgba(43,138,110,0.1)' : ev.outcomeClassification === 'escalated' ? 'rgba(239,68,68,0.1)' : 'rgba(10,15,46,0.08)', color: ev.outcomeClassification === 'contained' ? TEAL : ev.outcomeClassification === 'escalated' ? '#EF4444' : NAVY, fontSize: 8, textTransform: 'uppercase' as const }}>
+                            {ev.outcomeClassification.replace(/_/g, ' ')}
+                          </Badge>
+                        )}
                       </div>
-                      <div className="flex items-center gap-6 text-xs">
+                      <div className="flex items-center gap-6 text-xs flex-wrap">
                         <span><span className="font-bold" style={{ color: NAVY }}>{ev.actualMinutes ?? '—'} min</span> <span className="text-gray-400">response</span></span>
                         <span><span className="font-bold" style={{ color: TEAL }}>{(ev.minutesSaved / 60).toFixed(1)}h</span> <span className="text-gray-400">saved</span></span>
                         <span><span className="font-bold" style={{ color: GOLD }}>${ev.estimatedValueM}M</span> <span className="text-gray-400">preserved</span></span>
+                        {ev.actualCost != null && (
+                          <span><span className="font-bold" style={{ color: '#6B7280' }}>${ev.actualCost.toLocaleString()}</span> <span className="text-gray-400">actual cost</span></span>
+                        )}
                       </div>
                     </div>
                   </div>

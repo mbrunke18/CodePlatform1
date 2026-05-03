@@ -272,11 +272,16 @@ export default function AIRadarDashboard({ embedded }: { embedded?: boolean }) {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-xs text-[#6B7280]">Avg Response</p>
-                      <p className="text-2xl font-bold text-[#2B8A6E]">12m</p>
+                      <p className="text-2xl font-bold text-[#2B8A6E]">
+                        {dynamicStatus?.avgResponseMinutes != null ? `${dynamicStatus.avgResponseMinutes}m` : '12m'}
+                      </p>
                     </div>
                     <Zap className="h-8 w-8 text-[#C9A84C]" />
                   </div>
-                  <Progress value={85} className="h-1 mt-2 [&>div]:bg-[#C9A84C]" />
+                  <Progress
+                    value={dynamicStatus?.avgResponseMinutes != null ? Math.min(100, Math.round((1 - dynamicStatus.avgResponseMinutes / 43200) * 100)) : 85}
+                    className="h-1 mt-2 [&>div]:bg-[#C9A84C]"
+                  />
                 </CardContent>
               </Card>
             </div>

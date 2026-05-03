@@ -8775,6 +8775,17 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const valuePerMinute = 3472; // ~$5M/day Fortune 1000 avg → ~$3,472/min
       const estimatedValuePreserved = Math.round(minutesSavedPerEvent * valuePerMinute * completed.length / 1000000);
       const targetMetCount = activations.filter((a: any) => a.targetMet).length;
+      // Fetch activation outcomes for actual cost totals
+      const outcomes = await db.select().from(activationOutcomes)
+        .where(eq(activationOutcomes.organizationId, orgId));
+      const actualCostTotal = outcomes.reduce((sum: number, o: any) => sum + parseFloat(o.actualCost || '0'), 0);
+      const outcomeBreakdown = {
+        contained: outcomes.filter((o: any) => o.outcomeClassification === 'contained').length,
+        boardNotified: outcomes.filter((o: any) => o.outcomeClassification === 'board_notified').length,
+        regulatoryFiling: outcomes.filter((o: any) => o.outcomeClassification === 'regulatory_filing').length,
+        escalated: outcomes.filter((o: any) => o.outcomeClassification === 'escalated').length,
+        unclassified: outcomes.filter((o: any) => !o.outcomeClassification).length,
+      };
       res.json({
         activationCount: activations.length,
         completedCount: completed.length,
@@ -8784,6 +8795,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         estimatedValuePreservedMillions: estimatedValuePreserved,
         targetMetRate: activations.length ? Math.round(targetMetCount / activations.length * 100) : 0,
         avgResponseVsBenchmark: industryBenchmark > 0 ? Math.round((1 - avgMinutes / industryBenchmark) * 100) : 0,
+        actualCostTotal: Math.round(actualCostTotal),
+        outcomeBreakdown,
       });
     } catch (err: any) { res.status(500).json({ error: err.message }); }
   });
@@ -8809,6 +8822,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           targetMet: a.targetMet,
           minutesSaved,
           estimatedValueM: Math.round(minutesSaved * 3472 / 1000000 * 10) / 10,
+          actualCost: outcome?.actualCost ? parseFloat(outcome.actualCost) : null,
+          outcomeClassification: outcome?.outcomeClassification || null,
           aiSummary: outcome?.aiSummary || null,
         };
       });

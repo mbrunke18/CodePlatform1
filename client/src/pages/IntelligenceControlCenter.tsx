@@ -82,6 +82,49 @@ export default function IntelligenceControlCenter() {
     queryKey: ['/api/dynamic-strategy/status'],
   });
 
+  // Real signal and trigger data
+  const { data: strategicAlertsRaw } = useQuery<any>({
+    queryKey: ['/api/strategic-alerts'],
+    refetchInterval: 60000,
+  });
+  const { data: triggersRaw } = useQuery<any[]>({
+    queryKey: ['/api/triggers'],
+    refetchInterval: 60000,
+  });
+  const { data: weakSignalsRaw } = useQuery<any[]>({
+    queryKey: ['/api/dynamic-strategy/weak-signals'],
+    refetchInterval: 30000,
+  });
+
+  const realAlerts: any[] = Array.isArray(strategicAlertsRaw?.alerts) ? strategicAlertsRaw.alerts :
+    Array.isArray(strategicAlertsRaw) ? strategicAlertsRaw : [];
+  const realTriggers: any[] = Array.isArray(triggersRaw) ? triggersRaw : [];
+  const realWeakSignals: any[] = Array.isArray(weakSignalsRaw) ? weakSignalsRaw : [];
+
+  // Build live detections from real alerts + triggered signals; fall back to RECENT_DETECTIONS
+  const liveDetections = realAlerts.length > 0
+    ? realAlerts.slice(0, 5).map((a: any) => ({
+        time: a.detectedAt ? new Date(a.detectedAt).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : 'now',
+        category: a.category || a.triggerCategory || 'System',
+        signal: a.message || a.description || a.title || 'Signal detected',
+        severity: a.severity || (a.riskLevel === 'HIGH' ? 'critical' : a.riskLevel === 'MEDIUM' ? 'high' : 'medium'),
+        confidence: a.confidence || a.score || 80,
+        playbook: a.recommendedPlaybook || a.linkedPlaybook || 'Strategic Response Protocol',
+      }))
+    : realTriggers.filter((t: any) => t.status === 'triggered' || t.riskLevel === 'HIGH').slice(0, 5).map((t: any) => ({
+        time: t.lastTriggered ? new Date(t.lastTriggered).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : 'recently',
+        category: t.category || 'System',
+        signal: t.description || t.name || 'Trigger fired',
+        severity: t.riskLevel === 'HIGH' ? 'critical' : t.riskLevel === 'MEDIUM' ? 'high' : 'medium',
+        confidence: t.score || 80,
+        playbook: t.linkedPlaybook || 'Strategic Response Protocol',
+      }));
+
+  // Use real detections if available, else fall back to static demos
+  const recentDetections = liveDetections.length > 0 ? liveDetections : RECENT_DETECTIONS;
+  const activeTriggerCount = realTriggers.filter((t: any) => t.status === 'triggered' || t.riskLevel === 'HIGH').length;
+  const weakSignalCount = dynamicStatus?.weakSignalsDetected ?? realWeakSignals.length ?? 3;
+
   const intelligenceModules = [
     {
       id: 'ai-hub', title: 'Intelligence Hub',
@@ -165,8 +208,8 @@ export default function IntelligenceControlCenter() {
             {[
               { label: 'Data Points Monitored', value: '248+', icon: Activity, color: GOLD, id: 'data-points' },
               { label: 'Signal Categories', value: '16', icon: Layers, color: TEAL, id: 'signal-categories' },
-              { label: 'Weak Signals', value: String(dynamicStatus?.weakSignalsDetected ?? 3), icon: AlertCircle, color: GOLD, id: 'weak-signals' },
-              { label: 'Active Patterns', value: String(dynamicStatus?.oraclePatternsActive ?? 3), icon: TrendingUp, color: TEAL, id: 'active-patterns' },
+              { label: 'Weak Signals', value: String(weakSignalCount), icon: AlertCircle, color: GOLD, id: 'weak-signals' },
+              { label: 'Active Patterns', value: String(dynamicStatus?.oraclePatternsActive ?? PATTERN_CORRELATIONS.length), icon: TrendingUp, color: TEAL, id: 'active-patterns' },
             ].map(stat => (
               <div key={stat.id} style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.03)' }} data-testid={`stat-${stat.id}`}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -368,7 +411,7 @@ export default function IntelligenceControlCenter() {
               <div style={{ marginBottom: 8 }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 14 }}>Recent Signal Detections</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                  {RECENT_DETECTIONS.map((det, i) => {
+                  {recentDetections.map((det, i) => {
                     const sc = det.severity === 'critical' ? '#dc2626' : det.severity === 'high' ? GOLD : '#6B7280';
                     return (
                       <div key={i} style={{ background: '#fff', border: `1px solid ${BORDER}`, borderLeft: `4px solid ${sc}`, padding: '14px 16px', display: 'flex', alignItems: 'flex-start', gap: 14 }}>

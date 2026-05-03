@@ -236,6 +236,37 @@ practiceDrillRouter.post('/:drillId/complete', async (req, res) => {
 });
 
 /**
+ * POST /api/practice-drills/:drillId/debrief
+ * Submit structured post-drill debrief
+ */
+practiceDrillRouter.post('/:drillId/debrief', async (req, res) => {
+  try {
+    const { drillId } = req.params;
+    const { whatWorked, whatFailed, protocolChanges, actionItems, successRate, minPassScore } = req.body;
+    const passed = typeof successRate === 'number' && typeof minPassScore === 'number'
+      ? successRate >= minPassScore
+      : null;
+    const [drill] = await db
+      .update(practiceDrills)
+      .set({
+        debriefWhatWorked: whatWorked || null,
+        debriefWhatFailed: whatFailed || null,
+        debriefProtocolChanges: protocolChanges || null,
+        debriefActionItems: actionItems || null,
+        debriefComplete: true,
+        passedDrill: passed ?? undefined,
+        updatedAt: new Date(),
+      } as any)
+      .where(eq(practiceDrills.id, drillId))
+      .returning();
+    res.json({ drill, passed });
+  } catch (error) {
+    console.error('Error saving drill debrief:', error);
+    res.status(500).json({ error: 'Failed to save debrief' });
+  }
+});
+
+/**
  * GET /api/practice-drills/performance/:organizationId
  * Get performance analytics for all drills in an organization
  */

@@ -403,6 +403,14 @@ export default function ProtocolActivationConsole() {
     }
   }, [ackName, ackRole, ackActionType]);
 
+  // Fetch org settings to pull real domain owners for stakeholder notifications
+  const { data: orgsRaw } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const orgSettings = Array.isArray(orgsRaw) && orgsRaw[0]?.settings ? orgsRaw[0].settings : null;
+  const orgDomainOwners: { name: string; title: string; email?: string; mobile?: string }[] = 
+    Array.isArray(orgSettings?.ideaConfig?.domainOwners)
+      ? orgSettings.ideaConfig.domainOwners.filter((o: any) => o.name)
+      : [];
+
   // Fetch trigger details (skip for manual executions)
   const isManualExecution = params?.triggerId === 'manual';
   const { data: trigger } = useQuery<any>({
@@ -597,7 +605,15 @@ export default function ProtocolActivationConsole() {
       // In pilot scope, use only system-generated tasks for the core team
       setLocalDemoTasks(scope === 'pilot' ? [...aiTasks, ...baseTasks.slice(0, 5)] : [...aiTasks, ...baseTasks]);
     }
-    const domainStakeholders = DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;
+    // Prefer real org domain owners; fall back to hardcoded domain-specific stakeholders
+    const realStakeholders: { name: string; title: string; method: string }[] = orgDomainOwners.length >= 2
+      ? orgDomainOwners.map((o: any) => ({
+          name: o.name,
+          title: o.title || o.role || 'Domain Owner',
+          method: o.mobile ? 'SMS + Direct call' : o.email ? 'Email notification' : 'Platform alert',
+        }))
+      : null as any;
+    const domainStakeholders = realStakeholders || DOMAIN_STAKEHOLDERS[domain] || GENERIC_STAKEHOLDERS;
     // In pilot scope, only notify first 2 stakeholders (core team)
     const activeStakeholders = scope === 'pilot' ? domainStakeholders.slice(0, 2) : domainStakeholders;
     setStakeholderStatuses(activeStakeholders.map(s => ({ ...s, status: 'pending' as const })));

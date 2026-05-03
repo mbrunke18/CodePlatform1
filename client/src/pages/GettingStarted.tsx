@@ -125,8 +125,11 @@ export default function GettingStarted() {
   const escalationCount = (escalationPolicies || []).length;
   const channelCount = (channels || []).length;
 
+  const stakeholderCount = ownersWithName.length;
+
   const testDriveComplete = typeof window !== 'undefined' && !!localStorage.getItem('vm_test_drive_completed');
   const drillComplete = typeof window !== 'undefined' && !!localStorage.getItem('vm_drill_completed');
+  const drillDebriefed = typeof window !== 'undefined' && !!localStorage.getItem('vm_drill_debriefed');
 
   const c = {
     // Phase 1 — Foundation
@@ -147,7 +150,7 @@ export default function GettingStarted() {
     approvalConfig: ideaConfig.approvalRequired !== undefined,
     // Phase 2 — Org Structure
     departments3: deptCount >= 3,
-    stakeholders: false,
+    stakeholders: stakeholderCount >= 3 || (ownersWithName.length >= 3 && ownersWithEmail.length >= 3 && ownersWithMobile.length >= 3),
     escalation: escalationCount >= 1,
     channels: channelCount >= 1,
     channels2: channelCount >= 2,
@@ -158,13 +161,14 @@ export default function GettingStarted() {
     // Phase 4 — Validation
     testDrive: testDriveComplete,
     drill: drillComplete,
+    drillDebrief: drillDebriefed,
     teamInvited: false,
   };
 
   const p1Items = ['companyName', 'industry', 'employeeCount', 'companyType', 'primaryMarkets', 'executiveSponsor', 'pmoContact', 'domainOwnersNamed', 'domainOwnerEmails', 'domainOwnerMobiles', 'backupOwners', 'protocolsSelected', 'executionTarget', 'budgetThreshold', 'approvalConfig'];
   const p2Items = ['departments3', 'escalation', 'channels'];
   const p3Items = ['signalMonitoring', 'protocolReviewed', 'riskThresholdsSet'];
-  const p4Items = ['testDrive', 'drill'];
+  const p4Items = ['testDrive', 'drill', 'drillDebrief'];
 
   const score = (keys: string[]) => Math.round(keys.filter(k => c[k as keyof typeof c]).length / keys.length * 100);
   const p1 = score(p1Items);
@@ -270,7 +274,7 @@ export default function GettingStarted() {
             <PhaseCard num="02" title="Organization Structure" timing="30–60 minutes" doing="You + your team" score={p2} cta="Open Organization Setup" ctaHref="/organization-setup">
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Team Structure</div>
               <Item done={c.departments3} label={`Departments configured — ${deptCount} added`} sub="Minimum 3 departments for routing and task assignment" href="/organization-setup" partial={deptCount > 0 && deptCount < 3} />
-              <Item done={c.stakeholders} label="Executives added with full contact details" sub="Name, email, mobile, role, approval limit, and notification preferences" href="/organization-setup" />
+              <Item done={c.stakeholders} label="Executives added with full contact details" sub={`Name, email, mobile, role — ${stakeholderCount > 0 ? stakeholderCount + ' added' : (ownersWithEmail.length + ' domain owners with email')}`} href="/organization-setup" partial={!c.stakeholders && (stakeholderCount > 0 || ownersWithEmail.length > 0)} />
 
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Response Governance</div>
               <Item done={c.escalation} label={`Escalation policy configured — ${escalationCount} policy${escalationCount !== 1 ? 'ies' : ''}`} sub="What happens if a domain owner doesn't respond in time" href="/organization-setup" />
@@ -293,6 +297,7 @@ export default function GettingStarted() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Proof of Readiness</div>
               <Item done={c.testDrive} label="12-Minute Test Drive completed" sub="Runs a live scenario end-to-end — verifies timing, routing, and task assignment" href="/12-minute-experience" />
               <Item done={c.drill} label="Practice drill completed" sub="Full team activation simulation — reveals gaps before a real trigger fires" href="/practice-drills" />
+              <Item done={c.drillDebrief} label="Post-drill debrief recorded" sub="Captures what worked, what failed, and protocol changes needed" href="/practice-drills" partial={c.drill && !c.drillDebrief} />
               <Item done={c.teamInvited} label="Executive team invited to platform" sub="Every domain owner needs platform access before you go live" href="/settings" />
             </PhaseCard>
           </div>

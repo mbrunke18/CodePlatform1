@@ -7,6 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { 
   Target, 
   Play, 
@@ -19,7 +21,10 @@ import {
   Award,
   Activity,
   ArrowUp,
-  Minus
+  Minus,
+  RefreshCw,
+  ThumbsUp,
+  ThumbsDown,
 } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { apiRequest, queryClient } from '@/lib/queryClient';
@@ -134,20 +139,49 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
     },
   });
 
+  // Debrief state
+  const [isDebriefOpen, setIsDebriefOpen] = useState(false);
+  const [debriefDrillId, setDebriefDrillId] = useState<string | null>(null);
+  const [debriefSuccess, setDebriefSuccess] = useState(true);
+  const [debriefWhatWorked, setDebriefWhatWorked] = useState('');
+  const [debriefWhatFailed, setDebriefWhatFailed] = useState('');
+  const [debriefProtocolChanges, setDebriefProtocolChanges] = useState('');
+  const [debriefActionItems, setDebriefActionItems] = useState('');
+
   // Complete drill mutation
   const completeDrillMutation = useMutation({
     mutationFn: async ({ drillId, data }: any) => {
       return apiRequest('POST', `/api/practice-drills/${drillId}/complete`, data);
     },
-    onSuccess: () => {
+    onSuccess: (_, vars) => {
       queryClient.invalidateQueries({ queryKey: ['/api/practice-drills'] });
       queryClient.invalidateQueries({ queryKey: ['/api/practice-drills/performance'] });
-      toast({
-        title: 'Drill Completed',
-        description: 'Performance data has been recorded',
-      });
       setSelectedDrill(null);
+      // Open debrief dialog right after completing
+      setDebriefDrillId(vars.drillId);
+      setIsDebriefOpen(true);
     },
+  });
+
+  // Debrief submission mutation
+  const debriefMutation = useMutation({
+    mutationFn: async ({ drillId, data }: any) => {
+      return apiRequest('POST', `/api/practice-drills/${drillId}/debrief`, data);
+    },
+    onSuccess: (data: any) => {
+      queryClient.invalidateQueries({ queryKey: ['/api/practice-drills'] });
+      setIsDebriefOpen(false);
+      setDebriefWhatWorked(''); setDebriefWhatFailed(''); setDebriefProtocolChanges(''); setDebriefActionItems('');
+      if (typeof window !== 'undefined') localStorage.setItem('vm_drill_debriefed', '1');
+      const passed = data?.passed;
+      toast({
+        title: passed === false ? 'Debrief Saved — Retry Recommended' : 'Debrief Recorded',
+        description: passed === false
+          ? 'Score fell below the pass threshold. Schedule a retry drill to close the gap.'
+          : 'Post-drill analysis saved. Protocol improvements are captured.',
+      });
+    },
+    onError: () => toast({ title: 'Error', description: 'Failed to save debrief', variant: 'destructive' }),
   });
 
   const handleScheduleDrill = () => {
@@ -175,15 +209,19 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   };
 
   const handleCompleteDrill = (drillId: string, success: boolean) => {
+    setDebriefSuccess(success);
     completeDrillMutation.mutate({
       drillId,
       data: {
-        timeToComplete: 12, // Standard target time
+        timeToComplete: 12,
         participantsFeedback: success ? 'excellent' : 'needs_improvement',
         bottlenecks: success ? [] : ['Communication delays', 'Resource allocation'],
         successRate: success ? 95 : 65,
+        actualExecutionTime: 12,
+        actualParticipants: [],
       },
     });
+    if (typeof window !== 'undefined') localStorage.setItem('vm_drill_completed', '1');
   };
 
   const CG_FIX: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
@@ -825,6 +863,109 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Post-Drill Debrief Dialog */}
+      <Dialog open={isDebriefOpen} onOpenChange={setIsDebriefOpen}>
+        <DialogContent className="max-w-2xl" style={{ borderRadius: '0.15rem' }}>
+          <DialogHeader>
+            <DialogTitle style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', fontWeight: 700, color: NAVY }}>
+              {debriefSuccess ? 'Post-Drill Debrief' : 'Post-Drill Debrief — Issues Noted'}
+            </DialogTitle>
+            <p className="text-xs text-gray-500 mt-1">
+              Capture what happened while it's fresh. This becomes part of the protocol's improvement record.
+            </p>
+          </DialogHeader>
+
+          <div className="space-y-5 py-2">
+            {!debriefSuccess && (
+              <div className="px-4 py-3 border-l-2 border-[#C9A84C] bg-[#C9A84C]/5">
+                <p className="text-xs font-bold text-[#0A0F2E]">Issues were flagged during this drill.</p>
+                <p className="text-xs text-gray-500">Document what broke down so the protocol can be updated before the next trigger fires.</p>
+              </div>
+            )}
+
+            <div className="space-y-1.5">
+              <Label className="text-xs font-bold uppercase tracking-wider text-gray-500">What worked well?</Label>
+              <Textarea
+                value={debriefWhatWorked}
+                onChange={e => setDebriefWhatWorked(e.target.value)}
+                placeholder="e.g., Notification chain fired within 90 seconds, all domain owners responded promptly..."
+                className="text-sm min-h-[72px]"
+                style={{ borderRadius: '0.15rem' }}
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label className="text-xs font-bold uppercase tracking-wider text-gray-500">What failed or was delayed?</Label>
+              <Textarea
+                value={debriefWhatFailed}
+                onChange={e => setDebriefWhatFailed(e.target.value)}
+                placeholder="e.g., Budget approval step took 4 minutes due to CFO not receiving mobile alert..."
+                className="text-sm min-h-[72px]"
+                style={{ borderRadius: '0.15rem' }}
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label className="text-xs font-bold uppercase tracking-wider text-gray-500">Protocol changes recommended</Label>
+              <Textarea
+                value={debriefProtocolChanges}
+                onChange={e => setDebriefProtocolChanges(e.target.value)}
+                placeholder="e.g., Add SMS backup to CFO task. Move legal review to Phase 1 instead of Phase 2..."
+                className="text-sm min-h-[72px]"
+                style={{ borderRadius: '0.15rem' }}
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label className="text-xs font-bold uppercase tracking-wider text-gray-500">Action items before next drill</Label>
+              <Textarea
+                value={debriefActionItems}
+                onChange={e => setDebriefActionItems(e.target.value)}
+                placeholder="e.g., Update escalation path in OrganizationSetup. Confirm backup contacts for Ops domain..."
+                className="text-sm min-h-[72px]"
+                style={{ borderRadius: '0.15rem' }}
+              />
+            </div>
+          </div>
+
+          <DialogFooter className="gap-2 mt-2">
+            <Button
+              variant="outline"
+              onClick={() => setIsDebriefOpen(false)}
+              className="text-xs font-bold uppercase tracking-wider"
+              style={{ borderRadius: '0.15rem' }}
+            >
+              Skip for Now
+            </Button>
+            <Button
+              onClick={() => {
+                if (!debriefDrillId) return;
+                debriefMutation.mutate({
+                  drillId: debriefDrillId,
+                  data: {
+                    whatWorked: debriefWhatWorked,
+                    whatFailed: debriefWhatFailed,
+                    protocolChanges: debriefProtocolChanges,
+                    actionItems: debriefActionItems,
+                    successRate: debriefSuccess ? 95 : 65,
+                    minPassScore: 75,
+                  },
+                });
+              }}
+              disabled={debriefMutation.isPending}
+              className="text-xs font-bold uppercase tracking-wider text-white"
+              style={{ background: NAVY, borderRadius: '0.15rem' }}
+            >
+              {debriefMutation.isPending ? (
+                <><RefreshCw className="h-3 w-3 mr-2 animate-spin" />Saving...</>
+              ) : (
+                <><CheckCircle className="h-3 w-3 mr-2" />Save Debrief</>
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </PageLayout>
   );
 }
