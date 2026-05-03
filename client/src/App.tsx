@@ -181,6 +181,7 @@ const PeerReviewReport = lazy(() => import("./pages/PeerReviewReport"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const FoundingPartnerProgram = lazy(() => import("./pages/FoundingPartnerProgram"));
 const FoundingPartnerOnboarding = lazy(() => import("./pages/FoundingPartnerOnboarding"));
+const ProtocolBuilder = lazy(() => import("./pages/ProtocolBuilder"));
 const Growth = lazy(() => import("./pages/Growth"));
 const VsConsulting = lazy(() => import("./pages/VsConsulting"));
 const VsBCP = lazy(() => import("./pages/VsBCP"));
@@ -534,6 +535,7 @@ function Router() {
         <Route path="/board-export" component={BoardExport} />
         <Route path="/12-minute-experience" component={TwelveMinuteTestDrive} />
         <Route path="/test-drive" component={TwelveMinuteTestDrive} />
+        <Route path="/protocol-builder" component={ProtocolBuilder} />
         <Route path="/executive-scenarios" component={ExecutiveScenarioSuite} />
         <Route path="/incident-analyzer" component={IncidentAnalyzer} />
         <Route path="/readiness-assessment" component={ReadinessAssessment} />

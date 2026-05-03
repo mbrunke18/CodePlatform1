@@ -131,6 +131,9 @@ import {
   situationIntents,
   type SituationIntent,
   type InsertSituationIntent,
+  customProtocols,
+  type CustomProtocol,
+  type InsertCustomProtocol,
 } from "@shared/schema";
 
 // Infer types from table schemas where needed
@@ -426,6 +429,12 @@ export interface IStorage {
   getSituationIntent(organizationId: string, triggerId: string): Promise<SituationIntent | undefined>;
   upsertSituationIntent(data: InsertSituationIntent): Promise<SituationIntent>;
   deleteSituationIntent(id: number): Promise<void>;
+
+  // Custom Protocols (Protocol Builder)
+  createCustomProtocol(data: InsertCustomProtocol): Promise<CustomProtocol>;
+  getCustomProtocols(userId?: string): Promise<CustomProtocol[]>;
+  getCustomProtocol(id: string): Promise<CustomProtocol | undefined>;
+  updateCustomProtocol(id: string, data: Partial<InsertCustomProtocol>): Promise<CustomProtocol>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -3337,6 +3346,33 @@ export class DatabaseStorage implements IStorage {
 
   async deleteSituationIntent(id: number): Promise<void> {
     await db.delete(situationIntents).where(eq(situationIntents.id, id));
+  }
+
+  async createCustomProtocol(data: InsertCustomProtocol): Promise<CustomProtocol> {
+    const [row] = await db.insert(customProtocols).values(data).returning();
+    return row;
+  }
+
+  async getCustomProtocols(userId?: string): Promise<CustomProtocol[]> {
+    if (userId) {
+      return await db.select().from(customProtocols)
+        .where(eq(customProtocols.userId, userId))
+        .orderBy(desc(customProtocols.createdAt));
+    }
+    return await db.select().from(customProtocols).orderBy(desc(customProtocols.createdAt));
+  }
+
+  async getCustomProtocol(id: string): Promise<CustomProtocol | undefined> {
+    const [row] = await db.select().from(customProtocols).where(eq(customProtocols.id, id));
+    return row;
+  }
+
+  async updateCustomProtocol(id: string, data: Partial<InsertCustomProtocol>): Promise<CustomProtocol> {
+    const [row] = await db.update(customProtocols)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(customProtocols.id, id))
+      .returning();
+    return row;
   }
 }
 

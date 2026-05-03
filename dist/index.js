@@ -89,6 +89,7 @@ __export(schema_exports, {
   conversations: () => conversations,
   crisisSimulations: () => crisisSimulations,
   customDataPoints: () => customDataPoints,
+  customProtocols: () => customProtocols,
   customTriggers: () => customTriggers,
   dataSources: () => dataSources,
   decisionConfidence: () => decisionConfidence,
@@ -161,6 +162,7 @@ __export(schema_exports, {
   insertConversationSchema: () => insertConversationSchema,
   insertCrisisSimulationSchema: () => insertCrisisSimulationSchema,
   insertCustomDataPointSchema: () => insertCustomDataPointSchema,
+  insertCustomProtocolSchema: () => insertCustomProtocolSchema,
   insertCustomTriggerSchema: () => insertCustomTriggerSchema,
   insertDataSourceSchema: () => insertDataSourceSchema,
   insertDecisionConfidenceSchema: () => insertDecisionConfidenceSchema,
@@ -465,7 +467,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6239,6 +6241,29 @@ var init_schema = __esm({
       createdAt: timestamp2("created_at").defaultNow()
     });
     insertTestDriveLeadSchema = createInsertSchema2(testDriveLeads).omit({ id: true, createdAt: true });
+    customProtocols = pgTable2("custom_protocols", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      userId: varchar("user_id"),
+      organizationId: uuid("organization_id"),
+      name: text2("name").notNull(),
+      description: text2("description"),
+      triggerDomain: varchar("trigger_domain", { length: 100 }).notNull(),
+      triggerCondition: text2("trigger_condition"),
+      industry: varchar("industry", { length: 100 }),
+      riskThreshold: varchar("risk_threshold", { length: 20 }).default("high"),
+      executiveOwners: jsonb("executive_owners").default({}),
+      immediateTasks: jsonb("immediate_tasks").default([]),
+      secondaryTasks: jsonb("secondary_tasks").default([]),
+      followUpTasks: jsonb("follow_up_tasks").default([]),
+      communicationChain: jsonb("communication_chain").default({}),
+      budgetEnvelope: jsonb("budget_envelope").default({}),
+      decisionAuthority: jsonb("decision_authority").default({}),
+      status: varchar("status", { length: 20 }).default("draft"),
+      completedSteps: integer2("completed_steps").default(0),
+      createdAt: timestamp2("created_at").defaultNow(),
+      updatedAt: timestamp2("updated_at").defaultNow()
+    });
+    insertCustomProtocolSchema = createInsertSchema2(customProtocols).omit({ id: true, createdAt: true, updatedAt: true });
   }
 });
 
@@ -11476,6 +11501,24 @@ var init_storage = __esm({
       }
       async deleteSituationIntent(id) {
         await db.delete(situationIntents).where(eq(situationIntents.id, id));
+      }
+      async createCustomProtocol(data) {
+        const [row] = await db.insert(customProtocols).values(data).returning();
+        return row;
+      }
+      async getCustomProtocols(userId) {
+        if (userId) {
+          return await db.select().from(customProtocols).where(eq(customProtocols.userId, userId)).orderBy(desc(customProtocols.createdAt));
+        }
+        return await db.select().from(customProtocols).orderBy(desc(customProtocols.createdAt));
+      }
+      async getCustomProtocol(id) {
+        const [row] = await db.select().from(customProtocols).where(eq(customProtocols.id, id));
+        return row;
+      }
+      async updateCustomProtocol(id, data) {
+        const [row] = await db.update(customProtocols).set({ ...data, updatedAt: /* @__PURE__ */ new Date() }).where(eq(customProtocols.id, id)).returning();
+        return row;
       }
     };
     storage = new DatabaseStorage();
@@ -50706,6 +50749,41 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
     } catch (err) {
       console.error("[TestDrive] Error:", err.message);
       res.status(500).json({ success: false, error: err.message });
+    }
+  });
+  app2.post("/api/custom-protocols", async (req, res) => {
+    try {
+      const userId = req.user?.id ?? null;
+      const protocol = await storage.createCustomProtocol({ ...req.body, userId });
+      res.json(protocol);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/custom-protocols", async (req, res) => {
+    try {
+      const userId = req.user?.id ?? void 0;
+      const protocols = await storage.getCustomProtocols(userId);
+      res.json(protocols);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/custom-protocols/:id", async (req, res) => {
+    try {
+      const protocol = await storage.getCustomProtocol(req.params.id);
+      if (!protocol) return res.status(404).json({ error: "Not found" });
+      res.json(protocol);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.patch("/api/custom-protocols/:id", async (req, res) => {
+    try {
+      const protocol = await storage.updateCustomProtocol(req.params.id, req.body);
+      res.json(protocol);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
     }
   });
   return httpServer;

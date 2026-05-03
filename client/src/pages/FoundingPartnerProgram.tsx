@@ -254,10 +254,10 @@ export default function FoundingPartnerProgram() {
               </button>
               <button
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: '#C9A84C', fontWeight: 700, fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 32px', border: '1px solid rgba(201,168,76,0.35)', cursor: 'pointer' }}
-                onClick={() => setLocation('/request-access')}
-                data-testid="button-request-access"
+                onClick={() => setLocation('/protocol-builder')}
+                data-testid="button-try-builder"
               >
-                Request Executive Access
+                Preview the Protocol Builder →
               </button>
             </div>
           </div>
@@ -749,10 +749,10 @@ export default function FoundingPartnerProgram() {
               </button>
               <button
                 style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: 'rgba(255,255,255,0.75)', fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 40px', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
-                onClick={() => setLocation('/investors')}
-                data-testid="button-cta-positioning"
+                onClick={() => setLocation('/protocol-builder')}
+                data-testid="button-cta-builder"
               >
-                View Investor Overview
+                Preview the Protocol Builder →
               </button>
             </div>
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.68)', marginBottom: 32 }}>

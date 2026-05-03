@@ -9876,5 +9876,45 @@ Respond ONLY as JSON with this exact structure:
     }
   });
 
+  // ── Custom Protocols (Protocol Builder) ──────────────────────────────────
+  app.post('/api/custom-protocols', async (req: any, res) => {
+    try {
+      const userId = req.user?.id ?? null;
+      const protocol = await storage.createCustomProtocol({ ...req.body, userId });
+      res.json(protocol);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/custom-protocols', async (req: any, res) => {
+    try {
+      const userId = req.user?.id ?? undefined;
+      const protocols = await storage.getCustomProtocols(userId);
+      res.json(protocols);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/custom-protocols/:id', async (req: any, res) => {
+    try {
+      const protocol = await storage.getCustomProtocol(req.params.id);
+      if (!protocol) return res.status(404).json({ error: 'Not found' });
+      res.json(protocol);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.patch('/api/custom-protocols/:id', async (req: any, res) => {
+    try {
+      const protocol = await storage.updateCustomProtocol(req.params.id, req.body);
+      res.json(protocol);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return httpServer;
 }

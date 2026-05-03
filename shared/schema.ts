@@ -6591,3 +6591,30 @@ export const testDriveLeads = pgTable('test_drive_leads', {
 export const insertTestDriveLeadSchema = createInsertSchema(testDriveLeads).omit({ id: true, createdAt: true });
 export type InsertTestDriveLead = z.infer<typeof insertTestDriveLeadSchema>;
 export type TestDriveLead = typeof testDriveLeads.$inferSelect;
+
+// ─── Custom Protocols (Protocol Builder) ─────────────────────────────────────
+export const customProtocols = pgTable('custom_protocols', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: varchar('user_id'),
+  organizationId: uuid('organization_id'),
+  name: text('name').notNull(),
+  description: text('description'),
+  triggerDomain: varchar('trigger_domain', { length: 100 }).notNull(),
+  triggerCondition: text('trigger_condition'),
+  industry: varchar('industry', { length: 100 }),
+  riskThreshold: varchar('risk_threshold', { length: 20 }).default('high'),
+  executiveOwners: jsonb('executive_owners').default({}),
+  immediateTasks: jsonb('immediate_tasks').default([]),
+  secondaryTasks: jsonb('secondary_tasks').default([]),
+  followUpTasks: jsonb('follow_up_tasks').default([]),
+  communicationChain: jsonb('communication_chain').default({}),
+  budgetEnvelope: jsonb('budget_envelope').default({}),
+  decisionAuthority: jsonb('decision_authority').default({}),
+  status: varchar('status', { length: 20 }).default('draft'),
+  completedSteps: integer('completed_steps').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+export const insertCustomProtocolSchema = createInsertSchema(customProtocols).omit({ id: true, createdAt: true, updatedAt: true });
+export type InsertCustomProtocol = z.infer<typeof insertCustomProtocolSchema>;
+export type CustomProtocol = typeof customProtocols.$inferSelect;
