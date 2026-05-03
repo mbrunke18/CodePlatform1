@@ -3125,6 +3125,18 @@ var init_schema = __esm({
       // AI Complications (for realism)
       complications: jsonb("complications"),
       // AI-injected complications during drill
+      // Scheduling & facilitation (set when scheduling drill)
+      drillObjective: text2("drill_objective"),
+      facilitator: varchar("facilitator", { length: 255 }),
+      minPassScore: integer2("min_pass_score").default(75),
+      scenarioVariant: varchar("scenario_variant", { length: 255 }),
+      // Post-drill debrief (filled after completion)
+      debriefWhatWorked: text2("debrief_what_worked"),
+      debriefWhatFailed: text2("debrief_what_failed"),
+      debriefProtocolChanges: text2("debrief_protocol_changes"),
+      debriefActionItems: text2("debrief_action_items"),
+      debriefComplete: boolean("debrief_complete").default(false),
+      passedDrill: boolean("passed_drill"),
       // Metadata
       createdBy: varchar("created_by").references(() => users.id).notNull(),
       createdAt: timestamp2("created_at").defaultNow(),
@@ -3315,6 +3327,9 @@ var init_schema = __esm({
       oneThingToEncode: text2("one_thing_to_encode"),
       // The one lesson that changes the playbook
       closeOutCompleted: boolean("close_out_completed").default(false),
+      // Outcome classification (set during activation close)
+      outcomeClassification: varchar("outcome_classification", { length: 100 }),
+      // 'contained' | 'board_notified' | 'regulatory_filing' | 'escalated'
       // Status
       status: varchar("status", { length: 50 }).default("pending"),
       generatedAt: timestamp2("generated_at"),
@@ -32925,6 +32940,26 @@ var init_practiceDrillRoutes = __esm({
         res.status(500).json({ error: "Failed to complete drill" });
       }
     });
+    practiceDrillRouter.post("/:drillId/debrief", async (req, res) => {
+      try {
+        const { drillId } = req.params;
+        const { whatWorked, whatFailed, protocolChanges, actionItems: actionItems2, successRate, minPassScore } = req.body;
+        const passed = typeof successRate === "number" && typeof minPassScore === "number" ? successRate >= minPassScore : null;
+        const [drill] = await db.update(practiceDrills).set({
+          debriefWhatWorked: whatWorked || null,
+          debriefWhatFailed: whatFailed || null,
+          debriefProtocolChanges: protocolChanges || null,
+          debriefActionItems: actionItems2 || null,
+          debriefComplete: true,
+          passedDrill: passed ?? void 0,
+          updatedAt: /* @__PURE__ */ new Date()
+        }).where(eq42(practiceDrills.id, drillId)).returning();
+        res.json({ drill, passed });
+      } catch (error) {
+        console.error("Error saving drill debrief:", error);
+        res.status(500).json({ error: "Failed to save debrief" });
+      }
+    });
     practiceDrillRouter.get("/performance/:organizationId", async (req, res) => {
       try {
         const { organizationId } = req.params;
@@ -49720,6 +49755,15 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const valuePerMinute = 3472;
       const estimatedValuePreserved = Math.round(minutesSavedPerEvent * valuePerMinute * completed.length / 1e6);
       const targetMetCount = activations.filter((a) => a.targetMet).length;
+      const outcomes = await db.select().from(activationOutcomes).where(eq45(activationOutcomes.organizationId, orgId));
+      const actualCostTotal = outcomes.reduce((sum, o) => sum + parseFloat(o.actualCost || "0"), 0);
+      const outcomeBreakdown = {
+        contained: outcomes.filter((o) => o.outcomeClassification === "contained").length,
+        boardNotified: outcomes.filter((o) => o.outcomeClassification === "board_notified").length,
+        regulatoryFiling: outcomes.filter((o) => o.outcomeClassification === "regulatory_filing").length,
+        escalated: outcomes.filter((o) => o.outcomeClassification === "escalated").length,
+        unclassified: outcomes.filter((o) => !o.outcomeClassification).length
+      };
       res.json({
         activationCount: activations.length,
         completedCount: completed.length,
@@ -49728,7 +49772,9 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         minutesSavedPerEvent,
         estimatedValuePreservedMillions: estimatedValuePreserved,
         targetMetRate: activations.length ? Math.round(targetMetCount / activations.length * 100) : 0,
-        avgResponseVsBenchmark: industryBenchmark > 0 ? Math.round((1 - avgMinutes / industryBenchmark) * 100) : 0
+        avgResponseVsBenchmark: industryBenchmark > 0 ? Math.round((1 - avgMinutes / industryBenchmark) * 100) : 0,
+        actualCostTotal: Math.round(actualCostTotal),
+        outcomeBreakdown
       });
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -49750,6 +49796,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
           targetMet: a.targetMet,
           minutesSaved,
           estimatedValueM: Math.round(minutesSaved * 3472 / 1e6 * 10) / 10,
+          actualCost: outcome?.actualCost ? parseFloat(outcome.actualCost) : null,
+          outcomeClassification: outcome?.outcomeClassification || null,
           aiSummary: outcome?.aiSummary || null
         };
       });
