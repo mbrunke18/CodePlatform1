@@ -34,6 +34,7 @@ function useNavLogoHeight() {
 }
 
 const SEARCH_ITEMS = [
+  { label: 'Getting Started — Go-Live Checklist', path: '/getting-started', category: 'Setup', icon: Rocket },
   { label: 'Mission Control', path: '/mission-control', category: 'Platform', icon: Compass },
   { label: 'Command Tower', path: '/command-tower', category: 'Platform', icon: Radio },
   { label: 'Execution Workspace', path: '/workspace', category: 'Platform', icon: Layers },
@@ -141,6 +142,7 @@ export default function StandardNav() {
     {
       heading: "Inside the Platform",
       links: [
+        { label: "Getting Started", path: "/getting-started", icon: Rocket, description: "Your go-live checklist — complete all 4 phases and track your setup progress in real time", featured: true },
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
         { label: "Onboarding Guide", path: "/onboarding-guide", icon: BookOpen, description: "Step-by-step guide for new pilot customers — platform map, quick start, and first 30 days", featured: true },

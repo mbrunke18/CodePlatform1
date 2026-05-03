@@ -174,6 +174,7 @@ const ProtocolCustomization = lazy(() => import("./pages/ProtocolCustomization")
 const ProtocolCustomize = lazy(() => import("./pages/ProtocolCustomize"));
 const SuccessMetricsConfiguration = lazy(() => import("./pages/SuccessMetricsConfiguration"));
 const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
+const GettingStarted = lazy(() => import("./pages/GettingStarted"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const GuidedStart = lazy(() => import("./pages/GuidedStart"));
 const PeerReview = lazy(() => import("./pages/PeerReview"));
@@ -475,7 +476,8 @@ function Router() {
         <Route path="/magic-login" component={MagicLogin} />
         <Route path="/peer-review" component={PeerReview} />
         <Route path="/peer-review-report" component={PeerReviewReport} />
-        {renderRoutes(["/onboarding", "/setup"], OnboardingWizard)}
+        {renderRoutes(["/onboarding", "/setup", "/onboarding-wizard"], OnboardingWizard)}
+        <Route path="/getting-started" component={GettingStarted} />
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/begin" component={GuidedStart} />
         <Route path="/start" component={GuidedStart} />

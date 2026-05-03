@@ -1,0 +1,398 @@
+import { useQuery } from '@tanstack/react-query';
+import { useLocation } from 'wouter';
+import PageLayout from '@/components/layout/PageLayout';
+import {
+  CheckCircle2, Circle, ArrowRight, ChevronRight, AlertTriangle,
+  Building2, Users, Shield, Rocket, Globe, Phone, Mail, Clock,
+  DollarSign, Target, Zap, Radio, BookOpen, ClipboardList, Lock,
+} from 'lucide-react';
+
+const NAVY = "#0A0F2E";
+const GOLD = "#C9A84C";
+const TEAL = "#2B8A6E";
+const OFF = "#F8F7F4";
+const BORDER = "#E8E4DC";
+const MUTED = "#6B7280";
+const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+
+function Check({ done, partial }: { done: boolean; partial?: boolean }) {
+  if (done) return <CheckCircle2 size={16} color={TEAL} style={{ flexShrink: 0 }} />;
+  if (partial) return <AlertTriangle size={16} color={GOLD} style={{ flexShrink: 0 }} />;
+  return <Circle size={16} color="#D1D5DB" style={{ flexShrink: 0 }} />;
+}
+
+function PhaseBar({ pct }: { pct: number }) {
+  return (
+    <div style={{ height: 3, background: BORDER, borderRadius: 0, overflow: 'hidden', marginBottom: 20 }}>
+      <div style={{ height: '100%', width: `${pct}%`, background: pct === 100 ? TEAL : GOLD, transition: 'width 0.5s ease' }} />
+    </div>
+  );
+}
+
+function Item({ done, label, sub, href, partial }: { done: boolean; label: string; sub?: string; href?: string; partial?: boolean }) {
+  const [, nav] = useLocation();
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start', padding: '10px 0', borderBottom: `1px solid ${BORDER}` }}>
+      <Check done={done} partial={partial} />
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: done ? MUTED : NAVY, textDecoration: done ? 'none' : 'none' }}>{label}</div>
+        {sub && <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{sub}</div>}
+      </div>
+      {!done && href && (
+        <button onClick={() => nav(href)} style={{ fontSize: 11, fontWeight: 700, color: GOLD, background: 'none', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 4 }}>
+          Fix this <ChevronRight size={12} />
+        </button>
+      )}
+      {done && <div style={{ fontSize: 11, fontWeight: 700, color: TEAL }}>Done</div>}
+    </div>
+  );
+}
+
+function PhaseCard({
+  num, title, timing, doing, score, children, cta, ctaHref, locked,
+}: {
+  num: string; title: string; timing: string; doing: string; score: number;
+  children: React.ReactNode; cta?: string; ctaHref?: string; locked?: boolean;
+}) {
+  const [, nav] = useLocation();
+  const isComplete = score === 100;
+  return (
+    <div style={{
+      background: '#fff', border: `1px solid ${BORDER}`, borderLeft: `4px solid ${isComplete ? TEAL : score > 0 ? GOLD : '#E5E7EB'}`,
+      marginBottom: 16, opacity: locked ? 0.55 : 1,
+    }}>
+      <div style={{ padding: '24px 28px 8px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16 }}>
+        <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+          <div style={{
+            width: 40, height: 40, background: isComplete ? TEAL : score > 0 ? `rgba(201,168,76,0.12)` : OFF,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+          }}>
+            {isComplete
+              ? <CheckCircle2 size={20} color="#fff" />
+              : locked ? <Lock size={16} color={MUTED} />
+              : <span style={{ ...CG, fontSize: 20, fontWeight: 600, color: score > 0 ? GOLD : '#9CA3AF' }}>{num}</span>
+            }
+          </div>
+          <div>
+            <div style={{ fontSize: 15, fontWeight: 700, color: NAVY }}>{title}</div>
+            <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>{timing} · {doing}</div>
+          </div>
+        </div>
+        <div style={{ textAlign: 'right', flexShrink: 0 }}>
+          <div style={{ fontSize: 22, fontWeight: 700, color: isComplete ? TEAL : score > 0 ? GOLD : '#D1D5DB', ...CG }}>{score}%</div>
+          <div style={{ fontSize: 10, color: MUTED, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Complete</div>
+        </div>
+      </div>
+      <div style={{ padding: '4px 28px 20px' }}>
+        <PhaseBar pct={score} />
+        {children}
+        {cta && ctaHref && !isComplete && !locked && (
+          <button onClick={() => nav(ctaHref)} style={{
+            marginTop: 16, display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px',
+            background: NAVY, color: '#fff', border: 'none', cursor: 'pointer',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+          }}>
+            {cta} <ArrowRight size={14} />
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function GettingStarted() {
+  const [, nav] = useLocation();
+
+  const { data: orgs } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
+  const { data: user } = useQuery<any>({ queryKey: ['/api/auth/user'] });
+  const { data: departments } = useQuery<any[]>({ queryKey: ['/api/config/departments'] });
+  const { data: escalationPolicies } = useQuery<any[]>({ queryKey: ['/api/config/escalation-policies'] });
+  const { data: channels } = useQuery<any[]>({ queryKey: ['/api/config/communication-channels'] });
+
+  const org = Array.isArray(orgs) ? orgs[0] : null;
+  const settings = org?.settings || {};
+  const ideaConfig = settings.ideaConfig || {};
+  const orgProfile = settings.orgProfile || {};
+  const playbookSettings = settings.playbooks || {};
+
+  const domainOwners: any[] = ideaConfig.domainOwners || [];
+  const ownersWithName = domainOwners.filter((d: any) => d.owner?.trim());
+  const ownersWithEmail = domainOwners.filter((d: any) => d.email?.trim());
+  const ownersWithMobile = domainOwners.filter((d: any) => d.mobile?.trim());
+  const ownersWithBackup = domainOwners.filter((d: any) => d.backup?.trim());
+  const protocolsSelected: string[] = playbookSettings.selected || [];
+  const deptCount = (departments || []).length;
+  const escalationCount = (escalationPolicies || []).length;
+  const channelCount = (channels || []).length;
+
+  const testDriveComplete = typeof window !== 'undefined' && !!localStorage.getItem('vm_test_drive_completed');
+  const drillComplete = typeof window !== 'undefined' && !!localStorage.getItem('vm_drill_completed');
+
+  const c = {
+    // Phase 1 — Foundation
+    companyName: !!org?.name,
+    industry: !!org?.industry,
+    employeeCount: !!org?.size,
+    companyType: !!orgProfile.companyType,
+    primaryMarkets: (orgProfile.primaryMarkets || []).length > 0,
+    executiveSponsor: !!ideaConfig.executiveSponsor?.trim(),
+    pmoContact: !!ideaConfig.pmoContact?.trim(),
+    domainOwnersNamed: ownersWithName.length >= 5,
+    domainOwnerEmails: ownersWithEmail.length >= 4,
+    domainOwnerMobiles: ownersWithMobile.length >= 3,
+    backupOwners: ownersWithBackup.length >= 3,
+    protocolsSelected: protocolsSelected.length >= 3,
+    executionTarget: !!ideaConfig.responseTarget,
+    budgetThreshold: !!ideaConfig.budgetThreshold,
+    approvalConfig: ideaConfig.approvalRequired !== undefined,
+    // Phase 2 — Org Structure
+    departments3: deptCount >= 3,
+    stakeholders: false,
+    escalation: escalationCount >= 1,
+    channels: channelCount >= 1,
+    channels2: channelCount >= 2,
+    // Phase 3 — Protocol Readiness
+    signalMonitoring: true,
+    protocolReviewed: protocolsSelected.length > 0,
+    riskThresholdsSet: !!ideaConfig.budgetThreshold,
+    // Phase 4 — Validation
+    testDrive: testDriveComplete,
+    drill: drillComplete,
+    teamInvited: false,
+  };
+
+  const p1Items = ['companyName', 'industry', 'employeeCount', 'companyType', 'primaryMarkets', 'executiveSponsor', 'pmoContact', 'domainOwnersNamed', 'domainOwnerEmails', 'domainOwnerMobiles', 'backupOwners', 'protocolsSelected', 'executionTarget', 'budgetThreshold', 'approvalConfig'];
+  const p2Items = ['departments3', 'escalation', 'channels'];
+  const p3Items = ['signalMonitoring', 'protocolReviewed', 'riskThresholdsSet'];
+  const p4Items = ['testDrive', 'drill'];
+
+  const score = (keys: string[]) => Math.round(keys.filter(k => c[k as keyof typeof c]).length / keys.length * 100);
+  const p1 = score(p1Items);
+  const p2 = score(p2Items);
+  const p3 = score(p3Items);
+  const p4 = score(p4Items);
+
+  const criticalKeys = ['companyName', 'industry', 'executiveSponsor', 'domainOwnersNamed', 'domainOwnerEmails', 'protocolsSelected', 'departments3', 'escalation', 'channels', 'signalMonitoring'];
+  const overallScore = Math.round(criticalKeys.filter(k => c[k as keyof typeof c]).length / criticalKeys.length * 100);
+  const isLive = overallScore >= 90;
+
+  const orgName = org?.name || user?.firstName ? `${user?.firstName}'s Org` : 'Your Organization';
+
+  return (
+    <PageLayout>
+      {/* Header */}
+      <div style={{ background: NAVY, padding: '48px 48px 40px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)`, backgroundSize: '44px 44px' }} />
+        <div style={{ position: 'absolute', top: -100, right: -60, width: 500, height: 500, background: 'radial-gradient(ellipse,rgba(43,138,110,0.1) 0%,transparent 65%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100, margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 32 }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 24, height: 2, background: 'rgba(255,255,255,0.2)' }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Readiness OS — Setup</span>
+              </div>
+              <h1 style={{ ...CG, fontSize: 'clamp(32px,4vw,52px)', fontWeight: 600, color: '#fff', lineHeight: 1.05, marginBottom: 10 }}>
+                {isLive ? <>You're <em style={{ color: TEAL }}>Live.</em></> : <>Your Path to <em style={{ color: GOLD }}>Live Execution.</em></>}
+              </h1>
+              <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', maxWidth: 540, lineHeight: 1.75 }}>
+                {isLive
+                  ? `${orgName} is fully configured. When a trigger fires, execution begins in 12 minutes.`
+                  : 'Complete the four phases below to configure Readiness OS for your organization. Every field you fill unlocks faster, more precise execution when a trigger fires.'}
+              </p>
+            </div>
+
+            {/* Score ring */}
+            <div style={{ flexShrink: 0, textAlign: 'center', padding: '16px 28px', border: `1px solid ${isLive ? 'rgba(43,138,110,0.4)' : 'rgba(201,168,76,0.3)'}`, background: isLive ? 'rgba(43,138,110,0.1)' : 'rgba(201,168,76,0.06)' }}>
+              <div style={{ ...CG, fontSize: 54, fontWeight: 700, color: isLive ? '#4ADE80' : GOLD, lineHeight: 1 }}>{overallScore}%</div>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginTop: 4 }}>Go-Live Readiness</div>
+              {isLive && (
+                <div style={{ marginTop: 10, fontSize: 11, fontWeight: 700, color: '#4ADE80', display: 'flex', alignItems: 'center', gap: 5, justifyContent: 'center' }}>
+                  <div style={{ width: 6, height: 6, background: '#4ADE80', borderRadius: '50%' }} />
+                  SYSTEM ACTIVE
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Phase progress strip */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 1, marginTop: 40, background: 'rgba(255,255,255,0.06)' }}>
+            {[
+              { label: 'Phase 1', title: 'Foundation', pct: p1 },
+              { label: 'Phase 2', title: 'Org Structure', pct: p2 },
+              { label: 'Phase 3', title: 'Readiness', pct: p3 },
+              { label: 'Phase 4', title: 'Validation', pct: p4 },
+            ].map((ph, i) => (
+              <div key={i} style={{ padding: '14px 20px', background: 'rgba(10,15,46,0.4)' }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 4 }}>{ph.label}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{ph.title}</div>
+                <div style={{ height: 4, background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${ph.pct}%`, background: ph.pct === 100 ? TEAL : GOLD }} />
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: ph.pct === 100 ? '#4ADE80' : GOLD, marginTop: 4 }}>{ph.pct}%</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div style={{ background: OFF, minHeight: '100vh' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 48px 80px', display: 'grid', gridTemplateColumns: '1fr 320px', gap: 32, alignItems: 'start' }}>
+
+          {/* Left: Phase checklists */}
+          <div>
+
+            {/* PHASE 1 */}
+            <PhaseCard num="01" title="Foundation" timing="~20 minutes" doing="You complete this" score={p1} cta="Open Setup Wizard" ctaHref="/onboarding-wizard">
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Organization Profile</div>
+              <Item done={c.companyName} label="Company name" sub={org?.name || undefined} href="/onboarding-wizard" />
+              <Item done={c.industry} label="Industry vertical" sub={org?.industry || undefined} href="/onboarding-wizard" />
+              <Item done={c.employeeCount} label="Employee count" sub={org?.size ? `${org.size.toLocaleString()} employees` : undefined} href="/onboarding-wizard" />
+              <Item done={c.companyType} label="Company type — Public or Private" sub="Determines disclosure and regulatory obligations" href="/onboarding-wizard" />
+              <Item done={c.primaryMarkets} label="Primary markets and regions" sub="Determines which regulatory bodies and triggers apply" href="/onboarding-wizard" />
+
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Decision Rights — IDEA Framework</div>
+              <Item done={c.executiveSponsor} label="Executive sponsor named" sub={ideaConfig.executiveSponsor || 'The C-suite owner of Readiness OS outcomes'} href="/onboarding-wizard" />
+              <Item done={c.pmoContact} label="PMO / program lead named" sub={ideaConfig.pmoContact || 'The operational owner of day-to-day readiness'} href="/onboarding-wizard" />
+              <Item done={c.domainOwnersNamed} label={`Domain owners named — ${ownersWithName.length} of 6 domains`} sub="Who owns each response domain when a trigger fires" href="/onboarding-wizard" partial={ownersWithName.length > 0 && ownersWithName.length < 6} />
+              <Item done={c.domainOwnerEmails} label={`Domain owner emails — ${ownersWithEmail.length} of 6`} sub="Required to reach owners within the 12-minute window" href="/onboarding-wizard" partial={ownersWithEmail.length > 0 && ownersWithEmail.length < 6} />
+              <Item done={c.domainOwnerMobiles} label={`Domain owner mobile numbers — ${ownersWithMobile.length} of 6`} sub="Email alone is too slow — mobile is the 12-minute channel" href="/onboarding-wizard" partial={ownersWithMobile.length > 0 && ownersWithMobile.length < 6} />
+              <Item done={c.backupOwners} label={`Backup owners designated — ${ownersWithBackup.length} of 6`} sub="If a domain owner is unavailable when the trigger fires" href="/onboarding-wizard" partial={ownersWithBackup.length > 0 && ownersWithBackup.length < 6} />
+
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Priority Configuration</div>
+              <Item done={c.protocolsSelected} label={`Priority protocols selected — ${protocolsSelected.length} of 9 domains`} sub="Pins your highest-risk scenarios to the top of your console" href="/onboarding-wizard" partial={protocolsSelected.length > 0 && protocolsSelected.length < 3} />
+              <Item done={c.executionTarget} label="Target execution time set" sub={ideaConfig.responseTarget ? `${ideaConfig.responseTarget} minutes trigger-to-execution` : 'Default is 12 minutes'} href="/onboarding-wizard" />
+              <Item done={c.budgetThreshold} label="Pre-approved budget threshold" sub={ideaConfig.budgetThreshold ? `$${parseInt(ideaConfig.budgetThreshold).toLocaleString()} per activation — no additional approval required` : 'Eliminates budget delays during activation'} href="/onboarding-wizard" />
+              <Item done={c.approvalConfig} label="Approval requirements configured" sub="Human approval before every activation — AI recommends, executives authorize" href="/onboarding-wizard" />
+            </PhaseCard>
+
+            {/* PHASE 2 */}
+            <PhaseCard num="02" title="Organization Structure" timing="30–60 minutes" doing="You + your team" score={p2} cta="Open Organization Setup" ctaHref="/organization-setup">
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Team Structure</div>
+              <Item done={c.departments3} label={`Departments configured — ${deptCount} added`} sub="Minimum 3 departments for routing and task assignment" href="/organization-setup" partial={deptCount > 0 && deptCount < 3} />
+              <Item done={c.stakeholders} label="Executives added with full contact details" sub="Name, email, mobile, role, approval limit, and notification preferences" href="/organization-setup" />
+
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Response Governance</div>
+              <Item done={c.escalation} label={`Escalation policy configured — ${escalationCount} policy${escalationCount !== 1 ? 'ies' : ''}`} sub="What happens if a domain owner doesn't respond in time" href="/organization-setup" />
+              <Item done={c.channels} label={`Communication channels connected — ${channelCount} channel${channelCount !== 1 ? 's' : ''}`} sub="Email, Slack, MS Teams, or webhook — how the system reaches your team" href="/organization-setup" partial={channelCount === 1} />
+              <Item done={c.channels2} label="At least 2 channels configured" sub="Redundancy ensures delivery when primary channel is unavailable" href="/organization-setup" partial={channelCount === 1} />
+            </PhaseCard>
+
+            {/* PHASE 3 */}
+            <PhaseCard num="03" title="Protocol Readiness" timing="Ongoing" doing="System + your team" score={p3}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Signal Monitoring</div>
+              <Item done={c.signalMonitoring} label="Signal monitoring active" sub="221 triggers scanned across 8 sources every 15 minutes — always on" />
+
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, margin: '20px 0 8px' }}>Protocol Configuration</div>
+              <Item done={c.protocolReviewed} label={`Priority protocols selected — ${protocolsSelected.length} domains`} sub="Your top scenarios are pinned and ready" href="/playbooks" />
+              <Item done={c.riskThresholdsSet} label="Budget authority defined per activation" sub="Eliminates the most common cause of execution delay — funding approval" href="/onboarding-wizard" />
+            </PhaseCard>
+
+            {/* PHASE 4 */}
+            <PhaseCard num="04" title="Validation" timing="Week 3–4" doing="Your executive team" score={p4} locked={p1 < 50 || p2 < 67}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: MUTED, marginBottom: 8 }}>Proof of Readiness</div>
+              <Item done={c.testDrive} label="12-Minute Test Drive completed" sub="Runs a live scenario end-to-end — verifies timing, routing, and task assignment" href="/12-minute-experience" />
+              <Item done={c.drill} label="Practice drill completed" sub="Full team activation simulation — reveals gaps before a real trigger fires" href="/practice-drills" />
+              <Item done={c.teamInvited} label="Executive team invited to platform" sub="Every domain owner needs platform access before you go live" href="/settings" />
+            </PhaseCard>
+          </div>
+
+          {/* Right rail */}
+          <div style={{ position: 'sticky', top: 24 }}>
+
+            {/* Go Live block */}
+            <div style={{ background: isLive ? TEAL : NAVY, padding: '24px 22px', marginBottom: 16 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 8 }}>
+                {isLive ? 'Status' : 'Go-Live Readiness'}
+              </div>
+              <div style={{ ...CG, fontSize: 28, fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: 8 }}>
+                {isLive ? 'Live and monitoring.' : `${10 - criticalKeys.filter(k => c[k as keyof typeof c]).length} items to complete.`}
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65, marginBottom: 20 }}>
+                {isLive
+                  ? 'Readiness OS is configured and monitoring for your priority triggers. Execution will begin in 12 minutes when a trigger fires.'
+                  : 'Complete the critical items across all four phases to activate the 12-minute execution guarantee.'}
+              </div>
+              {!isLive && (
+                <button onClick={() => nav('/onboarding-wizard')} style={{ width: '100%', padding: '12px 0', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  Continue Setup <ArrowRight size={14} />
+                </button>
+              )}
+            </div>
+
+            {/* Critical missing items */}
+            {!isLive && (
+              <div style={{ background: '#fff', border: `1px solid ${BORDER}`, padding: '20px 20px', marginBottom: 16 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Critical Missing Items</div>
+                {[
+                  { key: 'domainOwnerEmails', label: 'Domain owner emails', href: '/onboarding-wizard', icon: Mail },
+                  { key: 'domainOwnerMobiles', label: 'Domain owner mobile numbers', href: '/onboarding-wizard', icon: Phone },
+                  { key: 'departments3', label: '3+ departments configured', href: '/organization-setup', icon: Building2 },
+                  { key: 'escalation', label: 'Escalation policy set', href: '/organization-setup', icon: Shield },
+                  { key: 'channels', label: 'Communication channel connected', href: '/organization-setup', icon: Radio },
+                  { key: 'companyType', label: 'Company type (public/private)', href: '/onboarding-wizard', icon: Building2 },
+                  { key: 'primaryMarkets', label: 'Primary markets/regions', href: '/onboarding-wizard', icon: Globe },
+                ].filter(item => !c[item.key as keyof typeof c]).slice(0, 5).map(item => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.key} onClick={() => nav(item.href)} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: `1px solid ${BORDER}`, cursor: 'pointer' }}>
+                      <Icon size={13} color={GOLD} />
+                      <span style={{ fontSize: 12, color: NAVY, fontWeight: 500, flex: 1 }}>{item.label}</span>
+                      <ChevronRight size={12} color={MUTED} />
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* What's already working */}
+            <div style={{ background: '#fff', border: `1px solid ${BORDER}`, padding: '20px 20px', marginBottom: 16 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Already Working</div>
+              {[
+                { label: '170 Readiness Protocols', sub: 'Pre-staged, ready to activate', icon: ClipboardList },
+                { label: '221 triggers monitored', sub: 'Scanning every 15 minutes', icon: Radio },
+                { label: 'Signal scoring active', sub: 'LOW / MEDIUM / HIGH risk levels', icon: Zap },
+                { label: 'Executive approval flow', sub: 'No protocol activates without sign-off', icon: Shield },
+              ].map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', padding: '8px 0', borderBottom: i < 3 ? `1px solid ${BORDER}` : 'none' }}>
+                    <div style={{ width: 26, height: 26, background: `rgba(43,138,110,0.1)`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Icon size={12} color={TEAL} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 12, fontWeight: 600, color: NAVY }}>{item.label}</div>
+                      <div style={{ fontSize: 10, color: MUTED }}>{item.sub}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Quick links */}
+            <div style={{ background: '#fff', border: `1px solid ${BORDER}`, padding: '20px 20px' }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: NAVY, marginBottom: 14 }}>Quick Actions</div>
+              {[
+                { label: 'Setup Wizard', href: '/onboarding-wizard', icon: Target },
+                { label: 'Organization Setup', href: '/organization-setup', icon: Building2 },
+                { label: 'Protocol Library', href: '/playbooks', icon: ClipboardList },
+                { label: 'Protocol Builder', href: '/protocol-builder', icon: BookOpen },
+                { label: '12-Minute Test Drive', href: '/12-minute-experience', icon: Rocket },
+                { label: 'Onboarding Guide', href: '/onboarding-guide', icon: BookOpen },
+              ].map((link, i) => {
+                const Icon = link.icon;
+                return (
+                  <button key={i} onClick={() => nav(link.href)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', border: 'none', background: 'transparent', cursor: 'pointer', borderBottom: i < 5 ? `1px solid ${BORDER}` : 'none', textAlign: 'left' }}>
+                    <Icon size={13} color={TEAL} />
+                    <span style={{ fontSize: 12, fontWeight: 500, color: NAVY }}>{link.label}</span>
+                    <ChevronRight size={11} color={MUTED} style={{ marginLeft: 'auto' }} />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </PageLayout>
+  );
+}

@@ -67,6 +67,8 @@ export default function OnboardingWizard() {
     companyName: '',
     industry: '',
     employeeCount: '',
+    companyType: '' as '' | 'public' | 'private',
+    primaryMarkets: [] as string[],
     primaryContact: '',
     primaryEmail: '',
     primaryRole: '',
@@ -77,7 +79,7 @@ export default function OnboardingWizard() {
     executiveSponsor: '',
     pmoContact: '',
     responseTarget: '12',
-    domainOwners: DOMAIN_OWNERS.map(d => ({ domain: d.domain, owner: '' })),
+    domainOwners: DOMAIN_OWNERS.map(d => ({ domain: d.domain, owner: '', email: '', mobile: '', backup: '' })),
     approvalRequired: true,
     budgetThreshold: '100000',
   });
@@ -94,7 +96,17 @@ export default function OnboardingWizard() {
         apiRequest('PATCH', '/api/organizations/current', {
           industry: orgData.industry,
           size: parseInt(orgData.employeeCount) || 0,
-          settings: { playbooks: playbookData, ideaConfig: ideaData },
+          settings: {
+            playbooks: playbookData,
+            ideaConfig: ideaData,
+            orgProfile: {
+              companyType: orgData.companyType,
+              primaryMarkets: orgData.primaryMarkets,
+              primaryContact: orgData.primaryContact,
+              primaryEmail: orgData.primaryEmail,
+              primaryRole: orgData.primaryRole,
+            },
+          },
         }).catch(() => {}),
         ...orgData.departments.map(dept =>
           apiRequest('POST', '/api/config/departments', { name: dept, description: `${dept} department` }).catch(() => {})
@@ -268,6 +280,36 @@ export default function OnboardingWizard() {
               </Field>
             </div>
 
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 32 }}>
+              <div>
+                <Label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, display: "block", marginBottom: 12 }}>Company Type</Label>
+                <div style={{ display: "flex", gap: 1 }}>
+                  {(['public', 'private'] as const).map(type => (
+                    <button key={type} onClick={() => setOrgData({ ...orgData, companyType: type })}
+                      style={{ flex: 1, padding: "11px 0", fontSize: 12, fontWeight: 700, cursor: "pointer", border: `1px solid ${orgData.companyType === type ? NAVY : BORDER}`, background: orgData.companyType === type ? NAVY : "#fff", color: orgData.companyType === type ? "#fff" : MUTED, textTransform: "capitalize", letterSpacing: "0.05em" }}>
+                      {type === 'public' ? 'Publicly Traded' : 'Privately Held'}
+                    </button>
+                  ))}
+                </div>
+                <p style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Determines disclosure obligations and regulatory scope</p>
+              </div>
+              <div>
+                <Label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, display: "block", marginBottom: 12 }}>Primary Markets</Label>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {['North America', 'EMEA', 'APAC', 'Latin America', 'Global'].map(market => {
+                    const active = orgData.primaryMarkets.includes(market);
+                    return (
+                      <button key={market} onClick={() => setOrgData({ ...orgData, primaryMarkets: active ? orgData.primaryMarkets.filter(m => m !== market) : [...orgData.primaryMarkets, market] })}
+                        style={{ padding: "6px 12px", fontSize: 11, fontWeight: 600, cursor: "pointer", border: `1px solid ${active ? NAVY : BORDER}`, background: active ? NAVY : "#fff", color: active ? "#fff" : MUTED }}>
+                        {market}
+                      </button>
+                    );
+                  })}
+                </div>
+                <p style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Determines which regulatory bodies and trigger patterns apply</p>
+              </div>
+            </div>
+
             <div style={{ marginBottom: 32 }}>
               <Label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, display: "block", marginBottom: 12 }}>Key Departments in Scope</Label>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -311,29 +353,54 @@ export default function OnboardingWizard() {
             </div>
 
             <div style={{ marginBottom: 32 }}>
-              <Label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY, display: "block", marginBottom: 16 }}>Domain Ownership — Who owns each response domain?</Label>
-              <div style={{ display: "flex", flexDirection: "column", gap: 1, background: BORDER }}>
-                {DOMAIN_OWNERS.map((dom, i) => (
-                  <div key={dom.domain} style={{ background: "#fff", display: "grid", gridTemplateColumns: "200px 1fr", gap: 0 }}>
-                    <div style={{ padding: "14px 20px", background: OFF, borderRight: `1px solid ${BORDER}`, display: "flex", alignItems: "center" }}>
-                      <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{dom.domain}</span>
-                    </div>
-                    <div style={{ padding: "10px 16px" }}>
-                      <Input
-                        value={ideaData.domainOwners[i].owner}
-                        onChange={e => {
-                          const updated = [...ideaData.domainOwners];
-                          updated[i] = { ...updated[i], owner: e.target.value };
-                          setIdeaData({ ...ideaData, domainOwners: updated });
-                        }}
-                        placeholder={dom.placeholder}
-                        className="bg-transparent border-0 text-[#0A0F2E] rounded-none h-8 p-0 focus-visible:ring-0 placeholder:text-[#9CA3AF] text-sm"
-                      />
-                    </div>
-                  </div>
-                ))}
+              <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 10 }}>
+                <Label style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: NAVY }}>Domain Ownership — 12-Minute Contact Details Required</Label>
+                <span style={{ fontSize: 10, color: MUTED }}>Name · Email · Mobile · Backup</span>
               </div>
-              <p style={{ fontSize: 11, color: MUTED, marginTop: 8 }}>Fields can be updated and refined during your Week 1-2 integration sessions. Rough entries are fine for now.</p>
+              <div style={{ padding: "10px 16px", background: `rgba(201,168,76,0.07)`, border: `1px solid rgba(201,168,76,0.2)`, marginBottom: 12, fontSize: 12, color: NAVY, lineHeight: 1.6 }}>
+                <strong style={{ fontWeight: 700 }}>Critical:</strong> Email alone cannot reach an executive in 12 minutes. Mobile numbers are required for the execution guarantee. Backup owners cover the primary when unavailable.
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 1, background: BORDER }}>
+                {DOMAIN_OWNERS.map((dom, i) => {
+                  const owner = ideaData.domainOwners[i];
+                  const update = (field: string, val: string) => {
+                    const updated = [...ideaData.domainOwners];
+                    updated[i] = { ...updated[i], [field]: val };
+                    setIdeaData({ ...ideaData, domainOwners: updated });
+                  };
+                  return (
+                    <div key={dom.domain} style={{ background: "#fff" }}>
+                      <div style={{ padding: "10px 16px 6px", background: OFF, borderBottom: `1px solid ${BORDER}`, display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: NAVY, textTransform: "uppercase", letterSpacing: "0.1em" }}>{dom.domain}</span>
+                        {owner.email && owner.mobile && <span style={{ fontSize: 10, color: TEAL, fontWeight: 700 }}>✓ Ready</span>}
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 1, background: BORDER }}>
+                        <div style={{ background: "#fff", padding: "8px 12px" }}>
+                          <div style={{ fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>Owner Name & Title</div>
+                          <Input value={owner.owner} onChange={e => update('owner', e.target.value)} placeholder={dom.placeholder}
+                            className="bg-transparent border-0 text-[#0A0F2E] rounded-none h-7 p-0 focus-visible:ring-0 placeholder:text-[#9CA3AF] text-xs" />
+                        </div>
+                        <div style={{ background: "#fff", padding: "8px 12px" }}>
+                          <div style={{ fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>Email Address</div>
+                          <Input type="email" value={owner.email} onChange={e => update('email', e.target.value)} placeholder="name@company.com"
+                            className="bg-transparent border-0 text-[#0A0F2E] rounded-none h-7 p-0 focus-visible:ring-0 placeholder:text-[#9CA3AF] text-xs" />
+                        </div>
+                        <div style={{ background: "#fff", padding: "8px 12px" }}>
+                          <div style={{ fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>Mobile (direct)</div>
+                          <Input type="tel" value={owner.mobile} onChange={e => update('mobile', e.target.value)} placeholder="+1 (555) 000-0000"
+                            className="bg-transparent border-0 text-[#0A0F2E] rounded-none h-7 p-0 focus-visible:ring-0 placeholder:text-[#9CA3AF] text-xs" />
+                        </div>
+                        <div style={{ background: "#fff", padding: "8px 12px" }}>
+                          <div style={{ fontSize: 9, fontWeight: 700, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>Backup Owner</div>
+                          <Input value={owner.backup} onChange={e => update('backup', e.target.value)} placeholder="Name, Title"
+                            className="bg-transparent border-0 text-[#0A0F2E] rounded-none h-7 p-0 focus-visible:ring-0 placeholder:text-[#9CA3AF] text-xs" />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <p style={{ fontSize: 11, color: MUTED, marginTop: 8 }}>All fields can be updated during your Week 1–2 integration sessions. Mobile numbers are the single most important field for the 12-minute promise.</p>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 16 }}>
