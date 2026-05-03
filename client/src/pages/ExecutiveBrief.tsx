@@ -244,7 +244,7 @@ export default function ExecutiveBrief() {
                   30 days compressed<br />to <em style={{ color: GOLD }}>12 minutes.</em>
                 </h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, marginBottom: 20 }}>
-                  This is not a speed advantage. It is a structural change in how enterprises mobilize. In a Fortune 1000, when a strategic trigger fires, the organization spends weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Readiness OS compresses that entire cycle to 12 minutes.
+                  This is not a timing improvement. It is a structural change in how enterprises mobilize. In a Fortune 1000, when a strategic trigger fires, the organization spends weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Readiness OS compresses that entire cycle to 12 minutes.
                 </p>
                 <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontStyle: "italic", color: GOLD, lineHeight: 1.55, borderLeft: `3px solid ${GOLD}`, paddingLeft: 16, margin: 0 }}>
                   "The twelve minutes is not about speed. It is about clarity built ahead of time."

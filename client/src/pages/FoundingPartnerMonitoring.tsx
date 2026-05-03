@@ -18,10 +18,10 @@ import { useQuery } from "@tanstack/react-query";
 export default function FoundingPartnerMonitoring() {
   useEffect(() => {
     updatePageMetadata({
-      title: "Pilot Program Monitoring - Readiness OS | System Health Dashboard",
-      description: "Real-time monitoring dashboard for Readiness OS Early Access Program. Track system health, pilot company activity, and platform performance.",
-      ogTitle: "Readiness OS Pilot Monitoring Dashboard",
-      ogDescription: "Monitor system health and pilot program success metrics in real-time.",
+      title: "Founding Partner Monitoring - Readiness OS | System Health Dashboard",
+      description: "Real-time monitoring dashboard for Readiness OS Founding Partner Program. Track system health, partner company activity, and platform performance.",
+      ogTitle: "Readiness OS Founding Partner Monitoring Dashboard",
+      ogDescription: "Monitor system health and Founding Partner Program success metrics in real-time.",
     });
   }, []);
 
@@ -102,7 +102,7 @@ export default function FoundingPartnerMonitoring() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-2">
             <h1 className="text-4xl font-bold text-[#0A0F2E] dark:text-white" data-testid="heading-pilot-monitoring">
-              Pilot Program Monitoring
+              Founding Partner Monitoring
             </h1>
             <Badge className={`text-base px-4 py-2 ${
               systemHealth.status === 'healthy' 

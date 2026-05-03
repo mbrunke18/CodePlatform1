@@ -205,7 +205,7 @@ export default function TrialAccess() {
 
               <p className="text-xs text-center" style={{ color: "#9CA3AF" }}>
                 After your trial, you can apply for the full{" "}
-                <a href="/pilot-program" style={{ color: GOLD }}>Pilot Program</a>.
+                <a href="/pilot-program" style={{ color: GOLD }}>Founding Partner Program</a>.
               </p>
             </form>
           </Form>

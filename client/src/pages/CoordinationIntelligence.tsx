@@ -382,7 +382,7 @@ export default function CoordinationIntelligence() {
                     <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: GOLD }}>The 3,600× Head Start</span>
                   </div>
                   <p style={{ fontSize: 12, color: MUTED, lineHeight: 1.65 }}>
-                    When a strategic trigger fires, competitors spend <strong style={{ color: NAVY }}>30 days</strong> figuring out who needs to be in the room. Your organization is already executing at <strong style={{ color: NAVY }}>minute 12</strong>. That is not a speed advantage. That is a structural head start.
+                    When a strategic trigger fires, competitors spend <strong style={{ color: NAVY }}>30 days</strong> figuring out who needs to be in the room. Your organization is already executing at <strong style={{ color: NAVY }}>minute 12</strong>. That is not a timing advantage. That is a 3,600× Execution Head Start.
                   </p>
                   <div style={{ marginTop: 12, paddingTop: 12, borderTop: `1px solid ${BORDER}`, display: 'flex', justifyContent: 'space-between' }}>
                     <div style={{ textAlign: 'center' }}>
