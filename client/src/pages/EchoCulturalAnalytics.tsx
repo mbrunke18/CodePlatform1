@@ -414,7 +414,7 @@ export default function EchoCulturalAnalytics() {
                         </div>
                       </div>
                       <div className="text-right shrink-0">
-                        <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#6B7280" }}>AI Confidence</div>
+                        <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: "#6B7280" }}>Signal Confidence</div>
                         <div className="text-2xl font-bold" style={{ color: GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{insight.confidence}%</div>
                       </div>
                     </div>

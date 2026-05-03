@@ -199,9 +199,9 @@ export default function GetStarted() {
               </button>
             </div>
 
-            {/* Pilot Program */}
+            {/* Founding Partner Program */}
             <div style={{ background: NAVY, padding: "40px 36px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 16 }}>Enterprise Pilot</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", marginBottom: 16 }}>Founding Partner Program</div>
               <h3 style={{ ...CG, fontSize: 26, fontWeight: 600, color: "#fff", marginBottom: 12 }}>Founding Partner Program</h3>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, marginBottom: 24 }}>
                 A structured 12-week engagement with dedicated support, custom Readiness Protocol configuration, integration setup, and executive reporting. For Fortune 1000 deployment.
@@ -238,7 +238,7 @@ export default function GetStarted() {
             The platform is waiting.
           </h2>
           <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.7, marginBottom: 32 }}>
-            Existing pilot customers can sign in to access your organization's platform. New to Readiness OS? Request pilot access below.
+            Founding Partners can sign in to access your organization's platform. New to Readiness OS? Apply for Founding Partner Access below.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
             <button

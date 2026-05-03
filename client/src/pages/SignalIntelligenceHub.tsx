@@ -407,7 +407,7 @@ export default function SignalIntelligenceHub() {
           <div style={{ background: "#0A0F2E", border: "1px solid #C9A84C", padding: 48, textAlign: "center", maxWidth: 600 }}>
             <h2 style={{ ...CG, color: GOLD, fontSize: 32, marginBottom: 16 }}>Signal Monitoring Active</h2>
             <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 32, lineHeight: 1.6 }}>
-              Real-time intelligence feeds are available to authenticated enterprise users. Sign in or request pilot access to connect your organization's signal layer.
+              Real-time intelligence feeds are available to authenticated enterprise users. Sign in or apply for Founding Partner Access to connect your organization's signal layer.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 

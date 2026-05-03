@@ -391,10 +391,10 @@ export default function NovaInnovations() {
                 <div style={{ position: "relative", zIndex: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                     <div style={{ width: 28, height: 2, background: GOLD }} />
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>AI Confidence Scoring</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD }}>Signal Confidence Scoring</span>
                   </div>
                   <h2 style={{ ...CG, fontWeight: 600, fontSize: 32, color: "#fff", marginBottom: 8 }}>Innovation Opportunity <em style={{ fontStyle: "italic", color: GOLD }}>Forecast</em></h2>
-                  <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 40, maxWidth: 560 }}>AI models trained on 847 enterprise innovation cycles assess each project's probability of achieving target ROI within the stated timeline.</p>
+                  <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", marginBottom: 40, maxWidth: 560 }}>Predictive models trained on 847 enterprise innovation cycles assess each project's probability of achieving target ROI within the stated timeline.</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {[
                       { project: "Automated Process Optimization", confidence: 92, horizon: "6-9 months", roi: "$8.2M", risk: "Low" },

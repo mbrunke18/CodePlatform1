@@ -389,7 +389,7 @@ export default function KeynoteDemo() {
               <div className="grid grid-cols-4 gap-6">
                 {[
                   { label: 'Category', value: signal?.signalCategory?.toUpperCase() || 'COMPETITIVE', icon: Crosshair, color: 'text-[#0A0F2E]' },
-                  { label: 'AI Confidence', value: `${signal?.aiConfidence || 94}%`, icon: Brain, color: 'text-[#C9A84C]' },
+                  { label: 'Signal Confidence', value: `${signal?.aiConfidence || 94}%`, icon: Brain, color: 'text-[#C9A84C]' },
                   { label: 'Revenue at Risk', value: signal?.costOfInaction?.revenueAtRisk || '$12.5M', icon: DollarSign, color: 'text-[#0A0F2E]' },
                   { label: 'Source', value: signal?.source || 'Market Intelligence', icon: Eye, color: 'text-[#2B8A6E]' },
                 ].map((item, i) => (
@@ -462,7 +462,7 @@ export default function KeynoteDemo() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="bg-[#0A0F2E] border border-white/10 p-8"
             >
-              <h3 className="text-sm font-bold text-white/60 uppercase tracking-widest mb-4">AI Confidence Score</h3>
+              <h3 className="text-sm font-bold text-white/60 uppercase tracking-widest mb-4">Signal Confidence Score</h3>
               <div className="flex items-end gap-4">
                 <div className="text-6xl font-bold text-[#C9A84C]" style={CG}>
                   <CountUp end={signal?.aiConfidence || 94} suffix="%" />

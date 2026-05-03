@@ -182,7 +182,7 @@ export default function AIIntelligence() {
                       <CheckCircle className="w-4 h-4 mt-0.5 text-[#2B8A6E] flex-shrink-0" />
                       <div className="flex-1">
                         <p className="text-sm text-gray-700">{insight}</p>
-                        <p className="text-xs text-gray-500 mt-1">AI Confidence: 95%</p>
+                        <p className="text-xs text-gray-500 mt-1">Signal Confidence: 95%</p>
                       </div>
                       <Clock className="w-3 h-3 text-gray-400" />
                     </div>

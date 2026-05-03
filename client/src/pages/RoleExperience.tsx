@@ -1483,7 +1483,7 @@ export default function RoleExperience() {
                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}
                   className="bg-white border border-[#C9A84C]/20 p-6"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Confidence</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Signal Confidence</h3>
                   <div className="flex items-end gap-4 mb-4">
                     <div className="text-5xl font-bold text-[#C9A84C]">94%</div>
                     <div className="text-sm text-gray-800 pb-2">recommendation confidence</div>

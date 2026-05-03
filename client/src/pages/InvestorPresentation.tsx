@@ -674,8 +674,8 @@ function InvestorPresentation() {
         </div>
         <div className="grid md:grid-cols-3 gap-4 max-w-5xl w-full mb-8">
           {[
-            { tier: 'Tier 1: Now', title: 'AI-Triggered Readiness Protocols', desc: 'External AI systems trigger Readiness Protocols automatically. 400+ connectors ready.', color: 'border-[#2B8A6E]/30', badge: 'bg-[#2B8A6E]/20 text-[#2B8A6E]' },
-            { tier: 'Tier 2: Next', title: 'AI-Assisted Coordination', desc: 'AI agents handle prep work—context, drafts, blocker detection. Humans decide.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
+            { tier: 'Tier 1: Now', title: 'Signal-Triggered Readiness Protocols', desc: 'External systems trigger Readiness Protocols automatically. 400+ connectors ready.', color: 'border-[#2B8A6E]/30', badge: 'bg-[#2B8A6E]/20 text-[#2B8A6E]' },
+            { tier: 'Tier 2: Next', title: 'System-Assisted Coordination', desc: 'Intelligent agents handle prep work—context, drafts, blocker detection. Executives decide.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
             { tier: 'Tier 3: Vision', title: 'Executive-Led AI Readiness Protocols', desc: 'AI monitors and stages. Executives authorize and lead. First platform built this way from the ground up.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
           ].map((t, i) => (
             <div key={i} className={`bg-white border ${t.color} p-5`}>

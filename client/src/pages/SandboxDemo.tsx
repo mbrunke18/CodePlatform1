@@ -735,7 +735,7 @@ export default function SandboxDemo() {
                 </div>
                 <div className="flex items-center justify-between p-3 bg-[#F8F7F4] border border-[#E8E4DC]">
                   <div>
-                    <Label className="text-sm font-bold text-[#0A0F2E]">AI-Assisted Drafting</Label>
+                    <Label className="text-sm font-bold text-[#0A0F2E]">System-Assisted Drafting</Label>
                     <p className="text-[10px] text-slate-500 font-medium">Auto-generate response documents</p>
                   </div>
                   <Switch

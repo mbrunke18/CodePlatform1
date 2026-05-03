@@ -269,7 +269,7 @@ export default function ProspectDemo() {
               {/* Confidence meter */}
               <div style={{ marginBottom: 28 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.08em" }}>AI Confidence Score</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.68)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Signal Confidence Score</span>
                   <span style={{ fontSize: 18, fontWeight: 700, color: confidence >= 90 ? TEAL : GOLD, fontFamily: "'Cormorant Garamond', serif" }}>{confidence}%</span>
                 </div>
                 <div style={{ height: 6, background: "rgba(255,255,255,0.08)", borderRadius: 0 }}>

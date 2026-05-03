@@ -319,7 +319,7 @@ export default function PrismInsights() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                       <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, fontWeight: 700, color: '#9CA3AF', marginBottom: 4 }}>
-                          <span>AI Confidence</span><span>{insight.confidence}%</span>
+                          <span>Signal Confidence</span><span>{insight.confidence}%</span>
                         </div>
                         <Progress value={insight.confidence} className="h-1.5" />
                       </div>

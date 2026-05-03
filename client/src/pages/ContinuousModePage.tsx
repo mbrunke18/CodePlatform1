@@ -332,7 +332,7 @@ export default function ContinuousModePage() {
                     <p className="text-sm leading-relaxed" style={{ color: MUTED }}>{insight.body}</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: MUTED }}>AI Confidence</div>
+                    <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: MUTED }}>Signal Confidence</div>
                     <div className="text-xl font-bold" style={{ color: GOLD }}>{insight.confidence}%</div>
                   </div>
                 </div>

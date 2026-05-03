@@ -55,7 +55,7 @@ export default function NavigationBar() {
     { title: "Real-Company Scenarios", href: "/try-demo", description: "HPE, Target, Clorox, ServiceNow, Alphabet — live execution simulations", featured: true },
     { title: "Industry Scenarios", href: "/industry-demos", description: "Financial services, pharma, manufacturing, retail, energy, luxury" },
     { title: "Deal Risk Detection", href: "/deal-risk-demo", description: "Pipeline risk before it becomes pipeline loss" },
-    { title: "Pilot Program", href: "/pilot-program", description: "Join the Fortune 1000 pilot — 90-day structured onboarding" },
+    { title: "Founding Partner Program", href: "/pilot-program", description: "Join the Fortune 1000 — 90-day validation partnership" },
   ];
 
   const resourcesLinks = [

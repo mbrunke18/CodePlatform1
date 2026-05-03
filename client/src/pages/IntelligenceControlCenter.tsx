@@ -429,7 +429,7 @@ export default function IntelligenceControlCenter() {
                           <div style={{ fontSize: 13, color: NAVY, lineHeight: 1.5, marginBottom: 6 }}>{det.signal}</div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                             <span style={{ fontSize: 10, color: TEAL, fontWeight: 700 }}>→ {det.playbook}</span>
-                            <span style={{ fontSize: 10, color: '#9CA3AF' }}>AI Confidence: {det.confidence}%</span>
+                            <span style={{ fontSize: 10, color: '#9CA3AF' }}>Signal Confidence: {det.confidence}%</span>
                           </div>
                         </div>
                         <Button size="sm" style={{ flexShrink: 0, background: NAVY, color: '#fff', borderRadius: 0, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>

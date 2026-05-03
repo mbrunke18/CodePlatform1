@@ -123,7 +123,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">10</div>
-                <div className="text-xs text-gray-800">Pilot Program Target</div>
+                <div className="text-xs text-gray-800">Founding Partner Target</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">90</div>
