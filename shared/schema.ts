@@ -6610,6 +6610,7 @@ export const customProtocols = pgTable('custom_protocols', {
   communicationChain: jsonb('communication_chain').default({}),
   budgetEnvelope: jsonb('budget_envelope').default({}),
   decisionAuthority: jsonb('decision_authority').default({}),
+  customFields: jsonb('custom_fields').default({}),
   status: varchar('status', { length: 20 }).default('draft'),
   completedSteps: integer('completed_steps').default(0),
   createdAt: timestamp('created_at').defaultNow(),

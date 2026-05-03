@@ -6258,6 +6258,7 @@ var init_schema = __esm({
       communicationChain: jsonb("communication_chain").default({}),
       budgetEnvelope: jsonb("budget_envelope").default({}),
       decisionAuthority: jsonb("decision_authority").default({}),
+      customFields: jsonb("custom_fields").default({}),
       status: varchar("status", { length: 20 }).default("draft"),
       completedSteps: integer2("completed_steps").default(0),
       createdAt: timestamp2("created_at").defaultNow(),

@@ -116,6 +116,14 @@ const INIT = {
   executorTitle: '', executorName: '',
   observers: [{ title: '', name: '' }],
   overrideTitle: '', overrideName: '',
+  customFields: {
+    identity:  [] as CustomField[],
+    owners:    [] as CustomField[],
+    tasks:     [] as CustomField[],
+    comms:     [] as CustomField[],
+    budget:    [] as CustomField[],
+    authority: [] as CustomField[],
+  },
 };
 
 type Data = typeof INIT;
@@ -272,6 +280,141 @@ function Toggle({ checked, onChange }: { checked: boolean; onChange: (v: boolean
     </button>
   );
 }
+
+// ── Custom Fields ─────────────────────────────────────────────────────────────
+
+type CustomField = {
+  id: string;
+  label: string;
+  type: 'text' | 'number' | 'date' | 'yesno' | 'dropdown';
+  options: string;
+  required: boolean;
+};
+
+const FIELD_TYPES = [
+  { value: 'text',     label: 'Text' },
+  { value: 'number',   label: 'Number' },
+  { value: 'date',     label: 'Date' },
+  { value: 'yesno',   label: 'Yes / No' },
+  { value: 'dropdown', label: 'Dropdown' },
+];
+
+const TYPE_LABELS: Record<string, string> = {
+  text: 'Text', number: 'Number', date: 'Date', yesno: 'Yes / No', dropdown: 'Dropdown',
+};
+
+function CustomFieldsSection({ fields, onAdd, onRemove }: {
+  fields: CustomField[];
+  onAdd: (field: CustomField) => void;
+  onRemove: (id: string) => void;
+}) {
+  const [adding, setAdding] = useState(false);
+  const [draft, setDraft] = useState({ label: '', type: 'text', options: '', required: false });
+
+  const handleSave = () => {
+    if (!draft.label.trim()) return;
+    onAdd({
+      id: Math.random().toString(36).slice(2),
+      label: draft.label.trim(),
+      type: draft.type as CustomField['type'],
+      options: draft.options,
+      required: draft.required,
+    });
+    setDraft({ label: '', type: 'text', options: '', required: false });
+    setAdding(false);
+  };
+
+  return (
+    <div style={{ marginTop: 36, borderTop: `1px dashed ${BORDER}`, paddingTop: 24 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: fields.length > 0 ? 14 : 0 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED }}>Custom Fields</div>
+        <div style={{ flex: 1, height: 1, background: BORDER }} />
+        {!adding && (
+          <button onClick={() => setAdding(true)} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, color: TEAL, background: 'none', border: `1px solid ${TEAL}`, borderRadius: '0.15rem', padding: '5px 12px', cursor: 'pointer', fontWeight: 600 }}>
+            <Plus size={12} /> Add field
+          </button>
+        )}
+      </div>
+
+      {/* Existing fields */}
+      {fields.map(f => (
+        <div key={f.id} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8, padding: '10px 14px', background: 'rgba(43,138,110,0.06)', border: `1px solid rgba(43,138,110,0.18)`, borderRadius: '0.15rem' }}>
+          <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{f.label}</span>
+            <span style={{ fontSize: 11, color: MUTED, background: '#F3F4F6', padding: '2px 8px', borderRadius: '0.15rem' }}>{TYPE_LABELS[f.type]}</span>
+            {f.type === 'dropdown' && f.options && (
+              <span style={{ fontSize: 11, color: MUTED }}>Options: {f.options}</span>
+            )}
+          </div>
+          {f.required && (
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#D97706', background: '#FEF3C7', padding: '2px 7px', borderRadius: '0.15rem', flexShrink: 0 }}>Required</span>
+          )}
+          <button onClick={() => onRemove(f.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, padding: 2, flexShrink: 0 }}>
+            <X size={13} />
+          </button>
+        </div>
+      ))}
+
+      {/* Add field form */}
+      {adding && (
+        <div style={{ padding: '18px', background: '#F8F6F0', border: `1px solid ${BORDER}`, borderRadius: '0.15rem', marginTop: fields.length > 0 ? 8 : 14 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED, marginBottom: 12 }}>New Custom Field</div>
+          <div style={{ display: 'flex', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
+            <input
+              style={{ ...inputStyle, flex: '1 1 220px' }}
+              placeholder="Field label (e.g., Regulatory Filing Reference)"
+              value={draft.label}
+              onChange={e => setDraft(d => ({ ...d, label: e.target.value }))}
+              autoFocus
+              onKeyDown={e => e.key === 'Enter' && handleSave()}
+            />
+            <select
+              style={{ ...inputStyle, flex: '0 0 140px' }}
+              value={draft.type}
+              onChange={e => setDraft(d => ({ ...d, type: e.target.value }))}
+            >
+              {FIELD_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
+            </select>
+          </div>
+          {draft.type === 'dropdown' && (
+            <input
+              style={{ ...inputStyle, marginBottom: 12 }}
+              placeholder="Options (comma-separated, e.g., Option A, Option B, Option C)"
+              value={draft.options}
+              onChange={e => setDraft(d => ({ ...d, options: e.target.value }))}
+            />
+          )}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <Toggle checked={draft.required} onChange={v => setDraft(d => ({ ...d, required: v }))} />
+              <span style={{ fontSize: 13, color: NAVY }}>Required field</span>
+            </div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button
+                onClick={() => { setAdding(false); setDraft({ label: '', type: 'text', options: '', required: false }); }}
+                style={{ padding: '8px 16px', borderRadius: '0.15rem', border: `1px solid ${BORDER}`, background: 'none', color: MUTED, fontSize: 13, cursor: 'pointer', fontWeight: 500 }}
+              >Cancel</button>
+              <button
+                onClick={handleSave}
+                disabled={!draft.label.trim()}
+                style={{ padding: '8px 16px', borderRadius: '0.15rem', border: 'none', background: !draft.label.trim() ? '#E5E7EB' : NAVY, color: !draft.label.trim() ? MUTED : '#fff', fontWeight: 700, fontSize: 13, cursor: !draft.label.trim() ? 'not-allowed' : 'pointer' }}
+              >Save Field</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {fields.length === 0 && !adding && (
+        <div style={{ fontSize: 12, color: MUTED, fontStyle: 'italic', marginTop: 8 }}>
+          Add fields specific to your organization — regulatory references, tracking IDs, approvals, contacts, or any data your team needs captured at activation.
+        </div>
+      )}
+    </div>
+  );
+}
+
+const STEP_KEYS = ['identity', 'owners', 'tasks', 'comms', 'budget', 'authority'] as const;
+type StepKey = typeof STEP_KEYS[number];
 
 function Step4({ data, update }: { data: Data; update: (f: string, v: any) => void }) {
   const boardTemplate = `Board of Directors — Confidential Briefing\n\nAs of [DATE], [PROTOCOL NAME] has been activated.\n\nStatus: [CURRENT STATUS]\nEstimated resolution: [TIMELINE]\nFinancial exposure: [AMOUNT]\n\nImmediate actions taken:\n— [ACTION 1]\n— [ACTION 2]\n\nNext board update: [SCHEDULED TIME]\n\n[AUTHORIZING EXECUTIVE]`;
@@ -483,6 +626,40 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
         </div>
       </div>
 
+      {/* Custom Fields Summary */}
+      {(() => {
+        const allCustom = Object.entries(data.customFields).flatMap(([stepKey, fields]) =>
+          (fields as CustomField[]).map(f => ({ ...f, stepKey }))
+        );
+        if (allCustom.length === 0) return null;
+        const stepLabels: Record<string, string> = {
+          identity: 'Protocol Identity', owners: 'Executive Owners', tasks: 'Task Sequence',
+          comms: 'Communication Chain', budget: 'Budget Envelope', authority: 'Decision Authority',
+        };
+        const byStep = Object.entries(data.customFields).filter(([, fields]) => (fields as CustomField[]).length > 0);
+        return (
+          <div style={{ marginBottom: 24, padding: '16px 18px', border: `1px solid rgba(43,138,110,0.2)`, borderRadius: '0.15rem', background: 'rgba(43,138,110,0.04)' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: TEAL, marginBottom: 12 }}>
+              Custom Fields — {allCustom.length} field{allCustom.length !== 1 ? 's' : ''} added
+            </div>
+            {byStep.map(([stepKey, fields]) => (
+              <div key={stepKey} style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 11, color: MUTED, marginBottom: 4 }}>{stepLabels[stepKey]}</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {(fields as CustomField[]).map(f => (
+                    <span key={f.id} style={{ fontSize: 12, background: '#fff', border: `1px solid ${BORDER}`, borderRadius: '0.15rem', padding: '3px 10px', color: NAVY, fontWeight: 500 }}>
+                      {f.label}
+                      <span style={{ color: MUTED, marginLeft: 6 }}>{TYPE_LABELS[f.type]}</span>
+                      {f.required && <span style={{ color: '#D97706', marginLeft: 4 }}>*</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      })()}
+
       <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 24, display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
         <button onClick={onSave} disabled={isPending || !data.name || !data.triggerDomain} style={{
           padding: '14px 36px', borderRadius: '0.15rem', border: 'none',
@@ -523,6 +700,18 @@ export default function ProtocolBuilder() {
   const addTask = (phase: string) =>
     setData(prev => ({ ...prev, [phase]: [...(prev as any)[phase], { description: '', assignedTo: '' }] }));
 
+  const addCustomField = (stepKey: StepKey, field: CustomField) =>
+    setData(prev => ({
+      ...prev,
+      customFields: { ...prev.customFields, [stepKey]: [...prev.customFields[stepKey], field] },
+    }));
+
+  const removeCustomField = (stepKey: StepKey, id: string) =>
+    setData(prev => ({
+      ...prev,
+      customFields: { ...prev.customFields, [stepKey]: prev.customFields[stepKey].filter(f => f.id !== id) },
+    }));
+
   const mutation = useMutation({
     mutationFn: async () => {
       const payload = {
@@ -559,6 +748,7 @@ export default function ProtocolBuilder() {
         },
         status: 'ready',
         completedSteps: 6,
+        customFields: data.customFields,
       };
       const res = await apiRequest('POST', '/api/custom-protocols', payload);
       return res;
@@ -577,13 +767,19 @@ export default function ProtocolBuilder() {
   const currentStep = STEPS[step];
 
   const renderStepContent = () => {
+    const key = STEP_KEYS[step];
+    const cfProps = {
+      fields: data.customFields[key] ?? [],
+      onAdd: (f: CustomField) => addCustomField(key, f),
+      onRemove: (id: string) => removeCustomField(key, id),
+    };
     switch (step) {
-      case 0: return <Step1 data={data} update={update} />;
-      case 1: return <Step2 data={data} updateNested={updateNested} />;
-      case 2: return <Step3 data={data} updateTask={updateTask} addTask={addTask} />;
-      case 3: return <Step4 data={data} update={update} />;
-      case 4: return <Step5 data={data} update={update} />;
-      case 5: return <Step6 data={data} update={update} updateNested={updateNested} />;
+      case 0: return <><Step1 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
+      case 1: return <><Step2 data={data} updateNested={updateNested} /><CustomFieldsSection {...cfProps} /></>;
+      case 2: return <><Step3 data={data} updateTask={updateTask} addTask={addTask} /><CustomFieldsSection {...cfProps} /></>;
+      case 3: return <><Step4 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
+      case 4: return <><Step5 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
+      case 5: return <><Step6 data={data} update={update} updateNested={updateNested} /><CustomFieldsSection {...cfProps} /></>;
       default: return null;
     }
   };
