@@ -41,7 +41,7 @@ export async function seedPlaybookLibrary() {
     totalPlaybooks: 8,
   }).returning();
 
-  await db.insert(playbookLibrary).values([
+  await (db.insert(playbookLibrary).values([
     {
       playbookNumber: 1,
       domainId: domain1.id,
@@ -402,7 +402,7 @@ export async function seedPlaybookLibrary() {
       averageActivationFrequency: 'rare',
       historicalSuccessRate: 0.6528315613323793,
     }
-  ]);
+  ] as any));
 
   console.log('✅ Domain 1: Market Dynamics - 18 playbooks seeded');
 
@@ -442,7 +442,7 @@ export async function seedPlaybookLibrary() {
     totalPlaybooks: 4,
   }).returning();
 
-  await db.insert(playbookLibrary).values([
+  await (db.insert(playbookLibrary).values([
     {
       playbookNumber: 19,
       domainId: domain2.id,
@@ -763,7 +763,7 @@ export async function seedPlaybookLibrary() {
       averageActivationFrequency: 'low',
       historicalSuccessRate: 0.7507559058156988,
     }
-  ]);
+  ] as any));
 
   console.log('✅ Domain 2: Operational Excellence - 16 playbooks seeded');
 
@@ -803,7 +803,7 @@ export async function seedPlaybookLibrary() {
     totalPlaybooks: 5,
   }).returning();
 
-  await db.insert(playbookLibrary).values([
+  await (db.insert(playbookLibrary).values([
     {
       playbookNumber: 35,
       domainId: domain3.id,
@@ -1084,7 +1084,7 @@ export async function seedPlaybookLibrary() {
       averageActivationFrequency: 'low',
       historicalSuccessRate: 0.6379945681200833,
     }
-  ]);
+  ] as any));
 
   console.log('✅ Domain 3: Financial Strategy - 14 playbooks seeded');
 

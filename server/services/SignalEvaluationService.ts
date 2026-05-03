@@ -494,7 +494,7 @@ export async function evaluateAndPersistSignals(
 
   // Log scan activity — proves the system is working even on quiet days
   try {
-    const sources = [...new Set(signals.map(s => s.source).filter(Boolean))];
+    const sources = Array.from(new Set(signals.map(s => s.source).filter(Boolean)));
     await db.insert(signalActivityLog).values({
       organizationId,
       eventType: 'scanning',
@@ -604,7 +604,7 @@ export async function evaluateAndPersistSignals(
         (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
       );
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-      let contactEmails = [...new Set(recipientContacts.map(c => c.email!).filter(Boolean))];
+      let contactEmails = Array.from(new Set(recipientContacts.map(c => c.email!).filter(Boolean)));
 
       // Admin fallback — if no stakeholder contacts are registered, always alert pilot
       const ADMIN_FALLBACK = 'pilot@vaughnmartin.com';

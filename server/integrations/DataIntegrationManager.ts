@@ -135,7 +135,7 @@ export class DataIntegrationManager {
    */
   private async processDataForTriggers(sourceId: string, data: any): Promise<void> {
     // Find all trigger mappings for this data source
-    for (const [scenarioId, mappings] of this.triggerMappings) {
+    for (const [scenarioId, mappings] of Array.from(this.triggerMappings)) {
       for (const mapping of mappings) {
         if (mapping.dataSource === sourceId) {
           const value = this.extractValue(data, mapping.extraction.path);

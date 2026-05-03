@@ -47,7 +47,7 @@ interface ProtocolLearningsPanelProps {
   scenarioId: string;
 }
 
-export default function ProtocolLearningsPanel({ scenarioId }: PlaybookLearningsPanelProps) {
+export default function ProtocolLearningsPanel({ scenarioId }: ProtocolLearningsPanelProps) {
   const { data: learningsRaw, isLoading: learningsLoading } = useQuery<PlaybookLearning[]>({
     queryKey: ['/api/dynamic-strategy/Readiness Protocol-learnings', scenarioId],
   });
@@ -176,7 +176,7 @@ export default function ProtocolLearningsPanel({ scenarioId }: PlaybookLearnings
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Brain className="h-5 w-5 text-[#0A0F2E]" />
-            AI-Extracted Learnings
+            System-Extracted Learnings
           </CardTitle>
           <CardDescription>
             Automatically captured insights from past executions

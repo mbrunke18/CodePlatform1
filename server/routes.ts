@@ -7516,7 +7516,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       const unacted = allDetections
         .filter(d => d.status === 'detected' || d.status === 'notified')
         .map(d => {
-          const ageMs = now - new Date(d.detectedAt).getTime();
+          const ageMs = now - new Date(d.detectedAt ?? Date.now()).getTime();
           const ageMinutes = Math.floor(ageMs / 60000);
           const cycles = Math.floor(ageMs / CYCLE_MS);
           const escalated = cycles >= 2;
@@ -8729,12 +8729,12 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                   </div>
                 </div>`;
               for (const contact of contacts.filter((c: any) => c.email)) {
-                const token = Buffer.from(contact.email).toString('base64url');
+                const token = Buffer.from(contact.email as string).toString('base64url');
                 const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
                 await resend.emails.send({
                   from: 'Readiness OS <pilot@vaughnmartin.com>',
                   replyTo: 'pilot@vaughnmartin.com',
-                  to: [contact.email],
+                  to: [contact.email as string],
                   subject: `⚠️ ${highConf.length} Compound Threat${highConf.length > 1 ? 's' : ''} Detected — Cross-Domain Risk Analysis`,
                   html: personalizedHtml,
                 });
@@ -9352,7 +9352,7 @@ Respond ONLY as JSON with this exact structure:
       ]);
 
       const TOTAL_DOMAINS = 9;
-      const activeDomains = [...new Set(detections.map(d => d.triggerDomain).filter(Boolean))];
+      const activeDomains = Array.from(new Set(detections.map(d => d.triggerDomain).filter(Boolean)));
       const domainCoverage = Math.round((activeDomains.length / TOTAL_DOMAINS) * 100);
       const completedTimelines = timelines.filter(t => t.totalMinutes);
       const avgResponseMinutes = completedTimelines.length > 0
@@ -9536,12 +9536,12 @@ Respond ONLY as JSON with this exact structure:
             : `📊 Weekly Digest: Monitoring Active, Market Quiet — ${org.name}`;
           for (const contact of contacts) {
             if (!contact.email) continue;
-            const token = Buffer.from(contact.email).toString('base64url');
+            const token = Buffer.from(contact.email as string).toString('base64url');
             const personalizedHtml = html.replace('__UNSUBSCRIBE_URL__', `${platformUrl}/api/unsubscribe?t=${token}`);
             await resend.emails.send({
               from: 'Readiness OS <pilot@vaughnmartin.com>',
               replyTo: 'pilot@vaughnmartin.com',
-              to: [contact.email],
+              to: [contact.email as string],
               subject,
               html: personalizedHtml,
             });

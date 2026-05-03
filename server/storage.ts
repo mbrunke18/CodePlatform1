@@ -671,7 +671,7 @@ export class DatabaseStorage implements IStorage {
       })
     );
 
-    return scenariosWithTaskCount;
+    return scenariosWithTaskCount as any;
   }
 
   async createTask(task: InsertTask): Promise<Task> {

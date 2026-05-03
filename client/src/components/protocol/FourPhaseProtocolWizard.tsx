@@ -402,7 +402,7 @@ export default function FourPhaseProtocolWizard({
                 <CurrentStepComponent
                   data={formData}
                   onChange={updateFormData}
-                  Readiness Protocol={ playbook }
+                  playbook={playbook}
                 />
               )}
             </div>

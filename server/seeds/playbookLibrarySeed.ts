@@ -138,8 +138,8 @@ export function getSuccessMetrics(domainId: number): {
     8: ['Revenue from new market', 'Time to revenue', 'Market share capture'],
     9: ['AI system safety', 'Compliance certification', 'Risk mitigation score'],
   };
-  
- }
+  return { outcomeMetrics: metricsMap[domainId] || [] };
+}
 
 export async function seedPlaybookLibrary() {
   console.log('🏈 Seeding Complete 170-Playbook Library...');

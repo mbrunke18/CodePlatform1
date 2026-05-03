@@ -476,12 +476,12 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
           </Card>
         </div>
 
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "Readiness Protocol" | "library" | "sequences")} className="mb-6">
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "playbook" | "library" | "sequences")} className="mb-6">
           <TabsList className="bg-white border border-[#E8E4DC] rounded-none h-12 p-0 gap-8 px-6">
             <TabsTrigger 
-              value="Readiness Protocol" 
+              value="playbook" 
               className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-2" 
-              data-testid="tab-Readiness Protocol-tasks"
+              data-testid="tab-playbook-tasks"
             >
               Readiness Protocol Tasks ({tasks.length})
             </TabsTrigger>
@@ -501,7 +501,7 @@ export default function TaskManagement({ embedded }: { embedded?: boolean }) {
             </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="Readiness Protocol" className="mt-6">
+          <TabsContent value="playbook" className="mt-6">
             <Card className="mb-6 rounded-none border-[#E8E4DC]">
               <CardContent className="p-4">
                 <div className="relative">

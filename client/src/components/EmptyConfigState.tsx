@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 interface EmptyConfigStateProps {
-  type: 'departments' | 'stakeholders' | 'triggers' | 'Readiness Protocols' | 'metrics' | 'general';
+  type: 'departments' | 'stakeholders' | 'triggers' | 'playbooks' | 'metrics' | 'general';
   title?: string;
   description?: string;
   actionPath?: string;

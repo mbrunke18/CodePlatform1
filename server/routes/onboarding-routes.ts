@@ -20,7 +20,7 @@ app.get('/api/onboarding-session', async (req: any, res) => {
     const userId = getUserId(req);
     
     // Check if user has an organization
-    const userOrgs = await db.select().from(organizations).where(eq(organizations.ownerId, userId)).limit(1);
+    const userOrgs = await db.select().from(organizations).where(eq(organizations.ownerId, userId as string)).limit(1);
     
     if (userOrgs.length === 0) {
       // No org yet - return empty session to start fresh
@@ -73,14 +73,14 @@ app.post('/api/onboarding/save', async (req: any, res) => {
     } = req.body;
 
     // Get or create organization
-    let org = await db.select().from(organizations).where(eq(organizations.ownerId, userId)).limit(1);
+    let org = await db.select().from(organizations).where(eq(organizations.ownerId, userId as string)).limit(1);
     
     if (org.length === 0 && companyName) {
       // Create organization on first save
       const [newOrg] = await db.insert(organizations).values({
         name: companyName,
         description: `${companyName} - ${industry || 'Enterprise'} organization`,
-        ownerId: userId,
+        ownerId: userId as string,
         industry: industry,
         size: employeeCount,
         type: 'enterprise',
@@ -240,7 +240,7 @@ app.post('/api/onboarding/seed-demo-data', isAuthenticated, async (req: any, res
     const inserted = [];
     for (const scenario of scenarioInserts) {
       try {
-        const [s] = await db.insert(strategicScenarios).values(scenario).returning();
+        const [s] = await db.insert(strategicScenarios).values(scenario as any).returning();
         inserted.push(s);
       } catch {
         // skip if already exists

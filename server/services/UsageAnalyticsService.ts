@@ -674,7 +674,7 @@ export class UsageAnalyticsService {
       });
     }
 
-    return insights.slice(0, 5); // Limit to top 5 insights
+    return insights.slice(0, 5) as { insight: string; impact: 'positive' | 'negative' | 'neutral'; recommendation: string; confidence: number }[];
   }
 
   /**

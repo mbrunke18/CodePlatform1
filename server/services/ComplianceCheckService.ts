@@ -92,7 +92,7 @@ export class ComplianceCheckService {
       for (const framework of frameworks) {
         // Extract individual controls from framework's controls JSONB field
         // Handle both array format and object wrapper format
-        let frameworkControls = framework.controls;
+        let frameworkControls: any = framework.controls;
         if (frameworkControls && typeof frameworkControls === 'object' && !Array.isArray(frameworkControls)) {
           frameworkControls = (frameworkControls as any).controls || frameworkControls;
         }

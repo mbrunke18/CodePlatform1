@@ -1,5 +1,5 @@
 import { db } from '../db.js';
-import { roiMetrics, valueTrackingEvents, scenarios, tasks, organizations, users } from '@shared/schema';
+import { roiMetrics, valueTrackingEvents, strategicScenarios as scenarios, tasks, organizations, users } from '@shared/schema';
 import { eq, and, desc, gte, lte, sql, count } from 'drizzle-orm';
 import { databaseNotificationService } from './DatabaseNotificationService.js';
 import { openAIService } from './OpenAIService';

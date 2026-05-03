@@ -289,7 +289,7 @@ export default function ProtocolCustomizationWizard({
           <CurrentStepComponent
             data={formData}
             onChange={updateFormData}
-            Readiness Protocol={ playbook }
+            playbook={playbook}
           />
         </div>
 

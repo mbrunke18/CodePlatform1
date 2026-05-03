@@ -153,7 +153,7 @@ Be specific and strategic. Focus on business impact.`;
             aiConfidence: combinedConfidence,
             eventData: eventMetadata,
             alertGenerated: true
-          });
+          } as any);
         }
       }
 
@@ -173,7 +173,7 @@ Be specific and strategic. Focus on business impact.`;
     sourceData: any
   ) {
     try {
-      const [alert] = await db.insert(strategicAlerts).values({
+      const [alert] = await (db.insert(strategicAlerts).values({
         organizationId: organizationId,
         triggerId: match.triggerId,
         alertType: match.analysis.classification,
@@ -190,7 +190,7 @@ Be specific and strategic. Focus on business impact.`;
         actionRequired: match.analysis.urgency === 'critical' || match.analysis.urgency === 'high',
         recommendedActions: match.analysis.recommendations,
         impactAreas: match.analysis.affectedAreas
-      }).returning();
+      } as any).returning() as any);
 
       return alert;
     } catch (error) {
@@ -214,7 +214,7 @@ Be specific and strategic. Focus on business impact.`;
       .orderBy(desc(strategicAlerts.createdAt));
 
     const avgConfidence = alerts.length > 0
-      ? Math.round(alerts.reduce((sum, a) => sum + (a.aiConfidence || 0), 0) / alerts.length)
+      ? Math.round(alerts.reduce((sum, a) => sum + Number(a.aiConfidence || 0), 0) / alerts.length)
       : 0;
 
     const byType = alerts.reduce((acc, alert) => {

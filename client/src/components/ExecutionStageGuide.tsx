@@ -103,7 +103,7 @@ export function ExecutionStageBadge({
         borderRadius: 0, whiteSpace: 'nowrap' as const,
       }}>
         {stage.icon} {stage.name}
-        {stage.clockEnd && (
+        {(stage as any).clockEnd && (
           <span style={{ fontSize: s.fontSize - 1, color: TEAL, fontWeight: 600, marginLeft: 2 }}>← 12-min</span>
         )}
       </span>
@@ -146,7 +146,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                   borderLeft: i === 0 ? undefined : 'none',
                   position: 'relative' as const,
                 }}>
-                  {stage.clockEnd && (
+                  {(stage as any).clockEnd && (
                     <div style={{
                       position: 'absolute' as const, right: -1, top: 0, bottom: 0,
                       width: 2, background: TEAL,
@@ -157,7 +157,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                     <span style={{ fontSize: 11, fontWeight: 800, color: stage.inClock ? GOLD : '#6B7280', letterSpacing: '0.06em' }}>
                       {String(stage.number).padStart(2, '0')} {stage.name.toUpperCase()}
                     </span>
-                    {stage.clockEnd && (
+                    {(stage as any).clockEnd && (
                       <span style={{ fontSize: 8, fontWeight: 700, color: TEAL, background: 'rgba(43,138,110,0.15)', padding: '1px 4px', borderRadius: 0 }}>12 MIN</span>
                     )}
                   </div>
@@ -165,10 +165,10 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                     {stage.shortDef}
                   </div>
                 </div>
-                {i < EXECUTION_STAGES.length - 1 && !stage.clockEnd && (
+                {i < EXECUTION_STAGES.length - 1 && !(stage as any).clockEnd && (
                   <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.68)', flexShrink: 0, zIndex: 1 }}>→</div>
                 )}
-                {stage.clockEnd && (
+                {(stage as any).clockEnd && (
                   <div style={{ fontSize: 10, color: TEAL, flexShrink: 0, zIndex: 1, fontWeight: 700 }}>→</div>
                 )}
               </div>
@@ -199,7 +199,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
             }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 3 }}>
                 {stage.number}. {stage.name}
-                {stage.clockEnd && <span style={{ color: TEAL, marginLeft: 4, fontSize: 11 }}>←12m</span>}
+                {(stage as any).clockEnd && <span style={{ color: TEAL, marginLeft: 4, fontSize: 11 }}>←12m</span>}
               </div>
               <div style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.4 }}>{stage.shortDef}</div>
             </div>
@@ -234,7 +234,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
               padding: '24px 24px 20px',
               position: 'relative' as const,
             }}>
-              {stage.clockEnd && (
+              {(stage as any).clockEnd && (
                 <div style={{
                   position: 'absolute' as const, top: 12, right: 12,
                   fontSize: 11, fontWeight: 700, color: TEAL,

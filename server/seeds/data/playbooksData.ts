@@ -10,6 +10,7 @@ export interface PlaybookData {
   domain: number;
   frequency: string;
   budget: number;
+  compound?: boolean;
 }
 
 export interface PlaybooksDataset {

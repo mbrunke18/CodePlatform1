@@ -1036,7 +1036,7 @@ export default function ProtocolActivationConsole() {
 
             {/* Pre-Activation Impact Preview */}
             <PreActivationImpactPreview 
-              Readiness Protocol={ playbook }
+              playbook={playbook}
               onConfirmActivation={handleConfirmActivation}
               onCancel={handleCancelActivation}
             />
@@ -1824,7 +1824,7 @@ export default function ProtocolActivationConsole() {
                         <div>
                           {/* Verdict card */}
                           <div style={{ border: `1.5px solid ${ownershipVerdict.color}`, padding: "28px 28px 24px", marginBottom: 28, background: "rgba(255,255,255,0.03)" }}>
-                            <div style={{ display: "flex", align: "center", gap: 14, marginBottom: 16 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
                               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: ownershipVerdict.color, lineHeight: 1 }}>
                                 {ownershipVerdict.icon}
                               </span>

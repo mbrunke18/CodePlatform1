@@ -92,7 +92,7 @@ export class DatabaseNotificationService {
       }
 
       // Convert to NotificationManager format
-      const severity = this.mapPriorityToSeverity(notification.notification.priority);
+      const severity = this.mapPriorityToSeverity(notification.notification.priority || 'medium');
       const metadata = {
         ...(notification.notification.metadata || {}),
         organizationName: notification.organization?.name || 'Unknown',
@@ -101,10 +101,10 @@ export class DatabaseNotificationService {
       };
 
       // Send via NotificationManager
-      await notificationManager.sendScenarioAlert(
+      await (notificationManager.sendScenarioAlert as any)(
         notification.notification.type || 'alert',
         `${notification.notification.title}\n\n${notification.notification.message}`,
-        severity as "high" | "low" | "medium" | "critical",
+        severity,
         metadata
       );
 

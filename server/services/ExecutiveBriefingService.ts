@@ -37,7 +37,7 @@ export class ExecutiveBriefingService {
       const content = await this.synthesizeBriefing(briefingData);
 
       // Store briefing in database
-      const [briefing] = await db.insert(executiveBriefings).values({
+      const [briefing] = await (db.insert(executiveBriefings).values({
         organizationId,
         title: `Executive Intelligence Briefing - ${new Date().toLocaleDateString('en-US', { 
           weekday: 'long', 
@@ -58,7 +58,7 @@ export class ExecutiveBriefingService {
         priority: this.determinePriority(briefingData),
         insights: this.extractKeyInsights(briefingData),
         recommendations: this.extractRecommendations(briefingData)
-      }).returning();
+      } as any).returning() as any);
 
       return briefing;
     } catch (error) {
@@ -129,7 +129,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
       const content = response.choices[0].message.content || '';
 
       // Store situation report
-      const [report] = await db.insert(executiveBriefings).values({
+      const [report] = await (db.insert(executiveBriefings).values({
         organizationId,
         title: `Strategic Situation Report - ${focus.toUpperCase()}`,
         content,
@@ -143,7 +143,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
         priority: filteredAlerts.some(a => a.severity === 'critical') ? 'high' : 'medium',
         insights: this.extractKeyInsights({ ...briefingData, alerts: filteredAlerts }),
         recommendations: []
-      }).returning();
+      } as any).returning() as any);
 
       return report;
     } catch (error) {

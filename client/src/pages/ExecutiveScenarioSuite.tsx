@@ -555,7 +555,7 @@ function WalkThrough({ scenario, onBack }: { scenario: Scenario; onBack: () => v
       <div key={stage} style={{ animation: 'fadeInUp 0.3s ease' }}>
         {stage === 'trigger'    && <TriggerStage    scenario={scenario} />}
         {stage === 'detection'  && <DetectionStage  scenario={scenario} live={live} />}
-        {stage === 'Readiness Protocol'   && <PlaybookStage   scenario={scenario} live={live} />}
+        {stage === 'playbook'   && <PlaybookStage   scenario={scenario} live={live} />}
         {stage === 'execution'  && <ExecutionStage  scenario={scenario} live={live} />}
         {stage === 'outcome'    && <OutcomeStage    scenario={scenario} live={live} onBack={onBack} />}
       </div>

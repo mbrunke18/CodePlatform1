@@ -330,7 +330,7 @@ function scoreSignalAgainstConfiguredTrigger(
 
   return {
     score: allConditionsMet ? Math.min(Math.round(score), 97) : 0,
-    matchedTerms: [...new Set(matchedTerms)],
+    matchedTerms: Array.from(new Set(matchedTerms)),
     conditionsMet,
     totalConditions: conditions.length,
     dataPoints,
@@ -430,7 +430,7 @@ function scoreSignalAgainstTriggerGroup(
 
   return {
     score,
-    matchedTerms: [...new Set(matchedTerms)],
+    matchedTerms: Array.from(new Set(matchedTerms)),
     conditionsMet:    totalValid,
     totalConditions:  minimumRequired,
     dataPoints:       dataPointLabels,

@@ -18804,7 +18804,7 @@ function scoreSignalAgainstConfiguredTrigger(signal, trigger) {
   }
   return {
     score: allConditionsMet ? Math.min(Math.round(score), 97) : 0,
-    matchedTerms: [...new Set(matchedTerms)],
+    matchedTerms: Array.from(new Set(matchedTerms)),
     conditionsMet,
     totalConditions: conditions.length,
     dataPoints,
@@ -18854,7 +18854,7 @@ function scoreSignalAgainstTriggerGroup(signal, groupConditions) {
   }
   return {
     score,
-    matchedTerms: [...new Set(matchedTerms)],
+    matchedTerms: Array.from(new Set(matchedTerms)),
     conditionsMet: totalValid,
     totalConditions: minimumRequired,
     dataPoints: dataPointLabels,
@@ -19281,7 +19281,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
   const evaluationMode = await getOrgEvaluationMode(organizationId);
   console.log(`[SignalEvaluationService] Org ${organizationId} using evaluation mode: "${evaluationMode}"`);
   try {
-    const sources = [...new Set(signals.map((s) => s.source).filter(Boolean))];
+    const sources = Array.from(new Set(signals.map((s) => s.source).filter(Boolean)));
     await db.insert(signalActivityLog).values({
       organizationId,
       eventType: "scanning",
@@ -19363,7 +19363,7 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         (c) => c.isActive && c.email && (!Array.isArray(c.triggerDomains) || c.triggerDomains.length === 0)
       );
       const recipientContacts = domainApprovers.length > 0 ? domainApprovers : fallbackContacts;
-      let contactEmails = [...new Set(recipientContacts.map((c) => c.email).filter(Boolean))];
+      let contactEmails = Array.from(new Set(recipientContacts.map((c) => c.email).filter(Boolean)));
       const ADMIN_FALLBACK = "pilot@vaughnmartin.com";
       if (contactEmails.length === 0) {
         contactEmails = [ADMIN_FALLBACK];
@@ -21696,7 +21696,7 @@ var init_DatabaseNotificationService = __esm({
           if (!notification) {
             throw new Error(`Notification ${notificationId} not found`);
           }
-          const severity = this.mapPriorityToSeverity(notification.notification.priority);
+          const severity = this.mapPriorityToSeverity(notification.notification.priority || "medium");
           const metadata = {
             ...notification.notification.metadata || {},
             organizationName: notification.organization?.name || "Unknown",
@@ -23445,7 +23445,7 @@ Be specific and strategic. Focus on business impact.`;
           eq26(strategicAlerts.organizationId, organizationId),
           gte6(strategicAlerts.createdAt, cutoffTime)
         )).orderBy(desc15(strategicAlerts.createdAt));
-        const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + (a.aiConfidence || 0), 0) / alerts.length) : 0;
+        const avgConfidence = alerts.length > 0 ? Math.round(alerts.reduce((sum, a) => sum + Number(a.aiConfidence || 0), 0) / alerts.length) : 0;
         const byType = alerts.reduce((acc, alert) => {
           acc[alert.alertType] = (acc[alert.alertType] || 0) + 1;
           return acc;
@@ -25231,7 +25231,7 @@ var init_DataIntegrationManager = __esm({
        * Process fetched data against trigger conditions
        */
       async processDataForTriggers(sourceId, data) {
-        for (const [scenarioId, mappings] of this.triggerMappings) {
+        for (const [scenarioId, mappings] of Array.from(this.triggerMappings)) {
           for (const mapping of mappings) {
             if (mapping.dataSource === sourceId) {
               const value = this.extractValue(data, mapping.extraction.path);
@@ -48693,7 +48693,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       const now = Date.now();
       const CYCLE_MS = 15 * 60 * 1e3;
       const unacted = allDetections.filter((d) => d.status === "detected" || d.status === "notified").map((d) => {
-        const ageMs = now - new Date(d.detectedAt).getTime();
+        const ageMs = now - new Date(d.detectedAt ?? Date.now()).getTime();
         const ageMinutes = Math.floor(ageMs / 6e4);
         const cycles = Math.floor(ageMs / CYCLE_MS);
         const escalated = cycles >= 2;
@@ -50339,7 +50339,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         db.select().from(scTable).where(and28(eq45(scTable.organizationId, req.orgId), eq45(scTable.isActive, true)))
       ]);
       const TOTAL_DOMAINS = 9;
-      const activeDomains = [...new Set(detections.map((d) => d.triggerDomain).filter(Boolean))];
+      const activeDomains = Array.from(new Set(detections.map((d) => d.triggerDomain).filter(Boolean)));
       const domainCoverage = Math.round(activeDomains.length / TOTAL_DOMAINS * 100);
       const completedTimelines = timelines.filter((t) => t.totalMinutes);
       const avgResponseMinutes = completedTimelines.length > 0 ? parseFloat((completedTimelines.reduce((s, t) => s + (t.totalMinutes || 12), 0) / completedTimelines.length).toFixed(1)) : null;

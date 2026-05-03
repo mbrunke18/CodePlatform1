@@ -230,7 +230,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                   : <><Zap style={{ width: 15, height: 15, marginRight: 8 }} /> Generate Custom Readiness Protocols</>}
               </Button>
 
-              {result?.generatedPlaybooks?.length > 0 && <PlaybookResults Readiness Protocols={result.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />}
+              {result?.generatedPlaybooks?.length > 0 && <PlaybookResults playbooks={result.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />}
             </div>
           )}
 
@@ -305,7 +305,7 @@ export default function StrategicRecorder({ embedded }: { embedded?: boolean }) 
                 </div>
               )}
               {historicalResult?.generatedPlaybooks?.length > 0 && (
-                <PlaybookResults Readiness Protocols={historicalResult.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />
+                <PlaybookResults playbooks={historicalResult.generatedPlaybooks} savedIds={savedIds} setSavedIds={setSavedIds} />
               )}
             </div>
           )}

@@ -233,7 +233,7 @@ export default function SituationIntentWizard() {
       ...prev,
       situationStakeholders: [...prev.situationStakeholders, { ...newStakeholder }]
     }));
-    setNewStakeholder({ name: "", role: "", email: "", notifyOn: "both", decisionOrientation: "" });
+    setNewStakeholder({ name: "", role: "", email: "", mobile: "", notifyOn: "both", decisionOrientation: "" });
   };
 
   const canProceed = () => {

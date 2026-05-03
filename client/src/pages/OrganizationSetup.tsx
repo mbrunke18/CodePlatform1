@@ -396,7 +396,7 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
       return;
     }
     toast({ title: 'Success', description: 'Stakeholder added successfully' });
-    setNewStakeholder({ name: '', email: '', role: '', department: '', canApproveActivations: false, notificationPreferences: { email: true, slack: false, inApp: true } });
+    setNewStakeholder({ name: '', email: '', role: '', department: '', canApproveActivations: false, notificationPreferences: { email: true, slack: false, inApp: true, sms: false } });
     setIsStakeholderDialogOpen(false);
   };
   

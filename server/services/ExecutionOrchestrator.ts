@@ -356,7 +356,7 @@ export class ExecutionOrchestrator {
     deadline: Date
   ): Promise<number> {
     const stakeholders = await db.select().from(scenarioStakeholders)
-      .where(eq(scenarioStakeholders.scenarioId, request.scenarioId));
+      .where(eq(scenarioStakeholders.scenarioId, request.scenarioId as any));
 
     let notifiedCount = 0;
 
