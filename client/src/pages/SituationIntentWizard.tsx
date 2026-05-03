@@ -70,6 +70,7 @@ interface SituationStakeholder {
   name: string;
   role: string;
   email: string;
+  mobile: string;
   notifyOn: "detection" | "activation" | "both";
   decisionOrientation: "financial" | "operational" | "risk" | "growth" | "";
 }
@@ -105,7 +106,7 @@ export default function SituationIntentWizard() {
   const [dpCategoryFilter, setDpCategoryFilter] = useState("all");
   const [newBriefItem, setNewBriefItem] = useState("");
   const [newStakeholder, setNewStakeholder] = useState<SituationStakeholder>({
-    name: "", role: "", email: "", notifyOn: "both", decisionOrientation: ""
+    name: "", role: "", email: "", mobile: "", notifyOn: "both", decisionOrientation: ""
   });
 
   const params = new URLSearchParams(window.location.search);
@@ -755,6 +756,13 @@ export default function SituationIntentWizard() {
                         style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none" }}
                       />
                     </div>
+                    <input
+                      value={newStakeholder.mobile}
+                      onChange={e => setNewStakeholder(prev => ({ ...prev, mobile: e.target.value }))}
+                      placeholder="Mobile / direct cell (e.g. +1 555 000 0000)"
+                      type="tel"
+                      style={{ padding: "9px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, outline: "none" }}
+                    />
                     <select
                       value={newStakeholder.notifyOn}
                       onChange={e => setNewStakeholder(prev => ({ ...prev, notifyOn: e.target.value as any }))}

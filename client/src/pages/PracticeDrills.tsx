@@ -45,6 +45,10 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
   const [scheduledDate, setScheduledDate] = useState('');
   const [participants, setParticipants] = useState('');
   const [selectedPlaybookId, setSelectedPlaybookId] = useState('');
+  const [drillObjective, setDrillObjective] = useState('');
+  const [facilitator, setFacilitator] = useState('');
+  const [scenarioVariant, setScenarioVariant] = useState('');
+  const [minPassScore, setMinPassScore] = useState('75');
 
   // Fetch organizations
   const { data: organizationsRaw } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
@@ -94,6 +98,10 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
       setScheduledDate('');
       setParticipants('');
       setSelectedPlaybookId('');
+      setDrillObjective('');
+      setFacilitator('');
+      setScenarioVariant('');
+      setMinPassScore('75');
     },
     onError: () => {
       toast({
@@ -159,6 +167,10 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
       playbookId: selectedPlaybookId,
       scheduledFor: new Date(scheduledDate).toISOString(),
       participants: participantsList,
+      drillObjective,
+      facilitator,
+      scenarioVariant,
+      minPassScore: parseInt(minPassScore) || 75,
     });
   };
 
@@ -366,6 +378,54 @@ export default function PracticeDrills({ embedded }: { embedded?: boolean }) {
                   value={participants}
                   onChange={(e) => setParticipants(e.target.value)}
                   data-testid="input-participants"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="drillObjective" className="font-bold text-[#0A0F2E]">Drill Objective</Label>
+                <Input
+                  id="drillObjective"
+                  className="border-[#E8E4DC]"
+                  placeholder="e.g. Test Finance domain owner response time under a competitor pricing trigger"
+                  value={drillObjective}
+                  onChange={(e) => setDrillObjective(e.target.value)}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label className="font-bold text-[#0A0F2E]">Drill Facilitator</Label>
+                  <Input
+                    className="border-[#E8E4DC]"
+                    placeholder="Name of person running the drill"
+                    value={facilitator}
+                    onChange={(e) => setFacilitator(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label className="font-bold text-[#0A0F2E]">Minimum Pass Score (%)</Label>
+                  <Select value={minPassScore} onValueChange={setMinPassScore}>
+                    <SelectTrigger className="border-[#E8E4DC]">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="60">60% — Basic</SelectItem>
+                      <SelectItem value="70">70% — Standard</SelectItem>
+                      <SelectItem value="75">75% — Recommended</SelectItem>
+                      <SelectItem value="80">80% — Rigorous</SelectItem>
+                      <SelectItem value="90">90% — High Assurance</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label className="font-bold text-[#0A0F2E]">Scenario Variant <span className="text-[#6B7280] font-normal">(optional)</span></Label>
+                <Input
+                  className="border-[#E8E4DC]"
+                  placeholder="e.g. Competitor acquires top 3 accounts simultaneously"
+                  value={scenarioVariant}
+                  onChange={(e) => setScenarioVariant(e.target.value)}
                 />
               </div>
 

@@ -57,14 +57,17 @@ interface Stakeholder {
   id: string;
   name: string;
   email: string;
+  mobile?: string;
   role: string;
   department: string;
   approvalLimit?: number;
   canApproveActivations: boolean;
+  isBackup: boolean;
   notificationPreferences: {
     email: boolean;
     slack: boolean;
     inApp: boolean;
+    sms: boolean;
   };
 }
 
@@ -131,11 +134,15 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
   const [newStakeholder, setNewStakeholder] = useState<Partial<Stakeholder>>({
     name: '',
     email: '',
+    mobile: '',
     role: '',
     department: '',
     canApproveActivations: false,
-    notificationPreferences: { email: true, slack: false, inApp: true },
+    isBackup: false,
+    notificationPreferences: { email: true, slack: false, inApp: true, sms: false },
   });
+  const [isTestingChannel, setIsTestingChannel] = useState(false);
+  const [channelTestResult, setChannelTestResult] = useState<'success' | 'fail' | null>(null);
   
   // Form states for escalation
   const [newEscalation, setNewEscalation] = useState<Partial<EscalationPolicy>>({
@@ -879,15 +886,27 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     data-testid="input-stakeholder-name"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label>Email *</Label>
-                  <Input 
-                    type="email"
-                    placeholder="john.smith@company.com"
-                    value={newStakeholder.email}
-                    onChange={(e) => setNewStakeholder({ ...newStakeholder, email: e.target.value })}
-                    data-testid="input-stakeholder-email"
-                  />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Email *</Label>
+                    <Input 
+                      type="email"
+                      placeholder="john.smith@company.com"
+                      value={newStakeholder.email}
+                      onChange={(e) => setNewStakeholder({ ...newStakeholder, email: e.target.value })}
+                      data-testid="input-stakeholder-email"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Mobile (direct cell)</Label>
+                    <Input 
+                      type="tel"
+                      placeholder="+1 (555) 000-0000"
+                      value={newStakeholder.mobile || ''}
+                      onChange={(e) => setNewStakeholder({ ...newStakeholder, mobile: e.target.value })}
+                      data-testid="input-stakeholder-mobile"
+                    />
+                  </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -924,11 +943,42 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     onChange={(e) => setNewStakeholder({ ...newStakeholder, approvalLimit: parseInt(e.target.value) || undefined })}
                   />
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Notification Channels</Label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {(['email', 'slack', 'sms', 'inApp'] as const).map((ch) => {
+                      const labels: Record<string, string> = { email: 'Email', slack: 'Slack', sms: 'SMS', inApp: 'In-App' };
+                      const checked = (newStakeholder.notificationPreferences as any)?.[ch] ?? false;
+                      return (
+                        <div key={ch} className="flex items-center justify-between border border-[#E8E4DC] px-3 py-2">
+                          <span className="text-sm text-[#0A0F2E]">{labels[ch]}</span>
+                          <Switch
+                            checked={checked}
+                            onCheckedChange={(val) => setNewStakeholder({
+                              ...newStakeholder,
+                              notificationPreferences: { ...newStakeholder.notificationPreferences as any, [ch]: val }
+                            })}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="flex items-center justify-between border border-[#E8E4DC] px-3 py-2">
                   <Label>Can Approve Readiness Protocol Activations</Label>
                   <Switch 
                     checked={newStakeholder.canApproveActivations}
                     onCheckedChange={(checked) => setNewStakeholder({ ...newStakeholder, canApproveActivations: checked })}
+                  />
+                </div>
+                <div className="flex items-center justify-between border border-[#E8E4DC] px-3 py-2">
+                  <div>
+                    <Label>Backup Contact</Label>
+                    <p className="text-xs text-[#6B7280]">Acts as delegate when primary contacts are unavailable</p>
+                  </div>
+                  <Switch 
+                    checked={newStakeholder.isBackup || false}
+                    onCheckedChange={(checked) => setNewStakeholder({ ...newStakeholder, isBackup: checked })}
                   />
                 </div>
               </div>
@@ -977,11 +1027,47 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                   />
                 </div>
                 {newChannel.channelType === 'slack' && (
+                  <div className="space-y-3">
+                    <div className="space-y-2">
+                      <Label>Slack Channel Name</Label>
+                      <Input
+                        placeholder="#crisis-response"
+                        onChange={(e) => setNewChannel({ ...newChannel, configuration: { ...newChannel.configuration, channelName: e.target.value } })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Webhook URL</Label>
+                      <Input 
+                        placeholder="https://hooks.slack.com/services/..."
+                        onChange={(e) => setNewChannel({ ...newChannel, configuration: { ...newChannel.configuration, webhookUrl: e.target.value } })}
+                      />
+                    </div>
+                  </div>
+                )}
+                {newChannel.channelType === 'teams' && (
+                  <div className="space-y-3">
+                    <div className="space-y-2">
+                      <Label>Teams Channel / Group Name</Label>
+                      <Input
+                        placeholder="e.g. Executive Crisis Response"
+                        onChange={(e) => setNewChannel({ ...newChannel, configuration: { ...newChannel.configuration, channelName: e.target.value } })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Webhook URL</Label>
+                      <Input
+                        placeholder="https://outlook.office.com/webhook/..."
+                        onChange={(e) => setNewChannel({ ...newChannel, configuration: { ...newChannel.configuration, webhookUrl: e.target.value } })}
+                      />
+                    </div>
+                  </div>
+                )}
+                {newChannel.channelType === 'email' && (
                   <div className="space-y-2">
-                    <Label>Webhook URL</Label>
-                    <Input 
-                      placeholder="https://hooks.slack.com/services/..."
-                      onChange={(e) => setNewChannel({ ...newChannel, configuration: { webhookUrl: e.target.value } })}
+                    <Label>Distribution List / Recipients</Label>
+                    <Input
+                      placeholder="crisis-team@company.com, ceo@company.com"
+                      onChange={(e) => setNewChannel({ ...newChannel, configuration: { ...newChannel.configuration, recipients: e.target.value } })}
                     />
                   </div>
                 )}
@@ -994,19 +1080,176 @@ export default function OrganizationSetup({ embedded }: { embedded?: boolean }) 
                     />
                   </div>
                 )}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between border border-[#E8E4DC] px-3 py-2">
                   <Label>Set as Default Channel</Label>
                   <Switch 
                     checked={newChannel.isDefault}
                     onCheckedChange={(checked) => setNewChannel({ ...newChannel, isDefault: checked })}
                   />
                 </div>
+                {channelTestResult === 'success' && (
+                  <div className="flex items-center gap-2 text-sm text-[#2B8A6E] border border-[#2B8A6E]/30 bg-[#2B8A6E]/05 px-3 py-2">
+                    <CheckCircle className="h-4 w-4" />
+                    Channel verified — test message delivered successfully
+                  </div>
+                )}
+                {channelTestResult === 'fail' && (
+                  <div className="flex items-center gap-2 text-sm text-red-600 border border-red-200 bg-red-50 px-3 py-2">
+                    <AlertTriangle className="h-4 w-4" />
+                    Verification failed — check the URL or credentials and try again
+                  </div>
+                )}
               </div>
-              <DialogFooter>
-                <Button variant="outline" onClick={() => setIsChannelDialogOpen(false)}>Cancel</Button>
+              <DialogFooter className="gap-2">
+                <Button
+                  variant="outline"
+                  disabled={isTestingChannel}
+                  onClick={async () => {
+                    setIsTestingChannel(true);
+                    setChannelTestResult(null);
+                    try {
+                      const url = newChannel.configuration?.webhookUrl || newChannel.configuration?.endpointUrl;
+                      if (!url) { setChannelTestResult('fail'); return; }
+                      await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: '[Readiness OS] Channel verification test' }) });
+                      setChannelTestResult('success');
+                    } catch {
+                      setChannelTestResult('fail');
+                    } finally {
+                      setIsTestingChannel(false);
+                    }
+                  }}
+                >
+                  {isTestingChannel ? 'Testing...' : 'Test Channel'}
+                </Button>
+                <Button variant="outline" onClick={() => { setIsChannelDialogOpen(false); setChannelTestResult(null); }}>Cancel</Button>
                 <Button onClick={handleAddChannel} data-testid="button-save-channel">
                   <Save className="h-4 w-4 mr-2" />
                   Save Channel
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          {/* Add Escalation Policy Dialog */}
+          <Dialog open={isEscalationDialogOpen} onOpenChange={setIsEscalationDialogOpen}>
+            <DialogContent className="max-w-lg">
+              <DialogHeader>
+                <DialogTitle>Add Escalation Policy</DialogTitle>
+                <DialogDescription>Define how unacknowledged alerts escalate through your organization</DialogDescription>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label>Policy Name *</Label>
+                  <Input
+                    placeholder="e.g., Critical Response Escalation"
+                    value={newEscalation.name || ''}
+                    onChange={(e) => setNewEscalation({ ...newEscalation, name: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Description</Label>
+                  <Input
+                    placeholder="Brief description of when this policy applies"
+                    value={newEscalation.description || ''}
+                    onChange={(e) => setNewEscalation({ ...newEscalation, description: e.target.value })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Trigger Type</Label>
+                  <Select
+                    value={newEscalation.triggerType || 'time_elapsed'}
+                    onValueChange={(value) => setNewEscalation({ ...newEscalation, triggerType: value })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="time_elapsed">Time Elapsed — no acknowledgment</SelectItem>
+                      <SelectItem value="severity_escalation">Severity Escalation — risk level rises</SelectItem>
+                      <SelectItem value="manual">Manual — executive triggers escalation</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <Label>Escalation Levels</Label>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const currentLevels = newEscalation.levels || [];
+                        setNewEscalation({
+                          ...newEscalation,
+                          levels: [...currentLevels, {
+                            level: currentLevels.length + 1,
+                            approvers: [''],
+                            timeoutMinutes: 30,
+                            actions: ['email'],
+                          }]
+                        });
+                      }}
+                    >
+                      <Plus className="h-3 w-3 mr-1" /> Add Level
+                    </Button>
+                  </div>
+                  {(newEscalation.levels || []).map((level, idx) => (
+                    <div key={idx} className="border border-[#E8E4DC] p-3 space-y-3 bg-[#F8F7F4]">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold text-[#0A0F2E]">Level {level.level}</span>
+                        <span className="text-xs text-[#6B7280]">Escalates after {level.timeoutMinutes} min</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <Label className="text-xs text-[#6B7280]">Named Contact / Role</Label>
+                          <Input
+                            className="h-8 text-sm"
+                            placeholder="e.g. Sarah Chen (CFO)"
+                            value={level.approvers[0] || ''}
+                            onChange={(e) => {
+                              const updated = [...(newEscalation.levels || [])];
+                              updated[idx] = { ...updated[idx], approvers: [e.target.value] };
+                              setNewEscalation({ ...newEscalation, levels: updated });
+                            }}
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <Label className="text-xs text-[#6B7280]">Timeout (minutes)</Label>
+                          <Input
+                            className="h-8 text-sm"
+                            type="number"
+                            value={level.timeoutMinutes}
+                            onChange={(e) => {
+                              const updated = [...(newEscalation.levels || [])];
+                              updated[idx] = { ...updated[idx], timeoutMinutes: parseInt(e.target.value) || 30 };
+                              setNewEscalation({ ...newEscalation, levels: updated });
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {(!newEscalation.levels || newEscalation.levels.length === 0) && (
+                    <p className="text-sm text-[#6B7280] border border-dashed border-[#E8E4DC] px-4 py-3 text-center">
+                      No levels defined yet — click "Add Level" above to define the escalation chain
+                    </p>
+                  )}
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setIsEscalationDialogOpen(false)}>Cancel</Button>
+                <Button
+                  onClick={() => {
+                    if (!newEscalation.name) {
+                      toast({ title: 'Required', description: 'Please enter a policy name', variant: 'destructive' });
+                      return;
+                    }
+                    createEscalationMutation.mutate(newEscalation);
+                  }}
+                  disabled={createEscalationMutation?.isPending}
+                >
+                  <Save className="h-4 w-4 mr-2" />
+                  Save Policy
                 </Button>
               </DialogFooter>
             </DialogContent>

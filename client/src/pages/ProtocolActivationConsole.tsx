@@ -335,6 +335,8 @@ export default function ProtocolActivationConsole() {
   const [executionStartTime, setExecutionStartTime] = useState<Date | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [notes, setNotes] = useState("");
+  const [actualCost, setActualCost] = useState("");
+  const [outcomeClassification, setOutcomeClassification] = useState<"contained" | "board_notified" | "regulatory_filing" | "escalated" | "">(""); 
   const [executionStatus, setExecutionStatus] = useState<'pending' | 'active' | 'paused' | 'completed'>('pending');
   const [executionId] = useState(`exec-${Date.now()}`);
   const [activationDbId, setActivationDbId] = useState<string | null>(null);
@@ -1526,21 +1528,81 @@ export default function ProtocolActivationConsole() {
           </div>
         )}
 
-        {/* Execution Notes */}
-        <div className="bg-white border border-[#E8E4DC] p-6">
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+        {/* Execution Intelligence Capture */}
+        <div className="bg-white border border-[#E8E4DC] p-6 space-y-6">
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
             <MessageSquare className="h-5 w-5" style={{ color: NAVY }} />
-            <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Notes</span>
+            <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>Execution Intelligence</span>
           </div>
-          <Textarea 
-            placeholder="Document key decisions, actions taken, or important observations during this execution..."
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            rows={4}
-            className="w-full focus-visible:ring-NAVY"
-            style={{ border: `1.5px solid ${BORDER}`, color: NAVY }}
-            data-testid="textarea-execution-notes"
-          />
+
+          {/* Outcome Classification */}
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 10 }}>
+              Outcome Classification
+              <span style={{ fontSize: 10, fontWeight: 400, color: "#6B7280", marginLeft: 8, textTransform: "none", letterSpacing: 0 }}>— what actually happened?</span>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+              {([
+                { value: "contained", label: "Contained Internally", desc: "Resolved within org — no external notification required" },
+                { value: "board_notified", label: "Board Notified", desc: "Board was briefed or approval sought during execution" },
+                { value: "regulatory_filing", label: "Regulatory Filing", desc: "A regulatory disclosure or filing was triggered" },
+                { value: "escalated", label: "Escalated Beyond Protocol", desc: "Activation required steps outside the pre-staged protocol" },
+              ] as const).map((opt) => {
+                const selected = outcomeClassification === opt.value;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => setOutcomeClassification(selected ? "" : opt.value)}
+                    style={{
+                      padding: "10px 14px", border: `1.5px solid ${selected ? TEAL : BORDER}`,
+                      background: selected ? `${TEAL}10` : "#fff", cursor: "pointer",
+                      textAlign: "left", borderRadius: "0.15rem",
+                    }}
+                  >
+                    <div style={{ fontSize: 12, fontWeight: 700, color: selected ? TEAL : NAVY, marginBottom: 2 }}>{opt.label}</div>
+                    <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.4 }}>{opt.desc}</div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Actual Cost Incurred */}
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 8 }}>
+              Actual Cost Incurred
+              <span style={{ fontSize: 10, fontWeight: 400, color: "#6B7280", marginLeft: 8, textTransform: "none", letterSpacing: 0 }}>— used to compute real ROI (vs. estimated)</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 0, border: `1.5px solid ${BORDER}`, background: "#fff" }}>
+              <span style={{ padding: "10px 14px", borderRight: `1px solid ${BORDER}`, fontSize: 14, fontWeight: 600, color: "#6B7280", background: "#F8F7F4" }}>$</span>
+              <input
+                type="number"
+                min="0"
+                placeholder="0 — leave blank if no incremental cost"
+                value={actualCost}
+                onChange={(e) => setActualCost(e.target.value)}
+                style={{ flex: 1, padding: "10px 14px", border: "none", outline: "none", fontSize: 13, color: NAVY, background: "#fff" }}
+                data-testid="input-actual-cost"
+              />
+            </div>
+          </div>
+
+          {/* Execution Notes */}
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: "0.12em", textTransform: "uppercase" as const, marginBottom: 8 }}>
+              Execution Notes
+            </div>
+            <Textarea 
+              placeholder="Document key decisions, actions taken, or important observations during this execution..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              rows={4}
+              className="w-full focus-visible:ring-NAVY"
+              style={{ border: `1.5px solid ${BORDER}`, color: NAVY }}
+              data-testid="textarea-execution-notes"
+            />
+          </div>
         </div>
 
         {/* Action Buttons */}

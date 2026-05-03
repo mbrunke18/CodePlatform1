@@ -48,6 +48,9 @@ interface SuccessMetric {
   unit: string;
   reviewCadence: 'daily' | 'weekly' | 'monthly' | 'quarterly';
   isActive: boolean;
+  metricOwner?: string;
+  dataSource?: string;
+  boardReporting?: boolean;
 }
 
 const METRIC_TYPES = [
@@ -133,6 +136,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
     unit: '%',
     reviewCadence: 'weekly',
     isActive: true,
+    metricOwner: '',
+    dataSource: 'manual',
+    boardReporting: false,
   });
   
   // Fetch metrics from API
@@ -169,6 +175,9 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
         unit: metric.unit,
         reviewCadence: metric.reviewCadence,
         isActive: metric.isActive,
+        metricOwner: metric.metricOwner,
+        dataSource: metric.dataSource,
+        boardReporting: metric.boardReporting,
       });
     },
     onSuccess: () => {
@@ -561,7 +570,48 @@ export default function SuccessMetricsConfiguration({ embedded }: { embedded?: b
                   </div>
                 </div>
               </div>
-              
+
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Metric Owner</Label>
+                    <Input
+                      value={newMetric.metricOwner || ''}
+                      onChange={(e) => setNewMetric({ ...newMetric, metricOwner: e.target.value })}
+                      placeholder="e.g. VP Finance"
+                      className="border-[#E8E4DC]"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label className="text-xs uppercase tracking-wider text-[#6B7280]">Data Source</Label>
+                    <select
+                      value={newMetric.dataSource || 'manual'}
+                      onChange={(e) => setNewMetric({ ...newMetric, dataSource: e.target.value })}
+                      className="w-full border border-[#E8E4DC] px-3 py-2 text-sm text-[#0A0F2E] bg-white"
+                      style={{ borderRadius: "0.15rem" }}
+                    >
+                      <option value="manual">Manual Entry</option>
+                      <option value="salesforce">Salesforce</option>
+                      <option value="servicenow">ServiceNow</option>
+                      <option value="jira">Jira</option>
+                      <option value="powerbi">Power BI</option>
+                      <option value="hubspot">HubSpot</option>
+                      <option value="integration">Custom Integration</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between border border-[#E8E4DC] px-4 py-3">
+                  <div>
+                    <Label className="text-sm font-semibold text-[#0A0F2E]">Include in Board Reports</Label>
+                    <p className="text-xs text-[#6B7280] mt-0.5">This metric will surface in board-level readiness summaries</p>
+                  </div>
+                  <Switch
+                    checked={newMetric.boardReporting || false}
+                    onCheckedChange={(val) => setNewMetric({ ...newMetric, boardReporting: val })}
+                  />
+                </div>
+              </div>
+
               <DialogFooter className="pt-6">
                 <Button 
                   variant="outline" 
