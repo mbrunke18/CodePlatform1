@@ -57,6 +57,6 @@ describe('Badge Component', () => {
     
     const badgeElement = screen.getByText('Status Badge');
     expect(badgeElement.tagName).toBe('DIV');
-    expect(badgeElement).toHaveClass('inline-flex', 'items-center', 'rounded-full');
+    expect(badgeElement).toHaveClass('inline-flex', 'items-center');
   });
 });

@@ -13,6 +13,15 @@ export default defineConfig({
     pool: 'forks',
     testTimeout: 10000,
     hookTimeout: 10000,
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/archive/**',
+      '**/executeiq-complete/**',
+      '**/bastion-complete/**',
+      '**/.{idea,git,cache,output,temp}/**',
+      'e2e/**',
+    ],
   },
   resolve: {
     alias: {

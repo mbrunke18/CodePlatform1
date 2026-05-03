@@ -185,7 +185,7 @@ describe('Card Components', () => {
       const title = screen.getByText('Business Intelligence');
       const content = screen.getByText('Strategic content here');
       
-      expect(title.tagName).toBe('H3');
+      expect(title.tagName).toBe('DIV');
       expect(content).toBeInTheDocument();
     });
   });

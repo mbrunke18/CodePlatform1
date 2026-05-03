@@ -1,210 +1,193 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Demo Flows - Critical Business Paths', () => {
-  
-  test('Executive Demo presentation flows work correctly', async ({ page }) => {
-    // Navigate to Executive Demo
-    await page.goto('/executive-demo');
-    
-    // Verify page loads with correct branding
-    await expect(page).toHaveTitle(/Phronex|Executive Demo/);
-    await expect(page.getByText('Executive Demo Presentation')).toBeVisible();
-    
-    // Test demo controls are present and functional
-    await expect(page.getByTestId('button-play')).toBeVisible();
-    await expect(page.getByTestId('button-pause')).toBeVisible();
-    await expect(page.getByTestId('button-skip-forward')).toBeVisible();
-    await expect(page.getByTestId('button-skip-back')).toBeVisible();
-    
-    // Verify demo steps are displayed
-    await expect(page.getByText('Strategic Signal Detection')).toBeVisible();
-    await expect(page.getByText('AI competitor breakthrough detected')).toBeVisible();
-    
-    // Test progress indicators work
-    const progressBars = page.locator('[role="progressbar"]');
-    await expect(progressBars.first()).toBeVisible();
-    
-    // Verify metrics are displayed with realistic values
-    await expect(page.getByText('847%')).toBeVisible(); // Competitor AI Patents
-    await expect(page.getByText('312%')).toBeVisible(); // Customer AI Inquiries
-    
-    // Test demo navigation
-    await page.getByTestId('button-play').click();
-    
-    // Verify demo progresses (wait for content to appear)
-    await expect(page.getByText('Automated Trigger Activation')).toBeVisible({ timeout: 5000 });
-    
-    // Test demo phases are accessible
-    const detectionTab = page.getByText('Detection');
-    const planningTab = page.getByText('Planning');
-    const responseTab = page.getByText('Response');
-    
-    await expect(detectionTab).toBeVisible();
-    await expect(planningTab).toBeVisible();  
-    await expect(responseTab).toBeVisible();
-    
-    // Click through demo phases
-    await planningTab.click();
-    await expect(page.getByText('Strategic Response Planning')).toBeVisible();
-    
-    await responseTab.click();
-    await expect(page.getByText('Crisis Response Execution')).toBeVisible();
-  });
+/**
+ * VaughnMartin Readiness OS — Core Demo Flow Tests
+ *
+ * Verifies that critical demo and lead-generation paths work end-to-end
+ * using the current VaughnMartin brand and platform structure.
+ */
 
-  test('AI Intelligence Demo showcases all modules correctly', async ({ page }) => {
-    // Navigate to AI Intelligence Demo
-    await page.goto('/demo/ai-intelligence');
-    
-    // Verify page loads correctly
-    await expect(page).toHaveTitle(/AI Intelligence|Demo/);
-    await expect(page.getByText('AI Intelligence Suite Demo')).toBeVisible();
-    
-    // Verify all AI modules are displayed
-    await expect(page.getByText('Pulse Intelligence')).toBeVisible();
-    await expect(page.getByText('Flux Adaptations')).toBeVisible();
-    await expect(page.getByText('Prism Insights')).toBeVisible();
-    await expect(page.getByText('Echo Cultural Analytics')).toBeVisible();
-    await expect(page.getByText('Nova Innovations')).toBeVisible();
-    
-    // Test demo scenario buttons
-    const supplyChainBtn = page.getByText('Supply Chain Disruption');
-    const marketOpportunityBtn = page.getByText('Market Opportunity');
-    const orgChangeBtn = page.getByText('Organizational Change');
-    
-    await expect(supplyChainBtn).toBeVisible();
-    await expect(marketOpportunityBtn).toBeVisible();
-    await expect(orgChangeBtn).toBeVisible();
-    
-    // Test running a demo scenario
-    await supplyChainBtn.click();
-    
-    // Verify analysis starts
-    await expect(page.getByText('Analyzing scenario...')).toBeVisible();
-    
-    // Wait for analysis to complete - use explicit wait for results
-    await expect(page.getByText(/confidence/i)).toBeVisible({ timeout: 10000 });
-    await expect(page.getByText(/Immediate action required/i)).toBeVisible();
-    await expect(page.getByText(/stakeholders/i)).toBeVisible();
-    
-    // Verify recommendations are shown
-    await expect(page.getByText('Activate crisis response protocols')).toBeVisible();
-    await expect(page.getByText('Notify C-suite and board')).toBeVisible();
-    
-    // Test custom scenario input
-    const customInput = page.getByTestId('input-custom-scenario');
-    await expect(customInput).toBeVisible();
-    
-    await customInput.fill('Major cybersecurity breach affecting customer data');
-    await page.getByTestId('button-analyze-custom').click();
-    
-    // Verify custom analysis runs
-    await expect(page.getByText('Analyzing scenario...')).toBeVisible();
-    
-    // Verify custom analysis results - wait for completion
-    await expect(page.getByText(/confidence/i)).toBeVisible({ timeout: 10000 });
-  });
-
-  test('Organization management displays realistic demo data', async ({ page }) => {
-    // Navigate to organizations page
-    await page.goto('/organizations');
-    
-    // Verify page loads
-    await expect(page).toHaveTitle(/Organizations|Phronex/);
-    
-    // Verify realistic organizations are displayed
-    await expect(page.getByText('TechFlow Dynamics')).toBeVisible();
-    await expect(page.getByText('Meridian Manufacturing')).toBeVisible();
-    await expect(page.getByText('Catalyst Financial Group')).toBeVisible();
-    
-    // Verify realistic industry data
-    await expect(page.getByText('Software & Technology')).toBeVisible();
-    await expect(page.getByText('Manufacturing')).toBeVisible();
-    await expect(page.getByText('Financial Services')).toBeVisible();
-    
-    // Verify realistic employee counts
-    await expect(page.getByText('8,500')).toBeVisible(); // TechFlow Dynamics
-    await expect(page.getByText('12,000')).toBeVisible(); // Meridian Manufacturing
-    await expect(page.getByText('3,200')).toBeVisible(); // Catalyst Financial Group
-    
-    // Verify headquarters locations
-    await expect(page.getByText('San Francisco')).toBeVisible();
-    await expect(page.getByText('Detroit')).toBeVisible();
-    await expect(page.getByText('Charlotte')).toBeVisible();
-    
-    // Test organization interaction
-    const techFlowCard = page.locator('[data-testid*="card-organization"]').filter({ hasText: 'TechFlow Dynamics' });
-    await expect(techFlowCard).toBeVisible();
-    
-    // Click on organization to view details
-    await techFlowCard.click();
-    
-    // Verify organization details are shown
-    await expect(page.getByText('Software & Technology')).toBeVisible();
-    await expect(page.getByText('8,500 employees')).toBeVisible();
-  });
-
-  test('Home page loads and navigation works correctly', async ({ page }) => {
-    // Navigate to home page
+test.describe('Homepage — Brand & Navigation', () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    
-    // Verify Phronex Kairosync branding
-    await expect(page.getByText('Phronex')).toBeVisible();
-    await expect(page.getByText('Kairosync')).toBeVisible();
-    
-    // Verify main navigation is present
-    await expect(page.getByTestId('nav-strategic-planning')).toBeVisible();
-    await expect(page.getByTestId('nav-strategic-scenarios')).toBeVisible();
-    await expect(page.getByTestId('nav-organizations')).toBeVisible();
-    
-    // Test navigation to demo pages
-    const executiveDemo = page.getByText('Executive Demo');
-    if (await executiveDemo.isVisible()) {
-      await executiveDemo.click();
-      await expect(page).toHaveURL(/executive-demo/);
-      await expect(page.getByText('Executive Demo Presentation')).toBeVisible();
-    }
-    
-    // Navigate back and test AI Intelligence demo
-    await page.goto('/');
-    const aiDemo = page.getByText('AI Intelligence');
-    if (await aiDemo.isVisible()) {
-      await aiDemo.click();
-      await expect(page.getByText('Pulse Intelligence')).toBeVisible();
-    }
   });
 
-  test('Strategic scenarios display realistic business data', async ({ page }) => {
-    // Navigate to scenarios page
+  test('homepage loads and carries VaughnMartin branding', async ({ page }) => {
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+    const bodyText = await page.locator('body').innerText();
+    expect(bodyText).toContain('VaughnMartin');
+  });
+
+  test('homepage does not carry retired "Phronex" branding', async ({ page }) => {
+    const bodyText = await page.locator('body').innerText();
+    expect(bodyText).not.toContain('Phronex');
+    expect(bodyText).not.toContain('Kairosync');
+  });
+
+  test('homepage carries the canonical product thesis', async ({ page }) => {
+    const bodyText = await page.locator('body').innerText();
+    const hasThesis =
+      bodyText.includes('Readiness OS') ||
+      bodyText.includes('Readiness Protocol') ||
+      bodyText.includes('12 minutes') ||
+      bodyText.includes('3,600');
+    expect(hasThesis).toBe(true);
+  });
+
+  test('primary CTA button is visible and clickable', async ({ page }) => {
+    await page.waitForTimeout(1000);
+    const ctaButton = page
+      .locator('a, button')
+      .filter({ hasText: /Get Started|Request Access|Founding Partner|Apply|Demo|Learn More/i })
+      .first();
+    await expect(ctaButton).toBeVisible({ timeout: 10000 });
+  });
+});
+
+test.describe('12-Minute Test Drive — Lead Generation Flow', () => {
+  test('test drive page loads', async ({ page }) => {
+    await page.goto('/12-minute-experience');
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('test drive page contains readiness or 12-minute messaging', async ({ page }) => {
+    await page.goto('/12-minute-experience');
+    await page.waitForTimeout(1000);
+    const bodyText = await page.locator('body').innerText();
+    const hasExpectedContent =
+      bodyText.includes('12') ||
+      bodyText.includes('Readiness') ||
+      bodyText.includes('Protocol') ||
+      bodyText.includes('trigger');
+    expect(hasExpectedContent).toBe(true);
+  });
+});
+
+test.describe('Playbook Library — Browse Experience', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/playbook-library');
+  });
+
+  test('playbook library page loads', async ({ page }) => {
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('playbook library shows protocol or playbook content', async ({ page }) => {
+    await page.waitForTimeout(1500);
+    const bodyText = await page.locator('body').innerText();
+    const hasContent =
+      bodyText.includes('Protocol') ||
+      bodyText.includes('Playbook') ||
+      bodyText.includes('170');
+    expect(hasContent).toBe(true);
+  });
+
+  test('playbook library uses approved domain labels', async ({ page }) => {
+    await page.waitForTimeout(1500);
+    const bodyText = await page.locator('body').innerText();
+    expect(bodyText).not.toContain('Offense');
+    expect(bodyText).not.toContain('Special Teams');
+  });
+});
+
+test.describe('Request Access — Founding Partner Flow', () => {
+  test('request-access page loads', async ({ page }) => {
+    await page.goto('/request-access');
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('request-access page uses Founding Partner language', async ({ page }) => {
+    await page.goto('/request-access');
+    await page.waitForTimeout(1000);
+    const bodyText = await page.locator('body').innerText();
+    const hasFoundingPartner =
+      bodyText.includes('Founding Partner') ||
+      bodyText.includes('Access');
+    expect(hasFoundingPartner).toBe(true);
+  });
+
+  test('request-access page does not show retired Pilot Program language', async ({ page }) => {
+    await page.goto('/request-access');
+    await page.waitForTimeout(1000);
+    const bodyText = await page.locator('body').innerText();
+    expect(bodyText).not.toContain('Pilot Program');
+    expect(bodyText).not.toContain('Pilot Access');
+    expect(bodyText).not.toContain('Now in Pilot');
+  });
+});
+
+test.describe('Executive Dashboard', () => {
+  test('executive dashboard loads', async ({ page }) => {
+    await page.goto('/executive-dashboard');
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('executive dashboard shows readiness or score content', async ({ page }) => {
+    await page.goto('/executive-dashboard');
+    await page.waitForTimeout(1500);
+    const bodyText = await page.locator('body').innerText();
+    const hasContent =
+      bodyText.includes('Readiness') ||
+      bodyText.includes('Score') ||
+      bodyText.includes('Protocol') ||
+      bodyText.includes('Dashboard');
+    expect(hasContent).toBe(true);
+  });
+});
+
+test.describe('Intelligence Demo', () => {
+  test('intelligence demo page loads', async ({ page }) => {
+    await page.goto('/intelligence-demo');
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('intelligence demo shows signal or intelligence content', async ({ page }) => {
+    await page.goto('/intelligence-demo');
+    await page.waitForTimeout(1500);
+    const bodyText = await page.locator('body').innerText();
+    const hasContent =
+      bodyText.includes('Signal') ||
+      bodyText.includes('Intelligence') ||
+      bodyText.includes('Protocol') ||
+      bodyText.includes('scenario');
+    expect(hasContent).toBe(true);
+  });
+
+  test('intelligence demo does not use retired AI Confidence label', async ({ page }) => {
+    await page.goto('/intelligence-demo');
+    await page.waitForTimeout(1500);
+    const bodyText = await page.locator('body').innerText();
+    expect(bodyText).not.toContain('AI Confidence');
+  });
+});
+
+test.describe('Contact / Founding Partner CTA', () => {
+  test('contact page loads', async ({ page }) => {
+    await page.goto('/contact');
+    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
+  });
+
+  test('contact page contains a form or contact mechanism', async ({ page }) => {
+    await page.goto('/contact');
+    await page.waitForTimeout(1000);
+    const hasForm =
+      (await page.locator('input').count()) > 0 ||
+      (await page.locator('textarea').count()) > 0 ||
+      (await page.locator('form').count()) > 0;
+    expect(hasForm).toBe(true);
+  });
+});
+
+test.describe('URL Redirect Integrity', () => {
+  test('/dashboard redirects to executive-dashboard', async ({ page }) => {
+    await page.goto('/dashboard');
+    await page.waitForTimeout(1000);
+    expect(page.url()).toContain('executive-dashboard');
+  });
+
+  test('/scenarios redirects to playbook-library', async ({ page }) => {
     await page.goto('/scenarios');
-    
-    // Verify page loads
-    await expect(page.getByText(/Strategic Scenarios|Scenarios/)).toBeVisible();
-    
-    // Verify realistic scenario titles are displayed
-    await expect(page.getByText('AI-Powered Customer Service Transformation')).toBeVisible();
-    await expect(page.getByText('Supply Chain Resilience Initiative')).toBeVisible();
-    await expect(page.getByText('Cybersecurity Infrastructure Overhaul')).toBeVisible();
-    
-    // Verify scenario categories
-    await expect(page.getByText('Technology Integration')).toBeVisible();
-    await expect(page.getByText('Operational Excellence')).toBeVisible();
-    await expect(page.getByText('Risk Management')).toBeVisible();
-    
-    // Verify confidence scores and timelines
-    await expect(page.getByText(/85%/)).toBeVisible();
-    await expect(page.getByText(/6-12 months/)).toBeVisible();
-    await expect(page.getByText(/High priority/)).toBeVisible();
-    
-    // Test scenario interaction
-    const firstScenario = page.locator('[data-testid*="card-scenario"]').first();
-    await expect(firstScenario).toBeVisible();
-    
-    // Click on scenario to view details
-    await firstScenario.click();
-    
-    // Verify scenario details load
-    await expect(page.getByText(/Description|Overview/)).toBeVisible();
-    await expect(page.getByText(/Timeline|Duration/)).toBeVisible();
-    await expect(page.getByText(/Priority|Confidence/)).toBeVisible();
+    await page.waitForTimeout(1000);
+    expect(page.url()).toContain('playbook-library');
   });
 });

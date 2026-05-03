@@ -68,6 +68,36 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Intelligence Control Center:** Features a live Recent Signal Detections feed.
 - **AIRadarDashboard:** Displays real-time average response times against benchmarks.
 
+## Test Suite
+
+### Structure
+- **Unit Tests (Vitest):** Run with `npx vitest run --reporter=verbose`. Covers server business logic, Zod schema validation, brand terminology enforcement, and key React components.
+- **E2E Tests (Playwright):** Run with `npx playwright test --reporter=list`. Targets `http://localhost:5000`. Covers critical user flows and brand language compliance across key pages.
+
+### Test Files
+| File | What it tests |
+|---|---|
+| `server/__tests__/business-logic.test.ts` | Task value calculation (priority multipliers, strategic keywords) |
+| `server/__tests__/platform-scoring.test.ts` | Risk scoring (√signals × 8), velocity, foresight, agility scores |
+| `server/__tests__/deal-risk.test.ts` | Deal risk score and trigger detection (MockSalesforceService logic) |
+| `server/routes.test.ts` | Zod validation schemas for organization, scenario, and task API inputs |
+| `client/src/__tests__/brand-terminology.test.ts` | Retired-term detection, approved replacements, metric correctness |
+| `client/src/components/__tests__/BrandStamp.test.tsx` | BrandStamp variants, sizes, alignment |
+| `client/src/components/__tests__/SubBrandLabel.test.tsx` | SubBrandLabel rendering, `isSubBrand()` function, SUB_BRAND_NAMES constant |
+| `client/src/components/ui/__tests__/badge.test.tsx` | Badge shadcn component variants |
+| `client/src/components/ui/__tests__/card.test.tsx` | Card/CardHeader/CardTitle/CardContent/CardFooter components |
+| `e2e/comprehensive-platform-tests.spec.ts` | Full platform page coverage — data-testid assertions |
+| `e2e/demo-flows.spec.ts` | Core demo and CTA flows with current VaughnMartin branding |
+| `e2e/brand-compliance.spec.ts` | Zero-tolerance language rules across 8 key public pages |
+
+### Validation Commands (registered)
+- `unit-tests` → `npx vitest run --reporter=verbose`
+- `typecheck` → `npx tsc --noEmit`
+- `e2e-tests` → `npx playwright test --reporter=list`
+
+### Vitest Configuration
+`vitest.config.ts` excludes `e2e/**`, `archive/**`, `executeiq-complete/**`, and `bastion-complete/**` to prevent false picks from backup directories.
+
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI
 - **Database:** Neon PostgreSQL
