@@ -844,6 +844,130 @@ function AnatomySection() {
   );
 }
 
+// ─── SECTION 6b: Platform Architecture ──────────────────────────────────────
+function PlatformArchitectureSection() {
+  return (
+    <section style={{ background: "#F8F7F4", padding: "96px 0", position: "relative", borderTop: "1px solid #E8E4DC" }}>
+      <div style={{ ...CONTAINER }}>
+
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
+              <span style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD }}>Platform Architecture</span>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.5)" }} />
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
+              Start with 170 protocols.<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>Build the rest from scratch.</em>
+            </h2>
+            <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
+              Three layers, each deployable independently. Together they replace the 40-year-old coordination model with infrastructure that executes at the speed of detection.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* Three-tier cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 0, border: "1px solid #E8E4DC", marginBottom: 48 }}>
+
+          {/* Tier 1 — Core */}
+          <Reveal delay={0}>
+            <div style={{ padding: "40px 36px", borderRight: "1px solid #E8E4DC", borderTop: `4px solid ${NAVY}`, height: "100%", boxSizing: "border-box" as const }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: NAVY, opacity: 0.55, marginBottom: 6 }}>Tier 1</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Readiness OS Core</h3>
+              <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
+                170 pre-staged Readiness Protocols, continuous signal monitoring across 221 strategic triggers, and the 12-minute execution engine. Available on day one — for every organization in every industry.
+              </p>
+              <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
+                {[
+                  "170 Readiness Protocols — ready before any trigger fires",
+                  "221 strategic triggers continuously monitored",
+                  "12-minute trigger-to-coordination execution",
+                  "Executive authority preserved at every step",
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, marginBottom: 9, alignItems: "flex-start" }}>
+                    <div style={{ width: 4, height: 4, background: NAVY, flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ ...DM, fontSize: 12.5, color: "#374151", lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 24, padding: "10px 16px", background: "rgba(10,15,46,0.05)", borderLeft: `3px solid ${NAVY}` }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: NAVY }}>Available now · Immediate deployment</span>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Tier 2 — Industry Packs */}
+          <Reveal delay={0.1}>
+            <div style={{ padding: "40px 36px", borderRight: "1px solid #E8E4DC", borderTop: `4px solid ${TEAL}`, height: "100%", boxSizing: "border-box" as const }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Tier 2</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Industry Protocol Packs</h3>
+              <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
+                Pre-configured protocol libraries built around the trigger patterns specific to your industry. Reduces deployment time from weeks to days — because the protocols already match your regulatory, competitive, and operational reality.
+              </p>
+              <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
+                {[
+                  "Financial Services — activist, regulatory, cyber",
+                  "Healthcare — recall, FDA action, supply chain",
+                  "Energy — grid events, regulatory, infrastructure",
+                  "Manufacturing, Pharma, Technology packs included",
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, marginBottom: 9, alignItems: "flex-start" }}>
+                    <div style={{ width: 4, height: 4, background: TEAL, flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ ...DM, fontSize: 12.5, color: "#374151", lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 24, padding: "10px 16px", background: "rgba(43,138,110,0.07)", borderLeft: `3px solid ${TEAL}` }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: TEAL }}>6 industry packs · Sector-specific depth</span>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Tier 3 — Protocol Builder */}
+          <Reveal delay={0.2}>
+            <div style={{ padding: "40px 36px", borderTop: `4px solid ${GOLD}`, height: "100%", boxSizing: "border-box" as const }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Tier 3</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 27, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 14 }}>Protocol Builder</h3>
+              <p style={{ ...DM, fontSize: 13.5, color: "#4A5568", lineHeight: 1.7, marginBottom: 24 }}>
+                Build custom Readiness Protocols from scratch for scenarios unique to your organization, your structure, and your decision authority. The 170 core protocols and industry packs cover the patterns we anticipated. The Protocol Builder covers everything else.
+              </p>
+              <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 18 }}>
+                {[
+                  "Custom trigger conditions and signal thresholds",
+                  "Organization-specific task sequences and owners",
+                  "Approval workflows and decision authority mapping",
+                  "Co-designed with Founding Partners in 2025",
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, marginBottom: 9, alignItems: "flex-start" }}>
+                    <div style={{ width: 4, height: 4, background: GOLD, flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ ...DM, fontSize: 12.5, color: "#374151", lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 24, padding: "10px 16px", background: "rgba(201,168,76,0.08)", borderLeft: `3px solid ${GOLD}` }}>
+                <span style={{ ...DM, fontSize: 11, fontWeight: 700, color: "#8B6914" }}>In development · Founding Partner co-design</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Connector statement */}
+        <Reveal delay={0.2}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 24, flexWrap: "wrap" as const }}>
+            <div style={{ flex: 1, height: 1, background: "#E8E4DC", maxWidth: 140 }} />
+            <p style={{ ...DM, fontSize: 13, color: "#6B7280", textAlign: "center" as const, maxWidth: 620, lineHeight: 1.75 }}>
+              Most organizations start with Tier 1 and an Industry Pack. Founding Partners get early access to the Protocol Builder — and their operational logic shapes how it gets built.
+            </p>
+            <div style={{ flex: 1, height: 1, background: "#E8E4DC", maxWidth: 140 }} />
+          </div>
+        </Reveal>
+
+      </div>
+    </section>
+  );
+}
+
 // ─── SECTION 3: The Problem ───────────────────────────────────────────────────
 function ProblemSection() {
   const RED_BORDER = "#C0392B";
@@ -2457,6 +2581,9 @@ export default function Homepage() {
 
       {/* 6. SOLUTION DEPTH */}
       <AnatomySection />
+
+      {/* 6b. PLATFORM ARCHITECTURE — Three-tier model */}
+      <PlatformArchitectureSection />
 
       {/* 7. RESEARCH — Credibility and moat */}
       <CredibilitySection />

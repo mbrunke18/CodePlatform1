@@ -279,6 +279,81 @@ export default function FoundingPartnerProgram() {
           </div>
         </section>
 
+        {/* Platform Architecture — Three Tiers */}
+        <section style={{ padding: '72px 32px', background: '#F8F7F4', borderTop: '1px solid #E8E4DC' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 48 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 14 }}>
+                Platform Architecture
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2, marginBottom: 12 }}>
+                What you get access to as a Founding Partner.
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#4B5563', lineHeight: 1.7, maxWidth: 640 }}>
+                Three platform layers — each deployable independently. Founding Partners access all three, and their operational logic shapes how Tier 3 gets built.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
+
+              {/* Tier 1 */}
+              <div style={{ padding: '32px 28px', borderRight: '1px solid #E8E4DC', borderTop: '4px solid #0A0F2E' }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#0A0F2E', opacity: 0.45, marginBottom: 6 }}>Tier 1 · Included</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.2 }}>Readiness OS Core</div>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
+                  170 pre-staged protocols, 221 trigger monitors, 12-minute execution engine. The full platform — available from day one.
+                </p>
+                {['170 Readiness Protocols ready to deploy', '221 strategic triggers monitored continuously', '12-minute trigger-to-coordination engine', 'Executive authorization at every activation'].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
+                    <div style={{ width: 3, height: 3, background: '#0A0F2E', flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+                <div style={{ marginTop: 20, padding: '8px 14px', background: 'rgba(10,15,46,0.05)', borderLeft: '3px solid #0A0F2E' }}>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#0A0F2E' }}>Immediate deployment</span>
+                </div>
+              </div>
+
+              {/* Tier 2 */}
+              <div style={{ padding: '32px 28px', borderRight: '1px solid #E8E4DC', borderTop: '4px solid #2B8A6E' }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 6 }}>Tier 2 · Included</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.2 }}>Industry Protocol Pack</div>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
+                  Pre-configured for your vertical's specific trigger patterns. Reduces deployment time from weeks to days.
+                </p>
+                {['Financial Services — activist, regulatory, cyber', 'Healthcare — recall, FDA action, supply chain', 'Energy — grid, regulatory, infrastructure', 'Manufacturing, Pharma, Technology packs available'].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
+                    <div style={{ width: 3, height: 3, background: '#2B8A6E', flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+                <div style={{ marginTop: 20, padding: '8px 14px', background: 'rgba(43,138,110,0.07)', borderLeft: '3px solid #2B8A6E' }}>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#2B8A6E' }}>6 industry packs · Sector-specific depth</span>
+                </div>
+              </div>
+
+              {/* Tier 3 */}
+              <div style={{ padding: '32px 28px', borderTop: '4px solid #C9A84C' }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 6 }}>Tier 3 · Co-Designed With You</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.2 }}>Protocol Builder</div>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12.5, color: '#4B5563', lineHeight: 1.65, marginBottom: 20 }}>
+                  Build custom protocols from scratch for scenarios unique to your organization. Founding Partners shape how this gets built.
+                </p>
+                {['Custom trigger conditions and signal thresholds', 'Your org structure, task sequences, and owners', 'Approval workflows and decision authority mapping', 'Your operational logic defines the design'].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'flex-start' }}>
+                    <div style={{ width: 3, height: 3, background: '#C9A84C', flexShrink: 0, marginTop: 6 }} />
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: '#374151', lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+                <div style={{ marginTop: 20, padding: '8px 14px', background: 'rgba(201,168,76,0.08)', borderLeft: '3px solid #C9A84C' }}>
+                  <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#8B6914' }}>Founding Partner early access · In development</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* 4-Phase Timeline */}
         <section style={{ padding: '80px 32px', background: '#F8F7F4' }}>
           <div style={{ maxWidth: 960, margin: '0 auto' }}>
