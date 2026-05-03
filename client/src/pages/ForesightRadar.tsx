@@ -445,7 +445,7 @@ export default function ForesightRadar({ embedded }: { embedded?: boolean }) {
               <div className="max-w-3xl mx-auto py-12">
                 <div style={{ border: "1px solid #E8E4DC", padding: 48, background: "#fff" }}>
                   <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 16 }}>Configuration</h3>
-                  <p style={{ fontSize: 16, color: "#6B7280", marginBottom: 32 }}>Configure intelligence parameters, signal categories, and AI confidence thresholds for the Foresight Radar.</p>
+                  <p style={{ fontSize: 16, color: "#6B7280", marginBottom: 32 }}>Configure intelligence parameters, signal categories, and signal confidence thresholds for the Foresight Radar.</p>
                   
                   <div className="space-y-8">
                     {["Category Priority", "Alert Thresholds", "Source Management"].map((item) => (

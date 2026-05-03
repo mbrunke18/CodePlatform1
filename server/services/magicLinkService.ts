@@ -42,7 +42,7 @@ function buildAdminNotificationHtml(data: {
         </tr>
         <tr>
           <td style="padding:36px 40px;">
-            <p style="margin:0 0 20px;color:#111827;font-size:16px;font-weight:700;">Someone just requested pilot access:</p>
+            <p style="margin:0 0 20px;color:#111827;font-size:16px;font-weight:700;">Someone just requested Founding Partner Access:</p>
             <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;margin-bottom:28px;">
               <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
                 <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Name</span><br/>

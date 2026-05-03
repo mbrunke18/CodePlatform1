@@ -51,7 +51,7 @@ export default function AIConfidenceBadge({
 
   const tooltipContent = (
     <div className="space-y-2">
-      <div className="font-semibold">AI Confidence: {confidence}%</div>
+      <div className="font-semibold">Signal Confidence: {confidence}%</div>
       <div className="text-xs opacity-90">
         {confidenceData.level} confidence level
       </div>
@@ -61,9 +61,9 @@ export default function AIConfidenceBadge({
         </div>
       )}
       <div className="text-xs opacity-75 mt-2 pt-2 border-t border-white/20">
-        {confidence >= 90 && "AI recommendation has very high accuracy. Safe to execute with minimal review."}
-        {confidence >= 70 && confidence < 90 && "AI recommendation is reliable. Executive review recommended."}
-        {confidence >= 50 && confidence < 70 && "AI recommendation needs validation. Detailed executive review required."}
+        {confidence >= 90 && "System recommendation has very high accuracy. Safe to execute with minimal review."}
+        {confidence >= 70 && confidence < 90 && "System recommendation is reliable. Executive review recommended."}
+        {confidence >= 50 && confidence < 70 && "System recommendation needs validation. Detailed executive review required."}
         {confidence < 50 && "Limited historical data. Executive judgment strongly recommended."}
       </div>
     </div>
@@ -80,7 +80,7 @@ export default function AIConfidenceBadge({
           >
             {showIcon && confidenceData.icon}
             <span className="font-semibold">{confidence}%</span>
-            {size !== "sm" && <span className="opacity-75">AI Confidence</span>}
+            {size !== "sm" && <span className="opacity-75">Signal Confidence</span>}
           </Badge>
         </TooltipTrigger>
         <TooltipContent className="max-w-xs">

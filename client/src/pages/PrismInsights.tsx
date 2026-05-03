@@ -269,7 +269,7 @@ export default function PrismInsights() {
                         <span style={{ fontSize: 10, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700 }}>{insight.dimension} · {insight.timeframe}</span>
                         <span style={{ fontSize: 10, fontWeight: 700, color: impactColor(insight.impact), background: `${impactColor(insight.impact)}12`, padding: '2px 8px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{insight.impact} impact</span>
                         <span style={{ fontSize: 10, fontWeight: 700, color: urgencyColor(insight.urgency), background: `${urgencyColor(insight.urgency)}12`, padding: '2px 8px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{insight.urgency} urgency</span>
-                        <span style={{ fontSize: 10, color: '#9CA3AF' }}>AI confidence: <strong style={{ color: NAVY }}>{insight.confidence}%</strong></span>
+                        <span style={{ fontSize: 10, color: '#9CA3AF' }}>Signal confidence: <strong style={{ color: NAVY }}>{insight.confidence}%</strong></span>
                       </div>
                     </div>
                   </div>

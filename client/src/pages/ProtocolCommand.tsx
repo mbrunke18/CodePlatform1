@@ -173,7 +173,7 @@ export default function ProtocolCommand() {
               </div>
               <div className="flex items-center gap-2 text-[#0A0F2E]">
                 <Sparkles className="h-5 w-5 text-[#2B8A6E]" />
-                <span>AI-assisted</span>
+                <span>System-assisted</span>
               </div>
               {playbook.preApprovedBudget && (
                 <div className="flex items-center gap-2 text-[#0A0F2E]">

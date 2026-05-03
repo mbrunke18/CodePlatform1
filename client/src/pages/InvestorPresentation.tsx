@@ -676,7 +676,7 @@ function InvestorPresentation() {
           {[
             { tier: 'Tier 1: Now', title: 'Signal-Triggered Readiness Protocols', desc: 'External systems trigger Readiness Protocols automatically. 400+ connectors ready.', color: 'border-[#2B8A6E]/30', badge: 'bg-[#2B8A6E]/20 text-[#2B8A6E]' },
             { tier: 'Tier 2: Next', title: 'System-Assisted Coordination', desc: 'Intelligent agents handle prep work—context, drafts, blocker detection. Executives decide.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
-            { tier: 'Tier 3: Vision', title: 'Executive-Led AI Readiness Protocols', desc: 'AI monitors and stages. Executives authorize and lead. First platform built this way from the ground up.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
+            { tier: 'Tier 3: Vision', title: 'Executive-Authorized Readiness Protocols', desc: 'System monitors and stages. Executives authorize and lead. First platform built this way from the ground up.', color: 'border-[#C9A84C]/30', badge: 'bg-[#C9A84C]/20 text-[#C9A84C]' },
           ].map((t, i) => (
             <div key={i} className={`bg-white border ${t.color} p-5`}>
               <span className={`inline-block px-2 py-0.5 text-[10px] font-bold ${t.badge} mb-3`}>{t.tier}</span>

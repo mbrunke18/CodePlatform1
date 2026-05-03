@@ -377,8 +377,8 @@ export default function HowItWorks() {
                 phase: "DETECT",
                 color: GOLD,
                 bg: "#fff",
-                title: "AI Monitoring — Every 15 Min",
-                desc: "The signal engine scans 248+ data points across 20 categories — competitive shifts, regulatory changes, market signals, and more. When AI confidence crosses your threshold, an alert fires.",
+                title: "Continuous Monitoring — Every 15 Min",
+                desc: "The signal engine scans 248+ data points across 20 categories — competitive shifts, regulatory changes, market signals, and more. When signal confidence crosses your threshold, an alert fires.",
                 sub: "No scrambling to figure out what happened."
               },
               {

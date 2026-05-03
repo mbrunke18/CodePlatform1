@@ -55,7 +55,7 @@ async function getSendGridClient() {
 const TRIGGER_SCENARIOS: Record<string, { name: string; signal: string; type: string }> = {
   competitor_launch: {
     name: "Competitor Product Launch",
-    signal: "TechCorp announces AI-powered enterprise solution competing directly with your flagship product",
+    signal: "TechCorp announces a new enterprise solution competing directly with your flagship product",
     type: "Competitive Threat"
   },
   regulatory_change: {
