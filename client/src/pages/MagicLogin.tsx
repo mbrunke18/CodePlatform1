@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { CheckCircle, XCircle, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { queryClient } from "@/lib/queryClient";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -65,7 +66,11 @@ export default function MagicLogin() {
       .then(async (res) => {
         if (res.ok) {
           setState("success");
-          setTimeout(() => navigate("/mission-control"), 1500);
+          // Invalidate the cached auth state so useRequireAuth picks up the
+          // new session immediately instead of redirecting with stale data.
+          await queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
+          await queryClient.refetchQueries({ queryKey: ['/api/auth/user'] });
+          navigate("/mission-control");
         } else {
           const body = await res.json().catch(() => ({}));
           const reason = body.reason as string | undefined;
