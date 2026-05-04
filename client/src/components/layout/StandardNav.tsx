@@ -812,7 +812,7 @@ export default function StandardNav() {
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={login}
+                  onClick={() => login()}
                   className="h-9 px-3 text-sm font-medium"
                   style={{ color: NAVY }}
                   data-testid="nav-login"

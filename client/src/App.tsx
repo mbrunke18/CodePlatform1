@@ -648,6 +648,7 @@ function Router() {
         {renderRedirects(["/interactive-demo", "/interactive-master-demo"], "/how-it-works")}
         {renderRoutes(["/investor-landing", "/executive-access"], InvestorLanding)}
         <Route path="/executive-brief" component={ExecutiveBrief} />
+        <Route path="/security-compliance" component={lazy(() => import("./pages/SecurityCompliance"))} />
         {renderRoutes(["/why-execution-os", "/the-proof", "/why-readiness-os"], WhyExecutionOS)}
         {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/industry-demos")}
         <Route path="/landing">{() => <Redirect to="/" />}</Route>

@@ -39969,6 +39969,8 @@ async function isEmailAllowed(email) {
   const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
   if (adminEmail && email === adminEmail) return true;
   try {
+    const [countRow] = await db.select({ count: allowedEmails.id }).from(allowedEmails).limit(1);
+    if (!countRow) return true;
     const rows = await db.select().from(allowedEmails).where(eq12(allowedEmails.email, email.toLowerCase().trim())).limit(1);
     return rows.length > 0;
   } catch {
@@ -40095,7 +40097,7 @@ function registerAdminRoutes(app2) {
         lastLoginAt: users.lastLoginAt,
         createdAt: users.createdAt
       }).from(users).orderBy(desc5(users.createdAt));
-      const orgIds = [...new Set(rows.map((u) => u.organizationId).filter(Boolean))];
+      const orgIds = Array.from(new Set(rows.map((u) => u.organizationId).filter((id) => !!id)));
       const orgs = orgIds.length ? await db.select({ id: organizations.id, name: organizations.name }).from(organizations).where(inArray2(organizations.id, orgIds)) : [];
       const orgMap = Object.fromEntries(orgs.map((o) => [o.id, o.name]));
       res.json(rows.map((u) => ({
@@ -42384,9 +42386,6 @@ var PUBLIC_ROUTES = [
   "/api/learning-patterns/:organizationId",
   "/api/institutional-memory",
   "/api/institutional-memory/:organizationId",
-  // What-If Scenarios - demo access
-  "/api/what-if-scenarios",
-  "/api/what-if-scenarios/:id",
   // Scenarios/Playbooks - demo access
   "/api/scenarios",
   "/api/scenarios/:id",
@@ -42481,10 +42480,6 @@ function isPublicRoute(path3) {
 function conditionalAuth(req, res, next) {
   const path3 = req.originalUrl || req.url;
   if (isPublicRoute(path3)) {
-    return next();
-  }
-  const internalToken = req.headers["x-internal-token"];
-  if (internalToken === "vm-internal-test-2026") {
     return next();
   }
   const userId = req.user?.claims?.sub || req.user?.sub || req.user?.id || null;
@@ -43064,7 +43059,7 @@ function requireRole(...allowedRoles) {
       next();
     } catch (error) {
       console.error("Error in requireRole middleware:", error);
-      next();
+      return res.status(403).json({ message: "Access check failed \u2014 please try again" });
     }
   };
 }
@@ -44648,39 +44643,6 @@ async function registerRoutes(app2, existingServer) {
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
-    }
-  });
-  app2.get("/api/auth/reset-my-account", async (req, res) => {
-    try {
-      const userId = req.user?.claims?.sub || req.user?.sub;
-      if (!userId) {
-        return res.status(401).send(
-          '<h2>Not logged in.</h2><p>Please <a href="/api/login">sign in</a> first, then visit this URL.</p>'
-        );
-      }
-      const [userRow] = await db.select().from(users).where(eq47(users.id, userId)).limit(1);
-      const orgId = userRow?.organizationId;
-      await db.delete(users).where(eq47(users.id, userId));
-      if (orgId) {
-        await db.delete(organizations).where(eq47(organizations.id, orgId));
-      }
-      const ORPHANED_ORG_IDS = ["383d22be-51d4-4557-91b5-d1d6974fdf0b"];
-      for (const id of ORPHANED_ORG_IDS) {
-        try {
-          await db.delete(organizations).where(eq47(organizations.id, id));
-        } catch (_) {
-        }
-      }
-      req.logout(() => {
-        req.session?.destroy(() => {
-          res.send(
-            '<h2 style="font-family:sans-serif;color:#0A0F2E">Account reset complete.</h2><p style="font-family:sans-serif">Your account and any associated data have been deleted.<br>You can now <a href="/api/login">sign in fresh</a> and start from scratch.</p>'
-          );
-        });
-      });
-    } catch (error) {
-      console.error("Error resetting account:", error);
-      res.status(500).send(`<p>Error: ${error.message}</p>`);
     }
   });
   app2.patch("/api/user/profile", async (req, res) => {
@@ -47478,7 +47440,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to fetch what-if scenario" });
     }
   });
-  app2.post("/api/what-if-scenarios", async (req, res) => {
+  app2.post("/api/what-if-scenarios", requireOrgAccess2, async (req, res) => {
     try {
       const userId = req.userId;
       const orgId = req.orgId;
@@ -47497,7 +47459,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to create what-if scenario" });
     }
   });
-  app2.put("/api/what-if-scenarios/:id", async (req, res) => {
+  app2.put("/api/what-if-scenarios/:id", requireOrgAccess2, async (req, res) => {
     try {
       const scenario = await storage.updateWhatIfScenario(req.params.id, req.body);
       if (!scenario) {
@@ -47509,7 +47471,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       res.status(500).json({ error: "Failed to update what-if scenario" });
     }
   });
-  app2.delete("/api/what-if-scenarios/:id", async (req, res) => {
+  app2.delete("/api/what-if-scenarios/:id", requireOrgAccess2, async (req, res) => {
     try {
       await storage.deleteWhatIfScenario(req.params.id);
       res.status(204).send();

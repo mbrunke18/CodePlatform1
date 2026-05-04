@@ -37,8 +37,10 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Real-time:** Socket.IO WebSocket server.
 - **AI Services:** Azure OpenAI primarily, with fallback to OpenAI GPT-4o, employing a multi-agent IDEA Framework.
 - **Authentication:** Replit OIDC with Passport.js.
-- **Authorization:** Role-Based Access Control using `requireRole()` middleware.
+- **Authorization:** Role-Based Access Control using `requireRole()` middleware. Fail-closed on errors. Org membership validated on all mutable routes.
 - **Background Tasks:** PostgreSQL-backed job queue for asynchronous AI tasks.
+- **Access Control:** Email allowlist (`allowed_emails` table) gates logins. Open when list is empty; restrictive once any email is added. Platform admin email bypasses list. `/access-denied` shown to unauthorized users.
+- **Admin Panel:** `/admin/users` — platform admin only. View/delete users, manage allowlist. Protected by `requirePlatformAdmin` middleware keyed on `PLATFORM_ADMIN_EMAIL` env secret.
 
 ### Feature Specifications
 - **Core Platform:** Includes a Playbook Library (170 core protocols + 12 compound protocols, IDs 181–192), Demo Experience, Execution Intelligence Dashboard, Investor Gate, and admin views.
@@ -46,6 +48,7 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Automation & Simulation:** Offers Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, and a Shadow Strategy Simulator (Digital Twin).
 - **IDEA Framework:** Manages the entire Trigger → Playbook IDEA Chain, from trigger detection to playbook recommendations and execution.
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
+- **Sales Assets:** Executive Brief (`/executive-brief`) — full printable 1-pager with comparison table, proof numbers, ROI case, and Founding Partner CTA. Security & Compliance (`/security-compliance`) — procurement-ready one-pager covering auth, data governance, compliance readiness, and AI safety controls across 6 sections.
 - **Terminology Enforcement:** Consistent use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers." "Readiness Protocol" is the canonical term for all execution artifacts.
 - **12-Minute Test Drive:** A public 4-step simulation at `/12-minute-experience` for lead generation and experience demonstration. 7 scenarios: 6 single-domain + 1 compound (Activist + Regulatory, full 10-task dual-track war room). Compound card spans full grid width with teal left-border and "2 Protocols · Simultaneous" badge.
 - **How It Executes (`/how-it-executes`):** Animated signal → protocol → tasks staged → stakeholders notified → executive authorizes → 12 minutes complete chain visualization. 5 scenario selectors (4 single-domain + 1 compound), auto-plays on load, Old Model comparison panel, "Before/At/After the Trigger" preparation breakdown section. Compound scenario uses TEAL active state and shows "2 Readiness Protocols activated simultaneously" in chain steps.
