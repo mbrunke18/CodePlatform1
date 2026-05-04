@@ -31349,6 +31349,94 @@ var init_playbooksData = __esm({
           "frequency": "medium",
           "budget": 15e5,
           "compound": true
+        },
+        {
+          "number": 185,
+          "name": "Compound: Activist Investor + Regulatory Inquiry",
+          "trigger": "Activist investor discloses a significant stake while a concurrent federal regulatory inquiry opens simultaneously, creating parallel governance defense and compliance obligations that each amplify the other",
+          "stakeholders": ["CEO", "General Counsel", "CFO", "Chief Compliance Officer", "Chief IR Officer", "Board Chair", "Chief Strategy Officer"],
+          "response": "Dual-track activation of investor defense and regulatory response protocols with unified executive command \u2014 preventing the regulatory inquiry from becoming activist ammunition while separately managing each track with dedicated outside counsel",
+          "domain": 2,
+          "frequency": "high",
+          "budget": 35e5,
+          "compound": true
+        },
+        {
+          "number": 186,
+          "name": "Compound: Ransomware + Brand Crisis",
+          "trigger": "Ransomware attack becomes publicly known before full containment, triggering simultaneous cyber incident response and brand reputation crisis with media inquiry, customer concern, and social media pressure",
+          "stakeholders": ["CISO", "CEO", "CMO", "General Counsel", "CTO", "Head of PR", "CFO", "COO"],
+          "response": "Parallel cyber containment and public communications protocol with unified executive messaging \u2014 preserving customer trust and media narrative while technical recovery is underway, preventing brand collapse from compounding the operational crisis",
+          "domain": 5,
+          "frequency": "high",
+          "budget": 4e6,
+          "compound": true
+        },
+        {
+          "number": 187,
+          "name": "Compound: CEO Departure + Activist Campaign",
+          "trigger": "CEO departure announced or discovered concurrently with an activist investor campaign that views leadership transition as a vulnerability to exploit for board seats or strategic demands",
+          "stakeholders": ["Board Chair", "Lead Independent Director", "CFO", "CHRO", "General Counsel", "Chief IR Officer", "Chief Strategy Officer"],
+          "response": "Simultaneous leadership succession, investor communication, and activist defense protocols with board-led unified narrative \u2014 establishing succession credibility before activist frames the leadership vacuum as evidence of governance failure",
+          "domain": 9,
+          "frequency": "medium",
+          "budget": 28e5,
+          "compound": true
+        },
+        {
+          "number": 188,
+          "name": "Compound: M&A Announcement + Talent Exodus",
+          "trigger": "Merger or acquisition announcement triggers immediate top talent flight risk as employees assess role uncertainty and competitors begin targeted recruiting of key personnel",
+          "stakeholders": ["CEO", "CHRO", "CFO", "Chief Strategy Officer", "Head of M&A Integration", "General Counsel", "CMO"],
+          "response": "Parallel retention offensive and deal communication protocol with aligned employee and investor narrative \u2014 capturing key talent before competitor recruiters reach them while maintaining deal momentum and stakeholder confidence",
+          "domain": 2,
+          "frequency": "high",
+          "budget": 22e5,
+          "compound": true
+        },
+        {
+          "number": 189,
+          "name": "Compound: Product Recall + Regulatory + Brand",
+          "trigger": "Product safety issue triggers simultaneous voluntary or mandatory recall obligation, consumer protection enforcement inquiry, and brand reputation crisis across media and social channels",
+          "stakeholders": ["CEO", "Chief Quality Officer", "General Counsel", "Chief Compliance Officer", "CMO", "COO", "CFO", "Head of Customer Success"],
+          "response": "Tri-track activation of regulatory compliance, product recall logistics, and public communications with a unified consumer safety narrative \u2014 coordinating all three workstreams under single executive command to prevent each from contradicting the others",
+          "domain": 3,
+          "frequency": "medium",
+          "budget": 55e5,
+          "compound": true
+        },
+        {
+          "number": 190,
+          "name": "Compound: Data Breach + SEC Disclosure + Class Action",
+          "trigger": "Data breach involving material nonpublic information triggers simultaneous SEC 8-K disclosure obligation, shareholder class action lawsuit risk, and multi-state customer notification requirements under conflicting timelines",
+          "stakeholders": ["CISO", "General Counsel", "CFO", "CEO", "Chief Compliance Officer", "Board Chair", "VP Investor Relations"],
+          "response": "Coordinated cyber response, securities disclosure, and litigation hold protocol \u2014 SEC 8-K filed within required window while preserving privilege and ensuring regulatory compliance across all three tracks without one track compromising another",
+          "domain": 5,
+          "frequency": "high",
+          "budget": 6e6,
+          "compound": true
+        },
+        {
+          "number": 191,
+          "name": "Compound: ESG Controversy + Investor Pressure",
+          "trigger": "ESG controversy \u2014 environmental incident, governance failure, or social impact event \u2014 triggers an activist investor campaign using the ESG failures as public campaign ammunition with institutional shareholder pressure",
+          "stakeholders": ["CEO", "Chief Sustainability Officer", "General Counsel", "CFO", "Board Chair", "Chief IR Officer", "CMO"],
+          "response": "Simultaneous ESG response and investor defense protocol with unified stakeholder narrative \u2014 converting ESG accountability into competitive repositioning before the activist frames the failure as evidence of systemic governance breakdown",
+          "domain": 7,
+          "frequency": "medium",
+          "budget": 2e6,
+          "compound": true
+        },
+        {
+          "number": 192,
+          "name": "Compound: Supply Chain Collapse + Customer Crisis",
+          "trigger": "Critical supplier failure directly impacts fulfillment commitments to enterprise customers, triggering simultaneous procurement emergency and customer retention crisis as enterprise buyers escalate and evaluate alternatives",
+          "stakeholders": ["COO", "Chief Procurement Officer", "Chief Revenue Officer", "CFO", "CMO", "Head of Customer Success", "CEO"],
+          "response": "Parallel supplier continuity and enterprise customer retention protocols with proactive customer communication \u2014 issuing alternate supplier POs and personally contacting at-risk enterprise accounts before they discover the disruption through their own supply chain monitoring",
+          "domain": 3,
+          "frequency": "high",
+          "budget": 45e5,
+          "compound": true
         }
       ],
       "total": 170
