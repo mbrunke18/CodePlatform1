@@ -159,7 +159,7 @@ const CORE_CAPABILITIES = [
 ];
 
 export default function IndustryPacksHub() {
-  const coreProtocols = 143;
+  const coreProtocols = 170;
   const totalIndustryProtocols = INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0);
 
   return (
