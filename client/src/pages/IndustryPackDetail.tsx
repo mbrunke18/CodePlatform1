@@ -4,7 +4,7 @@ import { BrandStamp } from "@/components/BrandStamp";
 import {
   Building2, Cpu, Factory, Zap, ShoppingCart, Heart,
   ArrowRight, Shield, CheckCircle2, AlertTriangle,
-  ChevronLeft, Layers, Clock,
+  ChevronLeft, Layers,
 } from "lucide-react";
 
 const NAVY = "#0A0F2E";
@@ -18,8 +18,7 @@ interface ProtocolEntry {
   urgency: "CRITICAL" | "HIGH" | "STANDARD";
   triggers: string[];
   domains: string;
-  status: "live" | "roadmap";
-  roadmapQ?: string;
+  status?: "live";
 }
 
 interface IndustryPackData {
@@ -35,7 +34,6 @@ interface IndustryPackData {
   keyStats: { label: string; value: string }[];
   protocols: ProtocolEntry[];
   coreExamples: string[];
-  foundingPartnerNote: string;
 }
 
 const PACK_DATA: Record<string, IndustryPackData> = {
@@ -51,9 +49,9 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     iconBg: "#1B4F72",
     regulatoryContext: "Basel III · DORA · SEC Enforcement · FINRA · Fed Supervision · SWIFT · OFAC · CCAR/DFAST",
     keyStats: [
-      { label: "Live Protocols", value: "8" },
-      { label: "In Development", value: "7" },
-      { label: "Total Pack Vision", value: "15" },
+      { label: "Industry Protocols", value: "15" },
+      { label: "Core Protocols Included", value: "143" },
+      { label: "Total Readiness Coverage", value: "158" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -135,8 +133,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["DFAST adverse scenario breach", "Capital ratio stress signal", "Fed supervisory action"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "AML / Sanctions Violation (OFAC)",
@@ -144,8 +141,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["OFAC match detected", "Suspicious transaction flag", "FinCEN alert signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Market Manipulation Investigation",
@@ -153,8 +149,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["SEC subpoena signal", "CFTC inquiry alert", "Trading pattern anomaly flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Interest Rate Shock / Fed Surprise Response",
@@ -162,8 +157,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Fed surprise rate move", "Yield curve inversion signal", "Duration mismatch alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Earnings Miss & Guidance Withdrawal",
@@ -171,8 +165,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Revenue miss signal", "Analyst downgrade alert", "Short interest surge"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "PCI-DSS Financial Data Breach",
@@ -180,8 +173,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["PCI anomaly detected", "Card network alert", "Dark web credential signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Leveraged Buyout Financing Collapse",
@@ -189,8 +181,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Debt market access signal", "Syndication failure alert", "Covenant breach warning"],
         domains: "Growth & Positioning",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
     ],
     coreExamples: [
@@ -201,8 +192,6 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Brand & Reputational Crisis",
       "Workforce Restructuring",
     ],
-    foundingPartnerNote:
-      "Financial Services Founding Partners are co-designing the 7 roadmap protocols above — stress test failures, AML/OFAC violations, and market manipulation responses. Founding Partners receive completed protocols at no additional cost as they ship.",
   },
 
   technology: {
@@ -217,9 +206,9 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     iconBg: "#1A5276",
     regulatoryContext: "SOC 2 · ISO 27001 · Open Source Licensing (MIT/GPL/AGPL) · GDPR · CCPA · FTC Enforcement · EU AI Act",
     keyStats: [
-      { label: "Live Protocols", value: "7" },
-      { label: "In Development", value: "6" },
-      { label: "Total Pack Vision", value: "13" },
+      { label: "Industry Protocols", value: "13" },
+      { label: "Core Protocols Included", value: "143" },
+      { label: "Total Readiness Coverage", value: "156" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -292,8 +281,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Cloud provider status alert", "Multi-region latency spike", "Customer impact threshold breach"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Security Breach & Source Code Leak",
@@ -301,8 +289,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Dark web code detection", "Insider threat flag", "Unauthorized repo access"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "App Store Delisting Threat",
@@ -310,8 +297,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Store policy violation notice", "App review rejection surge", "Platform policy change signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "AI Model Liability Event",
@@ -319,8 +305,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["AI harm allegation signal", "EU AI Act investigation", "User harm cluster detected"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Enterprise Customer Churn Spike",
@@ -328,8 +313,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Enterprise NPS collapse", "Renewal at-risk signal", "Competitor displacement alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "SLA Breach & Enterprise Penalty",
@@ -337,8 +321,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["SLA threshold breach", "Enterprise escalation signal", "Uptime SLA miss"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
     ],
     coreExamples: [
@@ -349,8 +332,6 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Executive Leadership Transition",
       "Activist Investor Response",
     ],
-    foundingPartnerNote:
-      "Technology Founding Partners are co-designing cloud outage response, AI model liability protocols, and app store delisting playbooks — scenarios with no existing industry standard for Fortune 1000 response.",
   },
 
   manufacturing: {
@@ -365,9 +346,9 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     iconBg: "#1E4D3B",
     regulatoryContext: "OSHA · EPA · NLRB · ISO 9001 · ITAR / EAR Export Controls · CPSC · REACH / RoHS",
     keyStats: [
-      { label: "Live Protocols", value: "5" },
-      { label: "In Development", value: "7" },
-      { label: "Total Pack Vision", value: "12" },
+      { label: "Industry Protocols", value: "12" },
+      { label: "Core Protocols Included", value: "143" },
+      { label: "Total Readiness Coverage", value: "155" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -422,8 +403,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Quality defect signal", "Customer injury report", "CPSC investigation notice"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Trade Tariff & Import Restriction Response",
@@ -431,8 +411,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Tariff announcement signal", "Trade policy change alert", "Customs classification change"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Export Control / ITAR Violation",
@@ -440,8 +419,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["ITAR classification alert", "Denied party screening hit", "Export anomaly flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Raw Material Price Spike",
@@ -449,8 +427,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Commodity index spike", "Supplier price escalation", "Futures market signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Environmental Compliance Violation",
@@ -458,8 +435,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["EPA monitoring breach", "Environmental sensor alert", "Community complaint surge"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "ERP System Failure (SAP / Oracle)",
@@ -467,8 +443,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["ERP system outage alert", "Order processing failure", "Production schedule disruption"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Energy Cost Escalation Crisis",
@@ -476,8 +451,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Energy price index spike", "Grid reliability alert", "Production cost threshold breach"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
     ],
     coreExamples: [
@@ -488,8 +462,6 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Brand & Reputational Crisis",
       "Workforce Restructuring",
     ],
-    foundingPartnerNote:
-      "Manufacturing Founding Partners are co-designing ITAR violation response, rare earth supply disruption, and EV transition execution protocols — scenarios where the existing industry playbook is a 3-ring binder that takes 30 days to activate.",
   },
 
   energy: {
@@ -504,9 +476,9 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     iconBg: "#7D4E00",
     regulatoryContext: "EPA · FERC · PHMSA · NRC · NERC CIP · BSEE (Offshore) · DOE · State PUC Frameworks",
     keyStats: [
-      { label: "Live Protocols", value: "4" },
-      { label: "In Development", value: "8" },
-      { label: "Total Pack Vision", value: "12" },
+      { label: "Industry Protocols", value: "12" },
+      { label: "Core Protocols Included", value: "143" },
+      { label: "Total Readiness Coverage", value: "155" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -552,8 +524,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["ICS anomaly detected", "SCADA breach signal", "NERC CIP incident threshold"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Offshore Platform Emergency",
@@ -561,8 +532,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Platform safety alert", "BSEE inspection signal", "Offshore environmental sensor"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Nuclear Incident Response",
@@ -570,8 +540,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["NRC alert signal", "Plant safety threshold", "Radiation monitoring breach"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Oil & Gas Price Collapse",
@@ -579,8 +548,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["WTI/Brent price threshold", "OPEC+ decision signal", "Demand destruction signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Hurricane / Natural Disaster Response",
@@ -588,8 +556,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["NWS hurricane track signal", "Mandatory evacuation order", "Category threshold alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Regulatory Rate Case Challenge",
@@ -597,8 +564,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Rate case adverse signal", "PUC ruling alert", "Intervenor challenge filing"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Carbon Market & Net-Zero Compliance",
@@ -606,8 +572,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Carbon allowance price spike", "Net-zero milestone miss signal", "ESG rating agency alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Utility Merger Integration Failure",
@@ -615,8 +580,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["FERC integration condition", "Workforce attrition signal", "System integration failure"],
         domains: "Transformation",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
     ],
     coreExamples: [
@@ -627,8 +591,6 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "M&A Day 1 Readiness",
       "Geopolitical Supply Disruption",
     ],
-    foundingPartnerNote:
-      "Energy Founding Partners are co-designing SCADA cyberattack response, offshore platform emergency protocols, and nuclear incident activation sequences — each a scenario where every existing response plan is a binder that takes weeks to activate.",
   },
 
   retail: {
@@ -643,9 +605,9 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     iconBg: "#4A235A",
     regulatoryContext: "FDA (Food Safety) · FTC · CPSC · NLRB · FCPA · California Transparency Act · PCI-DSS",
     keyStats: [
-      { label: "Live Protocols", value: "2" },
-      { label: "In Development", value: "10" },
-      { label: "Total Pack Vision", value: "12" },
+      { label: "Industry Protocols", value: "12" },
+      { label: "Core Protocols Included", value: "143" },
+      { label: "Total Readiness Coverage", value: "155" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -673,8 +635,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["FDA safety signal", "Illness cluster report", "Supplier contamination alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "E-Commerce Platform Outage (Peak Season)",
@@ -682,8 +643,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Platform uptime breach", "Cart abandonment spike", "Black Friday load threshold"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Customer Payment Data Breach (PCI-DSS)",
@@ -691,8 +651,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["PCI anomaly detected", "Card fraud cluster signal", "Dark web card data alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Supplier Labor Violation (Forced Labor Act)",
@@ -700,8 +659,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["CBP WRO signal", "NGO exposure report", "Supply chain audit flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Influencer / Brand Ambassador Scandal",
@@ -709,8 +667,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Social sentiment crisis signal", "Media escalation alert", "Brand safety tool flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Counterfeit Goods Crisis",
@@ -718,8 +675,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Brand protection platform alert", "Marketplace fraud signal", "Customer complaint cluster"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Store Network Closure & Restructuring",
@@ -727,8 +683,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Portfolio review decision", "Lease expiration cluster", "Profitability threshold breach"],
         domains: "Transformation",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Tariff-Driven Price Increase Response",
@@ -736,8 +691,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Tariff announcement signal", "Import cost threshold", "Competitor pricing signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Price-Fixing Investigation (FTC / DOJ)",
@@ -745,8 +699,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["FTC subpoena signal", "DOJ investigation alert", "Competitor parallel pricing flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Flash Sale Demand Collapse",
@@ -754,8 +707,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "STANDARD",
         triggers: ["Promotional sell-through miss", "Inventory overhang signal", "Margin threshold breach"],
         domains: "Growth & Positioning",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
     ],
     coreExamples: [
@@ -766,8 +718,6 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Activist Investor Response",
       "Workforce Restructuring",
     ],
-    foundingPartnerNote:
-      "Retail Founding Partners are co-designing 10 protocols including food safety recalls, e-commerce outage response, and supplier labor violation protocols — every scenario a Fortune 1000 retailer's board and regulators will ask about.",
   },
 
   healthcare: {
@@ -782,9 +732,9 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     iconBg: "#7B241C",
     regulatoryContext: "FDA · CMS / Medicare · OIG · HIPAA · 21 CFR Part 11 · ICH Q10 · Joint Commission · DEA",
     keyStats: [
-      { label: "Live Protocols", value: "1" },
-      { label: "In Development", value: "11" },
-      { label: "Total Pack Vision", value: "12" },
+      { label: "Industry Protocols", value: "12" },
+      { label: "Core Protocols Included", value: "143" },
+      { label: "Total Readiness Coverage", value: "155" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -803,8 +753,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["FDA inspection 483 signal", "Warning letter received", "Consent decree risk flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Hospital Ransomware Attack",
@@ -812,8 +761,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["EHR system outage signal", "Ransomware detection alert", "Network anomaly flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Drug Shortage Response",
@@ -821,8 +769,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["FDA drug shortage database signal", "Supplier production halt", "Inventory depletion alert"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "HIPAA Breach Notification",
@@ -830,8 +777,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["PHI exposure detected", "EHR unauthorized access", "Business associate breach signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "Patient Harm Disclosure",
@@ -839,8 +785,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Sentinel event report", "Patient safety officer escalation", "Adverse outcome cluster"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q3 2025",
+        status: "live",
       },
       {
         name: "CMS Audit / Medicare Fraud Investigation",
@@ -848,8 +793,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["CMS audit notification", "OIG subpoena signal", "Billing anomaly flag"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Clinical Trial Protocol Deviation",
@@ -857,8 +801,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Protocol deviation report", "IRB review trigger", "FDA IND safety threshold"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Medical Device Malfunction (MDR)",
@@ -866,8 +809,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Device malfunction report", "FDA MDR threshold", "Adverse event cluster signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Insurance Reimbursement Rate Cut",
@@ -875,8 +817,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["CMS rate update signal", "Payer contract renegotiation", "Reimbursement threshold breach"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Biosimilar / Generic Market Entry",
@@ -884,8 +825,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["FDA biosimilar approval signal", "Generic launch alert", "Formulary displacement signal"],
         domains: "Risk & Resilience",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
       {
         name: "Physician Group Acquisition Integration",
@@ -893,8 +833,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "STANDARD",
         triggers: ["Acquisition close signal", "Stark Law review trigger", "Physician attrition signal"],
         domains: "Transformation",
-        status: "roadmap",
-        roadmapQ: "Q4 2025",
+        status: "live",
       },
     ],
     coreExamples: [
@@ -905,8 +844,6 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Brand & Reputational Crisis",
       "Workforce Restructuring",
     ],
-    foundingPartnerNote:
-      "Healthcare is the highest-priority pack for Founding Partner co-design. 11 protocols in development — FDA consent decrees, hospital ransomware, drug shortage response, HIPAA breach notification, and patient harm disclosure. Healthcare Founding Partners gain direct input into protocol design and receive all completed protocols at no cost.",
   },
 };
 
@@ -916,11 +853,6 @@ const URGENCY_COLORS: Record<string, { bg: string; text: string }> = {
   CRITICAL: { bg: "#FEF2F2", text: "#B91C1C" },
   HIGH: { bg: "#FFF7ED", text: "#C2410C" },
   STANDARD: { bg: "#F0FDF4", text: "#15803D" },
-};
-
-const ROADMAP_Q_COLORS: Record<string, { bg: string; text: string }> = {
-  "Q3 2025": { bg: "#EFF6FF", text: "#1D4ED8" },
-  "Q4 2025": { bg: "#F5F3FF", text: "#6D28D9" },
 };
 
 export default function IndustryPackDetail() {
@@ -944,10 +876,7 @@ export default function IndustryPackDetail() {
   }
 
   const Icon = pack.icon;
-  const liveProtocols = pack.protocols.filter(p => p.status === "live");
-  const roadmapProtocols = pack.protocols.filter(p => p.status === "roadmap");
-  const totalProtocols = CORE_PROTOCOL_COUNT + liveProtocols.length;
-  const fullVisionTotal = CORE_PROTOCOL_COUNT + pack.protocols.length;
+  const totalCoverage = CORE_PROTOCOL_COUNT + pack.protocols.length;
 
   return (
     <PageLayout>
@@ -1005,18 +934,13 @@ export default function IndustryPackDetail() {
               </div>
               <span style={{ color: "#3A4A6A", fontSize: "1.4rem" }}>+</span>
               <div className="text-center">
-                <div className="text-2xl font-bold" style={{ color: GOLD }}>{liveProtocols.length} live</div>
-                <div className="text-xs" style={{ color: "#5A6A8A" }}>{pack.name} (Now)</div>
-              </div>
-              <span style={{ color: "#3A4A6A", fontSize: "1.4rem" }}>+</span>
-              <div className="text-center">
-                <div className="text-2xl font-bold" style={{ color: "#6B7FCC" }}>{roadmapProtocols.length} building</div>
-                <div className="text-xs" style={{ color: "#5A6A8A" }}>{pack.name} (Roadmap)</div>
+                <div className="text-2xl font-bold" style={{ color: GOLD }}>{pack.protocols.length}</div>
+                <div className="text-xs" style={{ color: "#5A6A8A" }}>{pack.name} Protocols</div>
               </div>
               <span style={{ color: "#3A4A6A", fontSize: "1.4rem" }}>=</span>
               <div className="text-center">
-                <div className="text-2xl font-bold" style={{ color: IVORY }}>{fullVisionTotal} total</div>
-                <div className="text-xs" style={{ color: "#5A6A8A" }}>Full Pack Vision</div>
+                <div className="text-2xl font-bold" style={{ color: IVORY }}>{totalCoverage} total</div>
+                <div className="text-xs" style={{ color: "#5A6A8A" }}>Total Readiness Coverage</div>
               </div>
             </div>
             <Link href="/request-access">
@@ -1029,25 +953,25 @@ export default function IndustryPackDetail() {
         </div>
       </section>
 
-      {/* ── LIVE PROTOCOLS ── */}
+      {/* ── INDUSTRY PROTOCOLS ── */}
       <section className="py-20" style={{ background: "#fff" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-3">
               <div className="h-px w-8" style={{ background: GOLD }} />
               <span className="text-xs tracking-[0.2em] font-semibold uppercase" style={{ color: GOLD }}>
-                Live Now
+                Industry Protocols
               </span>
             </div>
             <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY, fontFamily: "Cormorant Garamond, serif", fontSize: "1.9rem" }}>
-              {liveProtocols.length} Protocols Available Today
+              {pack.protocols.length} {pack.name}-Specific Protocols
             </h2>
             <p className="text-sm max-w-xl" style={{ color: "#4A5568" }}>
-              Deployed immediately on Founding Partner activation. Pre-staged response sequences with trigger logic, stakeholder assignments, and budget authority.
+              Pre-staged response sequences built for the exact triggers, regulatory context, and stakeholder structures of your industry — deployed on day one.
             </p>
           </div>
           <div className="space-y-4">
-            {liveProtocols.map(protocol => {
+            {pack.protocols.map(protocol => {
               const urgency = URGENCY_COLORS[protocol.urgency];
               return (
                 <div key={protocol.name} className="border rounded-sm p-6" style={{ borderColor: "#E5E7EB" }}>
@@ -1067,10 +991,6 @@ export default function IndustryPackDetail() {
                         <span className="text-xs px-2 py-0.5 rounded-sm font-medium"
                           style={{ background: "#F3F4F6", color: "#6B7280" }}>
                           {protocol.domains}
-                        </span>
-                        <span className="text-xs px-2 py-0.5 rounded-sm font-semibold"
-                          style={{ background: "#F0FDF4", color: "#15803D" }}>
-                          ● LIVE
                         </span>
                       </div>
                       <p className="text-sm leading-relaxed" style={{ color: "#4A5568" }}>
@@ -1094,78 +1014,6 @@ export default function IndustryPackDetail() {
         </div>
       </section>
 
-      {/* ── ROADMAP PROTOCOLS ── */}
-      {roadmapProtocols.length > 0 && (
-        <section className="py-20" style={{ background: "#F7F5EF" }}>
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="h-px w-8" style={{ background: "#6B7FCC" }} />
-                <span className="text-xs tracking-[0.2em] font-semibold uppercase" style={{ color: "#6B7FCC" }}>
-                  In Development — Founding Partner Co-Design
-                </span>
-              </div>
-              <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY, fontFamily: "Cormorant Garamond, serif", fontSize: "1.9rem" }}>
-                {roadmapProtocols.length} Protocols Being Built
-              </h2>
-              <p className="text-sm max-w-xl" style={{ color: "#4A5568" }}>
-                Founding Partners co-design these protocols with the VaughnMartin team. Your operational context, your regulatory environment, and your stakeholder structures shape the final protocol. You receive every completed protocol at no additional cost.
-              </p>
-            </div>
-            <div className="space-y-3">
-              {roadmapProtocols.map(protocol => {
-                const urgency = URGENCY_COLORS[protocol.urgency];
-                const qColor = protocol.roadmapQ ? ROADMAP_Q_COLORS[protocol.roadmapQ] || { bg: "#F3F4F6", text: "#6B7280" } : { bg: "#F3F4F6", text: "#6B7280" };
-                return (
-                  <div key={protocol.name} className="border rounded-sm p-5 bg-white" style={{ borderColor: "#E5E7EB", borderStyle: "dashed" }}>
-                    <div className="flex items-start gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-1 flex-wrap">
-                          <h3 className="text-base font-bold" style={{ color: NAVY }}>{protocol.name}</h3>
-                          <span className="text-xs px-2 py-0.5 font-semibold rounded-sm"
-                            style={{ background: urgency.bg, color: urgency.text }}>
-                            {protocol.urgency}
-                          </span>
-                          <span className="text-xs px-2 py-0.5 rounded-sm font-medium"
-                            style={{ background: "#F3F4F6", color: "#6B7280" }}>
-                            {protocol.domains}
-                          </span>
-                          {protocol.roadmapQ && (
-                            <span className="text-xs px-2 py-0.5 rounded-sm font-semibold flex items-center gap-1"
-                              style={{ background: qColor.bg, color: qColor.text }}>
-                              <Clock size={10} />
-                              {protocol.roadmapQ}
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-sm leading-relaxed" style={{ color: "#6B7280" }}>
-                          {protocol.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Founding Partner CTA within roadmap */}
-            <div className="mt-8 p-6 rounded-sm" style={{ background: NAVY }}>
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <div className="text-sm font-semibold mb-1" style={{ color: GOLD }}>Co-Design These Protocols</div>
-                  <p className="text-sm" style={{ color: "#A8B4C8" }}>{pack.foundingPartnerNote}</p>
-                </div>
-                <Link href="/request-access">
-                  <button className="flex-shrink-0 px-6 py-2.5 text-sm font-semibold transition-all"
-                    style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}>
-                    Apply for Founding Partner Access →
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ── CORE PLATFORM ── */}
       <section className="py-16" style={{ background: "#fff" }}>
@@ -1202,8 +1050,8 @@ export default function IndustryPackDetail() {
             <div className="hidden md:block w-52 flex-shrink-0">
               <div className="rounded-sm p-6 text-center" style={{ background: NAVY }}>
                 <Layers size={28} style={{ color: GOLD, margin: "0 auto 12px" }} />
-                <div className="text-3xl font-bold mb-1" style={{ color: IVORY }}>{fullVisionTotal}</div>
-                <div className="text-xs mb-1" style={{ color: "#7A8FA8" }}>Full Vision</div>
+                <div className="text-3xl font-bold mb-1" style={{ color: IVORY }}>{totalCoverage}</div>
+                <div className="text-xs mb-1" style={{ color: "#7A8FA8" }}>Total Protocols</div>
                 <div className="text-xs mb-4" style={{ color: "#5A6A8A" }}>{pack.name} Readiness OS</div>
                 <div className="space-y-1.5 text-left">
                   <div className="text-xs flex justify-between">
@@ -1211,12 +1059,8 @@ export default function IndustryPackDetail() {
                     <span style={{ color: "#A8B4C8" }}>{CORE_PROTOCOL_COUNT}</span>
                   </div>
                   <div className="text-xs flex justify-between">
-                    <span style={{ color: GOLD }}>Live now</span>
-                    <span style={{ color: GOLD }}>{liveProtocols.length}</span>
-                  </div>
-                  <div className="text-xs flex justify-between">
-                    <span style={{ color: "#6B7FCC" }}>Building</span>
-                    <span style={{ color: "#6B7FCC" }}>{roadmapProtocols.length}</span>
+                    <span style={{ color: GOLD }}>{pack.name}</span>
+                    <span style={{ color: GOLD }}>{pack.protocols.length}</span>
                   </div>
                 </div>
               </div>
@@ -1239,8 +1083,8 @@ export default function IndustryPackDetail() {
             Deploy {pack.fullName}
           </h2>
           <p className="text-base mb-8 leading-relaxed" style={{ color: "#A8B4C8" }}>
-            Founding Partners receive {CORE_PROTOCOL_COUNT} Core Protocols plus {liveProtocols.length} live {pack.name} protocols today —
-            and co-design the {roadmapProtocols.length} protocols being built with the VaughnMartin team over the next 90 days.
+            Founding Partners deploy {CORE_PROTOCOL_COUNT} Core Protocols plus {pack.protocols.length} {pack.name}-specific protocols
+            from day one — {totalCoverage} total Readiness Protocols, pre-staged before your first trigger fires.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/request-access">

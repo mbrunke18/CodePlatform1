@@ -16,7 +16,6 @@ interface IndustryPack {
   name: string;
   tagline: string;
   industryProtocols: number;
-  liveCount: number;
   icon: any;
   iconBg: string;
   scenarios: string[];
@@ -30,7 +29,6 @@ const INDUSTRY_PACKS: IndustryPack[] = [
     name: "Financial Services",
     tagline: "SWIFT failures to AML violations to stress test collapses — all 15 pre-staged.",
     industryProtocols: 15,
-    liveCount: 8,
     icon: Building2,
     iconBg: "#1B4F72",
     scenarios: [
@@ -51,7 +49,6 @@ const INDUSTRY_PACKS: IndustryPack[] = [
     name: "Technology",
     tagline: "Cloud outages to AI liability events — 13 platform-specific protocols.",
     industryProtocols: 13,
-    liveCount: 7,
     icon: Cpu,
     iconBg: "#1A5276",
     scenarios: [
@@ -71,7 +68,6 @@ const INDUSTRY_PACKS: IndustryPack[] = [
     name: "Manufacturing",
     tagline: "Supplier cascades to ITAR violations to quality recalls — 12 protocols.",
     industryProtocols: 12,
-    liveCount: 5,
     icon: Factory,
     iconBg: "#1E4D3B",
     scenarios: [
@@ -91,7 +87,6 @@ const INDUSTRY_PACKS: IndustryPack[] = [
     name: "Energy",
     tagline: "Pipeline ruptures to SCADA cyberattacks to nuclear incidents — 12 protocols.",
     industryProtocols: 12,
-    liveCount: 4,
     icon: Zap,
     iconBg: "#7D4E00",
     scenarios: [
@@ -111,7 +106,6 @@ const INDUSTRY_PACKS: IndustryPack[] = [
     name: "Retail",
     tagline: "Food safety recalls to e-commerce outages to data breaches — 12 protocols.",
     industryProtocols: 12,
-    liveCount: 2,
     icon: ShoppingCart,
     iconBg: "#4A235A",
     scenarios: [
@@ -132,7 +126,6 @@ const INDUSTRY_PACKS: IndustryPack[] = [
     name: "Healthcare",
     tagline: "FDA consent decrees to hospital ransomware to HIPAA breaches — 12 protocols.",
     industryProtocols: 12,
-    liveCount: 1,
     icon: Heart,
     iconBg: "#7B241C",
     scenarios: [
@@ -167,8 +160,7 @@ const CORE_CAPABILITIES = [
 
 export default function IndustryPacksHub() {
   const coreProtocols = 143;
-  const totalLiveIndustry = INDUSTRY_PACKS.reduce((s, p) => s + p.liveCount, 0);
-  const totalRoadmapIndustry = INDUSTRY_PACKS.reduce((s, p) => s + (p.industryProtocols - p.liveCount), 0);
+  const totalIndustryProtocols = INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0);
 
   return (
     <PageLayout>
@@ -337,17 +329,17 @@ export default function IndustryPacksHub() {
             <div className="flex items-center gap-4">
               <Layers size={20} style={{ color: GOLD }} />
               <span className="text-sm font-semibold" style={{ color: IVORY }}>
-                {coreProtocols} Core Protocols + {totalLiveIndustry} live industry protocols + {totalRoadmapIndustry} building with Founding Partners
+                {coreProtocols} Core Protocols + up to {totalIndustryProtocols} industry-specific protocols — all pre-staged, none waiting
               </span>
             </div>
             <div className="flex items-center gap-6">
               <div className="text-center">
-                <div className="text-xl font-bold" style={{ color: GOLD }}>{coreProtocols + totalLiveIndustry}</div>
-                <div className="text-xs" style={{ color: "#7A8FA8" }}>Available Today</div>
+                <div className="text-xl font-bold" style={{ color: GOLD }}>{coreProtocols}</div>
+                <div className="text-xs" style={{ color: "#7A8FA8" }}>Core Protocols</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold" style={{ color: "#6B7FCC" }}>{totalRoadmapIndustry}</div>
-                <div className="text-xs" style={{ color: "#7A8FA8" }}>In Development</div>
+                <div className="text-xl font-bold" style={{ color: GOLD }}>6</div>
+                <div className="text-xs" style={{ color: "#7A8FA8" }}>Industry Packs</div>
               </div>
               <div className="text-center">
                 <div className="text-xl font-bold" style={{ color: GOLD }}>12 min</div>
@@ -419,15 +411,6 @@ export default function IndustryPacksHub() {
                           <div className="text-lg font-bold" style={{ color: GOLD }}>{coreProtocols + pack.industryProtocols}</div>
                           <div className="text-xs" style={{ color: "#6B7280" }}>Total Vision</div>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-2 pt-2 border-t" style={{ borderColor: "#E5E7EB" }}>
-                        <span className="text-xs font-semibold px-1.5 py-0.5 rounded-sm" style={{ background: "#F0FDF4", color: "#15803D" }}>
-                          {pack.liveCount} live
-                        </span>
-                        <span className="text-xs" style={{ color: "#9CA3AF" }}>·</span>
-                        <span className="text-xs font-semibold px-1.5 py-0.5 rounded-sm" style={{ background: "#EFF6FF", color: "#1D4ED8" }}>
-                          {pack.industryProtocols - pack.liveCount} building
-                        </span>
                       </div>
                     </div>
 
