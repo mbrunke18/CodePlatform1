@@ -284,7 +284,7 @@ function TwoPhasePlaybookSelector() {
                     <p className="text-xs text-[#6B7280]">Stakeholders</p>
                   </div>
                 </div>
-                <Link href={`/Readiness Protocols/${detail.id}`}>
+                <Link href={`/playbooks/${detail.id}/preview`}>
                   <Button size="sm" className="w-full bg-[#0A0F2E] text-white hover:bg-[#141B45] font-semibold text-xs mt-1">
                     Open Full Readiness Protocol
                     <ExternalLink className="h-3.5 w-3.5 ml-1.5" />

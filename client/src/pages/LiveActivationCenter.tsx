@@ -829,7 +829,7 @@ export default function LiveActivationCenter() {
 
                 {/* Option 2: Call the audible */}
                 <button
-                  onClick={() => selectedPlaybook && setLocation(`/Readiness Protocols/${selectedPlaybook}/customize`)}
+                  onClick={() => selectedPlaybook && setLocation(`/playbooks/${selectedPlaybook}/customize`)}
                   disabled={!selectedPlaybook}
                   style={{
                     background: 'rgba(201,168,76,0.07)',

@@ -499,7 +499,7 @@ export default function ProtocolDetail() {
             </Button>
             <div className="flex gap-3">
               <Button
-                onClick={() => setLocation(`/Readiness Protocol/${id}/customize`)}
+                onClick={() => setLocation(`/playbooks/${id}/customize`)}
                 style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
               >
                 <Settings className="h-4 w-4 mr-2" />
