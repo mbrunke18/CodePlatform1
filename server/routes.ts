@@ -1996,53 +1996,6 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
-  // TEMPORARY — self-service account reset (authenticated users only)
-  // Just visit /api/auth/reset-my-account in your browser while logged in.
-  // Deletes your user record + any linked org, then logs you out so you can start fresh.
-  // This endpoint will be removed after the Founding Partner onboarding is stable.
-  app.get('/api/auth/reset-my-account', async (req: any, res) => {
-    try {
-      const userId = req.user?.claims?.sub || req.user?.sub;
-      if (!userId) {
-        return res.status(401).send(
-          '<h2>Not logged in.</h2><p>Please <a href="/api/login">sign in</a> first, then visit this URL.</p>'
-        );
-      }
-
-      // Fetch user to get their linked org
-      const [userRow] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
-      const orgId = userRow?.organizationId;
-
-      // Delete the user record
-      await db.delete(users).where(eq(users.id, userId));
-
-      // Delete the org linked to this user account (if any)
-      if (orgId) {
-        await db.delete(organizations).where(eq(organizations.id, orgId));
-      }
-
-      // Also clean up any orphaned orgs created by this user (belt + suspenders)
-      // These have no users pointing to them — safe to remove by known IDs
-      const ORPHANED_ORG_IDS = ['383d22be-51d4-4557-91b5-d1d6974fdf0b']; // Trebor Consulting
-      for (const id of ORPHANED_ORG_IDS) {
-        try { await db.delete(organizations).where(eq(organizations.id, id)); } catch (_) {}
-      }
-
-      // Log out and destroy the session
-      req.logout(() => {
-        req.session?.destroy(() => {
-          res.send(
-            '<h2 style="font-family:sans-serif;color:#0A0F2E">Account reset complete.</h2>' +
-            '<p style="font-family:sans-serif">Your account and any associated data have been deleted.<br>' +
-            'You can now <a href="/api/login">sign in fresh</a> and start from scratch.</p>'
-          );
-        });
-      });
-    } catch (error: any) {
-      console.error('Error resetting account:', error);
-      res.status(500).send(`<p>Error: ${error.message}</p>`);
-    }
-  });
 
   // PATCH /api/user/profile — save executive role + industry vertical
   app.patch('/api/user/profile', async (req: any, res) => {
