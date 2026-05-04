@@ -574,7 +574,12 @@ function HeroSection() {
   const liveCtx = useLiveContext();
   const hasReal = (liveCtx?.recentDetections?.length ?? 0) > 0;
   const signals = hasReal
-    ? liveCtx!.recentDetections.slice(0, 4)
+    ? liveCtx!.recentDetections
+        .filter((s, i, arr) => {
+          const title = (s as any).signalDescription || (s as any).triggerName || '';
+          return arr.findIndex(x => ((x as any).signalDescription || (x as any).triggerName || '') === title) === i;
+        })
+        .slice(0, 4)
     : FALLBACK_SIGNALS.slice(0, 3);
 
   return (

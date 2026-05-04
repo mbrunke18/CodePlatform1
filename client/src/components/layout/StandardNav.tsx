@@ -735,15 +735,6 @@ export default function StandardNav() {
             ) : isAuthenticated && user ? (
               <>
                 <Button
-                  variant="outline"
-                  onClick={() => navigateTo("/request-access")}
-                  className="h-9 px-3 text-sm font-semibold"
-                  style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
-                  data-testid="nav-try-demo"
-                >
-                  Request Access
-                </Button>
-                <Button
                   onClick={() => navigateTo("/request-access")}
                   className="h-9 px-4 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: "none" }}
@@ -751,7 +742,7 @@ export default function StandardNav() {
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
                   data-testid="nav-request-pilot"
                 >
-                  Request Access
+                  Request Founding Partner Access
                 </Button>
                 <Button
                   onClick={() => navigateTo("/command-center")}
@@ -810,27 +801,18 @@ export default function StandardNav() {
             ) : (
               <>
                 <Button
-                  variant="outline"
-                  onClick={() => navigateTo("/request-access")}
-                  className="h-9 px-4 text-sm font-semibold"
-                  style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
-                  data-testid="nav-request-access"
-                >
-                  Request Access
-                </Button>
-                <Button
                   onClick={() => navigateTo("/request-access")}
                   className="h-9 px-4 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: "none" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
-                  data-testid="nav-request-pilot"
+                  data-testid="nav-request-access"
                 >
-                  Request Access
+                  Request Founding Partner Access
                 </Button>
                 <Button
                   variant="ghost"
-                  onClick={() => navigateTo('/request-access')}
+                  onClick={login}
                   className="h-9 px-3 text-sm font-medium"
                   style={{ color: NAVY }}
                   data-testid="nav-login"

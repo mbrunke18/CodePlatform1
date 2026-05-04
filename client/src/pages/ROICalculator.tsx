@@ -428,7 +428,7 @@ export default function ROICalculator() {
                       {formatCurrency(calculations.totalAnnualValue)}
                     </div>
                     <p className="text-teal-400 text-xs font-bold mt-2 uppercase tracking-widest">
-                      30 days → 12 min · {calculations.speedImprovement}× compression
+                      30 DAYS → 12 MIN · 3,600× EXECUTION HEAD START
                     </p>
                   </div>
 

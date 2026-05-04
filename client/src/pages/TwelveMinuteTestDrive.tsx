@@ -276,9 +276,7 @@ export default function TwelveMinuteTestDrive() {
     <div style={{ minHeight: '100vh', background: NAVY_BG, ...DM }}>
       {/* Nav */}
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="/">
-          <div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div>
-        </Link>
+        <VaughnMartinLogo height={32} variant="full" color="light" />
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           {[
             { n: 1, label: 'Choose Scenario' },
