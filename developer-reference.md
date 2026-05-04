@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: April 24, 2026 (rev 27) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 4, 2026 (rev 28) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -98,7 +98,7 @@ All navy `<section>` blocks on `Homepage.tsx` use three layers for visual depth:
 ├── client/src/
 │   ├── App.tsx                  ← All client-side routes (lazy-loaded)
 │   ├── main.tsx                 ← React entry point
-│   ├── pages/                   ← 151 page components
+│   ├── pages/                   ← 208 page components
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── PageLayout.tsx   ← Wraps every page (StandardNav + Footer)
@@ -2147,3 +2147,307 @@ The deck includes a browser-side PowerPoint export. No server involved.
 3. Add to the `SLIDES` array with a `label` string
 4. Test by scrolling through the full deck — watch for bottom-clip on content-heavy layouts
 5. Rule of thumb: outer padding ≤ 28px top/bottom; inner card padding ≤ 20px; body font ≤ 13px for text-dense slides
+
+---
+
+## 44. How It Executes Page — May 2026 (rev 28)
+
+**Route:** `/how-it-executes` → `client/src/pages/HowItExecutes.tsx`
+
+**Purpose:** Animated, interactive visualization of the full 6-step execution chain — from signal detection through executive authorization to 12-minute close. Designed for sales conversations and investor demos. No auth required.
+
+### Structure
+
+**4 Scenario Selectors** (tabs above the chain):
+| ID | Label | Trigger |
+|---|---|---|
+| `ransomware` | Ransomware Attack | 23 servers encrypted — 3 AM detection |
+| `activist` | Activist Investor | 9.8% stake disclosed — board seat demanded |
+| `supply` | Supply Chain Collapse | Primary supplier declares force majeure |
+| `regulatory` | Regulatory Inquiry | DOJ investigation opened — disclosure required |
+
+Each scenario drives the chain step content dynamically — protocol name, stakeholders, budget, risk score, and outcome are all scenario-specific.
+
+**6-Step IDEA Execution Chain** (animated, auto-plays on load, replays on scenario switch):
+| Step | Time | Label |
+|---|---|---|
+| 1 | 0:00 | Signal Detected |
+| 2 | 0:47 | Protocol Matched |
+| 3 | 2:00 | Stakeholders Staged |
+| 4 | 4:15 | Tasks Pre-Deployed |
+| 5 | 8:30 | Executive Authorizes |
+| 6 | 12:00 | Execution Complete |
+
+Animation: steps reveal sequentially via `useState(currentStep)` driven by `setInterval`. Each completed step gets a gold check badge. The active step pulses. Clicking a scenario tab resets `currentStep` to 0 and restarts the interval.
+
+**Old Model Comparison Panel:** Side-by-side against the chain — shows the traditional 30-day mobilization drift (Day 0 → Day 30) with labels like "Figuring out who's in the room," "First alignment call," "Board briefed for first time." Gold vertical line at 12 minutes marks where Readiness OS closes the cycle vs. Day 30 for the old model.
+
+**"Before / At / After the Trigger" Section:** Three columns explaining when preparation happens relative to the trigger:
+- **Before:** Ownership mapped, budgets pre-approved, tasks pre-staged
+- **At the Trigger:** System detects signal → protocol matched in seconds → stakeholders notified
+- **After (12 minutes):** Executive authorizes → execution confirmed → debrief staged
+
+**No API calls.** Fully static demonstration page — all scenario data is hardcoded in the `SCENARIOS` and `CHAIN_STEPS` arrays.
+
+**Brand constants used:** `NAVY`, `NAVY_BG`, `GOLD`, `TEAL`, `IVORY`, `MUTED`. Typography: `GEO` = Cormorant Garamond (editorial), `DM` = Inter (body/labels).
+
+---
+
+## 45. Proof Story Page — May 2026 (rev 28)
+
+**Route:** `/proof-story` → `client/src/pages/ProofStory.tsx`
+
+**Purpose:** Three full activation narratives (Ransomware, Activist Investor, Supply Chain Collapse) with timestamped side-by-side timelines, head-to-head comparison tables, and specific financial outcomes. Designed to give prospects and investors a concrete before/after view of Readiness OS impact. No auth required.
+
+### Structure
+
+**3 Story Cards** (`STORIES` array):
+
+| ID | Title | Industry |
+|---|---|---|
+| `ransomware` | "The Ransomware That Didn't Win" | Financial Services · Global Payments Infrastructure |
+| `activist` | "The Activist Who Arrived Too Late" | Consumer Goods · $8.4B revenue |
+| `supply` | "The Supplier That Disappeared Overnight" | Manufacturing · Tier-1 Supplier Dependency |
+
+Each story contains:
+- `without` block: "The 30-Day Drift" timeline — 8 timestamped events (Day 0 → Day 30), final cost
+- `with` block: "12 Minutes" timeline — 6 timestamped events (0:00 → 12:00), outcome headline
+- `comparison` table: 6 head-to-head rows (First stakeholder contact, Board notification, Regulatory filing, etc.)
+
+**View Toggle** (per story): Three buttons — "Side by Side" (default) | "With Readiness OS" | "Without Readiness OS". Controls which panels are visible. State is per-story, not global.
+
+**Side-by-Side layout:** Two equal columns. Left = navy "Without" panel. Right = teal/ivory "With" panel. Timeline events render as labeled rows with time stamps. Cost/outcome rendered as red (without) or teal (with) summary blocks at the bottom.
+
+**Comparison table:** Renders below the timelines in "Side by Side" mode. Each row: capability label | old-model cell (red/muted) | Readiness OS cell (teal/bold). Row labels: First stakeholder contact, Decision authority established, Board notification, Regulatory filing submitted, Operational response deployed, Cost.
+
+**No API calls.** All story data is hardcoded in the `STORIES` array.
+
+**Brand constants used:** `NAVY`, `NAVY_BG`, `GOLD`, `TEAL`, `IVORY`, `MUTED`. Typography: `GEO` = Cormorant Garamond (editorial headings), `DM` = Inter (body).
+
+---
+
+## 46. ROI Calculator — Sidebar Enhancements — May 2026 (rev 28)
+
+**Route:** `/roi-calculator` → `client/src/pages/ROICalculator.tsx`
+
+Four additions to the sticky right-side results sidebar:
+
+### 1. Platform Cost Slider
+- Range: $60,000 – $240,000/yr
+- Default: $120,000/yr
+- State: `const [platformCost, setPlatformCost] = useState(120000)`
+- Rendered with shadcn `<Slider>` component
+- Value displayed in monospace font as `$XX,XXX/yr`
+- Used in all downstream calculations (ROI %, net value, break-even, consulting comparison)
+
+### 2. Break-Even Calculation
+- Formula: `breakEvenEvents = Math.ceil(platformCost / valuePerEvent)`
+  where `valuePerEvent = totalAnnualValue / inputs.strategicEventsPerYear`
+- `breakEvenDays = Math.round(breakEvenEvents × daysPerEvent)` (daysPerEvent = 365 / eventsPerYear)
+- Display: `< 30 days → "X days"` | `≥ 30 days → "X months"`
+- Shown in sidebar as a teal stat block
+
+### 3. 3-Year Net Value
+- Formula: `threeYearValue = (totalAnnualValue × 3) - (platformCost × 3)`
+- Displayed in gold monospace font in the sidebar
+- Label: "3-Year Net Value"
+
+### 4. Consulting Retainer Comparison Panel
+- Formula: `consultingAnnual = 350,000 + (inputs.strategicEventsPerYear × 60,000)`
+  (base retainer $350K + $60K per strategic event handled)
+- Red monospace line: consulting annual cost
+- Teal monospace line: platform cost
+- Callout sentence: "Consulting costs $X more — and doesn't give you pre-staged execution."
+
+**Legacy fix included in this revision:** The old hero stat displayed "424× compression" — corrected to **"3,600× EXECUTION HEAD START"** with the label "30 days compressed to 12 minutes." This was a critical metric violation (retired framing). Any agent touching ROICalculator.tsx must preserve the 3,600× framing.
+
+---
+
+## 47. StandardNav CTA Cleanup — May 2026 (rev 28)
+
+**File:** `client/src/components/layout/StandardNav.tsx`
+
+### Problem Fixed
+The nav previously rendered duplicate CTA buttons in certain auth states — two "Request Founding Partner Access" buttons appearing simultaneously, or a button appearing alongside an identical mobile variant at desktop width.
+
+### Current Pattern (canonical — do not revert)
+
+**Unauthenticated users:**
+- Single gold "Request Founding Partner Access" button → `/request-access`
+- Separate "Sign In" text button → calls `login()` from `useAuth`
+- No duplicate buttons at any breakpoint
+
+**Authenticated users:**
+- User avatar/initials menu replaces both CTAs
+- No "Request Founding Partner Access" shown to signed-in users
+
+**Button label rule (LOCKED):** All CTAs on StandardNav use "Request Founding Partner Access" — never "Apply for Pilot," "Get Started," or any retired variant. This matches the Founding Partner Program language lock established in Section 32.
+
+**`login()` call pattern:**
+```tsx
+const { login } = useAuth();
+// Sign In button:
+<button onClick={() => login()}>Sign In</button>
+```
+Never use `window.location.href = '/api/login'` for the nav Sign In button — always call `login()` from the auth hook so the return-to URL is handled correctly.
+
+---
+
+## 48. VaughnMartinLogo — `noLink` Prop — May 2026 (rev 28)
+
+**File:** `client/src/components/VaughnMartinLogo.tsx`
+
+### Problem Fixed
+When `VaughnMartinLogo` was rendered inside a parent `<Link>` component (e.g., in `TwelveMinuteTestDrive.tsx`), the browser emitted a DOM warning about nested anchor elements — the logo's own internal `<a>` wrapper was nested inside the parent `<Link>` anchor.
+
+### Solution
+Added a `noLink` prop (default `false`). When `noLink={true}`, the component renders without its own anchor wrapper, allowing it to be composed inside a parent link safely:
+
+```tsx
+// VaughnMartinLogo.tsx
+interface Props {
+  noLink?: boolean;
+  // ... other props
+}
+
+export function VaughnMartinLogo({ noLink = false, ...rest }) {
+  const logo = <span>/* logo SVG/image */</span>;
+  if (noLink) return logo;
+  return <a href="/">{logo}</a>;
+}
+```
+
+**Usage pattern when inside a parent Link:**
+```tsx
+<Link href="/">
+  <VaughnMartinLogo height={32} variant="full" color="light" noLink />
+</Link>
+```
+
+**Rule:** Any component that wraps `VaughnMartinLogo` inside its own `<Link>` or `<a>` must pass `noLink` to prevent nested anchor DOM errors. The same fix was applied in `TwelveMinuteTestDrive.tsx`.
+
+---
+
+## 49. Two-Tier Platform Architecture — Industry Protocol Packs — May 2026 (rev 28)
+
+Two new pages establish the two-tier platform model: Readiness OS Core (143 general protocols, cross-industry) + 6 Industry Protocol Packs (purpose-built vertical stacks on top of the core).
+
+### IndustryPacksHub — `/industry`
+
+**File:** `client/src/pages/IndustryPacksHub.tsx` (536 lines)
+
+**Purpose:** Landing hub for the two-tier architecture. Explains that every Readiness OS subscription includes all 143 core protocols, with optional vertical packs adding industry-specific protocols on top.
+
+**6 Industry Packs** (`INDUSTRY_PACKS` array):
+
+| Key | Name | Industry Protocols |
+|---|---|---|
+| `financial_services` | Financial Services | 15 |
+| `technology` | Technology & Software | 12 |
+| `manufacturing` | Manufacturing & Industrial | 14 |
+| `energy` | Energy & Utilities | 13 |
+| `retail` | Retail & Consumer | 11 |
+| `healthcare` | Healthcare & Life Sciences | 16 |
+
+Each card shows: icon, name, tagline, industry protocol count, sample trigger scenarios, and a "View Pack →" CTA linking to `/industry/:verticalKey`.
+
+**Core foundation callout:** A bottom section shows the 143 core protocols as the shared base — with a breakdown of the 9 strategic domains included in every subscription.
+
+**Route registered:** `App.tsx` line ~619 — `<Route path="/industry" component={IndustryPacksHub} />`
+
+**StandardNav entry:** "Industry Protocol Packs" appears in the Core Capabilities dropdown section → `/industry`. Added with `Globe` icon and description "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built vertical stacks" with `featured: true`.
+
+---
+
+### IndustryPackDetail — `/industry/:verticalKey`
+
+**File:** `client/src/pages/IndustryPackDetail.tsx` (1,160 lines)
+
+**Purpose:** Full detail page for a single industry pack. Parameterized — one component serves all 6 verticals. Reads `verticalKey` from Wouter `useParams`.
+
+**Content per pack:**
+- Hero: industry name, headline, tagline, description
+- Protocol list: industry-specific protocols with urgency badges (CRITICAL / HIGH / STANDARD), trigger lists, domain labels
+- Core protocols count: "Included from Core — 143 additional protocols available to all subscribers"
+- Key triggers: industry-specific trigger examples shown as signal cards
+- Stakeholder scenarios: role-specific execution examples (CFO, CISO, General Counsel, etc.)
+- CTA: "Request Founding Partner Access" → `/request-access`
+
+**`INDUSTRY_PACK_DATA` constant:** Keyed by `verticalKey`. Each entry defines `name`, `fullName`, `headline`, `tagline`, `description`, and an array of `ProtocolEntry` objects.
+
+**`ProtocolEntry` shape:**
+```ts
+interface ProtocolEntry {
+  number?: number;
+  name: string;
+  description: string;
+  urgency: "CRITICAL" | "HIGH" | "STANDARD";
+  triggers: string[];
+  domains: string;
+  status?: "live";
+}
+```
+
+**404 handling:** If `verticalKey` doesn't match any key in `INDUSTRY_PACK_DATA`, the page renders a "Pack not found" state with a link back to `/industry`.
+
+**Route registered:** `App.tsx` line ~620 — `<Route path="/industry/:verticalKey" component={IndustryPackDetail} />`
+
+---
+
+## 50. Homepage Signal Feed Deduplication — May 2026 (rev 28)
+
+**File:** `client/src/pages/Homepage.tsx`
+
+### Problem Fixed
+The live signal feed section on the homepage was displaying duplicate signal cards — the same trigger detection appearing two or more times when the RSS pipeline fired multiple articles matching the same trigger pattern within the same ingestion window.
+
+### Fix Applied
+Before rendering, the signal array is deduplicated by `title` field using a `Map`:
+
+```ts
+const uniqueSignals = Array.from(
+  new Map(signals.map((s: any) => [s.title, s])).values()
+);
+```
+
+`uniqueSignals` replaces `signals` in the render loop. The map preserves the first occurrence of each title and discards subsequent duplicates. This is done client-side — no server change required — because the RSS pipeline correctly stores each item once, but the display query could surface multiple detections with matching article titles from the same ingestion cycle.
+
+**No API changes.** Pure frontend display fix in `Homepage.tsx`.
+
+---
+
+## 51. Manifesto Video Components — Status Note — May 2026 (rev 28)
+
+**Location:** Bottom of `/founder-story` (`FounderStory.tsx`)
+
+Two animated text slideshow components with TTS narration (not real video files) are mounted at the bottom of the manifesto page:
+
+| Component | File | Status |
+|---|---|---|
+| Intro Narration | `client/src/components/marketing/FounderStoryIntro.tsx` | Contains retired "72 hours" framing |
+| Full Story Narration | `client/src/components/marketing/FounderStoryFull.tsx` | Football language preserved (deliberate — origin narrative) |
+
+**`FounderStoryIntro.tsx` — outstanding issue:** The TTS narration script in this component contains the retired "72 hours" framing that was corrected in the written manifesto body during rev 23 (Section 38). The video-style narration text was not caught in that sweep because grep patterns targeted `FounderStory.tsx` (the page), not the component files. This is a known open item. The founder has not yet approved a remediation path (replace content vs. replace with placeholder shell). Do not touch this component without explicit founder instruction.
+
+**Rule:** Any future metric sweep (`grep -ri "seventy.two\|seventy-two\|72.hour"`) must include `client/src/components/marketing/` — not just `client/src/pages/`.
+
+---
+
+## 52. Codebase Scale Reference — May 2026 (rev 28)
+
+Current production counts as of May 4, 2026:
+
+| Artifact | Count |
+|---|---|
+| Page components (`client/src/pages/`) | **208** |
+| Component files (`client/src/components/`) | **86** |
+| Registered client-side routes (App.tsx) | **215+** |
+| Server route modules (`server/routes/`) | **15** |
+| Playbooks in library | **170** (+ 4 compound = 174 total) |
+| Strategic domains | **9** |
+| Canonical trigger count | **221** |
+| Signal data points | **248+** |
+| RSS feed sources (live signal pipeline) | **8** |
+| Ingestion interval | **15 minutes** |
+
+**Note on route count:** `App.tsx` uses a `renderRoutes()` helper that registers multiple path aliases for a single component. The 215+ count includes all aliases. The distinct page components number 208.
