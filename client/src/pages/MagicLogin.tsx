@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { CheckCircle, XCircle, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { queryClient } from "@/lib/queryClient";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
@@ -12,7 +10,6 @@ const TEAL = "#2B8A6E";
 type State = "validating" | "ready" | "entering" | "success" | "expired" | "used" | "invalid" | "error";
 
 export default function MagicLogin() {
-  const [, navigate] = useLocation();
   const [state, setState] = useState<State>("validating");
   const [firstName, setFirstName] = useState<string>("");
   const [token, setToken] = useState<string>("");
@@ -28,25 +25,37 @@ export default function MagicLogin() {
 
     setToken(t);
 
-    // Step 1: validate only — does NOT consume the token.
-    // Email security scanners hit GET links automatically; using a separate
-    // read-only validate endpoint ensures the token survives until the user
-    // explicitly clicks "Enter Platform" (which POSTs to /verify).
-    fetch(`/api/auth/magic-link/validate?token=${encodeURIComponent(t)}`, {
-      method: "GET",
-      credentials: "include",
-    })
-      .then(async (res) => {
-        const body = await res.json().catch(() => ({}));
-        if (res.ok) {
-          setFirstName(body.firstName || "");
-          setState("ready");
-        } else {
-          const reason = body.reason as string | undefined;
-          if (reason === "expired") setState("expired");
-          else if (reason === "already_used") setState("used");
-          else setState("invalid");
+    // First check if the user is already authenticated — if so, skip the token
+    // flow entirely and send them straight to Mission Control.
+    fetch("/api/auth/user", { credentials: "include" })
+      .then(async (authRes) => {
+        if (authRes.ok) {
+          // Already logged in — bypass the token flow, go directly to platform.
+          setState("success");
+          window.location.href = "/mission-control";
+          return;
         }
+
+        // Not authenticated — validate the token (read-only, does NOT consume it).
+        // Email security scanners hit GET links; the separate validate endpoint
+        // keeps the token alive until the user explicitly clicks "Enter Platform".
+        fetch(`/api/auth/magic-link/validate?token=${encodeURIComponent(t)}`, {
+          method: "GET",
+          credentials: "include",
+        })
+          .then(async (res) => {
+            const body = await res.json().catch(() => ({}));
+            if (res.ok) {
+              setFirstName(body.firstName || "");
+              setState("ready");
+            } else {
+              const reason = body.reason as string | undefined;
+              if (reason === "expired") setState("expired");
+              else if (reason === "already_used") setState("used");
+              else setState("invalid");
+            }
+          })
+          .catch(() => setState("error"));
       })
       .catch(() => setState("error"));
   }, []);
@@ -55,7 +64,7 @@ export default function MagicLogin() {
     if (!token) return;
     setState("entering");
 
-    // Step 2: POST to verify — consumes the token and creates the session.
+    // POST to verify — consumes the token and creates the session.
     // Email scanners do not send POST requests, so this is the safe consume step.
     fetch("/api/auth/magic-link/verify", {
       method: "POST",
@@ -66,11 +75,9 @@ export default function MagicLogin() {
       .then(async (res) => {
         if (res.ok) {
           setState("success");
-          // Invalidate the cached auth state so useRequireAuth picks up the
-          // new session immediately instead of redirecting with stale data.
-          await queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
-          await queryClient.refetchQueries({ queryKey: ['/api/auth/user'] });
-          navigate("/mission-control");
+          // Full page reload guarantees the new session cookie is picked up
+          // before the protected route checks authentication — no race condition.
+          window.location.href = "/mission-control";
         } else {
           const body = await res.json().catch(() => ({}));
           const reason = body.reason as string | undefined;
