@@ -42,13 +42,15 @@ export default function AdminPanel() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [addSuccess, setAddSuccess] = useState(false);
 
-  const { data: userList = [], isLoading: usersLoading, error: usersError } = useQuery<AdminUser[]>({
+  const { data: rawUsers, isLoading: usersLoading, error: usersError } = useQuery<AdminUser[]>({
     queryKey: ["/api/admin/users"],
   });
+  const userList: AdminUser[] = rawUsers ?? [];
 
-  const { data: allowlist = [], isLoading: allowlistLoading } = useQuery<AllowedEmail[]>({
+  const { data: rawAllowlist, isLoading: allowlistLoading } = useQuery<AllowedEmail[]>({
     queryKey: ["/api/admin/allowlist"],
   });
+  const allowlist: AllowedEmail[] = rawAllowlist ?? [];
 
   const deleteUser = useMutation({
     mutationFn: (id: string) => apiRequest("DELETE", `/api/admin/users/${id}`),

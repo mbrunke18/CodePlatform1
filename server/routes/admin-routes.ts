@@ -26,7 +26,7 @@ export function registerAdminRoutes(app: Express) {
         .from(users)
         .orderBy(desc(users.createdAt));
 
-      const orgIds = [...new Set(rows.map(u => u.organizationId).filter(Boolean))] as string[];
+      const orgIds = Array.from(new Set(rows.map(u => u.organizationId).filter((id): id is string => !!id)));
       const orgs = orgIds.length
         ? await db.select({ id: organizations.id, name: organizations.name })
             .from(organizations)
