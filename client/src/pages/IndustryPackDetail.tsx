@@ -128,6 +128,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 144,
         name: "Stress Test Failure (DFAST / CCAR)",
         description: "Federal stress test failure response — capital plan remediation, Fed communication, board disclosure, and public relations containment.",
         urgency: "CRITICAL",
@@ -136,6 +137,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 145,
         name: "AML / Sanctions Violation (OFAC)",
         description: "Anti-money laundering or OFAC sanctions breach — transaction freeze, SAR filing, FinCEN notification, and regulatory remediation program.",
         urgency: "CRITICAL",
@@ -144,6 +146,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 146,
         name: "Market Manipulation Investigation",
         description: "SEC or CFTC market manipulation investigation response — trading halt coordination, legal hold, document preservation, and regulator cooperation.",
         urgency: "CRITICAL",
@@ -152,6 +155,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 147,
         name: "Interest Rate Shock / Fed Surprise Response",
         description: "Unexpected Fed rate decision response — portfolio repricing, mortgage pipeline hedging, client communication, and balance sheet repositioning.",
         urgency: "HIGH",
@@ -160,6 +164,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 148,
         name: "Earnings Miss & Guidance Withdrawal",
         description: "Public company earnings shortfall — investor relations response, guidance revision, analyst briefing, and short-seller activity containment.",
         urgency: "HIGH",
@@ -168,6 +173,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 149,
         name: "PCI-DSS Financial Data Breach",
         description: "Payment card data breach response — PCI forensics activation, card network notification, customer remediation, and regulatory disclosure.",
         urgency: "CRITICAL",
@@ -176,6 +182,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 150,
         name: "Leveraged Buyout Financing Collapse",
         description: "LBO financing failure at signing — alternative structure activation, seller negotiation, co-investor mobilization, and bridge financing execution.",
         urgency: "HIGH",
@@ -276,6 +283,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 151,
         name: "Cloud Provider / Data Center Outage",
         description: "Multi-region cloud provider failure response — workload failover, SLA breach containment, customer communication, and business continuity activation.",
         urgency: "CRITICAL",
@@ -284,6 +292,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 152,
         name: "Security Breach & Source Code Leak",
         description: "Insider threat or external breach resulting in source code, customer data, or IP exposure — legal hold, forensics activation, disclosure sequencing.",
         urgency: "CRITICAL",
@@ -292,6 +301,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 153,
         name: "App Store Delisting Threat",
         description: "Apple or Google app store policy violation response — compliance remediation, policy negotiation, user communication, and alternative distribution staging.",
         urgency: "CRITICAL",
@@ -300,6 +310,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 154,
         name: "AI Model Liability Event",
         description: "AI-generated content causing legal harm — model rollback, liability containment, regulator notification (EU AI Act), and public response.",
         urgency: "HIGH",
@@ -308,6 +319,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 155,
         name: "Enterprise Customer Churn Spike",
         description: "Large enterprise account attrition response — executive retention intervention, contract renegotiation, competitive win-back, and revenue containment.",
         urgency: "HIGH",
@@ -316,6 +328,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 156,
         name: "SLA Breach & Enterprise Penalty",
         description: "Service level agreement failure response — customer remediation, penalty mitigation, root cause communication, and contract amendment.",
         urgency: "HIGH",
@@ -398,6 +411,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 157,
         name: "Product Quality Recall (Manufacturing)",
         description: "Defective product recall response — unit identification, production halt, CPSC / regulatory notification, customer/channel communication, and root cause investigation.",
         urgency: "CRITICAL",
@@ -406,6 +420,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 158,
         name: "Trade Tariff & Import Restriction Response",
         description: "New tariff or import restriction response — cost pass-through analysis, supplier geographic rebalancing, customer communication, and pricing execution.",
         urgency: "HIGH",
@@ -414,6 +429,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 159,
         name: "Export Control / ITAR Violation",
         description: "ITAR or EAR export control breach response — shipment halt, DDTC/BIS notification, internal investigation, and voluntary disclosure program.",
         urgency: "CRITICAL",
@@ -422,6 +438,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 160,
         name: "Raw Material Price Spike",
         description: "Commodity price escalation response — hedging activation, supplier contract renegotiation, pricing strategy update, and customer communication.",
         urgency: "HIGH",
@@ -430,6 +447,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 161,
         name: "Environmental Compliance Violation",
         description: "EPA or state environmental violation response — containment activation, agency notification, remediation program, and community communication.",
         urgency: "CRITICAL",
@@ -438,6 +456,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 162,
         name: "ERP System Failure (SAP / Oracle)",
         description: "Enterprise ERP failure response — manual process activation, order management continuity, supplier communication, and recovery sequencing.",
         urgency: "HIGH",
@@ -446,6 +465,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 163,
         name: "Energy Cost Escalation Crisis",
         description: "Sudden energy cost spike impact on production economics — load shedding, production prioritization, contract hedging, and customer price adjustment.",
         urgency: "HIGH",
@@ -519,6 +539,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 164,
         name: "Grid Cyberattack (ICS / SCADA)",
         description: "Industrial control system cyberattack response — SCADA isolation, NERC CIP incident reporting, DOE/CISA notification, and grid stability continuity.",
         urgency: "CRITICAL",
@@ -527,6 +548,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 165,
         name: "Offshore Platform Emergency",
         description: "Offshore platform safety or environmental emergency response — personnel evacuation, BSEE notification, spill containment, and media containment.",
         urgency: "CRITICAL",
@@ -535,6 +557,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 166,
         name: "Nuclear Incident Response",
         description: "Nuclear facility incident response — NRC emergency plan activation, community notification, evacuation coordination, and federal agency engagement.",
         urgency: "CRITICAL",
@@ -543,6 +566,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 167,
         name: "Oil & Gas Price Collapse",
         description: "Commodity price collapse response — capital program suspension, production curtailment, workforce right-sizing, and investor communication.",
         urgency: "HIGH",
@@ -551,6 +575,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 170,
         name: "Hurricane / Natural Disaster Response",
         description: "Hurricane or natural disaster facility response — pre-landfall shutdown sequencing, personnel safety, asset protection, restoration prioritization.",
         urgency: "CRITICAL",
@@ -559,6 +584,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 171,
         name: "Regulatory Rate Case Challenge",
         description: "Utility rate case adverse ruling response — interim rate recovery strategy, regulatory negotiation, customer impact communication, and financial reforecast.",
         urgency: "HIGH",
@@ -567,6 +593,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 172,
         name: "Carbon Market & Net-Zero Compliance",
         description: "Carbon credit shortfall or net-zero compliance failure response — offset procurement, regulatory negotiation, ESG disclosure update, and investor communication.",
         urgency: "HIGH",
@@ -575,6 +602,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 173,
         name: "Utility Merger Integration Failure",
         description: "Post-merger integration breakdown response — regulatory approval risk management, operational integration sequencing, and workforce retention.",
         urgency: "HIGH",
@@ -630,6 +658,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 174,
         name: "Food Safety Recall (FDA Class I / II)",
         description: "Contaminated product recall — unit traceability activation, FDA notification, store pull sequencing, consumer communication, and media containment.",
         urgency: "CRITICAL",
@@ -638,6 +667,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 175,
         name: "E-Commerce Platform Outage (Peak Season)",
         description: "Peak season platform failure — revenue recovery sequencing, customer communication, carrier SLA protection, and post-outage retention activation.",
         urgency: "CRITICAL",
@@ -646,6 +676,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 176,
         name: "Customer Payment Data Breach (PCI-DSS)",
         description: "Payment card data exposure — PCI forensics, card network notification, customer remediation offers, state AG notification, and trust restoration.",
         urgency: "CRITICAL",
@@ -654,6 +685,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 177,
         name: "Supplier Labor Violation (Forced Labor Act)",
         description: "Supplier forced labor or child labor exposure — product halt, CBP withhold-release order response, supplier audit activation, and brand communication.",
         urgency: "CRITICAL",
@@ -662,6 +694,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 178,
         name: "Influencer / Brand Ambassador Scandal",
         description: "Brand ambassador misconduct response — contract termination, campaign pull, social containment, and brand distancing communication.",
         urgency: "HIGH",
@@ -670,6 +703,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 179,
         name: "Counterfeit Goods Crisis",
         description: "Large-scale counterfeit product infiltration — marketplace takedown coordination, brand protection activation, customer communication, and legal enforcement.",
         urgency: "HIGH",
@@ -678,6 +712,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 180,
         name: "Store Network Closure & Restructuring",
         description: "Multi-store closure execution — lease termination sequencing, workforce notification (WARN Act), inventory liquidation, and brand continuation strategy.",
         urgency: "HIGH",
@@ -686,6 +721,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 181,
         name: "Tariff-Driven Price Increase Response",
         description: "Import tariff cost absorption response — pricing strategy update, supplier negotiation, customer communication, and competitive positioning.",
         urgency: "HIGH",
@@ -694,6 +730,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 182,
         name: "Price-Fixing Investigation (FTC / DOJ)",
         description: "Antitrust pricing investigation response — document preservation, counsel engagement, DOJ/FTC cooperation strategy, and employee communication.",
         urgency: "CRITICAL",
@@ -702,6 +739,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 183,
         name: "Flash Sale Demand Collapse",
         description: "Promotional demand shortfall response — inventory repositioning, markdown optimization, vendor partner communication, and margin recovery.",
         urgency: "STANDARD",
@@ -748,6 +786,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 184,
         name: "FDA Warning Letter / Consent Decree",
         description: "FDA enforcement action response — manufacturing halt assessment, FDA response letter preparation, consent decree negotiation, and remediation program activation.",
         urgency: "CRITICAL",
@@ -756,6 +795,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 185,
         name: "Hospital Ransomware Attack",
         description: "Healthcare ransomware response — patient care diversion, EHR downtime procedures, FBI/HHS notification, and clinical operations continuity.",
         urgency: "CRITICAL",
@@ -764,6 +804,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 186,
         name: "Drug Shortage Response",
         description: "Critical drug shortage management — FDA notification (mandatory), alternative sourcing activation, clinical rationing protocol, and patient communication.",
         urgency: "CRITICAL",
@@ -772,6 +813,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 187,
         name: "HIPAA Breach Notification",
         description: "Protected health information breach response — breach assessment, HHS/OCR notification (60-day window), patient notification, and media statement.",
         urgency: "CRITICAL",
@@ -780,6 +822,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 188,
         name: "Patient Harm Disclosure",
         description: "Serious patient harm or sentinel event response — immediate safety action, Joint Commission reporting, board notification, family communication, and RCA activation.",
         urgency: "CRITICAL",
@@ -788,6 +831,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 189,
         name: "CMS Audit / Medicare Fraud Investigation",
         description: "CMS audit or OIG fraud investigation response — document preservation, counsel engagement, billing review, voluntary repayment program, and cooperation strategy.",
         urgency: "CRITICAL",
@@ -796,6 +840,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 190,
         name: "Clinical Trial Protocol Deviation",
         description: "Clinical trial serious protocol deviation response — IRB notification, FDA IND safety report, trial hold assessment, and patient safety communication.",
         urgency: "CRITICAL",
@@ -804,6 +849,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 191,
         name: "Medical Device Malfunction (MDR)",
         description: "Medical device malfunction or failure response — MDR filing (30-day window), field safety notice, device correction/removal, and clinical communication.",
         urgency: "HIGH",
@@ -812,6 +858,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 192,
         name: "Insurance Reimbursement Rate Cut",
         description: "Major payer reimbursement rate reduction response — financial reforecast, service line prioritization, contract renegotiation, and workforce impact assessment.",
         urgency: "HIGH",
@@ -820,6 +867,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 193,
         name: "Biosimilar / Generic Market Entry",
         description: "Biosimilar or generic competitor launch response — pricing strategy activation, formulary defense, prescriber communication, and market share protection.",
         urgency: "HIGH",
@@ -828,6 +876,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         status: "live",
       },
       {
+        number: 194,
         name: "Physician Group Acquisition Integration",
         description: "Post-acquisition physician group integration — Stark Law compliance, compensation alignment, culture integration, and quality metric continuity.",
         urgency: "STANDARD",
