@@ -144,10 +144,6 @@ export const PUBLIC_ROUTES = [
   '/api/institutional-memory',
   '/api/institutional-memory/:organizationId',
   
-  // What-If Scenarios - demo access
-  '/api/what-if-scenarios',
-  '/api/what-if-scenarios/:id',
-  
   // Scenarios/Playbooks - demo access
   '/api/scenarios',
   '/api/scenarios/:id',
@@ -383,12 +379,6 @@ export function conditionalAuth(req: any, res: any, next: any) {
     return next(); // Skip auth for public routes
   }
 
-  // Allow internal server-to-server test calls with a shared secret token
-  const internalToken = req.headers['x-internal-token'];
-  if (internalToken === 'vm-internal-test-2026') {
-    return next();
-  }
-  
   // Require auth for all other routes
   const userId = req.user?.claims?.sub || req.user?.sub || req.user?.id || null;
   if (!userId) {

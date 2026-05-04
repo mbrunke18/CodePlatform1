@@ -183,9 +183,9 @@ function requireRole(...allowedRoles: string[]) {
 
       next();
     } catch (error) {
-      // On error, allow authenticated users through rather than blocking
+      // On error, fail closed — do not grant access on role lookup failure
       console.error("Error in requireRole middleware:", error);
-      next();
+      return res.status(403).json({ message: "Access check failed — please try again" });
     }
   };
 }
@@ -5556,7 +5556,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     }
   });
 
-  app.post('/api/what-if-scenarios', async (req: any, res) => {
+  app.post('/api/what-if-scenarios', requireOrgAccess, async (req: any, res) => {
     try {
       const userId = req.userId; // Valid user from database
       const orgId = req.orgId;
@@ -5578,7 +5578,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     }
   });
 
-  app.put('/api/what-if-scenarios/:id', async (req: any, res) => {
+  app.put('/api/what-if-scenarios/:id', requireOrgAccess, async (req: any, res) => {
     try {
       const scenario = await storage.updateWhatIfScenario(req.params.id, req.body);
       if (!scenario) {
@@ -5591,7 +5591,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
     }
   });
 
-  app.delete('/api/what-if-scenarios/:id', async (req: any, res) => {
+  app.delete('/api/what-if-scenarios/:id', requireOrgAccess, async (req: any, res) => {
     try {
       await storage.deleteWhatIfScenario(req.params.id);
       res.status(204).send();
