@@ -627,6 +627,8 @@ function Router() {
         <Route path="/admin/customer-health" component={AdminCustomerHealth} />
         <Route path="/admin/pilot-health" component={FoundingPartnerHealthMonitor} />
         <Route path="/admin/quick-link" component={AdminQuickLink} />
+        <Route path="/admin/users" component={lazy(() => import("./pages/AdminPanel"))} />
+        <Route path="/access-denied" component={lazy(() => import("./pages/AccessDenied"))} />
         <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />

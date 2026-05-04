@@ -19,6 +19,7 @@ import { createAndSendMagicLink, verifyMagicLinkToken, sendWelcomeTriggerDemo } 
 import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
+import { registerAdminRoutes } from "./routes/admin-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
 import { registerOnboardingRoutes } from "./routes/onboarding-routes";
 import { registerExecutionSyncRoutes } from "./routes/execution-sync-routes";
@@ -2244,6 +2245,10 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       res.status(500).json({ error: 'Failed to approve budget' });
     }
   });
+
+  // ============================================
+  // === ADMIN ROUTES (admin-routes.ts) ===
+  registerAdminRoutes(app);
 
   // ============================================
   // === ONBOARDING JOURNEY ROUTES (onboarding-routes.ts) ===

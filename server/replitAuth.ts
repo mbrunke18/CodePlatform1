@@ -7,6 +7,9 @@ import type { Express, RequestHandler } from "express";
 import memoize from "memoizee";
 import connectPg from "connect-pg-simple";
 import { storage } from "./storage";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
+import { allowedEmails } from "@shared/schema";
 
 const getOidcConfig = memoize(
   async () => {
@@ -69,6 +72,27 @@ async function upsertUser(claims: any) {
   }
 }
 
+// Returns true if this email is allowed to log in.
+// Platform admin (PLATFORM_ADMIN_EMAIL) always passes.
+// Everyone else must be in the allowed_emails table.
+// If the table doesn't exist yet (pre-migration) we fail open so no one gets locked out.
+async function isEmailAllowed(email: string): Promise<boolean> {
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL;
+  if (adminEmail && email === adminEmail) return true;
+
+  try {
+    const rows = await db
+      .select()
+      .from(allowedEmails)
+      .where(eq(allowedEmails.email, email.toLowerCase().trim()))
+      .limit(1);
+    return rows.length > 0;
+  } catch {
+    // Table doesn't exist yet — fail open so existing users aren't locked out
+    return true;
+  }
+}
+
 export async function setupAuth(app: Express) {
   app.set("trust proxy", 1);
   app.use(getSession());
@@ -82,9 +106,17 @@ export async function setupAuth(app: Express) {
   const config = await getOidcConfig();
 
   const verify: VerifyFunction = async (tokens: any, verified: any) => {
+    const claims = tokens.claims();
+    const email: string = claims["email"] ?? "";
+
+    const allowed = await isEmailAllowed(email);
+    if (!allowed) {
+      return verified(null, false, { message: "access_denied" });
+    }
+
     const user = {};
     updateUserSession(user, tokens);
-    await upsertUser(tokens.claims());
+    await upsertUser(claims);
     verified(null, user);
   };
 
@@ -105,13 +137,10 @@ export async function setupAuth(app: Express) {
     registeredDomains.push(trimmed);
   }
 
-  // Helper: find the best matching strategy for a given hostname,
-  // falling back to the first registered domain if no exact match.
   function resolveStrategy(hostname: string): string {
     if (registeredDomains.includes(hostname)) {
       return `replitauth:${hostname}`;
     }
-    // Try prefix match (same Repl ID, different TLD like repl.co vs replit.dev)
     const replId = hostname.split(".")[0];
     const match = registeredDomains.find(d => d.startsWith(replId));
     return `replitauth:${match || registeredDomains[0]}`;
@@ -121,7 +150,6 @@ export async function setupAuth(app: Express) {
   passport.deserializeUser((user: Express.User, cb) => cb(null, user));
 
   app.get("/api/login", (req, res, next) => {
-    // Store returnTo so user lands back on the right page after OAuth
     if (req.query.returnTo && typeof req.query.returnTo === 'string') {
       (req.session as any).returnTo = req.query.returnTo;
     } else if (!(req.session as any).returnTo) {
@@ -133,10 +161,24 @@ export async function setupAuth(app: Express) {
   });
 
   app.get("/api/callback", (req, res, next) => {
-    passport.authenticate(resolveStrategy(req.hostname), {
-      successReturnToOrRedirect: "/mission-control",
-      failureRedirect: "/api/login",
-    })(req, res, next);
+    passport.authenticate(
+      resolveStrategy(req.hostname),
+      (err: any, user: any, info: any) => {
+        if (err) return next(err);
+        if (!user) {
+          if (info?.message === "access_denied") {
+            return res.redirect("/access-denied");
+          }
+          return res.redirect("/api/login");
+        }
+        req.logIn(user, (loginErr) => {
+          if (loginErr) return next(loginErr);
+          const returnTo = (req.session as any).returnTo || "/mission-control";
+          delete (req.session as any).returnTo;
+          return res.redirect(returnTo);
+        });
+      }
+    )(req, res, next);
   });
 
   app.get("/api/logout", (req, res) => {
@@ -165,4 +207,17 @@ export const hasPermission = (action: string) => {
     }
     return next();
   };
+};
+
+// Middleware: only the platform admin may pass.
+export const requirePlatformAdmin: RequestHandler = async (req: any, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  const userEmail: string = req.user?.claims?.email ?? "";
+  const adminEmail = process.env.PLATFORM_ADMIN_EMAIL ?? "";
+  if (!adminEmail || userEmail !== adminEmail) {
+    return res.status(403).json({ message: "Forbidden — platform admin only" });
+  }
+  return next();
 };

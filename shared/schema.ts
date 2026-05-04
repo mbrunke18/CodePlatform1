@@ -6639,3 +6639,16 @@ export const customProtocols = pgTable('custom_protocols', {
 export const insertCustomProtocolSchema = createInsertSchema(customProtocols).omit({ id: true, createdAt: true, updatedAt: true });
 export type InsertCustomProtocol = z.infer<typeof insertCustomProtocolSchema>;
 export type CustomProtocol = typeof customProtocols.$inferSelect;
+
+// ─── Access Control — Email Allowlist ────────────────────────────────────────
+// Only emails on this list (plus the PLATFORM_ADMIN_EMAIL env var) can log in.
+// Managed via the /admin/users panel.
+export const allowedEmails = pgTable('allowed_emails', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  note: text('note'),
+  addedAt: timestamp('added_at').defaultNow().notNull(),
+});
+export const insertAllowedEmailSchema = createInsertSchema(allowedEmails).omit({ id: true, addedAt: true });
+export type InsertAllowedEmail = z.infer<typeof insertAllowedEmailSchema>;
+export type AllowedEmail = typeof allowedEmails.$inferSelect;
