@@ -666,6 +666,40 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
             </div>
           )}
 
+          {(() => {
+            const PACK_META: Record<string, { count: number; regulatory: string }> = {
+              financial_services: { count: 15, regulatory: "Basel III · DORA · SWIFT · Fed Enforcement · OFAC · CCAR/DFAST" },
+              technology:         { count: 13, regulatory: "SOC 2 · ISO 27001 · GDPR · CCPA · FTC · EU AI Act" },
+              manufacturing:      { count: 12, regulatory: "OSHA · EPA · ISO 9001 · ITAR / EAR Export Controls · REACH" },
+              energy:             { count: 12, regulatory: "FERC · EPA · NERC CIP · DOE · CFTC · SEC Climate Disclosure" },
+              retail:             { count: 12, regulatory: "FTC · CPSC · PCI DSS · CCPA · FDA Food Safety · NLRB" },
+              healthcare:         { count: 12, regulatory: "HIPAA · FDA · CMS · The Joint Commission · OIG · HITECH" },
+            };
+            const sector = SECTOR_PACKS.find(s => s.id === activeSector);
+            const pack = PACK_META[activeSector];
+            if (!sector || !pack) return null;
+            return (
+              <div style={{ background: "#F0EDE4", border: `1px solid ${sector.color}22`, borderLeft: `3px solid ${sector.color}`, padding: "14px 18px", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+                    <div style={{ width: 12, height: 2, background: sector.color }} />
+                    <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: sector.color }}>Industry Protocol Pack Available</span>
+                  </div>
+                  <p style={{ fontSize: 13, color: NAVY, fontWeight: 600, margin: 0, marginBottom: 3, lineHeight: 1.4 }}>
+                    {sector.label} has <strong>{pack.count} additional industry-specific protocols</strong> not shown below — pre-staged for your vertical's exact triggers.
+                  </p>
+                  <p style={{ fontSize: 11, color: MUTED, margin: 0 }}>{pack.regulatory}</p>
+                </div>
+                <a
+                  href={`/industry/${activeSector}`}
+                  style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", gap: 6, background: NAVY, color: "#F0EDE4", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "9px 16px", textDecoration: "none", whiteSpace: "nowrap", borderRadius: "0.15rem" }}
+                >
+                  See {sector.label} Pack →
+                </a>
+              </div>
+            );
+          })()}
+
           <div className="mb-4 flex items-center justify-between">
             <span style={{ color: MUTED, fontSize: 12, fontWeight: 600 }}>
               Showing <span style={{ color: NAVY, fontWeight: 700 }}>{sortedFiltered.length}</span> of <span style={{ color: NAVY, fontWeight: 700 }}>170</span> Readiness Protocols
