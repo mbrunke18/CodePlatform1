@@ -134,6 +134,7 @@ export default function StandardNav() {
       heading: "Core Capabilities",
       links: [
         { label: "Readiness Protocol Library", path: "/playbooks", icon: ClipboardList, description: "170 pre-staged Readiness Protocols across 9 strategic domains" },
+        { label: "Industry Protocol Packs", path: "/industry", icon: Globe, description: "Financial Services · Technology · Manufacturing · Energy · Retail · Healthcare — purpose-built vertical stacks", featured: true },
         { label: "Trigger Monitoring", path: "/triggers-management", icon: Zap, description: "Automated detection across 248+ data points" },
         { label: "Signal Intelligence", path: "/signal-intelligence", icon: Radar, description: "221 triggers — monitored every 15 minutes" },
         { label: "Enterprise Ecosystems", path: "/ecosystems", icon: Globe, description: "Microsoft · Google · Salesforce · AWS · SAP · ServiceNow · Workday", featured: true },
