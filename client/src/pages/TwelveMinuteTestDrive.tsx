@@ -25,6 +25,7 @@ const SCENARIO_DOMAIN_MAP: Record<string, string> = {
   brand:      'Brand & Reputation',
   regulatory: 'Regulatory & Compliance',
   talent:     'Human Capital',
+  compound:   'MULTI-DOMAIN',
 };
 interface LiveCtxTD {
   totalToday: number;
@@ -50,6 +51,7 @@ const SCENARIOS = [
   { id: 'brand', title: 'Brand Crisis', subtitle: 'Viral social media incident — sentiment collapsing', domain: 'Brand', urgency: 'high' },
   { id: 'regulatory', title: 'Regulatory Inquiry', subtitle: 'DOJ investigation opened — disclosure required', domain: 'Regulatory', urgency: 'high' },
   { id: 'talent', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'Talent', urgency: 'high' },
+  { id: 'compound', title: 'Compound Crisis', subtitle: 'Activist stake + DOJ inquiry — simultaneous triggers', domain: 'MULTI-DOMAIN', urgency: 'critical', compound: true },
 ];
 
 function scenarioMode(id: string | null): ValueGainMode {
@@ -144,6 +146,18 @@ const SCENARIO_TASKS: Record<string, Array<{ phase: string; role: string; action
     { phase: 'ROOT CAUSE', role: 'CEO', action: 'Make one visible, immediate structural change addressing #1 departure driver. Symbolism matters — employees need decisions not promises', time: '7:00', priority: 'high' },
     { phase: 'CULTURE', role: 'CEO', action: 'All-hands within 72 hours: acknowledge challenges, share specific changes, invite candid questions — no filtered Q&A', time: '10:00', priority: 'high' },
     { phase: 'CULTURE', role: 'CFO + CHRO', action: 'Establish talent health scorecard with board-level quarterly reporting — make retention a governance issue', time: '12:00', priority: 'high' },
+  ],
+  compound: [
+    { phase: 'DUAL-TRACK INTAKE', role: 'General Counsel', action: 'Confirm DOJ Civil Investigative Demand — scope, jurisdiction count, 30-day timeline. Cross-reference activist 13D intent: assess whether regulatory inquiry becomes activist ammunition', time: '1:30', priority: 'critical' },
+    { phase: 'DUAL-TRACK INTAKE', role: 'CEO + CFO', action: 'Confirm activist 13D: stake %, stated demands, prior campaign history. Engage M&A defense counsel and securities regulatory counsel in single joint briefing — both tracks, one command structure', time: '2:00', priority: 'critical' },
+    { phase: 'BOARD COMMAND', role: 'Board Chair', action: 'Emergency board session: brief all directors on both simultaneous triggers. Establish dual-track response leads — one for activist defense, one for regulatory response — reporting to single board command', time: '3:00', priority: 'critical' },
+    { phase: 'BOARD COMMAND', role: 'CEO', action: 'Retain M&A defense counsel, proxy solicitor, and outside regulatory counsel — all three retained before activist makes first public statement or regulatory counsel is locked', time: '4:00', priority: 'critical' },
+    { phase: 'REGULATORY TRACK', role: 'Chief Compliance Officer', action: 'File regulatory acknowledgment. Establish privileged communications channel with DOJ. Confirm disclosure obligations: regulatory matter does NOT require activist-facing disclosure at this stage', time: '5:00', priority: 'high' },
+    { phase: 'REGULATORY TRACK', role: 'General Counsel', action: 'Issue litigation hold across both tracks. Ensure regulatory response never cross-contaminates the activist defense — separate outside counsel leads each track with firewall between them', time: '6:00', priority: 'high' },
+    { phase: 'INVESTOR TRACK', role: 'Chief IR Officer', action: 'Contact top 10 institutional holders before activist makes first call. Lead with value creation narrative — regulatory inquiry framed as being managed proactively, not a governance failure', time: '7:00', priority: 'high' },
+    { phase: 'INVESTOR TRACK', role: 'CEO + CFO', action: 'Prepare coordinated investor narrative: board engaged on regulatory matter, strategic direction unchanged, activist demands addressed through board-level value creation plan already in progress', time: '9:00', priority: 'high' },
+    { phase: 'NARRATIVE CONTROL', role: 'CMO + Legal', action: 'Draft coordinated holding statement for both triggers: acknowledges regulatory cooperation, demonstrates board confidence, rebuffs activist framing. Activated only if activist forces public disclosure', time: '10:00', priority: 'high' },
+    { phase: 'NARRATIVE CONTROL', role: 'Chief Strategy Officer', action: 'Accelerate pre-staged value-creation announcements to reframe narrative. Beat the activist timeline with company-controlled strategic news before activist holds first investor call', time: '12:00', priority: 'high' },
   ],
 };
 
@@ -358,7 +372,8 @@ export default function TwelveMinuteTestDrive() {
                       borderTop: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
                       borderRight: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
                       borderBottom: `1px solid ${selectedId === s.id ? GOLD : hasLiveSignal ? 'rgba(43,138,110,0.35)' : 'rgba(255,255,255,0.08)'}`,
-                      borderLeft: `3px solid ${s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
+                      borderLeft: `3px solid ${(s as any).compound ? TEAL : s.urgency === 'critical' ? '#C0392B' : 'rgba(201,168,76,0.5)'}`,
+                    gridColumn: (s as any).compound ? 'span 2' : undefined,
                       transition: 'all 0.2s ease',
                       position: 'relative',
                     }}
@@ -369,7 +384,13 @@ export default function TwelveMinuteTestDrive() {
                         <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)', display: 'inline-block' }} />
                         <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', fontFamily: "'Barlow Condensed', sans-serif" }}>{s.domain}</span>
                       </div>
-                      {hasLiveSignal && (
+                      {(s as any).compound && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
+                          <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: TEAL_LT }} />
+                          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>2 Protocols · Simultaneous</span>
+                        </div>
+                      )}
+                      {!(s as any).compound && hasLiveSignal && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexShrink: 0 }}>
                           <span style={{ display: 'inline-block', width: 5, height: 5, borderRadius: '50%', background: TEAL_LT, animation: 'vm-pulse 2s ease-in-out infinite' }} />
                           <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: TEAL_LT, fontFamily: "'Barlow Condensed', sans-serif" }}>Live signal</span>

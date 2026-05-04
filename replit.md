@@ -41,14 +41,14 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Background Tasks:** PostgreSQL-backed job queue for asynchronous AI tasks.
 
 ### Feature Specifications
-- **Core Platform:** Includes a Playbook Library (170 protocols), Demo Experience, Execution Intelligence Dashboard, Investor Gate, and admin views.
+- **Core Platform:** Includes a Playbook Library (170 core protocols + 12 compound protocols, IDs 181–192), Demo Experience, Execution Intelligence Dashboard, Investor Gate, and admin views.
 - **Pre-Staged Execution:** Features Execution Briefs, Live War Room, and Post-Activation Debriefs for human-authorized, pre-staged execution.
 - **Automation & Simulation:** Offers Auto-Task Seeding, embeddable Workspace Pages, Guided Start Experience, and a Shadow Strategy Simulator (Digital Twin).
 - **IDEA Framework:** Manages the entire Trigger → Playbook IDEA Chain, from trigger detection to playbook recommendations and execution.
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Terminology Enforcement:** Consistent use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers." "Readiness Protocol" is the canonical term for all execution artifacts.
-- **12-Minute Test Drive:** A public 4-step simulation at `/12-minute-experience` for lead generation and experience demonstration.
-- **How It Executes (`/how-it-executes`):** Animated signal → protocol → tasks staged → stakeholders notified → executive authorizes → 12 minutes complete chain visualization. 4 scenario selectors, auto-plays on load, Old Model comparison panel, "Before/At/After the Trigger" preparation breakdown section.
+- **12-Minute Test Drive:** A public 4-step simulation at `/12-minute-experience` for lead generation and experience demonstration. 7 scenarios: 6 single-domain + 1 compound (Activist + Regulatory, full 10-task dual-track war room). Compound card spans full grid width with teal left-border and "2 Protocols · Simultaneous" badge.
+- **How It Executes (`/how-it-executes`):** Animated signal → protocol → tasks staged → stakeholders notified → executive authorizes → 12 minutes complete chain visualization. 5 scenario selectors (4 single-domain + 1 compound), auto-plays on load, Old Model comparison panel, "Before/At/After the Trigger" preparation breakdown section. Compound scenario uses TEAL active state and shows "2 Readiness Protocols activated simultaneously" in chain steps.
 - **Proof Story (`/proof-story`):** Three full activation narratives (Ransomware, Activist Investor, Supply Chain Collapse) with side-by-side timelines (with vs. without Readiness OS), head-to-head comparison tables, and specific financial outcomes. Toggle between "Side by Side," "With Readiness OS," and "Without" views.
 - **ROI Calculator (`/roi-calculator`):** Enhanced with platform cost slider ($60K–$240K, default $120K), break-even calculation, 3-year net value, first-year ROI %, and consulting retainer comparison panel in the sticky results sidebar.
 - **Platform Architecture:** Two-tier model: Readiness OS Core (170 cross-industry protocols) + 6 Industry Protocol Packs.

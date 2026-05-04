@@ -48,6 +48,16 @@ const SCENARIOS = [
     budget: "$950K pre-approved", domain: "Regulatory & Compliance", riskScore: 79,
     outcome: "Outside counsel engaged. Board briefed. Regulatory acknowledgment filed within window. Disclosure drafted and pre-approved.",
   },
+  {
+    id: "compound", label: "Compound Crisis", subtitle: "Activist stake + DOJ inquiry — simultaneous triggers",
+    signal: "SEC 13D: activist discloses 9.2% stake — board seat demanded. SIMULTANEOUS: DOJ Civil Investigative Demand received across 3 jurisdictions. Two response clocks running at once.",
+    signalSource: "SEC EDGAR Monitor · DOJ Federal Register · Activist Intelligence Feed",
+    protocol: "Activist Defense + Regulatory Response", protocolNum: "#185",
+    tasks: 12, stakeholders: ["CEO", "General Counsel", "CFO", "Board Chair", "Chief Compliance Officer", "Chief IR Officer", "Chief Strategy Officer"],
+    budget: "$3.5M pre-approved", domain: "MULTI-DOMAIN", riskScore: 97,
+    compound: true,
+    outcome: "Two parallel response tracks activated simultaneously. Activist denied use of regulatory inquiry as leverage. Board briefed on both fronts before market open.",
+  },
 ];
 
 const CHAIN_STEPS = [
@@ -59,8 +69,12 @@ const CHAIN_STEPS = [
   },
   {
     time: "0:01", label: "Protocol Matched",
-    desc: (s: typeof SCENARIOS[0]) => `Readiness Protocol ${s.protocolNum} — "${s.protocol}" matched. ${s.tasks} tasks pre-staged.`,
-    detail: () => `Pattern match confidence: 97%. All tasks, stakeholders, and budget authority already assigned.`,
+    desc: (s: typeof SCENARIOS[0]) => (s as any).compound
+      ? `2 Readiness Protocols activated simultaneously — "${s.protocol}". ${s.tasks} coordinated tasks pre-staged across both tracks.`
+      : `Readiness Protocol ${s.protocolNum} — "${s.protocol}" matched. ${s.tasks} tasks pre-staged.`,
+    detail: (s: typeof SCENARIOS[0]) => (s as any).compound
+      ? `Multi-domain pattern match: 97% confidence on each track. All tasks, stakeholders, and budget authority pre-assigned across both response protocols.`
+      : `Pattern match confidence: 97%. All tasks, stakeholders, and budget authority already assigned.`,
     color: TEAL, icon: "⬡",
   },
   {
@@ -83,7 +97,9 @@ const CHAIN_STEPS = [
   },
   {
     time: "0:12", label: "Execution Complete",
-    desc: (s: typeof SCENARIOS[0]) => `All ${s.tasks} tasks deployed. Response team coordinated. ${s.outcome.split('.')[0]}.`,
+    desc: (s: typeof SCENARIOS[0]) => (s as any).compound
+      ? `All ${s.tasks} tasks deployed across 2 active protocols. ${s.outcome.split('.')[0]}.`
+      : `All ${s.tasks} tasks deployed. Response team coordinated. ${s.outcome.split('.')[0]}.`,
     detail: () => `Full audit log captured. Debrief staged. Institutional memory updated for next activation.`,
     color: TEAL, icon: "★",
   },
@@ -171,21 +187,36 @@ export default function HowItExecutes() {
         <div style={{ borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "20px 48px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: MUTED, flexShrink: 0 }}>Choose Trigger:</span>
-            {SCENARIOS.map((s, i) => (
-              <button
-                key={s.id}
-                onClick={() => handleScenarioChange(i)}
-                style={{
-                  fontSize: 12, fontWeight: 600, padding: "8px 18px", cursor: "pointer",
-                  background: selectedIdx === i ? GOLD : "rgba(255,255,255,0.06)",
-                  color: selectedIdx === i ? NAVY : "rgba(255,255,255,0.75)",
-                  border: `1px solid ${selectedIdx === i ? GOLD : "rgba(255,255,255,0.12)"}`,
-                  transition: "all 0.18s ease",
-                }}
-              >
-                {s.label}
-              </button>
-            ))}
+            {SCENARIOS.map((s, i) => {
+              const isCompound = (s as any).compound;
+              const isActive = selectedIdx === i;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => handleScenarioChange(i)}
+                  style={{
+                    fontSize: 12, fontWeight: 600, padding: "8px 18px", cursor: "pointer",
+                    display: "flex", alignItems: "center", gap: 6,
+                    background: isActive ? (isCompound ? TEAL : GOLD) : "rgba(255,255,255,0.06)",
+                    color: isActive ? (isCompound ? "#fff" : NAVY) : "rgba(255,255,255,0.75)",
+                    border: `1px solid ${isActive ? (isCompound ? TEAL : GOLD) : "rgba(255,255,255,0.12)"}`,
+                    transition: "all 0.18s ease",
+                  }}
+                >
+                  {s.label}
+                  {isCompound && (
+                    <span style={{
+                      fontSize: 8, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase",
+                      padding: "2px 5px",
+                      background: isActive ? "rgba(255,255,255,0.18)" : `${TEAL}30`,
+                      color: isActive ? "#fff" : TEAL,
+                    }}>
+                      MULTI
+                    </span>
+                  )}
+                </button>
+              );
+            })}
             <button
               onClick={() => startChain()}
               style={{ marginLeft: "auto", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "8px 20px", background: playing ? "rgba(255,255,255,0.06)" : GOLD, color: playing ? MUTED : NAVY, border: `1px solid ${playing ? "rgba(255,255,255,0.12)" : GOLD}`, cursor: playing ? "default" : "pointer", transition: "all 0.2s ease" }}
