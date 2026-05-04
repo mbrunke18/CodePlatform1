@@ -931,7 +931,15 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       return res.status(400).json({ error: 'Invalid or expired token.', reason: result.reason });
     }
     const { email, firstName, lastName, company, title } = result.data!;
-    const userId = `ml-${Buffer.from(email).toString('base64').slice(0, 16)}`;
+
+    // Check if a user with this email already exists (e.g. from a prior Replit OIDC login).
+    // If so, reuse their ID so we don't collide on the email unique constraint.
+    const existingByEmail = await db.select({ id: users.id })
+      .from(users)
+      .where(eq(users.email, email))
+      .limit(1);
+    const userId = existingByEmail[0]?.id ?? `ml-${Buffer.from(email).toString('base64').slice(0, 16)}`;
+
     await storage.upsertUser({ id: userId, email, firstName, lastName });
     let userOrgs = await storage.getUserOrganizations(userId);
     if (userOrgs.length === 0) {
