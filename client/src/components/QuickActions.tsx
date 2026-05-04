@@ -38,7 +38,18 @@ const FAST_PATHS = [
   { label: 'Board Report', icon: FileText, href: '/board-briefings', color: NAVY },
 ];
 
-const EXCLUDED_ROUTES = ['/a16z', '/a16z-print', '/podcast-prep', '/command-tower', '/12-minute-experience'];
+const EXCLUDED_ROUTES = [
+  '/a16z', '/a16z-print', '/podcast-prep', '/command-tower', '/12-minute-experience',
+  '/protocol-builder',
+  '/protocol-customize',
+  '/protocol-customization',
+  '/protocol-settings',
+  '/protocol-readiness-audit',
+  '/getting-started',
+  '/onboarding',
+  '/playbook-activation',
+  '/situation-intent',
+];
 
 export default function QuickActions() {
   const [open, setOpen] = useState(false);
