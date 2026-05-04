@@ -1,0 +1,104 @@
+
+
+Follow
+Everyone is obsessed with raising money.
+She started in a basement with $70K… and built a ~$40B company without taking a dollar of VC.
+
+In 1979, Judith Faulkner was a programmer with a simple idea:
+Healthcare runs on broken, fragmented systems.
+So she started coding a better one herself.
+No team.
+Just her, two part-time assistants, and a belief that hospitals needed something that actually worked.
+That company became Epic.
+
+It’s not “just software.”
+It’s the operating system of a hospital.
+Everything runs through it:
+→ Patient records (history, diagnoses, medications)
+→ Doctor workflows (orders, clinical decisions)
+→ Billing & insurance
+→ Scheduling & operations
+→ Patient apps like MyChart
+If Epic goes down…
+The hospital doesn’t slow down.
+It stops.
+
+Now here’s where it gets interesting.
+Judith Faulkner didn’t just avoid venture capital.
+She redesigned the entire way a software company makes money.
+Most SaaS companies think like this:
+→ Sell fast
+→ Land small
+→ Expand later
+→ Optimise for volume
+Epic did the opposite.
+They sold fewer deals… but insanely big ones.
+
+Here’s how the model actually worked:
+
+1. They sell transformation, not software
+Epic doesn’t plug into your business. It replaces it.
+→ 10–20+ systems unified into one
+→ workflows rebuilt from scratch
+→ entire organisations retrained
+That’s why deals are:
+→ $100M+ implementations
+→ sometimes $1B+ all-in
+Because you’re not buying a tool. You’re rebuilding the hospital.
+
+2. Implementation is the real moat
+Months (sometimes years) onsite. Teams embedded inside hospitals:
+→ mapping real workflows
+→ fixing inefficiencies
+→ customising everything
+By the time they’re done…
+Epic isn’t a vendor. It’s part of how the hospital operates.
+
+3. Recurring revenue that compounds
+After implementation:
+→ ~$2K–3K per hospital bed, per year
+→ long-term contracts, support, hosting
+So revenue doesn’t just grow. It locks in.
+
+4. Switching costs are brutal
+Once Epic is in:
+→ every patient record lives there
+→ every doctor is trained on it
+→ every process depends on it
+Switching isn’t “changing tools.”
+It’s:
+→ operational risk
+→ regulatory risk
+→ hundreds of millions in cost
+So churn?
+Basically zero.
+
+5. No VC = full control
+No pressure to:
+→ grow at all costs
+→ exit early
+→ optimise for short-term metrics
+Instead:
+→ ~30%+ margins
+→ ~$5–5.7B annual revenue
+→ decades-long customer relationships
+All reinvested back into the product.
+
+Faulkner didn’t build a SaaS company.
+She built infrastructure you can’t rip out.
+
+And this is where most founders go wrong:
+They optimise for:
+→ speed
+→ volume
+→ visibility
+But ignore:
+→ depth
+→ systems
+→ durability
+So they grow…
+…but underneath, things are fragile.
+
+Faulkner built something different.
+Not just big.
+Unreplaceable.
