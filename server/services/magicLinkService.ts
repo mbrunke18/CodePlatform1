@@ -379,6 +379,28 @@ export async function sendWelcomeTriggerDemo(email: string, firstName: string): 
   console.warn(`[WelcomeTrigger] All senders failed for ${email}`);
 }
 
+export async function validateMagicLinkToken(token: string): Promise<{
+  valid: boolean;
+  data?: { email: string; firstName: string; lastName: string; company: string; title: string };
+  reason?: string;
+}> {
+  const rows = await db.select().from(magicLinkTokens).where(eq(magicLinkTokens.token, token)).limit(1);
+  if (!rows.length) return { valid: false, reason: 'not_found' };
+  const row = rows[0];
+  if (row.usedAt) return { valid: false, reason: 'already_used' };
+  if (new Date() > row.expiresAt) return { valid: false, reason: 'expired' };
+  return {
+    valid: true,
+    data: {
+      email: row.email,
+      firstName: row.firstName,
+      lastName: row.lastName,
+      company: row.company,
+      title: row.title,
+    },
+  };
+}
+
 export async function verifyMagicLinkToken(token: string): Promise<{
   valid: boolean;
   data?: { email: string; firstName: string; lastName: string; company: string; title: string };

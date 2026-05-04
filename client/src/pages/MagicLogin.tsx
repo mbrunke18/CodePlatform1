@@ -1,36 +1,71 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
-import { CheckCircle, XCircle, Loader2 } from "lucide-react";
+import { CheckCircle, XCircle, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 
-type State = "verifying" | "success" | "expired" | "used" | "invalid" | "error";
+type State = "validating" | "ready" | "entering" | "success" | "expired" | "used" | "invalid" | "error";
 
 export default function MagicLogin() {
   const [, navigate] = useLocation();
-  const [state, setState] = useState<State>("verifying");
+  const [state, setState] = useState<State>("validating");
+  const [firstName, setFirstName] = useState<string>("");
+  const [token, setToken] = useState<string>("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
+    const t = params.get("token");
 
-    if (!token) {
+    if (!t) {
       setState("invalid");
       return;
     }
 
-    fetch(`/api/auth/magic-link/verify?token=${encodeURIComponent(token)}`, {
+    setToken(t);
+
+    // Step 1: validate only — does NOT consume the token.
+    // Email security scanners hit GET links automatically; using a separate
+    // read-only validate endpoint ensures the token survives until the user
+    // explicitly clicks "Enter Platform" (which POSTs to /verify).
+    fetch(`/api/auth/magic-link/validate?token=${encodeURIComponent(t)}`, {
       method: "GET",
       credentials: "include",
     })
       .then(async (res) => {
+        const body = await res.json().catch(() => ({}));
+        if (res.ok) {
+          setFirstName(body.firstName || "");
+          setState("ready");
+        } else {
+          const reason = body.reason as string | undefined;
+          if (reason === "expired") setState("expired");
+          else if (reason === "already_used") setState("used");
+          else setState("invalid");
+        }
+      })
+      .catch(() => setState("error"));
+  }, []);
+
+  function handleEnter() {
+    if (!token) return;
+    setState("entering");
+
+    // Step 2: POST to verify — consumes the token and creates the session.
+    // Email scanners do not send POST requests, so this is the safe consume step.
+    fetch("/api/auth/magic-link/verify", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    })
+      .then(async (res) => {
         if (res.ok) {
           setState("success");
-          setTimeout(() => navigate("/mission-control"), 1800);
+          setTimeout(() => navigate("/mission-control"), 1500);
         } else {
           const body = await res.json().catch(() => ({}));
           const reason = body.reason as string | undefined;
@@ -40,13 +75,40 @@ export default function MagicLogin() {
         }
       })
       .catch(() => setState("error"));
-  }, [navigate]);
+  }
 
-  const states: Record<State, { icon: JSX.Element; title: string; message: string; cta?: { label: string; href: string } }> = {
-    verifying: {
+  type StateConfig = {
+    icon: JSX.Element;
+    title: string;
+    message: string;
+    action?: JSX.Element;
+    cta?: { label: string; href: string };
+  };
+
+  const states: Record<State, StateConfig> = {
+    validating: {
       icon: <Loader2 className="h-10 w-10 animate-spin" style={{ color: GOLD }} />,
-      title: "Verifying your access…",
-      message: "Hang tight — we're confirming your link and preparing your platform view.",
+      title: "Verifying your link…",
+      message: "Hang tight — confirming your access.",
+    },
+    ready: {
+      icon: <CheckCircle className="h-10 w-10" style={{ color: TEAL }} />,
+      title: firstName ? `Welcome, ${firstName}.` : "Your access is ready.",
+      message: "Your Readiness OS access has been confirmed. Click below to enter the platform.",
+      action: (
+        <Button
+          onClick={handleEnter}
+          className="w-full h-12 font-bold text-sm flex items-center justify-center gap-2"
+          style={{ background: GOLD, color: NAVY }}
+        >
+          Enter the Platform <ArrowRight size={16} />
+        </Button>
+      ),
+    },
+    entering: {
+      icon: <Loader2 className="h-10 w-10 animate-spin" style={{ color: GOLD }} />,
+      title: "Activating your session…",
+      message: "Setting up your executive view — just a moment.",
     },
     success: {
       icon: <CheckCircle className="h-10 w-10" style={{ color: TEAL }} />,
@@ -62,7 +124,7 @@ export default function MagicLogin() {
     used: {
       icon: <XCircle className="h-10 w-10" style={{ color: "#EF4444" }} />,
       title: "This link has already been used.",
-      message: "Each link is single-use. If you need access again, request a new link.",
+      message: "Each link is single-use for security. If you need to access the platform again, request a new link — it takes 30 seconds.",
       cta: { label: "Request a New Link", href: "/request-access" },
     },
     invalid: {
@@ -103,6 +165,8 @@ export default function MagicLogin() {
           {current.message}
         </p>
 
+        {current.action}
+
         {current.cta && (
           <Button
             onClick={() => navigate(current.cta!.href)}
@@ -113,7 +177,7 @@ export default function MagicLogin() {
           </Button>
         )}
 
-        {state === "verifying" && (
+        {(state === "validating" || state === "entering") && (
           <div className="mt-6 flex justify-center gap-1.5">
             {[0, 1, 2].map((i) => (
               <div

@@ -908,8 +908,21 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     return res.json({ ok: true, emailSent: (result as any).emailSent ?? true });
   });
 
-  app.get('/api/auth/magic-link/verify', async (req, res) => {
+  // Safe read-only check — does NOT consume the token, safe for email scanners to prefetch
+  app.get('/api/auth/magic-link/validate', async (req, res) => {
     const token = req.query.token as string;
+    if (!token) return res.status(400).json({ error: 'Token is required.', reason: 'missing_token' });
+    const { validateMagicLinkToken } = await import('./services/magicLinkService.js');
+    const result = await validateMagicLinkToken(token);
+    if (!result.valid) {
+      return res.status(400).json({ error: 'Invalid or expired token.', reason: result.reason });
+    }
+    return res.json({ ok: true, firstName: result.data!.firstName });
+  });
+
+  // POST-only — email scanners cannot trigger this, so the token is safe until the human clicks
+  app.post('/api/auth/magic-link/verify', async (req, res) => {
+    const token = req.body?.token as string;
     if (!token) {
       return res.status(400).json({ error: 'Token is required.', reason: 'missing_token' });
     }

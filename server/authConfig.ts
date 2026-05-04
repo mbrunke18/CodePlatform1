@@ -15,6 +15,7 @@ export const PUBLIC_ROUTES = [
 
   // Magic link authentication — no session required to request or verify
   '/api/auth/magic-link/request',
+  '/api/auth/magic-link/validate',
   '/api/auth/magic-link/verify',
 
   // 48-Hour Trial Access — self-serve, no prior auth required
