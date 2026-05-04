@@ -69,7 +69,7 @@ export default function QuickActions() {
 
   if (EXCLUDED_ROUTES.some(r => location.startsWith(r))) return null;
 
-  const alerts: Alert[] = alertsData?.data ?? [];
+  const alerts: Alert[] = Array.isArray(alertsData?.data) ? alertsData!.data : [];
   const highAlerts = alerts.filter(a => a.severity === 'HIGH');
   const medAlerts = alerts.filter(a => a.severity === 'MEDIUM');
   const topAlert = highAlerts[0] ?? medAlerts[0] ?? null;
