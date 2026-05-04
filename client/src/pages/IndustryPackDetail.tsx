@@ -208,7 +208,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     headline: "From cloud outages to AI liability events — platform continuity pre-staged at every layer.",
     tagline: "13 industry-specific protocols. Platform risk. Developer trust. Open source. AI governance.",
     description:
-      "Technology companies face execution crises that don't exist in other industries — a viral bug that kills product trust overnight, a cloud provider outage that takes down the entire platform, an open source licensing controversy that threatens the distribution model, or an AI-generated content liability event with no regulatory precedent. The Technology Pack stages the response sequences that protect platform continuity, developer trust, and competitive positioning.",
+      "Technology companies face execution crises that don't exist in other industries — a viral bug that kills product trust overnight, a cloud provider outage that takes down the entire platform, an open source licensing controversy that threatens the distribution model, or a synthetic content liability event with no regulatory precedent. The Technology Pack stages the response sequences that protect platform continuity, developer trust, and competitive positioning.",
     icon: Cpu,
     iconBg: "#1A5276",
     regulatoryContext: "SOC 2 · ISO 27001 · Open Source Licensing (MIT/GPL/AGPL) · GDPR · CCPA · FTC Enforcement · EU AI Act",
@@ -312,7 +312,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       {
         number: 154,
         name: "AI Model Liability Event",
-        description: "AI-generated content causing legal harm — model rollback, liability containment, regulator notification (EU AI Act), and public response.",
+        description: "Model output causing legal harm — model rollback, liability containment, regulator notification (EU AI Act), and public response.",
         urgency: "HIGH",
         triggers: ["AI harm allegation signal", "EU AI Act investigation", "User harm cluster detected"],
         domains: "Risk & Resilience",

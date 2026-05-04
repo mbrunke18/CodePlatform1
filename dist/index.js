@@ -15208,6 +15208,61 @@ var init_intelligence_signals = __esm({
   }
 });
 
+// server/services/prospectEnrollment.ts
+import { eq as eq5, and as and5 } from "drizzle-orm";
+async function enrollProspectForAlerts(prospect) {
+  try {
+    const dbOrgs = await db.select({ id: organizations.id }).from(organizations);
+    const allOrgIds = ["system", ...dbOrgs.map((o) => o.id)];
+    let enrolled = 0;
+    for (const orgId of allOrgIds) {
+      const org = { id: orgId };
+      try {
+        const existing = await db.select({ id: stakeholderContacts.id, isActive: stakeholderContacts.isActive }).from(stakeholderContacts).where(
+          and5(
+            eq5(stakeholderContacts.organizationId, org.id),
+            eq5(stakeholderContacts.email, prospect.email)
+          )
+        ).limit(1);
+        if (existing.length > 0) {
+          if (!existing[0].isActive) {
+            await db.update(stakeholderContacts).set({ isActive: true }).where(eq5(stakeholderContacts.id, existing[0].id));
+            console.log(`[ProspectEnrollment] Reactivated ${prospect.email} in org ${org.id}`);
+          } else {
+            console.log(`[ProspectEnrollment] ${prospect.email} already enrolled in org ${org.id}`);
+          }
+          continue;
+        }
+        await db.insert(stakeholderContacts).values({
+          organizationId: org.id,
+          role: prospect.role || "Executive",
+          name: prospect.name,
+          email: prospect.email,
+          isActive: true,
+          triggerDomains: []
+          // receives every trigger regardless of domain
+        });
+        enrolled++;
+        console.log(`\u2705 [ProspectEnrollment] Enrolled ${prospect.email} (${prospect.role} \xB7 ${prospect.company}) in org ${org.id} for live trigger alerts`);
+      } catch (orgErr) {
+        console.error(`[ProspectEnrollment] Failed to enroll in org ${org.id}:`, orgErr.message);
+      }
+    }
+    if (enrolled > 0) {
+      console.log(`\u2705 [ProspectEnrollment] ${prospect.email} will now receive live trigger alert emails across ${enrolled} org(s)`);
+    }
+  } catch (err) {
+    console.error("[ProspectEnrollment] Enrollment failed (non-fatal):", err.message);
+  }
+}
+var init_prospectEnrollment = __esm({
+  "server/services/prospectEnrollment.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+  }
+});
+
 // server/services/OpenAIService.ts
 var OpenAIService_exports = {};
 __export(OpenAIService_exports, {
@@ -15717,6 +15772,395 @@ var init_SlackNotificationService = __esm({
   "server/services/SlackNotificationService.ts"() {
     "use strict";
     log2 = pino7({ name: "slack-service" });
+  }
+});
+
+// server/services/magicLinkService.ts
+var magicLinkService_exports = {};
+__export(magicLinkService_exports, {
+  createAndSendMagicLink: () => createAndSendMagicLink,
+  sendWelcomeTriggerDemo: () => sendWelcomeTriggerDemo,
+  validateMagicLinkToken: () => validateMagicLinkToken,
+  verifyMagicLinkToken: () => verifyMagicLinkToken
+});
+import { Resend as Resend3 } from "resend";
+import crypto3 from "crypto";
+import { eq as eq9 } from "drizzle-orm";
+function generateToken() {
+  return crypto3.randomBytes(48).toString("hex");
+}
+function getBaseUrl() {
+  if (process.env.REPLIT_DOMAINS) {
+    const domains = process.env.REPLIT_DOMAINS.split(",");
+    const prod = domains.find((d) => d.includes("vaughnmartin")) || domains[0];
+    return `https://${prod.trim()}`;
+  }
+  return "http://localhost:5000";
+}
+function buildAdminNotificationHtml(data, magicUrl) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><title>New Access Request \u2014 Readiness OS</title></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <tr>
+          <td style="background:${NAVY};padding:28px 40px;">
+            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
+            <div style="color:#ffffff;font-size:18px;font-weight:700;">New Access Request</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:36px 40px;">
+            <p style="margin:0 0 20px;color:#111827;font-size:16px;font-weight:700;">Someone just requested Founding Partner Access:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;margin-bottom:28px;">
+              <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Name</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${data.firstName} ${data.lastName}</span>
+              </td></tr>
+              <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Company &amp; Title</span><br/>
+                <span style="color:#111827;font-size:15px;font-weight:600;">${data.title} \xB7 ${data.company}</span>
+              </td></tr>
+              <tr><td style="padding:16px 20px;">
+                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Email</span><br/>
+                <a href="mailto:${data.email}" style="color:${GOLD};font-size:15px;font-weight:600;text-decoration:none;">${data.email}</a>
+              </td></tr>
+            </table>
+            <p style="margin:0 0 16px;color:#374151;font-size:14px;">Their magic link (expires 24h):</p>
+            <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
+              <tr>
+                <td style="background:${GOLD};border-radius:6px;">
+                  <a href="${magicUrl}" style="display:inline-block;padding:14px 32px;color:${NAVY};font-size:14px;font-weight:700;text-decoration:none;">
+                    Send This Link to ${data.firstName} \u2192
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:0;color:#6B7280;font-size:12px;word-break:break-all;">${magicUrl}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
+            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin \xB7 Readiness OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+function buildEmailHtml(firstName, magicUrl) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Executive Access \u2014 Readiness OS</title>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:${NAVY};padding:36px 48px 28px;">
+            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
+            <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
+            <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Readiness Platform</div>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:48px 48px 36px;">
+            <p style="margin:0 0 8px;color:${NAVY};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
+            <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
+              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform \u2014 prepared responses, trigger intelligence, and the 12-minute execution model.
+            </p>
+
+            <!-- CTA Button -->
+            <table cellpadding="0" cellspacing="0" style="margin:0 0 36px;">
+              <tr>
+                <td style="background:${GOLD};border-radius:6px;">
+                  <a href="${magicUrl}"
+                     style="display:inline-block;padding:16px 40px;color:${NAVY};font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.3px;">
+                    Access the Platform \u2192
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <p style="margin:0 0 6px;color:#6B7280;font-size:13px;">This link expires in <strong>24 hours</strong> and can only be used once.</p>
+            <p style="margin:0 0 28px;color:#6B7280;font-size:13px;">If you didn't request this, you can safely ignore this email.</p>
+
+            <hr style="border:none;border-top:1px solid #E5E7EB;margin:0 0 28px;" />
+
+            <!-- Value reminder -->
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="33%" style="text-align:center;padding:0 12px;">
+                  <div style="color:${GOLD};font-size:20px;font-weight:800;">12 min</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Trigger to Execution</div>
+                </td>
+                <td width="33%" style="text-align:center;padding:0 12px;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
+                  <div style="color:${GOLD};font-size:20px;font-weight:800;">170</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Prepared responses</div>
+                </td>
+                <td width="33%" style="text-align:center;padding:0 12px;">
+                  <div style="color:${GOLD};font-size:20px;font-weight:800;">3,600\xD7</div>
+                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Execution Head Start</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#F9FAFB;padding:24px 48px;border-top:1px solid #E5E7EB;">
+            <p style="margin:0;color:#9CA3AF;font-size:12px;line-height:1.6;">
+              VaughnMartin \xB7 Readiness OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a><br/>
+              Questions? Reply to this email or contact <a href="mailto:pilot@vaughnmartin.com" style="color:#9CA3AF;">pilot@vaughnmartin.com</a>
+            </p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+async function createAndSendMagicLink(data) {
+  const token = generateToken();
+  const expiresAt = new Date(Date.now() + TOKEN_TTL_HOURS * 60 * 60 * 1e3);
+  await db.insert(magicLinkTokens).values({
+    ...data,
+    token,
+    expiresAt
+  });
+  enrollProspectForAlerts({
+    email: data.email,
+    name: `${data.firstName} ${data.lastName}`.trim(),
+    role: data.title,
+    company: data.company
+  }).catch((err) => console.warn("[magicLink] Prospect enrollment non-fatal error:", err?.message));
+  const baseUrl = getBaseUrl();
+  const magicUrl = `${baseUrl}/magic-login?token=${token}`;
+  console.log(`
+${"\u2500".repeat(70)}`);
+  console.log(`\u{1F4EC} MAGIC LINK REQUEST \u2014 ${data.firstName} ${data.lastName} <${data.email}>`);
+  console.log(`   Company: ${data.company} | Title: ${data.title}`);
+  console.log(`   Access URL: ${magicUrl}`);
+  console.log(`${"\u2500".repeat(70)}
+`);
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey) {
+    console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
+    return { success: true, emailSent: false };
+  }
+  const resend2 = new Resend3(apiKey);
+  const fromAddresses = [
+    "Readiness OS <onboarding@resend.dev>",
+    "Readiness OS <pilot@vaughnmartin.com>"
+  ];
+  let emailSent = false;
+  for (const from of fromAddresses) {
+    try {
+      const { data: emailData, error: emailError } = await resend2.emails.send({
+        from,
+        replyTo: ADMIN_EMAIL,
+        to: data.email,
+        subject: `Your Executive Access to Readiness OS, ${data.firstName}`,
+        html: buildEmailHtml(data.firstName, magicUrl)
+      });
+      if (emailError) {
+        console.warn(`\u26A0 Sender ${from} rejected (${emailError.message}) \u2014 trying next`);
+        continue;
+      }
+      console.log(`\u2713 Magic link sent to ${data.email} via ${from} | Resend ID: ${emailData?.id}`);
+      emailSent = true;
+      break;
+    } catch (err) {
+      console.warn(`\u26A0 Sender ${from} threw: ${err.message} \u2014 trying next`);
+    }
+  }
+  if (!emailSent) {
+    console.log(`\u26A0 All senders failed. Token saved \u2014 use admin URL above to send manually.`);
+  }
+  try {
+    const { data: adminData, error: adminError } = await resend2.emails.send({
+      from: "Readiness OS <onboarding@resend.dev>",
+      replyTo: data.email,
+      to: ADMIN_EMAIL,
+      subject: `New Access Request \u2014 ${data.firstName} ${data.lastName} \xB7 ${data.company}`,
+      html: buildAdminNotificationHtml(data, magicUrl)
+    });
+    if (adminError) {
+      console.warn(`\u26A0 Admin notification failed: ${adminError.message}`);
+    } else {
+      console.log(`\u2713 Admin notification sent to ${ADMIN_EMAIL} | Resend ID: ${adminData?.id}`);
+    }
+  } catch (err) {
+    console.warn(`\u26A0 Admin notification threw: ${err.message}`);
+  }
+  return { success: true, emailSent };
+}
+async function sendWelcomeTriggerDemo(email, firstName) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
+  if (!apiKey) return;
+  const platformUrl = "https://vaughnmartin.com";
+  const unsubToken = Buffer.from(email).toString("base64url");
+  const unsubUrl = `${platformUrl}/api/unsubscribe?t=${unsubToken}`;
+  const html = `
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
+      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
+        <div style="background:#132558;padding:32px 36px;">
+          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Live Detection Alert</div>
+          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
+        </div>
+        <div style="padding:32px 36px;">
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">AI Competitive Disruption</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">Technology &amp; Innovation</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">94%</td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;"><a href="https://www.cnbc.com/technology/" style="color:#C9A84C;">CNBC Technology</a></td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
+                <span style="color:#0A0F2E;font-weight:700;">AI Competitive Disruption Response</span>
+                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
+              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">
+                Aggressive Pricing Disruption &nbsp;\xB7&nbsp; Digital Transformation Acceleration
+              </td>
+            </tr>
+          </table>
+          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Why This Trigger Fired</div>
+              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">5 of 6 KEYWORDS MATCHED</span>
+            </div>
+            <div style="margin-bottom:14px;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                ${["AI disruption", "market share", "competitive threat", "automation", "enterprise"].map((kw) => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
+              </div>
+            </div>
+            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
+              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
+              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">AI Competitive Disruption \u2014 Technology &amp; Innovation domain \xB7 94% confidence</div>
+            </div>
+          </div>
+          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
+            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
+            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprises are accelerating AI adoption across core operations \u2014 pricing automation, customer intelligence, and supply chain \u2014 creating structural competitive gaps between early movers and laggards that widen each quarter.</div>
+          </div>
+          <div style="text-align:center;margin-bottom:12px;">
+            <a href="${platformUrl}/live-detection-feed?trigger=AI%20Competitive%20Disruption" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+          </div>
+          <div style="text-align:center;">
+            <a href="${platformUrl}/live-activation-center?playbookName=AI%20Competitive%20Disruption%20Response&domain=Technology%20%26%20Security" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: AI Competitive Disruption Response \u2192</a>
+          </div>
+        </div>
+        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
+          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
+          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
+        </div>
+      </div>
+    </div>
+  `;
+  const resend2 = new Resend3(apiKey);
+  const fromAddresses = [
+    "Readiness OS <pilot@vaughnmartin.com>",
+    "Readiness OS <onboarding@resend.dev>"
+  ];
+  for (const from of fromAddresses) {
+    try {
+      const { error } = await resend2.emails.send({
+        from,
+        replyTo: ADMIN_EMAIL,
+        to: email,
+        subject: `\u{1F534} Trigger Detected: AI Competitive Disruption (94% confidence)`,
+        html
+      });
+      if (error) {
+        console.warn(`[WelcomeTrigger] Sender ${from} rejected: ${error.message}`);
+        continue;
+      }
+      console.log(`\u2705 [WelcomeTrigger] Trigger demo alert sent to ${email} via ${from}`);
+      return;
+    } catch (err) {
+      console.warn(`[WelcomeTrigger] Sender ${from} threw: ${err.message}`);
+    }
+  }
+  console.warn(`[WelcomeTrigger] All senders failed for ${email}`);
+}
+async function validateMagicLinkToken(token) {
+  const rows = await db.select().from(magicLinkTokens).where(eq9(magicLinkTokens.token, token)).limit(1);
+  if (!rows.length) return { valid: false, reason: "not_found" };
+  const row = rows[0];
+  if (row.usedAt) return { valid: false, reason: "already_used" };
+  if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
+  return {
+    valid: true,
+    data: {
+      email: row.email,
+      firstName: row.firstName,
+      lastName: row.lastName,
+      company: row.company,
+      title: row.title
+    }
+  };
+}
+async function verifyMagicLinkToken(token) {
+  const rows = await db.select().from(magicLinkTokens).where(eq9(magicLinkTokens.token, token)).limit(1);
+  if (!rows.length) return { valid: false, reason: "not_found" };
+  const row = rows[0];
+  if (row.usedAt) return { valid: false, reason: "already_used" };
+  if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
+  await db.update(magicLinkTokens).set({ usedAt: /* @__PURE__ */ new Date() }).where(eq9(magicLinkTokens.token, token));
+  return {
+    valid: true,
+    data: {
+      email: row.email,
+      firstName: row.firstName,
+      lastName: row.lastName,
+      company: row.company,
+      title: row.title
+    }
+  };
+}
+var NAVY, GOLD, TOKEN_TTL_HOURS, ADMIN_EMAIL;
+var init_magicLinkService = __esm({
+  "server/services/magicLinkService.ts"() {
+    "use strict";
+    init_db();
+    init_schema();
+    init_prospectEnrollment();
+    NAVY = "#0A0F2E";
+    GOLD = "#C9A84C";
+    TOKEN_TTL_HOURS = 24;
+    ADMIN_EMAIL = "pilot@vaughnmartin.com";
   }
 });
 
@@ -35277,62 +35721,11 @@ var intelligence_routes_default = router;
 // server/routes/pilot-routes.ts
 init_db();
 init_schema();
+init_prospectEnrollment();
 import { Router as Router2 } from "express";
 import sgMail from "@sendgrid/mail";
 import { z as z3 } from "zod";
 import { Resend } from "resend";
-
-// server/services/prospectEnrollment.ts
-init_db();
-init_schema();
-import { eq as eq5, and as and5 } from "drizzle-orm";
-async function enrollProspectForAlerts(prospect) {
-  try {
-    const dbOrgs = await db.select({ id: organizations.id }).from(organizations);
-    const allOrgIds = ["system", ...dbOrgs.map((o) => o.id)];
-    let enrolled = 0;
-    for (const orgId of allOrgIds) {
-      const org = { id: orgId };
-      try {
-        const existing = await db.select({ id: stakeholderContacts.id, isActive: stakeholderContacts.isActive }).from(stakeholderContacts).where(
-          and5(
-            eq5(stakeholderContacts.organizationId, org.id),
-            eq5(stakeholderContacts.email, prospect.email)
-          )
-        ).limit(1);
-        if (existing.length > 0) {
-          if (!existing[0].isActive) {
-            await db.update(stakeholderContacts).set({ isActive: true }).where(eq5(stakeholderContacts.id, existing[0].id));
-            console.log(`[ProspectEnrollment] Reactivated ${prospect.email} in org ${org.id}`);
-          } else {
-            console.log(`[ProspectEnrollment] ${prospect.email} already enrolled in org ${org.id}`);
-          }
-          continue;
-        }
-        await db.insert(stakeholderContacts).values({
-          organizationId: org.id,
-          role: prospect.role || "Executive",
-          name: prospect.name,
-          email: prospect.email,
-          isActive: true,
-          triggerDomains: []
-          // receives every trigger regardless of domain
-        });
-        enrolled++;
-        console.log(`\u2705 [ProspectEnrollment] Enrolled ${prospect.email} (${prospect.role} \xB7 ${prospect.company}) in org ${org.id} for live trigger alerts`);
-      } catch (orgErr) {
-        console.error(`[ProspectEnrollment] Failed to enroll in org ${org.id}:`, orgErr.message);
-      }
-    }
-    if (enrolled > 0) {
-      console.log(`\u2705 [ProspectEnrollment] ${prospect.email} will now receive live trigger alert emails across ${enrolled} org(s)`);
-    }
-  } catch (err) {
-    console.error("[ProspectEnrollment] Enrollment failed (non-fatal):", err.message);
-  }
-}
-
-// server/routes/pilot-routes.ts
 var router2 = Router2();
 async function getSendGridClient() {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
@@ -38932,363 +39325,8 @@ function registerDemoAccessRoute(app2) {
   });
 }
 
-// server/services/magicLinkService.ts
-init_db();
-init_schema();
-import { Resend as Resend3 } from "resend";
-import crypto3 from "crypto";
-import { eq as eq9 } from "drizzle-orm";
-var NAVY = "#0A0F2E";
-var GOLD = "#C9A84C";
-var TOKEN_TTL_HOURS = 24;
-function generateToken() {
-  return crypto3.randomBytes(48).toString("hex");
-}
-function getBaseUrl() {
-  if (process.env.REPLIT_DOMAINS) {
-    const domains = process.env.REPLIT_DOMAINS.split(",");
-    const prod = domains.find((d) => d.includes("vaughnmartin")) || domains[0];
-    return `https://${prod.trim()}`;
-  }
-  return "http://localhost:5000";
-}
-var ADMIN_EMAIL = "pilot@vaughnmartin.com";
-function buildAdminNotificationHtml(data, magicUrl) {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8" /><title>New Access Request \u2014 Readiness OS</title></head>
-<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-        <tr>
-          <td style="background:${NAVY};padding:28px 40px;">
-            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">VAUGHNMARTIN \xB7 EXECUTION OS</div>
-            <div style="color:#ffffff;font-size:18px;font-weight:700;">New Access Request</div>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:36px 40px;">
-            <p style="margin:0 0 20px;color:#111827;font-size:16px;font-weight:700;">Someone just requested Founding Partner Access:</p>
-            <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;border:1px solid #E5E7EB;border-radius:6px;margin-bottom:28px;">
-              <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
-                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Name</span><br/>
-                <span style="color:#111827;font-size:15px;font-weight:600;">${data.firstName} ${data.lastName}</span>
-              </td></tr>
-              <tr><td style="padding:16px 20px;border-bottom:1px solid #E5E7EB;">
-                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Company &amp; Title</span><br/>
-                <span style="color:#111827;font-size:15px;font-weight:600;">${data.title} \xB7 ${data.company}</span>
-              </td></tr>
-              <tr><td style="padding:16px 20px;">
-                <span style="color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;">Email</span><br/>
-                <a href="mailto:${data.email}" style="color:${GOLD};font-size:15px;font-weight:600;text-decoration:none;">${data.email}</a>
-              </td></tr>
-            </table>
-            <p style="margin:0 0 16px;color:#374151;font-size:14px;">Their magic link (expires 24h):</p>
-            <table cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
-              <tr>
-                <td style="background:${GOLD};border-radius:6px;">
-                  <a href="${magicUrl}" style="display:inline-block;padding:14px 32px;color:${NAVY};font-size:14px;font-weight:700;text-decoration:none;">
-                    Send This Link to ${data.firstName} \u2192
-                  </a>
-                </td>
-              </tr>
-            </table>
-            <p style="margin:0;color:#6B7280;font-size:12px;word-break:break-all;">${magicUrl}</p>
-          </td>
-        </tr>
-        <tr>
-          <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
-            <p style="margin:0;color:#9CA3AF;font-size:12px;">VaughnMartin \xB7 Readiness OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a></p>
-          </td>
-        </tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`;
-}
-function buildEmailHtml(firstName, magicUrl) {
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Executive Access \u2014 Readiness OS</title>
-</head>
-<body style="margin:0;padding:0;background:#f5f5f5;font-family:'Segoe UI',Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:40px 0;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-
-        <!-- Header -->
-        <tr>
-          <td style="background:${NAVY};padding:36px 48px 28px;">
-            <div style="color:${GOLD};font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">VAUGHNMARTIN</div>
-            <div style="color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-0.3px;">Readiness OS</div>
-            <div style="color:rgba(255,255,255,0.55);font-size:12px;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Strategic Readiness Platform</div>
-          </td>
-        </tr>
-
-        <!-- Body -->
-        <tr>
-          <td style="padding:48px 48px 36px;">
-            <p style="margin:0 0 8px;color:${NAVY};font-size:18px;font-weight:700;">Hello, ${firstName}.</p>
-            <p style="margin:0 0 28px;color:#4B5563;font-size:15px;line-height:1.6;">
-              Your access to <strong>Readiness OS</strong> is ready. This link gives you a full executive view of the platform \u2014 prepared responses, trigger intelligence, and the 12-minute execution model.
-            </p>
-
-            <!-- CTA Button -->
-            <table cellpadding="0" cellspacing="0" style="margin:0 0 36px;">
-              <tr>
-                <td style="background:${GOLD};border-radius:6px;">
-                  <a href="${magicUrl}"
-                     style="display:inline-block;padding:16px 40px;color:${NAVY};font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.3px;">
-                    Access the Platform \u2192
-                  </a>
-                </td>
-              </tr>
-            </table>
-
-            <p style="margin:0 0 6px;color:#6B7280;font-size:13px;">This link expires in <strong>24 hours</strong> and can only be used once.</p>
-            <p style="margin:0 0 28px;color:#6B7280;font-size:13px;">If you didn't request this, you can safely ignore this email.</p>
-
-            <hr style="border:none;border-top:1px solid #E5E7EB;margin:0 0 28px;" />
-
-            <!-- Value reminder -->
-            <table width="100%" cellpadding="0" cellspacing="0">
-              <tr>
-                <td width="33%" style="text-align:center;padding:0 12px;">
-                  <div style="color:${GOLD};font-size:20px;font-weight:800;">12 min</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Trigger to Execution</div>
-                </td>
-                <td width="33%" style="text-align:center;padding:0 12px;border-left:1px solid #E5E7EB;border-right:1px solid #E5E7EB;">
-                  <div style="color:${GOLD};font-size:20px;font-weight:800;">170</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Pre-Staged Prepared responses</div>
-                </td>
-                <td width="33%" style="text-align:center;padding:0 12px;">
-                  <div style="color:${GOLD};font-size:20px;font-weight:800;">3,600\xD7</div>
-                  <div style="color:#6B7280;font-size:11px;margin-top:4px;letter-spacing:0.5px;">Execution Head Start</div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- Footer -->
-        <tr>
-          <td style="background:#F9FAFB;padding:24px 48px;border-top:1px solid #E5E7EB;">
-            <p style="margin:0;color:#9CA3AF;font-size:12px;line-height:1.6;">
-              VaughnMartin \xB7 Readiness OS \xB7 <a href="https://vaughnmartin.com" style="color:#9CA3AF;">vaughnmartin.com</a><br/>
-              Questions? Reply to this email or contact <a href="mailto:pilot@vaughnmartin.com" style="color:#9CA3AF;">pilot@vaughnmartin.com</a>
-            </p>
-          </td>
-        </tr>
-
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`;
-}
-async function createAndSendMagicLink(data) {
-  const token = generateToken();
-  const expiresAt = new Date(Date.now() + TOKEN_TTL_HOURS * 60 * 60 * 1e3);
-  await db.insert(magicLinkTokens).values({
-    ...data,
-    token,
-    expiresAt
-  });
-  enrollProspectForAlerts({
-    email: data.email,
-    name: `${data.firstName} ${data.lastName}`.trim(),
-    role: data.title,
-    company: data.company
-  }).catch((err) => console.warn("[magicLink] Prospect enrollment non-fatal error:", err?.message));
-  const baseUrl = getBaseUrl();
-  const magicUrl = `${baseUrl}/magic-login?token=${token}`;
-  console.log(`
-${"\u2500".repeat(70)}`);
-  console.log(`\u{1F4EC} MAGIC LINK REQUEST \u2014 ${data.firstName} ${data.lastName} <${data.email}>`);
-  console.log(`   Company: ${data.company} | Title: ${data.title}`);
-  console.log(`   Access URL: ${magicUrl}`);
-  console.log(`${"\u2500".repeat(70)}
-`);
-  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey) {
-    console.log(`\u2139 RESEND_API_KEY not set \u2014 email delivery skipped. Use the URL above.`);
-    return { success: true, emailSent: false };
-  }
-  const resend2 = new Resend3(apiKey);
-  const fromAddresses = [
-    "Readiness OS <onboarding@resend.dev>",
-    "Readiness OS <pilot@vaughnmartin.com>"
-  ];
-  let emailSent = false;
-  for (const from of fromAddresses) {
-    try {
-      const { data: emailData, error: emailError } = await resend2.emails.send({
-        from,
-        replyTo: ADMIN_EMAIL,
-        to: data.email,
-        subject: `Your Executive Access to Readiness OS, ${data.firstName}`,
-        html: buildEmailHtml(data.firstName, magicUrl)
-      });
-      if (emailError) {
-        console.warn(`\u26A0 Sender ${from} rejected (${emailError.message}) \u2014 trying next`);
-        continue;
-      }
-      console.log(`\u2713 Magic link sent to ${data.email} via ${from} | Resend ID: ${emailData?.id}`);
-      emailSent = true;
-      break;
-    } catch (err) {
-      console.warn(`\u26A0 Sender ${from} threw: ${err.message} \u2014 trying next`);
-    }
-  }
-  if (!emailSent) {
-    console.log(`\u26A0 All senders failed. Token saved \u2014 use admin URL above to send manually.`);
-  }
-  try {
-    const { data: adminData, error: adminError } = await resend2.emails.send({
-      from: "Readiness OS <onboarding@resend.dev>",
-      replyTo: data.email,
-      to: ADMIN_EMAIL,
-      subject: `New Access Request \u2014 ${data.firstName} ${data.lastName} \xB7 ${data.company}`,
-      html: buildAdminNotificationHtml(data, magicUrl)
-    });
-    if (adminError) {
-      console.warn(`\u26A0 Admin notification failed: ${adminError.message}`);
-    } else {
-      console.log(`\u2713 Admin notification sent to ${ADMIN_EMAIL} | Resend ID: ${adminData?.id}`);
-    }
-  } catch (err) {
-    console.warn(`\u26A0 Admin notification threw: ${err.message}`);
-  }
-  return { success: true, emailSent };
-}
-async function sendWelcomeTriggerDemo(email, firstName) {
-  const apiKey = process.env.RESEND_API_KEY || process.env.Resend_API_Key;
-  if (!apiKey) return;
-  const platformUrl = "https://vaughnmartin.com";
-  const unsubToken = Buffer.from(email).toString("base64url");
-  const unsubUrl = `${platformUrl}/api/unsubscribe?t=${unsubToken}`;
-  const html = `
-    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:#f8f7f4;padding:40px 0;">
-      <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;border:1px solid #e8e4dc;">
-        <div style="background:#132558;padding:32px 36px;">
-          <div style="color:#C9A84C;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Readiness OS \xB7 Live Detection Alert</div>
-          <div style="color:#ffffff;font-size:22px;font-weight:700;line-height:1.3;">Strategic Trigger Detected</div>
-        </div>
-        <div style="padding:32px 36px;">
-          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;width:40%;">Trigger</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;font-weight:600;">AI Competitive Disruption</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Domain</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#0A0F2E;font-size:13px;">Technology &amp; Innovation</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Confidence</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#2B8A6E;font-size:13px;font-weight:700;">94%</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Signal Source</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;"><a href="https://www.cnbc.com/technology/" style="color:#C9A84C;">CNBC Technology</a></td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
-                <span style="color:#0A0F2E;font-weight:700;">AI Competitive Disruption Response</span>
-                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
-              </td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Also Consider</td>
-              <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;color:#6B7280;">
-                Aggressive Pricing Disruption &nbsp;\xB7&nbsp; Digital Transformation Acceleration
-              </td>
-            </tr>
-          </table>
-          <div style="background:#0A0F2E08;border:1px solid #0A0F2E18;border-radius:6px;padding:16px 20px;margin-bottom:20px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-              <div style="color:#0A0F2E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Why This Trigger Fired</div>
-              <span style="background:#2B8A6E;color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:0.5px;">5 of 6 KEYWORDS MATCHED</span>
-            </div>
-            <div style="margin-bottom:14px;">
-              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Matched terms in source signal</div>
-              <div style="display:flex;flex-wrap:wrap;gap:6px;">
-                ${["AI disruption", "market share", "competitive threat", "automation", "enterprise"].map((kw) => `<span style="display:inline-block;background:#2B8A6E15;border:1px solid #2B8A6E40;color:#1a6b52;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px;">${kw}</span>`).join("")}
-              </div>
-            </div>
-            <div style="padding:10px 14px;background:#fff;border-radius:4px;border-left:3px solid #0A0F2E30;">
-              <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Pattern matched</div>
-              <div style="font-size:12px;color:#0A0F2E;font-weight:600;">AI Competitive Disruption \u2014 Technology &amp; Innovation domain \xB7 94% confidence</div>
-            </div>
-          </div>
-          <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
-            <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
-            <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprises are accelerating AI adoption across core operations \u2014 pricing automation, customer intelligence, and supply chain \u2014 creating structural competitive gaps between early movers and laggards that widen each quarter.</div>
-          </div>
-          <div style="text-align:center;margin-bottom:12px;">
-            <a href="${platformUrl}/live-detection-feed?trigger=AI%20Competitive%20Disruption" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
-          </div>
-          <div style="text-align:center;">
-            <a href="${platformUrl}/live-activation-center?playbookName=AI%20Competitive%20Disruption%20Response&domain=Technology%20%26%20Security" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: AI Competitive Disruption Response \u2192</a>
-          </div>
-        </div>
-        <div style="background:#f8f7f4;padding:20px 36px;border-top:1px solid #e8e4dc;">
-          <div style="color:#999;font-size:11px;text-align:center;">Readiness OS continuously monitors 248+ signals across 9 domains. This alert was generated automatically \u2014 no human reviewed it before it reached you.</div>
-          <div style="text-align:center;margin-top:10px;"><a href="${unsubUrl}" style="color:#ccc;font-size:10px;text-decoration:underline;">Unsubscribe from Readiness OS alerts</a></div>
-        </div>
-      </div>
-    </div>
-  `;
-  const resend2 = new Resend3(apiKey);
-  const fromAddresses = [
-    "Readiness OS <pilot@vaughnmartin.com>",
-    "Readiness OS <onboarding@resend.dev>"
-  ];
-  for (const from of fromAddresses) {
-    try {
-      const { error } = await resend2.emails.send({
-        from,
-        replyTo: ADMIN_EMAIL,
-        to: email,
-        subject: `\u{1F534} Trigger Detected: AI Competitive Disruption (94% confidence)`,
-        html
-      });
-      if (error) {
-        console.warn(`[WelcomeTrigger] Sender ${from} rejected: ${error.message}`);
-        continue;
-      }
-      console.log(`\u2705 [WelcomeTrigger] Trigger demo alert sent to ${email} via ${from}`);
-      return;
-    } catch (err) {
-      console.warn(`[WelcomeTrigger] Sender ${from} threw: ${err.message}`);
-    }
-  }
-  console.warn(`[WelcomeTrigger] All senders failed for ${email}`);
-}
-async function verifyMagicLinkToken(token) {
-  const rows = await db.select().from(magicLinkTokens).where(eq9(magicLinkTokens.token, token)).limit(1);
-  if (!rows.length) return { valid: false, reason: "not_found" };
-  const row = rows[0];
-  if (row.usedAt) return { valid: false, reason: "already_used" };
-  if (/* @__PURE__ */ new Date() > row.expiresAt) return { valid: false, reason: "expired" };
-  await db.update(magicLinkTokens).set({ usedAt: /* @__PURE__ */ new Date() }).where(eq9(magicLinkTokens.token, token));
-  return {
-    valid: true,
-    data: {
-      email: row.email,
-      firstName: row.firstName,
-      lastName: row.lastName,
-      company: row.company,
-      title: row.title
-    }
-  };
-}
+// server/routes.ts
+init_magicLinkService();
 
 // server/services/trialAccessService.ts
 init_db();
@@ -42270,6 +42308,7 @@ var PUBLIC_ROUTES = [
   "/api/demo-access",
   // Magic link authentication — no session required to request or verify
   "/api/auth/magic-link/request",
+  "/api/auth/magic-link/validate",
   "/api/auth/magic-link/verify",
   // 48-Hour Trial Access — self-serve, no prior auth required
   "/api/trial/request",
@@ -43794,8 +43833,18 @@ async function registerRoutes(app2, existingServer) {
     }
     return res.json({ ok: true, emailSent: result.emailSent ?? true });
   });
-  app2.get("/api/auth/magic-link/verify", async (req, res) => {
+  app2.get("/api/auth/magic-link/validate", async (req, res) => {
     const token = req.query.token;
+    if (!token) return res.status(400).json({ error: "Token is required.", reason: "missing_token" });
+    const { validateMagicLinkToken: validateMagicLinkToken2 } = await Promise.resolve().then(() => (init_magicLinkService(), magicLinkService_exports));
+    const result = await validateMagicLinkToken2(token);
+    if (!result.valid) {
+      return res.status(400).json({ error: "Invalid or expired token.", reason: result.reason });
+    }
+    return res.json({ ok: true, firstName: result.data.firstName });
+  });
+  app2.post("/api/auth/magic-link/verify", async (req, res) => {
+    const token = req.body?.token;
     if (!token) {
       return res.status(400).json({ error: "Token is required.", reason: "missing_token" });
     }
@@ -43804,7 +43853,8 @@ async function registerRoutes(app2, existingServer) {
       return res.status(400).json({ error: "Invalid or expired token.", reason: result.reason });
     }
     const { email, firstName, lastName, company, title } = result.data;
-    const userId = `ml-${Buffer.from(email).toString("base64").slice(0, 16)}`;
+    const existingByEmail = await db.select({ id: users.id }).from(users).where(eq47(users.email, email)).limit(1);
+    const userId = existingByEmail[0]?.id ?? `ml-${Buffer.from(email).toString("base64").slice(0, 16)}`;
     await storage.upsertUser({ id: userId, email, firstName, lastName });
     let userOrgs = await storage.getUserOrganizations(userId);
     if (userOrgs.length === 0) {
