@@ -81,6 +81,15 @@ async function isEmailAllowed(email: string): Promise<boolean> {
   if (adminEmail && email === adminEmail) return true;
 
   try {
+    const [countRow] = await db
+      .select({ count: allowedEmails.id })
+      .from(allowedEmails)
+      .limit(1);
+
+    // If the allowlist is empty, allow everyone through (open access mode).
+    // Access becomes restricted only once you deliberately add emails to the list.
+    if (!countRow) return true;
+
     const rows = await db
       .select()
       .from(allowedEmails)
