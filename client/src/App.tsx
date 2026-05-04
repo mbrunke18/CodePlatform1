@@ -203,6 +203,8 @@ const About = lazy(() => import("./pages/About"));
 const Team = lazy(() => import("./pages/Team"));
 const ExecuteIQVideo = lazy(() => import("./pages/ExecuteIQVideo"));
 const ROICalculator = lazy(() => import("./pages/ROICalculator"));
+const HowItExecutes = lazy(() => import("./pages/HowItExecutes"));
+const ProofStory = lazy(() => import("./pages/ProofStory"));
 const AgilityAssessment = lazy(() => import("./pages/AgilityAssessment"));
 const FutureReadinessDashboard = lazy(() => import("./pages/FutureReadinessDashboard"));
 const BoardExport = lazy(() => import("./pages/BoardExport"));
@@ -522,6 +524,8 @@ function Router() {
         {renderRoutes(["/executive-summary", "/executive-summary-generator", "/report-generator"], ExecutiveSummaryGenerator)}
         <Route path="/audit-logging-center">{() => <AuditLoggingCenter />}</Route>
         <Route path="/roi-calculator" component={ROICalculator} />
+        <Route path="/how-it-executes" component={HowItExecutes} />
+        <Route path="/proof-story" component={ProofStory} />
         <Route path="/agility-assessment" component={AgilityAssessment} />
         <Route path="/future-readiness" component={FutureReadinessDashboard} />
         <Route path="/readiness" component={FutureReadinessDashboard} />

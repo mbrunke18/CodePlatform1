@@ -227,6 +227,7 @@ function ExecutionROISection() {
 
 export default function ROICalculator() {
   const [, setLocation] = useLocation();
+  const [platformCost, setPlatformCost] = useState(120000);
   
   const [inputs, setInputs] = useState<ROIInputs>({
     companySize: 'enterprise',
@@ -265,15 +266,34 @@ export default function ROICalculator() {
     
     const totalAnnualValue = coordinationCostSavings + revenueProtected + complianceRiskReduction;
     const speedImprovement = Math.round(inputs.avgResponseTimeHours / mResponseTimeHours);
+
+    // Enhanced metrics
+    const netAnnualValue = totalAnnualValue - platformCost;
+    const roiPct = Math.round((netAnnualValue / platformCost) * 100);
+    const threeYearValue = totalAnnualValue * 3 - platformCost * 3;
+    const valuePerEvent = totalAnnualValue / inputs.strategicEventsPerYear;
+    // Break-even: events needed so cumulative value covers platform cost
+    const breakEvenEvents = Math.ceil(platformCost / valuePerEvent);
+    // Break-even in days (assuming events spread evenly)
+    const daysPerEvent = 365 / inputs.strategicEventsPerYear;
+    const breakEvenDays = Math.round(breakEvenEvents * daysPerEvent);
+    // Consulting retainer (McKinsey retainer + per-incident fees)
+    const consultingAnnual = 350000 + inputs.strategicEventsPerYear * 60000;
     
     return {
       totalAnnualValue,
       speedImprovement,
       coordinationCostSavings,
       revenueProtected,
-      complianceRiskReduction
+      complianceRiskReduction,
+      netAnnualValue,
+      roiPct,
+      threeYearValue,
+      breakEvenDays,
+      valuePerEvent,
+      consultingAnnual,
     };
-  }, [inputs]);
+  }, [inputs, platformCost]);
 
   const formatCurrency = (value: number) => {
     if (value >= 1000000000) return `$${(value / 1000000000).toFixed(1)}B`;
@@ -298,7 +318,7 @@ export default function ROICalculator() {
               The Competitive Window <em style={{ fontStyle: "italic", color: "#C9A84C" }}>You're Leaving Open</em>
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">
-              Every hour between when AI detects a signal and when your organization executes is a window your competitor can use. Quantify exactly what closing that gap — from 30 days to 12 minutes — means for your enterprise.
+              Every hour between signal detection and execution is a window your competitor can use. Quantify exactly what closing that gap — from 30 days to 12 minutes — means for your enterprise.
             </p>
           </div>
         </section>
@@ -399,41 +419,100 @@ export default function ROICalculator() {
 
               {/* Results Sidebar */}
               <div className="lg:col-span-5">
-                <div style={{ background: "#0A0F2E", padding: "40px", position: "sticky", top: "24px" }} className="text-white">
-                  <div className="text-center mb-8">
+                <div style={{ background: "#0A0F2E", padding: "32px", position: "sticky", top: "24px" }} className="text-white">
+
+                  {/* Primary output */}
+                  <div className="text-center mb-6" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 24 }}>
                     <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mb-2">Estimated Annual Value</p>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 56, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 600, color: "#C9A84C", lineHeight: 1 }}>
                       {formatCurrency(calculations.totalAnnualValue)}
                     </div>
                     <p className="text-teal-400 text-xs font-bold mt-2 uppercase tracking-widest">
-                      Through {calculations.speedImprovement}X Response Compression
+                      30 days → 12 min · {calculations.speedImprovement}× compression
                     </p>
                   </div>
 
-                  <div className="space-y-4 mb-8">
-                    <div className="flex justify-between py-3 border-b border-white/10">
-                      <span className="text-white/60 text-sm">Coordination Efficiency</span>
-                      <span className="font-mono text-white">{formatCurrency(calculations.coordinationCostSavings)}</span>
+                  {/* Value breakdown */}
+                  <div className="space-y-2 mb-6" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 20 }}>
+                    {[
+                      { l: "Coordination Efficiency", v: formatCurrency(calculations.coordinationCostSavings) },
+                      { l: "Revenue Risk Protected", v: formatCurrency(calculations.revenueProtected) },
+                      { l: "Compliance Risk Reduced", v: formatCurrency(calculations.complianceRiskReduction) },
+                    ].map(r => (
+                      <div key={r.l} className="flex justify-between py-2 border-b border-white/10">
+                        <span className="text-white/60 text-sm">{r.l}</span>
+                        <span className="font-mono text-white font-semibold">{r.v}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Platform cost input */}
+                  <div className="mb-5" style={{ background: "rgba(201,168,76,0.08)", border: "1px solid rgba(201,168,76,0.2)", padding: "14px 16px" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Platform Investment</span>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: "#fff", fontFamily: "monospace" }}>{formatCurrency(platformCost)}/yr</span>
                     </div>
-                    <div className="flex justify-between py-3 border-b border-white/10">
-                      <span className="text-white/60 text-sm">Revenue Risk Protected</span>
-                      <span className="font-mono text-white">{formatCurrency(calculations.revenueProtected)}</span>
-                    </div>
-                    <div className="flex justify-between py-3 border-b border-white/10">
-                      <span className="text-white/60 text-sm">Compliance Risk Reduced</span>
-                      <span className="font-mono text-white">{formatCurrency(calculations.complianceRiskReduction)}</span>
-                    </div>
-                    <div className="flex justify-between py-3 border-b border-white/10">
-                      <span className="text-white/60 text-sm">Response Time Reduction</span>
-                      <span className="font-mono text-teal-400 font-bold">30 days → 12 min</span>
+                    <input
+                      type="range"
+                      min={60000} max={240000} step={5000}
+                      value={platformCost}
+                      onChange={e => setPlatformCost(Number(e.target.value))}
+                      style={{ width: "100%", accentColor: "#C9A84C", cursor: "pointer" }}
+                    />
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 4 }}>
+                      <span>$60K</span><span>$240K</span>
                     </div>
                   </div>
 
-                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-6 text-lg" onClick={() => setLocation('/contact')}>
-                    Request Full ROI Analysis
+                  {/* Enhanced metrics */}
+                  <div className="space-y-2 mb-5" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 20 }}>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-white/60 text-sm">Net Annual Value</span>
+                      <span className="font-mono font-bold" style={{ color: "#2B8A6E" }}>{formatCurrency(calculations.netAnnualValue)}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-white/60 text-sm">First-Year ROI</span>
+                      <span className="font-mono font-bold" style={{ color: "#2B8A6E" }}>{calculations.roiPct.toLocaleString()}%</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-white/60 text-sm">Break-Even</span>
+                      <span className="font-mono text-white font-semibold">
+                        {calculations.breakEvenDays < 30
+                          ? `${calculations.breakEvenDays} days`
+                          : `${Math.round(calculations.breakEvenDays / 30)} months`}
+                      </span>
+                    </div>
+                    <div className="flex justify-between py-2 border-b border-white/10">
+                      <span className="text-white/60 text-sm">3-Year Net Value</span>
+                      <span className="font-mono font-bold" style={{ color: "#C9A84C" }}>{formatCurrency(calculations.threeYearValue)}</span>
+                    </div>
+                    <div className="flex justify-between py-2">
+                      <span className="text-white/60 text-sm">Response Time</span>
+                      <span className="font-mono font-bold" style={{ color: "#2B8A6E" }}>30 days → 12 min</span>
+                    </div>
+                  </div>
+
+                  {/* Consulting comparison */}
+                  <div className="mb-5" style={{ background: "rgba(239,68,68,0.07)", border: "1px solid rgba(239,68,68,0.2)", padding: "14px 16px" }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "#F87171", marginBottom: 8 }}>vs. Consulting Alternative</div>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+                      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)" }}>Retainer + per-event fees</span>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: "#F87171", fontFamily: "monospace" }}>{formatCurrency(calculations.consultingAnnual)}/yr</span>
+                    </div>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)" }}>Readiness OS</span>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: "#2B8A6E", fontFamily: "monospace" }}>{formatCurrency(platformCost)}/yr</span>
+                    </div>
+                    <div style={{ marginTop: 8, paddingTop: 8, borderTop: "1px solid rgba(239,68,68,0.2)", fontSize: 11, color: "#F87171", fontWeight: 600 }}>
+                      Consulting costs {formatCurrency(calculations.consultingAnnual - platformCost)} more — and doesn't give you pre-staged execution.
+                    </div>
+                  </div>
+
+                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/request-access')}>
+                    Apply for Founding Partner Access →
                   </Button>
-                  <p className="text-center text-white/30 text-[10px] mt-4 leading-relaxed uppercase tracking-tighter">
-                    ROI based on industry standard productivity costs and revenue-at-risk models.
+                  <p className="text-center text-white/30 text-[10px] mt-3 leading-relaxed uppercase tracking-tighter">
+                    ROI based on industry productivity costs & revenue-at-risk benchmarks.
                   </p>
                 </div>
               </div>

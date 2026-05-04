@@ -125,6 +125,7 @@ export default function StandardNav() {
       heading: "The Operating Model",
       links: [
         { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
+        { label: "How It Executes", path: "/how-it-executes", icon: Zap, description: "Watch the signal → protocol → execution chain in real time", featured: true },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
         { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
         { label: "Why Readiness OS", path: "/the-proof", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
@@ -196,7 +197,8 @@ export default function StandardNav() {
     { label: "Why Readiness OS?", path: "/the-proof", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
     { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "Board-ready one-pager — thesis, 3,600× metric, ROI case", featured: true },
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },
-    { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open" },
+    { label: "ROI Calculator", path: "/roi-calculator", icon: Calculator, description: "See the competitive window you're leaving open", featured: true },
+    { label: "Proof Story", path: "/proof-story", icon: Scale, description: "Same trigger — entirely different outcome. The numbers side by side." },
     { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
     { label: "Pricing & Plans", path: "/growth", icon: TrendingUp, description: "Accessible entry — full platform, grow as you scale", featured: true },
     { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
@@ -333,6 +335,7 @@ export default function StandardNav() {
             {megaColHeading("The Operating Model")}
             {[
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
+              { path: '/how-it-executes', icon: Zap, label: 'How It Executes', sub: 'Watch the signal → protocol → execution chain in real time', featured: true },
               { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
               { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Identify · Detect · Execute · Advance' },
               { path: '/the-proof', icon: Shield, label: 'Why Readiness OS', sub: 'The 30-day mobilization gap — and how we close it' },

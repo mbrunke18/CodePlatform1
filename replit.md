@@ -48,6 +48,9 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Terminology Enforcement:** Consistent use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers." "Readiness Protocol" is the canonical term for all execution artifacts.
 - **12-Minute Test Drive:** A public 4-step simulation at `/12-minute-experience` for lead generation and experience demonstration.
+- **How It Executes (`/how-it-executes`):** Animated signal → protocol → tasks staged → stakeholders notified → executive authorizes → 12 minutes complete chain visualization. 4 scenario selectors, auto-plays on load, Old Model comparison panel, "Before/At/After the Trigger" preparation breakdown section.
+- **Proof Story (`/proof-story`):** Three full activation narratives (Ransomware, Activist Investor, Supply Chain Collapse) with side-by-side timelines (with vs. without Readiness OS), head-to-head comparison tables, and specific financial outcomes. Toggle between "Side by Side," "With Readiness OS," and "Without" views.
+- **ROI Calculator (`/roi-calculator`):** Enhanced with platform cost slider ($60K–$240K, default $120K), break-even calculation, 3-year net value, first-year ROI %, and consulting retainer comparison panel in the sticky results sidebar.
 - **Platform Architecture:** Two-tier model: Readiness OS Core (170 cross-industry protocols) + 6 Industry Protocol Packs.
 - **Getting Started Hub (`/getting-started`):** A single-page dashboard for go-live readiness, tracking 4 setup phases with a live completion score.
 - **Protocol Builder (`/protocol-builder`):** A 6-step wizard for Founding Partners and prospects to create custom protocols.
