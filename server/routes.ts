@@ -2610,6 +2610,37 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     }
   });
 
+  // Industry vertical classification by protocol number (general = not listed here)
+  const PROTOCOL_INDUSTRY_MAP: Record<number, string> = {
+    25: 'manufacturing',   // Manufacturing Facility Disruption
+    58: 'financial_services', // Financial Services Compliance Breach
+    95: 'healthcare',     // Product Recall (Safety)
+    111: 'retail',        // Strategic Market Entry - Multi-Brand Launch
+    112: 'retail',        // Trend Capitalization - Viral Fashion Response
+    114: 'financial_services', // SWIFT/Payment System Disruption
+    115: 'financial_services', // Algorithmic Trading Malfunction
+    116: 'financial_services', // Liquidity Crisis / Bank Run
+    117: 'financial_services', // Correspondent Bank Failure
+    118: 'financial_services', // Crypto/Digital Asset Incident
+    119: 'manufacturing',  // Tier 2 Supplier Cascade Failure
+    120: 'manufacturing',  // Critical Tooling Failure
+    121: 'manufacturing',  // Labor Strike/Walkout
+    124: 'energy',         // Pipeline Rupture/Environmental Release
+    125: 'energy',         // Renewable Integration Failure
+    126: 'financial_services', // Commodity Trading Desk Rogue Trader
+    128: 'energy',         // Climate Protest/Facility Occupation
+    129: 'technology',     // API Deprecation Crisis
+    130: 'technology',     // Viral Bug/Feature Backfire
+    132: 'technology',     // Developer Exodus
+    133: 'technology',     // Open Source Controversy
+    140: 'financial_services', // Portfolio Rebalancing
+    141: 'technology',     // Platform Migration (Offensive)
+    142: 'technology',     // API Ecosystem Expansion
+    143: 'technology',     // Technical Standard Setting
+    168: 'manufacturing',  // Compound: Geopolitical + Supply Chain Disruption
+    169: 'energy',         // Compound: Climate + Operations Cascade
+  };
+
   // GET playbook templates - returns playbookLibrary items marked for use as templates
   app.get('/api/playbooks/templates', async (req: any, res) => {
     try {
@@ -2632,6 +2663,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         signalSources: playbookLibrary.signalSources,
         preApprovedBudget: playbookLibrary.preApprovedBudget,
         primaryResponseStrategy: playbookLibrary.primaryResponseStrategy,
+        industryVertical: playbookLibrary.industryVertical,
       })
         .from(playbookLibrary)
         .leftJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
@@ -2653,6 +2685,8 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
         const phaseCount = Array.isArray(t.enrichedPhases) ? (t.enrichedPhases as any[]).length : 4;
         const signalSourceCount = Array.isArray(t.signalSources) ? (t.signalSources as string[]).length : 3;
         const budget = t.preApprovedBudget ? Number(t.preApprovedBudget) : null;
+        // Use DB value if set, otherwise fall back to classification map
+        const industryVertical = t.industryVertical || PROTOCOL_INDUSTRY_MAP[t.playbookNumber] || null;
         return {
           id: t.id,
           name: t.name,
@@ -2674,6 +2708,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
           signalSourceCount,
           preApprovedBudget: budget,
           whyItMatters: t.whyItMatters,
+          industryVertical,
         };
       }));
     } catch (error) {

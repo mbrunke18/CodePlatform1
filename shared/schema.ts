@@ -2578,6 +2578,9 @@ export const playbookLibrary = pgTable('playbook_library', {
   riskIndicators: jsonb('risk_indicators'), // Object: { green: string[], yellow: string[], red: string[] }
   outcomeFraming: jsonb('outcome_framing'), // Object: { at12hours: string[], at30days: string[], failureModes: string[] }
 
+  // Industry Classification
+  industryVertical: varchar('industry_vertical', { length: 100 }), // null = general; 'financial_services' | 'healthcare' | 'technology' | 'manufacturing' | 'retail' | 'energy'
+
   // Metadata
   isPremium: boolean('is_premium').default(false), // Some playbooks might be premium tier
   isActive: boolean('is_active').default(true),

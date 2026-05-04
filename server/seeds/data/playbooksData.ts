@@ -11,6 +11,7 @@ export interface PlaybookData {
   frequency: string;
   budget: number;
   compound?: boolean;
+  industryVertical?: string; // null/undefined = general; 'financial_services' | 'healthcare' | 'technology' | 'manufacturing' | 'retail' | 'energy'
 }
 
 export interface PlaybooksDataset {

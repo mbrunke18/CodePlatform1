@@ -31,6 +31,7 @@ interface LibraryPlaybook {
   severityScore?: number;
   tasks: number;
   isTemplate: boolean;
+  industryVertical?: string | null; // null = general; 'financial_services' | 'healthcare' | 'technology' | 'manufacturing' | 'retail' | 'energy'
 }
 
 const DOMAINS = [
@@ -47,13 +48,14 @@ const DOMAINS = [
 ];
 
 const SECTOR_PACKS = [
-  { id: "all",           label: "All Sectors",   color: "#6B7280", domains: [] },
-  { id: "healthcare",    label: "Healthcare",     color: "#DC2626", domains: ["regulatory", "crisis"], tagline: "FDA recalls, HIPAA breaches, supply disruptions" },
-  { id: "financial",     label: "Financial",      color: "#C9A84C", domains: ["financial", "regulatory", "competitive"], tagline: "Regulatory filings, M&A, market volatility" },
-  { id: "technology",    label: "Technology",     color: "#2B8A6E", domains: ["technology", "competitive", "talent"], tagline: "Cyber incidents, competitive disruption, talent" },
-  { id: "manufacturing", label: "Manufacturing",  color: "#0A0F2E", domains: ["gtm", "crisis", "strategic"], tagline: "Supply chain, tariffs, plant disruptions" },
-  { id: "retail",        label: "Retail",         color: "#7C3AED", domains: ["gtm", "competitive", "crisis"], tagline: "Pricing disruption, recalls, reputational risk" },
-  { id: "energy",        label: "Energy",         color: "#059669", domains: ["crisis", "regulatory", "strategic"], tagline: "Grid failures, EPA compliance, geopolitical" },
+  { id: "all",                 label: "All Protocols",            color: "#6B7280",  verticalKey: null },
+  { id: "general",             label: "General (Cross-Industry)", color: "#0A0F2E",  verticalKey: "general",          tagline: "Applies to any Fortune 1000 regardless of industry" },
+  { id: "financial_services",  label: "Financial Services",       color: "#C9A84C",  verticalKey: "financial_services", tagline: "Regulatory filings, M&A, liquidity crises, trading incidents" },
+  { id: "technology",          label: "Technology",               color: "#2B8A6E",  verticalKey: "technology",       tagline: "API deprecation, developer exodus, open-source, platform migration" },
+  { id: "manufacturing",       label: "Manufacturing",            color: "#132558",  verticalKey: "manufacturing",    tagline: "Supplier cascade, tooling failure, labor strike, geopolitical" },
+  { id: "energy",              label: "Energy",                   color: "#059669",  verticalKey: "energy",           tagline: "Pipeline rupture, grid failure, climate protest, EPA compliance" },
+  { id: "retail",              label: "Retail",                   color: "#7C3AED",  verticalKey: "retail",           tagline: "Multi-brand launch, trend capitalization, pricing disruption" },
+  { id: "healthcare",          label: "Healthcare",               color: "#DC2626",  verticalKey: "healthcare",       tagline: "Product recall, safety incidents, FDA compliance" },
 ];
 
 const PILLARS = [
@@ -403,7 +405,6 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
   });
 
   const pillarDomains = activePillar === "all" ? null : (PILLARS.find(p => p.id === activePillar) as any)?.domains as string[] | undefined;
-  const sectorDomains = activeSector === "all" ? null : (SECTOR_PACKS.find(s => s.id === activeSector) as any)?.domains as string[] | undefined;
 
   const domainFilteredTemplates = (templates || []).filter((t) => {
     const domainMatch = (() => {
@@ -419,11 +420,9 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
       });
     })();
     const sectorMatch = (() => {
-      if (!sectorDomains || sectorDomains.length === 0) return true;
-      return sectorDomains.some((domId: string) => {
-        const mapped = DOMAIN_DB_MAP[domId] || [];
-        return mapped.some((d) => t.domain === d);
-      });
+      if (activeSector === "all") return true;
+      if (activeSector === "general") return !t.industryVertical;
+      return t.industryVertical === activeSector;
     })();
     return domainMatch && pillarMatch && sectorMatch;
   });
@@ -511,7 +510,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
               </div>
             )}
 
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>Industry Sector</div>
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED, marginBottom: 10, paddingLeft: 4 }}>Applicability</div>
             <div className="space-y-0.5 mb-5">
               {SECTOR_PACKS.map((s) => {
                 const isActive = activeSector === s.id;
@@ -707,10 +706,19 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                     </div>
                     <div>
                       <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: "#0A0F2E", marginBottom: 4, lineHeight: 1.25 }}>{playbook.name}</div>
-                      <div style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{playbook.domain}</div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 10, fontWeight: 600, color: "#6B7280", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.06em" }}>{playbook.domain}</span>
+                        {playbook.industryVertical ? (
+                          <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: SECTOR_PACKS.find(s => s.id === playbook.industryVertical)?.color || "#6B7280", fontFamily: "'Barlow Condensed', sans-serif" }}>
+                            {SECTOR_PACKS.find(s => s.id === playbook.industryVertical)?.label}
+                          </span>
+                        ) : (
+                          <span style={{ fontSize: 8, fontWeight: 600, color: "#9CA3AF", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}>Cross-Industry</span>
+                        )}
+                      </div>
                     </div>
                     <div style={{ borderTop: "1px solid #E8E4DC", paddingTop: 12, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <span style={{ fontSize: 10, color: "#9CA3AF" }}>Pilot access required</span>
+                      <span style={{ fontSize: 10, color: "#9CA3AF" }}>Founding Partner access required</span>
                       <button
                         style={{ fontSize: 10, fontWeight: 700, background: "#0A0F2E", color: "#fff", border: "none", padding: "5px 14px", cursor: "pointer", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
                         onClick={() => setLocation("/request-access")}
@@ -793,11 +801,24 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                     </span>
                   </div>
 
-                  {/* Domain + Actions */}
+                  {/* Domain + Industry badge + Actions */}
                   <div className="flex items-center justify-between pt-3 mt-auto border-t" style={{ borderColor: "#F8F7F4" }}>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col gap-0.5">
                       <span className="text-[9px] font-bold text-[#6B7280] uppercase">Domain</span>
                       <span className="text-[10px] font-semibold text-[#0A0F2E] truncate max-w-[90px]">{playbook.domain}</span>
+                      {playbook.industryVertical ? (
+                        <span style={{
+                          fontSize: 8, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
+                          color: SECTOR_PACKS.find(s => s.id === playbook.industryVertical)?.color || MUTED,
+                          fontFamily: "'Barlow Condensed', sans-serif",
+                        }}>
+                          {SECTOR_PACKS.find(s => s.id === playbook.industryVertical)?.label || playbook.industryVertical}
+                        </span>
+                      ) : (
+                        <span style={{ fontSize: 8, fontWeight: 600, color: "#9CA3AF", fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                          Cross-Industry
+                        </span>
+                      )}
                     </div>
                     <div className="flex items-center gap-2">
                       {isAuthenticated && (
