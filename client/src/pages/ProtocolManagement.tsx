@@ -379,21 +379,21 @@ export default function ProtocolManagement() {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/Readiness Protocol-library/${playbook.id}`)}
+                              onClick={() => setLocation(`/playbooks/${playbook.id}/preview`)}
                               data-testid={`menu-view-${playbook.id}`}
                             >
                               <Eye className="h-4 w-4 mr-2" />
                               View
                             </DropdownMenuItem>
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/Readiness Protocol-customize/${playbook.id}`)}
+                              onClick={() => setLocation(`/playbooks/${playbook.id}/customize`)}
                               data-testid={`menu-edit-${playbook.id}`}
                             >
                               <Edit className="h-4 w-4 mr-2" />
                               Edit
                             </DropdownMenuItem>
                             <DropdownMenuItem 
-                              onClick={() => setLocation(`/Readiness Protocol-customize/new?template=${playbook.id}`)}
+                              onClick={() => setLocation(`/playbooks/create?template=${playbook.id}`)}
                               data-testid={`menu-duplicate-${playbook.id}`}
                             >
                               <Copy className="h-4 w-4 mr-2" />

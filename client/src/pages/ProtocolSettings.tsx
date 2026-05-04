@@ -94,7 +94,7 @@ export default function ProtocolSettings() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild data-testid="button-back">
-              <Link href={`/Readiness Protocol-library/${id}`}>
+              <Link href={`/playbooks/${id}/preview`}>
                 <ArrowLeft className="h-5 w-5" />
               </Link>
             </Button>

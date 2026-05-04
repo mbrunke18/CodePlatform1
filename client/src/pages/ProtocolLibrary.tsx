@@ -857,7 +857,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                     <div className="flex items-center gap-2">
                       {isAuthenticated && (
                         <button
-                          onClick={() => setLocation(`/Readiness Protocol-library/${playbook.id}`)}
+                          onClick={() => setLocation(`/playbooks/${playbook.id}/preview`)}
                           style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textDecoration: "underline", background: "none", border: "none", cursor: "pointer" }}
                         >
                           Preview
@@ -869,9 +869,9 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                         className="font-bold uppercase tracking-wider"
                         onClick={() => {
                           if (isAuthenticated) {
-                            setLocation(`/Readiness Protocol-customize/${playbook.id}`);
+                            setLocation(`/playbooks/${playbook.id}/customize`);
                           } else {
-                            setLocation(`/Readiness Protocol-library/${playbook.id}`);
+                            setLocation(`/playbooks/${playbook.id}/preview`);
                           }
                         }}
                       >

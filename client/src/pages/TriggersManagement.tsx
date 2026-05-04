@@ -697,7 +697,7 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             <div key={p.id}
                               className="flex items-center gap-4 px-5 py-4 border cursor-pointer transition-all"
                               style={{ borderColor: idx === 0 ? `${GOLD}50` : '#E8E4DC', background: idx === 0 ? `${GOLD}05` : '#fff' }}
-                              onClick={() => setLocation(`/Readiness Protocol-library/${p.id}`)}>
+                              onClick={() => setLocation(`/playbooks/${p.id}/preview`)}>
                               <div className="w-8 h-8 rounded flex items-center justify-center flex-shrink-0"
                                 style={{ background: idx === 0 ? `${GOLD}18` : `${NAVY}0A` }}>
                                 <BookOpen className="w-4 h-4" style={{ color: idx === 0 ? GOLD : NAVY }} />
@@ -721,10 +721,10 @@ export default function TriggersManagement({ embedded }: { embedded?: boolean })
                             onClick={() => {
                               const first = selectedTrigger.linkedPlaybooks?.[0];
                               if (first?.id) {
-                                setLocation(`/Readiness Protocol-activation/${selectedTrigger.id}/${first.id}`);
+                                setLocation(`/playbook-activation/${selectedTrigger.id}/${first.id}`);
                               } else {
                                 const domain = TRIGGER_CATEGORY_TO_DOMAIN[selectedTrigger.category] || 'all';
-                                setLocation(`/identify/Readiness Protocol-library?domain=${encodeURIComponent(domain)}`);
+                                setLocation(`/identify/playbook-library?domain=${encodeURIComponent(domain)}`);
                               }
                             }}
                             className="mt-3 w-full flex items-center justify-center gap-2 px-5 py-3 font-bold text-sm hover:opacity-90 transition-opacity"

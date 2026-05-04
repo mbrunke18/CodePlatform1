@@ -1611,7 +1611,7 @@ export default function TryDemo() {
 
                               <button
                                 onClick={() => {
-                                  setLocation(`/Readiness Protocol-library/${mapped.id}`);
+                                  setLocation(`/playbooks/${mapped.id}/preview`);
                                   window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
                                 }}
                                 style={{ marginTop: 20, width: '100%', padding: '14px 20px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 15, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, letterSpacing: '0.02em' }}
@@ -2044,7 +2044,7 @@ export default function TryDemo() {
                       ))}
                     </div>
                     <button
-                      onClick={() => { setLocation(`/Readiness Protocol-library/${pb.id}`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
+                      onClick={() => { setLocation(`/playbooks/${pb.id}/preview`); window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }}
                       style={{ width: '100%', padding: '10px 16px', background: GOLD, color: NAVY, border: 'none', borderRadius: 0, fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                     >
                       View Full Readiness Protocol

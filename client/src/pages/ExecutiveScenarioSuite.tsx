@@ -723,7 +723,7 @@ function PlaybookStage({ scenario, live }: { scenario: Scenario; live: LiveData 
             <span style={{ fontSize: 12, fontWeight: 600, color: '#374151' }}>{live.matchedPlaybook.name}</span>
           </div>
           <button
-            onClick={() => navigate(`/Readiness Protocol-library/${live.matchedPlaybook!.id}`)}
+            onClick={() => navigate(`/playbooks/${live.matchedPlaybook!.id}/preview`)}
             style={{ display: 'flex', alignItems: 'center', gap: 6, background: TEAL, color: 'white', border: 'none', borderRadius: 0, padding: '8px 16px', fontSize: 12, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}
           >
             View Live Readiness Protocol <ArrowRight size={11} />

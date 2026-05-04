@@ -93,7 +93,7 @@ export default function MyPlaybooksPage() {
               Your organization's configured and monitored Readiness Protocols — ready for immediate activation
             </p>
           </div>
-          <Link href="/identify/Readiness Protocol-library">
+          <Link href="/identify/playbook-library">
             <button style={{
               display: 'flex', alignItems: 'center', gap: 8, padding: '10px 20px',
               background: NAVY, color: '#fff', border: 'none', cursor: 'pointer',
@@ -172,7 +172,7 @@ export default function MyPlaybooksPage() {
                     )}
                   </div>
 
-                  <Link href={`/identify/Readiness Protocol-library`}>
+                  <Link href={`/identify/playbook-library`}>
                     <button style={{
                       display: 'flex', alignItems: 'center', gap: 6,
                       padding: '8px 16px', background: NAVY, color: '#fff',
@@ -195,7 +195,7 @@ export default function MyPlaybooksPage() {
               170 Readiness Protocols available in the library — 9 strategic domains, 221 executive triggers monitored
             </span>
           </div>
-          <Link href="/identify/Readiness Protocol-library">
+          <Link href="/identify/playbook-library">
             <span style={{ fontSize: 12, fontWeight: 700, color: NAVY, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4 }}>
               Browse Full Library <ChevronRight size={12} />
             </span>

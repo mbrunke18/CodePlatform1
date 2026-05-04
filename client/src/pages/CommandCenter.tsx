@@ -779,7 +779,7 @@ export default function CommandCenter({ embedded }: { embedded?: boolean }) {
 
                       {/* Action buttons */}
                       <div className="space-y-2">
-                        <Link href={`/Readiness Protocol-library?domain=${ideaRecommendation.domainParam}`}>
+                        <Link href={`/playbook-library?domain=${ideaRecommendation.domainParam}`}>
                           <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] text-xs uppercase tracking-wider">
                             <Zap className="h-3.5 w-3.5 mr-1.5" />
                             Activate Readiness Protocol Now

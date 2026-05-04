@@ -247,7 +247,7 @@ export default function GuidedStart() {
   function handleActivate() {
     if (!selected) return;
     let pid = playbookId || findPlaybook(selected) || (playbookList[0]?.id ?? null);
-    if (pid) setLocation(`/Readiness Protocol-activation/manual/${pid}`);
+    if (pid) setLocation(`/playbook-activation/manual/${pid}`);
   }
 
   // ─── PHASE: SELECT ────────────────────────────────────────────────────────

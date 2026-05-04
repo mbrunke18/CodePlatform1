@@ -173,7 +173,7 @@ export default function ThreatsPage() {
                       <span style={{ fontSize: 11, color: MUTED, display: 'flex', alignItems: 'center', gap: 4 }}>
                         <Clock size={11} /> {threat.time}
                       </span>
-                      <Link href="/identify/Readiness Protocol-library">
+                      <Link href="/identify/playbook-library">
                         <span style={{ fontSize: 11, color: TEAL, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}>
                           <TrendingUp size={11} /> Activate: {threat.playbook} <ChevronRight size={11} />
                         </span>
