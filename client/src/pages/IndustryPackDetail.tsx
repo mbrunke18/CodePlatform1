@@ -3,8 +3,8 @@ import PageLayout from "@/components/layout/PageLayout";
 import { BrandStamp } from "@/components/BrandStamp";
 import {
   Building2, Cpu, Factory, Zap, ShoppingCart, Heart,
-  ArrowRight, Shield, CheckCircle2, AlertTriangle, Lock,
-  ChevronLeft, Globe, Layers, ArrowUpRight,
+  ArrowRight, Shield, CheckCircle2, AlertTriangle,
+  ChevronLeft, Layers, Clock,
 } from "lucide-react";
 
 const NAVY = "#0A0F2E";
@@ -12,12 +12,14 @@ const GOLD = "#C9A84C";
 const IVORY = "#F0EDE4";
 
 interface ProtocolEntry {
-  number: number;
+  number?: number;
   name: string;
   description: string;
   urgency: "CRITICAL" | "HIGH" | "STANDARD";
   triggers: string[];
   domains: string;
+  status: "live" | "roadmap";
+  roadmapQ?: string;
 }
 
 interface IndustryPackData {
@@ -41,17 +43,17 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     key: "financial_services",
     name: "Financial Services",
     fullName: "Financial Services Readiness OS",
-    headline: "From payment rail failures to rogue traders — execution pre-staged before impact.",
-    tagline: "8 industry-specific protocols. Basel III. DORA. SWIFT. Fed enforcement. All pre-staged.",
+    headline: "From payment rail failures to sovereign debt crises — every financial trigger pre-staged.",
+    tagline: "15 industry-specific protocols. Basel III. DORA. SWIFT. Fed enforcement. AML. Stress tests.",
     description:
-      "Financial Services organizations operate in the highest-velocity regulatory and operational environment in the Fortune 1000. A SWIFT outage, a liquidity crisis, or a rogue trader event requires mobilization across compliance, risk, treasury, and executive leadership — simultaneously — in minutes. The Financial Services Pack pre-stages those response sequences in advance.",
+      "Financial Services organizations operate in the highest-velocity regulatory and operational environment in the Fortune 1000. A SWIFT outage, a liquidity crisis, a rogue trader, or an OFAC sanctions violation requires mobilization across compliance, risk, treasury, legal, and executive leadership — simultaneously — in minutes. The Financial Services Pack pre-stages those response sequences before the trigger fires.",
     icon: Building2,
     iconBg: "#1B4F72",
-    regulatoryContext: "Basel III · DORA · SEC Enforcement · FINRA · Fed Supervision · SWIFT Network",
+    regulatoryContext: "Basel III · DORA · SEC Enforcement · FINRA · Fed Supervision · SWIFT · OFAC · CCAR/DFAST",
     keyStats: [
-      { label: "Industry Protocols", value: "8" },
-      { label: "Regulatory Frameworks", value: "6" },
-      { label: "Avg Stakeholder Count", value: "47" },
+      { label: "Live Protocols", value: "8" },
+      { label: "In Development", value: "7" },
+      { label: "Total Pack Vision", value: "15" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -62,6 +64,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["SWIFT outage signal", "Payment settlement failure", "Fed system alert"],
         domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 115,
@@ -70,6 +73,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Algo velocity anomaly", "Exchange circuit breaker", "Position exposure breach"],
         domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 116,
@@ -78,30 +82,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Deposit withdrawal surge", "Social sentiment crisis signal", "Credit rating watch"],
         domains: "Risk & Resilience",
-      },
-      {
-        number: 117,
-        name: "Correspondent Bank Failure",
-        description: "Counterparty failure response — exposure mapping, alternative routing, client notification, and regulatory reporting.",
-        urgency: "HIGH",
-        triggers: ["Counterparty distress signal", "FDIC intervention", "Exposure concentration alert"],
-        domains: "Risk & Resilience",
-      },
-      {
-        number: 118,
-        name: "Crypto / Digital Asset Incident",
-        description: "Digital asset custody failure, exchange collapse, or on-chain exploit response for institutions with digital asset exposure.",
-        urgency: "HIGH",
-        triggers: ["Custody provider event", "Exchange liquidity halt", "On-chain exploit detected"],
-        domains: "Risk & Resilience",
-      },
-      {
-        number: 58,
-        name: "Compliance Breach (DORA / Basel III)",
-        description: "Regulatory compliance failure response — internal escalation, regulator notification, remediation staging, and board disclosure.",
-        urgency: "HIGH",
-        triggers: ["Regulatory examination signal", "Internal audit breach", "DORA incident classification"],
-        domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 126,
@@ -110,46 +91,147 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Position limit breach", "Unauthorized trade flag", "Risk desk escalation"],
         domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        number: 117,
+        name: "Correspondent Bank Failure",
+        description: "Counterparty failure response — exposure mapping, alternative routing, client notification, and regulatory reporting.",
+        urgency: "HIGH",
+        triggers: ["Counterparty distress signal", "FDIC intervention", "Exposure concentration alert"],
+        domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        number: 118,
+        name: "Crypto / Digital Asset Incident",
+        description: "Digital asset custody failure, exchange collapse, or on-chain exploit response for institutions with digital asset exposure.",
+        urgency: "HIGH",
+        triggers: ["Custody provider event", "Exchange liquidity halt", "On-chain exploit detected"],
+        domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        number: 58,
+        name: "Regulatory Compliance Breach (DORA / Basel III)",
+        description: "Compliance failure response — internal escalation, regulator notification, remediation staging, and board disclosure.",
+        urgency: "HIGH",
+        triggers: ["Regulatory examination signal", "Internal audit breach", "DORA incident classification"],
+        domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 140,
         name: "Portfolio Rebalancing Cascade",
-        description: "Forced rebalancing event response for asset managers — execution sequencing, client notification, and market impact minimization.",
+        description: "Forced rebalancing event response — execution sequencing, client notification, and market impact minimization.",
         urgency: "STANDARD",
         triggers: ["Benchmark recomposition", "Fund mandate breach", "Redemption surge signal"],
         domains: "Growth & Positioning",
+        status: "live",
+      },
+      {
+        name: "Stress Test Failure (DFAST / CCAR)",
+        description: "Federal stress test failure response — capital plan remediation, Fed communication, board disclosure, and public relations containment.",
+        urgency: "CRITICAL",
+        triggers: ["DFAST adverse scenario breach", "Capital ratio stress signal", "Fed supervisory action"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "AML / Sanctions Violation (OFAC)",
+        description: "Anti-money laundering or OFAC sanctions breach — transaction freeze, SAR filing, FinCEN notification, and regulatory remediation program.",
+        urgency: "CRITICAL",
+        triggers: ["OFAC match detected", "Suspicious transaction flag", "FinCEN alert signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Market Manipulation Investigation",
+        description: "SEC or CFTC market manipulation investigation response — trading halt coordination, legal hold, document preservation, and regulator cooperation.",
+        urgency: "CRITICAL",
+        triggers: ["SEC subpoena signal", "CFTC inquiry alert", "Trading pattern anomaly flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Interest Rate Shock / Fed Surprise Response",
+        description: "Unexpected Fed rate decision response — portfolio repricing, mortgage pipeline hedging, client communication, and balance sheet repositioning.",
+        urgency: "HIGH",
+        triggers: ["Fed surprise rate move", "Yield curve inversion signal", "Duration mismatch alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Earnings Miss & Guidance Withdrawal",
+        description: "Public company earnings shortfall — investor relations response, guidance revision, analyst briefing, and short-seller activity containment.",
+        urgency: "HIGH",
+        triggers: ["Revenue miss signal", "Analyst downgrade alert", "Short interest surge"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "PCI-DSS Financial Data Breach",
+        description: "Payment card data breach response — PCI forensics activation, card network notification, customer remediation, and regulatory disclosure.",
+        urgency: "CRITICAL",
+        triggers: ["PCI anomaly detected", "Card network alert", "Dark web credential signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Leveraged Buyout Financing Collapse",
+        description: "LBO financing failure at signing — alternative structure activation, seller negotiation, co-investor mobilization, and bridge financing execution.",
+        urgency: "HIGH",
+        triggers: ["Debt market access signal", "Syndication failure alert", "Covenant breach warning"],
+        domains: "Growth & Positioning",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
       },
     ],
     coreExamples: [
       "Ransomware & Cyber Breach Response",
       "Executive Leadership Transition",
       "Activist Investor Response",
-      "Regulatory Investigation (General)",
-      "Brand & Reputational Crisis",
       "M&A Day 1 Readiness",
+      "Brand & Reputational Crisis",
+      "Workforce Restructuring",
     ],
     foundingPartnerNote:
-      "Financial Services Founding Partners are co-designing protocols for CECL model failures, stress test response, and AML regulatory enforcement — added to the pack Q3 2025.",
+      "Financial Services Founding Partners are co-designing the 7 roadmap protocols above — stress test failures, AML/OFAC violations, and market manipulation responses. Founding Partners receive completed protocols at no additional cost as they ship.",
   },
 
   technology: {
     key: "technology",
     name: "Technology",
     fullName: "Technology Readiness OS",
-    headline: "From API deprecations to developer exodus — platform continuity pre-staged.",
-    tagline: "7 industry-specific protocols. Developer platforms. Open source. Platform migrations.",
+    headline: "From cloud outages to AI liability events — platform continuity pre-staged at every layer.",
+    tagline: "13 industry-specific protocols. Platform risk. Developer trust. Open source. AI governance.",
     description:
-      "Technology companies face execution crises that don't exist in other industries — a viral bug that kills product trust overnight, an open source licensing controversy that threatens the entire distribution model, or a developer exodus that erodes the engineering advantage. The Technology Pack stages the response sequences that protect platform continuity and competitive positioning.",
+      "Technology companies face execution crises that don't exist in other industries — a viral bug that kills product trust overnight, a cloud provider outage that takes down the entire platform, an open source licensing controversy that threatens the distribution model, or an AI-generated content liability event with no regulatory precedent. The Technology Pack stages the response sequences that protect platform continuity, developer trust, and competitive positioning.",
     icon: Cpu,
     iconBg: "#1A5276",
-    regulatoryContext: "SOC 2 · ISO 27001 · Open Source Licensing · GDPR · FTC Enforcement",
+    regulatoryContext: "SOC 2 · ISO 27001 · Open Source Licensing (MIT/GPL/AGPL) · GDPR · CCPA · FTC Enforcement · EU AI Act",
     keyStats: [
-      { label: "Industry Protocols", value: "7" },
-      { label: "Platform Risk Scenarios", value: "7" },
-      { label: "Avg Stakeholder Count", value: "34" },
+      { label: "Live Protocols", value: "7" },
+      { label: "In Development", value: "6" },
+      { label: "Total Pack Vision", value: "13" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
+      {
+        number: 130,
+        name: "Viral Bug / Feature Backfire",
+        description: "Product trust crisis — rollback sequencing, user communication, social containment, and trust restoration protocol.",
+        urgency: "CRITICAL",
+        triggers: ["Social sentiment spike negative", "Support ticket surge", "Media amplification signal"],
+        domains: "Risk & Resilience",
+        status: "live",
+      },
       {
         number: 129,
         name: "API Deprecation Crisis",
@@ -157,46 +239,43 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Partner API dependency alert", "Deprecation deadline approaching", "Developer escalation surge"],
         domains: "Risk & Resilience",
-      },
-      {
-        number: 130,
-        name: "Viral Bug / Feature Backfire",
-        description: "Product trust crisis response when a shipped feature creates widespread user harm — rollback sequencing, communication, and trust restoration.",
-        urgency: "CRITICAL",
-        triggers: ["Social sentiment spike negative", "Support ticket surge", "Media amplification signal"],
-        domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 132,
         name: "Developer Exodus",
-        description: "Engineering talent crisis response — retention intervention, knowledge transfer, competitive counter-offer authorization, and capability gap staging.",
+        description: "Engineering talent crisis — retention intervention, knowledge transfer, competitive counter-offer authorization, and capability gap staging.",
         urgency: "HIGH",
         triggers: ["Voluntary attrition surge", "Competitor hiring signal", "Glassdoor sentiment drop"],
         domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 133,
         name: "Open Source Controversy",
-        description: "License change, contributor conflict, or OSS security event response — community management, legal containment, and distribution continuity.",
+        description: "License change, contributor conflict, or OSS security event — community management, legal containment, and distribution continuity.",
         urgency: "HIGH",
         triggers: ["OSS community signal", "License enforcement action", "Core contributor departure"],
         domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 141,
         name: "Platform Migration (Strategic)",
-        description: "Offensive platform migration execution — user transition sequencing, legacy deprecation, and competitive positioning during the migration window.",
+        description: "Offensive platform migration — user transition sequencing, legacy deprecation, and competitive positioning during the migration window.",
         urgency: "STANDARD",
         triggers: ["Executive migration authorization", "Competitor platform shift", "Technical debt threshold"],
         domains: "Growth & Positioning",
+        status: "live",
       },
       {
         number: 142,
         name: "API Ecosystem Expansion",
-        description: "Rapid ecosystem expansion response to a market window — partner onboarding, developer documentation, and integration certification at scale.",
+        description: "Rapid ecosystem expansion — partner onboarding, developer documentation, and integration certification at scale.",
         urgency: "STANDARD",
         triggers: ["Market window signal", "Competitor API launch", "Partner demand surge"],
         domains: "Growth & Positioning",
+        status: "live",
       },
       {
         number: 143,
@@ -205,6 +284,61 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "STANDARD",
         triggers: ["Standards body vote signal", "Consortium formation alert", "Regulatory framework signal"],
         domains: "Growth & Positioning",
+        status: "live",
+      },
+      {
+        name: "Cloud Provider / Data Center Outage",
+        description: "Multi-region cloud provider failure response — workload failover, SLA breach containment, customer communication, and business continuity activation.",
+        urgency: "CRITICAL",
+        triggers: ["Cloud provider status alert", "Multi-region latency spike", "Customer impact threshold breach"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Security Breach & Source Code Leak",
+        description: "Insider threat or external breach resulting in source code, customer data, or IP exposure — legal hold, forensics activation, disclosure sequencing.",
+        urgency: "CRITICAL",
+        triggers: ["Dark web code detection", "Insider threat flag", "Unauthorized repo access"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "App Store Delisting Threat",
+        description: "Apple or Google app store policy violation response — compliance remediation, policy negotiation, user communication, and alternative distribution staging.",
+        urgency: "CRITICAL",
+        triggers: ["Store policy violation notice", "App review rejection surge", "Platform policy change signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "AI Model Liability Event",
+        description: "AI-generated content causing legal harm — model rollback, liability containment, regulator notification (EU AI Act), and public response.",
+        urgency: "HIGH",
+        triggers: ["AI harm allegation signal", "EU AI Act investigation", "User harm cluster detected"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Enterprise Customer Churn Spike",
+        description: "Large enterprise account attrition response — executive retention intervention, contract renegotiation, competitive win-back, and revenue containment.",
+        urgency: "HIGH",
+        triggers: ["Enterprise NPS collapse", "Renewal at-risk signal", "Competitor displacement alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "SLA Breach & Enterprise Penalty",
+        description: "Service level agreement failure response — customer remediation, penalty mitigation, root cause communication, and contract amendment.",
+        urgency: "HIGH",
+        triggers: ["SLA threshold breach", "Enterprise escalation signal", "Uptime SLA miss"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
       },
     ],
     coreExamples: [
@@ -216,27 +350,36 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Activist Investor Response",
     ],
     foundingPartnerNote:
-      "Technology Founding Partners are co-designing protocols for LLM/AI infrastructure failures, model recall events, and platform antitrust responses — added to the pack Q4 2025.",
+      "Technology Founding Partners are co-designing cloud outage response, AI model liability protocols, and app store delisting playbooks — scenarios with no existing industry standard for Fortune 1000 response.",
   },
 
   manufacturing: {
     key: "manufacturing",
     name: "Manufacturing",
     fullName: "Manufacturing Readiness OS",
-    headline: "From supplier cascades to facility disruptions — production continuity pre-staged.",
-    tagline: "5 industry-specific protocols. Tier 2 suppliers. Critical tooling. Labor relations.",
+    headline: "From supplier cascades to export violations — production continuity pre-staged at every node.",
+    tagline: "12 industry-specific protocols. Supply chain. Quality. Labor. Export controls. Environmental.",
     description:
-      "Manufacturing organizations face supply chain failures that cascade across Tier 1, 2, and 3 suppliers faster than any committee can coordinate a response. A facility disruption, a tooling failure, or a labor walkout requires simultaneous mobilization across operations, procurement, finance, and executive leadership. The Manufacturing Pack stages that response before the trigger fires.",
+      "Manufacturing organizations face supply chain failures that cascade across Tier 1, 2, and 3 suppliers faster than any committee can coordinate a response. A facility disruption, a product quality recall, a trade tariff, or an ITAR export violation requires simultaneous mobilization across operations, procurement, legal, finance, and executive leadership. The Manufacturing Pack stages that response before the trigger fires — at every point in the supply chain.",
     icon: Factory,
     iconBg: "#1E4D3B",
-    regulatoryContext: "OSHA · EPA · NLRB · ISO 9001 · ITAR / EAR Export Controls",
+    regulatoryContext: "OSHA · EPA · NLRB · ISO 9001 · ITAR / EAR Export Controls · CPSC · REACH / RoHS",
     keyStats: [
-      { label: "Industry Protocols", value: "5" },
-      { label: "Supply Chain Scenarios", value: "4" },
-      { label: "Avg Stakeholder Count", value: "52" },
+      { label: "Live Protocols", value: "5" },
+      { label: "In Development", value: "7" },
+      { label: "Total Pack Vision", value: "12" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
+      {
+        number: 168,
+        name: "Compound: Geopolitical + Supply Chain Disruption",
+        description: "Multi-vector disruption when geopolitical escalation simultaneously impacts multiple supply chain nodes — integrated response across all exposure vectors.",
+        urgency: "CRITICAL",
+        triggers: ["Geopolitical escalation signal", "Port closure alert", "Export control change"],
+        domains: "Risk & Resilience",
+        status: "live",
+      },
       {
         number: 25,
         name: "Manufacturing Facility Disruption",
@@ -244,22 +387,16 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Facility production halt", "Safety incident signal", "Environmental event"],
         domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 119,
         name: "Tier 2 Supplier Cascade Failure",
-        description: "Multi-tier supply chain disruption response — alternative sourcing activation, customer impact sequencing, and production recovery staging.",
+        description: "Multi-tier supply chain disruption — alternative sourcing activation, customer impact sequencing, and production recovery staging.",
         urgency: "CRITICAL",
         triggers: ["Supplier bankruptcy signal", "Single-source concentration alert", "Geopolitical supply signal"],
         domains: "Risk & Resilience",
-      },
-      {
-        number: 120,
-        name: "Critical Tooling Failure",
-        description: "Precision tooling or equipment failure response — emergency sourcing, production rescheduling, customer SLA protection, and OEM engagement.",
-        urgency: "HIGH",
-        triggers: ["Equipment failure alert", "Tooling lead time breach", "Production quality signal"],
-        domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 121,
@@ -268,14 +405,79 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["NLRB filing signal", "Strike authorization vote", "Union negotiation breakdown"],
         domains: "Risk & Resilience",
+        status: "live",
       },
       {
-        number: 168,
-        name: "Compound: Geopolitical + Supply Chain",
-        description: "Multi-vector disruption when geopolitical escalation simultaneously impacts multiple supply chain nodes — integrated response across all exposure vectors.",
-        urgency: "CRITICAL",
-        triggers: ["Geopolitical escalation signal", "Port closure alert", "Export control change"],
+        number: 120,
+        name: "Critical Tooling Failure",
+        description: "Precision tooling or equipment failure — emergency sourcing, production rescheduling, customer SLA protection, and OEM engagement.",
+        urgency: "HIGH",
+        triggers: ["Equipment failure alert", "Tooling lead time breach", "Production quality signal"],
         domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        name: "Product Quality Recall (Manufacturing)",
+        description: "Defective product recall response — unit identification, production halt, CPSC / regulatory notification, customer/channel communication, and root cause investigation.",
+        urgency: "CRITICAL",
+        triggers: ["Quality defect signal", "Customer injury report", "CPSC investigation notice"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Trade Tariff & Import Restriction Response",
+        description: "New tariff or import restriction response — cost pass-through analysis, supplier geographic rebalancing, customer communication, and pricing execution.",
+        urgency: "HIGH",
+        triggers: ["Tariff announcement signal", "Trade policy change alert", "Customs classification change"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Export Control / ITAR Violation",
+        description: "ITAR or EAR export control breach response — shipment halt, DDTC/BIS notification, internal investigation, and voluntary disclosure program.",
+        urgency: "CRITICAL",
+        triggers: ["ITAR classification alert", "Denied party screening hit", "Export anomaly flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Raw Material Price Spike",
+        description: "Commodity price escalation response — hedging activation, supplier contract renegotiation, pricing strategy update, and customer communication.",
+        urgency: "HIGH",
+        triggers: ["Commodity index spike", "Supplier price escalation", "Futures market signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Environmental Compliance Violation",
+        description: "EPA or state environmental violation response — containment activation, agency notification, remediation program, and community communication.",
+        urgency: "CRITICAL",
+        triggers: ["EPA monitoring breach", "Environmental sensor alert", "Community complaint surge"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "ERP System Failure (SAP / Oracle)",
+        description: "Enterprise ERP failure response — manual process activation, order management continuity, supplier communication, and recovery sequencing.",
+        urgency: "HIGH",
+        triggers: ["ERP system outage alert", "Order processing failure", "Production schedule disruption"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Energy Cost Escalation Crisis",
+        description: "Sudden energy cost spike impact on production economics — load shedding, production prioritization, contract hedging, and customer price adjustment.",
+        urgency: "HIGH",
+        triggers: ["Energy price index spike", "Grid reliability alert", "Production cost threshold breach"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
       },
     ],
     coreExamples: [
@@ -287,24 +489,24 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Workforce Restructuring",
     ],
     foundingPartnerNote:
-      "Manufacturing Founding Partners are co-designing protocols for rare earth supply disruption, ITAR compliance failure, and EV transition execution — added to the pack Q3 2025.",
+      "Manufacturing Founding Partners are co-designing ITAR violation response, rare earth supply disruption, and EV transition execution protocols — scenarios where the existing industry playbook is a 3-ring binder that takes 30 days to activate.",
   },
 
   energy: {
     key: "energy",
     name: "Energy",
     fullName: "Energy Readiness OS",
-    headline: "From pipeline ruptures to climate occupations — operational continuity pre-staged.",
-    tagline: "4 industry-specific protocols. Environmental events. Renewable integration. Activist response.",
+    headline: "From pipeline ruptures to SCADA cyberattacks — operational and environmental response pre-staged.",
+    tagline: "12 industry-specific protocols. Environmental. Grid. Offshore. Nuclear. Cyber. Climate.",
     description:
-      "Energy organizations face operational crises where minutes of delayed response translate directly into environmental damage, regulatory exposure, and irreversible reputational harm. A pipeline rupture, a renewable grid integration failure, or a coordinated climate protest requires simultaneous mobilization across operations, environmental, legal, regulatory, and executive functions. The Energy Pack stages that response before the event unfolds.",
+      "Energy organizations face operational crises where minutes of delayed response translate directly into environmental damage, regulatory exposure, and irreversible reputational harm. A pipeline rupture, a grid cyberattack, an offshore platform emergency, or a nuclear incident requires simultaneous mobilization across operations, environmental, legal, regulatory, and executive functions — with no tolerance for the 30-day mobilization cycle. The Energy Pack stages that entire response before the event unfolds.",
     icon: Zap,
     iconBg: "#7D4E00",
-    regulatoryContext: "EPA · FERC · PHMSA · NRC · NERC CIP · State PUC Frameworks",
+    regulatoryContext: "EPA · FERC · PHMSA · NRC · NERC CIP · BSEE (Offshore) · DOE · State PUC Frameworks",
     keyStats: [
-      { label: "Industry Protocols", value: "4" },
-      { label: "Environmental Scenarios", value: "3" },
-      { label: "Avg Stakeholder Count", value: "61" },
+      { label: "Live Protocols", value: "4" },
+      { label: "In Development", value: "8" },
+      { label: "Total Pack Vision", value: "12" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
@@ -315,22 +517,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["SCADA anomaly signal", "Pressure loss detection", "Environmental sensor breach"],
         domains: "Risk & Resilience",
-      },
-      {
-        number: 125,
-        name: "Renewable Integration Failure",
-        description: "Grid integration crisis when renewable capacity creates instability — load balancing response, operator coordination, regulatory notification, and customer impact staging.",
-        urgency: "HIGH",
-        triggers: ["Grid frequency anomaly", "Renewable capacity mismatch", "NERC alert signal"],
-        domains: "Risk & Resilience",
-      },
-      {
-        number: 128,
-        name: "Climate Protest / Facility Occupation",
-        description: "Activist occupation response — safety protocol activation, law enforcement coordination, media response, and operations continuity.",
-        urgency: "HIGH",
-        triggers: ["Activist mobilization signal", "Social coordination detection", "Facility perimeter event"],
-        domains: "Risk & Resilience",
+        status: "live",
       },
       {
         number: 169,
@@ -339,6 +526,97 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "CRITICAL",
         triggers: ["Extreme weather alert", "Multi-site operations impact", "Regulatory escalation signal"],
         domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        number: 125,
+        name: "Renewable Integration Failure",
+        description: "Grid integration crisis — load balancing response, operator coordination, regulatory notification, and customer impact staging.",
+        urgency: "HIGH",
+        triggers: ["Grid frequency anomaly", "Renewable capacity mismatch", "NERC alert signal"],
+        domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        number: 128,
+        name: "Climate Protest / Facility Occupation",
+        description: "Activist occupation response — safety protocol activation, law enforcement coordination, media response, and operations continuity.",
+        urgency: "HIGH",
+        triggers: ["Activist mobilization signal", "Social coordination detection", "Facility perimeter event"],
+        domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        name: "Grid Cyberattack (ICS / SCADA)",
+        description: "Industrial control system cyberattack response — SCADA isolation, NERC CIP incident reporting, DOE/CISA notification, and grid stability continuity.",
+        urgency: "CRITICAL",
+        triggers: ["ICS anomaly detected", "SCADA breach signal", "NERC CIP incident threshold"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Offshore Platform Emergency",
+        description: "Offshore platform safety or environmental emergency response — personnel evacuation, BSEE notification, spill containment, and media containment.",
+        urgency: "CRITICAL",
+        triggers: ["Platform safety alert", "BSEE inspection signal", "Offshore environmental sensor"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Nuclear Incident Response",
+        description: "Nuclear facility incident response — NRC emergency plan activation, community notification, evacuation coordination, and federal agency engagement.",
+        urgency: "CRITICAL",
+        triggers: ["NRC alert signal", "Plant safety threshold", "Radiation monitoring breach"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Oil & Gas Price Collapse",
+        description: "Commodity price collapse response — capital program suspension, production curtailment, workforce right-sizing, and investor communication.",
+        urgency: "HIGH",
+        triggers: ["WTI/Brent price threshold", "OPEC+ decision signal", "Demand destruction signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Hurricane / Natural Disaster Response",
+        description: "Hurricane or natural disaster facility response — pre-landfall shutdown sequencing, personnel safety, asset protection, restoration prioritization.",
+        urgency: "CRITICAL",
+        triggers: ["NWS hurricane track signal", "Mandatory evacuation order", "Category threshold alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Regulatory Rate Case Challenge",
+        description: "Utility rate case adverse ruling response — interim rate recovery strategy, regulatory negotiation, customer impact communication, and financial reforecast.",
+        urgency: "HIGH",
+        triggers: ["Rate case adverse signal", "PUC ruling alert", "Intervenor challenge filing"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Carbon Market & Net-Zero Compliance",
+        description: "Carbon credit shortfall or net-zero compliance failure response — offset procurement, regulatory negotiation, ESG disclosure update, and investor communication.",
+        urgency: "HIGH",
+        triggers: ["Carbon allowance price spike", "Net-zero milestone miss signal", "ESG rating agency alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Utility Merger Integration Failure",
+        description: "Post-merger integration breakdown response — regulatory approval risk management, operational integration sequencing, and workforce retention.",
+        urgency: "HIGH",
+        triggers: ["FERC integration condition", "Workforce attrition signal", "System integration failure"],
+        domains: "Transformation",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
       },
     ],
     coreExamples: [
@@ -350,34 +628,35 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Geopolitical Supply Disruption",
     ],
     foundingPartnerNote:
-      "Energy Founding Partners are co-designing protocols for LNG export disruption, offshore platform events, and carbon credit market failure — added to the pack Q4 2025.",
+      "Energy Founding Partners are co-designing SCADA cyberattack response, offshore platform emergency protocols, and nuclear incident activation sequences — each a scenario where every existing response plan is a binder that takes weeks to activate.",
   },
 
   retail: {
     key: "retail",
     name: "Retail",
     fullName: "Retail Readiness OS",
-    headline: "From viral trends to multi-brand launches — the market window opens for 12 minutes.",
-    tagline: "2 industry-specific protocols. Multi-brand execution. Viral capitalization. Both sides of the trigger.",
+    headline: "From food safety recalls to e-commerce outages — every retail crisis and opportunity pre-staged.",
+    tagline: "12 industry-specific protocols. Safety recalls. Platform outages. Data breach. Labor violations. Brand.",
     description:
-      "Retail organizations face a unique duality — they must be ready to execute offensively when opportunity windows open and defensively when crises hit. A viral social trend creates a 48-72 hour window to capture share. A multi-brand market entry requires simultaneous execution across dozens of channels and locations. The Retail Pack stages both sides of that equation.",
+      "Retail organizations operate on both sides of the execution equation — they must capture offensive opportunities in a 48-hour window (viral trends, market entries) while managing defensive crises that can destroy decades of brand equity (food contamination, data breaches, supplier labor violations). The Retail Pack stages both. Every scenario your buyers, regulators, and boards will ask about — pre-staged before the trigger fires.",
     icon: ShoppingCart,
     iconBg: "#4A235A",
-    regulatoryContext: "FTC · FDA (food retail) · CPSC · State Consumer Protection Laws",
+    regulatoryContext: "FDA (Food Safety) · FTC · CPSC · NLRB · FCPA · California Transparency Act · PCI-DSS",
     keyStats: [
-      { label: "Industry Protocols", value: "2" },
-      { label: "Opportunity Scenarios", value: "2" },
-      { label: "Avg Stakeholder Count", value: "89" },
+      { label: "Live Protocols", value: "2" },
+      { label: "In Development", value: "10" },
+      { label: "Total Pack Vision", value: "12" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
       {
         number: 111,
         name: "Strategic Market Entry — Multi-Brand Launch",
-        description: "Simultaneous multi-brand, multi-location launch execution — brand sequencing, location activation, inventory staging, and omnichannel coordination across all markets.",
+        description: "Simultaneous multi-brand, multi-location launch — brand sequencing, location activation, inventory staging, and omnichannel coordination across all markets.",
         urgency: "HIGH",
         triggers: ["Market window signal", "Competitor entry alert", "Regulatory approval received"],
         domains: "Growth & Positioning",
+        status: "live",
       },
       {
         number: 112,
@@ -386,45 +665,236 @@ const PACK_DATA: Record<string, IndustryPackData> = {
         urgency: "HIGH",
         triggers: ["Social velocity signal", "Trend index spike", "Platform amplification detected"],
         domains: "Growth & Positioning",
+        status: "live",
+      },
+      {
+        name: "Food Safety Recall (FDA Class I / II)",
+        description: "Contaminated product recall — unit traceability activation, FDA notification, store pull sequencing, consumer communication, and media containment.",
+        urgency: "CRITICAL",
+        triggers: ["FDA safety signal", "Illness cluster report", "Supplier contamination alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "E-Commerce Platform Outage (Peak Season)",
+        description: "Peak season platform failure — revenue recovery sequencing, customer communication, carrier SLA protection, and post-outage retention activation.",
+        urgency: "CRITICAL",
+        triggers: ["Platform uptime breach", "Cart abandonment spike", "Black Friday load threshold"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Customer Payment Data Breach (PCI-DSS)",
+        description: "Payment card data exposure — PCI forensics, card network notification, customer remediation offers, state AG notification, and trust restoration.",
+        urgency: "CRITICAL",
+        triggers: ["PCI anomaly detected", "Card fraud cluster signal", "Dark web card data alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Supplier Labor Violation (Forced Labor Act)",
+        description: "Supplier forced labor or child labor exposure — product halt, CBP withhold-release order response, supplier audit activation, and brand communication.",
+        urgency: "CRITICAL",
+        triggers: ["CBP WRO signal", "NGO exposure report", "Supply chain audit flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Influencer / Brand Ambassador Scandal",
+        description: "Brand ambassador misconduct response — contract termination, campaign pull, social containment, and brand distancing communication.",
+        urgency: "HIGH",
+        triggers: ["Social sentiment crisis signal", "Media escalation alert", "Brand safety tool flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Counterfeit Goods Crisis",
+        description: "Large-scale counterfeit product infiltration — marketplace takedown coordination, brand protection activation, customer communication, and legal enforcement.",
+        urgency: "HIGH",
+        triggers: ["Brand protection platform alert", "Marketplace fraud signal", "Customer complaint cluster"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Store Network Closure & Restructuring",
+        description: "Multi-store closure execution — lease termination sequencing, workforce notification (WARN Act), inventory liquidation, and brand continuation strategy.",
+        urgency: "HIGH",
+        triggers: ["Portfolio review decision", "Lease expiration cluster", "Profitability threshold breach"],
+        domains: "Transformation",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Tariff-Driven Price Increase Response",
+        description: "Import tariff cost absorption response — pricing strategy update, supplier negotiation, customer communication, and competitive positioning.",
+        urgency: "HIGH",
+        triggers: ["Tariff announcement signal", "Import cost threshold", "Competitor pricing signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Price-Fixing Investigation (FTC / DOJ)",
+        description: "Antitrust pricing investigation response — document preservation, counsel engagement, DOJ/FTC cooperation strategy, and employee communication.",
+        urgency: "CRITICAL",
+        triggers: ["FTC subpoena signal", "DOJ investigation alert", "Competitor parallel pricing flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Flash Sale Demand Collapse",
+        description: "Promotional demand shortfall response — inventory repositioning, markdown optimization, vendor partner communication, and margin recovery.",
+        urgency: "STANDARD",
+        triggers: ["Promotional sell-through miss", "Inventory overhang signal", "Margin threshold breach"],
+        domains: "Growth & Positioning",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
       },
     ],
     coreExamples: [
-      "Supply Chain Disruption Response",
-      "Product Recall & Safety Response",
-      "Brand & Reputational Crisis",
-      "Ransomware & Cyber Breach",
+      "Ransomware & Cyber Breach Response",
       "Executive Leadership Transition",
+      "Brand & Reputational Crisis",
+      "Supply Chain Disruption",
+      "Activist Investor Response",
       "Workforce Restructuring",
     ],
     foundingPartnerNote:
-      "Retail Founding Partners are co-designing protocols for omnichannel inventory collapse, social commerce platform failure, and same-day delivery network disruption — added to the pack Q3 2025.",
+      "Retail Founding Partners are co-designing 10 protocols including food safety recalls, e-commerce outage response, and supplier labor violation protocols — every scenario a Fortune 1000 retailer's board and regulators will ask about.",
   },
 
   healthcare: {
     key: "healthcare",
     name: "Healthcare",
     fullName: "Healthcare Readiness OS",
-    headline: "From Class I recalls to safety crises — patient protection pre-staged.",
-    tagline: "1 industry-specific protocol now. Expanding rapidly. FDA. Patient safety. Recall execution.",
+    headline: "From FDA consent decrees to hospital ransomware — patient safety and compliance pre-staged at every level.",
+    tagline: "12 industry-specific protocols. FDA. CMS. HIPAA. Clinical trials. Drug shortages. Patient safety.",
     description:
-      "Healthcare organizations operate in the highest-consequence environment in the Fortune 1000. A product recall, a safety signal, or an FDA enforcement action requires simultaneous mobilization across regulatory, legal, clinical, manufacturing, and executive functions — with patient safety as the absolute priority. The Healthcare Pack stages that response before the signal fires.",
+      "Healthcare organizations operate in the highest-consequence, highest-regulatory-scrutiny environment in the Fortune 1000. A product recall, an FDA warning letter, a hospital ransomware attack, a drug shortage, or a patient harm disclosure requires simultaneous mobilization across regulatory, legal, clinical, operations, and executive functions — with patient safety as the absolute and non-negotiable priority. The Healthcare Pack stages that entire response before the signal fires.",
     icon: Heart,
     iconBg: "#7B241C",
-    regulatoryContext: "FDA · CMS · OIG · HIPAA · 21 CFR Part 11 · ICH Q10",
+    regulatoryContext: "FDA · CMS / Medicare · OIG · HIPAA · 21 CFR Part 11 · ICH Q10 · Joint Commission · DEA",
     keyStats: [
-      { label: "Industry Protocols", value: "1" },
-      { label: "Expanding Q3 2025", value: "6+" },
-      { label: "Avg Stakeholder Count", value: "74" },
+      { label: "Live Protocols", value: "1" },
+      { label: "In Development", value: "11" },
+      { label: "Total Pack Vision", value: "12" },
       { label: "Execution Head Start", value: "3,600×" },
     ],
     protocols: [
       {
         number: 95,
         name: "Product Recall (Class I — Safety)",
-        description: "FDA Class I recall execution — unit identification, distribution halt, recall notification to all channels, regulatory submission, consumer communication, and remediation staging.",
+        description: "FDA Class I recall — unit identification, distribution halt, recall notification to all channels, regulatory submission, consumer communication, and remediation staging.",
         urgency: "CRITICAL",
         triggers: ["FDA safety signal", "Adverse event cluster", "Quality system alert", "Distribution contamination"],
         domains: "Risk & Resilience",
+        status: "live",
+      },
+      {
+        name: "FDA Warning Letter / Consent Decree",
+        description: "FDA enforcement action response — manufacturing halt assessment, FDA response letter preparation, consent decree negotiation, and remediation program activation.",
+        urgency: "CRITICAL",
+        triggers: ["FDA inspection 483 signal", "Warning letter received", "Consent decree risk flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Hospital Ransomware Attack",
+        description: "Healthcare ransomware response — patient care diversion, EHR downtime procedures, FBI/HHS notification, and clinical operations continuity.",
+        urgency: "CRITICAL",
+        triggers: ["EHR system outage signal", "Ransomware detection alert", "Network anomaly flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Drug Shortage Response",
+        description: "Critical drug shortage management — FDA notification (mandatory), alternative sourcing activation, clinical rationing protocol, and patient communication.",
+        urgency: "CRITICAL",
+        triggers: ["FDA drug shortage database signal", "Supplier production halt", "Inventory depletion alert"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "HIPAA Breach Notification",
+        description: "Protected health information breach response — breach assessment, HHS/OCR notification (60-day window), patient notification, and media statement.",
+        urgency: "CRITICAL",
+        triggers: ["PHI exposure detected", "EHR unauthorized access", "Business associate breach signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "Patient Harm Disclosure",
+        description: "Serious patient harm or sentinel event response — immediate safety action, Joint Commission reporting, board notification, family communication, and RCA activation.",
+        urgency: "CRITICAL",
+        triggers: ["Sentinel event report", "Patient safety officer escalation", "Adverse outcome cluster"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q3 2025",
+      },
+      {
+        name: "CMS Audit / Medicare Fraud Investigation",
+        description: "CMS audit or OIG fraud investigation response — document preservation, counsel engagement, billing review, voluntary repayment program, and cooperation strategy.",
+        urgency: "CRITICAL",
+        triggers: ["CMS audit notification", "OIG subpoena signal", "Billing anomaly flag"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Clinical Trial Protocol Deviation",
+        description: "Clinical trial serious protocol deviation response — IRB notification, FDA IND safety report, trial hold assessment, and patient safety communication.",
+        urgency: "CRITICAL",
+        triggers: ["Protocol deviation report", "IRB review trigger", "FDA IND safety threshold"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Medical Device Malfunction (MDR)",
+        description: "Medical device malfunction or failure response — MDR filing (30-day window), field safety notice, device correction/removal, and clinical communication.",
+        urgency: "HIGH",
+        triggers: ["Device malfunction report", "FDA MDR threshold", "Adverse event cluster signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Insurance Reimbursement Rate Cut",
+        description: "Major payer reimbursement rate reduction response — financial reforecast, service line prioritization, contract renegotiation, and workforce impact assessment.",
+        urgency: "HIGH",
+        triggers: ["CMS rate update signal", "Payer contract renegotiation", "Reimbursement threshold breach"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Biosimilar / Generic Market Entry",
+        description: "Biosimilar or generic competitor launch response — pricing strategy activation, formulary defense, prescriber communication, and market share protection.",
+        urgency: "HIGH",
+        triggers: ["FDA biosimilar approval signal", "Generic launch alert", "Formulary displacement signal"],
+        domains: "Risk & Resilience",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
+      },
+      {
+        name: "Physician Group Acquisition Integration",
+        description: "Post-acquisition physician group integration — Stark Law compliance, compensation alignment, culture integration, and quality metric continuity.",
+        urgency: "STANDARD",
+        triggers: ["Acquisition close signal", "Stark Law review trigger", "Physician attrition signal"],
+        domains: "Transformation",
+        status: "roadmap",
+        roadmapQ: "Q4 2025",
       },
     ],
     coreExamples: [
@@ -436,16 +906,21 @@ const PACK_DATA: Record<string, IndustryPackData> = {
       "Workforce Restructuring",
     ],
     foundingPartnerNote:
-      "Healthcare Founding Partners are co-designing protocols for clinical trial protocol deviation, CMS enforcement actions, drug shortage response, and HIPAA breach notification — added Q3 2025.",
+      "Healthcare is the highest-priority pack for Founding Partner co-design. 11 protocols in development — FDA consent decrees, hospital ransomware, drug shortage response, HIPAA breach notification, and patient harm disclosure. Healthcare Founding Partners gain direct input into protocol design and receive all completed protocols at no cost.",
   },
 };
 
 const CORE_PROTOCOL_COUNT = 143;
 
-const URGENCY_COLORS: Record<string, { bg: string; text: string; label: string }> = {
-  CRITICAL: { bg: "#FEF2F2", text: "#B91C1C", label: "CRITICAL" },
-  HIGH: { bg: "#FFF7ED", text: "#C2410C", label: "HIGH" },
-  STANDARD: { bg: "#F0FDF4", text: "#15803D", label: "STANDARD" },
+const URGENCY_COLORS: Record<string, { bg: string; text: string }> = {
+  CRITICAL: { bg: "#FEF2F2", text: "#B91C1C" },
+  HIGH: { bg: "#FFF7ED", text: "#C2410C" },
+  STANDARD: { bg: "#F0FDF4", text: "#15803D" },
+};
+
+const ROADMAP_Q_COLORS: Record<string, { bg: string; text: string }> = {
+  "Q3 2025": { bg: "#EFF6FF", text: "#1D4ED8" },
+  "Q4 2025": { bg: "#F5F3FF", text: "#6D28D9" },
 };
 
 export default function IndustryPackDetail() {
@@ -469,7 +944,10 @@ export default function IndustryPackDetail() {
   }
 
   const Icon = pack.icon;
-  const totalProtocols = CORE_PROTOCOL_COUNT + pack.protocols.length;
+  const liveProtocols = pack.protocols.filter(p => p.status === "live");
+  const roadmapProtocols = pack.protocols.filter(p => p.status === "roadmap");
+  const totalProtocols = CORE_PROTOCOL_COUNT + liveProtocols.length;
+  const fullVisionTotal = CORE_PROTOCOL_COUNT + pack.protocols.length;
 
   return (
     <PageLayout>
@@ -499,14 +977,12 @@ export default function IndustryPackDetail() {
               </h1>
             </div>
           </div>
-          <p className="text-lg leading-relaxed max-w-2xl mb-6 text-white opacity-90">
+          <p className="text-lg leading-relaxed max-w-2xl mb-4 text-white opacity-90">
             {pack.headline}
           </p>
-          <p className="text-sm max-w-xl mb-8 opacity-70 text-white">
+          <p className="text-sm max-w-2xl mb-8 opacity-60 text-white">
             {pack.regulatoryContext}
           </p>
-
-          {/* Stats row */}
           <div className="flex flex-wrap gap-8">
             {pack.keyStats.map(stat => (
               <div key={stat.label}>
@@ -518,31 +994,34 @@ export default function IndustryPackDetail() {
         </div>
       </section>
 
-      {/* ── PROTOCOL STACK SUMMARY ── */}
+      {/* ── PROTOCOL STACK EQUATION ── */}
       <section style={{ background: NAVY }} className="py-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-between gap-6">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-5 flex-wrap">
               <div className="text-center">
                 <div className="text-2xl font-bold" style={{ color: "#A8B4C8" }}>{CORE_PROTOCOL_COUNT}</div>
                 <div className="text-xs" style={{ color: "#5A6A8A" }}>Core Protocols</div>
               </div>
-              <div style={{ color: "#3A4A6A", fontSize: "1.5rem", fontWeight: 300 }}>+</div>
+              <span style={{ color: "#3A4A6A", fontSize: "1.4rem" }}>+</span>
               <div className="text-center">
-                <div className="text-2xl font-bold" style={{ color: GOLD }}>{pack.protocols.length}</div>
-                <div className="text-xs" style={{ color: "#5A6A8A" }}>{pack.name} Protocols</div>
+                <div className="text-2xl font-bold" style={{ color: GOLD }}>{liveProtocols.length} live</div>
+                <div className="text-xs" style={{ color: "#5A6A8A" }}>{pack.name} (Now)</div>
               </div>
-              <div style={{ color: "#3A4A6A", fontSize: "1.5rem", fontWeight: 300 }}>=</div>
+              <span style={{ color: "#3A4A6A", fontSize: "1.4rem" }}>+</span>
               <div className="text-center">
-                <div className="text-2xl font-bold" style={{ color: IVORY }}>{totalProtocols}</div>
-                <div className="text-xs" style={{ color: "#5A6A8A" }}>Your Complete Readiness OS</div>
+                <div className="text-2xl font-bold" style={{ color: "#6B7FCC" }}>{roadmapProtocols.length} building</div>
+                <div className="text-xs" style={{ color: "#5A6A8A" }}>{pack.name} (Roadmap)</div>
+              </div>
+              <span style={{ color: "#3A4A6A", fontSize: "1.4rem" }}>=</span>
+              <div className="text-center">
+                <div className="text-2xl font-bold" style={{ color: IVORY }}>{fullVisionTotal} total</div>
+                <div className="text-xs" style={{ color: "#5A6A8A" }}>Full Pack Vision</div>
               </div>
             </div>
             <Link href="/request-access">
-              <button
-                className="px-6 py-2.5 text-sm font-semibold transition-all"
-                style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}
-              >
+              <button className="px-6 py-2.5 text-sm font-semibold transition-all"
+                style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}>
                 Apply for Founding Partner Access →
               </button>
             </Link>
@@ -550,55 +1029,56 @@ export default function IndustryPackDetail() {
         </div>
       </section>
 
-      {/* ── INDUSTRY PROTOCOLS ── */}
+      {/* ── LIVE PROTOCOLS ── */}
       <section className="py-20" style={{ background: "#fff" }}>
         <div className="max-w-6xl mx-auto px-6">
-          <div className="mb-10">
+          <div className="mb-8">
             <div className="flex items-center gap-3 mb-3">
               <div className="h-px w-8" style={{ background: GOLD }} />
               <span className="text-xs tracking-[0.2em] font-semibold uppercase" style={{ color: GOLD }}>
-                {pack.name} Protocol Pack
+                Live Now
               </span>
             </div>
             <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY, fontFamily: "Cormorant Garamond, serif", fontSize: "1.9rem" }}>
-              {pack.protocols.length} Industry-Specific Protocols
+              {liveProtocols.length} Protocols Available Today
             </h2>
-            <p className="text-base max-w-xl" style={{ color: "#4A5568" }}>
-              {pack.tagline}
+            <p className="text-sm max-w-xl" style={{ color: "#4A5568" }}>
+              Deployed immediately on Founding Partner activation. Pre-staged response sequences with trigger logic, stakeholder assignments, and budget authority.
             </p>
           </div>
-
           <div className="space-y-4">
-            {pack.protocols.map(protocol => {
+            {liveProtocols.map(protocol => {
               const urgency = URGENCY_COLORS[protocol.urgency];
               return (
-                <div key={protocol.number}
-                  className="border rounded-sm p-6"
-                  style={{ borderColor: "#E5E7EB" }}>
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div className="flex items-start gap-4">
+                <div key={protocol.name} className="border rounded-sm p-6" style={{ borderColor: "#E5E7EB" }}>
+                  <div className="flex items-start gap-4 mb-3">
+                    {protocol.number && (
                       <div className="text-xs font-bold pt-0.5 flex-shrink-0" style={{ color: "#9CA3AF" }}>
                         #{protocol.number}
                       </div>
-                      <div>
-                        <div className="flex items-center gap-3 mb-1 flex-wrap">
-                          <h3 className="text-base font-bold" style={{ color: NAVY }}>{protocol.name}</h3>
-                          <span className="text-xs px-2 py-0.5 font-semibold rounded-sm"
-                            style={{ background: urgency.bg, color: urgency.text }}>
-                            {urgency.label}
-                          </span>
-                          <span className="text-xs px-2 py-0.5 rounded-sm font-medium"
-                            style={{ background: "#F3F4F6", color: "#6B7280" }}>
-                            {protocol.domains}
-                          </span>
-                        </div>
-                        <p className="text-sm leading-relaxed" style={{ color: "#4A5568" }}>
-                          {protocol.description}
-                        </p>
+                    )}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-1 flex-wrap">
+                        <h3 className="text-base font-bold" style={{ color: NAVY }}>{protocol.name}</h3>
+                        <span className="text-xs px-2 py-0.5 font-semibold rounded-sm"
+                          style={{ background: urgency.bg, color: urgency.text }}>
+                          {protocol.urgency}
+                        </span>
+                        <span className="text-xs px-2 py-0.5 rounded-sm font-medium"
+                          style={{ background: "#F3F4F6", color: "#6B7280" }}>
+                          {protocol.domains}
+                        </span>
+                        <span className="text-xs px-2 py-0.5 rounded-sm font-semibold"
+                          style={{ background: "#F0FDF4", color: "#15803D" }}>
+                          ● LIVE
+                        </span>
                       </div>
+                      <p className="text-sm leading-relaxed" style={{ color: "#4A5568" }}>
+                        {protocol.description}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-3">
+                  <div className="flex flex-wrap gap-2 mt-3 ml-7">
                     {protocol.triggers.map(t => (
                       <span key={t} className="flex items-center gap-1.5 text-xs px-3 py-1 rounded-sm"
                         style={{ background: "#F9FAFB", color: "#374151", border: "1px solid #E5E7EB" }}>
@@ -614,8 +1094,81 @@ export default function IndustryPackDetail() {
         </div>
       </section>
 
+      {/* ── ROADMAP PROTOCOLS ── */}
+      {roadmapProtocols.length > 0 && (
+        <section className="py-20" style={{ background: "#F7F5EF" }}>
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="h-px w-8" style={{ background: "#6B7FCC" }} />
+                <span className="text-xs tracking-[0.2em] font-semibold uppercase" style={{ color: "#6B7FCC" }}>
+                  In Development — Founding Partner Co-Design
+                </span>
+              </div>
+              <h2 className="text-2xl font-bold mb-2" style={{ color: NAVY, fontFamily: "Cormorant Garamond, serif", fontSize: "1.9rem" }}>
+                {roadmapProtocols.length} Protocols Being Built
+              </h2>
+              <p className="text-sm max-w-xl" style={{ color: "#4A5568" }}>
+                Founding Partners co-design these protocols with the VaughnMartin team. Your operational context, your regulatory environment, and your stakeholder structures shape the final protocol. You receive every completed protocol at no additional cost.
+              </p>
+            </div>
+            <div className="space-y-3">
+              {roadmapProtocols.map(protocol => {
+                const urgency = URGENCY_COLORS[protocol.urgency];
+                const qColor = protocol.roadmapQ ? ROADMAP_Q_COLORS[protocol.roadmapQ] || { bg: "#F3F4F6", text: "#6B7280" } : { bg: "#F3F4F6", text: "#6B7280" };
+                return (
+                  <div key={protocol.name} className="border rounded-sm p-5 bg-white" style={{ borderColor: "#E5E7EB", borderStyle: "dashed" }}>
+                    <div className="flex items-start gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-1 flex-wrap">
+                          <h3 className="text-base font-bold" style={{ color: NAVY }}>{protocol.name}</h3>
+                          <span className="text-xs px-2 py-0.5 font-semibold rounded-sm"
+                            style={{ background: urgency.bg, color: urgency.text }}>
+                            {protocol.urgency}
+                          </span>
+                          <span className="text-xs px-2 py-0.5 rounded-sm font-medium"
+                            style={{ background: "#F3F4F6", color: "#6B7280" }}>
+                            {protocol.domains}
+                          </span>
+                          {protocol.roadmapQ && (
+                            <span className="text-xs px-2 py-0.5 rounded-sm font-semibold flex items-center gap-1"
+                              style={{ background: qColor.bg, color: qColor.text }}>
+                              <Clock size={10} />
+                              {protocol.roadmapQ}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm leading-relaxed" style={{ color: "#6B7280" }}>
+                          {protocol.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Founding Partner CTA within roadmap */}
+            <div className="mt-8 p-6 rounded-sm" style={{ background: NAVY }}>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <div className="text-sm font-semibold mb-1" style={{ color: GOLD }}>Co-Design These Protocols</div>
+                  <p className="text-sm" style={{ color: "#A8B4C8" }}>{pack.foundingPartnerNote}</p>
+                </div>
+                <Link href="/request-access">
+                  <button className="flex-shrink-0 px-6 py-2.5 text-sm font-semibold transition-all"
+                    style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}>
+                    Apply for Founding Partner Access →
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── CORE PLATFORM ── */}
-      <section className="py-16" style={{ background: "#F7F5EF" }}>
+      <section className="py-16" style={{ background: "#fff" }}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-start gap-8">
             <div className="flex-1">
@@ -629,9 +1182,8 @@ export default function IndustryPackDetail() {
                 + {CORE_PROTOCOL_COUNT} Cross-Industry Protocols
               </h2>
               <p className="text-sm leading-relaxed mb-6 max-w-xl" style={{ color: "#4A5568" }}>
-                Every {pack.name} Readiness OS deployment includes the full Core Platform.
-                These are the scenarios every Fortune 1000 faces regardless of vertical — and they're
-                all pre-staged from day one.
+                Every {pack.name} Readiness OS includes the full Core Platform from day one —
+                the scenarios every Fortune 1000 faces regardless of vertical.
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {pack.coreExamples.map(ex => (
@@ -640,37 +1192,35 @@ export default function IndustryPackDetail() {
                     <span className="text-sm font-medium" style={{ color: "#374151" }}>{ex}</span>
                   </div>
                 ))}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 col-span-2">
                   <span className="text-sm font-medium" style={{ color: "#9CA3AF" }}>
                     + {CORE_PROTOCOL_COUNT - pack.coreExamples.length} more Core Protocols
                   </span>
                 </div>
               </div>
             </div>
-            <div className="hidden md:block w-48 flex-shrink-0">
+            <div className="hidden md:block w-52 flex-shrink-0">
               <div className="rounded-sm p-6 text-center" style={{ background: NAVY }}>
                 <Layers size={28} style={{ color: GOLD, margin: "0 auto 12px" }} />
-                <div className="text-3xl font-bold mb-1" style={{ color: IVORY }}>{totalProtocols}</div>
-                <div className="text-xs mb-3" style={{ color: "#7A8FA8" }}>Total Protocols in<br />Your {pack.name} OS</div>
-                <div className="text-xs px-2 py-1 rounded-sm" style={{ background: "#1A2A4A", color: GOLD }}>
-                  {CORE_PROTOCOL_COUNT} Core + {pack.protocols.length} {pack.name}
+                <div className="text-3xl font-bold mb-1" style={{ color: IVORY }}>{fullVisionTotal}</div>
+                <div className="text-xs mb-1" style={{ color: "#7A8FA8" }}>Full Vision</div>
+                <div className="text-xs mb-4" style={{ color: "#5A6A8A" }}>{pack.name} Readiness OS</div>
+                <div className="space-y-1.5 text-left">
+                  <div className="text-xs flex justify-between">
+                    <span style={{ color: "#7A8FA8" }}>Core</span>
+                    <span style={{ color: "#A8B4C8" }}>{CORE_PROTOCOL_COUNT}</span>
+                  </div>
+                  <div className="text-xs flex justify-between">
+                    <span style={{ color: GOLD }}>Live now</span>
+                    <span style={{ color: GOLD }}>{liveProtocols.length}</span>
+                  </div>
+                  <div className="text-xs flex justify-between">
+                    <span style={{ color: "#6B7FCC" }}>Building</span>
+                    <span style={{ color: "#6B7FCC" }}>{roadmapProtocols.length}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FOUNDING PARTNER NOTE ── */}
-      <section className="py-12" style={{ background: "#fff" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="border-l-4 pl-6 py-2" style={{ borderColor: GOLD }}>
-            <div className="text-xs font-semibold uppercase tracking-wide mb-1" style={{ color: GOLD }}>
-              Founding Partner Co-Design
-            </div>
-            <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
-              {pack.foundingPartnerNote}
-            </p>
           </div>
         </div>
       </section>
@@ -689,23 +1239,19 @@ export default function IndustryPackDetail() {
             Deploy {pack.fullName}
           </h2>
           <p className="text-base mb-8 leading-relaxed" style={{ color: "#A8B4C8" }}>
-            Founding Partners receive the Core Platform plus the {pack.name} Protocol Pack —
-            {totalProtocols} Readiness Protocols pre-staged for your organization from day one.
+            Founding Partners receive {CORE_PROTOCOL_COUNT} Core Protocols plus {liveProtocols.length} live {pack.name} protocols today —
+            and co-design the {roadmapProtocols.length} protocols being built with the VaughnMartin team over the next 90 days.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/request-access">
-              <button
-                className="px-8 py-3 text-sm font-semibold tracking-wide transition-all"
-                style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}
-              >
+              <button className="px-8 py-3 text-sm font-semibold tracking-wide transition-all"
+                style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}>
                 Apply for Founding Partner Access →
               </button>
             </Link>
             <Link href="/industry">
-              <button
-                className="px-8 py-3 text-sm font-semibold tracking-wide border transition-all"
-                style={{ borderColor: "#3A4A6A", color: IVORY, background: "transparent", borderRadius: "0.15rem" }}
-              >
+              <button className="px-8 py-3 text-sm font-semibold tracking-wide border transition-all"
+                style={{ borderColor: "#3A4A6A", color: IVORY, background: "transparent", borderRadius: "0.15rem" }}>
                 ← View All Industry Packs
               </button>
             </Link>
@@ -714,7 +1260,7 @@ export default function IndustryPackDetail() {
       </section>
 
       <div className="flex justify-center py-8" style={{ background: NAVY }}>
-        <BrandStamp variant="light" size="sm" />
+        <BrandStamp variant="logo" size="sm" />
       </div>
     </PageLayout>
   );

@@ -2975,6 +2975,9 @@ var init_schema = __esm({
       // Object: { green: string[], yellow: string[], red: string[] }
       outcomeFraming: jsonb("outcome_framing"),
       // Object: { at12hours: string[], at30days: string[], failureModes: string[] }
+      // Industry Classification
+      industryVertical: varchar("industry_vertical", { length: 100 }),
+      // null = general; 'financial_services' | 'healthcare' | 'technology' | 'manufacturing' | 'retail' | 'energy'
       // Metadata
       isPremium: boolean("is_premium").default(false),
       // Some playbooks might be premium tier
@@ -44933,6 +44936,62 @@ async function registerRoutes(app2, existingServer) {
       res.status(500).json({ error: "Failed to fetch playbook metadata" });
     }
   });
+  const PROTOCOL_INDUSTRY_MAP = {
+    25: "manufacturing",
+    // Manufacturing Facility Disruption
+    58: "financial_services",
+    // Financial Services Compliance Breach
+    95: "healthcare",
+    // Product Recall (Safety)
+    111: "retail",
+    // Strategic Market Entry - Multi-Brand Launch
+    112: "retail",
+    // Trend Capitalization - Viral Fashion Response
+    114: "financial_services",
+    // SWIFT/Payment System Disruption
+    115: "financial_services",
+    // Algorithmic Trading Malfunction
+    116: "financial_services",
+    // Liquidity Crisis / Bank Run
+    117: "financial_services",
+    // Correspondent Bank Failure
+    118: "financial_services",
+    // Crypto/Digital Asset Incident
+    119: "manufacturing",
+    // Tier 2 Supplier Cascade Failure
+    120: "manufacturing",
+    // Critical Tooling Failure
+    121: "manufacturing",
+    // Labor Strike/Walkout
+    124: "energy",
+    // Pipeline Rupture/Environmental Release
+    125: "energy",
+    // Renewable Integration Failure
+    126: "financial_services",
+    // Commodity Trading Desk Rogue Trader
+    128: "energy",
+    // Climate Protest/Facility Occupation
+    129: "technology",
+    // API Deprecation Crisis
+    130: "technology",
+    // Viral Bug/Feature Backfire
+    132: "technology",
+    // Developer Exodus
+    133: "technology",
+    // Open Source Controversy
+    140: "financial_services",
+    // Portfolio Rebalancing
+    141: "technology",
+    // Platform Migration (Offensive)
+    142: "technology",
+    // API Ecosystem Expansion
+    143: "technology",
+    // Technical Standard Setting
+    168: "manufacturing",
+    // Compound: Geopolitical + Supply Chain Disruption
+    169: "energy"
+    // Compound: Climate + Operations Cascade
+  };
   app2.get("/api/playbooks/templates", async (req, res) => {
     try {
       const templates = await db.select({
@@ -44953,7 +45012,8 @@ async function registerRoutes(app2, existingServer) {
         enrichedPhases: playbookLibrary.enrichedPhases,
         signalSources: playbookLibrary.signalSources,
         preApprovedBudget: playbookLibrary.preApprovedBudget,
-        primaryResponseStrategy: playbookLibrary.primaryResponseStrategy
+        primaryResponseStrategy: playbookLibrary.primaryResponseStrategy,
+        industryVertical: playbookLibrary.industryVertical
       }).from(playbookLibrary).leftJoin(playbookDomains, eq45(playbookLibrary.domainId, playbookDomains.id)).where(eq45(playbookLibrary.isActive, true)).limit(200);
       res.json(templates.map((t) => {
         const stakeholderCount = (t.tier1Count || 0) + (t.tier2Count || 0) || (Array.isArray(t.tier1Stakeholders) ? t.tier1Stakeholders.length : 8);
@@ -44966,6 +45026,7 @@ async function registerRoutes(app2, existingServer) {
         const phaseCount = Array.isArray(t.enrichedPhases) ? t.enrichedPhases.length : 4;
         const signalSourceCount = Array.isArray(t.signalSources) ? t.signalSources.length : 3;
         const budget = t.preApprovedBudget ? Number(t.preApprovedBudget) : null;
+        const industryVertical = t.industryVertical || PROTOCOL_INDUSTRY_MAP[t.playbookNumber] || null;
         return {
           id: t.id,
           name: t.name,
@@ -44986,7 +45047,8 @@ async function registerRoutes(app2, existingServer) {
           phaseCount,
           signalSourceCount,
           preApprovedBudget: budget,
-          whyItMatters: t.whyItMatters
+          whyItMatters: t.whyItMatters,
+          industryVertical
         };
       }));
     } catch (error) {

@@ -16,6 +16,7 @@ interface IndustryPack {
   name: string;
   tagline: string;
   industryProtocols: number;
+  liveCount: number;
   icon: any;
   iconBg: string;
   scenarios: string[];
@@ -27,19 +28,20 @@ const INDUSTRY_PACKS: IndustryPack[] = [
   {
     key: "financial_services",
     name: "Financial Services",
-    tagline: "SWIFT failures to rogue traders — pre-staged before they fire.",
-    industryProtocols: 8,
+    tagline: "SWIFT failures to AML violations to stress test collapses — all 15 pre-staged.",
+    industryProtocols: 15,
+    liveCount: 8,
     icon: Building2,
     iconBg: "#1B4F72",
     scenarios: [
       "SWIFT / Payment System Disruption",
       "Algorithmic Trading Malfunction",
       "Liquidity Crisis & Bank Run",
-      "Crypto / Digital Asset Incident",
-      "Correspondent Bank Failure",
-      "Commodity Trading Rogue Trader",
-      "Compliance Breach (DORA / Basel III)",
-      "Portfolio Rebalancing Cascade",
+      "Rogue Trader Discovery",
+      "AML / Sanctions Violation (OFAC)",
+      "Stress Test Failure (DFAST/CCAR)",
+      "Market Manipulation Investigation",
+      "PCI-DSS Financial Data Breach",
     ],
     sampleTriggers: ["Payment rail outage", "Algo flash crash detected", "Regulatory breach signal"],
     badge: "Most Requested",
@@ -47,77 +49,104 @@ const INDUSTRY_PACKS: IndustryPack[] = [
   {
     key: "technology",
     name: "Technology",
-    tagline: "Platform migrations to developer exodus — execution ready in advance.",
-    industryProtocols: 7,
+    tagline: "Cloud outages to AI liability events — 13 platform-specific protocols.",
+    industryProtocols: 13,
+    liveCount: 7,
     icon: Cpu,
     iconBg: "#1A5276",
     scenarios: [
-      "API Deprecation Crisis",
+      "Cloud Provider / Data Center Outage",
       "Viral Bug / Feature Backfire",
+      "Security Breach & Source Code Leak",
+      "App Store Delisting Threat",
+      "AI Model Liability Event",
       "Developer Exodus",
       "Open Source Controversy",
-      "Platform Migration (Strategic)",
-      "API Ecosystem Expansion",
-      "Technical Standard Setting",
+      "Enterprise Customer Churn Spike",
     ],
-    sampleTriggers: ["API deprecation notice", "GitHub incident spike", "Key engineer departure signal"],
+    sampleTriggers: ["Cloud provider alert", "GitHub incident spike", "App store policy violation"],
   },
   {
     key: "manufacturing",
     name: "Manufacturing",
-    tagline: "Supplier cascades to labor strikes — mobilization compressed to minutes.",
-    industryProtocols: 5,
+    tagline: "Supplier cascades to ITAR violations to quality recalls — 12 protocols.",
+    industryProtocols: 12,
+    liveCount: 5,
     icon: Factory,
     iconBg: "#1E4D3B",
     scenarios: [
-      "Manufacturing Facility Disruption",
-      "Tier 2 Supplier Cascade Failure",
-      "Critical Tooling Failure",
-      "Labor Strike / Walkout",
       "Compound: Geopolitical + Supply Chain",
+      "Tier 2 Supplier Cascade Failure",
+      "Product Quality Recall",
+      "Export Control / ITAR Violation",
+      "Trade Tariff & Import Restriction",
+      "Labor Strike / Walkout",
+      "Environmental Compliance Violation",
+      "ERP System Failure (SAP/Oracle)",
     ],
-    sampleTriggers: ["Supplier bankruptcy signal", "Facility production halt", "Labor action detected"],
+    sampleTriggers: ["Supplier bankruptcy signal", "ITAR classification alert", "EPA monitoring breach"],
   },
   {
     key: "energy",
     name: "Energy",
-    tagline: "Pipeline ruptures to climate occupations — response staged before impact.",
-    industryProtocols: 4,
+    tagline: "Pipeline ruptures to SCADA cyberattacks to nuclear incidents — 12 protocols.",
+    industryProtocols: 12,
+    liveCount: 4,
     icon: Zap,
     iconBg: "#7D4E00",
     scenarios: [
       "Pipeline Rupture / Environmental Release",
+      "Grid Cyberattack (ICS / SCADA)",
+      "Offshore Platform Emergency",
+      "Nuclear Incident Response",
+      "Hurricane / Natural Disaster Response",
+      "Oil & Gas Price Collapse",
       "Renewable Integration Failure",
-      "Climate Protest / Facility Occupation",
-      "Compound: Climate + Operations Cascade",
+      "Carbon Market & Net-Zero Compliance",
     ],
-    sampleTriggers: ["Environmental sensor breach", "Renewable grid instability", "Activist mobilization signal"],
+    sampleTriggers: ["SCADA anomaly signal", "NRC alert threshold", "Oil price collapse signal"],
   },
   {
     key: "retail",
     name: "Retail",
-    tagline: "Viral trends to multi-brand launches — the window opens for 12 minutes.",
-    industryProtocols: 2,
+    tagline: "Food safety recalls to e-commerce outages to data breaches — 12 protocols.",
+    industryProtocols: 12,
+    liveCount: 2,
     icon: ShoppingCart,
     iconBg: "#4A235A",
     scenarios: [
-      "Strategic Market Entry — Multi-Brand Launch",
-      "Trend Capitalization — Viral Fashion Response",
+      "Food Safety Recall (FDA Class I/II)",
+      "E-Commerce Platform Outage (Peak Season)",
+      "Customer Payment Data Breach",
+      "Supplier Labor Violation (Forced Labor Act)",
+      "Influencer / Brand Ambassador Scandal",
+      "Price-Fixing Investigation (FTC/DOJ)",
+      "Store Network Closure & Restructuring",
+      "Trend Capitalization — Viral Response",
     ],
-    sampleTriggers: ["Viral social signal detected", "Competitor market entry alert", "Consumer sentiment surge"],
+    sampleTriggers: ["FDA safety signal", "Platform uptime breach", "CBP withhold-release order"],
+    badge: "Expanding Fast",
   },
   {
     key: "healthcare",
     name: "Healthcare",
-    tagline: "Product recalls to safety crises — response staged, not scrambled.",
-    industryProtocols: 1,
+    tagline: "FDA consent decrees to hospital ransomware to HIPAA breaches — 12 protocols.",
+    industryProtocols: 12,
+    liveCount: 1,
     icon: Heart,
     iconBg: "#7B241C",
     scenarios: [
       "Product Recall (Class I — Safety)",
+      "FDA Warning Letter / Consent Decree",
+      "Hospital Ransomware Attack",
+      "Drug Shortage Response",
+      "HIPAA Breach Notification",
+      "Patient Harm Disclosure",
+      "CMS Audit / Medicare Fraud Investigation",
+      "Clinical Trial Protocol Deviation",
     ],
-    sampleTriggers: ["FDA safety signal", "Adverse event cluster detected", "Supply chain contamination alert"],
-    badge: "Expanding",
+    sampleTriggers: ["FDA safety signal", "EHR system outage signal", "FDA drug shortage database signal"],
+    badge: "Highest Priority",
   },
 ];
 
@@ -137,8 +166,9 @@ const CORE_CAPABILITIES = [
 ];
 
 export default function IndustryPacksHub() {
-  const totalIndustryProtocols = INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0);
-  const coreProtocols = 170 - totalIndustryProtocols;
+  const coreProtocols = 143;
+  const totalLiveIndustry = INDUSTRY_PACKS.reduce((s, p) => s + p.liveCount, 0);
+  const totalRoadmapIndustry = INDUSTRY_PACKS.reduce((s, p) => s + (p.industryProtocols - p.liveCount), 0);
 
   return (
     <PageLayout>
@@ -263,7 +293,7 @@ export default function IndustryPacksHub() {
                   </h3>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold" style={{ color: NAVY }}>{totalIndustryProtocols}</div>
+                  <div className="text-3xl font-bold" style={{ color: NAVY }}>{INDUSTRY_PACKS.reduce((s, p) => s + p.industryProtocols, 0)}</div>
                   <div className="text-xs font-medium" style={{ color: "#6B7280" }}>Industry-Specific<br />Protocols</div>
                 </div>
               </div>
@@ -307,17 +337,17 @@ export default function IndustryPacksHub() {
             <div className="flex items-center gap-4">
               <Layers size={20} style={{ color: GOLD }} />
               <span className="text-sm font-semibold" style={{ color: IVORY }}>
-                Your Complete Readiness OS = {coreProtocols} Core Protocols + Your Industry Pack
+                {coreProtocols} Core Protocols + {totalLiveIndustry} live industry protocols + {totalRoadmapIndustry} building with Founding Partners
               </span>
             </div>
             <div className="flex items-center gap-6">
               <div className="text-center">
-                <div className="text-xl font-bold" style={{ color: GOLD }}>170</div>
-                <div className="text-xs" style={{ color: "#7A8FA8" }}>Total Protocols</div>
+                <div className="text-xl font-bold" style={{ color: GOLD }}>{coreProtocols + totalLiveIndustry}</div>
+                <div className="text-xs" style={{ color: "#7A8FA8" }}>Available Today</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-bold" style={{ color: GOLD }}>6</div>
-                <div className="text-xs" style={{ color: "#7A8FA8" }}>Industry Packs</div>
+                <div className="text-xl font-bold" style={{ color: "#6B7FCC" }}>{totalRoadmapIndustry}</div>
+                <div className="text-xs" style={{ color: "#7A8FA8" }}>In Development</div>
               </div>
               <div className="text-center">
                 <div className="text-xl font-bold" style={{ color: GOLD }}>12 min</div>
@@ -373,20 +403,31 @@ export default function IndustryPacksHub() {
                     <p className="text-xs font-medium mb-3" style={{ color: "#6B7280" }}>{pack.tagline}</p>
 
                     {/* Protocol count */}
-                    <div className="flex items-center gap-3 mb-4 py-3 px-3 rounded-sm" style={{ background: "#F9FAFB" }}>
-                      <div className="text-center">
-                        <div className="text-lg font-bold" style={{ color: NAVY }}>{coreProtocols}</div>
-                        <div className="text-xs" style={{ color: "#6B7280" }}>Core</div>
+                    <div className="mb-4 py-3 px-3 rounded-sm" style={{ background: "#F9FAFB" }}>
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="text-center">
+                          <div className="text-lg font-bold" style={{ color: NAVY }}>{coreProtocols}</div>
+                          <div className="text-xs" style={{ color: "#6B7280" }}>Core</div>
+                        </div>
+                        <div className="text-gray-300 text-lg font-light">+</div>
+                        <div className="text-center">
+                          <div className="text-lg font-bold" style={{ color: pack.iconBg }}>{pack.industryProtocols}</div>
+                          <div className="text-xs" style={{ color: "#6B7280" }}>Industry</div>
+                        </div>
+                        <div className="text-gray-300 text-lg font-light">=</div>
+                        <div className="text-center">
+                          <div className="text-lg font-bold" style={{ color: GOLD }}>{coreProtocols + pack.industryProtocols}</div>
+                          <div className="text-xs" style={{ color: "#6B7280" }}>Total Vision</div>
+                        </div>
                       </div>
-                      <div className="text-gray-300 text-lg font-light">+</div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold" style={{ color: pack.iconBg }}>{pack.industryProtocols}</div>
-                        <div className="text-xs" style={{ color: "#6B7280" }}>Industry</div>
-                      </div>
-                      <div className="text-gray-300 text-lg font-light">=</div>
-                      <div className="text-center">
-                        <div className="text-lg font-bold" style={{ color: GOLD }}>{coreProtocols + pack.industryProtocols}</div>
-                        <div className="text-xs" style={{ color: "#6B7280" }}>Total</div>
+                      <div className="flex items-center gap-2 pt-2 border-t" style={{ borderColor: "#E5E7EB" }}>
+                        <span className="text-xs font-semibold px-1.5 py-0.5 rounded-sm" style={{ background: "#F0FDF4", color: "#15803D" }}>
+                          {pack.liveCount} live
+                        </span>
+                        <span className="text-xs" style={{ color: "#9CA3AF" }}>·</span>
+                        <span className="text-xs font-semibold px-1.5 py-0.5 rounded-sm" style={{ background: "#EFF6FF", color: "#1D4ED8" }}>
+                          {pack.industryProtocols - pack.liveCount} building
+                        </span>
                       </div>
                     </div>
 
@@ -505,7 +546,7 @@ export default function IndustryPacksHub() {
       </section>
 
       <div className="flex justify-center py-8" style={{ background: NAVY }}>
-        <BrandStamp variant="light" size="sm" />
+        <BrandStamp variant="logo" size="sm" />
       </div>
     </PageLayout>
   );

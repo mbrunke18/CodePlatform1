@@ -1,7 +1,7 @@
 # VaughnMartin — Readiness OS
 
 ## Overview
-VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 1000, designed to automate project creation, task assignment, document staging, and budget allocation. Its core purpose is to achieve a 12-minute response time to strategic triggers by leveraging 170 strategic Readiness Protocols within its proprietary IDEA Framework™. The platform aims to transform enterprise operating models from slow, meeting-heavy processes to pre-staged, pattern-detected execution, empowering companies to be "Fearless" by enabling rapid, approved actions with AI monitoring and executive authorization. The project's vision is to redesign how work flows in the age of AI, moving enterprises from 30-day alignment cycles to 12-minute execution through pre-staged Readiness Protocols and pattern detection.
+VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 1000 designed to automate project creation, task assignment, document staging, and budget allocation. Its core purpose is to achieve a 12-minute response time to strategic triggers by leveraging 170 strategic Readiness Protocols within its proprietary IDEA Framework™. The platform aims to transform enterprise operating models from slow, meeting-heavy processes to pre-staged, pattern-detected execution, empowering companies to be "Fearless" by enabling rapid, approved actions with AI monitoring and executive authorization. The project's vision is to redesign how work flows in the age of AI, moving enterprises from 30-day alignment cycles to 12-minute execution through pre-staged Readiness Protocols and pattern detection.
 
 ## User Preferences
 - Preferred communication style: Simple, everyday language
@@ -48,9 +48,9 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Key Differentiators:** Readiness ROI Dashboard, Compound Threat Intelligence, Strategic Recorder, War Room Pulse Map.
 - **Terminology Enforcement:** Consistent use of "12 minutes," "3,600×," "170 Readiness Protocols," and "221 triggers." "Readiness Protocol" is the canonical term for all execution artifacts.
 - **12-Minute Test Drive:** A public 4-step simulation at `/12-minute-experience` for lead generation and experience demonstration.
-- **Platform Architecture:** Two-tier model presented across dedicated pages: Readiness OS Core (143 cross-industry protocols at `/industry`) + 6 Industry Protocol Packs (27 industry-specific protocols). Individual pack pages at `/industry/:verticalKey` for financial_services (8), technology (7), manufacturing (5), energy (4), retail (2), healthcare (1). "Industry Protocol Packs" added as featured nav link under Core Capabilities.
-- **Getting Started Hub (`/getting-started`):** A single-page dashboard for go-live readiness, tracking 4 setup phases (Foundation, Org Structure, Protocol Readiness, Validation) with a live completion score.
-- **Protocol Builder (`/protocol-builder`):** A 6-step wizard for Founding Partners and prospects to create custom protocols based on the established anatomy.
+- **Platform Architecture:** Two-tier model: Readiness OS Core (143 cross-industry protocols) + 6 Industry Protocol Packs.
+- **Getting Started Hub (`/getting-started`):** A single-page dashboard for go-live readiness, tracking 4 setup phases with a live completion score.
+- **Protocol Builder (`/protocol-builder`):** A 6-step wizard for Founding Partners and prospects to create custom protocols.
 - **Live Signal Detection:** Real-time RSS ingestion from 8 sources every 15 minutes, scored against 16 trigger patterns.
 - **Risk Scoring:** Uses square-root scaling (`√signals × 8`) to classify risk as LOW (<35), MEDIUM (35–74), HIGH (75+).
 - **Command Tower (`/command-tower`):** A full-screen executive display page showing live trigger detections and system statistics.
@@ -60,43 +60,13 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Sector Playbook Packs:** Organizes protocols by 6 industry sectors.
 - **Regulatory Calendar:** Displays compliance deadlines with urgency and recommended actions.
 - **Board-Ready Activation Report:** Generates reports for activations, including elapsed time and next steps.
-- **Ownership Close-Out Gate:** Formal governance verdict post-activation, measuring ownership transfer rate and diagnosing silent tasks.
-- **Recovery vs. Optimization Debrief Classification:** Debriefs are automatically classified as Optimization, Mixed-Signal, or Recovery based on ownership transfer percentage.
-- **Post-Drill Debrief (`/practice-drills`):** Structured debrief dialog after practice drills, capturing insights and action items.
+- **Ownership Close-Out Gate:** Formal governance verdict post-activation.
+- **Recovery vs. Optimization Debrief Classification:** Debriefs are automatically classified as Optimization, Mixed-Signal, or Recovery.
+- **Post-Drill Debrief (`/practice-drills`):** Structured debrief dialog after practice drills.
 - **ROI Dashboard:** Displays actual costs logged across activations and outcome classifications.
 - **Activation Console:** Integrates real organizational stakeholders for notifications.
 - **Intelligence Control Center:** Features a live Recent Signal Detections feed.
 - **AIRadarDashboard:** Displays real-time average response times against benchmarks.
-
-## Test Suite
-
-### Structure
-- **Unit Tests (Vitest):** Run with `npx vitest run --reporter=verbose`. Covers server business logic, Zod schema validation, brand terminology enforcement, and key React components.
-- **E2E Tests (Playwright):** Run with `npx playwright test --reporter=list`. Targets `http://localhost:5000`. Covers critical user flows and brand language compliance across key pages.
-
-### Test Files
-| File | What it tests |
-|---|---|
-| `server/__tests__/business-logic.test.ts` | Task value calculation (priority multipliers, strategic keywords) |
-| `server/__tests__/platform-scoring.test.ts` | Risk scoring (√signals × 8), velocity, foresight, agility scores |
-| `server/__tests__/deal-risk.test.ts` | Deal risk score and trigger detection (MockSalesforceService logic) |
-| `server/routes.test.ts` | Zod validation schemas for organization, scenario, and task API inputs |
-| `client/src/__tests__/brand-terminology.test.ts` | Retired-term detection, approved replacements, metric correctness |
-| `client/src/components/__tests__/BrandStamp.test.tsx` | BrandStamp variants, sizes, alignment |
-| `client/src/components/__tests__/SubBrandLabel.test.tsx` | SubBrandLabel rendering, `isSubBrand()` function, SUB_BRAND_NAMES constant |
-| `client/src/components/ui/__tests__/badge.test.tsx` | Badge shadcn component variants |
-| `client/src/components/ui/__tests__/card.test.tsx` | Card/CardHeader/CardTitle/CardContent/CardFooter components |
-| `e2e/comprehensive-platform-tests.spec.ts` | Full platform page coverage — data-testid assertions |
-| `e2e/demo-flows.spec.ts` | Core demo and CTA flows with current VaughnMartin branding |
-| `e2e/brand-compliance.spec.ts` | Zero-tolerance language rules across 8 key public pages |
-
-### Validation Commands (registered)
-- `unit-tests` → `npx vitest run --reporter=verbose`
-- `typecheck` → `npx tsc --noEmit`
-- `e2e-tests` → `npx playwright test --reporter=list`
-
-### Vitest Configuration
-`vitest.config.ts` excludes `e2e/**`, `archive/**`, `executeiq-complete/**`, and `bastion-complete/**` to prevent false picks from backup directories.
 
 ## External Dependencies
 - **AI:** OpenAI GPT-4o, Azure OpenAI
