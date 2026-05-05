@@ -275,6 +275,100 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* CEO / CFO Executive Frame */}
+        <section className="py-16 px-6" style={{ background: "#0A0F2E" }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 14 }}>
+                <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif" }}>Executive Value Frame</span>
+                <div style={{ width: 28, height: 1, background: "#C9A84C" }} />
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px,4vw,44px)", fontWeight: 700, color: "#fff", marginBottom: 12, lineHeight: 1.15 }}>
+                Two Conversations. One Platform.
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 600, margin: "0 auto" }}>
+                Readiness OS closes the CEO's readiness mandate and the CFO's value equation simultaneously.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+              {/* CEO Frame */}
+              <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderTop: "3px solid #C9A84C", padding: "36px 32px" }}>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 14 }}>CEO Conversation</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
+                  "We are taking enterprise readiness from 30-day mobilization to 12 minutes."
+                </h3>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: 20 }}>
+                  The competitive advantage is the prepared response — not the faster committee. Every Fortune 1000 competitor still starts from zero when a trigger fires. Readiness OS starts from pre-staged.
+                </p>
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 18 }}>
+                  {[
+                    "Pre-staged for every situation the enterprise will face",
+                    "Executive authority preserved — no protocol activates without sign-off",
+                    "170 Readiness Protocols across 9 strategic domains",
+                    "Risk and opportunity triggers covered — not just crisis response",
+                  ].map(pt => (
+                    <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 10 }}>
+                      <span style={{ color: "#C9A84C", fontSize: 12, marginTop: 2, flexShrink: 0 }}>◆</span>
+                      <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CFO Frame */}
+              <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderTop: "3px solid #2B8A6E", padding: "36px 32px" }}>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#2B8A6E", fontFamily: "'Barlow Condensed', sans-serif", marginBottom: 14 }}>CFO Conversation</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
+                  "This is not a tooling spend. It is a value-protection and value-capture system."
+                </h3>
+                <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: 20 }}>
+                  The 4-Bucket Value Formula — illustrative at $5B enterprise with 6 critical events/year:
+                </p>
+                <div style={{ background: "rgba(0,0,0,0.2)", padding: "16px", marginBottom: 16 }}>
+                  {[
+                    { n: "①", l: "Loss Avoided", d: "6 events × $750K/day × 2 days eliminated", v: "$9.0M", c: "#C9A84C" },
+                    { n: "②", l: "Upside Captured", d: "4 opportunity moments × 3% win-rate lift", v: "$2.4M", c: "#2B8A6E" },
+                    { n: "③", l: "Coordination Cost Saved", d: "Executive time reclaimed from mobilization", v: "$0.3M", c: "#fff" },
+                    { n: "④", l: "External Spend Displaced", d: "Consulting retainers replaced", v: "$0.5M+", c: "rgba(255,255,255,0.6)" },
+                  ].map(b => (
+                    <div key={b.l} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "8px 0", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                      <div>
+                        <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: b.c }}>{b.n} {b.l}</div>
+                        <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{b.d}</div>
+                      </div>
+                      <div style={{ fontFamily: "monospace", fontSize: 14, fontWeight: 700, color: b.c, flexShrink: 0, marginLeft: 16 }}>{b.v}</div>
+                    </div>
+                  ))}
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 12, marginTop: 4 }}>
+                    <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700, color: "#C9A84C" }}>Illustrative Annual Value</span>
+                    <span style={{ fontFamily: "monospace", fontSize: 18, fontWeight: 700, color: "#C9A84C" }}>$11.9M+</span>
+                  </div>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(43,138,110,0.12)", border: "1px solid rgba(43,138,110,0.3)", padding: "12px 16px" }}>
+                  <div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: "#2B8A6E", marginBottom: 2 }}>At $325K/yr Platform Investment</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.6)" }}>Payback on first trigger event</div>
+                  </div>
+                  <div style={{ fontFamily: "monospace", fontSize: 20, fontWeight: 700, color: "#2B8A6E" }}>36× ROI</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobilization Gap */}
+            <div className="max-w-3xl mx-auto text-center">
+              <div style={{ borderTop: "1px solid rgba(201,168,76,0.2)", paddingTop: 28 }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(18px,2.5vw,26px)", fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.5, marginBottom: 10 }}>
+                  "Most enterprises don't fail because they lack ideas or data.<br />
+                  They fail in the <span style={{ color: "#C9A84C" }}>mobilization gap</span> — between 'we know' and 'we are executing.'"
+                </p>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.3)" }}>The gap Readiness OS was built to close</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Operating Model Layer */}
         <section className="py-16 px-6 text-[#0A0F2E]">
           <div className="max-w-7xl mx-auto">

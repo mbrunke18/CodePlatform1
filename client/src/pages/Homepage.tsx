@@ -618,10 +618,10 @@ function HeroSection() {
               </h1>
 
               <p style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
-                30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged and executive-authorized — not after the trigger, before it.
+                30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged for high-stakes disruptions and high-upside strategic moments alike — executive-authorized before the trigger, not assembled after it.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(16px,1.2vw,18px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
-                The twelve minutes is not about speed. It is about clarity built ahead of time.
+                Every trigger — risk or opportunity — meets a response that was already ready.
               </p>
 
               {/* CTAs — horizontal */}
@@ -1027,13 +1027,14 @@ function ProblemSection() {
             {/* Trigger category tags — condensed */}
             <div style={{ marginBottom: 32 }}>
               <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: GOLD, marginBottom: 10 }}>
-                Every situation. Every trigger. Same problem.
+                Every trigger — risk or opportunity — same mobilization gap.
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {[
                   "Cybersecurity Breach", "Competitor Acquisition", "Regulatory Mandate",
                   "Supply Chain Failure", "Executive Departure", "ESG Crisis",
-                  "Geopolitical Risk", "M&A Pressure", "Reputational Threat",
+                  "Geopolitical Risk", "M&A Integration Sprint", "Reputational Threat",
+                  "Market Entry Window", "Product Launch Timing",
                 ].map((tag) => (
                   <span key={tag} style={{
                     ...DM, fontSize: 11, fontWeight: 600, color: "#444",
@@ -1049,9 +1050,17 @@ function ProblemSection() {
               </div>
             </div>
 
-            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 40 }}>
+            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 28 }}>
               Yet every time, your organization spends weeks in alignment meetings before a single coordinated action is taken. By the time execution begins, the window has already moved.
             </p>
+
+            {/* Mobilization Gap callout */}
+            <div style={{ background: "rgba(10,15,46,0.04)", borderLeft: `3px solid ${GOLD}`, padding: "16px 20px", marginBottom: 28 }}>
+              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>The Mobilization Gap</div>
+              <p style={{ ...DM, fontSize: 14, color: "#333", lineHeight: 1.65, margin: 0 }}>
+                The space between <em>"we know"</em> and <em>"we are executing"</em> — where competitive windows open and close uncontested. It exists for crises. It exists for growth. It costs enterprises <strong>$50M–$500M per trigger event.</strong>
+              </p>
+            </div>
 
             {/* Timeline contrast callout */}
             <div style={{ borderTop: `2px solid ${GOLD}`, paddingTop: 24 }}>
@@ -2074,7 +2083,8 @@ function HomepageFooter() {
             <div style={{ marginBottom: 16 }}>
               <VaughnMartinLogo variant="full" height={80} color="light" />
             </div>
-            <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 16 }}>We Make Enterprises Fearless.</p>
+            <p style={{ ...GEO, fontStyle: "italic", fontSize: 16, color: GOLD_LIGHT, marginBottom: 6 }}>We Make Enterprises Fearless.</p>
+            <p style={{ ...DM, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.55)", marginBottom: 16 }}>Fearless in minutes.</p>
             <p style={{ ...DM, fontSize: 12, color: MUTED_LIGHT }}>© 2026 VaughnMartin. All rights reserved.</p>
           </div>
 

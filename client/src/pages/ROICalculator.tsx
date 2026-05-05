@@ -259,12 +259,26 @@ export default function ROICalculator() {
     const mResponseTimeHours = 0.2 + 1.5; 
     const mTotalExecutiveHoursPerYear = mResponseTimeHours * inputs.executivesInvolved * inputs.strategicEventsPerYear;
     
-    // Savings calculations
-    const coordinationCostSavings = currentCoordinationCostPerYear - (mTotalExecutiveHoursPerYear * hourlyExecutiveCost);
+    // ── 4-Bucket Value Model ─────────────────────────────────────────────────
+    // Bucket 1: Loss Avoided — defensive events (cyber, regulatory, supply chain)
     const revenueProtected = revenueAtRiskPerEvent * inputs.strategicEventsPerYear * 0.7;
     const complianceRiskReduction = complianceRiskCost * 0.6;
-    
-    const totalAnnualValue = coordinationCostSavings + revenueProtected + complianceRiskReduction;
+    const lossAvoided = revenueProtected + complianceRiskReduction;
+
+    // Bucket 2: Upside Captured — growth/opportunity moments (M&A, market entry, product launches)
+    // ~20% of strategic events are high-upside growth triggers; faster execution improves win-rate 3%
+    const opportunityEventsPerYear = inputs.strategicEventsPerYear * 0.20;
+    const avgOpportunityValue = inputs.annualRevenue * 0.004 * industryData.riskMultiplier;
+    const upsideCaptured = opportunityEventsPerYear * avgOpportunityValue * 0.03;
+
+    // Bucket 3: Coordination Cost Saved — executive time reclaimed from mobilization cycles
+    const coordinationCostSavings = currentCoordinationCostPerYear - (mTotalExecutiveHoursPerYear * hourlyExecutiveCost);
+
+    // Bucket 4: External Spend Displaced — consulting retainers + per-incident fees replaced
+    const consultingAnnual = 350000 + inputs.strategicEventsPerYear * 60000;
+    const externalSpendDisplaced = Math.max(0, consultingAnnual - platformCost);
+
+    const totalAnnualValue = lossAvoided + upsideCaptured + coordinationCostSavings;
     const speedImprovement = Math.round(inputs.avgResponseTimeHours / mResponseTimeHours);
 
     // Enhanced metrics
@@ -272,18 +286,17 @@ export default function ROICalculator() {
     const roiPct = Math.round((netAnnualValue / platformCost) * 100);
     const threeYearValue = totalAnnualValue * 3 - platformCost * 3;
     const valuePerEvent = totalAnnualValue / inputs.strategicEventsPerYear;
-    // Break-even: events needed so cumulative value covers platform cost
     const breakEvenEvents = Math.ceil(platformCost / valuePerEvent);
-    // Break-even in days (assuming events spread evenly)
     const daysPerEvent = 365 / inputs.strategicEventsPerYear;
     const breakEvenDays = Math.round(breakEvenEvents * daysPerEvent);
-    // Consulting retainer (McKinsey retainer + per-incident fees)
-    const consultingAnnual = 350000 + inputs.strategicEventsPerYear * 60000;
     
     return {
       totalAnnualValue,
       speedImprovement,
+      lossAvoided,
+      upsideCaptured,
       coordinationCostSavings,
+      externalSpendDisplaced,
       revenueProtected,
       complianceRiskReduction,
       netAnnualValue,
@@ -432,16 +445,21 @@ export default function ROICalculator() {
                     </p>
                   </div>
 
-                  {/* Value breakdown */}
-                  <div className="space-y-2 mb-6" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 20 }}>
+                  {/* 4-Bucket Value Model */}
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.35)", marginBottom: 10 }}>CFO Value Frame — 4 Buckets</div>
+                  <div className="space-y-1 mb-6" style={{ borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 20 }}>
                     {[
-                      { l: "Coordination Efficiency", v: formatCurrency(calculations.coordinationCostSavings) },
-                      { l: "Revenue Risk Protected", v: formatCurrency(calculations.revenueProtected) },
-                      { l: "Compliance Risk Reduced", v: formatCurrency(calculations.complianceRiskReduction) },
+                      { l: "① Loss Avoided", sub: "Defensive events — cyber, regulatory, supply chain", v: formatCurrency(calculations.lossAvoided), c: "#C9A84C" },
+                      { l: "② Upside Captured", sub: "Growth moments — M&A, market entry, product launches", v: formatCurrency(calculations.upsideCaptured), c: "#2B8A6E" },
+                      { l: "③ Coordination Cost Saved", sub: "Executive time reclaimed from mobilization cycles", v: formatCurrency(calculations.coordinationCostSavings), c: "#fff" },
+                      { l: "④ External Spend Displaced", sub: "Consulting retainers + per-incident fees replaced", v: formatCurrency(calculations.externalSpendDisplaced), c: "rgba(255,255,255,0.6)", note: true },
                     ].map(r => (
-                      <div key={r.l} className="flex justify-between py-2 border-b border-white/10">
-                        <span className="text-white/60 text-sm">{r.l}</span>
-                        <span className="font-mono text-white font-semibold">{r.v}</span>
+                      <div key={r.l} style={{ padding: "10px 0", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
+                          <span style={{ fontSize: 12, fontWeight: 700, color: r.c }}>{r.l}{r.note ? <span style={{ fontSize: 9, color: "rgba(255,255,255,0.3)", marginLeft: 4 }}>additional</span> : ""}</span>
+                          <span style={{ fontSize: 13, fontFamily: "monospace", fontWeight: 700, color: r.c }}>{r.v}</span>
+                        </div>
+                        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>{r.sub}</div>
                       </div>
                     ))}
                   </div>
