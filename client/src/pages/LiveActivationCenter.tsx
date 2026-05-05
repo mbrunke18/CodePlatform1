@@ -1134,7 +1134,6 @@ export default function LiveActivationCenter() {
                     <Badge className={cn("text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 border-0", warRoomAccent.bg, warRoomAccent.text)}>
                       {getCategoryDisplayName(activePlaybook?.category)} ACTIVE
                     </Badge>
-                    <span className="text-white/40 text-xs font-mono">ID: {activationId}</span>
                   </div>
                   <h1 style={CG} className="text-4xl font-bold text-white leading-none">{activePlaybook?.name}</h1>
                 </div>
