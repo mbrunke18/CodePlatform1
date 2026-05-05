@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 4, 2026 (rev 28) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 5, 2026 (rev 29) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -14,7 +14,7 @@
 - **170 active playbooks** across 9 domains
 - **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
-- **Enterprise B2B only** — primary CTA is "Request Pilot" → `/pilot-program`. **Three access paths exist** (see Section 5): (1) Request Access `/request-access` — magic link via Resend, no password; (2) Trial Access `/trial-access` — 48-hour full platform; (3) Demo Access `/demo-access` — token-based controlled access. There is no public "Start Free Trial" button on marketing pages — access is gated.
+- **Enterprise B2B only** — primary CTA is "Request Founding Partner Access" → `/request-access`. **Three access paths exist** (see Section 5): (1) Request Access `/request-access` — magic link via Resend, no password; (2) Trial Access `/trial-access` — 48-hour full platform; (3) Demo Access `/demo-access` — token-based controlled access. There is no public "Start Free Trial" button on marketing pages — access is gated.
 - **Executive authority preserved** — No playbook activates without executive authorization. AI monitors, scores signals, and recommends the right playbook. Executives decide. The decision is the same; the mobilization cycle surrounding it is compressed from 30 days to 12 minutes. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
 
 **Signal Vocabulary — Three Different Numbers, Three Different Layers (do not conflate):**
@@ -607,8 +607,8 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
   2. **Experience** — Try It Now (Live Demo `/try-demo`, 12-Min Test Drive `/test-drive`, Industry Scenarios `/industry-demos`) · Go Deeper (Shadow Simulator, By Role, Strategic Analyzer, Executive Brief `/executive-brief`)
   3. **Evidence** — Why Execution OS (featured, `/why-execution-os`), Executive Brief (featured, `/executive-brief`), Research, ROI Calc, Pricing
   4. **Investors** — Resources, Thesis, Deck, Briefings, Founder Story
-- Unauthenticated CTAs (right): "Request Access" (outline, → /request-access), "Request a Pilot" (gold, → /pilot-program), "Sign In" (ghost)
-- Authenticated CTAs: same plus "Open Platform" (teal, → /mission-control), user name dropdown (Settings, Organization Setup, Sign Out)
+- Unauthenticated CTAs (right): "Request Founding Partner Access" (gold, → /request-access), "Sign In" (ghost)
+- Authenticated CTAs: user avatar/initials dropdown (Settings, Organization Setup, Sign Out) — no "Request Founding Partner Access" shown to signed-in users
 - **Rule:** No user should ever need to type a URL — every page must be reachable through the UI (nav or footer)
 - **Route conflict history:** `/why-execution-os` previously had a shadow route serving the old `WhyExecuteIQ` component (line 418 in App.tsx, removed). The legacy page now lives at `/why-execution-os-legacy`. Only `WhyExecutionOS.tsx` should ever serve `/why-execution-os`.
 
@@ -629,8 +629,8 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 ### Homepage Nav (SEPARATE from StandardNav)
 - `Homepage.tsx` has its **own sticky nav bar** that is completely separate from `StandardNav`. It is NOT a `PageLayout` page — it manages its own header.
 - Desktop links (flat, no dropdowns): **How It Works** → `/how-it-works` · **The Platform** → `/platform-overview` · **Experience** → `/industry-demos` · **Why Execution OS** → `/why-execution-os` · **Investors** → `/investors`
-- CTA buttons (right): "Request Access" (outline, → /request-access) + "Request a Pilot" (gold, → /pilot-program)
-- Mobile hamburger menu: same five links, rendered as `<Link>` components (not `<button>` with `onClick`)
+- CTA button (right): "Request Founding Partner Access" (gold, → /request-access)
+- Mobile hamburger menu: same links, rendered as `<Link>` components (not `<button>` with `onClick`)
 - **CRITICAL:** "How It Works" MUST use `<Link href="/how-it-works">` — never `onClick={() => scrollTo("how-it-works")}` or `scrollIntoView`. The `#how-it-works` anchor exists on the homepage but the nav link goes to the standalone page.
 - **CRITICAL:** Do NOT merge HomepageNav into StandardNav or PageLayout. They are intentionally separate components.
 - **"The Manifesto" link (April 10, 2026 — LOCKED):** "The Manifesto" is a nav item in `HomepageNav` (both desktop and mobile). Desktop: italic Cormorant Garamond, routes to `/founder-story`. Mobile: gold color. It sits alongside the standard nav links and signals the editorial/personal nature of the Founder Story. Do NOT remove it or move it to a dropdown. The Homepage founder quote block also links to `/founder-story` with the text: *"Why this company exists — and why it's named what it is →"* — this is the mid-funnel discovery path (after product hook).
@@ -2044,15 +2044,16 @@ The following phrase changes were applied globally across 7 files as part of thi
 
 ### Structure
 
-**4 Scenario Selectors** (tabs above the chain):
+**5 Scenario Selectors** (tabs above the chain — 4 single-domain + 1 compound):
 | ID | Label | Trigger |
 |---|---|---|
 | `ransomware` | Ransomware Attack | 23 servers encrypted — 3 AM detection |
 | `activist` | Activist Investor | 9.8% stake disclosed — board seat demanded |
 | `supply` | Supply Chain Collapse | Primary supplier declares force majeure |
 | `regulatory` | Regulatory Inquiry | DOJ investigation opened — disclosure required |
+| `compound` | Activist + Regulatory (Compound) | Simultaneous activist filing and regulatory probe — 2 Readiness Protocols activated |
 
-Each scenario drives the chain step content dynamically — protocol name, stakeholders, budget, risk score, and outcome are all scenario-specific.
+The compound scenario uses TEAL as its active state color and displays "2 Readiness Protocols activated simultaneously" in the chain steps. Each scenario drives the chain step content dynamically — protocol name, stakeholders, budget, risk score, and outcome are all scenario-specific.
 
 **6-Step IDEA Execution Chain** (animated, auto-plays on load, replays on scenario switch):
 | Step | Time | Label |
@@ -2319,9 +2320,9 @@ Two animated text slideshow components with TTS narration (not real video files)
 
 ---
 
-## 52. Codebase Scale Reference — May 2026 (rev 28)
+## 52. Codebase Scale Reference — May 2026 (rev 29)
 
-Current production counts as of May 4, 2026:
+Current production counts as of May 5, 2026 (unchanged from rev 28 — no new pages or routes added this session):
 
 | Artifact | Count |
 |---|---|
@@ -2335,5 +2336,73 @@ Current production counts as of May 4, 2026:
 | Signal data points | **248+** |
 | RSS feed sources (live signal pipeline) | **8** |
 | Ingestion interval | **15 minutes** |
+| Unit tests (vitest) | **189 passing** |
 
 **Note on route count:** `App.tsx` uses a `renderRoutes()` helper that registers multiple path aliases for a single component. The 215+ count includes all aliases. The distinct page components number 208.
+
+---
+
+## 53. Trigger Email → Protocol Pipeline Fix (May 2026, rev 29)
+
+**Context:** When a live signal is detected and an email notification is sent, the email contains a link with query parameters pointing the recipient directly to the correct Readiness Protocol inside the Live Activation Center. Prior to this fix, the activation staging screen and war room sometimes showed a generic/incorrect protocol name because the URL parameters were not being read or passed through correctly.
+
+### Files Changed
+
+| File | Change |
+|---|---|
+| `client/src/pages/CommandTower.tsx` | ACTIVATE button now appends `?playbookName=<protocolName>&domain=<domain>` to the `/live-activation` URL |
+| `client/src/pages/LiveActivationCenter.tsx` | `beginActivation()` accepts a `protocolOverride` parameter; reads `?playbookName=` from URL on mount and passes it through to staging and war room |
+| `client/src/pages/LiveActivationCenter.tsx` | War room always shows correct protocol name — uses `urlPlaybookName` as fallback when DB load is in progress or returns a different default |
+| `client/src/pages/LiveActivationCenter.tsx` | 3-second timeout fallback prevents the staging screen from getting stuck if the DB load hangs |
+| `client/src/components/LiveDetectionFeed.tsx` | Highlights the specific trigger from the email URL param so the operator immediately sees the relevant signal |
+
+### How the Pipeline Works (post-fix)
+
+```
+Signal detected (RSS ingestion / manual)
+  ↓
+Email sent via Resend with link:
+  /live-activation?playbookName=<Protocol+Name>&domain=<domain>
+  ↓
+LiveActivationCenter mounts, reads useSearch() params
+  ↓
+beginActivation(protocolOverride) called with the URL param value
+  ↓
+Staging screen shows correct protocol name immediately (no DB round-trip needed)
+  ↓
+War room continues showing urlPlaybookName as display label
+  ↓
+DB load completes in background, merges task list
+```
+
+### Invariants to Preserve
+
+- **Always pass `?playbookName=` in the email link** — the activation center falls back gracefully to the first available playbook if the param is absent, but the experience degrades (generic protocol name shown).
+- **`protocolOverride` is a display-level override** — it does not skip DB validation. The actual task list is always loaded from the database. The override only affects the protocol name displayed during staging.
+- **3-second timeout is a safety net** — if DB load succeeds in under 3 seconds (normal case), the timeout is cancelled. Only fires on network issues or slow DB response.
+- **Do not remove the `urlPlaybookName` fallback** in the war room — without it, a DB record with a different default protocol name will overwrite the operator's intent.
+
+---
+
+## 54. Investors.tsx Messaging Corrections (May 2026, rev 29)
+
+**Context:** Two legacy "Pilot" references were found in `client/src/pages/Investors.tsx` and corrected to align with the locked Founding Partner Program language.
+
+| Location | Old Text | New Text |
+|---|---|---|
+| Line 331 — market stats block | "Pilot Contracts" | "Founding Partner Contracts" |
+| Line 809 — program terms list | "Pilots run in 30 days" | "Founding Partner validation runs in 90 days" |
+
+**Note:** The phrase "Still Piloting" that appears in the McKinsey/BCG market-stat context on this page is **intentional** — it describes the industry's behavior (65% of Fortune 1000 companies are still piloting AI point solutions), not VaughnMartin's program. Do not change it.
+
+### Production Audit Result (May 2026, rev 29)
+
+Full static audit of all page groups TA–TK (170+ component files) completed. **Zero terminology violations found** across the following rule sets:
+- "AI-powered / AI-driven / AI-generated / AI-detected" (RETIRED)
+- "GPT-4o" in end-user copy (RETIRED)
+- "Pilot Program / Pilot Access / Now in Pilot" as program labels (RETIRED)
+- "340×" / "360×" / "72 hours" execution metrics (RETIRED)
+- "Offense / Defense / Special Teams" as domain labels (RETIRED)
+- "human-AI partnership" (RETIRED)
+
+Build status: `npm run build` — clean pass (no errors). Unit tests: 189/189 passing.
