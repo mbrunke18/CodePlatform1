@@ -103,6 +103,97 @@ function SectionMarker({ n }: { n: string }) {
   );
 }
 
+// ─── Sticky in-page jump nav ─────────────────────────────────────────────────
+const HP_NAV_ITEMS = [
+  { id: 'hp-hero',        label: 'Overview'         },
+  { id: 'hp-problem',     label: 'The Problem'      },
+  { id: 'contrast-moment',label: '30 Days → 12 Min' },
+  { id: 'hp-anatomy',     label: 'How It Works'     },
+  { id: 'hp-platform',    label: 'Platform'         },
+  { id: 'hp-proof',       label: 'Proof'            },
+  { id: 'hp-cta',         label: 'Get Access'       },
+];
+
+function StickyJumpNav() {
+  const [active, setActive] = useState('hp-hero');
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    HP_NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { rootMargin: '0px 0px -75% 0px', threshold: 0 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      observers.forEach(o => o.disconnect());
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
+    <div
+      className="hp-jump-nav"
+      style={{
+        position: 'fixed', right: 22, top: '50%', transform: 'translateY(-50%)',
+        zIndex: 900, display: 'flex', flexDirection: 'column', gap: 14,
+        opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none',
+        transition: 'opacity 0.4s ease',
+      }}
+    >
+      {HP_NAV_ITEMS.map(({ id, label }) => {
+        const isActive = active === id;
+        return (
+          <button
+            key={id}
+            onClick={() => scrollTo(id)}
+            className="hp-jump-btn"
+            style={{
+              all: 'unset', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 10,
+            }}
+          >
+            <span
+              className="hp-jump-label"
+              style={{
+                ...DM, fontSize: 9, fontWeight: 700, letterSpacing: '0.12em',
+                textTransform: 'uppercase', whiteSpace: 'nowrap',
+                color: isActive ? GOLD : 'rgba(255,255,255,0.5)',
+                opacity: 0, transition: 'opacity 0.2s ease',
+                textShadow: '0 1px 4px rgba(0,0,0,0.6)',
+              }}
+            >
+              {label}
+            </span>
+            <div style={{
+              width: isActive ? 9 : 5, height: isActive ? 9 : 5,
+              borderRadius: '50%', flexShrink: 0,
+              background: isActive ? GOLD : 'rgba(255,255,255,0.3)',
+              border: `1px solid ${isActive ? GOLD : 'rgba(255,255,255,0.18)'}`,
+              boxShadow: isActive ? `0 0 6px ${GOLD}88` : 'none',
+              transition: 'all 0.25s ease',
+            }} />
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── Live context hook ────────────────────────────────────────────────────────
 interface LiveSignal {
   id: number;
@@ -437,6 +528,9 @@ function HomepageNav() {
           .hp-hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
           .hp-chain-diagram { display: none !important; }
         }
+        .hp-jump-btn:hover .hp-jump-label { opacity: 1 !important; }
+        .hp-jump-btn:hover > div { background: ${GOLD} !important; border-color: ${GOLD} !important; }
+        @media (max-width: 1024px) { .hp-jump-nav { display: none !important; } }
         @media (max-width: 768px) {
           .hp-desktop-nav    { display: none !important; }
           .hp-hamburger      { display: flex !important; }
@@ -583,7 +677,7 @@ function HeroSection() {
     : FALLBACK_SIGNALS.slice(0, 3);
 
   return (
-    <section style={{ ...SECTION_DARK_BG, position: "relative", overflow: "hidden" }}>
+    <section id="hp-hero" style={{ ...SECTION_DARK_BG, position: "relative", overflow: "hidden" }}>
       {/* Photography — editorial office floor, dark overlay preserves readability */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 0,
@@ -787,7 +881,7 @@ function ScenarioCardsRow() {
 // ─── ANATOMY OF A READINESS PROTOCOL ─────────────────────────────────────────
 function AnatomySection() {
   return (
-    <section style={{ background: "#0d1a3e", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "88px 0" }}>
+    <section id="hp-anatomy" style={{ background: "#0d1a3e", borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "88px 0" }}>
       <div style={{ ...CONTAINER }}>
 
         {/* Header row */}
@@ -852,7 +946,7 @@ function AnatomySection() {
 // ─── SECTION 6b: Platform Architecture ──────────────────────────────────────
 function PlatformArchitectureSection() {
   return (
-    <section style={{ background: "#F8F7F4", padding: "96px 0", position: "relative", borderTop: "1px solid #E8E4DC" }}>
+    <section id="hp-platform" style={{ background: "#F8F7F4", padding: "96px 0", position: "relative", borderTop: "1px solid #E8E4DC" }}>
       <div style={{ ...CONTAINER }}>
 
         <Reveal>
@@ -1004,7 +1098,7 @@ function ProblemSection() {
   ];
 
   return (
-    <section className="hp-sec" style={{ background: IVORY, padding: "100px 0", position: "relative" }}>
+    <section id="hp-problem" className="hp-sec" style={{ background: IVORY, padding: "100px 0", position: "relative" }}>
       <SectionMarker n="02" />
       <div style={{ ...CONTAINER }}>
         <div className="hp-prob-grid" style={{ display: "flex", gap: 60, alignItems: "flex-start" }}>
@@ -1870,7 +1964,7 @@ function CredibilitySection() {
     { stat: "94%",    label: "Readiness Protocol phases completed within target window" },
   ];
   return (
-    <section style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
+    <section id="hp-proof" style={{ background: MID_NAVY, padding: "96px 0 80px", position: "relative", overflow: "hidden" }}>
       <SectionMarker n="07" />
       {/* Subtle grid overlay */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "48px 48px", pointerEvents: "none" }} />
@@ -2019,7 +2113,7 @@ function CredibilitySection() {
 // ─── SECTION 8: Primary CTA ───────────────────────────────────────────────────
 function CTASection() {
   return (
-    <section className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
+    <section id="hp-cta" className="hp-sec" style={{ ...SECTION_DARK_BG, padding: "120px 0", position: "relative" }}>
       <SectionMarker n="08" />
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
         <Reveal>
@@ -2572,6 +2666,7 @@ export default function Homepage() {
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>
       <HomepageNav />
       <GuestPreviewBanner />
+      <StickyJumpNav />
 
       {/* 1. CLAIM */}
       <HeroSection />
