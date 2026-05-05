@@ -544,17 +544,27 @@ export default function LiveActivationCenter() {
     setSelectedPlaybook(resolved);
   }, [search, location]);
 
-  // Fetch the exact protocol from the full 170-protocol library when arriving via email link
-  const { data: emailProtocolData } = useQuery({
+  // Fetch the exact protocol from the full 170-protocol library when arriving via email/trigger link
+  const { data: emailProtocolData, isError: protocolLoadError, isFetching: protocolFetching } = useQuery({
     queryKey: ['/api/playbook-library/search', urlPlaybookName],
     enabled: !!urlPlaybookName,
-    retry: false,
+    retry: 1,
     staleTime: 300000,
     queryFn: async () => {
-      const res = await apiRequest('GET', `/api/playbook-library/search?name=${encodeURIComponent(urlPlaybookName || '')}`);
+      const res = await fetch(`/api/playbook-library/search?name=${encodeURIComponent(urlPlaybookName || '')}`);
+      if (!res.ok) return null;
       return res.json();
     },
   });
+
+  // Fallback: if protocol load fails or takes >3 s, proceed without DB data
+  // (name still shows from urlPlaybookName fallback in activePlaybook).
+  const [protocolLoadTimedOut, setProtocolLoadTimedOut] = useState(false);
+  useEffect(() => {
+    if (!urlPlaybookName || triggerAutoStartRef.current) return;
+    const t = setTimeout(() => setProtocolLoadTimedOut(true), 3000);
+    return () => clearTimeout(t);
+  }, [urlPlaybookName]);
 
   // Build a PlaybookDef from the DB protocol so any of the 170 protocols renders correctly
   const emailLinkedProtocol = useMemo<PlaybookDef | null>(() => {
@@ -675,7 +685,9 @@ export default function LiveActivationCenter() {
     enqueueInsight(INSIGHTS.executionComplete());
   }, [addActivity, enqueueInsight]);
 
-  const beginActivation = useCallback((id: string) => {
+  // protocolOverride: pass the fully-loaded DB protocol directly so beginActivation
+  // never has to depend on async state. Used by the trigger/email auto-start path.
+  const beginActivation = useCallback((id: string, protocolOverride?: any) => {
     enqueueInsight(INSIGHTS.playbookActivated(selectedPlaybook));
     setActivationId(id);
     setActivationState('IN_PROGRESS');
@@ -685,27 +697,28 @@ export default function LiveActivationCenter() {
     setLiveDispatchResults(null);
     startTimeRef.current = Date.now() - DEMO_PRESEED_SECONDS * 1000;
 
-    const playbookKey = selectedPlaybook;
-    const isEmailProtocol = playbookKey.startsWith('email:');
-    const simKey = isEmailProtocol ? playbookKey.slice(6) : playbookKey;
+    // Resolve which protocol data to use — explicit override beats everything else
+    const proto: any = protocolOverride ?? (emailProtocolData as any) ?? null;
+    const playbookKey = proto
+      ? `email:${resolveSimKey(proto.strategicCategory || 'defense', proto.domainName || '')}`
+      : selectedPlaybook;
+    const simKey = playbookKey.startsWith('email:') ? playbookKey.slice(6) : playbookKey;
     const industryStakeholders = industryOverlay?.stakeholders?.[simKey];
     const industryTasks = industryOverlay?.tasks?.[simKey];
 
-    // Priority 1: Use the protocol's own tier1/tier2 stakeholders and enrichedPhases.
-    // These are defined on the protocol itself — not by domain name — and represent
-    // the actual thresholds and roles the protocol specifies for this situation.
-    const proto = isEmailProtocol ? (emailProtocolData as any) : null;
+    // Priority 1: protocol's own tier1/tier2 stakeholders and enrichedPhases (always used
+    // when a real protocol is in scope — never falls back to generic simKey data).
     const protoTier1: string[] = proto?.tier1Stakeholders || [];
     const protoTier2: string[] = proto?.tier2Stakeholders || [];
     const protoPhases: any[] = proto?.enrichedPhases || [];
 
     const rawStakeholders: Stakeholder[] =
-      (isEmailProtocol && protoTier1.length > 0)
+      protoTier1.length > 0
         ? buildStakeholdersFromProtocol(protoTier1, protoTier2)
         : (industryStakeholders || DEFAULT_STAKEHOLDERS[simKey] || DEFAULT_STAKEHOLDERS['ma-day1']);
 
     const rawTasks: Task[] =
-      (isEmailProtocol && protoPhases.length > 0)
+      protoPhases.length > 0
         ? buildTasksFromProtocol(protoPhases)
         : (industryTasks || DEFAULT_TASKS[simKey] || DEFAULT_TASKS['ma-day1']);
 
@@ -908,13 +921,52 @@ export default function LiveActivationCenter() {
     };
   }, []);
 
+  // Path A — trigger/email link: fire when protocol loads OR on timeout/error fallback.
+  // Passes emailProtocolData directly so beginActivation always gets the real data.
+  const triggerAutoStartRef = useRef(false);
+  useEffect(() => {
+    if (!urlPlaybookName || triggerAutoStartRef.current) return;
+    // Fire as soon as we have data, OR fall back if query failed/timed out
+    const hasData = !!emailLinkedProtocol;
+    const shouldFallback = protocolLoadError || protocolLoadTimedOut;
+    if (!hasData && !shouldFallback) return;
+    triggerAutoStartRef.current = true;
+    beginActivation(`activation-${Date.now()}`, emailProtocolData as any ?? null);
+  }, [urlPlaybookName, emailLinkedProtocol, emailProtocolData, protocolLoadError, protocolLoadTimedOut, beginActivation]);
+
+  // Path B — generic demo (no trigger in URL): fire immediately as before.
   const autoStartRef = useRef(false);
   useEffect(() => {
+    if (urlPlaybookName) return; // handled by Path A above
     if (!autoStartRef.current) {
       autoStartRef.current = true;
       beginActivation(`demo-${Date.now()}`);
     }
-  }, [beginActivation]);
+  }, [beginActivation, urlPlaybookName]);
+
+  // While waiting for the trigger-linked protocol to load from DB, show a clean
+  // staging screen instead of the generic selection card.
+  if (!activationId && urlPlaybookName) {
+    return (
+      <PageLayout>
+        <div style={{ background: '#0A0F2E', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ textAlign: 'center', maxWidth: 520, padding: '0 24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginBottom: 32 }}>
+              <div style={{ width: 36, height: 36, border: `3px solid #C9A84C`, borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+            </div>
+            <div style={{ color: '#C9A84C', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 16 }}>Staging Readiness Protocol</div>
+            <div style={{ color: '#fff', fontSize: 26, fontWeight: 800, marginBottom: 10, letterSpacing: '-0.01em' }}>
+              {urlPlaybookName}
+            </div>
+            <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: 14, lineHeight: 1.6 }}>
+              Loading protocol — roles, tasks, and stakeholders staging now.
+            </div>
+          </div>
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      </PageLayout>
+    );
+  }
 
   if (!activationId) {
     return (

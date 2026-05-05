@@ -296,7 +296,7 @@ function DetectionCard({ d, index }: { d: Detection; index: number }) {
       ) : (
         <div style={{ display: 'flex', gap: 8 }}>
           <a
-            href="/live-activation-center"
+            href={`/live-activation-center?playbookName=${encodeURIComponent(d.recommendedPlaybook)}&domain=${encodeURIComponent(d.triggerDomain)}`}
             style={{
               flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
               background: GOLD, color: NAVY,
