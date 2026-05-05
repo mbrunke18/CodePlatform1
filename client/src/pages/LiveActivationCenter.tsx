@@ -575,18 +575,35 @@ export default function LiveActivationCenter() {
     };
   }, [urlPlaybookName, emailProtocolData]);
 
-  // When the email-linked protocol loads, auto-select it
+  // When the email-linked protocol loads, update the selected playbook key
   useEffect(() => {
     if (emailLinkedProtocol && !activationId) {
       setSelectedPlaybook(emailLinkedProtocol.key);
     }
   }, [emailLinkedProtocol, activationId]);
 
-  // activePlaybook: check both the 4 defaults and the injected email-linked protocol
+  // activePlaybook resolution:
+  // 1. Fully-loaded email-linked protocol (best)
+  // 2. One of the 4 curated demo scenarios
+  // 3. Name-only placeholder built from the URL param so the war room header
+  //    always shows the correct protocol name even before the DB query returns
   const activePlaybook = useMemo(() => {
     if (emailLinkedProtocol && selectedPlaybook === emailLinkedProtocol.key) return emailLinkedProtocol;
-    return DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook) ?? null;
-  }, [selectedPlaybook, emailLinkedProtocol]);
+    const found = DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook);
+    if (found) return found;
+    if (urlPlaybookName) return {
+      key: selectedPlaybook,
+      name: urlPlaybookName,
+      category: 'DEFENSE' as PlaybookDef['category'],
+      description: `${urlPlaybookName} — readiness protocol staged for immediate execution.`,
+      icon: 'shield' as PlaybookDef['icon'],
+      stakeholderCount: 10,
+      taskCount: 12,
+      duration: '12 min to live execution',
+      color: 'navy' as PlaybookDef['color'],
+    };
+    return null;
+  }, [selectedPlaybook, emailLinkedProtocol, urlPlaybookName]);
 
   const { data: orgData } = useQuery({
     queryKey: ['/api/organizations'],
@@ -891,17 +908,13 @@ export default function LiveActivationCenter() {
     };
   }, []);
 
-  // Only auto-start the demo when there is no email-linked protocol in the URL.
-  // If the user arrived via a trigger email (playbookName param present), show
-  // the selection card so they can review and authorize the correct protocol.
   const autoStartRef = useRef(false);
   useEffect(() => {
-    if (urlPlaybookName) return; // email link — wait for explicit authorization
     if (!autoStartRef.current) {
       autoStartRef.current = true;
       beginActivation(`demo-${Date.now()}`);
     }
-  }, [beginActivation, urlPlaybookName]);
+  }, [beginActivation]);
 
   if (!activationId) {
     return (
