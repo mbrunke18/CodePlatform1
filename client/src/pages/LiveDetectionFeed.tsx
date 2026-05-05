@@ -46,6 +46,7 @@ interface Detection {
   signalSourceUrl?: string;
   confidenceScore: number;
   recommendedPlaybook: string;
+  alternatePlaybooks?: string[];
   status: string;
   notificationSent: boolean;
   detectedAt: string;
@@ -86,8 +87,11 @@ export default function LiveDetectionFeed() {
   const [showAddContact, setShowAddContact] = useState(false);
   const [newContact, setNewContact] = useState({ role: '', name: '', email: '', slackChannel: '' });
 
-  // Read ?trigger= from email link to highlight the specific detection
-  const urlTriggerName = new URLSearchParams(window.location.search).get('trigger') || '';
+  // Read email link params — trigger name + optional playbook/domain for fallback display
+  const _urlParams = new URLSearchParams(window.location.search);
+  const urlTriggerName = _urlParams.get('trigger') || '';
+  const urlPlaybookName = _urlParams.get('playbook') || '';
+  const urlDomain = _urlParams.get('domain') || '';
   const highlightRef = useRef<HTMLDivElement | null>(null);
 
   // Real-time WebSocket listener — refreshes feed the instant a detection fires
@@ -232,6 +236,7 @@ export default function LiveDetectionFeed() {
 
           {/* Email link: show the real detection that fired */}
           {emailDetection ? (
+            /* ── Real DB detection found ───────────────────────────────── */
             <div style={{ marginBottom: 36 }}>
               <div style={{ marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{ width: 8, height: 8, background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
@@ -259,7 +264,7 @@ export default function LiveDetectionFeed() {
                     <span style={{ color: '#666', fontSize: 12 }}>Detected: <strong>{timeAgo(emailDetection.detectedAt)}</strong></span>
                   </div>
                   {emailDetection.recommendedPlaybook && (
-                    <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '12px 14px' }}>
+                    <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '12px 14px', marginBottom: 16 }}>
                       <div style={{ marginBottom: emailDetection.alternatePlaybooks?.length ? 10 : 0 }}>
                         <span style={{ color: '#888', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Primary Readiness Protocol</span>
                         <div style={{ color: NAVY, fontSize: 13, fontWeight: 700, marginTop: 4 }}>{emailDetection.recommendedPlaybook}</div>
@@ -276,19 +281,59 @@ export default function LiveDetectionFeed() {
                       )}
                     </div>
                   )}
+                  <a
+                    href={`/live-activation-center?playbookName=${encodeURIComponent(emailDetection.recommendedPlaybook)}&domain=${encodeURIComponent(emailDetection.triggerDomain)}`}
+                    style={{ display: 'inline-block', background: GOLD, color: NAVY, padding: '12px 28px', fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}
+                  >
+                    Activate: {emailDetection.recommendedPlaybook} →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ) : urlTriggerName ? (
+            /* ── Came from email but detection not yet in DB — use URL params ── */
+            <div style={{ marginBottom: 36 }}>
+              <div style={{ marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 8, height: 8, background: '#22C55E', boxShadow: '0 0 8px #22C55E' }} />
+                <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Detection That Triggered Your Alert</span>
+              </div>
+              <div style={{ background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '6px 16px' }}>
+                ▼ Live detection — received from your alert email
+              </div>
+              <div style={{ background: '#fff', border: `2px solid ${GOLD}`, boxShadow: `0 0 0 3px ${GOLD}33`, borderTop: 'none' }}>
+                <div style={{ height: 4, background: GOLD }} />
+                <div style={{ padding: '20px 24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+                    <AlertTriangle size={15} style={{ color: GOLD, flexShrink: 0 }} />
+                    <span style={{ color: NAVY, fontSize: 16, fontWeight: 700 }}>{urlTriggerName}</span>
+                    {urlDomain && <span style={{ background: '#0A0F2E10', color: NAVY, fontSize: 11, fontWeight: 600, padding: '2px 8px' }}>{urlDomain}</span>}
+                  </div>
+                  {urlPlaybookName && (
+                    <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '12px 14px', marginBottom: 16 }}>
+                      <span style={{ color: '#888', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Readiness Protocol Staged</span>
+                      <div style={{ color: NAVY, fontSize: 13, fontWeight: 700, marginTop: 4 }}>{urlPlaybookName}</div>
+                    </div>
+                  )}
+                  <a
+                    href={`/live-activation-center?playbookName=${encodeURIComponent(urlPlaybookName || urlTriggerName)}&domain=${encodeURIComponent(urlDomain)}`}
+                    style={{ display: 'inline-block', background: GOLD, color: NAVY, padding: '12px 28px', fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}
+                  >
+                    {urlPlaybookName ? `Activate: ${urlPlaybookName} →` : 'Review & Activate Protocol →'}
+                  </a>
                 </div>
               </div>
             </div>
           ) : (
+            /* ── General visitor — blurred preview ─────────────────────── */
             <div>
               <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Shield size={16} color={NAVY} />
                 <span style={{ fontSize: 13, fontWeight: 700, color: NAVY, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Live Feed Preview</span>
               </div>
               {[
-                { trigger: 'AI Competitive Disruption', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'AI Competitive Response Protocol' },
-                { trigger: 'Aggressive Pricing Disruption', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Pricing Defense Readiness Protocol' },
-                { trigger: 'Geopolitical Supply Chain Risk', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Supply Chain Resilience Protocol' },
+                { trigger: 'Competitive Market Entry Detected', source: 'SEC EDGAR', confidence: 87, time: '3m ago', critical: true, playbook: 'Competitive Threat Response' },
+                { trigger: 'Supply Chain Disruption Signal', source: 'CNBC Markets', confidence: 79, time: '41m ago', critical: false, playbook: 'Supply Chain Disruption Protocol' },
+                { trigger: 'Geopolitical Risk Escalation', source: 'BBC World News', confidence: 74, time: '2h ago', critical: false, playbook: 'Geopolitical Risk Response' },
               ].map((item, i) => (
                 <div key={i} style={{
                   background: '#fff', border: `1px solid ${item.critical ? 'rgba(192,57,43,0.2)' : '#E8E4DC'}`,
