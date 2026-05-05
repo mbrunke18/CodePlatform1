@@ -14,7 +14,7 @@ export default function Footer() {
     {
       title: "IDENTIFY",
       links: [
-        { label: "Playbook Library — 170", path: "/playbooks" },
+        { label: "Protocol Library — 170", path: "/playbook-library" },
         { label: "Situations Hub", path: "/situations-hub" },
         { label: "Strategic Readiness Report", path: "/preparedness-report" },
         { label: "Board Briefings", path: "/board-briefings" },
