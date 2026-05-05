@@ -72,6 +72,7 @@ import {
   tasks,
   playbookActivations,
   activationOutcomes,
+  activationTasks,
   taskAcknowledgments,
   intelligenceReports,
   compoundThreatAlerts,
@@ -7925,27 +7926,161 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
     }
   });
 
-  // Recent activations alias — used by Dashboard (last 5)
+  // Recent activations — org-scoped, used by Dashboard (last 5)
   app.get('/api/playbook-activations/recent', async (req: any, res) => {
     try {
-      const result = await db.select({
+      const userId = getUserId(req);
+      const orgId = userId ? await getOrgIdForUser(userId) : null;
+      const whereClause = orgId ? eq(playbookActivations.organizationId, orgId) : sql`1=1`;
+
+      const rows = await db.select({
         id: playbookActivations.id,
         playbookId: playbookActivations.playbookId,
         activationReason: playbookActivations.activationReason,
         successRating: playbookActivations.successRating,
         activatedAt: playbookActivations.activatedAt,
+        completedAt: playbookActivations.completedAt,
         playbookName: playbookLibrary.name,
         domainName: playbookDomains.name,
       })
       .from(playbookActivations)
       .innerJoin(playbookLibrary, eq(playbookActivations.playbookId, playbookLibrary.id))
       .innerJoin(playbookDomains, eq(playbookLibrary.domainId, playbookDomains.id))
-      .orderBy(sql`${playbookActivations.activatedAt} DESC`)
+      .where(whereClause)
+      .orderBy(desc(playbookActivations.activatedAt))
       .limit(5);
+
+      // Map fields to what the Dashboard component expects
+      const result = rows.map(r => ({
+        ...r,
+        playbookDomain: r.domainName,
+        createdAt: r.activatedAt,
+        status: r.completedAt ? 'completed' : 'active',
+      }));
+
       res.json(result);
     } catch (error) {
       console.error('Error fetching recent activations:', error);
       res.status(500).json({ error: 'Failed to fetch recent activations' });
+    }
+  });
+
+  // Demo seeder — creates 4 realistic activations for a fresh org (idempotent)
+  app.post('/api/demo/seed-activations', isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = getUserId(req);
+      if (!userId) return res.status(401).json({ error: 'Not authenticated' });
+
+      const orgId = await getOrgIdForUser(userId);
+      if (!orgId) return res.json({ seeded: false, reason: 'no-org' });
+
+      // Idempotent — skip if org already has activations
+      const [existing] = await db.select({ count: count() })
+        .from(playbookActivations)
+        .where(eq(playbookActivations.organizationId, orgId));
+      if ((existing?.count ?? 0) > 0) return res.json({ seeded: false, reason: 'already-seeded' });
+
+      // Get one playbook from each of up to 4 domains for scenario variety
+      const domainRows = await db.selectDistinct({ domainId: playbookLibrary.domainId })
+        .from(playbookLibrary)
+        .where(eq(playbookLibrary.isActive, true))
+        .limit(4);
+
+      const pbIds: string[] = [];
+      for (const { domainId } of domainRows) {
+        const [pb] = await db.select({ id: playbookLibrary.id })
+          .from(playbookLibrary)
+          .where(and(eq(playbookLibrary.domainId, domainId), eq(playbookLibrary.isActive, true)))
+          .limit(1);
+        if (pb) pbIds.push(pb.id);
+      }
+      if (pbIds.length < 2) return res.json({ seeded: false, reason: 'insufficient-playbooks' });
+
+      const now = new Date();
+      const ago = (days: number) => new Date(now.getTime() - days * 86_400_000);
+      const pid = (i: number) => pbIds[i % pbIds.length];
+
+      const scenarios: Array<{
+        playbookId: string; activationReason: string; situationSummary: string;
+        actualExecutionTime: number | null; targetMet: boolean | null; successRating: number | null;
+        activatedAt: Date; completedAt: Date | null;
+        tasks: Array<{ taskName: string; sequence: number; phase: string; ownerRole: string; status: string; estimatedMinutes: number }>;
+      }> = [
+        {
+          playbookId: pid(0),
+          activationReason: 'Ransomware detected on internal network — containment and recovery protocol activated',
+          situationSummary: 'System monitoring flagged anomalous encryption activity across three servers. IT security, legal, and executive teams mobilized in under 9 minutes. External forensics engaged. Containment confirmed within the hour.',
+          actualExecutionTime: 9, targetMet: true, successRating: 94,
+          activatedAt: ago(18), completedAt: ago(18),
+          tasks: [
+            { taskName: 'Isolate affected network segments', sequence: 1, phase: 'immediate', ownerRole: 'CISO', status: 'completed', estimatedMinutes: 3 },
+            { taskName: 'Engage external forensics firm', sequence: 2, phase: 'immediate', ownerRole: 'CTO', status: 'completed', estimatedMinutes: 5 },
+            { taskName: 'Notify board and legal counsel', sequence: 3, phase: 'immediate', ownerRole: 'CEO', status: 'completed', estimatedMinutes: 4 },
+            { taskName: 'Draft regulatory disclosure timeline', sequence: 4, phase: 'secondary', ownerRole: 'General Counsel', status: 'completed', estimatedMinutes: 30 },
+            { taskName: 'Customer and partner communication', sequence: 5, phase: 'follow-up', ownerRole: 'CMO', status: 'completed', estimatedMinutes: 60 },
+          ],
+        },
+        {
+          playbookId: pid(1),
+          activationReason: 'SEC formal inquiry received regarding Q3 disclosures — compliance response protocol activated',
+          situationSummary: 'Received SEC formal inquiry letter. Compliance, legal, and finance teams mobilized. All documentation staged and external counsel briefed within 11 minutes of detection.',
+          actualExecutionTime: 11, targetMet: true, successRating: 97,
+          activatedAt: ago(9), completedAt: ago(9),
+          tasks: [
+            { taskName: 'Engage external regulatory counsel', sequence: 1, phase: 'immediate', ownerRole: 'General Counsel', status: 'completed', estimatedMinutes: 5 },
+            { taskName: 'Assemble document preservation order', sequence: 2, phase: 'immediate', ownerRole: 'CFO', status: 'completed', estimatedMinutes: 6 },
+            { taskName: 'Board notification and legal hold', sequence: 3, phase: 'immediate', ownerRole: 'CEO', status: 'completed', estimatedMinutes: 4 },
+            { taskName: 'Prepare SEC response timeline', sequence: 4, phase: 'secondary', ownerRole: 'General Counsel', status: 'completed', estimatedMinutes: 45 },
+          ],
+        },
+        {
+          playbookId: pid(2),
+          activationReason: 'Competitor announced AI-integrated product launch — competitive positioning protocol activated',
+          situationSummary: 'Primary competitor announced an AI-integrated product targeting our core enterprise segment. Product, marketing, and sales teams mobilized. Counter-positioning strategy staged within 12 minutes.',
+          actualExecutionTime: 12, targetMet: true, successRating: 89,
+          activatedAt: ago(3), completedAt: ago(3),
+          tasks: [
+            { taskName: 'Competitive feature gap analysis', sequence: 1, phase: 'immediate', ownerRole: 'CPO', status: 'completed', estimatedMinutes: 5 },
+            { taskName: 'Customer retention brief to sales', sequence: 2, phase: 'immediate', ownerRole: 'CRO', status: 'completed', estimatedMinutes: 4 },
+            { taskName: 'Holding statement for media inquiries', sequence: 3, phase: 'immediate', ownerRole: 'CMO', status: 'completed', estimatedMinutes: 3 },
+            { taskName: 'Board briefing on competitive exposure', sequence: 4, phase: 'secondary', ownerRole: 'CEO', status: 'completed', estimatedMinutes: 20 },
+            { taskName: 'Accelerate product roadmap review', sequence: 5, phase: 'follow-up', ownerRole: 'CTO', status: 'completed', estimatedMinutes: 90 },
+          ],
+        },
+        {
+          playbookId: pid(3),
+          activationReason: 'Activist investor disclosed 5.8% stake via SEC 13D filing — investor relations protocol activated',
+          situationSummary: 'Signal detected: activist investor filed 13D with SEC disclosing 5.8% stake. Board preparation, investor relations, and legal response protocols staged. Executive briefing underway.',
+          actualExecutionTime: null, targetMet: null, successRating: null,
+          activatedAt: ago(0), completedAt: null,
+          tasks: [
+            { taskName: 'Board emergency session convened', sequence: 1, phase: 'immediate', ownerRole: 'Chairman', status: 'completed', estimatedMinutes: 5 },
+            { taskName: 'Engage investor relations firm', sequence: 2, phase: 'immediate', ownerRole: 'CFO', status: 'completed', estimatedMinutes: 4 },
+            { taskName: 'Prepare shareholder communication', sequence: 3, phase: 'immediate', ownerRole: 'CMO', status: 'in_progress', estimatedMinutes: 15 },
+            { taskName: 'Legal review of defensive options', sequence: 4, phase: 'secondary', ownerRole: 'General Counsel', status: 'pending', estimatedMinutes: 120 },
+            { taskName: 'Investor dialogue strategy', sequence: 5, phase: 'follow-up', ownerRole: 'CEO', status: 'pending', estimatedMinutes: 60 },
+          ],
+        },
+      ];
+
+      let seededCount = 0;
+      for (const scenario of scenarios) {
+        const { tasks, ...activationData } = scenario;
+        const [activation] = await db.insert(playbookActivations).values({
+          organizationId: orgId,
+          activatedBy: userId,
+          ...activationData,
+        }).returning();
+        if (activation?.id && tasks.length > 0) {
+          await db.insert(activationTasks).values(tasks.map(t => ({ activationId: activation.id, ...t })));
+        }
+        seededCount++;
+      }
+
+      return res.json({ seeded: true, count: seededCount });
+    } catch (error) {
+      console.error('Demo seed error:', error);
+      return res.status(500).json({ error: 'Seed failed' });
     }
   });
 

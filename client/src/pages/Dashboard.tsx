@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState, useRef } from "react";
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useAuth } from "@/hooks/useAuth";
 import PerspectiveSwitcher from "@/components/PerspectiveSwitcher";
 import { ThreePositionStrip } from "@/components/ValueGainCallout";
@@ -173,9 +174,25 @@ export default function Dashboard() {
     queryKey: ['/api/triggers'],
   });
 
-  const { data: recentActivations } = useQuery({
+  const seededRef = useRef(false);
+
+  const { data: recentActivations, isLoading: activationsLoading } = useQuery({
     queryKey: ['/api/playbook-activations/recent'],
   });
+
+  const { mutate: seedDemo } = useMutation({
+    mutationFn: () => apiRequest('POST', '/api/demo/seed-activations'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/playbook-activations/recent'] });
+    },
+  });
+
+  useEffect(() => {
+    if (!activationsLoading && user && Array.isArray(recentActivations) && recentActivations.length === 0 && !seededRef.current) {
+      seededRef.current = true;
+      seedDemo();
+    }
+  }, [activationsLoading, recentActivations, user]);
 
   const scoreValue = (preparednessScore as any)?.overall_score || 84;
   const triggerCount = Array.isArray(activeTriggers) ? activeTriggers.filter((t: any) => t.status === 'active').length : 12;
