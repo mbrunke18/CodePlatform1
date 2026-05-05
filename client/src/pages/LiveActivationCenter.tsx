@@ -891,13 +891,17 @@ export default function LiveActivationCenter() {
     };
   }, []);
 
+  // Only auto-start the demo when there is no email-linked protocol in the URL.
+  // If the user arrived via a trigger email (playbookName param present), show
+  // the selection card so they can review and authorize the correct protocol.
   const autoStartRef = useRef(false);
   useEffect(() => {
+    if (urlPlaybookName) return; // email link — wait for explicit authorization
     if (!autoStartRef.current) {
       autoStartRef.current = true;
       beginActivation(`demo-${Date.now()}`);
     }
-  }, [beginActivation]);
+  }, [beginActivation, urlPlaybookName]);
 
   if (!activationId) {
     return (
