@@ -533,7 +533,7 @@ export default function IDEAFramework() {
               {[
                 { icon: Clock, label: "12-Minute Target", desc: "From trigger detection to full organizational response" },
                 { icon: Shield, label: "Human Authority", desc: "Every Readiness Protocol activation requires executive authorization" },
-                { icon: Brain, label: "AI Execution", desc: "Tasks, notifications, documents, and budgets deployed instantly" },
+                { icon: Brain, label: "Pre-Staged Execution", desc: "Tasks, notifications, documents, and budgets deployed instantly" },
               ].map(({ icon: Icon, label, desc }) => (
                 <div key={label} className="rounded-none border border-white/10 bg-white/5 p-5">
                   <Icon className="h-5 w-5 mb-3" style={{ color: GOLD }} />

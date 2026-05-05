@@ -68,7 +68,7 @@ const PHASES = [
         detail: 'No Readiness Protocol activates without executive sign-off. The platform compresses the mobilization cycle, not the decision authority. The preparation eliminates improvisation under pressure; the human judgment that authorizes action remains exactly where it belongs.',
       },
       {
-        title: 'AI Execution Brief at Activation',
+        title: 'Execution Brief at Activation',
         detail: 'A structured pre-read generated at the moment of trigger detection — telling the authorizing executive what fired, why, what the Readiness Protocol deploys, who gets notified, and what they are approving. Decision-ready in under 2 minutes, not 2 hours.',
       },
       {
