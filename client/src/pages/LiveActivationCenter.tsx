@@ -292,15 +292,42 @@ function formatElapsed(seconds: number): string {
 
 // Resolves which demo playbook to show based on URL params —
 // called both at mount and whenever the URL changes.
+// Explicit lookup: maps exact trigger-pattern playbook names (lower-cased) to the best
+// matching DEFAULT_PLAYBOOK key. Checked before fuzzy domain matching so email
+// click-throughs always land on the correct simulation playbook.
+const PLAYBOOK_NAME_KEY_MAP: Record<string, string> = {
+  // Technology & Security
+  'cybersecurity breach response': 'ransomware',
+  'technology disruption response': 'ransomware',
+  'ransomware response': 'ransomware',
+  // Geopolitical, Supply Chain & Operations
+  'geopolitical risk response': 'geopolitical',
+  'supply chain disruption protocol': 'geopolitical',
+  'operational crisis response': 'geopolitical',
+  // M&A, Market Dynamics, Reputation
+  'm&a day 1 integration': 'ma-day1',
+  'm&a response prepared response': 'ma-day1',
+  'competitive threat response': 'ma-day1',
+  'investor communications protocol': 'ma-day1',
+  'reputational crisis protocol': 'ma-day1',
+  'executive leadership crisis': 'ma-day1',
+  'financial crisis response': 'ma-day1',
+  // Regulatory, Compliance, ESG, Governance
+  'regulatory compliance sprint': 'ai-governance',
+  'regulatory disclosure protocol': 'ai-governance',
+  'esg crisis response': 'ai-governance',
+  'ai governance framework': 'ai-governance',
+};
+
 const DOMAIN_PLAYBOOK_MAP: Array<{ keywords: string[]; key: string }> = [
-  // Geopolitical — must be first so it doesn't fall into generic risk/crisis buckets
-  { keywords: ['geopolit', 'geopolitical', 'tariff', 'tariffs', 'trade war', 'sanctions', 'iran', 'middle east', 'nato', 'diplomatic', 'military', 'embargo', 'export ban', 'export control', 'trade policy', 'trade restriction', 'trade deal', 'political instability', 'foreign policy', 'global tension', 'trump tariff', 'import dut', 'armed conflict', 'oil price', 'crude oil', 'ceasefire', 'peace talk', 'nuclear', 'weapons'], key: 'geopolitical' },
-  // Cybersecurity, operational crisis, financial distress, reputational, supply chain
-  { keywords: ['technology', 'security', 'cyber', 'ransomware', 'breach', 'malware', 'phishing', 'incident', 'attack', 'hack', 'supply chain', 'supply_chain', 'operational', 'crisis', 'reputational', 'financial distress', 'financial crisis', 'distress', 'disruption', 'risk', 'workforce', 'talent'], key: 'ransomware' },
-  // M&A, growth, executive, investor, competitive
-  { keywords: ['m&a', 'merger', 'acquisition', 'integration', 'deal', 'divestiture', 'restructur', 'leadership', 'succession', 'executive', 'transition', 'new market', 'expansion', 'growth', 'investor', 'competitive', 'competitor', 'market dynamic', 'brand', 'reputation'], key: 'ma-day1' },
-  // Regulatory, compliance, ESG, AI governance
-  { keywords: ['regulatory', 'compliance', 'governance', 'legal', 'litigation', 'audit', 'artificial', 'esg', 'climate', 'environment', 'policy', 'regulation', 'disclosure', 'sustainability'], key: 'ai-governance' },
+  // Geopolitical & Supply Chain — must be before generic crisis bucket
+  { keywords: ['geopolit', 'tariff', 'trade war', 'sanctions', 'embargo', 'export ban', 'export control', 'trade policy', 'trade restriction', 'political instability', 'foreign policy', 'global tension', 'armed conflict', 'oil price', 'crude oil', 'nuclear', 'supply chain', 'supply_chain', 'operational crisis', 'logistics'], key: 'geopolitical' },
+  // Cybersecurity & Technology
+  { keywords: ['security', 'cyber', 'ransomware', 'breach', 'malware', 'phishing', 'incident', 'attack', 'hack', 'technology & security'], key: 'ransomware' },
+  // M&A, Market, Financial, Executive, Reputation
+  { keywords: ['m&a', 'merger', 'acquisition', 'integration', 'deal', 'divestiture', 'restructur', 'leadership', 'succession', 'executive', 'transition', 'expansion', 'growth', 'investor', 'competitive', 'competitor', 'market dynamic', 'brand', 'reputation', 'financial crisis', 'financial distress', 'distress'], key: 'ma-day1' },
+  // Regulatory, Compliance, ESG, Governance
+  { keywords: ['regulatory', 'compliance', 'governance', 'legal', 'litigation', 'audit', 'esg', 'climate', 'environment', 'policy', 'regulation', 'disclosure', 'sustainability'], key: 'ai-governance' },
 ];
 
 function resolvePlaybookKeyFromSearch(search: string): string {
@@ -310,13 +337,15 @@ function resolvePlaybookKeyFromSearch(search: string): string {
   const urlDomain = p.get('domain');
   // 1. Exact key match from ?playbook=
   if (urlPlaybook && DEFAULT_PLAYBOOKS.some(pb => pb.key === urlPlaybook)) return urlPlaybook;
-  // 2. Exact name match against DEFAULT_PLAYBOOKS
   if (urlPlaybookName) {
-    const nameLower = urlPlaybookName.toLowerCase();
+    const nameLower = urlPlaybookName.toLowerCase().trim();
+    // 2. Explicit trigger-pattern name lookup — most reliable path for email click-throughs
+    if (PLAYBOOK_NAME_KEY_MAP[nameLower]) return PLAYBOOK_NAME_KEY_MAP[nameLower];
+    // 3. Exact name match against DEFAULT_PLAYBOOKS
     const exact = DEFAULT_PLAYBOOKS.find(pb => pb.name.toLowerCase() === nameLower);
     if (exact) return exact.key;
   }
-  // 3. Domain + name keyword matching
+  // 4. Domain + name keyword matching — last resort
   const searchText = [(urlDomain || ''), (urlPlaybookName || '')].join(' ').toLowerCase();
   if (searchText.trim()) {
     for (const { keywords, key } of DOMAIN_PLAYBOOK_MAP) {
