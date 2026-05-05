@@ -325,7 +325,7 @@ function FuturePositioningDiagram() {
         <div className="flex items-center gap-0">
           {[
             { label: "Platform Built", sub: "170 Readiness Protocols, IDEA Framework", color: NAVY },
-            { label: "Pilot Contracts", sub: "Design partners, real use cases", color: NAVY },
+            { label: "Founding Partner Contracts", sub: "Design partners, real use cases", color: NAVY },
             { label: "Data Network Effect", sub: "Every activation improves the system", color: TEAL },
             { label: "Category Leader", sub: "Strategic Readiness Platform standard", color: GOLD },
           ].map((stage, i) => (
@@ -803,7 +803,7 @@ export default function Investors() {
           {/* CTA */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="text-center">
             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Ready to take the next step?</h2>
-            <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the Fortune 1000 executives rethinking how strategic work flows. Pilots run in 30 days.</p>
+            <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the Fortune 1000 executives rethinking how strategic work flows. Founding Partner validation runs in 90 days.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/request-access">
                 <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12 rounded-none tracking-wide">
