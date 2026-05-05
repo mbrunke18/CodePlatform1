@@ -71,11 +71,14 @@ const EXECUTIVE_ROLES = [
   { id: 'ceo', name: 'CEO / President', description: 'Enterprise-wide strategic oversight' },
   { id: 'coo', name: 'COO / Operations', description: 'Operational execution & efficiency' },
   { id: 'cfo', name: 'CFO / Finance', description: 'Financial strategy & risk management' },
+  { id: 'ciso', name: 'CISO / Security', description: 'Cybersecurity & information risk' },
   { id: 'cto', name: 'CTO / CIO / Technology', description: 'Technology strategy & innovation' },
   { id: 'cmo', name: 'CMO / Marketing', description: 'Brand & market positioning' },
   { id: 'chro', name: 'CHRO / People', description: 'Talent & organizational development' },
   { id: 'cso', name: 'CSO / Strategy', description: 'Corporate strategy & planning' },
   { id: 'cro', name: 'CRO / Revenue', description: 'Revenue growth & customer success' },
+  { id: 'gc', name: 'General Counsel / Legal', description: 'Legal strategy & compliance oversight' },
+  { id: 'cco', name: 'CCO / Compliance', description: 'Regulatory compliance & governance' },
 ];
 
 const STRATEGIC_PRIORITIES = [

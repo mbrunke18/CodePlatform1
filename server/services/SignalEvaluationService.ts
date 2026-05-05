@@ -319,7 +319,7 @@ async function sendDetectionEmail(
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
                 <span style="color:#0A0F2E;font-weight:700;">${detection.recommendedPlaybook}</span>
-                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">System-Staged</span>
               </td>
             </tr>
             ${detection.alternatePlaybooks.length > 0 ? `
