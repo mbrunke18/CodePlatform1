@@ -124,6 +124,42 @@ function getFallbackLibraryData() {
 export const playbookLibraryRouter = Router();
 
 /**
+ * GET /api/playbook-library/search?name=X
+ * Returns the single protocol whose name best matches the query string.
+ * Used by the activation center to resolve email click-throughs to the
+ * exact protocol from the full 170-protocol library.
+ */
+playbookLibraryRouter.get('/search', async (req, res) => {
+  try {
+    const name = (req.query.name as string || '').trim();
+    if (!name) return res.json(null);
+
+    // Exact match first (case-insensitive)
+    const exact = await db
+      .select()
+      .from(playbookLibrary)
+      .where(sql`lower(${playbookLibrary.name}) = lower(${name})`)
+      .limit(1);
+
+    const row = exact[0] ?? null;
+
+    if (!row) return res.json(null);
+
+    // Enrich with domain name
+    const domains = await db
+      .select()
+      .from(playbookDomains)
+      .where(eq(playbookDomains.id, row.domainId))
+      .limit(1);
+
+    return res.json({ ...row, domainName: domains[0]?.name || '' });
+  } catch (err) {
+    console.error('Error searching playbook library:', err);
+    return res.json(null);
+  }
+});
+
+/**
  * GET /api/playbook-library/domains
  * Get all playbook domains with playbook counts
  */

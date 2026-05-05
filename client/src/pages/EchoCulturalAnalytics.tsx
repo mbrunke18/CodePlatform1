@@ -360,13 +360,13 @@ export default function EchoCulturalAnalytics() {
 
             <TabsContent value="insights" className="mt-8">
               <div className="space-y-6">
-                {/* AI Confidence Header */}
+                {/* Cultural Intelligence Header */}
                 <div style={{ background: NAVY, padding: "40px 48px", borderRadius: 0, position: "relative", overflow: "hidden" }}>
                   <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 2px 2px, rgba(201,168,76,0.08) 1px, transparent 0)", backgroundSize: "28px 28px" }} />
                   <div style={{ position: "relative", zIndex: 1 }}>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>AI Cultural Intelligence</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Cultural Intelligence</div>
                     <h3 style={{ ...CG, fontSize: 28, color: "#fff", marginBottom: 8 }}>Pattern Detection — <em style={{ fontStyle: "italic", color: GOLD }}>This Quarter</em></h3>
-                    <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", maxWidth: 560 }}>AI models monitoring 14 cultural signal categories identified the following emerging patterns with execution implications.</p>
+                    <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", maxWidth: 560 }}>Continuous monitoring across 14 cultural signal categories identified the following emerging patterns with execution implications.</p>
                   </div>
                 </div>
                 {/* Insight Cards */}

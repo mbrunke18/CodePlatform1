@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { CheckCircle, XCircle, Loader2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ const TEAL = "#2B8A6E";
 type State = "validating" | "ready" | "entering" | "success" | "expired" | "used" | "invalid" | "error";
 
 export default function MagicLogin() {
+  const [, setLocation] = useLocation();
   const [state, setState] = useState<State>("validating");
   const [firstName, setFirstName] = useState<string>("");
   const [token, setToken] = useState<string>("");
@@ -181,7 +183,7 @@ export default function MagicLogin() {
 
         {current.cta && (
           <Button
-            onClick={() => navigate(current.cta!.href)}
+            onClick={() => setLocation(current.cta!.href)}
             className="w-full h-11 font-bold text-sm"
             style={{ background: GOLD, color: NAVY }}
           >

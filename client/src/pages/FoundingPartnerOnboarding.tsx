@@ -234,8 +234,8 @@ export default function FoundingPartnerOnboarding() {
             {/* Pilot structure pills */}
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {[
-                { label: '90-Day Pilot', icon: '◷' },
-                { label: '10 Pilot Users', icon: '◈' },
+                { label: '90-Day Partnership', icon: '◷' },
+                { label: '10 Partner Users', icon: '◈' },
                 { label: 'Single Domain', icon: '◉' },
                 { label: '5 Role Paths', icon: '◆' },
                 { label: '12-Min Execution Target', icon: '◎' },

@@ -19591,7 +19591,7 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;color:#666;font-size:13px;">Primary Recommendation</td>
               <td style="padding:10px 0;border-bottom:1px solid #e8e4dc;font-size:13px;">
                 <span style="color:#0A0F2E;font-weight:700;">${detection.recommendedPlaybook}</span>
-                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">AI Recommended</span>
+                <span style="display:inline-block;margin-left:6px;background:#2B8A6E20;color:#2B8A6E;font-size:9px;font-weight:700;padding:2px 6px;letter-spacing:0.1em;text-transform:uppercase;">System-Staged</span>
               </td>
             </tr>
             ${detection.alternatePlaybooks.length > 0 ? `
@@ -19626,7 +19626,7 @@ async function sendDetectionEmail(detection, signal, emails, orgId) {
             <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">${signal.description.substring(0, 300)}${signal.description.length > 300 ? "\u2026" : ""}</div>
           </div>
           <div style="text-align:center;margin-bottom:12px;">
-            <a href="${platformUrl}/live-detection-feed?trigger=${encodeURIComponent(detection.triggerName)}" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
+            <a href="${platformUrl}/live-detection-feed?trigger=${encodeURIComponent(detection.triggerName)}&playbook=${encodeURIComponent(detection.recommendedPlaybook)}&domain=${encodeURIComponent(detection.triggerDomain)}" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
           </div>
           <div style="text-align:center;">
             <a href="${platformUrl}/live-activation-center?playbookName=${encodeURIComponent(detection.recommendedPlaybook)}&domain=${encodeURIComponent(detection.triggerDomain)}" style="display:inline-block;background:#C9A84C;color:#0A0F2E;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:700;letter-spacing:0.5px;">Activate: ${detection.recommendedPlaybook} \u2192</a>
@@ -32272,6 +32272,20 @@ var init_playbookLibraryRoutes = __esm({
       { id: 9, name: "AI Governance", code: "DOMAIN9", color: "#7C3AED", icon: "brain", executiveRole: "CTO", total: 18 }
     ];
     playbookLibraryRouter = Router8();
+    playbookLibraryRouter.get("/search", async (req, res) => {
+      try {
+        const name = (req.query.name || "").trim();
+        if (!name) return res.json(null);
+        const exact = await db.select().from(playbookLibrary).where(sql17`lower(${playbookLibrary.name}) = lower(${name})`).limit(1);
+        const row = exact[0] ?? null;
+        if (!row) return res.json(null);
+        const domains = await db.select().from(playbookDomains).where(eq43(playbookDomains.id, row.domainId)).limit(1);
+        return res.json({ ...row, domainName: domains[0]?.name || "" });
+      } catch (err) {
+        console.error("Error searching playbook library:", err);
+        return res.json(null);
+      }
+    });
     playbookLibraryRouter.get("/domains", async (req, res) => {
       try {
         const domains = await db.select().from(playbookDomains).orderBy(playbookDomains.sequence);

@@ -369,7 +369,7 @@ export default function ExecutiveBrief() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "start" }}>
               <div>
                 <h3 style={{ ...CG, fontSize: 26, fontWeight: 700, color: NAVY, lineHeight: 1.2, marginBottom: 12 }}>
-                  90-Day Pilot.<br />$75,000 flat. 100% credits to enterprise contract.
+                  90-Day Validation Partnership.<br />$75,000 flat. 100% credits to enterprise contract.
                 </h3>
                 <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
                   A structured 90-day engagement to prove Readiness OS' 12-minute coordination claim with live activations in your environment. Measurable outcomes. Clear conversion path.

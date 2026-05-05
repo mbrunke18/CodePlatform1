@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { ValueGainCallout } from '@/components/ValueGainCallout';
 import { ValueInsightToast, useValueInsights } from '@/components/ValueInsightToast';
@@ -256,8 +256,20 @@ function getPlaybookIcon(icon: string) {
   }
 }
 
+// Normalise DB lowercase values (offense/defense/special_teams) to the uppercase
+// internal labels used by getCategoryColor and getCategoryDisplayName.
+function normaliseCat(category: string | undefined): string {
+  if (!category) return '';
+  const map: Record<string, string> = {
+    offense: 'OFFENSE',
+    defense: 'DEFENSE',
+    special_teams: 'SPECIAL TEAMS',
+  };
+  return map[category.toLowerCase()] ?? category.toUpperCase().replace('_', ' ');
+}
+
 function getCategoryColor(category: string) {
-  switch (category) {
+  switch (normaliseCat(category)) {
     case 'OFFENSE': return { bg: 'bg-[#2B8A6E]/10', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/30', ring: 'ring-[#2B8A6E]', solid: 'bg-[#2B8A6E]' };
     case 'DEFENSE': return { bg: 'bg-[#0A0F2E]/10', text: 'text-[#0A0F2E]', border: 'border-[#0A0F2E]/30', ring: 'ring-[#0A0F2E]', solid: 'bg-[#0A0F2E]' };
     case 'SPECIAL TEAMS': return { bg: 'bg-[#C9A84C]/10', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/30', ring: 'ring-[#C9A84C]', solid: 'bg-[#C9A84C]' };
@@ -266,12 +278,26 @@ function getCategoryColor(category: string) {
 }
 
 function getCategoryDisplayName(category: string | undefined): string {
-  switch (category) {
+  switch (normaliseCat(category)) {
     case 'OFFENSE': return 'GROWTH & POSITIONING';
     case 'DEFENSE': return 'RISK & RESILIENCE';
     case 'SPECIAL TEAMS': return 'TRANSFORMATION';
-    default: return category || 'READINESS';
+    default: return 'READINESS';
   }
+}
+
+// Maps a DB protocol's strategicCategory + domainName to the closest simulation
+// dataset available in DEFAULT_STAKEHOLDERS / DEFAULT_TASKS.
+function resolveSimKey(strategicCategory: string, domainName: string): string {
+  const dom = (domainName || '').toLowerCase();
+  if (dom.includes('supply chain') || dom.includes('geopolit') || dom.includes('operations')) return 'geopolitical';
+  if (dom.includes('technolog') || dom.includes('security') || dom.includes('cyber')) return 'ransomware';
+  if (dom.includes('regulat') || dom.includes('compliance') || dom.includes('esg') || dom.includes('governance') || dom.includes('sustainability')) return 'ai-governance';
+  if (dom.includes('brand') || dom.includes('reputation') || dom.includes('financial') || dom.includes('market') || dom.includes('m&a') || dom.includes('investor')) return 'ma-day1';
+  const cat = (strategicCategory || '').toLowerCase();
+  if (cat === 'offense') return 'ma-day1';
+  if (cat === 'special_teams') return 'ai-governance';
+  return 'ransomware';
 }
 
 const DEMO_PRESEED_SECONDS = 38;
@@ -400,8 +426,6 @@ export default function LiveActivationCenter() {
   const MUTED = "#6B7280";
   const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
 
-  const activePlaybook = DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook);
-
   const [location, setLocation] = useLocation();
   const search = useSearch();
 
@@ -410,6 +434,50 @@ export default function LiveActivationCenter() {
     const resolved = resolvePlaybookKeyFromSearch(search);
     setSelectedPlaybook(resolved);
   }, [search, location]);
+
+  // Fetch the exact protocol from the full 170-protocol library when arriving via email link
+  const { data: emailProtocolData } = useQuery({
+    queryKey: ['/api/playbook-library/search', urlPlaybookName],
+    enabled: !!urlPlaybookName,
+    retry: false,
+    staleTime: 300000,
+    queryFn: async () => {
+      const res = await apiRequest('GET', `/api/playbook-library/search?name=${encodeURIComponent(urlPlaybookName || '')}`);
+      return res.json();
+    },
+  });
+
+  // Build a PlaybookDef from the DB protocol so any of the 170 protocols renders correctly
+  const emailLinkedProtocol = useMemo<PlaybookDef | null>(() => {
+    if (!urlPlaybookName || !emailProtocolData) return null;
+    const p = emailProtocolData as any;
+    if (!p?.name) return null;
+    const simKey = resolveSimKey(p.strategicCategory || 'defense', p.domainName || '');
+    return {
+      key: `email:${simKey}`,
+      name: p.name,
+      category: normaliseCat(p.strategicCategory) as any,
+      description: p.description || `${p.name} — readiness protocol staged for immediate execution.`,
+      icon: 'shield',
+      stakeholderCount: ((p.tier1Count || 0) + (p.tier2Count || 0)) || 10,
+      taskCount: 12,
+      duration: '12 min to live execution',
+      color: 'teal',
+    };
+  }, [urlPlaybookName, emailProtocolData]);
+
+  // When the email-linked protocol loads, auto-select it
+  useEffect(() => {
+    if (emailLinkedProtocol && !activationId) {
+      setSelectedPlaybook(emailLinkedProtocol.key);
+    }
+  }, [emailLinkedProtocol, activationId]);
+
+  // activePlaybook: check both the 4 defaults and the injected email-linked protocol
+  const activePlaybook = useMemo(() => {
+    if (emailLinkedProtocol && selectedPlaybook === emailLinkedProtocol.key) return emailLinkedProtocol;
+    return DEFAULT_PLAYBOOKS.find(p => p.key === selectedPlaybook) ?? null;
+  }, [selectedPlaybook, emailLinkedProtocol]);
 
   const { data: orgData } = useQuery({
     queryKey: ['/api/organizations'],
@@ -440,17 +508,12 @@ export default function LiveActivationCenter() {
   const hasSlack = integrationStatus?.slack?.connected === true;
   const hasLiveIntegrations = hasJira || hasSlack;
 
-  const { data: playbooksData } = useQuery({
-    queryKey: ['/api/activation/Readiness Protocols'],
-    retry: false,
-    staleTime: 60000,
-  });
-
-  const playbooks: PlaybookDef[] = (() => {
-    if (!playbooksData) return DEFAULT_PLAYBOOKS;
-    const raw = playbooksData as any;
-    return Array.isArray(raw) ? raw : Array.isArray(raw?.playbooks) ? raw.playbooks : DEFAULT_PLAYBOOKS;
-  })();
+  // Selector shows the 4 curated demo scenarios + the email-linked protocol (if any)
+  const playbooks: PlaybookDef[] = useMemo(() => {
+    if (!emailLinkedProtocol) return DEFAULT_PLAYBOOKS;
+    const alreadyPresent = DEFAULT_PLAYBOOKS.some(p => p.name.toLowerCase() === emailLinkedProtocol.name.toLowerCase());
+    return alreadyPresent ? DEFAULT_PLAYBOOKS : [emailLinkedProtocol, ...DEFAULT_PLAYBOOKS];
+  }, [emailLinkedProtocol]);
 
   const activateMutation = useMutation({
     mutationFn: async (playbookKey: string) => {
@@ -497,10 +560,12 @@ export default function LiveActivationCenter() {
     startTimeRef.current = Date.now() - DEMO_PRESEED_SECONDS * 1000;
 
     const playbookKey = selectedPlaybook;
-    const industryStakeholders = industryOverlay?.stakeholders?.[playbookKey];
-    const industryTasks = industryOverlay?.tasks?.[playbookKey];
-    const rawStakeholders = (industryStakeholders || DEFAULT_STAKEHOLDERS[playbookKey] || DEFAULT_STAKEHOLDERS['ma-day1']);
-    const rawTasks = (industryTasks || DEFAULT_TASKS[playbookKey] || DEFAULT_TASKS['ma-day1']);
+    // email-linked protocols carry the sim key after the colon: "email:ransomware"
+    const simKey = playbookKey.startsWith('email:') ? playbookKey.slice(6) : playbookKey;
+    const industryStakeholders = industryOverlay?.stakeholders?.[simKey];
+    const industryTasks = industryOverlay?.tasks?.[simKey];
+    const rawStakeholders = (industryStakeholders || DEFAULT_STAKEHOLDERS[simKey] || DEFAULT_STAKEHOLDERS['ma-day1']);
+    const rawTasks = (industryTasks || DEFAULT_TASKS[simKey] || DEFAULT_TASKS['ma-day1']);
 
     const PRESEED_ACKNOWLEDGED = Math.min(4, Math.floor(rawStakeholders.length * 0.4));
     const PRESEED_TASKS_DONE = Math.min(3, Math.floor(rawTasks.filter(t => t.phase === 'IMMEDIATE').length * 0.5));
@@ -922,8 +987,9 @@ export default function LiveActivationCenter() {
     );
   }
 
-  const warRoomAccent = activePlaybook?.category === 'OFFENSE' ? { bg: 'bg-[#2B8A6E]/15', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/40' }
-    : activePlaybook?.category === 'SPECIAL TEAMS' ? { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' }
+  const _cat = normaliseCat(activePlaybook?.category);
+  const warRoomAccent = _cat === 'OFFENSE' ? { bg: 'bg-[#2B8A6E]/15', text: 'text-[#2B8A6E]', border: 'border-[#2B8A6E]/40' }
+    : _cat === 'SPECIAL TEAMS' ? { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' }
     : { bg: 'bg-[#C9A84C]/15', text: 'text-[#C9A84C]', border: 'border-[#C9A84C]/40' };
 
   return (

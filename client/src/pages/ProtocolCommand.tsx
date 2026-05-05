@@ -291,14 +291,14 @@ export default function ProtocolCommand() {
           </CardContent>
         </Card>
 
-        {/* AI Confidence Panel */}
+        {/* Execution Confidence Panel */}
         <Card className="border-none" style={{ background: "#0A0F2E" }}>
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <Brain className="h-6 w-6 shrink-0 mt-0.5" style={{ color: "#C9A84C" }} />
               <div className="flex-1">
                 <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(255,255,255,0.5)" }}>
-                  AI Execution Confidence
+                  Signal Execution Confidence
                 </div>
                 <div className="flex items-center gap-4 mb-3">
                   <span className="text-4xl font-bold" style={{ color: "#C9A84C", fontFamily: "'Cormorant Garamond', serif" }}>94%</span>
