@@ -726,7 +726,7 @@ export default function QuickDemoPage() {
                           <span className="font-medium">AI Recommendation</span>
                         </div>
                         <p className="text-sm text-muted-foreground">
-                          Activate <span className="font-medium text-foreground">{selectedScenario.playbook}</span> playbook.
+                          Activate <span className="font-medium text-foreground">{selectedScenario.playbook}</span> protocol.
                           Match confidence: <span className="text-[#2B8A6E] dark:text-[#2B8A6E] font-bold">94%</span>
                         </p>
                       </div>

@@ -221,7 +221,7 @@ export default function OnboardingGuide() {
           <SectionHeader
             label="02 — Quick Start"
             title="Your First 15 Minutes"
-            subtitle="Follow these five steps in order. By the end, you will have a live view of your threat environment, your playbooks, and your organization's execution readiness."
+            subtitle="Follow these five steps in order. By the end, you will have a live view of your threat environment, your protocols, and your organization's execution readiness."
           />
           <div style={{ background: "#fff", border: "1px solid #E5E7EB", borderRadius: 0, padding: "8px 32px" }}>
             <StepCard number={1} icon={Monitor} title="Mission Control" path="/mission-control"
@@ -250,7 +250,7 @@ export default function OnboardingGuide() {
             <FeatureCard icon={Radio} title="DETECT" path="/command-tower" color={TEAL}
               description="Live monitoring dashboard. Real-time RSS ingestion from 8 sources every 15 minutes. Signal confidence scoring. Trigger detection with deduplication and email alerts." />
             <FeatureCard icon={Zap} title="EXECUTE" path="/mission-control" color={GOLD}
-              description="Activate playbooks, assign tasks to role-specific teams, track acknowledgments, and monitor the 12-minute execution clock. Full audit trail on every action." />
+              description="Activate protocols, assign tasks to role-specific teams, track acknowledgments, and monitor the 12-minute execution clock. Full audit trail on every action." />
             <FeatureCard icon={BarChart3} title="ADVANCE" path="/board-readiness" color={TEAL}
               description="Board Readiness Snapshot, Execution Dividend ROI counter, historical detection logs, and performance analytics. Turn every incident into institutional memory." />
           </div>

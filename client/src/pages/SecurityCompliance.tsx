@@ -41,7 +41,7 @@ const sections = [
       { label: "Background Job Queue", detail: "PostgreSQL-backed job queue with full job history and retry tracking" },
       { label: "Health Monitoring", detail: "Live health endpoints for uptime monitoring and deployment validation" },
       { label: "Signal Activity Log", detail: "Full audit trail of all detected signals, trigger evaluations, and alert creations" },
-      { label: "Activation History", detail: "Every playbook activation logged with timestamp, user, org, and outcome" },
+      { label: "Activation History", detail: "Every protocol activation logged with timestamp, user, org, and outcome" },
     ],
   },
   {

@@ -34,11 +34,11 @@ const TABS = [
 
 // ─── IDENTIFY DATA ───────────────────────────────────────────────────────────
 const identifyTools = [
-  { title: "Readiness Protocol Library", description: "Browse 170 pre-built strategic playbooks across 9 domains", path: "/playbooks", icon: BookOpen, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "170 playbooks", featured: true },
+  { title: "Readiness Protocol Library", description: "Browse 170 pre-built Readiness Protocols across 9 domains", path: "/playbook-library", icon: BookOpen, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "170 protocols", featured: true },
   { title: "Scenario Planning Hub", description: "Design strategic scenarios and map potential trigger conditions", path: "/strategic", icon: Target, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Strategic planning" },
   { title: "What-If Analyzer", description: "Model different scenarios and their potential outcomes", path: "/what-if-analyzer", icon: Lightbulb, color: "text-[#C9A84C]", bgColor: "bg-[#C9A84C]/10", stats: "Predictive modeling" },
   { title: "Board Briefings", description: "Generate executive-ready presentations and board materials", path: "/board-briefings", icon: FileText, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Executive reports" },
-  { title: "Playbook Customization", description: "Tailor playbooks to your organization's specific needs", path: "/playbook-customization", icon: ClipboardList, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Personalization" },
+  { title: "Protocol Customization", description: "Tailor protocols to your organization's specific needs", path: "/playbook-customization", icon: ClipboardList, color: "text-[#2B8A6E]", bgColor: "bg-[#2B8A6E]/10", stats: "Personalization" },
   { title: "Preparedness Report", description: "Assess your organization's strategic readiness score", path: "/preparedness-report", icon: Shield, color: "text-[#0A0F2E]", bgColor: "bg-[#0A0F2E]/10", stats: "Readiness scoring" },
 ];
 const domainCategories = [
@@ -84,7 +84,7 @@ function TwoPhasePlaybookSelector() {
           </div>
           <Link href="/playbooks"><Button variant="outline" size="sm" className="border-white/20 text-white hover:bg-white/10 bg-transparent text-xs">Full Library <ExternalLink className="h-3 w-3 ml-1.5" /></Button></Link>
         </div>
-        <div className="mt-4 relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" /><Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search playbooks..." className="pl-9 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-[#2B8A6E]" /></div>
+        <div className="mt-4 relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" /><Input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search protocols..." className="pl-9 bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-[#2B8A6E]" /></div>
       </CardHeader>
       <CardContent className="p-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#E8E4DC] dark:divide-white/10">

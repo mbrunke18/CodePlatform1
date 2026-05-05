@@ -48,7 +48,7 @@ export default function GetStarted() {
   useEffect(() => {
     updatePageMetadata({
       title: "Sign In — Readiness OS | VaughnMartin",
-      description: "Access the full Readiness OS platform. Real playbooks, real AI, real execution.",
+      description: "Access the full Readiness OS platform. Real protocols, real execution.",
     });
   }, []);
 

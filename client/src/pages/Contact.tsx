@@ -317,7 +317,7 @@ export default function Contact() {
             <div className="flex flex-wrap justify-center gap-6">
               {[
                 { label: "How It Works", path: "/platform-overview" },
-                { label: "170 Playbooks", path: "/playbook-library" },
+                { label: "170 Protocols", path: "/playbook-library" },
                 { label: "Our Story", path: "/our-story" }
               ].map((link) => (
                 <Button

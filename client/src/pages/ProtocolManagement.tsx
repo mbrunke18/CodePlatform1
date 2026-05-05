@@ -117,7 +117,7 @@ export default function ProtocolManagement() {
     onError: () => {
       toast({
         title: "Error",
-        description: "Failed to delete playbook. Please try again.",
+        description: "Failed to delete protocol. Please try again.",
         variant: "destructive",
       });
     },
@@ -237,7 +237,7 @@ export default function ProtocolManagement() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-800 dark:text-slate-200" />
                 <Input
-                  placeholder="Search playbooks..."
+                  placeholder="Search protocols..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   className="pl-10"

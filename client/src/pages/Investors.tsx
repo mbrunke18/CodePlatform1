@@ -758,7 +758,7 @@ export default function Investors() {
                       "Trigger detected → Readiness Protocol activated",
                       "Tasks staged and assigned to named executives",
                       "Executive authorizes — war room launches in 12 minutes",
-                      "Human teams execute the pre-staged playbook",
+                      "Human teams execute the pre-staged protocol",
                       "Outcome captured → institutional memory built",
                     ],
                   },
