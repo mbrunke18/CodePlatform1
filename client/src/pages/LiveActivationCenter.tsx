@@ -173,6 +173,17 @@ const DEFAULT_STAKEHOLDERS: Record<string, Stakeholder[]> = {
     { id: 's8', name: 'Rachel Torres', title: 'VP Product', department: 'Product', tier: 2, status: 'pending', initials: 'RT', color: AVATAR_COLORS[7] },
     { id: 's9', name: 'Chris Taylor', title: 'VP Communications', department: 'Comms', tier: 2, status: 'pending', initials: 'CT', color: AVATAR_COLORS[8] },
   ],
+  'regulatory': [
+    { id: 's1', name: 'Sarah Chen', title: 'CEO', department: 'Executive', tier: 1, status: 'pending', initials: 'SC', color: AVATAR_COLORS[0] },
+    { id: 's2', name: 'Lisa Wang', title: 'General Counsel', department: 'Legal', tier: 1, status: 'pending', initials: 'LW', color: AVATAR_COLORS[1] },
+    { id: 's3', name: 'Marcus Rivera', title: 'CFO', department: 'Finance', tier: 1, status: 'pending', initials: 'MR', color: AVATAR_COLORS[2] },
+    { id: 's4', name: 'David Kim', title: 'Chief Compliance Officer', department: 'Compliance', tier: 1, status: 'pending', initials: 'DK', color: AVATAR_COLORS[3] },
+    { id: 's5', name: 'Diana Park', title: 'COO', department: 'Operations', tier: 1, status: 'pending', initials: 'DP', color: AVATAR_COLORS[4] },
+    { id: 's6', name: 'Ana Petrov', title: 'VP Regulatory Affairs', department: 'Regulatory', tier: 2, status: 'pending', initials: 'AP', color: AVATAR_COLORS[5] },
+    { id: 's7', name: 'Tom Bradley', title: 'VP Government Affairs', department: 'Gov Affairs', tier: 2, status: 'pending', initials: 'TB', color: AVATAR_COLORS[6] },
+    { id: 's8', name: 'Chris Taylor', title: 'VP Communications', department: 'Comms', tier: 2, status: 'pending', initials: 'CT', color: AVATAR_COLORS[7] },
+    { id: 's9', name: 'Rachel Torres', title: 'IR Lead', department: 'Investor Relations', tier: 2, status: 'pending', initials: 'RT', color: AVATAR_COLORS[8] },
+  ],
   'geopolitical': [
     { id: 's1', name: 'Sarah Chen', title: 'CEO', department: 'Executive', tier: 1, status: 'pending', initials: 'SC', color: AVATAR_COLORS[0] },
     { id: 's2', name: 'Marcus Rivera', title: 'CFO', department: 'Finance', tier: 1, status: 'pending', initials: 'MR', color: AVATAR_COLORS[1] },
@@ -227,6 +238,20 @@ const DEFAULT_TASKS: Record<string, Task[]> = {
     { id: 't8', name: 'Policy Document Distribution', owner: 'VP Comms', phase: 'FOLLOW_UP', status: 'pending' },
     { id: 't9', name: 'Compliance Monitoring Setup', owner: 'VP Compliance', phase: 'FOLLOW_UP', status: 'pending' },
     { id: 't10', name: 'Board Reporting Framework', owner: 'CEO', phase: 'FOLLOW_UP', status: 'pending' },
+  ],
+  'regulatory': [
+    { id: 't1', name: 'Activate Regulatory Response Team', owner: 'General Counsel', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't2', name: 'Engage Outside Regulatory Counsel', owner: 'General Counsel', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't3', name: 'Assess Regulatory Exposure Scope', owner: 'Chief Compliance Officer', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't4', name: 'Notify Executive Leadership', owner: 'CEO', phase: 'IMMEDIATE', status: 'pending' },
+    { id: 't5', name: 'Initiate Document Preservation Protocol', owner: 'General Counsel', phase: 'SECONDARY', status: 'pending' },
+    { id: 't6', name: 'Prepare Regulatory Filing Draft', owner: 'VP Regulatory Affairs', phase: 'SECONDARY', status: 'pending' },
+    { id: 't7', name: 'Stakeholder & Board Notification Plan', owner: 'CFO', phase: 'SECONDARY', status: 'pending' },
+    { id: 't8', name: 'Regulatory Agency Communication', owner: 'VP Government Affairs', phase: 'SECONDARY', status: 'pending' },
+    { id: 't9', name: 'Board Briefing Package', owner: 'CEO', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't10', name: 'Remediation Plan Development', owner: 'Chief Compliance Officer', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't11', name: 'Investor & Public Statement', owner: 'VP Communications', phase: 'FOLLOW_UP', status: 'pending' },
+    { id: 't12', name: 'Ongoing Compliance Monitoring Setup', owner: 'Chief Compliance Officer', phase: 'FOLLOW_UP', status: 'pending' },
   ],
   'geopolitical': [
     { id: 't1', name: 'Assess Trade Exposure Impact', owner: 'CFO', phase: 'IMMEDIATE', status: 'pending' },
@@ -290,13 +315,21 @@ function getCategoryDisplayName(category: string | undefined): string {
 // dataset available in DEFAULT_STAKEHOLDERS / DEFAULT_TASKS.
 function resolveSimKey(strategicCategory: string, domainName: string): string {
   const dom = (domainName || '').toLowerCase();
-  if (dom.includes('supply chain') || dom.includes('geopolit') || dom.includes('operations')) return 'geopolitical';
-  if (dom.includes('technolog') || dom.includes('security') || dom.includes('cyber')) return 'ransomware';
-  if (dom.includes('regulat') || dom.includes('compliance') || dom.includes('esg') || dom.includes('governance') || dom.includes('sustainability')) return 'ai-governance';
-  if (dom.includes('brand') || dom.includes('reputation') || dom.includes('financial') || dom.includes('market') || dom.includes('m&a') || dom.includes('investor')) return 'ma-day1';
+  // Supply Chain & Geopolitical — includes "operation" (singular covers Operational Excellence domain name)
+  if (dom.includes('supply chain') || dom.includes('geopolit') || dom.includes('operation')) return 'geopolitical';
+  // Technology & Security
+  if (dom.includes('technolog') || dom.includes('security') || dom.includes('cyber') || dom.includes('innovation')) return 'ransomware';
+  // Regulatory & Compliance → dedicated dataset (not ai-governance)
+  if (dom.includes('regulat') || dom.includes('compliance') || dom.includes('disclosure') || dom.includes('litigation') || dom.includes('legal') || dom.includes('esg') || dom.includes('sustainability')) return 'regulatory';
+  // AI Governance → only for actual AI/data ethics topics
+  if (dom.includes('ai govern') || dom.includes('data privacy') || dom.includes('ethics') || dom.includes('governance')) return 'ai-governance';
+  // Talent & Leadership → executive/CHRO-led team
+  if (dom.includes('talent') || dom.includes('leadership') || dom.includes('human resource') || dom.includes('workforce')) return 'ma-day1';
+  // Brand, Financial, Market, M&A
+  if (dom.includes('brand') || dom.includes('reputation') || dom.includes('financial') || dom.includes('market') || dom.includes('m&a') || dom.includes('investor') || dom.includes('opportunit')) return 'ma-day1';
   const cat = (strategicCategory || '').toLowerCase();
   if (cat === 'offense') return 'ma-day1';
-  if (cat === 'special_teams') return 'ai-governance';
+  if (cat === 'defense') return 'geopolitical';
   return 'ransomware';
 }
 
@@ -338,10 +371,16 @@ const PLAYBOOK_NAME_KEY_MAP: Record<string, string> = {
   'reputational crisis protocol': 'ma-day1',
   'executive leadership crisis': 'ma-day1',
   'financial crisis response': 'ma-day1',
-  // Regulatory, Compliance, ESG, Governance
-  'regulatory compliance sprint': 'ai-governance',
-  'regulatory disclosure protocol': 'ai-governance',
-  'esg crisis response': 'ai-governance',
+  // Regulatory & Compliance — dedicated dataset
+  'regulatory compliance sprint': 'regulatory',
+  'regulatory disclosure protocol': 'regulatory',
+  'esg crisis response': 'regulatory',
+  'sec disclosure protocol': 'regulatory',
+  'gdpr breach response': 'regulatory',
+  'ftc investigation response': 'regulatory',
+  'fda regulatory response': 'regulatory',
+  'antitrust response protocol': 'regulatory',
+  // AI Governance — reserved for actual AI/ethics triggers
   'ai governance framework': 'ai-governance',
 };
 
@@ -352,8 +391,10 @@ const DOMAIN_PLAYBOOK_MAP: Array<{ keywords: string[]; key: string }> = [
   { keywords: ['security', 'cyber', 'ransomware', 'breach', 'malware', 'phishing', 'incident', 'attack', 'hack', 'technology & security'], key: 'ransomware' },
   // M&A, Market, Financial, Executive, Reputation
   { keywords: ['m&a', 'merger', 'acquisition', 'integration', 'deal', 'divestiture', 'restructur', 'leadership', 'succession', 'executive', 'transition', 'expansion', 'growth', 'investor', 'competitive', 'competitor', 'market dynamic', 'brand', 'reputation', 'financial crisis', 'financial distress', 'distress'], key: 'ma-day1' },
-  // Regulatory, Compliance, ESG, Governance
-  { keywords: ['regulatory', 'compliance', 'governance', 'legal', 'litigation', 'audit', 'esg', 'climate', 'environment', 'policy', 'regulation', 'disclosure', 'sustainability'], key: 'ai-governance' },
+  // Regulatory, Compliance, ESG, Legal
+  { keywords: ['regulatory', 'compliance', 'legal', 'litigation', 'audit', 'esg', 'climate', 'environment', 'policy', 'regulation', 'disclosure', 'sustainability', 'sec filing', 'gdpr', 'ftc', 'fda', 'antitrust'], key: 'regulatory' },
+  // AI Governance — only actual AI/data ethics topics
+  { keywords: ['ai governance', 'ai ethics', 'data privacy', 'model risk', 'algorithmic', 'responsible ai'], key: 'ai-governance' },
 ];
 
 function resolvePlaybookKeyFromSearch(search: string): string {
