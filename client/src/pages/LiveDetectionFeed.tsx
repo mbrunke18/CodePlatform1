@@ -259,9 +259,21 @@ export default function LiveDetectionFeed() {
                     <span style={{ color: '#666', fontSize: 12 }}>Detected: <strong>{timeAgo(emailDetection.detectedAt)}</strong></span>
                   </div>
                   {emailDetection.recommendedPlaybook && (
-                    <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '10px 14px' }}>
-                      <span style={{ color: TEAL, fontSize: 12, fontWeight: 700 }}>Recommended Readiness Protocol: </span>
-                      <span style={{ color: NAVY, fontSize: 12, fontWeight: 600 }}>{emailDetection.recommendedPlaybook}</span>
+                    <div style={{ background: '#0A0F2E06', border: '1px solid #0A0F2E14', padding: '12px 14px' }}>
+                      <div style={{ marginBottom: emailDetection.alternatePlaybooks?.length ? 10 : 0 }}>
+                        <span style={{ color: '#888', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Primary Readiness Protocol</span>
+                        <div style={{ color: NAVY, fontSize: 13, fontWeight: 700, marginTop: 4 }}>{emailDetection.recommendedPlaybook}</div>
+                      </div>
+                      {(emailDetection.alternatePlaybooks?.length ?? 0) > 0 && (
+                        <div style={{ borderTop: '1px solid #0A0F2E12', paddingTop: 10 }}>
+                          <span style={{ color: '#888', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Also Aligned</span>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
+                            {emailDetection.alternatePlaybooks!.map((p: string) => (
+                              <span key={p} style={{ background: `${TEAL}12`, border: `1px solid ${TEAL}30`, color: TEAL, fontSize: 11, fontWeight: 600, padding: '3px 10px' }}>{p}</span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -507,9 +519,21 @@ export default function LiveDetectionFeed() {
                           </div>
                         )}
 
-                        <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: '10px 14px', fontSize: 13, color: NAVY }}>
-                          <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Recommended Readiness Protocol: </span>
-                          {detection.recommendedPlaybook}
+                        <div style={{ background: '#f0ede4', borderLeft: `3px solid ${GOLD}`, borderRadius: 0, padding: '12px 14px' }}>
+                          <div style={{ marginBottom: (detection.alternatePlaybooks?.length ?? 0) > 0 ? 10 : 0 }}>
+                            <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Primary Readiness Protocol</span>
+                            <div style={{ color: NAVY, fontSize: 13, fontWeight: 700, marginTop: 4 }}>{detection.recommendedPlaybook}</div>
+                          </div>
+                          {(detection.alternatePlaybooks?.length ?? 0) > 0 && (
+                            <div style={{ borderTop: '1px solid rgba(10,15,46,0.1)', paddingTop: 10 }}>
+                              <span style={{ color: '#888', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Also Aligned</span>
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
+                                {detection.alternatePlaybooks!.map((p: string) => (
+                                  <span key={p} style={{ background: `${TEAL}15`, border: `1px solid ${TEAL}30`, color: TEAL, fontSize: 11, fontWeight: 600, padding: '3px 10px' }}>{p}</span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
 
