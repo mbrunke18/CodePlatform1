@@ -271,6 +271,74 @@ const DEFAULT_TASKS: Record<string, Task[]> = {
 
 const CHANNELS = ['Slack', 'Email', 'SMS', 'Teams', 'Push Notification'];
 
+// Maps the role strings stored on each protocol (tier1Stakeholders / tier2Stakeholders)
+// to named stakeholder objects for war room display.
+const ROLE_STAKEHOLDER_MAP: Record<string, { name: string; title: string; department: string }> = {
+  'CEO':              { name: 'Sarah Chen',    title: 'CEO',                    department: 'Executive' },
+  'CFO':              { name: 'Marcus Rivera', title: 'CFO',                    department: 'Finance' },
+  'COO':              { name: 'Diana Park',    title: 'COO',                    department: 'Operations' },
+  'CTO':              { name: 'James Mitchell',title: 'CTO',                    department: 'Technology' },
+  'CISO':             { name: 'James Mitchell',title: 'CISO',                   department: 'Security' },
+  'CLO':              { name: 'Lisa Wang',     title: 'General Counsel',        department: 'Legal' },
+  'General Counsel':  { name: 'Lisa Wang',     title: 'General Counsel',        department: 'Legal' },
+  'Legal':            { name: 'Lisa Wang',     title: 'General Counsel',        department: 'Legal' },
+  'Board':            { name: 'Robert Chen',   title: 'Board Chair',            department: 'Board' },
+  'CHRO':             { name: 'Rachel Torres', title: 'CHRO',                   department: 'Human Resources' },
+  'CMO':              { name: 'Tom Bradley',   title: 'CMO',                    department: 'Marketing' },
+  'CPO':              { name: 'Ana Petrov',    title: 'CPO',                    department: 'Product' },
+  'Strategy':         { name: 'Chris Taylor',  title: 'Chief Strategy Officer', department: 'Strategy' },
+  'Product':          { name: 'Ana Petrov',    title: 'VP Product',             department: 'Product' },
+  'Marketing':        { name: 'Tom Bradley',   title: 'VP Marketing',           department: 'Marketing' },
+  'Operations':       { name: 'David Kim',     title: 'VP Operations',          department: 'Operations' },
+  'Finance':          { name: 'Marcus Rivera', title: 'VP Finance',             department: 'Finance' },
+  'Risk':             { name: 'Rachel Torres', title: 'VP Risk',                department: 'Risk Management' },
+  'Compliance':       { name: 'David Kim',     title: 'VP Compliance',          department: 'Compliance' },
+  'IR':               { name: 'Rachel Torres', title: 'IR Lead',                department: 'Investor Relations' },
+  'Communications':   { name: 'Chris Taylor',  title: 'VP Communications',      department: 'Comms' },
+};
+
+// Builds war-room Stakeholder objects from the protocol's own tier1/tier2 role arrays.
+function buildStakeholdersFromProtocol(tier1: string[], tier2: string[]): Stakeholder[] {
+  const combined = [
+    ...tier1.map((role, i) => ({ role, tier: 1 as const, idx: i })),
+    ...tier2.map((role, i) => ({ role, tier: 2 as const, idx: tier1.length + i })),
+  ];
+  return combined.map(({ role, tier, idx }) => {
+    const p = ROLE_STAKEHOLDER_MAP[role] || { name: role, title: role, department: 'Executive' };
+    return {
+      id: `proto-s${idx}`,
+      name: p.name,
+      title: p.title,
+      department: p.department,
+      tier,
+      status: 'pending' as StakeholderStatus,
+      initials: p.name.split(' ').map((n: string) => n[0]).join(''),
+      color: AVATAR_COLORS[idx % AVATAR_COLORS.length],
+    };
+  });
+}
+
+// Flattens a protocol's enrichedPhases into the war-room Task format.
+// Each phase maps to IMMEDIATE / SECONDARY / FOLLOW_UP; tasks are capped at 12.
+function buildTasksFromProtocol(phases: any[]): Task[] {
+  if (!Array.isArray(phases) || phases.length === 0) return [];
+  const phaseLabel = (idx: number): 'IMMEDIATE' | 'SECONDARY' | 'FOLLOW_UP' =>
+    idx === 0 ? 'IMMEDIATE' : idx === 1 ? 'SECONDARY' : 'FOLLOW_UP';
+  const out: Task[] = [];
+  phases.forEach((phase, pi) => {
+    if (!Array.isArray(phase.tasks)) return;
+    phase.tasks.forEach((task: any, ti: number) => {
+      const role = (task.role || 'Executive Team').replace(/\s*\(.*?\)/g, '').trim();
+      const items: string[] = Array.isArray(task.items) ? task.items : [];
+      items.slice(0, 2).forEach((item: string, ii: number) => {
+        const name = item.length > 80 ? item.substring(0, 77) + '…' : item;
+        out.push({ id: `proto-t${pi}-${ti}-${ii}`, name, owner: role, phase: phaseLabel(pi), status: 'pending' });
+      });
+    });
+  });
+  return out.slice(0, 12);
+}
+
 function getPlaybookIcon(icon: string) {
   switch (icon) {
     case 'shield': return <Shield className="w-8 h-8" />;
@@ -601,12 +669,28 @@ export default function LiveActivationCenter() {
     startTimeRef.current = Date.now() - DEMO_PRESEED_SECONDS * 1000;
 
     const playbookKey = selectedPlaybook;
-    // email-linked protocols carry the sim key after the colon: "email:ransomware"
-    const simKey = playbookKey.startsWith('email:') ? playbookKey.slice(6) : playbookKey;
+    const isEmailProtocol = playbookKey.startsWith('email:');
+    const simKey = isEmailProtocol ? playbookKey.slice(6) : playbookKey;
     const industryStakeholders = industryOverlay?.stakeholders?.[simKey];
     const industryTasks = industryOverlay?.tasks?.[simKey];
-    const rawStakeholders = (industryStakeholders || DEFAULT_STAKEHOLDERS[simKey] || DEFAULT_STAKEHOLDERS['ma-day1']);
-    const rawTasks = (industryTasks || DEFAULT_TASKS[simKey] || DEFAULT_TASKS['ma-day1']);
+
+    // Priority 1: Use the protocol's own tier1/tier2 stakeholders and enrichedPhases.
+    // These are defined on the protocol itself — not by domain name — and represent
+    // the actual thresholds and roles the protocol specifies for this situation.
+    const proto = isEmailProtocol ? (emailProtocolData as any) : null;
+    const protoTier1: string[] = proto?.tier1Stakeholders || [];
+    const protoTier2: string[] = proto?.tier2Stakeholders || [];
+    const protoPhases: any[] = proto?.enrichedPhases || [];
+
+    const rawStakeholders: Stakeholder[] =
+      (isEmailProtocol && protoTier1.length > 0)
+        ? buildStakeholdersFromProtocol(protoTier1, protoTier2)
+        : (industryStakeholders || DEFAULT_STAKEHOLDERS[simKey] || DEFAULT_STAKEHOLDERS['ma-day1']);
+
+    const rawTasks: Task[] =
+      (isEmailProtocol && protoPhases.length > 0)
+        ? buildTasksFromProtocol(protoPhases)
+        : (industryTasks || DEFAULT_TASKS[simKey] || DEFAULT_TASKS['ma-day1']);
 
     const PRESEED_ACKNOWLEDGED = Math.min(4, Math.floor(rawStakeholders.length * 0.4));
     const PRESEED_TASKS_DONE = Math.min(3, Math.floor(rawTasks.filter(t => t.phase === 'IMMEDIATE').length * 0.5));
