@@ -400,7 +400,7 @@ export default function IndustryDemosHub() {
               {[
                 { label: "Industries Covered", value: "7", sub: "and growing", anim: "idh-stat-1" },
                 { label: "Response Time", value: "12 min", sub: "to live execution", anim: "idh-stat-2" },
-                { label: "Scenarios Available", value: "8", sub: "offense & defense", anim: "idh-stat-3" },
+                { label: "Scenarios Available", value: "8", sub: "growth & resilience", anim: "idh-stat-3" },
                 { label: "Execution Head Start", value: "3,600×", sub: "30 days → 12 minutes", anim: "idh-stat-4" },
               ].map(s => (
                 <div key={s.label} className={s.anim} style={{ padding: "14px 18px" }}>

@@ -854,7 +854,7 @@ export default function TwelveMinuteTestDrive() {
                       </button>
                     </div>
                     {emailStatus === 'error' && (
-                      <p style={{ fontSize: 12, color: '#E05A4A', marginTop: 8, marginBottom: 0 }}>Something went wrong — please try again or email pilot@vaughnmartin.com</p>
+                      <p style={{ fontSize: 12, color: '#E05A4A', marginTop: 8, marginBottom: 0 }}>Something went wrong — please try again or email mbrunke@vaughnmartin.com</p>
                     )}
                   </>
                 )}

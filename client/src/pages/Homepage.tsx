@@ -406,7 +406,7 @@ function HomepageNav() {
           )}
           <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>The Manifesto</Link>
           <Link
-            href="/manufacturing-demo"
+            href="/12-minute-experience"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
             style={{
               ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
@@ -415,7 +415,7 @@ function HomepageNav() {
               border: `1.5px solid rgba(201,168,76,0.5)`,
             }}
           >
-            ▶ Try the Demo →
+            ▶ 12-Minute Experience →
           </Link>
           <Link
             href="/request-access"

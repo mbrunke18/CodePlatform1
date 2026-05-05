@@ -148,9 +148,9 @@ const competitiveAdvantages = [
 ];
 
 const milestones = [
-  { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework implementation", "Enterprise integration architecture", "Interactive demo platform"] },
-  { phase: "Current", items: ["Founding Partner Program now enrolling", "Signal detection refinement", "Enterprise partnership discussions"] },
-  { phase: "Next 12 Months", items: ["First enterprise contracts", "Expanded Readiness Protocol library (250+)", "Industry-specific vertical solutions"] },
+  { phase: "Completed", items: ["170 Readiness Protocols across 9 domains", "IDEA Framework™ — full 4-phase implementation", "Live signal detection — 8 RSS sources, 221 triggers", "12-minute execution engine + war room infrastructure", "Enterprise integration architecture (Microsoft, Jira, ServiceNow, Slack)", "Interactive 12-Minute Test Drive demo platform"] },
+  { phase: "Current — Founding Partner", items: ["Founding Partner Program now enrolling (90-day validation)", "Protocol Builder — custom protocol co-design with partners", "Signal detection refinement across 248+ data points", "Industry Protocol Packs — 6 verticals in development", "Enterprise partnership discussions underway"] },
+  { phase: "Phase 2 — Authorized Automation", items: ["Authorized Automation layer within EXECUTE phase", "Dual-track execution: human workstreams + approved automations run in parallel", "Task execution modes: Human-only · Automation-only · Dual-track", "Policy gates per action — who authorizes, what systems, what limits", "Connectors: Jira, Asana, ServiceNow, Teams, Slack — automated ticket creation, war room setup, briefing distribution", "Full audit trail: every authorized automation logged, every override captured"] },
 ];
 
 const researchCitations = [
@@ -301,15 +301,15 @@ function FuturePositioningDiagram() {
             <Zap className="w-3 h-3" />
             Tomorrow — The AI Operating Layer
           </div>
-          <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">Strategic Intelligence Platform</h3>
-          <p className="text-sm text-[#6B7280] font-medium mb-4">As AI agents proliferate, enterprises need coordination infrastructure — the missing layer between AI capability and enterprise execution. Readiness OS is that layer.</p>
+          <h3 className="text-lg font-bold text-[#0A0F2E] mb-3">Authorized Automation + Strategic Intelligence Platform</h3>
+          <p className="text-sm text-[#6B7280] font-medium mb-4">Phase 2 introduces Authorized Automation — a second execution track where policy-gated automations run in parallel with human teams. Executive authority preserved. No automation fires without pre-authorized policy gates.</p>
           <ul className="space-y-2">
             {[
-              "Coordination infrastructure — not another AI capability tool",
-              "Agentic execution — IDEA agents that execute tasks, not suggest them",
-              "Autonomous trigger detection at scale across 248+ data points",
-              "Institutional memory of every strategic decision",
-              "The operating model every enterprise needs to deploy AI at scale",
+              "Authorized Automation — approved automations parallel to human workstreams",
+              "Dual-track EXECUTE phase: human teams + automated workflows simultaneously",
+              "Policy gates per action — authorization scope, system limits, and override controls",
+              "Continuous signal detection at scale across 248+ data points",
+              "Institutional memory of every strategic decision and activation outcome",
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-[#0A0F2E]/70 font-medium">
                 <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: GOLD }} />
@@ -729,6 +729,97 @@ export default function Investors() {
                   <p className="text-[#6B7280] text-xs font-medium">{phase.desc}</p>
                 </div>
               ))}
+            </div>
+          </motion.div>
+
+          {/* Authorized Automation — Phase 2 */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.52 }} className="mb-20">
+            <div className="bg-white border border-[#E8E4DC] p-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-1.5 h-8 flex-shrink-0" style={{ background: GOLD }} />
+                <div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.22em] mb-0.5" style={{ color: GOLD }}>Phase 2 Roadmap</div>
+                  <h2 className="text-2xl font-bold text-[#0A0F2E] uppercase tracking-widest">Authorized Automation</h2>
+                </div>
+              </div>
+              <p className="text-sm font-medium mb-8 ml-5" style={{ color: '#6B7280' }}>
+                The Founding Partner phase proves the model. Phase 2 adds a second execution track alongside the human workstream —<br />
+                automations that were pre-authorized by executives before the trigger fired, running in parallel, within locked policy gates.
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-0 border border-[#E8E4DC] mb-8">
+                {[
+                  {
+                    label: "Phase 1 — Today",
+                    heading: "Human-Orchestrated Execution",
+                    color: TEAL,
+                    bg: "#EBF5F1",
+                    items: [
+                      "Trigger detected → Readiness Protocol activated",
+                      "Tasks staged and assigned to named executives",
+                      "Executive authorizes — war room launches in 12 minutes",
+                      "Human teams execute the pre-staged playbook",
+                      "Outcome captured → institutional memory built",
+                    ],
+                  },
+                  {
+                    label: "Phase 2 — Authorized Automation",
+                    heading: "Dual-Track Execution",
+                    color: GOLD,
+                    bg: "#FBF8F0",
+                    items: [
+                      "Same trigger detection · same 12-minute activation",
+                      "Track 1: Human workstream executes as before",
+                      "Track 2: Approved automations fire in parallel",
+                      "Policy gates define: who authorized · what systems · what limits",
+                      "Every automation logged — every override captured",
+                    ],
+                  },
+                  {
+                    label: "Phase 2 — Connectors",
+                    heading: "Automation Targets",
+                    color: NAVY,
+                    bg: "#F0F1F7",
+                    items: [
+                      "Jira / Asana — automated ticket creation",
+                      "Microsoft Teams — war room setup + briefing distribution",
+                      "Slack — stakeholder alert dispatch",
+                      "ServiceNow — incident record and workflow trigger",
+                      "Executive audit trail: every action, timestamped",
+                    ],
+                  },
+                ].map((col, i) => (
+                  <div key={i} className="p-6" style={{ background: col.bg, borderRight: i < 2 ? '1px solid #E8E4DC' : 'none', borderTop: `3px solid ${col.color}` }}>
+                    <div className="text-[9px] font-black uppercase tracking-[0.18em] mb-1" style={{ color: col.color }}>{col.label}</div>
+                    <p className="text-sm font-bold text-[#0A0F2E] mb-4">{col.heading}</p>
+                    <ul className="space-y-2">
+                      {col.items.map((item, j) => (
+                        <li key={j} className="flex items-start gap-2 text-xs text-[#0A0F2E]/65 font-medium">
+                          <span className="w-1 h-1 flex-shrink-0 mt-1.5" style={{ background: col.color, display: 'inline-block' }} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="border border-[#E8E4DC] p-5">
+                  <div className="text-[9px] font-black uppercase tracking-[0.18em] mb-2" style={{ color: NAVY }}>The Non-Negotiable</div>
+                  <p className="text-sm font-bold text-[#0A0F2E] mb-2">Executive authority preserved at every step</p>
+                  <p className="text-xs font-medium leading-relaxed" style={{ color: '#6B7280' }}>
+                    No automation fires without pre-authorized policy gates. The executive approves the automation scope before the trigger — not during it. When the trigger fires, the authorization is already in place. The decision was made when there was time to make it carefully.
+                  </p>
+                </div>
+                <div className="border p-5" style={{ borderColor: `${GOLD}60`, background: '#FBF8F0' }}>
+                  <div className="text-[9px] font-black uppercase tracking-[0.22em] mb-2" style={{ color: GOLD }}>The Market Opportunity</div>
+                  <p className="text-sm font-bold text-[#0A0F2E] mb-2">Every enterprise has the tools. None have the model.</p>
+                  <p className="text-xs font-medium leading-relaxed" style={{ color: '#6B7280' }}>
+                    Microsoft, Jira, ServiceNow, and Slack are already deployed. Authorized Automation turns those investments into a coordinated, pre-staged execution machine — with the operating model to govern it. Readiness OS is the orchestration layer they are missing.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
