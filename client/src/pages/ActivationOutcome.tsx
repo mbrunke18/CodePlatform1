@@ -418,7 +418,7 @@ export default function ActivationOutcome() {
                       </div>
 
                       <p style={{ fontSize: 12, color: MUTED, lineHeight: 1.6 }}>
-                        These four questions must be answered before this activation can be closed. This is not administrative overhead — it is the mechanism that makes preparation better before the next trigger fires.
+                        The system does not retain the conditions that made the decision hold. This gate exists because naming the gap requires admitting the governance was not producing the retention it assumed it was. The debrief cannot close until that gap is named and encoded.
                       </p>
 
                       <div>
@@ -439,7 +439,7 @@ export default function ActivationOutcome() {
                         <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>
                           What didn't hold? <span style={{ color: RED }}>*</span>
                         </div>
-                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Where did the preparation fail or deviate under live conditions?</p>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>The system does not retain the conditions that made the decision hold. Name the specific moment it did not.</p>
                         <Textarea
                           value={whatDidntHold || outcome?.whatDidntHold || ""}
                           onChange={e => setWhatDidntHold(e.target.value)}
@@ -451,7 +451,7 @@ export default function ActivationOutcome() {
 
                       <div>
                         <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>What did the preparation not anticipate?</div>
-                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Conditions, decisions, or actors that the Readiness Protocol didn't account for.</p>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>Where was the preparation built around the assumed owner rather than the actual one.</p>
                         <Textarea
                           value={preparationGap || outcome?.preparationGap || ""}
                           onChange={e => setPreparationGap(e.target.value)}
@@ -465,7 +465,7 @@ export default function ActivationOutcome() {
                         <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.1em" }}>
                           One thing to encode for next time <span style={{ color: RED }}>*</span>
                         </div>
-                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>The single most important change that gets built back into the Readiness Protocol before it's used again.</p>
+                        <p style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>This is what turns experience into capability. Without this answer the organization starts from zero next time.</p>
                         <Textarea
                           value={oneThingToEncode || outcome?.oneThingToEncode || ""}
                           onChange={e => setOneThingToEncode(e.target.value)}

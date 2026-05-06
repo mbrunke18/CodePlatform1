@@ -269,9 +269,9 @@ export default function SignalAccountability() {
         <div style={{ padding: "20px 24px", background: `${NAVY}04`, border: `1px solid ${NAVY}15`, borderLeft: `3px solid ${GOLD}`, marginTop: 40 }}>
           <div style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 8 }}>Research Foundation</div>
           <p style={{ ...CG, fontSize: 17, fontWeight: 500, color: NAVY, lineHeight: 1.7, fontStyle: "italic", marginBottom: 8 }}>
-            "Architecture creates the conditions where the choice to ignore is no longer invisible."
+            "Architecture creates the conditions where the choice to ignore is no longer invisible. Awareness determines whether the person actually moves on what the system has made visible. Both functions have to work, or neither does."
           </p>
-          <p style={{ fontSize: 11, color: MUTED }}>Dr. Kerry Huang — ESI Top 1% Researcher, Forbes Business Council · 408-firm study on governance and accountability architecture</p>
+          <p style={{ fontSize: 11, color: MUTED }}>— Dr. Kerry Huang, ESI Top 1% Researcher, 408-firm governance study</p>
           <p style={{ fontSize: 12, color: MUTED, marginTop: 8, lineHeight: 1.6 }}>
             This report is the accountability structure that closes the loop. The system surfaces every classified signal. What the organization does with that visibility is a recorded decision — not an invisible one.
           </p>

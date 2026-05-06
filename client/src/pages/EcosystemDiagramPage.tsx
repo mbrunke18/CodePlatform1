@@ -41,10 +41,14 @@ export default function EcosystemDiagramPage() {
           <h2 style={{
             fontFamily: "'Cormorant Garamond',serif",
             fontSize: "clamp(28px,4vw,44px)", fontWeight: 600,
-            color: NAVY, textAlign: "center", marginBottom: 48, lineHeight: 1.2,
+            color: NAVY, textAlign: "center", marginBottom: 24, lineHeight: 1.2,
           }}>
             A command layer, not a replacement.
           </h2>
+
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#374151", lineHeight: 1.8, maxWidth: 720, margin: "0 auto 48px", textAlign: "center" }}>
+            Technology amplifies whatever system it is applied to. If the coordination architecture does not exist before the trigger fires, AI accelerates the gap, not the response. The operating model layer has to be built before the signal appears.
+          </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
             {[

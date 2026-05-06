@@ -205,6 +205,9 @@ export default function WhyExecutionOS() {
             <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
               AI is now accelerating this pattern. Outputs become defaults. Defaults become actions. By the time someone asks who approved this, it is already done.
             </p>
+            <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.8, marginBottom: 20 }}>
+              AI does not create the gap. It removes the time buffer that used to hide it. Organizations were always unready. AI just accelerated the moment of exposure. The coordination architecture had to be built before the signal appeared. Most organizations discover it was never built at the worst possible moment.
+            </p>
             <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24, marginBottom: 28 }}>
               <p style={{ fontSize: 16, fontWeight: 600, color: NAVY, lineHeight: 1.7, margin: 0 }}>
                 This is not an AI problem. It is an operating model problem that AI is making faster and more visible. The fix is putting executive authorization back into the architecture as a required threshold the system cannot cross without it.

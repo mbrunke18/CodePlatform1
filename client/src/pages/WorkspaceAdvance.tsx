@@ -225,6 +225,9 @@ function ReadinessCompoundsPanel() {
           <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-1">
             Every activation makes your Readiness Protocols smarter. Every debrief closes the gap between what happened and what's pre-staged.
           </p>
+          <p className="text-sm text-[#6B7280] dark:text-[#C9A84C]/60 mt-3" style={{ lineHeight: 1.7 }}>
+            Most organizations experience triggers. Very few encode them back into the system. So every trigger becomes a fresh reaction — the team mobilizes, figures it out under pressure, delivers a response, and then nothing gets formalized into updated decision rights, new escalation logic, or pre-staged responses. The next trigger arrives and they start from zero again. The ADVANCE phase closes that loop. Signal. Trigger. Response. Encoding. Updated architecture. Without encoding, it is just collecting experience. With it, the organization builds capability.
+          </p>
         </div>
         <div style={{ textAlign: 'right', flexShrink: 0 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9CA3AF', marginBottom: 4 }}>Corporate Immune System</div>

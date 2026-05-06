@@ -449,6 +449,9 @@ export default function IDEAFramework() {
               <p className="mt-4 text-base leading-relaxed max-w-2xl mx-auto" style={{ color: MUTED }}>
                 The IDEA loop is not linear — it's a flywheel. ADVANCE feeds IDENTIFY with institutional memory. IDENTIFY feeds DETECT with sharper pattern libraries. DETECT feeds EXECUTE with faster trigger matching. Each cycle compresses the next response.
               </p>
+              <p className="mt-4 text-base leading-relaxed max-w-2xl mx-auto" style={{ color: MUTED }}>
+                Most organizations experience triggers. Very few encode them back into the system. So every trigger becomes a fresh reaction — the team mobilizes, figures it out under pressure, delivers a response, and then nothing gets formalized into updated decision rights, new escalation logic, or pre-staged responses. The next trigger arrives and they start from zero again. The ADVANCE phase closes that loop: Signal → Trigger → Response → Encoding → Updated architecture. Without encoding, the organization is just collecting experience. With it, it is building capability.
+              </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border rounded-sm overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
               {[
