@@ -1,0 +1,13 @@
+The document is ready. Here is what it contains and how to use it.
+What the document covers
+11 changes organized across three priority categories. Every change references the exact file path from rev 28. Every change includes the source practitioner, the date of the exchange, and why it belongs in the product.
+Category One — P1 Copy Changes. Execute first.
+Five text replacements inside existing files. No code changes. The Close-Out Gate description updated with Jayashree’s mechanism. The Signal Accountability Report expanded with Kerry’s full attribution. The word “absent” replacing “weakened” platform-wide. The ADVANCE phase updated with Zhaohui’s encoding framing. The Microsoft ecosystem page updated with Sabina’s technology amplification line.
+Category Two — P2 Section Additions. Execute second.
+Four new sections inside existing pages. William Milne’s pull quote on the homepage. The ADVANCE compounding visual updated on the IDEA Framework page. The Close-Out Gate four field labels sharpened. The AI operating model framing added to the competitive positioning page.
+Category Three — P3 New Pages. Execute last.
+Two new pages with full structure specifications. The Research and Validation page documenting the intellectual lineage of Readiness OS. The Decision-Holding Architecture page mapping Jayashree’s four diagnostic layers to platform capabilities with a formatted comparison table.
+How to hand this to Replit
+Open Replit. Open the AI assistant or a new conversation. Upload or paste this document. Say the following.
+“I need you to execute the changes in this document in order. Start with Category One P1 changes. Reference the developer-reference.md file in the root of the codebase for file locations and component patterns. After all P1 changes are complete confirm with me before moving to P2. Do not run the build until all changes are complete and I have approved them.”
+That instruction gives the Replit agent clear sequencing and a checkpoint before each category so you can review before it proceeds.​​​​​​​​​​​​​​​​
