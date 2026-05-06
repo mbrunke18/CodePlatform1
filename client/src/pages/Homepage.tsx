@@ -2671,6 +2671,18 @@ export default function Homepage() {
       {/* 1. CLAIM */}
       <HeroSection />
 
+      {/* PRACTITIONER PULL QUOTE — William Milne */}
+      <div style={{ background: "#0A0F2E", borderLeft: "3px solid #C9A84C", padding: "32px 48px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(18px,2.2vw,26px)", fontWeight: 500, color: "#F0EDE4", lineHeight: 1.6, fontStyle: "italic", margin: 0 }}>
+            "The twelve minutes happens because the other 29 days and 23 hours of work were done before the trigger ever fired."
+          </p>
+          <p style={{ fontSize: 11, color: "rgba(201,168,76,0.7)", letterSpacing: "0.12em", textTransform: "uppercase", marginTop: 16, fontWeight: 600 }}>
+            William Milne — Managing Director, Racanaa Energy
+          </p>
+        </div>
+      </div>
+
       {/* 2. HOOK — The readiness question */}
       <ScenarioHookSection />
 

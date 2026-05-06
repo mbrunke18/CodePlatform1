@@ -455,7 +455,7 @@ export default function IDEAFramework() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border rounded-sm overflow-hidden" style={{ borderColor: "#E8E4DC" }}>
               {[
-                { phase: "ADVANCE", color: GOLD, arrow: true, body: "AI generates the post-activation debrief. Readiness Protocols self-update. Every execution writes institutional memory forward.", metric: "↑ Institutional IQ" },
+                { phase: "ADVANCE", color: GOLD, arrow: true, body: "Signal. Trigger. Response. Encoding. Updated architecture. Most platforms address the first three. The encoding and the updated architecture are where the preparation compounds. Without those two steps the organization is just collecting experience. With them it is building capability.", metric: "Encoding Makes It Compound" },
                 { phase: "IDENTIFY", color: TEAL, arrow: true, body: "Updated Readiness Protocols sharpen positioning. The next trigger finds a better-staged, more precisely scoped response.", metric: "↑ Pre-staged precision" },
                 { phase: "DETECT", color: GOLD, arrow: true, body: "Signal pattern library grows with each activation. False positives fall. Trigger confidence scores rise.", metric: "↑ Detection accuracy" },
                 { phase: "EXECUTE", color: TEAL, arrow: false, body: "Faster matching, cleaner role distribution, earlier clock start. The 12-minute window tightens with each cycle.", metric: "↓ Mobilization time" },
