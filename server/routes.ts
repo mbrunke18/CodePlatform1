@@ -8806,6 +8806,29 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     }
   });
 
+  // ─── Protocol Signal Profiles ────────────────────────────────────────────────
+  // Per-protocol signal architecture: what signals should fire this protocol,
+  // what leading indicators precede it, what compound patterns include it.
+  // GET  /api/protocol-signal-profiles/:playbookId — fetch profile for a protocol
+  // POST /api/protocol-signal-profiles             — create or update profile
+  app.get('/api/protocol-signal-profiles/:playbookId', async (req: any, res) => {
+    try {
+      const profile = await storage.getProtocolSignalProfile(req.params.playbookId);
+      if (!profile) return res.status(404).json({ error: 'No signal profile found for this protocol' });
+      res.json(profile);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  app.post('/api/protocol-signal-profiles', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { insertProtocolSignalProfileSchema } = await import('@shared/schema');
+      const parsed = insertProtocolSignalProfileSchema.safeParse(req.body);
+      if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten() });
+      const profile = await storage.upsertProtocolSignalProfile(parsed.data);
+      res.json(profile);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
   // ─── Trigger Evaluation Diagnostic ─────────────────────────────────────────
   // Returns a summary of the org's configured triggers and what confidence floors
   // they require — so admins can verify the evaluation engine is wired correctly.

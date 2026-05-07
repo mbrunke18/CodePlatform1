@@ -100,62 +100,92 @@ export default function CompoundThreatAlerts({ compact = false }: { compact?: bo
         </div>
       ) : (
         <div className="space-y-3">
+          {/* ── Full-threshold compound alerts ───────────────────────────── */}
           {active.slice(0, compact ? 2 : 10).map((threat: any) => {
             const cc = confidenceColor(threat.confidence);
+            const subSignals: any[] = Array.isArray(threat.subThresholdSignals) ? threat.subThresholdSignals : [];
             return (
-              <div key={threat.id} className="p-4 border "
+              <div key={threat.id} className="border"
                 style={{ borderColor: `${cc}30`, background: `${cc}04`, borderLeft: `3px solid ${cc}` }}>
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    {/* Domains + confidence */}
-                    <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      {(threat.domains || []).map((d: string) => (
-                        <span key={d} className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5"
-                          style={{ background: `${NAVY}10`, color: NAVY }}>
-                          {d}
+                <div className="p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1 min-w-0">
+                      {/* Domains + confidence */}
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
+                        {(threat.domains || []).map((d: string) => (
+                          <span key={d} className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5"
+                            style={{ background: `${NAVY}10`, color: NAVY }}>
+                            {d}
+                          </span>
+                        ))}
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 animate-pulse" style={{ background: cc }} />
+                          <span className="text-[9px] font-black" style={{ color: cc }}>{threat.confidence}% confidence</span>
+                        </div>
+                        {threat.compoundScore && (
+                          <span className="text-[8px] font-bold px-1.5 py-0.5 uppercase tracking-wider"
+                            style={{ background: `${GOLD}15`, color: GOLD }}>
+                            Compound Score: {threat.compoundScore}%
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Threat type */}
+                      <p className="text-[12px] font-bold mb-1.5" style={{ color: NAVY }}>{threat.threatType}</p>
+
+                      {/* Hypothesis */}
+                      <div className="px-3 py-2 mb-2" style={{ background: `${cc}08`, border: `1px solid ${cc}20` }}>
+                        <div className="flex items-start gap-2">
+                          <Zap className="w-3 h-3 flex-shrink-0 mt-0.5" style={{ color: cc }} />
+                          <p className="text-[10px] text-gray-600 leading-relaxed">{threat.aiHypothesis}</p>
+                        </div>
+                      </div>
+
+                      {/* Historical match */}
+                      {threat.historicalMatch && (
+                        <p className="text-[9px] text-gray-400 mb-1">
+                          <span className="font-bold">Resembles:</span> {threat.historicalMatch}
+                        </p>
+                      )}
+
+                      {/* Actions */}
+                      <div className="flex items-center gap-3 mt-2">
+                        <button className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
+                          <BookOpen className="w-3 h-3" /> Stage Readiness Protocol
+                        </button>
+                        <span className="text-[8px] text-gray-300">·</span>
+                        <span className="text-[9px] text-gray-400">
+                          {threat.detectedAt ? format(new Date(threat.detectedAt), 'MMM d, h:mm a') : ''}
                         </span>
+                      </div>
+                    </div>
+
+                    <button onClick={() => dismissMutation.mutate(threat.id)}
+                      className="flex-shrink-0 hover:opacity-70 transition-opacity text-gray-300 hover:text-gray-500">
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Sub-threshold signal breakdown — shown when compound pattern has contributing signals */}
+                {!compact && subSignals.length > 0 && (
+                  <div style={{ borderTop: `1px solid ${cc}20`, background: `${cc}04`, padding: '10px 16px' }}>
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: NAVY, opacity: 0.6 }}>
+                      Contributing sub-threshold signals ({subSignals.length})
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {subSignals.map((s: any, i: number) => (
+                        <div key={i} className="flex items-center gap-1.5 px-2 py-1"
+                          style={{ background: '#fff', border: '1px solid #E8E4DC', fontSize: 10 }}>
+                          <span className="font-bold" style={{ color: confidenceColor(s.confidence) }}>{s.confidence}%</span>
+                          <span style={{ color: '#6B7280' }}>{s.domain}</span>
+                          <span style={{ color: '#9CA3AF' }}>·</span>
+                          <span style={{ color: NAVY, fontWeight: 600 }}>{s.triggerName}</span>
+                        </div>
                       ))}
-                      <div className="flex items-center gap-1">
-                        <div className="w-1.5 h-1.5 animate-pulse" style={{ background: cc }} />
-                        <span className="text-[9px] font-black" style={{ color: cc }}>{threat.confidence}% confidence</span>
-                      </div>
-                    </div>
-
-                    {/* Threat type */}
-                    <p className="text-[12px] font-bold mb-1.5" style={{ color: NAVY }}>{threat.threatType}</p>
-
-                    {/* AI Hypothesis — styled like an AI alert */}
-                    <div className="px-3 py-2 mb-2" style={{ background: `${cc}08`, border: `1px solid ${cc}20` }}>
-                      <div className="flex items-start gap-2">
-                        <Zap className="w-3 h-3 flex-shrink-0 mt-0.5" style={{ color: cc }} />
-                        <p className="text-[10px] text-gray-600 leading-relaxed">{threat.aiHypothesis}</p>
-                      </div>
-                    </div>
-
-                    {/* Historical match */}
-                    {threat.historicalMatch && (
-                      <p className="text-[9px] text-gray-400 mb-1">
-                        <span className="font-bold">Resembles:</span> {threat.historicalMatch}
-                      </p>
-                    )}
-
-                    {/* Actions */}
-                    <div className="flex items-center gap-3 mt-2">
-                      <button className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider" style={{ color: TEAL }}>
-                        <BookOpen className="w-3 h-3" /> Stage Defense Readiness Protocol
-                      </button>
-                      <span className="text-[8px] text-gray-300">·</span>
-                      <span className="text-[9px] text-gray-400">
-                        {threat.detectedAt ? format(new Date(threat.detectedAt), 'MMM d, h:mm a') : ''}
-                      </span>
                     </div>
                   </div>
-
-                  <button onClick={() => dismissMutation.mutate(threat.id)}
-                    className="flex-shrink-0 hover:opacity-70 transition-opacity text-gray-300 hover:text-gray-500">
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
+                )}
               </div>
             );
           })}

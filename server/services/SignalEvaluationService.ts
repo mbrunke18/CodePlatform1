@@ -769,3 +769,169 @@ export async function getRecentDetections(organizationId: string, limit = 20) {
     .orderBy(desc(triggerDetections.detectedAt))
     .limit(limit);
 }
+
+// ─── Phase 2: Leading Indicator Scoring ──────────────────────────────────────
+// Runs after every ingestion cycle. For each trigger pattern that has seeded
+// leading indicators, checks how many match against the current signal batch.
+// When 2+ indicators converge for the same pattern → creates a detection.
+
+export async function evaluateLeadingIndicators(
+  signals: AnalyzedSignal[],
+  organizationId: string
+): Promise<number> {
+  try {
+    const { leadingIndicators, leadingIndicatorDetections } = await import('@shared/schema');
+
+    const allIndicators = await db.select().from(leadingIndicators);
+    if (allIndicators.length === 0) return 0;
+
+    // Group by triggerPattern
+    const byPattern = new Map<string, typeof allIndicators>();
+    for (const ind of allIndicators) {
+      const list = byPattern.get(ind.triggerPattern) || [];
+      list.push(ind);
+      byPattern.set(ind.triggerPattern, list);
+    }
+
+    let created = 0;
+
+    for (const [pattern, indicators] of Array.from(byPattern.entries())) {
+      const matchedIds: string[] = [];
+
+      for (const indicator of indicators) {
+        const keywords: string[] = Array.isArray(indicator.keywords) ? indicator.keywords : [];
+        if (keywords.length === 0) continue;
+        const hit = signals.some(signal => {
+          const text = (signal.description + ' ' + signal.signalType).toLowerCase();
+          return keywords.some(kw => text.includes(kw.toLowerCase()));
+        });
+        if (hit) matchedIds.push(indicator.id);
+      }
+
+      if (matchedIds.length < 2) continue; // need at least 2 indicators to fire
+
+      const matchScore = (matchedIds.length / Math.max(indicators.length, 1)) * 100;
+
+      // Deduplicate: skip if there's already an unacknowledged detection for this pattern in last 4 hours
+      try {
+        const { and, gte } = await import('drizzle-orm');
+        const cutoff = new Date(Date.now() - 4 * 3600_000);
+        const recent = await db.select().from(leadingIndicatorDetections)
+          .where(
+            and(
+              eq(leadingIndicatorDetections.organizationId, organizationId),
+              eq(leadingIndicatorDetections.triggerPattern, pattern),
+              eq(leadingIndicatorDetections.acknowledged, false)
+            )
+          )
+          .limit(1);
+        if (recent.length > 0) continue;
+      } catch { /* non-critical check */ }
+
+      try {
+        await db.insert(leadingIndicatorDetections).values({
+          organizationId,
+          triggerPattern: pattern,
+          indicatorsMatched: matchedIds.length,
+          totalIndicators: indicators.length,
+          matchScore: String(matchScore.toFixed(1)),
+          matchedIndicatorIds: matchedIds,
+          acknowledged: false,
+        });
+        created++;
+        console.log(`🔮 Leading indicator convergence: "${pattern}" — ${matchedIds.length}/${indicators.length} indicators matched (${matchScore.toFixed(0)}% match score)`);
+      } catch { /* skip insert errors */ }
+    }
+
+    return created;
+  } catch (err) {
+    console.error('[evaluateLeadingIndicators] error:', err);
+    return 0;
+  }
+}
+
+// ─── Phase 2: Compound Sub-threshold Detection ────────────────────────────────
+// Runs after every ingestion cycle. Scores all signals below the main threshold
+// (40–71%). When signals from 2+ distinct domains cluster simultaneously,
+// creates a compound_threat_alert with compoundScore and subThresholdSignals.
+
+export async function evaluateCompoundPatterns(
+  signals: AnalyzedSignal[],
+  organizationId: string
+): Promise<void> {
+  try {
+    const { compoundThreatAlerts } = await import('@shared/schema');
+
+    // Collect sub-threshold hits (scored 40–71%)
+    const subHits: Array<{ triggerName: string; domain: string; confidence: number; source: string }> = [];
+
+    for (const signal of signals) {
+      for (const pattern of TRIGGER_PATTERNS) {
+        const text = signal.description.toLowerCase();
+        const matched = pattern.keywords.filter(kw => text.includes(kw.toLowerCase()));
+        if (matched.length < 2) continue;
+        const score = scoreSignalAgainstPattern(signal, pattern);
+        if (score >= 40 && score < 72) {
+          subHits.push({ triggerName: pattern.name, domain: pattern.domain, confidence: score, source: signal.source });
+        }
+      }
+    }
+
+    if (subHits.length < 2) return;
+
+    // Group by domain — need 2+ distinct domains
+    const domainMap = new Map<string, typeof subHits>();
+    for (const h of subHits) {
+      const list = domainMap.get(h.domain) || [];
+      list.push(h);
+      domainMap.set(h.domain, list);
+    }
+
+    const activeDomains = Array.from(domainMap.keys());
+    if (activeDomains.length < 2) return;
+
+    // Compound score: weighted average of best signal per domain × domain count multiplier
+    const domainPeaks = activeDomains.map(d => Math.max(...(domainMap.get(d)!.map(h => h.confidence))));
+    const avgPeak = domainPeaks.reduce((a, b) => a + b, 0) / domainPeaks.length;
+    const compoundScore = Math.min(95, Math.round(avgPeak * (1 + (activeDomains.length - 1) * 0.08)));
+
+    if (compoundScore < 45) return;
+
+    // Dedup: skip if same domain set fired in last 6 hours
+    const sortedDomains = [...activeDomains].sort();
+    const recentAlerts = await db.select().from(compoundThreatAlerts)
+      .where(eq(compoundThreatAlerts.organizationId, organizationId))
+      .orderBy(desc(compoundThreatAlerts.detectedAt))
+      .limit(10);
+
+    const alreadyExists = recentAlerts.some(r => {
+      const rDomains = [...(Array.isArray(r.domains) ? r.domains : [])].sort();
+      return JSON.stringify(rDomains) === JSON.stringify(sortedDomains)
+        && (Date.now() - new Date(r.detectedAt!).getTime()) < 6 * 3600_000;
+    });
+    if (alreadyExists) return;
+
+    const threatType = `${activeDomains.slice(0, 2).join(' + ')} Compound Pattern`;
+    const hypothesis = `Sub-threshold signals detected simultaneously across ${activeDomains.length} domains: ${activeDomains.join(', ')}. Individual domain scores: ${domainPeaks.map((s, i) => `${activeDomains[i]} (${s}%)`).join(', ')}. Each domain scored below the 72% individual threshold, but cross-domain convergence indicates a compound situation that warrants preparation review before any single domain crosses into full alert.`;
+
+    await db.insert(compoundThreatAlerts).values({
+      organizationId,
+      domains: activeDomains,
+      threatType,
+      confidence: compoundScore,
+      aiHypothesis: hypothesis,
+      status: 'active',
+      compoundScore,
+      subThresholdSignals: subHits.map(h => ({
+        triggerName: h.triggerName,
+        domain: h.domain,
+        confidence: h.confidence,
+        source: h.source,
+      })),
+    } as any);
+
+    console.log(`⚠️ Compound sub-threshold pattern: [${activeDomains.join(' + ')}] compound score ${compoundScore}%`);
+  } catch (err) {
+    console.error('[evaluateCompoundPatterns] error:', err);
+  }
+}

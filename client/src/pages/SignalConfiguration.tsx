@@ -10,7 +10,7 @@ import {
   Search, Zap, Target, TrendingUp, DollarSign, Shield, Activity,
   Users, Globe, Cpu, BarChart3, Eye, BookOpen, AlertTriangle,
   Radio, Leaf, Brain, Star, Building2, Database, Plus, ChevronRight,
-  Settings, CheckCircle2, History, SlidersHorizontal,
+  Settings, CheckCircle2, History, SlidersHorizontal, Layers, Edit,
 } from 'lucide-react';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
@@ -64,7 +64,10 @@ export default function SignalConfiguration() {
   const [wizardCategory, setWizardCategory] = useState('');
   const [editingTrigger, setEditingTrigger] = useState<any>(null);
 
-  const [showCalibration, setShowCalibration] = useState(false);
+  const [showCalibration, setShowCalibration]             = useState(false);
+  const [showSignalProfiles, setShowSignalProfiles]       = useState(false);
+  const [profilePlaybookId, setProfilePlaybookId]         = useState('');
+  const [profileForm, setProfileForm]                     = useState<any>(null);
 
   const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[] }>({
     queryKey: ['/api/signal-monitoring-config'],
@@ -75,6 +78,21 @@ export default function SignalConfiguration() {
   const { data: calibrations } = useQuery<any[]>({
     queryKey: ['/api/signal-calibration'],
     placeholderData: [],
+  });
+
+  const { data: signalProfile, refetch: refetchProfile } = useQuery<any>({
+    queryKey: ['/api/protocol-signal-profiles', profilePlaybookId],
+    enabled: showSignalProfiles && profilePlaybookId.trim().length > 10,
+    retry: false,
+  });
+
+  const upsertProfileMutation = useMutation({
+    mutationFn: (data: any) => apiRequest('POST', '/api/protocol-signal-profiles', data),
+    onSuccess: () => {
+      refetchProfile();
+      toast({ title: 'Signal profile saved', description: 'Protocol signal architecture updated.' });
+    },
+    onError: () => toast({ title: 'Save failed', variant: 'destructive' }),
   });
 
   const disabled: string[] = localDisabled ?? configData?.disabledDataPoints ?? [];
@@ -526,6 +544,242 @@ export default function SignalConfiguration() {
           }}
           editTrigger={editingTrigger}
         />
+      </div>
+
+      {/* ── Protocol Signal Profiles Panel ────────────────────────────────── */}
+      <div className="flex-shrink-0 border-t-2" style={{ borderColor: TEAL }}>
+        <button
+          onClick={() => setShowSignalProfiles(v => !v)}
+          className="w-full flex items-center justify-between px-6 py-3 bg-white hover:bg-[#F8F7F4] transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <Layers className="w-4 h-4" style={{ color: TEAL }} />
+            <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>
+              Protocol Signal Profiles
+            </span>
+            <span className="text-[9px] font-medium px-2 py-0.5 border" style={{ color: TEAL, borderColor: 'rgba(43,138,110,0.3)' }}>
+              Signal architecture per protocol
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-400 font-medium">
+              {showSignalProfiles ? 'Collapse' : 'Expand'}
+            </span>
+            <Layers className="w-3.5 h-3.5 text-gray-400" />
+          </div>
+        </button>
+
+        {showSignalProfiles && (
+          <div className="px-6 pb-6 bg-[#F8F7F4] border-t border-[#E8E4DC]">
+            <p className="text-[10px] text-gray-500 pt-4 pb-3 max-w-2xl">
+              Every Readiness Protocol has a signal architecture — the specific data points, leading indicators, and compound patterns that should trigger it. Enter a Protocol ID to view or configure its signal profile.
+            </p>
+
+            {/* Lookup input */}
+            <div className="flex items-center gap-3 mb-4">
+              <Input
+                placeholder="Protocol ID (UUID)…"
+                value={profilePlaybookId}
+                onChange={e => setProfilePlaybookId(e.target.value)}
+                className="max-w-sm h-9 border-[#E8E4DC] text-xs bg-white"
+              />
+              <Button
+                size="sm"
+                disabled={profilePlaybookId.trim().length < 10}
+                onClick={() => refetchProfile()}
+                style={{ background: TEAL, color: '#fff', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}
+              >
+                Load Profile
+              </Button>
+            </div>
+
+            {signalProfile ? (
+              <div className="space-y-4">
+                {/* Profile header */}
+                <div className="flex items-center gap-4 px-4 py-3 bg-white border border-[#E8E4DC]">
+                  <div className="w-2 h-2 flex-shrink-0" style={{ background: TEAL }} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-bold" style={{ color: NAVY }}>
+                      {signalProfile.triggerPattern || 'Signal Profile'}
+                    </p>
+                    <p className="text-[9px] text-gray-400">
+                      Version {signalProfile.profileVersion ?? 1}
+                      {' · '}Generated by: <strong>{signalProfile.generatedBy ?? 'system'}</strong>
+                      {signalProfile.reviewedAt && ` · Reviewed: ${new Date(signalProfile.reviewedAt).toLocaleDateString()}`}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setProfileForm({
+                      playbookId: signalProfile.playbookId,
+                      triggerPattern: signalProfile.triggerPattern,
+                      primarySignals: JSON.stringify(signalProfile.primarySignals ?? [], null, 2),
+                      leadingIndicators: JSON.stringify(signalProfile.leadingIndicators ?? [], null, 2),
+                      compoundTriggers: JSON.stringify(signalProfile.compoundTriggers ?? [], null, 2),
+                    })}
+                    className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5"
+                    style={{ background: NAVY, color: '#fff' }}
+                  >
+                    <Edit className="w-3 h-3" /> Edit
+                  </button>
+                </div>
+
+                {/* Primary signals */}
+                {(signalProfile.primarySignals?.length ?? 0) > 0 && (
+                  <div>
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: NAVY, opacity: 0.6 }}>
+                      Primary Signals ({signalProfile.primarySignals.length})
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {signalProfile.primarySignals.map((s: any, i: number) => (
+                        <div key={i} className="px-3 py-1.5 bg-white border border-[#E8E4DC] text-[10px]">
+                          <span className="font-bold" style={{ color: NAVY }}>{s.dataPoint ?? s.name ?? `Signal ${i + 1}`}</span>
+                          {s.threshold && <span className="text-gray-400 ml-2">threshold: {s.threshold}</span>}
+                          {s.weight && <span className="ml-2 font-bold" style={{ color: GOLD }}>×{s.weight}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Leading indicators */}
+                {(signalProfile.leadingIndicators?.length ?? 0) > 0 && (
+                  <div>
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: NAVY, opacity: 0.6 }}>
+                      Leading Indicators ({signalProfile.leadingIndicators.length})
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {signalProfile.leadingIndicators.map((ind: any, i: number) => (
+                        <div key={i} className="px-3 py-1.5 bg-white border border-[#E8E4DC] text-[10px]">
+                          <span className="font-bold" style={{ color: TEAL }}>{ind.indicator ?? ind.name ?? `Indicator ${i + 1}`}</span>
+                          {ind.source && <span className="text-gray-400 ml-2">via {ind.source}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Compound triggers */}
+                {(signalProfile.compoundTriggers?.length ?? 0) > 0 && (
+                  <div>
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: NAVY, opacity: 0.6 }}>
+                      Compound Patterns ({signalProfile.compoundTriggers.length})
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {signalProfile.compoundTriggers.map((ct: any, i: number) => (
+                        <div key={i} className="px-3 py-1.5 bg-white border border-[#E8E4DC] text-[10px]">
+                          <span className="font-bold" style={{ color: '#F97316' }}>{ct.domain ?? `Domain ${i + 1}`}</span>
+                          {ct.signalPattern && <span className="text-gray-400 ml-2">{ct.signalPattern}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : profilePlaybookId.trim().length > 10 ? (
+              <div className="flex items-center gap-3 py-4 px-4 bg-white border border-[#E8E4DC] text-gray-400">
+                <Layers className="w-4 h-4 flex-shrink-0" />
+                <div>
+                  <p className="text-xs font-semibold" style={{ color: NAVY }}>No signal profile defined yet</p>
+                  <p className="text-[10px] mt-0.5">This protocol hasn't had a signal architecture configured. Click below to create one.</p>
+                </div>
+                <button
+                  onClick={() => setProfileForm({ playbookId: profilePlaybookId, triggerPattern: '', primarySignals: '[]', leadingIndicators: '[]', compoundTriggers: '[]' })}
+                  className="ml-auto flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1.5 flex-shrink-0"
+                  style={{ background: TEAL, color: '#fff' }}
+                >
+                  <Plus className="w-3 h-3" /> Create Profile
+                </button>
+              </div>
+            ) : null}
+
+            {/* Inline editor */}
+            {profileForm && (
+              <div className="mt-4 p-4 bg-white border border-[#E8E4DC] space-y-3">
+                <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>
+                  {signalProfile ? 'Edit Signal Profile' : 'Create Signal Profile'}
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">Trigger Pattern Name</label>
+                    <Input
+                      value={profileForm.triggerPattern}
+                      onChange={e => setProfileForm((f: any) => ({ ...f, triggerPattern: e.target.value }))}
+                      className="h-8 text-xs border-[#E8E4DC]"
+                      placeholder="e.g. Activist Investor Pressure"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">Protocol ID</label>
+                    <Input value={profileForm.playbookId ?? profilePlaybookId} readOnly className="h-8 text-xs border-[#E8E4DC] bg-[#F8F7F4] text-gray-400" />
+                  </div>
+                </div>
+                <div>
+                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                    Primary Signals <span className="font-normal normal-case text-gray-400">(JSON array — each: {'{ "dataPoint": "...", "threshold": "...", "weight": 1 }'})</span>
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={profileForm.primarySignals}
+                    onChange={e => setProfileForm((f: any) => ({ ...f, primarySignals: e.target.value }))}
+                    className="w-full text-[10px] font-mono border border-[#E8E4DC] p-2 resize-y bg-[#F8F7F4]"
+                  />
+                </div>
+                <div>
+                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                    Leading Indicators <span className="font-normal normal-case text-gray-400">(JSON array — each: {'{ "indicator": "...", "source": "...", "weight": 1 }'})</span>
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={profileForm.leadingIndicators}
+                    onChange={e => setProfileForm((f: any) => ({ ...f, leadingIndicators: e.target.value }))}
+                    className="w-full text-[10px] font-mono border border-[#E8E4DC] p-2 resize-y bg-[#F8F7F4]"
+                  />
+                </div>
+                <div>
+                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                    Compound Triggers <span className="font-normal normal-case text-gray-400">(JSON array — each: {'{ "domain": "...", "signalPattern": "...", "weight": 1 }'})</span>
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={profileForm.compoundTriggers}
+                    onChange={e => setProfileForm((f: any) => ({ ...f, compoundTriggers: e.target.value }))}
+                    className="w-full text-[10px] font-mono border border-[#E8E4DC] p-2 resize-y bg-[#F8F7F4]"
+                  />
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button
+                    size="sm"
+                    disabled={upsertProfileMutation.isPending || !profileForm.triggerPattern}
+                    onClick={() => {
+                      try {
+                        upsertProfileMutation.mutate({
+                          playbookId: profileForm.playbookId ?? profilePlaybookId,
+                          triggerPattern: profileForm.triggerPattern,
+                          primarySignals: JSON.parse(profileForm.primarySignals || '[]'),
+                          leadingIndicators: JSON.parse(profileForm.leadingIndicators || '[]'),
+                          compoundTriggers: JSON.parse(profileForm.compoundTriggers || '[]'),
+                          generatedBy: 'manual',
+                        });
+                        setProfileForm(null);
+                      } catch {
+                        toast({ title: 'Invalid JSON', description: 'Check your signal arrays for JSON syntax errors.', variant: 'destructive' });
+                      }
+                    }}
+                    style={{ background: TEAL, color: '#fff', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                  >
+                    {upsertProfileMutation.isPending ? 'Saving…' : 'Save Profile'}
+                  </Button>
+                  <button
+                    onClick={() => setProfileForm(null)}
+                    className="text-[10px] font-bold uppercase tracking-wider text-gray-400 hover:text-gray-600"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* ── Calibration History Panel ──────────────────────────────────────── */}

@@ -1,7 +1,7 @@
 import { db } from '../db.js';
 import { weakSignals, strategicAlerts } from '@shared/schema';
 import { eq, desc, sql } from 'drizzle-orm';
-import { evaluateAndPersistSignals } from './SignalEvaluationService.js';
+import { evaluateAndPersistSignals, evaluateLeadingIndicators, evaluateCompoundPatterns } from './SignalEvaluationService.js';
 
 interface RSSItem {
   title: string;
@@ -258,6 +258,15 @@ class LiveSignalIngestionService {
 
     // ── Tier 5: evaluate signals against trigger patterns ──────────────────
     const detections = await evaluateAndPersistSignals(signals, organizationId);
+
+    // ── Tier 6: leading indicator convergence scoring ──────────────────────
+    const leadingHits = await evaluateLeadingIndicators(signals, organizationId);
+    if (leadingHits > 0) {
+      console.log(`   🔮 ${leadingHits} developing situation(s) detected via leading indicators`);
+    }
+
+    // ── Tier 7: compound sub-threshold pattern detection ──────────────────
+    await evaluateCompoundPatterns(signals, organizationId);
 
     console.log(`   ✅ Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
     return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
