@@ -204,6 +204,8 @@ __export(schema_exports, {
   insertIntuitionRecordSchema: () => insertIntuitionRecordSchema,
   insertInvestorLeadSchema: () => insertInvestorLeadSchema,
   insertKpiSchema: () => insertKpiSchema,
+  insertLeadingIndicatorDetectionSchema: () => insertLeadingIndicatorDetectionSchema,
+  insertLeadingIndicatorSchema: () => insertLeadingIndicatorSchema,
   insertLearningPatternSchema: () => insertLearningPatternSchema,
   insertMagicLinkTokenSchema: () => insertMagicLinkTokenSchema,
   insertMckChangeReadinessCheckSchema: () => insertMckChangeReadinessCheckSchema,
@@ -247,6 +249,7 @@ __export(schema_exports, {
   insertPreparednessScoreSchema: () => insertPreparednessScoreSchema,
   insertPrismInsightSchema: () => insertPrismInsightSchema,
   insertProjectSchema: () => insertProjectSchema,
+  insertProtocolSignalProfileSchema: () => insertProtocolSignalProfileSchema,
   insertPulseMetricSchema: () => insertPulseMetricSchema,
   insertQuickStartTemplateSchema: () => insertQuickStartTemplateSchema,
   insertReadinessAssessmentSchema: () => insertReadinessAssessmentSchema,
@@ -261,7 +264,11 @@ __export(schema_exports, {
   insertScenarioStakeholderSchema: () => insertScenarioStakeholderSchema,
   insertScenarioSuccessMetricSchema: () => insertScenarioSuccessMetricSchema,
   insertSignalActivityLogSchema: () => insertSignalActivityLogSchema,
+  insertSignalCalibrationConfigSchema: () => insertSignalCalibrationConfigSchema,
+  insertSignalConnectorSchema: () => insertSignalConnectorSchema,
   insertSignalMonitoringConfigSchema: () => insertSignalMonitoringConfigSchema,
+  insertSignalOntologyEdgeSchema: () => insertSignalOntologyEdgeSchema,
+  insertSignalOntologyNodeSchema: () => insertSignalOntologyNodeSchema,
   insertSimulationAnalysisSchema: () => insertSimulationAnalysisSchema,
   insertSituationIntentSchema: () => insertSituationIntentSchema,
   insertStakeholderAlignmentSchema: () => insertStakeholderAlignmentSchema,
@@ -300,6 +307,8 @@ __export(schema_exports, {
   jobStatusEnum: () => jobStatusEnum,
   kpis: () => kpis,
   kpisRelations: () => kpisRelations,
+  leadingIndicatorDetections: () => leadingIndicatorDetections,
+  leadingIndicators: () => leadingIndicators,
   learnItemTypeEnum: () => learnItemTypeEnum,
   learningPatterns: () => learningPatterns,
   learningPatternsRelations: () => learningPatternsRelations,
@@ -376,6 +385,7 @@ __export(schema_exports, {
   prismInsightsRelations: () => prismInsightsRelations,
   projects: () => projects,
   projectsRelations: () => projectsRelations,
+  protocolSignalProfiles: () => protocolSignalProfiles,
   pulseMetrics: () => pulseMetrics,
   pulseMetricsRelations: () => pulseMetricsRelations,
   quickStartTemplates: () => quickStartTemplates,
@@ -407,7 +417,11 @@ __export(schema_exports, {
   selectUserSchema: () => selectUserSchema,
   sessions: () => sessions,
   signalActivityLog: () => signalActivityLog,
+  signalCalibrationConfig: () => signalCalibrationConfig,
+  signalConnectors: () => signalConnectors,
   signalMonitoringConfig: () => signalMonitoringConfig,
+  signalOntologyEdges: () => signalOntologyEdges,
+  signalOntologyNodes: () => signalOntologyNodes,
   simulationAnalyses: () => simulationAnalyses,
   simulationResults: () => simulationResults,
   simulationStatusEnum: () => simulationStatusEnum,
@@ -461,6 +475,7 @@ import {
   primaryKey,
   integer as integer2,
   decimal,
+  numeric,
   boolean,
   pgEnum,
   serial as serial2,
@@ -469,7 +484,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -5989,7 +6004,11 @@ var init_schema = __esm({
       historicalMatch: text2("historical_match"),
       stagedPlaybookId: uuid("staged_playbook_id"),
       status: text2("status").notNull().default("active"),
-      detectedAt: timestamp2("detected_at").defaultNow()
+      detectedAt: timestamp2("detected_at").defaultNow(),
+      // Phase 2 — Cross-Domain Compound Detection
+      compoundScore: integer2("compound_score"),
+      subThresholdSignals: jsonb("sub_threshold_signals")
+      // [{detectionId, triggerName, domain, confidence}]
     });
     insertCompoundThreatAlertSchema = createInsertSchema2(compoundThreatAlerts).omit({ id: true, detectedAt: true });
     roiSnapshots = pgTable2("roi_snapshots", {
@@ -6174,8 +6193,13 @@ var init_schema = __esm({
       // detected | notified | acknowledged | dismissed
       notificationSent: boolean("notification_sent").default(false),
       detectedAt: timestamp2("detected_at").defaultNow(),
-      matchedEvidence: jsonb("matched_evidence")
+      matchedEvidence: jsonb("matched_evidence"),
       // { conditionsMet: number, totalConditions: number, dataPoints: string[], matchedKeywords: string[], engine: string }
+      // Phase 1 — Organizational Context Scoring
+      urgencyLevel: varchar("urgency_level", { length: 20 }).default("STANDARD"),
+      // CRITICAL | HIGH | STANDARD | READY
+      orgReadiness: integer2("org_readiness")
+      // preparedness score at time of detection (0-100)
     });
     insertTriggerDetectionSchema = createInsertSchema2(triggerDetections).omit({ id: true, detectedAt: true });
     executionTimelines = pgTable2("execution_timelines", {
@@ -6292,6 +6316,112 @@ var init_schema = __esm({
       addedAt: timestamp2("added_at").defaultNow().notNull()
     });
     insertAllowedEmailSchema = createInsertSchema2(allowedEmails).omit({ id: true, addedAt: true });
+    signalCalibrationConfig = pgTable2("signal_calibration_config", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: text2("organization_id").notNull(),
+      triggerPattern: text2("trigger_pattern").notNull(),
+      // matches TRIGGER_PATTERNS[].name
+      confidenceAdjust: numeric("confidence_adjust").default("0"),
+      // +/- adjustment on base confidence
+      keywordWeights: jsonb("keyword_weights").default({}),
+      // per-keyword weight multipliers
+      sensitivityLevel: varchar("sensitivity_level", { length: 20 }).default("standard"),
+      // high|standard|low
+      calibrationCount: integer2("calibration_count").default(0),
+      // activations that informed this
+      lastCalibrated: timestamp2("last_calibrated"),
+      createdAt: timestamp2("created_at").defaultNow(),
+      updatedAt: timestamp2("updated_at").defaultNow()
+    });
+    insertSignalCalibrationConfigSchema = createInsertSchema2(signalCalibrationConfig).omit({ id: true, createdAt: true, updatedAt: true });
+    leadingIndicators = pgTable2("leading_indicators", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      triggerPattern: text2("trigger_pattern").notNull(),
+      // matches TRIGGER_PATTERNS[].name
+      indicatorName: text2("indicator_name").notNull(),
+      indicatorType: varchar("indicator_type", { length: 30 }).notNull(),
+      // keyword|source|pattern|frequency
+      signalSource: text2("signal_source"),
+      // which RSS feed or data source
+      keywords: text2("keywords").array().default([]),
+      // keyword list for this indicator
+      weight: numeric("weight").default("1"),
+      // relative importance
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertLeadingIndicatorSchema = createInsertSchema2(leadingIndicators).omit({ id: true, createdAt: true });
+    leadingIndicatorDetections = pgTable2("leading_indicator_detections", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: text2("organization_id").notNull(),
+      triggerPattern: text2("trigger_pattern").notNull(),
+      indicatorsMatched: integer2("indicators_matched").default(0),
+      totalIndicators: integer2("total_indicators").default(0),
+      matchScore: numeric("match_score").default("0"),
+      // 0-100 composite match score
+      matchedIndicatorIds: text2("matched_indicator_ids").array().default([]),
+      detectedAt: timestamp2("detected_at").defaultNow(),
+      acknowledged: boolean("acknowledged").default(false),
+      playbookId: uuid("playbook_id")
+    });
+    insertLeadingIndicatorDetectionSchema = createInsertSchema2(leadingIndicatorDetections).omit({ id: true, detectedAt: true });
+    signalConnectors = pgTable2("signal_connectors", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      organizationId: text2("organization_id"),
+      // null = platform-level
+      connectorType: varchar("connector_type", { length: 30 }).notNull(),
+      // rss|api|webhook|document|database|microsoft365|salesforce|financial_erp
+      name: text2("name").notNull(),
+      description: text2("description"),
+      config: jsonb("config").notNull().default({}),
+      // connector-specific configuration
+      enabled: boolean("enabled").default(true),
+      pollIntervalMin: integer2("poll_interval_min").default(15),
+      lastPolledAt: timestamp2("last_polled_at"),
+      errorCount: integer2("error_count").default(0),
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertSignalConnectorSchema = createInsertSchema2(signalConnectors).omit({ id: true, createdAt: true });
+    protocolSignalProfiles = pgTable2("protocol_signal_profiles", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      playbookId: uuid("playbook_id"),
+      // references strategic_scenarios.id
+      triggerPattern: text2("trigger_pattern").notNull(),
+      primarySignals: jsonb("primary_signals").notNull().default([]),
+      // [{dataPoint, threshold, weight}]
+      leadingIndicators: jsonb("leading_indicators").notNull().default([]),
+      // [{indicator, source, keywords, weight}]
+      compoundTriggers: jsonb("compound_triggers").default([]),
+      // [{domain, signalPattern, weight}]
+      contextModifiers: jsonb("context_modifiers").default([]),
+      // [{condition, confidenceAdjust}]
+      profileVersion: integer2("profile_version").default(1),
+      generatedBy: varchar("generated_by", { length: 20 }).default("system"),
+      // system|manual|ai-assisted
+      reviewedAt: timestamp2("reviewed_at"),
+      createdAt: timestamp2("created_at").defaultNow(),
+      updatedAt: timestamp2("updated_at").defaultNow()
+    });
+    insertProtocolSignalProfileSchema = createInsertSchema2(protocolSignalProfiles).omit({ id: true, createdAt: true, updatedAt: true });
+    signalOntologyNodes = pgTable2("signal_ontology_nodes", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      nodeType: varchar("node_type", { length: 30 }).notNull(),
+      // signal|trigger|domain|context
+      nodeKey: text2("node_key").notNull(),
+      properties: jsonb("properties").default({})
+    });
+    insertSignalOntologyNodeSchema = createInsertSchema2(signalOntologyNodes).omit({ id: true });
+    signalOntologyEdges = pgTable2("signal_ontology_edges", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      fromNodeId: uuid("from_node_id").references(() => signalOntologyNodes.id),
+      toNodeId: uuid("to_node_id").references(() => signalOntologyNodes.id),
+      edgeType: varchar("edge_type", { length: 30 }).notNull(),
+      // precedes|amplifies|contradicts|confirms
+      weight: numeric("weight").default("1.0"),
+      evidenceCount: integer2("evidence_count").default(0),
+      // activations supporting this edge
+      lastUpdated: timestamp2("last_updated").defaultNow()
+    });
+    insertSignalOntologyEdgeSchema = createInsertSchema2(signalOntologyEdges).omit({ id: true });
   }
 });
 
@@ -11328,6 +11458,142 @@ var init_storage = __esm({
         await db.execute(sql3`DELETE FROM enterprise_integrations WHERE id = ${id}`);
       }
       // ─── Signal Monitoring Config ────────────────────────────────────────────────
+      // ─── Phase 1: Signal Calibration (Preparation-Calibrated Thresholds) ─────────
+      async getSignalCalibration(organizationId, triggerPattern) {
+        try {
+          const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { eq: eq51, and: and30 } = await import("drizzle-orm");
+          const [row] = await db.select().from(signalCalibrationConfig2).where(and30(
+            eq51(signalCalibrationConfig2.organizationId, organizationId),
+            eq51(signalCalibrationConfig2.triggerPattern, triggerPattern)
+          ));
+          return row ?? null;
+        } catch {
+          return null;
+        }
+      }
+      async upsertSignalCalibration(data) {
+        const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { eq: eq51, and: and30 } = await import("drizzle-orm");
+        const existing = await this.getSignalCalibration(data.organizationId, data.triggerPattern);
+        if (existing) {
+          const [updated] = await db.update(signalCalibrationConfig2).set({
+            confidenceAdjust: String(data.confidenceAdjust ?? 0),
+            keywordWeights: data.keywordWeights ?? {},
+            sensitivityLevel: data.sensitivityLevel ?? "standard",
+            calibrationCount: (existing.calibrationCount ?? 0) + 1,
+            lastCalibrated: /* @__PURE__ */ new Date(),
+            updatedAt: /* @__PURE__ */ new Date()
+          }).where(and30(
+            eq51(signalCalibrationConfig2.organizationId, data.organizationId),
+            eq51(signalCalibrationConfig2.triggerPattern, data.triggerPattern)
+          )).returning();
+          return updated;
+        }
+        const [created] = await db.insert(signalCalibrationConfig2).values({
+          organizationId: data.organizationId,
+          triggerPattern: data.triggerPattern,
+          confidenceAdjust: String(data.confidenceAdjust ?? 0),
+          keywordWeights: data.keywordWeights ?? {},
+          sensitivityLevel: data.sensitivityLevel ?? "standard",
+          calibrationCount: 1,
+          lastCalibrated: /* @__PURE__ */ new Date()
+        }).returning();
+        return created;
+      }
+      async getSignalCalibrations(organizationId) {
+        try {
+          const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { eq: eq51 } = await import("drizzle-orm");
+          return await db.select().from(signalCalibrationConfig2).where(eq51(signalCalibrationConfig2.organizationId, organizationId)).orderBy(desc(signalCalibrationConfig2.lastCalibrated));
+        } catch {
+          return [];
+        }
+      }
+      // ─── Phase 2: Leading Indicators ─────────────────────────────────────────────
+      async getLeadingIndicators(triggerPattern) {
+        try {
+          const { leadingIndicators: leadingIndicators2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { eq: eq51 } = await import("drizzle-orm");
+          if (triggerPattern) {
+            return await db.select().from(leadingIndicators2).where(eq51(leadingIndicators2.triggerPattern, triggerPattern));
+          }
+          return await db.select().from(leadingIndicators2);
+        } catch {
+          return [];
+        }
+      }
+      async createLeadingIndicatorDetection(data) {
+        const { leadingIndicatorDetections: leadingIndicatorDetections2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const [row] = await db.insert(leadingIndicatorDetections2).values(data).returning();
+        return row;
+      }
+      async getLeadingIndicatorDetections(organizationId, includeAcknowledged = false) {
+        try {
+          const { leadingIndicatorDetections: leadingIndicatorDetections2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { eq: eq51, and: and30 } = await import("drizzle-orm");
+          if (includeAcknowledged) {
+            return await db.select().from(leadingIndicatorDetections2).where(eq51(leadingIndicatorDetections2.organizationId, organizationId)).orderBy(desc(leadingIndicatorDetections2.detectedAt));
+          }
+          return await db.select().from(leadingIndicatorDetections2).where(and30(
+            eq51(leadingIndicatorDetections2.organizationId, organizationId),
+            eq51(leadingIndicatorDetections2.acknowledged, false)
+          )).orderBy(desc(leadingIndicatorDetections2.detectedAt));
+        } catch {
+          return [];
+        }
+      }
+      async acknowledgeLeadingIndicatorDetection(id) {
+        const { leadingIndicatorDetections: leadingIndicatorDetections2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { eq: eq51 } = await import("drizzle-orm");
+        await db.update(leadingIndicatorDetections2).set({ acknowledged: true }).where(eq51(leadingIndicatorDetections2.id, id));
+      }
+      // ─── Phase 3: Signal Connectors ───────────────────────────────────────────────
+      async getSignalConnectors(organizationId) {
+        try {
+          const { signalConnectors: signalConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { eq: eq51, or: or2, isNull: isNull5 } = await import("drizzle-orm");
+          if (organizationId) {
+            return await db.select().from(signalConnectors2).where(or2(isNull5(signalConnectors2.organizationId), eq51(signalConnectors2.organizationId, organizationId)));
+          }
+          return await db.select().from(signalConnectors2).orderBy(signalConnectors2.name);
+        } catch {
+          return [];
+        }
+      }
+      async createSignalConnector(data) {
+        const { signalConnectors: signalConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const [row] = await db.insert(signalConnectors2).values(data).returning();
+        return row;
+      }
+      async updateSignalConnector(id, data) {
+        const { signalConnectors: signalConnectors2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { eq: eq51 } = await import("drizzle-orm");
+        const [row] = await db.update(signalConnectors2).set(data).where(eq51(signalConnectors2.id, id)).returning();
+        return row;
+      }
+      // ─── Phase 3: Protocol Signal Profiles ──────────────────────────────────────
+      async getProtocolSignalProfile(playbookId) {
+        try {
+          const { protocolSignalProfiles: protocolSignalProfiles2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+          const { eq: eq51 } = await import("drizzle-orm");
+          const [row] = await db.select().from(protocolSignalProfiles2).where(eq51(protocolSignalProfiles2.playbookId, playbookId));
+          return row ?? null;
+        } catch {
+          return null;
+        }
+      }
+      async upsertProtocolSignalProfile(data) {
+        const { protocolSignalProfiles: protocolSignalProfiles2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { eq: eq51 } = await import("drizzle-orm");
+        const existing = data.playbookId ? await this.getProtocolSignalProfile(data.playbookId) : null;
+        if (existing) {
+          const [updated] = await db.update(protocolSignalProfiles2).set({ ...data, updatedAt: /* @__PURE__ */ new Date() }).where(eq51(protocolSignalProfiles2.id, existing.id)).returning();
+          return updated;
+        }
+        const [created] = await db.insert(protocolSignalProfiles2).values(data).returning();
+        return created;
+      }
       async getSignalMonitoringConfig(organizationId) {
         const [config] = await db.select().from(signalMonitoringConfig).where(eq(signalMonitoringConfig.organizationId, organizationId)).limit(1);
         return config || null;
@@ -19829,6 +20095,33 @@ async function evaluateAndPersistSignals(signals, organizationId) {
       } else {
         console.log(`\u{1F4EC} No domain approvers for "${detection.triggerDomain}" \u2014 sending to ${contactEmails.length} org-wide contact(s)`);
       }
+      let urgencyLevel = "STANDARD";
+      let orgReadiness = null;
+      try {
+        const { signalCalibrationConfig: signalCalibrationConfig2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+        const { eq: eq51, and: and30 } = await import("drizzle-orm");
+        const [cal] = await db.select().from(signalCalibrationConfig2).where(
+          and30(
+            eq51(signalCalibrationConfig2.organizationId, organizationId),
+            eq51(signalCalibrationConfig2.triggerPattern, detection.triggerName)
+          )
+        );
+        if (cal) {
+          orgReadiness = cal.calibrationCount ?? 0;
+          const calibratedScore = detection.confidenceScore + Number(cal.confidenceAdjust ?? 0);
+          if (calibratedScore >= 80 && (cal.calibrationCount ?? 0) < 2) {
+            urgencyLevel = "CRITICAL";
+          } else if (calibratedScore >= 72 && (cal.calibrationCount ?? 0) < 5) {
+            urgencyLevel = "HIGH";
+          } else if ((cal.calibrationCount ?? 0) >= 5) {
+            urgencyLevel = "READY";
+          }
+        } else {
+          if (detection.confidenceScore >= 80) urgencyLevel = "CRITICAL";
+          else if (detection.confidenceScore >= 72) urgencyLevel = "HIGH";
+        }
+      } catch {
+      }
       const [savedDetection] = await db.insert(triggerDetections).values({
         organizationId,
         triggerName: detection.triggerName,
@@ -19841,6 +20134,8 @@ async function evaluateAndPersistSignals(signals, organizationId) {
         alternatePlaybooks: detection.alternatePlaybooks,
         status: "detected",
         notificationSent: false,
+        urgencyLevel,
+        orgReadiness,
         matchedEvidence: {
           engine,
           conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,
@@ -49048,7 +49343,9 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
           ageMinutes,
           cycles,
           escalated,
-          escalationLevel: escalated ? cycles >= 4 ? "BOARD" : "EXECUTIVE" : "MONITORING"
+          escalationLevel: escalated ? cycles >= 4 ? "BOARD" : "EXECUTIVE" : "MONITORING",
+          urgencyLevel: d.urgencyLevel ?? "STANDARD",
+          orgReadiness: d.orgReadiness ?? null
         };
       });
       const boardEscalated = unacted.filter((s) => s.escalationLevel === "BOARD");
@@ -49981,6 +50278,89 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     }
   });
   console.log("\u2705 Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config");
+  app2.get("/api/signal-calibration", async (req, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.json([]);
+      const calibrations = await storage.getSignalCalibrations(orgId);
+      res.json(calibrations);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/signal-calibration", requireOrgAccess2, async (req, res) => {
+    try {
+      const orgId = req.user.organizationId;
+      const { triggerPattern, confidenceAdjust, keywordWeights, sensitivityLevel } = req.body;
+      if (!triggerPattern) return res.status(400).json({ error: "triggerPattern is required" });
+      const result = await storage.upsertSignalCalibration({
+        organizationId: orgId,
+        triggerPattern,
+        confidenceAdjust: Number(confidenceAdjust ?? 0),
+        keywordWeights: keywordWeights ?? {},
+        sensitivityLevel: sensitivityLevel ?? "standard"
+      });
+      res.json(result);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/leading-indicator-detections", async (req, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.json([]);
+      const includeAcknowledged = req.query.includeAcknowledged === "true";
+      const detections = await storage.getLeadingIndicatorDetections(orgId, includeAcknowledged);
+      res.json(detections);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/leading-indicator-detections/:id/acknowledge", requireOrgAccess2, async (req, res) => {
+    try {
+      const { id } = req.params;
+      await storage.acknowledgeLeadingIndicatorDetection(id);
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/leading-indicators/:pattern", async (req, res) => {
+    try {
+      const pattern = decodeURIComponent(req.params.pattern);
+      const indicators = await storage.getLeadingIndicators(pattern);
+      res.json(indicators);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.get("/api/signal-connectors", async (req, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      const connectors = await storage.getSignalConnectors(orgId);
+      res.json(connectors);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.post("/api/signal-connectors", requireOrgAccess2, async (req, res) => {
+    try {
+      const orgId = req.user.organizationId;
+      const connector = await storage.createSignalConnector({ ...req.body, organizationId: orgId });
+      res.json(connector);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  app2.patch("/api/signal-connectors/:id", requireOrgAccess2, async (req, res) => {
+    try {
+      const { id } = req.params;
+      const connector = await storage.updateSignalConnector(id, req.body);
+      res.json(connector);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
   app2.get("/api/trigger-evaluation-summary", async (req, res) => {
     try {
       const orgId = req.user?.organizationId;

@@ -1,258 +1,200 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { updatePageMetadata } from "@/lib/seo";
 import { Link } from "wouter";
-import {
-  Clock,
-  AlertTriangle,
-  CheckCircle2,
-  ArrowRight,
-  Shield,
-  Eye,
-  Layers,
-  TrendingUp,
-  FileText,
-  Activity,
-} from "lucide-react";
+import { ArrowRight, Shield, Eye, Users, Zap } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+const BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 
-const HOLDING_SCENARIOS = [
+const LAYERS = [
   {
-    id: 1,
-    title: "Board authorization pending",
-    description: "Executive has flagged the situation. Protocol is staged. Authorization checkpoint reached — the decision gate is open, waiting for the sign-off that triggers execution.",
-    urgency: "HIGH",
-    hoursHeld: 2.5,
-    protocol: "Investor Communications Protocol",
-    domain: "Market Dynamics",
+    layer: "Logic",
     icon: Shield,
+    herName: "Decision clarity and closure",
+    whereItBreaks: "Decisions reopened after closure",
+    readinessAnswer: "170 pre-staged response architectures. The logic is built before the trigger fires. Every protocol defines the decision structure, the escalation path, and the closure criteria in advance — so the decision does not have to be reconstructed under pressure.",
     color: GOLD,
   },
   {
-    id: 2,
-    title: "Parallel situation in progress",
-    description: "A Ransomware Response Protocol is already running. The supply chain disruption signal was detected simultaneously. Execution is staged; team capacity determines sequencing.",
-    urgency: "CRITICAL",
-    hoursHeld: 0.5,
-    protocol: "Supply Chain Disruption Response",
-    domain: "Operational Risk",
-    icon: AlertTriangle,
-    color: "#EF4444",
+    layer: "Behavior",
+    icon: Eye,
+    herName: "System response under pressure",
+    whereItBreaks: "System routes around the assigned owner",
+    readinessAnswer: "Signal monitoring detects threshold crossings before behavior drift begins. The system makes deviations from expected ownership visible at the moment they occur — not after the situation has already been routed around the person it was assigned to.",
+    color: TEAL,
   },
   {
-    id: 3,
-    title: "Additional intelligence requested",
-    description: "The executive authorized a 24-hour monitoring hold. The system continues to collect corroborating signals before the Regulatory Compliance Sprint is activated.",
-    urgency: "MONITORING",
-    hoursHeld: 18,
-    protocol: "Regulatory Compliance Sprint",
-    domain: "Regulatory & Compliance",
-    icon: Eye,
-    color: TEAL,
+    layer: "Ownership",
+    icon: Users,
+    herName: "Where decisions actually hold",
+    whereItBreaks: "Ownership redistributes quietly",
+    readinessAnswer: "Decision rights mapped and ownership confirmed before any trigger fires. The Close-Out Gate encodes what held and what did not — so the next protocol is built around the actual owner, not the assumed one.",
+    color: "#7C6FA8",
+  },
+  {
+    layer: "Capacity",
+    icon: Zap,
+    herName: "Load on decision holders",
+    whereItBreaks: "Preparation built around the wrong owner",
+    readinessAnswer: "Stakeholder notification, budget allocation, document staging, and task distribution are all pre-built before pressure arrives. The decision holder's cognitive load at trigger time is authorization — not coordination.",
+    color: NAVY,
   },
 ];
 
-function HoldCard({ scenario }: { scenario: typeof HOLDING_SCENARIOS[0] }) {
-  const Icon = scenario.icon;
-  const urgencyStyles = {
-    CRITICAL: { bg: "rgba(239,68,68,0.08)", border: "#EF444430", left: "#EF4444", label: "CRITICAL HOLD" },
-    HIGH: { bg: "rgba(201,168,76,0.06)", border: `${GOLD}30`, left: GOLD, label: "HOLDING — AUTHORIZATION PENDING" },
-    MONITORING: { bg: "rgba(43,138,110,0.05)", border: `${TEAL}20`, left: TEAL, label: "MONITORING HOLD" },
-  }[scenario.urgency] ?? { bg: "#F8F7F4", border: "#E8E4DC", left: NAVY, label: "HOLDING" };
-
-  return (
-    <div style={{
-      background: urgencyStyles.bg,
-      border: `1px solid ${urgencyStyles.border}`,
-      borderLeft: `4px solid ${urgencyStyles.left}`,
-      padding: "24px 28px",
-      marginBottom: 16,
-    }}>
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
-            <span style={{
-              fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase",
-              color: urgencyStyles.left, background: `${urgencyStyles.left}12`, padding: "2px 10px",
-            }}>
-              {urgencyStyles.label}
-            </span>
-            <span style={{ fontSize: 11, color: "#6B7280", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em" }}>
-              {scenario.domain}
-            </span>
-          </div>
-          <h3 style={{ ...CG, fontSize: 20, fontWeight: 600, color: NAVY, marginBottom: 6 }}>{scenario.title}</h3>
-          <p style={{ fontSize: 13, color: "#4B5563", lineHeight: 1.65, marginBottom: 16, maxWidth: 680 }}>
-            {scenario.description}
-          </p>
-          <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 11, color: "#6B7280" }}>
-              Protocol: <strong style={{ color: NAVY }}>{scenario.protocol}</strong>
-            </span>
-            <span style={{ fontSize: 11, color: "#6B7280", display: "flex", alignItems: "center", gap: 4 }}>
-              <Clock style={{ width: 10, height: 10 }} />
-              Held <strong style={{ color: scenario.hoursHeld >= 4 ? "#EF4444" : GOLD }}>
-                {scenario.hoursHeld < 1 ? `${Math.round(scenario.hoursHeld * 60)}m` : `${scenario.hoursHeld}h`}
-              </strong>
-            </span>
-          </div>
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8, flexShrink: 0 }}>
-          <Button
-            style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 11, fontWeight: 700, whiteSpace: "nowrap" }}
-          >
-            <CheckCircle2 style={{ width: 12, height: 12, marginRight: 6 }} />
-            Authorize Execution
-          </Button>
-          <Button
-            variant="outline"
-            style={{ borderRadius: 0, border: "1px solid #E8E4DC", fontSize: 11, whiteSpace: "nowrap" }}
-          >
-            <Eye style={{ width: 12, height: 12, marginRight: 6 }} />
-            Review Protocol
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function DecisionHolding() {
-  const [activeFilter, setActiveFilter] = useState<"all" | "critical" | "monitoring">("all");
-
   useEffect(() => {
     updatePageMetadata({
-      title: "Decision Holding Queue — VaughnMartin Readiness OS",
-      description: "Protocols staged and ready — awaiting executive authorization. The response is pre-staged; the decision gate is open.",
+      title: "Decision-Holding Architecture — VaughnMartin Readiness OS",
+      description: "How Readiness OS answers Jayashree Venkataraman's four diagnostic layers of governance failure before the trigger fires.",
     });
   }, []);
-
-  const filtered = HOLDING_SCENARIOS.filter(s => {
-    if (activeFilter === "critical") return s.urgency === "CRITICAL";
-    if (activeFilter === "monitoring") return s.urgency === "MONITORING";
-    return true;
-  });
-
-  const criticalCount = HOLDING_SCENARIOS.filter(s => s.urgency === "CRITICAL").length;
-  const holdingCount = HOLDING_SCENARIOS.filter(s => s.urgency === "HIGH").length;
-  const monitoringCount = HOLDING_SCENARIOS.filter(s => s.urgency === "MONITORING").length;
 
   return (
     <PageLayout>
       <div className="bg-white min-h-screen">
 
-        {/* Navy header */}
-        <div style={{ background: NAVY, padding: "56px 48px", position: "relative", overflow: "hidden" }}>
+        {/* Navy hero */}
+        <div style={{ background: NAVY, padding: "64px 48px 72px", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)", backgroundSize: "44px 44px" }} />
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
-              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.3)" }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
-                Execution Gateway
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
+              <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.25)" }} />
+              <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)" }}>
+                Decision-Holding Architecture
               </span>
             </div>
-            <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,52px)", color: "#fff", lineHeight: 1.1, marginBottom: 16 }}>
-              Decision <em style={{ color: "#DFC178", fontStyle: "italic" }}>Holding Queue</em>
-            </h1>
-            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 16, maxWidth: 620, lineHeight: 1.65, marginBottom: 32 }}>
-              These Readiness Protocols are fully staged and ready to execute. Each one is waiting at the decision gate — prepared, authorized to proceed the moment the executive confirms. The work is done. The decision is the only remaining step.
-            </p>
-            <div className="flex items-center gap-8">
-              {[
-                { label: "CRITICAL HOLDS", value: criticalCount, color: "#EF4444" },
-                { label: "AWAITING AUTH", value: holdingCount, color: GOLD },
-                { label: "MONITORING", value: monitoringCount, color: TEAL },
-              ].map(stat => (
-                <div key={stat.label} style={{ textAlign: "center" }}>
-                  <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: stat.color, lineHeight: 1 }}>{stat.value}</div>
-                  <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 4 }}>{stat.label}</div>
-                </div>
-              ))}
+
+            {/* Pull quote */}
+            <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 28, marginBottom: 40 }}>
+              <p style={{ ...CG, fontSize: "clamp(22px,3.5vw,32px)", fontStyle: "italic", color: "#F0EDE4", lineHeight: 1.5, marginBottom: 14 }}>
+                "Governance does not fail because decisions are unclear. It fails because it cannot hold decisions where they are made."
+              </p>
+              <p style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: `${GOLD}99` }}>
+                Jayashree Venkataraman — Leadership Systems Advisor, Co-Founder NIYA, 2026
+              </p>
             </div>
-          </div>
-        </div>
 
-        {/* Doctrine callout */}
-        <div style={{ background: `${GOLD}08`, borderBottom: `1px solid ${GOLD}20`, padding: "18px 48px" }}>
-          <div className="max-w-5xl mx-auto flex items-start gap-4">
-            <Layers style={{ width: 16, height: 16, color: GOLD, flexShrink: 0, marginTop: 2 }} />
-            <p style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.65 }}>
-              <strong style={{ color: NAVY }}>The response is ready before the trigger fires.</strong>
-              {" "}This queue is not a backlog — it is a staging gate. Every protocol listed here has been pre-staged, verified, and positioned for immediate execution. The executive's role is authorization, not planning. Planning happened weeks ago.
+            <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, maxWidth: 640, lineHeight: 1.7 }}>
+              Jayashree Venkataraman's governance research identifies four layers where decision-holding fails under pressure. Each layer names a specific failure mode. This page maps each one to the preparation architecture Readiness OS builds before the trigger ever fires.
             </p>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="max-w-5xl mx-auto px-6 py-12">
+        {/* Gold rule */}
+        <div style={{ height: 3, background: `linear-gradient(90deg, ${GOLD}, transparent)` }} />
 
-          {/* Filter tabs */}
-          <div style={{ display: "flex", gap: 8, marginBottom: 32 }}>
-            {[
-              { key: "all", label: `All (${HOLDING_SCENARIOS.length})` },
-              { key: "critical", label: `Critical (${criticalCount})` },
-              { key: "monitoring", label: `Monitoring (${monitoringCount})` },
-            ].map(f => (
-              <button
-                key={f.key}
-                onClick={() => setActiveFilter(f.key as typeof activeFilter)}
-                style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
-                  padding: "8px 20px",
-                  background: activeFilter === f.key ? NAVY : "transparent",
-                  color: activeFilter === f.key ? "#fff" : "#6B7280",
-                  border: `1px solid ${activeFilter === f.key ? NAVY : "#E8E4DC"}`,
-                  cursor: "pointer", transition: "all 0.15s",
-                }}
-              >
-                {f.label}
-              </button>
+        {/* Four-layer diagnostic grid */}
+        <div className="max-w-5xl mx-auto px-6 py-16">
+
+          <div style={{ marginBottom: 48 }}>
+            <span style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.35em", textTransform: "uppercase" as const, color: GOLD }}>
+              The Four Diagnostic Layers
+            </span>
+            <h2 style={{ ...CG, fontSize: "clamp(26px,4vw,38px)", fontWeight: 600, color: NAVY, marginTop: 10, lineHeight: 1.2 }}>
+              Where governance fails — and where preparation answers it
+            </h2>
+          </div>
+
+          {/* Header row */}
+          <div style={{ display: "grid", gridTemplateColumns: "160px 1fr 1fr 1.4fr", gap: 1, marginBottom: 1 }}>
+            {["Her Layer", "What She Names", "Where It Breaks", "Readiness OS Answer"].map(h => (
+              <div key={h} style={{ background: NAVY, padding: "10px 16px" }}>
+                <span style={{ ...BC, fontSize: 9, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>{h}</span>
+              </div>
             ))}
           </div>
 
-          {/* Hold cards */}
-          {filtered.map(s => <HoldCard key={s.id} scenario={s} />)}
+          {/* Layer rows */}
+          {LAYERS.map((layer, i) => {
+            const Icon = layer.icon;
+            return (
+              <div
+                key={layer.layer}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "160px 1fr 1fr 1.4fr",
+                  gap: 1,
+                  marginBottom: 1,
+                }}
+              >
+                {/* Layer name */}
+                <div style={{ background: `${layer.color}08`, borderLeft: `3px solid ${layer.color}`, padding: "20px 16px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 8 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <Icon style={{ width: 14, height: 14, color: layer.color }} />
+                    <span style={{ ...CG, fontSize: 18, fontWeight: 600, color: NAVY }}>{layer.layer}</span>
+                  </div>
+                </div>
 
-          {/* Escalation principle */}
-          <div style={{ marginTop: 48, padding: "24px 28px", background: `${NAVY}04`, borderLeft: `3px solid ${GOLD}`, border: `1px solid ${NAVY}12` }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-              <TrendingUp style={{ width: 14, height: 14, color: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD }}>Escalation Principle</span>
+                {/* What she names */}
+                <div style={{ background: i % 2 === 0 ? "#FAFAFA" : "#fff", padding: "20px 18px", borderBottom: "1px solid #F0EDE4" }}>
+                  <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{layer.herName}</p>
+                </div>
+
+                {/* Where it breaks */}
+                <div style={{ background: i % 2 === 0 ? "#FAFAFA" : "#fff", padding: "20px 18px", borderBottom: "1px solid #F0EDE4" }}>
+                  <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.6, fontStyle: "italic" }}>{layer.whereItBreaks}</p>
+                </div>
+
+                {/* Readiness OS answer */}
+                <div style={{ background: i % 2 === 0 ? "#FAFAFA" : "#fff", padding: "20px 18px", borderBottom: "1px solid #F0EDE4", borderRight: `1px solid #F0EDE4` }}>
+                  <p style={{ fontSize: 13, color: NAVY, lineHeight: 1.7, fontWeight: 500 }}>{layer.readinessAnswer}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Source attribution */}
+        <div style={{ background: "#F9F7F3", borderTop: "1px solid #E8E4DC", borderBottom: "1px solid #E8E4DC", padding: "24px 48px" }}>
+          <div className="max-w-5xl mx-auto">
+            <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.7 }}>
+              <strong style={{ color: NAVY }}>Source:</strong> Jayashree Venkataraman's article: <em>"Why Decisions Don't Hold. From Governance Design to System Behaviour under Pressure."</em> Her four diagnostic layers — Logic, Behavior, Ownership, Capacity — independently named the failure modes that Readiness OS preparation architecture is designed to pre-empt. DM exchange April 25, 2026. Her exact observation: <em>"The system does not retain the conditions that made the decision hold."</em>
+            </p>
+          </div>
+        </div>
+
+        {/* Closing section */}
+        <div className="max-w-5xl mx-auto px-6 py-16">
+          <div style={{ maxWidth: 680 }}>
+            <div style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 24, marginBottom: 40 }}>
+              <p style={{ ...CG, fontSize: "clamp(20px,3vw,28px)", fontStyle: "italic", color: NAVY, lineHeight: 1.6 }}>
+                "The governance question is not whether the decision was right. It is whether a hold location exists. Readiness OS builds that hold location before the trigger fires."
+              </p>
             </div>
-            <p style={{ ...CG, fontSize: 18, fontWeight: 500, color: NAVY, lineHeight: 1.7, fontStyle: "italic", marginBottom: 10 }}>
-              "Holding without a decision is still a decision — it is the choice to let time pass while the situation develops. The governance chain records both the hold and its duration."
+
+            <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, marginBottom: 12 }}>
+              Most governance frameworks assume the decision-holder will be available, informed, and unconstrained at the moment of the trigger. Jayashree Venkataraman's research shows that assumption fails across all four diagnostic layers simultaneously under real pressure.
             </p>
-            <p style={{ fontSize: 11, color: "#6B7280", marginBottom: 16, lineHeight: 1.6 }}>
-              Protocols held beyond 4 hours without authorization are automatically escalated to the board-level governance chain. Every unacted hold is a recorded governance decision with a timestamp.
+            <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, marginBottom: 40 }}>
+              Readiness OS does not improve the decision. It builds the hold location — the pre-staged structure of logic, behavior guardrails, ownership clarity, and capacity relief — so that when the trigger fires, the executive's role is authorization, not reconstruction.
             </p>
-            <div className="flex items-center gap-4">
-              <Link href="/signal-accountability">
+
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <Link href="/request-access">
                 <Button
-                  variant="outline"
-                  style={{ borderRadius: 0, border: "1px solid #E8E4DC", fontSize: 11, fontWeight: 700 }}
+                  style={{ background: GOLD, color: NAVY, borderRadius: 0, fontWeight: 700, fontSize: 13, padding: "12px 28px" }}
                 >
-                  <FileText style={{ width: 12, height: 12, marginRight: 6 }} />
-                  View Accountability Report
+                  Apply for Founding Partner Access
+                  <ArrowRight style={{ width: 14, height: 14, marginLeft: 8 }} />
                 </Button>
               </Link>
-              <Link href="/live-activation-center">
+              <Link href="/activation-outcome">
                 <Button
-                  style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 11, fontWeight: 700 }}
+                  variant="outline"
+                  style={{ borderRadius: 0, border: `1px solid ${NAVY}`, color: NAVY, fontWeight: 600, fontSize: 13, padding: "12px 24px" }}
                 >
-                  <Activity style={{ width: 12, height: 12, marginRight: 6 }} />
-                  Live Activation Center
-                  <ArrowRight style={{ width: 12, height: 12, marginLeft: 6 }} />
+                  See the Close-Out Gate
                 </Button>
               </Link>
             </div>
           </div>
-
         </div>
+
       </div>
     </PageLayout>
   );
