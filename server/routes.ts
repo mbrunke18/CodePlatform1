@@ -7469,6 +7469,29 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
   }, 5000);
   console.log('✅ Live Signal Ingestion API registered (auto-start in 5s)');
 
+  // ── Phase 5a: Signal Ontology seed (runs once on startup, idempotent) ──────
+  setTimeout(async () => {
+    try {
+      const { seedSignalOntology } = await import('./services/SignalOntologyService.js');
+      const result = await seedSignalOntology();
+      if (result.seeded) {
+        console.log(`✅ Signal Ontology Phase 5a seeded: ${result.nodes} nodes, ${result.edges} edges`);
+      }
+    } catch (err) {
+      console.error('[Startup] Signal ontology seed failed:', err);
+    }
+  }, 8000);
+
+  // ── Phase 6: Signal Learning recurring jobs ────────────────────────────────
+  setTimeout(async () => {
+    try {
+      const { signalLearningService } = await import('./services/SignalLearningService.js');
+      signalLearningService.scheduleRecurringJobs();
+    } catch (err) {
+      console.error('[Startup] Signal Learning job scheduling failed:', err);
+    }
+  }, 10000);
+
   // ── Trigger Detection API (Tier 5) ─────────────────────────────────────────
   const { getRecentDetections } = await import('./services/SignalEvaluationService.js');
   const { stakeholderContacts: stakeholderContactsTable, triggerDetections: triggerDetectionsTable } = await import('@shared/schema');
@@ -10250,6 +10273,174 @@ Respond ONLY as JSON with this exact structure:
     try {
       const protocol = await storage.updateCustomProtocol(req.params.id, req.body);
       res.json(protocol);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // PHASE 4-6: SIGNAL INTELLIGENCE ARCHITECTURE (Spec Rev 28)
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  // ── Phase 5: Preparation Signal Monitoring ───────────────────────────────────
+  // GET  /api/preparation-signals — recent preparation gap triggers for org
+  // POST /api/preparation-signals/check — manually trigger a preparation check
+  app.get('/api/preparation-signals', async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId || req.query.organizationId || 'system';
+      const { getRecentPreparationTriggers } = await import('./services/PreparationSignalService.js');
+      const triggers = await getRecentPreparationTriggers(orgId, 72);
+      res.json(triggers);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/preparation-signals/check', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { checkPreparationSignals } = await import('./services/PreparationSignalService.js');
+      const results = await checkPreparationSignals(orgId);
+      res.json({ results, triggered: results.filter(r => r.triggered).length });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // GET /api/preparation-thresholds — return locked threshold table for UI display
+  app.get('/api/preparation-thresholds', async (_req, res) => {
+    try {
+      const { PREPARATION_THRESHOLDS } = await import('./services/PreparationSignalService.js');
+      res.json(PREPARATION_THRESHOLDS);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Phase 5a: Signal Ontology ─────────────────────────────────────────────────
+  // GET  /api/ontology/graph   — full ontology graph (nodes + edges)
+  // POST /api/ontology/seed    — trigger seed (idempotent, admin only)
+  app.get('/api/ontology/graph', async (_req, res) => {
+    try {
+      const { getOntologyGraph } = await import('./services/SignalOntologyService.js');
+      const graph = await getOntologyGraph();
+      res.json(graph);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/ontology/context/:triggerName', async (req, res) => {
+    try {
+      const { getOntologyContext } = await import('./services/SignalOntologyService.js');
+      const context = await getOntologyContext(decodeURIComponent(req.params.triggerName));
+      res.json(context);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/ontology/seed', async (_req, res) => {
+    try {
+      const { seedSignalOntology } = await import('./services/SignalOntologyService.js');
+      const result = await seedSignalOntology();
+      res.json(result);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Phase 4: Trigger Taxonomy Intelligence ────────────────────────────────────
+  // GET /api/trigger-taxonomy — trigger portfolio recommendations for org
+  app.get('/api/trigger-taxonomy', async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId || req.query.organizationId || 'system';
+      const industry = req.query.industry as string | undefined;
+      const orgSize = req.query.orgSize as string | undefined;
+      const { getTriggerTaxonomyRecommendations } = await import('./services/TriggerTaxonomyService.js');
+      const portfolio = await getTriggerTaxonomyRecommendations(orgId, industry, orgSize);
+      res.json(portfolio);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Phase 6: Signal Learning Service ─────────────────────────────────────────
+  // POST /api/signal-learning/calibrate    — trigger org calibration (after Close-Out Gate)
+  // POST /api/signal-learning/domain       — trigger domain learning (admin/system)
+  // POST /api/signal-learning/ontology     — trigger ontology enrichment (admin/system)
+  app.post('/api/signal-learning/calibrate', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.orgId;
+      const { signalLearningService } = await import('./services/SignalLearningService.js');
+      await signalLearningService.runOrganizationCalibration(orgId);
+      res.json({ success: true, message: 'Organization calibration complete' });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/signal-learning/domain', async (_req, res) => {
+    try {
+      const { signalLearningService } = await import('./services/SignalLearningService.js');
+      await signalLearningService.runDomainLearning();
+      res.json({ success: true, message: 'Domain learning complete' });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/signal-learning/ontology-enrich', async (_req, res) => {
+    try {
+      const { signalLearningService } = await import('./services/SignalLearningService.js');
+      await signalLearningService.runOntologyEnrichment();
+      res.json({ success: true, message: 'Ontology enrichment complete' });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Phase 4: Internal Signal Connectors ──────────────────────────────────────
+  // POST /api/signal-connectors/m365/configure   — configure M365 connector
+  // GET  /api/signal-connectors/m365/status      — connector health status
+  // POST /api/signal-connectors/erp/webhook      — ERP webhook receiver
+  app.get('/api/signal-connectors/m365/status', async (_req, res) => {
+    try {
+      const { microsoft365SignalService } = await import('./services/Microsoft365SignalService.js');
+      res.json(microsoft365SignalService.getStatus());
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/signal-connectors/m365/configure', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { tenantId, clientId, clientSecret } = req.body;
+      if (!tenantId || !clientId || !clientSecret) {
+        return res.status(400).json({ error: 'tenantId, clientId, and clientSecret are required' });
+      }
+      const { microsoft365SignalService } = await import('./services/Microsoft365SignalService.js');
+      microsoft365SignalService.configure({ tenantId, clientId, clientSecret });
+      res.json({ success: true, status: microsoft365SignalService.getStatus() });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ERP webhook receiver — accepts JSON push from customer ERP systems
+  app.post('/api/signal-connectors/erp/webhook', async (req: any, res) => {
+    try {
+      const { erpSignalService } = await import('./services/Microsoft365SignalService.js');
+      const signals = erpSignalService.receiveWebhookPush(req.body);
+      // If signals were generated, persist them via evaluation pipeline
+      if (signals.length > 0) {
+        const orgId = req.query.orgId || req.body.organizationId || 'system';
+        const { evaluateAndPersistSignals } = await import('./services/SignalEvaluationService.js');
+        const detections = await evaluateAndPersistSignals(signals, orgId);
+        res.json({ received: true, signalsGenerated: signals.length, detectionsFired: detections });
+      } else {
+        res.json({ received: true, signalsGenerated: 0, note: 'No threshold deviations detected in payload' });
+      }
     } catch (err: any) {
       res.status(500).json({ error: err.message });
     }

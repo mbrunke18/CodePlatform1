@@ -268,6 +268,21 @@ class LiveSignalIngestionService {
     // ── Tier 7: compound sub-threshold pattern detection ──────────────────
     await evaluateCompoundPatterns(signals, organizationId);
 
+    // ── Tier 8: preparation signal monitoring ─────────────────────────────
+    // Treats declining organizational preparedness as a trigger in its own right.
+    // Runs after every external signal evaluation cycle (per spec Section 6).
+    try {
+      const { checkPreparationSignals } = await import('./PreparationSignalService.js');
+      const prepResults = await checkPreparationSignals(organizationId);
+      const prepFired = prepResults.filter(r => r.triggered).length;
+      if (prepFired > 0) {
+        console.log(`   🔴 ${prepFired} preparation gap trigger(s) fired — readiness recovery protocols queued`);
+      }
+    } catch (err) {
+      // Non-critical — preparation monitoring failures must not interrupt the main pipeline
+      console.error('   [Tier 8] Preparation signal check failed:', err);
+    }
+
     console.log(`   ✅ Persisted ${inserted} signals, ${Math.min(alertCount, 3)} alerts, ${detections} trigger detections`);
     return { signals: inserted, alerts: Math.min(alertCount, 3), detections };
   }

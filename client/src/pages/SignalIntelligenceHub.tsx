@@ -317,6 +317,116 @@ function DataPointRow({
   );
 }
 
+// ── Preparation Signals Panel (Phase 5, Tier 8) ─────────────────────────────
+function PreparationSignalsPanel() {
+  const { data: raw } = useQuery({ queryKey: ['/api/preparation-signals'] });
+  const triggers = Array.isArray(raw) ? raw : [];
+
+  const { data: thresholds } = useQuery({ queryKey: ['/api/preparation-thresholds'] });
+  const thresholdMap = (thresholds ?? {}) as Record<string, { warning: number; critical: number; playbook: string }>;
+
+  if (triggers.length === 0) {
+    return (
+      <div className="max-w-4xl mx-auto py-12">
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+          <div style={{ width: 28, height: 2, background: TEAL }} />
+          <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: TEAL }}>Internal Readiness Monitoring</span>
+        </div>
+        <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Readiness Gap Signals</h2>
+        <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 40, maxWidth: 640 }}>
+          Declining organizational preparedness is treated as a trigger in its own right.
+          When any strategic domain drops below its readiness threshold, a recovery protocol is automatically staged.
+        </p>
+
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          {Object.entries(thresholdMap).map(([domain, cfg]) => (
+            <div key={domain} style={{ border: "1px solid #E8E4DC", padding: "20px 24px", background: "#fff" }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 4 }}>{domain}</div>
+              <div className="flex items-center gap-4 mt-2">
+                <div style={{ fontSize: 11, color: "#6B7280" }}>
+                  <span style={{ color: GOLD, fontWeight: 700 }}>⚠ {cfg.warning}%</span> warning
+                </div>
+                <div style={{ fontSize: 11, color: "#6B7280" }}>
+                  <span style={{ color: "#ef4444", fontWeight: 700 }}>🔴 {cfg.critical}%</span> critical
+                </div>
+              </div>
+              <div style={{ fontSize: 10, color: "#9CA3AF", marginTop: 8 }}>{cfg.playbook}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: "center", padding: "48px 24px", border: "1px solid #E8E4DC", background: "#fff" }}>
+          <CheckCircle className="h-10 w-10 mx-auto mb-4" style={{ color: TEAL, opacity: 0.5 }} />
+          <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, marginBottom: 8 }}>All preparedness thresholds met</div>
+          <p style={{ fontSize: 13, color: "#6B7280" }}>
+            All strategic domains are currently above their readiness thresholds.
+            The system monitors continuously — any decline will appear here before it becomes a crisis.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto py-12">
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+        <div style={{ width: 28, height: 2, background: "#ef4444" }} />
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#ef4444" }}>Readiness Gaps Detected</span>
+      </div>
+      <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Readiness Gap Signals</h2>
+      <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 32, maxWidth: 640 }}>
+        These domains have dropped below their readiness thresholds.
+        Each gap has a pre-staged recovery protocol ready for executive authorization.
+      </p>
+      <div className="space-y-4">
+        {triggers.map((trigger: any) => {
+          const isCritical = trigger.urgencyLevel === 'CRITICAL' || trigger.confidenceScore >= 90;
+          const urgencyColor = isCritical ? "#ef4444" : GOLD;
+          return (
+            <div key={trigger.id} style={{ border: `1px solid ${urgencyColor}30`, borderLeft: `4px solid ${urgencyColor}`, background: "#fff", padding: "24px 28px" }}>
+              <div className="flex items-start justify-between gap-8">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2 flex-wrap">
+                    <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: urgencyColor, background: `${urgencyColor}12`, padding: "2px 10px" }}>
+                      {isCritical ? "CRITICAL GAP" : "WARNING"}
+                    </span>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                      {trigger.triggerDomain}
+                    </span>
+                  </div>
+                  <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, marginBottom: 12 }}>
+                    {trigger.signalDescription}
+                  </p>
+                  <div className="flex items-center gap-4 flex-wrap">
+                    <span style={{ fontSize: 11, color: "#6B7280" }}>
+                      Recovery protocol: <strong style={{ color: NAVY }}>{trigger.recommendedPlaybook}</strong>
+                    </span>
+                    <span style={{ fontSize: 11, color: "#6B7280" }}>
+                      Detected: <strong style={{ color: NAVY }}>{trigger.detectedAt ? new Date(trigger.detectedAt).toLocaleString() : "—"}</strong>
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 flex-shrink-0">
+                  <Button
+                    size="sm"
+                    style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 11, fontWeight: 700 }}
+                    onClick={() => window.location.href = `/playbook-library`}
+                  >
+                    Activate Recovery Protocol
+                  </Button>
+                  <Button size="sm" variant="outline" style={{ borderRadius: 0, fontSize: 11, border: "1px solid #E8E4DC" }}>
+                    Schedule Review
+                  </Button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function SignalIntelligenceHub() {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
@@ -485,6 +595,7 @@ export default function SignalIntelligenceHub() {
                 { key: "browse", label: "Signal Browser", icon: <Grid3X3 className="w-4 h-4 mr-2" /> },
                 { key: "active", label: "Active Monitors", icon: <Activity className="h-4 w-4 mr-2" /> },
                 { key: "developing", label: "Developing Situations", icon: <Brain className="h-4 w-4 mr-2" />, badge: leadingDetections.length },
+                { key: "preparation", label: "Readiness Gaps", icon: <AlertTriangle className="h-4 w-4 mr-2" /> },
                 { key: "templates", label: "Templates", icon: <Sparkles className="h-4 w-4 mr-2" /> },
               ].map((tab) => (
                 <TabsTrigger 
@@ -657,6 +768,10 @@ export default function SignalIntelligenceHub() {
                   </div>
                 )}
               </div>
+            </TabsContent>
+
+            <TabsContent value="preparation">
+              <PreparationSignalsPanel />
             </TabsContent>
 
             <TabsContent value="active">
