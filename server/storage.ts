@@ -435,6 +435,26 @@ export interface IStorage {
   getCustomProtocols(userId?: string): Promise<CustomProtocol[]>;
   getCustomProtocol(id: string): Promise<CustomProtocol | undefined>;
   updateCustomProtocol(id: string, data: Partial<InsertCustomProtocol>): Promise<CustomProtocol>;
+
+  // Phase 1: Signal Calibration
+  getSignalCalibration(organizationId: string, triggerPattern: string): Promise<any | null>;
+  upsertSignalCalibration(data: { organizationId: string; triggerPattern: string; confidenceAdjust?: number; keywordWeights?: Record<string, number>; sensitivityLevel?: string; }): Promise<any>;
+  getSignalCalibrations(organizationId: string): Promise<any[]>;
+
+  // Phase 2: Leading Indicators
+  getLeadingIndicators(triggerPattern?: string): Promise<any[]>;
+  createLeadingIndicatorDetection(data: { organizationId: string; triggerPattern: string; indicatorsMatched: number; totalIndicators: number; matchScore: number; matchedIndicatorIds: string[]; }): Promise<any>;
+  getLeadingIndicatorDetections(organizationId: string, includeAcknowledged?: boolean): Promise<any[]>;
+  acknowledgeLeadingIndicatorDetection(id: string): Promise<void>;
+
+  // Phase 3: Signal Connectors
+  getSignalConnectors(organizationId?: string): Promise<any[]>;
+  createSignalConnector(data: any): Promise<any>;
+  updateSignalConnector(id: string, data: any): Promise<any>;
+
+  // Phase 3: Protocol Signal Profiles
+  getProtocolSignalProfile(playbookId: string): Promise<any | null>;
+  upsertProtocolSignalProfile(data: any): Promise<any>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -3045,6 +3065,173 @@ export class DatabaseStorage implements IStorage {
   }
 
   // ─── Signal Monitoring Config ────────────────────────────────────────────────
+
+  // ─── Phase 1: Signal Calibration (Preparation-Calibrated Thresholds) ─────────
+  async getSignalCalibration(organizationId: string, triggerPattern: string): Promise<any | null> {
+    try {
+      const { signalCalibrationConfig } = await import('@shared/schema');
+      const { eq, and } = await import('drizzle-orm');
+      const [row] = await db.select().from(signalCalibrationConfig)
+        .where(and(
+          eq(signalCalibrationConfig.organizationId, organizationId),
+          eq(signalCalibrationConfig.triggerPattern, triggerPattern)
+        ));
+      return row ?? null;
+    } catch { return null; }
+  }
+
+  async upsertSignalCalibration(data: {
+    organizationId: string;
+    triggerPattern: string;
+    confidenceAdjust?: number;
+    keywordWeights?: Record<string, number>;
+    sensitivityLevel?: string;
+  }): Promise<any> {
+    const { signalCalibrationConfig } = await import('@shared/schema');
+    const { eq, and } = await import('drizzle-orm');
+    const existing = await this.getSignalCalibration(data.organizationId, data.triggerPattern);
+    if (existing) {
+      const [updated] = await db.update(signalCalibrationConfig)
+        .set({
+          confidenceAdjust: String(data.confidenceAdjust ?? 0),
+          keywordWeights: data.keywordWeights ?? {},
+          sensitivityLevel: data.sensitivityLevel ?? 'standard',
+          calibrationCount: (existing.calibrationCount ?? 0) + 1,
+          lastCalibrated: new Date(),
+          updatedAt: new Date(),
+        })
+        .where(and(
+          eq(signalCalibrationConfig.organizationId, data.organizationId),
+          eq(signalCalibrationConfig.triggerPattern, data.triggerPattern)
+        ))
+        .returning();
+      return updated;
+    }
+    const [created] = await db.insert(signalCalibrationConfig).values({
+      organizationId: data.organizationId,
+      triggerPattern: data.triggerPattern,
+      confidenceAdjust: String(data.confidenceAdjust ?? 0),
+      keywordWeights: data.keywordWeights ?? {},
+      sensitivityLevel: data.sensitivityLevel ?? 'standard',
+      calibrationCount: 1,
+      lastCalibrated: new Date(),
+    } as any).returning();
+    return created;
+  }
+
+  async getSignalCalibrations(organizationId: string): Promise<any[]> {
+    try {
+      const { signalCalibrationConfig } = await import('@shared/schema');
+      const { eq } = await import('drizzle-orm');
+      return await db.select().from(signalCalibrationConfig)
+        .where(eq(signalCalibrationConfig.organizationId, organizationId))
+        .orderBy(desc(signalCalibrationConfig.lastCalibrated));
+    } catch { return []; }
+  }
+
+  // ─── Phase 2: Leading Indicators ─────────────────────────────────────────────
+  async getLeadingIndicators(triggerPattern?: string): Promise<any[]> {
+    try {
+      const { leadingIndicators } = await import('@shared/schema');
+      const { eq } = await import('drizzle-orm');
+      if (triggerPattern) {
+        return await db.select().from(leadingIndicators)
+          .where(eq(leadingIndicators.triggerPattern, triggerPattern));
+      }
+      return await db.select().from(leadingIndicators);
+    } catch { return []; }
+  }
+
+  async createLeadingIndicatorDetection(data: {
+    organizationId: string;
+    triggerPattern: string;
+    indicatorsMatched: number;
+    totalIndicators: number;
+    matchScore: number;
+    matchedIndicatorIds: string[];
+  }): Promise<any> {
+    const { leadingIndicatorDetections } = await import('@shared/schema');
+    const [row] = await db.insert(leadingIndicatorDetections).values(data as any).returning();
+    return row;
+  }
+
+  async getLeadingIndicatorDetections(organizationId: string, includeAcknowledged = false): Promise<any[]> {
+    try {
+      const { leadingIndicatorDetections } = await import('@shared/schema');
+      const { eq, and } = await import('drizzle-orm');
+      if (includeAcknowledged) {
+        return await db.select().from(leadingIndicatorDetections)
+          .where(eq(leadingIndicatorDetections.organizationId, organizationId))
+          .orderBy(desc(leadingIndicatorDetections.detectedAt));
+      }
+      return await db.select().from(leadingIndicatorDetections)
+        .where(and(
+          eq(leadingIndicatorDetections.organizationId, organizationId),
+          eq(leadingIndicatorDetections.acknowledged, false)
+        ))
+        .orderBy(desc(leadingIndicatorDetections.detectedAt));
+    } catch { return []; }
+  }
+
+  async acknowledgeLeadingIndicatorDetection(id: string): Promise<void> {
+    const { leadingIndicatorDetections } = await import('@shared/schema');
+    const { eq } = await import('drizzle-orm');
+    await db.update(leadingIndicatorDetections)
+      .set({ acknowledged: true })
+      .where(eq(leadingIndicatorDetections.id, id));
+  }
+
+  // ─── Phase 3: Signal Connectors ───────────────────────────────────────────────
+  async getSignalConnectors(organizationId?: string): Promise<any[]> {
+    try {
+      const { signalConnectors } = await import('@shared/schema');
+      const { eq, or, isNull } = await import('drizzle-orm');
+      if (organizationId) {
+        return await db.select().from(signalConnectors)
+          .where(or(isNull(signalConnectors.organizationId), eq(signalConnectors.organizationId, organizationId)));
+      }
+      return await db.select().from(signalConnectors).orderBy(signalConnectors.name);
+    } catch { return []; }
+  }
+
+  async createSignalConnector(data: any): Promise<any> {
+    const { signalConnectors } = await import('@shared/schema');
+    const [row] = await db.insert(signalConnectors).values(data).returning();
+    return row;
+  }
+
+  async updateSignalConnector(id: string, data: any): Promise<any> {
+    const { signalConnectors } = await import('@shared/schema');
+    const { eq } = await import('drizzle-orm');
+    const [row] = await db.update(signalConnectors).set(data).where(eq(signalConnectors.id, id)).returning();
+    return row;
+  }
+
+  // ─── Phase 3: Protocol Signal Profiles ──────────────────────────────────────
+  async getProtocolSignalProfile(playbookId: string): Promise<any | null> {
+    try {
+      const { protocolSignalProfiles } = await import('@shared/schema');
+      const { eq } = await import('drizzle-orm');
+      const [row] = await db.select().from(protocolSignalProfiles)
+        .where(eq(protocolSignalProfiles.playbookId, playbookId));
+      return row ?? null;
+    } catch { return null; }
+  }
+
+  async upsertProtocolSignalProfile(data: any): Promise<any> {
+    const { protocolSignalProfiles } = await import('@shared/schema');
+    const { eq } = await import('drizzle-orm');
+    const existing = data.playbookId ? await this.getProtocolSignalProfile(data.playbookId) : null;
+    if (existing) {
+      const [updated] = await db.update(protocolSignalProfiles)
+        .set({ ...data, updatedAt: new Date() })
+        .where(eq(protocolSignalProfiles.id, existing.id))
+        .returning();
+      return updated;
+    }
+    const [created] = await db.insert(protocolSignalProfiles).values(data).returning();
+    return created;
+  }
 
   async getSignalMonitoringConfig(organizationId: string): Promise<SignalMonitoringConfig | null> {
     const [config] = await db.select().from(signalMonitoringConfig)

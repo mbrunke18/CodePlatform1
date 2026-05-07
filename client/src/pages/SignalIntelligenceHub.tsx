@@ -326,6 +326,21 @@ export default function SignalIntelligenceHub() {
   const [editingTrigger, setEditingTrigger] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const { data: leadingDetectionsRaw } = useQuery<any[]>({
+    queryKey: ['/api/leading-indicator-detections'],
+    retry: false,
+    placeholderData: []
+  });
+  const leadingDetections = Array.isArray(leadingDetectionsRaw) ? leadingDetectionsRaw : [];
+
+  const acknowledgeLeadingMutation = useMutation({
+    mutationFn: (id: string) => apiRequest('POST', `/api/leading-indicator-detections/${id}/acknowledge`, {}),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/leading-indicator-detections'] });
+      toast({ title: 'Situation acknowledged', description: 'Developing situation logged to governance chain.' });
+    }
+  });
+
   const { data: signalStatus, isError: isStatusError } = useQuery<any>({
     queryKey: ['/api/dynamic-strategy/status'],
     retry: false,
@@ -466,10 +481,15 @@ export default function SignalIntelligenceHub() {
         <div className="max-w-[1600px] mx-auto px-6 py-12">
           <Tabs defaultValue="browse" className="w-full">
             <TabsList style={{ background: "transparent", borderBottom: "1px solid #E8E4DC", width: "100%", justifyContent: "flex-start", borderRadius: 0, height: "auto", padding: 0, marginBottom: 48 }}>
-              {["browse", "active", "templates"].map((tab) => (
+              {[
+                { key: "browse", label: "Signal Browser", icon: <Grid3X3 className="w-4 h-4 mr-2" /> },
+                { key: "active", label: "Active Monitors", icon: <Activity className="h-4 w-4 mr-2" /> },
+                { key: "developing", label: "Developing Situations", icon: <Brain className="h-4 w-4 mr-2" />, badge: leadingDetections.length },
+                { key: "templates", label: "Templates", icon: <Sparkles className="h-4 w-4 mr-2" /> },
+              ].map((tab) => (
                 <TabsTrigger 
-                  key={tab}
-                  value={tab} 
+                  key={tab.key}
+                  value={tab.key} 
                   style={{ 
                     background: "transparent", 
                     border: "none", 
@@ -484,10 +504,13 @@ export default function SignalIntelligenceHub() {
                   }}
                   className="data-[state=active]:border-b-[#0A0F2E] data-[state=active]:text-[#0A0F2E]"
                 >
-                  {tab === 'browse' && <Grid3X3 className="w-4 h-4 mr-2" />}
-                  {tab === 'active' && <Activity className="h-4 w-4 mr-2" />}
-                  {tab === 'templates' && <Sparkles className="h-4 w-4 mr-2" />}
-                  {tab === 'browse' ? 'Signal Browser' : tab === 'active' ? 'Active Monitors' : 'Templates'}
+                  {tab.icon}
+                  {tab.label}
+                  {tab.badge != null && tab.badge > 0 && (
+                    <span style={{ marginLeft: 6, background: TEAL, color: "#fff", fontSize: 9, fontWeight: 800, padding: "1px 6px", borderRadius: 99 }}>
+                      {tab.badge}
+                    </span>
+                  )}
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -549,6 +572,90 @@ export default function SignalIntelligenceHub() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </TabsContent>
+
+            {/* ── Developing Situations Tab ─────────────────────────── */}
+            <TabsContent value="developing">
+              <div className="max-w-4xl mx-auto py-12">
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+                  <div style={{ width: 28, height: 2, background: TEAL }} />
+                  <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: TEAL }}>Early Warning Intelligence</span>
+                </div>
+                <h2 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, marginBottom: 8 }}>Developing Situations</h2>
+                <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 40, maxWidth: 640 }}>
+                  These patterns have not yet crossed the detection threshold, but multiple leading indicators are converging. Each situation below represents a pre-trigger signal cluster — the system detected early-stage evidence before a full trigger fires.
+                </p>
+                {leadingDetections.length === 0 ? (
+                  <div style={{ textAlign: "center", padding: "60px 24px", border: "1px solid #E8E4DC", background: "#fff" }}>
+                    <Radar className="h-10 w-10 mx-auto mb-4" style={{ color: TEAL, opacity: 0.5 }} />
+                    <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: NAVY, marginBottom: 8 }}>No developing situations detected</div>
+                    <p style={{ fontSize: 13, color: "#6B7280" }}>Leading indicators are actively monitored. Any pre-trigger convergence will appear here.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {[...leadingDetections]
+                      .sort((a, b) => (b.matchScore ?? 0) - (a.matchScore ?? 0))
+                      .map((det: any) => {
+                        const pct = Math.min(100, Math.round((det.indicatorsMatched / Math.max(det.totalIndicators, 1)) * 100));
+                        const urgencyColor = pct >= 70 ? "#ef4444" : pct >= 40 ? GOLD : TEAL;
+                        return (
+                          <div key={det.id} style={{ border: `1px solid ${urgencyColor}30`, borderLeft: `4px solid ${urgencyColor}`, background: "#fff", padding: "20px 24px" }}>
+                            <div className="flex items-start justify-between gap-8">
+                              <div className="flex-1">
+                                <div className="flex items-center gap-3 mb-2 flex-wrap">
+                                  <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: "0.2em", textTransform: "uppercase", color: urgencyColor, background: `${urgencyColor}12`, padding: "2px 8px" }}>
+                                    {pct >= 70 ? "HIGH CONVERGENCE" : pct >= 40 ? "DEVELOPING" : "EARLY SIGNAL"}
+                                  </span>
+                                  <span style={{ fontSize: 10, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                                    {det.triggerPattern}
+                                  </span>
+                                </div>
+                                <div style={{ marginBottom: 12 }}>
+                                  <div className="flex items-center gap-3 mb-1">
+                                    <span style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{det.indicatorsMatched} of {det.totalIndicators} leading indicators matched</span>
+                                    <span style={{ fontSize: 12, fontWeight: 700, color: urgencyColor }}>{pct}% convergence</span>
+                                  </div>
+                                  <div style={{ height: 6, background: "#E8E4DC", position: "relative" }}>
+                                    <div style={{ height: "100%", width: `${pct}%`, background: urgencyColor, transition: "width 0.4s ease" }} />
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-6 flex-wrap">
+                                  <span style={{ fontSize: 11, color: "#6B7280" }}>
+                                    Detected: <strong style={{ color: NAVY }}>{new Date(det.detectedAt).toLocaleString()}</strong>
+                                  </span>
+                                  {det.matchScore != null && (
+                                    <span style={{ fontSize: 11, color: "#6B7280" }}>
+                                      Match score: <strong style={{ color: NAVY }}>{det.matchScore.toFixed(1)}</strong>
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="flex flex-col gap-2 flex-shrink-0">
+                                <Button
+                                  size="sm"
+                                  onClick={() => acknowledgeLeadingMutation.mutate(det.id)}
+                                  disabled={acknowledgeLeadingMutation.isPending}
+                                  style={{ background: NAVY, color: "#fff", borderRadius: 0, fontSize: 11, fontWeight: 700 }}
+                                >
+                                  <Eye className="h-3 w-3 mr-1.5" />
+                                  Acknowledge
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  style={{ borderRadius: 0, fontSize: 11, border: `1px solid #E8E4DC` }}
+                                >
+                                  <Layers className="h-3 w-3 mr-1.5" />
+                                  Stage Protocol
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                )}
               </div>
             </TabsContent>
 

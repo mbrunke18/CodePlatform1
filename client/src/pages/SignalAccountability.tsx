@@ -42,6 +42,26 @@ function EscalationBadge({ level }: { level: string }) {
   );
 }
 
+function UrgencyBadge({ level }: { level: string }) {
+  const URGENCY_MAP: Record<string, { bg: string; color: string; label: string }> = {
+    CRITICAL: { bg: `${RED}18`, color: RED, label: "CRITICAL — No Preparation History" },
+    HIGH:     { bg: `${GOLD}15`, color: GOLD, label: "HIGH — Readiness Gaps Detected" },
+    ELEVATED: { bg: "rgba(249,115,22,0.12)", color: "#F97316", label: "ELEVATED" },
+    READY:    { bg: `${TEAL}10`, color: TEAL, label: "READY — Protocol Pre-Staged" },
+    STANDARD: { bg: OFF, color: MUTED, label: "STANDARD" },
+  };
+  const c = URGENCY_MAP[level] ?? URGENCY_MAP.STANDARD;
+  if (level === 'STANDARD') return null;
+  return (
+    <span style={{
+      fontSize: 10, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase",
+      background: c.bg, color: c.color, padding: "2px 8px", display: "inline-block",
+    }}>
+      {c.label}
+    </span>
+  );
+}
+
 function SignalRow({ signal, onAcknowledge, isPending }: {
   signal: any;
   onAcknowledge: (id: number) => void;
@@ -64,6 +84,7 @@ function SignalRow({ signal, onAcknowledge, isPending }: {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6, flexWrap: "wrap" }}>
           <EscalationBadge level={signal.escalationLevel} />
+          {signal.urgencyLevel && <UrgencyBadge level={signal.urgencyLevel} />}
           {signal.triggerDomain && (
             <span style={{ fontSize: 11, color: MUTED, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               {signal.triggerDomain}

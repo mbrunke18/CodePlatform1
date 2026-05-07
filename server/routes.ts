@@ -7597,6 +7597,8 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
             cycles,
             escalated,
             escalationLevel: escalated ? (cycles >= 4 ? 'BOARD' : 'EXECUTIVE') : 'MONITORING',
+            urgencyLevel: (d as any).urgencyLevel ?? 'STANDARD',
+            orgReadiness: (d as any).orgReadiness ?? null,
           };
         });
 
@@ -8701,6 +8703,108 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
   });
 
   console.log('✅ Feature routes registered: role-availability, activation-outcomes, customer-health, maturity-score, playbook-performance, signal-monitoring-config');
+
+  // ─── Phase 1: Signal Calibration ──────────────────────────────────────────
+  // GET  /api/signal-calibration          — list all calibrations for org
+  // POST /api/signal-calibration          — upsert calibration for a pattern
+  app.get('/api/signal-calibration', async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.json([]);
+      const calibrations = await storage.getSignalCalibrations(orgId);
+      res.json(calibrations);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/signal-calibration', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.user.organizationId;
+      const { triggerPattern, confidenceAdjust, keywordWeights, sensitivityLevel } = req.body;
+      if (!triggerPattern) return res.status(400).json({ error: 'triggerPattern is required' });
+      const result = await storage.upsertSignalCalibration({
+        organizationId: orgId,
+        triggerPattern,
+        confidenceAdjust: Number(confidenceAdjust ?? 0),
+        keywordWeights: keywordWeights ?? {},
+        sensitivityLevel: sensitivityLevel ?? 'standard',
+      });
+      res.json(result);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ─── Phase 2: Leading Indicator Detections ────────────────────────────────
+  // GET  /api/leading-indicator-detections               — pending detections
+  // POST /api/leading-indicator-detections/:id/acknowledge
+  // GET  /api/leading-indicators/:pattern                — indicators for a trigger pattern
+  app.get('/api/leading-indicator-detections', async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      if (!orgId) return res.json([]);
+      const includeAcknowledged = req.query.includeAcknowledged === 'true';
+      const detections = await storage.getLeadingIndicatorDetections(orgId, includeAcknowledged);
+      res.json(detections);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/leading-indicator-detections/:id/acknowledge', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      await storage.acknowledgeLeadingIndicatorDetection(id);
+      res.json({ success: true });
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/leading-indicators/:pattern', async (req: any, res) => {
+    try {
+      const pattern = decodeURIComponent(req.params.pattern);
+      const indicators = await storage.getLeadingIndicators(pattern);
+      res.json(indicators);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ─── Phase 3: Signal Connectors ────────────────────────────────────────────
+  // GET  /api/signal-connectors           — list connectors (platform + org)
+  // POST /api/signal-connectors           — create org connector
+  // PATCH /api/signal-connectors/:id      — update connector
+  app.get('/api/signal-connectors', async (req: any, res) => {
+    try {
+      const orgId = req.user?.organizationId;
+      const connectors = await storage.getSignalConnectors(orgId);
+      res.json(connectors);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.post('/api/signal-connectors', requireOrgAccess, async (req: any, res) => {
+    try {
+      const orgId = req.user.organizationId;
+      const connector = await storage.createSignalConnector({ ...req.body, organizationId: orgId });
+      res.json(connector);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.patch('/api/signal-connectors/:id', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { id } = req.params;
+      const connector = await storage.updateSignalConnector(id, req.body);
+      res.json(connector);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
 
   // ─── Trigger Evaluation Diagnostic ─────────────────────────────────────────
   // Returns a summary of the org's configured triggers and what confidence floors

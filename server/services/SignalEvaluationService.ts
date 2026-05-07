@@ -617,6 +617,40 @@ export async function evaluateAndPersistSignals(
         console.log(`📬 No domain approvers for "${detection.triggerDomain}" — sending to ${contactEmails.length} org-wide contact(s)`);
       }
 
+      // ── Phase 1: Compute urgency level based on confidence + calibration ──────
+      // CRITICAL = high confidence signal against a pattern the org hasn't prepared for
+      // HIGH = confidence ≥ threshold, some readiness gaps known
+      // ELEVATED = sub-threshold but notable (40–71%)
+      // STANDARD = default for confirmed detections
+      // READY = org has high readiness for this pattern
+      let urgencyLevel = 'STANDARD';
+      let orgReadiness: number | null = null;
+      try {
+        const { signalCalibrationConfig } = await import('@shared/schema');
+        const { eq, and } = await import('drizzle-orm');
+        const [cal] = await db.select().from(signalCalibrationConfig).where(
+          and(
+            eq(signalCalibrationConfig.organizationId, organizationId as any),
+            eq(signalCalibrationConfig.triggerPattern, detection.triggerName)
+          )
+        );
+        if (cal) {
+          orgReadiness = cal.calibrationCount ?? 0;
+          const calibratedScore = detection.confidenceScore + Number(cal.confidenceAdjust ?? 0);
+          if (calibratedScore >= 80 && (cal.calibrationCount ?? 0) < 2) {
+            urgencyLevel = 'CRITICAL';
+          } else if (calibratedScore >= 72 && (cal.calibrationCount ?? 0) < 5) {
+            urgencyLevel = 'HIGH';
+          } else if ((cal.calibrationCount ?? 0) >= 5) {
+            urgencyLevel = 'READY'; // Org has exercised this pattern multiple times
+          }
+        } else {
+          // No calibration history = org has never prepared for this pattern
+          if (detection.confidenceScore >= 80) urgencyLevel = 'CRITICAL';
+          else if (detection.confidenceScore >= 72) urgencyLevel = 'HIGH';
+        }
+      } catch { /* non-critical — default urgency stands */ }
+
       // Persist the detection with full evidence trail
       const [savedDetection] = await db.insert(triggerDetections).values({
         organizationId: organizationId,
@@ -630,6 +664,8 @@ export async function evaluateAndPersistSignals(
         alternatePlaybooks: detection.alternatePlaybooks,
         status: 'detected',
         notificationSent: false,
+        urgencyLevel,
+        orgReadiness,
         matchedEvidence: {
           engine: engine,
           conditionsMet: detection.conditionsMet ?? detection.matchedKeywords.length,

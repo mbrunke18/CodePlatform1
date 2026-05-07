@@ -10,7 +10,7 @@ import {
   Search, Zap, Target, TrendingUp, DollarSign, Shield, Activity,
   Users, Globe, Cpu, BarChart3, Eye, BookOpen, AlertTriangle,
   Radio, Leaf, Brain, Star, Building2, Database, Plus, ChevronRight,
-  Settings, CheckCircle2,
+  Settings, CheckCircle2, History, SlidersHorizontal,
 } from 'lucide-react';
 import { SIGNAL_CATEGORIES } from '@shared/intelligence-signals';
 import TriggerConfigurationWizard from '@/components/configuration/TriggerConfigurationWizard';
@@ -64,11 +64,17 @@ export default function SignalConfiguration() {
   const [wizardCategory, setWizardCategory] = useState('');
   const [editingTrigger, setEditingTrigger] = useState<any>(null);
 
+  const [showCalibration, setShowCalibration] = useState(false);
+
   const { data: configData, isLoading } = useQuery<{ disabledDataPoints: string[] }>({
     queryKey: ['/api/signal-monitoring-config'],
   });
   const { data: triggersData } = useQuery<any[]>({
     queryKey: ['/api/executive-triggers'],
+  });
+  const { data: calibrations } = useQuery<any[]>({
+    queryKey: ['/api/signal-calibration'],
+    placeholderData: [],
   });
 
   const disabled: string[] = localDisabled ?? configData?.disabledDataPoints ?? [];
@@ -520,6 +526,75 @@ export default function SignalConfiguration() {
           }}
           editTrigger={editingTrigger}
         />
+      </div>
+
+      {/* ── Calibration History Panel ──────────────────────────────────────── */}
+      <div className="flex-shrink-0 border-t-2" style={{ borderColor: NAVY }}>
+        <button
+          onClick={() => setShowCalibration(v => !v)}
+          className="w-full flex items-center justify-between px-6 py-3 bg-white hover:bg-[#F8F7F4] transition-colors"
+        >
+          <div className="flex items-center gap-3">
+            <History className="w-4 h-4" style={{ color: GOLD }} />
+            <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: NAVY }}>
+              Pattern Calibration History
+            </span>
+            {(calibrations?.length ?? 0) > 0 && (
+              <span className="text-[9px] font-black px-2 py-0.5" style={{ background: GOLD, color: NAVY }}>
+                {calibrations!.length} pattern{calibrations!.length !== 1 ? 's' : ''} calibrated
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] text-gray-400 font-medium">
+              {showCalibration ? 'Collapse' : 'Expand'}
+            </span>
+            <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400" />
+          </div>
+        </button>
+
+        {showCalibration && (
+          <div className="px-6 pb-6 bg-[#F8F7F4] border-t border-[#E8E4DC]">
+            <p className="text-[10px] text-gray-500 pt-4 pb-3 max-w-xl">
+              Each time a Readiness Protocol is activated or a Close-Out verdict is recorded, the system learns how your organization responded to that trigger pattern. This history shapes urgency scoring for future detections.
+            </p>
+            {(calibrations?.length ?? 0) === 0 ? (
+              <div className="flex items-center gap-3 py-4 text-gray-400">
+                <Brain className="w-5 h-5" />
+                <p className="text-xs">No patterns calibrated yet. Urgency scoring improves after each protocol activation and close-out.</p>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {calibrations!.map((cal: any) => {
+                  const adj = Number(cal.confidenceAdjust ?? 0);
+                  return (
+                    <div key={cal.id} className="flex items-center justify-between px-4 py-3 bg-white border border-[#E8E4DC]">
+                      <div className="flex items-center gap-4 flex-1 min-w-0">
+                        <div className="w-2 h-2 flex-shrink-0" style={{ background: cal.sensitivityLevel === 'high' ? '#EF4444' : cal.sensitivityLevel === 'low' ? TEAL : GOLD }} />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold truncate" style={{ color: NAVY }}>{cal.triggerPattern}</p>
+                          <p className="text-[9px] text-gray-400">
+                            Sensitivity: <strong>{cal.sensitivityLevel ?? 'standard'}</strong>
+                            {' · '}Calibrated {cal.calibrationCount ?? 0}×
+                            {cal.lastCalibrated && ` · Last: ${new Date(cal.lastCalibrated).toLocaleDateString()}`}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex-shrink-0 text-right ml-4">
+                        <p className="text-[10px] font-bold" style={{ color: adj > 0 ? TEAL : adj < 0 ? '#EF4444' : GOLD }}>
+                          {adj > 0 ? `+${adj}` : adj} confidence adj.
+                        </p>
+                        <p className="text-[9px] text-gray-400">
+                          {cal.calibrationCount >= 5 ? 'READY — protocol pre-staged' : cal.calibrationCount >= 2 ? 'HIGH readiness' : 'Building history'}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </PageLayout>
   );

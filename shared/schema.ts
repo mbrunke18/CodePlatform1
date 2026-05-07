@@ -10,6 +10,7 @@ import {
   primaryKey,
   integer,
   decimal,
+  numeric,
   boolean,
   pgEnum,
   serial,
@@ -6274,6 +6275,9 @@ export const compoundThreatAlerts = pgTable('compound_threat_alerts', {
   stagedPlaybookId: uuid('staged_playbook_id'),
   status: text('status').notNull().default('active'),
   detectedAt: timestamp('detected_at').defaultNow(),
+  // Phase 2 — Cross-Domain Compound Detection
+  compoundScore: integer('compound_score'),
+  subThresholdSignals: jsonb('sub_threshold_signals'), // [{detectionId, triggerName, domain, confidence}]
 });
 export const insertCompoundThreatAlertSchema = createInsertSchema(compoundThreatAlerts).omit({ id: true, detectedAt: true });
 export type InsertCompoundThreatAlert = z.infer<typeof insertCompoundThreatAlertSchema>;
@@ -6504,7 +6508,15 @@ export const triggerDetections = pgTable('trigger_detections', {
   notificationSent: boolean('notification_sent').default(false),
   detectedAt: timestamp('detected_at').defaultNow(),
   matchedEvidence: jsonb('matched_evidence'), // { conditionsMet: number, totalConditions: number, dataPoints: string[], matchedKeywords: string[], engine: string }
+  // Phase 1 — Organizational Context Scoring
+  urgencyLevel: varchar('urgency_level', { length: 20 }).default('STANDARD'), // CRITICAL | HIGH | STANDARD | READY
+  orgReadiness: integer('org_readiness'),  // preparedness score at time of detection (0-100)
 });
+
+// Phase 1 — Organizational Context Scoring (added columns)
+// urgencyLevel: CRITICAL | HIGH | STANDARD | READY
+// orgReadiness: preparedness score at time of detection (0-100)
+// These are added to the table schema but kept optional so existing rows are unaffected.
 
 export const insertTriggerDetectionSchema = createInsertSchema(triggerDetections).omit({ id: true, detectedAt: true });
 export type InsertTriggerDetection = z.infer<typeof insertTriggerDetectionSchema>;
@@ -6652,3 +6664,125 @@ export const allowedEmails = pgTable('allowed_emails', {
 export const insertAllowedEmailSchema = createInsertSchema(allowedEmails).omit({ id: true, addedAt: true });
 export type InsertAllowedEmail = z.infer<typeof insertAllowedEmailSchema>;
 export type AllowedEmail = typeof allowedEmails.$inferSelect;
+
+// ─── Phase 1: Preparation-Calibrated Thresholds ──────────────────────────────
+// Per-organization signal threshold calibration derived from Close-Out Gate answers.
+// Each activation that produces Close-Out Gate answers adjusts these weights.
+// Calibration is ADDITIVE to base thresholds — never replaces them.
+export const signalCalibrationConfig = pgTable('signal_calibration_config', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: text('organization_id').notNull(),
+  triggerPattern: text('trigger_pattern').notNull(),   // matches TRIGGER_PATTERNS[].name
+  confidenceAdjust: numeric('confidence_adjust').default('0'), // +/- adjustment on base confidence
+  keywordWeights: jsonb('keyword_weights').default({}),        // per-keyword weight multipliers
+  sensitivityLevel: varchar('sensitivity_level', { length: 20 }).default('standard'), // high|standard|low
+  calibrationCount: integer('calibration_count').default(0),   // activations that informed this
+  lastCalibrated: timestamp('last_calibrated'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+export const insertSignalCalibrationConfigSchema = createInsertSchema(signalCalibrationConfig).omit({ id: true, createdAt: true, updatedAt: true });
+export type InsertSignalCalibrationConfig = z.infer<typeof insertSignalCalibrationConfigSchema>;
+export type SignalCalibrationConfig = typeof signalCalibrationConfig.$inferSelect;
+
+// ─── Phase 2: Leading Indicators ─────────────────────────────────────────────
+// Library of pre-event signals for each trigger pattern.
+// These fire before primary threshold events — moving from reactive to predictive.
+export const leadingIndicators = pgTable('leading_indicators', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  triggerPattern: text('trigger_pattern').notNull(),  // matches TRIGGER_PATTERNS[].name
+  indicatorName: text('indicator_name').notNull(),
+  indicatorType: varchar('indicator_type', { length: 30 }).notNull(), // keyword|source|pattern|frequency
+  signalSource: text('signal_source'),               // which RSS feed or data source
+  keywords: text('keywords').array().default([]),    // keyword list for this indicator
+  weight: numeric('weight').default('1'),            // relative importance
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertLeadingIndicatorSchema = createInsertSchema(leadingIndicators).omit({ id: true, createdAt: true });
+export type InsertLeadingIndicator = z.infer<typeof insertLeadingIndicatorSchema>;
+export type LeadingIndicator = typeof leadingIndicators.$inferSelect;
+
+// Per-organization leading indicator detections (developing situations)
+export const leadingIndicatorDetections = pgTable('leading_indicator_detections', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: text('organization_id').notNull(),
+  triggerPattern: text('trigger_pattern').notNull(),
+  indicatorsMatched: integer('indicators_matched').default(0),
+  totalIndicators: integer('total_indicators').default(0),
+  matchScore: numeric('match_score').default('0'),   // 0-100 composite match score
+  matchedIndicatorIds: text('matched_indicator_ids').array().default([]),
+  detectedAt: timestamp('detected_at').defaultNow(),
+  acknowledged: boolean('acknowledged').default(false),
+  playbookId: uuid('playbook_id'),
+});
+export const insertLeadingIndicatorDetectionSchema = createInsertSchema(leadingIndicatorDetections).omit({ id: true, detectedAt: true });
+export type InsertLeadingIndicatorDetection = z.infer<typeof insertLeadingIndicatorDetectionSchema>;
+export type LeadingIndicatorDetection = typeof leadingIndicatorDetections.$inferSelect;
+
+// ─── Phase 3: Signal Connectors ──────────────────────────────────────────────
+// Replaces hardcoded RSS feed array with configurable connectors.
+// organizationId=null → platform-level connector available to all orgs.
+export const signalConnectors = pgTable('signal_connectors', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: text('organization_id'),            // null = platform-level
+  connectorType: varchar('connector_type', { length: 30 }).notNull(), // rss|api|webhook|document|database|microsoft365|salesforce|financial_erp
+  name: text('name').notNull(),
+  description: text('description'),
+  config: jsonb('config').notNull().default({}),      // connector-specific configuration
+  enabled: boolean('enabled').default(true),
+  pollIntervalMin: integer('poll_interval_min').default(15),
+  lastPolledAt: timestamp('last_polled_at'),
+  errorCount: integer('error_count').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertSignalConnectorSchema = createInsertSchema(signalConnectors).omit({ id: true, createdAt: true });
+export type InsertSignalConnector = z.infer<typeof insertSignalConnectorSchema>;
+export type SignalConnector = typeof signalConnectors.$inferSelect;
+
+// ─── Phase 3: Protocol Signal Profiles ───────────────────────────────────────
+// Per-playbook signal detection architecture.
+// Every protocol gets a structured profile describing what its trigger situation
+// looks like as it develops — primary signals, leading indicators, compound patterns.
+export const protocolSignalProfiles = pgTable('protocol_signal_profiles', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  playbookId: uuid('playbook_id'),                    // references strategic_scenarios.id
+  triggerPattern: text('trigger_pattern').notNull(),
+  primarySignals: jsonb('primary_signals').notNull().default([]),     // [{dataPoint, threshold, weight}]
+  leadingIndicators: jsonb('leading_indicators').notNull().default([]), // [{indicator, source, keywords, weight}]
+  compoundTriggers: jsonb('compound_triggers').default([]),            // [{domain, signalPattern, weight}]
+  contextModifiers: jsonb('context_modifiers').default([]),            // [{condition, confidenceAdjust}]
+  profileVersion: integer('profile_version').default(1),
+  generatedBy: varchar('generated_by', { length: 20 }).default('system'), // system|manual|ai-assisted
+  reviewedAt: timestamp('reviewed_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+export const insertProtocolSignalProfileSchema = createInsertSchema(protocolSignalProfiles).omit({ id: true, createdAt: true, updatedAt: true });
+export type InsertProtocolSignalProfile = z.infer<typeof insertProtocolSignalProfileSchema>;
+export type ProtocolSignalProfile = typeof protocolSignalProfiles.$inferSelect;
+
+// ─── Phase 5: Signal Ontology Engine ─────────────────────────────────────────
+// Knowledge graph mapping semantic relationships between signals, triggers,
+// domains, and organizational contexts. The unassailable moat.
+export const signalOntologyNodes = pgTable('signal_ontology_nodes', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  nodeType: varchar('node_type', { length: 30 }).notNull(), // signal|trigger|domain|context
+  nodeKey: text('node_key').notNull(),
+  properties: jsonb('properties').default({}),
+});
+export const insertSignalOntologyNodeSchema = createInsertSchema(signalOntologyNodes).omit({ id: true });
+export type InsertSignalOntologyNode = z.infer<typeof insertSignalOntologyNodeSchema>;
+export type SignalOntologyNode = typeof signalOntologyNodes.$inferSelect;
+
+export const signalOntologyEdges = pgTable('signal_ontology_edges', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  fromNodeId: uuid('from_node_id').references(() => signalOntologyNodes.id),
+  toNodeId: uuid('to_node_id').references(() => signalOntologyNodes.id),
+  edgeType: varchar('edge_type', { length: 30 }).notNull(), // precedes|amplifies|contradicts|confirms
+  weight: numeric('weight').default('1.0'),
+  evidenceCount: integer('evidence_count').default(0),  // activations supporting this edge
+  lastUpdated: timestamp('last_updated').defaultNow(),
+});
+export const insertSignalOntologyEdgeSchema = createInsertSchema(signalOntologyEdges).omit({ id: true });
+export type InsertSignalOntologyEdge = z.infer<typeof insertSignalOntologyEdgeSchema>;
+export type SignalOntologyEdge = typeof signalOntologyEdges.$inferSelect;
