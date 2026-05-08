@@ -864,6 +864,124 @@ export default function IntegrationHub({ embedded }: { embedded?: boolean }) {
           </div>
         </div>
 
+        {/* Enterprise Stack Positioning Section */}
+        <div style={{ background: "white", borderBottom: "1px solid #E8E4DC", padding: "64px 48px" }}>
+          <div className="max-w-7xl mx-auto">
+            {/* Section Label */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 40 }}>
+              <div style={{ width: 28, height: 2, background: GOLD, flexShrink: 0 }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: "#6B7280" }}>Okta Businesses at Work · Fortune 500 · 2026</span>
+            </div>
+
+            {/* Headline */}
+            <div className="max-w-4xl mb-12">
+              <h2 style={{ ...CG, fontSize: "clamp(32px,4vw,52px)", fontWeight: 600, color: NAVY, lineHeight: 1.1, marginBottom: 20 }}>
+                The stack is already deployed.<br />
+                <em style={{ fontStyle: "italic", color: GOLD }}>The operating model is missing.</em>
+              </h2>
+              <p style={{ fontSize: 16, color: "#4B5563", lineHeight: 1.7, maxWidth: 680 }}>
+                Of the 15 most widely deployed Fortune 500 enterprise applications, 8 connect directly to Readiness OS — as signal sources, notification channels, or executive authorization surfaces. These tools detect events. Readiness OS determines what the organization does about them — before the trigger fires.
+              </p>
+            </div>
+
+            {/* Three-Column Role Map */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr auto 1fr", gap: 0, alignItems: "stretch" }}>
+
+              {/* Signal Sources */}
+              <div style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", padding: 32 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL, marginBottom: 6 }}>Signal Sources</div>
+                <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 24, lineHeight: 1.5 }}>These tools surface events. Readiness OS ingests them as trigger signals.</div>
+                {[
+                  { name: "Workday", signal: "Executive transitions · Headcount changes · Org restructures" },
+                  { name: "Salesforce", signal: "Pipeline collapse · Revenue variance · Deal loss" },
+                  { name: "ServiceNow", signal: "Incident escalations · Change management events" },
+                  { name: "Palo Alto Networks", signal: "Breach detection · Threat classification" },
+                  { name: "Zscaler", signal: "Network anomalies · Access pattern changes" },
+                  { name: "Splunk", signal: "Log-based security signals · Operational anomalies" },
+                  { name: "Docusign", signal: "Board approvals · Contract milestones · Governance triggers" },
+                ].map((item) => (
+                  <div key={item.name} style={{ borderTop: "1px solid #E8E4DC", paddingTop: 16, marginTop: 16 }}>
+                    <div style={{ fontWeight: 700, fontSize: 13, color: NAVY, marginBottom: 4 }}>{item.name}</div>
+                    <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>{item.signal}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Arrow */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 1, background: "#E8E4DC", height: 60 }} />
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", writingMode: "vertical-rl" as const, transform: "rotate(180deg)" }}>feeds into</div>
+                  <div style={{ width: 1, background: "#E8E4DC", height: 60 }} />
+                </div>
+              </div>
+
+              {/* Readiness OS — Center */}
+              <div style={{ background: NAVY, padding: 32, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+                <div style={{ width: 48, height: 48, border: `2px solid ${GOLD}`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                  <Zap style={{ color: GOLD, width: 20, height: 20 }} />
+                </div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 12 }}>Readiness OS</div>
+                <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: "white", lineHeight: 1.3, marginBottom: 16 }}>The Operating Model Layer</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 220 }}>
+                  Signals come in. Pre-staged protocols activate. Executive authorization fires. The response is ready before the trigger fires.
+                </div>
+                <div style={{ marginTop: 24, padding: "10px 20px", background: `rgba(201,168,76,0.15)`, border: `1px solid ${GOLD}`, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: GOLD }}>
+                  12-Minute Execution
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 1, background: "#E8E4DC", height: 60 }} />
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#9CA3AF", writingMode: "vertical-rl" as const, transform: "rotate(180deg)" }}>activates through</div>
+                  <div style={{ width: 1, background: "#E8E4DC", height: 60 }} />
+                </div>
+              </div>
+
+              {/* Activation Channels */}
+              <div style={{ background: "#F8F7F4", border: "1px solid #E8E4DC", padding: 32 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 6 }}>Activation Channels</div>
+                <div style={{ fontSize: 13, color: "#6B7280", marginBottom: 24, lineHeight: 1.5 }}>Readiness OS executes through the tools your people already use.</div>
+                {[
+                  { name: "Microsoft 365", signal: "Teams notifications · Copilot Studio workflows · SharePoint brief staging" },
+                  { name: "Microsoft Teams", signal: "War Room channels · Stakeholder alerts · Authorization requests" },
+                  { name: "Slack", signal: "Real-time trigger alerts · Task notifications · Escalation routing" },
+                  { name: "Zoom", signal: "War Room session launch · Executive briefing initiation" },
+                  { name: "Atlassian Suite", signal: "Task seeding · Jira ticket creation · Confluence brief publishing" },
+                ].map((item) => (
+                  <div key={item.name} style={{ borderTop: "1px solid #E8E4DC", paddingTop: 16, marginTop: 16 }}>
+                    <div style={{ fontWeight: 700, fontSize: 13, color: NAVY, marginBottom: 4 }}>{item.name}</div>
+                    <div style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>{item.signal}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Context Bar */}
+            <div style={{ marginTop: 40, padding: "20px 32px", background: "#F8F7F4", border: "1px solid #E8E4DC", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 16 }}>
+              <div style={{ fontSize: 13, color: "#4B5563", lineHeight: 1.6, maxWidth: 600 }}>
+                <strong style={{ color: NAVY }}>Every enterprise already has this stack.</strong> None have the operating model that tells the organization what to do when these tools surface a trigger. Readiness OS is that layer.
+              </div>
+              <div style={{ display: "flex", gap: 24, flexShrink: 0 }}>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, lineHeight: 1 }}>8</div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#6B7280", marginTop: 4 }}>of Top 15 Apps</div>
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, lineHeight: 1 }}>170</div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#6B7280", marginTop: 4 }}>Readiness Protocols</div>
+                </div>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ ...CG, fontSize: 32, fontWeight: 600, color: GOLD, lineHeight: 1 }}>12<span style={{ fontSize: 18 }}>min</span></div>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#6B7280", marginTop: 4 }}>Execution Head Start</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="p-12 max-w-7xl mx-auto space-y-12">
           {/* Main Integration Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-12">
