@@ -10446,5 +10446,153 @@ Respond ONLY as JSON with this exact structure:
     }
   });
 
+  // ── Activation Intelligence — Decision briefs, war room composition, 12-min scorecard ──
+
+  app.get('/api/activation-intelligence/brief/:playbookId', requireAuth, async (req: any, res) => {
+    try {
+      const { generateExecutiveDecisionBrief } = await import('./services/ActivationIntelligenceService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const brief = await generateExecutiveDecisionBrief(
+        req.params.playbookId,
+        orgId,
+        req.query.situationContext as string | undefined
+      );
+      res.json(brief);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/activation-intelligence/war-room/:playbookId', requireAuth, async (req: any, res) => {
+    try {
+      const { composeWarRoom } = await import('./services/ActivationIntelligenceService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const composition = await composeWarRoom(req.params.playbookId, orgId);
+      res.json(composition);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/activation-intelligence/scorecard/:activationId', requireAuth, async (req: any, res) => {
+    try {
+      const { getTwelveMinuteScorecard } = await import('./services/ActivationIntelligenceService.js');
+      const scorecard = await getTwelveMinuteScorecard(req.params.activationId);
+      res.json(scorecard);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/activation-intelligence/top-protocols', requireAuth, async (req: any, res) => {
+    try {
+      const { getTopActivatedProtocols } = await import('./services/ActivationIntelligenceService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const protocols = await getTopActivatedProtocols(orgId, Number(req.query.limit ?? 10));
+      res.json(protocols);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Protocol Health — Freshness, signal alignment, decay detection ────────────
+
+  app.get('/api/protocol-health/summary', requireAuth, async (req: any, res) => {
+    try {
+      const { getProtocolHealthSummary } = await import('./services/ProtocolHealthService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const summary = await getProtocolHealthSummary(orgId);
+      res.json(summary);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/protocol-health/all', requireAuth, async (req: any, res) => {
+    try {
+      const { scoreAllProtocols } = await import('./services/ProtocolHealthService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const limit = Math.min(Number(req.query.limit ?? 50), 170);
+      const scores = await scoreAllProtocols(orgId, limit);
+      res.json(scores);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/protocol-health/:protocolId', requireAuth, async (req: any, res) => {
+    try {
+      const { scoreProtocol } = await import('./services/ProtocolHealthService.js');
+      const { playbookLibrary } = await import('@shared/schema');
+      const { db } = await import('./db.js');
+      const { eq } = await import('drizzle-orm');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const [protocol] = await db.select().from(playbookLibrary).where(eq(playbookLibrary.id, req.params.protocolId)).limit(1);
+      if (!protocol) return res.status(404).json({ error: 'Protocol not found' });
+      const score = await scoreProtocol(protocol, orgId, {});
+      res.json(score);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Stakeholder Readiness — Performance profiles, bottleneck detection, recommendations ──
+
+  app.get('/api/stakeholder-readiness/dashboard', requireAuth, async (req: any, res) => {
+    try {
+      const { getOrgReadinessDashboard } = await import('./services/StakeholderReadinessService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const dashboard = await getOrgReadinessDashboard(orgId);
+      res.json(dashboard);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/stakeholder-readiness/recommend/:playbookId', requireAuth, async (req: any, res) => {
+    try {
+      const { getProtocolRecommendations } = await import('./services/StakeholderReadinessService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const recommendation = await getProtocolRecommendations(req.params.playbookId, orgId);
+      res.json(recommendation);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  // ── Debrief Feedback — Protocol improvement proposals from close-out gate data ──
+
+  app.get('/api/debrief-feedback/:playbookId', requireAuth, async (req: any, res) => {
+    try {
+      const { generateProtocolFeedbackReport } = await import('./services/DebriefFeedbackService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const report = await generateProtocolFeedbackReport(req.params.playbookId, orgId);
+      res.json(report);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get('/api/debrief-feedback/platform/top-needs', requireAuth, async (req: any, res) => {
+    try {
+      const { getTopProtocolsNeedingFeedback } = await import('./services/DebriefFeedbackService.js');
+      const orgId = req.query.organizationId || req.user?.organizationId;
+      if (!orgId) return res.status(400).json({ error: 'organizationId required' });
+      const results = await getTopProtocolsNeedingFeedback(orgId, Number(req.query.limit ?? 10));
+      res.json(results);
+    } catch (err: any) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   return httpServer;
 }

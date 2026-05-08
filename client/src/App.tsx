@@ -113,6 +113,8 @@ const ExecutiveSummaryGenerator = lazy(() => import("./pages/ExecutiveSummaryGen
 const AIRadarDashboard = lazy(() => import("./pages/AIRadarDashboard"));
 const SignalIntelligenceHub = lazy(() => import("./pages/SignalIntelligenceHub"));
 const SignalConnectors = lazy(() => import("./pages/SignalConnectors"));
+const ActivationIntelligencePage = lazy(() => import("./pages/ActivationIntelligencePage"));
+const ProtocolHealthDashboard = lazy(() => import("./pages/ProtocolHealthDashboard"));
 const LiveDetectionFeed = lazy(() => import("./pages/LiveDetectionFeed"));
 const InstitutionalMemory = lazy(() => import("./pages/InstitutionalMemory"));
 const SignalAccountability = lazy(() => import("./pages/SignalAccountability"));
@@ -409,6 +411,8 @@ function Router() {
         <Route path="/ai-radar">{() => <AIRadarDashboard />}</Route>
         <Route path="/signal-intelligence" component={SignalIntelligenceHub} />
         <Route path="/signal-connectors" component={SignalConnectors} />
+        <Route path="/activation-intelligence" component={ActivationIntelligencePage} />
+        <Route path="/protocol-health" component={ProtocolHealthDashboard} />
         {renderRoutes(["/live-detection", "/live-detection-feed"], LiveDetectionFeed)}
         {renderRoutes(["/ai", "/pulse", "/flux", "/prism", "/echo", "/nova"], AIIntelligenceHub)}
         <Route path="/pulse-intelligence" component={PulseIntelligence} />
