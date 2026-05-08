@@ -277,7 +277,7 @@ export default function MarketingLanding() {
               <CardContent className="p-8">
                 <h3 className="font-serif text-xl text-[#0A0F2E] mb-4">Readiness Protocol Library</h3>
                 <p className="text-[#6B7280] text-sm mb-8 leading-relaxed">
-                  170 strategic Readiness Protocols across 9 operational domains covering growth, defense, transformation, and AI governance.
+                  170 strategic Readiness Protocols across 9 operational domains covering Growth & Positioning, Risk & Resilience, Transformation, and AI governance.
                 </p>
                 <Button onClick={() => setLocation('/playbook-library')} variant="outline" className="w-full border-[#E8E4DC] text-[#0A0F2E] hover:bg-[#0A0F2E] hover:text-white rounded-none uppercase tracking-widest text-[10px] font-bold h-12" data-testid="button-scenarios">
                   Browse Readiness Protocols <ChevronRight className="ml-2 h-4 w-4" />
