@@ -58,9 +58,14 @@ export interface PreparationSignalResult {
  *   "Your Cyber readiness dropped to 58%. Activate preparation protocol?"
  *   Choices: Activate recovery protocol | Schedule review | Dismiss | Delegate
  */
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export async function checkPreparationSignals(
   organizationId: string
 ): Promise<PreparationSignalResult[]> {
+  // Skip for system/anonymous contexts — preparedness signals require a real org UUID
+  if (!organizationId || !UUID_REGEX.test(organizationId)) return [];
+
   const results: PreparationSignalResult[] = [];
 
   try {
