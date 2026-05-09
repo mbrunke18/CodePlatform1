@@ -101,3 +101,9 @@ id = "elc4Es1I5rSNCq5Y1gUje"
 uri = "file://financials/VaughnMartin_Financial_Projections_18-24mo.md"
 type = "text"
 title = "VaughnMartin — 24-Month Financial Projections"
+
+[[outputs]]
+id = "2pit5JttNSGVEkf7gTfNZ"
+uri = "file://MARKETING_STRATEGY.md"
+type = "text"
+title = "VaughnMartin Readiness OS — Full Marketing Strategy (May 2026)"
