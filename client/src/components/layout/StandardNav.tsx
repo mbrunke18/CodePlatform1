@@ -194,6 +194,7 @@ export default function StandardNav() {
 
   // EVIDENCE — research, proof, and ROI validation
   const evidenceLinks: NavLink[] = [
+    { label: "What is Readiness Infrastructure?", path: "/readiness-infrastructure", icon: FileText, description: "The category definition — what it is, why it exists now, and where Readiness OS sits in the market", featured: true },
     { label: "Why Readiness OS?", path: "/the-proof", icon: Scale, description: "Why not Copilot, ServiceNow, Palantir, or Everbridge — the honest answer", featured: true },
     { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "Board-ready one-pager — thesis, 3,600× metric, ROI case", featured: true },
     { label: "Research & Validation", path: "/research", icon: FileText, description: "McKinsey, Gartner, IBM, PwC — the evidence behind Readiness OS" },

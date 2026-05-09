@@ -655,6 +655,7 @@ function Router() {
         {renderRedirects(["/triggers", "/trigger-dashboard"], "/triggers-management")}
         {renderRedirects(["/interactive-demo", "/interactive-master-demo"], "/how-it-works")}
         {renderRoutes(["/investor-landing", "/executive-access"], InvestorLanding)}
+        <Route path="/readiness-infrastructure" component={lazy(() => import("./pages/ReadinessInfrastructure"))} />
         <Route path="/executive-brief" component={ExecutiveBrief} />
         <Route path="/security-compliance" component={lazy(() => import("./pages/SecurityCompliance"))} />
         {renderRoutes(["/why-execution-os", "/the-proof", "/why-readiness-os"], WhyExecutionOS)}

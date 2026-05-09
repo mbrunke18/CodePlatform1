@@ -58,6 +58,7 @@ export default function Footer() {
     {
       title: "Company",
       links: [
+        { label: "What is Readiness Infrastructure?", path: "/readiness-infrastructure" },
         { label: "IDEA Framework", path: "/idea-framework" },
         { label: "Why Readiness OS", path: "/the-proof" },
         { label: "Why Not Consulting?", path: "/vs-consulting" },
