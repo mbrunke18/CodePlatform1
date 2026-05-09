@@ -150,6 +150,53 @@ const STORIES = [
       { label: "Key account status", without: "At risk", with: "Retained" },
     ],
   },
+  {
+    id: "competitor-launch",
+    title: "The Window That Didn't Close",
+    subtitle: "Consumer Technology · $6.8B Annual Revenue",
+    date: "Tuesday, 9:47 AM",
+    trigger: "Primary competitor announces flagship product at annual conference. Analyst coverage begins within 20 minutes. Sales team fielding customer calls by 10:30 AM.",
+    industry: "Consumer Technology",
+    companySize: "$6.8B annual revenue",
+    domain: "GROWTH & POSITIONING",
+    without: {
+      heading: "Without Readiness OS — The 30-Day Drift",
+      timeline: [
+        { time: "9:47 AM",  event: "CMO learns about competitor announcement from a sales rep forwarding a news alert. Emails the CEO. Waits for response." },
+        { time: "Day 1",    event: "Leadership alignment call scheduled. Product, Sales, Marketing, and Strategy all have different takes. No unified response emerges." },
+        { time: "Day 3",    event: "Competitive analysis commissioned. External analyst engagement begins. 3-week timeline estimated for full assessment." },
+        { time: "Day 5",    event: "Sales team still fielding competitor comparison calls with no battle card. Three enterprise accounts request competitor demos." },
+        { time: "Day 8",    event: "Counter-positioning narrative finalized internally. Legal review required before release. Additional 5-day delay." },
+        { time: "Day 12",   event: "Counter-narrative released. Competitor has already held meetings with 40 of the top 60 enterprise accounts." },
+        { time: "Day 21",   event: "Sales battle card distributed. Analyst briefings finally scheduled." },
+        { time: "Day 30",   event: "Two enterprise accounts lost. $14M pipeline influenced. Competitor narrative is now entrenched." },
+      ],
+      cost: "$14M pipeline at risk. 2 enterprise accounts lost. Competitor established the narrative before company responded.",
+      headline: "30 days reacting — while the competitor set the terms of every sales conversation.",
+    },
+    with: {
+      heading: "With Readiness OS — 12 Minutes",
+      timeline: [
+        { time: "9:47 AM",  event: "News monitor detects competitor announcement. Protocol #18 — Competitive Response — matched. Risk score: 83/100.", tag: "DETECTED" },
+        { time: "9:48 AM",  event: "CEO, CMO, Chief Product Officer, Chief Revenue Officer, Chief Strategy Officer — all notified simultaneously with pre-staged competitive brief.", tag: "NOTIFIED" },
+        { time: "9:49 AM",  event: "Competitive response brief staged — competitor specs, pre-built feature gap analysis, battle card, and counter-positioning narrative.", tag: "STAGED" },
+        { time: "9:52 AM",  event: "CEO authorizes. Sales battle card deployed to all AEs immediately. Top 20 enterprise account call campaign begins.", tag: "AUTHORIZED" },
+        { time: "9:56 AM",  event: "CEO personally calling top accounts. Counter-positioning narrative live on all channels. Analyst briefings secured same day.", tag: "EXECUTING" },
+        { time: "9:59 AM",  event: "17 of top 20 enterprise accounts secured before competitor follow-up calls. Company leads the narrative.", tag: "COMPLETE" },
+      ],
+      outcome: "Sales battle card deployed within the hour. 17 of top 20 enterprise accounts contacted before competitor follow-up. Company narrative published same day. Pipeline fully protected.",
+      cost: "$0 in lost pipeline. 0 accounts lost. Company set the terms of every analyst and customer conversation.",
+      headline: "12 minutes to full competitive response. Company narrative leads before competitor makes its second call.",
+    },
+    stats: [
+      { label: "Battle card deployed", without: "Day 21", with: "9:52 AM" },
+      { label: "Enterprise accounts contacted", without: "Day 12", with: "9:56 AM" },
+      { label: "Counter-narrative published", without: "Day 12", with: "Same day" },
+      { label: "Accounts lost", without: "2 accounts", with: "0" },
+      { label: "Pipeline at risk", without: "$14M", with: "$0" },
+      { label: "Narrative control", without: "Competitor led", with: "Company led" },
+    ],
+  },
 ];
 
 export default function ProofStory() {
@@ -173,7 +220,7 @@ export default function ProofStory() {
               Same trigger. Same company.<br /><em style={{ color: GOLD }}>Entirely different outcome.</em>
             </h1>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>
-              Three activation scenarios. Two versions of what happens. The only variable: whether the response was pre-staged before the trigger fired.
+              Four activation scenarios — risk, opportunity, and growth. Two versions of what happens. The only variable: whether the response was pre-staged before the trigger fired.
             </p>
           </div>
         </div>

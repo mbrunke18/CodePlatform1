@@ -19,13 +19,15 @@ const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
 
 // ─── Live context ─────────────────────────────────────────────────────────────
 const SCENARIO_DOMAIN_MAP: Record<string, string> = {
-  activist:   'Market Dynamics',
-  cyber:      'Technology & Security',
-  supply:     'Supply Chain & Operations',
-  brand:      'Brand & Reputation',
-  regulatory: 'Regulatory & Compliance',
-  talent:     'Human Capital',
-  compound:   'MULTI-DOMAIN',
+  activist:       'Market Dynamics',
+  cyber:          'Technology & Security',
+  supply:         'Supply Chain & Operations',
+  brand:          'Brand & Reputation',
+  regulatory:     'Regulatory & Compliance',
+  talent:         'Human Capital',
+  competitor:     'Growth & Positioning',
+  'market-entry': 'Growth & Positioning',
+  compound:       'MULTI-DOMAIN',
 };
 interface LiveCtxTD {
   totalToday: number;
@@ -51,11 +53,13 @@ const SCENARIOS = [
   { id: 'brand', title: 'Brand Crisis', subtitle: 'Viral social media incident — sentiment collapsing', domain: 'Brand', urgency: 'high' },
   { id: 'regulatory', title: 'Regulatory Inquiry', subtitle: 'DOJ investigation opened — disclosure required', domain: 'Regulatory', urgency: 'high' },
   { id: 'talent', title: 'Talent Exodus', subtitle: 'CTO + 3 VPs resigned — competitors recruiting', domain: 'Talent', urgency: 'high' },
+  { id: 'competitor', title: 'Competitor Launch', subtitle: 'Competitor announces flagship product — sales calls inbound now', domain: 'Growth & Positioning', urgency: 'high' },
+  { id: 'market-entry', title: 'Market Entry Window', subtitle: 'Regulatory change opens new segment — 90-day window closing', domain: 'Growth & Positioning', urgency: 'high' },
   { id: 'compound', title: 'Compound Crisis', subtitle: 'Activist stake + DOJ inquiry — simultaneous triggers', domain: 'MULTI-DOMAIN', urgency: 'critical', compound: true },
 ];
 
 function scenarioMode(id: string | null): ValueGainMode {
-  if (id === 'activist') return 'offense';
+  if (id === 'activist' || id === 'competitor' || id === 'market-entry') return 'offense';
   if (id === 'talent') return 'special-teams';
   return 'defense';
 }
@@ -146,6 +150,24 @@ const SCENARIO_TASKS: Record<string, Array<{ phase: string; role: string; action
     { phase: 'ROOT CAUSE', role: 'CEO', action: 'Make one visible, immediate structural change addressing #1 departure driver. Symbolism matters — employees need decisions not promises', time: '7:00', priority: 'high' },
     { phase: 'CULTURE', role: 'CEO', action: 'All-hands within 72 hours: acknowledge challenges, share specific changes, invite candid questions — no filtered Q&A', time: '10:00', priority: 'high' },
     { phase: 'CULTURE', role: 'CFO + CHRO', action: 'Establish talent health scorecard with board-level quarterly reporting — make retention a governance issue', time: '12:00', priority: 'high' },
+  ],
+  competitor: [
+    { phase: 'INTELLIGENCE', role: 'Chief Strategy Officer', action: 'Pull full competitor announcement — exact product specs, pricing, target segment, go-to-market timing, and named distribution partners', time: '1:30', priority: 'critical' },
+    { phase: 'INTELLIGENCE', role: 'Chief Product Officer', action: 'Run competitive feature gap analysis — where we win, where we lose, what the actual switching cost is for shared accounts', time: '2:00', priority: 'critical' },
+    { phase: 'SALES ACTIVATION', role: 'Chief Revenue Officer', action: 'Deploy sales battle card to all AEs immediately — specific objection handlers for every competitor claim, pre-built, ready now', time: '3:00', priority: 'critical' },
+    { phase: 'SALES ACTIVATION', role: 'CEO + CRO', action: 'Personal calls to top 20 enterprise accounts before competitor follow-up — secure the relationship before they take the competitor call', time: '4:00', priority: 'high' },
+    { phase: 'NARRATIVE CONTROL', role: 'CMO', action: 'Counter-positioning campaign ready to activate — press release, social, analyst briefings. Hold unless competitor gains meaningful traction', time: '6:00', priority: 'high' },
+    { phase: 'NARRATIVE CONTROL', role: 'Chief Strategy Officer', action: 'Analyst briefing — frame the competitive landscape before analysts publish comparisons. Own the category definition', time: '8:00', priority: 'high' },
+    { phase: 'ACCELERATION', role: 'CEO + CPO', action: 'Evaluate roadmap acceleration — pull forward any features that close the competitive gap. Board briefed on competitive posture same day', time: '12:00', priority: 'high' },
+  ],
+  'market-entry': [
+    { phase: 'LEGAL VALIDATION', role: 'General Counsel', action: 'Pull final rule text — confirm effective date, eligibility criteria, compliance requirements, and timeline before any capital is committed', time: '1:30', priority: 'critical' },
+    { phase: 'LEGAL VALIDATION', role: 'Chief Strategy Officer', action: 'Run market sizing: TAM of newly opened segment, first-mover advantage window, competitive landscape entering, revenue model', time: '2:00', priority: 'critical' },
+    { phase: 'CAPITAL STAGING', role: 'CFO', action: 'Pre-approved entry budget released — investment bank engagement authorized, initial market entry capital staged and accessible', time: '3:00', priority: 'high' },
+    { phase: 'CAPITAL STAGING', role: 'CEO', action: 'Board briefed on market entry opportunity — full authorization for accelerated entry investment secured same day, not next quarter', time: '4:00', priority: 'high' },
+    { phase: 'TEAM ASSEMBLY', role: 'CHRO + CEO', action: 'Identify and assign market entry lead — pull from internal talent or initiate emergency external search with retained search firm already on standby', time: '6:00', priority: 'high' },
+    { phase: 'CUSTOMER CAPTURE', role: 'Chief Revenue Officer', action: 'Priority customer outreach — identify 20 existing customers already operating in the new segment for Day 1 expansion conversations', time: '9:00', priority: 'high' },
+    { phase: 'MARKET ENTRY', role: 'CMO', action: 'Market entry announcement — press release, industry analyst briefing, targeted digital campaign. Own the narrative before competitors have finished reading the regulation', time: '12:00', priority: 'high' },
   ],
   compound: [
     { phase: 'DUAL-TRACK INTAKE', role: 'General Counsel', action: 'Confirm DOJ Civil Investigative Demand — scope, jurisdiction count, 30-day timeline. Cross-reference activist 13D intent: assess whether regulatory inquiry becomes activist ammunition', time: '1:30', priority: 'critical' },
