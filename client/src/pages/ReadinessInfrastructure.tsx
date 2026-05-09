@@ -381,7 +381,7 @@ export default function ReadinessInfrastructure() {
               {[
                 {
                   quote: "Architecture creates the conditions where the choice to ignore is no longer invisible. The organization that has built readiness infrastructure cannot pretend the trigger did not fire — the response is already staged, the stakeholders are already mapped, the decision authority is already assigned. Readiness makes inaction visible.",
-                  name: "Kerry Huang",
+                  name: "Dr. Kerry Huang",
                   title: "Organizational Readiness Architecture — Institutional Decision Systems",
                 },
                 {

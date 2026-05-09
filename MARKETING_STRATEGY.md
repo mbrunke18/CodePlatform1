@@ -198,7 +198,7 @@ Two scenarios side by side:
 - What's included: Dedicated onboarding, Readiness Protocol customization (risk, growth, and transformation triggers), 4 live activations, direct founder access, co-development rights, Founding Partner pricing locked for life.
 - 12 spots. Applications reviewed personally.
 
-**Research validation to include:** Kerry Huang's 408-firm governance research establishing the structural readiness gap. Jayashree Venkataraman's decision-holding framework identifying why mobilization lag persists despite AI investment. These are credibility assets no competitor can claim — they belong on Page 1 alongside the product description.
+**Research validation to include:** Dr. Kerry Huang's 408-firm governance research establishing the structural readiness gap. Jayashree Venkataraman's decision-holding framework identifying why mobilization lag persists despite AI investment. These are credibility assets no competitor can claim — they belong on Page 1 alongside the product description.
 
 **Page 2 — Who It's For**
 - Fortune 1000 organizations across any of the three strategic domains
@@ -338,7 +338,7 @@ None of them can execute a competitive response in under an hour.
 
 The AI isn't the problem. The operating model is.
 
-Kerry Huang's governance research across 408 firms identifies the same structural failure: organizations that have invested in AI tools have not rebuilt the preparation layer that lets those tools matter when a trigger fires. Readiness Infrastructure is that layer.
+Dr. Kerry Huang's governance research across 408 firms identifies the same structural failure: organizations that have invested in AI tools have not rebuilt the preparation layer that lets those tools matter when a trigger fires. Readiness Infrastructure is that layer.
 
 That's not a faster tool. That's a different operating model.
 
@@ -457,7 +457,7 @@ Applications close [DATE].
 **Content mix — 50/50 risk/growth:**
 - 1 activation narrative post (alternate risk and growth scenarios — label all as illustrative)
 - 1 insight post ("The operating model problem Fortune 1000s can't solve with AI alone")
-- 1 research-backed post (Kerry Huang, Venkataraman, McKinsey framing — no illustrative outcome figures)
+- 1 research-backed post (Dr. Kerry Huang, Venkataraman, McKinsey framing — no illustrative outcome figures)
 
 **Key rule:** The LinkedIn feed must not look like a crisis management platform. Every other post features a growth or opportunity scenario.
 
