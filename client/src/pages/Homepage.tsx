@@ -429,6 +429,7 @@ function HomepageNav() {
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
+            <Link href="/readiness-infrastructure" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Readiness Infrastructure</Link>
             <Link href="/12-minute-experience" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
