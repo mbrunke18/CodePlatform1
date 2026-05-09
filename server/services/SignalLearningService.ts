@@ -372,31 +372,35 @@ export class SignalLearningService {
   }
 
   // ── Schedule all recurring learning jobs ───────────────────────────────────
+  // NOTE: Node.js setInterval overflows for values > ~2.1 billion ms (24.8 days).
+  // 30-day and 90-day intervals were causing constant firing (integer overflow → fires immediately).
+  // Monthly/quarterly jobs are now triggered manually via admin API or after Founding Partner activations.
+  // Domain learning (weekly = 604,800,000 ms) is safe and runs automatically.
+  private static scheduledOnce = false;
+
   scheduleRecurringJobs(): void {
-    // Domain learning: weekly
+    if (SignalLearningService.scheduledOnce) {
+      console.log('[SignalLearning] Recurring jobs already scheduled — skipping duplicate call');
+      return;
+    }
+    SignalLearningService.scheduledOnce = true;
+
+    // Domain learning: weekly (604,800,000 ms — safe, under Node.js max int32)
     setInterval(() => {
       this.runDomainLearning().catch(err =>
         console.error('[SignalLearning] DomainLearningJob scheduled run failed:', err)
       );
     }, 7 * 24 * 3_600_000);
 
-    // Ontology enrichment: monthly
-    setInterval(() => {
-      this.runOntologyEnrichment().catch(err =>
-        console.error('[SignalLearning] OntologyEnrichmentJob scheduled run failed:', err)
-      );
-    }, 30 * 24 * 3_600_000);
-
-    // Industry profile update: quarterly
-    setInterval(() => {
-      this.runIndustryProfileUpdate().catch(err =>
-        console.error('[SignalLearning] IndustryProfileUpdateJob scheduled run failed:', err)
-      );
-    }, 90 * 24 * 3_600_000);
+    // Ontology enrichment and industry profile update are intentionally NOT auto-scheduled.
+    // Their natural intervals (30 days, 90 days) exceed Node.js setInterval's max safe value
+    // (~2.1 billion ms = 24.8 days), causing integer overflow and immediate/constant firing.
+    // These jobs can be triggered via POST /api/signal-learning/ontology-enrich and
+    // POST /api/signal-learning/industry-profile when needed by an admin.
 
     console.log(
-      '✅ Signal Learning recurring jobs scheduled: ' +
-      'domain learning (weekly), ontology enrichment (monthly), industry profiles (quarterly)'
+      '✅ Signal Learning recurring jobs scheduled: domain learning (weekly). ' +
+      'Ontology enrichment and industry profile update: trigger manually via admin API.'
     );
   }
 
