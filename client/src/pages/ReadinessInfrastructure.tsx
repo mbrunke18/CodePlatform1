@@ -186,7 +186,7 @@ export default function ReadinessInfrastructure() {
               <table style={{ width: "100%", borderCollapse: "collapse", ...DM }}>
                 <thead>
                   <tr>
-                    {["", "Signal Labs", "Growth Wise", "Readiness OS"].map((h, i) => (
+                    {["", "Signal Intelligence Platforms", "Decision Analytics Tools", "Readiness OS"].map((h, i) => (
                       <th key={i} style={{
                         padding: "14px 20px", textAlign: "left", fontSize: 11, fontWeight: 700,
                         letterSpacing: "0.15em", textTransform: "uppercase",
@@ -220,8 +220,8 @@ export default function ReadinessInfrastructure() {
 
             <div style={{ background: NAVY, padding: "32px 40px", marginTop: 2, textAlign: "center" }}>
               <p style={{ ...GEO, fontSize: 18, color: "#fff", lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
-                Signal Labs routes the signal.{" "}
-                <span style={{ color: "rgba(255,255,255,0.5)" }}>Growth Wise diagnoses what failed.</span>{" "}
+                Signal Intelligence Platforms route the signal.{" "}
+                <span style={{ color: "rgba(255,255,255,0.5)" }}>Decision Analytics Tools diagnose what failed.</span>{" "}
                 <span style={{ color: GOLD }}>Readiness OS had the response staged before the signal arrived.</span>
               </p>
             </div>
