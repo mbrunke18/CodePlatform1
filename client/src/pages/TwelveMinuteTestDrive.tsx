@@ -644,7 +644,7 @@ export default function TwelveMinuteTestDrive() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
+            <div className="tmtd-war-room-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 24 }}>
               {/* Tasks */}
               <div>
                 {phases.map(phase => (

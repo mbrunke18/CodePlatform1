@@ -251,7 +251,7 @@ export default function HowItExecutes() {
         </div>
 
         {/* Main Chain */}
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 48px", display: "grid", gridTemplateColumns: "1fr 380px", gap: 48, alignItems: "start" }}>
+        <div className="hie-chain-grid" style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 48px", display: "grid", gridTemplateColumns: "1fr 380px", gap: 48, alignItems: "start" }}>
 
           {/* Left: Execution Chain */}
           <div>

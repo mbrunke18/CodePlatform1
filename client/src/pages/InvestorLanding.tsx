@@ -99,11 +99,7 @@ export default function InvestorLanding() {
             <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(18px,2vw,24px)', fontWeight: 600, color: 'rgba(255,255,255,0.88)', marginBottom: 16, maxWidth: 760, margin: '0 auto 16px', lineHeight: 1.55 }}>
               The problem isn't strategy, talent, or AI tools. It's that no enterprise has the infrastructure to make the response ready before the trigger fires. We built it.
             </p>
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(255,255,255,0.60)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS creates a new software category with a $5B+ addressable market, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, the Readiness OS response is already deep into coordinated execution — in 12 minutes.
-            </p>
-
-            {/* VaughnMartin Thesis Block */}
+            {/* VaughnMartin Thesis Block — leads with WHY before the market numbers */}
             <div className="max-w-3xl mx-auto mb-10 border border-[#C9A84C]/30 bg-white/5 backdrop-blur-sm p-8 text-left">
               <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#C9A84C] mb-4">The VaughnMartin Thesis</div>
               <p className="text-base text-white/90 leading-relaxed mb-3 font-medium">
@@ -119,6 +115,10 @@ export default function InvestorLanding() {
                 We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model Fortune 1000s have been running for 40 years.
               </div>
             </div>
+
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(255,255,255,0.50)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
+              Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS addresses a $5B+ addressable market, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, the Readiness OS response is already deep into coordinated execution — in 12 minutes.
+            </p>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Button

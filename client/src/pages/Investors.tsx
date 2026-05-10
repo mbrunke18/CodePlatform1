@@ -61,8 +61,8 @@ const scenarioComparisons = [
 const metrics = [
   { 
     value: "5-10x", 
-    label: "Faster Execution", 
-    description: "Operating model speed improvement",
+    label: "Operating Model Lift", 
+    description: "Speed improvement in enterprises that redesigned their operating model — not just their tools",
     source: "McKinsey Operating Model Research",
     icon: Clock,
     color: `text-[${GOLD}]`

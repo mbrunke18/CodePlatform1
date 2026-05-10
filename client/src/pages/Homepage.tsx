@@ -694,7 +694,7 @@ function HeroSection() {
         <div className="hp-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 36%", minHeight: 580 }}>
 
           {/* LEFT — Headline + CTAs + Stats */}
-          <div style={{ padding: "100px 56px 88px 0", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
+          <div className="hp-hero-left" style={{ padding: "100px 56px 88px 0", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
             <Reveal>
               {/* Status badge */}
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
