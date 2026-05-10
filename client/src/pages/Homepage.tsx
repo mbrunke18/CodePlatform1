@@ -440,7 +440,7 @@ function HomepageNav() {
               <span style={{ color: GOLD, fontSize: 11 }}>▶</span>See It Work
             </Link>
             <Link href="/the-proof" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>The Proof</Link>
-            <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>The Manifesto</Link>
+            <Link href="/founder-story" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: NAVY, fontSize: 15, fontWeight: 600, fontStyle: "italic", textDecoration: "none", opacity: 0.85, letterSpacing: "0.01em" }}>Founder's Story</Link>
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
@@ -496,7 +496,7 @@ function HomepageNav() {
               padding: "16px 0", textDecoration: "none", letterSpacing: "0.02em",
             }}>{(item as any).highlight ? `▶ ${item.label}` : item.label}</Link>
           )}
-          <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>The Manifesto</Link>
+          <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>Founder's Story</Link>
           <Link
             href="/12-minute-experience"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
@@ -720,7 +720,7 @@ function HeroSection() {
               </p>
 
               {/* CTAs — horizontal */}
-              <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 64, flexWrap: "wrap" as const }}>
+              <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 20, flexWrap: "wrap" as const }}>
                 <Link
                   href="/founding-partner-program"
                   onClick={() => trackCTA("hero")}
@@ -734,6 +734,15 @@ function HeroSection() {
                   style={{ ...DM, background: "transparent", color: "rgba(255,255,255,0.72)", border: "1px solid rgba(255,255,255,0.18)", padding: "15px 28px", fontSize: 13, fontWeight: 500, textDecoration: "none" }}
                 >
                   12-Minute Experience
+                </Link>
+              </div>
+              <div style={{ marginBottom: 44 }}>
+                <Link
+                  href="/contact"
+                  onClick={() => trackCTA("hero_schedule")}
+                  style={{ ...DM, color: "rgba(255,255,255,0.5)", fontSize: 13, fontWeight: 500, textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.2)", paddingBottom: 2 }}
+                >
+                  Or schedule a 30-minute conversation first →
                 </Link>
               </div>
 
@@ -756,9 +765,12 @@ function HeroSection() {
 
           {/* RIGHT — Live Signal Feed panel */}
           <Reveal delay={0.18}>
-            <div style={{ borderLeft: "1px solid rgba(255,255,255,0.06)", padding: "100px 0 88px 44px", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
-              <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, marginBottom: 24 }}>
-                Live Signal Feed
+            <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", padding: "100px 0 88px 44px", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL_LIGHT, display: "inline-block", animation: "vm-pulse 2s ease-in-out infinite" }} />
+                <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const }}>
+                  Live Signal Feed
+                </div>
               </div>
 
               {signals.map((sig, i) => (
@@ -2126,7 +2138,7 @@ function CTASection() {
             <span style={{ color: GOLD }}>29 days, 23 hours</span>.
           </h2>
           <p style={{ ...DM, fontSize: 17, color: MUTED_DARK, maxWidth: 580, margin: "0 auto 16px", lineHeight: 1.7 }}>
-            We're selecting 3–5 pilot partners this quarter. The organizations that move first build an execution advantage their competitors will spend years trying to close.
+            We're selecting 12 Founding Partners this year. The organizations that move first build an execution advantage their competitors will spend years trying to close.
           </p>
           <p style={{ ...DM, fontSize: 15, color: MUTED_DARK, maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.6, opacity: 0.75 }}>
             The conversation is 30 minutes.
@@ -2148,7 +2160,10 @@ function CTASection() {
             </Link>
           </div>
           <p style={{ ...DM, fontSize: 13, color: MUTED_LIGHT, marginTop: 20, opacity: 0.6 }}>
-            Pilot pricing available · No long-term commitment required
+            No long-term commitment required ·{" "}
+            <Link href="/growth" style={{ color: "rgba(201,168,76,0.7)", textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
+              View pricing →
+            </Link>
           </p>
           <p style={{ ...DM, fontSize: 13, marginTop: 12 }}>
             <Link href="/12-minute-experience" style={{ color: GOLD, opacity: 0.7, textDecoration: "none", borderBottom: "1px solid rgba(201,168,76,0.3)", paddingBottom: 1 }}>
@@ -2156,8 +2171,8 @@ function CTASection() {
             </Link>
           </p>
           <p style={{ ...DM, fontSize: 13, marginTop: 8 }}>
-            <Link href="/founding-partner-program" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.68)", paddingBottom: 1 }}>
-              Request executive platform access — separate from the Founding Partner Program →
+            <Link href="/contact" style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.25)", paddingBottom: 1 }}>
+              Prefer a conversation first? Schedule 30 minutes →
             </Link>
           </p>
         </Reveal>
@@ -2189,9 +2204,9 @@ function HomepageFooter() {
             {[
               { label: "How It Works",   href: "/how-it-works" },
               { label: "Readiness Protocols", href: "/playbook-library" },
-              { label: "Pricing",        href: "/pricing" },
+              { label: "Pricing & Plans", href: "/growth" },
               { label: "Request Founding Partner Access", href: "/founding-partner-program" },
-              { label: "Request Access", href: "/founding-partner-program" },
+              { label: "Schedule a Conversation", href: "/contact" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
             ))}

@@ -67,6 +67,7 @@ export default function QuickActions() {
     enabled: isAuthenticated,
   });
 
+  if (!isAuthenticated) return null;
   if (EXCLUDED_ROUTES.some(r => location.startsWith(r))) return null;
 
   const alerts: Alert[] = Array.isArray(alertsData?.data) ? alertsData!.data : [];

@@ -183,8 +183,14 @@ export default function HowItExecutes() {
             <h1 style={{ ...GEO, fontSize: "clamp(36px,5vw,60px)", fontWeight: 700, color: "#fff", lineHeight: 1.1, marginBottom: 18 }}>
               The response is ready<br /><em style={{ color: GOLD }}>before the trigger fires.</em>
             </h1>
-            <p style={{ fontSize: 16, color: MUTED, maxWidth: 640, margin: "0 auto 32px", lineHeight: 1.7 }}>
+            <p style={{ fontSize: 16, color: MUTED, maxWidth: 640, margin: "0 auto 16px", lineHeight: 1.7 }}>
               While competitors spend 30 days figuring out who needs to be in the room, every task is pre-staged, every stakeholder is mapped, every budget authority is pre-approved. Watch exactly how 12 minutes replaces 30 days.
+            </p>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.6 }}>
+              This is the animated walkthrough — watch the chain execute. Want to run the scenario yourself?{" "}
+              <a href="/12-minute-experience" style={{ color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}55` }}>
+                Try the interactive 12-Minute Test Drive →
+              </a>
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               {[

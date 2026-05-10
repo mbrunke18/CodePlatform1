@@ -357,8 +357,14 @@ export default function TwelveMinuteTestDrive() {
                 Choose Your Strategic Scenario.<br />
                 <em style={{ fontStyle: 'italic', color: GOLD }}>Experience 12-Minute Execution.</em>
               </h1>
-              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 560, margin: '0 auto' }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', maxWidth: 560, margin: '0 auto 12px' }}>
                 Pick a real-world scenario your organization could face. We'll show you exactly how Readiness OS mobilizes your entire leadership team in under 12 minutes.
+              </p>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.38)', maxWidth: 480, margin: '0 auto' }}>
+                This is the interactive simulation — you choose the scenario and step through it. Want to watch the full chain animate instead?{' '}
+                <a href="/how-it-executes" style={{ color: GOLD, textDecoration: 'none', borderBottom: `1px solid rgba(201,168,76,0.4)` }}>
+                  See the animated execution chain →
+                </a>
               </p>
             </div>
 

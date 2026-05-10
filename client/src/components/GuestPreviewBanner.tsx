@@ -109,7 +109,7 @@ export function GuestPreviewBanner() {
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '7px 18px', background: GOLD, color: NAVY,
             textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
-          }}>Apply for Pilot →</a>
+          }}>Apply for Founding Partner Access →</a>
           <a href="/founding-partner-program" style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
