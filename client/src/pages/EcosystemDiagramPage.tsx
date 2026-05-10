@@ -171,7 +171,7 @@ export default function EcosystemDiagramPage() {
         </p>
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <button
-            onClick={() => setLocation("/request-access")}
+            onClick={() => setLocation("/founding-partner-program")}
             style={{
               background: GOLD, color: NAVY, border: "none",
               fontFamily: "'Barlow Condensed',sans-serif",

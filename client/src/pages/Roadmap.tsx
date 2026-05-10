@@ -258,7 +258,7 @@ export default function Roadmap() {
           <p style={{ fontSize: 12, color: "#9CA3AF", margin: 0 }}>— Dr. Kerry Huang, ESI Top 1% Researcher · 408-firm study</p>
           <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
             <button
-              onClick={() => setLocation("/request-access")}
+              onClick={() => setLocation("/founding-partner-program")}
               style={{ padding: "10px 24px", background: NAVY, color: "#fff", border: "none", cursor: "pointer", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}
             >
               Apply for Founding Partner Access

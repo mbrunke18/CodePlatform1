@@ -274,7 +274,7 @@ export default function PlatformOverview() {
               Watch a live trigger fire, Readiness Protocols activate, and stakeholders mobilize — in real time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/request-access">
+              <Link href="/founding-partner-program">
                 <Button
                   size="lg"
                   className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] px-8"

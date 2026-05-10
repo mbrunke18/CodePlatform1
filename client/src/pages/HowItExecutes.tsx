@@ -449,7 +449,7 @@ export default function HowItExecutes() {
                   Start the 12-Minute Test Drive →
                 </button>
               </Link>
-              <Link href="/request-access">
+              <Link href="/founding-partner-program">
                 <button style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 32px", background: "transparent", color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.2)", cursor: "pointer" }}>
                   Apply for Founding Partner Access
                 </button>

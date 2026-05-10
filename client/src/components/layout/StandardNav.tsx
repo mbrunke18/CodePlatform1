@@ -77,7 +77,7 @@ const SEARCH_ITEMS = [
   { label: 'How It Works', path: '/how-it-works', category: 'Learn', icon: Play },
   { label: 'Research & Validation', path: '/research', category: 'Learn', icon: FileText },
   { label: 'Onboarding Guide', path: '/onboarding-guide', category: 'Learn', icon: BookOpen },
-  { label: 'Request Founding Partner Access', path: '/request-access', category: 'Action', icon: Target },
+  { label: 'Request Founding Partner Access', path: '/founding-partner-program', category: 'Action', icon: Target },
   { label: 'Executive Brief', path: '/executive-brief', category: 'Action', icon: FileText },
   { label: 'Why Readiness OS?', path: '/the-proof', category: 'Learn', icon: Scale },
   { label: 'Investor Resources', path: '/investor-resources', category: 'Investors', icon: Building },
@@ -476,7 +476,7 @@ export default function StandardNav() {
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div
-                onClick={() => navigateTo('/request-access')}
+                onClick={() => navigateTo('/founding-partner-program')}
                 style={{ background: `linear-gradient(135deg,rgba(201,168,76,0.12),rgba(43,138,110,0.08))`, border: '1px solid rgba(201,168,76,0.3)', borderRadius: 0, padding: '10px 14px', cursor: 'pointer', transition: 'all 0.12s' }}
                 onMouseEnter={e => {
                   const el = e.currentTarget as HTMLElement;
@@ -736,7 +736,7 @@ export default function StandardNav() {
             ) : isAuthenticated && user ? (
               <>
                 <Button
-                  onClick={() => navigateTo("/request-access")}
+                  onClick={() => navigateTo("/founding-partner-program")}
                   className="h-9 px-4 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: "none" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
@@ -802,7 +802,7 @@ export default function StandardNav() {
             ) : (
               <>
                 <Button
-                  onClick={() => navigateTo("/request-access")}
+                  onClick={() => navigateTo("/founding-partner-program")}
                   className="h-9 px-4 text-sm font-bold"
                   style={{ background: GOLD, color: NAVY, border: "none" }}
                   onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
@@ -872,7 +872,7 @@ export default function StandardNav() {
                   </Button>
                   <div className="flex gap-2">
                     <Button
-                      onClick={() => navigateTo("/request-access")}
+                      onClick={() => navigateTo("/founding-partner-program")}
                       variant="outline"
                       className="flex-1 justify-center h-10 text-sm font-semibold"
                       style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
@@ -881,7 +881,7 @@ export default function StandardNav() {
                       Request Access
                     </Button>
                     <Button
-                      onClick={() => navigateTo("/request-access")}
+                      onClick={() => navigateTo("/founding-partner-program")}
                       className="flex-1 justify-center h-10 text-sm font-bold"
                       style={{ background: GOLD, color: NAVY }}
                       data-testid="nav-mobile-request-pilot"
@@ -893,7 +893,7 @@ export default function StandardNav() {
               ) : (
                 <div className="flex flex-col gap-2 px-1">
                   <Button
-                    onClick={() => navigateTo("/request-access")}
+                    onClick={() => navigateTo("/founding-partner-program")}
                     variant="outline"
                     className="w-full justify-center h-11 text-sm font-semibold"
                     style={{ border: `1px solid rgba(10,15,46,0.2)`, color: NAVY }}
@@ -903,7 +903,7 @@ export default function StandardNav() {
                     Request Access
                   </Button>
                   <Button
-                    onClick={() => navigateTo("/request-access")}
+                    onClick={() => navigateTo("/founding-partner-program")}
                     className="w-full justify-center h-11 text-sm font-bold"
                     style={{ background: GOLD, color: NAVY }}
                     data-testid="nav-mobile-request-pilot"
@@ -913,7 +913,7 @@ export default function StandardNav() {
                   </Button>
                   <Button
                     variant="ghost"
-                    onClick={() => navigateTo('/request-access')}
+                    onClick={() => navigateTo('/founding-partner-program')}
                     className="w-full justify-center h-9 text-sm"
                     style={{ color: NAVY }}
                     data-testid="nav-mobile-login"

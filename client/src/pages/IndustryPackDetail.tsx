@@ -992,7 +992,7 @@ export default function IndustryPackDetail() {
                 <div className="text-xs" style={{ color: "#5A6A8A" }}>Total Readiness Coverage</div>
               </div>
             </div>
-            <Link href="/request-access">
+            <Link href="/founding-partner-program">
               <button className="px-6 py-2.5 text-sm font-semibold transition-all"
                 style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}>
                 Apply for Founding Partner Access →
@@ -1136,7 +1136,7 @@ export default function IndustryPackDetail() {
             from day one — {totalCoverage} total Readiness Protocols, pre-staged before your first trigger fires.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/request-access">
+            <Link href="/founding-partner-program">
               <button className="px-8 py-3 text-sm font-semibold tracking-wide transition-all"
                 style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}>
                 Apply for Founding Partner Access →

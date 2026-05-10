@@ -327,7 +327,7 @@ export default function TwelveMinuteTestDrive() {
             </div>
           ))}
         </div>
-        <Link href="/request-access">
+        <Link href="/founding-partner-program">
           <button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Founding Partner Access</button>
         </Link>
       </div>
@@ -897,7 +897,7 @@ export default function TwelveMinuteTestDrive() {
                 Ready to pre-stage this for your organization — with your real team, your real scenarios, and your real Readiness Protocols?
               </p>
               <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
-                <a href="/request-access" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
+                <a href="/founding-partner-program" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: GOLD, color: NAVY, textDecoration: 'none' }}>
                   Request Founding Partner Access →
                 </a>
                 <a href="/growth" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.3)', textDecoration: 'none' }}>

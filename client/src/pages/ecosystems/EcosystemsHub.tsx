@@ -318,7 +318,7 @@ export default function EcosystemsHub() {
           Readiness OS deploys inside your existing enterprise environment — Microsoft, Google, Salesforce, AWS, SAP, ServiceNow, or Workday. We don't compete with your stack. We make it execute.
         </p>
         <button
-          onClick={() => setLocation("/request-access")}
+          onClick={() => setLocation("/founding-partner-program")}
           style={{
             background: GOLD, color: NAVY, border: "none",
             fontFamily: "'Barlow Condensed',sans-serif",

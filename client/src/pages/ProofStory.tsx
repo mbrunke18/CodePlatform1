@@ -383,7 +383,7 @@ export default function ProofStory() {
               Founding Partners receive the full 170-protocol library, live signal monitoring, and 90 days of validation support. The response is built before the trigger fires.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/request-access">
+              <Link href="/founding-partner-program">
                 <button style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "14px 32px", background: GOLD, color: NAVY, border: "none", cursor: "pointer" }}>
                   Apply for Founding Partner Access →
                 </button>

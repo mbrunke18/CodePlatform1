@@ -526,7 +526,7 @@ export default function ROICalculator() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/request-access')}>
+                  <Button className="w-full bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] py-5" onClick={() => setLocation('/founding-partner-program')}>
                     Apply for Founding Partner Access →
                   </Button>
                   <p className="text-center text-white/30 text-[10px] mt-3 leading-relaxed uppercase tracking-tighter">

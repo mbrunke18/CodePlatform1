@@ -126,7 +126,7 @@ export default function TermsOfService() {
             <Link href="/contact">
               <span style={{ fontSize: 13, color: GOLD, fontWeight: 600, cursor: "pointer", textDecoration: "underline" }}>Contact Us</span>
             </Link>
-            <Link href="/request-access">
+            <Link href="/founding-partner-program">
               <span style={{ fontSize: 13, color: MUTED, fontWeight: 500, cursor: "pointer" }}>Apply for Founding Partner Access</span>
             </Link>
             <Link href="/">

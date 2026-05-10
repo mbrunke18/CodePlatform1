@@ -2156,7 +2156,7 @@ function CTASection() {
             </Link>
           </p>
           <p style={{ ...DM, fontSize: 13, marginTop: 8 }}>
-            <Link href="/request-access" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.68)", paddingBottom: 1 }}>
+            <Link href="/founding-partner-program" onClick={() => trackCTA("cta_request_access")} style={{ color: "rgba(255,255,255,0.45)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.68)", paddingBottom: 1 }}>
               Request executive platform access — separate from the Founding Partner Program →
             </Link>
           </p>
@@ -2191,7 +2191,7 @@ function HomepageFooter() {
               { label: "Readiness Protocols", href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
               { label: "Request Founding Partner Access", href: "/founding-partner-program" },
-              { label: "Request Access", href: "/request-access" },
+              { label: "Request Access", href: "/founding-partner-program" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
             ))}

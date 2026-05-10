@@ -76,7 +76,7 @@ export default function Contact() {
       form.reset();
 
       setTimeout(() => {
-        window.location.href = '/request-access';
+        window.location.href = '/founding-partner-program';
       }, 1500);
     } catch {
       toast({

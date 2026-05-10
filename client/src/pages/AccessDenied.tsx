@@ -64,7 +64,7 @@ export default function AccessDenied() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           <a
-            href="/request-access"
+            href="/founding-partner-program"
             style={{
               display: "flex",
               alignItems: "center",

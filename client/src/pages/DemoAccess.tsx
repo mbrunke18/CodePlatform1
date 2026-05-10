@@ -41,7 +41,7 @@ export default function DemoAccess() {
             This link requires a valid access token. Contact your VaughnMartin representative for demo access.
           </p>
           <a
-            href="/request-access"
+            href="/founding-partner-program"
             style={{
               display: "inline-block", background: GOLD, color: NAVY,
               fontWeight: 700, fontSize: 13, padding: "12px 28px",

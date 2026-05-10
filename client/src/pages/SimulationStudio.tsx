@@ -214,7 +214,7 @@ export default function SimulationStudio({ embedded }: { embedded?: boolean }) {
                     Want these 170 Readiness Protocols armed and ready before the trigger fires?
                   </p>
                   <a
-                    href="/request-access"
+                    href="/founding-partner-program"
                     style={{
                       display: 'inline-block', background: GOLD, color: NAVY,
                       padding: '9px 22px', fontSize: 10, fontWeight: 800,

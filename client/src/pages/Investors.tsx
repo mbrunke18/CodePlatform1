@@ -896,7 +896,7 @@ export default function Investors() {
             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Ready to take the next step?</h2>
             <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the Fortune 1000 executives rethinking how strategic work flows. Founding Partner validation runs in 90 days.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/request-access">
+              <Link href="/founding-partner-program">
                 <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12 rounded-none tracking-wide">
                   Request Founding Partner Access
                 </Button>

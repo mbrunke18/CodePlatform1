@@ -194,7 +194,7 @@ export default function IndustryPacksHub() {
             or a manufacturer watching a supplier cascade unfold.
           </p>
           <div className="flex flex-wrap gap-4">
-            <Link href="/request-access">
+            <Link href="/founding-partner-program">
               <button
                 className="px-7 py-3 text-sm font-semibold tracking-wide transition-all"
                 style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}
@@ -508,7 +508,7 @@ export default function IndustryPacksHub() {
             and co-design new industry protocols with our team over 90 days.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/request-access">
+            <Link href="/founding-partner-program">
               <button
                 className="px-8 py-3 text-sm font-semibold tracking-wide transition-all"
                 style={{ background: GOLD, color: NAVY, borderRadius: "0.15rem" }}

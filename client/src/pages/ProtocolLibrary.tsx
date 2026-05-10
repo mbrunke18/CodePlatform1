@@ -755,7 +755,7 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
                       <span style={{ fontSize: 10, color: "#9CA3AF" }}>Founding Partner access required</span>
                       <button
                         style={{ fontSize: 10, fontWeight: 700, background: "#0A0F2E", color: "#fff", border: "none", padding: "5px 14px", cursor: "pointer", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "'Barlow Condensed', sans-serif" }}
-                        onClick={() => setLocation("/request-access")}
+                        onClick={() => setLocation("/founding-partner-program")}
                       >
                         Request Access
                       </button>

@@ -420,7 +420,7 @@ export default function ReadinessInfrastructure() {
             </p>
 
             <div style={{ display: "flex", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
-              <Link href="/request-access">
+              <Link href="/founding-partner-program">
                 <button style={{
                   background: GOLD, color: NAVY, border: "none", padding: "16px 36px",
                   fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
