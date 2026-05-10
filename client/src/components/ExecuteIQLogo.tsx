@@ -138,20 +138,20 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
         opacity={animated ? pulse : 0.8}
         filter={`url(#${glowId})`}/>
 
-      {/* Top arc: VAUGHNMARTIN · READINESS OS */}
+      {/* Top arc: VAUGHNMARTIN · READINESS OS — centered at 12 o'clock */}
       <path id={topArc}
         d={`M ${cx - r * 0.82},${cy} A ${r * 0.82},${r * 0.82} 0 0,1 ${cx + r * 0.82},${cy}`}
         fill="none"/>
-      <text fontFamily="'Courier New', monospace" fontSize="11" fill={GOLD} opacity="0.85">
-        <textPath href={`#${topArc}`} startOffset="4%">VAUGHNMARTIN · READINESS OS</textPath>
+      <text fontFamily="'Courier New', monospace" fontSize="11" fill={GOLD} opacity="0.85" textAnchor="middle">
+        <textPath href={`#${topArc}`} startOffset="50%">VAUGHNMARTIN · READINESS OS</textPath>
       </text>
 
-      {/* Bottom arc: ANTE IGNEM PARATUS */}
+      {/* Bottom arc: ANTE IGNEM PARATUS — centered at 6 o'clock */}
       <path id={botArc}
         d={`M ${cx - r * 0.74},${cy} A ${r * 0.74},${r * 0.74} 0 0,0 ${cx + r * 0.74},${cy}`}
         fill="none"/>
-      <text fontFamily="'Courier New', monospace" fontSize="9.5" fill={TEAL_LT} opacity="0.7">
-        <textPath href={`#${botArc}`} startOffset="10%">ANTE IGNEM PARATUS</textPath>
+      <text fontFamily="'Courier New', monospace" fontSize="9.5" fill={TEAL_LT} opacity="0.7" textAnchor="middle">
+        <textPath href={`#${botArc}`} startOffset="50%">ANTE IGNEM PARATUS</textPath>
       </text>
     </svg>
   );
