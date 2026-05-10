@@ -1691,6 +1691,48 @@ html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
     border-left: none !important;
   }
 
+  /* ── Public page horizontal padding overrides ───────────────────────────── */
+
+  /* Growth: all section horizontal padding → 20px */
+  .vm-page-growth section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* FounderStory: hero section + orientation bar */
+  .vm-page-fs section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .fs-orient-bar {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  /* FounderStory bleed divs: reset negative margin to match reduced outer padding */
+  .fs-bleed {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  /* ProofStory: all direct children of the body wrapper */
+  .ps-body > div {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  /* But inner max-width containers should be left alone */
+  .ps-body > div > div[style*="maxWidth"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* FoundingPartnerProgram: form application card inner padding */
+  .vm-page-fpp section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
 }
 
 /* ── Narrow phone (≤ 480px): tighten further ──────────────────────────────── */

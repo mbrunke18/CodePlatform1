@@ -189,7 +189,7 @@ export default function Growth() {
   };
 
   return (
-    <PageLayout>
+    <PageLayout className="vm-page-growth">
 
       {/* ── HERO ── */}
       <section style={{ background: NAVY, padding: "96px 48px 80px", textAlign: "center", position: "relative", overflow: "hidden", backgroundImage: `url(${aerialCityImg})`, backgroundSize: "cover", backgroundPosition: "center" }}>

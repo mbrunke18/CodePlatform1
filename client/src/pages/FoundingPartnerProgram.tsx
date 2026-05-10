@@ -328,7 +328,7 @@ export default function FoundingPartnerProgram() {
   }, []);
 
   return (
-    <PageLayout>
+    <PageLayout className="vm-page-fpp">
       <div className="bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         
         {/* Hero Section */}

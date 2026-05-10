@@ -205,8 +205,8 @@ export default function ProofStory() {
   const story = STORIES[selectedIdx];
 
   return (
-    <PageLayout>
-      <div style={{ background: "#fff", ...DM }}>
+    <PageLayout className="vm-page-ps">
+      <div className="ps-body" style={{ background: "#fff", ...DM }}>
 
         {/* Hero */}
         <div style={{ background: NAVY, padding: "80px 48px 56px" }}>

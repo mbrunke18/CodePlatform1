@@ -61,7 +61,7 @@ export default function FounderStory() {
   }
 
   return (
-    <PageLayout>
+    <PageLayout className="vm-page-fs">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section style={{ background: NAVY_BG, padding: "96px 48px 80px", textAlign: "center", position: "relative", overflow: "hidden", backgroundImage: `url(${executiveDecisionImg})`, backgroundSize: "cover", backgroundPosition: "center top" }}>
@@ -84,7 +84,7 @@ export default function FounderStory() {
       </section>
 
       {/* ── Reader Orientation ─────────────────────────────────────────────── */}
-      <div style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "16px 48px" }}>
+      <div className="fs-orient-bar" style={{ background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", padding: "16px 48px" }}>
         <div style={{ maxWidth: 740, margin: "0 auto", display: "flex", alignItems: "center", gap: 16 }}>
           <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase" as const, color: "#C9A84C" }}>Long Read</span>
           <span style={{ fontSize: 12, color: "#6B7280" }}>The full thesis — the research, the 20-year observation, and the belief behind VaughnMartin. Estimated 12–15 minutes.</span>
@@ -203,7 +203,7 @@ export default function FounderStory() {
           </Body>
 
           {/* ── The Layer Nobody Built — manifesto anchor ───────────────────── */}
-          <div style={{ margin: "56px -32px", background: NAVY, padding: "64px 56px", position: "relative", overflow: "hidden" }}>
+          <div className="fs-bleed" style={{ margin: "56px -32px", background: NAVY, padding: "64px 56px", position: "relative", overflow: "hidden" }}>
             <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
             <div style={{ position: "absolute", top: -80, right: -60, width: 500, height: 500, background: "radial-gradient(ellipse,rgba(43,138,110,0.14) 0%,transparent 60%)", pointerEvents: "none" }} />
             <div style={{ maxWidth: 680, margin: "0 auto", position: "relative", zIndex: 2, textAlign: "center" }}>
@@ -302,7 +302,7 @@ export default function FounderStory() {
           </Body>
 
           {/* ── Built vs. Received — unnumbered interstitial ────────── */}
-          <div style={{ margin: "56px -32px", background: "#F8F7F4", padding: "56px 56px", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, position: "relative" }}>
+          <div className="fs-bleed" style={{ margin: "56px -32px", background: "#F8F7F4", padding: "56px 56px", borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}`, position: "relative" }}>
             <div style={{ maxWidth: 680, margin: "0 auto" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 32 }}>
                 <div style={{ width: 20, height: 1.5, background: GOLD, flexShrink: 0 }} />
