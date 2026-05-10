@@ -444,7 +444,7 @@ function HomepageNav() {
             <Link href="/investors" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Investors</Link>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <Link
-                href="/request-access"
+                href="/founding-partner-program"
                 onClick={() => trackCTA("nav")}
                 style={{
                   ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 12,
@@ -510,7 +510,7 @@ function HomepageNav() {
             ▶ 12-Minute Experience →
           </Link>
           <Link
-            href="/request-access"
+            href="/founding-partner-program"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile"); }}
             style={{
               ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 16,
@@ -722,7 +722,7 @@ function HeroSection() {
               {/* CTAs — horizontal */}
               <div style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 64, flexWrap: "wrap" as const }}>
                 <Link
-                  href="/request-access"
+                  href="/founding-partner-program"
                   onClick={() => trackCTA("hero")}
                   style={{ ...DM, background: GOLD, color: NAVY, fontWeight: 700, fontSize: 13, padding: "15px 36px", textDecoration: "none", letterSpacing: "0.07em", textTransform: "uppercase" as const }}
                 >
@@ -861,7 +861,7 @@ function ScenarioCardsRow() {
             { domain: "RISK & RESILIENCE",    label: "Cybersecurity Breach",         sub: "Containment, notification and recovery in 12 minutes",   accent: TEAL },
             { domain: "TRANSFORMATION",       label: "Regulatory Compliance Sprint", sub: "Policy activation deployed before the deadline arrives", accent: GOLD },
           ].map((item, i) => (
-            <Link key={i} href="/request-access" style={{
+            <Link key={i} href="/founding-partner-program" style={{
               display: "block", padding: "24px 28px 22px",
               borderRight: i < 3 ? "1px solid rgba(255,255,255,0.07)" : "none",
               borderTop: `2px solid ${item.accent}`,
@@ -2133,7 +2133,7 @@ function CTASection() {
           </p>
           <div>
             <Link
-              href="/request-access"
+              href="/founding-partner-program"
               onClick={() => trackCTA("cta_section")}
               className="hp-cta-btn"
               style={{
@@ -2190,7 +2190,7 @@ function HomepageFooter() {
               { label: "How It Works",   href: "/how-it-works" },
               { label: "Readiness Protocols", href: "/playbook-library" },
               { label: "Pricing",        href: "/pricing" },
-              { label: "Request Founding Partner Access", href: "/request-access" },
+              { label: "Request Founding Partner Access", href: "/founding-partner-program" },
               { label: "Request Access", href: "/request-access" },
             ].map(l => (
               <Link key={l.label} href={l.href} style={{ ...DM, display: "block", color: MUTED_DARK, fontSize: 14, padding: "4px 0", textDecoration: "none" }}>{l.label}</Link>
