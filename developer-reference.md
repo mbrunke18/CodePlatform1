@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 5, 2026 (rev 29) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 10, 2026 (rev 30) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -14,7 +14,7 @@
 - **170 active playbooks** across 9 domains
 - **248+ data points** across 20 signal categories (internal data structure count — see Signal Vocabulary below), monitored in 15-minute cycles
 - **IDEA Framework™** — the four operating phases: IDENTIFY, DETECT, EXECUTE, ADVANCE
-- **Enterprise B2B only** — primary CTA is "Request Founding Partner Access" → `/request-access`. **Three access paths exist** (see Section 5): (1) Request Access `/request-access` — magic link via Resend, no password; (2) Trial Access `/trial-access` — 48-hour full platform; (3) Demo Access `/demo-access` — token-based controlled access. There is no public "Start Free Trial" button on marketing pages — access is gated.
+- **Enterprise B2B only** — public Founding Partner conversion CTA routes to `/founding-partner-program` (inline application form, no redirect). **Four access paths exist:** (1) Founding Partner Program `/founding-partner-program` — public pitch + inline application form, submissions saved to `founding_partner_applications` DB table; (2) Request Access `/request-access` — magic link intake form (Resend), no password, for platform login; (3) Trial Access `/trial-access` — 48-hour full platform; (4) Demo Access `/demo-access` — token-based controlled access. There is no public "Start Free Trial" button on marketing pages — access is gated. **Do NOT route public "Founding Partner" CTAs to `/request-access`** — that route is for platform authentication only.
 - **Executive authority preserved** — No playbook activates without executive authorization. AI monitors, scores signals, and recommends the right playbook. Executives decide. The decision is the same; the mobilization cycle surrounding it is compressed from 30 days to 12 minutes. **The phrase "human-AI partnership" is RETIRED from all UI/UX copy.** Replace it with "AI monitors, executives authorize" or "Executive authority preserved." The correct narrative: "AI monitors. Executives decide. Execution pre-staged." Any developer writing new copy must use this framing.
 
 **Signal Vocabulary — Three Different Numbers, Three Different Layers (do not conflate):**
@@ -34,7 +34,7 @@ The retired phrase "16 signal categories" was a previous UI label shown to users
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
 - **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
 - **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Enterprise Pilot.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. Enterprise Pilot ($75K flat fee, Fortune 1000) stays on `/pilot-program` — completely separate audience, separate page, separate CTA.
-- **Email Routing (canonical):** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
+- **Email Routing (canonical):** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `founding@vaughnmartin.com` → Founding Partner Program page (error fallback + questions CTA) | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
 
 ---
 
@@ -234,6 +234,7 @@ npm run db:push --force
 | `weakSignals` | Dynamic strategy weak signal detection |
 | `oraclePatterns` | AI pattern recognition results |
 | `investor_leads` | Gate form submissions from `/investor-resources`, `/investor-presentation`, `/board-briefings` |
+| `founding_partner_applications` | Inline application submissions from `/founding-partner-program`. Fields: `id`, `name`, `email`, `company`, `title`, `companySize`, `primaryChallenge`, `timelineUrgency`, `createdAt`. POST route: `/api/founding-partner/apply` (public, no auth required). |
 
 ### Key Enums
 ```ts
@@ -547,7 +548,7 @@ toast({ title: 'Error', description: 'Something went wrong.', variant: 'destruct
 - **170 active playbooks** in 9 domains (seeded to DB on startup)
 - **4 compound playbooks** (IDs 181–184): cross-domain crisis scenarios
 - **23 enriched playbooks** with full `enrichedPhases` content (4 phases each, role-specific tasks, decision gates, restrictions). 14 original flagship set + 9 added April 2026 via migration script `server/scripts/fill-empty-playbooks.ts`: AI Competitive Disruption, Data Breach, CEO Sudden Departure, Financial Services Compliance Breach, SLA Mass Breach, Competitive Acquisition, AI Data Privacy Breach, Third-Party Data Breach, Compound Cyber+Regulatory.
-- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full card content with an upsell CTA ("View Sample" button → `/playbook-library/:id`). All 167 others render as locked cards showing only domain name + "Pilot Access Required" label + "Request Pilot Access" button → `/request-access`. Authenticated users see all 170 with "Deploy" button → `/playbook-customize/:id`. The public/locked logic lives in `PlaybookDetail.tsx` (`isSampleView` flag) and `PlaybookLibraryV2.tsx` (`isLocked` flag) — never change the free sample set without founder approval. The `SAMPLE_PLAYBOOK_NAMES` Set must be identical in both files.
+- **Public access model:** 3 playbooks are fully visible without authentication: "Aggressive Pricing Disruption", "AI Competitive Disruption", "Compound: Geopolitical + Supply Chain Disruption". These show full card content with an upsell CTA ("View Sample" button → `/playbook-library/:id`). All 167 others render as locked cards showing only domain name + "Founding Partner access required" label + "Request Access" button → `/founding-partner-program`. Authenticated users see all 170 with "Deploy" button → `/playbook-customize/:id`. The public/locked logic lives in `ProtocolDetail.tsx` (`isSampleView` flag) and `ProtocolLibrary.tsx` (`isLocked` flag) — never change the free sample set without founder approval. The `SAMPLE_PLAYBOOK_NAMES` Set must be identical in both files. **Note:** The page file was renamed from `PlaybookLibraryV2.tsx` → `ProtocolLibrary.tsx` and `PlaybookDetail.tsx` → `ProtocolDetail.tsx`.
 - **Public-facing copy (locked):** Bottom CTA on sample playbooks reads: "You just read one of 3 public playbooks. 167 exclusive ones are already protecting your competitors." The 167 refers to locked pilot-only playbooks specifically — not 170 minus 1.
 
 ### Domain Names (exact DB strings — use these for filtering)
@@ -607,7 +608,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
   2. **Experience** — Try It Now (Live Demo `/try-demo`, 12-Min Test Drive `/test-drive`, Industry Scenarios `/industry-demos`) · Go Deeper (Shadow Simulator, By Role, Strategic Analyzer, Executive Brief `/executive-brief`)
   3. **Evidence** — Why Execution OS (featured, `/why-execution-os`), Executive Brief (featured, `/executive-brief`), Research, ROI Calc, Pricing
   4. **Investors** — Resources, Thesis, Deck, Briefings, Founder Story
-- Unauthenticated CTAs (right): "Request Founding Partner Access" (gold, → /request-access), "Sign In" (ghost)
+- Unauthenticated CTAs (right): "Request Founding Partner Access" (gold, → /founding-partner-program), "Sign In" (ghost)
 - Authenticated CTAs: user avatar/initials dropdown (Settings, Organization Setup, Sign Out) — no "Request Founding Partner Access" shown to signed-in users
 - **Rule:** No user should ever need to type a URL — every page must be reachable through the UI (nav or footer)
 - **Route conflict history:** `/why-execution-os` previously had a shadow route serving the old `WhyExecuteIQ` component (line 418 in App.tsx, removed). The legacy page now lives at `/why-execution-os-legacy`. Only `WhyExecutionOS.tsx` should ever serve `/why-execution-os`.
@@ -629,7 +630,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 ### Homepage Nav (SEPARATE from StandardNav)
 - `Homepage.tsx` has its **own sticky nav bar** that is completely separate from `StandardNav`. It is NOT a `PageLayout` page — it manages its own header.
 - Desktop links (flat, no dropdowns): **How It Works** → `/how-it-works` · **The Platform** → `/platform-overview` · **Experience** → `/industry-demos` · **Why Execution OS** → `/why-execution-os` · **Investors** → `/investors`
-- CTA button (right): "Request Founding Partner Access" (gold, → /request-access)
+- CTA button (right): "Request Founding Partner Access" (gold, → /founding-partner-program)
 - Mobile hamburger menu: same links, rendered as `<Link>` components (not `<button>` with `onClick`)
 - **CRITICAL:** "How It Works" MUST use `<Link href="/how-it-works">` — never `onClick={() => scrollTo("how-it-works")}` or `scrollIntoView`. The `#how-it-works` anchor exists on the homepage but the nav link goes to the standalone page.
 - **CRITICAL:** Do NOT merge HomepageNav into StandardNav or PageLayout. They are intentionally separate components.
@@ -684,6 +685,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `PharmaceuticalRecallDemo.tsx` | `/industry-demo/pharmaceutical-recall` | Pharma recall scenario. FDA timeline, 170K-unit scope, cross-functional war room, regulatory communication tracks. |
 | `ManufacturingSupplierDemo.tsx` | `/industry-demo/manufacturing-supplier` | Manufacturing supply disruption scenario. 14 downstream facilities, $2.3M/day exposure, alternate supplier routing. |
 | `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
+| `FoundingPartnerProgram.tsx` | `/founding-partner-program` (also `/pilot-program` alias) | Public Founding Partner conversion page. Problem-first hero, "2026 Founding Partner Cohort · 12 Seats" scarcity badge, differentiation strip, inline `ApplicationForm` component (no redirect). Form fields: name, email, company, title, companySize, primaryChallenge, timelineUrgency. On submit: POST `/api/founding-partner/apply` → saves to `founding_partner_applications` table → success state "We'll be in touch within 48 hours." Error fallback shows `founding@vaughnmartin.com`. Questions CTA also shows `founding@vaughnmartin.com`. All public "Founding Partner Access" CTAs across the product route here — never to `/request-access`. |
 | `PlaybookDetail.tsx` | `/playbook/:id` | Full playbook view. Three tabs: Overview, Performance (auth-gated), Edit Tasks (auth-gated, only shown when `enrichedPhases` exist). Edit Tasks tab: phase accordion editor for name/objective, role task groups (add/remove/rename/edit items), decision gate (title/criteria/escalation), and restrictions. Saves via `PATCH /api/playbook-library/:id/customize` with `{ customizations: { enrichedPhases } }`. Amber dot on tab label = unsaved changes. `useEffect` syncs `editedPhases` from `playbook.enrichedPhases` on load. Helper callbacks: `updatePhase`, `updateTask`, `updateTaskItem`, `addTaskItem`, `removeTaskItem`, `addTaskGroup`, `removeTaskGroup`, `updateCriteria`, `addCriteria`, `removeCriteria`, `updateRestriction`, `addRestriction`, `removeRestriction`. |
 
 ---
@@ -2160,7 +2162,7 @@ The nav previously rendered duplicate CTA buttons in certain auth states — two
 ### Current Pattern (canonical — do not revert)
 
 **Unauthenticated users:**
-- Single gold "Request Founding Partner Access" button → `/request-access`
+- Single gold "Request Founding Partner Access" button → `/founding-partner-program`
 - Separate "Sign In" text button → calls `login()` from `useAuth`
 - No duplicate buttons at any breakpoint
 
@@ -2168,7 +2170,7 @@ The nav previously rendered duplicate CTA buttons in certain auth states — two
 - User avatar/initials menu replaces both CTAs
 - No "Request Founding Partner Access" shown to signed-in users
 
-**Button label rule (LOCKED):** All CTAs on StandardNav use "Request Founding Partner Access" — never "Apply for Pilot," "Get Started," or any retired variant. This matches the Founding Partner Program language lock established in Section 32.
+**Button label rule (LOCKED):** All CTAs on StandardNav use "Request Founding Partner Access" and route to `/founding-partner-program` — never "Apply for Pilot," "Get Started," or any retired variant. Never route to `/request-access` (that is the internal magic-link platform login form). This matches the Founding Partner Program language lock established in Section 32.
 
 **`login()` call pattern:**
 ```tsx
@@ -2258,7 +2260,7 @@ Each card shows: icon, name, tagline, industry protocol count, sample trigger sc
 - Core protocols count: "Included from Core — 143 additional protocols available to all subscribers"
 - Key triggers: industry-specific trigger examples shown as signal cards
 - Stakeholder scenarios: role-specific execution examples (CFO, CISO, General Counsel, etc.)
-- CTA: "Request Founding Partner Access" → `/request-access`
+- CTA: "Request Founding Partner Access" → `/founding-partner-program`
 
 **`INDUSTRY_PACK_DATA` constant:** Keyed by `verticalKey`. Each entry defines `name`, `fullName`, `headline`, `tagline`, `description`, and an array of `ProtocolEntry` objects.
 
@@ -2406,3 +2408,90 @@ Full static audit of all page groups TA–TK (170+ component files) completed. *
 - "human-AI partnership" (RETIRED)
 
 Build status: `npm run build` — clean pass (no errors). Unit tests: 189/189 passing.
+
+---
+
+## 50. Founding Partner Program Page — May 2026 (rev 30)
+
+**Route:** `/founding-partner-program` (also aliased from `/pilot-program` via `renderRoutes`)
+**File:** `client/src/pages/FoundingPartnerProgram.tsx`
+**Auth required:** No — fully public
+
+### Purpose
+
+The primary public conversion page for Fortune 1000 prospects. Replaces the previous pattern of redirecting Founding Partner CTAs to `/request-access`. All "Apply for Founding Partner Access" / "Request Founding Partner Access" buttons across the product now route here — `/request-access` is reserved strictly for authenticated platform access (magic link flow).
+
+### Page Structure
+
+1. **Hero** — Problem-first framing: "The response was / before you knew you needed it." with scarcity badge "2026 Founding Partner Cohort · 12 Seats" in gold
+2. **Differentiation strip** — 4 cards: "Pre-staged, not assembled" / "Pre-committed, not considered" / "Signal-based, not meeting-based" / "Execution in 12 minutes, not 30 days"
+3. **Inline ApplicationForm** — no redirect; submits directly to the backend
+4. **Success state** — "We'll be in touch within 48 hours." confirmation in place of the form
+5. **Questions CTA** — `founding@vaughnmartin.com`
+
+### Inline Application Form
+
+**Fields (all required except timelineUrgency):**
+```
+name            — text input
+email           — email input
+company         — text input
+title           — text input
+companySize     — select: "500–1,000" | "1,000–5,000" | "5,000–20,000" | "20,000+"
+primaryChallenge — select: "Regulatory Pressure" | "M&A / Competitive Disruption" | "Supply Chain Risk" | "Cybersecurity / Crisis Response" | "Board / Investor Pressure" | "Leadership Transition" | "Other"
+timelineUrgency  — select (optional): "Immediate (within 30 days)" | "This quarter" | "Next 6 months" | "Exploring"
+```
+
+**Submit flow:**
+1. Frontend POST to `/api/founding-partner/apply` with form data
+2. Backend validates with Zod → inserts into `founding_partner_applications` table → returns `{ ok: true }`
+3. Frontend flips to success state; form unmounts
+4. Error path shows `founding@vaughnmartin.com` as fallback contact
+
+### Backend Route
+
+```
+POST /api/founding-partner/apply   ← public, no auth required
+```
+
+- Located in `server/routes.ts`
+- Validates: `name` (non-empty), `email` (valid format), `company`, `title`, `companySize`, `primaryChallenge`
+- Inserts into `founding_partner_applications` table
+- Returns `{ ok: true }` on success; `{ error: "..." }` on failure
+- Never throws a user-visible error — all errors logged server-side and caught by the frontend fallback
+
+### Database Table (`shared/schema.ts`)
+
+```ts
+export const foundingPartnerApplications = pgTable('founding_partner_applications', {
+  id:                 uuid('id').primaryKey().defaultRandom(),
+  name:               text('name').notNull(),
+  email:              text('email').notNull(),
+  company:            text('company').notNull(),
+  title:              text('title').notNull(),
+  companySize:        text('company_size').notNull(),
+  primaryChallenge:   text('primary_challenge').notNull(),
+  timelineUrgency:    text('timeline_urgency'),
+  createdAt:          timestamp('created_at').defaultNow(),
+});
+```
+
+Table was created directly via `psql "$DATABASE_URL" -c "CREATE TABLE IF NOT EXISTS ..."` because `npm run db:push` is interactive (pauses on `business_units` table prompt). If the DB is ever re-created from scratch, `npm run db:push` will create the table automatically.
+
+### Link Audit (May 10, 2026)
+
+A two-pass bulk script updated **49 files** total — all public-facing Founding Partner CTAs now route to `/founding-partner-program`. The only remaining `/request-access` links in the codebase are intentional internal flows:
+
+| File | Why it stays as /request-access |
+|---|---|
+| `IDEASidebar.tsx`, `IDEALayout.tsx` | Auth-loss redirect for authenticated users |
+| `AICopilotPanel.tsx`, `TaskPanel.tsx` | Auth-loss redirect |
+| `CreateOrganizationModal.tsx`, `CreateScenarioModal.tsx` | Auth-loss redirect |
+| `QuickActions.tsx`, `NavigationBar.tsx` | Platform internal nav |
+| `MagicLogin.tsx`, `GuidedStart.tsx` | Magic link / guided start flows |
+| `AdminQuickLink.tsx` | Admin reference link (intentional) |
+| `StrategicRecorder.tsx`, `CompoundThreatAlerts.tsx` | 401 timeout redirect |
+| `ProtocolCommand.tsx` | Login button for unauthenticated command view |
+| `FoundingPartnerProgram.tsx` line ~919 | "Explore before committing" escape hatch (intentional) |
+
+**Rule for future developers:** If a button label contains "Founding Partner" → it goes to `/founding-partner-program`. If it is an auth-gate redirect for a logged-in user who lost access → it goes to `/request-access`.
