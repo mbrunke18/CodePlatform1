@@ -613,7 +613,7 @@ export default function Growth() {
 
           <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
             {/* Table header */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", background: NAVY, padding: "14px 28px", gap: 16 }}>
+            <div className="growth-compare-row" style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", background: NAVY, padding: "14px 28px", gap: 16 }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>What Companies Buy Today</span>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)", textAlign: "center" as const }}>Cost</span>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>The Problem</span>
@@ -626,7 +626,7 @@ export default function Growth() {
               { item: "Internal strategy ops team", cost: "$500K–$2M/yr", problem: "3–5 FTEs. Still takes 30 days to coordinate." },
               { item: "The coordination tax (hidden)", cost: "Incalculable", problem: "30% of strategy value lost in execution gaps." },
             ].map((row, i) => (
-              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", padding: "18px 28px", gap: 16, borderBottom: i < 4 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
+              <div key={i} className="growth-compare-row" style={{ display: "grid", gridTemplateColumns: "1fr 180px 1fr", padding: "18px 28px", gap: 16, borderBottom: i < 4 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
                 <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{row.item}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#EF4444", textAlign: "center" as const }}>{row.cost}</span>
                 <span style={{ fontSize: 13, color: "#6B7280" }}>{row.problem}</span>
@@ -685,7 +685,7 @@ export default function Growth() {
 
           <div style={{ background: "#fff", border: `1px solid #E8E4DC`, borderRadius: 0, overflow: "hidden" }}>
             {/* Header */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", background: NAVY, padding: "14px 28px", gap: 16 }}>
+            <div className="growth-plan-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", background: NAVY, padding: "14px 28px", gap: 16 }}>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Scenario</span>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)" }}>Without Readiness OS</span>
               <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(240,237,228,0.5)", textAlign: "right" as const }}>Value Protected</span>
@@ -698,7 +698,7 @@ export default function Growth() {
               { scenario: "Key executive departs suddenly", without: "Chaos. Talent flight. Vacuum at the top.", value: "$2M–$10M" },
               { scenario: "M&A integration begins", without: "18-month drag. Significant value leakage.", value: "20–30% of deal value" },
             ].map((row, i) => (
-              <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", padding: "18px 28px", gap: 16, borderBottom: i < 4 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
+              <div key={i} className="growth-plan-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 180px", padding: "18px 28px", gap: 16, borderBottom: i < 4 ? `1px solid #F3F4F6` : "none", background: i % 2 === 0 ? "#fff" : "#FAFAF9" }}>
                 <span style={{ fontSize: 13, fontWeight: 600, color: NAVY }}>{row.scenario}</span>
                 <span style={{ fontSize: 13, color: "#6B7280", fontStyle: "italic" }}>{row.without}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: TEAL, textAlign: "right" as const }}>{row.value}</span>

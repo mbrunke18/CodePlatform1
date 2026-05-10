@@ -249,7 +249,7 @@ export default function FounderStory() {
 
           {/* IDEA Framework */}
           <div style={{ background: NAVY, padding: "48px 40px", margin: "48px 0" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
+            <div className="fs-idea-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}>
               {[
                 { letter: "I", word: "IDENTIFY", desc: "248+ signals across 9 strategic domains. Every 15 minutes. Before you ask." },
                 { letter: "D", word: "DETECT", desc: "Pattern recognition fires before the crisis peaks. Not after." },
@@ -470,7 +470,7 @@ export default function FounderStory() {
             <h2 style={{ ...CG, fontSize: 36, fontWeight: 600, color: NAVY }}>The Story in Martin's Own Words</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 64 }}>
+          <div className="fs-video-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 64 }}>
             {[
               { label: "90 SECONDS", title: "Quick Intro", desc: "The 30-day problem, the football insight, and why Readiness OS exists.", type: "intro" as const, cta: "Watch Now" },
               { label: "3:30 MINUTES", title: "The Full Story", desc: "The complete narrative: Fortune 500 experience, the IDEA framework, and the vision.", type: "full" as const, cta: "Watch Full Story" },
@@ -494,7 +494,7 @@ export default function FounderStory() {
           </div>
 
           {/* Bio strip */}
-          <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 32, alignItems: "start", padding: "40px 0", borderTop: `1px solid ${BORDER}` }}>
+          <div className="fs-bio-strip" style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: 32, alignItems: "start", padding: "40px 0", borderTop: `1px solid ${BORDER}` }}>
             <div style={{ width: 80, height: 80, background: NAVY, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
               <span style={{ ...CG, fontSize: 28, fontWeight: 700, color: GOLD_LIGHT }}>MB</span>
             </div>

@@ -159,7 +159,7 @@ export default function SecurityCompliance() {
                 </div>
                 <div style={{ padding: "0.5rem 0" }}>
                   {section.items.map((item, i) => (
-                    <div key={item.label} style={{
+                    <div key={item.label} className="sc-item-row" style={{
                       display: "grid", gridTemplateColumns: "220px 1fr",
                       padding: "0.75rem 1.5rem",
                       borderBottom: i < section.items.length - 1 ? "1px solid #F3F4F6" : "none",

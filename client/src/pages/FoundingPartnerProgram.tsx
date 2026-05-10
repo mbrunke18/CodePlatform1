@@ -242,7 +242,7 @@ function ApplicationForm() {
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
       <style>{`.fp-field::placeholder{color:rgba(240,237,228,0.4)}.fp-field:focus{border-bottom-color:rgba(201,168,76,0.6)!important}.fp-field{transition:border-color 0.2s ease}.fp-select option{background:#0A0F2E;color:#F0EDE4}`}</style>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
+      <div className="fpp-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
         <div style={{ marginBottom: 28 }}>
           <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>First Name</label>
           <input {...form.register('firstName')} placeholder="Jane" style={FP_FIELD} className="fp-field" />
@@ -259,7 +259,7 @@ function ApplicationForm() {
         <input {...form.register('email')} placeholder="jane.smith@company.com" style={FP_FIELD} className="fp-field" />
         {form.formState.errors.email && <p style={{ color: '#EF4444', fontSize: 11, marginTop: 4 }}>{form.formState.errors.email.message}</p>}
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
+      <div className="fpp-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
         <div style={{ marginBottom: 28 }}>
           <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>Company</label>
           <input {...form.register('company')} placeholder="Acme Corporation" style={FP_FIELD} className="fp-field" />
@@ -438,7 +438,7 @@ export default function FoundingPartnerProgram() {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
+            <div className="fpp-three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
 
               {/* Tier 1 */}
               <div style={{ padding: '32px 28px', borderRight: '1px solid #E8E4DC', borderTop: '4px solid #0A0F2E' }}>
@@ -510,7 +510,7 @@ export default function FoundingPartnerProgram() {
               </h2>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '2px solid #0A0F2E' }} data-testid="phases-grid">
+            <div className="fpp-four-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, borderTop: '2px solid #0A0F2E' }} data-testid="phases-grid">
               {pilotPhases.map((phase, i) => {
                 const phaseColors = ['#6B7280', '#0A0F2E', '#2B8A6E', '#C9A84C'];
                 const color = phaseColors[i];
@@ -549,7 +549,7 @@ export default function FoundingPartnerProgram() {
                 Everything needed to validate Readiness OS in your environment.
               </h2>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
+            <div className="fpp-four-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0, border: '1px solid #E8E4DC' }}>
               {pilotInclusions.map((inclusion, i) => (
                 <div key={i} style={{ padding: '28px 24px', borderRight: i < pilotInclusions.length - 1 ? '1px solid #E8E4DC' : 'none' }} data-testid={`card-inclusion-${i}`}>
                   <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: '#0A0F2E', marginBottom: 20, borderBottom: '1px solid #E8E4DC', paddingBottom: 12 }}>{inclusion.category}</div>
@@ -578,7 +578,7 @@ export default function FoundingPartnerProgram() {
                 Organizations built to validate strategic readiness.
               </h2>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
+            <div className="fpp-three-col" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0 }}>
               {idealCandidates.map((candidate, i) => {
                 const isRequired = candidate.importance === 'Required';
                 return (

@@ -1606,6 +1606,91 @@ html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
     padding: 12px 16px !important;
   }
 
+
+
+  /* ── FoundingPartnerProgram ─────────────────────────────────────────────── */
+
+  /* Form row (First/Last, Company/Title): stack fields vertically */
+  .fpp-two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 3-tier platform grid: stack cards vertically */
+  .fpp-three-col {
+    grid-template-columns: 1fr !important;
+  }
+  .fpp-three-col > div {
+    border-right: none !important;
+    border-bottom: 1px solid #E8E4DC !important;
+  }
+
+  /* 4-phase program grid + 4-inclusion grid: 2 columns */
+  .fpp-four-col {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .fpp-four-col > div {
+    border-right: none !important;
+    border-bottom: 1px solid #E8E4DC !important;
+  }
+
+  /* ── FounderStory ──────────────────────────────────────────────────────── */
+
+  /* IDEA Framework grid: stack 2-col to 1-col */
+  .fs-idea-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Video cards: stack */
+  .fs-video-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Bio strip: tighten gap */
+  .fs-bio-strip {
+    gap: 16px !important;
+  }
+
+  /* ── SecurityCompliance ────────────────────────────────────────────────── */
+
+  /* 220px label + description: stack vertically */
+  .sc-item-row {
+    grid-template-columns: 1fr !important;
+    padding: 0.75rem 1rem !important;
+    gap: 0.25rem !important;
+  }
+
+  /* ── Growth comparison tables ──────────────────────────────────────────── */
+
+  /* 3-col comparison tables: 2 columns on tablet */
+  .growth-compare-row {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 12px 16px !important;
+    gap: 8px !important;
+  }
+  .growth-compare-row > span:nth-child(2) { display: none !important; }
+
+  .growth-plan-row {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 12px 16px !important;
+    gap: 8px !important;
+  }
+
+  /* ── ProofStory ──────────────────────────────────────────────────────────── */
+
+  /* Split view: stack panels vertically on mobile */
+  .ps-split-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Head-to-head comparison table: stack all 3 columns */
+  .ps-compare-table {
+    grid-template-columns: 1fr !important;
+  }
+  .ps-compare-table > div {
+    border-left: none !important;
+  }
+
 }
 
 /* ── Narrow phone (≤ 480px): tighten further ──────────────────────────────── */
@@ -1630,6 +1715,23 @@ html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
   /* TwelveMinuteTestDrive: tighter war room */
   .tmtd-war-room-grid {
     gap: 16px !important;
+  }
+
+  /* FoundingPartnerProgram: 4-col phases to 1-col on smallest screens */
+  .fpp-four-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Growth tables: single column on small phones */
+  .growth-compare-row,
+  .growth-plan-row {
+    grid-template-columns: 1fr !important;
+  }
+  .growth-compare-row > span:nth-child(2),
+  .growth-plan-row > span:nth-child(3) {
+    display: block !important;
+    font-size: 11px !important;
+    opacity: 0.7 !important;
   }
 
 }

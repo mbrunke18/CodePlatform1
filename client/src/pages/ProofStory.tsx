@@ -293,7 +293,7 @@ export default function ProofStory() {
 
         {/* Main Content */}
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 48px" }}>
-          <div style={{
+          <div className="ps-split-grid" style={{
             display: "grid",
             gridTemplateColumns: view === "split" ? "1fr 1fr" : "1fr",
             gap: 32,
@@ -358,7 +358,7 @@ export default function ProofStory() {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD }}>Head-to-Head Comparison</span>
               <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{story.subtitle}</span>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
+            <div className="ps-compare-table" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}>
               <div style={{ padding: "12px 20px", background: "#F8F7F4", borderBottom: "1px solid #E8E4DC", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: MUTED }}>Metric</div>
               <div style={{ padding: "12px 20px", background: "#FFF5F5", borderBottom: "1px solid #FECACA", fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#EF4444", borderLeft: "1px solid #FECACA" }}>Without Readiness OS</div>
               <div style={{ padding: "12px 20px", background: "#F0FAF6", borderBottom: `1px solid ${TEAL}30`, fontSize: 10, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: TEAL, borderLeft: `1px solid ${TEAL}30` }}>With Readiness OS</div>
