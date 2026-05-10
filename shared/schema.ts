@@ -6786,3 +6786,20 @@ export const signalOntologyEdges = pgTable('signal_ontology_edges', {
 export const insertSignalOntologyEdgeSchema = createInsertSchema(signalOntologyEdges).omit({ id: true });
 export type InsertSignalOntologyEdge = z.infer<typeof insertSignalOntologyEdgeSchema>;
 export type SignalOntologyEdge = typeof signalOntologyEdges.$inferSelect;
+
+// ─── Founding Partner Applications ────────────────────────────────────────────
+export const foundingPartnerApplications = pgTable('founding_partner_applications', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  firstName: text('first_name').notNull(),
+  lastName: text('last_name').notNull(),
+  email: text('email').notNull(),
+  company: text('company').notNull(),
+  title: text('title').notNull(),
+  triggerDomain: text('trigger_domain').default(''),
+  message: text('message').default(''),
+  status: text('status').notNull().default('pending'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertFoundingPartnerApplicationSchema = createInsertSchema(foundingPartnerApplications).omit({ id: true, createdAt: true, status: true });
+export type InsertFoundingPartnerApplication = z.infer<typeof insertFoundingPartnerApplicationSchema>;
+export type FoundingPartnerApplication = typeof foundingPartnerApplications.$inferSelect;

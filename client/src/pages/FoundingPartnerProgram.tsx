@@ -1,9 +1,15 @@
 import { useLocation } from 'wouter';
 import { useAuth } from '@/hooks/useAuth';
 import PageLayout from '@/components/layout/PageLayout';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { updatePageMetadata } from '@/lib/seo';
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import { useMutation } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Loader2 } from 'lucide-react';
 
 const pilotPhases = [
   {
@@ -190,6 +196,125 @@ const conversionTerms = [
   }
 ];
 
+const appFormSchema = z.object({
+  firstName: z.string().min(1, 'Required'),
+  lastName: z.string().min(1, 'Required'),
+  email: z.string().email('Enter a valid work email'),
+  company: z.string().min(1, 'Required'),
+  title: z.string().min(1, 'Required'),
+  triggerDomain: z.string().optional(),
+  message: z.string().optional(),
+});
+type AppFormData = z.infer<typeof appFormSchema>;
+
+const FP_BC: React.CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
+const FP_CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
+const FP_FIELD: React.CSSProperties = {
+  background: 'transparent', border: 'none',
+  borderBottom: '1px solid rgba(240,237,228,0.2)', borderRadius: 0,
+  color: '#F0EDE4', fontSize: 15, fontWeight: 400,
+  padding: '10px 0', width: '100%', outline: 'none',
+};
+
+function ApplicationForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const form = useForm<AppFormData>({
+    resolver: zodResolver(appFormSchema),
+    defaultValues: { firstName: '', lastName: '', email: '', company: '', title: '', triggerDomain: '', message: '' },
+  });
+  const mutation = useMutation({
+    mutationFn: (data: AppFormData) => apiRequest('POST', '/api/founding-partner/apply', data),
+    onSuccess: () => setSubmitted(true),
+  });
+  const onSubmit = (data: AppFormData) => mutation.mutate(data);
+
+  if (submitted) return (
+    <div style={{ textAlign: 'center', padding: '48px 0' }}>
+      <div style={{ width: 1, height: 48, background: 'linear-gradient(to bottom, transparent, #C9A84C)', margin: '0 auto 28px' }} />
+      <p style={{ ...FP_BC, fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#2B8A6E', marginBottom: 12 }}>Application Received</p>
+      <h3 style={{ ...FP_CG, fontSize: 32, fontWeight: 700, color: '#fff', marginBottom: 12, lineHeight: 1.2 }}>We'll be in touch within 48 hours.</h3>
+      <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(240,237,228,0.65)', lineHeight: 1.7, maxWidth: 400, margin: '0 auto' }}>
+        We review every application personally. If your organization is a strong fit for the 2026 cohort, you'll hear from the founder directly.
+      </p>
+    </div>
+  );
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      <style>{`.fp-field::placeholder{color:rgba(240,237,228,0.4)}.fp-field:focus{border-bottom-color:rgba(201,168,76,0.6)!important}.fp-field{transition:border-color 0.2s ease}.fp-select option{background:#0A0F2E;color:#F0EDE4}`}</style>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
+        <div style={{ marginBottom: 28 }}>
+          <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>First Name</label>
+          <input {...form.register('firstName')} placeholder="Jane" style={FP_FIELD} className="fp-field" />
+          {form.formState.errors.firstName && <p style={{ color: '#EF4444', fontSize: 11, marginTop: 4 }}>{form.formState.errors.firstName.message}</p>}
+        </div>
+        <div style={{ marginBottom: 28 }}>
+          <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>Last Name</label>
+          <input {...form.register('lastName')} placeholder="Smith" style={FP_FIELD} className="fp-field" />
+          {form.formState.errors.lastName && <p style={{ color: '#EF4444', fontSize: 11, marginTop: 4 }}>{form.formState.errors.lastName.message}</p>}
+        </div>
+      </div>
+      <div style={{ marginBottom: 28 }}>
+        <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>Work Email</label>
+        <input {...form.register('email')} placeholder="jane.smith@company.com" style={FP_FIELD} className="fp-field" />
+        {form.formState.errors.email && <p style={{ color: '#EF4444', fontSize: 11, marginTop: 4 }}>{form.formState.errors.email.message}</p>}
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
+        <div style={{ marginBottom: 28 }}>
+          <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>Company</label>
+          <input {...form.register('company')} placeholder="Acme Corporation" style={FP_FIELD} className="fp-field" />
+          {form.formState.errors.company && <p style={{ color: '#EF4444', fontSize: 11, marginTop: 4 }}>{form.formState.errors.company.message}</p>}
+        </div>
+        <div style={{ marginBottom: 28 }}>
+          <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>Title / Role</label>
+          <input {...form.register('title')} placeholder="Chief Strategy Officer" style={FP_FIELD} className="fp-field" />
+          {form.formState.errors.title && <p style={{ color: '#EF4444', fontSize: 11, marginTop: 4 }}>{form.formState.errors.title.message}</p>}
+        </div>
+      </div>
+      <div style={{ marginBottom: 28 }}>
+        <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>Strategic Domain of Greatest Concern</label>
+        <select {...form.register('triggerDomain')} style={{ ...FP_FIELD, cursor: 'pointer', appearance: 'none' as any }} className="fp-field fp-select">
+          <option value="">Select a domain (optional)</option>
+          <option value="Growth & Positioning">Growth &amp; Positioning — M&amp;A, market entry, competitive response</option>
+          <option value="Risk & Resilience">Risk &amp; Resilience — regulatory, cyber, activist investor, supply chain</option>
+          <option value="Transformation">Transformation — restructuring, leadership change, technology shift</option>
+          <option value="All Domains">All Domains — broad strategic readiness across every domain</option>
+        </select>
+      </div>
+      <div style={{ marginBottom: 36 }}>
+        <label style={{ ...FP_BC, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.55)', display: 'block', marginBottom: 6 }}>
+          Anything Else? <span style={{ opacity: 0.5, fontWeight: 400, textTransform: 'none' as const }}>(optional)</span>
+        </label>
+        <textarea {...form.register('message')} placeholder="A recent trigger you faced, a specific protocol you want to pre-stage, or the question you'd most want answered in 90 days." style={{ ...FP_FIELD, resize: 'vertical', minHeight: 72 }} className="fp-field" />
+      </div>
+      {mutation.isError && (
+        <p style={{ color: '#EF4444', fontSize: 12, marginBottom: 16, ...FP_BC }}>
+          Something went wrong. Email <span style={{ color: '#C9A84C' }}>founding@vaughnmartin.com</span> directly.
+        </p>
+      )}
+      <button
+        type="submit"
+        disabled={mutation.isPending}
+        style={{
+          width: '100%', padding: '18px 0',
+          background: '#C9A84C', color: '#0A0F2E',
+          ...FP_BC, fontSize: 13, fontWeight: 800, letterSpacing: '0.14em', textTransform: 'uppercase' as const,
+          border: 'none', cursor: mutation.isPending ? 'not-allowed' : 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+          opacity: mutation.isPending ? 0.7 : 1, transition: 'opacity 0.2s ease',
+        }}
+      >
+        {mutation.isPending
+          ? <><Loader2 style={{ width: 14, height: 14, animation: 'spin 1s linear infinite' }} /> Submitting…</>
+          : 'Submit Application for 2026 Cohort →'}
+      </button>
+      <p style={{ ...FP_BC, fontSize: 11, color: 'rgba(240,237,228,0.4)', textAlign: 'center', marginTop: 14, lineHeight: 1.6 }}>
+        We review every application personally. No automated responses, no sales calls unless you request them.
+      </p>
+    </form>
+  );
+}
+
 export default function FoundingPartnerProgram() {
   const [, setLocation] = useLocation();
 
@@ -207,53 +332,72 @@ export default function FoundingPartnerProgram() {
       <div className="bg-[#F8F7F4] dark:bg-[#0A0F2E]">
         
         {/* Hero Section */}
-        <section style={{ background: '#0A0F2E', padding: '96px 32px 80px' }}>
-          <div style={{ maxWidth: 960, margin: '0 auto' }}>
-            <div style={{ marginBottom: 20 }}>
+        <section style={{ background: '#0A0F2E', padding: '96px 32px 80px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 900px 700px at 100% 0%, rgba(43,138,110,0.10) 0%, transparent 60%)', pointerEvents: 'none' }} />
+
+          <div style={{ maxWidth: 960, margin: '0 auto', position: 'relative' }}>
+            <div style={{ marginBottom: 32 }}>
               <VaughnMartinLogo color="light" height={40} variant="full" />
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
-              <div style={{ width: 32, height: 1, background: 'rgba(201,168,76,0.5)' }} />
-              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
-                Fortune 1000 Design Partner Program
+
+            {/* Scarcity badge */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 44, padding: '8px 16px', border: '1px solid rgba(201,168,76,0.3)', background: 'rgba(201,168,76,0.06)' }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#C9A84C' }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
+                2026 Founding Partner Cohort · 12 Seats
               </span>
             </div>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(36px,5vw,56px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 8, maxWidth: 740 }} data-testid="heading-pilot-program">
-              Founding Partner Program
-            </h1>
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(22px,3vw,32px)', fontWeight: 400, fontStyle: 'italic', color: '#C9A84C', marginBottom: 28 }}>
-              90 days. Measured outcomes. Clear path to enterprise.
-            </p>
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: 'rgba(240,237,228,0.7)', maxWidth: 620, marginBottom: 52, lineHeight: 1.7, fontWeight: 400 }}>
-              Prove the 12-minute coordination claim with real activations in your environment. Structured phases, measurable outcomes, and a clear path to enterprise deployment.
-            </p>
-            
-            {/* Key Stats — editorial horizontal strip */}
-            <div style={{ display: 'flex', gap: 0, marginBottom: 52, borderTop: '1px solid rgba(201,168,76,0.2)', paddingTop: 32 }}>
+
+            {/* Problem-first headline */}
+            <div style={{ maxWidth: 800, marginBottom: 32 }}>
+              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', color: 'rgba(240,237,228,0.5)', marginBottom: 20, textTransform: 'uppercase' as const }}>
+                The last time a strategic trigger fired at your organization — how long did mobilization take?
+              </p>
+              <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,5.5vw,64px)', fontWeight: 700, color: '#fff', lineHeight: 1.06, marginBottom: 4 }} data-testid="heading-pilot-program">
+                The response was ready
+              </h1>
+              <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(40px,5.5vw,64px)', fontWeight: 700, color: '#C9A84C', lineHeight: 1.06, marginBottom: 32, fontStyle: 'italic' }}>
+                before you knew you needed it.
+              </h1>
+            </div>
+
+            <div style={{ maxWidth: 640, marginBottom: 52 }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(240,237,228,0.78)', lineHeight: 1.85, marginBottom: 20, fontWeight: 400 }}>
+                170 Readiness Protocols pre-staged. 221 trigger patterns monitored. Full coordination deployed in 12 minutes — with executive authorization at every step.
+              </p>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: '#C9A84C', fontStyle: 'italic', lineHeight: 1.65 }}>
+                12 Founding Partners will prove this in their environment. You're not paying to test software. You're building the operating model your competitors will spend three years trying to replicate.
+              </p>
+            </div>
+
+            {/* Stats strip */}
+            <div style={{ display: 'flex', gap: 0, marginBottom: 52, borderTop: '1px solid rgba(201,168,76,0.18)', paddingTop: 32 }}>
               {[
+                { val: '12', label: 'Founding Partner Seats' },
                 { val: '$75K', label: 'Engagement Investment' },
                 { val: '90', label: 'Days' },
-                { val: '5', label: 'Readiness Protocols Configured' },
-                { val: '25', label: 'Users' },
-                { val: '100%', label: 'Credit to Enterprise Year 1' },
+                { val: '100%', label: 'Credited to Enterprise Contract' },
+                { val: '25', label: 'Users Included' },
               ].map((s, i) => (
-                <div key={s.label} style={{ flex: 1, paddingRight: 24, borderRight: i < 4 ? '1px solid rgba(255,255,255,0.08)' : 'none', paddingLeft: i > 0 ? 24 : 0 }}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{s.val}</div>
-                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.45)', marginTop: 6 }}>{s.label}</div>
+                <div key={s.label} style={{ flex: 1, paddingRight: 24, borderRight: i < 4 ? '1px solid rgba(255,255,255,0.07)' : 'none', paddingLeft: i > 0 ? 24 : 0 }}>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.42)', marginTop: 7 }}>{s.label}</div>
                 </div>
               ))}
             </div>
 
+            {/* CTAs */}
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' as const }}>
               <button
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#C9A84C', color: '#0A0F2E', fontWeight: 800, fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 40px', border: 'none', cursor: 'pointer' }}
-                onClick={() => setLocation('/request-access')}
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#C9A84C', color: '#0A0F2E', fontWeight: 800, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 40px', border: 'none', cursor: 'pointer' }}
+                onClick={() => document.getElementById('fp-application')?.scrollIntoView({ behavior: 'smooth' })}
                 data-testid="button-apply-pilot"
               >
-                Apply for Founding Partner Access
+                Apply for the 2026 Cohort →
               </button>
               <button
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: '#C9A84C', fontWeight: 700, fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 32px', border: '1px solid rgba(201,168,76,0.35)', cursor: 'pointer' }}
+                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: 'rgba(240,237,228,0.72)', fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase' as const, padding: '16px 32px', border: '1px solid rgba(255,255,255,0.18)', cursor: 'pointer' }}
                 onClick={() => setLocation('/protocol-builder')}
                 data-testid="button-try-builder"
               >
@@ -267,9 +411,9 @@ export default function FoundingPartnerProgram() {
         <section className="py-8 px-6 bg-[#0A0F2E] border-t border-white/5">
           <div className="max-w-5xl mx-auto grid grid-cols-3 gap-px bg-white/5" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
             {[
-              { label: "Agentic, not a Copilot", body: "Our IDEA agents execute tasks. They don't suggest them. This is the difference between an AI tool and an execution engine." },
-              { label: "Coordination, not capability", body: "Every enterprise already has AI capability. What they're missing is the coordination layer that makes AI execute — not just recommend." },
-              { label: "Pre-staged, not inferred", body: "170 Readiness Protocols are ready before the trigger fires. No real-time inference loops. That's how you compress 30 days into 12 minutes." },
+              { label: "Pre-staged, not assembled", body: "170 Readiness Protocols exist before any trigger fires. When the moment hits, execution begins in minutes — not after the first alignment meeting." },
+              { label: "Coordination, not capability", body: "Every Fortune 1000 already has the AI capability. What's missing is the coordination layer that makes the whole stack act — not just recommend." },
+              { label: "The response before the trigger", body: "The canonical test: how long does mobilization take after a strategic trigger fires? Founding Partners answer that question with live data. The target is 12 minutes." },
             ].map((item) => (
               <div key={item.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.02)' }}>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 8 }}>{item.label}</div>
@@ -728,57 +872,54 @@ export default function FoundingPartnerProgram() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section style={{ background: '#0A0F2E', padding: '80px 32px' }}>
-          <div style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
-            <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 16 }}>We Make Enterprises Fearless</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px,4vw,44px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 16 }} data-testid="heading-cta">
-              Ready to Validate Strategic Readiness?
-            </h2>
-            <div style={{ width: 48, height: 1, background: 'rgba(201,168,76,0.4)', margin: '0 auto 24px' }} />
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.6)', marginBottom: 40, lineHeight: 1.7 }}>
-              Limited to 5 design partners. Priority given to Fortune 1000 organizations with recent strategic event pain.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 16, marginBottom: 32 }}>
-              <button
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: '#C9A84C', color: '#0A0F2E', fontWeight: 800, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 40px', border: 'none', cursor: 'pointer' }}
-                onClick={() => setLocation('/request-access')}
-                data-testid="button-cta-apply"
-              >
-                Apply for Founding Partner Access
-              </button>
-              <button
-                style={{ fontFamily: "'Barlow Condensed', sans-serif", background: 'transparent', color: 'rgba(255,255,255,0.75)', fontWeight: 700, fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '16px 40px', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
-                onClick={() => setLocation('/protocol-builder')}
-                data-testid="button-cta-builder"
-              >
-                Preview the Protocol Builder →
-              </button>
-            </div>
-            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.68)', marginBottom: 32 }}>
-              Questions? <span style={{ color: '#C9A84C' }}>pilot@vaughnmartin.com</span>
-            </p>
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 28 }}>
-              <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 16 }}>Preparing for a leadership meeting?</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center', marginBottom: 20 }}>
-                <button
-                  onClick={() => setLocation('/prospect-demo')}
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", padding: '10px 24px', border: '1px solid rgba(201,168,76,0.4)', color: '#C9A84C', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'transparent', cursor: 'pointer' }}
-                >
-                  Run Personalized Demo →
-                </button>
-                <button
-                  onClick={() => setLocation('/prospect-brief')}
-                  style={{ fontFamily: "'Barlow Condensed', sans-serif", padding: '10px 24px', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'transparent', cursor: 'pointer' }}
-                >
-                  Generate Executive Brief →
-                </button>
+        {/* Application Section */}
+        <section id="fp-application" style={{ background: '#0A0F2E', padding: '96px 32px 80px', position: 'relative' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: 720, margin: '0 auto', position: 'relative' }}>
+
+            {/* Section header */}
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginBottom: 24, padding: '6px 14px', border: '1px solid rgba(201,168,76,0.25)', background: 'rgba(201,168,76,0.05)' }}>
+                <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#C9A84C' }} />
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: '#C9A84C' }}>
+                  2026 Cohort · 12 Seats
+                </span>
               </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px,4vw,46px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 16 }} data-testid="heading-cta">
+                Apply for the Founding Partner Program.
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(240,237,228,0.6)', lineHeight: 1.75, maxWidth: 540, margin: '0 auto 28px' }}>
+                We review every application personally. Priority given to Fortune 1000 organizations with a C-level sponsor, active Microsoft or enterprise stack, and a recent strategic trigger they weren't fully ready for.
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 36, flexWrap: 'wrap' as const }}>
+                {[
+                  { val: '$75K', label: 'investment — 100% credited' },
+                  { val: '90 days', label: 'structured engagement' },
+                  { val: '48 hrs', label: 'application response' },
+                ].map((s, i) => (
+                  <div key={i} style={{ textAlign: 'center' as const }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: '#C9A84C', lineHeight: 1 }}>{s.val}</div>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: 'rgba(240,237,228,0.42)', marginTop: 5 }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Application form */}
+            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(201,168,76,0.15)', padding: '48px' }}>
+              <ApplicationForm />
+            </div>
+
+            {/* Below-form links */}
+            <div style={{ marginTop: 32, textAlign: 'center' as const }}>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(240,237,228,0.4)', lineHeight: 1.6, marginBottom: 16 }}>
+                Questions before applying? <span style={{ color: '#C9A84C' }}>founding@vaughnmartin.com</span>
+              </p>
               <button
                 onClick={() => setLocation('/request-access')}
-                style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                style={{ fontFamily: "'Barlow', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.3)', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
               >
-                Want access before a formal engagement? Request executive access →
+                Want to explore the platform before committing? Request executive access →
               </button>
             </div>
           </div>

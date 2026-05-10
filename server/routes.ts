@@ -81,6 +81,7 @@ import {
   strategicRecordings,
   executiveTriggers,
   testDriveLeads,
+  foundingPartnerApplications,
 } from "@shared/schema";
 import { eq, desc, sql, like, and, asc, count, gte, ne, inArray, or } from 'drizzle-orm';
 import { db } from './db';
@@ -907,6 +908,28 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       return res.status(500).json({ error: 'Failed to process your request. Please try again.' });
     }
     return res.json({ ok: true, emailSent: (result as any).emailSent ?? true });
+  });
+
+  // ─── Founding Partner Application ─────────────────────────────────────────────
+  app.post('/api/founding-partner/apply', async (req, res) => {
+    const { firstName, lastName, email, company, title, triggerDomain, message } = req.body;
+    if (!firstName || !lastName || !email || !company || !title) {
+      return res.status(400).json({ error: 'All required fields must be completed.' });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: 'Please enter a valid work email.' });
+    }
+    try {
+      const [application] = await db.insert(foundingPartnerApplications).values({
+        firstName, lastName, email, company, title,
+        triggerDomain: triggerDomain || '',
+        message: message || '',
+      }).returning();
+      res.json({ ok: true, id: application.id });
+    } catch (err: any) {
+      res.status(500).json({ error: 'Failed to submit application. Please email founding@vaughnmartin.com directly.' });
+    }
   });
 
   // Safe read-only check — does NOT consume the token, safe for email scanners to prefetch
