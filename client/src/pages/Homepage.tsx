@@ -425,7 +425,7 @@ function HomepageNav() {
         display: "flex", alignItems: "center",
       }}>
         <div style={{ ...CONTAINER, width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <VaughnMartinLogo variant="full" height={68} color="dark" />
+          <VaughnMartinLogo variant="full" height={68} color="dark" animated={true} />
 
           {/* Desktop nav — hidden below 768px via CSS */}
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>

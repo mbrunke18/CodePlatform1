@@ -9,6 +9,7 @@ interface VaughnMartinLogoProps {
   className?: string;
   color?: 'dark' | 'light';
   noLink?: boolean;
+  animated?: boolean;
 }
 
 export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
@@ -18,6 +19,7 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   className = '',
   color = 'dark',
   noLink = false,
+  animated = false,
 }) => {
   const sealColor = color === 'light' ? 'white' : 'navy';
   const sealVariant = variant === 'icon-only' ? 'icon-only' : 'full';
@@ -29,6 +31,7 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
       variant={sealVariant}
       color={sealColor}
       className={className}
+      animated={animated}
     />
   );
 
