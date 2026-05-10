@@ -233,6 +233,7 @@ const BoardReadiness = lazy(() => import("./pages/BoardReadiness"));
 const RegulatoryCalendar = lazy(() => import("./pages/RegulatoryCalendar"));
 const Roadmap = lazy(() => import("./pages/Roadmap"));
 const OnboardingGuide = lazy(() => import("./pages/OnboardingGuide"));
+const BrandKit = lazy(() => import("./pages/BrandKit"));
 
 const ProtocolsLibraryPage = lazy(() => import("./pages/identify/ProtocolsLibraryPage"));
 const IdentifyTemplatesPage = lazy(() => import("./pages/identify/TemplatesPage"));
@@ -464,6 +465,7 @@ function Router() {
         {renderRoutes(["/investors", "/for-investors"], Investors)}
         <Route path="/competitive-positioning" component={CompetitivePositioning} />
         {renderRoutes(["/pilot-program", "/founding-partner-program"], FoundingPartnerProgram)}
+        <Route path="/brand-kit" component={BrandKit} />
         <Route path="/prospect-brief" component={ProspectBrief} />
         <Route path="/prospect-demo" component={ProspectDemo} />
         {renderRoutes(["/pilot-onboarding", "/founding-partner-onboarding"], FoundingPartnerOnboarding)}
