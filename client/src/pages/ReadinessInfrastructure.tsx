@@ -11,7 +11,7 @@ const MUTED   = "#6B7280";
 const RED     = "#C0392B";
 const GEO: CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
 const DM: CSSProperties  = { fontFamily: "'Inter', system-ui, sans-serif" };
-const MONO: CSSProperties = { fontFamily: "'Courier New', Courier, monospace" };
+const MONO: CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 
 const GoldRule = () => (
   <div style={{ width: 48, height: 2, background: GOLD, margin: "0 auto 28px" }} />
