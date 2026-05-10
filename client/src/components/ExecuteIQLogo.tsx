@@ -37,7 +37,9 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
     return () => clearInterval(t);
   }, [animated]);
 
-  const cx = size / 2, cy = size / 2, r = size * 0.46;
+  // Fixed 200×200 internal coordinate system — scales cleanly to any rendered size
+  const VB = 200;
+  const cx = 100, cy = 100, r = 86;
   const scanRad = (scan - 90) * Math.PI / 180;
   const pulse   = 0.4 + 0.6 * Math.sin(tick * 0.12);
 
@@ -50,7 +52,7 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
   return (
     <svg
       width={size} height={size}
-      viewBox={`0 0 ${size} ${size}`}
+      viewBox={`0 0 ${VB} ${VB}`}
       xmlns="http://www.w3.org/2000/svg"
       style={{ flexShrink: 0 }}
     >
@@ -65,7 +67,7 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
           <stop offset="100%" stopColor="#8B6212"/>
         </linearGradient>
         <filter id={glowId}>
-          <feGaussianBlur stdDeviation={Math.max(1, size * 0.012)} result="blur"/>
+          <feGaussianBlur stdDeviation="1.2" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
@@ -74,15 +76,13 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
       <circle cx={cx} cy={cy} r={r} fill={`url(#${gradId})`}/>
 
       {/* Outer rings */}
-      <circle cx={cx} cy={cy} r={r + 2} fill="none" stroke={GOLD}   strokeWidth={Math.max(0.5, size * 0.005)} opacity="0.85"/>
-      <circle cx={cx} cy={cy} r={r - 2} fill="none" stroke={SIGNAL} strokeWidth={Math.max(0.3, size * 0.003)} opacity="0.25"/>
-      <circle cx={cx} cy={cy} r={r - 5} fill="none" stroke={GOLD}   strokeWidth={Math.max(0.2, size * 0.002)} opacity="0.2"/>
+      <circle cx={cx} cy={cy} r={r + 2}   fill="none" stroke={GOLD}   strokeWidth="1"   opacity="0.85"/>
+      <circle cx={cx} cy={cy} r={r - 2}   fill="none" stroke={SIGNAL} strokeWidth="0.6" opacity="0.25"/>
+      <circle cx={cx} cy={cy} r={r - 5}   fill="none" stroke={GOLD}   strokeWidth="0.4" opacity="0.2"/>
 
       {/* Dashed inner accent ring */}
       <circle cx={cx} cy={cy} r={r - 4} fill="none" stroke={SIGNAL}
-        strokeWidth={Math.max(0.2, size * 0.002)}
-        strokeDasharray={`${size * 0.05} ${size * 0.15}`}
-        opacity="0.1"/>
+        strokeWidth="0.4" strokeDasharray="10 30" opacity="0.1"/>
 
       {/* Live radar scan line */}
       {animated && (
@@ -90,9 +90,7 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
           x1={cx} y1={cy}
           x2={cx + Math.cos(scanRad) * r * 0.9}
           y2={cy + Math.sin(scanRad) * r * 0.9}
-          stroke={SIGNAL}
-          strokeWidth={Math.max(0.5, size * 0.006)}
-          opacity="0.55"
+          stroke={SIGNAL} strokeWidth="1.2" opacity="0.55"
           filter={`url(#${glowId})`}/>
       )}
 
@@ -100,23 +98,23 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
       {Array.from({ length: 36 }, (_, i) => {
         const a  = (i * 10 - 90) * Math.PI / 180;
         const r1 = r + 2;
-        const r2 = i % 9 === 0 ? r - 7 : r - 3;
+        const r2 = i % 9 === 0 ? r - 6 : r - 3;
         return (
           <line key={i}
             x1={cx + r1 * Math.cos(a)} y1={cy + r1 * Math.sin(a)}
             x2={cx + r2 * Math.cos(a)} y2={cy + r2 * Math.sin(a)}
             stroke={i % 9 === 0 ? GOLD : SIGNAL}
-            strokeWidth={i % 9 === 0 ? Math.max(0.6, size * 0.008) : Math.max(0.3, size * 0.003)}
+            strokeWidth={i % 9 === 0 ? 1.5 : 0.6}
             opacity={i % 9 === 0 ? 0.85 : 0.22}/>
         );
       })}
 
-      {/* Cardinal diamonds at N S E W */}
+      {/* Cardinal diamonds at N S E W — kept inside viewBox (r+6+d = 96 < 100) */}
       {[0, 90, 180, 270].map(a => {
         const rad = (a - 90) * Math.PI / 180;
         const dx  = cx + (r + 6) * Math.cos(rad);
         const dy  = cy + (r + 6) * Math.sin(rad);
-        const d   = Math.max(2, size * 0.025);
+        const d   = 4;
         return (
           <polygon key={a}
             points={`${dx},${dy - d} ${dx + d},${dy} ${dx},${dy + d} ${dx - d},${dy}`}
@@ -125,37 +123,35 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
       })}
 
       {/* VM monogram */}
-      <text x={cx} y={cy + size * 0.07} textAnchor="middle"
+      <text x={cx} y={cy + 14} textAnchor="middle"
         fontFamily="Georgia, serif"
-        fontSize={size * 0.26} fontWeight="700"
+        fontSize="52" fontWeight="700"
         fill={`url(#${goldG})`}
         filter={`url(#${glowId})`}
-        letterSpacing="-1">
+        letterSpacing="-2">
         VM
       </text>
 
       {/* Signal pulse dot */}
-      <circle cx={cx} cy={cy + size * 0.28} r={Math.max(1, size * 0.018)}
+      <circle cx={cx} cy={cy + 56} r="3.6"
         fill={SIGNAL}
         opacity={animated ? pulse : 0.8}
         filter={`url(#${glowId})`}/>
 
       {/* Top arc: VAUGHNMARTIN · READINESS OS */}
       <path id={topArc}
-        d={`M ${cx - r * 0.78},${cy} A ${r * 0.78},${r * 0.78} 0 0,1 ${cx + r * 0.78},${cy}`}
+        d={`M ${cx - r * 0.82},${cy} A ${r * 0.82},${r * 0.82} 0 0,1 ${cx + r * 0.82},${cy}`}
         fill="none"/>
-      <text fontFamily="'Courier New', monospace"
-        fontSize={Math.max(6, size * 0.065)} fill={GOLD} opacity="0.85">
-        <textPath href={`#${topArc}`} startOffset="5%">VAUGHNMARTIN · READINESS OS</textPath>
+      <text fontFamily="'Courier New', monospace" fontSize="11" fill={GOLD} opacity="0.85">
+        <textPath href={`#${topArc}`} startOffset="4%">VAUGHNMARTIN · READINESS OS</textPath>
       </text>
 
       {/* Bottom arc: ANTE IGNEM PARATUS */}
       <path id={botArc}
-        d={`M ${cx - r * 0.7},${cy} A ${r * 0.7},${r * 0.7} 0 0,0 ${cx + r * 0.7},${cy}`}
+        d={`M ${cx - r * 0.74},${cy} A ${r * 0.74},${r * 0.74} 0 0,0 ${cx + r * 0.74},${cy}`}
         fill="none"/>
-      <text fontFamily="'Courier New', monospace"
-        fontSize={Math.max(5, size * 0.055)} fill={TEAL_LT} opacity="0.7">
-        <textPath href={`#${botArc}`} startOffset="12%">ANTE IGNEM PARATUS</textPath>
+      <text fontFamily="'Courier New', monospace" fontSize="9.5" fill={TEAL_LT} opacity="0.7">
+        <textPath href={`#${botArc}`} startOffset="10%">ANTE IGNEM PARATUS</textPath>
       </text>
     </svg>
   );
