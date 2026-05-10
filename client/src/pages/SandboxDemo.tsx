@@ -2232,7 +2232,7 @@ export default function SandboxDemo() {
             }} data-testid="button-try-again">
               Try Another Scenario
             </Button>
-            <Button onClick={() => setLocation('/request-access')} data-testid="button-pilot-programs">
+            <Button onClick={() => setLocation('/founding-partner-program')} data-testid="button-pilot-programs">
               Learn About the Founding Partner Program
             </Button>
           </div>

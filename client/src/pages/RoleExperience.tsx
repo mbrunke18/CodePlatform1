@@ -1788,7 +1788,7 @@ export default function RoleExperience() {
                     <ArrowLeft className="h-4 w-4 mr-2" /> Try Another Role
                   </Button>
                 </Link>
-                <Link href="/request-access">
+                <Link href="/founding-partner-program">
                   <Button className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold">
                     <Rocket className="h-4 w-4 mr-2" /> Apply for Founding Partner Access
                   </Button>

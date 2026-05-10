@@ -438,7 +438,7 @@ export default function ProspectDemo() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <button
-                  onClick={() => setLocation("/request-access")}
+                  onClick={() => setLocation("/founding-partner-program")}
                   style={{ padding: "14px", background: GOLD, color: NAVY, border: "none", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
                 >
                   <ArrowRight size={14} />
