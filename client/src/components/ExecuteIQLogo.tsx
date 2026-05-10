@@ -13,120 +13,131 @@ interface VaughnMartinLogoProps {
 const NAVY     = '#0A0F2E';
 const GOLD     = '#C9A84C';
 const GOLD_LT  = '#DFC178';
+const TEAL     = '#2B8A6E';
+const TEAL_LT  = '#3BAF8A';
 const OFF_WHITE = '#FDFCFA';
 
 const VaughnMartinSeal: FC<{ size: number; color: string }> = ({ size, color }) => {
   const uid = useId().replace(/:/g, 's');
 
-  const onDark  = color === 'white' || color === 'teal'; // dark bg → gold elements
-  const onGold  = color === 'gold';                      // gold bg → navy elements
-  const onLight = color === 'navy';                      // white/light bg → navy elements, gold dot accent
+  const onDark  = color === 'white' || color === 'teal';
+  const onGold  = color === 'gold';
 
-  const gradId1   = `${uid}g1`;
-  const gradId2   = `${uid}g2`;
-  const topArcId  = `${uid}ta`;
-  const botArcId  = `${uid}ba`;
+  const ring    = onGold ? 'rgba(10,15,46,0.55)' : GOLD_LT;
+  const mark    = onGold ? NAVY : GOLD;
+  const sub     = onDark ? TEAL_LT : onGold ? 'rgba(10,15,46,0.55)' : TEAL;
+  const bgStop1 = onDark ? '#1a2860' : onGold ? '#DFC178' : '#F0EDE4';
+  const bgStop2 = onDark ? NAVY      : onGold ? '#C9A84C' : '#F8F7F4';
 
-  // Light bg (navy): gold gradient ring + teal/gold elements for vivid color on white
-  // Dark bg (white/teal): gold elements — glows against navy
-  // Gold bg (gold): navy elements
-  const ringStroke  = onGold ? NAVY : `url(#${gradId1})`;
-  const ringStroke2 = onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
-  const tickMain    = onLight ? GOLD  : onGold ? NAVY  : GOLD;
-  const tickMainOp  = onLight ? 1.0  : onGold ? 0.60  : 1;
-  const tickDiag    = onLight ? 'rgba(201,168,76,0.55)' : onGold ? 'rgba(10,15,46,0.25)' : 'rgba(201,168,76,0.6)';
-  const interior    = onLight ? 'rgba(10,15,46,0.05)'  : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(8,10,30,0.60)';
-  const vmStroke    = onGold ? NAVY  : `url(#${gradId2})`;
-  const vmInner     = onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.22)';
-  const topText     = onLight ? NAVY   : onGold ? NAVY  : GOLD;
-  const topTextOp   = onLight ? 0.85  : onGold ? 0.75  : 1;
-  const botText     = onLight ? '#2B8A6E'              : onGold ? 'rgba(10,15,46,0.55)' : 'rgba(201,168,76,0.60)';
-  const line1       = onLight ? 'rgba(201,168,76,0.40)' : onGold ? 'rgba(10,15,46,0.18)' : 'rgba(201,168,76,0.35)';
-  const line2       = onLight ? 'rgba(201,168,76,0.25)' : onGold ? 'rgba(10,15,46,0.12)' : 'rgba(201,168,76,0.22)';
-  const dotFill     = onGold ? NAVY : GOLD;
-  const diaFill     = onGold ? NAVY : GOLD;
-  const botDot      = onGold ? 'rgba(10,15,46,0.4)' : 'rgba(201,168,76,0.70)';
+  const gradId1  = `${uid}rg`;
+  const gradId2  = `${uid}ig`;
+  const glowId   = `${uid}glow`;
+  const topArcId = `${uid}ta`;
+  const botArcId = `${uid}ba`;
 
-  const defs = (
-    <defs>
-      <linearGradient id={gradId1} x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
-        <stop offset="0%"   stopColor="#EDD98A"/>
-        <stop offset="45%"  stopColor="#C9A84C"/>
-        <stop offset="100%" stopColor="#8A6E30"/>
-      </linearGradient>
-      <linearGradient id={gradId2} x1="0" y1="200" x2="200" y2="0" gradientUnits="userSpaceOnUse">
-        <stop offset="0%"   stopColor="#8A6E30"/>
-        <stop offset="55%"  stopColor="#C9A84C"/>
-        <stop offset="100%" stopColor="#EDD98A"/>
-      </linearGradient>
-    </defs>
-  );
+  const cardinalTicks = [0, 90, 180, 270].map(a => {
+    const r1 = 94, r2 = 80, rad = a * Math.PI / 180;
+    return { x1: 100 + r1 * Math.sin(rad), y1: 100 - r1 * Math.cos(rad),
+             x2: 100 + r2 * Math.sin(rad), y2: 100 - r2 * Math.cos(rad) };
+  });
 
-  /* ── Full seal — all details always visible ──────────────────────────── */
+  const diagonalTicks = [45, 135, 225, 315].map(a => {
+    const r1 = 93, r2 = 84, rad = a * Math.PI / 180;
+    return { x1: 100 + r1 * Math.sin(rad), y1: 100 - r1 * Math.cos(rad),
+             x2: 100 + r2 * Math.sin(rad), y2: 100 - r2 * Math.cos(rad) };
+  });
+
+  const minorTicks = [22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map(a => {
+    const r1 = 92, r2 = 87, rad = a * Math.PI / 180;
+    return { x1: 100 + r1 * Math.sin(rad), y1: 100 - r1 * Math.cos(rad),
+             x2: 100 + r2 * Math.sin(rad), y2: 100 - r2 * Math.cos(rad) };
+  });
+
   return (
-    <svg width={size} height={size} viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
-      {defs}
+    <svg width={size} height={size} viewBox="0 0 200 200" fill="none"
+      xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0 }}>
+      <defs>
+        <radialGradient id={gradId1} cx="50%" cy="30%" r="70%">
+          <stop offset="0%"   stopColor={GOLD_LT} />
+          <stop offset="50%"  stopColor={GOLD} />
+          <stop offset="100%" stopColor="#A07830" />
+        </radialGradient>
+        <radialGradient id={gradId2} cx="50%" cy="20%" r="80%">
+          <stop offset="0%"   stopColor={bgStop1} />
+          <stop offset="100%" stopColor={bgStop2} />
+        </radialGradient>
+        <filter id={glowId} x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
 
-      {/* Outer ring — gold gradient or navy */}
-      <circle cx="100" cy="100" r="95" stroke={ringStroke} strokeWidth="3.5" fill="none"/>
-      {/* Inner ring — breathing room */}
-      <circle cx="100" cy="100" r="86" stroke={ringStroke2} strokeWidth="1" fill="none"/>
+      {/* Outer ring glow */}
+      <circle cx="100" cy="100" r="98" stroke={ring} strokeWidth="0.5" opacity="0.3"/>
+      {/* Main outer ring — gradient */}
+      <circle cx="100" cy="100" r="94" stroke={`url(#${gradId1})`} strokeWidth="2.5"/>
+      {/* Second ring */}
+      <circle cx="100" cy="100" r="88" stroke={ring} strokeWidth="0.8" opacity="0.4"/>
+      {/* Third ring */}
+      <circle cx="100" cy="100" r="82" stroke={ring} strokeWidth="0.4" opacity="0.3"/>
+      {/* Interior fill */}
+      <circle cx="100" cy="100" r="80" fill={`url(#${gradId2})`}/>
+      {/* Inner accent ring */}
+      <circle cx="100" cy="100" r="74" stroke={ring} strokeWidth="0.5" opacity="0.25"/>
 
-      {/* Cardinal tick marks — N S E W */}
-      <line x1="100" y1="7"   x2="100" y2="16"  stroke={tickMain} strokeWidth="2.5" strokeLinecap="round" opacity={tickMainOp}/>
-      <line x1="100" y1="184" x2="100" y2="193" stroke={tickMain} strokeWidth="2.5" strokeLinecap="round" opacity={tickMainOp}/>
-      <line x1="7"   y1="100" x2="16"  y2="100" stroke={tickMain} strokeWidth="2.5" strokeLinecap="round" opacity={tickMainOp}/>
-      <line x1="184" y1="100" x2="193" y2="100" stroke={tickMain} strokeWidth="2.5" strokeLinecap="round" opacity={tickMainOp}/>
+      {/* Cardinal tick marks */}
+      {cardinalTicks.map((t, i) => (
+        <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
+          stroke={ring} strokeWidth="3" strokeLinecap="round"/>
+      ))}
+      {/* Diagonal tick marks */}
+      {diagonalTicks.map((t, i) => (
+        <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
+          stroke={ring} strokeWidth="1.5" strokeLinecap="round" opacity="0.7"/>
+      ))}
+      {/* Minor tick marks */}
+      {minorTicks.map((t, i) => (
+        <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2}
+          stroke={ring} strokeWidth="1" strokeLinecap="round" opacity="0.4"/>
+      ))}
 
-      {/* Diagonal tick marks — corners */}
-      <line x1="27"  y1="27"  x2="33"  y2="33"  stroke={tickDiag} strokeWidth="1.5" strokeLinecap="round"/>
-      <line x1="173" y1="27"  x2="167" y2="33"  stroke={tickDiag} strokeWidth="1.5" strokeLinecap="round"/>
-      <line x1="27"  y1="173" x2="33"  y2="167" stroke={tickDiag} strokeWidth="1.5" strokeLinecap="round"/>
-      <line x1="173" y1="173" x2="167" y2="167" stroke={tickDiag} strokeWidth="1.5" strokeLinecap="round"/>
+      {/* Diamond accents — N S E W */}
+      <polygon points="100,3 103.5,8 100,13 96.5,8"   fill={ring}/>
+      <polygon points="100,187 103.5,192 100,197 96.5,192" fill={ring}/>
+      <polygon points="3,100 8,96.5 13,100 8,103.5"   fill={ring}/>
+      <polygon points="187,100 192,96.5 197,100 192,103.5" fill={ring}/>
 
-      {/* Interior field */}
-      <circle cx="100" cy="100" r="85" fill={interior}/>
-
-      {/* Arc text — VAUGHNMARTIN on top */}
-      <path id={topArcId} d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
-      <text fontFamily="'Barlow Condensed', sans-serif" fontSize="13" fontWeight="700" letterSpacing="5" fill={topText} textAnchor="middle" opacity={topTextOp}>
-        <textPath href={`#${topArcId}`} startOffset="50%">VAUGHNMARTIN</textPath>
+      {/* Arc text — top: VAUGHNMARTIN · EST. 2023 */}
+      <path id={topArcId} d="M 24,100 A 76,76 0 0,1 176,100" fill="none"/>
+      <text fontFamily="'Barlow Condensed', sans-serif" fontSize="9" fontWeight="700"
+        letterSpacing="4" fill={mark} opacity="0.8" textAnchor="middle">
+        <textPath href={`#${topArcId}`} startOffset="50%">VAUGHNMARTIN · EST. 2023</textPath>
       </text>
 
-      {/* Arc text — READINESS OS on bottom */}
-      <path id={botArcId} d="M 28,108 A 78,78 0 0,0 172,108" fill="none"/>
-      <text fontFamily="'Barlow Condensed', sans-serif" fontSize="10.5" fontWeight="700" letterSpacing="5.5" fill={botText} textAnchor="middle">
+      {/* Arc text — bottom: READINESS OS (locked) */}
+      <path id={botArcId} d="M 30,100 A 70,70 0 0,0 170,100" fill="none"/>
+      <text fontFamily="'Barlow Condensed', sans-serif" fontSize="8.5" fontWeight="700"
+        letterSpacing="5" fill={sub} opacity="0.85" textAnchor="middle">
         <textPath href={`#${botArcId}`} startOffset="50%">READINESS  OS</textPath>
       </text>
 
-      {/* Horizontal dividers flanking VM */}
-      <line x1="28"  y1="93"  x2="70"  y2="93"  stroke={line1} strokeWidth="0.75"/>
-      <line x1="130" y1="93"  x2="172" y2="93"  stroke={line1} strokeWidth="0.75"/>
-      <line x1="28"  y1="120" x2="68"  y2="120" stroke={line2} strokeWidth="0.75"/>
-      <line x1="132" y1="120" x2="172" y2="120" stroke={line2} strokeWidth="0.75"/>
+      {/* VM Monogram */}
+      <text x="100" y="96" textAnchor="middle"
+        fontFamily="'Cormorant Garamond', Georgia, serif"
+        fontSize="34" fontWeight="700" fill={mark} letterSpacing="3"
+        filter={`url(#${glowId})`}>
+        VM
+      </text>
 
-      {/* VM monogram — outer stroke */}
-      <path d="M 72 78 L 100 118 L 128 78" stroke={vmStroke} strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-      {/* VM monogram — inner echo */}
-      <path d="M 82 78 L 100 108 L 118 78" stroke={vmInner} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      {/* Horizontal rule flanking VM */}
+      <line x1="60" y1="103" x2="138" y2="103" stroke={ring} strokeWidth="1" opacity="0.5"/>
 
-      {/* Gold dot — the fearless moment */}
-      <circle cx="100" cy="73" r="4" fill={dotFill}/>
-      <line x1="100" y1="65" x2="100" y2="62" stroke="rgba(201,168,76,0.5)" strokeWidth="1" strokeLinecap="round"/>
-      <line x1="106" y1="67" x2="108" y2="64" stroke="rgba(201,168,76,0.35)" strokeWidth="1" strokeLinecap="round"/>
-      <line x1="94"  y1="67" x2="92"  y2="64" stroke="rgba(201,168,76,0.35)" strokeWidth="1" strokeLinecap="round"/>
-
-      {/* Diamond ornaments */}
-      <path d="M 52 106 L 56 100 L 52 94 L 48 100 Z" fill={diaFill} opacity="0.7"/>
-      <path d="M 148 106 L 152 100 L 148 94 L 144 100 Z" fill={diaFill} opacity="0.7"/>
-
-      {/* Bottom ornament */}
-      <line x1="60"  y1="132" x2="95"  y2="132" stroke="rgba(201,168,76,0.4)" strokeWidth="0.75"/>
-      <line x1="105" y1="132" x2="140" y2="132" stroke="rgba(201,168,76,0.4)" strokeWidth="0.75"/>
-      <circle cx="100" cy="132" r="2.5" fill={botDot}/>
-
-      {/* Outer ring depth overlay */}
-      <circle cx="100" cy="100" r="95" stroke="rgba(237,217,138,0.12)" strokeWidth="1" fill="none"/>
+      {/* READINESS OS — center sub-label */}
+      <text x="100" y="118" textAnchor="middle"
+        fontFamily="'Barlow Condensed', sans-serif"
+        fontSize="8.5" fontWeight="700" fill={sub} letterSpacing="5">
+        READINESS OS
+      </text>
     </svg>
   );
 };
@@ -145,11 +156,11 @@ export const VaughnMartinLogo: FC<VaughnMartinLogoProps> = ({
   const osColor       = onGold ? 'rgba(10,15,46,0.65)' : onDark ? GOLD_LT : GOLD;
   const ruleColor     = onGold ? 'rgba(10,15,46,0.35)' : onDark ? GOLD_LT : GOLD;
 
-  const sealSize    = width ?? height;
-  const iconSz      = Math.round(height * 0.88);
-  const wordmarkSz  = 26;
-  const productSz   = 10.5;
-  const gap         = 16;
+  const sealSize   = width ?? height;
+  const iconSz     = Math.round(height * 0.88);
+  const wordmarkSz = 26;
+  const productSz  = 10.5;
+  const gap        = 16;
 
   if (variant === 'icon-only') {
     return (
