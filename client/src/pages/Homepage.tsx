@@ -3,6 +3,7 @@ import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { Link, useLocation } from "wouter";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import { TechCrest } from "@/components/TechCrest";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import ExecutionOSMicrosoftDiagram from "@/components/ExecutionOSMicrosoftDiagram";
 import EcosystemIntegrationDiagram from "@/components/EcosystemIntegrationDiagram";
@@ -763,17 +764,12 @@ function HeroSection() {
             </Reveal>
           </div>
 
-          {/* RIGHT — Live Signal Feed panel */}
+          {/* RIGHT — Intelligence Crest */}
           <Reveal delay={0.18}>
-            <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", padding: "100px 0 88px 44px", display: "flex", flexDirection: "column" as const, justifyContent: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
-                <span style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL_LIGHT, display: "inline-block", animation: "vm-pulse 2s ease-in-out infinite" }} />
-                <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const }}>
-                  Live Signal Feed
-                </div>
-              </div>
-
-              {signals.map((sig, i) => (
+            <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", padding: "60px 0 60px 44px", display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center" }}>
+              <TechCrest size={380} animated={true} />
+              {/* suppressed live signal feed — kept below for reference */}
+              {false && signals.map((sig, i) => (
                 <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "16px 0" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
                     <span style={{ ...DM, color: TEAL, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em" }}>
@@ -797,13 +793,6 @@ function HeroSection() {
                 </div>
               ))}
 
-              <div style={{ marginTop: 20, padding: "16px 20px", border: `1px solid ${GOLD}33`, background: `${GOLD}08` }}>
-                <div style={{ ...DM, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, marginBottom: 6 }}>Protocol Readiness</div>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                  <span style={{ ...GEO, color: "#fff", fontSize: 26, fontWeight: 700 }}>170</span>
-                  <span style={{ ...DM, color: "rgba(255,255,255,0.72)", fontSize: 12 }}>Protocols pre-staged across 9 domains</span>
-                </div>
-              </div>
             </div>
           </Reveal>
         </div>

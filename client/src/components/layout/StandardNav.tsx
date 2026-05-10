@@ -684,7 +684,7 @@ export default function StandardNav() {
               onClick={() => navigateTo('/')}
               data-testid="nav-logo"
             >
-              <ExecuteIQLogo height={navLogoHeight} variant="full" color="navy" />
+              <ExecuteIQLogo height={navLogoHeight} variant="full" color="navy" animated={true} />
             </div>
           </div>
 
