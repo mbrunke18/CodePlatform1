@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Readiness OS — VaughnMartin</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #080d24;
+    --gold:    #C9A84C;
+    --gold2:   #e2c068;
+    --teal:    #4dc4a0;
+    --white:   #ffffff;
+    --white80: rgba(255,255,255,0.80);
+    --white55: rgba(255,255,255,0.55);
+    --border:  rgba(201,168,76,0.22);
+    --cardbg:  rgba(255,255,255,0.04);
+  }
+
+- { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+background: var(–navy);
+color: var(–white);
+font-family: ‘Barlow’, sans-serif;
+width: 480px;
+margin: 0 auto;
+}
+
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 24px 28px 20px;
+border-bottom: 1px solid var(–border);
+}
+
+.logo-group { display: flex; align-items: center; gap: 10px; }
+
+.logo-mark {
+width: 38px; height: 38px;
+border: 1.5px solid var(–gold);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+}
+.logo-mark span {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 11px; font-weight: 800;
+letter-spacing: 0.05em; color: var(–gold);
+}
+.logo-name {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 13px; font-weight: 700;
+letter-spacing: 0.12em; color: var(–white);
+}
+.logo-product {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 600;
+letter-spacing: 0.35em; color: var(–gold);
+text-transform: uppercase; margin-top: 1px;
+display: flex; align-items: center; gap: 6px;
+}
+.logo-product::before {
+content: ‘’; display: inline-block;
+width: 18px; height: 1px; background: var(–gold);
+}
+
+.header-right { text-align: right; }
+.header-tag {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 8px; font-weight: 700;
+letter-spacing: 0.3em; text-transform: uppercase;
+color: var(–white55); line-height: 1.9;
+}
+.header-tag .accent { color: var(–teal); }
+
+/* HERO */
+.hero { padding: 44px 28px 36px; border-bottom: 1px solid var(–border); }
+
+.hero h1 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 48px; font-weight: 800;
+line-height: 1.0; color: var(–white);
+margin-bottom: 4px; letter-spacing: -0.01em;
+}
+.hero-product {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 46px; font-weight: 700;
+color: var(–gold); line-height: 1.05;
+margin-bottom: 20px;
+}
+.hero-sub {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 13px; font-weight: 600;
+letter-spacing: 0.06em; color: var(–white);
+margin-bottom: 10px; text-transform: uppercase;
+}
+.hero-body {
+font-size: 13px; font-weight: 400;
+color: var(–white80); line-height: 1.65;
+}
+
+/* METRICS */
+.metrics {
+display: grid; grid-template-columns: 1fr 1fr 1fr;
+border-top: 1px solid var(–border);
+border-bottom: 1px solid var(–border);
+}
+.metric {
+padding: 22px 18px;
+border-right: 1px solid var(–border);
+}
+.metric:last-child { border-right: none; }
+.metric-num {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 40px; font-weight: 900;
+color: var(–gold); line-height: 1;
+letter-spacing: -0.02em;
+display: block; margin-bottom: 6px;
+}
+.metric-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 11px; font-weight: 700;
+letter-spacing: 0.08em; text-transform: uppercase;
+color: var(–white); margin-bottom: 3px;
+}
+.metric-sub {
+font-size: 10px; font-weight: 400;
+color: var(–white55); line-height: 1.4;
+}
+
+/* SECTION LABEL */
+.section-label {
+display: flex; align-items: center; gap: 12px;
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.35em; text-transform: uppercase;
+color: var(–gold); margin-bottom: 18px;
+}
+.section-label::before {
+content: ‘’; display: inline-block;
+width: 28px; height: 1.5px;
+background: var(–gold); flex-shrink: 0;
+}
+
+/* PROBLEM */
+.problem { padding: 36px 28px; border-bottom: 1px solid var(–border); }
+.problem-intro {
+font-size: 13px; font-weight: 400;
+color: var(–white80); line-height: 1.65;
+margin-bottom: 4px;
+}
+.problem-intro strong { color: var(–white); font-weight: 600; }
+
+.problem-grid {
+display: grid; grid-template-columns: 1fr 1fr 1fr;
+gap: 8px; margin: 24px 0 20px;
+}
+.pcard {
+background: var(–cardbg);
+border: 1px solid rgba(255,255,255,0.09);
+padding: 16px 12px; text-align: center;
+}
+.pcard-icon { width: 28px; height: 28px; margin: 0 auto 10px; }
+.pcard-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 11px; font-weight: 700;
+letter-spacing: 0.06em; text-transform: uppercase;
+color: var(–white); margin-bottom: 5px; line-height: 1.3;
+}
+.pcard-desc {
+font-size: 10px; font-weight: 400;
+color: var(–white80); line-height: 1.5;
+}
+.band-text {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.28em; text-transform: uppercase;
+color: var(–white55); text-align: center; padding-top: 10px;
+}
+
+/* SOLUTION */
+.solution {
+padding: 36px 28px; border-bottom: 1px solid var(–border);
+display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+.sol-left-label {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.3em; text-transform: uppercase;
+color: var(–teal); margin-bottom: 10px;
+}
+.sol-left h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 24px; font-weight: 600;
+line-height: 1.25; color: var(–white); margin-bottom: 4px;
+}
+.sol-left h2 em { color: var(–gold); font-style: italic; }
+
+.idea-wrap {
+margin: 20px auto; width: 140px; height: 140px;
+}
+
+.sol-checks { list-style: none; margin-top: 4px; }
+.sol-checks li {
+font-size: 11px; font-weight: 400;
+color: var(–white80); padding: 5px 0;
+display: flex; align-items: flex-start; gap: 8px;
+border-bottom: 1px solid rgba(255,255,255,0.06);
+line-height: 1.4;
+}
+.sol-checks li::before {
+content: ‘◆’; color: var(–teal);
+font-size: 6px; flex-shrink: 0; margin-top: 3px;
+}
+
+.sol-right-label {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.3em; text-transform: uppercase;
+color: var(–white55); margin-bottom: 10px;
+}
+.sol-right h2 {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 26px; font-weight: 700;
+line-height: 1.15; color: var(–white); margin-bottom: 20px;
+}
+.sol-right h2 em {
+color: var(–gold); font-style: italic;
+font-family: ‘Cormorant Garamond’, serif; font-size: 28px;
+}
+
+.icard {
+margin-bottom: 16px; padding-bottom: 16px;
+border-bottom: 1px solid rgba(255,255,255,0.07);
+display: flex; gap: 10px; align-items: flex-start;
+}
+.icard:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.icard-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; }
+.icard-title {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 12px; font-weight: 700;
+letter-spacing: 0.05em; color: var(–gold);
+margin-bottom: 4px; text-transform: uppercase;
+}
+.icard-desc {
+font-size: 11px; font-weight: 400;
+color: var(–white80); line-height: 1.5;
+}
+
+/* FOOTER QUOTE */
+.footer-quote {
+padding: 36px 28px 24px;
+text-align: center; border-top: 1px solid var(–border);
+}
+.quote-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic; font-size: 20px;
+font-weight: 400; color: var(–white); line-height: 1.4; margin-bottom: 10px;
+}
+.quote-arc {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 10px; font-weight: 600;
+letter-spacing: 0.25em; text-transform: uppercase;
+color: var(–white55);
+}
+
+/* FOOTER BAR */
+.footer-bar {
+display: flex; justify-content: space-between; align-items: center;
+padding: 20px 28px; border-top: 1px solid var(–border);
+background: rgba(0,0,0,0.25);
+}
+.footer-cta { text-align: right; }
+.footer-cta-top {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.28em; text-transform: uppercase; color: var(–gold);
+}
+.footer-cta-bot {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 11px; font-weight: 800;
+letter-spacing: 0.18em; text-transform: uppercase;
+color: var(–white); margin-top: 2px;
+}
+</style>
+
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-group">
+    <div class="logo-mark"><span>VM</span></div>
+    <div>
+      <div class="logo-name">VaughnMartin</div>
+      <div class="logo-product">Readiness OS</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-tag">A New Category</div>
+    <div class="header-tag">For a New Era</div>
+    <div class="header-tag"><span class="accent">Pre-Staged · Always Ready</span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Welcome to the<br>execution first.</h1>
+  <div class="hero-product">Readiness OS™</div>
+  <div class="hero-sub">The Operating Model for the Fortune 1000.</div>
+  <p class="hero-body">Every vendor bolted AI onto the old model. We replaced the model.<br>Preparation replaces coordination. 12 minutes replaces 30 days.</p>
+</section>
+
+<div class="metrics">
+  <div class="metric">
+    <span class="metric-num">3,600×</span>
+    <div class="metric-title">Execution Head Start</div>
+    <div class="metric-sub">30 days → 12 minutes</div>
+  </div>
+  <div class="metric">
+    <span class="metric-num">170</span>
+    <div class="metric-title">Readiness Protocols</div>
+    <div class="metric-sub">Pre-staged, not assembled</div>
+  </div>
+  <div class="metric">
+    <span class="metric-num">221</span>
+    <div class="metric-title">Strategic Triggers</div>
+    <div class="metric-sub">Continuously monitored</div>
+  </div>
+</div>
+
+<section class="problem">
+  <div class="section-label">The Old Model. Year After Year.</div>
+  <p class="problem-intro">Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act decisively. <strong>AI changed the constraint. The operating model didn't.</strong></p>
+
+  <div class="problem-grid">
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="11" stroke="#C9A84C" stroke-width="1.5"/>
+        <path d="M14 8v6l4 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="pcard-title">30-Day Mobilization</div>
+      <div class="pcard-desc">Before execution even begins</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="11" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">Committee Deliberation</div>
+      <div class="pcard-desc">Replacing pattern detection</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <rect x="6" y="6" width="16" height="16" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">Reactive Posture</div>
+      <div class="pcard-desc">Assembling after the trigger fires</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4L24 21H4L14 4z" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">No Decision Rights</div>
+      <div class="pcard-desc">Weeks of coordination overhead</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4l10 10-10 10L4 14z" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">No Signal Layer</div>
+      <div class="pcard-desc">Blind to strategic triggers</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <line x1="14" y1="5" x2="14" y2="23" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="5" y1="14" x2="23" y2="14" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="pcard-title">Execution Delays</div>
+      <div class="pcard-desc">30-day response to 12-min triggers</div>
+    </div>
+  </div>
+  <div class="band-text">Weeks to Mobilize &nbsp;·&nbsp; Months to Execute &nbsp;·&nbsp; Strategic Windows Missed</div>
+</section>
+
+<section class="solution">
+  <div class="sol-left">
+    <div class="sol-left-label">One Readiness OS</div>
+    <h2>The full readiness cycle.<br><em>Pre-staged. Always ready.</em></h2>
+
+```
+<div class="idea-wrap">
+  <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="70" cy="70" r="64" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+    <circle cx="70" cy="70" r="26" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+    <text x="70" y="66" text-anchor="middle" font-family="Barlow Condensed" font-size="10" font-weight="800" fill="#C9A84C" letter-spacing="1">IDEA</text>
+    <text x="70" y="78" text-anchor="middle" font-family="Barlow Condensed" font-size="7" font-weight="500" fill="rgba(201,168,76,0.7)" letter-spacing="1">FRAMEWORK</text>
+    <circle cx="70" cy="10" r="14" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+    <text x="70" y="14" text-anchor="middle" font-family="Barlow Condensed" font-size="8" font-weight="700" fill="#C9A84C">IDENTIFY</text>
+    <circle cx="128" cy="70" r="14" fill="rgba(77,196,160,0.08)" stroke="rgba(77,196,160,0.5)" stroke-width="1"/>
+    <text x="128" y="74" text-anchor="middle" font-family="Barlow Condensed" font-size="8" font-weight="700" fill="#4dc4a0">DETECT</text>
+    <circle cx="70" cy="130" r="14" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+    <text x="70" y="134" text-anchor="middle" font-family="Barlow Condensed" font-size="8" font-weight="700" fill="#C9A84C">EXECUTE</text>
+    <circle cx="12" cy="70" r="14" fill="rgba(77,196,160,0.08)" stroke="rgba(77,196,160,0.5)" stroke-width="1"/>
+    <text x="12" y="74" text-anchor="middle" font-family="Barlow Condensed" font-size="8" font-weight="700" fill="#4dc4a0">ADVANCE</text>
+    <path d="M70 24 A50 50 0 0 1 114 70" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <path d="M114 70 A50 50 0 0 1 70 116" fill="none" stroke="rgba(77,196,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <path d="M70 116 A50 50 0 0 1 26 70" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <path d="M26 70 A50 50 0 0 1 70 24" fill="none" stroke="rgba(77,196,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+  </svg>
+</div>
+
+<ul class="sol-checks">
+  <li>170 Readiness Protocols pre-staged</li>
+  <li>221 strategic triggers monitored</li>
+  <li>12-minute execution design target</li>
+  <li>Executive authority at every stage</li>
+  <li>Orchestrates your Microsoft AI stack</li>
+  <li>Pre-staged before the trigger fires</li>
+</ul>
+```
+
+  </div>
+
+  <div class="sol-right">
+    <div class="sol-right-label">Built for Investors</div>
+    <h2>Built for<br><em>the future.</em></h2>
+
+```
+<div class="icard">
+  <svg class="icard-icon" viewBox="0 0 22 22" fill="none">
+    <path d="M11 2l9 9-9 9-9-9z" stroke="#C9A84C" stroke-width="1.5"/>
+  </svg>
+  <div>
+    <div class="icard-title">Category Creation</div>
+    <div class="icard-desc">Not competing with Copilot, SAP, or Workday — sits above them as the operating model layer they don't provide.</div>
+  </div>
+</div>
+
+<div class="icard">
+  <svg class="icard-icon" viewBox="0 0 22 22" fill="none">
+    <circle cx="11" cy="11" r="9" stroke="#C9A84C" stroke-width="1.5"/>
+  </svg>
+  <div>
+    <div class="icard-title">Platform Economics</div>
+    <div class="icard-desc">170 core protocols + 8 industry packs = 12 compound protocols. Compounding value with every activation.</div>
+  </div>
+</div>
+
+<div class="icard">
+  <svg class="icard-icon" viewBox="0 0 22 22" fill="none">
+    <rect x="2" y="2" width="18" height="18" stroke="#C9A84C" stroke-width="1.5"/>
+  </svg>
+  <div>
+    <div class="icard-title">Microsoft Amplifier</div>
+    <div class="icard-desc">Every Fortune 1000 has invested in Microsoft AI. None have the operating model to use it when it counts.</div>
+  </div>
+</div>
+
+<div class="icard">
+  <svg class="icard-icon" viewBox="0 0 22 22" fill="none">
+    <circle cx="11" cy="11" r="9" stroke="#4dc4a0" stroke-width="1.5"/>
+    <circle cx="11" cy="11" r="4" stroke="#4dc4a0" stroke-width="1.5"/>
+  </svg>
+  <div>
+    <div class="icard-title">Founding Partner Program</div>
+    <div class="icard-desc">First cohort forming now. Selective by design — validating with Fortune 1000 enterprises only.</div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<div class="footer-quote">
+  <div class="quote-text">"The response is ready before the trigger fires."</div>
+  <div class="quote-arc">Preparation &nbsp;→&nbsp; Readiness &nbsp;→&nbsp; Fearless</div>
+</div>
+
+<footer class="footer-bar">
+  <div class="logo-group">
+    <div class="logo-mark"><span>VM</span></div>
+    <div>
+      <div class="logo-name">VaughnMartin</div>
+      <div class="logo-product">Readiness OS</div>
+    </div>
+  </div>
+  <div class="footer-cta">
+    <div class="footer-cta-top">Founding Partner Access</div>
+    <div class="footer-cta-bot">Now Forming — Apply Today</div>
+  </div>
+</footer>
+
+</body>
+</html>
