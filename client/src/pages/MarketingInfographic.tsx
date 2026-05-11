@@ -389,30 +389,42 @@ export default function MarketingInfographic() {
           </div>
         </div>
 
-        {/* Download bar */}
-        <div style={{ background: "#040810", padding: "14px 28px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-          <div style={{ ...MONO, color: "rgba(255,255,255,0.25)", fontSize: 8.5 }}>
-            430px · optimized for LinkedIn
+        {/* Download panel */}
+        <div style={{ background: "#040810", padding: "20px 28px 22px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ ...DM, color: GOLD, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: 14 }}>
+            Download Format
           </div>
-          <a
-            href="/api/marketing-infographic.png"
-            download="VaughnMartin-ReadinessOS.png"
-            style={{
-              ...DM,
-              background: GOLD,
-              color: NAVY,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              padding: "8px 18px",
-              textDecoration: "none",
-              display: "inline-block",
-              flexShrink: 0,
-            }}
-          >
-            Download PNG
-          </a>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+            {[
+              { label: "Web Preview",      sub: "480px",          format: "web"      },
+              { label: "HD Web / Email",   sub: "~1,600px",       format: "hd"       },
+              { label: "LinkedIn Share",   sub: "1,200 × 628",    format: "linkedin"  },
+              { label: "LinkedIn Portrait",sub: "1,080 × 1,350",  format: "portrait" },
+              { label: "Print Letter",     sub: "8.5\" × 11\" · 300 dpi", format: "letter" },
+              { label: "Print A4",         sub: "A4 · 300 dpi",   format: "a4"       },
+            ].map(({ label, sub, format }) => (
+              <a
+                key={format}
+                href={`/api/marketing-infographic.png?format=${format}`}
+                download={`VaughnMartin-ReadinessOS-${format}.png`}
+                style={{
+                  ...DM,
+                  display: "block",
+                  background: "rgba(201,168,76,0.06)",
+                  border: "1px solid rgba(201,168,76,0.18)",
+                  padding: "10px 12px",
+                  textDecoration: "none",
+                  textAlign: "center",
+                }}
+              >
+                <div style={{ color: "#FDFCFA", fontSize: 10.5, fontWeight: 700, letterSpacing: "0.04em", marginBottom: 3 }}>{label}</div>
+                <div style={{ color: GOLD, fontSize: 8.5, fontWeight: 600, letterSpacing: "0.06em", opacity: 0.75 }}>{sub}</div>
+              </a>
+            ))}
+          </div>
+          <div style={{ ...MONO, color: "rgba(255,255,255,0.15)", fontSize: 8, textAlign: "center", marginTop: 12 }}>
+            Print formats are 300 dpi · ready for professional printing
+          </div>
         </div>
 
       </div>
