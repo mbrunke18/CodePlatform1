@@ -543,9 +543,9 @@ function Router() {
         {/* Demo & Sales Tools */}
         <Route path="/try-demo" component={TryDemo} />
         {renderRedirects([
-          "/live-demo", "/try-it", "/demo", "/demo-hub",
+          "/live-demo", "/try-it",
           "/demo-selector", "/demo/selector", "/transformational-demo",
-          "/four-phase-demo", "/4-phase-demo", "/demos",
+          "/four-phase-demo", "/4-phase-demo",
           "/intelligence-demo", "/signals-demo", "/watch-demo",
           "/executive-demo", "/hybrid-demo", "/executive-demo-walkthrough",
           "/sandbox-demo", "/sandbox", "/pilot-demo", "/one-click-demo"
@@ -568,11 +568,6 @@ function Router() {
         {/* Live Activation & Interactive Demos */}
         {renderRedirects(["/activation", "/demo/activation"], "/industry-demos")}
         {renderRoutes(["/role-selector", "/demo/role-selector"], RoleSelector)}
-        {renderRedirects([
-          "/demo/live-activation", "/demo/ransomware", "/demo/ma-integration",
-          "/demo/product-launch", "/demo/supplier-crisis", "/demo/competitive-response",
-          "/demo/regulatory-crisis", "/demo/customer-crisis"
-        ], "/industry-demos")}
 
         {/* Approval Pages */}
         <Route path="/approval-success" component={lazy(() => import('./pages/ApprovalSuccess'))} />
@@ -643,7 +638,10 @@ function Router() {
         <Route path="/sitemap" component={Sitemap} />
         <Route path="/marketing-infographic" component={lazy(() => import("./pages/MarketingInfographic"))} />
         <Route path="/master-demo" component={lazy(() => import("./pages/MasterDemo"))} />
+        <Route path="/demo/:scenarioId" component={lazy(() => import("./pages/MasterDemo"))} />
+        <Route path="/demo-hub" component={lazy(() => import("./pages/DemoHub"))} />
         {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo", "/demo-experience"], "/master-demo")}
+        {renderRedirects(["/demos", "/scenario-hub", "/demo-center", "/experience-center"], "/demo-hub")}
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 
         {/* Legacy Redirects */}
