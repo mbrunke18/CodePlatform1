@@ -18,6 +18,7 @@ import { registerQuickLinkRoute } from "./routes/quickLinkRoute";
 import { createAndSendMagicLink, verifyMagicLinkToken, sendWelcomeTriggerDemo } from "./services/magicLinkService";
 import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
+import { registerMarketingImageRoute } from "./routes/marketingImageRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerAdminRoutes } from "./routes/admin-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -798,6 +799,9 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
     message: { error: "Rate limit exceeded on playbook library. Authenticated access has no limits." },
     skip: (req) => !!req.isAuthenticated?.(),
   });
+
+  // Public image download — no auth required
+  registerMarketingImageRoute(app);
 
   app.use('/api/playbook-library', playbookLibraryLimiter);
   app.use('/api/playbooks/metadata', publicApiLimiter);

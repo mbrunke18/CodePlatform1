@@ -389,11 +389,30 @@ export default function MarketingInfographic() {
           </div>
         </div>
 
-        {/* Screenshot guide */}
-        <div style={{ background: "#040810", padding: "8px 28px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-          <div style={{ ...MONO, color: "rgba(255,255,255,0.15)", fontSize: 8.5, textAlign: "center" }}>
-            Screenshot this card · 430 × optimized for LinkedIn
+        {/* Download bar */}
+        <div style={{ background: "#040810", padding: "14px 28px", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+          <div style={{ ...MONO, color: "rgba(255,255,255,0.25)", fontSize: 8.5 }}>
+            430px · optimized for LinkedIn
           </div>
+          <a
+            href="/api/marketing-infographic.png"
+            download="VaughnMartin-ReadinessOS.png"
+            style={{
+              ...DM,
+              background: GOLD,
+              color: NAVY,
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              padding: "8px 18px",
+              textDecoration: "none",
+              display: "inline-block",
+              flexShrink: 0,
+            }}
+          >
+            Download PNG
+          </a>
         </div>
 
       </div>
