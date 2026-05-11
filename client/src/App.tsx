@@ -641,6 +641,7 @@ function Router() {
         <Route path="/access-denied" component={lazy(() => import("./pages/AccessDenied"))} />
         <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
+        <Route path="/marketing-infographic" component={lazy(() => import("./pages/MarketingInfographic"))} />
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 
         {/* Legacy Redirects */}
