@@ -328,7 +328,7 @@ export function registerMarketingImageRoute(app: Express): void {
    *   ?format=a4        827px  × 3× scale  (A4 @ 300 dpi)
    */
   app.get("/api/marketing-infographic.png", async (req: any, res) => {
-    const formatKey = (req.query.format as string) || "web";
+    const formatKey = (req.query.format as string) || "hd";
     const preset: Preset = PRESETS[formatKey as Format] ?? PRESETS.web;
 
     let browser;
