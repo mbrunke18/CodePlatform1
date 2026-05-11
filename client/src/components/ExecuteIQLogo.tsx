@@ -32,7 +32,7 @@ const TechSeal: FC<{ size: number; color: string; animated?: boolean }> = ({
     if (!animated) return;
     const t = setInterval(() => {
       setTick(n => n + 1);
-      setScan(a => (a + 3) % 360);
+      setScan(a => (a + 1.5) % 360);
     }, 50);
     return () => clearInterval(t);
   }, [animated]);
