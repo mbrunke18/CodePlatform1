@@ -642,6 +642,8 @@ function Router() {
         <Route path="/activation-outcome/:activationId" component={ActivationOutcome} />
         <Route path="/sitemap" component={Sitemap} />
         <Route path="/marketing-infographic" component={lazy(() => import("./pages/MarketingInfographic"))} />
+        <Route path="/master-demo" component={lazy(() => import("./pages/MasterDemo"))} />
+        {renderRedirects(["/full-demo", "/platform-demo", "/guided-demo", "/demo-experience"], "/master-demo")}
         <Route path="/comprehensive-homepage" component={ExecutiveScorecard} />
 
         {/* Legacy Redirects */}
