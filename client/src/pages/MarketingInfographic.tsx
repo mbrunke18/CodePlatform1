@@ -227,7 +227,7 @@ export default function MarketingInfographic() {
           {/* Headline */}
           <div style={{ marginBottom: 8 }}>
             <div style={{ ...GEO, color: WHITE, fontSize: 36, fontWeight: 700, lineHeight: 1.06, letterSpacing: "-0.01em" }}>
-              Welcome to the<br/>execution first.
+              Welcome to the<br/>category first.
             </div>
             <div style={{ ...GEO, color: GOLD, fontSize: 36, fontWeight: 700, lineHeight: 1.06, letterSpacing: "-0.01em" }}>
               Readiness OS™
@@ -235,7 +235,7 @@ export default function MarketingInfographic() {
           </div>
 
           <div style={{ ...DM, color: MUTED, fontSize: 14, fontWeight: 500, lineHeight: 1.5, marginBottom: 22 }}>
-            The Operating Model for the Fortune 1000.
+            The readiness infrastructure for the Fortune 1000.
             <div style={{ color: MUTED2, fontSize: 12, marginTop: 3, lineHeight: 1.45 }}>
               Every vendor bolted AI onto the old model. We replaced the model.
               Preparation replaces real-time coordination. Pattern detection

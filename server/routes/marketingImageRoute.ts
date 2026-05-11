@@ -144,9 +144,9 @@ function buildHtml(cardWidth: number): string {
 </header>
 
 <section class="hero">
-  <h1>Welcome to the<br>execution first.</h1>
+  <h1>Welcome to the<br>category first.</h1>
   <div class="hero-product">Readiness OS™</div>
-  <div class="hero-sub">The Operating Model for the Fortune 1000.</div>
+  <div class="hero-sub">The readiness infrastructure for the Fortune 1000.</div>
   <p class="hero-body">Every vendor bolted AI onto the old model. We replaced the model.<br>Preparation replaces coordination. 12 minutes replaces 30 days.</p>
 </section>
 
