@@ -26,7 +26,11 @@ Allow: /how-it-works
 Allow: /protocol-builder
 Allow: /industry-demos
 
-# Industry scenario demos
+# Growth & Positioning scenarios
+Allow: /demo/market-entry
+Allow: /demo/acquisition
+
+# Risk & Resilience scenarios
 Allow: /demo/activist
 Allow: /demo/ransomware
 Allow: /demo/pharma
@@ -35,6 +39,10 @@ Allow: /demo/energy
 Allow: /demo/food-safety
 Allow: /demo/data-breach
 Allow: /demo/regulatory
+
+# Transformation scenarios
+Allow: /demo/product-launch
+Allow: /demo/workforce
 
 # Playbook & Platform
 Allow: /playbook-library

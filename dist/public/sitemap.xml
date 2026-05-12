@@ -17,7 +17,11 @@
   <url><loc>https://vaughnmartin.com/how-it-works</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://vaughnmartin.com/protocol-builder</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- Industry Scenario Demos -->
+  <!-- Growth & Positioning Scenarios -->
+  <url><loc>https://vaughnmartin.com/demo/market-entry</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/acquisition</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+
+  <!-- Risk & Resilience Scenarios -->
   <url><loc>https://vaughnmartin.com/demo/activist</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://vaughnmartin.com/demo/ransomware</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://vaughnmartin.com/demo/pharma</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
@@ -26,6 +30,10 @@
   <url><loc>https://vaughnmartin.com/demo/food-safety</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://vaughnmartin.com/demo/data-breach</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://vaughnmartin.com/demo/regulatory</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- Transformation Scenarios -->
+  <url><loc>https://vaughnmartin.com/demo/product-launch</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/workforce</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
 
   <!-- Playbook & Platform -->
   <url><loc>https://vaughnmartin.com/playbook-library</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
