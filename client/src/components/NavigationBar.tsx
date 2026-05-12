@@ -52,15 +52,17 @@ export default function NavigationBar() {
   ];
 
   const demoLinks = [
-    { title: "Full Scenario Experience Center", href: "/demo-hub", description: "8 complete simulations — pick your industry or role. The most realistic platform demo in enterprise SaaS.", featured: true },
-    { title: "Master Demo — Activist Investor", href: "/master-demo", description: "Elliott Management files 13D at 2:47 AM — the definitive 7-step platform walkthrough", featured: true },
-    { title: "Financial Services — Ransomware", href: "/demo/ransomware", description: "Trading systems encrypted at 4:23 AM. SWIFT offline. Protocol #23 activates." },
-    { title: "Pharmaceutical — FDA Recall", href: "/demo/pharma", description: "Class I recall. 340,000 units distributed. 72-hour regulatory window." },
-    { title: "Manufacturing — Supplier Bankruptcy", href: "/demo/supply-chain", description: "Primary supplier files Chapter 11. 60% of Q3 production at risk." },
-    { title: "Energy — Grid Failure", href: "/demo/energy", description: "Substation offline. 280K customers. NERC CIP clock started." },
-    { title: "Retail — Food Safety Crisis", href: "/demo/food-safety", description: "E.coli outbreak. 3 hospitalized. CNN has a 45-minute deadline." },
-    { title: "Technology — Data Breach", href: "/demo/data-breach", description: "2.3M records on dark web. GDPR 72-hour clock running." },
-    { title: "General Counsel — DOJ Investigation", href: "/demo/regulatory", description: "Civil Investigative Demand received. Litigation hold must issue today." },
+    { title: "Full Scenario Experience Center", href: "/demo-hub", description: "12 simulations across Growth · Risk · Transformation — the most realistic platform demo in enterprise SaaS.", featured: true },
+    { title: "Master Demo — Activist Investor", href: "/master-demo", description: "Elliott Management files 13D at 2:47 AM — the definitive 7-phase platform walkthrough.", featured: true },
+    { title: "Growth — Competitor Displacement Sprint", href: "/demo/market-entry", description: "Competitor files Chapter 11. 1,400 accounts in-play. 72-hour window before Salesforce moves." },
+    { title: "Growth — M&A Rapid Response", href: "/demo/acquisition", description: "Acquisition target surfaces. LOI required in 48 hours. Three buyers already in conversations." },
+    { title: "Transformation — Go-to-Market Acceleration", href: "/demo/product-launch", description: "Competitor announces launch in 30 days. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes." },
+    { title: "Transformation — Workforce Realignment", href: "/demo/workforce", description: "Board approves 16% realignment — 6,720 roles, 12 countries. WARN Act. 48 hours to execute." },
+    { title: "Risk — Financial Services Ransomware", href: "/demo/ransomware", description: "Trading systems encrypted at 4:23 AM. SWIFT offline. Protocol #23 activates." },
+    { title: "Risk — Pharmaceutical FDA Recall", href: "/demo/pharma", description: "Class I recall. 340,000 units distributed. 72-hour regulatory window." },
+    { title: "Risk — Manufacturing Supplier Failure", href: "/demo/supply-chain", description: "Primary supplier files Chapter 11. 60% of Q3 production at risk." },
+    { title: "Risk — Technology Data Breach", href: "/demo/data-breach", description: "2.3M records on dark web. GDPR 72-hour clock running." },
+    { title: "Risk — General Counsel DOJ Investigation", href: "/demo/regulatory", description: "Civil Investigative Demand received. Litigation hold must issue today." },
   ];
 
   const resourcesLinks = [

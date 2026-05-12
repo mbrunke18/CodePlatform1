@@ -5,7 +5,7 @@ const DARK  = "#030612";
 const DARK2 = "#040a18";
 const GOLD  = "#C9A84C";
 const TEAL  = "#4dc4a0";
-const RED   = "#e05252";
+const GREEN = "#5db87a";
 const W     = "#ffffff";
 const W70   = "rgba(255,255,255,0.70)";
 const W50   = "rgba(255,255,255,0.50)";
@@ -16,9 +16,42 @@ const BC    = { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif" } as 
 const CG    = { fontFamily: "'Cormorant Garamond',Georgia,serif" } as const;
 const BAR   = { fontFamily: "'Barlow',sans-serif" } as const;
 
-function SeverityBadge({ score }: { score: number }) {
-  const color = score >= 90 ? RED : score >= 75 ? "#e09040" : GOLD;
-  const label = score >= 90 ? "CRITICAL" : score >= 75 ? "HIGH" : "ELEVATED";
+const DOMAIN_CONFIG = {
+  growth: {
+    label: "GROWTH & POSITIONING",
+    color: GREEN,
+    bg: "rgba(93,184,122,0.08)",
+    border: "rgba(93,184,122,0.25)",
+    description: "A market window opens. A competitor stumbles. An acquisition target surfaces. Every growth opportunity requires the same capability: mobilize your full organization before the window closes.",
+  },
+  resilience: {
+    label: "RISK & RESILIENCE",
+    color: "#e05252",
+    bg: "rgba(224,82,82,0.07)",
+    border: "rgba(224,82,82,0.22)",
+    description: "A breach at 4 AM. A recall at 7 PM. A filing at 2:47 AM. Every disruption demands the same response: every stakeholder notified, every task assigned, every decision ready — in 12 minutes.",
+  },
+  transformation: {
+    label: "TRANSFORMATION",
+    color: TEAL,
+    bg: "rgba(77,196,160,0.07)",
+    border: "rgba(77,196,160,0.22)",
+    description: "A board mandate lands at midnight. A competitor announces acceleration. A workforce realignment must begin in 48 hours. Transformation is not slow by nature — only by preparation.",
+  },
+};
+
+function UrgencyBadge({ score, category }: { score: number; category: string }) {
+  let color = score >= 90 ? "#e05252" : score >= 80 ? "#e09040" : GOLD;
+  let label: string;
+  if (category === "GROWTH & POSITIONING") {
+    label = score >= 90 ? "WINDOW: CRITICAL" : score >= 80 ? "WINDOW: NARROWING" : "WINDOW: OPEN";
+    color = score >= 90 ? GREEN : score >= 80 ? "#8bc47a" : GOLD;
+  } else if (category === "TRANSFORMATION") {
+    label = score >= 90 ? "URGENCY: CRITICAL" : score >= 80 ? "URGENCY: HIGH" : "URGENCY: ELEVATED";
+    color = score >= 90 ? TEAL : score >= 80 ? "#6bb8a0" : GOLD;
+  } else {
+    label = score >= 90 ? "RISK: CRITICAL" : score >= 80 ? "RISK: HIGH" : "RISK: ELEVATED";
+  }
   return (
     <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.2em", color, background: `${color}15`, border: `1px solid ${color}40`, padding: "2px 8px" }}>
       {label} · {score}
@@ -32,28 +65,42 @@ interface ScenarioCardProps {
   icon: string;
   tagline: string;
   featured?: boolean;
+  accentColor?: string;
 }
 
-function ScenarioCard({ id, label, icon, tagline, featured = false }: ScenarioCardProps) {
+function ScenarioCard({ id, label, icon, tagline, featured = false, accentColor }: ScenarioCardProps) {
   const sc = SCENARIOS[id];
   if (!sc) return null;
   const route = id === "activist" ? "/master-demo" : `/demo/${id}`;
+  const accent = accentColor ?? GOLD;
 
   return (
     <a
       href={route}
       style={{
         display: "block", textDecoration: "none",
-        background: featured ? `linear-gradient(135deg, rgba(201,168,76,0.10) 0%, rgba(201,168,76,0.03) 100%)` : GBG,
-        border: `1px solid ${featured ? GOLD + "50" : BD}`,
+        background: featured
+          ? `linear-gradient(135deg, ${accent}12 0%, ${accent}04 100%)`
+          : GBG,
+        border: `1px solid ${featured ? accent + "50" : BD}`,
         padding: featured ? "32px 28px" : "24px 22px",
         transition: "border-color 0.2s, background 0.2s",
         position: "relative", overflow: "hidden",
       }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLAnchorElement).style.borderColor = accent + "70";
+        (e.currentTarget as HTMLAnchorElement).style.background = `${accent}10`;
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLAnchorElement).style.borderColor = featured ? accent + "50" : "rgba(201,168,76,0.22)";
+        (e.currentTarget as HTMLAnchorElement).style.background = featured
+          ? `linear-gradient(135deg, ${accent}12 0%, ${accent}04 100%)`
+          : GBG;
+      }}
     >
       {featured && (
         <div style={{ position: "absolute", top: 14, right: 14 }}>
-          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", color: GOLD, background: `${GOLD}18`, border: `1px solid ${GOLD}40`, padding: "3px 10px" }}>
+          <span style={{ ...BC, fontSize: 8, fontWeight: 700, letterSpacing: "0.3em", color: accent, background: `${accent}18`, border: `1px solid ${accent}40`, padding: "3px 10px" }}>
             MASTER DEMO
           </span>
         </div>
@@ -62,7 +109,7 @@ function ScenarioCard({ id, label, icon, tagline, featured = false }: ScenarioCa
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 14 }}>
         <div style={{ fontSize: featured ? 32 : 24, flexShrink: 0, lineHeight: 1 }}>{icon}</div>
         <div style={{ flex: 1 }}>
-          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: GOLD, textTransform: "uppercase", marginBottom: 4 }}>
+          <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: accent, textTransform: "uppercase", marginBottom: 4 }}>
             {label} · {sc.category}
           </div>
           <div style={{ ...BC, fontSize: featured ? 22 : 18, fontWeight: 900, color: W, lineHeight: 1.15, letterSpacing: "-0.01em", marginBottom: 4 }}>
@@ -80,12 +127,12 @@ function ScenarioCard({ id, label, icon, tagline, featured = false }: ScenarioCa
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 14, borderTop: `1px solid rgba(255,255,255,0.07)` }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          <SeverityBadge score={sc.riskScore}/>
+          <UrgencyBadge score={sc.riskScore} category={sc.category} />
           <span style={{ ...BC, fontSize: 9, fontWeight: 600, letterSpacing: "0.15em", color: W25 }}>
             {sc.tasks.length} tasks · {sc.stakeholders.length} stakeholders · 12 min
           </span>
         </div>
-        <span style={{ ...BC, fontSize: 12, fontWeight: 800, color: GOLD, letterSpacing: "0.1em" }}>
+        <span style={{ ...BC, fontSize: 12, fontWeight: 800, color: accent, letterSpacing: "0.1em" }}>
           Launch →
         </span>
       </div>
@@ -93,7 +140,38 @@ function ScenarioCard({ id, label, icon, tagline, featured = false }: ScenarioCa
   );
 }
 
+interface DomainSectionProps {
+  domainKey: "growth" | "resilience" | "transformation";
+  scenarios: { id: string; label: string; icon: string; tagline: string }[];
+}
+
+function DomainSection({ domainKey, scenarios }: DomainSectionProps) {
+  const cfg = DOMAIN_CONFIG[domainKey];
+  return (
+    <div style={{ marginBottom: 56 }}>
+      <div style={{ borderLeft: `3px solid ${cfg.color}`, paddingLeft: 16, marginBottom: 20 }}>
+        <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: cfg.color, textTransform: "uppercase", marginBottom: 6 }}>
+          Strategic Domain
+        </div>
+        <div style={{ ...BC, fontSize: 26, fontWeight: 900, color: W, letterSpacing: "-0.01em", lineHeight: 1.1, marginBottom: 10 }}>
+          {cfg.label}
+        </div>
+        <p style={{ ...BAR, fontSize: 13, color: W50, lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
+          {cfg.description}
+        </p>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+        {scenarios.map(({ id, label, icon, tagline }) => (
+          <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline} accentColor={cfg.color} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function DemoHub() {
+  const totalScenarios = Object.keys(SCENARIOS).length;
+
   return (
     <div style={{ background: DARK, minHeight: "100vh", color: W }}>
 
@@ -117,69 +195,98 @@ export default function DemoHub() {
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "64px 28px 48px", borderBottom: `1px solid ${BD}` }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
           <span style={{ display: "inline-block", width: 28, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-          <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase" }}>Experience Center · 8 Full Scenario Simulations</span>
+          <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase" }}>
+            Experience Center · {totalScenarios} Full Scenario Simulations · 3 Strategic Domains
+          </span>
         </div>
         <h1 style={{ ...BC, fontSize: 54, fontWeight: 900, color: W, lineHeight: 1.0, letterSpacing: "-0.02em", marginBottom: 10 }}>
-          The most realistic platform<br/>demo in enterprise SaaS.
+          Any situation.<br/>Any trigger.<br/>12 minutes.
         </h1>
         <div style={{ ...CG, fontSize: 26, fontStyle: "italic", color: GOLD, lineHeight: 1.3, marginBottom: 20 }}>
-          Real scenario. Real data. Real product delivery.
+          Growth. Resilience. Transformation. The response is always ready.
         </div>
-        <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.7, maxWidth: 620 }}>
-          Each simulation walks you through a live Fortune 500 strategic trigger — from signal detection to executive authorization to 12-minute activation. Select your industry or role to see the platform respond to the situation you face most.
+        <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.7, maxWidth: 640 }}>
+          Every situation a Fortune 1000 company faces — the market opportunity that opens at 7 PM, the crisis that lands at 4 AM, the board mandate that requires coordinated action by morning — demands the same capability: your full organization mobilized in 12 minutes. Select your domain and see the platform respond.
         </p>
+
+        {/* Domain pills */}
+        <div style={{ display: "flex", gap: 12, marginTop: 28, flexWrap: "wrap" }}>
+          {(["growth", "resilience", "transformation"] as const).map(key => {
+            const cfg = DOMAIN_CONFIG[key];
+            const count = key === "growth" ? SCENARIO_GROUPS.growth.length
+                        : key === "resilience" ? SCENARIO_GROUPS.resilience.length
+                        : SCENARIO_GROUPS.transformation.length;
+            return (
+              <a
+                key={key}
+                href={`#domain-${key}`}
+                style={{
+                  ...BC, textDecoration: "none",
+                  fontSize: 10, fontWeight: 700, letterSpacing: "0.2em",
+                  color: cfg.color, background: cfg.bg, border: `1px solid ${cfg.border}`,
+                  padding: "8px 16px", textTransform: "uppercase",
+                }}
+              >
+                {cfg.label} — {count} scenarios
+              </a>
+            );
+          })}
+        </div>
       </div>
 
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "48px 28px 80px" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto", padding: "56px 28px 80px" }}>
 
         {/* Master Demo — featured */}
-        <div style={{ marginBottom: 52 }}>
+        <div style={{ marginBottom: 64 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
             <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
-            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Featured — Master Scenario</span>
+            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: GOLD, textTransform: "uppercase" }}>Featured — Master Scenario · The Complete Platform Walkthrough</span>
           </div>
           <ScenarioCard
             id="activist"
             label="CEO · Board · Investor Relations"
             icon="📋"
-            tagline="Elliott Management files a 13D at 2:47 AM demanding 3 board seats. In the old model: 30 days to mobilize. With Readiness OS: full activation in 12 minutes. The definitive platform experience."
+            tagline="Elliott Management files a 13D at 2:47 AM demanding 3 board seats. In the old model: 30 days to mobilize. With Readiness OS: full activation in 12 minutes. Every phase of the platform — signals, protocol match, war room, stakeholder notification, CEO authorization, outcome — in one definitive walkthrough."
             featured
           />
         </div>
 
-        {/* Industry scenarios */}
-        <div style={{ marginBottom: 52 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <span style={{ display: "inline-block", width: 22, height: 1.5, background: TEAL, flexShrink: 0 }}/>
-            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: TEAL, textTransform: "uppercase" }}>By Industry — 6 Scenarios</span>
-          </div>
-          <p style={{ ...BAR, fontSize: 13, color: W50, lineHeight: 1.6, maxWidth: 560, marginBottom: 24 }}>
-            Each scenario uses a real Fortune 500 company archetype, real regulatory timelines, and the exact protocols your industry would need pre-staged and ready.
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-            {SCENARIO_GROUPS.industries.map(({ id, label, icon, tagline }) => (
-              <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline}/>
-            ))}
-          </div>
+        {/* Growth & Positioning */}
+        <div id="domain-growth">
+          <DomainSection domainKey="growth" scenarios={SCENARIO_GROUPS.growth} />
         </div>
 
-        {/* Role scenarios */}
-        <div style={{ marginBottom: 52 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <span style={{ display: "inline-block", width: 22, height: 1.5, background: "#a070f0", flexShrink: 0 }}/>
-            <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.35em", color: "#a070f0", textTransform: "uppercase" }}>By Role — 2 Scenarios</span>
+        {/* Risk & Resilience */}
+        <div id="domain-resilience">
+          <DomainSection domainKey="resilience" scenarios={SCENARIO_GROUPS.resilience} />
+        </div>
+
+        {/* Transformation */}
+        <div id="domain-transformation">
+          <DomainSection domainKey="transformation" scenarios={SCENARIO_GROUPS.transformation} />
+        </div>
+
+        {/* By Role */}
+        <div style={{ marginBottom: 56 }}>
+          <div style={{ borderLeft: `3px solid #a070f0`, paddingLeft: 16, marginBottom: 20 }}>
+            <div style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: "#a070f0", textTransform: "uppercase", marginBottom: 6 }}>
+              By Executive Role
+            </div>
+            <div style={{ ...BC, fontSize: 26, fontWeight: 900, color: W, letterSpacing: "-0.01em", lineHeight: 1.1, marginBottom: 10 }}>
+              YOUR SEAT AT THE TABLE
+            </div>
+            <p style={{ ...BAR, fontSize: 13, color: W50, lineHeight: 1.7, maxWidth: 580, margin: 0 }}>
+              Role-specific simulations show exactly what each executive experiences during an activation — their brief, their tasks, their decision moment, their authority.
+            </p>
           </div>
-          <p style={{ ...BAR, fontSize: 13, color: W50, lineHeight: 1.6, maxWidth: 560, marginBottom: 24 }}>
-            Role-specific simulations show exactly what each executive experiences during an activation — their brief, their tasks, their decision moment.
-          </p>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             {SCENARIO_GROUPS.roles.map(({ id, label, icon, tagline }) => (
-              <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline}/>
+              <ScenarioCard key={id} id={id} label={label} icon={icon} tagline={tagline} accentColor="#a070f0" />
             ))}
           </div>
         </div>
 
-        {/* What every demo shows */}
+        {/* What every simulation shows */}
         <div style={{ background: GBG, border: `1px solid ${BD}`, padding: "36px 32px", marginBottom: 40 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
             <span style={{ display: "inline-block", width: 22, height: 1.5, background: GOLD, flexShrink: 0 }}/>
@@ -187,13 +294,13 @@ export default function DemoHub() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20 }}>
             {[
-              { step: "01", title: "The Trigger Fires", body: "Real scenario, real company, real time of night. The situation unfolds with full context and stakes." },
-              { step: "02", title: "Signal Detection", body: "4 corroborating signals detected and scored live. Composite risk score computed in seconds." },
-              { step: "03", title: "Protocol Matched", body: "The right Readiness Protocol pulled from 170 pre-staged options. Already written. Already waiting." },
-              { step: "04", title: "War Room Activated", body: "14 tasks pre-assigned. 6 stakeholders notified with real-time status progression." },
-              { step: "05", title: "CEO Authorizes", body: "Executive brief delivered. One decision. Full authority. No committee required." },
-              { step: "06", title: "12 Minutes Complete", body: "Live animated timeline. Full comparison with the 30-day old model. The 3,600× head start." },
-              { step: "07", title: "The Outcome", body: "Deliverables generated. Post-activation intelligence. The fearless result of total preparation." },
+              { step: "01", title: "The Trigger Fires", body: "Real scenario, real company, real time of day. Growth opportunity or disruption — the situation unfolds with full context and stakes." },
+              { step: "02", title: "Signal Detection", body: "4 corroborating signals detected and scored live. Composite urgency score computed in seconds. Domain context applied." },
+              { step: "03", title: "Protocol Matched", body: "The right Readiness Protocol pulled from 170 pre-staged options. Already written. Already waiting. Growth, resilience, or transformation." },
+              { step: "04", title: "War Room Activated", body: "14 tasks pre-assigned. 6 stakeholders notified. Real-time status: STANDBY → ACKNOWLEDGED → EXECUTING." },
+              { step: "05", title: "CEO Authorizes", body: "Executive brief delivered. One decision. Full authority. No committee required. The window stays open." },
+              { step: "06", title: "12 Minutes Complete", body: "Live animated timeline. Full comparison with the 30-day old model. The 3,600× execution head start." },
+              { step: "07", title: "The Outcome", body: "Deliverables generated. Post-activation intelligence. The fearless result of total preparation across every domain." },
             ].map(({ step, title, body }) => (
               <div key={step} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                 <div style={{ ...BC, fontSize: 11, fontWeight: 900, color: GOLD, opacity: 0.5, flexShrink: 0, lineHeight: 1, marginTop: 3 }}>{step}</div>

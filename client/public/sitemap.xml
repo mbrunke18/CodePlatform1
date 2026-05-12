@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core Marketing Pages -->
+  <url><loc>https://vaughnmartin.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://vaughnmartin.com/platform-overview</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://vaughnmartin.com/readiness-infrastructure</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://vaughnmartin.com/the-proof</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://vaughnmartin.com/founder-story</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/growth</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Demo & Experience Center -->
+  <url><loc>https://vaughnmartin.com/demo-hub</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://vaughnmartin.com/master-demo</loc><changefreq>weekly</changefreq><priority>0.95</priority></url>
+  <url><loc>https://vaughnmartin.com/12-minute-experience</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://vaughnmartin.com/how-it-executes</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/how-it-works</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/protocol-builder</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Growth & Positioning Scenarios -->
+  <url><loc>https://vaughnmartin.com/demo/market-entry</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/acquisition</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+
+  <!-- Risk & Resilience Scenarios -->
+  <url><loc>https://vaughnmartin.com/demo/activist</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/ransomware</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/pharma</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/supply-chain</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/energy</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/food-safety</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/data-breach</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/regulatory</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- Transformation Scenarios -->
+  <url><loc>https://vaughnmartin.com/demo/product-launch</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+  <url><loc>https://vaughnmartin.com/demo/workforce</loc><changefreq>monthly</changefreq><priority>0.87</priority></url>
+
+  <!-- Playbook & Platform -->
+  <url><loc>https://vaughnmartin.com/playbook-library</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/capabilities</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/coordination-intelligence</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vaughnmartin.com/proof-story</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/roi-calculator</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Evidence & Research -->
+  <url><loc>https://vaughnmartin.com/research</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vaughnmartin.com/readiness-assessment</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vaughnmartin.com/executive-brief</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/security-compliance</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- Competitive Positioning -->
+  <url><loc>https://vaughnmartin.com/platform-reality</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vaughnmartin.com/ms-project</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vaughnmartin.com/vs-consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Investor Pages -->
+  <url><loc>https://vaughnmartin.com/investors</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/pitch-deck</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://vaughnmartin.com/roadmap</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- Access & Partner -->
+  <url><loc>https://vaughnmartin.com/founding-partner-program</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://vaughnmartin.com/request-access</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vaughnmartin.com/role-selector</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://vaughnmartin.com/executive-scenarios</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- Support Pages -->
+  <url><loc>https://vaughnmartin.com/sitemap</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://vaughnmartin.com/terms</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+
+</urlset>

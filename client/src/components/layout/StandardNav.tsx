@@ -182,29 +182,33 @@ export default function StandardNav() {
     {
       heading: "Try It Now",
       links: [
-        { label: "Full Scenario Experience Center", path: "/demo-hub", icon: LayoutGrid, description: "8 complete simulations — pick your industry or role. Ransomware · FDA Recall · Activist Investor · DOJ Investigation · and more.", featured: true },
+        { label: "Full Scenario Experience Center", path: "/demo-hub", icon: LayoutGrid, description: "12 complete simulations across all 3 strategic domains — Growth · Resilience · Transformation. Pick your situation.", featured: true },
+        { label: "Master Demo — Activist Investor", path: "/master-demo", icon: Play, description: "Elliott Management files 13D at 2:47 AM. The definitive 7-phase walkthrough. Every platform capability in one scenario.", featured: true },
         { label: "The 12-Minute Experience", path: "/12-minute-experience", icon: Rocket, description: "Watch a full Readiness Protocol activate from trigger detection to task assignment — in 12 minutes. No login required.", featured: true },
-        { label: "Protocol Builder", path: "/protocol-builder", icon: ClipboardList, description: "Pre-stage your own Readiness Protocol in 6 guided steps. No login required.", featured: true },
       ],
     },
     {
-      heading: "By Industry",
+      heading: "Growth & Positioning",
+      links: [
+        { label: "Competitor Displacement Sprint", path: "/demo/market-entry", icon: TrendingUp, description: "Competitor files Chapter 11. 1,400 accounts in-play. 72-hour window before Salesforce moves.", featured: true },
+        { label: "M&A Rapid Response", path: "/demo/acquisition", icon: Target, description: "Acquisition target surfaces. LOI required in 48 hours. Three buyers already in conversations." },
+      ],
+    },
+    {
+      heading: "Risk & Resilience",
       links: [
         { label: "Financial Services — Ransomware", path: "/demo/ransomware", icon: Zap, description: "Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours." },
-        { label: "Pharmaceutical — FDA Recall", path: "/demo/pharma", icon: AlertCircle, description: "Class I recall. Contaminated batch. 340,000 units in distribution." },
-        { label: "Manufacturing — Supplier Bankruptcy", path: "/demo/supply-chain", icon: Globe, description: "Primary supplier files Chapter 11. 60% of Q3 production at risk." },
-        { label: "Energy — Grid Failure", path: "/demo/energy", icon: Zap, description: "Substation offline. 280K customers affected. NERC CIP clock started." },
-        { label: "Retail — Food Safety Crisis", path: "/demo/food-safety", icon: AlertCircle, description: "E.coli outbreak. 3 hospitalized. CNN has a 45-minute deadline." },
+        { label: "Pharmaceutical — FDA Recall", path: "/demo/pharma", icon: AlertCircle, description: "Class I recall. 340,000 units in distribution. 72-hour regulatory window." },
+        { label: "Manufacturing — Supplier Failure", path: "/demo/supply-chain", icon: Globe, description: "Primary supplier files Chapter 11. 60% of Q3 production at risk." },
         { label: "Technology — Data Breach", path: "/demo/data-breach", icon: Target, description: "2.3M records on dark web. GDPR 72-hour clock started." },
       ],
     },
     {
-      heading: "By Role",
+      heading: "Transformation",
       links: [
-        { label: "CEO / Board — Activist Investor", path: "/master-demo", icon: Target, description: "Elliott Management files 13D at 2:47 AM. Full 7-step walkthrough.", featured: true },
-        { label: "General Counsel — DOJ Investigation", path: "/demo/regulatory", icon: Scale, description: "Civil Investigative Demand received. FTC parallel inquiry. Litigation hold today." },
-        { label: "By Your Role", path: "/role-selector", icon: Users, description: "Readiness Protocols filtered for your C-suite function" },
-        { label: "Executive Brief", path: "/executive-brief", icon: FileText, description: "One-page board summary — shareable in 60 seconds" },
+        { label: "Go-to-Market Acceleration", path: "/demo/product-launch", icon: Rocket, description: "Competitor announces launch in 30 days. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.", featured: true },
+        { label: "Workforce Transformation Protocol", path: "/demo/workforce", icon: Users, description: "Board approves AI-driven realignment — 6,720 roles, 12 countries. WARN Act. 48 hours to execute." },
+        { label: "Protocol Builder", path: "/protocol-builder", icon: ClipboardList, description: "Pre-stage your own Readiness Protocol for any situation in 6 guided steps." },
       ],
     },
   ];
@@ -541,13 +545,17 @@ export default function StandardNav() {
       },
     ];
     const deeperDemos = [
-      { path: '/demo/ransomware', icon: Zap, label: 'Financial Services — Ransomware', sub: 'Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours. Protocol #23 activates.' },
-      { path: '/demo/pharma', icon: AlertCircle, label: 'Pharma — FDA Class I Recall', sub: 'Contaminated batch. 340,000 units distributed. 72-hour regulatory window.' },
-      { path: '/demo/supply-chain', icon: Globe, label: 'Manufacturing — Supplier Failure', sub: 'Primary supplier files Chapter 11. 60% of Q3 production at risk overnight.' },
-      { path: '/demo/energy', icon: Zap, label: 'Energy — Grid Failure', sub: 'Substation offline. 280K customers affected. NERC CIP clock started at 3:15 AM.' },
-      { path: '/demo/food-safety', icon: AlertCircle, label: 'Retail — Food Safety Crisis', sub: 'E.coli outbreak linked to your product. 3 hospitalized. CNN has 45 minutes.' },
-      { path: '/demo/data-breach', icon: Target, label: 'Technology — Data Breach', sub: '2.3M customer records on dark web. GDPR 72-hour notification clock running.' },
-      { path: '/demo/regulatory', icon: Scale, label: 'General Counsel — DOJ Investigation', sub: 'Civil Investigative Demand received. Litigation hold must issue today.' },
+      { path: '/demo/market-entry', icon: TrendingUp, label: 'Growth — Competitor Displacement Sprint', sub: 'LegacyPoint files Chapter 11. 1,400 enterprise accounts in-play. Salesforce deploys overnight. 72-hour window.', domain: 'GROWTH' },
+      { path: '/demo/acquisition', icon: Target, label: 'Growth — M&A Rapid Response', sub: 'Waypoint Analytics authorizes a sale. Three buyers in conversations. LOI required in 48 hours.', domain: 'GROWTH' },
+      { path: '/demo/product-launch', icon: Rocket, label: 'Transformation — Go-to-Market Acceleration', sub: 'Cascade announces June 30 launch. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.', domain: 'TRANSFORMATION' },
+      { path: '/demo/workforce', icon: Users, label: 'Transformation — Workforce Realignment', sub: 'Board approves AI-driven realignment — 6,720 roles, 12 countries. WARN Act. Must begin in 48 hours.', domain: 'TRANSFORMATION' },
+      { path: '/demo/ransomware', icon: Zap, label: 'Risk — Financial Services Ransomware', sub: 'Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours.', domain: 'RISK' },
+      { path: '/demo/pharma', icon: AlertCircle, label: 'Risk — Pharma FDA Class I Recall', sub: 'Contaminated batch. 340,000 units distributed. 72-hour regulatory window.', domain: 'RISK' },
+      { path: '/demo/supply-chain', icon: Globe, label: 'Risk — Manufacturing Supplier Failure', sub: 'Primary supplier files Chapter 11. 60% of Q3 production at risk overnight.', domain: 'RISK' },
+      { path: '/demo/energy', icon: Zap, label: 'Risk — Energy Grid Failure', sub: 'Substation offline. 280K customers. NERC CIP clock started at 3:15 AM.', domain: 'RISK' },
+      { path: '/demo/food-safety', icon: AlertCircle, label: 'Risk — Retail Food Safety Crisis', sub: 'E.coli outbreak. 3 hospitalized. CNN has 45 minutes.', domain: 'RISK' },
+      { path: '/demo/data-breach', icon: Target, label: 'Risk — Technology Data Breach', sub: '2.3M customer records on dark web. GDPR 72-hour notification clock running.', domain: 'RISK' },
+      { path: '/demo/regulatory', icon: Scale, label: 'Risk — General Counsel DOJ Investigation', sub: 'Civil Investigative Demand received. Litigation hold must issue today.', domain: 'RISK' },
     ];
     return (
       <DropdownMenu>
