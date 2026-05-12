@@ -431,7 +431,7 @@ function HomepageNav() {
           <div className="hp-desktop-nav" style={{ display: "flex", alignItems: "center", gap: 28 }}>
             <Link href="/platform-overview" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>What We Do</Link>
             <Link href="/readiness-infrastructure" style={{ ...DM, color: NAVY, fontSize: 14, fontWeight: 600, textDecoration: "none", opacity: 0.75 }}>Readiness Infrastructure</Link>
-            <Link href="/12-minute-experience" style={{
+            <Link href="/demo-hub" style={{
               ...DM, color: NAVY, fontSize: 14, fontWeight: 700, textDecoration: "none", opacity: 1,
               padding: "6px 14px",
               background: "rgba(201,168,76,0.10)",
@@ -487,7 +487,7 @@ function HomepageNav() {
           </button>
           {[
             { label: "What We Do",    href: "/platform-overview" },
-            { label: "See It Work",   href: "/12-minute-experience", highlight: true },
+            { label: "See It Work",   href: "/demo-hub", highlight: true },
             { label: "The Proof",     href: "/the-proof" },
             { label: "Investors",     href: "/investors" },
           ].map(item =>
@@ -499,7 +499,7 @@ function HomepageNav() {
           )}
           <Link href="/founder-story" onClick={() => setMenuOpen(false)} style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD_LIGHT, fontSize: 24, fontWeight: 600, fontStyle: "italic", padding: "16px 0", textDecoration: "none", letterSpacing: "0.01em" }}>Founder's Story</Link>
           <Link
-            href="/12-minute-experience"
+            href="/demo-hub"
             onClick={() => { setMenuOpen(false); trackCTA("nav_mobile_demo"); }}
             style={{
               ...DM, background: "transparent", color: GOLD, fontWeight: 600, fontSize: 16,
@@ -508,7 +508,7 @@ function HomepageNav() {
               border: `1.5px solid rgba(201,168,76,0.5)`,
             }}
           >
-            ▶ 12-Minute Experience →
+            ▶ See It Work — 8 Scenarios →
           </Link>
           <Link
             href="/founding-partner-program"

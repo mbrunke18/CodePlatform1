@@ -52,10 +52,15 @@ export default function NavigationBar() {
   ];
 
   const demoLinks = [
-    { title: "Real-Company Scenarios", href: "/try-demo", description: "HPE, Target, Clorox, ServiceNow, Alphabet — live execution simulations", featured: true },
-    { title: "Industry Scenarios", href: "/industry-demos", description: "Financial services, pharma, manufacturing, retail, energy, luxury" },
-    { title: "Deal Risk Detection", href: "/deal-risk-demo", description: "Pipeline risk before it becomes pipeline loss" },
-    { title: "Founding Partner Program", href: "/pilot-program", description: "Join the Fortune 1000 — 90-day validation partnership" },
+    { title: "Full Scenario Experience Center", href: "/demo-hub", description: "8 complete simulations — pick your industry or role. The most realistic platform demo in enterprise SaaS.", featured: true },
+    { title: "Master Demo — Activist Investor", href: "/master-demo", description: "Elliott Management files 13D at 2:47 AM — the definitive 7-step platform walkthrough", featured: true },
+    { title: "Financial Services — Ransomware", href: "/demo/ransomware", description: "Trading systems encrypted at 4:23 AM. SWIFT offline. Protocol #23 activates." },
+    { title: "Pharmaceutical — FDA Recall", href: "/demo/pharma", description: "Class I recall. 340,000 units distributed. 72-hour regulatory window." },
+    { title: "Manufacturing — Supplier Bankruptcy", href: "/demo/supply-chain", description: "Primary supplier files Chapter 11. 60% of Q3 production at risk." },
+    { title: "Energy — Grid Failure", href: "/demo/energy", description: "Substation offline. 280K customers. NERC CIP clock started." },
+    { title: "Retail — Food Safety Crisis", href: "/demo/food-safety", description: "E.coli outbreak. 3 hospitalized. CNN has a 45-minute deadline." },
+    { title: "Technology — Data Breach", href: "/demo/data-breach", description: "2.3M records on dark web. GDPR 72-hour clock running." },
+    { title: "General Counsel — DOJ Investigation", href: "/demo/regulatory", description: "Civil Investigative Demand received. Litigation hold must issue today." },
   ];
 
   const resourcesLinks = [

@@ -138,6 +138,7 @@ __export(schema_exports, {
   externalProjectSyncs: () => externalProjectSyncs,
   fluxAdaptations: () => fluxAdaptations,
   fluxAdaptationsRelations: () => fluxAdaptationsRelations,
+  foundingPartnerApplications: () => foundingPartnerApplications,
   generatedDocuments: () => generatedDocuments,
   humanValidationQueue: () => humanValidationQueue,
   incidentAnalyses: () => incidentAnalyses,
@@ -196,6 +197,7 @@ __export(schema_exports, {
   insertExecutiveInsightSchema: () => insertExecutiveInsightSchema,
   insertExecutiveTriggerSchema: () => insertExecutiveTriggerSchema,
   insertFluxAdaptationSchema: () => insertFluxAdaptationSchema,
+  insertFoundingPartnerApplicationSchema: () => insertFoundingPartnerApplicationSchema,
   insertIncidentAnalysisSchema: () => insertIncidentAnalysisSchema,
   insertInitiativeSchema: () => insertInitiativeSchema,
   insertInsightSchema: () => insertInsightSchema,
@@ -484,7 +486,7 @@ import {
 import { createInsertSchema as createInsertSchema2, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 import { relations } from "drizzle-orm";
-var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema;
+var organizationTypeEnum, priorityEnum, statusEnum, riskLevelEnum, outcomeTypeEnum, effectivenessEnum, confidenceEnum, alertTypeEnum, insightTypeEnum, actionStatusEnum, deploymentStatusEnum, integrationStatusEnum, simulationStatusEnum, complianceStatusEnum, jobStatusEnum, executionPhaseEnum, executionInstanceStatusEnum, executionTaskStatusEnum, strategicCategoryEnum, playbookPhaseEnum, executeSubphaseEnum, prepareItemStatusEnum, learnItemTypeEnum, sessions, users, organizations, strategicObjectives, businessUnits, strategicScenarios, scenarioExecutionPlans, executionPlanPhases, executionPlanTasks, executionTaskDependencies, executionCheckpoints, documentTemplates, taskDocumentTemplates, checkpointValidations, executionInstances, executionInstanceTasks, tasks, roles, permissions, rolePermissions, activities, projects, pulseMetrics, fluxAdaptations, prismInsights, echoCulturalMetrics, novaInnovations, intelligenceReports, moduleUsageAnalytics, risks, initiatives, kpis, insights, recommendations, evidence, actionItems, workflowTemplates, notifications, approvalTokens, usersRelations, organizationsRelations, strategicScenariosRelations, tasksRelations, rolesRelations, rolePermissionsRelations, projectsRelations, pulseMetricsRelations, fluxAdaptationsRelations, prismInsightsRelations, echoCulturalMetricsRelations, novaInnovationsRelations, intelligenceReportsRelations, moduleUsageAnalyticsRelations, decisionOutcomes, learningPatterns, institutionalMemory, decisionOutcomesRelations, learningPatternsRelations, institutionalMemoryRelations, businessUnitsRelations, risksRelations, initiativesRelations, kpisRelations, insightsRelations, recommendationsRelations, evidenceRelations, actionItemsRelations, notificationsRelations, insertUserSchema, selectUserSchema, insertOrganizationSchema, selectOrganizationSchema, insertBusinessUnitSchema, insertRiskSchema, insertInitiativeSchema, insertKpiSchema, insertInsightSchema, insertRecommendationSchema, insertEvidenceSchema, insertActionItemSchema, insertWorkflowTemplateSchema, insertNotificationSchema, insertProjectSchema, selectProjectSchema, insertStrategicScenarioSchema, selectStrategicScenarioSchema, insertTaskSchema, selectTaskSchema, insertExecutionCheckpointSchema, insertDocumentTemplateSchema, insertTaskDocumentTemplateSchema, insertCheckpointValidationSchema, insertExecutionPlanTaskSchema, insertExecutionInstanceSchema, insertExecutionInstanceTaskSchema, legacyInsertUserSchema, legacyInsertOrganizationSchema, legacyInsertScenarioSchema, legacyInsertTaskSchema, legacyInsertProjectSchema, insertPulseMetricSchema, insertFluxAdaptationSchema, insertPrismInsightSchema, insertEchoCulturalMetricSchema, insertNovaInnovationSchema, insertIntelligenceReportSchema, insertModuleUsageAnalyticSchema, insertDecisionOutcomeSchema, insertLearningPatternSchema, insertInstitutionalMemorySchema, strategicAlerts, executiveInsights, actionHooks, intuitionRecords, syntheticScenarios, warRoomSessions, warRoomUpdates, executiveBriefings, boardReports, insertStrategicAlertSchema, insertExecutiveInsightSchema, insertActionHookSchema, insertIntuitionRecordSchema, insertSyntheticScenarioSchema, insertWarRoomSessionSchema, insertWarRoomUpdateSchema, insertExecutiveBriefingSchema, insertBoardReportSchema, roiMetrics, valueTrackingEvents, quickStartTemplates, deploymentProgress, industryBenchmarks, peerComparisons, enterpriseIntegrations, integrationData, aiConfidenceScores, humanValidationQueue, usageAnalytics, engagementMetrics, dataSources, executiveTriggers, triggerMonitoringHistory, playbookTriggerAssociations, scenarioTypeEnum, timeHorizonEnum, influenceLevelEnum, stakeholderRoleEnum, metricCategoryEnum, scenarioContext, scenarioStakeholders, scenarioDependencies, scenarioSuccessMetrics, outcomeExecutionLog, triggerSignals, compositeTriggerLogic, customDataPoints, crisisSimulations, simulationResults, whatIfScenarios, preparednessScores, preparednessActivities, peerBenchmarks, playbookDomains, playbookCategories, playbookLibrary, playbookTemplates, playbookTemplateSections, playbookCustomizations, playbookCommunicationTemplates, playbookDecisionTrees, playbookTaskSequences, practiceDrills, drillPerformance, aiOptimizationSuggestions, activationStakeholders, activationTasks, activationActivityLog, playbookActivations, activationOutcomes, taskAcknowledgments, insertActivationOutcomeSchema, roleAvailabilityFlags, insertRoleAvailabilityFlagSchema, complianceFrameworks, complianceReports, backgroundJobs, decisionConfidence, stakeholderAlignment, executionValidationReports, insertRoiMetricSchema, insertQuickStartTemplateSchema, insertEnterpriseIntegrationSchema, insertCrisisSimulationSchema, insertComplianceFrameworkSchema, insertBackgroundJobSchema, insertScenarioContextSchema, insertScenarioStakeholderSchema, insertScenarioDependencySchema, insertScenarioSuccessMetricSchema, insertOutcomeExecutionLogSchema, insertTriggerSignalSchema, insertCompositeTriggerLogicSchema, insertCustomDataPointSchema, insertDataSourceSchema, insertExecutiveTriggerSchema, insertTriggerMonitoringHistorySchema, insertPlaybookTriggerAssociationSchema, insertWhatIfScenarioSchema, insertPreparednessScoreSchema, insertPreparednessActivitySchema, insertPeerBenchmarkSchema, insertPlaybookDomainSchema, insertPlaybookCategorySchema, insertPlaybookLibrarySchema, insertPlaybookCommunicationTemplateSchema, insertPlaybookDecisionTreeSchema, insertPracticeDrillSchema, insertDrillPerformanceSchema, insertAiOptimizationSuggestionSchema, insertPlaybookActivationSchema, insertDecisionConfidenceSchema, insertStakeholderAlignmentSchema, insertExecutionValidationReportSchema, mckMaturityLevelEnum, mckPhaseEnum, mckEngagementEnum, mckReadinessRiskEnum, mckComplianceStatusEnum, mckTrendEnum, MCK_ELEMENTS, MCK_GOLDEN_RULES, mckOperatingModelAssessments, insertMckOperatingModelAssessmentSchema, mckOperatingModelScores, insertMckOperatingModelScoreSchema, mckGapTargets, insertMckGapTargetSchema, mckTransformationRoadmaps, insertMckTransformationRoadmapSchema, mckTransformationWorkstreams, insertMckTransformationWorkstreamSchema, mckExecutiveBuyinSnapshots, insertMckExecutiveBuyinSnapshotSchema, mckChangeReadinessChecks, insertMckChangeReadinessCheckSchema, mckValueRealizationMetrics, insertMckValueRealizationMetricSchema, mckSustainablePracticeAudits, insertMckSustainablePracticeAuditSchema, mckSustainablePracticeItems, insertMckSustainablePracticeItemSchema, playbookVersions, insertPlaybookVersionSchema, playbookLearnings, insertPlaybookLearningSchema, readinessMetrics, insertReadinessMetricSchema, weakSignals, insertWeakSignalSchema, oraclePatterns, insertOraclePatternSchema, continuousOperationsTasks, insertContinuousOperationsTaskSchema, activityFeedEvents, insertActivityFeedEventSchema, demoLeads, insertDemoLeadSchema, departments, insertDepartmentSchema, escalationPolicies, insertEscalationPolicySchema, communicationChannels, insertCommunicationChannelSchema, customTriggers, insertCustomTriggerSchema, successMetricsConfig, insertSuccessMetricsConfigSchema, stakeholderRoles, insertStakeholderRoleSchema, organizationOnboarding, insertOrganizationOnboardingSchema, syncPlatformEnum, syncStatusEnum, resourceTypeEnum, documentTypeEnum, executionPlanExportTemplates, insertExecutionPlanExportTemplateSchema, executionPlanSyncRecords, insertExecutionPlanSyncRecordSchema, executionPlanTasksExtended, insertExecutionPlanTaskExtendedSchema, executionDocumentTemplates, insertExecutionDocumentTemplateSchema, executionPreApprovedResources, insertExecutionPreApprovedResourceSchema, executionGeneratedDocuments, insertExecutionGeneratedDocumentSchema, playbookPrepareItems, playbookPrepareVerificationHistory, playbookMonitorItems, playbookLearnItems, executionLearnings, playbookReadinessScores, preflightCheckResults, activationEventTypeEnum, activationEvents, stakeholderAcknowledgments, budgetUnlocks, generatedDocuments, externalProjectSyncs, playbooks, insertPlaybookSchema, decisionTrees, activeDecisions, decisionLog, insertDecisionTreeSchema, insertActiveDecisionSchema, insertDecisionLogSchema, incidentAnalyses, insertIncidentAnalysisSchema, readinessAssessments, insertReadinessAssessmentSchema, whatIfRuns, insertWhatIfRunSchema, insertPlaybookPrepareItemSchema, insertPlaybookMonitorItemSchema, insertPlaybookLearnItemSchema, insertExecutionLearningSchema, insertPlaybookReadinessScoreSchema, signalMonitoringConfig, insertSignalMonitoringConfigSchema, pilotApplications, insertPilotApplicationSchema, compoundThreatAlerts, insertCompoundThreatAlertSchema, roiSnapshots, insertRoiSnapshotSchema, simulationAnalyses, insertSimulationAnalysisSchema, strategicRecordings, insertStrategicRecordingSchema, investorLeads, insertInvestorLeadSchema, peerReviews, insertPeerReviewSchema, peerReviewActions, insertPeerReviewActionSchema, magicLinkTokens, insertMagicLinkTokenSchema, trialSessions, insertTrialSessionSchema, stakeholderContacts, insertStakeholderContactSchema, triggerDetections, insertTriggerDetectionSchema, executionTimelines, insertExecutionTimelineSchema, signalActivityLog, insertSignalActivityLogSchema, situationIntents, insertSituationIntentSchema, testDriveLeads, insertTestDriveLeadSchema, customProtocols, insertCustomProtocolSchema, allowedEmails, insertAllowedEmailSchema, signalCalibrationConfig, insertSignalCalibrationConfigSchema, leadingIndicators, insertLeadingIndicatorSchema, leadingIndicatorDetections, insertLeadingIndicatorDetectionSchema, signalConnectors, insertSignalConnectorSchema, protocolSignalProfiles, insertProtocolSignalProfileSchema, signalOntologyNodes, insertSignalOntologyNodeSchema, signalOntologyEdges, insertSignalOntologyEdgeSchema, foundingPartnerApplications, insertFoundingPartnerApplicationSchema;
 var init_schema = __esm({
   "shared/schema.ts"() {
     "use strict";
@@ -6422,6 +6424,19 @@ var init_schema = __esm({
       lastUpdated: timestamp2("last_updated").defaultNow()
     });
     insertSignalOntologyEdgeSchema = createInsertSchema2(signalOntologyEdges).omit({ id: true });
+    foundingPartnerApplications = pgTable2("founding_partner_applications", {
+      id: uuid("id").primaryKey().defaultRandom(),
+      firstName: text2("first_name").notNull(),
+      lastName: text2("last_name").notNull(),
+      email: text2("email").notNull(),
+      company: text2("company").notNull(),
+      title: text2("title").notNull(),
+      triggerDomain: text2("trigger_domain").default(""),
+      message: text2("message").default(""),
+      status: text2("status").notNull().default("pending"),
+      createdAt: timestamp2("created_at").defaultNow()
+    });
+    insertFoundingPartnerApplicationSchema = createInsertSchema2(foundingPartnerApplications).omit({ id: true, createdAt: true, status: true });
   }
 });
 
@@ -20489,6 +20504,7 @@ __export(PreparationSignalService_exports, {
 });
 import { eq as eq24, desc as desc12, and as and14, gte as gte3 } from "drizzle-orm";
 async function checkPreparationSignals(organizationId) {
+  if (!organizationId || !UUID_REGEX.test(organizationId)) return [];
   const results = [];
   try {
     const recent = await db.select().from(preparednessScores).where(eq24(preparednessScores.organizationId, organizationId)).orderBy(desc12(preparednessScores.calculatedAt)).limit(1);
@@ -20589,7 +20605,7 @@ async function getRecentPreparationTriggers(organizationId, limitHours = 72) {
     return [];
   }
 }
-var PREPARATION_THRESHOLDS, PREPARATION_TRIGGER_COOLDOWN_HOURS;
+var PREPARATION_THRESHOLDS, PREPARATION_TRIGGER_COOLDOWN_HOURS, UUID_REGEX;
 var init_PreparationSignalService = __esm({
   "server/services/PreparationSignalService.ts"() {
     "use strict";
@@ -20607,6 +20623,7 @@ var init_PreparationSignalService = __esm({
       "Geopolitical": { warning: 68, critical: 52, playbook: "Geopolitical Readiness Review" }
     };
     PREPARATION_TRIGGER_COOLDOWN_HOURS = 24;
+    UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   }
 });
 
@@ -28965,7 +28982,7 @@ var init_SignalLearningService = __esm({
     init_db();
     init_schema();
     init_SignalOntologyService();
-    SignalLearningService = class {
+    SignalLearningService = class _SignalLearningService {
       // ── Job 1: Organization Calibration ────────────────────────────────────────
       // Frequency: after each Close-Out Gate completion
       // Input:     activation_outcomes (Close-Out Gate answers) for this org
@@ -29166,24 +29183,24 @@ var init_SignalLearningService = __esm({
         }
       }
       // ── Schedule all recurring learning jobs ───────────────────────────────────
+      // NOTE: Node.js setInterval overflows for values > ~2.1 billion ms (24.8 days).
+      // 30-day and 90-day intervals were causing constant firing (integer overflow → fires immediately).
+      // Monthly/quarterly jobs are now triggered manually via admin API or after Founding Partner activations.
+      // Domain learning (weekly = 604,800,000 ms) is safe and runs automatically.
+      static scheduledOnce = false;
       scheduleRecurringJobs() {
+        if (_SignalLearningService.scheduledOnce) {
+          console.log("[SignalLearning] Recurring jobs already scheduled \u2014 skipping duplicate call");
+          return;
+        }
+        _SignalLearningService.scheduledOnce = true;
         setInterval(() => {
           this.runDomainLearning().catch(
             (err) => console.error("[SignalLearning] DomainLearningJob scheduled run failed:", err)
           );
         }, 7 * 24 * 36e5);
-        setInterval(() => {
-          this.runOntologyEnrichment().catch(
-            (err) => console.error("[SignalLearning] OntologyEnrichmentJob scheduled run failed:", err)
-          );
-        }, 30 * 24 * 36e5);
-        setInterval(() => {
-          this.runIndustryProfileUpdate().catch(
-            (err) => console.error("[SignalLearning] IndustryProfileUpdateJob scheduled run failed:", err)
-          );
-        }, 90 * 24 * 36e5);
         console.log(
-          "\u2705 Signal Learning recurring jobs scheduled: domain learning (weekly), ontology enrichment (monthly), industry profiles (quarterly)"
+          "\u2705 Signal Learning recurring jobs scheduled: domain learning (weekly). Ontology enrichment and industry profile update: trigger manually via admin API."
         );
       }
       // ── Queue org calibration via background job system ────────────────────────
@@ -42055,6 +42072,347 @@ function registerPeerReviewRoute(app2) {
   });
 }
 
+// server/routes/marketingImageRoute.ts
+import { chromium } from "playwright-core";
+var CHROMIUM = process.env.REPLIT_PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/nix/store/kcvsxrmgwp3ffz5jijyy7wn9fcsjl4hz-playwright-browsers-1.55.0-with-cjk/chromium-1187/chrome-linux/chrome";
+var PRESETS = {
+  web: { cardWidth: 480, scale: 1, label: "Web (480px)" },
+  hd: { cardWidth: 800, scale: 2, label: "HD Web (1600px)" },
+  linkedin: { cardWidth: 600, scale: 2, label: "LinkedIn Share (1200\xD7628)", clipHeight: 314 },
+  portrait: { cardWidth: 540, scale: 2, label: "LinkedIn/Instagram (1080\xD71350)" },
+  letter: { cardWidth: 850, scale: 3, label: "Print Letter 8.5\xD711 @ 300 dpi" },
+  a4: { cardWidth: 827, scale: 3, label: "Print A4 @ 300 dpi" }
+};
+function buildHtml(cardWidth) {
+  const s = cardWidth / 480;
+  const px = (n) => `${Math.round(n * s)}px`;
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy:   #080d24;
+    --gold:   #C9A84C;
+    --gold2:  #e2c068;
+    --teal:   #4dc4a0;
+    --w:      #ffffff;
+    --w80:    rgba(255,255,255,0.80);
+    --w55:    rgba(255,255,255,0.55);
+    --bd:     rgba(201,168,76,0.22);
+    --cbg:    rgba(255,255,255,0.04);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#04070f; font-family:'Barlow',sans-serif; width:${cardWidth}px; margin:0 auto; }
+
+  .header { display:flex; justify-content:space-between; align-items:center; padding:${px(24)} ${px(28)} ${px(20)}; border-bottom:1px solid var(--bd); }
+  .logo-group { display:flex; align-items:center; gap:${px(10)}; }
+  .logo-mark { width:${px(38)}; height:${px(38)}; border:${px(1.5)} solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+  .logo-mark span { font-family:'Barlow Condensed',sans-serif; font-size:${px(11)}; font-weight:800; letter-spacing:.05em; color:var(--gold); }
+  .logo-name { font-family:'Barlow Condensed',sans-serif; font-size:${px(13)}; font-weight:700; letter-spacing:.12em; color:var(--w); }
+  .logo-product { font-family:'Barlow Condensed',sans-serif; font-size:${px(9)}; font-weight:600; letter-spacing:.35em; color:var(--gold); text-transform:uppercase; margin-top:${px(1)}; display:flex; align-items:center; gap:${px(6)}; }
+  .logo-product::before { content:''; display:inline-block; width:${px(18)}; height:1px; background:var(--gold); }
+  .header-right { text-align:right; }
+  .htag { font-family:'Barlow Condensed',sans-serif; font-size:${px(8)}; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--w55); line-height:1.9; }
+  .htag .accent { color:var(--teal); }
+
+  .hero { padding:${px(44)} ${px(28)} ${px(36)}; border-bottom:1px solid var(--bd); }
+  .hero h1 { font-family:'Barlow Condensed',sans-serif; font-size:${px(48)}; font-weight:800; line-height:1.0; color:var(--w); margin-bottom:${px(4)}; letter-spacing:-0.01em; }
+  .hero-product { font-family:'Cormorant Garamond',serif; font-size:${px(46)}; font-weight:700; color:var(--gold); line-height:1.05; margin-bottom:${px(20)}; }
+  .hero-sub { font-family:'Barlow Condensed',sans-serif; font-size:${px(13)}; font-weight:600; letter-spacing:.06em; color:var(--w); margin-bottom:${px(10)}; text-transform:uppercase; }
+  .hero-body { font-size:${px(13)}; font-weight:400; color:var(--w80); line-height:1.65; }
+
+  .metrics { display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--bd); border-bottom:1px solid var(--bd); }
+  .metric { padding:${px(22)} ${px(18)}; border-right:1px solid var(--bd); }
+  .metric:last-child { border-right:none; }
+  .metric-num { font-family:'Barlow Condensed',sans-serif; font-size:${px(40)}; font-weight:900; color:var(--gold); line-height:1; letter-spacing:-0.02em; display:block; margin-bottom:${px(6)}; }
+  .metric-title { font-family:'Barlow Condensed',sans-serif; font-size:${px(11)}; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--w); margin-bottom:${px(3)}; }
+  .metric-sub { font-size:${px(10)}; font-weight:400; color:var(--w55); line-height:1.4; }
+
+  .section-label { display:flex; align-items:center; gap:${px(12)}; font-family:'Barlow Condensed',sans-serif; font-size:${px(9)}; font-weight:700; letter-spacing:.35em; text-transform:uppercase; color:var(--gold); margin-bottom:${px(18)}; }
+  .section-label::before { content:''; display:inline-block; width:${px(28)}; height:${px(1.5)}; background:var(--gold); flex-shrink:0; }
+
+  .problem { padding:${px(36)} ${px(28)}; border-bottom:1px solid var(--bd); }
+  .prob-intro { font-size:${px(13)}; font-weight:400; color:var(--w80); line-height:1.65; margin-bottom:${px(4)}; }
+  .prob-intro strong { color:var(--w); font-weight:600; }
+  .prob-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:${px(8)}; margin:${px(24)} 0 ${px(20)}; }
+  .pcard { background:var(--cbg); border:1px solid rgba(255,255,255,0.09); padding:${px(16)} ${px(12)}; text-align:center; }
+  .pcard-icon { width:${px(28)}; height:${px(28)}; margin:0 auto ${px(10)}; display:block; }
+  .pcard-title { font-family:'Barlow Condensed',sans-serif; font-size:${px(11)}; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--w); margin-bottom:${px(5)}; line-height:1.3; }
+  .pcard-desc { font-size:${px(10)}; font-weight:400; color:var(--w80); line-height:1.5; }
+  .band-text { font-family:'Barlow Condensed',sans-serif; font-size:${px(9)}; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--w55); text-align:center; padding-top:${px(10)}; }
+
+  .solution { padding:${px(36)} ${px(28)}; border-bottom:1px solid var(--bd); display:grid; grid-template-columns:1fr 1fr; gap:${px(28)}; }
+  .sol-left-label { font-family:'Barlow Condensed',sans-serif; font-size:${px(9)}; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--teal); margin-bottom:${px(10)}; }
+  .sol-left h2 { font-family:'Cormorant Garamond',serif; font-size:${px(24)}; font-weight:600; line-height:1.25; color:var(--w); margin-bottom:${px(4)}; }
+  .sol-left h2 em { color:var(--gold); font-style:italic; }
+  .idea-wrap { margin:${px(20)} auto; width:${px(140)}; height:${px(140)}; }
+  .sol-checks { list-style:none; margin-top:${px(4)}; }
+  .sol-checks li { font-size:${px(11)}; font-weight:400; color:var(--w80); padding:${px(5)} 0; display:flex; align-items:flex-start; gap:${px(8)}; border-bottom:1px solid rgba(255,255,255,0.06); line-height:1.4; }
+  .sol-checks li::before { content:'\u25C6'; color:var(--teal); font-size:${px(6)}; flex-shrink:0; margin-top:${px(3)}; }
+  .sol-right-label { font-family:'Barlow Condensed',sans-serif; font-size:${px(9)}; font-weight:700; letter-spacing:.3em; text-transform:uppercase; color:var(--w55); margin-bottom:${px(10)}; }
+  .sol-right h2 { font-family:'Barlow Condensed',sans-serif; font-size:${px(26)}; font-weight:700; line-height:1.15; color:var(--w); margin-bottom:${px(20)}; }
+  .sol-right h2 em { color:var(--gold); font-style:italic; font-family:'Cormorant Garamond',serif; font-size:${px(28)}; }
+  .icard { margin-bottom:${px(16)}; padding-bottom:${px(16)}; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; gap:${px(10)}; align-items:flex-start; }
+  .icard:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .icard-icon { width:${px(22)}; height:${px(22)}; flex-shrink:0; margin-top:${px(1)}; }
+  .icard-title { font-family:'Barlow Condensed',sans-serif; font-size:${px(12)}; font-weight:700; letter-spacing:.05em; color:var(--gold); margin-bottom:${px(4)}; text-transform:uppercase; }
+  .icard-desc { font-size:${px(11)}; font-weight:400; color:var(--w80); line-height:1.5; }
+
+  .footer-quote { padding:${px(36)} ${px(28)} ${px(24)}; text-align:center; border-top:1px solid var(--bd); }
+  .quote-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:${px(20)}; font-weight:400; color:var(--w); line-height:1.4; margin-bottom:${px(10)}; }
+  .quote-arc { font-family:'Barlow Condensed',sans-serif; font-size:${px(10)}; font-weight:600; letter-spacing:.25em; text-transform:uppercase; color:var(--w55); }
+
+  .footer-bar { display:flex; justify-content:space-between; align-items:center; padding:${px(20)} ${px(28)}; border-top:1px solid var(--bd); background:rgba(0,0,0,0.25); }
+  .footer-cta { text-align:right; }
+  .footer-cta-top { font-family:'Barlow Condensed',sans-serif; font-size:${px(9)}; font-weight:700; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
+  .footer-cta-bot { font-family:'Barlow Condensed',sans-serif; font-size:${px(11)}; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--w); margin-top:${px(2)}; }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-group">
+    <div class="logo-mark"><span>VM</span></div>
+    <div>
+      <div class="logo-name">VaughnMartin</div>
+      <div class="logo-product">Readiness OS</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="htag">A New Category</div>
+    <div class="htag">For a New Era</div>
+    <div class="htag"><span class="accent">Pre-Staged \xB7 Always Ready</span></div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Welcome to the<br>category first.</h1>
+  <div class="hero-product">Readiness OS\u2122</div>
+  <div class="hero-sub">The readiness infrastructure for the Fortune 1000.</div>
+  <p class="hero-body">Every vendor bolted AI onto the old model. We replaced the model.<br>Preparation replaces coordination. 12 minutes replaces 30 days.</p>
+</section>
+
+<div class="metrics">
+  <div class="metric">
+    <span class="metric-num">3,600\xD7</span>
+    <div class="metric-title">Execution Head Start</div>
+    <div class="metric-sub">30 days \u2192 12 minutes</div>
+  </div>
+  <div class="metric">
+    <span class="metric-num">170</span>
+    <div class="metric-title">Readiness Protocols</div>
+    <div class="metric-sub">Pre-staged, not assembled</div>
+  </div>
+  <div class="metric">
+    <span class="metric-num">221</span>
+    <div class="metric-title">Strategic Triggers</div>
+    <div class="metric-sub">Continuously monitored</div>
+  </div>
+</div>
+
+<section class="problem">
+  <div class="section-label">The Old Model. Year After Year.</div>
+  <p class="prob-intro">Enterprise work was designed for a world without AI \u2014 committees, alignment cycles, and coordination delays exist because humans couldn't process information fast enough to act decisively. <strong>AI changed the constraint. The operating model didn't.</strong></p>
+  <div class="prob-grid">
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="11" stroke="#C9A84C" stroke-width="1.5"/>
+        <path d="M14 8v6l4 2" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="pcard-title">30-Day Mobilization</div>
+      <div class="pcard-desc">Before execution even begins</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="11" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="5"  stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">Committee Deliberation</div>
+      <div class="pcard-desc">Replacing pattern detection</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <rect x="6" y="6" width="16" height="16" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">Reactive Posture</div>
+      <div class="pcard-desc">Assembling after the trigger fires</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4L24 21H4L14 4z" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">No Decision Rights</div>
+      <div class="pcard-desc">Weeks of coordination overhead</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <path d="M14 4l10 10-10 10L4 14z" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+      <div class="pcard-title">No Signal Layer</div>
+      <div class="pcard-desc">Blind to strategic triggers</div>
+    </div>
+    <div class="pcard">
+      <svg class="pcard-icon" viewBox="0 0 28 28" fill="none">
+        <line x1="14" y1="5"  x2="14" y2="23" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="5"  y1="14" x2="23" y2="14" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="pcard-title">Execution Delays</div>
+      <div class="pcard-desc">30-day response to 12-min triggers</div>
+    </div>
+  </div>
+  <div class="band-text">Weeks to Mobilize &nbsp;\xB7&nbsp; Months to Execute &nbsp;\xB7&nbsp; Strategic Windows Missed</div>
+</section>
+
+<section class="solution">
+  <div class="sol-left">
+    <div class="sol-left-label">One Readiness OS</div>
+    <h2>The full readiness cycle.<br><em>Pre-staged. Always ready.</em></h2>
+    <div class="idea-wrap">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <circle cx="70" cy="70" r="64" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <circle cx="70" cy="70" r="26" fill="rgba(201,168,76,0.07)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+        <text x="70" y="66" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" font-weight="800" fill="#C9A84C" letter-spacing="1">IDEA</text>
+        <text x="70" y="78" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7"  font-weight="500" fill="rgba(201,168,76,0.7)" letter-spacing="1">FRAMEWORK</text>
+        <circle cx="70" cy="10"  r="14" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+        <text x="70" y="14"  text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#C9A84C">IDENTIFY</text>
+        <circle cx="128" cy="70" r="14" fill="rgba(77,196,160,0.08)" stroke="rgba(77,196,160,0.5)" stroke-width="1"/>
+        <text x="128" y="74" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#4dc4a0">DETECT</text>
+        <circle cx="70"  cy="130" r="14" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+        <text x="70"  y="134" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#C9A84C">EXECUTE</text>
+        <circle cx="12"  cy="70"  r="14" fill="rgba(77,196,160,0.08)" stroke="rgba(77,196,160,0.5)" stroke-width="1"/>
+        <text x="12"  y="74"  text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="#4dc4a0">ADVANCE</text>
+        <path d="M70 24 A50 50 0 0 1 114 70"  fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+        <path d="M114 70 A50 50 0 0 1 70 116" fill="none" stroke="rgba(77,196,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+        <path d="M70 116 A50 50 0 0 1 26 70"  fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+        <path d="M26 70 A50 50 0 0 1 70 24"   fill="none" stroke="rgba(77,196,160,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+      </svg>
+    </div>
+    <ul class="sol-checks">
+      <li>170 Readiness Protocols pre-staged</li>
+      <li>221 strategic triggers monitored</li>
+      <li>12-minute execution design target</li>
+      <li>Executive authority at every stage</li>
+      <li>Orchestrates your Microsoft AI stack</li>
+      <li>Pre-staged before the trigger fires</li>
+    </ul>
+  </div>
+  <div class="sol-right">
+    <div class="sol-right-label">Built for Investors</div>
+    <h2>Built for<br><em>the future.</em></h2>
+    <div class="icard">
+      <svg class="icard-icon" viewBox="0 0 22 22" fill="none"><path d="M11 2l9 9-9 9-9-9z" stroke="#C9A84C" stroke-width="1.5"/></svg>
+      <div>
+        <div class="icard-title">Category Creation</div>
+        <div class="icard-desc">Not competing with Copilot, SAP, or Workday \u2014 sits above them as the operating model layer they don't provide.</div>
+      </div>
+    </div>
+    <div class="icard">
+      <svg class="icard-icon" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#C9A84C" stroke-width="1.5"/></svg>
+      <div>
+        <div class="icard-title">Platform Economics</div>
+        <div class="icard-desc">170 core protocols + 6 industry packs + 12 compound protocols. Compounding value with every activation.</div>
+      </div>
+    </div>
+    <div class="icard">
+      <svg class="icard-icon" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="18" height="18" stroke="#C9A84C" stroke-width="1.5"/></svg>
+      <div>
+        <div class="icard-title">Microsoft Amplifier</div>
+        <div class="icard-desc">Every Fortune 1000 has invested in Microsoft AI. None have the operating model to use it when it counts.</div>
+      </div>
+    </div>
+    <div class="icard">
+      <svg class="icard-icon" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="9" stroke="#4dc4a0" stroke-width="1.5"/>
+        <circle cx="11" cy="11" r="4" stroke="#4dc4a0" stroke-width="1.5"/>
+      </svg>
+      <div>
+        <div class="icard-title">Founding Partner Program</div>
+        <div class="icard-desc">First cohort forming now. Selective by design \u2014 validating with Fortune 1000 enterprises only.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-quote">
+  <div class="quote-text">"The response is ready before the trigger fires."</div>
+  <div class="quote-arc">Preparation &nbsp;\u2192&nbsp; Readiness &nbsp;\u2192&nbsp; Fearless</div>
+</div>
+
+<footer class="footer-bar">
+  <div class="logo-group">
+    <div class="logo-mark"><span>VM</span></div>
+    <div>
+      <div class="logo-name">VaughnMartin</div>
+      <div class="logo-product">Readiness OS</div>
+    </div>
+  </div>
+  <div class="footer-cta">
+    <div class="footer-cta-top">Founding Partner Access</div>
+    <div class="footer-cta-bot">Now Forming \u2014 Apply Today</div>
+  </div>
+</footer>
+
+</body>
+</html>`;
+}
+function registerMarketingImageRoute(app2) {
+  app2.get("/api/marketing-infographic.png", async (req, res) => {
+    const formatKey = req.query.format || "hd";
+    const preset = PRESETS[formatKey] ?? PRESETS.web;
+    let browser;
+    try {
+      browser = await chromium.launch({
+        executablePath: CHROMIUM,
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+      });
+      const page = await browser.newPage();
+      await page.setViewportSize({
+        width: Math.round(preset.cardWidth * preset.scale),
+        height: Math.round(preset.cardWidth * preset.scale * 3)
+      });
+      await page.emulateMedia({ colorScheme: "dark" });
+      await page.setExtraHTTPHeaders?.({});
+      const session2 = await page.context().newCDPSession(page);
+      await session2.send("Emulation.setDeviceMetricsOverride", {
+        width: Math.round(preset.cardWidth * preset.scale),
+        height: Math.round(preset.cardWidth * preset.scale * 3),
+        deviceScaleFactor: preset.scale,
+        mobile: false
+      });
+      await page.setContent(buildHtml(preset.cardWidth), { waitUntil: "networkidle" });
+      await page.waitForTimeout(2e3);
+      const body = await page.$("body");
+      if (!body) throw new Error("Body element not found");
+      const screenshotOpts = { type: "png" };
+      if (preset.clipHeight) {
+        const bodyBox = await body.boundingBox();
+        if (bodyBox) {
+          screenshotOpts.clip = {
+            x: 0,
+            y: 0,
+            width: bodyBox.width,
+            height: Math.min(preset.clipHeight * preset.scale, bodyBox.height)
+          };
+        }
+      }
+      const buffer = await body.screenshot(screenshotOpts);
+      const filename = `VaughnMartin-ReadinessOS-${preset.label.replace(/[^a-zA-Z0-9]/g, "-")}.png`;
+      res.setHeader("Content-Type", "image/png");
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      res.setHeader("Cache-Control", "public, max-age=300");
+      res.setHeader("X-Format", preset.label);
+      res.send(buffer);
+    } catch (err) {
+      console.error("[MarketingImage] Screenshot failed:", err?.message);
+      res.status(500).json({ error: "Image generation failed", detail: err?.message });
+    } finally {
+      if (browser) await browser.close();
+    }
+  });
+}
+
 // server/routes/org-setup-routes.ts
 init_storage();
 
@@ -46119,6 +46477,7 @@ async function registerRoutes(app2, existingServer) {
     message: { error: "Rate limit exceeded on playbook library. Authenticated access has no limits." },
     skip: (req) => !!req.isAuthenticated?.()
   });
+  registerMarketingImageRoute(app2);
   app2.use("/api/playbook-library", playbookLibraryLimiter);
   app2.use("/api/playbooks/metadata", publicApiLimiter);
   app2.use("/api/playbooks/templates", publicApiLimiter);
@@ -46223,6 +46582,30 @@ async function registerRoutes(app2, existingServer) {
       return res.status(500).json({ error: "Failed to process your request. Please try again." });
     }
     return res.json({ ok: true, emailSent: result.emailSent ?? true });
+  });
+  app2.post("/api/founding-partner/apply", async (req, res) => {
+    const { firstName, lastName, email, company, title, triggerDomain, message } = req.body;
+    if (!firstName || !lastName || !email || !company || !title) {
+      return res.status(400).json({ error: "All required fields must be completed." });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Please enter a valid work email." });
+    }
+    try {
+      const [application] = await db.insert(foundingPartnerApplications).values({
+        firstName,
+        lastName,
+        email,
+        company,
+        title,
+        triggerDomain: triggerDomain || "",
+        message: message || ""
+      }).returning();
+      res.json({ ok: true, id: application.id });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to submit application. Please email founding@vaughnmartin.com directly." });
+    }
   });
   app2.get("/api/auth/magic-link/validate", async (req, res) => {
     const token = req.query.token;
