@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 10, 2026 (rev 30) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 13, 2026 (rev 31) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -77,7 +77,7 @@ MUTED    = "#6B7280"   → helper text, secondary labels, timestamps
 **Rules:**
 - Red — crisis/alert severity ONLY (preserved as-is)
 - Yellow/Orange — warnings ONLY
-- Never use: `purple-*`, `violet-*`, `cyan-*`, `indigo-*`, `emerald-*`, `blue-600+`
+- Never use: `purple-*`, `violet-*`, `cyan-*`, `indigo-*`, `blue-600+` — replace with `teal-*` or `amber-*` equivalents. **May 13 audit:** purple instances removed from `activationPersonalization.ts` (KPI colors + avatar array), `navigation/config.ts` (DETECT section gradient), and `SignalConfiguration.tsx` (IDENTIFY step breadcrumb `#6366F1` → `#2B8A6E`).
 - Light neutrals `bg-gray-50`, `bg-slate-50` are acceptable
 - Playbook category badge colors (internal enum keys unchanged): `offense` → Teal | `defense` → Navy | `special_teams` → Gold. User-facing labels for these categories are **GROWTH & POSITIONING**, **RISK & RESILIENCE**, and **TRANSFORMATION** respectively — never "Offense," "Defense," or "Special Teams" in any visible UI copy (see Section 37).
 
@@ -2078,7 +2078,7 @@ Animation: steps reveal sequentially via `useState(currentStep)` driven by `setI
 
 **No API calls.** Fully static demonstration page — all scenario data is hardcoded in the `SCENARIOS` and `CHAIN_STEPS` arrays.
 
-**Brand constants used:** `NAVY`, `NAVY_BG`, `GOLD`, `TEAL`, `IVORY`, `MUTED`. Typography: `GEO` = Cormorant Garamond (editorial), `DM` = Inter (body/labels).
+**Brand constants used:** `NAVY`, `NAVY_BG`, `GOLD`, `TEAL`, `IVORY`, `MUTED`. Typography: `GEO` = Cormorant Garamond (editorial), `BAR` = Barlow (body/labels), `BC` = Barlow Condensed (caps/labels).
 
 ---
 
@@ -2111,7 +2111,7 @@ Each story contains:
 
 **No API calls.** All story data is hardcoded in the `STORIES` array.
 
-**Brand constants used:** `NAVY`, `NAVY_BG`, `GOLD`, `TEAL`, `IVORY`, `MUTED`. Typography: `GEO` = Cormorant Garamond (editorial headings), `DM` = Inter (body).
+**Brand constants used:** `NAVY`, `NAVY_BG`, `GOLD`, `TEAL`, `IVORY`, `MUTED`. Typography: `GEO` = Cormorant Garamond (editorial headings), `BAR` = Barlow (body), `BC` = Barlow Condensed (caps/labels).
 
 ---
 
@@ -2495,3 +2495,49 @@ A two-pass bulk script updated **49 files** total — all public-facing Founding
 | `FoundingPartnerProgram.tsx` line ~919 | "Explore before committing" escape hatch (intentional) |
 
 **Rule for future developers:** If a button label contains "Founding Partner" → it goes to `/founding-partner-program`. If it is an auth-gate redirect for a logged-in user who lost access → it goes to `/request-access`.
+
+---
+
+## 51. May 13, 2026 — Rev 31 Change Log
+
+### Font Loader Cleanup (`client/index.html`)
+The Google Fonts `<link>` tag was loading 30+ font families (Inter, DM Sans, Roboto, Poppins, Montserrat, Open Sans, Outfit, Bebas Neue, Crimson Pro, DM Mono, Geist, JetBrains Mono, and 20+ more). All retired fonts were removed. **Only three families now load:**
+- `Cormorant Garamond` — editorial headings (weights 400–700, italic variants)
+- `Barlow` — body text (weights 400–700, italic variants)
+- `Barlow Condensed` — caps/labels (weights 400–800)
+
+The two previous `<link>` tags are now a single tag. This is the largest page-speed improvement made to date. Do not re-add any removed families.
+
+**Typography constant naming (all files):** `CG` or `GEO` = Cormorant Garamond · `BAR` or `DM` = Barlow · `BC` = Barlow Condensed. `Inter` and `DM Sans` are fully retired — no file should reference either family.
+
+### MasterDemo Logo Fix (`client/src/pages/MasterDemo.tsx`)
+`MasterDemo` previously rendered a hand-rolled logo (plain gold circle + "VM" text span) in its custom header. It now imports and renders `VaughnMartinLogo` from `@/components/VaughnMartinLogo`, matching every other page on the platform.
+
+```tsx
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+// In header:
+<VaughnMartinLogo color="light" height={36} variant="full" />
+```
+
+**Rule:** `MasterDemo` intentionally has no `PageLayout`/`StandardNav` (it is a full-screen immersive simulation). The `VaughnMartinLogo` component supplies its own `<Link href="/">` — never wrap it in a second `<Link>` or `<a>` tag.
+
+### Retired Language Enforcement — May 13
+Two instances of "AI-driven" were removed from user-visible copy:
+- `client/src/pages/demos/scenarioData.ts` — `triggerHeadline` for the Workforce scenario: `"AI-driven workforce transformation"` → `"workforce transformation"`
+- `client/src/components/layout/StandardNav.tsx` — two nav description strings: `"AI-driven realignment"` → `"system-staged realignment"`
+
+### Purple Color Audit — May 13
+All remaining `purple-*` Tailwind classes and purple hex values removed from `client/src`:
+
+| File | What changed |
+|---|---|
+| `client/src/data/activationPersonalization.ts` | 5 KPI `color` entries: `text-purple-400` → `text-teal-400`; avatar array: `bg-purple-500` → `bg-teal-600` |
+| `client/src/navigation/config.ts` | DETECT section gradient: `from-purple-600 to-pink-600` → `from-teal-700 to-emerald-600` |
+| `client/src/pages/SignalConfiguration.tsx` | IDENTIFY breadcrumb step color: `#6366F1` → `#2B8A6E` (TEAL) |
+
+### Logo Export Assets
+Two standalone SVG files created for external brand use (LinkedIn, marketing materials):
+- `attached_assets/vaughnmartin-seal.svg` — circular seal only (400×400, works as square profile logo)
+- `attached_assets/vaughnmartin-logo-full.svg` — full lockup: seal + "VaughnMartin" wordmark + "READINESS OS" subtitle (560×160, horizontal format)
+
+Both use inline SVG — no external font dependencies. Safe to open in any browser or convert to PNG.
