@@ -112,7 +112,7 @@ title = "VaughnMartin Readiness OS — Marketing Strategy (Revised)"
 id = "1cIC1-rJmrEUl0Y9rri_H"
 uri = "file://attached_assets/vaughnmartin-linkedin-banner.png"
 type = "image"
-title = "LinkedIn Banner — Updated with homepage motto"
+title = "LinkedIn Banner — 1584×396 PNG"
 
 [[outputs]]
 id = "CVkXLkwtClhpgj7Dkx2vF"
@@ -142,4 +142,16 @@ title = "Seal — 400×400 PNG (LinkedIn profile photo)"
 id = "FwJORvgByk4NqjXJWPHg9"
 uri = "file://attached_assets/vaughnmartin-linkedin-banner.svg"
 type = "image"
-title = "LinkedIn Banner — SVG (editable)"
+title = "LinkedIn Banner — SVG (animated radar)"
+
+[[outputs]]
+id = "nbdIFw8fBi1oTXrFmFnd6"
+uri = "file://attached_assets/vaughnmartin-profile-logo.png"
+type = "image"
+title = "Profile Logo — 400×400 PNG (seal + motto)"
+
+[[outputs]]
+id = "tfCZhXRFqmVmnX03QCBb7"
+uri = "file://attached_assets/vaughnmartin-profile-logo.svg"
+type = "image"
+title = "Profile Logo — SVG (animated radar)"
