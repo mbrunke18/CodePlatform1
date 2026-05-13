@@ -185,3 +185,9 @@ id = "W63iIfsYOVafVwjrzT-QU"
 uri = "file://attached_assets/vaughnmartin-linkedin-cover-v7-4200x700.png"
 type = "image"
 title = "LinkedIn Cover v7 — 4200×700 (Profile Photo Clear Zone)"
+
+[[outputs]]
+id = "K1no39C3ue83mQqvYDA_w"
+uri = "file://attached_assets/vaughnmartin-linkedin-cover-v8-4200x700.png"
+type = "image"
+title = "LinkedIn Cover v8 — 4200×700 (Improved Legibility)"
