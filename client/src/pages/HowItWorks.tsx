@@ -116,7 +116,7 @@ export default function HowItWorks() {
             <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16 }}>
               How 12 Minutes Actually Happens
             </h2>
-            <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
+            <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", maxWidth: 620, margin: "0 auto", lineHeight: 1.7, fontWeight: 500 }}>
               Every step the traditional enterprise spends weeks negotiating — context analysis, role assignment, task orchestration, communications — Readiness OS delivers automatically, end to end, into the tools your teams already use.
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function HowItWorks() {
           <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16, maxWidth: 600 }}>
             From First Login to Fully Configured
           </h2>
-          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 580, lineHeight: 1.7, marginBottom: 64, fontWeight: 500 }}>
+          <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", maxWidth: 580, lineHeight: 1.7, marginBottom: 64, fontWeight: 500 }}>
             When your organization logs in for the first time, the platform automatically creates your workspace and walks you through a structured Strategic Foundation setup. No IT ticket, no manual provisioning.
           </p>
 
@@ -180,7 +180,7 @@ export default function HowItWorks() {
                     <div style={{ fontSize: 18, fontWeight: 700, color: NAVY }}>{card.title}</div>
                   </div>
                 </div>
-                <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>{card.desc}</p>
+                <p style={{ fontSize: 14, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>{card.desc}</p>
                 {card.items.map((item, j) => (
                   <CheckItem key={j} text={item} />
                 ))}
@@ -199,10 +199,10 @@ export default function HowItWorks() {
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24 }}>
                 170 Battle-Tested Readiness Protocols — Ready on Day One
               </h2>
-              <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
+              <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
                 The platform comes pre-loaded with 170 Readiness Protocols across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
               </p>
-              <p style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
+              <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
                 These are not generic templates. Each Readiness Protocol contains a defined task sequence, role assignments, escalation logic, communication assets, and success metrics — built specifically for Fortune 1000-scale responses.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
@@ -288,7 +288,7 @@ export default function HowItWorks() {
               {
                 phase: "EXECUTE",
                 icon: GitBranch,
-                color: "#A78BFA",
+                color: TEAL_LIGHT,
                 title: "Design Your Response",
                 items: [
                   "Define task sequence by time window",
@@ -357,7 +357,7 @@ export default function HowItWorks() {
           <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24, maxWidth: 560 }}>
             What Happens Once You're Live
           </h2>
-          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 600, lineHeight: 1.7, marginBottom: 72, fontWeight: 500 }}>
+          <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", maxWidth: 600, lineHeight: 1.7, marginBottom: 72, fontWeight: 500 }}>
             The platform doesn't wait for you to log in. The IDEA Framework runs as a continuous operating loop — monitoring, detecting, coordinating, and learning — every day.
           </p>
 
@@ -393,7 +393,7 @@ export default function HowItWorks() {
               {
                 letter: "A",
                 phase: "ADVANCE",
-                color: "#A78BFA",
+                color: TEAL_LIGHT,
                 bg: "#fff",
                 title: "Every Execution Gets Smarter",
                 desc: "After each Readiness Protocol closes, the system generates an executive outcome summary. Lessons feed back into the Readiness Protocol. The organization's institutional knowledge compounds.",
@@ -404,7 +404,7 @@ export default function HowItWorks() {
                 <div style={{ ...CG, fontSize: 48, fontWeight: 600, color: phase.color, lineHeight: 1, marginBottom: 8 }}>{phase.letter}</div>
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: phase.color, marginBottom: 20 }}>{phase.phase}</div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>{phase.title}</div>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, marginBottom: 20, fontWeight: 500 }}>{phase.desc}</p>
+                <p style={{ fontSize: 13, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 20, fontWeight: 500 }}>{phase.desc}</p>
                 <div style={{ fontSize: 11, fontWeight: 700, color: phase.color, letterSpacing: "0.05em" }}>{phase.sub}</div>
               </div>
             ))}
@@ -424,7 +424,7 @@ export default function HowItWorks() {
           <div style={{ position: "relative" }}>
             <div style={{ position: "absolute", left: 8, top: 0, bottom: 0, width: 1, background: "rgba(255,255,255,0.08)" }} />
             {[
-              { time: "0:00", label: "Signal Detected", color: GOLD_LIGHT, desc: "AI detects a strategic signal — a competitor announcement, a regulatory filing, a market move — and scores it against your configured thresholds." },
+              { time: "0:00", label: "Signal Detected", color: GOLD_LIGHT, desc: "The system detects a strategic signal — a competitor announcement, a regulatory filing, a market move — and scores it against your configured thresholds." },
               { time: "1:00", label: "Alert Generated", color: TEAL_LIGHT, desc: "An alert fires with strategic context: what happened, why it matters for your org, affected domains, and the recommended Readiness Protocol to activate." },
               { time: "2:00", label: "Readiness Protocol Activated", color: GOLD_LIGHT, desc: "The matched Readiness Protocol from your library activates. Stakeholders receive coordinated notifications. The system knows who owns what — no ambiguity." },
               { time: "5:00", label: "Tasks Assigned", color: TEAL_LIGHT, desc: "Every task has a named owner, a deadline, and a clear decision-rights framework. All workstreams start simultaneously, not sequentially." },
@@ -450,7 +450,7 @@ export default function HowItWorks() {
           <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24, maxWidth: 540 }}>
             Value That Compounds Over Time
           </h2>
-          <p style={{ fontSize: 16, color: "#6B7280", maxWidth: 580, lineHeight: 1.7, marginBottom: 72, fontWeight: 500 }}>
+          <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", maxWidth: 580, lineHeight: 1.7, marginBottom: 72, fontWeight: 500 }}>
             The platform doesn't just respond to today's events. It learns from them. Every execution builds institutional knowledge that makes the next response faster, smarter, and better coordinated.
           </p>
 
@@ -480,7 +480,7 @@ export default function HowItWorks() {
                   <card.icon style={{ width: 18, height: 18, color: card.color === NAVY ? "#fff" : card.color }} />
                 </div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>{card.title}</div>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500 }}>{card.desc}</p>
+                <p style={{ fontSize: 13, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, fontWeight: 500 }}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -489,7 +489,7 @@ export default function HowItWorks() {
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Institutional Memory</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Readiness Protocol</div>
-              <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
+              <p style={{ fontSize: 13, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
                 After every Readiness Protocol closes, the ADVANCE phase captures what worked, what didn't, and what the next team should know. Those lessons feed directly back into your Readiness Protocol library — so knowledge stays with the organization, not the individual.
               </p>
               <CheckItem text="System-generated executive outcome summary" />
@@ -499,7 +499,7 @@ export default function HowItWorks() {
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Simulation Studio</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Test Scenarios Before They Happen</div>
-              <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
+              <p style={{ fontSize: 13, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, fontWeight: 500, marginBottom: 20 }}>
                 Describe any hypothetical scenario and the Simulation Studio runs a dry-run against your actual Readiness Protocol library. It maps your coverage readiness, shows which Readiness Protocols would activate, and identifies gaps — before you commit anything.
               </p>
               <CheckItem text="Coverage readiness mapped by domain" />
@@ -545,7 +545,7 @@ export default function HowItWorks() {
               {
                 label: "EXECUTE WORKSPACE",
                 icon: Eye,
-                color: "#6B7280",
+                color: TEAL_LIGHT,
                 title: "Your Actions, Your Role",
                 body: "When a Readiness Protocol activates, most executives don't need to see every task across the entire execution. The platform schema-gates the action surface to your role — a VP of Finance sees finance tasks, a CISO sees security tasks, an HR lead sees people tasks. Not filtered display — actually gated at the data layer. Each executive works their lane without the noise of the full 40-task execution.",
                 items: ["Role-scoped at the data layer, not the display layer", "Admins and executives retain full visibility", "Reduces decision fatigue during high-stakes execution"]
@@ -563,7 +563,7 @@ export default function HowItWorks() {
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: card.color, marginBottom: 20 }}>{card.label}</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
                   <div style={{ width: 40, height: 40, background: "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <card.icon style={{ width: 18, height: 18, color: card.color === "#6B7280" ? "rgba(255,255,255,0.7)" : card.color }} />
+                    <card.icon style={{ width: 18, height: 18, color: card.color }} />
                   </div>
                   <div style={{ ...CG, fontSize: 22, fontWeight: 600, color: "#fff" }}>{card.title}</div>
                 </div>
@@ -591,7 +591,7 @@ export default function HowItWorks() {
           <h2 style={{ ...CG, fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 600, color: NAVY, marginBottom: 16, maxWidth: 520 }}>
             Three Layers of Customization
           </h2>
-          <p style={{ fontSize: 15, color: "#6B7280", maxWidth: 540, lineHeight: 1.7, marginBottom: 56, fontWeight: 500 }}>
+          <p style={{ fontSize: 15, color: "rgba(10,15,46,0.62)", maxWidth: 540, lineHeight: 1.7, marginBottom: 56, fontWeight: 500 }}>
             Everything in the platform is configurable. Here's what you control and how deep it goes.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, border: `1px solid ${BORDER}` }}>
@@ -645,7 +645,7 @@ export default function HowItWorks() {
                   <div style={{ width: 1, height: 28, background: BORDER }} />
                   <span style={{ fontSize: 13, fontWeight: 700, color: NAVY }}>{layer.title}</span>
                 </div>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>{layer.what}</p>
+                <p style={{ fontSize: 13, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 24, fontWeight: 500 }}>{layer.what}</p>
                 {layer.controls.map((item, j) => (
                   <CheckItem key={j} text={item} />
                 ))}
@@ -662,7 +662,7 @@ export default function HowItWorks() {
           <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 600, color: NAVY, marginBottom: 12, maxWidth: 560 }}>
             The operating model layer enterprise AI frameworks assume but never build.
           </h2>
-          <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 560, lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
+          <p style={{ fontSize: 14, color: "rgba(10,15,46,0.62)", maxWidth: 560, lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
             Every major AI governance framework defines what decisions to make and who owns them. None of them build the coordination infrastructure that makes those decisions execute in 12 minutes.
           </p>
           <EnterpriseAIFrameworkDiagram />
