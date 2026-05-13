@@ -237,22 +237,40 @@ function scoreSignalAgainstPattern(signal: AnalyzedSignal, pattern: TriggerPatte
 
 export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
   const detections: DetectedTrigger[] = [];
-  const CONFIDENCE_THRESHOLD = 72; // Aligned with documented threshold — meaningful above base noise floor
 
-  // Minimum keyword matches required before a default-pattern trigger can fire.
-  // 2 matches required — RSS headlines are typically 8-15 words; requiring 3 from a
-  // 20+ word keyword list is mathematically too restrictive for real news titles.
-  // The confidence threshold (72) is the quality gate — 2 keyword matches + a
-  // credible source + recent publication reliably produce a 72+ score on genuine events,
-  // while tangential mentions on low-confidence signals stay below the threshold.
-  const MIN_KEYWORD_MATCHES = 2;
+  // ── Quality gates ────────────────────────────────────────────────────────────
+  // A trigger fires only when ALL three conditions are met:
+  //
+  //  1. CONFIDENCE_THRESHOLD (78): The composite score — base confidence + keyword
+  //     density bonus + signal quality boost — must clear 78. This is the primary
+  //     quality gate and prevents borderline matches from generating alerts.
+  //
+  //  2. MIN_KEYWORD_MATCHES (3): An absolute floor. No trigger fires on fewer than
+  //     3 keyword matches regardless of the composite score.
+  //
+  //  3. MIN_KEYWORD_DENSITY (0.12): At least 12% of a pattern's full keyword list
+  //     must be present in the signal. For a 30-keyword pattern this means 4+
+  //     matches; for a 15-keyword pattern it means 2+ (but MIN_KEYWORD_MATCHES=3
+  //     still applies). This prevents a signal that coincidentally includes 2 of
+  //     30 monitoring terms from generating an executive alert.
+  //
+  // Combined effect: a 30-keyword pattern requires ≥4 matches, a 25-keyword
+  // pattern requires ≥3 matches, and the composite score must still clear 78.
+  // ────────────────────────────────────────────────────────────────────────────
+  const CONFIDENCE_THRESHOLD = 78;
+  const MIN_KEYWORD_MATCHES  = 3;
+  const MIN_KEYWORD_DENSITY  = 0.12; // 12% of the pattern's keyword list must match
 
   for (const pattern of TRIGGER_PATTERNS) {
     const text = signal.description.toLowerCase();
     const matchedKeywords = pattern.keywords.filter(kw => text.includes(kw.toLowerCase()));
 
-    // Require a meaningful density — not just any keyword
+    // Gate 1 — absolute minimum keyword count
     if (matchedKeywords.length < MIN_KEYWORD_MATCHES) continue;
+
+    // Gate 2 — minimum keyword density (matched / total keywords in pattern)
+    const density = matchedKeywords.length / pattern.keywords.length;
+    if (density < MIN_KEYWORD_DENSITY) continue;
 
     const confidenceScore = scoreSignalAgainstPattern(signal, pattern);
     if (confidenceScore >= CONFIDENCE_THRESHOLD) {

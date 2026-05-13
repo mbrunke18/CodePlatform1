@@ -63,10 +63,14 @@ interface ConfiguredTrigger {
 }
 
 // ─── Confidence floor by the customer's configured alert threshold ────────────
+// Aligned with SignalEvaluationService quality gates (updated May 2026):
+//   red    → 85% (critical — pre-staged playbook must be certain)
+//   yellow → 78% (raised from 72 — prevents borderline matches from alerting)
+//   green  → 60% (informational, raised from 58 — still meaningful signal floor)
 const THRESHOLD_CONFIDENCE_FLOOR: Record<string, number> = {
   red: 85,
-  yellow: 72,
-  green: 58,
+  yellow: 78,
+  green: 60,
 };
 
 // ─── Signal field keywords — maps data-point field IDs to text indicators ────
