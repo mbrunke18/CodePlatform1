@@ -289,8 +289,9 @@ export function evaluateSignal(signal: AnalyzedSignal): DetectedTrigger[] {
     }
   }
 
-  // Return top 2 detections sorted by confidence to avoid alert fatigue
-  return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 2);
+  // Return top 1 detection per signal — highest confidence only. Running both engines
+  // already covers more surface area; returning 2 per signal compounds email volume.
+  return detections.sort((a, b) => b.confidenceScore - a.confidenceScore).slice(0, 1);
 }
 
 // ─── Persistence + Notification ──────────────────────────────────────────────
@@ -606,7 +607,7 @@ export async function evaluateAndPersistSignals(
         ? (Date.now() - new Date(lastDetected).getTime()) / 3600000
         : 999;
 
-      if (hoursSince < 4) continue; // Suppress duplicate within 4 hours
+      if (hoursSince < 24) continue; // Suppress duplicate within 24 hours — prevents same trigger spamming on sustained news cycles
 
       // ── Domain-specific approver routing ──────────────────────────────
       const domainApprovers = allContacts.filter(c =>

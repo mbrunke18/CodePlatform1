@@ -167,3 +167,9 @@ id = "TqrbMoEHeXVhyD96U-BMB"
 uri = "file://attached_assets/vaughnmartin-linkedin-cover-4200x700.png"
 type = "image"
 title = "LinkedIn Company Cover — City Skyline + Bokeh + Node Network, 4200×700"
+
+[[outputs]]
+id = "7zwmIF8aLhFMARkXaY7Wu"
+uri = "file://attached_assets/vaughnmartin-linkedin-cover-v5-4200x700.png"
+type = "image"
+title = "LinkedIn Cover v5 — 4200×700 (No Seal)"
