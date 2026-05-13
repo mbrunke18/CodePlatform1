@@ -3,11 +3,11 @@ import { useParams } from "wouter";
 import { SCENARIOS, type DemoScenario } from "./demos/scenarioData";
 
 /* ─── Brand ───────────────────────────────────────────────────────────────── */
-const NAVY  = "#080d24";
-const DARK  = "#030612";
-const DARK2 = "#040a18";
-const GOLD  = "#C9A84C";
-const TEAL  = "#4dc4a0";
+const NAVY    = "#0A0F2E";
+const NAVY_BG = "#132558";
+const GOLD    = "#C9A84C";
+const TEAL    = "#2B8A6E";
+const TEAL_LT = "#3BAF8A";
 const RED   = "#e05252";
 const AMB   = "#e09040";
 const W     = "#ffffff";
@@ -81,10 +81,10 @@ function SeverityColor(s: DemoScenario["signals"][0]["severity"]) {
 
 function CatColor(cat: string) {
   const m: Record<string,string> = {
-    "AUTHORITY": GOLD, "LEGAL": AMB, "GOVERNANCE": "#a070f0",
-    "FINANCE": "#60a0f0", "COMMS": "#e06090", "SECURITY": RED,
-    "OPERATIONS": "#60d0a0", "REGULATORY": AMB, "MEDICAL": TEAL,
-    "SUPPLY CHAIN": "#80c0ff", "INVESTOR REL.": GOLD,
+    "AUTHORITY": GOLD, "LEGAL": AMB, "GOVERNANCE": GOLD,
+    "FINANCE": TEAL_LT, "COMMS": AMB, "SECURITY": RED,
+    "OPERATIONS": TEAL_LT, "REGULATORY": AMB, "MEDICAL": TEAL,
+    "SUPPLY CHAIN": TEAL_LT, "INVESTOR REL.": GOLD,
   };
   return m[cat] || TEAL;
 }
@@ -107,7 +107,7 @@ function NavBar({ phase, total, onNext, onBack, nextLabel = "Continue →", disa
         {phase < total - 1 && (
           <button onClick={onNext} disabled={disabled} style={{
             ...BC, background: disabled ? W10 : GOLD, border: "none",
-            color: disabled ? W25 : DARK, fontSize: 14, fontWeight: 800,
+            color: disabled ? W25 : NAVY, fontSize: 14, fontWeight: 800,
             letterSpacing: "0.1em", padding: "12px 28px", cursor: disabled ? "not-allowed" : "pointer", textTransform: "uppercase",
           }}>{nextLabel}</button>
         )}
@@ -180,7 +180,7 @@ function PhaseTrigger({ sc, onNext }: { sc: DemoScenario; onNext: () => void }) 
       </div>
 
       <div style={{ textAlign: "center" }}>
-        <button onClick={onNext} style={{ ...BC, background: GOLD, border: "none", color: DARK, fontSize: 16, fontWeight: 900, letterSpacing: "0.14em", padding: "18px 52px", cursor: "pointer", textTransform: "uppercase" }}>
+        <button onClick={onNext} style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 16, fontWeight: 800, letterSpacing: "0.14em", padding: "18px 52px", cursor: "pointer", textTransform: "uppercase" }}>
           Watch the Response Activate →
         </button>
         <div style={{ ...BC, fontSize: 9, color: W25, letterSpacing: "0.2em", marginTop: 12, textTransform: "uppercase" }}>
@@ -203,8 +203,8 @@ function PhaseSignals({ sc, phase, total, onNext, onBack }: { sc: DemoScenario; 
         <LiveDot color={RED}/>
         <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: RED, textTransform: "uppercase" }}>Live Signal Detection · T+0:00 → T+0:{sc.signals.length > 3 ? "22" : "15"}</span>
       </div>
-      <h1 style={{ ...BC, fontSize: 40, fontWeight: 900, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
-        {sc.signals.length} signals detected.<br/><span style={{ color: GOLD }}>Risk scored in seconds.</span>
+      <h1 style={{ ...CG, fontSize: 46, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+        {sc.signals.length} signals detected.<br/><em style={{ color: GOLD }}>Risk scored in seconds.</em>
       </h1>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 32 }}>
         Readiness OS continuously monitors 221 strategic trigger patterns across regulatory feeds, newswires, financial intelligence, and social signals. The moment the trigger filed, {sc.signals.length} corroborating signals were detected and scored simultaneously.
@@ -290,15 +290,15 @@ function PhaseProtocol({ sc, phase, total, onNext, onBack }: { sc: DemoScenario;
   return (
     <div style={{ maxWidth: 840, margin: "0 auto", padding: "52px 28px 40px" }}>
       <SLabel color={GOLD}>Step 2 — Protocol Match · T+0:45</SLabel>
-      <h1 style={{ ...BC, fontSize: 40, fontWeight: 900, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
-        {locked ? <>Protocol #{sc.protocolNumber} confirmed.<br/><span style={{ color: GOLD }}>Already staged. Already ready.</span></> : <>Scanning 170 Readiness Protocols…</>}
+      <h1 style={{ ...CG, fontSize: 46, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+        {locked ? <>Protocol #{sc.protocolNumber} confirmed.<br/><em style={{ color: GOLD }}>Already staged. Already ready.</em></> : <>Scanning 170 Readiness Protocols…</>}
       </h1>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 28 }}>
         {locked ? `Readiness OS matched the signal composite to Protocol #${sc.protocolNumber}. This protocol was not written in response to the trigger — it was written months ago, tested in Q3 drills, and waiting for this exact moment.` : "Readiness OS is correlating the signal composite against all 170 Readiness Protocols to find the strongest match."}
       </p>
 
       {/* Scan animation */}
-      <div style={{ background: DARK2, border: `1px solid ${locked ? GOLD + "60" : BD}`, padding: "28px 24px", marginBottom: 24, transition: "border-color 0.5s" }}>
+      <div style={{ background: NAVY_BG, border: `1px solid ${locked ? GOLD + "60" : BD}`, padding: "28px 24px", marginBottom: 24, transition: "border-color 0.5s" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
           <LiveDot color={locked ? TEAL : GOLD}/>
           <span style={{ ...MONO, fontSize: 9, fontWeight: 700, letterSpacing: "0.3em", color: locked ? TEAL : GOLD, textTransform: "uppercase" }}>
@@ -383,9 +383,9 @@ function PhaseWarRoom({ sc, phase, total, onNext, onBack }: { sc: DemoScenario; 
         <LiveDot color={TEAL}/>
         <span style={{ ...BC, fontSize: 9, fontWeight: 700, letterSpacing: "0.4em", color: TEAL, textTransform: "uppercase" }}>War Room Active · T+0:45 → T+1:30</span>
       </div>
-      <h1 style={{ ...BC, fontSize: 38, fontWeight: 900, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+      <h1 style={{ ...CG, fontSize: 44, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
         {sc.tasks.length} tasks staging. {sc.stakeholders.length} stakeholders activating.<br/>
-        <span style={{ color: TEAL }}>45 seconds from trigger detection.</span>
+        <em style={{ color: TEAL_LT }}>45 seconds from trigger detection.</em>
       </h1>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 640, marginBottom: 28 }}>
         The war room doesn't assemble — it activates. Every task has a pre-assigned owner. Every stakeholder receives a precise brief. No one wonders what they should be doing.
@@ -496,8 +496,8 @@ function PhaseAuthorize({ sc, phase, total, onAuthorize, onBack }: { sc: DemoSce
   return (
     <div style={{ maxWidth: 840, margin: "0 auto", padding: "52px 28px 40px" }}>
       <SLabel color={GOLD}>Step 4 — Executive Authorization · T+3:22</SLabel>
-      <h1 style={{ ...BC, fontSize: 38, fontWeight: 900, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
-        {ceo.name} receives the brief.<br/><span style={{ color: GOLD }}>One decision. Full authority.</span>
+      <h1 style={{ ...CG, fontSize: 44, fontWeight: 600, color: W, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: 6 }}>
+        {ceo.name} receives the brief.<br/><em style={{ color: GOLD }}>One decision. Full authority.</em>
       </h1>
       <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 620, marginBottom: 24 }}>
         No committee. No alignment cycle. The executive brief summarizes every element already staged. Every resource pre-authorized. Every question already answered. The only decision remaining: authorize or hold.
@@ -547,7 +547,7 @@ function PhaseAuthorize({ sc, phase, total, onAuthorize, onBack }: { sc: DemoSce
             <button onClick={handleAuth} disabled={authorized} style={{
               ...BC, border: "none", flex: "1 1 auto",
               background: authorized ? TEAL : GOLD,
-              color: DARK, fontSize: 16, fontWeight: 900, letterSpacing: "0.14em",
+              color: NAVY, fontSize: 16, fontWeight: 800, letterSpacing: "0.14em",
               padding: "16px 36px", cursor: authorized ? "default" : "pointer",
               textTransform: "uppercase", transition: "background 0.4s",
             }}>
@@ -652,7 +652,7 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
 
       <div style={{ textAlign: "center", marginBottom: 44 }}>
         <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.4em", color: TEAL, textTransform: "uppercase", marginBottom: 14 }}>Activation Status · {sc.company}</div>
-        <div style={{ ...BC, fontSize: 46, fontWeight: 900, color: TEAL, lineHeight: 1, letterSpacing: "-0.02em", marginBottom: 8 }}>CONTAINMENT COMPLETE</div>
+        <div style={{ ...CG, fontSize: 52, fontWeight: 600, color: TEAL_LT, lineHeight: 1, letterSpacing: "-0.01em", marginBottom: 8 }}>Containment Complete</div>
         <div style={{ ...CG, fontSize: 24, fontStyle: "italic", color: GOLD, lineHeight: 1.3 }}>{sc.outcome.headline}</div>
       </div>
 
@@ -709,14 +709,14 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
       {/* CTA */}
       <div style={{ background: GBG, border: `1px solid ${GOLD}50`, padding: "36px 32px" }}>
         <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.4em", color: GOLD, textTransform: "uppercase", marginBottom: 14 }}>Founding Partner Program — Now Forming</div>
-        <h2 style={{ ...BC, fontSize: 28, fontWeight: 900, color: W, lineHeight: 1.15, marginBottom: 10, letterSpacing: "-0.01em" }}>
-          Every organization prepared for every situation it'll face<br/>is no longer afraid of strategic triggers.<br/><span style={{ color: GOLD }}>It's fearless.</span>
+        <h2 style={{ ...CG, fontSize: 34, fontWeight: 600, color: W, lineHeight: 1.2, marginBottom: 10 }}>
+          Every organization prepared for every situation it'll face<br/>is no longer afraid of strategic triggers.<br/><em style={{ color: GOLD }}>It's fearless.</em>
         </h2>
         <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 540, marginBottom: 24 }}>
           The Founding Partner Program is a 90-day validation partnership with Fortune 1000 enterprises. The first cohort is forming now. The only difference between this simulation and a live deployment: the protocols carry your organization's name, your stakeholders, and your pre-approved advisors.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
-          <a href="/contact" style={{ ...BC, background: GOLD, border: "none", color: DARK, fontSize: 15, fontWeight: 900, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>
+          <a href="/contact" style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 15, fontWeight: 800, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>
             Apply for Founding Partner Access →
           </a>
           <button onClick={onRestart} style={{ ...BC, background: "transparent", border: `1px solid ${W25}`, color: W70, fontSize: 13, fontWeight: 600, letterSpacing: "0.1em", padding: "16px 24px", cursor: "pointer", textTransform: "uppercase" }}>
@@ -735,7 +735,7 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
 function ProgressBar({ phase, total }: { phase: number; total: number }) {
   const labels = ["Trigger","Signals","Protocol","War Room","Authorize","12 Minutes","Outcome"];
   return (
-    <div style={{ background: DARK2, borderBottom: `1px solid ${BD}` }}>
+    <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}` }}>
       <div style={{ maxWidth: 960, margin: "0 auto", display: "flex" }}>
         {labels.map((label, i) => (
           <div key={i} style={{ flex: 1, padding: "11px 6px 9px", textAlign: "center", borderBottom: i === phase ? `2px solid ${GOLD}` : i < phase ? `2px solid ${TEAL}` : "2px solid transparent" }}>
@@ -765,21 +765,28 @@ export default function MasterDemo() {
   useEffect(() => { setPhase(0); }, [scenarioId]);
 
   return (
-    <div style={{ background: DARK, minHeight: "100vh", color: W }}>
+    <div style={{ background: NAVY, minHeight: "100vh", color: W }}>
       {/* Header */}
-      <div style={{ background: NAVY, borderBottom: `1px solid ${BD}`, padding: "13px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 32, height: 32, borderRadius: "50%", border: `1.5px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ ...BC, fontSize: 10, fontWeight: 800, color: GOLD }}>VM</span>
-          </div>
+      <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}`, padding: "12px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 30, height: 30, borderRadius: "50%", border: `1.5px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: "0.05em" }}>VM</span>
+            </div>
+            <div>
+              <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: W, lineHeight: 1 }}>VaughnMartin</div>
+              <div style={{ ...BC, fontSize: 7, fontWeight: 600, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", lineHeight: 1, marginTop: 2 }}>Readiness OS™</div>
+            </div>
+          </a>
+          <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.12)" }}/>
           <div>
-            <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", color: W }}>VaughnMartin · Readiness OS™</div>
-            <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.2em", color: W50, textTransform: "uppercase" }}>{sc.name} · {sc.company}</div>
+            <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.25em", color: W50, textTransform: "uppercase", lineHeight: 1 }}>Live Simulation</div>
+            <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.08em", color: W, lineHeight: 1, marginTop: 3 }}>{sc.name} · {sc.company}</div>
           </div>
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <a href="/demo-hub" style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: W50, textDecoration: "none", padding: "6px 14px", border: `1px solid ${W25}` }}>All Scenarios</a>
-          <a href="/" style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: GOLD, textDecoration: "none", border: `1px solid ${GOLD}40`, padding: "6px 14px" }}>Platform</a>
+          <a href="/demo-hub" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: W50, textDecoration: "none", padding: "6px 14px", border: `1px solid ${W25}` }}>← All Scenarios</a>
+          <a href="/contact" style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", color: NAVY, background: GOLD, textDecoration: "none", padding: "6px 14px" }}>Request Access</a>
         </div>
       </div>
 

@@ -175,7 +175,7 @@ export default function DemoHub() {
 
   return (
     <PageLayout>
-      <div style={{ background: NAVY, minHeight: "100vh", color: W }}>
+      <div style={{ background: NAVY_BG, minHeight: "100vh", color: W }}>
 
         {/* Hero */}
         <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}`, position: "relative", overflow: "hidden" }}>
