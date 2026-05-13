@@ -203,3 +203,9 @@ id = "2-lhaqZcDgmhH5_pgTCzz"
 uri = "file://attached_assets/vaughnmartin-linkedin-cover-v10-4200x700.png"
 type = "image"
 title = "LinkedIn Cover v10 — 4200×700 (Billboard, Full Legibility)"
+
+[[outputs]]
+id = "_9d1mgXK4Y5H4zhqEurmS"
+uri = "file://attached_assets/vaughnmartin-linkedin-cover-v11-4200x700.png"
+type = "image"
+title = "LinkedIn Cover v11 — 4200×700 (Lighter, No Overlays, No Overlap)"
