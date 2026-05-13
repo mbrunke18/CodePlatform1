@@ -197,3 +197,9 @@ id = "rCs0bX9PENhsjuaI7VZfG"
 uri = "file://attached_assets/vaughnmartin-linkedin-cover-v9-4200x700.png"
 type = "image"
 title = "LinkedIn Cover v9 — 4200×700 (Readiness OS Product-First)"
+
+[[outputs]]
+id = "2-lhaqZcDgmhH5_pgTCzz"
+uri = "file://attached_assets/vaughnmartin-linkedin-cover-v10-4200x700.png"
+type = "image"
+title = "LinkedIn Cover v10 — 4200×700 (Billboard, Full Legibility)"
