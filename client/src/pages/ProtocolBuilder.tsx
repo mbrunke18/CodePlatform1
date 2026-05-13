@@ -785,7 +785,7 @@ export default function ProtocolBuilder() {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', fontFamily: '"DM Sans", "Inter", system-ui, sans-serif' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', fontFamily: '"Barlow", sans-serif' }}>
 
       {/* ── Sidebar ── */}
       <div style={{ width: 272, background: NAVY, flexShrink: 0, display: 'flex', flexDirection: 'column', padding: '32px 24px', position: 'sticky', top: 0, height: '100vh', overflowY: 'auto' }}>

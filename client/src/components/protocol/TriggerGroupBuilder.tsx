@@ -33,7 +33,7 @@ const SEVERITY_OPTIONS = [
   { value: "low", label: "Low", color: "#6B7280" },
   { value: "medium", label: "Medium", color: "#F59E0B" },
   { value: "high", label: "High", color: "#EF4444" },
-  { value: "critical", label: "Critical", color: "#7C3AED" },
+  { value: "critical", label: "Critical", color: "#DC2626" },
 ];
 
 interface SelectedDataPoint {
@@ -475,7 +475,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 const SEVERITY_COLORS: Record<string, string> = {
-  low: "#6B7280", medium: "#F59E0B", high: "#EF4444", critical: "#7C3AED",
+  low: "#6B7280", medium: "#F59E0B", high: "#EF4444", critical: "#DC2626",
 };
 
 interface PreArmedSignal {

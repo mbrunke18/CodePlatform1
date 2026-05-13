@@ -18,9 +18,9 @@ const domains = [
   { name: "Crisis Management", icon: AlertTriangle, category: "RISK", color: "#EF4444" },
   { name: "Cyber Security", icon: Shield, category: "RISK", color: "#EF4444" },
   { name: "Regulatory", icon: Scale, category: "RISK", color: "#EF4444" },
-  { name: "Digital Transform", icon: Cpu, category: "TRANSFORMATION", color: "#8B5CF6" },
-  { name: "Competitive Response", icon: Swords, category: "TRANSFORMATION", color: "#8B5CF6" },
-  { name: "AI Governance", icon: Brain, category: "TRANSFORMATION", color: "#8B5CF6" },
+  { name: "Digital Transform", icon: Cpu, category: "TRANSFORMATION", color: "#2B8A6E" },
+  { name: "Competitive Response", icon: Swords, category: "TRANSFORMATION", color: "#2B8A6E" },
+  { name: "AI Governance", icon: Brain, category: "TRANSFORMATION", color: "#2B8A6E" },
 ];
 
 export function StrategicDomains({ progress }: SceneProps) {

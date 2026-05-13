@@ -61,7 +61,7 @@ export default function SituationIntentsHub() {
   const completionRate = triggers.length ? Math.round((intents.length / triggers.length) * 100) : 0;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8F7F4", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F8F7F4", fontFamily: "'Barlow', sans-serif" }}>
       {/* Header */}
       <div style={{ background: NAVY, padding: "32px 40px 28px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>

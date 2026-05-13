@@ -120,7 +120,7 @@ export function SignalPlaybookMapper() {
           label="Available Readiness Protocols"
           value={playbooks.length}
           icon={<Play className="w-5 h-5" />}
-          color="purple"
+          color="gold"
         />
         <StatCard
           label="Active Mappings"
@@ -314,7 +314,7 @@ function StatCard({
 }) {
   const colorClasses: Record<string, string> = {
     blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E]',
-    purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C]',
+    gold: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C]',
     green: 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:text-[#2B8A6E]',
     amber: 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
   };

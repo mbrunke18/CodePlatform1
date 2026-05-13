@@ -140,7 +140,7 @@ function TextArea({ value, onChange, placeholder, rows = 3 }: { value: string; o
       rows={rows}
       style={{
         width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`,
-        borderRadius: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+        borderRadius: 0, fontFamily: "'Barlow', sans-serif", fontSize: 14,
         resize: "vertical", color: NAVY, outline: "none", boxSizing: "border-box",
         lineHeight: 1.6,
       }}
@@ -323,7 +323,7 @@ export default function PeerReview() {
   const progress = Math.round((step / (SECTIONS.length - 1)) * 100);
 
   return (
-    <div style={{ background: OFF, minHeight: "100vh", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ background: OFF, minHeight: "100vh", fontFamily: "'Barlow', sans-serif" }}>
       {/* Header */}
       <div style={{ background: NAVY, padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
@@ -385,7 +385,7 @@ export default function PeerReview() {
                   value={(identity as any)[f.key]}
                   onChange={e => setIdentity(prev => ({ ...prev, [f.key]: e.target.value }))}
                   placeholder={f.placeholder}
-                  style={{ width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 14, color: NAVY, boxSizing: "border-box", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ width: "100%", padding: "10px 14px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 14, color: NAVY, boxSizing: "border-box", fontFamily: "'Barlow', sans-serif" }}
                 />
               </div>
             ))}
@@ -538,7 +538,7 @@ export default function PeerReview() {
                       value={q16Ratings[dim]?.comments || ""}
                       onChange={e => setQ16Ratings(prev => ({ ...prev, [dim]: { ...prev[dim], comments: e.target.value } }))}
                       placeholder="Comments (optional)"
-                      style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, boxSizing: "border-box", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, boxSizing: "border-box", fontFamily: "'Barlow', sans-serif" }}
                     />
                   </div>
                 ))}

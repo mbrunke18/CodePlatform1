@@ -15,7 +15,7 @@ const IVORY   = "#F8F7F4";
 const MUTED   = "#6B7280";
 const BORDER  = "#E8E4DC";
 const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
-const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Barlow', sans-serif" };
 
 // ─── Live context ─────────────────────────────────────────────────────────────
 const SCENARIO_DOMAIN_MAP: Record<string, string> = {

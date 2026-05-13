@@ -43,7 +43,7 @@ const SECTION_DARK_BG: React.CSSProperties = {
 };
 
 const GEO: React.CSSProperties = { fontFamily: "Georgia, 'Times New Roman', serif" };
-const DM: React.CSSProperties  = { fontFamily: "'DM Sans', 'Inter', sans-serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Barlow', 'Barlow', sans-serif" };
 const CONTAINER: React.CSSProperties = { maxWidth: 1280, margin: "0 auto", padding: "0 32px" };
 
 function trackCTA(loc: string) {
@@ -1238,13 +1238,13 @@ function ExecutionGapSection() {
     <section style={{ background: "#F0EDE4", padding: "80px 0 60px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C9A84C", marginBottom: 12, fontFamily: "'DM Sans', Arial, sans-serif" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "#C9A84C", marginBottom: 12, fontFamily: "'Barlow', Arial, sans-serif" }}>
             THE ARCHITECTURE BEHIND THE SPEED
           </div>
           <div style={{ fontSize: 36, fontWeight: 700, color: "#0A0F2E", fontFamily: "'Cormorant Garamond', Georgia, serif", lineHeight: 1.15 }}>
             30 Days of Mobilization. 12 Minutes to Live Execution.
           </div>
-          <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 620, margin: "14px auto 0", fontFamily: "'DM Sans', Arial, sans-serif", lineHeight: 1.6 }}>
+          <div style={{ fontSize: 15, color: "#6B7280", marginTop: 14, maxWidth: 620, margin: "14px auto 0", fontFamily: "'Barlow', Arial, sans-serif", lineHeight: 1.6 }}>
             The traditional enterprise spends weeks just getting the right people in the room, aligned on a plan, and ready to act. Readiness OS delivers roles assigned, tasks staged, communications drafted, and execution already underway — in 12 minutes.
           </div>
         </div>

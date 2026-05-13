@@ -122,7 +122,7 @@ export default function OnboardingGuide() {
   }, []);
 
   return (
-    <div style={{ background: "#F9FAFB", minHeight: "100vh", fontFamily: "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
+    <div style={{ background: "#F9FAFB", minHeight: "100vh", fontFamily: "'Barlow', 'Helvetica Neue', Helvetica, Arial, sans-serif" }}>
 
       {/* Top bar */}
       <div className="print:hidden" style={{ background: NAVY, padding: "10px 40px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>

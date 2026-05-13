@@ -54,7 +54,7 @@ const SECTOR_PACKS = [
   { id: "technology",          label: "Technology",               color: "#2B8A6E",  verticalKey: "technology",       tagline: "API deprecation, developer exodus, open-source, platform migration" },
   { id: "manufacturing",       label: "Manufacturing",            color: "#132558",  verticalKey: "manufacturing",    tagline: "Supplier cascade, tooling failure, labor strike, geopolitical" },
   { id: "energy",              label: "Energy",                   color: "#059669",  verticalKey: "energy",           tagline: "Pipeline rupture, grid failure, climate protest, EPA compliance" },
-  { id: "retail",              label: "Retail",                   color: "#7C3AED",  verticalKey: "retail",           tagline: "Multi-brand launch, trend capitalization, pricing disruption" },
+  { id: "retail",              label: "Retail",                   color: "#2B8A6E",  verticalKey: "retail",           tagline: "Multi-brand launch, trend capitalization, pricing disruption" },
   { id: "healthcare",          label: "Healthcare",               color: "#DC2626",  verticalKey: "healthcare",       tagline: "Product recall, safety incidents, FDA compliance" },
 ];
 

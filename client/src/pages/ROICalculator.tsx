@@ -85,7 +85,7 @@ const RC_TEAL = "#2B8A6E";
 const RC_MID_NAVY = "#0D1640";
 const RC_MUTED = "rgba(240,237,228,0.55)";
 const RC_GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-const RC_DM: React.CSSProperties = { fontFamily: "'DM Sans', system-ui, sans-serif" };
+const RC_DM: React.CSSProperties = { fontFamily: "'Barlow', system-ui, sans-serif" };
 const RC_CONTAINER: React.CSSProperties = { maxWidth: 1160, margin: "0 auto", padding: "0 32px" };
 const RC_REV_BRACKETS = [
   { label: '$1B – $5B', execRate: 650, revenueRiskPct: 0.003 },

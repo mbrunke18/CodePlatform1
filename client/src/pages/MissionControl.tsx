@@ -474,7 +474,7 @@ export default function MissionControl() {
         minHeight: '100vh',
         background: NAVY,
         color: '#fff',
-        fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+        fontFamily: "'Barlow', sans-serif",
         position: 'relative',
         overflow: 'hidden',
       }}>

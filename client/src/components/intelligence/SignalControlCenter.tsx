@@ -213,7 +213,7 @@ export function SignalControlCenter() {
           value={dashboard.triggersConfigured}
           icon={<Zap className="w-5 h-5" />}
           trend="8 active"
-          color="purple"
+          color="gold"
         />
         <MetricCard
           label="Data Sources"
@@ -368,7 +368,7 @@ function MetricCard({
     blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E]',
     red: 'bg-red-500/10 text-red-600 dark:text-red-400',
     green: 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:text-[#2B8A6E]',
-    purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C]',
+    gold: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C]',
     cyan: 'bg-[#2B8A6E]/10 text-[#2B8A6E] dark:text-[#2B8A6E]',
     amber: 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
   };

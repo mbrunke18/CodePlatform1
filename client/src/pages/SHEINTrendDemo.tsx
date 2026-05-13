@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "wouter";
 import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
@@ -10,7 +9,7 @@ const TEAL    = "#2B8A6E";
 const TEAL_LT = "#3BAF8A";
 const BORDER  = "#E8E4DC";
 const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
-const DM: React.CSSProperties  = { fontFamily: "'Inter', sans-serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Barlow', sans-serif" };
 
 const SCENARIO = {
   title: "Fast Fashion Competitive Disruption",
@@ -128,7 +127,7 @@ export default function SHEINTrendDemo() {
 
   const Nav = () => (
     <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, zIndex: 50, background: NAVY }}>
-      <Link href="/"><div style={{ cursor: 'pointer' }}><VaughnMartinLogo height={32} variant="full" color="light" /></div></Link>
+      <VaughnMartinLogo height={32} variant="full" color="light" />
       <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
         {[{ n:1, label:'Scenario' }, { n:2, label:'Brief' }, { n:3, label:'War Room' }, { n:4, label:'Debrief' }].map((s, i) => (
           <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -138,7 +137,7 @@ export default function SHEINTrendDemo() {
           </div>
         ))}
       </div>
-      <Link href="/founding-partner-program"><button style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}>Request Founding Partner Access</button></Link>
+      <a href="/contact" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '8px 20px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', textDecoration: 'none', display: 'inline-block' }}>Request Founding Partner Access</a>
     </div>
   );
 

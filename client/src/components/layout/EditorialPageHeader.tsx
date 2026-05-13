@@ -5,7 +5,7 @@ const NAVY  = "#0A0F2E";
 const GOLD  = "#C9A84C";
 const TEAL  = "#2B8A6E";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
-const DM: React.CSSProperties = { fontFamily: "'Inter', 'Helvetica Neue', sans-serif" };
+const DM: React.CSSProperties = { fontFamily: "'Barlow', sans-serif" };
 
 interface Stat {
   num: string;

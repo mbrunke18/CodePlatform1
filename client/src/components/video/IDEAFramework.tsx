@@ -42,7 +42,7 @@ const phases = [
     name: "ADVANCE", 
     module: "Retrospect™",
     icon: TrendingUp, 
-    color: "#8B5CF6",
+    color: "#2B8A6E",
     description: "Capture learning",
     outcome: "Continuous improvement"
   },

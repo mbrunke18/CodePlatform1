@@ -77,7 +77,7 @@ export default function AdminQuickLink() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#F8F9FB', fontFamily: "'Inter','Helvetica Neue',sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#F8F9FB', fontFamily: "'Barlow','Helvetica Neue',sans-serif" }}>
 
       {/* Header */}
       <div style={{ background: NAVY, padding: '20px 40px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>

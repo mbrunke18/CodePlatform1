@@ -12,7 +12,7 @@ const GOLD      = "#C9A84C";
 const TEAL      = "#2B8A6E";
 const WHITE     = "#F0EDE4";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-const DM: React.CSSProperties = { fontFamily: "'DM Sans', sans-serif" };
+const DM: React.CSSProperties = { fontFamily: "'Barlow', sans-serif" };
 const GOLD_GRAD = "linear-gradient(135deg, #C9A84C 0%, #E8C96D 50%, #C9A84C 100%)";
 
 /* Readable text shades on dark navy */

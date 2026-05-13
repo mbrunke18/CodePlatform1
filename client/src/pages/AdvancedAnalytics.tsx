@@ -302,12 +302,12 @@ export default function AdvancedAnalytics() {
             <div className="relative z-10">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                 <div style={{ width: 24, height: 1, background: '#C9A84C' }} />
-                <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C' }}>Analytics &amp; Intelligence</span>
+                <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#C9A84C' }}>Analytics &amp; Intelligence</span>
               </div>
               <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,3.5vw,40px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: 8 }}>
                 Advanced Business <em style={{ fontStyle: 'italic', color: '#C9A84C' }}>Intelligence</em>
               </h1>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>Predictive analytics, market intelligence, and competitive benchmarking</p>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>Predictive analytics, market intelligence, and competitive benchmarking</p>
             </div>
             <div className="relative z-10 flex items-center gap-4">
               <Link to="/">

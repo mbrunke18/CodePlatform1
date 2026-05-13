@@ -13,12 +13,12 @@ const firms = [
   { name: "BCG", color: "#818cf8" },
   { name: "McKinsey", color: "#06b6d4" },
   { name: "Bain", color: "#f43f5e" },
-  { name: "Accenture", color: "#8b5cf6" },
-  { name: "Deloitte", color: "#a855f7" },
+  { name: "Accenture", color: "#2B8A6E" },
+  { name: "Deloitte", color: "#C9A84C" },
   { name: "PwC", color: "#f59e0b" },
   { name: "Gartner", color: "#10b981" },
   { name: "Forrester", color: "#14b8a6" },
-  { name: "IDC", color: "#6366f1" },
+  { name: "IDC", color: "#2B8A6E" },
   { name: "Microsoft", color: "#38bdf8" },
   { name: "Google Cloud", color: "#34d399" },
   { name: "OpenAI", color: "#a3e635" },
@@ -41,9 +41,9 @@ export function Validation({ progress }: SceneProps) {
         className="absolute inset-0 opacity-15"
         animate={{
           background: [
-            "radial-gradient(circle at 30% 40%, #6366f1 0%, transparent 50%)",
-            "radial-gradient(circle at 70% 60%, #6366f1 0%, transparent 50%)",
-            "radial-gradient(circle at 50% 30%, #6366f1 0%, transparent 50%)",
+            "radial-gradient(circle at 30% 40%, #2B8A6E 0%, transparent 50%)",
+            "radial-gradient(circle at 70% 60%, #2B8A6E 0%, transparent 50%)",
+            "radial-gradient(circle at 50% 30%, #2B8A6E 0%, transparent 50%)",
           ]
         }}
         transition={{ duration: 5, repeat: Infinity }}

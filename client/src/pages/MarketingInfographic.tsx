@@ -1,13 +1,13 @@
-const NAVY  = "#080d24";
+const NAVY  = "#0A0F2E";
 const GOLD  = "#C9A84C";
 const GOLD2 = "#e2c068";
-const TEAL  = "#4dc4a0";
+const TEAL  = "#2B8A6E";
 const W     = "#ffffff";
 const W80   = "rgba(255,255,255,0.80)";
 const W55   = "rgba(255,255,255,0.55)";
 const BD    = "rgba(201,168,76,0.22)";
 const CBG   = "rgba(255,255,255,0.04)";
-const DARK  = "#04070f";
+const NAVY_BG = "#132558";
 
 const BC  = { fontFamily: "'Barlow Condensed','Arial Narrow',sans-serif" } as const;
 const CG  = { fontFamily: "'Cormorant Garamond',Georgia,serif" } as const;
@@ -141,7 +141,7 @@ export default function MarketingInfographic() {
   const border = `1px solid ${BD}`;
 
   return (
-    <div style={{ background: DARK, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", padding: "40px 16px 80px" }}>
+    <div style={{ background: NAVY_BG, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", padding: "40px 16px 80px" }}>
       <div style={{ width: 480, background: NAVY, boxShadow: "0 0 80px rgba(201,168,76,0.07)" }}>
 
         {/* ── HEADER ─────────────────────────────────────────────────────── */}

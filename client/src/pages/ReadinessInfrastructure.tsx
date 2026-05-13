@@ -10,7 +10,7 @@ const IVORY   = "#F0EDE4";
 const MUTED   = "#6B7280";
 const RED     = "#C0392B";
 const GEO: CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
-const DM: CSSProperties  = { fontFamily: "'Inter', system-ui, sans-serif" };
+const DM: CSSProperties  = { fontFamily: "'Barlow', sans-serif" };
 const MONO: CSSProperties = { fontFamily: "'Barlow Condensed', sans-serif" };
 
 const GoldRule = () => (

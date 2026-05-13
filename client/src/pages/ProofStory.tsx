@@ -9,7 +9,7 @@ const TEAL    = "#2B8A6E";
 const IVORY   = "#F0EDE4";
 const MUTED   = "#6B7280";
 const GEO: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-const DM: CSSProperties  = { fontFamily: "'Inter', system-ui, sans-serif" };
+const DM: CSSProperties  = { fontFamily: "'Barlow', sans-serif" };
 
 const STORIES = [
   {

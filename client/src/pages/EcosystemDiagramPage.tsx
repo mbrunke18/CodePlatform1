@@ -46,7 +46,7 @@ export default function EcosystemDiagramPage() {
             A command layer, not a replacement.
           </h2>
 
-          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#374151", lineHeight: 1.8, maxWidth: 720, margin: "0 auto 48px", textAlign: "center" }}>
+          <p style={{ fontFamily: "'Barlow',sans-serif", fontSize: 15, color: "#374151", lineHeight: 1.8, maxWidth: 720, margin: "0 auto 48px", textAlign: "center" }}>
             Technology amplifies whatever system it is applied to. If the coordination architecture does not exist before the trigger fires, AI accelerates the gap, not the response. The operating model layer has to be built before the signal appears.
           </p>
 
@@ -91,7 +91,7 @@ export default function EcosystemDiagramPage() {
                   {title}
                 </h3>
                 <p style={{
-                  fontFamily: "'Inter',sans-serif",
+                  fontFamily: "'Barlow',sans-serif",
                   fontSize: 14, color: "#374151", lineHeight: 1.7, fontWeight: 400,
                 }}>
                   {body}
@@ -134,7 +134,7 @@ export default function EcosystemDiagramPage() {
                   {name}
                 </div>
                 <p style={{
-                  fontFamily: "'Inter',sans-serif",
+                  fontFamily: "'Barlow',sans-serif",
                   fontSize: 12, color: "#6B7280", lineHeight: 1.6, fontWeight: 400,
                 }}>
                   {role}
@@ -162,7 +162,7 @@ export default function EcosystemDiagramPage() {
           Activate Readiness OS on your Microsoft stack.
         </h2>
         <p style={{
-          fontFamily: "'Inter',sans-serif",
+          fontFamily: "'Barlow',sans-serif",
           fontSize: 15, color: "rgba(240,237,228,0.55)",
           maxWidth: 520, margin: "0 auto 36px",
         }}>

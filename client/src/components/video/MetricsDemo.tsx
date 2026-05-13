@@ -12,7 +12,7 @@ const metrics = [
   { icon: Clock, label: "Execution Speed", value: "10x", subtext: "faster (McKinsey)", color: "#D4AF37" },
   { icon: Target, label: "Time Saved", value: "98 days", subtext: "with AI automation", color: "#00A8A8" },
   { icon: DollarSign, label: "Cost Avoided", value: "$2.2M", subtext: "per breach (IBM)", color: "#22c55e" },
-  { icon: TrendingUp, label: "Crisis Response", value: "3.5x", subtext: "faster coordination", color: "#8b5cf6" },
+  { icon: TrendingUp, label: "Crisis Response", value: "3.5x", subtext: "faster coordination", color: "#2B8A6E" },
 ];
 
 export function MetricsDemo({ progress }: SceneProps) {

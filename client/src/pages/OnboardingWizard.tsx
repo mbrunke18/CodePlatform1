@@ -160,7 +160,7 @@ export default function OnboardingWizard() {
         onSkip={() => completeOnboardingMutation.mutate()}
       />
     ) : (
-    <div style={{ background: OFF, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
+    <div style={{ background: OFF, fontFamily: "'Barlow', sans-serif", fontWeight: 500 }}>
 
       {/* Header */}
       <div style={{ background: NAVY, padding: "0 48px", position: "relative", overflow: "hidden" }}>
@@ -540,7 +540,7 @@ function JourneyView({ onBegin, onSkip }: { onBegin: () => void; onSkip: () => v
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: NAVY, fontFamily: "'DM Sans', sans-serif", fontWeight: 500, position: "relative", overflow: "hidden" }}>
+    <div style={{ minHeight: "100vh", background: NAVY, fontFamily: "'Barlow', sans-serif", fontWeight: 500, position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px)`, backgroundSize: "48px 48px" }} />
       <div style={{ position: "absolute", top: -120, right: -80, width: 600, height: 600, background: "radial-gradient(ellipse,rgba(43,138,110,0.12) 0%,transparent 65%)", pointerEvents: "none" }} />
 
@@ -624,7 +624,7 @@ function CompleteView({ orgName, onGo }: { orgName: string; onGo: () => void }) 
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: OFF, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
+    <div style={{ minHeight: "100vh", background: OFF, fontFamily: "'Barlow', sans-serif", fontWeight: 500 }}>
 
       {/* Navy confirmation header */}
       <div style={{ background: NAVY, padding: "56px 48px", position: "relative", overflow: "hidden" }}>

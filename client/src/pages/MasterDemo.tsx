@@ -765,7 +765,7 @@ export default function MasterDemo() {
   useEffect(() => { setPhase(0); }, [scenarioId]);
 
   return (
-    <div style={{ background: NAVY, minHeight: "100vh", color: W }}>
+    <div style={{ background: NAVY_BG, minHeight: "100vh", color: W }}>
       {/* Header */}
       <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}`, padding: "12px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>

@@ -228,7 +228,7 @@ export default function ProtocolLearningsPanel({ scenarioId }: ProtocolLearnings
                       {learningsByCategory[category].map((learning) => (
                         <Card key={learning.id} className="border-l-4" style={{
                           borderLeftColor: category === 'communication' ? '#3b82f6' :
-                                         category === 'timing' ? '#a855f7' :
+                                         category === 'timing' ? '#C9A84C' :
                                          category === 'resource_allocation' ? '#22c55e' :
                                          category === 'escalation' ? '#ef4444' : '#64748b'
                         }}>

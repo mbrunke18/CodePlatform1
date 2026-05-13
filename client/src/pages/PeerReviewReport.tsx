@@ -171,17 +171,17 @@ function ImprovementLog() {
             <div>
               <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Feedback Theme / Insight</label>
               <input value={insight} onChange={e => setInsight(e.target.value)} placeholder="e.g. Multiple reviewers questioned the 12-minute claim without seeing a live example"
-                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
+                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'Barlow', sans-serif", boxSizing: "border-box" }} />
             </div>
             <div>
               <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Action Taken / Planned</label>
               <input value={action} onChange={e => setAction(e.target.value)} placeholder="e.g. Added live activation demo to the test drive complete screen"
-                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", boxSizing: "border-box" }} />
+                style={{ width: "100%", padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'Barlow', sans-serif", boxSizing: "border-box" }} />
             </div>
             <div>
               <label style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 4 }}>Category</label>
               <select value={category} onChange={e => setCategory(e.target.value)}
-                style={{ padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'DM Sans', sans-serif", background: "white" }}>
+                style={{ padding: "8px 12px", border: `1px solid ${BORDER}`, borderRadius: 0, fontSize: 13, color: NAVY, fontFamily: "'Barlow', sans-serif", background: "white" }}>
                 {["messaging", "product", "pricing", "credibility", "general"].map(c => (
                   <option key={c} value={c}>{c.charAt(0).toUpperCase() + c.slice(1)}</option>
                 ))}

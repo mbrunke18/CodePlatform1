@@ -192,7 +192,7 @@ export function AlertCommandCenter() {
           label="Weak Signals"
           count={weakSignals.filter(s => s.status === 'active').length}
           icon={<Radio className="w-5 h-5" />}
-          color="purple"
+          color="gold"
         />
       </div>
 
@@ -349,7 +349,7 @@ function SummaryCard({
     orange: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/30',
     yellow: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/30',
     blue: 'bg-[#0A0F2E]/10 text-[#0A0F2E] dark:text-[#0A0F2E] border-[#2B8A6E]/30',
-    purple: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C] border-[#C9A84C]/30'
+    gold: 'bg-[#C9A84C]/10 text-[#C9A84C] dark:text-[#C9A84C] border-[#C9A84C]/30'
   };
 
   return (

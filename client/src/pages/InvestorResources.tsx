@@ -38,7 +38,7 @@ const IR_TEAL = "#2B8A6E";
 const IR_IVORY = "#F0EDE4";
 const IR_MUTED = "rgba(240,237,228,0.45)";
 const IR_GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-const IR_DM: React.CSSProperties = { fontFamily: "'DM Sans', system-ui, sans-serif" };
+const IR_DM: React.CSSProperties = { fontFamily: "'Barlow', system-ui, sans-serif" };
 const IR_MONO: React.CSSProperties = { fontFamily: "'DM Mono','Geist Mono','Fira Code',monospace" };
 const IR_CONTAINER: React.CSSProperties = { maxWidth: 1160, margin: "0 auto", padding: "0 32px" };
 

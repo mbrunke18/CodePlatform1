@@ -91,7 +91,7 @@ const CONNECTOR_CATALOG = [
     status: 'active',
     signalType: 'Readiness Signal',
     icon: Shield,
-    color: '#8B5CF6',
+    color: '#2B8A6E',
     signals: '8 strategic domains monitored',
     frequency: 'After every ingestion cycle',
     setupRequired: false,

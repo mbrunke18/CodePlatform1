@@ -247,7 +247,7 @@ export default function SituationIntentWizard() {
   const isEditing = existingIntent?.id;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8F7F4", fontFamily: "'DM Sans', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F8F7F4", fontFamily: "'Barlow', sans-serif" }}>
       {/* Header */}
       <div style={{ background: NAVY, borderBottom: `1px solid rgba(255,255,255,0.08)`, padding: "20px 32px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -437,7 +437,7 @@ export default function SituationIntentWizard() {
                 style={{
                   width: "100%", padding: "14px 16px", border: `1px solid ${BORDER}`,
                   borderRadius: 0, fontSize: 14, color: NAVY, outline: "none",
-                  fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, resize: "vertical",
+                  fontFamily: "'Barlow', sans-serif", lineHeight: 1.6, resize: "vertical",
                   boxSizing: "border-box",
                 }}
               />
@@ -829,7 +829,7 @@ export default function SituationIntentWizard() {
                   style={{
                     width: "100%", padding: "12px 14px", border: `1px solid ${BORDER}`,
                     borderRadius: 0, fontSize: 13, color: NAVY, outline: "none",
-                    fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6, resize: "vertical",
+                    fontFamily: "'Barlow', sans-serif", lineHeight: 1.6, resize: "vertical",
                     boxSizing: "border-box",
                   }}
                 />

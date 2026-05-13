@@ -7,7 +7,7 @@ const GOLD  = "#C9A84C";
 const TEAL  = "#2B8A6E";
 const IVORY = "#F0EDE4";
 const CG: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
-const DM: React.CSSProperties = { fontFamily: "'Barlow Condensed', 'DM Sans', sans-serif" };
+const DM: React.CSSProperties = { fontFamily: "'Barlow Condensed', 'Barlow', sans-serif" };
 
 export default function Team() {
   return (

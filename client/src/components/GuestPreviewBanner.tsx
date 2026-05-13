@@ -98,20 +98,20 @@ export function GuestPreviewBanner() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Clock size={14} color={GOLD} style={{ flexShrink: 0 }} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
+          <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.85)', lineHeight: 1.4 }}>
             <strong style={{ color: GOLD, fontWeight: 700 }}>Your 48-hour trial has ended.</strong>
             {' '}Ready to activate your organization? Apply for Founding Partner Access — or reach out if you need more time.
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <a href="/founding-partner-program" style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+            fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '7px 18px', background: GOLD, color: NAVY,
             textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
           }}>Apply for Founding Partner Access →</a>
           <a href="/founding-partner-program" style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+            fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: 'transparent',
             border: '1px solid rgba(255,255,255,0.68)', color: 'rgba(255,255,255,0.7)',
@@ -136,7 +136,7 @@ export function GuestPreviewBanner() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <Clock size={14} color="#2B8A6E" style={{ flexShrink: 0 }} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: '#111827', lineHeight: 1.4 }}>
+          <span style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 500, color: '#111827', lineHeight: 1.4 }}>
             <strong style={{ color: '#2B8A6E', fontWeight: 700 }}>
               {firstName ? `Welcome, ${firstName}` : 'Trial access active'}.
             </strong>
@@ -145,7 +145,7 @@ export function GuestPreviewBanner() {
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
           <a href="/request-access" style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+            fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: GOLD, color: NAVY,
             textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
@@ -180,7 +180,7 @@ export function GuestPreviewBanner() {
             animation: 'vm-pulse 2s ease-in-out infinite',
           }} />
           <span style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700,
+            fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 700,
             letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: TEAL,
           }}>Monitoring active</span>
         </div>
@@ -192,7 +192,7 @@ export function GuestPreviewBanner() {
         {signalCount > 0 && (
           <>
             <span style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500,
+              fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 500,
               color: 'rgba(255,255,255,0.55)', whiteSpace: 'nowrap' as const, flexShrink: 0,
             }}>
               <strong style={{ color: GOLD, fontWeight: 700 }}>{signalCount}</strong> signal{signalCount !== 1 ? 's' : ''} detected
@@ -208,7 +208,7 @@ export function GuestPreviewBanner() {
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, overflow: 'hidden' }}>
             <Radio size={11} color={GOLD} style={{ flexShrink: 0 }} />
             <span style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500,
+              fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 500,
               color: 'rgba(255,255,255,0.75)', whiteSpace: 'nowrap' as const,
               overflow: 'hidden', textOverflow: 'ellipsis',
             }}>
@@ -219,7 +219,7 @@ export function GuestPreviewBanner() {
           </div>
         ) : (
           <span style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500,
+            fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 500,
             color: 'rgba(255,255,255,0.5)',
           }}>
             248+ signals monitored every 15 minutes across 9 strategic domains
@@ -230,20 +230,20 @@ export function GuestPreviewBanner() {
       {/* Right — CTAs */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         <a href="/12-minute-experience" style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+          fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
           letterSpacing: '0.08em', textTransform: 'uppercase' as const,
           padding: '7px 18px', background: GOLD, color: NAVY,
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
         }}>See It Execute in 12 Minutes →</a>
         <a href="/request-access" style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700,
+          fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
           letterSpacing: '0.1em', textTransform: 'uppercase' as const,
           padding: '6px 16px', background: 'transparent',
           border: '1px solid rgba(255,255,255,0.68)', color: 'rgba(255,255,255,0.7)',
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
         }}>Request Access</a>
         <a href="/request-access" style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600,
+          fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 600,
           padding: '5px 12px', background: 'transparent', border: 'none',
           color: 'rgba(255,255,255,0.68)', borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap' as const,
           textDecoration: 'none',

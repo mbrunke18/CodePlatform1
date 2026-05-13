@@ -28,7 +28,7 @@ export default function DemoAccess() {
       <div style={{
         background: NAVY, minHeight: "100vh", display: "flex",
         alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center",
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Barlow', sans-serif",
       }}>
         <div>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 24 }}>
@@ -59,7 +59,7 @@ export default function DemoAccess() {
     <div style={{
       background: NAVY, minHeight: "100vh", display: "flex",
       alignItems: "center", justifyContent: "center", padding: 40, textAlign: "center",
-      fontFamily: "'DM Sans', sans-serif",
+      fontFamily: "'Barlow', sans-serif",
     }}>
       <div>
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: GOLD, marginBottom: 32 }}>

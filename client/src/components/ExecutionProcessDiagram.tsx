@@ -48,7 +48,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
       From Strategic Trigger to Live Execution — in 12 Minutes
     </text>
     <text x="800" y="82" textAnchor="middle" fontSize="14" fill={TEAL}
-      fontFamily="'DM Sans', Arial, sans-serif">
+      fontFamily="'Barlow', Arial, sans-serif">
       Every step that the traditional enterprise spends weeks negotiating — Readiness OS delivers automatically.
     </text>
 
@@ -57,7 +57,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     ══════════════════════════════════════════════════════ */}
     <rect x="50" y="132" width="1500" height="182" rx="8" fill={WHITE} filter="url(#epShadow)" />
     <text x="800" y="165" textAnchor="middle" fontSize="11" fontWeight="700" letterSpacing="0.2em" fill="#6B7280"
-      fontFamily="'DM Sans', Arial, sans-serif">YOUR STRATEGIC LAYER — WHAT TRIGGERS IT</text>
+      fontFamily="'Barlow', Arial, sans-serif">YOUR STRATEGIC LAYER — WHAT TRIGGERS IT</text>
     <line x1="300" y1="175" x2="1300" y2="175" stroke={BORDER} strokeWidth="1.5" />
 
     {/* Trigger input boxes — 4 categories */}
@@ -70,11 +70,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
       <g key={label}>
         <rect x={x} y="186" width="228" height="108" rx="6" fill={OFF} stroke={TEAL} strokeWidth="1.5" />
         <text x={x + 114} y="206" textAnchor="middle" fontSize="10" fontWeight="700" fill={NAVY}
-          fontFamily="'DM Sans', Arial, sans-serif">{label}</text>
+          fontFamily="'Barlow', Arial, sans-serif">{label}</text>
         <line x1={x + 12} y1="213" x2={x + 216} y2="213" stroke={BORDER} strokeWidth="1" />
         {lines.map((line, i) => (
           <text key={i} x={x + 114} y={228 + i * 16} textAnchor="middle" fontSize="9" fill="#374151"
-            fontFamily="'DM Sans', Arial, sans-serif">{line}</text>
+            fontFamily="'Barlow', Arial, sans-serif">{line}</text>
         ))}
       </g>
     ))}
@@ -82,12 +82,12 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     {/* Example trigger callout */}
     <rect x="1086" y="186" width="442" height="108" rx="6" fill={GOLD} />
     <text x="1307" y="207" textAnchor="middle" fontSize="9" fontWeight="700" letterSpacing="0.14em" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">EXAMPLE TRIGGER</text>
+      fontFamily="'Barlow', Arial, sans-serif">EXAMPLE TRIGGER</text>
     <text x="1307" y="236" textAnchor="middle" fontSize="17" fontWeight="700" fill={WHITE}
       fontFamily="'Cormorant Garamond', Georgia, serif">"Competitor launches 30% price</text>
     <text x="1307" y="257" textAnchor="middle" fontSize="17" fontWeight="700" fill={WHITE}
       fontFamily="'Cormorant Garamond', Georgia, serif">reduction in key markets"</text>
-    <text x="1307" y="280" textAnchor="middle" fontSize="9" fill={NAVY} fontFamily="'DM Sans', Arial, sans-serif">
+    <text x="1307" y="280" textAnchor="middle" fontSize="9" fill={NAVY} fontFamily="'Barlow', Arial, sans-serif">
       Market Intelligence Alert  |  Monday 7:30 AM
     </text>
 
@@ -104,14 +104,14 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="50" y="412" width="1500" height="24" fill={TEAL2} />
 
     <text x="800" y="417" textAnchor="middle" fontSize="18" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">READINESS OS ORCHESTRATION LAYER</text>
+      fontFamily="'Barlow', Arial, sans-serif">READINESS OS ORCHESTRATION LAYER</text>
 
     {/* 12 min badge */}
     <circle cx="1462" cy="408" r="34" fill={GOLD} />
     <text x="1462" y="402" textAnchor="middle" fontSize="9" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">DEPLOY</text>
+      fontFamily="'Barlow', Arial, sans-serif">DEPLOY</text>
     <text x="1462" y="420" textAnchor="middle" fontSize="15" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">12 min</text>
+      fontFamily="'Barlow', Arial, sans-serif">12 min</text>
 
     {/* ── ROW 1: Steps 1–4 ── */}
 
@@ -119,11 +119,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="78" y="456" width="290" height="130" rx="6" fill={OFF} stroke={TEAL} strokeWidth="2" />
     <circle cx="112" cy="490" r="19" fill={TEAL} />
     <text x="112" y="497" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">1</text>
+      fontFamily="'Barlow', Arial, sans-serif">1</text>
     <text x="148" y="494" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">CONTEXT ANALYSIS</text>
+      fontFamily="'Barlow', Arial, sans-serif">CONTEXT ANALYSIS</text>
     {['Maps to your org structure', 'Identifies stakeholders across depts', 'Reads current system state'].map((t, i) => (
-      <text key={i} x="92" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
+      <text key={i} x="92" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'Barlow', Arial, sans-serif">✓  {t}</text>
     ))}
 
     {/* Arrow 1→2 */}
@@ -133,11 +133,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="428" y="456" width="290" height="130" rx="6" fill={OFF} stroke={TEAL} strokeWidth="2" />
     <circle cx="462" cy="490" r="19" fill={TEAL} />
     <text x="462" y="497" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">2</text>
+      fontFamily="'Barlow', Arial, sans-serif">2</text>
     <text x="498" y="494" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">Readiness Protocol SELECTION</text>
+      fontFamily="'Barlow', Arial, sans-serif">Readiness Protocol SELECTION</text>
     {['"Competitive Response — Pricing"', 'Customized to your org structure', 'Adapts to your tools & processes'].map((t, i) => (
-      <text key={i} x="442" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
+      <text key={i} x="442" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'Barlow', Arial, sans-serif">✓  {t}</text>
     ))}
 
     {/* Arrow 2→3 */}
@@ -147,11 +147,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="778" y="456" width="290" height="130" rx="6" fill={OFF} stroke={TEAL} strokeWidth="2" />
     <circle cx="812" cy="490" r="19" fill={TEAL} />
     <text x="812" y="497" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">3</text>
+      fontFamily="'Barlow', Arial, sans-serif">3</text>
     <text x="848" y="494" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">IMPACT ANALYSIS</text>
+      fontFamily="'Barlow', Arial, sans-serif">IMPACT ANALYSIS</text>
     {['Contract terms & margin thresholds', 'Customer churn risk quantified', 'Sales pipeline exposure mapped'].map((t, i) => (
-      <text key={i} x="792" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
+      <text key={i} x="792" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'Barlow', Arial, sans-serif">✓  {t}</text>
     ))}
 
     {/* Arrow 3→4 */}
@@ -161,11 +161,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="1128" y="456" width="390" height="130" rx="6" fill={OFF} stroke={TEAL} strokeWidth="2" />
     <circle cx="1163" cy="490" r="19" fill={TEAL} />
     <text x="1163" y="497" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">4</text>
+      fontFamily="'Barlow', Arial, sans-serif">4</text>
     <text x="1198" y="494" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">ROLE ASSIGNMENT</text>
+      fontFamily="'Barlow', Arial, sans-serif">ROLE ASSIGNMENT</text>
     {['Legal (contracts)  ·  Finance (margin)  ·  Sales (retention)', 'Marketing (positioning)  ·  Product (competitive parity)', 'Named individuals, clear accountability, no overlap'].map((t, i) => (
-      <text key={i} x="1144" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
+      <text key={i} x="1144" y={514 + i * 18} fontSize="9" fill="#374151" fontFamily="'Barlow', Arial, sans-serif">✓  {t}</text>
     ))}
 
     {/* ── Connector: Row 1 → Row 2 ── */}
@@ -178,11 +178,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="428" y="648" width="290" height="130" rx="6" fill={OFF} stroke={TEAL} strokeWidth="2" />
     <circle cx="462" cy="682" r="19" fill={TEAL} />
     <text x="462" y="689" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">5</text>
+      fontFamily="'Barlow', Arial, sans-serif">5</text>
     <text x="498" y="686" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">TASK ORCHESTRATION</text>
+      fontFamily="'Barlow', Arial, sans-serif">TASK ORCHESTRATION</text>
     {['52 tasks across 5 teams created', 'Jira, Asana, Smartsheet, ServiceNow', 'Dependencies visible, timeline set'].map((t, i) => (
-      <text key={i} x="442" y={706 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
+      <text key={i} x="442" y={706 + i * 18} fontSize="9" fill="#374151" fontFamily="'Barlow', Arial, sans-serif">✓  {t}</text>
     ))}
 
     {/* Arrow 5→6 */}
@@ -192,11 +192,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     <rect x="778" y="648" width="290" height="130" rx="6" fill={OFF} stroke={TEAL} strokeWidth="2" />
     <circle cx="812" cy="682" r="19" fill={TEAL} />
     <text x="812" y="689" textAnchor="middle" fontSize="14" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">6</text>
+      fontFamily="'Barlow', Arial, sans-serif">6</text>
     <text x="848" y="686" fontSize="12" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">COMMUNICATIONS</text>
+      fontFamily="'Barlow', Arial, sans-serif">COMMUNICATIONS</text>
     {['Slack messages sent to every team', 'Stakeholder briefings drafted & sent', 'Execution underway — no kickoff needed'].map((t, i) => (
-      <text key={i} x="792" y={706 + i * 18} fontSize="9" fill="#374151" fontFamily="'DM Sans', Arial, sans-serif">✓  {t}</text>
+      <text key={i} x="792" y={706 + i * 18} fontSize="9" fill="#374151" fontFamily="'Barlow', Arial, sans-serif">✓  {t}</text>
     ))}
 
     {/* Arrow 6→Live */}
@@ -205,17 +205,17 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     {/* EXECUTION LIVE badge */}
     <rect x="1128" y="648" width="390" height="130" rx="6" fill={TEAL} />
     <text x="1323" y="690" textAnchor="middle" fontSize="20" fontWeight="700" fill={WHITE}
-      fontFamily="'DM Sans', Arial, sans-serif">✓  EXECUTION LIVE</text>
+      fontFamily="'Barlow', Arial, sans-serif">✓  EXECUTION LIVE</text>
     <line x1="1148" y1="700" x2="1498" y2="700" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
     {['Teams already moving  |  Roles clear', 'Tasks assigned  |  Communications sent', 'Strategy preserved end-to-end'].map((t, i) => (
       <text key={i} x="1323" y={720 + i * 18} textAnchor="middle" fontSize="11" fill="rgba(255,255,255,0.9)"
-        fontFamily="'DM Sans', Arial, sans-serif">{t}</text>
+        fontFamily="'Barlow', Arial, sans-serif">{t}</text>
     ))}
 
     {/* Compression summary bar */}
     <rect x="78" y="798" width="1440" height="78" rx="6" fill={OFF} />
     <text x="800" y="828" textAnchor="middle" fontSize="13" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">
+      fontFamily="'Barlow', Arial, sans-serif">
       THE COMPRESSION: What traditional enterprises spend 30 days trying to plan (and months to execute)...
     </text>
     <text x="800" y="858" textAnchor="middle" fontSize="18" fontWeight="700" fill={TEAL}
@@ -232,9 +232,9 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
     ══════════════════════════════════════════════════════ */}
     <rect x="50" y="962" width="1500" height="388" rx="8" fill={WHITE} filter="url(#epShadow)" />
     <text x="800" y="1002" textAnchor="middle" fontSize="18" fontWeight="700" fill={NAVY}
-      fontFamily="'DM Sans', Arial, sans-serif">DELIVERED INTO YOUR EXISTING SYSTEMS</text>
+      fontFamily="'Barlow', Arial, sans-serif">DELIVERED INTO YOUR EXISTING SYSTEMS</text>
     <text x="800" y="1026" textAnchor="middle" fontSize="12" fill={TEAL}
-      fontFamily="'DM Sans', Arial, sans-serif">No replacement. No new tools. Just orchestration across what you already have.</text>
+      fontFamily="'Barlow', Arial, sans-serif">No replacement. No new tools. Just orchestration across what you already have.</text>
     <line x1="300" y1="1040" x2="1300" y2="1040" stroke={BORDER} strokeWidth="1.5" />
 
     {/* System cards */}
@@ -252,10 +252,10 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
         <rect x={x} y="1056" width="168" height="98" rx="6" fill={OFF} stroke={TEAL} strokeWidth="1.5" />
         <text x={x + 84} y="1086" textAnchor="middle" fontSize="26">{emoji}</text>
         <text x={x + 84} y="1110" textAnchor="middle" fontSize="10" fontWeight="700" fill={NAVY}
-          fontFamily="'DM Sans', Arial, sans-serif">{name}</text>
+          fontFamily="'Barlow', Arial, sans-serif">{name}</text>
         {lines.map((l, i) => (
           <text key={i} x={x + 84} y={1126 + i * 14} textAnchor="middle" fontSize="8" fill={TEAL}
-            fontFamily="'DM Sans', Arial, sans-serif">{l}</text>
+            fontFamily="'Barlow', Arial, sans-serif">{l}</text>
         ))}
       </g>
     ))}
@@ -278,11 +278,11 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
       <g key={label}>
         <rect x={x} y="1174" width="484" height="138" rx="6" fill={OFF} stroke={NAVY} strokeWidth="1.5" />
         <text x={x + 242} y="1198" textAnchor="middle" fontSize="11" fontWeight="700" fill={NAVY}
-          fontFamily="'DM Sans', Arial, sans-serif">{label}</text>
+          fontFamily="'Barlow', Arial, sans-serif">{label}</text>
         <line x1={x + 16} y1="1207" x2={x + 468} y2="1207" stroke={BORDER} strokeWidth="1" />
         {lines.map((l, i) => (
           <text key={i} x={x + 22} y={1226 + i * 20} fontSize="9" fill="#374151"
-            fontFamily="'DM Sans', Arial, sans-serif">•  {l}</text>
+            fontFamily="'Barlow', Arial, sans-serif">•  {l}</text>
         ))}
       </g>
     ))}
@@ -295,7 +295,7 @@ const ExecutionProcessDiagram: FC<{ className?: string }> = ({ className = '' })
       "Strategy is executed by systems, not executives."
     </text>
     <text x="800" y="1430" textAnchor="middle" fontSize="11" fill="rgba(255,255,255,0.8)"
-      fontFamily="'DM Sans', Arial, sans-serif">
+      fontFamily="'Barlow', Arial, sans-serif">
       Readiness OS is that system — embedded in yours.
     </text>
   </svg>

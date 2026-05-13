@@ -10,7 +10,7 @@ const IVORY = "#F0EDE4";
 const BORDER = "#E8E4DC";
 
 const GEO: React.CSSProperties = { fontFamily: "'Cormorant Garamond', Georgia, serif" };
-const DM: React.CSSProperties  = { fontFamily: "'DM Sans', Arial, sans-serif" };
+const DM: React.CSSProperties  = { fontFamily: "'Barlow', Arial, sans-serif" };
 const BC: React.CSSProperties  = { fontFamily: "'Barlow Condensed', sans-serif" };
 
 const VALIDATORS = [

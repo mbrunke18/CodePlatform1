@@ -9,7 +9,7 @@ const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const IVORY = "#F0EDE4";
 const CG: CSSProperties = { fontFamily: "'Cormorant Garamond', serif" };
-const DM: CSSProperties = { fontFamily: "'Barlow', 'DM Sans', sans-serif" };
+const DM: CSSProperties = { fontFamily: "'Barlow', 'Barlow', sans-serif" };
 
 const COMPARISON_ROWS = [
   {

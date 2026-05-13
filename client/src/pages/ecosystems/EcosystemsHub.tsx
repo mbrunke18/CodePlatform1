@@ -203,7 +203,7 @@ export default function EcosystemsHub() {
                     The Gap:{" "}
                   </span>
                   <span style={{
-                    fontFamily: "'Inter',sans-serif",
+                    fontFamily: "'Barlow',sans-serif",
                     fontSize: 12, color: "#374151", lineHeight: 1.5,
                   }}>
                     {eco.gap}
@@ -263,13 +263,13 @@ export default function EcosystemsHub() {
                   {num}
                 </div>
                 <div style={{
-                  fontFamily: "'Inter',sans-serif",
+                  fontFamily: "'Barlow',sans-serif",
                   fontSize: 13, fontWeight: 600, color: NAVY, marginBottom: 4,
                 }}>
                   {label}
                 </div>
                 <div style={{
-                  fontFamily: "'Inter',sans-serif",
+                  fontFamily: "'Barlow',sans-serif",
                   fontSize: 11, color: "#6B7280", lineHeight: 1.5,
                 }}>
                   {sub}
@@ -311,7 +311,7 @@ export default function EcosystemsHub() {
           No migration. No replacement.<br />The command layer above what you already own.
         </h2>
         <p style={{
-          fontFamily: "'Inter',sans-serif",
+          fontFamily: "'Barlow',sans-serif",
           fontSize: 15, color: "rgba(240,237,228,0.55)",
           maxWidth: 520, margin: "0 auto 36px",
         }}>

@@ -214,13 +214,13 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 32px' }}>
 
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 12, fontFamily: "'DM Sans', Arial, sans-serif" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 12, fontFamily: "'Barlow', Arial, sans-serif" }}>
             The Execution Lifecycle
           </div>
           <h2 style={{ fontSize: 34, fontWeight: 700, color: NAVY, fontFamily: "'Cormorant Garamond', Georgia, serif", lineHeight: 1.2, marginBottom: 14 }}>
             What "Complete" Means at Every Stage
           </h2>
-          <p style={{ fontSize: 15, color: '#6B7280', maxWidth: 620, margin: '0 auto', lineHeight: 1.65, fontFamily: "'DM Sans', Arial, sans-serif" }}>
+          <p style={{ fontSize: 15, color: '#6B7280', maxWidth: 620, margin: '0 auto', lineHeight: 1.65, fontFamily: "'Barlow', Arial, sans-serif" }}>
             Not all completions are equal. Readiness OS compresses the mobilization cycle to 12 minutes — Stages 1 through 4. The actual work starts at minute 13. Here is exactly what happens at each stage.
           </p>
         </div>
@@ -258,7 +258,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                   <div style={{ fontSize: 11, fontWeight: 700, color: GOLD, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>Within 12 minutes</div>
                 </div>
               </div>
-              <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontFamily: "'DM Sans', Arial, sans-serif" }}>
+              <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontFamily: "'Barlow', Arial, sans-serif" }}>
                 {stage.fullDef}
               </p>
             </div>
@@ -304,7 +304,7 @@ export function ExecutionStageGuide({ variant = 'section' }: { variant?: 'sectio
                   <div style={{ fontSize: 11, fontWeight: 700, color: '#9CA3AF', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>After mobilization — actual work</div>
                 </div>
               </div>
-              <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontFamily: "'DM Sans', Arial, sans-serif" }}>
+              <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.6, fontFamily: "'Barlow', Arial, sans-serif" }}>
                 {stage.fullDef}
               </p>
             </div>

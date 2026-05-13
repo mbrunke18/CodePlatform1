@@ -33,7 +33,7 @@ const threeProblems = [
     pain: "Knowledge walks out the door. Same scramble every time.",
     cost: "3.5 disruptions every 2 years",
     costDetail: "Same $4.88M cost repeated each time",
-    color: "#a855f7",
+    color: "#2B8A6E",
     borderColor: "rgba(168,85,247,0.3)",
   },
 ];

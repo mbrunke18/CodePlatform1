@@ -276,7 +276,7 @@ export default function Dashboard() {
                     {industry ? <span style={{ color: GOLD }}> Run your first {industry.split("&")[0].trim()} scenario.</span>
                     : <span style={{ color: GOLD }}> Run your first activation now.</span>}
                   </h3>
-                  <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", maxWidth: 560, lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif" }}>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", maxWidth: 560, lineHeight: 1.6, fontFamily: "'Barlow', sans-serif" }}>
                     {execRole ? `As ${execRole.split("—")[0].trim()}, you authorize — the system pre-stages.` : "The response is pre-staged. You authorize."}
                     {" "}Walk through a live critical supplier failure — see 12-minute execution from trigger to full deployment.
                   </p>
@@ -298,7 +298,7 @@ export default function Dashboard() {
                       <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase" as const, fontFamily: "'Barlow Condensed', sans-serif" }}>
                         Run Your First Activation
                       </div>
-                      <div style={{ fontSize: 10, fontWeight: 500, opacity: 0.7, fontFamily: "'DM Sans', sans-serif" }}>
+                      <div style={{ fontSize: 10, fontWeight: 500, opacity: 0.7, fontFamily: "'Barlow', sans-serif" }}>
                         Critical Supplier Failure · 12-minute execution
                       </div>
                     </div>
@@ -314,7 +314,7 @@ export default function Dashboard() {
                     { icon: Brain, label: "Practice Drills", href: "/practice-drills" },
                   ].map(({ icon: Icon, label, href }) => (
                     <Link key={href} href={href}>
-                      <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)", padding: "10px 16px", cursor: "pointer", fontSize: 12, fontWeight: 600, fontFamily: "'DM Sans', sans-serif" }}
+                      <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.75)", padding: "10px 16px", cursor: "pointer", fontSize: 12, fontWeight: 600, fontFamily: "'Barlow', sans-serif" }}
                         onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLElement).style.color = "#fff"; }}
                         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"; }}>
                         <Icon style={{ width: 13, height: 13 }} />

@@ -72,7 +72,7 @@ export function ValueInsightToast({ insight, onDismiss }: ToastProps) {
         opacity: visible ? 1 : 0,
         transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s ease",
         boxShadow: "0 24px 64px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.3)",
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Barlow', sans-serif",
         overflow: "hidden",
       }}
     >

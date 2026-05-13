@@ -80,7 +80,7 @@ export function ValueGainCallout({
         background: dark ? "rgba(255,255,255,0.05)" : cfg.bgColor,
         border: dark ? "1px solid rgba(255,255,255,0.1)" : `1px solid ${cfg.borderColor}`,
         borderLeft: dark ? `3px solid ${darkAccent}` : `3px solid ${cfg.accentColor}`,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Barlow', sans-serif",
         ...style,
       }}
     >
@@ -192,7 +192,7 @@ export function ThreePositionStrip({ style }: PositionStripProps) {
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gap: 0,
-        fontFamily: "'Inter', sans-serif",
+        fontFamily: "'Barlow', sans-serif",
         ...style,
       }}
     >
