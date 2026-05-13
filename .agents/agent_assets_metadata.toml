@@ -107,3 +107,9 @@ id = "2pit5JttNSGVEkf7gTfNZ"
 uri = "file://MARKETING_STRATEGY.md"
 type = "text"
 title = "VaughnMartin Readiness OS — Marketing Strategy (Revised)"
+
+[[outputs]]
+id = "1cIC1-rJmrEUl0Y9rri_H"
+uri = "file://attached_assets/vaughnmartin-linkedin-banner.png"
+type = "image"
+title = "VaughnMartin LinkedIn Banner — 1128×191px"

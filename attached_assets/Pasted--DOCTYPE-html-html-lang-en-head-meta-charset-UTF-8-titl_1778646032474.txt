@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VaughnMartin — LinkedIn Banner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  width: 1128px;
+  height: 191px;
+  overflow: hidden;
+  background-color: #0A0F2E;
+}
+.banner {
+  width: 1128px;
+  height: 191px;
+  background-color: #0A0F2E;
+  display: flex;
+  align-items: center;
+  padding: 0 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gold glow top edge */
+.banner::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent 0%, #C9A84C 30%, #C9A84C 70%, transparent 100%);
+opacity: 0.5;
+}
+/* Subtle gold glow bottom edge */
+.banner::after {
+content: ‘’;
+position: absolute;
+bottom: 0; left: 0; right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent 0%, #C9A84C 30%, #C9A84C 70%, transparent 100%);
+opacity: 0.3;
+}
+
+/* ── LOGO BLOCK ── */
+.logo-block {
+display: flex;
+align-items: center;
+gap: 14px;
+flex-shrink: 0;
+}
+.lm {
+width: 54px; height: 54px;
+border: 1.5px solid #C9A84C;
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+background-color: #0A0F2E;
+flex-shrink: 0;
+}
+.lm span {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 15px; font-weight: 900;
+letter-spacing: 0.06em; color: #C9A84C;
+}
+.logo-name {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 20px; font-weight: 700;
+letter-spacing: 0.1em; color: #ffffff;
+line-height: 1;
+}
+.logo-prod {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 10px; font-weight: 600;
+letter-spacing: 0.38em; color: #C9A84C;
+text-transform: uppercase; margin-top: 5px;
+display: flex; align-items: center; gap: 7px;
+}
+.logo-prod::before {
+content: ‘’;
+display: inline-block;
+width: 20px; height: 1px; background: #C9A84C;
+}
+
+/* ── VERTICAL DIVIDER ── */
+.vd {
+width: 1px;
+height: 90px;
+background: rgba(201,168,76,0.28);
+margin: 0 36px;
+flex-shrink: 0;
+}
+
+/* ── MAIN MESSAGE ── */
+.msg-block {
+flex-shrink: 0;
+}
+.msg-cat {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.32em; text-transform: uppercase;
+color: #2B8A6E;
+margin-bottom: 6px;
+}
+.msg-head {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 15px; font-weight: 800;
+letter-spacing: 0.06em; text-transform: uppercase;
+color: #ffffff;
+line-height: 1.15;
+margin-bottom: 7px;
+}
+.msg-tag {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: 16px; font-weight: 400;
+color: #C9A84C;
+line-height: 1.3;
+margin-bottom: 9px;
+}
+.msg-sub {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 600;
+letter-spacing: 0.22em; text-transform: uppercase;
+color: rgba(255,255,255,0.5);
+}
+.msg-sub span {
+color: rgba(255,255,255,0.75);
+}
+
+/* ── METRICS ── */
+.metrics-block {
+display: flex;
+flex-shrink: 0;
+}
+.met {
+padding: 0 26px;
+border-right: 1px solid rgba(201,168,76,0.22);
+text-align: center;
+}
+.met:last-child { border-right: none; padding-right: 0; }
+.met:first-child { padding-left: 0; }
+.mn {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 36px; font-weight: 900;
+color: #C9A84C; line-height: 1;
+letter-spacing: -0.02em; display: block; margin-bottom: 4px;
+}
+.mt {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 9px; font-weight: 700;
+letter-spacing: 0.14em; text-transform: uppercase;
+color: #ffffff; margin-bottom: 2px;
+}
+.ms {
+font-family: ‘Barlow’, sans-serif;
+font-size: 9px; font-weight: 400;
+color: rgba(255,255,255,0.5);
+}
+
+/* ── CTA ── */
+.cta-block {
+margin-left: auto;
+flex-shrink: 0;
+text-align: right;
+padding-left: 36px;
+border-left: 1px solid rgba(201,168,76,0.28);
+}
+.cta-eyebrow {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 8px; font-weight: 700;
+letter-spacing: 0.32em; text-transform: uppercase;
+color: rgba(255,255,255,0.45);
+margin-bottom: 5px;
+}
+.cta-main {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 13px; font-weight: 800;
+letter-spacing: 0.12em; text-transform: uppercase;
+color: #ffffff;
+line-height: 1.3;
+margin-bottom: 8px;
+}
+.cta-pill {
+display: inline-block;
+background-color: #C9A84C;
+color: #0A0F2E;
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 8px; font-weight: 800;
+letter-spacing: 0.28em; text-transform: uppercase;
+padding: 5px 12px;
+border-radius: 0.15rem;
+white-space: nowrap;
+}
+.cta-arc {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 8px; font-weight: 500;
+letter-spacing: 0.2em; text-transform: uppercase;
+color: rgba(255,255,255,0.35);
+margin-top: 7px;
+}
+</style>
+
+</head>
+<body>
+<div class="banner">
+
+  <!-- LOGO -->
+
+  <div class="logo-block">
+    <div class="lm"><span>VM</span></div>
+    <div>
+      <div class="logo-name">VaughnMartin</div>
+      <div class="logo-prod">Readiness OS</div>
+    </div>
+  </div>
+
+  <div class="vd"></div>
+
+  <!-- MAIN MESSAGE -->
+
+  <div class="msg-block">
+    <div class="msg-cat">The Readiness Infrastructure for the Fortune 1000</div>
+    <div class="msg-head">The response is ready<br>before the trigger fires.</div>
+    <div class="msg-sub">
+      <span>AI monitors.</span> &nbsp;·&nbsp; <span>Executives authorize.</span> &nbsp;·&nbsp; <span>Execution pre-staged.</span>
+    </div>
+  </div>
+
+  <div class="vd"></div>
+
+  <!-- METRICS -->
+
+  <div class="metrics-block">
+    <div class="met">
+      <span class="mn">3,600×</span>
+      <div class="mt">Execution Head Start</div>
+      <div class="ms">30 days → 12 minutes</div>
+    </div>
+    <div class="met">
+      <span class="mn">170</span>
+      <div class="mt">Readiness Protocols</div>
+      <div class="ms">Pre-staged. Not assembled.</div>
+    </div>
+    <div class="met">
+      <span class="mn">221</span>
+      <div class="mt">Strategic Triggers</div>
+      <div class="ms">Continuously monitored</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+
+  <div class="cta-block">
+    <div class="cta-eyebrow">Now Forming</div>
+    <div class="cta-main">Founding Partner<br>Program</div>
+    <div class="cta-pill">Apply for Access</div>
+    <div class="cta-arc">Preparation → Readiness → Fearless</div>
+  </div>
+
+</div>
+</body>
+</html>
