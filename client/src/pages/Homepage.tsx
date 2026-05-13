@@ -764,10 +764,10 @@ function HeroSection() {
             </Reveal>
           </div>
 
-          {/* RIGHT — Intelligence Crest */}
+          {/* RIGHT — Intelligence Seal */}
           <Reveal delay={0.18}>
             <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", padding: "60px 0 60px 44px", display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center" }}>
-              <TechCrest size={380} animated={true} />
+              <VaughnMartinLogo variant="icon-only" height={300} color="light" animated={true} noLink={true} />
               {/* suppressed live signal feed — kept below for reference */}
               {false && signals.map((sig, i) => (
                 <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "16px 0" }}>
