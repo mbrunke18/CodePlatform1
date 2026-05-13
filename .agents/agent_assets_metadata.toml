@@ -125,3 +125,9 @@ id = "zFvJRGPVHsU373oF_r6ri"
 uri = "file://attached_assets/vaughnmartin-logo-full.svg"
 type = "image"
 title = "VaughnMartin Full Logo Lockup — Seal + Wordmark"
+
+[[outputs]]
+id = "ADGM50gAvqYyhXkscOZXB"
+uri = "file://attached_assets/vaughnmartin-seal-animated.svg"
+type = "image"
+title = "VaughnMartin Seal — Animated Radar (SVG)"
