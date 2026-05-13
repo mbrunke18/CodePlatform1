@@ -1119,7 +1119,7 @@ export const SCENARIOS: Record<string, DemoScenario> = {
     protocolName: "Workforce Transformation Protocol",
     riskScore: 86,
     triggerTime: "11:47:22 PM EST",
-    triggerHeadline: "Board approves AI-driven workforce transformation — 6,720 roles across 6 divisions, 12 countries",
+    triggerHeadline: "Board approves workforce transformation — 6,720 roles across 6 divisions, 12 countries",
     triggerContext: "The Global Dynamics board votes at 11:47 PM to approve a strategic workforce transformation tied to their AI automation deployment — 16% realignment across 6 divisions in 12 countries. WARN Act compliance requires 60-day notice for 34 facilities. Severance, redeployment, and retraining protocols must deploy simultaneously. A leak to the press before employee notification would be catastrophic. The coordinated notification window: 48 hours. In the old model, WARN Act filings arrive inconsistently. Employees hear from the press before their managers. Lawsuits follow within weeks.",
     oldModelCost: "The WSJ story runs before managers are briefed. Union grievances filed within 72 hours.",
     signals: [

@@ -252,7 +252,7 @@ export default function SignalConfiguration() {
             </div>
             <div className="hidden lg:flex items-center gap-1 ml-auto">
               {[
-                { letter: 'I', label: 'IDENTIFY', color: '#6366F1', active: false },
+                { letter: 'I', label: 'IDENTIFY', color: '#2B8A6E', active: false },
                 { letter: 'D', label: 'DETECT',   color: TEAL,      active: true  },
                 { letter: 'E', label: 'EXECUTE',  color: GOLD,      active: false },
                 { letter: 'A', label: 'ADVANCE',  color: NAVY,      active: false },

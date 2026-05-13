@@ -207,7 +207,7 @@ export default function StandardNav() {
       heading: "Transformation",
       links: [
         { label: "Go-to-Market Acceleration", path: "/demo/product-launch", icon: Rocket, description: "Competitor announces launch in 30 days. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.", featured: true },
-        { label: "Workforce Transformation Protocol", path: "/demo/workforce", icon: Users, description: "Board approves AI-driven realignment — 6,720 roles, 12 countries. WARN Act. 48 hours to execute." },
+        { label: "Workforce Transformation Protocol", path: "/demo/workforce", icon: Users, description: "Board approves system-staged realignment — 6,720 roles, 12 countries. WARN Act. 48 hours to execute." },
         { label: "Protocol Builder", path: "/protocol-builder", icon: ClipboardList, description: "Pre-stage your own Readiness Protocol for any situation in 6 guided steps." },
       ],
     },
@@ -548,7 +548,7 @@ export default function StandardNav() {
       { path: '/demo/market-entry', icon: TrendingUp, label: 'Growth — Competitor Displacement Sprint', sub: 'LegacyPoint files Chapter 11. 1,400 enterprise accounts in-play. Salesforce deploys overnight. 72-hour window.', domain: 'GROWTH' },
       { path: '/demo/acquisition', icon: Target, label: 'Growth — M&A Rapid Response', sub: 'Waypoint Analytics authorizes a sale. Three buyers in conversations. LOI required in 48 hours.', domain: 'GROWTH' },
       { path: '/demo/product-launch', icon: Rocket, label: 'Transformation — Go-to-Market Acceleration', sub: 'Cascade announces June 30 launch. Board authorizes 6-week pull-forward. GTM mobilizes in 12 minutes.', domain: 'TRANSFORMATION' },
-      { path: '/demo/workforce', icon: Users, label: 'Transformation — Workforce Realignment', sub: 'Board approves AI-driven realignment — 6,720 roles, 12 countries. WARN Act. Must begin in 48 hours.', domain: 'TRANSFORMATION' },
+      { path: '/demo/workforce', icon: Users, label: 'Transformation — Workforce Realignment', sub: 'Board approves system-staged realignment — 6,720 roles, 12 countries. WARN Act. Must begin in 48 hours.', domain: 'TRANSFORMATION' },
       { path: '/demo/ransomware', icon: Zap, label: 'Risk — Financial Services Ransomware', sub: 'Trading systems encrypted at 4:23 AM. SWIFT offline. Market open in 4 hours.', domain: 'RISK' },
       { path: '/demo/pharma', icon: AlertCircle, label: 'Risk — Pharma FDA Class I Recall', sub: 'Contaminated batch. 340,000 units distributed. 72-hour regulatory window.', domain: 'RISK' },
       { path: '/demo/supply-chain', icon: Globe, label: 'Risk — Manufacturing Supplier Failure', sub: 'Primary supplier files Chapter 11. 60% of Q3 production at risk overnight.', domain: 'RISK' },

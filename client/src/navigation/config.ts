@@ -79,7 +79,7 @@ export const navigationConfig: NavigationConfig = {
       label: 'DETECT',
       tagline: 'Monitor 24/7',
       icon: '👁️',
-      color: 'from-purple-600 to-pink-600',
+      color: 'from-teal-700 to-emerald-600',
       items: [
         {
           id: 'dashboard',

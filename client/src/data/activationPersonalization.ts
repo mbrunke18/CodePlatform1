@@ -1,7 +1,7 @@
 type ActivationPhase = 'IMMEDIATE' | 'SECONDARY' | 'FOLLOW_UP';
 
 const AVATAR_COLORS = [
-  'bg-blue-500', 'bg-emerald-500', 'bg-purple-500', 'bg-amber-500',
+  'bg-blue-500', 'bg-emerald-500', 'bg-teal-600', 'bg-amber-500',
   'bg-rose-500', 'bg-cyan-500', 'bg-indigo-500', 'bg-pink-500',
   'bg-teal-500', 'bg-orange-500'
 ];
@@ -54,7 +54,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
     kpis: [
       { label: 'Strategic Alignment', value: '100%', color: 'text-emerald-400' },
       { label: 'Cross-BU Coordination', value: 'Simultaneous', color: 'text-blue-400' },
-      { label: 'Board Readiness', value: 'Brief auto-generated', color: 'text-purple-400' },
+      { label: 'Board Readiness', value: 'Brief auto-generated', color: 'text-teal-400' },
     ],
     completionMetrics: [
       { label: 'Execution Gap Closed', before: '$144M annual loss', after: 'Full coordination in 12 min' },
@@ -118,7 +118,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
     kpis: [
       { label: 'Systems Integrated', value: '12 platforms synced', color: 'text-emerald-400' },
       { label: 'Tech Debt Avoided', value: '$8M in rework', color: 'text-blue-400' },
-      { label: 'Adoption Rate', value: '82% in 90 days', color: 'text-purple-400' },
+      { label: 'Adoption Rate', value: '82% in 90 days', color: 'text-teal-400' },
     ],
     completionMetrics: [
       { label: 'Technology Integration', before: '36 months average', after: '22 months with Readiness OS' },
@@ -166,7 +166,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
     kpis: [
       { label: 'Models Inventoried', value: '100% in 4 min', color: 'text-emerald-400' },
       { label: 'Data Compliance', value: 'Auto-verified', color: 'text-blue-400' },
-      { label: 'Churn Prevention', value: '92% save rate', color: 'text-purple-400' },
+      { label: 'Churn Prevention', value: '92% save rate', color: 'text-teal-400' },
     ],
     completionMetrics: [
       { label: 'Data Signal to Action', before: '14 days average', after: '2 hours with Readiness OS' },
@@ -198,7 +198,7 @@ export const ROLE_OVERLAYS: Record<string, RoleOverlay> = {
     kpis: [
       { label: 'Compliance Coverage', value: '100% org-wide', color: 'text-emerald-400' },
       { label: 'Audit Readiness', value: '10 days → 2 days', color: 'text-blue-400' },
-      { label: 'Policy Distribution', value: 'Auto-tracked', color: 'text-purple-400' },
+      { label: 'Policy Distribution', value: 'Auto-tracked', color: 'text-teal-400' },
     ],
     completionMetrics: [
       { label: 'Audit Response', before: '10 business days', after: '2 days with Readiness OS' },
@@ -277,7 +277,7 @@ export const INDUSTRY_OVERLAYS: Record<string, IndustryOverlay> = {
       ],
     },
     kpis: [
-      { label: 'Brands Coordinated', value: '10 simultaneously', color: 'text-purple-400' },
+      { label: 'Brands Coordinated', value: '10 simultaneously', color: 'text-teal-400' },
       { label: 'Cities Launched', value: '15 markets', color: 'text-blue-400' },
       { label: 'Value Creation', value: '€1.68B projected', color: 'text-emerald-400' },
     ],
