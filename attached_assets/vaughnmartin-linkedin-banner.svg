@@ -158,10 +158,16 @@
         filter="url(#glow)"
         letter-spacing="-3">VM</text>
 
-      <!-- Signal pulse dot -->
+      <!-- Signal pulse dot — synced to 12s radar; flashes at 6s when beam sweeps past -->
       <circle cx="0" cy="85" r="5" fill="#00E5C4" filter="url(#glow)">
-        <animate attributeName="opacity" values="0.35;1.0;0.35" dur="2.62s" repeatCount="indefinite"/>
-        <animate attributeName="r"       values="4;6;4"          dur="2.62s" repeatCount="indefinite"/>
+        <animate attributeName="opacity"
+          values="0.2;0.2;0.2;1.0;0.2;0.2;0.2"
+          keyTimes="0;0.42;0.47;0.50;0.53;0.58;1"
+          dur="12s" repeatCount="indefinite"/>
+        <animate attributeName="r"
+          values="4;4;4;8;4;4;4"
+          keyTimes="0;0.42;0.47;0.50;0.53;0.58;1"
+          dur="12s" repeatCount="indefinite"/>
       </circle>
 
       <!-- Top arc text -->

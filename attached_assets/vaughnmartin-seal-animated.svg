@@ -96,10 +96,16 @@
     filter="url(#glow)"
     letter-spacing="-2">VM</text>
 
-  <!-- Signal pulse dot with radius pulse + opacity pulse -->
+  <!-- Signal pulse dot — synced to 12s radar; flashes at 6s when beam sweeps past -->
   <circle cx="100" cy="156" r="3.6" fill="#00E5C4" filter="url(#glow)">
-    <animate attributeName="opacity" values="0.35;1.0;0.35" dur="2.62s" repeatCount="indefinite"/>
-    <animate attributeName="r"       values="3.0;4.4;3.0"   dur="2.62s" repeatCount="indefinite"/>
+    <animate attributeName="opacity"
+      values="0.2;0.2;0.2;1.0;0.2;0.2;0.2"
+      keyTimes="0;0.42;0.47;0.50;0.53;0.58;1"
+      dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="r"
+      values="3;3;3;5.5;3;3;3"
+      keyTimes="0;0.42;0.47;0.50;0.53;0.58;1"
+      dur="12s" repeatCount="indefinite"/>
   </circle>
 
   <!-- Top arc: VAUGHNMARTIN · READINESS OS -->
