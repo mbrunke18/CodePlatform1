@@ -1,6 +1,6 @@
 import { db } from '../db.js';
 import { triggerDetections, stakeholderContacts, signalMonitoringConfig, executionTimelines, signalActivityLog } from '@shared/schema';
-import { eq, desc } from 'drizzle-orm';
+import { eq, desc, and, gte } from 'drizzle-orm';
 import { Resend } from 'resend';
 import { wsService } from './WebSocketService';
 import { evaluateSignalsWithOrgTriggers } from './TriggerEvaluationEngine.js';
@@ -608,6 +608,28 @@ export async function evaluateAndPersistSignals(
         : 999;
 
       if (hoursSince < 24) continue; // Suppress duplicate within 24 hours — prevents same trigger spamming on sustained news cycles
+
+      // ── Daily email cap: max 3 alert emails per org per calendar day ───────
+      // Counts detections where a notification was already sent today.
+      // Protects executives from alert fatigue on high-signal days.
+      try {
+        const todayStart = new Date();
+        todayStart.setHours(0, 0, 0, 0);
+        const emailsSentToday = await db
+          .select()
+          .from(triggerDetections)
+          .where(
+            and(
+              eq(triggerDetections.organizationId, organizationId as any),
+              eq(triggerDetections.notificationSent, true),
+              gte(triggerDetections.detectedAt, todayStart)
+            )
+          );
+        if (emailsSentToday.length >= 3) {
+          console.log(`📵 Daily email cap reached for org ${organizationId} (${emailsSentToday.length} sent today) — suppressing "${detection.triggerName}"`);
+          continue;
+        }
+      } catch { /* non-critical — allow email if cap query fails */ }
 
       // ── Domain-specific approver routing ──────────────────────────────
       const domainApprovers = allContacts.filter(c =>

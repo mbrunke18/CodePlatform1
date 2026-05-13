@@ -362,7 +362,14 @@ function scoreSignalAgainstTriggerGroup(
   const matchedTerms: string[] = [];
   const dataPointLabels: string[] = [];
 
-  const { minimumRequired, dataPoints } = groupConditions;
+  const { dataPoints } = groupConditions;
+  // Floor: at least 3 data points, or 20% of the group — whichever is higher.
+  // Prevents hair-trigger detections on sparse or lightly-configured trigger groups.
+  const minimumRequired = Math.max(
+    groupConditions.minimumRequired,
+    Math.ceil(dataPoints.length * 0.20),
+    3
+  );
 
   let validMandatory = 0;
   let validOptional = 0;
