@@ -113,3 +113,9 @@ id = "1cIC1-rJmrEUl0Y9rri_H"
 uri = "file://attached_assets/vaughnmartin-linkedin-banner.png"
 type = "image"
 title = "VaughnMartin LinkedIn Banner — 1128×191px"
+
+[[outputs]]
+id = "CVkXLkwtClhpgj7Dkx2vF"
+uri = "file://attached_assets/vaughnmartin-seal.svg"
+type = "image"
+title = "VaughnMartin Seal Logo — LinkedIn Ready"
