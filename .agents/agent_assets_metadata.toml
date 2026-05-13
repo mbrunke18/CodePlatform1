@@ -161,3 +161,9 @@ id = "-D4_EfL_IzZO0oGHirsUt"
 uri = "file://attached_assets/vaughnmartin-profile-logo-300.png"
 type = "image"
 title = "Profile Logo — Upgraded 300×300 PNG"
+
+[[outputs]]
+id = "TqrbMoEHeXVhyD96U-BMB"
+uri = "file://attached_assets/vaughnmartin-linkedin-cover-4200x700.png"
+type = "image"
+title = "LinkedIn Company Cover — 4200×700 PNG (correct spec)"
