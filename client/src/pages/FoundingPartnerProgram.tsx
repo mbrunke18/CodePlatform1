@@ -889,7 +889,7 @@ export default function FoundingPartnerProgram() {
                 Apply for the Founding Partner Program.
               </h2>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(240,237,228,0.6)', lineHeight: 1.75, maxWidth: 540, margin: '0 auto 28px' }}>
-                We review every application personally. Priority given to Fortune 1000 organizations with a C-level sponsor, active Microsoft or enterprise stack, and a recent strategic trigger they weren't fully ready for.
+                We review every application personally. Priority given to enterprise organizations with a C-level sponsor, active Microsoft or enterprise stack, and a recent strategic trigger they weren't fully ready for.
               </p>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 36, flexWrap: 'wrap' as const }}>
                 {[

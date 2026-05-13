@@ -106,7 +106,7 @@ export default function OurStory() {
       <PageHero
         eyebrow="The Origin Story"
         title="40-Second Decisions. Years of Preparation."
-        subtitle="How one coach's championship methodology became the execution engine for Fortune 1000 companies."
+        subtitle="How one coach's championship methodology became the execution engine for enterprise organizations."
         size="lg"
       />
 
@@ -226,7 +226,7 @@ export default function OurStory() {
           </TimelineChapter>
 
           <PullQuote author="The Readiness OS Philosophy">
-            Why do Fortune 1000 enterprises take 30 days for decisions that championship teams make in 40 seconds?
+            Why do large enterprises take 30 days for decisions that championship teams make in 40 seconds?
           </PullQuote>
 
           {/* Chapter 2 */}
@@ -278,7 +278,7 @@ export default function OurStory() {
           <TimelineChapter number="Chapter 4" title="Readiness OS Was Born" color="navy">
             <p>
               We translated 20 years of experience into the execution infrastructure 
-              Fortune 1000 executives have been missing:
+              enterprise executives have been missing:
             </p>
 
             <ul className="space-y-4 my-12">

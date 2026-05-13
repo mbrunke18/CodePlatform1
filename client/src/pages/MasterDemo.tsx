@@ -714,7 +714,7 @@ function PhaseOutcome({ sc, onRestart }: { sc: DemoScenario; onRestart: () => vo
           Every organization prepared for every situation it'll face<br/>is no longer afraid of strategic triggers.<br/><em style={{ color: GOLD }}>It's fearless.</em>
         </h2>
         <p style={{ ...BAR, fontSize: 14, color: W70, lineHeight: 1.65, maxWidth: 540, marginBottom: 24 }}>
-          The Founding Partner Program is a 90-day validation partnership with Fortune 1000 enterprises. The first cohort is forming now. The only difference between this simulation and a live deployment: the protocols carry your organization's name, your stakeholders, and your pre-approved advisors.
+          The Founding Partner Program is a 90-day validation partnership with large enterprises. The first cohort is forming now. The only difference between this simulation and a live deployment: the protocols carry your organization's name, your stakeholders, and your pre-approved advisors.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
           <a href="/contact" style={{ ...BC, background: GOLD, border: "none", color: NAVY, fontSize: 15, fontWeight: 800, letterSpacing: "0.12em", padding: "16px 36px", textDecoration: "none", textTransform: "uppercase", display: "inline-block" }}>

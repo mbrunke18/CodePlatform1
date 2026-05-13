@@ -120,7 +120,7 @@ export default function RequestAccess() {
             </div>
 
             <p style={{ ...BC, fontSize: 12, color: "rgba(240,237,228,0.65)", lineHeight: 1.65, marginTop: 28 }}>
-              Coordination infrastructure for the Fortune 1000. AI monitors. Executives authorize. Execution pre-staged.
+              Coordination infrastructure for enterprise organizations. AI monitors. Executives authorize. Execution pre-staged.
             </p>
           </div>
 

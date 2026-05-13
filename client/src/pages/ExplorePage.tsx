@@ -204,7 +204,7 @@ export default function ExplorePage() {
                 <div style={{ width: 48, height: 2, background: '#C9A84C', marginBottom: 24 }} />
                 <h3 className="text-2xl font-bold text-[#0A0F2E] mb-4" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Founding Partner Program</h3>
                 <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
-                  A structured 90-day partnership for Fortune 1000 companies ready to validate execution velocity at enterprise scale.
+                  A structured 90-day partnership for enterprise organizations ready to validate execution velocity at enterprise scale.
                 </p>
                 <ul className="space-y-3 mb-8">
                   {['Dedicated onboarding', 'Up to 25 users', 'Custom Readiness Protocol configuration', 'Executive readout at 90 days'].map(item => (

@@ -63,7 +63,7 @@ export default function MsProjectTransition() {
           </h1>
 
           <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 660, margin: "0 auto 16px", lineHeight: 1.65 }}>
-            Microsoft Project is retiring. ServiceNow is selling a better place to store your static project data. Elite Fortune 1000 leaders are using this moment to eliminate the 30-day mobilization cycle — forever.
+            Microsoft Project is retiring. ServiceNow is selling a better place to store your static project data. Elite enterprise leaders are using this moment to eliminate the 30-day mobilization cycle — forever.
           </p>
 
           <p style={{ fontSize: 15, color: GOLD, fontWeight: 600, maxWidth: 520, margin: "0 auto 40px", lineHeight: 1.5, fontStyle: "italic" }}>

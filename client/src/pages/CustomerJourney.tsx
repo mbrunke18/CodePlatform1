@@ -156,7 +156,7 @@ export default function CustomerJourney() {
               From Strategy to <em style={{ fontStyle: "italic", color: GOLD }}>Execution Mastery</em>
             </h1>
             <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 18, maxWidth: 680, margin: "0 auto 48px", lineHeight: 1.65, fontWeight: 500 }}>
-              Our 7-phase transformation model takes Fortune 1000 organizations from first evaluation to continuous strategic dominance — in 90 days.
+              Our 7-phase transformation model takes enterprise organizations from first evaluation to continuous strategic dominance — in 90 days.
             </p>
             {/* Canonical numbers stat bar */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, maxWidth: 780, margin: "0 auto", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(201,168,76,0.15)", borderRadius: 0 }}>
@@ -312,7 +312,7 @@ export default function CustomerJourney() {
                   Ready to Start Your Journey?
                 </h3>
                 <p className="text-lg text-white/70 mb-10 max-w-2xl mx-auto font-medium">
-                  Join Fortune 1000 companies achieving 12-minute strategic response times.
+                  Join enterprise organizations achieving 12-minute strategic response times.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
                   <Link href="/founding-partner-program">

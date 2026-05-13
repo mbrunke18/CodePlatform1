@@ -30,7 +30,7 @@ const competitors: Competitor[] = [
     name: "Microsoft Copilot & Azure OpenAI",
     category: "AI Intelligence Layer",
     claim: "AI that works alongside your people — drafting, summarizing, and analyzing across your Microsoft stack.",
-    whatTheyDo: "Microsoft bolted AI onto the existing operating model. Copilot makes meetings faster to document. It generates better analysis, better summaries, smarter search. It is genuinely excellent at what it does — and 75%+ of Fortune 1000 enterprises have already deployed it.",
+    whatTheyDo: "Microsoft bolted AI onto the existing operating model. Copilot makes meetings faster to document. It generates better analysis, better summaries, smarter search. It is genuinely excellent at what it does — and 75%+ of large enterprises have already deployed it.",
     whereTheyStop: "When a strategic trigger fires — a ransomware attack, a supply disruption, a regulatory deadline — Copilot has no answer to: Who needs to be in the room? Who owns which task? Which lawyer do we call first? It summarizes the chaos faster. It does not replace the chaos. The 30-day mobilization cycle is completely intact.",
     theGap: "Every Fortune 1000 already has Microsoft's AI stack. Their response times haven't reflected a 3,600× improvement because the operating model underneath Copilot hasn't changed. Intelligence without coordination is expensive analysis sitting in a meeting room.",
     oneLiner: "You've already bought the engine. Readiness OS is the transmission.",
@@ -71,7 +71,7 @@ const competitors: Competitor[] = [
     claim: "Know your risks, document your controls, and demonstrate compliance to regulators and boards.",
     whatTheyDo: "GRC platforms — Archer, OneTrust, LogicGate, and others — are documentation and audit trail systems. They record what risks exist, what controls are in place, and generate reports for regulators. For audit, compliance, and governance functions, they are genuinely valuable.",
     whereTheyStop: "GRC platforms are retrospective by design. They document what happened and whether controls existed. When a trigger fires — a ransomware attack, a product recall, a regulatory inquiry — your GRC platform generates a record of your controls. It does not mobilize your response. The CISO, GC, and CFO still need to be called. The Readiness Protocol still needs to be found. Coordination still takes 30 days.",
-    theGap: "Fortune 1000 organizations spend hundreds of thousands annually on GRC platforms to prove they have a plan. Readiness OS is what actually executes the plan when it matters. GRC satisfies auditors. Readiness OS protects the business.",
+    theGap: "enterprise organizations spend hundreds of thousands annually on GRC platforms to prove they have a plan. Readiness OS is what actually executes the plan when it matters. GRC satisfies auditors. Readiness OS protects the business.",
     oneLiner: "Your GRC platform proves you had a plan. Readiness OS proves the plan worked — in 12 minutes.",
   },
   {

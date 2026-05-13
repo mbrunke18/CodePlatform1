@@ -57,7 +57,7 @@ export function PeerAdoptionOverlay() {
               </div>
               <h2 className="text-3xl font-bold text-[#0A0F2E]">While You're Deciding...</h2>
             </div>
-            <p className="text-xl text-[#0A0F2E]/90">Your Fortune 1000 peers are already executing</p>
+            <p className="text-xl text-[#0A0F2E]/90">Your enterprise peers are already executing</p>
           </div>
 
           {/* Stats Bar */}

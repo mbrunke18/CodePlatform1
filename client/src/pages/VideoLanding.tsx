@@ -26,7 +26,7 @@ export default function VideoLanding() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS - Strategic Readiness Platform | 30 Days → 12 Minutes",
-      description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged Readiness Protocols, coordinated stakeholders, instant activation for Fortune 1000 companies.",
+      description: "Watch how Readiness OS transforms strategic mobilization from 30 days to 12 minutes. Pre-staged Readiness Protocols, coordinated stakeholders, instant activation for enterprise organizations.",
       ogTitle: "Readiness OS - The Speed to Execute",
       ogDescription: "170 Readiness Protocols. 12 minutes to live execution — roles assigned, tasks staged, teams moving. The Strategic Readiness Platform.",
     });
@@ -202,7 +202,7 @@ export default function VideoLanding() {
             Ready to Execute at the <em className="italic text-[#C9A84C]">Speed of Change?</em>
           </h2>
           <p className="text-xl text-white/60 mb-12 font-light leading-relaxed">
-            Join Fortune 1000 leaders who have transformed their strategic response capability
+            Join enterprise leaders who have transformed their strategic response capability
           </p>
           
           <div className="flex gap-4 justify-center flex-wrap">

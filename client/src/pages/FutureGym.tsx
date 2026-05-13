@@ -231,7 +231,7 @@ export default function FutureGym() {
                   Future <em style={{ color: GOLD }}>Gym</em>
                 </div>
                 <div style={{ fontSize: 13, color: 'rgba(240,237,228,0.55)', maxWidth: 540, lineHeight: 1.6 }}>
-                  Build strategic muscle through simulated scenarios and practice drills designed for Fortune 1000 teams. The executives who respond fastest trained before the trigger fired.
+                  Build strategic muscle through simulated scenarios and practice drills designed for enterprise teams. The executives who respond fastest trained before the trigger fired.
                 </div>
               </div>
               <Button size="lg" className="bg-[#C9A84C] text-[#0A0F2E] font-bold hover:bg-[#DFC178] rounded-none" onClick={() => setLocation('/practice-drills')}>
@@ -418,7 +418,7 @@ export default function FutureGym() {
             <TabsContent value="leaderboard">
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm text-[#6B7280]">Rankings across all participating Fortune 1000 organizations in the VaughnMartin pilot network.</p>
+                  <p className="text-sm text-[#6B7280]">Rankings across all participating enterprise organizations in the VaughnMartin pilot network.</p>
                   <Badge className="bg-[#C9A84C]/15 text-[#0A0F2E] border-none text-[10px] font-bold tracking-widest uppercase px-3">
                     Updated Weekly
                   </Badge>

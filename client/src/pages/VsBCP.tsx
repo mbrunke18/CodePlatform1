@@ -173,7 +173,7 @@ export default function VsBCP() {
           <div style={{ marginTop: 32, padding: "24px 28px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 20, alignItems: "center" }}>
             <div style={{ width: 4, height: 56, background: GOLD, flexShrink: 0 }} />
             <p style={{ ...DM, fontSize: 15, color: "rgba(240,237,228,0.75)", margin: 0, lineHeight: 1.7 }}>
-              Most Fortune 1000 organizations face more damage from 30 days of mobilization paralysis on a competitive trigger than from a BCP event.
+              Most enterprise organizations face more damage from 30 days of mobilization paralysis on a competitive trigger than from a BCP event.
               Readiness OS is built for the situations that happen every year — the ones your BCP doesn't cover and your current operating model takes 30 days to handle.
             </p>
           </div>

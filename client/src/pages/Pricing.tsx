@@ -17,7 +17,7 @@ export default function Pricing() {
   useEffect(() => {
     updatePageMetadata({
       title: "Enterprise Pricing - Readiness OS | Strategic Readiness Platform",
-      description: "Premium tiered pricing for Fortune 1000 companies. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Program ($75K, 100% credited to Year 1) — limited to 5 design partners.",
+      description: "Premium tiered pricing for enterprise organizations. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Program ($75K, 100% credited to Year 1) — limited to 5 design partners.",
       ogTitle: "Readiness OS Enterprise Pricing - Built for Fortune 1000",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
@@ -56,7 +56,7 @@ export default function Pricing() {
               Join Our Founding Partners
             </h2>
             <p className="text-xl text-[#6B7280] max-w-3xl mx-auto">
-              We're selecting 10 Fortune 1000 companies for our 90-day validation program. Full platform access, dedicated implementation support, 100% pilot fee credited toward Year 1.
+              We're selecting 10 enterprise organizations for our 90-day validation program. Full platform access, dedicated implementation support, 100% pilot fee credited toward Year 1.
             </p>
           </div>
 

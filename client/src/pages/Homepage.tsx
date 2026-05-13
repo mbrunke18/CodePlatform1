@@ -1365,7 +1365,7 @@ function AthletePreparationSection() {
                 Tuesday through Friday is where Saturday is decided. The competition is the confirmation — not the preparation.
               </p>
               <p style={{ ...DM, fontSize: 15, color: MUTED_LIGHT, lineHeight: 1.75, marginBottom: 28 }}>
-                Most Fortune 1000 organizations do the opposite. They perform when the trigger fires and prepare for nothing. Every response begins from scratch — who needs to be in the room, what the plan is, who owns what. The mobilization cycle alone takes 30 days.
+                Most enterprise organizations do the opposite. They perform when the trigger fires and prepare for nothing. Every response begins from scratch — who needs to be in the room, what the plan is, who owns what. The mobilization cycle alone takes 30 days.
               </p>
               <p style={{ ...DM, fontSize: 15, fontWeight: 700, color: NAVY, lineHeight: 1.6, marginBottom: 20 }}>
                 Thirty days is not a performance problem. It is an architecture problem.

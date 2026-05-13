@@ -38,7 +38,7 @@ export default function Contact() {
   useEffect(() => {
     updatePageMetadata({
       title: "Founding Partner Program — Readiness OS | VaughnMartin",
-      description: "Apply for Readiness OS' Founding Partner Program. Limited to 10 Fortune 1000 companies for a 90-day validation partnership. Transform strategic execution from 30 days to 12 minutes.",
+      description: "Apply for Readiness OS' Founding Partner Program. Limited to 10 enterprise organizations for a 90-day validation partnership. Transform strategic execution from 30 days to 12 minutes.",
       ogTitle: "Founding Partner Program — Readiness OS by VaughnMartin",
       ogDescription: "Limited to 10 Fortune 1000 partners. 90-day validation. Apply for founding access.",
     });
@@ -103,7 +103,7 @@ export default function Contact() {
               Request <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Founding Partner Access</em>
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-              Join an exclusive group of 10 Fortune 1000 companies transforming strategic execution 
+              Join an exclusive group of 10 enterprise organizations transforming strategic execution 
               through Readiness OS' 90-day validation partnership.
             </p>
             <div className="flex gap-8 justify-center flex-wrap">

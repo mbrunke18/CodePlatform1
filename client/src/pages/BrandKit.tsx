@@ -408,7 +408,7 @@ export default function BrandKit() {
                   { label: "Secondary Tagline",  text: "Built on the Belief That Preparation Wins.",                                            note: "For investor and board contexts."           },
                   { label: "Category Definition",text: "Readiness Infrastructure for Strategic Trigger Response.",                              note: "How we define the market we created."       },
                   { label: "Canonical Metric",   text: "3,600× Execution Head Start. 30 days compressed to 12 minutes.",                       note: "Always both parts together."                },
-                  { label: "Platform Descriptor",text: "VaughnMartin builds Readiness OS — coordination infrastructure for the Fortune 1000.", note: "First sentence in any product description." },
+                  { label: "Platform Descriptor",text: "VaughnMartin builds Readiness OS — coordination infrastructure for enterprise organizations.", note: "First sentence in any product description." },
                 ].map((v, i) => (
                   <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(201,168,76,0.12)", padding: "28px 24px" }}>
                     <div style={{ fontFamily: LABEL, fontSize: 10, letterSpacing: "0.3em", color: B.gold, textTransform: "uppercase" as const, marginBottom: 14, fontWeight: 700 }}>{v.label}</div>

@@ -79,7 +79,7 @@ export default function ExecutiveBrief() {
       title: "Executive Brief — Readiness OS by VaughnMartin",
       description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and Founding Partner Program. Built for Fortune 1000 board-level conversations.",
       ogTitle: "Executive Brief — VaughnMartin Readiness OS",
-      ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic readiness platform built for Fortune 1000 enterprises.",
+      ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic readiness platform built for large enterprises.",
     });
   }, []);
 

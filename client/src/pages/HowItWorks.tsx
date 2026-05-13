@@ -520,7 +520,7 @@ export default function HowItWorks() {
               The Platform Works While You Execute
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 580, lineHeight: 1.7, fontWeight: 500 }}>
-              Readiness OS includes four layers of intelligence that prevent the coordination failures Fortune 1000 enterprises experience every day — silently running in the background so your team stays on course.
+              Readiness OS includes four layers of intelligence that prevent the coordination failures large enterprises experience every day — silently running in the background so your team stays on course.
             </p>
           </div>
 

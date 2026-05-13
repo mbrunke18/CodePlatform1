@@ -37,6 +37,13 @@
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
 
+    <!-- Gold bar gradient — matches homepage ANTE IGNEM PARATUS treatment -->
+    <linearGradient id="mottoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#8B6212"/>
+      <stop offset="50%"  stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#8B6212"/>
+    </linearGradient>
+
     <!-- Soft clip for the whole banner -->
     <clipPath id="bannerClip">
       <rect width="1584" height="396"/>
@@ -189,45 +196,56 @@
     <!-- ── Vertical divider ───────────────────────────────────── -->
     <line x1="430" y1="60" x2="430" y2="336" stroke="#C9A84C" stroke-width="0.75" opacity="0.3"/>
 
-    <!-- ── Right side: wordmark + tagline ───────────────────── -->
-    <!-- Label -->
-    <text x="490" y="122"
-      font-family="'Courier New', monospace"
-      font-size="14" font-weight="700"
-      fill="#2B8A6E"
-      letter-spacing="0.22em">READINESS OS  ·  FORTUNE 1000</text>
+    <!-- ── Right side: wordmark + homepage motto treatment ──── -->
 
-    <!-- Main wordmark -->
-    <text x="486" y="198"
+    <!-- VaughnMartin wordmark -->
+    <text x="490" y="148"
       font-family="Georgia, 'Times New Roman', serif"
-      font-size="82" font-weight="700"
+      font-size="88" font-weight="700"
       fill="#F0EDE4"
       letter-spacing="-1">VaughnMartin</text>
 
-    <!-- Gold rule -->
-    <rect x="490" y="216" width="64" height="1.5" fill="#C9A84C" opacity="0.9"/>
+    <!-- Gold rule under wordmark -->
+    <rect x="490" y="164" width="72" height="1.5" fill="#C9A84C" opacity="0.9"/>
+
+    <!-- READINESS OS sub-label -->
+    <text x="490" y="188"
+      font-family="'Courier New', monospace"
+      font-size="13" font-weight="700"
+      fill="#C9A84C"
+      letter-spacing="0.36em">READINESS OS</text>
+
+    <!-- Gold bar — ANTE IGNEM PARATUS (matches homepage treatment exactly) -->
+    <rect x="490" y="218" width="432" height="40" fill="url(#mottoGrad)"/>
+    <text x="706" y="244"
+      text-anchor="middle"
+      font-family="Georgia, 'Times New Roman', serif"
+      font-size="14" font-weight="700"
+      fill="#0A0F2E"
+      letter-spacing="0.32em">ANTE IGNEM PARATUS</text>
+
+    <!-- Teal motto line — PREPARE · PRACTICE · PERFORM FEARLESS · NEVER GIVE UP -->
+    <text x="706" y="286"
+      text-anchor="middle"
+      font-family="'Courier New', monospace"
+      font-size="11.5" font-weight="600"
+      fill="rgba(0,229,196,0.65)"
+      letter-spacing="0.16em">PREPARE · PRACTICE · PERFORM FEARLESS · NEVER GIVE UP</text>
 
     <!-- Tagline -->
-    <text x="490" y="262"
+    <text x="490" y="336"
       font-family="Georgia, 'Times New Roman', serif"
-      font-size="28" font-weight="400"
-      fill="#C9A84C"
+      font-size="22" font-weight="400"
+      fill="rgba(240,237,228,0.72)"
       font-style="italic">The Response Is Ready Before the Trigger Fires.</text>
 
-    <!-- Supporting stat line -->
-    <text x="490" y="308"
-      font-family="'Courier New', monospace"
-      font-size="15"
-      fill="rgba(240,237,228,0.55)"
-      letter-spacing="0.08em">30 DAYS COMPRESSED TO 12 MINUTES  ·  170 READINESS PROTOCOLS  ·  3,600× EXECUTION HEAD START</text>
-
     <!-- Bottom-right URL -->
-    <text x="1540" y="370"
+    <text x="1540" y="374"
       text-anchor="end"
       font-family="'Courier New', monospace"
-      font-size="13"
+      font-size="12"
       fill="#C9A84C"
-      opacity="0.55"
+      opacity="0.5"
       letter-spacing="0.05em">vaughnmartin.com</text>
 
   </g>

@@ -133,7 +133,7 @@ const INVESTOR_CARDS = [
       </svg>
     ),
     title: "Founding Partner Program",
-    body: "First cohort forming now. Selective by design — validating with Fortune 1000 enterprises only.",
+    body: "First cohort forming now. Selective by design — validating with large enterprises only.",
   },
 ];
 
@@ -173,7 +173,7 @@ export default function MarketingInfographic() {
             Readiness OS™
           </div>
           <div style={{ ...BC, fontSize: 13, fontWeight: 600, letterSpacing: "0.06em", color: W, marginBottom: 10, textTransform: "uppercase" }}>
-            The readiness infrastructure for the Fortune 1000.
+            The readiness infrastructure for enterprise organizations.
           </div>
           <p style={{ ...BAR, fontSize: 13, fontWeight: 400, color: W80, lineHeight: 1.65 }}>
             Every vendor bolted AI onto the old model. We replaced the model.<br/>

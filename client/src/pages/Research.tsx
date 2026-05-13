@@ -221,7 +221,7 @@ export default function Research() {
                 <div className="p-6" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: "#C9A84C", lineHeight: 1, marginBottom: 8 }}>95%</div>
                   <p className="text-sm font-semibold text-[#0A0F2E] mb-1">Piloting AI</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">of Fortune 1000 companies are running AI initiatives</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">of enterprise organizations are running AI initiatives</p>
                 </div>
                 <div className="p-6" style={{ background: "#F8F7F4", border: "1px solid #E8E4DC" }}>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: "#2B8A6E", lineHeight: 1, marginBottom: 8 }}>5%</div>
@@ -727,7 +727,7 @@ export default function Research() {
                 <em style={{ color: GOLD, fontStyle: "italic" }}>None of them built the solution.</em>
               </h2>
               <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.7, marginBottom: 24 }}>
-                McKinsey, HBR, Gartner, PwC, IBM — the research is irrefutable. The mobilization gap exists. The 30-day response cycle costs Fortune 1000 enterprises $847B in strategic spend annually. The consultants named the problem. The framework sellers sold approaches. Nobody built the coordination infrastructure.
+                McKinsey, HBR, Gartner, PwC, IBM — the research is irrefutable. The mobilization gap exists. The 30-day response cycle costs large enterprises $847B in strategic spend annually. The consultants named the problem. The framework sellers sold approaches. Nobody built the coordination infrastructure.
               </p>
               <p style={{ fontSize: 14, fontWeight: 700, color: NAVY, lineHeight: 1.5 }}>
                 Readiness OS is the only platform that turns this research into a timestamp on a deployed Readiness Protocol.

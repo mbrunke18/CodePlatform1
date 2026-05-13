@@ -93,7 +93,7 @@ export function CrisisResolvedCelebration() {
               <span className="text-3xl font-bold text-[#C9A84C]">93</span>
             </div>
             <div className="text-sm text-[#C9A84C] mt-2">
-              You're now in the Top 1% of Fortune 1000 CEOs for crisis preparedness
+              You're now in the Top 1% of enterprise CEOs for crisis preparedness
             </div>
           </div>
 

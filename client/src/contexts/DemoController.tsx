@@ -83,7 +83,7 @@ const personaNarrations = {
     decision: 'Now you\'ll activate the playbook. One click sends role-specific tasks to every department simultaneously. The CFO gets financial protocols, COO gets operational steps, CHRO gets workforce communications - all coordinated through the platform. Notice the task tracker showing 12 tasks being distributed across teams. This is the power of pre-configured playbooks - no meetings needed to coordinate response.',
     activation: 'Watch the task tracker in real-time. Each department receives their specific playbook steps automatically. Procurement is finding alternative suppliers, Production is adjusting schedules, Finance is activating payment protocols, Communications is preparing customer updates. All 12 tasks are executing in parallel across 5 departments. This coordinated response is what makes the 12-minute execution possible.',
     execution: 'The countdown timer shows 9 minutes elapsed. Tasks are completing in real-time - green checkmarks show finished items. Traditional crisis response takes weeks because of sequential coordination delays — getting the right people in the room, agreeing on a plan. Readiness OS eliminates those delays by giving everyone their playbook simultaneously. Notice how different departments see different tasks - that\'s role-based playbook distribution. Every stakeholder knows exactly what to do.',
-    results: 'Crisis resolved in 12 minutes. The ROI Dashboard shows what this means: $12M revenue protected, weeks of mobilization compressed to minutes, 5-day competitive advantage. Your Executive Preparedness Score increases because you practiced crisis response. This is how Fortune 1000 executives are transforming decision velocity — 30 days compressed to 12 minutes through pre-configured playbooks and executive triggers.'
+    results: 'Crisis resolved in 12 minutes. The ROI Dashboard shows what this means: $12M revenue protected, weeks of mobilization compressed to minutes, 5-day competitive advantage. Your Executive Preparedness Score increases because you practiced crisis response. This is how enterprise executives are transforming decision velocity — 30 days compressed to 12 minutes through pre-configured playbooks and executive triggers.'
   },
   coo: {
     intro: 'Let me show you how COOs use Readiness OS to maintain production continuity during supplier disruptions. You\'ll see how operational triggers detect capacity risks before they impact production. The same supplier crisis that would traditionally shut down production lines for days gets resolved in 12 minutes through coordinated playbook execution. I\'ll walk you through the Crisis Response Center.',
@@ -160,7 +160,7 @@ export const hybridDemoScenarios: DemoScene[] = [
     id: 'executive-intro',
     title: 'M: Your Strategic Command Center',
     subtitle: '12 Minutes vs 30 Days — 3,600× Execution Head Start',
-    description: 'Introduction to Readiness OS — Coordination Infrastructure for the Fortune 1000',
+    description: 'Introduction to Readiness OS — Coordination Infrastructure for enterprise organizations',
     type: 'executive',
     phase: 'detection',
     route: '/hybrid-demo',

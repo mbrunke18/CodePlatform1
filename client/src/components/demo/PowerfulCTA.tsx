@@ -27,7 +27,7 @@ export function PowerfulCTA() {
   const urgencyPoints = [
     { icon: Zap, text: 'Your competitors are seeing this demo too', color: 'text-amber-400' },
     { icon: Shield, text: 'Every day without M = increased crisis risk', color: 'text-red-400' },
-    { icon: Users, text: '23 Fortune 1000 CEOs activated last month', color: 'text-[#2B8A6E]' },
+    { icon: Users, text: '23 enterprise CEOs activated last month', color: 'text-[#2B8A6E]' },
   ];
 
   return (
@@ -98,7 +98,7 @@ export function PowerfulCTA() {
           {/* Social Proof */}
           <div className="text-center pt-4 border-t border-[#2B8A6E]/30">
             <p className="text-sm text-[#DFC178]">
-              Trusted by <span className="font-bold text-[#0A0F2E]">127 Fortune 1000 companies</span> protecting 
+              Trusted by <span className="font-bold text-[#0A0F2E]">127 enterprise organizations</span> protecting 
               <span className="font-bold text-[#2B8A6E]"> $47B</span> in combined annual revenue
             </p>
           </div>

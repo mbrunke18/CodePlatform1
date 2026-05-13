@@ -219,7 +219,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 2, duration: 0.8 }}
           className="text-2xl text-[#0A0F2E] mt-16 max-w-3xl font-medium"
         >
-          Fortune 1000 companies lose billions every year because they can't move fast enough when it matters most.
+          enterprise organizations lose billions every year because they can't move fast enough when it matters most.
         </motion.p>
       </div>
     ),
@@ -244,7 +244,7 @@ export default function KeynoteDemo() {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-2xl text-[#0A0F2E] mb-16 max-w-3xl font-medium"
         >
-          Annual cost of strategic unreadiness across Fortune 1000 companies
+          Annual cost of strategic unreadiness across enterprise organizations
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -367,7 +367,7 @@ export default function SettingsPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center text-[#0A0F2E]">
                     <Crown className="w-5 h-5 mr-2 text-[#C9A84C]" />
-                    Fortune 1000 Enterprise Features
+                    Enterprise Platform Features
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -404,7 +404,7 @@ export default function SettingsPage() {
                       <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Enterprise Intelligence Platform Status</span>
                     </div>
                     <p className="text-xs text-[#0A0F2E] mt-2 font-medium">
-                      All Fortune 1000 enterprise features are active and optimized for organizational intelligence and crisis response excellence.
+                      All enterprise platform features are active and optimized for organizational intelligence and crisis response excellence.
                     </p>
                   </div>
                 </CardContent>

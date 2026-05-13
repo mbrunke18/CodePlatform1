@@ -123,7 +123,7 @@ export default function DecisionVelocityPage() {
                     What is Decision Velocity?
                   </CardTitle>
                   <CardDescription className="text-[10px] font-bold uppercase tracking-widest text-[#6B7280]">
-                    The competitive advantage metric Fortune 1000 leaders track
+                    The competitive advantage metric enterprise leaders track
                   </CardDescription>
                 </CardHeader>
                   <p className="text-[#0A0F2E] text-lg leading-relaxed">

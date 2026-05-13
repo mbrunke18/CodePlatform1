@@ -46,7 +46,7 @@ const TOUR_SCENES: Scene[] = [
     duration: 6000,
     title: 'Readiness OS',
     subtitle: 'Strategic Readiness Platform',
-    narration: 'Welcome to Readiness OS — the coordination infrastructure that prepares Fortune 1000 companies for any strategic situation they\'ll face.',
+    narration: 'Welcome to Readiness OS — the coordination infrastructure that prepares enterprise organizations for any strategic situation they\'ll face.',
     visual: 'solution'
   },
   {

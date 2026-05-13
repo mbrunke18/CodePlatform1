@@ -578,7 +578,7 @@ export default function SignalConnectors() {
                     Trigger Portfolio Coverage Analysis
                   </h3>
                   <p style={{ fontSize: 13, color: '#6B7280', marginBottom: 20 }}>
-                    Your current trigger configuration measured against the recommended portfolio for Fortune 1000 organizations.
+                    Your current trigger configuration measured against the recommended portfolio for enterprise organizations.
                     Unconfigured domains represent blind spots — situations where a trigger could fire with no staged response ready.
                   </p>
 

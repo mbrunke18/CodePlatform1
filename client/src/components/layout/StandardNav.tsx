@@ -223,7 +223,7 @@ export default function StandardNav() {
     { label: "Proof Story", path: "/proof-story", icon: Scale, description: "Same trigger — entirely different outcome. The numbers side by side." },
     { label: "Readiness Score", path: "/readiness-assessment", icon: ClipboardCheck, description: "Score your org's execution readiness across all 9 domains" },
     { label: "Pricing & Plans", path: "/growth", icon: TrendingUp, description: "Accessible entry — full platform, grow as you scale", featured: true },
-    { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how Fortune 1000 teams onboard & scale" },
+    { label: "Customer Journey", path: "/customer-journey", icon: Users, description: "See how enterprise teams onboard & scale" },
     { label: "Why Not Consulting?", path: "/vs-consulting", icon: Scale, description: "McKinsey charges $300K–$500K for PDFs. We deliver infrastructure that executes." },
     { label: "MS Project EOL → Don't Just Migrate", path: "/ms-project", icon: Scale, description: "ServiceNow moves your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle.", featured: true },
     { label: "Platform Reality — They Talked. We Built.", path: "/platform-reality", icon: Scale, description: "Every conference keynote proves the problem. None of them shipped the solution. Readiness OS did.", featured: true },
@@ -438,7 +438,7 @@ export default function StandardNav() {
               { path: '/roi-calculator', icon: Calculator, label: 'ROI Calculator', sub: 'See the competitive window you\'re leaving open', featured: true },
               { path: '/readiness-assessment', icon: ClipboardCheck, label: 'Readiness Score', sub: 'Score your org\'s execution readiness across all 9 domains' },
               { path: '/growth', icon: TrendingUp, label: 'Pricing & Plans', sub: 'Accessible entry — full platform, grow as you scale', featured: true },
-              { path: '/customer-journey', icon: Users, label: 'Customer Journey', sub: 'See how Fortune 1000 teams onboard & scale' },
+              { path: '/customer-journey', icon: Users, label: 'Customer Journey', sub: 'See how enterprise teams onboard & scale' },
             ].map(l => megaItem(l))}
             <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid rgba(10,15,46,0.08)' }}>
               <div

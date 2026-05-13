@@ -216,7 +216,7 @@ export default function Team() {
 
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {[
-                  { role: "VP of Enterprise Sales", focus: "Fortune 1000 direct sales — CISO, COO, Chief Strategy Officer" },
+                  { role: "VP of Enterprise Sales", focus: "enterprise direct sales — CISO, COO, Chief Strategy Officer" },
                   { role: "Head of Customer Success", focus: "Pilot activation through to enterprise renewal" },
                   { role: "Enterprise Solutions Engineer", focus: "Microsoft stack integration — Teams, Copilot, Entra" },
                   { role: "Founding Designer", focus: "Product and marketing design — system-level thinking" },

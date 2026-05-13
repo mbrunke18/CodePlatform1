@@ -118,7 +118,7 @@ export default function DemoWelcomeScreen({ onStartDemo, onClose }: DemoWelcomeS
           <div className="bg-gradient-to-r   p-6 border border-[#C9A84C]/30">
             <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
               <Building2 className="h-5 w-5 text-[#C9A84C]" />
-              Built for Fortune 1000 Strategic Execution
+              Built for Enterprise Strategic Execution
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div>

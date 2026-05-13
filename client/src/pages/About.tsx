@@ -79,7 +79,7 @@ export default function About() {
                 CEO & Founder · VaughnMartin Inc.
               </div>
               <p style={{ ...DM, fontSize: "clamp(15px,1.4vw,17px)", color: "rgba(255,255,255,0.72)", lineHeight: 1.75, margin: "0 0 24px" }}>
-                Twenty years inside Fortune 1000 organizations watching the same failure repeat across seven industries. Five years on the practice field at Stanford watching the exact opposite — a pre-staged response deploy in 40 seconds under full pressure.
+                Twenty years inside enterprise organizations watching the same failure repeat across seven industries. Five years on the practice field at Stanford watching the exact opposite — a pre-staged response deploy in 40 seconds under full pressure.
               </p>
               <p style={{ ...GEO, fontSize: "clamp(16px,1.3vw,20px)", fontStyle: "italic", color: GOLD, lineHeight: 1.6, margin: 0 }}>
                 "The infrastructure existed on the practice field. Nobody had built it for the boardroom."

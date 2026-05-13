@@ -148,15 +148,15 @@ const FAQS = [
     a: "For companies starting at the Ready tier, if you activate a Readiness Protocol in a real situation within 30 days and don't see measurable value, we refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
   },
   {
-    q: "How does this relate to the Fortune 1000 Enterprise Pilot ($75K)?",
-    a: "The Enterprise Pilot is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for Fortune 1000 companies at enterprise scale. The $75K pilot fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
+    q: "How does this relate to the Large Enterprise Pilot ($75K)?",
+    a: "The Enterprise Pilot is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for enterprise organizations at enterprise scale. The $75K pilot fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
   },
   {
     q: "Can I move up tiers as we grow?",
     a: "Yes. Everything carries forward — configurations, activation history, custom Readiness Protocols, decision rights mappings. There is no re-onboarding and no data loss. You pay the difference at the next billing cycle and immediately gain access to the expanded capability.",
   },
   {
-    q: "Is this genuinely the same platform Fortune 1000 companies use?",
+    q: "Is this genuinely the same platform enterprise organizations use?",
     a: "Yes. Same IDEA Framework. Same execution engine. Same 170-Readiness Protocol library. Same 12-minute activation infrastructure. The tier determines how much of the platform you deploy across your organization — not a reduced or restricted version of the product.",
   },
 ];
@@ -171,7 +171,7 @@ export default function Growth() {
       title: "Pricing & Plans — Readiness OS | VaughnMartin",
       description: "Capability-based pricing for Readiness OS. Ready ($75K/yr), Responsive ($150K/yr), Orchestrated ($250K/yr), Enterprise (custom). Unlimited users at every tier. One activation pays for the year.",
       ogTitle: "Readiness OS Pricing — Built on Deployment Scope, Not Headcount",
-      ogDescription: "Four tiers of coordination infrastructure. Unlimited users at every tier. The same platform Fortune 1000 companies use — with a structured entry path. One situation handled pays for the year.",
+      ogDescription: "Four tiers of coordination infrastructure. Unlimited users at every tier. The same platform enterprise organizations use — with a structured entry path. One situation handled pays for the year.",
     });
   }, []);
 
@@ -218,7 +218,7 @@ export default function Growth() {
           </p>
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.45)", maxWidth: 600, margin: "0 auto 40px", lineHeight: 1.55 }}>
             One situation handled correctly returns the annual investment many times over.
-            Unlimited users at every tier. The same platform Fortune 1000 companies use.
+            Unlimited users at every tier. The same platform enterprise organizations use.
           </p>
 
           {/* Key signals */}
@@ -781,7 +781,7 @@ export default function Growth() {
             Founding Partner Pilot — $75K
           </h2>
           <p style={{ fontSize: 16, color: "#4B5563", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.6 }}>
-            For Fortune 1000 companies that want a structured 90-day validation with dedicated implementation.
+            For enterprise organizations that want a structured 90-day validation with dedicated implementation.
             The $75K pilot fee is <strong>100% credited toward Year 1</strong> — so you're not paying for a pilot,
             you're prepaying for the deployment.
           </p>

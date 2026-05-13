@@ -61,7 +61,7 @@ export default function PodcastPrep() {
         {/* Q&A */}
         <Section label="When He Asks...">
           <QA q="Can you give me an example?">
-            "I spent five years coaching at Stanford. Major college football is a billion-dollar operation that solved a coordination problem Fortune 1000 companies are still wrestling with. Signal fires. They're executing across eleven roles in forty seconds. The mechanism is preparation — every situation they'll face has already been built, practiced, and owned before Saturday. Most enterprises don't have that. Every trigger, they start from scratch."
+            "I spent five years coaching at Stanford. Major college football is a billion-dollar operation that solved a coordination problem enterprise organizations are still wrestling with. Signal fires. They're executing across eleven roles in forty seconds. The mechanism is preparation — every situation they'll face has already been built, practiced, and owned before Saturday. Most enterprises don't have that. Every trigger, they start from scratch."
           </QA>
           <QA q="What's the takeaway for your audience?">
             "The Microsoft investment isn't the problem. The operating model above it is. Most enterprises are running 2026 AI capability through a coordination model designed before AI existed. The fix isn't more technology. It's redesigning how the stack gets activated when a trigger fires."
