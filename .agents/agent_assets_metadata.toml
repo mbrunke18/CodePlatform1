@@ -131,3 +131,9 @@ id = "ADGM50gAvqYyhXkscOZXB"
 uri = "file://attached_assets/vaughnmartin-seal-animated.svg"
 type = "image"
 title = "VaughnMartin Seal — Animated Radar (SVG)"
+
+[[outputs]]
+id = "k4hwrRhhqEZbCJtBCKwue"
+uri = "file://attached_assets/vaughnmartin-seal-400.png"
+type = "image"
+title = "VaughnMartin Seal — 400×400 PNG (LinkedIn-ready)"
