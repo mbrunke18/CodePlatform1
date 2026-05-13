@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "wouter";
 import { SCENARIOS, type DemoScenario } from "./demos/scenarioData";
+import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 
 /* ─── Brand ───────────────────────────────────────────────────────────────── */
 const NAVY    = "#0A0F2E";
@@ -769,15 +770,7 @@ export default function MasterDemo() {
       {/* Header */}
       <div style={{ background: NAVY_BG, borderBottom: `1px solid ${BD}`, padding: "12px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 30, height: 30, borderRadius: "50%", border: `1.5px solid ${GOLD}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <span style={{ ...BC, fontSize: 9, fontWeight: 800, color: GOLD, letterSpacing: "0.05em" }}>VM</span>
-            </div>
-            <div>
-              <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", color: W, lineHeight: 1 }}>VaughnMartin</div>
-              <div style={{ ...BC, fontSize: 7, fontWeight: 600, letterSpacing: "0.2em", color: GOLD, textTransform: "uppercase", lineHeight: 1, marginTop: 2 }}>Readiness OS™</div>
-            </div>
-          </a>
+          <VaughnMartinLogo color="light" height={36} variant="full" />
           <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.12)" }}/>
           <div>
             <div style={{ ...BC, fontSize: 8, fontWeight: 600, letterSpacing: "0.25em", color: W50, textTransform: "uppercase", lineHeight: 1 }}>Live Simulation</div>
