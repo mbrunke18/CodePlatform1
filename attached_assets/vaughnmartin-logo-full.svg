@@ -1,0 +1,93 @@
+<svg width="560" height="160" viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#1a2860"/>
+      <stop offset="100%" stop-color="#0A0F2E"/>
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DFC178"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#8B6212"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="0.8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- White background for LinkedIn -->
+  <rect width="560" height="160" fill="#ffffff"/>
+
+  <!-- ── SEAL (centered vertically at x=80, y=80, radius ~68) ── -->
+  <g transform="translate(80,80)">
+    <!-- Background circle -->
+    <circle cx="0" cy="0" r="68" fill="url(#bgGrad)"/>
+
+    <!-- Outer rings -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#C9A84C" stroke-width="0.9" opacity="0.85"/>
+    <circle cx="0" cy="0" r="66" fill="none" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
+
+    <!-- Cardinal diamonds at N S E W -->
+    <polygon points="0,-76 3.5,-72 0,-68 -3.5,-72" fill="url(#goldGrad)"/>
+    <polygon points="76,0 80,3.5 76,7 72,3.5" fill="url(#goldGrad)"/>
+    <polygon points="0,76 3.5,80 0,84 -3.5,80" fill="url(#goldGrad)"/>
+    <polygon points="-76,0 -72,3.5 -76,7 -80,3.5" fill="url(#goldGrad)"/>
+
+    <!-- Tick marks — major at N/S/E/W, minor around ring -->
+    <line x1="0" y1="-70" x2="0" y2="-62" stroke="#C9A84C" stroke-width="1.2" opacity="0.85"/>
+    <line x1="70" y1="0" x2="62" y2="0" stroke="#C9A84C" stroke-width="1.2" opacity="0.85"/>
+    <line x1="0" y1="70" x2="0" y2="62" stroke="#C9A84C" stroke-width="1.2" opacity="0.85"/>
+    <line x1="-70" y1="0" x2="-62" y2="0" stroke="#C9A84C" stroke-width="1.2" opacity="0.85"/>
+
+    <!-- Minor ticks (selection) -->
+    <line x1="35" y1="-60.6" x2="31.3" y2="-53.7" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="60.6" y1="-35" x2="53.7" y2="-31.3" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="60.6" y1="35" x2="53.7" y2="31.3" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="35" y1="60.6" x2="31.3" y2="53.7" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="-35" y1="60.6" x2="-31.3" y2="53.7" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="-60.6" y1="35" x2="-53.7" y2="31.3" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="-60.6" y1="-35" x2="-53.7" y2="-31.3" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+    <line x1="-35" y1="-60.6" x2="-31.3" y2="-53.7" stroke="#00E5C4" stroke-width="0.5" opacity="0.22"/>
+
+    <!-- VM monogram -->
+    <text x="0" y="11" text-anchor="middle"
+      font-family="Georgia, 'Times New Roman', serif"
+      font-size="42" font-weight="700"
+      fill="url(#goldGrad)"
+      filter="url(#glow)"
+      letter-spacing="-1.5">VM</text>
+
+    <!-- Signal pulse dot -->
+    <circle cx="0" cy="44" r="2.8" fill="#00E5C4" opacity="0.85" filter="url(#glow)"/>
+
+    <!-- Top arc: VAUGHNMARTIN · READINESS OS -->
+    <path id="topArcFull" d="M -55.7,0 A 55.7,55.7 0 0,1 55.7,0" fill="none"/>
+    <text font-family="'Courier New', Courier, monospace" font-size="8.5" fill="#C9A84C" opacity="0.85" text-anchor="middle">
+      <textPath href="#topArcFull" startOffset="50%">VAUGHNMARTIN · READINESS OS</textPath>
+    </text>
+
+    <!-- Bottom arc: ANTE IGNEM PARATUS -->
+    <path id="botArcFull" d="M -50,0 A 50,50 0 0,0 50,0" fill="none"/>
+    <text font-family="'Courier New', Courier, monospace" font-size="7.5" fill="#3BAF8A" opacity="0.7" text-anchor="middle">
+      <textPath href="#botArcFull" startOffset="50%">ANTE IGNEM PARATUS</textPath>
+    </text>
+  </g>
+
+  <!-- ── WORDMARK (x=168, vertically centered) ── -->
+  <!-- VaughnMartin -->
+  <text x="168" y="88"
+    font-family="Georgia, 'Cormorant Garamond', 'Times New Roman', serif"
+    font-size="34" font-weight="600"
+    letter-spacing="0.5"
+    fill="#0A0F2E">VaughnMartin</text>
+
+  <!-- Gold rule -->
+  <line x1="168" y1="99" x2="196" y2="99" stroke="#C9A84C" stroke-width="1"/>
+
+  <!-- READINESS OS label -->
+  <text x="205" y="99"
+    font-family="'Arial Narrow', 'Barlow Condensed', Arial, sans-serif"
+    font-size="12" font-weight="700"
+    letter-spacing="4"
+    fill="#C9A84C">READINESS OS</text>
+</svg>
