@@ -768,6 +768,19 @@ function HeroSection() {
           <Reveal delay={0.18}>
             <div style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", padding: "60px 0 60px 44px", display: "flex", flexDirection: "column" as const, alignItems: "center", justifyContent: "center" }}>
               <VaughnMartinLogo variant="icon-only" height={300} color="light" animated={true} noLink={true} />
+
+              {/* Motto + founding phrase — previously inside TechCrest SVG */}
+              <div style={{ marginTop: 24, display: "flex", flexDirection: "column" as const, alignItems: "center", gap: 10 }}>
+                <div style={{ background: `linear-gradient(90deg, #8B6212, ${GOLD}, #8B6212)`, padding: "7px 28px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{ fontFamily: "Georgia, serif", fontSize: 11, fontWeight: 700, color: NAVY, letterSpacing: "0.32em", textTransform: "uppercase" as const }}>
+                    ANTE IGNEM PARATUS
+                  </span>
+                </div>
+                <div style={{ ...DM, fontSize: 7.5, fontWeight: 600, color: "rgba(0,229,196,0.55)", letterSpacing: "0.16em", textTransform: "uppercase" as const, textAlign: "center" as const }}>
+                  PREPARE · PRACTICE · PERFORM FEARLESS · NEVER GIVE UP
+                </div>
+              </div>
+
               {/* suppressed live signal feed — kept below for reference */}
               {false && signals.map((sig, i) => (
                 <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.07)" : "none", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "16px 0" }}>
