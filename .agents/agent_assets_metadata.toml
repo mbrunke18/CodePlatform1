@@ -179,3 +179,9 @@ id = "wp-KqKdCu0kBXrSmnEboU"
 uri = "file://attached_assets/vaughnmartin-linkedin-cover-v6-4200x700.png"
 type = "image"
 title = "LinkedIn Cover v6 — 4200×700 (Profile Photo Zone)"
+
+[[outputs]]
+id = "W63iIfsYOVafVwjrzT-QU"
+uri = "file://attached_assets/vaughnmartin-linkedin-cover-v7-4200x700.png"
+type = "image"
+title = "LinkedIn Cover v7 — 4200×700 (Profile Photo Clear Zone)"
