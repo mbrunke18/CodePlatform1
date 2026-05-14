@@ -20,6 +20,7 @@ interface ConsequencePreviewProps {
   stakeholders?: Stakeholder[];
   taskCount?: number;
   onChoiceSelected?: (choice: ConsequenceChoice) => void;
+  onConfirm?: (choice: ConsequenceChoice, standDownReason?: string) => void;
   compact?: boolean;
 }
 
@@ -201,12 +202,15 @@ export default function ConsequencePreview({
   stakeholders = DEFAULT_STAKEHOLDERS,
   taskCount = 12,
   onChoiceSelected,
+  onConfirm,
   compact = false,
 }: ConsequencePreviewProps) {
   const [selected, setSelected] = useState<ConsequenceChoice | null>(null);
+  const [standDownReason, setStandDownReason] = useState("");
 
   const handleSelect = (choice: ConsequenceChoice) => {
     setSelected(choice);
+    setStandDownReason("");
     onChoiceSelected?.(choice);
   };
 
@@ -289,6 +293,7 @@ export default function ConsequencePreview({
             {/* Confirm button */}
             {selected !== "stand_down" && (
               <button
+                onClick={() => onConfirm?.(selected!)}
                 className="mt-5 w-full py-3 font-mono font-bold tracking-wider text-sm flex items-center justify-center gap-2"
                 style={{ backgroundColor: selectedChoice.color, color: selected === "audible" ? NAVY : "white", borderRadius: "0.15rem" }}>
                 Confirm — {selectedChoice.label}
@@ -298,14 +303,24 @@ export default function ConsequencePreview({
             {selected === "stand_down" && (
               <div className="mt-5 space-y-3">
                 <textarea
+                  value={standDownReason}
+                  onChange={e => setStandDownReason(e.target.value)}
                   className="w-full p-3 text-sm rounded-sm resize-none"
                   rows={2}
                   placeholder="Brief reason for stand-down (required for governance record)..."
                   style={{ backgroundColor: "#0A1228", border: "1px solid #C0505060", color: IVORY, outline: "none" }}
                 />
                 <button
+                  onClick={() => standDownReason.trim() && onConfirm?.("stand_down", standDownReason)}
+                  disabled={!standDownReason.trim()}
                   className="w-full py-3 font-mono font-bold tracking-wider text-sm"
-                  style={{ backgroundColor: "#C05050", color: "white", borderRadius: "0.15rem" }}>
+                  style={{
+                    backgroundColor: standDownReason.trim() ? "#C05050" : "#3A2020",
+                    color: "white",
+                    borderRadius: "0.15rem",
+                    cursor: standDownReason.trim() ? "pointer" : "not-allowed",
+                    opacity: standDownReason.trim() ? 1 : 0.5,
+                  }}>
                   Confirm Stand Down — Record Decision
                 </button>
               </div>

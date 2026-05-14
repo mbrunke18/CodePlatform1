@@ -39,6 +39,8 @@ import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import type { RoleOverlay, IndustryOverlay } from '@/data/activationPersonalization';
 import PageLayout from '@/components/layout/PageLayout';
 import { GovernanceReadinessCheck } from '@/components/execution/GovernanceReadinessCheck';
+import ConsequencePreview from '@/components/ConsequencePreview';
+import type { ConsequenceChoice } from '@/components/ConsequencePreview';
 
 type StakeholderStatus = 'pending' | 'notifying' | 'notified' | 'acknowledged';
 type TaskStatus = 'pending' | 'in_progress' | 'completed';
@@ -509,6 +511,7 @@ export default function LiveActivationCenter() {
   const { current: currentInsight, enqueue: enqueueInsight, dismiss: dismissInsight } = useValueInsights();
   const [selectedPlaybook, setSelectedPlaybook] = useState<string>(initialPlaybook);
   const [showGovernanceCheck, setShowGovernanceCheck] = useState(false);
+  const [standDownRecorded, setStandDownRecorded] = useState(false);
   const [activationId, setActivationId] = useState<string | null>(null);
   const [activationState, setActivationState] = useState<ActivationState>('ACTIVATING');
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
@@ -1081,87 +1084,75 @@ export default function LiveActivationCenter() {
               </button>
             </div>
 
-            {/* ─── Three-Decision Panel ─────────────────────────────── */}
-            <div style={{ background: '#0A0F2E', padding: '32px 32px 24px' }}>
-              <div style={{
-                fontSize: 11, fontWeight: 800, letterSpacing: '0.25em',
-                textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)',
-                marginBottom: 20, textAlign: 'center',
-              }}>
-                When the trigger fires — three decisions already built
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 20 }}>
-                {/* Option 1: Authorize as built */}
-                <button
-                  onClick={() => selectedPlaybook && setShowGovernanceCheck(true)}
-                  disabled={activateMutation.isPending || !selectedPlaybook}
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    borderTop: '3px solid rgba(255,255,255,0.3)',
-                    padding: '22px 20px', textAlign: 'left',
-                    cursor: selectedPlaybook && !activateMutation.isPending ? 'pointer' : 'not-allowed',
-                    opacity: selectedPlaybook ? 1 : 0.45,
-                    transition: 'all 0.2s',
+            {/* ─── Executive Authorization Panel ───────────────────── */}
+            <div style={{ background: '#0A0F2E', padding: '24px 24px 20px' }}>
+              {standDownRecorded ? (
+                /* Stand-Down confirmation state */
+                <div style={{
+                  border: '1px solid rgba(192,80,80,0.3)',
+                  borderRadius: '0.15rem',
+                  padding: '28px 24px',
+                  textAlign: 'center',
+                  background: 'rgba(192,80,80,0.06)',
+                }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C05050', marginBottom: 12 }}>
+                    STAND DOWN RECORDED
+                  </div>
+                  <p style={{ color: 'rgba(240,237,228,0.8)', fontSize: 14, marginBottom: 16, lineHeight: 1.6 }}>
+                    Decision logged with governance record. The Readiness Protocol remains staged and will be ready when the next trigger fires.
+                  </p>
+                  <button
+                    onClick={() => setStandDownRecorded(false)}
+                    style={{
+                      fontSize: 11, fontWeight: 700, letterSpacing: '0.15em',
+                      textTransform: 'uppercase', color: 'rgba(240,237,228,0.6)',
+                      background: 'none', border: '1px solid rgba(255,255,255,0.15)',
+                      padding: '8px 20px', borderRadius: '0.15rem', cursor: 'pointer',
+                    }}
+                  >
+                    Review Authorization Options
+                  </button>
+                </div>
+              ) : (
+                /* 4-choice ConsequencePreview */
+                <ConsequencePreview
+                  triggerName={activePlaybook?.name || 'Strategic Trigger Detected'}
+                  playbookName={activePlaybook?.name || 'Selected Readiness Protocol'}
+                  taskCount={activePlaybook?.taskCount || 12}
+                  stakeholders={
+                    stakeholders.length > 0
+                      ? stakeholders.slice(0, 6).map(s => ({
+                          name: s.title || s.name,
+                          role: s.name,
+                          notifyInSeconds: s.tier === 1 ? 45 : 90,
+                        }))
+                      : undefined
+                  }
+                  onConfirm={(choice: ConsequenceChoice, reason?: string) => {
+                    if (choice === 'run_as_built') {
+                      setShowGovernanceCheck(true);
+                    } else if (choice === 'audible') {
+                      setLocation(`/playbooks/${selectedPlaybook}/customize`);
+                    } else if (choice === 'customize') {
+                      setLocation(`/playbooks/${selectedPlaybook}/customize`);
+                    } else if (choice === 'stand_down') {
+                      setStandDownRecorded(true);
+                      // Log the stand-down decision (non-critical, best-effort)
+                      try {
+                        fetch('/api/activation/stand-down', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            playbookKey: selectedPlaybook,
+                            playbookName: activePlaybook?.name,
+                            reason,
+                          }),
+                        }).catch(() => {});
+                      } catch { /* non-critical */ }
+                    }
                   }}
-                >
-                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)', marginBottom: 10 }}>Option 1</div>
-                  <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: "'Cormorant Garamond', serif" }}>
-                    {activateMutation.isPending ? 'Initializing…' : 'Authorize as built'}
-                  </div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.55 }}>
-                    Deploy in 12 minutes
-                  </div>
-                </button>
-
-                {/* Option 2: Call the audible */}
-                <button
-                  onClick={() => selectedPlaybook && setLocation(`/playbooks/${selectedPlaybook}/customize`)}
-                  disabled={!selectedPlaybook}
-                  style={{
-                    background: 'rgba(201,168,76,0.07)',
-                    border: '1px solid rgba(201,168,76,0.22)',
-                    borderTop: '3px solid #C9A84C',
-                    padding: '22px 20px', textAlign: 'left',
-                    cursor: selectedPlaybook ? 'pointer' : 'not-allowed',
-                    opacity: selectedPlaybook ? 1 : 0.45,
-                    transition: 'all 0.2s',
-                  }}
-                >
-                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Option 2</div>
-                  <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: "'Cormorant Garamond', serif" }}>
-                    Call the audible
-                  </div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.55 }}>
-                    Adjust to fit this specific trigger
-                  </div>
-                </button>
-
-                {/* Option 3: Select a different play */}
-                <button
-                  onClick={() => setLocation('/playbooks')}
-                  style={{
-                    background: 'rgba(43,138,110,0.06)',
-                    border: '1px solid rgba(43,138,110,0.18)',
-                    borderTop: '3px solid rgba(43,138,110,0.55)',
-                    padding: '22px 20px', textAlign: 'left',
-                    cursor: 'pointer', transition: 'all 0.2s',
-                  }}
-                >
-                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(43,138,110,0.75)', marginBottom: 10 }}>Option 3</div>
-                  <div style={{ fontSize: 17, fontWeight: 700, color: '#fff', marginBottom: 6, fontFamily: "'Cormorant Garamond', serif" }}>
-                    Select a different play
-                  </div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.55 }}>
-                    170 options already built
-                  </div>
-                </button>
-              </div>
-
-              <div style={{ textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.68)', fontStyle: 'italic', letterSpacing: '0.03em' }}>
-                Not automation. Preparation producing executive power.
-              </div>
+                />
+              )}
             </div>
 
             {showGovernanceCheck && (
