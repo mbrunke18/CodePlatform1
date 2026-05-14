@@ -365,7 +365,7 @@ export default function LiveDetectionFeed() {
               Access the Full Detection Feed
             </h3>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, margin: '0 0 28px', lineHeight: 1.6 }}>
-              Pilot program members get real-time signal detection scoped to their organization, stakeholder alert routing, and full trigger history. 12-minute execution starts here.
+              Founding Partners get real-time signal detection scoped to their organization, stakeholder alert routing, and full trigger history. 12-minute execution starts here.
             </p>
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="/founding-partner-program" style={{ background: GOLD, color: NAVY, padding: '14px 32px', borderRadius: 0, fontWeight: 800, fontSize: 14, textDecoration: 'none', letterSpacing: '0.04em' }}>

@@ -127,7 +127,7 @@ export default function Contact() {
             {/* Left Column - Value Proposition */}
             <div className="md:col-span-4">
               <div style={{ border: "1px solid #E8E4DC", padding: "32px", background: "#F8F7F4" }} className="sticky top-24">
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>Pilot Partner Benefits</h3>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>Founding Partner Benefits</h3>
                 <div className="space-y-6">
                   {[
                     { title: "Full Platform Access", desc: "Complete 7-component ecosystem during validation period" },
@@ -160,7 +160,7 @@ export default function Contact() {
                 <div className="mb-10">
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>Application Form</h2>
                   <p className="text-slate-500">
-                    Help us understand your strategic execution challenges and pilot readiness.
+                    Help us understand your strategic execution challenges and readiness priorities.
                   </p>
                 </div>
 

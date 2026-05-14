@@ -36,8 +36,8 @@ export default function TermsOfService() {
     },
     {
       id: "confidentiality",
-      title: "5. Confidentiality of Pilot Materials",
-      body: `Pilot program participants and users granted access to the authenticated platform agree that all materials accessed within the platform — including unreleased Readiness Protocols, configuration templates, execution data, and platform features — are confidential and may not be shared, published, or disclosed to third parties without VaughnMartin's prior written consent.`,
+      title: "5. Confidentiality of Partner Materials",
+      body: `Founding Partners and users granted access to the authenticated platform agree that all materials accessed within the platform — including unreleased Readiness Protocols, configuration templates, execution data, and platform features — are confidential and may not be shared, published, or disclosed to third parties without VaughnMartin's prior written consent.`,
     },
     {
       id: "enforcement",

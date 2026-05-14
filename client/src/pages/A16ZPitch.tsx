@@ -940,7 +940,7 @@ function TractionSlide() {
 
             <div style={{ marginTop: 12, padding: "9px 14px", border: `1px solid rgba(255,255,255,0.1)`, background: "rgba(255,255,255,0.03)" }}>
               <div style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", lineHeight: 1.55 }}>
-                <strong style={{ color: "rgba(255,255,255,0.65)" }}>What SpeedRun closes:</strong> The platform is live. Pilot targets are identified. a16z network access converts pipeline conversations into signed commitments — in 12 weeks.
+                <strong style={{ color: "rgba(255,255,255,0.65)" }}>What SpeedRun closes:</strong> The platform is live. Founding Partner targets are confirmed. a16z network access converts pipeline conversations into signed commitments — in 12 weeks.
               </div>
             </div>
           </div>

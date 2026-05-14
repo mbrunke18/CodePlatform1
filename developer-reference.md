@@ -2723,6 +2723,25 @@ These are the tags social platforms (LinkedIn, Slack unfurls) will read when the
 
 - All 189 unit tests pass
 - Production build clean
-- All visible "Pilot Program / Pilot Access / Pilot Demo / pilot customers" references eliminated from live UI and developer documentation
-- Static OG fallback tags now carry canonical messaging for social sharing
+- All visible "Pilot Program / Pilot Access / Pilot Demo / pilot customers / pilot targets" references eliminated from all pages, components, and developer documentation
+- Static OG fallback tags carry canonical messaging for social sharing
 - Guest banner intent: "Request Founding Partner Access" + "Executive Sign-In" + "See It Execute in 12 Minutes"
+
+### 6. Additional Pilot Terminology Fixes (Podcast Prep Pass)
+
+Found during full public-page audit prior to podcast promotion:
+
+| File | Before | After |
+|---|---|---|
+| `Contact.tsx` | `"Pilot Partner Benefits"` (h3 heading) | `"Founding Partner Benefits"` |
+| `Contact.tsx` | `"pilot readiness"` (form sub-label) | `"readiness priorities"` |
+| `LiveDetectionFeed.tsx` | `"Pilot program members get..."` | `"Founding Partners get..."` |
+| `TermsOfService.tsx` | Section title `"5. Confidentiality of Pilot Materials"` | `"5. Confidentiality of Partner Materials"` |
+| `TermsOfService.tsx` | Body: `"Pilot program participants"` | `"Founding Partners"` |
+| `ProspectBrief.tsx` | CTA URL badge: `"vaughnmartin.com/pilot-program"` | `"vaughnmartin.com/founding-partner-program"` |
+| `InvestorPresentation.tsx` | `"3 Founding Partner pilot targets identified"` | `"3 Founding Partner targets confirmed"` |
+| `InvestorPresentation.tsx` | `"Pilot program designed and ready"` | `"Founding Partner Program designed and ready"` |
+| `InvestorResources.tsx` | `"Before second pilot customer"` | `"Before second Founding Partner"` |
+| `A16ZPitch.tsx` | `"Pilot targets are identified"` | `"Founding Partner targets are confirmed"` |
+
+**Note:** `/pilot-program` route, `data-testid="heading-pilot-program"`, `data-testid="button-pilot-programs"`, internal `setLocation('/pilot-program')` nav calls, and the `pilot@vaughnmartin.com` email address are **exempt** — these are code keys and contact infrastructure, not visible user-facing copy.

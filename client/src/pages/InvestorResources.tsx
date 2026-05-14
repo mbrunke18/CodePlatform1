@@ -702,7 +702,7 @@ export default function InvestorResources() {
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
-                  phase: "Phase 1", weeks: "Weeks 1–2", milestone: "Before second pilot customer",
+                  phase: "Phase 1", weeks: "Weeks 1–2", milestone: "Before second Founding Partner",
                   color: "#2B8A6E", bg: "#2B8A6E",
                   items: [
                     "Separate Dev/Prod databases — second Neon project for dev, production credentials in secrets only",

@@ -420,7 +420,7 @@ export default function ProspectBrief() {
               Deployable in 2 weeks. {playbookCount} Readiness Protocols pre-built for {form.industry}. Your triggers armed from day one. No rip-and-replace — sits above your existing Microsoft infrastructure.
             </p>
             <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-              <span style={{ padding: "10px 24px", background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>vaughnmartin.com/pilot-program</span>
+              <span style={{ padding: "10px 24px", background: GOLD, color: NAVY, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}>vaughnmartin.com/founding-partner-program</span>
               <span style={{ fontSize: 12, color: "rgba(255,255,255,0.68)" }}>pilot@vaughnmartin.com</span>
             </div>
           </div>

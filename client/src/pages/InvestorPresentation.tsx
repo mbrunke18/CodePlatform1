@@ -622,7 +622,7 @@ function InvestorPresentation() {
           <div>
             <h3 className="text-lg font-bold text-[#0A0F2E] mb-4 flex items-center gap-2"><Target className="w-5 h-5 text-[#C9A84C]" /> Market Validation</h3>
             <div className="space-y-3">
-              {['F500 executive interviews confirm pain point', 'Advisors from prior Fortune 1000 work', '3 Founding Partner pilot targets identified', 'Pilot program designed and ready', 'Microsoft ecosystem alignment in development'].map((item, i) => (
+              {['F500 executive interviews confirm pain point', 'Advisors from prior Fortune 1000 work', '3 Founding Partner targets confirmed', 'Founding Partner Program designed and ready', 'Microsoft ecosystem alignment in development'].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-[#0A0F2E]">
                   <CheckCircle2 className="w-5 h-5 text-[#C9A84C] shrink-0" />
                   <span>{item}</span>
