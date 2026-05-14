@@ -8532,6 +8532,11 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
       const outcome = await storage.updateActivationOutcomeCloseOut(req.params.id, {
         whatHeld, whatDidntHold, preparationGap: preparationGap || '', oneThingToEncode
       });
+      // ── Moat 1: Trigger Preparation Compounding Loop ──────────────────────
+      try {
+        const { processCloseOutGate } = await import('./services/PreparationUpdateEngine.js');
+        setImmediate(() => processCloseOutGate(req.params.id));
+      } catch { /* non-critical */ }
       res.json(outcome);
     } catch (error) {
       res.status(500).json({ error: 'Failed to save close-out data' });
@@ -9628,6 +9633,22 @@ Respond ONLY as JSON with this exact structure:
   }, 30_000);
   console.log('✅ Compound threat auto-analysis scheduled (every 4 hours)');
 
+  // ── Moat 4: Cross-Domain Compound Intelligence — runs after every signal cycle ──
+  // Schedule every 15 minutes (aligned with RSS ingestion cycle)
+  setTimeout(async () => {
+    try {
+      const { runCompoundDetectionAllOrgs } = await import('./services/CrossDomainCompoundEngine.js');
+      runCompoundDetectionAllOrgs();
+      setInterval(async () => {
+        try {
+          const { runCompoundDetectionAllOrgs: run } = await import('./services/CrossDomainCompoundEngine.js');
+          run();
+        } catch { /* non-critical */ }
+      }, 15 * 60 * 1000);
+    } catch { /* non-critical */ }
+  }, 60_000); // 60s after startup
+  console.log('✅ Cross-domain compound detection scheduled (every 15 minutes)');
+
   // ─── WOW Feature APIs ──────────────────────────────────────────────────────
 
   // 1. Execution Timelines — clock history
@@ -10596,6 +10617,62 @@ Respond ONLY as JSON with this exact structure:
   });
 
   // ── Debrief Feedback — Protocol improvement proposals from close-out gate data ──
+
+  // ── Moat 1 & 4 API Routes ─────────────────────────────────────────────────
+
+  // GET /api/organizations/:id/compound-score
+  app.get('/api/organizations/:id/compound-score', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { preparationCompoundScores: pcs } = await import('@shared/schema');
+      const rows = await db.select().from(pcs)
+        .where(eq(pcs.organizationId as any, req.params.id))
+        .limit(1);
+      if (rows.length === 0) {
+        return res.json({ score: 0, totalCloseOuts: 0, totalUpdatesGenerated: 0, totalUpdatesApplied: 0, signalCalibrationsApplied: 0, ownershipAssignmentsApplied: 0, protocolSuggestionsGenerated: 0, monthsToRebuildOnCompetitor: 0, encodingTimeline: [] });
+      }
+      res.json(rows[0]);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/organizations/:id/preparation-updates
+  app.get('/api/organizations/:id/preparation-updates', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { preparationUpdates: pu } = await import('@shared/schema');
+      const rows = await db.select().from(pu)
+        .where(eq(pu.organizationId as any, req.params.id))
+        .orderBy(desc(pu.createdAt))
+        .limit(50);
+      res.json(rows);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // PATCH /api/preparation-updates/:id/apply
+  app.patch('/api/preparation-updates/:id/apply', requireOrgAccess, async (req: any, res) => {
+    try {
+      const { preparationUpdates: pu } = await import('@shared/schema');
+      const [updated] = await db.update(pu)
+        .set({ status: 'applied', appliedAt: new Date() })
+        .where(eq(pu.id as any, req.params.id))
+        .returning();
+      // Recalculate compound score
+      try {
+        const { recalculateCompoundScore } = await import('./services/PreparationUpdateEngine.js');
+        setImmediate(() => recalculateCompoundScore(req.orgId));
+      } catch { /* non-critical */ }
+      res.json(updated);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
+
+  // GET /api/organizations/:id/compound-threats  (alias for existing /api/compound-threats scoped to org)
+  app.get('/api/organizations/:id/compound-threats', requireOrgAccess, async (req: any, res) => {
+    try {
+      const threats = await db.select().from(compoundThreatAlerts)
+        .where(and(eq(compoundThreatAlerts.organizationId, req.params.id), eq(compoundThreatAlerts.status, 'active')))
+        .orderBy(desc(compoundThreatAlerts.detectedAt))
+        .limit(10);
+      res.json(threats);
+    } catch (err: any) { res.status(500).json({ error: err.message }); }
+  });
 
   app.get('/api/debrief-feedback/:playbookId', requireAuth, async (req: any, res) => {
     try {

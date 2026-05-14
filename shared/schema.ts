@@ -6803,3 +6803,65 @@ export const foundingPartnerApplications = pgTable('founding_partner_application
 export const insertFoundingPartnerApplicationSchema = createInsertSchema(foundingPartnerApplications).omit({ id: true, createdAt: true, status: true });
 export type InsertFoundingPartnerApplication = z.infer<typeof insertFoundingPartnerApplicationSchema>;
 export type FoundingPartnerApplication = typeof foundingPartnerApplications.$inferSelect;
+
+// ─── Moat 1: Preparation Compounding Loop ────────────────────────────────────
+// Every Close-Out Gate generates structured updates that feed back into
+// the preparation architecture. The longer an org uses the platform,
+// the more intelligent its protocols become.
+
+export const preparationUpdates = pgTable('preparation_updates', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  activationOutcomeId: uuid('activation_outcome_id'), // source Close-Out Gate
+  playbookId: uuid('playbook_id'), // which protocol this updates
+  triggerPattern: varchar('trigger_pattern', { length: 255 }), // which trigger fired
+
+  // Update category
+  updateType: varchar('update_type', { length: 50 }).notNull(), // 'signal_calibration' | 'ownership_assignment' | 'protocol_suggestion'
+
+  // Signal calibration updates
+  signalKeywordsToAdd: text('signal_keywords_to_add').array().default([]),
+  signalKeywordsToRemove: text('signal_keywords_to_remove').array().default([]),
+  confidenceAdjust: integer('confidence_adjust').default(0), // ±points to apply
+
+  // Ownership assignment updates
+  suggestedOwnerRole: varchar('suggested_owner_role', { length: 100 }),
+  suggestedOwnerDept: varchar('suggested_owner_dept', { length: 100 }),
+  ownershipRationale: text('ownership_rationale'),
+
+  // Protocol architecture suggestions
+  suggestionTitle: varchar('suggestion_title', { length: 255 }),
+  suggestionDetail: text('suggestion_detail'),
+  suggestionPriority: varchar('suggestion_priority', { length: 20 }).default('medium'), // high | medium | low
+
+  // Lifecycle
+  status: varchar('status', { length: 30 }).default('pending'), // pending | applied | dismissed
+  appliedAt: timestamp('applied_at'),
+  generatedBy: varchar('generated_by', { length: 30 }).default('system'), // system | ai-assisted
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertPreparationUpdateSchema = createInsertSchema(preparationUpdates).omit({ id: true, createdAt: true });
+export type InsertPreparationUpdate = z.infer<typeof insertPreparationUpdateSchema>;
+export type PreparationUpdate = typeof preparationUpdates.$inferSelect;
+
+// Compound Score — tracks how much the platform has learned per org over time.
+// Each activation that completes the Close-Out Gate increases the depth of
+// institutional intelligence encoded in the system.
+export const preparationCompoundScores = pgTable('preparation_compound_scores', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  organizationId: uuid('organization_id').notNull().references(() => organizations.id),
+  score: integer('score').notNull().default(0),          // 0–100 compounding depth
+  totalCloseOuts: integer('total_close_outs').default(0), // completed Close-Out Gates
+  totalUpdatesGenerated: integer('total_updates_generated').default(0),
+  totalUpdatesApplied: integer('total_updates_applied').default(0),
+  signalCalibrationsApplied: integer('signal_calibrations_applied').default(0),
+  ownershipAssignmentsApplied: integer('ownership_assignments_applied').default(0),
+  protocolSuggestionsGenerated: integer('protocol_suggestions_generated').default(0),
+  monthsToRebuildOnCompetitor: integer('months_to_rebuild_on_competitor').default(0), // switching cost
+  encodingTimeline: jsonb('encoding_timeline').default([]), // [{date, event, scoreDelta}]
+  calculatedAt: timestamp('calculated_at').defaultNow(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+export const insertPreparationCompoundScoreSchema = createInsertSchema(preparationCompoundScores).omit({ id: true, createdAt: true });
+export type InsertPreparationCompoundScore = z.infer<typeof insertPreparationCompoundScoreSchema>;
+export type PreparationCompoundScore = typeof preparationCompoundScores.$inferSelect;

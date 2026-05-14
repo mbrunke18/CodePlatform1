@@ -130,6 +130,8 @@ const ComprehensiveROIBreakdown = lazy(() => import("./pages/ComprehensiveROIBre
 const OurStory = lazy(() => import("./pages/OurStory"));
 const WhyExecuteIQ = lazy(() => import("./pages/WhyExecuteIQ"));
 const Research = lazy(() => import("./pages/Research"));
+const ResearchFoundation = lazy(() => import("./pages/ResearchFoundation"));
+const OrganizationalIntelligence = lazy(() => import("./pages/OrganizationalIntelligence"));
 const DecisionHolding = lazy(() => import("./pages/DecisionHolding"));
 const FoundingPartnerMonitoring = lazy(() => import("./pages/FoundingPartnerMonitoring"));
 const CrisisExposureMatrix = lazy(() => import("./pages/CrisisExposureMatrix"));
@@ -457,6 +459,8 @@ function Router() {
         {renderRoutes(["/execution-os-video", "/readiness-video", "/platform-video"], ExecuteIQVideo)}
         <Route path="/why-execution-os-legacy" component={WhyExecuteIQ} />
         <Route path="/research" component={Research} />
+        <Route path="/research-foundation" component={ResearchFoundation} />
+        <Route path="/organizational-intelligence" component={OrganizationalIntelligence} />
         <Route path="/decision-holding" component={DecisionHolding} />
         <Route path="/how-it-works" component={HowItWorks} />
         <Route path="/idea-framework" component={IDEAFramework} />
