@@ -5,5 +5,6 @@ export const modules: ModuleMap = {
   "./components/mockups/hero-explore/VariantA.tsx": () => import("../components/mockups/hero-explore/VariantA.tsx"),
   "./components/mockups/hero-explore/VariantB.tsx": () => import("../components/mockups/hero-explore/VariantB.tsx"),
   "./components/mockups/hero-naming/CommandOS.tsx": () => import("../components/mockups/hero-naming/CommandOS.tsx"),
-  "./components/mockups/hero-naming/ExecutionOS.tsx": () => import("../components/mockups/hero-naming/ExecutionOS.tsx")
+  "./components/mockups/hero-naming/ExecutionOS.tsx": () => import("../components/mockups/hero-naming/ExecutionOS.tsx"),
+  "./components/mockups/linkedin/LinkedInBanner.tsx": () => import("../components/mockups/linkedin/LinkedInBanner.tsx")
 };
