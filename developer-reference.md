@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 13, 2026 (rev 31) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 14, 2026 (rev 32) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -33,7 +33,7 @@ The retired phrase "16 signal categories" was a previous UI label shown to users
 - **Microsoft Ecosystem positioning — LOCKED:** "Every enterprise has Microsoft's AI stack. None have the operating model to use it." Readiness OS is the operating model layer above the Microsoft investment — not a replacement, an orchestrator. This framing lives in InvestorLanding ("The Operating Model Layer" section), InvestorPresentation (Platform Vision slide), and IDEAFramework. Do not revert to "Agentic Execution Layer" as product positioning — that phrase is retired.
 - **Target users** — the full executive layer: CEOs, CFOs, COOs, CIOs, CMOs, Chief Strategy Officers, Division Presidents, Board of Directors, and all C-suite and executive leadership roles. Designed for every major industry — not sector-specific.
 - **Industry scope** — cross-industry by design. Financial services, manufacturing, healthcare, energy, retail, technology, and beyond. Any Fortune 1000 enterprise facing strategic velocity challenges.
-- **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Enterprise Pilot.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. Enterprise Pilot ($75K flat fee, Fortune 1000) stays on `/pilot-program` — completely separate audience, separate page, separate CTA.
+- **Growth Segment (`/growth`) — PERMANENT PRODUCT TRACK:** Targets SMBs and PE-backed startups. **Do NOT merge or confuse with the Founding Partner Program.** Three tiers: Ready $75K/yr ($7,500/mo) · Responsive $150K/yr ($15K/mo) · Orchestrated $250K/yr ($25K/mo). Annual = market rate; monthly = 20% premium (flexibility surcharge — "2 months free" framing on annual). Tiers = deployment scope (domains, playbooks, signals) — same platform at every tier, NOT a discounted product. No per-seat pricing. All Growth CTAs route to `/contact`. The Fortune 1000 enterprise conversion page is `/founding-partner-program` — completely separate audience, separate page, separate CTA. `/pilot-program` is an alias that resolves to `/founding-partner-program` (see Section 55).
 - **Email Routing (canonical):** `sales@` → Contact/Growth inquiries | `info@` → Footer/Investor general | `pilot@` → Pilot program pages | `founding@vaughnmartin.com` → Founding Partner Program page (error fallback + questions CTA) | `support@` → Onboarding/customer success | `investor@vaughnmartin.com` → Investor contacts.
 
 ---
@@ -571,7 +571,7 @@ defense        → Navy color (#0A0F2E)
 special_teams  → Gold color (#C9A84C)
 ```
 
-### DOMAIN_DB_MAP (in PlaybookLibraryV2.tsx)
+### DOMAIN_DB_MAP (in ProtocolLibrary.tsx)
 Maps UI filter button IDs to exact DB domain name strings. Update this if domain names change in the DB.
 
 ---
@@ -638,7 +638,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 
 ### `ExecutionGapDiagram`
 - Location: `client/src/components/ExecutionGapDiagram.tsx`
-- SVG comparison: left panel = "72 HOURS LATER — STILL FIGURING IT OUT" (navy/red); right panel = "EXECUTION IS LIVE" (navy/teal)
+- SVG comparison: left panel = "72 HOURS LATER — STILL FIGURING IT OUT" (navy/red); right panel = "EXECUTION IS LIVE" (navy/teal). **Note:** The "72 HOURS LATER" label is intentional "before-state" visual copy — it depicts the *problem* state, not a baseline metric claim. This is NOT a violation of the retired 72-hour mobilization baseline rule (see Section 32). The comparison baseline metrics (3,600×, 30 days → 12 min) appear in the proof-numbers strip at the bottom. Do not change the left-panel label without founder approval.
 - viewBox: `0 0 1320 762`
 - Bottom bar: proof-numbers strip — 170 playbooks · 221 executive triggers · 248+ data points · 12 min to live execution. **NOT a football analogy** — do not revert.
 - Used on: `Homepage.tsx`, `Investors.tsx`
@@ -657,20 +657,20 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 |---|---|---|
 | `Dashboard.tsx` | `/dashboard` | Main logged-in home. Has AI Copilot panel. |
 | `MissionControl.tsx` | `/mission-control` | Executive war room. Trigger activation → PlaybookActivationConsole. |
-| `PlaybookLibraryV2.tsx` | `/playbook-library` | 170 playbooks with domain filter + free samples |
+| `ProtocolLibrary.tsx` | `/playbook-library` | 170 playbooks with domain filter + free samples (renamed from `PlaybookLibraryV2.tsx`) |
 | `PlaybookActivationConsole.tsx` | `/playbook-activation/:triggerId/:playbookId` | Live execution flow. `triggerId='manual'` skips trigger fetch. |
 | `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. **Auth gating:** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggles) are hidden from unauthenticated users — non-auth users see a "Sign In to Activate" button. Trigger data is visible to all. `SOURCE_LABELS` map (top of file) converts raw source IDs to readable labels shown as teal tags. `[location, setLocation] = useLocation()` — must destructure both. |
 | `SignalConfiguration.tsx` | `/signal-configuration` | **Signal Intelligence Configuration.** All 17 signal categories from `shared/intelligence-signals.ts`. Each category expands to show all data points with individual on/off toggles. Category-level enable/disable all. Shows recommended playbooks per category and linked trigger count. Persist state via `signal_monitoring_config` DB table (per org, stores `disabledDataPoints[]`). API: `GET/PATCH /api/signal-monitoring-config`. Framework chain banner shows: Data Points → Triggers Fire → Playbook Executes. Linked from StandardNav "Capabilities" section. |
 | `SignalIntelligenceHub.tsx` | `/signal-intelligence` | Live signal monitoring. Requires auth+org. Shows branded fallback if not. |
-| `FounderStory.tsx` | `/founder-story` | Manifesto-first page. "We Make Enterprises Fearless" by Marty Brunke (March 2026) — 7 Roman-numeral sections, pull quotes, inline IDEA Framework navy card. Bio strip + video cards (90s intro, 3:30 full) are supporting sections below. Closing CTA → `/pilot-program`. **Do not revert to video-first or bio-first layout.** **"The Origin" prologue (LOCKED — April 10, 2026):** Inserted as the very first section, before Section I. Contains the founder's father's words from third grade football — "Prepare. Practice. Perform fearless. Never give up." — explains the VaughnMartin company name and maps directly to the platform thesis arc (Preparation → Readiness → Fearless). Never remove or rewrite this section. |
+| `FounderStory.tsx` | `/founder-story` | Manifesto-first page. "We Make Enterprises Fearless" by Marty Brunke (March 2026) — 7 Roman-numeral sections, pull quotes, inline IDEA Framework navy card. Bio strip + video cards (90s intro, 3:30 full) are supporting sections below. Closing CTA → `/founding-partner-program`. **Do not revert to video-first or bio-first layout.** **"The Origin" prologue (LOCKED — April 10, 2026):** Inserted as the very first section, before Section I. Contains the founder's father's words from third grade football — "Prepare. Practice. Perform fearless. Never give up." — explains the VaughnMartin company name and maps directly to the platform thesis arc (Preparation → Readiness → Fearless). Never remove or rewrite this section. |
 | `BoardBriefings.tsx` | `/board-briefings` | Board reports + AI Board Deck Generator. **Investor-gated** (see InvestorGate). |
 | `InvestorResources.tsx` | `/investor-resources` | Full investor materials page. **Investor-gated**. |
 | `InvestorPresentation.tsx` | `/investor-presentation` | Slide deck presentation view. **Investor-gated**. |
-| `InvestorLanding.tsx` | `/investor-landing`, `/executive-access` | Full investor pitch page. Hero primary CTA: "Schedule a Conversation" → `/pilot-program`. Secondary: "See 8-Minute Demo" + "Investor Resources". Closing CTA section: "Let's Build This Together" with same priority order + `investor@vaughnmartin.com` contact line. **Previously redirected to `/how-it-works` — now a live route.** Public (not gated). |
+| `InvestorLanding.tsx` | `/investor-landing`, `/executive-access` | Full investor pitch page. Hero primary CTA: "Schedule a Conversation" → `/founding-partner-program`. Secondary: "See 8-Minute Demo" + "Investor Resources". Closing CTA section: "Let's Build This Together" with same priority order + `investor@vaughnmartin.com` contact line. **Previously redirected to `/how-it-works` — now a live route.** Public (not gated). |
 | `Settings.tsx` | `/settings` | Admin settings. All buttons are functional (March 2026). |
 | `OnboardingWizard.tsx` | `/onboarding` | 5-step new user setup |
 | `ExecutiveSummaryGenerator.tsx` | `/executive-summary` | AI-generated executive summaries |
-| `PilotProgram.tsx` | `/pilot-program` | Primary enterprise conversion page |
+| `FoundingPartnerProgram.tsx` | `/founding-partner-program` (alias: `/pilot-program`) | Primary enterprise conversion page — see Section 55 for full spec. `/pilot-program` is a permanent route alias; both routes render `FoundingPartnerProgram.tsx`. |
 | `DemoAccess.tsx` | `/demo-access` | Token-gated executive access entry point. Reads `?token=` param, validates via `/api/demo-access`, then redirects to `/mission-control` (or `?returnTo=` value). **LOCKED executive access link: `https://vaughnmartin.com/demo-access?token=VMdemo2026`** — do not change this URL or token. |
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
 | `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `PlaybookActivationConsole`. |
@@ -686,7 +686,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `ManufacturingSupplierDemo.tsx` | `/industry-demo/manufacturing-supplier` | Manufacturing supply disruption scenario. 14 downstream facilities, $2.3M/day exposure, alternate supplier routing. |
 | `LuxuryCrisisDemo.tsx` | `/industry-demo/luxury-crisis` | Luxury brand reputational crisis scenario. Social velocity tracking, brand-protection playbook, executive comms choreography. |
 | `FoundingPartnerProgram.tsx` | `/founding-partner-program` (also `/pilot-program` alias) | Public Founding Partner conversion page. Problem-first hero, "2026 Founding Partner Cohort · 12 Seats" scarcity badge, differentiation strip, inline `ApplicationForm` component (no redirect). Form fields: name, email, company, title, companySize, primaryChallenge, timelineUrgency. On submit: POST `/api/founding-partner/apply` → saves to `founding_partner_applications` table → success state "We'll be in touch within 48 hours." Error fallback shows `founding@vaughnmartin.com`. Questions CTA also shows `founding@vaughnmartin.com`. All public "Founding Partner Access" CTAs across the product route here — never to `/request-access`. |
-| `PlaybookDetail.tsx` | `/playbook/:id` | Full playbook view. Three tabs: Overview, Performance (auth-gated), Edit Tasks (auth-gated, only shown when `enrichedPhases` exist). Edit Tasks tab: phase accordion editor for name/objective, role task groups (add/remove/rename/edit items), decision gate (title/criteria/escalation), and restrictions. Saves via `PATCH /api/playbook-library/:id/customize` with `{ customizations: { enrichedPhases } }`. Amber dot on tab label = unsaved changes. `useEffect` syncs `editedPhases` from `playbook.enrichedPhases` on load. Helper callbacks: `updatePhase`, `updateTask`, `updateTaskItem`, `addTaskItem`, `removeTaskItem`, `addTaskGroup`, `removeTaskGroup`, `updateCriteria`, `addCriteria`, `removeCriteria`, `updateRestriction`, `addRestriction`, `removeRestriction`. |
+| `ProtocolDetail.tsx` | `/playbook/:id` | Full playbook view (renamed from `PlaybookDetail.tsx`). Three tabs: Overview, Performance (auth-gated), Edit Tasks (auth-gated, only shown when `enrichedPhases` exist). Edit Tasks tab: phase accordion editor for name/objective, role task groups (add/remove/rename/edit items), decision gate (title/criteria/escalation), and restrictions. Saves via `PATCH /api/playbook-library/:id/customize` with `{ customizations: { enrichedPhases } }`. Amber dot on tab label = unsaved changes. `useEffect` syncs `editedPhases` from `playbook.enrichedPhases` on load. Helper callbacks: `updatePhase`, `updateTask`, `updateTaskItem`, `addTaskItem`, `removeTaskItem`, `addTaskGroup`, `removeTaskGroup`, `updateCriteria`, `addCriteria`, `removeCriteria`, `updateRestriction`, `addRestriction`, `removeRestriction`. |
 
 ---
 
@@ -948,7 +948,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
   - By UUID: `GET /api/playbook-library/:uuid` → returns `{ playbook: {...} }`
   - By number: `GET /api/playbook-library/by-number/:number` → returns flat `{ id, name, ... }`
 
-**PlaybookDetail.tsx** handles both URL forms automatically:
+**ProtocolDetail.tsx** handles both URL forms automatically:
 - `/playbook-library/7ef2ee68-...` → UUID path (standard)
 - `/playbook-library/5` → number path (resolved to UUID after fetch)
 - Detection: `const isPlaybookNumber = /^\d+$/.test(id || '');`
@@ -1120,7 +1120,7 @@ export default function WorkspaceIdentify({ embedded }: { embedded?: boolean } =
 - Completed tasks count shown in teal bar; clicking toggles visibility
 - Collapsed view: teal `CheckCircle2` icon + "X tasks completed" + `ChevronDown/Up`
 
-### 3. Source Governance Indicator — `PlaybookDetail.tsx`
+### 3. Source Governance Indicator — `ProtocolDetail.tsx`
 
 **What it does:** A color-coded version status badge in the playbook detail sidebar that signals the governance state of the playbook's source data.
 
@@ -2411,7 +2411,7 @@ Build status: `npm run build` — clean pass (no errors). Unit tests: 189/189 pa
 
 ---
 
-## 50. Founding Partner Program Page — May 2026 (rev 30)
+## 55. Founding Partner Program Page — May 2026 (rev 30)
 
 **Route:** `/founding-partner-program` (also aliased from `/pilot-program` via `renderRoutes`)
 **File:** `client/src/pages/FoundingPartnerProgram.tsx`
@@ -2498,7 +2498,7 @@ A two-pass bulk script updated **49 files** total — all public-facing Founding
 
 ---
 
-## 51. May 13, 2026 — Rev 31 Change Log
+## 56. May 13, 2026 — Rev 31 Change Log
 
 ### Font Loader Cleanup (`client/index.html`)
 The Google Fonts `<link>` tag was loading 30+ font families (Inter, DM Sans, Roboto, Poppins, Montserrat, Open Sans, Outfit, Bebas Neue, Crimson Pro, DM Mono, Geist, JetBrains Mono, and 20+ more). All retired fonts were removed. **Only three families now load:**
@@ -2541,3 +2541,39 @@ Two standalone SVG files created for external brand use (LinkedIn, marketing mat
 - `attached_assets/vaughnmartin-logo-full.svg` — full lockup: seal + "VaughnMartin" wordmark + "READINESS OS" subtitle (560×160, horizontal format)
 
 Both use inline SVG — no external font dependencies. Safe to open in any browser or convert to PNG.
+
+---
+
+## 57. May 14, 2026 — Rev 32 Change Log
+
+### Consistency Pass — Four Canonical Blocks
+
+External reviewer audit of rev 31 identified four categories of drift. All corrected below.
+
+#### 1. Canonical Metrics Block — `ExecutionGapDiagram` clarification
+**Section 13 (`ExecutionGapDiagram`):** Added an explicit note that the left-panel SVG label "72 HOURS LATER — STILL FIGURING IT OUT" is **intentional before-state visual copy** depicting the problem, not a baseline metric claim. This label is not a violation of the retired 72-hour mobilization rule (Section 32). The comparison metrics (3,600×, 30 days → 12 min) live in the proof-numbers strip at the bottom of the same diagram. No SVG content was changed — the note prevents future agents from incorrectly "fixing" intentional design.
+
+#### 2. Canonical CTA / Routing Block — Pilot → Founding Partner everywhere
+**Section 2 (Growth Segment bullet):** Updated to name the Fortune 1000 enterprise page as `/founding-partner-program` (not "Enterprise Pilot / `/pilot-program`"); notes that `/pilot-program` is now a permanent alias.
+
+**Page table (Section 13):**
+- `FounderStory.tsx` closing CTA: `/pilot-program` → `/founding-partner-program`
+- `InvestorLanding.tsx` hero CTA ("Schedule a Conversation"): `/pilot-program` → `/founding-partner-program`
+- `PilotProgram.tsx` row replaced by `FoundingPartnerProgram.tsx | /founding-partner-program (alias: /pilot-program)` with cross-reference to Section 55
+
+#### 3. Canonical File-Name Map — old → new
+All stale `PlaybookLibraryV2.tsx` and `PlaybookDetail.tsx` references updated to current file names:
+
+| Old name | New (canonical) name | Locations updated |
+|---|---|---|
+| `PlaybookLibraryV2.tsx` | `ProtocolLibrary.tsx` | Section 12 `DOMAIN_DB_MAP` heading; Section 13 page table |
+| `PlaybookDetail.tsx` | `ProtocolDetail.tsx` | Section 13 page table; Section 24 UUID/number lookup paragraph; Section 27 Source Governance Indicator heading |
+
+#### 4. Section Number Deduplication
+Two sections were both numbered `## 50.` and `## 51.`:
+- First `## 50.` (Homepage Signal Feed Deduplication, rev 28) → **unchanged, remains 50**
+- Second `## 50.` (Founding Partner Program Page, rev 30) → **renumbered to 55**
+- Second `## 51.` (Rev 31 Change Log) → **renumbered to 56**
+- This change log → **57**
+
+No content in any of those sections was altered — numbers only.
