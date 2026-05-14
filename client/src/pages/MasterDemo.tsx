@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "wouter";
 import { SCENARIOS, type DemoScenario } from "./demos/scenarioData";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
+import ConsequencePreview from "@/components/ConsequencePreview";
+import type { ConsequenceChoice } from "@/components/ConsequencePreview";
 
 /* ─── Brand ───────────────────────────────────────────────────────────────── */
 const NAVY    = "#0A0F2E";
@@ -475,6 +477,7 @@ function PhaseWarRoom({ sc, phase, total, onNext, onBack }: { sc: DemoScenario; 
 /* ─── Phase 4: Executive Authorization ───────────────────────────────────── */
 function PhaseAuthorize({ sc, phase, total, onAuthorize, onBack }: { sc: DemoScenario; phase: number; total: number; onAuthorize: () => void; onBack: () => void }) {
   const [authorized, setAuthorized] = useState(false);
+  const [choiceMade, setChoiceMade] = useState<ConsequenceChoice | null>(null);
   const [elapsed, setElapsed] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const ceo = sc.stakeholders[0];
@@ -484,7 +487,8 @@ function PhaseAuthorize({ sc, phase, total, onAuthorize, onBack }: { sc: DemoSce
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
-  const handleAuth = () => {
+  const handleAuth = (choice: ConsequenceChoice) => {
+    setChoiceMade(choice);
     setAuthorized(true);
     if (timerRef.current) clearInterval(timerRef.current);
     setTimeout(onAuthorize, 2400);
@@ -543,22 +547,23 @@ function PhaseAuthorize({ sc, phase, total, onAuthorize, onBack }: { sc: DemoSce
         </div>
 
         <div style={{ borderTop: `1px solid ${BD}`, paddingTop: 20 }}>
-          <div style={{ ...BC, fontSize: 10, fontWeight: 800, color: W, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12 }}>CEO Decision Required</div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button onClick={handleAuth} disabled={authorized} style={{
-              ...BC, border: "none", flex: "1 1 auto",
-              background: authorized ? TEAL : GOLD,
-              color: NAVY, fontSize: 16, fontWeight: 800, letterSpacing: "0.14em",
-              padding: "16px 36px", cursor: authorized ? "default" : "pointer",
-              textTransform: "uppercase", transition: "background 0.4s",
-            }}>
-              {authorized ? "✓ AUTHORIZED — ACTIVATING ALL TASKS" : "AUTHORIZE FULL ACTIVATION →"}
-            </button>
-            <button disabled={authorized} style={{ ...BC, background: "transparent", border: `1px solid ${W25}`, color: W50, fontSize: 13, fontWeight: 600, letterSpacing: "0.1em", padding: "16px 22px", cursor: "default" }}>
-              Request Modification
-            </button>
-          </div>
-          <div style={{ ...BAR, fontSize: 11, color: W25, marginTop: 10, lineHeight: 1.5 }}>
+          <div style={{ ...BC, fontSize: 10, fontWeight: 800, color: W, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 16 }}>CEO Decision Required — Choose Your Response</div>
+          {authorized ? (
+            <div style={{ padding: "16px 20px", background: `${TEAL}18`, border: `1px solid ${TEAL}50`, display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+              <div style={{ ...BC, fontSize: 13, fontWeight: 800, color: TEAL, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                ✓ {choiceMade === "run_as_built" ? "Running as Built" : choiceMade === "audible" ? "Audible Called — Adjusted Protocol Activating" : choiceMade === "customize" ? "Customized — Activating Modified Protocol" : "Response Held — Stand-Down Logged"} · All Tasks Activating
+              </div>
+            </div>
+          ) : (
+            <ConsequencePreview
+              triggerName={sc.triggerHeadline}
+              playbookName={`Protocol #${sc.protocolNumber} — ${sc.protocolName}`}
+              taskCount={sc.tasks.length}
+              onConfirm={(choice: ConsequenceChoice) => handleAuth(choice)}
+            />
+          )}
+          <div style={{ ...BAR, fontSize: 11, color: W25, marginTop: 12, lineHeight: 1.5 }}>
             Authorization is logged, timestamped, and attributed to your executive profile. No decision rights transfer without your sign-off. AI monitors — executives authorize.
           </div>
         </div>
