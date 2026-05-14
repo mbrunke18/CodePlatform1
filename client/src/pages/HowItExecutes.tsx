@@ -450,6 +450,45 @@ export default function HowItExecutes() {
           </div>
         </div>
 
+        {/* Executive Questions — 3 strongest */}
+        <div style={{ padding: "64px 48px 0" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+              <div style={{ width: 20, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: GOLD }}>Questions We Hear</span>
+            </div>
+            <h3 style={{ ...GEO, fontSize: "clamp(22px,2.8vw,32px)", fontWeight: 700, color: "#fff", marginBottom: 36, lineHeight: 1.3 }}>
+              Before leaders move forward, they ask these.
+            </h3>
+            <div style={{ display: "grid", gap: 2 }}>
+              {[
+                {
+                  q: "What does \"30 days compressed to 12 minutes\" actually mean?",
+                  a: "It means the mobilization cycle — who owns what, who decides, what gets staged, what sequence activates — is compressed from weeks to minutes. Execution quality improves because the sequence is already built before the trigger fires.",
+                },
+                {
+                  q: "Is AI making decisions for us?",
+                  a: "No. AI monitors signals and prepares context. Executives authorize activation. Authority stays human at every step. No Readiness Protocol activates without executive sign-off.",
+                },
+                {
+                  q: "How is this different from Copilot or workflow tools?",
+                  a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Readiness OS orchestrates the cross-functional response the moment the trigger fires — before the stakeholder chaos starts.",
+                },
+              ].map((item, i) => (
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1.7fr", border: "1px solid rgba(255,255,255,0.08)", borderTopWidth: i === 0 ? 1 : 0 }}>
+                  <div style={{ padding: "22px 28px", borderRight: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: GOLD, marginBottom: 8 }}>Q{String(i + 1).padStart(2, "0")}</div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 600, color: "#fff", lineHeight: 1.45, margin: 0 }}>{item.q}</p>
+                  </div>
+                  <div style={{ padding: "22px 32px", background: "rgba(255,255,255,0.02)", display: "flex", alignItems: "center" }}>
+                    <p style={{ fontSize: 12, color: MUTED, lineHeight: 1.75, margin: 0 }}>{item.a}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* CTA */}
         <div style={{ padding: "64px 48px", textAlign: "center" }}>
           <div style={{ maxWidth: 680, margin: "0 auto" }}>

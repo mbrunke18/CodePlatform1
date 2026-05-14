@@ -1559,6 +1559,100 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Executive Questions, Answered */}
+        <section className="py-20 px-6 bg-[#F8F7F4]">
+          <div className="max-w-4xl mx-auto">
+            <div className="vm-section-label justify-center mb-6"><span>Due Diligence</span></div>
+            <h2 className="text-center mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px,4vw,44px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }}>
+              Executive Questions, Answered
+            </h2>
+            <p className="text-center mb-14" style={{ fontSize: 14, color: '#6B7280', lineHeight: 1.7 }}>
+              The questions serious investors and enterprise buyers ask — before they move.
+            </p>
+            <div style={{ display: 'grid', gap: 2 }}>
+              {[
+                {
+                  q: "What problem are you actually solving?",
+                  a: "Most enterprises do not fail to detect risk or opportunity. They fail in the mobilization gap between detection and coordinated action. Readiness OS closes that gap by pre-staging ownership, tasking, communications, and budget authority before the trigger fires.",
+                  proof: "30-day mobilization cycle compressed to 12 minutes.",
+                },
+                {
+                  q: "Why does this matter right now?",
+                  a: "Every enterprise has invested in AI capability. Very few have redesigned how decisions turn into coordinated execution. The bottleneck is no longer intelligence — it is organizational mobilization under pressure.",
+                  proof: "Enterprises already own the AI stack. None have the operating model to use it at trigger speed.",
+                },
+                {
+                  q: "How is this different from Copilot, workflow tools, or consulting?",
+                  a: "Copilot helps with intelligence and drafting. Workflow tools track work after people align. Consulting advises between events. Readiness OS orchestrates the cross-functional response in the moment it matters — before the stakeholder chaos starts.",
+                  proof: "Not competing with Copilot. Competing with the 40-year-old meeting-heavy operating model itself.",
+                },
+                {
+                  q: "Is this replacing our current stack?",
+                  a: "No. Readiness OS is the operating model layer above your existing systems — Microsoft, Jira, ServiceNow, collaboration tools. No rip-and-replace required. Value is demonstrable before deep integration begins.",
+                  proof: "Deployment risk is low-to-moderate. Overlay architecture, not replacement architecture.",
+                },
+                {
+                  q: "Is AI making decisions for us?",
+                  a: "No. AI monitors signals and prepares context. Executives authorize activation. Authority stays human at every step — governance and decision authority are explicit, auditable, and pre-staged.",
+                  proof: "AI monitors. Executives authorize. No protocol activates without executive sign-off.",
+                },
+                {
+                  q: "What does \"30 days compressed to 12 minutes\" mean?",
+                  a: "It does not mean execution is done in 12 minutes. It means the mobilization cycle — who owns what, who decides, what gets staged, what sequence activates — is compressed from weeks to minutes. Execution quality improves because the sequence is already built.",
+                  proof: "3,600× Execution Head Start. The gap before any competitor has aligned stakeholders.",
+                },
+                {
+                  q: "How do we know this is real and not a demo narrative?",
+                  a: "You can run the full sequence in a live test environment and inspect exactly what is staged, activated, and acknowledged. The product is built to make readiness visible and auditable, not abstract.",
+                  proof: "170 pre-staged Readiness Protocols. Activation, acknowledgment, and debrief loops are all measurable.",
+                },
+                {
+                  q: "What outcome should we expect if this works?",
+                  a: "When the trigger fires, your organization starts coordinated execution while others are still aligning stakeholders. That creates measurable advantage in risk containment, response quality, and decision velocity — with every activation debrief captured as institutional memory.",
+                  proof: "Defensibility compounds through organization-specific response logic embedded in operational muscle memory.",
+                },
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', borderTop: i === 0 ? '1px solid #E8E4DC' : 'none', borderBottom: '1px solid #E8E4DC', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC' }}>
+                  <div style={{ padding: '28px 28px', borderRight: '1px solid #E8E4DC', background: '#fff' }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Q{String(i + 1).padStart(2, '0')}</div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#0A0F2E', lineHeight: 1.45, margin: 0 }}>{item.q}</p>
+                  </div>
+                  <div style={{ padding: '28px 32px', background: '#FAFAF8' }}>
+                    <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.75, marginBottom: 14 }}>{item.a}</p>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                      <div style={{ width: 16, height: 1.5, background: '#C9A84C', marginTop: 8, flexShrink: 0 }} />
+                      <p style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>{item.proof}</p>
+                    </div>
+                    {(i === 2 || i === 5) && (
+                      <div style={{ marginTop: 20 }}>
+                        <a href="/founding-partner-program" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#2B8A6E', textDecoration: 'none', borderBottom: '1px solid rgba(43,138,110,0.3)', paddingBottom: 2 }}>
+                          Apply for Founding Partner Access →
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 40, padding: '32px 40px', background: '#0A0F2E', textAlign: 'center' }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: '#fff', marginBottom: 6 }}>
+                The response is ready before the trigger fires.
+              </p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 24, letterSpacing: '0.06em' }}>
+                AI monitors · Executives authorize · Execution pre-staged
+              </p>
+              <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="/request-access" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', display: 'inline-block' }}>
+                  Schedule a Conversation →
+                </a>
+                <a href="/12-minute-experience" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none', display: 'inline-block' }}>
+                  See It Execute in 12 Minutes →
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-6 bg-[#0A0F2E] text-white">
           <div className="max-w-4xl mx-auto text-center">
