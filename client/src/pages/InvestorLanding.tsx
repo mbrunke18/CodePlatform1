@@ -1642,7 +1642,7 @@ export default function InvestorLanding() {
                 AI monitors · Executives authorize · Execution pre-staged
               </p>
               <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="/request-access" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', display: 'inline-block' }}>
+                <a href="/contact" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', display: 'inline-block' }}>
                   Schedule a Conversation →
                 </a>
                 <a href="/12-minute-experience" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none', display: 'inline-block' }}>
@@ -1669,7 +1669,7 @@ export default function InvestorLanding() {
             <div className="flex flex-wrap gap-4 justify-center mb-8">
               <Button
                 size="lg"
-                onClick={() => setLocation("/request-access")}
+                onClick={() => setLocation("/contact")}
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-cta-schedule"
               >
