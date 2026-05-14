@@ -1383,7 +1383,7 @@ export default function InvestorLanding() {
                 $2.5M Seed Round
               </h2>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 560, margin: '0 auto' }}>
-                18-month target: three Fortune 1000 pilots closed and converting to annual contracts, reaching $3.75M ARR.
+                18-month target: three Fortune 1000 Founding Partner engagements closed and converting to annual contracts, reaching $3.75M ARR.
               </p>
             </div>
 
@@ -1405,7 +1405,7 @@ export default function InvestorLanding() {
               <div className="bg-white border border-[#E8E4DC] p-6">
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>Use of Proceeds</div>
                 {[
-                  { label: 'Pilot Execution & Customer Success', pct: '40%', color: '#2B8A6E' },
+                  { label: 'Founding Partner Execution & Customer Success', pct: '40%', color: '#2B8A6E' },
                   { label: 'Product & Engineering', pct: '30%', color: '#0A0F2E' },
                   { label: 'Sales & GTM Infrastructure', pct: '20%', color: '#C9A84C' },
                   { label: 'Operations & Legal', pct: '10%', color: '#6B7280' },
@@ -1423,8 +1423,8 @@ export default function InvestorLanding() {
               <div className="bg-white border border-[#E8E4DC] p-6">
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>18-Month Milestones</div>
                 {[
-                  { mo: 'M1–3', label: '3 Founding Partner pilots signed · $225K ARR · Commercial co-founder on board', color: '#2B8A6E' },
-                  { mo: 'M4–6', label: 'First 3 pilots convert to $250K+ annual contracts', color: '#2B8A6E' },
+                  { mo: 'M1–3', label: '3 Founding Partners signed · $225K ARR · Commercial co-founder on board', color: '#2B8A6E' },
+                  { mo: 'M4–6', label: 'First 3 Founding Partners convert to $250K+ annual contracts', color: '#2B8A6E' },
                   { mo: 'M6–12', label: 'Expand to 8 enterprise accounts — $1.5M ARR', color: '#C9A84C' },
                   { mo: 'M12–18', label: '$3.75M ARR — Series A raise initiated', color: '#0A0F2E' },
                 ].map(m => (

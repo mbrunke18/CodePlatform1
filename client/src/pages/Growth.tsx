@@ -452,7 +452,7 @@ export default function Growth() {
           <div style={{ flex: "1 1 400px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
               <div style={{ width: 8, height: 8, borderRadius: 0, background: TEAL, flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Built-In Pilot</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: TEAL }}>Built-In Validation Path</span>
             </div>
             <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(24px,3vw,34px)", color: NAVY, marginBottom: 12, lineHeight: 1.15 }}>
               Want to validate before committing?<br />
@@ -462,7 +462,7 @@ export default function Growth() {
               Start with Ready at $7,500/month (or $75,000/year — 2 months free on annual). You get the full platform —
               real signal detection, live activations, unlimited users — deployed across your two most critical domains.
               Run it for 30 days in your actual environment. If it doesn't deliver, we refund the first month.
-              No 90-day structured pilot. No custom implementation timeline. Start immediately and see results in your first activation.
+              No 90-day structured validation cycle required for Growth tiers. Start immediately and see results in your first activation.
             </p>
           </div>
           <div style={{ flex: "0 1 280px", display: "flex", flexDirection: "column" as const, gap: 14 }}>
@@ -485,7 +485,7 @@ export default function Growth() {
               onClick={() => setLocation("/contact")}
               style={{ marginTop: 8, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8, background: TEAL, color: "#fff", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, padding: "14px 24px", borderRadius: 0, border: "none", cursor: "pointer" }}
             >
-              Start My Pilot <ArrowRight style={{ width: 14, height: 14 }} />
+              Start My Deployment <ArrowRight style={{ width: 14, height: 14 }} />
             </button>
           </div>
         </div>
@@ -778,11 +778,11 @@ export default function Growth() {
             <div style={{ width: 24, height: 2, background: NAVY }} />
           </div>
           <h2 style={{ ...CG, fontWeight: 600, fontSize: "clamp(26px,3.5vw,36px)", color: NAVY, marginBottom: 12 }}>
-            Founding Partner Pilot — $75K
+            Founding Partner Program — $75K
           </h2>
           <p style={{ fontSize: 16, color: "#4B5563", maxWidth: 600, margin: "0 auto 12px", lineHeight: 1.6 }}>
             For enterprise organizations that want a structured 90-day validation with dedicated implementation.
-            The $75K pilot fee is <strong>100% credited toward Year 1</strong> — so you're not paying for a pilot,
+            The $75K program fee is <strong>100% credited toward Year 1</strong> — so you're not paying for a proof of concept,
             you're prepaying for the deployment.
           </p>
           <p style={{ fontSize: 14, color: "#9CA3AF", marginBottom: 28 }}>
@@ -792,7 +792,7 @@ export default function Growth() {
             onClick={() => setLocation("/founding-partner-program")}
             style={{ background: NAVY, color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", padding: "16px 32px" }}
           >
-            Apply for Founding Partner Pilot <ArrowRight className="ml-2 h-4 w-4" />
+            Apply for Founding Partner Access <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </section>

@@ -2126,6 +2126,60 @@ function CredibilitySection() {
   );
 }
 
+// ─── Executive Q&A ────────────────────────────────────────────────────────────
+function ExecutiveQASection() {
+  return (
+    <section style={{ background: "#F8F7F4", padding: "80px 0", borderTop: "1px solid #E8E4DC" }}>
+      <div style={{ ...CONTAINER }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+          <div style={{ width: 24, height: 1.5, background: GOLD }} />
+          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: GOLD }}>Questions We Hear</span>
+        </div>
+        <h2 style={{ ...GEO, fontSize: "clamp(26px,3vw,38px)", fontWeight: 700, color: NAVY, marginBottom: 10, lineHeight: 1.25 }}>
+          Executive Questions, Answered
+        </h2>
+        <p style={{ fontSize: 14, color: "#6B7280", marginBottom: 36, lineHeight: 1.7 }}>
+          The questions serious enterprise leaders ask before they move forward.
+        </p>
+        <div style={{ display: "grid", gap: 2 }}>
+          {[
+            {
+              q: "What problem are you actually solving?",
+              a: "Most enterprises do not fail to detect risk or opportunity. They fail in the mobilization gap between detection and coordinated action. Readiness OS closes that gap — ownership, tasking, communications, and budget authority pre-staged before the trigger fires.",
+            },
+            {
+              q: "Is AI making decisions for us?",
+              a: "No. AI monitors signals and prepares context. Executives authorize activation. Authority stays human at every step. No Readiness Protocol activates without executive sign-off.",
+            },
+            {
+              q: "How is this different from Copilot, workflow tools, or consulting?",
+              a: "Copilot helps with intelligence and drafting. Workflow tools track tasks after people align. Consulting advises between events. Readiness OS orchestrates the cross-functional response the moment the trigger fires — before the stakeholder chaos starts.",
+            },
+          ].map((item, i) => (
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr", border: "1px solid #E8E4DC", borderTopWidth: i === 0 ? 1 : 0 }}>
+              <div style={{ padding: "24px 28px", borderRight: "1px solid #E8E4DC", background: "#fff" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 8 }}>Q{String(i + 1).padStart(2, "0")}</div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontWeight: 600, color: NAVY, lineHeight: 1.45, margin: 0 }}>{item.q}</p>
+              </div>
+              <div style={{ padding: "24px 32px", background: "#FAFAF8", display: "flex", alignItems: "center" }}>
+                <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, margin: 0 }}>{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 28, display: "flex", gap: 16, flexWrap: "wrap" as const }}>
+          <a href="/investor-landing" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, textDecoration: "none", borderBottom: `1px solid ${GOLD}60`, paddingBottom: 2 }}>
+            See all 8 questions answered →
+          </a>
+          <a href="/founding-partner-program" style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: "#6B7280", textDecoration: "none", borderBottom: "1px solid #D1D5DB", paddingBottom: 2 }}>
+            Apply for Founding Partner Access →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── SECTION 8: Primary CTA ───────────────────────────────────────────────────
 function CTASection() {
   return (
@@ -2733,6 +2787,9 @@ export default function Homepage() {
 
       {/* 7. RESEARCH — Credibility and moat */}
       <CredibilitySection />
+
+      {/* 7b. Executive Q&A */}
+      <ExecutiveQASection />
 
       {/* 8. CTA */}
       <CTASection />
