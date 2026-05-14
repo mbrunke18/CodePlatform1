@@ -4,6 +4,8 @@ import { scrollToTop } from "@/components/ScrollToTop";
 import { VaughnMartinLogo } from "@/components/VaughnMartinLogo";
 import { Radio } from "lucide-react";
 import { ValueGainCallout, type ValueGainMode } from "@/components/ValueGainCallout";
+import ConsequencePreview from "@/components/ConsequencePreview";
+import type { ConsequenceChoice } from "@/components/ConsequencePreview";
 
 // ─── Brand tokens ─────────────────────────────────────────────────────────────
 const NAVY    = "#0A0F2E";
@@ -224,6 +226,7 @@ function getTaskStatus(taskIdx: number, elapsed: number, tasks: Array<{ time: st
 
 export default function TwelveMinuteTestDrive() {
   const [step, setStep]           = useState<1 | 2 | 3 | 4>(1);
+  const [showAuthorization, setShowAuthorization] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const liveCtx = useLiveCtxTD();
   const [brief, setBrief]         = useState<any>(null);
@@ -578,17 +581,44 @@ export default function TwelveMinuteTestDrive() {
                     dark
                     style={{ marginBottom: 24 }}
                   />
-                  <div style={{ textAlign: 'center' }}>
-                    <button
-                      onClick={() => { setStep(3); scrollToTop(); startWarRoom(tasks); }}
-                      style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}
-                    >
-                      Enter the War Room — Start Clock →
-                    </button>
-                  </div>
+                  {!showAuthorization && (
+                    <div style={{ textAlign: 'center' }}>
+                      <button
+                        onClick={() => { setShowAuthorization(true); setTimeout(scrollToTop, 80); }}
+                        style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}
+                      >
+                        Authorize Execution →
+                      </button>
+                    </div>
+                  )}
                 </>
               );
             })()}
+
+            {/* ── Authorization Panel (ConsequencePreview) ───────────── */}
+            {showAuthorization && !loadingBrief && scenario && (
+              <div style={{ marginTop: 32 }}>
+                <ConsequencePreview
+                  triggerName={`${scenario.title} — ${scenario.subtitle}`}
+                  playbookName={scenario.title}
+                  taskCount={tasks.length || 8}
+                  onConfirm={(choice: ConsequenceChoice) => {
+                    if (choice === 'stand_down') {
+                      setShowAuthorization(false);
+                      setStep(1);
+                      scrollToTop();
+                      setSelectedId(null);
+                      setBrief(null);
+                    } else {
+                      setShowAuthorization(false);
+                      setStep(3);
+                      scrollToTop();
+                      startWarRoom(tasks);
+                    }
+                  }}
+                />
+              </div>
+            )}
           </div>
         )}
 
@@ -913,7 +943,7 @@ export default function TwelveMinuteTestDrive() {
                   Investor View →
                 </a>
                 <button
-                  onClick={() => { setStep(1); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); setEmailInput(''); setEmailStatus('idle'); }}
+                  onClick={() => { setStep(1); setShowAuthorization(false); scrollToTop(); setSelectedId(null); setBrief(null); setElapsed(0); setRunning(false); setLiveEvents([]); setEmailInput(''); setEmailStatus('idle'); }}
                   style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '13px 32px', background: 'transparent', color: 'rgba(255,255,255,0.55)', border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer' }}
                 >
                   Try Another Scenario
