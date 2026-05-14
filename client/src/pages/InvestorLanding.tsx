@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { updatePageMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -70,6 +72,15 @@ const roiBreakdownData = [
 
 export default function InvestorLanding() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: "Investor Overview | Readiness OS — Strategic Readiness Platform",
+      description: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the operating model layer. First-mover in a new enterprise software category.",
+      ogTitle: "Invest in Readiness OS — The Operating Model Layer for Fortune 1000",
+      ogDescription: "Enterprises spend 30 days mobilizing for events they could have pre-staged. Readiness OS changes the model. 170 protocols. 12-minute execution. First-mover opportunity.",
+    });
+  }, []);
 
   return (
     <PageLayout>

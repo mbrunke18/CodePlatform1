@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { updatePageMetadata } from "@/lib/seo";
 import { GuestPreviewBanner } from "@/components/GuestPreviewBanner";
 import { ExecutionStageGuide } from "@/components/ExecutionStageGuide";
 import { Link, useLocation } from "wouter";
@@ -2678,7 +2679,12 @@ function SimulatorCTASection() {
 export default function Homepage() {
   useScrollDepth();
   useEffect(() => {
-    document.title = "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure";
+    updatePageMetadata({
+      title: "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure",
+      description: "Fortune 1000 enterprises take 30 days to mobilize around a strategic trigger. Readiness OS deploys your entire organization in 12 minutes. 170 Readiness Protocols, 248+ data points, zero improvisation.",
+      ogTitle: "VaughnMartin Readiness OS — 30 Days Compressed to 12 Minutes",
+      ogDescription: "The response is ready before the trigger fires. 170 Readiness Protocols pre-staged for Fortune 1000 strategic execution. 3,600× Execution Head Start.",
+    });
   }, []);
   return (
     <div style={{ background: NAVY, margin: 0, padding: 0 }}>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, type CSSProperties } from "react";
+import { updatePageMetadata } from "@/lib/seo";
 import { Link } from "wouter";
 import PageLayout from "@/components/layout/PageLayout";
 
@@ -137,6 +138,15 @@ export default function HowItExecutes() {
   const [playing, setPlaying] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scenario = SCENARIOS[selectedIdx];
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: "How Readiness OS Executes in 12 Minutes | VaughnMartin",
+      description: "Signal detected → Readiness Protocol matched → tasks staged → stakeholders notified → executive authorizes. The full coordination chain from 30 days to 12 minutes.",
+      ogTitle: "How Readiness OS Executes: The 12-Minute Chain | VaughnMartin",
+      ogDescription: "Pre-staged Readiness Protocols collapse the mobilization cycle from 30 days to 12 minutes. Watch the full execution chain across 5 live scenarios.",
+    });
+  }, []);
 
   function startChain() {
     setVisibleSteps(0);

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, CSSProperties } from 'react';
+import { updatePageMetadata } from '@/lib/seo';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -589,6 +590,16 @@ const URGENCY_COLORS: Record<string, string> = {
 
 export default function TryDemo() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    updatePageMetadata({
+      title: "Experience 12-Minute Execution | Readiness OS — Interactive Demo",
+      description: "See how Readiness OS deploys your organization around a strategic trigger in 12 minutes. Live simulation across 4 crisis scenarios — no login required.",
+      ogTitle: "Try the 12-Minute Execution Demo — Readiness OS",
+      ogDescription: "Pick a crisis scenario. Signal detected → protocol staged → stakeholders notified → executive authorizes. All in 12 minutes. No login required.",
+    });
+  }, []);
+
   const [currentPhase, setCurrentPhase] = useState<Phase>('select');
   const [selectedScenario, setSelectedScenario] = useState<Scenario | null>(null);
   const [completedPhases, setCompletedPhases] = useState<Phase[]>([]);
