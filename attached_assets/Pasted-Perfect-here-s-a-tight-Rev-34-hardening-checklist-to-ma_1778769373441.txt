@@ -1,0 +1,73 @@
+Perfect — here’s a tight Rev 34 hardening checklist to make this your best production version before broader sharing.
+
+P0 (Must fix before wider public push)
+One offer language everywhere
+
+Public conversion offer = Founding Partner Program
+Remove remaining current-state “Pilot” wording (except clearly marked historical references).
+One routing truth
+
+All public Founding Partner CTAs → /founding-partner-program
+/request-access only for auth/magic-link access
+Ensure top utility/nav doesn’t create ambiguity (Sign In vs Request Access flow).
+Offer number consistency
+
+Align all visible numbers across homepage/founding/growth:
+seats (10 vs 12),
+included users (10 vs 25),
+SLA references,
+90-day scope wording.
+Developer reference credibility fixes
+
+Update stale line: “as of April 2026 (rev 12)” → current rev.
+Remove remaining old filename references (PlaybookDetail etc. if renamed).
+Remove duplicate page entries.
+If “single source of truth” remains, document all known gaps listed in rev 33 or mark as “in progress.”
+P1 (High-value conversion + trust improvements)
+Public page rendering/preview check
+
+Verify crawl/share behavior for /how-it-executes, /try-demo, /contact, /investor-landing.
+Confirm OG title/description/image for LinkedIn shares.
+Homepage CTA clarity
+
+Keep one primary action and one secondary action above the fold.
+Ensure copy hierarchy is clean on mobile (no competing CTA labels).
+Founding page friction check
+
+Keep form concise and clearly state: who should apply, response time, and what happens next.
+Proof chain continuity
+
+Homepage → 12-minute experience → Founding Partner page should feel like one narrative (no language drift between pages).
+P1 (Measurement + feedback system)
+Event tracking required
+
+Track at minimum:
+CTA clicks (by page),
+form started,
+form submitted,
+booked call click,
+scenario started/completed in 12-minute experience.
+Capture UTM/source on form submissions.
+Launch dashboard
+
+Daily: visits, CTA CTR, submit rate, booked calls.
+Weekly: source quality + message effectiveness.
+P2 (Stability / operations)
+Smoke-test suite before each publish
+Key routes load
+Form submit success/fallback
+Auth flow
+Demo flow
+No broken links
+Monitoring
+Error monitoring + alerting on form endpoint and critical route failures.
+Ship Gate (go/no-go)
+You’re ready for broader public push only when all are true:
+
+No public “Pilot” drift in current-state pages
+All CTA routes consistent
+Offer numbers aligned everywhere
+Dev reference has no obvious stale contradictions
+Conversion + funnel tracking live
+Key route smoke test passes
+If you want, I can turn this into a copy/paste execution board (owner, task, acceptance criteria) for your team so this gets done in one pass.
