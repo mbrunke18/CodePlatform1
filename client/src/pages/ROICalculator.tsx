@@ -635,7 +635,7 @@ export default function ROICalculator() {
               Your customized ROI estimate is a starting point. Our team builds a fully evidenced business case specific to your organization's risk profile and strategic calendar.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
-              <Button style={{ background: "#0A0F2E", color: "#fff", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 0 }} onClick={() => setLocation('/contact')}>
+              <Button style={{ background: "#0A0F2E", color: "#fff", fontWeight: 700, padding: "16px 36px", fontSize: 15, borderRadius: 0 }} onClick={() => setLocation('/founding-partner-program')}>
                 Request Full Business Case
               </Button>
               <Link href="/12-minute-experience">

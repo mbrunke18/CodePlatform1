@@ -249,7 +249,7 @@ export default function AgilityAssessment() {
                   </Button>
                   <Button 
                     size="lg"
-                    onClick={() => setLocation('/contact')}
+                    onClick={() => setLocation('/founding-partner-program')}
                     variant="outline"
                     className="border-[#0A0F2E] dark:border-white text-[#0A0F2E] dark:text-white hover:bg-[#F8F7F4] dark:hover:bg-white/5"
                     data-testid="button-get-consultation"

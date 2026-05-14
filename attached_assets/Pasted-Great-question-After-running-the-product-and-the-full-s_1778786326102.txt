@@ -1,0 +1,38 @@
+Great question. After running the product and the full-suite testing flow, the biggest gaps are:
+
+Highest-impact shortfalls (customer value + full experience)
+1) Conversion path is still confusing at key moments (High)
+Customer impact: “I’m interested, but I’m not sure where to go next.”
+Observed: different places still push users between /founding-partner-program and /request-access patterns; some CTAs keep users on same page rather than moving to a clear next step.
+Why it hurts value: strong demand dies in routing friction.
+
+2) The “wow” flow is not always linear enough for first-time execs (High)
+Customer impact: first-time testers can get stuck in choice/confirmation layers before seeing the live war-room payoff.
+Observed in test drive: after brief generation, there are extra authorization decision screens before execution starts.
+Why it hurts value: your promise is speed + clarity; extra steps can feel like complexity before value.
+
+3) Proof of business outcome is still more “simulated” than “validated” (High)
+Customer impact: buyers believe the narrative but hesitate to buy without hard customer evidence.
+Observed: strong simulation/debrief UX, but limited named, audited before/after customer outcomes surfaced directly in decision moments.
+Why it hurts value: enterprise buyers need confidence artifacts, not only compelling product motion.
+
+4) Guest-to-full-product bridge is still thin (Medium-High)
+Customer impact: prospects can see slices of value but not enough of the full operating model before access gating.
+Observed: locked protocol cards and gated endpoints are correct for control, but can reduce felt depth pre-sale.
+Why it hurts value: people may leave with “interesting concept” instead of “must-have system.”
+
+5) Public API/readiness surfaces still have auth-bound edges (Medium)
+Customer impact: parts of public experience can degrade depending on endpoint auth behavior (401 on some metrics endpoints).
+Observed: public endpoints are mixed with auth-required ones.
+Why it hurts value: unstable preview quality weakens trust during evaluation.
+
+6) Messaging consistency still has residual implementation drift (Medium)
+Customer impact: subtle credibility tax (“is this fully buttoned up?”).
+Observed in codebase patterns: legacy naming/test IDs and mixed wording remain in places.
+Why it hurts value: for enterprise buyers, polish = trust.
+
+Bottom line
+You are strong on strategic narrative and differentiation, but currently fall short most in:
+
+frictionless conversion orchestration, and
+hard proof packaging at point of decision.

@@ -890,6 +890,43 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
           </div>
 
           <CompoundDisruptionSection />
+
+          {/* ── Next Best Step ──────────────────────────────────────────── */}
+          <div style={{ background: "#0A0F2E", padding: "56px 48px", marginTop: 48 }}>
+            <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2 }}>
+              <div style={{ padding: "28px 24px", borderTop: "3px solid #C9A84C", background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)", borderTopWidth: 3 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#C9A84C", marginBottom: 10 }}>Experience It Now</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>See a Readiness Protocol execute in under 90 seconds</div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
+                  The 12-Minute Test Drive runs any of 7 scenarios — trigger to full war-room execution.
+                </p>
+                <a href="/12-minute-experience" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", background: "#C9A84C", color: "#0A0F2E", textDecoration: "none", display: "inline-block" }}>
+                  Start the Test Drive →
+                </a>
+              </div>
+              <div style={{ padding: "28px 24px", borderTop: "3px solid #2B8A6E", background: "rgba(43,138,110,0.04)", border: "1px solid rgba(43,138,110,0.2)", borderTopWidth: 3 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#6EE7B7", marginBottom: 10 }}>Watch It Execute</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>Signal detected → protocol staged → execution begins</div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
+                  The animated execution chain shows exactly how Readiness OS compresses 30 days to 12 minutes.
+                </p>
+                <a href="/how-it-executes" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", background: "transparent", color: "#6EE7B7", border: "1px solid rgba(43,138,110,0.5)", textDecoration: "none", display: "inline-block" }}>
+                  How It Executes →
+                </a>
+              </div>
+              <div style={{ padding: "28px 24px", borderTop: "3px solid rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.1)", borderTopWidth: 3 }}>
+                <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginBottom: 10 }}>Get Access</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff", marginBottom: 10, lineHeight: 1.4 }}>Pre-stage these 170 protocols for your organization</div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.65, margin: "0 0 20px" }}>
+                  Founding Partners configure protocols against their real scenarios, real team, and real risk calendar.
+                </p>
+                <a href="/founding-partner-program" style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 22px", background: "transparent", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.25)", textDecoration: "none", display: "inline-block" }}>
+                  Apply for Founding Partner Access →
+                </a>
+              </div>
+            </div>
+          </div>
+
         </main>
       </div>
 

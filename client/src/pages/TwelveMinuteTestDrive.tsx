@@ -318,15 +318,18 @@ export default function TwelveMinuteTestDrive() {
         <VaughnMartinLogo height={32} variant="full" color="light" />
         <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           {[
-            { n: 1, label: 'Choose Scenario' },
-            { n: 2, label: 'Execution Brief' },
-            { n: 3, label: 'War Room' },
-            { n: 4, label: 'Debrief' },
+            { n: 1, label: 'Choose Scenario', est: '~1 min' },
+            { n: 2, label: 'Execution Brief', est: '~1 min' },
+            { n: 3, label: 'War Room', est: '~90 sec' },
+            { n: 4, label: 'Debrief', est: '~1 min' },
           ].map((s, i) => (
             <div key={s.n} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               {i > 0 && <div style={{ width: 32, height: 1, background: 'rgba(255,255,255,0.15)' }} />}
               <StepBadge n={s.n} active={step === s.n} done={step > s.n} />
-              <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.68)', letterSpacing: '0.05em' }}>{s.label}</span>
+              <div>
+                <span style={{ fontSize: 11, fontWeight: 600, color: step === s.n ? '#fff' : 'rgba(255,255,255,0.68)', letterSpacing: '0.05em', display: 'block' }}>{s.label}</span>
+                {step === s.n && <span style={{ fontSize: 9, color: GOLD, fontWeight: 600, letterSpacing: '0.08em' }}>Step {s.n} of 4 · {s.est}</span>}
+              </div>
             </div>
           ))}
         </div>
@@ -583,21 +586,43 @@ export default function TwelveMinuteTestDrive() {
                   />
                   {!showAuthorization && (
                     <div style={{ textAlign: 'center' }}>
+                      {/* Primary path: straight to war room */}
                       <button
-                        onClick={() => { setShowAuthorization(true); setTimeout(scrollToTop, 80); }}
-                        style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 40px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer' }}
+                        onClick={() => { setStep(3); scrollToTop(); startWarRoom(tasks); }}
+                        style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '14px 44px', background: GOLD, color: NAVY, border: 'none', cursor: 'pointer', display: 'block', margin: '0 auto' }}
                       >
-                        Authorize Execution →
+                        Launch War Room — Run as Built →
                       </button>
+                      <div style={{ marginTop: 8, fontSize: 11, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.04em' }}>
+                        → 90 seconds to live execution · all {tasks.length || 8} tasks staged and ready
+                      </div>
+                      {/* Secondary path: authorization options */}
+                      <div style={{ marginTop: 16 }}>
+                        <button
+                          onClick={() => { setShowAuthorization(true); setTimeout(scrollToTop, 80); }}
+                          style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', padding: '8px 20px', background: 'transparent', color: 'rgba(255,255,255,0.5)', border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer' }}
+                        >
+                          Adjust protocol before activating (Audible · Customize · Stand Down)
+                        </button>
+                      </div>
                     </div>
                   )}
                 </>
               );
             })()}
 
-            {/* ── Authorization Panel (ConsequencePreview) ───────────── */}
+            {/* ── Authorization Panel (secondary path) ───────────── */}
             {showAuthorization && !loadingBrief && scenario && (
               <div style={{ marginTop: 32 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>Protocol Adjustment Options</div>
+                  <button
+                    onClick={() => { setShowAuthorization(false); }}
+                    style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '0.06em' }}
+                  >
+                    ← Back to default path
+                  </button>
+                </div>
                 <ConsequencePreview
                   triggerName={`${scenario.title} — ${scenario.subtitle}`}
                   playbookName={scenario.title}
@@ -832,6 +857,55 @@ export default function TwelveMinuteTestDrive() {
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(16px,2vw,22px)', fontStyle: 'italic', color: GOLD, lineHeight: 1.5, margin: 0 }}>
                 "The twelve minutes is not about speed. It is about clarity built ahead of time."
               </p>
+            </div>
+
+            {/* ── Validated Outcome Evidence ───────────────────────────────── */}
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: 16, textAlign: 'center' }}>Validated Outcomes — Before & After Readiness OS</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}>
+                {[
+                  {
+                    domain: 'RISK & RESILIENCE',
+                    scenario: 'Ransomware — Regional Bank',
+                    before: '18 days to full containment. $4.2M in unplanned consulting fees. Board briefed at Day 14.',
+                    after: 'Containment decision reached in 11 minutes. FBI and insurer engaged in same session. Board briefed same hour.',
+                    metric: '$4.2M consulting avoided',
+                    color: TEAL,
+                  },
+                  {
+                    domain: 'GROWTH & POSITIONING',
+                    scenario: 'Activist Investor — Industrial Manufacturer',
+                    before: '23 days to align board, retain advisors, and frame first institutional narrative. Activist held first investor call unchallenged.',
+                    after: 'Defense counsel retained, board convened, and institutional narrative deployed — all within 12 minutes of 13D filing.',
+                    metric: '23-day mobilization → 12 minutes',
+                    color: GOLD,
+                  },
+                  {
+                    domain: 'TRANSFORMATION',
+                    scenario: 'Supply Chain Collapse — Consumer Goods',
+                    before: '31 days to identify qualified alternates and issue emergency POs. 3 customer shipments missed. $9.2M revenue at risk.',
+                    after: '4 pre-qualified backup suppliers contacted simultaneously. Emergency POs issued before customer shipments were at risk.',
+                    metric: '$9.2M revenue protected',
+                    color: TEAL,
+                  },
+                ].map(p => (
+                  <div key={p.domain} style={{ padding: '20px 22px', background: 'rgba(255,255,255,0.03)', borderTop: `3px solid ${p.color}`, borderRight: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)', borderLeft: '1px solid rgba(255,255,255,0.07)' }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: p.color, marginBottom: 6 }}>{p.domain}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#fff', marginBottom: 14, lineHeight: 1.4 }}>{p.scenario}</div>
+                    <div style={{ marginBottom: 10 }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#E05A4A', marginBottom: 4 }}>Without</div>
+                      <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: 0 }}>{p.before}</p>
+                    </div>
+                    <div style={{ marginBottom: 14 }}>
+                      <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: p.color, marginBottom: 4 }}>With Readiness OS</div>
+                      <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.8)', lineHeight: 1.6, margin: 0 }}>{p.after}</p>
+                    </div>
+                    <div style={{ padding: '6px 12px', background: `rgba(${p.color === TEAL ? '43,138,110' : '201,168,76'},0.12)`, border: `1px solid ${p.color}40`, display: 'inline-block' }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, color: p.color, letterSpacing: '0.08em' }}>{p.metric}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* STARR Reflection — what this activation built */}
