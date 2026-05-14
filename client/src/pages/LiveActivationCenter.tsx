@@ -512,6 +512,7 @@ export default function LiveActivationCenter() {
   const [selectedPlaybook, setSelectedPlaybook] = useState<string>(initialPlaybook);
   const [showGovernanceCheck, setShowGovernanceCheck] = useState(false);
   const [standDownRecorded, setStandDownRecorded] = useState(false);
+  const [protocolReady, setProtocolReady] = useState(false);
   const [activationId, setActivationId] = useState<string | null>(null);
   const [activationState, setActivationState] = useState<ActivationState>('ACTIVATING');
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
@@ -924,32 +925,28 @@ export default function LiveActivationCenter() {
     };
   }, []);
 
-  // Path A — trigger/email link: fire when protocol loads OR on timeout/error fallback.
-  // Passes emailProtocolData directly so beginActivation always gets the real data.
+  // Path A — trigger/email link: mark ready when protocol loads OR on timeout/error fallback.
+  // The ConsequencePreview panel shows next; beginActivation fires only after executive confirms.
   const triggerAutoStartRef = useRef(false);
   useEffect(() => {
     if (!urlPlaybookName || triggerAutoStartRef.current) return;
-    // Fire as soon as we have data, OR fall back if query failed/timed out
     const hasData = !!emailLinkedProtocol;
     const shouldFallback = protocolLoadError || protocolLoadTimedOut;
     if (!hasData && !shouldFallback) return;
     triggerAutoStartRef.current = true;
-    beginActivation(`activation-${Date.now()}`, emailProtocolData as any ?? null);
-  }, [urlPlaybookName, emailLinkedProtocol, emailProtocolData, protocolLoadError, protocolLoadTimedOut, beginActivation]);
+    setProtocolReady(true);
+  }, [urlPlaybookName, emailLinkedProtocol, protocolLoadError, protocolLoadTimedOut]);
 
-  // Path B — generic demo (no trigger in URL): fire immediately as before.
-  const autoStartRef = useRef(false);
+  // Path B — generic demo (no trigger in URL): show ConsequencePreview immediately.
+  // beginActivation fires only after the executive confirms a choice.
   useEffect(() => {
-    if (urlPlaybookName) return; // handled by Path A above
-    if (!autoStartRef.current) {
-      autoStartRef.current = true;
-      beginActivation(`demo-${Date.now()}`);
-    }
-  }, [beginActivation, urlPlaybookName]);
+    if (urlPlaybookName) return;
+    setProtocolReady(true);
+  }, [urlPlaybookName]);
 
   // While waiting for the trigger-linked protocol to load from DB, show a clean
-  // staging screen instead of the generic selection card.
-  if (!activationId && urlPlaybookName) {
+  // staging screen. Once protocolReady, fall through to the ConsequencePreview panel.
+  if (!activationId && urlPlaybookName && !protocolReady) {
     return (
       <PageLayout>
         <div style={{ background: '#0A0F2E', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -993,7 +990,12 @@ export default function LiveActivationCenter() {
                 return (
                   <Card 
                     key={p.key}
-                    onClick={() => setSelectedPlaybook(p.key)}
+                    onClick={() => {
+                      setSelectedPlaybook(p.key);
+                      setTimeout(() => {
+                        document.getElementById('authorization-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }, 80);
+                    }}
                     className={cn(
                       "cursor-pointer transition-all duration-300 bg-white border-[#E8E4DC] overflow-hidden group",
                       isSelected ? "ring-2 ring-[#C9A84C] scale-[1.02]" : "hover:border-[#C9A84C]"
@@ -1085,7 +1087,7 @@ export default function LiveActivationCenter() {
             </div>
 
             {/* ─── Executive Authorization Panel ───────────────────── */}
-            <div style={{ background: '#0A0F2E', padding: '24px 24px 20px' }}>
+            <div id="authorization-panel" style={{ background: '#0A0F2E', padding: '24px 24px 20px' }}>
               {standDownRecorded ? (
                 /* Stand-Down confirmation state */
                 <div style={{
