@@ -2745,3 +2745,76 @@ Found during full public-page audit prior to podcast promotion:
 | `A16ZPitch.tsx` | `"Pilot targets are identified"` | `"Founding Partner targets are confirmed"` |
 
 **Note:** `/pilot-program` route, `data-testid="heading-pilot-program"`, `data-testid="button-pilot-programs"`, internal `setLocation('/pilot-program')` nav calls, and the `pilot@vaughnmartin.com` email address are **exempt** — these are code keys and contact infrastructure, not visible user-facing copy.
+
+---
+
+## §61 Rev 36 Change Log
+
+### 1. Social Sharing — og:image + JSON-LD Structured Data
+
+**File:** `client/index.html`
+
+Added missing Open Graph image and Twitter card image, plus full JSON-LD `@graph` block. These were the primary drivers of the sub-70 SEO audit score.
+
+**New OG/Twitter tags added:**
+| Tag | Value |
+|---|---|
+| `og:url` | `https://vaughnmartin.com/` |
+| `og:image` | `https://vaughnmartin.com/command-tower.jpg` |
+| `og:image:width` | `1280` |
+| `og:image:height` | `720` |
+| `og:image:alt` | Command Tower description |
+| `twitter:site` | `@vaughnmartin` |
+| `twitter:image` | `https://vaughnmartin.com/command-tower.jpg` |
+| `twitter:image:alt` | Command Tower description |
+
+**Image:** `client/public/command-tower.jpg` — 1280×720 JPEG already present. Dimensions declared accurately.
+
+**JSON-LD `@graph` (3 schemas):**
+- `Organization` — VaughnMartin entity, founded 2023, Fortune 1000 audience
+- `SoftwareApplication` — Readiness OS, `BusinessApplication` category, `featureList` with 170 protocols / 221 triggers / 12 minutes / 3,600× canonical numbers
+- `WebSite` — with `SearchAction` pointing to `/playbook-library?search=`
+
+**SPA ceiling note:** Per-page titles/descriptions are still JS-rendered (SPA constraint). Score ceiling is ~80–85 without SSR. Social preview (og:image) and structured data (JSON-LD) are the highest-ROI fixes for the podcast/VC audience.
+
+---
+
+### 2. CTA Route Mismatch Fix
+
+**File:** `client/src/components/GuestPreviewBanner.tsx`
+
+Two CTAs in the guest banner were using inconsistent routes.
+
+| State | Button | Before | After |
+|---|---|---|---|
+| Default guest (top bar) | "Request Founding Partner Access" | `/request-access` | `/founding-partner-program` |
+| Trial active | "Apply for Full Pilot →" (retired text + wrong route) | `/request-access` | `/founding-partner-program` |
+
+**Pattern:** All other "Request Founding Partner Access" CTAs on the site (Homepage, StandardNav, HowItExecutes, etc.) route to `/founding-partner-program`. The banner was the only outlier. The `/request-access` route remains the correct destination for the "apply" form linked from the `/founding-partner-program` landing page itself.
+
+---
+
+### 3. Developer Reference Terminology — "Pilot" Drift Removal
+
+Five operational narrative lines in this document carried legacy "pilot" language in non-changelog sections:
+
+| Section | Before | After |
+|---|---|---|
+| §13 Role-Based Access | `"new pilot customers"` | `"new Founding Partner customers"` |
+| §15 Mission Control Activation Flow | `"When a pilot customer clicks"` | `"When a Founding Partner clicks"` |
+| §18 Try Demo | `"pilot prospects, and investors"` | `"Founding Partner prospects, and investors"` |
+| §26 AI Execution Brief | `"Before a pilot customer confirms"` and `"GPT-4o-generated"` | `"Before a Founding Partner confirms"` and `"system-generated"` |
+| §30 Converted Redirects table | `"confuse pilot customers"` | `"confuse Founding Partners"` |
+
+**Note:** Changelog entries in §60 that document the *old* wording (e.g. `"Before: pilot customer"`) are intentional record-keeping and are not changed.
+
+---
+
+### 4. Rev 36 Known State
+
+- All 189 unit tests pass
+- Production build clean
+- `og:image` + `twitter:image` now serve `command-tower.jpg` (1280×720) — social previews confirmed
+- JSON-LD structured data active for Organization, SoftwareApplication, WebSite
+- GuestPreviewBanner "Request Founding Partner Access" routes consistently to `/founding-partner-program` across all banner states
+- All operational "pilot customer/prospect" references eliminated from developer documentation
