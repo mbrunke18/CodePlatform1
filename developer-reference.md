@@ -156,7 +156,7 @@ Both call `completeOnboardingMutation` → POST `/api/onboarding/complete` → i
 ### Role-Based Access
 `requireRole('admin', 'executive', 'strategist')` is applied to all write routes. Users with no role get read-only access (403 on write operations).
 
-**Default role assignment (April 2026):** New users are automatically assigned the `Admin` role on first login via `upsertUser` in `server/storage.ts`. This prevents new pilot customers from hitting 403 errors when deploying playbooks. All existing users were backfilled with Admin in April 2026.
+**Default role assignment (April 2026):** New users are automatically assigned the `Admin` role on first login via `upsertUser` in `server/storage.ts`. This prevents new Founding Partner customers from hitting 403 errors when deploying playbooks. All existing users were backfilled with Admin in April 2026.
 
 **Critical DB note:** The `roles` table schema includes a `description` column that was missing from the production database until April 3, 2026. If the DB is ever re-created from scratch, run `npm run db:push` immediately after — a missing `description` column causes `requireRole` to throw a 500 on every protected route. Do NOT assume the schema is in sync; always verify with `SELECT column_name FROM information_schema.columns WHERE table_name = 'roles'`.
 
@@ -692,7 +692,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 
 ## 15. Mission Control Activation Flow
 
-When a pilot customer clicks "Activate Response" on a pending trigger in Mission Control:
+When a Founding Partner clicks "Activate Response" on a pending trigger in Mission Control:
 
 1. Local state animation runs (`setPendingTriggers` → `setActiveExecutions`) — visual only, fast
 2. `useQuery` on `/api/scenarios` finds the best-matching real playbook by name (case-insensitive keyword match against `trigger.suggestedPlaybook`)
@@ -752,7 +752,7 @@ All buttons in `Settings.tsx` have `onClick` handlers as of March 2026:
 
 **File:** `client/src/pages/TryDemo.tsx` | **Route:** `/try-demo` | **Auth:** None required
 
-The demo is the primary conversion tool for unauthenticated visitors, pilot prospects, and investors. It must work without a login and demonstrate the full IDEA framework value in ~90 seconds.
+The demo is the primary conversion tool for unauthenticated visitors, Founding Partner prospects, and investors. It must work without a login and demonstrate the full IDEA framework value in ~90 seconds.
 
 ### 7-Phase Flow
 
@@ -1033,7 +1033,7 @@ Three new features wired into the playbook execution flow, backed by GPT-4o.
 
 ### 1. AI Execution Brief — `ProtocolActivationConsole.tsx`
 
-**What it does:** Before a pilot customer confirms activation, a GPT-4o-generated "commander brief" is displayed as a navy card. It reframes the playbook in military-command style with 6 structured fields.
+**What it does:** Before a Founding Partner confirms activation, a system-generated "commander brief" is displayed as a navy card. It reframes the playbook in military-command style with 6 structured fields.
 
 **API endpoint:** `GET /api/playbooks/:id/execution-brief?triggerId=<uuid>`
 - Route must be placed **before** `GET /api/playbooks/:id` in `routes.ts` to avoid the catch-all absorbing it
@@ -1157,7 +1157,7 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 
 | Old Route | Component | Decision & Rationale |
 |---|---|---|
-| `/marketing-landing` | `MarketingLanding.tsx` | **Redirects → `/`.** 349-line page that duplicated the Homepage. No unique content. Keeping the route would split SEO and confuse pilot customers. Redirect preserves any inbound links without exposing a duplicate. |
+| `/marketing-landing` | `MarketingLanding.tsx` | **Redirects → `/`.** 349-line page that duplicated the Homepage. No unique content. Keeping the route would split SEO and confuse Founding Partners. Redirect preserves any inbound links without exposing a duplicate. |
 | `/one-click-demo` | `OneClickDemo.tsx` | **Redirects → `/try-demo`.** 511-line demo flow that duplicated TryDemo. The 7-phase TryDemo (`/try-demo`) is the canonical public demo experience. OneClickDemo had no differentiating content. Redirect preserves any inbound links. |
 
 ### Implementation Notes

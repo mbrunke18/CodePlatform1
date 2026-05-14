@@ -144,12 +144,12 @@ export function GuestPreviewBanner() {
           </span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-          <a href="/request-access" style={{
+          <a href="/founding-partner-program" style={{
             fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase' as const,
             padding: '6px 16px', background: GOLD, color: NAVY,
             textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
-          }}>Apply for Full Pilot →</a>
+          }}>Apply for Founding Partner Access →</a>
           <button onClick={() => setDismissed(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center' }} aria-label="Dismiss">
             <X size={14} />
           </button>
@@ -235,7 +235,7 @@ export function GuestPreviewBanner() {
           padding: '7px 18px', background: GOLD, color: NAVY,
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
         }}>See It Execute in 12 Minutes →</a>
-        <a href="/request-access" style={{
+        <a href="/founding-partner-program" style={{
           fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
           letterSpacing: '0.1em', textTransform: 'uppercase' as const,
           padding: '6px 16px', background: 'transparent',
