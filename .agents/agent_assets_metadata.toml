@@ -215,3 +215,9 @@ id = "te0hjbHrMetWXBngbhc8y"
 uri = "file://attached_assets/vaughnmartin-linkedin-cover-v12-4200x700.png"
 type = "image"
 title = "LinkedIn Cover v12 — 4200×700 (Billboard, Mobile-Ready)"
+
+[[outputs]]
+id = "90LSM0awwpAxdiyi79nfo"
+uri = "file://exports/martin-brunke-linkedin-banner-final.jpg"
+type = "image"
+title = "Martin Brunke — LinkedIn Banner (1584×396)"

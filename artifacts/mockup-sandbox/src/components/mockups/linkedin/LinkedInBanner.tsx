@@ -129,7 +129,7 @@ export default function LinkedInBanner() {
           letterSpacing: "-0.01em",
           marginBottom: 10,
         }}>
-          Your Name
+          Martin Brunke
         </div>
 
         {/* Title */}
