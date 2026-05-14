@@ -241,13 +241,13 @@ export function GuestPreviewBanner() {
           padding: '6px 16px', background: 'transparent',
           border: '1px solid rgba(255,255,255,0.68)', color: 'rgba(255,255,255,0.7)',
           textDecoration: 'none', borderRadius: 0, whiteSpace: 'nowrap' as const,
-        }}>Request Access</a>
-        <a href="/request-access" style={{
+        }}>Request Founding Partner Access</a>
+        <a href="/api/login" style={{
           fontFamily: "'Barlow', sans-serif", fontSize: 11, fontWeight: 600,
           padding: '5px 12px', background: 'transparent', border: 'none',
           color: 'rgba(255,255,255,0.68)', borderRadius: 0, cursor: 'pointer', whiteSpace: 'nowrap' as const,
           textDecoration: 'none',
-        }}>Sign In</a>
+        }}>Executive Sign-In</a>
         <button onClick={() => setDismissed(true)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center' }} aria-label="Dismiss">
           <X size={14} />
         </button>

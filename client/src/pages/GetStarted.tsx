@@ -110,7 +110,7 @@ export default function GetStarted() {
               </button>
             )}
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.68)", letterSpacing: "0.05em" }}>
-              Existing pilot customers — sign in to access your platform.
+              Existing Founding Partners — sign in to access your platform.
             </p>
           </div>
         </div>

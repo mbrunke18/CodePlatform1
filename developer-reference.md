@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 14, 2026 (rev 34) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 14, 2026 (rev 35) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -724,8 +724,8 @@ All `/api/dynamic-strategy/*` endpoints require a logged-in user with an associa
 
 Frontend handling (SignalIntelligenceHub.tsx):
 - All dynamic-strategy queries have `retry: false` and `placeholderData: null` or `placeholderData: []`
-- When the primary status query errors, the page renders a branded fallback panel (navy/gold card with "Sign In" + "Request Pilot Access" buttons) instead of a blank or broken page
-- Authenticated pilot customers see full live data
+- When the primary status query errors, the page renders a branded fallback panel (navy/gold card with "Executive Sign-In" + "Request Founding Partner Access" buttons) instead of a blank or broken page
+- Authenticated Founding Partner customers see full live data
 
 ---
 
@@ -934,7 +934,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-*This file documents the state of the codebase as of May 2026 (rev 34). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
+*This file documents the state of the codebase as of May 2026 (rev 35). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
 
 ---
 
@@ -1480,7 +1480,7 @@ import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 - `ProtocolActivationConsole.tsx` — `compact` (above execution container)
 - `ExecutionCoordination.tsx` — `compact` (above container)
 - `ExecutionHistory.tsx` — `compact` (between dark header and KPI cards)
-- `PlaybookDetail.tsx` — `compact` (above playbook content)
+- `ProtocolDetail.tsx` — `compact` (above playbook content)
 - `LiveDrillExecution.tsx` — `compact` (above drill interface)
 - `ActivationOutcome.tsx` — `compact` (between dark header and debrief content)
 - `PracticeDrills.tsx` — `compact` (as first element in drills page)
@@ -1528,7 +1528,7 @@ The 11 count refers to substantive content sections (HeroSection through Simulat
 | 11 | `MicrosoftEcosystemBanner` | "Every enterprise has Microsoft's AI stack…" |
 | 12 | `CredibilitySection` | Research citations — McKinsey, MIT, WEF (no testimonials) |
 | 13 | `SimulatorCTASection` | Shadow Strategy Simulator CTA |
-| 14 | `CTASection` | Final "Request Pilot" CTA |
+| 14 | `CTASection` | Final Founding Partner CTA |
 | 15 | `HomepageFooter` | Full footer |
 
 ### What Was Removed (and Where It Went)
@@ -1586,10 +1586,10 @@ Added visible flywheel "Compound Execution Advantage" callout to:
 6. Stakeholder cascade: 7 stakeholders notified in animated sequence
 7. Task deployment: 7 pre-staged tasks appearing simultaneously
 8. Outcome comparison table (before/after) + ROI strip ($23M avg cost, $9–14M protected, $250K investment)
-9. The close: "You know someone on your executive team will leave" + Request Executive Pilot CTA
+9. The close: "You know someone on your executive team will leave" + Request Founding Partner CTA
 Designed to be sent as a URL to a board chair before a pitch meeting. No login required.
 
-### 30-Day Pilot Onboarding Arc (T004)
+### 30-Day Founding Partner Onboarding Arc (T004)
 `WelcomeBrief.tsx` — new "Your First 30 Days — Activation Arc" section inserted between the detection panel and the "What Happens Next" infrastructure grid. Shows 4 milestones: Day 1 Platform Armed → Week 1 First Alert → Week 2 Shadow Simulation → Day 30 Execution Benchmark. Left gold border, metric-dense, matches existing dark-mode panel style.
 
 ---
@@ -2599,9 +2599,9 @@ Route (unchanged): `/playbook-activation/:triggerId/:playbookId`
 
 Settings page button table updated: "View System Logs" and "Security Scan" buttons were documented as navigating to `/audit-logging`. The live route is `/audit-logging-center` (component: `AuditLoggingCenter.tsx`). Two table rows corrected.
 
-#### 3. Known additive gaps — queued for Rev 34
+#### 3. Known additive gaps — still open, queued for Rev 36
 
-The following pages and routes exist in `App.tsx` and `client/src/pages/` but are not yet documented in this reference. They are not errors — they are undocumented additions. A future Rev 34 pass should add entries for each:
+Rev 34 and Rev 35 focused on OG meta, terminology, and doc accuracy. The following pages and routes exist in `App.tsx` and `client/src/pages/` but are not yet documented in this reference. They are not errors — they are undocumented additions. A future pass should add entries for each:
 
 | File | Route | Notes |
 |---|---|---|
@@ -2673,3 +2673,56 @@ Internal code keys (`id: "pilot-demo"`, `path: "/pilot-demo"`) are exempt per th
 - Production build clean
 - Per-page OG meta live on all 5 key public pages
 - No remaining "Pilot Program", "Pilot Demo", "AI-powered", "AI-driven", or football domain label violations in visible UI copy (FounderStory.tsx preserves football language by deliberate exception)
+
+---
+
+## 60. May 14, 2026 — Rev 35 Change Log
+
+Post-Rev-34 feedback pass. All changes are surgical text and copy corrections — no structural or component changes.
+
+### 1. Guest Preview Banner — Nav Intent Clarity
+
+`client/src/components/GuestPreviewBanner.tsx`
+
+| Before | After |
+|---|---|
+| `Request Access` | `Request Founding Partner Access` |
+| `Sign In` (href: `/request-access`) | `Executive Sign-In` (href: `/api/login`) |
+
+The "Sign In" button was also incorrectly pointing to `/request-access` instead of the Replit OIDC login endpoint `/api/login`. Fixed simultaneously.
+
+### 2. Static OG / Twitter Meta — `client/index.html`
+
+The fallback OG tags (used by social crawlers that do not execute JavaScript) were updated:
+- `og:title` / `twitter:title`: now use the canonical framing "30 Days Compressed to 12 Minutes"
+- `og:description` / `twitter:description`: now use canonical tagline + "3,600× Execution Head Start"
+- `meta name="description"`: fixed "170 playbooks" → "170 Readiness Protocols"
+
+These are the tags social platforms (LinkedIn, Slack unfurls) will read when the page is shared. The JS `updatePageMetadata` calls override them in-browser but static tags are the safe fallback for crawlers.
+
+### 3. Remaining "Pilot" Copy Fixes — 2 Live UI Locations
+
+| File | Location | Before | After |
+|---|---|---|---|
+| `client/src/components/layout/StandardNav.tsx` | Line 162 — Onboarding Guide nav description | `"new pilot customers"` | `"new Founding Partner customers"` |
+| `client/src/pages/GetStarted.tsx` | Line 116 — sign-in sub-label | `"Existing pilot customers"` | `"Existing Founding Partners"` |
+
+### 4. Developer Reference Text Corrections (Rev 35)
+
+| Section | Location | Before | After |
+|---|---|---|---|
+| §16 Signal Intelligence Hub | Line 730 fallback panel description | `"Request Pilot Access"` | `"Request Founding Partner Access"` |
+| §16 Signal Intelligence Hub | Line 731 auth state label | `"Authenticated pilot customers"` | `"Authenticated Founding Partner customers"` |
+| §33 ExecutionStageGuide variant list | `PlaybookDetail.tsx` entry | `PlaybookDetail.tsx` | `ProtocolDetail.tsx` |
+| §37 Homepage Structure table | Row 14 | `Final "Request Pilot" CTA` | `Final Founding Partner CTA` |
+| §38 ExecutiveDepartureBrief spec | Item 9 close CTA label | `Request Executive Pilot CTA` | `Request Founding Partner CTA` |
+| §38 WelcomeBrief subsection heading | T004 heading | `30-Day Pilot Onboarding Arc` | `30-Day Founding Partner Onboarding Arc` |
+| §58 open gaps note | Section heading + body | `"queued for Rev 34"` | `"still open, queued for Rev 36"` |
+
+### 5. Rev 35 Known State
+
+- All 189 unit tests pass
+- Production build clean
+- All visible "Pilot Program / Pilot Access / Pilot Demo / pilot customers" references eliminated from live UI and developer documentation
+- Static OG fallback tags now carry canonical messaging for social sharing
+- Guest banner intent: "Request Founding Partner Access" + "Executive Sign-In" + "See It Execute in 12 Minutes"
