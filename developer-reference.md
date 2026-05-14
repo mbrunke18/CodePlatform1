@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 14, 2026 (rev 33) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 14, 2026 (rev 34) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -934,7 +934,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-*This file documents the state of the codebase as of May 2026 (rev 33). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
+*This file documents the state of the codebase as of May 2026 (rev 34). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
 
 ---
 
@@ -2615,3 +2615,61 @@ The following pages and routes exist in `App.tsx` and `client/src/pages/` but ar
 | `SHEINTrendDemo.tsx` | `/shein-demo` | Industry demo — retail trend scenario |
 | `SpaceXLaunchDemo.tsx` | `/spacex-demo` | Industry demo — launch operations scenario |
 | IDEA sidebar sub-routes | `/identify/*`, `/detect/*`, `/execute/*`, `/advance/*`, `/setup/*`, `/learn/*` | Full tab sub-route tree — each maps to a sub-page component inside the relevant `client/src/pages/identify/`, `/detect/`, `/execute/`, `/advance/` directories |
+
+---
+
+## 59. May 14, 2026 — Rev 34 Change Log
+
+### 1. OG Meta Tags — 5 Key Public Pages
+
+Per-page Open Graph metadata wired to all key public-facing pages using `updatePageMetadata` from `client/src/lib/seo.ts`. Each call sets `title`, `description`, `ogTitle`, and `ogDescription` inside a `useEffect(() => { ... }, [])` at the top of the component. The `client/index.html` fallback OG tags remain as site-level defaults; per-page calls override them dynamically.
+
+Pages updated:
+
+| Page | File | Change |
+|---|---|---|
+| Homepage | `client/src/pages/Homepage.tsx` | Upgraded from bare `document.title` to full `updatePageMetadata`; added `@/lib/seo` import |
+| How It Executes | `client/src/pages/HowItExecutes.tsx` | Added `updatePageMetadata` + `@/lib/seo` import |
+| 12-Minute Test Drive (TryDemo) | `client/src/pages/TryDemo.tsx` | Added `updatePageMetadata` + `@/lib/seo` import |
+| Investor Landing | `client/src/pages/InvestorLanding.tsx` | Added `useEffect` (React) + `updatePageMetadata` + `@/lib/seo` import (file had no React imports at all) |
+| Founding Partner Program | `client/src/pages/FoundingPartnerProgram.tsx` | Already correctly wired — no change |
+
+**`seo.ts` usage pattern (canonical):**
+```typescript
+import { updatePageMetadata } from '@/lib/seo';
+
+useEffect(() => {
+  updatePageMetadata({
+    title: "Page Title | VaughnMartin",
+    description: "...",
+    ogTitle: "OG-optimized title",
+    ogDescription: "OG-optimized description",
+  });
+}, []);
+```
+`InvestorResources.tsx` (lines 215–222) and `FoundingPartnerProgram.tsx` (line 322) remain the canonical reference implementations.
+
+### 2. Terminology Fix — "Pilot Demo" Retired from Two Pages
+
+Two instances of the retired "Pilot Demo" label found and corrected during the full test suite sweep:
+
+| File | Location | Before | After |
+|---|---|---|---|
+| `client/src/pages/FoundingPartnerDemo.tsx` | Line 298 — `<PageHero>` eyebrow prop | `"Pilot Demo"` | `"Founding Partner Demo"` |
+| `client/src/pages/DemoGallery.tsx` | Line 32 — demo card data array `title` field | `"Pilot Demo"` | `"Founding Partner Demo"` |
+
+Internal code keys (`id: "pilot-demo"`, `path: "/pilot-demo"`) are exempt per the locked naming rule and were not changed.
+
+### 3. Full Test Suite — Rev 34 Baseline
+
+- **Unit tests:** 189/189 pass (10 test files)
+- **Production build:** clean — zero TypeScript errors, all assets emitted
+- **Key public pages visually verified via screenshot:** Homepage, How It Executes, 12-Minute Experience, Executive Brief, Demo Hub — all correct terminology, correct domain labels, Founding Partner language throughout
+- **"72 hours" scan:** all instances confirmed as legitimate regulatory/scenario context (GDPR breach notification windows, SEC disclosure deadlines, scenario timeline data) — not the retired head-start metric framing
+
+### 4. Rev 34 Known State
+
+- All 189 unit tests pass
+- Production build clean
+- Per-page OG meta live on all 5 key public pages
+- No remaining "Pilot Program", "Pilot Demo", "AI-powered", "AI-driven", or football domain label violations in visible UI copy (FounderStory.tsx preserves football language by deliberate exception)
