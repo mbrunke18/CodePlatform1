@@ -64,7 +64,7 @@ export default function Pricing() {
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
               <div>
                 <h3 style={{ ...CG, fontSize: 32, fontWeight: 600, color: "#0A0F2E" }}>
-                  Founding Partner Pilot
+                  Founding Partner Program
                 </h3>
                 <p className="text-[#6B7280] mt-2">
                   Strategic validation partnership with full platform access
@@ -120,7 +120,7 @@ export default function Pricing() {
               style={{ background: "#0A0F2E", color: "#fff", fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", width: "100%", padding: "20px" }}
               data-testid="button-apply-early-access"
             >
-              Apply for Founding Partner Pilot <ArrowRight className="ml-2 h-4 w-4" />
+              Apply for Founding Partner Access <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>

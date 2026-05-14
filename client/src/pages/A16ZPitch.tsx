@@ -760,7 +760,7 @@ function ModelSlide() {
         <div style={{ ...GRID_BG, background: NAVY, padding: "22px 28px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -100, right: -100, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)" }} />
           <div style={{ position: "relative", zIndex: 1, flex: 1 }}>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>Enterprise Pilot · Fortune 1000</div>
+            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>Founding Partner Program · Fortune 1000</div>
             <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 3 }}>$75K</div>
             <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>FLAT FEE · 90-DAY DEPLOYMENT</div>
 

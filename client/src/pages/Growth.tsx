@@ -148,8 +148,8 @@ const FAQS = [
     a: "For companies starting at the Ready tier, if you activate a Readiness Protocol in a real situation within 30 days and don't see measurable value, we refund the first month. No paperwork. No negotiation. You either see the difference in 12 minutes or you don't pay for it.",
   },
   {
-    q: "How does this relate to the Large Enterprise Pilot ($75K)?",
-    a: "The Enterprise Pilot is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for enterprise organizations at enterprise scale. The $75K pilot fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
+    q: "How does this relate to the Founding Partner Program ($75K)?",
+    a: "The Founding Partner Program is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for Fortune 1000 organizations at enterprise scale. The $75K program fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
   },
   {
     q: "Can I move up tiers as we grow?",

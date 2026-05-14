@@ -1432,7 +1432,7 @@ export default function ProtocolDetail() {
                     style={{ background: "transparent", color: "#fff", height: 56, paddingLeft: 36, paddingRight: 36, fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", borderRadius: 0, border: "1.5px solid rgba(255,255,255,0.25)" }}
                     onClick={() => setLocation("/founding-partner-program")}
                   >
-                    Request Enterprise Pilot
+                    Request Founding Partner Access
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </div>

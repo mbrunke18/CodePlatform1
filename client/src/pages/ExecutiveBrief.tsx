@@ -314,9 +314,9 @@ export default function ExecutiveBrief() {
               ))}
             </div>
             <div style={{ marginTop: 20, padding: "16px 20px", border: "1px solid #E8E4DC", background: "#fff" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Pilot Investment Payback Window</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Program Investment Payback Window</div>
               <div style={{ fontSize: 13, color: "#4B5563" }}>
-                At 2–3 strategic activations per quarter, the typical Fortune 1000 organization recovers its $75K pilot investment within the first activation cycle. Enterprise agreement pricing available upon pilot completion.
+                At 2–3 strategic activations per quarter, the typical Fortune 1000 organization recovers its $75K program investment within the first activation cycle. Enterprise agreement pricing available upon program completion.
               </div>
             </div>
           </div>
@@ -443,7 +443,7 @@ export default function ExecutiveBrief() {
               </div>
               <div>
                 <div style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "28px", background: "rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Ideal Pilot Candidates</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Ideal Founding Partner Candidates</div>
                   {[
                     "Fortune 1000 or equivalent ($1B+ revenue)",
                     "C-level or SVP executive sponsor with budget authority",

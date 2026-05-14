@@ -758,7 +758,7 @@ export default function FoundingPartnerProgram() {
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
               {[
-                { phase: 'Days 1–30', label: 'Foundation', color: '#2B8A6E', desc: 'All 10 users onboarded. Integration live. First Readiness Protocol activation completed.' },
+                { phase: 'Days 1–30', label: 'Foundation', color: '#2B8A6E', desc: 'All 25 users onboarded. Integration live. First Readiness Protocol activation completed.' },
                 { phase: 'Days 31–60', label: 'Velocity', color: '#C9A84C', desc: 'Multiple activations with documented outcomes. ROI data capture begins.' },
                 { phase: 'Days 61–90', label: 'Proof', color: '#2B8A6E', desc: 'Full activation history. Board brief generated. Renewal case quantified.' },
               ].map((t) => (
@@ -771,7 +771,7 @@ export default function FoundingPartnerProgram() {
             </div>
             <div className="text-center">
               <button
-                onClick={() => setLocation('/pilot-onboarding')}
+                onClick={() => setLocation('/founding-partner-onboarding')}
                 className="inline-flex items-center gap-2 text-[#C9A84C] text-sm font-semibold hover:text-white transition-colors"
               >
                 See the full role-by-role onboarding guide

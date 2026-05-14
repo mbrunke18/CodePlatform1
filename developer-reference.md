@@ -934,7 +934,7 @@ Seeding logic is in `server/index.ts` as an additive migration:
 
 ---
 
-*This file documents the state of the codebase as of April 2026 (rev 12). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
+*This file documents the state of the codebase as of May 2026 (rev 33). Update this file whenever you add new pages, change key patterns, wire new components, or alter the design system.*
 
 ---
 
