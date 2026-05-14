@@ -37,10 +37,10 @@ export default function Contact() {
 
   useEffect(() => {
     updatePageMetadata({
-      title: "Founding Partner Program — Readiness OS | VaughnMartin",
-      description: "Apply for Readiness OS' Founding Partner Program. Limited to 10 enterprise organizations for a 90-day validation partnership. Transform strategic execution from 30 days to 12 minutes.",
-      ogTitle: "Founding Partner Program — Readiness OS by VaughnMartin",
-      ogDescription: "Limited to 10 Fortune 1000 partners. 90-day validation. Apply for founding access.",
+      title: "Start the Conversation — Readiness OS | VaughnMartin",
+      description: "Tell us what your organization is dealing with. Readiness OS compresses the 30-day mobilization cycle to 12 minutes — we'll show you exactly how it applies to your context.",
+      ogTitle: "Start the Conversation — Readiness OS by VaughnMartin",
+      ogDescription: "Every serious conversation starts here. Tell us what strategic triggers your organization faces.",
     });
   }, []);
 
@@ -96,21 +96,22 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Founding Partner Program</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.45)" }}>Start the Conversation</span>
               <div style={{ width: 28, height: 2, background: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
             </div>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#fff", marginBottom: 16 }}>
-              Request <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Founding Partner Access</em>
+              Tell us what your<br />
+              <em style={{ fontStyle: "italic", color: "#C9A84C" }}>organization is dealing with.</em>
             </h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-              Join an exclusive group of 10 enterprise organizations transforming strategic execution 
-              through Readiness OS' 90-day validation partnership.
+              Whether you're an investor, an enterprise executive, or exploring the platform — 
+              every serious conversation starts here. We'll show you exactly how Readiness OS applies to your context.
             </p>
             <div className="flex gap-8 justify-center flex-wrap">
               {[
-                { icon: Shield, label: "Limited to 10 Partners" },
-                { icon: Zap, label: "Founding Partner Program Open" },
-                { icon: Target, label: "90-Day Validation" },
+                { icon: Shield, label: "Executive Conversations Welcome" },
+                { icon: Zap, label: "Investor Inquiries Welcome" },
+                { icon: Target, label: "Response Within 24 Hours" },
               ].map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-2">
                   <Icon className="w-4 h-4" style={{ color: GOLD }} />
@@ -127,13 +128,13 @@ export default function Contact() {
             {/* Left Column - Value Proposition */}
             <div className="md:col-span-4">
               <div style={{ border: "1px solid #E8E4DC", padding: "32px", background: "#F8F7F4" }} className="sticky top-24">
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>Founding Partner Benefits</h3>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 600, color: "#0A0F2E", marginBottom: 24 }}>What Happens Next</h3>
                 <div className="space-y-6">
                   {[
-                    { title: "Full Platform Access", desc: "Complete 7-component ecosystem during validation period" },
-                    { title: "Strategic Implementation", desc: "Dedicated support for 3-5 critical scenarios" },
-                    { title: "First-Mover Advantage", desc: "Category leadership in Executive Decision Operations" },
-                    { title: "Risk-Free Validation", desc: "Prove ROI in your context before full commitment" }
+                    { title: "We review your submission", desc: "Within 24 hours — no automated responses" },
+                    { title: "Executive conversation", desc: "A direct call to understand your specific context and triggers" },
+                    { title: "Live scenario walkthrough", desc: "We run a real scenario from your environment through the platform" },
+                    { title: "Clear next step", desc: "Founding Partner path, Growth tier, or investor conversation — whichever fits" }
                   ].map((benefit) => (
                     <div key={benefit.title} className="flex items-start gap-3">
                       <CheckCircle2 className="h-4 w-4 flex-shrink-0 mt-1" style={{ color: TEAL }} />
@@ -158,9 +159,9 @@ export default function Contact() {
             <div className="md:col-span-8">
               <div style={{ border: "1px solid #E8E4DC", padding: "40px" }}>
                 <div className="mb-10">
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>Application Form</h2>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 600, color: "#0A0F2E", marginBottom: 8 }}>Tell Us What You're Dealing With</h2>
                   <p className="text-slate-500">
-                    Help us understand your strategic execution challenges and readiness priorities.
+                    The more specific you are about your strategic triggers and execution challenges, the more useful our response will be.
                   </p>
                 </div>
 
@@ -291,7 +292,7 @@ export default function Contact() {
                       type="submit"
                       className="w-full bg-[#0A0F2E] hover:bg-[#141B45] text-white font-bold uppercase tracking-widest text-sm py-8 rounded-none"
                     >
-                      Submit Partner Application
+                      Start the Conversation →
                     </Button>
                   </form>
                 </Form>
@@ -304,10 +305,10 @@ export default function Contact() {
         <section className="py-24 px-12 bg-[#F8F7F4] border-t border-[#E8E4DC]">
           <div className="max-w-4xl mx-auto text-center">
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 600, color: "#0A0F2E", marginBottom: 16 }}>
-              Questions About the Founding Partner Program?
+              Prefer to reach out directly?
             </h2>
             <p className="text-slate-600 mb-10 text-lg">
-              Reach out directly or learn more about program structure and success metrics.
+              Investor inquiries, executive conversations, and press — all welcome at the same address.
             </p>
             <div className="flex flex-wrap justify-center gap-8 mb-12">
               <a href="mailto:sales@vaughnmartin.com" className="text-lg font-bold text-[#0A0F2E] hover:text-[#C9A84C] transition-colors border-b-2 border-[#C9A84C] pb-1">
