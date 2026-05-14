@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 14, 2026 (rev 32) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 14, 2026 (rev 33) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -405,7 +405,7 @@ const MyPage = lazy(() => import("./pages/MyPage"));
 <Route path="/my-page" component={MyPage} />
 
 // Route with params:
-<Route path="/playbook-activation/:triggerId/:playbookId" component={PlaybookActivationConsole} />
+<Route path="/playbook-activation/:triggerId/:playbookId" component={ProtocolActivationConsole} />
 // Read params in the component:
 const [, params] = useRoute("/playbook-activation/:triggerId/:playbookId");
 const playbookId = params?.playbookId;
@@ -656,9 +656,9 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | Page | Route | Purpose |
 |---|---|---|
 | `Dashboard.tsx` | `/dashboard` | Main logged-in home. Has AI Copilot panel. |
-| `MissionControl.tsx` | `/mission-control` | Executive war room. Trigger activation → PlaybookActivationConsole. |
+| `MissionControl.tsx` | `/mission-control` | Executive war room. Trigger activation → ProtocolActivationConsole. |
 | `ProtocolLibrary.tsx` | `/playbook-library` | 170 playbooks with domain filter + free samples (renamed from `PlaybookLibraryV2.tsx`) |
-| `PlaybookActivationConsole.tsx` | `/playbook-activation/:triggerId/:playbookId` | Live execution flow. `triggerId='manual'` skips trigger fetch. |
+| `ProtocolActivationConsole.tsx` | `/playbook-activation/:triggerId/:playbookId` | Live execution flow. `triggerId='manual'` skips trigger fetch. |
 | `TriggersManagement.tsx` | `/triggers-management` | Create/view/edit triggers. Opens `TriggerConfigurationWizard`. Category filter is a **dynamic Select dropdown** built from real trigger data (not hardcoded). Status filter uses inline toggle buttons (All Status / Triggered / Active / Paused). "Conditions & Data" button opens the detail sheet with intelligence signal data points. **Auth gating:** All interactive controls (Activate Playbook, Add Rule, Edit, on/off toggles) are hidden from unauthenticated users — non-auth users see a "Sign In to Activate" button. Trigger data is visible to all. `SOURCE_LABELS` map (top of file) converts raw source IDs to readable labels shown as teal tags. `[location, setLocation] = useLocation()` — must destructure both. |
 | `SignalConfiguration.tsx` | `/signal-configuration` | **Signal Intelligence Configuration.** All 17 signal categories from `shared/intelligence-signals.ts`. Each category expands to show all data points with individual on/off toggles. Category-level enable/disable all. Shows recommended playbooks per category and linked trigger count. Persist state via `signal_monitoring_config` DB table (per org, stores `disabledDataPoints[]`). API: `GET/PATCH /api/signal-monitoring-config`. Framework chain banner shows: Data Points → Triggers Fire → Playbook Executes. Linked from StandardNav "Capabilities" section. |
 | `SignalIntelligenceHub.tsx` | `/signal-intelligence` | Live signal monitoring. Requires auth+org. Shows branded fallback if not. |
@@ -673,7 +673,7 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 | `FoundingPartnerProgram.tsx` | `/founding-partner-program` (alias: `/pilot-program`) | Primary enterprise conversion page — see Section 55 for full spec. `/pilot-program` is a permanent route alias; both routes render `FoundingPartnerProgram.tsx`. |
 | `DemoAccess.tsx` | `/demo-access` | Token-gated executive access entry point. Reads `?token=` param, validates via `/api/demo-access`, then redirects to `/mission-control` (or `?returnTo=` value). **LOCKED executive access link: `https://vaughnmartin.com/demo-access?token=VMdemo2026`** — do not change this URL or token. |
 | `TryDemo.tsx` | `/try-demo` | Scripted demo for unauthenticated visitors |
-| `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `PlaybookActivationConsole`. |
+| `GuidedStart.tsx` | `/begin`, `/start` | High-drama no-nav/no-auth guided demo. Three scenario cards with financial-stakes grids → animated DETECT phase → READY screen → auto-routes to `ProtocolActivationConsole`. |
 | `HowItWorks.tsx` | `/how-it-works` | Public explainer page. Structure: hero → phase nav bar → **ExecutionProcessDiagram (first!)** → sections 01–05 (Onboarding, Playbooks, Customization, Live Loop, Ongoing Value) → Final CTA. Linked from StandardNav Product→Understand AND homepage sticky nav. **Do NOT move the diagram to the bottom.** |
 | `EcosystemDiagramPage.tsx` | `/ecosystem` | Public standalone page: "The Strategic Command Layer Above Microsoft's Agentic Stack." Embeds `ExecutionOSMicrosoftDiagram.tsx` (3-layer SVG — Execution OS → Integration touchpoints → Microsoft Full Stack). 3-step explanation strip, 5 integration callouts (Azure AI, Teams, Copilot Studio, Entra, Power Platform), pilot CTA. **Do NOT embed the main dev-server URL** — diagram is self-contained SVG. Linked from: StandardNav Platform→Capabilities (featured/gold-highlighted), Footer Company section, Investors page GTM card, and Homepage `MicrosoftEcosystemBanner`. |
 | `EcosystemsHub.tsx` | `/ecosystems` | All-7-ecosystem hub page. Linked from Homepage Microsoft section "View All 7 Enterprise Ecosystems →" button and StandardNav. Child ecosystem pages: `/ecosystem` (Microsoft), `/ecosystem/google`, `/ecosystem/salesforce`, `/ecosystem/aws`, `/ecosystem/sap`, `/ecosystem/servicenow`, `/ecosystem/workday`. |
@@ -697,15 +697,15 @@ When a pilot customer clicks "Activate Response" on a pending trigger in Mission
 1. Local state animation runs (`setPendingTriggers` → `setActiveExecutions`) — visual only, fast
 2. `useQuery` on `/api/scenarios` finds the best-matching real playbook by name (case-insensitive keyword match against `trigger.suggestedPlaybook`)
 3. After 600ms delay: `setLocation('/playbook-activation/manual/' + matchedPlaybookId)`
-4. `PlaybookActivationConsole` receives `triggerId='manual'` (skips trigger lookup) and `playbookId` from the real DB
+4. `ProtocolActivationConsole` receives `triggerId='manual'` (skips trigger lookup) and `playbookId` from the real DB
 
 If no playbook matches by name, uses `realPlaybooks[0]?.id`. If DB is empty, falls back to `/triggers-management`.
 
-### PlaybookActivationConsole — Key Architecture
+### ProtocolActivationConsole — Key Architecture
 
 **Brand constants at module level.** `NAVY`, `GOLD`, `TEAL`, `MUTED`, `OFF`, `BORDER`, `CG` etc. are declared at the top of the file (outside the component function) so all helper sub-components defined in the same file can reference them without prop-drilling.
 
-**BriefLoadingState component.** A standalone component defined *before* the `PlaybookActivationConsole` function in the same file. While GPT-4o generates the execution brief, it shows a 5-step animated checklist ticking through: Domain Analysis → Signal Synthesis → Stakeholder Mapping → Risk Assessment → Commander Brief. Uses `@keyframes scanBeam` and `@keyframes fadeInUp` defined in `index.css`.
+**BriefLoadingState component.** A standalone component defined *before* the `ProtocolActivationConsole` function in the same file. While GPT-4o generates the execution brief, it shows a 5-step animated checklist ticking through: Domain Analysis → Signal Synthesis → Stakeholder Mapping → Risk Assessment → Commander Brief. Uses `@keyframes scanBeam` and `@keyframes fadeInUp` defined in `index.css`.
 
 **Execution Console Live War Room** (during active execution):
 - **Stakeholder Notification Tracker** — domain-matched C-suite contacts (CFO/COO/CLO etc.) cycling through `Pending → Notified → Acknowledged`
@@ -737,12 +737,12 @@ All buttons in `Settings.tsx` have `onClick` handlers as of March 2026:
 |---|---|---|
 | Run Health Check | `button-system-health-check` | Simulates diagnostic, shows result toast after 2.5s |
 | Restart Services | `button-restart-services` | Toast confirmation |
-| View System Logs | `button-view-logs` | Navigate to `/audit-logging` |
+| View System Logs | `button-view-logs` | Navigate to `/audit-logging-center` |
 | Add Enterprise User | `button-add-user` | Opens inline invite form (email input + send) |
 | Bulk Import | `button-bulk-import` | Toast with implementation team contact |
 | System Backup | `button-backup-system` | Toast confirmation |
 | Optimize Performance | `button-performance-optimization` | Toast with status |
-| Security Scan | `button-security-scan` | Navigate to `/audit-logging` |
+| Security Scan | `button-security-scan` | Navigate to `/audit-logging-center` |
 | Generate Reports | `button-generate-reports` | Navigate to `/executive-summary` |
 | Slack / Jira / Tableau | (integration buttons) | Navigate to `/integrations` |
 
@@ -812,7 +812,7 @@ The highest-drama public entry point. No `PageLayout`, no nav, no header — ful
 | **SCENARIOS** | 3 cards with financial stakes grid ($2.1B deal, $340M revenue at risk, etc.), domain badge, urgency window, stakes label |
 | **DETECT** | Animated signal counter counts 0→248. Two-column layout: left = step-by-step confirmation checklist; right = domain signal categories panel. Threat level gauge at step 3. |
 | **READY** | Side-by-side "What's at Stake" vs "What Happens Next" panels. Scenario-specific financial figures and stakeholder count. |
-| **→ Console** | Auto-fetches domain-matched playbook from `/api/playbook-library` (not `/api/playbooks`). Navigates to `PlaybookActivationConsole`. |
+| **→ Console** | Auto-fetches domain-matched playbook from `/api/playbook-library` (not `/api/playbooks`). Navigates to `ProtocolActivationConsole`. |
 
 ### Key Rules
 - **Always use `/api/playbook-library`** — returns `{ playbooks: [...] }` at the top level. Filter by `domain` to find a match. Do NOT use `/api/playbooks` (different table, different shape).
@@ -1031,7 +1031,7 @@ SimulationStudio, StrategicRecorder, and CompoundThreatAlerts all call protected
 
 Three new features wired into the playbook execution flow, backed by GPT-4o.
 
-### 1. AI Execution Brief — `PlaybookActivationConsole.tsx`
+### 1. AI Execution Brief — `ProtocolActivationConsole.tsx`
 
 **What it does:** Before a pilot customer confirms activation, a GPT-4o-generated "commander brief" is displayed as a navy card. It reframes the playbook in military-command style with 6 structured fields.
 
@@ -1047,7 +1047,7 @@ Three new features wired into the playbook execution flow, backed by GPT-4o.
 
 **Display:** Navy card with shield icon header, rendered above `<PreActivationImpactPreview>`. Loader while fetching. If `briefData` is null (OpenAI unavailable), shows a static fallback with the playbook name.
 
-### 2. Post-Activation Debrief Screen — `PlaybookActivationConsole.tsx`
+### 2. Post-Activation Debrief Screen — `ProtocolActivationConsole.tsx`
 
 **What it does:** Replaces the old plain success message when `executionStatus === 'completed'`. Automatically surfaces a full debrief — no navigation required.
 
@@ -1069,7 +1069,7 @@ const perfScore = Math.min(100, Math.round(
 
 **Pattern:** Uses an IIFE `{executionStatus === 'completed' && (() => { ... })()}` to scope local constants without adding state.
 
-### 3. Auto-Task Seeding — `PlaybookActivationConsole.tsx`
+### 3. Auto-Task Seeding — `ProtocolActivationConsole.tsx`
 
 **What it does:** When a playbook is activated with zero tasks in the database, the console automatically generates 7 domain-specific tasks and displays them as if they were real tasks — with live auto-progression every 20 seconds. This means any playbook in the library delivers an immediately compelling demo without requiring customer setup or database pre-population.
 
@@ -1163,7 +1163,7 @@ Seven page files were previously routed in `App.tsx` but had no navigation entry
 ### Implementation Notes
 - Both redirects use Wouter's `<Redirect>` component, not `useLocation`. No lazy import remains for either component.
 - All five wired pages remain lazy-loaded in `App.tsx` and appear in the Footer under their relevant columns.
-- `LiveActivationCenter` is a candidate for a future "Monitor Live" deep-link from `PlaybookActivationConsole.tsx` — this would be the natural user journey once a playbook is activated.
+- `LiveActivationCenter` is a candidate for a future "Monitor Live" deep-link from `ProtocolActivationConsole.tsx` — this would be the natural user journey once a playbook is activated.
 
 ---
 
@@ -1373,7 +1373,7 @@ The following copy conventions are founder-locked. Any agent or developer who to
 
 **Note on "72 hours":** Remains acceptable in contextual uses — regulatory notification deadlines (SEC 8-K, GDPR), before-state comparison data in demo scenario tables, or crisis scenario narrative detail. ONLY retired as a product mobilization baseline claim.
 
-**Note on "execution" as verb/noun:** STAYS in all forms — EXECUTE phase, Execution Clock, AI Execution Briefs, 3,600× Execution Head Start, Execution Velocity, Execution Complete, PlaybookActivationConsole debrief. Only RETIRED in old product name framing ("Execution OS," "Execution Infrastructure" as product descriptor).
+**Note on "execution" as verb/noun:** STAYS in all forms — EXECUTE phase, Execution Clock, AI Execution Briefs, 3,600× Execution Head Start, Execution Velocity, Execution Complete, ProtocolActivationConsole debrief. Only RETIRED in old product name framing ("Execution OS," "Execution Infrastructure" as product descriptor).
 
 ### Approved narrative patterns
 - "While others mobilize, you're already executing."
@@ -1405,7 +1405,7 @@ All pages were audited and the following corrections were made globally. Do not 
 - `KeynoteDemo.tsx` — after-state comparison table "Response Speed"
 - `UnifiedEnterprisePlatform.tsx` — capability callout
 - `McKinseyIntelligenceCenter.tsx` — speed improvement metric
-- `PlaybookActivationConsole.tsx` — default display before clock starts (live calculation was already using 30-day baseline)
+- `ProtocolActivationConsole.tsx` — default display before clock starts (live calculation was already using 30-day baseline)
 
 **"72 hours" mobilization baseline → "30 days" (3 locations fixed):**
 - `KeynoteDemo.tsx` — legacy comparison row → "Time to Mobilize: 30 days"
@@ -1477,7 +1477,7 @@ import ExecutionStageGuide from '@/components/ExecutionStageGuide';
 - `MissionControl.tsx` — `banner` (above main content, inside dark navy wrapper)
 - `CommandTower.tsx` — `banner` (above main content, fullscreen dark)
 - `TaskManagement.tsx` — `compact` (between dark header and task list)
-- `PlaybookActivationConsole.tsx` — `compact` (above execution container)
+- `ProtocolActivationConsole.tsx` — `compact` (above execution container)
 - `ExecutionCoordination.tsx` — `compact` (above container)
 - `ExecutionHistory.tsx` — `compact` (between dark header and KPI cards)
 - `PlaybookDetail.tsx` — `compact` (above playbook content)
@@ -1624,7 +1624,7 @@ Both desktop and mobile `HomepageNav` now include a "The Manifesto" link routing
 - "GPT-4o" (in any end-user-facing label, description, or copy)
 
 **Files corrected in this sweep:**
-`BoardDeckGenerator.tsx`, `ExecutiveWarRoom.tsx`, `ProactiveRadar.tsx`, `StrategicInsightsPanel.tsx`, `MonitorPhaseView.tsx`, `JourneyNavigator.tsx`, `SplitScreenComparison.tsx`, `FutureReadinessDashboard.tsx`, `PeerReview.tsx`, `PlaybookActivationConsole.tsx`, `BoardBriefings.tsx`, `StrategicRecorder.tsx`, `CompoundThreatAlerts.tsx`
+`BoardDeckGenerator.tsx`, `ExecutiveWarRoom.tsx`, `ProactiveRadar.tsx`, `StrategicInsightsPanel.tsx`, `MonitorPhaseView.tsx`, `JourneyNavigator.tsx`, `SplitScreenComparison.tsx`, `FutureReadinessDashboard.tsx`, `PeerReview.tsx`, `ProtocolActivationConsole.tsx`, `BoardBriefings.tsx`, `StrategicRecorder.tsx`, `CompoundThreatAlerts.tsx`
 
 **Exemptions:** Technical code comments. GPT-4o model name may appear only in `IntegrationHub.tsx` or architecture diagrams showing the Microsoft stack — never in end-user-facing copy.
 
@@ -1965,11 +1965,11 @@ Every trigger alert email sent after this revision takes the reader directly to 
 ## 42. Ownership Close-Out Gate + Debrief Classification — April 24, 2026 (rev 26)
 
 ### Context
-Two features were added to `PlaybookActivationConsole.tsx` to operationalize the Dr. Kerry Huang framework at the moment of execution completion. These are distinct from the ActivationOutcome.tsx Close-Out Gate documented in Section 38 (Gap 2), which blocks the ADVANCE learning capture form. These features appear inside the PlaybookActivationConsole itself when `executionStatus === 'completed'`.
+Two features were added to `ProtocolActivationConsole.tsx` to operationalize the Dr. Kerry Huang framework at the moment of execution completion. These are distinct from the ActivationOutcome.tsx Close-Out Gate documented in Section 38 (Gap 2), which blocks the ADVANCE learning capture form. These features appear inside the ProtocolActivationConsole itself when `executionStatus === 'completed'`.
 
 ---
 
-### Feature 1 — Ownership Close-Out Gate (PlaybookActivationConsole.tsx)
+### Feature 1 — Ownership Close-Out Gate (ProtocolActivationConsole.tsx)
 
 **What it does:** After the post-activation debrief renders, a formal governance verdict card appears measuring whether ownership actually transferred during the execution. This is the platform's answer to the Huang thesis: the preparation phase either produces ownership or it doesn't — and that result must be made visible, not invisible.
 
@@ -1993,7 +1993,7 @@ Two features were added to `PlaybookActivationConsole.tsx` to operationalize the
 
 ---
 
-### Feature 2 — Recovery vs. Optimization Debrief Classification (PlaybookActivationConsole.tsx)
+### Feature 2 — Recovery vs. Optimization Debrief Classification (ProtocolActivationConsole.tsx)
 
 **What it does:** The ADVANCE debrief section (previously static) now automatically classifies itself based on the Close-Out Gate ownership %. Different ownership outcomes call for fundamentally different ADVANCE conversations — optimization (high ownership) vs. recovery (low ownership, silence detected).
 
@@ -2025,11 +2025,11 @@ The following phrase changes were applied globally across 7 files as part of thi
 
 | Old | New | Files |
 |---|---|---|
-| "Ownership Artifacts" (metric label) | "Ownership Records" | PlaybookActivationConsole, Team, Roadmap, LiveActivationCenter |
+| "Ownership Artifacts" (metric label) | "Ownership Records" | ProtocolActivationConsole, Team, Roadmap, LiveActivationCenter |
 | "produce the artifact" (ownership context) | "confirm ownership" | PlaybookCustomize, TwelveMinuteTestDrive |
 | "the ownership artifact was produced" | "ownership was confirmed" | TwelveMinuteTestDrive |
 | "Ownership artifact" (gain label) | "Ownership record" | TwelveMinuteTestDrive, PlaybookCustomize |
-| "Ownership as Artifact" (section label) | Removed entirely — replaced with "What This Gate Measures" | PlaybookActivationConsole |
+| "Ownership as Artifact" (section label) | Removed entirely — replaced with "What This Gate Measures" | ProtocolActivationConsole |
 | "Artifact vs. Performance" (section heading) | "Built vs. Received" | FounderStory |
 | "an artifact someone constructed" | "a decision someone constructed" | FounderStory |
 | "It is artifact construction." | "It is construction, not delivery." | FounderStory |
@@ -2577,3 +2577,41 @@ Two sections were both numbered `## 50.` and `## 51.`:
 - This change log → **57**
 
 No content in any of those sections was altered — numbers only.
+
+---
+
+## 58. May 14, 2026 — Rev 33 Change Log
+
+### Codebase Accuracy Pass
+
+Live audit of `client/src/pages/` and `client/src/App.tsx` against the rev 32 doc identified three concrete drifts. All corrected below.
+
+#### 1. `PlaybookActivationConsole` → `ProtocolActivationConsole` (global — 21 occurrences)
+
+The component file was renamed to `ProtocolActivationConsole.tsx` as part of the broader Playbook→Protocol terminology migration. The developer reference was still using the old name throughout. All 21 occurrences replaced globally — this covers: the page table (Section 13), the route example code block (Section 11), the Mission Control flow description (Section 15), the `BriefLoadingState` note, the GuidedStart flow description (Section 19), the AI Execution Brief / Debrief / Auto-Task Seeding sub-section headings (Section 27), the ExecutionStageGuide variant table (Section 33), the messaging guidelines note on retained vocabulary (Section 32), the Compound Threat Intelligence April 2026 sweep list, the Ownership Close-Out Gate and Recovery/Debrief Classification sections (Section 43), and the Ownership Records retired-term table.
+
+The `ProtocolActivationConsole` component file is at:
+`client/src/pages/ProtocolActivationConsole.tsx`
+
+Route (unchanged): `/playbook-activation/:triggerId/:playbookId`
+
+#### 2. `/audit-logging` → `/audit-logging-center` (Section 17)
+
+Settings page button table updated: "View System Logs" and "Security Scan" buttons were documented as navigating to `/audit-logging`. The live route is `/audit-logging-center` (component: `AuditLoggingCenter.tsx`). Two table rows corrected.
+
+#### 3. Known additive gaps — queued for Rev 34
+
+The following pages and routes exist in `App.tsx` and `client/src/pages/` but are not yet documented in this reference. They are not errors — they are undocumented additions. A future Rev 34 pass should add entries for each:
+
+| File | Route | Notes |
+|---|---|---|
+| `ProtocolSettings.tsx` | `/playbook-library/:id/settings` | Companion route to `ProtocolDetail.tsx` |
+| `FoundingPartnerMonitoring.tsx` | `/pilot-monitoring` | Operational monitoring for founding partner cohort |
+| `FoundingPartnerHealthMonitor.tsx` | `/admin/pilot-health` | Admin health view |
+| `FoundingPartnerOnboarding.tsx` | (not yet routed or undocumented) | Onboarding flow for founding partners |
+| `FoundingPartnerDemo.tsx` | (not yet routed or undocumented) | Demo variant for founding partners |
+| `ProtocolHealthDashboard.tsx` | (undocumented) | Protocol-level health metrics |
+| `ProtocolManagement.tsx` | (undocumented) | Protocol management admin view |
+| `SHEINTrendDemo.tsx` | `/shein-demo` | Industry demo — retail trend scenario |
+| `SpaceXLaunchDemo.tsx` | `/spacex-demo` | Industry demo — launch operations scenario |
+| IDEA sidebar sub-routes | `/identify/*`, `/detect/*`, `/execute/*`, `/advance/*`, `/setup/*`, `/learn/*` | Full tab sub-route tree — each maps to a sub-page component inside the relevant `client/src/pages/identify/`, `/detect/`, `/execute/`, `/advance/` directories |
