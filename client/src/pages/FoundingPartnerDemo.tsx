@@ -292,7 +292,7 @@ export default function FoundingPartnerDemo() {
     <PageLayout>
       
       <PageHero
-        eyebrow="Pilot Demo"
+        eyebrow="Founding Partner Demo"
         title="Prove It Works"
         subtitle="Experience the full trigger → execution flow with real notifications and live email delivery."
         size="md"

@@ -26,7 +26,7 @@ import { BrandStamp } from "@/components/BrandStamp";
 const demos = [
   {
     id: "pilot-demo",
-    title: "Pilot Demo",
+    title: "Founding Partner Demo",
     description: "Experience a full trigger-to-execution cycle with real-time coordination",
     path: "/pilot-demo",
     duration: "5 min",
