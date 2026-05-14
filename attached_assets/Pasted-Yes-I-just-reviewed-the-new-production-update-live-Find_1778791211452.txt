@@ -1,0 +1,49 @@
+Yes — I just reviewed the new production update live.
+
+Findings (ordered by severity)
+1) High — “Pilot” language is still visible on live pages
+This is the biggest drift vs your current messaging lock.
+
+Observed live:
+
+/growth shows:
+“BUILT-IN PILOT”
+“START MY PILOT”
+“Founding Partner Pilot — $75K”
+“APPLY FOR FOUNDING PARTNER PILOT”
+/investor-landing shows:
+“Pilot Execution & Customer Success”
+This directly conflicts with your “Founding Partner” standard and creates brand inconsistency.
+
+2) High — Growth/Enterprise path separation looks blurred
+From live browser link checks on /growth, key CTAs currently point to:
+
+/founding-partner-program
+/12-minute-experience
+/api/login
+I did not see /contact as a primary growth CTA destination in the rendered page state I checked.
+That weakens the “separate Growth track vs Founding Partner track” positioning.
+
+3) Medium — /contact currently presents as Founding Partner application experience
+Live /contact renders as “Founding Partner Program / Request Founding Partner Access” style content.
+If that’s intentional, fine. If not, this is a path/intent mismatch for general inbound contact.
+
+4) Medium — Route-level metadata is still effectively global in raw HTML
+Raw HTML on key routes (/how-it-executes, /how-it-works, /investor-landing, /growth, etc.) returns the same title/description/OG baseline tags.
+
+So:
+
+social previews are stable (good),
+but page-specific SEO/social differentiation is still limited for non-JS crawlers.
+What passed well
+Key routes return 200 (/, /how-it-executes, /how-it-works, /founding-partner-program, /request-access, /12-minute-experience, /investor-landing, /growth, /playbook-library, /contact).
+Top utility CTA on homepage is correct:
+Request Founding Partner Access → /founding-partner-program
+Executive Sign-In → /api/login
+12-minute flow is operational (manual run reached war-room state).
+Recommended immediate fix order (fastest impact)
+Purge visible “Pilot” terms from /growth and /investor-landing first.
+Re-validate Growth CTA destinations to enforce your intended audience split.
+Decide /contact role explicitly (general contact vs Founding Partner conversion page).
+Keep current OG baseline, but plan a next pass for better route-level social/SEO differentiation.
+If you want, I can do a page-by-page exact replacement list (current phrase → replacement phrase) for /growth and /investor-landing so your team can patch in one pass.
