@@ -221,3 +221,9 @@ id = "90LSM0awwpAxdiyi79nfo"
 uri = "file://exports/martin-brunke-linkedin-banner-final.jpg"
 type = "image"
 title = "LinkedIn Banner — VaughnMartin (1584×396)"
+
+[[outputs]]
+id = "Yq_X8aNN0X2EvHqy4CeFc"
+uri = "file://attached_assets/VaughnMartin-LinkedIn-Banner-1584x396.png"
+type = "image"
+title = "VaughnMartin LinkedIn Company Page Banner (1584×396)"

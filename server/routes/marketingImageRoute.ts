@@ -9,30 +9,34 @@ const CHROMIUM = process.env.REPLIT_PLAYWRIGHT_CHROMIUM_EXECUTABLE ||
 // scale: Playwright deviceScaleFactor (multiplies output resolution)
 // Result pixel width ≈ cardWidth × scale
 //
-//   web       480 × 1×  →  ~480 × ~1100 px   (quick web preview)
-//   hd        800 × 2×  →  ~1600 × ~2200 px  (website / email)
-//   linkedin  600 × 2×  →  ~1200 × ~628 px   (landscape share — fixed height)
-//   portrait  540 × 2×  →  ~1080 × ~1350 px  (LinkedIn / Instagram portrait)
-//   letter    850 × 3×  →  ~2550 × ~3300 px  (8.5″ × 11″ @ 300 dpi)
-//   a4        827 × 3×  →  ~2480 × ~3508 px  (A4 @ 300 dpi)
+//   web              480 × 1×  →  ~480 × ~1100 px   (quick web preview)
+//   hd               800 × 2×  →  ~1600 × ~2200 px  (website / email)
+//   linkedin         600 × 2×  →  ~1200 × ~628 px   (landscape share — fixed height)
+//   linkedin-banner  792 × 2×  →  1584 × 396 px     (LinkedIn company page banner — exact spec)
+//   portrait         540 × 2×  →  ~1080 × ~1350 px  (LinkedIn / Instagram portrait)
+//   letter           850 × 3×  →  ~2550 × ~3300 px  (8.5″ × 11″ @ 300 dpi)
+//   a4               827 × 3×  →  ~2480 × ~3508 px  (A4 @ 300 dpi)
 
-type Format = "web" | "hd" | "linkedin" | "portrait" | "letter" | "a4";
+type Format = "web" | "hd" | "linkedin" | "linkedin-banner" | "portrait" | "letter" | "a4";
 
 interface Preset {
   cardWidth: number;
   scale: number;
   label: string;
-  /** For linkedin landscape we constrain the screenshot height */
+  /** Constrain screenshot to exact pixel height */
   clipHeight?: number;
+  /** Use the LinkedIn banner HTML builder instead of the infographic builder */
+  isBanner?: boolean;
 }
 
 const PRESETS: Record<Format, Preset> = {
-  web:      { cardWidth: 480,  scale: 1, label: "Web (480px)"                   },
-  hd:       { cardWidth: 800,  scale: 2, label: "HD Web (1600px)"               },
-  linkedin: { cardWidth: 600,  scale: 2, label: "LinkedIn Share (1200×628)"      , clipHeight: 314 },
-  portrait: { cardWidth: 540,  scale: 2, label: "LinkedIn/Instagram (1080×1350)" },
-  letter:   { cardWidth: 850,  scale: 3, label: "Print Letter 8.5×11 @ 300 dpi" },
-  a4:       { cardWidth: 827,  scale: 3, label: "Print A4 @ 300 dpi"            },
+  web:              { cardWidth: 480,  scale: 1, label: "Web (480px)"                              },
+  hd:               { cardWidth: 800,  scale: 2, label: "HD Web (1600px)"                          },
+  linkedin:         { cardWidth: 600,  scale: 2, label: "LinkedIn Share (1200×628)",   clipHeight: 314 },
+  "linkedin-banner":{ cardWidth: 1584, scale: 1, label: "LinkedIn Banner (1584×396)",  clipHeight: 396, isBanner: true },
+  portrait:         { cardWidth: 540,  scale: 2, label: "LinkedIn/Instagram (1080×1350)"            },
+  letter:           { cardWidth: 850,  scale: 3, label: "Print Letter 8.5×11 @ 300 dpi"            },
+  a4:               { cardWidth: 827,  scale: 3, label: "Print A4 @ 300 dpi"                       },
 };
 
 // ─── HTML template ────────────────────────────────────────────────────────────
@@ -314,22 +318,255 @@ function buildHtml(cardWidth: number): string {
 </html>`;
 }
 
+// ─── LinkedIn Company Page Banner (1584 × 396) ───────────────────────────────
+// cardWidth=792, scale=2, clipHeight=198  →  exact 1584×396 output
+//
+// Layout zones (at 792px CSS width):
+//   [0–152px]  LOGO SAFE ZONE — LinkedIn profile picture overlaps lower-left;
+//              keep this area clear of all critical text/branding
+//   [153px]    Gold vertical rule
+//   [156–530px] Headline zone — editorial tagline + subtext
+//   [531px]    Gold vertical rule
+//   [534–720px] Stats zone — 3,600×  /  170  /  221
+//   [721px]    Gold vertical rule
+//   [724–792px] Brand zone — VM seal + VaughnMartin / READINESS OS
+//   [bottom 36px] Strip — Preparation → Readiness → Fearless + vaughnmartin.com
+function buildLinkedInBannerHtml(): string {
+  // Rendered natively at 1584 × 396 px (cardWidth=1584, scale=1).
+  // Left 304 px is deliberately clear — LinkedIn profile photo overlaps here.
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{
+    width:1584px;height:396px;overflow:hidden;
+    background:#080d24;font-family:'Barlow',sans-serif;
+    position:relative;
+  }
+  /* Subtle grid texture */
+  .grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);
+    background-size:76px 76px;
+  }
+  /* Teal ambient glow in logo safe zone */
+  .left-glow{
+    position:absolute;left:0;top:0;width:440px;height:100%;
+    background:linear-gradient(90deg,rgba(43,138,110,0.08) 0%,transparent 100%);
+  }
+  /* Warm right edge glow */
+  .right-glow{
+    position:absolute;right:0;top:0;width:220px;height:100%;
+    background:linear-gradient(270deg,rgba(201,168,76,0.05) 0%,transparent 100%);
+  }
+  /* Subtle diagonal light sweep */
+  .sweep{
+    position:absolute;inset:0;
+    background:linear-gradient(135deg,transparent 35%,rgba(255,255,255,0.018) 50%,transparent 65%);
+  }
+  /* Main flex row — sits above the bottom strip */
+  .main{
+    position:absolute;inset:0 0 72px 0;
+    display:flex;align-items:stretch;
+    z-index:2;
+  }
+  /* ── Logo safe zone (profile pic overlaps lower-left ~180px circle) ── */
+  .safe{width:304px;flex-shrink:0;}
+  /* ── Gold vertical rules ── */
+  .vr{width:1px;background:rgba(201,168,76,0.2);margin:40px 0 0;flex-shrink:0;}
+  /* ── Headline zone ── */
+  .hl-zone{
+    flex:1;padding:0 56px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:15px;font-weight:800;letter-spacing:.3em;
+    text-transform:uppercase;color:rgba(201,168,76,0.6);
+    display:flex;align-items:center;gap:20px;margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:'';display:inline-block;
+    width:36px;height:1px;background:rgba(201,168,76,0.4);flex-shrink:0;
+  }
+  .headline{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:52px;font-weight:600;line-height:1.06;
+    color:#ffffff;margin-bottom:18px;
+    text-shadow:0 2px 24px rgba(0,0,0,0.4);
+  }
+  .headline em{color:#C9A84C;font-style:italic;}
+  .sub{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:15px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(255,255,255,0.36);
+    line-height:1.5;
+  }
+  .sub .dot{color:rgba(201,168,76,0.35);margin:0 12px;}
+  /* ── Stats zone ── */
+  .stats-zone{
+    width:380px;flex-shrink:0;padding:0 36px;
+    display:flex;flex-direction:column;justify-content:center;gap:8px;
+  }
+  .stat{
+    display:flex;align-items:baseline;gap:14px;
+    padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .stat:last-child{border-bottom:none;padding-bottom:0;}
+  .snum{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:44px;font-weight:900;
+    color:#C9A84C;line-height:1;letter-spacing:-0.02em;
+    min-width:108px;
+  }
+  .slabel{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:14px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(255,255,255,0.42);
+    line-height:1.3;
+  }
+  /* ── Brand zone ── */
+  .brand-zone{
+    width:192px;flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:12px;padding:0 20px;
+  }
+  .vm-seal{width:72px;height:72px;flex-shrink:0;}
+  .bname{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:20px;font-weight:700;letter-spacing:.12em;
+    color:#ffffff;text-align:center;line-height:1.15;
+  }
+  .bprod{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.35em;
+    color:#C9A84C;text-transform:uppercase;text-align:center;
+    margin-top:-4px;
+  }
+  /* ── Bottom strip ── */
+  .bottom{
+    position:absolute;bottom:0;left:0;right:0;height:72px;
+    background:rgba(4,6,18,0.75);
+    border-top:1px solid rgba(201,168,76,0.15);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 40px 0 316px;z-index:3;
+  }
+  .arc{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:14px;font-weight:700;letter-spacing:.3em;
+    text-transform:uppercase;color:rgba(255,255,255,0.3);
+    display:flex;align-items:center;gap:0;
+  }
+  .arc .ag{color:rgba(201,168,76,0.6);}
+  .arc .arr{color:rgba(201,168,76,0.3);margin:0 16px;}
+  .url{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:14px;font-weight:600;letter-spacing:.16em;
+    color:rgba(201,168,76,0.4);
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="left-glow"></div>
+  <div class="right-glow"></div>
+  <div class="sweep"></div>
+
+  <div class="main">
+    <!-- Profile photo safe zone — LinkedIn logo overlaps this area -->
+    <div class="safe"></div>
+    <div class="vr"></div>
+
+    <!-- Headline -->
+    <div class="hl-zone">
+      <div class="eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; Fortune 1000</div>
+      <div class="headline">The response is ready<br><em>before the trigger fires.</em></div>
+      <div class="sub">
+        30 days compressed to 12 minutes
+        <span class="dot">·</span>
+        170 Readiness Protocols pre-staged
+        <span class="dot">·</span>
+        Executive authority preserved
+      </div>
+    </div>
+
+    <div class="vr"></div>
+
+    <!-- Key metrics -->
+    <div class="stats-zone">
+      <div class="stat">
+        <span class="snum">3,600×</span>
+        <span class="slabel">Execution<br>Head Start</span>
+      </div>
+      <div class="stat">
+        <span class="snum">170</span>
+        <span class="slabel">Readiness<br>Protocols</span>
+      </div>
+      <div class="stat">
+        <span class="snum">221</span>
+        <span class="slabel">Strategic<br>Triggers</span>
+      </div>
+    </div>
+
+    <div class="vr"></div>
+
+    <!-- Brand mark -->
+    <div class="brand-zone">
+      <svg class="vm-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="36" r="33.5" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="36" cy="36" r="26.5" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+        <text x="36" y="41" text-anchor="middle"
+          font-family="Barlow Condensed,sans-serif"
+          font-size="17" font-weight="800" fill="#C9A84C" letter-spacing="1">VM</text>
+      </svg>
+      <div class="bname">VaughnMartin</div>
+      <div class="bprod">Readiness OS</div>
+    </div>
+  </div>
+
+  <!-- Bottom identity strip -->
+  <div class="bottom">
+    <div class="arc">
+      <span class="ag">Preparation</span>
+      <span class="arr">→</span>
+      <span class="ag">Readiness</span>
+      <span class="arr">→</span>
+      <span class="ag">Fearless</span>
+    </div>
+    <div class="url">vaughnmartin.com</div>
+  </div>
+</body>
+</html>`;
+}
+
 // ─── Route ────────────────────────────────────────────────────────────────────
 export function registerMarketingImageRoute(app: Express): void {
   /**
    * GET /api/marketing-infographic.png
    *
    * Query params:
-   *   ?format=web       480px  × 1× scale  (default, quick preview)
-   *   ?format=hd        800px  × 2× scale  (~1600px — website/email)
-   *   ?format=linkedin  600px  × 2× scale  (~1200×628 landscape share)
-   *   ?format=portrait  540px  × 2× scale  (~1080×1350 LinkedIn/Instagram)
-   *   ?format=letter    850px  × 3× scale  (8.5×11″ @ 300 dpi)
-   *   ?format=a4        827px  × 3× scale  (A4 @ 300 dpi)
+   *   ?format=web              480px  × 1× scale  (default, quick preview)
+   *   ?format=hd               800px  × 2× scale  (~1600px — website/email)
+   *   ?format=linkedin         600px  × 2× scale  (~1200×628 landscape share)
+   *   ?format=linkedin-banner  792px  × 2× scale  (1584×396 LinkedIn company page banner)
+   *   ?format=portrait         540px  × 2× scale  (~1080×1350 LinkedIn/Instagram)
+   *   ?format=letter           850px  × 3× scale  (8.5×11″ @ 300 dpi)
+   *   ?format=a4               827px  × 3× scale  (A4 @ 300 dpi)
    */
   app.get("/api/marketing-infographic.png", async (req: any, res) => {
     const formatKey = (req.query.format as string) || "hd";
     const preset: Preset = PRESETS[formatKey as Format] ?? PRESETS.web;
+
+    // For the banner the HTML has a fixed height; for all other formats use
+    // a tall viewport so the full infographic renders before we clip.
+    const viewH = preset.isBanner
+      ? Math.round((preset.clipHeight ?? 198) * preset.scale)
+      : Math.round(preset.cardWidth * preset.scale * 3);
 
     let browser;
     try {
@@ -341,47 +578,64 @@ export function registerMarketingImageRoute(app: Express): void {
       const page = await browser.newPage();
       await page.setViewportSize({
         width:  Math.round(preset.cardWidth * preset.scale),
-        height: Math.round(preset.cardWidth * preset.scale * 3),
+        height: viewH,
       });
 
-      // Set device scale for high-DPI output
       await page.emulateMedia({ colorScheme: "dark" });
-      await (page as any).setExtraHTTPHeaders?.({});
 
-      // Use CDP to set device scale factor
+      // Use CDP to set exact device scale factor
       const session = await page.context().newCDPSession(page);
       await session.send("Emulation.setDeviceMetricsOverride", {
         width:             Math.round(preset.cardWidth * preset.scale),
-        height:            Math.round(preset.cardWidth * preset.scale * 3),
+        height:            viewH,
         deviceScaleFactor: preset.scale,
         mobile:            false,
       });
 
-      await page.setContent(buildHtml(preset.cardWidth), { waitUntil: "networkidle" });
+      const html = preset.isBanner
+        ? buildLinkedInBannerHtml()
+        : buildHtml(preset.cardWidth);
+
+      await page.setContent(html, { waitUntil: "networkidle" });
       await page.waitForTimeout(2000);
 
-      const body = await page.$("body");
-      if (!body) throw new Error("Body element not found");
+      let buffer: Buffer;
 
-      const screenshotOpts: Parameters<typeof body.screenshot>[0] = { type: "png" };
-      if (preset.clipHeight) {
-        const bodyBox = await body.boundingBox();
-        if (bodyBox) {
-          screenshotOpts.clip = {
-            x: 0,
-            y: 0,
-            width:  bodyBox.width,
-            height: Math.min(preset.clipHeight * preset.scale, bodyBox.height),
-          };
+      if (preset.isBanner) {
+        // For the fixed-height banner, screenshot the page directly.
+        // page.screenshot clip coords are in CSS pixels; deviceScaleFactor=2
+        // means output dimensions = clip_css_px × scale = 1584×396.
+        buffer = await page.screenshot({
+          type: "png",
+          clip: {
+            x: 0, y: 0,
+            width:  preset.cardWidth,               // 792 CSS px → 1584 output px
+            height: preset.clipHeight ?? 198,       // 198 CSS px → 396  output px
+          },
+        });
+      } else {
+        const body = await page.$("body");
+        if (!body) throw new Error("Body element not found");
+
+        const screenshotOpts: Parameters<typeof body.screenshot>[0] = { type: "png" };
+        if (preset.clipHeight) {
+          const bodyBox = await body.boundingBox();
+          if (bodyBox) {
+            screenshotOpts.clip = {
+              x: 0, y: 0,
+              width:  bodyBox.width,
+              height: Math.min(preset.clipHeight * preset.scale, bodyBox.height),
+            };
+          }
         }
+        buffer = await body.screenshot(screenshotOpts);
       }
-
-      const buffer = await body.screenshot(screenshotOpts);
 
       const filename = `VaughnMartin-ReadinessOS-${preset.label.replace(/[^a-zA-Z0-9]/g, "-")}.png`;
       res.setHeader("Content-Type", "image/png");
       res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
       res.setHeader("Cache-Control", "public, max-age=300");
+      res.setHeader("X-Image-Size", `${preset.cardWidth * preset.scale}x${(preset.clipHeight ?? 0) * preset.scale}`);
       res.setHeader("X-Format", preset.label);
       res.send(buffer);
     } catch (err: any) {
