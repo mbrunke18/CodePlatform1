@@ -1374,6 +1374,48 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Board-Grade Reporting Section */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="vm-section-label justify-center mb-6"><span>Board-Grade Reporting</span></div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,4vw,46px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.1 }}>
+                Reporting your board already expects.<br />
+                <em style={{ fontStyle: 'italic', color: '#C9A84C' }}>Readiness OS produces it automatically.</em>
+              </h2>
+              <p style={{ fontSize: 16, color: '#4B5563', maxWidth: 580, margin: '0 auto' }}>
+                Every activation generates a board-ready evidence package — no manual assembly, no retrospective guesswork.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-5 gap-0 border border-[#E8E4DC] mb-10">
+              {[
+                { metric: "Activation Timeline", desc: "Timestamped execution record from signal detection through final acknowledgment — audit-ready on demand.", accent: '#0A0F2E' },
+                { metric: "Ownership Acknowledgment", desc: "Named stakeholder confirmation log. Who was notified, who confirmed, when — no ambiguity for governance review.", accent: '#2B8A6E' },
+                { metric: "Decision Velocity", desc: "Elapsed time from trigger detection to executive authorization. The 12-minute benchmark, measured against your actual result.", accent: '#C9A84C' },
+                { metric: "Value Preserved", desc: "Risk avoided and opportunity cost of speed — framed in financial terms your CFO and board will recognize immediately.", accent: '#2B8A6E' },
+                { metric: "Audit-Ready Export", desc: "One-click board export. PDF-formatted activation debrief with classification, outcome, and recommended next steps.", accent: '#0A0F2E' },
+              ].map((item, i) => (
+                <div key={item.metric} style={{ padding: '28px 20px', borderRight: i < 4 ? '1px solid #E8E4DC' : 'none', borderTop: `3px solid ${item.accent}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: item.accent, marginBottom: 10 }}>0{i + 1}</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: '#0A0F2E', marginBottom: 10, lineHeight: 1.3 }}>{item.metric}</div>
+                  <p style={{ fontSize: 12, color: '#6B7280', lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: '#0A0F2E', padding: '28px 36px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+              <div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: '#fff', marginBottom: 4 }}>
+                  Make board confidence a product outcome — not a PowerPoint exercise.
+                </p>
+                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0 }}>Board Export and Activation Debrief are live features in the Readiness OS platform.</p>
+              </div>
+              <a href="/executive-brief" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, padding: '12px 24px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
+                View Executive Brief →
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Investment Ask Section */}
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-5xl mx-auto">

@@ -567,6 +567,47 @@ export default function FoundingPartnerProgram() {
           </div>
         </section>
 
+        {/* Board-Grade Deliverables */}
+        <section style={{ padding: '72px 32px', background: '#0A0F2E' }}>
+          <div style={{ maxWidth: 960, margin: '0 auto' }}>
+            <div style={{ marginBottom: 48 }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#C9A84C', marginBottom: 16 }}>
+                What Your Board Will See
+              </div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(26px,3.5vw,38px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 12 }}>
+                Board-grade reporting, produced automatically.
+              </h2>
+              <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7, maxWidth: 600 }}>
+                Every Founding Partner activation generates a complete evidence package. No manual assembly — the platform produces it at the moment of close.
+              </p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 2 }}>
+              {[
+                { label: 'Activation Timeline', icon: '01', desc: 'Timestamped execution record from signal detection through final acknowledgment — fully auditable.', color: '#2B8A6E' },
+                { label: 'Ownership Acknowledgment Log', icon: '02', desc: 'Named stakeholder confirmation record. Who was notified, who confirmed, and when — no ambiguity for governance.', color: '#2B8A6E' },
+                { label: 'Decision Velocity Measurement', icon: '03', desc: 'Time from trigger detection to executive authorization. Your 12-minute benchmark, measured against actual outcome.', color: '#C9A84C' },
+                { label: 'Value Preserved Calculation', icon: '04', desc: 'Risk avoided and opportunity cost of response speed — expressed in financial terms your CFO will recognize.', color: '#C9A84C' },
+                { label: 'Audit-Ready Board Export', icon: '05', desc: 'One-click PDF export. Activation debrief with classification, financial outcome, and recommended next steps.', color: '#fff' },
+                { label: 'Readiness Benchmark Report', icon: '06', desc: 'Before and after mobilization speed. Establishes your baseline and quantifies the operational improvement.', color: '#fff' },
+              ].map((item) => (
+                <div key={item.label} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '24px 22px' }}>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: '0.16em', color: 'rgba(255,255,255,0.25)', marginBottom: 12 }}>{item.icon}</div>
+                  <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, fontWeight: 700, color: item.color, marginBottom: 8, lineHeight: 1.3 }}>{item.label}</div>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 24, padding: '20px 28px', background: 'rgba(201,168,76,0.08)', borderLeft: '3px solid #C9A84C', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', margin: 0 }}>
+                Every Founding Partner leaves with a measured mobilization benchmark and a board-ready activation record.
+              </p>
+              <a href="/executive-brief" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: '#C9A84C', textDecoration: 'none', borderBottom: '1px solid rgba(201,168,76,0.3)', paddingBottom: 2, whiteSpace: 'nowrap' as const }}>
+                View Executive Brief →
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Executive Questions — Short Version */}
         <section style={{ padding: '64px 32px', background: '#F8F7F4', borderTop: '1px solid #E8E4DC' }}>
           <div style={{ maxWidth: 860, margin: '0 auto' }}>
