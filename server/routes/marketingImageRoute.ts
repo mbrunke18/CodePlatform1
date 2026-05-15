@@ -319,227 +319,280 @@ function buildHtml(cardWidth: number): string {
 }
 
 // ─── LinkedIn Company Page Banner (1584 × 396) ───────────────────────────────
-// cardWidth=792, scale=2, clipHeight=198  →  exact 1584×396 output
+// Rendered natively at 1584 × 396 px (cardWidth=1584, scale=1).
 //
-// Layout zones (at 792px CSS width):
-//   [0–152px]  LOGO SAFE ZONE — LinkedIn profile picture overlaps lower-left;
-//              keep this area clear of all critical text/branding
-//   [153px]    Gold vertical rule
-//   [156–530px] Headline zone — editorial tagline + subtext
-//   [531px]    Gold vertical rule
-//   [534–720px] Stats zone — 3,600×  /  170  /  221
-//   [721px]    Gold vertical rule
-//   [724–792px] Brand zone — VM seal + VaughnMartin / READINESS OS
-//   [bottom 36px] Strip — Preparation → Readiness → Fearless + vaughnmartin.com
+// Two-panel split design:
+//   LEFT  (0–560px)  — Deep navy, hero "3,600×" stat. Bottom-left corner
+//                      deliberately clear for LinkedIn profile photo overlap.
+//   RIGHT (560–1584px) — Bright ivory, main claim + proof points + brand.
+//   BOTTOM STRIP       — Full-width navy, locked tagline.
 function buildLinkedInBannerHtml(): string {
-  // Rendered natively at 1584 × 396 px (cardWidth=1584, scale=1).
-  // Left 304 px is deliberately clear — LinkedIn profile photo overlaps here.
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
-  html,body{
-    width:1584px;height:396px;overflow:hidden;
-    background:#080d24;font-family:'Barlow',sans-serif;
-    position:relative;
+  html,body{width:1584px;height:396px;overflow:hidden;font-family:'Barlow',sans-serif;}
+
+  /* ═══════════════════════════════
+     LEFT PANEL — deep navy, hero stat
+     Bottom-left ~200×140px left clear
+     for LinkedIn profile photo overlap
+     ══════════════════════════════= */
+  .lp{
+    position:absolute;top:0;left:0;width:560px;height:396px;
+    background:linear-gradient(150deg,#0b1535 0%,#0d1c4a 60%,#091228 100%);
+    overflow:hidden;
   }
-  /* Subtle grid texture */
-  .grid{
+  /* Subtle grid on left panel */
+  .lp-grid{
     position:absolute;inset:0;
     background-image:
-      linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);
-    background-size:76px 76px;
+      linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px);
+    background-size:60px 60px;
   }
-  /* Teal ambient glow in logo safe zone */
-  .left-glow{
-    position:absolute;left:0;top:0;width:440px;height:100%;
-    background:linear-gradient(90deg,rgba(43,138,110,0.08) 0%,transparent 100%);
+  /* Gold accent top bar */
+  .lp-topbar{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#C9A84C,rgba(201,168,76,0.3));
   }
-  /* Warm right edge glow */
-  .right-glow{
-    position:absolute;right:0;top:0;width:220px;height:100%;
-    background:linear-gradient(270deg,rgba(201,168,76,0.05) 0%,transparent 100%);
+  /* Teal ambient glow — bottom left (behind where logo will sit) */
+  .lp-glow{
+    position:absolute;bottom:-40px;left:-40px;
+    width:260px;height:260px;border-radius:50%;
+    background:radial-gradient(circle,rgba(43,138,110,0.18) 0%,transparent 70%);
   }
-  /* Subtle diagonal light sweep */
-  .sweep{
+  /* Content block — pushed right+up to stay clear of logo overlap zone */
+  .lp-content{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-30%,-52%);
+    text-align:center;
+  }
+  .lp-eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;font-weight:800;letter-spacing:.35em;
+    text-transform:uppercase;color:rgba(201,168,76,0.55);
+    margin-bottom:10px;
+  }
+  .lp-num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:92px;font-weight:900;line-height:1;
+    color:#C9A84C;letter-spacing:-0.03em;
+    text-shadow:0 0 60px rgba(201,168,76,0.25);
+  }
+  .lp-label{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:13px;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:#ffffff;
+    margin-top:8px;
+  }
+  .lp-rule{
+    width:48px;height:1px;background:rgba(201,168,76,0.4);
+    margin:12px auto;
+  }
+  .lp-sub{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.38);
+  }
+  .lp-sub strong{color:rgba(201,168,76,0.7);font-weight:700;}
+
+  /* ════════════════════════════════
+     RIGHT PANEL — bright ivory, claim
+     ════════════════════════════════ */
+  .rp{
+    position:absolute;top:0;left:560px;right:0;height:396px;
+    background:#F0EDE4;
+    overflow:hidden;
+  }
+  /* Subtle warm texture */
+  .rp-texture{
     position:absolute;inset:0;
-    background:linear-gradient(135deg,transparent 35%,rgba(255,255,255,0.018) 50%,transparent 65%);
+    background:linear-gradient(160deg,#ffffff 0%,#F0EDE4 50%,#EAE6DB 100%);
   }
-  /* Main flex row — sits above the bottom strip */
-  .main{
-    position:absolute;inset:0 0 72px 0;
+  /* Navy accent left edge on the right panel */
+  .rp-edge{
+    position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(180deg,#C9A84C 0%,rgba(201,168,76,0.2) 100%);
+  }
+  /* Right panel inner content — bottom strip is 56px */
+  .rp-inner{
+    position:absolute;inset:0 0 56px 0;
     display:flex;align-items:stretch;
     z-index:2;
   }
-  /* ── Logo safe zone (profile pic overlaps lower-left ~180px circle) ── */
-  .safe{width:304px;flex-shrink:0;}
-  /* ── Gold vertical rules ── */
-  .vr{width:1px;background:rgba(201,168,76,0.2);margin:40px 0 0;flex-shrink:0;}
-  /* ── Headline zone ── */
-  .hl-zone{
-    flex:1;padding:0 56px;
+  /* Main copy zone */
+  .rp-copy{
+    flex:1;padding:0 52px;
     display:flex;flex-direction:column;justify-content:center;
   }
-  .eyebrow{
+  .rp-eyebrow{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:15px;font-weight:800;letter-spacing:.3em;
-    text-transform:uppercase;color:rgba(201,168,76,0.6);
-    display:flex;align-items:center;gap:20px;margin-bottom:18px;
+    font-size:11px;font-weight:800;letter-spacing:.35em;
+    text-transform:uppercase;color:rgba(10,15,46,0.45);
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:14px;
   }
-  .eyebrow::before{
-    content:'';display:inline-block;
-    width:36px;height:1px;background:rgba(201,168,76,0.4);flex-shrink:0;
+  .rp-eyebrow::before{
+    content:'';width:28px;height:1px;
+    background:#C9A84C;flex-shrink:0;
   }
-  .headline{
-    font-family:'Cormorant Garamond',serif;font-style:italic;
-    font-size:52px;font-weight:600;line-height:1.06;
-    color:#ffffff;margin-bottom:18px;
-    text-shadow:0 2px 24px rgba(0,0,0,0.4);
+  .rp-headline{
+    font-family:'Cormorant Garamond',serif;
+    font-size:46px;font-weight:700;line-height:1.05;
+    color:#0A0F2E;margin-bottom:16px;
   }
-  .headline em{color:#C9A84C;font-style:italic;}
-  .sub{
+  .rp-headline em{color:#2B8A6E;font-style:italic;}
+  .rp-body{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:15px;font-weight:600;letter-spacing:.16em;
-    text-transform:uppercase;color:rgba(255,255,255,0.36);
-    line-height:1.5;
+    font-size:14px;font-weight:500;letter-spacing:.06em;
+    color:rgba(10,15,46,0.55);line-height:1.55;
+    max-width:520px;
   }
-  .sub .dot{color:rgba(201,168,76,0.35);margin:0 12px;}
-  /* ── Stats zone ── */
-  .stats-zone{
-    width:380px;flex-shrink:0;padding:0 36px;
-    display:flex;flex-direction:column;justify-content:center;gap:8px;
+  /* Proof stats column */
+  .rp-stats{
+    width:260px;flex-shrink:0;
+    display:flex;flex-direction:column;justify-content:center;
+    gap:0;padding:0 28px;
+    border-left:1px solid rgba(10,15,46,0.1);
   }
-  .stat{
-    display:flex;align-items:baseline;gap:14px;
-    padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);
+  .rs{
+    padding:14px 0;
+    border-bottom:1px solid rgba(10,15,46,0.08);
   }
-  .stat:last-child{border-bottom:none;padding-bottom:0;}
-  .snum{
+  .rs:last-child{border-bottom:none;}
+  .rs-num{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:44px;font-weight:900;
-    color:#C9A84C;line-height:1;letter-spacing:-0.02em;
-    min-width:108px;
+    font-size:36px;font-weight:900;color:#0A0F2E;
+    line-height:1;letter-spacing:-0.02em;
   }
-  .slabel{
+  .rs-num span{color:#C9A84C;}
+  .rs-lbl{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:14px;font-weight:700;letter-spacing:.1em;
-    text-transform:uppercase;color:rgba(255,255,255,0.42);
-    line-height:1.3;
+    font-size:11px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:rgba(10,15,46,0.45);
+    margin-top:3px;
   }
-  /* ── Brand zone ── */
-  .brand-zone{
-    width:192px;flex-shrink:0;
+  /* Brand zone */
+  .rp-brand{
+    width:180px;flex-shrink:0;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:12px;padding:0 20px;
+    gap:10px;padding:0 20px;
+    border-left:1px solid rgba(10,15,46,0.1);
   }
-  .vm-seal{width:72px;height:72px;flex-shrink:0;}
-  .bname{
+  .rb-seal{width:64px;height:64px;}
+  .rb-name{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:20px;font-weight:700;letter-spacing:.12em;
-    color:#ffffff;text-align:center;line-height:1.15;
+    font-size:17px;font-weight:700;letter-spacing:.12em;
+    color:#0A0F2E;text-align:center;line-height:1.15;
   }
-  .bprod{
+  .rb-prod{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:12px;font-weight:600;letter-spacing:.35em;
-    color:#C9A84C;text-transform:uppercase;text-align:center;
-    margin-top:-4px;
+    font-size:10px;font-weight:700;letter-spacing:.35em;
+    color:#2B8A6E;text-transform:uppercase;text-align:center;
   }
-  /* ── Bottom strip ── */
-  .bottom{
-    position:absolute;bottom:0;left:0;right:0;height:72px;
-    background:rgba(4,6,18,0.75);
-    border-top:1px solid rgba(201,168,76,0.15);
+  /* Right panel bottom strip */
+  .rp-bottom{
+    position:absolute;bottom:0;left:0;right:0;height:56px;
+    background:#0A0F2E;
     display:flex;align-items:center;justify-content:space-between;
-    padding:0 40px 0 316px;z-index:3;
+    padding:0 28px;z-index:3;
   }
-  .arc{
+  .rb-arc{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:14px;font-weight:700;letter-spacing:.3em;
-    text-transform:uppercase;color:rgba(255,255,255,0.3);
-    display:flex;align-items:center;gap:0;
+    font-size:12px;font-weight:700;letter-spacing:.28em;
+    text-transform:uppercase;color:rgba(255,255,255,0.35);
+    display:flex;align-items:center;gap:16px;
   }
-  .arc .ag{color:rgba(201,168,76,0.6);}
-  .arc .arr{color:rgba(201,168,76,0.3);margin:0 16px;}
-  .url{
+  .rb-arc .ag{color:#C9A84C;}
+  .rb-arc .arr{color:rgba(201,168,76,0.3);font-size:10px;}
+  .rb-url{
     font-family:'Barlow Condensed',sans-serif;
-    font-size:14px;font-weight:600;letter-spacing:.16em;
-    color:rgba(201,168,76,0.4);
+    font-size:12px;font-weight:600;letter-spacing:.2em;
+    color:rgba(201,168,76,0.5);
   }
 </style>
 </head>
 <body>
-  <div class="grid"></div>
-  <div class="left-glow"></div>
-  <div class="right-glow"></div>
-  <div class="sweep"></div>
 
-  <div class="main">
-    <!-- Profile photo safe zone — LinkedIn logo overlaps this area -->
-    <div class="safe"></div>
-    <div class="vr"></div>
-
-    <!-- Headline -->
-    <div class="hl-zone">
-      <div class="eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; Fortune 1000</div>
-      <div class="headline">The response is ready<br><em>before the trigger fires.</em></div>
-      <div class="sub">
-        30 days compressed to 12 minutes
-        <span class="dot">·</span>
-        170 Readiness Protocols pre-staged
-        <span class="dot">·</span>
-        Executive authority preserved
-      </div>
-    </div>
-
-    <div class="vr"></div>
-
-    <!-- Key metrics -->
-    <div class="stats-zone">
-      <div class="stat">
-        <span class="snum">3,600×</span>
-        <span class="slabel">Execution<br>Head Start</span>
-      </div>
-      <div class="stat">
-        <span class="snum">170</span>
-        <span class="slabel">Readiness<br>Protocols</span>
-      </div>
-      <div class="stat">
-        <span class="snum">221</span>
-        <span class="slabel">Strategic<br>Triggers</span>
-      </div>
-    </div>
-
-    <div class="vr"></div>
-
-    <!-- Brand mark -->
-    <div class="brand-zone">
-      <svg class="vm-seal" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="33.5" stroke="#C9A84C" stroke-width="1.5"/>
-        <circle cx="36" cy="36" r="26.5" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
-        <text x="36" y="41" text-anchor="middle"
-          font-family="Barlow Condensed,sans-serif"
-          font-size="17" font-weight="800" fill="#C9A84C" letter-spacing="1">VM</text>
-      </svg>
-      <div class="bname">VaughnMartin</div>
-      <div class="bprod">Readiness OS</div>
+  <!-- ── LEFT PANEL: hero stat ── -->
+  <div class="lp">
+    <div class="lp-grid"></div>
+    <div class="lp-topbar"></div>
+    <div class="lp-glow"></div>
+    <div class="lp-content">
+      <div class="lp-eyebrow">Execution Head Start</div>
+      <div class="lp-num">3,600×</div>
+      <div class="lp-label">Faster Than the Old Model</div>
+      <div class="lp-rule"></div>
+      <div class="lp-sub"><strong>30 days</strong> compressed to <strong>12 minutes</strong></div>
     </div>
   </div>
 
-  <!-- Bottom identity strip -->
-  <div class="bottom">
-    <div class="arc">
-      <span class="ag">Preparation</span>
-      <span class="arr">→</span>
-      <span class="ag">Readiness</span>
-      <span class="arr">→</span>
-      <span class="ag">Fearless</span>
+  <!-- ── RIGHT PANEL: claim + proof ── -->
+  <div class="rp">
+    <div class="rp-texture"></div>
+    <div class="rp-edge"></div>
+
+    <div class="rp-inner">
+
+      <!-- Main copy -->
+      <div class="rp-copy">
+        <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; Fortune 1000</div>
+        <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 170 Protocols, 221 strategic triggers, 12-minute response.</div>
+      </div>
+
+      <!-- Proof stats -->
+      <div class="rp-stats">
+        <div class="rs">
+          <div class="rs-num">170</div>
+          <div class="rs-lbl">Readiness Protocols</div>
+        </div>
+        <div class="rs">
+          <div class="rs-num">221</div>
+          <div class="rs-lbl">Strategic Triggers</div>
+        </div>
+        <div class="rs">
+          <div class="rs-num">12<span>min</span></div>
+          <div class="rs-lbl">Execution Target</div>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div class="rp-brand">
+        <svg class="rb-seal" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" stroke="#0A0F2E" stroke-width="1.5"/>
+          <circle cx="32" cy="32" r="23" stroke="rgba(10,15,46,0.2)" stroke-width="1"/>
+          <text x="32" y="37" text-anchor="middle"
+            font-family="Barlow Condensed,sans-serif"
+            font-size="15" font-weight="800" fill="#0A0F2E" letter-spacing="1">VM</text>
+        </svg>
+        <div class="rb-name">VaughnMartin</div>
+        <div class="rb-prod">Readiness OS</div>
+      </div>
+
     </div>
-    <div class="url">vaughnmartin.com</div>
+
+    <!-- Bottom tagline strip -->
+    <div class="rp-bottom">
+      <div class="rb-arc">
+        <span class="ag">Preparation</span>
+        <span class="arr">→</span>
+        <span class="ag">Readiness</span>
+        <span class="arr">→</span>
+        <span class="ag">Fearless</span>
+      </div>
+      <div class="rb-url">vaughnmartin.com</div>
+    </div>
+
   </div>
+
 </body>
 </html>`;
 }
