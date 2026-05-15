@@ -227,3 +227,69 @@ id = "Yq_X8aNN0X2EvHqy4CeFc"
 uri = "file://attached_assets/VaughnMartin-LinkedIn-Banner-1584x396.png"
 type = "image"
 title = "VaughnMartin LinkedIn Company Banner — v2 (1584×396)"
+
+[[outputs]]
+id = "cs8M1h8pOqHCTKuoUVBmk"
+uri = "file://attached_assets/linkedin-products/product-01.png"
+type = "image"
+title = "01 · Readiness OS Platform"
+
+[[outputs]]
+id = "xpr_rJtxzHnVi_mdZn6qc"
+uri = "file://attached_assets/linkedin-products/product-02.png"
+type = "image"
+title = "02 · IDEA Framework™"
+
+[[outputs]]
+id = "Myf1iZBs-IwshU315vscz"
+uri = "file://attached_assets/linkedin-products/product-03.png"
+type = "image"
+title = "03 · 12-Minute Execution"
+
+[[outputs]]
+id = "dM-qiTkFmK6HyA9au5cFa"
+uri = "file://attached_assets/linkedin-products/product-04.png"
+type = "image"
+title = "04 · Protocol Library"
+
+[[outputs]]
+id = "YT4eVuIFiLiD9RIFkRsoE"
+uri = "file://attached_assets/linkedin-products/product-05.png"
+type = "image"
+title = "05 · Command Tower"
+
+[[outputs]]
+id = "z3-FYkfgmLhJAUxnq0WYl"
+uri = "file://attached_assets/linkedin-products/product-06.png"
+type = "image"
+title = "06 · Signal Detection Engine"
+
+[[outputs]]
+id = "strs5R-T9g9EkcRloUrJ_"
+uri = "file://attached_assets/linkedin-products/product-07.png"
+type = "image"
+title = "07 · War Room"
+
+[[outputs]]
+id = "NFKgtUDh5rP7LSHNb_jTz"
+uri = "file://attached_assets/linkedin-products/product-08.png"
+type = "image"
+title = "08 · ROI Dashboard"
+
+[[outputs]]
+id = "vJPsM6ITnUNnuV_YAmSrY"
+uri = "file://attached_assets/linkedin-products/product-09.png"
+type = "image"
+title = "09 · Founding Partner Program"
+
+[[outputs]]
+id = "PLwgnQwQQU4Q4n45I0jgv"
+uri = "file://attached_assets/linkedin-products/product-10.png"
+type = "image"
+title = "10 · Executive Brief"
+
+[[outputs]]
+id = "txWXtCbIoMrzDcE4okouO"
+uri = "file://attached_assets/linkedin-products/LINKEDIN-PRODUCTS-COPY.md"
+type = "text"
+title = "All 10 Listings — Complete Copy"

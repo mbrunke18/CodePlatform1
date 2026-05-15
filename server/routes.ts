@@ -19,6 +19,7 @@ import { createAndSendMagicLink, verifyMagicLinkToken, sendWelcomeTriggerDemo } 
 import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerMarketingImageRoute } from "./routes/marketingImageRoute";
+import { registerLinkedInProductsRoute } from "./routes/linkedinProductsRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerAdminRoutes } from "./routes/admin-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -802,6 +803,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   // Public image download — no auth required
   registerMarketingImageRoute(app);
+  registerLinkedInProductsRoute(app);
 
   app.use('/api/playbook-library', playbookLibraryLimiter);
   app.use('/api/playbooks/metadata', publicApiLimiter);
