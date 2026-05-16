@@ -305,3 +305,9 @@ id = "y0DBMut642wfFP13-33-s"
 uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Script.md"
 type = "text"
 title = "Full Script — Word-for-word talking points + Q&A prep"
+
+[[outputs]]
+id = "g48Xiho6j2Xqa9jRwbqXh"
+uri = "file://attached_assets/VaughnMartin-Pitch-Deck-11-Slides.zip"
+type = "unspecified"
+title = "All 11 Slides — 1280×720 PNGs (import to Google Slides, PowerPoint, or Keynote)"

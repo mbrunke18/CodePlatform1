@@ -20,6 +20,7 @@ import { createTrialSession, activateTrialToken } from "./services/trialAccessSe
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerMarketingImageRoute } from "./routes/marketingImageRoute";
 import { registerLinkedInProductsRoute } from "./routes/linkedinProductsRoute";
+import { registerPitchDeckRoute } from "./routes/pitchDeckRoute";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerAdminRoutes } from "./routes/admin-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -804,6 +805,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   // Public image download — no auth required
   registerMarketingImageRoute(app);
   registerLinkedInProductsRoute(app);
+  registerPitchDeckRoute(app);
 
   app.use('/api/playbook-library', playbookLibraryLimiter);
   app.use('/api/playbooks/metadata', publicApiLimiter);
