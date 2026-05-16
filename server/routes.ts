@@ -21,6 +21,7 @@ import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerMarketingImageRoute } from "./routes/marketingImageRoute";
 import { registerLinkedInProductsRoute } from "./routes/linkedinProductsRoute";
 import { registerPitchDeckRoute } from "./routes/pitchDeckRoute";
+import { registerPitchDeckV2Route } from "./routes/pitchDeckV2Route";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerAdminRoutes } from "./routes/admin-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -806,6 +807,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
   registerMarketingImageRoute(app);
   registerLinkedInProductsRoute(app);
   registerPitchDeckRoute(app);
+  registerPitchDeckV2Route(app);
 
   app.use('/api/playbook-library', playbookLibraryLimiter);
   app.use('/api/playbooks/metadata', publicApiLimiter);

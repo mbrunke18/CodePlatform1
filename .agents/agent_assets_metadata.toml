@@ -311,3 +311,9 @@ id = "g48Xiho6j2Xqa9jRwbqXh"
 uri = "file://attached_assets/VaughnMartin-Pitch-Deck-11-Slides.zip"
 type = "unspecified"
 title = "All 11 Slides — 1280×720 PNGs (import to Google Slides, PowerPoint, or Keynote)"
+
+[[outputs]]
+id = "KSLR0Zq4Qf5zhGgotpt0o"
+uri = "file://attached_assets/VaughnMartin-Pitch-Deck-6-Slides-WithScreenshots.zip"
+type = "unspecified"
+title = "6-Slide Pitch Deck with Live Product Screenshots — 1280×720 PNGs"
