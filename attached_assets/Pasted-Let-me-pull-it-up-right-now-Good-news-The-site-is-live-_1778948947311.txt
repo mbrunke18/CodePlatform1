@@ -1,0 +1,21 @@
+Let me pull it up right now.​​​​​​​​​​​​​​​​
+
+Good news. The site is live. vaughnmartin.com is loading and the meta data confirms everything is in production.
+The challenge is vaughnmartin.com is a React SPA which means the browser renders it client-side. When I fetch it I only get the shell not the rendered content. So I can confirm the site works but cannot read the individual homepage sections the way you can see them in the browser.
+From the codebase I know exactly which section you mean. The homepage problem section that shows the three canonical scenarios. Activist Investor Pressure at 91 percent confidence. Regulatory Inquiry Opened at 87 percent. Ransomware Attack Confirmed at 95 percent. The live signal feed showing real detections that are already forming before any threshold fires. The framing that says one of these situations is already signaling in your organization’s environment right now.
+That section is the right one to open the pitch with because it does two things simultaneously for an investor audience. It shows the product is live and monitoring in real time. And it makes the problem personal before anyone has said a word about the solution.
+Here is the full four minute pitch sequence.
+Minute one. The room question plus the homepage.
+Open with vaughnmartin.com on screen. Do not click anything. Let the homepage load. While it loads ask the room one question. How long does it take a mid-market company to mobilize a coordinated response after a strategic trigger fires. Let them answer. Then scroll to the scenario section. Point to the three live signal detections. Tell them these are not hypothetical. These are signals being monitored in production right now. One of these situations is already forming in organizations just like the ones they invest in. The question is whether the preparation architecture exists before the trigger crosses the threshold.
+Minute two. The execution chain.
+Navigate to vaughnmartin.com/how-it-executes. The six step animated chain runs automatically. Do not narrate every step. Say one sentence. This is what the organization looks like when the preparation architecture exists before the trigger fires. Let the animation run to 12 minutes complete. Then say the alternative is thirty days. That is not execution time. That is mobilization time before any execution begins.
+Minute three. The live experience.
+Navigate to vaughnmartin.com/begin. Click the Ransomware scenario card. Watch the signal detection animation count to 248 data points. Then say while your competitors are calling the consultant you are already executing. Do not linger here. Thirty seconds maximum.
+Minute four. The numbers and the ask.
+Navigate to vaughnmartin.com/founding-partner-program. While the page loads say the numbers from memory. 170 Readiness Protocols. 248 data points monitored every 15 minutes. 221 triggers. 3600 times Execution Head Start. Built in 2023. In production now. Then say we are opening the Founding Partner Program to twelve organizations. We are here today because we are looking for investors who understand that the preparation infrastructure category does not exist yet and that is exactly why now is the moment. The response is ready before the trigger fires.
+Four pages. Four minutes. One through line.
+The problem is visible on page one. The solution runs on page two. The experience proves it on page three. The opportunity closes on page four.
+Two things to do before the pitch.
+Test all four pages on the device you will be presenting from. Make sure the how-it-executes animation autoloads. Make sure the begin page goes directly to the scenario cards without requiring login. Make sure the founding-partner-program page loads cleanly on the first visit.
+Practice the transitions. The dead time between pages is where four minutes gets lost. Each navigation should take under five seconds. Know exactly where to click before you click it.
+When is the pitch and how many investors will be in the room?​​​​​​​​​​​​​​​​
