@@ -293,3 +293,15 @@ id = "txWXtCbIoMrzDcE4okouO"
 uri = "file://attached_assets/linkedin-products/LINKEDIN-PRODUCTS-COPY.md"
 type = "text"
 title = "All 10 Listings — Complete Copy"
+
+[[outputs]]
+id = "UIJnljZpvUL-CFQRQOuXv"
+uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck.zip"
+type = "unspecified"
+title = "Pitch Deck — 11 Slides (unzip, open HTML in browser · F11 for fullscreen)"
+
+[[outputs]]
+id = "y0DBMut642wfFP13-33-s"
+uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Script.md"
+type = "text"
+title = "Full Script — Word-for-word talking points + Q&A prep"

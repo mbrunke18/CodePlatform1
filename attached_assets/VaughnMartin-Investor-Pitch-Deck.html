@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VaughnMartin — Investor Pitch · 4 Minutes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0A0F2E;
+    --navy2: #0d1535;
+    --gold: #C9A84C;
+    --teal: #2B8A6E;
+    --ivory: #F0EDE4;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+
+  .deck {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .slide {
+    display: none;
+    width: 1280px; height: 720px;
+    position: relative; overflow: hidden;
+    font-family: 'Barlow Condensed', sans-serif;
+    flex-shrink: 0;
+  }
+  .slide.active { display: flex; }
+
+  /* ── Backgrounds ── */
+  .bg-dark {
+    background: linear-gradient(145deg, var(--navy) 0%, #0d1c4a 100%);
+  }
+  .bg-ivory {
+    background: var(--ivory);
+  }
+  .bg-navy-solid {
+    background: var(--navy);
+  }
+
+  .grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.045) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .glow-tr {
+    position: absolute; top: -80px; right: -80px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .gold-bar-top {
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2));
+  }
+  .gold-bar-left {
+    position: absolute; top: 0; left: 0; bottom: 0; width: 4px;
+    background: linear-gradient(180deg, var(--gold), rgba(201,168,76,0.2));
+  }
+
+  /* ── Slide number & nav ── */
+  .slide-num {
+    position: absolute; bottom: 24px; right: 32px;
+    font-size: 11px; font-weight: 700; letter-spacing: .25em;
+    color: rgba(201,168,76,0.35); text-transform: uppercase;
+    z-index: 10;
+  }
+  .slide-num.dark-num { color: rgba(10,15,46,0.3); }
+
+  /* ── Typography system ── */
+  .label {
+    font-size: 11px; font-weight: 800; letter-spacing: .35em;
+    text-transform: uppercase;
+  }
+  .label-gold { color: var(--gold); }
+  .label-navy { color: rgba(10,15,46,0.45); }
+  .label-teal { color: var(--teal); }
+
+  .headline-xl {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 80px; font-weight: 900; line-height: 1; letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+  .headline-lg {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 58px; font-weight: 900; line-height: 1.05; letter-spacing: -.01em;
+    text-transform: uppercase;
+  }
+  .headline-md {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 42px; font-weight: 800; line-height: 1.1; letter-spacing: -.005em;
+    text-transform: uppercase;
+  }
+  .headline-sm {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px; font-weight: 800; line-height: 1.2;
+    text-transform: uppercase;
+  }
+  .editorial {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400; font-style: italic; line-height: 1.4;
+  }
+  .editorial-lg {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; font-weight: 400; font-style: italic; line-height: 1.35;
+  }
+  .body-text {
+    font-size: 16px; font-weight: 500; line-height: 1.55; letter-spacing: .02em;
+  }
+  .body-sm {
+    font-size: 13px; font-weight: 500; line-height: 1.5; letter-spacing: .02em;
+  }
+
+  .text-white { color: #fff; }
+  .text-ivory { color: var(--ivory); }
+  .text-gold { color: var(--gold); }
+  .text-teal { color: var(--teal); }
+  .text-navy { color: var(--navy); }
+  .text-muted { color: rgba(255,255,255,0.45); }
+  .text-muted-navy { color: rgba(10,15,46,0.5); }
+
+  .gold-rule { width: 40px; height: 2px; background: var(--gold); }
+  .gold-rule-lg { width: 60px; height: 2px; background: var(--gold); }
+
+  /* ── Logo/Seal ── */
+  .seal-wrap { display: flex; align-items: center; gap: 12px; }
+  .seal-svg { width: 36px; height: 36px; flex-shrink: 0; }
+  .seal-text-name { font-size: 15px; font-weight: 800; letter-spacing: .08em; color: #fff; }
+  .seal-text-product { font-size: 9px; font-weight: 700; letter-spacing: .3em; color: var(--gold); text-transform: uppercase; }
+  .seal-wrap.dark .seal-text-name { color: var(--navy); }
+  .seal-wrap.dark .seal-text-product { color: rgba(10,15,46,0.5); }
+
+  /* ════════════════════════════════════════
+     SLIDE 1 — Opening Question
+  ════════════════════════════════════════ */
+  #s1 {
+    flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+  #s1 .question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px; font-weight: 900; line-height: 1.1;
+    text-transform: uppercase; letter-spacing: -.01em;
+    color: #fff;
+    max-width: 860px;
+  }
+  #s1 .question em {
+    font-style: normal; color: var(--gold);
+  }
+  #s1 .sub {
+    margin-top: 28px;
+    font-size: 16px; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.35);
+  }
+  #s1 .brand-pos {
+    position: absolute; bottom: 28px; left: 36px;
+  }
+  #s1 .scenario-chips {
+    display: flex; gap: 12px; margin-top: 40px;
+  }
+  #s1 .chip {
+    padding: 8px 18px; border-radius: 2px;
+    border: 1px solid rgba(201,168,76,0.25);
+    font-size: 11px; font-weight: 700; letter-spacing: .2em;
+    color: rgba(255,255,255,0.5); text-transform: uppercase;
+    background: rgba(201,168,76,0.04);
+  }
+  #s1 .chip.hot { border-color: rgba(201,168,76,0.6); color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  /* ════════════════════════════════════════
+     SLIDE 2 — The Reality
+  ════════════════════════════════════════ */
+  #s2 { flex-direction: row; }
+  #s2 .left-panel {
+    width: 540px; height: 100%; flex-shrink: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 60px;
+    border-right: 1px solid rgba(201,168,76,0.15);
+  }
+  #s2 .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 140px; font-weight: 900; line-height: 1;
+    color: var(--gold); letter-spacing: -.03em;
+  }
+  #s2 .stat-unit {
+    font-size: 36px; font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-top: -8px;
+  }
+  #s2 .right-panel {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: center; padding: 80px 60px;
+  }
+  #s2 .model-row {
+    display: flex; flex-direction: column; gap: 20px; margin-top: 32px;
+  }
+  #s2 .model-step {
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  #s2 .step-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(201,168,76,0.35); flex-shrink: 0; margin-top: 6px;
+  }
+  #s2 .step-dot.active { background: var(--gold); }
+
+  /* ════════════════════════════════════════
+     SLIDE 3 — The Scenarios (The Problem Is Here)
+  ════════════════════════════════════════ */
+  #s3 { flex-direction: column; align-items: center; justify-content: center; }
+  #s3 .title-block { text-align: center; margin-bottom: 48px; }
+  #s3 .cards {
+    display: flex; gap: 20px;
+  }
+  .scenario-card {
+    width: 360px; padding: 28px 28px 24px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.04);
+    border-radius: 2px;
+    position: relative;
+  }
+  .scenario-card .conf-badge {
+    position: absolute; top: 20px; right: 20px;
+    font-size: 20px; font-weight: 900; color: var(--gold);
+  }
+  .scenario-card .sc-domain {
+    font-size: 9px; font-weight: 800; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+  }
+  .scenario-card .sc-name {
+    font-size: 18px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .03em; color: #fff; margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .scenario-card .sc-bar-track {
+    height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-bottom: 14px;
+  }
+  .scenario-card .sc-bar-fill {
+    height: 3px; border-radius: 2px; background: var(--gold);
+  }
+  .scenario-card .sc-status {
+    font-size: 10px; font-weight: 700; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(201,168,76,0.5);
+  }
+  .scenario-card.teal-card { border-color: rgba(43,138,110,0.3); background: rgba(43,138,110,0.04); }
+  .scenario-card.teal-card .conf-badge { color: var(--teal); }
+  .scenario-card.teal-card .sc-bar-fill { background: var(--teal); }
+
+  /* ════════════════════════════════════════
+     SLIDE 4 — The Solution Statement
+  ════════════════════════════════════════ */
+  #s4 { flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #s4 .main-claim {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 68px; font-weight: 900; line-height: 1.05;
+    text-transform: uppercase; color: #fff; letter-spacing: -.01em;
+    max-width: 900px;
+  }
+  #s4 .main-claim span { color: var(--gold); }
+  #s4 .tagline {
+    margin-top: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px; font-style: italic; color: rgba(255,255,255,0.55);
+  }
+  #s4 .three-pillars {
+    display: flex; gap: 60px; margin-top: 52px;
+  }
+  #s4 .pillar { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  #s4 .pillar-num {
+    font-size: 42px; font-weight: 900; color: var(--gold); line-height: 1;
+  }
+  #s4 .pillar-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .25em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    text-align: center;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 5 — Why VaughnMartin / The Moat
+  ════════════════════════════════════════ */
+  #s5 { flex-direction: row; }
+  #s5 .col {
+    flex: 1; height: 100%; display: flex; flex-direction: column;
+    justify-content: center; padding: 72px 60px;
+  }
+  #s5 .col-old { border-right: 1px solid rgba(255,255,255,0.08); }
+  #s5 .compare-item {
+    display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px;
+  }
+  #s5 .cmp-icon {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 900; margin-top: 2px;
+  }
+  #s5 .cmp-icon.x { background: rgba(255,80,80,0.15); color: rgba(255,100,100,0.7); }
+  #s5 .cmp-icon.check { background: rgba(201,168,76,0.15); color: var(--gold); }
+  #s5 .cmp-text { font-size: 15px; font-weight: 500; line-height: 1.5; }
+
+  /* ════════════════════════════════════════
+     SLIDE 6 — The Execution Chain
+  ════════════════════════════════════════ */
+  #s6 { flex-direction: column; align-items: center; justify-content: center; }
+  #s6 .chain {
+    display: flex; align-items: center; gap: 0; margin-top: 48px;
+    width: 100%; padding: 0 60px;
+  }
+  .chain-node {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  .chain-node::after {
+    content: ''; position: absolute; top: 28px; left: 50%; right: -50%;
+    height: 1px; background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2));
+  }
+  .chain-node:last-child::after { display: none; }
+  .chain-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1.5px solid var(--gold); background: rgba(201,168,76,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 900; color: var(--gold);
+    letter-spacing: .05em; position: relative; z-index: 1;
+  }
+  .chain-label {
+    font-size: 11px; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
+    margin-top: 14px; text-align: center; line-height: 1.3;
+  }
+  .chain-node.hero .chain-circle {
+    background: rgba(201,168,76,0.2); border-width: 2px; transform: scale(1.1);
+  }
+  .chain-node.hero .chain-label { color: var(--gold); }
+  #s6 .time-badge {
+    margin-top: 44px; padding: 14px 32px;
+    border: 1px solid rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.06); border-radius: 2px;
+    font-size: 13px; font-weight: 700; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  #s6 .contrast {
+    margin-top: 16px;
+    font-size: 13px; font-weight: 500; letter-spacing: .1em;
+    color: rgba(255,255,255,0.3); text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 7 — ROI
+  ════════════════════════════════════════ */
+  #s7 { flex-direction: row; }
+  #s7 .roi-left {
+    width: 480px; flex-shrink: 0; height: 100%;
+    background: linear-gradient(145deg, #080d24 0%, #0d1c4a 100%);
+    border-right: 1px solid rgba(201,168,76,0.15);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 72px 52px;
+  }
+  #s7 .roi-right {
+    flex: 1; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 72px 52px;
+  }
+  .roi-stat { margin-bottom: 36px; }
+  .roi-stat-num {
+    font-size: 64px; font-weight: 900; color: var(--gold); line-height: 1;
+  }
+  .roi-stat-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;
+  }
+  .roi-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 16px 0; border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .roi-row:last-child { border-bottom: none; }
+  .roi-row-label {
+    font-size: 13px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); max-width: 200px;
+  }
+  .roi-row-val {
+    font-size: 16px; font-weight: 800; color: #fff; text-align: right;
+  }
+  .roi-row-val.gold { color: var(--gold); }
+  .roi-row-val.teal { color: var(--teal); }
+
+  /* ════════════════════════════════════════
+     SLIDE 8 — Proof Points / Traction
+  ════════════════════════════════════════ */
+  #s8 { flex-direction: column; align-items: center; justify-content: center; }
+  #s8 .stats-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 20px;
+    margin-top: 48px; width: 100%; padding: 0 72px;
+  }
+  .stat-block {
+    border: 1px solid rgba(201,168,76,0.18);
+    background: rgba(201,168,76,0.04);
+    padding: 28px 24px; border-radius: 2px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .stat-block-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 48px; font-weight: 900; color: var(--gold); line-height: 1;
+  }
+  .stat-block-sub {
+    font-size: 10px; font-weight: 700; letter-spacing: .25em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); line-height: 1.4;
+  }
+  .stat-block.teal-block { border-color: rgba(43,138,110,0.3); background: rgba(43,138,110,0.04); }
+  .stat-block.teal-block .stat-block-num { color: var(--teal); }
+  #s8 .live-badge {
+    display: flex; align-items: center; gap: 8px; margin-top: 36px;
+    padding: 10px 20px; border: 1px solid rgba(43,138,110,0.3);
+    background: rgba(43,138,110,0.06); border-radius: 2px;
+  }
+  #s8 .live-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(43,138,110,0.2);
+  }
+  #s8 .live-text {
+    font-size: 11px; font-weight: 700; letter-spacing: .25em;
+    text-transform: uppercase; color: var(--teal);
+  }
+
+  /* ════════════════════════════════════════
+     SLIDE 9 — The Opportunity
+  ════════════════════════════════════════ */
+  #s9 { background: var(--ivory); flex-direction: row; }
+  #s9 .opp-left {
+    width: 520px; flex-shrink: 0; height: 100%;
+    background: var(--navy);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px;
+  }
+  #s9 .opp-right {
+    flex: 1; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 56px;
+    background: var(--ivory);
+  }
+  #s9 .market-point {
+    padding: 20px 0; border-bottom: 1px solid rgba(10,15,46,0.1);
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  #s9 .market-point:last-child { border-bottom: none; }
+  #s9 .mp-num {
+    font-size: 28px; font-weight: 900; color: var(--gold); line-height: 1;
+    flex-shrink: 0; width: 48px;
+  }
+  #s9 .mp-text { font-size: 15px; font-weight: 600; color: var(--navy); line-height: 1.45; }
+
+  /* ════════════════════════════════════════
+     SLIDE 10 — The Ask
+  ════════════════════════════════════════ */
+  #s10 { flex-direction: row; }
+  #s10 .ask-left {
+    width: 480px; flex-shrink: 0; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px;
+    border-right: 1px solid rgba(201,168,76,0.15);
+  }
+  #s10 .ask-right {
+    flex: 1; height: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 52px; gap: 20px;
+  }
+  .ask-item {
+    padding: 20px 22px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.04); border-radius: 2px;
+  }
+  .ask-item-label {
+    font-size: 9px; font-weight: 800; letter-spacing: .35em;
+    text-transform: uppercase; color: rgba(201,168,76,0.5); margin-bottom: 6px;
+  }
+  .ask-item-val {
+    font-size: 18px; font-weight: 800; color: #fff; text-transform: uppercase;
+    letter-spacing: .02em;
+  }
+  .ask-item-val.gold { color: var(--gold); }
+
+  /* ════════════════════════════════════════
+     SLIDE 11 — Close / The Through-Line
+  ════════════════════════════════════════ */
+  #s11 { flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #s11 .three-lines {
+    display: flex; flex-direction: column; gap: 12px;
+    margin: 36px 0;
+  }
+  #s11 .tl-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 16px 28px; border-left: 3px solid transparent;
+    text-align: left;
+  }
+  #s11 .tl-item.gold-line { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+  #s11 .tl-item.teal-line { border-color: var(--teal); background: rgba(43,138,110,0.04); }
+  #s11 .tl-tag {
+    font-size: 9px; font-weight: 800; letter-spacing: .35em;
+    text-transform: uppercase; flex-shrink: 0; width: 72px;
+  }
+  #s11 .tl-copy {
+    font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.35;
+  }
+  #s11 .url-badge {
+    margin-top: 20px; padding: 12px 28px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    font-size: 13px; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--gold);
+  }
+
+  /* ── Navigation controls ── */
+  .nav-btn {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: rgba(201,168,76,0.6); font-size: 20px; transition: all .2s;
+    z-index: 100;
+  }
+  .nav-btn:hover { background: rgba(201,168,76,0.2); color: var(--gold); }
+  #prev-btn { left: 16px; }
+  #next-btn { right: 16px; }
+
+  .progress-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 3px;
+    background: rgba(255,255,255,0.05); z-index: 100;
+  }
+  .progress-fill {
+    height: 100%; background: var(--gold);
+    transition: width .3s ease;
+  }
+
+  /* fullscreen helper */
+  .fullscreen-hint {
+    position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: .25em;
+    color: rgba(201,168,76,0.3); text-transform: uppercase;
+    z-index: 100;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="fullscreen-hint">Press F11 for fullscreen · Arrow keys or click to navigate</div>
+
+<button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592;</button>
+<button class="nav-btn" id="next-btn" onclick="navigate(1)">&#8594;</button>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<div class="deck">
+
+  <!-- ══════════════ SLIDE 1 ══════════════ -->
+  <div class="slide bg-dark active" id="s1">
+    <div class="grid-overlay"></div>
+    <div class="glow-tr"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="question">
+      When a strategic trigger fires in your organization—
+      <em>how long does it take to mobilize a coordinated response?</em>
+    </div>
+    <div class="scenario-chips">
+      <div class="chip hot">Activist Investor · 91%</div>
+      <div class="chip hot">Ransomware · 95%</div>
+      <div class="chip">Regulatory Inquiry · 87%</div>
+    </div>
+    <div class="sub" style="margin-top:28px;">These are live signal detections. Production. Right now.</div>
+
+    <div class="brand-pos">
+      <div class="seal-wrap">
+        <svg class="seal-svg" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#C9A84C" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="10.5" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+          <text x="18" y="22" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="900" fill="#C9A84C">VM</text>
+        </svg>
+        <div><div class="seal-text-name">VaughnMartin</div><div class="seal-text-product">Readiness OS</div></div>
+      </div>
+    </div>
+    <div class="slide-num">01 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 2 ══════════════ -->
+  <div class="slide bg-dark" id="s2">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="left-panel">
+      <div class="label label-gold" style="margin-bottom:20px;">The Reality</div>
+      <div class="stat-num">30</div>
+      <div class="stat-unit">Days</div>
+      <div class="gold-rule" style="margin-top:28px; margin-bottom:20px;"></div>
+      <div class="editorial text-muted">That's not execution time.<br/>That's mobilization time<br/><em style="color:rgba(255,255,255,0.7);">before any execution begins.</em></div>
+    </div>
+
+    <div class="right-panel">
+      <div class="label label-gold" style="margin-bottom:24px;">The Old Model — Every Time</div>
+      <div class="model-row">
+        <div class="model-step">
+          <div class="step-dot active"></div>
+          <div>
+            <div class="headline-sm text-white" style="font-size:16px; margin-bottom:4px;">Trigger fires</div>
+            <div class="body-sm text-muted">Signal detected — no protocol exists. Emails go out.</div>
+          </div>
+        </div>
+        <div class="model-step">
+          <div class="step-dot"></div>
+          <div>
+            <div class="headline-sm text-white" style="font-size:16px; margin-bottom:4px;">Days 1–5: Who's in the room?</div>
+            <div class="body-sm text-muted">Executives align on who should lead. Calendars negotiated.</div>
+          </div>
+        </div>
+        <div class="model-step">
+          <div class="step-dot"></div>
+          <div>
+            <div class="headline-sm text-white" style="font-size:16px; margin-bottom:4px;">Days 5–15: What's the plan?</div>
+            <div class="body-sm text-muted">Consulting firm engaged. Discovery begins. Budget not allocated.</div>
+          </div>
+        </div>
+        <div class="model-step">
+          <div class="step-dot"></div>
+          <div>
+            <div class="headline-sm text-white" style="font-size:16px; margin-bottom:4px;">Days 15–30: Alignment cycle</div>
+            <div class="body-sm text-muted">Stakeholders debated. Execution plan approved. Timeline slips.</div>
+          </div>
+        </div>
+        <div class="model-step">
+          <div class="step-dot active"></div>
+          <div>
+            <div class="headline-sm text-gold" style="font-size:16px; margin-bottom:4px;">Day 30+: Execution finally begins</div>
+            <div class="body-sm text-muted">The narrative is already written. The window is already closed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-num">02 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 3 ══════════════ -->
+  <div class="slide bg-dark" id="s3">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="title-block">
+      <div class="label label-gold" style="margin-bottom:14px;">The Problem Is Already Here</div>
+      <div class="headline-md text-white">One of these is forming in<br/>your portfolio right now</div>
+    </div>
+
+    <div class="cards">
+      <div class="scenario-card">
+        <div class="conf-badge">95%</div>
+        <div class="sc-domain">Risk &amp; Resilience</div>
+        <div class="sc-name">Ransomware<br/>Attack Confirmed</div>
+        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:95%"></div></div>
+        <div class="sc-status">● Signal Detected · 248 data points</div>
+      </div>
+      <div class="scenario-card">
+        <div class="conf-badge">91%</div>
+        <div class="sc-domain">Growth &amp; Positioning</div>
+        <div class="sc-name">Activist Investor<br/>Pressure Rising</div>
+        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:91%"></div></div>
+        <div class="sc-status">● Signal Detected · Live Monitoring</div>
+      </div>
+      <div class="scenario-card teal-card">
+        <div class="conf-badge">87%</div>
+        <div class="sc-domain">Risk &amp; Resilience</div>
+        <div class="sc-name">Regulatory Inquiry<br/>Opened</div>
+        <div class="sc-bar-track"><div class="sc-bar-fill" style="width:87%"></div></div>
+        <div class="sc-status">● Signal Detected · Threshold Forming</div>
+      </div>
+    </div>
+
+    <div class="label label-gold" style="margin-top:36px; text-align:center;">
+      These are live detections from vaughnmartin.com — not hypothetical
+    </div>
+    <div class="slide-num">03 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 4 ══════════════ -->
+  <div class="slide bg-dark" id="s4">
+    <div class="grid-overlay"></div>
+    <div class="glow-tr"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="main-claim">
+      The response is ready<br/><span>before the trigger fires</span>
+    </div>
+    <div class="tagline">Preparation → Readiness → Fearless</div>
+
+    <div class="three-pillars">
+      <div class="pillar">
+        <div class="pillar-num">170</div>
+        <div class="pillar-label">Readiness<br/>Protocols</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">221</div>
+        <div class="pillar-label">Strategic<br/>Triggers Mapped</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num" style="font-size:36px;">12 MIN</div>
+        <div class="pillar-label">Full Execution<br/>Cycle</div>
+      </div>
+    </div>
+    <div class="slide-num">04 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 5 ══════════════ -->
+  <div class="slide bg-dark" id="s5">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="col col-old">
+      <div class="label" style="font-size:10px; letter-spacing:.3em; color:rgba(255,80,80,0.5); margin-bottom:28px;">Every Other Vendor</div>
+      <div class="editorial text-muted" style="font-size:22px; margin-bottom:32px;">"Bolted AI<br/>onto the old model"</div>
+
+      <div class="compare-item">
+        <div class="cmp-icon x">✕</div>
+        <div class="cmp-text text-muted">Faster summaries from the same slow meeting</div>
+      </div>
+      <div class="compare-item">
+        <div class="cmp-icon x">✕</div>
+        <div class="cmp-text text-muted">Smarter notes. Same 30-day mobilization cycle.</div>
+      </div>
+      <div class="compare-item">
+        <div class="cmp-icon x">✕</div>
+        <div class="cmp-text text-muted">AI tools. No operating model change.</div>
+      </div>
+      <div class="compare-item">
+        <div class="cmp-icon x">✕</div>
+        <div class="cmp-text text-muted">Competes with Copilot. We don't.</div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="label label-gold" style="margin-bottom:28px;">VaughnMartin</div>
+      <div class="editorial" style="font-size:22px; color:rgba(255,255,255,0.8); margin-bottom:32px;">"Rebuilt the operating model<br/>from first principles"</div>
+
+      <div class="compare-item">
+        <div class="cmp-icon check">✓</div>
+        <div class="cmp-text text-white">Pre-staged before any trigger fires</div>
+      </div>
+      <div class="compare-item">
+        <div class="cmp-icon check">✓</div>
+        <div class="cmp-text text-white">Proprietary IDEA Framework — 3 years to build</div>
+      </div>
+      <div class="compare-item">
+        <div class="cmp-icon check">✓</div>
+        <div class="cmp-text text-white">Orchestrates the Microsoft stack — doesn't replace it</div>
+      </div>
+      <div class="compare-item">
+        <div class="cmp-icon check">✓</div>
+        <div class="cmp-text text-white">Competes with the 40-year-old meeting model</div>
+      </div>
+    </div>
+    <div class="slide-num">05 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 6 ══════════════ -->
+  <div class="slide bg-dark" id="s6">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="label label-gold" style="text-align:center; margin-top:64px;">How It Executes</div>
+    <div class="headline-md text-white" style="text-align:center; margin-top:12px;">
+      The preparation architecture that exists<br/>before the trigger fires
+    </div>
+
+    <div class="chain">
+      <div class="chain-node">
+        <div class="chain-circle">SIG</div>
+        <div class="chain-label">Signal<br/>Detected</div>
+      </div>
+      <div class="chain-node">
+        <div class="chain-circle">SCR</div>
+        <div class="chain-label">Scored &amp;<br/>Classified</div>
+      </div>
+      <div class="chain-node hero">
+        <div class="chain-circle">PRO</div>
+        <div class="chain-label">Protocol<br/>Activates</div>
+      </div>
+      <div class="chain-node">
+        <div class="chain-circle">STK</div>
+        <div class="chain-label">Stakeholders<br/>Notified</div>
+      </div>
+      <div class="chain-node">
+        <div class="chain-circle">AUTH</div>
+        <div class="chain-label">Executive<br/>Authorizes</div>
+      </div>
+      <div class="chain-node hero">
+        <div class="chain-circle">EXE</div>
+        <div class="chain-label">Execution<br/>Begins</div>
+      </div>
+    </div>
+
+    <div class="time-badge">✓ Complete in 12 minutes</div>
+    <div class="contrast">The alternative: 30 days of mobilization before execution begins</div>
+    <div class="slide-num" style="bottom:24px; right:32px; color:rgba(201,168,76,0.35); font-size:11px; font-weight:700; letter-spacing:.25em; position:absolute; text-transform:uppercase;">06 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 7 ══════════════ -->
+  <div class="slide bg-dark" id="s7">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="roi-left">
+      <div class="label label-gold" style="margin-bottom:32px;">Return on Readiness</div>
+
+      <div class="roi-stat">
+        <div class="roi-stat-num">3,600×</div>
+        <div class="roi-stat-label">Execution Head Start vs. Old Model</div>
+      </div>
+
+      <div class="roi-stat">
+        <div class="roi-stat-num" style="font-size:42px;">$120K</div>
+        <div class="roi-stat-label">Platform Cost · Annual</div>
+      </div>
+
+      <div class="gold-rule" style="margin: 20px 0;"></div>
+      <div class="editorial text-muted" style="font-size:18px;">
+        Breaks even before<br/>the second activation.
+      </div>
+    </div>
+
+    <div class="roi-right">
+      <div class="label label-gold" style="margin-bottom:24px;">The Business Case</div>
+
+      <div class="roi-row">
+        <div class="roi-row-label">Consulting Retainer Replaced</div>
+        <div class="roi-row-val gold">$400K – $800K / yr</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-row-label">Platform Cost</div>
+        <div class="roi-row-val">$60K – $240K / yr</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-row-label">Break-Even Point</div>
+        <div class="roi-row-val teal">2nd Activation</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-row-label">3-Year Net Value</div>
+        <div class="roi-row-val gold">Calculated live at /roi-calculator</div>
+      </div>
+      <div class="roi-row">
+        <div class="roi-row-label">Budget Line Already Exists</div>
+        <div class="roi-row-val teal">Replaces existing retainer spend</div>
+      </div>
+
+      <div class="body-sm text-muted" style="margin-top:28px; font-style:italic; border-left:2px solid rgba(201,168,76,0.3); padding-left:16px;">
+        "We're not adding to the budget. We're replacing a line item that every Fortune 1000 already pays — and delivering 3,600× the execution speed."
+      </div>
+    </div>
+    <div class="slide-num">07 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 8 ══════════════ -->
+  <div class="slide bg-dark" id="s8">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div style="text-align:center; margin-top:60px;">
+      <div class="label label-gold" style="margin-bottom:14px;">Built. In Production. Right Now.</div>
+      <div class="headline-md text-white">The system is live —<br/>not a demo, not a roadmap</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-block">
+        <div class="stat-block-num">170</div>
+        <div class="stat-block-sub">Readiness Protocols<br/>Pre-Staged</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-num">221</div>
+        <div class="stat-block-sub">Strategic Triggers<br/>Mapped</div>
+      </div>
+      <div class="stat-block teal-block">
+        <div class="stat-block-num">248</div>
+        <div class="stat-block-sub">Data Points Monitored<br/>Every 15 Minutes</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-block-num">12</div>
+        <div class="stat-block-sub">Compound Protocols<br/>Multi-Domain</div>
+      </div>
+    </div>
+
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      <div class="live-text">vaughnmartin.com · Signal Detection Active · Updated Every 15 Minutes</div>
+    </div>
+    <div class="slide-num">08 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 9 ══════════════ -->
+  <div class="slide" id="s9">
+    <div class="opp-left">
+      <div class="gold-bar-left"></div>
+      <div class="label label-gold" style="margin-bottom:24px;">The Market Opportunity</div>
+      <div class="headline-md text-white" style="font-size:38px; margin-bottom:28px;">
+        Preparation<br/>infrastructure<br/>does not exist yet.
+      </div>
+      <div class="gold-rule" style="margin-bottom:24px;"></div>
+      <div class="editorial text-ivory" style="font-size:20px; opacity:.8;">
+        That's not a problem.<br/>That's the entire opportunity.
+      </div>
+    </div>
+
+    <div class="opp-right">
+      <div class="label label-navy" style="margin-bottom:20px;">Why Now · Why VaughnMartin</div>
+
+      <div class="market-point">
+        <div class="mp-num">01</div>
+        <div class="mp-text">Every Fortune 1000 has Microsoft's AI stack. None have the operating model to use it at trigger speed. Readiness OS is the layer above.</div>
+      </div>
+      <div class="market-point">
+        <div class="mp-num">02</div>
+        <div class="mp-text">The category doesn't exist yet. First-mover advantage in preparation infrastructure is the same position ERP held in the 1990s.</div>
+      </div>
+      <div class="market-point">
+        <div class="mp-num">03</div>
+        <div class="mp-text">Enterprise AI budgets are growing. The operating model gap is growing faster. That gap is our product.</div>
+      </div>
+      <div class="market-point">
+        <div class="mp-num">04</div>
+        <div class="mp-text">We built the IDEA Framework — 170 protocols across 3 years. This is not recreatable in a product cycle. It is a structural moat.</div>
+      </div>
+    </div>
+    <div class="slide-num dark-num">09 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 10 ══════════════ -->
+  <div class="slide bg-dark" id="s10">
+    <div class="grid-overlay"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="ask-left">
+      <div class="label label-gold" style="margin-bottom:24px;">Founding Partner Program</div>
+      <div class="headline-md text-white" style="font-size:46px; margin-bottom:20px;">
+        Twelve<br/>organizations.<br/>One first cohort.
+      </div>
+      <div class="gold-rule" style="margin-bottom:20px;"></div>
+      <div class="editorial text-muted" style="font-size:20px;">
+        We're not looking for customers.<br/>We're selecting partners who will<br/>define the category with us.
+      </div>
+    </div>
+
+    <div class="ask-right">
+      <div class="label label-gold" style="margin-bottom:8px;">The Ask</div>
+
+      <div class="ask-item">
+        <div class="ask-item-label">Program</div>
+        <div class="ask-item-val">Founding Partner Program · 90-Day Validation</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-item-label">Cohort Size</div>
+        <div class="ask-item-val gold">12 Organizations · Fortune 1000</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-item-label">Investment Round</div>
+        <div class="ask-item-val">[Round Size] · [Terms]</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-item-label">Use of Funds</div>
+        <div class="ask-item-val">Protocol Expansion · Sales Infrastructure · Category Establishment</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-item-label">Why This Room</div>
+        <div class="ask-item-val gold">Investors who see the category before the category exists</div>
+      </div>
+    </div>
+    <div class="slide-num">10 / 11</div>
+  </div>
+
+  <!-- ══════════════ SLIDE 11 ══════════════ -->
+  <div class="slide bg-dark" id="s11">
+    <div class="grid-overlay"></div>
+    <div class="glow-tr"></div>
+    <div class="gold-bar-top"></div>
+
+    <div class="label label-gold" style="text-align:center;">Three sentences. That's the whole pitch.</div>
+
+    <div class="three-lines">
+      <div class="tl-item gold-line">
+        <div class="tl-tag" style="color:rgba(201,168,76,0.6);">Problem</div>
+        <div class="tl-copy">No preparation infrastructure exists. Every enterprise responds to strategic triggers in real time — in 2025, with AI. The mobilization cycle averages 30 days.</div>
+      </div>
+      <div class="tl-item gold-line">
+        <div class="tl-tag" style="color:rgba(201,168,76,0.6);">Solution</div>
+        <div class="tl-copy">We rebuilt the operating model — not the tools. Readiness OS replaces real-time coordination with pre-staged execution. 12 minutes, not 30 days.</div>
+      </div>
+      <div class="tl-item teal-line">
+        <div class="tl-tag" style="color:var(--teal);">ROI</div>
+        <div class="tl-copy">At $120K, we replace a $400K–$800K consulting retainer. Break-even before the second activation. The budget line already exists.</div>
+      </div>
+    </div>
+
+    <div class="url-badge">vaughnmartin.com/founding-partner-program</div>
+
+    <div class="label label-gold" style="margin-top:20px; text-align:center; opacity:.5;">
+      VaughnMartin · Readiness OS · The response is ready before the trigger fires
+    </div>
+    <div class="slide-num">11 / 11</div>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    document.getElementById('progress').style.width = ((current + 1) / total * 100) + '%';
+  }
+
+  function navigate(dir) { showSlide(current + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') navigate(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
+    if (e.key === 'f' || e.key === 'F') document.documentElement.requestFullscreen?.();
+  });
+
+  document.querySelector('.deck').addEventListener('click', e => {
+    if (!e.target.closest('.nav-btn')) navigate(1);
+  });
+
+  // Initialize progress
+  document.getElementById('progress').style.width = (1 / total * 100) + '%';
+</script>
+</body>
+</html>
