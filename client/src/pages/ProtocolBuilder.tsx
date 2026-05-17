@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import {
   CheckCircle2, ChevronRight, Plus, X, Shield, Users, ListChecks,
-  MessageSquare, Wallet, Key, ArrowLeft, BookOpen, Zap
+  MessageSquare, Wallet, Key, ArrowLeft, BookOpen, Zap, AlertTriangle
 } from 'lucide-react';
 
 const NAVY   = '#0A0F2E';
@@ -46,6 +46,151 @@ const RISK_COLORS: Record<string, string> = {
   HIGH: '#DC2626',
   CRITICAL: NAVY,
 };
+
+const SIGNAL_SOURCE_OPTIONS = [
+  'Market News',
+  'Regulatory Alerts',
+  'Threat Intelligence',
+  'Customer Sentiment',
+  'Supply Chain Feeds',
+  'Macroeconomic Signals',
+];
+
+const INTERNAL_SYSTEM_OPTIONS = [
+  'ERP',
+  'CRM',
+  'ITSM',
+  'SIEM',
+  'HRIS',
+  'Procurement',
+];
+
+const MONITORING_CADENCE_OPTIONS = [
+  { label: '5 minutes', value: '5' },
+  { label: '15 minutes', value: '15' },
+  { label: '30 minutes', value: '30' },
+  { label: '60 minutes', value: '60' },
+];
+
+type StarterTemplate = {
+  id: string;
+  label: string;
+  description: string;
+  defaults: {
+    name: string;
+    triggerDomain: string;
+    triggerCondition: string;
+    industry: string;
+    riskThreshold: string;
+    immediatePrimary: { title: string; name: string };
+    secondaryPrimary: { title: string; name: string };
+    followUpPrimary: { title: string; name: string };
+    immediateTasks: { description: string; assignedTo: string }[];
+    secondaryTasks: { description: string; assignedTo: string }[];
+    followUpTasks: { description: string; assignedTo: string }[];
+    signalSources: string[];
+    internalSystems: string[];
+  };
+};
+
+const STARTER_TEMPLATES: StarterTemplate[] = [
+  {
+    id: 'ransomware-critical',
+    label: 'Critical Cyber Event',
+    description: 'Ransomware or destructive cyber incident',
+    defaults: {
+      name: 'Ransomware Response — Enterprise Systems',
+      triggerDomain: 'Technology & AI Governance',
+      triggerCondition: 'SIEM detects encryption activity across two or more production systems with lateral movement indicators.',
+      industry: 'Technology',
+      riskThreshold: 'CRITICAL',
+      immediatePrimary: { title: 'CISO', name: '' },
+      secondaryPrimary: { title: 'General Counsel', name: '' },
+      followUpPrimary: { title: 'CFO', name: '' },
+      immediateTasks: [
+        { description: 'Isolate affected systems and disable privileged non-essential accounts', assignedTo: 'Security Operations' },
+        { description: 'Activate incident command bridge and legal hold', assignedTo: 'General Counsel' },
+        { description: 'Prepare executive brief with confirmed scope', assignedTo: 'CISO' },
+      ],
+      secondaryTasks: [
+        { description: 'Engage digital forensics partner', assignedTo: 'Legal + Security' },
+        { description: 'Assess regulatory and customer notification obligations', assignedTo: 'Compliance' },
+        { description: 'Stage customer and board communication paths', assignedTo: 'Communications Lead' },
+      ],
+      followUpTasks: [
+        { description: 'Close-out report with root cause and control remediation', assignedTo: 'CISO' },
+        { description: 'Board review and policy updates', assignedTo: 'CFO' },
+        { description: 'Tabletop drill updates using observed gaps', assignedTo: 'PMO' },
+      ],
+      signalSources: ['Threat Intelligence', 'Regulatory Alerts'],
+      internalSystems: ['SIEM', 'ITSM'],
+    },
+  },
+  {
+    id: 'regulatory-inquiry',
+    label: 'Regulatory Inquiry',
+    description: 'Formal regulator notice requiring coordinated response',
+    defaults: {
+      name: 'Regulatory Inquiry Response',
+      triggerDomain: 'Regulatory & Compliance',
+      triggerCondition: 'Regulatory inquiry or subpoena received that requires cross-functional response in under 24 hours.',
+      industry: 'Financial Services',
+      riskThreshold: 'HIGH',
+      immediatePrimary: { title: 'Chief Compliance Officer', name: '' },
+      secondaryPrimary: { title: 'General Counsel', name: '' },
+      followUpPrimary: { title: 'COO', name: '' },
+      immediateTasks: [
+        { description: 'Open inquiry command channel and assign matter owner', assignedTo: 'Compliance' },
+        { description: 'Issue legal hold and data preservation notice', assignedTo: 'Legal' },
+        { description: 'Assemble initial fact package for executives', assignedTo: 'Risk Office' },
+      ],
+      secondaryTasks: [
+        { description: 'Map impacted business units and control owners', assignedTo: 'Operations' },
+        { description: 'Draft regulator response strategy and timeline', assignedTo: 'General Counsel' },
+        { description: 'Stage board audit committee briefing', assignedTo: 'Corporate Secretary' },
+      ],
+      followUpTasks: [
+        { description: 'Submit response package and evidence trail', assignedTo: 'Compliance' },
+        { description: 'Document remediation commitments', assignedTo: 'COO' },
+        { description: 'Update protocol based on regulator feedback', assignedTo: 'PMO' },
+      ],
+      signalSources: ['Regulatory Alerts', 'Market News'],
+      internalSystems: ['ERP', 'Procurement'],
+    },
+  },
+  {
+    id: 'supply-chain-shock',
+    label: 'Supply Chain Shock',
+    description: 'Critical supplier disruption or route failure',
+    defaults: {
+      name: 'Supplier Disruption Response',
+      triggerDomain: 'Operational Excellence',
+      triggerCondition: 'Tier-1 supplier outage or logistics block creates immediate fulfillment risk within 72 hours.',
+      industry: 'Manufacturing',
+      riskThreshold: 'HIGH',
+      immediatePrimary: { title: 'COO', name: '' },
+      secondaryPrimary: { title: 'Chief Procurement Officer', name: '' },
+      followUpPrimary: { title: 'Chief Revenue Officer', name: '' },
+      immediateTasks: [
+        { description: 'Confirm impacted SKUs and customers', assignedTo: 'Supply Chain Operations' },
+        { description: 'Activate alternate supplier shortlist', assignedTo: 'Procurement' },
+        { description: 'Stage customer communication cadence', assignedTo: 'Customer Success Lead' },
+      ],
+      secondaryTasks: [
+        { description: 'Rebalance production and fulfillment priorities', assignedTo: 'Operations Planning' },
+        { description: 'Authorize expedited logistics budget', assignedTo: 'Finance' },
+        { description: 'Align sales commitments with revised delivery windows', assignedTo: 'Revenue Operations' },
+      ],
+      followUpTasks: [
+        { description: 'Post-event resilience review with supplier score updates', assignedTo: 'Procurement' },
+        { description: 'Capture margin impact and recovery actions', assignedTo: 'Finance' },
+        { description: 'Update protocol decision thresholds', assignedTo: 'PMO' },
+      ],
+      signalSources: ['Supply Chain Feeds', 'Macroeconomic Signals'],
+      internalSystems: ['ERP', 'CRM', 'Procurement'],
+    },
+  },
+];
 
 const STEPS = [
   {
@@ -95,7 +240,11 @@ const STEPS = [
 const mkTasks = (n: number) => Array.from({ length: n }, () => ({ description: '', assignedTo: '' }));
 
 const INIT = {
+  starterTemplateId: '',
   name: '', triggerDomain: '', triggerCondition: '', industry: '', riskThreshold: 'HIGH',
+  signalSources: [] as string[],
+  internalSystems: [] as string[],
+  monitoringCadenceMinutes: '15',
   immediatePrimary: { title: '', name: '' },
   immediateSecondary: { title: '', name: '' },
   secondaryPrimary: { title: '', name: '' },
@@ -116,6 +265,14 @@ const INIT = {
   executorTitle: '', executorName: '',
   observers: [{ title: '', name: '' }],
   overrideTitle: '', overrideName: '',
+  protocolVersion: 'v1.0',
+  changeSummary: '',
+  approvalPolicy: 'single',
+  reviewCadence: 'quarterly',
+  rollbackPlan: '',
+  lastReviewedByTitle: '',
+  lastReviewedByName: '',
+  testScenarioSummary: '',
   customFields: {
     identity:  [] as CustomField[],
     owners:    [] as CustomField[],
@@ -127,6 +284,11 @@ const INIT = {
 };
 
 type Data = typeof INIT;
+
+type StepValidation = {
+  isComplete: boolean;
+  missing: string[];
+};
 
 const inputStyle: React.CSSProperties = {
   width: '100%', padding: '10px 14px', border: `1px solid ${BORDER}`,
@@ -145,6 +307,43 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
     <div style={{ marginBottom: 20 }}>
       <label style={labelStyle}>{label}</label>
       {children}
+    </div>
+  );
+}
+
+function CoveragePillGroup({
+  options,
+  selected,
+  onToggle,
+}: {
+  options: string[];
+  selected: string[];
+  onToggle: (value: string) => void;
+}) {
+  return (
+    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      {options.map((option) => {
+        const isSelected = selected.includes(option);
+        return (
+          <button
+            key={option}
+            type="button"
+            onClick={() => onToggle(option)}
+            style={{
+              borderRadius: '999px',
+              border: `1px solid ${isSelected ? TEAL : BORDER}`,
+              background: isSelected ? 'rgba(43,138,110,0.12)' : '#fff',
+              color: isSelected ? TEAL : NAVY,
+              fontSize: 12,
+              fontWeight: 600,
+              padding: '6px 12px',
+              cursor: 'pointer',
+            }}
+          >
+            {option}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -185,9 +384,36 @@ function ExampleCard({ step }: { step: typeof STEPS[0] }) {
   );
 }
 
-function Step1({ data, update }: { data: Data; update: (f: string, v: any) => void }) {
+function Step1({
+  data,
+  update,
+  onApplyTemplate,
+  onToggleCoverage,
+}: {
+  data: Data;
+  update: (f: string, v: any) => void;
+  onApplyTemplate: (templateId: string) => void;
+  onToggleCoverage: (field: 'signalSources' | 'internalSystems', value: string) => void;
+}) {
   return (
     <>
+      <Field label="Quick Start Template">
+        <select
+          style={inputStyle}
+          value={data.starterTemplateId}
+          onChange={(e) => onApplyTemplate(e.target.value)}
+        >
+          <option value="">Start from scratch</option>
+          {STARTER_TEMPLATES.map((template) => (
+            <option key={template.id} value={template.id}>
+              {template.label} — {template.description}
+            </option>
+          ))}
+        </select>
+        <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>
+          Templates preload ownership, tasks, and signal coverage. You can edit every field.
+        </div>
+      </Field>
       <Field label="Protocol Name">
         <input style={inputStyle} placeholder="e.g., Ransomware Response — Enterprise Systems" value={data.name} onChange={e => update('name', e.target.value)} />
       </Field>
@@ -219,6 +445,37 @@ function Step1({ data, update }: { data: Data; update: (f: string, v: any) => vo
             }}>{r}</button>
           ))}
         </div>
+      </Field>
+      <Field label="External Signal Coverage">
+        <CoveragePillGroup
+          options={SIGNAL_SOURCE_OPTIONS}
+          selected={data.signalSources}
+          onToggle={(value) => onToggleCoverage('signalSources', value)}
+        />
+        <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>
+          Select the outside intelligence feeds this protocol should monitor.
+        </div>
+      </Field>
+      <Field label="Internal System Coverage">
+        <CoveragePillGroup
+          options={INTERNAL_SYSTEM_OPTIONS}
+          selected={data.internalSystems}
+          onToggle={(value) => onToggleCoverage('internalSystems', value)}
+        />
+        <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>
+          Select systems used for evidence collection, action orchestration, and tracking.
+        </div>
+      </Field>
+      <Field label="Monitoring Cadence">
+        <select
+          style={inputStyle}
+          value={data.monitoringCadenceMinutes}
+          onChange={(e) => update('monitoringCadenceMinutes', e.target.value)}
+        >
+          {MONITORING_CADENCE_OPTIONS.map((option) => (
+            <option key={option.value} value={option.value}>{option.label}</option>
+          ))}
+        </select>
       </Field>
     </>
   );
@@ -494,7 +751,7 @@ function Step5({ data, update }: { data: Data; update: (f: string, v: any) => vo
   );
 }
 
-function Step6({ data, update, updateNested }: { data: Data; update: (f: string, v: any) => void; updateNested: (f: string, k: string, v: string) => void }) {
+function Step6({ data, update }: { data: Data; update: (f: string, v: any) => void }) {
   const addObserver = () => update('observers', [...data.observers, { title: '', name: '' }]);
   const removeObserver = (i: number) => update('observers', data.observers.filter((_, idx) => idx !== i));
   const updateObserver = (i: number, k: string, v: string) =>
@@ -540,8 +797,134 @@ function Step6({ data, update, updateNested }: { data: Data; update: (f: string,
           <input style={{ ...inputStyle, flex: 1 }} placeholder="Full Name" value={data.overrideName} onChange={e => update('overrideName', e.target.value)} />
         </div>
       </div>
+      <div style={{ marginBottom: 24, borderTop: `1px solid ${BORDER}`, paddingTop: 24 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, marginBottom: 12 }}>Versioning & Governance</div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
+          <input style={inputStyle} placeholder="Version tag (e.g., v1.2)" value={data.protocolVersion} onChange={e => update('protocolVersion', e.target.value)} />
+          <select style={inputStyle} value={data.approvalPolicy} onChange={e => update('approvalPolicy', e.target.value)}>
+            <option value="single">Single executive approval</option>
+            <option value="dual">Dual executive approval</option>
+            <option value="board">Board-level approval required</option>
+          </select>
+        </div>
+        <Field label="Change Summary">
+          <textarea
+            style={{ ...inputStyle, minHeight: 90, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }}
+            placeholder="Document what changed in this version and why."
+            value={data.changeSummary}
+            onChange={(e) => update('changeSummary', e.target.value)}
+          />
+        </Field>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
+          <select style={inputStyle} value={data.reviewCadence} onChange={e => update('reviewCadence', e.target.value)}>
+            <option value="monthly">Monthly review</option>
+            <option value="quarterly">Quarterly review</option>
+            <option value="semi-annual">Semi-annual review</option>
+            <option value="annual">Annual review</option>
+          </select>
+          <input style={inputStyle} placeholder="Reviewer title" value={data.lastReviewedByTitle} onChange={e => update('lastReviewedByTitle', e.target.value)} />
+        </div>
+        <input style={{ ...inputStyle, marginBottom: 12 }} placeholder="Reviewer name" value={data.lastReviewedByName} onChange={e => update('lastReviewedByName', e.target.value)} />
+        <Field label="Rollback Plan">
+          <textarea
+            style={{ ...inputStyle, minHeight: 80, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }}
+            placeholder="Define how to revert this protocol version if execution quality degrades."
+            value={data.rollbackPlan}
+            onChange={(e) => update('rollbackPlan', e.target.value)}
+          />
+        </Field>
+        <Field label="Validation Scenario">
+          <textarea
+            style={{ ...inputStyle, minHeight: 80, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }}
+            placeholder="Describe the simulation or live drill scenario used to validate this version."
+            value={data.testScenarioSummary}
+            onChange={(e) => update('testScenarioSummary', e.target.value)}
+          />
+        </Field>
+      </div>
     </>
   );
+}
+
+function getStepValidation(data: Data): StepValidation[] {
+  const hasImmediateTask = data.immediateTasks.some((task) => task.description.trim() && task.assignedTo.trim());
+  const hasSecondaryTask = data.secondaryTasks.some((task) => task.description.trim() && task.assignedTo.trim());
+  const hasFollowUpTask = data.followUpTasks.some((task) => task.description.trim() && task.assignedTo.trim());
+
+  return [
+    {
+      isComplete: Boolean(data.name.trim() && data.triggerDomain && data.triggerCondition.trim() && data.signalSources.length > 0),
+      missing: [
+        !data.name.trim() ? 'Protocol name' : '',
+        !data.triggerDomain ? 'Strategic domain' : '',
+        !data.triggerCondition.trim() ? 'Trigger condition' : '',
+        data.signalSources.length === 0 ? 'At least one external signal source' : '',
+      ].filter(Boolean),
+    },
+    {
+      isComplete: Boolean(
+        data.immediatePrimary.title.trim() &&
+        data.immediatePrimary.name.trim() &&
+        data.secondaryPrimary.title.trim() &&
+        data.secondaryPrimary.name.trim() &&
+        data.followUpPrimary.title.trim() &&
+        data.followUpPrimary.name.trim()
+      ),
+      missing: [
+        !data.immediatePrimary.title.trim() || !data.immediatePrimary.name.trim() ? 'Immediate phase owner' : '',
+        !data.secondaryPrimary.title.trim() || !data.secondaryPrimary.name.trim() ? 'Secondary phase owner' : '',
+        !data.followUpPrimary.title.trim() || !data.followUpPrimary.name.trim() ? 'Follow-up phase owner' : '',
+      ].filter(Boolean),
+    },
+    {
+      isComplete: hasImmediateTask && hasSecondaryTask && hasFollowUpTask,
+      missing: [
+        !hasImmediateTask ? 'At least one immediate task with assignee' : '',
+        !hasSecondaryTask ? 'At least one secondary task with assignee' : '',
+        !hasFollowUpTask ? 'At least one follow-up task with assignee' : '',
+      ].filter(Boolean),
+    },
+    {
+      isComplete: Boolean(data.boardNotification.trim() && data.stakeholderAlert.trim()),
+      missing: [
+        !data.boardNotification.trim() ? 'Board notification template' : '',
+        !data.stakeholderAlert.trim() ? 'Stakeholder alert template' : '',
+      ].filter(Boolean),
+    },
+    {
+      isComplete: Boolean(data.budgetLow && data.budgetMedium && data.budgetHigh && data.budgetCritical),
+      missing: [
+        !data.budgetLow ? 'Low severity budget' : '',
+        !data.budgetMedium ? 'Medium severity budget' : '',
+        !data.budgetHigh ? 'High severity budget' : '',
+        !data.budgetCritical ? 'Critical severity budget' : '',
+      ].filter(Boolean),
+    },
+    {
+      isComplete: Boolean(
+        data.authorizerTitle.trim() &&
+        data.authorizerName.trim() &&
+        data.executorTitle.trim() &&
+        data.executorName.trim() &&
+        data.protocolVersion.trim() &&
+        data.changeSummary.trim() &&
+        data.rollbackPlan.trim()
+      ),
+      missing: [
+        !data.authorizerTitle.trim() || !data.authorizerName.trim() ? 'Authorizer assignment' : '',
+        !data.executorTitle.trim() || !data.executorName.trim() ? 'Executor assignment' : '',
+        !data.protocolVersion.trim() ? 'Protocol version tag' : '',
+        !data.changeSummary.trim() ? 'Version change summary' : '',
+        !data.rollbackPlan.trim() ? 'Rollback plan' : '',
+      ].filter(Boolean),
+    },
+  ];
+}
+
+function scoreBand(score: number) {
+  if (score >= 85) return { label: 'Strong', color: TEAL };
+  if (score >= 70) return { label: 'Needs tuning', color: '#D97706' };
+  return { label: 'Gap', color: '#DC2626' };
 }
 
 function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave: () => void; isPending: boolean; savedId?: string }) {
@@ -549,6 +932,103 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
   const allImmediate = data.immediateTasks.filter(t => t.description);
   const allSecondary = data.secondaryTasks.filter(t => t.description);
   const allFollowUp = data.followUpTasks.filter(t => t.description);
+  const [sandbox, setSandbox] = useState({
+    signalStrength: 72,
+    impactedSystems: 2,
+    budgetRequested: '750000',
+    confidenceModifier: 0,
+  });
+
+  const readinessModel = useMemo(() => {
+    const totalTaskCount = allImmediate.length + allSecondary.length + allFollowUp.length;
+    const completeOwnerCount = [
+      data.immediatePrimary,
+      data.secondaryPrimary,
+      data.followUpPrimary,
+    ].filter((owner) => owner.title && owner.name).length;
+    const completeBudgetCount = [data.budgetLow, data.budgetMedium, data.budgetHigh, data.budgetCritical].filter(Boolean).length;
+    const hasGovernance = Boolean(data.protocolVersion && data.changeSummary && data.rollbackPlan);
+    const observerCount = data.observers.filter((observer) => observer.name).length;
+
+    const depth = Math.min(100, 25 + (totalTaskCount * 6) + (completeOwnerCount * 10) + (completeBudgetCount * 6) + (data.customFields.authority.length * 2));
+    const breadth = Math.min(100, 30 + (data.signalSources.length * 8) + (data.internalSystems.length * 7) + (data.industry ? 8 : 0) + (data.triggerDomain ? 8 : 0));
+    const intuitiveness = Math.min(100, 45 + (data.starterTemplateId ? 15 : 0) + (data.customFields.identity.length * 3) + (data.monitoringCadenceMinutes === '15' ? 8 : 4) + (data.signalSources.length > 0 ? 8 : 0));
+    const enterpriseReadiness = Math.min(100, 30 + (hasGovernance ? 20 : 0) + (observerCount * 6) + (data.approvalPolicy === 'dual' ? 14 : data.approvalPolicy === 'board' ? 18 : 8) + (data.testScenarioSummary ? 12 : 0));
+
+    const dimensions = [
+      { id: 'depth', label: 'Depth', score: depth, note: 'Protocol architecture completeness' },
+      { id: 'breadth', label: 'Breadth', score: breadth, note: 'Signal and system coverage' },
+      { id: 'intuitiveness', label: 'Intuitiveness', score: intuitiveness, note: 'Builder usability and clarity' },
+      { id: 'enterprise', label: 'Enterprise Readiness', score: enterpriseReadiness, note: 'Governance, approvals, and rollback control' },
+    ];
+    const overall = Math.round(dimensions.reduce((sum, dimension) => sum + dimension.score, 0) / dimensions.length);
+    return { dimensions, overall };
+  }, [
+    allFollowUp.length,
+    allImmediate.length,
+    allSecondary.length,
+    data.approvalPolicy,
+    data.budgetCritical,
+    data.budgetHigh,
+    data.budgetLow,
+    data.budgetMedium,
+    data.changeSummary,
+    data.customFields.authority.length,
+    data.customFields.identity.length,
+    data.immediatePrimary,
+    data.industry,
+    data.internalSystems.length,
+    data.monitoringCadenceMinutes,
+    data.observers,
+    data.protocolVersion,
+    data.rollbackPlan,
+    data.secondaryPrimary,
+    data.signalSources.length,
+    data.starterTemplateId,
+    data.testScenarioSummary,
+    data.triggerDomain,
+    data.followUpPrimary,
+  ]);
+
+  const sandboxResult = useMemo(() => {
+    const sourceFactor = data.signalSources.length * 3;
+    const systemFactor = data.internalSystems.length * 2;
+    const governanceFactor = data.protocolVersion && data.changeSummary ? 6 : -4;
+    const confidence = Math.max(
+      0,
+      Math.min(
+        99,
+        Math.round(sandbox.signalStrength + sourceFactor + systemFactor + governanceFactor + sandbox.confidenceModifier)
+      )
+    );
+    const blockers = [
+      !data.authorizerName ? 'No executive authorizer assigned' : '',
+      allImmediate.length === 0 ? 'No immediate tasks staged' : '',
+      !data.boardNotification ? 'Board communication template missing' : '',
+      !data.rollbackPlan ? 'Rollback plan not defined' : '',
+    ].filter(Boolean);
+
+    const mobilizationMinutes = confidence >= 80 && blockers.length === 0 ? 12 : confidence >= 65 ? 20 : 35;
+    const readinessState = blockers.length === 0 ? 'Activation-ready' : 'Needs setup before activation';
+
+    return {
+      confidence,
+      mobilizationMinutes,
+      blockers,
+      readinessState,
+    };
+  }, [
+    allImmediate.length,
+    data.authorizerName,
+    data.boardNotification,
+    data.changeSummary,
+    data.internalSystems.length,
+    data.protocolVersion,
+    data.rollbackPlan,
+    data.signalSources.length,
+    sandbox.confidenceModifier,
+    sandbox.signalStrength,
+  ]);
 
   if (savedId) {
     return (
@@ -562,7 +1042,7 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
               Build Another Protocol
             </button>
           </Link>
-          <Link href="/pilot-program">
+          <Link href="/founding-partner-program">
             <button style={{ padding: '12px 24px', borderRadius: '0.15rem', border: 'none', background: GOLD, color: NAVY, fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
               Apply for Founding Partner Access →
             </button>
@@ -581,6 +1061,7 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
             {data.triggerDomain && <span style={{ fontSize: 11, fontWeight: 700, background: '#EEF2FF', color: NAVY, padding: '3px 10px', borderRadius: '0.15rem' }}>{data.triggerDomain}</span>}
             {data.industry && <span style={{ fontSize: 11, fontWeight: 700, background: '#F0FDF4', color: TEAL, padding: '3px 10px', borderRadius: '0.15rem' }}>{data.industry}</span>}
             <span style={{ fontSize: 11, fontWeight: 700, background: riskColor, color: '#fff', padding: '3px 10px', borderRadius: '0.15rem' }}>{data.riskThreshold}</span>
+            {data.protocolVersion && <span style={{ fontSize: 11, fontWeight: 700, background: '#F3F4F6', color: NAVY, padding: '3px 10px', borderRadius: '0.15rem' }}>Version {data.protocolVersion}</span>}
           </div>
         </div>
       </div>
@@ -592,7 +1073,6 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
       )}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16, marginBottom: 28 }}>
-        {/* Owners */}
         <div style={{ padding: '16px 18px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem' }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: GOLD, marginBottom: 12 }}>Executive Owners</div>
           {data.immediatePrimary.name && <div style={{ fontSize: 13, marginBottom: 4 }}><span style={{ color: MUTED }}>Immediate: </span>{data.immediatePrimary.title} {data.immediatePrimary.name}</div>}
@@ -600,7 +1080,6 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
           {data.followUpPrimary.name && <div style={{ fontSize: 13 }}><span style={{ color: MUTED }}>Follow-Up: </span>{data.followUpPrimary.title} {data.followUpPrimary.name}</div>}
         </div>
 
-        {/* Tasks */}
         <div style={{ padding: '16px 18px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem' }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: TEAL, marginBottom: 12 }}>Task Sequence</div>
           <div style={{ fontSize: 13, color: MUTED, marginBottom: 4 }}>{allImmediate.length} IMMEDIATE · {allSecondary.length} SECONDARY · {allFollowUp.length} FOLLOW-UP</div>
@@ -608,7 +1087,6 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
           {allImmediate.length > 2 && <div style={{ fontSize: 12, color: MUTED }}>+{allImmediate.length - 2} more immediate tasks</div>}
         </div>
 
-        {/* Budget */}
         <div style={{ padding: '16px 18px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem' }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#D97706', marginBottom: 12 }}>Budget Envelope</div>
           {data.budgetLow && <div style={{ fontSize: 13, marginBottom: 4 }}><span style={{ color: MUTED }}>LOW: </span>${data.budgetLow}</div>}
@@ -617,16 +1095,93 @@ function SummaryView({ data, onSave, isPending, savedId }: { data: Data; onSave:
           {data.budgetCritical && <div style={{ fontSize: 13 }}><span style={{ color: MUTED }}>CRITICAL: </span>${data.budgetCritical}</div>}
         </div>
 
-        {/* Authority */}
         <div style={{ padding: '16px 18px', border: `1px solid ${BORDER}`, borderRadius: '0.15rem' }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, marginBottom: 12 }}>Decision Authority</div>
-          {data.authorizerName && <div style={{ fontSize: 13, marginBottom: 4 }}><span style={{ color: MUTED }}>Authorizes: </span>{data.authorizerTitle} {data.authorizerName}</div>}
-          {data.executorName && <div style={{ fontSize: 13, marginBottom: 4 }}><span style={{ color: MUTED }}>Executes: </span>{data.executorTitle} {data.executorName}</div>}
-          {data.observers.filter(o => o.name).length > 0 && <div style={{ fontSize: 13 }}><span style={{ color: MUTED }}>Observers: </span>{data.observers.filter(o => o.name).map(o => o.name).join(', ')}</div>}
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, marginBottom: 12 }}>Data Coverage</div>
+          <div style={{ fontSize: 13, color: NAVY, marginBottom: 4 }}>
+            <span style={{ color: MUTED }}>External sources: </span>{data.signalSources.length || 0}
+          </div>
+          <div style={{ fontSize: 13, color: NAVY, marginBottom: 4 }}>
+            <span style={{ color: MUTED }}>Internal systems: </span>{data.internalSystems.length || 0}
+          </div>
+          <div style={{ fontSize: 13, color: NAVY }}>
+            <span style={{ color: MUTED }}>Monitoring cadence: </span>every {data.monitoringCadenceMinutes} minutes
+          </div>
         </div>
       </div>
 
-      {/* Custom Fields Summary */}
+      <div style={{ marginBottom: 28, border: `1px solid ${BORDER}`, borderRadius: '0.15rem', padding: '18px' }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: NAVY, marginBottom: 12 }}>
+          Product Readiness Scorecard
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: 10, marginBottom: 12 }}>
+          {readinessModel.dimensions.map((dimension) => {
+            const band = scoreBand(dimension.score);
+            return (
+              <div key={dimension.id} style={{ border: `1px solid ${BORDER}`, borderRadius: '0.15rem', padding: '10px 12px', background: '#fff' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: MUTED, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{dimension.label}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 }}>
+                  <div style={{ fontSize: 22, fontWeight: 700, color: NAVY }}>{dimension.score}</div>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: band.color }}>{band.label}</span>
+                </div>
+                <div style={{ fontSize: 11, color: MUTED }}>{dimension.note}</div>
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+          <div style={{ fontSize: 13, color: NAVY }}>
+            <span style={{ color: MUTED }}>Overall readiness: </span><strong>{readinessModel.overall}/100</strong>
+          </div>
+          {readinessModel.overall < 75 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#B45309' }}>
+              <AlertTriangle size={14} />
+              Complete missing fields and run a validation scenario before production activation.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div style={{ marginBottom: 24, border: `1px solid ${BORDER}`, borderRadius: '0.15rem', padding: '18px', background: '#fff' }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: TEAL, marginBottom: 12 }}>
+          Trigger Sandbox
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10, marginBottom: 14 }}>
+          <div>
+            <label style={labelStyle}>Signal strength</label>
+            <input type="range" min={30} max={95} value={sandbox.signalStrength} onChange={(e) => setSandbox((prev) => ({ ...prev, signalStrength: Number(e.target.value) }))} />
+            <div style={{ fontSize: 12, color: MUTED }}>{sandbox.signalStrength}%</div>
+          </div>
+          <div>
+            <label style={labelStyle}>Impacted systems</label>
+            <input style={inputStyle} type="number" min={1} value={sandbox.impactedSystems} onChange={(e) => setSandbox((prev) => ({ ...prev, impactedSystems: Number(e.target.value || 1) }))} />
+          </div>
+          <div>
+            <label style={labelStyle}>Budget requested ($)</label>
+            <input style={inputStyle} value={sandbox.budgetRequested} onChange={(e) => setSandbox((prev) => ({ ...prev, budgetRequested: e.target.value }))} />
+          </div>
+          <div>
+            <label style={labelStyle}>Confidence modifier</label>
+            <input style={inputStyle} type="number" min={-20} max={20} value={sandbox.confidenceModifier} onChange={(e) => setSandbox((prev) => ({ ...prev, confidenceModifier: Number(e.target.value || 0) }))} />
+          </div>
+        </div>
+        <div style={{ borderTop: `1px solid ${BORDER}`, paddingTop: 12 }}>
+          <div style={{ fontSize: 13, color: NAVY, marginBottom: 4 }}>
+            Predicted trigger confidence: <strong>{sandboxResult.confidence}%</strong>
+          </div>
+          <div style={{ fontSize: 13, color: NAVY, marginBottom: 4 }}>
+            Estimated mobilization: <strong>{sandboxResult.mobilizationMinutes} minutes</strong>
+          </div>
+          <div style={{ fontSize: 13, color: NAVY, marginBottom: sandboxResult.blockers.length ? 6 : 0 }}>
+            Status: <strong>{sandboxResult.readinessState}</strong>
+          </div>
+          {sandboxResult.blockers.length > 0 && (
+            <ul style={{ margin: 0, paddingLeft: 18, color: '#B45309', fontSize: 12, lineHeight: 1.6 }}>
+              {sandboxResult.blockers.map((blocker) => <li key={blocker}>{blocker}</li>)}
+            </ul>
+          )}
+        </div>
+      </div>
+
       {(() => {
         const allCustom = Object.entries(data.customFields).flatMap(([stepKey, fields]) =>
           (fields as CustomField[]).map(f => ({ ...f, stepKey }))
@@ -700,6 +1255,33 @@ export default function ProtocolBuilder() {
   const addTask = (phase: string) =>
     setData(prev => ({ ...prev, [phase]: [...(prev as any)[phase], { description: '', assignedTo: '' }] }));
 
+  const toggleCoverageValue = (field: 'signalSources' | 'internalSystems', value: string) =>
+    setData(prev => {
+      const list = prev[field];
+      const exists = list.includes(value);
+      return {
+        ...prev,
+        [field]: exists ? list.filter(item => item !== value) : [...list, value],
+      };
+    });
+
+  const applyStarterTemplate = (templateId: string) => {
+    update('starterTemplateId', templateId);
+    if (!templateId) return;
+    const template = STARTER_TEMPLATES.find(entry => entry.id === templateId);
+    if (!template) return;
+    setData(prev => ({
+      ...prev,
+      starterTemplateId: template.id,
+      ...template.defaults,
+      immediateTasks: [...template.defaults.immediateTasks],
+      secondaryTasks: [...template.defaults.secondaryTasks],
+      followUpTasks: [...template.defaults.followUpTasks],
+      signalSources: [...template.defaults.signalSources],
+      internalSystems: [...template.defaults.internalSystems],
+    }));
+  };
+
   const addCustomField = (stepKey: StepKey, field: CustomField) =>
     setData(prev => ({
       ...prev,
@@ -716,6 +1298,7 @@ export default function ProtocolBuilder() {
     mutationFn: async () => {
       const payload = {
         name: data.name,
+        description: data.changeSummary || null,
         triggerDomain: data.triggerDomain,
         triggerCondition: data.triggerCondition,
         industry: data.industry,
@@ -734,6 +1317,11 @@ export default function ProtocolBuilder() {
           stakeholderAlert: data.stakeholderAlert,
           externalPartners: data.hasExternalPartners ? data.externalPartnersText : null,
           publicStatement: data.hasPublicStatement ? data.publicStatementText : null,
+          monitoringCoverage: {
+            signalSources: data.signalSources,
+            internalSystems: data.internalSystems,
+            cadenceMinutes: Number(data.monitoringCadenceMinutes || 15),
+          },
         },
         budgetEnvelope: {
           low: data.budgetLow, medium: data.budgetMedium,
@@ -745,6 +1333,18 @@ export default function ProtocolBuilder() {
           executor: { title: data.executorTitle, name: data.executorName },
           observers: data.observers.filter(o => o.name),
           override: { title: data.overrideTitle, name: data.overrideName },
+          governance: {
+            version: data.protocolVersion,
+            changeSummary: data.changeSummary,
+            approvalPolicy: data.approvalPolicy,
+            reviewCadence: data.reviewCadence,
+            rollbackPlan: data.rollbackPlan,
+            lastReviewedBy: {
+              title: data.lastReviewedByTitle,
+              name: data.lastReviewedByName,
+            },
+            validationScenario: data.testScenarioSummary,
+          },
         },
         status: 'ready',
         completedSteps: 6,
@@ -765,6 +1365,9 @@ export default function ProtocolBuilder() {
   const totalSteps = STEPS.length;
   const isSummary = step === totalSteps;
   const currentStep = STEPS[step];
+  const stepValidation = useMemo(() => getStepValidation(data), [data]);
+  const currentValidation = stepValidation[step];
+  const canAdvance = Boolean(currentValidation?.isComplete);
 
   const renderStepContent = () => {
     const key = STEP_KEYS[step];
@@ -774,12 +1377,12 @@ export default function ProtocolBuilder() {
       onRemove: (id: string) => removeCustomField(key, id),
     };
     switch (step) {
-      case 0: return <><Step1 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
+      case 0: return <><Step1 data={data} update={update} onApplyTemplate={applyStarterTemplate} onToggleCoverage={toggleCoverageValue} /><CustomFieldsSection {...cfProps} /></>;
       case 1: return <><Step2 data={data} updateNested={updateNested} /><CustomFieldsSection {...cfProps} /></>;
       case 2: return <><Step3 data={data} updateTask={updateTask} addTask={addTask} /><CustomFieldsSection {...cfProps} /></>;
       case 3: return <><Step4 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
       case 4: return <><Step5 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
-      case 5: return <><Step6 data={data} update={update} updateNested={updateNested} /><CustomFieldsSection {...cfProps} /></>;
+      case 5: return <><Step6 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;
       default: return null;
     }
   };
@@ -874,6 +1477,9 @@ export default function ProtocolBuilder() {
               <div style={{ flex: 1, height: 3, background: BORDER, borderRadius: 2 }}>
                 <div style={{ height: '100%', background: GOLD, borderRadius: 2, width: `${((step + 1) / totalSteps) * 100}%`, transition: 'width 0.4s ease' }} />
               </div>
+              <div style={{ fontSize: 11, color: currentValidation?.isComplete ? TEAL : '#B45309', fontWeight: 700 }}>
+                {currentValidation?.isComplete ? 'Step complete' : 'Required items pending'}
+              </div>
             </>
           ) : (
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEAL }}>Review & Save</div>
@@ -886,6 +1492,16 @@ export default function ProtocolBuilder() {
             <div style={{ marginBottom: 32 }}>
               <div style={{ fontSize: 26, fontWeight: 800, color: NAVY, marginBottom: 6 }}>{currentStep.title}</div>
               <div style={{ fontSize: 15, color: MUTED }}>{currentStep.subtitle}</div>
+              {!currentValidation?.isComplete && currentValidation?.missing.length ? (
+                <div style={{ marginTop: 14, padding: '10px 12px', border: `1px solid rgba(180,83,9,0.25)`, background: 'rgba(245,158,11,0.08)', borderRadius: '0.15rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#92400E', marginBottom: 6 }}>
+                    <AlertTriangle size={13} /> Complete to continue
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: 18, color: '#92400E', fontSize: 12, lineHeight: 1.55 }}>
+                    {currentValidation.missing.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                </div>
+              ) : null}
             </div>
           )}
 
@@ -912,10 +1528,10 @@ export default function ProtocolBuilder() {
                 <div key={i} style={{ width: i === step ? 20 : 6, height: 6, borderRadius: 3, background: i === step ? GOLD : i < step ? TEAL : BORDER, transition: 'all 0.2s' }} />
               ))}
             </div>
-            <button onClick={() => setStep(s => s + 1)} style={{
+            <button onClick={() => canAdvance && setStep(s => s + 1)} disabled={!canAdvance} style={{
               display: 'flex', alignItems: 'center', gap: 6, padding: '10px 24px',
-              borderRadius: '0.15rem', border: 'none', background: GOLD, color: NAVY,
-              fontWeight: 700, fontSize: 14, cursor: 'pointer',
+              borderRadius: '0.15rem', border: 'none', background: canAdvance ? GOLD : '#E5E7EB', color: canAdvance ? NAVY : MUTED,
+              fontWeight: 700, fontSize: 14, cursor: canAdvance ? 'pointer' : 'not-allowed',
             }}>
               {step === totalSteps - 1 ? 'Review Protocol' : 'Continue'} <ChevronRight size={16} />
             </button>
