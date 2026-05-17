@@ -213,7 +213,7 @@ export default function VideoLanding() {
               </Button>
             </Link>
             
-            <Link href="/contact">
+            <Link href="/founding-partner-program">
               <Button 
                 size="lg"
                 variant="outline"

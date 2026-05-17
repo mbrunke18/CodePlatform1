@@ -1374,6 +1374,48 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Board-Grade Reporting Section */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="vm-section-label justify-center mb-6"><span>Board-Grade Reporting</span></div>
+              <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(28px,4vw,46px)', fontWeight: 700, color: '#0A0F2E', marginBottom: 12, lineHeight: 1.1 }}>
+                Reporting your board already expects.<br />
+                <em style={{ fontStyle: 'italic', color: '#C9A84C' }}>Readiness OS produces it automatically.</em>
+              </h2>
+              <p style={{ fontSize: 16, color: '#4B5563', maxWidth: 580, margin: '0 auto' }}>
+                Every activation generates a board-ready evidence package — no manual assembly, no retrospective guesswork.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-5 gap-0 border border-[#E8E4DC] mb-10">
+              {[
+                { metric: "Activation Timeline", desc: "Timestamped execution record from signal detection through final acknowledgment — audit-ready on demand.", accent: '#0A0F2E' },
+                { metric: "Ownership Acknowledgment", desc: "Named stakeholder confirmation log. Who was notified, who confirmed, when — no ambiguity for governance review.", accent: '#2B8A6E' },
+                { metric: "Decision Velocity", desc: "Elapsed time from trigger detection to executive authorization. The 12-minute benchmark, measured against your actual result.", accent: '#C9A84C' },
+                { metric: "Value Preserved", desc: "Risk avoided and opportunity cost of speed — framed in financial terms your CFO and board will recognize immediately.", accent: '#2B8A6E' },
+                { metric: "Audit-Ready Export", desc: "One-click board export. PDF-formatted activation debrief with classification, outcome, and recommended next steps.", accent: '#0A0F2E' },
+              ].map((item, i) => (
+                <div key={item.metric} style={{ padding: '28px 20px', borderRight: i < 4 ? '1px solid #E8E4DC' : 'none', borderTop: `3px solid ${item.accent}` }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: item.accent, marginBottom: 10 }}>0{i + 1}</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 15, fontWeight: 700, color: '#0A0F2E', marginBottom: 10, lineHeight: 1.3 }}>{item.metric}</div>
+                  <p style={{ fontSize: 12, color: '#6B7280', lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: '#0A0F2E', padding: '28px 36px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+              <div>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: '#fff', marginBottom: 4 }}>
+                  Make board confidence a product outcome — not a PowerPoint exercise.
+                </p>
+                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0 }}>Board Export and Activation Debrief are live features in the Readiness OS platform.</p>
+              </div>
+              <a href="/executive-brief" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase' as const, padding: '12px 24px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
+                View Executive Brief →
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Investment Ask Section */}
         <section className="py-16 px-6 bg-[#F8F7F4]">
           <div className="max-w-5xl mx-auto">
@@ -1383,7 +1425,7 @@ export default function InvestorLanding() {
                 $2.5M Seed Round
               </h2>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 560, margin: '0 auto' }}>
-                18-month target: three Fortune 1000 pilots closed and converting to annual contracts, reaching $3.75M ARR.
+                18-month target: three Fortune 1000 Founding Partner engagements closed and converting to annual contracts, reaching $3.75M ARR.
               </p>
             </div>
 
@@ -1405,7 +1447,7 @@ export default function InvestorLanding() {
               <div className="bg-white border border-[#E8E4DC] p-6">
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>Use of Proceeds</div>
                 {[
-                  { label: 'Pilot Execution & Customer Success', pct: '40%', color: '#2B8A6E' },
+                  { label: 'Founding Partner Execution & Customer Success', pct: '40%', color: '#2B8A6E' },
                   { label: 'Product & Engineering', pct: '30%', color: '#0A0F2E' },
                   { label: 'Sales & GTM Infrastructure', pct: '20%', color: '#C9A84C' },
                   { label: 'Operations & Legal', pct: '10%', color: '#6B7280' },
@@ -1423,8 +1465,8 @@ export default function InvestorLanding() {
               <div className="bg-white border border-[#E8E4DC] p-6">
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0A0F2E', marginBottom: 16 }}>18-Month Milestones</div>
                 {[
-                  { mo: 'M1–3', label: '3 Founding Partner pilots signed · $225K ARR · Commercial co-founder on board', color: '#2B8A6E' },
-                  { mo: 'M4–6', label: 'First 3 pilots convert to $250K+ annual contracts', color: '#2B8A6E' },
+                  { mo: 'M1–3', label: '3 Founding Partners signed · $225K ARR · Commercial co-founder on board', color: '#2B8A6E' },
+                  { mo: 'M4–6', label: 'First 3 Founding Partners convert to $250K+ annual contracts', color: '#2B8A6E' },
                   { mo: 'M6–12', label: 'Expand to 8 enterprise accounts — $1.5M ARR', color: '#C9A84C' },
                   { mo: 'M12–18', label: '$3.75M ARR — Series A raise initiated', color: '#0A0F2E' },
                 ].map(m => (
@@ -1559,6 +1601,100 @@ export default function InvestorLanding() {
           </div>
         </section>
 
+        {/* Executive Questions, Answered */}
+        <section className="py-20 px-6 bg-[#F8F7F4]">
+          <div className="max-w-4xl mx-auto">
+            <div className="vm-section-label justify-center mb-6"><span>Due Diligence</span></div>
+            <h2 className="text-center mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(30px,4vw,44px)', fontWeight: 700, color: '#0A0F2E', lineHeight: 1.2 }}>
+              Executive Questions, Answered
+            </h2>
+            <p className="text-center mb-14" style={{ fontSize: 14, color: '#6B7280', lineHeight: 1.7 }}>
+              The questions serious investors and enterprise buyers ask — before they move.
+            </p>
+            <div style={{ display: 'grid', gap: 2 }}>
+              {[
+                {
+                  q: "What problem are you actually solving?",
+                  a: "Most enterprises do not fail to detect risk or opportunity. They fail in the mobilization gap between detection and coordinated action. Readiness OS closes that gap by pre-staging ownership, tasking, communications, and budget authority before the trigger fires.",
+                  proof: "30-day mobilization cycle compressed to 12 minutes.",
+                },
+                {
+                  q: "Why does this matter right now?",
+                  a: "Every enterprise has invested in AI capability. Very few have redesigned how decisions turn into coordinated execution. The bottleneck is no longer intelligence — it is organizational mobilization under pressure.",
+                  proof: "Enterprises already own the AI stack. None have the operating model to use it at trigger speed.",
+                },
+                {
+                  q: "How is this different from Copilot, workflow tools, or consulting?",
+                  a: "Copilot helps with intelligence and drafting. Workflow tools track work after people align. Consulting advises between events. Readiness OS orchestrates the cross-functional response in the moment it matters — before the stakeholder chaos starts.",
+                  proof: "Not competing with Copilot. Competing with the 40-year-old meeting-heavy operating model itself.",
+                },
+                {
+                  q: "Is this replacing our current stack?",
+                  a: "No. Readiness OS is the operating model layer above your existing systems — Microsoft, Jira, ServiceNow, collaboration tools. No rip-and-replace required. Value is demonstrable before deep integration begins.",
+                  proof: "Deployment risk is low-to-moderate. Overlay architecture, not replacement architecture.",
+                },
+                {
+                  q: "Is AI making decisions for us?",
+                  a: "No. AI monitors signals and prepares context. Executives authorize activation. Authority stays human at every step — governance and decision authority are explicit, auditable, and pre-staged.",
+                  proof: "AI monitors. Executives authorize. No protocol activates without executive sign-off.",
+                },
+                {
+                  q: "What does \"30 days compressed to 12 minutes\" mean?",
+                  a: "It does not mean execution is done in 12 minutes. It means the mobilization cycle — who owns what, who decides, what gets staged, what sequence activates — is compressed from weeks to minutes. Execution quality improves because the sequence is already built.",
+                  proof: "3,600× Execution Head Start. The gap before any competitor has aligned stakeholders.",
+                },
+                {
+                  q: "How do we know this is real and not a demo narrative?",
+                  a: "You can run the full sequence in a live test environment and inspect exactly what is staged, activated, and acknowledged. The product is built to make readiness visible and auditable, not abstract.",
+                  proof: "170 pre-staged Readiness Protocols. Activation, acknowledgment, and debrief loops are all measurable.",
+                },
+                {
+                  q: "What outcome should we expect if this works?",
+                  a: "When the trigger fires, your organization starts coordinated execution while others are still aligning stakeholders. That creates measurable advantage in risk containment, response quality, and decision velocity — with every activation debrief captured as institutional memory.",
+                  proof: "Defensibility compounds through organization-specific response logic embedded in operational muscle memory.",
+                },
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', borderTop: i === 0 ? '1px solid #E8E4DC' : 'none', borderBottom: '1px solid #E8E4DC', borderLeft: '1px solid #E8E4DC', borderRight: '1px solid #E8E4DC' }}>
+                  <div style={{ padding: '28px 28px', borderRight: '1px solid #E8E4DC', background: '#fff' }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C9A84C', marginBottom: 10 }}>Q{String(i + 1).padStart(2, '0')}</div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 17, fontWeight: 600, color: '#0A0F2E', lineHeight: 1.45, margin: 0 }}>{item.q}</p>
+                  </div>
+                  <div style={{ padding: '28px 32px', background: '#FAFAF8' }}>
+                    <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.75, marginBottom: 14 }}>{item.a}</p>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                      <div style={{ width: 16, height: 1.5, background: '#C9A84C', marginTop: 8, flexShrink: 0 }} />
+                      <p style={{ fontSize: 11, color: '#6B7280', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>{item.proof}</p>
+                    </div>
+                    {(i === 2 || i === 5) && (
+                      <div style={{ marginTop: 20 }}>
+                        <a href="/founding-partner-program" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#2B8A6E', textDecoration: 'none', borderBottom: '1px solid rgba(43,138,110,0.3)', paddingBottom: 2 }}>
+                          Apply for Founding Partner Access →
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 40, padding: '32px 40px', background: '#0A0F2E', textAlign: 'center' }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, color: '#fff', marginBottom: 6 }}>
+                The response is ready before the trigger fires.
+              </p>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 24, letterSpacing: '0.06em' }}>
+                AI monitors · Executives authorize · Execution pre-staged
+              </p>
+              <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="/contact" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none', display: 'inline-block' }}>
+                  Schedule a Conversation →
+                </a>
+                <a href="/12-minute-experience" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '12px 28px', background: 'transparent', color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.2)', textDecoration: 'none', display: 'inline-block' }}>
+                  See It Execute in 12 Minutes →
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 px-6 bg-[#0A0F2E] text-white">
           <div className="max-w-4xl mx-auto text-center">
@@ -1575,7 +1711,7 @@ export default function InvestorLanding() {
             <div className="flex flex-wrap gap-4 justify-center mb-8">
               <Button
                 size="lg"
-                onClick={() => setLocation("/request-access")}
+                onClick={() => setLocation("/contact")}
                 className="bg-[#C9A84C] text-[#0A0F2E] hover:bg-[#DFC178] font-bold"
                 data-testid="button-cta-schedule"
               >

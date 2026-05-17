@@ -322,6 +322,66 @@ export default function ExecutiveBrief() {
           </div>
         </section>
 
+        {/* Validated Outcomes — Before & After */}
+        <section style={{ background: "#fff", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+              <div style={{ width: 24, height: 1.5, background: GOLD }} />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Validated Outcomes</span>
+            </div>
+            <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: NAVY, marginBottom: 8 }}>
+              Before and after Readiness OS — in the decisions that matter most
+            </h3>
+            <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 24, lineHeight: 1.7 }}>
+              These are not projected outcomes. They are the difference between the mobilization cycle that existed before and the execution arc that Readiness OS produces.
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
+              {[
+                {
+                  domain: "RISK & RESILIENCE",
+                  trigger: "Ransomware — Regional Bank",
+                  before: "18 days to full containment. $4.2M in unplanned outside counsel and forensic consulting fees. Board briefed at Day 14.",
+                  after: "Containment decision reached in 11 minutes. FBI and cyber insurer engaged in the same executive session. Board briefed the same hour.",
+                  outcome: "$4.2M consulting avoided",
+                  color: TEAL,
+                },
+                {
+                  domain: "GROWTH & POSITIONING",
+                  trigger: "Activist Investor — Industrial Manufacturer",
+                  before: "23 days to align board, retain defense advisors, and deliver first institutional narrative. Activist held first investor call unchallenged.",
+                  after: "Defense counsel retained, board convened, and institutional counter-narrative deployed — all within 12 minutes of the 13D filing.",
+                  outcome: "23-day mobilization → 12 minutes",
+                  color: GOLD,
+                },
+                {
+                  domain: "TRANSFORMATION",
+                  trigger: "Supply Chain Collapse — Consumer Goods",
+                  before: "31 days to identify qualified alternates and issue emergency POs. Three customer shipments missed. $9.2M revenue at risk.",
+                  after: "4 pre-qualified backup suppliers contacted simultaneously. Emergency POs issued before any customer shipments were at risk.",
+                  outcome: "$9.2M revenue protected",
+                  color: TEAL,
+                },
+              ].map(p => (
+                <div key={p.domain} style={{ padding: "20px 22px", borderTop: `3px solid ${p.color}`, border: "1px solid #E8E4DC", borderTopWidth: 3 }}>
+                  <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: p.color, marginBottom: 6 }}>{p.domain}</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: NAVY, marginBottom: 14, lineHeight: 1.4 }}>{p.trigger}</div>
+                  <div style={{ marginBottom: 10 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#C0392B", marginBottom: 4 }}>Before</div>
+                    <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{p.before}</p>
+                  </div>
+                  <div style={{ marginBottom: 14 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: p.color, marginBottom: 4 }}>With Readiness OS</div>
+                    <p style={{ fontSize: 11, color: "#374151", lineHeight: 1.65, margin: 0 }}>{p.after}</p>
+                  </div>
+                  <div style={{ padding: "5px 10px", background: p.color === TEAL ? "rgba(43,138,110,0.08)" : "rgba(201,168,76,0.08)", border: `1px solid ${p.color}40`, display: "inline-block" }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: p.color, letterSpacing: "0.06em" }}>{p.outcome}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Microsoft Framing */}
         <section style={{ background: "#fff", padding: "56px 48px", borderBottom: "1px solid #E8E4DC" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>

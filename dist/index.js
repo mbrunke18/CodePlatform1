@@ -45567,6 +45567,8 @@ var PUBLIC_ROUTES = [
   "/api/scenario-templates/comprehensive",
   "/api/scenario-templates/:id",
   // Playbook Library & Practice Drills (public demo access)
+  "/api/playbooks/templates",
+  // Protocol Library guest view — 170 protocol grid visible without auth
   "/api/playbooks/:id/execution-brief",
   // AI brief — accessible to unauthenticated guided-start users
   "/api/playbook-library",

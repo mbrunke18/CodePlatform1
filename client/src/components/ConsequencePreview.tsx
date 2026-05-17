@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Zap, Volume2, Settings, XCircle, Clock, Users, FileText, CheckCircle, ChevronRight } from "lucide-react";
+import { Zap, Volume2, Settings, XCircle, Clock, Users, FileText, CheckCircle, ChevronRight, RotateCcw, Check } from "lucide-react";
 
 const NAVY = "#0A0F2E";
 const GOLD = "#C9A84C";
 const TEAL = "#2B8A6E";
 const IVORY = "#F0EDE4";
+const BLUE = "#6B8CFF";
+const RED = "#C05050";
 
 export type ConsequenceChoice = "run_as_built" | "audible" | "customize" | "stand_down";
 
@@ -46,26 +48,27 @@ const CHOICES: { id: ConsequenceChoice; label: string; sublabel: string; icon: t
     sublabel: "Review and adjust before execution",
     icon: Volume2,
     color: GOLD,
-    description: "Shows the delta between the pre-staged protocol and current organizational state — personnel changes, resource availability, stakeholder updates. You approve the adjusted version before activation.",
+    description: "Shows the delta between the pre-staged protocol and current organizational state — personnel changes, resource availability, stakeholder updates. Review each item and accept or revert before the adjusted protocol activates.",
   },
   {
     id: "customize",
     label: "Customize",
     sublabel: "Modify the three highest-leverage points",
     icon: Settings,
-    color: "#6B8CFF",
-    description: "Opens the three highest-impact customization points in this protocol — typically: primary owner, first communication template, and escalation threshold. All other tasks run as pre-staged.",
+    color: BLUE,
+    description: "Opens the three highest-impact customization points in this protocol — primary owner, first communication template, and escalation threshold. Edit any or all. All other tasks run exactly as pre-staged.",
   },
   {
     id: "stand_down",
     label: "Stand Down",
     sublabel: "Decline activation — record the decision",
     icon: XCircle,
-    color: "#C05050",
+    color: RED,
     description: "No tasks are activated. The trigger detection is logged with a governance record of the stand-down decision, the reason, and the executive who made the call. Audit trail preserved.",
   },
 ];
 
+/* ─── Run as Built Preview ───────────────────────────────────────────────── */
 function RunAsBuiltPreview({ stakeholders, taskCount, triggerName }: { stakeholders: Stakeholder[]; taskCount: number; triggerName: string }) {
   return (
     <div className="space-y-4">
@@ -103,75 +106,266 @@ function RunAsBuiltPreview({ stakeholders, taskCount, triggerName }: { stakehold
   );
 }
 
-function AudiblePreview({ stakeholders }: { stakeholders: Stakeholder[] }) {
-  const changes = [
-    { field: "Primary Owner", from: "Sarah Chen, CLO", to: "Marcus Webb, Deputy CLO (Sarah Chen on leave)", impact: "High" },
-    { field: "External Counsel", from: "Gibson Dunn (pre-staged)", to: "Confirm availability before activating", impact: "Medium" },
-    { field: "Board Notification", from: "Immediate (pre-staged)", to: "Board chair traveling — confirm channel", impact: "Medium" },
+/* ─── Audible Preview (Interactive) ─────────────────────────────────────── */
+type DeltaDecision = "accepted" | "reverted" | null;
+
+function AudiblePreview({ stakeholders, onConfirm }: { stakeholders: Stakeholder[]; onConfirm?: () => void }) {
+  const primaryOwner = stakeholders[0];
+  const legalOwner = stakeholders.find(s => s.role.toLowerCase().includes("legal")) ?? stakeholders[1];
+
+  const deltaItems = [
+    {
+      field: "Primary Protocol Owner",
+      impact: "HIGH" as const,
+      prestaged: primaryOwner?.name ?? "Chief Executive Officer",
+      current: `Deputy ${primaryOwner?.role ?? "Executive"} (${primaryOwner?.name ?? "Primary lead"} has competing engagement)`,
+      consequence: "Delays first decision gate by up to 4 minutes if not resolved before activation",
+    },
+    {
+      field: "External Counsel Availability",
+      impact: "MEDIUM" as const,
+      prestaged: "Gibson Dunn — pre-authorized, on retainer",
+      current: "Lead partner traveling internationally — confirm deputy availability",
+      consequence: "Legal sign-off on external disclosures may require re-routing",
+    },
+    {
+      field: `${legalOwner?.name ?? "Board"} Notification Channel`,
+      impact: "MEDIUM" as const,
+      prestaged: "Immediate — primary mobile (pre-staged)",
+      current: "Board chair confirmed traveling — use secure backup channel",
+      consequence: "Authorization chain intact; channel change logged in governance record",
+    },
   ];
+
+  const [decisions, setDecisions] = useState<DeltaDecision[]>([null, null, null]);
+
+  const decide = (index: number, value: DeltaDecision) => {
+    setDecisions(prev => {
+      const next = [...prev];
+      next[index] = next[index] === value ? null : value;
+      return next;
+    });
+  };
+
+  const reviewed = decisions.filter(d => d !== null).length;
+  const allReviewed = reviewed === deltaItems.length;
+  const acceptedCount = decisions.filter(d => d === "accepted").length;
+  const revertedCount = decisions.filter(d => d === "reverted").length;
+
   return (
     <div className="space-y-4">
-      <div className="rounded-sm p-4" style={{ backgroundColor: "#0A1228", border: `1px solid ${GOLD}40` }}>
-        <p className="text-xs font-mono tracking-wider mb-3" style={{ color: GOLD }}>DELTA FROM PRE-STAGED PROTOCOL</p>
-        <p className="text-xs mb-4" style={{ color: IVORY, opacity: 0.6 }}>These items differ from the protocol design based on current organizational state:</p>
-        <div className="space-y-3">
-          {changes.map((c, i) => (
-            <div key={i} className="border-l-2 pl-3" style={{ borderColor: GOLD }}>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-mono font-bold" style={{ color: GOLD }}>{c.field}</span>
-                <span className="text-xs font-mono px-1.5 py-0.5 rounded-sm"
-                  style={{ backgroundColor: c.impact === "High" ? "#C0505020" : `${GOLD}18`, color: c.impact === "High" ? "#C05050" : GOLD }}>
-                  {c.impact.toUpperCase()} IMPACT
-                </span>
+      {/* Progress */}
+      <div className="flex items-center justify-between mb-1">
+        <p className="text-xs font-mono tracking-wider" style={{ color: GOLD }}>DELTA FROM PRE-STAGED PROTOCOL</p>
+        <span className="text-xs font-mono" style={{ color: reviewed === deltaItems.length ? TEAL : IVORY, opacity: reviewed === deltaItems.length ? 1 : 0.5 }}>
+          {reviewed}/{deltaItems.length} REVIEWED
+        </span>
+      </div>
+      <div className="w-full h-0.5 rounded-full overflow-hidden" style={{ backgroundColor: "#1E2D5A" }}>
+        <div className="h-full transition-all duration-300" style={{ width: `${(reviewed / deltaItems.length) * 100}%`, backgroundColor: allReviewed ? TEAL : GOLD }} />
+      </div>
+
+      {/* Delta items */}
+      <div className="space-y-3">
+        {deltaItems.map((item, i) => {
+          const decision = decisions[i];
+          const borderColor = decision === "accepted" ? TEAL : decision === "reverted" ? GOLD : "#1E2D5A";
+          const bg = decision === "accepted" ? `${TEAL}0D` : decision === "reverted" ? `${GOLD}0D` : "#0A1228";
+          return (
+            <div key={i} className="rounded-sm p-4 transition-all duration-200" style={{ backgroundColor: bg, border: `1px solid ${borderColor}` }}>
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <div>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-xs font-mono font-bold" style={{ color: GOLD }}>{item.field}</span>
+                    <span className="text-xs font-mono px-1.5 py-0.5 rounded-sm"
+                      style={{ backgroundColor: item.impact === "HIGH" ? `${RED}20` : `${GOLD}18`, color: item.impact === "HIGH" ? RED : GOLD }}>
+                      {item.impact}
+                    </span>
+                  </div>
+                  <p className="text-xs" style={{ color: IVORY, opacity: 0.45 }}>Pre-staged: {item.prestaged}</p>
+                  <p className="text-xs font-semibold mt-0.5" style={{ color: "white" }}>Current state: {item.current}</p>
+                  <p className="text-xs mt-1.5 italic" style={{ color: IVORY, opacity: 0.5 }}>↳ {item.consequence}</p>
+                </div>
               </div>
-              <p className="text-xs mb-0.5" style={{ color: IVORY, opacity: 0.5 }}>Was: {c.from}</p>
-              <p className="text-xs font-semibold" style={{ color: "white" }}>Now: {c.to}</p>
+              {/* Decision buttons */}
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={() => decide(i, "accepted")}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-bold tracking-wide rounded-sm transition-all duration-150"
+                  style={{
+                    backgroundColor: decision === "accepted" ? TEAL : "transparent",
+                    border: `1px solid ${decision === "accepted" ? TEAL : "#2B8A6E50"}`,
+                    color: decision === "accepted" ? NAVY : TEAL,
+                  }}>
+                  <Check className="w-3 h-3" />
+                  Accept Change
+                </button>
+                <button
+                  onClick={() => decide(i, "reverted")}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono font-bold tracking-wide rounded-sm transition-all duration-150"
+                  style={{
+                    backgroundColor: decision === "reverted" ? GOLD : "transparent",
+                    border: `1px solid ${decision === "reverted" ? GOLD : `${GOLD}50`}`,
+                    color: decision === "reverted" ? NAVY : GOLD,
+                  }}>
+                  <RotateCcw className="w-3 h-3" />
+                  Keep Pre-Staged
+                </button>
+              </div>
             </div>
-          ))}
+          );
+        })}
+      </div>
+
+      {/* Summary + confirm */}
+      {allReviewed && (
+        <div className="space-y-3">
+          <div className="rounded-sm p-3 flex gap-4" style={{ backgroundColor: "#0A1228", border: `1px solid ${TEAL}40` }}>
+            <div className="text-center flex-1">
+              <div className="text-xl font-bold" style={{ color: TEAL, fontFamily: "Georgia, serif" }}>{acceptedCount}</div>
+              <div className="text-xs font-mono mt-0.5" style={{ color: IVORY, opacity: 0.5 }}>CHANGES ACCEPTED</div>
+            </div>
+            <div className="w-px" style={{ backgroundColor: "#1E2D5A" }} />
+            <div className="text-center flex-1">
+              <div className="text-xl font-bold" style={{ color: GOLD, fontFamily: "Georgia, serif" }}>{revertedCount}</div>
+              <div className="text-xs font-mono mt-0.5" style={{ color: IVORY, opacity: 0.5 }}>REVERTED TO PRE-STAGED</div>
+            </div>
+          </div>
+          <button
+            onClick={onConfirm}
+            className="w-full py-3 font-mono font-bold tracking-wider text-sm flex items-center justify-center gap-2 rounded-sm"
+            style={{ backgroundColor: GOLD, color: NAVY }}>
+            Confirm — Activate Adjusted Protocol
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
+      )}
+      {!allReviewed && (
+        <p className="text-xs text-center font-mono" style={{ color: IVORY, opacity: 0.35 }}>
+          Review all {deltaItems.length} items above to confirm
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ─── Customize Preview (Interactive) ───────────────────────────────────── */
+interface LeveragePoint {
+  rank: number;
+  label: string;
+  defaultValue: string;
+  why: string;
+  placeholder: string;
+}
+
+function CustomizePreview({ taskCount, onConfirm }: { taskCount: number; onConfirm?: () => void }) {
+  const leveragePoints: LeveragePoint[] = [
+    {
+      rank: 1,
+      label: "Primary Protocol Owner",
+      defaultValue: "Chief Legal Officer",
+      why: "Highest impact on execution velocity — wrong owner adds 4–6 minutes",
+      placeholder: "Name or role of the primary owner",
+    },
+    {
+      rank: 2,
+      label: "First External Communication",
+      defaultValue: "Template: Regulatory Disclosure v3",
+      why: "Sets the narrative frame — changes here cascade to all subsequent communications",
+      placeholder: "Template name or custom message",
+    },
+    {
+      rank: 3,
+      label: "Escalation Threshold",
+      defaultValue: "Board notification at T+30min",
+      why: "Too late for most material events — adjusting this changes the entire authorization chain",
+      placeholder: "e.g. Board notification at T+15min",
+    },
+  ];
+
+  const [values, setValues] = useState<string[]>(leveragePoints.map(lp => lp.defaultValue));
+
+  const changedCount = values.filter((v, i) => v.trim() !== leveragePoints[i].defaultValue).length;
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <p className="text-xs font-mono tracking-wider" style={{ color: BLUE }}>3 HIGHEST-LEVERAGE CUSTOMIZATION POINTS</p>
+        {changedCount > 0 && (
+          <span className="text-xs font-mono px-2 py-0.5 rounded-sm" style={{ backgroundColor: `${BLUE}20`, color: BLUE }}>
+            {changedCount} MODIFIED
+          </span>
+        )}
       </div>
       <p className="text-xs" style={{ color: IVORY, opacity: 0.55 }}>
-        Review and confirm these adjustments. All other protocol elements execute as pre-staged.
+        Edit any field. All other {taskCount} tasks execute exactly as pre-staged.
       </p>
-    </div>
-  );
-}
 
-function CustomizePreview({ taskCount }: { taskCount: number }) {
-  const leveragePoints = [
-    { rank: 1, label: "Primary Protocol Owner", current: "Chief Legal Officer", why: "Highest impact on execution velocity — wrong owner adds 4–6 minutes" },
-    { rank: 2, label: "First External Communication", current: "Template: Regulatory Disclosure v3", why: "Sets the narrative frame — changes here cascade to all subsequent communications" },
-    { rank: 3, label: "Escalation Threshold", current: "Board notification at T+30min", why: "Too late for most material events — adjusting this changes the entire authorization chain" },
-  ];
-  return (
-    <div className="space-y-3">
-      <div className="rounded-sm p-4" style={{ backgroundColor: "#0A1228", border: "1px solid #1E2D5A" }}>
-        <p className="text-xs font-mono tracking-wider mb-3" style={{ color: "#6B8CFF" }}>3 HIGHEST-LEVERAGE CUSTOMIZATION POINTS</p>
-        <p className="text-xs mb-4" style={{ color: IVORY, opacity: 0.6 }}>All other {taskCount} tasks execute as pre-staged. Only these three points are open for modification.</p>
-        <div className="space-y-4">
-          {leveragePoints.map((lp, i) => (
-            <div key={i} className="flex gap-3">
-              <div className="text-2xl font-bold shrink-0" style={{ color: "#6B8CFF", fontFamily: "'Courier New', monospace", opacity: 0.4 }}>
-                {String(lp.rank).padStart(2, "0")}
+      <div className="space-y-4">
+        {leveragePoints.map((lp, i) => {
+          const isChanged = values[i].trim() !== lp.defaultValue;
+          return (
+            <div key={i} className="rounded-sm p-4 transition-all duration-200"
+              style={{ backgroundColor: "#0A1228", border: `1px solid ${isChanged ? BLUE : "#1E2D5A"}` }}>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="text-xl font-bold shrink-0 w-7 text-right" style={{ color: BLUE, fontFamily: "'Courier New', monospace", opacity: 0.5 }}>
+                  {String(lp.rank).padStart(2, "0")}
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-bold" style={{ color: "white" }}>{lp.label}</p>
+                    {isChanged && (
+                      <span className="text-xs font-mono px-1.5 py-0.5 rounded-sm" style={{ backgroundColor: `${BLUE}20`, color: BLUE }}>MODIFIED</span>
+                    )}
+                  </div>
+                  <p className="text-xs mt-0.5" style={{ color: IVORY, opacity: 0.5 }}>{lp.why}</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-bold mb-0.5" style={{ color: "white" }}>{lp.label}</p>
-                <p className="text-xs mb-1" style={{ color: GOLD }}>Current: {lp.current}</p>
-                <p className="text-xs" style={{ color: IVORY, opacity: 0.6 }}>{lp.why}</p>
-              </div>
+              <input
+                type="text"
+                value={values[i]}
+                onChange={e => setValues(prev => { const next = [...prev]; next[i] = e.target.value; return next; })}
+                placeholder={lp.placeholder}
+                className="w-full px-3 py-2 text-sm rounded-sm transition-all duration-150"
+                style={{
+                  backgroundColor: "#060D1E",
+                  border: `1px solid ${isChanged ? BLUE : "#1E2D5A"}`,
+                  color: isChanged ? "white" : IVORY,
+                  outline: "none",
+                }}
+              />
+              {isChanged && (
+                <button
+                  onClick={() => setValues(prev => { const next = [...prev]; next[i] = lp.defaultValue; return next; })}
+                  className="mt-1.5 text-xs flex items-center gap-1 font-mono"
+                  style={{ color: IVORY, opacity: 0.4 }}>
+                  <RotateCcw className="w-3 h-3" /> Revert to pre-staged
+                </button>
+              )}
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
+
+      <button
+        onClick={onConfirm}
+        className="w-full py-3 font-mono font-bold tracking-wider text-sm flex items-center justify-center gap-2 rounded-sm mt-2"
+        style={{ backgroundColor: BLUE, color: "white" }}>
+        {changedCount > 0
+          ? `Confirm — Activate with ${changedCount} Modification${changedCount > 1 ? "s" : ""}`
+          : "Confirm — Activate as Pre-Staged"}
+        <ChevronRight className="w-4 h-4" />
+      </button>
     </div>
   );
 }
 
+/* ─── Stand Down Preview ─────────────────────────────────────────────────── */
 function StandDownPreview({ triggerName }: { triggerName: string }) {
   return (
     <div className="space-y-4">
       <div className="rounded-sm p-4" style={{ backgroundColor: "#0A1228", border: "1px solid #C0505030" }}>
-        <p className="text-xs font-mono tracking-wider mb-3" style={{ color: "#C05050" }}>WHAT GETS RECORDED</p>
+        <p className="text-xs font-mono tracking-wider mb-3" style={{ color: RED }}>WHAT GETS RECORDED</p>
         <div className="space-y-3">
           {[
             { icon: FileText, label: "Trigger detection log preserved", detail: `"${triggerName}" — detected, reviewed, declined` },
@@ -180,7 +374,7 @@ function StandDownPreview({ triggerName }: { triggerName: string }) {
             { icon: CheckCircle, label: "No tasks activated", detail: "Protocol remains staged and ready for next detection" },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-3">
-              <item.icon className="w-4 h-4 shrink-0 mt-0.5" style={{ color: "#C05050" }} />
+              <item.icon className="w-4 h-4 shrink-0 mt-0.5" style={{ color: RED }} />
               <div>
                 <p className="text-sm font-semibold" style={{ color: "white" }}>{item.label}</p>
                 <p className="text-xs" style={{ color: IVORY, opacity: 0.6 }}>{item.detail}</p>
@@ -196,6 +390,7 @@ function StandDownPreview({ triggerName }: { triggerName: string }) {
   );
 }
 
+/* ─── Main Component ─────────────────────────────────────────────────────── */
 export default function ConsequencePreview({
   triggerName,
   playbookName,
@@ -233,9 +428,8 @@ export default function ConsequencePreview({
       </div>
 
       <div className="p-6">
-        {/* Choice instruction */}
         <p className="text-sm mb-5 font-semibold" style={{ color: IVORY }}>
-          Select your response. Each choice shows exactly what happens in the next 60 seconds.
+          Select your response. Each choice shows exactly what happens next.
         </p>
 
         {/* 4 choices */}
@@ -268,7 +462,7 @@ export default function ConsequencePreview({
           })}
         </div>
 
-        {/* Preview panel — shows what happens for the selected choice */}
+        {/* Consequence panel */}
         {selected && selectedChoice && (
           <div>
             <div className="flex items-center gap-3 mb-4">
@@ -284,46 +478,58 @@ export default function ConsequencePreview({
             </p>
 
             {selected === "run_as_built" && (
-              <RunAsBuiltPreview stakeholders={stakeholders} taskCount={taskCount} triggerName={triggerName} />
-            )}
-            {selected === "audible" && <AudiblePreview stakeholders={stakeholders} />}
-            {selected === "customize" && <CustomizePreview taskCount={taskCount} />}
-            {selected === "stand_down" && <StandDownPreview triggerName={triggerName} />}
-
-            {/* Confirm button */}
-            {selected !== "stand_down" && (
-              <button
-                onClick={() => onConfirm?.(selected!)}
-                className="mt-5 w-full py-3 font-mono font-bold tracking-wider text-sm flex items-center justify-center gap-2"
-                style={{ backgroundColor: selectedChoice.color, color: selected === "audible" ? NAVY : "white", borderRadius: "0.15rem" }}>
-                Confirm — {selectedChoice.label}
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            )}
-            {selected === "stand_down" && (
-              <div className="mt-5 space-y-3">
-                <textarea
-                  value={standDownReason}
-                  onChange={e => setStandDownReason(e.target.value)}
-                  className="w-full p-3 text-sm rounded-sm resize-none"
-                  rows={2}
-                  placeholder="Brief reason for stand-down (required for governance record)..."
-                  style={{ backgroundColor: "#0A1228", border: "1px solid #C0505060", color: IVORY, outline: "none" }}
-                />
+              <>
+                <RunAsBuiltPreview stakeholders={stakeholders} taskCount={taskCount} triggerName={triggerName} />
                 <button
-                  onClick={() => standDownReason.trim() && onConfirm?.("stand_down", standDownReason)}
-                  disabled={!standDownReason.trim()}
-                  className="w-full py-3 font-mono font-bold tracking-wider text-sm"
-                  style={{
-                    backgroundColor: standDownReason.trim() ? "#C05050" : "#3A2020",
-                    color: "white",
-                    borderRadius: "0.15rem",
-                    cursor: standDownReason.trim() ? "pointer" : "not-allowed",
-                    opacity: standDownReason.trim() ? 1 : 0.5,
-                  }}>
-                  Confirm Stand Down — Record Decision
+                  onClick={() => onConfirm?.("run_as_built")}
+                  className="mt-5 w-full py-3 font-mono font-bold tracking-wider text-sm flex items-center justify-center gap-2 rounded-sm"
+                  style={{ backgroundColor: TEAL, color: NAVY }}>
+                  Confirm — Run as Built
+                  <ChevronRight className="w-4 h-4" />
                 </button>
-              </div>
+              </>
+            )}
+
+            {selected === "audible" && (
+              <AudiblePreview
+                stakeholders={stakeholders}
+                onConfirm={() => onConfirm?.("audible")}
+              />
+            )}
+
+            {selected === "customize" && (
+              <CustomizePreview
+                taskCount={taskCount}
+                onConfirm={() => onConfirm?.("customize")}
+              />
+            )}
+
+            {selected === "stand_down" && (
+              <>
+                <StandDownPreview triggerName={triggerName} />
+                <div className="mt-5 space-y-3">
+                  <textarea
+                    value={standDownReason}
+                    onChange={e => setStandDownReason(e.target.value)}
+                    className="w-full p-3 text-sm rounded-sm resize-none"
+                    rows={2}
+                    placeholder="Brief reason for stand-down (required for governance record)..."
+                    style={{ backgroundColor: "#0A1228", border: "1px solid #C0505060", color: IVORY, outline: "none" }}
+                  />
+                  <button
+                    onClick={() => standDownReason.trim() && onConfirm?.("stand_down", standDownReason)}
+                    disabled={!standDownReason.trim()}
+                    className="w-full py-3 font-mono font-bold tracking-wider text-sm rounded-sm"
+                    style={{
+                      backgroundColor: standDownReason.trim() ? RED : "#3A2020",
+                      color: "white",
+                      cursor: standDownReason.trim() ? "pointer" : "not-allowed",
+                      opacity: standDownReason.trim() ? 1 : 0.5,
+                    }}>
+                    Confirm Stand Down — Record Decision
+                  </button>
+                </div>
+              </>
             )}
           </div>
         )}

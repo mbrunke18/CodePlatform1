@@ -197,6 +197,72 @@ export default function SecurityCompliance() {
             </div>
           </div>
 
+          {/* Week 1 / 2 / 4 Integration Timeline */}
+          <div style={{ marginTop: '2rem', marginBottom: '1.5rem' }}>
+            <div style={{ borderLeft: `3px solid ${NAVY}`, paddingLeft: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: GOLD, marginBottom: 4 }}>Implementation Certainty</div>
+              <h2 style={{ margin: 0, fontSize: '1.0625rem', fontWeight: 700, color: NAVY }}>What your first 4 weeks look like</h2>
+              <p style={{ margin: '0.375rem 0 0', fontSize: '0.8125rem', color: '#6B7280', lineHeight: 1.6 }}>
+                No multi-month deployment. No hidden integration dependencies. Readiness OS is operational in four weeks — here's exactly what happens.
+              </p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+              {[
+                {
+                  week: 'Week 1',
+                  title: 'Access & Identity',
+                  color: TEAL,
+                  items: [
+                    'SSO / OIDC authentication configured',
+                    'User accounts provisioned, roles assigned',
+                    'Email allowlist and access gate active',
+                    'Org tenant isolated and confirmed',
+                    'Admin panel and role verification complete',
+                  ],
+                },
+                {
+                  week: 'Week 2',
+                  title: 'Protocols & Stakeholders',
+                  color: '#C9A84C',
+                  items: [
+                    'Core Readiness Protocols mapped to your scenarios',
+                    'Stakeholder notification tree configured',
+                    'Signal monitoring calibrated to your risk calendar',
+                    'First practice drill executed and debriefed',
+                    'Executive authorization workflow validated',
+                  ],
+                },
+                {
+                  week: 'Week 4',
+                  title: 'Live & Board-Ready',
+                  color: NAVY,
+                  items: [
+                    'Live signal detection active across all domains',
+                    'First live activation exercise completed',
+                    'Board reporting baseline established',
+                    'Mobilization benchmark documented',
+                    'Security questionnaire support delivered',
+                  ],
+                },
+              ].map((phase) => (
+                <div key={phase.week} style={{ background: '#fff', border: '1px solid #E8E4DC', borderTopWidth: 3, borderTopColor: phase.color, overflow: 'hidden' }}>
+                  <div style={{ padding: '0.875rem 1.25rem', borderBottom: '1px solid #F3F4F6', background: '#FAFAF8' }}>
+                    <div style={{ fontSize: '0.65rem', fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: phase.color, marginBottom: 2 }}>{phase.week}</div>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 700, color: NAVY }}>{phase.title}</div>
+                  </div>
+                  <ul style={{ margin: 0, padding: '0.75rem 0', listStyle: 'none' }}>
+                    {phase.items.map((item) => (
+                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '0.5rem 1.25rem', borderBottom: '1px solid #F9F9F9' }}>
+                        <CheckCircle size={12} color={TEAL} style={{ flexShrink: 0, marginTop: 2 }} />
+                        <span style={{ fontSize: '0.8rem', color: '#374151', lineHeight: 1.55 }}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Contact CTA */}
           <div style={{
             marginTop: "1.5rem", background: NAVY,

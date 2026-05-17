@@ -19,6 +19,9 @@ import { createAndSendMagicLink, verifyMagicLinkToken, sendWelcomeTriggerDemo } 
 import { createTrialSession, activateTrialToken } from "./services/trialAccessService";
 import { registerPeerReviewRoute } from "./routes/peerReviewRoute";
 import { registerMarketingImageRoute } from "./routes/marketingImageRoute";
+import { registerLinkedInProductsRoute } from "./routes/linkedinProductsRoute";
+import { registerPitchDeckRoute } from "./routes/pitchDeckRoute";
+import { registerPitchDeckV2Route } from "./routes/pitchDeckV2Route";
 import { registerOrgSetupRoutes } from "./routes/org-setup-routes";
 import { registerAdminRoutes } from "./routes/admin-routes";
 import { registerDynamicStrategyRoutes } from "./routes/dynamic-strategy-routes";
@@ -802,6 +805,9 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
   // Public image download — no auth required
   registerMarketingImageRoute(app);
+  registerLinkedInProductsRoute(app);
+  registerPitchDeckRoute(app);
+  registerPitchDeckV2Route(app);
 
   app.use('/api/playbook-library', playbookLibraryLimiter);
   app.use('/api/playbooks/metadata', publicApiLimiter);
@@ -2014,7 +2020,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       // Check for user from Replit OIDC (stored in claims.sub) or direct sub
       const userId = req.user?.claims?.sub || req.user?.sub;
       if (!userId) {
-        return res.status(401).json({ message: "Not authenticated" });
+        return res.status(200).json(null);
       }
 
       const user = await storage.getUser(userId);

@@ -1,0 +1,72 @@
+Slide 1 — The Problem
+Title:
+The trigger fires in seconds. Mobilization takes 30 days.
+Body (on slide):
+Fortune 1000 organizations detect strategic triggers quickly
+Most still spend weeks aligning ownership, authority, and sequence
+The delay is not execution — it is mobilization
+Say:
+“Most organizations do not have a strategy problem. They have a mobilization problem. When a trigger fires, the first weeks are spent figuring out who decides and who owns the response.”
+Slide 2 — The Product
+Title:
+Readiness OS: The response is ready before the trigger fires.
+Body (on slide):
+170 Readiness Protocols pre-staged
+221 trigger patterns mapped
+248+ data points monitored every 15 minutes
+AI monitors. Executives authorize.
+Say:
+“We built Readiness OS to pre-stage the response architecture before pressure arrives. Authority remains human; mobilization becomes immediate.”
+Slide 3 — How It Works
+Title:
+From trigger to coordinated execution in minutes
+Body (on slide):
+Signal detected
+Matching protocol staged
+Stakeholders notified
+Executive authorizes
+Execution launches
+Footer line:
+30 days → 12 minutes (3,600× Execution Head Start)
+Say:
+“The key change is not a better dashboard. The key change is that coordination is pre-built, so when the trigger fires, execution starts.”
+Slide 4 — Proof (Now, not roadmap)
+Title:
+Built. Live. In production now.
+Body (on slide):
+Production platform live at vaughnmartin.com
+Full public execution walkthrough available
+Founding Partner cohort open for measured 90-day validation
+Optional proof line (only if true and defensible):
+[#] active evaluations / [#] qualified conversations in progress
+Say:
+“This is not a roadmap concept. The platform is live and testable now.”
+Slide 5 — Business Case
+Title:
+Replace existing response spend with execution infrastructure
+Body (on slide):
+Existing budgets already fund reactive response motions
+Readiness OS shifts spend to pre-staged execution readiness
+One high-impact trigger handled well can justify annual investment
+Keep numeric claims conservative unless fully sourced.
+Say:
+“We are not asking enterprises to invent new budget. We are replacing existing response spend with a repeatable operating model.”
+Slide 6 — Ask + Close
+Title:
+Category creation: Preparation Infrastructure
+Body (on slide): Raise: $[AMOUNT]
+Use of funds:
+Product hardening + enterprise controls
+Founding Partner conversions
+Repeatable GTM motion
+Close line (large):
+The response is ready before the trigger fires.
+Say:
+“Every enterprise has AI capability. Very few have mobilization readiness. We built that layer. It’s live now. We’re raising $[AMOUNT] to convert Founding Partners into repeatable enterprise growth.”
+Q&A answers (tight versions)
+Q: Do you have paying customers yet?
+“We are in Founding Partner conversion now with the product live in production. This round funds conversion of the first cohort into recurring enterprise contracts.”
+Q: Why now?
+“Because AI capability is no longer the bottleneck. Cross-functional mobilization is.”
+Q: Why will you win?
+“We are building the coordination operating model layer, not another point tool.”

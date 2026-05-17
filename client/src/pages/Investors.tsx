@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ExecutionGapDiagram } from "@/components/ExecutionGapDiagram";
 import PageLayout from "@/components/layout/PageLayout";
 import boardroomImg from "@/assets/images/investors-boardroom.png";
 import { Button } from "@/components/ui/button";
+import { updatePageMetadata } from "@/lib/seo";
 import { 
   TrendingUp, Clock, Target, DollarSign, Users, Shield, 
   Zap, CheckCircle, ArrowRight, Building, 
@@ -347,6 +349,15 @@ function FuturePositioningDiagram() {
 }
 
 export default function Investors() {
+  useEffect(() => {
+    updatePageMetadata({
+      title: "Investor Overview — VaughnMartin Readiness OS",
+      description: "The Strategic Readiness Platform for Fortune 1000. 3,600× Execution Head Start. 30 days compressed to 12 minutes. Category-defining opportunity in enterprise operating infrastructure.",
+      ogTitle: "Investor Overview — VaughnMartin Readiness OS",
+      ogDescription: "The operating model layer Fortune 1000s are missing. Pre-staged execution replaces 30-day mobilization cycles. 170 Readiness Protocols. 12-minute response.",
+    });
+  }, []);
+
   return (
     <PageLayout>
       <div className="min-h-screen bg-[#F8F7F4] relative overflow-hidden">

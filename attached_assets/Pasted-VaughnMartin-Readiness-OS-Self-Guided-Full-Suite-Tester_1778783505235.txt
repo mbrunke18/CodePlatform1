@@ -1,0 +1,83 @@
+VaughnMartin Readiness OS — Self-Guided Full-Suite Tester Worksheet
+Goal: Help us improve product quality, alignment, and differentiation through real usage feedback.
+Time: 25–35 minutes
+Instructions: Complete tasks in order. Please answer based on what you actually experienced.
+
+A) Tester Info
+Name: __________________________
+Email: __________________________
+Role/Title: ______________________
+Company: _______________________
+Date: ___________________________
+B) Task Checklist (do each task, then mark complete)
+Task 1 — First Impression (3–5 min)
+From the homepage, identify:
+
+What the product does
+Who it is for
+What action you would take first
+Completed: ☐ Yes ☐ No
+Notes (1–2 sentences):
+
+Task 2 — Trigger & Signal Credibility (4–6 min)
+Find a trigger/signal that matters for your organization.
+Assess whether it feels credible and relevant.
+
+Completed: ☐ Yes ☐ No
+Trigger you reviewed: ______________________________
+Notes: ___________________________________________
+
+Task 3 — Protocol Discovery & Fit (4–6 min)
+Find the matching response protocol and review it.
+Assess whether it is actionable for your organization.
+
+Completed: ☐ Yes ☐ No
+Protocol reviewed: ________________________________
+Notes: ___________________________________________
+
+Task 4 — Activation Flow (5–7 min)
+Run/inspect the activation flow as if this were live.
+Assess clarity of ownership, authority, and execution readiness.
+
+Completed: ☐ Yes ☐ No
+Notes: ___________________________________________
+
+Task 5 — Debrief / ROI / Value (4–6 min)
+Review debrief and value framing.
+Assess whether you could use this to brief leadership.
+
+Completed: ☐ Yes ☐ No
+Notes: ___________________________________________
+
+C) Scorecard (circle one per row: 1 = low, 5 = high)
+Clarity of value proposition: 1 2 3 4 5
+Ease of navigation: 1 2 3 4 5
+Trigger/signal credibility: 1 2 3 4 5
+Protocol match quality: 1 2 3 4 5
+Activation confidence: 1 2 3 4 5
+Credibility of “30 days → 12 min”: 1 2 3 4 5
+Differentiation vs alternatives: 1 2 3 4 5
+Enterprise readiness today: 1 2 3 4 5
+D) Required Feedback (most important)
+Strongest part of the product:
+Weakest part of the product:
+Biggest blocker to adoption in your organization:
+☐ Budget
+☐ Integration complexity
+☐ Internal ownership
+☐ Security/procurement
+☐ Change management
+☐ Need more proof
+☐ Other: ________________________
+
+If we fix ONE thing in the next 30 days, what should it be?
+
+Would you support a Founding Partner conversation?
+☐ Yes, now
+☐ Yes, after refinements
+☐ Not yet
+E) Bug Log (if any)
+Page/Flow: ______________________
+What happened: __________________
+Expected result: _________________
+Severity: ☐ Low ☐ Medium ☐ High ☐ Critical

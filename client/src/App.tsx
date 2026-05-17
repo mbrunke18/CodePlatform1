@@ -187,6 +187,11 @@ const PeerReview = lazy(() => import("./pages/PeerReview"));
 const PeerReviewReport = lazy(() => import("./pages/PeerReviewReport"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
 const FoundingPartnerProgram = lazy(() => import("./pages/FoundingPartnerProgram"));
+const FoundingPartnerPage = lazy(() => import("./pages/FoundingPartnerPage"));
+const CostOfInaction = lazy(() => import("./pages/CostOfInaction"));
+const FirstNinetyDays = lazy(() => import("./pages/FirstNinetyDays"));
+const BoardMemo = lazy(() => import("./pages/BoardMemo"));
+const BuyerDecisionPacket = lazy(() => import("./pages/BuyerDecisionPacket"));
 const FoundingPartnerOnboarding = lazy(() => import("./pages/FoundingPartnerOnboarding"));
 const ProtocolBuilder = lazy(() => import("./pages/ProtocolBuilder"));
 const Growth = lazy(() => import("./pages/Growth"));
@@ -665,6 +670,11 @@ function Router() {
         <Route path="/readiness-infrastructure" component={lazy(() => import("./pages/ReadinessInfrastructure"))} />
         <Route path="/executive-brief" component={ExecutiveBrief} />
         <Route path="/security-compliance" component={lazy(() => import("./pages/SecurityCompliance"))} />
+        <Route path="/founding-partner" component={FoundingPartnerPage} />
+        <Route path="/cost-of-inaction" component={CostOfInaction} />
+        <Route path="/first-90-days" component={FirstNinetyDays} />
+        <Route path="/board-memo" component={BoardMemo} />
+        <Route path="/buyer-decision-packet" component={BuyerDecisionPacket} />
         {renderRoutes(["/why-execution-os", "/the-proof", "/why-readiness-os"], WhyExecutionOS)}
         {renderRedirects(["/scenario-demo", "/ultimate-demo"], "/industry-demos")}
         <Route path="/landing">{() => <Redirect to="/" />}</Route>

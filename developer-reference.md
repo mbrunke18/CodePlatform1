@@ -2818,3 +2818,94 @@ Five operational narrative lines in this document carried legacy "pilot" languag
 - JSON-LD structured data active for Organization, SoftwareApplication, WebSite
 - GuestPreviewBanner "Request Founding Partner Access" routes consistently to `/founding-partner-program` across all banner states
 - All operational "pilot customer/prospect" references eliminated from developer documentation
+
+---
+
+## §62 Rev 37 Change Log
+
+### 1. ConsequencePreview — MasterDemo Integration
+
+**File:** `client/src/pages/MasterDemo.tsx`
+
+Phase 4 (Executive Authorization) in `MasterDemo.tsx` previously rendered a single "AUTHORIZE FULL ACTIVATION →" button. It now renders the full `ConsequencePreview` component, giving the executive all four response choices across every demo scenario routed through `/demo/:scenarioId`.
+
+**Changes:**
+- Imported `ConsequencePreview` and `ConsequenceChoice` into `MasterDemo.tsx`
+- Added `choiceMade: ConsequenceChoice | null` state to `PhaseAuthorize`
+- `handleAuth()` updated to accept a `ConsequenceChoice` parameter
+- Single-button section replaced with `<ConsequencePreview>` wired to `sc.triggerHeadline`, `sc.protocolNumber`, `sc.protocolName`, `sc.tasks.length`, and `sc.stakeholders`
+- Post-authorization confirmation panel shows choice-specific message (e.g. "Audible Called — Adjusted Protocol Activating")
+
+**Coverage after this change:**
+| Surface | ConsequencePreview present |
+|---|---|
+| All 12 scenario demos (`/demo/:scenarioId`) | ✅ |
+| 12-Minute Test Drive (`/12-minute-experience`) | ✅ (pre-existing) |
+| Live Activation Center (`/live-activation`) | ✅ (pre-existing) |
+
+---
+
+### 2. ConsequencePreview — Audible and Customize Built Out as Interactive Experiences
+
+**File:** `client/src/components/ConsequencePreview.tsx`
+
+Previously, the Audible and Customize consequence panels were read-only explanations. Both are now fully interactive.
+
+#### Audible — Interactive Delta Review
+
+Surfaces 3 delta items showing where current organizational state diverges from the pre-staged protocol. Delta fields are derived from the live `stakeholders` prop passed into the component.
+
+**Per-item interaction:**
+- Each item shows: field name, impact level (HIGH/MEDIUM), pre-staged value, current-state value, and consequence of not resolving
+- Two toggle buttons per item: **Accept Change** (teal) and **Keep Pre-Staged** (gold) — clicking the active button deselects it
+- Border and background tint reflect the current decision state per item
+- Progress bar fills as items are reviewed; "X/3 REVIEWED" counter updates live
+
+**Gate logic:**
+- Confirm button is hidden until all 3 items have a decision
+- Once all 3 reviewed: summary panel shows accepted count vs. reverted count, then "Confirm — Activate Adjusted Protocol" button appears
+
+**Delta items (scenario-aware):**
+| # | Field | Source |
+|---|---|---|
+| 1 | Primary Protocol Owner | `stakeholders[0].name / role` |
+| 2 | External Counsel Availability | Static (representative for all scenarios) |
+| 3 | Board Notification Channel | `stakeholders[legalIndex].name` |
+
+#### Customize — Live Editable Fields
+
+Opens 3 editable text inputs, each pre-filled with the protocol's default value.
+
+**Per-field behavior:**
+- Editing any field highlights it in blue with a "MODIFIED" badge
+- A "Revert to pre-staged" link appears beneath any changed field, restoring the default
+- Modified-count badge ("2 MODIFIED") appears in the panel header dynamically
+
+**Confirm button:**
+- Always available (no gating — executive can activate unchanged if preferred)
+- Button label is dynamic: "Activate with N Modification(s)" vs. "Activate as Pre-Staged"
+
+**Fields:**
+| # | Label | Default Value |
+|---|---|---|
+| 1 | Primary Protocol Owner | Chief Legal Officer |
+| 2 | First External Communication | Template: Regulatory Disclosure v3 |
+| 3 | Escalation Threshold | Board notification at T+30min |
+
+#### Stand Down — Unchanged (already fully functional)
+Requires a typed reason before the confirm button activates. Governance record framing preserved.
+
+#### Component API — unchanged
+The `ConsequencePreviewProps` interface and `onConfirm(choice, standDownReason?)` signature are backward-compatible. No call sites required updates.
+
+---
+
+### 3. Rev 37 Known State
+
+- All 189 unit tests pass
+- Production build clean
+- `ConsequencePreview` is fully interactive for all 4 choices across all 3 activation surfaces
+- Audible: gated confirm (all 3 delta items must be reviewed before activating)
+- Customize: live editable fields, dynamic confirm label, always-available confirm
+- Stand Down: typed reason required, governance record framing
+- Run as Built: T+N timeline, stakeholder/task count summary, immediate confirm

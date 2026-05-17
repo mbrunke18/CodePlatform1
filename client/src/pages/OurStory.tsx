@@ -314,7 +314,7 @@ export default function OurStory() {
                     Watch Demo
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href="/founding-partner-program">
                   <Button style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff", background: "transparent", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", padding: "11px 28px" }}>
                     Contact Sales
                   </Button>
