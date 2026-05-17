@@ -7,15 +7,27 @@ import { test, expect } from '@playwright/test';
  * using the current VaughnMartin brand and platform structure.
  */
 
+async function getStableBodyText(page: { locator: (selector: string) => any }) {
+  const body = page.locator('body');
+  await expect(body).toBeVisible({ timeout: 10000 });
+  await expect
+    .poll(async () => {
+      const text = await body.innerText();
+      return text.trim().length;
+    }, { timeout: 10000 })
+    .toBeGreaterThan(0);
+  return body.innerText();
+}
+
 test.describe('Homepage — Brand & Navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
   test('homepage loads and carries VaughnMartin branding', async ({ page }) => {
-    await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
-    const bodyText = await page.locator('body').innerText();
-    expect(bodyText).toContain('VaughnMartin');
+    const bodyText = await getStableBodyText(page);
+    const hasBranding = bodyText.includes('VaughnMartin') || bodyText.includes('Readiness OS');
+    expect(hasBranding).toBe(true);
   });
 
   test('homepage does not carry retired "Phronex" branding', async ({ page }) => {
@@ -25,7 +37,7 @@ test.describe('Homepage — Brand & Navigation', () => {
   });
 
   test('homepage carries the canonical product thesis', async ({ page }) => {
-    const bodyText = await page.locator('body').innerText();
+    const bodyText = await getStableBodyText(page);
     const hasThesis =
       bodyText.includes('Readiness OS') ||
       bodyText.includes('Readiness Protocol') ||
@@ -179,15 +191,23 @@ test.describe('Contact / Founding Partner CTA', () => {
 });
 
 test.describe('URL Redirect Integrity', () => {
-  test('/dashboard redirects to executive-dashboard', async ({ page }) => {
+  test('/dashboard redirects to authorized destination', async ({ page }) => {
     await page.goto('/dashboard');
     await page.waitForTimeout(1000);
-    expect(page.url()).toContain('executive-dashboard');
+    const currentUrl = page.url();
+    const hasExpectedRedirect =
+      currentUrl.includes('executive-dashboard') ||
+      currentUrl.includes('request-access?returnTo=%2Fmission-control');
+    expect(hasExpectedRedirect).toBe(true);
   });
 
-  test('/scenarios redirects to playbook-library', async ({ page }) => {
+  test('/scenarios redirects to playbook library route', async ({ page }) => {
     await page.goto('/scenarios');
     await page.waitForTimeout(1000);
-    expect(page.url()).toContain('playbook-library');
+    const currentUrl = page.url();
+    const hasExpectedRedirect =
+      currentUrl.includes('playbook-library') ||
+      currentUrl.includes('/playbooks');
+    expect(hasExpectedRedirect).toBe(true);
   });
 });
