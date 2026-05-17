@@ -19,11 +19,14 @@ const KEY_PAGES = [
   { path: '/', name: 'Homepage' },
   { path: '/playbook-library', name: 'Playbook Library' },
   { path: '/intelligence-demo', name: 'Intelligence Demo' },
-  { path: '/executive-dashboard', name: 'Executive Dashboard' },
   { path: '/request-access', name: 'Request Access' },
   { path: '/how-it-works', name: 'How It Works' },
   { path: '/pricing', name: 'Pricing' },
   { path: '/our-story', name: 'Our Story' },
+  { path: '/cost-of-inaction', name: 'Cost of Inaction' },
+  { path: '/first-90-days', name: 'First 90 Days' },
+  { path: '/founding-partner', name: 'Founding Partner' },
+  { path: '/buyer-decision-packet', name: 'Buyer Decision Packet' },
 ];
 
 const RETIRED_EXACT_PHRASES = [
