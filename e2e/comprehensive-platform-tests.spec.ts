@@ -165,14 +165,11 @@ test.describe('Conversion Pages — Buyer Decision Suite', () => {
 
   test('/buyer-decision-packet loads with all 9 sections', async ({ page }) => {
     await page.goto('/buyer-decision-packet');
-    await page.waitForTimeout(1500);
+    await page.waitForLoadState('networkidle');
     await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
     const bodyText = await page.locator('body').innerText();
-    const has90 =
-      bodyText.includes('90-day') ||
-      bodyText.includes('90-Day') ||
-      bodyText.includes('90 Days') ||
-      bodyText.includes('90 days');
+    const bodyLower = bodyText.toLowerCase();
+    const has90 = bodyLower.includes('90-day') || bodyLower.includes('90 day') || bodyLower.includes('90 days');
     expect(has90).toBe(true);
     expect(bodyText).toContain('Founding Partner');
   });
