@@ -676,7 +676,7 @@ function SignalCoverageSection({ data, update }: { data: Data; update: (f: strin
     update('internalSystems', current.includes(sys) ? current.filter(s => s !== sys) : [...current, sys]);
   };
   return (
-    <div style={{ marginTop: 36, borderTop: `1px dashed ${BORDER}`, paddingTop: 28 }}>
+    <div style={{ marginBottom: 8 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
         <Radio size={14} color={TEAL} />
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: MUTED }}>Signal & Data Coverage</div>
@@ -744,32 +744,34 @@ function Step4({ data, update }: { data: Data; update: (f: string, v: any) => vo
   const alertTemplate = `PRIORITY ALERT — [PROTOCOL NAME] ACTIVATED\n\nTo: [STAKEHOLDER GROUP]\nTime: [HH:MM]\n\n[BRIEF SITUATION DESCRIPTION]\n\nYour role: [SPECIFIC ACTION REQUIRED]\nDeadline: [TIME]\n\nProtocol Commander: [NAME, TITLE]`;
   return (
     <>
-      <Field label="Board Notification">
-        <textarea style={{ ...inputStyle, minHeight: 160, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder={boardTemplate} value={data.boardNotification} onChange={e => update('boardNotification', e.target.value)} />
-        <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Brackets indicate variables you'll fill at activation. Pre-drafting removes communication delay under pressure.</div>
-      </Field>
-      <Field label="Stakeholder Alert">
-        <textarea style={{ ...inputStyle, minHeight: 130, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder={alertTemplate} value={data.stakeholderAlert} onChange={e => update('stakeholderAlert', e.target.value)} />
-      </Field>
-      <div style={{ marginBottom: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-          <label style={{ ...labelStyle, margin: 0, flex: 1 }}>External Partner Communication</label>
-          <Toggle checked={data.hasExternalPartners} onChange={v => update('hasExternalPartners', v)} />
-        </div>
-        {data.hasExternalPartners && (
-          <textarea style={{ ...inputStyle, minHeight: 100, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder="Pre-draft your external partner briefing (vendors, suppliers, law firms, PR agencies)..." value={data.externalPartnersText} onChange={e => update('externalPartnersText', e.target.value)} />
-        )}
-      </div>
-      <div style={{ marginBottom: 20 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-          <label style={{ ...labelStyle, margin: 0, flex: 1 }}>Public Statement</label>
-          <Toggle checked={data.hasPublicStatement} onChange={v => update('hasPublicStatement', v)} />
-        </div>
-        {data.hasPublicStatement && (
-          <textarea style={{ ...inputStyle, minHeight: 100, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder="Pre-draft your public statement template. Reviewed by Legal & PR before activation." value={data.publicStatementText} onChange={e => update('publicStatementText', e.target.value)} />
-        )}
-      </div>
       <SignalCoverageSection data={data} update={update} />
+      <div style={{ borderTop: `1px dashed ${BORDER}`, paddingTop: 28, marginTop: 4 }}>
+        <Field label="Board Notification">
+          <textarea style={{ ...inputStyle, minHeight: 160, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder={boardTemplate} value={data.boardNotification} onChange={e => update('boardNotification', e.target.value)} />
+          <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Brackets indicate variables you'll fill at activation. Pre-drafting removes communication delay under pressure.</div>
+        </Field>
+        <Field label="Stakeholder Alert">
+          <textarea style={{ ...inputStyle, minHeight: 130, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder={alertTemplate} value={data.stakeholderAlert} onChange={e => update('stakeholderAlert', e.target.value)} />
+        </Field>
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+            <label style={{ ...labelStyle, margin: 0, flex: 1 }}>External Partner Communication</label>
+            <Toggle checked={data.hasExternalPartners} onChange={v => update('hasExternalPartners', v)} />
+          </div>
+          {data.hasExternalPartners && (
+            <textarea style={{ ...inputStyle, minHeight: 100, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder="Pre-draft your external partner briefing (vendors, suppliers, law firms, PR agencies)..." value={data.externalPartnersText} onChange={e => update('externalPartnersText', e.target.value)} />
+          )}
+        </div>
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+            <label style={{ ...labelStyle, margin: 0, flex: 1 }}>Public Statement</label>
+            <Toggle checked={data.hasPublicStatement} onChange={v => update('hasPublicStatement', v)} />
+          </div>
+          {data.hasPublicStatement && (
+            <textarea style={{ ...inputStyle, minHeight: 100, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder="Pre-draft your public statement template. Reviewed by Legal & PR before activation." value={data.publicStatementText} onChange={e => update('publicStatementText', e.target.value)} />
+          )}
+        </div>
+      </div>
     </>
   );
 }
