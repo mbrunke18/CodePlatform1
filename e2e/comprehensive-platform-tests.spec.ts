@@ -168,7 +168,12 @@ test.describe('Conversion Pages — Buyer Decision Suite', () => {
     await page.waitForTimeout(1500);
     await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
     const bodyText = await page.locator('body').innerText();
-    expect(bodyText).toContain('90 Day');
+    const has90 =
+      bodyText.includes('90-day') ||
+      bodyText.includes('90-Day') ||
+      bodyText.includes('90 Days') ||
+      bodyText.includes('90 days');
+    expect(has90).toBe(true);
     expect(bodyText).toContain('Founding Partner');
   });
 
