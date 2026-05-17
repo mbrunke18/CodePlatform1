@@ -2020,7 +2020,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       // Check for user from Replit OIDC (stored in claims.sub) or direct sub
       const userId = req.user?.claims?.sub || req.user?.sub;
       if (!userId) {
-        return res.status(401).json({ message: "Not authenticated" });
+        return res.status(200).json(null);
       }
 
       const user = await storage.getUser(userId);
