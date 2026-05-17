@@ -612,6 +612,7 @@ function Step1({ data, update, onTemplate }: { data: Data; update: (f: string, v
           </div>
         </Field>
       </div>
+      <SignalCoverageSection data={data} update={update} />
     </>
   );
 }
@@ -744,8 +745,7 @@ function Step4({ data, update }: { data: Data; update: (f: string, v: any) => vo
   const alertTemplate = `PRIORITY ALERT — [PROTOCOL NAME] ACTIVATED\n\nTo: [STAKEHOLDER GROUP]\nTime: [HH:MM]\n\n[BRIEF SITUATION DESCRIPTION]\n\nYour role: [SPECIFIC ACTION REQUIRED]\nDeadline: [TIME]\n\nProtocol Commander: [NAME, TITLE]`;
   return (
     <>
-      <SignalCoverageSection data={data} update={update} />
-      <div style={{ borderTop: `1px dashed ${BORDER}`, paddingTop: 28, marginTop: 4 }}>
+      <div>
         <Field label="Board Notification">
           <textarea style={{ ...inputStyle, minHeight: 160, resize: 'vertical', fontSize: 13, lineHeight: 1.6 }} placeholder={boardTemplate} value={data.boardNotification} onChange={e => update('boardNotification', e.target.value)} />
           <div style={{ fontSize: 11, color: MUTED, marginTop: 6 }}>Brackets indicate variables you'll fill at activation. Pre-drafting removes communication delay under pressure.</div>
