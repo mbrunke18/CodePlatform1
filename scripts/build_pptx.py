@@ -423,11 +423,15 @@ heading(s6, "From Signal to Authorized Execution in 12 Minutes",
     Inches(0.5), Inches(0.76), Inches(12.33), Inches(0.76),
     size=28, align=PP_ALIGN.CENTER)
 
-IMG6_Y = Inches(1.58); IMG6_H = Inches(4.24)
-IMG6_LW = Inches(6.08)   # left image width  (ends x=6.44)
-GAP6    = Inches(0.30)   # gap between images
-IMG6_RX = Inches(0.36) + IMG6_LW + GAP6           # = 6.74in
-IMG6_RW = W - IMG6_RX - Inches(0.36)              # = 6.23in
+# Images at native 16:9 ratio (img AR=1.778) so no horizontal clipping.
+# Both images same height for visual consistency.
+# Total usable width: 13.333 - 0.36 - 0.36 - 0.30 gap = 12.313in → each ~6.157in
+IMG6_Y  = Inches(1.62)
+IMG6_LW = Inches(6.15)                             # left width
+IMG6_H  = IMG6_LW / 1.778                          # ≈ 3.46in  (exact 16:9 → zero h-crop)
+GAP6    = Inches(0.30)
+IMG6_RX = Inches(0.36) + IMG6_LW + GAP6           # ≈ 6.81in
+IMG6_RW = W - IMG6_RX - Inches(0.36)              # ≈ 6.16in  (same height at 16:9)
 
 cover_pic(s6, IMG_SIGNALS,  Inches(0.36), IMG6_Y, IMG6_LW, IMG6_H)
 caption_bar(s6, "Live trigger detection · confidence scoring · startup to Fortune 500",
@@ -437,15 +441,17 @@ cover_pic(s6, IMG_BUILDER, IMG6_RX, IMG6_Y, IMG6_RW, IMG6_H)
 caption_bar(s6, "Pre-staged protocol · stakeholders · authority · tasks ready",
     IMG6_RX, IMG6_Y, IMG6_RW, IMG6_H)
 
-# Footer — below images (images end at y=5.82)
-rect(s6, 0, Inches(5.90), W, Inches(0.90),
+# Footer — images end at ≈ y=5.08; footer fills remaining space
+IMG6_BOTTOM = IMG6_Y + IMG6_H   # ≈ 5.08in
+rect(s6, 0, IMG6_BOTTOM + Inches(0.12), W,
+     H - IMG6_BOTTOM - Inches(0.12) - Inches(0.16),
      fill=RGBColor(0x06, 0x08, 0x1C))
 txb(s6, "AI monitors.     Executives authorize.     Teams execute.",
-    Inches(0.5), Inches(6.02), Inches(12.33), Inches(0.48),
-    size=22, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
+    Inches(0.5), IMG6_BOTTOM + Inches(0.22), Inches(12.33), Inches(0.50),
+    size=20, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
 txb(s6,
     "170 protocols  ·  221 triggers  ·  248 data points  ·  15-minute refresh",
-    Inches(0.5), Inches(6.54), Inches(12.33), Inches(0.30),
+    Inches(0.5), IMG6_BOTTOM + Inches(0.82), Inches(12.33), Inches(0.30),
     size=10, color=MUTED, align=PP_ALIGN.CENTER)
 slide_num(s6, 6)
 
@@ -557,15 +563,20 @@ slide_num(s8, 8)
 s9 = new_slide(bg=IVORY)
 gold_bar(s9); logo_mark(s9)
 
-# ── RIGHT IMAGE ZONE: x=7.0, y=0.56, w=5.97, h=6.24 ─────────
+# ── RIGHT IMAGE ZONE ─────────────────────────────────────────
+# Previous frame was 5.97 × 6.18in (AR=0.97) — nearly square.
+# cover_pic was cropping ~45% off top AND bottom to fit 16:9 source.
+# Fix: set frame to exact 16:9 and center it vertically in the panel.
 IMG9_X = Inches(7.0);  IMG9_W = Inches(5.97)
-IMG9_Y = Inches(0.56); IMG9_H = Inches(6.18)
+IMG9_H  = IMG9_W / 1.778          # ≈ 3.36in — exact 16:9, zero crop
+PANEL_H = Inches(6.28)            # available height in right panel (y=0.56–6.84)
+IMG9_Y  = Inches(0.56) + (PANEL_H - IMG9_H) / 2   # vertically centered ≈ y=1.94
 cover_pic(s9, IMG_HOME, IMG9_X, IMG9_Y, IMG9_W, IMG9_H, border=True)
 caption_bar(s9, "Readiness OS · production platform · vaughnmartin.com",
     IMG9_X, IMG9_Y, IMG9_W, IMG9_H)
 
-# Vertical gold rule as zone separator
-vrule(s9, Inches(6.86), Inches(0.56), Inches(6.18),
+# Vertical gold rule — full panel height
+vrule(s9, Inches(6.86), Inches(0.56), PANEL_H,
       color=GOLD, lw=1.0)
 
 # ── LEFT TEXT ZONE: x=0.36 to x=6.66 ────────────────────────
