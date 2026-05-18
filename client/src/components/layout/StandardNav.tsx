@@ -729,6 +729,18 @@ export default function StandardNav() {
               <BookOpen className="h-3.5 w-3.5" />
               Guide
             </button>
+            <button
+              onClick={() => navigateTo('/sitemap')}
+              className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
+              style={{ color: NAVY, background: 'transparent', whiteSpace: 'nowrap', opacity: 0.72 }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.opacity = '0.72'; }}
+              title="All pages and features"
+              data-testid="nav-directory"
+            >
+              <LayoutGrid className="h-3.5 w-3.5" />
+              Directory
+            </button>
           </div>
 
           {/* Right: CTAs */}
