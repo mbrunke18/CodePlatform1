@@ -132,7 +132,7 @@ export default function BuyerDecisionPacket() {
               <span style={{ color: GOLD }}>With Executive Control Intact.</span>
             </h1>
             <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.75)", maxWidth: 640, margin: "0 auto 2rem", lineHeight: 1.7 }}>
-              Readiness OS gives your leadership team a governed way to move from trigger detection to coordinated execution in minutes, not weeks. This packet covers everything procurement, legal, and the board need to make the decision.
+              Readiness OS delivers end-to-end organizational advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in minutes, and improve every cycle. This packet covers everything procurement, legal, and the board need to make the decision.
             </p>
             <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>
@@ -144,6 +144,25 @@ export default function BuyerDecisionPacket() {
             </div>
           </div>
         </section>
+
+        {/* Lifecycle strip */}
+        <div style={{ background: "#132558", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "0 1.5rem" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", overflowX: "auto" }}>
+            {[
+              { num: "01", stage: "MAP", sub: "Situation Universe", detail: "221 triggers catalogued" },
+              { num: "02", stage: "MONITOR", sub: "Signal Detection", detail: "248+ data points / 15 min" },
+              { num: "03", stage: "DECIDE", sub: "Executive Authority", detail: "Pre-assigned decision rights" },
+              { num: "04", stage: "EXECUTE", sub: "12-Min Deploy", detail: "170 Protocols pre-staged" },
+              { num: "05", stage: "LEARN", sub: "Institutional Memory", detail: "Every activation encoded" },
+            ].map((s, i) => (
+              <div key={i} style={{ flex: "1 0 0", padding: "16px 20px", borderRight: i < 4 ? "1px solid rgba(255,255,255,0.07)" : "none", minWidth: 120 }}>
+                <div style={{ ...BC, fontSize: "0.55rem", fontWeight: 800, letterSpacing: "0.2em", color: i % 2 === 0 ? GOLD : TEAL, textTransform: "uppercase" as const, marginBottom: 4 }}>{s.num} · {s.stage}</div>
+                <div style={{ ...BC, fontSize: "0.65rem", fontWeight: 700, color: "rgba(255,255,255,0.85)", marginBottom: 2 }}>{s.sub}</div>
+                <div style={{ ...BC, fontSize: "0.6rem", color: "rgba(255,255,255,0.45)" }}>{s.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Section divider label */}
         <div style={{ background: GOLD, padding: "0.5rem 1.5rem", textAlign: "center" }}>

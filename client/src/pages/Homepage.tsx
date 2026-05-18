@@ -715,7 +715,7 @@ function HeroSection() {
               </h1>
 
               <p style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
-                30 days of mobilization compressed to 12 minutes. 170 Readiness Protocols pre-staged for high-stakes disruptions and high-upside strategic moments alike — executive-authorized before the trigger, not assembled after it.
+                Not just a faster response — total organizational advantage. Map every situation you'll face. Monitor the right signals. Decide with authority. Execute in minutes. Improve every cycle. The complete operating architecture, pre-staged before the trigger fires.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(16px,1.2vw,18px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
                 Every trigger — risk or opportunity — meets a response that was already ready.
@@ -2730,14 +2730,108 @@ function SimulatorCTASection() {
     </section>
   );
 }
+// ─── Full Advantage Lifecycle Section ────────────────────────────────────────
+function LifecycleAdvantageSection() {
+  const stages = [
+    {
+      num: "01", stage: "MAP",
+      label: "See every situation before it arrives",
+      body: "Build your complete situation universe — every scenario you have faced, are facing, and may face. 221 trigger patterns catalogued across 9 strategic domains. Nothing arrives as a surprise.",
+      accent: GOLD,
+    },
+    {
+      num: "02", stage: "MONITOR",
+      label: "Know the moment something matters",
+      body: "Continuous signal detection across 248+ data points, every 15 minutes. The right intelligence mapped to the right Readiness Protocol — before the trigger escalates to a crisis.",
+      accent: TEAL,
+    },
+    {
+      num: "03", stage: "DECIDE",
+      label: "Act with authority, not assembly",
+      body: "Decision rights pre-defined before pressure exists. When a trigger fires, executives choose from pre-staged options — not figure out who owns what. Authority preserved at every step.",
+      accent: GOLD,
+    },
+    {
+      num: "04", stage: "EXECUTE",
+      label: "Deploy the full coordinated response",
+      body: "170 Readiness Protocols deploy simultaneously — tasks, budgets, communications, and stakeholder notifications in minutes. Not assembled under pressure. Already built.",
+      accent: TEAL,
+    },
+    {
+      num: "05", stage: "LEARN",
+      label: "Improve after every event",
+      body: "Every activation is scored, analyzed, and encoded into institutional memory. Each cycle makes the next response faster, sharper, and harder to catch your organization off-guard.",
+      accent: GOLD,
+    },
+  ];
+
+  return (
+    <section style={{ background: NAVY, padding: "96px 0", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
+      <div style={{ ...CONTAINER, position: "relative", zIndex: 1 }}>
+        <Reveal>
+          <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 20 }}>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: "rgba(201,168,76,0.8)" }}>The Full Advantage System</span>
+              <div style={{ width: 32, height: 1, background: "rgba(201,168,76,0.4)" }} />
+            </div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 700, color: "#fff", lineHeight: 1.2, marginBottom: 20 }}>
+              End-to-end advantage —<br />
+              <em style={{ color: GOLD, fontStyle: "italic" }}>before, during, and after every trigger.</em>
+            </h2>
+            <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.62)", maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
+              We don't accelerate response. We build the complete operating architecture — so your organization sees situations earlier, decides with authority, executes in minutes, and improves every cycle.
+            </p>
+          </div>
+        </Reveal>
+
+        {/* 5-stage grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
+          {stages.map((s, i) => (
+            <Reveal key={i} delay={i * 0.08}>
+              <div style={{ background: NAVY, padding: "32px 24px 28px", height: "100%", boxSizing: "border-box" as const, borderTop: `3px solid ${s.accent}` }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", color: s.accent, textTransform: "uppercase" as const, marginBottom: 10 }}>{s.num} · {s.stage}</div>
+                <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 17, fontWeight: 700, color: "#fff", lineHeight: 1.35, marginBottom: 16 }}>{s.label}</div>
+                <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.72 }}>{s.body}</div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Flow connector */}
+        <Reveal delay={0.4}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginTop: 28, marginBottom: 20 }}>
+            {["MAP", "MONITOR", "DECIDE", "EXECUTE", "LEARN"].map((label, i) => (
+              <div key={label} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 10, fontWeight: 800, letterSpacing: "0.18em", color: i % 2 === 0 ? GOLD : TEAL }}>{label}</span>
+                {i < 4 && <span style={{ color: "rgba(255,255,255,0.18)", fontSize: 13 }}>→</span>}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        {/* Canonical positioning quote */}
+        <Reveal delay={0.5}>
+          <div style={{ padding: "24px 40px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.14)", borderLeft: `3px solid ${GOLD}`, maxWidth: 820, margin: "0 auto" }}>
+            <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(16px,1.6vw,20px)", fontWeight: 700, color: "#fff", fontStyle: "italic", lineHeight: 1.55, margin: 0, textAlign: "center" }}>
+              "Readiness OS gives organizations end-to-end advantage: see situations earlier, decide with authority, execute in minutes, and improve every cycle."
+            </p>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 export default function Homepage() {
   useScrollDepth();
   useEffect(() => {
     updatePageMetadata({
       title: "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure",
-      description: "Fortune 1000 enterprises take 30 days to mobilize around a strategic trigger. Readiness OS deploys your entire organization in 12 minutes. 170 Readiness Protocols, 248+ data points, zero improvisation.",
-      ogTitle: "VaughnMartin Readiness OS — 30 Days Compressed to 12 Minutes",
-      ogDescription: "The response is ready before the trigger fires. 170 Readiness Protocols pre-staged for Fortune 1000 strategic execution. 3,600× Execution Head Start.",
+      description: "Readiness OS gives Fortune 1000 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 170 Readiness Protocols, 248+ data points, zero improvisation.",
+      ogTitle: "VaughnMartin Readiness OS — End-to-End Organizational Advantage",
+      ogDescription: "The response is ready before the trigger fires. Map · Monitor · Decide · Execute · Learn — the complete operating architecture for Fortune 1000 execution. 3,600× Execution Head Start.",
     });
   }, []);
   return (
@@ -2775,6 +2869,9 @@ export default function Homepage() {
 
       {/* 5. THESIS — The missing operating model */}
       <MissingLayerSection />
+
+      {/* 5c. LIFECYCLE — The full advantage system */}
+      <LifecycleAdvantageSection />
 
       {/* 5b. MICROSOFT — The stack you already own */}
       <MicrosoftEcosystemBanner />

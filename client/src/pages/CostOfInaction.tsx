@@ -282,7 +282,7 @@ export default function CostOfInaction() {
             The response is ready before the trigger fires.
           </div>
           <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginBottom: 28, lineHeight: 1.6 }}>
-            Readiness OS compresses a 30-day mobilization cycle to 12 minutes — for every scenario your organization is likely to face.
+            Readiness OS delivers end-to-end advantage: detect situations earlier, decide with authority, execute in 12 minutes, and improve every cycle — for every scenario your organization is likely to face.
           </div>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/founding-partner">

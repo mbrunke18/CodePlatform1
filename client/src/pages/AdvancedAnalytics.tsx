@@ -91,7 +91,7 @@ interface IndustryBenchmark {
 }
 
 export default function AdvancedAnalytics() {
-  const [activeTab, setActiveTab] = useState('predictive');
+  const [activeTab, setActiveTab] = useState('lifecycle');
   const [predictiveModels, setPredictiveModels] = useState<PredictiveModel[]>([]);
   const [businessIntelligence, setBusinessIntelligence] = useState<BusinessIntelligence[]>([]);
   const [industryBenchmarks, setIndustryBenchmarks] = useState<IndustryBenchmark[]>([]);
@@ -331,6 +331,7 @@ export default function AdvancedAnalytics() {
         {/* Advanced Analytics Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="bg-white border border-[#E8E4DC] rounded-none h-12 p-0 gap-0 px-2">
+            <TabsTrigger value="lifecycle" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Lifecycle Performance</TabsTrigger>
             <TabsTrigger value="predictive" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Predictive Models</TabsTrigger>
             <TabsTrigger value="intelligence" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Business Intelligence</TabsTrigger>
             <TabsTrigger value="benchmarks" className="rounded-none border-b-2 border-transparent data-[state=active]:border-[#C9A84C] data-[state=active]:bg-transparent data-[state=active]:text-[#0A0F2E] text-[#6B7280] font-bold text-[10px] uppercase tracking-wider px-4">Industry Benchmarks</TabsTrigger>
@@ -340,6 +341,154 @@ export default function AdvancedAnalytics() {
               Strategic Chat
             </TabsTrigger>
           </TabsList>
+
+          {/* Lifecycle Performance */}
+          <TabsContent value="lifecycle" className="space-y-6">
+            <div className="space-y-6">
+
+              {/* Stage banner */}
+              <div style={{ background: '#0A0F2E', padding: '28px 32px', display: 'flex', gap: 1, overflow: 'hidden' }}>
+                {[
+                  { num: '01', stage: 'MAP', label: 'Situations Catalogued', value: '221', color: '#C9A84C' },
+                  { num: '02', stage: 'MONITOR', label: 'Signal Data Points', value: '248+', color: '#2B8A6E' },
+                  { num: '03', stage: 'DECIDE', label: 'Decision Lead-Time', value: '< 3 min', color: '#C9A84C' },
+                  { num: '04', stage: 'EXECUTE', label: 'Full Deploy Window', value: '12 min', color: '#2B8A6E' },
+                  { num: '05', stage: 'LEARN', label: 'Improvement / Cycle', value: '+18%', color: '#C9A84C' },
+                ].map((s, i) => (
+                  <div key={i} style={{ flex: 1, padding: '0 20px', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.07)' : 'none', textAlign: 'center' }}>
+                    <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 8, fontWeight: 800, letterSpacing: '0.22em', color: s.color, textTransform: 'uppercase' as const, marginBottom: 6 }}>{s.num} · {s.stage}</div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: '#fff', lineHeight: 1, marginBottom: 4 }}>{s.value}</div>
+                    <div style={{ fontFamily: "'Barlow', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em' }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Detection Lead-Time */}
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
+                <CardHeader style={{ borderBottom: '1px solid #E8E4DC', paddingBottom: 16 }}>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-[#0A0F2E] flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20 }}>
+                      <Clock className="h-5 w-5 text-[#C9A84C]" />
+                      Detection Lead-Time
+                    </CardTitle>
+                    <Badge className="bg-[#C9A84C]/15 text-[#C9A84C] border-[#C9A84C]/25 rounded-none text-[9px] tracking-wider uppercase font-bold px-2">Stage 02 · Monitor</Badge>
+                  </div>
+                  <p className="text-[#6B7280] text-sm mt-1">How far ahead of trigger escalation signals are detected — the earlier the detection, the more options available to the executive.</p>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    {[
+                      { label: 'Avg. Signal Lead', value: '4.2 days', sub: 'Before trigger becomes critical', color: '#2B8A6E' },
+                      { label: 'Early Detections', value: '73%', sub: 'Detected before public escalation', color: '#C9A84C' },
+                      { label: 'Monitoring Cadence', value: '15 min', sub: 'Signal refresh cycle', color: '#0A0F2E' },
+                    ].map((m, i) => (
+                      <div key={i} style={{ padding: '20px', background: '#F8F7F4', borderLeft: `3px solid ${m.color}` }}>
+                        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: m.color, lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: '#0A0F2E', marginBottom: 2 }}>{m.label}</div>
+                        <div style={{ fontSize: 10, color: '#6B7280' }}>{m.sub}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ padding: '14px 20px', background: '#F0FDF8', border: '1px solid #2B8A6E22', fontSize: 12, color: '#2B8A6E', lineHeight: 1.6 }}>
+                    <strong>Why it matters:</strong> Detection lead-time is the advantage that enables all other stages. Every extra day of lead-time expands available response options and reduces mobilization cost.
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Decision-to-Action */}
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
+                <CardHeader style={{ borderBottom: '1px solid #E8E4DC', paddingBottom: 16 }}>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-[#0A0F2E] flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20 }}>
+                      <Zap className="h-5 w-5 text-[#2B8A6E]" />
+                      Decision-to-Action
+                    </CardTitle>
+                    <Badge className="bg-[#2B8A6E]/15 text-[#2B8A6E] border-[#2B8A6E]/25 rounded-none text-[9px] tracking-wider uppercase font-bold px-2">Stages 03–04 · Decide → Execute</Badge>
+                  </div>
+                  <p className="text-[#6B7280] text-sm mt-1">Time from executive authorization to full organizational deployment — the core 3,600× Execution Head Start metric.</p>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="grid grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: '#6B7280', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>Old Operating Model</div>
+                      {[
+                        { phase: 'Identify response owners', days: '2–5 days' },
+                        { phase: 'Align on approach', days: '5–10 days' },
+                        { phase: 'Assign tasks & budget', days: '3–7 days' },
+                        { phase: 'Begin coordinated execution', days: '10–20 days' },
+                      ].map((r, i) => (
+                        <div key={i} className="flex items-center justify-between py-2" style={{ borderBottom: '1px solid #F0EDE4' }}>
+                          <span style={{ fontSize: 12, color: '#374151' }}>{r.phase}</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: '#EF4444' }}>{r.days}</span>
+                        </div>
+                      ))}
+                      <div className="flex items-center justify-between pt-3">
+                        <span style={{ fontSize: 12, fontWeight: 700, color: '#0A0F2E' }}>Total Mobilization</span>
+                        <span style={{ fontSize: 14, fontWeight: 800, color: '#EF4444' }}>20–42 days</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: '#2B8A6E', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>With Readiness OS</div>
+                      {[
+                        { phase: 'Trigger detected & matched', time: '< 1 min' },
+                        { phase: 'Protocol surfaced to executive', time: '< 2 min' },
+                        { phase: 'Executive authorizes', time: '< 8 min' },
+                        { phase: 'Full org deploying', time: '12 min total' },
+                      ].map((r, i) => (
+                        <div key={i} className="flex items-center justify-between py-2" style={{ borderBottom: '1px solid #F0EDE4' }}>
+                          <span style={{ fontSize: 12, color: '#374151' }}>{r.phase}</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: '#2B8A6E' }}>{r.time}</span>
+                        </div>
+                      ))}
+                      <div className="flex items-center justify-between pt-3">
+                        <span style={{ fontSize: 12, fontWeight: 700, color: '#0A0F2E' }}>Total Mobilization</span>
+                        <span style={{ fontSize: 14, fontWeight: 800, color: '#2B8A6E' }}>12 minutes</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ padding: '14px 20px', background: '#F8F4E8', border: '1px solid #C9A84C22', fontSize: 12, color: '#92650A', lineHeight: 1.6 }}>
+                    <strong>3,600× Execution Head Start:</strong> 30 conservative days vs. 12 minutes. Every Readiness Protocol pre-stages this entire sequence — tasks, budgets, communications, stakeholder assignments — before the trigger fires.
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Learning Loop */}
+              <Card className="bg-white border-[#E8E4DC] rounded-none">
+                <CardHeader style={{ borderBottom: '1px solid #E8E4DC', paddingBottom: 16 }}>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-[#0A0F2E] flex items-center gap-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20 }}>
+                      <TrendingUp className="h-5 w-5 text-[#C9A84C]" />
+                      Learning Loop
+                    </CardTitle>
+                    <Badge className="bg-[#C9A84C]/15 text-[#C9A84C] border-[#C9A84C]/25 rounded-none text-[9px] tracking-wider uppercase font-bold px-2">Stage 05 · Learn</Badge>
+                  </div>
+                  <p className="text-[#6B7280] text-sm mt-1">How each activation improves institutional readiness — the compounding advantage that grows with every event.</p>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    {[
+                      { label: 'Avg. Protocol Improvement', value: '+18%', sub: 'Per activation cycle', color: '#C9A84C' },
+                      { label: 'Institutional Memory Score', value: '84/100', sub: 'Encoded scenarios + outcomes', color: '#2B8A6E' },
+                      { label: 'Repeat-Trigger Response', value: '3.1 min', sub: 'For previously-activated protocols', color: '#0A0F2E' },
+                    ].map((m, i) => (
+                      <div key={i} style={{ padding: '20px', background: '#F8F7F4', borderLeft: `3px solid ${m.color}` }}>
+                        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: m.color, lineHeight: 1, marginBottom: 4 }}>{m.value}</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: '#0A0F2E', marginBottom: 2 }}>{m.label}</div>
+                        <div style={{ fontSize: 10, color: '#6B7280' }}>{m.sub}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ background: '#0A0F2E', padding: '20px 24px' }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, fontStyle: 'italic', color: '#fff', lineHeight: 1.6, marginBottom: 8 }}>
+                      "The first activation makes your organization better at the second. The tenth makes you nearly impossible to catch off-guard."
+                    </div>
+                    <div style={{ fontSize: 10, color: 'rgba(201,168,76,0.8)', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Compounding Readiness Advantage</div>
+                  </div>
+                </CardContent>
+              </Card>
+
+            </div>
+          </TabsContent>
 
           {/* Predictive Models */}
           <TabsContent value="predictive" className="space-y-6">

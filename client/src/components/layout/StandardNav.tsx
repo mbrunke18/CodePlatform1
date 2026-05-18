@@ -136,7 +136,7 @@ export default function StandardNav() {
         { label: "How It Works", path: "/how-it-works", icon: Play, description: "From trigger to full execution — the complete 12-minute sequence", featured: true },
         { label: "How It Executes", path: "/how-it-executes", icon: Zap, description: "Watch the signal → protocol → execution chain in real time", featured: true },
         { label: "Platform Overview", path: "/platform-overview", icon: Eye, description: "Every capability, connected in one view" },
-        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Identify · Detect · Execute · Advance" },
+        { label: "IDEA Framework", path: "/idea-framework", icon: Layers, description: "Map · Monitor · Decide · Execute · Learn — the full advantage lifecycle" },
         { label: "Why Readiness OS", path: "/the-proof", icon: Shield, description: "The 30-day mobilization gap — and how we close it" },
       ],
     },
@@ -360,7 +360,7 @@ export default function StandardNav() {
               { path: '/how-it-works', icon: Play, label: 'How It Works', sub: 'From trigger to full execution — the 12-minute sequence', featured: true },
               { path: '/how-it-executes', icon: Zap, label: 'How It Executes', sub: 'Watch the signal → protocol → execution chain in real time', featured: true },
               { path: '/platform-overview', icon: Eye, label: 'Platform Overview', sub: 'Every capability, connected in one view' },
-              { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Identify · Detect · Execute · Advance' },
+              { path: '/idea-framework', icon: Layers, label: 'IDEA Framework', sub: 'Map · Monitor · Decide · Execute · Learn' },
               { path: '/the-proof', icon: Shield, label: 'Why Readiness OS', sub: 'The 30-day mobilization gap — and how we close it' },
             ].map(l => megaItem(l))}
             <div style={{ margin: '6px 0 5px', height: 1, background: 'rgba(10,15,46,0.07)' }} />

@@ -70,12 +70,12 @@ export default function HowItWorks() {
         <div style={{ position: "absolute", top: "10%", right: "-10%", width: 700, height: 700, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}38 0%, transparent 70%)`, pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-15%", left: "5%", width: 600, height: 600, borderRadius: 0, background: `radial-gradient(circle, ${GOLD}28 0%, transparent 70%)`, pointerEvents: "none" }} />
         <div className="max-w-6xl mx-auto w-full" style={{ position: "relative", zIndex: 1 }}>
-          <SectionLabel text="Your Complete Execution Roadmap" color={GOLD_LIGHT} />
+          <SectionLabel text="The Full Advantage System" color={GOLD_LIGHT} />
           <h1 style={{ ...CG, fontSize: "clamp(40px, 5vw, 68px)", fontWeight: 600, color: "#fff", lineHeight: 1.1, marginBottom: 24, maxWidth: 800 }}>
-            How Readiness OS Works — Start to Value
+            Map. Monitor. Decide. Execute. Learn.
           </h1>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.72)", maxWidth: 640, lineHeight: 1.7, marginBottom: 48, fontWeight: 500 }}>
-            From your first login to a fully coordinated enterprise response in 12 minutes. This is exactly how the platform works — the setup, the 170 playbooks, how customization works, and how ongoing value builds over time.
+            Five stages of organizational advantage — from cataloguing every situation you'll face to encoding every activation into institutional memory. This is how the platform delivers end-to-end readiness, not just a faster response.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Link href="/founding-partner-program">
@@ -92,21 +92,55 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* ── PHASE NAV BAR ── */}
+      {/* ── LIFECYCLE STAGE NAV BAR ── */}
       <div style={{ background: NAVY, borderBottom: `1px solid rgba(255,255,255,0.08)`, display: "flex", overflowX: "auto" }}>
         {[
-          { label: "Onboarding", num: "01" },
-          { label: "Your Readiness Protocols", num: "02" },
-          { label: "Customization", num: "03" },
-          { label: "The Live Loop", num: "04" },
-          { label: "Ongoing Value", num: "05" },
+          { label: "Map", num: "01", sub: "Situation Universe" },
+          { label: "Monitor", num: "02", sub: "Signal Detection" },
+          { label: "Decide", num: "03", sub: "Executive Authority" },
+          { label: "Execute", num: "04", sub: "12-Minute Deploy" },
+          { label: "Learn", num: "05", sub: "Institutional Memory" },
         ].map((item, i) => (
-          <div key={i} style={{ padding: "20px 32px", borderRight: "1px solid rgba(255,255,255,0.07)", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          <div key={i} style={{ padding: "16px 32px", borderRight: "1px solid rgba(255,255,255,0.07)", display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
             <span style={{ fontSize: 10, fontWeight: 700, color: GOLD, letterSpacing: "0.15em" }}>{item.num}</span>
-            <span style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.6)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{item.label}</span>
+            <div>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.85)", letterSpacing: "0.12em", textTransform: "uppercase" }}>{item.label}</div>
+              <div style={{ fontSize: 9, color: "rgba(255,255,255,0.45)", letterSpacing: "0.06em", marginTop: 2 }}>{item.sub}</div>
+            </div>
           </div>
         ))}
       </div>
+
+      {/* ── 5-STAGE ADVANTAGE OVERVIEW ── */}
+      <section style={{ background: NAVY_BG, padding: "72px 56px 80px", borderBottom: `1px solid rgba(255,255,255,0.07)` }}>
+        <div className="max-w-6xl mx-auto">
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <SectionLabel text="End-to-End Advantage" color={GOLD_LIGHT} />
+            <h2 style={{ ...CG, fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 600, color: "#fff", lineHeight: 1.2, marginBottom: 16 }}>
+              The complete operating architecture —<br />
+              <em style={{ color: GOLD }}>before, during, and after every trigger.</em>
+            </h2>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.62)", maxWidth: 580, margin: "0 auto", lineHeight: 1.75, fontWeight: 500 }}>
+              Each stage of the advantage lifecycle is detailed below. The setup phases on this page map directly to how you activate all five.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
+            {[
+              { num: "01", stage: "MAP", label: "Situation Universe", body: "221 trigger patterns catalogued. Every scenario you've faced, are facing, or may face — mapped before the trigger fires.", accent: GOLD },
+              { num: "02", stage: "MONITOR", label: "Signal Detection", body: "248+ data points, every 15 minutes. Continuous pattern matching to the right Readiness Protocol — automatically.", accent: TEAL },
+              { num: "03", stage: "DECIDE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives choose from pre-staged options — not figure out ownership under pressure.", accent: GOLD },
+              { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "170 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },
+              { num: "05", stage: "LEARN", label: "Institutional Memory", body: "Every activation is scored and encoded. Each cycle makes the next response faster, sharper, more decisive.", accent: GOLD },
+            ].map((s, i) => (
+              <div key={i} style={{ background: NAVY, padding: "28px 22px", borderTop: `3px solid ${s.accent}` }}>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", color: s.accent, textTransform: "uppercase" as const, marginBottom: 8, fontFamily: "'Barlow Condensed', sans-serif" }}>{s.num} · {s.stage}</div>
+                <div style={{ ...CG, fontSize: 15, fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 12 }}>{s.label}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.58)", lineHeight: 1.7, fontFamily: "'Barlow', sans-serif" }}>{s.body}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
       <section style={{ background: OFF, padding: "80px 56px 100px", borderBottom: `1px solid ${BORDER}` }}>

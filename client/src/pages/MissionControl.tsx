@@ -472,8 +472,8 @@ export default function MissionControl() {
   return (
     <PageLayout>
       <WhyThisMatters
-        headline="Continuous monitoring — executive action when it counts."
-        body="Every signal detected here is pre-matched to a staged Readiness Protocol. Your role: authorize, not assemble."
+        headline="Map. Monitor. Decide. Execute. Learn — your full advantage cycle, live."
+        body="Every signal detected here is pre-matched to a staged Readiness Protocol. Emerging situations are flagged before they escalate. Your role: authorize, not assemble."
         metric={{ value: '12 min', label: 'Detection to execution' }}
       />
       <div style={{
@@ -507,7 +507,7 @@ export default function MissionControl() {
                   <span style={{ background: 'rgba(201,168,76,0.15)', color: GOLD, fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 0, letterSpacing: '0.12em' }}>READINESS OS</span>
                 </div>
                 <div style={{ color: 'rgba(255,255,255,0.68)', fontSize: 11, marginTop: 1 }}>
-                  Welcome back, {firstName} · Strategic Readiness Intelligence
+                  Welcome back, {firstName} · Map · Monitor · Decide · Execute · Learn
                 </div>
               </div>
             </div>
