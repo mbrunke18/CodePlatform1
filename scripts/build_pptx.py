@@ -179,10 +179,9 @@ heading(s1,
     size=38, align=PP_ALIGN.LEFT)
 
 txb(s1,
-    "Every enterprise plans to respond. VaughnMartin ensures\n"
-    "the response is already staged when the moment arrives.",
-    Inches(0.42), Inches(3.92), Inches(6.3), Inches(0.88),
-    size=14, italic=False, color=MUTED, font="Barlow Condensed")
+    "Most enterprises plan to respond.\nVaughnMartin is already executing.",
+    Inches(0.42), Inches(3.92), Inches(6.3), Inches(0.70),
+    size=16, italic=False, color=MUTED, font="Barlow Condensed")
 
 for i, chip in enumerate([
     "Activist Investor  ·  91% confidence",
@@ -368,13 +367,12 @@ txb(s5, "Old Model", Inches(0.66), COL_Y + Inches(0.18),
     Inches(5.86), Pt(22), size=10, bold=True, color=RED88)
 for i, b in enumerate([
     "✕  Faster notes from the same slow meetings",
-    "✕  No readiness architecture before triggers fire",
+    "✕  No readiness architecture — triggers catch you cold",
     "✕  Authority unclear when pressure arrives",
-    "✕  Governance added after the fact — if at all",
-    "✕  30-day mobilization before execution starts",
+    "✕  30 days to mobilize before execution starts",
 ]):
-    txb(s5, b, Inches(0.66), COL_Y + Inches(0.54) + i * Inches(0.70),
-        Inches(5.86), Inches(0.64), size=13, color=RED88)
+    txb(s5, b, Inches(0.66), COL_Y + Inches(0.54) + i * Inches(0.76),
+        Inches(5.86), Inches(0.68), size=13, color=RED88)
 
 # Right — VaughnMartin
 rect(s5, Inches(6.75), COL_Y, Inches(6.22), COL_H,
@@ -382,14 +380,13 @@ rect(s5, Inches(6.75), COL_Y, Inches(6.22), COL_H,
 txb(s5, "VaughnMartin Readiness OS", Inches(7.05), COL_Y + Inches(0.18),
     Inches(5.86), Pt(22), size=10, bold=True, color=GOLD)
 for i, b in enumerate([
-    "✓  Response pre-staged before trigger fires",
-    "✓  170 protocols mapped to 221 strategic triggers",
-    "✓  Human authorization gate at every activation",
-    "✓  Audit trail built in — board-ready from day one",
+    "✓  Response pre-staged before the trigger fires",
+    "✓  170 protocols · 221 triggers · ready before the moment",
+    "✓  Executive authorization gate at every activation",
     "✓  12-minute execution window from signal to action",
 ]):
-    txb(s5, b, Inches(7.05), COL_Y + Inches(0.54) + i * Inches(0.70),
-        Inches(5.86), Inches(0.64), size=13, color=GRN99)
+    txb(s5, b, Inches(7.05), COL_Y + Inches(0.54) + i * Inches(0.76),
+        Inches(5.86), Inches(0.68), size=13, color=GRN99)
 
 vrule(s5, Inches(6.55), COL_Y, COL_H)
 
@@ -719,17 +716,18 @@ txb(s11, "Three lines. That's the pitch.",
 for i, (tag, accent_col, body) in enumerate([
     ("PROBLEM",
      GOLD,
-     "Enterprise work was designed for a world without AI. "
-     "Committees, cycles, and coordination delays exist because humans "
-     "couldn't process information fast enough to act decisively."),
+     "Enterprise work was built for a world without AI — "
+     "coordination delays exist because humans couldn't act fast enough. "
+     "AI changed the constraint. The operating model hasn't."),
     ("SOLUTION",
      GOLD,
-     "VaughnMartin pre-stages every response. 170 Readiness Protocols map to "
-     "221 strategic triggers — so executives authorize in minutes, not meetings."),
+     "170 Readiness Protocols. 221 strategic triggers. "
+     "The response pre-staged before the trigger fires. "
+     "Executives authorize in minutes, not meetings."),
     ("OUTCOME",
      TEAL,
      "Any organization prepared for every situation it will face "
-     "is no longer afraid of strategic triggers. It is fearless."),
+     "is no longer afraid of what comes next. It is fearless."),
 ]):
     ry = Inches(1.00) + i * Inches(1.70)
     rect(s11, Inches(0.66), ry, Inches(11.97), Inches(1.56), fill=DARK3)
