@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 14, 2026 (rev 35) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 18, 2026 (rev 38) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -2909,3 +2909,147 @@ The `ConsequencePreviewProps` interface and `onConfirm(choice, standDownReason?)
 - Customize: live editable fields, dynamic confirm label, always-available confirm
 - Stand Down: typed reason required, governance record framing
 - Run as Built: T+N timeline, stakeholder/task count summary, immediate confirm
+
+---
+
+## §63 E2E Test Suite — May 2026 (rev 38)
+
+### Overview
+
+A Playwright end-to-end test suite runs against the live production site (`https://vaughnmartin.com`) using Chromium. It covers brand compliance, critical page loads, demo flows, and terminology enforcement across all public-facing routes.
+
+| Metric | Value |
+|---|---|
+| Total tests | **121** |
+| Browser | Chromium (Desktop Chrome) |
+| Target | `https://vaughnmartin.com` (production) |
+| Spec files | 3 |
+| Parallelism | Fully parallel |
+
+---
+
+### Spec Files
+
+| File | Tests | Covers |
+|---|---|---|
+| `e2e/comprehensive-platform-tests.spec.ts` | ~57 | Public page loads, content assertions, terminology enforcement, Founding Partner language, no retired phrases |
+| `e2e/demo-flows.spec.ts` | ~30 | Homepage branding, 12-Minute Test Drive, Playbook Library, ROI Calculator, demo and investor pages |
+| `e2e/brand-compliance.spec.ts` | ~34 | Brand rules across all key public pages — no "AI-powered," no "Pilot Program," no football domain labels, correct canonical metrics |
+
+---
+
+### Running the Suite
+
+**Against production (canonical — how the CI runner uses it):**
+```bash
+BASE_URL=https://vaughnmartin.com npx playwright test --project=chromium
+```
+
+**Against local dev server:**
+```bash
+npx playwright test --project=chromium
+# playwright.config.ts auto-starts `npm run dev` on localhost:5000 when BASE_URL is not set
+```
+
+**Single spec file:**
+```bash
+BASE_URL=https://vaughnmartin.com npx playwright test e2e/brand-compliance.spec.ts --project=chromium
+```
+
+**With HTML report:**
+```bash
+BASE_URL=https://vaughnmartin.com npx playwright test --project=chromium
+npx playwright show-report
+```
+
+---
+
+### Configuration (`playwright.config.ts`)
+
+```ts
+const BASE_URL = process.env.BASE_URL || 'http://localhost:5000';
+const isProduction = BASE_URL.includes('vaughnmartin.com') || BASE_URL.includes('https://');
+```
+
+- When `BASE_URL` points to production, the local `webServer` block is skipped — Playwright tests against the live deployed app directly.
+- When `BASE_URL` is absent, `playwright.config.ts` auto-starts `npm run dev` and waits for `localhost:5000`.
+- CI sets `retries: 2` and `workers: 1` for stability. Local runs use default parallelism and no retries.
+
+---
+
+### Critical Implementation Rules
+
+#### 1. Never use `waitForLoadState('networkidle')` on production routes
+
+**Root cause (discovered May 2026):** The platform runs a Socket.IO WebSocket server. Socket.IO maintains a persistent connection that keeps at least one network connection open indefinitely. Playwright's `networkidle` waits for zero active connections for 500ms — which **never resolves** on any page that has loaded the Socket.IO client. The test hangs until the navigation timeout (30s) fires, then fails.
+
+**Correct pattern for all production-facing tests:**
+```ts
+await page.goto('/some-route');
+await page.waitForLoadState('load');   // fires after initial resources — does not wait for WebSocket
+await page.waitForTimeout(2500);        // gives React time to fully hydrate before reading innerText()
+```
+
+`'load'` fires after the initial HTML + linked resources are fetched. It does not wait for persistent connections. The 2500ms buffer is sufficient for React hydration on the production CDN.
+
+**Never use:**
+```ts
+await page.waitForLoadState('networkidle');  // ❌ hangs forever on Socket.IO pages
+```
+
+#### 2. `innerText()` respects CSS `textTransform`
+
+Playwright's `page.locator('body').innerText()` returns text **as it visually appears**, including the effect of `textTransform: uppercase`. If a component renders text with `textTransform: uppercase`, `innerText()` returns the uppercase version — not the source string.
+
+**Implication:** When asserting on text that may be rendered in an uppercase CSS context, use case-insensitive comparison:
+
+```ts
+const bodyLower = (await page.locator('body').innerText()).toLowerCase();
+expect(bodyLower.includes('readiness os')).toBe(true);
+// ✅ matches "READINESS OS", "Readiness OS", "readiness os" — all cases
+```
+
+Do not use `.toContain('Exact Case')` on text that lives inside a `textTransform: uppercase` element.
+
+#### 3. Pre-React loading placeholder in `index.html`
+
+`client/index.html` contains a loading placeholder inside `<div id="root">` that renders "VaughnMartin / Readiness OS" in the static HTML before React hydrates. React replaces it on mount.
+
+This ensures `innerText()` reads a non-empty body even in the brief window between page navigation and JS execution — preventing intermittent empty-string failures on homepage assertions. Do not remove or empty the `<div id="root">` contents.
+
+#### 4. Auth-gated routes are excluded from the public suite
+
+Routes that require authentication (dashboard, workspace, protocol activation console, etc.) are not tested by this suite. Tests only cover fully public routes — no login step, no session setup. Auth-gated routes are covered by unit tests (`vitest`) and manual QA.
+
+---
+
+### Terminology Assertions (brand-compliance.spec.ts)
+
+The brand compliance spec asserts that the following **never appear** in `innerText()` on any key public page:
+
+| Retired phrase | Rule source |
+|---|---|
+| `"AI-powered"`, `"AI-driven"`, `"AI-generated"`, `"AI-detected"` | Language Enforcement (§32) |
+| `"GPT-4o"` (in user-facing copy) | Language Enforcement (§32) |
+| `"Pilot Program"`, `"Pilot Access"`, `"Now in Pilot"` | Founding Partner Program (§55) |
+| `"340×"`, `"360×"`, `"72 hours"` (as execution metric) | Canonical Metrics Lock (§32) |
+| `"human-AI partnership"` | Executive Authority framing (§32) |
+| `"Offense"`, `"Defense"`, `"Special Teams"` (as domain labels) | Football Terminology Retirement (§37) |
+
+And that the following **always appear** on their respective pages:
+
+| Page | Required text |
+|---|---|
+| Homepage | `"VaughnMartin"`, `"Readiness"` |
+| `/buyer-decision-packet` | `"90"` (day reference), `"Founding Partner"` |
+| `/founding-partner-program` | `"Founding Partner"` |
+| All key pages | Must not contain any retired phrase listed above |
+
+---
+
+### Rev 38 Known State
+
+- 121/121 tests passing on Chromium against `https://vaughnmartin.com`
+- `waitForLoadState('load')` + 2500ms used consistently — no `networkidle` calls remain in any spec
+- Case-insensitive body text checks used wherever CSS `textTransform` may affect output
+- Pre-React loading placeholder in `index.html` eliminates homepage timing race
