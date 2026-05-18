@@ -112,7 +112,7 @@ headline(s1,
     Inches(1.0), Inches(0.85), Inches(11.3), Inches(1.1),
     size=38, align=PP_ALIGN.CENTER)
 headline(s1,
-    "are you executing in 12 minutes or organizing from scratch?",
+    "how long does it take to mobilize a coordinated response?",
     Inches(1.0), Inches(1.9), Inches(11.3), Inches(1.4),
     size=34, color=GOLD, align=PP_ALIGN.CENTER)
 
@@ -334,10 +334,10 @@ txt(s6, "The alternative: 30 days of mobilization before any execution begins",
     Inches(7.2), Inches(3.57), Inches(5.7), Inches(0.48),
     size=13, italic=True, color=MUTED, font="Barlow")
 
-# LARGE "How it executes" page screenshot — fills lower 44% of slide
-framed_img(s6, "screenshots/pptx_how_executes.jpg",
+# Protocol Builder screenshot — proof of production execution tool
+framed_img(s6, "screenshots/pitch_builder.jpg",
     Inches(0.4), Inches(4.15), Inches(12.53), Inches(2.95),
-    caption="vaughnmartin.com/how-it-executes · Live animated execution chain · Showing 12-minute sequence")
+    caption="Protocol Builder · Pre-staged execution architecture · Live in production")
 
 slide_num(s6, 6)
 
