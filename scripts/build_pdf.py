@@ -112,10 +112,10 @@ def slide_num(n):
 # SLIDE 1 — Hook Question + Command Tower inset
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
-c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 38)
-c.drawCentredString(PW/2, PH - 1.4*inch, "When a strategic trigger fires—")
-c.setFillColor(GOLD); c.setFont("Helvetica-BoldOblique", 31)
-c.drawCentredString(PW/2, PH - 2.05*inch, "how long does it take to mobilize a coordinated response?")
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 36)
+c.drawCentredString(PW/2, PH - 1.4*inch, "When a strategic trigger fires in your organization\u2014")
+c.setFillColor(GOLD); c.setFont("Helvetica-BoldOblique", 30)
+c.drawCentredString(PW/2, PH - 2.05*inch, "are you executing in 12 minutes or organizing from scratch?")
 
 for i, (chip, hot) in enumerate([
     ("Activist Investor · 91%", True),
@@ -385,14 +385,17 @@ c.setFillColor(TEAL); c.setFont("Helvetica-Bold", 10)
 c.drawCentredString(PW/2, PH - 2.92*inch,
     "●  Signal Detection Active · Updated Every 15 Minutes · vaughnmartin.com")
 
-# TWO LARGE screenshots side by side — command tower + protocol library
-framed_img("screenshots/pptx_command_tower.jpg",
-    0.35*inch, 0.45*inch, 6.2*inch, 3.55*inch,
-    "Command Tower · 221 Triggers Armed · 20 Active Detections · 170 Protocols Ready")
-
-framed_img("screenshots/pptx_protocols.jpg",
-    6.78*inch, 0.45*inch, 6.2*inch, 3.55*inch,
-    "Readiness Protocol Library · 170 protocols · Every strategic scenario covered")
+# THREE-image WOW strip: Live Readiness · Signal Detection · Protocol Builder
+img_w = 4.11*inch
+img_h = 2.85*inch
+img_y = 0.45*inch
+for xi, (path, cap) in enumerate([
+    ("screenshots/pitch_home.jpg",    "Live Readiness Experience"),
+    ("screenshots/deck_signals.jpg",  "Signal Detection Feed"),
+    ("screenshots/pitch_builder.jpg", "Protocol Builder"),
+]):
+    x = 0.35*inch + xi * (img_w + 0.27*inch)
+    framed_img(path, x, img_y, img_w, img_h, cap)
 
 slide_num(8); c.showPage()
 
@@ -479,11 +482,11 @@ c.drawCentredString(PW/2, PH - 0.72*inch, "Three sentences. That's the whole pit
 
 for i, (tag, accent, body_txt) in enumerate([
     ("PROBLEM", GOLD,
-     "No preparation infrastructure exists. Strategic triggers arrive in real time — the mobilization cycle still averages 30 days."),
+     "Enterprises detect more signals, but still mobilize too slowly."),
     ("SOLUTION", GOLD,
-     "We rebuilt the operating model. Pre-staged execution replaces real-time coordination — 12 minutes, not 30 days."),
-    ("ROI", TEAL,
-     "At $120K, we replace a $400K\u2013$800K retainer. Break-even before the second activation. The budget line already exists."),
+     "Readiness OS pre-stages response so executives authorize in minutes."),
+    ("OUTCOME", TEAL,
+     "Earlier detection + faster execution protects value before the window closes."),
 ]):
     yt = PH - 1.4*inch - i * 1.78*inch
     fill_rect(0.65*inch, yt - 0.85*inch, 12.03*inch, 1.58*inch, color=colors.HexColor("#0D1640"))

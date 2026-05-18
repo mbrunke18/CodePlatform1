@@ -108,11 +108,11 @@ s1 = new_slide()
 gold_bar(s1)
 
 headline(s1,
-    "When a strategic trigger fires—",
+    "When a strategic trigger fires in your organization—",
     Inches(1.0), Inches(0.85), Inches(11.3), Inches(1.1),
-    size=40, align=PP_ALIGN.CENTER)
+    size=38, align=PP_ALIGN.CENTER)
 headline(s1,
-    "how long does it take to mobilize a coordinated response?",
+    "are you executing in 12 minutes or organizing from scratch?",
     Inches(1.0), Inches(1.9), Inches(11.3), Inches(1.4),
     size=34, color=GOLD, align=PP_ALIGN.CENTER)
 
@@ -410,14 +410,17 @@ txt(s8, "●  Signal Detection Active · Updated Every 15 Minutes · vaughnmarti
     Inches(3.4), Inches(3.05), Inches(6.4), Inches(0.4),
     size=11, bold=True, color=TEAL, font="Barlow", align=PP_ALIGN.CENTER)
 
-# TWO LARGE screenshots — command tower + protocol library
-framed_img(s8, "screenshots/pptx_command_tower.jpg",
-    Inches(0.35), Inches(3.58), Inches(6.2), Inches(3.55),
-    caption="Command Tower · 221 Triggers Armed · 20 Active Detections · 170 Protocols Ready")
-
-framed_img(s8, "screenshots/pptx_protocols.jpg",
-    Inches(6.78), Inches(3.58), Inches(6.2), Inches(3.55),
-    caption="Readiness Protocol Library · 170 protocols · Every strategic scenario covered")
+# THREE-image WOW strip: Live Readiness · Signal Detection · Protocol Builder
+img_w = Inches(4.11)
+img_h = Inches(2.85)
+img_y = Inches(3.7)
+for xi, (path, cap) in enumerate([
+    ("screenshots/pitch_home.jpg",    "Live Readiness Experience"),
+    ("screenshots/deck_signals.jpg",  "Signal Detection Feed"),
+    ("screenshots/pitch_builder.jpg", "Protocol Builder"),
+]):
+    x = Inches(0.35) + xi * (img_w + Inches(0.27))
+    framed_img(s8, path, x, img_y, img_w, img_h, caption=cap)
 
 slide_num(s8, 8)
 
@@ -500,11 +503,11 @@ txt(s11, "Three sentences. That's the whole pitch.",
 
 for i, (tag, accent, body) in enumerate([
     ("Problem", GOLD,
-     "No preparation infrastructure exists. Strategic triggers arrive in real time — the mobilization cycle still averages 30 days."),
+     "Enterprises detect more signals, but still mobilize too slowly."),
     ("Solution", GOLD,
-     "We rebuilt the operating model. Pre-staged execution replaces real-time coordination — 12 minutes, not 30 days."),
-    ("ROI", TEAL,
-     "At $120K, we replace a $400K–$800K retainer. Break-even before the second activation. The budget line already exists."),
+     "Readiness OS pre-stages response so executives authorize in minutes."),
+    ("Outcome", TEAL,
+     "Earlier detection + faster execution protects value before the window closes."),
 ]):
     yt = Inches(1.05) + i * Inches(1.75)
     row = box(s11, Inches(0.7), yt, Inches(11.9), Inches(1.58), color=RGBColor(0x0E,0x16,0x40))
