@@ -132,7 +132,7 @@ export default function BuyerDecisionPacket() {
               <span style={{ color: GOLD }}>With Executive Control Intact.</span>
             </h1>
             <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.75)", maxWidth: 640, margin: "0 auto 2rem", lineHeight: 1.7 }}>
-              Readiness OS delivers end-to-end organizational advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in minutes, and improve every cycle. This packet covers everything procurement, legal, and the board need to make the decision.
+              Readiness OS gives enterprises end-to-end advantage — starting with detection. Define the triggers, thresholds, and escalation paths for every scenario so you detect earlier and decide on your terms. Then execute in minutes with 170 pre-staged Readiness Protocols and full executive authority intact. This packet covers everything procurement, legal, and the board need to make the decision.
             </p>
             <div style={{ display: "flex", gap: "0.875rem", justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: GOLD, color: NAVY, padding: "0.75rem 1.75rem", borderRadius: "0.15rem", fontWeight: 700, fontSize: "0.875rem", textDecoration: "none", ...BC, letterSpacing: "0.05em" }}>

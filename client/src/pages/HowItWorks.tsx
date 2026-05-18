@@ -75,7 +75,7 @@ export default function HowItWorks() {
             Map. Monitor. Decide. Execute. Learn.
           </h1>
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.72)", maxWidth: 640, lineHeight: 1.7, marginBottom: 48, fontWeight: 500 }}>
-            Five stages of organizational advantage — from cataloguing every situation you'll face to encoding every activation into institutional memory. This is how the platform delivers end-to-end readiness, not just a faster response.
+            Five stages of organizational advantage. Most teams don't fail because they can't act — they fail because they see the signal too late. This platform starts before the trigger fires: define your triggers on your terms, detect earlier, decide with authority, execute in minutes, improve every cycle.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
             <Link href="/founding-partner-program">
@@ -126,8 +126,8 @@ export default function HowItWorks() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
             {[
-              { num: "01", stage: "MAP", label: "Situation Universe", body: "221 trigger patterns catalogued. Every scenario you've faced, are facing, or may face — mapped before the trigger fires.", accent: GOLD },
-              { num: "02", stage: "MONITOR", label: "Signal Detection", body: "248+ data points, every 15 minutes. Continuous pattern matching to the right Readiness Protocol — automatically.", accent: TEAL },
+              { num: "01", stage: "MAP", label: "Situation Universe", body: "You define what you're watching for — 221 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
+              { num: "02", stage: "MONITOR", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, decide on your terms.", accent: TEAL },
               { num: "03", stage: "DECIDE", label: "Executive Authority", body: "Decision rights pre-assigned. Executives choose from pre-staged options — not figure out ownership under pressure.", accent: GOLD },
               { num: "04", stage: "EXECUTE", label: "12-Minute Deploy", body: "170 Readiness Protocols activate simultaneously — tasks, budgets, comms, stakeholders. Already built. Already ready.", accent: TEAL },
               { num: "05", stage: "LEARN", label: "Institutional Memory", body: "Every activation is scored and encoded. Each cycle makes the next response faster, sharper, more decisive.", accent: GOLD },

@@ -715,10 +715,10 @@ function HeroSection() {
               </h1>
 
               <p style={{ ...DM, color: "rgba(255,255,255,0.85)", fontSize: "clamp(15px,1.25vw,17px)", lineHeight: 1.8, maxWidth: 500, margin: "0 0 16px" }}>
-                Not just a faster response — total organizational advantage. Map every situation you'll face. Monitor the right signals. Decide with authority. Execute in minutes. Improve every cycle. The complete operating architecture, pre-staged before the trigger fires.
+                Most organizations don't fail because they can't act — they fail because they see the signal too late. Readiness OS lets you define the triggers, thresholds, and escalation paths for every critical scenario so leadership decides in time, not after the fact. Detect earlier, on your terms. Execute in minutes. Improve every cycle.
               </p>
               <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: GOLD, fontSize: "clamp(16px,1.2vw,18px)", fontStyle: "italic", lineHeight: 1.65, maxWidth: 460, margin: "0 0 48px" }}>
-                Every trigger — risk or opportunity — meets a response that was already ready.
+                Detect on your terms — so you don't find out after the window has closed.
               </p>
 
               {/* CTAs — horizontal */}

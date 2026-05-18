@@ -473,7 +473,7 @@ export default function MissionControl() {
     <PageLayout>
       <WhyThisMatters
         headline="Map. Monitor. Decide. Execute. Learn — your full advantage cycle, live."
-        body="Every signal detected here is pre-matched to a staged Readiness Protocol. Emerging situations are flagged before they escalate. Your role: authorize, not assemble."
+        body="Every signal detected here fires against triggers you defined — your thresholds, your categories, your escalation paths. Emerging situations surface before they escalate so leadership decides in time, not after the fact. Your role: authorize, not assemble."
         metric={{ value: '12 min', label: 'Detection to execution' }}
       />
       <div style={{
