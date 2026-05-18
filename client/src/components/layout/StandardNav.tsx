@@ -157,6 +157,7 @@ export default function StandardNav() {
         { label: "Mission Control", path: "/mission-control", icon: Compass, description: "Your interactive operations center — configure your OS, review detections, activate Readiness Protocols", featured: true },
         { label: "Command Tower", path: "/command-tower", icon: Radio, description: "Executive wall display — auto-refreshing live feed designed for conference rooms & NOC screens", featured: true },
         { label: "Onboarding Guide", path: "/onboarding-guide", icon: BookOpen, description: "Step-by-step guide for new Founding Partner customers — platform map, quick start, and first 30 days", featured: true },
+        { label: "New User Journey", path: "/new-user-journey", icon: Rocket, description: "Guided 6-step walkthrough — from first login to your first Readiness Protocol activation", featured: true },
         { label: "Situation Intents", path: "/identify/situation-intents", icon: Target, description: "Define what your org is watching for — the starting point of your IDEA configuration", featured: true },
         { label: "Workspace", path: "/workspace", icon: Layers, description: "Execute across all 4 IDEA phases" },
         { label: "9-Domain Coverage Board", path: "/situations-hub", icon: Shield, description: "Exposure & readiness across all 9 strategic domains — M&A, Competitive, Regulatory, Supply Chain & more" },
