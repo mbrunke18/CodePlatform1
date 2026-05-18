@@ -52,8 +52,8 @@
     pointer-events: none;
   }
   .glow-tr {
-    position: absolute; top: -80px; right: -80px;
-    width: 400px; height: 400px; border-radius: 50%;
+    position: absolute; top: 0; right: 0;
+    width: 300px; height: 300px; border-radius: 50%;
     background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
@@ -166,6 +166,8 @@
   }
   #s1 .scenario-chips {
     display: flex; gap: 12px; margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   #s1 .chip {
     padding: 8px 18px; border-radius: 2px;
@@ -194,7 +196,8 @@
   #s2 .stat-unit {
     font-size: 36px; font-weight: 700; letter-spacing: .05em;
     text-transform: uppercase; color: rgba(255,255,255,0.5);
-    margin-top: -8px;
+    margin-top: 4px;
+    line-height: 1.05;
   }
   #s2 .right-panel {
     flex: 1; display: flex; flex-direction: column;
@@ -234,6 +237,8 @@
   .scenario-card .sc-domain {
     font-size: 9px; font-weight: 800; letter-spacing: .3em;
     text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+    padding-right: 76px;
+    line-height: 1.35;
   }
   .scenario-card .sc-name {
     font-size: 18px; font-weight: 800; text-transform: uppercase;
@@ -349,6 +354,21 @@
     font-size: 13px; font-weight: 500; letter-spacing: .1em;
     color: rgba(255,255,255,0.3); text-transform: uppercase;
   }
+  #s6 .proof-shot {
+    margin-top: 20px;
+    width: 560px;
+    height: 140px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+  }
+  #s6 .proof-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* ════════════════════════════════════════
      SLIDE 7 — ROI
@@ -426,6 +446,28 @@
     font-size: 11px; font-weight: 700; letter-spacing: .25em;
     text-transform: uppercase; color: var(--teal);
   }
+  #s8 .product-gallery {
+    margin-top: 16px;
+    width: 100%;
+    padding: 0 72px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  #s8 .product-shot {
+    height: 120px;
+    border: 1px solid rgba(201,168,76,0.22);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    background: #0b1230;
+  }
+  #s8 .product-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* ════════════════════════════════════════
      SLIDE 9 — The Opportunity
@@ -490,11 +532,11 @@
   #s11 { flex-direction: column; align-items: center; justify-content: center; text-align: center; }
   #s11 .three-lines {
     display: flex; flex-direction: column; gap: 12px;
-    margin: 36px 0;
+    margin: 28px 0;
   }
   #s11 .tl-item {
     display: flex; align-items: center; gap: 20px;
-    padding: 16px 28px; border-left: 3px solid transparent;
+    padding: 12px 22px; border-left: 3px solid transparent;
     text-align: left;
   }
   #s11 .tl-item.gold-line { border-color: var(--gold); background: rgba(201,168,76,0.04); }
@@ -504,7 +546,7 @@
     text-transform: uppercase; flex-shrink: 0; width: 72px;
   }
   #s11 .tl-copy {
-    font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.35;
+    font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.35;
   }
   #s11 .url-badge {
     margin-top: 20px; padding: 12px 28px;
@@ -565,7 +607,7 @@
 
     <div class="question">
       When a strategic trigger fires in your organization—
-      <em>how long does it take to mobilize a coordinated response?</em>
+      <em>are you executing in 12 minutes or organizing from scratch?</em>
     </div>
     <div class="scenario-chips">
       <div class="chip hot">Activist Investor · 91%</div>
@@ -801,6 +843,9 @@
 
     <div class="time-badge">✓ Complete in 12 minutes</div>
     <div class="contrast">The alternative: 30 days of mobilization before execution begins</div>
+    <div class="proof-shot">
+      <img src="./pitch-images/builder.png" alt="Readiness Protocol builder live product proof" />
+    </div>
     <div class="slide-num" style="bottom:24px; right:32px; color:rgba(201,168,76,0.35); font-size:11px; font-weight:700; letter-spacing:.25em; position:absolute; text-transform:uppercase;">06 / 11</div>
   </div>
 
@@ -892,6 +937,11 @@
       <div class="live-dot"></div>
       <div class="live-text">vaughnmartin.com · Signal Detection Active · Updated Every 15 Minutes</div>
     </div>
+    <div class="product-gallery">
+      <div class="product-shot"><img src="./pitch-images/home.png" alt="Homepage live readiness experience" /></div>
+      <div class="product-shot"><img src="./pitch-images/signals.png" alt="Live detection feed in production" /></div>
+      <div class="product-shot"><img src="./pitch-images/builder.png" alt="Protocol builder with governance controls" /></div>
+    </div>
     <div class="slide-num">08 / 11</div>
   </div>
 
@@ -961,7 +1011,7 @@
       </div>
       <div class="ask-item">
         <div class="ask-item-label">Investment Round</div>
-        <div class="ask-item-val">[Round Size] · [Terms]</div>
+        <div class="ask-item-val">Open Strategic Raise · Active Conversations Underway</div>
       </div>
       <div class="ask-item">
         <div class="ask-item-label">Use of Funds</div>
@@ -986,15 +1036,15 @@
     <div class="three-lines">
       <div class="tl-item gold-line">
         <div class="tl-tag" style="color:rgba(201,168,76,0.6);">Problem</div>
-        <div class="tl-copy">No preparation infrastructure exists. Every enterprise responds to strategic triggers in real time — in 2025, with AI. The mobilization cycle averages 30 days.</div>
+        <div class="tl-copy">Enterprises detect more signals, but still mobilize too slowly when a trigger actually fires.</div>
       </div>
       <div class="tl-item gold-line">
         <div class="tl-tag" style="color:rgba(201,168,76,0.6);">Solution</div>
-        <div class="tl-copy">We rebuilt the operating model — not the tools. Readiness OS replaces real-time coordination with pre-staged execution. 12 minutes, not 30 days.</div>
+        <div class="tl-copy">Readiness OS pre-stages response architecture so executives authorize in minutes, not weeks.</div>
       </div>
       <div class="tl-item teal-line">
         <div class="tl-tag" style="color:var(--teal);">ROI</div>
-        <div class="tl-copy">At $120K, we replace a $400K–$800K consulting retainer. Break-even before the second activation. The budget line already exists.</div>
+        <div class="tl-copy">Signal advantage plus execution advantage protects enterprise value before the window closes.</div>
       </div>
     </div>
 
