@@ -1261,24 +1261,78 @@ function ExecutionGapSection() {
 
 // ─── WHY NOW STRIP ────────────────────────────────────────────────────────────
 function WhyNowStrip() {
+  const realities = [
+    {
+      label: "CAPABILITY ACCELERATING",
+      stat: "↑",
+      body: "AI performance, tooling, and adoption continue to accelerate across every industry. The signal-detection window is widening.",
+      accent: GOLD,
+    },
+    {
+      label: "GOVERNANCE LAGGING",
+      stat: "↓",
+      body: "Safety, accountability, and operational trust frameworks are not keeping pace with AI capability. The gap is structural.",
+      accent: "#DC3C32",
+    },
+    {
+      label: "EXECUTION GAP WIDENING",
+      stat: "→",
+      body: "Most organizations can now detect more signals — but still struggle to decide and mobilize fast enough to act on them.",
+      accent: TEAL,
+    },
+  ];
+
   return (
-    <section style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "64px 0 60px" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 32px", textAlign: "center" }}>
-        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: GOLD, marginBottom: 18, fontFamily: "'Barlow Condensed', sans-serif" }}>
-          WHY THIS MATTERS NOW
+    <section style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "72px 0 64px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 32px" }}>
+
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 18, fontFamily: "'Barlow Condensed', sans-serif" }}>
+            WHY THIS MATTERS NOW
+          </div>
+          <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(26px, 3.2vw, 38px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 20, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+            AI capability is accelerating faster than<br />enterprise execution readiness.
+          </h2>
+          <p style={{ fontSize: 15.5, color: "rgba(255,255,255,0.62)", lineHeight: 1.75, maxWidth: 680, margin: "0 auto", fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500 }}>
+            The competitive gap is no longer who has AI — it is who can execute with speed, control, and authority.
+            Readiness OS closes that gap: detect earlier, authorize decisively, execute in 12 minutes.
+          </p>
         </div>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 24, maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
-          Enterprises are moving beyond digital workflows<br />toward AI-enabled autonomy.
-        </h2>
-        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.68)", lineHeight: 1.78, maxWidth: 700, margin: "0 auto 32px", fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500 }}>
-          The risk is not adopting autonomy — it is adopting it without governance, coordination, and decision clarity. Readiness OS provides the operating model for this shift: detect earlier, decide with authority, execute in minutes, and improve every cycle.
-        </p>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "12px 28px", border: `1px solid rgba(201,168,76,0.4)`, background: "rgba(201,168,76,0.07)" }}>
-          <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2B8A6E", flexShrink: 0 }} />
-          <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", textTransform: "uppercase" as const }}>
-            AI monitors. Executives authorize.
-          </span>
+
+        {/* Three-column reality cards */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 40 }}>
+          {realities.map((r) => (
+            <div key={r.label} style={{
+              padding: "28px 24px",
+              border: `1px solid rgba(255,255,255,0.06)`,
+              borderTop: `3px solid ${r.accent}`,
+              background: "rgba(255,255,255,0.03)",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                <div style={{ fontSize: 22, fontWeight: 900, color: r.accent, lineHeight: 1, fontFamily: "'Barlow Condensed', sans-serif" }}>{r.stat}</div>
+                <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase" as const, color: r.accent, fontFamily: "'Barlow Condensed', sans-serif" }}>{r.label}</div>
+              </div>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.58)", lineHeight: 1.65, fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500, margin: 0 }}>
+                {r.body}
+              </p>
+            </div>
+          ))}
         </div>
+
+        {/* Bottom row: pill + citation */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" as const, gap: 16, borderTop: "1px solid rgba(201,168,76,0.12)", paddingTop: 28 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "11px 26px", border: `1px solid rgba(201,168,76,0.38)`, background: "rgba(201,168,76,0.07)" }}>
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, flexShrink: 0 }} />
+            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", textTransform: "uppercase" as const }}>
+              AI monitors. Executives authorize.
+            </span>
+          </div>
+          <div style={{ fontSize: 11, color: "rgba(255,255,255,0.28)", fontFamily: "'Barlow', Arial, sans-serif", fontStyle: "italic" as const, textAlign: "right" as const }}>
+            Source: Stanford HAI, AI Index Report 2026 · Gartner Autonomous Business 2026
+          </div>
+        </div>
+
       </div>
     </section>
   );
