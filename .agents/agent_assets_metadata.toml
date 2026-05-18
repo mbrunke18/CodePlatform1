@@ -437,3 +437,21 @@ id = "W6qpMOdCG3nWJMfBENE50"
 uri = "file://attached_assets/VaughnMartin-Pitch-Deck-v10-Package.zip"
 type = "unspecified"
 title = "Pitch Deck v10 — Complete Package (HTML + PPTX + PDF)"
+
+[[outputs]]
+id = "M5BBtFtaiyvsEUIqBrvFJ"
+uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.pptx"
+type = "slides"
+title = "Investor Pitch Deck v10 — PPTX (175 KB, 11 slides)"
+
+[[outputs]]
+id = "NFbgtwhBC-Y9xKXNmkZ3Y"
+uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.pdf"
+type = "pdf"
+title = "Investor Pitch Deck v10 — PDF (215 KB, 11 pages)"
+
+[[outputs]]
+id = "QARK0L_egS4DixYz7-fnm"
+uri = "file://attached_assets/VaughnMartin-Pitch-Deck-v10-Submit.zip"
+type = "unspecified"
+title = "Submission Package — PPTX + PDF (315 KB)"

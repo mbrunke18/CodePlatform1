@@ -1,6 +1,6 @@
 """
-VaughnMartin Investor Pitch Deck — PDF builder (10/10 final, 12 slides)
-Dark navy backgrounds. Product screenshots as heroes.
+VaughnMartin Investor Pitch Deck — PDF builder (v10 final, 11 slides)
+Matches VaughnMartin-Investor-Pitch-Deck-v10.html exactly.
 """
 from reportlab.pdfgen import canvas as rl_canvas
 from reportlab.lib.units import inch
@@ -8,9 +8,10 @@ from reportlab.lib import colors
 from reportlab.lib.utils import ImageReader
 import os
 
-OUT = "attached_assets/VaughnMartin-Investor-Pitch-Deck.pdf"
-PW = 13.33 * inch
-PH = 7.5  * inch
+OUT = "attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.pdf"
+PW  = 13.33 * inch
+PH  = 7.5  * inch
+TOTAL = 11
 
 NAVY  = colors.HexColor("#0A0F2E")
 GOLD  = colors.HexColor("#C9A84C")
@@ -22,10 +23,11 @@ DARK2 = colors.HexColor("#121A44")
 DARK3 = colors.HexColor("#0E1640")
 MID   = colors.HexColor("#1E2755")
 RED   = colors.HexColor("#FF5050")
-NAVY2 = colors.HexColor("#0E1334")
+NAVY2 = colors.HexColor("#0D1438")
+NAVY3 = colors.HexColor("#0F163C")
 
 c = rl_canvas.Canvas(OUT, pagesize=(PW, PH))
-c.setTitle("VaughnMartin Readiness OS — Investor Pitch Deck")
+c.setTitle("VaughnMartin Readiness OS — Investor Pitch Deck v10")
 c.setAuthor("VaughnMartin")
 c.setSubject("Founding Partner Program · Startup to Fortune 500")
 
@@ -37,26 +39,37 @@ def ivory_bg():
     c.setFillColor(colors.HexColor("#F2F0EB")); c.rect(0, 0, PW, PH, fill=1, stroke=0)
 
 def gold_bar():
-    c.setFillColor(GOLD); c.rect(0, PH - 5, PW, 5, fill=1, stroke=0)
+    c.setFillColor(GOLD); c.rect(0, PH - 4, PW, 4, fill=1, stroke=0)
 
-def lbl(text, x, y, color=GOLD, size=9):
-    c.setFillColor(color); c.setFont("Helvetica-Bold", size)
+def lbl(text, x, y, col=GOLD, size=9):
+    c.setFillColor(col); c.setFont("Helvetica-Bold", size)
     c.drawString(x, y, text.upper())
 
-def fill_rect(x, y, w, h, color=DARK2):
-    c.setFillColor(color); c.rect(x, y, w, h, fill=1, stroke=0)
+def fill_rect(x, y, w, h, col=DARK2, stroke_col=None, sw=0.8):
+    c.setFillColor(col); c.rect(x, y, w, h, fill=1, stroke=0)
+    if stroke_col:
+        c.setStrokeColor(stroke_col); c.setLineWidth(sw)
+        c.rect(x, y, w, h, fill=0, stroke=1)
 
-def rule_h(x, y, w=4*inch, color=GOLD, lw=1.5):
-    c.setStrokeColor(color); c.setLineWidth(lw); c.line(x, y, x + w, y)
+def rule_h(x, y, w=4*inch, col=GOLD, lw=1.5):
+    c.setStrokeColor(col); c.setLineWidth(lw); c.line(x, y, x + w, y)
 
-def rule_v(x, y1, y2, color=MID, lw=0.5):
-    c.setStrokeColor(color); c.setLineWidth(lw); c.line(x, y1, x, y2)
+def rule_v(x, y1, y2, col=MID, lw=0.5):
+    c.setStrokeColor(col); c.setLineWidth(lw); c.line(x, y1, x, y2)
 
-def pill(text, x, y, w, h, fill=DARK2, stroke=GOLD, tc=GOLD, ts=11):
-    c.setFillColor(fill); c.setStrokeColor(stroke); c.setLineWidth(0.8)
-    c.roundRect(x, y, w, h, 3, fill=1, stroke=1)
-    c.setFillColor(tc); c.setFont("Helvetica-Bold", ts)
-    c.drawCentredString(x + w / 2, y + h / 2 - 4, text)
+def body_wrap(text, x, y, col=WHITE, size=13, maxw=5 * inch, lh=None):
+    if lh is None: lh = size * 1.45
+    words = text.split(); lines = []; line = ""
+    for w in words:
+        t = (line + " " + w).strip()
+        if c.stringWidth(t, "Helvetica", size) <= maxw: line = t
+        else:
+            if line: lines.append(line)
+            line = w
+    if line: lines.append(line)
+    c.setFillColor(col); c.setFont("Helvetica", size)
+    for i, ln in enumerate(lines):
+        c.drawString(x, y - i * lh, ln)
 
 def img_hero(path, x, y, w, h):
     if os.path.exists(path):
@@ -71,263 +84,265 @@ def img_hero(path, x, y, w, h):
 def framed_img(path, x, y, w, h, caption=None):
     img_hero(path, x, y, w, h)
     if caption:
-        cap_h = 0.28 * inch
-        fill_rect(x, y, w, cap_h, color=colors.HexColor("#080D26"))
+        fill_rect(x, y, w, 0.26 * inch, col=colors.HexColor("#080D26"))
         c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 8)
         c.drawString(x + 0.1 * inch, y + 0.08 * inch, caption.upper())
 
-def body_wrap(text, x, y, color=WHITE, size=13, maxw=5 * inch, line_h=None):
-    if line_h is None: line_h = size * 1.45
-    words = text.split(); lines = []; line = ""
-    for w in words:
-        t = (line + " " + w).strip()
-        if c.stringWidth(t, "Helvetica", size) <= maxw:
-            line = t
-        else:
-            if line: lines.append(line)
-            line = w
-    if line: lines.append(line)
-    c.setFillColor(color); c.setFont("Helvetica", size)
-    for i, ln in enumerate(lines):
-        c.drawString(x, y - i * line_h, ln)
-
-def slide_num(n, total=12):
+def slide_num(n):
     c.setFillColor(colors.HexColor("#444E70")); c.setFont("Helvetica-Bold", 9)
-    c.drawRightString(PW - 0.3 * inch, 0.22 * inch, f"{n:02d} / {total:02d}")
+    c.drawRightString(PW - 0.3 * inch, 0.22 * inch, f"{n:02d} / {TOTAL:02d}")
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 1 — Hook Question
+# SLIDE 1 — Opening
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
-c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 36)
+lbl("VaughnMartin \u00b7 Readiness OS", PW / 2, PH - 0.66 * inch,
+    col=colors.HexColor("#998060"), size=9)
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 40)
 c.drawCentredString(PW / 2, PH - 1.38 * inch,
     "When a strategic trigger fires in your organization\u2014")
-c.setFillColor(GOLD); c.setFont("Helvetica-BoldOblique", 30)
-c.drawCentredString(PW / 2, PH - 2.05 * inch,
+c.setFillColor(GOLD); c.setFont("Helvetica-BoldOblique", 34)
+c.drawCentredString(PW / 2, PH - 2.1 * inch,
     "are you executing in 12 minutes or organizing from scratch?")
-c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 14)
-c.drawCentredString(PW / 2, PH - 2.7 * inch, "Signal advantage before execution advantage.")
+c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 16)
+c.drawCentredString(PW / 2, PH - 2.72 * inch,
+    "Signal advantage before execution advantage.")
 
-for i, (chip, hot) in enumerate([
-    ("Activist Investor \u00b7 91%", True),
-    ("Ransomware \u00b7 95%", True),
-    ("Regulatory Inquiry \u00b7 87%", False),
-]):
-    cx = 1.1 * inch + i * 3.8 * inch
-    pill(chip, cx, PH - 3.72 * inch, 3.5 * inch, 0.45 * inch,
-         fill=colors.HexColor("#281C0A") if hot else DARK2,
-         stroke=GOLD if hot else colors.HexColor("#333D60"),
-         tc=GOLD if hot else MUTED)
+for i, chip in enumerate(["Activist Investor \u00b7 91%", "Ransomware \u00b7 95%", "Regulatory Inquiry \u00b7 87%"]):
+    cx = 1.3 * inch + i * 3.55 * inch
+    fill_rect(cx, PH - 3.68 * inch, 3.3 * inch, 0.44 * inch,
+        col=colors.HexColor("#182250"), stroke_col=colors.HexColor("#445280"))
+    c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 11)
+    c.drawCentredString(cx + 1.65 * inch, PH - 3.42 * inch, chip)
 
-framed_img("screenshots/pptx_command_tower.jpg",
-    1.8 * inch, 0.72 * inch, 9.73 * inch, 2.05 * inch,
-    "Command Tower \u00b7 Live production \u00b7 221 Triggers Armed \u00b7 170 Protocols Ready")
-
-c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 11)
-c.drawCentredString(PW / 2, 0.3 * inch,
-    "AI monitors continuously.  Executives authorize decisively.")
+fill_rect(0, 0.55 * inch, PW, 0.52 * inch, col=colors.HexColor("#08091A"))
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 12)
+c.drawCentredString(PW / 2, 0.76 * inch,
+    "AI monitors continuously.   Executives authorize decisively.")
 slide_num(1); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 2 — 30 Days + demo screenshot
+# SLIDE 2 — Readiness Question
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
-lbl("The Reality", 0.45 * inch, PH - 0.72 * inch)
-c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 110)
-c.drawString(0.45 * inch, PH - 2.7 * inch, "30")
-c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 28)
-c.drawString(0.45 * inch, PH - 3.28 * inch, "Days")
-rule_h(0.45 * inch, PH - 3.68 * inch, 3.9 * inch)
-c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 13)
-c.drawString(0.45 * inch, PH - 3.98 * inch, "Mobilization time before any execution begins.")
-c.setFillColor(colors.HexColor("#CCD2E0")); c.setFont("Helvetica", 13)
-c.drawString(0.45 * inch, PH - 4.42 * inch, "Coordination starts from zero at every trigger.")
-c.drawString(0.45 * inch, PH - 4.68 * inch, "The window closes before execution begins.")
 
-lbl("This is what a trigger looks like \u2014 right now", 4.85 * inch, PH - 0.72 * inch)
-framed_img("screenshots/pptx_demo.jpg",
-    4.85 * inch, 0.55 * inch, 8.1 * inch, PH - 1.4 * inch,
-    "Live simulation \u00b7 M&A trigger \u00b7 Risk 88/100 \u2014 HIGH \u00b7 No response pre-staged")
-rule_v(4.75 * inch, 0.3 * inch, PH - 0.3 * inch)
+fill_rect(0.35 * inch, 0.42 * inch, 5.85 * inch, PH - 0.84 * inch, col=NAVY2)
+lbl("The Reality", 0.65 * inch, PH - 0.72 * inch)
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 110)
+c.drawString(0.65 * inch, PH - 2.62 * inch, "30")
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 28)
+c.drawString(0.65 * inch, PH - 3.18 * inch, "DAYS")
+rule_h(0.65 * inch, PH - 3.6 * inch, 4.7 * inch)
+c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 14)
+c.drawString(0.65 * inch, PH - 3.9 * inch, "Mobilization time before any execution begins.")
+
+fill_rect(6.6 * inch, 0.42 * inch, 6.38 * inch, PH - 0.84 * inch, col=NAVY2)
+lbl("The Readiness Question", 6.9 * inch, PH - 0.72 * inch)
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 24)
+for j, ln in enumerate(["Who calls who?", "Where's the brief?", "Who owns it? Who authorizes?"]):
+    c.drawString(6.9 * inch, PH - 1.45 * inch - j * 0.52 * inch, ln)
+
+rule_h(6.9 * inch, PH - 3.2 * inch, 5.5 * inch)
+
+fill_rect(6.9 * inch, PH - 3.7 * inch, 5.7 * inch, 0.45 * inch,
+    col=colors.HexColor("#151F52"))
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 12)
+c.drawString(7.05 * inch, PH - 3.48 * inch,
+    "This is a readiness problem, not a talent problem.")
+
+c.setFillColor(MUTED); c.setFont("Helvetica", 13)
+c.drawString(6.9 * inch, PH - 4.3 * inch,
+    "\u2014  Coordination restarts from zero at every trigger")
+c.drawString(6.9 * inch, PH - 4.68 * inch,
+    "\u2014  The strategic window closes before execution begins")
+
+rule_v(6.4 * inch, 0.3 * inch, PH - 0.3 * inch)
 slide_num(2); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 3 — The Problem Is Already Here
+# SLIDE 3 — Problem Is Already Here
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
 lbl("The Problem Is Already Here", 0.45 * inch, PH - 0.72 * inch)
 c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 24)
-c.drawCentredString(PW / 2, PH - 1.22 * inch,
-    "One of these is forming in your portfolio right now")
+c.drawCentredString(PW / 2, PH - 1.2 * inch,
+    "One of these is forming in your organization right now")
 
-for i, (conf, domain, name, status, accent) in enumerate([
-    ("95%", "RISK & RESILIENCE", "Ransomware\nAttack Confirmed", "248 data points", TEAL),
-    ("91%", "GROWTH & POSITIONING", "Activist Investor\nPressure Rising", "Live Monitoring", GOLD),
-    ("87%", "RISK & RESILIENCE", "Regulatory Inquiry\nOpened", "Threshold Forming", TEAL),
+for i, (conf, domain, name, meta, accent, pct) in enumerate([
+    ("95%", "RISK & RESILIENCE",   "Ransomware\nAttack Confirmed",  "Signal detected \u00b7 248 data points",  TEAL, 95),
+    ("87%", "REGULATORY",          "Regulatory\nInquiry Opened",    "Signal detected \u00b7 threshold crossed", GOLD, 87),
+    ("82%", "GROWTH & POSITIONING","Market Entry\nWindow Opening",  "Opportunity signal \u00b7 live monitoring",GOLD, 82),
 ]):
-    cx = 0.4 * inch + i * 4.3 * inch; cy = PH - 4.7 * inch
-    fill_rect(cx, cy, 4.1 * inch, 3.2 * inch, DARK2)
-    c.setStrokeColor(MID); c.setLineWidth(0.7)
-    c.rect(cx, cy, 4.1 * inch, 3.2 * inch, fill=0, stroke=1)
-    c.setFillColor(accent); c.setFont("Helvetica-Bold", 18)
-    c.drawRightString(cx + 3.9 * inch, cy + 3.2 * inch - 0.44 * inch, conf)
-    lbl(domain, cx + 0.18 * inch, cy + 3.2 * inch - 0.44 * inch, color=TEAL, size=8)
+    cx = 0.38 * inch + i * 4.32 * inch; cy = PH - 4.9 * inch
+    fill_rect(cx, cy, 4.1 * inch, 3.5 * inch, col=colors.HexColor("#10184A"),
+        stroke_col=colors.HexColor("#283468"))
+    c.setFillColor(accent); c.setFont("Helvetica-Bold", 20)
+    c.drawRightString(cx + 3.9 * inch, cy + 3.5 * inch - 0.42 * inch, conf)
+    lbl(domain, cx + 0.18 * inch, cy + 3.5 * inch - 0.42 * inch, col=TEAL, size=8)
     c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 18)
     for j, ln in enumerate(name.split("\n")):
-        c.drawString(cx + 0.18 * inch, cy + 2.58 * inch - j * 0.3 * inch, ln)
-    fill_rect(cx + 0.18 * inch, cy + 1.15 * inch, 3.74 * inch, 0.06 * inch, color=MID)
-    fw = 3.74 * int(conf[:-1]) / 100
-    fill_rect(cx + 0.18 * inch, cy + 1.15 * inch, fw * inch, 0.06 * inch, color=accent)
-    c.setFillColor(TEAL); c.setFont("Helvetica", 10)
-    c.drawString(cx + 0.18 * inch, cy + 0.78 * inch, f"\u25cf Signal Detected \u00b7 {status}")
+        c.drawString(cx + 0.18 * inch, cy + 2.72 * inch - j * 0.3 * inch, ln)
+    c.setFillColor(MUTED); c.setFont("Helvetica", 11)
+    c.drawString(cx + 0.18 * inch, cy + 0.92 * inch, meta)
+    fill_rect(cx + 0.18 * inch, cy + 0.58 * inch, 3.74 * inch, 0.05 * inch,
+        col=MID)
+    fill_rect(cx + 0.18 * inch, cy + 0.58 * inch, 3.74 * pct / 100 * inch, 0.05 * inch,
+        col=accent)
 
-framed_img("screenshots/deck_signals.jpg",
-    0.35 * inch, 0.48 * inch, PW - 0.7 * inch, PH - 4.85 * inch,
-    "Signal Intelligence feed \u00b7 vaughnmartin.com \u00b7 Live detections \u00b7 production")
+fill_rect(0.38 * inch, 0.45 * inch, PW - 0.76 * inch, 0.44 * inch,
+    col=colors.HexColor("#101842"))
+c.setFillColor(colors.HexColor("#445880")); c.setFont("Helvetica-Bold", 10)
+c.drawCentredString(PW / 2, 0.64 * inch,
+    "221 triggers monitored  \u00b7  248 data points  \u00b7  refreshed every 15 minutes")
 slide_num(3); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 4 — The Answer
+# SLIDE 4 — Solution
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
 fill_rect(7.5 * inch, PH - 4.0 * inch, 5.83 * inch, 4.0 * inch,
-    color=colors.HexColor("#0E1C4A"))
+    col=colors.HexColor("#101C4A"))
+lbl("The Answer", PW / 2, PH - 0.68 * inch,
+    col=colors.HexColor("#998060"), size=9)
 c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 52)
-c.drawCentredString(PW / 2, PH - 1.5 * inch, "The response is ready")
+c.drawCentredString(PW / 2, PH - 1.52 * inch, "The response is ready")
 c.setFillColor(GOLD); c.setFont("Helvetica-BoldOblique", 52)
-c.drawCentredString(PW / 2, PH - 2.3 * inch, "before the trigger fires.")
-c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 15)
+c.drawCentredString(PW / 2, PH - 2.32 * inch, "before the trigger fires.")
+c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 16)
 c.drawCentredString(PW / 2, PH - 2.95 * inch, "Preparation  \u2192  Readiness  \u2192  Fearless")
 
 for i, (num, sub) in enumerate([
     ("170", "Readiness Protocols"),
     ("221", "Strategic Triggers"),
-    ("12 MIN", "Full Execution Cycle"),
+    ("12 MIN", "Execution Window"),
 ]):
     px = 0.4 * inch + i * 4.3 * inch
     rule_h(px, PH - 3.6 * inch, 4.1 * inch)
-    c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 54 if num != "12 MIN" else 38)
-    c.drawCentredString(px + 2.05 * inch, PH - 4.5 * inch, num)
+    c.setFillColor(GOLD)
+    c.setFont("Helvetica-Bold", 52 if num != "12 MIN" else 38)
+    c.drawCentredString(px + 2.05 * inch, PH - 4.52 * inch, num)
     c.setFillColor(WHITE); c.setFont("Helvetica", 13)
     c.drawCentredString(px + 2.05 * inch, PH - 4.85 * inch, sub)
 
-framed_img("screenshots/pptx_how_executes.jpg",
-    2.8 * inch, 0.5 * inch, 7.73 * inch, 1.6 * inch,
-    "vaughnmartin.com/how-it-executes \u00b7 Animated 12-minute execution chain")
+fill_rect(2.0 * inch, 0.68 * inch, 9.33 * inch, 0.5 * inch,
+    col=NAVY, stroke_col=colors.HexColor("#445280"))
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 13)
+c.drawCentredString(PW / 2, 0.87 * inch,
+    "AI monitors.   Executives authorize.   Teams execute.")
 slide_num(4); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 5 — Old Model vs VaughnMartin (3 bullets each)
+# SLIDE 5 — Moat (4 pillars)
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
-fill_rect(0, 0, 6.3 * inch, PH, color=NAVY2)
-lbl("Old Model", 0.4 * inch, PH - 0.72 * inch, color=RED)
-c.setFillColor(MUTED); c.setFont("Helvetica-BoldOblique", 19)
-c.drawString(0.4 * inch, PH - 1.3 * inch, '"Bolted AI onto the old model"')
+lbl("Why This Is Defensible", 0.5 * inch, PH - 0.72 * inch)
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 26)
+c.drawString(0.5 * inch, PH - 1.2 * inch,
+    "Built into the architecture \u2014 not bolted on")
 
-for i, line in enumerate([
-    "Faster notes from the same slow meetings",
-    "No readiness architecture before triggers fire",
-    "Authority unclear when pressure arrives",
-]):
-    yt = PH - 2.1 * inch - i * 1.1 * inch
-    c.setFillColor(RED); c.setFont("Helvetica-Bold", 15)
-    c.drawString(0.4 * inch, yt, "\u2715")
-    c.setFillColor(MUTED); c.setFont("Helvetica", 14)
-    c.drawString(0.9 * inch, yt, line)
+pdata = [
+    ("[ ]", "Pre-Staged Protocols",
+     ["170 protocols ready before the trigger fires.", "Zero ramp-up. Zero coordination delay."]),
+    (" \u2192 ", "Trigger-to-Protocol Mapping",
+     ["221 triggers mapped to exact protocol,", "stakeholders, and tasks. Detection becomes execution."]),
+    (" \u25cb ", "Human Authorization Gate",
+     ["No protocol activates without executive sign-off.", "Decision velocity preserved. Human authority intact."]),
+    (" \u25a0 ", "Audit & Governance Layer",
+     ["Every activation logged, attributed,", "and board-reportable. Governance built in."]),
+]
+pw4 = 2.98 * inch; ph4 = 3.92 * inch; py4 = PH - 5.38 * inch
+for i, (icon, title, body_lines) in enumerate(pdata):
+    px4 = 0.38 * inch + i * 3.18 * inch
+    fill_rect(px4, py4, pw4, ph4, col=NAVY3, stroke_col=colors.HexColor("#283460"))
+    c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 16)
+    c.drawString(px4 + 0.2 * inch, py4 + ph4 - 0.52 * inch, icon)
+    c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 10)
+    c.drawString(px4 + 0.2 * inch, py4 + ph4 - 0.92 * inch, title.upper())
+    c.setFillColor(MUTED); c.setFont("Helvetica", 12)
+    for j, ln in enumerate(body_lines):
+        c.drawString(px4 + 0.2 * inch, py4 + ph4 - 1.5 * inch - j * 0.24 * inch, ln)
 
-lbl("VaughnMartin", 6.6 * inch, PH - 0.72 * inch, color=GOLD)
-c.setFillColor(WHITE); c.setFont("Helvetica-BoldOblique", 18)
-c.drawString(6.5 * inch, PH - 1.3 * inch, '"Rebuilt the operating model"')
-
-for i, line in enumerate([
-    "Response pre-staged before trigger fires",
-    "AI monitors. Executives authorize. Teams execute.",
-    "Governance and auditability built into execution",
-]):
-    yt = PH - 2.1 * inch - i * 1.1 * inch
-    c.setFillColor(TEAL); c.setFont("Helvetica-Bold", 15)
-    c.drawString(6.5 * inch, yt, "\u2713")
-    c.setFillColor(WHITE); c.setFont("Helvetica", 14)
-    c.drawString(7.0 * inch, yt, line)
-
-rule_v(6.4 * inch, 0.3 * inch, PH - 0.3 * inch)
+fill_rect(0.38 * inch, 0.42 * inch, PW - 0.76 * inch, 0.68 * inch,
+    col=colors.HexColor("#0A1030"), stroke_col=colors.HexColor("#283460"))
+c.setFillColor(MUTED); c.setFont("Helvetica", 12)
+c.drawCentredString(PW / 2, 0.7 * inch,
+    "Three years to build. Proprietary IDEA Framework. The orchestration layer above the Microsoft stack.")
 slide_num(5); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 6 — Execution Chain + Protocol Builder screenshot
+# SLIDE 6 — Mic-Drop
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
-lbl("From Detection to Authorized Execution", 0.5 * inch, PH - 0.72 * inch)
-c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 20)
-c.drawCentredString(PW / 2, PH - 1.2 * inch,
-    "Signal detected \u2192 Protocol activates \u2192 Executive authorizes \u2192 12 minutes")
+lbl("Proof of Production", 0.5 * inch, PH - 0.72 * inch)
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 26)
+c.drawCentredString(PW / 2, PH - 1.22 * inch,
+    "From Signal to Authorized Execution in 12 Minutes")
 
-for i, (abbr, lbl_txt, hero) in enumerate([
-    ("SIG", "Signal\nDetected", False),
-    ("SCR", "Scored &\nClassified", False),
-    ("PRO", "Protocol\nActivates", True),
-    ("STK", "Stakeholders\nNotified", False),
-    ("AUTH", "Executive\nAuthorizes", False),
-    ("EXE", "Execution\nBegins", True),
-]):
-    cx = 0.55 * inch + i * 2.18 * inch; cy = PH - 3.5 * inch; r = 0.65 * inch
-    c.setFillColor(GOLD if hero else colors.HexColor("#151F52"))
-    c.setStrokeColor(GOLD); c.setLineWidth(1.5 if not hero else 0)
-    c.circle(cx + r, cy + r, r, fill=1, stroke=0 if hero else 1)
-    c.setFillColor(NAVY if hero else GOLD); c.setFont("Helvetica-Bold", 11)
-    c.drawCentredString(cx + r, cy + r - 4, abbr)
-    c.setFillColor(WHITE); c.setFont("Helvetica", 10)
-    for j, ln in enumerate(lbl_txt.split("\n")):
-        c.drawCentredString(cx + r, cy - 0.2 * inch - j * 0.17 * inch, ln)
-    if i < 5:
-        c.setFillColor(GOLD)
-        c.rect(cx + 2 * r + 0.03 * inch, cy + r - 1.5, 0.55 * inch, 3, fill=1, stroke=0)
+framed_img("screenshots/deck_signals.jpg",
+    0.35 * inch, PH - 5.6 * inch, 6.27 * inch, 4.18 * inch,
+    "Live trigger detected with confidence scoring")
+framed_img("screenshots/pptx_how_executes.jpg",
+    6.71 * inch, PH - 5.6 * inch, 6.27 * inch, 4.18 * inch,
+    "Pre-staged protocol, stakeholders, authority & tasks ready before pressure")
 
-fill_rect(0.45 * inch, PH - 4.2 * inch, 6.4 * inch, 0.5 * inch,
-    color=colors.HexColor("#15281C"))
-c.setStrokeColor(TEAL); c.setLineWidth(0.8)
-c.rect(0.45 * inch, PH - 4.2 * inch, 6.4 * inch, 0.5 * inch, fill=0, stroke=1)
-c.setFillColor(TEAL); c.setFont("Helvetica-Bold", 13)
-c.drawString(0.65 * inch, PH - 3.97 * inch,
-    "\u2713  Complete in 12 minutes \u2014 30 days compressed")
-c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 11)
-c.drawString(7.1 * inch, PH - 3.97 * inch,
-    "The alternative: 30 days before execution begins")
-
-framed_img("screenshots/pitch_builder.jpg",
-    0.35 * inch, 0.48 * inch, PW - 0.7 * inch, PH - 4.38 * inch,
-    "Protocol Builder \u00b7 Pre-staged execution architecture \u00b7 Live in production")
+fill_rect(0, PH - 6.62 * inch, PW, 0.82 * inch, col=colors.HexColor("#080D26"))
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 19)
+c.drawCentredString(PW / 2, PH - 6.28 * inch,
+    "AI monitors.   Executives authorize.   Teams execute.")
+c.setFillColor(MUTED); c.setFont("Helvetica", 10)
+c.drawCentredString(PW / 2, PH - 7.1 * inch,
+    "170 protocols  \u00b7  221 triggers  \u00b7  248 data points  \u00b7  refreshed every 15 minutes")
 slide_num(6); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 7 — Business Value
+# SLIDE 7 — Business Value / ROI
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
 lbl("Business Value", 0.5 * inch, PH - 0.72 * inch)
 c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 34)
-c.drawString(0.5 * inch, PH - 1.45 * inch,
-    "Readiness is not overhead.")
+c.drawString(0.5 * inch, PH - 1.42 * inch, "Readiness is not overhead.")
 c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 34)
-c.drawString(0.5 * inch, PH - 2.02 * inch, "It is value protection.")
+c.drawString(0.5 * inch, PH - 1.98 * inch, "It is value protection.")
+rule_h(0.5 * inch, PH - 2.42 * inch, PW - inch)
 
-rule_h(0.5 * inch, PH - 2.48 * inch, PW - inch)
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 72)
+c.drawString(0.5 * inch, PH - 3.88 * inch, "3,600\u00d7")
+c.setFillColor(MUTED); c.setFont("Helvetica", 12)
+c.drawString(0.5 * inch, PH - 4.1 * inch, "Execution head start vs. old mobilization model")
+rule_h(0.5 * inch, PH - 4.42 * inch, 5.5 * inch)
 
-for i, (bullet, color) in enumerate([
-    ("Founding Partner: $75K / 90-day validation", GOLD),
-    ("Growth tiers: $75K\u2013$250K annually", WHITE),
-    ("If one strategic window is preserved, readiness can pay for itself quickly", TEAL),
+for i, (bullet, col) in enumerate([
+    ("\u25b6  Founding Partner: $75K / 90-day validation", GOLD),
+    ("\u25b6  Growth tiers: $75K\u2013$250K annually", WHITE),
+    ("\u25b6  If one strategic window is preserved, readiness pays for itself quickly", TEAL),
 ]):
-    yt = PH - 3.0 * inch - i * 1.18 * inch
-    c.setFillColor(color); c.setFont("Helvetica-Bold", 10)
-    c.rect(0.5 * inch, yt + 4, 0.16 * inch, 0.16 * inch, fill=1, stroke=0)
-    c.setFont("Helvetica", 16); c.setFillColor(color)
-    c.drawString(0.82 * inch, yt, bullet)
+    c.setFillColor(col); c.setFont("Helvetica", 13)
+    c.drawString(0.5 * inch, PH - 4.75 * inch - i * 0.6 * inch, bullet)
 
-rule_h(0.5 * inch, PH - 6.35 * inch, PW - inch)
-c.setFillColor(GOLD); c.setFont("Helvetica-BoldOblique", 16)
-c.drawCentredString(PW / 2, PH - 6.72 * inch,
-    "The cost of delay is usually higher than the cost of readiness.")
+# Right panel
+fill_rect(6.72 * inch, PH - 6.88 * inch, 6.25 * inch, 4.42 * inch, col=NAVY2)
+lbl("Commercial Logic", 6.98 * inch, PH - 2.78 * inch)
+c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 12)
+c.drawString(6.98 * inch, PH - 3.05 * inch,
+    "Replaces the $400K\u2013$800K consulting retainer.")
+c.drawString(6.98 * inch, PH - 3.28 * inch, "Break-even before the 2nd activation.")
+
+for i, (k, v, vcol) in enumerate([
+    ("Founding Partner", "$75K / 90 days",         GOLD),
+    ("Growth Tier",      "$75K\u2013$250K annually", WHITE),
+    ("Cohort",           "startup to Fortune 500",  WHITE),
+    ("Board Line",       "Cost of delay > cost of readiness", TEAL),
+]):
+    yt = PH - 3.72 * inch - i * 0.68 * inch
+    rule_h(6.98 * inch, yt + 0.5 * inch, 5.85 * inch,
+        col=colors.HexColor("#283458"), lw=0.5)
+    lbl(k, 6.98 * inch, yt, col=MUTED, size=9)
+    c.setFillColor(vcol)
+    c.setFont("Helvetica-Bold" if vcol == GOLD else "Helvetica",
+              16 if vcol == GOLD else 13)
+    c.drawString(9.4 * inch, yt, v)
+
+rule_v(6.6 * inch, 0.3 * inch, PH - 0.3 * inch)
 slide_num(7); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
@@ -340,118 +355,109 @@ c.drawCentredString(PW / 2, PH - 1.22 * inch,
     "Not a roadmap \u2014 operating now")
 
 for i, (num, sub, col) in enumerate([
-    ("170", "Protocols", GOLD),
-    ("221", "Triggers", GOLD),
-    ("248", "Data Points", TEAL),
-    ("15 MIN", "Refresh", GOLD),
+    ("170",  "Protocols",   GOLD),
+    ("221",  "Triggers",    GOLD),
+    ("248",  "Data Points", TEAL),
+    ("15m",  "Refresh",     GOLD),
 ]):
     sx = 0.35 * inch + i * 3.24 * inch
-    fill_rect(sx, PH - 3.0 * inch, 3.1 * inch, 1.42 * inch, DARK2)
+    fill_rect(sx, PH - 3.0 * inch, 3.1 * inch, 1.38 * inch, col=DARK2)
     c.setFillColor(col); c.setFont("Helvetica-Bold", 40)
-    c.drawCentredString(sx + 1.55 * inch, PH - 1.92 * inch, num)
+    c.drawCentredString(sx + 1.55 * inch, PH - 1.98 * inch, num)
     c.setFillColor(MUTED); c.setFont("Helvetica", 11)
-    c.drawCentredString(sx + 1.55 * inch, PH - 2.6 * inch, sub)
+    c.drawCentredString(sx + 1.55 * inch, PH - 2.62 * inch, sub)
 
-fill_rect(3.2 * inch, PH - 3.18 * inch, 6.9 * inch, 0.4 * inch,
-    color=colors.HexColor("#122218"))
-c.setStrokeColor(TEAL); c.setLineWidth(0.8)
-c.rect(3.2 * inch, PH - 3.18 * inch, 6.9 * inch, 0.4 * inch, fill=0, stroke=1)
+fill_rect(3.2 * inch, PH - 3.18 * inch, 6.9 * inch, 0.38 * inch,
+    col=colors.HexColor("#122218"), stroke_col=TEAL)
 c.setFillColor(TEAL); c.setFont("Helvetica-Bold", 10)
-c.drawCentredString(PW / 2, PH - 2.95 * inch,
+c.drawCentredString(PW / 2, PH - 2.97 * inch,
     "\u25cf  Signal Detection Active \u00b7 Updated Every 15 Minutes \u00b7 vaughnmartin.com")
 
 framed_img("screenshots/deck_signals.jpg",
     0.35 * inch, 0.45 * inch, PW - 0.7 * inch, PH - 3.6 * inch,
-    "Signal Intelligence feed \u00b7 Live detections \u00b7 vaughnmartin.com")
+    "Signal Intelligence feed \u00b7 vaughnmartin.com \u00b7 Live detections \u00b7 production")
 slide_num(8); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 9 — MIC-DROP: Signal + Execution side by side
-# ══════════════════════════════════════════════════════════════
-navy_bg(); gold_bar()
-lbl("Proof of Production", 0.5 * inch, PH - 0.72 * inch)
-c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 26)
-c.drawCentredString(PW / 2, PH - 1.2 * inch,
-    "From Signal to Authorized Execution in 12 Minutes")
-
-framed_img("screenshots/deck_signals.jpg",
-    0.35 * inch, PH - 5.42 * inch, 6.27 * inch, 4.08 * inch,
-    "Live trigger detected with confidence scoring.")
-framed_img("screenshots/pptx_how_executes.jpg",
-    6.71 * inch, PH - 5.42 * inch, 6.27 * inch, 4.08 * inch,
-    "Pre-staged protocol, stakeholders, authority, and tasks ready before pressure.")
-
-fill_rect(0, PH - 6.55 * inch, PW, 0.88 * inch, color=colors.HexColor("#080D26"))
-c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 20)
-c.drawCentredString(PW / 2, PH - 6.22 * inch,
-    "AI monitors.   Executives authorize.   Teams execute.")
-c.setFillColor(MUTED); c.setFont("Helvetica", 10)
-c.drawCentredString(PW / 2, PH - 7.1 * inch,
-    "170 protocols  \u00b7  221 triggers  \u00b7  248 data points  \u00b7  refreshed every 15 minutes")
-slide_num(9); c.showPage()
-
-# ══════════════════════════════════════════════════════════════
-# SLIDE 10 — Why Now (ivory background)
+# SLIDE 9 — Why Now (ivory)
 # ══════════════════════════════════════════════════════════════
 ivory_bg(); gold_bar()
 lbl("Why Now", 0.5 * inch, PH - 0.72 * inch,
-    color=colors.HexColor("#44496A"))
+    col=colors.HexColor("#44496A"))
 c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 30)
 c.drawString(0.5 * inch, PH - 1.42 * inch,
     "AI capability is accelerating faster")
 c.drawString(0.5 * inch, PH - 1.98 * inch, "than enterprise readiness.")
+rule_h(0.5 * inch, PH - 2.42 * inch, PW - inch, col=GOLD)
 
-rule_h(0.5 * inch, PH - 2.42 * inch, PW - inch, color=GOLD)
-
-for i, bullet in enumerate([
-    "Organizations can detect more than ever, but still mobilize too slowly.",
-    "Governance and execution readiness are now the competitive bottleneck.",
-    "The winners will pair AI sensing with governed execution speed.",
+for i, (num, bullet) in enumerate([
+    ("01", "Organizations can detect more than ever, but still mobilize too slowly."),
+    ("02", "Governance and execution readiness are now the competitive bottleneck."),
+    ("03", "The winners will be companies that pair AI sensing with governed execution speed."),
 ]):
-    yt = PH - 3.02 * inch - i * 1.15 * inch
-    c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 10)
-    c.rect(0.5 * inch, yt + 4, 0.15 * inch, 0.15 * inch, fill=1, stroke=0)
+    yt = PH - 3.08 * inch - i * 1.18 * inch
+    c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 22)
+    c.drawString(0.5 * inch, yt, num)
     c.setFillColor(colors.HexColor("#1A2348")); c.setFont("Helvetica", 16)
-    c.drawString(0.82 * inch, yt, bullet)
+    c.drawString(1.12 * inch, yt, bullet)
 
 c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 11)
-c.drawString(0.5 * inch, PH - 6.32 * inch,
+c.drawString(0.5 * inch, 0.6 * inch,
     "Sources: Stanford HAI AI Index 2026  \u00b7  Gartner Autonomous Business")
+slide_num(9); c.showPage()
+
+# ══════════════════════════════════════════════════════════════
+# SLIDE 10 — The Ask
+# ══════════════════════════════════════════════════════════════
+navy_bg(); gold_bar()
+
+fill_rect(0.35 * inch, 0.42 * inch, 5.85 * inch, PH - 0.84 * inch, col=NAVY2)
+lbl("The Ask", 0.65 * inch, PH - 0.72 * inch)
+c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 28)
+c.drawString(0.65 * inch, PH - 1.5 * inch, "Twelve founding partners.")
+c.drawString(0.65 * inch, PH - 2.02 * inch, "One defining cohort.")
+c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 14)
+c.drawString(0.65 * inch, PH - 2.58 * inch,
+    "Partners who want readiness as competitive advantage.")
+rule_h(0.65 * inch, PH - 3.0 * inch, 4.8 * inch)
+c.setFillColor(colors.HexColor("#CCD2E0")); c.setFont("Helvetica", 13)
+c.drawString(0.65 * inch, PH - 3.32 * inch, "We're not looking for customers.")
+c.drawString(0.65 * inch, PH - 3.58 * inch,
+    "We're selecting partners who will define the category.")
+
+fill_rect(6.6 * inch, 0.42 * inch, 6.38 * inch, PH - 0.84 * inch, col=NAVY2)
+lbl("Program Details", 6.9 * inch, PH - 0.72 * inch)
+
+for i, (k, v, vcol) in enumerate([
+    ("Program",    "Founding Partner \u00b7 90-Day Validation", WHITE),
+    ("Commercial", "$75K / 90 days",                          GOLD),
+    ("Cohort",     "12 startup to Fortune 500 organizations", WHITE),
+    ("Delivery",   "Right-sized by company maturity",         WHITE),
+    ("Raise",      "Open strategic raise \u00b7 conversations underway", MUTED),
+]):
+    yt = PH - 1.38 * inch - i * 0.97 * inch
+    rule_h(6.9 * inch, yt + 0.52 * inch, 5.85 * inch,
+        col=colors.HexColor("#283458"), lw=0.5)
+    lbl(k, 6.9 * inch, yt, col=MUTED, size=9)
+    c.setFillColor(vcol)
+    c.setFont("Helvetica-Bold" if vcol == GOLD else "Helvetica",
+              17 if vcol == GOLD else 13)
+    c.drawString(9.1 * inch, yt, v)
+
+fill_rect(6.9 * inch, 0.65 * inch, 5.7 * inch, 0.52 * inch,
+    col=NAVY, stroke_col=GOLD)
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 11)
+c.drawCentredString(6.9 * inch + 2.85 * inch, 0.85 * inch,
+    "Apply for Founding Partner Access")
+
+rule_v(6.4 * inch, 0.3 * inch, PH - 0.3 * inch)
 slide_num(10); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
-# SLIDE 11 — The Ask
+# SLIDE 11 — Close
 # ══════════════════════════════════════════════════════════════
 navy_bg(); gold_bar()
-lbl("The Ask", 0.5 * inch, PH - 0.72 * inch)
-c.setFillColor(WHITE); c.setFont("Helvetica-Bold", 34)
-c.drawString(0.5 * inch, PH - 1.52 * inch, "Twelve founding partners.")
-c.drawString(0.5 * inch, PH - 2.08 * inch, "One defining cohort.")
-c.setFillColor(MUTED); c.setFont("Helvetica-Oblique", 15)
-c.drawString(0.5 * inch, PH - 2.62 * inch,
-    "Partners who want readiness as competitive advantage.")
-
-for i, (row_lbl, val, vcol) in enumerate([
-    ("Program",    "Founding Partner  \u00b7  90-Day Validation", WHITE),
-    ("Commercial", "$75K / 90 days", GOLD),
-    ("Cohort",     "12 startup to Fortune 500 organizations", WHITE),
-    ("Raise",      "Open strategic raise  \u00b7  active conversations underway", MUTED),
-]):
-    yt = PH - 3.42 * inch - i * 0.97 * inch
-    fill_rect(0.4 * inch, yt - 0.58 * inch, PW - 0.8 * inch, 0.88 * inch,
-        color=DARK2 if i % 2 == 0 else DARK3)
-    lbl(row_lbl, 0.6 * inch, yt, color=MUTED, size=9)
-    c.setFillColor(vcol)
-    c.setFont("Helvetica-Bold" if vcol == GOLD else "Helvetica", 15)
-    c.drawString(3.0 * inch, yt, val)
-
-slide_num(11); c.showPage()
-
-# ══════════════════════════════════════════════════════════════
-# SLIDE 12 — Close (inevitable)
-# ══════════════════════════════════════════════════════════════
-navy_bg(); gold_bar()
-c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 11)
+c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 10)
 c.drawCentredString(PW / 2, PH - 0.68 * inch,
     "THREE LINES. THAT\u2019S THE PITCH.")
 
@@ -463,31 +469,26 @@ for i, (tag, accent, body_txt) in enumerate([
     ("OUTCOME", TEAL,
      "Earlier detection + faster execution protects value before the window closes."),
 ]):
-    yt = PH - 1.38 * inch - i * 1.75 * inch
-    fill_rect(0.65 * inch, yt - 0.85 * inch, PW - 1.3 * inch, 1.55 * inch, color=DARK3)
+    yt = PH - 1.35 * inch - i * 1.72 * inch
+    fill_rect(0.65 * inch, yt - 0.84 * inch, PW - 1.3 * inch, 1.52 * inch, col=DARK3)
     c.setStrokeColor(accent); c.setLineWidth(3.5)
-    c.line(0.65 * inch, yt - 0.85 * inch, 0.65 * inch, yt + 0.7 * inch)
-    lbl(tag, 0.9 * inch, yt, color=MUTED, size=9)
+    c.line(0.65 * inch, yt - 0.84 * inch, 0.65 * inch, yt + 0.68 * inch)
+    lbl(tag, 0.88 * inch, yt, col=MUTED, size=9)
     c.setFillColor(GOLD if accent == GOLD else WHITE)
-    c.setFont("Helvetica-Bold", 17)
-    c.drawString(0.9 * inch, yt - 0.38 * inch, body_txt)
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(0.88 * inch, yt - 0.38 * inch, body_txt)
 
-fill_rect(1.8 * inch, 0.55 * inch, PW - 3.6 * inch, 0.65 * inch, color=NAVY)
-c.setStrokeColor(GOLD); c.setLineWidth(0.8)
-c.rect(1.8 * inch, 0.55 * inch, PW - 3.6 * inch, 0.65 * inch, fill=0, stroke=1)
+fill_rect(1.8 * inch, 0.52 * inch, PW - 3.6 * inch, 0.62 * inch,
+    col=NAVY, stroke_col=GOLD)
 c.setFillColor(GOLD); c.setFont("Helvetica-Bold", 12)
-c.drawCentredString(PW / 2, 0.8 * inch,
+c.drawCentredString(PW / 2, 0.77 * inch,
     "Apply for Founding Partner Access  \u00b7  vaughnmartin.com/founding-partner-program")
-slide_num(12); c.showPage()
+
+c.setFillColor(colors.HexColor("#404868")); c.setFont("Helvetica-Oblique", 10)
+c.drawCentredString(PW / 2, 0.28 * inch,
+    "\u201cStrategic triggers are inevitable. Delay is optional.\u201d")
+slide_num(11); c.showPage()
 
 # ══════════════════════════════════════════════════════════════
 c.save()
-print(f"PDF \u2192 {OUT}  (12 pages)")
-print("Screenshots featured:")
-print("  S1: Command Tower inset")
-print("  S2: Demo trigger (full right panel)")
-print("  S3: Signal Intelligence feed (lower 42%)")
-print("  S4: How-it-executes inset")
-print("  S6: Protocol Builder (full lower)")
-print("  S8: Signal Detection feed (full lower)")
-print("  S9: Signals (left) + How-it-executes (right) \u2014 MIC-DROP")
+print(f"PDF v10 \u2192 {OUT}  (11 pages)")
