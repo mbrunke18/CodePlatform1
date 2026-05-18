@@ -105,9 +105,9 @@ export default function GettingStarted() {
 
   const { data: orgs } = useQuery<any[]>({ queryKey: ['/api/organizations'] });
   const { data: user } = useQuery<any>({ queryKey: ['/api/auth/user'] });
-  const { data: departments } = useQuery<any[]>({ queryKey: ['/api/config/departments'] });
-  const { data: escalationPolicies } = useQuery<any[]>({ queryKey: ['/api/config/escalation-policies'] });
-  const { data: channels } = useQuery<any[]>({ queryKey: ['/api/config/communication-channels'] });
+  const { data: departments } = useQuery<any[]>({ queryKey: ['/api/config/departments'], enabled: !!user });
+  const { data: escalationPolicies } = useQuery<any[]>({ queryKey: ['/api/config/escalation-policies'], enabled: !!user });
+  const { data: channels } = useQuery<any[]>({ queryKey: ['/api/config/communication-channels'], enabled: !!user });
 
   const org = Array.isArray(orgs) ? orgs[0] : null;
   const settings = org?.settings || {};
