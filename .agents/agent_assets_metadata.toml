@@ -317,3 +317,9 @@ id = "KSLR0Zq4Qf5zhGgotpt0o"
 uri = "file://attached_assets/VaughnMartin-Pitch-Deck-6-Slides-WithScreenshots.zip"
 type = "unspecified"
 title = "6-Slide Pitch Deck with Live Product Screenshots — 1280×720 PNGs"
+
+[[outputs]]
+id = "RIfYraJqBQxuOQtxHqPc-"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_UPDATED_2026.pptx"
+type = "slides"
+title = "VaughnMartin Pitch Deck — Updated May 2026"
