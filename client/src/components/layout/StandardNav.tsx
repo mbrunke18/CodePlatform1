@@ -688,6 +688,125 @@ export default function StandardNav() {
     );
   };
 
+  // ── PRODUCT NAV (authenticated users only) ──────────────────────────────────
+  const renderProductNavCenter = () => {
+    const navBtn = (label: string, path: string, matchPaths?: string[]): React.ReactElement => {
+      const active = matchPaths
+        ? matchPaths.some(p => location.startsWith(p))
+        : location.startsWith(path);
+      return (
+        <button
+          key={path}
+          onClick={() => navigateTo(path)}
+          style={{
+            padding: '7px 12px',
+            fontSize: 13,
+            fontWeight: 700,
+            color: active ? TEAL : NAVY,
+            background: active ? 'rgba(43,138,110,0.07)' : 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap' as const,
+            transition: 'background 0.12s, color 0.12s',
+            letterSpacing: '0.01em',
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = active ? 'rgba(43,138,110,0.07)' : 'transparent'; }}
+        >
+          {label}
+        </button>
+      );
+    };
+
+    const workspaceLinks = [
+      { path: '/workspace', icon: Target, label: 'Identify', sub: 'Situation intents, protocols, risk mapping' },
+      { path: '/signal-intelligence', icon: Radar, label: 'Detect', sub: 'Signal monitoring across 221 triggers' },
+      { path: '/live-activation-center', icon: Zap, label: 'Execute', sub: 'Activate, coordinate, authorize' },
+      { path: '/advanced-analytics', icon: BarChart3, label: 'Advance', sub: 'Analytics, outcomes, board reporting' },
+    ];
+    const workspaceActive = ['/workspace', '/identify', '/signal-intelligence', '/live-activation', '/advanced-analytics', '/execution-history'].some(p => location.startsWith(p));
+
+    return (
+      <>
+        {navBtn('Mission Control', '/mission-control')}
+
+        {/* Workspace dropdown */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button
+              style={{
+                padding: '7px 12px',
+                fontSize: 13,
+                fontWeight: 700,
+                color: workspaceActive ? TEAL : NAVY,
+                background: workspaceActive ? 'rgba(43,138,110,0.07)' : 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap' as const,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.05)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = workspaceActive ? 'rgba(43,138,110,0.07)' : 'transparent'; }}
+            >
+              Workspace <ChevronDown style={{ width: 12, height: 12, opacity: 0.5 }} />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" style={{ width: 280, border: `1px solid rgba(10,15,46,0.1)`, borderRadius: 0, padding: '8px 0' }}>
+            <DropdownMenuLabel style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#9CA3AF', padding: '2px 14px 8px' }}>IDEA Framework</DropdownMenuLabel>
+            {workspaceLinks.map(({ path, icon: Icon, label, sub }) => (
+              <DropdownMenuItem
+                key={path}
+                onClick={() => navigateTo(path)}
+                className="cursor-pointer"
+                style={{ padding: '8px 14px', gap: 10, display: 'flex', alignItems: 'flex-start' }}
+              >
+                <div style={{ width: 28, height: 28, background: 'rgba(43,138,110,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Icon size={13} style={{ color: TEAL }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: NAVY }}>{label}</div>
+                  <div style={{ fontSize: 10, color: '#6B7280', marginTop: 1 }}>{sub}</div>
+                </div>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {navBtn('Protocols', '/playbooks', ['/playbooks', '/identify/playbooks'])}
+        {navBtn('Signals', '/triggers-management', ['/triggers-management', '/signal-intelligence'])}
+        {navBtn('Execute', '/live-activation-center', ['/live-activation-center', '/strategic-monitoring', '/war-room'])}
+        {navBtn('Reports', '/advanced-analytics', ['/advanced-analytics', '/execution-history', '/board-readiness'])}
+
+        {/* Get Started — highlighted gold */}
+        <button
+          onClick={() => navigateTo('/getting-started')}
+          style={{
+            padding: '6px 14px',
+            fontSize: 12,
+            fontWeight: 700,
+            color: GOLD,
+            background: location.startsWith('/getting-started') ? 'rgba(201,168,76,0.1)' : 'transparent',
+            border: `1px solid rgba(201,168,76,0.35)`,
+            cursor: 'pointer',
+            whiteSpace: 'nowrap' as const,
+            marginLeft: 6,
+            letterSpacing: '0.04em',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 5,
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.12)'; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = location.startsWith('/getting-started') ? 'rgba(201,168,76,0.1)' : 'transparent'; }}
+        >
+          <Rocket size={11} />
+          Get Started
+        </button>
+      </>
+    );
+  };
+
   return (
     <nav
       className="sticky top-0 z-50"
@@ -714,34 +833,38 @@ export default function StandardNav() {
             </div>
           </div>
 
-          {/* Center: Nav Links */}
+          {/* Center: Nav Links — split by auth state */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {renderPlatformDropdown()}
-            {renderExperienceDropdown()}
-            {renderEvidenceDropdown()}
-            {renderInvestorsDropdown()}
-            <button
-              onClick={() => navigateTo('/onboarding-guide')}
-              className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-              style={{ color: GOLD, background: 'transparent', whiteSpace: 'nowrap' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
-            >
-              <BookOpen className="h-3.5 w-3.5" />
-              Guide
-            </button>
-            <button
-              onClick={() => navigateTo('/sitemap')}
-              className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
-              style={{ color: NAVY, background: 'transparent', whiteSpace: 'nowrap', opacity: 0.72 }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; (e.currentTarget as HTMLElement).style.opacity = '1'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.opacity = '0.72'; }}
-              title="All pages and features"
-              data-testid="nav-directory"
-            >
-              <LayoutGrid className="h-3.5 w-3.5" />
-              Directory
-            </button>
+            {isAuthenticated && user ? renderProductNavCenter() : (
+              <>
+                {renderPlatformDropdown()}
+                {renderExperienceDropdown()}
+                {renderEvidenceDropdown()}
+                {renderInvestorsDropdown()}
+                <button
+                  onClick={() => navigateTo('/onboarding-guide')}
+                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
+                  style={{ color: GOLD, background: 'transparent', whiteSpace: 'nowrap' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(201,168,76,0.10)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; }}
+                >
+                  <BookOpen className="h-3.5 w-3.5" />
+                  Guide
+                </button>
+                <button
+                  onClick={() => navigateTo('/sitemap')}
+                  className="px-3 py-2 text-sm font-semibold transition-all duration-150 flex items-center gap-1.5"
+                  style={{ color: NAVY, background: 'transparent', whiteSpace: 'nowrap', opacity: 0.72 }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(10,15,46,0.07)'; (e.currentTarget as HTMLElement).style.opacity = '1'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.opacity = '0.72'; }}
+                  title="All pages and features"
+                  data-testid="nav-directory"
+                >
+                  <LayoutGrid className="h-3.5 w-3.5" />
+                  Directory
+                </button>
+              </>
+            )}
           </div>
 
           {/* Right: CTAs */}
@@ -774,17 +897,7 @@ export default function StandardNav() {
             ) : isAuthenticated && user ? (
               <>
                 <Button
-                  onClick={() => navigateTo("/founding-partner-program")}
-                  className="h-9 px-4 text-sm font-bold"
-                  style={{ background: GOLD, color: NAVY, border: "none" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
-                  data-testid="nav-request-pilot"
-                >
-                  Request Founding Partner Access
-                </Button>
-                <Button
-                  onClick={() => navigateTo("/command-center")}
+                  onClick={() => navigateTo("/mission-control")}
                   className="h-9 px-4 text-sm font-bold text-white"
                   style={{ background: `linear-gradient(135deg, ${TEAL}, #3BAF8A)`, border: 'none' }}
                   data-testid="nav-open-platform"
@@ -808,6 +921,10 @@ export default function StandardNav() {
                   <DropdownMenuContent align="end" className="w-48" style={{ border: `1px solid rgba(10,15,46,0.1)` }}>
                     <DropdownMenuLabel className="text-xs font-normal" style={{ color: '#6B7280' }}>{user.email}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigateTo("/getting-started")} className="cursor-pointer" style={{ color: GOLD, fontWeight: 700 }}>
+                      <Rocket className="h-4 w-4 mr-2" style={{ color: GOLD }} />
+                      Get Started
+                    </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => navigateTo("/onboarding-guide")} className="cursor-pointer" style={{ color: NAVY }}>
                       <BookOpen className="h-4 w-4 mr-2 opacity-50" />
                       Onboarding Guide
