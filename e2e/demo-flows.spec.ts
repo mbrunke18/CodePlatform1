@@ -10,7 +10,8 @@ import { test, expect } from '@playwright/test';
 test.describe('Homepage — Brand & Navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
+    await page.waitForTimeout(2500);
   });
 
   test('homepage loads and carries VaughnMartin branding', async ({ page }) => {

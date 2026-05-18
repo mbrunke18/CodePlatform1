@@ -165,7 +165,8 @@ test.describe('Conversion Pages — Buyer Decision Suite', () => {
 
   test('/buyer-decision-packet loads with all 9 sections', async ({ page }) => {
     await page.goto('/buyer-decision-packet');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('load');
+    await page.waitForTimeout(2500);
     await expect(page.locator('body')).toBeVisible({ timeout: 10000 });
     const bodyText = await page.locator('body').innerText();
     const bodyLower = bodyText.toLowerCase();
