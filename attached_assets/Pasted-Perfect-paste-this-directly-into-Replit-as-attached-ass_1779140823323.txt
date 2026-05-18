@@ -1,0 +1,290 @@
+Perfect — paste this directly into Replit as:
+
+attached_assets/VaughnMartin-Investor-Pitch-Deck.html
+
+Then open it in browser/fullscreen.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VaughnMartin — Investor Pitch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0A0F2E; --navy2:#121D47; --gold:#C9A84C; --teal:#2B8A6E; --ivory:#F0EDE4; --white:#fff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{width:100%;height:100%;background:#000;font-family:'Barlow Condensed',sans-serif;overflow:hidden}
+    .deck-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+    .slide{
+      width:1280px;height:720px;display:none;position:relative;overflow:hidden;
+      background:linear-gradient(145deg,var(--navy),var(--navy2));color:#fff;
+      padding:56px 64px;
+    }
+    .slide.active{display:flex}
+    .overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+    .topbar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.2))}
+    .num{position:absolute;right:28px;bottom:20px;font-size:11px;letter-spacing:.22em;color:rgba(201,168,76,.45)}
+    .label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+    .h1{font-size:66px;line-height:1.04;font-weight:900;text-transform:uppercase}
+    .h2{font-size:44px;line-height:1.08;font-weight:900;text-transform:uppercase}
+    .h3{font-size:30px;line-height:1.1;font-weight:800;text-transform:uppercase}
+    .body{font-size:16px;line-height:1.45;letter-spacing:.02em}
+    .muted{color:rgba(255,255,255,.72)}
+    .gold{color:var(--gold)}
+    .teal{color:var(--teal)}
+    .italic{font-family:'Cormorant Garamond',serif;font-style:italic}
+    .chip{border:1px solid rgba(201,168,76,.45);padding:8px 14px;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{border:1px solid rgba(201,168,76,.25);background:rgba(201,168,76,.05);padding:18px;min-height:180px;position:relative}
+    .badge{position:absolute;top:12px;right:12px;color:var(--gold);font-size:22px;font-weight:900}
+    .domain{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--teal);padding-right:70px;line-height:1.3}
+    .kpi{display:flex;gap:34px;justify-content:center;margin-top:28px}
+    .kpi .x{text-align:center}
+    .kpi .x .n{font-size:44px;color:var(--gold);font-weight:900}
+    .kpi .x .t{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:28px;height:100%}
+    .panel{border:1px solid rgba(255,255,255,.12);padding:24px}
+    .list{margin-top:14px;display:grid;gap:10px}
+    .shot{
+      border:1px solid rgba(201,168,76,.25);border-radius:4px;overflow:hidden;
+      box-shadow:0 14px 30px rgba(0,0,0,.35);background:#0b1230
+    }
+    .shot img{width:100%;height:100%;object-fit:cover;display:block}
+    .chain{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:22px}
+    .node{text-align:center}
+    .circle{width:54px;height:54px;border-radius:50%;border:2px solid var(--gold);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:900}
+    .small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+    .row{display:flex;justify-content:space-between;border-bottom:1px solid rgba(201,168,76,.14);padding:10px 0}
+    .row:last-child{border-bottom:none}
+    .nav{position:fixed;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(201,168,76,.35);background:rgba(201,168,76,.12);color:var(--gold);font-size:20px;cursor:pointer;z-index:100}
+    #prev{left:12px} #next{right:12px}
+    .progress{position:fixed;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08);z-index:100}
+    .fill{height:100%;width:0;background:var(--gold)}
+  </style>
+</head>
+<body>
+<button id="prev" class="nav">←</button>
+<button id="next" class="nav">→</button>
+<div class="progress"><div id="fill" class="fill"></div></div>
+<div class="deck-wrap">
+  <!-- 1 -->
+  <section class="slide active">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div style="margin:auto;text-align:center;max-width:980px">
+      <div class="h1">When a strategic trigger fires in your organization—<span class="gold">how long does it take to mobilize a coordinated response?</span></div>
+      <div style="margin-top:20px" class="body muted">Signal advantage before execution advantage.</div>
+      <div style="margin-top:30px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <div class="chip">Activist Investor · 91%</div>
+        <div class="chip">Ransomware · 95%</div>
+        <div class="chip">Regulatory Inquiry · 87%</div>
+      </div>
+    </div>
+    <div class="num">01 / 11</div>
+  </section>
+  <!-- 2 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="split">
+      <div class="panel">
+        <div class="label">The Reality</div>
+        <div style="font-size:132px;line-height:.88;font-weight:900;color:var(--gold);margin-top:14px">30</div>
+        <div style="font-size:36px;line-height:1.05;opacity:.72">DAYS</div>
+        <div style="margin-top:22px" class="italic body muted">That is mobilization time before execution begins.</div>
+      </div>
+      <div class="panel">
+        <div class="label">The Readiness Question</div>
+        <div class="h3" style="margin-top:12px">Who calls who? Where’s the brief?<br>Who owns it? Who authorizes?</div>
+        <div class="list body muted">
+          <div>• Trigger fires, but coordination starts from zero</div>
+          <div>• Stakeholder alignment and decisions stall</div>
+          <div>• The window closes before confident execution begins</div>
+        </div>
+      </div>
+    </div>
+    <div class="num">02 / 11</div>
+  </section>
+  <!-- 3 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="label">The Problem Is Already Here</div>
+    <div class="h2" style="margin-top:10px;margin-bottom:20px">One of these is forming right now</div>
+    <div class="cards3">
+      <div class="card"><div class="badge">95%</div><div class="domain">RISK & RESILIENCE</div><div class="h3" style="font-size:22px;margin-top:10px">Ransomware Attack Confirmed</div><div class="body muted" style="margin-top:10px">Signal detected · 248 data points</div></div>
+      <div class="card"><div class="badge">91%</div><div class="domain">GROWTH & POSITIONING</div><div class="h3" style="font-size:22px;margin-top:10px">Activist Pressure Rising</div><div class="body muted" style="margin-top:10px">Signal detected · live monitoring</div></div>
+      <div class="card"><div class="badge">87%</div><div class="domain">REGULATORY</div><div class="h3" style="font-size:22px;margin-top:10px">Inquiry Opened</div><div class="body muted" style="margin-top:10px">Signal detected · threshold forming</div></div>
+    </div>
+    <div class="num">03 / 11</div>
+  </section>
+  <!-- 4 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div style="margin:auto;text-align:center;max-width:980px">
+      <div class="h1">The response is ready <span class="gold">before the trigger fires</span></div>
+      <div style="margin-top:16px" class="italic" >Preparation → Readiness → Fearless</div>
+      <div class="kpi">
+        <div class="x"><div class="n">170</div><div class="t">Readiness Protocols</div></div>
+        <div class="x"><div class="n">221</div><div class="t">Strategic Triggers</div></div>
+        <div class="x"><div class="n">12 MIN</div><div class="t">Execution Window</div></div>
+      </div>
+    </div>
+    <div class="num">04 / 11</div>
+  </section>
+  <!-- 5 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="split">
+      <div class="panel">
+        <div class="label" style="color:rgba(255,100,100,.7)">Old Model</div>
+        <div class="list body muted">
+          <div>• Faster summaries from the same slow meeting cycle</div>
+          <div>• No readiness architecture before trigger events</div>
+          <div>• Tools improve output, not mobilization speed</div>
+          <div>• Governance and authority still unclear in pressure</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="label">VaughnMartin</div>
+        <div class="list body">
+          <div>• Pre-staged response architecture before trigger fires</div>
+          <div>• AI monitors continuously, executives authorize decisively</div>
+          <div>• Trigger-to-protocol mapping with clear decision authority</div>
+          <div>• Auditability and governance built into execution flow</div>
+        </div>
+      </div>
+    </div>
+    <div class="num">05 / 11</div>
+  </section>
+  <!-- 6 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="label">From Detection to Authorized Execution</div>
+    <div class="chain">
+      <div class="node"><div class="circle">SIG</div><div class="small">Signal</div></div>
+      <div class="node"><div class="circle">CLS</div><div class="small">Classify</div></div>
+      <div class="node"><div class="circle">MAP</div><div class="small">Protocol Map</div></div>
+      <div class="node"><div class="circle">NOT</div><div class="small">Notify</div></div>
+      <div class="node"><div class="circle">AUTH</div><div class="small">Executive Auth</div></div>
+      <div class="node"><div class="circle">EXE</div><div class="small">Execute</div></div>
+    </div>
+    <div style="margin-top:18px;font-size:14px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)">Complete in 12 minutes</div>
+    <div class="shot" style="margin-top:18px;height:280px">
+      <img src="./pitch-images-hd/builder-raw.png" alt="Protocol builder">
+    </div>
+    <div class="num">06 / 11</div>
+  </section>
+  <!-- 7 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="split">
+      <div class="panel">
+        <div class="label">Return on Readiness</div>
+        <div style="font-size:64px;color:var(--gold);font-weight:900;margin-top:16px">3,600×</div>
+        <div class="small">Execution head start vs old model</div>
+        <div style="font-size:48px;color:var(--gold);font-weight:900;margin-top:16px">$75K</div>
+        <div class="small">Founding Partner · 90 Days</div>
+      </div>
+      <div class="panel">
+        <div class="label">Commercial Logic</div>
+        <div class="row"><span class="small">Growth pricing</span><span class="body">$75K–$250K annual</span></div>
+        <div class="row"><span class="small">Break-even target</span><span class="body gold">Before 2nd major activation</span></div>
+        <div class="row"><span class="small">Budget fit</span><span class="body">Replaces existing readiness spend</span></div>
+        <div class="row"><span class="small">Outcome</span><span class="body teal">Faster, governed high-stakes execution</span></div>
+      </div>
+    </div>
+    <div class="num">07 / 11</div>
+  </section>
+  <!-- 8 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="label">Built. Live. In Production.</div>
+    <div class="h2" style="margin-top:10px">Not a roadmap — operating now</div>
+    <div class="kpi" style="justify-content:flex-start;gap:26px;margin-top:16px">
+      <div class="x"><div class="n" style="font-size:40px">170</div><div class="t">Protocols</div></div>
+      <div class="x"><div class="n" style="font-size:40px">221</div><div class="t">Triggers</div></div>
+      <div class="x"><div class="n" style="font-size:40px">248</div><div class="t">Data Points</div></div>
+      <div class="x"><div class="n" style="font-size:40px">15 MIN</div><div class="t">Refresh</div></div>
+    </div>
+    <div class="shot" style="margin-top:20px;height:360px">
+      <img src="./pitch-images-hd/signals-raw.png" alt="Live detection feed">
+    </div>
+    <div class="num">08 / 11</div>
+  </section>
+  <!-- 9 -->
+  <section class="slide" style="background:var(--ivory);color:var(--navy)">
+    <div class="topbar"></div>
+    <div class="label" style="color:rgba(10,15,46,.55)">Why Now</div>
+    <div class="h2" style="margin-top:10px;color:var(--navy)">AI capability is accelerating faster than enterprise readiness</div>
+    <div class="list body" style="margin-top:20px;color:#1a2348">
+      <div>• Organizations can detect more signals than ever</div>
+      <div>• Governance and mobilization readiness still lag</div>
+      <div>• Competitive gap = who can execute with speed + control</div>
+      <div>• VaughnMartin closes that gap with governed execution readiness</div>
+    </div>
+    <div style="margin-top:26px;font-size:12px;letter-spacing:.06em;color:rgba(10,15,46,.62)">
+      Sources: Stanford HAI AI Index 2026 · Gartner Autonomous Business
+    </div>
+    <div class="num" style="color:rgba(10,15,46,.45)">09 / 11</div>
+  </section>
+  <!-- 10 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div class="split">
+      <div class="panel">
+        <div class="label">The Ask</div>
+        <div class="h2" style="margin-top:14px">Twelve founding partners.<br>One defining cohort.</div>
+        <div class="body muted" style="margin-top:16px">We’re selecting partners who want readiness as competitive advantage.</div>
+      </div>
+      <div class="panel">
+        <div class="row"><span class="small">Program</span><span class="body">Founding Partner · 90-Day Validation</span></div>
+        <div class="row"><span class="small">Commercial</span><span class="body gold">$75K / 90 days</span></div>
+        <div class="row"><span class="small">Cohort</span><span class="body">12 Fortune 1000 organizations</span></div>
+        <div class="row"><span class="small">Raise</span><span class="body">Open strategic raise · active conversations underway</span></div>
+      </div>
+    </div>
+    <div class="num">10 / 11</div>
+  </section>
+  <!-- 11 -->
+  <section class="slide">
+    <div class="overlay"></div><div class="topbar"></div>
+    <div style="margin:auto;max-width:1000px;text-align:center">
+      <div class="label">Three lines. That’s the pitch.</div>
+      <div style="margin-top:22px;border-left:3px solid var(--gold);padding:12px 18px;text-align:left;background:rgba(201,168,76,.05)" class="body">
+        <strong class="gold">Problem:</strong> Enterprises detect more signals, but still mobilize too slowly.
+      </div>
+      <div style="margin-top:10px;border-left:3px solid var(--gold);padding:12px 18px;text-align:left;background:rgba(201,168,76,.05)" class="body">
+        <strong class="gold">Solution:</strong> Readiness OS pre-stages response so executives authorize in minutes.
+      </div>
+      <div style="margin-top:10px;border-left:3px solid var(--teal);padding:12px 18px;text-align:left;background:rgba(43,138,110,.06)" class="body">
+        <strong class="teal">Outcome:</strong> Earlier detection + faster execution protects value before the window closes.
+      </div>
+      <div style="margin-top:22px;padding:10px 16px;border:1px solid rgba(201,168,76,.35);display:inline-block;color:var(--gold);font-size:13px;letter-spacing:.12em;text-transform:uppercase">
+        vaughnmartin.com/founding-partner-program
+      </div>
+    </div>
+    <div class="num">11 / 11</div>
+  </section>
+</div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const fill=document.getElementById('fill');
+  let i=0;
+  const show=(n)=>{slides[i].classList.remove('active');i=(n+slides.length)%slides.length;slides[i].classList.add('active');fill.style.width=((i+1)/slides.length*100)+'%';};
+  document.getElementById('prev').onclick=()=>show(i-1);
+  document.getElementById('next').onclick=()=>show(i+1);
+  document.addEventListener('keydown',(e)=>{
+    if(['ArrowRight','ArrowDown',' '].includes(e.key)) show(i+1);
+    if(['ArrowLeft','ArrowUp'].includes(e.key)) show(i-1);
+    if(e.key.toLowerCase()==='f') document.documentElement.requestFullscreen?.();
+  });
+  fill.style.width=(1/slides.length*100)+'%';
+</script>
+</body>
+</html>
+If you want, I’ll also give you the matching 4-minute script mapped to this exact slide copy (word-for-word).
+
+Planning next moves
+
+Review 2 PRs
