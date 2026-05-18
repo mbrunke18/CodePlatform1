@@ -329,3 +329,9 @@ id = "LxKVYNnyuDs9EdH_OzrrA"
 uri = "file://attached_assets/VaughnMartin_Pitch_Deck_FINAL_v2_2026.pptx"
 type = "slides"
 title = "VaughnMartin Pitch Deck — Final v2, May 2026"
+
+[[outputs]]
+id = "YK7No8yT62B7HEXM7pAF8"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_FINAL_v3_2026.pptx"
+type = "slides"
+title = "VaughnMartin Pitch Deck — Final v3 (10-slide rebuild, May 2026)"
