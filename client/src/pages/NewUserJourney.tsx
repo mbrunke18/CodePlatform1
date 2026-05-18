@@ -402,7 +402,7 @@ export default function NewUserJourney() {
         </div>
       </div>
 
-      <div className="pt-32 pb-32 px-4 sm:px-6">
+      <div className="pt-32 pb-44 sm:pb-28 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -1260,7 +1260,7 @@ export default function NewUserJourney() {
       </div>
 
       <div className="fixed bottom-0 left-0 right-0 bg-white backdrop-blur-sm border-t border-gray-200 px-4 py-3">
-        <div className="max-w-4xl mx-auto flex items-center justify-between flex-wrap gap-y-2">
+        <div className="max-w-4xl mx-auto flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           {state.step !== 7 ? (
             <Button
               variant="ghost"

@@ -164,14 +164,34 @@ export function GuestPreviewBanner() {
   const domainCount = liveCtx?.domainsActive?.length ?? 0;
 
   return (
-    <div style={{
+    <>
+    <style>{`
+      @media (max-width: 768px) {
+        .guest-banner-shell { padding: 8px 12px !important; flex-direction: column !important; align-items: stretch !important; }
+        .guest-banner-left { width: 100% !important; min-width: 0 !important; }
+        .guest-banner-right {
+          width: 100% !important;
+          display: grid !important;
+          grid-template-columns: 1fr !important;
+          gap: 6px !important;
+          flex-shrink: unset !important;
+        }
+        .guest-banner-right a,
+        .guest-banner-right button:not([aria-label="Dismiss"]) {
+          width: 100% !important;
+          text-align: center !important;
+          box-sizing: border-box !important;
+        }
+      }
+    `}</style>
+    <div className="guest-banner-shell" style={{
       background: NAVY, borderBottom: `2px solid ${GOLD}`,
       padding: '10px 24px', display: 'flex', alignItems: 'center',
       justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' as const,
       zIndex: 50, position: 'relative' as const,
     }}>
       {/* Left — live monitor status */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0, flex: 1 }}>
+      <div className="guest-banner-left" style={{ display: 'flex', alignItems: 'center', gap: 14, minWidth: 0, flex: 1 }}>
         {/* Pulsing dot */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
           <span style={{
@@ -228,7 +248,7 @@ export function GuestPreviewBanner() {
       </div>
 
       {/* Right — CTAs */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+      <div className="guest-banner-right" style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         <a href="/12-minute-experience" style={{
           fontFamily: "'Barlow', sans-serif", fontSize: 12, fontWeight: 700,
           letterSpacing: '0.08em', textTransform: 'uppercase' as const,
@@ -253,5 +273,6 @@ export function GuestPreviewBanner() {
         </button>
       </div>
     </div>
+    </>
   );
 }

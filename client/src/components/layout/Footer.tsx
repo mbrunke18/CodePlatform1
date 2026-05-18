@@ -170,7 +170,7 @@ export default function Footer() {
                 © {new Date().getFullYear()} VaughnMartin — Readiness OS
               </p>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
               <a 
                 href="https://www.vaughnmartin.com"
                 target="_blank"

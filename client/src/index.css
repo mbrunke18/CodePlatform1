@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html, body, #root {
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -1560,6 +1560,11 @@ html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
   .hiw-responsive-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
+  }
+
+  /* ── Homepage: collapse scenario grid to single column ─────────────────────── */
+  .hp-scenario-grid {
+    grid-template-columns: 1fr !important;
   }
 
   /* Hide the right Live Signal Feed panel on mobile — not scannable at this width */

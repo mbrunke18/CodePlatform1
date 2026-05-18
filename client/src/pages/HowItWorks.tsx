@@ -78,16 +78,12 @@ export default function HowItWorks() {
             Five stages of organizational advantage. Most teams don't fail because they can't act — they fail because they see the signal too late. This platform starts before the trigger fires: define your triggers on your terms, detect earlier, decide with authority, execute in minutes, improve every cycle.
           </p>
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <Link href="/founding-partner-program">
-              <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "none" }}>
-                Apply for Founding Partner Access
-              </Button>
-            </Link>
-            <Link href="/try-demo">
-              <Button style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "1.5px solid rgba(255,255,255,0.3)" }}>
-                See a Live Demo
-              </Button>
-            </Link>
+            <Button asChild style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "none" }}>
+              <Link href="/founding-partner-program">Apply for Founding Partner Access</Link>
+            </Button>
+            <Button asChild style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "13px 32px", border: "1.5px solid rgba(255,255,255,0.3)" }}>
+              <Link href="/try-demo">See a Live Demo</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -716,21 +712,15 @@ export default function HowItWorks() {
             Stop improvising. Start executing. The infrastructure is ready — with 170 playbooks, AI signal monitoring, and execution already staged before the moment arrives.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/founding-partner-program">
-              <Button style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "none" }}>
-                Apply for Founding Partner Access
-              </Button>
-            </Link>
-            <Link href="/12-minute-experience">
-              <Button style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.25)" }}>
-                Experience 12-Min Execution
-              </Button>
-            </Link>
-            <Link href="/simulation-studio">
-              <Button style={{ background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.12)" }}>
-                Run a Dry-Run
-              </Button>
-            </Link>
+            <Button asChild style={{ background: GOLD, color: NAVY, fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "none" }}>
+              <Link href="/founding-partner-program">Apply for Founding Partner Access</Link>
+            </Button>
+            <Button asChild style={{ background: "transparent", color: "#fff", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.25)" }}>
+              <Link href="/12-minute-experience">Experience 12-Min Execution</Link>
+            </Button>
+            <Button asChild style={{ background: "transparent", color: "rgba(255,255,255,0.65)", fontWeight: 700, fontSize: 10, letterSpacing: "0.15em", textTransform: "uppercase", padding: "14px 36px", border: "1.5px solid rgba(255,255,255,0.12)" }}>
+              <Link href="/simulation-studio">Run a Dry-Run</Link>
+            </Button>
           </div>
         </div>
       </section>

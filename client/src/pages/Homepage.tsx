@@ -45,7 +45,7 @@ const SECTION_DARK_BG: React.CSSProperties = {
 
 const GEO: React.CSSProperties = { fontFamily: "Georgia, 'Times New Roman', serif" };
 const DM: React.CSSProperties  = { fontFamily: "'Barlow', 'Barlow', sans-serif" };
-const CONTAINER: React.CSSProperties = { maxWidth: 1280, margin: "0 auto", padding: "0 32px" };
+const CONTAINER: React.CSSProperties = { maxWidth: 1280, margin: "0 auto", padding: "0 32px", boxSizing: "border-box" as const };
 
 function trackCTA(loc: string) {
   try {
