@@ -1088,9 +1088,15 @@ function ProblemSection() {
   const RED_BORDER = "#C0392B";
   const cards = [
     {
-      num: "01", title: "The Trigger Fires", time: "T+0",
-      timeLabel: "Seconds",
-      body: "A competitor cuts prices. A regulator issues a mandate. A key executive resigns. The strategic moment is NOW — and it won't wait.",
+      num: "00", title: "You Find Out Too Late", time: "T+Unknown",
+      timeLabel: "Already Behind",
+      body: "A competitor filed. A regulator moved. A market window opened. Your organization finds out from a news headline, a public announcement, a filing you weren't watching. The trigger fired days or weeks ago — before your monitoring caught it.",
+      accent: RED_BORDER, terminal: false,
+    },
+    {
+      num: "01", title: "The Trigger Fires — Without Warning", time: "T+0",
+      timeLabel: "Missed",
+      body: "Because no one defined what to watch for, in which domains, at what thresholds. No triggers are configured. No alerts are staged. The moment arrives — and the organization is already reacting to yesterday's signal.",
       accent: GOLD, terminal: false,
     },
     {
@@ -1100,13 +1106,7 @@ function ProblemSection() {
       accent: GOLD, terminal: false,
     },
     {
-      num: "03", title: "Execution Takes Weeks to Begin", time: "T+3 weeks",
-      timeLabel: "Weeks Lost",
-      body: "Roles assigned manually. Documents drafted from scratch. Budgets negotiated. Tasks staged one by one. Weeks pass before a single coordinated action lands.",
-      accent: RED_BORDER, terminal: false,
-    },
-    {
-      num: "04", title: "The Window Has Already Closed", time: "T+∞",
+      num: "03", title: "The Window Has Already Closed", time: "T+∞",
       timeLabel: "Advantage Gone",
       body: "Competitors responded weeks ago. The market moved. The board is asking questions. The opportunity — or the crisis — has already been decided. Without you.",
       accent: RED_BORDER, terminal: true,
@@ -1123,15 +1123,15 @@ function ProblemSection() {
           <Reveal style={{ flex: "0 0 calc(50% - 30px)", maxWidth: "50%" }}>
             <SectionLabel>THE PROBLEM</SectionLabel>
             <p style={{ ...GEO, fontSize: 22, fontWeight: 600, fontStyle: "italic", color: GOLD, marginBottom: 18, lineHeight: 1.3 }}>
-              Your strategy isn't failing. Your mobilization is.
+              Your strategy isn't failing. Your detection and mobilization are.
             </p>
             <h2 style={{ ...GEO, fontSize: 38, fontWeight: 700, color: "#0A0F2E", lineHeight: 1.2, marginBottom: 32 }}>
-              The trigger fires in seconds.
+              Most organizations find out
               <br />
-              Execution begins weeks later.
+              after it's already too late.
             </h2>
             <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 24 }}>
-              It doesn't matter what kind of trigger it is — a cybersecurity breach, a competitor acquisition, a regulatory mandate, a market shift. The strategic moment arrives instantly and demands an immediate, coordinated response.
+              The trigger doesn't announce itself. A competitor files quietly. A regulator moves before the press release. A market window opens — and closes — while your organization is watching the wrong signals, or none at all. You find out from the news. By then, you're already behind.
             </p>
 
             {/* Trigger category tags — condensed */}
@@ -1160,16 +1160,20 @@ function ProblemSection() {
               </div>
             </div>
 
-            <p style={{ ...DM, fontSize: 17, color: "#333", lineHeight: 1.7, marginBottom: 28 }}>
-              Yet every time, your organization spends weeks in alignment meetings before a single coordinated action is taken. By the time execution begins, the window has already moved.
-            </p>
-
-            {/* Mobilization Gap callout */}
-            <div style={{ background: "rgba(10,15,46,0.04)", borderLeft: `3px solid ${GOLD}`, padding: "16px 20px", marginBottom: 28 }}>
-              <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, marginBottom: 6 }}>The Mobilization Gap</div>
-              <p style={{ ...DM, fontSize: 14, color: "#333", lineHeight: 1.65, margin: 0 }}>
-                The space between <em>"we know"</em> and <em>"we are executing"</em> — where competitive windows open and close uncontested. It exists for crises. It exists for growth. It costs enterprises <strong>$50M–$500M per trigger event.</strong>
-              </p>
+            {/* Detection Gap + Mobilization Gap callouts */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
+              <div style={{ background: "rgba(192,57,43,0.04)", borderLeft: `3px solid ${RED_BORDER}`, padding: "14px 18px" }}>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: RED_BORDER, marginBottom: 5 }}>The Detection Gap</div>
+                <p style={{ ...DM, fontSize: 13, color: "#444", lineHeight: 1.6, margin: 0 }}>
+                  The space between <em>"it happened"</em> and <em>"we know."</em> Most organizations have no defined triggers, no continuous monitoring, no alert thresholds — so they find out from public sources, on someone else's timeline.
+                </p>
+              </div>
+              <div style={{ background: "rgba(10,15,46,0.04)", borderLeft: `3px solid ${GOLD}`, padding: "14px 18px" }}>
+                <div style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: GOLD, marginBottom: 5 }}>The Mobilization Gap</div>
+                <p style={{ ...DM, fontSize: 13, color: "#444", lineHeight: 1.6, margin: 0 }}>
+                  The space between <em>"we know"</em> and <em>"we are executing."</em> Weeks of alignment meetings before a single coordinated action — while the window closes. <strong>$50M–$500M per trigger event.</strong>
+                </p>
+              </div>
             </div>
 
             {/* Timeline contrast callout */}
@@ -1178,10 +1182,10 @@ function ProblemSection() {
                 Without Readiness OS
               </div>
               {[
-                { label: "Trigger detected",    val: "Instantly" },
-                { label: "Leadership aligned",    val: "2–4 weeks" },
-                { label: "Execution begins",     val: "3–4 weeks" },
-                { label: "Competitive window",   val: "Closed" },
+                { label: "Alert received",        val: "Days or weeks later" },
+                { label: "Leadership aligned",    val: "2–4 weeks after" },
+                { label: "Execution begins",      val: "3–4 weeks after" },
+                { label: "Competitive window",    val: "Closed" },
               ].map((row) => (
                 <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: 10, marginBottom: 10, borderBottom: `1px solid ${BORDER}` }}>
                   <span style={{ ...DM, fontSize: 14, color: "#555" }}>{row.label}</span>
@@ -2735,14 +2739,14 @@ function LifecycleAdvantageSection() {
   const stages = [
     {
       num: "01", stage: "MAP",
-      label: "See every situation before it arrives",
-      body: "Build your complete situation universe — every scenario you have faced, are facing, and may face. 221 trigger patterns catalogued across 9 strategic domains. Nothing arrives as a surprise.",
+      label: "Define every trigger — on your terms",
+      body: "You decide what you're watching for. 221 trigger patterns across 9 strategic domains, catalogued on your thresholds, in your categories. Not someone else's alert. Yours — configured before the event, not discovered after it.",
       accent: GOLD,
     },
     {
       num: "02", stage: "MONITOR",
-      label: "Know the moment something matters",
-      body: "Continuous signal detection across 248+ data points, every 15 minutes. The right intelligence mapped to the right Readiness Protocol — before the trigger escalates to a crisis.",
+      label: "Alerted before it becomes public",
+      body: "248+ data points scanned every 15 minutes. You're alerted at the earliest signal — before the announcement, before the filing goes public, before competitors know. Not from a news headline. From your own defined triggers, firing on your timeline.",
       accent: TEAL,
     },
     {
