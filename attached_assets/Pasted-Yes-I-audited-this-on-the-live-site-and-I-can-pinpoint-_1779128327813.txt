@@ -1,0 +1,61 @@
+Yes — I audited this on the live site, and I can pinpoint the problem spots.
+
+What I found (live mobile audit @ 390px width)
+1) Real text overlap
+Route: /new-user-journey
+
+The intro paragraph and bottom fixed action bar overlap.
+Measured boxes:
+Paragraph: x=24, y=677, w=342, h=162 (bottom 839.5)
+“Continue to Your Organization” button: x=121, y=784, w=346, h=44 (right 467)
+So the fixed footer intrudes into body copy and extends off-screen to the right.
+2) Global horizontal overflow (this is the “half page/copy-paste” feel)
+Across key pages, mobile scrollWidth is ~698 while viewport is 390:
+
+/
+/how-it-works
+/getting-started
+/onboarding
+/new-user-journey
+/buyer-decision-packet
+/investor-landing
+/founding-partner-program
+That means many sections are wider than screen and can render clipped/off-canvas.
+
+3) Off-canvas text/content examples
+Homepage (/)
+
+Hero text/CTAs are rendered at x=52, w=366 => right edge 418 (>390), so clipped.
+Top row actions also exist off-canvas (right up to ~698).
+How It Works (/how-it-works)
+
+Multiple explanatory text blocks are positioned beyond mobile viewport (right 435–517+), indicating desktop layout not fully collapsed on mobile.
+4) Logo usage issue (your exact concern is valid)
+It currently reads visually like repeated copy/paste because:
+
+You use brand lockup in header, a large crest block in hero, and another full lockup in footer (often in same scroll context).
+On mobile, the large hero crest treatment is too dominant relative to surrounding content.
+Combined with horizontal overflow, it creates the “half page still in frame” feel.
+Code-level hotspots (where this comes from)
+client/src/pages/Homepage.tsx
+Hero grid + hero left spacing (gridTemplateColumns + large fixed paddings)
+Large crest usage (<VaughnMartinLogo variant="icon-only" height={300} ... />)
+client/src/pages/NewUserJourney.tsx
+Fixed bottom bar (fixed bottom-0 ...) without enough content bottom clearance; oversized CTA row on small screens
+client/src/pages/HowItWorks.tsx
+Large fixed horizontal paddings (56px) across sections on mobile
+Also invalid nested CTA structure (Link wrapping Button) contributes to overlap semantics
+Fastest fixes before Wednesday (priority order)
+Kill horizontal overflow globally
+Ensure mobile layouts don’t exceed viewport; as immediate guard: overflow-x: hidden at root.
+Fix New User Journey footer bar
+Add bottom-safe padding to content container.
+Make CTA row fully mobile-constrained (w-full, no overflow).
+Reduce mobile hero paddings
+Replace fixed 56px with responsive 16–24px.
+Simplify logo system
+Header: full lockup
+Hero: icon-only (smaller)
+Footer: text-only or compact lockup
+Avoid repeating motto badge large in multiple places on same page.
+Collapse/stack wide desktop sections on mobile in homepage/how-it-works.

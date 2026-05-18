@@ -65,7 +65,7 @@ export default function HowItWorks() {
     <PageLayout>
 
       {/* ── HERO ── */}
-      <section style={{ background: NAVY_BG, minHeight: "56vh", display: "flex", alignItems: "center", padding: "120px 56px 80px", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: NAVY_BG, minHeight: "56vh", display: "flex", alignItems: "center", padding: "clamp(60px, 10vw, 120px) clamp(16px, 4vw, 56px) 80px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}17 1px, transparent 1px), linear-gradient(90deg, ${GOLD}17 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "10%", right: "-10%", width: 700, height: 700, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}38 0%, transparent 70%)`, pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-15%", left: "5%", width: 600, height: 600, borderRadius: 0, background: `radial-gradient(circle, ${GOLD}28 0%, transparent 70%)`, pointerEvents: "none" }} />
@@ -112,7 +112,7 @@ export default function HowItWorks() {
       </div>
 
       {/* ── 5-STAGE ADVANTAGE OVERVIEW ── */}
-      <section style={{ background: NAVY_BG, padding: "72px 56px 80px", borderBottom: `1px solid rgba(255,255,255,0.07)` }}>
+      <section style={{ background: NAVY_BG, padding: "72px clamp(16px, 4vw, 56px) 80px", borderBottom: `1px solid rgba(255,255,255,0.07)` }}>
         <div className="max-w-6xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <SectionLabel text="End-to-End Advantage" color={GOLD_LIGHT} />
@@ -124,7 +124,7 @@ export default function HowItWorks() {
               Each stage of the advantage lifecycle is detailed below. The setup phases on this page map directly to how you activate all five.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(255,255,255,0.05)" }}>
             {[
               { num: "01", stage: "MAP", label: "Situation Universe", body: "You define what you're watching for — 221 trigger patterns, your thresholds, your categories, your escalation paths. Not someone else's alert list. Detection on your terms, reducing missed/late detection risk by design.", accent: GOLD },
               { num: "02", stage: "MONITOR", label: "Signal Detection", body: "248+ data points scanned every 15 minutes. Alerted at the earliest signal — before the announcement, before the filing goes public. Detect earlier, decide on your terms.", accent: TEAL },
@@ -143,7 +143,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
-      <section style={{ background: OFF, padding: "80px 56px 100px", borderBottom: `1px solid ${BORDER}` }}>
+      <section style={{ background: OFF, padding: "80px clamp(16px, 4vw, 56px) 100px", borderBottom: `1px solid ${BORDER}` }}>
         <div className="max-w-7xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <SectionLabel text="The Complete Execution Sequence" />
@@ -159,7 +159,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── 01: ONBOARDING ── */}
-      <section style={{ background: "#fff", padding: "100px 56px" }}>
+      <section style={{ background: "#fff", padding: "100px clamp(16px, 4vw, 56px)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="01 — Setup & Onboarding" color={TEAL} />
           <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 16, maxWidth: 600 }}>
@@ -169,7 +169,7 @@ export default function HowItWorks() {
             When your organization logs in for the first time, the platform automatically creates your workspace and walks you through a structured Strategic Foundation setup. No IT ticket, no manual provisioning.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
             {[
               {
                 step: "Step 1",
@@ -225,10 +225,10 @@ export default function HowItWorks() {
       </section>
 
       {/* ── 02: THE 170 Readiness Protocols ── */}
-      <section style={{ background: OFF, padding: "100px 56px" }}>
+      <section style={{ background: OFF, padding: "100px clamp(16px, 4vw, 56px)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="02 — Your Readiness Protocol Foundation" color={GOLD} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24 }}>
                 170 Battle-Tested Readiness Protocols — Ready on Day One
@@ -268,12 +268,12 @@ export default function HowItWorks() {
       </section>
 
       {/* ── 03: CUSTOMIZATION ── */}
-      <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: NAVY_BG, padding: "100px clamp(16px, 4vw, 56px)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", top: "-20%", right: "-5%", width: 800, height: 800, borderRadius: 0, background: `radial-gradient(circle, ${TEAL}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           <SectionLabel text="03 — Readiness Protocol Customization" color={GOLD_LIGHT} />
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 64 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginBottom: 64 }}>
             <div>
               <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: "#fff", marginBottom: 24 }}>
                 Start with the 170. Make It Yours.
@@ -293,7 +293,7 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 2 }}>
             {[
               {
                 phase: "PREPARE",
@@ -357,7 +357,7 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          <div style={{ marginTop: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+          <div className="hiw-responsive-grid" style={{ marginTop: 40, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", padding: "32px 36px", display: "flex", alignItems: "flex-start", gap: 20 }}>
               <div style={{ width: 44, height: 44, background: "rgba(201,168,76,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                 <PenLine style={{ width: 18, height: 18, color: GOLD_LIGHT }} />
@@ -385,7 +385,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── 04: THE LIVE LOOP ── */}
-      <section style={{ background: "#fff", padding: "100px 56px" }}>
+      <section style={{ background: "#fff", padding: "100px clamp(16px, 4vw, 56px)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="04 — The Live Value Loop" color={TEAL} />
           <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24, maxWidth: 560 }}>
@@ -395,7 +395,7 @@ export default function HowItWorks() {
             The platform doesn't wait for you to log in. The IDEA Framework runs as a continuous operating loop — monitoring, detecting, coordinating, and learning — every day.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
             {[
               {
                 letter: "I",
@@ -447,7 +447,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── 12-MINUTE TIMELINE ── */}
-      <section style={{ background: NAVY, padding: "100px 56px" }}>
+      <section style={{ background: NAVY, padding: "100px clamp(16px, 4vw, 56px)" }}>
         <div className="max-w-4xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 72 }}>
             <SectionLabel text="The 12-Minute Proof Point" />
@@ -478,7 +478,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── 05: ONGOING VALUE ── */}
-      <section style={{ background: OFF, padding: "100px 56px" }}>
+      <section style={{ background: OFF, padding: "100px clamp(16px, 4vw, 56px)" }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="05 — Ongoing Value" color={GOLD} />
           <h2 style={{ ...CG, fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 600, color: NAVY, marginBottom: 24, maxWidth: 540 }}>
@@ -488,7 +488,7 @@ export default function HowItWorks() {
             The platform doesn't just respond to today's events. It learns from them. Every execution builds institutional knowledge that makes the next response faster, smarter, and better coordinated.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 2 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 2 }}>
             {[
               {
                 icon: RefreshCw,
@@ -519,7 +519,7 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             <div style={{ background: "#fff", border: `1px solid ${BORDER}`, padding: "40px 36px" }}>
               <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: TEAL, marginBottom: 16 }}>Institutional Memory</div>
               <div style={{ fontSize: 15, fontWeight: 700, color: NAVY, marginBottom: 12 }}>Lessons Become the Next Readiness Protocol</div>
@@ -545,7 +545,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── EXECUTION INTELLIGENCE — BUILT IN ── */}
-      <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: NAVY_BG, padding: "100px clamp(16px, 4vw, 56px)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(201,168,76,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.07) 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
         <div className="max-w-6xl mx-auto relative z-10">
           <SectionLabel text="Built-In Intelligence" color={GOLD} />
@@ -558,7 +558,7 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
             {[
               {
                 label: "ADVANCE WORKSPACE",
@@ -619,7 +619,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── WHAT YOU CAN CUSTOMIZE ── */}
-      <section style={{ background: "#fff", padding: "100px 56px", borderTop: `1px solid ${BORDER}` }}>
+      <section style={{ background: "#fff", padding: "100px clamp(16px, 4vw, 56px)", borderTop: `1px solid ${BORDER}` }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="Customization Summary" color={TEAL} />
           <h2 style={{ ...CG, fontSize: "clamp(28px, 3.5vw, 44px)", fontWeight: 600, color: NAVY, marginBottom: 16, maxWidth: 520 }}>
@@ -628,7 +628,7 @@ export default function HowItWorks() {
           <p style={{ fontSize: 15, color: "rgba(10,15,46,0.62)", maxWidth: 540, lineHeight: 1.7, marginBottom: 56, fontWeight: 500 }}>
             Everything in the platform is configurable. Here's what you control and how deep it goes.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, border: `1px solid ${BORDER}` }}>
+          <div className="hiw-responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, border: `1px solid ${BORDER}` }}>
             {[
               {
                 num: "01",
@@ -690,7 +690,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── ENTERPRISE AI FRAMEWORK DIAGRAM ── */}
-      <section style={{ background: "#F8F7F4", padding: "80px 56px", borderTop: `1px solid ${BORDER}` }}>
+      <section style={{ background: "#F8F7F4", padding: "80px clamp(16px, 4vw, 56px)", borderTop: `1px solid ${BORDER}` }}>
         <div className="max-w-6xl mx-auto">
           <SectionLabel text="Where This Fits — Enterprise Architecture" color={TEAL} />
           <h2 style={{ ...CG, fontSize: "clamp(26px,3.5vw,40px)", fontWeight: 600, color: NAVY, marginBottom: 12, maxWidth: 560 }}>
@@ -704,7 +704,7 @@ export default function HowItWorks() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section style={{ background: NAVY_BG, padding: "100px 56px", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: NAVY_BG, padding: "100px clamp(16px, 4vw, 56px)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: `linear-gradient(${GOLD}0F 1px, transparent 1px), linear-gradient(90deg, ${GOLD}0F 1px, transparent 1px)`, backgroundSize: "48px 48px", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "-20%", right: "-5%", width: 700, height: 700, borderRadius: 0, background: `radial-gradient(circle, ${GOLD}1C 0%, transparent 65%)`, pointerEvents: "none" }} />
         <div className="max-w-4xl mx-auto" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>

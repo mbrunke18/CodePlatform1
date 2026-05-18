@@ -402,7 +402,7 @@ export default function NewUserJourney() {
         </div>
       </div>
 
-      <div className="pt-32 pb-24 px-6">
+      <div className="pt-32 pb-32 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
@@ -1259,8 +1259,8 @@ export default function NewUserJourney() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-white backdrop-blur-sm border-t border-gray-200 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
+      <div className="fixed bottom-0 left-0 right-0 bg-white backdrop-blur-sm border-t border-gray-200 px-4 py-3">
+        <div className="max-w-4xl mx-auto flex items-center justify-between flex-wrap gap-y-2">
           {state.step !== 7 ? (
             <Button
               variant="ghost"
@@ -1278,14 +1278,14 @@ export default function NewUserJourney() {
             </div>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 flex-wrap">
             {state.step === 7 ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 flex-wrap">
                 <Button
                   size="lg"
                   variant="outline"
                   onClick={goToCommandCenter}
-                  className="border-[#0A0F2E]/50 text-[#0A0F2E] hover:bg-[#0A0F2E]/10 min-w-[180px]"
+                  className="border-[#0A0F2E]/50 text-[#0A0F2E] hover:bg-[#0A0F2E]/10"
                   data-testid="button-command-center"
                 >
                   <Radio className="h-4 w-4 mr-2" />
@@ -1294,7 +1294,7 @@ export default function NewUserJourney() {
                 <Button
                   size="lg"
                   onClick={handleNext}
-                  className="bg-[#2B8A6E] hover:bg-[#256B56] min-w-[220px] rounded-none font-bold uppercase tracking-widest text-xs"
+                  className="bg-[#2B8A6E] hover:bg-[#256B56] rounded-none font-bold uppercase tracking-widest text-xs"
                   data-testid="button-enter-platform"
                 >
                   <Rocket className="h-4 w-4 mr-2" />
@@ -1307,7 +1307,7 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed() || completeJourneyMutation.isPending}
-                className="bg-[#2B8A6E] hover:bg-[#256B56] min-w-[200px] rounded-none font-bold uppercase tracking-widest text-xs"
+                className="bg-[#2B8A6E] hover:bg-[#256B56] rounded-none font-bold uppercase tracking-widest text-xs"
                 data-testid="button-complete"
               >
                 {completeJourneyMutation.isPending ? (
@@ -1327,7 +1327,7 @@ export default function NewUserJourney() {
                 size="lg"
                 onClick={handleNext}
                 disabled={!canProceed()}
-                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white min-w-[160px] rounded-none font-bold uppercase tracking-widest text-xs"
+                className="bg-[#0A0F2E] hover:bg-[#141B45] text-white rounded-none font-bold uppercase tracking-widest text-xs"
                 data-testid="button-next"
               >
                 {state.step < STEPS.length - 2

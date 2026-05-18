@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 :root {
   /* ===== EXECUTION OS BRAND COLORS ===== */
   --exos-midnight: #0A0F2E;
@@ -1548,7 +1553,13 @@ html:not(.dark) .text-muted-foreground { color: #4B5563 !important; }
 
   /* Hero left column: reduce padding, full width */
   .hp-hero-left {
-    padding: 56px 24px 40px !important;
+    padding: 24px 20px 40px !important;
+  }
+
+  /* ── HowItWorks: collapse multi-column grids to single column ─────────────── */
+  .hiw-responsive-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
   /* Hide the right Live Signal Feed panel on mobile — not scannable at this width */

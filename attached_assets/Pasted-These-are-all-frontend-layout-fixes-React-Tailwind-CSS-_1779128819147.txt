@@ -1,0 +1,134 @@
+These are all frontend layout fixes (React/Tailwind/CSS), no backend dependency.
+
+Here’s a surgical Replit patch pack you can hand to Claude/dev:
+
+1) Kill horizontal overflow globally (highest priority)
+File: client/src/index.css
+Add near global styles:
+
+html, body, #root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+2) Fix top guest strip causing off-canvas nav/CTA overflow
+File: client/src/components/GuestPreviewBanner.tsx
+
+Problem: CTA row is fixed-width nowrap on mobile (See It Execute, Request Founding Partner, Executive Sign-In) and pushes page to ~698px wide.
+
+Patch intent
+Stack CTAs on mobile
+Keep inline row on desktop
+Implementation
+Add classes to outer wrapper and CTA container, then add responsive style block:
+
+<div className="guest-banner-shell" ...>
+  <div className="guest-banner-left" ...>...</div>
+  <div className="guest-banner-right" ...>...</div>
+</div>
+<style>{`
+@media (max-width: 768px) {
+  .guest-banner-shell { padding: 8px 12px !important; }
+  .guest-banner-left { width: 100% !important; min-width: 0 !important; }
+  .guest-banner-right {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+  .guest-banner-right a,
+  .guest-banner-right button {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+`}</style>
+3) Fix homepage hero width overflow + logo weight
+File: client/src/pages/Homepage.tsx
+
+A) Prevent padded container from exceeding viewport
+Update CONTAINER constant to include border-box:
+
+const CONTAINER: React.CSSProperties = {
+  maxWidth: 1280,
+  margin: "0 auto",
+  padding: "0 32px",
+  boxSizing: "border-box",
+};
+And remove unnecessary width: "100%" where ...CONTAINER is already applied.
+
+B) Make hero responsive on mobile
+In existing <style> block add:
+
+@media (max-width: 768px) {
+  .hp-hero-left { padding: 56px 0 40px 0 !important; }
+  .hp-scenario-grid { grid-template-columns: 1fr !important; }
+}
+C) Reduce logo “copy/paste” feel
+Current hero uses a very large crest + extra motto block.
+Keep one dominant mark only on mobile:
+
+reduce icon size (e.g. 300 -> 180 on mobile)
+remove or shrink duplicate motto block beneath crest in hero
+4) Fix real text overlap in onboarding journey
+File: client/src/pages/NewUserJourney.tsx
+
+Problem confirmed: fixed bottom nav overlaps intro paragraph and CTA spills right.
+
+A) Add more bottom space to content area
+Change:
+
+<div className="pt-32 pb-24 px-6">
+to:
+
+<div className="pt-32 pb-44 sm:pb-28 px-4 sm:px-6">
+B) Make fixed footer responsive
+Change footer layout to stack on mobile:
+
+<div className="fixed bottom-0 left-0 right-0 ... px-4 sm:px-6 py-3 sm:py-4">
+  <div className="max-w-4xl mx-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+And for right-side buttons:
+
+use w-full sm:w-auto
+remove hard min-w on mobile (min-w-0 sm:min-w-[...])
+5) Fix invalid anchor/button nesting overlap (How It Works page)
+File: client/src/pages/HowItWorks.tsx
+
+Problem: Link wrapping Button creates nested interactive overlap artifacts.
+
+Replace:
+
+<Link href="/founding-partner-program">
+  <Button>...</Button>
+</Link>
+with shadcn pattern:
+
+<Button asChild ...>
+  <Link href="/founding-partner-program">...</Link>
+</Button>
+Also reduce mobile side padding globally for this page (56px is too wide for 390px).
+
+6) Fix footer off-canvas links on mobile
+File: client/src/components/layout/Footer.tsx
+
+Bottom-right link row overflows on mobile.
+
+Change row class from:
+
+<div className="flex items-center gap-6">
+to:
+
+<div className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
+7) Quick verification in Replit after patch
+Open mobile width (390px) and confirm:
+no horizontal scroll
+no clipped right-side text/buttons
+Check these routes:
+/
+/how-it-works
+/new-user-journey
+/getting-started
+/buyer-decision-packet
+Confirm logo hierarchy:
+header brand clear
+hero brand not oversized/duplicative
+footer brand clean and not crowded
