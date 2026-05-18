@@ -946,6 +946,20 @@ export default function StandardNav() {
                       <BarChart3 className="h-4 w-4 mr-2 opacity-50" />
                       Peer Review Report
                     </DropdownMenuItem>
+                    {(user.isPlatformAdmin || user.role === 'admin') && (
+                      <>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuLabel className="text-xs font-normal" style={{ color: '#9CA3AF', fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase' }}>Platform Admin</DropdownMenuLabel>
+                        <DropdownMenuItem onClick={() => navigateTo("/admin/users")} className="cursor-pointer" style={{ color: NAVY }}>
+                          <Shield className="h-4 w-4 mr-2 opacity-50" />
+                          User Management
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => navigateTo("/admin/customer-health")} className="cursor-pointer" style={{ color: NAVY }}>
+                          <BarChart3 className="h-4 w-4 mr-2 opacity-50" />
+                          Platform Health
+                        </DropdownMenuItem>
+                      </>
+                    )}
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={logout} className="cursor-pointer" style={{ color: '#DC2626' }} data-testid="nav-logout">
                       <LogOut className="h-4 w-4 mr-2" />

@@ -7,6 +7,7 @@ export interface AuthUser {
   lastName: string;
   profileImageUrl?: string;
   role?: string;
+  isPlatformAdmin?: boolean;
   initials: string;
   needsOnboarding: boolean;
   organizationId?: string;

@@ -9,6 +9,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import PageLayout from "@/components/layout/PageLayout";
+import Breadcrumb from "@/components/layout/Breadcrumb";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useRoute, useLocation } from "wouter";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
@@ -611,7 +612,15 @@ export default function ProtocolCustomize() {
     <PageLayout>
       
       <div className="bg-[#0A0F2E] border-b border-[#E8E4DC]">
-        <div className="max-w-[1600px] mx-auto px-6 py-12">
+        <div className="max-w-[1600px] mx-auto px-6 pt-6 pb-12">
+          <Breadcrumb
+            inverted
+            items={[
+              { label: 'Protocols', href: '/playbooks' },
+              ...(isCreateMode ? [] : [{ label: template?.name || 'Protocol', href: `/playbooks/${playbookId}` }]),
+              { label: isCreateMode ? 'New Protocol' : 'Configure' },
+            ]}
+          />
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-center gap-6">
               <div>

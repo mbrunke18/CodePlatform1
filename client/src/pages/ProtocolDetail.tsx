@@ -53,6 +53,7 @@ import {
 import { apiRequest, queryClient } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layout/PageLayout';
+import Breadcrumb from '@/components/layout/Breadcrumb';
 import { ExecutionStageGuide } from '@/components/ExecutionStageGuide';
 import { useAuth } from '@/hooks/useAuth';
 import { PhaseProgressBar } from '@/components/protocol/PhaseProgressBar';
@@ -490,6 +491,13 @@ export default function ProtocolDetail() {
       <ExecutionStageGuide variant="compact" />
       <div style={{ background: OFF, minHeight: "100vh" }}>
         <div className="container mx-auto px-6 py-12 space-y-8" data-testid="Readiness Protocol-detail-page">
+            <Breadcrumb
+            items={[
+              { label: 'Protocols', href: '/playbooks' },
+              { label: playbook.name },
+            ]}
+          />
+
           <div className="flex items-center justify-between">
             <Button variant="ghost" size="sm" asChild data-testid="button-back" style={{ color: NAVY }}>
               <Link href="/playbook-library">
@@ -500,10 +508,22 @@ export default function ProtocolDetail() {
             <div className="flex gap-3">
               <Button
                 onClick={() => setLocation(`/playbooks/${id}/customize`)}
+                variant="outline"
+                size="sm"
                 style={{ border: `1.5px solid ${BORDER}`, color: NAVY, background: "transparent", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em" }}
               >
                 <Settings className="h-4 w-4 mr-2" />
                 Customize
+              </Button>
+              <Button
+                onClick={() => setLocation(`/playbook-command/${id}`)}
+                size="sm"
+                style={{ background: GOLD, color: NAVY, fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", border: 'none' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = '#DFC178'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = GOLD; }}
+              >
+                <Play className="h-3.5 w-3.5 mr-2" />
+                Activate Protocol
               </Button>
             </div>
           </div>

@@ -2039,9 +2039,12 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
       const orgs = await storage.getUserOrganizations(user.id);
       const needsOnboarding = orgs.length > 0 ? !orgs[0].onboardingCompleted : true;
 
+      const isPlatformAdmin = !!(process.env.PLATFORM_ADMIN_EMAIL && user.email === process.env.PLATFORM_ADMIN_EMAIL);
+
       res.json({
         ...user,
         role,
+        isPlatformAdmin,
         initials: `${user.firstName?.[0] || ''}${user.lastName?.[0] || ''}`.toUpperCase(),
         needsOnboarding
       });

@@ -2,6 +2,7 @@ import { useParams, useLocation } from "wouter";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import PageLayout from "@/components/layout/PageLayout";
+import Breadcrumb from "@/components/layout/Breadcrumb";
 import { useCustomer } from "@/contexts/CustomerContext";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -113,6 +114,13 @@ export default function ProtocolCommand() {
     <PageLayout>
 
       <main className="max-w-4xl mx-auto px-6 py-16">
+          <Breadcrumb
+            items={[
+              { label: 'Protocols', href: '/playbooks' },
+              { label: playbook.name, href: `/playbooks/${id}` },
+              { label: 'Activate' },
+            ]}
+          />
           <Button 
             variant="ghost" 
             className="mb-6 hover:bg-transparent hover:text-[#0A0F2E]"
