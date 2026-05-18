@@ -1,5 +1,5 @@
 # VaughnMartin Readiness OS — Developer Reference
-*Last updated: May 18, 2026 (rev 38) | Single source of truth for engineers onboarding to or extending this codebase.*
+*Last updated: May 18, 2026 (rev 39) | Single source of truth for engineers onboarding to or extending this codebase.*
 
 ---
 
@@ -594,6 +594,36 @@ Maps UI filter button IDs to exact DB domain name strings. Update this if domain
 - No required props.
 - Mounted in: `client/src/pages/Dashboard.tsx`
 - Uses `api.askAI(query)` from `client/src/lib/api.ts` (that file exists — do not replace the import).
+
+### Onboarding Shared Components (`client/src/components/onboarding/`)
+
+Three purpose-built components added May 2026 (rev 39). Import from `@/components/onboarding/`.
+
+#### `OnboardingRail`
+- Location: `client/src/components/onboarding/OnboardingRail.tsx`
+- Props: `{ currentStage?: 1|2|3|4, showMissionCard?: boolean }`
+- Renders a 4-stage horizontal progress rail (Configure → Protocols → Signals → Ready) with gold/teal active/done states.
+- Also renders a **First-Success Mission Card** below the rail (4 tasks: select protocol, configure trigger, run drill, generate brief). Each task writes `vm_fc_<key> = 'true'` to `localStorage` on click. When all 4 are done, the card is replaced by a completion banner.
+- Set `showMissionCard={false}` to suppress the mission card (e.g. when the user is already live).
+- Currently injected in: `GettingStarted.tsx` (stage derived from `overallScore`).
+- **Do not** inject on public/unauthenticated pages — it calls `useLocation()` from wouter.
+
+#### `WhyThisMatters`
+- Location: `client/src/components/onboarding/WhyThisMatters.tsx`
+- Props: `{ eyebrow?, headline, body, metric?: { value, label }, dark?: boolean }`
+- A compact contextual panel with a teal left-border, eyebrow label, bold headline, and supporting body line. Optional metric stat block on the right.
+- `dark={true}` flips to a dark-mode variant (navy/teal) for use inside dark-background pages.
+- Currently injected in: `MissionControl.tsx` (after `<PageLayout>`), `ProtocolLibrary.tsx` (before the header block, wrapped in `{!embedded && (...)}`).
+- ProtocolBuilder already has an equivalent "Why this matters" block built into its sidebar — do not add a second one.
+
+#### `MicroHelp`
+- Location: `client/src/components/onboarding/MicroHelp.tsx`
+- Props: `{ trigger?: string, items: string[], variant?: 'warning' | 'tip' }`
+- An expandable accordion-style hint block. Click to reveal a bulleted list of common mistakes or tips.
+- `variant='warning'` → amber border/icon (default). `variant='tip'` → teal border/icon.
+- Currently injected in: `NewUserJourney.tsx` step 4 (signal config mistakes), `ProtocolBuilder.tsx` step 1 case 0 (trigger definition mistakes).
+
+---
 
 ### `PageLayout`
 - Location: `client/src/components/layout/PageLayout.tsx`
