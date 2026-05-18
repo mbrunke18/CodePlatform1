@@ -335,3 +335,27 @@ id = "YK7No8yT62B7HEXM7pAF8"
 uri = "file://attached_assets/VaughnMartin_Pitch_Deck_FINAL_v3_2026.pptx"
 type = "slides"
 title = "VaughnMartin Pitch Deck — Final v3 (10-slide rebuild, May 2026)"
+
+[[outputs]]
+id = "scYE2eKQ1_tq3JEJvGh2X"
+uri = "file://linkedin_assets/VaughnMartin_LinkedIn_Carousel.pdf"
+type = "pdf"
+title = "LinkedIn Carousel — 10 slides (upload as PDF post)"
+
+[[outputs]]
+id = "o6io2Qm9AYwDCXvdBoj2N"
+uri = "file://linkedin_assets/VaughnMartin_LinkedIn_Carousel_Slides.zip"
+type = "unspecified"
+title = "Carousel Slides — individual PNGs (1080×1080)"
+
+[[outputs]]
+id = "5qqoNR1BNnx-IbLpc79ra"
+uri = "file://linkedin_assets/products_tab_hero.png"
+type = "image"
+title = "LinkedIn Products Tab — Hero Image (1128×376)"
+
+[[outputs]]
+id = "2ZvU2bJulxmBQFlL6HWa_"
+uri = "file://linkedin_assets/product_logo_300x300.png"
+type = "image"
+title = "LinkedIn Products Tab — Product Logo (300×300)"
