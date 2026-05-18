@@ -1,0 +1,128 @@
+If HTML feedback is noisy, tell Replit to build the PPTX directly from a strict layout spec.
+
+Paste this into Replit AI exactly:
+
+
+Build a PowerPoint deck directly (not HTML) at:
+attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.pptx
+Use python-pptx.
+DECK REQUIREMENTS
+- 11 slides
+- 16:9 widescreen (13.333 x 7.5 in)
+- Theme colors:
+  Navy #0A0F2E
+  Navy2 #121D47
+  Gold #C9A84C
+  Teal #2B8A6E
+  Ivory #F0EDE4
+  White #FFFFFF
+- Font preference:
+  Barlow Condensed (fallback Arial Narrow / Calibri)
+- Reserve a “no content” zone for slide numbers:
+  x=12.0in to 13.2in, y=7.0in to 7.5in
+- Add gold top bar on each slide: height 0.06in
+- Add slide number bottom-right on each slide in muted gold
+IMAGE RULES (CRITICAL)
+- Use these images:
+  attached_assets/pitch-images-hd/home-raw.png
+  attached_assets/pitch-images-hd/signals-raw.png
+  attached_assets/pitch-images-hd/builder-raw.png
+- Never stretch images.
+- Maintain aspect ratio.
+- Crop/fill into frame (not fit with distortion).
+- Add subtle border and shadow where appropriate.
+SLIDE CONTENT + LAYOUT
+Slide 1 (Opening)
+- Centered headline:
+  “When a strategic trigger fires in your organization—are you executing in 12 minutes or organizing from scratch?”
+- Subline:
+  “Signal advantage before execution advantage.”
+- 3 chips:
+  Activist Investor · 91%
+  Ransomware · 95%
+  Regulatory Inquiry · 87%
+Slide 2 (Readiness Gap)
+- Split layout left/right.
+- Left: giant “30 DAYS” and line:
+  “That is mobilization time before execution begins.”
+- Right: readiness question line exactly:
+  “Who calls who? Where’s the brief? Who owns it? Who authorizes?”
+- Supporting bullets, concise.
+Slide 3 (Problem Is Here)
+- 3 scenario cards.
+- Each card has badge top-right (95/91/87).
+- Ensure badge does NOT overlap domain text.
+- Domains:
+  Risk & Resilience
+  Growth & Positioning
+  Regulatory
+- Add reserved space for badge in each card.
+Slide 4 (Solution)
+- Big centered line:
+  “The response is ready before the trigger fires.”
+- Secondary:
+  “AI monitors. Executives authorize.”
+- KPI trio:
+  170 protocols / 221 triggers / 12-minute window
+Slide 5 (Moat)
+- Two-column compare:
+  Old model vs VaughnMartin
+- Keep text short, punchy bullets only.
+- Include governance mention:
+  human authorization gate + audit trail.
+Slide 6 (Mic-drop Proof)
+- Title:
+  “From Signal to Authorized Execution in 12 Minutes”
+- Two product visuals side-by-side:
+  signals image + builder image
+- Bottom line:
+  “AI monitors. Executives authorize. Teams execute.”
+Slide 7 (Value / ROI)
+- Commercial clarity:
+  Founding Partner: $75K / 90-day validation
+  Growth: $75K–$250K annual
+- One line:
+  “Cost of delay is often higher than cost of readiness.”
+Slide 8 (Live Proof)
+- KPI strip:
+  170 protocols · 221 triggers · 248 data points · 15-minute refresh
+- Large live product image (signals or home), crisp.
+Slide 9 (Why Now)
+- Ivory/light background variant
+- 3 bullets:
+  AI capability accelerating
+  enterprise readiness lagging
+  governed execution now competitive edge
+- Source line:
+  Stanford HAI AI Index 2026 · Gartner Autonomous Business
+Slide 10 (Ask)
+- Must include:
+  12 Founding Partners
+  startup to Fortune 500 scope
+  clear next-step CTA
+- No placeholders, no bracket text.
+Slide 11 (Close)
+- Exactly 3 short lines:
+  Problem: Enterprises detect more signals but still mobilize too slowly.
+  Solution: VaughnMartin pre-stages response so executives authorize in minutes.
+  Outcome: Earlier detection + faster execution protects value before the window closes.
+- CTA:
+  vaughnmartin.com/founding-partner-program
+TEXT DENSITY RULES
+- Max ~55 words in body text per slide
+- No long paragraphs
+- Keep readability from distance
+QUALITY CHECKS BEFORE FINISH
+1) No element overlaps
+2) No text enters slide-number no-content zone
+3) No image distortion
+4) No placeholder text
+5) Consistent metrics and wording:
+   - startup to Fortune 500
+   - AI monitors, executives authorize
+   - 170 / 221 / 248 / 15 min / 12 min
+6) Save final pptx
+Return:
+- file path
+- per-slide summary of what was placed
+- list of any compromises made
