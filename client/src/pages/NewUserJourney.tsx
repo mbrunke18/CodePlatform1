@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
+import MicroHelp from '@/components/onboarding/MicroHelp';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -184,6 +185,24 @@ const STEPS = [
   { id: 'metrics', title: 'Success Metrics', icon: BarChart3 },
   { id: 'preview', title: 'See Readiness OS in Action', icon: Play },
   { id: 'activated', title: 'System Active', icon: CheckCircle },
+];
+
+const EXPECTED_RESULTS: Record<number, string> = {
+  0: 'Your configuration wizard starts — Readiness OS personalises to your industry and role.',
+  1: '221 triggers are mapped to your organization\'s size and sector. Signals begin activating.',
+  2: 'Your strategic priorities align 170 protocols to your highest-risk areas.',
+  3: 'Your first Readiness Protocols are staged and ready to activate on signal detection.',
+  4: 'Continuous monitoring begins across 248+ signal data points, checked every 15 minutes.',
+  5: 'Your 12-minute velocity target and Readiness Score baseline are confirmed.',
+  6: 'You watch a full Readiness Protocol activate — from signal detection to execution.',
+  7: 'Your organization is fully configured. The response is ready before the trigger fires.',
+};
+
+const SIGNAL_COMMON_MISTAKES = [
+  'Enabling too many signals at once — start with 5–8 most relevant to your top 2 priorities.',
+  'Skipping internal system signals — ERP and SIEM integrations catch the earliest threat indicators.',
+  'Setting all alerts to HIGH sensitivity — this creates noise and alert fatigue.',
+  'Not assigning a signal owner — every enabled source needs a named reviewer.',
 ];
 
 export default function NewUserJourney() {
@@ -1212,6 +1231,31 @@ export default function NewUserJourney() {
               )}
             </motion.div>
           </AnimatePresence>
+
+          {/* ── Expected result for current step ─────────────────────────── */}
+          {state.step <= 6 && (
+            <div style={{ marginTop: 20 }}>
+              <div style={{ background: 'rgba(43,138,110,0.06)', borderLeft: '3px solid #2B8A6E', padding: '9px 16px', display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#2B8A6E', flexShrink: 0, marginTop: 2, whiteSpace: 'nowrap' }}>Expected result</span>
+                <span style={{ fontSize: 12, color: '#374151', lineHeight: 1.6 }}>{EXPECTED_RESULTS[state.step]}</span>
+              </div>
+              {state.step === 4 && (
+                <MicroHelp
+                  trigger="Common mistakes when configuring signals"
+                  items={SIGNAL_COMMON_MISTAKES}
+                />
+              )}
+            </div>
+          )}
+          {state.step === 7 && (
+            <div style={{ marginTop: 20, background: 'rgba(43,138,110,0.06)', borderLeft: '3px solid #2B8A6E', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 18 }}>✓</span>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#2B8A6E' }}>Configuration complete</div>
+                <div style={{ fontSize: 11, color: '#6B7280', marginTop: 2 }}>{EXPECTED_RESULTS[7]}</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -1286,7 +1330,9 @@ export default function NewUserJourney() {
                 className="bg-[#0A0F2E] hover:bg-[#141B45] text-white min-w-[160px] rounded-none font-bold uppercase tracking-widest text-xs"
                 data-testid="button-next"
               >
-                Continue
+                {state.step < STEPS.length - 2
+                  ? `Continue to ${STEPS[state.step + 1].title}`
+                  : 'Continue'}
                 <ChevronRight className="h-4 w-4 ml-2" />
               </Button>
             )}

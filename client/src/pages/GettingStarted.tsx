@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layout/PageLayout';
+import OnboardingRail from '@/components/onboarding/OnboardingRail';
 import {
   CheckCircle2, Circle, ArrowRight, ChevronRight, AlertTriangle,
   Building2, Users, Shield, Rocket, Globe, Phone, Mail, Clock,
@@ -94,6 +95,13 @@ function PhaseCard({
           }}>
             {cta} <ArrowRight size={14} />
           </button>
+        )}
+        {isComplete && (
+          <div style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
+            <CheckCircle2 size={14} color={TEAL} />
+            <span style={{ fontSize: 12, fontWeight: 700, color: TEAL }}>Phase complete</span>
+            <span style={{ fontSize: 11, color: MUTED }}>— continue to the next phase below</span>
+          </div>
         )}
       </div>
     </div>
@@ -238,6 +246,11 @@ export default function GettingStarted() {
           </div>
         </div>
       </div>
+
+      <OnboardingRail
+        currentStage={overallScore < 34 ? 1 : overallScore < 67 ? 2 : overallScore < 100 ? 3 : 4}
+        showMissionCard={!isLive}
+      />
 
       {/* Body */}
       <div style={{ background: OFF, minHeight: '100vh' }}>

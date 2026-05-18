@@ -13,6 +13,7 @@ import {
   Radio, Wallet
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import WhyThisMatters from "@/components/onboarding/WhyThisMatters";
 
 interface LibraryPlaybook {
   id: string;
@@ -449,6 +450,14 @@ export default function ProtocolLibrary({ embedded }: { embedded?: boolean }) {
 
   return (
     <PageLayout embedded={embedded}>
+
+      {!embedded && (
+        <WhyThisMatters
+          headline="Every strategic situation your organization will face has a pre-staged response."
+          body="Select a protocol, assign it to your team — execution is ready before any trigger fires. Browse all 170 below."
+          metric={{ value: '170', label: 'Readiness Protocols' }}
+        />
+      )}
 
       {!embedded && (
         <div style={{ background: "white", borderBottom: `1px solid #E8E4DC` }}>

@@ -8,6 +8,7 @@ import {
   MessageSquare, Wallet, Key, ArrowLeft, BookOpen, Zap, Radio,
   GitBranch, Activity, AlertTriangle, BarChart2, Play, Lock,
 } from 'lucide-react';
+import MicroHelp from '@/components/onboarding/MicroHelp';
 
 const NAVY   = '#0A0F2E';
 const GOLD   = '#C9A84C';
@@ -30,6 +31,13 @@ const INDUSTRIES = [
 ];
 
 const RISK_LEVELS = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
+
+const TRIGGER_COMMON_MISTAKES = [
+  'Vague triggers ("significant market change") create hesitation — be specific about the data point that fires the protocol.',
+  'Skipping the industry field — the system uses it to pre-match signal sources.',
+  'Setting riskThreshold too low — MEDIUM on a mission-critical protocol means it activates on noise.',
+  'Not referencing a specific system signal — pair every trigger condition with a named source (e.g., SIEM, ERP alert).',
+];
 
 const RISK_COLORS: Record<string, string> = {
   LOW: TEAL, MEDIUM: '#D97706', HIGH: '#DC2626', CRITICAL: NAVY,
@@ -1346,7 +1354,7 @@ export default function ProtocolBuilder() {
       onRemove: (id: string) => removeCustomField(key, id),
     };
     switch (step) {
-      case 0: return <><Step1 data={data} update={update} onTemplate={applyTemplate} /><CustomFieldsSection {...cfProps} /></>;
+      case 0: return <><Step1 data={data} update={update} onTemplate={applyTemplate} /><MicroHelp trigger="Common mistakes when defining a trigger" items={TRIGGER_COMMON_MISTAKES} /><CustomFieldsSection {...cfProps} /></>;
       case 1: return <><Step2 data={data} updateNested={updateNested} /><CustomFieldsSection {...cfProps} /></>;
       case 2: return <><Step3 data={data} updateTask={updateTask} addTask={addTask} /><CustomFieldsSection {...cfProps} /></>;
       case 3: return <><Step4 data={data} update={update} /><CustomFieldsSection {...cfProps} /></>;

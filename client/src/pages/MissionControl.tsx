@@ -17,6 +17,7 @@ import {
   Layers, Eye, ChevronRight, BarChart3, Radar, Sparkles,
 } from 'lucide-react';
 import PerspectiveSwitcher from '@/components/PerspectiveSwitcher';
+import WhyThisMatters from '@/components/onboarding/WhyThisMatters';
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
 const NAVY    = '#0A0F2E';
@@ -470,6 +471,11 @@ export default function MissionControl() {
   if (!isReady) return null;
   return (
     <PageLayout>
+      <WhyThisMatters
+        headline="Continuous monitoring — executive action when it counts."
+        body="Every signal detected here is pre-matched to a staged Readiness Protocol. Your role: authorize, not assemble."
+        metric={{ value: '12 min', label: 'Detection to execution' }}
+      />
       <div style={{
         minHeight: '100vh',
         background: NAVY,
