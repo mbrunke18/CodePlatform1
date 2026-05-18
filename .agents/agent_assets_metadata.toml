@@ -406,13 +406,13 @@ title = "Gartner Slide — Built for the Post-Digital Enterprise Shift"
 id = "BWF_Tf5FcEDvS6lz_05ns"
 uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck.pptx"
 type = "slides"
-title = "PowerPoint only (606KB)"
+title = "Investor Pitch Deck — PPTX (12 slides)"
 
 [[outputs]]
 id = "Ues28y10aR3AQBGxON3YE"
 uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck.pdf"
 type = "pdf"
-title = "PDF only (868KB)"
+title = "Investor Pitch Deck — PDF (12 pages)"
 
 [[outputs]]
 id = "xnUFpnaDDRYT4OaXtK35R"

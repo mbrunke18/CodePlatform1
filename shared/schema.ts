@@ -987,7 +987,7 @@ export type InsertWorkflowTemplate = z.infer<typeof insertWorkflowTemplateSchema
 export type Notification = typeof notifications.$inferSelect;
 export type InsertNotification = z.infer<typeof insertNotificationSchema>;
 
-// Advanced Enterprise Intelligence Tables for Fortune 1000 Decision Tracking
+// Advanced Enterprise Intelligence Tables for startup to Fortune 500 Decision Tracking
 
 // Decision Outcomes - Track strategic decisions and learn from results
 export const decisionOutcomes = pgTable("decision_outcomes", {
@@ -1411,7 +1411,7 @@ export const insertModuleUsageAnalyticSchema = createInsertSchema(moduleUsageAna
   userId: true,
 });
 
-// Advanced Enterprise Intelligence Types for Fortune 1000 Decision Tracking
+// Advanced Enterprise Intelligence Types for startup to Fortune 500 Decision Tracking
 export type DecisionOutcome = typeof decisionOutcomes.$inferSelect;
 export type InsertDecisionOutcome = typeof decisionOutcomes.$inferInsert;
 

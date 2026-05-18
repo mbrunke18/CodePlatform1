@@ -118,7 +118,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 {valueM > 0 && <span className="text-2xl font-bold text-white/60 mb-3">M</span>}
               </div>
               <p className="text-white/60 text-sm max-w-lg mx-auto">
-                Based on {s.completedCount ?? 0} completed activations. Calculated against the industry-average 30-day strategic mobilization cycle at Fortune 1000 revenue rates.
+                Based on {s.completedCount ?? 0} completed activations. Calculated against the industry-average 30-day strategic mobilization cycle at startup to Fortune 500 revenue rates.
               </p>
               {valueM === 0 && (
                 <p className="text-white/40 text-xs mt-2">Complete activations to generate ROI data</p>
@@ -165,7 +165,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                 <div className="space-y-3 text-xs text-gray-600">
                   {[
                     { label: 'Industry mobilization baseline', val: '30 days (43,200 min)' },
-                    { label: 'Revenue rate assumption', val: '~$5M/day Fortune 1000' },
+                    { label: 'Revenue rate assumption', val: '~$5M/day startup to Fortune 500' },
                     { label: 'Per-minute value', val: '$3,472/min' },
                     { label: 'Formula', val: 'Time Saved × Rate × Events' },
                   ].map(r => (
@@ -175,7 +175,7 @@ export default function ROIDashboard({ embedded }: { embedded?: boolean }) {
                     </div>
                   ))}
                 </div>
-                <p className="text-[9px] text-gray-400 mt-3">Estimates based on McKinsey Fortune 1000 crisis impact research. Actual results vary.</p>
+                <p className="text-[9px] text-gray-400 mt-3">Estimates based on McKinsey startup to Fortune 500 crisis impact research. Actual results vary.</p>
               </div>
             </div>
 

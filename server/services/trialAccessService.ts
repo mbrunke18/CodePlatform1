@@ -64,7 +64,7 @@ function buildTrialEmailHtml(data: {
           <td style="background:${NAVY};padding:20px 40px;">
             <p style="margin:0;color:rgba(255,255,255,0.5);font-size:11px;">
               After your trial, apply for the full Pilot Program at vaughnmartin.com/pilot-program<br/>
-              Reserved for Fortune 1000 organizations meeting deployment requirements.
+              Reserved for startup to Fortune 500 organizations meeting deployment requirements.
             </p>
           </td>
         </tr>

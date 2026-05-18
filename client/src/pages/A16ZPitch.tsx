@@ -123,7 +123,7 @@ function ProblemSlide() {
         <div style={{ ...CG, fontSize: 96, fontWeight: 700, color: "#FFFFFF", lineHeight: 0.9, marginBottom: 12 }}>30</div>
         <div style={{ ...BC, fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 20 }}>days</div>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.75, marginBottom: 28 }}>
-          to mobilize a response inside the average Fortune 1000 enterprise when a strategic trigger fires.
+          to mobilize a response inside the average startup to Fortune 500 enterprise when a strategic trigger fires.
         </p>
         <GoldRule />
         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.7 }}>
@@ -145,10 +145,10 @@ function ProblemSlide() {
           Enterprise work was designed for a world without AI.<br />Nobody redesigned it.
         </h2>
         <p style={{ fontSize: 15, color: "#374151", lineHeight: 1.75, marginBottom: 36, maxWidth: 480 }}>
-          The 30-day mobilization cycle is not a bug. It is the operating model Fortune 1000 enterprises built before AI existed.
+          The 30-day mobilization cycle is not a bug. It is the operating model startup to Fortune 500 enterprises built before AI existed.
         </p>
 
-        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 16 }}>Every Fortune 1000 faces multiple triggers per year</div>
+        <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 16 }}>Every startup to Fortune 500 faces multiple triggers per year</div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 24px" }}>
           {triggers.map(t => (
@@ -189,9 +189,9 @@ function InsightSlide() {
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0, flex: 1, width: "100%" }}>
-        {/* Fortune 1000 column */}
+        {/* startup to Fortune 500 column */}
         <div style={{ border: `1px solid ${BORDER}`, borderRight: "none", background: "#FFFFFF", padding: "20px 30px" }}>
-          <div style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 16 }}>Fortune 1000</div>
+          <div style={{ ...BC, fontSize: 11, fontWeight: 800, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "#9CA3AF", marginBottom: 16 }}>startup to Fortune 500</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
               { label: "Trigger fires.", body: "The organization spends 30 days figuring out who should be in the room." },
@@ -497,7 +497,7 @@ function WhyNowSlide() {
     {
       label: "Decision Density",
       headline: "The bottleneck shifted from speed to calibration.",
-      body: "AI has simultaneously increased decision density and arrival speed for every Fortune 1000. Executives face more consequential decisions, faster, with less preparation time than any prior era. The bottleneck is no longer speed. It is calibration.",
+      body: "AI has simultaneously increased decision density and arrival speed for every startup to Fortune 500. Executives face more consequential decisions, faster, with less preparation time than any prior era. The bottleneck is no longer speed. It is calibration.",
       stat: "+47%", statLabel: "task scope increase with AI (McKinsey Global Institute, 2025)",
       color: TEAL,
     },
@@ -608,7 +608,7 @@ function MarketSlide() {
                 <div style={{ ...CG, fontSize: 15, fontWeight: 700, color: "#FFFFFF" }}>~$400M</div>
               </div>
               {[
-                { seg: "Fortune 1000 US¹", n: "1,000", total: "$200M" },
+                { seg: "startup to Fortune 500 US¹", n: "1,000", total: "$200M" },
                 { seg: "Forbes Global 2000 ex-US²", n: "1,000", total: "$200M" },
               ].map((r, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", paddingTop: 3, borderTop: "1px solid rgba(255,255,255,0.07)" }}>
@@ -640,7 +640,7 @@ function MarketSlide() {
           </div>
 
           <div style={{ fontSize: 6.5, color: "rgba(255,255,255,0.68)", lineHeight: 1.5 }}>
-            ¹ Fortune Media Fortune 1000 (annual) · ² Forbes Global 2000 (annual) · ³ OECD enterprise size distribution · ACV derived from platform Land/Expand model ($75K pilot → $200K full)
+            ¹ Fortune Media startup to Fortune 500 (annual) · ² Forbes Global 2000 (annual) · ³ OECD enterprise size distribution · ACV derived from platform Land/Expand model ($75K pilot → $200K full)
           </div>
         </div>
       </div>
@@ -649,10 +649,10 @@ function MarketSlide() {
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "44px 44px" }}>
         <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>The Distribution Wedge</div>
         <h3 style={{ ...CG, fontSize: 28, fontWeight: 600, color: NAVY, lineHeight: 1.2, marginBottom: 16 }}>
-          Every Fortune 1000 has Microsoft's AI stack.<br />None have the operating model to use it.
+          Every startup to Fortune 500 has Microsoft's AI stack.<br />None have the operating model to use it.
         </h3>
         <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.75, marginBottom: 18 }}>
-          Copilot, Azure, Teams, M365 — live in every Fortune 1000. The coordination layer above that investment doesn't exist. Readiness OS is that layer. Every Microsoft enterprise partner conversation leads here.
+          Copilot, Azure, Teams, M365 — live in every startup to Fortune 500. The coordination layer above that investment doesn't exist. Readiness OS is that layer. Every Microsoft enterprise partner conversation leads here.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
           {[
@@ -682,7 +682,7 @@ function MoatSlide() {
   const moats = [
     {
       num: "01",
-      title: "20 years of Fortune 1000 decision logic",
+      title: "20 years of startup to Fortune 500 decision logic",
       body: "170 Readiness Protocols encoding operational decision architecture from Ford, Toyota, Lockheed Martin, Charles Schwab, Vantiv/Worldpay, Boyd Gaming, and Churchill Downs Incorporated. A competitor cannot buy the twenty years.",
       note: "Cannot be replicated with capital or compute",
     },
@@ -695,7 +695,7 @@ function MoatSlide() {
     {
       num: "03",
       title: "Embeddedness in the preparation rhythm",
-      body: "When Readiness OS becomes the organizational rhythm of Fortune 1000 strategic preparation, it is not a vendor relationship. It is infrastructure. Infrastructure does not get replaced.",
+      body: "When Readiness OS becomes the organizational rhythm of startup to Fortune 500 strategic preparation, it is not a vendor relationship. It is infrastructure. Infrastructure does not get replaced.",
       note: "Not a tool. An operating model.",
     },
   ];
@@ -760,7 +760,7 @@ function ModelSlide() {
         <div style={{ ...GRID_BG, background: NAVY, padding: "22px 28px", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", top: -100, right: -100, width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%)" }} />
           <div style={{ position: "relative", zIndex: 1, flex: 1 }}>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>Founding Partner Program · Fortune 1000</div>
+            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>Founding Partner Program · startup to Fortune 500</div>
             <div style={{ ...CG, fontSize: 40, fontWeight: 700, color: GOLD, lineHeight: 1, marginBottom: 3 }}>$75K</div>
             <div style={{ ...BC, fontSize: 10, fontWeight: 600, letterSpacing: "0.12em", color: "rgba(255,255,255,0.5)", marginBottom: 16 }}>FLAT FEE · 90-DAY DEPLOYMENT</div>
 
@@ -816,7 +816,7 @@ function ModelSlide() {
         {[
           { label: "Pilot ACV", value: "$75K", note: "Self-liquidating CAC — pilot fee covers activation" },
           { label: "Year 2+ ACV", value: "$150–250K", note: "Expansion to full platform after proof" },
-          { label: "5-Year LTV", value: "$1.25M+", note: "Per Fortune 1000 account at $250K × 5 years" },
+          { label: "5-Year LTV", value: "$1.25M+", note: "Per startup to Fortune 500 account at $250K × 5 years" },
           { label: "Target NRR", value: "100%+", note: "Org-encoded intelligence drives expansion, not churn" },
         ].map(u => (
           <div key={u.label} style={{ padding: "8px 12px", background: `rgba(10,15,46,0.05)`, border: `1px solid rgba(10,15,46,0.1)` }}>
@@ -843,7 +843,7 @@ function TractionSlide() {
     {
       stageBadge: "IDENTIFICATION",
       badgeColor: NAVY,
-      stage: "Fortune 1000 Targets",
+      stage: "startup to Fortune 500 Targets",
       count: "15+",
       color: NAVY,
       sub: "Gaming · Finance · Manufacturing · Retail · Energy",
@@ -908,7 +908,7 @@ function TractionSlide() {
               ))}
             </div>
             <div style={{ marginTop: 5, padding: "5px 8px", background: "rgba(10,15,46,0.03)", border: `1px solid rgba(10,15,46,0.07)` }}>
-              <span style={{ fontSize: 11, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · advisors from prior Fortune 1000 work</span>
+              <span style={{ fontSize: 11, color: "#9CA3AF" }}>4 independent researchers · Kerry Huang Fortune 50 network repost · advisors from prior startup to Fortune 500 work</span>
             </div>
           </div>
         </div>
@@ -925,7 +925,7 @@ function TractionSlide() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
               {[
-                { head: "Enterprise introduction velocity", body: "Fortune 1000 CXO access the a16z portfolio provides cannot be bought with capital alone." },
+                { head: "Enterprise introduction velocity", body: "startup to Fortune 500 CXO access the a16z portfolio provides cannot be bought with capital alone." },
                 { head: "Category-defining signal", body: "a16z backing names the 'Strategic Coordination Infrastructure' category before anyone else does." },
                 { head: "Commercial co-founder catalyst", body: "SpeedRun is the structural moment to bring on the equity-based commercial co-founder. Search beginning — program access is the catalyst." },
               ].map((u, i) => (
@@ -964,7 +964,7 @@ function FounderSlide() {
           <div style={{ ...BC, fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" as const, color: GOLD, marginBottom: 14 }}>Founder, CEO & Chief Architect · VaughnMartin</div>
 
           <div style={{ marginBottom: 16 }}>
-            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 8 }}>Fortune 1000 · 20 Years</div>
+            <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 8 }}>startup to Fortune 500 · 20 Years</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
               {fortune1000.map(c => (
                 <div key={c} style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -1003,7 +1003,7 @@ function FounderSlide() {
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 5, marginBottom: 10 }}>
           {[
-            { label: "Fortune 1000 experience", value: "20 yrs" },
+            { label: "startup to Fortune 500 experience", value: "20 yrs" },
             { label: "Industries spanned", value: "7" },
             { label: "Stanford football", value: "5 yrs" },
             { label: "Protocols encoded", value: "170" },
@@ -1360,7 +1360,7 @@ function TheAskSlide() {
     { alloc: "40%", label: "Platform Infrastructure", desc: "1–2 contract engineers — feature velocity, reliability, SOC 2 pathway, integration depth, and multi-tenant pilot scaling.", color: TEAL },
     { alloc: "30%", label: "Pilot Sales & Onboarding", desc: "1 enterprise account executive — pilot landing, hands-on onboarding, and account expansion from $75K pilot to full ACV.", color: GOLD },
     { alloc: "20%", label: "Market Presence", desc: "Lock the 'Strategic Coordination Infrastructure' category name and convert pipeline into signed contracts.", color: NAVY },
-    { alloc: "10%", label: "SOC 2 & Security", desc: "SOC 2 Type II, enterprise SSO, audit logging — procurement table stakes for every Fortune 1000 deal.", color: "#6B7280" },
+    { alloc: "10%", label: "SOC 2 & Security", desc: "SOC 2 Type II, enterprise SSO, audit logging — procurement table stakes for every startup to Fortune 500 deal.", color: "#6B7280" },
   ];
   return (
     <div style={{ background: OFF, width: "100%", height: "100%", display: "flex", position: "relative" }}>
@@ -1377,7 +1377,7 @@ function TheAskSlide() {
             <div style={{ ...BC, fontSize: 11, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.68)", marginBottom: 6 }}>SpeedRun Selection</div>
             <div style={{ ...CG, fontSize: 28, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.15, marginBottom: 8 }}>12 weeks to close what the platform cannot close alone.</div>
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>
-              Program access, network, and the signal that converts Fortune 1000 conversations into signed pilots.
+              Program access, network, and the signal that converts startup to Fortune 500 conversations into signed pilots.
             </p>
           </div>
 

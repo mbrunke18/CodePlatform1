@@ -129,7 +129,7 @@ const industryProblems = [
 const competitiveAdvantages = [
   {
     title: "18-Month Head Start",
-    description: "170 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already pre-staged for Fortune 1000 enterprises.",
+    description: "170 pre-built Readiness Protocols across 9 strategic domains represent 18+ months of strategic planning already pre-staged for startup to Fortune 500 enterprises.",
     icon: Zap,
   },
   {
@@ -139,7 +139,7 @@ const competitiveAdvantages = [
   },
   {
     title: "Enterprise-Ready Platform",
-    description: "Built for Fortune 1000 complexity with integrations to Jira, Slack, Salesforce, ServiceNow, and more.",
+    description: "Built for startup to Fortune 500 complexity with integrations to Jira, Slack, Salesforce, ServiceNow, and more.",
     icon: Building,
   },
   {
@@ -165,7 +165,7 @@ const researchCitations = [
   { id: 6, source: "Taylor & Francis", title: "Global Transformation Research", year: "2024", finding: "$2.3 trillion wasted globally on failed digital transformation programs" },
   { id: 7, source: "Business Continuity Institute", title: "Resilience Report", year: "2024", finding: "75% of organizations activated strategic response plans in past 12 months" },
   { id: 8, source: "Gartner", title: "AI Technology Stack", year: "2026", finding: "Nine layers of enterprise AI investment mapped — from infrastructure to solutions — with no operating model layer identified to orchestrate execution. That gap is the market Readiness OS serves." },
-  { id: 9, source: "BCG", title: "AI-First Org & Operating Model Study", year: "2026", finding: "95% of companies are piloting AI. Only 5% are capturing real value at scale. The difference is not the technology — it is the operating model. Becoming AI-first is 30% technology, 70% people and organization. Fortune 1000 client research across multiple industries." },
+  { id: 9, source: "BCG", title: "AI-First Org & Operating Model Study", year: "2026", finding: "95% of companies are piloting AI. Only 5% are capturing real value at scale. The difference is not the technology — it is the operating model. Becoming AI-first is 30% technology, 70% people and organization. startup to Fortune 500 client research across multiple industries." },
 ];
 
 function PlatformArchitectureDiagram() {
@@ -352,9 +352,9 @@ export default function Investors() {
   useEffect(() => {
     updatePageMetadata({
       title: "Investor Overview — VaughnMartin Readiness OS",
-      description: "The Strategic Readiness Platform for Fortune 1000. 3,600× Execution Head Start. 30 days compressed to 12 minutes. Category-defining opportunity in enterprise operating infrastructure.",
+      description: "The Strategic Readiness Platform for startup to Fortune 500. 3,600× Execution Head Start. 30 days compressed to 12 minutes. Category-defining opportunity in enterprise operating infrastructure.",
       ogTitle: "Investor Overview — VaughnMartin Readiness OS",
-      ogDescription: "The operating model layer Fortune 1000s are missing. Pre-staged execution replaces 30-day mobilization cycles. 170 Readiness Protocols. 12-minute response.",
+      ogDescription: "The operating model layer startup to Fortune 500s are missing. Pre-staged execution replaces 30-day mobilization cycles. 170 Readiness Protocols. 12-minute response.",
     });
   }, []);
 
@@ -374,7 +374,7 @@ export default function Investors() {
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-[#0A0F2E] mb-6 leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               The Strategic Readiness Platform for
-              <span className="text-[#C9A84C]"> Fortune 1000</span>
+              <span className="text-[#C9A84C]"> startup to Fortune 500</span>
             </h1>
             <p className="text-xl text-[#0A0F2E]/70 max-w-3xl mx-auto mb-8 font-medium">
               Enterprise work was designed for a world without AI — committees, alignment cycles, and coordination delays that exist because humans couldn't process information fast enough to act decisively. Every vendor bolted AI onto that old model. We rebuilt from first principles. The category didn't exist. We built it.
@@ -423,7 +423,7 @@ export default function Investors() {
                 </div>
 
                 <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.72)', lineHeight: 1.75, fontWeight: 500, marginBottom: 24 }}>
-                  AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The 30-day window closes anyway. We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model Fortune 1000s have been running for 40 years.
+                  AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The 30-day window closes anyway. We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model startup to Fortune 500s have been running for 40 years.
                 </p>
 
                 <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.85)', lineHeight: 1.75, fontWeight: 600, marginBottom: 40 }}>
@@ -584,7 +584,7 @@ export default function Investors() {
                   firm: "BCG",
                   year: "2026",
                   headline: "95% piloting. 5% capturing value.",
-                  finding: "Fortune 1000 client study: 95% of companies are piloting AI. Only 5% are capturing real value at scale. The difference is not the technology — it is the operating model.",
+                  finding: "startup to Fortune 500 client study: 95% of companies are piloting AI. Only 5% are capturing real value at scale. The difference is not the technology — it is the operating model.",
                   color: "#C9A84C",
                 },
                 {
@@ -878,7 +878,7 @@ export default function Investors() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Globe className="w-5 h-5 text-[#C9A84C]" />
-                    <span className="text-white/80 font-medium">Fortune 1000 enterprises</span>
+                    <span className="text-white/80 font-medium">startup to Fortune 500 enterprises</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Building className="w-5 h-5 text-[#2B8A6E]" />
@@ -905,7 +905,7 @@ export default function Investors() {
           {/* CTA */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="text-center">
             <h2 className="text-2xl font-bold text-[#0A0F2E] mb-3">Ready to take the next step?</h2>
-            <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the Fortune 1000 executives rethinking how strategic work flows. Founding Partner validation runs in 90 days.</p>
+            <p className="text-[#6B7280] text-sm mb-8 max-w-lg mx-auto">Join the startup to Fortune 500 executives rethinking how strategic work flows. Founding Partner validation runs in 90 days.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/founding-partner-program">
                 <Button className="bg-[#C9A84C] hover:bg-[#DFC178] text-[#0A0F2E] font-bold px-8 h-12 rounded-none tracking-wide">

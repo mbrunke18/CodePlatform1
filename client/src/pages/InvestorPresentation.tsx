@@ -92,7 +92,7 @@ function InvestorPresentation() {
           We redesign how work flows<br />in the age of AI
         </h1>
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 'clamp(15px,1.5vw,20px)', color: '#0A0F2E', maxWidth: 680, marginBottom: 16, lineHeight: 1.65, fontWeight: 400 }}>
-          The new operating model for Fortune 1000 enterprises — 170 pre-staged Readiness Protocols that compress 30 days of mobilization into 12 minutes of live execution
+          The new operating model for startup to Fortune 500 enterprises — 170 pre-staged Readiness Protocols that compress 30 days of mobilization into 12 minutes of live execution
         </p>
         <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: '#6B7280', maxWidth: 560, marginBottom: 48, lineHeight: 1.65 }}>
           Not another AI tool bolted onto the old workflow. A fundamental redesign of how strategic work flows from first principles for the AI era.
@@ -439,7 +439,7 @@ function InvestorPresentation() {
             <div className="space-y-3">
               {[
                 { label: 'TAM', value: '$13-20B', desc: 'Strategic execution software' },
-                { label: 'SAM', value: '$5-8B', desc: 'Fortune 1000 enterprises' },
+                { label: 'SAM', value: '$5-8B', desc: 'startup to Fortune 500 enterprises' },
                 { label: 'SOM', value: '$500M-1B', desc: 'Year 5 target' },
               ].map((m, i) => (
                 <div key={i} className="bg-white border border-[#E8E4DC] p-4 flex items-center gap-4">
@@ -622,7 +622,7 @@ function InvestorPresentation() {
           <div>
             <h3 className="text-lg font-bold text-[#0A0F2E] mb-4 flex items-center gap-2"><Target className="w-5 h-5 text-[#C9A84C]" /> Market Validation</h3>
             <div className="space-y-3">
-              {['F500 executive interviews confirm pain point', 'Advisors from prior Fortune 1000 work', '3 Founding Partner targets confirmed', 'Founding Partner Program designed and ready', 'Microsoft ecosystem alignment in development'].map((item, i) => (
+              {['F500 executive interviews confirm pain point', 'Advisors from prior startup to Fortune 500 work', '3 Founding Partner targets confirmed', 'Founding Partner Program designed and ready', 'Microsoft ecosystem alignment in development'].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-[#0A0F2E]">
                   <CheckCircle2 className="w-5 h-5 text-[#C9A84C] shrink-0" />
                   <span>{item}</span>
@@ -727,7 +727,7 @@ function InvestorPresentation() {
             </div>
           </div>
           <div className="bg-white border border-[#2B8A6E]/20 p-6 italic text-[#0A0F2E] text-lg text-center">
-            "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a Readiness Protocol or you're improvising. Fortune 1000 companies are still improvising."
+            "I've seen this problem from the coaching box and the boardroom. When the signal hits, you either have a Readiness Protocol or you're improvising. startup to Fortune 500 companies are still improvising."
           </div>
         </div>
       </div>
@@ -889,7 +889,7 @@ function InvestorPresentation() {
           <Zap className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6 max-w-4xl">
-          The strategic Readiness OS Fortune 1000 is missing.
+          The strategic Readiness OS startup to Fortune 500 is missing.
         </h2>
         <div className="grid grid-cols-4 gap-6 max-w-3xl w-full my-10">
           {[

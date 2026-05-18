@@ -349,7 +349,7 @@ export default function TwelveMinuteTestDrive() {
                 If any of these scenarios hit your organization today — what would you do?
               </p>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.82)', lineHeight: 1.75, margin: 0 }}>
-                Who calls who? Where's the brief? Who owns it? Who authorizes? Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
+                Who calls who? Where's the brief? Who owns it? Who authorizes? Most startup to Fortune 500s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
               </p>
             </div>
 

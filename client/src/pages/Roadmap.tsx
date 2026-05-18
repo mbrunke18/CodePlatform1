@@ -122,7 +122,7 @@ const ROUNDS: RoadmapRound[] = [
       },
       {
         title: "Live Benchmark Comparison",
-        description: "Side-by-side comparison of the organization's readiness posture vs. Fortune 1000 averages across readiness score, time-to-deploy, trigger coverage, and domain depth. Benchmarks driven by industry and company size.",
+        description: "Side-by-side comparison of the organization's readiness posture vs. startup to Fortune 500 averages across readiness score, time-to-deploy, trigger coverage, and domain depth. Benchmarks driven by industry and company size.",
         value: "Every executive wants to know where they stand relative to peers. This answers that question with real data.",
         status: "planned",
         eta: "Q3 2026",

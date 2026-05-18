@@ -10,7 +10,7 @@ import {
 import { Link } from "wouter";
 
 const SCENE_NARRATIONS = [
-  "Every Fortune 1000 company faces an average of 4 to 6 major strategic events per year.",
+  "Every startup to Fortune 500 company faces an average of 4 to 6 major strategic events per year.",
   "Enterprise work was designed for a world without AI. Committees. Alignment cycles. 30-day response times. These exist because humans couldn't process information fast enough to act decisively. So we built bureaucracy to slow decisions down to a pace we could manage.",
   "AI changed the constraint. But every vendor bolted AI onto the old model — faster spreadsheets, smarter summaries, better notes from the same slow meetings. The bureaucracy stays. The latency stays. The window closes anyway.",
   "What does delay cost? In M&A, $1.3 million in value erosion per day. In crisis response, $4.88 million average breach cost. In competitive response, market windows that close forever.",
@@ -26,7 +26,7 @@ const SCENE_NARRATIONS = [
   "From signal detection to coordinated execution. 12 minutes. That's 30 days of mobilization compressed to 12 minutes. While competitors are still scheduling their first alignment call — you're already weeks deep into actual execution. That's the 3,600× Execution Head Start.",
   "The stakes have never been higher. 73% of executives report facing more strategic events than 5 years ago. AI is accelerating everything. Your competitors are moving faster.",
   "This isn't just about defense. It's about offense too. Market opportunities that require speed. M&A integrations that need precision. Product launches that demand coordination.",
-  "We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model Fortune 1000s have been running for 40 years.",
+  "We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow, committee-bound operating model startup to Fortune 500s have been running for 40 years.",
   "We're creating a new category. Strategic Execution Software. Gartner estimates this will be a $10 billion market by 2030.",
   "Readiness OS has an 18-month head start. 170 Readiness Protocols built. Platform validated with enterprise customers. The moat widens every day.",
   "The companies that figure this out first don't just survive. They dominate. Welcome to Readiness OS. The new operating model for AI-native enterprises.",
@@ -435,7 +435,7 @@ export default function FounderStoryFull({ onComplete, onSkip }: FounderStoryFul
                   transition={{ duration: 0.5 }}
                   className="text-lg text-gray-800 mb-4"
                 >
-                  Time for a Fortune 1000 to mobilize after a strategic trigger fires:
+                  Time for a startup to Fortune 500 to mobilize after a strategic trigger fires:
                 </motion.p>
                 <motion.div
                   initial={{ scale: 0.5, opacity: 0 }}

@@ -50,7 +50,7 @@ const DOMAINS = [
 
 const SECTOR_PACKS = [
   { id: "all",                 label: "All Protocols",            color: "#6B7280",  verticalKey: null },
-  { id: "general",             label: "General (Cross-Industry)", color: "#0A0F2E",  verticalKey: "general",          tagline: "Applies to any Fortune 1000 regardless of industry" },
+  { id: "general",             label: "General (Cross-Industry)", color: "#0A0F2E",  verticalKey: "general",          tagline: "Applies to any startup to Fortune 500 regardless of industry" },
   { id: "financial_services",  label: "Financial Services",       color: "#C9A84C",  verticalKey: "financial_services", tagline: "Regulatory filings, M&A, liquidity crises, trading incidents" },
   { id: "technology",          label: "Technology",               color: "#2B8A6E",  verticalKey: "technology",       tagline: "API deprecation, developer exodus, open-source, platform migration" },
   { id: "manufacturing",       label: "Manufacturing",            color: "#132558",  verticalKey: "manufacturing",    tagline: "Supplier cascade, tooling failure, labor strike, geopolitical" },

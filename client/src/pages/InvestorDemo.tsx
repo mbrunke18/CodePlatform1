@@ -104,7 +104,7 @@ const IDEA_STORY = [
     bgColor: "bg-[#0A0F2E]/10",
     time: 50,
     description: "Readiness OS' AI continuously monitors for strategic signals—competitive moves, regulatory changes, supply chain disruptions, cyber threats. When it detects a pattern, it recommends the right Readiness Protocol with confidence scoring. AI monitors and recommends. Executives decide.",
-    investorHighlight: "What makes this sellable to Fortune 1000 C-suites: we don't replace executives — we eliminate the 30-day mobilization cycle that surrounds them. AI monitors and recommends. The human decision is the same. It just arrives in seconds instead of weeks.",
+    investorHighlight: "What makes this sellable to startup to Fortune 500 C-suites: we don't replace executives — we eliminate the 30-day mobilization cycle that surrounds them. AI monitors and recommends. The human decision is the same. It just arrives in seconds instead of weeks.",
     metrics: [
       { label: "Signals Monitored", value: "2,847" },
       { label: "Pattern Match", value: "94%" },

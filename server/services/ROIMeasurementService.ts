@@ -54,7 +54,7 @@ export interface ExecutiveROIReport {
   };
 }
 
-// Fortune 1000 Industry Benchmarks (based on real market data)
+// startup to Fortune 500 Industry Benchmarks (based on real market data)
 interface IndustryBenchmark {
   averageROI: number;
   decisionVelocity: number; // percentage improvement
@@ -184,7 +184,7 @@ export class ROIMeasurementService {
   }
 
   /**
-   * Generate AI-powered enterprise ROI insights with Fortune 1000 benchmarking
+   * Generate AI-powered enterprise ROI insights with startup to Fortune 500 benchmarking
    */
   async generateEnterpriseROIInsights(
     organizationId: string,
@@ -277,7 +277,7 @@ export class ROIMeasurementService {
     }
 
     try {
-      const prompt = `Analyze this Fortune 1000 ${industry} company's strategic intelligence platform ROI performance:
+      const prompt = `Analyze this startup to Fortune 500 ${industry} company's strategic intelligence platform ROI performance:
 
 Current Performance:
 - Overall ROI: ${roiReport.overallROI}%
@@ -298,7 +298,7 @@ Provide executive-level insights focusing on:
 
 Write for C-suite audience, emphasize business impact and strategic value.`;
 
-      const aiInsights = await openAIService.analyzeText(prompt, `Fortune 1000 ${industry} ROI Analysis`);
+      const aiInsights = await openAIService.analyzeText(prompt, `startup to Fortune 500 ${industry} ROI Analysis`);
       logger.info('AI-powered ROI insights generated successfully');
       return aiInsights;
 
@@ -374,7 +374,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
     const performance = benchmarkAnalysis.roiPerformance;
     
     if (performance.ranking === 'Top Tier') {
-      return `Exceptional strategic intelligence capabilities position the organization in the top 10% of Fortune 1000 ${industry} companies. This competitive advantage enables faster market response, superior risk management, and accelerated innovation cycles compared to industry peers.`;
+      return `Exceptional strategic intelligence capabilities position the organization in the top 10% of startup to Fortune 500 ${industry} companies. This competitive advantage enables faster market response, superior risk management, and accelerated innovation cycles compared to industry peers.`;
     } else if (performance.ranking === 'Above Average') {
       return `Strong strategic intelligence performance places the organization ahead of 70% of industry peers, providing meaningful competitive advantages in decision velocity and strategic agility within the ${industry} sector.`;
     } else {
@@ -389,7 +389,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
     const paybackPeriod = Math.ceil(12 / (roiReport.overallROI / 100)); // months
     const annualValue = roiReport.totalValueGenerated + roiReport.totalCostAvoided;
 
-    return `The strategic intelligence platform investment delivers compelling financial returns with ${roiReport.overallROI}% ROI and ${paybackPeriod}-month payback period. Annual value realization of $${annualValue.toLocaleString()} significantly exceeds platform costs, while providing intangible benefits including enhanced competitive positioning, accelerated decision-making, and superior risk management capabilities. This investment strengthens organizational agility and strategic execution capacity essential for Fortune 1000 market leadership.`;
+    return `The strategic intelligence platform investment delivers compelling financial returns with ${roiReport.overallROI}% ROI and ${paybackPeriod}-month payback period. Annual value realization of $${annualValue.toLocaleString()} significantly exceeds platform costs, while providing intangible benefits including enhanced competitive positioning, accelerated decision-making, and superior risk management capabilities. This investment strengthens organizational agility and strategic execution capacity essential for startup to Fortune 500 market leadership.`;
   }
 
   /**
@@ -418,7 +418,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
    * Fallback AI insights when OpenAI is unavailable
    */
   private getFallbackAIInsights(roiReport: ExecutiveROIReport, industry: string): string {
-    return `Strategic intelligence platform analysis reveals strong performance with ${roiReport.overallROI}% ROI, significantly enhancing ${industry} sector competitive positioning. Key value drivers include accelerated strategic decision-making, enhanced risk mitigation capabilities, and improved operational efficiency. The platform's impact on executive productivity and strategic agility provides sustainable competitive advantages essential for Fortune 1000 market leadership. Continued optimization and expanded deployment will maximize returns on this strategic technology investment.`;
+    return `Strategic intelligence platform analysis reveals strong performance with ${roiReport.overallROI}% ROI, significantly enhancing ${industry} sector competitive positioning. Key value drivers include accelerated strategic decision-making, enhanced risk mitigation capabilities, and improved operational efficiency. The platform's impact on executive productivity and strategic agility provides sustainable competitive advantages essential for startup to Fortune 500 market leadership. Continued optimization and expanded deployment will maximize returns on this strategic technology investment.`;
   }
 
   /**

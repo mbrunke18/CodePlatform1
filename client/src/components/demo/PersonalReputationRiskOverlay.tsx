@@ -37,7 +37,7 @@ export function PersonalReputationRiskOverlay() {
     {
       icon: AlertCircle,
       stakeholder: 'Major Shareholder',
-      quote: '"Other Fortune 1000s had Readiness Protocols ready. Why didn\'t we?"',
+      quote: '"Other startup to Fortune 500s had Readiness Protocols ready. Why didn\'t we?"',
       impact: 'Leadership effectiveness disputed',
       color: 'from-pink-600 to-[#141B45]'
     }

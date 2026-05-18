@@ -252,7 +252,7 @@ export default function Contact() {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="10000+">10,000+ (Fortune 1000)</SelectItem>
+                              <SelectItem value="10000+">10,000+ (startup to Fortune 500)</SelectItem>
                               <SelectItem value="5000-10000">5,000-10,000</SelectItem>
                               <SelectItem value="1000-5000">1,000-5,000</SelectItem>
                               <SelectItem value="500-1000">500-1,000</SelectItem>

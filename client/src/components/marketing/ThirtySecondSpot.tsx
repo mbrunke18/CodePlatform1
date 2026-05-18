@@ -465,7 +465,7 @@ export default function ThirtySecondSpot({ version = "offense-defense" }: Thirty
               className="mb-6"
             >
               <span className="text-lg text-gray-800 uppercase tracking-widest">
-                Coordination Infrastructure for the Fortune 1000
+                Coordination Infrastructure for the startup to Fortune 500
               </span>
             </motion.div>
 

@@ -150,7 +150,7 @@ const SCENARIOS: Record<ScenarioId, Scenario> = {
         { metric: 'Coordination meetings required',   without: '12–18',          with: '0'            },
       ],
       roi: [
-        { label: 'Average Fortune 1000 breach cost',    value: '$47M' },
+        { label: 'Average startup to Fortune 500 breach cost',    value: '$47M' },
         { label: 'Cost reduction — coordinated response', value: '$12–19M' },
         { label: 'Regulatory fine avoidance (GDPR/SEC)', value: 'Up to 4% revenue' },
       ],

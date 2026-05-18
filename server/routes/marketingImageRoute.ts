@@ -150,7 +150,7 @@ function buildHtml(cardWidth: number): string {
 <section class="hero">
   <h1>Welcome to the<br>category first.</h1>
   <div class="hero-product">Readiness OS™</div>
-  <div class="hero-sub">The readiness infrastructure for the Fortune 1000.</div>
+  <div class="hero-sub">The readiness infrastructure for the startup to Fortune 500.</div>
   <p class="hero-body">Every vendor bolted AI onto the old model. We replaced the model.<br>Preparation replaces coordination. 12 minutes replaces 30 days.</p>
 </section>
 
@@ -279,7 +279,7 @@ function buildHtml(cardWidth: number): string {
       <svg class="icard-icon" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="18" height="18" stroke="#C9A84C" stroke-width="1.5"/></svg>
       <div>
         <div class="icard-title">Microsoft Amplifier</div>
-        <div class="icard-desc">Every Fortune 1000 has invested in Microsoft AI. None have the operating model to use it when it counts.</div>
+        <div class="icard-desc">Every startup to Fortune 500 has invested in Microsoft AI. None have the operating model to use it when it counts.</div>
       </div>
     </div>
     <div class="icard">
@@ -289,7 +289,7 @@ function buildHtml(cardWidth: number): string {
       </svg>
       <div>
         <div class="icard-title">Founding Partner Program</div>
-        <div class="icard-desc">First cohort forming now. Selective by design — validating with Fortune 1000 enterprises only.</div>
+        <div class="icard-desc">First cohort forming now. Selective by design — validating with startup to Fortune 500 enterprises only.</div>
       </div>
     </div>
   </div>
@@ -543,7 +543,7 @@ function buildLinkedInBannerHtml(): string {
 
       <!-- Main copy -->
       <div class="rp-copy">
-        <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; Fortune 1000</div>
+        <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;·&nbsp; startup to Fortune 500</div>
         <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
         <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution — 170 Protocols, 221 strategic triggers, 12-minute response.</div>
       </div>

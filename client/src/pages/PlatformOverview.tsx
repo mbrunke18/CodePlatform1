@@ -104,7 +104,7 @@ export default function PlatformOverview() {
     updatePageMetadata({
       title: "Platform Overview — Readiness OS by VaughnMartin",
       description:
-        "From signal detection to coordinated organizational response in 12 minutes. Every component of the Readiness OS, in one unified platform built for Fortune 1000 speed.",
+        "From signal detection to coordinated organizational response in 12 minutes. Every component of the Readiness OS, in one unified platform built for startup to Fortune 500 speed.",
       ogTitle: "Platform Overview — VaughnMartin Readiness OS",
       ogDescription:
         "Signal detected at 0:00. Organization coordinated by 12:00. The complete execution infrastructure layer for enterprise organizations.",

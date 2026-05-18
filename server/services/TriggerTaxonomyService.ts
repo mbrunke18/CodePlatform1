@@ -14,7 +14,7 @@ import { db } from '../db.js';
 import { eq } from 'drizzle-orm';
 import { executiveTriggers } from '@shared/schema';
 
-// ── Domain risk profiles for Fortune 1000 organizations ──────────────────────
+// ── Domain risk profiles for startup to Fortune 500 organizations ──────────────────────
 // Priority 1-10 where 10 = highest strategic exposure for most enterprises
 const DOMAIN_BASE_PROFILES: Record<string, {
   priority: number;
@@ -24,7 +24,7 @@ const DOMAIN_BASE_PROFILES: Record<string, {
   'Technology & Security': {
     priority: 10,
     triggers: ['Cybersecurity Breach Signal', 'AI Disruption Signal'],
-    rationale: 'Cyber events are the fastest-moving trigger category. Average dwell time before detection is 197 days. Every Fortune 1000 organization is a target.',
+    rationale: 'Cyber events are the fastest-moving trigger category. Average dwell time before detection is 197 days. Every startup to Fortune 500 organization is a target.',
   },
   'Regulatory & Compliance': {
     priority: 9,

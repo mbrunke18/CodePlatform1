@@ -77,7 +77,7 @@ export default function ExecutiveBrief() {
   useEffect(() => {
     updatePageMetadata({
       title: "Executive Brief — Readiness OS by VaughnMartin",
-      description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and Founding Partner Program. Built for Fortune 1000 board-level conversations.",
+      description: "A shareable executive summary of the Readiness OS thesis, proof numbers, ROI case, and Founding Partner Program. Built for startup to Fortune 500 board-level conversations.",
       ogTitle: "Executive Brief — VaughnMartin Readiness OS",
       ogDescription: "30 days compressed to 12 minutes. 3,600× execution head start. The strategic readiness platform built for large enterprises.",
     });
@@ -118,7 +118,7 @@ export default function ExecutiveBrief() {
 
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
               <div style={{ width: 28, height: 1.5, background: GOLD }} />
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Strategic Readiness Platform · Fortune 1000</span>
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.25em", textTransform: "uppercase", color: GOLD }}>Strategic Readiness Platform · startup to Fortune 500</span>
             </div>
 
             <h1 style={{ ...CG, fontSize: "clamp(32px,5vw,56px)", fontWeight: 700, color: "#fff", lineHeight: 1.05, marginBottom: 16 }}>
@@ -244,7 +244,7 @@ export default function ExecutiveBrief() {
                   30 days compressed<br />to <em style={{ color: GOLD }}>12 minutes.</em>
                 </h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.8, marginBottom: 20 }}>
-                  This is not a timing improvement. It is a structural change in how enterprises mobilize. In a Fortune 1000, when a strategic trigger fires, the organization spends weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Readiness OS compresses that entire cycle to 12 minutes.
+                  This is not a timing improvement. It is a structural change in how enterprises mobilize. In a startup to Fortune 500, when a strategic trigger fires, the organization spends weeks just to mobilize — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders — before execution even begins. Readiness OS compresses that entire cycle to 12 minutes.
                 </p>
                 <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 18, fontStyle: "italic", color: GOLD, lineHeight: 1.55, borderLeft: `3px solid ${GOLD}`, paddingLeft: 16, margin: 0 }}>
                   "The twelve minutes is not about speed. It is about clarity built ahead of time."
@@ -316,7 +316,7 @@ export default function ExecutiveBrief() {
             <div style={{ marginTop: 20, padding: "16px 20px", border: "1px solid #E8E4DC", background: "#fff" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: NAVY, marginBottom: 4 }}>Program Investment Payback Window</div>
               <div style={{ fontSize: 13, color: "#4B5563" }}>
-                At 2–3 strategic activations per quarter, the typical Fortune 1000 organization recovers its $75K program investment within the first activation cycle. Enterprise agreement pricing available upon program completion.
+                At 2–3 strategic activations per quarter, the typical startup to Fortune 500 organization recovers its $75K program investment within the first activation cycle. Enterprise agreement pricing available upon program completion.
               </div>
             </div>
           </div>
@@ -505,7 +505,7 @@ export default function ExecutiveBrief() {
                 <div style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "28px", background: "rgba(255,255,255,0.04)" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: GOLD, marginBottom: 16 }}>Ideal Founding Partner Candidates</div>
                   {[
-                    "Fortune 1000 or equivalent ($1B+ revenue)",
+                    "startup to Fortune 500 or equivalent ($1B+ revenue)",
                     "C-level or SVP executive sponsor with budget authority",
                     "Active Jira, Asana, or Monday.com deployment",
                     "Strategic events requiring 4+ departments to coordinate",

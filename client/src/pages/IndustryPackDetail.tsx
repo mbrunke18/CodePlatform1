@@ -44,7 +44,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     headline: "From payment rail failures to sovereign debt crises — every financial trigger pre-staged.",
     tagline: "15 industry-specific protocols. Basel III. DORA. SWIFT. Fed enforcement. AML. Stress tests.",
     description:
-      "Financial Services organizations operate in the highest-velocity regulatory and operational environment in the Fortune 1000. A SWIFT outage, a liquidity crisis, a rogue trader, or an OFAC sanctions violation requires mobilization across compliance, risk, treasury, legal, and executive leadership — simultaneously — in minutes. The Financial Services Pack pre-stages those response sequences before the trigger fires.",
+      "Financial Services organizations operate in the highest-velocity regulatory and operational environment in the startup to Fortune 500. A SWIFT outage, a liquidity crisis, a rogue trader, or an OFAC sanctions violation requires mobilization across compliance, risk, treasury, legal, and executive leadership — simultaneously — in minutes. The Financial Services Pack pre-stages those response sequences before the trigger fires.",
     icon: Building2,
     iconBg: "#1B4F72",
     regulatoryContext: "Basel III · DORA · SEC Enforcement · FINRA · Fed Supervision · SWIFT · OFAC · CCAR/DFAST",
@@ -765,7 +765,7 @@ const PACK_DATA: Record<string, IndustryPackData> = {
     headline: "From FDA consent decrees to hospital ransomware — patient safety and compliance pre-staged at every level.",
     tagline: "12 industry-specific protocols. FDA. CMS. HIPAA. Clinical trials. Drug shortages. Patient safety.",
     description:
-      "Healthcare organizations operate in the highest-consequence, highest-regulatory-scrutiny environment in the Fortune 1000. A product recall, an FDA warning letter, a hospital ransomware attack, a drug shortage, or a patient harm disclosure requires simultaneous mobilization across regulatory, legal, clinical, operations, and executive functions — with patient safety as the absolute and non-negotiable priority. The Healthcare Pack stages that entire response before the signal fires.",
+      "Healthcare organizations operate in the highest-consequence, highest-regulatory-scrutiny environment in the startup to Fortune 500. A product recall, an FDA warning letter, a hospital ransomware attack, a drug shortage, or a patient harm disclosure requires simultaneous mobilization across regulatory, legal, clinical, operations, and executive functions — with patient safety as the absolute and non-negotiable priority. The Healthcare Pack stages that entire response before the signal fires.",
     icon: Heart,
     iconBg: "#7B241C",
     regulatoryContext: "FDA · CMS / Medicare · OIG · HIPAA · 21 CFR Part 11 · ICH Q10 · Joint Commission · DEA",
@@ -1080,7 +1080,7 @@ export default function IndustryPackDetail() {
               </h2>
               <p className="text-sm leading-relaxed mb-6 max-w-xl" style={{ color: "#4A5568" }}>
                 Every {pack.name} Readiness OS includes the full Core Platform from day one —
-                the scenarios every Fortune 1000 faces regardless of vertical.
+                the scenarios every startup to Fortune 500 faces regardless of vertical.
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {pack.coreExamples.map(ex => (

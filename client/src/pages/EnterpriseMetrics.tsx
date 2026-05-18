@@ -86,7 +86,7 @@ export default function EnterpriseMetrics({ embedded }: { embedded?: boolean }) 
                   Enterprise Ready
                 </Badge>
                 <Badge className="bg-[#C9A84C] text-[#0A0F2E] font-bold">
-                  Fortune 1000
+                  startup to Fortune 500
                 </Badge>
               </div>
             </div>

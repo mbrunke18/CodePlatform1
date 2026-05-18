@@ -152,7 +152,7 @@ export default function VideoLanding() {
               <div style={{ width: 28, height: 2, background: "#C9A84C", flexShrink: 0 }} />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A0F2E] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              Why Fortune 1000 Leaders Choose <em className="italic text-[#C9A84C]">Readiness OS</em>
+              Why startup to Fortune 500 Leaders Choose <em className="italic text-[#C9A84C]">Readiness OS</em>
             </h2>
             <p className="text-xl text-[#6B7280] max-w-2xl mx-auto font-light leading-relaxed">
               Transform how your organization responds to the moments that matter

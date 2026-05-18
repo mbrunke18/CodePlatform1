@@ -1457,7 +1457,7 @@ export default function ProtocolDetail() {
                   </Button>
                 </div>
                 <div className="flex items-center justify-center gap-8 mt-12 flex-wrap">
-                  {["170 Readiness Protocols", "9 Strategic Domains", "12-Minute Execution", "Fortune 1000 Ready"].map((item) => (
+                  {["170 Readiness Protocols", "9 Strategic Domains", "12-Minute Execution", "startup to Fortune 500 Ready"].map((item) => (
                     <div key={item} className="flex items-center gap-2">
                       <CheckCircle2 className="h-3.5 w-3.5" style={{ color: GOLD }} />
                       <span style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{item}</span>

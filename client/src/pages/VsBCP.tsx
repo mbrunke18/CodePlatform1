@@ -50,7 +50,7 @@ export default function VsBCP() {
   useEffect(() => {
     updatePageMetadata({
       title: "Readiness OS vs. Business Continuity Planning | VaughnMartin",
-      description: "Every Fortune 1000 has a BCP. None have what fires before the crisis does. See how Readiness OS covers the everyday strategic triggers your BCP doesn't.",
+      description: "Every startup to Fortune 500 has a BCP. None have what fires before the crisis does. See how Readiness OS covers the everyday strategic triggers your BCP doesn't.",
       ogTitle: "Readiness OS vs. BCP — Built for What Happens Every Year",
       ogDescription: "BCP covers catastrophe. Readiness OS covers the competitive triggers, activist campaigns, and M&A events that happen every year — and activate in 12 minutes.",
     });
@@ -79,7 +79,7 @@ export default function VsBCP() {
           </div>
 
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(36px,5vw,58px)", color: IVORY, lineHeight: 1.05, marginBottom: 24 }}>
-            Every Fortune 1000 has a BCP.<br />
+            Every startup to Fortune 500 has a BCP.<br />
             <em style={{ fontStyle: "italic", color: GOLD }}>None have what fires before the crisis does.</em>
           </h1>
 
@@ -120,7 +120,7 @@ export default function VsBCP() {
             <div style={{ padding: "28px 28px", background: "#F8F7F4", border: "1px solid rgba(10,15,46,0.08)" }}>
               <p style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: "#9CA3AF", marginBottom: 12 }}>Business Continuity Planning</p>
               <p style={{ ...DM, fontSize: 15, color: "#374151", lineHeight: 1.7, margin: 0 }}>
-                Protects the organization from catastrophic operational failure. Fire. Flood. Cyberattack that takes systems offline. The once-in-a-decade event that threatens existence. Necessary — but not the source of most Fortune 1000 competitive damage.
+                Protects the organization from catastrophic operational failure. Fire. Flood. Cyberattack that takes systems offline. The once-in-a-decade event that threatens existence. Necessary — but not the source of most startup to Fortune 500 competitive damage.
               </p>
             </div>
             <div style={{ padding: "28px 28px", background: "rgba(201,168,76,0.06)", border: "1px solid rgba(201,168,76,0.2)" }}>
@@ -191,7 +191,7 @@ export default function VsBCP() {
             The triggers that fire every year are the ones your BCP doesn't cover.
           </h2>
           <p style={{ ...DM, fontSize: 16, color: "#374151", lineHeight: 1.7, marginBottom: 32 }}>
-            A Fortune 1000 company will encounter a BCP-level catastrophe once or twice per decade.
+            A startup to Fortune 500 company will encounter a BCP-level catastrophe once or twice per decade.
             It will encounter competitive disruptions, regulatory changes, activist investors, M&A events,
             and leadership transitions multiple times per year. Each one triggers a 30-day mobilization cycle.
             Each one costs market position, stakeholder confidence, and execution speed.

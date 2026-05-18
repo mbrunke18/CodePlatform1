@@ -174,7 +174,7 @@ export default function ExecutiveAnalyticsDashboard() {
                 Executive <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Analytics</em>
               </h1>
               <p className="text-xl text-white/70 max-w-2xl leading-relaxed">
-                Fortune 1000-grade business intelligence and performance analytics. 
+                startup to Fortune 500-grade business intelligence and performance analytics. 
                 Real-time strategic visibility across the enterprise.
               </p>
             </div>

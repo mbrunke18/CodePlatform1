@@ -185,7 +185,7 @@ export default function IndustryPacksHub() {
           <p className="text-lg leading-relaxed max-w-2xl mb-4" style={{ color: "#A8B4C8" }}>
             Readiness OS is built in two tiers. A{" "}
             <strong style={{ color: IVORY }}>Core Platform</strong> of {coreProtocols} cross-industry Readiness
-            Protocols that every Fortune 1000 needs — plus{" "}
+            Protocols that every startup to Fortune 500 needs — plus{" "}
             <strong style={{ color: IVORY }}>Industry Protocol Packs</strong> that go
             deep on the scenarios unique to your vertical.
           </p>
@@ -252,7 +252,7 @@ export default function IndustryPacksHub() {
                 </div>
               </div>
               <p className="text-sm leading-relaxed mb-6" style={{ color: "#4A5568" }}>
-                The universal operating model layer. Every Fortune 1000 faces these scenarios —
+                The universal operating model layer. Every startup to Fortune 500 faces these scenarios —
                 competitive disruption, cyber events, regulatory pressure, leadership transitions,
                 M&A execution. Pre-staged for any organization.
               </p>
@@ -460,7 +460,7 @@ export default function IndustryPacksHub() {
               </div>
               <h4 className="font-bold text-base mb-2" style={{ color: NAVY }}>Start with the Core</h4>
               <p className="text-sm leading-relaxed" style={{ color: "#4A5568" }}>
-                {coreProtocols} cross-industry Readiness Protocols cover every scenario a Fortune 1000
+                {coreProtocols} cross-industry Readiness Protocols cover every scenario a startup to Fortune 500
                 is likely to face regardless of sector. Your foundation on day one.
               </p>
             </div>

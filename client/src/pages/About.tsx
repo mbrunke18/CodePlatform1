@@ -124,7 +124,7 @@ export default function About() {
                   Stanford · Practice Field
                 </div>
                 <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.78)", lineHeight: 1.75, margin: "0 0 20px" }}>
-                  Five years coaching football at Stanford — watching championship programs deploy a pre-staged response to a known trigger in 40 seconds across 11 coordinated roles. Same pressure as any Fortune 1000 board room. Completely different architecture.
+                  Five years coaching football at Stanford — watching championship programs deploy a pre-staged response to a known trigger in 40 seconds across 11 coordinated roles. Same pressure as any startup to Fortune 500 board room. Completely different architecture.
                 </p>
                 <p style={{ ...GEO, fontSize: 17, fontStyle: "italic", color: GOLD, lineHeight: 1.6, margin: 0 }}>
                   "The difference wasn't the people. It was the preparation infrastructure."
@@ -146,7 +146,7 @@ export default function About() {
         <div style={{ maxWidth: 860, margin: "0 auto", padding: "0 32px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2 }}>
             {[
-              { label: "Fortune 1000 Experience", value: "20 years", sub: "Across 7 industries" },
+              { label: "startup to Fortune 500 Experience", value: "20 years", sub: "Across 7 industries" },
               { label: "Stanford Coaching Staff", value: "5 years", sub: "Championship football program" },
               { label: "Platform in Production", value: "Jan 2026", sub: "193 pages · Full-stack · Live" },
             ].map(({ label, value, sub }) => (
@@ -196,7 +196,7 @@ export default function About() {
                 Seeking a commercial co-founder.
               </h2>
               <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, margin: "0 0 28px" }}>
-                The platform is built and live. The category is defined. The gap is the first Fortune 1000 pilot introduction — the moment where thesis becomes signed contract.
+                The platform is built and live. The category is defined. The gap is the first startup to Fortune 500 pilot introduction — the moment where thesis becomes signed contract.
               </p>
               <p style={{ ...DM, fontSize: 15, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, margin: 0 }}>
                 The right co-founder has enterprise sales DNA, has sold into C-suites before, and understands that what we're selling isn't software — it's an operating model replacement. Equity-based. 10–15% co-founder pool reserved.
@@ -205,7 +205,7 @@ export default function About() {
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
                 { label: "What's built", value: "193-page platform, live in production" },
-                { label: "What's needed", value: "First Fortune 1000 signed contract" },
+                { label: "What's needed", value: "First startup to Fortune 500 signed contract" },
                 { label: "Target sector", value: "Gaming · Finance · Manufacturing" },
                 { label: "First ACV", value: "$75K · 90-day Founding Partner engagement" },
               ].map(({ label, value }) => (

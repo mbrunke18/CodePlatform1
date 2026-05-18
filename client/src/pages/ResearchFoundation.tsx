@@ -79,7 +79,7 @@ const INVESTOR_LANGUAGE = [
   },
   {
     competitor: "Palantir",
-    response: "Palantir builds custom intelligence infrastructure for large government and defense contracts. We deliver a configurable, 170-protocol readiness operating model that a Fortune 1000 enterprise deploys in 90 days without a custom build.",
+    response: "Palantir builds custom intelligence infrastructure for large government and defense contracts. We deliver a configurable, 170-protocol readiness operating model that a startup to Fortune 500 enterprise deploys in 90 days without a custom build.",
   },
   {
     competitor: "McKinsey",

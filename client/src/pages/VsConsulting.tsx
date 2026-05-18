@@ -64,7 +64,7 @@ export default function VsConsulting() {
           </h1>
 
           <p style={{ fontSize: 18, color: "rgba(240,237,228,0.65)", maxWidth: 640, margin: "0 auto 40px", lineHeight: 1.65 }}>
-            A Fortune 1000 company hires McKinsey to develop crisis response Readiness Protocols. Six months later, a crisis hits.
+            A startup to Fortune 500 company hires McKinsey to develop crisis response Readiness Protocols. Six months later, a crisis hits.
             Nobody can find the Readiness Protocols. The organization still takes 30 days to coordinate.
             The $500K investment sits on a shelf while the company scrambles.
           </p>

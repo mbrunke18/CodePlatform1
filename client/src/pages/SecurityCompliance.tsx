@@ -95,9 +95,9 @@ export default function SecurityCompliance() {
   useEffect(() => {
     updatePageMetadata({
       title: "Security & Compliance — VaughnMartin Readiness OS",
-      description: "Enterprise security overview for VaughnMartin Readiness OS. Authentication, data governance, compliance readiness, and AI safety controls for Fortune 1000 procurement teams.",
+      description: "Enterprise security overview for VaughnMartin Readiness OS. Authentication, data governance, compliance readiness, and AI safety controls for startup to Fortune 500 procurement teams.",
       ogTitle: "Security & Compliance — VaughnMartin Readiness OS",
-      ogDescription: "Enterprise-grade security controls, tenant isolation, and compliance readiness for Fortune 1000 procurement.",
+      ogDescription: "Enterprise-grade security controls, tenant isolation, and compliance readiness for startup to Fortune 500 procurement.",
     });
   }, []);
 
@@ -115,7 +115,7 @@ export default function SecurityCompliance() {
               </span>
             </div>
             <h1 style={{ margin: "0 0 1rem", fontSize: "2.25rem", fontWeight: 800, color: "#fff", lineHeight: 1.2 }}>
-              Enterprise-Grade Security<br />Built for Fortune 1000 Procurement
+              Enterprise-Grade Security<br />Built for startup to Fortune 500 Procurement
             </h1>
             <p style={{ margin: "0 0 2rem", fontSize: "1rem", color: "#9CA3AF", lineHeight: 1.7, maxWidth: 620 }}>
               VaughnMartin Readiness OS is architected for organizations where security, data sovereignty,

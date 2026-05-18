@@ -32,7 +32,7 @@ const competitors: Competitor[] = [
     claim: "AI that works alongside your people — drafting, summarizing, and analyzing across your Microsoft stack.",
     whatTheyDo: "Microsoft bolted AI onto the existing operating model. Copilot makes meetings faster to document. It generates better analysis, better summaries, smarter search. It is genuinely excellent at what it does — and 75%+ of large enterprises have already deployed it.",
     whereTheyStop: "When a strategic trigger fires — a ransomware attack, a supply disruption, a regulatory deadline — Copilot has no answer to: Who needs to be in the room? Who owns which task? Which lawyer do we call first? It summarizes the chaos faster. It does not replace the chaos. The 30-day mobilization cycle is completely intact.",
-    theGap: "Every Fortune 1000 already has Microsoft's AI stack. Their response times haven't reflected a 3,600× improvement because the operating model underneath Copilot hasn't changed. Intelligence without coordination is expensive analysis sitting in a meeting room.",
+    theGap: "Every startup to Fortune 500 already has Microsoft's AI stack. Their response times haven't reflected a 3,600× improvement because the operating model underneath Copilot hasn't changed. Intelligence without coordination is expensive analysis sitting in a meeting room.",
     oneLiner: "You've already bought the engine. Readiness OS is the transmission.",
     isComplementary: true,
   },
@@ -80,7 +80,7 @@ const competitors: Competitor[] = [
     claim: "Coordinate responses, track actions, and document outcomes during incidents and crises.",
     whatTheyDo: "These platforms provide a structured digital workspace for crisis management — incident logging, task assignment, communication tracking, and post-incident reporting. They represent a meaningful improvement over spreadsheets and email chains as a coordination workspace.",
     whereTheyStop: "These platforms are reactive. A crisis must be manually declared. Tasks must be manually assigned. Stakeholders must be manually identified. There are no pre-staged Readiness Protocols tied to specific trigger signatures. No signal monitoring for trigger conditions. No automated cascade. The response is as slow as the humans running it — the platform is a tracking tool, not an execution engine.",
-    theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for Fortune 1000 strategic triggers across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
+    theGap: "These platforms primarily serve public sector, hospitals, and mid-market. They are not designed for startup to Fortune 500 strategic triggers across 9 domains. The distinction: a crisis management binder, digitized — vs. strategic execution infrastructure.",
     oneLiner: "That is a digital emergency binder. This is strategic execution infrastructure.",
   },
   {
@@ -166,7 +166,7 @@ export default function WhyExecutionOS() {
               <em style={{ color: GOLD }}>what we already have?"</em>
             </h1>
             <p style={{ fontSize: 18, color: "rgba(255,255,255,0.65)", maxWidth: 680, margin: "0 auto 32px", lineHeight: 1.75 }}>
-              It's the first question every Fortune 1000 executive asks. Here is the honest answer — competitor by competitor, category by category.
+              It's the first question every startup to Fortune 500 executive asks. Here is the honest answer — competitor by competitor, category by category.
             </p>
 
             {/* The category problem — 2 columns */}
@@ -219,7 +219,7 @@ export default function WhyExecutionOS() {
                 "Most companies are layering AI onto operating models built for a purely human workforce — predefined processes, fixed handoffs, and decision bottlenecks. 95% are piloting. 5% are capturing real value at scale. The difference is the operating model."
               </p>
               <p style={{ fontSize: 11, color: "rgba(255,255,255,0.68)", lineHeight: 1.5 }}>
-                Fortune 1000 client research across multiple industries and geographies. Published 2026.
+                startup to Fortune 500 client research across multiple industries and geographies. Published 2026.
               </p>
             </div>
           </div>

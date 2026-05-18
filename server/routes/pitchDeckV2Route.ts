@@ -55,7 +55,7 @@ const SLIDES: SlideData[] = [
     label: "THE PROBLEM",
     title: "The trigger fires in seconds. Mobilization takes 30 days.",
     bullets: [
-      "Fortune 1000 organizations detect strategic triggers quickly",
+      "startup to Fortune 500 organizations detect strategic triggers quickly",
       "Most still spend weeks aligning ownership, authority, and sequence",
       "The delay is not execution — it is mobilization",
     ],

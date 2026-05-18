@@ -66,7 +66,7 @@ export function Problem({ progress }: SceneProps) {
           transition={{ delay: 0.3 }}
           className="text-lg md:text-xl text-gray-800 text-center mb-8"
         >
-          Every Fortune 1000 company faces these problems. No infrastructure existed to solve them.
+          Every startup to Fortune 500 company faces these problems. No infrastructure existed to solve them.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">

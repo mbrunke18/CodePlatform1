@@ -18,7 +18,7 @@ export default function Pricing() {
     updatePageMetadata({
       title: "Enterprise Pricing - Readiness OS | Strategic Readiness Platform",
       description: "Premium tiered pricing for enterprise organizations. Enterprise ($250K), Enterprise Plus ($450K), Global ($750K-$1.5M). Founding Partner Program ($75K, 100% credited to Year 1) — limited to 5 design partners.",
-      ogTitle: "Readiness OS Enterprise Pricing - Built for Fortune 1000",
+      ogTitle: "Readiness OS Enterprise Pricing - Built for startup to Fortune 500",
       ogDescription: "Category-defining Executive Decision Operations platform with value-aligned premium pricing. Three tiers from $250K-$1.5M annually.",
     });
   }, []);
@@ -33,7 +33,7 @@ export default function Pricing() {
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: "#C9A84C" }}>Enterprise Pricing</span>
           </div>
           <h1 style={{ ...CG, fontWeight: 600, fontSize: "clamp(40px,5vw,56px)", lineHeight: 1.05, color: "#0A0F2E", marginBottom: 16 }}>
-            Built for <em style={{ fontStyle: "italic", color: "#C9A84C" }}>Fortune 1000</em> Scale
+            Built for <em style={{ fontStyle: "italic", color: "#C9A84C" }}>startup to Fortune 500</em> Scale
           </h1>
           <p className="text-xl text-[#0A0F2E] mb-4 max-w-2xl mx-auto">
             Transparent, value-based pricing for enterprise decision velocity
@@ -99,7 +99,7 @@ export default function Pricing() {
                 <h4 style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#0A0F2E", marginBottom: 16 }}>Qualification Criteria</h4>
                 <ul className="space-y-3">
                   {[
-                    "Fortune 1000 company",
+                    "startup to Fortune 500 company",
                     "VP+ decision authority",
                     "Active strategic execution challenges",
                     "Commitment to 90-day validation",

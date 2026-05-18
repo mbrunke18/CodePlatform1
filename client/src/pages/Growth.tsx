@@ -125,7 +125,7 @@ const TIERS = [
       { label: "On-site implementation", value: "Optional" },
       { label: "Pricing", value: "$150K–$500K+/year" },
     ],
-    bestFor: "Fortune 1000, PE portfolios, and multi-subsidiary organizations that require full security, multi-org support, and executive-level implementation.",
+    bestFor: "startup to Fortune 500, PE portfolios, and multi-subsidiary organizations that require full security, multi-org support, and executive-level implementation.",
     roiNote: "At this scale, every day of coordination delay has a measurable dollar cost. The platform pays for itself across a single strategic initiative.",
   },
 ];
@@ -149,7 +149,7 @@ const FAQS = [
   },
   {
     q: "How does this relate to the Founding Partner Program ($75K)?",
-    a: "The Founding Partner Program is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for Fortune 1000 organizations at enterprise scale. The $75K program fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
+    a: "The Founding Partner Program is a 90-day structured validation with dedicated implementation, custom Microsoft ecosystem integration, and white-glove onboarding — designed for startup to Fortune 500 organizations at enterprise scale. The $75K program fee is 100% credited toward Year 1. The Growth tiers (Ready, Responsive, Orchestrated) are for growth-stage and mid-market companies that want to start immediately with a self-directed or guided deployment. Same platform — different motion, different buyer profile.",
   },
   {
     q: "Can I move up tiers as we grow?",
@@ -585,7 +585,7 @@ export default function Growth() {
                 <span style={{ fontSize: 12, color: "#9CA3AF", marginLeft: "auto" }}>$250K+/yr</span>
               </div>
               <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>
-                At Fortune 1000 scale, a single mishandled strategic trigger can cost $10M–$100M in lost value, market position, or regulatory exposure. The platform pays for itself within the first coordinated response.
+                At startup to Fortune 500 scale, a single mishandled strategic trigger can cost $10M–$100M in lost value, market position, or regulatory exposure. The platform pays for itself within the first coordinated response.
               </p>
             </div>
           </div>
@@ -773,7 +773,7 @@ export default function Growth() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, marginBottom: 16 }}>
             <div style={{ width: 24, height: 2, background: NAVY }} />
             <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: NAVY }}>
-              Fortune 1000 Entry Path
+              startup to Fortune 500 Entry Path
             </span>
             <div style={{ width: 24, height: 2, background: NAVY }} />
           </div>

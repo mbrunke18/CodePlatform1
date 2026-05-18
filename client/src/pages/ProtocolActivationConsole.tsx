@@ -2024,7 +2024,7 @@ export default function ProtocolActivationConsole() {
                       </span>
                     </div>
                     <p style={{ fontSize: 13, color: MUTED, marginBottom: 24, lineHeight: 1.6, maxWidth: 600 }}>
-                      What the same trigger would have looked like inside a standard Fortune 1000 mobilization cycle.
+                      What the same trigger would have looked like inside a standard startup to Fortune 500 mobilization cycle.
                     </p>
                     <div style={{ overflowX: "auto" }}>
                       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>

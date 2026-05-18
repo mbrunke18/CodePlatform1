@@ -17,7 +17,7 @@ export const LINKEDIN_PRODUCTS: LinkedInProduct[] = [
   {
     id: 1,
     name: "Readiness OS Platform",
-    tagline: "The operating model Fortune 1000 enterprises need to act in 12 minutes",
+    tagline: "The operating model startup to Fortune 500 enterprises need to act in 12 minutes",
     accentColor: "#C9A84C",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <circle cx="40" cy="40" r="36" stroke="#C9A84C" stroke-width="2"/>
@@ -159,7 +159,7 @@ export const LINKEDIN_PRODUCTS: LinkedInProduct[] = [
   {
     id: 9,
     name: "Founding Partner Program",
-    tagline: "90-day validation partnership — first Fortune 1000 cohort forming now",
+    tagline: "90-day validation partnership — first startup to Fortune 500 cohort forming now",
     accentColor: "#C9A84C",
     iconSvg: `<svg viewBox="0 0 80 80" fill="none">
       <circle cx="40" cy="40" r="32" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
@@ -298,7 +298,7 @@ function buildProductIconHtml(product: LinkedInProduct): string {
     9: `
       <div class="fp-panel">
         <div class="fp-badge">FOUNDING PARTNER PROGRAM</div>
-        <div class="fp-headline">First Fortune 1000 Cohort<br/>Forming Now</div>
+        <div class="fp-headline">First startup to Fortune 500 Cohort<br/>Forming Now</div>
         <div class="fp-rule"></div>
         <div class="fp-points">
           <div class="fp-pt"><span class="fp-check">✓</span> 90-day structured validation partnership</div>
@@ -585,8 +585,8 @@ export const LINKEDIN_PRODUCTS_COPY = [
   {
     id: 1,
     name: "Readiness OS Platform",
-    tagline: "The operating model layer above the Fortune 1000's AI stack",
-    description: "Readiness OS is the coordination infrastructure Fortune 1000 enterprises use to replace 30-day mobilization cycles with 12-minute execution. 170 pre-staged Readiness Protocols activate the moment a strategic trigger fires — with executive authority preserved at every step. The response is ready before the trigger fires.",
+    tagline: "The operating model layer above the startup to Fortune 500's AI stack",
+    description: "Readiness OS is the coordination infrastructure startup to Fortune 500 enterprises use to replace 30-day mobilization cycles with 12-minute execution. 170 pre-staged Readiness Protocols activate the moment a strategic trigger fires — with executive authority preserved at every step. The response is ready before the trigger fires.",
     highlights: [
       {
         title: "3,600× Execution Head Start",
@@ -598,7 +598,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
       },
       {
         title: "Microsoft AI Orchestrator",
-        description: "Every Fortune 1000 has invested in Microsoft's AI stack. Readiness OS is the operating model layer above it — not a replacement, the orchestrator.",
+        description: "Every startup to Fortune 500 has invested in Microsoft's AI stack. Readiness OS is the operating model layer above it — not a replacement, the orchestrator.",
       },
     ],
     cta: { label: "Request Founding Partner Access", url: "https://vaughnmartin.com/founding-partner-program" },
@@ -640,7 +640,7 @@ export const LINKEDIN_PRODUCTS_COPY = [
       },
       {
         title: "3,600× Head Start vs. the Old Model",
-        description: "30-day mobilization cycles vs. 12-minute execution. In a Fortune 1000, that gap is the difference between controlling a narrative and reacting to one.",
+        description: "30-day mobilization cycles vs. 12-minute execution. In a startup to Fortune 500, that gap is the difference between controlling a narrative and reacting to one.",
       },
     ],
     cta: { label: "Start the 12-Minute Test Drive", url: "https://vaughnmartin.com/12-minute-experience" },
@@ -753,12 +753,12 @@ export const LINKEDIN_PRODUCTS_COPY = [
   {
     id: 9,
     name: "Founding Partner Program",
-    tagline: "90-day validation partnership — first Fortune 1000 cohort forming now",
-    description: "The Founding Partner Program is VaughnMartin's selective pre-launch partnership for Fortune 1000 enterprises ready to validate Readiness OS against their actual strategic landscape. A 90-day structured engagement with dedicated implementation support, direct roadmap influence, and Founding Partner pricing.",
+    tagline: "90-day validation partnership — first startup to Fortune 500 cohort forming now",
+    description: "The Founding Partner Program is VaughnMartin's selective pre-launch partnership for startup to Fortune 500 enterprises ready to validate Readiness OS against their actual strategic landscape. A 90-day structured engagement with dedicated implementation support, direct roadmap influence, and Founding Partner pricing.",
     highlights: [
       {
         title: "Selective by Design",
-        description: "Fortune 1000 enterprises only. Each partner is assessed for strategic fit, trigger landscape alignment, and readiness infrastructure compatibility.",
+        description: "startup to Fortune 500 enterprises only. Each partner is assessed for strategic fit, trigger landscape alignment, and readiness infrastructure compatibility.",
       },
       {
         title: "90-Day Validation",

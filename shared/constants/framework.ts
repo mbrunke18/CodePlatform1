@@ -13,7 +13,7 @@ export const EXECUTION_OS_BRAND = {
   extendedTagline: 'Detect Early. Execute Precisely. Advance Strategy.',
   alternateTaglines: [
     'Transform strategy into 12-minute execution',
-    'The orchestration layer for Fortune 1000 leaders'
+    'The orchestration layer for startup to Fortune 500 leaders'
   ],
   colors: {
     primary: '#1A2B3D',

@@ -920,7 +920,7 @@ export default function CommandTower() {
             {[
               {
                 domain: 'Geopolitical',
-                signal: 'Tariff reclassification affecting 14 component categories — no Fortune 1000 precedent yet established',
+                signal: 'Tariff reclassification affecting 14 component categories — no startup to Fortune 500 precedent yet established',
                 impact: 'Supply chain + Financial exposure',
                 classified: '47 min ago',
               },

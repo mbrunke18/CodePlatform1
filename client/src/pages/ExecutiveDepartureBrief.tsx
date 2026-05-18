@@ -534,7 +534,7 @@ export default function ExecutiveDepartureBrief() {
               <ArrowRight size={16} />
             </button>
             <span style={{ fontSize: 12, color: T4, fontWeight: 600 }}>
-              Fortune 1000 · Board-authorized pilots · 30-day activation arc
+              startup to Fortune 500 · Board-authorized pilots · 30-day activation arc
             </span>
           </div>
 

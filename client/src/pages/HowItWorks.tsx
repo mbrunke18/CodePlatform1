@@ -263,7 +263,7 @@ export default function HowItWorks() {
                 The platform comes pre-loaded with 170 Readiness Protocols across 9 strategic domains — built from real enterprise crisis patterns, M&A events, regulatory shifts, and competitive disruptions.
               </p>
               <p style={{ fontSize: 16, color: "rgba(10,15,46,0.62)", lineHeight: 1.7, marginBottom: 40, fontWeight: 500 }}>
-                These are not generic templates. Each Readiness Protocol contains a defined task sequence, role assignments, escalation logic, communication assets, and success metrics — built specifically for Fortune 1000-scale responses.
+                These are not generic templates. Each Readiness Protocol contains a defined task sequence, role assignments, escalation logic, communication assets, and success metrics — built specifically for startup to Fortune 500-scale responses.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
                 {["Competitive Movement", "M&A Response", "Crisis Management", "Regulatory Shift", "Supply Chain", "Talent Crisis", "Cyber Breach", "Market Entry", "ESG Response"].map((domain, i) => (
@@ -526,7 +526,7 @@ export default function HowItWorks() {
                 icon: BarChart3,
                 color: GOLD,
                 title: "ROI Dashboard",
-                desc: "Tracks hard value: decisions moved from days to minutes, cost-avoidance estimates based on Fortune 1000 industry benchmarks, and percentile ranking against peers in your industry."
+                desc: "Tracks hard value: decisions moved from days to minutes, cost-avoidance estimates based on startup to Fortune 500 industry benchmarks, and percentile ranking against peers in your industry."
               },
               {
                 icon: BookOpen,

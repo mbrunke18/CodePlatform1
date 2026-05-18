@@ -82,7 +82,7 @@ const differentiators = [
     stat: "$2M",
     unit: "Per Event",
     label: "Value at Stake",
-    description: "The average Fortune 1000 company loses $60K–$2M in coordination lag per major strategic event. Readiness OS eliminates that gap entirely.",
+    description: "The average startup to Fortune 500 company loses $60K–$2M in coordination lag per major strategic event. Readiness OS eliminates that gap entirely.",
     color: GOLD,
   },
 ];
@@ -530,7 +530,7 @@ export default function CompetitivePositioning() {
                   170 Readiness Protocols No One Else Has
                 </h2>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 32 }}>
-                  Every Readiness Protocol in Readiness OS took years to develop — built from real Fortune 1000 strategic events, refined by operating executives, and continuously improved through outcome data.
+                  Every Readiness Protocol in Readiness OS took years to develop — built from real startup to Fortune 500 strategic events, refined by operating executives, and continuously improved through outcome data.
                 </p>
                 <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, marginBottom: 40 }}>
                   You can't buy this institutional knowledge off the shelf. You can't build it in a year. And no PM tool or crisis notification vendor has it — because they're solving a different problem.

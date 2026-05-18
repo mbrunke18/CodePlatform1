@@ -44,7 +44,7 @@ const PHASES = [
       },
       {
         title: '9 Strategic Domains — Full Coverage',
-        detail: 'Cybersecurity & Data, Regulatory & Compliance, Competitive Intelligence, Financial Risk, Operational Continuity, Talent & Leadership, M&A Activity, Reputational Risk, and Market Opportunity — covering both offense and defense across every major decision category a Fortune 1000 faces.',
+        detail: 'Cybersecurity & Data, Regulatory & Compliance, Competitive Intelligence, Financial Risk, Operational Continuity, Talent & Leadership, M&A Activity, Reputational Risk, and Market Opportunity — covering both offense and defense across every major decision category a startup to Fortune 500 faces.',
       },
     ],
   },

@@ -119,7 +119,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
         messages: [
           { 
             role: 'system', 
-            content: 'You are a strategic intelligence analyst providing executive-level situation reports to Fortune 1000 leadership.' 
+            content: 'You are a strategic intelligence analyst providing executive-level situation reports to startup to Fortune 500 leadership.' 
           },
           { role: 'user', content: prompt }
         ],
@@ -263,7 +263,7 @@ Keep it concise, strategic, and actionable. Use bullet points where appropriate.
       messages: [
         { 
           role: 'system', 
-          content: 'You are an executive intelligence officer providing C-suite briefings for Fortune 1000 companies. Be concise, strategic, and data-driven.' 
+          content: 'You are an executive intelligence officer providing C-suite briefings for startup to Fortune 500 companies. Be concise, strategic, and data-driven.' 
         },
         { role: 'user', content: prompt }
       ],

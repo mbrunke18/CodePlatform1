@@ -359,7 +359,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: '%supply chain%',
       data: {
-        whyItMatters: 'Supply chain disruptions cost the average Fortune 1000 company $184M annually. Companies with pre-staged prepared responses recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.',
+        whyItMatters: 'Supply chain disruptions cost the average startup to Fortune 500 company $184M annually. Companies with pre-staged prepared responses recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.',
         enrichedPhases: [
           {
             name: 'DISRUPTION ASSESSMENT', timeWindow: '0–2 min', objective: 'Quantify the disruption — what, where, how much, how long',
@@ -403,7 +403,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: '%regulatory%',
       data: {
-        whyItMatters: 'Regulatory non-compliance costs Fortune 1000 companies an average of $14.8M per incident in fines, legal fees, and remediation. Companies with pre-built regulatory response protocols reduce compliance risk by 71% and respond 4x faster than reactive organizations.',
+        whyItMatters: 'Regulatory non-compliance costs startup to Fortune 500 companies an average of $14.8M per incident in fines, legal fees, and remediation. Companies with pre-built regulatory response protocols reduce compliance risk by 71% and respond 4x faster than reactive organizations.',
         enrichedPhases: [
           {
             name: 'REGULATION INTAKE', timeWindow: '0–2 min', objective: 'Understand exactly what changed, what it requires, and what the deadline is',
@@ -492,7 +492,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: '%activist%',
       data: {
-        whyItMatters: 'Activist investors targeting Fortune 1000 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built prepared responses deployed 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.',
+        whyItMatters: 'Activist investors targeting startup to Fortune 500 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built prepared responses deployed 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.',
         enrichedPhases: [
           { name: 'INTELLIGENCE GATHERING', timeWindow: '0–2 min', objective: 'Know more about the activist\'s position than they expect you to know', tasks: [
             { owner: 'General Counsel', action: 'Confirm Schedule 13D/13G filing: stake %, acquisition date, stated intentions, associated entities. Access SEC EDGAR immediately', timeTarget: '90 sec' },
@@ -582,7 +582,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: '%product recall%',
       data: {
-        whyItMatters: 'Product recalls cost Fortune 1000 companies an average of $267M when handled reactively. Companies that self-initiate recalls before regulatory action receive 73% smaller fines and retain 89% more customer trust than those who wait for regulatory compulsion.',
+        whyItMatters: 'Product recalls cost startup to Fortune 500 companies an average of $267M when handled reactively. Companies that self-initiate recalls before regulatory action receive 73% smaller fines and retain 89% more customer trust than those who wait for regulatory compulsion.',
         enrichedPhases: [
           { name: 'SAFETY CONFIRMATION', timeWindow: '0–2 min', objective: 'Establish facts before committing to public action — but commit to investigation immediately', tasks: [
             { owner: 'Chief Quality Officer', action: 'Retrieve full defect incident report: complaint volume, injury reports, CPSC/FDA complaints, geographic concentration, product batch IDs', timeTarget: '90 sec' },
@@ -612,7 +612,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: '%talent%',
       data: {
-        whyItMatters: 'Mass talent departures in critical roles cost Fortune 1000 companies 3–5x the departing employees\' combined annual salaries in replacement and productivity loss. Companies with talent retention prepared responses stabilize within 14 days vs. 4+ months for reactive organizations.',
+        whyItMatters: 'Mass talent departures in critical roles cost startup to Fortune 500 companies 3–5x the departing employees\' combined annual salaries in replacement and productivity loss. Companies with talent retention prepared responses stabilize within 14 days vs. 4+ months for reactive organizations.',
         enrichedPhases: [
           { name: 'FLIGHT RISK TRIAGE', timeWindow: '0–2 min', objective: 'Know exactly who is at risk and why — before the next resignation hits your inbox', tasks: [
             { owner: 'CHRO', action: 'Pull talent flight risk model: identify all employees with >70% departure probability based on engagement score, tenure, compensation percentile, manager quality', timeTarget: '90 sec' },
@@ -642,7 +642,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: '%esg%',
       data: {
-        whyItMatters: 'ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of Fortune 1000 shares and have ESG voting mandates. Companies with ESG prepared responses contain institutional sell-pressure 3x more effectively.',
+        whyItMatters: 'ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of startup to Fortune 500 shares and have ESG voting mandates. Companies with ESG prepared responses contain institutional sell-pressure 3x more effectively.',
         enrichedPhases: [
           { name: 'ESG INCIDENT CLASSIFICATION', timeWindow: '0–2 min', objective: 'Classify accurately — an environmental violation and a governance failure require entirely different responses', tasks: [
             { owner: 'Chief Sustainability Officer', action: 'Classify ESG incident: Environmental (E), Social (S), or Governance (G). Severity: Tier 1 (material, public) / Tier 2 (internal, manageable) / Tier 3 (emerging risk)', timeTarget: '90 sec' },
@@ -2890,7 +2890,7 @@ export async function registerRoutes(app: Express, existingServer?: Server): Pro
 
       const { openAIService } = await import('./services/OpenAIService.js');
 
-      const prompt = `You are a strategic execution advisor for Fortune 1000 enterprises.
+      const prompt = `You are a strategic execution advisor for startup to Fortune 500 enterprises.
 
 Generate a concise AI Execution Brief for this playbook activation:
 
@@ -6433,7 +6433,7 @@ Generate a realistic, data-driven executive summary. Use specific percentages, t
 ### Drill Schedule & History
 [Recent drill results and upcoming schedule]
 
-Generate realistic scores and metrics appropriate for a Fortune 1000 ${industry} company.`,
+Generate realistic scores and metrics appropriate for a startup to Fortune 500 ${industry} company.`,
 
         'competitive-intelligence': `Generate a Competitive Intelligence Brief for ${organizationName} (${industry} sector):
 
@@ -6498,7 +6498,7 @@ Generate a realistic competitive analysis with specific, plausible company moves
 - Time-to-value improvements
 - Stakeholder satisfaction scores
 
-Generate realistic transformation metrics for a Fortune 1000 ${industry} company undertaking strategic digital transformation.`
+Generate realistic transformation metrics for a startup to Fortune 500 ${industry} company undertaking strategic digital transformation.`
       };
 
       const prompt = reportTypePrompts[reportType] || reportTypePrompts['strategic-overview'];
@@ -7804,7 +7804,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
                 </div>
                 <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
                   <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
-                  <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprise software vendor announces AI-native product suite targeting Fortune 1000 operations teams, undercutting incumbent pricing by 40% with a direct channel-to-CXO sales motion…</div>
+                  <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprise software vendor announces AI-native product suite targeting startup to Fortune 500 operations teams, undercutting incumbent pricing by 40% with a direct channel-to-CXO sales motion…</div>
                 </div>
                 <div style="text-align:center;margin-bottom:12px;">
                   <a href="${platformUrl}/live-detection-feed?trigger=AI%20Competitive%20Disruption" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection →</a>
@@ -8980,7 +8980,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
 
       const { openAIService } = await import('./services/OpenAIService.js');
 
-      const prompt = `You are a strategic executive briefing writer for a Fortune 1000 company. Write a concise, professional board-ready activation report based on the following:
+      const prompt = `You are a strategic executive briefing writer for a startup to Fortune 500 company. Write a concise, professional board-ready activation report based on the following:
 
 Playbook: ${playbookName || 'Strategic Response Playbook'}
 Situation: ${situationSummary || 'Strategic trigger detected and responded to'}
@@ -9160,7 +9160,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
         : 0;
       const industryBenchmark = 4320; // 72 hours in minutes
       const minutesSavedPerEvent = Math.max(0, industryBenchmark - avgMinutes);
-      const valuePerMinute = 3472; // ~$5M/day Fortune 1000 avg → ~$3,472/min
+      const valuePerMinute = 3472; // ~$5M/day startup to Fortune 500 avg → ~$3,472/min
       const estimatedValuePreserved = Math.round(minutesSavedPerEvent * valuePerMinute * completed.length / 1000000);
       const targetMetCount = activations.filter((a: any) => a.targetMet).length;
       // Fetch activation outcomes for actual cost totals
@@ -9228,7 +9228,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const { openAIService } = await import('./services/OpenAIService.js');
       const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId })
         .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(50);
-      const prompt = `You are a strategic execution AI for a Fortune 1000 company. Analyze this simulated scenario and score the company's readiness.
+      const prompt = `You are a strategic execution AI for a startup to Fortune 500 company. Analyze this simulated scenario and score the company's readiness.
 
 SCENARIO: "${scenarioText}"
 
@@ -9454,7 +9454,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
       const playbooks = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId })
         .from(playbookLibrary).where(eq(playbookLibrary.isActive, true)).limit(60);
 
-      const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their execution readiness under TWO conditions.
+      const prompt = `You are a strategic execution AI for startup to Fortune 500 enterprises. A prospect has described a real threat their organization is facing. Score their execution readiness under TWO conditions.
 
 SCENARIO: "${scenarioText}"
 
@@ -9514,7 +9514,7 @@ Respond ONLY as JSON with this structure:
 
       const { openAIService } = await import('./services/OpenAIService.js');
 
-      const prompt = `You are a Fortune 1000 crisis communications expert. Generate 5 audience-specific crisis communications for an enterprise organization.
+      const prompt = `You are a startup to Fortune 500 crisis communications expert. Generate 5 audience-specific crisis communications for an enterprise organization.
 
 SCENARIO TYPE: ${scenarioType}
 SEVERITY: ${severity}
@@ -10236,7 +10236,7 @@ Respond ONLY as JSON with this exact structure:
                   <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD};margin-bottom:32px;">
                     <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What you just demonstrated</div>
                     <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
-                      When a strategic trigger fires, Fortune 1000s typically spend 30 days just mobilizing — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. You compressed that entire cycle to <strong>12 minutes</strong>. That is a <strong>3,600× Execution Head Start</strong>.
+                      When a strategic trigger fires, startup to Fortune 500s typically spend 30 days just mobilizing — figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. You compressed that entire cycle to <strong>12 minutes</strong>. That is a <strong>3,600× Execution Head Start</strong>.
                     </p>
                   </div>
                   <!-- What's next -->

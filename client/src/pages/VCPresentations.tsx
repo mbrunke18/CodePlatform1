@@ -123,7 +123,7 @@ export default function VCPresentations() {
     "Enterprise work was built for a world without AI: committees, alignment cycles, 30-day delays were the best humans could do. AI changed the constraint — we changed the operating model",
     "3,600× Execution Head Start: 30 days of mobilization compressed to 12 minutes — before rivals have scheduled their first alignment call",
     "170 pre-staged Readiness Protocols replace real-time coordination — the broadest strategic readiness coverage available",
-    "We're not competing with Copilot. We're competing with the meeting-heavy, committee-bound operating model Fortune 1000s have run for 40 years"
+    "We're not competing with Copilot. We're competing with the meeting-heavy, committee-bound operating model startup to Fortune 500s have run for 40 years"
   ];
 
   return (

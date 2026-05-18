@@ -94,7 +94,7 @@ export const PRICING_ADD_ONS: PricingAddOn[] = [
 
 export const PRICING_METRICS = {
   averageACV: '$450K',
-  targetMarket: 'Fortune 1000',
+  targetMarket: 'startup to Fortune 500',
   deploymentTime: '6-8 weeks',
   typicalROI: '10-40x',
   responseTimeImprovement: '3,180x faster'

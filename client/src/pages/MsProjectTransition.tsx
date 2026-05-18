@@ -30,7 +30,7 @@ export default function MsProjectTransition() {
   useEffect(() => {
     updatePageMetadata({
       title: "MS Project End of Life — Don't Just Migrate. Evolve. | VaughnMartin Readiness OS",
-      description: "Microsoft Project is retiring. ServiceNow wants to migrate your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle entirely — 170 pre-staged Readiness Protocols, 12-minute execution, and the operating model Fortune 1000 boards actually need.",
+      description: "Microsoft Project is retiring. ServiceNow wants to migrate your lag to a new database. Readiness OS eliminates the 30-day mobilization cycle entirely — 170 pre-staged Readiness Protocols, 12-minute execution, and the operating model startup to Fortune 500 boards actually need.",
       ogTitle: "Microsoft Project EOL: Migration vs. Evolution",
       ogDescription: "While others migrate their static plans to ServiceNow, Readiness OS users are already executing. 30 days compressed to 12 minutes.",
     });
@@ -187,7 +187,7 @@ export default function MsProjectTransition() {
               {[
                 { phase: "01", title: "Microsoft provides the AI engine", body: "Azure AI Foundry, Copilot Studio, Teams, M365 — your organization already has this infrastructure." },
                 { phase: "02", title: "Readiness OS is the operating model layer", body: "Pre-staged Readiness Protocols, role assignments, decision rights, and execution coordination — activated in 12 minutes above your existing Microsoft stack." },
-                { phase: "03", title: "Every Microsoft customer is a Readiness OS prospect", body: "For investors: the total addressable market is every Fortune 1000 Microsoft enterprise account — a $847B strategic spend already committed." },
+                { phase: "03", title: "Every Microsoft customer is a Readiness OS prospect", body: "For investors: the total addressable market is every startup to Fortune 500 Microsoft enterprise account — a $847B strategic spend already committed." },
               ].map((item) => (
                 <div key={item.phase} style={{ display: "flex", alignItems: "flex-start", gap: 16, padding: "24px", background: "#fff", border: `1px solid #E8E4DC` }}>
                   <div style={{ ...CG, fontSize: 32, fontWeight: 700, color: GOLD, lineHeight: 1, flexShrink: 0 }}>{item.phase}</div>

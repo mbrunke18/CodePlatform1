@@ -77,7 +77,7 @@ export default function Team() {
                 {[
                   { label: "Company", value: "VaughnMartin" },
                   { label: "Category", value: "Enterprise Readiness OS" },
-                  { label: "Market", value: "Fortune 1000" },
+                  { label: "Market", value: "startup to Fortune 500" },
                   { label: "Founded", value: "2023" },
                 ].map(({ label, value }) => (
                   <div key={label} style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", borderBottom: `1px solid ${NAVY}08` }}>
@@ -109,7 +109,7 @@ export default function Team() {
               </p>
 
               <p style={{ fontSize: 16, color: `${NAVY}80`, lineHeight: 1.8, marginBottom: 20, fontWeight: 500 }}>
-                VaughnMartin exists because enterprise organizations were losing billions to a structural problem that had nothing to do with strategy or talent — and everything to do with the absence of pre-staged execution infrastructure. The operating model Fortune 1000s run today was designed before AI existed. The preparation cycle was the missing layer.
+                VaughnMartin exists because enterprise organizations were losing billions to a structural problem that had nothing to do with strategy or talent — and everything to do with the absence of pre-staged execution infrastructure. The operating model startup to Fortune 500s run today was designed before AI existed. The preparation cycle was the missing layer.
               </p>
 
               <p style={{ fontSize: 16, color: `${NAVY}80`, lineHeight: 1.8, marginBottom: 40, fontWeight: 500 }}>

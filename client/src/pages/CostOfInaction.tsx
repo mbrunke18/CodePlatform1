@@ -95,7 +95,7 @@ const SCENARIOS = [
       "5B–25B":  200_000,
       "25B+":    430_000,
     },
-    baselineEvent: "Average Fortune 1000 supply chain disruption: $184M in lost revenue over 30 days",
+    baselineEvent: "Average startup to Fortune 500 supply chain disruption: $184M in lost revenue over 30 days",
     delayFactor: "Every 24 hours of delayed supplier alternative activation extends production stoppage and customer SLA penalties.",
     urgencyNote: "Companies with pre-staged supply chain protocols resume production 18× faster than those who mobilize in real time.",
   },
@@ -230,7 +230,7 @@ export default function CostOfInaction() {
   useEffect(() => {
     updatePageMetadata(
       "Cost of Inaction — VaughnMartin Readiness OS",
-      "Quantify the financial cost of a 30-day mobilization cycle vs. 12-minute response. Built for Fortune 1000 CFO and Board conversations."
+      "Quantify the financial cost of a 30-day mobilization cycle vs. 12-minute response. Built for startup to Fortune 500 CFO and Board conversations."
     );
   }, []);
 
@@ -244,7 +244,7 @@ export default function CostOfInaction() {
             The Cost of a<br />30-Day Mobilization Cycle
           </h1>
           <p style={{ fontSize: 16, color: MUTED, lineHeight: 1.7, maxWidth: 600, margin: '0 auto 24px' }}>
-            Every Fortune 1000 enterprise faces strategic triggers. The question is not whether — it's how fast you can act. Quantify what the delay costs your organization.
+            Every startup to Fortune 500 enterprise faces strategic triggers. The question is not whether — it's how fast you can act. Quantify what the delay costs your organization.
           </p>
           <div style={{ display: 'inline-block', padding: '8px 18px', background: 'rgba(201,168,76,0.1)', border: `1px solid rgba(201,168,76,0.3)`, borderRadius: '0.15rem', fontSize: 13, color: '#92400E', fontStyle: 'italic' }}>
             Conservative estimates · Public benchmarks · Transparent assumptions

@@ -119,14 +119,14 @@ export class OpenAIService {
     const agentDefs: { phase: AgentResult['phase']; system: string; user: string }[] = [
       {
         phase: 'IDENTIFY',
-        system: `You are an elite IDENTIFY-phase analyst in the IDEA Framework for Fortune 1000 strategic execution. Your role: rapidly frame the strategic situation, decode the trigger signal, and establish situational clarity so the executive team can act without hesitation.`,
+        system: `You are an elite IDENTIFY-phase analyst in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: rapidly frame the strategic situation, decode the trigger signal, and establish situational clarity so the executive team can act without hesitation.`,
         user: `Playbook: "${playbookName}" | Context: ${triggerContext} | Org: ${organizationName} | Industry: ${industry}
 
 In 2-3 crisp sentences: frame the strategic situation. What fired? Why does it matter right now? What is the window of opportunity or exposure? Return ONLY the situation framing text, no headers or JSON.`,
       },
       {
         phase: 'DETECT',
-        system: `You are an elite DETECT-phase risk analyst in the IDEA Framework for Fortune 1000 strategic execution. Your role: surface the top blind spots, escalation tripwires, and hidden risks so the execution team acts with eyes open.`,
+        system: `You are an elite DETECT-phase risk analyst in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: surface the top blind spots, escalation tripwires, and hidden risks so the execution team acts with eyes open.`,
         user: `Playbook: "${playbookName}" | Context: ${triggerContext}
 
 Return EXACTLY 3 risks as a JSON array — no markdown, no wrapper:
@@ -134,7 +134,7 @@ Return EXACTLY 3 risks as a JSON array — no markdown, no wrapper:
       },
       {
         phase: 'EXECUTE',
-        system: `You are an elite EXECUTE-phase task orchestrator in the IDEA Framework for Fortune 1000 strategic execution. Your role: generate a precise, time-bound task sequence with C-suite role assignments. Tasks must be specific to this exact trigger and playbook — not generic.`,
+        system: `You are an elite EXECUTE-phase task orchestrator in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: generate a precise, time-bound task sequence with C-suite role assignments. Tasks must be specific to this exact trigger and playbook — not generic.`,
         user: `Playbook: "${playbookName}" | Context: ${triggerContext}
 
 Return EXACTLY 3 tasks as a JSON array — no markdown, no wrapper:
@@ -142,7 +142,7 @@ Return EXACTLY 3 tasks as a JSON array — no markdown, no wrapper:
       },
       {
         phase: 'ADVANCE',
-        system: `You are an elite ADVANCE-phase success architect in the IDEA Framework for Fortune 1000 strategic execution. Your role: define what winning looks like — the measurable outcomes, ROI signals, and strategic indicators that confirm the execution succeeded.`,
+        system: `You are an elite ADVANCE-phase success architect in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: define what winning looks like — the measurable outcomes, ROI signals, and strategic indicators that confirm the execution succeeded.`,
         user: `Playbook: "${playbookName}" | Context: ${triggerContext}
 
 Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, no wrapper:
@@ -225,7 +225,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
           messages: [
             {
               role: "system",
-              content: "You are a strategic intelligence analyst for Fortune 1000 companies. Provide actionable, data-driven insights with specific recommendations."
+              content: "You are a strategic intelligence analyst for startup to Fortune 500 companies. Provide actionable, data-driven insights with specific recommendations."
             },
             {
               role: "user",
@@ -263,7 +263,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
   }
 
   /**
-   * Generate domain-specialized strategic insights with Fortune 1000 frameworks
+   * Generate domain-specialized strategic insights with startup to Fortune 500 frameworks
    */
   async generateStrategicInsight(
     type: 'pulse' | 'flux' | 'prism' | 'echo' | 'nova',
@@ -345,7 +345,7 @@ Return EXACTLY 3 success indicators as a JSON array of strings — no markdown, 
    * Get system prompt specialized for each AI intelligence module
    */
   private getSystemPromptForType(type: 'pulse' | 'flux' | 'prism' | 'echo' | 'nova'): string {
-    const baseContext = "You are an elite strategic intelligence analyst for Fortune 1000 companies. Provide actionable, data-driven insights with specific executive recommendations.";
+    const baseContext = "You are an elite strategic intelligence analyst for startup to Fortune 500 companies. Provide actionable, data-driven insights with specific executive recommendations.";
     
     switch (type) {
       case 'pulse':

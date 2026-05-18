@@ -1,5 +1,5 @@
 // Enhanced Demo Data for WOW Factor
-// Impressive but realistic Fortune 1000 metrics
+// Impressive but realistic startup to Fortune 500 metrics
 
 export const enhancedROIMetrics = {
   totalCostSavings: 12400000, // $12.4M (increased from $4.2M)

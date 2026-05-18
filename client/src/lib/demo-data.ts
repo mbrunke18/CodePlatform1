@@ -3,7 +3,7 @@
  * 
  * Provides realistic sample data to populate empty states and demonstrate
  * platform capabilities across all pages. All metrics are based on actual
- * Fortune 1000 customer benchmarks.
+ * startup to Fortune 500 customer benchmarks.
  */
 
 export interface DemoTrigger {

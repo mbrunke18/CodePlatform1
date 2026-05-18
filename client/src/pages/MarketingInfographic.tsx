@@ -123,7 +123,7 @@ const INVESTOR_CARDS = [
   {
     icon: <svg viewBox="0 0 22 22" fill="none" width={22} height={22}><rect x="2" y="2" width="18" height="18" stroke={GOLD} strokeWidth="1.5"/></svg>,
     title: "Microsoft Amplifier",
-    body: "Every Fortune 1000 has invested in Microsoft AI. None have the operating model to use it when it counts.",
+    body: "Every startup to Fortune 500 has invested in Microsoft AI. None have the operating model to use it when it counts.",
   },
   {
     icon: (

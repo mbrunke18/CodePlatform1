@@ -77,7 +77,7 @@ export default function InvestorLanding() {
     updatePageMetadata({
       title: "Investor Overview | Readiness OS — Strategic Readiness Platform",
       description: "Every enterprise has Microsoft's AI stack. None have the operating model to use it. Readiness OS is the operating model layer. First-mover in a new enterprise software category.",
-      ogTitle: "Invest in Readiness OS — The Operating Model Layer for Fortune 1000",
+      ogTitle: "Invest in Readiness OS — The Operating Model Layer for startup to Fortune 500",
       ogDescription: "Enterprises spend 30 days mobilizing for events they could have pre-staged. Readiness OS changes the model. 170 protocols. 12-minute execution. First-mover opportunity.",
     });
   }, []);
@@ -123,12 +123,12 @@ export default function InvestorLanding() {
                 VaughnMartin redesigned how work flows from first principles for the AI era. Pre-staged Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. 12-minute execution replaces 30-day alignment cycles.
               </p>
               <div className="mt-4 pt-4 border-t border-white/10 text-sm text-white/50 italic">
-                We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model Fortune 1000s have been running for 40 years.
+                We're not competing with Copilot or other AI tools. We're competing with the way work is organized — the meeting-heavy, alignment-slow operating model startup to Fortune 500s have been running for 40 years.
               </div>
             </div>
 
             <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 16, color: 'rgba(255,255,255,0.50)', marginBottom: 36, maxWidth: 760, margin: '0 auto 36px', lineHeight: 1.7 }} data-testid="text-description">
-              Fortune 1000 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS addresses a $5B+ addressable market, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, the Readiness OS response is already deep into coordinated execution — in 12 minutes.
+              startup to Fortune 500 companies spend $847B annually on strategic initiatives — 83% fail due to execution gaps. Readiness OS addresses a $5B+ addressable market, delivering a 3,600× Execution Head Start: while rivals are still mobilizing weeks later, the Readiness OS response is already deep into coordinated execution — in 12 minutes.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -170,7 +170,7 @@ export default function InvestorLanding() {
                 If a ransomware attack, an activist investor, or a regulatory inquiry hit one of your portfolio companies today — what would happen in the next 12 minutes?
               </p>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 15, color: 'rgba(255,255,255,0.78)', lineHeight: 1.8, marginBottom: 28, maxWidth: 680 }}>
-                Who calls who? Where's the brief? Who owns the response? Who authorizes it? Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the stock drops, the competitor acts. That gap is the business. Every Fortune 1000 has it. None have solved it. The cost per trigger: $50M to $500M.
+                Who calls who? Where's the brief? Who owns the response? Who authorizes it? Most startup to Fortune 500s spend 30 days figuring that out — while the window closes, the regulator moves, the stock drops, the competitor acts. That gap is the business. Every startup to Fortune 500 has it. None have solved it. The cost per trigger: $50M to $500M.
               </p>
               <a href="/12-minute-experience" style={{ display: 'inline-block', fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' as const, padding: '14px 36px', background: '#C9A84C', color: '#0A0F2E', textDecoration: 'none' }}>
                 See What 12 Minutes Looks Like →
@@ -202,7 +202,7 @@ export default function InvestorLanding() {
                   n: '01',
                   label: 'Accumulated Decision Logic',
                   accent: '#C9A84C',
-                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of Fortune 1000 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 170 Readiness Protocols from two decades of real crisis response.',
+                  body: 'A competitor can rebuild the platform layer in 6–12 months. They cannot rebuild 20 years of startup to Fortune 500 operational decision logic — the trigger patterns, stakeholder sequences, and failure modes embedded in 170 Readiness Protocols from two decades of real crisis response.',
                   proof: '20 years of operational experience → not replicable with funding',
                 },
                 {
@@ -253,7 +253,7 @@ export default function InvestorLanding() {
               Three Enterprise Problems Worth $847B
             </h2>
             <p className="text-xl text-[#0A0F2E] max-w-4xl mx-auto">
-              Fortune 1000 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Readiness OS.
+              startup to Fortune 500 companies face these three problems every time a strategic moment hits. No infrastructure existed to solve them—until Readiness OS.
             </p>
           </div>
 
@@ -311,7 +311,7 @@ export default function InvestorLanding() {
                   "We are taking enterprise readiness from 30-day mobilization to 12 minutes."
                 </h3>
                 <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.75, marginBottom: 20 }}>
-                  The competitive advantage is the prepared response — not the faster committee. Every Fortune 1000 competitor still starts from zero when a trigger fires. Readiness OS starts from pre-staged.
+                  The competitive advantage is the prepared response — not the faster committee. Every startup to Fortune 500 competitor still starts from zero when a trigger fires. Readiness OS starts from pre-staged.
                 </p>
                 <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 18 }}>
                   {[
@@ -635,7 +635,7 @@ export default function InvestorLanding() {
                 <CardContent>
                   <div className="text-4xl font-bold text-[#0A0F2E] mb-2" data-testid="text-tam-value">$5B+</div>
                   <p className="text-[#0A0F2E]" data-testid="text-tam-description">
-                    ~20,000 enterprises globally × $150K–$200K ACV (Fortune 1000 US · Forbes Global 2000 · PE-backed $500M+ revenue)
+                    ~20,000 enterprises globally × $150K–$200K ACV (startup to Fortune 500 US · Forbes Global 2000 · PE-backed $500M+ revenue)
                   </p>
                 </CardContent>
               </Card>
@@ -650,7 +650,7 @@ export default function InvestorLanding() {
                 <CardContent>
                   <div className="text-4xl font-bold text-[#C9A84C] mb-2" data-testid="text-sam-value">~$400M</div>
                   <p className="text-[#0A0F2E]" data-testid="text-sam-description">
-                    Fortune 1000 US + Forbes Global 2000 ex-US · 2,000 enterprises × $200K ACV near-term reachable market
+                    startup to Fortune 500 US + Forbes Global 2000 ex-US · 2,000 enterprises × $200K ACV near-term reachable market
                   </p>
                 </CardContent>
               </Card>
@@ -867,7 +867,7 @@ export default function InvestorLanding() {
                   <div>
                     <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase" as const, color: "#C9A84C", marginBottom: 8 }}>What this means for the customer</div>
                     <p style={{ fontSize: 13, color: "#0A0F2E", lineHeight: 1.6 }}>
-                      The Fortune 1000 customer doesn't spend 30 days mobilizing. They respond in 12 minutes — because the institutional memory, ownership assignments, and execution sequence were built and rehearsed before pressure arrived. Every subsequent deployment compounds that advantage.
+                      The startup to Fortune 500 customer doesn't spend 30 days mobilizing. They respond in 12 minutes — because the institutional memory, ownership assignments, and execution sequence were built and rehearsed before pressure arrived. Every subsequent deployment compounds that advantage.
                     </p>
                   </div>
                 </div>
@@ -920,7 +920,7 @@ export default function InvestorLanding() {
                   "The economic logic changes with persistence: measure by context retained, rework eliminated, and institutional knowledge built."
                 </p>
                 <p style={{ fontSize: 12, color: "#4B5563", lineHeight: 1.6 }}>
-                  For the Fortune 1000 customer, each deployment doesn't start from zero — it starts from accumulated readiness. The 12-minute response time improves with every trigger handled. The preparation compounds. That's a different ROI conversation than any point solution can offer.
+                  For the startup to Fortune 500 customer, each deployment doesn't start from zero — it starts from accumulated readiness. The 12-minute response time improves with every trigger handled. The preparation compounds. That's a different ROI conversation than any point solution can offer.
                 </p>
               </div>
             </div>
@@ -1425,7 +1425,7 @@ export default function InvestorLanding() {
                 $2.5M Seed Round
               </h2>
               <p style={{ fontFamily: "'Barlow', sans-serif", fontSize: 17, color: '#4B5563', maxWidth: 560, margin: '0 auto' }}>
-                18-month target: three Fortune 1000 Founding Partner engagements closed and converting to annual contracts, reaching $3.75M ARR.
+                18-month target: three startup to Fortune 500 Founding Partner engagements closed and converting to annual contracts, reaching $3.75M ARR.
               </p>
             </div>
 

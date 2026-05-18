@@ -606,7 +606,7 @@ export default function BrandKit() {
                     </div>
                   </div>
                   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "8%", background: "rgba(4,7,20,0.95)", borderTop: "1px solid rgba(201,168,76,0.2)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5%" }}>
-                    <span style={{ fontFamily: LABEL, fontSize: "0.9vw", color: "rgba(201,168,76,0.6)", letterSpacing: "0.15em", textTransform: "uppercase" as const, fontWeight: 600 }}>Readiness OS · Built · In Production · Fortune 1000</span>
+                    <span style={{ fontFamily: LABEL, fontSize: "0.9vw", color: "rgba(201,168,76,0.6)", letterSpacing: "0.15em", textTransform: "uppercase" as const, fontWeight: 600 }}>Readiness OS · Built · In Production · startup to Fortune 500</span>
                     <span style={{ fontFamily: LABEL, fontSize: "0.9vw", color: "rgba(43,138,110,0.75)", letterSpacing: "0.1em", fontWeight: 600 }}>vaughnmartin.com</span>
                   </div>
                 </div>

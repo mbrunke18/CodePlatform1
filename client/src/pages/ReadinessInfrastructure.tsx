@@ -92,13 +92,13 @@ export default function ReadinessInfrastructure() {
                 <em>They have a readiness problem.</em>
               </h2>
               <p style={{ fontSize: 17, color: "#374151", lineHeight: 1.75, maxWidth: 700, margin: "0 auto" }}>
-                The technology is the same across every Fortune 1000 organization. Microsoft Copilot, Teams, Azure, ServiceNow — every enterprise has the tools. What is different is whether the readiness infrastructure was built before the trigger fired.
+                The technology is the same across every startup to Fortune 500 organization. Microsoft Copilot, Teams, Azure, ServiceNow — every enterprise has the tools. What is different is whether the readiness infrastructure was built before the trigger fired.
               </p>
             </div>
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 2, marginBottom: 56 }}>
               {[
-                { stat: "30 days", color: RED, label: "Average Fortune 1000 mobilization cycle", sub: "From trigger detection to first coordinated response" },
+                { stat: "30 days", color: RED, label: "Average startup to Fortune 500 mobilization cycle", sub: "From trigger detection to first coordinated response" },
                 { stat: "12 min", color: TEAL, label: "With Readiness Infrastructure deployed", sub: "From trigger detection to full team executing" },
                 { stat: "3,600×", color: GOLD, label: "Execution Head Start", sub: "30 days compressed to 12 minutes — every strategic trigger" },
               ].map((item, i) => (
@@ -390,9 +390,9 @@ export default function ReadinessInfrastructure() {
                   title: "Strategic Trigger Response — Enterprise Coordination Research",
                 },
                 {
-                  quote: "McKinsey analysis of Fortune 1000 crisis responses consistently identifies the same failure mode: not the response itself, but the 72–168 hours spent mobilizing before the response could begin. The organizations that close this gap share a single structural characteristic — they had already decided what to do.",
+                  quote: "McKinsey analysis of startup to Fortune 500 crisis responses consistently identifies the same failure mode: not the response itself, but the 72–168 hours spent mobilizing before the response could begin. The organizations that close this gap share a single structural characteristic — they had already decided what to do.",
                   name: "McKinsey & Company",
-                  title: "Organizational Resilience Practice — Fortune 1000 Response Analysis",
+                  title: "Organizational Resilience Practice — startup to Fortune 500 Response Analysis",
                 },
               ].map((item, i) => (
                 <div key={i} style={{ borderLeft: `3px solid ${GOLD}`, paddingLeft: 32, paddingTop: 4, paddingBottom: 4 }}>

@@ -116,7 +116,7 @@ const pilotInclusions = [
 const idealCandidates = [
   {
     criteria: 'Organization Size',
-    description: 'Fortune 1000 or equivalent ($1B+ revenue)',
+    description: 'startup to Fortune 500 or equivalent ($1B+ revenue)',
     importance: 'Required'
   },
   {
@@ -323,7 +323,7 @@ export default function FoundingPartnerProgram() {
       title: "Founding Partner Program — Readiness OS | VaughnMartin",
       description: "Validate Readiness OS' 12-minute coordination claim with a structured 90-day founding partnership. Includes 5 Readiness Protocols, Jira integration, and dedicated success manager. 100% credit applies to enterprise contract.",
       ogTitle: "Founding Partner Program — Readiness OS by VaughnMartin",
-      ogDescription: "90-day validation partnership for Fortune 1000 founding partners. ROI measurement, live activation, and clear conversion path.",
+      ogDescription: "90-day validation partnership for startup to Fortune 500 founding partners. ROI measurement, live activation, and clear conversion path.",
     });
   }, []);
 
@@ -412,7 +412,7 @@ export default function FoundingPartnerProgram() {
           <div className="max-w-5xl mx-auto grid grid-cols-3 gap-px bg-white/5" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
             {[
               { label: "Pre-staged, not assembled", body: "170 Readiness Protocols exist before any trigger fires. When the moment hits, execution begins in minutes — not after the first alignment meeting." },
-              { label: "Coordination, not capability", body: "Every Fortune 1000 already has the AI capability. What's missing is the coordination layer that makes the whole stack act — not just recommend." },
+              { label: "Coordination, not capability", body: "Every startup to Fortune 500 already has the AI capability. What's missing is the coordination layer that makes the whole stack act — not just recommend." },
               { label: "The response before the trigger", body: "The canonical test: how long does mobilization take after a strategic trigger fires? Founding Partners answer that question with live data. The target is 12 minutes." },
             ].map((item) => (
               <div key={item.label} style={{ padding: '20px 24px', background: 'rgba(255,255,255,0.02)' }}>
@@ -842,7 +842,7 @@ export default function FoundingPartnerProgram() {
               </div>
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(24px,3.5vw,36px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, margin: '0 0 12px' }}>Your first 90 days, by role.</h2>
               <p className="text-slate-400 text-sm leading-relaxed max-w-xl mx-auto">
-                Every Founding Partner engagement includes a structured onboarding guide built around the five roles present in every Fortune 1000 deployment — so each person on your team knows exactly what they see, what they own, and what success looks like at day 90.
+                Every Founding Partner engagement includes a structured onboarding guide built around the five roles present in every startup to Fortune 500 deployment — so each person on your team knows exactly what they see, what they own, and what success looks like at day 90.
               </p>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
@@ -885,7 +885,7 @@ export default function FoundingPartnerProgram() {
                 "We already have Microsoft Copilot. Why Readiness OS?"
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-                Every Fortune 1000 has Microsoft's AI stack. None have the operating model to execute with it. Readiness OS is not a replacement — it is the coordination layer that makes your existing investment actionable.
+                Every startup to Fortune 500 has Microsoft's AI stack. None have the operating model to execute with it. Readiness OS is not a replacement — it is the coordination layer that makes your existing investment actionable.
               </p>
             </div>
 

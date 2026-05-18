@@ -195,7 +195,7 @@ export default function DemoHub() {
               Growth. Resilience. Transformation. The response is always ready.
             </div>
             <p style={{ ...BAR, fontSize: 15, color: W70, lineHeight: 1.75, maxWidth: 640, marginBottom: 32 }}>
-              Every situation a Fortune 1000 company faces — the market opportunity that opens at 7 PM, the crisis that lands at 4 AM, the board mandate that requires coordinated action by morning — demands the same capability: your full organization mobilized in 12 minutes. Select your domain and see the platform respond.
+              Every situation a startup to Fortune 500 company faces — the market opportunity that opens at 7 PM, the crisis that lands at 4 AM, the board mandate that requires coordinated action by morning — demands the same capability: your full organization mobilized in 12 minutes. Select your domain and see the platform respond.
             </p>
 
             {/* Domain pills */}
@@ -318,7 +318,7 @@ export default function DemoHub() {
               Apply for Founding Partner Access →
             </a>
             <div style={{ ...BC, fontSize: 9, color: W25, letterSpacing: "0.2em", marginTop: 14, textTransform: "uppercase" }}>
-              Founding Partner Program · 90-day validation · Fortune 1000 only
+              Founding Partner Program · 90-day validation · startup to Fortune 500 only
             </div>
           </div>
 

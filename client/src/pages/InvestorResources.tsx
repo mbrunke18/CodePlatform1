@@ -215,7 +215,7 @@ export default function InvestorResources() {
   useEffect(() => {
     updatePageMetadata({
       title: "Investor Resources | Readiness OS — Strategic Readiness Platform",
-      description: "Investment overview for Readiness OS, the enterprise readiness infrastructure platform. Creating a new $5B+ software category for Fortune 1000 strategic execution.",
+      description: "Investment overview for Readiness OS, the enterprise readiness infrastructure platform. Creating a new $5B+ software category for startup to Fortune 500 strategic execution.",
       ogTitle: "Invest in Readiness OS - Category-Defining Opportunity",
       ogDescription: "Transform 30-day alignment cycles into 12-minute execution. First-mover in Strategic Readiness Platform (SEOS) category.",
     });

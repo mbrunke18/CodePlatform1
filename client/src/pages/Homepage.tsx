@@ -847,7 +847,7 @@ function ScenarioHookSection() {
 
           {/* Context */}
           <p style={{ ...DM, fontSize: 14, color: "rgba(255,255,255,0.78)", lineHeight: 1.7, maxWidth: 660, marginBottom: 32 }}>
-            Most Fortune 1000s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
+            Most startup to Fortune 500s spend 30 days figuring that out — while the window closes, the regulator moves, the competitor acts. Below is what 12 minutes looks like instead.
           </p>
 
           {/* Bridge line */}
@@ -2382,7 +2382,7 @@ function HomepageFooter() {
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, textAlign: "center" }}>
           <p style={{ ...DM, fontSize: 11, color: MUTED_LIGHT }}>
-            VaughnMartin · Readiness OS · Built for Fortune 1000 · Confidential
+            VaughnMartin · Readiness OS · Built for startup to Fortune 500 · Confidential
           </p>
         </div>
       </div>
@@ -2685,7 +2685,7 @@ function HowPlaybooksWorkSection() {
     {
       num: "01",
       label: "Pre-Built Architecture",
-      body: "170 Readiness Protocols ship as proven decision frameworks — built from 20+ years of Fortune 1000 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
+      body: "170 Readiness Protocols ship as proven decision frameworks — built from 20+ years of startup to Fortune 500 operational experience across 9 strategic domains. Every stakeholder role, every task sequence, every communication chain is already mapped.",
       accent: GOLD,
     },
     {
@@ -2716,7 +2716,7 @@ function HowPlaybooksWorkSection() {
               <em style={{ color: GOLD, fontStyle: "italic" }}>Proven architecture, personalized to you.</em>
             </h2>
             <p style={{ ...DM, fontSize: 16, color: "#4A5568", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
-              The Readiness Protocols start as accumulated decision logic from decades of Fortune 1000 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
+              The Readiness Protocols start as accumulated decision logic from decades of startup to Fortune 500 strategic response. They become yours through the preparation phase — customized to your people, your structure, and your specific conditions before any trigger fires.
             </p>
           </div>
         </Reveal>
@@ -2912,9 +2912,9 @@ export default function Homepage() {
   useEffect(() => {
     updatePageMetadata({
       title: "VaughnMartin | Readiness OS — Enterprise Coordination Infrastructure",
-      description: "Readiness OS gives Fortune 1000 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 170 Readiness Protocols, 248+ data points, zero improvisation.",
+      description: "Readiness OS gives startup to Fortune 500 enterprises end-to-end advantage: map every situation you'll face, monitor the right signals, decide with authority, execute in 12 minutes, and improve every cycle. 170 Readiness Protocols, 248+ data points, zero improvisation.",
       ogTitle: "VaughnMartin Readiness OS — End-to-End Organizational Advantage",
-      ogDescription: "The response is ready before the trigger fires. Map · Monitor · Decide · Execute · Learn — the complete operating architecture for Fortune 1000 execution. 3,600× Execution Head Start.",
+      ogDescription: "The response is ready before the trigger fires. Map · Monitor · Decide · Execute · Learn — the complete operating architecture for startup to Fortune 500 execution. 3,600× Execution Head Start.",
     });
   }, []);
   return (

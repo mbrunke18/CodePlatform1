@@ -213,7 +213,7 @@ export default function Research() {
                 <div>
                   <h3 className="text-2xl font-bold text-foreground mb-2">The Operating Model Gap</h3>
                   <p className="text-muted-foreground">
-                    BCG's 2026 research across Fortune 1000 clients confirms the structural constraint: the gap between AI investment and AI value is not the technology. It is the operating model.
+                    BCG's 2026 research across startup to Fortune 500 clients confirms the structural constraint: the gap between AI investment and AI value is not the technology. It is the operating model.
                   </p>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default function Research() {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground">
-                Source: BCG · AI-First Org & Operating Model Study · 2026 — Fortune 1000 client research across multiple industries and geographies. Co-authored by Sophie Strelczyk, Nina Kataeva, Christoph Hilberath, Vinciane Beauchene, and Kevin Kelley.
+                Source: BCG · AI-First Org & Operating Model Study · 2026 — startup to Fortune 500 client research across multiple industries and geographies. Co-authored by Sophie Strelczyk, Nina Kataeva, Christoph Hilberath, Vinciane Beauchene, and Kevin Kelley.
               </p>
             </div>
 

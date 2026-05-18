@@ -406,7 +406,7 @@ router.post('/analyze', async (req, res) => {
 - DEFENSE (containing threats): Crisis Response, Ransomware, Data Breach, Product Recall, Supplier Failure, Regulatory Investigation, Executive Departure
 - SPECIAL TEAMS (transformation initiatives): Digital Transformation, Competitive Response, AI Governance, Workforce Restructuring, Technology Migration, Cost Optimization
 
-A Fortune 1000 executive has described a strategic situation. Analyze it and classify into the right domain.
+A startup to Fortune 500 executive has described a strategic situation. Analyze it and classify into the right domain.
 
 ${domain !== 'auto' ? `DOMAIN HINT: ${domain}` : 'AUTO-DETECT the domain from the description.'}
 
@@ -515,7 +515,7 @@ router.post('/generate-playbook', async (req, res) => {
 
     const { incidentId, incidentType, description, whatWentWrong } = parsed.data;
 
-    const prompt = `You are an enterprise playbook architect for Fortune 1000 companies. Based on a real incident, generate a complete response playbook.
+    const prompt = `You are an enterprise playbook architect for startup to Fortune 500 companies. Based on a real incident, generate a complete response playbook.
 
 Return ONLY raw JSON (no markdown, no code fences) with this structure:
 {
@@ -948,7 +948,7 @@ router.post('/what-if', async (req, res) => {
       ? 'This is a SPECIAL TEAMS scenario (digital transformation, AI governance, competitive response). Focus on cross-functional coordination, change management, and organizational readiness.'
       : 'This is a strategic execution scenario. Determine the domain (offense, defense, or special teams) and analyze accordingly.';
 
-    const prompt = `You are an enterprise strategic execution timing analyst for Fortune 1000 companies. ${domainContext}
+    const prompt = `You are an enterprise strategic execution timing analyst for startup to Fortune 500 companies. ${domainContext}
 
 Given a playbook that coordinates in ~12 minutes, analyze how a proposed modification would impact coordination time and strategic outcomes.
 
