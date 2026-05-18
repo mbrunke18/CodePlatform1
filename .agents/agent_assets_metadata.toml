@@ -389,3 +389,9 @@ id = "nbLs9tZtj4dACzRgGkhw-"
 uri = "file://attached_assets/VaughnMartin_Pitch_Deck_12Slide_WOW.pptx"
 type = "slides"
 title = "VaughnMartin — 12-Slide Pitch Deck (PowerPoint)"
+
+[[outputs]]
+id = "elYDc74m1B5pwrLS4fz2b"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_12Slide_FINAL.pptx"
+type = "slides"
+title = "VaughnMartin — 12-Slide Pitch Deck FINAL (PowerPoint)"
