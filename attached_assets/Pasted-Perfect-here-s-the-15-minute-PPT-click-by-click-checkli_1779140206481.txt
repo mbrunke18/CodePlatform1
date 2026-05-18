@@ -1,0 +1,81 @@
+Perfect — here’s the 15-minute PPT click-by-click checklist.
+
+0) Prep (2 minutes)
+Open your PPT.
+Set slide size to 16:9 Widescreen.
+Turn on Guides and Snap to Grid.
+Put your 3 screenshots in a folder:
+home.png
+signals.png
+builder.png
+1) Slide 1 (center + stronger opener) — 2 minutes
+Text
+Replace headline with: “When a strategic trigger fires in your organization—are you executing in 12 minutes or organizing from scratch?”
+
+Layout
+Select headline text box:
+Horizontal align: Center
+Vertical position: roughly upper-middle
+Width: ~70% of slide
+Select any chip row/subtext:
+Align center to slide
+Equal spacing between chips
+Keep logo/footer low-left but clear of main content
+2) Slide 2 (“30 Days” overlap fix) — 1 minute
+Select “30” and “Days” objects.
+If they’re separate: set “Days” y-position lower by ~8–12 px.
+If same text box: set line spacing to 1.05–1.1 and remove negative spacing.
+Ensure no touching/crossed appearance in presenter view.
+3) Slide 3 card text collision fix — 2 minutes
+On each scenario card:
+Move confidence % badge slightly up/right.
+Add right padding so domain label doesn’t run under the badge.
+Practical fix:
+Shrink domain label width by ~15–20%.
+Keep badge anchored top-right with 10–14 px margin.
+4) Slide 6 add real product proof image — 2 minutes
+Insert builder.png.
+Place near lower half as a “proof panel”.
+Crop to focus on protocol/governance area.
+Add thin border:
+1 pt line, gold-ish accent
+Add subtle shadow (soft outer shadow).
+Caption (small): “Live product workflow in production.”
+
+5) Slide 8 add WOW screenshot strip — 3 minutes
+Create 3-image row:
+
+home.png
+signals.png
+builder.png
+For each image:
+
+Same height
+Equal spacing
+Crop to focal point (not entire browser UI)
+Add consistent border + shadow
+Optional short labels under each:
+
+“Live Readiness Experience”
+“Signal Detection Feed”
+“Protocol Builder”
+6) Slide 10 remove placeholder text — 1 minute
+Replace any placeholder like [Round Size] [Terms] with: “Open strategic raise — active conversations underway.” (or your exact round details)
+
+7) Slide 11 reduce density and prevent overlap — 2 minutes
+Replace long paragraphs with short close lines:
+
+Problem: “Enterprises detect more signals, but still mobilize too slowly.”
+Solution: “Readiness OS pre-stages response so executives authorize in minutes.”
+Outcome: “Earlier detection + faster execution protects value before the window closes.”
+Formatting:
+
+15–18 pt equivalent readability from distance
+Slightly more vertical spacing between blocks
+Keep CTA line isolated at bottom
+Final 60-second QA before export
+Run slideshow mode and check every slide for touching text.
+Check slide 1 centering on fullscreen.
+Check slide 11 readability from distance.
+Export PDF and re-open to verify no font shift.
+Confirm all metrics are consistent across slides.
