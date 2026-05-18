@@ -83,3 +83,45 @@ VaughnMartin's Readiness OS is a coordination infrastructure for the Fortune 100
 - **Email:** Resend
 - **Deployment:** Replit deployments
 - **Microsoft Ecosystem:** Microsoft Teams, Copilot Studio, Microsoft Entra
+
+---
+
+## Critical Asset Reference (READ BEFORE ANY VISUAL WORK)
+
+This section exists to prevent recurring errors. Read it before touching branding, logos, presentations, or screenshots.
+
+### THE LOGO — Authoritative Definition
+The VaughnMartin / Readiness OS logo is a **custom SVG React component**. It is NOT any PNG file in `client/src/assets/`.
+
+**Source of truth:** `client/src/components/ExecuteIQLogo.tsx` → exported as `VaughnMartinLogo`
+**Wrapper:** `client/src/components/VaughnMartinLogo.tsx`
+
+**Visual anatomy (do not deviate):**
+1. **TechSeal** — circular badge, navy radial gradient fill (`#0A0F2E` → `#1a2860`), gold outer ring (`#C9A84C`, 1px), tick marks around the perimeter, small cardinal diamonds at N/S/E/W, "VM" monogram centered in **Georgia serif bold gold**, "VAUGHNMARTIN · READINESS OS" arced along the top in gold Courier monospace, "ANTE IGNEM PARATUS" arced along the bottom in teal Courier monospace, teal signal pulse dot at 6 o'clock.
+2. **Wordmark** — "VaughnMartin" in **Cormorant Garamond** (font-weight 600), followed by a short gold rule + "READINESS OS" in **Barlow Condensed** (font-weight 700, letter-spacing 0.34em, uppercase), both positioned to the right of the seal.
+
+**NEVER use these for the logo:**
+- `client/src/assets/poise-logo-official.png` — legacy/wrong asset, do not use
+- `client/src/assets/poise-logo.png` — legacy/wrong asset, do not use
+- Any PNG from `attached_assets/` unless the user explicitly provides it as the current logo
+
+**For external files (PPTX, PDF, etc.) where SVG components cannot be used:**
+- Screenshot the logo directly from the running app (e.g., `/executive-brief` page body shows a large clear instance)
+- Crop with PIL and use the resulting PNG — OR — draw the logo manually using the anatomy above
+
+### Brand Colors (exact hex — do not guess)
+- `NAVY = #0A0F2E` (primary background, headings)
+- `GOLD = #C9A84C` (accent, rules, key labels)
+- `TEAL = #2B8A6E` (secondary accent)
+- `IVORY = #F0EDE4` (light panel backgrounds)
+- No purple anywhere on the platform
+
+### Screenshot Assets Available
+Located in `screenshots/` — use these for decks, not placeholder boxes:
+- `slide_mission_control.jpg` — Command Tower / live signal feed
+- `slide_protocol_library.jpg` — Playbook/Protocol Library
+- `slide_onboarding.jpg` — Getting Started / Onboarding
+- `slide_buyer_packet.jpg` — Executive Brief / Buyer Packet
+- `slide_execution.jpg` — Execution / War Room view
+- `deck_signals.jpg` — Signal Detection feed
+- `deck_activation.jpg` — Activation Console
