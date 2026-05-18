@@ -371,3 +371,15 @@ id = "sF81wQRs_uuc69X5nZXvV"
 uri = "file://attached_assets/VaughnMartin_Pitch_Deck_SHOW_THE_SYSTEM.pptx"
 type = "slides"
 title = "Pitch Deck — SHOW THE SYSTEM (PPTX with speaker notes)"
+
+[[outputs]]
+id = "-drF6GSq7PbHALbF685IB"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_FINAL_Wednesday.pdf"
+type = "pdf"
+title = "FINAL Wednesday Deck — Redline Applied (PDF, 12 slides)"
+
+[[outputs]]
+id = "FUNU3YiTAIB33sotzvo_k"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_FINAL_Wednesday.pptx"
+type = "slides"
+title = "FINAL Wednesday Deck — Redline Applied (PPTX + Speaker Notes)"
