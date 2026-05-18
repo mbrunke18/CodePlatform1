@@ -359,3 +359,15 @@ id = "2ZvU2bJulxmBQFlL6HWa_"
 uri = "file://linkedin_assets/product_logo_300x300.png"
 type = "image"
 title = "LinkedIn Products Tab — Product Logo (300×300)"
+
+[[outputs]]
+id = "TuGjzJ4gmMt8FQgXD9lEU"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_SHOW_THE_SYSTEM.pdf"
+type = "pdf"
+title = "Pitch Deck — SHOW THE SYSTEM (PDF, 12 slides)"
+
+[[outputs]]
+id = "sF81wQRs_uuc69X5nZXvV"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_SHOW_THE_SYSTEM.pptx"
+type = "slides"
+title = "Pitch Deck — SHOW THE SYSTEM (PPTX with speaker notes)"

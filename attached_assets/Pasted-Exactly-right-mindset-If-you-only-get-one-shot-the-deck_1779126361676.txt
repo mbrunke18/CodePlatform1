@@ -1,0 +1,96 @@
+Exactly right mindset.
+If you only get one shot, the deck must feel like the product is already inevitable.
+
+Use a “SHOW THE SYSTEM” deck (not a “TELL THE STORY” deck)
+12-slide WOW structure (investor + customer ready)
+1) The Moment (Hook)
+Visual: full-bleed split image
+
+Left: “Traditional response = 30 days mobilization”
+Right: Mission Control screenshot with “12-minute execution window” overlay
+Line: “Most organizations lose before they even start coordinating.”
+
+2) The Real Problem
+Visual: simple timeline graphic
+Signal appears -> Org notices late -> Alignment delay -> Opportunity/loss realized.
+
+Line: “The cost is not effort. It’s late detection + late alignment.”
+
+3) Your Core Thesis (must land hard)
+Visual: two-stage arrow
+
+Signal Advantage (see earlier)
+Execution Advantage (act faster)
+Line: “Readiness OS gives signal advantage before execution advantage.”
+
+4) Mission Control (hero product slide)
+Visual: clean screenshot of Mission Control with 3 callouts:
+
+Emerging situations
+Trigger status
+Decision window open
+Line: “This is where leadership sees what is forming and what to do now.”
+
+5) Trigger Architecture (customer-defined on their terms)
+Visual: trigger setup screenshot (thresholds, alert logic, escalation)
+
+Line: “Customers define the exact triggers and alerts so they don’t miss windows on someone else’s terms.”
+
+6) Executive Decision Gate
+Visual: decision/authorization panel screenshot
+Callout: AI recommendation + human authorization point.
+
+Line: “AI monitors. Executives authorize.”
+
+7) Execution Orchestration
+Visual: execution board screenshot with layered callouts:
+
+Roles/responsibilities
+Tasks sequencing
+Internal/external comms
+Budget activation
+Line: “When authorized, coordination starts instantly across functions.”
+
+8) End-to-End Value
+Visual: 5-stage lifecycle graphic with product screenshots in each stage: Map -> Monitor -> Decide -> Execute -> Learn
+
+Line: “This is full operating architecture, not a point tool.”
+
+9) Learning Loop / Compounding Edge
+Visual: analytics or post-action learning dashboard screenshot
+
+Line: “Every activation improves future readiness.”
+
+10) Proof of Product Reality
+Visual: collage of live pages:
+
+onboarding
+protocol library
+buyer packet
+mission control
+(Use real UI screenshots, not mockups.)
+Line: “This is production software in active use paths, not a concept.”
+
+11) Commercial Motion
+Visual: simple 3-block model Founding Partner -> measurable outcomes -> enterprise expansion
+
+Line: “Focused entry, fast proof, scalable expansion.”
+
+12) Ask + Close
+Visual: clean branded slide with one product image ghosted in background
+
+Line: “If advantage belongs to teams that see earlier and execute decisively, partner with us.”
+
+Visual rules that make it feel premium
+Max 1 idea per slide
+Max 8 words headline
+Max 20–30 words body
+One screenshot per slide, with 2–3 bold callouts
+No dense UI screenshots without highlight boxes
+Use consistent red/amber/green status motif for urgency/control
+Keep typography large enough for back row readability
+Presentation choreography (to WOW)
+First 45 sec: pain + thesis
+Next 2 min: product proof (Mission Control -> Trigger -> Decision -> Execution)
+Next 60 sec: why this wins (full lifecycle + learning)
+Final 30 sec: commercial clarity + ask
