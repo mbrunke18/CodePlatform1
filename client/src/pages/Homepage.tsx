@@ -1259,6 +1259,31 @@ function ExecutionGapSection() {
   );
 }
 
+// ─── WHY NOW STRIP ────────────────────────────────────────────────────────────
+function WhyNowStrip() {
+  return (
+    <section style={{ background: NAVY, borderTop: `3px solid ${GOLD}`, padding: "64px 0 60px" }}>
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 32px", textAlign: "center" }}>
+        <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: GOLD, marginBottom: 18, fontFamily: "'Barlow Condensed', sans-serif" }}>
+          WHY THIS MATTERS NOW
+        </div>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 24, maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
+          Enterprises are moving beyond digital workflows<br />toward AI-enabled autonomy.
+        </h2>
+        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.68)", lineHeight: 1.78, maxWidth: 700, margin: "0 auto 32px", fontFamily: "'Barlow', Arial, sans-serif", fontWeight: 500 }}>
+          The risk is not adopting autonomy — it is adopting it without governance, coordination, and decision clarity. Readiness OS provides the operating model for this shift: detect earlier, decide with authority, execute in minutes, and improve every cycle.
+        </p>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "12px 28px", border: `1px solid rgba(201,168,76,0.4)`, background: "rgba(201,168,76,0.07)" }}>
+          <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2B8A6E", flexShrink: 0 }} />
+          <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", color: GOLD, fontFamily: "'Barlow Condensed', sans-serif", textTransform: "uppercase" as const }}>
+            AI monitors. Executives authorize.
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── SECTION 4: The Missing Layer ────────────────────────────────────────────
 function MissingLayerSection() {
   const rows = [
@@ -2872,6 +2897,7 @@ export default function Homepage() {
       <ContrastMomentSection />
 
       {/* 5. THESIS — The missing operating model */}
+      <WhyNowStrip />
       <MissingLayerSection />
 
       {/* 5c. LIFECYCLE — The full advantage system */}

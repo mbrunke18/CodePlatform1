@@ -138,6 +138,36 @@ export default function HowItWorks() {
         </div>
       </section>
 
+      {/* ── AUTONOMY-READY CALLOUT ── */}
+      <section style={{ background: NAVY, padding: "72px clamp(16px, 4vw, 56px)", borderTop: `3px solid ${GOLD}`, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="max-w-6xl mx-auto" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <SectionLabel text="Autonomy-Ready, Authority-Preserved" color={TEAL_LIGHT} />
+            <h2 style={{ ...CG, fontSize: "clamp(26px, 3vw, 38px)", fontWeight: 600, color: "#fff", lineHeight: 1.25, marginBottom: 20 }}>
+              Built for the next enterprise model.
+            </h2>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.68)", lineHeight: 1.78, fontWeight: 500, marginBottom: 0 }}>
+              Readiness OS is built for the next enterprise model: systems that continuously sense, recommend, and coordinate at machine speed — while leadership retains final authority. We combine autonomous monitoring with governed execution, so organizations move faster without losing control.
+            </p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {[
+              "Continuous signal monitoring across customer-defined triggers",
+              "Human authorization at every decision gate",
+              "Coordinated execution across roles, budgets, and communications",
+              "Post-event learning embedded into future readiness protocols",
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14, padding: "16px 20px", background: "rgba(255,255,255,0.04)", borderLeft: `3px solid ${i % 2 === 0 ? GOLD : TEAL}` }}>
+                <div style={{ width: 20, height: 20, background: i % 2 === 0 ? "rgba(201,168,76,0.15)" : "rgba(43,138,110,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                  <CheckCircle style={{ width: 11, height: 11, color: i % 2 === 0 ? GOLD_LIGHT : TEAL_LIGHT }} />
+                </div>
+                <span style={{ fontSize: 14, fontWeight: 500, color: "rgba(255,255,255,0.82)", lineHeight: 1.5 }}>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── THE 12-MINUTE SEQUENCE DIAGRAM ── */}
       <section style={{ background: OFF, padding: "80px clamp(16px, 4vw, 56px) 100px", borderBottom: `1px solid ${BORDER}` }}>
         <div className="max-w-7xl mx-auto">

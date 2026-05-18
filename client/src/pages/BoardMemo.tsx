@@ -150,6 +150,9 @@ function MemoDocument({ form }: { form: FormState }) {
         <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8 }}>
           Readiness OS is not a technology tool — it is an operating model. It pre-stages execution for every scenario we are likely to face: tasks sequenced, budgets pre-authorized, executives mapped, and stakeholder communications pre-drafted. When a trigger fires, the response is already prepared. Executives authorize; the platform orchestrates. Human authority is preserved; coordination lag is eliminated.
         </p>
+        <p style={{ fontSize: 13, color: '#374151', lineHeight: 1.8, marginTop: 10 }}>
+          Readiness OS aligns with the next wave of enterprise operating models: AI-enabled autonomy with governance. Rather than automating isolated tasks, the platform stages end-to-end response architecture — scenarios, trigger logic, authority gates, budgets, and communications — so leadership can authorize action at speed with full accountability. This creates both earlier situational awareness and faster coordinated execution without compromising control.
+        </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, marginTop: 14 }}>
           {[
             '170 Readiness Protocols — pre-staged across 9 strategic domains',
@@ -209,7 +212,8 @@ function MemoDocument({ form }: { form: FormState }) {
 
       <div style={{ marginTop: 32, paddingTop: 20, borderTop: `1px solid ${BORDER}`, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>
         Prepared by {champion}, {title} · {FMT_DATE(TODAY)} · {company} · Confidential — Not for external distribution<br />
-        VaughnMartin Readiness OS · Security & Compliance documentation available at /security-compliance
+        VaughnMartin Readiness OS · Security & Compliance documentation available at /security-compliance<br />
+        <em>Readiness OS supports executive decision-making and execution orchestration; final decision authority remains with designated human leaders.</em>
       </div>
     </div>
   );

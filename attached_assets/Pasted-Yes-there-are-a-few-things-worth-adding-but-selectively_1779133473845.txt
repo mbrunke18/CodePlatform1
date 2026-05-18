@@ -1,0 +1,82 @@
+Yes — there are a few things worth adding, but selectively.
+
+What to add (now)
+“Why now” credibility block on website/deck
+
+Position Readiness OS as the practical path to the autonomous-business shift.
+Example line:
+“As enterprises move from digital workflows to AI-enabled autonomy, Readiness OS provides governed execution readiness.”
+Category bridge language
+
+Add a section that maps your system to this shift:
+Map -> Monitor -> Decide -> Execute -> Learn
+This aligns with Gartner’s autonomy themes without changing your core story.
+Workforce framing
+
+Emphasize “augmented workforce” explicitly:
+“Machines monitor and recommend; leaders and teams retain authority and accountability.”
+Future-facing note in investor/roadmap pages
+
+Mention “machine customers / programmable transactions” as future-readiness considerations, not core promise today.
+What not to add
+Don’t market yourselves as “fully autonomous decision-making.”
+That conflicts with your strongest differentiator: AI monitors, executives authorize.
+
+Don’t overload homepage with all 5 Gartner components.
+Keep hero focused on your core value: earlier detection + faster governed execution.
+
+Best place to insert this
+Homepage: short “Why now” strip
+How It Works: one “Autonomy-ready operating model” callout
+Investor deck: 1 slide (“Aligned with post-digital enterprise shift”)
+Buyer packet: 1 paragraph under strategic rationale
+If you want, I can give you exact paste-ready copy for those 4 placements.
+
+yes
+
+Use these paste-ready blocks.
+
+1) Homepage “Why Now” strip
+Headline:
+Why this matters now
+
+Body:
+Enterprises are moving beyond digital workflows toward AI-enabled autonomy. The risk is not adopting autonomy — it is adopting it without governance, coordination, and decision clarity. Readiness OS provides the operating model for this shift: detect earlier, decide with authority, execute in minutes, and improve every cycle.
+
+Micro-line:
+AI monitors. Executives authorize.
+
+2) How It Works callout (“Autonomy-ready”)
+Section title:
+Autonomy-Ready, Authority-Preserved
+
+Body:
+Readiness OS is built for the next enterprise model: systems that continuously sense, recommend, and coordinate at machine speed — while leadership retains final authority. We combine autonomous monitoring with governed execution, so organizations move faster without losing control.
+
+Bullets:
+
+Continuous signal monitoring across customer-defined triggers
+Human authorization at decision gates
+Coordinated execution across roles, budgets, and communications
+Post-event learning embedded into future readiness protocols
+3) Investor slide copy (single slide)
+Slide headline:
+Built for the Post-Digital Enterprise Shift
+
+Subhead:
+From task automation to governed operational autonomy.
+
+Body bullets:
+
+Most enterprises are entering an autonomy era driven by AI agents and adaptive systems.
+Readiness OS focuses this shift where value is highest: strategic detection, executive decisioning, and coordinated execution.
+We provide a controlled path to autonomy: machine-speed monitoring + human authority + auditability.
+Footer line:
+Signal advantage before execution advantage.
+
+4) Buyer Decision Packet / Board Memo paragraph
+Paragraph:
+Readiness OS aligns with the next wave of enterprise operating models: AI-enabled autonomy with governance. Rather than automating isolated tasks, the platform stages end-to-end response architecture — scenarios, trigger logic, authority gates, budgets, and communications — so leadership can authorize action at speed with full accountability. This creates both earlier situational awareness and faster coordinated execution without compromising control.
+
+Optional one-line legal/safety guardrail (footer note)
+“Readiness OS supports executive decision-making and execution orchestration; final decision authority remains with designated human leaders.”

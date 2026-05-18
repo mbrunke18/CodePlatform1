@@ -395,3 +395,9 @@ id = "elYDc74m1B5pwrLS4fz2b"
 uri = "file://attached_assets/VaughnMartin_Pitch_Deck_12Slide_FINAL.pptx"
 type = "slides"
 title = "VaughnMartin — 12-Slide Pitch Deck (copy updated, overlaps fixed)"
+
+[[outputs]]
+id = "vPY7V4PAix7fUXbK8YT3X"
+uri = "file://attached_assets/Gartner_Investor_Slide.pptx"
+type = "slides"
+title = "Gartner Slide — Built for the Post-Digital Enterprise Shift"
