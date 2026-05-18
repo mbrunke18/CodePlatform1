@@ -1,0 +1,141 @@
+REPLIT HANDOFF PROMPT (10/10 PITCH DECK UPGRADE)
+You are upgrading my investor pitch deck to a 10/10 presentation-quality artifact.
+
+Goal
+Polish and finalize this deck for live presentation:
+
+attached_assets/VaughnMartin-Investor-Pitch-Deck.html
+Output
+Create:
+
+attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.html
+Do not break keyboard navigation, progress bar, or fullscreen support.
+
+Non-negotiables (must keep)
+Narrative arc: Problem → Readiness Gap → Solution → Proof → Ask → Close
+Core claim: 30 days mobilization vs 12-minute execution window
+Value framing: Signal advantage before execution advantage
+Governance framing: AI monitors, executives authorize
+Market framing: startup to Fortune 500 (not limited to Fortune 1000)
+Visual quality requirements (must pass)
+No stretched/squished screenshots.
+No text overlap or clipping on any slide.
+No placeholder text.
+Every slide fully fits 1280x720 without overflow.
+High contrast/readability from distance.
+Screenshot source assets
+Use these files:
+
+attached_assets/pitch-images-hd/home-raw.png
+attached_assets/pitch-images-hd/signals-raw.png
+attached_assets/pitch-images-hd/builder-raw.png
+If needed, crop in CSS using object-fit: cover (never distort image proportions).
+
+CSS requirements (implement exactly)
+Add/ensure:
+
+.slide {
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+}
+.product-shot {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 6px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+.product-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+Slide content lock (replace copy as needed)
+Slide 1 — Opening
+Headline: When a strategic trigger fires in your organization—are you executing in 12 minutes or organizing from scratch?
+Subline: Signal advantage before execution advantage.
+
+Slide 2 — Readiness Question
+Include this exact line: Who calls who? Where’s the brief? Who owns it? Who authorizes?
+Anchor: This is a readiness problem, not a talent problem.
+
+Slide 3 — Problem Is Here
+3 scenario cards, readable, no badge overlap:
+
+Ransomware Attack Confirmed
+Regulatory Inquiry Opened
+Opportunity signal (e.g., Market Entry Window Opening)
+Slide 4 — Solution
+Keep:
+
+response ready before trigger fires
+AI monitors. Executives authorize.
+Slide 5 — Moat
+Must include:
+
+pre-staged protocols
+trigger-to-protocol mapping
+human authorization gate
+audit/governance layer
+Slide 6 — Mic-drop proof slide
+Title: From Signal to Authorized Execution in 12 Minutes
+Use 2 real product visuals (or one large hero):
+
+signal screenshot
+execution/protocol screenshot
+Bottom line: AI monitors. Executives authorize. Teams execute.
+Slide 7 — Value/ROI
+Keep commercial clarity:
+
+Founding Partner: $75K / 90-day validation
+Growth tiers: $75K–$250K annually
+one board-level line about cost of delay > cost of readiness
+Slide 8 — Live proof
+Must show: 170 protocols · 221 triggers · 248 data points · refreshed every 15 minutes
+Include real product screenshot(s), crisp and legible.
+
+Slide 9 — Why Now
+Use:
+
+AI capability accelerating
+enterprise readiness lagging
+governed execution becoming competitive edge
+Source line: Stanford HAI AI Index 2026 + Gartner Autonomous Business
+Slide 10 — Ask
+No placeholders. Use:
+
+12 Founding Partners
+startup to Fortune 500 scope
+clear next-step CTA
+Slide 11 — Close (3-line close only)
+Problem: Enterprises detect more signals but still mobilize too slowly.
+Solution: VaughnMartin pre-stages response so executives authorize in minutes.
+Outcome: Earlier detection + faster execution protects value before the window closes. CTA only after this.
+Required QA script
+After edits, run checks and fix any failures:
+
+Verify no slide overflow (scrollWidth/clientWidth and scrollHeight/clientHeight).
+Verify all images render and are not distorted.
+Verify no text overlaps.
+Verify Slide 1 centered layout.
+Verify final slide readability and no crowding.
+Return a short report with:
+
+file changed
+list of edits by slide
+QA pass/fail per check
+DONE when:
+attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.html exists
+passes all QA checks above
+visually presentation-ready at 1280x720 fullscreen
+Extra: final send package to host
+After Replit finishes, send host:
+
+VaughnMartin-Investor-Pitch-Deck-v10.html
+PDF export (from browser print-to-PDF)
+/attached_assets/pitch-images-hd/ folder
+one-page talking points

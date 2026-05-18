@@ -431,3 +431,9 @@ id = "Eu8VrWGIKY-TpVTOuqkWo"
 uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck-v3.zip"
 type = "unspecified"
 title = "PPTX + PDF — v3 (1.2MB zip)"
+
+[[outputs]]
+id = "W6qpMOdCG3nWJMfBENE50"
+uri = "file://attached_assets/VaughnMartin-Pitch-Deck-v10-Package.zip"
+type = "unspecified"
+title = "Pitch Deck v10 — Complete Package (HTML + PPTX + PDF)"
