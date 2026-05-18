@@ -323,3 +323,9 @@ id = "RIfYraJqBQxuOQtxHqPc-"
 uri = "file://attached_assets/VaughnMartin_Pitch_Deck_UPDATED_2026.pptx"
 type = "slides"
 title = "VaughnMartin Pitch Deck — Proportional & Contrast-Improved"
+
+[[outputs]]
+id = "LxKVYNnyuDs9EdH_OzrrA"
+uri = "file://attached_assets/VaughnMartin_Pitch_Deck_FINAL_v2_2026.pptx"
+type = "slides"
+title = "VaughnMartin Pitch Deck — Final v2, May 2026"
