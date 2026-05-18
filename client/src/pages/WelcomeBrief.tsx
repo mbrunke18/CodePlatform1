@@ -87,7 +87,8 @@ export default function WelcomeBrief() {
   const [statsVisible, setStatsVisible] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
 
-  const { data, isLoading } = useQuery<any>({ queryKey: ['/api/org/welcome-brief'] });
+  const { data: user } = useQuery<any>({ queryKey: ['/api/auth/user'] });
+  const { data, isLoading } = useQuery<any>({ queryKey: ['/api/org/welcome-brief'], enabled: !!user });
 
   useEffect(() => {
     markWelcomeBriefSeen();
