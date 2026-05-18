@@ -321,6 +321,126 @@ export const pageOnboardingConfigs: Record<string, PageOnboarding> = {
         phase: 'IDENTIFY'
       }
     ]
+  },
+  'mission-control': {
+    pageId: 'mission-control',
+    pageName: 'Mission Control',
+    steps: [
+      {
+        id: 'mc-welcome',
+        title: 'Mission Control — Your Executive Cockpit',
+        description: 'This is your top-level operating view. Live signals, active protocols, and your authorization queue are all visible here. When a trigger fires, this is where you authorize the response.',
+        phase: 'EXECUTE'
+      },
+      {
+        id: 'mc-signals',
+        title: 'Live Signal Feed',
+        description: 'The system continuously monitors 248+ data points across 9 strategic domains. Signals that breach thresholds surface here — pre-matched to a Readiness Protocol — before escalating to you.',
+        phase: 'DETECT'
+      },
+      {
+        id: 'mc-activation',
+        title: 'Authorization Queue',
+        description: 'Readiness Protocols are pre-staged before a trigger fires. When one matches, it appears here ready for your review and authorization. AI recommends — you decide.',
+        phase: 'EXECUTE'
+      },
+      {
+        id: 'mc-posture',
+        title: 'Readiness Posture',
+        description: 'The score in the top right reflects your organization\'s current readiness across active protocols, recent drills, and signal coverage. Target: above 80 before your first live event.',
+        phase: 'IDENTIFY'
+      }
+    ]
+  },
+  'workspace': {
+    pageId: 'workspace',
+    pageName: 'Workspace Hub',
+    steps: [
+      {
+        id: 'ws-welcome',
+        title: 'Workspace — Your IDEA Operating Model',
+        description: 'Every action in Readiness OS follows the IDEA lifecycle: Identify → Detect → Execute → Advance. This hub routes you to the right phase. Use it as your team\'s operating cadence surface.',
+        phase: 'IDENTIFY'
+      },
+      {
+        id: 'ws-identify',
+        title: 'Identify Phase',
+        description: 'Design and stage your Readiness Protocols before any trigger fires. Select scenarios, assign ownership, set trigger thresholds, and validate execution quality.',
+        phase: 'IDENTIFY'
+      },
+      {
+        id: 'ws-execute',
+        title: 'Execute Phase',
+        description: 'When a trigger fires, this phase surfaces your war room, task assignments, and decision authority chain. Pre-staged coordination replaces real-time scrambling.',
+        phase: 'EXECUTE'
+      },
+      {
+        id: 'ws-advance',
+        title: 'Advance Phase',
+        description: 'After every activation or drill, capture outcomes, analyze effectiveness, and generate board-ready evidence. This is how readiness improves over time.',
+        phase: 'ADVANCE'
+      }
+    ]
+  },
+  'playbook-library': {
+    pageId: 'playbook-library',
+    pageName: 'Protocol Library',
+    steps: [
+      {
+        id: 'pl-welcome',
+        title: 'Protocol Library — 170 Pre-Staged Responses',
+        description: 'Every protocol here is a complete execution architecture: trigger logic, ownership map, task sequence, communications, and governance — staged before the event occurs.',
+        phase: 'IDENTIFY'
+      },
+      {
+        id: 'pl-domains',
+        title: 'Three Strategic Domains',
+        description: 'Protocols are organized across Growth & Positioning, Risk & Resilience, and Transformation. Use the domain filters to narrow to your area of ownership.',
+        phase: 'IDENTIFY'
+      },
+      {
+        id: 'pl-detail',
+        title: 'Protocol Detail View',
+        description: 'Click any protocol to inspect its trigger conditions, decision chain, and execution blueprint. Confirm fitness for your organization before customizing.',
+        phase: 'IDENTIFY'
+      },
+      {
+        id: 'pl-customize',
+        title: 'Customize for Your Org',
+        description: 'From the detail view, open Customize to map the protocol to real people and systems. Assign roles, set approval authority, and define communication paths specific to your operating model.',
+        phase: 'IDENTIFY'
+      }
+    ]
+  },
+  'protocol-builder': {
+    pageId: 'protocol-builder',
+    pageName: 'Protocol Builder',
+    steps: [
+      {
+        id: 'pb-welcome',
+        title: 'Protocol Builder — Build Custom Readiness',
+        description: 'Use this 6-step wizard to create a net-new Readiness Protocol for any scenario not covered by the 170 core protocols. Your custom protocols follow the same execution architecture as the core library.',
+        phase: 'IDENTIFY'
+      },
+      {
+        id: 'pb-trigger',
+        title: 'Define the Trigger',
+        description: 'Every protocol starts with a trigger condition — the specific signal or threshold that activates the response. Use the trigger sandbox to test your conditions before publishing.',
+        phase: 'DETECT'
+      },
+      {
+        id: 'pb-governance',
+        title: 'Set Governance Controls',
+        description: 'Define the approval authority chain, budget threshold, and escalation path. No protocol activates without executive sign-off — you configure who has the authority to authorize.',
+        phase: 'EXECUTE'
+      },
+      {
+        id: 'pb-publish',
+        title: 'Validate and Publish',
+        description: 'Before publishing, run a readiness scorecard check to confirm the protocol has adequate trigger coverage, ownership assignment, and governance controls. Publish makes it available in Mission Control.',
+        phase: 'ADVANCE'
+      }
+    ]
   }
 };
 

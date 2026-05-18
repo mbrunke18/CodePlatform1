@@ -183,6 +183,7 @@ const OnboardingWizard = lazy(() => import("./pages/OnboardingWizard"));
 const GettingStarted = lazy(() => import("./pages/GettingStarted"));
 const NewUserJourney = lazy(() => import("./pages/NewUserJourney"));
 const GuidedStart = lazy(() => import("./pages/GuidedStart"));
+const InteractiveOnboarding = lazy(() => import("./pages/InteractiveOnboarding"));
 const PeerReview = lazy(() => import("./pages/PeerReview"));
 const PeerReviewReport = lazy(() => import("./pages/PeerReviewReport"));
 const CompetitivePositioning = lazy(() => import("./pages/CompetitivePositioning"));
@@ -504,6 +505,7 @@ function Router() {
         {renderRoutes(["/new-user-journey", "/welcome", "/journey", "/experience"], NewUserJourney)}
         <Route path="/begin" component={GuidedStart} />
         <Route path="/start" component={GuidedStart} />
+        <Route path="/onboard" component={InteractiveOnboarding} />
         <Route path="/preparedness-report">{() => <PreparednessReport />}</Route>
         <Route path="/drill-tracking" component={DrillTrackingSystem} />
         {renderRoutes(["/playbook-library", "/playbooks", "/business-scenarios"], ProtocolLibrary)}
