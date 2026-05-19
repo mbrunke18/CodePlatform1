@@ -240,11 +240,12 @@ txb(s2, "This is a readiness problem, not a talent problem.",
     size=13, bold=True, color=WHITE)
 
 for i, b in enumerate([
-    "— Coordination restarts from zero at every trigger",
-    "— The strategic window closes before execution begins",
+    "— Every trigger restarts the mobilization clock from zero",
+    "— The window to act closes before execution begins",
+    "— Every enterprise has talent. None have pre-staged responses.",
 ]):
-    txb(s2, b, Inches(7.04), Inches(4.38) + i * Inches(0.62),
-        Inches(5.8), Inches(0.56), size=13, color=MUTED)
+    txb(s2, b, Inches(7.04), Inches(4.38) + i * Inches(0.58),
+        Inches(5.8), Inches(0.54), size=13, color=MUTED)
 
 vrule(s2, Inches(6.54), Inches(0.40), Inches(6.52))
 slide_num(s2, 2)
@@ -434,6 +435,44 @@ GAP6    = Inches(0.30)
 IMG6_RX = Inches(0.36) + IMG6_LW + GAP6           # ≈ 6.81in
 IMG6_RW = W - IMG6_RX - Inches(0.36)              # ≈ 6.16in  (same height at 16:9)
 
+# ── 6-step numbered timeline ─────────────────────────────────
+STEPS6 = [
+    ("01", "Signal\nDetected"),
+    ("02", "Threat\nClassified"),
+    ("03", "Protocol\nMatched"),
+    ("04", "Team\nNotified"),
+    ("05", "Executive\nAuthorizes"),
+    ("06", "Response\nDeploys"),
+]
+STEP_W  = Inches(1.76)
+STEP_H  = Inches(0.60)
+ARROW_W = Inches(0.26)
+CHAIN_W = len(STEPS6) * STEP_W + (len(STEPS6) - 1) * ARROW_W  # ≈ 11.86in
+CHAIN_X = (W - CHAIN_W) / 2
+CHAIN_Y = IMG6_Y  # sits where images used to start
+
+for idx, (num, label) in enumerate(STEPS6):
+    sx = CHAIN_X + idx * (STEP_W + ARROW_W)
+    is_last = (idx == len(STEPS6) - 1)
+    box_col = TEAL if is_last else RGBColor(0x0E, 0x16, 0x3C)
+    rect(s6, sx, CHAIN_Y, STEP_W, STEP_H, fill=box_col)
+    txb(s6, num, sx, CHAIN_Y + Inches(0.04), STEP_W, Inches(0.22),
+        size=11, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
+    txb(s6, label, sx, CHAIN_Y + Inches(0.26), STEP_W, Inches(0.32),
+        size=9, color=WHITE, align=PP_ALIGN.CENTER)
+    if not is_last:
+        txb(s6, "→", sx + STEP_W, CHAIN_Y + Inches(0.18),
+            ARROW_W, Inches(0.26),
+            size=14, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
+
+# "12 MIN END-TO-END" badge flush right of chain
+txb(s6, "12 MIN\nEND-TO-END",
+    CHAIN_X + CHAIN_W - STEP_W, CHAIN_Y + Inches(0.04),
+    STEP_W, STEP_H, size=9, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+
+# ── Images — shifted down below timeline ──────────────────────
+IMG6_Y = CHAIN_Y + STEP_H + Inches(0.16)   # ≈ 2.38in
+
 cover_pic(s6, IMG_SIGNALS,  Inches(0.36), IMG6_Y, IMG6_LW, IMG6_H)
 caption_bar(s6, "Live trigger detection · confidence scoring · startup to Fortune 500",
     Inches(0.36), IMG6_Y, IMG6_LW, IMG6_H)
@@ -442,8 +481,8 @@ cover_pic(s6, IMG_BUILDER, IMG6_RX, IMG6_Y, IMG6_RW, IMG6_H)
 caption_bar(s6, "Pre-staged protocol · stakeholders · authority · tasks ready",
     IMG6_RX, IMG6_Y, IMG6_RW, IMG6_H)
 
-# Footer — images end at ≈ y=5.08; footer fills remaining space
-IMG6_BOTTOM = IMG6_Y + IMG6_H   # ≈ 5.08in
+# Footer — images end at IMG6_Y + IMG6_H
+IMG6_BOTTOM = IMG6_Y + IMG6_H
 rect(s6, 0, IMG6_BOTTOM + Inches(0.12), W,
      H - IMG6_BOTTOM - Inches(0.12) - Inches(0.16),
      fill=RGBColor(0x06, 0x08, 0x1C))
@@ -487,8 +526,10 @@ for i, (b, col) in enumerate([
 rect(s7, Inches(6.82), Inches(2.58), Inches(6.15), Inches(4.16), fill=NAVY3)
 lbl(s7, "Commercial Logic", Inches(7.12), Inches(2.78))
 txb(s7,
-    "Replaces the $400K–$800K consulting retainer.\nBreak-even before the 2nd activation.",
-    Inches(7.32), Inches(3.00), Inches(5.56), Inches(0.76),
+    "Full platform deployment — 170 protocols configured, signals live, "
+    "team onboarded.\nReplaces the $400K–$800K consulting retainer. "
+    "Break-even before the 2nd activation.",
+    Inches(7.32), Inches(3.00), Inches(5.56), Inches(0.92),
     size=13, italic=True, color=MUTED, font="Barlow Condensed")
 
 for i, (k, v, vc) in enumerate([
