@@ -15697,14 +15697,14 @@ var init_OpenAIService = __esm({
         const agentDefs = [
           {
             phase: "IDENTIFY",
-            system: `You are an elite IDENTIFY-phase analyst in the IDEA Framework for Fortune 1000 strategic execution. Your role: rapidly frame the strategic situation, decode the trigger signal, and establish situational clarity so the executive team can act without hesitation.`,
+            system: `You are an elite IDENTIFY-phase analyst in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: rapidly frame the strategic situation, decode the trigger signal, and establish situational clarity so the executive team can act without hesitation.`,
             user: `Playbook: "${playbookName}" | Context: ${triggerContext} | Org: ${organizationName} | Industry: ${industry}
 
 In 2-3 crisp sentences: frame the strategic situation. What fired? Why does it matter right now? What is the window of opportunity or exposure? Return ONLY the situation framing text, no headers or JSON.`
           },
           {
             phase: "DETECT",
-            system: `You are an elite DETECT-phase risk analyst in the IDEA Framework for Fortune 1000 strategic execution. Your role: surface the top blind spots, escalation tripwires, and hidden risks so the execution team acts with eyes open.`,
+            system: `You are an elite DETECT-phase risk analyst in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: surface the top blind spots, escalation tripwires, and hidden risks so the execution team acts with eyes open.`,
             user: `Playbook: "${playbookName}" | Context: ${triggerContext}
 
 Return EXACTLY 3 risks as a JSON array \u2014 no markdown, no wrapper:
@@ -15712,7 +15712,7 @@ Return EXACTLY 3 risks as a JSON array \u2014 no markdown, no wrapper:
           },
           {
             phase: "EXECUTE",
-            system: `You are an elite EXECUTE-phase task orchestrator in the IDEA Framework for Fortune 1000 strategic execution. Your role: generate a precise, time-bound task sequence with C-suite role assignments. Tasks must be specific to this exact trigger and playbook \u2014 not generic.`,
+            system: `You are an elite EXECUTE-phase task orchestrator in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: generate a precise, time-bound task sequence with C-suite role assignments. Tasks must be specific to this exact trigger and playbook \u2014 not generic.`,
             user: `Playbook: "${playbookName}" | Context: ${triggerContext}
 
 Return EXACTLY 3 tasks as a JSON array \u2014 no markdown, no wrapper:
@@ -15720,7 +15720,7 @@ Return EXACTLY 3 tasks as a JSON array \u2014 no markdown, no wrapper:
           },
           {
             phase: "ADVANCE",
-            system: `You are an elite ADVANCE-phase success architect in the IDEA Framework for Fortune 1000 strategic execution. Your role: define what winning looks like \u2014 the measurable outcomes, ROI signals, and strategic indicators that confirm the execution succeeded.`,
+            system: `You are an elite ADVANCE-phase success architect in the IDEA Framework for startup to Fortune 500 strategic execution. Your role: define what winning looks like \u2014 the measurable outcomes, ROI signals, and strategic indicators that confirm the execution succeeded.`,
             user: `Playbook: "${playbookName}" | Context: ${triggerContext}
 
 Return EXACTLY 3 success indicators as a JSON array of strings \u2014 no markdown, no wrapper:
@@ -15795,7 +15795,7 @@ Analysis Request: ${prompt}` : prompt;
               messages: [
                 {
                   role: "system",
-                  content: "You are a strategic intelligence analyst for Fortune 1000 companies. Provide actionable, data-driven insights with specific recommendations."
+                  content: "You are a strategic intelligence analyst for startup to Fortune 500 companies. Provide actionable, data-driven insights with specific recommendations."
                 },
                 {
                   role: "user",
@@ -15826,7 +15826,7 @@ Analysis Request: ${prompt}` : prompt;
         }
       }
       /**
-       * Generate domain-specialized strategic insights with Fortune 1000 frameworks
+       * Generate domain-specialized strategic insights with startup to Fortune 500 frameworks
        */
       async generateStrategicInsight(type, organizationData, industry) {
         if (!this.checkRateLimit()) {
@@ -15882,7 +15882,7 @@ Analysis Request: ${prompt}` : prompt;
             if (attempt < this.config.maxRetries) {
               const delay = this.config.retryDelay * Math.pow(2, attempt - 1);
               logger5.warn(`OpenAI request failed (attempt ${attempt}), retrying in ${delay}ms`);
-              await new Promise((resolve) => setTimeout(resolve, delay));
+              await new Promise((resolve2) => setTimeout(resolve2, delay));
             }
           }
         }
@@ -15892,7 +15892,7 @@ Analysis Request: ${prompt}` : prompt;
        * Get system prompt specialized for each AI intelligence module
        */
       getSystemPromptForType(type) {
-        const baseContext = "You are an elite strategic intelligence analyst for Fortune 1000 companies. Provide actionable, data-driven insights with specific executive recommendations.";
+        const baseContext = "You are an elite strategic intelligence analyst for startup to Fortune 500 companies. Provide actionable, data-driven insights with specific executive recommendations.";
         switch (type) {
           case "pulse":
             return `${baseContext}
@@ -20830,7 +20830,7 @@ var init_LiveSignalIngestionService = __esm({
           return items.map((item) => ({ ...item, source: feed.source, category: feed.category }));
         } catch (err) {
           if (attempt < 2) {
-            await new Promise((resolve) => setTimeout(resolve, 3e3));
+            await new Promise((resolve2) => setTimeout(resolve2, 3e3));
             return this.fetchFeed(feed, attempt + 1);
           }
           console.log(`\u26A0 Feed ${feed.source} unavailable \u2014 skipping`);
@@ -23129,7 +23129,7 @@ var init_ROIMeasurementService = __esm({
         }
       }
       /**
-       * Generate AI-powered enterprise ROI insights with Fortune 1000 benchmarking
+       * Generate AI-powered enterprise ROI insights with startup to Fortune 500 benchmarking
        */
       async generateEnterpriseROIInsights(organizationId, industry = "technology", timeframe = "annual") {
         try {
@@ -23185,7 +23185,7 @@ var init_ROIMeasurementService = __esm({
           return this.getFallbackAIInsights(roiReport, industry);
         }
         try {
-          const prompt = `Analyze this Fortune 1000 ${industry} company's strategic intelligence platform ROI performance:
+          const prompt = `Analyze this startup to Fortune 500 ${industry} company's strategic intelligence platform ROI performance:
 
 Current Performance:
 - Overall ROI: ${roiReport.overallROI}%
@@ -23205,7 +23205,7 @@ Provide executive-level insights focusing on:
 5. Risk mitigation successes
 
 Write for C-suite audience, emphasize business impact and strategic value.`;
-          const aiInsights = await openAIService.analyzeText(prompt, `Fortune 1000 ${industry} ROI Analysis`);
+          const aiInsights = await openAIService.analyzeText(prompt, `startup to Fortune 500 ${industry} ROI Analysis`);
           logger8.info("AI-powered ROI insights generated successfully");
           return aiInsights;
         } catch (error) {
@@ -23262,7 +23262,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
       analyzeCompetitivePosition(benchmarkAnalysis, industry) {
         const performance = benchmarkAnalysis.roiPerformance;
         if (performance.ranking === "Top Tier") {
-          return `Exceptional strategic intelligence capabilities position the organization in the top 10% of Fortune 1000 ${industry} companies. This competitive advantage enables faster market response, superior risk management, and accelerated innovation cycles compared to industry peers.`;
+          return `Exceptional strategic intelligence capabilities position the organization in the top 10% of startup to Fortune 500 ${industry} companies. This competitive advantage enables faster market response, superior risk management, and accelerated innovation cycles compared to industry peers.`;
         } else if (performance.ranking === "Above Average") {
           return `Strong strategic intelligence performance places the organization ahead of 70% of industry peers, providing meaningful competitive advantages in decision velocity and strategic agility within the ${industry} sector.`;
         } else {
@@ -23275,7 +23275,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
       generateInvestmentJustification(roiReport, benchmarkAnalysis) {
         const paybackPeriod = Math.ceil(12 / (roiReport.overallROI / 100));
         const annualValue = roiReport.totalValueGenerated + roiReport.totalCostAvoided;
-        return `The strategic intelligence platform investment delivers compelling financial returns with ${roiReport.overallROI}% ROI and ${paybackPeriod}-month payback period. Annual value realization of $${annualValue.toLocaleString()} significantly exceeds platform costs, while providing intangible benefits including enhanced competitive positioning, accelerated decision-making, and superior risk management capabilities. This investment strengthens organizational agility and strategic execution capacity essential for Fortune 1000 market leadership.`;
+        return `The strategic intelligence platform investment delivers compelling financial returns with ${roiReport.overallROI}% ROI and ${paybackPeriod}-month payback period. Annual value realization of $${annualValue.toLocaleString()} significantly exceeds platform costs, while providing intangible benefits including enhanced competitive positioning, accelerated decision-making, and superior risk management capabilities. This investment strengthens organizational agility and strategic execution capacity essential for startup to Fortune 500 market leadership.`;
       }
       /**
        * Generate executive action items
@@ -23298,7 +23298,7 @@ Write for C-suite audience, emphasize business impact and strategic value.`;
        * Fallback AI insights when OpenAI is unavailable
        */
       getFallbackAIInsights(roiReport, industry) {
-        return `Strategic intelligence platform analysis reveals strong performance with ${roiReport.overallROI}% ROI, significantly enhancing ${industry} sector competitive positioning. Key value drivers include accelerated strategic decision-making, enhanced risk mitigation capabilities, and improved operational efficiency. The platform's impact on executive productivity and strategic agility provides sustainable competitive advantages essential for Fortune 1000 market leadership. Continued optimization and expanded deployment will maximize returns on this strategic technology investment.`;
+        return `Strategic intelligence platform analysis reveals strong performance with ${roiReport.overallROI}% ROI, significantly enhancing ${industry} sector competitive positioning. Key value drivers include accelerated strategic decision-making, enhanced risk mitigation capabilities, and improved operational efficiency. The platform's impact on executive productivity and strategic agility provides sustainable competitive advantages essential for startup to Fortune 500 market leadership. Continued optimization and expanded deployment will maximize returns on this strategic technology investment.`;
       }
       /**
        * Fallback insights when service is unavailable
@@ -24717,7 +24717,7 @@ Tone: Strategic, data-driven, actionable. Focus on what matters most.`;
             messages: [
               {
                 role: "system",
-                content: "You are a strategic intelligence analyst providing executive-level situation reports to Fortune 1000 leadership."
+                content: "You are a strategic intelligence analyst providing executive-level situation reports to startup to Fortune 500 leadership."
               },
               { role: "user", content: prompt }
             ],
@@ -24836,7 +24836,7 @@ Keep it concise, strategic, and actionable. Use bullet points where appropriate.
           messages: [
             {
               role: "system",
-              content: "You are an executive intelligence officer providing C-suite briefings for Fortune 1000 companies. Be concise, strategic, and data-driven."
+              content: "You are an executive intelligence officer providing C-suite briefings for startup to Fortune 500 companies. Be concise, strategic, and data-driven."
             },
             { role: "user", content: prompt }
           ],
@@ -35705,7 +35705,7 @@ var init_TriggerTaxonomyService = __esm({
       "Technology & Security": {
         priority: 10,
         triggers: ["Cybersecurity Breach Signal", "AI Disruption Signal"],
-        rationale: "Cyber events are the fastest-moving trigger category. Average dwell time before detection is 197 days. Every Fortune 1000 organization is a target."
+        rationale: "Cyber events are the fastest-moving trigger category. Average dwell time before detection is 197 days. Every startup to Fortune 500 organization is a target."
       },
       "Regulatory & Compliance": {
         priority: 9,
@@ -37632,10 +37632,10 @@ Please provide a strategic, data-driven response that references the relevant so
   /**
    * Index a document for semantic search
    */
-  async indexDocument(document) {
+  async indexDocument(document2) {
     try {
-      logger4.info({ docId: document.id, sourceType: document.sourceType }, "Indexing document");
-      const embedding = await this.generateEmbedding(document.content);
+      logger4.info({ docId: document2.id, sourceType: document2.sourceType }, "Indexing document");
+      const embedding = await this.generateEmbedding(document2.content);
       const client2 = await pool2.connect();
       try {
         const embeddingStr = "[" + embedding.join(",") + "]";
@@ -37649,21 +37649,21 @@ Please provide a strategic, data-driven response that references the relevant so
             metadata = EXCLUDED.metadata,
             updated_at = NOW()
         `, [
-          document.id,
-          document.content,
-          document.title || null,
-          document.sourceType,
-          document.sourceId || null,
+          document2.id,
+          document2.content,
+          document2.title || null,
+          document2.sourceType,
+          document2.sourceId || null,
           embeddingStr,
-          JSON.stringify(document.metadata || {})
+          JSON.stringify(document2.metadata || {})
         ]);
-        logger4.info({ docId: document.id }, "Document indexed successfully");
+        logger4.info({ docId: document2.id }, "Document indexed successfully");
       } finally {
         client2.release();
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Unknown error";
-      logger4.error({ error: errorMessage, docId: document.id }, "Error indexing document");
+      logger4.error({ error: errorMessage, docId: document2.id }, "Error indexing document");
       throw new Error(`Failed to index document: ${errorMessage}`);
     }
   }
@@ -39754,8 +39754,8 @@ var MockSalesforceService = class {
         }
       }
     }
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(this.opportunities), 100);
+    return new Promise((resolve2) => {
+      setTimeout(() => resolve2(this.opportunities), 100);
     });
   }
   mapSalesforceToMock(sfOpp) {
@@ -40677,7 +40677,7 @@ router4.post("/analyze", async (req, res) => {
 - DEFENSE (containing threats): Crisis Response, Ransomware, Data Breach, Product Recall, Supplier Failure, Regulatory Investigation, Executive Departure
 - SPECIAL TEAMS (transformation initiatives): Digital Transformation, Competitive Response, AI Governance, Workforce Restructuring, Technology Migration, Cost Optimization
 
-A Fortune 1000 executive has described a strategic situation. Analyze it and classify into the right domain.
+A startup to Fortune 500 executive has described a strategic situation. Analyze it and classify into the right domain.
 
 ${domain !== "auto" ? `DOMAIN HINT: ${domain}` : "AUTO-DETECT the domain from the description."}
 
@@ -40774,7 +40774,7 @@ router4.post("/generate-playbook", async (req, res) => {
       return res.status(400).json({ error: parsed.error.errors[0].message });
     }
     const { incidentId, incidentType, description, whatWentWrong } = parsed.data;
-    const prompt = `You are an enterprise playbook architect for Fortune 1000 companies. Based on a real incident, generate a complete response playbook.
+    const prompt = `You are an enterprise playbook architect for startup to Fortune 500 companies. Based on a real incident, generate a complete response playbook.
 
 Return ONLY raw JSON (no markdown, no code fences) with this structure:
 {
@@ -41195,7 +41195,7 @@ router4.post("/what-if", async (req, res) => {
     }
     const { incidentId, scenario, playbook, domain } = parsed.data;
     const domainContext = domain === "offense" ? "This is an OFFENSE scenario (market entry, M&A, product launch). Focus on speed-to-market, competitive advantage, and revenue impact." : domain === "defense" ? "This is a DEFENSE scenario (crisis, cybersecurity, regulatory). Focus on containment speed, compliance deadlines, and damage mitigation." : domain === "special_teams" ? "This is a SPECIAL TEAMS scenario (digital transformation, AI governance, competitive response). Focus on cross-functional coordination, change management, and organizational readiness." : "This is a strategic execution scenario. Determine the domain (offense, defense, or special teams) and analyze accordingly.";
-    const prompt = `You are an enterprise strategic execution timing analyst for Fortune 1000 companies. ${domainContext}
+    const prompt = `You are an enterprise strategic execution timing analyst for startup to Fortune 500 companies. ${domainContext}
 
 Given a playbook that coordinates in ~12 minutes, analyze how a proposed modification would impact coordination time and strategic outcomes.
 
@@ -42187,7 +42187,7 @@ function registerDemoAccessRoute(app2) {
       if (userOrgs.length === 0) {
         await storage.createOrganization({
           name: "Acme Corporation \u2014 Executive Demo",
-          description: "Fortune 1000 enterprise pilot demonstration environment",
+          description: "startup to Fortune 500 enterprise pilot demonstration environment",
           ownerId: DEMO_USER_ID,
           industry: "Financial Services",
           onboardingCompleted: true
@@ -42287,7 +42287,7 @@ function buildTrialEmailHtml(data, activationUrl) {
           <td style="background:${NAVY2};padding:20px 40px;">
             <p style="margin:0;color:rgba(255,255,255,0.5);font-size:11px;">
               After your trial, apply for the full Pilot Program at vaughnmartin.com/pilot-program<br/>
-              Reserved for Fortune 1000 organizations meeting deployment requirements.
+              Reserved for startup to Fortune 500 organizations meeting deployment requirements.
             </p>
           </td>
         </tr>
@@ -42570,6 +42570,7 @@ var PRESETS = {
   web: { cardWidth: 480, scale: 1, label: "Web (480px)" },
   hd: { cardWidth: 800, scale: 2, label: "HD Web (1600px)" },
   linkedin: { cardWidth: 600, scale: 2, label: "LinkedIn Share (1200\xD7628)", clipHeight: 314 },
+  "linkedin-banner": { cardWidth: 1584, scale: 1, label: "LinkedIn Banner (1584\xD7396)", clipHeight: 396, isBanner: true },
   portrait: { cardWidth: 540, scale: 2, label: "LinkedIn/Instagram (1080\xD71350)" },
   letter: { cardWidth: 850, scale: 3, label: "Print Letter 8.5\xD711 @ 300 dpi" },
   a4: { cardWidth: 827, scale: 3, label: "Print A4 @ 300 dpi" }
@@ -42681,7 +42682,7 @@ function buildHtml(cardWidth) {
 <section class="hero">
   <h1>Welcome to the<br>category first.</h1>
   <div class="hero-product">Readiness OS\u2122</div>
-  <div class="hero-sub">The readiness infrastructure for the Fortune 1000.</div>
+  <div class="hero-sub">The readiness infrastructure for the startup to Fortune 500.</div>
   <p class="hero-body">Every vendor bolted AI onto the old model. We replaced the model.<br>Preparation replaces coordination. 12 minutes replaces 30 days.</p>
 </section>
 
@@ -42810,7 +42811,7 @@ function buildHtml(cardWidth) {
       <svg class="icard-icon" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="18" height="18" stroke="#C9A84C" stroke-width="1.5"/></svg>
       <div>
         <div class="icard-title">Microsoft Amplifier</div>
-        <div class="icard-desc">Every Fortune 1000 has invested in Microsoft AI. None have the operating model to use it when it counts.</div>
+        <div class="icard-desc">Every startup to Fortune 500 has invested in Microsoft AI. None have the operating model to use it when it counts.</div>
       </div>
     </div>
     <div class="icard">
@@ -42820,7 +42821,7 @@ function buildHtml(cardWidth) {
       </svg>
       <div>
         <div class="icard-title">Founding Partner Program</div>
-        <div class="icard-desc">First cohort forming now. Selective by design \u2014 validating with Fortune 1000 enterprises only.</div>
+        <div class="icard-desc">First cohort forming now. Selective by design \u2014 validating with startup to Fortune 500 enterprises only.</div>
       </div>
     </div>
   </div>
@@ -42848,10 +42849,281 @@ function buildHtml(cardWidth) {
 </body>
 </html>`;
 }
+function buildLinkedInBannerHtml() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1584px;height:396px;overflow:hidden;font-family:'Barlow',sans-serif;}
+
+  /* \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+     LEFT PANEL \u2014 deep navy, hero stat
+     Bottom-left ~200\xD7140px left clear
+     for LinkedIn profile photo overlap
+     \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550= */
+  .lp{
+    position:absolute;top:0;left:0;width:560px;height:396px;
+    background:linear-gradient(150deg,#0b1535 0%,#0d1c4a 60%,#091228 100%);
+    overflow:hidden;
+  }
+  /* Subtle grid on left panel */
+  .lp-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.05) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px);
+    background-size:60px 60px;
+  }
+  /* Gold accent top bar */
+  .lp-topbar{
+    position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,#C9A84C,rgba(201,168,76,0.3));
+  }
+  /* Teal ambient glow \u2014 bottom left (behind where logo will sit) */
+  .lp-glow{
+    position:absolute;bottom:-40px;left:-40px;
+    width:260px;height:260px;border-radius:50%;
+    background:radial-gradient(circle,rgba(43,138,110,0.18) 0%,transparent 70%);
+  }
+  /* Content block \u2014 pushed right+up to stay clear of logo overlap zone */
+  .lp-content{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-30%,-52%);
+    text-align:center;
+  }
+  .lp-eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;font-weight:800;letter-spacing:.35em;
+    text-transform:uppercase;color:rgba(201,168,76,0.55);
+    margin-bottom:10px;
+  }
+  .lp-num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:92px;font-weight:900;line-height:1;
+    color:#C9A84C;letter-spacing:-0.03em;
+    text-shadow:0 0 60px rgba(201,168,76,0.25);
+  }
+  .lp-label{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:13px;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:#ffffff;
+    margin-top:8px;
+  }
+  .lp-rule{
+    width:48px;height:1px;background:rgba(201,168,76,0.4);
+    margin:12px auto;
+  }
+  .lp-sub{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.38);
+  }
+  .lp-sub strong{color:rgba(201,168,76,0.7);font-weight:700;}
+
+  /* \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550
+     RIGHT PANEL \u2014 bright ivory, claim
+     \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 */
+  .rp{
+    position:absolute;top:0;left:560px;right:0;height:396px;
+    background:#F0EDE4;
+    overflow:hidden;
+  }
+  /* Subtle warm texture */
+  .rp-texture{
+    position:absolute;inset:0;
+    background:linear-gradient(160deg,#ffffff 0%,#F0EDE4 50%,#EAE6DB 100%);
+  }
+  /* Navy accent left edge on the right panel */
+  .rp-edge{
+    position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(180deg,#C9A84C 0%,rgba(201,168,76,0.2) 100%);
+  }
+  /* Right panel inner content \u2014 bottom strip is 56px */
+  .rp-inner{
+    position:absolute;inset:0 0 56px 0;
+    display:flex;align-items:stretch;
+    z-index:2;
+  }
+  /* Main copy zone */
+  .rp-copy{
+    flex:1;padding:0 52px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .rp-eyebrow{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;font-weight:800;letter-spacing:.35em;
+    text-transform:uppercase;color:rgba(10,15,46,0.45);
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:14px;
+  }
+  .rp-eyebrow::before{
+    content:'';width:28px;height:1px;
+    background:#C9A84C;flex-shrink:0;
+  }
+  .rp-headline{
+    font-family:'Cormorant Garamond',serif;
+    font-size:46px;font-weight:700;line-height:1.05;
+    color:#0A0F2E;margin-bottom:16px;
+  }
+  .rp-headline em{color:#2B8A6E;font-style:italic;}
+  .rp-body{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:14px;font-weight:500;letter-spacing:.06em;
+    color:rgba(10,15,46,0.55);line-height:1.55;
+    max-width:520px;
+  }
+  /* Proof stats column */
+  .rp-stats{
+    width:260px;flex-shrink:0;
+    display:flex;flex-direction:column;justify-content:center;
+    gap:0;padding:0 28px;
+    border-left:1px solid rgba(10,15,46,0.1);
+  }
+  .rs{
+    padding:14px 0;
+    border-bottom:1px solid rgba(10,15,46,0.08);
+  }
+  .rs:last-child{border-bottom:none;}
+  .rs-num{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:36px;font-weight:900;color:#0A0F2E;
+    line-height:1;letter-spacing:-0.02em;
+  }
+  .rs-num span{color:#C9A84C;}
+  .rs-lbl{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:rgba(10,15,46,0.45);
+    margin-top:3px;
+  }
+  /* Brand zone */
+  .rp-brand{
+    width:180px;flex-shrink:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;padding:0 20px;
+    border-left:1px solid rgba(10,15,46,0.1);
+  }
+  .rb-seal{width:64px;height:64px;}
+  .rb-name{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:17px;font-weight:700;letter-spacing:.12em;
+    color:#0A0F2E;text-align:center;line-height:1.15;
+  }
+  .rb-prod{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:10px;font-weight:700;letter-spacing:.35em;
+    color:#2B8A6E;text-transform:uppercase;text-align:center;
+  }
+  /* Right panel bottom strip */
+  .rp-bottom{
+    position:absolute;bottom:0;left:0;right:0;height:56px;
+    background:#0A0F2E;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 28px;z-index:3;
+  }
+  .rb-arc{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:700;letter-spacing:.28em;
+    text-transform:uppercase;color:rgba(255,255,255,0.35);
+    display:flex;align-items:center;gap:16px;
+  }
+  .rb-arc .ag{color:#C9A84C;}
+  .rb-arc .arr{color:rgba(201,168,76,0.3);font-size:10px;}
+  .rb-url{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:12px;font-weight:600;letter-spacing:.2em;
+    color:rgba(201,168,76,0.5);
+  }
+</style>
+</head>
+<body>
+
+  <!-- \u2500\u2500 LEFT PANEL: hero stat \u2500\u2500 -->
+  <div class="lp">
+    <div class="lp-grid"></div>
+    <div class="lp-topbar"></div>
+    <div class="lp-glow"></div>
+    <div class="lp-content">
+      <div class="lp-eyebrow">Execution Head Start</div>
+      <div class="lp-num">3,600\xD7</div>
+      <div class="lp-label">Faster Than the Old Model</div>
+      <div class="lp-rule"></div>
+      <div class="lp-sub"><strong>30 days</strong> compressed to <strong>12 minutes</strong></div>
+    </div>
+  </div>
+
+  <!-- \u2500\u2500 RIGHT PANEL: claim + proof \u2500\u2500 -->
+  <div class="rp">
+    <div class="rp-texture"></div>
+    <div class="rp-edge"></div>
+
+    <div class="rp-inner">
+
+      <!-- Main copy -->
+      <div class="rp-copy">
+        <div class="rp-eyebrow">Strategic Readiness Platform &nbsp;\xB7&nbsp; startup to Fortune 500</div>
+        <div class="rp-headline">The response is ready<br><em>before the trigger fires.</em></div>
+        <div class="rp-body">Readiness OS replaces real-time coordination with pre-staged execution \u2014 170 Protocols, 221 strategic triggers, 12-minute response.</div>
+      </div>
+
+      <!-- Proof stats -->
+      <div class="rp-stats">
+        <div class="rs">
+          <div class="rs-num">170</div>
+          <div class="rs-lbl">Readiness Protocols</div>
+        </div>
+        <div class="rs">
+          <div class="rs-num">221</div>
+          <div class="rs-lbl">Strategic Triggers</div>
+        </div>
+        <div class="rs">
+          <div class="rs-num">12<span>min</span></div>
+          <div class="rs-lbl">Execution Target</div>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div class="rp-brand">
+        <svg class="rb-seal" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" stroke="#0A0F2E" stroke-width="1.5"/>
+          <circle cx="32" cy="32" r="23" stroke="rgba(10,15,46,0.2)" stroke-width="1"/>
+          <text x="32" y="37" text-anchor="middle"
+            font-family="Barlow Condensed,sans-serif"
+            font-size="15" font-weight="800" fill="#0A0F2E" letter-spacing="1">VM</text>
+        </svg>
+        <div class="rb-name">VaughnMartin</div>
+        <div class="rb-prod">Readiness OS</div>
+      </div>
+
+    </div>
+
+    <!-- Bottom tagline strip -->
+    <div class="rp-bottom">
+      <div class="rb-arc">
+        <span class="ag">Preparation</span>
+        <span class="arr">\u2192</span>
+        <span class="ag">Readiness</span>
+        <span class="arr">\u2192</span>
+        <span class="ag">Fearless</span>
+      </div>
+      <div class="rb-url">vaughnmartin.com</div>
+    </div>
+
+  </div>
+
+</body>
+</html>`;
+}
 function registerMarketingImageRoute(app2) {
   app2.get("/api/marketing-infographic.png", async (req, res) => {
     const formatKey = req.query.format || "hd";
     const preset = PRESETS[formatKey] ?? PRESETS.web;
+    const viewH = preset.isBanner ? Math.round((preset.clipHeight ?? 198) * preset.scale) : Math.round(preset.cardWidth * preset.scale * 3);
     let browser;
     try {
       browser = await chromium.launch({
@@ -42861,38 +43133,54 @@ function registerMarketingImageRoute(app2) {
       const page = await browser.newPage();
       await page.setViewportSize({
         width: Math.round(preset.cardWidth * preset.scale),
-        height: Math.round(preset.cardWidth * preset.scale * 3)
+        height: viewH
       });
       await page.emulateMedia({ colorScheme: "dark" });
-      await page.setExtraHTTPHeaders?.({});
       const session2 = await page.context().newCDPSession(page);
       await session2.send("Emulation.setDeviceMetricsOverride", {
         width: Math.round(preset.cardWidth * preset.scale),
-        height: Math.round(preset.cardWidth * preset.scale * 3),
+        height: viewH,
         deviceScaleFactor: preset.scale,
         mobile: false
       });
-      await page.setContent(buildHtml(preset.cardWidth), { waitUntil: "networkidle" });
+      const html = preset.isBanner ? buildLinkedInBannerHtml() : buildHtml(preset.cardWidth);
+      await page.setContent(html, { waitUntil: "networkidle" });
       await page.waitForTimeout(2e3);
-      const body = await page.$("body");
-      if (!body) throw new Error("Body element not found");
-      const screenshotOpts = { type: "png" };
-      if (preset.clipHeight) {
-        const bodyBox = await body.boundingBox();
-        if (bodyBox) {
-          screenshotOpts.clip = {
+      let buffer;
+      if (preset.isBanner) {
+        buffer = await page.screenshot({
+          type: "png",
+          clip: {
             x: 0,
             y: 0,
-            width: bodyBox.width,
-            height: Math.min(preset.clipHeight * preset.scale, bodyBox.height)
-          };
+            width: preset.cardWidth,
+            // 792 CSS px → 1584 output px
+            height: preset.clipHeight ?? 198
+            // 198 CSS px → 396  output px
+          }
+        });
+      } else {
+        const body = await page.$("body");
+        if (!body) throw new Error("Body element not found");
+        const screenshotOpts = { type: "png" };
+        if (preset.clipHeight) {
+          const bodyBox = await body.boundingBox();
+          if (bodyBox) {
+            screenshotOpts.clip = {
+              x: 0,
+              y: 0,
+              width: bodyBox.width,
+              height: Math.min(preset.clipHeight * preset.scale, bodyBox.height)
+            };
+          }
         }
+        buffer = await body.screenshot(screenshotOpts);
       }
-      const buffer = await body.screenshot(screenshotOpts);
       const filename = `VaughnMartin-ReadinessOS-${preset.label.replace(/[^a-zA-Z0-9]/g, "-")}.png`;
       res.setHeader("Content-Type", "image/png");
       res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
       res.setHeader("Cache-Control", "public, max-age=300");
+      res.setHeader("X-Image-Size", `${preset.cardWidth * preset.scale}x${(preset.clipHeight ?? 0) * preset.scale}`);
       res.setHeader("X-Format", preset.label);
       res.send(buffer);
     } catch (err) {
@@ -42901,6 +43189,1184 @@ function registerMarketingImageRoute(app2) {
     } finally {
       if (browser) await browser.close();
     }
+  });
+}
+
+// server/routes/linkedinProductsRoute.ts
+import { chromium as chromium2 } from "playwright-core";
+var CHROMIUM2 = process.env.REPLIT_PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/nix/store/kcvsxrmgwp3ffz5jijyy7wn9fcsjl4hz-playwright-browsers-1.55.0-with-cjk/chromium-1187/chrome-linux/chrome";
+var LINKEDIN_PRODUCTS = [
+  {
+    id: 1,
+    name: "Readiness OS Platform",
+    tagline: "The operating model startup to Fortune 500 enterprises need to act in 12 minutes",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="40" r="36" stroke="#C9A84C" stroke-width="2"/>
+      <circle cx="40" cy="40" r="24" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="10" fill="rgba(201,168,76,0.12)" stroke="#C9A84C" stroke-width="1.5"/>
+      <path d="M40 10 A30 30 0 0 1 70 40" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <path d="M70 40 A30 30 0 0 1 40 70" stroke="rgba(201,168,76,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M40 70 A30 30 0 0 1 10 40" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <path d="M10 40 A30 30 0 0 1 40 10" stroke="rgba(201,168,76,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="40" y="44" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" font-weight="900" fill="#C9A84C" letter-spacing="1">OS</text>
+    </svg>`
+  },
+  {
+    id: 2,
+    name: "IDEA Framework\u2122",
+    tagline: "Identify \xB7 Detect \xB7 Execute \xB7 Advance \u2014 the 4-phase execution chain",
+    accentColor: "#2B8A6E",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="12" r="9" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="68" cy="40" r="9" fill="rgba(43,138,110,0.1)" stroke="#2B8A6E" stroke-width="1.5"/>
+      <circle cx="40" cy="68" r="9" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="1.5"/>
+      <circle cx="12" cy="40" r="9" fill="rgba(43,138,110,0.1)" stroke="#2B8A6E" stroke-width="1.5"/>
+      <circle cx="40" cy="40" r="14" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.5)" stroke-width="1.5"/>
+      <path d="M40 21 A22 22 0 0 1 59 40" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <path d="M59 40 A22 22 0 0 1 40 59" stroke="#2B8A6E" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <path d="M40 59 A22 22 0 0 1 21 40" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <path d="M21 40 A22 22 0 0 1 40 21" stroke="#2B8A6E" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <text x="40" y="43" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="800" fill="#C9A84C" letter-spacing="0.5">IDEA</text>
+      <text x="40" y="9" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6" font-weight="700" fill="#C9A84C">I</text>
+      <text x="68" y="43" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6" font-weight="700" fill="#2B8A6E">D</text>
+      <text x="40" y="72" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6" font-weight="700" fill="#C9A84C">E</text>
+      <text x="12" y="43" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6" font-weight="700" fill="#2B8A6E">A</text>
+    </svg>`
+  },
+  {
+    id: 3,
+    name: "12-Minute Execution",
+    tagline: "30 days of mobilization compressed to 12 minutes",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="42" r="28" stroke="#C9A84C" stroke-width="2"/>
+      <circle cx="40" cy="42" r="2.5" fill="#C9A84C"/>
+      <line x1="40" y1="42" x2="40" y2="22" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
+      <line x1="40" y1="42" x2="52" y2="36" stroke="rgba(201,168,76,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M30 12 L40 8 L50 12" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M52 24 L58 20" stroke="rgba(201,168,76,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M28 24 L22 20" stroke="rgba(201,168,76,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+      <text x="40" y="60" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" font-weight="700" fill="rgba(201,168,76,0.5)" letter-spacing="0.5">12 MIN</text>
+    </svg>`
+  },
+  {
+    id: 4,
+    name: "Protocol Library",
+    tagline: "170 pre-staged Readiness Protocols across 3 strategic domains",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <rect x="10" y="14" width="60" height="10" rx="2" fill="rgba(201,168,76,0.12)" stroke="#C9A84C" stroke-width="1.5"/>
+      <rect x="10" y="30" width="60" height="10" rx="2" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.6)" stroke-width="1.5"/>
+      <rect x="10" y="46" width="60" height="10" rx="2" fill="rgba(43,138,110,0.08)" stroke="#2B8A6E" stroke-width="1.5"/>
+      <rect x="10" y="62" width="60" height="10" rx="2" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+      <text x="40" y="21" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6.5" font-weight="700" fill="#C9A84C" letter-spacing="0.5">GROWTH &amp; POSITIONING</text>
+      <text x="40" y="37" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6.5" font-weight="700" fill="rgba(201,168,76,0.7)" letter-spacing="0.5">RISK &amp; RESILIENCE</text>
+      <text x="40" y="53" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6.5" font-weight="700" fill="#2B8A6E" letter-spacing="0.5">TRANSFORMATION</text>
+      <text x="40" y="69" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6" font-weight="600" fill="rgba(201,168,76,0.4)" letter-spacing="0.5">12 COMPOUND PROTOCOLS</text>
+    </svg>`
+  },
+  {
+    id: 5,
+    name: "Command Tower",
+    tagline: "Full-screen executive readiness display \u2014 live, continuous, board-ready",
+    accentColor: "#2B8A6E",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <rect x="28" y="52" width="24" height="20" rx="1" stroke="#C9A84C" stroke-width="1.5"/>
+      <rect x="18" y="36" width="44" height="18" rx="1" stroke="#C9A84C" stroke-width="1.5"/>
+      <rect x="22" y="20" width="36" height="18" rx="1" fill="rgba(201,168,76,0.06)" stroke="#2B8A6E" stroke-width="1.5"/>
+      <rect x="28" y="8" width="24" height="14" rx="1" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="2"/>
+      <line x1="40" y1="8" x2="40" y2="4" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="40" cy="3" r="2" fill="#C9A84C"/>
+      <path d="M26 44 L32 40 L36 43 L42 38 L46 41 L52 36" stroke="#2B8A6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`
+  },
+  {
+    id: 6,
+    name: "Signal Detection Engine",
+    tagline: "221 strategic triggers monitored in real time across 8 data sources",
+    accentColor: "#2B8A6E",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="40" r="6" fill="#C9A84C"/>
+      <circle cx="40" cy="40" r="14" stroke="rgba(43,138,110,0.5)" stroke-width="1.5" stroke-dasharray="2 3"/>
+      <circle cx="40" cy="40" r="22" stroke="rgba(43,138,110,0.35)" stroke-width="1.5" stroke-dasharray="2 4"/>
+      <circle cx="40" cy="40" r="30" stroke="rgba(43,138,110,0.2)" stroke-width="1.5" stroke-dasharray="2 5"/>
+      <circle cx="40" cy="18" r="3" fill="#2B8A6E"/>
+      <circle cx="62" cy="40" r="3" fill="#C9A84C"/>
+      <circle cx="40" cy="62" r="3" fill="#2B8A6E"/>
+      <circle cx="18" cy="40" r="3" fill="rgba(201,168,76,0.6)"/>
+      <circle cx="58" cy="22" r="2.5" fill="rgba(43,138,110,0.7)"/>
+      <circle cx="20" cy="22" r="2.5" fill="rgba(201,168,76,0.4)"/>
+      <line x1="40" y1="40" x2="55" y2="25" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-dasharray="2 2"/>
+    </svg>`
+  },
+  {
+    id: 7,
+    name: "War Room",
+    tagline: "Pre-staged live activation \u2014 tasks assigned, stakeholders notified, executive authorized",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <rect x="8" y="8" width="64" height="40" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="8" y1="22" x2="72" y2="22" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+      <line x1="40" y1="8" x2="40" y2="48" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+      <rect x="13" y="13" width="12" height="6" rx="1" fill="rgba(43,138,110,0.2)" stroke="#2B8A6E" stroke-width="1"/>
+      <rect x="29" y="13" width="8" height="6" rx="1" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1"/>
+      <rect x="13" y="26" width="20" height="5" rx="1" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+      <rect x="13" y="34" width="14" height="5" rx="1" fill="rgba(43,138,110,0.08)" stroke="rgba(43,138,110,0.4)" stroke-width="1"/>
+      <rect x="45" y="26" width="20" height="5" rx="1" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+      <rect x="45" y="34" width="14" height="5" rx="1" fill="rgba(43,138,110,0.1)" stroke="rgba(43,138,110,0.4)" stroke-width="1"/>
+      <path d="M20 56 L30 52 L40 56 L50 52 L60 56" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20 64 L30 60 L40 64 L50 60 L60 64" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`
+  },
+  {
+    id: 8,
+    name: "ROI Dashboard",
+    tagline: "Measure the financial return on organizational readiness",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <line x1="10" y1="70" x2="10" y2="10" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="10" y1="70" x2="74" y2="70" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="16" y="50" width="10" height="20" rx="1" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+      <rect x="30" y="38" width="10" height="32" rx="1" fill="rgba(201,168,76,0.2)" stroke="#C9A84C" stroke-width="1"/>
+      <rect x="44" y="26" width="10" height="44" rx="1" fill="rgba(201,168,76,0.3)" stroke="#C9A84C" stroke-width="1.5"/>
+      <rect x="58" y="14" width="10" height="56" rx="1" fill="rgba(201,168,76,0.45)" stroke="#C9A84C" stroke-width="1.5"/>
+      <path d="M21 48 L35 36 L49 24 L63 12" stroke="#2B8A6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="21" cy="48" r="2.5" fill="#2B8A6E"/>
+      <circle cx="35" cy="36" r="2.5" fill="#2B8A6E"/>
+      <circle cx="49" cy="24" r="2.5" fill="#2B8A6E"/>
+      <circle cx="63" cy="12" r="2.5" fill="#2B8A6E"/>
+    </svg>`
+  },
+  {
+    id: 9,
+    name: "Founding Partner Program",
+    tagline: "90-day validation partnership \u2014 first startup to Fortune 500 cohort forming now",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="40" r="32" stroke="rgba(201,168,76,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="40,10 46,28 66,28 50,40 56,58 40,46 24,58 30,40 14,28 34,28" fill="rgba(201,168,76,0.1)" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="40" cy="40" r="8" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5"/>
+      <text x="40" y="43" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="6" font-weight="800" fill="#C9A84C">FP</text>
+    </svg>`
+  },
+  {
+    id: 10,
+    name: "Executive Brief",
+    tagline: "The one-page board-ready case for Readiness OS",
+    accentColor: "#C9A84C",
+    iconSvg: `<svg viewBox="0 0 80 80" fill="none">
+      <rect x="14" y="8" width="44" height="58" rx="2" fill="rgba(201,168,76,0.06)" stroke="#C9A84C" stroke-width="1.5"/>
+      <rect x="14" y="8" width="44" height="10" rx="2" fill="rgba(201,168,76,0.15)" stroke="#C9A84C" stroke-width="1.5"/>
+      <line x1="22" y1="26" x2="50" y2="26" stroke="rgba(201,168,76,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="22" y1="33" x2="50" y2="33" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-linecap="round"/>
+      <line x1="22" y1="40" x2="42" y2="40" stroke="rgba(201,168,76,0.3)" stroke-width="1" stroke-linecap="round"/>
+      <rect x="22" y="47" width="28" height="5" rx="1" fill="rgba(43,138,110,0.12)" stroke="#2B8A6E" stroke-width="1"/>
+      <rect x="22" y="55" width="22" height="5" rx="1" fill="rgba(201,168,76,0.1)" stroke="rgba(201,168,76,0.4)" stroke-width="1"/>
+      <path d="M56 60 L70 60 M63 53 L70 60 L63 67" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`
+  }
+];
+function buildProductIconHtml(product) {
+  const ac = product.accentColor;
+  const isEven = product.id % 2 === 0;
+  const bg = isEven ? "#091333" : "#080D24";
+  const num = String(product.id).padStart(2, "0");
+  const scenarios3 = {
+    1: `
+      <div class="flow">
+        <div class="flow-row"><div class="flow-dot gold">\u25CF</div><div class="flow-content"><div class="flow-label">DETECT</div><div class="flow-val">Signal threshold crossed \xB7 Score 94 \xB7 Activist Investor</div></div><div class="flow-time">T+0:00</div></div>
+        <div class="flow-line"></div>
+        <div class="flow-row"><div class="flow-dot gold">\u25CF</div><div class="flow-content"><div class="flow-label">IDENTIFY</div><div class="flow-val">Protocol #47 matched \xB7 28 tasks staged \xB7 8 stakeholders</div></div><div class="flow-time">T+0:04</div></div>
+        <div class="flow-line"></div>
+        <div class="flow-row"><div class="flow-dot teal">\u25CF</div><div class="flow-content"><div class="flow-label">AUTHORIZE</div><div class="flow-val">Executive sign-off requested \xB7 One-click activation ready</div></div><div class="flow-time">T+0:09</div></div>
+        <div class="flow-line"></div>
+        <div class="flow-row teal-row"><div class="flow-dot teal">\u25CF</div><div class="flow-content"><div class="flow-label">EXECUTE</div><div class="flow-val">Response live \xB7 Legal, IR, Board, Counsel \u2014 all notified</div></div><div class="flow-time teal-t">T+12:00</div></div>
+      </div>
+      <div class="hero-strip">
+        <div class="hero-num">3,600\xD7</div>
+        <div class="hero-lbl">Execution Head Start vs. the old model</div>
+      </div>`,
+    2: `
+      <div class="idea-chain">
+        <div class="idea-phase gold-phase"><div class="phase-letter">I</div><div class="phase-content"><div class="phase-name">IDENTIFY</div><div class="phase-desc">221 strategic triggers mapped across 3 domains</div></div></div>
+        <div class="idea-phase gold-phase"><div class="phase-letter">D</div><div class="phase-content"><div class="phase-name">DETECT</div><div class="phase-desc">248+ data points \xB7 signal scored every 15 minutes</div></div></div>
+        <div class="idea-phase teal-phase"><div class="phase-letter">E</div><div class="phase-content"><div class="phase-name">EXECUTE</div><div class="phase-desc">Pre-staged protocols activate \xB7 executive authorized</div></div></div>
+        <div class="idea-phase teal-phase"><div class="phase-letter">A</div><div class="phase-content"><div class="phase-name">ADVANCE</div><div class="phase-desc">Post-activation debrief \xB7 readiness improves each cycle</div></div></div>
+      </div>`,
+    3: `
+      <div class="timer-panel">
+        <div class="timer-hero">12:00</div>
+        <div class="timer-label">Response complete</div>
+        <div class="timer-bar-wrap"><div class="timer-bar"></div></div>
+      </div>
+      <div class="exec-log">
+        <div class="log-row"><span class="log-time">9:47 AM</span><span class="log-evt">Trigger detected \xB7 Protocol #47 identified</span></div>
+        <div class="log-row"><span class="log-time">9:49 AM</span><span class="log-evt">Stakeholder map loaded \xB7 Documents staged</span></div>
+        <div class="log-row"><span class="log-time">9:54 AM</span><span class="log-evt">Executive authorization received</span></div>
+        <div class="log-row teal-row"><span class="log-time">9:59 AM</span><span class="log-evt">Response live \xB7 Legal, IR, Board notified</span></div>
+      </div>`,
+    4: `
+      <div class="proto-stack">
+        <div class="proto-card gold-card"><div class="proto-left"><div class="proto-domain">GROWTH &amp; POSITIONING</div><div class="proto-meta">58 Protocols \xB7 Pre-staged</div></div><div class="proto-badge gold-badge">READY</div></div>
+        <div class="proto-card"><div class="proto-left"><div class="proto-domain">RISK &amp; RESILIENCE</div><div class="proto-meta">74 Protocols \xB7 Pre-staged</div></div><div class="proto-badge gold-badge">READY</div></div>
+        <div class="proto-card teal-card"><div class="proto-left"><div class="proto-domain">TRANSFORMATION</div><div class="proto-meta">38 Protocols \xB7 Pre-staged</div></div><div class="proto-badge teal-badge">READY</div></div>
+        <div class="proto-footer">+12 COMPOUND PROTOCOLS \xB7 CROSS-DOMAIN ACTIVATION</div>
+      </div>`,
+    5: `
+      <div class="alert-feed">
+        <div class="feed-header">LIVE SIGNAL DETECTIONS \xB7 NOW</div>
+        <div class="alert-row critical"><div class="sev-dot red-dot"></div><div class="alert-info"><div class="alert-name">Activist Investor Disclosure</div><div class="alert-sub">8.3% stake \xB7 Protocol #47 matched</div></div><div class="score-block"><div class="score-num">97</div><div class="score-bar"><div class="score-fill red-fill" style="width:97%"></div></div></div></div>
+        <div class="alert-row high"><div class="sev-dot amber-dot"></div><div class="alert-info"><div class="alert-name">Supply Chain Disruption</div><div class="alert-sub">Tier-1 supplier \xB7 Protocol #83 matched</div></div><div class="score-block"><div class="score-num">78</div><div class="score-bar"><div class="score-fill amber-fill" style="width:78%"></div></div></div></div>
+        <div class="alert-row med"><div class="sev-dot teal-dot"></div><div class="alert-info"><div class="alert-name">Regulatory Filing Deadline</div><div class="alert-sub">SEC \xB7 14 days \xB7 Protocol #129 recommended</div></div><div class="score-block"><div class="score-num">52</div><div class="score-bar"><div class="score-fill teal-fill" style="width:52%"></div></div></div></div>
+        <div class="feed-footer">221 triggers monitored \xB7 248+ data points \xB7 Continuous</div>
+      </div>`,
+    6: `
+      <div class="scan-panel">
+        <div class="scan-header">CONTINUOUS PATTERN SCORING \xB7 LIVE</div>
+        <div class="scan-rows">
+          <div class="scan-row"><div class="pulse-dot"></div><div class="scan-src">SEC &amp; Regulatory Filings</div><div class="scan-status">SCANNING</div></div>
+          <div class="scan-row"><div class="pulse-dot"></div><div class="scan-src">Market Intelligence</div><div class="scan-status">SCANNING</div></div>
+          <div class="scan-row"><div class="pulse-dot"></div><div class="scan-src">News &amp; Media Intelligence</div><div class="scan-status">SCANNING</div></div>
+          <div class="scan-row"><div class="pulse-dot"></div><div class="scan-src">Financial Signal Sources</div><div class="scan-status">SCANNING</div></div>
+        </div>
+        <div class="scan-meta">
+          <div class="meta-stat"><span class="meta-num">248+</span><span class="meta-lbl"> data points</span></div>
+          <div class="meta-div">\xB7</div>
+          <div class="meta-stat"><span class="meta-num">15 min</span><span class="meta-lbl"> cycle</span></div>
+          <div class="meta-div">\xB7</div>
+          <div class="meta-stat"><span class="meta-num">221</span><span class="meta-lbl"> patterns</span></div>
+        </div>
+      </div>`,
+    7: `
+      <div class="war-room">
+        <div class="wr-header"><div class="wr-proto">PROTOCOL #47 ACTIVE \xB7 Activist Investor Response</div><div class="wr-status">AUTHORIZED</div></div>
+        <div class="task-grid">
+          <div class="task-row"><div class="task-name">CFO Brief</div><div class="task-status complete">COMPLETE</div></div>
+          <div class="task-row"><div class="task-name">Board Alert</div><div class="task-status complete">COMPLETE</div></div>
+          <div class="task-row"><div class="task-name">Legal Counsel</div><div class="task-status active">ACTIVE</div></div>
+          <div class="task-row"><div class="task-name">IR Statement</div><div class="task-status active">ACTIVE</div></div>
+          <div class="task-row"><div class="task-name">External PR</div><div class="task-status staged">STAGED</div></div>
+          <div class="task-row"><div class="task-name">SEC Response</div><div class="task-status staged">STAGED</div></div>
+        </div>
+        <div class="wr-footer">28 tasks \xB7 8 stakeholders \xB7 Response complete at T+12:00</div>
+      </div>`,
+    8: `
+      <div class="roi-panel">
+        <div class="roi-hero"><div class="roi-num">3,600\xD7</div><div class="roi-lbl">Execution Head Start</div></div>
+        <div class="roi-rule"></div>
+        <div class="roi-stats">
+          <div class="roi-stat"><div class="rs-val">30 days</div><div class="rs-lbl">Old model mobilization</div></div>
+          <div class="roi-arrow">\u2192</div>
+          <div class="roi-stat"><div class="rs-val teal-v">12 min</div><div class="rs-lbl">Readiness OS execution</div></div>
+        </div>
+        <div class="roi-bars">
+          <div class="bar-row"><div class="bar-lbl">Year 1 ROI</div><div class="bar-wrap"><div class="bar-fill gold-fill" style="width:85%"></div></div><div class="bar-val">847%</div></div>
+          <div class="bar-row"><div class="bar-lbl">3-Year Net Value</div><div class="bar-wrap"><div class="bar-fill teal-fill-b" style="width:72%"></div></div><div class="bar-val teal-v">$7.2M</div></div>
+        </div>
+      </div>`,
+    9: `
+      <div class="fp-panel">
+        <div class="fp-badge">FOUNDING PARTNER PROGRAM</div>
+        <div class="fp-headline">First startup to Fortune 500 Cohort<br/>Forming Now</div>
+        <div class="fp-rule"></div>
+        <div class="fp-points">
+          <div class="fp-pt"><span class="fp-check">\u2713</span> 90-day structured validation partnership</div>
+          <div class="fp-pt"><span class="fp-check">\u2713</span> Direct founder access throughout</div>
+          <div class="fp-pt"><span class="fp-check">\u2713</span> Live trigger handled inside Readiness OS</div>
+          <div class="fp-pt"><span class="fp-check">\u2713</span> Documented mobilization compression data</div>
+        </div>
+        <div class="fp-cta">Apply for Founding Partner Access</div>
+      </div>`,
+    10: `
+      <div class="brief-panel">
+        <div class="brief-header">EXECUTIVE BRIEF \xB7 BOARD-READY \xB7 ONE PAGE</div>
+        <div class="brief-hero">"The response is ready<br/>before the trigger fires."</div>
+        <div class="brief-stats">
+          <div class="bs-row"><span class="bs-key">Mobilization compression</span><span class="bs-val">3,600\xD7</span></div>
+          <div class="bs-row"><span class="bs-key">Pre-authorized budget</span><span class="bs-val">$2.4M avg</span></div>
+          <div class="bs-row"><span class="bs-key">Readiness Protocols</span><span class="bs-val">170 ready</span></div>
+          <div class="bs-row"><span class="bs-key">Founding Partner ROI</span><span class="bs-val">847% Yr 1</span></div>
+        </div>
+        <div class="brief-cta">vaughnmartin.com/executive-brief</div>
+      </div>`
+  };
+  const scenario = scenarios3[product.id] || scenarios3[1];
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:600px;height:600px;overflow:hidden;font-family:'Barlow Condensed',sans-serif;}
+  .card{width:600px;height:600px;background:linear-gradient(150deg,${bg} 0%,#0D1C4A 100%);position:relative;overflow:hidden;display:flex;flex-direction:column;}
+  .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:40px 40px;}
+  .topbar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,${ac},rgba(201,168,76,.15));}
+  .glow{position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06) 0%,transparent 65%);}
+  /* Header */
+  .hdr{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:16px 22px 12px;border-bottom:1px solid rgba(201,168,76,.1);}
+  .hdr-left{display:flex;align-items:center;gap:7px;}
+  .hdr-num{font-size:10px;font-weight:800;letter-spacing:.3em;color:rgba(201,168,76,.55);}
+  .hdr-sep{font-size:10px;color:rgba(255,255,255,.15);}
+  .hdr-name{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+  .live-pill{display:flex;align-items:center;gap:5px;background:rgba(43,138,110,.12);border:1px solid rgba(43,138,110,.3);padding:3px 9px;}
+  .live-dot{width:5px;height:5px;border-radius:50%;background:#2B8A6E;}
+  .live-txt{font-size:8px;font-weight:800;letter-spacing:.2em;color:#2B8A6E;}
+  /* Scenario */
+  .scenario{position:relative;z-index:2;flex:1;padding:14px 22px;display:flex;flex-direction:column;gap:9px;overflow:hidden;}
+  /* FLOW (Card 1) */
+  .flow{display:flex;flex-direction:column;gap:0;}
+  .flow-row{display:flex;align-items:flex-start;gap:9px;padding:6px 0;}
+  .flow-dot{font-size:9px;line-height:1.5;flex-shrink:0;width:13px;text-align:center;}
+  .flow-dot.gold{color:#C9A84C;} .flow-dot.teal{color:#2B8A6E;}
+  .flow-content{flex:1;}
+  .flow-label{font-size:8.5px;font-weight:800;letter-spacing:.28em;color:rgba(201,168,76,.7);margin-bottom:1px;}
+  .flow-val{font-size:10.5px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.02em;}
+  .flow-time{font-size:8.5px;font-weight:700;letter-spacing:.08em;color:rgba(201,168,76,.4);flex-shrink:0;}
+  .flow-line{width:1px;height:7px;background:rgba(201,168,76,.18);margin-left:5px;}
+  .teal-row .flow-label{color:rgba(43,138,110,.9);} .teal-row .flow-val{color:rgba(61,187,151,.75);}
+  .teal-t{color:#2B8A6E!important;}
+  .hero-strip{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);padding:8px 14px;display:flex;align-items:center;gap:12px;}
+  .hero-num{font-size:26px;font-weight:900;color:#C9A84C;letter-spacing:-.01em;line-height:1;}
+  .hero-lbl{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;line-height:1.35;}
+  /* IDEA (Card 2) */
+  .idea-chain{display:flex;flex-direction:column;gap:7px;}
+  .idea-phase{display:flex;align-items:center;gap:11px;padding:9px 12px;border-left:3px solid transparent;}
+  .gold-phase{border-left-color:rgba(201,168,76,.6);background:rgba(201,168,76,.04);}
+  .teal-phase{border-left-color:rgba(43,138,110,.6);background:rgba(43,138,110,.04);}
+  .phase-letter{font-size:20px;font-weight:900;color:#C9A84C;width:24px;flex-shrink:0;}
+  .teal-phase .phase-letter{color:#2B8A6E;}
+  .phase-name{font-size:9.5px;font-weight:800;letter-spacing:.22em;color:rgba(255,255,255,.8);margin-bottom:2px;}
+  .phase-desc{font-size:9.5px;font-weight:500;color:rgba(255,255,255,.42);letter-spacing:.02em;}
+  /* TIMER (Card 3) */
+  .timer-panel{text-align:center;padding:4px 0 8px;}
+  .timer-hero{font-size:54px;font-weight:900;color:#C9A84C;letter-spacing:-.02em;line-height:1;}
+  .timer-label{font-size:8.5px;font-weight:800;letter-spacing:.35em;color:rgba(43,138,110,.8);text-transform:uppercase;margin-top:2px;}
+  .timer-bar-wrap{height:2px;background:rgba(201,168,76,.15);margin:8px 24px 0;}
+  .timer-bar{width:100%;height:100%;background:linear-gradient(to right,#C9A84C,#2B8A6E);}
+  .exec-log{display:flex;flex-direction:column;gap:5px;}
+  .log-row{display:flex;align-items:center;gap:9px;padding:5px 9px;background:rgba(255,255,255,.03);border-left:2px solid rgba(201,168,76,.15);}
+  .log-row.teal-row{border-left-color:rgba(43,138,110,.5);background:rgba(43,138,110,.05);}
+  .log-time{font-size:8.5px;font-weight:800;letter-spacing:.08em;color:rgba(201,168,76,.6);width:48px;flex-shrink:0;}
+  .log-evt{font-size:10px;font-weight:500;color:rgba(255,255,255,.52);}
+  .teal-row .log-time{color:#2B8A6E;} .teal-row .log-evt{color:rgba(43,138,110,.9);}
+  /* PROTOCOL LIBRARY (Card 4) */
+  .proto-stack{display:flex;flex-direction:column;gap:8px;}
+  .proto-card{padding:9px 13px;border:1px solid rgba(201,168,76,.1);background:rgba(201,168,76,.03);display:flex;align-items:center;justify-content:space-between;}
+  .gold-card{border-color:rgba(201,168,76,.28);background:rgba(201,168,76,.06);}
+  .teal-card{border-color:rgba(43,138,110,.28);background:rgba(43,138,110,.05);}
+  .proto-domain{font-size:11px;font-weight:800;letter-spacing:.1em;color:rgba(255,255,255,.85);}
+  .proto-meta{font-size:8.5px;font-weight:600;color:rgba(255,255,255,.32);letter-spacing:.05em;margin-top:1px;}
+  .proto-badge{font-size:7.5px;font-weight:900;letter-spacing:.2em;padding:3px 8px;border:1px solid;flex-shrink:0;}
+  .gold-badge{color:#C9A84C;border-color:rgba(201,168,76,.4);}
+  .teal-badge{color:#2B8A6E;border-color:rgba(43,138,110,.4);}
+  .proto-footer{font-size:8.5px;font-weight:700;letter-spacing:.14em;color:rgba(201,168,76,.32);text-align:center;padding:6px 0 0;border-top:1px solid rgba(201,168,76,.08);}
+  /* ALERT FEED (Card 5) */
+  .alert-feed{display:flex;flex-direction:column;gap:7px;}
+  .feed-header{font-size:8.5px;font-weight:800;letter-spacing:.22em;color:rgba(201,168,76,.5);padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.1);}
+  .alert-row{display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid rgba(201,168,76,.07);}
+  .alert-row.critical{border-color:rgba(220,60,50,.25);background:rgba(220,60,50,.04);}
+  .alert-row.high{border-color:rgba(201,168,76,.2);background:rgba(201,168,76,.04);}
+  .alert-row.med{border-color:rgba(43,138,110,.2);background:rgba(43,138,110,.03);}
+  .sev-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .red-dot{background:#DC3C32;} .amber-dot{background:#C9A84C;} .teal-dot{background:#2B8A6E;}
+  .alert-info{flex:1;}
+  .alert-name{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.02em;}
+  .alert-sub{font-size:8.5px;font-weight:500;color:rgba(255,255,255,.32);margin-top:1px;}
+  .score-block{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;}
+  .score-num{font-size:12px;font-weight:900;color:#C9A84C;line-height:1;}
+  .score-bar{width:44px;height:3px;background:rgba(255,255,255,.07);overflow:hidden;}
+  .score-fill{height:100%;}
+  .red-fill{background:#DC3C32;} .amber-fill{background:#C9A84C;} .teal-fill{background:#2B8A6E;}
+  .feed-footer{font-size:8px;font-weight:700;letter-spacing:.14em;color:rgba(201,168,76,.28);text-align:center;padding-top:3px;}
+  /* SIGNAL DETECTION (Card 6) */
+  .scan-panel{display:flex;flex-direction:column;gap:9px;}
+  .scan-header{font-size:8.5px;font-weight:800;letter-spacing:.22em;color:rgba(43,138,110,.7);padding-bottom:7px;border-bottom:1px solid rgba(43,138,110,.14);}
+  .scan-rows{display:flex;flex-direction:column;gap:6px;}
+  .scan-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(43,138,110,.1);background:rgba(43,138,110,.03);}
+  .pulse-dot{width:7px;height:7px;border-radius:50%;background:#2B8A6E;flex-shrink:0;box-shadow:0 0 6px rgba(43,138,110,.5);}
+  .scan-src{flex:1;font-size:11px;font-weight:600;color:rgba(255,255,255,.62);letter-spacing:.03em;}
+  .scan-status{font-size:8px;font-weight:800;letter-spacing:.18em;color:rgba(43,138,110,.7);}
+  .scan-meta{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(201,168,76,.1);background:rgba(201,168,76,.04);}
+  .meta-stat{display:flex;align-items:baseline;gap:2px;}
+  .meta-num{font-size:14px;font-weight:900;color:#C9A84C;}
+  .meta-lbl{font-size:8.5px;font-weight:600;color:rgba(255,255,255,.32);letter-spacing:.04em;}
+  .meta-div{color:rgba(255,255,255,.14);font-size:11px;}
+  /* WAR ROOM (Card 7) */
+  .war-room{display:flex;flex-direction:column;gap:8px;}
+  .wr-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;}
+  .wr-proto{font-size:8.5px;font-weight:800;letter-spacing:.15em;color:rgba(201,168,76,.6);}
+  .wr-status{font-size:7.5px;font-weight:900;letter-spacing:.18em;color:#2B8A6E;background:rgba(43,138,110,.12);border:1px solid rgba(43,138,110,.35);padding:3px 8px;}
+  .task-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .task-row{display:flex;align-items:center;justify-content:space-between;padding:6px 9px;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.07);}
+  .task-name{font-size:10px;font-weight:600;color:rgba(255,255,255,.62);letter-spacing:.02em;}
+  .task-status{font-size:7px;font-weight:900;letter-spacing:.14em;padding:2px 5px;}
+  .task-status.complete{color:#2B8A6E;background:rgba(43,138,110,.1);border:1px solid rgba(43,138,110,.28);}
+  .task-status.active{color:#C9A84C;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.28);}
+  .task-status.staged{color:rgba(255,255,255,.3);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);}
+  .wr-footer{font-size:8.5px;font-weight:700;letter-spacing:.1em;color:rgba(43,138,110,.58);text-align:center;padding:4px;border-top:1px solid rgba(43,138,110,.12);}
+  /* ROI (Card 8) */
+  .roi-panel{display:flex;flex-direction:column;gap:10px;}
+  .roi-hero{text-align:center;padding:2px 0 6px;}
+  .roi-num{font-size:56px;font-weight:900;color:#C9A84C;letter-spacing:-.02em;line-height:1;}
+  .roi-lbl{font-size:8.5px;font-weight:700;letter-spacing:.28em;color:rgba(255,255,255,.38);text-transform:uppercase;margin-top:2px;}
+  .roi-rule{height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.28),transparent);}
+  .roi-stats{display:flex;align-items:center;justify-content:center;gap:10px;padding:3px 0;}
+  .roi-stat{text-align:center;}
+  .rs-val{font-size:15px;font-weight:800;color:rgba(255,255,255,.55);}
+  .rs-val.teal-v{color:#2B8A6E;} .bar-val.teal-v{color:#2B8A6E;}
+  .rs-lbl{font-size:8px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:1px;}
+  .roi-arrow{font-size:16px;color:rgba(201,168,76,.38);}
+  .roi-bars{display:flex;flex-direction:column;gap:7px;}
+  .bar-row{display:flex;align-items:center;gap:9px;}
+  .bar-lbl{font-size:8.5px;font-weight:600;color:rgba(255,255,255,.38);letter-spacing:.04em;width:86px;flex-shrink:0;}
+  .bar-wrap{flex:1;height:4px;background:rgba(255,255,255,.06);}
+  .bar-fill{height:100%;}
+  .gold-fill{background:#C9A84C;} .teal-fill-b{background:#2B8A6E;}
+  .bar-val{font-size:10px;font-weight:800;color:#C9A84C;width:34px;text-align:right;flex-shrink:0;}
+  /* FOUNDING PARTNER (Card 9) */
+  .fp-panel{display:flex;flex-direction:column;gap:9px;}
+  .fp-badge{font-size:8.5px;font-weight:900;letter-spacing:.28em;color:#C9A84C;padding:5px 10px;border:1px solid rgba(201,168,76,.35);background:rgba(201,168,76,.07);text-align:center;}
+  .fp-headline{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:600;font-style:italic;color:rgba(255,255,255,.9);line-height:1.2;text-align:center;}
+  .fp-rule{height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.28),transparent);}
+  .fp-points{display:flex;flex-direction:column;gap:5px;}
+  .fp-pt{font-size:10.5px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.02em;display:flex;align-items:center;gap:7px;}
+  .fp-check{color:#2B8A6E;font-weight:900;}
+  .fp-cta{font-size:9.5px;font-weight:800;letter-spacing:.1em;color:#0A0F2E;background:#C9A84C;text-align:center;padding:9px 14px;text-transform:uppercase;}
+  /* EXECUTIVE BRIEF (Card 10) */
+  .brief-panel{display:flex;flex-direction:column;gap:9px;}
+  .brief-header{font-size:8.5px;font-weight:800;letter-spacing:.28em;color:rgba(201,168,76,.52);padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,.1);}
+  .brief-hero{font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;font-weight:600;font-style:italic;color:rgba(255,255,255,.9);line-height:1.3;}
+  .brief-stats{display:flex;flex-direction:column;gap:5px;}
+  .bs-row{display:flex;align-items:center;justify-content:space-between;padding:5px 9px;border-bottom:1px solid rgba(201,168,76,.06);}
+  .bs-key{font-size:9.5px;font-weight:500;color:rgba(255,255,255,.42);letter-spacing:.02em;}
+  .bs-val{font-size:10.5px;font-weight:800;color:#C9A84C;letter-spacing:.04em;}
+  .brief-cta{font-size:8.5px;font-weight:700;letter-spacing:.08em;color:rgba(43,138,110,.65);padding-top:3px;border-top:1px solid rgba(43,138,110,.12);}
+  /* Tagline strip */
+  .tagline-strip{position:relative;z-index:2;padding:8px 22px;border-top:1px solid rgba(201,168,76,.08);}
+  .tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:12.5px;font-style:italic;font-weight:600;color:rgba(240,237,228,.42);line-height:1.35;}
+  /* Brand strip */
+  .bottom{position:relative;z-index:2;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(0,0,0,.22);border-top:1px solid rgba(201,168,76,.09);}
+  .brand-left{display:flex;align-items:center;gap:9px;}
+  .seal{width:26px;height:26px;}
+  .bname{font-size:12px;font-weight:700;letter-spacing:.1em;color:#ffffff;}
+  .bprod{font-size:8px;font-weight:600;letter-spacing:.26em;color:#C9A84C;text-transform:uppercase;margin-top:1px;}
+  .prod-tag{font-size:8.5px;font-weight:800;letter-spacing:.16em;color:rgba(201,168,76,.28);text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid"></div>
+  <div class="topbar"></div>
+  <div class="glow"></div>
+
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="hdr-num">PRODUCT ${num}</div>
+      <div class="hdr-sep">\xB7</div>
+      <div class="hdr-name">READINESS OS</div>
+    </div>
+    <div class="live-pill"><div class="live-dot"></div><div class="live-txt">LIVE</div></div>
+  </div>
+
+  <div class="scenario">${scenario}</div>
+
+  <div class="tagline-strip">
+    <div class="tagline">${product.tagline}</div>
+  </div>
+
+  <div class="bottom">
+    <div class="brand-left">
+      <svg class="seal" viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="14" r="12.5" stroke="#C9A84C" stroke-width="1"/>
+        <circle cx="14" cy="14" r="9" stroke="rgba(201,168,76,.28)" stroke-width=".75"/>
+        <text x="14" y="17.5" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" font-weight="800" fill="#C9A84C">VM</text>
+      </svg>
+      <div>
+        <div class="bname">VaughnMartin</div>
+        <div class="bprod">Readiness OS</div>
+      </div>
+    </div>
+    <div class="prod-tag">LI PRODUCT ${num}</div>
+  </div>
+</div>
+</body>
+</html>`;
+}
+function registerLinkedInProductsRoute(app2) {
+  app2.get("/api/linkedin-product-icon.png", async (req, res) => {
+    const pid = parseInt(req.query.pid || "1", 10);
+    const product = LINKEDIN_PRODUCTS.find((p) => p.id === pid);
+    if (!product) {
+      return res.status(400).json({ error: `pid must be 1\u2013${LINKEDIN_PRODUCTS.length}` });
+    }
+    let browser;
+    try {
+      browser = await chromium2.launch({
+        executablePath: CHROMIUM2,
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+      });
+      const page = await browser.newPage();
+      await page.setViewportSize({ width: 600, height: 600 });
+      await page.emulateMedia({ colorScheme: "dark" });
+      await page.setContent(buildProductIconHtml(product), { waitUntil: "networkidle" });
+      await page.waitForTimeout(1500);
+      const buffer = await page.screenshot({
+        type: "png",
+        clip: { x: 0, y: 0, width: 600, height: 600 }
+      });
+      const filename = `VaughnMartin-LinkedIn-Product-${String(product.id).padStart(2, "0")}-${product.name.replace(/[^a-zA-Z0-9]/g, "-")}.png`;
+      res.setHeader("Content-Type", "image/png");
+      res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+      res.setHeader("Cache-Control", "public, max-age=300");
+      res.send(buffer);
+    } catch (err) {
+      console.error("[LinkedInProducts] Screenshot failed:", err?.message);
+      res.status(500).json({ error: "Image generation failed", detail: err?.message });
+    } finally {
+      if (browser) await browser.close();
+    }
+  });
+  app2.get("/api/linkedin-product-copy.json", (_req, res) => {
+    res.json(LINKEDIN_PRODUCTS_COPY);
+  });
+}
+var LINKEDIN_PRODUCTS_COPY = [
+  {
+    id: 1,
+    name: "Readiness OS Platform",
+    tagline: "The operating model layer above the startup to Fortune 500's AI stack",
+    description: "Readiness OS is the coordination infrastructure startup to Fortune 500 enterprises use to replace 30-day mobilization cycles with 12-minute execution. 170 pre-staged Readiness Protocols activate the moment a strategic trigger fires \u2014 with executive authority preserved at every step. The response is ready before the trigger fires.",
+    highlights: [
+      {
+        title: "3,600\xD7 Execution Head Start",
+        description: "30 days of mobilization compressed to 12 minutes. Pre-staged protocols activate the moment a trigger is detected \u2014 no committee, no coordination delay."
+      },
+      {
+        title: "Executive Authority Preserved",
+        description: "AI monitors, executives authorize. No Readiness Protocol activates without sign-off. Preparation compresses the cycle; the decision remains human."
+      },
+      {
+        title: "Microsoft AI Orchestrator",
+        description: "Every startup to Fortune 500 has invested in Microsoft's AI stack. Readiness OS is the operating model layer above it \u2014 not a replacement, the orchestrator."
+      }
+    ],
+    cta: { label: "Request Founding Partner Access", url: "https://vaughnmartin.com/founding-partner-program" }
+  },
+  {
+    id: 2,
+    name: "IDEA Framework\u2122",
+    tagline: "Identify \xB7 Detect \xB7 Execute \xB7 Advance \u2014 proprietary 4-phase execution chain",
+    description: "The IDEA Framework is VaughnMartin's proprietary execution chain that powers every Readiness Protocol. Identify strategic triggers \u2192 Detect signal patterns \u2192 Execute pre-staged responses \u2192 Advance organizational readiness. Built for enterprises that can't afford to assemble a response after the trigger fires.",
+    highlights: [
+      {
+        title: "Identify & Detect",
+        description: "221 strategic triggers mapped and monitored across Growth & Positioning, Risk & Resilience, and Transformation domains. Real-time scoring before any executive is notified."
+      },
+      {
+        title: "Execute",
+        description: "Pre-staged protocols activate through an authorized execution chain. Tasks assigned, stakeholders notified, documents staged \u2014 before the trigger fires."
+      },
+      {
+        title: "Advance",
+        description: "Each activation deepens organizational readiness. Post-activation debriefs classify outcomes and feed forward to improve the next response."
+      }
+    ],
+    cta: { label: "See How It Executes", url: "https://vaughnmartin.com/how-it-executes" }
+  },
+  {
+    id: 3,
+    name: "12-Minute Execution",
+    tagline: "30 days of mobilization. 12 minutes of execution.",
+    description: "The 12-Minute Execution capability is the core of Readiness OS. When a strategic trigger is detected, a pre-staged Readiness Protocol activates, tasks are assigned, stakeholders are notified, and the executive authorization chain begins \u2014 all within 12 minutes. The old model took 30 days just to mobilize.",
+    highlights: [
+      {
+        title: "Pre-Staged Before the Trigger Fires",
+        description: "Every response is prepared in advance. The moment a trigger is detected, the protocol is already designed, assigned, and waiting for authorization."
+      },
+      {
+        title: "12-Minute Test Drive",
+        description: "Experience the full cycle in a live simulation: 7 scenarios across all three strategic domains, including compound multi-protocol activations."
+      },
+      {
+        title: "3,600\xD7 Head Start vs. the Old Model",
+        description: "30-day mobilization cycles vs. 12-minute execution. In a startup to Fortune 500, that gap is the difference between controlling a narrative and reacting to one."
+      }
+    ],
+    cta: { label: "Start the 12-Minute Test Drive", url: "https://vaughnmartin.com/12-minute-experience" }
+  },
+  {
+    id: 4,
+    name: "Protocol Library",
+    tagline: "170 pre-staged Readiness Protocols across 3 strategic domains",
+    description: "170 cross-industry Readiness Protocols organized across Growth & Positioning, Risk & Resilience, and Transformation. Each protocol includes pre-staged tasks, stakeholder assignments, budget allocations, and document staging \u2014 fully ready to activate the moment a trigger fires. Plus 12 compound protocols for multi-domain threats.",
+    highlights: [
+      {
+        title: "Three Strategic Domains",
+        description: "Growth & Positioning (formerly Offense), Risk & Resilience (formerly Defense), and Transformation \u2014 covering the full enterprise threat and opportunity landscape."
+      },
+      {
+        title: "12 Compound Protocols",
+        description: "Multi-domain protocols that activate two simultaneous response tracks for complex threats requiring coordinated cross-functional execution."
+      },
+      {
+        title: "6 Industry Protocol Packs",
+        description: "Sector-specific packs layered on top of the 170 core protocols for Healthcare, Financial Services, Manufacturing, Retail, Energy, and Technology."
+      }
+    ],
+    cta: { label: "Explore the Protocol Library", url: "https://vaughnmartin.com/playbook-library" }
+  },
+  {
+    id: 5,
+    name: "Command Tower",
+    tagline: "Full-screen executive readiness display \u2014 live, continuous, board-ready",
+    description: "A real-time, full-screen executive display showing live trigger detections, system readiness scores, signal confidence feeds, and activation status. Designed for the executive floor, the Command Tower makes organizational readiness visible and continuous \u2014 not just post-incident.",
+    highlights: [
+      {
+        title: "Live Signal Feed",
+        description: "Real-time display of detected signals, confidence scores, trigger classifications, and recommended Readiness Protocols \u2014 updated every 15 minutes."
+      },
+      {
+        title: "Executive Readiness Score",
+        description: "A 0\u2013100 score derived from live signals, active protocols, and activation history. Continuously updated. Board-ready at any moment."
+      },
+      {
+        title: "War Room Pulse Map",
+        description: "Visual map of stakeholder readiness and task completion across all active activations \u2014 one screen, total situational awareness."
+      }
+    ],
+    cta: { label: "Request Executive Access", url: "https://vaughnmartin.com/request-access" }
+  },
+  {
+    id: 6,
+    name: "Signal Detection Engine",
+    tagline: "221 strategic triggers monitored in real time \u2014 before they become crises",
+    description: "VaughnMartin's Signal Detection Engine continuously monitors 221 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes \u2014 not weeks.",
+    highlights: [
+      {
+        title: "221 Trigger Patterns",
+        description: "Mapped across geopolitical, cybersecurity, market valuation, regulatory, reputational, and financial distress domains. Continuously monitored."
+      },
+      {
+        title: "Confidence Scoring",
+        description: "Signals are scored against pattern matching, keyword density, and temporal proximity. Quality gates prevent alert fatigue \u2014 only high-signal detections reach executives."
+      },
+      {
+        title: "4-Hour Deduplication",
+        description: "Intelligent deduplication windows prevent repeat notifications on the same trigger, preserving executive attention for genuine strategic events."
+      }
+    ],
+    cta: { label: "See Live Signal Activity", url: "https://vaughnmartin.com/command-tower" }
+  },
+  {
+    id: 7,
+    name: "War Room",
+    tagline: "Pre-staged live activation \u2014 tasks assigned, stakeholders ready, executive authorizes",
+    description: "When a Readiness Protocol activates, the War Room becomes the command center. Pre-staged tasks, real-time stakeholder status, executive authorization gate, and post-activation debrief \u2014 all in one coordinated execution environment designed to compress decision cycles from weeks to minutes.",
+    highlights: [
+      {
+        title: "Pre-Staged Task Execution",
+        description: "Every task in the protocol is pre-defined, pre-assigned, and ready at activation. No coordination overhead. No 'who's responsible?' delays."
+      },
+      {
+        title: "Executive Authorization Gate",
+        description: "No action proceeds without sign-off. Executive authority is preserved at every step. Preparation compresses the cycle; the decision remains human."
+      },
+      {
+        title: "Post-Activation Intelligence",
+        description: "Automated debrief classifies each activation (Optimization, Mixed-Signal, or Recovery) and feeds insights forward to improve future readiness."
+      }
+    ],
+    cta: { label: "See a Live Activation", url: "https://vaughnmartin.com/demo-hub" }
+  },
+  {
+    id: 8,
+    name: "ROI Dashboard",
+    tagline: "Measure the financial return on organizational readiness",
+    description: "The Readiness ROI Dashboard quantifies the value of pre-staged execution: consulting costs avoided, response time compression, activation outcomes, and projected value across the protocol portfolio. See the business case in your numbers \u2014 not ours. Includes break-even analysis, 3-year net value projection, and consulting retainer comparison.",
+    highlights: [
+      {
+        title: "Break-Even Analysis",
+        description: "Compare platform cost ($60K\u2013$240K) against consulting retainer rates and incident response costs. See exactly when Readiness OS pays for itself."
+      },
+      {
+        title: "3-Year Net Value Projection",
+        description: "Projects cumulative value delivered across the full Readiness Protocol portfolio, using your actual trigger frequency and response cost baselines."
+      },
+      {
+        title: "Outcome Classification",
+        description: "Each activation is classified (Optimization vs. Recovery) and its financial impact tracked. The dashboard builds the board case automatically."
+      }
+    ],
+    cta: { label: "Calculate Your ROI", url: "https://vaughnmartin.com/roi-calculator" }
+  },
+  {
+    id: 9,
+    name: "Founding Partner Program",
+    tagline: "90-day validation partnership \u2014 first startup to Fortune 500 cohort forming now",
+    description: "The Founding Partner Program is VaughnMartin's selective pre-launch partnership for startup to Fortune 500 enterprises ready to validate Readiness OS against their actual strategic landscape. A 90-day structured engagement with dedicated implementation support, direct roadmap influence, and Founding Partner pricing.",
+    highlights: [
+      {
+        title: "Selective by Design",
+        description: "startup to Fortune 500 enterprises only. Each partner is assessed for strategic fit, trigger landscape alignment, and readiness infrastructure compatibility."
+      },
+      {
+        title: "90-Day Validation",
+        description: "Full platform implementation against your actual triggers, protocols, and execution chains \u2014 not a sandbox. Real organizational readiness, measured."
+      },
+      {
+        title: "Roadmap Influence",
+        description: "Founding Partners shape the direction of future protocol development, industry packs, Microsoft integration priorities, and product evolution."
+      }
+    ],
+    cta: { label: "Apply for Founding Partner Access", url: "https://vaughnmartin.com/founding-partner-program" }
+  },
+  {
+    id: 10,
+    name: "Executive Brief",
+    tagline: "The one-page board-ready case for Readiness OS",
+    description: "A printable, board-ready one-pager covering the Readiness OS value proposition, the 3,600\xD7 comparison table, ROI case, proof numbers, and Founding Partner CTA. Designed for board presentations, vendor evaluations, executive conversations, and procurement review. Share it. Print it. Present it.",
+    highlights: [
+      {
+        title: "3,600\xD7 Comparison Table",
+        description: "Side-by-side view of Readiness OS vs. the old mobilization model across 6 key dimensions \u2014 mobilization time, protocol readiness, signal detection, budget staging, and more."
+      },
+      {
+        title: "Board-Ready ROI Case",
+        description: "First-year ROI, break-even timeline, 3-year net value, and consulting retainer comparison \u2014 in one printable view that passes the CFO and board bar."
+      },
+      {
+        title: "Founding Partner CTA",
+        description: "Closes with clear next steps and the Founding Partner Program application \u2014 designed to move executives from awareness to conversation."
+      }
+    ],
+    cta: { label: "View the Executive Brief", url: "https://vaughnmartin.com/executive-brief" }
+  }
+];
+
+// server/routes/pitchDeckRoute.ts
+import { chromium as chromium3 } from "playwright-core";
+import { readFileSync } from "fs";
+import { resolve } from "path";
+var CHROMIUM3 = process.env.REPLIT_PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/nix/store/kcvsxrmgwp3ffz5jijyy7wn9fcsjl4hz-playwright-browsers-1.55.0-with-cjk/chromium-1187/chrome-linux/chrome";
+var TOTAL_SLIDES = 11;
+var SLIDE_TITLES = [
+  "01-Opening-Question",
+  "02-The-Reality",
+  "03-The-Problem-Is-Here",
+  "04-The-Solution",
+  "05-Why-VaughnMartin",
+  "06-Execution-Chain",
+  "07-ROI",
+  "08-Proof-Points",
+  "09-The-Opportunity",
+  "10-The-Ask",
+  "11-Close"
+];
+function getPitchDeckHtml() {
+  const filePath = resolve(process.cwd(), "attached_assets/VaughnMartin-Investor-Pitch-Deck.html");
+  return readFileSync(filePath, "utf-8");
+}
+function registerPitchDeckRoute(app2) {
+  app2.get("/api/pitch-slide.png", async (req, res) => {
+    const n = parseInt(req.query.n || "1", 10);
+    if (isNaN(n) || n < 1 || n > TOTAL_SLIDES) {
+      return res.status(400).json({ error: `n must be 1\u2013${TOTAL_SLIDES}` });
+    }
+    let browser;
+    try {
+      browser = await chromium3.launch({
+        executablePath: CHROMIUM3,
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+      });
+      const page = await browser.newPage();
+      await page.setViewportSize({ width: 1280, height: 720 });
+      const html = getPitchDeckHtml();
+      await page.setContent(html, { waitUntil: "networkidle" });
+      await page.waitForTimeout(1800);
+      await page.evaluate((idx) => {
+        const slides = document.querySelectorAll(".slide");
+        slides.forEach((s) => s.classList.remove("active"));
+        if (slides[idx]) slides[idx].classList.add("active");
+        const fill = document.getElementById("progress");
+        if (fill) fill.style.width = (idx + 1) / slides.length * 100 + "%";
+        const hint = document.querySelector(".fullscreen-hint");
+        if (hint) hint.style.display = "none";
+        const prev = document.getElementById("prev-btn");
+        if (prev) prev.style.display = "none";
+        const next = document.getElementById("next-btn");
+        if (next) next.style.display = "none";
+        const bar = document.querySelector(".progress-bar");
+        if (bar) bar.style.display = "none";
+      }, n - 1);
+      await page.waitForTimeout(300);
+      const buffer = await page.screenshot({
+        type: "png",
+        clip: { x: 0, y: 0, width: 1280, height: 720 }
+      });
+      const title = SLIDE_TITLES[n - 1] || `Slide-${String(n).padStart(2, "0")}`;
+      res.setHeader("Content-Type", "image/png");
+      res.setHeader("Content-Disposition", `attachment; filename="VaughnMartin-Pitch-${title}.png"`);
+      res.setHeader("Cache-Control", "public, max-age=300");
+      res.send(buffer);
+    } catch (err) {
+      console.error("[PitchDeck] Screenshot failed:", err?.message);
+      res.status(500).json({ error: "Slide render failed", detail: err?.message });
+    } finally {
+      if (browser) await browser.close();
+    }
+  });
+}
+
+// server/routes/pitchDeckV2Route.ts
+import { chromium as chromium4 } from "playwright-core";
+var CHROMIUM4 = process.env.REPLIT_PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/nix/store/kcvsxrmgwp3ffz5jijyy7wn9fcsjl4hz-playwright-browsers-1.55.0-with-cjk/chromium-1187/chrome-linux/chrome";
+var NAVY3 = "#0A0F2E";
+var NAVY22 = "#0D1436";
+var GOLD3 = "#C9A84C";
+var TEAL = "#2B8A6E";
+var screenshotCache = /* @__PURE__ */ new Map();
+async function getPageShot(url) {
+  if (screenshotCache.has(url)) return screenshotCache.get(url);
+  const browser = await chromium4.launch({
+    executablePath: CHROMIUM4,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+  });
+  try {
+    const page = await browser.newPage();
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto(url, { waitUntil: "networkidle", timeout: 2e4 });
+    await page.waitForTimeout(2500);
+    const buf = await page.screenshot({ type: "png", clip: { x: 0, y: 0, width: 1280, height: 720 } });
+    const b64 = `data:image/png;base64,${buf.toString("base64")}`;
+    screenshotCache.set(url, b64);
+    await page.close();
+    return b64;
+  } finally {
+    await browser.close();
+  }
+}
+var BASE = "http://localhost:5000";
+var SLIDES = [
+  {
+    num: "01",
+    label: "THE PROBLEM",
+    title: "The trigger fires in seconds. Mobilization takes 30 days.",
+    bullets: [
+      "startup to Fortune 500 organizations detect strategic triggers quickly",
+      "Most still spend weeks aligning ownership, authority, and sequence",
+      "The delay is not execution \u2014 it is mobilization"
+    ],
+    quote: '"Most organizations do not have a strategy problem. They have a mobilization problem. When a trigger fires, the first weeks are spent figuring out who decides and who owns the response."',
+    pageUrl: `${BASE}/`,
+    pageLabel: "vaughnmartin.com",
+    accent: GOLD3
+  },
+  {
+    num: "02",
+    label: "THE PRODUCT",
+    title: "Readiness OS: The response is ready before the trigger fires.",
+    bullets: [
+      "170 Readiness Protocols pre-staged",
+      "221 trigger patterns mapped",
+      "248+ data points monitored every 15 minutes",
+      "AI monitors. Executives authorize."
+    ],
+    quote: '"We built Readiness OS to pre-stage the response architecture before pressure arrives. Authority remains human; mobilization becomes immediate."',
+    pageUrl: `${BASE}/how-it-executes`,
+    pageLabel: "vaughnmartin.com/how-it-executes",
+    accent: GOLD3
+  },
+  {
+    num: "03",
+    label: "HOW IT WORKS",
+    title: "From trigger to coordinated execution in minutes.",
+    bullets: [
+      "\u2460 Signal detected",
+      "\u2461 Matching protocol staged",
+      "\u2462 Stakeholders notified",
+      "\u2463 Executive authorizes",
+      "\u2464 Execution launches"
+    ],
+    quote: '"The key change is that coordination is pre-built, so when the trigger fires, execution starts."',
+    pageUrl: `${BASE}/how-it-executes`,
+    pageLabel: "vaughnmartin.com/how-it-executes",
+    accent: TEAL
+  },
+  {
+    num: "04",
+    label: "PROOF \u2014 NOW, NOT ROADMAP",
+    title: "Built. Live. In production now.",
+    bullets: [
+      "Production platform live at vaughnmartin.com",
+      "Full public execution walkthrough available",
+      "Founding Partner cohort open for 90-day validation"
+    ],
+    quote: '"This is not a roadmap concept. The platform is live and testable now."',
+    pageUrl: `${BASE}/executive-brief`,
+    pageLabel: "vaughnmartin.com/executive-brief",
+    accent: GOLD3
+  },
+  {
+    num: "05",
+    label: "BUSINESS CASE",
+    title: "Replace existing response spend with execution infrastructure.",
+    bullets: [
+      "Existing budgets already fund reactive response motions",
+      "Readiness OS shifts spend to pre-staged execution readiness",
+      "One high-impact trigger handled well can justify annual investment"
+    ],
+    quote: '"We are not asking enterprises to invent new budget. We are replacing existing response spend with a repeatable operating model."',
+    pageUrl: `${BASE}/roi-calculator`,
+    pageLabel: "vaughnmartin.com/roi-calculator",
+    accent: GOLD3
+  },
+  {
+    num: "06",
+    label: "ASK + CLOSE",
+    title: "Category creation: Preparation Infrastructure",
+    bullets: [
+      "Raise: $[AMOUNT]",
+      "Product hardening + enterprise controls",
+      "Founding Partner conversions",
+      "Repeatable GTM motion"
+    ],
+    quote: `"Every enterprise has AI capability. Very few have mobilization readiness. We built that layer. It's live now."`,
+    pageUrl: `${BASE}/founding-partner-program`,
+    pageLabel: "vaughnmartin.com/founding-partner-program",
+    accent: GOLD3
+  }
+];
+function buildSlideHtml(slide, shotB64) {
+  const bulletsHtml = slide.bullets.map(
+    (b) => `<li style="margin-bottom:10px;padding-left:16px;position:relative;">
+          <span style="position:absolute;left:0;top:2px;color:${slide.accent};font-size:11px;">\u25B6</span>
+          ${b}
+        </li>`
+  ).join("");
+  const VM_SEAL = `
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="17" stroke="${GOLD3}" stroke-width="1.5"/>
+      <circle cx="18" cy="18" r="13" stroke="${GOLD3}" stroke-width="0.6" stroke-dasharray="2 2"/>
+      <text x="18" y="22" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="10" font-weight="700" fill="${GOLD3}">VM</text>
+    </svg>`;
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1280px;height:720px;overflow:hidden;background:${NAVY3};}
+  .slide{width:1280px;height:720px;display:flex;position:relative;font-family:'Barlow Condensed',sans-serif;}
+
+  /* LEFT PANEL */
+  .left{
+    width:540px;min-width:540px;height:720px;
+    background:${NAVY3};
+    padding:52px 44px 40px 52px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden;
+  }
+  .left::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 10% 80%, rgba(201,168,76,0.07) 0%, transparent 60%),
+               linear-gradient(135deg, rgba(255,255,255,0.015) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .grid-overlay{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);
+    background-size:40px 40px;
+  }
+  .left-content{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:space-between;}
+
+  .slide-label{
+    display:inline-block;
+    font-size:10px;font-weight:700;letter-spacing:0.22em;
+    color:${slide.accent};text-transform:uppercase;
+    border-left:3px solid ${slide.accent};
+    padding-left:10px;margin-bottom:22px;
+  }
+  .slide-num{font-size:9px;color:rgba(201,168,76,0.4);letter-spacing:0.18em;margin-bottom:6px;}
+
+  h1{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:${slide.title.length > 60 ? "26px" : "30px"};
+    font-weight:900;text-transform:uppercase;letter-spacing:0.01em;
+    line-height:1.12;color:#fff;margin-bottom:26px;
+  }
+  h1 em{font-style:normal;color:${slide.accent};}
+
+  .gold-rule{width:44px;height:3px;background:${slide.accent};margin-bottom:22px;border-radius:1px;}
+
+  ul{list-style:none;padding:0;margin:0 0 20px 0;}
+  ul li{
+    font-size:14px;font-weight:500;color:rgba(255,255,255,0.88);
+    line-height:1.5;
+  }
+
+  .quote{
+    font-family:'Cormorant Garamond',Georgia,serif;
+    font-style:italic;font-size:12.5px;
+    color:rgba(255,255,255,0.5);line-height:1.6;
+    border-left:2px solid rgba(201,168,76,0.3);
+    padding-left:12px;margin-top:auto;padding-top:16px;
+  }
+
+  .bottom-bar{
+    display:flex;align-items:center;gap:12px;
+    padding-top:20px;border-top:1px solid rgba(201,168,76,0.15);
+  }
+  .bottom-bar span{font-size:11px;font-weight:700;letter-spacing:0.08em;color:rgba(255,255,255,0.7);}
+  .bottom-bar small{font-size:9px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;}
+
+  /* DIVIDER */
+  .divider{width:1px;background:rgba(201,168,76,0.18);height:720px;}
+
+  /* RIGHT PANEL */
+  .right{
+    flex:1;height:720px;background:${NAVY22};
+    display:flex;align-items:center;justify-content:center;
+    padding:36px 36px 36px 32px;
+    position:relative;overflow:hidden;
+  }
+  .right::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 80% 20%, rgba(43,138,110,0.06) 0%, transparent 55%);
+    pointer-events:none;
+  }
+
+  .browser-wrap{position:relative;z-index:1;width:100%;max-width:672px;}
+
+  .browser-chrome{
+    background:#1e2035;border-radius:8px 8px 0 0;
+    padding:10px 14px;display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .dots{display:flex;gap:5px;}
+  .dot{width:10px;height:10px;border-radius:50%;}
+  .dot.r{background:#FF5F57;}
+  .dot.y{background:#FFBD2E;}
+  .dot.g{background:#28CA41;}
+  .url-bar{
+    flex:1;background:rgba(255,255,255,0.06);border-radius:4px;
+    padding:4px 10px;font-size:10.5px;color:rgba(255,255,255,0.45);
+    font-family:'Barlow Condensed',sans-serif;letter-spacing:0.03em;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  .browser-screen{
+    width:100%;aspect-ratio:16/9;
+    background:#0a0f2e;overflow:hidden;
+    border-radius:0 0 6px 6px;
+    border:1px solid rgba(255,255,255,0.06);border-top:none;
+  }
+  .browser-screen img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;}
+
+  .slide-counter{
+    position:absolute;bottom:16px;right:20px;
+    font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;
+  }
+
+  /* close line for slide 06 */
+  .close-line{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:18px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;
+    color:${GOLD3};margin-top:16px;line-height:1.2;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+  <!-- LEFT -->
+  <div class="left">
+    <div class="grid-overlay"></div>
+    <div class="left-content">
+      <div>
+        <div class="slide-num">SLIDE ${slide.num} \xB7 06</div>
+        <div class="slide-label">${slide.label}</div>
+        <h1>${slide.title.replace("Readiness OS:", "Readiness OS:<br>")}</h1>
+        <div class="gold-rule"></div>
+        <ul>${bulletsHtml}</ul>
+        ${slide.num === "06" ? `<div class="close-line">The response is ready<br>before the trigger fires.</div>` : ""}
+      </div>
+      <div class="quote">${slide.quote}</div>
+    </div>
+    <div class="bottom-bar">
+      ${VM_SEAL}
+      <div>
+        <span>VaughnMartin</span><br>
+        <small>READINESS OS</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="divider"></div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="browser-wrap">
+      <div class="browser-chrome">
+        <div class="dots">
+          <div class="dot r"></div>
+          <div class="dot y"></div>
+          <div class="dot g"></div>
+        </div>
+        <div class="url-bar">${slide.pageLabel}</div>
+      </div>
+      <div class="browser-screen">
+        <img src="${shotB64}" alt="Product screenshot" />
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-counter">${slide.num} / 06</div>
+</div>
+</body>
+</html>`;
+}
+function registerPitchDeckV2Route(app2) {
+  app2.get("/api/pitch-v2-slide.png", async (req, res) => {
+    const n = parseInt(req.query.n || "1", 10);
+    if (isNaN(n) || n < 1 || n > 6) {
+      return res.status(400).json({ error: "n must be 1\u20136" });
+    }
+    const slide = SLIDES[n - 1];
+    let browser;
+    try {
+      const shotB64 = await getPageShot(slide.pageUrl);
+      const html = buildSlideHtml(slide, shotB64);
+      browser = await chromium4.launch({
+        executablePath: CHROMIUM4,
+        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]
+      });
+      const page = await browser.newPage();
+      await page.setViewportSize({ width: 1280, height: 720 });
+      await page.setContent(html, { waitUntil: "networkidle" });
+      await page.waitForTimeout(1200);
+      const buffer = await page.screenshot({
+        type: "png",
+        clip: { x: 0, y: 0, width: 1280, height: 720 }
+      });
+      const labels = ["The-Problem", "The-Product", "How-It-Works", "Proof", "Business-Case", "Ask-Close"];
+      res.setHeader("Content-Type", "image/png");
+      res.setHeader("Content-Disposition", `attachment; filename="VM-PitchV2-${String(n).padStart(2, "0")}-${labels[n - 1]}.png"`);
+      res.setHeader("Cache-Control", "public, max-age=3600");
+      res.send(buffer);
+    } catch (err) {
+      console.error("[PitchDeckV2] Failed:", err?.message);
+      res.status(500).json({ error: "Slide render failed", detail: err?.message });
+    } finally {
+      if (browser) await browser.close();
+    }
+  });
+  app2.get("/api/pitch-v2-clear-cache", (_req, res) => {
+    screenshotCache.clear();
+    res.json({ ok: true, message: "Screenshot cache cleared" });
   });
 }
 
@@ -44152,11 +45618,11 @@ async function registerExecutionSyncRoutes(app2) {
   });
   app2.get("/api/documents/generated/:id", requireOrgAccess, async (req, res) => {
     try {
-      const document = await storage.getGeneratedDocument(req.params.id);
-      if (!document) {
+      const document2 = await storage.getGeneratedDocument(req.params.id);
+      if (!document2) {
         return res.status(404).json({ error: "Document not found" });
       }
-      res.json(document);
+      res.json(document2);
     } catch (error) {
       res.status(500).json({ error: "Failed to get document" });
     }
@@ -44174,7 +45640,7 @@ async function registerExecutionSyncRoutes(app2) {
         const regex = new RegExp(`\\{\\{${key}\\}\\}`, "g");
         generatedContent = generatedContent.replace(regex, String(value));
       }
-      const document = await storage.createGeneratedDocument({
+      const document2 = await storage.createGeneratedDocument({
         templateId,
         executionInstanceId,
         name: `${template.name} - ${(/* @__PURE__ */ new Date()).toISOString()}`,
@@ -44184,7 +45650,7 @@ async function registerExecutionSyncRoutes(app2) {
         fileFormat: "html",
         generatedBy: req.userId
       });
-      res.status(201).json(document);
+      res.status(201).json(document2);
     } catch (error) {
       console.error("Failed to generate document:", error);
       res.status(500).json({ error: "Failed to generate document" });
@@ -44192,8 +45658,8 @@ async function registerExecutionSyncRoutes(app2) {
   });
   app2.post("/api/documents/generated/:id/approve", requireOrgAccess, async (req, res) => {
     try {
-      const document = await storage.approveGeneratedDocument(req.params.id, req.userId);
-      res.json(document);
+      const document2 = await storage.approveGeneratedDocument(req.params.id, req.userId);
+      res.json(document2);
     } catch (error) {
       res.status(500).json({ error: "Failed to approve document" });
     }
@@ -44201,8 +45667,8 @@ async function registerExecutionSyncRoutes(app2) {
   app2.post("/api/documents/generated/:id/reject", requireOrgAccess, async (req, res) => {
     try {
       const { reason } = req.body;
-      const document = await storage.rejectGeneratedDocument(req.params.id, reason);
-      res.json(document);
+      const document2 = await storage.rejectGeneratedDocument(req.params.id, reason);
+      res.json(document2);
     } catch (error) {
       res.status(500).json({ error: "Failed to reject document" });
     }
@@ -44375,12 +45841,12 @@ async function registerExecutionSyncRoutes(app2) {
     try {
       const { templateType, variables: variables2, executionInstanceId, scenarioId, organizationId } = req.body;
       const { documentTemplateEngine: documentTemplateEngine2 } = await Promise.resolve().then(() => (init_DocumentTemplateEngine(), DocumentTemplateEngine_exports));
-      const document = await documentTemplateEngine2.generateDocument(
+      const document2 = await documentTemplateEngine2.generateDocument(
         templateType,
         variables2 || {},
         { executionInstanceId, scenarioId, organizationId }
       );
-      res.status(201).json(document);
+      res.status(201).json(document2);
     } catch (error) {
       console.error("Document generation failed:", error);
       res.status(500).json({
@@ -46508,7 +47974,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%supply chain%",
       data: {
-        whyItMatters: "Supply chain disruptions cost the average Fortune 1000 company $184M annually. Companies with pre-staged prepared responses recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.",
+        whyItMatters: "Supply chain disruptions cost the average startup to Fortune 500 company $184M annually. Companies with pre-staged prepared responses recover 2.3x faster and experience 44% lower revenue impact than those reacting ad hoc.",
         enrichedPhases: [
           {
             name: "DISRUPTION ASSESSMENT",
@@ -46560,7 +48026,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%regulatory%",
       data: {
-        whyItMatters: "Regulatory non-compliance costs Fortune 1000 companies an average of $14.8M per incident in fines, legal fees, and remediation. Companies with pre-built regulatory response protocols reduce compliance risk by 71% and respond 4x faster than reactive organizations.",
+        whyItMatters: "Regulatory non-compliance costs startup to Fortune 500 companies an average of $14.8M per incident in fines, legal fees, and remediation. Companies with pre-built regulatory response protocols reduce compliance risk by 71% and respond 4x faster than reactive organizations.",
         enrichedPhases: [
           {
             name: "REGULATION INTAKE",
@@ -46665,7 +48131,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%activist%",
       data: {
-        whyItMatters: "Activist investors targeting Fortune 1000 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built prepared responses deployed 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.",
+        whyItMatters: "Activist investors targeting startup to Fortune 500 companies have delivered an average -8.4% stock price decline within 72 hours of public disclosure. Organizations with pre-built prepared responses deployed 4x faster, engage institutional holders proactively, and resolve campaigns 2.1x more favorably.",
         enrichedPhases: [
           { name: "INTELLIGENCE GATHERING", timeWindow: "0\u20132 min", objective: "Know more about the activist's position than they expect you to know", tasks: [
             { owner: "General Counsel", action: "Confirm Schedule 13D/13G filing: stake %, acquisition date, stated intentions, associated entities. Access SEC EDGAR immediately", timeTarget: "90 sec" },
@@ -46755,7 +48221,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%product recall%",
       data: {
-        whyItMatters: "Product recalls cost Fortune 1000 companies an average of $267M when handled reactively. Companies that self-initiate recalls before regulatory action receive 73% smaller fines and retain 89% more customer trust than those who wait for regulatory compulsion.",
+        whyItMatters: "Product recalls cost startup to Fortune 500 companies an average of $267M when handled reactively. Companies that self-initiate recalls before regulatory action receive 73% smaller fines and retain 89% more customer trust than those who wait for regulatory compulsion.",
         enrichedPhases: [
           { name: "SAFETY CONFIRMATION", timeWindow: "0\u20132 min", objective: "Establish facts before committing to public action \u2014 but commit to investigation immediately", tasks: [
             { owner: "Chief Quality Officer", action: "Retrieve full defect incident report: complaint volume, injury reports, CPSC/FDA complaints, geographic concentration, product batch IDs", timeTarget: "90 sec" },
@@ -46785,7 +48251,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%talent%",
       data: {
-        whyItMatters: "Mass talent departures in critical roles cost Fortune 1000 companies 3\u20135x the departing employees' combined annual salaries in replacement and productivity loss. Companies with talent retention prepared responses stabilize within 14 days vs. 4+ months for reactive organizations.",
+        whyItMatters: "Mass talent departures in critical roles cost startup to Fortune 500 companies 3\u20135x the departing employees' combined annual salaries in replacement and productivity loss. Companies with talent retention prepared responses stabilize within 14 days vs. 4+ months for reactive organizations.",
         enrichedPhases: [
           { name: "FLIGHT RISK TRIAGE", timeWindow: "0\u20132 min", objective: "Know exactly who is at risk and why \u2014 before the next resignation hits your inbox", tasks: [
             { owner: "CHRO", action: "Pull talent flight risk model: identify all employees with >70% departure probability based on engagement score, tenure, compensation percentile, manager quality", timeTarget: "90 sec" },
@@ -46815,7 +48281,7 @@ async function seedFlagshipPlaybooks() {
     {
       pattern: "%esg%",
       data: {
-        whyItMatters: "ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of Fortune 1000 shares and have ESG voting mandates. Companies with ESG prepared responses contain institutional sell-pressure 3x more effectively.",
+        whyItMatters: "ESG crises now trigger institutional investor sell-offs within 48 hours. BlackRock, Vanguard, and State Street manage 23% of startup to Fortune 500 shares and have ESG voting mandates. Companies with ESG prepared responses contain institutional sell-pressure 3x more effectively.",
         enrichedPhases: [
           { name: "ESG INCIDENT CLASSIFICATION", timeWindow: "0\u20132 min", objective: "Classify accurately \u2014 an environmental violation and a governance failure require entirely different responses", tasks: [
             { owner: "Chief Sustainability Officer", action: "Classify ESG incident: Environmental (E), Social (S), or Governance (G). Severity: Tier 1 (material, public) / Tier 2 (internal, manageable) / Tier 3 (emerging risk)", timeTarget: "90 sec" },
@@ -46971,6 +48437,9 @@ async function registerRoutes(app2, existingServer) {
     skip: (req) => !!req.isAuthenticated?.()
   });
   registerMarketingImageRoute(app2);
+  registerLinkedInProductsRoute(app2);
+  registerPitchDeckRoute(app2);
+  registerPitchDeckV2Route(app2);
   app2.use("/api/playbook-library", playbookLibraryLimiter);
   app2.use("/api/playbooks/metadata", publicApiLimiter);
   app2.use("/api/playbooks/templates", publicApiLimiter);
@@ -47937,7 +49406,7 @@ async function registerRoutes(app2, existingServer) {
     try {
       const userId = req.user?.claims?.sub || req.user?.sub;
       if (!userId) {
-        return res.status(401).json({ message: "Not authenticated" });
+        return res.status(200).json(null);
       }
       const user = await storage.getUser(userId);
       if (!user) {
@@ -47951,9 +49420,11 @@ async function registerRoutes(app2, existingServer) {
       }
       const orgs = await storage.getUserOrganizations(user.id);
       const needsOnboarding = orgs.length > 0 ? !orgs[0].onboardingCompleted : true;
+      const isPlatformAdmin = !!(process.env.PLATFORM_ADMIN_EMAIL && user.email === process.env.PLATFORM_ADMIN_EMAIL);
       res.json({
         ...user,
         role,
+        isPlatformAdmin,
         initials: `${user.firstName?.[0] || ""}${user.lastName?.[0] || ""}`.toUpperCase(),
         needsOnboarding
       });
@@ -48669,7 +50140,7 @@ async function registerRoutes(app2, existingServer) {
         }
       }
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const prompt = `You are a strategic execution advisor for Fortune 1000 enterprises.
+      const prompt = `You are a strategic execution advisor for startup to Fortune 500 enterprises.
 
 Generate a concise AI Execution Brief for this playbook activation:
 
@@ -49279,7 +50750,7 @@ Return ONLY a JSON object with this exact structure (no markdown, no explanation
       if (!query) {
         return res.status(400).json({ message: "Query is required" });
       }
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve2) => setTimeout(resolve2, 1500));
       const response = {
         response: `Based on your query "${query}", I recommend focusing on digital transformation initiatives to improve agility. Consider implementing automated workflows and cross-functional team structures.`,
         suggestions: [
@@ -51480,7 +52951,7 @@ Generate a realistic, data-driven executive summary. Use specific percentages, t
 ### Drill Schedule & History
 [Recent drill results and upcoming schedule]
 
-Generate realistic scores and metrics appropriate for a Fortune 1000 ${industry} company.`,
+Generate realistic scores and metrics appropriate for a startup to Fortune 500 ${industry} company.`,
         "competitive-intelligence": `Generate a Competitive Intelligence Brief for ${organizationName} (${industry} sector):
 
 ## Competitive Intelligence Brief \u2014 ${timeframe.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
@@ -51543,7 +53014,7 @@ Generate a realistic competitive analysis with specific, plausible company moves
 - Time-to-value improvements
 - Stakeholder satisfaction scores
 
-Generate realistic transformation metrics for a Fortune 1000 ${industry} company undertaking strategic digital transformation.`
+Generate realistic transformation metrics for a startup to Fortune 500 ${industry} company undertaking strategic digital transformation.`
       };
       const prompt = reportTypePrompts[reportType] || reportTypePrompts["strategic-overview"];
       let summary = await openAIService2.analyzeText(prompt, `Enterprise strategic execution report for ${industry} sector. Use the IDEA Framework (IDENTIFY, DETECT, EXECUTE, ADVANCE). Reference 170 strategic playbooks across 9 domains.`);
@@ -52461,7 +53932,7 @@ Generate realistic transformation metrics for a Fortune 1000 ${industry} company
                 </div>
                 <div style="background:#f0ede4;border-left:3px solid #C9A84C;padding:16px 20px;border-radius:4px;margin-bottom:28px;">
                   <div style="color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Source Signal</div>
-                  <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprise software vendor announces AI-native product suite targeting Fortune 1000 operations teams, undercutting incumbent pricing by 40% with a direct channel-to-CXO sales motion\u2026</div>
+                  <div style="color:#0A0F2E;font-size:14px;line-height:1.5;">Major enterprise software vendor announces AI-native product suite targeting startup to Fortune 500 operations teams, undercutting incumbent pricing by 40% with a direct channel-to-CXO sales motion\u2026</div>
                 </div>
                 <div style="text-align:center;margin-bottom:12px;">
                   <a href="${platformUrl}/live-detection-feed?trigger=AI%20Competitive%20Disruption" style="display:inline-block;background:#132558;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:6px;font-size:14px;font-weight:600;letter-spacing:0.5px;margin-bottom:12px;">Review Live Detection \u2192</a>
@@ -53425,7 +54896,7 @@ Write the summary in third person past tense. Focus on velocity, team coordinati
     try {
       const { activationId, playbookName, situationSummary, actualMinutes, targetMet, stakeholderCount, tasksCompleted, totalTasks } = req.body;
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const prompt = `You are a strategic executive briefing writer for a Fortune 1000 company. Write a concise, professional board-ready activation report based on the following:
+      const prompt = `You are a strategic executive briefing writer for a startup to Fortune 500 company. Write a concise, professional board-ready activation report based on the following:
 
 Playbook: ${playbookName || "Strategic Response Playbook"}
 Situation: ${situationSummary || "Strategic trigger detected and responded to"}
@@ -53649,7 +55120,7 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       if (!scenarioText) return res.status(400).json({ error: "scenarioText required" });
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
       const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId }).from(playbookLibrary).where(eq57(playbookLibrary.isActive, true)).limit(50);
-      const prompt = `You are a strategic execution AI for a Fortune 1000 company. Analyze this simulated scenario and score the company's readiness.
+      const prompt = `You are a strategic execution AI for a startup to Fortune 500 company. Analyze this simulated scenario and score the company's readiness.
 
 SCENARIO: "${scenarioText}"
 
@@ -53846,7 +55317,7 @@ Respond as JSON array: [{ "name": "...", "domain": "...", "trigger": "...", "val
       }
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
       const playbooks2 = await db.select({ id: playbookLibrary.id, name: playbookLibrary.name, domain: playbookLibrary.domainId }).from(playbookLibrary).where(eq57(playbookLibrary.isActive, true)).limit(60);
-      const prompt = `You are a strategic execution AI for Fortune 1000 enterprises. A prospect has described a real threat their organization is facing. Score their execution readiness under TWO conditions.
+      const prompt = `You are a strategic execution AI for startup to Fortune 500 enterprises. A prospect has described a real threat their organization is facing. Score their execution readiness under TWO conditions.
 
 SCENARIO: "${scenarioText}"
 
@@ -53901,7 +55372,7 @@ Respond ONLY as JSON with this structure:
         return res.status(400).json({ error: "scenarioType and severity are required" });
       }
       const { openAIService: openAIService2 } = await Promise.resolve().then(() => (init_OpenAIService(), OpenAIService_exports));
-      const prompt = `You are a Fortune 1000 crisis communications expert. Generate 5 audience-specific crisis communications for an enterprise organization.
+      const prompt = `You are a startup to Fortune 500 crisis communications expert. Generate 5 audience-specific crisis communications for an enterprise organization.
 
 SCENARIO TYPE: ${scenarioType}
 SEVERITY: ${severity}
@@ -54545,8 +56016,8 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
       const resend2 = new Resend7(apiKey);
       const company = companyName ? ` for ${companyName}` : "";
       const completionPct = totalTasks > 0 ? Math.round(completedTasks / totalTasks * 100) : 100;
-      const NAVY3 = "#0A0F2E";
-      const GOLD3 = "#C9A84C";
+      const NAVY4 = "#0A0F2E";
+      const GOLD4 = "#C9A84C";
       const html = `
         <!DOCTYPE html>
         <html>
@@ -54556,13 +56027,13 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
             <tr><td align="center">
               <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;max-width:600px;width:100%;">
                 <!-- Header -->
-                <tr><td style="background:${NAVY3};padding:32px 40px;">
-                  <div style="font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD3};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
+                <tr><td style="background:${NAVY4};padding:32px 40px;">
+                  <div style="font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:${GOLD4};margin-bottom:8px;">VaughnMartin \xB7 Readiness OS</div>
                   <div style="font-size:22px;font-weight:700;color:#fff;line-height:1.3;">Your 12-Minute Execution Summary${company}</div>
                   <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:8px;">Scenario: ${scenarioTitle}</div>
                 </td></tr>
                 <!-- Gold rule -->
-                <tr><td style="height:3px;background:${GOLD3};"></td></tr>
+                <tr><td style="height:3px;background:${GOLD4};"></td></tr>
                 <!-- Body -->
                 <tr><td style="padding:40px;">
                   <p style="font-size:15px;color:#374151;line-height:1.7;margin:0 0 24px;">
@@ -54572,40 +56043,40 @@ Respond as JSON array: [{ "domains": ["domain1","domain2"], "threatType": "strin
                   <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
                     <tr>
                       <td width="50%" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:28px;font-weight:700;color:${NAVY3};">${completedTasks}/${totalTasks}</div>
+                        <div style="font-size:28px;font-weight:700;color:${NAVY4};">${completedTasks}/${totalTasks}</div>
                         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Tasks Completed</div>
                       </td>
                       <td width="4px"></td>
                       <td width="50%" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:28px;font-weight:700;color:${NAVY3};">${completionPct}%</div>
+                        <div style="font-size:28px;font-weight:700;color:${NAVY4};">${completionPct}%</div>
                         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">Completion Rate</div>
                       </td>
                     </tr>
                     <tr><td colspan="3" height="4"></td></tr>
                     <tr>
                       <td colspan="3" style="padding:16px;background:#f9fafb;border:1px solid #e5e7eb;text-align:center;">
-                        <div style="font-size:28px;font-weight:700;color:${NAVY3};">12 min</div>
+                        <div style="font-size:28px;font-weight:700;color:${NAVY4};">12 min</div>
                         <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#6b7280;margin-top:4px;">vs. 30 days without Readiness OS</div>
                       </td>
                     </tr>
                   </table>
                   <!-- Key message -->
-                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD3};margin-bottom:32px;">
+                  <div style="padding:20px 24px;background:#fefce8;border-left:4px solid ${GOLD4};margin-bottom:32px;">
                     <div style="font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#92400e;margin-bottom:8px;">What you just demonstrated</div>
                     <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;">
-                      When a strategic trigger fires, Fortune 1000s typically spend 30 days just mobilizing \u2014 figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. You compressed that entire cycle to <strong>12 minutes</strong>. That is a <strong>3,600\xD7 Execution Head Start</strong>.
+                      When a strategic trigger fires, startup to Fortune 500s typically spend 30 days just mobilizing \u2014 figuring out who needs to be in the room, agreeing on a plan, aligning stakeholders. You compressed that entire cycle to <strong>12 minutes</strong>. That is a <strong>3,600\xD7 Execution Head Start</strong>.
                     </p>
                   </div>
                   <!-- What's next -->
-                  <p style="font-size:15px;font-weight:600;color:${NAVY3};margin:0 0 8px;">What comes next</p>
+                  <p style="font-size:15px;font-weight:600;color:${NAVY4};margin:0 0 8px;">What comes next</p>
                   <p style="font-size:14px;color:#374151;line-height:1.7;margin:0 0 24px;">
                     The Founding Partner Program gives your organization 90 days to pre-stage Readiness Protocols against your real strategic scenarios \u2014 with your actual team, your actual risk register, and your actual authorization structure.
                   </p>
                   <!-- CTA -->
                   <table cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
                     <tr>
-                      <td style="background:${NAVY3};padding:14px 32px;">
-                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD3};text-decoration:none;">Apply for Founding Partner Access \u2192</a>
+                      <td style="background:${NAVY4};padding:14px 32px;">
+                        <a href="https://readinessOS.replit.app/request-access" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${GOLD4};text-decoration:none;">Apply for Founding Partner Access \u2192</a>
                       </td>
                     </tr>
                   </table>

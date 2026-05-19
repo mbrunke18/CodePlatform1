@@ -455,3 +455,9 @@ id = "QARK0L_egS4DixYz7-fnm"
 uri = "file://attached_assets/VaughnMartin-Pitch-Deck-v10-Submit.zip"
 type = "unspecified"
 title = "Full Submission Package — PPTX + PDF + HTML (3.2 MB)"
+
+[[outputs]]
+id = "eiFeSDQQM2eCOno2fP_W4"
+uri = "file://attached_assets/VaughnMartin-PitchDeck-CursorReview.zip"
+type = "unspecified"
+title = "VaughnMartin Pitch Deck — Cursor Review Copy"
