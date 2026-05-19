@@ -461,3 +461,9 @@ id = "eiFeSDQQM2eCOno2fP_W4"
 uri = "file://attached_assets/VaughnMartin-PitchDeck-CursorReview.zip"
 type = "unspecified"
 title = "Patched HTML — all 4 fixes applied (badge, safe-zone, S5 strip, S10 screenshot)"
+
+[[outputs]]
+id = "ABC4SZ9WRf6hI_PAVFDjM"
+uri = "file://attached_assets/VaughnMartin-Investor-Deck-v11-fixed.pptx"
+type = "slides"
+title = "Investor Deck v11 — Fixed (13 slides, all issues resolved)"
