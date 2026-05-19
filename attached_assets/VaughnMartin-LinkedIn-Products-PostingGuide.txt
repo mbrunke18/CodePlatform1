@@ -1,0 +1,156 @@
+VAUGHNMARTIN — READINESS OS
+LINKEDIN COMPANY PAGE · PRODUCTS TAB
+10 Product Listings — Ready to Post
+=================================================================
+
+HOW TO SET UP THE PRODUCTS TAB
+-----------------------------------------------------------------
+1. Go to your LinkedIn Company Page (admin view)
+2. Click 'Products' tab → 'Add product'
+3. For each product below: paste Name, Description, CTA
+4. Upload logo: linkedin_assets/product_logo_300x300.png
+   (same logo for all 10 — the VaughnMartin seal)
+5. Optional cover: use the matching product card image
+   (download from vaughnmartin.com/api/linkedin-product-icon.png?pid=N)
+6. Save and repeat for all 10 products
+
+NOTE: LinkedIn allows max 10 products per company page.
+Post in order — Product 01 will appear first in the tab.
+=================================================================
+
+PRODUCT 01 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        Readiness OS Platform
+TAGLINE:     The operating model layer above your AI stack
+
+DESCRIPTION (331 chars / 500 max):
+Readiness OS is the coordination infrastructure startup to Fortune 500 enterprises use to replace 30-day mobilization cycles with 12-minute execution. 170 pre-staged Readiness Protocols activate the moment a strategic trigger fires — with executive authority preserved at every step. The response is ready before the trigger fires.
+
+CTA BUTTON:  Request Founding Partner Access
+URL:         https://vaughnmartin.com/founding-partner-program
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=1
+
+PRODUCT 02 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        IDEA Framework™
+TAGLINE:     Identify · Detect · Execute · Advance — proprietary 4-phase execution chain
+
+DESCRIPTION (260 chars / 500 max):
+The IDEA Framework powers every Readiness Protocol. Identify strategic triggers → Detect signal patterns → Execute pre-staged responses → Advance organizational readiness. Built for enterprises that cannot afford to assemble a response after the trigger fires.
+
+CTA BUTTON:  See How It Executes
+URL:         https://vaughnmartin.com/how-it-executes
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=2
+
+PRODUCT 03 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        12-Minute Execution
+TAGLINE:     30 days of mobilization compressed to 12 minutes
+
+DESCRIPTION (287 chars / 500 max):
+When a strategic trigger is detected, a pre-staged Readiness Protocol activates, tasks are assigned, stakeholders are notified, and the executive authorization chain begins — all within 12 minutes. The old model took 30 days just to mobilize. That gap is the 3,600× execution head start.
+
+CTA BUTTON:  Start the 12-Minute Test Drive
+URL:         https://vaughnmartin.com/12-minute-experience
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=3
+
+PRODUCT 04 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        Protocol Library
+TAGLINE:     170 pre-staged Readiness Protocols across 3 strategic domains
+
+DESCRIPTION (324 chars / 500 max):
+170 cross-industry Readiness Protocols organized across Growth & Positioning, Risk & Resilience, and Transformation. Each protocol includes pre-staged tasks, stakeholder assignments, budget allocations, and document staging — ready to activate the moment a trigger fires. Plus 12 compound protocols for multi-domain threats.
+
+CTA BUTTON:  Explore the Protocol Library
+URL:         https://vaughnmartin.com/playbook-library
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=4
+
+PRODUCT 05 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        Command Tower
+TAGLINE:     Full-screen executive readiness display — live, continuous, board-ready
+
+DESCRIPTION (280 chars / 500 max):
+A real-time, full-screen executive display showing live trigger detections, system readiness scores, signal confidence feeds, and activation status. Designed for the executive floor, the Command Tower makes organizational readiness visible and continuous — not just post-incident.
+
+CTA BUTTON:  Request Executive Access
+URL:         https://vaughnmartin.com/request-access
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=5
+
+PRODUCT 06 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        Signal Detection Engine
+TAGLINE:     221 strategic triggers monitored in real time — before they become crises
+
+DESCRIPTION (304 chars / 500 max):
+Continuously monitors 221 strategic trigger patterns across 8 real-time data sources. Incoming signals are scored against keyword density, confidence thresholds, and trigger alignment. When a signal qualifies, executives are notified in minutes — not weeks. 248+ data points. 15-minute monitoring cycles.
+
+CTA BUTTON:  See Live Signal Activity
+URL:         https://vaughnmartin.com/command-tower
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=6
+
+PRODUCT 07 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        War Room
+TAGLINE:     Pre-staged live activation — tasks assigned, stakeholders ready, executive authorizes
+
+DESCRIPTION (285 chars / 500 max):
+When a Readiness Protocol activates, the War Room is the command center. Pre-staged tasks, real-time stakeholder status, executive authorization gate, and post-activation debrief — all in one coordinated execution environment designed to compress decision cycles from weeks to minutes.
+
+CTA BUTTON:  See a Live Activation
+URL:         https://vaughnmartin.com/demo-hub
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=7
+
+PRODUCT 08 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        ROI Dashboard
+TAGLINE:     Measure the financial return on organizational readiness
+
+DESCRIPTION (307 chars / 500 max):
+Quantifies the value of pre-staged execution: consulting costs avoided, response time compression, activation outcomes, and projected value across the full protocol portfolio. Includes break-even analysis, 3-year net value projection, and consulting retainer comparison. The board case, built automatically.
+
+CTA BUTTON:  Calculate Your ROI
+URL:         https://vaughnmartin.com/roi-calculator
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=8
+
+PRODUCT 09 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        Founding Partner Program
+TAGLINE:     90-day validation partnership — first startup to Fortune 500 cohort forming now
+
+DESCRIPTION (273 chars / 500 max):
+A selective 90-day validation partnership for startup to Fortune 500 enterprises ready to validate Readiness OS against their actual strategic landscape. Dedicated implementation support, direct roadmap influence, and Founding Partner pricing. 12 seats. Cohort forming now.
+
+CTA BUTTON:  Apply for Founding Partner Access
+URL:         https://vaughnmartin.com/founding-partner-program
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=9
+
+PRODUCT 10 / 10  (✓)
+─────────────────────────────────────────────────────────────────
+NAME:        Executive Brief
+TAGLINE:     The one-page board-ready case for Readiness OS
+
+DESCRIPTION (290 chars / 500 max):
+A single-page executive document that makes the full case for Readiness OS: the 3,600× execution head start, the comparison against the old mobilization model, the ROI proof, and the Founding Partner path. Designed for the CEO, CFO, or Board Chair who needs the answer in under two minutes.
+
+CTA BUTTON:  Read the Executive Brief
+URL:         https://vaughnmartin.com/executive-brief
+LOGO:        linkedin_assets/product_logo_300x300.png
+CARD IMAGE:  /api/linkedin-product-icon.png?pid=10
+
+=================================================================
+PRODUCTS TAB HERO IMAGE
+-----------------------------------------------------------------
+File: linkedin_assets/products_tab_hero.png
+Upload this as the Products tab cover/banner image.
+=================================================================
