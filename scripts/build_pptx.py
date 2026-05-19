@@ -603,17 +603,14 @@ slide_num(s8, 8)
 
 
 # ══════════════════════════════════════════════════════════════
-# S9 — Why Now (ivory)
+# S9 — Why Now (dark navy — matches full deck visual flow)
 # LAYOUT: left text zone x=0–6.76 | right image zone x=7.0–12.97
 # Gold vertical rule at x=6.88 separates zones cleanly.
 # ══════════════════════════════════════════════════════════════
-s9 = new_slide(bg=IVORY)
+s9 = new_slide()
 gold_bar(s9); logo_mark(s9)
 
 # ── RIGHT IMAGE ZONE ─────────────────────────────────────────
-# Previous frame was 5.97 × 6.18in (AR=0.97) — nearly square.
-# cover_pic was cropping ~45% off top AND bottom to fit 16:9 source.
-# Fix: set frame to exact 16:9 and center it vertically in the panel.
 IMG9_X = Inches(7.0);  IMG9_W = Inches(5.97)
 IMG9_H  = IMG9_W / 1.778          # ≈ 3.36in — exact 16:9, zero crop
 PANEL_H = Inches(6.28)            # available height in right panel (y=0.56–6.84)
@@ -623,18 +620,14 @@ caption_bar(s9, "Live Activation Console · execution in progress · production"
     IMG9_X, IMG9_Y, IMG9_W, IMG9_H)
 
 # Vertical gold rule — full panel height
-vrule(s9, Inches(6.86), Inches(0.56), PANEL_H,
-      color=GOLD, lw=1.0)
+vrule(s9, Inches(6.86), Inches(0.56), PANEL_H, color=GOLD, lw=1.0)
 
 # ── LEFT TEXT ZONE: x=0.36 to x=6.66 ────────────────────────
-lbl(s9, "Why Now", Inches(0.5), Inches(0.52),
-    color=RGBColor(0x44, 0x4A, 0x68))
+lbl(s9, "Why Now", Inches(0.5), Inches(0.52))
 heading(s9,
     "AI capability is accelerating faster than enterprise readiness.",
-    Inches(0.5), Inches(0.82), Inches(6.16), Inches(1.12),
-    size=26, color=NAVY)
-hrule(s9, Inches(0.5), Inches(2.02), Inches(6.16),
-      color=RGBColor(0x88, 0x78, 0x50))
+    Inches(0.5), Inches(0.82), Inches(6.16), Inches(1.12), size=26)
+hrule(s9, Inches(0.5), Inches(2.02), Inches(6.16))
 
 for i, (num, b) in enumerate([
     ("01", "AI capability accelerating. Enterprise mobilization readiness is not."),
@@ -645,7 +638,7 @@ for i, (num, b) in enumerate([
     txb(s9, num, Inches(0.5), by, Inches(0.72), Inches(0.92),
         size=22, bold=True, color=GOLD)
     txb(s9, b, Inches(1.30), by, Inches(5.36), Inches(0.92),
-        size=15, color=NAVY)
+        size=15, color=WHITE)
 
 txb(s9,
     "Sources: Stanford HAI AI Index 2026  ·  Gartner Autonomous Business",
