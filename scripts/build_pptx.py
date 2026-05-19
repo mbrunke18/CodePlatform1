@@ -442,7 +442,7 @@ STEPS6 = [
     ("03", "Protocol\nMatched"),
     ("04", "Team\nNotified"),
     ("05", "Executive\nAuthorizes"),
-    ("06", "Response\nDeploys"),
+    ("06", "Response\nDeploys\n· 12 MIN ·"),
 ]
 STEP_W  = Inches(1.76)
 STEP_H  = Inches(0.60)
@@ -464,11 +464,6 @@ for idx, (num, label) in enumerate(STEPS6):
         txb(s6, "→", sx + STEP_W, CHAIN_Y + Inches(0.18),
             ARROW_W, Inches(0.26),
             size=14, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
-
-# "12 MIN END-TO-END" badge flush right of chain
-txb(s6, "12 MIN\nEND-TO-END",
-    CHAIN_X + CHAIN_W - STEP_W, CHAIN_Y + Inches(0.04),
-    STEP_W, STEP_H, size=9, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
 
 # ── Images — shifted down below timeline ──────────────────────
 IMG6_Y = CHAIN_Y + STEP_H + Inches(0.16)   # ≈ 2.38in
