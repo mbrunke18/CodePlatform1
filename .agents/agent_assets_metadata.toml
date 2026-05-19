@@ -491,3 +491,9 @@ id = "F6n4mc1Oz3ivwpFNi1Lbm"
 uri = "file://attached_assets/VaughnMartin-Investor-Deck-v12.pptx"
 type = "slides"
 title = "VaughnMartin Investor Deck v12 — Fixed"
+
+[[outputs]]
+id = "TQq21lCAwkYbspGTmC0sG"
+uri = "file://attached_assets/VaughnMartin-Investor-Deck-v13.pptx"
+type = "slides"
+title = "VaughnMartin Investor Deck v13 — 8-Slide Hybrid"
