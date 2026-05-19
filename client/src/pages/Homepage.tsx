@@ -1936,14 +1936,14 @@ function MicrosoftEcosystemBanner() {
             <div style={{ textAlign: 'center', marginBottom: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 14 }}>
                 <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.35)' }} />
-                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Built for enterprise reality — no 6-month implementation</span>
+                <span style={{ ...DM, fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' as const, color: 'rgba(201,168,76,0.7)' }}>Week 1 setup · Week 2–4 live protocols · 90-day ROI validation</span>
                 <div style={{ width: 28, height: 1, background: 'rgba(201,168,76,0.35)' }} />
               </div>
               <h2 style={{ ...GEO, fontSize: 'clamp(22px,3vw,34px)', fontWeight: 700, color: '#fff', lineHeight: 1.2, marginBottom: 14 }}>
                 Live in weeks, not months. Responding in 12 minutes.
               </h2>
               <p style={{ ...DM, fontSize: 14, color: 'rgba(240,237,228,0.45)', maxWidth: 620, margin: '0 auto' }}>
-                No rip-and-replace. No 6-month implementation. Readiness OS layers above the infrastructure you already own — configured to your org, reviewed by your executives, and ready to deploy a real strategic response within the first month.
+                No rip-and-replace. No 6-month rollout. Week 1: foundation setup and scenario selection. Weeks 2–4: live protocols staged and first simulation drill complete. By Day 90: a documented ROI business case built from real activation data — not a demo.
               </p>
             </div>
             <div style={{ border: `1px solid rgba(201,168,76,0.12)`, overflow: 'hidden' }}>
