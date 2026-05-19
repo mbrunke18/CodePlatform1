@@ -485,3 +485,9 @@ id = "6kU6GWgOEaHUFYFIYl0D5"
 uri = "file://attached_assets/VaughnMartin-LinkedIn-Products-PostingGuide.txt"
 type = "text"
 title = "LinkedIn Products Tab — Posting Guide (All 10 Products)"
+
+[[outputs]]
+id = "F6n4mc1Oz3ivwpFNi1Lbm"
+uri = "file://attached_assets/VaughnMartin-Investor-Deck-v12.pptx"
+type = "slides"
+title = "VaughnMartin Investor Deck v12 — Live Platform Screenshots"
