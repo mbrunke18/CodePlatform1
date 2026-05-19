@@ -515,3 +515,9 @@ id = "PDN217xxznDV9TuAHHaYx"
 uri = "file://attached_assets/VaughnMartin-Investor-Deck-v14-full.pptx"
 type = "slides"
 title = "VaughnMartin Investor Deck — v14 Clean Rebuild"
+
+[[outputs]]
+id = "JAQAFpLRD9xWM2CM5QKgA"
+uri = "file://attached_assets/VaughnMartin-4min-Pitch.pptx"
+type = "slides"
+title = "VaughnMartin — 4-Minute Investor Pitch (10 Slides)"
