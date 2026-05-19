@@ -1,0 +1,66 @@
+VAUGHNMARTIN — READINESS OS
+INVESTOR PITCH — 4-MINUTE TALKING POINTS
+============================================================
+Total: ~4:00  |  13 slides  |  ~18–25s per slide
+============================================================
+
+SLIDE 01 — HOOK  [~15s]
+------------------------------------------------------------
+Every enterprise has the same problem: when a strategic trigger fires — activist investor, ransomware, supply chain failure — they spend thirty days just figuring out who needs to be in the room. We changed that. The response is ready before the trigger fires.
+
+SLIDE 02 — THE REALITY  [~20s]
+------------------------------------------------------------
+Thirty days. That's not a crisis response — that's the mobilization time before the response even begins. Who calls who? Where's the brief? Who owns it? Who authorizes? This is not a talent problem. It's a readiness problem. And no one has built the infrastructure to solve it — until now.
+
+SLIDE 03 — PROBLEM IS HERE  [~20s]
+------------------------------------------------------------
+One of these is forming in your portfolio right now. Ransomware at 95% confidence. A regulatory inquiry at 87%. An activist at 91%. The signal is live. The organization is cold. Thirty days of alignment — before a single action is taken.
+
+SLIDE 04 — THE ANSWER  [~20s]
+------------------------------------------------------------
+170 Readiness Protocols. 221 strategic triggers. One operating model. The response is pre-staged before the signal fires. AI monitors continuously. Executives authorize. Teams execute. Twelve minutes from trigger detection to coordinated action.
+
+SLIDE 05 — MARKET OPPORTUNITY  [~25s]
+------------------------------------------------------------
+The enterprise coordination market is a $42 billion problem. We're not competing with Copilot or task software — we're competing with the 40-year-old meeting-heavy operating model itself. Every vendor bolted AI onto the old model. We rebuilt from first principles. Our SAM is $4.8 billion — 25,000 target accounts at $200K average ACV.
+
+SLIDE 06 — WHY DEFENSIBLE  [~20s]
+------------------------------------------------------------
+Every competitor built faster notes from the same slow meetings. We built the layer beneath — the coordination infrastructure that makes mobilization unnecessary. Readiness Protocols replace real-time coordination. Pattern detection replaces committee deliberation. This is not a feature set. It is an operating model shift.
+
+SLIDE 07 — BUSINESS VALUE  [~20s]
+------------------------------------------------------------
+3,600 times. Thirty days compressed to twelve minutes. And the commercial case is simple: the cost of one missed response — one ransomware recovery, one activist campaign managed late — exceeds the cost of this platform many times over. Readiness is not overhead. It is value protection.
+
+SLIDE 08 — BUSINESS MODEL  [~25s]
+------------------------------------------------------------
+We enter at $75,000 for a 90-day Founding Partner validation. The platform expands through tier and industry pack — Ready, Responsive, and Orchestrated at the global enterprise level. Target gross margin: 80%. Net revenue retention: 120-plus percent. Target ACV by year three: $300,000. Expansion is built into the architecture.
+
+SLIDE 09 — BUILT. LIVE. IN PRODUCTION.  [~20s]
+------------------------------------------------------------
+This is not a roadmap. The platform is operating now. 170 protocols seeded. 221 triggers active. An 8-feed signal pipeline on 15-minute monitoring cycles. 208 page components. 189 unit tests passing. vaughnmartin.com is live. We are not asking you to bet on a concept.
+
+SLIDE 10 — TRACTION & TEAM  [~25s]
+------------------------------------------------------------
+I spent twenty years inside Fortune 500 operations — Ford, Toyota, Lockheed Martin, Charles Schwab, Vantiv, Boyd Gaming — watching the same coordination failure repeat. And five years coaching major college football at Stanford, where I watched pre-staged execution work under the most high-pressure conditions in American sport. I built this because I could not stop seeing the gap.
+
+SLIDE 11 — WHY NOW  [~15s]
+------------------------------------------------------------
+AI capability is accelerating. Enterprise readiness is not. The organizations that pair signal detection with governed 12-minute execution will separate from those still aligning in thirty days. That window is open right now — and it will not stay open.
+
+SLIDE 12 — THE ASK  [~20s]
+------------------------------------------------------------
+$750,000 pre-seed. Twelve months. Three milestones: six Founding Partners signed, $450K ARR at month nine, $1M ARR at month twelve — Series A trigger from strength. 50% to GTM and Founding Partner success. We are in active conversations. investor@vaughnmartin.com.
+
+SLIDE 13 — CLOSE  [~15s]
+------------------------------------------------------------
+The problem: enterprise work was built for a world without AI. The solution: 170 Readiness Protocols — the response pre-staged before the trigger fires. The outcome: any organization prepared for every situation it will face is no longer afraid of what comes next. That is fearless. Let's build this.
+
+============================================================
+REHEARSAL NOTE
+------------------------------------------------------------
+Target pace: 160-170 words per minute (confident, not rushed).
+Slides 05, 08, 10 carry the most weight — give them the full 25s.
+Slides 11 and 13 are landing moments — slow down, land each word.
+Do not read. Use these as anchors, then speak naturally.
+============================================================

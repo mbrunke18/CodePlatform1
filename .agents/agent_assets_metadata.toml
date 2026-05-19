@@ -467,3 +467,15 @@ id = "ABC4SZ9WRf6hI_PAVFDjM"
 uri = "file://attached_assets/VaughnMartin-Investor-Deck-v11-fixed.pptx"
 type = "slides"
 title = "Investor Deck v11 — Fixed (original look preserved)"
+
+[[outputs]]
+id = "ubjIrQq9ox4KvtsRzWXTz"
+uri = "file://attached_assets/VaughnMartin-Investor-Deck-v11-final.pptx"
+type = "slides"
+title = "Investor Deck v11 Final — speaker notes embedded"
+
+[[outputs]]
+id = "olNqDKlyiFlHoDc6uz7RG"
+uri = "file://attached_assets/VaughnMartin-Pitch-TalkingPoints.txt"
+type = "text"
+title = "4-Minute Talking Points — printable reference"
