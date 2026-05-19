@@ -497,3 +497,9 @@ id = "TQq21lCAwkYbspGTmC0sG"
 uri = "file://attached_assets/VaughnMartin-Investor-Deck-v13.pptx"
 type = "slides"
 title = "VaughnMartin Investor Deck v13 — 8-Slide Hybrid"
+
+[[outputs]]
+id = "s0Ru5ZhXCuj-ZjvrDyHiE"
+uri = "file://attached_assets/VaughnMartin-Investor-Deck-v13-final.pptx"
+type = "slides"
+title = "VaughnMartin Investor Deck v13 Final"
