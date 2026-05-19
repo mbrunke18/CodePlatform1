@@ -677,8 +677,14 @@ logo_mark(s10, x=Inches(0.36), y=Inches(0.50), w=Inches(1.82))
 # Header — label beside logo, heading below logo
 lbl(s10, "The Ask", Inches(2.38), Inches(0.56))
 heading(s10, "Twelve founding partners. One defining cohort.",
-    Inches(0.36), Inches(1.04), Inches(9.50), Inches(0.80), size=28)
-hrule(s10, Inches(0.36), Inches(1.90), Inches(12.61))
+    Inches(0.36), Inches(1.04), Inches(9.50), Inches(0.68), size=26)
+# Founder attribution — single line between heading and rule
+txb(s10,
+    "Martin Brunke, Founder  ·  20 years inside enterprise organizations  "
+    "·  5 years on a major college football sideline",
+    Inches(0.36), Inches(1.74), Inches(9.50), Inches(0.18),
+    size=10, italic=True, color=GOLD, font="Barlow Condensed")
+hrule(s10, Inches(0.36), Inches(1.96), Inches(12.61))
 
 # ── LEFT COLUMN (x=0.36, clear of divider at x=6.50) ─────────
 # 3 KPI stat boxes (y=2.06–3.34, w=1.98 each with 0.12 gap)
