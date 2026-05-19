@@ -510,12 +510,12 @@ slide_num(s7, 7)
 
 
 # ══════════════════════════════════════════════════════════════
-# S8 — Live Proof (two images, explicit gap)
+# S8 — Live Proof (two equal 16:9 images, side by side)
 # LAYOUT:
-#   Stat row:   y=1.62 → y=2.76
-#   Main image: x=0.36, w=8.06 → ends x=8.42  y=2.88 → y=6.22
-#   Gap:        0.30in           (x=8.42–8.72)
-#   Side image: x=8.72, w=4.25  → ends x=12.97 y=2.88 → y=6.22
+#   KPI row:     y=1.56 → y=2.52
+#   Label row:   y=2.60 → y=2.84  (image titles)
+#   Images:      y=2.88 → y=6.34  (each 6.157w × 3.46h, exact 16:9, zero crop)
+#   Gap:         0.30in between images
 # ══════════════════════════════════════════════════════════════
 s8 = new_slide()
 gold_bar(s8); logo_mark(s8)
@@ -532,26 +532,36 @@ for i, (num, sub, col) in enumerate([
     ("15m", "Refresh",     GOLD),
 ]):
     sx = Inches(0.36 + i * 3.24)
-    rect(s8, sx, Inches(1.62), Inches(3.10), Inches(1.08),
+    rect(s8, sx, Inches(1.56), Inches(3.10), Inches(0.96),
          fill=RGBColor(0x0E, 0x16, 0x3C))
-    txb(s8, num, sx, Inches(1.66), Inches(3.10), Inches(0.66),
-        size=40, bold=True, color=col, align=PP_ALIGN.CENTER)
-    txb(s8, sub, sx, Inches(2.30), Inches(3.10), Pt(26),
-        size=12, color=MUTED, align=PP_ALIGN.CENTER)
+    txb(s8, num, sx, Inches(1.58), Inches(3.10), Inches(0.58),
+        size=36, bold=True, color=col, align=PP_ALIGN.CENTER)
+    txb(s8, sub, sx, Inches(2.14), Inches(3.10), Pt(22),
+        size=11, color=MUTED, align=PP_ALIGN.CENTER)
 
-IMG8_Y = Inches(2.88); IMG8_H = Inches(3.34)
-IMG8_LW = Inches(8.06)
-GAP8    = Inches(0.30)
-IMG8_RX = Inches(0.36) + IMG8_LW + GAP8          # = 8.72
-IMG8_RW = W - IMG8_RX - Inches(0.36)             # = 4.25
+# Equal 16:9 images — each half the usable width
+GAP8     = Inches(0.30)
+IMG8_W   = (W - Inches(0.36) - Inches(0.36) - GAP8) / 2   # 6.157in each
+IMG8_H   = IMG8_W / 1.778                                   # 3.463in — exact 16:9
+IMG8_Y   = Inches(2.88)
+IMG8_LX  = Inches(0.36)
+IMG8_RX  = IMG8_LX + IMG8_W + GAP8
 
-cover_pic(s8, IMG_SIGNALS, Inches(0.36), IMG8_Y, IMG8_LW, IMG8_H)
+# Image labels (small gold caps above each image)
+txb(s8, "Signal Intelligence · Live Detection Feed",
+    IMG8_LX, Inches(2.60), IMG8_W, Inches(0.26),
+    size=9, bold=True, color=GOLD, align=PP_ALIGN.LEFT)
+txb(s8, "Live Activation Console · Execution in Progress",
+    IMG8_RX, Inches(2.60), IMG8_W, Inches(0.26),
+    size=9, bold=True, color=GOLD, align=PP_ALIGN.LEFT)
+
+cover_pic(s8, IMG_SIGNALS,    IMG8_LX, IMG8_Y, IMG8_W, IMG8_H)
 caption_bar(s8, "Signal Intelligence feed · live detections · vaughnmartin.com",
-    Inches(0.36), IMG8_Y, IMG8_LW, IMG8_H)
+    IMG8_LX, IMG8_Y, IMG8_W, IMG8_H)
 
-cover_pic(s8, IMG_ACTIVATION, IMG8_RX, IMG8_Y, IMG8_RW, IMG8_H)
-caption_bar(s8, "Live activation console",
-    IMG8_RX, IMG8_Y, IMG8_RW, IMG8_H)
+cover_pic(s8, IMG_ACTIVATION, IMG8_RX, IMG8_Y, IMG8_W, IMG8_H)
+caption_bar(s8, "Live activation console · authorized execution · vaughnmartin.com",
+    IMG8_RX, IMG8_Y, IMG8_W, IMG8_H)
 
 slide_num(s8, 8)
 

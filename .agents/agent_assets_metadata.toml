@@ -442,7 +442,7 @@ title = "Pitch Deck v10 — Complete Package (HTML + PPTX + PDF)"
 id = "M5BBtFtaiyvsEUIqBrvFJ"
 uri = "file://attached_assets/VaughnMartin-Investor-Pitch-Deck-v10.pptx"
 type = "slides"
-title = "Pitch Deck v10 — S1 cutoff fixed, S9 now shows Activation Console"
+title = "Pitch Deck v10 — S8 equal 16:9 side-by-side (both images fully visible, no cropping)"
 
 [[outputs]]
 id = "NFbgtwhBC-Y9xKXNmkZ3Y"
