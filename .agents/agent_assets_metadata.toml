@@ -503,3 +503,9 @@ id = "s0Ru5ZhXCuj-ZjvrDyHiE"
 uri = "file://attached_assets/VaughnMartin-Investor-Deck-v13-final.pptx"
 type = "slides"
 title = "VaughnMartin Investor Deck v13-final — Complete 14-Slide Deck (All Missing Slides Restored)"
+
+[[outputs]]
+id = "LhvklXPY1H5NqT-cofygb"
+uri = "file://attached_assets/VaughnMartin-Investor-Deck-vAmplify-FIXED.pptx"
+type = "slides"
+title = "VaughnMartin Investor Deck — vAmplify FIXED"
