@@ -156,9 +156,13 @@ def img_border_only(s, l, t, w, h):
 s1 = new_slide()
 gold_bar(s1)
 
-# ── RIGHT IMAGE ZONE: x=7.1, y=0.56, w=5.97, h=6.24 ──────────
-IMG1_X = Inches(7.1);  IMG1_W = Inches(5.97)
-IMG1_Y = Inches(0.56); IMG1_H = Inches(6.24)
+# ── RIGHT IMAGE ZONE: 16:9 frame, vertically centered ──────────
+# Portrait frame (5.97×6.24) was cropping 46% off left+right of 16:9 source.
+# Fix: set frame to exact 16:9, center vertically in the panel (y=0.56–6.84).
+IMG1_X  = Inches(7.1);  IMG1_W = Inches(5.97)
+IMG1_H  = IMG1_W / 1.778          # ≈ 3.36in — exact 16:9, zero crop
+PANEL1_H = Inches(6.28)           # available panel height 0.56–6.84
+IMG1_Y  = Inches(0.56) + (PANEL1_H - IMG1_H) / 2  # vertically centered
 cover_pic(s1, IMG_TOWER, IMG1_X, IMG1_Y, IMG1_W, IMG1_H, border=True)
 caption_bar(s1, "Command Tower · live signal monitoring · production",
     IMG1_X, IMG1_Y, IMG1_W, IMG1_H)
@@ -568,8 +572,8 @@ IMG9_X = Inches(7.0);  IMG9_W = Inches(5.97)
 IMG9_H  = IMG9_W / 1.778          # ≈ 3.36in — exact 16:9, zero crop
 PANEL_H = Inches(6.28)            # available height in right panel (y=0.56–6.84)
 IMG9_Y  = Inches(0.56) + (PANEL_H - IMG9_H) / 2   # vertically centered ≈ y=1.94
-cover_pic(s9, IMG_HOME, IMG9_X, IMG9_Y, IMG9_W, IMG9_H, border=True)
-caption_bar(s9, "Readiness OS · production platform · vaughnmartin.com",
+cover_pic(s9, IMG_ACTIVATION, IMG9_X, IMG9_Y, IMG9_W, IMG9_H, border=True)
+caption_bar(s9, "Live Activation Console · execution in progress · production",
     IMG9_X, IMG9_Y, IMG9_W, IMG9_H)
 
 # Vertical gold rule — full panel height
