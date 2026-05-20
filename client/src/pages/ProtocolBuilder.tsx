@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { Link, useLocation } from 'wouter';
 import { apiRequest } from '@/lib/queryClient';
 import { useToast } from '@/hooks/use-toast';
+import { updatePageMetadata } from '@/lib/seo';
 import {
   CheckCircle2, ChevronRight, Plus, X, Shield, Users, ListChecks,
   MessageSquare, Wallet, Key, ArrowLeft, BookOpen, Zap, Radio,
@@ -1340,6 +1341,13 @@ export default function ProtocolBuilder() {
     },
   });
 
+  useEffect(() => {
+    updatePageMetadata({
+      title: "Protocol Builder — VaughnMartin Readiness OS",
+      description: "Build a custom Readiness Protocol in 6 guided steps. Pre-stage your organization's response for any strategic situation before it presents itself.",
+    });
+  }, []);
+
   const totalSteps = STEPS.length;
   const isSummary = step === totalSteps;
   const currentStep = STEPS[step];
@@ -1381,7 +1389,7 @@ export default function ProtocolBuilder() {
           </div>
         </Link>
 
-        <div style={{ fontSize: 10, letterSpacing: '0.12em', fontWeight: 700, textTransform: 'uppercase', color: GOLD, marginBottom: 6 }}>Protocol Builder</div>
+        <h1 style={{ fontSize: 10, letterSpacing: '0.12em', fontWeight: 700, textTransform: 'uppercase', color: GOLD, marginBottom: 6, margin: '0 0 6px' }}>Protocol Builder</h1>
         <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 32, lineHeight: 1.5 }}>
           The structure of all 170 protocols. Your organization's specifics.
         </div>

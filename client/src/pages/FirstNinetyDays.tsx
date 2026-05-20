@@ -142,10 +142,10 @@ export default function FirstNinetyDays() {
   const [activePhase, setActivePhase] = useState("week1");
 
   useEffect(() => {
-    updatePageMetadata(
-      "First 90 Days — VaughnMartin Readiness OS",
-      "A concrete implementation path from Day 1 to Day 90. Know exactly what happens, when, and what success looks like at every checkpoint."
-    );
+    updatePageMetadata({
+      title: "First 90 Days — VaughnMartin Readiness OS",
+      description: "A concrete implementation path from Day 1 to Day 90. Know exactly what happens, when, and what success looks like at every checkpoint.",
+    });
   }, []);
 
   const phase = PHASES.find(p => p.id === activePhase)!;

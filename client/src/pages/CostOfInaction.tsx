@@ -228,10 +228,10 @@ export default function CostOfInaction() {
   const tier     = REVENUE_TIERS.find(t => t.id === tierId)!;
 
   useEffect(() => {
-    updatePageMetadata(
-      "Cost of Inaction — VaughnMartin Readiness OS",
-      "Quantify the financial cost of a 30-day mobilization cycle vs. 12-minute response. Built for startup to Fortune 500 CFO and Board conversations."
-    );
+    updatePageMetadata({
+      title: "Cost of Inaction — VaughnMartin Readiness OS",
+      description: "Quantify the financial cost of a 30-day mobilization cycle vs. 12-minute response. Built for startup to Fortune 500 CFO and Board conversations.",
+    });
   }, []);
 
   return (

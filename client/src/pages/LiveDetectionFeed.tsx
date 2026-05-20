@@ -124,6 +124,7 @@ export default function LiveDetectionFeed() {
   const contactsQuery = useQuery<{ success: boolean; contacts: StakeholderContact[] }>({
     queryKey: ['/api/stakeholder-contacts', ORG_ID],
     queryFn: () => fetch(`/api/stakeholder-contacts?organizationId=${ORG_ID}`).then(r => r.json()),
+    enabled: isAuthenticated,
   });
 
   const acknowledgeMutation = useMutation({

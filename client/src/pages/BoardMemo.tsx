@@ -234,10 +234,10 @@ export default function BoardMemo() {
   const upd = (k: keyof FormState, v: string) => setForm(f => ({ ...f, [k]: v }));
 
   useEffect(() => {
-    updatePageMetadata(
-      "Board Memo Generator — VaughnMartin Readiness OS",
-      "Generate a CFO and Board-ready investment memo in minutes. Give your internal champion something they can forward today."
-    );
+    updatePageMetadata({
+      title: "Board Memo Generator — VaughnMartin Readiness OS",
+      description: "Generate a CFO and Board-ready investment memo in minutes. Give your internal champion something they can forward today.",
+    });
   }, []);
 
   const handlePrint = () => {
